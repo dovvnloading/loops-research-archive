@@ -70,10 +70,13 @@ The [project page’s reference section](https://dovvnloading.github.io/loops-re
 
 ## Project authorship and stewardship
 
-**Matthew Robert Wesney** is the named author and steward of this independent research effort. He assembled the source corpus, developed and documented the reduction program, maintained the proof-obligation and adversarial-audit trail, organized the computational materials, authored the manuscript and project page, and published this archive for public inspection.
+**Matthew Robert Wesney** is the named human author, research director, and archive steward of this independent effort. He established the research agenda, selected and locked the source corpus, framed and sequenced the investigations, directed the iterative workflows, adjudicated competing outputs, maintained the proof-obligation and adversarial-audit record, integrated the retained results, authored and curated the manuscript and project page, and authorized the public release.
 
-Imported theorems remain attributable to their original authors. New arguments, syntheses, status judgments, corrections, and any errors in this archive are the responsibility of Matthew Robert Wesney. Machine assistance was used in portions of the research and editorial workflow; responsibility for source selection, mathematical claims, disclosure, and publication remains with the project author.
+This work was developed through a sustained human-AI research collaboration. **Anthropic (Fable 5 / Opus 5)** and **OpenAI (GPT-5.6 Sol)** provided substantial assistance throughout the research lifecycle, including adversarial testing of definitions and proof claims, counterexample search, proof-obligation analysis, source comparison, computational design, code generation and review, numerical experimentation, synthesis, manuscript development, technical editing, quality assurance, and archive preparation. Their contribution was integral to the iterative construction and stress-testing of the research program, rather than limited to incidental tooling or copyediting.
 
+The collaboration was directed and orchestrated by Matthew Robert Wesney. He defined the objectives, supplied the research context, assigned and sequenced investigations, evaluated and reconciled model outputs, selected what entered the record, and retained responsibility for all final mathematical claims, status designations, citations, disclosures, and publication decisions. The AI systems are credited as substantial computational research collaborators; they are not human authors, and this acknowledgment does not imply review or endorsement by Anthropic or OpenAI.
+
+Imported theorems remain attributable to their original authors. New arguments, syntheses, status judgments, corrections, and any errors in this archive remain the responsibility of Matthew Robert Wesney.
 ## Audit and reproducibility discipline
 
 - Every substantive dependency is intended to terminate in an imported, proved, or explicitly open ledger item.
