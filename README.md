@@ -77,6 +77,7 @@ This work was developed through a sustained human-AI research collaboration. **A
 The collaboration was directed and orchestrated by Matthew Robert Wesney. He defined the objectives, supplied the research context, assigned and sequenced investigations, evaluated and reconciled model outputs, selected what entered the record, and retained responsibility for all final mathematical claims, status designations, citations, disclosures, and publication decisions. The AI systems are credited as substantial computational research collaborators; they are not human authors, and this acknowledgment does not imply review or endorsement by Anthropic or OpenAI.
 
 Imported theorems remain attributable to their original authors. New arguments, syntheses, status judgments, corrections, and any errors in this archive remain the responsibility of Matthew Robert Wesney.
+
 ## Audit and reproducibility discipline
 
 - Every substantive dependency is intended to terminate in an imported, proved, or explicitly open ledger item.
