@@ -1,0 +1,127 @@
+{
+  "artifact": "PUSH6_INDEPENDENT_SEPARATOR_AUDIT",
+  "date": "2026-07-25",
+  "status": "PUSH6_NARROW_SEPARATOR_RESULT_VALID",
+  "required_checks": {
+    "manifest": true,
+    "compiler_sample": true,
+    "compiler_partition": true,
+    "compiler_recurrence": true,
+    "tarjan_oracle": true,
+    "scc_overapproximation_exposed": true,
+    "finite_response_associativity": true,
+    "separator_example": true,
+    "singular_mode_limitation_exposed": true,
+    "repeated_terminal_bug_exposed": true,
+    "single_atom_map_counterexample": true,
+    "relational_repair_finite": true,
+    "adopted_node_proved": true,
+    "dependencies_discharged": true,
+    "broad_status_boundary": true,
+    "rejected_nodes_absent": true,
+    "mlc_disclaimer_present": true
+  },
+  "all_checks": true,
+  "manifest": {
+    "entry_count": 11,
+    "all_hashes_match": true,
+    "matches": {
+      "README_PUSH6.txt": true,
+      "mlc_research_push_6.md": true,
+      "mlc_manuscript_insertions_push_6.tex": true,
+      "mlc_manuscript_insertions_push_6.pdf": true,
+      "mlc_ledger_patch_push_6.json": true,
+      "separator_contact_audit.py": true,
+      "separator_contact_report.json": true,
+      "contact_mask_compiler.py": true,
+      "contact_mask_example.json": true,
+      "contact_mask_example_output.json": true,
+      "pdf_preflight_push6.txt": true
+    }
+  },
+  "compiler": {
+    "sample_semantic_match": true,
+    "four_way_partition_holds_on_sample": true,
+    "declared_mask_recurrence_holds_on_sample": true,
+    "tarjan_random_graph_trials": 900,
+    "tarjan_matches_reachability_oracle": true,
+    "scc_overapproximation_exposed": true,
+    "sample_final_word_mask": [],
+    "sample_union_graph_recurrent_components": [
+      [
+        "a0",
+        "a1",
+        "a2",
+        "a3",
+        "a4"
+      ]
+    ],
+    "duplicate_initial_mask_silently_normalized": true
+  },
+  "finite_response": {
+    "small_exhaustive_cases": 2276,
+    "small_exhaustive_associativity_holds": true,
+    "additional_random_trials": 700,
+    "additional_random_seeds": [
+      0,
+      1,
+      2,
+      42,
+      20260725,
+      20260726,
+      2147483647
+    ],
+    "additional_random_trials_hold": true,
+    "rectangle_separator_example_passes": true,
+    "floating_internal_zero_mode_rejected": true,
+    "repeated_terminal_lift_matrix": "Matrix([[1, 1], [1, 1]])",
+    "repeated_terminal_energy_on_equality_diagonal": "4",
+    "repeated_terminal_bug_exposed": true
+  },
+  "atom_map_counterexample": {
+    "degree": 4,
+    "first_atom": "(0,1/16)",
+    "image": "(0,1/4)",
+    "image_crosses_first_positive_cut": true,
+    "single_atom_map_impossible": true,
+    "correct_replacement": "set-level image or one-to-many incidence plus endpoint and trace-restriction data"
+  },
+  "relational_repair": {
+    "degree": 4,
+    "forward_saturated_vertices": [
+      "0",
+      "1/64",
+      "1/16",
+      "1/4",
+      "1"
+    ],
+    "finite_vertex_count": 5,
+    "all_shared_atom_image_endpoints_are_vertices": true,
+    "one_to_many_occurs": true,
+    "relations": {
+      "(0,1/64)": [
+        "(0,1/64)",
+        "(1/64,1/16)"
+      ],
+      "(1/64,1/16)": [
+        "(1/16,1/4)"
+      ],
+      "(1/16,1/4)": [
+        "(1/4,1)"
+      ]
+    },
+    "scope": "finite interval model for the conditional relational repair; not a source realization of the KL binary contact portrait"
+  },
+  "ledger": {
+    "total": 430,
+    "imported": 30,
+    "proved": 292,
+    "open": 108,
+    "adopted_node_proved": true,
+    "adopted_node_dependencies_proved": true,
+    "broad_gates_remain_open": true,
+    "rejected_nodes_absent": true,
+    "assessment_disclaims_mlc": true
+  },
+  "scope": "integrity, finite combinatorics, finite-network algebra, counterexamples, and ledger typing only; no analytic trace cocycle, uniform transition, UPTCR, or MLC proof"
+}

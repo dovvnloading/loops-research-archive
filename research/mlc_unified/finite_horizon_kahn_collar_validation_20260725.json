@@ -1,0 +1,128 @@
+{
+  "scope": "Finite-horizon conditional collar embedding and safe-set regressions; no full KL pseudo-piece or uniform-width claim.",
+  "source_lock": {
+    "passed": true,
+    "sha256": {
+      ".tmp_kl06_source\\psiql2.tex": "E4EFCCEC65D8C9C2BDFE2AF8203B3D4D63ECF992B40D302F56FBA78259547228",
+      ".tmp_kl08_source\\psiql.tex": "6CC9726461473812A5FBA93377F2DC0B088DB6CAC4B9DE90C7B2AE625DFB49AF"
+    },
+    "kahn_inner_collar_phrases": [
+      "Let $\\Lambda'$ be the component of $I^{-1}(\\Lambda)$ that is adjacent to $\\T$;",
+      "is a covering map;",
+      "it must have degree 1, because $I\\from \\T \\to \\T$ does.",
+      "Therefore $I|_{\\Lambda'}$ is an embedding,"
+    ],
+    "kl_gluing_phrases": [
+      "$\\BY= Y \\sqcup_{e_i} \\hat A_i.$",
+      "The embeddings $\\phi_i$ have disjoint images.",
+      "where the map $j=j(i)$ is surjective but not necessarily injective.",
+      "These embeddings extend to immersions"
+    ]
+  },
+  "finite_inverse_germs": {
+    "passed": true,
+    "horizon_length": 5,
+    "base_collar_width": "1/4",
+    "collar_widths": [
+      "1/4",
+      "1/6",
+      "1/10",
+      "1/14",
+      "1/22",
+      "1/26"
+    ],
+    "finite_intersection_positive": true
+  },
+  "overlap_reflection": {
+    "passed": true,
+    "commuting_on_declared_overlap_is_insufficient": true,
+    "collision_pair": [
+      "central:c",
+      "tile:x"
+    ],
+    "common_target_class": "target-class:q",
+    "repair": "preimage of target central/tile overlap on the retained collar equals the declared source overlap"
+  },
+  "safe_set_components": {
+    "passed": true,
+    "safe_atoms": [
+      0,
+      1,
+      4,
+      5
+    ],
+    "maximal_connected_components": [
+      [
+        0,
+        1
+      ],
+      [
+        4,
+        5
+      ]
+    ],
+    "automatic_uniqueness": false
+  },
+  "enlargement_naturality": {
+    "passed": true,
+    "protected_old": [
+      "p0",
+      "p1",
+      "p2"
+    ],
+    "protected_new": [
+      "q0",
+      "q1",
+      "q2"
+    ],
+    "old_safe": [
+      "p0",
+      "p1"
+    ],
+    "new_safe": [
+      "q0",
+      "q1"
+    ],
+    "unprotected_points_excluded": [
+      "p3",
+      "q3"
+    ],
+    "safe_set_naturality": true
+  },
+  "documentation_and_ledger": {
+    "passed": true,
+    "required_documentation_phrases": [
+      "Theorem 1.1",
+      "finite-horizon coherent collar embedding",
+      "d_j\\geq2",
+      "r_j>1",
+      "Complete quotient-collision audit",
+      "Collar overlap reflection",
+      "relative overlap cartesianity",
+      "Omitted-sheet and outer-exit ledger",
+      "Conditional final-root enlargement theorem",
+      "No automatic unique marked pullback",
+      "prove or refute the desired period-uniform quadratic block estimate",
+      "VAAPC-I",
+      "MLC"
+    ],
+    "total": 330,
+    "counts": {
+      "imported": 23,
+      "proved": 235,
+      "open": 72
+    },
+    "statuses": {
+      "FINITE_HORIZON_KAHN_COLLAR_EMBEDDING": "proved",
+      "PSI_QL_GLOBAL_INJECTIVITY_NO_GO": "proved",
+      "KL_LOCALIZATION_SUBGROUP_REFLECTION_CRITERION": "proved",
+      "KL_CANONICAL_LOCALIZATION_FORCED_COLLISION": "proved",
+      "DIRECT_DECORATION_TILE_CENTRAL_OVERLAP_REFLECTION": "open",
+      "DIRECT_DECORATION_DEGREE_ONE_PSEUDO_EMBEDDING": "open",
+      "DIRECT_DECORATION_PSEUDO_PIECE_PATH_LIFT_EXHAUSTION": "open",
+      "DIRECT_DECORATION_TRACE_COLLAR_REALIZATION": "open",
+      "UNIVERSAL_PROTECTED_TOWER_CLOSURE": "open",
+      "MLC": "open"
+    }
+  }
+}

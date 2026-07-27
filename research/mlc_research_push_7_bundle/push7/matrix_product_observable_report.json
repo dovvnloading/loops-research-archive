@@ -1,0 +1,44 @@
+{
+  "seed": 20260725,
+  "trials": 100,
+  "max_depth": 7,
+  "exact_checks": 800,
+  "failures": [],
+  "passed": true,
+  "examples": [
+    {
+      "trial": 0,
+      "coefficient_dimension": 3,
+      "feature_dimension": 3,
+      "max_depth": 7,
+      "terminal_value": [
+        "463735584",
+        "462062244",
+        "63962806"
+      ]
+    },
+    {
+      "trial": 1,
+      "coefficient_dimension": 2,
+      "feature_dimension": 3,
+      "max_depth": 7,
+      "terminal_value": [
+        "2550182520",
+        "-3983264304",
+        "2383982688"
+      ]
+    },
+    {
+      "trial": 2,
+      "coefficient_dimension": 2,
+      "feature_dimension": 3,
+      "max_depth": 7,
+      "terminal_value": [
+        "-3085760385",
+        "184248567",
+        "-2458615689"
+      ]
+    }
+  ],
+  "interpretation": "Exact integer/rational verification of the Kronecker matrix-product observable identity; not a proof that KKL Value coefficients satisfy a universal finite-state law."
+}

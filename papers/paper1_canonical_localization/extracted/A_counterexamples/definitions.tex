@@ -1,0 +1,27 @@
+\begin{definition}[FJ-set]\label{def:fj}
+An \emph{FJ-set} is a compact, connected, full plane continuum containing more than one point (full: its complement is connected). This is Kahn's definition (Kahn~I, \S1.5).
+\end{definition}
+
+\begin{definition}[\(\psi\)-polynomial-like map, after Kahn]\label{def:psiql}
+A \emph{\(\psi\)-polynomial-like map of degree \(d\)} is a pair
+\[ (i,f):(\mathbf U',K')\longrightarrow(\mathbf U,K) \]
+such that: \(\mathbf U'\) and \(\mathbf U\) are disks; \(i:\mathbf U'\to\mathbf U\) is a holomorphic immersion; \(f:\mathbf U'\to\mathbf U\) is a proper holomorphic branched cover of degree \(d\); \(K\subset\mathbf U\) is an FJ-set; and the common inverse
+\[ K'=i^{-1}(K)=f^{-1}(K) \]
+is connected. (Paraphrased from Kahn~I, Definition~7.1, p.~36, arXiv:math/0609045v3; properness of \(f\) is clause~(3) there.  Kahn--Lyubich restate the same disk, branched-cover, full-continuum, and common-inverse clauses in KL~II, \S3.1, p.~9.) For \(d=2\) we say \(\psi\)-quadratic-like.
+\end{definition}
+
+\begin{remark}[Plane-case exceptionality]\label{rem:plane-case}
+When the target \(\mathbf U\) is the whole plane, removability forces \(i\) to be an isomorphism (Kahn~I, remark following Definition~7.1, p.~36). The counterexample of Theorem~\ref{thm:psiql-nogo} uses bounded hyperbolic disks and therefore does not fall into that exceptional case.
+\end{remark}
+
+\begin{definition}[The Blaschke quotient \(R\)]\label{def:blaschke-quotient}
+Let
+\[ r'=\frac{1287}{1000},\qquad d=16,\qquad r=(r')^{16}, \]
+and set
+\[ \mathcal A=\Bigl\{\tfrac{1+6i}{10},\ \tfrac{-3-i}{10},\ \tfrac{-7+2i}{10}\Bigr\},\qquad \mathcal B=\Bigl\{\tfrac{-6+2i}{10},\ \tfrac{4i}{10}\Bigr\}, \]
+\[ R(z)=\frac{\prod_{a\in\mathcal A}B_a(z)}{\prod_{b\in\mathcal B}B_b(z)}. \tag{A.1} \]
+Clearing denominators, \(R=N/D_0\) where, in descending powers of \(z\),
+\[\begin{aligned} N:\ & 2000+4000i,\ 19600+2200i,\ 28460-23880i,\ 4072-29046i,\\ &-6630-10210i,\ -1950-1525i, \end{aligned}\tag{A.2}\]
+\[\begin{aligned} D_0:\ & 1525+1950i,\ 10210+6630i,\ 29046-4072i,\ 23880-28460i,\\ &-2200-19600i,\ -4000-2000i. \end{aligned}\tag{A.3}\]
+Every coefficient is a Gaussian integer, so all subsequent sign and Rouch\'e checks are finite rational calculations.
+\end{definition}

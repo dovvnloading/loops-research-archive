@@ -1,0 +1,95 @@
+{
+  "scope": "Exact abstract degree-two psi-ql counterexample; not an actual KL canonical-localization or direct-decoration collision.",
+  "source_lock": {
+    "passed": true,
+    "sha256": {
+      ".tmp_kl06_source\\intro.tex": "E7DD61396FEA927903D4DE4FD386E7AAEFD0BD3E2CEE1CE6F011680AD58144E0",
+      ".tmp_kl06_source\\psiql2.tex": "E4EFCCEC65D8C9C2BDFE2AF8203B3D4D63ECF992B40D302F56FBA78259547228",
+      ".tmp_kl08_source\\psiql.tex": "6CC9726461473812A5FBA93377F2DC0B088DB6CAC4B9DE90C7B2AE625DFB49AF"
+    },
+    "kahn_axiom_phrases": [
+      "$\\BU'$ and $\\BU$ are disks,",
+      "$i$ is an immersion,",
+      "$f$ is a degree $d$ branched cover,",
+      "$i^{-1}(K) = f^{-1}(K)$",
+      "$K'$ is connected.",
+      "because $f$ is proper,",
+      "$i|_{U'}$ is an embedding,"
+    ],
+    "fj_definition_phrases": [
+      "an \\fjset\\ (``filled Julia set'')",
+      "if $K$ is compact, connected, full, and has more than one element."
+    ],
+    "kl08_scope_phrases": [
+      "and $i:  \\BU' \\to \\BU$ is a holomorphic immersion,",
+      "and $f: \\BU' \\to \\BU$ is a degree $d$ holomorphic branched cover.",
+      "such that $K' = i^{-1}(K) = f^{-1}(K)$.",
+      "Then $i$ is an embedding in  a neighborhood of $K'"
+    ]
+  },
+  "elementary_target_bound": {
+    "passed": true,
+    "pi_upper_integral": "22/7 - pi",
+    "exponent_rational_upper": "836/175",
+    "target_bound": {
+      "upper_rational": "6100/3",
+      "below_2034": true,
+      "below_target_radius": true
+    }
+  },
+  "proper_branch_and_common_inverse": {
+    "passed": true,
+    "source_radius": 75,
+    "target_radius": 5625,
+    "proper_degree": 2,
+    "branch_value_in_K": true,
+    "common_inverse": "[-1,1]",
+    "inside_logarithmic_sheets": [
+      0
+    ]
+  },
+  "immersion_degree_and_collision": {
+    "passed": true,
+    "derivative_nonzero": true,
+    "collision_points": [
+      "50*I",
+      "-50*I"
+    ],
+    "collision_period_identity": "beta*(z_plus-z_minus)=2*pi*i",
+    "collision_outside_K_prime": true,
+    "collision_image_negative": true,
+    "complementary_annulus_degree": 1,
+    "winding_solutions_in_disk_2": 1
+  },
+  "documentation_and_ledger": {
+    "passed": true,
+    "required_documentation_phrases": [
+      "Theorem 1.1",
+      "proper holomorphic branched cover",
+      "Exact common-inverse equality",
+      "complementary-annulus degree is",
+      "Exact remote self-collision",
+      "Abstract pair versus actual KL path-space stage",
+      "This theorem is **not** a counterexample",
+      "VAAPC-I, UPTCR, and MLC"
+    ],
+    "total": 330,
+    "counts": {
+      "imported": 23,
+      "proved": 235,
+      "open": 72
+    },
+    "statuses": {
+      "PSI_QL_GLOBAL_INJECTIVITY_NO_GO": "proved",
+      "KL_TILE_INJECTIVITY_BASE_ANNULUS_REDUCTION": "proved",
+      "KAHN_ANNULUS_GLOBAL_INJECTIVITY_NO_GO": "proved",
+      "KL_CANONICAL_LOCALIZATION_FORCED_COLLISION": "proved",
+      "DIRECT_DECORATION_TILE_CENTRAL_OVERLAP_REFLECTION": "open",
+      "DIRECT_DECORATION_DEGREE_ONE_PSEUDO_EMBEDDING": "open",
+      "DIRECT_DECORATION_OUTER_CAP_FOOTPRINT": "open",
+      "VIRTUAL_AUGMENTED_ATOM_PORT_CERTIFICATE": "open",
+      "UNIVERSAL_PROTECTED_TOWER_CLOSURE": "open",
+      "MLC": "open"
+    }
+  }
+}

@@ -1,0 +1,141 @@
+\begin{remark}[the exact identifications, with their published verification loci]\label{rem:exact-identification-checklist}
+The forced-collision theorem and the sheet-resolution factorization are
+stated on objects that this paper \emph{identifies} with objects of
+the Kahn/KL sources.  Six identifications carry the entire
+weight of the word ``canonical''.  Three are now proved in the body
+(Lemma~\ref{lem:local-pair},
+Definition~\ref{def:shared-neighborhood},
+Lemma~\ref{lem:completion-injective}); the remaining four are listed
+here with the published locus at which each was checked and the
+outcome of that check.
+\begin{enumerate}
+\item \textbf{\(H_s/H_t\) versus Kahn's covering subgroups.}
+\emph{Status: confirmed.}
+\emph{Paper-side objects:} the based subgroups
+\(H_s=\operatorname{im}[\pi_1(D_A\sm A,z_*)\to\pi_1(\Omega_s,z_*)]\)
+and the target analogue (Definition~\ref{def:hs-ht}).
+\emph{Published locus:} Kahn~I, \S7.4.1, Theorem~7.12 and its proof,
+p.~44 --- the localization cover of \(S\sm A\) is the cover
+corresponding to the fundamental group of \(U\sm A\) for \(U\) a local
+neighborhood of \(A\); the general (possibly disconnected) case is on
+the same page; the dynamical instance is \S7.4.2, p.~45.
+\emph{Checked:} (i) Kahn specifies the cover by an \emph{unbased}
+subgroup (a conjugacy class); the based \(H_s,H_t\) are representatives
+fixed in Definition~\ref{def:shared-neighborhood}, and the collision
+certificate is invariant under change of representative because the
+winding homomorphism kills every conjugate of \(H_s\); (ii)
+independence of the choice of local neighborhood follows from the
+deformation-retraction property of local pairs (Kahn~I, \S7.4.1,
+p.~44); (iii) these subgroups are \emph{not} the explicitly described
+``loops that never cross \(\gamma_p\)'' subgroup of Kahn's
+\emph{other} (satellite-compatible) renormalization, Kahn~I, \S7.4.4,
+p.~46, which is a different construction with a different removal set.
+Note also that Kahn requires of a local neighborhood only that every
+component of its complement of \(A\) be an annulus; the Jordan choice
+made in this paper is our own specialization, justified by
+Lemma~\ref{lem:local-pair}.
+\item \textbf{Excess-component position in the canonical seed.}
+\emph{Status: confirmed.}
+\emph{Paper-side objects:} the component \(X\ne A\) of \(F^{-1}A\)
+with \(X\cap B=\varnothing\), and the removal asymmetry
+\(X\subset F^{-1}B\), \(X\cap B=\varnothing\)
+(Proposition~\ref{prop:excess}, Theorem~\ref{thm:excess-count}).
+\emph{Published locus:} nesting and properness of the seed, Kahn~I,
+\S6, p.~31 (\(U^r=f^{-r}(U^0)\), each \(f\colon U^{r+1}\to U^r\)
+quadratic-like, so \(F=f^p\) is proper of degree \(2^p\)); the little
+filled Julia sets \(K_p\), \(K_p(j)=f^j(K_p)\), \(\KK_p\), and
+primitivity as pairwise disjointness, Kahn~I, \S1.1; the canonical
+choice \(A=K_p\), \(B=\KK_p\) for \((i^p,f^p)\) with central local
+degree two, Kahn~I, \S7.4.3, p.~45; and the removal asymmetry, which
+is literally Kahn's \(T=(\BU\sm B)\cup A\) against
+\(T'=(\BU'\sm f^{-1}B)\cup A'\), Kahn~I, \S7.4.2, p.~45.
+\emph{Checked:} the central component has local degree two, so
+\(2^p-2>0\) forces an excess component for \(p>1\); the invariance
+\(F(K_p(j))=K_p(j)\) plus primitive disjointness gives
+\(X\cap B=\varnothing\); and the source-side removal
+\(X\subset F^{-1}B\) with target-side non-removal is exactly the
+\(T'/T\) mismatch.  The construction meant throughout is the one of
+\S7.4.3, not either variant of \S7.4.4, p.~46
+(Definition~\ref{def:canonical}).
+\item \textbf{Collision surviving every equalizer.}
+\emph{Status: confirmed.}
+\emph{Paper-side step:} inductive propagation of the collision pair
+through the pullback tower in equalizer coordinates
+(Theorem~\ref{thm:propagation}).
+\emph{Published locus:} Kahn~I, \S7.3.2, pp.~42--43: the equalizer
+coordinates \(\BU''=\{(x,y):\ i(x)=f(y)\}\), \(i_1(x,y)=y\),
+\(f_1(x,y)=x\); the iff-chain giving
+\(K''=i_1^{-1}(K')=f_1^{-1}(K')\); all critical points of \(f_1\) in
+\(K''\); the properness statement ``\(f_1\) is proper of degree
+\(d\)''; and the commuting tower \(i_n\circ f_{n+1}=f_n\circ i_{n+1}\)
+with its iterates \(i^n\).  That each stage is again a degree-\(d\)
+\(\psi\)-polynomial-like map is Lemma~7.11, p.~42.
+\emph{Checked:} \(f_n\) restricted to the complements of the filled
+sets is an unbranched covering (branch values in \(K^n\) by
+Definition~7.1 and the remark after it, p.~36, and
+\(f_n^{-1}(K^n)=K^{n+1}\) by Definition~7.1(4)); it is \emph{onto}
+each complementary annulus by properness of positive degree
+(Definition~7.1(3), p.~36; Lemma~7.9, p.~40; \S7.3.2, p.~42) together
+with connectedness of \(A_n\); the chosen pairs \((x_n^\pm,y_n)\)
+satisfy the equalizer membership condition \(i_n(x_n^\pm)=f_n(y_n)\);
+the leg assignment is Kahn's, and reversing it would break the
+induction; and the propagated points remain in the complementary
+annuli at every depth.  The immersion hypothesis needed for
+Lemma~7.8, p.~40 (without which, as the source's own example on p.~41
+shows, the set-theoretic equalizer need not be the pullback in the
+category of complex \(1\)-manifolds) is regenerated at each stage by
+Proposition~\ref{prop:base-change}(6) and independently by Kahn~I,
+Lemma~7.7, p.~40 and Lemma~7.9, p.~40.
+\item \textbf{Direct-decoration depths and tile transport.}
+\emph{Status: confirmed} (the transport itself remains conditional on
+strong stage alignment; see below).
+\emph{Paper-side step:} noninjectivity of the ambient annulus maps
+\(I_{m,n}\), of their universal-cover tile lifts, and of the glued
+pseudo-piece immersions at the depths \(m=\nu q+1\),
+\(n=(\nu-1)q+1\) (Theorem~\ref{thm:propagation}).
+\emph{Published locus:} KL~II, \S2.1, p.~6 (\(P=Y^{(\nu-1)q+1}\); the
+two univalent \(f^q\)-pullbacks \(Q_L,Q_R\subset P\) of depth
+\(q\nu+1\)) and Figure~2.1, p.~7; KL~II, \S3.2.1, pp.~11--12
+(pseudo-piece as path classes, and equivalently as \(Y\) with copies
+of the universal cover of \(\BU^m\sm K(f)\) glued on);
+Lemma~3.3, p.~12 (the glued copies embed, with pairwise disjoint
+images); Lemma~3.4, pp.~12--13 (the inclusion-induced arrow is an
+immersion, with component index map ``surjective but not necessarily
+injective''; the dynamical arrow is a branched covering).
+\emph{Checked:} the paper's ambient map at depths \((m,n)\) is the
+\emph{inclusion-induced} arrow of KL~II, not the dynamical arrow (which
+is an isomorphism on univalent pieces and is not contested); the depth
+arithmetic matches \S2.1 exactly; the tile objects are universal covers
+of exactly the annuli \(A_m\); the collision transported from the
+canonical seed lands in the correct glued copy, using the
+disjoint-image property of Lemma~3.3, p.~12 --- not Lemma~3.4, which
+supplies only immersions; and the realization quantifier is kept
+separate.  Two scope facts belong here: KL~II never forms a
+pseudo-piece from \(Q_L\) or \(Q_R\)
+(Remark~\ref{rem:QLQR-scope}), and the annular degree \(+1\) used in
+the transport is \emph{derived} in Lemma~\ref{lem:annular-degree} from
+Kahn~I, Theorem~7.3, p.~37, Lemma~7.4(2), p.~37 and KL~II, Lemma~3.1,
+p.~10, and is stated outright for the canonical renormalization in the
+proof of Kahn~I, Theorem~8.11, p.~51.
+\end{enumerate}
+The residual open item is not on this list: it is the
+seed-identification reading of the strong stage-alignment hypothesis,
+discussed in Remark~\ref{rem:alignment-is-seed-identification}.
+\end{remark}
+
+\begin{proof}[Source verification (documentary; not a mathematical proof)]
+Every locus above was checked against the published texts: Kahn~I in
+arXiv:math/0609045v3 (28 December 2023, 63 pp.), whose sectioning is
+that used throughout this paper, and KL~II in
+Ann.\ Sci.\ \'Ec.\ Norm.\ Sup\'er.\ (4) \textbf{41} (2008) 57--84 and
+the identically sectioned arXiv:math/0609046v2 (12 February 2007).
+The SHA-256--locked local \TeX{} archives from which the paraphrases of
+Section~\ref{sec:background} were originally prepared correspond to
+exactly those two versions; their line-number concordance is recorded
+in Appendix~\ref{app:sourcelock}.  The authoritative statements of the
+forced-collision theorem and the reflection criterion are
+Theorems~\ref{thm:forced-collision}
+and~\ref{thm:subgroup-reflection-criterion} as proved in
+Sections~\ref{sec:criteria}--\ref{sec:resolution} of this paper.  This
+checklist adds no new mathematical claim.
+\end{proof}

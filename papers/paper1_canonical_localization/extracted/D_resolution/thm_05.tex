@@ -1,0 +1,40 @@
+\begin{theorem}[Unique embedded intermediate factor]\label{thm:unique-intermediate}
+Suppose \( r_C\colon C\to X_s \) is a connected based intermediate cover and
+\begin{equation}\label{eq:candidate-factorization}
+  \widehat X_s\xrightarrow{\;q_C\;}C\xrightarrow{\;e_C\;}\widehat X_t
+\end{equation}
+satisfies, with \( q_C \) and \( e_C \) based,
+\begin{equation}\label{eq:candidate-compat}
+  r_Cq_C=p_s,\qquad p_te_C=ar_C,\qquad A=e_Cq_C,
+\end{equation}
+and \( e_C \) is injective.  Then the subgroup of \( C\to X_s \) is exactly \( K \), and there is a unique based isomorphism of covers
+\begin{equation}\label{eq:unique-iso}
+  C\cong P_K
+\end{equation}
+which identifies \eqref{eq:candidate-factorization} with the canonical factorization \( \widehat X_s\xrightarrow{q}P_K\xrightarrow{e}\widehat X_t \).
+\end{theorem}
+
+\begin{proof}
+Let
+\[
+  L=(r_C)_*\pi_1(C)\leq\pi_1(X_s).
+\]
+Existence of \( q_C \) gives \( H_s\leq L \).  Existence of \( e_C \) gives
+\[
+  a_*(L)\leq H_t,
+\]
+so \( L\leq K \).
+
+Apply the subgroup-reflection criterion (Theorem~\ref{thm:subgroup-reflection-criterion}, applied to the covers with subgroups \( L \) and \( H_t \)) to the lift \( e_C\colon C\to\widehat X_t \) of the physical embedding \( a \).  Since \( e_C \) is injective, that criterion gives
+\[
+  a_*^{-1}(H_t)=L .
+\]
+The left side is \( K \), hence \( L=K \).  The classification of connected based covers now gives the unique based isomorphism \eqref{eq:unique-iso}, and uniqueness of based lifts identifies both factor maps.
+\end{proof}
+
+\begin{remark}
+Thus \( P_K \) is the unique connected intermediate cover on which the
+remaining leg is embedded; replacing \( K/H_s \) by a coarser finite
+label set without proving the corresponding factor injective would
+destroy this optimality.
+\end{remark}

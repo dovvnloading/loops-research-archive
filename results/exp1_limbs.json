@@ -1,0 +1,308 @@
+{
+  "method": "wake-polygon (limb = M \u2229 wake, exact Sturmian ray-pair boundaries)",
+  "measurements": [
+    {
+      "p": 1,
+      "q": 2,
+      "limb_diameter": 1.244892,
+      "run": "B"
+    },
+    {
+      "p": 1,
+      "q": 3,
+      "limb_diameter": 0.482792,
+      "run": "B"
+    },
+    {
+      "p": 1,
+      "q": 4,
+      "limb_diameter": 0.231981,
+      "run": "B"
+    },
+    {
+      "p": 1,
+      "q": 5,
+      "limb_diameter": 0.13023799735476432,
+      "run": "B"
+    },
+    {
+      "p": 1,
+      "q": 6,
+      "limb_diameter": 0.07926501776061154,
+      "run": "B"
+    },
+    {
+      "p": 1,
+      "q": 7,
+      "limb_diameter": 0.05202043420525303,
+      "run": "B"
+    },
+    {
+      "p": 1,
+      "q": 8,
+      "limb_diameter": 0.03633068289383536,
+      "run": "B"
+    },
+    {
+      "p": 1,
+      "q": 9,
+      "limb_diameter": 0.025498327989832384,
+      "run": "B"
+    },
+    {
+      "p": 1,
+      "q": 10,
+      "limb_diameter": 0.01940529022780618,
+      "run": "B"
+    },
+    {
+      "p": 1,
+      "q": 11,
+      "limb_diameter": 0.01456715593198294,
+      "run": "B"
+    },
+    {
+      "p": 1,
+      "q": 12,
+      "limb_diameter": 0.011564596827757291,
+      "run": "B"
+    },
+    {
+      "p": 1,
+      "q": 13,
+      "limb_diameter": 0.009032925639483979,
+      "run": "B",
+      "excluded": "wake-chord truncation artifact: thin-wake regime beyond method validity"
+    },
+    {
+      "p": 1,
+      "q": 14,
+      "limb_diameter": 0.0073577538655833705,
+      "run": "B",
+      "excluded": "wake-chord truncation artifact: thin-wake regime beyond method validity"
+    },
+    {
+      "p": 1,
+      "q": 15,
+      "limb_diameter": 0.0059902666368054185,
+      "run": "B",
+      "excluded": "wake-chord truncation artifact: thin-wake regime beyond method validity"
+    },
+    {
+      "p": 1,
+      "q": 16,
+      "limb_diameter": 0.004977046762812563,
+      "run": "B",
+      "excluded": "wake-chord truncation artifact: thin-wake regime beyond method validity"
+    },
+    {
+      "p": 1,
+      "q": 17,
+      "limb_diameter": 0.0042013144463410555,
+      "run": "B",
+      "excluded": "wake-chord truncation artifact: thin-wake regime beyond method validity"
+    },
+    {
+      "p": 1,
+      "q": 18,
+      "limb_diameter": 0.0036489077825744413,
+      "run": "B",
+      "excluded": "wake-chord truncation artifact: thin-wake regime beyond method validity"
+    },
+    {
+      "p": 1,
+      "q": 19,
+      "limb_diameter": 0.00308272643301968,
+      "run": "B",
+      "excluded": "wake-chord truncation artifact: thin-wake regime beyond method validity"
+    },
+    {
+      "p": 1,
+      "q": 20,
+      "limb_diameter": 0.0026044557192090364,
+      "run": "B",
+      "excluded": "wake-chord truncation artifact: thin-wake regime beyond method validity"
+    },
+    {
+      "p": 2,
+      "q": 5,
+      "limb_diameter": 0.21982090495652068,
+      "run": "B"
+    },
+    {
+      "p": 2,
+      "q": 7,
+      "limb_diameter": 0.09912066549564706,
+      "run": "B"
+    },
+    {
+      "p": 3,
+      "q": 7,
+      "limb_diameter": 0.12376852873053903,
+      "run": "B"
+    },
+    {
+      "p": 3,
+      "q": 8,
+      "limb_diameter": 0.09211141762695818,
+      "run": "B"
+    },
+    {
+      "p": 2,
+      "q": 9,
+      "limb_diameter": 0.052156260246839246,
+      "run": "B"
+    },
+    {
+      "p": 4,
+      "q": 9,
+      "limb_diameter": 0.07926436553170484,
+      "run": "B"
+    },
+    {
+      "p": 3,
+      "q": 10,
+      "limb_diameter": 0.05475691382148933,
+      "run": "B"
+    },
+    {
+      "p": 2,
+      "q": 11,
+      "limb_diameter": 0.03076302500574609,
+      "run": "B"
+    },
+    {
+      "p": 3,
+      "q": 11,
+      "limb_diameter": 0.042177484926415015,
+      "run": "B"
+    },
+    {
+      "p": 5,
+      "q": 11,
+      "limb_diameter": 0.0548645786933382,
+      "run": "B"
+    },
+    {
+      "p": 5,
+      "q": 12,
+      "limb_diameter": 0.04658898804639135,
+      "run": "B"
+    },
+    {
+      "p": 2,
+      "q": 13,
+      "limb_diameter": 0.019583422568703872,
+      "run": "B"
+    },
+    {
+      "p": 5,
+      "q": 13,
+      "limb_diameter": 0.03912034752694948,
+      "run": "B"
+    },
+    {
+      "p": 3,
+      "q": 14,
+      "limb_diameter": 0.022359928276524117,
+      "run": "B"
+    },
+    {
+      "p": 4,
+      "q": 15,
+      "limb_diameter": 0.022829227266717465,
+      "run": "B"
+    },
+    {
+      "p": 7,
+      "q": 15,
+      "limb_diameter": 0.030655833652685763,
+      "run": "B"
+    },
+    {
+      "p": 5,
+      "q": 16,
+      "limb_diameter": 0.023828893027353606,
+      "run": "B"
+    },
+    {
+      "p": 3,
+      "q": 17,
+      "limb_diameter": 0.01310027809991558,
+      "run": "B"
+    },
+    {
+      "p": 7,
+      "q": 16,
+      "limb_diameter": 0.027770874227822595,
+      "run": "B"
+    },
+    {
+      "p": 5,
+      "q": 17,
+      "limb_diameter": 0.0202036869551363,
+      "run": "B"
+    },
+    {
+      "p": 4,
+      "q": 17,
+      "limb_diameter": 0.01761612641316893,
+      "run": "B"
+    },
+    {
+      "p": 6,
+      "q": 17,
+      "limb_diameter": 0.021271560799353672,
+      "run": "B"
+    },
+    {
+      "p": 7,
+      "q": 18,
+      "limb_diameter": 0.021339671747310836,
+      "run": "B"
+    },
+    {
+      "p": 5,
+      "q": 18,
+      "limb_diameter": 0.01752073610504233,
+      "run": "B"
+    },
+    {
+      "p": 8,
+      "q": 19,
+      "limb_diameter": 0.01986036133659917,
+      "run": "B"
+    },
+    {
+      "p": 9,
+      "q": 19,
+      "limb_diameter": 0.01948291739383776,
+      "run": "B"
+    }
+  ],
+  "runA_p1_coarse": {
+    "2": 1.1077644834193543,
+    "3": 0.4820038476172298,
+    "4": 0.23254302116517325,
+    "5": 0.13010384878945272,
+    "6": 0.08074843053733492,
+    "7": 0.05536269439430645,
+    "8": 0.039344826715001176,
+    "9": 0.029133365658823112,
+    "10": 0.023437004364537217,
+    "11": 0.018856698457798894,
+    "12": 0.014765397479133394,
+    "13": 0.012406548359600762,
+    "14": 0.010885780783663226,
+    "15": 0.009872591683739548
+  },
+  "fit_p1": {
+    "exponent": -2.775,
+    "prefactor": 11.434,
+    "n_points": 8,
+    "domain": "run B, p=1, q in [5,12]; run A fit: exponent -2.38, prefactor 5.70 over q in [5,15]",
+    "note": "limb diameter ~ prefactor * q^exponent; Yoccoz proves O(1/q), conjectured optimal ~1/q^2"
+  },
+  "bias_note": "Run A (coarse global grid, unclipped wake): near-mask dilation inflates thin structure. Run B (fine clipped grid): chord truncation of the slow-landing wake rays deflates high-q limbs. Truth bracketed between; both decisively steeper than the proven O(1/q). Run B validation: half-limb diameter 1.2449 vs exact 1.25 (0.4%).",
+  "provenance": "restored 2026-07-23 after a stale flood-fill background run overwrote this file; values identical to those used to build the published dossier figure."
+}

@@ -1,0 +1,92 @@
+% Concordance: manual equation tags (7.x) in this file mirror the numbering
+% of the underlying research note kl_canonical_localization_forced_collision.md,
+% not this paper's section numbering.
+\begin{lemma}[Annular degree of the canonical inclusion]
+\label{lem:annular-degree}
+Let \((i_r,f_r)\colon(\mathbf U^{r+1},K^{r+1})\to(\mathbf U^r,K^r)\) be any stage of Kahn's pullback tower over the canonical seed, and put \(A_r=\mathbf U^r\setminus K^r\).  Then
+\[
+ \deg\bigl(i_r\colon A_{r+1}\to A_r\bigr)=+1
+\]
+as a map of oriented annuli.  Consequently every composite \(I_{m,n}=i_n\circ\cdots\circ i_{m-1}\colon A_m\to A_n\) has annular degree \(+1\); and at any depths at which the seed is strongly aligned in the sense of Definition~\ref{def:strong-alignment}, so does the Kahn--Lyubich ambient arrow \(\iota_{m,n}\).
+\end{lemma}
+
+\begin{proof}
+Three statements of the published sources are used, none of them new.
+
+\emph{(i) Homeomorphism on filled sets.}  A \(\psi\)-polynomial-like map satisfies \(i^{-1}(K)=f^{-1}(K)=K'\) (Kahn~I, Definition~7.1(4), p.~36, arXiv:math/0609045v3), and \(i\colon K'\to K\) is a homeomorphism; Kahn transports this along the tower, observing at \S7.3.2, p.~42 that since \(i\colon K'\to K\) is a homeomorphism so is \(i_1\colon K''\to K'\).  Each stage of the tower is again a degree-\(d\) \(\psi\)-polynomial-like map (Kahn~I, Lemma~7.11, p.~42), so this holds at every \(r\).
+
+\emph{(ii) Embedding on an inner collar of controlled modulus.}  For a \(\psi\)-polynomial-like map one may choose \(U\supset K\) with \(U'=f^{-1}U\) such that \(i|_{U'}\) is an embedding and \(\operatorname{mod}(U\setminus i(U'))\ge\mu>0\) (Kahn~I, Theorem~7.3, p.~37), the uniformized statement being that the immersion is an embedding on a round sub-annulus \(A(1,\rho')\) adjacent to the inner end (Kahn~I, Lemma~7.4(2), p.~37).  Kahn--Lyubich import exactly this: ``\(i\) is an embedding in a neighborhood of \(K'\)'' (KL~II, Lemma~3.1, p.~10; Ann.\ Sci.\ \'ENS \textbf{41} (2008)).
+
+\emph{(iii) The conclusion is stated outright for the canonical renormalization.}  In the proof of Kahn~I, Theorem~8.11, p.~51, the canonical-renormalization inclusion is recorded as having degree one on the inner ideal boundary.
+
+Now the argument.  Fix \(r\) and apply (ii) at the stage \((i_r,f_r)\): there is an annulus \(N\subset A_{r+1}\) adjacent to the inner end of \(A_{r+1}\), i.e.\ separating \(K^{r+1}\) from the outer end, on which \(i_r\) is injective.  Let \(C\subset N\) be a Jordan curve separating \(K^{r+1}\) from the outer end of \(A_{r+1}\); since \(A_{r+1}\) is an annulus, \([C]\) generates \(\pi_1(A_{r+1})\cong\mathbb Z\), and we orient \(C\) so that \([C]\) is the positive generator.  By injectivity of \(i_r\) on \(N\), the image \(i_r(C)\) is again a Jordan curve, and it lies in \(A_r\) because \(i_r^{-1}(K^r)=K^{r+1}\).  By (i), \(i_r\) carries \(K^{r+1}\) homeomorphically onto \(K^r\), and \(i_r\) is proper toward the inner end; hence \(i_r(C)\) separates \(K^r\) from the outer end of \(A_r\), so \([i_r(C)]\) is a generator of \(\pi_1(A_r)\cong\mathbb Z\).  A holomorphic map is orientation preserving, so the generator obtained is the positive one.  Therefore \((i_r)_*\) carries the positive generator to the positive generator, which is precisely \(\deg(i_r)=+1\); this is (iii) at the seed stage, and the argument above propagates it to every \(r\).
+
+Annular degree is multiplicative under composition, so \(\deg I_{m,n}=+1\).  Finally, clause~(ii) of Definition~\ref{def:strong-alignment} requires \(\Theta_m,\Theta_n\) to preserve the positive annular generators, so under strong alignment \(\iota_{m,n}=\Theta_n\circ I_{m,n}\circ\Theta_m^{-1}\) has annular degree \(+1\) as well.
+\end{proof}
+
+\begin{theorem}[Exact propagation]\label{thm:propagation}
+Let \((i_r,f_r)\colon(\mathbf U^{r+1},K^{r+1})\to(\mathbf U^r,K^r)\), \(r\ge0\), be Kahn's pullback iteration of the canonical seed \((i_0,f_0)=(\widehat i,\widehat f)\), realized by the exact equalizers (2.1), and put \(A_r=\mathbf U^r\setminus K^r\).  Then:
+\begin{enumerate}
+\item For every \(r\ge0\) there are points \(x_r^+\ne x_r^-\in A_{r+1}\) with \(i_r(x_r^+)=i_r(x_r^-)=v_r\in A_r\); the choices made are recorded by a complete inverse-sheet word \(\omega=(\epsilon_0,\epsilon_1,\dots)\) appended to the certificate (6.3).
+\item For all \(m>n\ge0\) the composed inclusion
+\[
+ I_{m,n}=i_n\circ i_{n+1}\circ\cdots\circ i_{m-1}\colon A_m\to A_n   \tag{7.4}
+\]
+is noninjective:
+\[
+ I_{m,n}(u)=I_{m,n}(v),\qquad u\ne v.                 \tag{7.5}
+\]
+\item If the seed carries KL direct-decoration data with decoration parameters \((q,\nu)\), then the two integers \(m=\nu q+1\), \(n=(\nu-1)q+1\) at which item~(2) is read off are the Kahn--Lyubich depths of \(Q_L,Q_R\) and of \(P\).
+\item If the seed is strongly aligned at those depths in the sense of Definition~\ref{def:strong-alignment}, the corresponding KL ambient \(\psi\)-ql arrow, its compatible tile lifts, and its glued pseudo-piece immersion are noninjective.
+\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+\emph{Base case.}  The collision (6.1)--(6.2) of Theorem \ref{thm:forced-collision} lives in the complementary annulus of the localized seed: it gives
+\[
+ x_0^+\ne x_0^-\in A_1,\qquad i_0(x_0^+)=i_0(x_0^-)=v_0\in A_0.  \tag{7.1}
+\]
+(The two distinct source-cover points map to one target-cover point, and \(v_0\) lies off the filled continuum because both source points do.)
+
+\emph{Induction step.}  Suppose
+\[
+ x_r^+\ne x_r^-\in A_{r+1},\qquad i_r(x_r^+)=i_r(x_r^-)=v_r\in A_r.  \tag{7.2}
+\]
+We claim the restriction \(f_r\colon A_{r+1}\to A_r\) is an unbranched surjective covering.  It is unbranched over \(A_r\) because \(K^{r+1}=f_r^{-1}(K^r)\) and, connectivity of the filled set being equivalent to all branch values of \(f_r\) lying in \(K^r\) (Kahn~I, Definition~7.1 and the remark following it, p.~36), no branch value lies in \(A_r\).  It is \emph{surjective} for a different and stronger reason: \(f_r\) is a proper branched covering of degree \(d\) onto the disk \(\mathbf U^r\) (Kahn~I, Definition~7.1(3), p.~36), a property inherited at every stage of the tower --- the leg \(\pi_g\) of the pullback is proper of degree \(d\) whenever the other leg is an immersion (Kahn~I, Lemma~7.9, p.~40), Kahn records at \S7.3.2, p.~42 that ``\(f_1\) is proper of degree \(d\)'', and Lemma~7.11, p.~42 states that the pullback is again a degree-\(d\) \(\psi\)-polynomial-like map.  A proper map of positive degree onto \(\mathbf U^r\) is onto, and \(f_r^{-1}(K^r)=K^{r+1}\) (Kahn~I, Definition~7.1(4), p.~36) forces \(f_r(A_{r+1})\supset A_r\); as \(A_r\) is connected (it is the complementary annulus of a connected full set in a disk), \(f_r\colon A_{r+1}\to A_r\) is an unbranched covering onto \(A_r\).
+
+Choose \(y_r\in A_{r+1}\) with \(f_r(y_r)=v_r\).  In the exact equalizer (2.1) put
+\[
+ x_{r+1}^{\pm}=(x_r^{\pm},y_r).
+\]
+These are genuine points of \(\mathbf U^{r+2}\) because \(i_r(x_r^{\pm})=v_r=f_r(y_r)\); they are distinct because their first coordinates differ; and
+\[
+ x_{r+1}^+\ne x_{r+1}^-,\qquad i_{r+1}(x_{r+1}^{\pm})=y_r=:v_{r+1}.  \tag{7.3}
+\]
+Moreover \(x_{r+1}^{\pm}\in A_{r+2}\), since \(K^{r+2}=i_{r+1}^{-1}(K^{r+1})\) and \(i_{r+1}(x_{r+1}^{\pm})=y_r\notin K^{r+1}\).  This proves item (1); the recorded choices of the \(y_r\) constitute the complete inverse-sheet word \(\omega\), so no unlabeled existence step is used.
+
+\emph{Item (2).}  At \(r=m-1\), (7.3) provides two distinct points \(u=x_{m-1}^+\), \(v=x_{m-1}^-\) of \(A_m\) with the same \(i_{m-1}\)-image.  Applying the remaining factors \(i_n\circ\cdots\circ i_{m-2}\) to that common image yields (7.5).
+
+\emph{Item (3).}  Item~(2) already gives noninjectivity for \emph{all} \(m>n\ge0\), so item~(3) does no more than fix two integers.  For KL's direct-decoration pair \(P=Y^{(\nu-1)q+1}\), \(Q_L,Q_R\subset P\) of depth \(\nu q+1\) (KL~II, \S2.1, p.~6, and Figure~2.1, p.~7), those integers are \(m=\nu q+1\) and \(n=(\nu-1)q+1\).  What is being asserted is exactly this: \emph{the integers at which (7.5) is read off are the Kahn--Lyubich depths}.  The identification of a tower stage index over the period-\(p\) canonical seed with a Yoccoz puzzle depth for the pre-renormalization map is not asserted here; it is part of the strong stage-alignment hypothesis and is used only in item~(4).  See also Remark~\ref{rem:QLQR-scope} on what KL~II does and does not build at those depths.
+
+\emph{Item (4).}  Under the strong-alignment hypothesis of item (4), the identifications \(\Theta_m,\Theta_n\) of Definition~\ref{def:strong-alignment} identify \(I_{m,n}\) with the KL ambient \(\psi\)-ql arrow, whose annular degree is \(+1\) by Lemma~\ref{lem:annular-degree} --- derived, not assumed.  Let \(L\) be a compatible universal-cover tile lift, with deck generators \(T_s,T_t\) and degree-one equivariance \(L\circ T_s=T_t\circ L\), and let \(\widetilde u,\widetilde v\) be lifts of \(u,v\) in the source tile.  Since \(L(\widetilde u)\) and \(L(\widetilde v)\) project to the equal points \(I_{m,n}(u)=I_{m,n}(v)\), there is a unique integer \(k\) with \(L(\widetilde v)=T_t^kL(\widetilde u)\).  Equivariance gives
+\[
+ L\bigl(T_s^{-k}\widetilde v\bigr)=T_t^{-k}L(\widetilde v)=L(\widetilde u),  \tag{7.6}
+\]
+and \(T_s^{-k}\widetilde v\ne\widetilde u\) because these two points project to \(v\ne u\); so (7.6) is a collision of \(L\) at two distinct source points.  KL's construction embeds each source tile in its source pseudo-piece --- the glued universal-cover copies \(\widehat A_i\) are embedded, with pairwise disjoint images, by the proof of KL~II, Lemma~3.3, p.~12 --- so the identification (7.6) survives the source gluing: it is a same-tile collision of the full inclusion-induced pseudo-piece immersion, which is therefore noninjective.
+\end{proof}
+
+\begin{remark}[Consumption of the KL-facing items]
+\label{rem:propagation-alignment}
+Items (1)--(2) are unconditional at the canonical seed, and item (3)
+requires only the KL direct-decoration data, which fix the depths
+\(m,n\).  Item (4) is the Kahn--Lyubich-facing part of the theorem,
+and it carries the strong stage-alignment hypothesis
+(Definition~\ref{def:strong-alignment}) explicitly in its statement:
+the alignment data it invokes are exactly the identifications
+\(\Theta_m,\Theta_n\) of that definition, and no statement of this
+paper uses item (4) without them.  Under the intended reading of
+Remark~\ref{rem:alignment-is-seed-identification} --- KL's puzzle
+machinery run over the canonical seed itself --- those identifications
+are the identity and item (4) is unconditional; it is only the
+distinct-seed reading that leaves it conditional.
+\end{remark}

@@ -1,0 +1,87 @@
+{
+  "scope": "Source locks, proof-marker and rejected-overclaim audit, finite annulus/base-change/tag diagnostics, ledger routing, and global status checks.  Diagnostics do not prove analytic claims.",
+  "sources": {
+    ".tmp_kl06_source\\psiql2.tex": "E4EFCCEC65D8C9C2BDFE2AF8203B3D4D63ECF992B40D302F56FBA78259547228",
+    ".tmp_kl08_source\\psiql.tex": "6CC9726461473812A5FBA93377F2DC0B088DB6CAC4B9DE90C7B2AE625DFB49AF",
+    ".tmp_kl08_source\\appendix.tex": "05A13ED2D46CB9E2D188E6D96F4A2B639626F99657723118B4DE3479CD980916",
+    ".tmp_kl08_source\\moduli.tex": "CBDB9EF7D6AC94C33FDB0AB7167E19C39EB23D27373C266A296CF6031E0CAF7E"
+  },
+  "proof_document_sha256": "74864C0063FAFD61B5332CDCC63BB9B37AFF0090C9961FBD40CDDE1085276E11",
+  "resolved_proof_sha256": "FAF6DA3BAD9644F3EB25359EC21A65D9B061EEB4CD80D83F934BB21CEFA43BDC",
+  "ledger_sha256": "E9CC988A8F18203788F02E19992E8CC07DF886C20BB4882DC7A97AE0973A9061",
+  "diagnostics": {
+    "annulus_width": {
+      "rows": [
+        {
+          "epsilon": 1.0,
+          "target_width": 6.283185307179586,
+          "source_collar_lower_bound": 12.566370614359172,
+          "unscaled_gap_lower_bound": 6.283185307179586
+        },
+        {
+          "epsilon": 0.5,
+          "target_width": 12.566370614359172,
+          "source_collar_lower_bound": 25.132741228718345,
+          "unscaled_gap_lower_bound": 12.566370614359172
+        },
+        {
+          "epsilon": 0.1,
+          "target_width": 62.83185307179586,
+          "source_collar_lower_bound": 125.66370614359172,
+          "unscaled_gap_lower_bound": 62.83185307179586
+        },
+        {
+          "epsilon": 0.01,
+          "target_width": 628.3185307179587,
+          "source_collar_lower_bound": 1256.6370614359173,
+          "unscaled_gap_lower_bound": 628.3185307179587
+        }
+      ],
+      "scope": "Unscaled complete boundary-crossing widths only; this does not test a calibrated or source-specific response."
+    },
+    "base_change_fiber": {
+      "old_fiber_size": 17,
+      "pulled_fiber_sizes": {
+        "y0": 17,
+        "y1": 17,
+        "y2": 17
+      },
+      "scope": "Finite diagnostic for the exact set-theoretic fiber formula."
+    },
+    "tagged_labels": {
+      "target": "j0",
+      "tagged_components": [
+        [
+          "i0",
+          "c0"
+        ],
+        [
+          "i0",
+          "c1"
+        ],
+        [
+          "i1",
+          "c0"
+        ]
+      ],
+      "untagged_collision": "c0 occurs for both i0 and i1"
+    }
+  },
+  "ledger": {
+    "total": 330,
+    "counts": {
+      "imported": 23,
+      "proved": 235,
+      "open": 72
+    },
+    "theorem": "CANONICAL_KL_RESTRICTED_INTERFACE_CLASSIFICATION",
+    "global_statuses": {
+      "VIRTUAL_WAVE_MARKED_CORRESPONDENCE": "open",
+      "VIRTUAL_WAVE_HORIZON_CERTIFICATE": "open",
+      "VIRTUAL_AUGMENTED_ATOM_PORT_CERTIFICATE": "open",
+      "UNIVERSAL_PROTECTED_TOWER_CLOSURE": "open",
+      "MLC": "open"
+    }
+  },
+  "result": "PASS"
+}

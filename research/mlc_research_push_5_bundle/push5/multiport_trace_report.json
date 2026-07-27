@@ -1,0 +1,115 @@
+{
+  "seed": 20260725,
+  "random_trials": 250,
+  "attachment_arc_common_refinement": {
+    "circle_coordinate": "[0,1) with endpoints identified",
+    "inherited_attachment_arc": [
+      0.82,
+      0.12
+    ],
+    "next_attachment_arc": [
+      0.05,
+      0.34
+    ],
+    "endpoint_atoms": [
+      0.0,
+      0.05,
+      0.12,
+      0.34,
+      0.82,
+      1.0
+    ],
+    "open_atom_classes": {
+      "common_active_glue": [
+        [
+          0.34,
+          0.82
+        ]
+      ],
+      "outgoing_only_side_port": [
+        [
+          0.12,
+          0.34
+        ]
+      ],
+      "incoming_only_side_port": [
+        [
+          0.0,
+          0.05
+        ],
+        [
+          0.82,
+          1.0
+        ]
+      ],
+      "double_inactive_attachment": [
+        [
+          0.05,
+          0.12
+        ]
+      ]
+    }
+  },
+  "physical_port_counts": {
+    "parent_trace_nodes": 7,
+    "overlap_nodes": 4,
+    "outer_only_side_nodes": 1,
+    "inner_only_side_nodes": 1,
+    "additional_side_nodes": 4,
+    "terminal_trace_nodes": 7
+  },
+  "exact_partial_gluing": {
+    "base_operator_error": 6.307417348022643e-16,
+    "worst_random_operator_error": 5.526025263664992e-15,
+    "median_random_operator_error": 6.771748493954407e-16
+  },
+  "last_use_elimination_error": 6.798978348586739e-16,
+  "tail_lengths": [
+    1,
+    2,
+    4,
+    8,
+    16,
+    32,
+    64
+  ],
+  "operator_distance_to_length_128": {
+    "1": 1.0589004832617688,
+    "2": 0.7592226411596554,
+    "4": 0.5005873120853097,
+    "8": 0.2987419172814782,
+    "16": 0.15876667691271512,
+    "32": 0.07313898343028091,
+    "64": 0.0253281604118968
+  },
+  "constant_channel_effective_resistance": {
+    "1": 1.5713095598905333,
+    "2": 1.714261789985048,
+    "4": 2.000025869141788,
+    "8": 2.571463916652911,
+    "16": 3.7143213421363854,
+    "32": 6.000035628092793,
+    "64": 10.57146419952177,
+    "128": 19.71432134237791
+  },
+  "mean_zero_cross_block_norm": {
+    "1": 0.004690112171907572,
+    "2": 0.0028760366412457555,
+    "4": 0.0011558058372843562,
+    "8": 0.00019594653823754447,
+    "16": 5.708826551373798e-06,
+    "32": 4.869934023776181e-09,
+    "64": 3.5600706537588214e-15,
+    "128": 4.561746528428047e-19
+  },
+  "minimum_resistance_increment_over_doubling": 0.14295223009451474,
+  "maximum_mean_zero_cross_ratio_over_doubling": 0.6132127624734416,
+  "interpretation": [
+    "Partial footprint gluing agrees with direct graph union to numerical precision.",
+    "One-sided footprint differences and additional side terminals remain in the response state.",
+    "Eliminating a dead side port before or after later composition agrees to numerical precision.",
+    "The fixed multi-port prefix response converges as accumulated tail resistance grows.",
+    "The constant-channel effective resistance grows, while remote mean-zero coupling decays."
+  ],
+  "warning": "Finite resistor networks are a falsification audit only; the continuum proof uses conformal trace forms, extremal-length series, and Hilbert-space Schur composition."
+}

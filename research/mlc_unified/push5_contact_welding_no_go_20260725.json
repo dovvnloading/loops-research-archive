@@ -1,0 +1,82 @@
+{
+  "certificate": "PUSH5_PHYSICAL_CONTACT_AND_WELDING_NO_GO",
+  "circle_open_atoms": {
+    "genuine_endpoint_count": 4,
+    "open_atom_count": 4,
+    "coordinate_seam_is_extra_endpoint": false,
+    "classes": [
+      "common_active",
+      "double_inactive",
+      "incoming_only",
+      "outgoing_only"
+    ],
+    "atoms": [
+      {
+        "left": "1/20",
+        "right": "3/25",
+        "wraps_seam": "false",
+        "class": "double_inactive"
+      },
+      {
+        "left": "3/25",
+        "right": "17/50",
+        "wraps_seam": "false",
+        "class": "outgoing_only"
+      },
+      {
+        "left": "17/50",
+        "right": "41/50",
+        "wraps_seam": "false",
+        "class": "common_active"
+      },
+      {
+        "left": "41/50",
+        "right": "1/20",
+        "wraps_seam": "true",
+        "class": "incoming_only"
+      }
+    ],
+    "passes": true
+  },
+  "nonconsecutive_bypass": {
+    "contact_arc": "J={9}x(3,8)",
+    "shell_approaches_J": {
+      "C1": true,
+      "C2": false,
+      "C3": true
+    },
+    "nonconsecutive_contact": true,
+    "intermediate_shell_bypass": true,
+    "passes": true
+  },
+  "uncontrolled_welding_conjugacies": {
+    "standard_operator_diagonal": [
+      1,
+      2,
+      1,
+      2,
+      1,
+      2,
+      1,
+      2,
+      1,
+      2,
+      1,
+      2
+    ],
+    "conjugate_count": 6,
+    "minimum_distinct_operator_norm_distance": 1,
+    "norm_precompact_uniformly_separated_family_pattern": true,
+    "passes": true
+  },
+  "pseudoinverse_cutoff": {
+    "weak_mode": "1/10000000000000",
+    "hard_cutoff": "1/1000000000000",
+    "exact_schur_correction": "1/10000000000000",
+    "cutoff_schur_correction": "0",
+    "relative_correction_error": "1",
+    "passes": true
+  },
+  "scope": "exact finite/topological falsification certificates only; no numerical or combinatorial check proves an analytic MLC obligation",
+  "all_checks": true
+}

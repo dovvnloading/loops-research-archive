@@ -1,0 +1,45 @@
+\begin{corollary}[The canonical sheet defect is infinite]\label{cor:infinite-defect}
+At every ordinary primitive canonical seed,
+\begin{equation}\label{eq:infinite-index}
+  [K:H_s]=\infty .
+\end{equation}
+Consequently \( q \) is an infinite-sheeted cover, and for every \( z\in P_K \),
+\[
+  A^{-1}(e(z))=q^{-1}(z)
+\]
+is infinite.  Equivalently: every non-singleton fiber of the completed localized inclusion (that is, every fiber over the embedded resolved complement component \( e(P_K) \)) is infinite; fibers over the filled part are singletons and are not at issue.  In particular, no finite enumeration of the raw localization sheets can be complete.
+\end{corollary}
+
+\begin{proof}
+Use the excess component \( X^{\mathrm{exc}} \) (the component denoted \( X \) in Theorem~\ref{thm:forced-collision}, written \( X^{\mathrm{exc}} \) here to avoid the abstract symbols \( X_s,X_t \) of this section), the point \( x\in X^{\mathrm{exc}} \), and the peripheral class \( [\gamma] \) supplied by Theorem~\ref{thm:forced-collision}.  Winding about \( x \) defines a homomorphism
+\[
+  w\colon\pi_1(\Omega_s,x_s)\longrightarrow\mathbb Z
+\]
+(here \( x_s=z_* \), the localization basepoint, under the instantiation of this section's scope note).
+Every source-local loop is supported in the chosen neighborhood of the central component, which misses \( x \); hence
+\[
+  w(H_s)=0 .
+\]
+The peripheral class satisfies
+\[
+  w([\gamma])=1,
+  \qquad
+  [\gamma]\in K .
+\]
+Because \( K \) is a subgroup, \( [\gamma]^n\in K \) for every \( n\in\mathbb Z \).  If two cosets were equal,
+\[
+  [\gamma]^mH_s=[\gamma]^nH_s,
+\]
+then \( [\gamma]^{m-n}\in H_s \).  Applying \( w \) would give \( m-n=0 \).  Thus the cosets \( [\gamma]^nH_s \), \( n\in\mathbb Z \), are pairwise distinct, proving \eqref{eq:infinite-index}.
+
+Theorem~\ref{thm:sheet-resolution} identifies the fiber cardinality of \( q \) with this index and identifies the \( A \)-fibers with the \( q \)-fibers, which gives the remaining assertions.
+\end{proof}
+
+% Concordance: the manual tag (9.1) below mirrors the numbering of the underlying
+% research note kl_canonical_localization_forced_collision.md.
+\begin{remark}\label{rem:coset-set}
+Here \(K/H_s=a_*^{-1}(H_t)/H_s\) is a pointed set of left cosets; it is not asserted to be a quotient group unless normality of \(H_s\) is separately proved.  Any carrier (e.g.\ a ribbon tree) that identifies these cosets to a point hides the analytic obstruction and is not proof-faithful.  The minimal replacement state recorded by the underlying research notes is
+\[
+ \mathfrak S_{\mathrm{loc}}=\bigl(\operatorname{Comp}(F^{-1}B),\ \{\tau(X)\},\ H_s,H_t,\ H_s\backslash\pi_1(\Omega_s),\ a_*^{-1}(H_t)/H_s\bigr).  \tag{9.1}
+\]
+\end{remark}

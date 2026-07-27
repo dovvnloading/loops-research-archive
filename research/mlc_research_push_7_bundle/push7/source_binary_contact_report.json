@@ -1,0 +1,3893 @@
+{
+  "alphabet": [
+    "L",
+    "R"
+  ],
+  "contact_states": {
+    "L": [
+      "r_LLL",
+      "r_LRL",
+      "r_RLL",
+      "r_RRL"
+    ],
+    "LL": [
+      "r_LLL",
+      "r_RLL"
+    ],
+    "LLL": [
+      "r_LLL"
+    ],
+    "LLLL": [
+      "r_LLL"
+    ],
+    "LLLLL": [
+      "r_LLL"
+    ],
+    "LLLLLL": [
+      "r_LLL"
+    ],
+    "LLLLLLL": [
+      "r_LLL"
+    ],
+    "LLLLLLLL": [
+      "r_LLL"
+    ],
+    "LLLLLLLR": [],
+    "LLLLLLR": [],
+    "LLLLLLRL": [],
+    "LLLLLLRR": [],
+    "LLLLLR": [],
+    "LLLLLRL": [],
+    "LLLLLRLL": [],
+    "LLLLLRLR": [],
+    "LLLLLRR": [],
+    "LLLLLRRL": [],
+    "LLLLLRRR": [],
+    "LLLLR": [],
+    "LLLLRL": [],
+    "LLLLRLL": [],
+    "LLLLRLLL": [],
+    "LLLLRLLR": [],
+    "LLLLRLR": [],
+    "LLLLRLRL": [],
+    "LLLLRLRR": [],
+    "LLLLRR": [],
+    "LLLLRRL": [],
+    "LLLLRRLL": [],
+    "LLLLRRLR": [],
+    "LLLLRRR": [],
+    "LLLLRRRL": [],
+    "LLLLRRRR": [],
+    "LLLR": [],
+    "LLLRL": [],
+    "LLLRLL": [],
+    "LLLRLLL": [],
+    "LLLRLLLL": [],
+    "LLLRLLLR": [],
+    "LLLRLLR": [],
+    "LLLRLLRL": [],
+    "LLLRLLRR": [],
+    "LLLRLR": [],
+    "LLLRLRL": [],
+    "LLLRLRLL": [],
+    "LLLRLRLR": [],
+    "LLLRLRR": [],
+    "LLLRLRRL": [],
+    "LLLRLRRR": [],
+    "LLLRR": [],
+    "LLLRRL": [],
+    "LLLRRLL": [],
+    "LLLRRLLL": [],
+    "LLLRRLLR": [],
+    "LLLRRLR": [],
+    "LLLRRLRL": [],
+    "LLLRRLRR": [],
+    "LLLRRR": [],
+    "LLLRRRL": [],
+    "LLLRRRLL": [],
+    "LLLRRRLR": [],
+    "LLLRRRR": [],
+    "LLLRRRRL": [],
+    "LLLRRRRR": [],
+    "LLR": [
+      "r_LLL"
+    ],
+    "LLRL": [
+      "r_LLL"
+    ],
+    "LLRLL": [
+      "r_LLL"
+    ],
+    "LLRLLL": [
+      "r_LLL"
+    ],
+    "LLRLLLL": [
+      "r_LLL"
+    ],
+    "LLRLLLLL": [
+      "r_LLL"
+    ],
+    "LLRLLLLR": [],
+    "LLRLLLR": [],
+    "LLRLLLRL": [],
+    "LLRLLLRR": [],
+    "LLRLLR": [],
+    "LLRLLRL": [],
+    "LLRLLRLL": [],
+    "LLRLLRLR": [],
+    "LLRLLRR": [],
+    "LLRLLRRL": [],
+    "LLRLLRRR": [],
+    "LLRLR": [],
+    "LLRLRL": [],
+    "LLRLRLL": [],
+    "LLRLRLLL": [],
+    "LLRLRLLR": [],
+    "LLRLRLR": [],
+    "LLRLRLRL": [],
+    "LLRLRLRR": [],
+    "LLRLRR": [],
+    "LLRLRRL": [],
+    "LLRLRRLL": [],
+    "LLRLRRLR": [],
+    "LLRLRRR": [],
+    "LLRLRRRL": [],
+    "LLRLRRRR": [],
+    "LLRR": [],
+    "LLRRL": [],
+    "LLRRLL": [],
+    "LLRRLLL": [],
+    "LLRRLLLL": [],
+    "LLRRLLLR": [],
+    "LLRRLLR": [],
+    "LLRRLLRL": [],
+    "LLRRLLRR": [],
+    "LLRRLR": [],
+    "LLRRLRL": [],
+    "LLRRLRLL": [],
+    "LLRRLRLR": [],
+    "LLRRLRR": [],
+    "LLRRLRRL": [],
+    "LLRRLRRR": [],
+    "LLRRR": [],
+    "LLRRRL": [],
+    "LLRRRLL": [],
+    "LLRRRLLL": [],
+    "LLRRRLLR": [],
+    "LLRRRLR": [],
+    "LLRRRLRL": [],
+    "LLRRRLRR": [],
+    "LLRRRR": [],
+    "LLRRRRL": [],
+    "LLRRRRLL": [],
+    "LLRRRRLR": [],
+    "LLRRRRR": [],
+    "LLRRRRRL": [],
+    "LLRRRRRR": [],
+    "LR": [
+      "r_LLL",
+      "r_RLL"
+    ],
+    "LRL": [
+      "r_LLL"
+    ],
+    "LRLL": [
+      "r_LLL"
+    ],
+    "LRLLL": [
+      "r_LLL"
+    ],
+    "LRLLLL": [
+      "r_LLL"
+    ],
+    "LRLLLLL": [
+      "r_LLL"
+    ],
+    "LRLLLLLL": [
+      "r_LLL"
+    ],
+    "LRLLLLLR": [],
+    "LRLLLLR": [],
+    "LRLLLLRL": [],
+    "LRLLLLRR": [],
+    "LRLLLR": [],
+    "LRLLLRL": [],
+    "LRLLLRLL": [],
+    "LRLLLRLR": [],
+    "LRLLLRR": [],
+    "LRLLLRRL": [],
+    "LRLLLRRR": [],
+    "LRLLR": [],
+    "LRLLRL": [],
+    "LRLLRLL": [],
+    "LRLLRLLL": [],
+    "LRLLRLLR": [],
+    "LRLLRLR": [],
+    "LRLLRLRL": [],
+    "LRLLRLRR": [],
+    "LRLLRR": [],
+    "LRLLRRL": [],
+    "LRLLRRLL": [],
+    "LRLLRRLR": [],
+    "LRLLRRR": [],
+    "LRLLRRRL": [],
+    "LRLLRRRR": [],
+    "LRLR": [],
+    "LRLRL": [],
+    "LRLRLL": [],
+    "LRLRLLL": [],
+    "LRLRLLLL": [],
+    "LRLRLLLR": [],
+    "LRLRLLR": [],
+    "LRLRLLRL": [],
+    "LRLRLLRR": [],
+    "LRLRLR": [],
+    "LRLRLRL": [],
+    "LRLRLRLL": [],
+    "LRLRLRLR": [],
+    "LRLRLRR": [],
+    "LRLRLRRL": [],
+    "LRLRLRRR": [],
+    "LRLRR": [],
+    "LRLRRL": [],
+    "LRLRRLL": [],
+    "LRLRRLLL": [],
+    "LRLRRLLR": [],
+    "LRLRRLR": [],
+    "LRLRRLRL": [],
+    "LRLRRLRR": [],
+    "LRLRRR": [],
+    "LRLRRRL": [],
+    "LRLRRRLL": [],
+    "LRLRRRLR": [],
+    "LRLRRRR": [],
+    "LRLRRRRL": [],
+    "LRLRRRRR": [],
+    "LRR": [
+      "r_LLL"
+    ],
+    "LRRL": [
+      "r_LLL"
+    ],
+    "LRRLL": [
+      "r_LLL"
+    ],
+    "LRRLLL": [
+      "r_LLL"
+    ],
+    "LRRLLLL": [
+      "r_LLL"
+    ],
+    "LRRLLLLL": [
+      "r_LLL"
+    ],
+    "LRRLLLLR": [],
+    "LRRLLLR": [],
+    "LRRLLLRL": [],
+    "LRRLLLRR": [],
+    "LRRLLR": [],
+    "LRRLLRL": [],
+    "LRRLLRLL": [],
+    "LRRLLRLR": [],
+    "LRRLLRR": [],
+    "LRRLLRRL": [],
+    "LRRLLRRR": [],
+    "LRRLR": [],
+    "LRRLRL": [],
+    "LRRLRLL": [],
+    "LRRLRLLL": [],
+    "LRRLRLLR": [],
+    "LRRLRLR": [],
+    "LRRLRLRL": [],
+    "LRRLRLRR": [],
+    "LRRLRR": [],
+    "LRRLRRL": [],
+    "LRRLRRLL": [],
+    "LRRLRRLR": [],
+    "LRRLRRR": [],
+    "LRRLRRRL": [],
+    "LRRLRRRR": [],
+    "LRRR": [],
+    "LRRRL": [],
+    "LRRRLL": [],
+    "LRRRLLL": [],
+    "LRRRLLLL": [],
+    "LRRRLLLR": [],
+    "LRRRLLR": [],
+    "LRRRLLRL": [],
+    "LRRRLLRR": [],
+    "LRRRLR": [],
+    "LRRRLRL": [],
+    "LRRRLRLL": [],
+    "LRRRLRLR": [],
+    "LRRRLRR": [],
+    "LRRRLRRL": [],
+    "LRRRLRRR": [],
+    "LRRRR": [],
+    "LRRRRL": [],
+    "LRRRRLL": [],
+    "LRRRRLLL": [],
+    "LRRRRLLR": [],
+    "LRRRRLR": [],
+    "LRRRRLRL": [],
+    "LRRRRLRR": [],
+    "LRRRRR": [],
+    "LRRRRRL": [],
+    "LRRRRRLL": [],
+    "LRRRRRLR": [],
+    "LRRRRRR": [],
+    "LRRRRRRL": [],
+    "LRRRRRRR": [],
+    "R": [
+      "r_LLL",
+      "r_LRL",
+      "r_RLL",
+      "r_RRL"
+    ],
+    "RL": [
+      "r_LLL",
+      "r_RLL"
+    ],
+    "RLL": [
+      "r_LLL"
+    ],
+    "RLLL": [
+      "r_LLL"
+    ],
+    "RLLLL": [
+      "r_LLL"
+    ],
+    "RLLLLL": [
+      "r_LLL"
+    ],
+    "RLLLLLL": [
+      "r_LLL"
+    ],
+    "RLLLLLLL": [
+      "r_LLL"
+    ],
+    "RLLLLLLR": [],
+    "RLLLLLR": [],
+    "RLLLLLRL": [],
+    "RLLLLLRR": [],
+    "RLLLLR": [],
+    "RLLLLRL": [],
+    "RLLLLRLL": [],
+    "RLLLLRLR": [],
+    "RLLLLRR": [],
+    "RLLLLRRL": [],
+    "RLLLLRRR": [],
+    "RLLLR": [],
+    "RLLLRL": [],
+    "RLLLRLL": [],
+    "RLLLRLLL": [],
+    "RLLLRLLR": [],
+    "RLLLRLR": [],
+    "RLLLRLRL": [],
+    "RLLLRLRR": [],
+    "RLLLRR": [],
+    "RLLLRRL": [],
+    "RLLLRRLL": [],
+    "RLLLRRLR": [],
+    "RLLLRRR": [],
+    "RLLLRRRL": [],
+    "RLLLRRRR": [],
+    "RLLR": [],
+    "RLLRL": [],
+    "RLLRLL": [],
+    "RLLRLLL": [],
+    "RLLRLLLL": [],
+    "RLLRLLLR": [],
+    "RLLRLLR": [],
+    "RLLRLLRL": [],
+    "RLLRLLRR": [],
+    "RLLRLR": [],
+    "RLLRLRL": [],
+    "RLLRLRLL": [],
+    "RLLRLRLR": [],
+    "RLLRLRR": [],
+    "RLLRLRRL": [],
+    "RLLRLRRR": [],
+    "RLLRR": [],
+    "RLLRRL": [],
+    "RLLRRLL": [],
+    "RLLRRLLL": [],
+    "RLLRRLLR": [],
+    "RLLRRLR": [],
+    "RLLRRLRL": [],
+    "RLLRRLRR": [],
+    "RLLRRR": [],
+    "RLLRRRL": [],
+    "RLLRRRLL": [],
+    "RLLRRRLR": [],
+    "RLLRRRR": [],
+    "RLLRRRRL": [],
+    "RLLRRRRR": [],
+    "RLR": [
+      "r_LLL"
+    ],
+    "RLRL": [
+      "r_LLL"
+    ],
+    "RLRLL": [
+      "r_LLL"
+    ],
+    "RLRLLL": [
+      "r_LLL"
+    ],
+    "RLRLLLL": [
+      "r_LLL"
+    ],
+    "RLRLLLLL": [
+      "r_LLL"
+    ],
+    "RLRLLLLR": [],
+    "RLRLLLR": [],
+    "RLRLLLRL": [],
+    "RLRLLLRR": [],
+    "RLRLLR": [],
+    "RLRLLRL": [],
+    "RLRLLRLL": [],
+    "RLRLLRLR": [],
+    "RLRLLRR": [],
+    "RLRLLRRL": [],
+    "RLRLLRRR": [],
+    "RLRLR": [],
+    "RLRLRL": [],
+    "RLRLRLL": [],
+    "RLRLRLLL": [],
+    "RLRLRLLR": [],
+    "RLRLRLR": [],
+    "RLRLRLRL": [],
+    "RLRLRLRR": [],
+    "RLRLRR": [],
+    "RLRLRRL": [],
+    "RLRLRRLL": [],
+    "RLRLRRLR": [],
+    "RLRLRRR": [],
+    "RLRLRRRL": [],
+    "RLRLRRRR": [],
+    "RLRR": [],
+    "RLRRL": [],
+    "RLRRLL": [],
+    "RLRRLLL": [],
+    "RLRRLLLL": [],
+    "RLRRLLLR": [],
+    "RLRRLLR": [],
+    "RLRRLLRL": [],
+    "RLRRLLRR": [],
+    "RLRRLR": [],
+    "RLRRLRL": [],
+    "RLRRLRLL": [],
+    "RLRRLRLR": [],
+    "RLRRLRR": [],
+    "RLRRLRRL": [],
+    "RLRRLRRR": [],
+    "RLRRR": [],
+    "RLRRRL": [],
+    "RLRRRLL": [],
+    "RLRRRLLL": [],
+    "RLRRRLLR": [],
+    "RLRRRLR": [],
+    "RLRRRLRL": [],
+    "RLRRRLRR": [],
+    "RLRRRR": [],
+    "RLRRRRL": [],
+    "RLRRRRLL": [],
+    "RLRRRRLR": [],
+    "RLRRRRR": [],
+    "RLRRRRRL": [],
+    "RLRRRRRR": [],
+    "RR": [
+      "r_LLL",
+      "r_RLL"
+    ],
+    "RRL": [
+      "r_LLL"
+    ],
+    "RRLL": [
+      "r_LLL"
+    ],
+    "RRLLL": [
+      "r_LLL"
+    ],
+    "RRLLLL": [
+      "r_LLL"
+    ],
+    "RRLLLLL": [
+      "r_LLL"
+    ],
+    "RRLLLLLL": [
+      "r_LLL"
+    ],
+    "RRLLLLLR": [],
+    "RRLLLLR": [],
+    "RRLLLLRL": [],
+    "RRLLLLRR": [],
+    "RRLLLR": [],
+    "RRLLLRL": [],
+    "RRLLLRLL": [],
+    "RRLLLRLR": [],
+    "RRLLLRR": [],
+    "RRLLLRRL": [],
+    "RRLLLRRR": [],
+    "RRLLR": [],
+    "RRLLRL": [],
+    "RRLLRLL": [],
+    "RRLLRLLL": [],
+    "RRLLRLLR": [],
+    "RRLLRLR": [],
+    "RRLLRLRL": [],
+    "RRLLRLRR": [],
+    "RRLLRR": [],
+    "RRLLRRL": [],
+    "RRLLRRLL": [],
+    "RRLLRRLR": [],
+    "RRLLRRR": [],
+    "RRLLRRRL": [],
+    "RRLLRRRR": [],
+    "RRLR": [],
+    "RRLRL": [],
+    "RRLRLL": [],
+    "RRLRLLL": [],
+    "RRLRLLLL": [],
+    "RRLRLLLR": [],
+    "RRLRLLR": [],
+    "RRLRLLRL": [],
+    "RRLRLLRR": [],
+    "RRLRLR": [],
+    "RRLRLRL": [],
+    "RRLRLRLL": [],
+    "RRLRLRLR": [],
+    "RRLRLRR": [],
+    "RRLRLRRL": [],
+    "RRLRLRRR": [],
+    "RRLRR": [],
+    "RRLRRL": [],
+    "RRLRRLL": [],
+    "RRLRRLLL": [],
+    "RRLRRLLR": [],
+    "RRLRRLR": [],
+    "RRLRRLRL": [],
+    "RRLRRLRR": [],
+    "RRLRRR": [],
+    "RRLRRRL": [],
+    "RRLRRRLL": [],
+    "RRLRRRLR": [],
+    "RRLRRRR": [],
+    "RRLRRRRL": [],
+    "RRLRRRRR": [],
+    "RRR": [
+      "r_LLL"
+    ],
+    "RRRL": [
+      "r_LLL"
+    ],
+    "RRRLL": [
+      "r_LLL"
+    ],
+    "RRRLLL": [
+      "r_LLL"
+    ],
+    "RRRLLLL": [
+      "r_LLL"
+    ],
+    "RRRLLLLL": [
+      "r_LLL"
+    ],
+    "RRRLLLLR": [],
+    "RRRLLLR": [],
+    "RRRLLLRL": [],
+    "RRRLLLRR": [],
+    "RRRLLR": [],
+    "RRRLLRL": [],
+    "RRRLLRLL": [],
+    "RRRLLRLR": [],
+    "RRRLLRR": [],
+    "RRRLLRRL": [],
+    "RRRLLRRR": [],
+    "RRRLR": [],
+    "RRRLRL": [],
+    "RRRLRLL": [],
+    "RRRLRLLL": [],
+    "RRRLRLLR": [],
+    "RRRLRLR": [],
+    "RRRLRLRL": [],
+    "RRRLRLRR": [],
+    "RRRLRR": [],
+    "RRRLRRL": [],
+    "RRRLRRLL": [],
+    "RRRLRRLR": [],
+    "RRRLRRR": [],
+    "RRRLRRRL": [],
+    "RRRLRRRR": [],
+    "RRRR": [],
+    "RRRRL": [],
+    "RRRRLL": [],
+    "RRRRLLL": [],
+    "RRRRLLLL": [],
+    "RRRRLLLR": [],
+    "RRRRLLR": [],
+    "RRRRLLRL": [],
+    "RRRRLLRR": [],
+    "RRRRLR": [],
+    "RRRRLRL": [],
+    "RRRRLRLL": [],
+    "RRRRLRLR": [],
+    "RRRRLRR": [],
+    "RRRRLRRL": [],
+    "RRRRLRRR": [],
+    "RRRRR": [],
+    "RRRRRL": [],
+    "RRRRRLL": [],
+    "RRRRRLLL": [],
+    "RRRRRLLR": [],
+    "RRRRRLR": [],
+    "RRRRRLRL": [],
+    "RRRRRLRR": [],
+    "RRRRRR": [],
+    "RRRRRRL": [],
+    "RRRRRRLL": [],
+    "RRRRRRLR": [],
+    "RRRRRRR": [],
+    "RRRRRRRL": [],
+    "RRRRRRRR": [],
+    "epsilon": [
+      "e0",
+      "e1",
+      "e2",
+      "e3",
+      "e4",
+      "e5",
+      "e6",
+      "e7",
+      "r_LLL",
+      "r_LLR",
+      "r_LRL",
+      "r_LRR",
+      "r_RLL",
+      "r_RLR",
+      "r_RRL",
+      "r_RRR"
+    ]
+  },
+  "endpoint_flag_states": {
+    "L": [
+      "f_LLL_e",
+      "f_LLL_s",
+      "f_LRL_e",
+      "f_LRL_s",
+      "f_RLL_e",
+      "f_RLL_s",
+      "f_RRL_e",
+      "f_RRL_s"
+    ],
+    "LL": [
+      "f_LLL_e",
+      "f_LLL_s",
+      "f_RLL_e",
+      "f_RLL_s"
+    ],
+    "LLL": [
+      "f_LLL_e",
+      "f_LLL_s"
+    ],
+    "LLLL": [
+      "f_LLL_e",
+      "f_LLL_s"
+    ],
+    "LLLLL": [
+      "f_LLL_e",
+      "f_LLL_s"
+    ],
+    "LLLLLL": [
+      "f_LLL_e",
+      "f_LLL_s"
+    ],
+    "LLLLLLL": [
+      "f_LLL_e",
+      "f_LLL_s"
+    ],
+    "LLLLLLLL": [
+      "f_LLL_e",
+      "f_LLL_s"
+    ],
+    "LLLLLLLR": [],
+    "LLLLLLR": [],
+    "LLLLLLRL": [],
+    "LLLLLLRR": [],
+    "LLLLLR": [],
+    "LLLLLRL": [],
+    "LLLLLRLL": [],
+    "LLLLLRLR": [],
+    "LLLLLRR": [],
+    "LLLLLRRL": [],
+    "LLLLLRRR": [],
+    "LLLLR": [],
+    "LLLLRL": [],
+    "LLLLRLL": [],
+    "LLLLRLLL": [],
+    "LLLLRLLR": [],
+    "LLLLRLR": [],
+    "LLLLRLRL": [],
+    "LLLLRLRR": [],
+    "LLLLRR": [],
+    "LLLLRRL": [],
+    "LLLLRRLL": [],
+    "LLLLRRLR": [],
+    "LLLLRRR": [],
+    "LLLLRRRL": [],
+    "LLLLRRRR": [],
+    "LLLR": [],
+    "LLLRL": [],
+    "LLLRLL": [],
+    "LLLRLLL": [],
+    "LLLRLLLL": [],
+    "LLLRLLLR": [],
+    "LLLRLLR": [],
+    "LLLRLLRL": [],
+    "LLLRLLRR": [],
+    "LLLRLR": [],
+    "LLLRLRL": [],
+    "LLLRLRLL": [],
+    "LLLRLRLR": [],
+    "LLLRLRR": [],
+    "LLLRLRRL": [],
+    "LLLRLRRR": [],
+    "LLLRR": [],
+    "LLLRRL": [],
+    "LLLRRLL": [],
+    "LLLRRLLL": [],
+    "LLLRRLLR": [],
+    "LLLRRLR": [],
+    "LLLRRLRL": [],
+    "LLLRRLRR": [],
+    "LLLRRR": [],
+    "LLLRRRL": [],
+    "LLLRRRLL": [],
+    "LLLRRRLR": [],
+    "LLLRRRR": [],
+    "LLLRRRRL": [],
+    "LLLRRRRR": [],
+    "LLR": [
+      "f_LLL_e",
+      "f_LLL_s"
+    ],
+    "LLRL": [
+      "f_LLL_e",
+      "f_LLL_s"
+    ],
+    "LLRLL": [
+      "f_LLL_e",
+      "f_LLL_s"
+    ],
+    "LLRLLL": [
+      "f_LLL_e",
+      "f_LLL_s"
+    ],
+    "LLRLLLL": [
+      "f_LLL_e",
+      "f_LLL_s"
+    ],
+    "LLRLLLLL": [
+      "f_LLL_e",
+      "f_LLL_s"
+    ],
+    "LLRLLLLR": [],
+    "LLRLLLR": [],
+    "LLRLLLRL": [],
+    "LLRLLLRR": [],
+    "LLRLLR": [],
+    "LLRLLRL": [],
+    "LLRLLRLL": [],
+    "LLRLLRLR": [],
+    "LLRLLRR": [],
+    "LLRLLRRL": [],
+    "LLRLLRRR": [],
+    "LLRLR": [],
+    "LLRLRL": [],
+    "LLRLRLL": [],
+    "LLRLRLLL": [],
+    "LLRLRLLR": [],
+    "LLRLRLR": [],
+    "LLRLRLRL": [],
+    "LLRLRLRR": [],
+    "LLRLRR": [],
+    "LLRLRRL": [],
+    "LLRLRRLL": [],
+    "LLRLRRLR": [],
+    "LLRLRRR": [],
+    "LLRLRRRL": [],
+    "LLRLRRRR": [],
+    "LLRR": [],
+    "LLRRL": [],
+    "LLRRLL": [],
+    "LLRRLLL": [],
+    "LLRRLLLL": [],
+    "LLRRLLLR": [],
+    "LLRRLLR": [],
+    "LLRRLLRL": [],
+    "LLRRLLRR": [],
+    "LLRRLR": [],
+    "LLRRLRL": [],
+    "LLRRLRLL": [],
+    "LLRRLRLR": [],
+    "LLRRLRR": [],
+    "LLRRLRRL": [],
+    "LLRRLRRR": [],
+    "LLRRR": [],
+    "LLRRRL": [],
+    "LLRRRLL": [],
+    "LLRRRLLL": [],
+    "LLRRRLLR": [],
+    "LLRRRLR": [],
+    "LLRRRLRL": [],
+    "LLRRRLRR": [],
+    "LLRRRR": [],
+    "LLRRRRL": [],
+    "LLRRRRLL": [],
+    "LLRRRRLR": [],
+    "LLRRRRR": [],
+    "LLRRRRRL": [],
+    "LLRRRRRR": [],
+    "LR": [
+      "f_LLL_e",
+      "f_LLL_s",
+      "f_RLL_e",
+      "f_RLL_s"
+    ],
+    "LRL": [
+      "f_LLL_e",
+      "f_LLL_s"
+    ],
+    "LRLL": [
+      "f_LLL_e",
+      "f_LLL_s"
+    ],
+    "LRLLL": [
+      "f_LLL_e",
+      "f_LLL_s"
+    ],
+    "LRLLLL": [
+      "f_LLL_e",
+      "f_LLL_s"
+    ],
+    "LRLLLLL": [
+      "f_LLL_e",
+      "f_LLL_s"
+    ],
+    "LRLLLLLL": [
+      "f_LLL_e",
+      "f_LLL_s"
+    ],
+    "LRLLLLLR": [],
+    "LRLLLLR": [],
+    "LRLLLLRL": [],
+    "LRLLLLRR": [],
+    "LRLLLR": [],
+    "LRLLLRL": [],
+    "LRLLLRLL": [],
+    "LRLLLRLR": [],
+    "LRLLLRR": [],
+    "LRLLLRRL": [],
+    "LRLLLRRR": [],
+    "LRLLR": [],
+    "LRLLRL": [],
+    "LRLLRLL": [],
+    "LRLLRLLL": [],
+    "LRLLRLLR": [],
+    "LRLLRLR": [],
+    "LRLLRLRL": [],
+    "LRLLRLRR": [],
+    "LRLLRR": [],
+    "LRLLRRL": [],
+    "LRLLRRLL": [],
+    "LRLLRRLR": [],
+    "LRLLRRR": [],
+    "LRLLRRRL": [],
+    "LRLLRRRR": [],
+    "LRLR": [],
+    "LRLRL": [],
+    "LRLRLL": [],
+    "LRLRLLL": [],
+    "LRLRLLLL": [],
+    "LRLRLLLR": [],
+    "LRLRLLR": [],
+    "LRLRLLRL": [],
+    "LRLRLLRR": [],
+    "LRLRLR": [],
+    "LRLRLRL": [],
+    "LRLRLRLL": [],
+    "LRLRLRLR": [],
+    "LRLRLRR": [],
+    "LRLRLRRL": [],
+    "LRLRLRRR": [],
+    "LRLRR": [],
+    "LRLRRL": [],
+    "LRLRRLL": [],
+    "LRLRRLLL": [],
+    "LRLRRLLR": [],
+    "LRLRRLR": [],
+    "LRLRRLRL": [],
+    "LRLRRLRR": [],
+    "LRLRRR": [],
+    "LRLRRRL": [],
+    "LRLRRRLL": [],
+    "LRLRRRLR": [],
+    "LRLRRRR": [],
+    "LRLRRRRL": [],
+    "LRLRRRRR": [],
+    "LRR": [
+      "f_LLL_e",
+      "f_LLL_s"
+    ],
+    "LRRL": [
+      "f_LLL_e",
+      "f_LLL_s"
+    ],
+    "LRRLL": [
+      "f_LLL_e",
+      "f_LLL_s"
+    ],
+    "LRRLLL": [
+      "f_LLL_e",
+      "f_LLL_s"
+    ],
+    "LRRLLLL": [
+      "f_LLL_e",
+      "f_LLL_s"
+    ],
+    "LRRLLLLL": [
+      "f_LLL_e",
+      "f_LLL_s"
+    ],
+    "LRRLLLLR": [],
+    "LRRLLLR": [],
+    "LRRLLLRL": [],
+    "LRRLLLRR": [],
+    "LRRLLR": [],
+    "LRRLLRL": [],
+    "LRRLLRLL": [],
+    "LRRLLRLR": [],
+    "LRRLLRR": [],
+    "LRRLLRRL": [],
+    "LRRLLRRR": [],
+    "LRRLR": [],
+    "LRRLRL": [],
+    "LRRLRLL": [],
+    "LRRLRLLL": [],
+    "LRRLRLLR": [],
+    "LRRLRLR": [],
+    "LRRLRLRL": [],
+    "LRRLRLRR": [],
+    "LRRLRR": [],
+    "LRRLRRL": [],
+    "LRRLRRLL": [],
+    "LRRLRRLR": [],
+    "LRRLRRR": [],
+    "LRRLRRRL": [],
+    "LRRLRRRR": [],
+    "LRRR": [],
+    "LRRRL": [],
+    "LRRRLL": [],
+    "LRRRLLL": [],
+    "LRRRLLLL": [],
+    "LRRRLLLR": [],
+    "LRRRLLR": [],
+    "LRRRLLRL": [],
+    "LRRRLLRR": [],
+    "LRRRLR": [],
+    "LRRRLRL": [],
+    "LRRRLRLL": [],
+    "LRRRLRLR": [],
+    "LRRRLRR": [],
+    "LRRRLRRL": [],
+    "LRRRLRRR": [],
+    "LRRRR": [],
+    "LRRRRL": [],
+    "LRRRRLL": [],
+    "LRRRRLLL": [],
+    "LRRRRLLR": [],
+    "LRRRRLR": [],
+    "LRRRRLRL": [],
+    "LRRRRLRR": [],
+    "LRRRRR": [],
+    "LRRRRRL": [],
+    "LRRRRRLL": [],
+    "LRRRRRLR": [],
+    "LRRRRRR": [],
+    "LRRRRRRL": [],
+    "LRRRRRRR": [],
+    "R": [
+      "f_LLL_e",
+      "f_LLL_s",
+      "f_LRL_e",
+      "f_LRL_s",
+      "f_RLL_e",
+      "f_RLL_s",
+      "f_RRL_e",
+      "f_RRL_s"
+    ],
+    "RL": [
+      "f_LLL_e",
+      "f_LLL_s",
+      "f_RLL_e",
+      "f_RLL_s"
+    ],
+    "RLL": [
+      "f_LLL_e",
+      "f_LLL_s"
+    ],
+    "RLLL": [
+      "f_LLL_e",
+      "f_LLL_s"
+    ],
+    "RLLLL": [
+      "f_LLL_e",
+      "f_LLL_s"
+    ],
+    "RLLLLL": [
+      "f_LLL_e",
+      "f_LLL_s"
+    ],
+    "RLLLLLL": [
+      "f_LLL_e",
+      "f_LLL_s"
+    ],
+    "RLLLLLLL": [
+      "f_LLL_e",
+      "f_LLL_s"
+    ],
+    "RLLLLLLR": [],
+    "RLLLLLR": [],
+    "RLLLLLRL": [],
+    "RLLLLLRR": [],
+    "RLLLLR": [],
+    "RLLLLRL": [],
+    "RLLLLRLL": [],
+    "RLLLLRLR": [],
+    "RLLLLRR": [],
+    "RLLLLRRL": [],
+    "RLLLLRRR": [],
+    "RLLLR": [],
+    "RLLLRL": [],
+    "RLLLRLL": [],
+    "RLLLRLLL": [],
+    "RLLLRLLR": [],
+    "RLLLRLR": [],
+    "RLLLRLRL": [],
+    "RLLLRLRR": [],
+    "RLLLRR": [],
+    "RLLLRRL": [],
+    "RLLLRRLL": [],
+    "RLLLRRLR": [],
+    "RLLLRRR": [],
+    "RLLLRRRL": [],
+    "RLLLRRRR": [],
+    "RLLR": [],
+    "RLLRL": [],
+    "RLLRLL": [],
+    "RLLRLLL": [],
+    "RLLRLLLL": [],
+    "RLLRLLLR": [],
+    "RLLRLLR": [],
+    "RLLRLLRL": [],
+    "RLLRLLRR": [],
+    "RLLRLR": [],
+    "RLLRLRL": [],
+    "RLLRLRLL": [],
+    "RLLRLRLR": [],
+    "RLLRLRR": [],
+    "RLLRLRRL": [],
+    "RLLRLRRR": [],
+    "RLLRR": [],
+    "RLLRRL": [],
+    "RLLRRLL": [],
+    "RLLRRLLL": [],
+    "RLLRRLLR": [],
+    "RLLRRLR": [],
+    "RLLRRLRL": [],
+    "RLLRRLRR": [],
+    "RLLRRR": [],
+    "RLLRRRL": [],
+    "RLLRRRLL": [],
+    "RLLRRRLR": [],
+    "RLLRRRR": [],
+    "RLLRRRRL": [],
+    "RLLRRRRR": [],
+    "RLR": [
+      "f_LLL_e",
+      "f_LLL_s"
+    ],
+    "RLRL": [
+      "f_LLL_e",
+      "f_LLL_s"
+    ],
+    "RLRLL": [
+      "f_LLL_e",
+      "f_LLL_s"
+    ],
+    "RLRLLL": [
+      "f_LLL_e",
+      "f_LLL_s"
+    ],
+    "RLRLLLL": [
+      "f_LLL_e",
+      "f_LLL_s"
+    ],
+    "RLRLLLLL": [
+      "f_LLL_e",
+      "f_LLL_s"
+    ],
+    "RLRLLLLR": [],
+    "RLRLLLR": [],
+    "RLRLLLRL": [],
+    "RLRLLLRR": [],
+    "RLRLLR": [],
+    "RLRLLRL": [],
+    "RLRLLRLL": [],
+    "RLRLLRLR": [],
+    "RLRLLRR": [],
+    "RLRLLRRL": [],
+    "RLRLLRRR": [],
+    "RLRLR": [],
+    "RLRLRL": [],
+    "RLRLRLL": [],
+    "RLRLRLLL": [],
+    "RLRLRLLR": [],
+    "RLRLRLR": [],
+    "RLRLRLRL": [],
+    "RLRLRLRR": [],
+    "RLRLRR": [],
+    "RLRLRRL": [],
+    "RLRLRRLL": [],
+    "RLRLRRLR": [],
+    "RLRLRRR": [],
+    "RLRLRRRL": [],
+    "RLRLRRRR": [],
+    "RLRR": [],
+    "RLRRL": [],
+    "RLRRLL": [],
+    "RLRRLLL": [],
+    "RLRRLLLL": [],
+    "RLRRLLLR": [],
+    "RLRRLLR": [],
+    "RLRRLLRL": [],
+    "RLRRLLRR": [],
+    "RLRRLR": [],
+    "RLRRLRL": [],
+    "RLRRLRLL": [],
+    "RLRRLRLR": [],
+    "RLRRLRR": [],
+    "RLRRLRRL": [],
+    "RLRRLRRR": [],
+    "RLRRR": [],
+    "RLRRRL": [],
+    "RLRRRLL": [],
+    "RLRRRLLL": [],
+    "RLRRRLLR": [],
+    "RLRRRLR": [],
+    "RLRRRLRL": [],
+    "RLRRRLRR": [],
+    "RLRRRR": [],
+    "RLRRRRL": [],
+    "RLRRRRLL": [],
+    "RLRRRRLR": [],
+    "RLRRRRR": [],
+    "RLRRRRRL": [],
+    "RLRRRRRR": [],
+    "RR": [
+      "f_LLL_e",
+      "f_LLL_s",
+      "f_RLL_e",
+      "f_RLL_s"
+    ],
+    "RRL": [
+      "f_LLL_e",
+      "f_LLL_s"
+    ],
+    "RRLL": [
+      "f_LLL_e",
+      "f_LLL_s"
+    ],
+    "RRLLL": [
+      "f_LLL_e",
+      "f_LLL_s"
+    ],
+    "RRLLLL": [
+      "f_LLL_e",
+      "f_LLL_s"
+    ],
+    "RRLLLLL": [
+      "f_LLL_e",
+      "f_LLL_s"
+    ],
+    "RRLLLLLL": [
+      "f_LLL_e",
+      "f_LLL_s"
+    ],
+    "RRLLLLLR": [],
+    "RRLLLLR": [],
+    "RRLLLLRL": [],
+    "RRLLLLRR": [],
+    "RRLLLR": [],
+    "RRLLLRL": [],
+    "RRLLLRLL": [],
+    "RRLLLRLR": [],
+    "RRLLLRR": [],
+    "RRLLLRRL": [],
+    "RRLLLRRR": [],
+    "RRLLR": [],
+    "RRLLRL": [],
+    "RRLLRLL": [],
+    "RRLLRLLL": [],
+    "RRLLRLLR": [],
+    "RRLLRLR": [],
+    "RRLLRLRL": [],
+    "RRLLRLRR": [],
+    "RRLLRR": [],
+    "RRLLRRL": [],
+    "RRLLRRLL": [],
+    "RRLLRRLR": [],
+    "RRLLRRR": [],
+    "RRLLRRRL": [],
+    "RRLLRRRR": [],
+    "RRLR": [],
+    "RRLRL": [],
+    "RRLRLL": [],
+    "RRLRLLL": [],
+    "RRLRLLLL": [],
+    "RRLRLLLR": [],
+    "RRLRLLR": [],
+    "RRLRLLRL": [],
+    "RRLRLLRR": [],
+    "RRLRLR": [],
+    "RRLRLRL": [],
+    "RRLRLRLL": [],
+    "RRLRLRLR": [],
+    "RRLRLRR": [],
+    "RRLRLRRL": [],
+    "RRLRLRRR": [],
+    "RRLRR": [],
+    "RRLRRL": [],
+    "RRLRRLL": [],
+    "RRLRRLLL": [],
+    "RRLRRLLR": [],
+    "RRLRRLR": [],
+    "RRLRRLRL": [],
+    "RRLRRLRR": [],
+    "RRLRRR": [],
+    "RRLRRRL": [],
+    "RRLRRRLL": [],
+    "RRLRRRLR": [],
+    "RRLRRRR": [],
+    "RRLRRRRL": [],
+    "RRLRRRRR": [],
+    "RRR": [
+      "f_LLL_e",
+      "f_LLL_s"
+    ],
+    "RRRL": [
+      "f_LLL_e",
+      "f_LLL_s"
+    ],
+    "RRRLL": [
+      "f_LLL_e",
+      "f_LLL_s"
+    ],
+    "RRRLLL": [
+      "f_LLL_e",
+      "f_LLL_s"
+    ],
+    "RRRLLLL": [
+      "f_LLL_e",
+      "f_LLL_s"
+    ],
+    "RRRLLLLL": [
+      "f_LLL_e",
+      "f_LLL_s"
+    ],
+    "RRRLLLLR": [],
+    "RRRLLLR": [],
+    "RRRLLLRL": [],
+    "RRRLLLRR": [],
+    "RRRLLR": [],
+    "RRRLLRL": [],
+    "RRRLLRLL": [],
+    "RRRLLRLR": [],
+    "RRRLLRR": [],
+    "RRRLLRRL": [],
+    "RRRLLRRR": [],
+    "RRRLR": [],
+    "RRRLRL": [],
+    "RRRLRLL": [],
+    "RRRLRLLL": [],
+    "RRRLRLLR": [],
+    "RRRLRLR": [],
+    "RRRLRLRL": [],
+    "RRRLRLRR": [],
+    "RRRLRR": [],
+    "RRRLRRL": [],
+    "RRRLRRLL": [],
+    "RRRLRRLR": [],
+    "RRRLRRR": [],
+    "RRRLRRRL": [],
+    "RRRLRRRR": [],
+    "RRRR": [],
+    "RRRRL": [],
+    "RRRRLL": [],
+    "RRRRLLL": [],
+    "RRRRLLLL": [],
+    "RRRRLLLR": [],
+    "RRRRLLR": [],
+    "RRRRLLRL": [],
+    "RRRRLLRR": [],
+    "RRRRLR": [],
+    "RRRRLRL": [],
+    "RRRRLRLL": [],
+    "RRRRLRLR": [],
+    "RRRRLRR": [],
+    "RRRRLRRL": [],
+    "RRRRLRRR": [],
+    "RRRRR": [],
+    "RRRRRL": [],
+    "RRRRRLL": [],
+    "RRRRRLLL": [],
+    "RRRRRLLR": [],
+    "RRRRRLR": [],
+    "RRRRRLRL": [],
+    "RRRRRLRR": [],
+    "RRRRRR": [],
+    "RRRRRRL": [],
+    "RRRRRRLL": [],
+    "RRRRRRLR": [],
+    "RRRRRRR": [],
+    "RRRRRRRL": [],
+    "RRRRRRRR": [],
+    "epsilon": [
+      "f_LLL_e",
+      "f_LLL_s",
+      "f_LLR_e",
+      "f_LLR_s",
+      "f_LRL_e",
+      "f_LRL_s",
+      "f_LRR_e",
+      "f_LRR_s",
+      "f_RLL_e",
+      "f_RLL_s",
+      "f_RLR_e",
+      "f_RLR_s",
+      "f_RRL_e",
+      "f_RRL_s",
+      "f_RRR_e",
+      "f_RRR_s"
+    ]
+  },
+  "one_to_many_atlas": {
+    "e0": [
+      {
+        "branch": "L",
+        "child_atom": "L_e0"
+      },
+      {
+        "branch": "R",
+        "child_atom": "R_e0"
+      }
+    ],
+    "e1": [
+      {
+        "branch": "L",
+        "child_atom": "L_e1"
+      },
+      {
+        "branch": "R",
+        "child_atom": "R_e1"
+      }
+    ],
+    "e2": [
+      {
+        "branch": "L",
+        "child_atom": "L_e2"
+      },
+      {
+        "branch": "R",
+        "child_atom": "R_e2"
+      }
+    ],
+    "e3": [
+      {
+        "branch": "L",
+        "child_atom": "L_e3"
+      },
+      {
+        "branch": "R",
+        "child_atom": "R_e3"
+      }
+    ],
+    "e4": [
+      {
+        "branch": "L",
+        "child_atom": "L_e4"
+      },
+      {
+        "branch": "R",
+        "child_atom": "R_e4"
+      }
+    ],
+    "e5": [
+      {
+        "branch": "L",
+        "child_atom": "L_e5"
+      },
+      {
+        "branch": "R",
+        "child_atom": "R_e5"
+      }
+    ],
+    "e6": [
+      {
+        "branch": "L",
+        "child_atom": "L_e6"
+      },
+      {
+        "branch": "R",
+        "child_atom": "R_e6"
+      }
+    ],
+    "e7": [
+      {
+        "branch": "L",
+        "child_atom": "L_e7"
+      },
+      {
+        "branch": "R",
+        "child_atom": "R_e7"
+      }
+    ],
+    "r_LLL": [
+      {
+        "branch": "L",
+        "child_atom": "L_r_LLL"
+      },
+      {
+        "branch": "R",
+        "child_atom": "R_r_LLL"
+      }
+    ],
+    "r_LLR": [
+      {
+        "branch": "L",
+        "child_atom": "L_r_LLR"
+      },
+      {
+        "branch": "R",
+        "child_atom": "R_r_LLR"
+      }
+    ],
+    "r_LRL": [
+      {
+        "branch": "L",
+        "child_atom": "L_r_LRL"
+      },
+      {
+        "branch": "R",
+        "child_atom": "R_r_LRL"
+      }
+    ],
+    "r_LRR": [
+      {
+        "branch": "L",
+        "child_atom": "L_r_LRR"
+      },
+      {
+        "branch": "R",
+        "child_atom": "R_r_LRR"
+      }
+    ],
+    "r_RLL": [
+      {
+        "branch": "L",
+        "child_atom": "L_r_RLL"
+      },
+      {
+        "branch": "R",
+        "child_atom": "R_r_RLL"
+      }
+    ],
+    "r_RLR": [
+      {
+        "branch": "L",
+        "child_atom": "L_r_RLR"
+      },
+      {
+        "branch": "R",
+        "child_atom": "R_r_RLR"
+      }
+    ],
+    "r_RRL": [
+      {
+        "branch": "L",
+        "child_atom": "L_r_RRL"
+      },
+      {
+        "branch": "R",
+        "child_atom": "R_r_RRL"
+      }
+    ],
+    "r_RRR": [
+      {
+        "branch": "L",
+        "child_atom": "L_r_RRR"
+      },
+      {
+        "branch": "R",
+        "child_atom": "R_r_RRR"
+      }
+    ]
+  },
+  "passed": true,
+  "refinement_naturality": {
+    "failures": [],
+    "present": true
+  },
+  "source_boundary_contacts": {
+    "L": [
+      {
+        "angle": "0",
+        "child_edge": "L_r_LLL",
+        "kind": "ray",
+        "parent_edge": "r_LLL",
+        "potential_interval": [
+          "0",
+          "1/4"
+        ]
+      },
+      {
+        "angle": "1/8",
+        "child_edge": "L_r_LLR",
+        "kind": "ray",
+        "parent_edge": "r_LLR",
+        "potential_interval": [
+          "0",
+          "1/4"
+        ]
+      },
+      {
+        "angle": "1/4",
+        "child_edge": "L_r_LRL",
+        "kind": "ray",
+        "parent_edge": "r_LRL",
+        "potential_interval": [
+          "0",
+          "1/4"
+        ]
+      },
+      {
+        "angle": "3/8",
+        "child_edge": "L_r_LRR",
+        "kind": "ray",
+        "parent_edge": "r_LRR",
+        "potential_interval": [
+          "0",
+          "1/4"
+        ]
+      }
+    ],
+    "R": [
+      {
+        "angle": "1/2",
+        "child_edge": "R_r_RLL",
+        "kind": "ray",
+        "parent_edge": "r_RLL",
+        "potential_interval": [
+          "0",
+          "1/4"
+        ]
+      },
+      {
+        "angle": "5/8",
+        "child_edge": "R_r_RLR",
+        "kind": "ray",
+        "parent_edge": "r_RLR",
+        "potential_interval": [
+          "0",
+          "1/4"
+        ]
+      },
+      {
+        "angle": "3/4",
+        "child_edge": "R_r_RRL",
+        "kind": "ray",
+        "parent_edge": "r_RRL",
+        "potential_interval": [
+          "0",
+          "1/4"
+        ]
+      },
+      {
+        "angle": "7/8",
+        "child_edge": "R_r_RRR",
+        "kind": "ray",
+        "parent_edge": "r_RRR",
+        "potential_interval": [
+          "0",
+          "1/4"
+        ]
+      }
+    ]
+  },
+  "source_boundary_graph": {
+    "L": {
+      "open_contacts": [
+        {
+          "angle": "0",
+          "child_edge": "L_r_LLL",
+          "kind": "ray",
+          "parent_edge": "r_LLL",
+          "potential_interval": [
+            "0",
+            "1/4"
+          ]
+        },
+        {
+          "angle": "1/8",
+          "child_edge": "L_r_LLR",
+          "kind": "ray",
+          "parent_edge": "r_LLR",
+          "potential_interval": [
+            "0",
+            "1/4"
+          ]
+        },
+        {
+          "angle": "1/4",
+          "child_edge": "L_r_LRL",
+          "kind": "ray",
+          "parent_edge": "r_LRL",
+          "potential_interval": [
+            "0",
+            "1/4"
+          ]
+        },
+        {
+          "angle": "3/8",
+          "child_edge": "L_r_LRR",
+          "kind": "ray",
+          "parent_edge": "r_LRR",
+          "potential_interval": [
+            "0",
+            "1/4"
+          ]
+        }
+      ],
+      "point_contacts": [
+        {
+          "angle": "0",
+          "child_edge": "L_eq0",
+          "child_endpoint_flags": [
+            "L_f_LLL_e"
+          ],
+          "parent_edge": "r_LLL",
+          "parent_endpoint_flags": [],
+          "potential": "1/4",
+          "subdivide_child": false,
+          "subdivide_parent": true
+        },
+        {
+          "angle": "0",
+          "child_edge": "L_eq7",
+          "child_endpoint_flags": [
+            "L_f_LLL_s"
+          ],
+          "parent_edge": "r_LLL",
+          "parent_endpoint_flags": [],
+          "potential": "1/4",
+          "subdivide_child": false,
+          "subdivide_parent": true
+        },
+        {
+          "angle": "1/8",
+          "child_edge": "L_eq1",
+          "child_endpoint_flags": [
+            "L_f_LLR_s"
+          ],
+          "parent_edge": "r_LLR",
+          "parent_endpoint_flags": [],
+          "potential": "1/4",
+          "subdivide_child": false,
+          "subdivide_parent": true
+        },
+        {
+          "angle": "1/8",
+          "child_edge": "L_eq2",
+          "child_endpoint_flags": [
+            "L_f_LLR_e"
+          ],
+          "parent_edge": "r_LLR",
+          "parent_endpoint_flags": [],
+          "potential": "1/4",
+          "subdivide_child": false,
+          "subdivide_parent": true
+        },
+        {
+          "angle": "1/4",
+          "child_edge": "L_eq3",
+          "child_endpoint_flags": [
+            "L_f_LRL_s"
+          ],
+          "parent_edge": "r_LRL",
+          "parent_endpoint_flags": [],
+          "potential": "1/4",
+          "subdivide_child": false,
+          "subdivide_parent": true
+        },
+        {
+          "angle": "1/4",
+          "child_edge": "L_eq4",
+          "child_endpoint_flags": [
+            "L_f_LRL_e"
+          ],
+          "parent_edge": "r_LRL",
+          "parent_endpoint_flags": [],
+          "potential": "1/4",
+          "subdivide_child": false,
+          "subdivide_parent": true
+        },
+        {
+          "angle": "3/8",
+          "child_edge": "L_eq5",
+          "child_endpoint_flags": [
+            "L_f_LRR_s"
+          ],
+          "parent_edge": "r_LRR",
+          "parent_endpoint_flags": [],
+          "potential": "1/4",
+          "subdivide_child": false,
+          "subdivide_parent": true
+        },
+        {
+          "angle": "3/8",
+          "child_edge": "L_eq6",
+          "child_endpoint_flags": [
+            "L_f_LRR_e"
+          ],
+          "parent_edge": "r_LRR",
+          "parent_endpoint_flags": [],
+          "potential": "1/4",
+          "subdivide_child": false,
+          "subdivide_parent": true
+        },
+        {
+          "angle": "1/2",
+          "child_edge": "L_eq7",
+          "child_endpoint_flags": [],
+          "parent_edge": "r_RLL",
+          "parent_endpoint_flags": [],
+          "potential": "1/4",
+          "subdivide_child": true,
+          "subdivide_parent": true
+        },
+        {
+          "angle": "5/8",
+          "child_edge": "L_eq7",
+          "child_endpoint_flags": [],
+          "parent_edge": "r_RLR",
+          "parent_endpoint_flags": [],
+          "potential": "1/4",
+          "subdivide_child": true,
+          "subdivide_parent": true
+        },
+        {
+          "angle": "3/4",
+          "child_edge": "L_eq7",
+          "child_endpoint_flags": [],
+          "parent_edge": "r_RRL",
+          "parent_endpoint_flags": [],
+          "potential": "1/4",
+          "subdivide_child": true,
+          "subdivide_parent": true
+        },
+        {
+          "angle": "7/8",
+          "child_edge": "L_eq7",
+          "child_endpoint_flags": [],
+          "parent_edge": "r_RRR",
+          "parent_endpoint_flags": [],
+          "potential": "1/4",
+          "subdivide_child": true,
+          "subdivide_parent": true
+        }
+      ],
+      "required_child_subdivisions": [
+        {
+          "angle": "1/2",
+          "child_edge": "L_eq7",
+          "child_endpoint_flags": [],
+          "parent_edge": "r_RLL",
+          "parent_endpoint_flags": [],
+          "potential": "1/4",
+          "subdivide_child": true,
+          "subdivide_parent": true
+        },
+        {
+          "angle": "5/8",
+          "child_edge": "L_eq7",
+          "child_endpoint_flags": [],
+          "parent_edge": "r_RLR",
+          "parent_endpoint_flags": [],
+          "potential": "1/4",
+          "subdivide_child": true,
+          "subdivide_parent": true
+        },
+        {
+          "angle": "3/4",
+          "child_edge": "L_eq7",
+          "child_endpoint_flags": [],
+          "parent_edge": "r_RRL",
+          "parent_endpoint_flags": [],
+          "potential": "1/4",
+          "subdivide_child": true,
+          "subdivide_parent": true
+        },
+        {
+          "angle": "7/8",
+          "child_edge": "L_eq7",
+          "child_endpoint_flags": [],
+          "parent_edge": "r_RRR",
+          "parent_endpoint_flags": [],
+          "potential": "1/4",
+          "subdivide_child": true,
+          "subdivide_parent": true
+        }
+      ],
+      "required_parent_subdivisions": [
+        {
+          "angle": "0",
+          "child_edge": "L_eq0",
+          "child_endpoint_flags": [
+            "L_f_LLL_e"
+          ],
+          "parent_edge": "r_LLL",
+          "parent_endpoint_flags": [],
+          "potential": "1/4",
+          "subdivide_child": false,
+          "subdivide_parent": true
+        },
+        {
+          "angle": "0",
+          "child_edge": "L_eq7",
+          "child_endpoint_flags": [
+            "L_f_LLL_s"
+          ],
+          "parent_edge": "r_LLL",
+          "parent_endpoint_flags": [],
+          "potential": "1/4",
+          "subdivide_child": false,
+          "subdivide_parent": true
+        },
+        {
+          "angle": "1/8",
+          "child_edge": "L_eq1",
+          "child_endpoint_flags": [
+            "L_f_LLR_s"
+          ],
+          "parent_edge": "r_LLR",
+          "parent_endpoint_flags": [],
+          "potential": "1/4",
+          "subdivide_child": false,
+          "subdivide_parent": true
+        },
+        {
+          "angle": "1/8",
+          "child_edge": "L_eq2",
+          "child_endpoint_flags": [
+            "L_f_LLR_e"
+          ],
+          "parent_edge": "r_LLR",
+          "parent_endpoint_flags": [],
+          "potential": "1/4",
+          "subdivide_child": false,
+          "subdivide_parent": true
+        },
+        {
+          "angle": "1/4",
+          "child_edge": "L_eq3",
+          "child_endpoint_flags": [
+            "L_f_LRL_s"
+          ],
+          "parent_edge": "r_LRL",
+          "parent_endpoint_flags": [],
+          "potential": "1/4",
+          "subdivide_child": false,
+          "subdivide_parent": true
+        },
+        {
+          "angle": "1/4",
+          "child_edge": "L_eq4",
+          "child_endpoint_flags": [
+            "L_f_LRL_e"
+          ],
+          "parent_edge": "r_LRL",
+          "parent_endpoint_flags": [],
+          "potential": "1/4",
+          "subdivide_child": false,
+          "subdivide_parent": true
+        },
+        {
+          "angle": "3/8",
+          "child_edge": "L_eq5",
+          "child_endpoint_flags": [
+            "L_f_LRR_s"
+          ],
+          "parent_edge": "r_LRR",
+          "parent_endpoint_flags": [],
+          "potential": "1/4",
+          "subdivide_child": false,
+          "subdivide_parent": true
+        },
+        {
+          "angle": "3/8",
+          "child_edge": "L_eq6",
+          "child_endpoint_flags": [
+            "L_f_LRR_e"
+          ],
+          "parent_edge": "r_LRR",
+          "parent_endpoint_flags": [],
+          "potential": "1/4",
+          "subdivide_child": false,
+          "subdivide_parent": true
+        },
+        {
+          "angle": "1/2",
+          "child_edge": "L_eq7",
+          "child_endpoint_flags": [],
+          "parent_edge": "r_RLL",
+          "parent_endpoint_flags": [],
+          "potential": "1/4",
+          "subdivide_child": true,
+          "subdivide_parent": true
+        },
+        {
+          "angle": "5/8",
+          "child_edge": "L_eq7",
+          "child_endpoint_flags": [],
+          "parent_edge": "r_RLR",
+          "parent_endpoint_flags": [],
+          "potential": "1/4",
+          "subdivide_child": true,
+          "subdivide_parent": true
+        },
+        {
+          "angle": "3/4",
+          "child_edge": "L_eq7",
+          "child_endpoint_flags": [],
+          "parent_edge": "r_RRL",
+          "parent_endpoint_flags": [],
+          "potential": "1/4",
+          "subdivide_child": true,
+          "subdivide_parent": true
+        },
+        {
+          "angle": "7/8",
+          "child_edge": "L_eq7",
+          "child_endpoint_flags": [],
+          "parent_edge": "r_RRR",
+          "parent_endpoint_flags": [],
+          "potential": "1/4",
+          "subdivide_child": true,
+          "subdivide_parent": true
+        }
+      ]
+    },
+    "R": {
+      "open_contacts": [
+        {
+          "angle": "1/2",
+          "child_edge": "R_r_RLL",
+          "kind": "ray",
+          "parent_edge": "r_RLL",
+          "potential_interval": [
+            "0",
+            "1/4"
+          ]
+        },
+        {
+          "angle": "5/8",
+          "child_edge": "R_r_RLR",
+          "kind": "ray",
+          "parent_edge": "r_RLR",
+          "potential_interval": [
+            "0",
+            "1/4"
+          ]
+        },
+        {
+          "angle": "3/4",
+          "child_edge": "R_r_RRL",
+          "kind": "ray",
+          "parent_edge": "r_RRL",
+          "potential_interval": [
+            "0",
+            "1/4"
+          ]
+        },
+        {
+          "angle": "7/8",
+          "child_edge": "R_r_RRR",
+          "kind": "ray",
+          "parent_edge": "r_RRR",
+          "potential_interval": [
+            "0",
+            "1/4"
+          ]
+        }
+      ],
+      "point_contacts": [
+        {
+          "angle": "0",
+          "child_edge": "R_eq7",
+          "child_endpoint_flags": [],
+          "parent_edge": "r_LLL",
+          "parent_endpoint_flags": [],
+          "potential": "1/4",
+          "subdivide_child": true,
+          "subdivide_parent": true
+        },
+        {
+          "angle": "1/8",
+          "child_edge": "R_eq7",
+          "child_endpoint_flags": [],
+          "parent_edge": "r_LLR",
+          "parent_endpoint_flags": [],
+          "potential": "1/4",
+          "subdivide_child": true,
+          "subdivide_parent": true
+        },
+        {
+          "angle": "1/4",
+          "child_edge": "R_eq7",
+          "child_endpoint_flags": [],
+          "parent_edge": "r_LRL",
+          "parent_endpoint_flags": [],
+          "potential": "1/4",
+          "subdivide_child": true,
+          "subdivide_parent": true
+        },
+        {
+          "angle": "3/8",
+          "child_edge": "R_eq7",
+          "child_endpoint_flags": [],
+          "parent_edge": "r_LRR",
+          "parent_endpoint_flags": [],
+          "potential": "1/4",
+          "subdivide_child": true,
+          "subdivide_parent": true
+        },
+        {
+          "angle": "1/2",
+          "child_edge": "R_eq0",
+          "child_endpoint_flags": [
+            "R_f_RLL_e"
+          ],
+          "parent_edge": "r_RLL",
+          "parent_endpoint_flags": [],
+          "potential": "1/4",
+          "subdivide_child": false,
+          "subdivide_parent": true
+        },
+        {
+          "angle": "1/2",
+          "child_edge": "R_eq7",
+          "child_endpoint_flags": [
+            "R_f_RLL_s"
+          ],
+          "parent_edge": "r_RLL",
+          "parent_endpoint_flags": [],
+          "potential": "1/4",
+          "subdivide_child": false,
+          "subdivide_parent": true
+        },
+        {
+          "angle": "5/8",
+          "child_edge": "R_eq1",
+          "child_endpoint_flags": [
+            "R_f_RLR_s"
+          ],
+          "parent_edge": "r_RLR",
+          "parent_endpoint_flags": [],
+          "potential": "1/4",
+          "subdivide_child": false,
+          "subdivide_parent": true
+        },
+        {
+          "angle": "5/8",
+          "child_edge": "R_eq2",
+          "child_endpoint_flags": [
+            "R_f_RLR_e"
+          ],
+          "parent_edge": "r_RLR",
+          "parent_endpoint_flags": [],
+          "potential": "1/4",
+          "subdivide_child": false,
+          "subdivide_parent": true
+        },
+        {
+          "angle": "3/4",
+          "child_edge": "R_eq3",
+          "child_endpoint_flags": [
+            "R_f_RRL_s"
+          ],
+          "parent_edge": "r_RRL",
+          "parent_endpoint_flags": [],
+          "potential": "1/4",
+          "subdivide_child": false,
+          "subdivide_parent": true
+        },
+        {
+          "angle": "3/4",
+          "child_edge": "R_eq4",
+          "child_endpoint_flags": [
+            "R_f_RRL_e"
+          ],
+          "parent_edge": "r_RRL",
+          "parent_endpoint_flags": [],
+          "potential": "1/4",
+          "subdivide_child": false,
+          "subdivide_parent": true
+        },
+        {
+          "angle": "7/8",
+          "child_edge": "R_eq5",
+          "child_endpoint_flags": [
+            "R_f_RRR_s"
+          ],
+          "parent_edge": "r_RRR",
+          "parent_endpoint_flags": [],
+          "potential": "1/4",
+          "subdivide_child": false,
+          "subdivide_parent": true
+        },
+        {
+          "angle": "7/8",
+          "child_edge": "R_eq6",
+          "child_endpoint_flags": [
+            "R_f_RRR_e"
+          ],
+          "parent_edge": "r_RRR",
+          "parent_endpoint_flags": [],
+          "potential": "1/4",
+          "subdivide_child": false,
+          "subdivide_parent": true
+        }
+      ],
+      "required_child_subdivisions": [
+        {
+          "angle": "0",
+          "child_edge": "R_eq7",
+          "child_endpoint_flags": [],
+          "parent_edge": "r_LLL",
+          "parent_endpoint_flags": [],
+          "potential": "1/4",
+          "subdivide_child": true,
+          "subdivide_parent": true
+        },
+        {
+          "angle": "1/8",
+          "child_edge": "R_eq7",
+          "child_endpoint_flags": [],
+          "parent_edge": "r_LLR",
+          "parent_endpoint_flags": [],
+          "potential": "1/4",
+          "subdivide_child": true,
+          "subdivide_parent": true
+        },
+        {
+          "angle": "1/4",
+          "child_edge": "R_eq7",
+          "child_endpoint_flags": [],
+          "parent_edge": "r_LRL",
+          "parent_endpoint_flags": [],
+          "potential": "1/4",
+          "subdivide_child": true,
+          "subdivide_parent": true
+        },
+        {
+          "angle": "3/8",
+          "child_edge": "R_eq7",
+          "child_endpoint_flags": [],
+          "parent_edge": "r_LRR",
+          "parent_endpoint_flags": [],
+          "potential": "1/4",
+          "subdivide_child": true,
+          "subdivide_parent": true
+        }
+      ],
+      "required_parent_subdivisions": [
+        {
+          "angle": "0",
+          "child_edge": "R_eq7",
+          "child_endpoint_flags": [],
+          "parent_edge": "r_LLL",
+          "parent_endpoint_flags": [],
+          "potential": "1/4",
+          "subdivide_child": true,
+          "subdivide_parent": true
+        },
+        {
+          "angle": "1/8",
+          "child_edge": "R_eq7",
+          "child_endpoint_flags": [],
+          "parent_edge": "r_LLR",
+          "parent_endpoint_flags": [],
+          "potential": "1/4",
+          "subdivide_child": true,
+          "subdivide_parent": true
+        },
+        {
+          "angle": "1/4",
+          "child_edge": "R_eq7",
+          "child_endpoint_flags": [],
+          "parent_edge": "r_LRL",
+          "parent_endpoint_flags": [],
+          "potential": "1/4",
+          "subdivide_child": true,
+          "subdivide_parent": true
+        },
+        {
+          "angle": "3/8",
+          "child_edge": "R_eq7",
+          "child_endpoint_flags": [],
+          "parent_edge": "r_LRR",
+          "parent_endpoint_flags": [],
+          "potential": "1/4",
+          "subdivide_child": true,
+          "subdivide_parent": true
+        },
+        {
+          "angle": "1/2",
+          "child_edge": "R_eq0",
+          "child_endpoint_flags": [
+            "R_f_RLL_e"
+          ],
+          "parent_edge": "r_RLL",
+          "parent_endpoint_flags": [],
+          "potential": "1/4",
+          "subdivide_child": false,
+          "subdivide_parent": true
+        },
+        {
+          "angle": "1/2",
+          "child_edge": "R_eq7",
+          "child_endpoint_flags": [
+            "R_f_RLL_s"
+          ],
+          "parent_edge": "r_RLL",
+          "parent_endpoint_flags": [],
+          "potential": "1/4",
+          "subdivide_child": false,
+          "subdivide_parent": true
+        },
+        {
+          "angle": "5/8",
+          "child_edge": "R_eq1",
+          "child_endpoint_flags": [
+            "R_f_RLR_s"
+          ],
+          "parent_edge": "r_RLR",
+          "parent_endpoint_flags": [],
+          "potential": "1/4",
+          "subdivide_child": false,
+          "subdivide_parent": true
+        },
+        {
+          "angle": "5/8",
+          "child_edge": "R_eq2",
+          "child_endpoint_flags": [
+            "R_f_RLR_e"
+          ],
+          "parent_edge": "r_RLR",
+          "parent_endpoint_flags": [],
+          "potential": "1/4",
+          "subdivide_child": false,
+          "subdivide_parent": true
+        },
+        {
+          "angle": "3/4",
+          "child_edge": "R_eq3",
+          "child_endpoint_flags": [
+            "R_f_RRL_s"
+          ],
+          "parent_edge": "r_RRL",
+          "parent_endpoint_flags": [],
+          "potential": "1/4",
+          "subdivide_child": false,
+          "subdivide_parent": true
+        },
+        {
+          "angle": "3/4",
+          "child_edge": "R_eq4",
+          "child_endpoint_flags": [
+            "R_f_RRL_e"
+          ],
+          "parent_edge": "r_RRL",
+          "parent_endpoint_flags": [],
+          "potential": "1/4",
+          "subdivide_child": false,
+          "subdivide_parent": true
+        },
+        {
+          "angle": "7/8",
+          "child_edge": "R_eq5",
+          "child_endpoint_flags": [
+            "R_f_RRR_s"
+          ],
+          "parent_edge": "r_RRR",
+          "parent_endpoint_flags": [],
+          "potential": "1/4",
+          "subdivide_child": false,
+          "subdivide_parent": true
+        },
+        {
+          "angle": "7/8",
+          "child_edge": "R_eq6",
+          "child_endpoint_flags": [
+            "R_f_RRR_e"
+          ],
+          "parent_edge": "r_RRR",
+          "parent_endpoint_flags": [],
+          "potential": "1/4",
+          "subdivide_child": false,
+          "subdivide_parent": true
+        }
+      ]
+    }
+  },
+  "source_contact_failures": [],
+  "source_vertex_shift_checks": {
+    "depth": 3,
+    "prefix_families": [
+      {
+        "landing_vertices": [
+          "v_LLL",
+          "v_LLR",
+          "v_LRL",
+          "v_LRR",
+          "v_RLL",
+          "v_RLR",
+          "v_RRL",
+          "v_RRR"
+        ],
+        "normalized": [
+          {
+            "normalized_suffix": "LLL",
+            "normalized_vertex": "v_LLL",
+            "physical_vertex": "v_LLL",
+            "physical_word": "LLL"
+          },
+          {
+            "normalized_suffix": "LLR",
+            "normalized_vertex": "v_LLR",
+            "physical_vertex": "v_LLR",
+            "physical_word": "LLR"
+          },
+          {
+            "normalized_suffix": "LRL",
+            "normalized_vertex": "v_LRL",
+            "physical_vertex": "v_LRL",
+            "physical_word": "LRL"
+          },
+          {
+            "normalized_suffix": "LRR",
+            "normalized_vertex": "v_LRR",
+            "physical_vertex": "v_LRR",
+            "physical_word": "LRR"
+          },
+          {
+            "normalized_suffix": "RLL",
+            "normalized_vertex": "v_RLL",
+            "physical_vertex": "v_RLL",
+            "physical_word": "RLL"
+          },
+          {
+            "normalized_suffix": "RLR",
+            "normalized_vertex": "v_RLR",
+            "physical_vertex": "v_RLR",
+            "physical_word": "RLR"
+          },
+          {
+            "normalized_suffix": "RRL",
+            "normalized_vertex": "v_RRL",
+            "physical_vertex": "v_RRL",
+            "physical_word": "RRL"
+          },
+          {
+            "normalized_suffix": "RRR",
+            "normalized_vertex": "v_RRR",
+            "physical_vertex": "v_RRR",
+            "physical_word": "RRR"
+          }
+        ],
+        "prefix": "epsilon"
+      },
+      {
+        "landing_vertices": [
+          "v_LLL",
+          "v_LLR",
+          "v_LRL",
+          "v_LRR"
+        ],
+        "normalized": [
+          {
+            "normalized_suffix": "LL",
+            "normalized_vertex": "v_LLL",
+            "physical_vertex": "v_LLL",
+            "physical_word": "LLL"
+          },
+          {
+            "normalized_suffix": "LR",
+            "normalized_vertex": "v_LRL",
+            "physical_vertex": "v_LLR",
+            "physical_word": "LLR"
+          },
+          {
+            "normalized_suffix": "RL",
+            "normalized_vertex": "v_RLL",
+            "physical_vertex": "v_LRL",
+            "physical_word": "LRL"
+          },
+          {
+            "normalized_suffix": "RR",
+            "normalized_vertex": "v_RRL",
+            "physical_vertex": "v_LRR",
+            "physical_word": "LRR"
+          }
+        ],
+        "prefix": "L"
+      },
+      {
+        "landing_vertices": [
+          "v_RLL",
+          "v_RLR",
+          "v_RRL",
+          "v_RRR"
+        ],
+        "normalized": [
+          {
+            "normalized_suffix": "LL",
+            "normalized_vertex": "v_LLL",
+            "physical_vertex": "v_RLL",
+            "physical_word": "RLL"
+          },
+          {
+            "normalized_suffix": "LR",
+            "normalized_vertex": "v_LRL",
+            "physical_vertex": "v_RLR",
+            "physical_word": "RLR"
+          },
+          {
+            "normalized_suffix": "RL",
+            "normalized_vertex": "v_RLL",
+            "physical_vertex": "v_RRL",
+            "physical_word": "RRL"
+          },
+          {
+            "normalized_suffix": "RR",
+            "normalized_vertex": "v_RRL",
+            "physical_vertex": "v_RRR",
+            "physical_word": "RRR"
+          }
+        ],
+        "prefix": "R"
+      },
+      {
+        "landing_vertices": [
+          "v_LLL",
+          "v_LLR"
+        ],
+        "normalized": [
+          {
+            "normalized_suffix": "L",
+            "normalized_vertex": "v_LLL",
+            "physical_vertex": "v_LLL",
+            "physical_word": "LLL"
+          },
+          {
+            "normalized_suffix": "R",
+            "normalized_vertex": "v_RLL",
+            "physical_vertex": "v_LLR",
+            "physical_word": "LLR"
+          }
+        ],
+        "prefix": "LL"
+      },
+      {
+        "landing_vertices": [
+          "v_LRL",
+          "v_LRR"
+        ],
+        "normalized": [
+          {
+            "normalized_suffix": "L",
+            "normalized_vertex": "v_LLL",
+            "physical_vertex": "v_LRL",
+            "physical_word": "LRL"
+          },
+          {
+            "normalized_suffix": "R",
+            "normalized_vertex": "v_RLL",
+            "physical_vertex": "v_LRR",
+            "physical_word": "LRR"
+          }
+        ],
+        "prefix": "LR"
+      },
+      {
+        "landing_vertices": [
+          "v_RLL",
+          "v_RLR"
+        ],
+        "normalized": [
+          {
+            "normalized_suffix": "L",
+            "normalized_vertex": "v_LLL",
+            "physical_vertex": "v_RLL",
+            "physical_word": "RLL"
+          },
+          {
+            "normalized_suffix": "R",
+            "normalized_vertex": "v_RLL",
+            "physical_vertex": "v_RLR",
+            "physical_word": "RLR"
+          }
+        ],
+        "prefix": "RL"
+      },
+      {
+        "landing_vertices": [
+          "v_RRL",
+          "v_RRR"
+        ],
+        "normalized": [
+          {
+            "normalized_suffix": "L",
+            "normalized_vertex": "v_LLL",
+            "physical_vertex": "v_RRL",
+            "physical_word": "RRL"
+          },
+          {
+            "normalized_suffix": "R",
+            "normalized_vertex": "v_RLL",
+            "physical_vertex": "v_RRR",
+            "physical_word": "RRR"
+          }
+        ],
+        "prefix": "RR"
+      },
+      {
+        "landing_vertices": [
+          "v_LLL"
+        ],
+        "normalized": [
+          {
+            "normalized_suffix": "epsilon",
+            "normalized_vertex": "v_LLL",
+            "physical_vertex": "v_LLL",
+            "physical_word": "LLL"
+          }
+        ],
+        "prefix": "LLL"
+      },
+      {
+        "landing_vertices": [
+          "v_LLR"
+        ],
+        "normalized": [
+          {
+            "normalized_suffix": "epsilon",
+            "normalized_vertex": "v_LLL",
+            "physical_vertex": "v_LLR",
+            "physical_word": "LLR"
+          }
+        ],
+        "prefix": "LLR"
+      },
+      {
+        "landing_vertices": [
+          "v_LRL"
+        ],
+        "normalized": [
+          {
+            "normalized_suffix": "epsilon",
+            "normalized_vertex": "v_LLL",
+            "physical_vertex": "v_LRL",
+            "physical_word": "LRL"
+          }
+        ],
+        "prefix": "LRL"
+      },
+      {
+        "landing_vertices": [
+          "v_LRR"
+        ],
+        "normalized": [
+          {
+            "normalized_suffix": "epsilon",
+            "normalized_vertex": "v_LLL",
+            "physical_vertex": "v_LRR",
+            "physical_word": "LRR"
+          }
+        ],
+        "prefix": "LRR"
+      },
+      {
+        "landing_vertices": [
+          "v_RLL"
+        ],
+        "normalized": [
+          {
+            "normalized_suffix": "epsilon",
+            "normalized_vertex": "v_LLL",
+            "physical_vertex": "v_RLL",
+            "physical_word": "RLL"
+          }
+        ],
+        "prefix": "RLL"
+      },
+      {
+        "landing_vertices": [
+          "v_RLR"
+        ],
+        "normalized": [
+          {
+            "normalized_suffix": "epsilon",
+            "normalized_vertex": "v_LLL",
+            "physical_vertex": "v_RLR",
+            "physical_word": "RLR"
+          }
+        ],
+        "prefix": "RLR"
+      },
+      {
+        "landing_vertices": [
+          "v_RRL"
+        ],
+        "normalized": [
+          {
+            "normalized_suffix": "epsilon",
+            "normalized_vertex": "v_LLL",
+            "physical_vertex": "v_RRL",
+            "physical_word": "RRL"
+          }
+        ],
+        "prefix": "RRL"
+      },
+      {
+        "landing_vertices": [
+          "v_RRR"
+        ],
+        "normalized": [
+          {
+            "normalized_suffix": "epsilon",
+            "normalized_vertex": "v_LLL",
+            "physical_vertex": "v_RRR",
+            "physical_word": "RRR"
+          }
+        ],
+        "prefix": "RRR"
+      }
+    ],
+    "word_chains": [
+      {
+        "forward_suffix_chain": [
+          {
+            "vertex": "v_LLL",
+            "word": "LLL"
+          },
+          {
+            "vertex": "v_LLL",
+            "word": "LL"
+          },
+          {
+            "vertex": "v_LLL",
+            "word": "L"
+          },
+          {
+            "vertex": "v_LLL",
+            "word": "epsilon"
+          }
+        ],
+        "vertex": "v_LLL",
+        "word": "LLL"
+      },
+      {
+        "forward_suffix_chain": [
+          {
+            "vertex": "v_LLR",
+            "word": "LLR"
+          },
+          {
+            "vertex": "v_LRL",
+            "word": "LR"
+          },
+          {
+            "vertex": "v_RLL",
+            "word": "R"
+          },
+          {
+            "vertex": "v_LLL",
+            "word": "epsilon"
+          }
+        ],
+        "vertex": "v_LLR",
+        "word": "LLR"
+      },
+      {
+        "forward_suffix_chain": [
+          {
+            "vertex": "v_LRL",
+            "word": "LRL"
+          },
+          {
+            "vertex": "v_RLL",
+            "word": "RL"
+          },
+          {
+            "vertex": "v_LLL",
+            "word": "L"
+          },
+          {
+            "vertex": "v_LLL",
+            "word": "epsilon"
+          }
+        ],
+        "vertex": "v_LRL",
+        "word": "LRL"
+      },
+      {
+        "forward_suffix_chain": [
+          {
+            "vertex": "v_LRR",
+            "word": "LRR"
+          },
+          {
+            "vertex": "v_RRL",
+            "word": "RR"
+          },
+          {
+            "vertex": "v_RLL",
+            "word": "R"
+          },
+          {
+            "vertex": "v_LLL",
+            "word": "epsilon"
+          }
+        ],
+        "vertex": "v_LRR",
+        "word": "LRR"
+      },
+      {
+        "forward_suffix_chain": [
+          {
+            "vertex": "v_RLL",
+            "word": "RLL"
+          },
+          {
+            "vertex": "v_LLL",
+            "word": "LL"
+          },
+          {
+            "vertex": "v_LLL",
+            "word": "L"
+          },
+          {
+            "vertex": "v_LLL",
+            "word": "epsilon"
+          }
+        ],
+        "vertex": "v_RLL",
+        "word": "RLL"
+      },
+      {
+        "forward_suffix_chain": [
+          {
+            "vertex": "v_RLR",
+            "word": "RLR"
+          },
+          {
+            "vertex": "v_LRL",
+            "word": "LR"
+          },
+          {
+            "vertex": "v_RLL",
+            "word": "R"
+          },
+          {
+            "vertex": "v_LLL",
+            "word": "epsilon"
+          }
+        ],
+        "vertex": "v_RLR",
+        "word": "RLR"
+      },
+      {
+        "forward_suffix_chain": [
+          {
+            "vertex": "v_RRL",
+            "word": "RRL"
+          },
+          {
+            "vertex": "v_RLL",
+            "word": "RL"
+          },
+          {
+            "vertex": "v_LLL",
+            "word": "L"
+          },
+          {
+            "vertex": "v_LLL",
+            "word": "epsilon"
+          }
+        ],
+        "vertex": "v_RRL",
+        "word": "RRL"
+      },
+      {
+        "forward_suffix_chain": [
+          {
+            "vertex": "v_RRR",
+            "word": "RRR"
+          },
+          {
+            "vertex": "v_RRL",
+            "word": "RR"
+          },
+          {
+            "vertex": "v_RLL",
+            "word": "R"
+          },
+          {
+            "vertex": "v_LLL",
+            "word": "epsilon"
+          }
+        ],
+        "vertex": "v_RRR",
+        "word": "RRR"
+      }
+    ]
+  },
+  "synchronization": {
+    "depth": 3,
+    "depth_states": {
+      "LLL": [
+        "r_LLL"
+      ],
+      "LLR": [
+        "r_LLL"
+      ],
+      "LRL": [
+        "r_LLL"
+      ],
+      "LRR": [
+        "r_LLL"
+      ],
+      "RLL": [
+        "r_LLL"
+      ],
+      "RLR": [
+        "r_LLL"
+      ],
+      "RRL": [
+        "r_LLL"
+      ],
+      "RRR": [
+        "r_LLL"
+      ]
+    },
+    "failures": [],
+    "kill_branch_images": {
+      "R": []
+    },
+    "persistent_branch": "L",
+    "persistent_state": [
+      "r_LLL"
+    ],
+    "present": true
+  },
+  "word_functoriality": {
+    "failures": [],
+    "path_counts": {
+      "e0:L": 1,
+      "e0:LL": 1,
+      "e0:LLL": 1,
+      "e0:LLLL": 1,
+      "e0:LLLLL": 1,
+      "e0:LLLLR": 1,
+      "e0:LLLR": 1,
+      "e0:LLLRL": 1,
+      "e0:LLLRR": 1,
+      "e0:LLR": 1,
+      "e0:LLRL": 1,
+      "e0:LLRLL": 1,
+      "e0:LLRLR": 1,
+      "e0:LLRR": 1,
+      "e0:LLRRL": 1,
+      "e0:LLRRR": 1,
+      "e0:LR": 1,
+      "e0:LRL": 1,
+      "e0:LRLL": 1,
+      "e0:LRLLL": 1,
+      "e0:LRLLR": 1,
+      "e0:LRLR": 1,
+      "e0:LRLRL": 1,
+      "e0:LRLRR": 1,
+      "e0:LRR": 1,
+      "e0:LRRL": 1,
+      "e0:LRRLL": 1,
+      "e0:LRRLR": 1,
+      "e0:LRRR": 1,
+      "e0:LRRRL": 1,
+      "e0:LRRRR": 1,
+      "e0:R": 1,
+      "e0:RL": 1,
+      "e0:RLL": 1,
+      "e0:RLLL": 1,
+      "e0:RLLLL": 1,
+      "e0:RLLLR": 1,
+      "e0:RLLR": 1,
+      "e0:RLLRL": 1,
+      "e0:RLLRR": 1,
+      "e0:RLR": 1,
+      "e0:RLRL": 1,
+      "e0:RLRLL": 1,
+      "e0:RLRLR": 1,
+      "e0:RLRR": 1,
+      "e0:RLRRL": 1,
+      "e0:RLRRR": 1,
+      "e0:RR": 1,
+      "e0:RRL": 1,
+      "e0:RRLL": 1,
+      "e0:RRLLL": 1,
+      "e0:RRLLR": 1,
+      "e0:RRLR": 1,
+      "e0:RRLRL": 1,
+      "e0:RRLRR": 1,
+      "e0:RRR": 1,
+      "e0:RRRL": 1,
+      "e0:RRRLL": 1,
+      "e0:RRRLR": 1,
+      "e0:RRRR": 1,
+      "e0:RRRRL": 1,
+      "e0:RRRRR": 1,
+      "e1:L": 1,
+      "e1:LL": 1,
+      "e1:LLL": 1,
+      "e1:LLLL": 1,
+      "e1:LLLLL": 1,
+      "e1:LLLLR": 1,
+      "e1:LLLR": 1,
+      "e1:LLLRL": 1,
+      "e1:LLLRR": 1,
+      "e1:LLR": 1,
+      "e1:LLRL": 1,
+      "e1:LLRLL": 1,
+      "e1:LLRLR": 1,
+      "e1:LLRR": 1,
+      "e1:LLRRL": 1,
+      "e1:LLRRR": 1,
+      "e1:LR": 1,
+      "e1:LRL": 1,
+      "e1:LRLL": 1,
+      "e1:LRLLL": 1,
+      "e1:LRLLR": 1,
+      "e1:LRLR": 1,
+      "e1:LRLRL": 1,
+      "e1:LRLRR": 1,
+      "e1:LRR": 1,
+      "e1:LRRL": 1,
+      "e1:LRRLL": 1,
+      "e1:LRRLR": 1,
+      "e1:LRRR": 1,
+      "e1:LRRRL": 1,
+      "e1:LRRRR": 1,
+      "e1:R": 1,
+      "e1:RL": 1,
+      "e1:RLL": 1,
+      "e1:RLLL": 1,
+      "e1:RLLLL": 1,
+      "e1:RLLLR": 1,
+      "e1:RLLR": 1,
+      "e1:RLLRL": 1,
+      "e1:RLLRR": 1,
+      "e1:RLR": 1,
+      "e1:RLRL": 1,
+      "e1:RLRLL": 1,
+      "e1:RLRLR": 1,
+      "e1:RLRR": 1,
+      "e1:RLRRL": 1,
+      "e1:RLRRR": 1,
+      "e1:RR": 1,
+      "e1:RRL": 1,
+      "e1:RRLL": 1,
+      "e1:RRLLL": 1,
+      "e1:RRLLR": 1,
+      "e1:RRLR": 1,
+      "e1:RRLRL": 1,
+      "e1:RRLRR": 1,
+      "e1:RRR": 1,
+      "e1:RRRL": 1,
+      "e1:RRRLL": 1,
+      "e1:RRRLR": 1,
+      "e1:RRRR": 1,
+      "e1:RRRRL": 1,
+      "e1:RRRRR": 1,
+      "e2:L": 1,
+      "e2:LL": 1,
+      "e2:LLL": 1,
+      "e2:LLLL": 1,
+      "e2:LLLLL": 1,
+      "e2:LLLLR": 1,
+      "e2:LLLR": 1,
+      "e2:LLLRL": 1,
+      "e2:LLLRR": 1,
+      "e2:LLR": 1,
+      "e2:LLRL": 1,
+      "e2:LLRLL": 1,
+      "e2:LLRLR": 1,
+      "e2:LLRR": 1,
+      "e2:LLRRL": 1,
+      "e2:LLRRR": 1,
+      "e2:LR": 1,
+      "e2:LRL": 1,
+      "e2:LRLL": 1,
+      "e2:LRLLL": 1,
+      "e2:LRLLR": 1,
+      "e2:LRLR": 1,
+      "e2:LRLRL": 1,
+      "e2:LRLRR": 1,
+      "e2:LRR": 1,
+      "e2:LRRL": 1,
+      "e2:LRRLL": 1,
+      "e2:LRRLR": 1,
+      "e2:LRRR": 1,
+      "e2:LRRRL": 1,
+      "e2:LRRRR": 1,
+      "e2:R": 1,
+      "e2:RL": 1,
+      "e2:RLL": 1,
+      "e2:RLLL": 1,
+      "e2:RLLLL": 1,
+      "e2:RLLLR": 1,
+      "e2:RLLR": 1,
+      "e2:RLLRL": 1,
+      "e2:RLLRR": 1,
+      "e2:RLR": 1,
+      "e2:RLRL": 1,
+      "e2:RLRLL": 1,
+      "e2:RLRLR": 1,
+      "e2:RLRR": 1,
+      "e2:RLRRL": 1,
+      "e2:RLRRR": 1,
+      "e2:RR": 1,
+      "e2:RRL": 1,
+      "e2:RRLL": 1,
+      "e2:RRLLL": 1,
+      "e2:RRLLR": 1,
+      "e2:RRLR": 1,
+      "e2:RRLRL": 1,
+      "e2:RRLRR": 1,
+      "e2:RRR": 1,
+      "e2:RRRL": 1,
+      "e2:RRRLL": 1,
+      "e2:RRRLR": 1,
+      "e2:RRRR": 1,
+      "e2:RRRRL": 1,
+      "e2:RRRRR": 1,
+      "e3:L": 1,
+      "e3:LL": 1,
+      "e3:LLL": 1,
+      "e3:LLLL": 1,
+      "e3:LLLLL": 1,
+      "e3:LLLLR": 1,
+      "e3:LLLR": 1,
+      "e3:LLLRL": 1,
+      "e3:LLLRR": 1,
+      "e3:LLR": 1,
+      "e3:LLRL": 1,
+      "e3:LLRLL": 1,
+      "e3:LLRLR": 1,
+      "e3:LLRR": 1,
+      "e3:LLRRL": 1,
+      "e3:LLRRR": 1,
+      "e3:LR": 1,
+      "e3:LRL": 1,
+      "e3:LRLL": 1,
+      "e3:LRLLL": 1,
+      "e3:LRLLR": 1,
+      "e3:LRLR": 1,
+      "e3:LRLRL": 1,
+      "e3:LRLRR": 1,
+      "e3:LRR": 1,
+      "e3:LRRL": 1,
+      "e3:LRRLL": 1,
+      "e3:LRRLR": 1,
+      "e3:LRRR": 1,
+      "e3:LRRRL": 1,
+      "e3:LRRRR": 1,
+      "e3:R": 1,
+      "e3:RL": 1,
+      "e3:RLL": 1,
+      "e3:RLLL": 1,
+      "e3:RLLLL": 1,
+      "e3:RLLLR": 1,
+      "e3:RLLR": 1,
+      "e3:RLLRL": 1,
+      "e3:RLLRR": 1,
+      "e3:RLR": 1,
+      "e3:RLRL": 1,
+      "e3:RLRLL": 1,
+      "e3:RLRLR": 1,
+      "e3:RLRR": 1,
+      "e3:RLRRL": 1,
+      "e3:RLRRR": 1,
+      "e3:RR": 1,
+      "e3:RRL": 1,
+      "e3:RRLL": 1,
+      "e3:RRLLL": 1,
+      "e3:RRLLR": 1,
+      "e3:RRLR": 1,
+      "e3:RRLRL": 1,
+      "e3:RRLRR": 1,
+      "e3:RRR": 1,
+      "e3:RRRL": 1,
+      "e3:RRRLL": 1,
+      "e3:RRRLR": 1,
+      "e3:RRRR": 1,
+      "e3:RRRRL": 1,
+      "e3:RRRRR": 1,
+      "e4:L": 1,
+      "e4:LL": 1,
+      "e4:LLL": 1,
+      "e4:LLLL": 1,
+      "e4:LLLLL": 1,
+      "e4:LLLLR": 1,
+      "e4:LLLR": 1,
+      "e4:LLLRL": 1,
+      "e4:LLLRR": 1,
+      "e4:LLR": 1,
+      "e4:LLRL": 1,
+      "e4:LLRLL": 1,
+      "e4:LLRLR": 1,
+      "e4:LLRR": 1,
+      "e4:LLRRL": 1,
+      "e4:LLRRR": 1,
+      "e4:LR": 1,
+      "e4:LRL": 1,
+      "e4:LRLL": 1,
+      "e4:LRLLL": 1,
+      "e4:LRLLR": 1,
+      "e4:LRLR": 1,
+      "e4:LRLRL": 1,
+      "e4:LRLRR": 1,
+      "e4:LRR": 1,
+      "e4:LRRL": 1,
+      "e4:LRRLL": 1,
+      "e4:LRRLR": 1,
+      "e4:LRRR": 1,
+      "e4:LRRRL": 1,
+      "e4:LRRRR": 1,
+      "e4:R": 1,
+      "e4:RL": 1,
+      "e4:RLL": 1,
+      "e4:RLLL": 1,
+      "e4:RLLLL": 1,
+      "e4:RLLLR": 1,
+      "e4:RLLR": 1,
+      "e4:RLLRL": 1,
+      "e4:RLLRR": 1,
+      "e4:RLR": 1,
+      "e4:RLRL": 1,
+      "e4:RLRLL": 1,
+      "e4:RLRLR": 1,
+      "e4:RLRR": 1,
+      "e4:RLRRL": 1,
+      "e4:RLRRR": 1,
+      "e4:RR": 1,
+      "e4:RRL": 1,
+      "e4:RRLL": 1,
+      "e4:RRLLL": 1,
+      "e4:RRLLR": 1,
+      "e4:RRLR": 1,
+      "e4:RRLRL": 1,
+      "e4:RRLRR": 1,
+      "e4:RRR": 1,
+      "e4:RRRL": 1,
+      "e4:RRRLL": 1,
+      "e4:RRRLR": 1,
+      "e4:RRRR": 1,
+      "e4:RRRRL": 1,
+      "e4:RRRRR": 1,
+      "e5:L": 1,
+      "e5:LL": 1,
+      "e5:LLL": 1,
+      "e5:LLLL": 1,
+      "e5:LLLLL": 1,
+      "e5:LLLLR": 1,
+      "e5:LLLR": 1,
+      "e5:LLLRL": 1,
+      "e5:LLLRR": 1,
+      "e5:LLR": 1,
+      "e5:LLRL": 1,
+      "e5:LLRLL": 1,
+      "e5:LLRLR": 1,
+      "e5:LLRR": 1,
+      "e5:LLRRL": 1,
+      "e5:LLRRR": 1,
+      "e5:LR": 1,
+      "e5:LRL": 1,
+      "e5:LRLL": 1,
+      "e5:LRLLL": 1,
+      "e5:LRLLR": 1,
+      "e5:LRLR": 1,
+      "e5:LRLRL": 1,
+      "e5:LRLRR": 1,
+      "e5:LRR": 1,
+      "e5:LRRL": 1,
+      "e5:LRRLL": 1,
+      "e5:LRRLR": 1,
+      "e5:LRRR": 1,
+      "e5:LRRRL": 1,
+      "e5:LRRRR": 1,
+      "e5:R": 1,
+      "e5:RL": 1,
+      "e5:RLL": 1,
+      "e5:RLLL": 1,
+      "e5:RLLLL": 1,
+      "e5:RLLLR": 1,
+      "e5:RLLR": 1,
+      "e5:RLLRL": 1,
+      "e5:RLLRR": 1,
+      "e5:RLR": 1,
+      "e5:RLRL": 1,
+      "e5:RLRLL": 1,
+      "e5:RLRLR": 1,
+      "e5:RLRR": 1,
+      "e5:RLRRL": 1,
+      "e5:RLRRR": 1,
+      "e5:RR": 1,
+      "e5:RRL": 1,
+      "e5:RRLL": 1,
+      "e5:RRLLL": 1,
+      "e5:RRLLR": 1,
+      "e5:RRLR": 1,
+      "e5:RRLRL": 1,
+      "e5:RRLRR": 1,
+      "e5:RRR": 1,
+      "e5:RRRL": 1,
+      "e5:RRRLL": 1,
+      "e5:RRRLR": 1,
+      "e5:RRRR": 1,
+      "e5:RRRRL": 1,
+      "e5:RRRRR": 1,
+      "e6:L": 1,
+      "e6:LL": 1,
+      "e6:LLL": 1,
+      "e6:LLLL": 1,
+      "e6:LLLLL": 1,
+      "e6:LLLLR": 1,
+      "e6:LLLR": 1,
+      "e6:LLLRL": 1,
+      "e6:LLLRR": 1,
+      "e6:LLR": 1,
+      "e6:LLRL": 1,
+      "e6:LLRLL": 1,
+      "e6:LLRLR": 1,
+      "e6:LLRR": 1,
+      "e6:LLRRL": 1,
+      "e6:LLRRR": 1,
+      "e6:LR": 1,
+      "e6:LRL": 1,
+      "e6:LRLL": 1,
+      "e6:LRLLL": 1,
+      "e6:LRLLR": 1,
+      "e6:LRLR": 1,
+      "e6:LRLRL": 1,
+      "e6:LRLRR": 1,
+      "e6:LRR": 1,
+      "e6:LRRL": 1,
+      "e6:LRRLL": 1,
+      "e6:LRRLR": 1,
+      "e6:LRRR": 1,
+      "e6:LRRRL": 1,
+      "e6:LRRRR": 1,
+      "e6:R": 1,
+      "e6:RL": 1,
+      "e6:RLL": 1,
+      "e6:RLLL": 1,
+      "e6:RLLLL": 1,
+      "e6:RLLLR": 1,
+      "e6:RLLR": 1,
+      "e6:RLLRL": 1,
+      "e6:RLLRR": 1,
+      "e6:RLR": 1,
+      "e6:RLRL": 1,
+      "e6:RLRLL": 1,
+      "e6:RLRLR": 1,
+      "e6:RLRR": 1,
+      "e6:RLRRL": 1,
+      "e6:RLRRR": 1,
+      "e6:RR": 1,
+      "e6:RRL": 1,
+      "e6:RRLL": 1,
+      "e6:RRLLL": 1,
+      "e6:RRLLR": 1,
+      "e6:RRLR": 1,
+      "e6:RRLRL": 1,
+      "e6:RRLRR": 1,
+      "e6:RRR": 1,
+      "e6:RRRL": 1,
+      "e6:RRRLL": 1,
+      "e6:RRRLR": 1,
+      "e6:RRRR": 1,
+      "e6:RRRRL": 1,
+      "e6:RRRRR": 1,
+      "e7:L": 1,
+      "e7:LL": 1,
+      "e7:LLL": 1,
+      "e7:LLLL": 1,
+      "e7:LLLLL": 1,
+      "e7:LLLLR": 1,
+      "e7:LLLR": 1,
+      "e7:LLLRL": 1,
+      "e7:LLLRR": 1,
+      "e7:LLR": 1,
+      "e7:LLRL": 1,
+      "e7:LLRLL": 1,
+      "e7:LLRLR": 1,
+      "e7:LLRR": 1,
+      "e7:LLRRL": 1,
+      "e7:LLRRR": 1,
+      "e7:LR": 1,
+      "e7:LRL": 1,
+      "e7:LRLL": 1,
+      "e7:LRLLL": 1,
+      "e7:LRLLR": 1,
+      "e7:LRLR": 1,
+      "e7:LRLRL": 1,
+      "e7:LRLRR": 1,
+      "e7:LRR": 1,
+      "e7:LRRL": 1,
+      "e7:LRRLL": 1,
+      "e7:LRRLR": 1,
+      "e7:LRRR": 1,
+      "e7:LRRRL": 1,
+      "e7:LRRRR": 1,
+      "e7:R": 1,
+      "e7:RL": 1,
+      "e7:RLL": 1,
+      "e7:RLLL": 1,
+      "e7:RLLLL": 1,
+      "e7:RLLLR": 1,
+      "e7:RLLR": 1,
+      "e7:RLLRL": 1,
+      "e7:RLLRR": 1,
+      "e7:RLR": 1,
+      "e7:RLRL": 1,
+      "e7:RLRLL": 1,
+      "e7:RLRLR": 1,
+      "e7:RLRR": 1,
+      "e7:RLRRL": 1,
+      "e7:RLRRR": 1,
+      "e7:RR": 1,
+      "e7:RRL": 1,
+      "e7:RRLL": 1,
+      "e7:RRLLL": 1,
+      "e7:RRLLR": 1,
+      "e7:RRLR": 1,
+      "e7:RRLRL": 1,
+      "e7:RRLRR": 1,
+      "e7:RRR": 1,
+      "e7:RRRL": 1,
+      "e7:RRRLL": 1,
+      "e7:RRRLR": 1,
+      "e7:RRRR": 1,
+      "e7:RRRRL": 1,
+      "e7:RRRRR": 1,
+      "r_LLL:L": 1,
+      "r_LLL:LL": 1,
+      "r_LLL:LLL": 1,
+      "r_LLL:LLLL": 1,
+      "r_LLL:LLLLL": 1,
+      "r_LLL:LLLLR": 1,
+      "r_LLL:LLLR": 1,
+      "r_LLL:LLLRL": 1,
+      "r_LLL:LLLRR": 1,
+      "r_LLL:LLR": 1,
+      "r_LLL:LLRL": 1,
+      "r_LLL:LLRLL": 1,
+      "r_LLL:LLRLR": 1,
+      "r_LLL:LLRR": 1,
+      "r_LLL:LLRRL": 1,
+      "r_LLL:LLRRR": 1,
+      "r_LLL:LR": 1,
+      "r_LLL:LRL": 1,
+      "r_LLL:LRLL": 1,
+      "r_LLL:LRLLL": 1,
+      "r_LLL:LRLLR": 1,
+      "r_LLL:LRLR": 1,
+      "r_LLL:LRLRL": 1,
+      "r_LLL:LRLRR": 1,
+      "r_LLL:LRR": 1,
+      "r_LLL:LRRL": 1,
+      "r_LLL:LRRLL": 1,
+      "r_LLL:LRRLR": 1,
+      "r_LLL:LRRR": 1,
+      "r_LLL:LRRRL": 1,
+      "r_LLL:LRRRR": 1,
+      "r_LLL:R": 1,
+      "r_LLL:RL": 1,
+      "r_LLL:RLL": 1,
+      "r_LLL:RLLL": 1,
+      "r_LLL:RLLLL": 1,
+      "r_LLL:RLLLR": 1,
+      "r_LLL:RLLR": 1,
+      "r_LLL:RLLRL": 1,
+      "r_LLL:RLLRR": 1,
+      "r_LLL:RLR": 1,
+      "r_LLL:RLRL": 1,
+      "r_LLL:RLRLL": 1,
+      "r_LLL:RLRLR": 1,
+      "r_LLL:RLRR": 1,
+      "r_LLL:RLRRL": 1,
+      "r_LLL:RLRRR": 1,
+      "r_LLL:RR": 1,
+      "r_LLL:RRL": 1,
+      "r_LLL:RRLL": 1,
+      "r_LLL:RRLLL": 1,
+      "r_LLL:RRLLR": 1,
+      "r_LLL:RRLR": 1,
+      "r_LLL:RRLRL": 1,
+      "r_LLL:RRLRR": 1,
+      "r_LLL:RRR": 1,
+      "r_LLL:RRRL": 1,
+      "r_LLL:RRRLL": 1,
+      "r_LLL:RRRLR": 1,
+      "r_LLL:RRRR": 1,
+      "r_LLL:RRRRL": 1,
+      "r_LLL:RRRRR": 1,
+      "r_LLR:L": 1,
+      "r_LLR:LL": 1,
+      "r_LLR:LLL": 1,
+      "r_LLR:LLLL": 1,
+      "r_LLR:LLLLL": 1,
+      "r_LLR:LLLLR": 1,
+      "r_LLR:LLLR": 1,
+      "r_LLR:LLLRL": 1,
+      "r_LLR:LLLRR": 1,
+      "r_LLR:LLR": 1,
+      "r_LLR:LLRL": 1,
+      "r_LLR:LLRLL": 1,
+      "r_LLR:LLRLR": 1,
+      "r_LLR:LLRR": 1,
+      "r_LLR:LLRRL": 1,
+      "r_LLR:LLRRR": 1,
+      "r_LLR:LR": 1,
+      "r_LLR:LRL": 1,
+      "r_LLR:LRLL": 1,
+      "r_LLR:LRLLL": 1,
+      "r_LLR:LRLLR": 1,
+      "r_LLR:LRLR": 1,
+      "r_LLR:LRLRL": 1,
+      "r_LLR:LRLRR": 1,
+      "r_LLR:LRR": 1,
+      "r_LLR:LRRL": 1,
+      "r_LLR:LRRLL": 1,
+      "r_LLR:LRRLR": 1,
+      "r_LLR:LRRR": 1,
+      "r_LLR:LRRRL": 1,
+      "r_LLR:LRRRR": 1,
+      "r_LLR:R": 1,
+      "r_LLR:RL": 1,
+      "r_LLR:RLL": 1,
+      "r_LLR:RLLL": 1,
+      "r_LLR:RLLLL": 1,
+      "r_LLR:RLLLR": 1,
+      "r_LLR:RLLR": 1,
+      "r_LLR:RLLRL": 1,
+      "r_LLR:RLLRR": 1,
+      "r_LLR:RLR": 1,
+      "r_LLR:RLRL": 1,
+      "r_LLR:RLRLL": 1,
+      "r_LLR:RLRLR": 1,
+      "r_LLR:RLRR": 1,
+      "r_LLR:RLRRL": 1,
+      "r_LLR:RLRRR": 1,
+      "r_LLR:RR": 1,
+      "r_LLR:RRL": 1,
+      "r_LLR:RRLL": 1,
+      "r_LLR:RRLLL": 1,
+      "r_LLR:RRLLR": 1,
+      "r_LLR:RRLR": 1,
+      "r_LLR:RRLRL": 1,
+      "r_LLR:RRLRR": 1,
+      "r_LLR:RRR": 1,
+      "r_LLR:RRRL": 1,
+      "r_LLR:RRRLL": 1,
+      "r_LLR:RRRLR": 1,
+      "r_LLR:RRRR": 1,
+      "r_LLR:RRRRL": 1,
+      "r_LLR:RRRRR": 1,
+      "r_LRL:L": 1,
+      "r_LRL:LL": 1,
+      "r_LRL:LLL": 1,
+      "r_LRL:LLLL": 1,
+      "r_LRL:LLLLL": 1,
+      "r_LRL:LLLLR": 1,
+      "r_LRL:LLLR": 1,
+      "r_LRL:LLLRL": 1,
+      "r_LRL:LLLRR": 1,
+      "r_LRL:LLR": 1,
+      "r_LRL:LLRL": 1,
+      "r_LRL:LLRLL": 1,
+      "r_LRL:LLRLR": 1,
+      "r_LRL:LLRR": 1,
+      "r_LRL:LLRRL": 1,
+      "r_LRL:LLRRR": 1,
+      "r_LRL:LR": 1,
+      "r_LRL:LRL": 1,
+      "r_LRL:LRLL": 1,
+      "r_LRL:LRLLL": 1,
+      "r_LRL:LRLLR": 1,
+      "r_LRL:LRLR": 1,
+      "r_LRL:LRLRL": 1,
+      "r_LRL:LRLRR": 1,
+      "r_LRL:LRR": 1,
+      "r_LRL:LRRL": 1,
+      "r_LRL:LRRLL": 1,
+      "r_LRL:LRRLR": 1,
+      "r_LRL:LRRR": 1,
+      "r_LRL:LRRRL": 1,
+      "r_LRL:LRRRR": 1,
+      "r_LRL:R": 1,
+      "r_LRL:RL": 1,
+      "r_LRL:RLL": 1,
+      "r_LRL:RLLL": 1,
+      "r_LRL:RLLLL": 1,
+      "r_LRL:RLLLR": 1,
+      "r_LRL:RLLR": 1,
+      "r_LRL:RLLRL": 1,
+      "r_LRL:RLLRR": 1,
+      "r_LRL:RLR": 1,
+      "r_LRL:RLRL": 1,
+      "r_LRL:RLRLL": 1,
+      "r_LRL:RLRLR": 1,
+      "r_LRL:RLRR": 1,
+      "r_LRL:RLRRL": 1,
+      "r_LRL:RLRRR": 1,
+      "r_LRL:RR": 1,
+      "r_LRL:RRL": 1,
+      "r_LRL:RRLL": 1,
+      "r_LRL:RRLLL": 1,
+      "r_LRL:RRLLR": 1,
+      "r_LRL:RRLR": 1,
+      "r_LRL:RRLRL": 1,
+      "r_LRL:RRLRR": 1,
+      "r_LRL:RRR": 1,
+      "r_LRL:RRRL": 1,
+      "r_LRL:RRRLL": 1,
+      "r_LRL:RRRLR": 1,
+      "r_LRL:RRRR": 1,
+      "r_LRL:RRRRL": 1,
+      "r_LRL:RRRRR": 1,
+      "r_LRR:L": 1,
+      "r_LRR:LL": 1,
+      "r_LRR:LLL": 1,
+      "r_LRR:LLLL": 1,
+      "r_LRR:LLLLL": 1,
+      "r_LRR:LLLLR": 1,
+      "r_LRR:LLLR": 1,
+      "r_LRR:LLLRL": 1,
+      "r_LRR:LLLRR": 1,
+      "r_LRR:LLR": 1,
+      "r_LRR:LLRL": 1,
+      "r_LRR:LLRLL": 1,
+      "r_LRR:LLRLR": 1,
+      "r_LRR:LLRR": 1,
+      "r_LRR:LLRRL": 1,
+      "r_LRR:LLRRR": 1,
+      "r_LRR:LR": 1,
+      "r_LRR:LRL": 1,
+      "r_LRR:LRLL": 1,
+      "r_LRR:LRLLL": 1,
+      "r_LRR:LRLLR": 1,
+      "r_LRR:LRLR": 1,
+      "r_LRR:LRLRL": 1,
+      "r_LRR:LRLRR": 1,
+      "r_LRR:LRR": 1,
+      "r_LRR:LRRL": 1,
+      "r_LRR:LRRLL": 1,
+      "r_LRR:LRRLR": 1,
+      "r_LRR:LRRR": 1,
+      "r_LRR:LRRRL": 1,
+      "r_LRR:LRRRR": 1,
+      "r_LRR:R": 1,
+      "r_LRR:RL": 1,
+      "r_LRR:RLL": 1,
+      "r_LRR:RLLL": 1,
+      "r_LRR:RLLLL": 1,
+      "r_LRR:RLLLR": 1,
+      "r_LRR:RLLR": 1,
+      "r_LRR:RLLRL": 1,
+      "r_LRR:RLLRR": 1,
+      "r_LRR:RLR": 1,
+      "r_LRR:RLRL": 1,
+      "r_LRR:RLRLL": 1,
+      "r_LRR:RLRLR": 1,
+      "r_LRR:RLRR": 1,
+      "r_LRR:RLRRL": 1,
+      "r_LRR:RLRRR": 1,
+      "r_LRR:RR": 1,
+      "r_LRR:RRL": 1,
+      "r_LRR:RRLL": 1,
+      "r_LRR:RRLLL": 1,
+      "r_LRR:RRLLR": 1,
+      "r_LRR:RRLR": 1,
+      "r_LRR:RRLRL": 1,
+      "r_LRR:RRLRR": 1,
+      "r_LRR:RRR": 1,
+      "r_LRR:RRRL": 1,
+      "r_LRR:RRRLL": 1,
+      "r_LRR:RRRLR": 1,
+      "r_LRR:RRRR": 1,
+      "r_LRR:RRRRL": 1,
+      "r_LRR:RRRRR": 1,
+      "r_RLL:L": 1,
+      "r_RLL:LL": 1,
+      "r_RLL:LLL": 1,
+      "r_RLL:LLLL": 1,
+      "r_RLL:LLLLL": 1,
+      "r_RLL:LLLLR": 1,
+      "r_RLL:LLLR": 1,
+      "r_RLL:LLLRL": 1,
+      "r_RLL:LLLRR": 1,
+      "r_RLL:LLR": 1,
+      "r_RLL:LLRL": 1,
+      "r_RLL:LLRLL": 1,
+      "r_RLL:LLRLR": 1,
+      "r_RLL:LLRR": 1,
+      "r_RLL:LLRRL": 1,
+      "r_RLL:LLRRR": 1,
+      "r_RLL:LR": 1,
+      "r_RLL:LRL": 1,
+      "r_RLL:LRLL": 1,
+      "r_RLL:LRLLL": 1,
+      "r_RLL:LRLLR": 1,
+      "r_RLL:LRLR": 1,
+      "r_RLL:LRLRL": 1,
+      "r_RLL:LRLRR": 1,
+      "r_RLL:LRR": 1,
+      "r_RLL:LRRL": 1,
+      "r_RLL:LRRLL": 1,
+      "r_RLL:LRRLR": 1,
+      "r_RLL:LRRR": 1,
+      "r_RLL:LRRRL": 1,
+      "r_RLL:LRRRR": 1,
+      "r_RLL:R": 1,
+      "r_RLL:RL": 1,
+      "r_RLL:RLL": 1,
+      "r_RLL:RLLL": 1,
+      "r_RLL:RLLLL": 1,
+      "r_RLL:RLLLR": 1,
+      "r_RLL:RLLR": 1,
+      "r_RLL:RLLRL": 1,
+      "r_RLL:RLLRR": 1,
+      "r_RLL:RLR": 1,
+      "r_RLL:RLRL": 1,
+      "r_RLL:RLRLL": 1,
+      "r_RLL:RLRLR": 1,
+      "r_RLL:RLRR": 1,
+      "r_RLL:RLRRL": 1,
+      "r_RLL:RLRRR": 1,
+      "r_RLL:RR": 1,
+      "r_RLL:RRL": 1,
+      "r_RLL:RRLL": 1,
+      "r_RLL:RRLLL": 1,
+      "r_RLL:RRLLR": 1,
+      "r_RLL:RRLR": 1,
+      "r_RLL:RRLRL": 1,
+      "r_RLL:RRLRR": 1,
+      "r_RLL:RRR": 1,
+      "r_RLL:RRRL": 1,
+      "r_RLL:RRRLL": 1,
+      "r_RLL:RRRLR": 1,
+      "r_RLL:RRRR": 1,
+      "r_RLL:RRRRL": 1,
+      "r_RLL:RRRRR": 1,
+      "r_RLR:L": 1,
+      "r_RLR:LL": 1,
+      "r_RLR:LLL": 1,
+      "r_RLR:LLLL": 1,
+      "r_RLR:LLLLL": 1,
+      "r_RLR:LLLLR": 1,
+      "r_RLR:LLLR": 1,
+      "r_RLR:LLLRL": 1,
+      "r_RLR:LLLRR": 1,
+      "r_RLR:LLR": 1,
+      "r_RLR:LLRL": 1,
+      "r_RLR:LLRLL": 1,
+      "r_RLR:LLRLR": 1,
+      "r_RLR:LLRR": 1,
+      "r_RLR:LLRRL": 1,
+      "r_RLR:LLRRR": 1,
+      "r_RLR:LR": 1,
+      "r_RLR:LRL": 1,
+      "r_RLR:LRLL": 1,
+      "r_RLR:LRLLL": 1,
+      "r_RLR:LRLLR": 1,
+      "r_RLR:LRLR": 1,
+      "r_RLR:LRLRL": 1,
+      "r_RLR:LRLRR": 1,
+      "r_RLR:LRR": 1,
+      "r_RLR:LRRL": 1,
+      "r_RLR:LRRLL": 1,
+      "r_RLR:LRRLR": 1,
+      "r_RLR:LRRR": 1,
+      "r_RLR:LRRRL": 1,
+      "r_RLR:LRRRR": 1,
+      "r_RLR:R": 1,
+      "r_RLR:RL": 1,
+      "r_RLR:RLL": 1,
+      "r_RLR:RLLL": 1,
+      "r_RLR:RLLLL": 1,
+      "r_RLR:RLLLR": 1,
+      "r_RLR:RLLR": 1,
+      "r_RLR:RLLRL": 1,
+      "r_RLR:RLLRR": 1,
+      "r_RLR:RLR": 1,
+      "r_RLR:RLRL": 1,
+      "r_RLR:RLRLL": 1,
+      "r_RLR:RLRLR": 1,
+      "r_RLR:RLRR": 1,
+      "r_RLR:RLRRL": 1,
+      "r_RLR:RLRRR": 1,
+      "r_RLR:RR": 1,
+      "r_RLR:RRL": 1,
+      "r_RLR:RRLL": 1,
+      "r_RLR:RRLLL": 1,
+      "r_RLR:RRLLR": 1,
+      "r_RLR:RRLR": 1,
+      "r_RLR:RRLRL": 1,
+      "r_RLR:RRLRR": 1,
+      "r_RLR:RRR": 1,
+      "r_RLR:RRRL": 1,
+      "r_RLR:RRRLL": 1,
+      "r_RLR:RRRLR": 1,
+      "r_RLR:RRRR": 1,
+      "r_RLR:RRRRL": 1,
+      "r_RLR:RRRRR": 1,
+      "r_RRL:L": 1,
+      "r_RRL:LL": 1,
+      "r_RRL:LLL": 1,
+      "r_RRL:LLLL": 1,
+      "r_RRL:LLLLL": 1,
+      "r_RRL:LLLLR": 1,
+      "r_RRL:LLLR": 1,
+      "r_RRL:LLLRL": 1,
+      "r_RRL:LLLRR": 1,
+      "r_RRL:LLR": 1,
+      "r_RRL:LLRL": 1,
+      "r_RRL:LLRLL": 1,
+      "r_RRL:LLRLR": 1,
+      "r_RRL:LLRR": 1,
+      "r_RRL:LLRRL": 1,
+      "r_RRL:LLRRR": 1,
+      "r_RRL:LR": 1,
+      "r_RRL:LRL": 1,
+      "r_RRL:LRLL": 1,
+      "r_RRL:LRLLL": 1,
+      "r_RRL:LRLLR": 1,
+      "r_RRL:LRLR": 1,
+      "r_RRL:LRLRL": 1,
+      "r_RRL:LRLRR": 1,
+      "r_RRL:LRR": 1,
+      "r_RRL:LRRL": 1,
+      "r_RRL:LRRLL": 1,
+      "r_RRL:LRRLR": 1,
+      "r_RRL:LRRR": 1,
+      "r_RRL:LRRRL": 1,
+      "r_RRL:LRRRR": 1,
+      "r_RRL:R": 1,
+      "r_RRL:RL": 1,
+      "r_RRL:RLL": 1,
+      "r_RRL:RLLL": 1,
+      "r_RRL:RLLLL": 1,
+      "r_RRL:RLLLR": 1,
+      "r_RRL:RLLR": 1,
+      "r_RRL:RLLRL": 1,
+      "r_RRL:RLLRR": 1,
+      "r_RRL:RLR": 1,
+      "r_RRL:RLRL": 1,
+      "r_RRL:RLRLL": 1,
+      "r_RRL:RLRLR": 1,
+      "r_RRL:RLRR": 1,
+      "r_RRL:RLRRL": 1,
+      "r_RRL:RLRRR": 1,
+      "r_RRL:RR": 1,
+      "r_RRL:RRL": 1,
+      "r_RRL:RRLL": 1,
+      "r_RRL:RRLLL": 1,
+      "r_RRL:RRLLR": 1,
+      "r_RRL:RRLR": 1,
+      "r_RRL:RRLRL": 1,
+      "r_RRL:RRLRR": 1,
+      "r_RRL:RRR": 1,
+      "r_RRL:RRRL": 1,
+      "r_RRL:RRRLL": 1,
+      "r_RRL:RRRLR": 1,
+      "r_RRL:RRRR": 1,
+      "r_RRL:RRRRL": 1,
+      "r_RRL:RRRRR": 1,
+      "r_RRR:L": 1,
+      "r_RRR:LL": 1,
+      "r_RRR:LLL": 1,
+      "r_RRR:LLLL": 1,
+      "r_RRR:LLLLL": 1,
+      "r_RRR:LLLLR": 1,
+      "r_RRR:LLLR": 1,
+      "r_RRR:LLLRL": 1,
+      "r_RRR:LLLRR": 1,
+      "r_RRR:LLR": 1,
+      "r_RRR:LLRL": 1,
+      "r_RRR:LLRLL": 1,
+      "r_RRR:LLRLR": 1,
+      "r_RRR:LLRR": 1,
+      "r_RRR:LLRRL": 1,
+      "r_RRR:LLRRR": 1,
+      "r_RRR:LR": 1,
+      "r_RRR:LRL": 1,
+      "r_RRR:LRLL": 1,
+      "r_RRR:LRLLL": 1,
+      "r_RRR:LRLLR": 1,
+      "r_RRR:LRLR": 1,
+      "r_RRR:LRLRL": 1,
+      "r_RRR:LRLRR": 1,
+      "r_RRR:LRR": 1,
+      "r_RRR:LRRL": 1,
+      "r_RRR:LRRLL": 1,
+      "r_RRR:LRRLR": 1,
+      "r_RRR:LRRR": 1,
+      "r_RRR:LRRRL": 1,
+      "r_RRR:LRRRR": 1,
+      "r_RRR:R": 1,
+      "r_RRR:RL": 1,
+      "r_RRR:RLL": 1,
+      "r_RRR:RLLL": 1,
+      "r_RRR:RLLLL": 1,
+      "r_RRR:RLLLR": 1,
+      "r_RRR:RLLR": 1,
+      "r_RRR:RLLRL": 1,
+      "r_RRR:RLLRR": 1,
+      "r_RRR:RLR": 1,
+      "r_RRR:RLRL": 1,
+      "r_RRR:RLRLL": 1,
+      "r_RRR:RLRLR": 1,
+      "r_RRR:RLRR": 1,
+      "r_RRR:RLRRL": 1,
+      "r_RRR:RLRRR": 1,
+      "r_RRR:RR": 1,
+      "r_RRR:RRL": 1,
+      "r_RRR:RRLL": 1,
+      "r_RRR:RRLLL": 1,
+      "r_RRR:RRLLR": 1,
+      "r_RRR:RRLR": 1,
+      "r_RRR:RRLRL": 1,
+      "r_RRR:RRLRR": 1,
+      "r_RRR:RRR": 1,
+      "r_RRR:RRRL": 1,
+      "r_RRR:RRRLL": 1,
+      "r_RRR:RRRLR": 1,
+      "r_RRR:RRRR": 1,
+      "r_RRR:RRRRL": 1,
+      "r_RRR:RRRRR": 1
+    }
+  }
+}

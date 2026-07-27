@@ -1,0 +1,99 @@
+\begin{proposition}[pullback tower; Kahn I, \S\S7.3.1--7.3.2, pp.~38--43]\label{prop:kahn-pullback-tower}
+\begin{enumerate}
+\item (Existence; Lemma~7.8, p.~40.)  In the category of complex
+\(1\)-manifolds, the pullback of a diagram \(g\colon G\to V\),
+\(h\colon H\to V\) exists whenever \(g\) (or, symmetrically, \(h\)) is
+an immersion; its underlying topological space is the topological
+fiber product
+\(E=\{(x,y)\in G\times H:\ g(x)=h(y)\}\)
+with the coordinate projections \(\pi_G,\pi_H\) (Kahn describes \(E\)
+as the \emph{equalizer}; \S7.3.1, p.~39).
+\item (Inheritance; Lemma~7.7, p.~40 and Lemma~7.9, p.~40.)  Each projection inherits
+the properties of the opposite leg: if \(g\) is proper (resp.\ a local
+homeomorphism, a homeomorphism, injective, surjective, bijective),
+then so is \(\pi_H\); and for \(y\in H\) the fiber \(\pi_H^{-1}(y)\)
+is in natural bijection with \(g^{-1}(h(y))\).  If \(g\) is an
+immersion and \(h\) is proper of degree \(d\), then \(\pi_H\) is an
+immersion and \(\pi_G\) is proper of degree \(d\), and the local
+degree of \(\pi_G\) at \(z\in E\) equals the local degree of \(h\) at
+\(\pi_H(z)\).
+\item (One \(\psi\)-polynomial-like pullback; \S7.3.2, p.~42 and Lemma~7.11, p.~42.)  For a
+degree-\(d\) \(\psi\)-polynomial-like map
+\((i,f)\colon(\BU',K')\to(\BU,K)\), the pullback of
+\(i\colon\BU'\to\BU\) along \(f\colon\BU'\to\BU\) is
+\[
+ \BU''=\{(x,y)\in\BU'\times\BU':\ i(x)=f(y)\},\qquad
+ i_1(x,y)=y,\quad f_1(x,y)=x,
+\]
+and \((i_1,f_1)\colon(\BU'',K'')\to(\BU',K')\) is again a
+degree-\(d\) \(\psi\)-polynomial-like map, where
+\(K''=i_1^{-1}(K')=f_1^{-1}(K')\).
+\item (Tower; \S7.3.2, p.~43.)  Relabeling \((i,f)\) as
+\((i_0,f_0)\colon(\BU^1,K^1)\to(\BU^0,K^0)\) and iterating produces
+degree-\(d\) \(\psi\)-polynomial-like maps
+\((i_n,f_n)\colon(\BU^{n+1},K^{n+1})\to(\BU^n,K^n)\) with the
+commuting squares
+\[
+ i_n\circ f_{n+1}=f_n\circ i_{n+1}\qquad(n\in\N),
+\]
+each square being a genuine categorical pullback (fiber product) of
+the previous stage.
+\item (Germ preservation; \S7.3.3, p.~43.)  If \(U'\subset\BU'\),
+\(U\subset\BU\) are such that \((i,f)\colon U'\to U\) is
+polynomial-like (\(i(U')\Subset U\) and \(i|_{U'}\) an embedding),
+then the pullback \(U''\) of \((i,f)\colon U'\to U\) sits inside
+\(\BU''\) and \((i_1,f_1)\colon U''\to U'\) is polynomial-like;
+consequently the polynomial-like germ of \((i_1,f_1)\) equals that of
+\((i,f)\).
+\end{enumerate}
+\end{proposition}
+
+\begin{proof}[Proof (faithful paraphrase of Kahn I, \S7.3.1, pp.~40--41 and \S7.3.2, p.~42)]
+(1) By the inheritance statement for local homeomorphisms,
+\(\pi_H\colon E\to H\) is a local homeomorphism when \(g\) is an
+immersion; pulling the charts of \(H\) back through \(\pi_H\) endows
+\(E\) with a complex structure for which \(\pi_H\) is holomorphic, and
+locally \(\pi_G=g^{-1}\circ h\circ\pi_H\), hence \(\pi_G\) is
+holomorphic.  The universal property is checked by factoring any
+competitor \(F\to E\) through the topological pullback and verifying
+holomorphy locally via \((\pi_H|_{\widehat U})^{-1}\circ f_H\)
+(proof of Lemma~7.8, pp.~40--41).  Kahn notes the pullback may be disconnected, which is
+why he writes ``complex \(1\)-manifold'' rather than ``Riemann
+surface'' (\S7.3.1, p.~41).
+
+(2) Properness: for compact \(B\subset H\), the set \(\pi_H^{-1}(B)\)
+is a closed subset of \(g^{-1}(h(B))\times B\), hence compact
+(proof of Lemma~7.7, p.~40).  Local homeomorphism: over a neighborhood on which
+\(g\) is invertible, \(\pi_H\) has the explicit inverse
+\(y\mapsto((g|_U)^{-1}(h(y)),y)\) (ibid.).  The set-theoretic
+statements and the fiber correspondence are elementary
+(ibid.).  When \(h\) is proper of degree \(d\), evaluating the
+fiber correspondence at a regular value gives
+\(|\pi_G^{-1}(x)|=d\), and the local-degree statement follows by
+comparing small neighborhoods (proof of Lemma~7.9, pp.~40--41).
+
+(3) By (1)--(2), \(i_1\) is an immersion and \(f_1\) is proper of
+degree \(d\).  For \((x,y)\in\BU''\), the chain
+\(x\in K'\iff i(x)\in K\iff f(y)\in K\iff y\in K'\) shows
+\(i_1^{-1}(K')=f_1^{-1}(K')=:K''\) (\S7.3.2, p.~42).  Since
+\(i\colon K'\to K\) is a homeomorphism, so is
+\(i_1\colon K''\to K'\) (inheritance), whence \(K''\) is connected
+(\S7.3.2, p.~42).  Every component of \(\BU''\) meets \(K''\) because
+\(f_1\) is proper onto \(\BU'\); hence \(\BU''\) is connected
+(\S7.3.2, p.~42).  A point of \(\BU''\) is critical for \(f_1\) exactly
+when its \(i_1\)-image is critical for \(f\), with the same
+multiplicity; therefore all critical points of \(f_1\) lie in \(K''\)
+and their total multiplicity is \(d-1\), so Riemann--Hurwitz gives
+\(\chi(\BU'')=1\) and \(\BU''\) is a disk (\S7.3.2, p.~42).  This
+verifies all clauses of the \(\psi\)-polynomial-like definition
+(Kahn~I, Lemma~7.11, p.~42).
+
+(4) Apply (3) inductively; the commuting relation is the defining
+property of the pullback square at each stage (\S7.3.2, p.~43).
+
+(5) The pullback of the polynomial-like restriction embeds in the
+pullback of the ambient pair; the restricted pair
+\((i_1,f_1)\colon U''\to U'\) satisfies the polynomial-like
+conditions, and its germ at the filled Julia set coincides with that
+of \((i,f)\) (\S7.3.3, p.~43).
+\end{proof}

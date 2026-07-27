@@ -1,0 +1,45 @@
+\begin{lemma}[Normal-kernel wrapping incidence]\label{lem:wrapping}
+Let the canonical resolved system carry the annular-tower typing of Definition~\ref{def:canonical-resolved-system}.  If \(N\ne\{1\}\), then
+\begin{equation}\label{eq:wrapping-in-limit-set}
+\zeta_-,\zeta_+\in\Lambda(N).
+\end{equation}
+\end{lemma}
+
+\begin{proof}
+Let \(\pi\colon G\to\mathbb Z\) be the projection determined by the splitting \eqref{eq:semidirect}, normalized by \(\pi(h)=1\); its kernel is \(N\).  As a deck group acting freely on \(\mathcal E\cong\mathbb D\), \(G\) is discrete and torsion-free.
+
+Suppose first that \(G\) were elementary.  A torsion-free elementary discrete subgroup of \(\operatorname{Aut}(\mathbb D)\) is cyclic; since \(G\) contains the hyperbolic element \(h\), write \(G=\langle g\rangle\) and \(h=g^m\).  Then
+\[
+1=\pi(h)=m\,\pi(g)
+\]
+in \(\mathbb Z\), forcing \(m=\pm1\).  Hence \(G=\langle h\rangle=H\) and \(N=\ker\pi=\{1\}\), contrary to hypothesis.  Therefore \(G\) is non-elementary.
+
+The subgroup \(N\) is nontrivial and normal in \(G\).  Its limit set \(\Lambda(N)\) is nonempty, closed, and \(G\)-invariant: normality gives
+\[
+g\,\Lambda(N)=\Lambda(gNg^{-1})=\Lambda(N)
+\qquad\text{for every } g\in G.
+\]
+If \(\Lambda(N)\) were finite, its one- or two-point set would be preserved by \(G\), making \(G\) elementary.  Thus \(\Lambda(N)\) is infinite.  Choose
+\[
+\alpha\in\Lambda(N)\setminus\{\zeta_-,\zeta_+\}.
+\]
+Because \(h\) normalizes \(N\), every \(h^k\alpha\) belongs to \(\Lambda(N)\).  Hyperbolic dynamics of \(h\) on \(\partial\mathbb D\) gives
+\[
+h^k\alpha\to\zeta_+\quad(k\to+\infty),
+\qquad
+h^k\alpha\to\zeta_-\quad(k\to-\infty).
+\]
+Closedness of \(\Lambda(N)\) proves \eqref{eq:wrapping-in-limit-set}.
+\end{proof}
+
+\begin{remark}[Standard Fuchsian facts]\label{rem:fuchsian-facts}
+The Fuchsian facts used --- classification of torsion-free elementary
+Fuchsian groups containing a hyperbolic element, nonemptiness and
+invariance of the limit set of a nontrivial normal subgroup, and
+convergence of hyperbolic iterates to their fixed endpoints --- are
+standard; see \cite{Beardon83} or \cite{Katok92}.  In particular a
+nontrivial torsion-free discrete subgroup of
+$\operatorname{Aut}(\mathbb D)$ contains a hyperbolic or parabolic
+element, whose fixed-point set on the circle is nonempty, so the limit
+set of a nontrivial normal subgroup is nonempty.
+\end{remark}

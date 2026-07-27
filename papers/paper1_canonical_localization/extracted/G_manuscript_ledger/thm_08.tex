@@ -1,0 +1,37 @@
+\begin{theorem}[Canonical localization sheet resolution; manuscript Thm.~12.50, ledger \texttt{KL\_LOCALIZATION\_SHEET\_RESOLUTION\_FACTORIZATION}]\label{thm:sheet-resolution}
+Let \(a:(X_s,x_s)\hookrightarrow(X_t,x_t)\) be a based embedding of Hausdorff, connected, locally path-connected, semilocally simply connected spaces. Let \(p_s:\hat X_s\to X_s\), \(p_t:\hat X_t\to X_t\) be connected based covers with subgroups \(H_s,H_t\), and let \(A:\hat X_s\to\hat X_t\) be a based lift of \(a\). Put \(K=a_*^{-1}(H_t)\) and let \(P_K\) be the based component of the pullback
+\[
+X_s\times_{X_t}\hat X_t=\{(x,\hat y):a(x)=p_t(\hat y)\}.
+\]
+Then \(P_K\to X_s\) is the \(K\)-cover and there is a canonical factorization
+\[
+\hat X_s\xrightarrow{\ q\ }P_K\xrightarrow{\ e\ }\hat X_t,\qquad q(\hat u)=(p_s(\hat u),A(\hat u)),\quad e(x,\hat y)=\hat y, \tag{10.51a}
+\]
+where \(q\) is a surjective covering, \(e\) is a topological embedding, and \(A=e\circ q\). Moreover,
+\[
+A(\hat u)=A(\hat v)\iff q(\hat u)=q(\hat v), \tag{10.51b}
+\]
+the based fiber of \(q\) is the pointed coset set \(K/H_s\), and this is the unique connected intermediate-cover factorization in the following precise class: if \(r_C:C\to X_s\) is a connected based cover and based maps \(\hat X_s\xrightarrow{q_C}C\xrightarrow{e_C}\hat X_t\) satisfy
+\[
+r_Cq_C=p_s,\qquad p_te_C=ar_C,\qquad A=e_Cq_C,
+\]
+with \(e_C\) injective, then there is a unique based cover isomorphism \(C\cong P_K\) intertwining both legs.
+
+Path lifting for \(q\) defines a functor
+\[
+\Pi_1(P_K)\longrightarrow \mathrm{Set}_{\mathrm{bij}},\qquad z\mapsto q^{-1}(z), \tag{10.51c}
+\]
+which is the canonical sheet-transport functor; its category of elements is the canonical sheet-transport groupoid. If a compact target path \(\gamma\) lies in \(e(P_K)\), then all source paths mapped to \(\gamma\) by \(A\) are exactly the \(q\)-lifts of \(e^{-1}\gamma\), one from each initial sheet.
+\end{theorem}
+
+\begin{proof}
+The pullback of a cover is a cover. A based loop \(\alpha\) in \(X_s\) lifts closed to the selected pullback component exactly when \(a\alpha\) lifts closed to \(\hat X_t\), equivalently \(a_*[\alpha]\in H_t\). Hence the pullback subgroup is \(K\).
+
+The second projection on the entire pullback is a homeomorphism onto \(p_t^{-1}(a(X_s))\): its inverse is \(\hat y\mapsto(a^{-1}(p_t(\hat y)),\hat y)\). Thus \(e\) is embedded. Since lift existence gives \(H_s\le K\), the covering criterion gives the unique based map \(q\). It is onto: lift to \(\hat X_s\) the projection of any path in \(P_K\) from the basepoint; uniqueness of lifting shows that its \(q\)-image is the original path. On evenly covered neighborhoods this map is sheetwise a homeomorphism, so it is a covering.
+
+The formula for \(q\) gives \(A=eq\). Injectivity of \(e\) gives (10.51b), hence equality of the two kernel pairs. The fiber of the map from the \(H_s\)-cover to the \(K\)-cover is \(H_s\backslash K\), canonically identified by inversion with the project notation \(K/H_s\); no normality is used.
+
+For uniqueness, let an intermediate cover have subgroup \(L\) and an injective second leg. Existence of its two maps gives \(H_s\le L\le K\). The subgroup-reflection criterion applied to the injective second leg gives \(L=a_*^{-1}(H_t)=K\), so based-cover classification identifies it uniquely with \(P_K\).
+
+Finally, uniqueness and homotopy invariance of covering path lifts give the transport functor. If \(A\hat\delta=\gamma=e\delta\), injectivity of \(e\) gives \(q\hat\delta=\delta\), and the converse follows from \(A=eq\). This proves the compact-path exhaustion.
+\end{proof}

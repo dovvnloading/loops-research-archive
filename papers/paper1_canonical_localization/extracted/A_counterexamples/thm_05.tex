@@ -1,0 +1,9 @@
+\begin{theorem}\label{thm:annulus-nogo}
+Let \(r'\), \(d=16\), \(r=(r')^{16}\), and \(R\) be as in Definition~\ref{def:blaschke-quotient}. Then
+\[ R:\mathbb A(1,r')\longrightarrow\mathbb A(1,r) \]
+is a holomorphic immersion, extends analytically across \(\mathbb T\), and restricts to an orientation-preserving degree-one homeomorphism \(\mathbb T\to\mathbb T\), with the exact modulus relation \(r'=r^{1/d}\) of Kahn's annulus lemma; but \(R\) is not injective. Consequently, the strengthening ``a holomorphic immersion \(I:\mathbb A(1,r^{1/d})\to\mathbb A(1,r)\) that extends to the inner circle with degree one must be globally injective'' is false, even when the inner-circle map is an orientation-preserving analytic homeomorphism.
+\end{theorem}
+
+\begin{proof}
+By Lemma~\ref{lem:avoid}, \(R\) is holomorphic and pole-free on a neighborhood of the closed annulus \(1\le|z|\le r'\); in particular it extends analytically across \(\mathbb T\). By Lemma~\ref{lem:containment}, \(R\) maps \(\mathbb A(1,r')\) into \(\mathbb A(1,r)\) with the exact relation \(r'=r^{1/16}\). By Lemma~\ref{lem:circle-homeo}, the boundary restriction is an orientation-preserving degree-one homeomorphism of \(\mathbb T\). By Lemma~\ref{lem:immersion}, \(R\) is an immersion on the source annulus. By Lemma~\ref{lem:collision}, two distinct source points have the same image. 
+\end{proof}

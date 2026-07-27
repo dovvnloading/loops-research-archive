@@ -1,0 +1,90 @@
+% Cluster F: scope and limitations (Warning 10.59 discipline)
+% Body-only LaTeX; preamble macros, theorem environments, and cite keys per CONVENTIONS.md.
+
+\section{Scope and limitations}\label{sec:scope}
+
+The results of this paper form a closed package, and the manuscript
+\cite{MWman} disciplines its use with an explicit warning (its
+Warning~10.59), whose discipline we retain here in full.  The package has
+exactly five load-bearing statements, and their division of labor should
+be read precisely.  Theorem~\ref{thm:realization} proves realization
+\emph{from} a certificate: given a protected ribbon-routing certificate,
+it produces a compact connected full carrier with singleton attachment
+traces, surviving protected chains, injective survival, and preserved
+cyclic order.  Theorem~\ref{thm:free-component} characterizes \emph{when}
+such a certificate exists: exactly when one component of the frozen free
+domain has simultaneous singleton ports to every required atom, with the
+persistence clause that a separation visible in the frozen data can never
+be repaired by monotone connector enlargement.
+Theorem~\ref{thm:common-domain} is \emph{one sufficient planar route} to
+that criterion: an augmented-atom packet system forces a single common
+free component.  Theorem~\ref{thm:audit} removes completion order and
+global port untangling from that route: the packet completions are
+order-independent, the port checks localize, and merger, localization,
+and port-loss defects are persistent certificates of failure.  Finally,
+Theorem~\ref{thm:carrier} instantiates the entire package at finite
+direct-decoration scale, where the cells of the atlas play the role of
+the cellwise data of Proposition~\ref{prop:cellwise} and the nested
+packet lemma absorbs the infinitely many unselected fibers.
+
+The mathematical ingredients of all five statements are classical:
+Janiszewski's separation theorem and the plane topology of continua
+\cite{New51,Why42}, prime ends \cite{Pom92}, filled hulls, and
+\v{C}ech cohomology with the compacta form of Alexander duality
+\cite{Hat02}, in the tradition of planar arguments long standard in
+complex dynamics \cite{DH85}.  The contribution is not a new
+theorem about any of these ingredients; it is the assembled
+certification framework---explicitly protected accesses with declared
+sides, a frozen future inventory fixed before any connector is chosen,
+typed packets with order-independent completions, and monotone,
+persistent failure certificates.  The paper is proof technology, and its
+value is exactly the conversion it performs: informal planar-routing
+arguments of the form ``connect these continua while keeping these
+accesses and avoiding that set,'' which are traditionally re-derived ad
+hoc inside larger proofs, become exact, persistent, checkable
+certificates that can be audited clause by clause, transported by
+univalent maps, and reused without re-proof.
+
+\begin{warning}\label{warn:F-scope}
+Theorem~\ref{thm:realization} proves realization from a certificate.
+Theorem~\ref{thm:free-component} characterizes when that certificate
+exists, Theorem~\ref{thm:common-domain} proves one sufficient planar
+route, and Theorem~\ref{thm:audit} removes completion order and port
+untangling from that route.  Theorem~\ref{thm:carrier} instantiates the
+package at finite direct-decoration scale, and it is finite and
+direct-scale only (Warning~\ref{warn:F-finite-scale}).  None of these
+results constructs the virtual Cantor package, the complete Wave
+horizon, the analytic covering or immersion maps, a period-independent
+incidence bound or future-faithful compression, or any width,
+compactness, rigidity, or MLC conclusion.  The
+open problems of the source manuscript---10.6, 10.50--10.52, 10.55,
+10.57, and 10.58 in the numbering of \cite{MWman}---remain open and are
+not advanced here: the virtual canonical interface carrier, the
+manuscript's first protected-tower clause, and MLC itself remain open.
+\end{warning}
+
+For the reader consulting the manuscript, the open problems named in the
+warning are, briefly: 10.6, the virtual protected routing certificate for
+the lamination-lift candidate carrier; 10.50, the virtual cylinder
+target-address selector; 10.51, the transfer of the disconnected marking
+to actual bases and actual iterates on the cylinders and end fibers of
+the pullback compactification; 10.52, the virtual Cantor-package
+realization at every intermediate scale; and 10.58, the virtual common
+free component through the complete Wave horizon, together with the
+related problems 10.55 and 10.57.  On the last of these the manuscript is explicit
+that neither the connected-hull construction of \cite{Dud25} nor the
+primitive-category Hubbard-tree results of \cite{KKL26} supply the
+completed free domain that the problem demands; nothing in the present
+paper does so either, and nothing here is conditional on those problems:
+every theorem above is proved outright in its finite planar setting.
+
+Two further boundaries deserve restatement.  First, the only intentional
+divergence from the printed manuscript is the repair of Lemma~10.7 and
+the correspondingly rewritten proof of Theorem~10.8, recorded in
+Remark~\ref{rem:repair}; every other statement is a faithful
+transcription.  Second, no result of this paper asserts local
+connectivity of any atom, of any fiber, or of any Julia set, and no
+result should be quoted as progress toward MLC.  What may be quoted is
+the technology: certificates that realize, criteria that are exact,
+audits that are order-free, and one finite dynamical instantiation in
+which all of it is checkable.

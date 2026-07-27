@@ -1,0 +1,125 @@
+{
+  "scope": "Diagnostic source-lock, split-group/fiber control, explicit strip obstruction, ledger routing, and global-status audit.  The analytic deck-limit and relative quotient proofs remain in the proof document.",
+  "sources": {
+    ".tmp_kl06_source\\wad.tex": "B5DF40A5D33B6B590B430D47693514088AF6FC287BAA5D87B4D11015B990E580",
+    ".tmp_kl06_source\\psiql2.tex": "E4EFCCEC65D8C9C2BDFE2AF8203B3D4D63ECF992B40D302F56FBA78259547228",
+    ".tmp_kl08_source\\psiql.tex": "6CC9726461473812A5FBA93377F2DC0B088DB6CAC4B9DE90C7B2AE625DFB49AF",
+    ".tmp_kl08_source\\moduli.tex": "CBDB9EF7D6AC94C33FDB0AB7167E19C39EB23D27373C266A296CF6031E0CAF7E",
+    ".tmp_wave_audit\\waves-with-Misha.tex": "AD4C774806D9902AA54FA31C56AD6146D8034946F19CC5E9CEC3C51A3F94FDD5"
+  },
+  "proof_document_sha256": "5BDD5DE408F05BC608D2B5E5FE075616AD668E32D912E62B2BF37421BB92D2C5",
+  "ledger_sha256": "AC6C761D29D34FE94CD880E376D030E92BE73B2A0F18189D7A38FB035D4C6695",
+  "finite_controls": {
+    "split_group": {
+      "group_order": 35,
+      "kernel_order": 5,
+      "section_order": 7,
+      "coset_count": 5,
+      "unique_decomposition_count": 35,
+      "one_sheet_kernel_order": 1
+    },
+    "strip_obstruction": {
+      "translations": [
+        0,
+        1,
+        2,
+        7,
+        31
+      ],
+      "heights": [
+        0.2,
+        0.5,
+        0.8
+      ],
+      "orbit_values": {
+        "0.2": [
+          [
+            0.2846095433360293,
+            0.0
+          ],
+          [
+            0.2846095433360293,
+            -6.970923325065163e-17
+          ],
+          [
+            0.2846095433360293,
+            -1.3941846650130326e-16
+          ],
+          [
+            0.2846095433360293,
+            -4.879646327545615e-16
+          ],
+          [
+            0.2846095433360293,
+            -4.18325866622435e-15
+          ]
+        ],
+        "0.5": [
+          [
+            0.04321391826377226,
+            0.0
+          ],
+          [
+            0.04321391826377226,
+            -1.0584357336068808e-17
+          ],
+          [
+            0.04321391826377226,
+            -2.1168714672137616e-17
+          ],
+          [
+            0.04321391826377226,
+            -7.409050135248166e-17
+          ],
+          [
+            0.04321391826377226,
+            -6.35168434478674e-16
+          ]
+        ],
+        "0.8": [
+          [
+            0.006561419936306071,
+            0.0
+          ],
+          [
+            0.006561419936306071,
+            -1.6070843845717719e-18
+          ],
+          [
+            0.006561419936306071,
+            -3.2141687691435438e-18
+          ],
+          [
+            0.006561419936306071,
+            -1.1249590692002402e-17
+          ],
+          [
+            0.006561419936306071,
+            -9.64413086418627e-17
+          ]
+        ]
+      },
+      "distinct_radial_values": [
+        0.2846095433360293,
+        0.04321391826377226,
+        0.006561419936306071
+      ],
+      "interpretation": "All translated sequences approach one standalone wrapping end, while their constant quotient values depend on height."
+    }
+  },
+  "ledger": {
+    "total": 322,
+    "counts": {
+      "imported": 23,
+      "proved": 232,
+      "open": 67
+    },
+    "theorem": "RESOLVED_INTERMEDIATE_RELATIVE_IDEAL_BOUNDARY",
+    "global_statuses": {
+      "VIRTUAL_AUGMENTED_ATOM_PORT_CERTIFICATE": "open",
+      "UNIVERSAL_PROTECTED_TOWER_CLOSURE": "open",
+      "MLC": "open"
+    }
+  },
+  "result": "PASS"
+}

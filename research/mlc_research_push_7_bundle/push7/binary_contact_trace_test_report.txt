@@ -1,0 +1,13 @@
+test_contact_recursion_known_values (__main__.BinaryContactCompilerTests.test_contact_recursion_known_values) ... ok
+test_corner_contacts_force_subdivision (__main__.BinaryContactCompilerTests.test_corner_contacts_force_subdivision) ... ok
+test_duplicate_depth_n_vertex_rejected (__main__.BinaryContactCompilerTests.test_duplicate_depth_n_vertex_rejected) ... ok
+test_one_to_many_multiplicity_at_most_two (__main__.BinaryContactCompilerTests.test_one_to_many_multiplicity_at_most_two) ... ok
+test_post_transient_synchronization (__main__.BinaryContactCompilerTests.test_post_transient_synchronization) ... ok
+test_refinement_non_naturality_detected (__main__.BinaryContactCompilerTests.test_refinement_non_naturality_detected) ... ok
+test_valid_example (__main__.BinaryContactCompilerTests.test_valid_example) ... ok
+test_wrong_declared_contact_rejected_by_report (__main__.BinaryContactCompilerTests.test_wrong_declared_contact_rejected_by_report) ... ok
+
+----------------------------------------------------------------------
+Ran 8 tests in 0.022s
+
+OK

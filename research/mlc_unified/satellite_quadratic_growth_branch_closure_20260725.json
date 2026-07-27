@@ -1,0 +1,46 @@
+{
+  "certificate": "SATELLITE_QUADRATIC_GROWTH_BRANCH_CLOSURE",
+  "date": "2026-07-25",
+  "status": "proved_in_imported_source_scope",
+  "source": {
+    "title": "Satellite renormalization of quadratic polynomials",
+    "authors": ["Davoud Cheraghi", "Mitsuhiro Shishikura"],
+    "url": "https://arxiv.org/pdf/1509.07843",
+    "version": "v1",
+    "local_copy": "C:\\Users\\Admin\\AppData\\Local\\Temp\\mlc-cs-satellite-1509.07843-v1\\satellite_renormalization.pdf",
+    "sha256": "71C03718203B91AE81F5B7E138620A086CDF038B345CF689A24ED2932D72384F",
+    "statement": "Theorem D gives exponential diameter decay for finite satellite parameter fibers in QG_N and concludes combinatorial rigidity and MLC at the limiting parameter."
+  },
+  "scope": {
+    "qg_conditions": [
+      "b_1,1 >= N",
+      "b_i,j+1 >= b_i,j^2",
+      "b_i+1,1 >= q_i^2"
+    ],
+    "pure_satellite_specialization": [
+      "m_i = 1",
+      "q_1 >= N",
+      "p_i in {+1,-1}",
+      "q_i+1 >= q_i^2"
+    ],
+    "closed_conclusion": [
+      "parameter fibers have diameter <= C lambda^n",
+      "combinatorial rigidity",
+      "Mandelbrot local connectivity at the limiting parameter"
+    ],
+    "not_closed": [
+      "arbitrary unbounded satellite sequences outside QG_N",
+      "virtual bounded-type satellite towers",
+      "virtual near-neutral Molecule towers",
+      "global MLC"
+    ]
+  },
+  "machine_validation": {
+    "script": "research/mlc_unified/validate_satellite_quadratic_growth_branch.py",
+    "result": "SATELLITE_QUADRATIC_GROWTH_BRANCH_VALID",
+    "all_checks": true,
+    "original_artifacts_written": false
+  },
+  "ledger_policy": "Keep global MLC and all virtual obligations open; this certificate closes only the named QG_N satellite branch."
+}
+

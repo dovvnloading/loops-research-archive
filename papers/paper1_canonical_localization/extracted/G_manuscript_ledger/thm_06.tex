@@ -1,0 +1,15 @@
+\begin{lemma}[Finite full pullbacks and peripheral isolation; manuscript Lem.~12.47]\label{lem:finite-full-pullbacks}
+Let \(q:V'\to V\) be a proper holomorphic map of degree two between plane topological disks, and let \(K\Subset V\) be a nonempty full continuum. If the critical value belongs to \(K\), then \(q^{-1}K\) is one full degree-two continuum. Otherwise it is the disjoint union of two full continua, each mapped homeomorphically onto \(K\).
+
+Consequently, under a chain of \(p\) quadratic-like pullbacks, the inverse image of a finite pairwise-disjoint family of full continua is a finite pairwise-disjoint family of full continua. Every component maps onto its parent with positive integer degree. Each component admits a Jordan neighborhood disjoint from all the others, and the complement of the finite family in the source disk is path connected.
+\end{lemma}
+
+\begin{proof}
+A full continuum has a nested Jordan-domain basis \(K\subset V_{r+1}\), \(\overline V_{r+1}\subset V_r\), \(\bigcap_r\overline V_r=K\). For a nondegenerate \(K\), obtain it by uniformizing \(\hat{\mathbb C}\setminus K\) by the exterior disk and pulling back regular circles of radii decreasing to one; for a singleton use round disks.
+
+If the critical value is outside \(K\), choose all \(V_r\) to avoid it. Then \(q^{-1}(V_r)\to V_r\) is an unbranched two-sheeted cover of a simply connected disk and hence consists of two coherently labeled biholomorphic disks \(W_r^0,W_r^1\). Each \(L_k=\bigcap_r\overline{W_r^k}\) is connected, maps homeomorphically onto \(K\), and is full because \(\mathbb C\setminus L_k=\bigcup_r(\mathbb C\setminus\overline{W_r^k})\) is an increasing union of connected sets.
+
+If the critical value lies in \(K\), every \(V_r\) contains it. The component \(W_r\) containing the critical point already has degree two and therefore exhausts the total preimage. Riemann--Hurwitz gives \(\chi(W_r)=2\chi(V_r)-1=1\), so \(W_r\) is a disk; regularity of \(\partial V_r\) makes its boundary Jordan. The same nested-intersection and increasing-complement argument makes \(q^{-1}K=\bigcap_r\overline{W_r}\) connected and full.
+
+Iteration gives at most \(2^p\) children of one parent and proves the finite-family and surjectivity assertions. A finite disjoint family has positive pairwise separation, so nested Jordan neighborhoods isolate its members. To prove path connectivity, choose for each member \(C_i\) nested isolating Jordan disks \(C_i\subset D_i^-\), \(\overline{D_i^-}\subset D_i^+\), with the \(D_i^+\) pairwise disjoint. The disk with the \(\overline{D_i^-}\) removed is path connected. Each \(D_i^+\setminus C_i\) is path connected by fullness and overlaps that core in \(D_i^+\setminus\overline{D_i^-}\). Their union is exactly the complement of the \(C_i\).
+\end{proof}

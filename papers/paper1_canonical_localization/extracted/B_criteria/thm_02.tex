@@ -1,0 +1,38 @@
+\begin{corollary}[Conditional revised-or-restricted embedding route]
+\label{cor:conditional-embedding-route}
+Consider a KL localization stage whose underlying map is a physical
+embedding \(a\), with source and target localization subgroups
+\(H_s,H_t\).  If
+\[
+ a_*^{-1}(H_t)=H_s,
+\]
+then the localized inclusion is an embedding on the covered
+complementary component.  If this equality holds at every stage through
+the complete direct-decoration horizon, then all induced degree-one
+universal-cover tile maps are injective; together with the separately
+proved component-bijection and tile-gluing criterion, the corresponding
+fixed pseudo-piece immersion is an interior holomorphic embedding.
+\end{corollary}
+
+\begin{proof}
+% The underlying research notes state this corollary without a separate
+% proof; each step below is one application of a result proved in this
+% paper.
+The first assertion is Theorem~\ref{thm:subgroup-reflection-criterion}
+applied to the stage's localization covers: the reflection equality
+forces the localized lift to be injective, and it is an embedding on
+the covered complementary component (an injective holomorphic
+immersion is an open injective map, hence a homeomorphism onto its
+image).  For the second assertion, stagewise injectivity of the
+localized base maps upgrades, via the tile/base equivalence
+(Theorem~\ref{thm:tile-base-equivalence}, proved in
+Section~\ref{sec:tiles} below), to injectivity of every
+induced degree-one universal-cover tile lift.  The final assertion
+combines tile injectivity with the fixed-pair component bijection
+through the tile-gluing criterion
+(Proposition~\ref{prop:tile-glue-equivalence}, also proved in
+Section~\ref{sec:tiles} below) to conclude that the
+glued pseudo-piece immersion is an interior holomorphic embedding.
+No circularity arises from the forward references: nothing in
+Sections~\ref{sec:criteria}--\ref{sec:basechange} uses this corollary.
+\end{proof}

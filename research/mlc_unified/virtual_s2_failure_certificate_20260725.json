@@ -1,0 +1,47 @@
+{
+  "artifact": "VIRTUAL_S2_ANALYTIC_CERTIFICATE_ATTEMPT",
+  "date": "2026-07-25",
+  "status": "failed_at_source_interface",
+  "scope": "Attempt to construct the first deeper virtual-Molecule scale from the actual quadratic dynamical plane.",
+  "first_missing_object": {
+    "name": "Xi_2",
+    "required_type": "map from an explicitly defined address/state space Omega_2 to actual compact connected dynamical-plane components K_{2,omega} of one fixed polynomial f_c",
+    "required_fields": [
+      "actual domain and iterate",
+      "parent component",
+      "sheet/deck phase",
+      "return word and critical chronology",
+      "protected access and prime-end side",
+      "obstacle and localization ownership",
+      "future proof-use observables"
+    ]
+  },
+  "observed_source_data": [
+    "A parameter copy chain and its combinatorial nesting",
+    "A first-scale direct-decoration escape atlas with actual puzzle pullbacks",
+    "A terminal primitive Hubbard-tree realization"
+  ],
+  "missing_from_checked_sources": [
+    "A source-defined Omega_2",
+    "A source-defined Xi_2",
+    "Actual scale-2 return domains and iterates",
+    "A canonical assignment of scale-2 components to terminal-tree vertices",
+    "Protected access, retained-return cutoff, and complete Wave demand data"
+  ],
+  "authoritative_local_evidence": [
+    "virtual_cantor_package_interface.md#5-the-s2-construction-attempt",
+    "virtual_scale_to_puzzle_selector.md#9-why-the-construction-does-not-automatically-iterate",
+    "critical_chronology_and_retimed_telescope.md#16-exact-source-facing-residual",
+    "proof_obligations.json:VIRTUAL_CANTOR_PACKAGE_REALIZATION",
+    "proof_obligations.json:VIRTUAL_VERTEX_PACKAGE_SELECTOR",
+    "proof_obligations.json:VIRTUAL_FINITE_WORD_ROOT_PORTRAIT_AUTHORIZATION"
+  ],
+  "downstream_consequence": "No VPRC, UPTCR, coercivity, rigidity, or MLC promotion is justified from the current interface.",
+  "repair_required": [
+    "Construct Xi_2 from actual dynamical-plane domains and polynomial iterates for an explicit nontrivial chain.",
+    "Verify the full typed component/access/obstacle record on that chain.",
+    "Only after that finite certificate passes, attempt a uniform theorem over all virtual-Molecule chains."
+  ],
+  "promotion_decision": "keep all affected obligations open",
+  "original_artifacts_written": false
+}

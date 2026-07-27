@@ -1,0 +1,45 @@
+\begin{figure}[t]
+\centering
+\begin{tikzpicture}[scale=1.05,
+  blob/.style={draw, thick, fill=gray!12, rounded corners=6pt},
+  julia/.style={draw, thick, fill=gray!45},
+  juliaA/.style={draw, very thick, fill=black!70},
+  lbl/.style={font=\small}]
+  % ambient U^0
+  \draw[thick, rounded corners=18pt] (-5.1,-2.9) rectangle (5.1,2.9);
+  \node[lbl] at (-4.55,2.55) {\(U^{0}\)};
+  % U^p
+  \draw[thick, dashed, rounded corners=14pt] (-3.9,-2.2) rectangle (3.9,2.2);
+  \node[lbl] at (-3.35,1.85) {\(U^{p}\)};
+  % the cycle B = K_p(0) u ... u K_p(p-1), p = 3, with A = K_p = K_p(0)
+  \node[juliaA, ellipse, minimum width=1.5cm, minimum height=0.85cm] (A) at (-2.1,0.4) {};
+  \node[lbl, white] at (A) {\(A=K_p\)};
+  \node[julia, ellipse, minimum width=1.25cm, minimum height=0.7cm] (K1) at (0.4,1.25) {};
+  \node[lbl] at (0.4,1.25) {\(K_p(1)\)};
+  \node[julia, ellipse, minimum width=1.25cm, minimum height=0.7cm] (K2) at (2.5,0.15) {};
+  \node[lbl] at (2.5,0.15) {\(K_p(2)\)};
+  % cycle arrows under f
+  \draw[->, bend left=25] (A.70) to node[lbl, above left] {\(f\)} (K1.160);
+  \draw[->, bend left=25] (K1.-20) to node[lbl, above right] {\(f\)} (K2.100);
+  \draw[->, bend left=35] (K2.-130) to node[lbl, below] {\(f\)} (A.-40);
+  % excess component X of F^{-1}(A)
+  \node[draw, very thick, fill=white, ellipse, minimum width=1.1cm, minimum height=0.6cm]
+    (X) at (-0.6,-1.35) {};
+  \node[lbl] at (-0.6,-1.35) {\(X\)};
+  \node[lbl] at (-0.6,-2.0) {excess component of \(F^{-1}(A)\)};
+  \draw[->, bend right=20, thick] (X.30) to node[lbl, right, pos=0.45] {\(F=f^{\,p}\)} (A.-80);
+  % the based loop gamma around X
+  \draw[thick, densely dotted] (-0.6,-1.35) ellipse (1.05cm and 0.62cm);
+  \node[lbl] at (0.85,-1.0) {\(\gamma\)};
+\end{tikzpicture}
+\caption{The canonical seed of a primitive renormalization of period \(p\)
+(drawn for \(p=3\)).  The cycle
+\(B=\mathcal K_p=\bigcup_{j}K_p(j)\) is removed and the central continuum
+\(A=K_p\) is retained on both sides.  Because \(\deg F=2^{p}\) exceeds the
+central degree \(2\), the preimage \(F^{-1}(A)\) has a component
+\(X\neq A\).  A based loop \(\gamma\) encircling \(X\) lies outside the
+source localization subgroup but is contracted by the physical inclusion in
+the target: its localized lift has distinct endpoints that the localized
+inclusion identifies.}
+\label{fig:seed}
+\end{figure}

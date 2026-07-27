@@ -1,0 +1,32 @@
+{
+  "certificate": "KKL_GLOBAL_TAXONOMY_SOURCE_VALID",
+  "source": "https://arxiv.org/html/2606.27272",
+  "source_pdf": "https://arxiv.org/pdf/2606.27272",
+  "source_sha256": "4C08805384B473DC0E55D76491C52C9FBE7C027E6DA301F2C365A170ED7D9140",
+  "proved_scope": "parabolically bounded families of prime primitive types have beau bounds and rigidity/MLC in the stated class",
+  "taxonomy": {
+    "anti_molecule": "bounded l, h, d",
+    "near_parabolic": "h unbounded, l and d bounded",
+    "near_neutral": "d unbounded, l bounded",
+    "virtually_satellite": "l unbounded"
+  },
+  "boundary": {
+    "all_unbounded_satellite_promotion": "reported as an author belief/program direction, not a theorem in this paper",
+    "virtual_renormalization": "listed as in preparation",
+    "global_mlc": "not claimed; the paper says rigidity for all families is still required"
+  },
+  "checks": {
+    "source_hash_ok": true,
+    "title_present": true,
+    "primitive_class_abstract_present": true,
+    "four_way_taxonomy_present": true,
+    "sectorial_molecule_branch_present": true,
+    "virtual_renormalization_branch_present": true,
+    "unbounded_satellite_promotion_is_prospective": true,
+    "virtual_project_in_preparation": true,
+    "global_mlc_not_claimed": true,
+    "original_artifacts_written_false": true
+  },
+  "all_checks": true,
+  "original_artifacts_written": false
+}

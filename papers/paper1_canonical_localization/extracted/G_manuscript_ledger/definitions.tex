@@ -1,0 +1,45 @@
+\begin{definition}[Canonical localization data]\label{def:canonical-localization}
+Let \(f:U^1\to U^0\) be an ordinary quadratic-like restriction of a quadratic
+polynomial, primitively renormalizable of period \(p>1\). Put
+\(F=f^p:U^p\to U^0\), \(A=K_p\), and \(B=\mathcal K_p=\bigcup_{j=0}^{p-1}f^j(K_p)\).
+Kahn's canonical localization localizes the physical inclusion
+\(i^p:T'\to T\), where
+\[
+T'=(U^p\setminus F^{-1}B)\cup A,\qquad T=(U^0\setminus B)\cup A,
+\]
+at the marked continuum \(A\): the source and target localization covers are the
+connected covers of \(\Omega_s=U^p\setminus F^{-1}B\) and \(\Omega_t=U^0\setminus B\)
+classified by the subgroups
+\(H_s=\operatorname{im}[\pi_1(D_A\setminus A,z_*)\to\pi_1(\Omega_s,z_*)]\)
+and its target analogue, where \(D_A\) is a small Jordan neighborhood of \(A\),
+and the localized inclusion \(\hat i:T'_A\to T_A\) is the unique commuting based lift.
+\end{definition}
+
+\begin{definition}[Pointed coset fiber]\label{def:pointed-coset}
+For a based embedding \(a:(X_s,x_s)\hookrightarrow(X_t,x_t)\), localization
+subgroups \(H_s,H_t\), and a based lift \(A\), put \(K=a_*^{-1}(H_t)\).
+The pointed coset set \(K/H_s\) is the set of left cosets \(kH_s\), \(k\in K\),
+with distinguished point \(H_s\). No group structure on \(K/H_s\) is used;
+in particular \(H_s\) is not assumed normal in \(K\).
+\end{definition}
+
+\begin{definition}[Fixed direct-decoration pair and glued pseudo-piece]\label{def:direct-decoration}
+The fixed Kahn--Lyubich direct-decoration pullback is
+\(Q=Q_a\subset P=Y^{(\nu-1)q+1}\), \(g=f^q|_Q:Q\to P\), \(a\in\{L,R\}\),
+with \(K_Q=Q\cap K(f)\), \(K_P=P\cap K(f)\), and the induced pair
+\((g,\iota):Q\rightrightarrows P\) of the dynamical covering \(g\) and the
+inclusion immersion \(\iota\) on the KL pseudo-pieces. The pseudo-piece is
+glued from a central piece and universal-cover tiles \(\tilde A_{s,i}\) along
+declared central/tile overlap embeddings \(e_i\) (source) and \(\tilde e_j\)
+(target); \(L_i\) denotes the lifted tile immersion and \(j(i)\) the target
+index of source tile \(i\). KL prove that \(\iota\) is a holomorphic immersion;
+global injectivity at a general \(\psi\)-ql stage is a separate open condition.
+\end{definition}
+
+\begin{definition}[\(\psi\)-quadratic-like pair]\label{def:psi-ql}
+A degree-two \(\psi\)-quadratic-like pair \((i,f):(U',K')\to(U,K)\) consists of
+plane domains \(U',U\), full compact connected sets \(K'\subset U'\), \(K\subset U\),
+a proper degree-two branched cover \(f:U'\to U\), and a holomorphic immersion
+\(i:U'\to U\) with the exact common connected inverse
+\(i^{-1}(K)=f^{-1}(K)=K'\) and \(i|_{K'}:K'\to K\) a homeomorphism.
+\end{definition}

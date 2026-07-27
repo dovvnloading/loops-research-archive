@@ -1,0 +1,23 @@
+\begin{proposition}[Canonical resolution cannot be the whole actual KL tile; manuscript Prop.~12.68, ledger \texttt{CANONICAL\_KL\_WHOLE\_TILE\_CORRESPONDENCE\_NO\_GO}]\label{prop:whole-tile-no-go}
+Retain the nontrivial resolved tower of Theorem~\ref{thm:resolved-boundary-obstruction}, and write
+\[
+\mathcal E\xrightarrow{\ q\ }\mathcal R\xrightarrow{\ e\ }\mathcal T,\qquad L=eq,\qquad N=\operatorname{Deck}(q)\neq 1 .
+\]
+There do not exist maps \(\Phi:\mathcal E\to\hat A_s\), \(B:\mathcal T\to\hat A_t\) such that:
+\begin{enumerate}
+\item \(\Phi\) is the based biholomorphic isomorphism of universal covers over the same oriented source annulus;
+\item \(\Phi h=t_s\Phi\) for the positive annular deck generators;
+\item \(B\) is continuous and injective on \(L(\mathcal E)\);
+\item \(L^{\mathrm{KL}}\Phi=BL\) on the complete source tile; and
+\item the conformal ideal extension of \(\Phi\) sends \(\zeta_{\pm}\) to KL's named wrapping vertices \(\omega_{\pm}\).
+\end{enumerate}
+In particular, the ordinary primitive canonical infinite resolution is not a whole-tile covering/embedding factorization of the actual KL map.
+\end{proposition}
+
+\begin{proof}
+For \(N\neq 1\), the proof of Theorem~\ref{thm:resolved-boundary-obstruction} gives \(\zeta_+\in\Lambda(N)\). Choose \(\gamma_k\in N\) with \(\gamma_k z\to\zeta_+\) for every \(z\in\mathcal E\). Deck invariance and the asserted square give
+\[
+L^{\mathrm{KL}}\bigl(\Phi(\gamma_k z)\bigr)=BL(\gamma_k z)=BL(z).
+\]
+End compatibility gives \(\Phi(\gamma_k z)\to\omega_+\), and KL's source-locked continuity at \(\omega_+\) therefore implies \(L^{\mathrm{KL}}(\omega_+)=BL(z)\) for every \(z\). This is impossible because \(L\) is nonconstant and \(B\) separates its image. The canonical winding theorem and fiber-preserving tile pullback make \(N\) infinite in the ordinary primitive canonical resolution, so the final assertion follows.
+\end{proof}

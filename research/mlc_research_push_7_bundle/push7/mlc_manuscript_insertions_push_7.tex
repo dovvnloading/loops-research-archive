@@ -1,0 +1,485 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb,amsthm,mathtools,mathrsfs}
+\usepackage{microtype}
+\usepackage{enumitem}
+\usepackage{booktabs}
+\usepackage[hidelinks]{hyperref}
+\setlist{nosep}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{lemma}[theorem]{Lemma}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{warning}[theorem]{Warning}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+\newcommand{\A}{\mathcal A}
+\newcommand{\T}{\mathcal T}
+\newcommand{\F}{\mathscr F}
+\newcommand{\PP}{\mathbf P}
+\newcommand{\QQ}{\mathbf Q}
+\title{Proposed Manuscript Insertions VII\\
+Source-Complete Binary Contacts and the Pseudo-Trace Atlas}
+\author{Research draft for the marked-width MLC program}
+\date{July 25, 2026}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+For the actual binary $f^q$ pullback system at the first direct-decoration
+scale, we recover the missing one-step boundary contacts from the source
+$2^n$-component attachment theorem, compute all deeper contacts by a finite
+normalized recursion, retain endpoint flags and cyclic sides, and construct a
+one-to-many trace-pullback atlas on the source-native pseudo-puzzle boundary.
+The atlas is exactly natural under normalization, safe-gap carrier enlargement,
+and certified finite overlay refinement.  The results close the binary
+contact/trace construction for a fixed source block and finite marked overlay;
+they do not prove a universal response/Value quotient, MBTT, rigidity, or MLC.
+\end{abstract}
+
+\section{Exact binary source package}
+Let
+\[
+ P=Y^{(n-1)q+1},\qquad g=f^q,
+\]
+and let $Q_L,Q_R\subset P$ be the two actual univalent $f^q$ pullbacks.
+Write
+\[
+ g_a=g|_{Q_a}:Q_a\to P,\qquad \phi_a=g_a^{-1},\qquad a\in\A=\{L,R\}.
+\]
+For $w=a_1\cdots a_k$, put
+\[
+ \phi_w=\phi_{a_1}\circ\cdots\circ\phi_{a_k},\quad
+ D_w=\phi_w(P),\quad h_w=g^k|_{D_w}:D_w\to P.
+\]
+The already established closed-piece separation gives $Q_L\cap Q_R=\varnothing$.
+
+The source proves that the domain of $g^n$ has $2^n$ components.  For
+$s\in\A^n$, let
+\[
+ v_s=\phi_s(\alpha).
+\]
+These points are the vertices of $P$, and the component $D_s$ is attached to
+the two boundary rays of $P$ landing at $v_s$.
+
+\section{One-step contact recovery}
+Define
+\[
+ C_a=\partial P\cap\partial Q_a,
+ \qquad
+ \mathcal V_a=\{v_{at}:t\in\A^{n-1}\}.
+\]
+
+\begin{theorem}[Source recovery of the binary contacts]
+For $a\in\{L,R\}$:
+\begin{enumerate}
+\item the landing vertices of $C_a$ are exactly $\mathcal V_a$;
+\item $C_a$ consists of the maximal common subsegments of the two boundary
+rays of $P$ landing at those vertices, together with their endpoint flags;
+\item no nondegenerate equipotential arc belongs to $C_a$;
+\item the complete contact is computed by exact matching of the finite typed
+boundary words of $P$ and $Q_a$.
+\end{enumerate}
+After finite subdivision, $g_a$ maps every open contact atom homeomorphically
+onto one root-boundary atom.
+\end{theorem}
+
+\begin{proof}
+For $s=at$, the source component $D_s$ is contained in $Q_a$ and shares the
+pair of boundary rays of $P$ landing at $v_s$.  A point of such a common ray
+cannot be interior to $Q_a\subset P$, hence the common ray is also on
+$\partial Q_a$.  Thus every $v_{at}$ occurs.
+
+Conversely, let an open contact ray of $P$ and $Q_a$ land at a vertex $v$ of
+$P$.  The source attachment theorem supplies the unique depth-$n$ component
+$D_s$ attached at $v$.  Its first-level cylinder contains $v$.  Since the two
+closed first-level cylinders are disjoint and $v\in Q_a$, the first symbol of
+$s$ must be $a$.  Hence $v=v_{at}$.
+
+The parent and child equipotential levels differ by $q$, so their open arcs are
+disjoint.  Distinct external rays are disjoint outside the filled Julia set.
+Thus exact ray-angle matching and intersection of the potential intervals
+recovers all open contacts.  Subdivision at their endpoints and images makes
+the branch map simplicial. 
+\end{proof}
+
+\begin{definition}[Endpoint flag]
+A boundary flag is a vertex, an incident open boundary atom, the side of the
+puzzle piece, and the induced cyclic orientation.  Bare landing points are not
+used as endpoint records.
+\end{definition}
+
+Each $g_a$ induces a partial flag map
+\[
+ \sigma_a:\F(C_a)\longrightarrow\F(\partial P)
+\]
+that preserves cyclic order.
+
+\section{Complete all-depth contacts}
+For a word $w$, set
+\[
+ C_w=\partial P\cap\partial D_w,
+ \qquad
+ \widehat C_w=h_w(C_w)\subset\partial P,
+ \qquad
+ \widehat C_{\varnothing}=\partial P.
+\]
+
+\begin{theorem}[Exact contact recursion]
+For every word $w$ and symbol $a$,
+\[
+ \boxed{\widehat C_{wa}=g_a(\widehat C_w\cap C_a).}
+\]
+\end{theorem}
+
+\begin{proof}
+If $z\in C_{wa}$, nesting $D_{wa}\subset D_w\subset P$ implies
+$z\in\partial D_w$: otherwise $z$ would be interior to $D_w\subset P$ while
+lying on $\partial P$.  Hence $x=h_w(z)\in\widehat C_w$.  Since
+$D_{wa}=\phi_w(Q_a)$, we also have $x\in\partial Q_a$, and
+$h_{wa}(z)=g_a(x)$.
+
+Conversely, if $x\in\widehat C_w\cap C_a$, then
+$z=h_w^{-1}(x)$ lies on $\partial P$ by the definition of $\widehat C_w$, and
+on $\partial D_{wa}$ because $x\in\partial Q_a$.  Thus $z\in C_{wa}$.
+\end{proof}
+
+\begin{theorem}[Complete binary cylinder contacts]
+For finite words $u,v$:
+\begin{enumerate}
+\item if $u,v$ are incomparable, then $D_u\cap D_v=\varnothing$;
+\item if $v=ut$, then
+\[
+ \boxed{\partial D_u\cap\partial D_v=\phi_u(C_t).}
+\]
+\end{enumerate}
+Consequently the two one-step contact graphs determine every all-depth contact.
+\end{theorem}
+
+\begin{proof}
+At the first differing symbol, incomparable pieces lie in the inverse images of
+the disjoint closed pieces $Q_L,Q_R$.  If $v=ut$, then
+$D_v=\phi_u(D_t)$ and $D_u=\phi_u(P)$; apply the closed-piece homeomorphism
+$\phi_u$.
+\end{proof}
+
+After subdivision, the normalized contact dynamics is the finite automaton
+\[
+ T_a(S)=g_a(S\cap C_a)
+\]
+on subcomplexes of one finite root boundary graph.  This is a per-block finite
+state statement, not a universal bound in $n$ or $q$.
+
+\section{Source endpoint itineraries}
+For a prefix $w\in\A^k$, $0\le k\le n$, define
+\[
+ \mathcal V(w)=\{v_{wt}:t\in\A^{n-k}\}.
+\]
+
+\begin{theorem}[Prefix endpoint itinerary]
+The landing vertices of the open ray contacts in
+$\partial P\cap\partial D_w$ are exactly $\mathcal V(w)$.  Moreover
+\[
+ \boxed{h_w(v_{wt})=v_t.}
+\]
+The incident boundary-ray flags and their cyclic order are transported by the
+same shift.
+\end{theorem}
+
+\begin{proof}
+Every depth-$n$ component $D_{wt}\subset D_w$ is source-attached to the
+boundary rays at $v_{wt}$; nesting forces those common rays to remain on the
+boundary of each intermediate piece.  Conversely, a contact vertex of $D_w$
+has a unique source depth-$n$ attached component.  Its word must begin with
+$w$, since otherwise it lies in an incomparable disjoint cylinder.  Finally,
+$g^k$ cancels the first $k$ inverse branches.
+\end{proof}
+
+\begin{theorem}[Post-transient synchronization]
+Let $\mathscr R_\alpha\subset\partial P$ be the complete pair of root
+boundary-ray atoms landing at $\alpha$, with endpoint flags.  For every
+$s\in\A^n$,
+\[
+ \widehat C_s=\mathscr R_\alpha.
+\]
+The left branch fixes this contact, while the right branch kills it:
+\[
+ T_L(\mathscr R_\alpha)=\mathscr R_\alpha,
+ \qquad
+ T_R(\mathscr R_\alpha)=\varnothing.
+\]
+Hence for every continuation $t$, the contact persists exactly when
+$t=L^m$; after the first $R$ it is empty forever.  The same holds for endpoint
+flags.
+\end{theorem}
+
+\begin{proof}
+The prefix theorem at $k=n$ gives the unique normalized landing vertex
+$\alpha$ for every depth-$n$ word, and $h_s$ maps the attached deeper ray pair
+onto the complete root ray pair.  The left inverse branch is attached at the
+fixed point $\alpha$ and $f^q$ fixes its ray pair.  The right first-level piece
+is a disjoint closed piece attached at $\alpha'$, so exact boundary-word
+matching gives no ray atom or endpoint flag in common with
+$\mathscr R_\alpha$.  Apply the contact recursion; the empty state is
+absorbing.
+\end{proof}
+
+\begin{corollary}
+The $2^n$ source fan is transient contact data.  Beyond source depth $n$, one
+address has only two possible normalized contact states: the fixed
+$\alpha$-port or no root contact.  This does not bound the number of transient
+proof-used ports across all words.
+\end{corollary}
+
+\section{One-to-many pseudo-trace atlas}
+The source pseudo-functor associates a pseudo-piece $\mathbf Y$ to each puzzle
+piece.  Its ideal boundary has finitely many O-boundary and J-boundary arcs; at
+a vertex $v$ the source port is $\partial_v\mathbf Y$.  A degree-one puzzle
+branch induces a degree-one covering of pseudo-pieces and extends continuously
+to the ideal boundary.
+
+Choose a finite root overlay $\mathscr O$ containing all contact endpoints,
+source vertex-port endpoints, and the current finite protected, obstacle and
+electrode endpoints.  Pull it back to $\mathbf Q_L,\mathbf Q_R$ and refine the
+root by all images.  Let $\mathscr A_P$ and $\mathscr A_{Q_a}$ be the resulting
+open atoms.  Each child atom $K$ maps homeomorphically to one parent atom
+$p_a(K)$.
+
+For $J\in\mathscr A_P$, put
+\[
+ \operatorname{Lift}(J)=\{(a,K):p_a(K)=J\}.
+\]
+Because each branch has degree one,
+\[
+ |\operatorname{Lift}(J)|\le2.
+\]
+
+For a pseudo-piece $\mathbf Y$ and a finite atom union $B$, let
+\[
+ \T_{\mathbf Y}(B)
+ =H^1_{\mathrm{fin}}(\mathbf Y)/\{u:\operatorname{Tr}_B u=0\}
+\]
+with its minimum-energy quotient norm.  Define the compatible tuple space over
+$J$ to be the image of the joint branch pullback.
+
+\begin{theorem}[Binary one-to-many trace atlas]
+For every root atom $J$, actual trace pullback defines a continuous map
+\[
+ \mathcal R_J:\T_{\PP}(J)\longrightarrow
+ \T_J^{\mathrm{comp}},
+\]
+\[
+ \mathcal R_Ju=
+ \left((u|_{\mathbf g_a(K)})\circ\mathbf g_a|_K\right)_{(a,K)\in\operatorname{Lift}(J)}.
+\]
+It retains exact branch pullback, endpoint flags, side and cyclic order; it is
+conformally natural for Dirichlet energy and assumes no omitted Euclidean
+boundary welding.
+\end{theorem}
+
+\begin{proof}
+The source-induced pseudo-map is conformal and extends to the ideal boundary.
+Every refined child atom maps homeomorphically to its parent atom.  Therefore
+trace pullback is defined on the intrinsic minimum-energy trace quotient.  The
+compatible tuple space is the image of the joint map, so vertex compatibility
+is automatic.  Conformal invariance gives energy naturality.
+\end{proof}
+
+For a word $w$, direct pullback by the induced $\mathbf h_w$ equals the
+composition of the one-step maps, with canonical reassociation of the
+compatible tuple spaces.  The analogous flag and cyclic-order identities also
+hold.
+
+\section{Normalized-overlay naturality}
+At a word $w$, put
+\[
+ \mathscr O_w=\mathbf h_w^{-1}(\mathscr O).
+\]
+On $\mathbf D_{wa}$,
+\[
+ \boxed{\mathbf h_{wa}=\mathbf g_a\circ\mathbf h_w.}
+\]
+
+\begin{theorem}[Normalized-overlay naturality]
+For every $w,a$, this identity gives commuting diagrams for:
+\begin{enumerate}
+\item contact subgraphs;
+\item endpoint flags and cyclic order;
+\item one-to-many trace restrictions;
+\item compatible trace spaces;
+\item all finite response forms obtained by minimizing internal traces.
+\end{enumerate}
+Two prefixes with the same normalized contact state and live marked overlay
+therefore have the same future contact/trace behavior.
+\end{theorem}
+
+\begin{proof}
+The polynomial identity is exact on the selected pieces.  The pseudo-functor
+preserves it.  The contact square is the contact-recursion theorem; the flag
+and trace squares are the boundary extension and functoriality of restriction.
+Dirichlet minimization is taken over coordinate-isomorphic fibers.
+\end{proof}
+
+\section{Final-root-enlargement naturality}
+\begin{theorem}[Safe-gap atlas invariance]
+Let
+\[
+ K_0\subset S\subset S^+\subset P\setminus(Q_L\cup Q_R)
+\]
+be compact connected roots, and put $S_w=\phi_w(S)$,
+$S_w^+=\phi_w(S^+)$.  Then every puzzle piece, contact set, endpoint itinerary,
+flag, and trace-atlas map is unchanged.  The inclusions $S_w\subset S_w^+$
+commute with all shift and parent maps; only the internal carrier/cap response
+can change.
+\end{theorem}
+
+\begin{proof}
+The atlas depends only on the fixed puzzle and pseudo-puzzle boundaries and on
+the finite overlay.  The safe-gap enlargement does not meet them.  The
+inclusions and commuting squares follow from injectivity of $\phi_w$ and
+$g\circ\phi_a=\mathrm{id}$.
+\end{proof}
+
+For a certified finite overlay refinement
+$\mathscr O\preceq\mathscr O^+$, assume every new child endpoint is an exact
+pullback or typed source endpoint, every branch is atomwise homeomorphic, and
+all protected sides are retained.  Let $\pi_P,\pi_a$ forget the subdivision.
+
+\begin{theorem}[Refinement naturality]
+The atom, flag and trace diagrams commute:
+\[
+ \pi_Pp_a^+=p_a\pi_a,
+ \qquad
+ \pi_P\sigma_a^+=\sigma_a\pi_a,
+\]
+\[
+ \boxed{\operatorname{Sub}_{Q_a}\mathcal R_a
+ =\mathcal R_a^+\operatorname{Sub}_P.}
+\]
+Introducing and then minimizing the refined internal traces reconstructs the
+coarse response exactly.
+\end{theorem}
+
+\begin{remark}[Promotion boundary]
+This proves naturality of a certified collision-free final overlay.  It does
+not prove that an arbitrary final-root enlargement is collision-free or
+proof-complete.  No-new-demand stability still requires demanded-atom
+bijection or future observability on every coarse fiber.
+\end{remark}
+
+\section{Recursive response grammar and finite-state observables}
+Let $\mathcal B$ be the exact one-step Dirichlet form on the root terminals and
+the two child trace interfaces, and let $Q_0$ be a terminal cap response.  With
+$\star$ denoting exact compatible-trace gluing, define
+\[
+ Q_{r+1}=\mathcal B\star\bigl(Q_r^{(L)}\oplus Q_r^{(R)}\bigr).
+\]
+
+\begin{theorem}[Binary response grammar]
+$Q_r$ is exactly the response of the normalized depth-$r$ binary assembly.
+It has a shared recursive circuit of size $O(r)$, although its fully expanded
+leaf interface may have $2^r$ ports.  The recursion is natural under the
+normalization and enlargement maps above.
+\end{theorem}
+
+\begin{proof}
+The depth-$r+1$ domain is one root cell with one normalized depth-$r$ assembly
+on each child.  Apply Sobolev domain decomposition and induction.  Sharing the
+identical child response symbol gives one new circuit node per depth.
+\end{proof}
+
+Let $M_L,M_R$ be $d\times d$ coefficient transitions and $R_L,R_R$ be
+$w\times w$ branch-feature transports.  For $s=a_1\cdots a_r$, write
+$M_s=M_{a_1}\cdots M_{a_r}$ and $R_s=R_{a_1}\cdots R_{a_r}$.
+
+\begin{theorem}[Matrix-product future quotient]
+For coefficient vectors $u,v$ and feature vector $x$,
+\[
+ \sum_{s\in\{L,R\}^r}(u^TM_sv)R_sx
+ = (u^T\otimes I_w)
+   (M_L\otimes R_L+M_R\otimes R_R)^r
+   (v\otimes x).
+\]
+Hence a universal $d$-state coefficient transducer and $w$-dimensional branch
+feature module give an exact future quotient of dimension at most $dw$,
+independent of $2^r$.
+\end{theorem}
+
+\begin{proof}
+Expand the $r$-th power.  Its terms are exactly $M_s\otimes R_s$, indexed by
+binary words, and contract the first tensor factor with $u,v$.
+\end{proof}
+
+\subsection*{Fixed-block KKL Value moment}
+Let $T$ be one source-licensed finite terminal Hubbard tree, $E=E(T)$, and
+$\mathcal S=E\times E$.  Let $v,w$ be the Perron weights and $\lambda$ the core
+eigenvalue used by the KKL Value construction.  For a level-$m$ arc $\gamma$,
+define
+\[
+ z_m(\gamma)_{e,e'}=
+ \sum_{\substack{\alpha:\,f_*^m\alpha=e\\
+                 (\iota^m)_*\alpha=e'}}
+ \langle\alpha,\gamma\rangle,
+ \qquad
+ a_{e,e'}=v(e)\sqrt{w(e')}.
+\]
+For a WAD $X$, put
+\[
+ \mathsf M_m(X)=\sum_\gamma X(\gamma)
+ z_m(\gamma)z_m(\gamma)^T.
+\]
+
+\begin{theorem}[Exact fixed-block Value state]
+\[
+ \boxed{
+ \operatorname{Val}(X)=\lambda^{-2m}
+ \langle aa^T,\mathsf M_m(X)\rangle.}
+\]
+Thus one fixed terminal tree has an exact positive homogeneous Value state of
+dimension at most $|E|^2(|E|^2+1)/2$.  If a univalent binary branch induces
+an incidence matrix $P_a$ on $\mathbb R^{\mathcal S}$, then
+\[
+ \mathsf M(b_a^*X)=P_a\mathsf M(X)P_a^T,
+\]
+and the joint binary transport is
+\[
+ \mathsf M\longmapsto
+ P_L\mathsf MP_L^T+P_R\mathsf MP_R^T.
+\]
+\end{theorem}
+
+\begin{proof}
+The KKL coefficient of a pulled bivertical arc $\alpha$ is
+$\lambda^{-m}v(f_*^m\alpha)\sqrt{w((\iota^m)_*\alpha)}$.
+Grouping by the pair $(f_*^m\alpha,(\iota^m)_*\alpha)$ gives
+$\ell_m(\gamma)=\lambda^{-m}a^Tz_m(\gamma)$.  Substitute this into
+$\operatorname{Val}(X)=\sum_\gamma X(\gamma)\ell_m(\gamma)^2$.
+Univalent branch transport preserves intersection numbers, yielding the
+congruence formula.
+\end{proof}
+
+\begin{warning}
+The matrix-product theorem and the fixed-block moment theorem do not provide a
+universal state by themselves.  The terminal edge dimension may grow, and a
+virtual block still needs an actual typed factor to the terminal bivertical
+incidence.  Arbitrary independent leaf coefficients still require exponentially
+many degrees of freedom.
+\end{warning}
+
+\section{Status and next gate}
+The following fixed-block binary modules are proved by the preceding arguments:
+source contact recovery, complete contact recursion, complete cylinder
+contacts, endpoint-germ itineraries, the one-to-many pseudo-trace atlas, word
+functoriality, normalized-overlay naturality, safe-gap atlas invariance, and
+certified-refinement naturality.
+
+The broad direct-decoration and MLC program still requires a complete source
+Wave horizon, protected final inventory, a universal future-observable
+response/WAD/Value quotient, MBTT, coercivity and rigidity.  The next major
+analytic theorem should construct a uniformly controlled binary trace/Value
+future quotient and a strict complete-block transition.  No MLC claim is made.
+
+\end{document}

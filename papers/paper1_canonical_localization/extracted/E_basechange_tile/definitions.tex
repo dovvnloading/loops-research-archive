@@ -1,0 +1,83 @@
+\begin{definition}[Canonical resolved system; annular-tower typing]\label{def:canonical-resolved-system}
+Let \(\mathcal E\cong\mathbb D\), and let
+\begin{equation}\label{eq:resolved-factorization}
+\mathcal E \xrightarrow{\ q\ } \mathcal R \xrightarrow{\ e\ } T
+\end{equation}
+be a holomorphic factorization such that:
+\begin{enumerate}
+\item \(q\) is a universal covering;
+\item \(e\) is a holomorphic embedding;
+\item \(L:=e\circ q\colon\mathcal E\to T\) is nonconstant.
+\end{enumerate}
+Write \(N:=\operatorname{Deck}(q)\).  The system has \emph{nontrivial kernel} when \(N\ne\{1\}\).
+
+We further impose the \emph{annular-tower typing}: the factorization \eqref{eq:resolved-factorization} arises from the degree-one annular tower of the canonical sheet resolution, so that one fixed based disk action contains
+\begin{equation}\label{eq:semidirect}
+G=N\rtimes H,\qquad H=\langle h\rangle\cong\mathbb Z,
+\end{equation}
+where \(G\) is the deck group of the composite universal cover of the base piece (hence discrete, torsion-free, and acting freely on \(\mathcal E\cong\mathbb D\)), and the wrapping generator \(h\) is hyperbolic, with repelling and attracting fixed points
+\begin{equation}\label{eq:wrapping-points}
+\zeta_-,\zeta_+\in\partial\mathbb D,
+\end{equation}
+the two source-annular wrapping points.
+\end{definition}
+
+\begin{definition}[Actual KL tile system]\label{def:kl-tile-system}
+Let
+\begin{equation}\label{eq:kl-tile-map}
+L_{\mathrm{KL}}\colon\widehat A_s\longrightarrow\widehat A_t
+\end{equation}
+be one source-indexed actual Kahn--Lyubich inclusion tile map.  Both tiles are universal covers of their ambient annuli (KL~II, \S3.2.1, p.~12).  Let \(t_s\) be the positive source annular deck generator and let
+\begin{equation}\label{eq:kl-wrapping-ends}
+\omega_-,\omega_+\in\partial\widehat A_s
+\end{equation}
+be its two fixed prime ends; in the horizontal-strip uniformization with deck translation \(z\mapsto z+1\) these are the two ends of the strip (KL~II, \S5.5).  The locked source identifies these ends with the named infinitely wrapping \(\lambda/J\) vertices (KL~II, \S3.2.4, p.~13) and supplies continuous values
+\begin{equation}\label{eq:kl-boundary-values}
+\overline L_{\mathrm{KL}}(\omega_-),\qquad \overline L_{\mathrm{KL}}(\omega_+)
+\end{equation}
+in the Hausdorff conformal ideal closure of the target pseudo-piece (KL~II, \S3.2.4, p.~13).
+
+\emph{No injectivity of \(L_{\mathrm{KL}}\) is assumed.}
+\end{definition}
+
+\begin{definition}[Whole-tile end-compatible comparison]\label{def:whole-tile-comparison}
+A \emph{whole-tile end-compatible comparison} from the canonical resolved system \eqref{eq:resolved-factorization} to the actual KL tile system \eqref{eq:kl-tile-map} is a pair
+\begin{equation}\label{eq:comparison-pair}
+\Phi\colon\mathcal E\longrightarrow\widehat A_s,
+\qquad
+B\colon T\longrightarrow\widehat A_t
+\end{equation}
+satisfying all of the following.
+\begin{enumerate}
+\item \textbf{Based universal-cover identification.}  \(\Phi\) is a biholomorphism and is a based isomorphism of universal covers over the same oriented source annulus.
+\item \textbf{Deck-generator compatibility.}
+\begin{equation}\label{eq:deck-generator-compat}
+\Phi h=t_s\Phi.
+\end{equation}
+\item \textbf{Target separation.}  \(B\) is continuous and injective on \(L(\mathcal E)\).  A whole-target-tile isomorphism or embedding is a special case.
+\item \textbf{Composite square.}
+\begin{equation}\label{eq:comparison-square}
+\begin{array}{ccc}
+\mathcal E&\xrightarrow{\ L=e q\ }&T\\[2pt]
+{\scriptstyle\Phi}\big\downarrow&&\big\downarrow{\scriptstyle B}\\[2pt]
+\widehat A_s&\xrightarrow{\ L_{\mathrm{KL}}\ }&\widehat A_t
+\end{array}
+\qquad
+L_{\mathrm{KL}}\,\Phi=B\,L.
+\end{equation}
+\item \textbf{Named-end compatibility.}  In the conformal ideal closures,
+\begin{equation}\label{eq:named-end-compat}
+\overline\Phi(\zeta_-)=\omega_-,
+\qquad
+\overline\Phi(\zeta_+)=\omega_+.
+\end{equation}
+\end{enumerate}
+\end{definition}
+
+\begin{remark}[Status of clause (5)]\label{rem:clause5}
+Clause (5) follows from clauses (1)--(2) \emph{with the biholomorphic typing of clause (1)}: after disk uniformization, \(\Phi\) is a disk automorphism, extends homeomorphically to the conformal ideal circles, and conjugates the two hyperbolic transformations \(h\) and \(t_s\); it therefore sends their repelling and attracting fixed points to the corresponding fixed points.  Clause (5) is listed separately because it is the exact endpoint datum used by the proof of Theorem~\ref{thm:whole-tile-no-go} and must survive every proposed final-root enlargement.  Algebraic generator conjugacy by an arbitrary \emph{interior} homeomorphism would not suffice: on the strip \(\mathbb R\times(0,1)\) the homeomorphism \(u(x,y)=(x-1/y,\,y)\) commutes with the deck translation \(h(x,y)=(x+1,y)\), yet \((n,1/(2n))\to+\infty\) while \(u(n,1/(2n))=(-n,1/(2n))\to-\infty\); so generator conjugacy alone does not supply wrapping-end compatibility.
+\end{remark}
+
+\begin{remark}[No boundary extension of \(q\) or \(e\) is required]\label{rem:no-extension-needed}
+Definition~\ref{def:whole-tile-comparison} does not require a boundary extension of \(q\) or \(e\).  It requires only the actual KL composite extension \eqref{eq:kl-boundary-values} already supplied by the source.
+\end{remark}

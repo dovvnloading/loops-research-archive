@@ -1,0 +1,36 @@
+{
+  "artifact": "SERIAL_ANNULUS_SINGLETON_BRIDGE",
+  "date": "2026-07-25",
+  "status": "SERIAL_ANNULUS_SINGLETON_BRIDGE_VALID",
+  "theorem": "pairwise disjoint nested annuli with divergent total modulus have singleton nested inner intersection",
+  "source": {
+    "title": "Conformal Geometry and Dynamics of Quadratic Polynomials",
+    "author": "Mikhail Lyubich",
+    "proposition": "6.16",
+    "url": "https://www.math.stonybrook.edu/~mlyubich/book.pdf"
+  },
+  "divergent_model": {
+    "terms": 20000,
+    "partial_sum": 10.480728217229327,
+    "last_radius": 2.5158485789743485e-29
+  },
+  "finite_model": {
+    "terms": 80,
+    "partial_sum": 1.0,
+    "limiting_radius": 0.0018674427317079893
+  },
+  "checks": {
+    "round_annulus_modulus_formula": true,
+    "harmonic_partial_sum_grows": true,
+    "harmonic_radius_becomes_small": true,
+    "harmonic_model_has_singleton_limit": true,
+    "geometric_sum_is_finite": true,
+    "geometric_model_has_nondegenerate_limit": true,
+    "gr\u00f6tzsch_scope_is_explicit": true,
+    "dynamic_annulus_realization_not_claimed": true,
+    "original_artifacts_written": false
+  },
+  "all_checks": true,
+  "scope": "proved analytic implication; direct/virtual dynamical annulus realization remains open",
+  "original_artifacts_written": false
+}

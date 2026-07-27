@@ -1,0 +1,36 @@
+% Concordance: manual equation tags (n.m) in this file mirror the numbering of the underlying research note kl_canonical_localization_forced_collision.md, not this paper's section numbering.
+\begin{theorem}[Localization subgroup defect]\label{thm:subgroup-defect}
+Let \(X\) and \(D_X\) be as in Proposition \ref{prop:excess} and (4.5), and let \(H_s\), \(H_t\) be the localization subgroups of (5.2).  Let \(\eta\subset\Omega_s\) be any path from \(z_*\) to \(\partial D_X\) and set
+\[
+ \gamma=\eta*\partial D_X*\eta^{-1}.       \tag{5.3}
+\]
+Then
+\[
+ [\gamma]\notin H_s,\qquad a_*[\gamma]=1\in H_t,
+\]
+and consequently
+\[
+ a_*^{-1}(H_t)\supsetneq H_s:                          \tag{5.7}
+\]
+the exact failure of the subgroup-reflection equality on the actual canonical-localization data.
+\end{theorem}
+
+\begin{proof}
+First, \(a=i^p\) maps \(\Omega_s\) into \(\Omega_t\): if \(z\in B\), then \(z\in K_j\) for some \(j\), so \(F(z)\in F(K_j)=K_j\subset B\) by (4.3); hence \(B\subset F^{-1}B\), and therefore \(U^p\setminus F^{-1}B\subset U^0\setminus B\).
+
+The removed family \(F^{-1}B\) is a finite union of pairwise disjoint full continua by Corollary \ref{cor:finite-pullback}, so \(\Omega_s=U^p\setminus F^{-1}B\) is path connected by Lemma \ref{lem:connectivity}; the path \(\eta\) exists, and \(\gamma\) of (5.3) is a well-defined based loop at \(z_*\).
+
+Fix \(x\in X\).  Winding number about \(x\) defines a homomorphism \(\operatorname{Ind}_x\) on \(\pi_1(\Omega_s,z_*)\), since \(x\in X\subset F^{-1}B\) is disjoint from \(\Omega_s\).  Every element of \(H_s\) is represented, before inclusion, by a loop in \(D_A\setminus A\); the Jordan disk \(D_A\) is disjoint from every component of \(F^{-1}B\) other than \(A\), so \(x\notin D_A\), and any loop inside the simply connected \(D_A\) is null-homotopic in \(\mathbb C\setminus\{x\}\).  Consequently
+\[
+ \operatorname{Ind}_x(H_s)=\{0\}.                     \tag{5.4}
+\]
+On the other hand, the path and reverse path in (5.3) cancel in winding number, while \(\partial D_X\) (positively oriented) has winding number one about \(x\in X\subset D_X\).  Thus
+\[
+ \operatorname{Ind}_x(\gamma)=1,\qquad [\gamma]\notin H_s.  \tag{5.5}
+\]
+For the target: (4.5) gives \(\overline D_X\cap B=\varnothing\), and \(D_X\subset U^p\subset U^0\); hence \(D_X\subset\Omega_t\), and \(\partial D_X\) contracts across the disk \(D_X\) inside \(\Omega_t\).  Therefore
+\[
+ a_*[\gamma]=1\in H_t.                                \tag{5.6}
+\]
+Combining (5.5) and (5.6), \([\gamma]\in a_*^{-1}(H_t)\setminus H_s\), which is (5.7).
+\end{proof}

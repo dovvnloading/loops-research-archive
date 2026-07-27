@@ -1,0 +1,415 @@
+% Cluster A: notation and classical background
+% Body-only LaTeX; preamble macros, cite keys, and cross-cluster labels per CONVENTIONS.md.
+
+\section{Notation and classical background}\label{sec:prelim}
+
+Everything in this section is classical.  It is collected once, in the
+normalized forms used by the rest of the paper, for three reasons: the
+statements are invoked repeatedly and in exact form; two of them --- the
+compacta form of Alexander duality and the tameness of plane arcs --- are
+easy to quote in weaker versions that would not support the proofs; and the
+source manuscript's terminology --- \emph{atom}, \emph{package},
+\emph{carrier}, \emph{fullification}, \emph{protected access},
+\emph{collar} --- is fixed here at first use.
+
+\subsection{Plane, sphere, and general notation}\label{subsec:A-notation}
+
+Throughout, $\C$ is the complex plane, $\Z$ the integers, and
+$\Chat=\C\cup\{\infty\}$ the Riemann sphere, identified with the round
+sphere $S^2$ by stereographic projection and carrying its standard
+orientation.  Compact subsets of $\C$ are exactly the compact subsets of
+$\Chat$ missing $\infty$, and we pass between the two ambient spaces
+without comment.  The symbol $\dist$ denotes Euclidean distance in $\C$;
+diameters of crosscuts (Section~\ref{subsec:A-primeends}) are measured in
+the spherical metric, and all other metric quantities are Euclidean.  For
+a set $X$, $\Int X$ is its interior, $\partial X$ its boundary, and
+$\overline{X}$ its closure, taken in the ambient space clear from context;
+the relative closure of $X$ in a subspace $Y$ is written
+$\overline{X}^{\,Y}$, as in the attachment trace \eqref{eq:B-trace}.
+
+For sets $A,B$ we write $A\Subset B$, and say $A$ is \emph{compactly
+contained} in $B$, if $\overline{A}$ is compact and
+$\overline{A}\subset\Int B$; this is the manuscript's relation~$\Subset$.
+A \emph{domain} is a nonempty connected open subset of $\C$ or $\Chat$; a
+\emph{plane domain} is a domain in $\C$.  Every plane domain is polygonally
+connected: any two of its points are joined by a polygonal path inside it
+\cite{New51}.  A \emph{Jordan curve} is a homeomorphic image of the circle,
+a \emph{Jordan arc} a homeomorphic image of $[0,1]$, and an \emph{open
+Jordan arc} a Jordan arc with its two endpoints removed.  A \emph{Jordan
+disk} (synonymously, a \emph{Jordan domain}) is a bounded plane domain
+whose boundary is a Jordan curve; by the Jordan and Schoenflies theorems
+recalled in Proposition~\ref{prop:A-extension} below, a Jordan disk is
+simply connected, and its closure --- a \emph{closed Jordan disk} --- is
+homeomorphic to the closed unit disk.  A \emph{continuum} is a nonempty
+compact connected subset of $\C$ or $\Chat$; it is \emph{nondegenerate} if
+it contains more than one point.
+
+\subsection{Full continua, filled hulls, and fullification}
+\label{subsec:A-full}
+
+A compact set $K\subset\C$ is \emph{full} if $\C\setminus K$ is connected.
+Following the source manuscript (equation~(9.5) of \cite{MWman}), the
+\emph{filled hull} of a compact set $K\subset\C$ is
+\begin{equation}\label{eq:A-fill}
+\Fill(K)\;=\;K\,\cup\,
+\bigcup\bigl\{\,B : B \text{ a bounded component of }\C\setminus K\,\bigr\},
+\end{equation}
+that is, $K$ together with the bounded components of its complement.  The
+passage from $K$ to $\Fill(K)$ is called \emph{fullification}; the term is
+the manuscript's, and it is used as a noun for the operation and,
+occasionally, for its result.  The following properties are used
+constantly and are recorded with proof.
+
+\begin{lemma}[Basic properties of filled hulls]\label{lem:A-full}
+Let $K\subset\C$ be compact, and let $\Omega_\infty(K)$ denote the
+unbounded component of $\C\setminus K$.
+\begin{enumerate}
+\item $\Fill(K)=\C\setminus\Omega_\infty(K)$; in particular $\Fill(K)$ is
+compact, and it is contained in every closed disk containing $K$.
+\item The following are equivalent: $K$ is full; $\Chat\setminus K$ is
+connected; $\Fill(K)=K$.
+\item If $K$ is a continuum, then $\Fill(K)$ is a full continuum, and
+$\Chat\setminus\Fill(K)=\Omega_\infty(K)\cup\{\infty\}$ is a simply
+connected domain containing $\infty$.
+\item The operator $\Fill$ is extensive ($K\subset\Fill(K)$), monotone
+($K\subset L$ implies $\Fill(K)\subset\Fill(L)$), and idempotent
+($\Fill(\Fill(K))=\Fill(K)$).
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+(1) The set $\C\setminus\Omega_\infty(K)$ consists of $K$ together with
+all bounded components of $\C\setminus K$, which is \eqref{eq:A-fill}; it
+is closed because $\Omega_\infty(K)$ is open.  If $E$ is a closed disk with
+$K\subset E$, then $\C\setminus E$ is a connected unbounded subset of
+$\C\setminus K$, hence contained in $\Omega_\infty(K)$; taking complements
+gives $\Fill(K)\subset E$.  Thus $\Fill(K)$ is closed and
+bounded.
+
+(2) The components of $\Chat\setminus K$ are the bounded components of
+$\C\setminus K$ together with $\Omega_\infty(K)\cup\{\infty\}$: the latter
+set is open in $\Chat$ (a spherical neighborhood of $\infty$ misses the
+compact set $K$, and its intersection with $\C$, being connected and
+unbounded, lies in $\Omega_\infty(K)$), it is connected, and its
+complement within $\Chat\setminus K$ is the union of the bounded
+components, which is open.
+Hence $\Chat\setminus K$ is connected exactly when there are no bounded
+components, which is fullness of $K$, which by \eqref{eq:A-fill} is the
+identity $\Fill(K)=K$.
+
+(3) Let $K$ be a continuum and let $B$ be a bounded component of
+$\C\setminus K$.  The boundary of $B$ is contained in $K$: if a boundary
+point $x$ of $B$ lay in $\C\setminus K$, its component $B'$ in
+$\C\setminus K$ would be an open set containing $x$, hence meeting $B$,
+hence equal to $B$; but then $x\in B$, contradicting openness of $B$ at
+its own boundary point.  So $\partial B\subset K$.  Thus $\overline{B}=B\cup\partial B$ is a
+connected set meeting $K$, and
+$\Fill(K)=K\cup\bigcup_B\overline{B}$ is a union of connected sets each
+meeting the connected set $K$, hence connected.  With (1) this makes
+$\Fill(K)$ a continuum, and its complement in $\Chat$ is the domain
+$\Omega_\infty(K)\cup\{\infty\}$, so $\Fill(K)$ is full.  Finally, a
+domain in $\Chat$ whose complement is connected is simply connected
+\cite{New51,Why42}, and the complement of the domain
+$\Omega_\infty(K)\cup\{\infty\}$ is the continuum $\Fill(K)$.
+
+(4) Extensivity is \eqref{eq:A-fill}.  For monotonicity, let
+$K\subset L$; then $\Omega_\infty(L)$ is a connected unbounded subset of
+$\C\setminus K$, hence $\Omega_\infty(L)\subset\Omega_\infty(K)$, and
+taking complements in (1) gives $\Fill(K)\subset\Fill(L)$.  For
+idempotence, the complement of $\Fill(K)$ is the single unbounded
+component $\Omega_\infty(K)$, so $\Fill(\Fill(K))=\C\setminus
+\Omega_\infty(K)=\Fill(K)$.
+\end{proof}
+
+The deeper absorption law
+$\Fill(\Fill(K)\cup L)=\Fill(K\cup L)$, which makes fullification of a
+typed packet independent of processing order, is
+Lemma~\ref{lem:fill-absorption} below (manuscript Lemma~10.12); it is a
+formal consequence of the three properties in clause~(4).
+
+\begin{definition}[Package, atoms, carrier, fullification]
+\label{def:A-package}
+A \emph{package} is a finite union $S=A_1\cup\dots\cup A_s$ of pairwise
+disjoint full continua, called its \emph{atoms}.  Atoms may be
+degenerate: in Theorem~\ref{thm:no-least} the package consists of the two
+points $\pm1$.  A \emph{carrier} of the package $S$ is a compact
+connected full continuum $H\subset\C$ with $S\subset H$.  Both
+\emph{atom} --- a required full continuum of the package --- and
+\emph{fullification} --- the passage \eqref{eq:A-fill} --- are the source
+manuscript's terms \cite{MWman} and are used in its sense throughout.
+\end{definition}
+
+\subsection{Janiszewski's separation theorem}\label{subsec:A-janiszewski}
+
+A closed set $F\subset\Chat$ \emph{separates} points
+$p,q\in\Chat\setminus F$ if $p$ and $q$ lie in different components of
+$\Chat\setminus F$; the set $F$ is \emph{nonseparating} if
+$\Chat\setminus F$ is connected.  By Lemma~\ref{lem:A-full}(2), a compact
+subset of $\C$ is nonseparating in $\Chat$ exactly when it is full; the
+two words are used interchangeably for such sets.
+
+\begin{theorem}[Janiszewski's separation theorem; see \cite{New51,Why42}]
+\label{thm:A-janiszewski}
+Let $F_1,F_2\subset\Chat$ be closed sets whose intersection
+$F_1\cap F_2$ is connected and nonempty, and let
+$p,q\in\Chat\setminus(F_1\cup F_2)$.  If neither $F_1$ nor $F_2$
+separates $p$ from $q$, then $F_1\cup F_2$ does not separate $p$ from
+$q$.
+\end{theorem}
+
+\begin{corollary}\label{cor:A-janiszewski}
+If $F_1,F_2\subset\Chat$ are closed and nonseparating and
+$F_1\cap F_2$ is connected and nonempty, then $F_1\cup F_2$ is
+nonseparating.  In particular, the union of two full compact subsets of
+$\C$ whose intersection is connected and nonempty is full.
+\end{corollary}
+
+\begin{proof}
+Let $p,q\in\Chat\setminus(F_1\cup F_2)$.  Since $\Chat\setminus F_1$ is
+connected, $F_1$ does not separate $p$ from $q$, and likewise for $F_2$.
+By Theorem~\ref{thm:A-janiszewski}, $F_1\cup F_2$ does not separate $p$
+from $q$.  As the pair was arbitrary, $\Chat\setminus(F_1\cup F_2)$ is
+connected.  The final sentence follows from Lemma~\ref{lem:A-full}(2).
+\end{proof}
+
+This is the form used in the Janiszewski induction of
+Lemma~\ref{lem:tree-full}, where the intersections are singletons.  The
+complementary situation of finitely many pairwise \emph{disjoint} full
+compacta, where the stated form of the theorem does not apply, is handled
+cohomologically, by the duality of Section~\ref{subsec:A-duality} and the
+nerve argument of Lemma~\ref{lem:packets} (manuscript Lemma~10.10).
+
+\subsection{Prime ends, crosscut chains, and protected accesses}
+\label{subsec:A-primeends}
+
+Informally, an \emph{access} to a compact set $K$ is a way of reaching
+$\partial K$ from the complement.  It can be presented by a landing arc,
+as the access $p_0^{+}(m)$ of Proposition~\ref{prop:access-collision} is
+presented by the vertical segment $m+it$; but landing presentations
+presuppose that something lands, and for the arbitrary continua handled in
+this paper no landing is available.  The presentation that requires
+nothing is Carath\'eodory's theory of prime ends \cite{Pom92}, which we
+now recall in the normalization used throughout.
+
+Let $\Omega\subset\Chat$ be a simply connected domain whose complement
+contains at least two points.  The standing example is
+$\Omega=\Chat\setminus K$ for a nondegenerate full continuum $K$, in which
+case $\Omega$ is a simply connected domain containing $\infty$ by
+Lemma~\ref{lem:A-full}(3); Jordan disks are a second example.  A
+\emph{crosscut} of $\Omega$ is an open Jordan arc $\gamma\subset\Omega$
+whose closure $\overline{\gamma}$ is a Jordan arc with two distinct
+endpoints on $\partial\Omega$.  A crosscut divides $\Omega$ into exactly
+two components, each a simply connected domain having $\gamma$ on its
+boundary \cite{Pom92}.
+
+A \emph{crosscut chain} (or \emph{prime-end chain}; Pommerenke's null
+chains \cite{Pom92}, in the following normalization) is a sequence
+\[
+\Gamma=(\gamma_n,D_n)_{n\ge1}
+\]
+in which the $\gamma_n$ are pairwise disjoint crosscuts of $\Omega$ whose
+spherical diameters tend to zero, and $D_n$, the \emph{selected side} of
+$\gamma_n$, is one of the two components of $\Omega\setminus\gamma_n$,
+subject to the coherence condition $D_{n+1}\subset D_n$ for every $n$.
+Coherence and disjointness together force $\gamma_{n+1}\subset D_n$:
+the crosscut $\gamma_{n+1}$ lies on the boundary of
+$D_{n+1}\subset D_n$, so it lies in
+$\overline{D_n}\cap\Omega=D_n\cup\gamma_n$, and it misses $\gamma_n$.
+The record of a chain thus contains strictly more than the crosscuts: it
+contains, for every $n$, the declaration of the selected side, and it is
+exactly this declaration that the certificates of
+Section~\ref{sec:certificates} protect.  Two chains are
+\emph{equivalent} if each eventually divides the other, that is, if every
+selected domain of either chain contains all sufficiently deep selected
+domains of the other.  An equivalence class is a \emph{prime end} of
+$\Omega$.
+
+Two classical facts about prime ends are used.  First, the
+Carath\'eodory correspondence: an orientation-preserving Riemann map
+$\psi\colon\{|z|<1\}\to\Omega$ induces a bijection between the points of
+the unit circle and the prime ends of $\Omega$, under which radial limits
+correspond to chains; see \cite[Chapter~2]{Pom92}.  Second, the
+\emph{impression}
+\[
+I(\Gamma)\;=\;\bigcap_{n\ge1}\overline{D_n}
+\]
+(closures in $\Chat$) is a nonempty compact connected subset of
+$\partial\Omega$ --- the intersection of a decreasing sequence of
+nonempty compacta --- and depends only on the prime end of $\Gamma$, not
+on the representing chain \cite{Pom92}.  The nested closures
+$\overline{D_n}$ decrease \emph{to} the impression; this is the form in
+which impressions enter Lemma~\ref{lem:impression-port}.
+
+The prime ends of $\Omega$ carry a natural \emph{cyclic order}: the one
+transported from the unit circle by the Carath\'eodory correspondence.
+It is independent of the choice of Riemann map, since two
+orientation-preserving Riemann maps differ by a disk automorphism, which
+preserves the cyclic orientation of the circle.  For a finite family of
+prime ends represented by chains with pairwise disjoint selected sides,
+the cyclic order can be computed inside the domain, with no reference to
+a uniformization: choose one sufficiently deep oriented crosscut from
+each chain; the cyclic order of the prime ends is the separation order of
+these pairwise disjoint crosscuts in $\Omega$.  The computation is
+carried out carefully, by means of embedded triods, in the proof of
+Lemma~\ref{lem:crosscut-survival}, and that formulation is the one shown
+to be invariant under carrier enlargement.
+
+\begin{definition}[Protected access; collar]\label{def:A-protected}
+Let $A$ be a nondegenerate atom.  A \emph{protected access} to $A$ is a
+distinguished prime-end crosscut chain
+$\Gamma=(\gamma_n,D_n)_{n\ge1}$ of $\Chat\setminus A$, recorded together
+with its selected sides.  The terminal selected domain $D_1$ is the
+\emph{collar} of the access, and $D_1\setminus A$ is its \emph{collar
+tail}.  When finitely many protected accesses appear together inside a
+Jordan localization, they are \emph{truncated} --- an initial segment of
+each chain is discarded and the indices shifted --- so that the terminal
+collar tails are pairwise disjoint, lie in the localization, and miss the
+forbidden set and the other atoms; Section~\ref{sec:certificates} records
+this normalization as part of the certificate data.
+\end{definition}
+
+The adjective \emph{protected} names a discipline, not a topological
+property: a protected access is one that every later construction is
+forbidden to disturb, in the precise sense that no connector may enter
+its collar tail (Definition~\ref{def:certificate}).  The reward for the
+discipline is the survival theorem, Lemma~\ref{lem:crosscut-survival}:
+the chain then persists verbatim, with the same crosscuts and the same
+selected sides, as a prime-end chain of the enlarged complement.
+
+\subsection{\v{C}ech cohomology and Alexander duality}
+\label{subsec:A-duality}
+
+For a compact set $K\subset S^2$, $\check H^*(K;\Z)$ denotes \v{C}ech
+cohomology with integer coefficients.  Two of its properties are needed
+\cite{Hat02}: continuity --- the \v{C}ech cohomology of $K$ is the direct
+limit of the singular cohomology of the open neighborhoods of $K$, so
+that every class and every relation is realized in some neighborhood ---
+and the Mayer--Vietoris sequence for pairs of compact sets in $S^2$.
+Both are used in the nerve computation of Lemma~\ref{lem:packets} and in
+the second proof of Lemma~\ref{lem:tree-full}.  The duality statement is
+the following.
+
+\begin{theorem}[Alexander duality, compacta form;
+{\cite[pp.~256--257]{Hat02}}]\label{thm:A-duality}
+For every nonempty proper compact subset $K\subset S^2$,
+\begin{equation}\label{eq:A-duality}
+\widetilde H_0\bigl(S^2\setminus K;\Z\bigr)\;\cong\;\check H^1(K;\Z).
+\end{equation}
+\end{theorem}
+
+This is equation~(9.6) of the manuscript \cite{MWman}.  Reading
+\eqref{eq:A-duality} at the level of connectivity gives the dictionary
+used throughout the paper: $S^2\setminus K$ is connected exactly when
+$\check H^1(K;\Z)=0$, and hence, by Lemma~\ref{lem:A-full}(2), a compact
+set $K\subset\C$ is full exactly when $\check H^1(K;\Z)=0$.
+``Nonseparating'' and ``vanishing first \v{C}ech cohomology'' are
+synonyms, and the two proofs of Lemma~\ref{lem:tree-full} translate one
+into the other.
+
+\begin{warning}\label{warn:A-cech}
+The \v{C}ech form of \eqref{eq:A-duality}, valid for an arbitrary
+nonempty proper compact $K\subset S^2$, is required; the locally
+contractible special case, in which \v{C}ech and singular cohomology
+agree \cite{Hat02}, is not sufficient.  The atoms of this paper are
+arbitrary full continua --- in general not locally connected, hence not
+locally contractible, and admitting no CW approximation compatible with
+their embedding --- and for such compacta duality genuinely fails with
+singular cohomology in place of \v{C}ech.  The standard example is the
+Warsaw circle $W\subset\C$, the closed topologist's sine curve completed
+by an arc: $W$ separates the plane, so
+$\widetilde H_0(S^2\setminus W;\Z)\cong\Z$, and accordingly
+$\check H^1(W;\Z)\cong\Z$; but $W$ is path connected with trivial
+fundamental group --- no loop can traverse the accumulation segment ---
+so its singular homology $H_1$ vanishes and its \emph{singular}
+cohomology gives $H^1_{\mathrm{sing}}(W;\Z)=0$.  Every duality argument in this paper ---
+Lemma~\ref{lem:tree-full} (second proof), Lemma~\ref{lem:packets},
+Lemma~\ref{lem:nested-packets} --- is therefore carried out in \v{C}ech
+cohomology, and the nerve and continuity properties invoked there are the
+\v{C}ech ones.
+\end{warning}
+
+\subsection{Jordan, Schoenflies, and Carath\'eodory extensions}
+\label{subsec:A-extension}
+
+The naturality statements of this paper
+(Proposition~\ref{prop:naturality}, the naturality clauses of
+Theorem~\ref{thm:audit}) rest on a package of classical extension
+theorems, collected here with the exact attributes used later.
+
+\begin{proposition}[Extension package]\label{prop:A-extension}
+\leavevmode
+\begin{enumerate}
+\item \textup{(Jordan; Schoenflies)}  Every Jordan curve
+$J\subset\Chat$ divides $\Chat$ into exactly two components, each a
+simply connected domain with boundary $J$, and the closure of each is
+homeomorphic to the closed unit disk.  Moreover, every homeomorphism
+between two Jordan curves in $\Chat$ extends to a homeomorphism of
+$\Chat$.
+\item \textup{(Tameness of plane arcs)}  For every Jordan arc
+$\alpha\subset\C$ there is a homeomorphism of $\C$ carrying $\alpha$ onto
+the straight segment $[0,1]\times\{0\}$.  In particular every Jordan arc
+extends to a Jordan curve, and no arc separates the plane.
+\item \textup{(Carath\'eodory extension)}  Every conformal homeomorphism
+$\phi\colon U\to V$ of Jordan disks extends to a homeomorphism
+$\overline{U}\to\overline{V}$ of their closures.
+\item \textup{(Glued sphere extension)}  Every orientation-preserving
+conformal homeomorphism $\phi\colon U\to V$ of Jordan disks
+$U,V\subset\C$ extends to an orientation-preserving homeomorphism
+$\Phi\colon\Chat\to\Chat$, and $\Phi$ may be chosen with
+$\Phi(\infty)=\infty$.
+\item \textup{(Fill-equivariance)}  Every homeomorphism $\Phi$ of
+$\Chat$ with $\Phi(\infty)=\infty$ satisfies
+$\Phi(\Fill(K))=\Fill(\Phi(K))$ for every compact $K\subset\C$.
+\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+Clauses (1) and (2) are classical plane topology; see
+\cite{New51,Why42}.  Clause (3) is Carath\'eodory's theorem on boundary
+extension of Riemann maps of Jordan domains; see \cite{Pom92}.
+
+For (4), extend $\phi$ to a homeomorphism
+$\overline{\phi}\colon\overline{U}\to\overline{V}$ by (3).  Its boundary
+restriction is a homeomorphism $\partial U\to\partial V$ of Jordan
+curves; the complementary sets $\Chat\setminus U$ and $\Chat\setminus V$
+are closed Jordan disks by (1), and a homeomorphism between the boundary
+circles of two closed disks extends over the disks (cone the
+homeomorphism off an interior point, after identifying each closed disk
+with the standard one by (1)).  Gluing the two extensions along the
+boundary curves yields a homeomorphism $\Phi\colon\Chat\to\Chat$ with
+$\Phi|_U=\phi$.  A sphere homeomorphism that preserves orientation on a
+nonempty open set preserves it globally, so $\Phi$ is orientation
+preserving.  Finally, $\infty$ lies in the interior of the complementary
+disk $\Chat\setminus U$, and $\Phi(\infty)$ in the interior of
+$\Chat\setminus V$; composing $\Phi$ with a homeomorphism of the closed
+disk $\Chat\setminus V$ that fixes $\partial V$ pointwise and carries
+$\Phi(\infty)$ to $\infty$ (such a homeomorphism exists, interiors of
+disks being homogeneous relative to the boundary), extended by the
+identity on $\overline{V}$, arranges $\Phi(\infty)=\infty$ without
+disturbing $\Phi|_U=\phi$.
+
+For (5), the restriction $\Phi|_{\C}$ is a homeomorphism of $\C$ onto
+itself.  It maps $\C\setminus K$ homeomorphically onto
+$\C\setminus\Phi(K)$ and permutes complementary components.  A
+homeomorphism of $\C$ is proper, so the image of the unbounded component
+of $\C\setminus K$ is unbounded and the images of bounded components are
+bounded; hence $\Phi(\Omega_\infty(K))=\Omega_\infty(\Phi(K))$, and
+taking complements as in Lemma~\ref{lem:A-full}(1) gives
+$\Phi(\Fill(K))=\Fill(\Phi(K))$.
+\end{proof}
+
+Clause (4) is the mechanism behind every naturality statement in the
+paper: a univalent change of Jordan localization extends to a sphere
+homeomorphism, and a sphere homeomorphism preserves all the notions the
+certificates are built from --- compactness, connectedness, fullness (by
+clause (5) and Lemma~\ref{lem:A-full}), crosscuts, selected sides, null
+chains, intersections and disjointness, and, when orientation is
+preserved, the cyclic order of prime ends and the ribbon structure of an
+embedded tree.  Clause (2) is used in the slit-straightening steps of the
+repaired slit lemma (Lemma~\ref{lem:slits}).
+
+This completes the classical inventory.  The dynamical vocabulary of the
+source manuscript --- frozen inventory, free domain, ports, packets,
+audits --- is introduced where it is first needed:
+the frozen free domain $\Omfree$ in Section~\ref{sec:criterion}, packets
+and their audit in Sections~\ref{sec:packets} and~\ref{sec:audit}.

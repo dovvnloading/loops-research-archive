@@ -1,0 +1,16 @@
+\begin{lemma}\label{lem:circle-homeo}
+\(|R|\equiv1\) on \(\mathbb T\), and the restriction \(R|_{\mathbb T}:\mathbb T\to\mathbb T\) is an orientation-preserving homeomorphism of degree one; indeed \(\frac{d}{d\theta}\arg R(e^{i\theta})>0\) for every \(\theta\).
+\end{lemma}
+
+\begin{proof}
+On \(\mathbb T\) every Blaschke factor has modulus one, so \(|R|\equiv1\) there. The topological degree is the factor count \(\deg(R|_{\mathbb T})=|\mathcal A|-|\mathcal B|=3-2=1\).
+For the pointwise orientation statement: if \(z=e^{i\theta}\) then
+\[ \frac{d}{d\theta}\arg B_a(e^{i\theta})=\frac{1-|a|^2}{|e^{i\theta}-a|^2}, \]
+hence
+\[ \frac{d}{d\theta}\arg R(e^{i\theta})=\sum_{a\in\mathcal A}\frac{1-|a|^2}{|e^{i\theta}-a|^2}-\sum_{b\in\mathcal B}\frac{1-|b|^2}{|e^{i\theta}-b|^2}. \tag{A.4} \]
+Substitute \(t=\tan(\theta/2)\) and multiply by the product of the positive Poisson denominators; the sign of (A.4) is then the sign of the integer polynomial
+\[\begin{aligned} p(t)={}&619271t^{10}-5100608t^{9}+35876739t^{8}-169721152t^{7}\\ &+491196326t^{6}-885663808t^{5}+1065558054t^{4}\\ &-957958592t^{3}+669681731t^{2}-236915328t+60062535. \end{aligned}\tag{A.5}\]
+\emph{Certificate S1.} The exact Euclidean Sturm chain of \(p\) has degree list \(10,9,8,7,6,5,4,3,2,1,0\), with sign lists
+\[ +--+++--+--\ \text{ at } -\infty,\qquad ++--+--+++-\ \text{ at } +\infty, \]
+each with five sign changes; Sturm's theorem gives \(N_{\mathbb R}(p)=5-5=0\). Since \(p(0)=60062535>0\) and \(\operatorname{lc}(p)=619271>0\), we conclude \(p(t)>0\) for all real \(t\), and the point \(t=\infty\) (i.e.\ \(\theta=\pi\)) is positive as well. Thus (A.4) is strictly positive everywhere, so \(R|_{\mathbb T}\) is a local orientation-preserving homeomorphism; together with degree one it is an orientation-preserving homeomorphism \(\mathbb T\to\mathbb T\).
+\end{proof}

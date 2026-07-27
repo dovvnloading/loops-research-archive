@@ -1,0 +1,39 @@
+% Concordance: manual equation tags (n.m) in this file mirror the numbering of the underlying research note kl_canonical_localization_forced_collision.md, not this paper's section numbering.
+\begin{proposition}[Excess central pullback]\label{prop:excess}
+There is a component
+\[
+ X\subset F^{-1}A,\qquad X\ne A.                    \tag{4.1}
+\]
+Every such component satisfies
+\[
+ X\cap B=\varnothing.                                \tag{4.2}
+\]
+\end{proposition}
+
+\begin{remark}[Complete component certificate]\label{rem:certificate}
+By Corollary \ref{cor:finite-pullback} the family of excess components is finite.  Fix any deterministic order on the finite pulled-component inventory and choose the first \(X\); no theorem depends on this choice.  Its complete finite itinerary is
+\[
+ \tau(X)=\bigl(X,\ f(X),\dots,f^p(X)=A;\ \varsigma_0,\dots,\varsigma_{p-1}\bigr),  \tag{4.4}
+\]
+where \(\varsigma_r\) records the actual component (sheet) of \(f^{-1}(f^{r+1}X)\) containing \(f^rX\).  If a stage already carries external or puzzle markings, those markings order the \(\varsigma_r\); otherwise (4.4) is a geometric component itinerary, not an invented symbolic word.  By Corollaries \ref{cor:finite-pullback} and \ref{cor:isolating-disks} there is a Jordan domain \(D_X\Subset U^p\) with
+\[
+ X\subset D_X,\qquad \overline D_X\cap\bigl((F^{-1}B\setminus X)\cup B\bigr)=\varnothing.  \tag{4.5}
+\]
+The peripheral access used in the collision is the based homotopy class of \(\partial D_X\): a genuine access in the complement of the actual pulled obstacle family, not a ribbon-tree label.
+\end{remark}
+
+\begin{proof}
+The global map \(F=f^p\colon U^p\to U^0\) is proper of degree \(2^p\) (Kahn~I, \S6, p.~31).  By the definition of the primitive quadratic-like renormalization, the central component \(A\) has local degree two under \(F\) (Kahn~I, \S7.4.3, p.~45).
+
+Choose a sufficiently small Jordan neighborhood \(V\) of \(A\) inside the range of the quadratic-like renormalization.  The central component of \(F^{-1}(V)\) maps onto \(V\) with degree two.  The degrees of all components of \(F^{-1}(V)\) sum to \(2^p\), and since \(p>1\),
+\[
+ 2^p-2>0,
+\]
+so there is a component \(W\) of \(F^{-1}(V)\) other than the central one.  The proper map \(F\colon W\to V\) is onto, so \(W\) contains a point of \(F^{-1}(A)\).  The component \(X\) of \(F^{-1}(A)\) through that point lies in \(W\), hence is not the central component \(A\).  This proves (4.1).
+
+For \(0\le j<p\) write \(K_j=K_p(j)=f^j(A)\).  Since \(F=f^p\) commutes with \(f^j\) on these sets and \(F(A)=A\),
+\[
+ F(K_j)=f^j(F(A))=f^j(A)=K_j.                       \tag{4.3}
+\]
+Suppose \(X\cap K_j\ne\varnothing\).  If \(j\ne0\), a point of the intersection is mapped by \(F\) into both \(A\) (because \(X\subset F^{-1}A\)) and \(K_j\) (by (4.3) and invariance), contradicting the primitive disjointness \(A\cap K_j=\varnothing\).  If \(j=0\), then \(X\cap A\ne\varnothing\), so the two connected subsets \(X\) and \(A\) of \(F^{-1}A\) lie in one component, forcing \(X=A\), again a contradiction.  Hence (4.2).
+\end{proof}

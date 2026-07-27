@@ -1,0 +1,14 @@
+{
+  "compiled": 1221,
+  "deterministic_tests": [
+    "success fixture: action/trace separation and end-proper flags",
+    "obstruction fixture: marked_interface_obstruction_mandatory.json",
+    "obstruction fixture: marked_interface_obstruction_covering.json"
+  ],
+  "false_negative": 0,
+  "false_positive": 0,
+  "maximal_marking_mismatch": 0,
+  "obstructed": 279,
+  "seed": 20260725,
+  "trials": 1500
+}

@@ -1,0 +1,57 @@
+\begin{theorem}[canonical renormalization; Kahn I, \S7.4.3, p.~45]\label{thm:kahn-canonical-renormalization}
+Let \((i,f)\colon(\BU^1,K')\to(\BU^0,K)\) be a \(\psi\)-quadratic-like
+map admitting a quadratic-like restriction that is primitively
+renormalizable of period \(p\); let \(K_p\) be the central small
+filled Julia set, \(\KK_p\) the union of the small filled Julia sets,
+and \(K_p'=i^{-1}(K_p)\) (iterate notation).  Then \(A=K_p\) and
+\(B=\KK_p\) satisfy hypotheses (1)--(6) of the dynamical-localization
+proposition for the iterate \((i^p,f^p)\colon\BU^p\to\BU^0\) of the
+pullback tower, and the resulting dynamical localization
+\((\widehat i,\widehat f)\colon(\BV',\widehat K_p')\to(\BV,\widehat K_p)\)
+--- the \emph{canonical renormalization of \((i,f)\) of period \(p\)}
+--- is a \(\psi\)-quadratic-like map.
+\end{theorem}
+
+\begin{theorem}[crucial length properties; Kahn I, \S7.4.3, p.~46]\label{thm:kahn-iterated-lengths}
+Let \((i,f)\colon\BU'\to\BU\) be a \(\psi\)-quadratic-like map that is
+primitively renormalizable of periods \(p\) and \(pq\) (\(p,q>1\)),
+and let \((j,g)\colon\BV'\to\BV\) be its canonical renormalization of
+period \(p\).  Then
+\[
+ |\gamma(g)|=|\gamma_p(f)|,
+ \qquad
+ |\gamma_q(g)|\ \ge\ |\gamma_{pq}(f)| .
+\]
+\end{theorem}
+
+\begin{proof}[Proof (faithful paraphrase of Kahn I, \S7.4.3, p.~45 and 578--591)]
+\emph{Canonical renormalization.}  Form the iterate
+\((i^p,f^p)\colon\BU^p\to\BU^0\) via the pullback tower.  The data
+\(A=K_p\), \(B=\KK_p\) satisfy the hypotheses of dynamical
+localization for this iterate: \(K_p\) is an FJ-set and a component of
+the compact set \(\KK_p\) (by primitivity the small filled Julia sets
+are pairwise disjoint); \(\BU^0\sm\KK_p\) is connected; \(K_p'\) is a
+component of \((f^p)^{-1}(K_p)\); and the branch values of \(f^p\) lie
+in \(\KK_p\).  The dynamical localization of \(f^p\) at \(K_p\) with
+removal of \(\KK_p\) is then \(\psi\)-polynomial-like of degree equal
+to the local degree of \(f^p\) at \(K_p'\), namely \(2\); this is the
+canonical renormalization (\S7.4.3, pp.~45--46).
+
+\emph{Length properties.}  The equality \(|\gamma(g)|=|\gamma_p(f)|\)
+is exactly conclusion (c) of the dynamical-localization proposition
+applied to this localization (\S7.4.3, p.~46).  For the inequality, write
+\(K(g),\KK_q(g)\) for the objects of \(g\) and
+\(K,\KK_p,\KK_{pq}\) for those of \(f\), and let
+\[
+ \pi\colon(\BV,K(g))\longrightarrow\bigl((\BU\sm\KK_p)\cup K_p,\ K_p\bigr)
+\]
+be the local cover constructed in the localization (\S7.4.3, p.~46).
+Then \(\pi(\BV\sm\KK_q(g))\subseteq\BU\sm\KK_{pq}\): indeed
+\(\pi(\BV\sm K(g))\subseteq\BU\sm\KK_p\subseteq\BU\sm\KK_{pq}\),
+while \(\pi(K(g)\sm\KK_q(g))=K_p\sm\KK_{pq}\) (\S7.4.3, p.~46).  Thus
+\(\pi\) maps the hyperbolic surface \(\BV\sm\KK_q(g)\)
+holomorphically into \(\BU\sm\KK_{pq}\), carrying \(\gamma_q(g)\) into
+the free homotopy class of \(\gamma_{pq}(f)\); the Schwarz--Pick lemma
+(Poincar\'e-metric contraction under holomorphic maps) gives
+\(|\gamma_q(g)|\ge|\gamma_{pq}(f)|\) (\S7.4.3, p.~46).
+\end{proof}

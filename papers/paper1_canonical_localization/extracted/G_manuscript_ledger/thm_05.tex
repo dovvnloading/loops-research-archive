@@ -1,0 +1,17 @@
+\begin{proposition}[Localization subgroup-reflection criterion; manuscript Prop.~12.44, ledger \texttt{KL\_LOCALIZATION\_SUBGROUP\_REFLECTION\_CRITERION}]\label{prop:subgroup-reflection}
+Let \(a:(X_s,x_s)\hookrightarrow(X_t,x_t)\) be a based embedding. Let connected based covers \(p_s:\tilde X_s\to X_s\) and \(p_t:\tilde X_t\to X_t\) correspond to subgroups \(H_s\le\pi_1(X_s,x_s)\), \(H_t\le\pi_1(X_t,x_t)\), and suppose \(A:\tilde X_s\to\tilde X_t\) is a based lift: \(p_tA=ap_s\). Then
+\[
+A\ \text{is injective}\iff a_*^{-1}(H_t)=H_s. \tag{10.40}
+\]
+Failure is certified by a class
+\[
+[\gamma]\notin H_s,\qquad a_*[\gamma]\in H_t, \tag{10.41}
+\]
+whose source lift has distinct endpoints identified by \(A\).
+\end{proposition}
+
+\begin{proof}
+Lift existence gives \(a_*(H_s)\subseteq H_t\). Suppose first that \(a_*^{-1}(H_t)=H_s\) and \(A(\tilde u)=A(\tilde v)\). Projection and injectivity of \(a\) give \(p_s(\tilde u)=p_s(\tilde v)\). Choose paths from the source base lift to \(\tilde u,\tilde v\), and let \(\gamma\) be the loop obtained by projecting the first and then the reverse of the second. Equality of the target endpoints says \(a_*[\gamma]\in H_t\). Reflection gives \([\gamma]\in H_s\), so the source endpoints agree.
+
+Conversely, take \([\gamma]\in a_*^{-1}(H_t)\) and lift \(\gamma\) from the source base lift. Its image under \(A\) is the target lift of \(a\gamma\), which is closed because \(a_*[\gamma]\in H_t\). If \(A\) is injective, the source lift is also closed, so \([\gamma]\in H_s\). This proves (10.40). If reflection fails, the same lifted loop gives the two distinct endpoints and common target endpoint in (10.41).
+\end{proof}

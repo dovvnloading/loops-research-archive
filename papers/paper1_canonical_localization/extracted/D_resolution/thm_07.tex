@@ -1,0 +1,31 @@
+\begin{proposition}[Compact-segment lifting classification]\label{prop:compact-lift}
+Let \( \gamma\colon[0,1]\to\widehat X_t \) have image in the embedded resolved component \( e(P_K) \), and put \( \delta=e^{-1}\gamma \).  Then the source paths
+\begin{equation}\label{eq:A-lift}
+  \widehat\delta\colon[0,1]\to\widehat X_s
+  \quad\text{such that}\quad
+  A\widehat\delta=\gamma
+\end{equation}
+are exactly the \( q \)-lifts of \( \delta \).  There is one and only one such path for each initial sheet in \( q^{-1}(\delta(0)) \), and its final sheet is given by \( M_\delta \).
+
+The same statement applies separately on every compact parameter interval on which a target path lies in \( e(P_K) \).
+\end{proposition}
+
+\begin{proof}
+If \( q\widehat\delta=\delta \), then
+\[
+  A\widehat\delta=eq\widehat\delta=e\delta=\gamma .
+\]
+Conversely, if \eqref{eq:A-lift} holds, then
+\[
+  e(q\widehat\delta)=A\widehat\delta=\gamma=e\delta .
+\]
+Injectivity of \( e \) (Lemma~\ref{lem:embedded-leg}) gives \( q\widehat\delta=\delta \).  Covering path lifting supplies exactly one lift from each initial sheet, and Proposition~\ref{prop:transport} computes its endpoint.
+\end{proof}
+
+\begin{remark}
+Proposition~\ref{prop:compact-lift} is the precise compact-segment
+replacement for treating \( A \) as an embedding.  It does not
+classify a target path which leaves and re-enters \( e(P_K) \), glue
+choices over nested intervals, prove convergence to declared prime
+ends, or prove the KKL unique-proper-lift predicate.
+\end{remark}

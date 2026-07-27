@@ -1,0 +1,44 @@
+{
+  "artifact": "VIRTUAL_S2_CORRECTED_NATIVE_CORRIDOR",
+  "date": "2026-07-26",
+  "status": "CORRECTED_NATIVE_CORRIDOR_TYPED",
+  "source_files": [
+    "C:\\Users\\Admin\\AppData\\Local\\Temp\\mlc-kl-decorations-math0609046\\kingdom.tex",
+    "C:\\Users\\Admin\\AppData\\Local\\Temp\\mlc-kl-principal-math0505194\\kingdom.tex"
+  ],
+  "native_implication": "A0=W^r subset B=V^r subset V0 subset P; phi_w conjugates the terminal degree-two return on phi_w(A0).",
+  "actual_iterate_boundary": "f^(p_term+qm)|phi_w(A0) maps to B; this is not a certified virtual self-return.",
+  "remaining_open": [
+    "VIRTUAL_DISCONNECTED_MARKING_TRANSFER",
+    "VIRTUAL_CANTOR_PACKAGE_REALIZATION",
+    "VIRTUAL_RETURN_BASE_ATLAS",
+    "VIRTUAL_PROTECTED_ROUTING_CERTIFICATE",
+    "MLC"
+  ],
+  "checks": {
+    "decoration_escape_piece": true,
+    "decoration_nested_critical_pieces": true,
+    "decoration_outer_piece": true,
+    "decoration_two_univalent_pullbacks": true,
+    "decoration_pullbacks_inside_outer_piece": true,
+    "decoration_terminal_nested_return": true,
+    "principal_first_kingdom": true,
+    "principal_return_domains_compact": true,
+    "principal_nest": true,
+    "principal_E_v_identification": true,
+    "principal_E_w_identification": true,
+    "principal_terminal_return": true,
+    "nesting_A0_subset_B": true,
+    "nesting_B_subset_V0": true,
+    "nesting_V0_subset_P": true,
+    "nesting_A0_subset_P": true,
+    "nesting_B_subset_P": true,
+    "symbolic_conjugacy_identity": true,
+    "symbolic_degree_preserved": true,
+    "actual_iterate_available": true,
+    "actual_iterate_is_not_virtual_self_return": true,
+    "virtual_selector_still_open": true
+  },
+  "all_checks": true,
+  "original_artifacts_written": false
+}

@@ -1,0 +1,76 @@
+\begin{lemma}[Peripheral isolation of pulled full continua]
+\label{lem:peripheral-isolation}
+Let a chain of \(p\) quadratic-like pullbacks be given (a composition
+of proper degree-two holomorphic maps between plane topological
+disks), and let \(\mathcal B\) be a finite pairwise-disjoint family of
+full continua compactly contained in the terminal disk.
+\begin{enumerate}
+\item \emph{(Finite full pullback.)}  The inverse image of one full
+      continuum under the chain is a union of at most \(2^p\) pairwise
+      disjoint full continua; every resulting component maps onto its
+      parent continuum with positive integer degree.  The inverse image
+      of \(\mathcal B\) is again a finite pairwise-disjoint family of
+      full continua.
+\item \emph{(Isolating Jordan disks.)}  If \(C_1,\dots,C_N\Subset U\)
+      are pairwise disjoint full continua in a plane topological disk
+      \(U\), then for each \(i\) there is a Jordan domain
+      \(D_i\Subset U\) with
+      \[
+       C_i\subset D_i,\qquad
+       \overline D_i\cap C_j=\varnothing\quad(j\ne i),
+      \]
+      and the \(D_i\) may be chosen pairwise disjoint.
+\item \emph{(Peripheral connectivity.)}  With \(C_1,\dots,C_N\) as in
+      (2), the complement \(U\setminus\bigcup_{i=1}^N C_i\) is path
+      connected.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+(1)  Apply Lemma~\ref{lem:quadratic-pullback-dichotomy} successively
+along the chain.  At each step, each parent continuum has either one
+degree-two child or two degree-one children, and every child is mapped
+onto its parent; children of different parents are disjoint because
+their images lie in disjoint parent continua.  Induction over the
+\(p\) steps gives the bound \(2^p\), the stated surjectivity, and a
+positive product degree for every terminal component.  Applying this
+separately to the members of the finite family \(\mathcal B\) proves
+the final statement of (1).
+
+(2)  The finite family \(C_1,\dots,C_N\) has positive minimum pairwise
+distance and positive distance from \(\partial U\).  Apply
+Lemma~\ref{lem:jordan-basis} inside pairwise-disjoint metric
+neighborhoods of the \(C_i\).
+
+(3)  Applying Lemma~\ref{lem:jordan-basis} twice inside the disjoint
+neighborhoods used in (2), choose pairwise-disjoint Jordan domains
+\[
+ C_i\subset D_i^-,\qquad
+ \overline{D_i^-}\subset D_i^+,\qquad
+ \overline{D_i^+}\subset U .
+\]
+The finitely connected plane domain
+\[
+ U_0=U\setminus\bigcup_{i=1}^N\overline{D_i^-}
+\]
+is connected: after a homeomorphism \(U\cong\mathbb D\), removing
+finitely many pairwise-disjoint closed Jordan disks compactly
+contained in \(\mathbb D\) leaves a disk with finitely many holes.  As
+an open connected subset of the plane, \(U_0\) is path connected.
+
+For each \(i\), the open set \(D_i^+\setminus C_i\) is connected.
+Indeed, \(\mathbb C\setminus C_i\) is connected by fullness, and its
+intersection with the Jordan disk \(D_i^+\) cannot have a component
+separated from the outer collar of \(\partial D_i^+\): such a
+component would be a bounded complementary component of \(C_i\),
+contradicting fullness.  Hence \(D_i^+\setminus C_i\) is path
+connected.  It contains the nonempty annulus
+\(D_i^+\setminus\overline{D_i^-}\), which also lies in \(U_0\); thus
+every \(D_i^+\setminus C_i\) has nonempty connected overlap with
+\(U_0\).  Consequently the union
+\[
+ U_0\cup\bigcup_{i=1}^N\bigl(D_i^+\setminus C_i\bigr)
+ =U\setminus\bigcup_{i=1}^N C_i
+\]
+is path connected.
+\end{proof}

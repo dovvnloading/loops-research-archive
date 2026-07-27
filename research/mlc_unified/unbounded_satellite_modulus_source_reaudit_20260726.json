@@ -1,0 +1,67 @@
+{
+  "artifact": "UNBOUNDED_SATELLITE_MODULUS_SOURCE_REAUDIT",
+  "date": "2026-07-26",
+  "status": "UNBOUNDED_SATELLITE_SOURCE_REAUDIT_VALID",
+  "source": {
+    "path": "C:\\Users\\Admin\\AppData\\Local\\Temp\\mlc_primary_sources_20260723\\2205.03157\\no-bounds.tex",
+    "sha256": "ED8F55AE8ADE9667488AD91B4175AB40BFD2E3B7179D8141397F4A17B5B80DF6",
+    "expected_sha256": "ED8F55AE8ADE9667488AD91B4175AB40BFD2E3B7179D8141397F4A17B5B80DF6",
+    "arxiv": "https://arxiv.org/abs/2205.03157"
+  },
+  "quadratic_polynomial_bound": "2*pi/log(4*(s+1))",
+  "rational_degree_2_bound": "4*pi/log(4*(s+1))",
+  "sample_relative_periods": [
+    2,
+    3,
+    5,
+    10,
+    100,
+    10000,
+    1000000
+  ],
+  "sample_polynomial_bounds": [
+    2.5285397774261,
+    2.266180070913597,
+    1.977054399513327,
+    1.6603780240985946,
+    1.0469506666258277,
+    0.5929359815453543,
+    0.4133183478741797
+  ],
+  "epsilon_thresholds": {
+    "0.5": {
+      "threshold": 71686.82828416329,
+      "integer_above": 71687,
+      "bound_at_integer": 0.49999990469307365,
+      "below_epsilon": true
+    },
+    "0.25": {
+      "threshold": 20556578895.398727,
+      "integer_above": 20556578896,
+      "bound_at_integer": 0.24999999999970904,
+      "below_epsilon": true
+    },
+    "0.1": {
+      "threshold": 4.84693377088717e+26,
+      "integer_above": 1000000000000000000000000000000,
+      "bound_at_integer": 0.08916892223781532,
+      "below_epsilon": true
+    }
+  },
+  "checks": {
+    "source_exists": true,
+    "source_sha256_locked": true,
+    "main_theorem_anchor": true,
+    "theorem_b_anchor": true,
+    "lavaurs_counterexample_anchor": true,
+    "quadratic_polynomial_constant_is_two": true,
+    "rational_constant_is_four": true,
+    "polynomial_bound_strictly_decreases_on_samples": true,
+    "polynomial_bound_tends_small": true,
+    "epsilon_thresholds_verified": true,
+    "not_an_mlc_counterexample": true
+  },
+  "all_checks": true,
+  "scope": "source obstruction and conditional branch input; not a proof or counterexample to MLC",
+  "original_artifacts_written": false
+}

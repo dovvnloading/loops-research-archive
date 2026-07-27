@@ -1,0 +1,52 @@
+% ---- Theorem environments (amsart + amsthm) ----
+\theoremstyle{plain}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\theoremstyle{remark}
+\newtheorem{warning}[theorem]{Warning}
+\newtheorem{openproblem}[theorem]{Open Problem}
+
+% ---- Notation and conventions ----
+% Displayed-equation tags of the form (10.xx) reproduce the released
+% manuscript's numbering (source-lock 2026-07-27) for traceability.
+%
+% f : U^1 -> U^0            ordinary quadratic-like restriction of a quadratic polynomial,
+%                           primitively renormalizable of period p > 1.
+% F = f^p : U^p -> U^0      the p-th iterate; A = K_p the small filled Julia set;
+% K_p(j) = f^j(K_p);        B = \mathcal K_p = \bigcup_{j=0}^{p-1} K_p(j).
+% T' = (U^p \setminus F^{-1}B) \cup A,  T = (U^0 \setminus B) \cup A
+%                           Kahn's marked surfaces before canonical localization;
+% \hat i : T'_A -> T_A      the localized inclusion (localization at the marked continuum A).
+% H_s \le \pi_1(X_s,x_s), H_t \le \pi_1(X_t,x_t)
+%                           localization subgroups classifying the connected based
+%                           localization covers p_s, p_t; a : (X_s,x_s) \hookrightarrow (X_t,x_t)
+%                           a based embedding; A : \hat X_s -> \hat X_t a based lift (p_t A = a p_s).
+% K = a_*^{-1}(H_t)         the reflected subgroup; K/H_s the POINTED SET of left cosets
+%                           with distinguished point H_s (no quotient-group structure is
+%                           used or asserted unless normality is separately proved).
+% P_K                       the based component of the pullback X_s \times_{X_t} \hat X_t;
+%                           q : \hat X_s -> P_K, e : P_K -> \hat X_t the canonical
+%                           covering/embedding factorization legs, A = e \circ q.
+% A(1,r) = \{1<|z|<r\}      a round annulus; \Pi(h) = \{0<\Im z<h\} a horizontal strip;
+% B_a(z) = (z-a)/(1-\bar a z)   a Blaschke factor.
+% Q = Q_a \subset P = Y^{(\nu-1)q+1}, a \in \{L,R\}
+%                           the fixed Kahn--Lyubich direct-decoration pullback pair;
+% g = f^q|_Q : Q -> P       the dynamical branch;  \iota : Q -> P the inclusion-induced
+%                           pseudo-piece immersion;  K_Q = Q \cap K(f), K_P = P \cap K(f).
+% L_i : \tilde A_{s,i} -> \tilde A_{t,j(i)}
+%                           KL's lifted universal-cover tile immersion for source tile i;
+% e_i, \tilde e_j           the declared source and target central/tile overlap embeddings;
+% j = j(i)                  the inclusion component map on complementary components.
+% T_s, T_t                  positive deck generators of the source/target annulus
+%                           universal covers; deck equivariance: L \circ T_s = T_t \circ L.
+% \Lambda(N)                the limit set of a subgroup N of a Fuchsian deck group;
+% \zeta_-, \zeta_+          the two wrapping fixed points of the annular generator h;
+% \omega_-, \omega_+        KL's named infinitely-wrapping actual-tile vertices.
+% W(\Gamma)                 extremal width of a curve family (reciprocal extremal length);
+% \operatorname{mod}        conformal modulus.
+% \mathrm{Ind}_x(\gamma)    winding number of a loop \gamma about x.
+% Ledger identifiers (machine ledger, Appendix A of the manuscript) are set in
+% typewriter type, e.g. \texttt{KL\_CANONICAL\_LOCALIZATION\_FORCED\_COLLISION}.

@@ -1,0 +1,11 @@
+\begin{corollary}[No aligned annular realization of the canonical infinite resolution is a whole KL tile]\label{cor:canonical-not-whole-tile}
+Assume that, at an aligned stage, the propagated canonical factorization is realized as a holomorphic covering/embedding factorization of a degree-one immersion of finite-modulus annuli satisfying the hypotheses of Theorem~\ref{thm:annular-normal-form}.  For the ordinary primitive canonical resolution the sheet defect is infinite:
+\[
+[K:H_s]=\infty.
+\]
+Therefore no whole-tile end-compatible comparison satisfying the annular-tower typing of Definition~\ref{def:canonical-resolved-system} identifies its covering/embedding factorization with an actual Kahn--Lyubich tile map.  No statement is made about comparisons outside that typing, and no construction of a typed system from the canonical resolution is claimed here.
+\end{corollary}
+
+\begin{proof}
+The statement applies once the canonical factorization is realized in the annular setting of Theorem~\ref{thm:annular-normal-form}; that realization is part of the hypothesis.  The canonical winding theorem (Corollary~\ref{cor:infinite-sheet-defect}, supplied by the resolution cluster) gives an infinite fiber for the canonical covering \(q\) before tilewise base change, and the exact fiber bijection of Proposition~\ref{prop:base-change}(5), iterated through the tower by Corollary~\ref{cor:kahn-tower}, preserves it.  Hence in any proposed realization of \eqref{eq:resolved-factorization} satisfying the annular-tower typing the covering \(q\) has infinite fibers.  Since \(q\) is by typing a \emph{universal} covering, \(N=\operatorname{Deck}(q)\) acts simply transitively on each fiber, so \(N\) is infinite; in particular \(N\ne\{1\}\).  Theorem~\ref{thm:whole-tile-no-go} now denies the existence of the comparison.
+\end{proof}

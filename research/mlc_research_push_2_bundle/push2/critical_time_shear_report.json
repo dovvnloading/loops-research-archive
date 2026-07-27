@@ -1,0 +1,29 @@
+{
+  "endpoint_projection_degree": 1,
+  "exact_chronology": false,
+  "first_retention_failure": null,
+  "first_swap_stage": 0,
+  "lift_total_degree": 2,
+  "name": "z^2-1 critical-time shear",
+  "notes": "Both return maps have total degree two and the endpoint projection returns to degree one, but chronology is shifted.",
+  "root_total_degree": 2,
+  "stages": [
+    {
+      "lift_degree": 1,
+      "projection_degree_in": 1,
+      "projection_degree_out": 2,
+      "root_degree": 2,
+      "stage": 0,
+      "swap": "criticality moved from branch into transverse projection"
+    },
+    {
+      "lift_degree": 2,
+      "projection_degree_in": 2,
+      "projection_degree_out": 1,
+      "root_degree": 1,
+      "stage": 1,
+      "swap": "criticality moved from transverse projection back into branch"
+    }
+  ],
+  "valid_degree_ladder": true
+}

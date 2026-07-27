@@ -1,0 +1,28 @@
+%% ---------------------------------------------------------------
+%% Notation for the base-change / tile-obstruction cluster (items 8-9).
+%% amsart-compatible; requires only amsmath, amssymb, amsthm.
+%% ---------------------------------------------------------------
+\subsection*{Notation and standing conventions}
+
+\begin{itemize}
+\item \(\mathbb D=\{z\in\mathbb C:\lvert z\rvert<1\}\) is the unit disk, \(\operatorname{Aut}(\mathbb D)\) its group of conformal automorphisms, and \(d_{\mathcal E}\) the hyperbolic metric of a domain \(\mathcal E\cong\mathbb D\).  \(C\Subset\mathcal E\) means that \(C\) has compact closure in \(\mathcal E\).
+
+\item All spaces are Hausdorff.  For a covering map \(p\colon\widehat X\to X\), \(\operatorname{Deck}(p)\) denotes its deck group.  A covering is \emph{universal} when its total space is simply connected; the deck group of a universal covering acts simply transitively on each fiber.  A nonregular infinite covering may have trivial deck group, so the universal typing is part of the data, never a convenience.
+
+\item For a based covering \(p\colon(\widehat X,\widehat x)\to(X,x)\), its subgroup is \(H=p_*\pi_1(\widehat X,\widehat x)\le\pi_1(X,x)\).  For subgroups \(H\le K\), the \emph{pointed coset set} \(K/H=\{kH:k\in K\}\) is a pointed set with basepoint \(H\); no group structure is asserted unless \(H\trianglelefteq K\).
+
+\item \(a\colon(X_s,x_s)\hookrightarrow(X_t,x_t)\) denotes the based topological embedding underlying the canonical localization, with based connected covers of subgroups \(H_s,H_t\), based lift \(A\), and \(K:=a_*^{-1}(H_t)\le\pi_1(X_s,x_s)\), so that \(H_s\le K\).  The \emph{canonical sheet resolution} is the factorization \(A=e\circ q\) through the resolved pullback component, with \(q\) a covering whose based fiber is the pointed coset set \(K/H_s\) and \(e\) a topological embedding; \([K:H_s]\) is the \emph{sheet defect}.  (These are supplied by the resolution cluster; see Theorem~\ref{thm:canonical-sheet-resolution} and Corollary~\ref{cor:infinite-sheet-defect} there.)
+
+\item For maps \(i\colon X\to Z\) and \(f\colon Y\to Z\), the fiber product is \(X\times_ZY=\{(x,y):i(x)=f(y)\}\); the \emph{kernel pair} of \(g\colon X\to Y\) is \(X\times_YX\).  A commutative square is \emph{cartesian} when it is a pullback square.
+
+\item \(\mathbf U^r\) denotes the \(r\)-th stage of the exact Kahn equalizer tower on the complementary-cover locus, with the two stage maps \(i_r,f_r\colon\mathbf U^{r+1}\to\mathbf U^{r}\) (localized inclusion and dynamics), so that
+\(\mathbf U^{r+2}=\{(x,y)\in\mathbf U^{r+1}\times\mathbf U^{r+1}:i_r(x)=f_r(y)\}\) and \(i_{r+1}(x,y)=y\).
+
+\item For a discrete subgroup \(\Gamma\le\operatorname{Aut}(\mathbb D)\), \(\Lambda(\Gamma)\subset\partial\mathbb D\) is its limit set; \(\Gamma\) is \emph{elementary} when \(\Lambda(\Gamma)\) contains at most two points.  A hyperbolic element of \(\operatorname{Aut}(\mathbb D)\) has one repelling and one attracting fixed point on \(\partial\mathbb D\).
+
+\item Overlines denote continuous extensions to conformal ideal closures, e.g.\ \(\overline\Phi\), \(\overline L_{\mathrm{KL}}\).  The ideal closures of the Kahn--Lyubich pseudo-pieces used here are the Hausdorff conformal ideal closures of the source texts; on the resolved side the point-valued ideal boundary is formed after the Fuchsian limit set has been removed (Kahn~I, \S2.3).
+
+\item \(\widehat A_s,\widehat A_t\) denote the source and target universal-cover tiles of an actual Kahn--Lyubich pseudo-piece (KL~II, \S3.2.1, p.~12); \(t_s\) is the positive source annular deck generator; \(\omega_-,\omega_+\in\partial\widehat A_s\) are its two fixed prime ends, identified by the source with the named infinitely wrapping \(\lambda/J\) vertices; \(L_{\mathrm{KL}}\colon\widehat A_s\to\widehat A_t\) is one source-indexed actual KL inclusion tile map.
+
+\item \(\mathcal E,\mathcal R,T,q,e,L,N,G,H,h,\zeta_\pm\) always refer to the canonical resolved system and its annular-tower typing, Definition~\ref{def:canonical-resolved-system}.
+\end{itemize}

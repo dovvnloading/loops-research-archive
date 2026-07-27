@@ -1,0 +1,56 @@
+\begin{lemma}[annulus immersion lemma; Kahn I, Lemma 7.4, p.~37]\label{lem:kahn-ann-immerse}
+Let \(d>1\) be an integer, let \(r>1\), and set \(r'=r^{1/d}\).  Let
+\(I\colon\Ann(1,r')\to\Ann(1,r)\) be a holomorphic immersion that
+extends continuously to a degree-one map \(\T\to\T\).  For
+\(\rho\in(1,r)\) set \(\rho'=\rho^{1/d}\).  Then:
+\begin{enumerate}
+\item \(I(\Ann(1,\rho'))\subset\Ann(1,s)\), where \(s=s(\rho,r)\) and
+\(\rho-s\) is uniformly positive on every compact subset of
+\(\{(r,\rho):\ 1<\rho<r\le\infty\}\);
+\item \(I|_{\Ann(1,\rho')}\) is an embedding for some \(\rho=\rho(r)\)
+that is uniformly greater than \(1\) whenever \(r\) is bounded away
+from \(1\).
+\end{enumerate}
+Combining (1) and (2) (Kahn's remark following Lemma~7.4, p.~38): for \(r\) bounded
+away from \(1\) there are uniform \(1<s<\rho\) such that
+\(I|_{\Ann(1,\rho')}\) is an embedding and
+\(I(\Ann(1,\rho'))\subset\Ann(1,s)\).
+\end{lemma}
+
+\begin{remark}[scope of the assertion]\label{rem:ann-immerse-scope}
+The lemma asserts an embedding only on the \emph{inner collar}
+\(\Ann(1,\rho')\) adjacent to the unit circle, together with a uniform
+containment of its image.  Kahn neither asserts nor uses injectivity of
+\(I\) on its whole domain \(\Ann(1,r')\); the entire point of the
+restriction theorem below is to \emph{restrict} to a collar on which
+the immersion becomes an embedding.  No statement in the locked source
+upgrades this to a global embedding of any localized inclusion.
+\end{remark}
+
+\begin{proof}[Proof (faithful paraphrase of Kahn I, proof of Lemma 7.4, pp.~37--38)]
+(1) Double \(\Ann(1,r')\) and \(\Ann(1,r)\) across \(\T\) to
+\(\Ann(1/r',r')\) and \(\Ann(1/r,r)\) and extend \(I\) by Schwarz
+reflection.  Because \(\rho'=\rho^{1/d}\) and \(r'=r^{1/d}\), the
+Poincar\'e distance from \(\T\) to \(\T_{\rho'}\) in \(\Ann(1,r')\)
+equals the Poincar\'e distance from \(\T\) to \(\T_{\rho}\) in
+\(\Ann(1,r)\).  For \((\rho,r)\) in a compact subset of
+\(\{1<\rho<r<\infty\}\) the reflected map contracts the Poincar\'e
+metric uniformly, so \(I(\T_{\rho'})\) lies a definite Poincar\'e
+distance closer to \(\T\) than \(\T_\rho\); this yields \(s<\rho\)
+with \(\rho-s\) uniformly positive.  If \(r=\infty\) then \(I\) is the
+identity and the estimate is trivial.  A sequence/compactness argument
+interpolates between the two cases on compact subsets of
+\(\{1<\rho<r\le\infty\}\).
+
+(2) For \(r\) bounded away from \(1\), the image \(I(\T_{\sqrt{r'}})\)
+is bounded away from \(\T\); choose a uniform \(\rho>1\) so that
+\(\Lambda:=\Ann(1,\rho)\) is disjoint from \(I(\T_{\sqrt{r'}})\).  Let
+\(\Lambda'\) be the component of \(I^{-1}(\Lambda)\) adjacent to
+\(\T\).  Then \(I\colon\T\cup\Lambda'\to\T\cup\Lambda\) is a covering
+map, of degree one because it has degree one on \(\T\); hence
+\(I|_{\Lambda'}\) is an embedding.  Poincar\'e contraction on the
+doubled annulus \(\Ann(1/r',r')\) places the outer boundary of
+\(\Lambda'\) outside \(\Ann(1,\rho')\), so
+\(\Ann(1,\rho')\subset\Lambda'\), and \(I|_{\Ann(1,\rho')}\) is an
+embedding.
+\end{proof}

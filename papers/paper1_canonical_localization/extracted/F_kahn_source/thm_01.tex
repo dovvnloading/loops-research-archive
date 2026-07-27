@@ -1,0 +1,54 @@
+\begin{theorem}[polynomial-like restriction; Kahn I, Theorem 7.3, p.~37]\label{thm:kahn-psql-restriction}
+Let \(F=(i,f)\colon\BU'\to\BU\) be a \(\psi\)-polynomial-like map of
+degree \(d\ge2\) with filled Julia set \(K\) and \(K'=i^{-1}(K)\).
+Then there is an open set \(U\subset\BU\) with \(K\subset U\) such
+that, writing \(U'=f^{-1}(U)\subset\BU'\):
+\begin{enumerate}
+\item \(f\colon U'\to U\) is a proper degree-\(d\) branched covering;
+\item \(i|_{U'}\) is an embedding;
+\item \(i(U')\subset U\); and
+\item \(\Mod\bigl(U\sm i(U')\bigr)\ge\mu>0\), where \(\mu\) can be
+taken uniform over all such maps with \(d\) bounded and
+\(\Mod(\BU\sm K)\) bounded below.
+\end{enumerate}
+In particular \(f\circ(i|_{U'})^{-1}\colon i(U')\to U\) is a
+polynomial-like map of degree \(d\): every \(\psi\)-polynomial-like map
+carries an \emph{embedded} polynomial-like germ, with modulus
+controlled by the modulus of the ambient pair.
+\end{theorem}
+
+\begin{proof}[Proof (faithful paraphrase of Kahn I, proof of Theorem 7.3, pp.~38--39)]
+\emph{Step 1: local injectivity near \(K'\)}.  If \(i\)
+were injective on no neighborhood of \(K'\), there would be sequences
+\(z_k\to K'\), \(w_k\to K'\) with \(z_k\ne w_k\) and
+\(i(z_k)=i(w_k)\).  Passing to subsequences with \(z_k\to z\in K'\)
+and \(w_k\to w\in K'\) gives \(i(z)=i(w)\); since
+\(i\colon K'\to K\) is a bijection, \(z=w\), and then the failure of
+injectivity in every neighborhood of \(z\) forces \(z\) to be a
+critical point of \(i\), contradicting that \(i\) is an immersion.
+
+\emph{Step 2: transport to round annuli}.  Uniformize
+\(\phi\colon\Ann(1,r)\to\BU\sm K\) and
+\(\phi'\colon\Ann(1,r')\to\BU'\sm K'\), where \(r'=r^{1/d}\) because
+\(f\) restricts to a proper degree-\(d\) map between the annular ends.
+Set \(I=\phi^{-1}\circ i\circ\phi'\colon\Ann(1,r')\to\Ann(1,r)\), a
+holomorphic immersion.  Since \(|I(z)|\to1\) as \(|z|\to1\), the
+reflection principle for harmonic functions extends \(I\)
+continuously to \(\T\to\T\) (Kahn~I, remark following Lemma~7.4, p.~38); by Step~1 the
+extension is injective near \(\T\), and a doubling/open-mapping
+argument of that remark shows the boundary map is injective, hence of
+degree one.
+
+\emph{Step 3: apply the annulus immersion lemma}.  By
+Lemma~\ref{lem:kahn-ann-immerse} and the combined Remark
+(Kahn~I, p.~38) there are uniform \(1<s<\rho<r\) with
+\(I|_{\Ann(1,\rho')}\) an embedding, \(\rho'=\rho^{1/d}\), and
+\(I(\Ann(1,\rho'))\subset\Ann(1,s)\).  Define
+\(U'=K'\cup\phi'(\Ann(1,\rho'))\) and
+\(U=K\cup\phi(\Ann(1,\rho))\).  Then \(f\colon U'\to U\) is a proper
+degree-\(d\) branched covering, \(i|_{U'}\) is an embedding,
+\(i(U')\subset K\cup\phi(\Ann(1,s))\subset U\), and
+\(\Mod(U\sm i(U'))\) is bounded below by a positive quantity
+determined by \(s<\rho\), uniform for \(d\) bounded and
+\(\Mod(\BU\sm K)=\tfrac{1}{2\pi}\log r\) bounded below.
+\end{proof}

@@ -1,0 +1,7 @@
+\begin{corollary}[Finite full \(p\)-fold pullback]\label{cor:finite-pullback}
+Under a chain of \(p\) quadratic-like pullbacks, the inverse image of one full continuum is a union of at most \(2^p\) pairwise disjoint full continua.  Every resulting component maps onto its parent continuum with positive integer degree.  The inverse image of a finite pairwise-disjoint family of full continua is again a finite pairwise-disjoint family of full continua.
+\end{corollary}
+
+\begin{proof}
+Apply Lemma \ref{lem:quadratic-pullback} successively along the chain.  At each stage every parent continuum has either one degree-two child or two degree-one children, and every child maps onto its parent.  Children of different parents are disjoint because their images lie in the disjoint parent continua.  Induction over the \(p\) stages gives the bound \(2^p\), the stated surjectivity, and a positive product degree for every terminal component.  Applying this separately to the members of a finite pairwise-disjoint family proves the last statement.
+\end{proof}

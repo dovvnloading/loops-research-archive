@@ -1,0 +1,42 @@
+\begin{figure}[t]
+\centering
+\begin{tikzpicture}[scale=1.0,
+  sheet/.style={draw, thick, rounded corners=4pt, fill=gray!10},
+  lbl/.style={font=\small}]
+  % source resolved cover: stack of sheets
+  \foreach \k in {0,1,2,3} {
+    \node[sheet, minimum width=2.2cm, minimum height=0.42cm]
+      at (-4.1, {0.62*\k - 0.93}) {};
+  }
+  \node[lbl] at (-4.1, 1.85) {\(\widetilde X_{s}\)};
+  \node[lbl] at (-4.1, 1.35) {\(\vdots\)};
+  % middle embedded factor P_K
+  \node[sheet, fill=gray!30, minimum width=2.4cm, minimum height=0.6cm] (PK) at (0,0) {};
+  \node[lbl] at (0, 0) {\(P_{K}\)};
+  % target cover
+  \node[sheet, minimum width=2.6cm, minimum height=2.6cm] (Xt) at (4.2,0) {};
+  \node[lbl] at (4.2, 1.65) {\(\widetilde X_{t}\)};
+  % maps
+  \draw[->, very thick] (-2.85,0) -- node[lbl, above] {\(q\)} (-1.35,0);
+  \draw[{Hooks[right]}->, very thick] (1.35,0) -- node[lbl, above] {\(e\)} (2.75,0);
+  % coset fiber column inside X_t
+  \foreach \k in {-2,-1,0,1,2} {
+    \fill (4.2, {0.38*\k}) circle (1.6pt);
+  }
+  \draw[densely dotted] (4.2,-1.0) -- (4.2,1.0);
+  \node[lbl, right] at (4.45, 0.0) {fiber \(\cong K/H_{s}=a_{*}^{-1}(H_{t})/H_{s}\)};
+  \node[lbl, right] at (4.45, -0.45) {(infinite)};
+  % transport arrow
+  \draw[->, bend left=18, thick] (3.9, -0.75) to node[lbl, below] {transport} (4.5, 0.72);
+\end{tikzpicture}
+\caption{The canonical intermediate-cover resolution.  The unresolved
+immersed pseudo-piece is replaced by the factorization
+\(\widetilde X_{s}\xrightarrow{\,q\,}P_{K}\lhook\joinrel\xrightarrow{\,e\,}\widetilde X_{t}\):
+a covering onto the embedded intermediate factor (unique in the based
+commuting comparison class) followed by an
+embedding.  The sheet fiber over the embedded factor is a coset space
+detected by the winding homomorphism; it is infinite, and canonical
+transport moves sheets along paths in the base.  Exact Kahn base change
+preserves the entire structure.}
+\label{fig:sheets}
+\end{figure}

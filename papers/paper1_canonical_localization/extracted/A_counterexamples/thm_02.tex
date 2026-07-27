@@ -1,0 +1,23 @@
+\begin{lemma}\label{lem:containment}
+\(R(\mathbb A(1,r'))\subset\mathbb A(1,r)\); more precisely \(|R(z)|>1\) for \(1<|z|<r'\), \(|R(z)|>1\) on \(|z|=r'\), and \(|R(z)|<48<(r')^{16}=r\) for \(1<|z|<r'\). Moreover \(r'=r^{1/16}\) identically, the exact modulus relation of Kahn's annulus lemma.
+\end{lemma}
+
+\begin{proof}
+\emph{Lower bound.} Parameterize the outer source circle by
+\[ z(t)=r'\,\frac{1-t^2+2it}{1+t^2},\qquad t\in\mathbb R. \]
+Exact substitution into \(R=N/D_0\) gives
+\[ |N(z(t))|^2-|D_0(z(t))|^2=\frac{656369\,q(t)}{320000000000000000000000000\,(1+t^2)^4}, \tag{A.6} \]
+where
+\[\begin{aligned} q(t)={}&11751160313656400426951788919\,t^{8}\\ &-137579839638925277492971300800\,t^{7}\\ &+958901799234288449551831128476\,t^{6}\\ &-4106906924234287705167320942400\,t^{5}\\ &+10779372189655006534093819771914\,t^{4}\\ &-16680328775739752952831727982400\,t^{3}\\ &+14042199262274463963774353314076\,t^{2}\\ &-5586354003042199421157378340800\,t\\ &+1394955241714223750805412881719. \end{aligned}\tag{A.7}\]
+The denominator in (A.6) is positive. \emph{Certificate S2.} The exact Sturm chain of \(q\) has degree list \(8,7,6,5,4,3,2,1,0\) and sign lists
+\[ +--++--++\ \text{ at } -\infty,\qquad ++--++--+\ \text{ at } +\infty, \]
+each with four sign changes, so \(q\) has no real root. Since \(q(0)=1394955241714223750805412881719>0\) with positive leading coefficient, \(q(t)>0\) on the real line and at \(t=\infty\). Hence \(|R(z)|>1\) on \(|z|=r'\).
+By Lemma~\ref{lem:avoid}, \(u=\log|R|\) is harmonic on a neighborhood of the closed annulus; \(u=0\) on \(\mathbb T\) (Lemma~\ref{lem:circle-homeo}) and \(u>0\) on \(|z|=r'\). The minimum principle gives \(u\ge0\) on the closed annulus and the strong minimum principle gives \(|R(z)|>1\) for \(1<|z|<r'\).
+\emph{Upper bound.} For \(s=|a|<1\) and \(\rho>1\) with \(\rho s<1\), a direct calculation on \(|z|=\rho\) gives
+\[ \max_{|z|=\rho}|B_a(z)|=\frac{\rho-s}{1-\rho s}, \tag{A.8} \]
+and the right side is increasing in both \(\rho\) and \(s\); the maximum modulus principle extends the bound over \(1\le|z|\le\rho\). Also \(|B_b(z)|>1\) for \(|z|>1\), so each reciprocal factor \(1/B_b\) has modulus less than one there. Using the exact rational bounds
+\[ \frac{\sqrt{37}}{10}<\frac{61}{100},\qquad \frac{\sqrt{10}}{10}<\frac{32}{100},\qquad \frac{\sqrt{53}}{10}<\frac{73}{100} \]
+for the moduli of the three numerator zeros, (A.1) and (A.8) give, for \(1<|z|<r'\),
+\[ |R(z)|<\prod_{s\in\{61/100,\,32/100,\,73/100\}}\frac{r'-s}{1-r's}=\frac{5697579109375}{119480253283}<48<(r')^{16}=r, \]
+where the last two inequalities are integer cross-multiplications. Combining the two bounds proves \(R(\mathbb A(1,r'))\subset\mathbb A(1,r)\), and \(r=(r')^{16}\) by definition, so \(r'=r^{1/16}\).
+\end{proof}

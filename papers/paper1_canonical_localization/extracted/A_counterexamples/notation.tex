@@ -1,0 +1,10 @@
+\subsection*{Notation and certificate conventions}
+Throughout, \(\mathbb A(1,\rho)=\{z\in\mathbb C:1<|z|<\rho\}\) is the open round annulus, \(\mathbb T=\{|z|=1\}\), and \(\mathbb D_R=\{z:|z|<R\}\). For \(|a|<1\) the Blaschke factor is
+\[ B_a(z)=\frac{z-a}{1-\overline a\,z}. \]
+For a Gaussian rational \(w\) we use the exact rational modulus bounds
+\[ L(w)=\max\bigl(|\Re w|,|\Im w|\bigr),\qquad U(w)=|\Re w|+|\Im w|,\qquad L(w)\le|w|\le U(w). \tag{N.1} \]
+\emph{Sturm certificate.} For \(p\in\mathbb Z[t]\), the exact Euclidean Sturm chain is the signed remainder sequence of \((p,p')\); if \(V(\pm\infty)\) denote the numbers of sign changes in the leading-coefficient sign lists at \(\mp\)infinity, Sturm's theorem gives the number of distinct real roots \(N_{\mathbb R}(p)=V(-\infty)-V(+\infty)\). A certificate consists of the chain's degree list and the two sign lists; all entries are exact integers/rationals.
+\emph{Rouch\'e--Taylor certificate.} For a polynomial \(P\), a Gaussian-rational center \(c\), a rational radius \(\rho\), and an integer multiplier \(m\ge1\), the certificate is the exact rational inequality
+\[ L\bigl(P'(c)\bigr)\,\rho\;>\;m\Bigl[\,U\bigl(P(c)\bigr)+\sum_{k\ge2}U\Bigl(\tfrac{P^{(k)}(c)}{k!}\Bigr)\rho^{k}\Bigr]. \tag{N.2} \]
+By (N.1), (N.2) implies \(|P'(c)\zeta|>\bigl|P(c)+\sum_{k\ge2}\tfrac{P^{(k)}(c)}{k!}\zeta^{k}\bigr|\) on \(|\zeta|=\rho\), so Rouch\'e's theorem (comparing \(P(c+\zeta)\) with \(P'(c)\zeta\)) places exactly one zero of \(P\) in \(\{|z-c|<\rho\}\). No floating point enters: centers, coefficients, \(\rho\), and both sides of (N.2) are rational, and the accompanying validator records the exact cross-multiplied fractions.
+For circle maps, \(\deg\) denotes topological degree and \(\operatorname{wind}(\gamma,w)\) the winding number of a loop \(\gamma\) about \(w\).

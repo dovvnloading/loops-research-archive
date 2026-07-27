@@ -1,0 +1,25 @@
+{
+  "artifact": "WOT_WELDING_ALGEBRA_NO_GO",
+  "date": "2026-07-25",
+  "status": "WOT_WELDING_ALGEBRA_NO_GO_VALID",
+  "checks": {
+    "claimed_formula_not_positive_for_j_two": true,
+    "claimed_formula_not_idempotent_for_j_half": true,
+    "correct_projection_idempotent_for_j_two": true,
+    "correct_projection_idempotent_for_j_half": true,
+    "correct_projection_annihilates_graph_orthogonal_vector": true,
+    "bilateral_shift_wot_counterexample_proved_in_note": true,
+    "wot_compactification_not_promoted": true,
+    "source_welding_bounds_not_claimed": true,
+    "mlc_not_claimed": true
+  },
+  "all_checks": true,
+  "logical_conclusion": "the original graph-projection formula is false for general bounded weldings, and WOT convergence does not preserve graph or gluing algebra",
+  "remaining_open": [
+    "DIRECT_DECORATION_TRACE_WELDING_COMPACTNESS",
+    "END_PLUMBING_TRACE_RESPONSE_CONTROL",
+    "UPTCR",
+    "MLC"
+  ],
+  "original_artifacts_written": false
+}

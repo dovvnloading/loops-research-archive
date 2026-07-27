@@ -1,0 +1,28 @@
+{
+  "artifact": "DYADIC_BOTTCHER_EXTERNAL_TRACE_ISOMETRY",
+  "date": "2026-07-25",
+  "status": "DYADIC_BOTTCHER_EXTERNAL_TRACE_ISOMETRY_VALID",
+  "formula": "[u o T]_(dot H^1/2,I) = [u]_(dot H^1/2,J) for affine T",
+  "source": {
+    "path": "C:\\Users\\Admin\\AppData\\Local\\Temp\\mlc-kl-decorations-math0609046\\kingdom.tex",
+    "arxiv": "https://arxiv.org/abs/math/0609046",
+    "anchors": [
+      "121-130",
+      "293-319"
+    ]
+  },
+  "checks": {
+    "source_exists": true,
+    "dyadic_label_anchor": true,
+    "external_model_anchor": true,
+    "jacobian_denominator_cancellation": true,
+    "normalized_external_lift_has_unit_seminorm_factor": true,
+    "period_independent": true,
+    "sectorwise_integer_is_retained": true,
+    "global_multisector_welding_not_claimed": true,
+    "original_artifacts_written": false
+  },
+  "all_checks": true,
+  "scope": "sectorwise external trace only; physical/core welding, all-depth contacts, and MLC remain open",
+  "original_artifacts_written": false
+}

@@ -1,0 +1,28 @@
+{
+  "certificate": "SATELLITE_GROWTH_COVERAGE_COMPLEMENT",
+  "date": "2026-07-25",
+  "status": "source_covered_growth_classes_are_not_exhaustive_at_data_level",
+  "witness": {
+    "q_m": "m+3",
+    "p_m": "1",
+    "t_m": "1/(m+3)",
+    "admissibility": "finite nonzero rational satellite data with q_m >= 3 and gcd(p_m,q_m)=1",
+    "limiting_parameter_claim": false
+  },
+  "failed_tests": [
+    "pure Cheraghi-Shishikura QG_N quadratic denominator growth",
+    "Levin Theorem 1 satellite log(q_m)/n_m positive-limsup test",
+    "Levin Theorem 2 fast-small-rotation test",
+    "Levin Theorem 7 conditions (Y0a) and (Y1)"
+  ],
+  "source_urls": [
+    "https://arxiv.org/pdf/1509.07843",
+    "https://arxiv.org/pdf/0710.4406"
+  ],
+  "machine_validation": {
+    "script": "research/mlc_unified/validate_satellite_coverage_complement.py",
+    "all_checks": true,
+    "original_artifacts_written": false
+  },
+  "proof_policy": "This certificate blocks an invalid exhaustion claim; it does not solve MLC and does not assert existence of a limiting quadratic parameter for the witness."
+}

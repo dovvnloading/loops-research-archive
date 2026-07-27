@@ -1,0 +1,29 @@
+\begin{corollary}[Path-reflection formulation]
+\label{cor:path-reflection}
+In the setting of Theorem~\ref{thm:subgroup-reflection-criterion}, call
+two source paths \(\alpha,\beta\) with common endpoints \emph{source
+equivalent} if \([\alpha\beta^{-1}]\in H_s\), and \emph{target
+equivalent} if \(a_*[\alpha\beta^{-1}]\in H_t\).  Then \(A\) is
+injective if and only if
+\[
+ \text{target equivalence of two source paths}
+ \Longrightarrow
+ \text{source equivalence of those paths}.
+\]
+The opposite implication (source equivalence implies target
+equivalence) holds automatically by functoriality.
+\end{corollary}
+
+\begin{proof}
+Let \(\alpha,\beta\) be source paths with the same endpoints.  By the
+covering endpoint criterion, their lifts from one common source lift
+have the same endpoint exactly when \([\alpha\beta^{-1}]\in H_s\), and
+the lifts of their target images from one common target lift have the
+same endpoint exactly when \(a_*[\alpha\beta^{-1}]\in H_t\).  Hence the
+displayed implication holds for all pairs of source paths if and only
+if \(a_*^{-1}(H_t)\subseteq H_s\); together with the automatic
+inclusion \(H_s\subseteq a_*^{-1}(H_t)\) this is the reflection
+equality, which by Theorem~\ref{thm:subgroup-reflection-criterion} is
+equivalent to injectivity of \(A\).  The opposite implication is
+functoriality of \(a_*\) together with \(a_*(H_s)\subseteq H_t\).
+\end{proof}

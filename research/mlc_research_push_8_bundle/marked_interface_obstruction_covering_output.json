@@ -1,0 +1,5 @@
+{
+  "bruteforce_valid_markings": [],
+  "reason": "no coarsening of the immersion-admissible partition makes the covering-pulled marking refine the immersion-pulled marking",
+  "status": "obstruction"
+}

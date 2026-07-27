@@ -1,0 +1,896 @@
+=== marked_width_mlc_manuscript.pdf (2026-07-27 build, 214 pp) :: lines 700-800 (Prop 6.11, Thm 6.12, 6.4/Prop 6.15) ===
+ﬁnite corridor. □
+Proved Proposition 6.11 (Anchor underdetermination) . A required package, full connected
+carriers, critical-value-free degree-one selected-carrier dynamics, and identical coarse orbit labels
+do not imply an attachment-free anchor.
+Proof. In a Jordan disk, take the package S ={−1, 1}, the full interval
+T = [−1, 1],
+and the full triod
+T † = [−1, 1]∪[0,i ].
+The identity is univalent near T † and gives the same dynamics on T . The pair T ⊂T is
+attachment-free, whereas T ⊂T † has the vertical excess branch attached at 0. The triod has
+a valence-three point and the interval does not, so no homeomorphism of carrier pairs removes
+this distinction. The listed data are identical but anchor equality holds in only one model. □
+This is a counterexample to deriving anchor equality from Dudko’s published connected-hull
+description; it is not a counterexample to the possible existence of a stronger canonical virtual
+carrier.
+Proved Theorem 6.12 (No least connected full carrier) . There is no least compact connected
+full plane continuum containing the two-point package S ={−1, 1}, even with identity dynamics
+and no obstacles.
+Proof. LetA+ andA− be the upper and lower semicircles joining −1 to 1. Each is an arc, hence
+a compact connected full continuum, and
+A+∩A− =S.
+If a least carrier H existed, then H⊂A+∩A− = S. Since S⊂H, this would give H = S,
+contradicting connectedness. □
+Thus “take the minimal connected full hull” is not a carrier rule. A regulated connector system,
+together with its access or isotopy class and a forward-coherence proof, is additional data.
+Deﬁnition 6.13 (Finite attachment-orbit closure) . For a ﬁnite resolved carrier with cell set C ,
+let
+A : 2 C−→2C (5.16)
+@@PAGE 19@@
+MARKED-WIDTH REDUCTION OF MLC 19
+be an inﬂationary monotone operator adding every cell forced by attachment, access completion,
+corridor transport, or fulliﬁcation. Starting from the proposed carrier cells C0, set
+Cn+1 := A(Cn). (5.17)
+Proved Theorem 6.14 (Least attachment-orbit closure) . The sequence (Cn) stabilizes after at
+most|C\C0|strict enlargements at the least ﬁxed point C∞ containingC0. If a corridor bijection
+P conjugates two completion operators, then it transports their least ﬁxed points.
+Consequently, any selected-sheet merger, critical-value intrusion, obstacle collision, marked-
+access identiﬁcation, or localization escape already present in C∞ persists in every monotone
+attachment-complete enlargement.
+Proof. Inﬂationarity makes the sequence increasing, and every strict step adds a new cell, proving
+ﬁnite stabilization. If D⊃C0 is any ﬁxed point, monotonicity gives Cn⊂D inductively, hence
+C∞ ⊂D. If P A =˜AP , induction gives P (Cn) = ˜Cn, and stabilization gives the conjugacy claim.
+Every monotone attachment-complete enlargement is such a ﬁxed point and contains C∞ , so it
+retains every listed collision. □
+6.4. An analytic protected-access collision. Let
+f (z) = z2, I = [1, 2], m = 3
+2,
+and let
+Q =
+{
+z :
+⏐⏐⏐⏐z−3
+2
+⏐⏐⏐⏐≤1
+2, Imz≥0
+}
+. (5.18)
+Set U − ={z :|z−3/ 2|< 1}and U + =f (U − ). The disk U − lies in Rez >1/ 2, so
+F =f|U − :U −−→U + (5.19)
+is a conformal homeomorphism. Take
+T0 =I, T ′
+0 =Q, T 1 =f (I), T ′
+1 =f (Q). (5.20)
+Within this branch,
+T ′
+0 =F − 1(T ′
+1), T 0 =F − 1(T1). (5.21)
+Proved Proposition 6.15 (Quadratic protected-access collision) . The pulled excess has the
+single component
+X0 =Q\I
+with attachment trace
+τT0(X0) := X0
+T ′
+0∩T0 =I.
+The closure is taken in the actual pulled carrier T ′
+0. In particular, the trace is not X0∩T0, which
+is empty by the deﬁnition of the excess. Its complete one-stage itinerary is
+X0↦−→f (X0),
+on the right sheet with critical word 0. If the upper access p+
+0 (m), represented by m +it, is
+protected, every monotone attachment-complete enlargement absorbing X0 erases that access and
+its transported access F∗p+
+0 (m).
+Proof. The relative upper half-disk is connected, and its closure meets I in all of I. Since 0 /∈U − ,
+F ′(z) = 2z̸= 0, and the selected branch avoids the critical value, the itinerary has one right-sheet,
+degree-one step and no critical encounter.
+Absorbing X0 while retaining I forces the enlarged carrier to contain Q. But Q contains an
+upper relative half-neighborhood of m. No curve in U −\Q can therefore land at m from the
+upper side. Further monotone enlargement cannot restore a complement access through a set
+already absorbed. Conformality transports the same conclusion to stage 1. □
+@@PAGE 20@@
+20 RESEARCH MANUSCRIPT IN PROGRESS
+In the order
+(χsheet,χcrit,χobs,χaccess,χloc),
+the collision tuple is
+χ(C∞ ) =
+(
+?, ?, ?,{p+
+0 (m),F ∗p+
+0 (m)}, ?
+)
+
+=== lines 1150-1580 (Section 10 intro, 10.1-10.16) ===
+the block, excess component, attachment access, full itinerary, and collision coordinate. For
+UPTCR-2 it must record the stage, components, subgroup image, and extra sheet or ideal end.
+For UPTCR-3 it must record the escaping dimension, missing Value functional, failed quotient
+square, or congestion ratio. For UPTCR-4 it must record the complete block word, matrix,
+chart cycle, entropy charge, error, and failed margin. For UPTCR-5 it must exhibit an escaping
+marked subsequence. For UPTCR-6 it must exhibit the ﬁnite-depth dilatation defect, nonzero
+limiting Beltrami form, or failed connected relative-neighborhood property.
+No nonzero fatal collision is licensed by a bounded window; the replacement protected lo-
+cal model itself must have zero collision invariant. No UPTCR clause is promoted by a ﬁ-
+nite model. The upper-half-disk access collision, increasing satellite periods, alternating neu-
+tral/primitive blocks, vanishing entropy increments, late sheet mergers, subgroup mismatch,
+topology-preserving width rescaling, shear cycles, unbounded memory, prime-end monodromy,
+and possible invariant line ﬁelds remain mandatory attacks.
+9.4. Cross-validation verdict.
+Proved Proposition 9.6 (Current data do not prove UPTCR-1) . Dudko’s published connected-
+hull description together with the ﬁnite monotone completion rules proved in this manuscript does
+not imply the canonical protected-carrier clause of open problem 9.1 .
+Proof. Theorem 6.12 rules out selecting the carrier as the least connected full hull of the required
+package. If instead every ﬁrst pulled excess is absorbed monotonically, proposition 6.15 gives a
+critical-value-free quadratic branch whose ﬁrst absorption erases a protected prime-end access.
+Thus neither available selection rule proves UPTCR-1. This does not refute the existence of a
+more structured dynamically selected carrier. □
+The topological realization from an explicit protected ribbon certiﬁcate is proved later in the-
+orem 10.4 . The exact free-component criterion theorem 10.8 then removes arbitrary tree choice.
+The attempted proof still stops at the ﬁrst clause because open problems 10.6 and 10.58 are
+open. The ﬁrst missing input is one future-complete free-domain component with simultaneous
+singleton ports to all root-shadow clusters; complete component and critical-word routing and
+collision-free replacement models remain afterward.
+10. Protected regulated connectors
+The cross-validation in section 9 stops at the connector part of UPTCR-1. This section proves
+the purely topological realization once an actual protected ribbon-routing certiﬁcate is supplied,
+and isolates the remaining virtual dynamical certiﬁcate. The complete deﬁnitions and failure
+record are in protected_regulated_connector.md.
+10.1. Source boundary. Dudko describes the virtual Julia sets as connected hulls of Cantor
+small Julia sets carrying a ﬁnite part of the critical orbit [ Dud25]; no connector or protected-
+access theorem is stated. KKL have a stronger native object: their Hubbard tree is constructed
+inside the full dynamical carrier, and in the non-locally-connected case it is lifted from the locally
+connected rational-lamination model [ KKL26, §§2.5–2.6]. That construction is a positive control
+in the published primitive category, not a theorem for virtual-Molecule packages.
+10.2. Certiﬁcate and realization. Let U be a Jordan disk and let
+A1,...,A s⋐U
+@@PAGE 28@@
+28 RESEARCH MANUSCRIPT IN PROGRESS
+be pairwise disjoint full continua. Let Z⋐U\⋃
+iAi be the forbidden obstacle and critical-value
+set. For every protected access to Ai, choose a prime-end crosscut chain
+Γi,a = (γi,a,n,D i,a,n)n≥ 1.
+The chains are truncated so that the terminal collar tails Di,a,1\Ai are pairwise disjoint, lie in
+U , and miss Z and the other atoms.
+Deﬁnition 10.1 (Protected ribbon-routing certiﬁcate) . A protected ribbon-routing certiﬁcate
+consists of the preceding data, pairwise disjoint free-port arcs αi satisfying
+αi∩Ai ={xi}, α i((0, 1])∩
+
+Z∪
+⋃
+j
+Aj∪
+⋃
+j,a
+Dj,a,1
+
+= ?,
+and an embedded ﬁnite tree G joining the outer port endpoints while missing the same protected
+and forbidden sets. The planar cyclic order of half-edges at every vertex is retained. Every access
+read by a proof must be a protected chain or a declared side of this ribbon tree.
+Deﬁne
+HR =G∪
+⋃
+i
+αi∪
+⋃
+i
+Ai. (9.1)
+Proved Lemma 10.2 (One-point tree attachments are full) . If a ﬁnite plane tree meets each
+of ﬁnitely many pairwise disjoint full continua in exactly one point and otherwise misses them,
+their union is a full continuum.
+Proof. A ﬁnite plane tree is nonseparating. Attach the full continua one at a time. At each step
+the two nonseparating continua meet in a connected singleton. The Janiszewski separation lemma
+implies that their union is nonseparating. Induction proves that the ﬁnal compact connected set
+has connected complement.
+Equivalently, the same step follows from Alexander duality and the Mayer–Vietoris sequence:
+connectedness of the intersection and vanishing ﬁrst Čech cohomology of the two nonseparating
+continua force vanishing ﬁrst Čech cohomology of their union. □
+Proved Lemma 10.3 (Protected crosscut survival and order) . LetH⊃Ai be a full continuum
+and let (γn,D n) be one of the protected chains above. If
+(H\Ai)∩(D1\Ai) = ?,
+then a tail of the same crosscuts is a prime-end chain in ˆC\H. Its endpoints remain boundary
+points and its selected sides contain the old Dn. A ﬁnite family with pairwise disjoint terminal
+selected domains induces distinct prime ends with unchanged cyclic order.
+Proof. For large n,Dn⊂D1. The interior of γn missesH, while its two distinct endpoints lie in
+Ai⊂H. Every neighborhood of either endpoint meets the crosscut interior, so those endpoints
+remain on the boundary of the enlarged complement. Thus γn remains a crosscut. A path joining
+Dn to the opposite side without meeting H∪γn would give the same forbidden path in ˆC\Ai.
+Hence the selected sides remain nested, and the unchanged crosscut diameters still tend to zero.
+Equivalent chains eventually divide one another. Disjoint terminal domains prevent that,
+so the induced prime ends are distinct. For a ﬁnite family, choose one deep oriented crosscut
+from each chain. Prime-end cyclic order is the separation order of these crosscuts. Neither the
+crosscuts nor their selected sides changed, so every ordered triple retains its orientation. □
+Proved Theorem 10.4 (Protected regulated connector realization) . Every protected ribbon-
+routing certiﬁcate has an actual carrier HR with the following properties:
+(1) HR⋐U is compact, connected, and full;
+@@PAGE 29@@
+MARKED-WIDTH REDUCTION OF MLC 29
+(2) it contains every Ai, misses Z, and has singleton attachment trace {xi}at each atom;
+(3) every protected crosscut chain remains a prime-end chain in ˆC\HR;
+(4) the survival map is injective and preserves cyclic order;
+(5) the connector-created sides have the boundary order of the retained ribbon tree; and
+(6) no local connectivity of an Ai is required.
+Proof. Lemma 10.2 gives the ﬁrst statement, and the certiﬁcate gives the second. For a protected
+chain, the connector misses Di,a,1\Ai, hence misses every later closed collar tail. Lemma 10.3
+proves crosscut survival, injectivity, and preservation of cyclic order. A small regular neighbor-
+hood of the ﬁnite connector tree traverses every edge on two sides in exactly the cyclic boundary
+word of its ribbon structure. The argument uses crosscut chains only, so no Euclidean boundary
+extension of an atom is assumed. □
+Proved Proposition 10.5 (Univalent naturality). If φ: U→V is an orientation-preserving
+conformal homeomorphism of Jordan disks and every certiﬁcate entry is transported by φ, then
+Hφ∗R =φ(HR). (9.2)
+The protected survival map and ribbon boundary order commute with the prime-end map induced
+by φ.
+Proof. The Jordan boundary extensions can be glued to an orientation-preserving sphere home-
+omorphism. Such a map preserves fullness, crosscuts, selected sides, intersections, and cyclic
+order. Equation (9.1) then gives (9.2) term by term. □
+Consequently one actual anchor certiﬁcate transports through the complete degree-one corri-
+dor. This does not prove equality with the carrier copy supplied by the ψ-ql immersion.
+10.3. The lamination-lift candidate and remaining gate. Following KKL’s non-locally-
+connected construction, suppose an ambient carrier has a monotone semiconjugacy
+π:K−→Kcom
+to a locally connected combinatorial model and a forward-coherent regulated tree Tcom containing
+every root shadow. The canonical candidate is
+Hlam = Fill
+(
+π− 1(Tcom)
+)
+. (9.3)
+A monotone preimage of a connected compact set is connected, so (9.3) is a full continuum
+containing the required shadows. Semiconjugacy gives forward coherence before fulliﬁcation,
+and fulliﬁcation preserves genuine polynomial forward invariance.
+The missing assertion is not connectedness. A projection ﬁber or a component added by
+fulliﬁcation may enter a protected collar, and a disconnected stage package may still split across
+iterated pullback components.
+Open Problem 10.6 (Virtual Protected Routing Certiﬁcate) . For every virtual-Molecule block
+and complete Wave horizon, prove that the candidate (9.3), or an explicitly equivalent puzzle-cell
+carrier:
+(1) is deﬁned on the authorized localization and contains the complete proof-use inventory;
+(2) has no projection ﬁber, regulated edge, or ﬁlled component in a protected collar except at
+a declared free singleton port;
+(3) realizes every package component, parent route, selected sheet, and critical word after the
+ﬁnal root enlargement;
+(4) absorbs or separates every obstacle without leaving the localization;
+(5) contains every future proof-used access in its protected-chain or ribbon-side marking; and
+(6) has uniformly bounded incidence or a proved future-faithful compression.
+@@PAGE 30@@
+30 RESEARCH MANUSCRIPT IN PROGRESS
+The ﬁrst failure must name the block, stage, projection ﬁber or component, full attachment
+trace, protected chain, complete critical word, nonzero collision coordinate, and localization.
+The upper-half-disk collision is rejected at Item 2 because its trace is an interval and its excess
+occupies the protected upper collar.
+10.4. The exact free-component criterion. Freeze the complete ﬁnite future inventory before
+choosing a connector. Let Q be the union of all root-shadow atoms, closed terminal protected
+collars, separated obstacles, the critical-value exclusion, and the localization-forbidden set, and
+put
+Ωfree =U\Q. (9.4)
+A component Ω0 has simultaneous singleton ports if there are pairwise disjoint arcs αi meeting
+Ai only at one free point and satisfying αi((0, 1])⊂Ω0.
+Proved Lemma 10.7 (One-ended slits do not disconnect a plane domain) . Let Ω be a plane
+domain and let δ1,...,δ s : [0, 1] →Ω be pairwise disjoint Jordan arcs with δi(0) ∈∂Ω and
+δi((0, 1])⊂Ω. Then
+Ω\
+⋃
+i
+δi((0, 1])
+is path connected.
+Proof. Treat one slit ﬁrst. A polygonal path between two points of the complement is compactly
+contained in Ω, so it misses an initial tail δ((0,ϵ)). Perturb it to meet the compact arc δ([ϵ,1])
+transversely at ﬁnitely many points. In a thin topological rectangle around that arc, replace
+every crossing by travel along the two long sides; the sides join around the free endpoint δ(1).
+The replacement stays in Ω and avoids the whole slit. This proves path connectedness after
+one removal. The removed slit is relatively closed in Ω, so its complement is again a domain.
+Induction over the ﬁnite disjoint family proves the claim. □
+Proved Theorem 10.8 (Protected Free-Component Criterion) . A protected ribbon-routing cer-
+tiﬁcate exists if and only if one component of Ωfree has simultaneous singleton ports to every
+required atom. If a ﬁrst protected collar or obstacle separates two required port classes, no fur-
+ther monotone connector enlargement inside the current localization can repair the failure.
+Proof. Any protected connector with its atoms deleted is connected and lies in Ωfree; hence all
+its port interiors lie in one component.
+Conversely, choose the simultaneous port arcs in Ω0 and shorten them away from the atoms.
+Their retained interiors are ﬁnitely many disjoint one-ended slits; lemma 10.7 proves that their
+complement is path connected. Join the ﬁnitely many outer port endpoints by polygonal paths
+whose interiors avoid those slits, perturb the paths into general position, and subdivide at their
+ﬁnitely many crossings. An inclusion-minimal connected subgraph spanning the port endpoints
+is a ﬁnite tree. Together with the shortened port arcs it is a protected ribbon-routing certiﬁcate,
+so theorem 10.4 supplies the full carrier and prime-end marking.
+For the ﬁnal assertion, any connected set joining two diﬀerent components of U\Q meets Q.
+If the separating part of Q is protected or forbidden, that intersection violates the certiﬁcate. □
+The construction is natural under univalent changes of Jordan localization, since such a map
+carries Q, the components of (9.4), the port arcs, and the spanning tree to their transported
+counterparts. It is qualitative: the number of ports and ribbon sides is not bounded uniformly.
+@@PAGE 31@@
+MARKED-WIDTH REDUCTION OF MLC 31
+10.5. Augmented atoms force a common domain. The exact free-domain test is still diﬃ-
+cult to verify directly from a partial virtual package. We now give a source-checkable suﬃcient
+criterion. For a compact plane set K, let
+Fill(K) = K∪{bounded components of C\K}. (9.5)
+Deﬁnition 10.9 (Augmented-atom packet). For the frozen set Q in (9.4), an augmented-atom
+packet consists of full continua
+ˆA1,..., ˆAs, ˆO1,..., ˆOt⋐U
+and pairwise disjoint port arcs αi such that:
+(1) every protected collar, obstacle, critical exclusion, and other component of Q has one typed
+assignment to a connected atom seed Ai∪Ei or connected separated-obstacle seed Oℓ;
+(2) ˆAi = Fill(Ai∪Ei) and ˆOℓ = Fill(Oℓ);
+(3) these completed packets are pairwise disjoint and cover Q;
+(4) αi(0) = xi∈Ai, αi∩ˆAi ={xi}, and
+αi((0, 1])⊂U\
+(⋃
+k
+ˆAk∪
+⋃
+ℓ
+ˆOℓ
+)
+;
+and xi is not the impression of a protected chain.
+The assignment records the component name, proof-use stages, attachment trace, return word,
+selected sheet, and absorb-or-separate decision.
+The proof uses the compacta form of Alexander duality [ Hat02, pp. 256–257]:
+˜H0(S2\K; Z)∼= ˇH 1(K; Z) (9.6)
+for an arbitrary nonempty proper compact K ⊂S2. The Čech form, rather than the locally
+contractible special case, is required here.
+Proved Lemma 10.10 (Finite disjoint full packets) . If K0,...,K N⊂S2 are pairwise disjoint
+nonempty full continua, then
+S2\
+N⋃
+r=0
+Kr
+is connected.
+Proof. Fullness ofKr makesS2\Kr connected, so (9.6) gives ˇH 1(Kr; Z) = 0 . The ﬁnite pairwise
+disjoint compacta have pairwise disjoint open neighborhoods. Every suﬃciently ﬁne cover of their
+union therefore has nerve equal to the disjoint union of the individual nerves. First cohomology
+and then the direct limit deﬁning Čech cohomology give
+ˇH 1
+(⋃
+r
+Kr; Z
+)
+∼=
+⨁
+r
+ˇH 1(Kr; Z) = 0.
+A second application of (9.6) makes the complement connected. □
+Proved Theorem 10.11 (Augmented-Atom Common-Domain Theorem) . Every augmented-
+atom packet determines one component of Ωfree with simultaneous singleton ports to every original
+atom. Hence it supplies a protected regulated connector.
+Proof. Apply lemma 10.10 to the completed packets together with
+K0 =S2\U.
+@@PAGE 32@@
+32 RESEARCH MANUSCRIPT IN PROGRESS
+The Jordan-disk hypothesis makes K0 a full continuum, and compact containment makes it
+disjoint from all completed packets. Their common complement
+Ωaug =U\
+(⋃
+i
+ˆAi∪
+⋃
+ℓ
+ˆOℓ
+)
+is therefore connected. Coverage of Q gives Ωaug⊂Ωfree, so Ωaug lies in one component Ω0 of
+Ωfree. Every port interior lies in Ωaug, and
+αi∩Ai⊂αi∩ˆAi ={xi}.
+Thus the arcs are simultaneous singleton ports from Ω0. Theorem 10.8 gives the connector. □
+No local connectivity or width estimate occurs in this argument. Under an orientation-
+preserving conformal homeomorphism of Jordan disks, the boundary extensions can be glued
+to a sphere homeomorphism. The ﬁlled packets, ports, common domain, and any selected con-
+nector therefore transport naturally. The spanning tree is not claimed canonical.
+10.6. The ﬁxed-packet closure and port audit. The preceding theorem leaves an apparent
+dependence on the order in which assigned pieces are ﬁlled. This dependence is illusory once the
+typed assignment is ﬁxed.
+Proved Lemma 10.12 (Filled-hull absorption) . For compact plane sets K,L ,
+Fill(Fill(K)∪L) = Fill(K∪L). (9.7)
+Consequently, sequentially adjoining and ﬁlling ﬁnitely many pieces gives the ﬁlled hull of their
+union, independently of processing order.
+Proof. The operator Fill is extensive, monotone, and idempotent. Indeed, if K ⊂L, then
+the unbounded component of C\L lies in the unbounded component of C\K, which gives
+Fill(K)⊂Fill(L).
+Since K∪L⊂Fill(K)∪L, monotonicity gives the ﬁrst inclusion in
+Fill(K∪L)⊂Fill(Fill(K)∪L).
+Conversely, Fill(K)∪L⊂Fill(K∪L), and the set on the right is already full. Filling the left
+side therefore stays inside Fill(K∪L). This proves equality. Finite order independence follows
+by induction. □
+For a ﬁxed packet label ℓ, let Sℓ be the union of its original atom, when present, and all
+compact pieces assigned to that label. Its unique completion is
+Kℓ = Fill(Sℓ). (9.8)
+For x∈Kℓ, record chℓ(x) = seed when x∈Sℓ; otherwise record the bounded component of
+C\Sℓ containingx. Thus a completed-packet merger has the geometric witness
+(ℓ,ℓ′,x, chℓ(x), chℓ′(x)), x ∈Kℓ∩Kℓ′. (9.9)
+Monotonicity shows that this witness remains a merger after any same-label enlargement Sℓ⊂S′
+ℓ.
+The same argument makes a localization escape Kℓ∩(C\U )̸= ? persistent.
+LetPi⊂Ai be the union of impressions forbidden by the protected marking at the last proof
+use. Deﬁne the unprotected exposure locus
+Exp(Ai,K i;Pi) ={x∈Ai\Pi : there is a Jordan arc γ: [0, 1]→U,
+γ(0) = x, γ∩Ki ={x}}. (9.10)
+This is actual access data; boundary membership alone is not substituted for (9.10).
+@@PAGE 33@@
+MARKED-WIDTH REDUCTION OF MLC 33
+Proved Lemma 10.13 (Individual ports localize simultaneously) . Suppose the completed atom
+packets K1,...,K s ⋐ U and obstacle packets L1,...,L t ⋐ U form a pairwise disjoint family
+and Exp(Ai,K i;Pi)̸= ? for every original atom. Then the access arcs can be chosen pairwise
+disjoint with positive interiors in
+U\
+(⋃
+i
+Ki∪
+⋃
+ℓ
+Lℓ
+)
+.
+If Ki⊂K′
+i, then
+Exp(Ai,K ′
+i;Pi)⊂Exp(Ai,K i;Pi). (9.11)
+Proof. Finite compact separation gives pairwise disjoint neighborhoods Ni⋐U of the Ki, each
+missing every obstacle packet. Choose one access arc from (9.10). Continuity at its landing point
+allows restriction to an initial subarc inside Ni. The restricted arcs miss every other packet and
+are pairwise disjoint because the Ni are. For (9.11), every arc avoiding the larger packet K′
+i also
+avoidsKi. □
+Proved Theorem 10.14 (Fixed-Packet Closure and Port Audit) . For a ﬁxed ﬁnite typed as-
+signment, the geometric augmented-packet clauses hold if and only if:
+(1) the frozen inventory is covered and every raw seed Sℓ is compact and connected;
+(2) the unique completions Kℓ = Fill(Sℓ) are pairwise disjoint and compactly contained in U ;
+and
+(3) every original atom has nonempty unprotected exposure locus Exp(Ai,K i;Pi).
+The completions are independent of processing order. Merger, localization, and empty-exposure
+defects persist under monotone same-label enlargement. The complete audit is natural under a
+conformal homeomorphism of Jordan localizations that transports the full packets and protected
+marking.
+Proof. Lemma 10.12 gives unique order-independent completions. Connected raw seeds have full
+continuum completions. Pairwise disjointness and compact containment are exactly the absence
+of the intersections in (9.9) and with C\U . Lemma 10.13 is equivalent to the simultaneous
+port clause and gives port-loss persistence; ﬁlled-hull monotonicity gives persistence of the other
+stated defects.
+A conformal homeomorphism of Jordan disks extends over their Jordan boundaries and, by
+Schoenﬂies on the complementary disks, to a sphere homeomorphism ﬁxing inﬁnity. Such a map
+carries the unbounded complementary component of every compact set to the corresponding
+unbounded component, hence commutes with Fill, and it transports the access arcs and protected
+sets. This proves naturality. □
+The theorem does not construct the typed assignment. It proves that a favorable completion
+order and a global untangling of already existing individual ports are not additional degrees of
+freedom.
+Proved Proposition 10.15 (Cellwise packet-and-port certiﬁcate) . LetU be a Jordan domain
+and let D1,..., DN ⋐ U be pairwise-disjoint closed Jordan disks. Suppose every packet has a
+compact connected raw seed Sℓ⋐ Dℓ, the seeds cover the complete frozen inventory, and every
+original atom Ai⊂Si has an unprotected point xi∈Ai\Pi and a Jordan arc γi : [0, 1]→Di
+satisfying
+γi(0) = xi, γ i((0, 1))⊂Di\Si, γ i(1)∈∂Di. (9.11a)
+ThenKℓ = Fill(Sℓ)⋐Dℓ, the completed packets are pairwise disjoint, every xi∈Exp(Ai,K i;Pi),
+and the packet system has simultaneous ports, one common free component, and a protected
+regulated connector.
+@@PAGE 34@@
+34 RESEARCH MANUSCRIPT IN PROGRESS
+Proof. The connected exterior of Dℓ belongs to the unbounded component of C\Sℓ. Thus
+every bounded complementary component of Sℓ lies in Dℓ, proving Fill(Sℓ)⋐ Dℓ; the disjoint
+cells give packet disjointness. Concatenating γi(1) with an arc to inﬁnity in C\Di shows that
+γi((0, 1]) lies in the unbounded component of C\Si. Hence γi∩Ki ={xi}. Now lemma 10.13
+and theorems 10.11 and 10.14 give the remaining conclusions. □
+This proposition is suﬃcient only. The actual virtual theorem must still construct the cells,
+complete seeds, unprotected arcs, and their transport through the ﬁnal Wave horizon.
+10.7. Horizon-ﬁrst inventory audit. The phrase “through the complete horizon” has mathe-
+matical content before any packet can be formed. A declared horizon skeleton is
+H =
+(
+B,N,σ,{U −
+j ,U +
+j ,F j,d j}0≤ j<N
+)
+, (9.12)
+where B is the actual block, N <∞is the ﬁnal proof-use stage, σis its stopping interface, and
+the remaining entries are the authorized localizations, selected branches, degrees, and critical
+words.
+LetXH be a ﬁnite typed set of actual component, collar, critical-exclusion, ambient-component,
+localization, protected-impression, transport, and curve-family records. Each record carries its
+stage, attachment trace, return word, parent route, sheet, and proof-use interval. Let SH be
+the union of the records read directly by every Wave, Wanderers, covering, quasi-additivity, and
+width invocation through σ. Finally, orient a dependency edge x→y when retaining x forces
+retention of y.
+Starting with I0 =SH, set
+Ir+1 =Ir∪{y : there is x∈Ir with x→y}, I (H) =
+⋃
+r≥ 0
+Ir. (9.13)
+Proved Theorem 10.16 (Horizon-ﬁrst inventory and extension law) . For ﬁxed ﬁnite data as
+above:
+(1) the iteration in (9. 13) stabilizes after at most |XH|−|SH|strict enlargements;
+(2) I(H) is the unique least set containing all proof seeds and closed under every declared
+dependency;
+(3) ifH⪯H′ retains all old seeds and dependency edges, then I(H)⊂I(H′); and
+(4) the old slice is stable,
+I(H′)∩XH =I(H), (9.14)
+if and only if no seed of the extended horizon has a directed dependency path to a record in
+XH\I(H).
+Thus a provisional inventory is ﬁnal exactly when every admissible later extension satisﬁes (9. 14).
+Proof. The setsIr form an increasing sequence in the ﬁnite set XH. Every strict enlargement adds
+at least one record, so the stated bound follows. The limit contains all seeds and is dependency-
+closed. If J is any other such set, induction on r gives Ir⊂J, hence I(H)⊂J. This proves
+leastness and uniqueness.
+Under extension, every old seed and every old dependency path remains, so monotonicity
+follows. If an extended seed reaches an omitted old record, that record belongs to the left side
+of (9. 14) but not its right side. Conversely, any record in the set-theoretic diﬀerence of the two
+sides is, by (9. 13), reached by a path from an extended seed. This proves the equivalence and
+the ﬁnal assertion. □
+@@PAGE 35@@
+MARKED-WIDTH REDUCTION OF MLC 35
+10.7.1. Resolved stopping and ﬁnal-root compiler. The closure theorem becomes an actual horizon
+theorem only after the analytic proof program is resolved. Concretely, let D be a ﬁnite acyclic
+decision graph. Label every edge e by an actual pair
+(ge,ιe) : (V ′
+e,I ′
+e)⇒ (Ve,I e),
+its ﬁnite iterate length s(e), complete critical and degree words, and proofs of the marking-
+reﬁnement and proper/end-proper hypotheses used on that edge. Require every maximal path
+to end at a terminal node. Let the ledger list every theorem hypothesis, component, access,
+obstacle, curve family, and last-use stage. Finally let Φ : 2 X→2X be the inﬂationary monotone
+operator containing every root-predecessor, attachment, access-survival, obstacle, sheet, critical,
+localization, and intervening-transport implication read by that ledger. For every generating
+implication, additionally require a proof that the corresponding geometric enlargement stays in
+the authorized localization and preserves, on every already certiﬁed proof support, the cover-
+ing/immersion maps, exact marked action, marking reﬁnement, proper/end-proper assertions,
+degree and critical words, obstacle decisions, and injective cyclic order of protected accesses. A
+nonzero collision rejects the program.
+
+=== lines 1990-2320 (10.33-10.52, direct decoration) ===
+tree map Φ,
+[Φ(S)]G⊂Φ([S]G). (HT2)
+Equality holds if Φ is injective on [S]G. If S⊂S+, every component of [S+]G\[S]G has exactly
+one gate on the old subtree and contains a vertex of S+\S.
+Proof. Every connected subgraph containing S contains the unique path between each pair of its
+vertices, proving leastness. The geometric realization is the inverse image of a connected ﬁnite
+subtree under the monotone quotient that collapses each continuum vertex, hence is compact
+and connected.
+The image Φ([S]G) is connected and contains Φ(S), giving (HT2) by leastness. Under injec-
+tivity it is homeomorphic to [S]G; all its leaves are images of leaves of [S]G, hence lie in Φ(S). A
+ﬁnite tree is the hull of its leaves, proving equality.
+For an enlargement, a component meeting the old subtree at two points would combine with
+the old path between those points to form a cycle. If it contained no new selected vertex, it could
+be deleted without losing S+, contradicting leastness. □
+Proved Proposition 10.34 (Terminal-cycle Hubbard anchor). Under the native KKL hypothe-
+ses, for
+Scyc ={K0,...,K P − 1}
+the geometric hull is T . The ﬁrst edge on the unique path from K1 to K0 selects a native ideal
+attachment side I1→ 0. Its component itinerary is
+K1→K2→···→KP − 1→K0,
+and the cycle degree word beginning at K0 is (2, 1,..., 1).
+Proof. KKL deﬁneT as the least connected carrier of the complete cycle, so theorem 10.33 gives
+the ﬁrst assertion. The abstract tree has one path between the two indicated vertices and one
+ﬁrst edge at K1; KKL’s native ideal marking records its side. The itinerary and degree word are
+those of proposition 10.31 . □
+@@PAGE 44@@
+44 RESEARCH MANUSCRIPT IN PROGRESS
+This reﬁnes the earlier access record to
+χideal = 0, χ protected analytic =⊥. (HT3)
+Connectedness does not prove fullness, and the native ideal side does not automatically survive
+as a protected crosscut chain in a partial carrier.
+Proved Proposition 10.35 (Finite exact Cantor encoding obstruction) . An inﬁnite family
+of pairwise distinct virtual small-Julia components has no injective identiﬁcation with a ﬁnite
+terminal-tree vertex package.
+Proof. An injection into a ﬁnite set would make the component family ﬁnite. □
+Proved Proposition 10.36 (Finite quotient observability criterion) . Letq : K →S be a map
+to a ﬁnite set and let O : K →∏
+t∈H Yt be the joint observable over a declared horizon. A map
+O withO =O◦q exists exactly when
+q(X) = q(Y ) =⇒O(X) =O(Y ). (HT4)
+Proof. Factorization implies (HT4). Conversely, (HT4) makes O(a) := O(X), X ∈q− 1(a),
+independent of the representative. □
+Dudko’s virtual object is described using Cantor small Julia sets, whereas KKL’s terminal
+tree starts from one ﬁnite primitive cycle. The copy-chain data alone do not construct the
+scale-2 address space Ω2, embedded components K2,ω , or analytic branch action R2. Before the
+decoration pullbacks are inserted, the ﬁrst failure record is therefore
+Xtype
+2 = (2,M(0),M(1),M(2), K2, Ω2,R2,ρ2,χtype = 1), (HT5)
+with itinerary, sheet, access, and localization coordinates undeﬁned, not zero. Naming a ﬁrst
+excess component before realizing ω↦→K2,ω would be circular.
+10.11. Direct-decoration pullback compactiﬁcation. The decoration source supplies more
+dynamical data than the copy chain alone. Let P =Y (n− 1)q+1, let g =f q, and let
+g :Qa−→P, a ∈A :={0, 1}, (HT6)
+be the two actual univalent pullbacks inside P . Here P,Q 0,Q 1 are closed Jordan puzzle pieces,
+Q0∩Q1 = ?, and each proper degree-one restriction extends to a homeomorphism of closed
+pieces. These closed-piece assertions, not merely disjointness of interiors, are used below. Write
+φa : P →Qa for their inverse branches. Let K0⋐ intV 0 be the terminal primitive root and
+assume explicitly that K(f ) = J(f ). The source construction makes V 0,Q 0,Q 1 distinct depth-
+nq + 1 puzzle pieces. Their interiors are disjoint, and K0 is compactly contained in the ﬁrst one;
+hence
+K0∩(Q0∪Q1) = ?. (HT7)
+For clarity, the separation used below is separation of the closed pieces. If Q0,Q 1 met at z, univa-
+lence would makez a regular point of g, and the local inverse of a small Jordan half-neighborhood
+of g(z) in P would belong to both pullback components, contradicting their distinctness. Thus
+Q0∩Q1 = ?. Proper degree one also makes each restriction g :Qa→P a homeomorphism on
+the closed Jordan pieces.
+Forw =a1···am, put
+φw =φa1◦···◦φam, Q w =φw(P ), K w =φw(K0). (HT8)
+Forω∈AN, put
+Eω =
+⋂
+m≥ 1
+Qω|m. (HT9)
+@@PAGE 45@@
+MARKED-WIDTH REDUCTION OF MLC 45
+The address compactiﬁcation is
+Ω∂ ={w#∞ :w∈A<N}∪AN⊂{0, 1, #}N. (HT10)
+Proved Theorem 10.37 (Direct-decoration pullback compactiﬁcation) . The space Ω∂ is com-
+pact. The set
+H∂ =
+⋃
+w∈A<N
+Kw ∪
+⋃
+ω∈AN
+Eω (HT11)
+is a compact subset of J(f ), and its connected components are exactly the displayed ﬁnite pullbacks
+and end ﬁbers. The realization
+w#∞ ↦→Kw, ω ↦→Eω (HT12)
+is upper semicontinuous. Moreover,
+g(Kaw) = Kw, g (Eaω ) = Eω, (HT13)
+by actual univalent branches of f q. Geometric nesting and dynamical transport are the distinct
+maps
+gpar(wa) = w, σ pre(aw) = w. (HT14)
+The partial map σpre is deﬁned on non-root ﬁnite addresses and on all inﬁnite addresses. The
+deleted ﬁrst symbol is the inverse sheet and every transition in (HT13) has time q. It is undeﬁned
+at the empty word, whose separate root transition is
+g(K0) = f q(K0) = Kterm
+q mod Pterm, (HT15)
+recorded asτroot. It is not an extension of the deletion shift or an assertion of permanent escape
+fromH∂.
+Proof. The product {0, 1, #}N is compact. The subset (HT10) is closed: after the ﬁrst #, every
+later symbol must be #. Finite words are isolated, and ﬁnite words of increasing length converge
+to an end exactly by eventual agreement on every ﬁxed preﬁx.
+Every Qw is a compact connected puzzle disk and g|w|:Qw→P is univalent. The cylinders
+are nested on appending a symbol. Two incomparable words lie in the images of the disjoint
+ﬁrst-level components Q0,Q 1 under their common inverse preﬁx and are therefore disjoint. Thus
+(HT9) is a nonempty compact connected set. Every z∈Eω satisﬁes gm(z)∈P for all m. Its
+intermediate iterates lie in the ﬁnite bounded union ⋃q− 1
+r=0f r(P ), so z∈K(f ) = J(f ). Complete
+invariance of J(f ) puts every Kw in J(f ).
+If one ﬁnite word is a strict preﬁx of another, (HT7), pulled back by their common inverse
+branch, separates the ancestor Kw from the descendant. The same argument separates a ﬁnite
+ﬁber from every end extending its word. First-diﬀering cylinders separate every other pair.
+To prove compactness of (HT11), let xj be a convergent sequence in it and pass to convergent
+address labels. At a ﬁnite label the labels are eventually constant. At an end ω, for every m
+the points eventually lie in the closed cylinder Qω|m, hence the limit lies in Eω . This also proves
+closed graph, equivalently upper semicontinuity. The same cylinder separations, together with
+(HT7), show that no connected subset meets two displayed ﬁbers, so they are the components.
+Finally,g◦φa = id P proves the ﬁrst formula in (HT13). Since g :Qa→P is a homeomorphism,
+it commutes with the nested intersection in (HT9), proving the second. The ﬁrst symbol is
+therefore deleted dynamically, while cylinder inclusion deletes the last symbol. This deﬁnes
+only σpre. Formula (HT15) follows from the terminal cycle and deﬁnes the distinct root arrow
+τroot. □
+Proved Theorem 10.38 (Pullback-gap enlargement naturality) . Let
+K0⊂S⊂S+⊂P\(Q0∪Q1) (HT16)
+@@PAGE 46@@
+46 RESEARCH MANUSCRIPT IN PROGRESS
+be compact connected roots. Replacing Kw by φw(S) or φw(S+) preserves all component sepa-
+rations and (HT13)–(HT14). The inclusions φw(S)⊂φw(S+) commute with g at every ﬁnite
+word, and the end ﬁbers are unchanged.
+Proof. The proof of theorem 10.37 uses the root only through compactness, connectedness, and
+(HT7), all of which follow from (HT16). Injectivity gives φw(S)⊂φw(S+), and g◦φa = id gives
+the commuting squares. The end ﬁbers depend only on P,Q 0,Q 1. □
+This theorem concerns the topological ﬁnite-ﬁber package only. It does not assert that S or
+S+ is full, dynamically protected, access-complete, or admissible as an analytic virtual carrier.
+Those properties remain subject to the component, obstacle, and protected-access audits.
+Outside the safe gap, deﬁne the actual collision ledger by all nonempty intersections between
+two distinct ﬁnite pullbacks or between a ﬁnite pullback and an end ﬁber. Leaving the gap
+invalidates the preceding suﬃcient proof but is not itself a collision.
+Proved Lemma 10.39 (Nested ﬁnite-full-packet nonseparation) . LetF0⊃F1⊃···be compact
+subsets of the sphere, each a ﬁnite union of pairwise-disjoint full continua. Then ⋂
+mFm has
+connected complement. If U is a Jordan domain, Fm⋐ U , and Fm∪(ˆC\U ) is such a packet,
+then U\⋂
+mFm is connected.
+Proof. Lemma 10.10 makes every ˆC\Fm connected. These complements increase, share inﬁnity,
+and their union is the complement of the intersection. The localized statement adjoins the
+exterior full continuum. □
+Proved Theorem 10.40 (Direct-decoration full ﬁbers and nonseparation) . Every Kw and Eω
+in theorem 10.37 is full. Moreover, ˆC\H∂ is connected.
+Proof. The ﬁlled Julia set K0 is full. Each homeomorphism φw :P→Qw of closed Jordan disks
+extends to a sphere homeomorphism, so Kw =φw(K0) is full. Also,
+ˆC\Eω =
+⋃
+m
+(
+ˆC\Qω|m
+)
+is an increasing union of connected sets containing inﬁnity.
+Form≥0, deﬁne
+Hm =
+⋃
+|u|<m
+Ku ∪
+⋃
+|w|=m
+Qw. (DG1)
+The terms are full and pairwise disjoint. Equal-depth cylinders are disjoint; ﬁnite ﬁbers are
+disjoint; and if u is a strict preﬁx of w, the root-gap relation (HT7) puts Ku outside the child
+containing Qw. The sets (DG1) decrease. Their intersection is exactly H∂: outside the explicit
+ﬁnite ﬁbers, a point in every approximation determines one unique compatible inﬁnite cylinder
+address. Apply lemma 10.39 . □
+Proved Lemma 10.41 (Full-continuum Jordan neighborhood) . If a nondegenerate full contin-
+uum K is compactly contained in an open set G, there is a closed Jordan disk D such that
+K⊂intD⊂D⋐G. (DG2)
+Proof. Uniformize the simply connected exterior of K by ψ:{|z|> 1}→ˆC\K. The ﬁlled
+interiors of ψ({|z|=R}),R> 1, are closed Jordan disks and decrease to K asR↓1. If none lay
+in G, compactness would put a point of the closed set ˆC\G in their intersection K. □
+LetG0 be the component of intP\(Q0∪Q1) containingK0. Equation (HT7) gives K0⋐G0.
+Choose D by lemma 10.41 and put Dw =φw(D).
+@@PAGE 47@@
+MARKED-WIDTH REDUCTION OF MLC 47
+Proved Theorem 10.42 (Direct-decoration gap-cell atlas) . The closed Jordan cells Dw are
+pairwise disjoint, including for ancestor–descendant words, and satisfy
+Kw⊂intDw, D w⋐ intQw\(Qw0∪Qw1), (DG3)
+Dw∩H∂ =Kw, g (Daw) = Dw. (DG4)
+If Sw⋐ intDw is compact and connected, then
+Fill(Sw)⋐ intDw. (DG5)
+Proof. Incomparable words have disjoint cylinders. If v = uat, then Dv lies in the child Qua,
+while Du lies outside both children of Qu. This proves disjointness and, by the same dichotomy,
+the ﬁrst identity in (DG4). The second follows from g◦φa = id.
+A collar of ∂Dw, together with the exterior of Dw, is a connected subset of the unbounded
+component of C\Sw. Every bounded complementary component is therefore contained away
+from that collar, proving (DG5). □
+Proved Theorem 10.43 (Finite direct-decoration packet replacement) . LetF⊂A<N be ﬁnite
+and let
+Kw⊂Lw⋐ intDw, w ∈F, (DG6)
+with every Lw full. Replacing the selected Kw by Lw inH∂ gives a compact set with connected
+sphere complement.
+Proof. Equation (DG4) makes each selected Kw clopen in H∂, so the replacement is compact.
+Form> maxw∈F|w|, make the same replacements in (DG1). The modiﬁed approximants remain
+decreasing ﬁnite pairwise-disjoint full packets, and their intersection is the modiﬁed rooted-end
+compactum. Lemma 10.39 applies. □
+Proved Lemma 10.44 (Proper protected impressions leave a port) . Let K⋐ D◦ be a non-
+degenerate full continuum in a closed Jordan disk and let Pprot ( ∂Kbe compact. There are
+x∈∂K\Pprot and a Jordan arc αfromx to ∂D, otherwise in D◦\K. Finitely many protected
+crosscut-chain collars whose impressions have union in Pprot can be truncated so that, for their
+connected union S with K,
+α∩Fill(S) ={x}. (DG7)
+Proof. Choose y∈∂K\Pprot, put δ= dist(y,P prot), choose z∈D◦\K with|z−y|<δ/4, and
+let x∈K minimize distance to z. The segment (x,z ] misses K, and
+|x−y|≤2|z−y|<δ/2,
+so x /∈Pprot. The connected open complement of the full continuum is arcwise connected. Join
+z to the exterior, take a simple subarc, and stop at its ﬁrst hit on ∂D.
+The compact arc misses Pprot. Nested compact crosscut-chain closures have intersection equal
+to their impressions, so suﬃciently deep tails lie in prescribed impression neighborhoods chosen
+away from α. Extending αoutsideD to inﬁnity puts all of its points except x in the unbounded
+component of C\S, proving (DG7). □
+Proved Theorem 10.45 (Finite direct-decoration protected carrier) . Fix ﬁnitely many ﬁnite
+direct-decoration addresses and ﬁnitely many actual protected root prime-end chains whose total
+impression is a proper subset of ∂K0. Transport suﬃciently deep collar tails and the free port
+through the inverse branches. Their packet fulliﬁcations remain in the pairwise-disjoint cells Dw,
+avoid every unselected ﬁnite ﬁber and every end ﬁber, and admit a protected regulated connector
+preserving the transported prime ends and cyclic order.
+@@PAGE 48@@
+48 RESEARCH MANUSCRIPT IN PROGRESS
+Proof. Apply lemma 10.44 at the root and transport by the orientation-preserving φw. Theo-
+rem 10.42 gives localization, isolation, and transport. Theorem 10.43 gives one common comple-
+mentary component after fulliﬁcation. Apply theorems 10.4 and 10.8. □
+This protected-carrier theorem is ﬁnite and direct-scale only. It does not construct a second
+satellite portrait, an end-ﬁber return map, a uniform incidence bound, or future fjord, dam, and
+attachment data.
+Proved Theorem 10.46 (Finite-cylinder commuting-iterate lift) . Let
+hw =f N|Qw :Qw−→Pσ, h v =f N|Qv :Qv−→Pτ (FC1)
+be equal-depth homeomorphic cylinder maps. Let F =f r|A :A→B and put Aw =h− 1
+w (A). If
+f r(Aw)⊂Qv, (FC2)
+then
+f r|Aw =h− 1
+v ◦F◦hw. (FC3)
+If F (A) = B, then
+f r(Aw) = h− 1
+v (B). (FC4)
+Proper degree and local degree are preserved. Critical chronology is separate arrow metadata.
+Proof. Forx∈Aw, condition (FC2) makes hv(f r(x)) deﬁned. Since both cylinder maps use the
+same iterate f N ,
+hv(f r(x)) = f N (f r(x)) = f r(f N (x)) = F (hw(x)).
+Apply h− 1
+v to obtain (FC3). Taking images gives f r(Aw) = h− 1
+v (F (A)), hence (FC4) under
+surjectivity. The homeomorphic conjugacy (FC3) preserves properness and (local and total)
+topological degree. It does not determine the ordered intermediate critical times. □
+Proved Proposition 10.47 (Fixed-base connected-image target uniqueness) . Fix one target
+baseτand one depth m. Let {Qτ,v :v∈Wτ,m}be a ﬁnite pairwise-disjoint family of nonempty
+connected compact cylinders. Every nonempty connected set
+C⊂
+⋃
+v∈Wτ,m
+Qτ,v (FTU1)
+lies in one unique Qτ,v.
+Proof. Finite pairwise-disjoint compacta have positive pairwise distance, so each cylinder is open
+and closed in the union in (FTU1). The cylinders are therefore its connected components, and
+connected C lies in one component. □
+The proposition applies to the direct-decoration cylinders after the target base and actual
+union containment are known. It does not select a target base or establish cross-base ownership.
+Proved Lemma 10.48 (Localized/global cylinder component) . If P,Q are closed Jordan disks
+and f N|Q :Q→P is a homeomorphism, then Q◦ is the component of f − N (P ◦) containing it.
+Proof. Let D be that component. The set Q◦ is open in D. If x∈Q◦D, then x∈Q and
+f N (x)∈P ◦. Boundary preservation for the homeomorphism of closed Jordan disks excludes
+x∈∂Q, so x∈Q◦. Thus Q◦ is also closed in connected D, hence equals D. □
+Proved Theorem 10.49 (Interior pullback component forcing) . Retain the equal-depth source
+cylinder and branch data of theorem 10.46, assume A is connected, and suppose
+F (A)⊂P ◦
+τ. (IC1)
+@@PAGE 49@@
+MARKED-WIDTH REDUCTION OF MLC 49
+Then f r(Aw) lies in one component C of f − N (P ◦
+τ ). If an authorized closed target cylinder Qv
+maps homeomorphically to Pτ underf N andQ◦
+v =C, then v is unique in every pairwise-disjoint
+ﬁxed-base family and (FC3) holds. If the branch extends to the relevant closures and
+F (A)⋐P ◦
+τ, (IC2)
+then
+f r(Aw)⋐C. (IC3)
+Proof. Forx∈Aw,
+f N (f r(x)) = f r(f N (x)) = F (hw(x))∈P ◦
+τ.
+The connected image therefore lies in one open pullback component C. Lemma 10.48 identiﬁes
+an authorized cylinder interior with that global component, proposition 10.47 gives uniqueness,
+and theorem 10.46 gives (FC3).
+Under (IC2), the lifted closure is a compact subset of
+(f N )− 1(F (A))∩C.
+Every point of C mapping into P ◦
+τ belongs to an open preimage component; because that com-
+ponent meets C, it equals C. The displayed compact set is therefore contained in the open set
+C, proving (IC3). □
+Open Problem 10.50 (Virtual cylinder target-address selector) . For every realized ﬁnite virtual
+copy-chain preﬁx, source base σ, equal-depth cylinder w, and source-deﬁned branch F = f r|A,
+construct a unique target pair
+ρF,m(σ,w) = (τ,v)
+satisfying (FC2). First type or uniquely select the target base τ. Then use theorem 10.49 to
+obtain the open pullback component and prove component authorization: that component is
+one of the declared equal-depth target cylinders. A global-preimage formulation must invoke
+lemma 10.48 . Once a ﬁxed pairwise-disjoint target family is available, proposition 10.47 supplies
+word uniqueness. Finally prove compatibility with geometric parents, the partial pre-root shift,
+the separate root arrow, critical chronology, sheets, accesses, obstacles, localizations, presentation
+changes, and authorized root enlargement. A failure must name the ﬁrst actual image component
+and every target cylinder it meets.
+Open Problem 10.51 (Disconnected marking transfer) . For every chainM(0) )M(1) )M(2),
+transfer the second satellite portrait to actual puzzle or generalized polynomial-like bases and
+actual iterates on the ﬁnite cylinders and end ﬁbers in theorem 10.37 . Prove equivariance under
+(HT13), analytic realization at every end, the declared critical chronology, complete access and
+obstacle marking, terminal-return compatibility, and naturality under every authorized ﬁnal-root
+enlargement.
+The reﬁned ﬁrst bottom record is
+Xmark
+2 = (Ω ∂, Ξ∂,f q, gpar,σpre,τroot, sheet,r ; µ2 =⊥,{B2,ξ}=⊥,R2 =⊥). (HT17)
+The end ﬁbers have not been identiﬁed as small Julia sets. Hence open problem 10.51 is a prior
+subgate of the following global realization problem.
+Open Problem 10.52 (Virtual Cantor-Package Realization) . For each actual intermediate
+virtual scale s, construct an actual compact address space Ωs, nonempty compact connected
+components Ks,ω , and exact polynomial branch, return, parent, sheet, critical-address, escape,
+localization, presentation, terminal-compatibility, and ﬁnal-root-enlargement data. Construct
+them without using a downstream width, compactness, rigidity, or MLC conclusion.
+@@PAGE 50@@
+50 RESEARCH MANUSCRIPT IN PROGRESS
+Proved Theorem 10.53 (Virtual Proof-Use Trace Selector; conditional interface) . After open
+problem 10.52 and after the complete proof-use horizon is frozen, let the exact component/trace
+states, actual ﬁnite-path transitions, and complete countable proof-use catalog with compact
+
+=== lines 2390-2415 (Open Problem 10.58, Warning 10.59) ===
+problem 10.55 before the packet labels are chosen;
+C. zero collision for the unique completed packets;
+P. one actual unprotected original-atom exposure per atom;
+H. full-packet equivariance through the complete horizon; and
+U. a period-independent incidence bound or a future-faithful compression.
+Open Problem 10.58 (Virtual Common Free-Component) . For every actual virtual-Molecule
+block, after all future root shadows, proof-used collars, obstacles, critical exclusions, and local-
+ization data through the complete Wave horizon are inserted, prove that one component of Ωfree
+has simultaneous singleton ports to every required root-shadow cluster and remains valid after
+the ﬁnal root enlargement.
+Dudko’s connected-hull paragraph does not deﬁne this completed free domain, and KKL’s
+native Hubbard tree proves the assertion only in its published primitive category. A failure
+must record the ﬁrst inserted separator, the free-component partition before and after insertion,
+the ﬁrst two separated atoms, the protected chain and attachment trace when applicable, the
+complete return word, and the authorized localization.
+Warning 10.59. Theorem 10.4 proves realization from a certiﬁcate. Theorem 10.8 characterizes
+when that certiﬁcate exists, theorem 10.11 proves one suﬃcient planar route, and theorem 10.14
+removes completion order and global port untangling from that route. Theorem 10.16 proves
+only the closure after a horizon graph is given, while theorem 10.17 proves the stopping and
+ﬁnal-root algorithms only after the analytic marked branches are supplied. Neither constructs
+@@PAGE 52@@
+52 RESEARCH MANUSCRIPT IN PROGRESS
+open problem 10.18 . None proves open problems 10.6 , 10.55, 10.57 and 10.58. Therefore the
+virtual canonical interface carrier, UPTCR-1, and MLC remain open.
+11. Critical chronology and the retimed-cylinder boundary
+11.1. Status boundary. This section integrates the independently veriﬁed part of an external

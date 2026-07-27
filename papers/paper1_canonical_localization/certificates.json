@@ -1,0 +1,123 @@
+{
+  "_status": "Ancillary certificate data for the manuscript.  The constants below are copied verbatim (exact rational / Gaussian-rational arithmetic) from the research corpus validator research/mlc_unified/validate_kahn_annulus_no_go.py, which contains the exact certificate data and the complete verification logic (Sturm chains S1-S2, Rouche-Taylor disks R1-R9, exact polynomial identity and factorization).  The accompanying validate_certificates.py distributed with this manuscript is an honest stub to be populated from the research corpus validators; until then, re-verification is performed by the research corpus validator itself.",
+  "scope": "Exact algebraic certificate for the abstract Kahn-annulus global-injectivity no-go (Section 3 of the manuscript); not an actual KL dynamical-stage collision.",
+  "conventions": "Complex numbers are exact Gaussian rationals written in sympy notation ('I' is the imaginary unit); polynomial coefficient lists are highest degree first.",
+  "constants": {
+    "R_PRIME": "1287/1000",
+    "R_TARGET": "56657414290462026453666516936347593285202944634241/1000000000000000000000000000000000000000000000000",
+    "A_blaschke_zeros": [
+      "1/10 + 3*I/5",
+      "-3/10 - I/10",
+      "-7/10 + I/5"
+    ],
+    "B_blaschke_zeros": [
+      "-3/5 + I/5",
+      "2*I/5"
+    ],
+    "N_COEFFS": [
+      "2000 + 4000*I",
+      "19600 + 2200*I",
+      "28460 - 23880*I",
+      "4072 - 29046*I",
+      "-6630 - 10210*I",
+      "-1950 - 1525*I"
+    ],
+    "D_COEFFS": [
+      "1525 + 1950*I",
+      "10210 + 6630*I",
+      "29046 - 4072*I",
+      "23880 - 28460*I",
+      "-2200 - 19600*I",
+      "-4000 - 2000*I"
+    ],
+    "ANGULAR_COEFFS": [
+      619271,
+      -5100608,
+      35876739,
+      -169721152,
+      491196326,
+      -885663808,
+      1065558054,
+      -957958592,
+      669681731,
+      -236915328,
+      60062535
+    ],
+    "OUTER_COEFFS": [
+      11751160313656400426951788919,
+      -137579839638925277492971300800,
+      958901799234288449551831128476,
+      -4106906924234287705167320942400,
+      10779372189655006534093819771914,
+      -16680328775739752952831727982400,
+      14042199262274463963774353314076,
+      -5586354003042199421157378340800,
+      1394955241714223750805412881719
+    ],
+    "CRITICAL_COEFFS": [
+      "-1268000 + 501000*I",
+      "-1247000 + 7116800*I",
+      "17024420 + 10563170*I",
+      "33992992 - 21977616*I",
+      "-52469243*I",
+      "-33992992 - 21977616*I",
+      "-17024420 + 10563170*I",
+      "1247000 + 7116800*I",
+      "1268000 + 501000*I"
+    ],
+    "CRITICAL_CENTERS": [
+      [
+        -1469179,
+        35737
+      ],
+      [
+        -1187253,
+        1185352
+      ],
+      [
+        -818448,
+        1003716
+      ],
+      [
+        -680250,
+        16547
+      ],
+      [
+        -487955,
+        598410
+      ],
+      [
+        -421815,
+        421140
+      ],
+      [
+        407227,
+        223067
+      ],
+      [
+        1888874,
+        1034668
+      ]
+    ],
+    "CRITICAL_MULTIPLIERS": [
+      126,
+      362,
+      118,
+      451,
+      122,
+      192,
+      182,
+      144
+    ],
+    "CRITICAL_RADIUS": "1/10000",
+    "COLLISION_COEFFS": [
+      "1649705408450 + 1129218801775*I",
+      "8374862949240 - 2102550942545*I",
+      "5597363347032 - 11487498744901*I",
+      "-2960676892680 - 7024430543585*I",
+      "-1525645358450 - 501687535025*I"
+    ],
+    "COLLISION_CENTER": "-142603/250000 + 115347*I/100000",
+    "COLLISION_RADIUS": "1/100000"
+  }
+}

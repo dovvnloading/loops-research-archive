@@ -1,0 +1,49 @@
+\begin{proposition}[Canonical/KL restricted-interface classification; manuscript Prop.~12.71, ledger \texttt{CANONICAL\_KL\_RESTRICTED\_INTERFACE\_CLASSIFICATION}]\label{prop:restricted-interface}
+Fix a supplied finite labeled same-source canonical/KL tile datum, with chosen lifted basepoints. For each source label \(i\), let \(q_i:\mathcal E_i\to\mathcal R_i\), \(N_i=\operatorname{Deck}(q_i)\), be the resolved universal-cover leg, let \(L^{\mathrm{KL}}_i:\hat A^{\mathrm{KL}}_{s,i}\to\hat A^{\mathrm{KL}}_{t,j(i)}\) be the actual KL tile immersion, and let \(\Phi_i:\mathcal E_i\to\hat A^{\mathrm{KL}}_{s,i}\) be the based source-cover biholomorphism. Put \(K_i=L^{\mathrm{KL}}_i\Phi_i\). Then:
+\begin{enumerate}
+\item The based relation span
+\[
+\mathcal R_i\xleftarrow{\ q_i\ }\mathcal E_i\xrightarrow{\ K_i\ }\hat A^{\mathrm{KL}}_{t,j(i)} \tag{10.57}
+\]
+is canonical for the supplied datum. If \(N_i\neq 1\), it does not descend to a single-valued map on \(\mathcal R_i\).
+\item For a path \(\alpha:J\to\hat A^{\mathrm{KL}}_{t,j}\), the tagged pullback
+\[
+P^{\mathrm{tag}}(\alpha)=\bigsqcup_{\substack{i\\ j(i)=j}}\{i\}\times\{(t,z)\in J\times\mathcal E_i:\alpha(t)=K_i(z)\} \tag{10.58}
+\]
+has path components exactly the graphs of all maximal interior restrictions in the declared source tiles. Source labels, resolved traces, sheets, and deck phases remain distinct.
+\item Let \(\zeta_{i,\pm}\) be the two resolved-source wrapping points transported from KL's named actual-tile wrapping vertices, and put \(D_{\mathrm{ext},i}=\{\zeta_{i,-},\zeta_{i,+}\}\). If \(N_i\neq 1\), then for every \(r\in\mathcal R_i\),
+\[
+K_i(\Lambda(N_i)\cap D_{\mathrm{ext},i})\subset\overline{\{K_i(\gamma z):\gamma\in N_i\}},\qquad q_i(z)=r, \tag{10.59}
+\]
+where the closure is taken in the Hausdorff target pseudo-piece compactification. No value on the rest of \(\Lambda(N_i)\) is asserted.
+\item Kahn's degree-two annulus hypotheses alone do not imply a universal unscaled additive bound between complete source-collar and target crossing widths: for
+\[
+A_s(\varepsilon)=\{1<|z|<e^{\varepsilon/2}\}\hookrightarrow A_t(\varepsilon)=\{1<|z|<e^{\varepsilon}\},
+\]
+every essential embedded source inner collar \(C\subset A_s\) satisfies
+\[
+W(\Gamma_C)-W(\Gamma_t)\ge\frac{2\pi}{\varepsilon}\longrightarrow\infty. \tag{10.60}
+\]
+\item At every exact Kahn base change \(E=X\times_Z Y\), \(R=P\times_Z Y\), the induced first factor \(q'(x,y)=(q(x),y)\) satisfies
+\[
+(q')^{-1}(p,y)\cong q^{-1}(p). \tag{10.61}
+\]
+Hence no finite retiming inside the unchanged exact equalizer tower turns an infinite first factor into a one-sheet factor.
+\item For revised connected localization covers classified by \(H_s\le\pi_1(X_s)\) and \(H_t\le\pi_1(X_t)\), first assume the based lift condition \(a_*(H_s)\le H_t\). The first factor has pointed coset fiber \(a_*^{-1}(H_t)/H_s\) and is one-sheeted exactly when
+\[
+a_*^{-1}(H_t)=H_s. \tag{10.62}
+\]
+\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+Both \(\mathcal E_i\) and \(\hat A^{\mathrm{KL}}_{s,i}\) are based universal covers of the same oriented source annulus. Based lifting uniqueness gives the unique \(\Phi_i\), hence (10.57). If \(K_i=\kappa_iq_i\), then \(K_i\) is \(N_i\)-invariant. The normal-kernel wrapping theorem puts \(\zeta_{i,\pm}\) in \(\Lambda(N_i)\), while KL's source-locked values at its named vertices transport through \(\Phi_i\) to continuous values of \(K_i\) there. The deck-limit theorem forbids this for a nonconstant \(N_i\)-invariant map, proving non-descent.
+
+Each \(K_i\) is a local homeomorphism. Its pullback by \(\alpha\) is therefore an \'etale, Hausdorff, second-countable space over \(J\). If \(J\) is a singleton, every component is a singleton graph and the claim is immediate. Assume \(J\) is nondegenerate. Every path component is a connected one-manifold. It cannot be a circle over an interval, and the local orientation of its projection to \(J\) is constant; hence that projection is injective. Its inverse is the graph of one maximal lift. Conversely, local lifting uniqueness prevents a maximal lift graph from being a proper path-connected subset of a component. Taking the disjoint union with the source label attached proves (10.58).
+
+For \(\zeta\in\Lambda(N_i)\cap D_{\mathrm{ext},i}\), choose distinct \(\gamma_n\in N_i\) with \(\gamma_n z_0\to\zeta\). Hyperbolic isometry gives \(d(\gamma_n z,\gamma_n z_0)=d(z,z_0)\), so bounded hyperbolic distance gives \(\gamma_n z\to\zeta\). Partial continuity at the two certified points yields \(K_i(\gamma_n z)\to K_i(\zeta)\), proving (10.59).
+
+For the annulus family, \(W(\Gamma_t)=2\pi/\varepsilon\). Every essential \(C\subset A_s(\varepsilon)\) has \(\operatorname{mod}C\le\varepsilon/(4\pi)\), hence \(W(\Gamma_C)\ge 4\pi/\varepsilon\). Subtraction proves (10.60). This calculation is unscaled; it does not exclude a separately proved calibrated or source-specific response.
+
+Equation (10.61) follows directly: \((q')^{-1}(p,y)=\{(x,y):q(x)=p\}\). Induction proves the finite-retiming claim. Finally, the lift condition is precisely \(H_s\le a_*^{-1}(H_t)\). Covering classification identifies the first fiber with the pointed coset set \(a_*^{-1}(H_t)/H_s\), which is a singleton exactly under (10.62).
+\end{proof}

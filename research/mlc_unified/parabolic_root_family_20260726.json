@@ -1,0 +1,265 @@
+{
+  "certificate": "PARABOLIC_ROOT_FAMILY_FINITE_SWEEP_VALID",
+  "orders_checked": [
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16
+  ],
+  "orders": [
+    {
+      "q": 2,
+      "cyclotomic_polynomial": "x + 1",
+      "parameter": "-3/4",
+      "first_parabolic_coefficient": "-2",
+      "checks": {
+        "cyclotomic_relation": true,
+        "primitive_root_relation": true,
+        "fixed_point_parameterization": true,
+        "multiplier_parameterization": true,
+        "iterate_multiplier_one": true,
+        "all_intermediate_terms_cancel": true,
+        "first_parabolic_term_nonzero": true
+      },
+      "all_checks": true
+    },
+    {
+      "q": 3,
+      "cyclotomic_polynomial": "x**2 + x + 1",
+      "parameter": "3*x/4 + 1/4",
+      "first_parabolic_coefficient": "x + 5",
+      "checks": {
+        "cyclotomic_relation": true,
+        "primitive_root_relation": true,
+        "fixed_point_parameterization": true,
+        "multiplier_parameterization": true,
+        "iterate_multiplier_one": true,
+        "all_intermediate_terms_cancel": true,
+        "first_parabolic_term_nonzero": true
+      },
+      "all_checks": true
+    },
+    {
+      "q": 4,
+      "cyclotomic_polynomial": "x**2 + 1",
+      "parameter": "x/2 + 1/4",
+      "first_parabolic_coefficient": "-6*x - 10",
+      "checks": {
+        "cyclotomic_relation": true,
+        "primitive_root_relation": true,
+        "fixed_point_parameterization": true,
+        "multiplier_parameterization": true,
+        "iterate_multiplier_one": true,
+        "all_intermediate_terms_cancel": true,
+        "first_parabolic_term_nonzero": true
+      },
+      "all_checks": true
+    },
+    {
+      "q": 5,
+      "cyclotomic_polynomial": "x**4 + x**3 + x**2 + x + 1",
+      "parameter": "-x**2/4 + x/2",
+      "first_parabolic_coefficient": "10*x**3 + 22*x**2 + 22*x + 36",
+      "checks": {
+        "cyclotomic_relation": true,
+        "primitive_root_relation": true,
+        "fixed_point_parameterization": true,
+        "multiplier_parameterization": true,
+        "iterate_multiplier_one": true,
+        "all_intermediate_terms_cancel": true,
+        "first_parabolic_term_nonzero": true
+      },
+      "all_checks": true
+    },
+    {
+      "q": 6,
+      "cyclotomic_polynomial": "x**2 - x + 1",
+      "parameter": "x/4 + 1/4",
+      "first_parabolic_coefficient": "64 - 116*x",
+      "checks": {
+        "cyclotomic_relation": true,
+        "primitive_root_relation": true,
+        "fixed_point_parameterization": true,
+        "multiplier_parameterization": true,
+        "iterate_multiplier_one": true,
+        "all_intermediate_terms_cancel": true,
+        "first_parabolic_term_nonzero": true
+      },
+      "all_checks": true
+    },
+    {
+      "q": 7,
+      "cyclotomic_polynomial": "x**6 + x**5 + x**4 + x**3 + x**2 + x + 1",
+      "parameter": "-x**2/4 + x/2",
+      "first_parabolic_coefficient": "124*x**5 + 276*x**4 + 247*x**3 + 258*x**2 + 163*x + 220",
+      "checks": {
+        "cyclotomic_relation": true,
+        "primitive_root_relation": true,
+        "fixed_point_parameterization": true,
+        "multiplier_parameterization": true,
+        "iterate_multiplier_one": true,
+        "all_intermediate_terms_cancel": true,
+        "first_parabolic_term_nonzero": true
+      },
+      "all_checks": true
+    },
+    {
+      "q": 8,
+      "cyclotomic_polynomial": "x**4 + 1",
+      "parameter": "-x**2/4 + x/2",
+      "first_parabolic_coefficient": "-708*x**3 + 108*x**2 + 520*x + 384",
+      "checks": {
+        "cyclotomic_relation": true,
+        "primitive_root_relation": true,
+        "fixed_point_parameterization": true,
+        "multiplier_parameterization": true,
+        "iterate_multiplier_one": true,
+        "all_intermediate_terms_cancel": true,
+        "first_parabolic_term_nonzero": true
+      },
+      "all_checks": true
+    },
+    {
+      "q": 9,
+      "cyclotomic_polynomial": "x**6 + x**3 + 1",
+      "parameter": "-x**2/4 + x/2",
+      "first_parabolic_coefficient": "1580*x**5 - 40*x**4 - 2628*x**3 + 100*x**2 - 1592*x - 2022",
+      "checks": {
+        "cyclotomic_relation": true,
+        "primitive_root_relation": true,
+        "fixed_point_parameterization": true,
+        "multiplier_parameterization": true,
+        "iterate_multiplier_one": true,
+        "all_intermediate_terms_cancel": true,
+        "first_parabolic_term_nonzero": true
+      },
+      "all_checks": true
+    },
+    {
+      "q": 10,
+      "cyclotomic_polynomial": "x**4 - x**3 + x**2 - x + 1",
+      "parameter": "-x**2/4 + x/2",
+      "first_parabolic_coefficient": "13104*x**3 + 4288*x**2 + 8592*x - 8472",
+      "checks": {
+        "cyclotomic_relation": true,
+        "primitive_root_relation": true,
+        "fixed_point_parameterization": true,
+        "multiplier_parameterization": true,
+        "iterate_multiplier_one": true,
+        "all_intermediate_terms_cancel": true,
+        "first_parabolic_term_nonzero": true
+      },
+      "all_checks": true
+    },
+    {
+      "q": 11,
+      "cyclotomic_polynomial": "x**10 + x**9 + x**8 + x**7 + x**6 + x**5 + x**4 + x**3 + x**2 + x + 1",
+      "parameter": "-x**2/4 + x/2",
+      "first_parabolic_coefficient": "3208*x**9 + 68*x**8 - 21246*x**7 - 25084*x**6 - 37052*x**5 - 26450*x**4 - 21936*x**3 - 9868*x**2 + 1012*x + 3830",
+      "checks": {
+        "cyclotomic_relation": true,
+        "primitive_root_relation": true,
+        "fixed_point_parameterization": true,
+        "multiplier_parameterization": true,
+        "iterate_multiplier_one": true,
+        "all_intermediate_terms_cancel": true,
+        "first_parabolic_term_nonzero": true
+      },
+      "all_checks": true
+    },
+    {
+      "q": 12,
+      "cyclotomic_polynomial": "x**4 - x**2 + 1",
+      "parameter": "-x**2/4 + x/2",
+      "first_parabolic_coefficient": "-38732*x**3 - 181548*x**2 - 229196*x - 141048",
+      "checks": {
+        "cyclotomic_relation": true,
+        "primitive_root_relation": true,
+        "fixed_point_parameterization": true,
+        "multiplier_parameterization": true,
+        "iterate_multiplier_one": true,
+        "all_intermediate_terms_cancel": true,
+        "first_parabolic_term_nonzero": true
+      },
+      "all_checks": true
+    },
+    {
+      "q": 13,
+      "cyclotomic_polynomial": "x**12 + x**11 + x**10 + x**9 + x**8 + x**7 + x**6 + x**5 + x**4 + x**3 + x**2 + x + 1",
+      "parameter": "-x**2/4 + x/2",
+      "first_parabolic_coefficient": "-135096*x**11 - 89744*x**10 - 165092*x**9 - 12776*x**8 + 147224*x**7 + 451500*x**6 + 613964*x**5 + 715156*x**4 + 724756*x**3 + 566148*x**2 + 409284*x + 197056",
+      "checks": {
+        "cyclotomic_relation": true,
+        "primitive_root_relation": true,
+        "fixed_point_parameterization": true,
+        "multiplier_parameterization": true,
+        "iterate_multiplier_one": true,
+        "all_intermediate_terms_cancel": true,
+        "first_parabolic_term_nonzero": true
+      },
+      "all_checks": true
+    },
+    {
+      "q": 14,
+      "cyclotomic_polynomial": "x**6 - x**5 + x**4 - x**3 + x**2 - x + 1",
+      "parameter": "-x**2/4 + x/2",
+      "first_parabolic_coefficient": "-8944664*x**5 + 2322472*x**4 - 5624728*x**3 + 6472032*x**2 - 1662776*x + 9672440",
+      "checks": {
+        "cyclotomic_relation": true,
+        "primitive_root_relation": true,
+        "fixed_point_parameterization": true,
+        "multiplier_parameterization": true,
+        "iterate_multiplier_one": true,
+        "all_intermediate_terms_cancel": true,
+        "first_parabolic_term_nonzero": true
+      },
+      "all_checks": true
+    },
+    {
+      "q": 15,
+      "cyclotomic_polynomial": "x**8 - x**7 + x**5 - x**4 + x**3 - x + 1",
+      "parameter": "-x**2/4 + x/2",
+      "first_parabolic_coefficient": "31346904*x**7 - 26277726*x**6 - 27963198*x**5 + 6482091*x**4 - 43546341*x**3 - 2827326*x**2 - 12040659*x - 53495862",
+      "checks": {
+        "cyclotomic_relation": true,
+        "primitive_root_relation": true,
+        "fixed_point_parameterization": true,
+        "multiplier_parameterization": true,
+        "iterate_multiplier_one": true,
+        "all_intermediate_terms_cancel": true,
+        "first_parabolic_term_nonzero": true
+      },
+      "all_checks": true
+    },
+    {
+      "q": 16,
+      "cyclotomic_polynomial": "x**8 + 1",
+      "parameter": "-x**2/4 + x/2",
+      "first_parabolic_coefficient": "122336888*x**7 + 162442072*x**6 + 179652320*x**5 + 165486960*x**4 + 127585200*x**3 + 71170672*x**2 + 6075648*x - 64055008",
+      "checks": {
+        "cyclotomic_relation": true,
+        "primitive_root_relation": true,
+        "fixed_point_parameterization": true,
+        "multiplier_parameterization": true,
+        "iterate_multiplier_one": true,
+        "all_intermediate_terms_cancel": true,
+        "first_parabolic_term_nonzero": true
+      },
+      "all_checks": true
+    }
+  ],
+  "all_checks": true,
+  "scope": "exact finite sweep only; no all-q theorem and no uniform cylinder bridge",
+  "original_artifacts_written": false
+}

@@ -1,0 +1,66 @@
+\begin{theorem}[Canonical sheet resolution]\label{thm:sheet-resolution}
+With the data of Definitions~\ref{def:loc-data} and~\ref{def:pullback-component}, define
+\begin{equation}\label{eq:q-def}
+  q\colon\widehat X_s\longrightarrow P_K,
+  \qquad
+  q(\widehat u)=\bigl(p_s(\widehat u),\,A(\widehat u)\bigr).
+\end{equation}
+Then:
+\begin{enumerate}
+\item \( q \) is the unique based map over \( X_s \) from the \( H_s \)-cover to the \( K \)-cover;
+\item \( q \) is a surjective covering map;
+\item the original lift factors exactly as
+\begin{equation}\label{eq:factorization}
+  A=e\circ q;
+\end{equation}
+\item for all \( \widehat u,\widehat v\in\widehat X_s \),
+\begin{equation}\label{eq:kernel-equiv}
+  A(\widehat u)=A(\widehat v)
+  \quad\Longleftrightarrow\quad
+  q(\widehat u)=q(\widehat v);
+\end{equation}
+\item equivalently, the kernel pairs agree:
+\begin{equation}\label{eq:kernel-pair}
+  \widehat X_s\times_{P_K}\widehat X_s
+  =
+  \widehat X_s\times_{\widehat X_t}\widehat X_s;
+\end{equation}
+\item the fiber of \( q \) over the based point is the pointed coset set
+\begin{equation}\label{eq:sheet-fiber}
+  \mathcal S_{\mathrm{loc}}=K/H_s;
+\end{equation}
+\item \( q \) is injective if and only if \( K=H_s \); and
+\item if \( [K:H_s]<\infty \), then \( q \) has exactly \( [K:H_s] \) sheets.  No finiteness is asserted when the index is infinite.
+\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+The formula \eqref{eq:q-def} lands in the pullback \eqref{eq:pullback} because \eqref{eq:lift-square} gives
+\[
+  a(p_s(\widehat u))=p_t(A(\widehat u)).
+\]
+It lands in \( P_K \) because \( \widehat X_s \) is path connected and \( q \) sends the basepoint to \( (x_s,\widehat x_t) \).  Moreover,
+\begin{equation}\label{eq:rq}
+  r q = p_s .
+\end{equation}
+
+Since \( H_s\leq K \), the lifting criterion for covers over the common base \( X_s \) gives a unique based map from the \( H_s \)-cover to the \( K \)-cover.  Thus \eqref{eq:q-def} is that map, proving (1).
+
+We verify surjectivity directly rather than hiding it in cover classification.  Let \( z\in P_K \), and choose a path \( \delta \) in \( P_K \) from the based point to \( z \).  Lift \( r\delta \) to \( \widehat X_s \) from \( \widehat x_s \), obtaining a path \( \widehat\delta \).  Both \( \delta \) and \( q\widehat\delta \) are lifts of \( r\delta \) to \( P_K \) from the same initial point.  Uniqueness of path lifting gives
+\[
+  q(\widehat\delta(1))=\delta(1)=z .
+\]
+Hence \( q \) is onto.  Choose a path-connected neighborhood \( U\subset X_s \) evenly covered by both \( p_s \) and \( r \).  Each component of \( p_s^{-1}(U) \) is mapped by \( q \) into one component of \( r^{-1}(U) \); because both projections to \( U \) are homeomorphisms and \( rq=p_s \), this restriction of \( q \) is a homeomorphism onto that target sheet.  Surjectivity of \( q \) ensures that every target sheet is met.  Therefore \( q \) is a covering map, proving (2).
+
+The second coordinate in \eqref{eq:q-def} is \( A(\widehat u) \), so \eqref{eq:factorization} is immediate, proving (3).  Since \( e \) is injective by Lemma~\ref{lem:embedded-leg},
+\[
+  A(\widehat u)=A(\widehat v)
+  \iff
+  e(q(\widehat u))=e(q(\widehat v))
+  \iff
+  q(\widehat u)=q(\widehat v),
+\]
+which proves (4) and (5).
+
+The standard fiber classification for the map from an \( H_s \)-cover to a \( K \)-cover identifies its based fiber with the right-coset set \( H_s\backslash K \).  The inversion convention (\( H_sk\mapsto k^{-1}H_s \)) identifies that pointed set with \( K/H_s \), proving (6).  The map is one-sheeted exactly when the two subgroups agree, proving (7); in finite index its sheet number is \( [K:H_s] \), proving (8).
+\end{proof}

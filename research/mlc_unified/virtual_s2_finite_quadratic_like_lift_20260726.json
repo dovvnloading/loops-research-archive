@@ -1,0 +1,38 @@
+{
+  "artifact": "FINITE_VIRTUAL_CYLINDER_QUADRATIC_LIKE_LIFT",
+  "date": "2026-07-26",
+  "status": "FINITE_VIRTUAL_CYLINDER_QUADRATIC_LIKE_LIFT_VALID",
+  "source_files": [
+    "C:\\Users\\Admin\\AppData\\Local\\Temp\\mlc-kl-decorations-math0609046\\kingdom.tex",
+    "C:\\Users\\Admin\\AppData\\Local\\Temp\\mlc-kl-principal-math0505194\\kingdom.tex"
+  ],
+  "statement": "For every finite direct-decoration word w, K_w=phi_w(K_0) is the filled Julia set of F_w=phi_w o F_term o phi_w^{-1}, a degree-two quadratic-like map.",
+  "remaining_open": [
+    "infinite-end nondegenerate normalized limit",
+    "VIRTUAL_CANTOR_PACKAGE_REALIZATION",
+    "VIRTUAL_DISCONNECTED_MARKING_TRANSFER",
+    "VIRTUAL_RETURN_BASE_ATLAS",
+    "VIRTUAL_PROTECTED_ROUTING_CERTIFICATE",
+    "MLC"
+  ],
+  "checks": {
+    "nested_outer_pieces": true,
+    "actual_left_pullback": true,
+    "actual_right_pullback": true,
+    "terminal_primitive_return": true,
+    "compact_first_return_domains": true,
+    "nested_principal_nest": true,
+    "quadratic_like_terminal_form": true,
+    "lifted_degree_two": true,
+    "iterate_conjugacy_n_1": true,
+    "iterate_conjugacy_n_2": true,
+    "iterate_conjugacy_n_3": true,
+    "iterate_conjugacy_n_4": true,
+    "filled_julia_survival_equivalence": true,
+    "finite_parent_shift_is_actual": true,
+    "infinite_end_limit_not_claimed": true,
+    "global_mlc_not_claimed": true
+  },
+  "all_checks": true,
+  "original_artifacts_written": false
+}

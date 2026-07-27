@@ -1,0 +1,95 @@
+{
+  "scope": "Source lock, exact finite quotient regressions, analytic rectangle sanity, and ledger correction. No proof of actual KL base-annulus univalence or any global MLC gate.",
+  "source_lock": {
+    "passed": true,
+    "sha256": {
+      ".tmp_kl08_source\\psiql.tex": "6CC9726461473812A5FBA93377F2DC0B088DB6CAC4B9DE90C7B2AE625DFB49AF",
+      ".tmp_kl08_source\\kingdom.tex": "5DC04FEFF6B6A1D73040FFD50519C35D62EFF03C1049686DA71D595758E38FA7"
+    }
+  },
+  "source_semantics": {
+    "passed": true,
+    "checks": {
+      "path_quotient": true,
+      "finite_star_gluing": true,
+      "tiles_disjoint": true,
+      "exact_central_tile_overlap": true,
+      "inclusion_component_surjective": true,
+      "inclusion_tiles_only_immersive": true,
+      "direct_pair_univalent_pullbacks": true
+    }
+  },
+  "positive_nonfull_reflection_control": {
+    "passed": true,
+    "glued_map_injective": true,
+    "full_reflection": false,
+    "relative_cartesianity": true,
+    "extra_target_overlap_has_source_central_mate": false
+  },
+  "missing_relative_fiber_negative_control": {
+    "passed": true,
+    "central_piece_map_injective": true,
+    "tile_piece_map_injective": true,
+    "declared_overlap_commutes": true,
+    "relative_cartesianity": false,
+    "glued_map_injective": false,
+    "first_excess_mixed_pair": [
+      [
+        "Cs",
+        "extra"
+      ],
+      [
+        "Ts",
+        "extra"
+      ]
+    ]
+  },
+  "component_identity": {
+    "passed": true,
+    "bijective_component_map_gives_single_component_intersection": true,
+    "surjective_noninjective_control_gives_multiple_components": true
+  },
+  "analytic_rectangle_sanity": {
+    "passed": true,
+    "central_and_tile_restrictions_below_one_period": true,
+    "union_exceeds_one_period": true,
+    "exact_collision_pair": [
+      "0",
+      "2*pi*i"
+    ],
+    "negative_imaginary_slit_covered_by_target_tile": true
+  },
+  "ledger": {
+    "passed": true,
+    "total": 330,
+    "counts": {
+      "imported": 23,
+      "proved": 235,
+      "open": 72
+    },
+    "statuses": {
+      "TILE_INJECTIVITY_GLUE_EMBEDDING_CRITERION": "proved",
+      "KL_CANONICAL_LOCALIZATION_FORCED_COLLISION": "proved",
+      "DIRECT_DECORATION_TILE_CENTRAL_OVERLAP_REFLECTION": "open",
+      "DIRECT_DECORATION_DEGREE_ONE_PSEUDO_EMBEDDING": "open",
+      "VIRTUAL_AUGMENTED_ATOM_PORT_CERTIFICATE": "open",
+      "UNIVERSAL_PROTECTED_TOWER_CLOSURE": "open",
+      "MLC": "open"
+    },
+    "full_reflection_is_embedding_dependency": false
+  },
+  "documentation": {
+    "passed": true,
+    "required_phrases": [
+      "Proposition 3.0 -- equivalence-relation reflection",
+      "Theorem 3.1 -- exact relative gluing criterion",
+      "KL component identity",
+      "Relative cartesianity follows from full tile injectivity",
+      "Corrected full pseudo-piece embedding theorem",
+      "Full overlap reflection is not necessary",
+      "Commutation and piecewise embeddings are not sufficient",
+      "Full tiles versus retained collars",
+      "VAAPC-I, UPTCR, and MLC remain open"
+    ]
+  }
+}

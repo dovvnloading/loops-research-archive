@@ -1,0 +1,73 @@
+\begin{lemma}[One quadratic pullback of a full continuum]
+\label{lem:quadratic-pullback-dichotomy}
+Let \(q:U'\to U\) be a proper holomorphic map of degree two between
+plane topological disks, let \(K\Subset U\) be a nonempty full
+continuum, let \(c\) be the unique critical point of \(q\) and
+\(v=q(c)\) its critical value.
+\begin{enumerate}
+\item If \(v\in K\), then \(q^{-1}K\) is a single full continuum, and
+      the degree of \(q\) on it is two.
+\item If \(v\notin K\), then \(q^{-1}K\) is the disjoint union of two
+      full continua, each mapped homeomorphically onto \(K\).
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+Choose a nested Jordan-domain basis \(V_r\) for \(K\) as in
+Lemma~\ref{lem:jordan-basis}, with each \(\partial V_r\) avoiding
+\(v\); if \(v\notin K\), choose in addition \(\overline V_1\) disjoint
+from \(v\).
+
+\emph{Case \(v\notin K\).}  Then \(v\notin V_r\) for every \(r\), so
+\[
+ q:q^{-1}(V_r)\longrightarrow V_r
+\]
+is an unbranched proper covering of total degree two.  Since \(V_r\)
+is simply connected, its inverse image has exactly two components
+\(W_r^0,W_r^1\), and both restrictions \(q:W_r^k\to V_r\) are
+biholomorphisms.  The two inverse branches defined on \(V_1\) label
+the components coherently across all \(r\), and
+\[
+ \overline W_{r+1}^k\subset W_r^k,\qquad k=0,1 .
+\]
+Set
+\[
+ L_k=\bigcap_{r\ge1}\overline W_r^k .
+\]
+Each \(L_k\) is nonempty, compact, and connected, being a nested
+intersection of compact connected sets.  It is full because
+\[
+ \mathbb C\setminus L_k
+ =
+ \bigcup_{r\ge1}\bigl(\mathbb C\setminus\overline W_r^k\bigr)
+\]
+is an increasing union of connected sets, hence connected.  The inverse
+branches identify each \(L_k\) homeomorphically with \(K\), and
+\(q^{-1}K=L_0\sqcup L_1\).
+
+\emph{Case \(v\in K\).}  Then every \(V_r\) contains \(v\).  The
+component \(W_r\) of \(q^{-1}(V_r)\) containing the critical point
+\(c\) already has degree at least two, so it has degree exactly two
+and exhausts \(q^{-1}(V_r)\).  Riemann--Hurwitz for the degree-two
+branched cover \(q:W_r\to V_r\) with one simple critical point gives
+\[
+ \chi(W_r)=2\chi(V_r)-1=1 .
+\]
+Thus \(W_r\) is a disk.  Because \(\partial V_r\) contains no critical
+value, \(\partial W_r\) is a regular Jordan curve.  The compact Jordan
+disks \(\overline W_r\) are nested, and
+\[
+ q^{-1}K=\bigcap_{r\ge1}\overline W_r .
+\]
+The same increasing-complement argument proves that this intersection
+is connected and full, and the degree of \(q\) on it is two.
+
+For completeness, the bordered Riemann--Hurwitz count can be obtained
+by doubling \(W_r\) and \(V_r\) across their regular boundaries.  The
+doubled degree-two map has the critical point and its mirror, so
+\[
+ 2-2g=2\cdot2-2=2,
+\]
+whence \(g=0\); the double of a planar domain with \(b\) boundary
+components has genus \(b-1\), so \(b=1\).
+\end{proof}

@@ -1,0 +1,23 @@
+\begin{lemma}[The resolved leg is embedded]\label{lem:embedded-leg}
+The second projection
+\begin{equation}\label{eq:e-embedding}
+  e\colon P_K\hookrightarrow\widehat X_t
+\end{equation}
+is a topological embedding.
+\end{lemma}
+
+\begin{proof}
+First consider the second projection on the entire pullback \( P \).  Its image is \( p_t^{-1}(a(X_s)) \).  Because \( a \) is an embedding, the formula
+\begin{equation}\label{eq:e-inverse}
+  \widehat y\longmapsto\bigl(a^{-1}(p_t(\widehat y)),\,\widehat y\bigr)
+\end{equation}
+is a continuous inverse on this image.  Thus the second projection identifies \( P \) homeomorphically with \( p_t^{-1}(a(X_s)) \).  Restricting this homeomorphism to \( P_K \) proves \eqref{eq:e-embedding}.
+\end{proof}
+
+\begin{remark}
+The embedding hypothesis on \( a \) is essential: if \( a \) has a
+base-space self-intersection, equality of second coordinates in
+\eqref{eq:pullback} need not determine the first coordinate, and
+Lemma~\ref{lem:embedded-leg} can fail before any subgroup collision is
+considered; compare Section~\ref{sec:seedvsbold}.
+\end{remark}

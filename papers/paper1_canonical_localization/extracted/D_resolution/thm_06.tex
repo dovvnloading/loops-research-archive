@@ -1,0 +1,33 @@
+\begin{proposition}[Exact sheet transport]\label{prop:transport}
+The transport maps \( M_\delta \) of Definition~\ref{def:sheet-transport} satisfy:
+\begin{enumerate}
+\item \( M_\delta \) is a bijection, with inverse \( M_{\delta^{-1}} \);
+\item \( M_\delta \) depends only on the homotopy class of \( \delta \) relative to its endpoints;
+\item for composable paths,
+\begin{equation}\label{eq:transport-functorial}
+  M_{\delta_1*\delta_2}=M_{\delta_2}\circ M_{\delta_1};
+\end{equation}
+\item the constant path induces the identity; and
+\item at the based point these transports give the monodromy action on the pointed fiber \( K/H_s \).
+\end{enumerate}
+Hence
+\begin{equation}\label{eq:transport-functor}
+  \Pi_1(P_K)\longrightarrow\mathbf{Set}_{\mathrm{bij}},
+  \qquad
+  z\longmapsto q^{-1}(z),\quad
+  [\delta]\longmapsto M_\delta
+\end{equation}
+is a functor.  Its category of elements is the canonical sheet-transport groupoid \( \mathcal G_q \).  Its full object set is
+\[
+  \bigl\{(z,\widehat u): z\in P_K,\ \widehat u\in q^{-1}(z)\bigr\},
+\]
+canonically the point set of \( \widehat X_s \).  The pointed coset set \( K/H_s \) is only its based fiber (equivalently, the object set after restricting \eqref{eq:transport-functor} to the based action groupoid).
+\end{proposition}
+
+\begin{proof}
+Every assertion is forced by uniqueness and homotopy invariance of lifts.  Lifting \( \delta \) and then \( \delta^{-1} \) returns to the initial point, which proves bijectivity, giving (1).  A homotopy relative endpoints lifts after an initial sheet is fixed, so the terminal sheet is constant through the homotopy, giving (2).  The lift of a concatenation is the concatenation of the two successive lifts; the first-traversed factor \( \delta_1 \) acts first and therefore appears innermost in the function composition, proving \eqref{eq:transport-functorial} and (3).  Constant paths lift to constant paths, giving (4).  Restricting \eqref{eq:transport-functor} to the based fundamental group gives the usual monodromy action on the cover fiber, identified with \( K/H_s \) by the inversion convention, giving (5).
+\end{proof}
+
+\begin{remark}\label{rem:no-regularity}
+No regularity of the cover is used.  If \( H_s \) is not normal in \( K \), the based fiber \( K/H_s \) is not a quotient group, but the groupoid \eqref{eq:transport-functor} still gives complete path transport.  Under the inversion convention, continuation by a based loop \( g \) acts by the explicit formula \eqref{eq:transport-formula}, \( k^{-1}H_s\mapsto g^{-1}k^{-1}H_s \), not by a silently assumed quotient-group multiplication.
+\end{remark}

@@ -1,0 +1,108 @@
+\begin{theorem}[Subgroup-reflection criterion]
+\label{thm:subgroup-reflection-criterion}
+Let \(X_s,X_t\) be connected, locally path-connected, semilocally simply
+connected spaces, let
+\[
+ p_s:\widetilde X_s\to X_s,\qquad p_t:\widetilde X_t\to X_t
+\]
+be connected based covers corresponding to subgroups
+\(H_s\le\pi_1(X_s,x_s)\), \(H_t\le\pi_1(X_t,x_t)\), let
+\(a:(X_s,x_s)\hookrightarrow(X_t,x_t)\) be a based embedding, and let
+\(A:\widetilde X_s\to\widetilde X_t\) be a based lift with
+\(p_t\circ A=a\circ p_s\).  The existence of \(A\) forces
+\[
+ a_*(H_s)\subseteq H_t .
+\]
+Then
+\[
+ A\ \text{is injective}
+ \quad\Longleftrightarrow\quad
+ a_*^{-1}(H_t)=H_s .
+\]
+If the equality fails, then every class
+\[
+ [\gamma]\in a_*^{-1}(H_t)\setminus H_s
+\]
+is an exact collision certificate: the lift of \(\gamma\) to
+\(\widetilde X_s\) starting at the base lift has distinct endpoints,
+and \(A\) identifies those endpoints.
+\end{theorem}
+
+\begin{proof}
+Choose base lifts \(\widetilde x_s\in p_s^{-1}(x_s)\) and
+\(\widetilde x_t=A(\widetilde x_s)\).  The standard lifting criterion
+states that the based lift \(A\) exists if and only if
+\[
+ a_*\bigl(p_{s*}\pi_1(\widetilde X_s,\widetilde x_s)\bigr)
+ \subseteq
+ p_{t*}\pi_1(\widetilde X_t,\widetilde x_t),
+\]
+which is exactly the inclusion \(a_*(H_s)\subseteq H_t\).
+
+\emph{Step 1: reflection equality implies injectivity.}
+Assume \(a_*^{-1}(H_t)=H_s\), and let
+\(\widetilde u,\widetilde v\in\widetilde X_s\) satisfy
+\(A(\widetilde u)=A(\widetilde v)\).  Projecting and using
+\(p_t\circ A=a\circ p_s\),
+\[
+ a(p_s(\widetilde u))=p_t(A(\widetilde u))=p_t(A(\widetilde v))
+ =a(p_s(\widetilde v)).
+\]
+Since \(a\) is injective,
+\[
+ p_s(\widetilde u)=p_s(\widetilde v)=:u .
+\]
+Choose paths \(\widetilde\alpha,\widetilde\beta\) in
+\(\widetilde X_s\) from \(\widetilde x_s\) to \(\widetilde u\) and
+\(\widetilde v\) respectively, and put
+\(\alpha=p_s\circ\widetilde\alpha\),
+\(\beta=p_s\circ\widetilde\beta\); both run from \(x_s\) to \(u\).
+By the covering endpoint criterion, the source endpoints agree,
+\(\widetilde u=\widetilde v\), if and only if the loop
+\(\gamma=\alpha*\beta^{-1}\) has class in \(H_s\).
+
+On the target side, \(A\circ\widetilde\alpha\) and
+\(A\circ\widetilde\beta\) are the lifts, from the common base lift
+\(\widetilde x_t\), of \(a\circ\alpha\) and \(a\circ\beta\).  The
+hypothesis \(A(\widetilde u)=A(\widetilde v)\) says that these lifts
+have the same endpoint; by the endpoint criterion applied in the
+target,
+\[
+ a_*[\gamma]=[(a\alpha)*(a\beta)^{-1}]\in H_t .
+\]
+The assumed reflection equality gives \([\gamma]\in H_s\), hence
+\(\widetilde u=\widetilde v\).  Thus \(A\) is injective.
+
+\emph{Step 2: injectivity implies reflection equality.}
+Assume \(A\) is injective.  The lift-existence inclusion gives
+\[
+ H_s\subseteq a_*^{-1}(H_t).
+\]
+For the reverse inclusion, let \([\gamma]\in a_*^{-1}(H_t)\).  Lift
+\(\gamma\) from \(\widetilde x_s\) and denote its endpoint by
+\(\widetilde y_s\).  The path \(A\circ\widetilde\gamma\) is the lift
+of \(a\circ\gamma\) from \(\widetilde x_t\).  Since
+\(a_*[\gamma]\in H_t\), this target lift is closed.  Consequently
+\[
+ A(\widetilde y_s)=A(\widetilde x_s).
+\]
+Injectivity of \(A\) gives \(\widetilde y_s=\widetilde x_s\), i.e.\ 
+the source lift of \(\gamma\) is closed, so \([\gamma]\in H_s\).
+Hence \(a_*^{-1}(H_t)\subseteq H_s\), and with the previous inclusion
+this proves the equivalence.
+
+\emph{Step 3: exact failure certificate.}
+If \([\gamma]\in a_*^{-1}(H_t)\setminus H_s\), then the source lift of
+\(\gamma\) begins at \(\widetilde x_s\) and ends at a distinct point
+\(\widetilde y_s\) (because \([\gamma]\notin H_s\)), while the target
+lift of \(a\circ\gamma\) is closed (because \(a_*[\gamma]\in H_t\)).
+Therefore
+\[
+ \widetilde y_s\neq\widetilde x_s,
+ \qquad
+ A(\widetilde y_s)=A(\widetilde x_s).
+\]
+This is a point-level collision of \(A\), not merely a failure of a
+label map; the loop class records the exact sheet displacement that
+becomes invisible after target localization.
+\end{proof}

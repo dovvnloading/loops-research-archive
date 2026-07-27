@@ -1,0 +1,20 @@
+\begin{lemma}[Connectivity after finitely many full deletions]\label{lem:connectivity}
+Let \(U\) be a plane topological disk and let \(C_1,\dots,C_N\Subset U\) be pairwise disjoint full continua.  Then
+\[
+ U\setminus\bigcup_{i=1}^N C_i
+\]
+is path connected.
+\end{lemma}
+
+\begin{proof}
+Applying Lemma \ref{lem:jordan-basis} twice inside the disjoint neighborhoods used in Corollary \ref{cor:isolating-disks}, choose pairwise-disjoint Jordan domains
+\[
+ C_i\subset D_i^-,\qquad \overline{D_i^-}\subset D_i^+,\qquad \overline{D_i^+}\subset U.
+\]
+The finitely connected plane domain \(U_0=U\setminus\bigcup_{i=1}^N\overline{D_i^-}\) is connected: after a homeomorphism \(U\cong\mathbb D\), removing finitely many pairwise-disjoint closed Jordan disks compactly contained in \(\mathbb D\) leaves a disk with finitely many holes.  As an open connected subset of the plane, \(U_0\) is path connected.
+
+For each \(i\), the open set \(D_i^+\setminus C_i\) is connected.  Indeed \(\mathbb C\setminus C_i\) is connected by fullness, and its intersection with the Jordan disk \(D_i^+\) cannot have a component separated from the outer collar of \(\partial D_i^+\): such a component would be a bounded complementary component of \(C_i\), contradicting fullness.  Hence \(D_i^+\setminus C_i\) is path connected.  It contains the nonempty annulus \(D_i^+\setminus\overline{D_i^-}\), which is also contained in \(U_0\); thus every \(D_i^+\setminus C_i\) has nonempty connected overlap with \(U_0\).  Their union is path connected and equals
+\[
+ U_0\cup\bigcup_{i=1}^N\bigl(D_i^+\setminus C_i\bigr)=U\setminus\bigcup_{i=1}^N C_i. \qedhere
+\]
+\end{proof}

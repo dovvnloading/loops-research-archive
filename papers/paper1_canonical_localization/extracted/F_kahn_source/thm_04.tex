@@ -1,0 +1,64 @@
+\begin{proposition}[dynamical localization; Kahn I, \S7.4.2, p.~45]\label{prop:kahn-dynamical-localization}
+Let \((i,f)\colon(\BU',K')\to(\BU,K)\) be a \(\psi\)-polynomial-like
+map of degree \(d\), and suppose:
+\begin{enumerate}
+\item \(A\subset K\) is an FJ-set, and \(A'=i^{-1}(A)\);
+\item \(B\subset K\) is compact and \(\BU\sm B\) is connected;
+\item \(A\) is a component of \(B\);
+\item \(A'\) is a component of \(f^{-1}(A)\);
+\item \(i^{-1}(B)\subset f^{-1}(B)\) (see Appendix~\ref{app:sourcelock}
+for the caveat on the source's literal wording, which reads \(B'\) for
+\(B\) in Kahn~I, \S7.4.2, p.~45); and
+\item all branch values of \(f\) lie in \(B\).
+\end{enumerate}
+Set \(T=(\BU\sm B)\cup A\) and \(T'=(\BU'\sm f^{-1}B)\cup A'\).  Then
+\((T,A)\) and \((T',A')\) are marked Riemann surfaces and the
+restrictions of \(i\) and \(f\) are morphisms.  Writing \(\BV=T_A\)
+and \(\BV'=T'_{A'}\) for the localizations:
+\begin{enumerate}
+\item[(a)] \(\BV\) and \(\BV'\) are disks;
+\item[(b)] the localized pair
+\((\widehat i,\widehat f)\colon(\BV',\widehat{A'})\to(\BV,\widehat A)\)
+is a \(\psi\)-polynomial-like map whose degree is the local degree
+\(d_{A'}\) of \(f\) at \(A'\), with \(\widehat i\) an immersion and
+\(\widehat f\) a branched covering;
+\item[(c)] since
+\(\pi_{T,A}\colon\BV\sm\widehat A\to\BU\sm B\) is a covering map, the
+Poincar\'e length of the core curve of \(\BV\sm\widehat A\) equals the
+Poincar\'e length of the closed geodesic of \(\BU\sm B\) that goes
+around \(A\).
+\end{enumerate}
+The pair \((\widehat i,\widehat f)\) is the \emph{dynamical
+localization of \(f\) at \(A\) with the removal of \(B\)}.
+\end{proposition}
+
+\begin{proof}[Proof (faithful paraphrase of Kahn I, \S7.4.2, p.~45)]
+Hypotheses (1)--(6) make \((T,A)\) and \((T',A')\) marked Riemann
+surfaces and make the restrictions of \(i\) and \(f\) morphisms: the
+marked sets pull back correctly by (1), (4) and (5), and the removal
+of \(f^{-1}B\) on the source side is compatible with the branch values
+by (6).  Apply the localization theorem to obtain
+\((\widehat i,\widehat f)\colon(T'_{A'},\widehat{A'})\to(T_A,\widehat A)\)
+together with the local covers \(\pi_{T,A}\) and \(\pi_{T',A'}\).
+Since \(T\sm A=\BU\sm B\) is connected by (2) (and correspondingly on
+the source side), the localized complements are connected covers;
+since \(A\) and \(A'\) are FJ-sets and the localized pairs are local
+marked surfaces with connected complement, the localized surfaces
+\(\BV=T_A\) and \(\BV'=T'_{A'}\) are disks (using the source's
+characterization at Kahn~I, \S7.4.1, p.~44: a local pair with connected
+complement is exactly a disk marked by an FJ-set).  By the
+preservation statements of the localization theorem, \(\widehat i\) is
+an immersion and \(\widehat f\) is a branched covering; the source
+records (\S7.4.2, p.~45) that its degree equals the local degree
+\(d_{A'}\) of \(f\) at \(A'\) --- near the marked set \(\widehat f\)
+is conjugate by the local covers to \(f\) near \(A'\).  Hence
+\((\widehat i,\widehat f)\) satisfies all clauses of the
+\(\psi\)-polynomial-like definition with filled Julia set completed
+from \(\widehat A\); it is \(\psi\)-polynomial-like of degree
+\(d_{A'}\) (\S7.4.2, p.~45).  Finally, \(\pi_{T,A}\) restricts to a
+covering \(\BV\sm\widehat A\to\BU\sm B\), and a holomorphic covering
+is a local isometry for the Poincar\'e metrics; the core curve of
+\(\BV\sm\widehat A\) covers, with degree one, the closed geodesic of
+\(\BU\sm B\) in the free homotopy class going around \(A\), so the two
+lengths are equal (\S7.4.2, p.~45).
+\end{proof}

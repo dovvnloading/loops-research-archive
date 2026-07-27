@@ -1,0 +1,99 @@
+\begin{theorem}[Kahn's annulus hypotheses do not imply global injectivity; manuscript Thm.~12.39, ledger \texttt{KAHN\_ANNULUS\_GLOBAL\_INJECTIVITY\_NO\_GO}]\label{thm:kahn-annulus-no-go}
+There are \(d>1\), \(r>1\), and a holomorphic immersion
+\[
+I:A(1,r^{1/d})\longrightarrow A(1,r)
+\]
+that extends analytically to the inner circle as an orientation-preserving degree-one homeomorphism but is not globally injective.
+\end{theorem}
+
+\begin{proof}
+Put
+\[
+r'=\tfrac{1287}{1000},\qquad d=16,\qquad r=(r')^{16},
+\]
+and, with \(B_a(z)=(z-a)/(1-\bar a z)\), set
+\[
+R(z)=\frac{B_{(1+6i)/10}(z)\,B_{(-3-i)/10}(z)\,B_{(-7+2i)/10}(z)}{B_{(-6+2i)/10}(z)\,B_{4i/10}(z)}. \tag{10.35}
+\]
+The zeros and poles are among \(a,b,1/\bar a,1/\bar b\). Since \((r')^2\tfrac{53}{100}<1\) and \((r')^2\tfrac{40}{100}<1\), none lies in \(1\le|z|\le r'\).
+
+On \(\mathbb T\), \(|R|=1\) and the degree is \(3-2=1\). For \(t=\tan(\theta/2)\), the angular derivative has the sign of
+\begin{align*}
+p(t)&=619271\,t^{10}-5100608\,t^{9}+35876739\,t^{8}-169721152\,t^{7}\\
+&\quad+491196326\,t^{6}-885663808\,t^{5}+1065558054\,t^{4}\\
+&\quad-957958592\,t^{3}+669681731\,t^{2}-236915328\,t+60062535 .
+\end{align*}
+The exact Sturm-chain sign strings at \(-\infty,+\infty\) are
+\[
+{+}{-}{-}{+}{+}{+}{-}{-}{+}{-}{-},\qquad {+}{+}{-}{-}{+}{-}{-}{+}{+}{+}{-},
+\]
+and each has five variations. Since \(p(0)>0\) and its leading coefficient is positive, \(p>0\) on the extended real line. Thus the inner-circle map is an orientation-preserving homeomorphism.
+
+After a common nonzero scaling write \(R=N/D_0\), where the descending Gaussian-integer coefficient lists are
+\begin{align*}
+N:&\ 2000+4000i,\ 19600+2200i,\ 28460-23880i,\\ &\ 4072-29046i,\ -6630-10210i,\ -1950-1525i,\\
+D_0:&\ 1525+1950i,\ 10210+6630i,\ 29046-4072i,\\ &\ 23880-28460i,\ -2200-19600i,\ -4000-2000i.
+\end{align*}
+On \(z=r'(1-t^2+2it)/(1+t^2)\), the sign of \(|N|^2-|D_0|^2\) is the sign of
+\begin{align*}
+q(t)&=11751160313656400426951788919\,t^{8}\\
+&\quad-137579839638925277492971300800\,t^{7}\\
+&\quad+958901799234288449551831128476\,t^{6}\\
+&\quad-4106906924234287705167320942400\,t^{5}\\
+&\quad+10779372189655006534093819771914\,t^{4}\\
+&\quad-16680328775739752952831727982400\,t^{3}\\
+&\quad+14042199262274463963774353314076\,t^{2}\\
+&\quad-5586354003042199421157378340800\,t\\
+&\quad+1394955241714223750805412881719 .
+\end{align*}
+Its exact Sturm sign strings are \({+}{-}{-}{+}{+}{-}{-}{+}{+}\) and \({+}{+}{-}{-}{+}{+}{-}{-}{+}\); both have four variations. Hence \(q>0\). The minimum principle for \(\log|R|\) gives \(|R|>1\) in the source annulus.
+
+Moreover,
+\[
+|R|<\prod_{s\in\{\frac{61}{100},\frac{32}{100},\frac{73}{100}\}}\frac{r'-s}{1-r's}=\frac{5697579109375}{119480253283}<48<(r')^{16},
+\]
+because, for \(1<\rho\le r'\), \(|a|\le s\), and \(r's<1\),
+\[
+\bigl|B_a(\rho e^{i\theta})\bigr|\le\frac{\rho-|a|}{1-\rho|a|}\le\frac{r'-s}{1-r's}.
+\]
+The first bound follows by maximizing the squared modulus in \(\cos(\theta-\arg a)\); the second follows from monotonicity in both \(\rho\) and \(|a|\). Thus \(R\) maps into \(A(1,r)\).
+
+For completeness, global local-univalence and the collision are certified without floating-point root inference. Up to nonzero scale the numerator of \(R'\) is the degree-eight polynomial
+\begin{align*}
+P(z)&=(-1268000+501000i)z^{8}+(-1247000+7116800i)z^{7}\\
+&\quad+(17024420+10563170i)z^{6}+(33992992-21977616i)z^{5}\\
+&\quad-52469243i\,z^{4}+(-33992992-21977616i)z^{3}\\
+&\quad+(-17024420+10563170i)z^{2}+(1247000+7116800i)z\\
+&\quad+1268000+501000i .
+\end{align*}
+Let \(L(w)=\max(|\Re w|,|\Im w|)\) and \(U(w)=|\Re w|+|\Im w|\). With \(\rho=10^{-4}\), take centers
+\begin{gather*}
+-1.469179+.035737i,\quad -1.187253+1.185352i,\\
+-.818448+1.003716i,\quad -.680250+.016547i,\\
+-.487955+.598410i,\quad -.421815+.421140i,\\
+.407227+.223067i,\quad 1.888874+1.034668i .
+\end{gather*}
+Exact rational substitution gives
+\[
+L(P'(c_j))\,\rho>m_j\Bigl[U(P(c_j))+\sum_{k=2}^{8}U\bigl(P^{(k)}(c_j)/k!\bigr)\rho^{k}\Bigr],
+\]
+with \((m_1,\dots,m_8)=(126,362,118,451,122,192,182,144)\). Rouch\'e gives one zero in each disjoint disk. Degree eight exhausts the zeros; exact squared-modulus comparisons put disks \(4,\dots,7\) in \(|z|<1\) and the others beyond \(|z|=1.2901>r'\). Hence \(R'\neq 0\) in the source annulus.
+
+Finally set \(z_1=-1+4i/5\). Exact substitution gives
+\[
+R(z_1)=-\frac{559602300}{1858025273}+\frac{1886709225}{1858025273}\,i .
+\]
+After removing the exact factor \(z-z_1\) from \(N-R(z_1)D_0\), the remaining quartic is
+\begin{align*}
+Q(z)&=(1649705408450+1129218801775i)z^{4}\\
+&\quad+(8374862949240-2102550942545i)z^{3}\\
+&\quad+(5597363347032-11487498744901i)z^{2}\\
+&\quad+(-2960676892680-7024430543585i)z\\
+&\quad-1525645358450-501687535025i .
+\end{align*}
+At \(c=-.570412+1.153470i\), \(\rho_1=10^{-5}\), the analogous exact Rouch\'e ratio is greater than \(11\). Thus \(Q\) has a root \(z_2\) in that disk. Since
+\[
+|c|^2=\frac{413965722661}{250000000000},
+\]
+exact squared comparisons give \(1<|z_2|<r'\). The disk does not contain \(z_1\), and \(D_0\neq 0\) there, so \(z_2\neq z_1\) and \(R(z_2)=R(z_1)\).
+\end{proof}

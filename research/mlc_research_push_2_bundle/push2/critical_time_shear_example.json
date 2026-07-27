@@ -1,0 +1,8 @@
+{
+  "name": "z^2-1 critical-time shear",
+  "root_degrees": [2, 1],
+  "lift_degrees": [1, 2],
+  "source_projection_degree": 1,
+  "retention": [true],
+  "notes": "Both return maps have total degree two and the endpoint projection returns to degree one, but chronology is shifted."
+}

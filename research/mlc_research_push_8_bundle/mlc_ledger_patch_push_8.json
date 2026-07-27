@@ -1,0 +1,157 @@
+{
+  "patch_status": "proposal_requires_authoritative_repository_schema_dependency_source_and_build_audit",
+  "research_push": 8,
+  "date": "2026-07-25",
+  "principal_result": "FIXED_HORIZON_MARKED_BINARY_INTERFACE_COMPLETION",
+  "count_policy": {
+    "original_global_open_count_change": 0,
+    "reason": "The finite-horizon marked-interface compiler, trace spaces, welding, and certified enlargement naturality are proved in explicit scope. Universal construction of the complete mixed Wave horizon, mandatory endpoint visibility or slit repair, uniform multiplicity, H2, MBTT, coercivity, rigidity, UPTCR, and MLC remain open."
+  },
+  "new_proved_obligations": [
+    {
+      "id": "FINITE_BOUNDARY_IMMERSION_PULLBACK_FORMULA",
+      "status": "proved",
+      "statement": "For a finite boundary-monotone pseudo-piece immersion atlas, the KKL pullback of a connected target ideal atom union is the union of source components obtained after deleting proper atoms labelled outside the target union and retaining components containing a properly labelled seed.",
+      "dependencies": [],
+      "evidence": "mlc_research_push_8.md#5-finite-pullback-formula"
+    },
+    {
+      "id": "FINEST_IMMERSION_ADMISSIBLE_MARKING",
+      "status": "proved",
+      "statement": "Maximal nonproper source runs force their two adjacent proper target labels into one connected target interval. The interval-convex transitive closure is the unique finest target partition whose immersion pullbacks are pairwise disjoint.",
+      "dependencies": ["FINITE_BOUNDARY_IMMERSION_PULLBACK_FORMULA"],
+      "evidence": "mlc_research_push_8.md#6-immersion-forced-blocks"
+    },
+    {
+      "id": "COVERING_IMMERSION_ACTION_CRITERION",
+      "status": "proved",
+      "statement": "For an immersion-admissible finite target marking, f^*I refines iota^*I exactly when every boundary vertex of every connected immersion-pullback component maps under the covering boundary map to a target marking endpoint.",
+      "dependencies": ["FINEST_IMMERSION_ADMISSIBLE_MARKING"],
+      "evidence": "mlc_research_push_8.md#7-covering-refinement-criterion"
+    },
+    {
+      "id": "BRANCH_ADAPTED_IDEAL_MARKING_COMPILER",
+      "status": "proved",
+      "statement": "A finite algorithm enumerates coarsenings of the finest immersion-admissible partition, preserves mandatory action endpoints, tests the covering-refinement criterion, and returns a finest valid action marking with proper/end-proper flags or an exact obstruction.",
+      "dependencies": [
+        "FINEST_IMMERSION_ADMISSIBLE_MARKING",
+        "COVERING_IMMERSION_ACTION_CRITERION"
+      ],
+      "evidence": "mlc_research_push_8.md#8-mandatory-endpoints-and-finite-decision-theorem"
+    },
+    {
+      "id": "ACTION_TRACE_ENDPOINT_SEPARATION",
+      "status": "proved",
+      "statement": "A finite response/access/obstacle overlay may refine a KKL action interval without making its subdivision points ideal-marking endpoints. Every use of a trace-only endpoint as a KKL endpoint requires successful promotion through the branch-adapted compiler or a certified repair.",
+      "dependencies": ["BRANCH_ADAPTED_IDEAL_MARKING_COMPILER"],
+      "evidence": "mlc_research_push_8.md#9-action-endpoints-versus-response-only-endpoints"
+    },
+    {
+      "id": "CERTIFIED_IDEAL_SLIT_REPAIR",
+      "status": "proved",
+      "statement": "Given finite source/target analytic crosscut graphs avoiding critical, protected, obstacle, and localization data and commuting with the covering and immersion, cutting along the graphs lifts the pair to cut surfaces and turns the certified invisible split into a genuine ideal endpoint to which the finite compiler applies.",
+      "dependencies": [],
+      "evidence": "mlc_research_push_8.md#10-certified-slit-repair"
+    },
+    {
+      "id": "COLLARED_IDEAL_ARC_TRACE_SPACE",
+      "status": "proved",
+      "statement": "A proper pseudo-piece ideal subarc with a source-native piecewise analytic universal-cover collar has a Hilbert minimum-energy trace space, conformally equivalent to H^{1/2} on an interval and natural under transported conformal collars.",
+      "dependencies": [],
+      "evidence": "mlc_research_push_8.md#12-collared-douglas-trace"
+    },
+    {
+      "id": "END_PROPER_END_GERM_TRACE_SPACE",
+      "status": "proved",
+      "statement": "For an end-proper immersion pullback multi-interval, the two proper end intervals carry a compatible collared trace space while the nonproper middle is retained only in the marked bridge word and is not assigned a fictitious physical boundary trace.",
+      "dependencies": ["COLLARED_IDEAL_ARC_TRACE_SPACE"],
+      "evidence": "mlc_research_push_8.md#14-proper-and-end-proper-trace-objects"
+    },
+    {
+      "id": "ACTUAL_ONE_TO_MANY_IDEAL_WELDING",
+      "status": "proved",
+      "statement": "For a branch action marking, actual proper immersion restriction, subdivision by the covering marking, and degree-one covering transport compose to a continuous one-to-many ideal trace welding. It is complete on proper intervals and complete on end germs for end-proper intervals, with all bridge and endpoint metadata retained.",
+      "dependencies": [
+        "COVERING_IMMERSION_ACTION_CRITERION",
+        "COLLARED_IDEAL_ARC_TRACE_SPACE",
+        "END_PROPER_END_GERM_TRACE_SPACE"
+      ],
+      "evidence": "mlc_research_push_8.md#16-one-to-many-welding-operator"
+    },
+    {
+      "id": "MARKED_WELDING_WORD_FUNCTORIALITY",
+      "status": "proved",
+      "statement": "For composable marked correspondences with matching intermediate action markings, direct marked welding equals chronological composition of the one-step weldings, including pulled/immersed intervals, properness flags, bridge words, endpoint flags, and cyclic order.",
+      "dependencies": ["ACTUAL_ONE_TO_MANY_IDEAL_WELDING"],
+      "evidence": "mlc_research_push_8.md#18-composition-theorem"
+    },
+    {
+      "id": "NORMALIZED_MARKED_INTERFACE_NATURALITY",
+      "status": "proved",
+      "statement": "Transporting the finite marked interface by the actual binary pseudo-piece normalization maps makes the action marking, trace overlay, collars, endpoint flags, and welding diagrams commute exactly at every finite word.",
+      "dependencies": ["MARKED_WELDING_WORD_FUNCTORIALITY"],
+      "evidence": "mlc_research_push_8.md#19-binary-normalized-atlas"
+    },
+    {
+      "id": "CERTIFIED_FINAL_ROOT_WELDING_NATURALITY",
+      "status": "proved",
+      "statement": "Analytic old-to-enlarged embeddings commuting with both covering and immersion, carrying exact endpoint inverse images, transported collars, phases, and properness flags, preserve the pulled markings, action condition, and complete one-to-many welding diagrams.",
+      "dependencies": ["ACTUAL_ONE_TO_MANY_IDEAL_WELDING"],
+      "evidence": "mlc_research_push_8.md#21-analytic-enlargement-squares"
+    },
+    {
+      "id": "FIXED_HORIZON_MARKED_BINARY_INTERFACE_COMPLETION",
+      "status": "proved",
+      "statement": "For one actual direct-decoration binary block with a frozen finite source-authorized horizon, if every mandatory action endpoint passes the branch compiler or has a certified slit repair and every final-root generator supplies the stated analytic commuting squares, then the complete pulled/immersed ideal markings, proper/end-proper trace spaces, actual welding, word naturality, and final-root naturality exist with finite failure certificates.",
+      "dependencies": [
+        "BRANCH_ADAPTED_IDEAL_MARKING_COMPILER",
+        "CERTIFIED_IDEAL_SLIT_REPAIR",
+        "ACTUAL_ONE_TO_MANY_IDEAL_WELDING",
+        "MARKED_WELDING_WORD_FUNCTORIALITY",
+        "NORMALIZED_MARKED_INTERFACE_NATURALITY",
+        "CERTIFIED_FINAL_ROOT_WELDING_NATURALITY"
+      ],
+      "evidence": "mlc_research_push_8.md#24-main-theorem"
+    }
+  ],
+  "new_open_obligation": {
+    "id": "UNIVERSAL_MANDATORY_ENDPOINT_VISIBILITY_AND_REPAIR",
+    "status": "open",
+    "statement": "Every actual mixed virtual-Molecule proof block has a source-complete finite horizon in which every proof-required KKL ideal endpoint is branch-visible to the pulled/immersed compiler or has a collision-free certified slit repair, transports through final-root enlargement, has universally controlled proper-lift multiplicity, and factors with all response/WAD/Value outputs through one uniformly finite future-observable quotient.",
+    "maps_to": [
+      "VIRTUAL_WAVE_MARKED_CORRESPONDENCE",
+      "VAAPC-I",
+      "H2_RESPONSE_REALIZATION",
+      "H2_UNIFORM_CORE_WAD_DIMENSION",
+      "H2_VALUE_FEATURE_REALIZATION",
+      "MBTT"
+    ]
+  },
+  "failure_certificate": {
+    "id": "MARKED_IDEAL_INTERFACE_FAILURE",
+    "fields": [
+      "block",
+      "branch_word",
+      "target_ideal_component",
+      "target_micro_partition",
+      "mandatory_action_endpoint",
+      "trace_only_endpoint",
+      "source_nonproper_run",
+      "adjacent_proper_labels",
+      "immersion_pullback_components",
+      "covering_boundary_vertex_image",
+      "proper_or_end_proper_flag",
+      "missing_or_overlapping_pullback",
+      "slit_repair_graph_or_failure",
+      "endpoint_flag_phase_and_side",
+      "final_root_commuting_square_or_failure",
+      "first_downstream_theorem_call"
+    ]
+  },
+  "scope_notes": [
+    "The KKL action marking and the finer trace overlay are separate objects; trace subdivision alone does not license a KKL ideal endpoint.",
+    "End-proper trace control is carried only on the proper end germs. The nonproper middle remains combinatorial bridge data.",
+    "The slit-repair theorem is a realization from an explicit collision-free crosscut certificate; universal construction of such certificates remains open.",
+    "Global VAAPC-I, H2, MBTT, coercivity, rigidity, UPTCR, and MLC remain open."
+  ]
+}

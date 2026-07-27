@@ -1,0 +1,14 @@
+{
+  "target_micro_count": 4,
+  "seam_vertex": 0,
+  "mandatory_ideal_endpoints": [0, 2, 4],
+  "trace_overlay_endpoints": [0, 1, 2, 3, 4],
+  "source_atoms": [
+    {"imm_micro": 0, "cov_micro": 0},
+    {"imm_micro": null, "cov_micro": 0},
+    {"imm_micro": 1, "cov_micro": 1},
+    {"imm_micro": 2, "cov_micro": 2},
+    {"imm_micro": 3, "cov_micro": 3}
+  ],
+  "source_vertex_cov_image": [0,0,0,1,3,4]
+}

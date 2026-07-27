@@ -1,0 +1,19 @@
+{
+  "certificate": "PARABOLIC_SATELLITE_ANCHOR",
+  "date": "2026-07-26",
+  "status": "finite_exact_anchor_only",
+  "model": {
+    "rotation": "exp(2*pi*i/3)",
+    "fixed_point": "lambda/2",
+    "parameter": "-1/8 + (3/8)*sqrt(-3)",
+    "local_germ": "w -> lambda*w + w^2",
+    "third_iterate": "multiplier 1; quadratic and cubic coefficients zero; quartic coefficient nonzero"
+  },
+  "source": "https://arxiv.org/html/2512.24171",
+  "machine_validation": {
+    "script": "research/mlc_unified/validate_parabolic_satellite_anchor.py",
+    "all_checks": true,
+    "original_artifacts_written": false
+  },
+  "remaining_gap": "uniform marked cylinder/Lavaurs control and parameter transfer over arbitrary unbounded satellite towers"
+}

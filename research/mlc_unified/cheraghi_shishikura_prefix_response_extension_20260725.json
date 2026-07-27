@@ -1,0 +1,81 @@
+{
+  "status": "valid",
+  "checks": {
+    "note_exists": true,
+    "source_exists": true,
+    "source_hash_locked": true,
+    "lemma_64_anchor": true,
+    "lemma_65_anchor": true,
+    "prop_67_anchor": true,
+    "prop_610_anchor": true,
+    "prop_611_anchor": true,
+    "qg_equation_anchor": true,
+    "qg_example_is_prg": true,
+    "non_qg_square_failure": true,
+    "non_qg_example_is_prg": true,
+    "intra_product_formula_exact": true,
+    "response_controls_center_term": true,
+    "response_controls_step7_term": true,
+    "original_artifacts_written": false
+  },
+  "source_sha256": "71C03718203B91AE81F5B7E138620A086CDF038B345CF689A24ED2932D72384F",
+  "N": 4,
+  "qg_example": {
+    "q_values": [
+      4,
+      16,
+      256,
+      65536
+    ],
+    "k_values": [
+      1,
+      4,
+      64,
+      16384
+    ],
+    "d_intra": "1",
+    "response": [
+      "1/4",
+      "1/4",
+      "1/4",
+      "1/4"
+    ],
+    "all_digits_large": true,
+    "prg": true,
+    "in_prefixes": []
+  },
+  "non_qg_example": {
+    "q_values": [
+      33,
+      1149985,
+      1748913478469871198804001,
+      9355635627941592064882803333949382787436929695691365260924827721579713568155195776266354446804001
+    ],
+    "k_values": [
+      1,
+      33,
+      37949505,
+      66370400795759769408368429969505
+    ],
+    "d_intra": "27/10",
+    "response": [
+      "1/4",
+      "1/4",
+      "1/4",
+      "1/4"
+    ],
+    "all_digits_large": true,
+    "prg": true,
+    "in_prefixes": [
+      "27/10",
+      "70225/34846",
+      "92170556110873681/46085277751840798",
+      "281921926514546498068221612656370051981883214361015139029595993681/140960963257273249034110806328184495027735241102352302567358240798"
+    ]
+  },
+  "scope": [
+    "finite exact algebra and source-anchor validation",
+    "conditional extension of the CS quantitative entry estimate",
+    "not a global MLC proof"
+  ]
+}

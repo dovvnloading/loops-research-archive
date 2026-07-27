@@ -1,0 +1,16 @@
+\begin{lemma}\label{lem:collision}
+Let \(z_1=-1+\tfrac45 i\). Then \(1<|z_1|<r'\), and there exists \(z_2\in\mathbb A(1,r')\) with \(z_2\ne z_1\) and \(R(z_2)=R(z_1)\). Hence \(R\) is not injective on \(\mathbb A(1,r')\).
+\end{lemma}
+
+\begin{proof}
+First, \(|z_1|^2=\tfrac{41}{25}\), so \(1<|z_1|<r'\). Exact substitution gives
+\[ w=R(z_1)=-\frac{559602300}{1858025273}+\frac{1886709225}{1858025273}\,i. \tag{A.11} \]
+The polynomial \(N-wD_0\) has the exact factor \(z-z_1\). Removing that factor and multiplying by a nonzero constant, the remaining quartic is
+\[\begin{aligned} Q(z)={}&(1649705408450+1129218801775i)z^{4}\\ &+(8374862949240-2102550942545i)z^{3}\\ &+(5597363347032-11487498744901i)z^{2}\\ &+(-2960676892680-7024430543585i)z\\ &-1525645358450-501687535025i. \end{aligned}\tag{A.12}\]
+\emph{Certificate R9.} Set \(c=-0.570412+1.153470i\) (exact terminating decimals) and \(\rho_1=10^{-5}\). The exact rational Taylor inequality
+\[ L\bigl(Q'(c)\bigr)\rho_1>11\Bigl[U\bigl(Q(c)\bigr)+\sum_{k=2}^{4}U\Bigl(\tfrac{Q^{(k)}(c)}{k!}\Bigr)\rho_1^{k}\Bigr] \tag{A.13} \]
+holds, so by Rouch\'e's theorem \(Q\) has a zero \(z_2\) in \(|z-c|<\rho_1\).
+The exact center modulus is \(|c|^2=\tfrac{413965722661}{250000000000}\), and squaring rational endpoints gives
+\[ 1<|c|-\rho_1<|z_2|<|c|+\rho_1<1.287=r'. \]
+The \(z_2\)-disk is disjoint from \(z_1\), and \(D_0\) has no zero in the source annulus (Lemma~\ref{lem:avoid}), so \(z_2\) is a genuine solution of \(R(z)=w\). Therefore \(z_2\ne z_1\) and \(R(z_2)=w=R(z_1)\), proving noninjectivity.
+\end{proof}

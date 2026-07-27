@@ -1,0 +1,17 @@
+{
+  "target_micro_count": 8,
+  "seam_vertex": 0,
+  "mandatory_ideal_endpoints": [0, 2, 4, 6, 8],
+  "trace_overlay_endpoints": [0, 1, 2, 3, 4, 5, 6, 7, 8],
+  "source_atoms": [
+    {"imm_micro": 0, "cov_micro": 0},
+    {"imm_micro": 1, "cov_micro": 1},
+    {"imm_micro": 2, "cov_micro": 2},
+    {"imm_micro": null, "cov_micro": 3},
+    {"imm_micro": null, "cov_micro": 4},
+    {"imm_micro": 5, "cov_micro": 5},
+    {"imm_micro": 6, "cov_micro": 6},
+    {"imm_micro": 7, "cov_micro": 7}
+  ],
+  "source_vertex_cov_image": [0,1,2,3,4,5,6,7,8]
+}

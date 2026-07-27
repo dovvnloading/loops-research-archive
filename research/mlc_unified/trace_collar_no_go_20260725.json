@@ -1,0 +1,1288 @@
+{
+  "certificate": "PULLED_EQUIPOTENTIAL_SERIAL_RECTANGLE_NO_GO",
+  "checks": [
+    {
+      "q": 1,
+      "degree": 2,
+      "parent_width": "1/3",
+      "child_width": "1/6",
+      "child_positive": true,
+      "strictly_smaller": true,
+      "same_full_arc_width": false,
+      "serial_rectangle_possible_from_widths": false
+    },
+    {
+      "q": 1,
+      "degree": 2,
+      "parent_width": "1/7",
+      "child_width": "1/14",
+      "child_positive": true,
+      "strictly_smaller": true,
+      "same_full_arc_width": false,
+      "serial_rectangle_possible_from_widths": false
+    },
+    {
+      "q": 1,
+      "degree": 2,
+      "parent_width": "1/100",
+      "child_width": "1/200",
+      "child_positive": true,
+      "strictly_smaller": true,
+      "same_full_arc_width": false,
+      "serial_rectangle_possible_from_widths": false
+    },
+    {
+      "q": 1,
+      "degree": 2,
+      "parent_width": "2/5",
+      "child_width": "1/5",
+      "child_positive": true,
+      "strictly_smaller": true,
+      "same_full_arc_width": false,
+      "serial_rectangle_possible_from_widths": false
+    },
+    {
+      "q": 2,
+      "degree": 4,
+      "parent_width": "1/3",
+      "child_width": "1/12",
+      "child_positive": true,
+      "strictly_smaller": true,
+      "same_full_arc_width": false,
+      "serial_rectangle_possible_from_widths": false
+    },
+    {
+      "q": 2,
+      "degree": 4,
+      "parent_width": "1/7",
+      "child_width": "1/28",
+      "child_positive": true,
+      "strictly_smaller": true,
+      "same_full_arc_width": false,
+      "serial_rectangle_possible_from_widths": false
+    },
+    {
+      "q": 2,
+      "degree": 4,
+      "parent_width": "1/100",
+      "child_width": "1/400",
+      "child_positive": true,
+      "strictly_smaller": true,
+      "same_full_arc_width": false,
+      "serial_rectangle_possible_from_widths": false
+    },
+    {
+      "q": 2,
+      "degree": 4,
+      "parent_width": "2/5",
+      "child_width": "1/10",
+      "child_positive": true,
+      "strictly_smaller": true,
+      "same_full_arc_width": false,
+      "serial_rectangle_possible_from_widths": false
+    },
+    {
+      "q": 3,
+      "degree": 8,
+      "parent_width": "1/3",
+      "child_width": "1/24",
+      "child_positive": true,
+      "strictly_smaller": true,
+      "same_full_arc_width": false,
+      "serial_rectangle_possible_from_widths": false
+    },
+    {
+      "q": 3,
+      "degree": 8,
+      "parent_width": "1/7",
+      "child_width": "1/56",
+      "child_positive": true,
+      "strictly_smaller": true,
+      "same_full_arc_width": false,
+      "serial_rectangle_possible_from_widths": false
+    },
+    {
+      "q": 3,
+      "degree": 8,
+      "parent_width": "1/100",
+      "child_width": "1/800",
+      "child_positive": true,
+      "strictly_smaller": true,
+      "same_full_arc_width": false,
+      "serial_rectangle_possible_from_widths": false
+    },
+    {
+      "q": 3,
+      "degree": 8,
+      "parent_width": "2/5",
+      "child_width": "1/20",
+      "child_positive": true,
+      "strictly_smaller": true,
+      "same_full_arc_width": false,
+      "serial_rectangle_possible_from_widths": false
+    },
+    {
+      "q": 4,
+      "degree": 16,
+      "parent_width": "1/3",
+      "child_width": "1/48",
+      "child_positive": true,
+      "strictly_smaller": true,
+      "same_full_arc_width": false,
+      "serial_rectangle_possible_from_widths": false
+    },
+    {
+      "q": 4,
+      "degree": 16,
+      "parent_width": "1/7",
+      "child_width": "1/112",
+      "child_positive": true,
+      "strictly_smaller": true,
+      "same_full_arc_width": false,
+      "serial_rectangle_possible_from_widths": false
+    },
+    {
+      "q": 4,
+      "degree": 16,
+      "parent_width": "1/100",
+      "child_width": "1/1600",
+      "child_positive": true,
+      "strictly_smaller": true,
+      "same_full_arc_width": false,
+      "serial_rectangle_possible_from_widths": false
+    },
+    {
+      "q": 4,
+      "degree": 16,
+      "parent_width": "2/5",
+      "child_width": "1/40",
+      "child_positive": true,
+      "strictly_smaller": true,
+      "same_full_arc_width": false,
+      "serial_rectangle_possible_from_widths": false
+    },
+    {
+      "q": 5,
+      "degree": 32,
+      "parent_width": "1/3",
+      "child_width": "1/96",
+      "child_positive": true,
+      "strictly_smaller": true,
+      "same_full_arc_width": false,
+      "serial_rectangle_possible_from_widths": false
+    },
+    {
+      "q": 5,
+      "degree": 32,
+      "parent_width": "1/7",
+      "child_width": "1/224",
+      "child_positive": true,
+      "strictly_smaller": true,
+      "same_full_arc_width": false,
+      "serial_rectangle_possible_from_widths": false
+    },
+    {
+      "q": 5,
+      "degree": 32,
+      "parent_width": "1/100",
+      "child_width": "1/3200",
+      "child_positive": true,
+      "strictly_smaller": true,
+      "same_full_arc_width": false,
+      "serial_rectangle_possible_from_widths": false
+    },
+    {
+      "q": 5,
+      "degree": 32,
+      "parent_width": "2/5",
+      "child_width": "1/80",
+      "child_positive": true,
+      "strictly_smaller": true,
+      "same_full_arc_width": false,
+      "serial_rectangle_possible_from_widths": false
+    },
+    {
+      "q": 6,
+      "degree": 64,
+      "parent_width": "1/3",
+      "child_width": "1/192",
+      "child_positive": true,
+      "strictly_smaller": true,
+      "same_full_arc_width": false,
+      "serial_rectangle_possible_from_widths": false
+    },
+    {
+      "q": 6,
+      "degree": 64,
+      "parent_width": "1/7",
+      "child_width": "1/448",
+      "child_positive": true,
+      "strictly_smaller": true,
+      "same_full_arc_width": false,
+      "serial_rectangle_possible_from_widths": false
+    },
+    {
+      "q": 6,
+      "degree": 64,
+      "parent_width": "1/100",
+      "child_width": "1/6400",
+      "child_positive": true,
+      "strictly_smaller": true,
+      "same_full_arc_width": false,
+      "serial_rectangle_possible_from_widths": false
+    },
+    {
+      "q": 6,
+      "degree": 64,
+      "parent_width": "2/5",
+      "child_width": "1/160",
+      "child_positive": true,
+      "strictly_smaller": true,
+      "same_full_arc_width": false,
+      "serial_rectangle_possible_from_widths": false
+    },
+    {
+      "q": 7,
+      "degree": 128,
+      "parent_width": "1/3",
+      "child_width": "1/384",
+      "child_positive": true,
+      "strictly_smaller": true,
+      "same_full_arc_width": false,
+      "serial_rectangle_possible_from_widths": false
+    },
+    {
+      "q": 7,
+      "degree": 128,
+      "parent_width": "1/7",
+      "child_width": "1/896",
+      "child_positive": true,
+      "strictly_smaller": true,
+      "same_full_arc_width": false,
+      "serial_rectangle_possible_from_widths": false
+    },
+    {
+      "q": 7,
+      "degree": 128,
+      "parent_width": "1/100",
+      "child_width": "1/12800",
+      "child_positive": true,
+      "strictly_smaller": true,
+      "same_full_arc_width": false,
+      "serial_rectangle_possible_from_widths": false
+    },
+    {
+      "q": 7,
+      "degree": 128,
+      "parent_width": "2/5",
+      "child_width": "1/320",
+      "child_positive": true,
+      "strictly_smaller": true,
+      "same_full_arc_width": false,
+      "serial_rectangle_possible_from_widths": false
+    },
+    {
+      "q": 8,
+      "degree": 256,
+      "parent_width": "1/3",
+      "child_width": "1/768",
+      "child_positive": true,
+      "strictly_smaller": true,
+      "same_full_arc_width": false,
+      "serial_rectangle_possible_from_widths": false
+    },
+    {
+      "q": 8,
+      "degree": 256,
+      "parent_width": "1/7",
+      "child_width": "1/1792",
+      "child_positive": true,
+      "strictly_smaller": true,
+      "same_full_arc_width": false,
+      "serial_rectangle_possible_from_widths": false
+    },
+    {
+      "q": 8,
+      "degree": 256,
+      "parent_width": "1/100",
+      "child_width": "1/25600",
+      "child_positive": true,
+      "strictly_smaller": true,
+      "same_full_arc_width": false,
+      "serial_rectangle_possible_from_widths": false
+    },
+    {
+      "q": 8,
+      "degree": 256,
+      "parent_width": "2/5",
+      "child_width": "1/640",
+      "child_positive": true,
+      "strictly_smaller": true,
+      "same_full_arc_width": false,
+      "serial_rectangle_possible_from_widths": false
+    },
+    {
+      "q": 9,
+      "degree": 512,
+      "parent_width": "1/3",
+      "child_width": "1/1536",
+      "child_positive": true,
+      "strictly_smaller": true,
+      "same_full_arc_width": false,
+      "serial_rectangle_possible_from_widths": false
+    },
+    {
+      "q": 9,
+      "degree": 512,
+      "parent_width": "1/7",
+      "child_width": "1/3584",
+      "child_positive": true,
+      "strictly_smaller": true,
+      "same_full_arc_width": false,
+      "serial_rectangle_possible_from_widths": false
+    },
+    {
+      "q": 9,
+      "degree": 512,
+      "parent_width": "1/100",
+      "child_width": "1/51200",
+      "child_positive": true,
+      "strictly_smaller": true,
+      "same_full_arc_width": false,
+      "serial_rectangle_possible_from_widths": false
+    },
+    {
+      "q": 9,
+      "degree": 512,
+      "parent_width": "2/5",
+      "child_width": "1/1280",
+      "child_positive": true,
+      "strictly_smaller": true,
+      "same_full_arc_width": false,
+      "serial_rectangle_possible_from_widths": false
+    },
+    {
+      "q": 10,
+      "degree": 1024,
+      "parent_width": "1/3",
+      "child_width": "1/3072",
+      "child_positive": true,
+      "strictly_smaller": true,
+      "same_full_arc_width": false,
+      "serial_rectangle_possible_from_widths": false
+    },
+    {
+      "q": 10,
+      "degree": 1024,
+      "parent_width": "1/7",
+      "child_width": "1/7168",
+      "child_positive": true,
+      "strictly_smaller": true,
+      "same_full_arc_width": false,
+      "serial_rectangle_possible_from_widths": false
+    },
+    {
+      "q": 10,
+      "degree": 1024,
+      "parent_width": "1/100",
+      "child_width": "1/102400",
+      "child_positive": true,
+      "strictly_smaller": true,
+      "same_full_arc_width": false,
+      "serial_rectangle_possible_from_widths": false
+    },
+    {
+      "q": 10,
+      "degree": 1024,
+      "parent_width": "2/5",
+      "child_width": "1/2560",
+      "child_positive": true,
+      "strictly_smaller": true,
+      "same_full_arc_width": false,
+      "serial_rectangle_possible_from_widths": false
+    },
+    {
+      "q": 11,
+      "degree": 2048,
+      "parent_width": "1/3",
+      "child_width": "1/6144",
+      "child_positive": true,
+      "strictly_smaller": true,
+      "same_full_arc_width": false,
+      "serial_rectangle_possible_from_widths": false
+    },
+    {
+      "q": 11,
+      "degree": 2048,
+      "parent_width": "1/7",
+      "child_width": "1/14336",
+      "child_positive": true,
+      "strictly_smaller": true,
+      "same_full_arc_width": false,
+      "serial_rectangle_possible_from_widths": false
+    },
+    {
+      "q": 11,
+      "degree": 2048,
+      "parent_width": "1/100",
+      "child_width": "1/204800",
+      "child_positive": true,
+      "strictly_smaller": true,
+      "same_full_arc_width": false,
+      "serial_rectangle_possible_from_widths": false
+    },
+    {
+      "q": 11,
+      "degree": 2048,
+      "parent_width": "2/5",
+      "child_width": "1/5120",
+      "child_positive": true,
+      "strictly_smaller": true,
+      "same_full_arc_width": false,
+      "serial_rectangle_possible_from_widths": false
+    },
+    {
+      "q": 12,
+      "degree": 4096,
+      "parent_width": "1/3",
+      "child_width": "1/12288",
+      "child_positive": true,
+      "strictly_smaller": true,
+      "same_full_arc_width": false,
+      "serial_rectangle_possible_from_widths": false
+    },
+    {
+      "q": 12,
+      "degree": 4096,
+      "parent_width": "1/7",
+      "child_width": "1/28672",
+      "child_positive": true,
+      "strictly_smaller": true,
+      "same_full_arc_width": false,
+      "serial_rectangle_possible_from_widths": false
+    },
+    {
+      "q": 12,
+      "degree": 4096,
+      "parent_width": "1/100",
+      "child_width": "1/409600",
+      "child_positive": true,
+      "strictly_smaller": true,
+      "same_full_arc_width": false,
+      "serial_rectangle_possible_from_widths": false
+    },
+    {
+      "q": 12,
+      "degree": 4096,
+      "parent_width": "2/5",
+      "child_width": "1/10240",
+      "child_positive": true,
+      "strictly_smaller": true,
+      "same_full_arc_width": false,
+      "serial_rectangle_possible_from_widths": false
+    },
+    {
+      "q": 13,
+      "degree": 8192,
+      "parent_width": "1/3",
+      "child_width": "1/24576",
+      "child_positive": true,
+      "strictly_smaller": true,
+      "same_full_arc_width": false,
+      "serial_rectangle_possible_from_widths": false
+    },
+    {
+      "q": 13,
+      "degree": 8192,
+      "parent_width": "1/7",
+      "child_width": "1/57344",
+      "child_positive": true,
+      "strictly_smaller": true,
+      "same_full_arc_width": false,
+      "serial_rectangle_possible_from_widths": false
+    },
+    {
+      "q": 13,
+      "degree": 8192,
+      "parent_width": "1/100",
+      "child_width": "1/819200",
+      "child_positive": true,
+      "strictly_smaller": true,
+      "same_full_arc_width": false,
+      "serial_rectangle_possible_from_widths": false
+    },
+    {
+      "q": 13,
+      "degree": 8192,
+      "parent_width": "2/5",
+      "child_width": "1/20480",
+      "child_positive": true,
+      "strictly_smaller": true,
+      "same_full_arc_width": false,
+      "serial_rectangle_possible_from_widths": false
+    },
+    {
+      "q": 14,
+      "degree": 16384,
+      "parent_width": "1/3",
+      "child_width": "1/49152",
+      "child_positive": true,
+      "strictly_smaller": true,
+      "same_full_arc_width": false,
+      "serial_rectangle_possible_from_widths": false
+    },
+    {
+      "q": 14,
+      "degree": 16384,
+      "parent_width": "1/7",
+      "child_width": "1/114688",
+      "child_positive": true,
+      "strictly_smaller": true,
+      "same_full_arc_width": false,
+      "serial_rectangle_possible_from_widths": false
+    },
+    {
+      "q": 14,
+      "degree": 16384,
+      "parent_width": "1/100",
+      "child_width": "1/1638400",
+      "child_positive": true,
+      "strictly_smaller": true,
+      "same_full_arc_width": false,
+      "serial_rectangle_possible_from_widths": false
+    },
+    {
+      "q": 14,
+      "degree": 16384,
+      "parent_width": "2/5",
+      "child_width": "1/40960",
+      "child_positive": true,
+      "strictly_smaller": true,
+      "same_full_arc_width": false,
+      "serial_rectangle_possible_from_widths": false
+    },
+    {
+      "q": 15,
+      "degree": 32768,
+      "parent_width": "1/3",
+      "child_width": "1/98304",
+      "child_positive": true,
+      "strictly_smaller": true,
+      "same_full_arc_width": false,
+      "serial_rectangle_possible_from_widths": false
+    },
+    {
+      "q": 15,
+      "degree": 32768,
+      "parent_width": "1/7",
+      "child_width": "1/229376",
+      "child_positive": true,
+      "strictly_smaller": true,
+      "same_full_arc_width": false,
+      "serial_rectangle_possible_from_widths": false
+    },
+    {
+      "q": 15,
+      "degree": 32768,
+      "parent_width": "1/100",
+      "child_width": "1/3276800",
+      "child_positive": true,
+      "strictly_smaller": true,
+      "same_full_arc_width": false,
+      "serial_rectangle_possible_from_widths": false
+    },
+    {
+      "q": 15,
+      "degree": 32768,
+      "parent_width": "2/5",
+      "child_width": "1/81920",
+      "child_positive": true,
+      "strictly_smaller": true,
+      "same_full_arc_width": false,
+      "serial_rectangle_possible_from_widths": false
+    },
+    {
+      "q": 16,
+      "degree": 65536,
+      "parent_width": "1/3",
+      "child_width": "1/196608",
+      "child_positive": true,
+      "strictly_smaller": true,
+      "same_full_arc_width": false,
+      "serial_rectangle_possible_from_widths": false
+    },
+    {
+      "q": 16,
+      "degree": 65536,
+      "parent_width": "1/7",
+      "child_width": "1/458752",
+      "child_positive": true,
+      "strictly_smaller": true,
+      "same_full_arc_width": false,
+      "serial_rectangle_possible_from_widths": false
+    },
+    {
+      "q": 16,
+      "degree": 65536,
+      "parent_width": "1/100",
+      "child_width": "1/6553600",
+      "child_positive": true,
+      "strictly_smaller": true,
+      "same_full_arc_width": false,
+      "serial_rectangle_possible_from_widths": false
+    },
+    {
+      "q": 16,
+      "degree": 65536,
+      "parent_width": "2/5",
+      "child_width": "1/163840",
+      "child_positive": true,
+      "strictly_smaller": true,
+      "same_full_arc_width": false,
+      "serial_rectangle_possible_from_widths": false
+    },
+    {
+      "q": 17,
+      "degree": 131072,
+      "parent_width": "1/3",
+      "child_width": "1/393216",
+      "child_positive": true,
+      "strictly_smaller": true,
+      "same_full_arc_width": false,
+      "serial_rectangle_possible_from_widths": false
+    },
+    {
+      "q": 17,
+      "degree": 131072,
+      "parent_width": "1/7",
+      "child_width": "1/917504",
+      "child_positive": true,
+      "strictly_smaller": true,
+      "same_full_arc_width": false,
+      "serial_rectangle_possible_from_widths": false
+    },
+    {
+      "q": 17,
+      "degree": 131072,
+      "parent_width": "1/100",
+      "child_width": "1/13107200",
+      "child_positive": true,
+      "strictly_smaller": true,
+      "same_full_arc_width": false,
+      "serial_rectangle_possible_from_widths": false
+    },
+    {
+      "q": 17,
+      "degree": 131072,
+      "parent_width": "2/5",
+      "child_width": "1/327680",
+      "child_positive": true,
+      "strictly_smaller": true,
+      "same_full_arc_width": false,
+      "serial_rectangle_possible_from_widths": false
+    },
+    {
+      "q": 18,
+      "degree": 262144,
+      "parent_width": "1/3",
+      "child_width": "1/786432",
+      "child_positive": true,
+      "strictly_smaller": true,
+      "same_full_arc_width": false,
+      "serial_rectangle_possible_from_widths": false
+    },
+    {
+      "q": 18,
+      "degree": 262144,
+      "parent_width": "1/7",
+      "child_width": "1/1835008",
+      "child_positive": true,
+      "strictly_smaller": true,
+      "same_full_arc_width": false,
+      "serial_rectangle_possible_from_widths": false
+    },
+    {
+      "q": 18,
+      "degree": 262144,
+      "parent_width": "1/100",
+      "child_width": "1/26214400",
+      "child_positive": true,
+      "strictly_smaller": true,
+      "same_full_arc_width": false,
+      "serial_rectangle_possible_from_widths": false
+    },
+    {
+      "q": 18,
+      "degree": 262144,
+      "parent_width": "2/5",
+      "child_width": "1/655360",
+      "child_positive": true,
+      "strictly_smaller": true,
+      "same_full_arc_width": false,
+      "serial_rectangle_possible_from_widths": false
+    },
+    {
+      "q": 19,
+      "degree": 524288,
+      "parent_width": "1/3",
+      "child_width": "1/1572864",
+      "child_positive": true,
+      "strictly_smaller": true,
+      "same_full_arc_width": false,
+      "serial_rectangle_possible_from_widths": false
+    },
+    {
+      "q": 19,
+      "degree": 524288,
+      "parent_width": "1/7",
+      "child_width": "1/3670016",
+      "child_positive": true,
+      "strictly_smaller": true,
+      "same_full_arc_width": false,
+      "serial_rectangle_possible_from_widths": false
+    },
+    {
+      "q": 19,
+      "degree": 524288,
+      "parent_width": "1/100",
+      "child_width": "1/52428800",
+      "child_positive": true,
+      "strictly_smaller": true,
+      "same_full_arc_width": false,
+      "serial_rectangle_possible_from_widths": false
+    },
+    {
+      "q": 19,
+      "degree": 524288,
+      "parent_width": "2/5",
+      "child_width": "1/1310720",
+      "child_positive": true,
+      "strictly_smaller": true,
+      "same_full_arc_width": false,
+      "serial_rectangle_possible_from_widths": false
+    },
+    {
+      "q": 20,
+      "degree": 1048576,
+      "parent_width": "1/3",
+      "child_width": "1/3145728",
+      "child_positive": true,
+      "strictly_smaller": true,
+      "same_full_arc_width": false,
+      "serial_rectangle_possible_from_widths": false
+    },
+    {
+      "q": 20,
+      "degree": 1048576,
+      "parent_width": "1/7",
+      "child_width": "1/7340032",
+      "child_positive": true,
+      "strictly_smaller": true,
+      "same_full_arc_width": false,
+      "serial_rectangle_possible_from_widths": false
+    },
+    {
+      "q": 20,
+      "degree": 1048576,
+      "parent_width": "1/100",
+      "child_width": "1/104857600",
+      "child_positive": true,
+      "strictly_smaller": true,
+      "same_full_arc_width": false,
+      "serial_rectangle_possible_from_widths": false
+    },
+    {
+      "q": 20,
+      "degree": 1048576,
+      "parent_width": "2/5",
+      "child_width": "1/2621440",
+      "child_positive": true,
+      "strictly_smaller": true,
+      "same_full_arc_width": false,
+      "serial_rectangle_possible_from_widths": false
+    },
+    {
+      "q": 21,
+      "degree": 2097152,
+      "parent_width": "1/3",
+      "child_width": "1/6291456",
+      "child_positive": true,
+      "strictly_smaller": true,
+      "same_full_arc_width": false,
+      "serial_rectangle_possible_from_widths": false
+    },
+    {
+      "q": 21,
+      "degree": 2097152,
+      "parent_width": "1/7",
+      "child_width": "1/14680064",
+      "child_positive": true,
+      "strictly_smaller": true,
+      "same_full_arc_width": false,
+      "serial_rectangle_possible_from_widths": false
+    },
+    {
+      "q": 21,
+      "degree": 2097152,
+      "parent_width": "1/100",
+      "child_width": "1/209715200",
+      "child_positive": true,
+      "strictly_smaller": true,
+      "same_full_arc_width": false,
+      "serial_rectangle_possible_from_widths": false
+    },
+    {
+      "q": 21,
+      "degree": 2097152,
+      "parent_width": "2/5",
+      "child_width": "1/5242880",
+      "child_positive": true,
+      "strictly_smaller": true,
+      "same_full_arc_width": false,
+      "serial_rectangle_possible_from_widths": false
+    },
+    {
+      "q": 22,
+      "degree": 4194304,
+      "parent_width": "1/3",
+      "child_width": "1/12582912",
+      "child_positive": true,
+      "strictly_smaller": true,
+      "same_full_arc_width": false,
+      "serial_rectangle_possible_from_widths": false
+    },
+    {
+      "q": 22,
+      "degree": 4194304,
+      "parent_width": "1/7",
+      "child_width": "1/29360128",
+      "child_positive": true,
+      "strictly_smaller": true,
+      "same_full_arc_width": false,
+      "serial_rectangle_possible_from_widths": false
+    },
+    {
+      "q": 22,
+      "degree": 4194304,
+      "parent_width": "1/100",
+      "child_width": "1/419430400",
+      "child_positive": true,
+      "strictly_smaller": true,
+      "same_full_arc_width": false,
+      "serial_rectangle_possible_from_widths": false
+    },
+    {
+      "q": 22,
+      "degree": 4194304,
+      "parent_width": "2/5",
+      "child_width": "1/10485760",
+      "child_positive": true,
+      "strictly_smaller": true,
+      "same_full_arc_width": false,
+      "serial_rectangle_possible_from_widths": false
+    },
+    {
+      "q": 23,
+      "degree": 8388608,
+      "parent_width": "1/3",
+      "child_width": "1/25165824",
+      "child_positive": true,
+      "strictly_smaller": true,
+      "same_full_arc_width": false,
+      "serial_rectangle_possible_from_widths": false
+    },
+    {
+      "q": 23,
+      "degree": 8388608,
+      "parent_width": "1/7",
+      "child_width": "1/58720256",
+      "child_positive": true,
+      "strictly_smaller": true,
+      "same_full_arc_width": false,
+      "serial_rectangle_possible_from_widths": false
+    },
+    {
+      "q": 23,
+      "degree": 8388608,
+      "parent_width": "1/100",
+      "child_width": "1/838860800",
+      "child_positive": true,
+      "strictly_smaller": true,
+      "same_full_arc_width": false,
+      "serial_rectangle_possible_from_widths": false
+    },
+    {
+      "q": 23,
+      "degree": 8388608,
+      "parent_width": "2/5",
+      "child_width": "1/20971520",
+      "child_positive": true,
+      "strictly_smaller": true,
+      "same_full_arc_width": false,
+      "serial_rectangle_possible_from_widths": false
+    },
+    {
+      "q": 24,
+      "degree": 16777216,
+      "parent_width": "1/3",
+      "child_width": "1/50331648",
+      "child_positive": true,
+      "strictly_smaller": true,
+      "same_full_arc_width": false,
+      "serial_rectangle_possible_from_widths": false
+    },
+    {
+      "q": 24,
+      "degree": 16777216,
+      "parent_width": "1/7",
+      "child_width": "1/117440512",
+      "child_positive": true,
+      "strictly_smaller": true,
+      "same_full_arc_width": false,
+      "serial_rectangle_possible_from_widths": false
+    },
+    {
+      "q": 24,
+      "degree": 16777216,
+      "parent_width": "1/100",
+      "child_width": "1/1677721600",
+      "child_positive": true,
+      "strictly_smaller": true,
+      "same_full_arc_width": false,
+      "serial_rectangle_possible_from_widths": false
+    },
+    {
+      "q": 24,
+      "degree": 16777216,
+      "parent_width": "2/5",
+      "child_width": "1/41943040",
+      "child_positive": true,
+      "strictly_smaller": true,
+      "same_full_arc_width": false,
+      "serial_rectangle_possible_from_widths": false
+    },
+    {
+      "q": 25,
+      "degree": 33554432,
+      "parent_width": "1/3",
+      "child_width": "1/100663296",
+      "child_positive": true,
+      "strictly_smaller": true,
+      "same_full_arc_width": false,
+      "serial_rectangle_possible_from_widths": false
+    },
+    {
+      "q": 25,
+      "degree": 33554432,
+      "parent_width": "1/7",
+      "child_width": "1/234881024",
+      "child_positive": true,
+      "strictly_smaller": true,
+      "same_full_arc_width": false,
+      "serial_rectangle_possible_from_widths": false
+    },
+    {
+      "q": 25,
+      "degree": 33554432,
+      "parent_width": "1/100",
+      "child_width": "1/3355443200",
+      "child_positive": true,
+      "strictly_smaller": true,
+      "same_full_arc_width": false,
+      "serial_rectangle_possible_from_widths": false
+    },
+    {
+      "q": 25,
+      "degree": 33554432,
+      "parent_width": "2/5",
+      "child_width": "1/83886080",
+      "child_positive": true,
+      "strictly_smaller": true,
+      "same_full_arc_width": false,
+      "serial_rectangle_possible_from_widths": false
+    },
+    {
+      "q": 26,
+      "degree": 67108864,
+      "parent_width": "1/3",
+      "child_width": "1/201326592",
+      "child_positive": true,
+      "strictly_smaller": true,
+      "same_full_arc_width": false,
+      "serial_rectangle_possible_from_widths": false
+    },
+    {
+      "q": 26,
+      "degree": 67108864,
+      "parent_width": "1/7",
+      "child_width": "1/469762048",
+      "child_positive": true,
+      "strictly_smaller": true,
+      "same_full_arc_width": false,
+      "serial_rectangle_possible_from_widths": false
+    },
+    {
+      "q": 26,
+      "degree": 67108864,
+      "parent_width": "1/100",
+      "child_width": "1/6710886400",
+      "child_positive": true,
+      "strictly_smaller": true,
+      "same_full_arc_width": false,
+      "serial_rectangle_possible_from_widths": false
+    },
+    {
+      "q": 26,
+      "degree": 67108864,
+      "parent_width": "2/5",
+      "child_width": "1/167772160",
+      "child_positive": true,
+      "strictly_smaller": true,
+      "same_full_arc_width": false,
+      "serial_rectangle_possible_from_widths": false
+    },
+    {
+      "q": 27,
+      "degree": 134217728,
+      "parent_width": "1/3",
+      "child_width": "1/402653184",
+      "child_positive": true,
+      "strictly_smaller": true,
+      "same_full_arc_width": false,
+      "serial_rectangle_possible_from_widths": false
+    },
+    {
+      "q": 27,
+      "degree": 134217728,
+      "parent_width": "1/7",
+      "child_width": "1/939524096",
+      "child_positive": true,
+      "strictly_smaller": true,
+      "same_full_arc_width": false,
+      "serial_rectangle_possible_from_widths": false
+    },
+    {
+      "q": 27,
+      "degree": 134217728,
+      "parent_width": "1/100",
+      "child_width": "1/13421772800",
+      "child_positive": true,
+      "strictly_smaller": true,
+      "same_full_arc_width": false,
+      "serial_rectangle_possible_from_widths": false
+    },
+    {
+      "q": 27,
+      "degree": 134217728,
+      "parent_width": "2/5",
+      "child_width": "1/335544320",
+      "child_positive": true,
+      "strictly_smaller": true,
+      "same_full_arc_width": false,
+      "serial_rectangle_possible_from_widths": false
+    },
+    {
+      "q": 28,
+      "degree": 268435456,
+      "parent_width": "1/3",
+      "child_width": "1/805306368",
+      "child_positive": true,
+      "strictly_smaller": true,
+      "same_full_arc_width": false,
+      "serial_rectangle_possible_from_widths": false
+    },
+    {
+      "q": 28,
+      "degree": 268435456,
+      "parent_width": "1/7",
+      "child_width": "1/1879048192",
+      "child_positive": true,
+      "strictly_smaller": true,
+      "same_full_arc_width": false,
+      "serial_rectangle_possible_from_widths": false
+    },
+    {
+      "q": 28,
+      "degree": 268435456,
+      "parent_width": "1/100",
+      "child_width": "1/26843545600",
+      "child_positive": true,
+      "strictly_smaller": true,
+      "same_full_arc_width": false,
+      "serial_rectangle_possible_from_widths": false
+    },
+    {
+      "q": 28,
+      "degree": 268435456,
+      "parent_width": "2/5",
+      "child_width": "1/671088640",
+      "child_positive": true,
+      "strictly_smaller": true,
+      "same_full_arc_width": false,
+      "serial_rectangle_possible_from_widths": false
+    },
+    {
+      "q": 29,
+      "degree": 536870912,
+      "parent_width": "1/3",
+      "child_width": "1/1610612736",
+      "child_positive": true,
+      "strictly_smaller": true,
+      "same_full_arc_width": false,
+      "serial_rectangle_possible_from_widths": false
+    },
+    {
+      "q": 29,
+      "degree": 536870912,
+      "parent_width": "1/7",
+      "child_width": "1/3758096384",
+      "child_positive": true,
+      "strictly_smaller": true,
+      "same_full_arc_width": false,
+      "serial_rectangle_possible_from_widths": false
+    },
+    {
+      "q": 29,
+      "degree": 536870912,
+      "parent_width": "1/100",
+      "child_width": "1/53687091200",
+      "child_positive": true,
+      "strictly_smaller": true,
+      "same_full_arc_width": false,
+      "serial_rectangle_possible_from_widths": false
+    },
+    {
+      "q": 29,
+      "degree": 536870912,
+      "parent_width": "2/5",
+      "child_width": "1/1342177280",
+      "child_positive": true,
+      "strictly_smaller": true,
+      "same_full_arc_width": false,
+      "serial_rectangle_possible_from_widths": false
+    },
+    {
+      "q": 30,
+      "degree": 1073741824,
+      "parent_width": "1/3",
+      "child_width": "1/3221225472",
+      "child_positive": true,
+      "strictly_smaller": true,
+      "same_full_arc_width": false,
+      "serial_rectangle_possible_from_widths": false
+    },
+    {
+      "q": 30,
+      "degree": 1073741824,
+      "parent_width": "1/7",
+      "child_width": "1/7516192768",
+      "child_positive": true,
+      "strictly_smaller": true,
+      "same_full_arc_width": false,
+      "serial_rectangle_possible_from_widths": false
+    },
+    {
+      "q": 30,
+      "degree": 1073741824,
+      "parent_width": "1/100",
+      "child_width": "1/107374182400",
+      "child_positive": true,
+      "strictly_smaller": true,
+      "same_full_arc_width": false,
+      "serial_rectangle_possible_from_widths": false
+    },
+    {
+      "q": 30,
+      "degree": 1073741824,
+      "parent_width": "2/5",
+      "child_width": "1/2684354560",
+      "child_positive": true,
+      "strictly_smaller": true,
+      "same_full_arc_width": false,
+      "serial_rectangle_possible_from_widths": false
+    },
+    {
+      "q": 31,
+      "degree": 2147483648,
+      "parent_width": "1/3",
+      "child_width": "1/6442450944",
+      "child_positive": true,
+      "strictly_smaller": true,
+      "same_full_arc_width": false,
+      "serial_rectangle_possible_from_widths": false
+    },
+    {
+      "q": 31,
+      "degree": 2147483648,
+      "parent_width": "1/7",
+      "child_width": "1/15032385536",
+      "child_positive": true,
+      "strictly_smaller": true,
+      "same_full_arc_width": false,
+      "serial_rectangle_possible_from_widths": false
+    },
+    {
+      "q": 31,
+      "degree": 2147483648,
+      "parent_width": "1/100",
+      "child_width": "1/214748364800",
+      "child_positive": true,
+      "strictly_smaller": true,
+      "same_full_arc_width": false,
+      "serial_rectangle_possible_from_widths": false
+    },
+    {
+      "q": 31,
+      "degree": 2147483648,
+      "parent_width": "2/5",
+      "child_width": "1/5368709120",
+      "child_positive": true,
+      "strictly_smaller": true,
+      "same_full_arc_width": false,
+      "serial_rectangle_possible_from_widths": false
+    },
+    {
+      "q": 32,
+      "degree": 4294967296,
+      "parent_width": "1/3",
+      "child_width": "1/12884901888",
+      "child_positive": true,
+      "strictly_smaller": true,
+      "same_full_arc_width": false,
+      "serial_rectangle_possible_from_widths": false
+    },
+    {
+      "q": 32,
+      "degree": 4294967296,
+      "parent_width": "1/7",
+      "child_width": "1/30064771072",
+      "child_positive": true,
+      "strictly_smaller": true,
+      "same_full_arc_width": false,
+      "serial_rectangle_possible_from_widths": false
+    },
+    {
+      "q": 32,
+      "degree": 4294967296,
+      "parent_width": "1/100",
+      "child_width": "1/429496729600",
+      "child_positive": true,
+      "strictly_smaller": true,
+      "same_full_arc_width": false,
+      "serial_rectangle_possible_from_widths": false
+    },
+    {
+      "q": 32,
+      "degree": 4294967296,
+      "parent_width": "2/5",
+      "child_width": "1/10737418240",
+      "child_positive": true,
+      "strictly_smaller": true,
+      "same_full_arc_width": false,
+      "serial_rectangle_possible_from_widths": false
+    }
+  ],
+  "all_checks": true,
+  "scope": "exact width obstruction only; full-trace rectangle calculus remains valid for genuine trace-compatible collars; no global MLC claim",
+  "original_artifacts_written": false
+}

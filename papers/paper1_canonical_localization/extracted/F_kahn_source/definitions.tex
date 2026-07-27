@@ -1,0 +1,93 @@
+\begin{definition}[FJ-set; Kahn I, \S1.5]\label{def:fjset}
+A set \(K\subset\C\) (or in a Riemann-surface disk) is an \emph{FJ-set}
+(``filled-Julia-like set'') if it is compact, connected, full, and has
+more than one point.
+\end{definition}
+
+\begin{definition}[\(\psi\)-polynomial-like map; Kahn I, Definition 7.1, p.~36]\label{def:psipl}
+A \emph{\(\psi\)-polynomial-like map} (with connected Julia set) of degree
+\(d\) is a pair of holomorphic maps \((i,f)\colon\BU'\to\BU\) together
+with an FJ-set \(K\subset\BU\) such that:
+\begin{enumerate}
+\item \(\BU'\) and \(\BU\) are disks;
+\item \(i\) is an immersion;
+\item \(f\) is a proper branched covering of degree \(d\);
+\item \(i^{-1}(K)=f^{-1}(K)=:K'\); and
+\item \(K'\) is connected.
+\end{enumerate}
+\(K\) is the \emph{filled Julia set} of \((i,f)\).  The source records
+(Definition~7.1 and the remark following it, p.~36; \S7.3.2, p.~42): \(K'\) is again an FJ-set; connectivity of \(K'\)
+is equivalent to all branch values of \(f\) lying in \(K\); the set
+\(K\) is determined by the pair \((i,f)\); and
+\(i\colon K'\to K\) is a bijection (used later as a homeomorphism).
+A degree-two \(\psi\)-polynomial-like map is \emph{\(\psi\)-quadratic-like}.
+\end{definition}
+
+\begin{definition}[marked surfaces, local pairs, local covers; Kahn I, \S7.4.1, p.~44]\label{def:local}
+A \emph{marked Riemann surface} is a pair \((S,A)\) with \(S\) a Riemann
+surface and \(A\subset S\) compact, connected, and full (no component of
+\(S\sm A\) has compact closure in \(S\)).  A \emph{morphism}
+\(g\colon(S,A)\to(T,B)\) is a holomorphic map with \(A=g^{-1}(B)\).
+The pair \((S,A)\) is \emph{local} if every component of \(S\sm A\) is
+an annulus; in that case \(S\) deformation-retracts into any
+neighborhood of \(A\).  For every \((S,A)\) and every neighborhood
+\(V\supset A\) there is a subsurface \(U\subset V\) containing \(A\)
+with \((U,A)\) local; such \(U\) is a \emph{local neighborhood} of
+\(A\).  A morphism \(g\colon(S,A)\to(T,B)\) is a \emph{local cover} if
+\(g\colon A\to B\) is a bijection and \(g\colon S\sm A\to T\sm B\) is a
+covering map.
+\end{definition}
+
+\begin{definition}[localization; Kahn I, \S7.4.1, Theorem~7.12, p.~44]\label{def:localization}
+The \emph{localization} of a marked Riemann surface \((S,A)\) is the
+(unique up to isomorphism) local marked Riemann surface
+\((S_A,\widehat A)\) equipped with a local cover
+\(\pi_{S,A}\colon(S_A,\widehat A)\to(S,A)\) produced by the
+localization theorem below; for a morphism \(g\), its unique commuting
+lift \(\widehat g\) is the \emph{localization of \(g\)}.
+\end{definition}
+
+\begin{definition}[canonical seed and localization subgroups; local notes, forced-collision Sec.~5; Kahn I, \S\S7.4.1--7.4.3, pp.~44--46]\label{def:hs-ht}
+Let \(f\colon U^1\to U^0\) be a quadratic-like restriction of a
+quadratic polynomial, primitively renormalizable of period \(p>1\); put
+\(F=f^p\colon U^p\to U^0\), \(a=i^p\colon U^p\hookrightarrow U^0\)
+(the physical inclusion, so \(a^{-1}(A)=A\)), \(A=K_p\),
+\(B=\KK_p\), and
+\[
+ T=(U^0\sm B)\cup A,\qquad T'=(U^p\sm F^{-1}B)\cup A,
+\]
+\[
+ \Omega_s=T'\sm A=U^p\sm F^{-1}B,\qquad
+ \Omega_t=T\sm A=U^0\sm B.
+\]
+Fix a Jordan local neighborhood \(D_A\Subset T'\) of \(A\) disjoint
+from every other component of \(F^{-1}B\), and a basepoint
+\(z_*\in D_A\sm A\).  The \emph{source localization subgroup} is
+\[
+ H_s=\operatorname{im}\bigl[\pi_1(D_A\sm A,z_*)\longrightarrow
+ \pi_1(\Omega_s,z_*)\bigr],
+\]
+and \(H_t\le\pi_1(\Omega_t,z_*)\) is defined analogously from a local
+neighborhood of \(A\) in \(T\).  These are based representatives of the
+(unbased, conjugacy-well-defined) covering subgroups by which Kahn's
+localization covers of \(\Omega_s\) and \(\Omega_t\) are constructed.
+Kahn's own requirement on a local neighborhood is weaker than what we
+take: he asks only that every component of \(U\sm A\) be an annulus
+(Kahn~I, \S7.4.1, p.~44).  Restricting to \emph{Jordan} \(D_A\) is our
+own specialization; it is legitimate by Lemma~\ref{lem:local-pair},
+which shows that a Jordan neighborhood of a full continuum is a local
+pair in Kahn's sense, and it is convenient because it makes the
+winding computations of Section~\ref{sec:forced} immediate.
+\end{definition}
+
+\begin{definition}[KL direct-decoration stage; KL II, \S2.1, p.~6]\label{def:kl-decoration}
+In the decoration combinatorics of KL~II (satellite period \(q\),
+escape depth \(\nu\)), the principal piece is \(P=Y^{(\nu-1)q+1}\);
+since \(f^q(P)\supset P\) and the critical value \(f^q(0)\) is not in
+\(P\), the piece \(P\) has two univalent \(f^q\)-pullbacks
+\(Q_L,Q_R\subset P\) of depth \(\nu q+1\), attached to \(\alpha\) and
+\(\alpha'\) respectively.  The \emph{direct-decoration depths} are
+\[
+ m=\nu q+1,\qquad n=(\nu-1)q+1 .
+\]
+\end{definition}

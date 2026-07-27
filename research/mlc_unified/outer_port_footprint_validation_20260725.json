@@ -1,0 +1,110 @@
+{
+  "source_locks": {
+    "passed": true,
+    "sha256": {
+      ".tmp_kl06_source\\wad.tex": "B5DF40A5D33B6B590B430D47693514088AF6FC287BAA5D87B4D11015B990E580",
+      ".tmp_kl06_source\\psiql2.tex": "E4EFCCEC65D8C9C2BDFE2AF8203B3D4D63ECF992B40D302F56FBA78259547228",
+      ".tmp_kl08_source\\kingdom.tex": "5DC04FEFF6B6A1D73040FFD50519C35D62EFF03C1049686DA71D595758E38FA7",
+      ".tmp_kl08_source\\psiql.tex": "6CC9726461473812A5FBA93377F2DC0B088DB6CAC4B9DE90C7B2AE625DFB49AF",
+      ".tmp_kl08_source\\moduli.tex": "CBDB9EF7D6AC94C33FDB0AB7167E19C39EB23D27373C266A296CF6031E0CAF7E",
+      ".tmp_wave_audit\\waves-with-Misha.tex": "AD4C774806D9902AA54FA31C56AD6146D8034946F19CC5E9CEC3C51A3F94FDD5"
+    }
+  },
+  "ledger": {
+    "passed": true,
+    "total": 330,
+    "counts": {
+      "imported": 23,
+      "proved": 235,
+      "open": 72
+    },
+    "statuses": {
+      "KL_PSEUDOPIECE_CONFORMAL_IDEAL_BOUNDARY": "proved",
+      "EMBEDDED_DISK_ACCESSIBLE_FOOTPRINT_THEOREM": "proved",
+      "DEGREE_ONE_ANNULUS_IMMERSION_INJECTIVITY_NO_GO": "proved",
+      "KAHN_ANNULUS_GLOBAL_INJECTIVITY_NO_GO": "proved",
+      "KL_TILE_INJECTIVITY_BASE_ANNULUS_REDUCTION": "proved",
+      "TILE_INJECTIVITY_GLUE_EMBEDDING_CRITERION": "proved",
+      "GENERAL_ANNULUS_IMMERSION_LOWER_STRIP_NO_GO": "proved",
+      "COMMON_COORDINATE_NESTED_ANNULUS_OUTER_CAP": "proved",
+      "KL_CANONICAL_LOCALIZATION_FORCED_COLLISION": "proved",
+      "DIRECT_DECORATION_TILE_CENTRAL_OVERLAP_REFLECTION": "open",
+      "DIRECT_DECORATION_DEGREE_ONE_PSEUDO_EMBEDDING": "open",
+      "DIRECT_DECORATION_OUTER_CAP_FOOTPRINT": "open",
+      "DIRECT_DECORATION_PSEUDO_PIECE_PATH_LIFT_EXHAUSTION": "open",
+      "DIRECT_DECORATION_ALL_DEPTH_CONTACT_CLOSURE": "open",
+      "VIRTUAL_WAVE_MARKED_CORRESPONDENCE": "open",
+      "VIRTUAL_AUGMENTED_ATOM_PORT_CERTIFICATE": "open",
+      "UNIVERSAL_PROTECTED_TOWER_CLOSURE": "open",
+      "MLC": "open"
+    }
+  },
+  "documentation": {
+    "passed": true,
+    "abstract_markers": [
+      "This is a maximum, not merely",
+      "Repetition of the same access path is",
+      "Picard is then a contradiction",
+      "global interior injectivity",
+      "Central \\(J\\)-seam footprint computation",
+      "VAAPC-I, UPTCR, or MLC"
+    ],
+    "outer_markers": [
+      "Theorem 9.1: conformal ideal-boundary identification",
+      "Theorem 9.2: component properness conditional on embedding",
+      "Theorem 9.3: conditional exact outer-port criterion",
+      "Proposition 4.2: degree-one immersion does not imply a lower strip",
+      "reflects the declared central overlap",
+      "not merely the path component",
+      "Restricted canonical-resolution/KL-tile correspondence and sheet-sensitive actual",
+      "\\(O\\)-/\\(J\\)-footprint exhaustion",
+      "Eventual residence in one tile"
+    ],
+    "forbidden_markers_absent": [
+      "direct-decoration specialization of the positive theorem remains conditional",
+      "first unresolved component is adjacent to an immersed deeper-equipotential outer side",
+      "possible non-singleton prime-end cluster traces"
+    ]
+  },
+  "finite_formula": {
+    "passed": true,
+    "closed_port": [
+      "lambda",
+      "p+",
+      "p-"
+    ],
+    "open_outer_atom": [
+      "lambda"
+    ],
+    "open_tile_star": [
+      "xi",
+      "p-",
+      "lambda",
+      "p+",
+      "eta"
+    ],
+    "safe_open_outer": [],
+    "safe_tile_star": [
+      "outer-a",
+      "outer-b",
+      "proper-left-corner"
+    ],
+    "tested_depth_gaps": [
+      1,
+      64
+    ],
+    "scope": "conditional common-coordinate finite logic only"
+  },
+  "noninjective_immersion": {
+    "passed": true,
+    "h": 0.1,
+    "a": 3.0,
+    "d": 0.6440764018040988,
+    "z_imaginary_part": 0.04578602386962177,
+    "collision_error": 0.0,
+    "derivative_modulus_margin": 1.2499999999999991,
+    "scope": "diagnostic transcription check only"
+  },
+  "scope": "mechanical audit only; analytic proofs are in the cited notes; no VAAPC-I, UPTCR, rigidity, or MLC promotion",
+  "passed": true
+}

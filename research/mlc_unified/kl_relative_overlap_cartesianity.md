@@ -1,0 +1,839 @@
+# KL relative overlap cartesianity
+
+## 1. Result and correction
+
+Fix one Kahn--Lyubich pseudo-piece inclusion
+
+\[
+ \boldsymbol\iota:\mathbf Q\longrightarrow \mathbf P
+\]
+
+associated with a direct-decoration pullback
+
+\[
+ Q=Q_a\subset P,\qquad a\in\{L,R\}.
+\]
+
+Write
+
+\[
+ \mathbf Q
+ =
+ Q\sqcup_{e_i}\widehat A_i,
+ \qquad
+ \mathbf P
+ =
+ P\sqcup_{\widetilde e_j}\widehat B_j,
+\tag{1.1}
+\]
+
+where
+
+\[
+ Q_i\in\pi_0(Q\setminus K_Q),
+ \qquad
+ P_j\in\pi_0(P\setminus K_P)
+\]
+
+are the declared central/tile overlaps.  Let
+
+\[
+ j:\pi_0(Q\setminus K_Q)\longrightarrow
+   \pi_0(P\setminus K_P)
+\tag{1.2}
+\]
+
+be the inclusion component map, and let
+
+\[
+ L_i:\widehat A_i\longrightarrow\widehat B_{j(i)}
+\tag{1.3}
+\]
+
+be the induced tile immersion.
+
+This note corrects one overstrong hypothesis in the previous gluing audit.
+For injectivity of the **full** pseudo-piece map, one does not need
+
+\[
+ L_i^{-1}\!\left(\widetilde e_{j(i)}(P_{j(i)})\right)
+ =
+ e_i(Q_i).
+\tag{FOR}
+\]
+
+The equality `(FOR)` forbids a source-tile point from entering any part of
+the target central/tile overlap, including the part lying outside the
+image of the source central piece.  Such an entry alone cannot create two
+source preimages.
+
+The exact collision-relevant target overlap is instead
+
+\[
+ \widetilde e_{j(i)}
+ \bigl(P_{j(i)}\cap Q\bigr).
+\tag{1.4}
+\]
+
+For the fixed direct-decoration pair, KL's component surjectivity and the
+dynamical component bijection imply
+
+\[
+ P_{j(i)}\cap Q=Q_i.
+\tag{1.5}
+\]
+
+Consequently, if every full tile map \(L_i\) is injective, then
+
+\[
+ L_i^{-1}\!\left(\widetilde e_{j(i)}(Q_i)\right)
+ =
+ e_i(Q_i).
+\tag{RC}
+\]
+
+This relative equality is precisely what is needed in a tile--central
+collision.  It follows from tile injectivity and the commuting gluing
+square; it is not an additional analytic gate.
+
+The corrected conclusion is therefore:
+
+> **Full pseudo-piece gluing theorem.**  For the fixed direct-decoration
+> pair, injectivity of every full universal-cover tile map \(L_i\) implies
+> that \(\boldsymbol\iota:\mathbf Q\to\mathbf P\) is an interior
+> holomorphic embedding.
+
+This theorem is a conditional gluing theorem, not a route to a universal
+full-canonical embedding.  For a full direct-decoration stage propagated
+from Kahn's canonical primitive localization, the forced-collision theorem
+in `kl_canonical_localization_forced_collision.md` gives a non-base class
+
+\[
+ [\gamma]\in a_*^{-1}(H_t)\setminus H_s.
+\tag{1.6}
+\]
+
+The full bold base-annulus map, every induced full tile map, and the glued
+pseudo-piece map are then noninjective.  Thus the antecedent of the
+full-pseudo-piece gluing theorem is false in that canonical application.
+The theorem remains available for a separately realized collision-free
+map or a retained collar satisfying its own hypotheses.
+
+The distinction between full and collar-truncated tiles is essential.
+If only a selected collar restriction of \(L_i\) is known to be
+injective, the comparison point \(e_i(z)\) used below may lie outside the
+retained collar.  Thus the finite-horizon collar theorem may continue to
+assume a collar-level reflection or an equivalent inverse-component
+condition.  This note does not remove that conditional hypothesis.
+
+VAAPC-I, UPTCR, and MLC remain open.
+
+## 2. Source lock
+
+Only the following source facts are imported.
+
+1. KL II, `psiql.tex`, lines 95--123, defines the pseudo-piece both by
+   admissible path classes and by the gluing presentation (1.1).
+2. Lines 129--160 prove that, inside one pseudo-piece:
+   - the central piece embeds;
+   - every universal-cover tile embeds;
+   - distinct tile images are disjoint; and
+   - tile \(i\) meets the central piece exactly in its declared component.
+3. Lines 169--206 prove naturality.  For an inclusion \(Q\subset P\), the
+   central map is the inclusion, the component map (1.2) is surjective,
+   the tile maps (1.3) are immersions, and they glue to the pseudo-piece
+   immersion.
+4. KL II, `kingdom.tex`, lines 133--154, supplies the fixed
+   direct-decoration branches \(g=f^{\mathfrak q}|_{Q_a}:Q_a\to P\),
+   which are univalent pullbacks of \(P\).
+
+The already documented component argument gives a bijection in (1.2):
+the dynamical homeomorphism \(g:Q\to P\) carries
+\(K_Q\) onto \(K_P\), hence bijects the complementary components; KL's
+surjective inclusion component map is a map between finite sets of the
+same cardinality.
+
+No source sentence is upgraded from "immersion" to "embedding."  The tile
+maps remain only immersions until their injectivity is separately proved.
+
+## 3. Abstract finite-star gluing setup
+
+The logical issue is independent of complex analysis, so first isolate it
+in a finite gluing theorem.
+
+### Proposition 3.0 -- equivalence-relation reflection
+
+Let \(\widehat X,\widehat Y\) be disjoint unions of pieces, let
+\(R_X,R_Y\) be the equivalence relations generated by their declared
+gluing maps, and let
+
+\[
+ q_X:\widehat X\to X=\widehat X/R_X,\qquad
+ q_Y:\widehat Y\to Y=\widehat Y/R_Y
+\]
+
+be the quotient maps.  Suppose a piecewise map
+\(\widehat F:\widehat X\to\widehat Y\) preserves the declared gluing
+relations, so it induces \(F:X\to Y\).  Then
+
+\[
+ F\text{ is injective}
+ \quad\Longleftrightarrow\quad
+ (\widehat F\times\widehat F)^{-1}(R_Y)=R_X.
+\tag{3.0}
+\]
+
+Indeed, compatibility gives the inclusion from right to left:
+if \(u\,R_X\,v\), then
+\(\widehat F(u)\,R_Y\,\widehat F(v)\).  Conversely, equality of the
+induced quotient values is equivalent to
+
+\[
+ F(q_X(u))=F(q_X(v))
+ \quad\Longleftrightarrow\quad
+ \widehat F(u)\,R_Y\,\widehat F(v).
+\]
+
+Thus \(F\) is injective exactly when the latter relation forces
+\(q_X(u)=q_X(v)\), equivalently \(u\,R_X\,v\).  This proves (3.0).
+
+Proposition 3.0 is the safe formulation when a gluing presentation has
+transitive chains.  The KL pseudo-piece is a finite star: distinct tiles
+meet only through the central piece.  Under the source-locked
+disjointness and piece-injectivity facts, (3.0) reduces to the relative
+central--tile fiber products below.
+
+Let
+
+\[
+ X=C\sqcup_{a_i,b_i}\coprod_{i\in I}T_i,
+ \qquad
+ Y=D\sqcup_{\bar a_j,\bar b_j}\coprod_{j\in J}S_j
+\tag{3.1}
+\]
+
+be quotient spaces.  For every \(i\in I\) and \(j\in J\), assume
+
+\[
+ a_i:O_i\hookrightarrow C,\quad
+ b_i:O_i\hookrightarrow T_i,\quad
+ \bar a_j:\bar O_j\hookrightarrow D,\quad
+ \bar b_j:\bar O_j\hookrightarrow S_j
+\tag{3.2}
+\]
+
+are embeddings.  Assume also:
+
+1. the canonical maps \(C,T_i,D,S_j\) into their respective quotient
+   spaces are injective;
+2. the canonical images of distinct target tiles in \(Y\) are disjoint;
+   in particular, their declared central-overlap images in \(D\) are
+   pairwise disjoint;
+3. \(c:C\to D\) and \(\ell_i:T_i\to S_{\sigma(i)}\) are injective;
+4. \(\sigma:I\to J\) is injective;
+5. there are embeddings \(r_i:O_i\to\bar O_{\sigma(i)}\) for which
+   \[
+    c\circ a_i=\bar a_{\sigma(i)}\circ r_i,
+    \qquad
+    \ell_i\circ b_i=\bar b_{\sigma(i)}\circ r_i.
+   \tag{3.3}
+   \]
+
+These data induce a continuous map \(F:X\to Y\).
+
+For \(j\in J\), define the target overlap visible from the source central
+image by
+
+\[
+ R_j
+ =
+ \left\{
+   \bar b_j(o):
+   o\in\bar O_j,\ 
+   \bar a_j(o)\in c(C)
+ \right\}
+ \subset S_j.
+\tag{3.4}
+\]
+
+The exact tile--central condition is
+
+\[
+ \ell_i^{-1}(R_{\sigma(i)})=b_i(O_i).
+\tag{3.5}
+\]
+
+Equivalently, the square obtained by restricting the target gluing
+relation to \(c(C)\) is cartesian.  Notice that (3.5) is weaker than
+
+\[
+ \ell_i^{-1}\bigl(\bar b_{\sigma(i)}(\bar O_{\sigma(i)})\bigr)
+ =b_i(O_i).
+\tag{3.6}
+\]
+
+Equation (3.6) is full overlap reflection; (3.5) is relative overlap
+cartesianity.
+
+### Theorem 3.1 -- exact relative gluing criterion
+
+Under assumptions 1--5, \(F:X\to Y\) is injective if and only if (3.5)
+holds for every \(i\).
+
+### Proof
+
+We first prove necessity.  Suppose \(F\) is injective and let
+
+\[
+ x\in\ell_i^{-1}(R_{\sigma(i)}).
+\]
+
+By (3.4), there are \(o\in\bar O_{\sigma(i)}\) and \(z\in C\) such that
+
+\[
+ \ell_i(x)=\bar b_{\sigma(i)}(o),
+ \qquad
+ c(z)=\bar a_{\sigma(i)}(o).
+\tag{3.7}
+\]
+
+Thus the source quotient classes represented by \(x\in T_i\) and
+\(z\in C\) have the same \(F\)-image.  Injectivity of \(F\) makes these
+source classes equal.  The exact source star presentation says that a
+point of \(T_i\) is identified with a central point only through the
+declared overlap \(O_i\).  Hence there is \(u\in O_i\) with
+
+\[
+ x=b_i(u),\qquad z=a_i(u).
+\tag{3.8}
+\]
+
+This proves
+\(\ell_i^{-1}(R_{\sigma(i)})\subset b_i(O_i)\).  The reverse inclusion is
+the commuting relation (3.3), so (3.5) follows.
+
+We now prove sufficiency.
+
+Let two points of \(X\) have the same image under \(F\).  Choose
+representatives in the central piece or in a tile.  There are four cases.
+
+#### Case 1: central--central
+
+Let \(x,x'\in C\) and suppose their target quotient classes agree.  The
+canonical map \(D\to Y\) is injective, so
+
+\[
+ c(x)=c(x').
+\]
+
+Injectivity of \(c\) gives \(x=x'\).  The source quotient classes agree.
+
+#### Case 2: same tile
+
+Let \(x,x'\in T_i\).  Since the canonical map
+\(S_{\sigma(i)}\to Y\) is injective, equality of their target quotient
+classes gives
+
+\[
+ \ell_i(x)=\ell_i(x').
+\]
+
+Injectivity of \(\ell_i\) gives \(x=x'\).
+
+#### Case 3: different tiles
+
+Let \(x\in T_i\) and \(x'\in T_k\) with \(i\ne k\).  Injectivity of
+\(\sigma\) gives \(\sigma(i)\ne\sigma(k)\).  Distinct target tiles can
+meet in \(Y\) only through their declared central overlaps.  Thus, if
+their quotient classes agreed, there would be
+
+\[
+ o\in\bar O_{\sigma(i)},\qquad
+ o'\in\bar O_{\sigma(k)}
+\]
+
+such that
+
+\[
+ \ell_i(x)=\bar b_{\sigma(i)}(o),\qquad
+ \ell_k(x')=\bar b_{\sigma(k)}(o'),
+\tag{3.9}
+\]
+
+and
+
+\[
+ \bar a_{\sigma(i)}(o)=
+ \bar a_{\sigma(k)}(o').
+\tag{3.10}
+\]
+
+In the KL finite-star presentation, different target overlap components
+are disjoint subsets of \(D\), so (3.10) is impossible.  In the abstract
+formulation this disjointness is part of assumption 2.  Hence no
+different-tile collision occurs.
+
+#### Case 4: tile--central
+
+Let \(x\in T_i\) and \(z\in C\), and suppose their target quotient classes
+agree.  By the definition of the target quotient, there is
+\(o\in\bar O_{\sigma(i)}\) such that
+
+\[
+ \ell_i(x)=\bar b_{\sigma(i)}(o),
+ \qquad
+ c(z)=\bar a_{\sigma(i)}(o).
+\tag{3.11}
+\]
+
+The second equality in (3.11) says exactly that
+
+\[
+ \ell_i(x)\in R_{\sigma(i)}.
+\]
+
+Relative overlap cartesianity (3.5) gives \(u\in O_i\) with
+
+\[
+ x=b_i(u).
+\]
+
+By (3.3), the target quotient class of \(x\) is the central class of
+\(c(a_i(u))\).  It is also, by assumption, the central class of \(c(z)\).
+Injectivity of the target central copy and then of \(c\) give
+
+\[
+ a_i(u)=z.
+\]
+
+Therefore \(x=b_i(u)\) and \(z=a_i(u)\) were already identified in the
+source quotient.  This exhausts all representative types and proves that
+\(F\) is injective. \(\square\)
+
+## 4. KL component identity
+
+Return to the fixed direct-decoration pair.  Because
+
+\[
+ K_Q=Q\cap K(f),\qquad K_P=P\cap K(f),\qquad Q\subset P,
+\]
+
+we have the set identity
+
+\[
+ Q\setminus K_Q
+ =
+ Q\cap(P\setminus K_P).
+\tag{4.1}
+\]
+
+Let \(P_j\) be a component of \(P\setminus K_P\).  Intersecting (4.1)
+with \(P_j\) gives
+
+\[
+ Q\cap P_j
+ =
+ \bigcup_{\{k:\,j(k)=j\}} Q_k.
+\tag{4.2}
+\]
+
+Every inclusion in (4.2) is now checked.
+
+- If \(x\in Q\cap P_j\), then \(x\notin K(f)\), so
+  \(x\in Q\setminus K_Q\).  It belongs to one component \(Q_k\), and
+  because \(x\in P_j\), the inclusion component map satisfies \(j(k)=j\).
+- Conversely, if \(x\in Q_k\) and \(j(k)=j\), the definition of the
+  component map gives \(Q_k\subset P_j\), while \(Q_k\subset Q\).
+
+For the direct-decoration pair, \(j\) is bijective.  Hence for the unique
+\(i\) with \(j(i)=j\), (4.2) becomes
+
+\[
+ Q\cap P_j=Q_i.
+\tag{4.3}
+\]
+
+No connectedness of \(Q\cap P_j\) was assumed; it was derived from the
+component bijection.  No boundary point of \(K(f)\) enters (4.3), because
+\(P_j\subset P\setminus K_P\).
+
+## 5. Relative cartesianity follows from full tile injectivity
+
+### Lemma 5.1
+
+Assume \(L_i:\widehat A_i\to\widehat B_{j(i)}\) is injective.  Then
+
+\[
+ L_i^{-1}\!\left(\widetilde e_{j(i)}(Q_i)\right)
+ =
+ e_i(Q_i).
+\tag{5.1}
+\]
+
+### Proof
+
+The commuting overlap square gives, for every \(q\in Q_i\),
+
+\[
+ L_i(e_i(q))=\widetilde e_{j(i)}(q).
+\tag{5.2}
+\]
+
+Thus the right-hand side of (5.1) is contained in the left-hand side.
+
+Conversely, let \(x\in\widehat A_i\) and suppose
+
+\[
+ L_i(x)=\widetilde e_{j(i)}(q)
+\]
+
+for some \(q\in Q_i\).  Equation (5.2) gives
+
+\[
+ L_i(x)=L_i(e_i(q)).
+\]
+
+Injectivity of \(L_i\) implies \(x=e_i(q)\).  This proves the reverse
+inclusion and hence (5.1). \(\square\)
+
+By (4.3), the relative target overlap (3.4) for the KL pair is precisely
+\(\widetilde e_{j(i)}(Q_i)\).  Lemma 5.1 therefore proves (3.5).
+
+## 6. Corrected full pseudo-piece embedding theorem
+
+### Theorem 6.1
+
+For the fixed direct-decoration pair, suppose every full tile immersion
+
+\[
+ L_i:\widehat A_i\longrightarrow\widehat B_{j(i)}
+\]
+
+is injective.  Then the induced pseudo-piece immersion
+
+\[
+ \boldsymbol\iota:\mathbf Q\longrightarrow\mathbf P
+\]
+
+is injective and hence is an interior holomorphic embedding.
+
+### Proof
+
+KL's gluing presentation supplies assumptions 1, 2, and 5 of the abstract
+setup.  The central map \(Q\hookrightarrow P\) is injective.  The fixed
+direct-decoration component map is bijective and hence injective.  The
+assumed tile injectivity supplies assumption 3.  Equation (4.3) and
+Lemma 5.1 supply relative overlap cartesianity.  Theorem 3.1 proves global
+injectivity.
+
+KL already proves that \(\boldsymbol\iota\) is a holomorphic immersion.
+An injective holomorphic immersion between Riemann surfaces is a
+holomorphic embedding onto its image. \(\square\)
+
+Combining Theorem 6.1 with
+`KL_TILE_INJECTIVITY_BASE_ANNULUS_REDUCTION` gives
+
+\[
+ \boxed{
+ \begin{aligned}
+ &\text{global univalence of the actual degree-one bold
+ base-annulus immersion}\\
+ &\qquad\Longleftrightarrow
+ \text{injectivity of every corresponding full tile map}\\
+ &\qquad\Longrightarrow
+ \text{embedding of the fixed direct-decoration pseudo-piece map}.
+ \end{aligned}}
+\tag{6.1}
+\]
+
+Equation (6.1) remains an exact conditional reduction.  It does not
+overcome the canonical localization subgroup defect.  For the full
+canonical map, the first two lines are both false by the explicit class
+(1.6), so (6.1) is unavailable as a gating route.  For a different
+restricted or revised localization, all hypotheses must be proved anew.
+
+## 7. Sharp positive and negative controls
+
+### 7.1 Full overlap reflection is not necessary
+
+Consider the following one-tile planar positive control.  For \(r>0\),
+write \(D_r=\{z:|z|<r\}\).  Let
+
+\[
+ C_s=D_1,\quad T_s=D_2,\quad O_s=D_1,
+\]
+
+\[
+ C_t=D_{3/2},\quad T_t=D_2,\quad O_t=D_{3/2}.
+\]
+
+Glue each central piece to its tile by the literal inclusions:
+
+\[
+ X=C_s\sqcup_{O_s}T_s,\qquad
+ Y=C_t\sqcup_{O_t}T_t.
+\]
+
+Both quotients are canonically \(D_2\).  Let the central and tile maps be
+the literal inclusions
+
+\[
+ c:D_1\hookrightarrow D_{3/2},\qquad
+ \ell:D_2\longrightarrow D_2,\quad \ell(z)=z.
+\]
+
+The induced quotient map \(F:X\to Y\) is the identity on \(D_2\), so it is
+injective.  Nevertheless,
+
+\[
+ \ell^{-1}(O_t)=D_{3/2}\supsetneq D_1=O_s.
+\tag{7.1}
+\]
+
+Thus full overlap reflection (3.6) fails while the glued map is an
+embedding.  The extra annulus
+
+\[
+ D_{3/2}\setminus D_1
+\]
+
+maps into the target central/tile overlap, but its target central mates
+lie outside \(c(C_s)=D_1\); there is no second source-central
+representative with which to collide.
+
+This example does not model all KL dynamics and is not offered as an
+actual KL block.  Its role is exact and limited: it refutes the logical
+claim that full overlap reflection is necessary for injectivity of a
+glued map.
+
+### 7.2 Commutation and piecewise embeddings are not sufficient
+
+For
+
+\[
+ R(a,b;c,d)=
+ \{x+iy:a<x<b,\ c<y<d\},
+\]
+
+set
+
+\[
+ C_s=R(-1,1;-\pi/8,9\pi/8),
+ \qquad
+ T_s=R(-1,1;7\pi/8,17\pi/8).
+\tag{7.2}
+\]
+
+Their intersection is the nonempty rectangle
+
+\[
+ O_s=R(-1,1;7\pi/8,9\pi/8),
+\]
+
+and their union is
+
+\[
+ S=R(-1,1;-\pi/8,17\pi/8).
+\tag{7.3}
+\]
+
+Let \(E(z)=e^z\).  Define
+
+\[
+ D_e=\{w:|w|<e\},
+\qquad
+ \mathcal L=\{-it:1\leq t<e\},
+\]
+
+\[
+ C_t=D_e\setminus\mathcal L,
+\qquad
+ T_t=E(T_s).
+\tag{7.4}
+\]
+
+The imaginary height of each of \(C_s\) and \(T_s\) is \(5\pi/4<2\pi\).
+If \(E(z)=E(w)\), then \(z-w\in2\pi i\mathbb Z\); the height bound forces
+\(z=w\) inside either rectangle.  Hence
+
+\[
+ E|_{C_s}:C_s\to C_t,
+ \qquad
+ E|_{T_s}:T_s\to T_t
+\]
+
+are holomorphic embeddings.  The first image avoids \(\mathcal L\)
+because the argument interval
+\((-\pi/8,9\pi/8)\) does not contain the negative imaginary direction
+\(3\pi/2\) modulo \(2\pi\).  The second map is onto \(T_t\) by
+definition.
+
+The set \(T_t\) contains \(\mathcal L\): its argument interval
+\((7\pi/8,17\pi/8)\) contains \(3\pi/2\), and its radial interval is
+\((e^{-1},e)\).  Therefore
+
+\[
+ C_t\cup T_t=D_e.
+\tag{7.5}
+\]
+
+Gluing each pair along its actual intersection identifies the source
+pushout with \(S\) and the target pushout with \(D_e\).  The piece maps
+commute on \(O_s\), so the induced holomorphic map is
+
+\[
+ E:S\longrightarrow D_e.
+\]
+
+Nevertheless,
+
+\[
+ 0\in C_s\setminus T_s,\qquad
+ 2\pi i\in T_s\setminus C_s,\qquad
+ E(0)=E(2\pi i)=1.
+\tag{7.6}
+\]
+
+Moreover \(1\in C_t\cap T_t\), so (7.6) is exactly a target
+central--tile identification not reflected by the source overlap.
+Thus central and tile embeddings, one tile label, and a commuting overlap
+map do not by themselves make the glued map injective.  The missing datum
+is precisely (3.5), or equivalently the relation reflection (3.0).
+
+This is an analytic pushout counterexample, not an actual dynamically
+generated KL pseudo-piece.  It proves the logical necessity of auditing
+the mixed fiber product; it does not exhibit a collision in the KL
+direct-decoration class.
+
+## 8. Full tiles versus retained collars
+
+The proof of Lemma 5.1 compares an arbitrary \(x\in\widehat A_i\) with the
+canonical overlap representative \(e_i(q)\) in the **same full tile**.
+Full injectivity of \(L_i\) then gives equality.
+
+Suppose instead that only
+
+\[
+ L_i|_{\Lambda_i}:\Lambda_i\longrightarrow\widehat B_{j(i)}
+\]
+
+is known to be injective on a retained collar \(\Lambda_i\).  From
+\(x\in\Lambda_i\) and
+
+\[
+ L_i(x)=L_i(e_i(q))
+\]
+
+one cannot invoke injectivity of \(L_i|_{\Lambda_i}\) unless
+\(e_i(q)\in\Lambda_i\).  Therefore a collar-truncated theorem needs one
+of the following additional inputs:
+
+1. collar relative overlap cartesianity;
+2. inverse-component control proving \(e_i(q)\in\Lambda_i\); or
+3. injectivity of the full tile map.
+
+The conditional hypothesis in
+`finite_horizon_kahn_collar_embedding.md` remains sufficient.  It is
+stronger than needed if an exact collar-relative version is available,
+but this pass does not assert that KL supplies either version uniformly
+through a Wave horizon.
+
+## 9. Adversarial audit
+
+### 9.1 Entry into the target overlap
+
+Rejected inference:
+
+> A source tile point outside the source overlap that enters the target
+> overlap automatically causes a tile--central collision.
+
+It does not.  A collision additionally requires the target central mate
+to lie in the image of the source central piece.  Equation (3.4) records
+exactly this restriction.
+
+### 9.2 Component surjectivity alone
+
+Surjectivity of \(j\) is insufficient.  If \(i\ne k\) but
+\(j(i)=j(k)\), different source tiles may enter the same target tile, and
+a source-central point in \(Q_k\) may collide with a point of tile \(i\).
+The fixed direct-decoration proof uses the independently established
+bijectivity of \(j\).
+
+### 9.3 Tile immersion versus tile injectivity
+
+Local univalence does not permit the cancellation in Lemma 5.1.  The
+equality
+
+\[
+ L_i(x)=L_i(e_i(q))
+\]
+
+may have distinct solutions under an immersion.  The proved annulus and
+\(\psi\)-ql counterexamples rule out replacing full injectivity by degree
+one, local univalence, or inner-end injectivity.  More strongly, the full
+canonical primitive localization has an actual same-tile collision
+indexed by a non-base element of the pointed coset set
+
+\[
+ \mathscr S_{\rm loc}=a_*^{-1}(H_t)/H_s.
+\tag{9.1}
+\]
+
+This is a coset set, not an asserted quotient group.
+
+### 9.4 Boundary and prime ends
+
+Theorem 6.1 is an interior quotient theorem.  It asserts no:
+
+- injectivity on conformal prime-end boundaries;
+- pointwise complement-access footprint;
+- properness at the outer \(O\)-end;
+- absence of prime-end monodromy;
+- final-root no-birth statement.
+
+Those remain separate obligations.
+
+### 9.5 Collar truncation
+
+The full-tile comparison point may be omitted by a collar truncation.
+Accordingly, Theorem 6.1 must not be cited to delete the collar-level
+reflection hypothesis from the finite-horizon theorem without an
+additional inverse-component proof.
+
+### 9.6 No global promotion
+
+Removing an unnecessary gluing hypothesis does not prove the remaining
+full accessible footprint, path exhaustion, Wave-horizon correspondence,
+VAAPC-I, UPTCR, or MLC.  Nor does it turn the false full-canonical
+tile-injectivity premise into a valid hypothesis.
+
+## 10. Ledger consequence
+
+The correct ledger action is:
+
+1. strengthen the proof and statement of
+   `TILE_INJECTIVITY_GLUE_EMBEDDING_CRITERION` by replacing full overlap
+   reflection with the proved relative-cartesian argument;
+2. remove
+   `DIRECT_DECORATION_TILE_CENTRAL_OVERLAP_REFLECTION` from the
+   dependencies of
+   `DIRECT_DECORATION_DEGREE_ONE_PSEUDO_EMBEDDING`;
+3. retain the stronger full-reflection question only as a non-gating open
+   saturation question, potentially relevant to collar, footprint, or
+   carrier-exhaustion arguments;
+4. do not use `DIRECT_DECORATION_DEGREE_ONE_PSEUDO_EMBEDDING` in its
+   universal full-canonical form as a dependency: the required
+   tile-injectivity antecedent is false there.  A retained-collar or revised
+   localization version is a different conditional theorem.
+
+For the full canonical fixed pair, the failure certificate is no longer an
+unspecified possible base collision.  It is the excess component,
+peripheral loop, complete itinerary, two source sheets, common target
+point, and non-base coset proved in
+`kl_canonical_localization_forced_collision.md`.
+
+Any replacement overlap theorem must carry
+\(\mathscr S_{\rm loc}=a_*^{-1}(H_t)/H_s\) together with the ordinary
+component and overlap data.  Collapsing this sheet state can make a
+non-Cartesian full square look Cartesian in a finite quotient.  No ledger
+status or global MLC obligation is promoted by this note.

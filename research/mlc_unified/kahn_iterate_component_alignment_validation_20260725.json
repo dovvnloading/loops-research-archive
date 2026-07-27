@@ -1,0 +1,73 @@
+{
+  "scope": "Diagnostic source-lock, finite equalizer identity, ledger routing, and global-status audit for the Kahn iterate complementary-component alignment theorem.",
+  "sources": {
+    ".tmp_kl06_source\\intro.tex": "E7DD61396FEA927903D4DE4FD386E7AAEFD0BD3E2CEE1CE6F011680AD58144E0",
+    ".tmp_kl06_source\\psiql2.tex": "E4EFCCEC65D8C9C2BDFE2AF8203B3D4D63ECF992B40D302F56FBA78259547228",
+    ".tmp_kl08_source\\psiql.tex": "6CC9726461473812A5FBA93377F2DC0B088DB6CAC4B9DE90C7B2AE625DFB49AF"
+  },
+  "proof_document_sha256": "55D42DBD72D70F5BA902C50E6D32C3F52CB391AA6FA766E629E6739C1E5BF954",
+  "ledger_sha256": "E9CC988A8F18203788F02E19992E8CC07DF886C20BB4882DC7A97AE0973A9061",
+  "finite_controls": {
+    "full_equalizer": [
+      [
+        "a",
+        "b"
+      ],
+      [
+        "b",
+        "a"
+      ],
+      [
+        "k0",
+        "k0"
+      ]
+    ],
+    "complement_equalizer": [
+      [
+        "a",
+        "b"
+      ],
+      [
+        "b",
+        "a"
+      ]
+    ],
+    "resolved_points": [
+      [
+        "p",
+        "y"
+      ]
+    ],
+    "pulled_points": [
+      [
+        "a",
+        "y"
+      ],
+      [
+        "b",
+        "y"
+      ]
+    ],
+    "tile_pullback": {
+      "oriented_degree": 1,
+      "component_index": 1,
+      "pulled_subgroup": 0,
+      "degree_two_adversarial_component_index": 2
+    }
+  },
+  "ledger": {
+    "total": 330,
+    "counts": {
+      "imported": 23,
+      "proved": 235,
+      "open": 72
+    },
+    "theorem": "KAHN_ITERATE_COMPLEMENTARY_COMPONENT_ALIGNMENT",
+    "global_statuses": {
+      "VIRTUAL_AUGMENTED_ATOM_PORT_CERTIFICATE": "open",
+      "UNIVERSAL_PROTECTED_TOWER_CLOSURE": "open",
+      "MLC": "open"
+    }
+  },
+  "result": "PASS"
+}

@@ -1,0 +1,52 @@
+{
+  "certificate": "ELEPHANT_EYE_SOURCE_BRANCH_VALID",
+  "source": "https://arxiv.org/html/2601.21905",
+  "source_sha256": "5EB36430A51A3FB6A1C04DB15713AEBC86068118450893BA2042021E4A8DB725",
+  "hypotheses": {
+    "rotation": "1/q",
+    "renormalization_period": "p=q+b",
+    "offset": "b bounded while q is unbounded",
+    "additional": "even quadratic-like; connected Julia set; both fixed points repelling; E1-E3"
+  },
+  "witness": {
+    "q": [
+      1000,
+      2000,
+      5000,
+      10000
+    ],
+    "b": [
+      0,
+      1,
+      -2,
+      3
+    ],
+    "p": [
+      1000,
+      2001,
+      4998,
+      10003
+    ]
+  },
+  "source_conclusion": {
+    "a_priori_bounds": "proved for the Elephant Eyes class",
+    "mlc_paragraph": "states MLC at corresponding parameters but cites Ecalle-cylinder little copies and DLP, labeled in preparation",
+    "import_status": "a priori-bound branch imported; MLC consequence retained as dependency-audited, not silently promoted"
+  },
+  "checks": {
+    "source_hash_ok": true,
+    "elephant_eye_title_present": true,
+    "rotation_one_over_q_present": true,
+    "bounded_offset_form_present": true,
+    "q_unbounded_hypothesis_present": true,
+    "amplification_theorem_present": true,
+    "local_connectivity_section_present": true,
+    "ecalle_cylinder_dependency_visible": true,
+    "witness_offsets_bounded": true,
+    "witness_periods_are_q_plus_b": true,
+    "witness_q_grows": true,
+    "witness_period_ratio_tends_to_one": true
+  },
+  "all_checks": true,
+  "original_artifacts_written": false
+}

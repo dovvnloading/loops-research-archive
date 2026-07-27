@@ -1,0 +1,295 @@
+% Cluster A: comparison with standard continuum-hull constructions
+% Review-required new expository material; promotes no manuscript claim.
+% Body-only LaTeX; preamble macros, cite keys, and cross-cluster labels per CONVENTIONS.md.
+
+\section{Comparison with standard continuum-hull constructions}
+\label{sec:comparison}
+
+The certificate formalism developed from Section~\ref{sec:certificates}
+onward is offered as a replacement for a family of standard constructions,
+and it is fair to ask what, exactly, is being replaced and why.  This
+section compares the framework with the five constructions a practitioner
+would reach for first: least or minimal connected full hulls; monotone
+absorption of pulled excess; regulated and Hubbard trees in uniformized or
+locally connected coordinates; Moore decompositions and monotone
+quotients; and the lamination-lift candidate of the source manuscript.
+The two obstructions of Section~\ref{sec:obstructions} already dispose of
+the first two; the remaining three fail for structural reasons that are
+worth stating precisely, because they explain several design decisions of
+the certificate formalism that would otherwise look pedantic.  Throughout,
+the comparison is with respect to the task fixed in the introduction:
+join finitely many pairwise disjoint full atoms inside a Jordan
+localization, avoid a frozen forbidden set, and \emph{preserve designated
+prime-end accesses together with their cyclic order}.  Constructions that
+solve a different problem well are not thereby criticized; the claim is
+only that none of them solves this one, and that the last of them ---
+the lamination lift --- is an open candidate, not a construction.
+
+\subsection{Least and minimal connected full hulls}
+\label{subsec:A-comp-least}
+
+The most tempting rule is extremal: ``take the least connected full hull
+of the required package.''  Theorem~\ref{thm:no-least} (manuscript
+Theorem~6.12) shows the rule names no object, already for the two-point
+package $S=\{-1,1\}$ with identity dynamics and no obstacles: the upper
+and lower semicircles are carriers meeting exactly in $S$, so a least
+carrier would be contained in their disconnected intersection.  The
+failure is specific to \emph{leastness}: minimal carriers exist in
+abundance --- every arc from $-1$ to $1$ is one --- and form a large
+antichain.  An extremal selection principle therefore cannot even break
+the tie between the two semicircles, and the tie is not innocent: the two
+choices pass on opposite sides of the origin, and in any configuration
+with obstacles or protected collars that choice of side is visible to
+every later routing step.  The source manuscript sharpens the point
+dynamically \cite[Proposition~6.11]{MWman}: a package, full connected
+carriers, critical-value-free degree-one selected-carrier dynamics, and
+identical coarse orbit labels are realized simultaneously by an interval
+and by a triod, and attachment-freeness holds in only one of the two
+models, so no data of the listed kinds can select between them.
+
+The published connected-hull descriptions in the renormalization
+literature are not at fault here, and the comparison should not be read
+as a criticism of them.  Dudko's roadmap describes virtual Julia sets as
+connected hulls of Cantor families of small Julia sets carrying a finite
+part of the critical orbit \cite{Dud25}; that description specifies
+\emph{which} continua a carrier must contain, and it does not purport to
+specify \emph{how} they are joined.  Theorem~\ref{thm:no-least} shows
+that the routing is genuinely additional data --- in the manuscript's
+words, a regulated connector system, together with its access or isotopy
+class and a forward-coherence proof, is additional data \cite{MWman} ---
+and the certificate of Definition~\ref{def:certificate} is exactly a
+format for that data, with Theorem~\ref{thm:free-component} deciding when
+the format can be filled in at all.
+
+\subsection{Monotone absorption of pulled excess}
+\label{subsec:A-comp-absorption}
+
+The second rule is completion: accept any proposed carrier and absorb,
+monotonically, whatever excess the dynamics pulls back onto it, until the
+process stabilizes.  Unlike the least hull, this rule is well defined:
+the manuscript proves that the finite inflationary completion operator
+stabilizes at a least fixed point, unique and conjugation-equivariant
+\cite[Theorem~6.14]{MWman}.  The defect is not existence but what
+completion destroys.  Proposition~\ref{prop:access-collision} (manuscript
+Proposition~6.15) exhibits a conformal, critical-value-free, degree-one
+branch of $z\mapsto z^2$ in which the very first absorption of pulled
+excess --- the relative upper half-disk attaching to the interval along
+its entire length --- erases a protected prime-end access and its
+conformally transported copy.  Monotonicity, the rule's defining virtue,
+is precisely what makes the loss permanent: enlargement can only add
+points, and no addition restores a complement access through a set
+already absorbed.  Moreover, every coordinate of the manuscript's
+collision bookkeeping except the access coordinate vanishes in this
+example, so no amount of critical-value, degree, or sheet bookkeeping
+detects the erasure (Section~\ref{subsec:B-moral}).
+
+The certificate formalism keeps monotone completion but reverses the
+order of commitments.  The protected collars are frozen into the
+inventory $Q$ \emph{before} any absorption is contemplated; a proposed
+absorption that would enter a collar tail is not a step of a completion
+but a named violation, and the persistence clause of
+Theorem~\ref{thm:free-component}, together with the audit of
+Theorem~\ref{thm:audit}, converts each such violation into a certificate
+--- a merger, a port loss, a separation --- that survives every further
+monotone enlargement.  Absorption remains available for everything
+unprotected; what changes is that ``protected'' is a constraint checked
+by the plane, not an intention held by the author.
+
+\subsection{Regulated trees in uniformized coordinates and Hubbard trees}
+\label{subsec:A-comp-trees}
+
+When the continuum to be traversed is locally connected, canonical
+connectors exist and the present framework is not needed.  In a locally
+connected filled Julia set every pair of points is joined by a unique
+regulated arc, and the union of the regulated arcs through a finite
+invariant set is the classical Hubbard tree of the
+Douady--Hubbard theory \cite{DH85}; equivalently, in uniformized
+coordinates, one takes hyperbolic geodesics in the complement or in the
+interior components and closes up, and Carath\'eodory's theorem ---
+continuity of the Riemann map up to the boundary, which \emph{is} local
+connectivity of the boundary --- guarantees that the geodesics land and
+that the resulting tree is compact, canonical, and forward invariant.
+The decoration constructions of Kahn--Lyubich \cite{KL08} organize
+configurations of small Julia sets and their limbs under a~priori bounds
+by explicit combinatorial data; there too the combinatorial layer is
+carried by objects --- puzzle pieces, rays, equipotentials --- whose
+availability is part of the hypotheses.
+
+Every step of this construction is unavailable for the atoms of the
+present paper.  The atoms are arbitrary full continua; no Riemann map is
+asserted to extend, no external or internal ray is asserted to land, and
+regulated arcs need not exist.  This is not a hypothetical worry but the
+operating regime of the intended applications, in which local
+connectivity of the relevant continua is exactly what is not known.  The
+closest published object is instructive as a boundary marker.
+Kahn--Kapiamba--Lyubich construct a native Hubbard tree inside the full
+dynamical carrier of a primitive renormalization, and in the
+non-locally-connected case they lift it from the locally connected
+rational-lamination model \cite[\S\S2.5--2.6]{KKL26}.  As the source
+manuscript's own source boundary records \cite{MWman}, that construction
+is a positive control in its published primitive category --- where the
+lamination model and the lifting semiconjugacy are theorems --- and not a
+theorem for virtual-Molecule packages.  The framework of this paper is
+calibrated to the complementary regime: Theorem~\ref{thm:realization}(6)
+uses no local connectivity of any atom, the tree of the certificate is
+produced by the exact criterion of Theorem~\ref{thm:free-component} from
+planar data alone, and no canonicity of the spanning tree is claimed
+anywhere --- the tree is data, chosen in a free component whose existence
+is the actual content.  What is lost relative to the Hubbard-tree regime
+is canonicity; what is gained is that the construction exists at all
+without the locally connected model.
+
+\subsection{Moore decompositions and monotone quotients}
+\label{subsec:A-comp-moore}
+
+A third classical route collapses instead of routing.  By Moore's
+theorem, the quotient of the sphere by an upper semicontinuous
+decomposition into nonseparating continua is again a sphere
+\cite{Moo25}.  One is therefore tempted to collapse every atom (or every
+completed packet) to a point, join the finitely many image points by
+arcs in the quotient sphere --- where the joining problem is trivial ---
+and pull the picture back.  For the connection problem \emph{without}
+protected data this is a perfectly serviceable device, and it is exactly
+the mechanism by which locally connected models are related to their
+originals: a monotone quotient map realizes the model, and the fibers
+record what was collapsed.
+
+For the access-preserving problem the device fails at the first step,
+because the quotient map destroys the very data being protected.  All
+prime ends of an atom have a single image point: a protected crosscut
+chain, its selected sides, and the cyclic order of several protected
+accesses at one atom have no image in the quotient at all, so no
+construction performed downstairs can certify their survival, and
+distinct protected accesses cannot even be distinguished there.  The
+pullback of an arc through the quotient map is a union of fibers, not a
+connector: it carries no singleton attachment traces, and nothing
+prevents a fiber from entering a protected collar --- the pullback must
+take whatever the fiber contains.  In the vocabulary of
+Section~\ref{sec:certificates}, a monotone quotient forgets precisely
+the collar and side data of Definition~\ref{def:certificate}, and what
+it cannot express it cannot preserve.  The certificate formalism
+therefore works in the original plane throughout: atoms are never
+collapsed, accesses are carried as crosscut chains with selected sides,
+and the realization theorem attaches the connector at declared free
+ports with singleton traces (Theorem~\ref{thm:realization}(2)) --- the
+attachment discipline that a quotient construction cannot see, let alone
+enforce.
+
+\subsection{The lamination-lift candidate}
+\label{subsec:A-comp-lamination}
+
+The most serious competitor is the manuscript's own candidate, recorded
+in its Section~10.3 \cite{MWman}, and the comparison must be exact:
+the candidate is presented there, and here, as a candidate only.
+Suppose, following the non-locally-connected construction of
+Kahn--Kapiamba--Lyubich \cite{KKL26}, that an ambient carrier admits a
+monotone semiconjugacy
+\[
+\pi\colon K\longrightarrow K_{\mathrm{com}}
+\]
+onto a locally connected combinatorial model, together with a
+forward-coherent regulated tree $T_{\mathrm{com}}\subset K_{\mathrm{com}}$
+containing every root shadow.  The canonical candidate connector is
+\begin{equation}\label{eq:A-lam}
+H_{\mathrm{lam}}\;=\;\Fill\bigl(\pi^{-1}(T_{\mathrm{com}})\bigr),
+\end{equation}
+equation~(9.3) of \cite{MWman}.  Part of what is wanted is genuinely
+true, by soft arguments: a monotone preimage of a compact connected set
+is compact and connected, so \eqref{eq:A-lam} is a full continuum
+containing the required shadows; the semiconjugacy provides forward
+coherence before fullification; and fullification preserves genuine
+polynomial forward invariance.
+
+The missing assertion is not connectedness.  Measured against the
+certificate clauses, two failure channels are named in the manuscript,
+and both remain unresolved.  First, a projection fiber
+$\pi^{-1}(x)$ over a point of the tree, or a component added by
+fullification, may enter a protected collar otherwise than at a declared
+free singleton port; this is the erasure mechanism of
+Proposition~\ref{prop:access-collision} wearing different clothes, and
+it is instructive that the manuscript rejects the upper-half-disk
+collision at exactly this clause, the excess occupying the protected
+upper collar with an interval attachment trace \cite{MWman}.  Second, a
+disconnected stage package may still split across iterated pullback
+components, so that containing every root shadow does not yet realize
+the complete package routing.  The manuscript collects the clauses a
+proof would have to establish --- authorized localization and complete
+proof-use inventory, collar avoidance except at declared free singleton
+ports, realization of every package component and route, obstacle
+handling inside the localization, complete access marking, and an
+incidence bound or compression --- as its Open Problem~10.6 (Virtual
+Protected Routing Certificate).  That problem is open, and nothing in
+this paper resolves any part of it; consistently with the manuscript's
+Warning~10.59, the candidate \eqref{eq:A-lam} is discussed here only to
+locate it on the map.
+
+What this paper contributes to the candidate is the deciding instrument,
+not a verdict.  For any frozen inventory that a future argument
+supplies, Theorem~\ref{thm:free-component} decides certificate existence
+exactly; Theorems~\ref{thm:common-domain} and~\ref{thm:audit} and
+Proposition~\ref{prop:cellwise} make the decision checkable packet by
+packet; and the two failure channels above fall under the typed,
+monotone-persistent defect certificates of Section~\ref{sec:audit} ---
+a fiber in a collar is a port-loss or merger defect, a split package is
+a separation in the sense of the persistence clause of
+Theorem~\ref{thm:free-component}.  Whether the candidate passes the test
+is precisely what is open.
+
+\subsection{Summary}
+\label{subsec:A-comp-summary}
+
+Table~\ref{tab:A-comparison} compresses the comparison.  The pattern is
+uniform: each standard construction either fails to exist (the least
+hull), destroys the protected data (absorption, Moore quotients),
+requires the hypothesis whose absence is the whole difficulty (regulated
+and Hubbard trees), or is an explicitly open candidate (the lamination
+lift).  The certificate framework renounces canonicity --- the connector
+is data, not an invariant --- and in exchange obtains, for arbitrary
+full atoms and with no local connectivity anywhere: realization with
+access survival and cyclic-order preservation
+(Theorem~\ref{thm:realization}); an exact existence criterion on frozen
+data (Theorem~\ref{thm:free-component}); checkable sufficient tests
+(Theorem~\ref{thm:common-domain}, Proposition~\ref{prop:cellwise});
+order-independent completion with a three-clause audit
+(Theorem~\ref{thm:audit}); and failure certificates that persist under
+monotone enlargement.  The effect is to convert ``choose a hull,''
+an instruction that Theorem~\ref{thm:no-least} shows to be ill posed and
+Proposition~\ref{prop:access-collision} shows to be destructive, into a
+checkable planar test with a stable answer in both directions.  This is
+the precise sense in which the contribution of the paper is proof
+technology: no new theorem of classical planar topology is claimed, and
+every statement about the open constructions touched on above ---
+virtual carriers, lamination lifts, and their dynamical certificates ---
+remains exactly as open here as in the source manuscript.
+
+\begin{table}[htbp]
+\centering
+\small
+\begin{tabular}{@{}p{0.30\linewidth}p{0.24\linewidth}p{0.21\linewidth}p{0.15\linewidth}@{}}
+\toprule
+Construction & Object exists & Protected accesses & Failure record\\
+\midrule
+least connected full hull & no (Thm.~\ref{thm:no-least}) & --- & ---\\
+monotone absorption & least fixed point \cite{MWman} &
+  erasable (Prop.~\ref{prop:access-collision}) & post hoc only\\
+regulated/Hubbard tree & needs l.c.\ model \cite{DH85,KKL26} &
+  native category only & ---\\
+Moore monotone quotient & always \cite{Moo25} & collapsed & ---\\
+lamination lift \eqref{eq:A-lam} & candidate \cite{MWman} & open & open\\
+protected certificate & iff-criterion (Thm.~\ref{thm:free-component}) &
+  preserved (Thm.~\ref{thm:realization}) &
+  persistent (Thm.~\ref{thm:audit})\\
+\bottomrule
+\end{tabular}
+\caption{The five standard constructions against the certificate
+framework, measured on the access-preserving connection task.  ``Object
+exists'' asks whether the construction produces a well-defined carrier
+for arbitrary pairwise disjoint full atoms in a Jordan localization;
+``protected accesses'' asks whether designated prime-end data survive
+with their cyclic order; ``failure record'' asks whether a negative
+outcome is witnessed by a certificate that persists under monotone
+enlargement.  The lamination-lift row records candidacy, not failure:
+its clauses are the manuscript's open problem, and no verdict is implied
+in either direction.}
+\label{tab:A-comparison}
+\end{table}

@@ -1,0 +1,34 @@
+\begin{proposition}[Topological properness, with its exact boundary]\label{prop:properness}
+Let \( \delta\colon(0,1)\to P_K \) be topologically proper.  Then every \( q \)-lift \( \widehat\delta\colon(0,1)\to\widehat X_s \) is topologically proper.
+
+If, in addition, \( a(X_s) \) is open in \( X_t \), then \( e(P_K) \) is open in \( \widehat X_t \).  Let \( \gamma\colon(0,1)\to\widehat X_t \) be topologically proper and let \( J \) be a component of \( \gamma^{-1}(e(P_K)) \).  After parametrizing \( J \) as an open interval,
+\[
+  \delta_J=e^{-1}\gamma|_J
+\]
+is topologically proper, and so are all of its \( q \)-lifts.
+\end{proposition}
+
+\begin{proof}
+For compact \( C\subset\widehat X_s \), the set \( q(C) \) is compact.  Therefore
+\[
+  \widehat\delta^{-1}(C)\subset\delta^{-1}(q(C)).
+\]
+The right side is compact in \( (0,1) \) by properness of \( \delta \).  Since \( \widehat X_s \) is Hausdorff, \( C \) is closed, so \( \widehat\delta^{-1}(C) \) is closed in \( (0,1) \), hence closed in the right side.  It is therefore compact.  This proves properness of the lift.
+
+If \( a(X_s) \) is open, then \( p_t^{-1}(a(X_s)) \) is open.  Lemma~\ref{lem:embedded-leg} identifies the selected component \( e(P_K) \) with an open component of that preimage.  For compact \( C\subset P_K \),
+\[
+  \delta_J^{-1}(C)=J\cap\gamma^{-1}(e(C)).
+\]
+The set
+\[
+  S=\gamma^{-1}(e(C))
+\]
+is compact because \( e(C) \) is compact and \( \gamma \) is proper.  Moreover \( S\subset\gamma^{-1}(e(P_K)) \).  The latter set is open in \( (0,1) \), and its components are open intervals which are also closed relative to that open set.  Hence \( J\cap S \) is closed in \( S \), and is compact.  The definition \( \delta_J=e^{-1}\gamma|_J \) identifies \( J\cap S \) with \( \delta_J^{-1}(C) \).  Thus \( \delta_J \) is proper.  Apply the first paragraph to every \( q \)-lift.
+\end{proof}
+
+\begin{remark}
+Topological properness means escape from compact subsets.  It does not
+give convergence to a declared prime end, subordination to one marked
+ideal interval, or uniqueness among the infinitely many possible
+proper sheet lifts.
+\end{remark}

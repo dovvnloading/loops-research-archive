@@ -1,0 +1,43 @@
+{
+  "status": "pass",
+  "note": "Finite Fourier and finite-dimensional Schur-complement audit only. The analytic proof is the harmonic mode formula plus variational gluing.",
+  "seed": 20260725,
+  "trials": 500,
+  "max_modes": 24,
+  "sharp_relative_bound": {
+    "formula": "eta(R)=2/(exp(pi*R)-1)",
+    "worst_actual_minus_bound": 3.3306690738754696e-16
+  },
+  "trace_semigroup": {
+    "formula": "N(R1) star N(R2) = N(R1+R2)",
+    "worst_operator_norm_error": 7.105427357601002e-15
+  },
+  "schur_complement_stability": {
+    "formula": "(1-eta) Lambda# <= Lambda <= (1+eta) Lambda#",
+    "worst_lower_margin": 3.025695809455442e-07,
+    "worst_upper_margin": 3.025394277322846e-07
+  },
+  "compact_limit": {
+    "limit": "two independent half-cylinder |D_N| responses; constants decouple",
+    "bound": "max(2/R, eta(R)) in the normalized H^{1/2}->H^{-1/2} norm",
+    "worst_actual_minus_bound": 8.881784197001252e-16
+  },
+  "equipotential_collapse_no_go": {
+    "R": 8.0,
+    "trace": "left cos(pi*y), right 0",
+    "trace_means": [
+      0.0,
+      0.0
+    ],
+    "actual_energy": 3.141592653589793,
+    "scalar_mean_only_energy": 0.0,
+    "conclusion": "geometric equipotential curves do not force electrical equipotential traces"
+  },
+  "strict_transition_example": {
+    "root_mu": 0.82,
+    "maximum_eta_for_strictness": 0.09890109890109894,
+    "chosen_eta": 0.04945054945054947,
+    "required_total_resistance": 1.1854986476530944,
+    "effective_mu": 0.9053179190751446
+  }
+}

@@ -1,0 +1,28 @@
+\begin{proposition}[What remains admissible]\label{prop:admissible}
+Theorem~\ref{thm:whole-tile-no-go} forbids only the conjunction of the five clauses of Definition~\ref{def:whole-tile-comparison}.  Each of the following sharply different interfaces is not contradicted by it.
+\begin{enumerate}
+\item \textbf{Proper interior or collar restriction.}  Let \(C\Subset\mathcal E\), or let \(C\) be a proved end-collar on which no two points in one \(N\)-orbit are retained.  A comparison \(\Phi_C\colon C\to\widehat A_s\) is not contradicted by Theorem~\ref{thm:whole-tile-no-go}.  To use this repair one must prove: (a) every proof-used Wave path is contained in the retained domain or charged to a uniformly bounded defect window; (b) the restriction is an embedding with complete access markings; (c) all omitted sheets and limit-set ends are entered in the defect ledger; and (d) the restriction is stable under final-root enlargement.
+\item \textbf{Non-covering immersion or relation-valued comparison.}  The actual KL map can remain a noninjective immersion.  A relation \(\mathcal C\subset\mathcal E\times\widehat A_s\) may retain canonical sheets and actual KL accesses without conjugating the deck action.  It must record every fiber, target footprint, and proper-path branch; quotienting the relation to one coarse label is forbidden unless every future observable is constant on its fibers.
+\item \textbf{Retiming.}  At a retimed stage with \(N=\{1\}\), the obstruction vanishes; the one-sheet branch transports the source conformal ideal closure through \(q\).  The existence of a universal bounded retiming rule is open.  Moreover, retiming \emph{within the unchanged exact Kahn equalizer tower} cannot make the canonical factorization one-sheeted: by Corollary~\ref{cor:kahn-tower}, the infinite \(q\)-fiber is preserved by every finite base change.
+\item \textbf{Localization revision.}  Synchronizing the source and target obstacle packets can change \(H_s\), \(H_t\), \(K=a_*^{-1}(H_t)\), and \(K/H_s\), and may restore subgroup reflection.  Provided the physical embedding lifts between the revised covers, a revised localization is one-sheeted exactly when it restores the equality \(a_*^{-1}(H_t)=H_s\).  Every component, access, and root-enlargement clause must then be reproved for the revised packet.
+\end{enumerate}
+None of the positive obligations listed above follows from the no-go.
+\end{proposition}
+
+\begin{proof}
+(1)  The contradiction in Theorem~\ref{thm:whole-tile-no-go} is produced by a deck-limit sequence \(\gamma_nz\to\zeta_+\).  Such sequences need not remain in \(C\), and the restricted map \(\Phi_C\) need not satisfy the \(N\)-invariance \eqref{eq:deck-invariance} used in the proof; the argument therefore does not run on \(C\).  Any collar no-go would have to prove invariance or recurrence of the deck-limit sequence inside that collar separately.
+
+(2)  A relation span supplies neither the single-valued composite square (clause (4)) nor the deck-generator conjugation (clause (2)), so no step of the proof of Theorem~\ref{thm:whole-tile-no-go} applies to it.  This branch is not vacuous, by the following positive control.  Define
+\[
+F(z)=\exp\bigl(4(z-1)\bigr),\qquad z\in\mathbb D.
+\]
+Then \(|F(z)|=\exp(4(\operatorname{Re}z-1))<1\), \(F'(z)=4F(z)\ne0\), and \(F\) extends continuously to \(\overline{\mathbb D}\).  It is noninjective because
+\[
+F(\pi i/4)=F(-\pi i/4)=-e^{-4}.
+\]
+It is not a covering onto its image: if it were, the simply connected domain would make it the universal cover, whose deck group acts transitively on every fiber.  A deck transformation \(\delta\) carrying \(\pi i/4\) to \(-\pi i/4\) would satisfy \(\exp(4(\delta(z)-1))=\exp(4(z-1))\), so the continuous function \(4(\delta(z)-z)/(2\pi i)\) would be integer-valued on the connected disk, hence constant; its value at \(\pi i/4\) is \(-1\), so \(\delta(z)=z-\pi i/2\), which is not an automorphism of \(\mathbb D\).  Thus noninjectivity together with continuous boundary extension is compatible exactly when the noninjectivity is not a global covering-deck invariance.
+
+(3)  If \(N=\{1\}\), there is no nontrivial deck element, hence no sequence \eqref{eq:deck-seq}, and the deck-limit obstruction is absent; a one-sheeted factorization can be transported to the actual KL tile whenever the based map-identification and target embedding are independently supplied.  For the preservation claim: any stage reached from the canonical seed by finitely many full exact Kahn equalizer base changes has, by Corollary~\ref{cor:kahn-tower}, fibers in bijection with the seed fiber, which is infinite; hence \(N\) remains infinite at every such stage, and a trivial-kernel stage cannot be reached by retiming inside the unchanged tower.
+
+(4)  If the revised subgroup data satisfies \(a_*^{-1}(H_t)=H_s\), then by the injectivity clause of the canonical sheet-resolution theorem (Theorem~\ref{thm:canonical-sheet-resolution}: \(q\) is injective if and only if \(K=H_s\)) the revised resolution is one-sheeted, so \(N=\{1\}\) and Theorem~\ref{thm:whole-tile-no-go} imposes no constraint; conversely, if the reflection equality fails, the revised \(q\) is again a nontrivial covering.  The proviso that the physical embedding lifts between the revised covers is part of the hypothesis and is not established here.
+\end{proof}

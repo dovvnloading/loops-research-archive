@@ -1,0 +1,394 @@
+\documentclass[11pt]{article}
+\usepackage[margin=0.92in]{geometry}
+\usepackage{amsmath,amssymb,amsthm,amscd}
+\usepackage{enumitem}
+\usepackage[hidelinks]{hyperref}
+\usepackage{microtype}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{warning}[theorem]{Warning}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{problem}[theorem]{Open Problem}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+
+\newcommand{\Crit}{\operatorname{Crit}}
+\newcommand{\word}{\operatorname{word}}
+\newcommand{\Imp}{\operatorname{Imp}}
+\newcommand{\D}{\mathbb D}
+
+\title{Proposed Manuscript Insertions:\\Finite-Word Virtual Portraits, End Collapse, and Critical-Spine Assembly}
+\author{Research Push II}
+\date{2026-07-24}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+We resolve several formal and finite-word parts of the first genuinely virtual scale.  A localized root quadratic-like portrait pulls through every finite direct-decoration cylinder as the exact pseudo-quadratic-like pair $(f^{N_w+r},f^{N_w})$; the common univalent prefix cancels from the relative critical word, and all finite marked data pull back functorially.  At infinite addresses, the nested puzzle pieces determine canonical external prime ends, while every unrescaled interior inverse-branch limit collapses to a constant.  In the cylinder coordinate, however, the internal pseudo-quadratic-like germ is exactly constant.  Thus the true end obstruction is construction of a prime-end blow-up or rescaled marked fiber carrying the nondegenerate internal germ, not internal analytic compactness.  We also prove a critical-value base-change dichotomy and a corrected critical-spine fiber-product theorem, yielding marked finite-horizon assembly under explicit relative-cover and critical-spine hypotheses.  These results do not construct the analytic virtual end blow-up fibers, the complete protected Wave carrier, MBTT, coercivity, rigidity, or MLC.
+\end{abstract}
+
+\section{Localized and retimed finite-cylinder portraits}
+
+\begin{lemma}[Localized quadratic-like restriction]\label{lem:localize}
+Let $F_0=f^r|_{A_0}:A_0\to B_0$ be quadratic-like with connected filled Julia set $K$.  For every Jordan neighborhood $W$ with
+\[
+ K\Subset W\Subset B_0,
+\]
+there are Jordan disks
+\[
+ K\Subset A\Subset B\Subset W
+\]
+such that $F=f^r|_A:A\to B$ is quadratic-like of the same degree, has filled Julia set $K$, and has the same chronological critical word as $F_0$.
+\end{lemma}
+
+\begin{proof}
+Use the external B\"ottcher coordinate of the connected polynomial-like map.  A sufficiently low target equipotential bounds a Jordan disk $B\Subset W$.  The component $A$ of $F_0^{-1}(B)$ containing $K$ is compactly contained in $B$, maps properly onto $B$ with the original degree, and has the same nonescaping set.  Restriction changes neither the iterate nor any critical encounter.
+\end{proof}
+
+\begin{theorem}[Retimed finite-cylinder pullback correspondence]\label{thm:retimed}
+Let
+\[
+ F=f^r|_A:A\longrightarrow B,
+ \qquad A\Subset B\Subset P,
+\]
+be a proper root branch, and let
+\[
+ h_w=f^{N_w}|_{Q_w}:Q_w\longrightarrow P
+\]
+be a univalent direct-decoration cylinder map.  Put $U_w=h_w^{-1}(A)$ and
+\[
+ g_w=f^{N_w+r}|_{U_w}=F\circ h_w:U_w\longrightarrow B,
+ \qquad
+ \iota_w=f^{N_w}|_{U_w}:U_w\longrightarrow A\hookrightarrow B.
+\]
+Then:
+\begin{enumerate}[label=(\arabic*)]
+\item $g_w$ is proper and $\deg g_w=\deg F$, while $\iota_w$ is a conformal embedding;
+\item if the cylinder word is univalent, then
+\[
+ \word(g_w)=(\underbrace{1,\ldots,1}_{N_w})\star\word(F),
+ \qquad
+ \word(\iota_w)=(\underbrace{1,\ldots,1}_{N_w}),
+\]
+so the relative critical word is exactly $\word(F)$;
+\item if $K$ is the filled carrier of $F$ and $K_w=h_w^{-1}(K)$, then
+\[
+ g_w^{-1}(K)=\iota_w^{-1}(K)=K_w,
+ \qquad
+ g_w(K_w)=\iota_w(K_w)=K;
+\]
+$K_w$ is compact and full;
+\item every finite endpoint set, protected crosscut chain, obstacle, sheet label, normalized phase, and cyclic-order assertion pulls back by $h_w$; exact covering-versus-immersion endpoint containment is preserved;
+\item for the direct-decoration shift $s=f^q:Q_{aw}\to Q_w$,
+\[
+ g_{aw}=g_w\circ s,
+ \qquad
+ \iota_{aw}=\iota_w\circ s;
+\]
+\item every certified root enlargement inside $P$ pulls back functorially to all finite words.
+\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+Commutation gives $f^{N_w+r}=f^r\circ f^{N_w}=F\circ h_w$.  Precomposition by the conformal map $h_w$ preserves proper degree.  Chronological words concatenate, and the same univalent prefix occurs in both entries of the pair.  The carrier identities follow from $F^{-1}(K)=K=F(K)$.  A homeomorphism of closed Jordan pieces extends to a sphere homeomorphism, hence preserves fullness.  For a target endpoint set $E$,
+\[
+ E_{g_w}=h_w^{-1}(E_F),
+ \qquad
+ E_{\iota_w}=h_w^{-1}(E_{\rm incl}),
+\]
+which proves all finite marked assertions.  Finally $h_{aw}=h_w\circ s$ gives the shift identities.
+\end{proof}
+
+\begin{corollary}[Finite-word second-portrait transfer]\label{cor:finiteportrait}
+Assume the next actual quadratic-like renormalization at the terminal root has connected filled Julia set $K\Subset\operatorname{int}P$, and freeze a finite protected root marking and obstacle ledger.  After applying Lemma~\ref{lem:localize}, every finite direct-decoration word carries an actual pseudo-quadratic-like copy
+\[
+ (g_w,\iota_w)=(f^{N_w+r},f^{N_w}):U_w\rightrightarrows B
+\]
+with filled Julia set $K_w$, exact relative critical word, exact pulled marking, and shift-natural component and sheet data.
+\end{corollary}
+
+\begin{remark}
+The finite-word quadratic branch no longer requires an equal-depth target-cylinder selector.  The open problem begins at infinite addresses and at the later multi-stage Wave composition.
+\end{remark}
+
+\section{Critical-cut conservation and chronology attacks}
+
+For a nonconstant holomorphic map $G$, write $e_G(z)$ for its local degree.  For a quadratic polynomial, let $\mathbf d_r(z)$ be the chronological word recording whether $f^j(z)=0$ for $0\le j<r$.
+
+\begin{theorem}[Critical-cut conservation]\label{thm:cut}
+For all $N,r\ge1$,
+\[
+ e_{f^r}(z)e_{f^N}(f^rz)=e_{f^N}(z)e_{f^r}(f^Nz).
+\]
+Moreover,
+\[
+ \mathbf d_r(z)\star\mathbf d_N(f^rz)
+ =\mathbf d_N(z)\star\mathbf d_r(f^Nz)
+ =\mathbf d_{N+r}(z).
+\]
+\end{theorem}
+
+\begin{proof}
+Both compositions equal $f^{N+r}$; use multiplicativity of local degree.  The two concatenations are different cuts of the same list of absolute critical times.
+\end{proof}
+
+\begin{theorem}[Proper-square degree conservation]\label{thm:square}
+If proper maps form a commuting square
+\[
+\begin{CD}
+U @>H>> V\\
+@Vh_0VV @VVh_1V\\
+A @>F>> B,
+\end{CD}
+\]
+then
+\[
+ \deg(H)\deg(h_1)=\deg(h_0)\deg(F)
+\]
+and pointwise
+\[
+ e_H(x)e_{h_1}(H(x))=e_{h_0}(x)e_F(h_0(x)).
+\]
+If $h_0$ is univalent and $F$ has degree two, the possibilities are $(\deg H,\deg h_1)=(2,1)$ and $(1,2)$.
+\end{theorem}
+
+\begin{proof}
+Take global and local degrees of the equal compositions $h_1\circ H=F\circ h_0$.
+\end{proof}
+
+\begin{proposition}[Criticality swap]\label{prop:swap}
+For $f(z)=z^2-1$, let $A=\D(0,\rho)$, $B=\D(-1,\rho^2)$, and let $U$ be the component of $f^{-1}(A)$ containing $1$.  Then $h_0=f|_U$ is conformal, $F=f|_A$ has degree two, and the commuting square with $H=h_0$ and $h_1=F$ has $(\deg H,\deg h_1)=(1,2)$.
+\end{proposition}
+
+\begin{proposition}[Critical-time shear]\label{prop:shear}
+For the same polynomial and sufficiently small $\rho$, put
+\[
+ A_0=\D(0,\rho),\qquad A_1=f(A_0),\qquad A_2=f(A_1),
+\]
+and let $U_0$ be the component of $f^{-1}(A_0)$ containing $1$.  The endpoint projections
+\[
+ h_0=f|_{U_0}:U_0\to A_0,
+ \qquad
+ h_2=f|_{A_1}:A_1\to A_2
+\]
+are conformal, while
+\[
+ F=f^2|_{A_0},\qquad H=f^2|_{U_0}
+\]
+both have degree two and satisfy $h_2\circ H=F\circ h_0$.  Nevertheless,
+\[
+ \word(F)=(2,1),\qquad \word(H)=(1,2).
+\]
+\end{proposition}
+
+\begin{warning}
+Endpoint univalence and equality of total return degree do not certify chronological critical metadata.
+\end{warning}
+
+\begin{theorem}[Stagewise degree ladder]\label{thm:ladder}
+Factor a root branch by $A_j=f^j(A_0)$ and a lift by $U_j=f^j(U_0)$.  Suppose
+\[
+ h_j=f^N|_{U_j}:U_j\to A_j
+\]
+is proper and onto.  Put
+\[
+ d_j=\deg(f:A_j\to A_{j+1}),\quad
+ \widetilde d_j=\deg(f:U_j\to U_{j+1}),\quad
+ e_j=\deg h_j.
+\]
+Then
+\[
+ \widetilde d_j e_{j+1}=e_jd_j.
+\]
+If $e_0=1$, exact chronological word transfer is equivalent to $e_j=1$ for every $j$, equivalently to
+\[
+ \Crit(f^N)\cap U_j=\varnothing
+\]
+for every selected intermediate domain.  Endpoint univalence alone gives only equality of total degrees.
+\end{theorem}
+
+\section{End prime ends, Euclidean collapse, and normalized germs}
+
+Assume the direct-decoration pieces are the source ray/equipotential puzzle pieces.  In the exterior B\"ottcher coordinate, $f^q$ multiplies angles by $2^q$, while each inverse branch acts by an affine inverse branch $t\mapsto(t+k_a)/2^q$.
+
+\begin{theorem}[Canonical end prime-end coding]\label{thm:primeend}
+For every infinite address $\omega$, the angular hulls of the boundary rays of $Q_{\omega|m}$ shrink to a unique angle $\theta_\omega$.  The nested puzzle pieces form a defining prime-end chain and
+\[
+ E_\omega=\Imp(\theta_\omega).
+\]
+Furthermore,
+\[
+ 2^q\theta_{a\omega}=\theta_\omega\pmod1,
+ \qquad
+ f^q(E_{a\omega})=E_\omega.
+\]
+Thus every end fiber has a canonical dynamically equivariant external prime end and crosscut chain.
+\end{theorem}
+
+\begin{proof}
+The angular diameter is multiplied by $2^{-q}$ at every inverse step, while the pulled equipotential height tends to the Julia level.  Hence the exterior portions of the nested pieces are a fundamental chain for one prime end.  The intersection of the closures of this chain with the Julia boundary is its impression, and it is exactly $\bigcap_mQ_{\omega|m}$.  The dynamical formulas follow from angle multiplication and the actual branch identity.
+\end{proof}
+
+\begin{theorem}[Planar end collapse]\label{thm:collapse}
+Let
+\[
+ \Phi_m=\phi_{\omega|m}:\operatorname{int}P\to\operatorname{int}Q_{\omega|m}.
+\]
+For every compact $L\Subset\operatorname{int}P$,
+\[
+ \operatorname{diam}\Phi_m(L)\longrightarrow0.
+\]
+Every locally uniform subsequential limit of $\Phi_m$ is constant with value in $E_\omega$.  Consequently no nonconstant analytic end chart is an unrescaled planar limit of the finite inverse branches.
+\end{theorem}
+
+\begin{proof}
+The maps form a normal family.  A locally uniform limit has image in every fixed $Q_{\omega|n}$, hence in $E_\omega\subset J(f)$.  Since the Julia set has empty interior, the open mapping theorem forces the limit to be constant.  A subsequence whose image of $L$ had diameter bounded below would contain a locally uniformly convergent subsubsequence and contradict this conclusion.
+\end{proof}
+
+\begin{corollary}
+For every compact $K\Subset\operatorname{int}P$,
+\[
+ \operatorname{diam}\phi_{\omega|m}(K)\to0.
+\]
+Thus a nondegenerate end component cannot be declared to be the ordinary Hausdorff limit of the finite small-Julia copies.
+\end{corollary}
+
+\begin{theorem}[Normalized end-germ constancy]\label{thm:germ}
+Let $(g_m,\iota_m)$ be the retimed pair associated with the prefix $w_m=\omega|m$, and use the source coordinate
+\[
+ h_m=\iota_m=f^{N_m}:U_m\to A.
+\]
+Then, identically for every $m$,
+\[
+ (g_m,\iota_m)\circ h_m^{-1}
+ =(F,\operatorname{incl}_{A\hookrightarrow B}).
+\]
+Hence the normalized internal pseudo-quadratic-like germ is constant and has a unique nondegenerate analytic limit, even though its Euclidean realization collapses.
+\end{theorem}
+
+\begin{proof}
+By construction $g_m=F\circ h_m$ and $\iota_m$ is $h_m$ followed by inclusion.
+\end{proof}
+
+\begin{theorem}[End blow-up necessity]\label{thm:blowup}
+Assume the root filled carrier $K$ contains at least two points.  Suppose a Hausdorff marked end realization contains embeddings $j_m:K\to\mathcal X$ converging pointwise to an injective $j_\infty:K\to\mathcal X$, together with a continuous projection $\pi:\mathcal X\to\overline P$ satisfying
+\[
+ \pi\circ j_m=\phi_{\omega|m}|_K.
+\]
+Then $\pi\circ j_\infty$ is constant.  Hence any end realization retaining the nondegenerate normalized carrier must either have a nontrivial projection fiber over the original plane or use a nontrivial rescaling/blow-up chart.  It cannot remain locally embedded in the unrescaled dynamical plane.
+\end{theorem}
+
+\begin{proof}
+For $z,z'\in K$, Theorem~\ref{thm:collapse} gives
+\[
+ |\phi_{\omega|m}(z)-\phi_{\omega|m}(z')|\to0.
+\]
+Pass to the marked limit and use continuity of $\pi$.
+\end{proof}
+
+\begin{remark}[Exact end split]
+The canonical end prime end, normalized second-portrait germ, and necessity of a nontrivial fiber/rescaling are proved.  What remains is an analytic prime-end blow-up or rescaled marked surface carrying the germ, protected accesses, obstacles, collapse map, and final-root naturality.  A genuinely planar component is an allowed stronger outcome only when independently constructed.
+\end{remark}
+
+\section{Quadratic base change and the corrected telescope}
+
+\begin{theorem}[Quadratic base-change dichotomy]\label{thm:basechange}
+Let $p:X\to Y$ be proper of degree two between Jordan disks, with critical value $v$.  Let $E\Subset Y$ be a Jordan disk with $v\notin\partial E$.
+\begin{enumerate}[label=(\roman*)]
+\item If $v\in E$, then $p^{-1}(E)$ is one Jordan disk mapped properly to $E$ with degree two.
+\item If $v\notin\overline E$, then $p^{-1}(E)$ consists of two Jordan disks, each mapped conformally onto $E$.
+\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+The component containing the critical point has degree at least two and therefore exhausts the total degree.  Away from the critical value, every component is an unbranched cover of a simply connected disk and hence has degree one.
+\end{proof}
+
+\begin{proposition}
+Degree-two factorization alone does not imply connected telescope closure: for $p(z)=z^2$ and a small disk $E\Subset\D$ avoiding $0$, the pullback has two degree-one components.
+\end{proposition}
+
+A covering/embedded stage system consists of proper maps $g_j:X_j\to Y_{j+1}$ and conformal embeddings $\iota_j:X_j\hookrightarrow Y_j$, with $Y_m=Y_0$.  On $A_j=\iota_j(X_j)$ define the relative map
+\[
+ R_j=g_j\circ\iota_j^{-1}:A_j\to Y_{j+1}.
+\]
+Starting from $(G_1,I_1)=(g_0,\iota_0)$, form the usual chain fiber products
+\[
+ \widetilde T_{k+1}
+ =\{(t,x):G_k(t)=\iota_k(x)\}
+\]
+and select connected components.  If $G_k$ has degree two and critical value $v_k$, call
+\[
+ v_k\in\iota_k(X_k)
+\]
+\emph{critical-spine retention}.
+
+\begin{theorem}[Critical-spine quadratic telescope]\label{thm:telescope}
+Assume exactly one relative stage has degree two and all others are univalent; every embedded boundary avoids the current critical value; every post-quadratic base change has critical-spine retention; compatible connected relative-cover components have been selected; and all stages remain in authorized localizations.  Then every fiber product has a unique connected full-degree component.  The endpoint source is a Jordan disk, the endpoint immersion is embedded in the selected cover, and the endpoint covering has degree two.
+
+If retention first fails, the pullback splits into two univalent components and no connected continuation through that base change retains degree two.
+\end{theorem}
+
+\begin{proof}
+Before the quadratic stage the partial covering is univalent.  At the quadratic stage its degree becomes two.  Thereafter Theorem~\ref{thm:basechange} shows that retention gives one connected degree-two pullback; the next univalent relative stage preserves degree and propagates the critical value.  Induct.  Failure invokes the second alternative of Theorem~\ref{thm:basechange}.
+\end{proof}
+
+\begin{theorem}[Marked finite-horizon assembly]\label{thm:marked}
+Suppose the stages of Theorem~\ref{thm:telescope} additionally carry complete component and sheet routes, obstacle and localization records, finite protected endpoint sets, normalized phases, exact covering-versus-immersion endpoint containment, relative-cover subgroup inclusions, proper or end-proper interval flags, and commuting marked enlargement squares.
+
+Then the endpoint pair retains all these data, and every certified enlargement preserving the critical spine induces a commuting endpoint square.  If, moreover, each relative stage is an actual restriction
+\[
+ R_j=f^{s_j}
+\]
+and the selected route is the natural domain of their chronological composition, then on the embedded endpoint source
+\[
+ G_m\circ I_m^{-1}
+ =R_{m-1}\circ\cdots\circ R_0
+ =f^{\sum_js_j}.
+\]
+The relative critical word is the chronological concatenation of the stage words and has one quadratic stage.
+\end{theorem}
+
+\begin{proof}
+The fiber-product identity gives inductively
+\[
+ G_k=R_{k-1}\circ\cdots\circ R_0\circ I_k.
+\]
+This proves the relative-iterate statement.  The telescope theorem gives degree two.  Component coordinates, prime-end maps, endpoint containments, subgroup inclusions, proper/end-proper flags, and marked enlargement squares all compose finitely.
+\end{proof}
+
+\begin{remark}[Ledger consequence]
+This proves the compiler content of \texttt{FINITE\_HORIZON\_ASSEMBLY}.  The current \texttt{MAPPING\_TELESCOPE} statement is safe only after adding relative-cover component compatibility and post-quadratic critical-spine retention; degree-two factorization alone is insufficient.
+\end{remark}
+
+\section{The exact residual theorem}
+
+\begin{problem}[Virtual end blow-up and protected critical-spine realization]\label{prob:residual}
+For one directly visible decoration followed by one additional satellite-copy step:
+\begin{enumerate}[label=(\arabic*)]
+\item for every required infinite address $\omega$, construct a conformal prime-end blow-up or rescaled marked surface $\widehat\Sigma_\omega$, a nondegenerate carrier $\widehat K_{2,\omega}\subset\widehat\Sigma_\omega$, and a continuous collapse map to the original plane whose image lies in $E_\omega$; realize the constant normalized root germ on this fiber and preserve the canonical external prime end;
+\item realize every additional protected access, obstacle, sheet, localization, and final-root record on those end fibers;
+\item for every demanded multi-stage Wave continuation, construct a covering/embedded chain with one quadratic relative stage, post-quadratic critical-spine retention, full relative-cover orbit, and exact enlargement naturality.
+\end{enumerate}
+Theorems~\ref{thm:telescope} and~\ref{thm:marked} then assemble the marked degree-two return.  Corollary~\ref{cor:finiteportrait} has already realized every finite word; Theorems~\ref{thm:primeend}--\ref{thm:blowup} have already supplied the canonical end prime end, the collapse obstruction, the internal analytic germ, and the necessity of a nontrivial projection fiber or rescaling.
+\end{problem}
+
+\section*{Status}
+The proposed conservative ledger effect is one safe open-to-proved promotion:
+\[
+ \texttt{FINITE\_HORIZON\_ASSEMBLY}.
+\]
+A second promotion,
+\[
+ \texttt{MAPPING\_TELESCOPE},
+\]
+is valid only after rewriting its statement with the critical-spine hypotheses above.  The broad disconnected-marking node remains open, but its finite-word transfer, canonical end prime ends, and normalized end germs are proved subnodes.  The remaining source-facing obstruction is construction of the analytic end blow-up/rescaled fiber together with the protected multi-stage critical spine.  None of this proves MBTT, coercivity, rigidity, or MLC.
+
+\end{document}

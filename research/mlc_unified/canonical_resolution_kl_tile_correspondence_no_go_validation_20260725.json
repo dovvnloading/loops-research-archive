@@ -1,0 +1,57 @@
+{
+  "scope": "Source-lock, theorem-marker, explicit non-covering immersion, ledger-routing, and global-status validation.  The analytic deck-limit proof remains in the proof document.",
+  "sources": {
+    ".tmp_kl06_source\\wad.tex": "B5DF40A5D33B6B590B430D47693514088AF6FC287BAA5D87B4D11015B990E580",
+    ".tmp_kl08_source\\psiql.tex": "6CC9726461473812A5FBA93377F2DC0B088DB6CAC4B9DE90C7B2AE625DFB49AF",
+    ".tmp_kl08_source\\moduli.tex": "CBDB9EF7D6AC94C33FDB0AB7167E19C39EB23D27373C266A296CF6031E0CAF7E"
+  },
+  "proof_document_sha256": "39EF0EADB16D3DEC773259133E06F8E4ACA8237C3C039E240760F8EBBB5C915A",
+  "ledger_sha256": "E9CC988A8F18203788F02E19992E8CC07DF886C20BB4882DC7A97AE0973A9061",
+  "finite_controls": {
+    "noncovering_immersion": {
+      "z_plus": [
+        0.0,
+        0.7853981633974483
+      ],
+      "z_minus": [
+        0.0,
+        -0.7853981633974483
+      ],
+      "common_value": [
+        -0.01831563888873418,
+        2.24301885394271e-18
+      ],
+      "expected_common_value": -0.01831563888873418,
+      "minimum_sample_derivative_modulus": 0.009915008706665434,
+      "forced_translation": [
+        0.0,
+        -1.5707963267948966
+      ],
+      "translation_exit_witness": {
+        "source": [
+          0.9,
+          0.0
+        ],
+        "translated_modulus": 1.8103593842859875
+      },
+      "interpretation": "The map is a noninjective holomorphic immersion of the disk into the disk with continuous closed-disk values, but the forced fiber translation is not a disk automorphism."
+    }
+  },
+  "ledger": {
+    "total": 330,
+    "counts": {
+      "imported": 23,
+      "proved": 235,
+      "open": 72
+    },
+    "theorem": "CANONICAL_KL_WHOLE_TILE_CORRESPONDENCE_NO_GO",
+    "global_statuses": {
+      "VIRTUAL_WAVE_MARKED_CORRESPONDENCE": "open",
+      "VIRTUAL_WAVE_HORIZON_CERTIFICATE": "open",
+      "VIRTUAL_AUGMENTED_ATOM_PORT_CERTIFICATE": "open",
+      "UNIVERSAL_PROTECTED_TOWER_CLOSURE": "open",
+      "MLC": "open"
+    }
+  },
+  "result": "PASS"
+}

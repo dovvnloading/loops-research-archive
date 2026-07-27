@@ -1,0 +1,75 @@
+%% ---------- Notation and standing conventions for Cluster D ----------
+%% Source: kl_localization_sheet_resolution_factorization.md, Sec. 2-3 (lines 62-183)
+\subsection*{Notation and standing conventions}
+
+All spaces in this part are Hausdorff, connected, locally path-connected,
+and semilocally simply connected; all covering spaces are connected and
+based.  These hypotheses are satisfied by the planar complementary
+surfaces used in the canonical KL localization.  Path products and
+induced fundamental-group maps are based; every statement involving an
+unbased cover or subgroup is to be read after the displayed basepoints
+have been fixed.
+
+For a based covering \( p\colon(\widehat X,\widehat x)\to(X,x) \) we write
+\[
+  H \;=\; p_*\pi_1(\widehat X,\widehat x)\;\leq\;\pi_1(X,x)
+\]
+for its characteristic subgroup.
+
+For subgroups \( H\leq K \) of a group,
+\begin{equation}\label{eq:coset-set}
+  K/H=\{\,kH : k\in K\,\}
+\end{equation}
+denotes only the \emph{pointed set} of cosets with distinguished point
+\( H \).  No multiplication on \eqref{eq:coset-set} is asserted unless
+\( H\triangleleft K \).  With the usual path-endpoint convention a cover
+fiber is naturally the right-coset set \( H\backslash K \); inversion
+gives the canonical pointed bijection \( Hk\longmapsto k^{-1}H \) with
+\eqref{eq:coset-set}.  Thus the notation \( K/H \) does not silently
+assume normality.
+
+For composable paths we use the paper-wide convention of
+Section~\ref{sec:background}: \( \delta_1*\delta_2 \) means first
+traverse \( \delta_1 \), then traverse \( \delta_2 \), and in
+fundamental groups \( [\delta_1][\delta_2]=[\delta_1*\delta_2] \)
+(the first-traversed factor is written leftmost).  In the endpoint
+description, continuing the fiber point labelled \( H_sk \) by a based
+loop \( g \) appends \( g \) after \( k \) and gives \( H_skg \); under
+the inversion identification
+\( H_sk\mapsto k^{-1}H_s \), that transport is
+\begin{equation}\label{eq:transport-formula}
+  k^{-1}H_s\;\longmapsto\; g^{-1}k^{-1}H_s .
+\end{equation}
+Formula \eqref{eq:transport-formula} replaces any naive multiplication on
+\( K/H_s \) and remains valid when \( H_s \) is not normal in \( K \).
+
+Fixed symbols of this part:
+\( a\colon(X_s,x_s)\hookrightarrow(X_t,x_t) \) is a based topological
+embedding (at the canonical KL primitive seed the spaces are the
+complementary surfaces, \( X_s=\Omega_s \), \( X_t=\Omega_t \), and
+\( a=i^{p} \));
+\( p_s\colon(\widehat X_s,\widehat x_s)\to(X_s,x_s) \) and
+\( p_t\colon(\widehat X_t,\widehat x_t)\to(X_t,x_t) \) are connected based
+covers with subgroups \( H_s,H_t \);
+\( A\colon(\widehat X_s,\widehat x_s)\to(\widehat X_t,\widehat x_t) \) is a
+based lift satisfying \( p_tA=ap_s \);
+\( K:=a_*^{-1}(H_t)\leq\pi_1(X_s,x_s) \);
+\( P=X_s\times_{X_t}\widehat X_t \) is the pullback and \( P_K \) the path
+component of the basepoint \( (x_s,\widehat x_t) \), with first and second
+projections \( r \) and \( e \);
+\( q\colon\widehat X_s\to P_K \) is the canonical comparison map of
+Theorem~\ref{thm:sheet-resolution};
+\( \mathcal S_{\mathrm{loc}}=K/H_s \) is the based localization-sheet
+fiber;
+\( M_\delta \) denotes sheet transport along a path \( \delta \) in
+\( P_K \); \( \Pi_1(P_K) \) is the fundamental groupoid of \( P_K \); and
+\( \mathcal G_q \) is the canonical sheet-transport groupoid of
+Proposition~\ref{prop:transport}.  \( \mathbf{Set}_{\mathrm{bij}} \)
+denotes the category of sets and bijections.  A map defined on an open
+interval is \emph{topologically proper} if preimages of compact sets are
+compact.
+
+%% Typographic note: the source note writes \mathcal{S}_{loc} and
+%% \mathcal{G}_q; we use \mathcal{S}_{\mathrm{loc}} and \mathcal{G}_q to
+%% remain within amssymb (no mathrsfs).  The source's amscd square in
+%% Corollary 7.2 is rendered as a displayed commutation equation.

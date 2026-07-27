@@ -1,0 +1,50 @@
+%% ---------------------------------------------------------------------
+%% Notation and standing conventions for the forced-collision cluster
+%% (canonical localization at an ordinary primitive seed).
+%% amsart; requires amsmath, amssymb, amsthm.  Equation tags mirror the
+%% source research note kl_canonical_localization_forced_collision.md
+%% for traceability.
+%% ---------------------------------------------------------------------
+
+%% Theorem environments (omit any already declared in the preamble).
+\theoremstyle{plain}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{remark}[theorem]{Remark}
+
+\subsection*{Standing conventions}
+
+\begin{itemize}
+\item A \emph{full continuum} is a nonempty compact connected set \(K\subset\mathbb C\) whose complement \(\mathbb C\setminus K\) is connected.  We write \(K\Subset U\) for compact containment.
+\item \(f\colon U^1\to U^0\) is an \emph{ordinary} quadratic-like restriction of a quadratic polynomial, primitively renormalizable of period \(p>1\).  We set \(U^r=f^{-r}(U^0)\); then \(U^{r+1}\subset U^r\) and every restriction \(f\colon U^{r+1}\to U^r\) is quadratic-like (Kahn~I, \S6, p.~31, arXiv:math/0609045v3).
+\item \(F=f^p\colon U^p\to U^0\), a proper holomorphic map of degree \(2^p\); \(i^p\colon U^p\hookrightarrow U^0\) is the \emph{physical inclusion}.
+\item \(K_p\) is the filled Julia set of the \(p\)-renormalization; \(K_p(j)=f^j(K_p)\) for \(0\le j<p\); \(\mathcal K_p=\bigcup_{j=0}^{p-1}K_p(j)\).  Primitivity means the \(K_p(j)\) are pairwise disjoint (Kahn~I, \S1.1).
+\item \(A=K_p\), \(B=\mathcal K_p\).  The marked source and target surfaces of the canonical localization are
+\[
+ T'=(U^p\setminus F^{-1}B)\cup A,
+ \qquad
+ T=(U^0\setminus B)\cup A,                     \tag{1.1}
+\]
+and \(a=i^p\colon T'\to T\) is the restriction of the physical inclusion.  For the physical inclusion \(A'=(i^p)^{-1}(A)=A\): the marked continuum is literally the same set on both sides.
+\item \(\Omega_s=T'\setminus A=U^p\setminus F^{-1}B\) and \(\Omega_t=T\setminus A=U^0\setminus B\).
+\item \(D_A\Subset T'\) is a fixed Jordan local neighborhood of \(A\), disjoint from every other component of \(F^{-1}B\); \(z_*\in D_A\setminus A\) is the localization basepoint.  The \emph{localization subgroups} are
+\[
+ H_s=\operatorname{im}\bigl[\pi_1(D_A\setminus A,z_*)\longrightarrow\pi_1(\Omega_s,z_*)\bigr],  \tag{5.2}
+\]
+and \(H_t\le\pi_1(\Omega_t,a(z_*))\), defined analogously from a Jordan local neighborhood of \(A\) in \(T\); these are the subgroups to which Kahn's connected-complement localization covers correspond (Kahn~I, \S7.4.1, Theorem~7.12, p.~44).  Kahn requires of a local neighborhood only that every component of its complement of \(A\) be an annulus; the Jordan choice is our own specialization, justified by Lemma~\ref{lem:local-pair}.
+\item \(\pi_s\colon\widehat\Omega_s\to\Omega_s\), \(\pi_t\colon\widehat\Omega_t\to\Omega_t\) are the localization covers; \(\widehat a\colon\widehat\Omega_s\to\widehat\Omega_t\) is the unique commuting lift of \(a\); \(\widehat i\colon T'_A\to T_A\) is Kahn's localized inclusion between the completed localized marked surfaces.
+\item For \(x\in\mathbb C\setminus\Omega_s\) (in practice \(x\in X\subset F^{-1}B\)), \(\operatorname{Ind}_x\colon\pi_1(\Omega_s,z_*)\to\mathbb Z\) is the winding-number homomorphism about \(x\).
+\item \emph{Pullback dynasty:} \((i_r,f_r)\colon(\mathbf U^{r+1},K^{r+1})\to(\mathbf U^r,K^r)\), \(r\ge0\), is Kahn's exact pullback iteration of the canonical seed \((i_0,f_0)=(\widehat i,\widehat f)\), realized by the equalizers
+\[
+ \mathbf U^{r+2}=\{(x,y):i_r(x)=f_r(y)\},
+ \quad i_{r+1}(x,y)=y,\quad f_{r+1}(x,y)=x     \tag{2.1}
+\]
+(Kahn~I, \S7.3.2, pp.~42--43).  \(A_r=\mathbf U^r\setminus K^r\) is the complementary annulus at depth \(r\).  For \(m>n\ge0\),
+\(I_{m,n}=i_n\circ i_{n+1}\circ\cdots\circ i_{m-1}\colon A_m\to A_n\).
+\item \emph{KL direct-decoration data:} \(P=Y^{(\nu-1)q+1}\) with the two univalent \(f^q\)-pullbacks \(Q_L,Q_R\subset P\) of depth \(\nu q+1\) (KL~II, \S2.1, p.~6, and Figure~2.1, p.~7).  The \emph{exact direct-decoration depths} are \(m=\nu q+1\) and \(n=(\nu-1)q+1\).
+\item \emph{Tile conventions:} \(T_s\), \(T_t\) generate the deck groups of the universal covers of the source and target annuli; a \emph{compatible universal-cover tile lift} \(L\) of \(I_{m,n}\) is a lift to those universal covers satisfying the degree-one equivariance \(L\circ T_s=T_t\circ L\).  KL's pseudo-pieces are glued from universal-cover tiles of complementary components, and each source tile is embedded in its source pseudo-piece, with pairwise disjoint images (KL~II, proof of Lemma~3.3, p.~12).
+\end{itemize}

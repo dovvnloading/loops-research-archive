@@ -1,0 +1,60 @@
+\begin{theorem}[Full abstract \(\psi\)-ql axioms do not imply global injectivity; manuscript Thm.~12.41, ledger \texttt{PSI\_QL\_GLOBAL\_INJECTIVITY\_NO\_GO}]\label{thm:psi-ql-no-go}
+There is a degree-two \(\psi\)-quadratic-like pair
+\[
+(i,f):(U',K')\longrightarrow(U,K)
+\]
+for which \(f\) is a proper degree-two branched cover, \(i\) is a holomorphic immersion,
+\(i^{-1}(K)=f^{-1}(K)=K'\)
+is connected, and \(i|_{K'}:K'\to K\) is a homeomorphism, while the degree-one complementary-annulus immersion
+\(i:U'\setminus K'\to U\setminus K\)
+has a self-collision.
+\end{theorem}
+
+\begin{proof}
+Put
+\[
+R=75,\qquad\beta=\frac{\pi}{50},\qquad\Delta=e^{2\beta}-1,
+\]
+and define
+\[
+U'=\{z:|z|<75\},\quad U=\{w:|w|<5625\},\quad f(z)=z^2,
+\]
+\[
+K=[0,1],\qquad K'=[-1,1],\qquad i(z)=\frac{e^{\beta(z+1)}-1}{\Delta}. \tag{10.36}
+\]
+The intervals are compact, connected, full, and nondegenerate. The map \(f:U'\to U\) is a proper degree-two branched cover and
+\[
+f^{-1}([0,1])=[-1,1]. \tag{10.37}
+\]
+Moreover, \(i'(z)=\beta e^{\beta(z+1)}/\Delta\neq 0\). For \(|z|<75\), the elementary inequalities \(3<\pi<\tfrac{22}{7}\), \(e<3\), \(e^{x}>1+x\) \((x>0)\) give
+\[
+|i(z)|<\frac{e^{76\beta}+1}{e^{2\beta}-1}<\frac{3^{5}+1}{3/25}=\frac{6100}{3}<5625. \tag{10.38}
+\]
+Here \(76\beta=38\pi/25<836/175<5\); the strict bound \(\pi<22/7\) follows, for example, from
+\[
+\frac{22}{7}-\pi=\int_0^1\frac{x^4(1-x)^4}{1+x^2}\,dx>0,
+\]
+and \(e<3\) follows from its factorial series. Thus \(i\) maps the source disk into the target disk.
+
+For \(t\in[0,1]\),
+\[
+i(z)=t\iff z=-1+\frac{\log(1+\Delta t)}{\beta}+100ik,\quad k\in\mathbb Z. \tag{10.39}
+\]
+The real part in (10.39) belongs to \([-1,1]\), while every nonzero sheet has imaginary modulus at least \(100>75\). Consequently
+\[
+i^{-1}(K)=[-1,1]=f^{-1}(K).
+\]
+On this interval \(i\) is strictly increasing and sends \(-1\mapsto 0\), \(1\mapsto 1\).
+
+The circle \(|z|=2\) is a positive source-annulus generator. The equation \(i(z)=1/2\) has exactly one simple solution inside that circle: its solutions have the form
+\[
+-1+\beta^{-1}\log(1+\Delta/2)+100ik,
+\]
+and the \(k=0\) real part lies strictly between \(-1\) and \(1\). The argument principle therefore gives complementary-annulus degree \(+1\).
+
+Nevertheless, \(z_+=50i\) and \(z_-=-50i\) are distinct points of \(U'\setminus K'\), and
+\[
+\beta(z_+-z_-)=2\pi i,\qquad i(z_+)=i(z_-)=-\frac{e^{\beta}+1}{\Delta}<0 .
+\]
+Their common image belongs to \(U\setminus K\), proving the collision.
+\end{proof}

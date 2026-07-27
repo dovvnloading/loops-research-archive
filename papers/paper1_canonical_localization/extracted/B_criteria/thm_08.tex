@@ -1,0 +1,55 @@
+\begin{remark}[Notation for the gluing criterion]\label{rem:tile-glue-notation}
+In Proposition~\ref{prop:tile-glue-equivalence} the symbols are those
+of the Kahn--Lyubich gluing data at the aligned direct-decoration
+stage (KL~II, \S3.2.1 and Lemma~3.3, pp.~11--12): \(Q\) is the central
+overlap piece of the glued pseudo-piece model, \(Q_i\) its
+intersection with the \(i\)-th source tile, \(P_{j(i)}\) the target
+component carrying the image of the \(i\)-th tile, \(i\mapsto j(i)\)
+the component map between source and target tile labels, \(e_i\) the
+embedding of the central overlap \(Q_i\) into the \(i\)-th source
+tile, \(\widetilde e_{j(i)}\) the corresponding target-central
+embedding, and \(L_i\) the induced universal-cover tile lift.  These
+are alignment data of the same-seed decoration stage
+(Proposition~\ref{prop:realization}); the tile index \(i\) is a label
+and is unrelated to the inclusion arrows \(i_r\).
+\end{remark}
+
+\begin{proposition}[Tile/glued pseudo-piece equivalence]
+\label{prop:tile-glue-equivalence}
+Fix a KL direct-decoration pair for which the component map
+\(i\mapsto j(i)\) between source and target tile labels is bijective
+and every target component \(P_{j(i)}\) satisfies
+\[
+ Q\cap P_{j(i)}=Q_i .
+\]
+Write \(e_i\) for the embedding of the central overlap \(Q_i\) into
+the \(i\)-th source tile, \(\widetilde e_{j(i)}\) for the
+corresponding target-central embedding, and \(L_i\) for the induced
+universal-cover tile lift, so that the overlap commutation
+\(L_i\circ e_i=\widetilde e_{j(i)}\) holds on \(Q_i\).  Then
+\[
+ \text{every tile lift }L_i\text{ is injective}
+ \quad\Longleftrightarrow\quad
+ \text{the glued pseudo-piece immersion is injective on its interior}.
+\]
+\end{proposition}
+
+\begin{proof}
+Assume every tile lift is injective, and suppose a tile point \(x\)
+collides in the target quotient with a central point \(z\in Q\).  By
+bijectivity of the component map, the collision-relevant target
+overlap of the \(i\)-th tile is restricted to \(P_{j(i)}\), and
+\(Q\cap P_{j(i)}=Q_i\); hence \(z\in Q_i\).  Overlap commutation gives
+\[
+ L_i(e_i(z))=\widetilde e_{j(i)}(z)=L_i(x),
+\]
+and injectivity of \(L_i\) gives \(x=e_i(z)\).  Thus the collision was
+already one of the prescribed source gluing identifications, and the
+glued map is injective on its interior.  Collisions between points of
+different tiles are excluded by bijectivity of the component map.
+
+Conversely, injectivity of the glued map restricts to injectivity of
+each tile lift, because each universal-cover tile embeds in its source
+pseudo-piece before the prescribed central overlap identifications are
+imposed.
+\end{proof}

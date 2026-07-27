@@ -1,0 +1,85 @@
+\begin{proposition}[Base-change propagation through exact equalizers]\label{prop:base-change}
+Let
+\[
+X\xrightarrow{\ i\ }Z\xleftarrow{\ f\ }Y
+\]
+be continuous maps, and suppose
+\[
+i=e\circ q,\qquad X\xrightarrow{\ q\ }P\xrightarrow{\ e\ }Z,
+\]
+where \(q\) is a covering and \(e\) is an embedding.  Form
+\[
+E=X\times_ZY,\qquad R=P\times_ZY,
+\]
+and define
+\begin{equation}\label{eq:base-change-maps}
+q'\colon E\to R,\quad q'(x,y)=(q(x),y);
+\qquad
+e'\colon R\to Y,\quad e'(p,y)=y;
+\qquad
+i'\colon E\to Y,\quad i'(x,y)=y.
+\end{equation}
+Then:
+\begin{enumerate}
+\item \(q'\) is the pullback covering of \(q\) (along the projection \(R\to P\)); in particular the square
+\[
+\begin{array}{ccc}
+E&\xrightarrow{\ q'\ }&R\\[2pt]
+\big\downarrow&&\big\downarrow\\[2pt]
+X&\xrightarrow{\ q\ }&P
+\end{array}
+\]
+(vertical maps the first-coordinate projections) is cartesian;
+\item \(e'\) is a topological embedding;
+\item \(i'=e'\circ q'\);
+\item \(i'\) and \(q'\) have the same kernel pair; and
+\item for every \((p,y)\in R\),
+\begin{equation}\label{eq:fiber-bijection}
+(q')^{-1}(p,y)=\{(x,y):q(x)=p\}\cong q^{-1}(p).
+\end{equation}
+\item if moreover \(e\) is \emph{open} --- equivalently, if \(i=e\circ q\) is a local homeomorphism, i.e.\ an immersion in the holomorphic category --- then \(e'\) is an open embedding and \(i'\) is again a local homeomorphism.
+\end{enumerate}
+Hence infinite collision fibers remain infinite under the full base-change equalizer.
+\end{proposition}
+
+\begin{proof}
+(1)  The displayed square is a pullback by direct substitution in the definitions: a point of \(X\times_PR\) is a pair \((x,(p,y))\) with \(q(x)=p\) and \(e(p)=f(y)\), which is exactly a pair \((x,y)\) with \(e(q(x))=f(y)\), i.e.\ with \(i(x)=f(y)\); thus \(X\times_PR=X\times_ZY=E\), with \(q'\) corresponding to the second projection.  The pullback of a covering is a covering, so \(q'\) is a covering; it is surjective because for \((p,y)\in R\) any \(x\in q^{-1}(p)\) satisfies \(i(x)=e(q(x))=e(p)=f(y)\), so \((x,y)\in E\) and \(q'(x,y)=(p,y)\).
+
+(2)  If \(e'(p_1,y_1)=e'(p_2,y_2)\), then \(y_1=y_2=y\).  Membership in \(R\) gives
+\[
+e(p_1)=f(y)=e(p_2),
+\]
+and injectivity of \(e\) gives \(p_1=p_2\).  On the image \(\{y\in Y:f(y)\in e(P)\}\) the inverse is
+\[
+y\longmapsto\bigl(e^{-1}(f(y)),\,y\bigr),
+\]
+which is continuous because \(e\) is an embedding (so \(e^{-1}\) is continuous on \(e(P)\)).  Hence \(e'\) is a topological embedding.
+
+(3)  Formula \eqref{eq:base-change-maps} gives \(e'(q'(x,y))=e'(q(x),y)=y=i'(x,y)\).
+
+(4)  Since \(e'\) is injective, \(i'(u)=i'(v)\iff e'(q'(u))=e'(q'(v))\iff q'(u)=q'(v)\); the kernel pairs coincide.
+
+(5)  Formula \eqref{eq:fiber-bijection} is immediate from the definition of \(q'\).
+
+(6)  Suppose \(e\) is open, so that \(e(P)\subset Z\) is open; then \(i=e\circ q\) is a composite of a covering and an open embedding and is therefore a local homeomorphism, and conversely a local homeomorphism \(i\) forces \(e=i\circ(\text{local inverse of }q)\) to be open.  By (2), \(e'\) is injective with image \(\{y\in Y:f(y)\in e(P)\}=f^{-1}(e(P))\), which is open in \(Y\) by continuity of \(f\); hence \(e'\) is an open embedding.  By (3), \(i'=e'\circ q'\) is then a composite of a covering and an open embedding, hence again a local homeomorphism.
+\end{proof}
+
+\begin{remark}[Clause (6) is what re-supplies Kahn's pullback hypothesis]
+\label{rem:openness-regenerates-immersion}
+Clause~(6) is not decoration.  Kahn's identification of the
+set-theoretic equalizer with the pullback in the category of complex
+\(1\)-manifolds is available only when one of the two legs is an
+\emph{immersion} (Kahn~I, Lemma~7.8, p.~40, arXiv:math/0609045v3); on
+p.~41 the source exhibits the failure explicitly, with common
+ramification of order \(m>1\) turning the set-theoretic equalizer into
+\(m\) disks glued at a point while the true pullback has \(m\)
+components.  Clauses (1)--(5) alone yield only that \(e'\) is a
+\emph{topological} embedding, which does not by itself make \(i'\)
+open; clause~(6) supplies exactly the missing openness, so that the
+hypothesis of Lemma~7.8 is regenerated at the next stage.  Kahn
+establishes the same propagation independently, through Lemma~7.7,
+p.~40 and Lemma~7.9, p.~40, and records at \S7.3.2, p.~42 that
+``\(i_1\) is an immersion and \(f_1\) is proper of degree \(d\)'';
+clause~(6) is the base-change form of the same fact, and we record it
+so that Corollary~\ref{cor:kahn-tower} does not silently borrow it.
+\end{remark}

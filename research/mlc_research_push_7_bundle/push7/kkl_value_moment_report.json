@@ -1,0 +1,34 @@
+{
+  "seed": 20260725,
+  "trials": 100,
+  "exact_checks": 300,
+  "failures": [],
+  "passed": true,
+  "examples": [
+    {
+      "trial": 0,
+      "pair_state_dimension": 4,
+      "wad_support_size": 6,
+      "value": "7907",
+      "moment_rank": 4,
+      "child_moment_rank": 4
+    },
+    {
+      "trial": 1,
+      "pair_state_dimension": 4,
+      "wad_support_size": 3,
+      "value": "3029",
+      "moment_rank": 3,
+      "child_moment_rank": 4
+    },
+    {
+      "trial": 2,
+      "pair_state_dimension": 2,
+      "wad_support_size": 2,
+      "value": "1404",
+      "moment_rank": 2,
+      "child_moment_rank": 2
+    }
+  ],
+  "interpretation": "Exact symbolic verification of the fixed-block Value second-moment identity and completely positive binary transport. This is not a proof of universal terminal-tree dimension or virtual incidence realization."
+}

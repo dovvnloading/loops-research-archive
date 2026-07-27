@@ -1,0 +1,35 @@
+\begin{proposition}[Alignment and realization quantifiers]\label{prop:realization}
+Items (1)--(2) below are proved without further hypotheses.
+\begin{enumerate}
+\item Every first canonical localization of an ordinary primitively \(p\)-renormalizable quadratic polynomial, \(p>1\), has the collision with certificate (6.3).
+\item That collision propagates through every pullback depth of that same seed.
+\item If, in addition, the same seed carries KL direct-decoration data and is strongly aligned at the relevant depths in the sense of Definition~\ref{def:strong-alignment}, then the corresponding Kahn--Lyubich ambient \(\psi\)-ql arrow, its full tile lifts, and the glued pseudo-piece immersion are noninjective.
+\end{enumerate}
+Item (3) is an implication about an aligned realized stage.  It does not infer that an arbitrary abstract canonical seed has a particular decoration.
+\end{proposition}
+
+\begin{remark}[Separate realization routes; not used here]\label{rem:realization-routes}
+A separate realization statement may be supplied either by
+\begin{itemize}
+\item a named quadratic parameter whose primitive renormalization straightens to a non-satellite KL decoration germ, or
+\item the standard primitive-tuning theorem, applied to a primitive postcritically finite quadratic base and a non-satellite quadratic germ.
+\end{itemize}
+Until such a realization is source-locked, the present results are not used to change an existential statement about a narrower parameter subclass.  What is settled unconditionally is the behavior of the actual canonical-localization map at ordinary primitive canonical seeds: any proof that treats that canonical localization as embedding-preserving is invalid.
+\end{remark}
+
+\begin{proof}
+Item (1) restates Theorem \ref{thm:forced-collision} together with the certificate of Remark \ref{rem:collision-certificate}.  Item (2) restates Theorem \ref{thm:propagation}(1)--(2), proved in Section~\ref{sec:tiles} below.  Item (3) restates Theorem \ref{thm:propagation}(3)--(4), also proved in Section~\ref{sec:tiles} below; no circularity arises from the forward reference, since nothing before Section~\ref{sec:tiles} uses items (2)--(3).  Its hypotheses --- that the seed carries KL direct-decoration data and is strongly aligned at the relevant depths in the sense of Definition~\ref{def:strong-alignment} --- are carried verbatim into the conclusion and are not discharged here.  No realization claim is made, and no empty-class or stage-alignment inference is hidden in any of the three items.
+\end{proof}
+
+\begin{remark}[KL-facing item and strong alignment]
+\label{rem:realization-alignment}
+Item (3) is the Kahn--Lyubich-facing item: it restates the KL-facing
+items (3)--(4) of Theorem~\ref{thm:propagation}, and it carries the
+strong stage-alignment hypothesis
+(Definition~\ref{def:strong-alignment} of Section~\ref{sec:tiles})
+explicitly in its statement.  This is as it must be: existence of the
+KL direct-decoration data alone does not supply the identifications
+\(\Theta_m,\Theta_n\) required by that definition, which is exactly
+why item (3) assumes strong alignment in addition to the decoration
+data.
+\end{remark}

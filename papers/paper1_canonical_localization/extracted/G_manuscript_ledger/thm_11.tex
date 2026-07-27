@@ -1,0 +1,61 @@
+\begin{theorem}[Resolved-cover boundary obstruction and KL compatibility; manuscript Thm.~12.67, ledger \texttt{RESOLVED\_INTERMEDIATE\_RELATIVE\_IDEAL\_BOUNDARY}]\label{thm:resolved-boundary-obstruction}
+Let \(A_s,A_t\) be finite-modulus annuli and suppose that a holomorphic annular immersion of oriented degree \(+1\) has a factorization
+\[
+A_s\xrightarrow{\ q\ }P\xrightarrow{\ e\ }A_t,\qquad e\circ q=\iota,
+\]
+where \(q\) is a connected surjective covering and \(e\) is an embedding. After compatible basepoints identify \(\iota_*:\pi_1(A_s)\to\pi_1(A_t)\) with \(\mathrm{id}_{\mathbb Z}\), put
+\[
+G=\pi_1(P),\qquad H=q_*\pi_1(A_s),\qquad N=\ker e_* .
+\]
+Then:
+\begin{enumerate}
+\item \(G=N\rtimes H\). In one based universal-cover action,
+\[
+\mathcal E_a/H\cong A_s,\qquad \mathcal E_a/N\cong R_a,\qquad \mathcal E_a/G\cong P, \tag{10.55}
+\]
+and \(q_a:\mathcal E_a\to R_a\) is the universal cover with deck group literally \(N\le G\).
+\item If \(N\neq\{1\}\), neither \(q_a\), nor any nonconstant \(N\)-invariant composite, extends continuously through a point of \(\Lambda(N)\) to a Hausdorff target. In particular, \(q_a\) has no extension from the complete closed-disk prime-end compactification.
+\item If this factorization is asserted to be the whole actual Kahn--Lyubich tile map via a based source-cover biholomorphism \(\Phi_a:\hat A^{\mathrm{KL}}_{s,a}\to\mathcal E_a\), with the source-locked extension at the two wrapping vertices transported through \(\Phi_a\), then \(N=\{1\}\). Thus a canonical infinite-sheet resolution cannot at the same time be that whole boundary-extended KL tile factorization.
+\item Let \(\Gamma=N\), let \(\Omega=\partial\mathbb D\setminus\Lambda(\Gamma)\), and let \(J\subset\Omega\) be a \(\Gamma\)-invariant open set. The quotient
+\[
+R_J=(\mathbb D\cup J)/\Gamma \tag{10.56}
+\]
+is Hausdorff. Every continuous extension to \(\mathbb D\cup J\) of the invariant interior composite descends uniquely to \(R_J\).
+\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+The identity \(e_*q_*=\iota_*=\mathrm{id}_{\mathbb Z}\) makes \(e_*\) onto and makes \(e_*|_H:H\to\mathbb Z\) an isomorphism. For \(g\in G\), set \(h=q_*(e_*(g))\), \(n=gh^{-1}\). Then \(n\in N\), \(g=nh\), and \(N\cap H=\{1\}\). Since \(N\) is the kernel of \(e_*\), it is normal; hence \(G=N\rtimes H\).
+
+Pulling the universal cover of \(A_t\) back along \(\iota\) gives the cover classified by \(\iota_*^{-1}(0)=0\), so \(\mathcal E_a\) is simply connected. Pulling it back along \(e\) gives the connected cover of \(P\) classified by \(e_*^{-1}(0)=N\); connectedness follows from \(e_*(G)=\mathbb Z\). The composite \(\mathcal E_a\to R_a\to P\) is therefore the based universal cover of \(P\), which puts \(G,H,N\) in one deck action and proves (10.55). The base-changed \(q_a\) has simply connected source and deck subgroup exactly \(N\).
+
+For the boundary obstruction, let \(\gamma_k z_0\to\zeta\in\Lambda(N)\). For every \(z\in\mathbb D\),
+\[
+d_{\mathbb D}(\gamma_k z,\gamma_k z_0)=d_{\mathbb D}(z,z_0),
+\]
+so bounded hyperbolic distance forces \(\gamma_k z\to\zeta\). If an \(N\)-invariant nonconstant map \(L\) had a continuous value at \(\zeta\), then
+\[
+L(\zeta)=\lim_k L(\gamma_k z)=L(z)
+\]
+for every \(z\), a contradiction. Taking \(L=q_a\) proves the second claim.
+
+Let \(h\in H\) be the source-annulus generator. Finite modulus makes \(h\) hyperbolic, with the two standalone wrapping fixed points \(\zeta_-,\zeta_+\). If \(N\neq 1\), then \(G\) cannot be elementary: an elementary torsion-free group containing \(h\) is cyclic, and \(e_*(h)=1\) would force \(H=G\) and \(N=1\). Hence a nontrivial normal subgroup \(N\lhd G\) has infinite closed \(G\)-invariant limit set. Choosing \(\alpha\in\Lambda(N)\setminus\{\zeta_-,\zeta_+\}\) and applying \(h^{k}\) gives
+\[
+h^{k}\alpha\to\zeta_+\ (k\to+\infty),\qquad h^{k}\alpha\to\zeta_-\ (k\to-\infty),
+\]
+so both resolved-source wrapping points lie in \(\Lambda(N)\). The source-locked KL strip model has actual-tile wrapping points \(\omega_-,\omega_+\) at its named infinitely wrapping vertices and extends the actual tile map \(L_a\) there. Based covering uniqueness gives
+\[
+\Phi_a t_a=h\Phi_a,\qquad \overline{\Phi}_a(\omega_{\pm})=\zeta_{\pm},
+\]
+where \(t_a\) is the positive actual-tile deck generator. Thus the correctly typed transported composite on \(\mathcal E_a\) is
+\[
+K_a:=L_a\Phi_a^{-1}=e_aq_a .
+\]
+It is nonconstant, \(N\)-invariant, and continuous at \(\zeta_{\pm}\). The preceding invariant-map obstruction therefore contradicts \(N\neq 1\), proving the third claim.
+
+Finally, \(\Gamma\) acts properly discontinuously on \(\mathbb D\cup\Omega\), hence on \(\mathbb D\cup J\), so the quotient in (10.56) is Hausdorff. If \(L\) continuously extends the invariant interior composite, then for \(x\in J\), \(\gamma\in\Gamma\), and \(z_k\to x\),
+\[
+L(\gamma x)=\lim_k L(\gamma z_k)=\lim_k L(z_k)=L(x).
+\]
+It is therefore constant on quotient fibers and descends uniquely by the definition of the quotient topology.
+\end{proof}

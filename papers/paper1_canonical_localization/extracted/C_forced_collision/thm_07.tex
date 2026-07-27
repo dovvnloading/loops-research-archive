@@ -1,0 +1,82 @@
+% Concordance: manual equation tags (n.m) in this file mirror the numbering of the underlying research note kl_canonical_localization_forced_collision.md, not this paper's section numbering.
+\begin{theorem}[Forced collision at ordinary primitive canonical seeds]\label{thm:forced-collision}
+Let \(f\colon U^1\to U^0\) be an ordinary quadratic-like restriction of a quadratic polynomial, primitively renormalizable of period \(p>1\), and let
+\[
+ \widehat i\colon T'_A\longrightarrow T_A
+\]
+be Kahn's localized inclusion of the canonical renormalization (the dynamical localization of \((i^p,F)\) at \(A=K_p\) with removal of \(B=\mathcal K_p\)).  Then \(\widehat i\) is \emph{not injective}.  More precisely, there are a component \(X\ne A\) of \(F^{-1}A\), a based loop \(\gamma\subset U^p\setminus F^{-1}B\), and localization subgroups \(H_s\), \(H_t\) such that
+\[
+ [\gamma]\notin H_s,\qquad (i^p)_*[\gamma]=1\in H_t,   \tag{1.2}
+\]
+and the lift of \(\gamma\) to the source localization cover has distinct endpoints which \(\widehat i\) identifies.
+\end{theorem}
+
+\begin{remark}[Collision certificate]\label{rem:collision-certificate}
+The proof yields the explicit certificate
+\[
+ \mathfrak C_{\mathrm{can}}=\bigl(X,\ D_X,\ [\gamma],\ \tau(X),\ H_s,\ H_t,\ H_s,\ H_s[\gamma],\ \widehat z_*,\ \widehat z_*',\ \widehat a(\widehat z_*)\bigr),  \tag{6.3}
+\]
+recording the first excess component, the peripheral access, the complete \(p\)-step component itinerary, the source and target subgroups, the two distinguished source cosets, the distinct source sheets, and the common target point.  No critical-value crossing and no numerical approximation is used to create the collision.
+\end{remark}
+
+\begin{proof}
+Take \(X\), \(D_X\), \(\gamma\), \(H_s\), \(H_t\) from Proposition \ref{prop:excess}, Remark \ref{rem:certificate}, and Theorem \ref{thm:subgroup-defect}; then (1.2) is (5.5)--(5.6).
+
+Let \(\pi_s\colon\widehat\Omega_s\to\Omega_s\) and \(\pi_t\colon\widehat\Omega_t\to\Omega_t\) be the localization covers, corresponding to the subgroups \(H_s\) and \(H_t\) (Kahn~I, \S7.4.1, Theorem~7.12, p.~44), and let \(\widehat a\colon\widehat\Omega_s\to\widehat\Omega_t\) be the unique commuting lift of \(a=i^p\).  Choose a source lift \(\widehat z_*\in\pi_s^{-1}(z_*)\) and lift \(\gamma\) from \(\widehat z_*\); write \(\widehat z_*'\) for the terminal endpoint of the lifted path.  By the covering-subgroup endpoint criterion --- a loop lifts closed at \(\widehat z_*\) exactly when its class lies in \(H_s\) --- together with (5.5),
+\[
+ \widehat z_*'\ne\widehat z_*.                        \tag{6.1}
+\]
+The \(\widehat a\)-image of the lifted path is the target lift, from \(\widehat a(\widehat z_*)\), of the loop \(a\circ\gamma\).  By (5.6) the class of \(a\circ\gamma\) is trivial, in particular lies in \(H_t\), so this target lift is closed.  Therefore
+\[
+ \widehat a(\widehat z_*')=\widehat a(\widehat z_*).  \tag{6.2}
+\]
+Both points lie in the complementary annulus part of the localized source.  Completing the localized marked surfaces by adjoining the marked continuum \(A\) glues \(A\) in along a local neighborhood and does not identify distinct points of the complement cover.  Thus (6.1)--(6.2) exhibit two distinct points of \(T'_A\) with equal \(\widehat i\)-image in \(T_A\): an actual point collision of Kahn's localized inclusion.
+
+In path language: if \(\alpha\) is any source path from the marked base access to \(z_*\), the two classes \([\alpha]\) and \([\alpha*\gamma]\) are distinct in the source localization and equal after target localization.  Kahn's forward path-equivalence statement (Kahn~I, \S7.4.5, pp.~46--47) --- source-equivalent paths become target-equivalent --- is respected; it is the (unstated) converse that fails.
+\end{proof}
+
+\begin{remark}[Compatibility with the embedded inner collar]
+\label{rem:collar-compat}
+The published sources state that \(i\) \emph{is} an embedding near the
+filled set: Kahn~I, Theorem~7.3, p.~37 produces \(U\supset K\) with
+\(U'=f^{-1}U\) such that \(i|_{U'}\) is an embedding and
+\(\operatorname{mod}(U\setminus i(U'))\ge\mu>0\); Kahn~I,
+Lemma~7.4(2), p.~37 gives the uniformized form (an embedding on a round
+sub-annulus adjacent to the inner end); and KL~II, Lemma~3.1, p.~10
+repeats that \(i\) is an embedding in a neighborhood of \(K'\).  Read
+quickly, this looks like a contradiction of
+Theorem~\ref{thm:forced-collision}.  It is not: the two statements
+concern disjoint parts of the source, and it is worth locating the
+collision precisely.
+
+Theorem~\ref{thm:forced-collision} places the colliding points on the
+lift of the peripheral loop \(\gamma\) around the excess component
+\(X\).  By Proposition~\ref{prop:excess}, \(X\) is a component of
+\(F^{-1}(A)\) with \(X\neq A\) and \(X\cap B=\varnothing\), and its
+isolating disk \(D_X\) is disjoint from the isolating disk \(D_A\) of
+the central continuum.  Thus \(\gamma\) lies in the \emph{outer} part
+of the source \(\Omega_s=U^{p}\setminus F^{-1}B\), at positive
+distance from \(A\), whereas Theorem~7.3's embedding statement
+concerns a quadratic-like restriction shrunk toward \(K'\): the
+collar on which injectivity is proved separates \(K'\) from the outer
+end and, being disjoint from \(D_X\), contains no point of
+\(|\gamma|\).  Injectivity on an inner collar and noninjectivity on
+the complement of that collar are simply different assertions; both
+hold.
+
+We emphasize that nothing here weakens the sources.  On the contrary,
+the same inner-collar embedding is what supplies the annular degree
+\(+1\) in Lemma~\ref{lem:annular-degree}.  What the sources do not
+supply, and what the counterexamples of
+Appendix~\ref{sec:abstract} exist to forestall, is any extension of
+the inner-collar statement to a global one: Theorem~\ref{thm:annulus-nogo}
+exhibits a degree-one annular immersion satisfying all the hypotheses
+of Kahn's annulus lemma that is nevertheless noninjective, and
+Theorem~\ref{thm:psiql-nogo} exhibits a complete abstract
+\(\psi\)-quadratic-like pair with a remote self-collision compatible
+with the embedded inner collar.  Those examples show that the gap
+between ``embedded near \(K'\)'' and ``embedded'' cannot be closed
+from the stated hypotheses; the present theorem shows that at the
+canonical seed it is not merely open but actually open in the
+negative direction.
+\end{remark}

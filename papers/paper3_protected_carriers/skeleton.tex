@@ -1,0 +1,198 @@
+\documentclass[11pt,reqno]{amsart}
+
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{tikz}
+\usetikzlibrary{shapes.geometric, positioning, arrows.meta, decorations.pathmorphing, patterns}
+\usepackage{booktabs}
+\usepackage[hidelinks]{hyperref}
+
+\allowdisplaybreaks
+\raggedbottom
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{example}[theorem]{Example}
+\newtheorem{warning}[theorem]{Warning}
+\newtheorem{openproblem}[theorem]{Open Problem}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+
+\newcommand{\C}{\mathbb C}
+\newcommand{\Z}{\mathbb Z}
+\newcommand{\Chat}{\widehat{\mathbb C}}
+\newcommand{\Fill}{\operatorname{Fill}}
+\newcommand{\Exp}{\operatorname{Exp}}
+\newcommand{\Int}{\operatorname{int}}
+\newcommand{\dist}{\operatorname{dist}}
+\newcommand{\id}{\operatorname{id}}
+\newcommand{\Om}{\Omega}
+\newcommand{\Omfree}{\Omega_{\mathrm{free}}}
+
+\title[Protected planar carriers]{Protected planar carriers and\\access-preserving connector criteria}
+\author{Matthew Robert Wesney}
+\date{Draft I of 2026-07-27}
+
+\begin{document}
+
+\begin{abstract}
+We develop a finite planar theory for connecting pairwise disjoint full
+continua while preserving specified prime-end accesses and avoiding a frozen
+obstacle set.  A protected ribbon-routing certificate is realized by a compact
+connected full carrier whose protected crosscut chains survive as prime-end
+chains, remain distinct, and retain their cyclic order; no local connectivity
+of the connected atoms is required.  The conceptual center is an exact
+free-component criterion: a protected carrier exists precisely when one
+component of the completely frozen free domain admits simultaneous singleton
+ports to every required atom.  The slit lemma underlying the criterion is
+stated and proved here in a corrected form, with the boundary-anchored slits
+mapped into the closed domain and the free endpoints retained for routing.  A
+sufficient augmented-packet criterion, based on the compacta form of Alexander
+duality, converts the criterion into a source-checkable test; for a fixed
+typed packet assignment, fullification is order independent, and merger,
+localization, and port-loss defects are persistent under monotone enlargement.
+A cellwise criterion gives a directly checkable sufficient condition.
+Examples separate the individual-access and common-component conditions and
+exhibit persistent post-fullification packet mergers, and we compare the
+certificate formalism with the standard continuum-hull constructions it
+replaces.  A final section develops the finite direct-decoration application:
+inside the pullback compactification of a terminal primitive root, finitely
+many selected decoration packets admit a protected regulated connector that
+avoids every unselected finite pullback and every end fiber.  The results are
+purely finite and planar: they do not construct the virtual carrier, Wave
+horizon, analytic correspondence, or uniform incidence bounds required for
+Mandelbrot local connectivity.
+\end{abstract}
+
+\maketitle
+\tableofcontents
+
+%%INSERT A:intro
+
+%%INSERT A:preliminaries
+
+%%INSERT B:obstructions
+
+%%INSERT A:comparison
+
+%%INSERT C:certificates
+
+%%INSERT D:criterion
+
+%%INSERT E:packets
+
+%%INSERT E:audit
+
+%%INSERT F:decoration
+
+%%INSERT F:scope
+
+\section*{Acknowledgments}
+The author acknowledges assistance from Fae Build, Anthropic Fable~5, and
+OpenAI GPT-5.6 in the preparation of this draft.
+
+\appendix
+
+\section{Crosswalk to the source manuscript}\label{sec:crosswalk}
+All results below are reproduced, with notational streamlining and the single
+recorded repair, from the source research manuscript~\cite{MWman} (build of
+2026-07-27).  No result labelled open or conditional there has been promoted
+here.
+
+\begin{center}
+\begin{tabular}{lll}
+\toprule
+Present result & Source manuscript & Note\\
+\midrule
+Theorem~\ref{thm:no-least} & Theorem 6.12 & verbatim\\
+Proposition~\ref{prop:access-collision} & Proposition 6.15 & verbatim\\
+Definition~\ref{def:certificate} & Definition 10.1 & verbatim\\
+Lemma~\ref{lem:tree-full} & Lemma 10.2 & verbatim\\
+Lemma~\ref{lem:crosscut-survival} & Lemma 10.3 & verbatim\\
+Theorem~\ref{thm:realization} & Theorem 10.4 & verbatim\\
+Proposition~\ref{prop:naturality} & Proposition 10.5 & verbatim\\
+Lemma~\ref{lem:slits} & Lemma 10.7 & \emph{repaired; see Remark~\ref{rem:repair}}\\
+Theorem~\ref{thm:free-component} & Theorem 10.8 & proof rewritten to the repaired lemma\\
+Definition~\ref{def:packet} & Definition 10.9 & verbatim\\
+Lemma~\ref{lem:packets} & Lemma 10.10 & verbatim\\
+Theorem~\ref{thm:common-domain} & Theorem 10.11 & verbatim\\
+Lemma~\ref{lem:fill-absorption} & Lemma 10.12 & verbatim\\
+Lemma~\ref{lem:port-localization} & Lemma 10.13 & verbatim\\
+Theorem~\ref{thm:audit} & Theorem 10.14 & verbatim\\
+Proposition~\ref{prop:cellwise} & Proposition 10.15 & verbatim\\
+Lemma~\ref{lem:nested-packets} & Lemma 10.39 & verbatim\\
+Theorem~\ref{thm:full-fibers} & Theorem 10.40 & verbatim\\
+Lemma~\ref{lem:jordan-nbhd} & Lemma 10.41 & verbatim\\
+Theorem~\ref{thm:gap-cells} & Theorem 10.42 & verbatim\\
+Theorem~\ref{thm:packet-replacement} & Theorem 10.43 & verbatim\\
+Lemma~\ref{lem:impression-port} & Lemma 10.44 & verbatim\\
+Theorem~\ref{thm:carrier} & Theorem 10.45 & verbatim\\
+\bottomrule
+\end{tabular}
+\end{center}
+
+The examples of Sections~\ref{sec:criterion} and~\ref{sec:audit}
+(Examples~\ref{ex:no-common-component} and~\ref{ex:merger}) and the
+comparison Section~\ref{sec:comparison} are new expository material added for
+this paper; they promote no manuscript claim.
+
+\begin{thebibliography}{99}
+
+\bibitem{DH85}
+A.~Douady and J.~H.~Hubbard,
+\emph{On the dynamics of polynomial-like mappings},
+Ann. Sci. \'Ec. Norm. Sup\'er. (4) \textbf{18} (1985), 287--343.
+
+\bibitem{Dud25}
+D.~Dudko,
+\emph{Local connectivity of the Mandelbrot set: a roadmap},
+ICM 2026 survey, arXiv:2512.24171, 2025.
+
+\bibitem{Hat02}
+A.~Hatcher,
+\emph{Algebraic Topology},
+Cambridge University Press, 2002.
+
+\bibitem{KKL26}
+J.~Kahn, A.~Kapiamba, and M.~Lyubich,
+\emph{MLC for parabolically bounded primitive renormalization},
+arXiv:2606.27272, 2026.
+
+\bibitem{KL08}
+J.~Kahn and M.~Lyubich,
+\emph{A priori bounds for some infinitely renormalizable quadratics. II. Decorations},
+Ann. Sci. \'Ec. Norm. Sup\'er. (4) \textbf{41} (2008), 57--84.
+
+\bibitem{Moo25}
+R.~L.~Moore,
+\emph{Concerning upper semi-continuous collections of continua},
+Trans. Amer. Math. Soc. \textbf{27} (1925), 416--428.
+
+\bibitem{MWman}
+M.~R.~Wesney,
+\emph{A marked-width reduction of Mandelbrot local connectivity},
+research manuscript, 2026 (build of 2026-07-27).
+
+\bibitem{New51}
+M.~H.~A.~Newman,
+\emph{Elements of the Topology of Plane Sets of Points},
+2nd ed., Cambridge University Press, 1951.
+
+\bibitem{Pom92}
+Ch.~Pommerenke,
+\emph{Boundary Behaviour of Conformal Maps},
+Grundlehren der mathematischen Wissenschaften \textbf{299},
+Springer-Verlag, 1992.
+
+\bibitem{Why42}
+G.~T.~Whyburn,
+\emph{Analytic Topology},
+AMS Colloquium Publications \textbf{28},
+American Mathematical Society, 1942.
+
+\end{thebibliography}
+
+\end{document}

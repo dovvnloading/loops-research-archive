@@ -1,0 +1,357 @@
+<title>MLC Deep Recon — Dossier</title>
+<style>
+  :root {
+    --bg: #fafaf7; --panel: #f2f2ed; --ink: #14161a; --ink2: #4c5158; --muted: #83878d;
+    --hair: #e2e3dd; --accent: #1c5cab; --accent-2: #2a78d6; --ice: #cde2fb;
+    --wrong: #b34a1b; --good: #0ca30c; --warn: #9a6a00; --chipbg: #eceded;
+    --mono: Consolas, "Cascadia Mono", ui-monospace, monospace;
+    --serif: Georgia, "Times New Roman", Charter, serif;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:where(:not([data-theme="light"])) {
+      --bg: #14161a; --panel: #1b1e24; --ink: #eef0f3; --ink2: #b9bec6; --muted: #878c93;
+      --hair: #2a2d33; --accent: #5598e7; --accent-2: #6da7ec; --ice: #16283f;
+      --wrong: #e07a4a; --good: #34b534; --warn: #d9a13c; --chipbg: #23262d;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #14161a; --panel: #1b1e24; --ink: #eef0f3; --ink2: #b9bec6; --muted: #878c93;
+    --hair: #2a2d33; --accent: #5598e7; --accent-2: #6da7ec; --ice: #16283f;
+    --wrong: #e07a4a; --good: #34b534; --warn: #d9a13c; --chipbg: #23262d;
+  }
+  html { background: var(--bg); }
+  body { background: var(--bg); color: var(--ink); font-family: var(--serif);
+         line-height: 1.62; margin: 0; font-size: 17px; }
+  .wrap { max-width: 860px; margin: 0 auto; padding: 0 22px 90px; }
+  .prose { max-width: 72ch; }
+  header.hero { border-bottom: 1px solid var(--hair); padding: 54px 0 30px; }
+  .eyebrow { font-family: var(--mono); font-size: 12px; letter-spacing: .18em;
+             text-transform: uppercase; color: var(--accent); margin-bottom: 14px; }
+  h1 { font-size: 42px; line-height: 1.12; margin: 0 0 14px; font-weight: 600;
+       letter-spacing: -.01em; text-wrap: balance; }
+  .sub { font-size: 19px; color: var(--ink2); max-width: 64ch; margin: 0 0 26px; }
+  .stats { display: flex; flex-wrap: wrap; gap: 10px; }
+  .stat { font-family: var(--mono); font-size: 12.5px; color: var(--ink2);
+          background: var(--chipbg); border: 1px solid var(--hair);
+          padding: 5px 11px; border-radius: 3px; }
+  .stat b { color: var(--ink); font-weight: 600; }
+  nav.toc { display: flex; flex-wrap: wrap; gap: 4px 18px; padding: 16px 0;
+            border-bottom: 1px solid var(--hair); font-family: var(--mono); font-size: 13px; }
+  nav.toc a { color: var(--ink2); text-decoration: none; }
+  nav.toc a:hover, nav.toc a:focus { color: var(--accent); }
+  h2 { font-size: 27px; margin: 64px 0 6px; font-weight: 600; letter-spacing: -.008em;
+       text-wrap: balance; }
+  h2 .sec { font-family: var(--mono); font-size: 13px; color: var(--accent);
+            display: block; letter-spacing: .16em; margin-bottom: 6px; }
+  h3 { font-size: 19.5px; margin: 34px 0 4px; font-weight: 600; }
+  p { margin: 12px 0; color: var(--ink); }
+  .lede { font-size: 18.5px; color: var(--ink2); }
+  a { color: var(--accent); text-decoration-thickness: 1px; text-underline-offset: 2.5px; }
+  strong { font-weight: 650; }
+  .verdict { background: var(--panel); border: 1px solid var(--hair); border-left: 3px solid var(--accent);
+             padding: 22px 26px; margin: 34px 0; border-radius: 4px; }
+  .verdict p:first-child { margin-top: 0; } .verdict p:last-child { margin-bottom: 0; }
+  .wturn { display: grid; grid-template-columns: 64px 1fr; gap: 0 18px;
+           padding: 20px 0; border-top: 1px solid var(--hair); }
+  .wturn:last-of-type { border-bottom: 1px solid var(--hair); }
+  .wnum { font-family: var(--mono); font-size: 20px; color: var(--wrong); font-weight: 600; padding-top: 2px; }
+  .wturn h4 { margin: 0 0 6px; font-size: 17.5px; font-weight: 650; }
+  .wturn p { margin: 6px 0; font-size: 16px; color: var(--ink2); }
+  .wturn .lesson { color: var(--ink); font-size: 15.5px; }
+  .wturn .lesson::before { content: "⤷ lesson: "; font-family: var(--mono); font-size: 12px;
+                           color: var(--wrong); letter-spacing: .06em; }
+  .chip { font-family: var(--mono); font-size: 11px; padding: 2px 7px; border-radius: 3px;
+          border: 1px solid var(--hair); background: var(--chipbg); color: var(--ink2);
+          white-space: nowrap; }
+  .chip.ok { color: var(--good); } .chip.warn { color: var(--warn); }
+  table { border-collapse: collapse; width: 100%; font-size: 14.5px; margin: 18px 0; }
+  .tablewrap { overflow-x: auto; margin: 18px 0; }
+  th { font-family: var(--mono); font-size: 12px; text-transform: uppercase; letter-spacing: .08em;
+       color: var(--muted); text-align: left; padding: 8px 12px 8px 0; border-bottom: 1.5px solid var(--hair); }
+  td { padding: 9px 12px 9px 0; border-bottom: 1px solid var(--hair); vertical-align: top; color: var(--ink2); }
+  td:first-child { color: var(--ink); }
+  td .m { font-family: var(--mono); font-size: 13px; }
+  figure { margin: 26px 0; }
+  figure img { width: 100%; height: auto; display: block; border: 1px solid var(--hair); border-radius: 4px; }
+  figcaption { font-size: 14px; color: var(--muted); margin-top: 9px; line-height: 1.5; }
+  figcaption b { color: var(--ink2); }
+  .figrow { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+  @media (max-width: 640px) { .figrow { grid-template-columns: 1fr; } .wturn { grid-template-columns: 44px 1fr; } h1 { font-size: 32px; } }
+  .themed-light { display: block; } .themed-dark { display: none; }
+  @media (prefers-color-scheme: dark) {
+    :root:where(:not([data-theme="light"])) .themed-light { display: none; }
+    :root:where(:not([data-theme="light"])) .themed-dark { display: block; }
+  }
+  :root[data-theme="dark"] .themed-light { display: none; }
+  :root[data-theme="dark"] .themed-dark { display: block; }
+  .num { font-family: var(--mono); font-size: 14.5px; }
+  .callout { border: 1px solid var(--hair); background: var(--panel); border-radius: 4px;
+             padding: 16px 20px; margin: 20px 0; font-size: 15.5px; color: var(--ink2); }
+  .callout b { color: var(--ink); }
+  ul { padding-left: 22px; } li { margin: 7px 0; color: var(--ink); }
+  li span.src { color: var(--muted); font-size: 14px; }
+  .srcgroup { margin: 20px 0; }
+  .srcgroup h4 { font-family: var(--mono); font-size: 12.5px; letter-spacing: .1em;
+                 text-transform: uppercase; color: var(--muted); margin: 18px 0 8px; }
+  .srcgroup ul { list-style: none; padding: 0; margin: 0; }
+  .srcgroup li { font-size: 14.5px; margin: 5px 0; color: var(--ink2); }
+  .mermaid { background: var(--panel); border: 1px solid var(--hair); border-radius: 4px; padding: 12px; overflow-x: auto; }
+  .footer-note { margin-top: 70px; padding-top: 18px; border-top: 1px solid var(--hair);
+                 font-size: 13.5px; color: var(--muted); font-family: var(--mono); line-height: 1.7; }
+</style>
+
+<div class="wrap">
+<header class="hero">
+  <div class="eyebrow">Operation · Deep Recon &amp; Numerics · 2026-07-23</div>
+  <h1>The MLC Conjecture: a field recon of forty years of wrong turns, and where the wall actually is</h1>
+  <p class="sub">Is the Mandelbrot set locally connected? Still open. This dossier maps every place the field guessed wrong since 1980, the exact frontier as of July 2026, and a set of from-scratch numerical experiments that reproduce the obstruction itself.</p>
+  <div class="stats">
+    <span class="stat"><b>35</b> research agents</span>
+    <span class="stat"><b>736</b> web/tool calls</span>
+    <span class="stat"><b>92</b> findings · <b>24</b> adversarially verified</span>
+    <span class="stat"><b>4</b> numerical experiments</span>
+    <span class="stat"><b>0</b> claims refuted on check</span>
+  </div>
+</header>
+
+<nav class="toc">
+  <a href="#verdict">Verdict</a>
+  <a href="#conjecture">The conjecture</a>
+  <a href="#wrongturns">The wrong-turn ledger</a>
+  <a href="#nextdoor">Next door, it's false</a>
+  <a href="#frontier">Frontier map ’26</a>
+  <a href="#lab">Lab notebook</a>
+  <a href="#avenues">Obscure avenues</a>
+  <a href="#attack">Attack surface</a>
+  <a href="#sources">Sources</a>
+</nav>
+
+<section id="verdict">
+<div class="verdict prose">
+<p><strong>Verdict.</strong> MLC is unproven but very much alive, and 2026 is the fastest-moving year in its history: two new preprints (January and June) pushed a-priori-bounds territory to the cusp, and Dudko’s ICM 2026 survey reduces what remains to <em>two named problems</em>. The field’s historical errors were never wrong proofs — none exist, we checked — but wrong <em>expectations</em>: that it would fall fast, that the dynamical plane would carry the parameter plane, that one renormalization roadmap would cover all combinatorics, and that self-similarity was clean. Each failure localized the difficulty further, and every one of them points at the same address: <strong>unbounded satellite combinatorics degenerating toward parabolic cusps</strong>. Our own numerics below reproduce that wall quantitatively: convergence is fast precisely where theorems exist and logarithmically slow precisely where they don’t.</p>
+</div>
+</section>
+
+<section id="conjecture" class="prose">
+<h2><span class="sec">§1</span>What the conjecture says, and what it buys</h2>
+<p><strong>MLC:</strong> the Mandelbrot set <span class="num">M</span> — the set of <span class="num">c ∈ ℂ</span> for which the orbit of 0 under <span class="num">z ↦ z² + c</span> stays bounded — is <em>locally connected</em>: every point has arbitrarily small connected neighborhoods in <span class="num">M</span>.</p>
+<p>Douady–Hubbard proved <span class="num">M</span> is compact, connected and full by building a conformal isomorphism <span class="num">Φ : ℂ∖M → ℂ∖𝔻̄</span>. By Carathéodory–Torhorst, MLC is <em>exactly</em> the statement that <span class="num">Φ⁻¹</span> extends continuously to the boundary circle — every parameter ray lands, continuously in the angle. Thurston’s quadratic minor lamination builds the quotient this would induce: the <em>pinched disk</em>, an explicitly computable, provably locally connected model space. MLC says <span class="num">M</span> <em>is</em> that model. Schleicher’s fiber formalism localizes it — MLC ⟺ every “fiber” (parameters not separated by rational ray pairs) is a single point — and a trivial fiber literally says <em>the combinatorics of c determines c</em>. That is why experts insist MLC is combinatorial <strong>rigidity</strong>, not point-set topology.</p>
+<pre class="mermaid">
+flowchart LR
+    A["MLC<br/>(M locally connected)"] <--> B["All fibers trivial<br/>(Schleicher)"]
+    B <--> C["Combinatorial rigidity of<br/>infinitely renormalizable c"]
+    C --> D["Density of hyperbolicity<br/>(Fatou conjecture, deg 2)"]
+    D <--> E["No invariant<br/>line fields"]
+    style A stroke-width:2px
+</pre>
+<p>The payoff chain runs through rigidity to the century-old Fatou conjecture. And by McMullen’s universality theorem, quasiconformal copies of <span class="num">∂M</span> are dense in the bifurcation locus of <em>every</em> nontrivial holomorphic family of rational maps — settle the topology of <span class="num">M</span> and you’ve set the template for every one-dimensional parameter space in the subject.</p>
+<p>One reduction orients everything else: Yoccoz proved MLC at every parameter that is at most finitely renormalizable. So the entire conjecture now lives on the <em>infinitely renormalizable</em> set — a topologically fat (the boundary has Hausdorff dimension 2, Shishikura) but harmonic-measure-null set of parameters. MLC is already a theorem at harmonic-measure-almost-every boundary point; the open part is invisible to every external observer and enormous in every dimensional gauge. That mismatch is the conjecture’s signature.</p>
+</section>
+
+<section id="wrongturns" class="prose">
+<h2><span class="sec">§2</span>The wrong-turn ledger</h2>
+<p class="lede">The user asked: <em>where did we get things wrong historically?</em> Here is the audited ledger — ten documented wrong guesses, each with what it taught. Notably, the record contains no withdrawn proofs and no experts on record doubting MLC’s <em>truth</em>: every error was an error of expectation or of strategy, and each one shrank the target.</p>
+
+<div class="wturn"><div class="wnum">W1</div><div>
+<h4>1980 — Mandelbrot reads his own set wrong <span class="chip warn">verified · corrected</span></h4>
+<p>In the very first publication of the set, Mandelbrot asserted from computer pictures that it was disconnected — islands of dust. Douady–Hubbard proved connectivity in 1982.</p>
+<p class="lesson">numerics mislead on exactly this class of question; the boundary’s fine structure is below any pixel grid. (See our §5: harmonic-measure-typical boundary points are “measurably deep” — the complement has vanishing area density, so pictures systematically lie.)</p>
+</div></div>
+
+<div class="wturn"><div class="wnum">W2</div><div>
+<h4>1984–1994 — The founders expect a quick kill <span class="chip ok">verified · confirmed</span></h4>
+<p>The Orsay notes pose MLC alongside the proof that it implies density of hyperbolicity — “we do not know how to prove either.” Contemporaries record Douady expecting a fast solution; McMullen wrote in the 1994 <em>Bulletin of the AMS</em> that MLC “is not too far out of reach.” Thirty-two years later it is still out of reach, and Avila is on record steering students away from the problem.</p>
+<p class="lesson">the conjecture’s difficulty was systematically underestimated by the strongest people in the field, twice a decade, in print.</p>
+</div></div>
+
+<div class="wturn"><div class="wnum">W3</div><div>
+<h4>1980s — “Plough in the dynamical plane, harvest in the parameter plane” fails structurally <span class="chip ok">verified · confirmed</span></h4>
+<p>The natural strategy: prove Julia sets locally connected, transfer to <span class="num">M</span>. But the dynamical analogue of MLC is <em>false</em>. Cremer Julia sets are never locally connected (Sullivan–Douady); Herman built non-LC Siegel examples; Douady–Hubbard themselves constructed infinitely renormalizable quadratics with non-LC Julia sets by stacking satellite tunings toward the cusp (written up by Milnor 1992, made explicit by Sørensen 2000). Levin (2011) delivered the punchline: explicit parameters where the Julia set is provably <em>not</em> locally connected while <span class="num">M</span> provably <em>is</em> locally connected right there.</p>
+<p class="lesson">MLC is a parameter-space rigidity statement that survives the total failure of its dynamical counterpart. JLC at c neither implies nor follows from MLC at c.</p>
+</div></div>
+
+<div class="wturn"><div class="wnum">W4</div><div>
+<h4>~1990 — Yoccoz’s puzzle stops exactly at renormalization</h4>
+<p>The puzzle method wins at every finitely renormalizable parameter via the Branner–Hubbard criterion: divergent sums of annulus moduli force puzzle pieces to shrink to points. At renormalizable combinatorics the critical tableau becomes periodic, the modulus sum degenerates into a convergent geometric series, and the critical nest converges to a whole small Julia set instead of a point. This is structural, not technical.</p>
+<p class="lesson">local connectivity at infinitely renormalizable points is <em>equivalent</em> to a priori bounds — uniform lower bounds on renormalization annuli. The problem changed shape here, permanently.</p>
+</div></div>
+
+<div class="wturn"><div class="wnum">W5</div><div>
+<h4>1990s–2000s — The single-roadmap dream dies: a priori bounds provably FAIL for satellites</h4>
+<p>The Sullivan–McMullen–Lyubich program assumed one compactness engine would cover all combinatorics. Kahn–Lyubich (2006–09) delivered bounds for primitive combinatorics away from the main molecule — and then the satellite regime refused. Not for lack of skill: it is now a refereed theorem (Blokh–Levin–Oversteegen–Timorin, <em>Comm. Math. Phys.</em> 2025) that classical polynomial-like a priori bounds fail for satellite renormalization with unbounded relative periods — moduli are bounded above in terms of the period and must degenerate.</p>
+<p class="lesson">the compactness route that closed the real case <em>cannot</em> close the complex one. Every modern satellite attack (near-parabolic, pacman, pseudo-Siegel) is a designed replacement for a tool that provably does not exist.</p>
+</div></div>
+
+<div class="wturn"><div class="wnum">W6</div><div>
+<h4>1989–2017 — Naive self-similarity dies twice</h4>
+<p>Milnor’s 1989 numerics showed Feigenbaum-point magnifications do not converge to a copy of <span class="num">M</span> — they get “hairy” (proved by Lyubich 1999; see our render in §5). Lomonaco–Petersen (2017) proved satellite baby copies are homeomorphic to <span class="num">M</span> but <em>not</em> quasiconformally equivalent to each other.</p>
+<p class="lesson">topological self-similarity coexists with radical metric non-uniformity. Any proof through “the copies all look alike” is doomed; the copies provably don’t.</p>
+</div></div>
+
+<div class="wturn"><div class="wnum">W7</div><div>
+<h4>1985–2004 — The degree-2 miracle: Thurston’s model doesn’t generalize</h4>
+<p>Thurston’s lamination model of <span class="num">M</span> rests on his No Wandering Triangles theorem, and he flagged its generalization as a key question. Answer: false. Blokh–Oversteegen proved wandering triangles exist for cubic laminations.</p>
+<p class="lesson">the clean combinatorial model of M is special to degree two; the conjecture cannot be an instance of a general principle about polynomial parameter spaces — because the general principle is false (see §3).</p>
+</div></div>
+
+<div class="wturn"><div class="wnum">W8</div><div>
+<h4>1920s–2012 — Even the measure-zero folklore fell</h4>
+<p>The Orsay notes left open the expectation that quadratic Julia sets with empty interior have zero area. Buff–Chéritat (2012) constructed positive-area Cremer, Siegel and infinitely-satellite-renormalizable Julia sets — in exactly the regime where MLC is hard — completing a reversal that Douady himself initiated. Avila–Lyubich later found positive-area <em>Feigenbaum</em> Julia sets. Meanwhile Fatou’s own implicit expectation (non-hyperbolic maps confined to countably many subvarieties) was already false by Rees’s positive-measure theorem.</p>
+<p class="lesson">the hard set is not thin in any measure-theoretic sense that would let it be ignored; “pathological” is the generic condition out there.</p>
+</div></div>
+
+<div class="wturn"><div class="wnum">W9</div><div>
+<h4>1992–1997 — The announcement that took five years to become a theorem</h4>
+<p>The closest thing to a failed proof in this field’s history: Świątek’s 1992 announced proof of real density of hyperbolicity took until 1997 to appear refereed (Graczyk–Świątek, with Lyubich’s independent proof). The real case ultimately worked — real a priori bounds hold for <em>all</em> real combinatorics — which made it dangerously tempting as a template for ℂ.</p>
+<p class="lesson">the real line’s order structure, cross-ratio distortion and universal real bounds have no complex analogues; W5 shows the transfer is not merely hard but impossible in the classical form.</p>
+</div></div>
+
+<div class="wturn"><div class="wnum">W10</div><div>
+<h4>2006–2024 — “Just extend Kahn–Lyubich” costs a generation</h4>
+<p>The 2024 Quanta feature documents the human ledger: the satellite wall stalled the a-priori-bounds program for over a decade, damaged careers, and required inventing three new renormalization theories (near-parabolic, pacman, pseudo-Siegel) rather than extending one. Lyubich calls the set “tremendously devious”; his only committed timeline is a joke about volume 4 of his textbook.</p>
+<p class="lesson">the remaining regime is not a harder instance of the solved regime — it is a different mathematical object (zero core-entropy, neutral-adjacent, geometric limits enriching the dynamics; see the parabolic-implosion note in §6).</p>
+</div></div>
+</section>
+
+<section id="nextdoor" class="prose">
+<h2><span class="sec">§3</span>Calibration: one door over, everything fails</h2>
+<p class="lede">The sharpest reason to take MLC’s difficulty seriously — and to believe it anyway — is that its exact analogues are <em>refereed-theorem false</em> in every neighboring parameter space.</p>
+<ul>
+<li><strong>Cubics:</strong> Lavaurs proved (1989, via parabolic implosion) that the cubic connectedness locus is <em>not</em> locally connected. Buff–Henriksen: even a one-complex-dimensional cubic slice can have connected, non-locally-connected bifurcation locus.</li>
+<li><strong>Antiholomorphic (tricorn/multicorns):</strong> Hubbard–Schleicher: no multicorn is path connected — hence none is locally connected. Inou–Mukherjee (<em>Inventiones</em> 2016): rational parameter rays <em>do not land</em> but accumulate on arcs; Misiurewicz points and centers are <em>not dense</em> in the boundary.</li>
+<li><strong>Straightening:</strong> discontinuous in degree ≥ 3 (Inou) and from baby tricorns to the tricorn (Inou–Mukherjee 2021, settling the Hubbard–Milnor–Schleicher wiggling conjecture).</li>
+</ul>
+<p>Every pillar of the quadratic theory — ray landing, density of Misiurewicz points, continuity of straightening, local connectivity itself — fails one door over. Whatever proves MLC must exploit what is genuinely special to unicritical quadratic families. Conversely: forty years of searching has found <em>no obstruction mechanism inside M itself</em>, while the mechanisms that kill the neighbors are well understood and provably absent or different in degree 2. That asymmetry is why no expert conjectures MLC false.</p>
+</section>
+
+<section id="frontier" class="prose">
+<h2><span class="sec">§4</span>The frontier map, July 2026</h2>
+<p>MLC is settled class-by-class through the combinatorics of infinite renormalization. The current ledger:</p>
+<div class="tablewrap"><table>
+<tr><th>Combinatorial class</th><th>Status</th><th>Who / where</th><th>Standing</th></tr>
+<tr><td>Finitely renormalizable</td><td>MLC proved</td><td>Yoccoz ~1990 (Hubbard’s 1993 exposition); all degrees: AKLS, Kozlovski–van Strien</td><td class="m">refereed</td></tr>
+<tr><td>All real parameters</td><td>MLC proved</td><td>Levin–van Strien, Lyubich, Graczyk–Świątek (real bounds + rigidity)</td><td class="m">refereed</td></tr>
+<tr><td>Bounded primitive type</td><td>MLC proved</td><td>Kahn ’06; Kahn–Lyubich decorations ’08, molecule condition ’09</td><td class="m">refereed¹</td></tr>
+<tr><td>Bounded satellite type (first examples)</td><td>MLC proved</td><td>Dudko–Lyubich, pacman renormalization, GAFA 2023</td><td class="m">refereed</td></tr>
+<tr><td>High-type satellite</td><td>rigidity/MLC claimed</td><td>Cheraghi–Shishikura 2015, near-parabolic renormalization</td><td class="m">preprint, 10 yrs unpublished</td></tr>
+<tr><td>All bounded type (incl. Feigenbaum points)</td><td>MLC proved</td><td>Dudko–Lyubich, arXiv:2309.02107</td><td class="m">accepted, Publ. IHÉS</td></tr>
+<tr><td>Primitive, degenerating to cusp (“Elephant Eyes”)</td><td>a priori bounds</td><td>Kahn–Lyubich, arXiv:2601.21905, Jan 2026</td><td class="m">preprint</td></tr>
+<tr><td>Parabolically bounded primitive</td><td>MLC proved</td><td>Kahn–Kapiamba–Lyubich, arXiv:2606.27272, June 2026</td><td class="m">preprint, 4 weeks old</td></tr>
+<tr><td>Neutral (Siegel/Cremer, all rotation numbers)</td><td>pseudo-Siegel bounds, Mother Hedgehog</td><td>Dudko–Lyubich ’22; Dudko–Luo–Lyubich ’25</td><td class="m">preprints</td></tr>
+<tr><td><strong>Unbounded satellite type</strong></td><td><strong>OPEN — the wall</strong></td><td>classical bounds provably fail here (BLOT, CMP 2025)</td><td class="m">—</td></tr>
+</table></div>
+<p style="font-size:14px;color:var(--muted)">¹ Kahn’s Part I famously remains a Stony Brook IMS preprint; the rest of the series is refereed.</p>
+<p>The June 2026 paper matters beyond its class: its machinery (Thin-Thick Decomposition of degenerating Riemann surfaces, a Value Calculus on weighted arc diagrams, a Wanderers Theorem, a Wave Lemma) is engineered for <em>unbounded</em> combinatorial growth, and it is reportedly the first MLC class violating the secondary-limbs condition that fenced in every previous result. Its own introduction names what’s left: general primitive near-parabolic combinatorics, general neutral parameters, and “virtually-satellite” types awaiting virtual-renormalization machinery.</p>
+<p><strong>The authoritative roadmap</strong> (Dudko, ICM 2026 survey): two problems stand between the field and full a priori bounds — completing the unbounded satellite cases via pseudo-Siegel technology, and interpolation between positive-entropy and zero-entropy regimes. Behind them sit the two structural conjectures: hyperbolicity of neutral/cylinder renormalization for all rotation numbers, and the <strong>Molecule Conjecture</strong> — a single hyperbolic renormalization operator over the whole main molecule. The community signal: a Simons Center workshop “Half a Century of Dynamical Renormalization” (Feb 2027) organized around exactly this endgame.</p>
+<div class="callout"><b>How big is what’s left?</b> Graczyk–Świątek and Smirnov proved that outside an angle set of Hausdorff dimension <em>zero</em>, every parameter ray lands at a Collet–Eckmann (hence finitely renormalizable) parameter: <b>MLC already holds at harmonic-measure-a.e. boundary point.</b> Yet the exceptional set carries the full dimension-2 boundary (Shishikura), contains positive-area Julia set parameters (Avila–Lyubich), and whether ∂M itself has positive area is open. The conjecture is simultaneously “almost everywhere true” and genuinely hard — the hard set is invisible to every natural measure and dimensionally maximal.</div>
+</section>
+
+<section id="lab" class="prose">
+<h2><span class="sec">§5</span>Lab notebook: computing the obstruction</h2>
+<p class="lede">Four experiments, built from scratch today (Python/numpy/mpmath; escape-time + distance-estimator grids, exact-rational external-ray tracing, high-precision Newton). Each one makes a piece of the story quantitative — including the wall.</p>
+
+<h3>Exp A — Renormalization hyperbolicity, from two directions</h3>
+<p>We computed the period-doubling cascade’s superstable parameters to 2¹⁴ by 60-digit Newton, giving <span class="num">δ = 4.6692015955…</span> and <span class="num">c_F = −1.4011551890920506…</span>; independently, we solved the Cvitanović–Feigenbaum fixed-point equation <span class="num">g(x) = −α·g(g(x/α))</span> by collocation (order-10 continuation) and diagonalized the doubling operator’s Jacobian at the fixed point. The spectrum came back with <strong>exactly one expanding eigenvalue, 4.6692015…</strong>, everything else contracting — agreement with the cascade to 8 digits, and <span class="num">α² = 6.2645…→ α = 2.5029079</span> ✓.</p>
+<figure>
+  <img class="themed-light" src="%%IMG_fig_delta_light%%" alt="Semilog convergence of cascade ratios to Feigenbaum delta">
+  <img class="themed-dark" src="%%IMG_fig_delta_dark%%" alt="Semilog convergence of cascade ratios to Feigenbaum delta">
+  <figcaption><b>Geometric convergence of δₙ → δ.</b> This hyperbolic fixed point with a single unstable direction is the prototype of every “a priori bounds” theorem: Lanford proved precisely this picture rigorously by computer in 1982, and the modern program is the fight to establish its analogue uniformly over all combinatorics.</figcaption>
+</figure>
+<div class="figrow">
+  <figure><img src="%%IMG_feig_zoom1%%" alt="Feigenbaum point neighborhood, width 0.012"><figcaption><b>c_F at window 0.012.</b></figcaption></figure>
+  <figure><img src="%%IMG_feig_zoom2%%" alt="Feigenbaum point neighborhood, width 0.012/delta"><figcaption><b>Same point, window ÷ δ.</b> Near-identical frames: renormalization self-similarity — and Milnor’s “hairiness” (proved by Lyubich), the death of W6’s naive self-similarity: the hairs thicken relative to scale.</figcaption></figure>
+</div>
+
+<h3>Exp B — How rays land: the three-speed boundary</h3>
+<p>We traced parameter rays by Newton continuation on <span class="num">z_n(c) = w^{2^{n−1}}</span> with exact angle arithmetic (rationals as fractions; the Feigenbaum angle via its Thue–Morse binary expansion, doubled by digit shift). Validation: ray 1/2 lands at −2 to 2×10⁻¹⁵; ray 1/4 at the Misiurewicz point −0.2281554936+1.1151425080i.</p>
+<figure>
+  <img class="themed-light" src="%%IMG_fig_rays_light%%" alt="Distance to landing point versus potential for four rays">
+  <img class="themed-dark" src="%%IMG_fig_rays_dark%%" alt="Distance to landing point versus potential for four rays">
+  <figcaption><b>Distance-to-landing vs. potential, log–log.</b> Misiurewicz: d ~ t^1.63 — an honest power law, machine precision by t≈10⁻⁹. Parabolic root (ray 1/3 → −3/4): d ~ 1.44/log(1/t)^0.89 — <em>logarithmic</em>; after twelve decades of potential the ray is still 0.08 away. Satellite root (1/7): same law. Feigenbaum ray: d ~ t^0.114 — a tiny but genuine Hölder exponent; its landing became a theorem only in 2023 (Dudko–Lyubich).</figcaption>
+</figure>
+<div class="callout"><b>Reading:</b> this chart is the conjecture’s difficulty rendered as data. Landing convergence is superfast at parameters covered by classical theorems, logarithmically slow at parabolic/satellite structure, and fractionally slow at the just-conquered Feigenbaum point. No computation can certify a landing that approaches at 1/log(1/t) — which is why MLC could never be “checked numerically” (W1), and why the near-parabolic regime resists everything.</div>
+
+<h3>Exp C — Limb decay: living between the proven and the true</h3>
+<p>Yoccoz’s inequality proves the p/q-limb has diameter O(1/q); the conjecturally optimal rate is ~1/q² (Milnor; proved in 2021 for special families by Kapiamba — now the “K” of Kahn–Kapiamba–Lyubich). We measured limbs <em>by their mathematical definition</em>: limb = M ∩ wake, with wake boundaries computed as exact ray pairs from the Sturmian rotation word (e.g. 2/5 → word 00101 → doubling orbit {5,10,20,9,18}/31 → characteristic pair 9/31, 10/31), traced and closed through the root.</p>
+<figure>
+  <img class="themed-light" src="%%IMG_fig_limbs_light%%" alt="Limb diameter versus q, log-log, with 1/q and 1/q^2 reference lines">
+  <img class="themed-dark" src="%%IMG_fig_limbs_dark%%" alt="Limb diameter versus q, log-log, with 1/q and 1/q^2 reference lines">
+  <figcaption><b>Limb diameter vs. q.</b> %%LIMB_CAPTION%%</figcaption>
+</figure>
+
+<h3>Exp D — The two regimes, side by side</h3>
+<div class="figrow">
+  <figure><img src="%%IMG_primitive_airplane%%" alt="Primitive small copy near c = -1.759"><figcaption><b>Primitive copy</b> (c ≈ −1.759): a complete miniature M with bounded geometry — the regime Kahn–Lyubich conquered.</figcaption></figure>
+  <figure><img src="%%IMG_cascade_window%%" alt="Satellite chain of the period doubling cascade"><figcaption><b>Satellite chain</b> of the doubling cascade: each copy attached parabolically to the last — the geometry that degenerates and where classical bounds provably fail (W5).</figcaption></figure>
+</div>
+<figure><img src="%%IMG_m_overview%%" alt="Overview of the Mandelbrot set"><figcaption><b>The theater of operations.</b> DEM/M render; exterior shading by distance estimate.</figcaption></figure>
+<p class="callout" style="margin-top:26px"><b>Honesty note.</b> Numerical work here is illustrative, not evidential: W1 is precisely the warning that pixels cannot decide these questions. What the lab adds is the <em>quantitative texture</em> of the frontier — the specific convergence laws that separate the proven regimes from the open one, computed rather than asserted.</p>
+</section>
+
+<section id="avenues" class="prose">
+<h2><span class="sec">§6</span>Audit of the obscure avenues</h2>
+<p class="lede">The user asked for abstract and unorthodox routes. We audited all of them. They sort into three tiers.</p>
+<h3>Tier 1 — Complete but inert: the reformulations</h3>
+<ul>
+<li><strong>Laminations / pinched disk (Thurston):</strong> a finished theory and the definition of success — but a description of the target, not a weapon. Thurston’s own late program (core entropy, completed by Tiozzo) enriches the model; Dudko’s ICM survey doesn’t mention laminations once.</li>
+<li><strong>Computability (Penrose’s question):</strong> Hertling: MLC ⇒ density of hyperbolicity ⇒ <span class="num">M</span> computable in the bit model. Warning shots exist — Braverman–Yampolsky’s non-computable Julia sets, and a cubic family whose Mandelbrot-analogue is <em>not</em> Turing computable (Coronel–Rojas–Yampolsky). M may be the only famous planar fractal whose computability is conditional on a dynamical conjecture. Fascinating; supplies zero leverage toward a proof.</li>
+<li><strong>o-minimality / tame topology:</strong> a non-starter for a folklore reason apparently never written down: M’s interior has infinitely many components, and o-minimal definable sets can’t.</li>
+</ul>
+<h3>Tier 2 — Powerful next door, blocked at the frontier</h3>
+<ul>
+<li><strong>Self-similar groups / IMG (Nekrashevych, Bartholdi–Dudko):</strong> spectacular for postcritically <em>finite</em> combinatorics (twisted rabbit; decidability of Thurston equivalence) — but the machinery needs expanding dynamics, and the MLC-critical parameters are exactly non-expanding. No published extension to non-PCF rigidity exists.</li>
+<li><strong>Computer-assisted proof:</strong> closer to the action than commonly believed. The lineage runs Lanford ’82 → Eckmann–Wittwer → Gaidashev–Yampolsky (Siegel hyperbolicity) → Lanford–Yampolsky (parabolic renormalization bounds, acknowledged in Dudko’s survey) → Dudko–Sutherland (dim <sub>H</sub>(Feigenbaum Julia) &lt; 2, by machine). Every one certifies <em>a single operator</em>; MLC needs bounds uniform over all combinatorics including degenerating limits. Nobody has proposed a machine route to that uniformity in print. <em>This is a real open flank — see §7.</em></li>
+<li><strong>Formal verification:</strong> Geoffrey Irving’s Lean 4 “ray” project machine-verified the <em>connectedness</em> of M via Böttcher coordinates — the deepest formalized holomorphic dynamics anywhere. Local connectivity, puzzles, renormalization: all unformalized.</li>
+<li><strong>Transcendental dynamics:</strong> methodology flows outward, not back; its gift to MLC is a warning — the Eremenko conjecture, equally plausible-looking, is <em>false</em> (Martí-Pete–Rempe–Waterman).</li>
+</ul>
+<h3>Tier 3 — Live imports: where outside structure actually entered</h3>
+<ul>
+<li><strong>The Sullivan dictionary’s solved half.</strong> MLC’s exact Kleinian analogue — the Ending Lamination Conjecture — <em>was proved</em> (Minsky; Brock–Canary–Minsky), by precisely the architecture the MLC program now runs: a priori bounds → bilipschitz combinatorial model → rigidity, with density (the Fatou analogue: Bers–Sullivan–Thurston density) falling out as a corollary. Minsky’s punctured-torus paper even contains a section literally titled “Connectivity and a priori bounds.” The transfer is human as much as conceptual: Kahn is a Clay-award hyperbolic geometer, and the 2026 “Elephant Eyes” preprint imports thick-thin decomposition — Margulis technology — into renormalization. The dictionary is heuristic, not a transfer principle; but it is the single most-cited reason experts believe the current program will land.</li>
+<li><strong>Parabolic implosion (Douady–Lavaurs)</strong> is the theory <em>of</em> the wall: near parabolics, renormalization loses compactness because limits are enriched by geometric limits (Lavaurs maps, horn maps, Écalle–Voronin invariants). Inou–Shishikura’s near-parabolic renormalization is literally a normalized horn map; Shishikura’s dimension-2 theorem is implosion’s flagship application. Know the enemy: it has a name and a calculus.</li>
+<li><strong>New homeomorphic incarnations of M.</strong> Petersen–Roesch settled Milnor’s 1993 conjecture: the parabolic Mandelbrot set <span class="num">M₁</span> is homeomorphic to <span class="num">M</span> — via a homeomorphism that is <em>nowhere Hölder</em>. Bullett–Lomonaco: the modular Mandelbrot set of PSL(2,ℤ)-matings is homeomorphic to <span class="num">M₁</span>, hence to <span class="num">M</span>. Since local connectivity is a topological invariant, <strong>MLC now has three equivalent incarnations</strong>, one living in the parabolic world and one on the Kleinian side of the dictionary — genuinely new terrain for transporting puzzle technology, at the price of the nowhere-Hölder warning (topology transfers; metric control does not).</li>
+</ul>
+</section>
+
+<section id="attack" class="prose">
+<h2><span class="sec">§7</span>Attack surface: where a new idea could actually bite</h2>
+<p class="lede">Synthesis, honestly framed. Nothing below is a proof strategy; each is a place where the audit shows leverage that is not yet being applied.</p>
+<ul>
+<li><strong>1 · Machine-certified uniformity.</strong> The field has computer-assisted bounds for single operators (Feigenbaum, parabolic, golden-mean Siegel) and human-analytic bounds for combinatorial families, but no attempt to machine-certify a bounds statement <em>parametrized over combinatorics</em> — e.g., interval-arithmetic control of the KKL Value Calculus contraction constant uniformly over a parabolic tail family. The 2026 machinery is explicitly quantitative (Val((f*)ⁿX) ≤ λ⁻¹Val(X)); quantitative machinery is what machines certify best. The gap between “certify one fixed point” and “certify a compact family of operators” is an engineering frontier, not a conceptual impossibility.</li>
+<li><strong>2 · The Molecule Conjecture as the true target.</strong> Every regime-specific theory (puzzles, primitive bounds, near-parabolic, pacman, pseudo-Siegel) is a chart on one atlas; Dudko’s Question 3.1 asks for the single uniformly hyperbolic operator over all of ∂M. The wrong-turn ledger reads as one long argument that <em>partial</em> compactness engines exist per regime; the missing mathematics is the interpolation between them (positive ↔ zero entropy). Whoever builds that interpolation — “virtual Julia sets” is the survey’s named candidate — likely finishes the program.</li>
+<li><strong>3 · Transport through the parabolic twin.</strong> MLC ⟺ local connectivity of M₁ ⟺ of M_Γ. The parabolic incarnation puts the <em>hard</em> regime of M (near-parabolic) at the <em>base</em> of the twin’s structure, where Roesch-style puzzle technology has already proved theorems. Nobody has tried to run the Yoccoz program natively inside M₁ and pull back. The nowhere-Hölder homeomorphism blocks metric transfer but not combinatorial/topological transfer — and MLC is topological.</li>
+<li><strong>4 · Formalize the frontier.</strong> Irving’s Lean base (Böttcher theory, connectedness) reaches exactly to the doorstep of puzzle theory. Formalizing the Branner–Hubbard criterion and Yoccoz’s theorem would put the field’s foundation under machine guarantee and — more practically — force the modular, quantitative restatement of puzzle arguments that attack #1 needs as input.</li>
+<li><strong>5 · The measure-theoretic pincer.</strong> Whether ∂M has positive area is open, and the MLC-hard set is precisely where fat Julia sets live (Avila–Lyubich). A proof that the infinitely-renormalizable-satellite parameter set has zero area wouldn’t prove MLC — but it would collapse the plausible failure modes, and the Graczyk–Świątek “measurably deep” technology is active and quantitative.</li>
+</ul>
+<p>And the honest counterweight: the people closest to the wall predict the wall falls to the current program — bounds for unbounded satellites via pseudo-Siegel technology, then rigidity, with the 2027 renormalization workshop already convened around the endgame. The most probable resolution of MLC is not an obscure avenue at all; it is the visible one, finished.</p>
+</section>
+
+<section id="sources">
+<h2><span class="sec">§8</span>Sources</h2>
+<div class="srcgroup">
+<h4>Foundations &amp; history</h4>
+<ul>
+<li><a href="https://pi.math.cornell.edu/~hubbard/OrsayEnglish.pdf">Douady &amp; Hubbard, Orsay notes (English)</a> · <a href="https://arxiv.org/abs/math/9410221">McMullen, Frontiers in Complex Dynamics (BAMS 1994)</a> · <a href="https://arxiv.org/abs/math/9207220">Milnor, Local Connectivity of Julia Sets (1992)</a> · Hubbard, “Three theorems of J.-C. Yoccoz” (1993) · <a href="https://www.quantamagazine.org/the-quest-to-decode-the-mandelbrot-set-maths-famed-fractal-20240126/">Quanta 2024 feature</a></li>
+</ul>
+<h4>Wrong turns, obstructions, pathologies</h4>
+<ul>
+<li><a href="https://arxiv.org/abs/0710.4406">Levin, non-LC Julia + LC M (CMP 2011)</a> · Sørensen (J. Geom. Anal. 2000) · <a href="https://arxiv.org/abs/2205.03157">Blokh–Levin–Oversteegen–Timorin: bounds fail for unbounded satellite (CMP 2025)</a> · <a href="https://annals.math.princeton.edu/2012/176-2/p01">Buff–Chéritat, positive-area Julia sets (Annals 2012)</a> · <a href="https://arxiv.org/abs/1504.02986">Avila–Lyubich, fat Feigenbaum Julia sets (Annals 2022)</a> · <a href="https://arxiv.org/abs/math/9903201">Lyubich, hairiness (Annals 1999)</a> · <a href="https://arxiv.org/abs/1505.05422">Lomonaco–Petersen, QC-inequivalent copies</a> · <a href="https://www.sciencedirect.com/science/article/pii/S1631073X04003358">Blokh–Oversteegen, wandering triangles</a></li>
+</ul>
+<h4>Next door (cubics, multicorns)</h4>
+<ul>
+<li>Lavaurs, Orsay thesis 1989 · <a href="https://arxiv.org/abs/math/9608213">Epstein–Yampolsky, intertwining (ASENS 1999)</a> · <a href="https://arxiv.org/abs/1209.1753">Hubbard–Schleicher, multicorns not path connected</a> · <a href="https://arxiv.org/abs/1406.3428">Inou–Mukherjee, non-landing rays (Inventiones 2016)</a> · <a href="https://arxiv.org/abs/1605.08061">Inou–Mukherjee, discontinuous straightening (TAMS 2021)</a> · Buff–Henriksen (CMP 2001)</li>
+</ul>
+<h4>The frontier program</h4>
+<ul>
+<li><a href="https://arxiv.org/abs/math/0609045">Kahn, a priori bounds I (2006)</a> · Kahn–Lyubich, <a href="https://arxiv.org/abs/math/0505191">Quasi-Additivity &amp; Covering Lemma (Annals 2009)</a> · <a href="https://arxiv.org/abs/1808.10425">Dudko–Lyubich, satellite MLC (GAFA 2023)</a> · <a href="https://arxiv.org/abs/2309.02107">Dudko–Lyubich, MLC at Feigenbaum points</a> · <a href="https://arxiv.org/abs/1509.07843">Cheraghi–Shishikura, satellite renormalization (2015)</a> · <a href="https://arxiv.org/abs/2210.09280">Dudko–Lyubich, neutral bounds / Mother Hedgehog</a> · <a href="https://arxiv.org/abs/2509.23031">Dudko–Luo–Lyubich, Variation II (2025)</a> · <a href="https://arxiv.org/abs/2601.21905">Kahn–Lyubich, Elephant Eyes (Jan 2026)</a> · <a href="https://arxiv.org/abs/2606.27272">Kahn–Kapiamba–Lyubich, parabolically bounded MLC (Jun 2026)</a> · <a href="https://arxiv.org/abs/2512.24171">Dudko, ICM 2026 survey</a> · <a href="https://arxiv.org/abs/2103.03211">Kapiamba, optimal 1/q² limb bounds</a></li>
+</ul>
+<h4>Models, fibers, measure, avenues</h4>
+<ul>
+<li><a href="https://arxiv.org/abs/math/9902155">Schleicher, fibers of M</a> · <a href="https://arxiv.org/abs/1709.09869">Benini, MLC survey (2017)</a> · <a href="https://arxiv.org/abs/math/9201282">Shishikura, HD(∂M)=2 (Annals 1998)</a> · Graczyk–Świątek (Inventiones 2000; JLMS 2022; Adv. Math. 2023) · Smirnov (IMRN 2000) · Hertling, computability (MLQ 2005) · <a href="https://arxiv.org/abs/1703.04668">Coronel–Rojas–Yampolsky, non-computable bifurcation loci</a> · <a href="https://github.com/girving/ray">Irving, Lean 4 “ray”</a> · <a href="https://arxiv.org/abs/2107.09407">Petersen–Roesch, M₁ ≅ M</a> · <a href="https://arxiv.org/abs/2010.04273">Bullett–Lomonaco, modular Mandelbrot (Adv. Math. 2024)</a> · Minsky; <a href="https://arxiv.org/abs/math/0412006">Brock–Canary–Minsky, ELT (Annals 2012)</a> · <a href="https://arxiv.org/abs/1712.08638">Dudko–Sutherland, dim(J_F)&lt;2</a></li>
+</ul>
+</div>
+</section>
+
+<div class="footer-note">
+Compiled 2026-07-23 by Claude (Fable 5) · recon: 35 web agents in 3 verification-gated phases · numerics: from-scratch Python (escape/DEM grids, exact-angle ray tracing, 60-digit Newton, wake-polygon limb measurement) · All “verified” chips = independent adversarial fact-check against primary sources. Preprint-status claims reflect arXiv/journal state as checked today; fine-grained theorem numbering inside 2026 preprints was read via automated summarization and spot-checked, not hand-verified line-by-line.
+</div>
+</div>

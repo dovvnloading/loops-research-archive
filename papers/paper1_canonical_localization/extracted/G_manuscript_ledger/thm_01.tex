@@ -1,0 +1,23 @@
+\begin{theorem}[Degree-one annulus immersion does not imply injectivity; manuscript Thm.~12.38]\label{thm:degree-one-counterexample}
+Degree one, \(\mathbb Z\)-equivariance, and local univalence do not imply global injectivity of a universal-cover tile map.
+\end{theorem}
+
+\begin{proof}
+Fix \(h>0\), choose \(a>e^{2\pi h}\), and set
+\[
+F_a(z)=z+\frac{a}{2\pi i}e^{2\pi i z}.
+\]
+Then \(F_a(z+1)=F_a(z)+1\), and
+\[
+F_a'(z)=1+a e^{2\pi i z}\neq 0\qquad(0<\Im z<h),
+\]
+because \(|a e^{2\pi i z}|>1\). For \(0<d<1\), let
+\[
+r(d)=\frac{\pi d}{a\sin(\pi d)} .
+\]
+It tends to \(1/a<e^{-2\pi h}\) at \(0\) and to \(+\infty\) at \(1\). Choose \(d\) with \(e^{-2\pi h}<r(d)<1\), and choose \(z\) by
+\[
+e^{2\pi i z}=-\frac{2\pi i d}{a\,(e^{2\pi i d}-1)} .
+\]
+Then \(z,\,z+d\in\Pi(h)\), \(d\notin\mathbb Z\), and direct substitution gives \(F_a(z+d)=F_a(z)\). The imaginary part is bounded on a closed fundamental strip, so a vertical translation and sufficiently tall target strip make this a degree-one annulus immersion between strips. The example refutes degree plus immersion alone; it is not claimed to realize all KL end data.
+\end{proof}

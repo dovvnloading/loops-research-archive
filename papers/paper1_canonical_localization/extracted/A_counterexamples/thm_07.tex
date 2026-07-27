@@ -1,0 +1,45 @@
+\begin{theorem}\label{thm:psiql-nogo}
+There is a degree-two \(\psi\)-polynomial-like map \((i,f):(\mathbf U',K')\to(\mathbf U,K)\) in the exact sense of Definition~\ref{def:psiql} such that:
+\begin{enumerate}
+\item \(\mathbf U'\) and \(\mathbf U\) are disks;
+\item \(K\Subset\mathbf U\) is an FJ-set;
+\item \(f:\mathbf U'\to\mathbf U\) is a proper holomorphic branched cover of degree two;
+\item \(i:\mathbf U'\to\mathbf U\) is a holomorphic immersion;
+\item the common inverse \(K'=i^{-1}(K)=f^{-1}(K)\) is connected;
+\item \(i|_{K'}:K'\to K\) is a homeomorphism;
+\item the complementary-annulus map \(i:\mathbf U'\setminus K'\to\mathbf U\setminus K\) induces \(+1\) on fundamental groups; but
+\item \(i\) is not injective, even on \(\mathbf U'\setminus K'\).
+\end{enumerate}
+Consequently, neither the proper degree-two companion map nor the common connected full-continuum pullback axiom upgrades the immersion in an abstract \(\psi\)-quadratic-like pair to a global embedding.
+\end{theorem}
+
+\begin{proof}
+\emph{Construction.} Put
+\[ R=75,\qquad P=100,\qquad \beta=\frac{2\pi}{P}=\frac{\pi}{50},\qquad \Delta=e^{2\beta}-1, \tag{B.1} \]
+\[ \mathbf U'=\mathbb D_{75},\qquad \mathbf U=\mathbb D_{5625},\qquad f(z)=z^2,\qquad K=[0,1],\qquad K'=[-1,1], \tag{B.2} \]
+\[ i(z)=\frac{e^{\beta(z+1)}-1}{\Delta}. \tag{B.3} \]
+\emph{Step 1: disk and FJ-set clauses.} \(\mathbb D_{75}\) and \(\mathbb D_{5625}\) are simply connected plane domains, hence disks. The intervals \(K=[0,1]\) and \(K'=[-1,1]\) are compact, connected, and nondegenerate; a closed segment does not separate the plane, so each is full. Thus \(K\) (and also \(K'\)) is an FJ-set, and \(K\Subset\mathbb D_{5625}\), \(K'\Subset\mathbb D_{75}\). No local-connectivity assertion about a Julia set is used: these continua are explicit intervals.
+\emph{Step 2: the proper degree-two branch and its exact inverse.} The map \(f(z)=z^2:\mathbb D_{75}\to\mathbb D_{5625}\) is onto of degree two counted with multiplicity; its only critical point is \(0\), of local degree two, with the single branch value \(0\in K\). It is proper: if \(C\Subset\mathbb D_{5625}\), choose \(r_0<5625\) with \(C\subset\overline{\mathbb D}_{r_0}\); then \(f^{-1}(C)\subset\overline{\mathbb D}_{\sqrt{r_0}}\Subset\mathbb D_{75}\), and \(f^{-1}(C)\) is closed, hence compact. Finally \(z^2\in[0,1]\iff z\in[-1,1]\): writing \(z=\rho e^{i\theta}\), the condition \(z^2\ge0\) forces \(2\theta\equiv0\ (\mathrm{mod}\ 2\pi)\), so \(z\) is real, and \(z^2\le1\) gives \(|z|\le1\). Hence \(f^{-1}(K)=K'\).
+\emph{Step 3: \(i\) is an immersion into \(\mathbf U\).} Differentiating (B.3),
+\[ i'(z)=\frac{\beta e^{\beta(z+1)}}{\Delta}, \tag{B.4} \]
+with \(\beta>0\), \(\Delta>0\), and a nonvanishing exponential; so \(i'\ne0\) throughout \(\mathbf U'\). For containment without numerical approximation: for \(|z|<75\), \(\Re(z+1)\le|z|+1<76\), hence
+\[ |i(z)|\le\frac{e^{\beta\Re(z+1)}+1}{e^{2\beta}-1}<\frac{e^{76\beta}+1}{e^{2\beta}-1}. \tag{B.5} \]
+Using only the elementary bounds \(3<\pi<\tfrac{22}{7}\), \(e<3\), and \(e^{x}>1+x\) for \(x>0\) — where \(e<3\) follows from \(e=2+\sum_{n\ge2}\tfrac1{n!}<2+\sum_{n\ge2}2^{-(n-1)}=3\), the bound \(\pi<\tfrac{22}{7}\) from the positive-integral identity \(\tfrac{22}{7}-\pi=\int_0^1\tfrac{x^4(1-x)^4}{1+x^2}\,dx>0\), and \(3<\pi\) from the inscribed regular hexagon — we get
+\[ 76\beta=\frac{38\pi}{25}<\frac{38}{25}\cdot\frac{22}{7}=\frac{836}{175}<5,\qquad e^{2\beta}-1>2\beta=\frac{\pi}{25}>\frac{3}{25}. \]
+Substituting in (B.5),
+\[ |i(z)|<\frac{3^{5}+1}{3/25}=\frac{6100}{3}<2034<5625, \]
+so \(i(\mathbf U')\subset\mathbf U\).
+\emph{Step 4: exact common-inverse equality and the homeomorphism on \(K'\).} For \(t\in[0,1]\),
+\[ i(z)=t\iff e^{\beta(z+1)}=1+\Delta t, \]
+and the right side is a positive real in \([1,e^{2\beta}]\). Enumerating all complex logarithms,
+\[ z=-1+\frac{\log(1+\Delta t)}{\beta}+100ik,\qquad k\in\mathbb Z. \tag{B.6} \]
+As \(t\) runs through \([0,1]\), \(0\le\log(1+\Delta t)\le2\beta\), so the real part in (B.6) runs through \([-1,1]\). If \(k\ne0\) then \(|\Im z|\ge100>75\) and \(z\notin\mathbf U'\). Hence only \(k=0\) survives, and \(i^{-1}(K)=[-1,1]=K'\). Combined with Step 2, \(i^{-1}(K)=f^{-1}(K)=K'\), which is connected. On \(K'\), (B.4) is positive real, and \(i(-1)=0\), \(i(1)=(e^{2\beta}-1)/\Delta=1\); thus \(i|_{K'}\) is strictly increasing and a homeomorphism \(K'\to K\), as Kahn's general theorem predicts.
+\emph{Step 5: collision criterion.} Equality of two \(i\)-values has the exact form
+\[ i(z)=i(w)\iff e^{\beta(z-w)}=1\iff z-w=100ik\quad(k\in\mathbb Z). \tag{B.7} \]
+\emph{Step 6: the complementary-annulus degree is \(+1\).} Let \(\gamma(\theta)=2e^{i\theta}\), \(0\le\theta\le2\pi\), a positive generator of \(\pi_1(\mathbf U'\setminus K')\); since \(i^{-1}(K)=K'\), its image lies in \(\mathbf U\setminus K\). Compute the winding about \(1/2\in K\): the solutions of \(i(z)=1/2\) are \(z=x_0+100ik\) with
+\[ x_0=-1+\frac{1}{\beta}\log\Bigl(1+\frac{\Delta}{2}\Bigr), \]
+and \(1<1+\tfrac{\Delta}{2}<e^{2\beta}\) gives \(-1<x_0<1\). Thus exactly one solution lies in \(\mathbb D_2\), namely the \(k=0\) one, and it is simple by (B.4). The argument principle gives \(\operatorname{wind}(i\circ\gamma,1/2)=1\). Hence the induced homomorphism on the two annular fundamental groups sends positive generator to positive generator. Degree \(+1\) still does not imply injectivity.
+\emph{Step 7: exact remote self-collision.} Take \(z_{+}=50i\), \(z_{-}=-50i\). They are distinct, satisfy \(|z_{\pm}|=50<75\), and are not in \([-1,1]\). Since \(\beta(z_{+}-z_{-})=\tfrac{\pi}{50}(100i)=2\pi i\), criterion (B.7) gives \(i(z_{+})=i(z_{-})\). The common value is explicit:
+\[ i(z_{\pm})=\frac{-e^{\beta}-1}{\Delta}<0; \]
+by Step 3 it lies in \(\mathbf U\), and since \(K=[0,1]\) it lies in \(\mathbf U\setminus K\). Thus \(i:\mathbf U'\setminus K'\to\mathbf U\setminus K\) has a genuine self-collision, proving clause (8) and the theorem.
+\end{proof}

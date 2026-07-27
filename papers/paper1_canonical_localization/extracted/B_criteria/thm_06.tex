@@ -1,0 +1,61 @@
+\begin{theorem}[Tile/base injectivity equivalence]
+\label{thm:tile-base-equivalence}
+Let \((I,L)\) be a degree-one annular lift datum
+(Definition~\ref{def:annular-lift-data}).  Then, after choosing
+compatible positive deck generators,
+\[
+ L\circ T_s=T_t\circ L,
+\]
+and
+\[
+ L\ \text{is injective}
+ \quad\Longleftrightarrow\quad
+ I\ \text{is injective}.
+\]
+\end{theorem}
+
+\begin{proof}
+\emph{Equivariance.}  Both \(L\circ T_s\) and \(T_t\circ L\) are lifts
+of \(I\circ\pi_s\) through \(\pi_t\), and their relative deck
+displacement is the integer \(I_*(1)=1\); by uniqueness of lifts this
+gives \(L\circ T_s=T_t\circ L\).
+
+\emph{Base injectivity implies lift injectivity.}  Assume \(I\) is
+injective and suppose
+\[
+ L(x)=L(y).
+\]
+Projecting by \(\pi_t\) and using \(\pi_t\circ L=I\circ\pi_s\) gives
+\(I(\pi_s(x))=I(\pi_s(y))\), hence \(\pi_s(x)=\pi_s(y)\).
+Universal-cover fibers are deck orbits, so there is a unique
+\(k\in\mathbb Z\) with \(y=T_s^{k}x\).  Equivariance gives
+\[
+ L(y)=L(T_s^{k}x)=T_t^{k}L(x).
+\]
+Combined with \(L(x)=L(y)\), the deck transformation \(T_t^{k}\) fixes
+\(L(x)\).  A deck transformation of a covering acts freely; hence
+\(k=0\), and then \(x=y\).  Thus \(L\) is injective.
+
+\emph{Lift injectivity implies base injectivity.}  Assume \(L\) is
+injective and suppose, toward a contradiction, that
+\[
+ I(u)=I(v),\qquad u\ne v .
+\]
+Choose lifts \(x,y\in\widetilde A_s\) with \(\pi_s(x)=u\),
+\(\pi_s(y)=v\).  By the lifting relation, \(L(x)\) and \(L(y)\)
+project to the same point of \(A_t\), so there is a unique
+\(k\in\mathbb Z\) with
+\[
+ L(y)=T_t^{k}L(x).
+\]
+Equivariance gives
+\[
+ L(T_s^{-k}y)=T_t^{-k}L(y)=L(x),
+\]
+while
+\[
+ \pi_s(T_s^{-k}y)=v\ne u=\pi_s(x),
+\]
+so the two source points are distinct.  This contradicts injectivity
+of \(L\).  Hence \(I\) is injective, which proves the equivalence.
+\end{proof}

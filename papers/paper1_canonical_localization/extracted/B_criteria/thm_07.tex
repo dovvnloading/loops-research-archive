@@ -1,0 +1,37 @@
+\begin{proposition}[Properness criterion]
+\label{prop:properness-biholomorphism}
+Let \(I:A_s\to A_t\) be a proper holomorphic immersion between
+connected annuli.  If its oriented annular degree is one, then \(I\)
+is a biholomorphism.  In particular, every universal-cover lift of
+\(I\) is injective.
+\end{proposition}
+
+\begin{proof}
+A holomorphic immersion between Riemann surfaces is a local
+biholomorphism; therefore \(I(A_s)\) is open in \(A_t\).  A proper
+continuous map from a locally compact Hausdorff space to a Hausdorff
+space is closed; hence \(I(A_s)\) is also closed in \(A_t\).  The
+target annulus is connected and the image is nonempty, so
+\[
+ I(A_s)=A_t .
+\]
+
+A proper local homeomorphism is a covering map.  For completeness:
+each target point has a discrete fiber by local injectivity and a
+compact fiber by properness, hence a finite fiber.  Choose pairwise
+disjoint neighborhoods of the finitely many preimages on which \(I\)
+is invertible; after the target neighborhood is shrunk, properness
+excludes additional preimages, so the target point has an evenly
+covered neighborhood.
+
+The number \(N\) of sheets of a connected covering of annuli is the
+index of the induced subgroup
+\[
+ I_*\pi_1(A_s)\subset\pi_1(A_t).
+\]
+For an orientation-preserving holomorphic annulus covering, \(I_*\) is
+multiplication by \(N\).  The assumed degree is one, so \(N=1\), and
+\(I\) is bijective.  A bijective local biholomorphism has a
+holomorphic inverse, so \(I\) is a biholomorphism.  The final
+assertion follows from Theorem~\ref{thm:tile-base-equivalence}.
+\end{proof}

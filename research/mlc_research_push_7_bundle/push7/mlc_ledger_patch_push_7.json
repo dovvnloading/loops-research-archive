@@ -1,0 +1,241 @@
+{
+  "patch_status": "proposal_requires_authoritative_repository_schema_source_dependency_and_build_audit",
+  "research_push": 7,
+  "date": "2026-07-25",
+  "principal_target": "DIRECT_DECORATION_BINARY_CONTACT_TRACE_ATLAS",
+  "count_policy": {
+    "original_global_open_count_change": 0,
+    "reason": "The fixed-block binary contact, endpoint, trace atlas, exact recursive response grammar, algebraic matrix-product observable quotient, and fixed-terminal-tree KKL Value moment state are proved in sharply limited scopes. Universal terminal-edge dimension, the virtual typed factor, the Wave horizon, protected final inventory, bounded response/WAD/Value compression, MBTT, coercivity, rigidity, UPTCR and MLC remain open."
+  },
+  "source_scope": {
+    "map": "g=f^q",
+    "alphabet": [
+      "L",
+      "R"
+    ],
+    "pieces": [
+      "P",
+      "Q_L",
+      "Q_R"
+    ],
+    "source_inputs": [
+      "Kahn--Lyubich binary univalent pullbacks Q_L,Q_R inside P",
+      "Kahn--Lyubich Lemma 2.1: the 2^n components of dom(g^n) are attached to the boundary-ray pairs of P at its vertices",
+      "finite ray/equipotential boundary words",
+      "pseudo-puzzle naturality and finite ideal-boundary ports"
+    ],
+    "additional_hypotheses": [
+      "the existing closed-piece separation Q_L cap Q_R is empty",
+      "the proof overlay is finite and uses regular pseudo-boundary atoms",
+      "final enlargement is either safe-gap carrier enlargement or a certified collision-free finite overlay refinement"
+    ]
+  },
+  "new_proved_obligations": [
+    {
+      "id": "SOURCE_BINARY_CONTACT_RECOVERY",
+      "status": "proved",
+      "statement": "For a in {L,R}, the landing vertices of partial P cap partial Q_a are exactly the source depth-n vertices v_{at}; the open contact is the union of maximal common subsegments of the corresponding boundary rays, with no open equipotential overlap. Exact typed boundary-word matching recovers the complete finite contact graph.",
+      "dependencies": [
+        "KL_DECORATION_ESCAPE_PUZZLE",
+        "DIRECT_DECORATION_PULLBACK_COMPACTIFICATION"
+      ],
+      "evidence": "mlc_research_push_7.md#3-finite-contact-graph-theorem"
+    },
+    {
+      "id": "COMPLETE_BINARY_CONTACT_RECURSION",
+      "status": "proved",
+      "statement": "For C_w=partial P cap partial D_w and normalized contact Chat_w=h_w(C_w), Chat_{wa}=g_a(Chat_w cap C_a). After finite source subdivision this is a deterministic finite-state recursion on root boundary subcomplexes for each fixed block.",
+      "dependencies": [
+        "SOURCE_BINARY_CONTACT_RECOVERY",
+        "DIRECT_DECORATION_PULLBACK_COMPACTIFICATION"
+      ],
+      "evidence": "mlc_research_push_7.md#5-normalized-root-contact-sets"
+    },
+    {
+      "id": "COMPLETE_BINARY_CYLINDER_CONTACTS",
+      "status": "proved",
+      "statement": "Incomparable binary cylinders are disjoint; if v=ut then partial D_u cap partial D_v=phi_u(C_t). Hence the two one-step source contacts determine every pairwise contact at arbitrary depth.",
+      "dependencies": [
+        "COMPLETE_BINARY_CONTACT_RECURSION",
+        "DIRECT_DECORATION_PULLBACK_COMPACTIFICATION"
+      ],
+      "evidence": "mlc_research_push_7.md#6-complete-pairwise-contact-theorem"
+    },
+    {
+      "id": "SOURCE_TRANSIENT_ENDPOINT_ITINERARY",
+      "status": "proved",
+      "statement": "For every prefix w of length k<=n, the landing vertices of open contacts partial P cap partial D_w are exactly {v_{wt}: |t|=n-k}, and h_w(v_{wt})=v_t. Incident boundary flags and cyclic order follow the same shift.",
+      "dependencies": [
+        "SOURCE_BINARY_CONTACT_RECOVERY",
+        "COMPLETE_BINARY_CYLINDER_CONTACTS"
+      ],
+      "evidence": "mlc_research_push_7.md#9-exact-prefix-endpoint-theorem"
+    },
+    {
+      "id": "BINARY_POST_TRANSIENT_CONTACT_SYNCHRONIZATION",
+      "status": "proved",
+      "statement": "For every depth-n word s, the normalized root contact is the same complete two-ray alpha port. The L branch fixes this state, the R branch sends it to the empty contact, and the empty state is absorbing. Thus beyond source depth n the contact automaton has exactly two states.",
+      "dependencies": [
+        "SOURCE_TRANSIENT_ENDPOINT_ITINERARY",
+        "COMPLETE_BINARY_CONTACT_RECURSION"
+      ],
+      "evidence": "mlc_research_push_7.md#10-exact-post-transient-collapse"
+    },
+    {
+      "id": "BINARY_ENDPOINT_FLAG_ATLAS",
+      "status": "proved",
+      "statement": "After source subdivision, every endpoint is retained as a vertex/incident-edge/side/orientation flag; each univalent branch induces a partial cyclic-order-preserving flag map and the maps compose exactly along words.",
+      "dependencies": [
+        "SOURCE_BINARY_CONTACT_RECOVERY",
+        "SOURCE_TRANSIENT_ENDPOINT_ITINERARY"
+      ],
+      "evidence": "mlc_research_push_7.md#4-contact-flags-not-bare-endpoints"
+    },
+    {
+      "id": "BINARY_PSEUDO_TRACE_RESTRICTION_ATLAS",
+      "status": "proved",
+      "statement": "On the source pseudo-puzzle ideal boundary, a common finite overlay gives atomwise degree-one branch maps. Each root atom has at most one lift per branch, hence at most two lifts. Pullback defines a continuous one-to-many map into the compatible minimum-energy trace tuple space, retaining endpoint sides and cyclic order without an omitted Euclidean welding.",
+      "dependencies": [
+        "SOURCE_BINARY_CONTACT_RECOVERY",
+        "BINARY_ENDPOINT_FLAG_ATLAS"
+      ],
+      "source_hypothesis": "Kahn--Lyubich pseudo-puzzle naturality and continuous boundary extension",
+      "evidence": "mlc_research_push_7.md#14-one-to-many-trace-theorem"
+    },
+    {
+      "id": "BINARY_TRACE_ATLAS_WORD_FUNCTORIALITY",
+      "status": "proved",
+      "statement": "Direct pseudo-trace pullback under the word map h_w equals chronological composition of the one-step branch restriction relations, with canonical reassociation of compatible tuple spaces; flags and cyclic order compose identically.",
+      "dependencies": [
+        "BINARY_PSEUDO_TRACE_RESTRICTION_ATLAS"
+      ],
+      "evidence": "mlc_research_push_7.md#15-word-functoriality"
+    },
+    {
+      "id": "BINARY_NORMALIZED_OVERLAY_NATURALITY",
+      "status": "proved",
+      "statement": "The identity h_{wa}=g_a composed with h_w makes contact, flag, compatible trace and finite Dirichlet-response diagrams commute exactly in the co-moving normalized overlay.",
+      "dependencies": [
+        "COMPLETE_BINARY_CONTACT_RECURSION",
+        "BINARY_TRACE_ATLAS_WORD_FUNCTORIALITY"
+      ],
+      "evidence": "mlc_research_push_7.md#16-physical-and-normalized-overlays"
+    },
+    {
+      "id": "SAFE_GAP_FINAL_ROOT_TRACE_ATLAS_INVARIANCE",
+      "status": "proved",
+      "statement": "A carrier enlargement K_0 subset S subset S+ subset P minus (Q_L union Q_R) changes no puzzle boundary, contact, endpoint, flag or trace-atlas datum. Its pullbacks commute with every shift and parent map; only the internal carrier/cap response changes.",
+      "dependencies": [
+        "PULLBACK_GAP_ENLARGEMENT_NATURALITY",
+        "BINARY_NORMALIZED_OVERLAY_NATURALITY"
+      ],
+      "evidence": "mlc_research_push_7.md#17-safe-gap-carrier-enlargement"
+    },
+    {
+      "id": "CERTIFIED_BINARY_OVERLAY_REFINEMENT_NATURALITY",
+      "status": "proved",
+      "statement": "For a finite collision-free refinement whose endpoints are source endpoints or exact branch pullbacks, atom and endpoint-forgetful squares commute, trace subdivision commutes with branch restriction, and minimization over the new internal subdivision traces reconstructs the old response.",
+      "dependencies": [
+        "BINARY_NORMALIZED_OVERLAY_NATURALITY"
+      ],
+      "evidence": "mlc_research_push_7.md#18-certified-finite-overlay-refinement"
+    },
+    {
+      "id": "BINARY_OPERADIC_RESPONSE_COMPILER",
+      "status": "proved",
+      "statement": "For every fixed finite source overlay, the full normalized binary depth-r pseudo-puzzle Dirichlet response satisfies the exact recursion Q_{r+1}=B star (Q_r^(L) direct-sum Q_r^(R)). The recursively shared response circuit has O(r) description size, commutes with normalized-overlay maps, safe-gap carrier enlargement, and certified finite overlay refinement, although its expanded leaf trace space may still have 2^r ports.",
+      "dependencies": [
+        "BINARY_PSEUDO_TRACE_RESTRICTION_ATLAS",
+        "BINARY_NORMALIZED_OVERLAY_NATURALITY",
+        "SAFE_GAP_FINAL_ROOT_TRACE_ATLAS_INVARIANCE",
+        "CERTIFIED_BINARY_OVERLAY_REFINEMENT_NATURALITY"
+      ],
+      "evidence": "mlc_research_push_7.md#26-binary-response-grammar"
+    },
+    {
+      "id": "MATRIX_PRODUCT_FUTURE_OBSERVABLE_QUOTIENT",
+      "status": "proved",
+      "statement": "For d-state coefficient transitions M_L,M_R and w-dimensional branch transports R_L,R_R, every depth-r weighted binary leaf observable is exactly computed in dimension dw by (u^T tensor I_w)(M_L tensor R_L + M_R tensor R_R)^r(v tensor x). Activation for KKL Value remains conditional on a source proof that all required coefficients and feature transports obey one universal finite-state linear law.",
+      "dependencies": [],
+      "evidence": "mlc_research_push_7.md#27-matrix-product-observable-compression"
+    },
+    {
+      "id": "FIXED_BLOCK_KKL_VALUE_MOMENT_STATE",
+      "status": "proved",
+      "statement": "For one source-licensed finite primitive terminal Hubbard tree with edge set E, KKL Value at pullback level m is exactly the contraction of aa^T with a positive semidefinite second-moment state indexed by E x E. The state dimension is at most |E|^2(|E|^2+1)/2. Every incidence-preserving univalent binary branch acts by M -> P_a M P_a^T, and the joint binary pullback acts by the completely positive map M -> P_L M P_L^T + P_R M P_R^T. Universal dimension and the virtual typed factor remain open.",
+      "dependencies": [
+        "KKL_VALUE_CONTRACTION",
+        "KKL_TYPED_VALUE_INCIDENCE",
+        "BINARY_PSEUDO_TRACE_RESTRICTION_ATLAS"
+      ],
+      "source_hypothesis": "A fixed finite terminal Hubbard tree and actual branch-to-bivertical incidence maps.",
+      "evidence": "mlc_research_push_7.md#28-fixed-block-kkl-value-moment-state"
+    },
+    {
+      "id": "DIRECT_DECORATION_BINARY_CONTACT_TRACE_ATLAS",
+      "status": "proved",
+      "statement": "For one fixed source direct-decoration block, the actual binary f^q package has source-complete all-depth contacts, endpoint-germ itineraries, a two-state post-transient contact collapse, a finite one-to-many pseudo-trace atlas, exact normalized-overlay naturality, and safe-gap or certified-refinement final-root naturality.",
+      "dependencies": [
+        "COMPLETE_BINARY_CYLINDER_CONTACTS",
+        "SOURCE_TRANSIENT_ENDPOINT_ITINERARY",
+        "BINARY_PSEUDO_TRACE_RESTRICTION_ATLAS",
+        "BINARY_POST_TRANSIENT_CONTACT_SYNCHRONIZATION",
+        "BINARY_TRACE_ATLAS_WORD_FUNCTORIALITY",
+        "BINARY_NORMALIZED_OVERLAY_NATURALITY",
+        "SAFE_GAP_FINAL_ROOT_TRACE_ATLAS_INVARIANCE",
+        "CERTIFIED_BINARY_OVERLAY_REFINEMENT_NATURALITY"
+      ],
+      "evidence": "mlc_research_push_7.md#23-what-is-now-closed"
+    }
+  ],
+  "new_open_obligation": {
+    "id": "BINARY_TRACE_VALUE_FUTURE_QUOTIENT_AND_STRICT_BLOCK_TRANSITION",
+    "status": "open",
+    "statement": "Uniformly over mixed virtual-Molecule blocks, construct a source-faithful future quotient of the normalized binary trace atlas that preserves every response, WAD, KKL Value, protected-access, obstacle, phase and enlargement observable; prove universal dimension or compact-operator control and a strict complete-block transition with a discounted error budget.",
+    "maps_to": [
+      "VAAPC-I",
+      "H2_RESPONSE_REALIZATION",
+      "H2_UNIFORM_CORE_WAD_DIMENSION",
+      "H2_VALUE_FEATURE_REALIZATION",
+      "H2_VIRTUAL_TRANSFER_TRICHOTOMY",
+      "H2_DISCOUNTED_ERROR_CHARGE",
+      "MBTT"
+    ],
+    "proved_tools_available": [
+      "BINARY_OPERADIC_RESPONSE_COMPILER",
+      "MATRIX_PRODUCT_FUTURE_OBSERVABLE_QUOTIENT",
+      "FIXED_BLOCK_KKL_VALUE_MOMENT_STATE"
+    ]
+  },
+  "broad_nodes_remaining_open": [
+    "DIRECT_DECORATION_TRACE_COLLAR_REALIZATION",
+    "END_PLUMBING_TRACE_RESPONSE_CONTROL",
+    "VAAPC-I",
+    "H2_RESPONSE_REALIZATION",
+    "MBTT",
+    "H3_COERCIVITY",
+    "H4_RIGIDITY",
+    "UNIVERSAL_PROTECTED_TOWER_CLOSURE",
+    "MLC"
+  ],
+  "failure_certificate": {
+    "id": "BINARY_CONTACT_TRACE_ATLAS_FAILURE",
+    "fields": [
+      "block",
+      "q",
+      "n",
+      "escape_route",
+      "branch_L_or_R",
+      "source_boundary_word",
+      "first_missing_or_extra_contact_ray",
+      "contact_vertex_word",
+      "endpoint_flag_and_side",
+      "first_failed_contact_recursion_word",
+      "child_atom_and_claimed_parent",
+      "trace_restriction_square",
+      "normalized_overlay_square",
+      "enlargement_or_refinement_generator",
+      "new_demand_or_collision"
+    ]
+  }
+}

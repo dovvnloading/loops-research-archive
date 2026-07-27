@@ -1,0 +1,41 @@
+{
+  "certificate": "LEVIN_FAST_SATELLITE_BRANCH_CLOSURE",
+  "date": "2026-07-25",
+  "status": "proved_in_imported_source_scope",
+  "source": {
+    "title": "Rigidity and non local connectivity of Julia sets of some quadratic polynomials",
+    "author": "Genadi Levin",
+    "url": "https://arxiv.org/pdf/0710.4406",
+    "version": "v4",
+    "local_copy": "C:\\Users\\Admin\\AppData\\Local\\Temp\\mlc-levin-0710.4406-v4\\levin_rigidity.pdf",
+    "sha256": "8E5A59B111C0D841D5DEB3AB7ADB12B556896A2916C1E4CC8418FE41789335CD"
+  },
+  "closed_branches": [
+    {
+      "id": "LEVIN_EXPONENTIAL_NUMERATOR_MLC",
+      "condition": "There is a renormalization subsequence with limsup log(abs(p_m))/n_m > 0.",
+      "satellite_specialization": "For satellite renormalizations, limsup log(q_m)/n_m > 0 suffices.",
+      "conclusion": "Mandelbrot local connectivity at the parameter."
+    },
+    {
+      "id": "LEVIN_FAST_SMALL_ROTATION_MLC",
+      "condition": "All renormalizations are satellite, q_m tends to infinity, and limsup abs(t_{m+1})^(1/q_m) < 1.",
+      "explicit_sufficient_subcase": "abs(t_{m+1})^(1/q_m) <= 1/2 eventually, which implies q_{m+1} >= 2 q_m eventually.",
+      "conclusion": "Mandelbrot local connectivity at the limiting parameter; the Julia set may be non-locally connected."
+    }
+  ],
+  "machine_validation": {
+    "script": "research/mlc_unified/validate_levin_fast_satellite_branch.py",
+    "result": "LEVIN_FAST_SATELLITE_BRANCH_VALID",
+    "all_checks": true,
+    "original_artifacts_written": false
+  },
+  "remaining_scope": [
+    "unbounded satellite sequences failing both Levin growth tests",
+    "virtual bounded-type satellite towers",
+    "virtual near-neutral Molecule towers",
+    "global MLC"
+  ],
+  "ledger_policy": "Keep global MLC and virtual obligations open; this certificate closes only the named Levin branches."
+}
+

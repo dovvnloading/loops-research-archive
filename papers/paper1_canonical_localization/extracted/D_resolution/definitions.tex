@@ -1,0 +1,67 @@
+\begin{definition}[Canonical localization covering data]\label{def:loc-data}
+Let \( a\colon(X_s,x_s)\hookrightarrow(X_t,x_t) \) be a based topological
+embedding, and let
+\( p_s\colon(\widehat X_s,\widehat x_s)\to(X_s,x_s) \),
+\( p_t\colon(\widehat X_t,\widehat x_t)\to(X_t,x_t) \)
+be connected based covers with characteristic subgroups \( H_s \),
+\( H_t \).  Suppose a based lift
+\( A\colon(\widehat X_s,\widehat x_s)\to(\widehat X_t,\widehat x_t) \)
+exists with
+\begin{equation}\label{eq:lift-square}
+  p_t A = a p_s .
+\end{equation}
+The lifting criterion then gives \( a_*(H_s)\leq H_t \).  Define
+\begin{equation}\label{eq:K-def}
+  K := a_*^{-1}(H_t)\;\leq\;\pi_1(X_s,x_s),
+\end{equation}
+so that \( H_s\leq K \).
+\end{definition}
+
+\begin{definition}[Canonical pullback component]\label{def:pullback-component}
+With the data of Definition~\ref{def:loc-data}, form the pullback
+\begin{equation}\label{eq:pullback}
+  P = X_s\times_{X_t}\widehat X_t
+    = \bigl\{(x,\widehat y): a(x)=p_t(\widehat y)\bigr\},
+\end{equation}
+and let \( P_K \) be the path component of the basepoint
+\( (x_s,\widehat x_t) \).  Write
+\begin{equation}\label{eq:legs}
+  r\colon P_K\to X_s,\quad r(x,\widehat y)=x,
+  \qquad
+  e\colon P_K\to\widehat X_t,\quad e(x,\widehat y)=\widehat y .
+\end{equation}
+\end{definition}
+
+\begin{definition}[Sheet transport]\label{def:sheet-transport}
+Let \( q\colon\widehat X_s\to P_K \) be the covering of
+Theorem~\ref{thm:sheet-resolution}.  For every path
+\( \delta\colon[0,1]\to P_K \) and every
+\( \widehat u\in q^{-1}(\delta(0)) \), let
+\( \widetilde\delta_{\widehat u} \) be the unique \( q \)-lift of
+\( \delta \) beginning at \( \widehat u \), and define
+\begin{equation}\label{eq:transport-def}
+  M_\delta(\widehat u)
+  = \widetilde\delta_{\widehat u}(1)
+  \in q^{-1}(\delta(1)).
+\end{equation}
+\end{definition}
+
+\begin{definition}[Enlargement data and the based coset map]\label{def:coset-map}
+Let
+\( H\leq K\leq G \) and \( H^+\leq K^+\leq G^+ \) be subgroup chains, and
+let \( \varphi\colon G\to G^+ \) be a homomorphism such that
+\begin{equation}\label{eq:coset-map-hyp}
+  \varphi(H)\leq H^+,
+  \qquad
+  \varphi(K)\leq K^+ .
+\end{equation}
+Then
+\begin{equation}\label{eq:coset-map-def}
+  \overline\varphi\colon K/H\longrightarrow K^+/H^+,
+  \qquad
+  kH\longmapsto \varphi(k)H^+
+\end{equation}
+is well defined: if \( k_1H=k_2H \) then \( k_2^{-1}k_1\in H \), so
+\( \varphi(k_2)^{-1}\varphi(k_1)\in\varphi(H)\leq H^+ \), whence
+\( \varphi(k_1)H^+=\varphi(k_2)H^+ \).
+\end{definition}

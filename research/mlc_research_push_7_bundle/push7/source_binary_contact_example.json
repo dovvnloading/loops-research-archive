@@ -1,0 +1,722 @@
+{
+  "description": "Exact rational source-shaped audit fixture for the binary contact/trace compiler. It models q=1 angle doubling and the depth-3 prefix contact theorem; it is not a claimed numerical Mandelbrot parameter instance.",
+  "root_atoms": [
+    "r_LLL",
+    "e0",
+    "r_LLR",
+    "e1",
+    "r_LRL",
+    "e2",
+    "r_LRR",
+    "e3",
+    "r_RLL",
+    "e4",
+    "r_RLR",
+    "e5",
+    "r_RRL",
+    "e6",
+    "r_RRR",
+    "e7"
+  ],
+  "root_flags": [
+    "f_LLL_s",
+    "f_LLL_e",
+    "f_LLR_s",
+    "f_LLR_e",
+    "f_LRL_s",
+    "f_LRL_e",
+    "f_LRR_s",
+    "f_LRR_e",
+    "f_RLL_s",
+    "f_RLL_e",
+    "f_RLR_s",
+    "f_RLR_e",
+    "f_RRL_s",
+    "f_RRL_e",
+    "f_RRR_s",
+    "f_RRR_e"
+  ],
+  "transient_depth": 3,
+  "vertex_by_word": {
+    "epsilon": "v_LLL",
+    "L": "v_LLL",
+    "R": "v_RLL",
+    "LL": "v_LLL",
+    "LR": "v_LRL",
+    "RL": "v_RLL",
+    "RR": "v_RRL",
+    "LLL": "v_LLL",
+    "LLR": "v_LLR",
+    "LRL": "v_LRL",
+    "LRR": "v_LRR",
+    "RLL": "v_RLL",
+    "RLR": "v_RLR",
+    "RRL": "v_RRL",
+    "RRR": "v_RRR"
+  },
+  "synchronization": {
+    "depth": 3,
+    "persistent_state": [
+      "r_LLL"
+    ],
+    "persistent_branch": "L",
+    "kill_branches": [
+      "R"
+    ]
+  },
+  "branches": {
+    "L": {
+      "contact_atoms": [
+        "r_LLL",
+        "r_LLR",
+        "r_LRL",
+        "r_LRR"
+      ],
+      "contact_image": {
+        "r_LLL": "r_LLL",
+        "r_LLR": "r_LRL",
+        "r_LRL": "r_RLL",
+        "r_LRR": "r_RRL"
+      },
+      "flag_image": {
+        "f_LLL_s": "f_LLL_s",
+        "f_LLL_e": "f_LLL_e",
+        "f_LLR_s": "f_LRL_s",
+        "f_LLR_e": "f_LRL_e",
+        "f_LRL_s": "f_RLL_s",
+        "f_LRL_e": "f_RLL_e",
+        "f_LRR_s": "f_RRL_s",
+        "f_LRR_e": "f_RRL_e"
+      },
+      "child_parent": {
+        "L_r_LLL": "r_LLL",
+        "L_e0": "e0",
+        "L_r_LLR": "r_LLR",
+        "L_e1": "e1",
+        "L_r_LRL": "r_LRL",
+        "L_e2": "e2",
+        "L_r_LRR": "r_LRR",
+        "L_e3": "e3",
+        "L_r_RLL": "r_RLL",
+        "L_e4": "e4",
+        "L_r_RLR": "r_RLR",
+        "L_e5": "e5",
+        "L_r_RRL": "r_RRL",
+        "L_e6": "e6",
+        "L_r_RRR": "r_RRR",
+        "L_e7": "e7"
+      }
+    },
+    "R": {
+      "contact_atoms": [
+        "r_RLL",
+        "r_RLR",
+        "r_RRL",
+        "r_RRR"
+      ],
+      "contact_image": {
+        "r_RLL": "r_LLL",
+        "r_RLR": "r_LRL",
+        "r_RRL": "r_RLL",
+        "r_RRR": "r_RRL"
+      },
+      "flag_image": {
+        "f_RLL_s": "f_LLL_s",
+        "f_RLL_e": "f_LLL_e",
+        "f_RLR_s": "f_LRL_s",
+        "f_RLR_e": "f_LRL_e",
+        "f_RRL_s": "f_RLL_s",
+        "f_RRL_e": "f_RLL_e",
+        "f_RRR_s": "f_RRL_s",
+        "f_RRR_e": "f_RRL_e"
+      },
+      "child_parent": {
+        "R_r_LLL": "r_LLL",
+        "R_e0": "e0",
+        "R_r_LLR": "r_LLR",
+        "R_e1": "e1",
+        "R_r_LRL": "r_LRL",
+        "R_e2": "e2",
+        "R_r_LRR": "r_LRR",
+        "R_e3": "e3",
+        "R_r_RLL": "r_RLL",
+        "R_e4": "e4",
+        "R_r_RLR": "r_RLR",
+        "R_e5": "e5",
+        "R_r_RRL": "r_RRL",
+        "R_e6": "e6",
+        "R_r_RRR": "r_RRR",
+        "R_e7": "e7"
+      }
+    }
+  },
+  "boundary_words": {
+    "parent": [
+      {
+        "id": "r_LLL",
+        "type": "ray",
+        "angle": "0",
+        "inner_potential": "0",
+        "outer_potential": "1/2",
+        "start_flag": "f_LLL_s",
+        "end_flag": "f_LLL_e"
+      },
+      {
+        "id": "e0",
+        "type": "equipotential",
+        "level": 2,
+        "potential": "1/2",
+        "theta_start": "0",
+        "theta_end": "1/8",
+        "start_flag": "f_LLL_e",
+        "end_flag": "f_LLR_s"
+      },
+      {
+        "id": "r_LLR",
+        "type": "ray",
+        "angle": "1/8",
+        "inner_potential": "0",
+        "outer_potential": "1/2",
+        "start_flag": "f_LLR_s",
+        "end_flag": "f_LLR_e"
+      },
+      {
+        "id": "e1",
+        "type": "equipotential",
+        "level": 2,
+        "potential": "1/2",
+        "theta_start": "1/8",
+        "theta_end": "1/4",
+        "start_flag": "f_LLR_e",
+        "end_flag": "f_LRL_s"
+      },
+      {
+        "id": "r_LRL",
+        "type": "ray",
+        "angle": "1/4",
+        "inner_potential": "0",
+        "outer_potential": "1/2",
+        "start_flag": "f_LRL_s",
+        "end_flag": "f_LRL_e"
+      },
+      {
+        "id": "e2",
+        "type": "equipotential",
+        "level": 2,
+        "potential": "1/2",
+        "theta_start": "1/4",
+        "theta_end": "3/8",
+        "start_flag": "f_LRL_e",
+        "end_flag": "f_LRR_s"
+      },
+      {
+        "id": "r_LRR",
+        "type": "ray",
+        "angle": "3/8",
+        "inner_potential": "0",
+        "outer_potential": "1/2",
+        "start_flag": "f_LRR_s",
+        "end_flag": "f_LRR_e"
+      },
+      {
+        "id": "e3",
+        "type": "equipotential",
+        "level": 2,
+        "potential": "1/2",
+        "theta_start": "3/8",
+        "theta_end": "1/2",
+        "start_flag": "f_LRR_e",
+        "end_flag": "f_RLL_s"
+      },
+      {
+        "id": "r_RLL",
+        "type": "ray",
+        "angle": "1/2",
+        "inner_potential": "0",
+        "outer_potential": "1/2",
+        "start_flag": "f_RLL_s",
+        "end_flag": "f_RLL_e"
+      },
+      {
+        "id": "e4",
+        "type": "equipotential",
+        "level": 2,
+        "potential": "1/2",
+        "theta_start": "1/2",
+        "theta_end": "5/8",
+        "start_flag": "f_RLL_e",
+        "end_flag": "f_RLR_s"
+      },
+      {
+        "id": "r_RLR",
+        "type": "ray",
+        "angle": "5/8",
+        "inner_potential": "0",
+        "outer_potential": "1/2",
+        "start_flag": "f_RLR_s",
+        "end_flag": "f_RLR_e"
+      },
+      {
+        "id": "e5",
+        "type": "equipotential",
+        "level": 2,
+        "potential": "1/2",
+        "theta_start": "5/8",
+        "theta_end": "3/4",
+        "start_flag": "f_RLR_e",
+        "end_flag": "f_RRL_s"
+      },
+      {
+        "id": "r_RRL",
+        "type": "ray",
+        "angle": "3/4",
+        "inner_potential": "0",
+        "outer_potential": "1/2",
+        "start_flag": "f_RRL_s",
+        "end_flag": "f_RRL_e"
+      },
+      {
+        "id": "e6",
+        "type": "equipotential",
+        "level": 2,
+        "potential": "1/2",
+        "theta_start": "3/4",
+        "theta_end": "7/8",
+        "start_flag": "f_RRL_e",
+        "end_flag": "f_RRR_s"
+      },
+      {
+        "id": "r_RRR",
+        "type": "ray",
+        "angle": "7/8",
+        "inner_potential": "0",
+        "outer_potential": "1/2",
+        "start_flag": "f_RRR_s",
+        "end_flag": "f_RRR_e"
+      },
+      {
+        "id": "e7",
+        "type": "equipotential",
+        "level": 2,
+        "potential": "1/2",
+        "theta_start": "7/8",
+        "theta_end": "0",
+        "start_flag": "f_RRR_e",
+        "end_flag": "f_LLL_s"
+      }
+    ],
+    "children": {
+      "L": [
+        {
+          "id": "L_r_LLL",
+          "type": "ray",
+          "angle": "0",
+          "inner_potential": "0",
+          "outer_potential": "1/4",
+          "start_flag": "L_f_LLL_s",
+          "end_flag": "L_f_LLL_e"
+        },
+        {
+          "id": "L_eq0",
+          "type": "equipotential",
+          "level": 4,
+          "potential": "1/4",
+          "theta_start": "0",
+          "theta_end": "1/16",
+          "start_flag": "L_f_LLL_e",
+          "end_flag": "L_xf1_s"
+        },
+        {
+          "id": "L_x1",
+          "type": "ray",
+          "angle": "1/16",
+          "inner_potential": "0",
+          "outer_potential": "1/4",
+          "start_flag": "L_xf1_s",
+          "end_flag": "L_xf1_e"
+        },
+        {
+          "id": "L_eq1",
+          "type": "equipotential",
+          "level": 4,
+          "potential": "1/4",
+          "theta_start": "1/16",
+          "theta_end": "1/8",
+          "start_flag": "L_xf1_e",
+          "end_flag": "L_f_LLR_s"
+        },
+        {
+          "id": "L_r_LLR",
+          "type": "ray",
+          "angle": "1/8",
+          "inner_potential": "0",
+          "outer_potential": "1/4",
+          "start_flag": "L_f_LLR_s",
+          "end_flag": "L_f_LLR_e"
+        },
+        {
+          "id": "L_eq2",
+          "type": "equipotential",
+          "level": 4,
+          "potential": "1/4",
+          "theta_start": "1/8",
+          "theta_end": "3/16",
+          "start_flag": "L_f_LLR_e",
+          "end_flag": "L_xf3_s"
+        },
+        {
+          "id": "L_x3",
+          "type": "ray",
+          "angle": "3/16",
+          "inner_potential": "0",
+          "outer_potential": "1/4",
+          "start_flag": "L_xf3_s",
+          "end_flag": "L_xf3_e"
+        },
+        {
+          "id": "L_eq3",
+          "type": "equipotential",
+          "level": 4,
+          "potential": "1/4",
+          "theta_start": "3/16",
+          "theta_end": "1/4",
+          "start_flag": "L_xf3_e",
+          "end_flag": "L_f_LRL_s"
+        },
+        {
+          "id": "L_r_LRL",
+          "type": "ray",
+          "angle": "1/4",
+          "inner_potential": "0",
+          "outer_potential": "1/4",
+          "start_flag": "L_f_LRL_s",
+          "end_flag": "L_f_LRL_e"
+        },
+        {
+          "id": "L_eq4",
+          "type": "equipotential",
+          "level": 4,
+          "potential": "1/4",
+          "theta_start": "1/4",
+          "theta_end": "5/16",
+          "start_flag": "L_f_LRL_e",
+          "end_flag": "L_xf5_s"
+        },
+        {
+          "id": "L_x5",
+          "type": "ray",
+          "angle": "5/16",
+          "inner_potential": "0",
+          "outer_potential": "1/4",
+          "start_flag": "L_xf5_s",
+          "end_flag": "L_xf5_e"
+        },
+        {
+          "id": "L_eq5",
+          "type": "equipotential",
+          "level": 4,
+          "potential": "1/4",
+          "theta_start": "5/16",
+          "theta_end": "3/8",
+          "start_flag": "L_xf5_e",
+          "end_flag": "L_f_LRR_s"
+        },
+        {
+          "id": "L_r_LRR",
+          "type": "ray",
+          "angle": "3/8",
+          "inner_potential": "0",
+          "outer_potential": "1/4",
+          "start_flag": "L_f_LRR_s",
+          "end_flag": "L_f_LRR_e"
+        },
+        {
+          "id": "L_eq6",
+          "type": "equipotential",
+          "level": 4,
+          "potential": "1/4",
+          "theta_start": "3/8",
+          "theta_end": "7/16",
+          "start_flag": "L_f_LRR_e",
+          "end_flag": "L_xf7_s"
+        },
+        {
+          "id": "L_x7",
+          "type": "ray",
+          "angle": "7/16",
+          "inner_potential": "0",
+          "outer_potential": "1/4",
+          "start_flag": "L_xf7_s",
+          "end_flag": "L_xf7_e"
+        },
+        {
+          "id": "L_eq7",
+          "type": "equipotential",
+          "level": 4,
+          "potential": "1/4",
+          "theta_start": "7/16",
+          "theta_end": "0",
+          "start_flag": "L_xf7_e",
+          "end_flag": "L_f_LLL_s"
+        }
+      ],
+      "R": [
+        {
+          "id": "R_r_RLL",
+          "type": "ray",
+          "angle": "1/2",
+          "inner_potential": "0",
+          "outer_potential": "1/4",
+          "start_flag": "R_f_RLL_s",
+          "end_flag": "R_f_RLL_e"
+        },
+        {
+          "id": "R_eq0",
+          "type": "equipotential",
+          "level": 4,
+          "potential": "1/4",
+          "theta_start": "1/2",
+          "theta_end": "9/16",
+          "start_flag": "R_f_RLL_e",
+          "end_flag": "R_xf1_s"
+        },
+        {
+          "id": "R_x1",
+          "type": "ray",
+          "angle": "9/16",
+          "inner_potential": "0",
+          "outer_potential": "1/4",
+          "start_flag": "R_xf1_s",
+          "end_flag": "R_xf1_e"
+        },
+        {
+          "id": "R_eq1",
+          "type": "equipotential",
+          "level": 4,
+          "potential": "1/4",
+          "theta_start": "9/16",
+          "theta_end": "5/8",
+          "start_flag": "R_xf1_e",
+          "end_flag": "R_f_RLR_s"
+        },
+        {
+          "id": "R_r_RLR",
+          "type": "ray",
+          "angle": "5/8",
+          "inner_potential": "0",
+          "outer_potential": "1/4",
+          "start_flag": "R_f_RLR_s",
+          "end_flag": "R_f_RLR_e"
+        },
+        {
+          "id": "R_eq2",
+          "type": "equipotential",
+          "level": 4,
+          "potential": "1/4",
+          "theta_start": "5/8",
+          "theta_end": "11/16",
+          "start_flag": "R_f_RLR_e",
+          "end_flag": "R_xf3_s"
+        },
+        {
+          "id": "R_x3",
+          "type": "ray",
+          "angle": "11/16",
+          "inner_potential": "0",
+          "outer_potential": "1/4",
+          "start_flag": "R_xf3_s",
+          "end_flag": "R_xf3_e"
+        },
+        {
+          "id": "R_eq3",
+          "type": "equipotential",
+          "level": 4,
+          "potential": "1/4",
+          "theta_start": "11/16",
+          "theta_end": "3/4",
+          "start_flag": "R_xf3_e",
+          "end_flag": "R_f_RRL_s"
+        },
+        {
+          "id": "R_r_RRL",
+          "type": "ray",
+          "angle": "3/4",
+          "inner_potential": "0",
+          "outer_potential": "1/4",
+          "start_flag": "R_f_RRL_s",
+          "end_flag": "R_f_RRL_e"
+        },
+        {
+          "id": "R_eq4",
+          "type": "equipotential",
+          "level": 4,
+          "potential": "1/4",
+          "theta_start": "3/4",
+          "theta_end": "13/16",
+          "start_flag": "R_f_RRL_e",
+          "end_flag": "R_xf5_s"
+        },
+        {
+          "id": "R_x5",
+          "type": "ray",
+          "angle": "13/16",
+          "inner_potential": "0",
+          "outer_potential": "1/4",
+          "start_flag": "R_xf5_s",
+          "end_flag": "R_xf5_e"
+        },
+        {
+          "id": "R_eq5",
+          "type": "equipotential",
+          "level": 4,
+          "potential": "1/4",
+          "theta_start": "13/16",
+          "theta_end": "7/8",
+          "start_flag": "R_xf5_e",
+          "end_flag": "R_f_RRR_s"
+        },
+        {
+          "id": "R_r_RRR",
+          "type": "ray",
+          "angle": "7/8",
+          "inner_potential": "0",
+          "outer_potential": "1/4",
+          "start_flag": "R_f_RRR_s",
+          "end_flag": "R_f_RRR_e"
+        },
+        {
+          "id": "R_eq6",
+          "type": "equipotential",
+          "level": 4,
+          "potential": "1/4",
+          "theta_start": "7/8",
+          "theta_end": "15/16",
+          "start_flag": "R_f_RRR_e",
+          "end_flag": "R_xf7_s"
+        },
+        {
+          "id": "R_x7",
+          "type": "ray",
+          "angle": "15/16",
+          "inner_potential": "0",
+          "outer_potential": "1/4",
+          "start_flag": "R_xf7_s",
+          "end_flag": "R_xf7_e"
+        },
+        {
+          "id": "R_eq7",
+          "type": "equipotential",
+          "level": 4,
+          "potential": "1/4",
+          "theta_start": "15/16",
+          "theta_end": "1/2",
+          "start_flag": "R_xf7_e",
+          "end_flag": "R_f_RLL_s"
+        }
+      ]
+    }
+  },
+  "refinement": {
+    "coarse_of_refined_root": {
+      "e0": "e0",
+      "r_LLR": "r_LLR",
+      "e1": "e1",
+      "r_LRL": "r_LRL",
+      "e2": "e2",
+      "r_LRR": "r_LRR",
+      "e3": "e3",
+      "r_RLL": "r_RLL",
+      "e4": "e4",
+      "r_RLR": "r_RLR",
+      "e5": "e5",
+      "r_RRL": "r_RRL",
+      "e6": "e6",
+      "r_RRR": "r_RRR",
+      "e7": "e7",
+      "r_LLL_a": "r_LLL",
+      "r_LLL_b": "r_LLL"
+    },
+    "branches": {
+      "L": {
+        "coarse_of_refined_child": {
+          "L_r_LLL_a": "L_r_LLL",
+          "L_r_LLL_b": "L_r_LLL",
+          "L_e0": "L_e0",
+          "L_r_LLR": "L_r_LLR",
+          "L_e1": "L_e1",
+          "L_r_LRL": "L_r_LRL",
+          "L_e2": "L_e2",
+          "L_r_LRR": "L_r_LRR",
+          "L_e3": "L_e3",
+          "L_r_RLL": "L_r_RLL",
+          "L_e4": "L_e4",
+          "L_r_RLR": "L_r_RLR",
+          "L_e5": "L_e5",
+          "L_r_RRL": "L_r_RRL",
+          "L_e6": "L_e6",
+          "L_r_RRR": "L_r_RRR",
+          "L_e7": "L_e7"
+        },
+        "refined_child_parent": {
+          "L_r_LLL_a": "r_LLL_a",
+          "L_r_LLL_b": "r_LLL_b",
+          "L_e0": "e0",
+          "L_r_LLR": "r_LLR",
+          "L_e1": "e1",
+          "L_r_LRL": "r_LRL",
+          "L_e2": "e2",
+          "L_r_LRR": "r_LRR",
+          "L_e3": "e3",
+          "L_r_RLL": "r_RLL",
+          "L_e4": "e4",
+          "L_r_RLR": "r_RLR",
+          "L_e5": "e5",
+          "L_r_RRL": "r_RRL",
+          "L_e6": "e6",
+          "L_r_RRR": "r_RRR",
+          "L_e7": "e7"
+        }
+      },
+      "R": {
+        "coarse_of_refined_child": {
+          "R_r_LLL_a": "R_r_LLL",
+          "R_r_LLL_b": "R_r_LLL",
+          "R_e0": "R_e0",
+          "R_r_LLR": "R_r_LLR",
+          "R_e1": "R_e1",
+          "R_r_LRL": "R_r_LRL",
+          "R_e2": "R_e2",
+          "R_r_LRR": "R_r_LRR",
+          "R_e3": "R_e3",
+          "R_r_RLL": "R_r_RLL",
+          "R_e4": "R_e4",
+          "R_r_RLR": "R_r_RLR",
+          "R_e5": "R_e5",
+          "R_r_RRL": "R_r_RRL",
+          "R_e6": "R_e6",
+          "R_r_RRR": "R_r_RRR",
+          "R_e7": "R_e7"
+        },
+        "refined_child_parent": {
+          "R_r_LLL_a": "r_LLL_a",
+          "R_r_LLL_b": "r_LLL_b",
+          "R_e0": "e0",
+          "R_r_LLR": "r_LLR",
+          "R_e1": "e1",
+          "R_r_LRL": "r_LRL",
+          "R_e2": "e2",
+          "R_r_LRR": "r_LRR",
+          "R_e3": "e3",
+          "R_r_RLL": "r_RLL",
+          "R_e4": "e4",
+          "R_r_RLR": "r_RLR",
+          "R_e5": "e5",
+          "R_r_RRL": "r_RRL",
+          "R_e6": "e6",
+          "R_r_RRR": "r_RRR",
+          "R_e7": "e7"
+        }
+      }
+    }
+  }
+}

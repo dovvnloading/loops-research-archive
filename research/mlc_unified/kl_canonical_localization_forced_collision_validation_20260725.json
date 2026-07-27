@@ -1,0 +1,473 @@
+{
+  "scope": "Source/degree/ledger validation for the actual ordinary-primitive canonical-localization collision; diagnostic only.",
+  "proof_document_sha256": "912B410B609F03D60D14632AA4255485FFFD2C611DBE461FD42360B7245FD1A7",
+  "ledger_sha256": "309D69D322A2B6204105543F91EB031B8DDD17ACFF81529601D46A5C41BC15DE",
+  "source_sha256": {
+    ".tmp_kl06_source/pullback.tex": "7E0B43D74F2C6E4A4375F4A4F40271ABC6A289247B40FD5D0D8CB88ED6928E5C",
+    ".tmp_kl06_source/intro.tex": "E7DD61396FEA927903D4DE4FD386E7AAEFD0BD3E2CEE1CE6F011680AD58144E0",
+    ".tmp_kl06_source/psiql2.tex": "E4EFCCEC65D8C9C2BDFE2AF8203B3D4D63ECF992B40D302F56FBA78259547228",
+    ".tmp_kl08_source/kingdom.tex": "5DC04FEFF6B6A1D73040FFD50519C35D62EFF03C1049686DA71D595758E38FA7",
+    ".tmp_kl08_source/psiql.tex": "6CC9726461473812A5FBA93377F2DC0B088DB6CAC4B9DE90C7B2AE625DFB49AF"
+  },
+  "degree_checks": [
+    {
+      "p": 2,
+      "global_degree": 4,
+      "central_degree": 2,
+      "excess_degree": 2,
+      "component_upper_bound": 4
+    },
+    {
+      "p": 3,
+      "global_degree": 8,
+      "central_degree": 2,
+      "excess_degree": 6,
+      "component_upper_bound": 8
+    },
+    {
+      "p": 4,
+      "global_degree": 16,
+      "central_degree": 2,
+      "excess_degree": 14,
+      "component_upper_bound": 16
+    },
+    {
+      "p": 5,
+      "global_degree": 32,
+      "central_degree": 2,
+      "excess_degree": 30,
+      "component_upper_bound": 32
+    },
+    {
+      "p": 6,
+      "global_degree": 64,
+      "central_degree": 2,
+      "excess_degree": 62,
+      "component_upper_bound": 64
+    },
+    {
+      "p": 7,
+      "global_degree": 128,
+      "central_degree": 2,
+      "excess_degree": 126,
+      "component_upper_bound": 128
+    },
+    {
+      "p": 8,
+      "global_degree": 256,
+      "central_degree": 2,
+      "excess_degree": 254,
+      "component_upper_bound": 256
+    },
+    {
+      "p": 9,
+      "global_degree": 512,
+      "central_degree": 2,
+      "excess_degree": 510,
+      "component_upper_bound": 512
+    },
+    {
+      "p": 10,
+      "global_degree": 1024,
+      "central_degree": 2,
+      "excess_degree": 1022,
+      "component_upper_bound": 1024
+    },
+    {
+      "p": 11,
+      "global_degree": 2048,
+      "central_degree": 2,
+      "excess_degree": 2046,
+      "component_upper_bound": 2048
+    },
+    {
+      "p": 12,
+      "global_degree": 4096,
+      "central_degree": 2,
+      "excess_degree": 4094,
+      "component_upper_bound": 4096
+    },
+    {
+      "p": 13,
+      "global_degree": 8192,
+      "central_degree": 2,
+      "excess_degree": 8190,
+      "component_upper_bound": 8192
+    },
+    {
+      "p": 14,
+      "global_degree": 16384,
+      "central_degree": 2,
+      "excess_degree": 16382,
+      "component_upper_bound": 16384
+    },
+    {
+      "p": 15,
+      "global_degree": 32768,
+      "central_degree": 2,
+      "excess_degree": 32766,
+      "component_upper_bound": 32768
+    },
+    {
+      "p": 16,
+      "global_degree": 65536,
+      "central_degree": 2,
+      "excess_degree": 65534,
+      "component_upper_bound": 65536
+    },
+    {
+      "p": 17,
+      "global_degree": 131072,
+      "central_degree": 2,
+      "excess_degree": 131070,
+      "component_upper_bound": 131072
+    },
+    {
+      "p": 18,
+      "global_degree": 262144,
+      "central_degree": 2,
+      "excess_degree": 262142,
+      "component_upper_bound": 262144
+    },
+    {
+      "p": 19,
+      "global_degree": 524288,
+      "central_degree": 2,
+      "excess_degree": 524286,
+      "component_upper_bound": 524288
+    },
+    {
+      "p": 20,
+      "global_degree": 1048576,
+      "central_degree": 2,
+      "excess_degree": 1048574,
+      "component_upper_bound": 1048576
+    },
+    {
+      "p": 21,
+      "global_degree": 2097152,
+      "central_degree": 2,
+      "excess_degree": 2097150,
+      "component_upper_bound": 2097152
+    },
+    {
+      "p": 22,
+      "global_degree": 4194304,
+      "central_degree": 2,
+      "excess_degree": 4194302,
+      "component_upper_bound": 4194304
+    },
+    {
+      "p": 23,
+      "global_degree": 8388608,
+      "central_degree": 2,
+      "excess_degree": 8388606,
+      "component_upper_bound": 8388608
+    },
+    {
+      "p": 24,
+      "global_degree": 16777216,
+      "central_degree": 2,
+      "excess_degree": 16777214,
+      "component_upper_bound": 16777216
+    },
+    {
+      "p": 25,
+      "global_degree": 33554432,
+      "central_degree": 2,
+      "excess_degree": 33554430,
+      "component_upper_bound": 33554432
+    },
+    {
+      "p": 26,
+      "global_degree": 67108864,
+      "central_degree": 2,
+      "excess_degree": 67108862,
+      "component_upper_bound": 67108864
+    },
+    {
+      "p": 27,
+      "global_degree": 134217728,
+      "central_degree": 2,
+      "excess_degree": 134217726,
+      "component_upper_bound": 134217728
+    },
+    {
+      "p": 28,
+      "global_degree": 268435456,
+      "central_degree": 2,
+      "excess_degree": 268435454,
+      "component_upper_bound": 268435456
+    },
+    {
+      "p": 29,
+      "global_degree": 536870912,
+      "central_degree": 2,
+      "excess_degree": 536870910,
+      "component_upper_bound": 536870912
+    },
+    {
+      "p": 30,
+      "global_degree": 1073741824,
+      "central_degree": 2,
+      "excess_degree": 1073741822,
+      "component_upper_bound": 1073741824
+    },
+    {
+      "p": 31,
+      "global_degree": 2147483648,
+      "central_degree": 2,
+      "excess_degree": 2147483646,
+      "component_upper_bound": 2147483648
+    },
+    {
+      "p": 32,
+      "global_degree": 4294967296,
+      "central_degree": 2,
+      "excess_degree": 4294967294,
+      "component_upper_bound": 4294967296
+    },
+    {
+      "p": 33,
+      "global_degree": 8589934592,
+      "central_degree": 2,
+      "excess_degree": 8589934590,
+      "component_upper_bound": 8589934592
+    },
+    {
+      "p": 34,
+      "global_degree": 17179869184,
+      "central_degree": 2,
+      "excess_degree": 17179869182,
+      "component_upper_bound": 17179869184
+    },
+    {
+      "p": 35,
+      "global_degree": 34359738368,
+      "central_degree": 2,
+      "excess_degree": 34359738366,
+      "component_upper_bound": 34359738368
+    },
+    {
+      "p": 36,
+      "global_degree": 68719476736,
+      "central_degree": 2,
+      "excess_degree": 68719476734,
+      "component_upper_bound": 68719476736
+    },
+    {
+      "p": 37,
+      "global_degree": 137438953472,
+      "central_degree": 2,
+      "excess_degree": 137438953470,
+      "component_upper_bound": 137438953472
+    },
+    {
+      "p": 38,
+      "global_degree": 274877906944,
+      "central_degree": 2,
+      "excess_degree": 274877906942,
+      "component_upper_bound": 274877906944
+    },
+    {
+      "p": 39,
+      "global_degree": 549755813888,
+      "central_degree": 2,
+      "excess_degree": 549755813886,
+      "component_upper_bound": 549755813888
+    },
+    {
+      "p": 40,
+      "global_degree": 1099511627776,
+      "central_degree": 2,
+      "excess_degree": 1099511627774,
+      "component_upper_bound": 1099511627776
+    },
+    {
+      "p": 41,
+      "global_degree": 2199023255552,
+      "central_degree": 2,
+      "excess_degree": 2199023255550,
+      "component_upper_bound": 2199023255552
+    },
+    {
+      "p": 42,
+      "global_degree": 4398046511104,
+      "central_degree": 2,
+      "excess_degree": 4398046511102,
+      "component_upper_bound": 4398046511104
+    },
+    {
+      "p": 43,
+      "global_degree": 8796093022208,
+      "central_degree": 2,
+      "excess_degree": 8796093022206,
+      "component_upper_bound": 8796093022208
+    },
+    {
+      "p": 44,
+      "global_degree": 17592186044416,
+      "central_degree": 2,
+      "excess_degree": 17592186044414,
+      "component_upper_bound": 17592186044416
+    },
+    {
+      "p": 45,
+      "global_degree": 35184372088832,
+      "central_degree": 2,
+      "excess_degree": 35184372088830,
+      "component_upper_bound": 35184372088832
+    },
+    {
+      "p": 46,
+      "global_degree": 70368744177664,
+      "central_degree": 2,
+      "excess_degree": 70368744177662,
+      "component_upper_bound": 70368744177664
+    },
+    {
+      "p": 47,
+      "global_degree": 140737488355328,
+      "central_degree": 2,
+      "excess_degree": 140737488355326,
+      "component_upper_bound": 140737488355328
+    },
+    {
+      "p": 48,
+      "global_degree": 281474976710656,
+      "central_degree": 2,
+      "excess_degree": 281474976710654,
+      "component_upper_bound": 281474976710656
+    },
+    {
+      "p": 49,
+      "global_degree": 562949953421312,
+      "central_degree": 2,
+      "excess_degree": 562949953421310,
+      "component_upper_bound": 562949953421312
+    },
+    {
+      "p": 50,
+      "global_degree": 1125899906842624,
+      "central_degree": 2,
+      "excess_degree": 1125899906842622,
+      "component_upper_bound": 1125899906842624
+    },
+    {
+      "p": 51,
+      "global_degree": 2251799813685248,
+      "central_degree": 2,
+      "excess_degree": 2251799813685246,
+      "component_upper_bound": 2251799813685248
+    },
+    {
+      "p": 52,
+      "global_degree": 4503599627370496,
+      "central_degree": 2,
+      "excess_degree": 4503599627370494,
+      "component_upper_bound": 4503599627370496
+    },
+    {
+      "p": 53,
+      "global_degree": 9007199254740992,
+      "central_degree": 2,
+      "excess_degree": 9007199254740990,
+      "component_upper_bound": 9007199254740992
+    },
+    {
+      "p": 54,
+      "global_degree": 18014398509481984,
+      "central_degree": 2,
+      "excess_degree": 18014398509481982,
+      "component_upper_bound": 18014398509481984
+    },
+    {
+      "p": 55,
+      "global_degree": 36028797018963968,
+      "central_degree": 2,
+      "excess_degree": 36028797018963966,
+      "component_upper_bound": 36028797018963968
+    },
+    {
+      "p": 56,
+      "global_degree": 72057594037927936,
+      "central_degree": 2,
+      "excess_degree": 72057594037927934,
+      "component_upper_bound": 72057594037927936
+    },
+    {
+      "p": 57,
+      "global_degree": 144115188075855872,
+      "central_degree": 2,
+      "excess_degree": 144115188075855870,
+      "component_upper_bound": 144115188075855872
+    },
+    {
+      "p": 58,
+      "global_degree": 288230376151711744,
+      "central_degree": 2,
+      "excess_degree": 288230376151711742,
+      "component_upper_bound": 288230376151711744
+    },
+    {
+      "p": 59,
+      "global_degree": 576460752303423488,
+      "central_degree": 2,
+      "excess_degree": 576460752303423486,
+      "component_upper_bound": 576460752303423488
+    },
+    {
+      "p": 60,
+      "global_degree": 1152921504606846976,
+      "central_degree": 2,
+      "excess_degree": 1152921504606846974,
+      "component_upper_bound": 1152921504606846976
+    },
+    {
+      "p": 61,
+      "global_degree": 2305843009213693952,
+      "central_degree": 2,
+      "excess_degree": 2305843009213693950,
+      "component_upper_bound": 2305843009213693952
+    },
+    {
+      "p": 62,
+      "global_degree": 4611686018427387904,
+      "central_degree": 2,
+      "excess_degree": 4611686018427387902,
+      "component_upper_bound": 4611686018427387904
+    },
+    {
+      "p": 63,
+      "global_degree": 9223372036854775808,
+      "central_degree": 2,
+      "excess_degree": 9223372036854775806,
+      "component_upper_bound": 9223372036854775808
+    },
+    {
+      "p": 64,
+      "global_degree": 18446744073709551616,
+      "central_degree": 2,
+      "excess_degree": 18446744073709551614,
+      "component_upper_bound": 18446744073709551616
+    }
+  ],
+  "ledger": {
+    "new_theorem": "KL_CANONICAL_LOCALIZATION_FORCED_COLLISION",
+    "new_theorem_status": "proved",
+    "alignment_sensitive_node": "DIRECT_DECORATION_DEGREE_ONE_PSEUDO_EMBEDDING",
+    "alignment_sensitive_status": "open",
+    "old_route_descendants": [],
+    "rerouted_nodes": [
+      "DIRECT_DECORATION_OUTER_CAP_FOOTPRINT",
+      "DIRECT_DECORATION_PSEUDO_PIECE_PATH_LIFT_EXHAUSTION",
+      "DIRECT_DECORATION_ALL_DEPTH_CONTACT_CLOSURE"
+    ],
+    "global_statuses": {
+      "VIRTUAL_AUGMENTED_ATOM_PORT_CERTIFICATE": "open",
+      "UNIVERSAL_PROTECTED_TOWER_CLOSURE": "open",
+      "MLC": "open"
+    }
+  },
+  "result": "PASS"
+}

@@ -1,0 +1,55 @@
+{
+  "scope": "Diagnostic audit of the covering-space factorization, finite coset controls, enlargement criteria, ledger routing, and global open statuses.",
+  "proof_document_sha256": "0C63241963526FE2A58573A167A46DE59009DDE6326BD2C76EAE78A3F2EF0840",
+  "ledger_sha256": "E9CC988A8F18203788F02E19992E8CC07DF886C20BB4882DC7A97AE0973A9061",
+  "finite_controls": {
+    "bijective": {
+      "domain_cosets": 2,
+      "target_cosets": 2,
+      "reflection": true,
+      "exhaustion": true
+    },
+    "merger": {
+      "witnesses": [
+        2
+      ],
+      "distinct_images": 2
+    },
+    "birth": {
+      "born_cosets": [
+        [
+          1
+        ]
+      ]
+    },
+    "nonnormal": {
+      "group": "S3",
+      "subgroup_order": 2,
+      "coset_count": 3,
+      "normal": false
+    },
+    "winding_power_sample": {
+      "range": [
+        -32,
+        32
+      ],
+      "distinct_cosets_certified_in_sample": 65,
+      "analytic_proof_location": "Corollary 4.3"
+    }
+  },
+  "ledger": {
+    "total": 330,
+    "counts": {
+      "imported": 23,
+      "proved": 235,
+      "open": 72
+    },
+    "theorem": "KL_LOCALIZATION_SHEET_RESOLUTION_FACTORIZATION",
+    "global_statuses": {
+      "VIRTUAL_AUGMENTED_ATOM_PORT_CERTIFICATE": "open",
+      "UNIVERSAL_PROTECTED_TOWER_CLOSURE": "open",
+      "MLC": "open"
+    }
+  },
+  "result": "PASS"
+}

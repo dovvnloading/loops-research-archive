@@ -1,0 +1,341 @@
+{
+  "scope": "Mechanical source/status/deck audit only; no proof of actual KL base-annulus univalence or any global MLC gate.",
+  "source_lock": {
+    "passed": true,
+    "sha256": {
+      ".tmp_kl08_source\\macros.tex": "BD995DB17D787F0CCFD4DA905DC0AA54FCF00CA71AE144DCAD1C9A1FF7C134C7",
+      ".tmp_kl08_source\\psiql.tex": "6CC9726461473812A5FBA93377F2DC0B088DB6CAC4B9DE90C7B2AE625DFB49AF",
+      ".tmp_kl08_source\\moduli.tex": "CBDB9EF7D6AC94C33FDB0AB7167E19C39EB23D27373C266A296CF6031E0CAF7E",
+      ".tmp_kl06_source\\pullback.tex": "7E0B43D74F2C6E4A4375F4A4F40271ABC6A289247B40FD5D0D8CB88ED6928E5C",
+      ".tmp_kl06_source\\conclusions.tex": "C76471C8DB44C38A37E75AC58CCD5FE9160BE79E7E903C3FD03F861E25C34530",
+      ".tmp_kl06_source\\psiql2.tex": "E4EFCCEC65D8C9C2BDFE2AF8203B3D4D63ECF992B40D302F56FBA78259547228"
+    }
+  },
+  "source_semantics": {
+    "passed": true,
+    "checks": {
+      "bold_U_macro": true,
+      "tile_annulus_is_bold": true,
+      "ordinary_model_has_physical_nesting": true,
+      "dynamical_arrow_has_tile_isomorphisms": true,
+      "inclusion_arrow_has_tile_immersions": true,
+      "psiql_replaces_embedding_by_immersion": true,
+      "source_uses_only_selected_end_properness": true,
+      "kahn_proves_only_inner_collar": true,
+      "boundary_can_enter_target_interior": true
+    }
+  },
+  "ledger": {
+    "passed": true,
+    "total": 330,
+    "counts": {
+      "imported": 23,
+      "proved": 235,
+      "open": 72
+    },
+    "statuses": {
+      "KL_TILE_INJECTIVITY_BASE_ANNULUS_REDUCTION": "proved",
+      "KAHN_ANNULUS_GLOBAL_INJECTIVITY_NO_GO": "proved",
+      "DEGREE_ONE_ANNULUS_IMMERSION_INJECTIVITY_NO_GO": "proved",
+      "TILE_INJECTIVITY_GLUE_EMBEDDING_CRITERION": "proved",
+      "KL_CANONICAL_LOCALIZATION_FORCED_COLLISION": "proved",
+      "DIRECT_DECORATION_TILE_CENTRAL_OVERLAP_REFLECTION": "open",
+      "DIRECT_DECORATION_DEGREE_ONE_PSEUDO_EMBEDDING": "open",
+      "DIRECT_DECORATION_OUTER_CAP_FOOTPRINT": "open",
+      "VIRTUAL_WAVE_MARKED_CORRESPONDENCE": "open",
+      "UNIVERSAL_PROTECTED_TOWER_CLOSURE": "open",
+      "MLC": "open"
+    }
+  },
+  "deck_algebra": {
+    "passed": true,
+    "degree_one_cases": [
+      {
+        "k": -20,
+        "source_shift": 20,
+        "target_shift_after": 0
+      },
+      {
+        "k": -19,
+        "source_shift": 19,
+        "target_shift_after": 0
+      },
+      {
+        "k": -18,
+        "source_shift": 18,
+        "target_shift_after": 0
+      },
+      {
+        "k": -17,
+        "source_shift": 17,
+        "target_shift_after": 0
+      },
+      {
+        "k": -16,
+        "source_shift": 16,
+        "target_shift_after": 0
+      },
+      {
+        "k": -15,
+        "source_shift": 15,
+        "target_shift_after": 0
+      },
+      {
+        "k": -14,
+        "source_shift": 14,
+        "target_shift_after": 0
+      },
+      {
+        "k": -13,
+        "source_shift": 13,
+        "target_shift_after": 0
+      },
+      {
+        "k": -12,
+        "source_shift": 12,
+        "target_shift_after": 0
+      },
+      {
+        "k": -11,
+        "source_shift": 11,
+        "target_shift_after": 0
+      },
+      {
+        "k": -10,
+        "source_shift": 10,
+        "target_shift_after": 0
+      },
+      {
+        "k": -9,
+        "source_shift": 9,
+        "target_shift_after": 0
+      },
+      {
+        "k": -8,
+        "source_shift": 8,
+        "target_shift_after": 0
+      },
+      {
+        "k": -7,
+        "source_shift": 7,
+        "target_shift_after": 0
+      },
+      {
+        "k": -6,
+        "source_shift": 6,
+        "target_shift_after": 0
+      },
+      {
+        "k": -5,
+        "source_shift": 5,
+        "target_shift_after": 0
+      },
+      {
+        "k": -4,
+        "source_shift": 4,
+        "target_shift_after": 0
+      },
+      {
+        "k": -3,
+        "source_shift": 3,
+        "target_shift_after": 0
+      },
+      {
+        "k": -2,
+        "source_shift": 2,
+        "target_shift_after": 0
+      },
+      {
+        "k": -1,
+        "source_shift": 1,
+        "target_shift_after": 0
+      },
+      {
+        "k": 0,
+        "source_shift": 0,
+        "target_shift_after": 0
+      },
+      {
+        "k": 1,
+        "source_shift": -1,
+        "target_shift_after": 0
+      },
+      {
+        "k": 2,
+        "source_shift": -2,
+        "target_shift_after": 0
+      },
+      {
+        "k": 3,
+        "source_shift": -3,
+        "target_shift_after": 0
+      },
+      {
+        "k": 4,
+        "source_shift": -4,
+        "target_shift_after": 0
+      },
+      {
+        "k": 5,
+        "source_shift": -5,
+        "target_shift_after": 0
+      },
+      {
+        "k": 6,
+        "source_shift": -6,
+        "target_shift_after": 0
+      },
+      {
+        "k": 7,
+        "source_shift": -7,
+        "target_shift_after": 0
+      },
+      {
+        "k": 8,
+        "source_shift": -8,
+        "target_shift_after": 0
+      },
+      {
+        "k": 9,
+        "source_shift": -9,
+        "target_shift_after": 0
+      },
+      {
+        "k": 10,
+        "source_shift": -10,
+        "target_shift_after": 0
+      },
+      {
+        "k": 11,
+        "source_shift": -11,
+        "target_shift_after": 0
+      },
+      {
+        "k": 12,
+        "source_shift": -12,
+        "target_shift_after": 0
+      },
+      {
+        "k": 13,
+        "source_shift": -13,
+        "target_shift_after": 0
+      },
+      {
+        "k": 14,
+        "source_shift": -14,
+        "target_shift_after": 0
+      },
+      {
+        "k": 15,
+        "source_shift": -15,
+        "target_shift_after": 0
+      },
+      {
+        "k": 16,
+        "source_shift": -16,
+        "target_shift_after": 0
+      },
+      {
+        "k": 17,
+        "source_shift": -17,
+        "target_shift_after": 0
+      },
+      {
+        "k": 18,
+        "source_shift": -18,
+        "target_shift_after": 0
+      },
+      {
+        "k": 19,
+        "source_shift": -19,
+        "target_shift_after": 0
+      },
+      {
+        "k": 20,
+        "source_shift": -20,
+        "target_shift_after": 0
+      }
+    ],
+    "higher_degree_caveat": [
+      {
+        "degree": 2,
+        "k": -3,
+        "residual": 3
+      },
+      {
+        "degree": 2,
+        "k": -1,
+        "residual": 1
+      },
+      {
+        "degree": 2,
+        "k": 1,
+        "residual": -1
+      },
+      {
+        "degree": 2,
+        "k": 4,
+        "residual": -4
+      },
+      {
+        "degree": 3,
+        "k": -3,
+        "residual": 6
+      },
+      {
+        "degree": 3,
+        "k": -1,
+        "residual": 2
+      },
+      {
+        "degree": 3,
+        "k": 1,
+        "residual": -2
+      },
+      {
+        "degree": 3,
+        "k": 4,
+        "residual": -8
+      },
+      {
+        "degree": 5,
+        "k": -3,
+        "residual": 12
+      },
+      {
+        "degree": 5,
+        "k": -1,
+        "residual": 4
+      },
+      {
+        "degree": 5,
+        "k": 1,
+        "residual": -4
+      },
+      {
+        "degree": 5,
+        "k": 4,
+        "residual": -16
+      }
+    ]
+  },
+  "documentation": {
+    "passed": true,
+    "required_phrases": [
+      "Tile/base equivalence",
+      "Properness criterion",
+      "Theorem 4.1",
+      "The degree-one condition is essential",
+      "Exact collision certificate",
+      "Full properness is sufficient",
+      "Why the physical-nesting proof does not apply",
+      "Optional saturation audit: full overlap reflection",
+      "DIRECT_DECORATION_TILE_CENTRAL_OVERLAP_REFLECTION",
+      "kl_relative_overlap_cartesianity.md",
+      "Full-overlap overconstraint",
+      "Dynamical/inclusion-arrow conflation",
+      "truncate to the proved embedded collar",
+      "VAAPC-I, UPTCR, and MLC remain open"
+    ]
+  }
+}

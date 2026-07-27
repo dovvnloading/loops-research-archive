@@ -1,0 +1,26 @@
+\begin{lemma}\label{lem:immersion}
+\(R'(z)\ne0\) for \(1<|z|<r'\); hence \(R\) is a holomorphic immersion on \(\mathbb A(1,r')\).
+\end{lemma}
+
+\begin{proof}
+Up to a nonzero constant multiple, the numerator of \(R'\) is
+\[\begin{aligned} P(z)={}&(-1268000+501000i)z^{8}+(-1247000+7116800i)z^{7}\\ &+(17024420+10563170i)z^{6}+(33992992-21977616i)z^{5}\\ &-52469243i\,z^{4}+(-33992992-21977616i)z^{3}\\ &+(-17024420+10563170i)z^{2}+(1247000+7116800i)z\\ &+(1268000+501000i). \end{aligned}\tag{A.9}\]
+All eight zeros of \(P\) are isolated by exact Rouch\'e--Taylor certificates (N.2) with common radius \(\rho=10^{-4}\) at the following Gaussian-rational centers (every displayed decimal terminates and is exact):
+\[\begin{array}{r|l|r}
+j & c_j & m_j\\\hline
+1 & -1.469179+0.035737i & 126\\
+2 & -1.187253+1.185352i & 362\\
+3 & -0.818448+1.003716i & 118\\
+4 & -0.680250+0.016547i & 451\\
+5 & -0.487955+0.598410i & 122\\
+6 & -0.421815+0.421140i & 192\\
+7 & 0.407227+0.223067i & 182\\
+8 & 1.888874+1.034668i & 144
+\end{array}\]
+\emph{Certificates R1--R8.} For every \(j\), exact substitution into (A.9) verifies the rational inequality
+\[ L\bigl(P'(c_j)\bigr)\rho>m_j\Bigl[U\bigl(P(c_j)\bigr)+\sum_{k=2}^{8}U\Bigl(\tfrac{P^{(k)}(c_j)}{k!}\Bigr)\rho^{k}\Bigr]. \tag{A.10} \]
+No floating-point estimate occurs in (A.10): all centers, coefficients, \(\rho\), and both sides are rational, and the validator records the exact cross-multiplied fractions. By (N.1), (A.10) gives, on \(|\zeta|=\rho\),
+\[ |P'(c_j)\zeta|>\Bigl|P(c_j)+\sum_{k=2}^{8}\tfrac{P^{(k)}(c_j)}{k!}\zeta^{k}\Bigr|, \]
+so Rouch\'e's theorem, comparing \(P(c_j+\zeta)\) with \(P'(c_j)\zeta\), shows that each disk \(\Delta_j=\{|z-c_j|<\rho\}\) contains exactly one zero of \(P\). Exact squared-distance comparisons show the eight disks are pairwise disjoint; since \(\deg P=8\), they exhaust all zeros of \(P\).
+Classification by exact squaring of rational quantities: for \(j=4,5,6,7\), \(|c_j|+\rho<1\); for \(j=1,2,3,8\), \(|c_j|-\rho>1.2901>r'\). Therefore \(P\) has no zero in \(1<|z|<r'\). The denominator of \(R'\) has no zero there by Lemma~\ref{lem:avoid}, so \(R'(z)\ne0\) on the source annulus.
+\end{proof}

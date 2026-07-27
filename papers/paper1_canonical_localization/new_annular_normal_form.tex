@@ -1,0 +1,100 @@
+% Annular resolution normal form: derives the typed comparison data
+% from a natural annular factorization (review item 9).
+
+\begin{theorem}[Annular resolution normal form]\label{thm:annular-normal-form}
+Let $I\colon A_s\to A_t$ be an oriented degree-one holomorphic
+immersion of finite-modulus annuli admitting a factorization
+\[
+ A_s\xrightarrow{\;q_0\;}P\lhook\joinrel\xrightarrow{\;e_0\;}A_t,
+\]
+with $q_0$ a connected surjective \emph{holomorphic} covering and
+$e_0$ a \emph{holomorphic} embedding (so that the deck actions below
+are by conformal automorphisms).  Let
+$\widetilde A_t\to A_t$ be the universal cover and form the based
+pullbacks
+\[
+ E=A_s\times_{A_t}\widetilde A_t,
+ \qquad
+ R=P\times_{A_t}\widetilde A_t .
+\]
+Then:
+\begin{enumerate}
+\item $E$ is the universal cover of $A_s$: the pullback cover
+  corresponds to $\ker I_*$, and $I_*\colon\pi_1(A_s)\to\pi_1(A_t)$ is
+  an isomorphism (degree one), so $\ker I_*$ is trivial; $E$ is
+  connected because $I_*$ is surjective.
+\item $R\to P$ is connected and corresponds to the subgroup
+  $N:=\ker(e_{0*})\le\pi_1(P)$; connectedness holds because
+  $e_{0*}$ is surjective, since $e_{0*}q_{0*}=I_*$ is.
+\item the induced map $q\colon E\to R$ is the universal cover of $R$,
+  with deck group canonically isomorphic to $N$.
+\item with $G=\pi_1(P)$ and $H=q_{0*}\pi_1(A_s)$, the identity
+  $e_{0*}q_{0*}=I_*=\mathrm{id}_{\mathbb Z}$ exhibits $q_{0*}$ as a
+  splitting of the extension
+  $1\to N\to G\xrightarrow{e_{0*}}\mathbb Z\to1$; hence
+  \[
+   G=N\rtimes H,\qquad H\cong\mathbb Z .
+  \]
+\item the generator of $H$ acts on $E\cong\mathbb D$ as a hyperbolic
+  deck transformation, because $A_s$ has finite modulus (the deck
+  generator of the universal cover of a finite-modulus annulus is
+  hyperbolic; only a punctured disk or plane would give a parabolic or
+  trivial action).
+\end{enumerate}
+In particular, every datum of the typed comparison
+(Definition~\ref{def:whole-tile-comparison}): the universal-cover
+typing of $q$, the splitting $G=N\rtimes H$, and the hyperbolicity of
+the wrapping generator, is \emph{derived} from the annular
+factorization; none of it is an independent hypothesis.
+\end{theorem}
+
+\begin{proof}
+(1) The pullback of the universal cover $\widetilde A_t\to A_t$ along
+$I$ is the cover of $A_s$ corresponding to
+$I_*^{-1}(1)=\ker I_*$.  By the oriented degree-one hypothesis,
+$I_*\colon\pi_1(A_s)\to\pi_1(A_t)$ is the identity after the chosen
+generator identifications (no properness of $I$ is assumed or needed);
+hence $\ker I_*=1$ and the corresponding cover is universal.  The
+pullback is connected because $\pi_1(A_t)=I_*\pi_1(A_s)$.
+
+(2) Identically, $R\to P$ corresponds to
+$e_{0*}^{-1}(1)=\ker e_{0*}=N$, and is connected because
+$e_{0*}$ is surjective: $e_{0*}q_{0*}=I_*$ is onto $\pi_1(A_t)$.
+
+(3) The universal property of the pullback induces
+$q\colon E\to R$ over $q_0$, a covering map.  $E$ is simply connected
+by (1), so $E\to R$ is the universal cover of $R$, and its deck group
+is $\pi_1(R)\cong N$.
+
+(4) Applying $\pi_1$ to the factorization gives
+$e_{0*}q_{0*}=I_*$, an isomorphism onto
+$\pi_1(A_t)\cong\mathbb Z$.  Thus $q_{0*}$ is injective,
+$H=q_{0*}\pi_1(A_s)\cong\mathbb Z$, and $e_{0*}|_H$ is an isomorphism
+onto $\mathbb Z$; so $H$ is a complement of $N=\ker e_{0*}$ in $G$,
+i.e.\ $G=N\rtimes H$.
+
+(5) Under (1), the $H$-action on $E$ is the deck action of
+$\pi_1(A_s)$ on the universal cover of $A_s$.  For a finite-modulus
+annulus this deck generator is a hyperbolic element of
+$\operatorname{Aut}(\mathbb D)$; the parabolic case occurs only for
+the punctured disk (infinite modulus) and the trivial case only for
+the plane, both excluded.
+\end{proof}
+
+\begin{remark}[The typing is a theorem, not an assumption]
+\label{rem:typing-derived}
+Theorem~\ref{thm:annular-normal-form} replaces the typed hypotheses of
+Definition~\ref{def:whole-tile-comparison} by a derivation: whenever
+the canonical resolution restricts, at an aligned stage, to a
+covering/embedding factorization of a degree-one immersion of
+finite-modulus annuli, the entire annular-tower structure --- universal
+$q$, split deck group $G=N\rtimes H$, hyperbolic wrapping generator ---
+is automatic.  The whole-tile obstruction
+(Theorem~\ref{thm:whole-tile-no-go}) therefore reads: \emph{any
+end-compatible whole-tile comparison of a nontrivial connected annular
+resolution is impossible}.  The only remaining hypothesis is
+nontriviality of $N$, which at an ordinary primitive canonical seed is
+supplied, at aligned stages, by
+Corollary~\ref{cor:infinite-defect} together with the base-change
+propagation of Corollary~\ref{cor:kahn-tower}.
+\end{remark}

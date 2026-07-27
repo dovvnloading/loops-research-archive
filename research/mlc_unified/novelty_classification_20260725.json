@@ -1,0 +1,1487 @@
+{
+  "schema_version": 1,
+  "generated_date": "2026-07-25",
+  "source_ledger": "research/mlc_unified/proof_obligations.json",
+  "scope": "All obligations whose ledger status is proved; this sidecar does not alter or reinterpret ledger status.",
+  "novelty_confidence_semantics": {
+    "low": "The result is expected to be standard, formal, or source-reconstructive.",
+    "low_or_application_specific": "The underlying mechanism is likely standard; the project-specific obstruction may be new.",
+    "unresolved_source_correction": "The finite counterexample is exact, but literature/version priority must be independently checked.",
+    "candidate_unverified": "The result is a plausible original specialized construction; no external priority claim is made.",
+    "unresolved": "The result is substantive, but its relationship to existing literature has not been settled."
+  },
+  "counts": {
+    "computational/finite diagnostic": 8,
+    "negative counterexample/no-go": 41,
+    "unclear": 1,
+    "standard/classical": 71,
+    "direct formal corollary/compiler": 85,
+    "potentially original analytic/dynamical theorem": 3
+  },
+  "entries": [
+    {
+      "id": "KKL_TYPED_VALUE_INCIDENCE",
+      "class": "computational/finite diagnostic",
+      "rationale_short": "Source-locked reconstruction or finite positive control (kkl typed value incidence); confined to its native finite/source scope.",
+      "novelty_confidence": "low",
+      "mlc_gate_effect": "source_or_finite_control_only_no_open_gate_closed"
+    },
+    {
+      "id": "KKL_PRINTED_CLONE_EQUATION_NO_GO",
+      "class": "negative counterexample/no-go",
+      "rationale_short": "An explicit primitive finite graph refutes the literal positive-exponent clone bridge in the locked KKL source; this may have correction value but proves no positive MLC gate.",
+      "novelty_confidence": "unresolved_source_correction",
+      "mlc_gate_effect": "guardrail_only_no_open_gate_closed"
+    },
+    {
+      "id": "KKL_CLONE_EIGEN",
+      "class": "unclear",
+      "rationale_short": "Substantive correction of the literal delayed-clone spectral equation; originality relative to renewal/Perron theory and the authoritative KKL version remains unresolved.",
+      "novelty_confidence": "unresolved",
+      "mlc_gate_effect": "supports_open_H2_virtual_clone_realization_no_gate_closed"
+    },
+    {
+      "id": "REGIME_PARTITION",
+      "class": "computational/finite diagnostic",
+      "rationale_short": "Source-locked reconstruction or finite positive control (regime partition); confined to its native finite/source scope.",
+      "novelty_confidence": "low",
+      "mlc_gate_effect": "source_or_finite_control_only_no_open_gate_closed"
+    },
+    {
+      "id": "UNMARKED_NO_GO",
+      "class": "negative counterexample/no-go",
+      "rationale_short": "Obstruction result (unmarked no go) ruling out a proposed shortcut rather than proving a positive MLC theorem.",
+      "novelty_confidence": "low_or_application_specific",
+      "mlc_gate_effect": "guardrail_only_no_open_gate_closed"
+    },
+    {
+      "id": "BACKWARD_RECORD",
+      "class": "standard/classical",
+      "rationale_short": "Classical or elementary mathematical ingredient (backward record); useful foundation, not a new global dynamics theorem.",
+      "novelty_confidence": "low",
+      "mlc_gate_effect": "foundational_only_no_open_gate_closed"
+    },
+    {
+      "id": "MARKING_QUOTIENT_NO_GO",
+      "class": "negative counterexample/no-go",
+      "rationale_short": "Obstruction result (marking quotient no go) ruling out a proposed shortcut rather than proving a positive MLC theorem.",
+      "novelty_confidence": "low_or_application_specific",
+      "mlc_gate_effect": "guardrail_only_no_open_gate_closed"
+    },
+    {
+      "id": "TRANSLATION_ORBIT_TYPES",
+      "class": "direct formal corollary/compiler",
+      "rationale_short": "Formal or conditional interface result (translation orbit types); it composes declared inputs but does not construct the missing analytic input.",
+      "novelty_confidence": "low",
+      "mlc_gate_effect": "conditional_only_no_open_gate_closed"
+    },
+    {
+      "id": "RELATIVE_TAIL_CONTROL",
+      "class": "direct formal corollary/compiler",
+      "rationale_short": "Formal or conditional interface result (relative tail control); it composes declared inputs but does not construct the missing analytic input.",
+      "novelty_confidence": "low",
+      "mlc_gate_effect": "conditional_only_no_open_gate_closed"
+    },
+    {
+      "id": "CONE_REDUCTION",
+      "class": "direct formal corollary/compiler",
+      "rationale_short": "Formal or conditional interface result (cone reduction); it composes declared inputs but does not construct the missing analytic input.",
+      "novelty_confidence": "low",
+      "mlc_gate_effect": "conditional_only_no_open_gate_closed"
+    },
+    {
+      "id": "HOMOGENEOUS_LYAPUNOV_REDUCTION",
+      "class": "direct formal corollary/compiler",
+      "rationale_short": "Formal or conditional interface result (homogeneous lyapunov reduction); it composes declared inputs but does not construct the missing analytic input.",
+      "novelty_confidence": "low",
+      "mlc_gate_effect": "conditional_only_no_open_gate_closed"
+    },
+    {
+      "id": "ERROR_STABLE_LYAPUNOV_REDUCTION",
+      "class": "direct formal corollary/compiler",
+      "rationale_short": "Formal or conditional interface result (error stable lyapunov reduction); it composes declared inputs but does not construct the missing analytic input.",
+      "novelty_confidence": "low",
+      "mlc_gate_effect": "conditional_only_no_open_gate_closed"
+    },
+    {
+      "id": "FORWARD_CONTRACTION_REDUCTION",
+      "class": "direct formal corollary/compiler",
+      "rationale_short": "Formal or conditional interface result (forward contraction reduction); it composes declared inputs but does not construct the missing analytic input.",
+      "novelty_confidence": "low",
+      "mlc_gate_effect": "conditional_only_no_open_gate_closed"
+    },
+    {
+      "id": "GROUPED_BLOCK_CONTRACTION_REDUCTION",
+      "class": "direct formal corollary/compiler",
+      "rationale_short": "Formal or conditional interface result (grouped block contraction reduction); it composes declared inputs but does not construct the missing analytic input.",
+      "novelty_confidence": "low",
+      "mlc_gate_effect": "conditional_only_no_open_gate_closed"
+    },
+    {
+      "id": "PRIME_END_RETURN",
+      "class": "standard/classical",
+      "rationale_short": "Classical or elementary mathematical ingredient (prime end return); useful foundation, not a new global dynamics theorem.",
+      "novelty_confidence": "low",
+      "mlc_gate_effect": "foundational_only_no_open_gate_closed"
+    },
+    {
+      "id": "CRITICAL_VALUE_PULLBACK",
+      "class": "standard/classical",
+      "rationale_short": "Classical or elementary mathematical ingredient (critical value pullback); useful foundation, not a new global dynamics theorem.",
+      "novelty_confidence": "low",
+      "mlc_gate_effect": "foundational_only_no_open_gate_closed"
+    },
+    {
+      "id": "FULLIFICATION",
+      "class": "standard/classical",
+      "rationale_short": "Classical or elementary mathematical ingredient (fullification); useful foundation, not a new global dynamics theorem.",
+      "novelty_confidence": "low",
+      "mlc_gate_effect": "foundational_only_no_open_gate_closed"
+    },
+    {
+      "id": "GLOBAL_DEGREE_NO_GO",
+      "class": "negative counterexample/no-go",
+      "rationale_short": "Obstruction result (global degree no go) ruling out a proposed shortcut rather than proving a positive MLC theorem.",
+      "novelty_confidence": "low_or_application_specific",
+      "mlc_gate_effect": "guardrail_only_no_open_gate_closed"
+    },
+    {
+      "id": "DEGREE_TWO_FACTORIZATION",
+      "class": "standard/classical",
+      "rationale_short": "Classical or elementary mathematical ingredient (degree two factorization); useful foundation, not a new global dynamics theorem.",
+      "novelty_confidence": "low",
+      "mlc_gate_effect": "foundational_only_no_open_gate_closed"
+    },
+    {
+      "id": "QUADRATIC_PULLBACK_DICHOTOMY",
+      "class": "standard/classical",
+      "rationale_short": "Classical or elementary mathematical ingredient (quadratic pullback dichotomy); useful foundation, not a new global dynamics theorem.",
+      "novelty_confidence": "low",
+      "mlc_gate_effect": "foundational_only_no_open_gate_closed"
+    },
+    {
+      "id": "STAGEWISE_FACTORIZATION",
+      "class": "standard/classical",
+      "rationale_short": "Classical or elementary mathematical ingredient (stagewise factorization); useful foundation, not a new global dynamics theorem.",
+      "novelty_confidence": "low",
+      "mlc_gate_effect": "foundational_only_no_open_gate_closed"
+    },
+    {
+      "id": "QL_RETURN_FACTORIZATION",
+      "class": "standard/classical",
+      "rationale_short": "Classical or elementary mathematical ingredient (ql return factorization); useful foundation, not a new global dynamics theorem.",
+      "novelty_confidence": "low",
+      "mlc_gate_effect": "foundational_only_no_open_gate_closed"
+    },
+    {
+      "id": "FINITE_HORIZON_TRUNCATION",
+      "class": "direct formal corollary/compiler",
+      "rationale_short": "Formal or conditional interface result (finite horizon truncation); it composes declared inputs but does not construct the missing analytic input.",
+      "novelty_confidence": "low",
+      "mlc_gate_effect": "conditional_only_no_open_gate_closed"
+    },
+    {
+      "id": "STAGE_FORWARD_CLOSURE",
+      "class": "direct formal corollary/compiler",
+      "rationale_short": "Formal or conditional interface result (stage forward closure); it composes declared inputs but does not construct the missing analytic input.",
+      "novelty_confidence": "low",
+      "mlc_gate_effect": "conditional_only_no_open_gate_closed"
+    },
+    {
+      "id": "RELATIVE_COVER_LIFT",
+      "class": "standard/classical",
+      "rationale_short": "Classical or elementary mathematical ingredient (relative cover lift); useful foundation, not a new global dynamics theorem.",
+      "novelty_confidence": "low",
+      "mlc_gate_effect": "foundational_only_no_open_gate_closed"
+    },
+    {
+      "id": "TOPOLOGY_WIDTH_NO_GO",
+      "class": "negative counterexample/no-go",
+      "rationale_short": "Obstruction result (topology width no go) ruling out a proposed shortcut rather than proving a positive MLC theorem.",
+      "novelty_confidence": "low_or_application_specific",
+      "mlc_gate_effect": "guardrail_only_no_open_gate_closed"
+    },
+    {
+      "id": "INFLATION_MODULUS_MONOTONICITY",
+      "class": "standard/classical",
+      "rationale_short": "Classical or elementary mathematical ingredient (inflation modulus monotonicity); useful foundation, not a new global dynamics theorem.",
+      "novelty_confidence": "low",
+      "mlc_gate_effect": "foundational_only_no_open_gate_closed"
+    },
+    {
+      "id": "FINITE_LOCAL_SATURATION",
+      "class": "standard/classical",
+      "rationale_short": "Classical or elementary mathematical ingredient (finite local saturation); useful foundation, not a new global dynamics theorem.",
+      "novelty_confidence": "low",
+      "mlc_gate_effect": "foundational_only_no_open_gate_closed"
+    },
+    {
+      "id": "CONNECTED_EXTERIOR_CALIBRATION",
+      "class": "standard/classical",
+      "rationale_short": "Classical or elementary mathematical ingredient (connected exterior calibration); useful foundation, not a new global dynamics theorem.",
+      "novelty_confidence": "low",
+      "mlc_gate_effect": "foundational_only_no_open_gate_closed"
+    },
+    {
+      "id": "WAD_CORRIDOR_SANDWICH",
+      "class": "direct formal corollary/compiler",
+      "rationale_short": "Formal or conditional interface result (wad corridor sandwich); it composes declared inputs but does not construct the missing analytic input.",
+      "novelty_confidence": "low",
+      "mlc_gate_effect": "conditional_only_no_open_gate_closed"
+    },
+    {
+      "id": "COMPLEXITY_COORDINATE_NO_GO",
+      "class": "negative counterexample/no-go",
+      "rationale_short": "Obstruction result (complexity coordinate no go) ruling out a proposed shortcut rather than proving a positive MLC theorem.",
+      "novelty_confidence": "low_or_application_specific",
+      "mlc_gate_effect": "guardrail_only_no_open_gate_closed"
+    },
+    {
+      "id": "HARMONIC_LINEAR_NO_GO",
+      "class": "negative counterexample/no-go",
+      "rationale_short": "Obstruction result (harmonic linear no go) ruling out a proposed shortcut rather than proving a positive MLC theorem.",
+      "novelty_confidence": "low_or_application_specific",
+      "mlc_gate_effect": "guardrail_only_no_open_gate_closed"
+    },
+    {
+      "id": "BOUNDED_FANOUT_BOTTLENECK",
+      "class": "standard/classical",
+      "rationale_short": "Classical or elementary mathematical ingredient (bounded fanout bottleneck); useful foundation, not a new global dynamics theorem.",
+      "novelty_confidence": "low",
+      "mlc_gate_effect": "foundational_only_no_open_gate_closed"
+    },
+    {
+      "id": "ORBIT_PACKING",
+      "class": "direct formal corollary/compiler",
+      "rationale_short": "Formal or conditional interface result (orbit packing); it composes declared inputs but does not construct the missing analytic input.",
+      "novelty_confidence": "low",
+      "mlc_gate_effect": "conditional_only_no_open_gate_closed"
+    },
+    {
+      "id": "TRANSLATION_DENSITY_IDENTITY",
+      "class": "computational/finite diagnostic",
+      "rationale_short": "Source-locked reconstruction or finite positive control (translation density identity); confined to its native finite/source scope.",
+      "novelty_confidence": "low",
+      "mlc_gate_effect": "source_or_finite_control_only_no_open_gate_closed"
+    },
+    {
+      "id": "SQRT_ERROR_ABSORPTION",
+      "class": "standard/classical",
+      "rationale_short": "Classical or elementary mathematical ingredient (sqrt error absorption); useful foundation, not a new global dynamics theorem.",
+      "novelty_confidence": "low",
+      "mlc_gate_effect": "foundational_only_no_open_gate_closed"
+    },
+    {
+      "id": "CONDITIONAL_NEUTRAL_CORRIDOR_ABSORPTION",
+      "class": "direct formal corollary/compiler",
+      "rationale_short": "Formal or conditional interface result (conditional neutral corridor absorption); it composes declared inputs but does not construct the missing analytic input.",
+      "novelty_confidence": "low",
+      "mlc_gate_effect": "conditional_only_no_open_gate_closed"
+    },
+    {
+      "id": "COMMON_WIDTH_BRIDGE",
+      "class": "direct formal corollary/compiler",
+      "rationale_short": "Formal or conditional interface result (common width bridge); it composes declared inputs but does not construct the missing analytic input.",
+      "novelty_confidence": "low",
+      "mlc_gate_effect": "conditional_only_no_open_gate_closed"
+    },
+    {
+      "id": "REPLICATION_AMORTIZATION",
+      "class": "direct formal corollary/compiler",
+      "rationale_short": "Formal or conditional interface result (replication amortization); it composes declared inputs but does not construct the missing analytic input.",
+      "novelty_confidence": "low",
+      "mlc_gate_effect": "conditional_only_no_open_gate_closed"
+    },
+    {
+      "id": "CONGESTION_AMORTIZATION",
+      "class": "direct formal corollary/compiler",
+      "rationale_short": "Formal or conditional interface result (congestion amortization); it composes declared inputs but does not construct the missing analytic input.",
+      "novelty_confidence": "low",
+      "mlc_gate_effect": "conditional_only_no_open_gate_closed"
+    },
+    {
+      "id": "TREE_NERVE_FULLNESS",
+      "class": "standard/classical",
+      "rationale_short": "Classical or elementary mathematical ingredient (tree nerve fullness); useful foundation, not a new global dynamics theorem.",
+      "novelty_confidence": "low",
+      "mlc_gate_effect": "foundational_only_no_open_gate_closed"
+    },
+    {
+      "id": "TREE_HULL_COMPLEXITY",
+      "class": "direct formal corollary/compiler",
+      "rationale_short": "Formal or conditional interface result (tree hull complexity); it composes declared inputs but does not construct the missing analytic input.",
+      "novelty_confidence": "low",
+      "mlc_gate_effect": "conditional_only_no_open_gate_closed"
+    },
+    {
+      "id": "VIRTUAL_LIMB_TREE_BOUND",
+      "class": "direct formal corollary/compiler",
+      "rationale_short": "Formal or conditional interface result (virtual limb tree bound); it composes declared inputs but does not construct the missing analytic input.",
+      "novelty_confidence": "low",
+      "mlc_gate_effect": "conditional_only_no_open_gate_closed"
+    },
+    {
+      "id": "VIRTUAL_BRANCH_QUANTIFIER_ASSEMBLY",
+      "class": "direct formal corollary/compiler",
+      "rationale_short": "Formal or conditional interface result (virtual branch quantifier assembly); it composes declared inputs but does not construct the missing analytic input.",
+      "novelty_confidence": "low",
+      "mlc_gate_effect": "conditional_only_no_open_gate_closed"
+    },
+    {
+      "id": "ABSTRACT_SECTION4_STATIC_TRICHOTOMY",
+      "class": "direct formal corollary/compiler",
+      "rationale_short": "Formal or conditional interface result (abstract section4 static trichotomy); it composes declared inputs but does not construct the missing analytic input.",
+      "novelty_confidence": "low",
+      "mlc_gate_effect": "conditional_only_no_open_gate_closed"
+    },
+    {
+      "id": "LOCALIZED_CRITICAL_ENCOUNTER_DEGREE",
+      "class": "standard/classical",
+      "rationale_short": "Classical or elementary mathematical ingredient (localized critical encounter degree); useful foundation, not a new global dynamics theorem.",
+      "novelty_confidence": "low",
+      "mlc_gate_effect": "foundational_only_no_open_gate_closed"
+    },
+    {
+      "id": "LINEAR_MARKING_DENSITY_ABSORPTION",
+      "class": "direct formal corollary/compiler",
+      "rationale_short": "Formal or conditional interface result (linear marking density absorption); it composes declared inputs but does not construct the missing analytic input.",
+      "novelty_confidence": "low",
+      "mlc_gate_effect": "conditional_only_no_open_gate_closed"
+    },
+    {
+      "id": "TAME_VALUE_OBSTRUCTION",
+      "class": "negative counterexample/no-go",
+      "rationale_short": "Obstruction result (tame value obstruction) ruling out a proposed shortcut rather than proving a positive MLC theorem.",
+      "novelty_confidence": "low_or_application_specific",
+      "mlc_gate_effect": "guardrail_only_no_open_gate_closed"
+    },
+    {
+      "id": "CONDITIONAL_VIRTUAL_TAME_TRANSFER",
+      "class": "direct formal corollary/compiler",
+      "rationale_short": "Formal or conditional interface result (conditional virtual tame transfer); it composes declared inputs but does not construct the missing analytic input.",
+      "novelty_confidence": "low",
+      "mlc_gate_effect": "conditional_only_no_open_gate_closed"
+    },
+    {
+      "id": "ROTATION_RELABEL_NO_GO",
+      "class": "negative counterexample/no-go",
+      "rationale_short": "Obstruction result (rotation relabel no go) ruling out a proposed shortcut rather than proving a positive MLC theorem.",
+      "novelty_confidence": "low_or_application_specific",
+      "mlc_gate_effect": "guardrail_only_no_open_gate_closed"
+    },
+    {
+      "id": "FINITE_HORIZON_WAVE_BOUND",
+      "class": "computational/finite diagnostic",
+      "rationale_short": "Source-locked reconstruction or finite positive control (finite horizon wave bound); confined to its native finite/source scope.",
+      "novelty_confidence": "low",
+      "mlc_gate_effect": "source_or_finite_control_only_no_open_gate_closed"
+    },
+    {
+      "id": "DEGREE_TWO_FAST_FORWARD_NO_GO",
+      "class": "negative counterexample/no-go",
+      "rationale_short": "Obstruction result (degree two fast forward no go) ruling out a proposed shortcut rather than proving a positive MLC theorem.",
+      "novelty_confidence": "low_or_application_specific",
+      "mlc_gate_effect": "guardrail_only_no_open_gate_closed"
+    },
+    {
+      "id": "FINITE_HORIZON_KKL_WAVE_REDUCTION",
+      "class": "direct formal corollary/compiler",
+      "rationale_short": "Formal or conditional interface result (finite horizon kkl wave reduction); it composes declared inputs but does not construct the missing analytic input.",
+      "novelty_confidence": "low",
+      "mlc_gate_effect": "conditional_only_no_open_gate_closed"
+    },
+    {
+      "id": "FINITE_INVERSE_TREE_FAN_SATURATION",
+      "class": "standard/classical",
+      "rationale_short": "Classical or elementary mathematical ingredient (finite inverse tree fan saturation); useful foundation, not a new global dynamics theorem.",
+      "novelty_confidence": "low",
+      "mlc_gate_effect": "foundational_only_no_open_gate_closed"
+    },
+    {
+      "id": "FORWARD_HULL_COMPONENT_NO_GO",
+      "class": "negative counterexample/no-go",
+      "rationale_short": "Obstruction result (forward hull component no go) ruling out a proposed shortcut rather than proving a positive MLC theorem.",
+      "novelty_confidence": "low_or_application_specific",
+      "mlc_gate_effect": "guardrail_only_no_open_gate_closed"
+    },
+    {
+      "id": "SATURATED_SEED_FOREST",
+      "class": "direct formal corollary/compiler",
+      "rationale_short": "Formal or conditional interface result (saturated seed forest); it composes declared inputs but does not construct the missing analytic input.",
+      "novelty_confidence": "low",
+      "mlc_gate_effect": "conditional_only_no_open_gate_closed"
+    },
+    {
+      "id": "ROOT_PULLBACK_FOREST_EQUIVALENCE",
+      "class": "direct formal corollary/compiler",
+      "rationale_short": "Formal or conditional interface result (root pullback forest equivalence); it composes declared inputs but does not construct the missing analytic input.",
+      "novelty_confidence": "low",
+      "mlc_gate_effect": "conditional_only_no_open_gate_closed"
+    },
+    {
+      "id": "CRITICAL_VALUE_CORRIDOR_CRITERION",
+      "class": "standard/classical",
+      "rationale_short": "Classical or elementary mathematical ingredient (critical value corridor criterion); useful foundation, not a new global dynamics theorem.",
+      "novelty_confidence": "low",
+      "mlc_gate_effect": "foundational_only_no_open_gate_closed"
+    },
+    {
+      "id": "FINITE_OBSTACLE_FORWARD_CLOSURE",
+      "class": "direct formal corollary/compiler",
+      "rationale_short": "Formal or conditional interface result (finite obstacle forward closure); it composes declared inputs but does not construct the missing analytic input.",
+      "novelty_confidence": "low",
+      "mlc_gate_effect": "conditional_only_no_open_gate_closed"
+    },
+    {
+      "id": "FINITE_FAN_RIBBON_PULLBACK",
+      "class": "standard/classical",
+      "rationale_short": "Classical or elementary mathematical ingredient (finite fan ribbon pullback); useful foundation, not a new global dynamics theorem.",
+      "novelty_confidence": "low",
+      "mlc_gate_effect": "foundational_only_no_open_gate_closed"
+    },
+    {
+      "id": "ENDPOINT_BIRTH_ACCOUNTING",
+      "class": "direct formal corollary/compiler",
+      "rationale_short": "Formal or conditional interface result (endpoint birth accounting); it composes declared inputs but does not construct the missing analytic input.",
+      "novelty_confidence": "low",
+      "mlc_gate_effect": "conditional_only_no_open_gate_closed"
+    },
+    {
+      "id": "LOCAL_CARRIER_EQUALITY_NO_BIRTH",
+      "class": "direct formal corollary/compiler",
+      "rationale_short": "Formal or conditional interface result (local carrier equality no birth); it composes declared inputs but does not construct the missing analytic input.",
+      "novelty_confidence": "low",
+      "mlc_gate_effect": "conditional_only_no_open_gate_closed"
+    },
+    {
+      "id": "ATTACHMENT_SUPPORT_REDUCTION",
+      "class": "direct formal corollary/compiler",
+      "rationale_short": "Formal or conditional interface result (attachment support reduction); it composes declared inputs but does not construct the missing analytic input.",
+      "novelty_confidence": "low",
+      "mlc_gate_effect": "conditional_only_no_open_gate_closed"
+    },
+    {
+      "id": "CORRIDOR_ATTACHMENT_TRANSPORT",
+      "class": "direct formal corollary/compiler",
+      "rationale_short": "Formal or conditional interface result (corridor attachment transport); it composes declared inputs but does not construct the missing analytic input.",
+      "novelty_confidence": "low",
+      "mlc_gate_effect": "conditional_only_no_open_gate_closed"
+    },
+    {
+      "id": "UNIVALENT_CARRIER_PAIR_TRANSPORT",
+      "class": "direct formal corollary/compiler",
+      "rationale_short": "Formal or conditional interface result (univalent carrier pair transport); it composes declared inputs but does not construct the missing analytic input.",
+      "novelty_confidence": "low",
+      "mlc_gate_effect": "conditional_only_no_open_gate_closed"
+    },
+    {
+      "id": "ATTACHMENT_FREE_ANCHOR_UNDERDETERMINATION",
+      "class": "negative counterexample/no-go",
+      "rationale_short": "Obstruction result (attachment free anchor underdetermination) ruling out a proposed shortcut rather than proving a positive MLC theorem.",
+      "novelty_confidence": "low_or_application_specific",
+      "mlc_gate_effect": "guardrail_only_no_open_gate_closed"
+    },
+    {
+      "id": "FINITE_ATTACHMENT_ORBIT_CLOSURE",
+      "class": "direct formal corollary/compiler",
+      "rationale_short": "Formal or conditional interface result (finite attachment orbit closure); it composes declared inputs but does not construct the missing analytic input.",
+      "novelty_confidence": "low",
+      "mlc_gate_effect": "conditional_only_no_open_gate_closed"
+    },
+    {
+      "id": "INTERFACE_PROOF_USE_INVENTORY",
+      "class": "direct formal corollary/compiler",
+      "rationale_short": "Formal or conditional interface result (interface proof use inventory); it composes declared inputs but does not construct the missing analytic input.",
+      "novelty_confidence": "low",
+      "mlc_gate_effect": "conditional_only_no_open_gate_closed"
+    },
+    {
+      "id": "HORIZON_FIRST_INVENTORY_AUDIT",
+      "class": "direct formal corollary/compiler",
+      "rationale_short": "Formal or conditional interface result (horizon first inventory audit); it composes declared inputs but does not construct the missing analytic input.",
+      "novelty_confidence": "low",
+      "mlc_gate_effect": "conditional_only_no_open_gate_closed"
+    },
+    {
+      "id": "RESOLVED_FINITE_WAVE_HORIZON_COMPILER",
+      "class": "direct formal corollary/compiler",
+      "rationale_short": "Formal or conditional interface result (resolved finite wave horizon compiler); it composes declared inputs but does not construct the missing analytic input.",
+      "novelty_confidence": "low",
+      "mlc_gate_effect": "conditional_only_no_open_gate_closed"
+    },
+    {
+      "id": "KKL_NATIVE_WAVE_HORIZON_CONTROL",
+      "class": "computational/finite diagnostic",
+      "rationale_short": "Source-locked reconstruction or finite positive control (kkl native wave horizon control); confined to its native finite/source scope.",
+      "novelty_confidence": "low",
+      "mlc_gate_effect": "source_or_finite_control_only_no_open_gate_closed"
+    },
+    {
+      "id": "RETURN_PATH_LANGUAGE",
+      "class": "direct formal corollary/compiler",
+      "rationale_short": "Formal or conditional interface result (return path language); it composes declared inputs but does not construct the missing analytic input.",
+      "novelty_confidence": "low",
+      "mlc_gate_effect": "conditional_only_no_open_gate_closed"
+    },
+    {
+      "id": "FORWARD_COHERENT_COMPLEMENT_PAIR",
+      "class": "standard/classical",
+      "rationale_short": "Classical or elementary mathematical ingredient (forward coherent complement pair); useful foundation, not a new global dynamics theorem.",
+      "novelty_confidence": "low",
+      "mlc_gate_effect": "foundational_only_no_open_gate_closed"
+    },
+    {
+      "id": "PRIME_END_MARKING_ACTION_CRITERION",
+      "class": "direct formal corollary/compiler",
+      "rationale_short": "Formal or conditional interface result (prime end marking action criterion); it composes declared inputs but does not construct the missing analytic input.",
+      "novelty_confidence": "low",
+      "mlc_gate_effect": "conditional_only_no_open_gate_closed"
+    },
+    {
+      "id": "MARKED_PAIR_ENLARGEMENT_NATURALITY",
+      "class": "direct formal corollary/compiler",
+      "rationale_short": "Formal or conditional interface result (marked pair enlargement naturality); it composes declared inputs but does not construct the missing analytic input.",
+      "novelty_confidence": "low",
+      "mlc_gate_effect": "conditional_only_no_open_gate_closed"
+    },
+    {
+      "id": "RETURN_BASE_UNDERDETERMINATION",
+      "class": "negative counterexample/no-go",
+      "rationale_short": "Obstruction result (return base underdetermination) ruling out a proposed shortcut rather than proving a positive MLC theorem.",
+      "novelty_confidence": "low_or_application_specific",
+      "mlc_gate_effect": "guardrail_only_no_open_gate_closed"
+    },
+    {
+      "id": "NATIVE_PRINCIPAL_NEST_RETURN_ATLAS",
+      "class": "computational/finite diagnostic",
+      "rationale_short": "Source-locked reconstruction or finite positive control (native principal nest return atlas); confined to its native finite/source scope.",
+      "novelty_confidence": "low",
+      "mlc_gate_effect": "source_or_finite_control_only_no_open_gate_closed"
+    },
+    {
+      "id": "ISOTOPY_CLASS_RETURN_UNDERDETERMINATION",
+      "class": "negative counterexample/no-go",
+      "rationale_short": "Obstruction result (isotopy class return underdetermination) ruling out a proposed shortcut rather than proving a positive MLC theorem.",
+      "novelty_confidence": "low_or_application_specific",
+      "mlc_gate_effect": "guardrail_only_no_open_gate_closed"
+    },
+    {
+      "id": "FIRST_DECORATION_SCALE_ESCAPE_ATLAS",
+      "class": "computational/finite diagnostic",
+      "rationale_short": "Source-locked reconstruction or finite positive control (first decoration scale escape atlas); confined to its native finite/source scope.",
+      "novelty_confidence": "low",
+      "mlc_gate_effect": "source_or_finite_control_only_no_open_gate_closed"
+    },
+    {
+      "id": "CRITICAL_BASE_CYCLE_EXCLUSION",
+      "class": "negative counterexample/no-go",
+      "rationale_short": "Obstruction result (critical base cycle exclusion) ruling out a proposed shortcut rather than proving a positive MLC theorem.",
+      "novelty_confidence": "low_or_application_specific",
+      "mlc_gate_effect": "guardrail_only_no_open_gate_closed"
+    },
+    {
+      "id": "DECORATION_FAN_GROWTH",
+      "class": "negative counterexample/no-go",
+      "rationale_short": "Obstruction result (decoration fan growth) ruling out a proposed shortcut rather than proving a positive MLC theorem.",
+      "novelty_confidence": "low_or_application_specific",
+      "mlc_gate_effect": "guardrail_only_no_open_gate_closed"
+    },
+    {
+      "id": "NATIVE_HUBBARD_SUBTREE_FUNCTORIALITY",
+      "class": "standard/classical",
+      "rationale_short": "Classical or elementary mathematical ingredient (native hubbard subtree functoriality); useful foundation, not a new global dynamics theorem.",
+      "novelty_confidence": "low",
+      "mlc_gate_effect": "foundational_only_no_open_gate_closed"
+    },
+    {
+      "id": "TERMINAL_CYCLE_HUBBARD_ANCHOR",
+      "class": "computational/finite diagnostic",
+      "rationale_short": "Source-locked reconstruction or finite positive control (terminal cycle hubbard anchor); confined to its native finite/source scope.",
+      "novelty_confidence": "low",
+      "mlc_gate_effect": "source_or_finite_control_only_no_open_gate_closed"
+    },
+    {
+      "id": "FINITE_EXACT_CANTOR_ENCODING_OBSTRUCTION",
+      "class": "negative counterexample/no-go",
+      "rationale_short": "Obstruction result (finite exact cantor encoding obstruction) ruling out a proposed shortcut rather than proving a positive MLC theorem.",
+      "novelty_confidence": "low_or_application_specific",
+      "mlc_gate_effect": "guardrail_only_no_open_gate_closed"
+    },
+    {
+      "id": "FINITE_QUOTIENT_OBSERVABILITY_CRITERION",
+      "class": "direct formal corollary/compiler",
+      "rationale_short": "Formal or conditional interface result (finite quotient observability criterion); it composes declared inputs but does not construct the missing analytic input.",
+      "novelty_confidence": "low",
+      "mlc_gate_effect": "conditional_only_no_open_gate_closed"
+    },
+    {
+      "id": "DIRECT_DECORATION_PULLBACK_COMPACTIFICATION",
+      "class": "potentially original analytic/dynamical theorem",
+      "rationale_short": "Actual direct-decoration construction from source-locked univalent branches; it gives a specialized rooted-end component package, although its core resembles standard graph-directed compactification.",
+      "novelty_confidence": "candidate_unverified",
+      "mlc_gate_effect": "first_direct_decoration_scale_only_no_global_gate_closed"
+    },
+    {
+      "id": "NESTED_FULL_PACKET_NONSEPARATION",
+      "class": "standard/classical",
+      "rationale_short": "Classical or elementary mathematical ingredient (nested full packet nonseparation); useful foundation, not a new global dynamics theorem.",
+      "novelty_confidence": "low",
+      "mlc_gate_effect": "foundational_only_no_open_gate_closed"
+    },
+    {
+      "id": "DIRECT_DECORATION_FULL_FIBERS",
+      "class": "standard/classical",
+      "rationale_short": "Classical or elementary mathematical ingredient (direct decoration full fibers); useful foundation, not a new global dynamics theorem.",
+      "novelty_confidence": "low",
+      "mlc_gate_effect": "foundational_only_no_open_gate_closed"
+    },
+    {
+      "id": "DIRECT_DECORATION_GLOBAL_NONSEPARATION",
+      "class": "direct formal corollary/compiler",
+      "rationale_short": "Formal or conditional interface result (direct decoration global nonseparation); it composes declared inputs but does not construct the missing analytic input.",
+      "novelty_confidence": "low",
+      "mlc_gate_effect": "conditional_only_no_open_gate_closed"
+    },
+    {
+      "id": "DIRECT_DECORATION_GAP_CELL_ATLAS",
+      "class": "potentially original analytic/dynamical theorem",
+      "rationale_short": "Actual equivariant Jordan gap-cell construction isolating every finite direct-decoration fiber; specialized and dependent on the first-scale rooted-end package.",
+      "novelty_confidence": "candidate_unverified",
+      "mlc_gate_effect": "first_direct_decoration_scale_only_no_global_gate_closed"
+    },
+    {
+      "id": "DIRECT_DECORATION_FINITE_PACKET_REPLACEMENT",
+      "class": "direct formal corollary/compiler",
+      "rationale_short": "Formal or conditional interface result (direct decoration finite packet replacement); it composes declared inputs but does not construct the missing analytic input.",
+      "novelty_confidence": "low",
+      "mlc_gate_effect": "conditional_only_no_open_gate_closed"
+    },
+    {
+      "id": "PROPER_PROTECTED_IMPRESSION_EXPOSURE",
+      "class": "standard/classical",
+      "rationale_short": "Classical or elementary mathematical ingredient (proper protected impression exposure); useful foundation, not a new global dynamics theorem.",
+      "novelty_confidence": "low",
+      "mlc_gate_effect": "foundational_only_no_open_gate_closed"
+    },
+    {
+      "id": "DIRECT_DECORATION_FINITE_PROTECTED_CARRIER",
+      "class": "potentially original analytic/dynamical theorem",
+      "rationale_short": "Actual finite protected carrier at the direct-decoration scale, combining transported prime-end chains, gap cells, and a regulated connector.",
+      "novelty_confidence": "candidate_unverified",
+      "mlc_gate_effect": "finite_direct_decoration_carrier_only_no_global_gate_closed"
+    },
+    {
+      "id": "PULLBACK_GAP_ENLARGEMENT_NATURALITY",
+      "class": "direct formal corollary/compiler",
+      "rationale_short": "Formal or conditional interface result (pullback gap enlargement naturality); it composes declared inputs but does not construct the missing analytic input.",
+      "novelty_confidence": "low",
+      "mlc_gate_effect": "conditional_only_no_open_gate_closed"
+    },
+    {
+      "id": "CRITICAL_CUT_POINTWISE_CONSERVATION",
+      "class": "standard/classical",
+      "rationale_short": "Classical or elementary mathematical ingredient (critical cut pointwise conservation); useful foundation, not a new global dynamics theorem.",
+      "novelty_confidence": "low",
+      "mlc_gate_effect": "foundational_only_no_open_gate_closed"
+    },
+    {
+      "id": "PROPER_COMMUTING_SQUARE_DEGREE_LAW",
+      "class": "standard/classical",
+      "rationale_short": "Classical or elementary mathematical ingredient (proper commuting square degree law); useful foundation, not a new global dynamics theorem.",
+      "novelty_confidence": "low",
+      "mlc_gate_effect": "foundational_only_no_open_gate_closed"
+    },
+    {
+      "id": "LOCAL_OFF_CRITICAL_CYLINDER_SQUARE",
+      "class": "standard/classical",
+      "rationale_short": "Classical or elementary mathematical ingredient (local off critical cylinder square); useful foundation, not a new global dynamics theorem.",
+      "novelty_confidence": "low",
+      "mlc_gate_effect": "foundational_only_no_open_gate_closed"
+    },
+    {
+      "id": "RETIMED_FINITE_CYLINDER_PAIR",
+      "class": "direct formal corollary/compiler",
+      "rationale_short": "Formal or conditional interface result (retimed finite cylinder pair); it composes declared inputs but does not construct the missing analytic input.",
+      "novelty_confidence": "low",
+      "mlc_gate_effect": "conditional_only_no_open_gate_closed"
+    },
+    {
+      "id": "CRITICALITY_LOCATION_SWAP_NO_GO",
+      "class": "negative counterexample/no-go",
+      "rationale_short": "Obstruction result (criticality location swap no go) ruling out a proposed shortcut rather than proving a positive MLC theorem.",
+      "novelty_confidence": "low_or_application_specific",
+      "mlc_gate_effect": "guardrail_only_no_open_gate_closed"
+    },
+    {
+      "id": "CRITICAL_TIME_SHEAR_NO_GO",
+      "class": "negative counterexample/no-go",
+      "rationale_short": "Obstruction result (critical time shear no go) ruling out a proposed shortcut rather than proving a positive MLC theorem.",
+      "novelty_confidence": "low_or_application_specific",
+      "mlc_gate_effect": "guardrail_only_no_open_gate_closed"
+    },
+    {
+      "id": "STAGEWISE_CRITICAL_WORD_LADDER",
+      "class": "standard/classical",
+      "rationale_short": "Classical or elementary mathematical ingredient (stagewise critical word ladder); useful foundation, not a new global dynamics theorem.",
+      "novelty_confidence": "low",
+      "mlc_gate_effect": "foundational_only_no_open_gate_closed"
+    },
+    {
+      "id": "QUADRATIC_JORDAN_BASE_CHANGE_DICHOTOMY",
+      "class": "standard/classical",
+      "rationale_short": "Classical or elementary mathematical ingredient (quadratic jordan base change dichotomy); useful foundation, not a new global dynamics theorem.",
+      "novelty_confidence": "low",
+      "mlc_gate_effect": "foundational_only_no_open_gate_closed"
+    },
+    {
+      "id": "PLANAR_CRITICAL_SPINE_TELESCOPE_COMPILER",
+      "class": "direct formal corollary/compiler",
+      "rationale_short": "Formal or conditional interface result (planar critical spine telescope compiler); it composes declared inputs but does not construct the missing analytic input.",
+      "novelty_confidence": "low",
+      "mlc_gate_effect": "conditional_only_no_open_gate_closed"
+    },
+    {
+      "id": "FINITE_PLANAR_TELESCOPE_IDENTITY",
+      "class": "direct formal corollary/compiler",
+      "rationale_short": "Formal or conditional interface result (finite planar telescope identity); it composes declared inputs but does not construct the missing analytic input.",
+      "novelty_confidence": "low",
+      "mlc_gate_effect": "conditional_only_no_open_gate_closed"
+    },
+    {
+      "id": "PLANAR_END_COLLAPSE_NO_GO",
+      "class": "negative counterexample/no-go",
+      "rationale_short": "Obstruction result (planar end collapse no go) ruling out a proposed shortcut rather than proving a positive MLC theorem.",
+      "novelty_confidence": "low_or_application_specific",
+      "mlc_gate_effect": "guardrail_only_no_open_gate_closed"
+    },
+    {
+      "id": "NORMALIZED_RETIMED_GERM_CONSTANCY",
+      "class": "direct formal corollary/compiler",
+      "rationale_short": "Formal or conditional interface result (normalized retimed germ constancy); it composes declared inputs but does not construct the missing analytic input.",
+      "novelty_confidence": "low",
+      "mlc_gate_effect": "conditional_only_no_open_gate_closed"
+    },
+    {
+      "id": "NORMALIZED_END_DIRECT_LIMIT",
+      "class": "direct formal corollary/compiler",
+      "rationale_short": "Formal or conditional interface result (normalized end direct limit); it composes declared inputs but does not construct the missing analytic input.",
+      "novelty_confidence": "low",
+      "mlc_gate_effect": "conditional_only_no_open_gate_closed"
+    },
+    {
+      "id": "DEPTH_GRADED_CYLINDER_MATERIALIZATION",
+      "class": "direct formal corollary/compiler",
+      "rationale_short": "Formal or conditional interface result (depth graded cylinder materialization); it composes declared inputs but does not construct the missing analytic input.",
+      "novelty_confidence": "low",
+      "mlc_gate_effect": "conditional_only_no_open_gate_closed"
+    },
+    {
+      "id": "END_CHART_OBSERVABLE_INVARIANCE",
+      "class": "standard/classical",
+      "rationale_short": "Classical or elementary mathematical ingredient (end chart observable invariance); useful foundation, not a new global dynamics theorem.",
+      "novelty_confidence": "low",
+      "mlc_gate_effect": "foundational_only_no_open_gate_closed"
+    },
+    {
+      "id": "SERIAL_EXHAUSTION_RESISTANCE_BOUND",
+      "class": "standard/classical",
+      "rationale_short": "Classical or elementary mathematical ingredient (serial exhaustion resistance bound); useful foundation, not a new global dynamics theorem.",
+      "novelty_confidence": "low",
+      "mlc_gate_effect": "foundational_only_no_open_gate_closed"
+    },
+    {
+      "id": "SCALAR_NECK_TRACE_MODE_NO_GO",
+      "class": "negative counterexample/no-go",
+      "rationale_short": "Obstruction result (scalar neck trace mode no go) ruling out a proposed shortcut rather than proving a positive MLC theorem.",
+      "novelty_confidence": "low_or_application_specific",
+      "mlc_gate_effect": "guardrail_only_no_open_gate_closed"
+    },
+    {
+      "id": "FULL_TRACE_RECTANGLE_DTN",
+      "class": "standard/classical",
+      "rationale_short": "Classical or elementary mathematical ingredient (full trace rectangle dtn); useful foundation, not a new global dynamics theorem.",
+      "novelty_confidence": "low",
+      "mlc_gate_effect": "foundational_only_no_open_gate_closed"
+    },
+    {
+      "id": "TRACE_RESPONSE_SEMIGROUP",
+      "class": "standard/classical",
+      "rationale_short": "Classical or elementary mathematical ingredient (trace response semigroup); useful foundation, not a new global dynamics theorem.",
+      "novelty_confidence": "low",
+      "mlc_gate_effect": "foundational_only_no_open_gate_closed"
+    },
+    {
+      "id": "EQUIPOTENTIAL_COLLAPSE_CRITERION",
+      "class": "standard/classical",
+      "rationale_short": "Classical or elementary mathematical ingredient (equipotential collapse criterion); useful foundation, not a new global dynamics theorem.",
+      "novelty_confidence": "low",
+      "mlc_gate_effect": "foundational_only_no_open_gate_closed"
+    },
+    {
+      "id": "SHORTED_EQUIPOTENTIAL_NODAL_RESPONSE",
+      "class": "standard/classical",
+      "rationale_short": "Classical or elementary mathematical ingredient (shorted equipotential nodal response); useful foundation, not a new global dynamics theorem.",
+      "novelty_confidence": "low",
+      "mlc_gate_effect": "foundational_only_no_open_gate_closed"
+    },
+    {
+      "id": "TRACE_RENORMALIZED_NECK_ESTIMATE",
+      "class": "standard/classical",
+      "rationale_short": "Classical or elementary mathematical ingredient (trace renormalized neck estimate); useful foundation, not a new global dynamics theorem.",
+      "novelty_confidence": "low",
+      "mlc_gate_effect": "foundational_only_no_open_gate_closed"
+    },
+    {
+      "id": "END_TRACE_RESPONSE_COMPACTIFICATION",
+      "class": "standard/classical",
+      "rationale_short": "Classical or elementary mathematical ingredient (end trace response compactification); useful foundation, not a new global dynamics theorem.",
+      "novelty_confidence": "low",
+      "mlc_gate_effect": "foundational_only_no_open_gate_closed"
+    },
+    {
+      "id": "HILBERT_TRACE_GLUE_CALCULUS",
+      "class": "standard/classical",
+      "rationale_short": "Classical or elementary mathematical ingredient (hilbert trace glue calculus); useful foundation, not a new global dynamics theorem.",
+      "novelty_confidence": "low",
+      "mlc_gate_effect": "foundational_only_no_open_gate_closed"
+    },
+    {
+      "id": "TRACE_STABLE_STRICT_TRANSITION_TRANSFER",
+      "class": "direct formal corollary/compiler",
+      "rationale_short": "Formal or conditional interface result (trace stable strict transition transfer); it composes declared inputs but does not construct the missing analytic input.",
+      "novelty_confidence": "low",
+      "mlc_gate_effect": "conditional_only_no_open_gate_closed"
+    },
+    {
+      "id": "PULLED_EQUIPOTENTIAL_SERIAL_RECTANGLE_NO_GO",
+      "class": "negative counterexample/no-go",
+      "rationale_short": "Exact Bottcher angular scaling refutes the proposed serial-rectangle identification for parent and pulled-child equipotential arcs.",
+      "novelty_confidence": "low_or_application_specific",
+      "mlc_gate_effect": "guardrail_only_no_open_gate_closed"
+    },
+    {
+      "id": "ACTIVE_INACTIVE_PHYSICAL_CELL",
+      "class": "standard/classical",
+      "rationale_short": "Classical or elementary mathematical ingredient (active inactive physical cell); useful foundation, not a new global dynamics theorem.",
+      "novelty_confidence": "low",
+      "mlc_gate_effect": "foundational_only_no_open_gate_closed"
+    },
+    {
+      "id": "ATTACHMENT_ARC_OPEN_ATOM_REFINEMENT",
+      "class": "direct formal corollary/compiler",
+      "rationale_short": "Formal or conditional interface result (attachment arc open atom refinement); it composes declared inputs but does not construct the missing analytic input.",
+      "novelty_confidence": "low",
+      "mlc_gate_effect": "conditional_only_no_open_gate_closed"
+    },
+    {
+      "id": "REGULAR_INTERFACE_FIBER_PRODUCT_RESPONSE",
+      "class": "standard/classical",
+      "rationale_short": "Classical or elementary mathematical ingredient (regular interface fiber product response); useful foundation, not a new global dynamics theorem.",
+      "novelty_confidence": "low",
+      "mlc_gate_effect": "foundational_only_no_open_gate_closed"
+    },
+    {
+      "id": "FINITE_TAME_CONTACT_OVERLAY_RESPONSE",
+      "class": "standard/classical",
+      "rationale_short": "Classical or elementary mathematical ingredient (finite tame contact overlay response); useful foundation, not a new global dynamics theorem.",
+      "novelty_confidence": "low",
+      "mlc_gate_effect": "foundational_only_no_open_gate_closed"
+    },
+    {
+      "id": "INFIMUM_PUSHFORWARD_FUNCTORIALITY",
+      "class": "standard/classical",
+      "rationale_short": "Classical or elementary mathematical ingredient (infimum pushforward functoriality); useful foundation, not a new global dynamics theorem.",
+      "novelty_confidence": "low",
+      "mlc_gate_effect": "foundational_only_no_open_gate_closed"
+    },
+    {
+      "id": "CLOSED_FORM_PUSHFORWARD_NO_GO",
+      "class": "negative counterexample/no-go",
+      "rationale_short": "Obstruction result (closed form pushforward no go) ruling out a proposed shortcut rather than proving a positive MLC theorem.",
+      "novelty_confidence": "low_or_application_specific",
+      "mlc_gate_effect": "guardrail_only_no_open_gate_closed"
+    },
+    {
+      "id": "FIXED_STANDARD_NECK_MULTIPORT_COMPACTIFICATION",
+      "class": "standard/classical",
+      "rationale_short": "Classical or elementary mathematical ingredient (fixed standard neck multiport compactification); useful foundation, not a new global dynamics theorem.",
+      "novelty_confidence": "low",
+      "mlc_gate_effect": "foundational_only_no_open_gate_closed"
+    },
+    {
+      "id": "QUADRATIC_PRIMITIVE_ROOT_PARABOLIC_NONDEGENERACY",
+      "class": "standard/classical",
+      "rationale_short": "Classical or elementary mathematical ingredient (quadratic primitive root parabolic nondegeneracy); useful foundation, not a new global dynamics theorem.",
+      "novelty_confidence": "low",
+      "mlc_gate_effect": "foundational_only_no_open_gate_closed"
+    },
+    {
+      "id": "FIXED_MODULUS_AMBIENT_END_NO_GO",
+      "class": "negative counterexample/no-go",
+      "rationale_short": "Obstruction result (fixed modulus ambient end no go) ruling out a proposed shortcut rather than proving a positive MLC theorem.",
+      "novelty_confidence": "low_or_application_specific",
+      "mlc_gate_effect": "guardrail_only_no_open_gate_closed"
+    },
+    {
+      "id": "SERIAL_ANNULUS_SINGLETON_BRIDGE",
+      "class": "standard/classical",
+      "rationale_short": "Classical or elementary mathematical ingredient (serial annulus singleton bridge); useful foundation, not a new global dynamics theorem.",
+      "novelty_confidence": "low",
+      "mlc_gate_effect": "foundational_only_no_open_gate_closed"
+    },
+    {
+      "id": "MULTIPORT_TRACE_GAUGE_AND_STRICTNESS_NO_GO",
+      "class": "negative counterexample/no-go",
+      "rationale_short": "Obstruction result (multiport trace gauge and strictness no go) ruling out a proposed shortcut rather than proving a positive MLC theorem.",
+      "novelty_confidence": "low_or_application_specific",
+      "mlc_gate_effect": "guardrail_only_no_open_gate_closed"
+    },
+    {
+      "id": "WOT_WELDING_ALGEBRA_NO_GO",
+      "class": "negative counterexample/no-go",
+      "rationale_short": "The standard bilateral-shift mechanism is correctly applied to show that weak-operator limits do not preserve graph or welding constraints.",
+      "novelty_confidence": "low_or_application_specific",
+      "mlc_gate_effect": "guardrail_only_no_open_gate_closed"
+    },
+    {
+      "id": "DYADIC_BOTTCHER_EXTERNAL_TRACE_ISOMETRY",
+      "class": "standard/classical",
+      "rationale_short": "Classical or elementary mathematical ingredient (dyadic bottcher external trace isometry); useful foundation, not a new global dynamics theorem.",
+      "novelty_confidence": "low",
+      "mlc_gate_effect": "foundational_only_no_open_gate_closed"
+    },
+    {
+      "id": "END_BLOWUP_PROJECTION_NO_GO",
+      "class": "negative counterexample/no-go",
+      "rationale_short": "Obstruction result (end blowup projection no go) ruling out a proposed shortcut rather than proving a positive MLC theorem.",
+      "novelty_confidence": "low_or_application_specific",
+      "mlc_gate_effect": "guardrail_only_no_open_gate_closed"
+    },
+    {
+      "id": "FIXED_ITERATE_END_FIBER_EXTENSION",
+      "class": "standard/classical",
+      "rationale_short": "Classical or elementary mathematical ingredient (fixed iterate end fiber extension); useful foundation, not a new global dynamics theorem.",
+      "novelty_confidence": "low",
+      "mlc_gate_effect": "foundational_only_no_open_gate_closed"
+    },
+    {
+      "id": "FINITE_CYLINDER_COMMUTING_ITERATE_LIFT",
+      "class": "direct formal corollary/compiler",
+      "rationale_short": "Formal or conditional interface result (finite cylinder commuting iterate lift); it composes declared inputs but does not construct the missing analytic input.",
+      "novelty_confidence": "low",
+      "mlc_gate_effect": "conditional_only_no_open_gate_closed"
+    },
+    {
+      "id": "FIXED_BASE_CONNECTED_IMAGE_TARGET_UNIQUENESS",
+      "class": "standard/classical",
+      "rationale_short": "Classical or elementary mathematical ingredient (fixed base connected image target uniqueness); useful foundation, not a new global dynamics theorem.",
+      "novelty_confidence": "low",
+      "mlc_gate_effect": "foundational_only_no_open_gate_closed"
+    },
+    {
+      "id": "INTERIOR_PULLBACK_COMPONENT_FORCING",
+      "class": "direct formal corollary/compiler",
+      "rationale_short": "Formal or conditional interface result (interior pullback component forcing); it composes declared inputs but does not construct the missing analytic input.",
+      "novelty_confidence": "low",
+      "mlc_gate_effect": "conditional_only_no_open_gate_closed"
+    },
+    {
+      "id": "VIRTUAL_PROOF_USE_TRACE_SELECTOR",
+      "class": "direct formal corollary/compiler",
+      "rationale_short": "Formal or conditional interface result (virtual proof use trace selector); it composes declared inputs but does not construct the missing analytic input.",
+      "novelty_confidence": "low",
+      "mlc_gate_effect": "conditional_only_no_open_gate_closed"
+    },
+    {
+      "id": "DEMAND_CLOSED_RETURN_ATLAS_COMPILER",
+      "class": "direct formal corollary/compiler",
+      "rationale_short": "Formal or conditional interface result (demand closed return atlas compiler); it composes declared inputs but does not construct the missing analytic input.",
+      "novelty_confidence": "low",
+      "mlc_gate_effect": "conditional_only_no_open_gate_closed"
+    },
+    {
+      "id": "RETURN_ATLAS_ENLARGEMENT_NATURALITY",
+      "class": "direct formal corollary/compiler",
+      "rationale_short": "Formal or conditional interface result (return atlas enlargement naturality); it composes declared inputs but does not construct the missing analytic input.",
+      "novelty_confidence": "low",
+      "mlc_gate_effect": "conditional_only_no_open_gate_closed"
+    },
+    {
+      "id": "FINITE_GEOMETRIC_SATURATION",
+      "class": "direct formal corollary/compiler",
+      "rationale_short": "Formal or conditional interface result (finite geometric saturation); it composes declared inputs but does not construct the missing analytic input.",
+      "novelty_confidence": "low",
+      "mlc_gate_effect": "conditional_only_no_open_gate_closed"
+    },
+    {
+      "id": "CONNECTED_CARRIER_NO_MINIMUM",
+      "class": "negative counterexample/no-go",
+      "rationale_short": "Obstruction result (connected carrier no minimum) ruling out a proposed shortcut rather than proving a positive MLC theorem.",
+      "novelty_confidence": "low_or_application_specific",
+      "mlc_gate_effect": "guardrail_only_no_open_gate_closed"
+    },
+    {
+      "id": "QUADRATIC_PROTECTED_ACCESS_COLLISION",
+      "class": "negative counterexample/no-go",
+      "rationale_short": "An actual off-critical z^2 corridor example refutes monotone attachment absorption when a protected access must survive; it is a project-specific guardrail.",
+      "novelty_confidence": "low_or_application_specific",
+      "mlc_gate_effect": "guardrail_only_no_open_gate_closed"
+    },
+    {
+      "id": "PROTECTED_REGULATED_CONNECTOR_REALIZATION",
+      "class": "direct formal corollary/compiler",
+      "rationale_short": "Formal or conditional interface result (protected regulated connector realization); it composes declared inputs but does not construct the missing analytic input.",
+      "novelty_confidence": "low",
+      "mlc_gate_effect": "conditional_only_no_open_gate_closed"
+    },
+    {
+      "id": "PROTECTED_FREE_COMPONENT_CRITERION",
+      "class": "direct formal corollary/compiler",
+      "rationale_short": "Formal or conditional interface result (protected free component criterion); it composes declared inputs but does not construct the missing analytic input.",
+      "novelty_confidence": "low",
+      "mlc_gate_effect": "conditional_only_no_open_gate_closed"
+    },
+    {
+      "id": "AUGMENTED_ATOM_COMMON_DOMAIN",
+      "class": "direct formal corollary/compiler",
+      "rationale_short": "Formal or conditional interface result (augmented atom common domain); it composes declared inputs but does not construct the missing analytic input.",
+      "novelty_confidence": "low",
+      "mlc_gate_effect": "conditional_only_no_open_gate_closed"
+    },
+    {
+      "id": "AUGMENTED_PACKET_CLOSURE_AUDIT",
+      "class": "direct formal corollary/compiler",
+      "rationale_short": "Formal or conditional interface result (augmented packet closure audit); it composes declared inputs but does not construct the missing analytic input.",
+      "novelty_confidence": "low",
+      "mlc_gate_effect": "conditional_only_no_open_gate_closed"
+    },
+    {
+      "id": "CELLWISE_PACKET_PORT_CERTIFICATE",
+      "class": "direct formal corollary/compiler",
+      "rationale_short": "Formal or conditional interface result (cellwise packet port certificate); it composes declared inputs but does not construct the missing analytic input.",
+      "novelty_confidence": "low",
+      "mlc_gate_effect": "conditional_only_no_open_gate_closed"
+    },
+    {
+      "id": "PARALLEL_REPLICATION_CRITERION",
+      "class": "direct formal corollary/compiler",
+      "rationale_short": "Formal or conditional interface result (parallel replication criterion); it composes declared inputs but does not construct the missing analytic input.",
+      "novelty_confidence": "low",
+      "mlc_gate_effect": "conditional_only_no_open_gate_closed"
+    },
+    {
+      "id": "TOPOLOGY_REPLICATION_NO_GO",
+      "class": "negative counterexample/no-go",
+      "rationale_short": "Obstruction result (topology replication no go) ruling out a proposed shortcut rather than proving a positive MLC theorem.",
+      "novelty_confidence": "low_or_application_specific",
+      "mlc_gate_effect": "guardrail_only_no_open_gate_closed"
+    },
+    {
+      "id": "CONDITIONAL_TREE_REPLICATION_CALIBRATION",
+      "class": "direct formal corollary/compiler",
+      "rationale_short": "Formal or conditional interface result (conditional tree replication calibration); it composes declared inputs but does not construct the missing analytic input.",
+      "novelty_confidence": "low",
+      "mlc_gate_effect": "conditional_only_no_open_gate_closed"
+    },
+    {
+      "id": "DISCOUNTED_DUHAMEL",
+      "class": "standard/classical",
+      "rationale_short": "Classical or elementary mathematical ingredient (discounted duhamel); useful foundation, not a new global dynamics theorem.",
+      "novelty_confidence": "low",
+      "mlc_gate_effect": "foundational_only_no_open_gate_closed"
+    },
+    {
+      "id": "DISCOUNTED_ENTROPY_ABSORPTION",
+      "class": "standard/classical",
+      "rationale_short": "Classical or elementary mathematical ingredient (discounted entropy absorption); useful foundation, not a new global dynamics theorem.",
+      "novelty_confidence": "low",
+      "mlc_gate_effect": "foundational_only_no_open_gate_closed"
+    },
+    {
+      "id": "ENTROPY_THRESHOLD_NO_GO",
+      "class": "negative counterexample/no-go",
+      "rationale_short": "Obstruction result (entropy threshold no go) ruling out a proposed shortcut rather than proving a positive MLC theorem.",
+      "novelty_confidence": "low_or_application_specific",
+      "mlc_gate_effect": "guardrail_only_no_open_gate_closed"
+    },
+    {
+      "id": "CHART_CYCLE_OBSTRUCTION",
+      "class": "negative counterexample/no-go",
+      "rationale_short": "Obstruction result (chart cycle obstruction) ruling out a proposed shortcut rather than proving a positive MLC theorem.",
+      "novelty_confidence": "low_or_application_specific",
+      "mlc_gate_effect": "guardrail_only_no_open_gate_closed"
+    },
+    {
+      "id": "RESPONSE_GLUE_CALCULUS",
+      "class": "standard/classical",
+      "rationale_short": "Classical or elementary mathematical ingredient (response glue calculus); useful foundation, not a new global dynamics theorem.",
+      "novelty_confidence": "low",
+      "mlc_gate_effect": "foundational_only_no_open_gate_closed"
+    },
+    {
+      "id": "FINITE_ELECTRODE_RESPONSE",
+      "class": "standard/classical",
+      "rationale_short": "Classical or elementary mathematical ingredient (finite electrode response); useful foundation, not a new global dynamics theorem.",
+      "novelty_confidence": "low",
+      "mlc_gate_effect": "foundational_only_no_open_gate_closed"
+    },
+    {
+      "id": "PORT_FUTURE_CLOSURE_NO_GO",
+      "class": "negative counterexample/no-go",
+      "rationale_short": "Obstruction result (port future closure no go) ruling out a proposed shortcut rather than proving a positive MLC theorem.",
+      "novelty_confidence": "low_or_application_specific",
+      "mlc_gate_effect": "guardrail_only_no_open_gate_closed"
+    },
+    {
+      "id": "WAD_DOMINATION_RESPONSE",
+      "class": "direct formal corollary/compiler",
+      "rationale_short": "Formal or conditional interface result (wad domination response); it composes declared inputs but does not construct the missing analytic input.",
+      "novelty_confidence": "low",
+      "mlc_gate_effect": "conditional_only_no_open_gate_closed"
+    },
+    {
+      "id": "FIXED_BLOCK_SPECTRAL_COMPARISON",
+      "class": "standard/classical",
+      "rationale_short": "Classical or elementary mathematical ingredient (fixed block spectral comparison); useful foundation, not a new global dynamics theorem.",
+      "novelty_confidence": "low",
+      "mlc_gate_effect": "foundational_only_no_open_gate_closed"
+    },
+    {
+      "id": "VALUE_RESPONSE_NO_GO",
+      "class": "negative counterexample/no-go",
+      "rationale_short": "Obstruction result (value response no go) ruling out a proposed shortcut rather than proving a positive MLC theorem.",
+      "novelty_confidence": "low_or_application_specific",
+      "mlc_gate_effect": "guardrail_only_no_open_gate_closed"
+    },
+    {
+      "id": "VALUE_FEATURE_ROWSPACE",
+      "class": "standard/classical",
+      "rationale_short": "Classical or elementary mathematical ingredient (value feature rowspace); useful foundation, not a new global dynamics theorem.",
+      "novelty_confidence": "low",
+      "mlc_gate_effect": "foundational_only_no_open_gate_closed"
+    },
+    {
+      "id": "PRIMITIVE_VALUE_AFFINE_CONTRACTION",
+      "class": "direct formal corollary/compiler",
+      "rationale_short": "Formal or conditional interface result (primitive value affine contraction); it composes declared inputs but does not construct the missing analytic input.",
+      "novelty_confidence": "low",
+      "mlc_gate_effect": "conditional_only_no_open_gate_closed"
+    },
+    {
+      "id": "CLONED_VALUE_BLOCK_CONTRACTION",
+      "class": "direct formal corollary/compiler",
+      "rationale_short": "Formal or conditional interface result (cloned value block contraction); it composes declared inputs but does not construct the missing analytic input.",
+      "novelty_confidence": "low",
+      "mlc_gate_effect": "conditional_only_no_open_gate_closed"
+    },
+    {
+      "id": "PRIMITIVE_INTEGER_ENTROPY_GAP",
+      "class": "standard/classical",
+      "rationale_short": "Classical or elementary mathematical ingredient (primitive integer entropy gap); useful foundation, not a new global dynamics theorem.",
+      "novelty_confidence": "low",
+      "mlc_gate_effect": "foundational_only_no_open_gate_closed"
+    },
+    {
+      "id": "VARIABLE_CLONE_BLOCK_CONTRACTION",
+      "class": "direct formal corollary/compiler",
+      "rationale_short": "Formal or conditional interface result (variable clone block contraction); it composes declared inputs but does not construct the missing analytic input.",
+      "novelty_confidence": "low",
+      "mlc_gate_effect": "conditional_only_no_open_gate_closed"
+    },
+    {
+      "id": "PERTURBED_CLONE_CONTRACTION",
+      "class": "direct formal corollary/compiler",
+      "rationale_short": "Formal or conditional interface result (perturbed clone contraction); it composes declared inputs but does not construct the missing analytic input.",
+      "novelty_confidence": "low",
+      "mlc_gate_effect": "conditional_only_no_open_gate_closed"
+    },
+    {
+      "id": "BOUNDED_ENTROPY_EIGENCONE",
+      "class": "direct formal corollary/compiler",
+      "rationale_short": "Formal or conditional interface result (bounded entropy eigencone); it composes declared inputs but does not construct the missing analytic input.",
+      "novelty_confidence": "low",
+      "mlc_gate_effect": "conditional_only_no_open_gate_closed"
+    },
+    {
+      "id": "UNBOUNDED_DIMENSION_ENTROPY_NO_GO",
+      "class": "negative counterexample/no-go",
+      "rationale_short": "Obstruction result (unbounded dimension entropy no go) ruling out a proposed shortcut rather than proving a positive MLC theorem.",
+      "novelty_confidence": "low_or_application_specific",
+      "mlc_gate_effect": "guardrail_only_no_open_gate_closed"
+    },
+    {
+      "id": "EXACT_CORRIDOR_CLONE_CRITERION",
+      "class": "direct formal corollary/compiler",
+      "rationale_short": "Formal or conditional interface result (exact corridor clone criterion); it composes declared inputs but does not construct the missing analytic input.",
+      "novelty_confidence": "low",
+      "mlc_gate_effect": "conditional_only_no_open_gate_closed"
+    },
+    {
+      "id": "ENDPOINT_DEFECT_ABSORPTION",
+      "class": "direct formal corollary/compiler",
+      "rationale_short": "Formal or conditional interface result (endpoint defect absorption); it composes declared inputs but does not construct the missing analytic input.",
+      "novelty_confidence": "low",
+      "mlc_gate_effect": "conditional_only_no_open_gate_closed"
+    },
+    {
+      "id": "FINITE_CORRIDOR_CLONE_UNION",
+      "class": "direct formal corollary/compiler",
+      "rationale_short": "Formal or conditional interface result (finite corridor clone union); it composes declared inputs but does not construct the missing analytic input.",
+      "novelty_confidence": "low",
+      "mlc_gate_effect": "conditional_only_no_open_gate_closed"
+    },
+    {
+      "id": "CROSS_SECTION_DAG_EQUIVALENCE",
+      "class": "standard/classical",
+      "rationale_short": "Classical or elementary mathematical ingredient (cross section dag equivalence); useful foundation, not a new global dynamics theorem.",
+      "novelty_confidence": "low",
+      "mlc_gate_effect": "foundational_only_no_open_gate_closed"
+    },
+    {
+      "id": "CLONE_STRONG_CONNECTIVITY",
+      "class": "standard/classical",
+      "rationale_short": "Classical or elementary mathematical ingredient (clone strong connectivity); useful foundation, not a new global dynamics theorem.",
+      "novelty_confidence": "low",
+      "mlc_gate_effect": "foundational_only_no_open_gate_closed"
+    },
+    {
+      "id": "ROBUST_CLONE_PRIMITIVITY",
+      "class": "standard/classical",
+      "rationale_short": "Classical or elementary mathematical ingredient (robust clone primitivity); useful foundation, not a new global dynamics theorem.",
+      "novelty_confidence": "low",
+      "mlc_gate_effect": "foundational_only_no_open_gate_closed"
+    },
+    {
+      "id": "PRIMITIVE_BASE_CLONE_NO_GO",
+      "class": "negative counterexample/no-go",
+      "rationale_short": "Obstruction result (primitive base clone no go) ruling out a proposed shortcut rather than proving a positive MLC theorem.",
+      "novelty_confidence": "low_or_application_specific",
+      "mlc_gate_effect": "guardrail_only_no_open_gate_closed"
+    },
+    {
+      "id": "FINITE_STATE_CORRIDOR_CERTIFICATE",
+      "class": "direct formal corollary/compiler",
+      "rationale_short": "Formal or conditional interface result (finite state corridor certificate); it composes declared inputs but does not construct the missing analytic input.",
+      "novelty_confidence": "low",
+      "mlc_gate_effect": "conditional_only_no_open_gate_closed"
+    },
+    {
+      "id": "FINITE_STATE_CORRIDOR_VALUE_COROLLARY",
+      "class": "direct formal corollary/compiler",
+      "rationale_short": "Formal or conditional interface result (finite state corridor value corollary); it composes declared inputs but does not construct the missing analytic input.",
+      "novelty_confidence": "low",
+      "mlc_gate_effect": "conditional_only_no_open_gate_closed"
+    },
+    {
+      "id": "FRAMED_RETURN_SPECTRAL_INVARIANCE",
+      "class": "standard/classical",
+      "rationale_short": "Classical or elementary mathematical ingredient (framed return spectral invariance); useful foundation, not a new global dynamics theorem.",
+      "novelty_confidence": "low",
+      "mlc_gate_effect": "foundational_only_no_open_gate_closed"
+    },
+    {
+      "id": "PERMUTATION_COCYCLE_GAUGE",
+      "class": "standard/classical",
+      "rationale_short": "Classical or elementary mathematical ingredient (permutation cocycle gauge); useful foundation, not a new global dynamics theorem.",
+      "novelty_confidence": "low",
+      "mlc_gate_effect": "foundational_only_no_open_gate_closed"
+    },
+    {
+      "id": "IRREDUCIBLE_TRANSFER_ENTROPY_DICHOTOMY",
+      "class": "standard/classical",
+      "rationale_short": "Classical or elementary mathematical ingredient (irreducible transfer entropy dichotomy); useful foundation, not a new global dynamics theorem.",
+      "novelty_confidence": "low",
+      "mlc_gate_effect": "foundational_only_no_open_gate_closed"
+    },
+    {
+      "id": "ZERO_ENTROPY_SHEAR_NORMAL_FORM",
+      "class": "standard/classical",
+      "rationale_short": "Classical or elementary mathematical ingredient (zero entropy shear normal form); useful foundation, not a new global dynamics theorem.",
+      "novelty_confidence": "low",
+      "mlc_gate_effect": "foundational_only_no_open_gate_closed"
+    },
+    {
+      "id": "DEFECT_RUN_DECOMPOSITION",
+      "class": "direct formal corollary/compiler",
+      "rationale_short": "Formal or conditional interface result (defect run decomposition); it composes declared inputs but does not construct the missing analytic input.",
+      "novelty_confidence": "low",
+      "mlc_gate_effect": "conditional_only_no_open_gate_closed"
+    },
+    {
+      "id": "ZERO_ENTROPY_SHEAR_NO_GO",
+      "class": "negative counterexample/no-go",
+      "rationale_short": "Obstruction result (zero entropy shear no go) ruling out a proposed shortcut rather than proving a positive MLC theorem.",
+      "novelty_confidence": "low_or_application_specific",
+      "mlc_gate_effect": "guardrail_only_no_open_gate_closed"
+    },
+    {
+      "id": "BOOLEAN_SUPPORT_FUNCTOR",
+      "class": "standard/classical",
+      "rationale_short": "Classical or elementary mathematical ingredient (boolean support functor); useful foundation, not a new global dynamics theorem.",
+      "novelty_confidence": "low",
+      "mlc_gate_effect": "foundational_only_no_open_gate_closed"
+    },
+    {
+      "id": "SUPPORT_AUTOMATON_PUMPING",
+      "class": "standard/classical",
+      "rationale_short": "Classical or elementary mathematical ingredient (support automaton pumping); useful foundation, not a new global dynamics theorem.",
+      "novelty_confidence": "low",
+      "mlc_gate_effect": "foundational_only_no_open_gate_closed"
+    },
+    {
+      "id": "BOUNDED_BRANCH_SUPPORT_WITNESS",
+      "class": "direct formal corollary/compiler",
+      "rationale_short": "Formal or conditional interface result (bounded branch support witness); it composes declared inputs but does not construct the missing analytic input.",
+      "novelty_confidence": "low",
+      "mlc_gate_effect": "conditional_only_no_open_gate_closed"
+    },
+    {
+      "id": "FUTURE_EQUIVALENCE_AUTOMATON",
+      "class": "standard/classical",
+      "rationale_short": "Classical or elementary mathematical ingredient (future equivalence automaton); useful foundation, not a new global dynamics theorem.",
+      "novelty_confidence": "low",
+      "mlc_gate_effect": "foundational_only_no_open_gate_closed"
+    },
+    {
+      "id": "FINITE_HORIZON_LANGUAGE_NO_GO",
+      "class": "negative counterexample/no-go",
+      "rationale_short": "Obstruction result (finite horizon language no go) ruling out a proposed shortcut rather than proving a positive MLC theorem.",
+      "novelty_confidence": "low_or_application_specific",
+      "mlc_gate_effect": "guardrail_only_no_open_gate_closed"
+    },
+    {
+      "id": "BOUNDED_MEMORY_AUTOMATON",
+      "class": "standard/classical",
+      "rationale_short": "Classical or elementary mathematical ingredient (bounded memory automaton); useful foundation, not a new global dynamics theorem.",
+      "novelty_confidence": "low",
+      "mlc_gate_effect": "foundational_only_no_open_gate_closed"
+    },
+    {
+      "id": "COUNTER_SAFE_PUMPING",
+      "class": "direct formal corollary/compiler",
+      "rationale_short": "Formal or conditional interface result (counter safe pumping); it composes declared inputs but does not construct the missing analytic input.",
+      "novelty_confidence": "low",
+      "mlc_gate_effect": "conditional_only_no_open_gate_closed"
+    },
+    {
+      "id": "MEMORY_PROJECTION_PUMPING_NO_GO",
+      "class": "negative counterexample/no-go",
+      "rationale_short": "Obstruction result (memory projection pumping no go) ruling out a proposed shortcut rather than proving a positive MLC theorem.",
+      "novelty_confidence": "low_or_application_specific",
+      "mlc_gate_effect": "guardrail_only_no_open_gate_closed"
+    },
+    {
+      "id": "ADDITIVE_COUNTER_MEMORY_NO_GO",
+      "class": "negative counterexample/no-go",
+      "rationale_short": "Obstruction result (additive counter memory no go) ruling out a proposed shortcut rather than proving a positive MLC theorem.",
+      "novelty_confidence": "low_or_application_specific",
+      "mlc_gate_effect": "guardrail_only_no_open_gate_closed"
+    },
+    {
+      "id": "REVERSE_WORD_STACK_MODEL",
+      "class": "standard/classical",
+      "rationale_short": "Classical or elementary mathematical ingredient (reverse word stack model); useful foundation, not a new global dynamics theorem.",
+      "novelty_confidence": "low",
+      "mlc_gate_effect": "foundational_only_no_open_gate_closed"
+    },
+    {
+      "id": "DISCRETE_SIDE_DATA_COMPACTNESS_NO_GO",
+      "class": "negative counterexample/no-go",
+      "rationale_short": "Obstruction result (discrete side data compactness no go) ruling out a proposed shortcut rather than proving a positive MLC theorem.",
+      "novelty_confidence": "low_or_application_specific",
+      "mlc_gate_effect": "guardrail_only_no_open_gate_closed"
+    },
+    {
+      "id": "COUNTABLE_FOLLOWER_STONE_COMPACTIFICATION",
+      "class": "standard/classical",
+      "rationale_short": "Classical or elementary mathematical ingredient (countable follower stone compactification); useful foundation, not a new global dynamics theorem.",
+      "novelty_confidence": "low",
+      "mlc_gate_effect": "foundational_only_no_open_gate_closed"
+    },
+    {
+      "id": "FUTURE_OBSERVABLE_COMPACTIFICATION",
+      "class": "standard/classical",
+      "rationale_short": "Classical or elementary mathematical ingredient (future observable compactification); useful foundation, not a new global dynamics theorem.",
+      "novelty_confidence": "low",
+      "mlc_gate_effect": "foundational_only_no_open_gate_closed"
+    },
+    {
+      "id": "FUTURE_FAITHFUL_END_TOPOLOGY",
+      "class": "direct formal corollary/compiler",
+      "rationale_short": "Formal or conditional interface result (future faithful end topology); it composes declared inputs but does not construct the missing analytic input.",
+      "novelty_confidence": "low",
+      "mlc_gate_effect": "conditional_only_no_open_gate_closed"
+    },
+    {
+      "id": "SOURCE_FUTURE_QUOTIENT",
+      "class": "direct formal corollary/compiler",
+      "rationale_short": "Formal or conditional interface result (source future quotient); it composes declared inputs but does not construct the missing analytic input.",
+      "novelty_confidence": "low",
+      "mlc_gate_effect": "conditional_only_no_open_gate_closed"
+    },
+    {
+      "id": "MARKOV_SIGNATURE_AUTOMATON",
+      "class": "direct formal corollary/compiler",
+      "rationale_short": "Formal or conditional interface result (markov signature automaton); it composes declared inputs but does not construct the missing analytic input.",
+      "novelty_confidence": "low",
+      "mlc_gate_effect": "conditional_only_no_open_gate_closed"
+    },
+    {
+      "id": "WAD_TRANSPORT_QUOTIENT_CRITERION",
+      "class": "standard/classical",
+      "rationale_short": "Classical or elementary mathematical ingredient (wad transport quotient criterion); useful foundation, not a new global dynamics theorem.",
+      "novelty_confidence": "low",
+      "mlc_gate_effect": "foundational_only_no_open_gate_closed"
+    },
+    {
+      "id": "WAD_FUTURE_OBSERVABILITY",
+      "class": "standard/classical",
+      "rationale_short": "Classical or elementary mathematical ingredient (wad future observability); useful foundation, not a new global dynamics theorem.",
+      "novelty_confidence": "low",
+      "mlc_gate_effect": "foundational_only_no_open_gate_closed"
+    },
+    {
+      "id": "PURE_CORRIDOR_MACRO",
+      "class": "direct formal corollary/compiler",
+      "rationale_short": "Formal or conditional interface result (pure corridor macro); it composes declared inputs but does not construct the missing analytic input.",
+      "novelty_confidence": "low",
+      "mlc_gate_effect": "conditional_only_no_open_gate_closed"
+    },
+    {
+      "id": "COUNTER_STACK_SAFE_LOOP",
+      "class": "direct formal corollary/compiler",
+      "rationale_short": "Formal or conditional interface result (counter stack safe loop); it composes declared inputs but does not construct the missing analytic input.",
+      "novelty_confidence": "low",
+      "mlc_gate_effect": "conditional_only_no_open_gate_closed"
+    },
+    {
+      "id": "H3_SYMBOLIC_SIDE_COMPACTNESS",
+      "class": "direct formal corollary/compiler",
+      "rationale_short": "Formal or conditional interface result (h3 symbolic side compactness); it composes declared inputs but does not construct the missing analytic input.",
+      "novelty_confidence": "low",
+      "mlc_gate_effect": "conditional_only_no_open_gate_closed"
+    },
+    {
+      "id": "CONDITIONAL_REDUCTION",
+      "class": "direct formal corollary/compiler",
+      "rationale_short": "Formal or conditional interface result (conditional reduction); it composes declared inputs but does not construct the missing analytic input.",
+      "novelty_confidence": "low",
+      "mlc_gate_effect": "conditional_only_no_open_gate_closed"
+    },
+    {
+      "id": "UPTCR_IMPLIES_MLC",
+      "class": "direct formal corollary/compiler",
+      "rationale_short": "Formal or conditional interface result (uptcr implies mlc); it composes declared inputs but does not construct the missing analytic input.",
+      "novelty_confidence": "low",
+      "mlc_gate_effect": "conditional_only_no_open_gate_closed"
+    },
+    {
+      "id": "UPTCR_CROSS_VALIDATION",
+      "class": "direct formal corollary/compiler",
+      "rationale_short": "Formal or conditional interface result (uptcr cross validation); it composes declared inputs but does not construct the missing analytic input.",
+      "novelty_confidence": "low",
+      "mlc_gate_effect": "conditional_only_no_open_gate_closed"
+    }
+  ]
+}
+

@@ -1,0 +1,444 @@
+{
+  "report": {
+    "id": "QA_DEPENDENCY_STATUS_2026_07_26",
+    "date": "2026-07-26",
+    "scope": [
+      "QA-0 immutable evidence snapshot",
+      "QA-1 status and dependency integrity"
+    ],
+    "status_changes_made": false,
+    "manuscript_edited": false,
+    "ledger_edited": false,
+    "overall_verdict": "structurally_valid_but_not_promotion_safe",
+    "critical_findings": 0,
+    "high_findings": 2,
+    "medium_findings": 3,
+    "low_findings": 1
+  },
+  "ledger": {
+    "path": "proof_obligations.json",
+    "sha256": "D8003A5D1BC288C90CBF7050001802A7DC403E602A344A7D8B11BF7F068D0ABF",
+    "schema_version": 2,
+    "source_lock_date": "2026-07-25",
+    "target": "MLC",
+    "counts": {
+      "total": 423,
+      "imported": 28,
+      "proved": 291,
+      "open": 104
+    },
+    "relations": {
+      "dependency_edges": 938,
+      "hypothesis_edges": 16,
+      "clause_map_records": 27
+    },
+    "validation": {
+      "schema_errors": 0,
+      "duplicate_ids": 0,
+      "noncanonical_ids": 0,
+      "unknown_statuses": 0,
+      "missing_dependency_ids": 0,
+      "missing_hypothesis_ids": 0,
+      "missing_clause_map_ids": 0,
+      "duplicate_dependency_entries": 0,
+      "duplicate_hypothesis_entries": 0,
+      "self_relations": 0,
+      "dependency_cycles": 0,
+      "combined_dependency_hypothesis_cycles": 0,
+      "proved_or_imported_with_open_proof_dependencies": 0,
+      "missing_evidence_files": 0,
+      "missing_evidence_anchors": 0,
+      "normalized_duplicate_statements": 0,
+      "stock_audit_exit_code": 0
+    },
+    "conditional_nodes": {
+      "count": 12,
+      "hypothesis_count": 16,
+      "ids": [
+        "FINITE_HORIZON_WAVE_BOUND",
+        "FINITE_HORIZON_KKL_WAVE_REDUCTION",
+        "KKL_NATIVE_WAVE_HORIZON_CONTROL",
+        "KKL_STATIONARY_CONDITIONAL_PAIRED_WAVE_RESPONSE_ALGEBRA",
+        "KKL_STATIONARY_QSDB_SUFFICIENCY",
+        "KKL_STATIONARY_OFF_BY_ONE_PASS_THROUGH_REDUCTION",
+        "KKL_BOUNDED_VISITS_ARITHMETIC_AFTER_GROWTH",
+        "KKL_LOCALIZED_WANDERERS_APPLICATION_REDUCTION",
+        "TERMINAL_LOCAL_KL_KKL_ALIGNMENT_RECORD",
+        "CONDITIONAL_REDUCTION",
+        "UPTCR_IMPLIES_MLC",
+        "UPTCR_CROSS_VALIDATION"
+      ]
+    }
+  },
+  "frontiers": {
+    "MLC": {
+      "status": "open",
+      "closure": {
+        "total": 352,
+        "imported": 17,
+        "proved": 248,
+        "open": 87
+      },
+      "immediate_dependencies": {
+        "YOCCOZ": "imported",
+        "H1_MARKED_CONSTRUCTION": "open",
+        "MBTT": "open",
+        "H3_COERCIVITY": "open",
+        "H4_RIGIDITY": "open",
+        "CONDITIONAL_REDUCTION": "proved"
+      },
+      "lowest_open_leaves": [
+        "DIRECT_DECORATION_END_PRIME_END_COFINALITY",
+        "H1_CELL_TREE_EXTRACTION",
+        "KKL_BOUNDED_VISITS_INTERVAL_GROWTH_REPAIR",
+        "KKL_NATIVE_WAVE_WANDERERS_QUERY_SCHEMA_BOUNDARY_MAP",
+        "KKL_STATIONARY_MARKED_ACCESS_ITINERARY",
+        "KKL_STATIONARY_TWO_OCCURRENCE_BINDER",
+        "MAPPING_TELESCOPE",
+        "VIRTUAL_REACHED_CYLINDER_COMPONENT_EXHAUSTION",
+        "VIRTUAL_WAVE_DEMAND_SCHEMA"
+      ]
+    },
+    "UNIVERSAL_PROTECTED_TOWER_CLOSURE": {
+      "status": "open",
+      "closure": {
+        "total": 350,
+        "imported": 16,
+        "proved": 247,
+        "open": 87
+      },
+      "immediate_dependencies": {
+        "H1_MARKED_CONSTRUCTION": "open",
+        "MBTT": "open",
+        "H3_COERCIVITY": "open",
+        "H4_RIGIDITY": "open"
+      },
+      "all_clause_maps_in_dependency_closure": true
+    },
+    "VAAPC-I": {
+      "kind": "clause",
+      "parent": "VIRTUAL_AUGMENTED_ATOM_PORT_CERTIFICATE",
+      "status": "open",
+      "maps_to": {
+        "INTERFACE_PROOF_USE_INVENTORY": "proved",
+        "VIRTUAL_WAVE_HORIZON_CERTIFICATE": "open"
+      },
+      "closure": {
+        "total": 67,
+        "imported": 4,
+        "proved": 48,
+        "open": 15
+      },
+      "lowest_open_leaves": [
+        "DIRECT_DECORATION_END_PRIME_END_COFINALITY",
+        "VIRTUAL_REACHED_CYLINDER_COMPONENT_EXHAUSTION",
+        "VIRTUAL_WAVE_DEMAND_SCHEMA"
+      ]
+    },
+    "KKL_PARABOLIC_WAVE_STATIONARY_PROOF_REPAIR": {
+      "status": "open",
+      "closure": {
+        "total": 20,
+        "imported": 1,
+        "proved": 10,
+        "open": 9
+      },
+      "immediate_dependencies": {
+        "KKL_STATIONARY_FINAL_PASS_THROUGH_PATH_EXTRACTION": "open",
+        "KKL_STATIONARY_DEGREE_TWO_CORRECTION": "proved"
+      },
+      "lowest_open_leaves": [
+        "KKL_STATIONARY_MARKED_ACCESS_ITINERARY",
+        "KKL_STATIONARY_TWO_OCCURRENCE_BINDER"
+      ],
+      "paired_response_nodes_in_closure": false
+    }
+  },
+  "findings": [
+    {
+      "id": "DS-1",
+      "severity": "high",
+      "title": "VAAPC clause maps are non-semantic and conceal a cycle",
+      "current_false_promotion": false,
+      "details": {
+        "mapped_nodes_not_in_parent_dependency_closure": {
+          "VAAPC-C": "VIRTUAL_ROOT_CARRIER_SEPARATION",
+          "VAAPC-H": "VIRTUAL_CORRIDOR_PAIR_NATURALITY",
+          "VAAPC-U": "H2_UNIFORM_CORE_WAD_DIMENSION"
+        },
+        "cycle_if_VAAPC_H_is_made_a_dependency": [
+          "VIRTUAL_AUGMENTED_ATOM_PORT_CERTIFICATE",
+          "VIRTUAL_CORRIDOR_PAIR_NATURALITY",
+          "VIRTUAL_CANONICAL_INTERFACE_CARRIER",
+          "VIRTUAL_PROTECTED_ROUTING_CERTIFICATE",
+          "VIRTUAL_COMMON_FREE_COMPONENT",
+          "VIRTUAL_AUGMENTED_ATOM_PORT_CERTIFICATE"
+        ]
+      },
+      "required_action": "Split VAAPC clauses into first-class obligations and distinguish local packet transport from downstream full corridor-pair naturality before promotion."
+    },
+    {
+      "id": "DS-2",
+      "severity": "high",
+      "title": "Stationary frontier differs between ledger and dependency narrative",
+      "current_false_promotion": false,
+      "details": {
+        "ledger_route": [
+          "KKL_STATIONARY_TWO_OCCURRENCE_BINDER",
+          "KKL_STATIONARY_RETAINED_PORTION_REALIZATION",
+          "KKL_STATIONARY_SELECTED_CORRIDOR_CONFINEMENT",
+          "KKL_STATIONARY_SELECTED_COLLAR_DECK_NONCOLLISION",
+          "KKL_STATIONARY_TWO_SIDED_WAVE_NONCOLLISION",
+          "KKL_STATIONARY_TWO_PULLBACK_PASS_THROUGH",
+          "KKL_STATIONARY_FINAL_PASS_THROUGH_PATH_EXTRACTION",
+          "KKL_PARABOLIC_WAVE_STATIONARY_PROOF_REPAIR"
+        ],
+        "narrative_route": [
+          "KKL_WAVE_PUSHFORWARD_UNIFORM_PACKET_CONSTANT",
+          "KKL_STATIONARY_TYPED_PAIRED_WAVE_REALIZATION",
+          "KKL_STATIONARY_BL0_UNIFORM_SURVIVOR_RESPONSE",
+          "KKL_STATIONARY_SURVIVOR_EXCLUSION_OR_CHARGE",
+          "KKL_PARABOLIC_WAVE_STATIONARY_PROOF_REPAIR"
+        ],
+        "orphan_in_ledger": "KKL_STATIONARY_SURVIVOR_EXCLUSION_OR_CHARGE"
+      },
+      "required_action": "QA-2 must reconstruct native KKL lines 1534--1623 and classify the routes as canonical, alternative, or disjunctive before editing dependencies."
+    },
+    {
+      "id": "DS-3",
+      "severity": "medium",
+      "title": "Generated TeX suppresses formal hypotheses",
+      "current_false_promotion": false,
+      "details": {
+        "conditional_nodes": 12,
+        "hypothesis_edges": 16,
+        "formal_hypothesis_fields_rendered": 0,
+        "generated_files_fresh": true
+      },
+      "required_action": "Render a Hypotheses field and add a machine-to-TeX hypothesis regression."
+    },
+    {
+      "id": "DS-4",
+      "severity": "medium",
+      "title": "Local source custody is incomplete",
+      "current_false_promotion": false,
+      "details": {
+        "primary_local_source_hash_records": 10,
+        "matching_local_files": 5,
+        "missing_local_files": 5,
+        "embedded_hashes_in_active_evidence": 96,
+        "embedded_hashes_with_matching_package_file": 50,
+        "embedded_hashes_without_matching_package_file": 46
+      },
+      "required_action": "Restore exact source artifacts or record immutable external custody metadata."
+    },
+    {
+      "id": "DS-5",
+      "severity": "medium",
+      "title": "Nine open obligations have no consumer",
+      "current_false_promotion": false,
+      "ids": [
+        "TERMINAL_NONLC_HUBBARD_CARRIER_PROPER",
+        "KKL_STATIONARY_MARKED_FIXED_END_PAIR_CERTIFICATE",
+        "KKL_STATIONARY_SURVIVOR_EXCLUSION_OR_CHARGE",
+        "KKL_STATIONARY_UNIFORM_COLLAR_EXIT_CHARGE",
+        "DIRECT_DECORATION_TILE_CENTRAL_OVERLAP_REFLECTION",
+        "DIRECT_DECORATION_DEGREE_ONE_PSEUDO_EMBEDDING",
+        "ESCAPE_RETURN_KL_PSEUDOPIECE_CONFORMAL_IDEAL_BOUNDARY",
+        "VIRTUAL_SCALE_TO_PUZZLE_SELECTOR",
+        "VIRTUAL_ATTACHMENT_FREE_ANCHOR"
+      ],
+      "required_action": "Classify each as active, optional_alternative, diagnostic, restricted_subclass, or superseded_by."
+    },
+    {
+      "id": "DS-6",
+      "severity": "low",
+      "title": "Duplicated global closure presentation",
+      "current_false_promotion": false,
+      "details": {
+        "MLC_direct_global_gates": [
+          "H1_MARKED_CONSTRUCTION",
+          "MBTT",
+          "H3_COERCIVITY",
+          "H4_RIGIDITY"
+        ],
+        "CONDITIONAL_REDUCTION_hypotheses_duplicate_direct_gates": true,
+        "UPTCR_IMPLIES_MLC_consumers": 0,
+        "UPTCR_is_MLC_dependency": false
+      },
+      "required_action": "Choose one canonical final interface and label the other as a derived alias or alternative."
+    }
+  ],
+  "source_snapshot": {
+    "arxiv_versions_checked_2026_07_26": {
+      "2606.27272": "v1",
+      "2512.24171": "v1",
+      "2309.02107": "v3",
+      "2509.23031": "v2",
+      "2210.09280": "v2",
+      "2205.03157": "v4"
+    },
+    "present_local_sources": {
+      ".tmp_wave_audit/kkl.tar": "7FFDCDC90C0785AE55DE23F0AB64F63178E1F2C661FAB1FCC5C95768D8F53AF8",
+      ".tmp_wave_audit/dl23.tar": "126CAAD9C5847EBB7918C305752783ECCE1B47541C7903D30D59A65485FB5702",
+      ".tmp_wave_audit/dlneutral.tar": "1D84BFA8216A657CA8E99140BFA3423364BE047BD2051F6C349F552A9C3FBE55",
+      ".tmp_kl06_source.tar": "3A63FC9773DB8B60ED4A0EB9A1C551E6F66C08E66AB92C36F4E2B482570AB817",
+      ".tmp_kl08_source.tar": "DA8FCF924793267421F80BE3E17CD7EB2B72CD4F5B08E3F5A38E2161EC608234",
+      ".tmp_wave_audit/waves-with-Misha.tex": "AD4C774806D9902AA54FA31C56AD6146D8034946F19CC5E9CEC3C51A3F94FDD5",
+      ".tmp_wave_audit/value1.tex": "2767F71E57862DA5CF50FF7B96FC08917E24CA8F9BD2D4523C467B2E896AD83A",
+      ".tmp_wave_audit/not-all-good2.tex": "B5D40812E40D2E44037A8FC249DB687211CD67275E66EFFF8E7F29BC7CEDFB01",
+      ".tmp_wave_audit/dl23/Feigen.tex": "EB8C50CC51039A82317CF1951B1E333F23DF100773F8AD0DF0586AC7CD465DDF",
+      ".tmp_wave_audit/dlneutral/PseudoSiegelBounds.tex": "4AE3253817EF8EEB76DF95FA411CB9C2B6CB0642C3C4AED4D8AE8305F2122172",
+      ".tmp_kl06_source/appendix.tex": "EA2BE5CC544100D7931C9992E7ED476EBBE4CCE52FAF620BFF357071CB3916F3",
+      ".tmp_kl06_source/wad.tex": "B5DF40A5D33B6B590B430D47693514088AF6FC287BAA5D87B4D11015B990E580",
+      ".tmp_kl06_source/psiql2.tex": "E4EFCCEC65D8C9C2BDFE2AF8203B3D4D63ECF992B40D302F56FBA78259547228"
+    },
+    "missing_primary_source_hashes": {
+      "D25/main.tex": "FD807D65C44852995182D23A4E96BB42717E8E7502F1D7B71636B16AF5D8A454",
+      "DL25/main.tex": "ABFCC203BA7DC5F6A8F847AA8755FBCFA9091E8D6CAE520DFC5512FBDB1B8782",
+      "BLOT/no-bounds.tex": "ED8F55AE8ADE9667488AD91B4175AB40BFD2E3B7179D8141397F4A17B5B80DF6",
+      "CS15/Main.tex": "F5A6080081D7000D44985369BEBF72CC1AE9A057182A11F52DEF9E1AF256FC8E",
+      "L97/nest.tex": "069C10711C36F5358134B418FDF6C5133A5AF16208D2B1C267EA7B4D3A5DF83A"
+    }
+  },
+  "active_artifact_manifest": {
+    "algorithm": "SHA-256",
+    "entry_count": 115,
+    "missing_paths": 0,
+    "canonical_line": "<uppercase sha256><two spaces><forward-slash relative path>\\n",
+    "sort": "relative_path_ordinal",
+    "manifest_sha256": "479E1D28DA21479021ACA7BEB331D6736975964DCEDD61BDD9E5B8B6D9F2E41C",
+    "entries": {
+      "README.md": "80EEA3469C08023FAF6FAD73F086C441EC6F74CAE924AC47EC497933024FBFBC",
+      "actual_kl_tile_injectivity_gate.md": "5B51C0000A1D75D4D20B236E8E3FF255143EFE5A5494A5D3F1752DF67B4D2959",
+      "augmented_packet_closure_audit.md": "3D5A5A0C5F125EEC8E0CAE1A6D72016511A5E9DF58336FD1297A8994EC58001A",
+      "bc1_finite_port_response.md": "13E59A21BDADFDC741969F4E3A851656180DA84B38D096D6CE2B4F9A9E6FA40C",
+      "bc2_value_feature.md": "65AA8EB33E04955D8831158E89B98819E27320049C8946AAED0890D0CC0ABBB2",
+      "block_contraction_program.md": "75D49804971B1ED4F58CB9C7E9881FA2CA0478B61CA4D156D45588E3701BFBE8",
+      "canonical_kl_geometric_trace_proper_end_response.md": "5A99791994688539DAA0D62EEA83BFB98ACE35E3B12BA9DA7F3BDAAFEA2374CE",
+      "canonical_kl_restricted_interface_classification.md": "74864C0063FAFD61B5332CDCC63BB9B37AFF0090C9961FBD40CDDE1085276E11",
+      "canonical_resolution_kl_tile_correspondence_no_go.md": "39EF0EADB16D3DEC773259133E06F8E4ACA8237C3C039E240760F8EBBB5C915A",
+      "canonical_virtual_interface_carrier.md": "F964F1D1AE32CC5F1B17AA38D51CA995C2D1DCD6E9E1ED4146AA0C8CEA4C81EA",
+      "corrected_clone_theorem_derivation.md": "E98467F28D1E3B149CCA1345830D83B38134198902D7178402C865830A119915",
+      "corridor_attachment_transport.md": "4464F8043FE5C8237F12951E8AF88B7CD066FCAD30C59BFEF8EA48C8FF75456E",
+      "corridor_clone_criterion.md": "F37F33F89EB9ED41CA67B60A3E6D4EA0C3B8E87125E25B0B7283E6C00B20980B",
+      "corridor_entropy_shear_dichotomy.md": "A39BE852D9DF8F5BD438CB7BD3D2A3D4899A0EF2CA39ADF69E4A84C7EA61B907",
+      "corridor_network_calibration.md": "B22B189F42F8F4B7FA02AF0C6239B3C9BC318564DCB74AEB8C9BDA279A505A6F",
+      "corridor_support_automaton.md": "063E4F2A5D72C524664D1A24F066330266774D48FCB1031EEAD08D76E94C0BB4",
+      "critical_chronology_and_retimed_telescope.md": "8735B4EC2A1698AFF96487A4ADDE9D5DF41072C3AC47FB3218699B2986FE1B02",
+      "dependency_audit.md": "6A0D1A7C48D9BBC18DD16F9B218251CDA67F0AB2CE901010B732003FE7266F9D",
+      "direct_decoration_bigraded_kl_stage_grid.md": "E5CB8010B018AB42E17A9B9EA39D292E974B9959F9BC539F8E9C3593D5F263C6",
+      "direct_decoration_outer_port_footprint.md": "E2EEC08BE5863826940EABD343434AB9E6AB47798E9CD2AA9AE84A229A54AF43",
+      "direct_decoration_path_lifted_collar_certificate.md": "A4CE7C15696A7CA7FBCF012662961901839383B7DC618FEFC314852ABDEEF4A8",
+      "direct_decoration_wave_proof_use_ledger.md": "7E15BA071E485BEE9B7B1D9CD9982973368F2225BA94BC2B40750EC7B70BAEC8",
+      "dynamical_corridor_certificate.md": "C0D33FD3BEDEE6A7E96B30BB909890E5E802E7E6D898AD2FB54F403794C70428",
+      "embedded_disk_accessible_footprint_theorem.md": "B6DB84F4975192BA5B13A77CE982FDE85DC246D1E252604C84AF41486A52CE81",
+      "entropy_and_cycle_bookkeeping.md": "CA8E1398F798DAB2A99F110D63207A6E27BF242EB50CEF8ACECC45BD0BDAA455",
+      "finite_cylinder_commuting_lift.md": "BFC68A0F1B19EA6911ECFD6C049DA039FDCBA19B507DFF7477BF180EACFC9DA4",
+      "finite_horizon_inflation.md": "AABE7E2EEB13C65E10BDF95471BCE22BD351892F254A066172D768905674C439",
+      "finite_horizon_kahn_collar_embedding.md": "70F5415B2E20804FC0DC39367179F17D78328D03D91EFB9F8CB076E27A4A7758",
+      "kahn_annulus_global_injectivity_no_go.md": "B285C19D7822D8CE424ABBB3239A11B75A30BD713E9A77623C74D66952860975",
+      "kahn_iterate_complementary_component_alignment.md": "55D42DBD72D70F5BA902C50E6D32C3F52CB391AA6FA766E629E6739C1E5BF954",
+      "kkl_access_seeded_maximal_lift_measurability.md": "2460ABCB137BC04987932731E0B40F26BBFC28CEBE8A403A7AED9472D66C65FF",
+      "kkl_fixed_end_immersion_switch_wad.md": "04024C9DEA82CB32F479D45905A069FD7A20020014D7BA5A45BF00A3E87D036A",
+      "kkl_stationary_bl0_survivor_analysis.md": "5F94E965B612B710DF24B643ACDFB79FC3FC216BE0127FFA4D9C4176CB544C48",
+      "kkl_stationary_fixed_end_topological_obstruction.md": "9284C52BC7E954DF0B1E211B5CFF1124B1F3878CAA103E5CB1F47A612479A6E2",
+      "kkl_stationary_quantitative_defect_repair.md": "1F7894868DC42774BE95CAD9978FA029614BB511263458025652844826B2E868",
+      "kkl_stationary_retained_realization_source_audit.md": "13E2FD23DB34F1E227FA6E8CCAA94450560D7A7A903B9AD32481B458E9A24A63",
+      "kkl_stationary_route_exit_conductance_reduction.md": "FF6FA617900A00853177A2CDF10ED4EA995EE88A2089BD30206FEB5FFD4B5C63",
+      "kkl_stationary_route_exit_invariant.md": "786DC781CEAA4CDFD54D2004D112362A1D82F5FFABD0E165A5FC7D71D64C3D09",
+      "kkl_stationary_segmented_occurrence_binder.md": "2C8B17AC7EC73912DB6EAD2E46702D8F9F570C16EE54759B266A26E8CBBD965A",
+      "kkl_stationary_survivor_route_switch_reduction.md": "3A93B1FBC722042A35F43A2ACB4E3D7AE8AFF5AAF3971C8627DB085757F3E2E8",
+      "kkl_stationary_tsnc_source_reduction.md": "A6FC271F0B0F4C54508426214CBD995E2B3F806F73DDEC65D87131EAB8A5DB0D",
+      "kkl_stationary_two_occurrence_binder_design.md": "E4CC0FED7D37396E70166420B6AF3715FE2F37E2059D4FE9D4B39840D52B00E1",
+      "kkl_stationary_two_occurrence_source_attack.md": "3C70DF28C6ABF4EF1FD9E603DD1F1E17CE2D3344581867DB8DC79D6AC1C3F70E",
+      "kkl_stationary_uniform_collar_charge_attack.md": "A8DA1FAAE616FD268AF6BCC48B8C4CCA276D282F11058344309261F2AE44CDB9",
+      "kkl_stationary_wave_component_incidence.md": "4CC12BB08CE70F2C6D5A1D63B80547A18664A174FAB4D6D1F6E9B50B9277B352",
+      "kkl_transfer_orientation_audit.md": "072D14029D319A4DE5C4EE8F0CE271A8D839CD0D41FC0A97553D1FA188909B42",
+      "kkl_translation_no_birth_source_audit.md": "FE6043BAFB3B69DE87089C01A9F2CAAE54A72A539D24FC7AC8E99ABF712EBCF2",
+      "kkl_virtual_occupancy_source_audit.md": "3B53FF31AC2DA71BBBE17F80A6BDAE29FD57F4A7015DBB84F65F325F55F116AA",
+      "kl_canonical_localization_forced_collision.md": "912B410B609F03D60D14632AA4255485FFFD2C611DBE461FD42360B7245FD1A7",
+      "kl_localization_sheet_resolution_factorization.md": "0C63241963526FE2A58573A167A46DE59009DDE6326BD2C76EAE78A3F2EF0840",
+      "kl_localization_subgroup_reflection_gate.md": "FC5235ECDF663CABFF8CD9F824C9F4772CAF5A0A0BC49BC820C1D7E4F2966A75",
+      "kl_relative_overlap_cartesianity.md": "43CCE3204DBEDD20D2F104E3026A8A61D70D93DE41F6272DB6CE7EB30EB47DCF",
+      "latex/build/main.pdf": "58183A22CB3CA98832BDF3AA1C9857D9DA8AF97E040A4BDBDDAF7DCD56FDA834",
+      "latex/generated/ledger_counts.tex": "1BE8C3D0E7EC4EAF9A5C9951492746B3CACC006381780376B96FB0F76CF8C282",
+      "latex/generated/obligations.tex": "4EA3741F6191047A8859BDE621AF3629E1B54843AE94FD892440028507988BC1",
+      "manuscript.md": "7328F6C65B7E4BD6F9BA401DF74B2FD37FD10ECB2EAD14038887D8A72E1559B7",
+      "marked_collar_calibration.md": "B7C74383CD20CEB333A6FB25127FA7BB3FC928F15FAB6199DA356868411A8EC8",
+      "marked_endpoint_birth_ledger.md": "D2DA89566C8A34E59EC4406EE90FBE8EEE7F30090601094D9282702C75671D24",
+      "master_transition.md": "171A7D5FB7FEF8048D2B214765E84A808EC7F9D8F6F8C22710B3C5B1F83DBBB1",
+      "mlc_closure_proposition.md": "EAECBA332E4B83B4E0AD5F0A647585E68FB058739873518A2C566413A3F18D30",
+      "network_response_state.md": "24AF03C0FED8BE3C1DEDA085BB15223F16AE4FD40FC35AF7DAC0AC49E6403794",
+      "neutral_transition_interface.md": "D087DDE926FA7B51A8428417CFE9BE458851FC9B1A86B6ED186659CB93FC7190",
+      "output/pdf/marked_width_mlc_manuscript.pdf": "58183A22CB3CA98832BDF3AA1C9857D9DA8AF97E040A4BDBDDAF7DCD56FDA834",
+      "pql_iterate_filled_graph_naturality.md": "AED6F1A71F07602DAB4E0F8FD310BCB3A88CB4CBF5D443A88D1A486C8B9BDDE8",
+      "proof_obligations.json": "D8003A5D1BC288C90CBF7050001802A7DC403E602A344A7D8B11BF7F068D0ABF",
+      "protected_regulated_connector.md": "3E5552576125129C9474B6CA326E424DF5D5BCE3EB1D3B9E352CBAEF9C246609",
+      "psi_ql_global_injectivity_no_go.md": "0F5B871BA490F630AAEDFE0B7564836A9F78AFF00BEE4B61351139F548A8BBEA",
+      "push5_independent_reverification_and_extrapolation.md": "1BC2F2DBA1567794484A4B691E5D1DA559FD58F377848D853E8673C9FED02827",
+      "qa_freeze_checkpoint_2026-07-26.md": "242B9DEA969F89354C448EF49D46EFBA231B543217281FB382DA429EEDCC5104",
+      "regime_and_hulls.md": "820B7CC4887AFDA839B248EA34B884C95B6E2CB1A5E610C8840F9B6D622F7FC2",
+      "research_push_1_assessment_and_integration.md": "10599604C53323921CDAC757FE5765C368B7699630FE0BEB1CCC81E96ED07FBD",
+      "research_push_3_assessment_and_integration.md": "B493A4228B6533EC56BB74C3EA85264227730FE66D9B5FB08DC699CB718084C6",
+      "research_push_4_assessment_and_integration.md": "F07371D5B8D96C1B3D0327A34C6C59C43D7070945905A026146D754B006F433A",
+      "research_push_5_assessment_and_integration.md": "51D1ED4381918D320D7C952B5BE460F751757DA69922504C2089B17FB7CE6D9C",
+      "research_push_6_assessment_and_integration.md": "C7F51B6C72148470FF34E88D7706CFE33263826BECDBE8CFE996D59DD8BD9873",
+      "research_push_7_assessment_and_integration.md": "BBEDAF8CA94BDB68CF453CF41DAD68D219FE57A212B9CA2F340E9232EEB06820",
+      "research_push_8_assessment_and_integration.md": "9602069D6F57DF338311E993D9EB4323E138E17C7B6BF3845B61200077301F65",
+      "resolved_intermediate_relative_ideal_boundary.md": "FAF6DA3BAD9644F3EB25359EC21A65D9B061EEB4CD80D83F934BB21CEFA43BDC",
+      "root_pullback_virtual_carrier.md": "6951AFC80A6EBBBB1139C15DE1F2AE86851F763D530457BC323709E457F35092",
+      "saturated_virtual_seed_forest.md": "A552A8E116421304DDD9E52B5F193A9DFF1F194250217CF3097ABB9DF5A20D98",
+      "selected_marked_fast_forward_fan.md": "C4423D9414C2F803E8FC693860D040123724D4286F07D609CC8AD7EC6997F502",
+      "side_research_retained_lemmas.md": "5D37BA7448EE00008EC6D20986BD2A4B1AAD20B37AC5791A35746037A3EC3ECF",
+      "source_ledger.md": "FDA61A5E3067999F6EE4DF8412224CFB1294AA44F292C0D46C8C80594A9D007E",
+      "stationary_occurrence_collision_obstruction.md": "33DC2296D39D09DE892F748D676B0DC24F5B3C4EFE1142EEEC3ACA54473DBCAA",
+      "terminal_dense_obstacle_and_submulticurve_replacement.md": "7A609630C3970AC818F26D635D50AAE711751F101D4B7DC12907F1F1B28A0837",
+      "terminal_hubbard_anchor.md": "BB096E84B145B0A28C55482A1EB53412D45FB0D3D355BAFCC21A257DBC17C087",
+      "terminal_protected_access_reduction.md": "EDD91F332A21F28BFE7586537219857003E8AA46F73EEE96DE7C4D8BD638859E",
+      "terminal_relative_cover_alignment.md": "A4EB6D4067E3632E04BAD6503CF103FC83C5E2A38E99AFC70C7398C6AACF3BCC",
+      "terminal_wave_crest_to_kl_skipping_bridge.md": "CEBDCDCFB48D7125440D23945382B7924667CCAAE3C9F1A8DCC0B93B93A25CF1",
+      "transfer_convention_and_frame.md": "8FF6E68A314E5616FF63F75635A1CA72ECE79FE6FDAA1C3026690EE065AB1A8A",
+      "unbounded_satellite_modulus_source_reaudit_20260726.md": "3D51C5409D82775986EB1EC41CBC8312FF7B1A090D548B5E6D130BD34BE522DD",
+      "uptcr_cross_validation.md": "184CE65004B8D1B40E02D23454FBEB2E86034941066F8A6AB29D489AF3032971",
+      "vaapc_inventory_source_audit.md": "CDAC6819EC002A67E66E669133BACD9DC674A316E0B1A59932E37EE9E5B9FFF8",
+      "virtual_block_quotient.md": "89C8071DDA7364B25882344302D720B2656EDC18E8529E3D2C096BD4A5606D78",
+      "virtual_branch_assembly.md": "60B4C26F4E2F6F11B350685F0A98D8225E4B598B28470B25297B9465091A4890",
+      "virtual_cantor_package_interface.md": "757C1B97A24E18C928B7F19AB550F671A0A02DA085DDB297A35A86F6852216BB",
+      "virtual_cantor_pullback_compactification.md": "A8255CC2A64B3B88C1154F853901FAD8E5274C334D02FFC2EDBD2C3F094D21CD",
+      "virtual_clone_entropy.md": "5901BCF5D795A2640C4D2F0547CA3E537975788257A22DF0A5AFFA08B4A9B1BE",
+      "virtual_common_free_component.md": "32DC9CF422DE0FF4B2DED5EA0684A7BDC0A0414942A4B9EE86B63A598738C44B",
+      "virtual_core_cocycle_program.md": "86DD34911559886C592EC39F9B63C35B47E46C286B01B325DFC79C206E08A6EA",
+      "virtual_corridor_pair_naturality.md": "1C846B84F4DFDCC69D6D0012C757FFA76441608F96AAEF97C22C77A30EE5CF90",
+      "virtual_hull_realization.md": "7EE27085979BAC10AF39C77250F896900DE3ECE462414E92659CD182EEFEACC7",
+      "virtual_language_memory.md": "A660D0F824DCA4C9C21E9AB2198B99BE93ECC5926BB942E5DDFE3E0F5B3899E6",
+      "virtual_limb_marking_bound.md": "46625CA435579366DEF2EAB10DB1A738CFA5314F94ED2AC89AAF37DEC53C1F1F",
+      "virtual_long_iterate_wave.md": "1DAAEF68E109C0712173F63AE86CA2E5D10776CC1F8F1C8A766EA56F81B33EBE",
+      "virtual_protected_routing_domain.md": "57B3D1FB3B140610249290E76A776107E0F8451550A9D54423952B0A605B9121",
+      "virtual_return_base_atlas.md": "FF27DCC1D3CCDC51D226578CAC3C75AD07DDB5C62535A36C24EFAD75B8DE82A1",
+      "virtual_return_branch_language.md": "F8B4D11B0890F31932F6DDF58026695F88A77A57476931DDB3B414DC1D5D5EE6",
+      "virtual_scale_to_puzzle_selector.md": "4D34427BB6F59DD02ADB00ADDEB836FD1AAE7DA5DD7C0806FCDC63513AF6A645",
+      "virtual_section4_interface.md": "1C582D16AA6DF1918E1E5072F73ED1B2A0BDC5D61E6D6C9381FACBB88726E10A",
+      "virtual_support_automaton_construction.md": "11CB489FD4C7598AB18FAAD9E0B08485AE96B751B4F9D3ACA29CCA70C5B13AEF",
+      "virtual_tame_full_return.md": "A971AA3031C99E8851294B8A9125BC0E02FAA3EA1E01681B1DAEFBCC895B3253",
+      "virtual_wave_horizon_certificate.md": "5B65D62BFB4BE94131DAB43E8CA2FDDA5FDDF4D692D6D9651943909CD70BE92A",
+      "virtual_wave_marked_correspondence.md": "A8D087030D8E50277552726B1D8D23A3D6ACFB08FED5D1FDFDD682F2383D27C1",
+      "wave_to_kl_address_access_selector.md": "11F91FFD2B809D7E8AAD021FF2D91B74C50CCA71E5E469AD0CDD0AF7F7D13EA9"
+    }
+  },
+  "release_consistency": {
+    "generated_counts_exact": true,
+    "generated_obligations_exact": true,
+    "build_and_release_pdf_byte_identical": true,
+    "build_and_release_pdf_sha256": "58183A22CB3CA98832BDF3AA1C9857D9DA8AF97E040A4BDBDDAF7DCD56FDA834",
+    "live_status_surfaces_consistent": true,
+    "quarantined_candidate_used_as_ledger_evidence": false
+  },
+  "promotion_freeze": [
+    "MLC",
+    "UNIVERSAL_PROTECTED_TOWER_CLOSURE",
+    "VAAPC-I",
+    "VIRTUAL_AUGMENTED_ATOM_PORT_CERTIFICATE",
+    "KKL_PARABOLIC_WAVE_STATIONARY_PROOF_REPAIR"
+  ]
+}

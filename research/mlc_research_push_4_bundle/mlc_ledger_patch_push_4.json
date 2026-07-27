@@ -1,0 +1,159 @@
+{
+  "patch_status": "proposal_requires_repository_schema_dependency_source_and_build_audit",
+  "research_push": 4,
+  "date": "2026-07-25",
+  "principal_gate": "END_PLUMBING_TRACE_RESPONSE_CONTROL",
+  "verdict": "proved_for_source_authorized_trace_compatible_direct_decoration_collars",
+  "count_policy": {
+    "new_gate_promotion": 1,
+    "original_global_open_count_change": 0,
+    "reason": "The end-plumbing trace-response subgate is closed, but the global H2_RESPONSE_REALIZATION, MBTT, coercivity, rigidity, and MLC nodes remain open. One Push III split subnode is corrected rather than silently retained."
+  },
+  "superseded_obligations": [
+    {
+      "id": "ADAPTIVE_NODAL_RESPONSE_APPROXIMATION",
+      "old_status": "proved_split_node",
+      "new_status": "superseded",
+      "reason": "A finite conductance edge controls only constant/electrically shorted cross-section traces. Arbitrary Sobolev trace modes have nonvanishing half-cylinder response and invalidate the scalar O(1/R) surface estimate.",
+      "replacement_ids": [
+        "SHORTED_EQUIPOTENTIAL_NODAL_RESPONSE",
+        "END_PLUMBING_TRACE_RESPONSE_CONTROL"
+      ]
+    }
+  ],
+  "new_proved_obligations": [
+    {
+      "id": "BOTTCHER_TRACE_COLLAR_ATLAS",
+      "status": "proved",
+      "statement": "Every source-authorized external sector bounded by two rays and two equipotentials has a canonical width-one rectangle coordinate. Nested direct-decoration pullbacks preserve the normalized external-angle trace coordinate, so serial cells concatenate with total rectangle resistance equal to the sum of the cell resistances.",
+      "dependencies": [
+        "DIRECT_DECORATION_PULLBACK_COMPACTIFICATION"
+      ],
+      "evidence": "mlc_research_push_4.md#part-ii-source-compatible-trace-collars"
+    },
+    {
+      "id": "FULL_TRACE_RECTANGLE_DTN",
+      "status": "proved",
+      "statement": "The complete H^{1/2}-to-H^{-1/2} Dirichlet-to-Neumann response of a width-one Neumann-wall rectangle of length R is the exact functional-calculus operator with diagonal A coth(RA), off-diagonal -A csch(RA), and continuous zero-mode value 1/R.",
+      "dependencies": [],
+      "evidence": "mlc_research_push_4.md#6-exact-rectangle-dirichlet-to-neumann-theorem"
+    },
+    {
+      "id": "TRACE_RESPONSE_SEMIGROUP",
+      "status": "proved",
+      "statement": "Trace-compatible rectangle responses compose exactly under Hilbert-space Schur complement: N_R star N_S = N_{R+S}. Hence a serial address tail has one exact response determined by total resistance, the universal tangential operator, and marked phase.",
+      "dependencies": [
+        "FULL_TRACE_RECTANGLE_DTN",
+        "BOTTCHER_TRACE_COLLAR_ATLAS"
+      ],
+      "evidence": "mlc_research_push_4.md#7-exact-response-semigroup"
+    },
+    {
+      "id": "EQUIPOTENTIAL_COLLAPSE_CRITERION",
+      "status": "proved",
+      "statement": "For a linear admissible trace space V, the neck response factors through the two trace means exactly when the mean map is injective on V. If constants are admissible, or V is invariant under subtracting its mean, this is equivalent to V consisting of constants. Declaring each cross-section one perfect electrode gives exact scalar conductance 1/R; merely naming a geometric Böttcher equipotential does not.",
+      "dependencies": [
+        "FULL_TRACE_RECTANGLE_DTN"
+      ],
+      "evidence": "mlc_research_push_4.md#9-exact-criterion"
+    },
+    {
+      "id": "SHORTED_EQUIPOTENTIAL_NODAL_RESPONSE",
+      "status": "proved",
+      "statement": "When every plumbing cross-section is explicitly shorted to one electrical electrode, the complete neck response is exactly the one-edge conductance 1/R and serial conductances combine by the scalar harmonic law.",
+      "dependencies": [
+        "EQUIPOTENTIAL_COLLAPSE_CRITERION",
+        "TRACE_RESPONSE_SEMIGROUP"
+      ],
+      "evidence": "mlc_research_push_4.md#8-the-constant-channel"
+    },
+    {
+      "id": "TRACE_RENORMALIZED_NECK_ESTIMATE",
+      "status": "proved",
+      "statement": "After retaining the two half-cylinder mean-zero responses and the exact scalar constant-mode resistor, the remaining full-trace neck error has sharp relative norm eta(R)=2/(exp(pi R)-1). Thus (1-eta)N_R# <= N_R <= (1+eta)N_R# whenever eta<1.",
+      "dependencies": [
+        "FULL_TRACE_RECTANGLE_DTN"
+      ],
+      "evidence": "mlc_research_push_4.md#11-sharp-exponential-trace-estimate"
+    },
+    {
+      "id": "END_TRACE_RESPONSE_COMPACTIFICATION",
+      "status": "proved",
+      "statement": "The full end-neck trace operator converges in normalized H^{1/2}-to-H^{-1/2} operator norm to two independent half-cylinder responses, with norm error at most max(2/R, 2/(exp(pi R)-1)). The response family extends continuously to the compactified parameter R=infinity.",
+      "dependencies": [
+        "TRACE_RENORMALIZED_NECK_ESTIMATE"
+      ],
+      "evidence": "mlc_research_push_4.md#13-cylindrical-end-limit"
+    },
+    {
+      "id": "HILBERT_TRACE_GLUE_CALCULUS",
+      "status": "proved",
+      "statement": "Relative Loewner bounds between closed nonnegative interface trace forms survive addition of arbitrary component energy and minimization over the complete Hilbert trace space. This is the infinite-dimensional response Schur-complement calculus.",
+      "dependencies": [],
+      "evidence": "mlc_research_push_4.md#14-variational-schur-complement"
+    },
+    {
+      "id": "TRACE_STABLE_STRICT_TRANSITION_TRANSFER",
+      "status": "proved",
+      "statement": "For every positively homogeneous Loewner-monotone response gauge, a root contraction factor mu<1 transfers through full-trace materialization with factor mu(1+eta)/(1-eta). It remains strict for eta<(1-mu)/(1+mu), with an explicit finite tail-depth formula.",
+      "dependencies": [
+        "TRACE_RENORMALIZED_NECK_ESTIMATE",
+        "HILBERT_TRACE_GLUE_CALCULUS"
+      ],
+      "evidence": "mlc_research_push_4.md#17-strictness-survives"
+    },
+    {
+      "id": "END_PLUMBING_TRACE_RESPONSE_CONTROL",
+      "status": "proved",
+      "statement": "Every source-authorized direct-decoration end tail with a protected trace-compatible ray/equipotential collar has an exact full Dirichlet-to-Neumann trace response, exact serial composition, compact infinite-depth limit, sharp trace-renormalized comparison after arbitrary component elimination, and explicit preservation of every strict Loewner-monotone response transition. Scalar collapse is used only under the proved constant-trace criterion.",
+      "dependencies": [
+        "BOTTCHER_TRACE_COLLAR_ATLAS",
+        "TRACE_RESPONSE_SEMIGROUP",
+        "EQUIPOTENTIAL_COLLAPSE_CRITERION",
+        "TRACE_RENORMALIZED_NECK_ESTIMATE",
+        "END_TRACE_RESPONSE_COMPACTIFICATION",
+        "HILBERT_TRACE_GLUE_CALCULUS",
+        "TRACE_STABLE_STRICT_TRANSITION_TRANSFER"
+      ],
+      "evidence": "mlc_research_push_4.md#18-the-end-plumbing-theorem"
+    }
+  ],
+  "dependent_node_revisions": [
+    {
+      "id": "DIRECT_DECORATION_FINITE_HORIZON_INFLATION",
+      "revision": "Replace dependency ADAPTIVE_NODAL_RESPONSE_APPROXIMATION by END_PLUMBING_TRACE_RESPONSE_CONTROL. State either exact full-operator retention or the multiplicative trace-renormalized tolerance."
+    },
+    {
+      "id": "DIRECT_DECORATION_STRICT_TRANSITION_TRANSFER",
+      "revision": "Replace the claim of an unchanged homogeneous factor plus arbitrary additive scalar plumbing error by the exact-retention alternative, or by the effective factor mu(1+eta)/(1-eta) and explicit strictness condition."
+    },
+    {
+      "id": "PLANAR_FREE_FINITE_INTERFACE_EXECUTION",
+      "revision": "The finite-interface contract must include full trace response control or exact constant-trace collapse at every plumbing cross-section."
+    }
+  ],
+  "new_failure_certificate": {
+    "id": "END_TRACE_RESPONSE_FAILURE",
+    "fields": [
+      "block",
+      "address",
+      "first_failed_cell",
+      "parent_cross_section",
+      "child_cross_section",
+      "side_wall_or_obstacle_defect",
+      "trace_parameterization_mismatch",
+      "unretained_phase",
+      "nonconstant_trace_used_under_scalar_collapse",
+      "total_resistance",
+      "claimed_eta",
+      "downstream_gauge_or_response_call"
+    ]
+  },
+  "scope_notes": [
+    "The direct-decoration source geometry supplies external rays and equipotential puzzle boundaries; the application must still certify that the selected trace collar avoids all future protected data.",
+    "The full neck operator is not an arbitrary infinite-dimensional datum: in the canonical trace coordinate it is a one-parameter functional calculus of the fixed tangential operator, plus marked phase.",
+    "The numerical audit validates finite Fourier truncations and random finite-dimensional Schur complements only; the proof is the harmonic mode calculation and variational gluing argument.",
+    "H2_RESPONSE_REALIZATION remains open because a common bounded-terminal response and Value quotient across all primitive, neutral, and virtual regimes is not supplied.",
+    "MBTT, geometric coercivity, mixed-tower rigidity, UPTCR, and MLC remain open."
+  ]
+}

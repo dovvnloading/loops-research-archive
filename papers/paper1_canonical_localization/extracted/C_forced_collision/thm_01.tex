@@ -1,0 +1,39 @@
+\begin{lemma}[One quadratic pullback]\label{lem:quadratic-pullback}
+Let \(q\colon U'\to U\) be a proper holomorphic map of degree two between plane topological disks, and let \(K\Subset U\) be a nonempty full continuum.  Let \(c\) be the unique critical point of \(q\) and \(v=q(c)\).
+\begin{enumerate}
+\item If \(v\in K\), then \(q^{-1}K\) is a single full continuum, and the local degree of \(q\) on it is two.
+\item If \(v\notin K\), then \(q^{-1}K\) is the disjoint union of two full continua, each mapped homeomorphically onto \(K\) by \(q\).
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+Choose the nested Jordan basis \(V_r\) of Lemma \ref{lem:jordan-basis}, with each \(\partial V_r\) avoiding \(v\); if \(v\notin K\), choose \(\overline V_1\) disjoint from \(v\).
+
+\emph{Case \(v\notin K\).}  Then \(v\notin V_r\) for every \(r\), so
+\(q\colon q^{-1}(V_r)\to V_r\)
+is an unbranched proper covering of total degree two.  Since \(V_r\) is simply connected, its preimage has exactly two components \(W_r^0,W_r^1\), and each restriction \(q\colon W_r^k\to V_r\) is a biholomorphism.  The two inverse branches of \(q\) on \(V_1\) label the components coherently for all \(r\), and the nesting \(\overline V_{r+1}\subset V_r\) gives
+\[
+ \overline W_{r+1}^k\subset W_r^k,\qquad k=0,1.
+\]
+Set \(L_k=\bigcap_{r\ge1}\overline W_r^k\).  As a nested intersection of nonempty compact connected sets, each \(L_k\) is nonempty, compact, and connected.  It is full because
+\[
+ \mathbb C\setminus L_k=\bigcup_{r\ge1}\bigl(\mathbb C\setminus\overline W_r^k\bigr)
+\]
+is an increasing union of connected sets: each \(\overline W_r^k\) is a closed Jordan disk, since \(\partial V_r\) avoids the critical value and the inverse branch carries \(V_r\) and its regular boundary biholomorphically.  The inverse branches identify each \(L_k\) homeomorphically with \(K=\bigcap_r\overline V_r\), and \(q^{-1}K=L_0\sqcup L_1\).
+
+\emph{Case \(v\in K\).}  Every \(V_r\) contains \(v\).  The component \(W_r\) of \(q^{-1}(V_r)\) containing the critical point \(c\) maps with degree at least two; since the total degree is two, its degree is exactly two and \(W_r\) exhausts \(q^{-1}(V_r)\).  Riemann--Hurwitz for the proper degree-two map \(W_r\to V_r\) with its single simple critical point gives
+\[
+ \chi(W_r)=2\chi(V_r)-1=1,
+\]
+so \(W_r\) is a disk.  Because \(\partial V_r\) contains no critical value, \(\partial W_r\) is a regular Jordan curve.  The compact Jordan disks \(\overline W_r\) are nested, and
+\[
+ q^{-1}K=\bigcap_{r\ge1}\overline W_r.
+\]
+The same increasing-complement argument as in the first case shows that this intersection is connected and full.
+
+For completeness, the bordered Riemann--Hurwitz step can be obtained by doubling \(W_r\) and \(V_r\) across their regular boundaries.  The doubled degree-two map of closed surfaces has exactly the critical point and its mirror, so
+\[
+ 2-2g=2\cdot2-2=2,
+\]
+whence \(g=0\); and since the double of a planar domain with \(b\) boundary components has genus \(b-1\), we get \(b=1\), i.e.\ \(W_r\) is a disk with Jordan boundary.
+\end{proof}

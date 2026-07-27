@@ -1,0 +1,15 @@
+% Concordance: manual equation tags (n.m) in this file mirror the numbering of the underlying research note kl_canonical_localization_forced_collision.md, not this paper's section numbering.
+\begin{lemma}[Jordan-neighborhood basis]\label{lem:jordan-basis}
+Let \(K\Subset U\subset\mathbb C\) be a nonempty full continuum and let \(\mathcal O\) be any neighborhood of \(K\) compactly contained in \(U\).  Then there is a Jordan domain \(V\) with
+\[
+ K\subset V\subset\overline V\subset\mathcal O.               \tag{3.1}
+\]
+Moreover there is a nested sequence of such Jordan domains with
+\[
+ K\subset V_{r+1},\qquad \overline V_{r+1}\subset V_r,\qquad \bigcap_{r\ge1}\overline V_r=K.  \tag{3.2}
+\]
+\end{lemma}
+
+\begin{proof}
+If \(K\) is a singleton, round disks centered at that point satisfy (3.1) and (3.2).  Otherwise, fullness and connectedness of \(K\) make \(\widehat{\mathbb C}\setminus K\) a simply connected domain of the sphere containing \(\infty\).  Uniformize it by the exterior of the closed unit disk, normalized at infinity: let \(\Phi\colon\{\lvert w\rvert>1\}\cup\{\infty\}\to\widehat{\mathbb C}\setminus K\) be the conformal isomorphism with \(\Phi(\infty)=\infty\).  For each radius \(r>1\) the image \(\Phi(\{\lvert w\rvert=r\})\) is a Jordan curve in the complement of \(K\), and its bounded complementary side \(V(r)\) contains \(K\).  Every point \(z\) of the complement of \(K\) has uniformizing modulus \(\lvert\Phi^{-1}(z)\rvert\) strictly greater than \(1\), so \(z\notin\overline{V(r)}\) as soon as \(r<\lvert\Phi^{-1}(z)\rvert\); hence \(\bigcap_{r>1}\overline{V(r)}=K\).  The closed sets \(\overline{V(r)}\setminus\mathcal O\) are compact, decrease as \(r\downarrow1\), and have empty intersection, so some \(V=V(r)\) with \(r\) sufficiently close to \(1\) satisfies \(\overline V\subset\mathcal O\); this gives (3.1).  Choosing the radii \(r_k\downarrow1\) strictly monotonically gives the nested sequence of (3.2), and the intersection equals \(K\) because every point of the complement has uniformizing modulus strictly greater than \(1\).
+\end{proof}

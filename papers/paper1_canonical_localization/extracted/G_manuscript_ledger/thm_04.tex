@@ -1,0 +1,19 @@
+\begin{theorem}[KL tile/base injectivity reduction; manuscript Thm.~12.43, ledger \texttt{KL\_TILE\_INJECTIVITY\_BASE\_ANNULUS\_REDUCTION}]\label{thm:tile-base-reduction}
+Let \(I:A_s\to A_t\) be a degree-one holomorphic immersion between connected annuli, and let \(\pi_s:\tilde A_s\to A_s\), \(\pi_t:\tilde A_t\to A_t\) be universal covers. For compatible positive deck generators \(T_s,T_t\), every lift \(L\) of \(I\) satisfies \(L\circ T_s=T_t\circ L\), and
+\[
+L\ \text{is injective}\iff I\ \text{is injective}.
+\]
+If \(I\) is proper, then it is a biholomorphism.
+\end{theorem}
+
+\begin{proof}
+Suppose first that \(I\) is injective and \(L(x)=L(y)\). Projection gives \(I(\pi_s x)=I(\pi_s y)\), hence \(\pi_s x=\pi_s y\) and \(y=T_s^{k}x\) for some \(k\in\mathbb Z\). Equivariance gives \(L(y)=T_t^{k}L(x)=L(x)\). The target deck action is free, so \(k=0\) and \(x=y\).
+
+Conversely, suppose \(I(u)=I(v)\) with \(u\neq v\), and choose lifts \(x,y\). There is a unique \(k\in\mathbb Z\) with \(L(y)=T_t^{k}L(x)\). Then
+\[
+L(T_s^{-k}y)=T_t^{-k}L(y)=L(x),
+\]
+while \(\pi_s(T_s^{-k}y)=v\neq u=\pi_s(x)\). Thus \(L\) is not injective.
+
+Finally, a proper local biholomorphism has open and closed image, hence is onto the connected target, and is a finite-sheeted covering. Its number of sheets equals its positive annular degree, namely one. It is therefore a biholomorphism.
+\end{proof}

@@ -1,0 +1,43 @@
+{
+  "certificate": "UNBOUNDED_SATELLITE_NO_BOUNDS_ESTIMATE_VALID",
+  "source": "https://publications.hse.ru/pubs/share/direct/1052158150.pdf",
+  "source_theorem_scope": "satellite PL cycle; upper bound depends on relative period and PL degree",
+  "quadratic_specialization": "2*pi/log(4*(s+1)) for d_star=2",
+  "relative_periods": [
+    2,
+    4,
+    8,
+    16,
+    32,
+    64,
+    128,
+    256,
+    1024,
+    1000000,
+    1000000000000
+  ],
+  "sample_upper_bounds": [
+    2.5285397774261,
+    2.0973787820249776,
+    1.7533562442637949,
+    1.4890801833284835,
+    1.2867991384445607,
+    1.129930775416846,
+    1.005936264474846,
+    0.9059624653200388,
+    0.7553047223149635,
+    0.4133183478741797,
+    0.2165322740537154
+  ],
+  "checks": {
+    "all_periods_are_satellite": true,
+    "positive_bounds": true,
+    "strictly_decreasing_samples": true,
+    "large_period_bound_is_small": true,
+    "unbounded_periods_reduce_the_bound": true,
+    "analytic_limit_is_zero": true
+  },
+  "all_checks": true,
+  "interpretation": "unbounded satellite periods force the available ql modulus upper bound toward zero; no uniform lower ql bound can close this branch",
+  "original_artifacts_written": false
+}

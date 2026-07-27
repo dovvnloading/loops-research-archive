@@ -1,0 +1,21 @@
+\begin{corollary}[Exact meaning of the forced KL collision]\label{cor:forced-collision-meaning}
+For an ordinary primitive KL canonical localization,
+Theorem~\ref{thm:forced-collision} (via display (5.7) of
+Theorem~\ref{thm:subgroup-defect}) gives
+\begin{equation}\label{eq:proper-inclusion}
+  H_s\subsetneq K=(i^{p})_*^{-1}(H_t).
+\end{equation}
+Consequently \( q \) in \eqref{eq:q-def} is a nontrivial covering and \( e \) is an embedded resolved pullback component.  The peripheral loop around the proved excess component gives a non-base point of the based fiber \eqref{eq:sheet-fiber}.  All point collisions of the full localized inclusion \( A \) occur in fibers of this same \( q \); none is left unexplained by the factorization.
+\end{corollary}
+
+\begin{proof}
+%% The source (lines 363-380) states this corollary with its derivation inline;
+%% the following assembles exactly those inline steps.
+The proper inclusion \eqref{eq:proper-inclusion} is display (5.7) of Theorem~\ref{thm:subgroup-defect}, supplied at the ordinary primitive canonical seed by Theorem~\ref{thm:forced-collision}.  By Theorem~\ref{thm:sheet-resolution}(7), \( q \) is injective if and only if \( K=H_s \); hence \eqref{eq:proper-inclusion} makes \( q \) a nontrivial (noninjective) covering, while Lemma~\ref{lem:embedded-leg} exhibits \( e \) as a topological embedding of the resolved pullback component.  The peripheral class \( [\gamma] \) supplied by Theorem~\ref{thm:forced-collision} lies in \( K\setminus H_s \), so its coset \( [\gamma]H_s\in K/H_s \) is a non-base point of the based fiber \eqref{eq:sheet-fiber}.  Finally, Theorem~\ref{thm:sheet-resolution}(4)--(5) identify the kernel pair of \( A \) with the kernel pair of \( q \), so every point collision of \( A \) occurs inside a single \( q \)-fiber.
+\end{proof}
+
+\begin{remark}
+This corollary is unconditional at the canonical primitive seed.  Its
+transport to a named KL direct-decoration depth carries the same-seed
+alignment qualification of Proposition~\ref{prop:realization}.
+\end{remark}

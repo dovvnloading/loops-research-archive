@@ -1,0 +1,38 @@
+{
+  "certificate": "NEUTRAL_ATTRACTOR_RIGIDITY_SOURCE_VALID",
+  "source": "https://arxiv.org/html/2607.11408v1",
+  "source_pdf": "https://arxiv.org/pdf/2607.11408v1",
+  "source_sha256": "68ACBB258E456A4A6F2EDF43E2E26030401251036E92662D507059DD08BEC91D",
+  "scope": {
+    "branch": "neutral quadratic sector-renormalization attractor",
+    "reported_result": "Theorem 1.1: combinatorial rigidity and shift conjugacy modulo conformal conjugacy",
+    "mechanism_reported": "uniform complex bounds for neutral cascades and affine conjugacy of combinatorially equivalent cascades",
+    "parabolic_encoding": "infinity entries encode simple parabolic bifurcations; Lavaurs-Epstein tower and critical-orbit order are retained",
+    "status_boundary": "The note attributes the core theorem to [DLL26], a 2026 manuscript."
+  },
+  "not_closed": [
+    "No satellite-to-neutral comparison theorem for arbitrary unbounded quadratic-like returns.",
+    "No virtual-Molecule carrier, interpolation, or parameter-rigidity theorem.",
+    "No global Mandelbrot local-connectivity theorem."
+  ],
+  "checks": {
+    "source_hash_ok": true,
+    "source_title_present": true,
+    "neutral_quadratic_scope_present": true,
+    "precompact_sector_claim_present": true,
+    "compactification_infinity_present": true,
+    "lavaurs_tower_present": true,
+    "critical_access_continuity_present": true,
+    "theorem_1_1_present": true,
+    "full_attractor_rigidity_present": true,
+    "shift_conjugacy_present": true,
+    "uniform_complex_bounds_present": true,
+    "affine_conjugacy_present": true,
+    "dll26_reference_present": true,
+    "dll26_manuscript_boundary_present": true,
+    "global_mlc_not_claimed_by_certificate": true,
+    "arbitrary_satellite_transfer_not_claimed": true
+  },
+  "all_checks": true,
+  "original_artifacts_written": false
+}

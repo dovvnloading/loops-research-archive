@@ -1,0 +1,274 @@
+{
+  "base_immersion_endpoints": [
+    0,
+    2,
+    4,
+    6,
+    8
+  ],
+  "bruteforce_valid_markings": [
+    [
+      0,
+      2,
+      4,
+      6,
+      8
+    ],
+    [
+      0,
+      2,
+      6,
+      8
+    ]
+  ],
+  "covering_block_by_source_atom": [
+    0,
+    0,
+    0,
+    1,
+    1,
+    1,
+    2,
+    2,
+    2,
+    3,
+    3,
+    3
+  ],
+  "immersion_blocks_by_source_atom": [
+    [
+      0
+    ],
+    [
+      0
+    ],
+    [
+      0
+    ],
+    [
+      1
+    ],
+    [
+      1
+    ],
+    [
+      1
+    ],
+    [
+      2
+    ],
+    [
+      2
+    ],
+    [
+      2
+    ],
+    [
+      3
+    ],
+    [
+      3
+    ],
+    [
+      3
+    ]
+  ],
+  "immersion_bridge_witnesses": [
+    {
+      "adjacent_target_micro_atoms": [
+        0,
+        1
+      ],
+      "forced_target_hull": [
+        0,
+        2
+      ],
+      "source_nonproper_run": [
+        1,
+        2
+      ]
+    },
+    {
+      "adjacent_target_micro_atoms": [
+        2,
+        3
+      ],
+      "forced_target_hull": [
+        2,
+        4
+      ],
+      "source_nonproper_run": [
+        4,
+        5
+      ]
+    },
+    {
+      "adjacent_target_micro_atoms": [
+        4,
+        5
+      ],
+      "forced_target_hull": [
+        4,
+        6
+      ],
+      "source_nonproper_run": [
+        7,
+        8
+      ]
+    },
+    {
+      "adjacent_target_micro_atoms": [
+        6,
+        7
+      ],
+      "forced_target_hull": [
+        6,
+        8
+      ],
+      "source_nonproper_run": [
+        10,
+        11
+      ]
+    }
+  ],
+  "mandatory_ideal_endpoints": [
+    0,
+    2,
+    6,
+    8
+  ],
+  "maximal_valid_action_marking_count": 1,
+  "promotable_trace_endpoints": [
+    0,
+    2,
+    4,
+    6,
+    8
+  ],
+  "response_only_trace_endpoints": [
+    1,
+    3,
+    5,
+    7
+  ],
+  "selected_action_blocks": [
+    [
+      0,
+      2
+    ],
+    [
+      2,
+      4
+    ],
+    [
+      4,
+      6
+    ],
+    [
+      6,
+      8
+    ]
+  ],
+  "selected_action_details": {
+    "covering_refinement_failures": [],
+    "immersion_components": {
+      "0": [
+        {
+          "covering_boundary_images": [
+            0,
+            2
+          ],
+          "end_proper": true,
+          "proper": false,
+          "source_atoms": [
+            0,
+            1,
+            2
+          ],
+          "source_boundary_vertices": [
+            0,
+            3
+          ]
+        }
+      ],
+      "1": [
+        {
+          "covering_boundary_images": [
+            2,
+            4
+          ],
+          "end_proper": true,
+          "proper": false,
+          "source_atoms": [
+            3,
+            4,
+            5
+          ],
+          "source_boundary_vertices": [
+            3,
+            6
+          ]
+        }
+      ],
+      "2": [
+        {
+          "covering_boundary_images": [
+            4,
+            6
+          ],
+          "end_proper": true,
+          "proper": false,
+          "source_atoms": [
+            6,
+            7,
+            8
+          ],
+          "source_boundary_vertices": [
+            6,
+            9
+          ]
+        }
+      ],
+      "3": [
+        {
+          "covering_boundary_images": [
+            6,
+            8
+          ],
+          "end_proper": true,
+          "proper": false,
+          "source_atoms": [
+            9,
+            10,
+            11
+          ],
+          "source_boundary_vertices": [
+            9,
+            12
+          ]
+        }
+      ]
+    },
+    "induced_remainder_components": []
+  },
+  "selected_action_endpoints": [
+    0,
+    2,
+    4,
+    6,
+    8
+  ],
+  "status": "compiled",
+  "trace_overlay_endpoints": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8
+  ],
+  "valid_action_marking_count": 2
+}

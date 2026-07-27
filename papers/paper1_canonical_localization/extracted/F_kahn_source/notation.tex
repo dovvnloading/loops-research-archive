@@ -1,0 +1,48 @@
+%% ================= Cluster F: notation and conventions =================
+%% Kahn source background for the background section and the
+%% exact-identification subsection.  Assumes amsmath, amssymb, amsthm;
+%% theorem/lemma/proposition/definition/remark environments are assumed
+%% declared in the main preamble.
+
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\D}{\mathbb{D}}
+\newcommand{\T}{\mathbb{T}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Ann}{\mathbb{A}}          % round annulus \Ann(r,R)
+\newcommand{\BU}{\mathbf{U}}           % ambient disk (psi-ql source side)
+\newcommand{\BV}{\mathbf{V}}           % ambient disk of a localization
+\newcommand{\sm}{\setminus}
+\newcommand{\KK}{\mathcal{K}}          % cycle of small filled Julia sets
+\DeclareMathOperator{\Mod}{mod}        % conformal modulus
+\DeclareMathOperator{\Ind}{Ind}        % winding number
+
+%% Conventions (all traceable to the locked Kahn/KL sources):
+%%  * \T_r=\{|z|=r\}, \T=\T_1, \Ann(r,R)=\{r<|z|<R\}
+%%    [Kahn I, intro.tex, ll. 249-252].
+%%  * ``FJ-set'': compact, connected, full, more than one point
+%%    [Kahn I, intro.tex, ll. 254-256].
+%%  * A psi-polynomial-like (psi-pl) map is a pair (i,f)\colon\BU'\to\BU
+%%    as in the Definitions block; K is its filled Julia set and
+%%    K'=i^{-1}(K)=f^{-1}(K) [Kahn I, psiql2.tex, ll. 16-41].
+%%  * (S_A,\widehat A) and \pi_{S,A} denote Kahn's localization of a
+%%    marked Riemann surface (S,A) [psiql2.tex, ll. 456-498].
+%%  * Canonical seed: f\colon U^1\to U^0 a quadratic-like restriction of
+%%    a quadratic polynomial, primitively renormalizable of period p>1;
+%%    U^r=f^{-r}(U^0); F=f^p\colon U^p\to U^0; physical inclusion
+%%    a=i^p\colon U^p\hookrightarrow U^0; A=K_p; B=\KK_p
+%%    [Kahn I, pullback.tex ll. 2-7; intro.tex ll. 22-47;
+%%     psiql2.tex ll. 549-558].
+%%  * Complementary marked surfaces of the canonical localization:
+%%    T=(U^0\sm B)\cup A, T'=(U^p\sm F^{-1}B)\cup A
+%%    [psiql2.tex, ll. 528-529]; complementary annulus bases
+%%    \Omega_s=U^p\sm F^{-1}B, \Omega_t=U^0\sm B.
+%%  * H_s\le\pi_1(\Omega_s,z_*), H_t\le\pi_1(\Omega_t,z_*): based
+%%    localization subgroups realized by local neighborhoods of A
+%%    (Definitions block; local notes, forced-collision Sec. 5).
+%%  * Pullback tower: (i_n,f_n)\colon(\BU^{n+1},K^{n+1})\to(\BU^n,K^n),
+%%    with i_n\circ f_{n+1}=f_n\circ i_{n+1}
+%%    [psiql2.tex, ll. 350-416].
+%%  * KL II direct-decoration data: satellite period q, escape depth
+%%    \nu; P=Y^{(\nu-1)q+1}; Q_L,Q_R the univalent f^q-pullbacks of P
+%%    of depth \nu q+1 [KL II, kingdom.tex, ll. 116-137].

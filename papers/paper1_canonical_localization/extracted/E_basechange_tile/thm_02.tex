@@ -1,0 +1,38 @@
+\begin{corollary}[Propagation through the exact Kahn equalizer tower]\label{cor:kahn-tower}
+Kahn's recursion on the complementary-cover locus is exactly such a base change:
+\[
+\mathbf U^{r+2}=\{(x,y)\in\mathbf U^{r+1}\times\mathbf U^{r+1}:i_r(x)=f_r(y)\},
+\qquad
+i_{r+1}(x,y)=y.
+\]
+If \(i_r=e_rq_r\) with \(q_r\) a covering onto the resolved intermediate \(P_r\) and \(e_r\) an embedding, then setting
+\[
+P_{r+1}=P_r\times_{\mathbf U^r}\mathbf U^{r+1},
+\qquad
+q_{r+1}(x,y)=(q_r(x),y),
+\qquad
+e_{r+1}(p,y)=y,
+\]
+one has \(i_{r+1}=e_{r+1}q_{r+1}\), with \(q_{r+1}\) the pullback covering of \(q_r\), \(e_{r+1}\) a topological embedding, the kernel pairs of \(i_{r+1}\) and \(q_{r+1}\) equal, and, for every \((p,y)\in P_{r+1}\),
+\[
+q_{r+1}^{-1}(p,y)\cong q_r^{-1}(p).
+\]
+By induction on \(r\), the resolved factorization and its infinite full fibers propagate through every full, unselected exact Kahn equalizer on the complementary-cover locus.
+\end{corollary}
+
+\begin{proof}
+Apply Proposition~\ref{prop:base-change} with \(X=Y=\mathbf U^{r+1}\), \(Z=\mathbf U^{r}\), \(i=i_r\), \(f=f_r\), \(q=q_r\), \(e=e_r\); then \(E=\mathbf U^{r+2}\), \(R=P_{r+1}\), and the displayed maps are exactly \eqref{eq:base-change-maps}.  Conclusions (1)--(5) of the proposition give the asserted covering, embedding, factorization, kernel-pair, and fiber statements at stage \(r+1\).  Conclusion (6) applies as well, because \(i_r\) is an immersion at every stage of Kahn's tower (Kahn~I, Lemma~7.7, p.~40 and Lemma~7.9, p.~40, with the tower statement at \S7.3.2, p.~42); it gives that \(e_{r+1}\) is an open embedding and \(i_{r+1}\) again an immersion, which is exactly the hypothesis Kahn's Lemma~7.8, p.~40 needs for the set-theoretic equalizer at stage \(r+2\) to be the pullback in the category of complex \(1\)-manifolds (see Remark~\ref{rem:openness-regenerates-immersion}).  The base stage is \(r=0\): on the complementary-cover locus \(i_0\) coincides with the lift \(\widehat a\) of Section~\ref{sec:resolution}, whose factorization is Theorem~\ref{thm:sheet-resolution} instantiated at the canonical seed (Corollary~\ref{cor:forced-collision-meaning}).  Iterating from that stage propagates the factorization, together with the cardinality of every fiber, to all subsequent stages.
+\end{proof}
+
+\begin{remark}
+The propagation acts on the complementary-cover locus only: it does
+not extend the factorization across a filled or prime-end completion,
+does not select a decoration-side component, and does not discharge
+the same-seed alignment hypothesis of
+Proposition~\ref{prop:realization}.  Note also that the restriction to
+the complementary locus \(A_r=\mathbf U^r\setminus K^r\) is forced
+rather than convenient: Kahn~I, \S7.3.2, p.~42 records that
+\(i\colon K'\to K\) is a homeomorphism and hence so is
+\(i_1\colon K''\to K'\), so every \(i_r\) is injective on the filled
+set and no nontrivial covering factor could exist over \(K^r\).
+\end{remark}

@@ -1,0 +1,57 @@
+\begin{theorem}[Forced collision in Kahn's canonical localization; manuscript Thm.~12.48, ledger \texttt{KL\_CANONICAL\_LOCALIZATION\_FORCED\_COLLISION}]\label{thm:forced-collision}
+Let \(f:U^1\to U^0\) be an ordinary quadratic-like restriction of a quadratic polynomial, primitively renormalizable of period \(p>1\). Put
+\[
+F=f^{p}:U^{p}\to U^{0},\qquad A=K_p,\qquad B=\mathcal K_p=\bigcup_{j=0}^{p-1}K_p(j).
+\]
+Kahn's canonical localization uses
+\[
+T'=(U^{p}\setminus F^{-1}B)\cup A,\qquad T=(U^{0}\setminus B)\cup A
+\]
+and localizes the physical inclusion \(i^{p}:T'\to T\). The localized inclusion
+\[
+\hat i:T'_A\longrightarrow T_A
+\]
+is not injective. More precisely, there is a based class
+\[
+[\gamma]\in(i^{p})_*^{-1}(H_t)\setminus H_s
+\]
+for the source and target localization subgroups.
+
+The collision propagates through every exact Kahn pullback inclusion \(i_r\). Whenever the same canonical seed carries the KL direct-decoration data, the full base-annulus map from depth \(m=\nu q+1\) to \(n=(\nu-1)q+1\), every corresponding full universal-cover tile lift, and the full glued inclusion pseudo-piece map are noninjective.
+\end{theorem}
+
+\begin{proof}
+The proper map \(F:U^{p}\to U^{0}\) has global degree \(2^{p}\). On the central renormalization component its degree is two. Choose a sufficiently small Jordan neighborhood \(V\) of \(A\) in the range of the quadratic-like renormalization. The central component of \(F^{-1}V\) has degree two, whereas the degrees of all components sum to \(2^{p}\). Since \(p>1\), another component exists. By Lemma~\ref{lem:finite-full-pullbacks}, it contains a component
+\[
+X\subset F^{-1}A,\qquad X\neq A,
+\]
+and \(X\) maps onto \(A\).
+
+Write \(K_j=K_p(j)=f^{j}(A)\). Since \(F=f^{p}\),
+\[
+F(K_j)=f^{j}(F(A))=f^{j}(A)=K_j .
+\]
+If \(X\cap K_j\neq\varnothing\), its image meets both \(A\) and \(K_j\). For \(j>0\), this contradicts primitive pairwise disjointness. For \(j=0\), it contradicts that \(X\) and \(A\) are distinct components of \(F^{-1}A\). Thus \(X\cap B=\varnothing\).
+
+The lemma makes \(F^{-1}B\) a finite disjoint family of full continua. Choose a Jordan disk \(D_X\Subset U^{p}\) satisfying
+\[
+X\subset D_X,\qquad \overline{D_X}\cap\bigl((F^{-1}B\setminus X)\cup B\bigr)=\varnothing .
+\]
+Set \(\Omega_s=U^{p}\setminus F^{-1}B\), \(\Omega_t=U^{0}\setminus B\). Because \(F(B)=B\), one has \(B\subset F^{-1}B\), and the physical inclusion maps \(\Omega_s\) into \(\Omega_t\).
+
+Choose a small Jordan neighborhood \(D_A\Subset T'\) containing \(A\) and no other pulled component, a basepoint \(z_*\in D_A\setminus A\), and a path in \(\Omega_s\) from \(z_*\) to \(\partial D_X\); path existence is the last assertion of Lemma~\ref{lem:finite-full-pullbacks}. Conjugate the positive peripheral loop \(\partial D_X\) by that path and call the based loop \(\gamma\). For \(x\in X\), \(\operatorname{Ind}_x(\gamma)=1\). Every loop in \(D_A\setminus A\) has winding zero about \(x\), and winding is invariant under homotopy in \(\Omega_s\). Therefore
+\[
+[\gamma]\notin H_s=\operatorname{im}\bigl[\pi_1(D_A\setminus A,z_*)\to\pi_1(\Omega_s,z_*)\bigr].
+\]
+On the other hand, \(\overline{D_X}\cap B=\varnothing\), so \(\partial D_X\), and hence its based conjugate, contracts in \(\Omega_t\). Thus \((i^{p})_*[\gamma]=1\in H_t\).
+
+Lift \(\gamma\) from a point in the source localization cover. Since its class is not in \(H_s\), its two endpoints are distinct. Its target lift is closed because the image class lies in \(H_t\). Commutativity of the localized lift therefore identifies the two source endpoints. Adding the marked continuum \(A\) does not identify distinct points of the complement cover, so this is a collision of \(\hat i\).
+
+For propagation, Kahn's exact equalizer is
+\[
+\mathbf U^{r+2}=\{(x,y):i_r(x)=f_r(y)\},\qquad i_{r+1}(x,y)=y,\quad f_{r+1}(x,y)=x .
+\]
+Suppose \(x_r^{+}\neq x_r^{-}\), \(i_r(x_r^{+})=i_r(x_r^{-})=v_r\) in the complementary annulus. The restriction of \(f_r\) there is a surjective unbranched covering. Choose \(y_r\) with \(f_r(y_r)=v_r\). Then \((x_r^{+},y_r)\neq(x_r^{-},y_r)\) are equalizer points with the same \(i_{r+1}\)-image \(y_r\). Induction propagates the collision to every \(i_r\) and hence to every composite \(I_{m,n}\).
+
+For the stated KL depths, the induced annular degree is \(+1\). If \(I_{m,n}(u)=I_{m,n}(v)\), \(u\neq v\), choose source lifts \(\tilde u,\tilde v\). Their target images differ by a deck translation \(T_t^{k}\). Degree-one equivariance gives \(L(T_s^{-k}\tilde v)=L(\tilde u)\) at distinct source points. Each full universal-cover copy embeds in the source pseudo-piece before the prescribed central gluing, so the same-tile collision survives in the glued map.
+\end{proof}

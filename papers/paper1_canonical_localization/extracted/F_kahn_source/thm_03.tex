@@ -1,0 +1,76 @@
+\begin{theorem}[localization; Kahn I, Theorem 7.12, p.~44]\label{thm:kahn-localization}
+For every marked Riemann surface \((S,A)\) there exists a pair
+consisting of a local marked Riemann surface \((S_A,\widehat A)\) and
+a local cover \(\pi_{S,A}\colon(S_A,\widehat A)\to(S,A)\), and this
+pair is unique up to isomorphism.  For every morphism
+\(g\colon(S,A)\to(T,B)\) there is a unique continuous map
+\(\widehat g\colon S_A\to T_B\) with
+\(\pi_{T,B}\circ\widehat g=g\circ\pi_{S,A}\), and this \(\widehat g\)
+is a morphism \((S_A,\widehat A)\to(T_B,\widehat B)\).  These
+assignments define a functor from marked Riemann surfaces to local
+marked Riemann surfaces, and the maps \(\pi_{S,A}\) form a natural
+transformation from localization to the identity functor
+(\S7.4.1, pp.~44--45).  Moreover (\S7.4.1, p.~45): if \(g\) is an immersion
+then \(\widehat g\) is an immersion, and if
+\(g\colon S\sm A\to T\sm B\) is a covering map then \(\widehat g\) is
+a branched covering.
+\end{theorem}
+
+\begin{remark}[what the theorem does \emph{not} assert]\label{rem:localization-nonassertions}
+The source asserts functoriality, uniqueness of the commuting lift,
+and preservation of immersions and of coverings off the marked set.
+It does \emph{not} assert that \(\widehat g\) is an embedding when
+\(g\) is an embedding; it does not assert that the naturality square
+\(\pi_{T,B}\circ\widehat g=g\circ\pi_{S,A}\) is Cartesian; and it does
+not assert any subgroup-reflection property of the covering subgroups
+involved.  In the path model of the canonical renormalization
+(Kahn~I, \S7.4.5, pp.~46--47) the source proves only the forward
+direction: source-equivalent paths are mapped to target-equivalent
+paths.
+\end{remark}
+
+\begin{proof}[Proof (faithful paraphrase of Kahn I, proof of Theorem 7.12, p.~44)]
+\emph{Construction when \(S\sm A\) is connected} (\S7.4.1, p.~44; the
+only case used for the canonical renormalization).  Choose a local
+neighborhood \(U\) of \(A\) and let
+\(\pi'_{S,A}\colon S'_A\to S\sm A\) be the covering of \(S\sm A\)
+corresponding to (the image of) the fundamental group of \(U\sm A\).
+The subsurface \(U\sm A\) lifts canonically to \(S'_A\).  Define
+\(S_A\) as the quotient of the disjoint union \(U\sqcup S'_A\)
+obtained by identifying each point of \(U\sm A\) with its image under
+this lift; let \(\widehat A\subset S_A\) be the image of \(A\) (and
+\(\widehat U\) the image of \(U\)).  Then \(S_A\sm\widehat A\) is
+isomorphic to \(S'_A\), whose fundamental group is \(\Z\), so
+\((S_A,\widehat A)\) is local.  Define \(\pi_{S,A}=\pi'_{S,A}\) on
+\(S'_A\) and as the inverse of the quotient map on \(\widehat U\); the
+two definitions agree on the overlap and make \(\pi_{S,A}\) a local
+cover.
+
+\emph{General case} (\S7.4.1, p.~44).  With \(U\) a local neighborhood
+of \(A\), take \(S'_A\) to be the disjoint union, over the components
+\(E\) of \(S\sm A\), of the annular covers of \(E\) induced by
+\(E\cap U\), and proceed as before.
+
+\emph{Lift of a morphism} (\S7.4.1, p.~44).  Given
+\(g\colon(S,A)\to(T,B)\), define \(\widehat g\) on \(\widehat A\) as
+\((\pi_{T,B}|_{\widehat B})^{-1}\circ g\circ\pi_{S,A}\), and on each
+component of \(S_A\sm\widehat A\) as the lift of
+\(g\circ\pi_{S,A}\) through the covering \(\pi_{T,B}\); such a lift
+exists because \(g\) carries the local-neighborhood subgroup of the
+source into that of the target (implicit in the source's ``let
+\(\widehat g\) be the lift''), and it is the unique continuous map
+commuting with the projections.  One checks directly that
+\(\widehat g\) is a morphism.
+
+\emph{Functoriality and uniqueness} (\S7.4.1, p.~44).  Uniqueness of commuting
+lifts implies that the lift of a composition is the composition of the
+lifts.  Uniqueness of the pair \(((S_A,\widehat A),\pi_{S,A})\)
+follows by lifting the identity morphism between two candidate
+localizations.
+
+\emph{Preservation statements} (\S7.4.1, p.~45).  \(\widehat g\) is
+locally a lift of \(g\) through local homeomorphisms, hence an
+immersion when \(g\) is; when \(g\) restricts to a covering
+\(S\sm A\to T\sm B\), the lifted map on complements is a covering and
+the completed map is a branched covering.
+\end{proof}

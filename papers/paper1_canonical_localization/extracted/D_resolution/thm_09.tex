@@ -1,0 +1,55 @@
+\begin{theorem}[Based-coset no-merger/no-birth criterion]\label{thm:coset-criterion}
+For the based coset map \( \overline\varphi\colon K/H\to K^+/H^+ \) of Definition~\ref{def:coset-map}:
+\begin{equation}\label{eq:injectivity-criterion}
+  \overline\varphi\ \text{is injective}
+  \iff
+  K\cap\varphi^{-1}(H^+)=H;
+\end{equation}
+\begin{equation}\label{eq:surjectivity-criterion}
+  \overline\varphi\ \text{is surjective}
+  \iff
+  K^+=\varphi(K)H^+;
+\end{equation}
+and therefore
+\begin{equation}\label{eq:bijectivity-criterion}
+  \overline\varphi\ \text{is bijective}
+  \iff
+  \begin{cases}
+    K\cap\varphi^{-1}(H^+)=H,\\[2pt]
+    K^+=\varphi(K)H^+ .
+  \end{cases}
+\end{equation}
+If \eqref{eq:injectivity-criterion} fails, every
+\begin{equation}\label{eq:merger-certificate}
+  k\in\bigl(K\cap\varphi^{-1}(H^+)\bigr)\setminus H
+\end{equation}
+is an exact \emph{based-coset merger certificate}: the non-base coset \( kH \) maps to the base coset \( H^+ \).
+
+If \eqref{eq:surjectivity-criterion} fails, every
+\begin{equation}\label{eq:birth-certificate}
+  k^+\in K^+\setminus\varphi(K)H^+
+\end{equation}
+is an exact \emph{based-coset birth certificate}: its coset has no old preimage.
+\end{theorem}
+
+\begin{proof}
+Suppose
+\[
+  \overline\varphi(k_1H)=\overline\varphi(k_2H).
+\]
+By the definition \eqref{eq:coset-map-def}, this is equivalent to
+\[
+  \varphi(k_2^{-1}k_1)\in H^+ .
+\]
+Since \( k_2^{-1}k_1\in K \), injectivity holds exactly when this implication forces \( k_2^{-1}k_1\in H \), which is precisely the equality \( K\cap\varphi^{-1}(H^+)=H \) in \eqref{eq:injectivity-criterion}.  Taking \( k_2=1 \) gives the explicit certificate \eqref{eq:merger-certificate}.
+
+A coset \( k^+H^+ \) lies in the image of \( \overline\varphi \) exactly when there is \( k\in K \) with
+\[
+  k^+H^+=\varphi(k)H^+,
+\]
+equivalently
+\[
+  k^+\in\varphi(K)H^+ .
+\]
+Every target coset has a preimage exactly when \eqref{eq:surjectivity-criterion} holds.  Its failure is witnessed by \eqref{eq:birth-certificate}.  Combining \eqref{eq:injectivity-criterion} and \eqref{eq:surjectivity-criterion} proves \eqref{eq:bijectivity-criterion}.
+\end{proof}

@@ -1,0 +1,232 @@
+{
+  "atoms": [
+    "a0",
+    "a1",
+    "a2",
+    "a3",
+    "a4"
+  ],
+  "word": [
+    "L",
+    "R",
+    "L",
+    "L",
+    "R",
+    "R",
+    "L"
+  ],
+  "state_bound": 32,
+  "masks": [
+    [
+      "a0",
+      "a1",
+      "a2",
+      "a3",
+      "a4"
+    ],
+    [
+      "a0",
+      "a2",
+      "a4"
+    ],
+    [
+      "a1"
+    ],
+    [],
+    [],
+    [],
+    [],
+    []
+  ],
+  "stages": [
+    {
+      "stage": 0,
+      "symbol": "L",
+      "mask_before": [
+        "a0",
+        "a1",
+        "a2",
+        "a3",
+        "a4"
+      ],
+      "G_genuine_glue": [],
+      "T_zero_energy_transport": [],
+      "O_root_side_only": [
+        "a1",
+        "a3"
+      ],
+      "Z_double_inactive": [
+        "a0",
+        "a2",
+        "a4"
+      ],
+      "mask_after": [
+        "a0",
+        "a2",
+        "a4"
+      ]
+    },
+    {
+      "stage": 1,
+      "symbol": "R",
+      "mask_before": [
+        "a0",
+        "a2",
+        "a4"
+      ],
+      "G_genuine_glue": [],
+      "T_zero_energy_transport": [
+        "a1",
+        "a3"
+      ],
+      "O_root_side_only": [
+        "a0",
+        "a4"
+      ],
+      "Z_double_inactive": [
+        "a2"
+      ],
+      "mask_after": [
+        "a1"
+      ]
+    },
+    {
+      "stage": 2,
+      "symbol": "L",
+      "mask_before": [
+        "a1"
+      ],
+      "G_genuine_glue": [
+        "a3"
+      ],
+      "T_zero_energy_transport": [
+        "a0",
+        "a2",
+        "a4"
+      ],
+      "O_root_side_only": [
+        "a1"
+      ],
+      "Z_double_inactive": [],
+      "mask_after": []
+    },
+    {
+      "stage": 3,
+      "symbol": "L",
+      "mask_before": [],
+      "G_genuine_glue": [
+        "a1",
+        "a3"
+      ],
+      "T_zero_energy_transport": [
+        "a0",
+        "a2",
+        "a4"
+      ],
+      "O_root_side_only": [],
+      "Z_double_inactive": [],
+      "mask_after": []
+    },
+    {
+      "stage": 4,
+      "symbol": "R",
+      "mask_before": [],
+      "G_genuine_glue": [
+        "a0",
+        "a4"
+      ],
+      "T_zero_energy_transport": [
+        "a1",
+        "a2",
+        "a3"
+      ],
+      "O_root_side_only": [],
+      "Z_double_inactive": [],
+      "mask_after": []
+    },
+    {
+      "stage": 5,
+      "symbol": "R",
+      "mask_before": [],
+      "G_genuine_glue": [
+        "a0",
+        "a4"
+      ],
+      "T_zero_energy_transport": [
+        "a1",
+        "a2",
+        "a3"
+      ],
+      "O_root_side_only": [],
+      "Z_double_inactive": [],
+      "mask_after": []
+    },
+    {
+      "stage": 6,
+      "symbol": "L",
+      "mask_before": [],
+      "G_genuine_glue": [
+        "a1",
+        "a3"
+      ],
+      "T_zero_energy_transport": [
+        "a0",
+        "a2",
+        "a4"
+      ],
+      "O_root_side_only": [],
+      "Z_double_inactive": [],
+      "mask_after": []
+    }
+  ],
+  "contact_graph_edges": [
+    {
+      "from": "a0",
+      "symbol": "L",
+      "to": "a2"
+    },
+    {
+      "from": "a1",
+      "symbol": "R",
+      "to": "a3"
+    },
+    {
+      "from": "a2",
+      "symbol": "L",
+      "to": "a4"
+    },
+    {
+      "from": "a2",
+      "symbol": "R",
+      "to": "a1"
+    },
+    {
+      "from": "a3",
+      "symbol": "R",
+      "to": "a2"
+    },
+    {
+      "from": "a4",
+      "symbol": "L",
+      "to": "a0"
+    }
+  ],
+  "strongly_connected_components": [
+    [
+      "a0",
+      "a1",
+      "a2",
+      "a3",
+      "a4"
+    ]
+  ],
+  "recurrent_neutral_components": [
+    [
+      "a0",
+      "a1",
+      "a2",
+      "a3",
+      "a4"
+    ]
+  ]
+}

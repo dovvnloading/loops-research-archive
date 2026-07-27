@@ -1,0 +1,221 @@
+{
+  "patch_status": "proposal_requires_repository_schema_dependency_and_build_audit",
+  "source_build": {
+    "name": "marked_width_mlc_manuscript.pdf",
+    "open_obligations": 52,
+    "proved_obligations": 152,
+    "imported_obligations": 16
+  },
+  "counts": {
+    "conservative_open_after_push_2": 51,
+    "open_after_corrected_mapping_telescope_rewrite": 50,
+    "note": "Counts are relative only to the inspected 52-open library build; no earlier-push reductions are added because that build may already incorporate them."
+  },
+  "new_proved_obligations": [
+    {
+      "id": "CRITICAL_CUT_CONSERVATION",
+      "status": "proved",
+      "statement": "For commuting iterates f^N and f^r, local degrees satisfy e_r(z)e_N(f^r z)=e_N(z)e_r(f^N z). For a quadratic polynomial, the branch/cylinder factorizations are two cuts of the same complete chronological critical word.",
+      "dependencies": [],
+      "evidence": "mlc_research_push_2.md#5-critical-cut-identity"
+    },
+    {
+      "id": "PROPER_SQUARE_DEGREE_CONSERVATION",
+      "status": "proved",
+      "statement": "Every proper commuting square satisfies deg(H)deg(h_1)=deg(h_0)deg(F), with the corresponding pointwise local-degree identity. With a univalent source projection and quadratic root branch, the quadratic degree lies either in the lifted branch or in the target projection.",
+      "dependencies": [],
+      "evidence": "mlc_research_push_2.md#6-degree-conservation-in-a-proper-square"
+    },
+    {
+      "id": "OFF_CRITICAL_CYLINDER_TRANSFER",
+      "status": "proved",
+      "statement": "A univalent root polynomial branch lifted through a univalent polynomial cylinder is automatically univalent; its actual image is a forced target base on which the equal-depth projection is univalent. Prime-end phase, protected chains, and cyclic order transport by the commuting conformal square.",
+      "dependencies": [
+        "DIRECT_DECORATION_PULLBACK_COMPACTIFICATION"
+      ],
+      "evidence": "mlc_research_push_2.md#7-every-off-critical-branch-transfers-automatically"
+    },
+    {
+      "id": "RETIMED_FINITE_CYLINDER_CORRESPONDENCE",
+      "status": "proved",
+      "statement": "Given an actual root branch F=f^r:A->B with A compactly contained in B compactly contained in the direct-decoration root puzzle P, every finite univalent cylinder h_w=f^{N_w}:Q_w->P carries the actual covering/embedded pair (f^{N_w+r},f^{N_w}):h_w^{-1}(A) => B. The covering has the same degree as F; the common univalent prefix cancels from the relative critical word; root markings, obstacles, phase, and cyclic order pull back exactly; and the family is shift- and enlargement-natural.",
+      "dependencies": [
+        "DIRECT_DECORATION_PULLBACK_COMPACTIFICATION",
+        "QL_RETURN_FACTORIZATION",
+        "PRIME_END_MARKING_ACTION_CRITERION"
+      ],
+      "evidence": "mlc_research_push_2.md#7a-retimed-pullback-correspondences-solve-the-finite-cylinder-criticality-problem"
+    },
+    {
+      "id": "CRITICALITY_SWAP_NO_GO",
+      "status": "proved",
+      "statement": "For f(z)=z^2-1, a proper commuting lift can move the root quadratic degree into the target projection. A second explicit lift has univalent source and target projections and equal total return degree two but changes the chronological word from (2,1) to (1,2).",
+      "dependencies": [],
+      "evidence": "mlc_research_push_2.md#8-exact-criticality-swap-example"
+    },
+    {
+      "id": "STAGEWISE_CRITICAL_WORD_LADDER",
+      "status": "proved",
+      "statement": "For each intermediate one-step square, lifted_degree_j*projection_degree_{j+1}=projection_degree_j*root_degree_j. With univalent initial projection, exact chronological degree-word transfer is equivalent to univalence of every transverse projection, not merely the endpoint projection or equality of total degree.",
+      "dependencies": [
+        "PROPER_SQUARE_DEGREE_CONSERVATION"
+      ],
+      "evidence": "mlc_research_push_2.md#11-exact-ladder-criterion"
+    },
+    {
+      "id": "QUADRATIC_BASE_CHANGE_DICHOTOMY",
+      "status": "proved",
+      "statement": "For a proper degree-two map of Jordan disks and an embedded Jordan subdisk with boundary avoiding the critical value, the pullback is one connected degree-two Jordan disk exactly when the subdisk contains the critical value; if it omits the critical value, the pullback is two conformal components.",
+      "dependencies": [],
+      "evidence": "mlc_research_push_2.md#12-pulling-a-quadratic-disk-map-over-a-smaller-base"
+    },
+    {
+      "id": "CRITICAL_SPINE_TELESCOPE_COMPILER",
+      "status": "proved",
+      "statement": "A finite cyclic covering/embedded stage system with exactly one quadratic stage, boundary critical-value avoidance, compatible relative-cover components, and post-quadratic critical-value retention has a unique connected full-degree fiber-product component and a degree-two endpoint covering. The first omitted critical value is the exact degree-loss certificate.",
+      "dependencies": [
+        "DEGREE_TWO_FACTORIZATION",
+        "QUADRATIC_BASE_CHANGE_DICHOTOMY",
+        "RELATIVE_COVER_LIFT"
+      ],
+      "evidence": "mlc_research_push_2.md#15-telescope-theorem"
+    },
+    {
+      "id": "MARKED_FINITE_HORIZON_ASSEMBLY",
+      "status": "proved",
+      "statement": "Actual compatible marked stages satisfying the critical-spine hypotheses assemble into a closed degree-two endpoint correspondence. If each relative stage g_j o iota_j^{-1} is an actual restriction f^{s_j}, then the endpoint relative map G_m o I_m^{-1} is f^{sum s_j}; the chronological word, component routes, relative-cover lifts, prime-end action, proper/end-proper flags, and enlargement squares compose exactly.",
+      "dependencies": [
+        "CRITICAL_SPINE_TELESCOPE_COMPILER",
+        "PRIME_END_MARKING_ACTION_CRITERION",
+        "RELATIVE_COVER_LIFT",
+        "MARKED_PAIR_ENLARGEMENT_NATURALITY"
+      ],
+      "evidence": "mlc_research_push_2.md#18-assembly-theorem"
+    },
+    {
+      "id": "END_FIBER_ACTION_EXTENSION",
+      "status": "proved",
+      "statement": "A fixed actual iterate with parent-compatible finite-cylinder target components extends by nested intersection to the corresponding end fibers. This theorem does not apply directly to retimed finite-word pairs whose covering exponents grow with word length.",
+      "dependencies": [
+        "DIRECT_DECORATION_PULLBACK_COMPACTIFICATION"
+      ],
+      "evidence": "mlc_research_push_2.md#23-end-fiber-extension-theorem"
+    },
+    {
+      "id": "LOCALIZED_QL_RESTRICTION",
+      "status": "proved",
+      "statement": "A connected quadratic-like map can be restricted inside any prescribed Jordan neighborhood compactly containing its filled Julia set, preserving degree, filled Julia set, polynomial iterate, and chronological critical word.",
+      "dependencies": [],
+      "evidence": "mlc_research_push_2.md#lemma-5a-localized-quadratic-like-restriction"
+    },
+    {
+      "id": "FINITE_CYLINDER_SECOND_PORTRAIT_TRANSFER",
+      "status": "proved",
+      "statement": "After localizing an actual root quadratic-like portrait inside the direct-decoration gap, every finite univalent cylinder carries the exact pseudo-quadratic-like pair (f^{N_w+r},f^{N_w}) with pulled filled carrier, relative critical word, finite protected marking, obstacle ledger, and shift/enlargement naturality.",
+      "dependencies": [
+        "LOCALIZED_QL_RESTRICTION",
+        "RETIMED_FINITE_CYLINDER_CORRESPONDENCE"
+      ],
+      "evidence": "mlc_research_push_2.md#corollary-5d-finite-cylinder-second-portrait-transfer"
+    },
+    {
+      "id": "DIRECT_DECORATION_END_PRIME_END_CODING",
+      "status": "proved",
+      "statement": "In the source ray/equipotential puzzle geometry, every infinite direct-decoration address determines one external prime-end angle, its nested end fiber is the corresponding impression, and angle/impression dynamics commute with the pre-root shift.",
+      "dependencies": [
+        "DIRECT_DECORATION_PULLBACK_COMPACTIFICATION"
+      ],
+      "evidence": "mlc_research_push_2.md#theorem-17-end-fibers-are-canonical-prime-end-impressions"
+    },
+    {
+      "id": "PLANAR_END_COLLAPSE_NO_GO",
+      "status": "proved",
+      "statement": "Along every infinite direct-decoration address, the inverse branches converge only to constant maps on compact subsets of the root puzzle interior; images of every compact interior carrier have diameter tending to zero. Hence a nondegenerate end portrait cannot be obtained as an unrescaled planar normal-family limit.",
+      "dependencies": [
+        "DIRECT_DECORATION_PULLBACK_COMPACTIFICATION"
+      ],
+      "evidence": "mlc_research_push_2.md#theorem-18-planar-end-collapse-theorem"
+    },
+    {
+      "id": "NORMALIZED_END_GERM_CONSTANCY",
+      "status": "proved",
+      "statement": "In the cylinder coordinate, every retimed finite-word pseudo-quadratic-like pair is identically the root pair. The internal analytic germ is constant and nondegenerate; the remaining end work is construction of a prime-end blow-up or rescaled marked fiber carrying it.",
+      "dependencies": [
+        "FINITE_CYLINDER_SECOND_PORTRAIT_TRANSFER"
+      ],
+      "evidence": "mlc_research_push_2.md#theorem-20-normalized-end-germ-constancy"
+    },
+    {
+      "id": "END_BLOWUP_NECESSITY",
+      "status": "proved",
+      "statement": "Any Hausdorff end realization retaining a nondegenerate normalized carrier and admitting a continuous projection to the original dynamical plane must place the limiting carrier in a nontrivial projection fiber. Hence a source-faithful end realization requires a rescaling or prime-end blow-up unless an independent planar component theorem is supplied.",
+      "dependencies": [
+        "PLANAR_END_COLLAPSE_NO_GO",
+        "NORMALIZED_END_GERM_CONSTANCY"
+      ],
+      "evidence": "mlc_research_push_2.md#theorem-21-end-blow-up-necessity"
+    }
+  ],
+  "status_changes": [
+    {
+      "id": "FINITE_HORIZON_ASSEMBLY",
+      "from": "open",
+      "to": "proved",
+      "replacement_statement": "Every finite family of compatible proper, core-proper, covering-embedded marked stages with one quadratic stage assembles through the critical-spine telescope into a closed selected degree-two endpoint correspondence retaining all stated stagewise depth-q admissibility data.",
+      "dependencies": [
+        "MARKED_FINITE_HORIZON_ASSEMBLY"
+      ],
+      "note": "This is a compiler theorem. Constructing actual virtual stages remains in H1_FINITE_HORIZON_INFLATION and the virtual marked-correspondence nodes.",
+      "evidence": "mlc_research_push_2.md#status-consequence"
+    }
+  ],
+  "corrected_statement_promotion": {
+    "id": "MAPPING_TELESCOPE",
+    "from": "open",
+    "to": "proved_after_statement_rewrite",
+    "old_statement_problem": "Degree-two factorization alone does not ensure that a connected base-change component retains degree two; a subdisk avoiding the critical value splits the pullback into two degree-one components.",
+    "replacement_statement": "A finite cyclic covering/embedded stage system with exactly one quadratic stage, boundary critical-value avoidance, compatible relative-cover component selection, and post-quadratic critical-spine retention has a unique connected selected fiber-product component whose routing closes and whose endpoint covering has degree two.",
+    "dependencies": [
+      "CRITICAL_SPINE_TELESCOPE_COMPILER"
+    ],
+    "evidence": "mlc_research_push_2.md#corrected-mapping-telescope-node"
+  },
+  "open_node_refinement": {
+    "id": "VIRTUAL_DISCONNECTED_MARKING_TRANSFER",
+    "status": "open",
+    "proved_subnodes": [
+      "OFF_CRITICAL_CYLINDER_TRANSFER",
+      "FINITE_CYLINDER_SECOND_PORTRAIT_TRANSFER",
+      "DIRECT_DECORATION_END_PRIME_END_CODING",
+      "PLANAR_END_COLLAPSE_NO_GO",
+      "NORMALIZED_END_GERM_CONSTANCY",
+      "MARKED_FINITE_HORIZON_ASSEMBLY",
+      "END_FIBER_ACTION_EXTENSION",
+      "END_BLOWUP_NECESSITY"
+    ],
+    "residual_title": "VIRTUAL_END_BLOWUP_AND_CRITICAL_SPINE_REALIZATION",
+    "residual_statement": "For each required infinite address, construct an analytic prime-end blow-up or rescaled marked surface with a nondegenerate carrier and continuous collapse map to the canonical prime-end impression, realize the constant normalized root pseudo-quadratic-like germ and all protected data on that fiber, and construct every demanded multi-stage chain with post-quadratic critical-spine retention and full relative-cover orbit.",
+    "evidence": "mlc_research_push_2.md#open-problem-virtual-critical-spine-and-marked-base-realization"
+  },
+  "dependency_corrections": [
+    {
+      "id": "MAPPING_TELESCOPE",
+      "remove_as_sufficient_single_dependency": "DEGREE_TWO_FACTORIZATION",
+      "add": [
+        "QUADRATIC_BASE_CHANGE_DICHOTOMY",
+        "RELATIVE_COVER_LIFT",
+        "critical_spine_retention_hypothesis"
+      ]
+    },
+    {
+      "id": "VIRTUAL_DISCONNECTED_MARKING_TRANSFER",
+      "note": "Do not infer critical chronology from total degree, endpoint target univalence, or a commuting f^N/f^r square. Depend on STAGEWISE_CRITICAL_WORD_LADDER for the central branch."
+    }
+  ],
+  "scope_notes": [
+    "FINITE_CYLINDER_SECOND_PORTRAIT_TRANSFER is a finite-word result and assumes the actual root renormalization/portrait has been named; LOCALIZED_QL_RESTRICTION places it in the direct-decoration gap.",
+    "DIRECT_DECORATION_END_PRIME_END_CODING uses the source ray/equipotential puzzle structure; it does not identify the end impression as a small Julia set.",
+    "END_FIBER_ACTION_EXTENSION applies only to one fixed iterate. Retimed finite-word coverings have exponents N_w+r and are represented at ends by the normalized germ, not by that fixed-iterate theorem.",
+    "PLANAR_END_COLLAPSE_NO_GO and END_BLOWUP_NECESSITY show that a nondegenerate end portrait cannot remain locally embedded in the original plane; the correct residual category is a rescaled or prime-end blow-up marked fiber unless a separate planar component theorem is supplied."
+  ]
+}

@@ -1,0 +1,17 @@
+\begin{lemma}[Subgroup of the pullback component]\label{lem:pullback-subgroup}
+With the data of Definitions~\ref{def:loc-data} and~\ref{def:pullback-component}, the first projection \( r\colon P_K\to X_s \) is the connected based cover of \( X_s \) corresponding to the subgroup \( K=a_*^{-1}(H_t) \).
+\end{lemma}
+
+\begin{proof}
+The pullback of a covering is a covering.  The pullback \( P \) is locally path-connected, so its path components are open.  Moreover, the selected component \( P_K \) maps onto \( X_s \): since a connected, locally path-connected space is path connected, for any \( x\in X_s \) choose a path from \( x_s \) to \( x \); its lift to the pullback from \( (x_s,\widehat x_t) \) stays in \( P_K \) and ends over \( x \).  Hence the restriction \( r\colon P_K\to X_s \) is itself a connected covering.
+
+It remains to compute its subgroup.  Let \( \gamma \) be a based loop in \( X_s \).  Its lift to \( P_K \) from \( (x_s,\widehat x_t) \) is
+\begin{equation}\label{eq:pullback-lift}
+  t\longmapsto\bigl(\gamma(t),\widehat{a\gamma}(t)\bigr),
+\end{equation}
+where \( \widehat{a\gamma} \) is the lift of \( a\gamma \) to \( \widehat X_t \) from \( \widehat x_t \).  The lift \eqref{eq:pullback-lift} is closed if and only if \( \widehat{a\gamma} \) is closed.  By the cover--subgroup criterion, this is equivalent to \( a_*[\gamma]\in H_t \), which, by \eqref{eq:K-def}, is equivalent to \( [\gamma]\in K \).  Therefore
+\[
+  r_*\pi_1\bigl(P_K,(x_s,\widehat x_t)\bigr)=K .
+\]
+This also proves that the selected path component is precisely the based connected cover classified by \( K \).
+\end{proof}

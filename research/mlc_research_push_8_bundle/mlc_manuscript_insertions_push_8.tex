@@ -1,0 +1,397 @@
+\documentclass[11pt]{article}
+\usepackage[margin=0.88in]{geometry}
+\usepackage{amsmath,amssymb,amsthm,mathtools,mathrsfs}
+\usepackage{microtype}
+\usepackage{enumitem}
+\usepackage{booktabs}
+\usepackage[hidelinks]{hyperref}
+\setlist{nosep,leftmargin=*}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{warning}[theorem]{Warning}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+\newcommand{\Tr}{\operatorname{Tr}}
+\newcommand{\Ends}{\operatorname{Ends}}
+\newcommand{\Sub}{\operatorname{Sub}}
+\newcommand{\ii}{\partial_{\!i}}
+\title{Proposed Manuscript Insertions VIII\\
+Marked Pulled/Immersed Ideal Interfaces and Actual Trace Welding}
+\author{Research draft for the marked-width MLC program}
+\date{July 25, 2026}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+We separate the coarse ideal marking on which a covering/immersion pair acts
+from a finer response/access trace overlay.  For a finite pseudo-piece boundary
+atlas we give a necessary-and-sufficient compiler for branch-adapted ideal
+markings, including exact overlap and covering-refinement obstructions.  We
+construct collared ideal-arc trace spaces, proper and end-proper end-germ trace
+objects, and the actual one-to-many welding obtained by immersion restriction,
+covering subdivision, and covering transport.  The complete marked interface
+is functorial under words, normalized overlays, and certified final-root
+commuting squares.  This closes a fixed-horizon direct-decoration interface
+module; universal horizon realization, H2, MBTT, UPTCR, and MLC remain open.
+\end{abstract}
+
+\section{The marked correspondence}
+Let
+\[
+ F=(f,\iota):V'\rightrightarrows V
+\]
+be a holomorphic covering and a holomorphic immersion.  For an ideal marking
+$\mathcal I$ of $V$, the KKL action condition is
+\[
+ \boxed{f^*\mathcal I\text{ refines }\iota^*\mathcal I.}
+ \tag{1.1}
+\]
+The immersion pullbacks may fail to exist or overlap, and properness or
+end-properness is additional data.
+
+\begin{definition}[Two-layer interface]
+A finite marked interface is
+\[
+ \mathfrak I_F=(\mathcal I,\mathscr O,f^*\mathcal I,
+ \iota^*\mathcal I,\mathfrak p,\mathfrak e,
+ \mathcal T,\mathcal W,\mathfrak F),
+\]
+where $\mathcal I$ is the action marking and $\mathscr O$ is a possibly finer
+trace/access/obstacle overlay.  An endpoint of $\mathscr O$ lying inside an
+interval of $\mathcal I$ is response-only until it is successfully promoted by
+the action-marking compiler.
+\end{definition}
+
+\begin{warning}
+Trace visibility does not imply ideal-action visibility.  No response
+subdivision is used as a KKL endpoint without proving (1.1).
+\end{warning}
+
+\section{Finite pulled/immersed marking compiler}
+Cut one ideal-boundary component at a retained phase endpoint.  Let the target
+be tiled by micro-atoms $M_0,\ldots,M_{N-1}$ and the source by
+$A_0,\ldots,A_{m-1}$.  Each source atom has a covering label $c(j)$; under the
+immersion it has either a proper target label $r(j)$ or the nonproper label
+$\bot$.
+
+For a connected target atom union $B$, delete every proper source atom whose
+label lies outside $B$, and retain the remaining connected components that
+contain a proper atom labelled in $B$.  Denote their union by $H_\iota(B)$.
+
+\begin{theorem}[Finite immersion pullback formula]
+For a boundary-monotone finite pseudo-piece atlas,
+\[
+ \boxed{\iota^*B=H_\iota(B).}
+ \tag{2.1}
+\]
+\end{theorem}
+
+\begin{proof}
+A proper path subordinate to a retained component can land only on a proper
+atom mapped into $B$; intervening nonproper atoms have no target ideal landing
+interval.  Hence its immersed image is subordinate to $B$.  Conversely, every
+excluded atom is proper outside $B$, or is separated from all $B$-labelled
+atoms by such a blocker.  A proper path landing at that blocker witnesses
+failure of subordination to $B$.  Maximality in the definition of
+$\iota^*B$ proves the claim.
+\end{proof}
+
+A maximal nonproper source run with adjacent proper target labels $p,q$ belongs
+to both pullback hulls unless $p,q$ lie in one target interval.
+
+\begin{theorem}[Finest immersion-admissible marking]
+Join the proper labels adjacent to every maximal nonproper run and take the
+interval-convex transitive closure in the retained phase order.  The resulting
+contiguous blocks form the unique finest target partition whose immersion
+pullbacks are pairwise disjoint.  Every immersion-admissible marking is a
+coarsening of this partition.
+\end{theorem}
+
+\begin{proof}
+The overlap across every nonproper run forces the adjacent labels into one
+interval, and connectedness forces all intervening target micro-atoms into the
+same interval.  After taking the closure, a nonproper run has proper neighbors
+in at most one target block.  Proper atoms of other blocks are blockers in
+(2.1), so distinct pullbacks are disjoint.
+\end{proof}
+
+Let $K$ be a connected component of an immersion pullback and let
+$v_-,v_+$ be its source boundary vertices.  Write $c_\partial$ for the covering
+map on source vertices.
+
+\begin{theorem}[Covering/immersion action criterion]
+For an immersion-admissible target marking $\mathcal I$, condition (1.1) holds
+if and only if
+\[
+ \boxed{c_\partial(v_-),c_\partial(v_+)\in\partial\mathcal I}
+ \tag{2.2}
+\]
+for every connected component of every immersion pullback.
+\end{theorem}
+
+\begin{proof}
+The covering marking is obtained by pulling back target endpoints.  It refines
+the induced immersion marking exactly when every boundary of every immersion
+interval is one of these covering-preimage endpoints.
+\end{proof}
+
+\begin{corollary}[Finite decision]
+For a finite mandatory endpoint set, enumerate the coarsenings of the finest
+immersion-admissible partition, retain the mandatory cuts, and test (2.2).
+This returns a finest valid action marking with all proper/end-proper flags, or
+an exact obstruction: a mandatory cut through an immersion-forced block, or a
+covering boundary image incompatible with every permitted coarsening.
+\end{corollary}
+
+\section{Collared ideal-arc trace spaces}
+Every pseudo-piece ideal tile arc lies on a universal-cover piece used in the
+source construction.  For a proper finite ideal subarc $J$, choose a
+piecewise-analytic collar $C_Y(J)$ bounded by $J$, two crosscuts, and one
+interior cross-section.
+
+\begin{definition}[Collared trace]
+Set
+\[
+ \mathcal T_Y(J)=\Tr_J H^1(C_Y(J))
+\]
+with the minimum-energy quotient norm
+\[
+ \|\tau\|^2=\inf_{\Tr_Ju=\tau}
+ \left(\int_{C_Y(J)}|\nabla u|^2+
+ \left|\int_{K_J}u\right|^2\right),
+ \tag{3.1}
+\]
+where $K_J$ is a fixed compact normalization set.
+\end{definition}
+
+\begin{theorem}[Ideal-arc trace theorem]
+$\mathcal T_Y(J)$ is a Hilbert trace space.  In a conformal rectangle
+coordinate it is the usual $H^{1/2}$ trace space, and transporting the collar
+by a conformal isomorphism transports the Dirichlet seminorm isometrically.
+\end{theorem}
+
+\begin{proof}
+Apply the Sobolev trace theorem to the piecewise-analytic collar and use the
+minimum-energy quotient.  A Riemann map identifies the collar with a rectangle;
+Dirichlet energy is conformally invariant in dimension two.  The normalization
+term removes the constant kernel.
+\end{proof}
+
+For finitely many arcs, the compatible tuple space is the image of one
+$H^1$ function on the union of their collars and a finite connecting core.  It
+is not replaced by an arbitrary direct sum.
+
+If a component $K$ of $\iota^*I$ is proper, retain its full compatible trace.
+If it is only end-proper, retain the compatible traces on its proper end
+intervals:
+\[
+ \mathcal T_{V'}^{\rm end}(K)
+ =\mathcal T_{V'}(E_-(K),E_+(K)).
+ \tag{3.2}
+\]
+The nonproper middle remains in the interval bridge word and is not assigned a
+fictitious boundary trace.
+
+\section{Actual one-to-many welding}
+Let $I$ be a target action interval.  For each proper end arc
+$E\subset K\subset\iota^*I$, immersion restriction gives
+\[
+ R_{\iota,E}:\mathcal T_V(I)\longrightarrow\mathcal T_{V'}(E).
+\]
+Because $f^*\mathcal I$ refines $\iota^*\mathcal I$, subdivide $E$ into
+covering intervals $E_\ell$.  Degree-one covering transport gives
+\[
+ P_{f,E_\ell}:\mathcal T_{V'}(E_\ell)
+ \longrightarrow\mathcal T_V(f(E_\ell)).
+\]
+
+\begin{definition}[Marked welding]
+\[
+ \begin{aligned}
+ \mathcal W_{F,I}:={}&
+ \bigoplus_{K,E,E_\ell}
+ \bigl(P_{f,E_\ell}\circ\Sub_{E_\ell}\circ R_{\iota,E}\bigr).
+ \end{aligned}
+ \tag{4.1}
+\]
+The output index retains branch, component, interval, side, phase, endpoint
+flags, and the proper-or-nonproper bridge word.
+\end{definition}
+
+\begin{theorem}[Actual ideal welding]
+The operator (4.1) is continuous on the compatible trace spaces.  It is the
+complete trace welding when $F$ is proper on $I$, and the complete end-germ
+welding when $F$ is end-proper on $I$.  If $\nu(I)$ is the number of proper
+lifted end arcs, then
+\[
+ \|\mathcal W_{F,I}\|\le\sqrt{\nu(I)}
+ \tag{4.2}
+\]
+in direct-sum Dirichlet norm.
+\end{theorem}
+
+\begin{proof}
+Each factor is an actual trace restriction or conformal transport on a proper
+collar.  The action condition prevents a covering endpoint from crossing an
+immersion interval.  One parent trace is copied to at most $\nu(I)$ disjoint
+proper collars; conformal energy invariance gives (4.2).
+\end{proof}
+
+\begin{theorem}[Word functoriality]
+For composable marked correspondences with matching intermediate action
+markings,
+\[
+ \boxed{
+ \mathcal W_{F_2\circ F_1,I}
+ =\mathcal W_{F_2,F_{1*}I}\circ\mathcal W_{F_1,I},
+ }
+ \tag{4.3}
+\]
+after canonical reassociation of the labelled compatible tuple spaces.  The
+pulled intervals, properness flags, bridge words, endpoint flags, and cyclic
+orders compose in the same chronological order.
+\end{theorem}
+
+\begin{proof}
+Both sides restrict the same finite-energy function along the same actual
+immersions, subdivide by the same covering endpoints, and transport through the
+same covering maps.  Function restriction and map composition are associative.
+\end{proof}
+
+\section{Repair and overlay rules}
+A trace-overlay endpoint not belonging to the action marking remains
+response-only.  If a later KKL theorem requires it as an ideal endpoint, rerun
+the finite compiler.
+
+\begin{definition}[Slit-repair certificate]
+A finite source/target analytic crosscut pair is a slit-repair certificate if it
+avoids all critical, protected, obstacle, port, and localization data; commutes
+with both maps; and separates the conflicting nonproper bridge after cutting.
+\end{definition}
+
+\begin{theorem}[Certified slit repair]
+Cutting along a slit-repair certificate lifts the covering and immersion to the
+cut surfaces, converts the certified split into a genuine ideal endpoint, and
+reduces the repaired interface to the finite compiler above.
+\end{theorem}
+
+\begin{proof}
+A finite analytic cut replaces each crosscut by two proper boundary sides.  The
+commuting pullback condition lifts both maps to the slit surfaces.  The former
+nonproper bridge is separated at the certified side, so the new endpoint is no
+longer inside an immersion-forced block.
+\end{proof}
+
+The theorem realizes a repair from a certificate; it does not construct such a
+certificate for every mixed block.
+
+\section{Normalized and final-root naturality}
+The binary pseudo-piece normalization transports the root collars, action
+markings, and overlay to every finite word.  Source functoriality and (4.3) give
+exact normalized-overlay naturality; no physical-coordinate welding conjugacy
+is omitted.
+
+Consider an old and enlarged pair with embeddings
+\[
+ A:V\to V^+,
+ \qquad A':V'\to V^{+'}
+\]
+satisfying
+\[
+ \boxed{A\circ f=f^+\circ A',\qquad
+ A\circ\iota=\iota^+\circ A'.}
+ \tag{6.1}
+\]
+Assume exact inverse image of all proof-used endpoint sets, transported collars,
+phase and side data, and injective cyclic-order-preserving ideal boundary maps.
+
+\begin{theorem}[Certified final-root naturality]
+Under (6.1), covering and immersion pullbacks commute with enlargement, the
+action condition is preserved, proper/end-proper flags are unchanged, and
+\[
+ \boxed{
+ A_{\rm out}^{\sharp}\mathcal W_{F^+,A(I)}
+ =\mathcal W_{F,I}A_{\rm in}^{\sharp}
+ }
+ \tag{6.2}
+\]
+after matching the labelled output tuple.
+\end{theorem}
+
+\begin{proof}
+The first conclusions follow by taking inverse images in the two commuting
+squares.  Trace restriction by $A$ followed by old immersion pullback is the
+same function as enlarged immersion pullback followed by $A'$.  The covering
+square gives the output identity.  Subdivision and direct sums preserve these
+equalities, proving (6.2).
+\end{proof}
+
+A finite overlay refinement is natural under the same rule.  Trace-only
+subdivision always commutes.  Promotion to an action endpoint is allowed only
+when the compiler accepts it or a slit repair is supplied.
+
+\section{Fixed-horizon completion}
+\begin{theorem}[Fixed-horizon marked binary interface]
+Fix one actual direct-decoration binary block and a finite source-authorized
+branch horizon.  Freeze all mandatory ideal endpoints, trace/access/obstacle
+endpoints, proper/end-proper calls, and final-root generators.  Assume every
+mandatory action endpoint passes the compiler or has a slit-repair certificate,
+and every enlargement generator supplies (6.1) with the stated boundary data.
+Then the complete horizon has:
+\begin{enumerate}
+\item actual covering-pulled and immersion-pulled ideal markings;
+\item proof of the action condition on every branch;
+\item complete proper/end-proper and endpoint-flag records;
+\item valid collared ideal-arc and end-germ trace spaces;
+\item actual one-to-many welding and bridge words;
+\item exact word, normalization, overlay, and final-root naturality;
+\item a finite first-failure certificate otherwise.
+\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+Run the finite marking compiler at every branch, apply certified repairs, build
+the collared trace spaces, and use the welding and naturality theorems above.
+The horizon is finite, so the union of all records is finite.
+\end{proof}
+
+\section{Audit and promotion boundary}
+The companion compiler was checked against an independent exhaustive search of
+every target endpoint subset in 1,500 randomized systems with at most seven
+target micro-atoms.  It compiled 1,221 systems, obstructed 279, and had zero
+false positives, false negatives, or maximal-marking mismatches.  A second
+exact-integer audit checked 1,000 welding composition and enlargement squares
+with zero failures.
+
+The theorem closes a fixed-horizon marked-interface module.  It does not build
+the complete mixed Wave horizon, universally realize every mandatory endpoint
+or slit, bound lift multiplicity, construct a universal response/WAD/Value
+quotient, prove MBTT, or prove MLC.
+
+\section{Next obligation}
+The next source theorem is
+\[
+ \boxed{\texttt{UNIVERSAL\_MANDATORY\_ENDPOINT\_VISIBILITY\_AND\_REPAIR}.}
+\]
+It must prove that every proof-required ideal endpoint in every mixed block is
+compiler-visible or has a collision-free slit repair, remains natural under
+final-root enlargement, has universally bounded proper-lift multiplicity, and
+factors with all response/WAD/Value outputs through one uniformly finite future
+quotient.
+
+\begin{thebibliography}{9}
+\bibitem{KL08}
+J. Kahn and M. Lyubich,
+\emph{A priori bounds for some infinitely renormalizable quadratics. II.
+Decorations}, arXiv:math/0609046.
+\bibitem{KKL26}
+J. Kahn, A. Kapiamba, and M. Lyubich,
+\emph{MLC for parabolically bounded primitive renormalization},
+arXiv:2606.27272.
+\end{thebibliography}
+\end{document}

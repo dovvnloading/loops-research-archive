@@ -1,0 +1,89 @@
+% ---------------------------------------------------------------
+% Notation for the criterion layer (subgroup reflection, peripheral
+% isolation, tile/base reduction).  Assumes a standard amsthm preamble:
+%   \newtheorem{theorem}{Theorem}[section]
+%   \newtheorem{lemma}[theorem]{Lemma}
+%   \newtheorem{proposition}[theorem]{Proposition}
+%   \newtheorem{corollary}[theorem]{Corollary}
+%   \theoremstyle{definition}\newtheorem{definition}[theorem]{Definition}
+%   \theoremstyle{remark}\newtheorem{remark}[theorem]{Remark}
+% ---------------------------------------------------------------
+\subsection*{Notation and standing conventions}
+
+\begin{itemize}
+\item \(K\Subset U\) means \(K\) is compactly contained in \(U\).  A
+      \emph{full continuum} is a nonempty compact connected set
+      \(K\subset\mathbb C\) with connected complement
+      \(\mathbb C\setminus K\).
+\item \(f:U^1\to U^0\) is an ordinary quadratic-like restriction of a
+      quadratic polynomial; \(U^r=f^{-r}(U^0)\), so
+      \(U^{r+1}\subset U^r\) and each \(f:U^{r+1}\to U^r\) is
+      quadratic-like (Kahn~I, \S6, p.~31).  For a
+      primitively renormalizable stage of period \(p>1\) we write
+      \(F=f^p:U^p\to U^0\), proper of degree \(2^p\), and
+      \(i^p:U^p\hookrightarrow U^0\) for the physical inclusion.
+\item \(K_p\) is the little filled Julia set, \(K_p(j)=f^j(K_p)\) for
+      \(0\le j<p\), and \(\mathcal K_p=\bigcup_{j=0}^{p-1}K_p(j)\);
+      primitivity means the \(K_p(j)\) are pairwise disjoint (Kahn~I,
+      \S1.1).  We abbreviate \(A=K_p\),
+      \(B=\mathcal K_p\).
+\item The canonical-localization marked surfaces are
+      \(T'=(U^p\setminus F^{-1}B)\cup A\) and
+      \(T=(U^0\setminus B)\cup A\), with complementary surfaces
+      \(\Omega_s=U^p\setminus F^{-1}B\) and
+      \(\Omega_t=U^0\setminus B\)
+      (Kahn~I, \S\S7.4.2--7.4.3, pp.~45--46).
+\item For a subgroup \(H\le\pi_1(X,x)\) of a connected, locally
+      path-connected, semilocally simply connected space, \(X_H\to X\)
+      denotes the connected based cover corresponding to \(H\).  The
+      \emph{localization subgroups}
+      \(H_s\le\pi_1(\Omega_s,z_*)\), \(H_t\le\pi_1(\Omega_t,z_*)\) are
+      the images of the fundamental groups of deleted local
+      neighborhoods of the marked continuum \(A\)
+      (Kahn~I, \S7.4.1, Theorem~7.12, p.~44).  Kahn requires of a local
+      neighborhood only that every component of its complement of \(A\)
+      be an annulus; the specialization to \emph{Jordan} neighborhoods
+      made in this paper is our own, and is justified by
+      Lemma~\ref{lem:local-pair}.
+\item Boldface domains \(\mathbf U^m\) are the stages of the exact
+      equalizer tower of Section~\ref{sec:forced} over the canonical
+      seed, with complementary annuli
+      \(A_m=\mathbf U^m\setminus K^m\).  Boldface domains
+      \(\mathbf U_{\mathrm{KL}}^m\), with
+      \(A^{\mathrm{KL}}_m=\mathbf U_{\mathrm{KL}}^m\setminus K(f)\),
+      are the \(\psi\)-quadratic-like (bold) domains on which the
+      Kahn--Lyubich pseudo-puzzle of KL~II, \S3.2 is run.  These two
+      families of symbols are kept strictly distinct: comparing them is
+      the entire content of the strong stage-alignment hypothesis
+      (Definition~\ref{def:strong-alignment}), and they may be
+      identified only where that hypothesis has been declared to be in
+      force.  \(\boldsymbol\iota\) denotes
+      the inclusion-induced pseudo-piece \emph{immersion} and
+      \(\mathbf g\) the
+      dynamical branched-covering arrow; these are distinct arrows
+      (KL~II, Lemma~3.4, pp.~12--13).  We follow KL in reserving the
+      word ``inclusion'' for the puzzle-piece relation \(Y\subset Z\):
+      the ambient arrow is an immersion, and is never proved to be an
+      embedding.
+\item \((q,\nu)\) are what KL~II call the \emph{decoration parameters}
+      (KL~II, Corollary~5.14 and Theorem~5.15, pp.~23--24), \(q\) being
+      the denominator of the combinatorial rotation number at the
+      \(\alpha\)-fixed point (KL~II, \S2.1, p.~5).  Where this paper
+      says ``decoration period \(q\) and depth index \(\nu\)'' it means
+      exactly KL's decoration parameters.
+\item For a connected annulus, \(\pi_\bullet:\widetilde A_\bullet\to
+      A_\bullet\) is a universal cover with positively oriented deck
+      generator \(T_\bullet\); the (annular) \emph{degree} of a map of
+      annuli is the integer it induces on \(\pi_1\cong\mathbb Z\) with
+      respect to the chosen orientations.
+\item \(\operatorname{Ind}_x(\gamma)\) is the winding number of a loop
+      \(\gamma\) about a point \(x\in\mathbb C\setminus|\gamma|\).
+\item Citations of the form ``Kahn~I, \S X / Theorem~N, p.~P'' refer to
+      \cite{KahnPrimitive06} in the numbering of arXiv:math/0609045v3
+      (28 December 2023); citations of the form ``KL~II, Lemma~N,
+      p.~P'' refer to \cite{KLDecorations08} in the numbering of
+      Ann.\ Sci.\ \'Ec.\ Norm.\ Sup\'er.\ (4) \textbf{41} (2008)
+      57--84 and of the identically sectioned arXiv:math/0609046v2.
+      The SHA-256--locked local \TeX{} archives and their line-number
+      concordance are recorded in Appendix~\ref{app:sourcelock} only.
+\end{itemize}

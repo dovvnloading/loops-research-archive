@@ -1,0 +1,30 @@
+\begin{proposition}[Exact obstruction certificate]\label{prop:obstruction-certificate}
+Every putative whole-tile end-compatible comparison with \(N\ne\{1\}\) carries the finite certificate
+\begin{equation}\label{eq:certificate}
+\mathfrak C_{\mathrm{whole}}
+=
+\left(
+\begin{array}{l}
+N\ne1,\quad \zeta_\pm\in\Lambda(N),\quad \Phi h=t_s\Phi,\quad \overline\Phi(\zeta_\pm)=\omega_\pm,\\[2pt]
+L_{\mathrm{KL}}\Phi=B\,e\,q,\quad B|_{L(\mathcal E)}\ \text{injective},\quad \overline L_{\mathrm{KL}}(\omega_\pm)\ \text{defined}
+\end{array}
+\right),
+\end{equation}
+and the complete collision itinerary is any deck sequence
+\begin{equation}\label{eq:itinerary}
+\gamma_nz\longrightarrow\zeta_+,
+\qquad
+q(\gamma_nz)=q(z),
+\qquad
+L_{\mathrm{KL}}\bigl(\Phi(\gamma_nz)\bigr)=B\,L(z),
+\end{equation}
+of collision type
+\begin{equation}\label{eq:collision-type}
+\chi_{\mathrm{corr}}=\text{nontrivial deck-limit orbit transported to a source-locked continuous wrapping end}.
+\end{equation}
+No numerical experiment, local-connectivity assumption, or parameter shrinking enters the certificate.
+\end{proposition}
+
+\begin{proof}
+The entries of \eqref{eq:certificate} are precisely the hypotheses consumed by the proof of Theorem~\ref{thm:whole-tile-no-go}: \(N\ne1\) and Lemma~\ref{lem:wrapping} supply \(\zeta_\pm\in\Lambda(N)\); clauses (2), (5), (4), and (3) of Definition~\ref{def:whole-tile-comparison} supply \(\Phi h=t_s\Phi\), \(\overline\Phi(\zeta_\pm)=\omega_\pm\), \(L_{\mathrm{KL}}\Phi=B\,e\,q\), and injectivity of \(B\) on \(L(\mathcal E)\); and Definition~\ref{def:kl-tile-system} supplies the continuous values \(\overline L_{\mathrm{KL}}(\omega_\pm)\).  The itinerary \eqref{eq:itinerary} is exactly the sequence constructed in \eqref{eq:deck-seq}, \eqref{eq:deck-invariance}, and \eqref{eq:square-applied}, and its transport to the wrapping end in \eqref{eq:phi-limit}--\eqref{eq:constant-value} is the collision \eqref{eq:collision-type}.  All entries are finitely presented algebraic, group-theoretic, or source-locked boundary data; no numerics, no local connectivity, and no parameter shrinking are used anywhere in the proof.
+\end{proof}

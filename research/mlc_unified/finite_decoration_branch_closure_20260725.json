@@ -1,0 +1,36 @@
+{
+  "certificate": "FINITE_DECORATION_BRANCH_CLOSURE",
+  "status": "proved_in_source_locked_scope",
+  "hypothesis": "infinitely renormalizable quadratic with uniformly bounded decoration parameters q_j and n_j",
+  "conclusion": [
+    "beau a priori bounds",
+    "local connectivity of the corresponding Julia set",
+    "local connectivity of the Mandelbrot set at the parameter"
+  ],
+  "source_trace": [
+    {
+      "file": "kingdom.tex",
+      "sha256": "5DC04FEFF6B6A1D73040FFD50519C35D62EFF03C1049686DA71D595758E38FA7",
+      "lines": "255-257",
+      "role": "decoration condition iff bounded q_j and n_j"
+    },
+    {
+      "file": "moduli.tex",
+      "sha256": "CBDB9EF7D6AC94C33FDB0AB7167E19C39EB23D27373C266A296CF6031E0CAF7E",
+      "lines": "788-819",
+      "role": "beau a priori bounds"
+    },
+    {
+      "file": "main.tex",
+      "sha256": "D2CCCC70AB7040E4D537466BF84A49AB7EF1E0E83BBD8F59235DACAF0D9EC9BB",
+      "lines": "48-55",
+      "role": "bounds imply Julia and parameter local connectivity"
+    }
+  ],
+  "not_claimed": [
+    "global MLC",
+    "unbounded satellite branch",
+    "virtual-Molecule branch"
+  ],
+  "original_artifacts_written": false
+}

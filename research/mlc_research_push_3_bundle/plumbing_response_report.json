@@ -1,0 +1,30 @@
+{
+  "status": "pass",
+  "note": "Finite-network numerical audit only; the analytic proof is the Dirichlet-principle argument in the research note.",
+  "seed": 20260724,
+  "trials": 250,
+  "max_bubbles": 8,
+  "response_inequality": {
+    "worst_min_eigenvalue_of_delta": -6.6060953494220946e-15,
+    "worst_operator_norm_to_bound_ratio": 0.9917196125737,
+    "worst_operator_norm_minus_bound": -4.5739720177298375e-05,
+    "bound_formula": "2 * sum(neck_conductances)"
+  },
+  "adaptive_depth": {
+    "epsilon": 0.01,
+    "cell_resistances": [
+      0.07,
+      0.11,
+      0.19,
+      0.23
+    ],
+    "chosen_tail_lengths": [
+      11429,
+      7273,
+      4211,
+      3479
+    ],
+    "certified_operator_bound": 0.009999000151534692,
+    "formula": "ell_i = ceil(2*s/(epsilon*R_i))"
+  }
+}

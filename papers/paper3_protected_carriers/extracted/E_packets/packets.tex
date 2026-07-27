@@ -1,0 +1,352 @@
+% Cluster E, part 1: augmented atoms and the common-domain theorem
+% Body-only LaTeX; uses only preamble macros and fixed cross-cluster labels.
+
+\section{Augmented atoms and the common domain}\label{sec:packets}
+
+The free-component criterion of Theorem~\ref{thm:free-component} is exact, and its
+persistence clause makes failures permanent; but as a \emph{positive} test it is
+expensive. Deciding whether one component of $\Omfree$ reaches every required atom
+demands a global analysis of how each of the finitely many collars, obstacles, and
+exclusions of the frozen inventory sits relative to all of the others, and
+Example~\ref{ex:no-common-component} shows that no atom-by-atom inspection can
+substitute for that analysis: individual accessibility of every atom is compatible
+with an unrepairable separation. From a \emph{partial} package --- the situation in
+which the criterion would actually be invoked, with the inventory delivered piecemeal
+by an ambient proof program --- the exact free-domain test is therefore difficult to
+verify directly \cite{MWman}.
+
+The present section proves a sufficient criterion that is \emph{source-checkable}:
+each of its clauses is verified against named, finite source data rather than against
+the component structure of an open set. The idea is to reverse the direction of the
+analysis. Instead of asking how the frozen set $Q$ decomposes the localization, we
+package $Q$ itself into finitely many pairwise disjoint full continua --- each atom
+augmented by the inventory pieces assigned to it, the remainder grouped into
+separated-obstacle packets --- while reserving one free port for each original atom.
+Once the completed packages are pairwise disjoint, sphere duality forces their common
+complement to be \emph{connected}; connectedness, not component bookkeeping, then
+delivers the common free component that Theorem~\ref{thm:free-component} demands.
+
+The section has three parts. Definition~\ref{def:packet} fixes the packet structure
+and its typed assignment record; Lemma~\ref{lem:packets} is the duality argument; and
+Theorem~\ref{thm:common-domain} assembles the sufficient criterion. How the completed
+packets are actually computed from raw assigned pieces, and how their defining clauses
+are audited with persistent failure certificates, is the subject of
+Section~\ref{sec:audit}; Example~\ref{ex:merger} there shows why the audit must be run
+on the completions and not on the raw pieces.
+
+\subsection{Filled hulls and augmented packets}\label{subsec:E-packet-def}
+
+Recall from Section~\ref{sec:prelim} the filled hull of a compact plane set $K$:
+\begin{equation}\label{eq:E-fill}
+\Fill(K)\;=\;K\,\cup\,\bigcup\bigl\{\,B : B\ \text{a bounded component of}\
+\C\setminus K\,\bigr\}
+\end{equation}
+(equation~(9.5) of \cite{MWman}). Since $K$ is compact, $\C\setminus K$ has exactly
+one unbounded component $\Omega_\infty(K)$, and \eqref{eq:E-fill} says
+\[
+\Fill(K)\;=\;\C\setminus\Omega_\infty(K).
+\]
+Consequently $\Fill(K)$ is closed, and it is bounded because every closed round disk
+containing $K$ has its exterior inside $\Omega_\infty(K)$; thus $\Fill(K)$ is compact.
+Its complement is the single connected set $\Omega_\infty(K)$, so $\Fill(K)$ is
+\emph{full}, and it is the smallest full compact set containing $K$: if $F\supset K$
+is full and compact, then $\C\setminus F$ is a connected unbounded subset of
+$\C\setminus K$, hence contained in $\Omega_\infty(K)$, which gives
+$\Fill(K)\subset F$ after taking complements. Finally, if $K$ is a continuum, then so
+is $\Fill(K)$: every bounded component $B$ of $\C\setminus K$ has
+$\partial B\subset K$, so its closure $\overline B$ is a connected set meeting $K$,
+and $\Fill(K)=K\cup\bigcup\overline B$ is a union of connected sets all meeting the
+connected set $K$. The passage from $K$ to $\Fill(K)$ is what the manuscript calls
+\emph{fullification}; its algebra --- and in particular the fact that interleaved
+adjoin-and-fill operations compute a well-defined completion --- is developed in
+Section~\ref{sec:audit}.
+
+Throughout, the \emph{atoms} $A_1,\dots,A_s\Subset U$ are the pairwise disjoint full
+continua of Section~\ref{sec:certificates} that the connector must join, and $Q$ is
+the frozen set of Section~\ref{sec:criterion} (equation~(9.4) of \cite{MWman}): the
+union of the atoms, the closed terminal protected collars, the separated obstacles,
+the critical-value exclusion, and the localization-forbidden set, fixed once and for
+all before any connector is chosen.
+
+\begin{definition}[Augmented-atom packet; manuscript Definition 10.9]\label{def:packet}
+For the frozen set $Q$, an \emph{augmented-atom packet} consists of full continua
+\[
+\widehat A_1,\dots,\widehat A_s,\
+\widehat O_1,\dots,\widehat O_t\;\Subset\;U
+\]
+and pairwise disjoint port arcs $\alpha_i\colon[0,1]\to U$ such that:
+\begin{enumerate}
+\item every protected collar, obstacle, critical exclusion, and other component of
+$Q$ has one typed assignment, either to a connected atom seed $A_i\cup E_i$ or to a
+connected separated-obstacle seed $O_\ell$;
+\item $\widehat A_i=\Fill(A_i\cup E_i)$ for every $i$, and
+$\widehat O_\ell=\Fill(O_\ell)$ for every $\ell$;
+\item the completed packets
+$\widehat A_1,\dots,\widehat A_s,\widehat O_1,\dots,\widehat O_t$ are pairwise
+disjoint and cover $Q$; and
+\item $\alpha_i(0)=x_i\in A_i$, $\alpha_i\cap\widehat A_i=\{x_i\}$, and
+\[
+\alpha_i\bigl((0,1]\bigr)\;\subset\;
+U\setminus\Bigl(\bigcup_{k}\widehat A_k\cup\bigcup_{\ell}\widehat O_\ell\Bigr),
+\]
+and $x_i$ is not the impression of a protected chain.
+\end{enumerate}
+The assignment records the component name, the proof-use stages, the attachment
+trace, the return word, the selected sheet, and the absorb-or-separate decision.
+\end{definition}
+
+Some commentary on the four clauses. In clause~(1), $E_i$ denotes the union of the
+inventory pieces assigned to the $i$-th atom; it may be empty, and the clause demands
+that the resulting \emph{atom seed} $A_i\cup E_i$ be connected, so that an assigned
+piece disjoint from its atom must be accompanied by connecting material assigned to
+the same label. The assignment is \emph{typed}: it is a function from the finitely
+many named constituents of the frozen inventory to the packet labels, and each
+assigned piece carries the six recorded fields listed after clause~(4). Those fields
+--- which component of the ambient package the piece is, at which proof-use stages it
+is read, its attachment trace, its return word, its selected sheet, and whether the
+decision taken for it was absorption or separation --- are bookkeeping data of the
+ambient proof program; the planar topology of this section reads only the geometry of
+the seeds. The record is nevertheless load-bearing: it is what makes a later change
+of assignment an explicit, auditable re-decision rather than a silent repair, a point
+Example~\ref{ex:merger} makes concrete.
+
+In clause~(2), fullness of the completed packets is automatic: the seeds are compact
+and connected, so their filled hulls are full continua by the discussion following
+\eqref{eq:E-fill}. Clause~(3) is the substantive geometric hypothesis, and it is
+stated for the \emph{completed} packets $\widehat A_i,\widehat O_\ell$, not for the
+raw seeds: fullification can create intersections that the seeds do not have, and an
+audit run at seed level certifies nothing (Example~\ref{ex:merger}). Coverage of $Q$
+means that every item of the frozen inventory lies inside some completed packet, so
+that outside the packets there is no frozen material at all --- this is the inclusion
+that will place the common complement inside $\Omfree$. Clause~(4) is the port
+clause. It is deliberately stronger than the port clause of
+Definition~\ref{def:certificate}: the arc's positive-parameter part must avoid every
+completed hull, whereas the arcs of Definition~\ref{def:certificate} avoid only the
+obstacle set, the atoms, and the terminal collar tails, and the arc here must meet
+even its own augmented atom $\widehat A_i$ only at the landing point $x_i$. The final requirement,
+that $x_i$ not be the impression of a protected chain, keeps the port compatible with
+the protected marking; it reappears in Section~\ref{sec:audit} as the requirement
+that $x_i$ lie in the unprotected exposure locus, outside the forbidden impression
+set $P_i$.
+
+\subsection{Nonseparation of finite disjoint full families}\label{subsec:E-duality}
+
+The engine of the common-domain theorem is a nonseparation statement for finitely
+many disjoint full continua on the sphere. Here a compact set $K\subset S^2$ is
+called full when $S^2\setminus K$ is connected; for a compact subset of the plane
+this agrees with the planar notion, because adjoining the point at infinity to the
+unbounded complementary component does not change connectivity, so a plane-full
+compact set is sphere-full and conversely. The proof uses the compacta form of
+Alexander duality \cite[pp.~256--257]{Hat02}:
+\begin{equation}\label{eq:E-duality}
+\widetilde H_0\bigl(S^2\setminus K;\Z\bigr)\;\cong\;\check H^1(K;\Z)
+\end{equation}
+for an arbitrary nonempty proper compact subset $K\subset S^2$ (equation~(9.6) of
+\cite{MWman}). The \v{C}ech form, rather than the locally contractible special case,
+is required here: the atoms and the assigned inventory pieces are arbitrary continua,
+no local connectivity is assumed anywhere in this paper, and for such compacta
+singular cohomology need not compute the group on the right of
+\eqref{eq:E-duality}.
+
+\begin{remark}\label{rem:E-cech}
+The insistence on the \v{C}ech form is not pedantry but a structural feature of the
+framework. Clause~(6) of Theorem~\ref{thm:realization} promises that no local
+connectivity of any atom is ever required, and the packets of
+Definition~\ref{def:packet} inherit whatever boundary pathology their atoms and
+assigned pieces possess. \v{C}ech cohomology is the invariant that remains dual to
+the complement's component count for every compact subset of the sphere, without any
+tameness hypothesis; every duality argument below is stated so that it factors
+through \eqref{eq:E-duality} alone.
+\end{remark}
+
+\begin{lemma}[Finite disjoint full packets; manuscript Lemma 10.10]\label{lem:packets}
+If $K_0,\dots,K_N\subset S^2$ are pairwise disjoint nonempty full continua, then
+\[
+S^2\setminus\bigcup_{r=0}^{N}K_r
+\]
+is connected.
+\end{lemma}
+
+\begin{proof}
+Write $X:=\bigcup_{r=0}^{N}K_r$. We may assume that $X$ is a proper subset of
+$S^2$, so that \eqref{eq:E-duality} applies to $X$ and to each $K_r$: were $X=S^2$,
+the sets $K_0,\dots,K_N$ would be finitely many pairwise disjoint nonempty closed
+sets covering $S^2$; each would then be open as well, being the complement of the
+union of the others, and connectedness of $S^2$ would force $N=0$ and $K_0=S^2$, in
+which case the complement is empty and there is nothing to prove.
+
+\emph{Step 1: each packet has vanishing first \v{C}ech cohomology.}
+Fix $r$. Fullness of $K_r$ makes $S^2\setminus K_r$ connected, and it is nonempty
+because $K_r$ is proper. Being open in $S^2$, the complement is locally path
+connected, so connectedness makes it path connected and its reduced zeroth singular
+homology vanishes. Hence \eqref{eq:E-duality}, applied to the nonempty proper
+compact set $K_r$, gives
+\[
+\check H^1(K_r;\Z)\;\cong\;\widetilde H_0\bigl(S^2\setminus K_r;\Z\bigr)\;=\;0 .
+\]
+
+\emph{Step 2: disjoint neighborhoods split fine covers.}
+The sets $K_0,\dots,K_N$ are finitely many pairwise disjoint compacta, so their
+mutual distances in the spherical metric are positive; choose $\varepsilon>0$ smaller
+than half the minimum of these distances and let $N_r$ be the open
+$\varepsilon$-neighborhood of $K_r$. The $N_r$ are pairwise disjoint open sets with
+$K_r\subset N_r$.
+
+Call a cover of $X$ by relatively open subsets \emph{fine} when every member is
+contained in one of the sets $N_r$. The fine covers are cofinal among all relatively
+open covers of $X$: an arbitrary cover $\mathcal U$ is refined by the fine cover
+$\{\,V\cap N_r : V\in\mathcal U,\ 0\le r\le N\,\}$, since
+$X\subset\bigcup_rN_r$. Let $\mathcal V$ be a fine cover with nonempty members. Each
+member lies in exactly one $N_r$, because the $N_r$ are pairwise disjoint; write
+$\mathcal V_r$ for the members contained in $N_r$. Since
+$X\cap N_r=K_r$, the collection $\mathcal V_r$ is a relatively open cover of $K_r$.
+Two members taken from distinct collections $\mathcal V_r,\mathcal V_{r'}$ are
+disjoint, lying in the disjoint sets $N_r,N_{r'}$; hence no simplex of the nerve of
+$\mathcal V$ mixes the collections, and the nerve of $\mathcal V$ is the disjoint
+union of the nerves of $\mathcal V_0,\dots,\mathcal V_N$. Simplicial cohomology of a
+finite disjoint union is the direct sum, so
+\[
+H^1\bigl(\mathrm{nerve}\,\mathcal V;\Z\bigr)\;\cong\;
+\bigoplus_{r=0}^{N}H^1\bigl(\mathrm{nerve}\,\mathcal V_r;\Z\bigr).
+\]
+
+\emph{Step 3: pass to the direct limit.}
+\v{C}ech cohomology of $X$ is the direct limit of the nerve cohomologies over the
+directed system of relatively open covers, and the fine covers are cofinal in that
+system, so the limit may be computed over fine covers only. A refinement of a fine
+cover is again fine after intersecting with the $N_r$, and its restriction to $N_r$
+refines $\mathcal V_r$; the splitting of Step~2 is therefore compatible with the
+refinement maps, and restriction to $N_r$ is cofinal among the covers of $K_r$
+because any relatively open cover of $K_r$ extends to a fine cover of $X$ by
+adjoining covers of the other packets. Since a direct limit commutes with the finite
+direct sum, Step~1 gives
+\[
+\check H^1(X;\Z)\;\cong\;\bigoplus_{r=0}^{N}\check H^1(K_r;\Z)\;=\;0 .
+\]
+
+\emph{Step 4: apply duality a second time.}
+The set $X$ is compact, nonempty, and proper, so \eqref{eq:E-duality} applies to $X$
+itself:
+\[
+\widetilde H_0\bigl(S^2\setminus X;\Z\bigr)\;\cong\;\check H^1(X;\Z)\;=\;0 .
+\]
+The complement $S^2\setminus X$ is nonempty, and a nonempty space with vanishing
+reduced zeroth homology is connected. This is the assertion.
+\end{proof}
+
+Lemma~\ref{lem:packets} is the disjoint counterpart of
+Lemma~\ref{lem:tree-full}. There, unions of nonseparating continua meeting in
+connected singletons were handled by the Janiszewski separation lemma, one attachment
+at a time; here the continua are pairwise disjoint, the count is arbitrary, and the
+duality argument dispenses with any hypothesis on how the packets face one another.
+Nothing is assumed about the boundaries of the $K_r$ --- they may be nowhere locally
+connected --- and no width, diameter, or separation estimate enters.
+
+\subsection{The common-domain theorem}\label{subsec:E-common}
+
+\begin{theorem}[Augmented-Atom Common-Domain Theorem; manuscript Theorem
+10.11]\label{thm:common-domain}
+Every augmented-atom packet determines one component of $\Omfree$ with simultaneous
+singleton ports to every original atom. Hence it supplies a protected regulated
+connector.
+\end{theorem}
+
+\begin{proof}
+Let an augmented-atom packet be given, with completed packets
+$\widehat A_1,\dots,\widehat A_s,\widehat O_1,\dots,\widehat O_t\Subset U$ and port
+arcs $\alpha_1,\dots,\alpha_s$ as in Definition~\ref{def:packet}.
+
+\emph{The exterior packet.}
+Adjoin to the family the set
+\[
+K_0\;:=\;S^2\setminus U .
+\]
+The Jordan-disk hypothesis makes $K_0$ a full continuum: by the Jordan--Schoenflies
+theorem the Jordan curve $\partial U$ divides the sphere into two open Jordan disks
+with common boundary $\partial U$, the closure of the one containing $\infty$ is the
+closed Jordan disk $S^2\setminus U$, hence a continuum, and its complement is the
+connected set $U$, so $K_0$ is full in the sphere sense used in
+Lemma~\ref{lem:packets}. Each completed packet is a plane-full continuum, hence
+sphere-full as noted in Section~\ref{subsec:E-duality}, and compact containment
+$\widehat A_i,\widehat O_\ell\Subset U$ makes every completed packet disjoint from
+$K_0$; together with clause~(3) of Definition~\ref{def:packet}, the family
+\[
+K_0,\ \widehat A_1,\dots,\widehat A_s,\ \widehat O_1,\dots,\widehat O_t
+\]
+consists of $1+s+t$ pairwise disjoint nonempty full continua in $S^2$.
+
+\emph{The augmented complement is connected.}
+Lemma~\ref{lem:packets} applies to this family and makes its common complement
+connected. Since $S^2\setminus K_0=U$, that complement is
+\begin{equation}\label{eq:E-omega-aug}
+\Omega_{\mathrm{aug}}\;:=\;
+U\setminus\Bigl(\bigcup_{i}\widehat A_i\cup\bigcup_{\ell}\widehat O_\ell\Bigr)
+\;=\;S^2\setminus\Bigl(K_0\cup\bigcup_i\widehat A_i\cup
+\bigcup_\ell\widehat O_\ell\Bigr),
+\end{equation}
+a connected subset of $\C$, open because $U$ is open and the packets are compact. It
+is nonempty: clause~(4) places the positive-parameter part of each port arc inside
+it.
+
+\emph{The augmented complement lies in one free component.}
+Clause~(3) of Definition~\ref{def:packet} makes the completed packets cover $Q$, so
+\[
+\Omega_{\mathrm{aug}}
+\;=\;U\setminus\Bigl(\bigcup_i\widehat A_i\cup\bigcup_\ell\widehat O_\ell\Bigr)
+\;\subset\;U\setminus Q\;=\;\Omfree .
+\]
+A nonempty connected subset of the open set $\Omfree$ lies in exactly one of its
+components; let $\Omega_0$ be the component containing $\Omega_{\mathrm{aug}}$. This
+is the component that the packet determines.
+
+\emph{The ports are simultaneous singleton ports of $\Omega_0$.}
+By clause~(4), each port interior satisfies
+\[
+\alpha_i\bigl((0,1]\bigr)\;\subset\;
+U\setminus\Bigl(\bigcup_k\widehat A_k\cup\bigcup_\ell\widehat O_\ell\Bigr)
+\;=\;\Omega_{\mathrm{aug}}\;\subset\;\Omega_0 .
+\]
+Moreover $A_i\subset A_i\cup E_i\subset\widehat A_i$, so
+\[
+\alpha_i\cap A_i\;\subset\;\alpha_i\cap\widehat A_i\;=\;\{x_i\},
+\]
+and $x_i=\alpha_i(0)\in A_i$ gives $\alpha_i\cap A_i=\{x_i\}$: the arc meets its atom
+exactly in the one free point $x_i$. The arcs are pairwise disjoint Jordan arcs by
+Definition~\ref{def:packet}. Thus $\Omega_0$ has simultaneous singleton ports to
+every original atom, in the sense of Section~\ref{sec:criterion}.
+
+\emph{Conclusion.}
+Theorem~\ref{thm:free-component} converts the simultaneous singleton ports of
+$\Omega_0$ into a protected ribbon-routing certificate, and
+Theorem~\ref{thm:realization} realizes that certificate by a compact connected full
+carrier with singleton attachment traces, protected crosscut survival, and preserved
+cyclic order. The packet therefore supplies a protected regulated connector.
+\end{proof}
+
+\begin{remark}\label{rem:E-common-domain}
+Three remarks of the manuscript \cite{MWman} deserve emphasis. First, no local
+connectivity or width estimate occurs anywhere in the argument: the packets may have
+arbitrarily wild boundaries, the duality step of Lemma~\ref{lem:packets} is
+insensitive to them, and no modulus, diameter, or incidence bound is invoked at any
+point. Second, the construction is natural under an orientation-preserving conformal
+homeomorphism of Jordan disks: the boundary extensions can be glued to a sphere
+homeomorphism, and such a map carries filled packets to filled packets, ports to
+ports, the common domain \eqref{eq:E-omega-aug} to the corresponding common domain,
+and any selected connector to a connector for the transported data, exactly as in
+Proposition~\ref{prop:naturality}; the commutation of such a sphere homeomorphism
+with the operator $\Fill$ is proved in detail in the naturality paragraph of
+Theorem~\ref{thm:audit}. Third, the spanning tree produced inside the common
+component is not claimed canonical: Theorem~\ref{thm:free-component} supplies
+\emph{some} embedded tree through the free component, and different choices give
+different carriers with the same protected marking. Only the component $\Omega_0$,
+the ports, and the survival data are determined by the packet.
+\end{remark}
+
+Theorem~\ref{thm:common-domain} consumes completed packets: it presupposes that the
+filled hulls $\widehat A_i,\widehat O_\ell$ have already been computed from the typed
+assignment and checked against clauses~(1)--(4). In practice the assignment delivers
+raw pieces one at a time, and both the computation of the completions and the
+verification of the clauses raise questions of their own --- whether the result
+depends on the order of processing, and whether individually verified ports must be
+untangled globally. The next section resolves both questions and equips the
+verification with persistent failure certificates.

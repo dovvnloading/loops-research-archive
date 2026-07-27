@@ -1,0 +1,38 @@
+\begin{corollary}[Subgroup diagram for the enlarged based fiber]\label{cor:enlarged-fiber}
+Suppose an old and an enlarged localization give a commutative group diagram: homomorphisms
+\( a_*\colon G_s\to G_t \), \( a_*^+\colon G_s^+\to G_t^+ \),
+\( \varphi_s\colon G_s\to G_s^+ \), \( \varphi_t\colon G_t\to G_t^+ \) with
+\begin{equation}\label{eq:enlargement-square}
+  a_*^+\circ\varphi_s=\varphi_t\circ a_* ,
+\end{equation}
+and with
+\[
+  \varphi_s(H_s)\leq H_s^+,\qquad \varphi_t(H_t)\leq H_t^+ .
+\]
+Put
+\[
+  K=a_*^{-1}(H_t),\qquad K^+=(a_*^+)^{-1}(H_t^+).
+\]
+Then commutativity gives
+\[
+  \varphi_s(K)\leq K^+,
+\]
+so the old-to-new based-coset map \( \overline{\varphi_s}\colon K/H_s\to K^+/H_s^+ \) exists.  It has no coset mergers and no coset births if and only if
+\begin{equation}\label{eq:enlargement-criterion}
+  K\cap\varphi_s^{-1}(H_s^+)=H_s,
+  \qquad
+  K^+=\varphi_s(K)H_s^+ .
+\end{equation}
+\end{corollary}
+
+\begin{proof}
+If \( k\in K \), then \( a_*(k)\in H_t \).  Hence, by \eqref{eq:enlargement-square},
+\[
+  a_*^+(\varphi_s(k))=\varphi_t(a_*(k))\in\varphi_t(H_t)\subseteq H_t^+ .
+\]
+Thus \( \varphi_s(k)\in K^+ \).  Apply Theorem~\ref{thm:coset-criterion} with \( \varphi=\varphi_s \), \( H=H_s \), \( H^+=H_s^+ \).
+\end{proof}
+
+\begin{remark}\label{rem:reflection-exhaustion}
+The first condition in \eqref{eq:enlargement-criterion} is \emph{reflection}: no old non-base sheet becomes new-base.  The second is \emph{exhaustion}: every new sheet is represented by an old sheet.  Commutativity of \eqref{eq:enlargement-square} alone proves neither.
+\end{remark}

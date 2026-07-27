@@ -1,0 +1,27 @@
+\begin{theorem}[Tile-injectivity glue criterion; manuscript Thm.~12.36, ledger \texttt{TILE\_INJECTIVITY\_GLUE\_EMBEDDING\_CRITERION}]\label{thm:glue-criterion}
+For either fixed branch \(Q_a\), the map \(g\) is a biholomorphism and the inclusion component map is bijective. The inclusion immersion \(\iota:Q\to P\) is an interior holomorphic embedding if and only if every induced full universal-cover tile immersion \(L_i\) is injective. In that case the collision-relative overlap identity is
+\[
+L_i^{-1}\bigl(\tilde e_{j(i)}(Q_i)\bigr)=e_i(Q_i). \tag{10.34}
+\]
+Full inverse-image reflection over all of \(P_{j(i)}\) is not required.
+\end{theorem}
+
+\begin{proof}
+The branch \(g:Q\to P\) is univalent and onto. Complete invariance of the filled Julia set gives \(g(K_Q)=K_P\), so \(g\) bijects the finite component sets of \(Q\setminus K_Q\) and \(P\setminus K_P\). The component map \(j\) induced by the inclusion is surjective by the pseudo-piece construction. Its finite domain and codomain have the same cardinality, hence \(j\) is bijective.
+
+Let \(P_j\) be a target complementary component. Since \(Q\setminus K_Q=Q\cap(P\setminus K_P)\), partitioning both complements into components gives
+\[
+Q\cap P_j=\bigcup_{\{k:\,j(k)=j\}}Q_k .
+\]
+Bijectivity of \(j\) therefore gives \(Q\cap P_{j(i)}=Q_i\).
+
+Assume every full tile map \(L_i\) is injective. In the quotient gluing, central--central and same-tile collisions are excluded. Distinct source tiles land in distinct target tiles because \(j\) is bijective, and KL's target tiles are disjoint outside their declared central overlaps.
+
+It remains to consider a tile--central collision. Let \(x\) lie in source tile \(i\), let \(z\in Q\), and suppose their target quotient classes agree. The exact target tile--central intersection gives
+\[
+z\in Q\cap P_{j(i)}=Q_i,\qquad L_i(x)=\tilde e_{j(i)}(z).
+\]
+Overlap commutation gives \(L_i(e_i(z))=\tilde e_{j(i)}(z)=L_i(x)\). Tile injectivity forces \(x=e_i(z)\), so the two source representatives were already identified by the declared gluing. These four cases exhaust the quotient, proving injectivity of \(\iota\). Since KL already prove that it is a holomorphic immersion, it is an interior holomorphic embedding.
+
+Conversely, every source tile embeds in \(Q\). If \(L_i\) had two distinct points with one image, their source quotient classes would be distinct while their \(\iota\)-images agreed. Thus glued injectivity implies tile injectivity. Finally, (10.34) follows directly: if \(L_i(x)=\tilde e_{j(i)}(q)\) with \(q\in Q_i\), commutation gives the same value at \(e_i(q)\), and tile injectivity gives \(x=e_i(q)\). The dynamical map has covering degree one and is therefore a biholomorphism.
+\end{proof}

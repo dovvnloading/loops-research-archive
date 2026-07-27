@@ -1,0 +1,28 @@
+{
+  "geometry": {
+    "contact_length": 19.0,
+    "contact_outside_current_separator_length": 0.0,
+    "known_bypass_arc_detected_length": 5.000000020000002,
+    "separator_capture_pass": true
+  },
+  "exact_network": {
+    "seed": 20260726,
+    "trials": 250,
+    "max_exact_one_shot_vs_recursive_difference": "0",
+    "mask_recurrence_failures": 0,
+    "pass": true
+  },
+  "interpretation": {
+    "what_is_tested": [
+      "nonconsecutive bypass contact lies on the current separator",
+      "root-shared mask recurrence under shared-boundary transport",
+      "exact equality of one-shot Kron reduction and genuinely recursive separator composition"
+    ],
+    "what_is_not_proved_by_computation": [
+      "source authorization of a specific ray/equipotential overlay",
+      "Sobolev trace regularity at puzzle vertices",
+      "uniform response contraction across unbounded decoration blocks",
+      "MBTT, coercivity, rigidity, or MLC"
+    ]
+  }
+}

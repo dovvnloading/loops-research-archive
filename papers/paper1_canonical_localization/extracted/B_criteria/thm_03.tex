@@ -1,0 +1,34 @@
+\begin{lemma}[Jordan-neighborhood basis for full continua]
+\label{lem:jordan-basis}
+Let \(K\Subset U\subset\mathbb C\) be a nonempty full continuum and
+let \(\mathcal O\) be any neighborhood of \(K\) compactly contained in
+\(U\).  Then there is a Jordan domain \(V\) with
+\[
+ K\subset V\subset\overline V\subset\mathcal O .
+\]
+Moreover there is a nested sequence of such Jordan domains with
+\[
+ K\subset V_{r+1},\qquad \overline V_{r+1}\subset V_r,\qquad
+ \bigcap_{r\ge1}\overline V_r=K .
+\]
+\end{lemma}
+
+\begin{proof}
+If \(K\) is a singleton, take round disks.  Otherwise, fullness and
+connectedness make
+\[
+ \widehat{\mathbb C}\setminus K
+\]
+a simply connected domain containing \(\infty\).  Uniformize it by the
+exterior of the closed unit disk, normalized at \(\infty\).  The
+inverse images of the circles \(|w|=r\), for regular radii
+\(r\downarrow1\), are Jordan curves in the complement of \(K\), and
+their bounded complementary sides contain \(K\).  Choosing the radii
+sufficiently close to \(1\) places the curve together with its closed
+bounded side inside \(\mathcal O\), which gives the first assertion;
+choosing the radii monotonically gives the nested sequence.  The
+intersection of the closures is \(K\), since every point of the
+complement of \(K\) has uniformizing modulus strictly greater than
+\(1\) and therefore lies outside \(\overline V_r\) for all radii close
+enough to \(1\).
+\end{proof}

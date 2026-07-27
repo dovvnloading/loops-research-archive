@@ -1,0 +1,11 @@
+{
+  "arithmetic": "exact SymPy integers",
+  "checks": [
+    "factorwise enlargement squares",
+    "welding enlargement naturality",
+    "word composition associativity"
+  ],
+  "exact_failures": 0,
+  "seed": 20260725,
+  "trials": 1000
+}

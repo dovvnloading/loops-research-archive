@@ -1,0 +1,47 @@
+\begin{theorem}[No end-compatible whole-tile square with nontrivial kernel]\label{thm:whole-tile-no-go}
+Let \eqref{eq:resolved-factorization} be a canonical resolved system with the annular-tower typing of Definition~\ref{def:canonical-resolved-system}, and let \eqref{eq:kl-tile-map} be an actual KL tile system as in Definition~\ref{def:kl-tile-system}.  If a whole-tile end-compatible comparison \((\Phi,B)\) in the sense of Definition~\ref{def:whole-tile-comparison} exists, then
+\begin{equation}\label{eq:forced-trivial-kernel}
+N=\{1\}.
+\end{equation}
+Equivalently, if \(N\ne\{1\}\), no pair \((\Phi,B)\) satisfies clauses (1)--(5) of Definition~\ref{def:whole-tile-comparison}.
+\end{theorem}
+
+\begin{proof}
+Assume \(N\ne\{1\}\).  By Lemma~\ref{lem:wrapping},
+\[
+\zeta_+\in\Lambda(N).
+\]
+Choose \(z_0\in\mathcal E\).  By the definition of the limit set, there are distinct \(\gamma_n\in N\) such that
+\begin{equation}\label{eq:deck-seq}
+\gamma_nz_0\longrightarrow\zeta_+.
+\end{equation}
+For arbitrary \(z\in\mathcal E\), every \(\gamma_n\) is a hyperbolic isometry, so
+\begin{equation}\label{eq:isometry}
+d_{\mathcal E}(\gamma_nz,\gamma_nz_0)=d_{\mathcal E}(z,z_0).
+\end{equation}
+Bounded hyperbolic distance and \eqref{eq:deck-seq} imply
+\begin{equation}\label{eq:all-z}
+\gamma_nz\longrightarrow\zeta_+\qquad\text{for every }z\in\mathcal E,
+\end{equation}
+since hyperbolic disks of a fixed radius centered at points converging to a point of \(\partial\mathbb D\) have Euclidean diameters tending to \(0\).
+
+Because \(N=\operatorname{Deck}(q)\),
+\begin{equation}\label{eq:deck-invariance}
+L(\gamma_nz)=e\,q(\gamma_nz)=e\,q(z)=L(z).
+\end{equation}
+Apply the composite square \eqref{eq:comparison-square}:
+\begin{equation}\label{eq:square-applied}
+L_{\mathrm{KL}}\bigl(\Phi(\gamma_nz)\bigr)=B\,L(\gamma_nz)=B\,L(z).
+\end{equation}
+By clause (1) of Definition~\ref{def:whole-tile-comparison}, after disk uniformization \(\Phi\) is a disk automorphism and extends to a homeomorphism \(\overline\Phi\) of the conformal ideal circles; the named-end compatibility \eqref{eq:named-end-compat} together with \eqref{eq:all-z} gives
+\begin{equation}\label{eq:phi-limit}
+\Phi(\gamma_nz)\longrightarrow\omega_+.
+\end{equation}
+The source-locked continuity of \(L_{\mathrm{KL}}\) at \(\omega_+\) (Definition~\ref{def:kl-tile-system}, \eqref{eq:kl-boundary-values}) now gives
+\begin{equation}\label{eq:constant-value}
+\overline L_{\mathrm{KL}}(\omega_+)=\lim_{n\to\infty}L_{\mathrm{KL}}\bigl(\Phi(\gamma_nz)\bigr)=B\,L(z).
+\end{equation}
+Equation \eqref{eq:constant-value} holds for \emph{every} \(z\in\mathcal E\).  The map \(L\) is nonconstant and \(B\) is injective on \(L(\mathcal E)\), so \(B\,L\) is nonconstant.  It cannot equal the one fixed value \(\overline L_{\mathrm{KL}}(\omega_+)\) for every \(z\).  This contradiction proves \eqref{eq:forced-trivial-kernel}.
+
+The same proof works verbatim at \(\zeta_-\).  One wrapping vertex is sufficient; the second is an independent symmetric certificate.
+\end{proof}

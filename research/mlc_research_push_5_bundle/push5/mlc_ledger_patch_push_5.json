@@ -1,0 +1,222 @@
+{
+  "patch_status": "proposal_requires_repository_schema_dependency_source_and_build_audit",
+  "research_push": 5,
+  "date": "2026-07-25",
+  "principal_gates": [
+    "DIRECT_DECORATION_TRACE_COLLAR_REALIZATION",
+    "END_PLUMBING_TRACE_RESPONSE_CONTROL"
+  ],
+  "verdict": {
+    "DIRECT_DECORATION_TRACE_COLLAR_REALIZATION": "proved_in_source_direct_decoration_category",
+    "END_PLUMBING_TRACE_RESPONSE_CONTROL": "proved_analytic_content_with_upstream_finite_live_frontier_dependency",
+    "VAAPC_I": "direct_decoration_trace_instance_proved_for_every_already_supplied_finite_branch_graph_global_source_horizon_remains_open"
+  },
+  "count_policy": {
+    "original_global_open_count_change": 0,
+    "independent_split_gate_change": -2,
+    "reason": "These are research split nodes rather than authoritative nodes in the uploaded manuscript ledger. The physical direct-decoration collar is proved. End-plumbing response control is no longer an independent analytic obstruction and should depend only on finite live-frontier authorization. Global VAAPC-I, H2, MBTT, UPTCR, and MLC remain open."
+  },
+  "corrected_prior_nodes": [
+    {
+      "id": "BOTTCHER_TRACE_COLLAR_ATLAS",
+      "old_scope": "treated the physical address tail as equal-footprint serial rectangles",
+      "new_scope": "valid only for an explicitly authorized artificial external ray/equipotential sector with matching complete cross-sections",
+      "reason": "The actual physical set P minus int(Q_a) has an inactive common-ray attachment skeleton and unequal active footprints. Consecutive physical shells glue only on their common active trace atoms."
+    },
+    {
+      "id": "END_PLUMBING_TRACE_RESPONSE_CONTROL",
+      "old_dependencies": [
+        "BOTTCHER_TRACE_COLLAR_ATLAS",
+        "TRACE_RESPONSE_SEMIGROUP"
+      ],
+      "new_dependencies": [
+        "DIRECT_DECORATION_TRACE_COLLAR_REALIZATION",
+        "PARTIAL_TRACE_FIBER_PRODUCT_RESPONSE",
+        "FUNCTORIAL_LAST_USE_PORT_ELIMINATION",
+        "PHYSICAL_SHELL_SERIES_RESISTANCE",
+        "FULL_TRACE_RECTANGLE_DTN",
+        "TRACE_RENORMALIZED_NECK_ESTIMATE",
+        "HILBERT_TRACE_GLUE_CALCULUS",
+        "FINITE_LIVE_COMMON_REFINEMENT_FRONTIER"
+      ],
+      "revision": "The exact physical multi-port prefix is retained. Only after the last live side-port stage is the remaining two-interface tail replaced by its strip/cylinder full-trace response."
+    }
+  ],
+  "new_proved_obligations": [
+    {
+      "id": "ACTIVE_INACTIVE_PHYSICAL_CELL",
+      "status": "proved",
+      "statement": "For nested Jordan puzzle disks P and Q with one common ray-attachment arc A, the physical set P\\int(Q) is the union of an active regular-closed Jordan quadrilateral C=closure(int(P)\\Q) and the inactive attachment skeleton A, with C meeting A only at the two attachment endpoints. The relative interior of A carries no active DtN trace.",
+      "dependencies": [
+        "DIRECT_DECORATION_PULLBACK_COMPACTIFICATION"
+      ],
+      "evidence": "mlc_research_push_5.md#2-the-physical-set-has-an-inactive-attachment-skeleton"
+    },
+    {
+      "id": "DIRECT_DECORATION_FINITE_CONTACT_OVERLAY",
+      "status": "proved",
+      "statement": "Any extra contact pattern between two finite ray/equipotential puzzle boundaries has a finite planar overlay. Finitely many paired artificial crosscuts reduce its active faces to Jordan cells, and exact trace gluing removes those cuts without changing response.",
+      "dependencies": [
+        "ACTIVE_INACTIVE_PHYSICAL_CELL",
+        "PARTIAL_TRACE_FIBER_PRODUCT_RESPONSE"
+      ],
+      "evidence": "mlc_research_push_5.md#3-finite-contact-overlay"
+    },
+    {
+      "id": "DIRECT_DECORATION_COMMON_TRACE_REFINEMENT",
+      "status": "proved",
+      "statement": "At an intermediate puzzle boundary with inherited and next attachment arcs A- and A+, the boundary decomposes exactly into common active glue, outgoing-only side ports, incoming-only side ports, double-inactive attachment atoms, and finitely many endpoints. Every proof-use interval is retained by finite common refinement and transports under inverse branches.",
+      "dependencies": [
+        "ACTIVE_INACTIVE_PHYSICAL_CELL"
+      ],
+      "evidence": "mlc_research_push_5.md#5-attachment-arc-boolean-decomposition"
+    },
+    {
+      "id": "STRUCTURAL_FOOTPRINT_LOCAL_TYPE_BOUND",
+      "status": "proved",
+      "statement": "For connected inherited and next attachment arcs on a prime-end circle, their arrangement has at most four open atoms and four endpoint atoms. Thus an alphabet of size d has at most 8 d^2 unmarked local structural footprint types, independent of depth; every unseeded one-sided atom is eliminated at its birth junction.",
+      "dependencies": [
+        "DIRECT_DECORATION_COMMON_TRACE_REFINEMENT",
+        "FUNCTORIAL_LAST_USE_PORT_ELIMINATION"
+      ],
+      "evidence": "mlc_research_push_5.md#6-finite-common-refinement-atlas"
+    },
+    {
+      "id": "COMPATIBLE_PORT_TRACE_SPACE",
+      "status": "proved",
+      "statement": "The correct multi-port state is the image of the global H1/Douglas trace under restriction to the active atom union, with quotient norm. This retains endpoint compatibility and avoids the false direct-sum assumption for adjacent H^{1/2} arcs.",
+      "dependencies": [],
+      "evidence": "mlc_research_push_5.md#7-the-trace-space-is-not-a-naive-direct-sum"
+    },
+    {
+      "id": "PARTIAL_TRACE_FIBER_PRODUCT_RESPONSE",
+      "status": "proved",
+      "statement": "Two physical cells glue by minimizing the sum of their closed Dirichlet forms over the fiber product of traces agreeing on exactly the common active atoms. One-sided footprint atoms remain external variables. The operation is associative and conformally natural.",
+      "dependencies": [
+        "COMPATIBLE_PORT_TRACE_SPACE",
+        "DIRECT_DECORATION_COMMON_TRACE_REFINEMENT"
+      ],
+      "evidence": "mlc_research_push_5.md#8-exact-partial-trace-composition"
+    },
+    {
+      "id": "FUNCTORIAL_LAST_USE_PORT_ELIMINATION",
+      "status": "proved",
+      "statement": "For a continuous forgetful trace map p, pushforward of a closed nonnegative response form is p_*q(y)=inf_{p tau=y}q(tau), and pushforwards compose functorially. A proof-dead side port may therefore be eliminated exactly at last use even with endpoint compatibility.",
+      "dependencies": [
+        "COMPATIBLE_PORT_TRACE_SPACE"
+      ],
+      "evidence": "mlc_research_push_5.md#9-exact-last-use-elimination"
+    },
+    {
+      "id": "PHYSICAL_SHELL_SERIES_RESISTANCE",
+      "status": "proved",
+      "statement": "For nested active direct-decoration cells with no later cross-level side-port wiring, the extremal resistance of the complete selected tail is at least the sum of the individual physical quadrilateral resistances. A finite cell alphabet gives linear resistance growth m R_*.",
+      "dependencies": [
+        "ACTIVE_INACTIVE_PHYSICAL_CELL",
+        "PARTIAL_TRACE_FIBER_PRODUCT_RESPONSE"
+      ],
+      "evidence": "mlc_research_push_5.md#10-serial-shell-law"
+    },
+    {
+      "id": "COMPACT_MULTIPORT_TAIL_RESPONSE",
+      "status": "proved",
+      "statement": "After the last live non-interface side port, the exact physical prefix and terminal cap composed with the remaining full-trace tail form a norm-compact response family. If both scalar cap coefficients are positive, the error from the infinite-resistance limit is at most 2M/(exp(lambda_1 R)-1)+2B^2/(alpha_*^2 R); if either coefficient vanishes, the scalar term is exactly absent.",
+      "dependencies": [
+        "PARTIAL_TRACE_FIBER_PRODUCT_RESPONSE",
+        "FUNCTORIAL_LAST_USE_PORT_ELIMINATION",
+        "PHYSICAL_SHELL_SERIES_RESISTANCE",
+        "FULL_TRACE_RECTANGLE_DTN",
+        "TRACE_RENORMALIZED_NECK_ESTIMATE",
+        "HILBERT_TRACE_GLUE_CALCULUS"
+      ],
+      "evidence": "mlc_research_push_5.md#14-compact-multi-port-tail-theorem"
+    },
+    {
+      "id": "DIRECT_DECORATION_TRACE_COLLAR_REALIZATION",
+      "status": "proved",
+      "statement": "Every source direct-decoration physical cell has an exact finite active/inactive ray/equipotential decomposition; actual unequal footprints, one-sided ports, inactive attachments, protected intervals, obstacles, and response electrodes are retained by a common-refinement atlas; exact composition and inverse-word transport hold.",
+      "dependencies": [
+        "ACTIVE_INACTIVE_PHYSICAL_CELL",
+        "DIRECT_DECORATION_FINITE_CONTACT_OVERLAY",
+        "DIRECT_DECORATION_COMMON_TRACE_REFINEMENT",
+        "PARTIAL_TRACE_FIBER_PRODUCT_RESPONSE"
+      ],
+      "evidence": "mlc_research_push_5.md#16-direct_decoration_trace_collar_realization"
+    },
+    {
+      "id": "DIRECT_DECORATION_TRACE_VAAPC_I_INSTANCE",
+      "status": "proved",
+      "statement": "For every already supplied finite direct-decoration branch graph of depth H, the pulled common-refinement trace universe is finite, with at most N_0 sum_{j=0}^H d^j raw atom records before dependency closure; the existing horizon-first reachability theorem gives the least frozen trace inventory.",
+      "dependencies": [
+        "DIRECT_DECORATION_TRACE_COLLAR_REALIZATION",
+        "HORIZON_FIRST_INVENTORY_AUDIT",
+        "STRUCTURAL_FOOTPRINT_LOCAL_TYPE_BOUND"
+      ],
+      "evidence": "mlc_research_push_5.md#18-direct-decoration-trace-instance-of-vaapc-i"
+    }
+  ],
+  "revised_gate": {
+    "id": "END_PLUMBING_TRACE_RESPONSE_CONTROL",
+    "status": "proved_with_explicit_upstream_dependency",
+    "statement": "Once a frozen finite inventory supplies a last live non-interface side-port stage, the physical direct-decoration tail has an exact fixed compatible multi-port prefix, exact partial-trace shell composition, accumulated resistance, exact last-use elimination, compact full-trace response limit, and an explicit finite-depth error threshold. It is no longer an independent analytic gate.",
+    "dependencies": [
+      "DIRECT_DECORATION_TRACE_COLLAR_REALIZATION",
+      "FUNCTORIAL_LAST_USE_PORT_ELIMINATION",
+      "PHYSICAL_SHELL_SERIES_RESISTANCE",
+      "COMPACT_MULTIPORT_TAIL_RESPONSE",
+      "FINITE_LIVE_COMMON_REFINEMENT_FRONTIER"
+    ],
+    "evidence": "mlc_research_push_5.md#17-end_plumbing_trace_response_control"
+  },
+  "new_open_dependency": {
+    "id": "FINITE_LIVE_COMMON_REFINEMENT_FRONTIER",
+    "status": "open",
+    "statement": "Every actual virtual-Molecule proof block has, after the complete source-faithful horizon is frozen, a finite last-live-stage frontier of unequal-footprint, access, obstacle, response, ideal, and enlargement trace atoms, or a future-faithful compact quotient supporting exact response and Value observables.",
+    "maps_to": [
+      "VAAPC-I",
+      "VIRTUAL_WAVE_HORIZON_CERTIFICATE",
+      "H2_UNIFORM_CORE_WAD_DIMENSION",
+      "H2_VALUE_FEATURE_REALIZATION"
+    ]
+  },
+  "dependent_node_revisions": [
+    {
+      "id": "VAAPC-I",
+      "revision": "Remove physical direct-decoration boundary decomposition and response gluing from the unknown content. The remaining requirement is source construction of the complete horizon and finite/future-faithful live trace frontier."
+    },
+    {
+      "id": "H2_RESPONSE_REALIZATION",
+      "revision": "Use the exact physical multi-port prefix and compact tail response. The unresolved H2 work is uniform frontier compression and comparison with primitive WAD/Value and neutral sectorial charts, not end-neck analysis."
+    },
+    {
+      "id": "MBTT",
+      "revision": "End-plumbing error can be made explicit from accumulated resistance or removed by exact response retention. MBTT must still prove a root strict transition and dominate all non-plumbing errors."
+    }
+  ],
+  "failure_certificate": {
+    "id": "PHYSICAL_TRACE_COLLAR_FAILURE",
+    "fields": [
+      "block",
+      "address",
+      "parent_piece",
+      "child_piece",
+      "first_undeclared_boundary_contact",
+      "inactive_attachment_misclassified_as_trace",
+      "missing_refinement_endpoint",
+      "false_common_glue_atom",
+      "discarded_one_sided_port",
+      "double_inactive_atom_treated_as_electrode",
+      "trace_phase_or_endpoint_compatibility_defect",
+      "cross_level_side_port_bypass",
+      "last_live_port_stage_or_failure",
+      "shell_resistances",
+      "total_accumulated_resistance",
+      "claimed_response_error"
+    ]
+  },
+  "scope_notes": [
+    "The source supplies finite ray/equipotential Jordan puzzle boundaries and univalent pullbacks attached to boundary rays. The theorem uses exactly this finite physical geometry.",
+    "The numerical audit is a finite-network falsification test; the continuum proof uses active/inactive Jordan decomposition, quotient trace spaces, variational fiber-product gluing, extremal length, and the full trace operator theorem.",
+    "Global VAAPC-I, H2, MBTT, coercivity, rigidity, UPTCR, and MLC remain open."
+  ]
+}

@@ -1,0 +1,69 @@
+{
+  "scope": "Exact cover-subgroup criterion plus the source-locked actual canonical-stage failure of reflection; no positive full embedding or global gate is proved.",
+  "source_lock": {
+    "passed": true,
+    "archive_sha256": {
+      ".tmp_kl06_source.tar": "3A63FC9773DB8B60ED4A0EB9A1C551E6F66C08E66AB92C36F4E2B482570AB817",
+      ".tmp_kl08_source.tar": "DA8FCF924793267421F80BE3E17CD7EB2B72CD4F5B08E3F5A38E2161EC608234"
+    },
+    "kahn_pullback_localization_phrases": [
+      "the \\emph{pullback} of these two morphisms",
+      "the underlying topological space of the (Riemann surface) pullback is the topological pullback.",
+      "If $g$ is injective (or surjective, or bijective),",
+      "$i_n \\circ f_{n+1} = f_n \\circ i_{n+1}$",
+      "These operations define a functor from marked Riemann surfaces",
+      "$\\hat g$ is an immersion if $g$ is an immersion",
+      "equivalent paths are mapped to equivalent paths."
+    ],
+    "kl_inclusion_immersion_phrases": [
+      "where the map $j=j(i)$ is surjective but not necessarily injective.",
+      "These embeddings extend to immersions",
+      "$\\i(\\di \\BY)$ is not contained in $\\di\\BZ$"
+    ]
+  },
+  "cyclic_coset_regressions": {
+    "passed": true,
+    "tested_existing_lifts": 367,
+    "reflection_injectivity_equivalence": true,
+    "failure_certificate": {
+      "H_s": "2Z",
+      "H_t": "Z",
+      "a_star": "identity",
+      "gamma": 1
+    }
+  },
+  "documentation_and_ledger": {
+    "passed": true,
+    "required_documentation_phrases": [
+      "Theorem 1.1",
+      "subgroup-reflection criterion",
+      "a_*^{-1}(H_t)=H_s",
+      "Exact failure certificate",
+      "Equivalent path-reflection formulation",
+      "functorial, not asserted Cartesian",
+      "Theorem 1.3",
+      "forced canonical subgroup defect",
+      "conditional revised-or-restricted route",
+      "pointed coset set",
+      "physical embedding",
+      "VAAPC-I, UPTCR, and MLC"
+    ],
+    "total": 330,
+    "counts": {
+      "imported": 23,
+      "proved": 235,
+      "open": 72
+    },
+    "statuses": {
+      "KL_LOCALIZATION_SUBGROUP_REFLECTION_CRITERION": "proved",
+      "KL_CANONICAL_LOCALIZATION_FORCED_COLLISION": "proved",
+      "PSI_QL_GLOBAL_INJECTIVITY_NO_GO": "proved",
+      "KL_TILE_INJECTIVITY_BASE_ANNULUS_REDUCTION": "proved",
+      "DIRECT_DECORATION_TILE_CENTRAL_OVERLAP_REFLECTION": "open",
+      "DIRECT_DECORATION_DEGREE_ONE_PSEUDO_EMBEDDING": "open",
+      "DIRECT_DECORATION_PSEUDO_PIECE_PATH_LIFT_EXHAUSTION": "open",
+      "UNIVERSAL_PROTECTED_TOWER_CLOSURE": "open",
+      "MLC": "open"
+    }
+  }
+}

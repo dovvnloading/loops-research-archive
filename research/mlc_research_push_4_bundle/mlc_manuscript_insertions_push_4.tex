@@ -1,0 +1,535 @@
+\documentclass[10pt]{article}
+\usepackage[margin=0.85in]{geometry}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{microtype}
+\usepackage{enumitem}
+\usepackage{booktabs}
+\usepackage{multicol}
+\usepackage[hidelinks]{hyperref}
+\setlist{nosep}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{lemma}[theorem]{Lemma}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{warning}[theorem]{Warning}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+\newcommand{\csch}{\operatorname{csch}}
+\newcommand{\op}{\mathrm{op}}
+\title{Proposed Manuscript Insertions IV\\
+Full Trace-Response Plumbing and Exact Equipotential Collapse}
+\author{Research draft for the marked-width MLC program}
+\date{July 25, 2026}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+A long planar plumbing neck is not, in general, a single scalar resistor:
+nonconstant boundary traces carry a nonvanishing half-cylinder response. We
+correct the finite-edge approximation by computing the complete
+Dirichlet-to-Neumann trace operator on the canonical ray/equipotential
+rectangle. Serial collars form an exact response semigroup, the full operator
+is determined by total resistance and a universal tangential operator, and its
+trace-renormalized nodal approximation has sharp relative error
+$2/(e^{\pi R}-1)$. The estimate survives arbitrary Hilbert-space Schur
+complements and preserves strict response contraction after an explicit finite
+depth choice. Exact scalar collapse is characterized: it holds precisely when
+all admissible traces are constant. These results close the direct-decoration
+end-plumbing trace-response gate but do not prove the global response theorem,
+MBTT, rigidity, or MLC.
+\end{abstract}
+
+\section{Correction to the scalar plumbing model}
+
+Let
+\[
+ C_R=(0,R)\times(0,1)
+\]
+with natural Neumann conditions on the side walls. Prescribe
+\[
+ f(y)=\sqrt2\cos(\pi y),\qquad g(y)=0
+\]
+on the two end cross-sections. Both traces have mean zero, while their harmonic
+extension has energy
+\[
+ \mathcal E_R(f,0)=\pi\coth(\pi R)\longrightarrow\pi.
+\tag{1.1}
+\]
+A model retaining only the two trace averages assigns zero energy. Thus a
+finite conductance edge represents the continuum neck only after the
+cross-sections have been electrically shorted, or after all admissible traces
+have separately been proved constant.
+
+\begin{warning}[Correction of the previous nodal estimate]
+The node \path{ADAPTIVE_NODAL_RESPONSE_APPROXIMATION} from the preceding
+research insertion must be replaced. Its single-edge estimate is valid under
+an explicit equipotential-electrode hypothesis. For arbitrary surface traces,
+the full operator below is required.
+\end{warning}
+
+\section{Canonical trace collars}
+
+Let $\Phi$ be the Bottcher coordinate in the basin of infinity, and write
+\[
+ G(z)=\log|\Phi(z)|,\qquad
+ \Theta(z)=\frac{1}{2\pi}\arg\Phi(z)\pmod1.
+\]
+A sector bounded by rays $\Theta=\theta_0,\theta_1$ and equipotentials
+$G=t_-,t_+$ is mapped to a width-one rectangle by
+\[
+ (x,y)=\left(
+ \frac{G-t_-}{2\pi(\theta_1-\theta_0)},
+ \frac{\Theta-\theta_0}{\theta_1-\theta_0}
+ \right).
+\]
+Its length is
+\[
+ R=\frac{t_+-t_-}{2\pi(\theta_1-\theta_0)}.
+\tag{2.1}
+\]
+For a univalent branch of $f^q$,
+\[
+ G(f^qz)=2^qG(z),\qquad
+ \Theta(f^qz)=2^q\Theta(z)\pmod1.
+\tag{2.2}
+\]
+Hence inverse branches scale potential thickness and angular width by the same
+factor, preserving the normalized trace coordinate.
+
+\begin{theorem}[Trace-compatible Bottcher collar]
+Choose a parent equipotential cross-section $\gamma$ and put
+$\gamma_w=\phi_w(\gamma)$. Let $C_{w,a}$ be the full external sector between
+$\gamma_w$ and $\gamma_{wa}$, with the two authorized ray sides retained as
+walls. Then $C_{w,a}$ is marked-conformally a rectangle of width one and some
+length $R_a>0$. Adjacent child and parent trace parameterizations agree. Thus a
+tail $a_1\cdots a_m$ is marked-conformally a rectangle of length
+\[
+ R(a_1\cdots a_m)=\sum_{j=1}^mR_{a_j}.
+\tag{2.3}
+\]
+The construction is natural under every certified univalent presentation and
+root enlargement that retains the collar.
+\end{theorem}
+
+\begin{remark}[Source-facing check]
+A claimed application must verify that no protected collar, obstacle, or
+localization boundary cuts through the selected external sector. Failure is
+recorded at the first affected cell.
+\end{remark}
+
+\section{Exact full trace response}
+
+Let
+\[
+ \varphi_0(y)=1,\qquad
+ \varphi_n(y)=\sqrt2\cos(n\pi y),\quad n\ge1,
+\]
+be the Neumann eigenbasis on $(0,1)$. Put
+\[
+ A=\sqrt{-\partial_y^2{}_N},\qquad
+ A\varphi_0=0,\quad A\varphi_n=n\pi\varphi_n,
+\tag{3.1}
+\]
+and let $P_0$ be projection onto constants. The normalized trace space is
+$\mathcal H=H^{1/2}_N(0,1)$ with
+\[
+ \|f\|_{\mathcal H}^2=|f_0|^2+\sum_{n\ge1}n\pi|f_n|^2.
+\tag{3.2}
+\]
+
+\begin{theorem}[Full rectangle Dirichlet-to-Neumann formula]
+For end traces $f,g\in\mathcal H$, the minimizing energy on $C_R$ is
+\[
+\begin{aligned}
+ \mathcal E_R(f,g)
+ ={}&\frac{|f_0-g_0|^2}{R}\\
+ &+\sum_{n\ge1}n\pi\left[
+ \coth(n\pi R)(|f_n|^2+|g_n|^2)
+ -2\csch(n\pi R)\Re(f_n\overline{g_n})
+ \right].
+\end{aligned}
+\tag{3.3}
+\]
+Equivalently,
+\[
+ \mathcal N_R=
+ \begin{pmatrix}
+ \alpha_R(A)&-\beta_R(A)\\
+ -\beta_R(A)&\alpha_R(A)
+ \end{pmatrix},
+\tag{3.4}
+\]
+where
+\[
+ \alpha_R(\lambda)=\lambda\coth(R\lambda),\qquad
+ \beta_R(\lambda)=\lambda\csch(R\lambda),
+\tag{3.5}
+\]
+and both functions take the value $R^{-1}$ at $\lambda=0$.
+\end{theorem}
+
+\begin{proof}
+For $n=0$, the minimizing mode is linear in $x$. For $n\ge1$, it is
+\[
+ u_n(x)=
+ \frac{\sinh(n\pi(R-x))}{\sinh(n\pi R)}f_n
+ +\frac{\sinh(n\pi x)}{\sinh(n\pi R)}g_n.
+\]
+Green's identity gives the displayed mode energy. Orthogonality completes the
+sum.
+\end{proof}
+
+\begin{proposition}[Marked phase]
+If the right trace is identified with the left normalized coordinate by a
+unitary $U$ commuting with $A$ and preserving constants, then
+\[
+ \mathcal N_{R,U}=
+ \begin{pmatrix}
+ \alpha_R(A)&-\beta_R(A)U\\
+ -U^*\beta_R(A)&U^*\alpha_R(A)U
+ \end{pmatrix}.
+\tag{3.6}
+\]
+Serial gluing multiplies the phases. For $R$ bounded below, the family over a
+compact marked phase group is norm compact; the phase-dependent off-diagonal
+part is smoothing.
+\end{proposition}
+
+\begin{theorem}[Exact response semigroup]
+If two trace-compatible collars of lengths $R,S$ are glued along their common
+parameterized cross-section, then
+\[
+ \boxed{\mathcal N_R\star\mathcal N_S=\mathcal N_{R+S},}
+\tag{3.7}
+\]
+where $\star$ means addition of energy forms followed by minimization over the
+common trace.
+\end{theorem}
+
+\begin{proof}
+The glued surface is the rectangle of length $R+S$. Restricting its harmonic
+minimizer gives the minimizing interface trace, and conversely the two
+minimizers glue to an admissible function on the long rectangle.
+\end{proof}
+
+\begin{corollary}[Finite encoding of the full operator]
+The complete trace response of a serial tail is determined exactly by its total
+resistance $R$, the fixed tangential operator $A$, and the marked
+phase/orientation. It is not an arbitrary infinite-dimensional state.
+\end{corollary}
+
+\section{Exact equipotential collapse}
+
+Restricting (3.3) to constant traces gives
+\[
+ \mathcal E_R(a,b)=\frac{|a-b|^2}{R}.
+\tag{4.1}
+\]
+Thus the constant mode is exactly a scalar resistor of conductance $1/R$.
+
+\begin{theorem}[Exact mean-collapse criterion]
+Let $V\subset\mathcal H$ be a linear admissible trace subspace and let
+$M(f)=f_0$ be the trace-mean map. The restriction of $\mathcal E_R$ to
+$V\oplus V$ factors through the two means if and only if $M|_V$ is injective.
+If constants are admissible, $\mathbb C\varphi_0\subset V$, or more generally
+if $f-M(f)\varphi_0\in V$ for every $f\in V$, this is equivalent to
+\[
+ V=\mathbb C\varphi_0=\ker A.
+\tag{4.2}
+\]
+\end{theorem}
+
+\begin{proof}
+If the response factors through means and $M(f)=0$, then
+$\mathcal E_R(f,0)=\mathcal E_R(0,0)=0$. Formula (3.3) forces $f=0$, so
+$M|_V$ is injective. Conversely, injectivity gives a unique representative
+$f_a\in V$ of each $a\in M(V)$; define
+$q_R(a,b)=\mathcal E_R(f_a,f_b)$. If constants are admissible, then
+$f-M(f)\varphi_0\in V\cap\ker M$, hence it vanishes. The same argument uses
+only mean-subtraction invariance.
+\end{proof}
+
+\begin{remark}[One-dimensional shape exception]
+Without constant admissibility or mean-subtraction invariance, a nonconstant
+one-dimensional trace space can have injective mean map and therefore admit a
+one-scalar encoding. This records one fixed nonconstant shape; it is not an
+electrically shorted equipotential.
+\end{remark}
+
+\begin{corollary}[Shorted cross-section]
+If a cross-section is declared one perfect electrical electrode, every
+admissible trace is constant and the one-edge model is exact.
+\end{corollary}
+
+\begin{warning}
+A geometric Bottcher equipotential is not automatically an electrical
+equipotential for the response problem.
+\end{warning}
+
+\section{Trace-renormalized nodal response}
+
+The mean-zero response of a semi-infinite rectangle is $A$. Therefore define
+\[
+ \mathcal E_R^{\#}(f,g)
+ =\frac{|f_0-g_0|^2}{R}
+ +\langle Af,f\rangle+\langle Ag,g\rangle,
+\tag{5.1}
+\]
+with operator
+\[
+ \mathcal N_R^{\#}=
+ \begin{pmatrix}
+ A+R^{-1}P_0&-R^{-1}P_0\\
+ -R^{-1}P_0&A+R^{-1}P_0
+ \end{pmatrix}.
+\tag{5.2}
+\]
+This is the correct nodal normalization: two semi-infinite trace ends plus the
+exact resistor joining their constant modes.
+
+\begin{theorem}[Sharp full trace estimate]
+Put
+\[
+ \eta(R)=\frac{2}{e^{\pi R}-1}.
+\tag{5.3}
+\]
+Then
+\[
+ \left|\mathcal E_R-\mathcal E_R^{\#}\right|
+ \le\eta(R)
+ \left(\langle Af,f\rangle+\langle Ag,g\rangle\right).
+\tag{5.4}
+\]
+Whenever $\eta(R)<1$,
+\[
+ \boxed{
+ (1-\eta(R))\mathcal N_R^{\#}
+ \preceq\mathcal N_R
+ \preceq(1+\eta(R))\mathcal N_R^{\#}.}
+\tag{5.5}
+\]
+The modewise constant is sharp.
+\end{theorem}
+
+\begin{proof}
+For $t=n\pi R$, the normalized difference matrix is
+\[
+ \begin{pmatrix}
+ \coth t-1&-\csch t\\
+ -\csch t&\coth t-1
+ \end{pmatrix}.
+\]
+Its eigenvalues are
+\[
+ \frac{2}{e^t-1},\qquad -\frac{2}{e^t+1}.
+\]
+The largest absolute value is maximized at $n=1$. The constant modes agree
+exactly.
+\end{proof}
+
+\begin{corollary}[Explicit depth]
+To obtain relative trace error at most $\delta\in(0,1)$, it suffices that
+\[
+ R\ge\frac1\pi\log\left(1+\frac2\delta\right).
+\tag{5.6}
+\]
+If every chosen cell has resistance at least $R_*>0$, it suffices to take
+\[
+ \ell\ge
+ \left\lceil
+ \frac1{\pi R_*}\log\left(1+\frac2\delta\right)
+ \right\rceil.
+\tag{5.7}
+\]
+\end{corollary}
+
+\section{Compact operator limit}
+
+Let
+\[
+ \mathcal N_\infty=
+ \begin{pmatrix}A&0\\0&A\end{pmatrix},
+\tag{6.1}
+\]
+with $A$ vanishing on constants.
+
+\begin{theorem}[Full trace compactification]
+In the normalized $\mathcal H\oplus\mathcal H$ to dual operator norm,
+\[
+ \|\mathcal N_R-\mathcal N_\infty\|_{\op}
+ \le
+ \max\left\{\frac2R,\frac{2}{e^{\pi R}-1}\right\}.
+\tag{6.2}
+\]
+Hence $R\mapsto\mathcal N_R$ extends continuously to $R=\infty$.
+\end{theorem}
+
+\begin{proof}
+The constant block has eigenvalues $0,2/R$. The mean-zero block is controlled
+by the preceding theorem.
+\end{proof}
+
+\begin{remark}
+The end tail therefore contributes a compact one-parameter family of complete
+trace operators. The root-side joint trace response is transported exactly;
+no new arbitrary operator complexity is created by the address depth.
+\end{remark}
+
+\section{Hilbert-space gluing and external response}
+
+Let $Q(x,\phi)\ge0$ be the component energy for external terminal values
+$x$ and interface trace $\phi$. For a neck form $N$, define
+\[
+ q_N(x)=\inf_\phi\{Q(x,\phi)+N(\phi)\}.
+\tag{7.1}
+\]
+
+\begin{lemma}[Relative form bounds survive elimination]
+If
+\[
+ (1-\delta)N_0\preceq N_1\preceq(1+\delta)N_0,
+ \qquad0\le\delta<1,
+\]
+then
+\[
+ (1-\delta)q_{N_0}\le q_{N_1}\le(1+\delta)q_{N_0}.
+\tag{7.2}
+\]
+\end{lemma}
+
+\begin{proof}
+Add the same nonnegative form $Q$ and take the infimum over the same trace
+space.
+\end{proof}
+
+For disjoint tails $R_1,\ldots,R_s$, put
+\[
+ \eta_*=\max_i\frac{2}{e^{\pi R_i}-1}.
+\tag{7.3}
+\]
+
+\begin{theorem}[Physical versus trace-renormalized response]
+Let $\Lambda_{\mathrm{phys}}$ be the external response obtained with the exact
+full necks, and let $\Lambda_{\#}$ be obtained with the trace-renormalized neck
+forms. On the quotient by global constants,
+\[
+ \boxed{
+ (1-\eta_*)\Lambda_{\#}
+ \preceq\Lambda_{\mathrm{phys}}
+ \preceq(1+\eta_*)\Lambda_{\#}.}
+\tag{7.4}
+\]
+The same estimate holds after every fixed finite-electrode compression.
+\end{theorem}
+
+\begin{proof}
+Sum the neck estimates, add the component energies, and apply the lemma.
+Compression by an electrode map preserves Loewner order.
+\end{proof}
+
+\section{Preservation of a strict transition}
+
+Let $L$ be a nonnegative, positively homogeneous, Loewner-monotone gauge. Then
+(7.4) implies
+\[
+ (1-\eta_*)L(\Lambda_{\#})
+ \le L(\Lambda_{\mathrm{phys}})
+ \le(1+\eta_*)L(\Lambda_{\#}).
+\tag{8.1}
+\]
+
+\begin{theorem}[Strict response transition survives]
+Suppose the trace-renormalized normalized block satisfies
+\[
+ L_{\#}^{\mathrm{out}}
+ \le\mu L_{\#}^{\mathrm{in}}+E,
+ \qquad0<\mu<1.
+\tag{8.2}
+\]
+If both endpoint materializations have trace error at most $\eta$, then
+\[
+ L_{\mathrm{phys}}^{\mathrm{out}}
+ \le
+ \mu\frac{1+\eta}{1-\eta}
+ L_{\mathrm{phys}}^{\mathrm{in}}
+ +(1+\eta)E.
+\tag{8.3}
+\]
+The homogeneous factor remains strictly below one whenever
+\[
+ \eta<\frac{1-\mu}{1+\mu}.
+\tag{8.4}
+\]
+Equivalently, a backward factor $\lambda=\mu^{-1}>1$ becomes
+\[
+ \lambda_{\mathrm{eff}}
+ =\lambda\frac{1-\eta}{1+\eta}>1.
+\tag{8.5}
+\]
+\end{theorem}
+
+\begin{remark}[Exact retention]
+If the state retains $\mathcal N_R$ through the exact functional calculus
+(3.4), the plumbing approximation error is zero. The relative estimate is
+needed only when passing to the compact trace-renormalized nodal model.
+\end{remark}
+
+\section{Promotion statement}
+
+\begin{theorem}[End plumbing trace-response control]
+For every source-authorized direct-decoration tail whose ray/equipotential
+collar avoids all protected data and remains in the localization:
+\begin{enumerate}
+ \item the complete full trace response is exactly $\mathcal N_R$;
+ \item serial gluing is exact and depends only on total resistance and marked
+ phase;
+ \item the operator family is compact at infinite depth;
+ \item the trace-renormalized response has the sharp relative error (5.3);
+ \item arbitrary component elimination and finite-electrode compression retain
+ the same comparison;
+ \item strict response contraction survives after the explicit depth choice;
+ and
+ \item scalar collapse is invoked only under the exact constant-trace
+ criterion.
+\end{enumerate}
+Thus \texttt{END\_PLUMBING\_TRACE\_RESPONSE\_CONTROL} is proved in the
+direct-decoration trace-compatible category.
+\end{theorem}
+
+\begin{remark}[Remaining global gate]
+The theorem does not supply a trace collar for every mixed virtual-Molecule
+block, a universally bounded response/WAD/Value quotient, a common KKL-neutral-
+virtual chart, MBTT, coercivity, rigidity, or MLC. The broad node
+\texttt{H2\_RESPONSE\_REALIZATION} remains open.
+\end{remark}
+
+\section{Ledger correction and next theorem}
+\enlargethispage{8\baselineskip}
+
+The previous single-edge node should be retained only as
+\texttt{SHORTED\_EQUIPOTENTIAL\_NODAL\_RESPONSE}. New proved nodes are:
+\begin{multicols}{2}
+\small
+\begin{enumerate}
+ \item \texttt{BOTTCHER\_TRACE\_COLLAR\_ATLAS};
+ \item \texttt{FULL\_TRACE\_RECTANGLE\_DTN};
+ \item \texttt{TRACE\_RESPONSE\_SEMIGROUP};
+ \item \texttt{EQUIPOTENTIAL\_COLLAPSE\_CRITERION};
+ \item \texttt{TRACE\_RENORMALIZED\_NECK\_ESTIMATE};
+ \item \texttt{END\_TRACE\_RESPONSE\_COMPACTIFICATION};
+ \item \texttt{HILBERT\_TRACE\_GLUE\_CALCULUS};
+ \item \texttt{TRACE\_STABLE\_STRICT\_TRANSITION\_TRANSFER}; and
+ \item \texttt{END\_PLUMBING\_TRACE\_RESPONSE\_CONTROL}.
+\end{enumerate}
+\end{multicols}
+
+The next source-facing target is a universal trace-interface authorization and
+bounded future response theorem: every mixed block must supply its protected
+trace collars, exact component joint response forms, enlargement maps, a
+future-complete terminal/Value quotient, and one calibrated chart in which the
+remaining non-plumbing error stays below the strict transition margin.
+
+\end{document}

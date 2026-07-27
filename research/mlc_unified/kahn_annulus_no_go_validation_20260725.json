@@ -1,0 +1,181 @@
+{
+  "scope": "Exact algebraic certificate for an abstract Kahn-annulus counterexample; not an actual KL dynamical-stage collision.",
+  "product_identity": {
+    "passed": true,
+    "common_scaling": "(4 - 4*I)/32",
+    "numerator_coefficients": [
+      "2000 + 4000*I",
+      "19600 + 2200*I",
+      "28460 - 23880*I",
+      "4072 - 29046*I",
+      "-6630 - 10210*I",
+      "-1950 - 1525*I"
+    ],
+    "denominator_coefficients": [
+      "1525 + 1950*I",
+      "10210 + 6630*I",
+      "29046 - 4072*I",
+      "23880 - 28460*I",
+      "-2200 - 19600*I",
+      "-4000 - 2000*I"
+    ]
+  },
+  "zero_pole_exclusion": {
+    "passed": true,
+    "checks": {
+      "source_radius_times_max_a_below_one": true,
+      "source_radius_times_max_b_below_one": true
+    }
+  },
+  "inner_boundary": {
+    "passed": true,
+    "degree": 1,
+    "coefficients": [
+      619271,
+      -5100608,
+      35876739,
+      -169721152,
+      491196326,
+      -885663808,
+      1065558054,
+      -957958592,
+      669681731,
+      -236915328,
+      60062535
+    ],
+    "positive_denominator_factor_count": 5,
+    "sturm": {
+      "degrees": [
+        10,
+        9,
+        8,
+        7,
+        6,
+        5,
+        4,
+        3,
+        2,
+        1,
+        0
+      ],
+      "minus_infinity_signs": "+--+++--+--",
+      "plus_infinity_signs": "++--+--+++-",
+      "variations_minus": 5,
+      "variations_plus": 5,
+      "real_roots": 0
+    }
+  },
+  "outer_circle": {
+    "passed": true,
+    "content": 656369,
+    "coefficients": [
+      11751160313656400426951788919,
+      -137579839638925277492971300800,
+      958901799234288449551831128476,
+      -4106906924234287705167320942400,
+      10779372189655006534093819771914,
+      -16680328775739752952831727982400,
+      14042199262274463963774353314076,
+      -5586354003042199421157378340800,
+      1394955241714223750805412881719
+    ],
+    "sturm": {
+      "degrees": [
+        8,
+        7,
+        6,
+        5,
+        4,
+        3,
+        2,
+        1,
+        0
+      ],
+      "minus_infinity_signs": "+--++--++",
+      "plus_infinity_signs": "++--++--+",
+      "variations_minus": 4,
+      "variations_plus": 4,
+      "real_roots": 0
+    }
+  },
+  "upper_target_bound": {
+    "passed": true,
+    "product_numerator": 5697579109375,
+    "product_denominator": 119480253283,
+    "product_below_48": true,
+    "48_below_target_radius": true,
+    "exact_modulus_squares": [
+      "37/100",
+      "1/10",
+      "53/100"
+    ],
+    "factor_maximization_checked": true,
+    "target_exponent": 16
+  },
+  "critical_points": {
+    "passed": true,
+    "degree": 8,
+    "disk_count": 8,
+    "radius": "1/10000",
+    "exact_ratio_floors": [
+      126,
+      362,
+      118,
+      451,
+      122,
+      192,
+      182,
+      144
+    ],
+    "inside_unit_disk_indices": [
+      4,
+      5,
+      6,
+      7
+    ],
+    "outside_1_2901_indices": [
+      1,
+      2,
+      3,
+      8
+    ]
+  },
+  "self_collision": {
+    "passed": true,
+    "z1": "-1 + 4*I/5",
+    "w": "-559602300/1858025273 + 1886709225*I/1858025273",
+    "quartic_degree": 4,
+    "rouche_ratio_floor": 11,
+    "center_modulus_squared": "413965722661/250000000000",
+    "collision_disk_inside_source_annulus": true
+  },
+  "ledger_and_documentation": {
+    "passed": true,
+    "total": 330,
+    "counts": {
+      "imported": 23,
+      "proved": 235,
+      "open": 72
+    },
+    "statuses": {
+      "KAHN_ANNULUS_GLOBAL_INJECTIVITY_NO_GO": "proved",
+      "KL_TILE_INJECTIVITY_BASE_ANNULUS_REDUCTION": "proved",
+      "KL_CANONICAL_LOCALIZATION_FORCED_COLLISION": "proved",
+      "DIRECT_DECORATION_DEGREE_ONE_PSEUDO_EMBEDDING": "open",
+      "DIRECT_DECORATION_OUTER_CAP_FOOTPRINT": "open",
+      "VIRTUAL_WAVE_MARKED_CORRESPONDENCE": "open",
+      "UNIVERSAL_PROTECTED_TOWER_CLOSURE": "open",
+      "MLC": "open"
+    },
+    "required_documentation_phrases": [
+      "Theorem 1.1",
+      "Exact Sturm certificate",
+      "Exact exclusion of critical points",
+      "Exact self-collision",
+      "abstract annulus no-go",
+      "not an actual counterexample",
+      "VAAPC-I, UPTCR, and MLC remain open"
+    ],
+    "critical_polynomial_documentation_match": true
+  }
+}

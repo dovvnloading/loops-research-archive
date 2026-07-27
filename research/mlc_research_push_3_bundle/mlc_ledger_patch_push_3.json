@@ -1,0 +1,191 @@
+{
+  "patch_status": "proposal_requires_repository_schema_dependency_source_and_build_audit",
+  "research_push": 3,
+  "date": "2026-07-24",
+  "count_policy": {
+    "original_open_count_change": 0,
+    "reason": "The new results close split rescaled/pro-exact and quantitative subnodes and prove that planar infinite-address identification is unnecessary for every module satisfying the finite-interface contract. They do not universally authorize that interface for all mixed blocks, so no original source-facing node is silently promoted.",
+    "new_proved_subnodes": 11
+  },
+  "new_proved_obligations": [
+    {
+      "id": "VIRTUAL_END_DIRECT_LIMIT",
+      "status": "proved",
+      "statement": "For every infinite direct-decoration address, the conformal geometric-prefix system of actual finite cylinders has a direct-limit Riemann surface canonically marked-isomorphic to the normalized root quadratic-like domain. The retimed covering/immersion pairs, filled carrier, critical word, prime-end marking, obstacles, response electrodes, and finite Value features descend exactly.",
+      "dependencies": [
+        "FINITE_CYLINDER_SECOND_PORTRAIT_TRANSFER",
+        "NORMALIZED_END_GERM_CONSTANCY"
+      ],
+      "evidence": "mlc_research_push_3.md#theorem-1---end-rescaling-pseudo-quadratic-like-surface"
+    },
+    {
+      "id": "DEPTH_GRADED_END_DIAGRAM_REALIZATION",
+      "status": "proved",
+      "statement": "Every finite normalized end diagram admitting a consistent integer shift grading has an exact finite-cylinder realization. Root and shift dynamics are genuine polynomial iterates; geometric presentation changes remain explicitly typed conformal maps; all marked squares and chronological critical words commute exactly.",
+      "dependencies": [
+        "VIRTUAL_END_DIRECT_LIMIT",
+        "MARKED_FINITE_HORIZON_ASSEMBLY",
+        "STAGEWISE_CRITICAL_WORD_LADDER"
+      ],
+      "evidence": "mlc_research_push_3.md#theorem-7---exact-finite-realization-of-a-depth-graded-end-diagram"
+    },
+    {
+      "id": "INTRINSIC_FINITE_PSEUDOPUZZLE_ATLAS",
+      "status": "proved",
+      "statement": "An externally marked connected quadratic-like map carries every finite source-authorized ray/equipotential pseudo-puzzle atlas intrinsically through its external class and actual pullbacks, with exact return times, components, degrees, critical words, prime-end phase, and cyclic order. No uniqueness of an arbitrary hybrid conjugacy is used.",
+      "dependencies": [],
+      "evidence": "mlc_research_push_3.md#theorem-10---intrinsic-finite-pseudo-puzzle-atlas"
+    },
+    {
+      "id": "RECURSIVE_FIBERED_PORTRAIT_COMPILER",
+      "status": "proved",
+      "statement": "Every finite source-supplied decorated chain of externally marked connected quadratic-like maps has a prefix-local recursive normalized realization on direct-limit end surfaces, and every finite multi-scale diagram has an exact finite physical realization. The construction is covariant under marked presentation changes and does not assume rigidity.",
+      "dependencies": [
+        "VIRTUAL_END_DIRECT_LIMIT",
+        "DEPTH_GRADED_END_DIAGRAM_REALIZATION",
+        "INTRINSIC_FINITE_PSEUDOPUZZLE_ATLAS"
+      ],
+      "evidence": "mlc_research_push_3.md#theorem-11---recursive-fibered-portrait-compiler"
+    },
+    {
+      "id": "DIRECT_DECORATION_FIBER_RESPONSE_IDENTITY",
+      "status": "proved",
+      "statement": "Every fully transported finite curve-family extremal length, finite-electrode Dirichlet-to-Neumann response, and conformally natural finite WAD/Value module is exactly invariant along finite and infinite direct-decoration rescaling coordinates.",
+      "dependencies": [
+        "VIRTUAL_END_DIRECT_LIMIT"
+      ],
+      "evidence": "mlc_research_push_3.md#part-v-exact-fiberwise-width-and-response"
+    },
+    {
+      "id": "DIRECT_DECORATION_SERIAL_NECK",
+      "status": "proved",
+      "statement": "For every serially exhaustive direct-decoration address corridor, the source ray/equipotential quadrilateral resistances add in series. A tail with letters a_1,...,a_m has conductance at most 1/(sum_j R_{a_j}), and at most 1/(m R_*) for the blockwise minimum positive cell resistance.",
+      "dependencies": [
+        "DIRECT_DECORATION_PULLBACK_COMPACTIFICATION"
+      ],
+      "evidence": "mlc_research_push_3.md#theorem-16---serial-resistance-growth"
+    },
+    {
+      "id": "ADAPTIVE_NODAL_RESPONSE_APPROXIMATION",
+      "status": "proved",
+      "statement": "For a finite proof-use set of end bubbles, cutting pairwise disjoint deep serial tails gives a nodal normalization whose response differs from the connected physical response by a positive-semidefinite matrix of operator norm at most 2 sum_i c_i. Choosing tail lengths with sum_i 2/(ell_i R_{*,i}) <= epsilon gives any predetermined error tolerance epsilon.",
+      "dependencies": [
+        "DIRECT_DECORATION_SERIAL_NECK",
+        "DIRECT_DECORATION_FIBER_RESPONSE_IDENTITY",
+        "RESPONSE_GLUE_CALCULUS",
+        "FINITE_ELECTRODE_RESPONSE"
+      ],
+      "evidence": "mlc_research_push_3.md#theorem-17---quantitative-nodal-response-approximation"
+    },
+    {
+      "id": "DIRECT_DECORATION_PROTECTED_END_MATERIALIZATION",
+      "status": "proved",
+      "statement": "Every finite depth-graded direct-decoration end diagram satisfying the transported root packet/port, obstacle, collar, and serial-neck certificates has a sufficiently deep physical realization with one protected regulated carrier preserving every declared access and avoiding all unselected finite pullbacks and end supports.",
+      "dependencies": [
+        "DEPTH_GRADED_END_DIAGRAM_REALIZATION",
+        "PROTECTED_REGULATED_CONNECTOR_REALIZATION",
+        "PROTECTED_FREE_COMPONENT_CRITERION",
+        "AUGMENTED_PACKET_CLOSURE_AUDIT"
+      ],
+      "evidence": "mlc_research_push_3.md#theorem-20---protected-finite-physical-carrier-for-an-end-diagram"
+    },
+    {
+      "id": "DIRECT_DECORATION_FINITE_HORIZON_INFLATION",
+      "status": "proved",
+      "statement": "Every finite direct-decoration normalized end diagram with actual intrinsic branches, one quadratic relative stage, critical-spine retention, a protected root packet/port certificate, serially exhaustive necks, and a prescribed response tolerance inflates to an actual finite-horizon pseudo-quadratic-like program with exact marked chronology and plumbing-response error below the tolerance.",
+      "dependencies": [
+        "DEPTH_GRADED_END_DIAGRAM_REALIZATION",
+        "MARKED_FINITE_HORIZON_ASSEMBLY",
+        "DIRECT_DECORATION_PROTECTED_END_MATERIALIZATION",
+        "ADAPTIVE_NODAL_RESPONSE_APPROXIMATION"
+      ],
+      "evidence": "mlc_research_push_3.md#theorem-21---quantitative-finite-horizon-inflation"
+    },
+    {
+      "id": "DIRECT_DECORATION_STRICT_TRANSITION_TRANSFER",
+      "status": "proved",
+      "statement": "If a source-licensed normalized root block has an error-stable strict forward contraction L_out <= mu L_in + E_root with mu<1, then every finite materialized direct-decoration end extension satisfies the same homogeneous coefficient with any preassigned additive plumbing charge. The backward factor lambda=mu^{-1}>1 is unchanged.",
+      "dependencies": [
+        "DIRECT_DECORATION_FINITE_HORIZON_INFLATION",
+        "ERROR_STABLE_LYAPUNOV_REDUCTION",
+        "FORWARD_CONTRACTION_REDUCTION"
+      ],
+      "evidence": "mlc_research_push_3.md#theorem-22---strict-root-transition-survives-virtual-end-materialization"
+    },
+    {
+      "id": "PLANAR_FREE_FINITE_INTERFACE_EXECUTION",
+      "status": "proved",
+      "statement": "Every direct-decoration block satisfying the finite-interface contract—finite depth-graded calls, conformally natural end operations, protected finite carrier, finite-electrode/retained-Value coupling, perturbation-stable inequalities, and horizon-before-depth selection—has an actual finite-cylinder execution with exact marked dynamics and any preassigned plumbing error, without a point-valued or nondegenerate planar infinite-address component.",
+      "dependencies": [
+        "DEPTH_GRADED_END_DIAGRAM_REALIZATION",
+        "DIRECT_DECORATION_PROTECTED_END_MATERIALIZATION",
+        "ADAPTIVE_NODAL_RESPONSE_APPROXIMATION",
+        "DIRECT_DECORATION_STRICT_TRANSITION_TRANSFER"
+      ],
+      "evidence": "mlc_research_push_3.md#theorem-24---pro-exact-execution-sufficiency"
+    }
+  ],
+  "required_node_splits": [
+    {
+      "original_id": "VIRTUAL_DISCONNECTED_MARKING_TRANSFER",
+      "proved_split": "RESCALED_END_MARKING_TRANSFER",
+      "open_split": "PLANAR_VIRTUAL_COMPONENT_IDENTIFICATION",
+      "reason": "The direct-limit fiber is an exact rescaling pro-object. Identification with a planar infinite-address component remains open as geometry, but the pro-exact execution theorem shows it is not required by finite-interface proof modules."
+    },
+    {
+      "original_id": "VIRTUAL_CANTOR_PACKAGE_REALIZATION",
+      "proved_split": "FIBERED_PROEXACT_CANTOR_PACKAGE",
+      "open_splits": [
+        "ACTUAL_PLANAR_CANTOR_COMPONENT_FAMILY",
+        "GLOBAL_PROTECTED_CARRIER_COUPLING"
+      ]
+    },
+    {
+      "original_id": "VIRTUAL_PREFIX_LOCAL_SCALE_SELECTOR",
+      "proved_split": "INTRINSIC_FINITE_ATLAS_COMPILER",
+      "open_split": "SOURCE_UNIVERSAL_VIRTUAL_SCALE_AUTHORIZATION"
+    }
+  ],
+  "new_failure_certificates": [
+    {
+      "id": "SERIAL_NECK_FAILURE",
+      "fields": [
+        "block",
+        "address",
+        "stage",
+        "missing_side_wall_or_cross_section",
+        "bypass_curve",
+        "protected_or_obstacle_collision",
+        "authorized_localization"
+      ]
+    },
+    {
+      "id": "SHIFT_GRADING_FAILURE",
+      "fields": [
+        "diagram_node",
+        "two_conflicting_paths",
+        "net_shift_counts",
+        "required_unfolding"
+      ]
+    },
+    {
+      "id": "PLANAR_COMPONENT_IDENTIFICATION_FAILURE",
+      "fields": [
+        "scale",
+        "address",
+        "claimed_component",
+        "actual_end_support",
+        "prescribed_return",
+        "first_failed_component_or_marking_field"
+      ]
+    }
+  ],
+  "scope_notes": [
+    "The adaptive depth is selected after a finite proof horizon is frozen and from a predeclared tolerance; it is presentation side data and does not define the normalized end object.",
+    "PLANAR_VIRTUAL_COMPONENT_IDENTIFICATION remains open but is deleted from the critical path for every module that verifies the finite-interface contract; universal source authorization of that contract remains open.",
+    "No uniform lower bound on the one-cell resistance is required. A small positive resistance is compensated by a longer finite univalent tail.",
+    "The numerical plumbing_response_audit.py validates the finite-network Schur-complement analogue only; the analytic proof is the Dirichlet-principle argument in the research note.",
+    "Uniform global response/WAD/Value dimension remains open because a universal bound on future-equivalence classes has not been proved.",
+    "MLC, MBTT, geometric coercivity, and mixed-tower rigidity remain open."
+  ]
+}

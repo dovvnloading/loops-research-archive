@@ -1,0 +1,41 @@
+{
+  "certificate": "LEVIN_THEOREM7_EXTENDED_BRANCH_CLOSURE",
+  "date": "2026-07-25",
+  "status": "proved_in_imported_source_scope",
+  "source": {
+    "title": "Rigidity and non local connectivity of Julia sets of some quadratic polynomials",
+    "author": "Genadi Levin",
+    "url": "https://arxiv.org/pdf/0710.4406",
+    "version": "v4",
+    "sha256": "8E5A59B111C0D841D5DEB3AB7ADB12B556896A2916C1E4CC8418FE41789335CD",
+    "theorem": "Theorem 7: (Y0a) and (Y0b) give convergence; adding (Y1) gives Mandelbrot local connectivity at the limit."
+  },
+  "conditions": {
+    "Y0a": "sup |t_m| product(q_0,...,q_(m-1)) < infinity",
+    "Y0b": "inf log(|p_(m-1) q_(m-1)|/|t_m|) / product(q_0,...,q_(m-2)) > 0",
+    "Y1": "there exists beta > 0 with limsup q_m / max(product(q_0,...,q_(m-1))^2, exp(beta product(q_0,...,q_(m-2)))) > 0"
+  },
+  "explicit_witness_family": {
+    "q_0": 2,
+    "q_1": 2,
+    "p_m": 1,
+    "q_m": "ceil(exp(beta product(q_0,...,q_(m-2)))) for m >= 2",
+    "beta": 1,
+    "finite_prefix": ["2", "2", "8", "55", "78962960182681"],
+    "last_tested_root_value": "0.9999999999777110686",
+    "interpretation": "The finite witness moves the root expression toward 1 while satisfying the checked finite versions of the three growth patterns."
+  },
+  "machine_validation": {
+    "script": "research/mlc_unified/validate_levin_theorem7_extended_branch.py",
+    "result": "LEVIN_THEOREM7_EXTENDED_BRANCH_VALID",
+    "all_checks": true,
+    "original_artifacts_written": false
+  },
+  "remaining_scope": [
+    "unbounded satellite sequences failing (Y0a),(Y0b),(Y1) and other imported growth criteria",
+    "virtual Molecule interpolation",
+    "global MLC"
+  ],
+  "ledger_policy": "Keep global MLC and virtual obligations open; this certificate closes only the Levin Theorem 7 branch."
+}
+

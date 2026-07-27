@@ -1,0 +1,65 @@
+{
+  "certificate": "UNBOUNDED_SATELLITE_SECTOR_BRIDGE_ATTEMPT",
+  "date": "2026-07-25",
+  "scope": "near-neutral symbolic chronology and attempted satellite-to-sector analytic transfer",
+  "source_urls": [
+    "https://arxiv.org/html/2607.11408v1",
+    "https://arxiv.org/html/2512.24171"
+  ],
+  "machine_validation": {
+    "script": "research/mlc_unified/validate_sector_bridge_attempt.py",
+    "precision_digits": 80,
+    "levels_checked": 12,
+    "test_parameters": [
+      "0.3141592653589793",
+      "-0.2718281828459045",
+      "0.4142135623730951"
+    ],
+    "large_first_digit_test": {
+      "theta": "0.0001234567890123",
+      "first_digit": 8100,
+      "first_return_time": 8100
+    },
+    "max_abs_errors": [
+      "2.18455320482769552E-72",
+      "2.381484876185861E-73",
+      "5.9459837E-77",
+      "2.31223324372822017924073E-71"
+    ],
+    "result": "SECTOR_ARITHMETIC_VALID"
+  },
+  "claims": [
+    {
+      "id": "SECTOR_ARITHMETIC",
+      "status": "proved_from_source_formulas",
+      "statement": "The sector recurrence satisfies Q_[n] theta - p_[n] = (epsilon_1 ... epsilon_n) theta_0 ... theta_n."
+    },
+    {
+      "id": "PARABOLIC_SYMBOL",
+      "status": "proved_as_compact_symbol_statement",
+      "statement": "A first sector digit tending to infinity forces theta to zero and records an explicit infinity symbol in the compactified code."
+    },
+    {
+      "id": "SATELLITE_TO_SECTOR_ANALYTIC_COMPARISON",
+      "status": "open",
+      "missing_object": "A conformal or uniformly controlled quasiconformal comparison on a full pseudo-Siegel nest that preserves critical orbit, access, return chronology, moduli, and parameter parapuzzle boundaries."
+    },
+    {
+      "id": "UNBOUNDED_SATELLITE_MLC",
+      "status": "open",
+      "reason": "The checked sector source develops the neutral model and its combinatorics, but does not prove the missing comparison for arbitrary satellite quadratic-like returns."
+    },
+    {
+      "id": "VIRTUAL_MOLECULE_INTERPOLATION",
+      "status": "open",
+      "reason": "The primitive-to-satellite chain still needs an actual partially invariant virtual Julia set, critical horizon, and protected access transport."
+    },
+    {
+      "id": "MLC",
+      "status": "open",
+      "reason": "The global theorem requires all remaining unbounded and mixed towers."
+    }
+  ],
+  "original_artifacts_written": false
+}
+

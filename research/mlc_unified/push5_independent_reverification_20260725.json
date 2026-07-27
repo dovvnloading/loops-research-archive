@@ -1,0 +1,30 @@
+{
+  "artifact": "PUSH5_INDEPENDENT_REVERIFICATION",
+  "date": "2026-07-25",
+  "status": "FAILED",
+  "checks": {
+    "normalized_intake_hash": true,
+    "ledger_counts_current_330_23_235_72": false,
+    "only_legal_statuses": true,
+    "forbidden_patch_status_absent": true,
+    "nonexistent_bottcher_id_absent": true,
+    "all_required_gates_open": true,
+    "finite_overlay_proved_narrowly": true,
+    "welding_depends_on_contact_closure": true,
+    "contact_state_retains_marked_incidence": true,
+    "cap_bound_has_addition": true,
+    "binary_macrobranch_relation_recorded": true,
+    "relative_error_denominators_correct": true,
+    "wot_not_accepted_as_welding_algebra": true
+  },
+  "all_checks": false,
+  "ledger": {
+    "total": 430,
+    "imported": 30,
+    "proved": 292,
+    "open": 108,
+    "target": "MLC",
+    "target_status": "open"
+  },
+  "scope": "repository, arithmetic, and finite-compiler checks only; all-depth dynamical contact closure, welding compactness, UPTCR, and MLC remain open"
+}

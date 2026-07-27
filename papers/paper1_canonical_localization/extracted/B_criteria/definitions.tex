@@ -1,0 +1,50 @@
+\begin{definition}[Localized lift data]
+\label{def:localized-lift-data}
+Let \(X_s,X_t\) be connected, locally path-connected, semilocally simply
+connected spaces, and let
+\[
+ p_s:\widetilde X_s\to X_s,\qquad p_t:\widetilde X_t\to X_t
+\]
+be connected based covers corresponding to subgroups
+\(H_s\le\pi_1(X_s,x_s)\) and \(H_t\le\pi_1(X_t,x_t)\).  Given a based
+embedding \(a:(X_s,x_s)\hookrightarrow(X_t,x_t)\), a \emph{based lift}
+of \(a\) is a map \(A:\widetilde X_s\to\widetilde X_t\) with
+\[
+ p_t\circ A=a\circ p_s .
+\]
+By the standard lifting criterion \cite{Hatcher02}, such an \(A\)
+exists if and only if
+\(a_*(H_s)\subseteq H_t\).
+\end{definition}
+
+\begin{definition}[Canonical localization subgroups at a primitive stage]
+\label{def:canonical-localization-subgroups}
+Let \(f\), \(F=f^p\), \(A=K_p\), \(B=\mathcal K_p\), \(\Omega_s\),
+\(\Omega_t\) be as in the Notation.  Fix a Jordan local neighborhood
+\(D_A\Subset T'\) of \(A\) meeting no other component of \(F^{-1}B\),
+and a basepoint \(z_*\in D_A\setminus A\).  The \emph{source
+localization subgroup} is
+\[
+ H_s=\operatorname{im}\bigl[\pi_1(D_A\setminus A,z_*)\longrightarrow
+ \pi_1(\Omega_s,z_*)\bigr],
+\]
+and the \emph{target localization subgroup}
+\(H_t\le\pi_1(\Omega_t,z_*)\) is defined analogously from a local
+neighborhood of \(A\) in \(T\).  The \emph{localization covers}
+\(\widehat\Omega_s\to\Omega_s\), \(\widehat\Omega_t\to\Omega_t\) are the
+connected covers corresponding to \(H_s,H_t\), and the \emph{localized
+inclusion} \(\widehat i:T'_A\to T_A\) is Kahn's unique commuting lift of
+the physical inclusion \(a=i^p\), completed by adjoining the marked
+continuum \(A\).
+\end{definition}
+
+\begin{definition}[Degree-one annular lift datum]
+\label{def:annular-lift-data}
+Let \(A_s,A_t\) be connected annuli with universal covers
+\(\pi_s:\widetilde A_s\to A_s\), \(\pi_t:\widetilde A_t\to A_t\) and
+positively oriented deck generators \(T_s,T_t\).  A \emph{degree-one
+annular lift datum} is a holomorphic immersion \(I:A_s\to A_t\) whose
+induced homomorphism on fundamental groups is multiplication by \(+1\),
+together with a lift \(L:\widetilde A_s\to\widetilde A_t\) satisfying
+\(\pi_t\circ L=I\circ\pi_s\).
+\end{definition}

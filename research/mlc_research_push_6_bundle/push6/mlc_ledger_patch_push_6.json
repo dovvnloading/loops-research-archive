@@ -1,0 +1,163 @@
+{
+  "patch_status": "proposal_requires_authoritative_repository_schema_dependency_source_and_build_audit",
+  "research_push": 6,
+  "date": "2026-07-25",
+  "principal_target": "PHYSICAL_END_CONTACT_WELDING_CONTROL",
+  "verdict": {
+    "physical_end_separator_contact_realization": "proved_for_binary_direct_decoration_package_and_every_finite_frozen_regular_inventory",
+    "direct_decoration_trace_collar_realization": "remain_open_in_global_source_complete_protected_scope",
+    "end_plumbing_trace_response_control": "remain_open_pending_contact_aware_response_cocycle_compactness_and_value_observability",
+    "H2": "open",
+    "MBTT": "open",
+    "UPTCR": "open",
+    "MLC": "open"
+  },
+  "count_policy": {
+    "original_global_open_count_change": 0,
+    "new_split_nodes": 11,
+    "reason": "The all-depth puzzle-contact and finite frozen-collar calculus are proved, but the authoritative broad gates quantify over a source-complete protected inventory and a universally controlled response/Value state. No global node is silently promoted."
+  },
+  "source_scope": {
+    "package": "binary f^q direct-decoration pullbacks Q_L,Q_R used by the existing rooted-end compactification",
+    "excluded_conflation": "the separate 2^n family of f^(nq) pullbacks is not used",
+    "geometric_input": "nested closed Jordan puzzle pieces with finite ray/equipotential boundary graphs and actual univalent inverse branches"
+  },
+  "new_proved_split_nodes": [
+    {
+      "id": "NESTED_SEPARATOR_CONTACT_MARKOV_PROPERTY",
+      "status": "proved",
+      "statement": "For a finite nested chain D_0 superset ... superset D_H, every contact between the accumulated prefix int(D_0) minus D_j and the next or any future shell lies on the current separator partial D_j. Gluing the prefix to the next shell along the actual active part of partial D_j reconstructs the next prefix exactly.",
+      "dependencies": ["DIRECT_DECORATION_PULLBACK_COMPACTIFICATION"],
+      "evidence": "mlc_research_push_6.md#2-the-separator-is-the-exact-all-depth-contact-state"
+    },
+    {
+      "id": "FROZEN_COLLAR_SEPARATOR_CALCULUS",
+      "status": "proved",
+      "statement": "After any finite regular protected collar, obstacle, ideal-wall, and electrode inventory has been frozen, removing that inventory does not create prefix-to-next-shell contacts away from the current separator. The remaining active separator arcs glue exactly and every forbidden boundary remains a typed side port or wall.",
+      "dependencies": ["NESTED_SEPARATOR_CONTACT_MARKOV_PROPERTY"],
+      "evidence": "mlc_research_push_6.md#3-frozen-collars-and-obstacles-do-not-destroy-the-separator-theorem"
+    },
+    {
+      "id": "BOUNDARY_PERSISTENCE_INTERVALS",
+      "status": "proved",
+      "statement": "For nested closed Jordan pieces, the set of levels on which one open boundary atom persists is an integer interval. A physical contact atom never leaves and later reactivates; nonconsecutive shell contacts are consecutive persistence intervals viewed in shell-only coordinates.",
+      "dependencies": ["NESTED_SEPARATOR_CONTACT_MARKOV_PROPERTY"],
+      "evidence": "mlc_research_push_6.md#4-boundary-persistence-is-interval-convex"
+    },
+    {
+      "id": "DIRECT_DECORATION_CONTACT_MASK_AUTOMATON",
+      "status": "proved",
+      "statement": "For the binary direct-decoration package, a finite root boundary atomization E and partial atom maps tau_a give the exact root-shared mask recursion R_{j+1}=tau_a(R_j intersect A_a). The structural contact history has at most 2^|E| states, independent of address depth but not uniformly over all decoration blocks.",
+      "dependencies": ["BOUNDARY_PERSISTENCE_INTERVALS", "DIRECT_DECORATION_PULLBACK_COMPACTIFICATION"],
+      "evidence": "mlc_research_push_6.md#5-root-normalized-finite-contact-automaton"
+    },
+    {
+      "id": "PREFIX_CELL_FOUR_WAY_TRACE_REFINEMENT",
+      "status": "proved",
+      "statement": "At each prefix-to-cell junction every structural open atom is exactly one of genuine glue, zero-energy transport, root-side-only cell port, or double inactive. A finite protected overlay refines these classes without adding another structural approach type.",
+      "dependencies": ["DIRECT_DECORATION_CONTACT_MASK_AUTOMATON"],
+      "evidence": "mlc_research_push_6.md#6-four-way-prefixcell-refinement"
+    },
+    {
+      "id": "GEOMETRIC_SEPARATOR_RESPONSE_RECURSION",
+      "status": "proved",
+      "statement": "The exact closed Dirichlet response of an accumulated physical prefix is updated by gluing only genuine separator traces, transporting persistent traces, coupling root-side cell ports, retaining live protected ports, and minimizing internal traces. The output is the actual-domain Dirichlet form of the next prefix, so no abstract closed-form pushforward theorem is used.",
+      "dependencies": ["FROZEN_COLLAR_SEPARATOR_CALCULUS", "PREFIX_CELL_FOUR_WAY_TRACE_REFINEMENT", "PARTIAL_TRACE_FIBER_PRODUCT_RESPONSE"],
+      "evidence": "mlc_research_push_6.md#7-exact-dirichlet-response-recursion"
+    },
+    {
+      "id": "DTN_MARKOV_SUFFICIENCY",
+      "status": "proved",
+      "statement": "Current contact mask, external labels, current separator trace coordinate, and the exact Dirichlet response form are a future-sufficient state for every finite continuation by the binary root-cell catalog.",
+      "dependencies": ["GEOMETRIC_SEPARATOR_RESPONSE_RECURSION"],
+      "evidence": "mlc_research_push_6.md#7-exact-dirichlet-response-recursion"
+    },
+    {
+      "id": "DIRECT_DECORATION_BLOCKWISE_GEOMETRIC_LIVE_FRONTIER",
+      "status": "proved",
+      "statement": "Every future direct-decoration cell interacts with the accumulated past only through the current separator, with at most |E| structural contact atoms. An old unseeded port absent from the separator is geometrically unreachable by all future cells. The finite proof-use overlay remains horizon-dependent.",
+      "dependencies": ["DTN_MARKOV_SUFFICIENCY", "DIRECT_DECORATION_CONTACT_MASK_AUTOMATON"],
+      "evidence": "mlc_research_push_6.md#8-genuine-finite-geometric-live-frontier"
+    },
+    {
+      "id": "CO_MOVING_PHYSICAL_RESPONSE_COCYCLE",
+      "status": "proved",
+      "statement": "Using the actual conformal maps h_w:D_w to P at every stage, the finite-horizon physical response is generated by a fixed root-cell catalog and finite contact masks. No word-dependent global welding map is omitted. Norm compactness of the orbit is not asserted.",
+      "dependencies": ["GEOMETRIC_SEPARATOR_RESPONSE_RECURSION", "DIRECT_DECORATION_CONTACT_MASK_AUTOMATON"],
+      "evidence": "mlc_research_push_6.md#9-co-moving-coordinates-remove-the-finite-horizon-welding-defect"
+    },
+    {
+      "id": "CONTACT_TRANSIENT_RECURRENT_DICHOTOMY",
+      "status": "proved",
+      "statement": "Every zero-cell-energy contact atom either exits the finite contact graph within the number of structural atoms or enters a recurrent strongly connected component that must be retained as an exact neutral presentation mode.",
+      "dependencies": ["DIRECT_DECORATION_CONTACT_MASK_AUTOMATON"],
+      "evidence": "mlc_research_push_6.md#10-contact-transport-versus-conducting-energy"
+    },
+    {
+      "id": "BLOCKWISE_FINITE_FEATURE_GRAMIAN_GAP",
+      "status": "proved",
+      "statement": "For one fixed block, fixed finite feature space, and fixed word length, every accumulated physical-energy Gramian controls squared distance from its exact neutral kernel by a positive block-dependent constant. No universal constant or dimension is claimed.",
+      "dependencies": ["CO_MOVING_PHYSICAL_RESPONSE_COCYCLE"],
+      "evidence": "mlc_research_push_6.md#10-contact-transport-versus-conducting-energy"
+    }
+  ],
+  "broad_gate_revisions": [
+    {
+      "id": "PHYSICAL_END_CONTACT_WELDING_CONTROL",
+      "revision": "Split into proved PHYSICAL_END_SEPARATOR_CONTACT_REALIZATION and open CONTACT_AWARE_RESPONSE_COCYCLE_COMPACTNESS_AND_VALUE_OBSERVABILITY. The all-pairs historical contact graph is replaced by the exact current-separator response state."
+    },
+    {
+      "id": "DIRECT_DECORATION_TRACE_COLLAR_REALIZATION",
+      "revision": "Remove all-depth raw puzzle-contact closure from the unknown content. Keep open the universal construction and protection of the complete future collar/obstacle inventory and its response/Value topology."
+    },
+    {
+      "id": "END_PLUMBING_TRACE_RESPONSE_CONTROL",
+      "revision": "The remaining issue is no longer geometric bypass detection or omitted finite-horizon welding. It is compactness/strictness of the exact contact-aware response cocycle in the topology used by H2 and Value."
+    },
+    {
+      "id": "VAAPC-I",
+      "revision": "The binary direct-decoration structural contact frontier is finite and exact. VAAPC-I still must construct the complete source-faithful Wave horizon and finite or future-faithful protected proof overlay."
+    }
+  ],
+  "new_open_target": {
+    "id": "CONTACT_AWARE_RESPONSE_COCYCLE_COMPACTNESS_AND_VALUE_OBSERVABILITY",
+    "status": "open",
+    "statement": "Every mixed virtual-Molecule block has a universally controlled quotient of the exact contact-aware response state that retains recurrent neutral contact modes, has a universal observability gap on the transient complement, carries every WAD and Value observable exactly, compares all primitive/neutral/virtual charts in one calibrated gauge, and yields a strict complete-block transition after discounted error.",
+    "maps_to": [
+      "H2_RESPONSE_REALIZATION",
+      "H2_VALUE_FEATURE_REALIZATION",
+      "H2_VIRTUAL_TRANSFER_TRICHOTOMY",
+      "H2_DISCOUNTED_ERROR_CHARGE",
+      "MBTT"
+    ]
+  },
+  "failure_certificate": {
+    "id": "SEPARATOR_CONTACT_RESPONSE_FAILURE",
+    "fields": [
+      "block",
+      "binary_address_prefix",
+      "current_piece",
+      "next_piece",
+      "first_contact_outside_current_separator",
+      "failed_root_atom_refinement",
+      "mask_before",
+      "next_symbol",
+      "predicted_mask",
+      "actual_mask",
+      "frozen_collar_or_obstacle_crossing",
+      "missing_live_side_port",
+      "trace_coordinate_or_phase_defect",
+      "one_shot_response",
+      "recursive_response",
+      "first_nonzero_difference"
+    ]
+  },
+  "computational_audit": {
+    "script": "separator_contact_audit.py",
+    "arithmetic": "exact SymPy rational Schur complements; Shapely only for the geometric rectangle visualization",
+    "trials": 250,
+    "max_exact_one_shot_vs_recursive_difference": "0",
+    "mask_recurrence_failures": 0,
+    "known_bypass_captured_on_current_separator": true
+  }
+}
