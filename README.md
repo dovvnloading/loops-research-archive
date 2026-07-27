@@ -12,7 +12,7 @@ Assembled, authored, audited, and publicly released by **Matthew Robert Wesney**
 [![Proved: 316](https://img.shields.io/badge/proved-316-1f6f43?style=flat-square)](https://dovvnloading.github.io/loops-research-archive/#ledger)
 [![Open: 115](https://img.shields.io/badge/open-115-8a5a00?style=flat-square)](https://dovvnloading.github.io/loops-research-archive/#ledger)
 
-[**Explore the project page**](https://dovvnloading.github.io/loops-research-archive/) · [**Read the manuscript**](./marked_width_mlc_manuscript.pdf) · [**Inspect the proof ledger**](https://dovvnloading.github.io/loops-research-archive/#ledger) · [**Browse the research dossier**](./dossier.html)
+[**Explore the project page**](https://dovvnloading.github.io/loops-research-archive/) · [**Read the manuscript**](./marked_width_mlc_manuscript.pdf) · [**Read Paper 1**](./papers/paper1_canonical_localization/archive/paper1_v6_87pp_2026-07-27T1149.pdf) · [**Inspect the proof ledger**](https://dovvnloading.github.io/loops-research-archive/#ledger) · [**Browse the research dossier**](./dossier.html)
 
 </div>
 
@@ -24,6 +24,50 @@ Assembled, authored, audited, and publicly released by **Matthew Robert Wesney**
 This project studies the Mandelbrot Local Connectivity conjecture through a marked backward-transition framework for mixed renormalization towers. Its proposed state is not an unmarked continuum: it retains the ambient marked surface, a regularized carrier, satellite or neutral access data, a finite postcritical record, prime-end or sectorial boundary data, and the declared curve family.
 
 The manuscript develops finite root-pullback and inverse-tree reductions, exact critical-value and attachment formulae, finite routing, a common-domain theorem, finite Wave-horizon closure under stated hypotheses, and source-locked corrections and no-go results. The final passage to MLC is conditional on open compactness, transition, and rigidity inputs.
+
+## Paper 1 - forced noninjectivity and the canonical sheet resolution
+
+**Paper 1:** [*Forced Noninjectivity and Infinite Sheet Resolution in Canonical Localization*](./papers/paper1_canonical_localization/archive/paper1_v6_87pp_2026-07-27T1149.pdf) - 87 pages, draft of 2026-07-27.
+
+A central structural discovery made while adversarially testing the marked-carrier proposal is that Kahn's canonical localization does **not** preserve global injectivity at ordinary primitive canonical seeds. The published localization machinery is deliberately formulated in terms of immersions rather than embeddings. Paper 1 shows that this caution is sharp: for every ordinary quadratic-like restriction of a quadratic polynomial that is primitively renormalizable of period $p>1$, the canonically localized inclusion is forced to be noninjective. This is a forcing theorem at every seed in the stated class, not merely an example showing that failure is possible.
+
+### Mechanism of the forced collision
+
+For $F=f^p$, the total degree is $2^p$, while the central component has degree $2$. The pulled central continuum therefore has $2^p-2$ excess components. The canonical source and target localizations treat these components asymmetrically: a peripheral loop around an excess component survives outside the source localization subgroup but becomes null after the corresponding target-side hole is filled. Its lifted endpoints are distinct in the source and identified by the localized inclusion.
+
+The component count $2^p-2$ is an elementary degree budget and is **not** presented as the novelty. The new content claimed by Paper 1 is the identification of the actual dynamical subgroup defect, its canonical kernel model, and the peripheral-winding quotient that detects exponentially many independent directions.
+
+### Canonical resolution and new sheet invariant
+
+The noninjective localized inclusion admits a canonical resolution on the complementary-cover locus. It factors as a covering $q$ onto an embedded intermediate cover; within the paper's based commuting comparison class, that intermediate cover is unique. If $H_s$ and $H_t$ are the source and target localization subgroups and $K=a_*^{-1}(H_t)$ is the reflected subgroup, then the based sheet fiber is $K/H_s$, and it is infinite.
+
+Paper 1 further identifies that fiber with the hole-filling kernel:
+
+$$
+N_{\mathrm{fill}}=\ker(a_*),\qquad
+K=N_{\mathrm{fill}}\rtimes H_s,\qquad
+N_{\mathrm{fill}}\twoheadrightarrow \mathbb{Z}^{\,2^p-2}.
+$$
+
+Consequently, the forgotten sheet system has at least $2^p-2$ independent peripheral winding coordinates. No finite raw list of sheets, tiles, or bounded-multiplicity labels can be complete without an additional theorem producing a future-faithful finite quotient.
+
+| Paper 1 result | Meaning for the research program |
+|---|---|
+| **Forced canonical collision** | Global embedding preservation fails at every ordinary primitive canonical seed of period $p>1$. |
+| **Covering/embedding resolution** | The correct localized object is an embedded intermediate cover together with its covering map and sheet transport, rather than an embedded pseudo-piece alone. |
+| **Infinite coset fiber** | The sheet defect is intrinsically infinite; finite sheet bookkeeping cannot represent the unquotiented canonical localization. |
+| **Kernel normal form and winding surjection** | The defect is the kernel of the source-to-target hole-filling map and carries a surjection onto $\mathbb{Z}^{2^p-2}$. This kernel identification and winding quotient are the paper's principal quantitative novelty. |
+| **Exact propagation** | The collision and fiber data persist through the full, unselected exact Kahn equalizer tower on the complementary-cover locus. |
+| **Tile obstruction** | Under the paper's explicit alignment and annular-factorization hypotheses, the infinite resolution cannot be identified with a whole boundary-extended Kahn-Lyubich tile. |
+
+### Consequence for the marked-width proposal
+
+Paper 1 changes the admissible state space for the broader program. Any argument consuming canonical localization must retain the coset-valued sheet fibration and its path-lifting transport, synchronize the removed obstacle packet, or prove a faithful quotient theorem preserving every path, access, and observable used later. Treating the localized inclusion as a globally embedded carrier silently discards infinitely many sheets and is invalid at the ordinary primitive canonical seeds covered by the theorem.
+
+The result is corrective with respect to an embedding-preservation route explored in this research program; it does **not** contradict Kahn or Kahn-Lyubich, whose published statements assert immersion rather than global embedding. The closest published anticipation is the observation that a component-index map can be surjective without being injective; Paper 1 upgrades that possibility to a forced collision for the glued canonical localization and then derives the kernel, infinitude, transport, and no-go structure.
+
+> [!CAUTION]
+> Paper 1 does not prove or refute MLC, rigidity, a priori bounds, or local connectivity. It does not disturb the dynamical covering arrow, the embedded inner collar, the homeomorphism on filled sets, or the exact pullback squares. Its unconditional core is at ordinary primitive canonical seeds. Statements about aligned Kahn-Lyubich decoration stages and whole-tile comparisons retain the explicit hypotheses stated in the paper; no claim is made for a general bold stage without an independent realization argument.
 
 ## Status at the source lock
 
@@ -47,6 +91,7 @@ Status labels are claims about this source-locked snapshot, not substitutes for 
 |---|---|
 | [Project page](https://dovvnloading.github.io/loops-research-archive/) | Scholarly overview, mathematical atlas, references, citation, and searchable proof ledger |
 | [Main manuscript](./marked_width_mlc_manuscript.pdf) | The 214-page marked-width reduction and its explicit result boundary |
+| **Paper 1:** [*Forced Noninjectivity and Infinite Sheet Resolution in Canonical Localization*](./papers/paper1_canonical_localization/archive/paper1_v6_87pp_2026-07-27T1149.pdf) | The 87-page forced-collision theorem, canonical covering/embedding resolution, infinite sheet defect, and winding invariant |
 | [Machine-readable ledger](./ledger.json) | All 465 obligations, dependency links, evidence pointers, and statuses |
 | [Unified proof program](./research/mlc_unified/) | Source ledger, dependency and adversarial audits, proof obligations, validations, and research log |
 | [Companion papers](./papers/) | Drafts and extracted theorem-level materials for the localization, compactification, and protected-carrier subprograms |
@@ -105,10 +150,11 @@ Please cite **Wesney** for this archive and manuscript, and separately cite the 
 ## Reading order
 
 1. Start with the [project page](https://dovvnloading.github.io/loops-research-archive/) for the scope and result boundary.
-2. Read the [manuscript](./marked_width_mlc_manuscript.pdf) for definitions, theorem statements, and proofs.
-3. Use the [interactive ledger](https://dovvnloading.github.io/loops-research-archive/#ledger) to trace dependencies and isolate open gates.
-4. Consult [`research/mlc_unified`](./research/mlc_unified/) for the source, dependency, adversarial, and validation record.
-5. Treat computations and figures as diagnostics unless the manuscript explicitly promotes them into a proved statement.
+2. Read [Paper 1](./papers/paper1_canonical_localization/archive/paper1_v6_87pp_2026-07-27T1149.pdf) for the forced canonical collision, its infinite sheet resolution, and the resulting correction to the carrier proposal.
+3. Read the [main manuscript](./marked_width_mlc_manuscript.pdf) for the full marked-width program, definitions, theorem statements, and open gates.
+4. Use the [interactive ledger](https://dovvnloading.github.io/loops-research-archive/#ledger) to trace dependencies and isolate open obligations.
+5. Consult [`research/mlc_unified`](./research/mlc_unified/) for the source, dependency, adversarial, and validation record.
+6. Treat computations and figures as diagnostics unless a manuscript explicitly promotes them into a proved statement.
 
 ---
 
