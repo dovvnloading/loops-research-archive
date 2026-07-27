@@ -2,7 +2,7 @@
 
 # A Marked-Width Reduction of Mandelbrot Local Connectivity
 
-**Public research archive ? manuscript ? proof-obligation ledger ? computational dossier**
+**Public research archive · manuscript · proof-obligation ledger · computational dossier**
 
 Assembled, authored, audited, and publicly released by **Matthew Robert Wesney**
 
@@ -12,7 +12,7 @@ Assembled, authored, audited, and publicly released by **Matthew Robert Wesney**
 [![Proved: 316](https://img.shields.io/badge/proved-316-1f6f43?style=flat-square)](https://dovvnloading.github.io/loops-research-archive/#ledger)
 [![Open: 115](https://img.shields.io/badge/open-115-8a5a00?style=flat-square)](https://dovvnloading.github.io/loops-research-archive/#ledger)
 
-[**Explore the project page**](https://dovvnloading.github.io/loops-research-archive/) ? [**Read the manuscript**](./marked_width_mlc_manuscript.pdf) ? [**Inspect the proof ledger**](https://dovvnloading.github.io/loops-research-archive/#ledger) ? [**Browse the research dossier**](./dossier.html)
+[**Explore the project page**](https://dovvnloading.github.io/loops-research-archive/) · [**Read the manuscript**](./marked_width_mlc_manuscript.pdf) · [**Inspect the proof ledger**](https://dovvnloading.github.io/loops-research-archive/#ledger) · [**Browse the research dossier**](./dossier.html)
 
 </div>
 
@@ -35,9 +35,9 @@ The manuscript develops finite root-pullback and inverse-tree reductions, exact 
 | Proved in this program | **316** |
 | Imported from cited literature | **34** |
 | Open | **115** |
-| Ledger target | **MLC ? open** |
+| Ledger target | **MLC — open** |
 
-The stationary-Wave audit splits the native repair into four gates. The manuscript records the **relative-continuation gate as proved**; **pointwise two-path breaking**, **measurable final fixed-component exit**, and **typed bounded-degree pushforward** remain open. The Universal Protected-Tower Compactness and Rigidity Proposition (UPTCR), VAAPC-I, hypotheses H1?H4, and MLC also remain open.
+The stationary-Wave audit splits the native repair into four gates. The manuscript records the **relative-continuation gate as proved**; **pointwise two-path breaking**, **measurable final fixed-component exit**, and **typed bounded-degree pushforward** remain open. The Universal Protected-Tower Compactness and Rigidity Proposition (UPTCR), VAAPC-I, hypotheses H1–H4, and MLC also remain open.
 
 Status labels are claims about this source-locked snapshot, not substitutes for the definitions, hypotheses, and evidence pointers in the manuscript and ledger.
 
@@ -50,7 +50,7 @@ Status labels are claims about this source-locked snapshot, not substitutes for 
 | [Machine-readable ledger](./ledger.json) | All 465 obligations, dependency links, evidence pointers, and statuses |
 | [Unified proof program](./research/mlc_unified/) | Source ledger, dependency and adversarial audits, proof obligations, validations, and research log |
 | [Companion papers](./papers/) | Drafts and extracted theorem-level materials for the localization, compactification, and protected-carrier subprograms |
-| [Numerical work](./code/) ? [results](./results/) ? [figures](./figs/) | Reproducible exploratory computations and visual diagnostics; these are supporting evidence, not proof |
+| [Numerical work](./code/) · [results](./results/) · [figures](./figs/) | Reproducible exploratory computations and visual diagnostics; these are supporting evidence, not proof |
 | [Research dossier](./dossier.html) | Archive-level synthesis of the public research effort |
 
 This repository is intentionally an **archive of research state**, not a software package. Temporary files, caches, duplicate exports, private correspondence, local-path artifacts, and unrelated working material are withheld from the public snapshot.
@@ -61,12 +61,12 @@ The project is built in direct conversation with the established complex-dynamic
 
 | Area | Prior authors and representative sources |
 |---|---|
-| Polynomial-like mappings and the MLC problem | **Adrien Douady and John H. Hubbard**, [*On the dynamics of polynomial-like mappings*](http://www.numdam.org/item/ASENS_1985_4_18_2_287_0/); **Jean-Christophe Yoccoz**, with Hubbard?s exposition of the local-connectivity theorems |
-| Renormalization, rigidity, and a priori bounds | **Mikhail Lyubich**, *Dynamics of quadratic polynomials I?II*; **Jeremy Kahn**, [bounded primitive combinatorics](https://arxiv.org/abs/math/0609045); **Kahn and Lyubich**, [decorations](https://arxiv.org/abs/math/0609046) and [unicritical local connectivity](https://arxiv.org/abs/math/0505194) |
+| Polynomial-like mappings and the MLC problem | **Adrien Douady and John H. Hubbard**, [*On the dynamics of polynomial-like mappings*](http://www.numdam.org/item/ASENS_1985_4_18_2_287_0/); **Jean-Christophe Yoccoz**, with Hubbard’s exposition of the local-connectivity theorems |
+| Renormalization, rigidity, and a priori bounds | **Mikhail Lyubich**, *Dynamics of quadratic polynomials I–II*; **Jeremy Kahn**, [bounded primitive combinatorics](https://arxiv.org/abs/math/0609045); **Kahn and Lyubich**, [decorations](https://arxiv.org/abs/math/0609046) and [unicritical local connectivity](https://arxiv.org/abs/math/0505194) |
 | Satellite and neutral renormalization | **Davoud Cheraghi and Mitsuhiro Shishikura**, [satellite renormalization](https://arxiv.org/abs/1509.07843); **Dzmitry Dudko and Lyubich**, [neutral bounds](https://arxiv.org/abs/2210.09280) and [Feigenbaum points](https://arxiv.org/abs/2309.02107); **Dudko, Yusheng Luo, and Lyubich**, [neutral renormalization II](https://arxiv.org/abs/2509.23031) |
 | Bounds, obstructions, and the current frontier | **Alexander Blokh, Genadi Levin, Lex Oversteegen, and Vladlen Timorin**, [maps with no a priori bounds](https://arxiv.org/abs/2205.03157); **Levin**, [rigidity and non-local connectivity](https://arxiv.org/abs/0710.4406); **Kahn, Ilya Kapiamba, and Lyubich**, [parabolically bounded primitive renormalization](https://arxiv.org/abs/2606.27272); **Dudko**, [MLC and renormalization survey](https://arxiv.org/abs/2512.24171) |
 
-The [project page?s reference section](https://dovvnloading.github.io/loops-research-archive/#references) and the manuscript contain the complete source-locked bibliography. These scholars are credited as authors of prior mathematics; they are **not represented as collaborators on this repository**, and no affiliation or endorsement is implied.
+The [project page’s reference section](https://dovvnloading.github.io/loops-research-archive/#references) and the manuscript contain the complete source-locked bibliography. These scholars are credited as authors of prior mathematics; they are **not represented as collaborators on this repository**, and no affiliation or endorsement is implied.
 
 ## Project authorship and stewardship
 
@@ -109,5 +109,5 @@ Please cite **Wesney** for this archive and manuscript, and separately cite the 
 ---
 
 <div align="center">
-<sub>Independent research archive ? math.DS ? source lock 2026-07-27 ? MLC remains open</sub>
+<sub>Independent research archive · math.DS · source lock 2026-07-27 · MLC remains open</sub>
 </div>
