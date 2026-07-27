@@ -92,6 +92,7 @@ Status labels are claims about this source-locked snapshot, not substitutes for 
 | [Project page](https://dovvnloading.github.io/loops-research-archive/) | Scholarly overview, mathematical atlas, references, citation, and searchable proof ledger |
 | [Main manuscript](./marked_width_mlc_manuscript.pdf) | The 214-page marked-width reduction and its explicit result boundary |
 | **Paper 1:** [*Forced Noninjectivity and Infinite Sheet Resolution in Canonical Localization*](./papers/paper1_canonical_localization/archive/paper1_v6_87pp_2026-07-27T1149.pdf) | The 87-page forced-collision theorem, canonical covering/embedding resolution, infinite sheet defect, and winding invariant |
+| **Paper 2:** [*The Direct-Decoration Rooted-End Compactification: An Exact One-Scale Model for Rooted Component Packages*](./papers/paper2_rooted_end_compactification/paper2_draft3.pdf) | The 26-page Draft III constructing the binary rooted-end compactification, exact component quotient, stable infinite replacements, and finite protected-carrier routing |
 | [Machine-readable ledger](./ledger.json) | All 465 obligations, dependency links, evidence pointers, and statuses |
 | [Unified proof program](./research/mlc_unified/) | Source ledger, dependency and adversarial audits, proof obligations, validations, and research log |
 | [Companion papers](./papers/) | Drafts and extracted theorem-level materials for the localization, compactification, and protected-carrier subprograms |
@@ -151,10 +152,11 @@ Please cite **Wesney** for this archive and manuscript, and separately cite the 
 
 1. Start with the [project page](https://dovvnloading.github.io/loops-research-archive/) for the scope and result boundary.
 2. Read [Paper 1](./papers/paper1_canonical_localization/archive/paper1_v6_87pp_2026-07-27T1149.pdf) for the forced canonical collision, its infinite sheet resolution, and the resulting correction to the carrier proposal.
-3. Read the [main manuscript](./marked_width_mlc_manuscript.pdf) for the full marked-width program, definitions, theorem statements, and open gates.
-4. Use the [interactive ledger](https://dovvnloading.github.io/loops-research-archive/#ledger) to trace dependencies and isolate open obligations.
-5. Consult [`research/mlc_unified`](./research/mlc_unified/) for the source, dependency, adversarial, and validation record.
-6. Treat computations and figures as diagnostics unless a manuscript explicitly promotes them into a proved statement.
+3. Read [Paper 2](./papers/paper2_rooted_end_compactification/paper2_draft3.pdf) for the exact one-scale rooted-end compactification, component quotient, replacement theorem, and protected-carrier interface.
+4. Read the [main manuscript](./marked_width_mlc_manuscript.pdf) for the full marked-width program, definitions, theorem statements, and open gates.
+5. Use the [interactive ledger](https://dovvnloading.github.io/loops-research-archive/#ledger) to trace dependencies and isolate open obligations.
+6. Consult [`research/mlc_unified`](./research/mlc_unified/) for the source, dependency, adversarial, and validation record.
+7. Treat computations and figures as diagnostics unless a manuscript explicitly promotes them into a proved statement.
 
 ---
 
