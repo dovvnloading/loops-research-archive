@@ -1,0 +1,182 @@
+% Draft-II introduction: paper-level architecture centered on the planar theory.
+
+\section{Introduction}\label{sec:intro}
+
+\subsection{The routing problem}
+
+Let $s\ge1$, and let $A_1,\dots,A_s$ be pairwise disjoint full continua in a Jordan disk
+$U\subset\C$.  The elementary task of joining the $A_i$ becomes substantially
+less elementary when the connector must also avoid a frozen compact obstacle
+set and preserve designated prime ends of the complements
+$\Chat\setminus A_i$.  A connector can erase such an access by entering its
+selected side, identify two accesses that were distinct before enlargement,
+or disconnect the region through which later ports were meant to run.
+None of these failures is detected by connectedness of the final union.
+
+This problem appears naturally when small filled Julia sets, puzzle pieces,
+or combinatorial fibers must be organized without assuming local
+connectivity.  Polynomial-like maps provide the basic continua
+\cite{DH85}; Kahn--Lyubich impose finite-decoration combinatorics and
+prove a~priori bounds for that class \cite{KL08}; recent work on
+primitive renormalization constructs native or model-lifted Hubbard trees
+when the required dynamical structure is available \cite{KKL26}; and
+Dudko's roadmap emphasizes connected hulls of families of small Julia sets
+as one ingredient in the broader local-connectivity program \cite{Dud25}.
+The present paper isolates the planar problem that remains after the
+dynamical data have selected finitely many continua and accesses but before
+any canonical connector has been justified.
+
+The hypotheses deliberately allow non-locally-connected boundaries.
+A protected access is therefore not represented by a presumed landing ray
+or boundary parametrization.  It is represented by a null prime-end
+crosscut chain together with its selected sides.  The part forbidden to a
+future connector is the \emph{relative collar tail}
+$\overline D\setminus A_i$, not the whole closed side $\overline D$.
+This distinction is essential: different prime ends may have overlapping
+impressions inside the same atom even though their relative collar tails in
+the complement are disjoint.
+
+\subsection{Main results}
+
+The first conclusion is negative but foundational.  There is no least
+compact connected full hull even for two points
+(Theorem~\ref{thm:no-least}), so ``take the smallest carrier'' is not a
+definition.  Nor can one safely choose a carrier and absorb pulled-back
+excess monotonically: Proposition~\ref{prop:access-collision} gives a
+degree-one conformal branch, with no critical-value obstruction, in which
+the first absorption erases a protected access permanently.  These examples
+show that the isotopy/access class of the routing is additional data.
+
+The positive replacement is a \emph{protected ribbon-routing certificate}.
+It records free singleton ports from the atoms, a finite embedded tree
+joining their outer endpoints, the induced ribbon order, every protected
+crosscut chain, and the complete frozen inventory to be avoided.
+Theorem~\ref{thm:realization} realizes any such certificate by a compact
+connected full carrier.  Every protected chain remains a prime-end chain of
+the enlarged complement, distinct protected chains remain distinct whenever
+their relative collar tails are disjoint, and cyclic order is preserved
+within each common source complement.  No local connectivity of an atom is
+used.
+
+The first structural result developed here is an exact attachment ledger.
+For a compact connected connector $C$, full atoms $A_i$, and traces
+$T_i=C\cap A_i$, Theorem~\ref{thm:separation-budget} extracts from the
+compact-pair Mayer--Vietoris sequence a natural short exact sequence at
+every attachment.  When the relevant component counts are finite, it gives
+\[
+ \sigma\!\left(C\cup\bigcup_iA_i\right)
+ =
+ \sigma(C)+
+ \sum_i\bigl(\#\pi_0(T_i)-1-\sigma(T_i)\bigr),
+\]
+where $\sigma(K)=\#\pi_0(\Chat\setminus K)-1$.  The formula is a
+credit/debit law.  Each extra component of an attachment trace creates a
+complementary component; each complementary component of the trace fills
+one separation already present in the connector.  In particular, if $C$
+and the atoms are full, every $T_i$ is nonseparating and the union is full
+if and only if all traces are connected
+(Corollary~\ref{cor:full-connector-traces}).  Thus the familiar tree with
+singleton attachments is only one sufficient model: an arbitrary full
+continuum connector with arbitrary connected traces works just as well.
+
+The same ledger identifies a compactness gate for this framework.
+Proposition~\ref{prop:trace-birth} constructs, for every $m$, full arc
+connectors $C_n$ meeting an atom once and converging in the Hausdorff metric
+to a full arc $C$ whose trace has $m+1$ components.  Each finite-stage
+union $A\cup C_n$ is full, while the
+limit union has exactly $m$ bounded complementary components.
+Connector cycles can likewise be born in a limit.  Consequently neither
+fullness nor the singleton-trace condition passes to a virtual or infinite
+carrier by Hausdorff compactness alone: a limiting argument must separately
+control connector cohomology and trace multiplication
+(Warning~\ref{warn:compactness-gate}).  Theorem
+\ref{thm:nested-limit-stability} gives a positive counterpart: a decreasing
+sequence of full connector envelopes with connected nonempty traces has a
+full limiting connector with connected traces, and common protected data
+survive.  This identifies a concrete inverse-limit architecture that avoids
+both defect-birth mechanisms.
+
+The second structural result is an exact routing criterion.  Freeze the
+atoms, relative protected collar tails, obstacles, critical exclusions, and
+localization-forbidden data into a compact set $Q$, and put
+$\Omfree=U\setminus Q$.  Theorem~\ref{thm:free-component} says that a
+protected certificate exists if and only if one component of $\Omfree$
+admits simultaneous singleton ports to every required atom.  If no
+component of this fixed free domain has simultaneous ports, the failure
+persists under every connector enlargement respecting the same $Q$.  The
+proof uses a one-ended slit lemma whose statement keeps
+the free tips inside the residual domain.  The source version deleted those
+tips and mapped a boundary-anchored slit into an open domain; the corrected
+Lemma~\ref{lem:slits} repairs both defects, and the proof of the criterion is
+rebuilt around the repaired statement.
+
+Finally, the exact criterion is converted into finite audits.
+Theorem~\ref{thm:common-domain} packages the frozen inventory into pairwise
+disjoint full continua and uses compacta Alexander duality to force a common
+free domain.  Theorem~\ref{thm:audit} proves that fullification is independent
+of processing order for a fixed typed assignment and reduces success to
+coverage, packet separation/localization, and a nonempty unprotected
+exposure locus at each atom.  Packet merger, localization escape, and port
+loss come with witnesses persistent under every same-label monotone
+enlargement.  Proposition~\ref{prop:cellwise} supplies a directly checkable
+Jordan-cell criterion.
+
+\subsection{Position}
+
+The underlying tools are classical: Janiszewski--\allowbreak Mullikin separation
+\cite{Jan15,Mul22,New51,Why42}, the classical theories of unicoherence and
+multicoherence \cite{Bor31,Eil36}, Carath\'eodory prime ends \cite{Pom92}, the
+Jordan--Schoenflies theorem, filled hulls, and compacta Alexander duality and
+Mayer--Vietoris \cite[Chapter~6]{Spa66}.  We do not claim a new foundation
+for planar topology.  The contribution is a theorem-level synthesis aimed
+at a specific proof obligation that the standard constructions do not
+record: finite connection with named access survival, exact existence and
+failure tests, and a quantitative accounting of the separations created or
+destroyed by attachment.
+
+In particular, the separation-ledger theorem is formally a consequence of
+classical duality and Mayer--Vietoris; its full/full zero-defect criterion
+is part of the Janiszewski--Mullikin tradition.  Its value here is the
+homomorphism-level diagnostic, the creation-versus-cancellation formula,
+and the limit obstruction it exposes.  The other central statements
+turn prime-end intentions into finite data: null chains and relative
+collar tails, singleton ports, an embedded ribbon tree, a frozen free domain,
+typed packet assignments, and persistent witnesses.  Section
+\ref{sec:comparison} compares this package with least hulls, monotone
+absorption, regulated and Hubbard trees, Moore quotients, and a
+lamination-lift candidate.
+
+This architecture is intentionally distinct from the companion
+direct-decoration manuscript \cite{Wes26}.  That manuscript contains the rooted-end
+compactification, partial-shift dynamics, gap cells, arbitrary packet
+replacement, and the finite decoration-carrier application.  The present
+paper contains the general planar certification theory, the exact
+free-component and packet criteria, the attachment ledger, and the
+Hausdorff-limit no-go theorem.  Separating the two removes a long duplicated
+application and makes the logical dependency transparent.
+
+\subsection{Scope and organization}
+
+Everything here is finite and planar.  The paper does not construct a
+virtual carrier or ``Wave horizon'' (the source manuscript's proposed
+infinite limiting carrier), an analytic correspondence, a uniform
+incidence bound, or a compression mechanism, and it proves no new case of
+local connectivity of the Mandelbrot set.  The recent theorem of
+Kahn--Kapiamba--Lyubich applies in its stated parabolically bounded primitive
+category \cite{KKL26}; it is a positive benchmark, not a consequence of the
+present framework.  Our conclusion is conditional in exactly one transparent
+sense: once finite protected data or a valid packet assignment are supplied,
+the planar realization problem is solved, while the production of coherent
+data at an infinite dynamical horizon remains open.
+
+Section~\ref{sec:prelim} fixes the compacta and prime-end conventions.
+Section~\ref{sec:obstructions} proves the two motivating obstructions, and
+Section~\ref{sec:comparison} places the framework among standard
+constructions.  Section~\ref{sec:certificates} gives certificate realization
+and prime-end survival.  Section~\ref{sec:separation-budget} proves the
+attachment ledger and its sharp Hausdorff-limit obstruction.
+Section~\ref{sec:criterion} proves the corrected slit lemma and exact
+free-component criterion.  Sections~\ref{sec:packets} and~\ref{sec:audit}
+develop the packet criterion, order-independent fullification, persistent
+audits, and the cellwise test.  Section~\ref{sec:scope} closes with the exact
+interface to future finite and limiting applications.

@@ -17,14 +17,28 @@ divergence is recorded precisely in Remark~\ref{rem:repair}.
 
 \subsection{The frozen free domain}\label{subsec:D-frozen}
 
-Freeze the complete finite future inventory before choosing a connector. Concretely, let
-$U$ be the Jordan localization and let $Q\subset U$ be the union of
-all root-shadow atoms $A_1,\dots,A_s$, the closed terminal protected collars of every
-protected prime-end chain in the inventory, the separated obstacles, the critical-value
-exclusion, and the localization-forbidden set. As a standing convention, following the
-compact-containment hypotheses of the certificate setup, we assume each constituent of
-$Q$ is closed in $U$ and that the atoms, collars, and obstacles are compactly contained
-in $U$; this guarantees that the free domain defined next is open. Put
+Freeze the complete finite future inventory before choosing a connector.
+Concretely, fix $s\ge1$, let $U$ be the Jordan localization, let
+$A_1,\dots,A_s\Subset U$ be the pairwise disjoint atoms, and let
+$Z\Subset U\setminus\bigcup_iA_i$ be the same compact set of separated
+obstacles, critical-value exclusions, and localization-forbidden data used
+in Definition~\ref{def:certificate}.  For each atom define its compact
+\emph{atom--tail block}
+\[
+\mathcal B_i:=
+A_i\cup\bigcup_a(\overline{D_{i,a,1}}\setminus A_i)
+=A_i\cup\bigcup_a\overline{D_{i,a,1}},
+\]
+and put
+\[
+Q:=\bigcup_{i=1}^{s}\mathcal B_i\cup Z.
+\]
+Thus every relative tail is processed together with its atom, even when
+different prime-end impressions overlap inside $A_i$.  Each
+$\overline{D_{i,a,1}}$ is connected and meets $A_i$ in its nonempty
+impression, so $\mathcal B_i$ is a compact connected set (and equals $A_i$ when
+there are no protected labels).  The truncation normalization and compact
+containment of $Z$ make the finite union $Q\Subset U$ compact.  Put
 \begin{equation}\label{eq:D-free-domain}
 \Omfree \;=\; U\setminus Q
 \end{equation}
@@ -44,7 +58,7 @@ Example~\ref{ex:no-common-component} below.)
 
 The adjective \emph{frozen} is load-bearing, and we emphasize it once. The set $Q$ lists
 the complete finite future inventory: every atom that will ever have to be joined, the
-closed terminal collar of every protected chain that any future step of a proof will
+relative terminal collar tail of every protected chain that any future step of a proof will
 read, every obstacle that must remain separated, the full critical-value exclusion, and
 the localization-forbidden set. This list is fixed \emph{before} any connector is chosen.
 Nothing may be added to $Q$ afterwards, and nothing may be removed from it; all later
@@ -309,9 +323,10 @@ mathematical core of the manuscript's one-slit argument, is unchanged.
 \begin{theorem}[Protected Free-Component Criterion; manuscript Theorem 10.8]
 \label{thm:free-component}
 A protected ribbon-routing certificate exists if and only if one component of $\Omfree$
-has simultaneous singleton ports to every required atom. If a first protected collar or
-obstacle separates two required port classes, no further monotone connector enlargement
-inside the current localization can repair the failure.
+has simultaneous singleton ports to every required atom.  Consequently, if
+$Q$ is fixed and no component has such ports, no enlargement of a proposed
+connector that continues to respect the same frozen inventory can become a
+protected ribbon-routing certificate.
 \end{theorem}
 
 \begin{proof}
@@ -327,10 +342,10 @@ The tree $G$ is connected, and each half-open port arc $\alpha_i\bigl((0,1]\bigr
 connected set containing the outer endpoint $\alpha_i(1)\in G$; hence $X$ is connected.
 Moreover $X\subset\Omfree$: by Definition~\ref{def:certificate}, the sets
 $\alpha_i\bigl((0,1]\bigr)$ and $G$ lie in $U$ and avoid every atom, the obstacle and
-critical-value set, and every closed terminal protected collar.  The
-localization-forbidden data are avoided by the frozen-inventory discipline: the
-manuscript treats them as part of the forbidden set that certificate data must miss, and
-we adopt the same reading here.  The avoided sets are exactly the constituents of $Q$. A
+critical-value set, and every relative terminal protected collar tail.  The
+localization-forbidden data are part of $Z$ by the convention of
+Section~\ref{sec:certificates}.  The avoided sets are therefore exactly the
+constituents of $Q$. A
 connected subset of the open set $\Omfree$ lies in a single component $\Omega_0$. The
 certificate's own port arcs are then simultaneous singleton ports of $\Omega_0$: they
 are pairwise disjoint Jordan arcs, $\alpha_i$ meets $A_i$ exactly in $\{x_i\}$, and
@@ -365,9 +380,12 @@ Lemma~\ref{lem:slits}. First, by Step~2 of that proof,
 \Omega'\;:=\;\Omega_0\setminus\bigcup_{i=1}^{s}\alpha_i\bigl((0,1]\bigr)
 \]
 is a plane domain. Second, by Step~3, each tip $y_i$ admits arbitrarily small escape
-arcs into $\Omega'$. If $s=1$, the single shortened port together with the degenerate
-one-vertex tree $\{z_1\}$, obtained from any escape arc, is already a certificate, so
-assume $s\ge2$. Let $\rho:=\tfrac13\min_{i\neq j}|y_i-y_j|>0$, and choose for each
+arcs into $\Omega'$. If $s=1$, choose such an escape arc $\beta_1$ from
+$y_1$ to a point $z_1\in\Omega'$, replace the port by
+$\alpha_1*\beta_1$, and take the degenerate one-vertex tree
+$G=\{z_1\}$.  The incidence and avoidance clauses are then immediate, so
+this is a certificate.  Assume henceforth that $s\ge2$. Let
+$\rho:=\tfrac13\min_{i\neq j}|y_i-y_j|>0$, and choose for each
 $i$ an escape arc $\beta_i\subset B(y_i,\rho)$ with $\beta_i(0)=y_i$ and
 $\beta_i\bigl((0,1]\bigr)\subset\Omega'$; the balls $B(y_i,\rho)$ are pairwise
 disjoint, so the arcs $\beta_i$ are pairwise disjoint. Put $z_i:=\beta_i(1)\in\Omega'$.
@@ -404,7 +422,7 @@ disjointness, together with the pairwise disjoint balls containing the $\beta_i$
 that $\tilde\alpha_1,\dots,\tilde\alpha_s$ are pairwise disjoint. Each $\tilde\alpha_i$
 meets $A_i$ exactly in $\{x_i\}$, and its interior satisfies
 $\tilde\alpha_i\bigl((0,1]\bigr)\subset\Omega_0\subset\Omfree$: it avoids every atom,
-every closed terminal protected collar, the obstacle and critical-value set, and the
+every relative terminal protected collar tail, the obstacle and critical-value set, and the
 localization-forbidden set --- exactly the avoidance clauses that
 Definition~\ref{def:certificate} imposes on free-port arcs. Next, subdivide $G_0$ so
 that each $z_i'$ is a vertex, and call the resulting embedded finite tree $G$. Then
@@ -417,7 +435,7 @@ vertex and one edge at a time and so preserves the tree characterization
 $(\text{vertices})-(\text{edges})=1$ for connected finite graphs. The planar cyclic
 order of half-edges at every vertex is the one induced by the embedding, and it is
 retained as the certificate's ribbon datum. Finally, the protected prime-end crosscut
-chains, with their pairwise disjoint closed terminal collars, belong to the frozen
+chains, with their pairwise disjoint relative terminal collar tails, belong to the frozen
 inventory and are avoided as recorded above. All clauses of
 Definition~\ref{def:certificate} are satisfied: the rerouted ports $\tilde\alpha_i$
 together with the spanning tree $G$ constitute a protected ribbon-routing certificate.
@@ -425,29 +443,16 @@ Theorem~\ref{thm:realization} now realizes it by a compact connected full carrie
 singleton attachment traces, protected crosscut survival, and preserved cyclic order.
 
 \emph{Persistence.}
-For the final assertion, suppose that at some stage of the frozen inventory a first
-protected collar or obstacle $C_0\subset Q$ separates two required port classes: after
-the insertion of $C_0$, every component of $\Omfree$ admitting a singleton port to
-$A_i$ is distinct from every component admitting a singleton port to $A_j$, for some
-pair of required atoms $A_i,A_j$. Then no single component has simultaneous singleton
-ports to both atoms, so by the criterion just proved no protected ribbon-routing
-certificate exists. This failure is permanent under monotone connector enlargement
-inside the current localization, for two cumulative reasons. First, enlargement acts on
-proposed connectors, never on the inventory: $Q$ is frozen, so $\Omfree$ and its
-partition into components are unchanged, and the necessity argument applies verbatim to
-every enlarged connector --- its routing part is a connected set which, were the
-certificate discipline respected, would lie in one component of $\Omfree$ while porting
-to atoms in two different components; this is impossible, since a connected subset of
-$U\setminus Q$ lies in a single component. Second, the only way for a connected set to
-join the two components is to meet $Q$ across the separating part, and if that part is
-protected or forbidden, the intersection itself violates the certificate: absorbing a
-protected collar erases the protected access it certifies, and meeting an obstacle or
-the critical-value exclusion is excluded outright. (Compare
-Proposition~\ref{prop:access-collision} for an analytic incarnation of the first
-mechanism.) Hence no further monotone connector enlargement inside the current
-localization can repair the failure; the only conceivable cure --- deleting the
-separator $C_0$ from the inventory --- is a revision of the frozen data, which the
-formalism forbids.
+For the final assertion, suppose that no component of $U\setminus Q$ has
+simultaneous singleton ports to every required atom.  Let a proposed
+connector be enlarged in any way that retains the same $Q$ and continues
+to satisfy the certificate's avoidance requirements.  If the enlarged
+data formed a certificate, the necessity argument would place its connected
+routing part in one component of $U\setminus Q$ and would make its own port
+arcs simultaneous singleton ports from that component, contrary to the
+hypothesis.  Thus no such enlargement can become a certificate.  Changing
+this conclusion requires changing the frozen inventory itself, which is
+outside the asserted operation.
 \end{proof}
 
 The construction is natural under univalent changes of the Jordan localization. An
@@ -507,9 +512,10 @@ the real axis and misses the real segment $A_1$; a real point of
 $\Omega_{\mathrm{in}}$ has modulus in $(\tfrac14,1)$ and travels radially to modulus
 $\tfrac12$ through real points of modulus $>\tfrac14$, which also miss $A_1$. In
 $\Omega_{\mathrm{ann}}$, every point can be joined to the circle $\{|z|=\tfrac98\}$,
-which misses $A_2$: a point with $\arg z\neq0$ travels radially inward keeping its
+which misses $A_2$: a point with $\arg z\neq0$ travels radially, inward or
+outward as needed, keeping its
 argument; a positive real point of $\Omega_{\mathrm{ann}}$ has modulus in
-$(1,\tfrac54)\cup(\tfrac74,2)$, and in the first case it travels radially inward to
+$(1,\tfrac54)\cup(\tfrac74,2)$, and in the first case it travels radially to
 modulus $\tfrac98$ through positive real points of modulus $<\tfrac54$, while in the
 second case it first travels along its own circle $\{|z|=\mathrm{const}\}$ (which
 misses $A_2$, as $\tfrac74<|z|<2$) to argument $\pi$ and then proceeds radially inward
@@ -544,10 +550,9 @@ every port of $A_2$ runs in $\Omega_{\mathrm{ann}}$, since points of $\Omfree$ n
 $A_2$ have modulus in $(1,2)$. As $\Omega_{\mathrm{in}}\neq\Omega_{\mathrm{ann}}$, no
 component of $\Omfree$ has simultaneous singleton ports to both atoms, and
 Theorem~\ref{thm:free-component} yields: \emph{no protected ribbon-routing certificate
-exists} for this frozen inventory. By the persistence clause, the failure is permanent:
-the separator $C$ is the first (indeed the only) separating insertion, the two required
-port classes are $\{\Omega_{\mathrm{in}}\}$ and $\{\Omega_{\mathrm{ann}}\}$, and no
-monotone connector enlargement inside $U$ can repair the separation. The only cure
+exists} for this frozen inventory.  By the theorem's final assertion, no
+connector enlargement that continues to respect this fixed $Q$ can become a
+certificate.  The only cure
 would be to delete $C$ from the frozen inventory --- a revision of the frozen data,
 which the formalism forbids.
 \end{example}
@@ -558,17 +563,17 @@ statements about each atom in isolation, and they hold here; the criterion of
 Theorem~\ref{thm:free-component} is a statement about one common component, and it
 fails. This is also precisely why Definition~\ref{def:packet} demands that the
 completed packets be pairwise disjoint \emph{and cover $Q$}: the separator $C$ must be
-assigned to some packet, and every typed assignment then exhibits a persistent defect
-of the audit of Theorem~\ref{thm:audit}. Assigning $C$ to a separated-obstacle packet
-gives $\Fill(C)=\{|z|\le1\}\supset A_1$, a packet merger with the completed packet of
-$A_1$. Assigning $C$ to the atom seed of $A_2$ (necessarily together with a connecting
-arc, to keep the seed connected) again puts the closed unit disk, hence $A_1$, inside
-the completed packet of $A_2$: the same merger. Assigning $C$ to the atom seed of $A_1$
-produces a completed packet containing the closed unit disk with $A_1$ in its interior,
-so the unprotected exposure locus of $A_1$ becomes empty and the port clause fails.
-Merger and empty exposure are exactly the defects that Theorem~\ref{thm:audit} proves
-persistent under monotone same-label enlargement, so the packet formalism detects the
-obstruction at the audit level, consistently with the exact criterion.
+assigned to some packet.  Assigning $C$ to a separated-obstacle packet
+gives $\Fill(C)=\{|z|\le1\}\supset A_1$, a packet merger with the completed
+packet of $A_1$, and this merger is persistent by
+Theorem~\ref{thm:audit}.  Assigning $C$ directly to either atom label makes
+the corresponding raw seed disconnected, so clause~(1) of the packet
+definition fails unless additional declared connecting material is included
+in the frozen packet input.  Adding such material changes the input and
+requires a fresh audit; it is not a repair of the fixed assignment.
+Thus the packet formalism detects the obstruction consistently with the
+exact criterion, although only the obstacle-label case invokes the
+theorem's monotone-persistence conclusion.
 
 \begin{figure}[t]
 \centering

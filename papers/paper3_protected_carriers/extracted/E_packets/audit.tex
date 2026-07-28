@@ -14,7 +14,7 @@ demands pairwise disjoint port arcs avoiding every completed hull simultaneously
 whereas what an ambient proof program can realistically certify is one access arc per
 atom, each verified in isolation; one might fear that the individual arcs must be
 coordinated globally before they can serve together. This section proves that both
-dependences are illusory once the typed assignment is fixed. Fullification is
+dependencies are illusory once the typed assignment is fixed. Fullification is
 order-independent (Lemma~\ref{lem:fill-absorption}); individual ports localize
 simultaneously without any coordination (Lemma~\ref{lem:port-localization}); and the
 resulting audit (Theorem~\ref{thm:audit}) characterizes the geometric packet clauses
@@ -109,15 +109,18 @@ set of pieces therefore computes the same completion.
 
 \subsection{Seeds, completions, and persistent witnesses}\label{subsec:E-witnesses}
 
-For a fixed packet label $\ell$, let $S_\ell$ be the union of its original atom, when
-present, and all compact pieces assigned to that label; $S_\ell$ is the \emph{raw
-seed} of the packet. Its unique completion is
+For a fixed packet label $\lambda$, let $S_\lambda$ be the union of its
+assigned compact input pieces: for an atom label $i$ this union contains
+the mandatory block $\mathcal B_i$, and for a separated-obstacle label it contains
+only assigned $Z_r$.  This nonempty set is the \emph{raw seed} of the packet. Its unique completion is
 \begin{equation}\label{eq:E-completion}
-K_\ell\;=\;\Fill(S_\ell)
+K_\lambda\;=\;\Fill(S_\lambda)
 \end{equation}
 (equation~(9.8) of \cite{MWman}); by Lemma~\ref{lem:fill-absorption} this is what
 every processing order computes. Note that when the label carries an atom, the
-convention makes $A_i\subset S_i\subset K_i$.
+convention makes $A_i\subset\mathcal B_i\subset S_i\subset K_i$.  When atom and
+obstacle labels must be distinguished, we write $K_i$ for the former
+completions and $L_\ell$ for the latter.
 
 Failures of the packet clauses are recorded by explicit geometric witnesses. For
 $x\in K_\ell$, record its \emph{chamber},
@@ -178,7 +181,8 @@ reads.
 
 \begin{lemma}[Individual ports localize simultaneously; manuscript Lemma
 10.13]\label{lem:port-localization}
-Suppose the completed atom packets $K_1,\dots,K_s\Subset U$ and obstacle packets
+Let $s\ge1$.  Suppose the completed atom packets
+$K_1,\dots,K_s\Subset U$ and obstacle packets
 $L_1,\dots,L_t\Subset U$ form a pairwise disjoint family and
 $\Exp(A_i,K_i;P_i)\neq\varnothing$ for every original atom. Then the access arcs can
 be chosen pairwise disjoint, with positive-parameter parts in
@@ -194,10 +198,12 @@ If $K_i\subset K_i'$, then
 
 \begin{proof}
 \emph{Disjoint localization neighborhoods.}
-The family $K_1,\dots,K_s,L_1,\dots,L_t$ consists of finitely many pairwise disjoint
-compacta, each compactly contained in the open set $U$. Their mutual distances are
-positive, and so is the distance from each to $\C\setminus U$. Choose
-$\varepsilon>0$ smaller than half the minimum of all these distances, and let $N_i$
+The finite family formed by the $K_i$ and $L_\ell$ is pairwise disjoint,
+and every member is compactly contained in the open set $U$.  The finitely
+many distances from its members to $\C\setminus U$ are positive; when the
+family has at least two members, so are its finitely many pairwise
+distances.  Choose $\varepsilon>0$ smaller than half the minimum of the
+boundary distances together with the pairwise distances when present, and let $N_i$
 be the open $\varepsilon$-neighborhood of $K_i$. Then $N_1,\dots,N_s$ are pairwise
 disjoint open sets, each compactly contained in $U$, each containing its $K_i$, and
 each missing every obstacle packet $L_\ell$ and every other atom packet $K_j$
@@ -240,26 +246,25 @@ incurred, is persistent.
 
 By the \emph{geometric augmented-packet clauses} of a fixed finite typed assignment
 we mean clauses (1)--(4) of Definition~\ref{def:packet}, evaluated on the completions
-determined by that assignment; the typed record itself --- component name, proof-use
-stages, attachment trace, return word, selected sheet, absorb-or-separate decision
---- is data carried along unchanged, not a geometric assertion to be audited.
+determined by that assignment.
 
 \begin{theorem}[Fixed-Packet Closure and Port Audit; manuscript Theorem
 10.14]\label{thm:audit}
 For a fixed finite typed assignment, the geometric augmented-packet clauses hold if
 and only if:
 \begin{enumerate}
-\item the frozen inventory is covered and every raw seed $S_\ell$ is compact and
-connected;
+\item the frozen inventory is covered and every raw seed $S_\ell$ is
+nonempty, compact, and connected;
 \item the unique completions $K_\ell=\Fill(S_\ell)$ are pairwise disjoint and
 compactly contained in $U$; and
 \item $\Exp(A_i,K_i;P_i)\neq\varnothing$ for every original atom: the
 unprotected exposure locus is nonempty.
 \end{enumerate}
-The completions are independent of processing order. Merger, localization, and
+The completions are independent of processing order. Merger, localization-escape, and
 empty-exposure defects persist under monotone same-label enlargement. The complete
 audit is natural under a conformal homeomorphism of Jordan localizations that
-transports the full packets and protected marking.
+transports the entire typed assignment (hence its raw seeds, completed packets,
+and protected marking).
 \end{theorem}
 
 \begin{proof}
@@ -267,14 +272,14 @@ transports the full packets and protected marking.
 Lemma~\ref{lem:fill-absorption} gives unique, order-independent completions
 $K_\ell=\Fill(S_\ell)$: every schedule of adjoin-and-fill operations on the pieces of
 a label computes \eqref{eq:E-completion}. If clause~(1) holds, each raw seed is a
-compact connected set, so each completion is a full continuum, by the discussion
+nonempty compact connected set, so each completion is a full continuum, by the discussion
 following \eqref{eq:E-fill}.
 
 \emph{Equivalence.}
 Suppose first that clauses (1)--(3) hold. Clause~(1) is precisely clause~(1) of
 Definition~\ref{def:packet}: the coverage assertion is common to both, and
 connectedness of the raw seeds is the connectedness demanded of the atom seeds
-$A_i\cup E_i$ and obstacle seeds $O_\ell$. Writing $\widehat A_i:=K_i$ for the atom
+$\mathcal B_i\cup E_i$ and obstacle seeds $O_\ell$. Writing $\widehat A_i:=K_i$ for the atom
 labels and $\widehat O_\ell:=L_\ell$ for the obstacle labels, clause~(2) of the
 definition holds by \eqref{eq:E-completion}, and the sets are full continua by the
 closure paragraph. Clause~(2) of the audit makes these completions pairwise disjoint
@@ -287,8 +292,8 @@ $\alpha_i$ with $\alpha_i(0)=x_i\in A_i\setminus P_i$,
 $\alpha_i\cap K_i=\{x_i\}$, and positive-parameter parts in the common complement
 $U\setminus(\bigcup_kK_k\cup\bigcup_\ell L_\ell)$ --- exactly clause~(4) of the
 definition, including its final requirement: $P_i$ contains every impression
-forbidden by the protected marking, so $x_i\notin P_i$ is not the impression of a
-protected chain.
+forbidden by the protected marking, so $x_i\notin P_i$ means that it belongs to no
+impression of a protected chain.
 
 Conversely, suppose the geometric packet clauses hold. Clause~(1) of the definition
 is clause~(1) of the audit, as before. The completed packets of the definition are
@@ -299,8 +304,8 @@ audit. For clause~(3) of the audit, fix an atom $A_i$. The packet's own port arc
 $\alpha_i$ satisfies $\alpha_i(0)=x_i\in A_i$, $\alpha_i\cap\widehat A_i=\{x_i\}$,
 and maps into $U$; since $\widehat A_i=K_i$, the arc witnesses
 $x_i\in\Exp(A_i,K_i;P_i)$ provided $x_i\notin P_i$, and this is the final requirement
-of clause~(4): $x_i$ is not the impression of a protected chain, and $P_i$ consists
-of such impressions. Hence the exposure locus is nonempty, completing the
+of clause~(4): $x_i$ belongs to no impression of a protected chain, and $P_i$ is the
+union of those impressions. Hence the exposure locus is nonempty, completing the
 equivalence.
 
 \emph{Persistence.}
@@ -337,7 +342,7 @@ commutes with $\Fill$:
 \Phi\bigl(\Fill(K)\bigr)\;=\;\Fill\bigl(\Phi(K)\bigr).
 \]
 Consequently $\Phi$ carries raw seeds to raw seeds (piece by piece, with the same
-typed record), completions to completions, merger witnesses
+packet labels), completions to completions, merger witnesses
 \eqref{eq:E-witness} to merger witnesses (the point $x$ to $\Phi(x)$, the chambers to
 the corresponding chambers, seed record to seed record), and localization escapes to
 localization escapes: $\Phi(\C\setminus U)=\C\setminus V$, so a point of $K_\ell$
@@ -371,8 +376,8 @@ S_1\;:=\;\{z:|z|=1\},
 \qquad
 S_2\;:=\;\bigl[-\tfrac14,\tfrac14\bigr]\subset\mathbb R,
 \]
-say with both labels typed as separated obstacles recorded for future proof use.
-Each seed is compact and connected, so clause~(1) of Theorem~\ref{thm:audit} holds,
+say with both labels typed as separated obstacles.
+Each seed is nonempty, compact, and connected, so clause~(1) of Theorem~\ref{thm:audit} holds,
 and the seeds are pairwise \emph{disjoint}: every point of $S_1$ has modulus $1$,
 every point of $S_2$ has modulus at most $\tfrac14$. Consequently every seed-level
 disjointness audit passes --- any inspection of the raw pieces, in any processing
@@ -410,14 +415,14 @@ enlargement $S_\ell\subset S'_\ell$: the enlarged completions satisfy
 $K_1\subset K'_1$ and $K_2\subset K'_2$, so $0\in K'_1\cap K'_2$ continues to
 witness a merger. The persistence clause of Theorem~\ref{thm:audit} is therefore
 sharp: the defect cannot be repaired by growing the seeds. What can remove it is
-only a \emph{different typed assignment} --- for instance, assigning $S_2$ to
-packet~$1$, together with, say, the connecting radius $[\tfrac14,1]$ so that the
-label-$1$ seed $S_1\cup[\tfrac14,1]\cup S_2$ remains connected as clause~(1)
-requires; the single completion is then the closed unit disk and no merger remains.
-The typed record of Definition~\ref{def:packet} makes this an explicit
-\emph{re-decision}, not a repair: the record of the segment changes its assignment,
-and the change is visible in the audit trail. Within the fixed assignment, the
-failure certificate is final.
+only a revision outside the fixed assignment.  For example, if the frozen
+packet input is revised to include the connecting radius
+$[\tfrac14,1]$ and all three pieces are assigned one label, the resulting
+seed is connected and its single completion is the closed unit disk, so
+there is no inter-packet merger.  This changes both the input inventory and
+its typed assignment; it is not a repair by same-label enlargement of the
+two original packets.  Within the fixed assignment, the failure
+certificate is final.
 
 This is exactly why clause~(3) of Definition~\ref{def:packet} requires disjointness
 of the \emph{completed} packets, not of the raw seeds. Raw-seed disjointness is not
@@ -475,10 +480,13 @@ $\binom N2$ pairs of filled hulls.
 
 \begin{proposition}[Cellwise packet-and-port certificate; manuscript Proposition
 10.15]\label{prop:cellwise}
-Let $U$ be a Jordan domain and let $D_1,\dots,D_N\Subset U$ be pairwise disjoint
-closed Jordan disks. Suppose every packet has a compact connected raw seed
-$S_\ell\Subset D_\ell$, the seeds cover the complete frozen inventory, and every
-original atom $A_i\subset S_i$ has an unprotected point $x_i\in A_i\setminus P_i$
+Let $N\ge s\ge1$, let $U$ be a Jordan domain, and let
+$D_1,\dots,D_N\Subset U$ be pairwise disjoint
+closed Jordan disks.  Index the atom packets first.  Suppose every packet
+has a nonempty compact connected raw seed
+$S_\ell\Subset D_\ell$, the seeds cover the complete frozen inventory,
+$\mathcal B_i\subset S_i$ for $1\le i\le s$, and every original atom $A_i$ has an
+unprotected point $x_i\in A_i\setminus P_i$
 and a Jordan arc $\gamma_i\colon[0,1]\to D_i$ satisfying
 \begin{equation}\label{eq:E-arc-condition}
 \gamma_i(0)=x_i,
@@ -489,8 +497,9 @@ and a Jordan arc $\gamma_i\colon[0,1]\to D_i$ satisfying
 \end{equation}
 (condition~(9.11a) of \cite{MWman}). Then $K_\ell=\Fill(S_\ell)\Subset D_\ell$, the
 completed packets are pairwise disjoint, every $x_i\in\Exp(A_i,K_i;P_i)$, and the
-packet system has simultaneous ports, one common free component, and a protected
-regulated connector.
+packet system has simultaneous ports and one common free component; hence
+it supplies a protected ribbon-routing certificate and its realized
+carrier.
 \end{proposition}
 
 \begin{proof}
@@ -543,14 +552,15 @@ hypothesis, so $\gamma_i$ is precisely an arc of the form read by
 
 \emph{Step 3: assembly.}
 The three audit clauses of Theorem~\ref{thm:audit} now hold: clause~(1), because the
-seeds are compact, connected, and cover the complete frozen inventory by hypothesis;
+seeds are nonempty, compact, connected, and cover the complete frozen inventory by hypothesis;
 clause~(2), by Step~1; and clause~(3), by Step~2. Lemma~\ref{lem:port-localization}
 turns the individual arcs into pairwise disjoint simultaneous port arcs with
 positive-parameter parts in the common complement of the completions, and
 Theorem~\ref{thm:audit} certifies that the geometric augmented-packet clauses of
 Definition~\ref{def:packet} hold for this assignment. Theorem~\ref{thm:common-domain}
 then determines one common free component of $\Omfree$ with simultaneous singleton
-ports to every original atom and supplies a protected regulated connector.
+ports to every original atom, hence a protected ribbon-routing certificate
+and its realized carrier.
 \end{proof}
 
 This proposition is sufficient only, and we close the section by marking the

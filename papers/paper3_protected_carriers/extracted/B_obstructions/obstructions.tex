@@ -28,7 +28,7 @@ finite package $S\subset\C$ is a compact connected full continuum containing
 $S$. Order the carriers of a fixed package by inclusion. A \emph{least}
 carrier would be a carrier contained in every other carrier of the same
 package. The following theorem shows that a least carrier fails to exist
-already for the simplest nondegenerate package: two points, with the identity
+already for the simplest nontrivial package: two points, with the identity
 map as dynamics and with no obstacle set whatsoever.
 
 \begin{theorem}[No least connected full carrier; manuscript Theorem 6.12]\label{thm:no-least}
@@ -189,10 +189,17 @@ The complete one-stage itinerary of the excess is
 \[
 X_0\longmapsto f(X_0),
 \]
-on the right sheet with critical word $0$. If the upper access $p_0^{+}(m)$,
-represented by the vertical segment $m+it$, is protected, then every monotone
-attachment-complete enlargement absorbing $X_0$ erases that access and its
-transported access $F_{*}p_0^{+}(m)$.
+through the conformal right-hand branch $F$, with no critical encounter.
+Let $p_0^{+}(m)$ denote the upper landing access to $I$ at $m$, represented
+by
+\[
+a_0(t)=m+it,\qquad 0<t\le\tfrac14.
+\]
+Every compact enlargement $H_0\Subset U^{-}$ with
+$I\cup X_0\subset H_0$ erases this access.  Its image enlargement
+$F(H_0)$ likewise erases the transported access
+$F_*p_0^{+}(m)$, by which we mean the landing access represented by
+$F\circ a_0$.
 \end{proposition}
 
 \begin{proof}
@@ -206,8 +213,12 @@ is the relative upper half-disk with its real diameter removed. It is the
 intersection of the closed disk of radius $\tfrac12$ about $m$ with the open
 upper half-plane, hence convex, hence connected: the excess has a single
 component. Its closure in $\C$ is the entire closed half-disk
-$Q$, since every point $x\in I$ is the limit of the points $x+it\in X_0$ as
-$t\downarrow 0$. As $Q=T_0'$, the closure of $X_0$ in $T_0'$ is all of $Q$,
+$Q$: every $x\in(1,2)$ is the limit of $x+it\in X_0$ as
+$t\downarrow0$, while the endpoints are approached, for
+$0<\varepsilon\le\tfrac12$, by
+$1+\varepsilon+i\varepsilon$ and
+$2-\varepsilon+i\varepsilon$, respectively.  As $Q=T_0'$, the closure of
+$X_0$ in $T_0'$ is all of $Q$,
 and therefore
 \[
 \tau_{T_0}(X_0)=\overline{X_0}^{\,T_0'}\cap T_0=Q\cap I=I:
@@ -222,38 +233,37 @@ attachment along all of $I$.
 Since $0\notin U^{-}$, we have $F'(z)=2z\ne 0$ throughout $U^{-}$, and the
 selected branch avoids the critical value $0\notin U^{+}$. The itinerary of
 the excess therefore consists of the single right-sheet, degree-one step
-$X_0\mapsto f(X_0)$ with no critical encounter; its critical word is $0$.
+$X_0\mapsto f(X_0)$ with no critical encounter.
 There is no hidden multivalence, folding, or critical intrusion anywhere in
 the example.
 
 \emph{Erasure of the protected access.}
 The access $p_0^{+}(m)$ is the access to $I$ at the interior point $m$ from
-the upper side, represented by the curve $t\mapsto m+it$, $t\in(0,\epsilon]$,
-which lies in $U^{-}\setminus I$ and lands at $m$. Suppose a monotone
-attachment-complete enlargement absorbs $X_0$ while retaining $I$. The
-enlarged carrier is compact and contains $X_0\cup I$; since it is closed and
-$\overline{X_0}=Q$, it contains the entire half-disk $Q$. But $Q$ contains an
+the upper side, represented by $a_0$, which lies in
+$U^{-}\setminus I$ and lands at $m$.  Let
+$H_0\Subset U^{-}$ be compact and contain $X_0\cup I=Q$.  The set $Q$ contains an
 upper relative half-neighborhood of $m$: the set
 \[
 \Bigl\{\,z:\bigl|z-\tfrac32\bigr|<\tfrac12,\ \operatorname{Im}z\ge 0\,\Bigr\}
 \subset Q
 \]
 is a neighborhood of $m$ in the closed upper half-plane. Consequently, any
-curve in $U^{-}$ landing at $m$ from the upper side eventually lies in this
-half-neighborhood, hence in $Q$, hence in the enlarged carrier. No curve in
-the complement $U^{-}\setminus Q$ can therefore land at $m$ from the upper
+curve in $U^{-}$ landing at $m$ from the upper side---that is, eventually
+in the upper component of a sufficiently small disk about $m$ with $I$
+removed---eventually lies in this half-neighborhood, hence in $Q\subset H_0$.
+No curve in the complement $U^{-}\setminus H_0$ can therefore land at $m$ from the upper
 side: the access $p_0^{+}(m)$ no longer exists as an access from the
-complement of the enlarged carrier. Monotonicity makes the erasure permanent:
-further monotone enlargement only adds points to the carrier and so cannot
-restore a complement access through a set already absorbed.
+complement of $H_0$.  Any further enlargement still contains $Q$ and
+cannot restore that access.
 
 \emph{Transport to stage $1$.}
 The branch $F$ of \eqref{eq:B-branch} is a conformal homeomorphism of
 $U^{-}$ onto $U^{+}$ carrying $I$ to $T_1=[1,4]$, $Q$ to $T_1'$, $X_0$ to the
 stage-$1$ excess $T_1'\setminus T_1$, and the representing curve $m+it$ to a
 curve in $U^{+}\setminus T_1$ landing at $f(m)=\tfrac94$ from the
-$F$-selected side. A homeomorphism of the localization carries complement
-curves to complement curves, so the same argument applied to the image data
+$F$-selected side.  The compact image $F(H_0)$ contains
+$F(Q)=T_1'$.  A homeomorphism of the localization carries complement
+curves to complement curves, so the same argument applied to these image data
 erases the transported access $F_{*}p_0^{+}(m)$ at stage $1$. Conformality
 thus transports the identical conclusion to stage $1$, as claimed.
 \end{proof}
@@ -302,8 +312,9 @@ $m$ and erases the access.}
 The two obstructions are complementary and together close off every naive
 route. Theorem~\ref{thm:no-least} shows that the carrier cannot be
 \emph{selected} canonically: there is no least connected full hull, even for
-two points with identity dynamics, so any construction that speaks of ``the''
-minimal carrier is speaking of an object that does not exist.
+two points with identity dynamics.  Minimal carriers may exist, as the two
+semicircles in the proof show, but they need not be unique and neither is
+least; thus ``the minimal carrier'' does not specify an object.
 Proposition~\ref{prop:access-collision} shows that the carrier cannot be
 \emph{completed} blindly either: the very first monotone absorption of a
 pulled excess can erase a protected prime-end access, and monotonicity then
@@ -324,15 +335,15 @@ completed enlargement in this example is
 every coordinate vanishes except the access coordinate. The
 branch is conformal, degree one, and critical-value-free; there is no sheet
 merger, no obstacle, and no localization escape. Consequently no amount of
-critical-point bookkeeping --- however carefully one tracks critical words,
-critical values, or degrees --- can detect, let alone excuse, the collision.
+critical-point bookkeeping---however carefully one tracks critical points,
+critical values, or degrees---can detect, let alone excuse, the collision.
 Access protection is invisible to critical data and must be carried as
 explicit data of its own, with its own survival theorem.
 
 This is exactly what the remainder of the paper provides. The certificate
 formalism of Section~\ref{sec:certificates} records the protected accesses as
-prime-end crosscut chains \cite{Pom92} with pairwise disjoint terminal
-collars, together with free-port arcs carrying singleton attachment traces
+prime-end crosscut chains \cite{Pom92} with pairwise disjoint relative
+terminal collar tails, together with free-port arcs carrying singleton attachment traces
 and a ribbon tree with declared sides; Theorem~\ref{thm:realization} then
 realizes any such certificate by an actual compact connected full carrier in
 which every protected chain survives with unchanged cyclic order. The

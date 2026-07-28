@@ -1,0 +1,276 @@
+\documentclass[11pt,reqno]{amsart}
+
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{tikz}
+\usetikzlibrary{shapes.geometric, positioning, arrows.meta, decorations.pathmorphing, patterns}
+\usepackage{array,booktabs,tabularx,float}
+\usepackage[hidelinks]{hyperref}
+
+\allowdisplaybreaks
+\raggedbottom
+\setlength{\emergencystretch}{2em}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{example}[theorem]{Example}
+\newtheorem{warning}[theorem]{Warning}
+\newtheorem{openproblem}[theorem]{Open Problem}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+
+\newcommand{\C}{\mathbb C}
+\newcommand{\Z}{\mathbb Z}
+\newcommand{\Chat}{\widehat{\mathbb C}}
+\newcommand{\Fill}{\operatorname{Fill}}
+\newcommand{\Exp}{\operatorname{Exp}}
+\newcommand{\Int}{\operatorname{int}}
+\newcommand{\dist}{\operatorname{dist}}
+\newcommand{\id}{\operatorname{id}}
+\newcommand{\Om}{\Omega}
+\newcommand{\Omfree}{\Omega_{\mathrm{free}}}
+\newcolumntype{P}[1]{>{\raggedright\arraybackslash}p{#1}}
+\newcolumntype{Y}{>{\raggedright\arraybackslash}X}
+
+\title[Protected planar carriers]{Protected planar carriers:\\
+separation ledgers and access-preserving routing}
+\author{Matthew Robert Wesney}
+\date{Draft II of 2026-07-27}
+\subjclass[2020]{Primary 54F15, 30C20; Secondary 37F20, 55M05}
+\keywords{plane continuum, prime end, Alexander duality, protected access,
+connector, filled hull, Hausdorff limit}
+\hypersetup{
+  pdftitle={Protected planar carriers: separation ledgers and access-preserving routing},
+  pdfauthor={Matthew Robert Wesney},
+  pdfsubject={Planar continuum theory and access-preserving routing},
+  pdfkeywords={plane continuum, prime end, Alexander duality, protected access,
+    connector, filled hull, Hausdorff limit}
+}
+
+\begin{document}
+
+\begin{abstract}
+We give a finite planar theory for joining pairwise disjoint full continua
+while preserving specified prime-end accesses and avoiding a frozen compact
+inventory.  A protected ribbon-routing certificate is realized by a full
+carrier whose null crosscut chains survive, remain distinct when their
+relative collar tails are disjoint, and retain cyclic order, without any
+local-connectivity hypothesis.  Certificate existence is equivalent to one
+component of the frozen free domain admitting simultaneous singleton ports
+to all atoms.  Packet and cellwise criteria give checkable sufficient
+conditions, while fixed-assignment audits give persistent witnesses for
+merger, escape, and port loss.
+
+We also prove an attachment exact sequence.  If a connected connector $C$
+meets a full atom $A$ in $T$, then the new first \v{C}ech cohomology fits into
+the short exact sequence
+$0\to\widetilde{\check H}^{\,0}(T)\to
+\check H^1(C\cup A)\to
+\ker[\check H^1(C)\to\check H^1(T)]\to0$.
+Iteration gives the separation ledger
+\[
+\sigma\!\left(C\cup\bigcup_iA_i\right)
+=\sigma(C)+\sum_i
+\bigl(\#\pi_0(C\cap A_i)-1-\sigma(C\cap A_i)\bigr)
+\]
+whenever the ranks are finite.  Thus disconnected traces create holes and
+separating traces fill pre-existing holes.  For a full connector the union
+is full exactly when every attachment trace is connected.  Arbitrarily many
+holes can nevertheless be born in a Hausdorff limit of full tree carriers
+with singleton traces.  By contrast, decreasing full connector envelopes
+with nonempty connected traces are stable and preserve common protected
+data.
+These results isolate the precise finite/infinite compactness gate; they make
+no claim of constructing a virtual dynamical carrier or proving Mandelbrot
+local connectivity.
+\end{abstract}
+
+\maketitle
+\tableofcontents
+
+%%INSERT A:intro_v2
+
+%%INSERT A:preliminaries
+
+%%INSERT B:obstructions
+
+%%INSERT A:comparison
+
+%%INSERT C:certificates
+
+%%INSERT G:separation_budget
+
+%%INSERT D:criterion
+
+%%INSERT E:packets
+
+%%INSERT E:audit
+
+%%INSERT G:scope_v2
+
+\section*{Acknowledgments}
+AI-assisted drafting and citation checking were used.  The author
+independently verified and assumes responsibility for all mathematical
+statements, proofs, and references.
+
+\appendix
+
+\section{Provenance and statement crosswalk}\label{sec:crosswalk}
+
+The certificate, criterion, and packet results originated in the source
+research manuscript \cite{MWman}.  This draft corrects the slit statement,
+uses null crosscut chains and relative collar tails throughout, repairs the
+single-atom construction, and adds the separation ledger, the sharp
+Hausdorff-limit example, and nested-limit stability.  No statement labeled
+open or conditional in the source has been promoted.
+
+\begin{center}
+\small
+\begin{tabularx}{\textwidth}{@{}P{0.35\textwidth}P{0.22\textwidth}Y@{}}
+\toprule
+Present result & Source & Status in this paper\\
+\midrule
+Theorem~\ref{thm:no-least} & Theorem 6.12 & extracted\\
+Proposition~\ref{prop:access-collision} & Proposition 6.15 & extracted\\
+Definition~\ref{def:certificate} & Definition 10.1 &
+relative-tail and incidence conventions made explicit\\
+Lemma~\ref{lem:tree-full} & Lemma 10.2 & two proofs supplied\\
+Lemma~\ref{lem:crosscut-survival} & Lemma 10.3 &
+relative-tail formulation\\
+Theorem~\ref{thm:realization} & Theorem 10.4 &
+proof synchronized with corrected conventions\\
+Proposition~\ref{prop:naturality} & Proposition 10.5 & extracted\\
+Theorem~\ref{thm:separation-budget} & Draft II &
+classical duality/Mayer--Vietoris consequence, packaged for carriers\\
+Corollary~\ref{cor:full-connector-traces} & Draft II &
+classical zero-defect consequence, packaged for carriers\\
+Proposition~\ref{prop:trace-birth} & Draft II &
+Hausdorff-limit separation example proved in this draft\\
+Theorem~\ref{thm:nested-limit-stability} & Draft II &
+decreasing-envelope theorem proved in this draft\\
+Lemma~\ref{lem:slits} & Lemma 10.7 &
+repaired; see Remark~\ref{rem:repair}\\
+Theorem~\ref{thm:free-component} & Theorem 10.8 &
+proof rebuilt around the repaired slit lemma; $s=1$ included\\
+Definition~\ref{def:packet} & Definition 10.9 &
+compact atom--tail blocks and named compact obstacle pieces\\
+Lemma~\ref{lem:packets} & Lemma 10.10 &
+compacta duality made explicit\\
+Theorem~\ref{thm:common-domain} & Theorem 10.11 & extracted\\
+Lemma~\ref{lem:fill-absorption} & Lemma 10.12 & extracted\\
+Lemma~\ref{lem:port-localization} & Lemma 10.13 & extracted\\
+Theorem~\ref{thm:audit} & Theorem 10.14 & extracted\\
+Proposition~\ref{prop:cellwise} & Proposition 10.15 & extracted\\
+\bottomrule
+\end{tabularx}
+\end{center}
+
+Examples~\ref{ex:no-common-component} and~\ref{ex:merger}, together with
+Section~\ref{sec:comparison}, are expository additions.  The
+direct-decoration application formerly included in Draft~I has been removed
+because its strengthened form is the subject of the companion paper
+\cite{Wes26}.
+
+\begin{thebibliography}{99}
+
+\bibitem{Bor31}
+K.~Borsuk,
+\emph{Quelques th\'eor\`emes sur les ensembles unicoh\'erents},
+Fund. Math. \textbf{17} (1931), 171--209.
+
+\bibitem{DH85}
+A.~Douady and J.~H.~Hubbard,
+\emph{On the dynamics of polynomial-like mappings},
+Ann. Sci. \'Ec. Norm. Sup\'er. (4) \textbf{18} (1985), 287--343,
+doi:10.24033/asens.1491.
+
+\bibitem{DHOrsay}
+A.~Douady and J.~H.~Hubbard,
+\emph{\'Etude dynamique des polyn\^omes complexes, Parties I--II},
+Publications Math\'ematiques d'Orsay 84-02 (1984) and 85-04 (1985).
+
+\bibitem{Dud25}
+D.~Dudko,
+\emph{On the MLC conjecture and the renormalization theory in complex
+dynamics},
+to appear in the Proceedings of the ICM 2026,
+arXiv:2512.24171v1, submitted 30 December 2025.
+
+\bibitem{Eil36}
+S.~Eilenberg,
+\emph{Sur les espaces multicoh\'erents. I},
+Fund. Math. \textbf{27} (1936), 153--190.
+
+\bibitem{Hat02}
+A.~Hatcher,
+\emph{Algebraic Topology},
+Cambridge University Press, Cambridge, 2002.
+
+\bibitem{KKL26}
+J.~Kahn, A.~Kapiamba, and M.~Lyubich,
+\emph{MLC for parabolically bounded primitive renormalization},
+arXiv:2606.27272v1, submitted 25 June 2026.
+
+\bibitem{KL08}
+J.~Kahn and M.~Lyubich,
+\emph{A priori bounds for some infinitely renormalizable quadratics.
+II. Decorations},
+Ann. Sci. \'Ec. Norm. Sup\'er. (4) \textbf{41} (2008), 57--84,
+doi:10.24033/asens.2063.
+
+\bibitem{Jan15}
+Z.~Janiszewski,
+\emph{O rozcinaniu p\l aszczyzny przez kontinua}
+[French summary: \emph{Sur les coupures du plan faites par des continus}],
+Prace Matematyczno-Fizyczne \textbf{26} (1915), 11--63.
+
+\bibitem{Moo25}
+R.~L.~Moore,
+\emph{Concerning upper semi-continuous collections of continua},
+Trans. Amer. Math. Soc. \textbf{27} (1925), 416--428,
+doi:10.1090/S0002-9947-1925-1501320-8.
+
+\bibitem{Mul22}
+A.~M.~Mullikin,
+\emph{Certain theorems relating to plane connected point sets},
+Trans. Amer. Math. Soc. \textbf{24} (1922), 144--162,
+doi:10.2307/1989040.
+
+\bibitem{MWman}
+M.~R.~Wesney,
+\emph{A marked-width reduction of Mandelbrot local connectivity},
+unpublished research manuscript, 2026 (build of 2026-07-27).
+
+\bibitem{New51}
+M.~H.~A.~Newman,
+\emph{Elements of the Topology of Plane Sets of Points},
+2nd ed., Cambridge University Press, Cambridge, 1951.
+
+\bibitem{Pom92}
+Ch.~Pommerenke,
+\emph{Boundary Behaviour of Conformal Maps},
+Grundlehren der mathematischen Wissenschaften \textbf{299},
+Springer-Verlag, Berlin, 1992.
+
+\bibitem{Spa66}
+E.~H.~Spanier,
+\emph{Algebraic Topology},
+McGraw--Hill, New York, 1966.
+
+\bibitem{Wes26}
+M.~R.~Wesney,
+\emph{The direct-decoration rooted-end compactification},
+companion manuscript in preparation, 2026.
+
+\bibitem{Why42}
+G.~T.~Whyburn,
+\emph{Analytic Topology},
+American Mathematical Society Colloquium Publications \textbf{28},
+American Mathematical Society, New York, 1942.
+
+\end{thebibliography}
+
+\end{document}

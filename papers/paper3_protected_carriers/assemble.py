@@ -2,9 +2,13 @@
 
 - Replaces %%INSERT <cluster-letter>:<name> with the corresponding extracted file.
 - Reports duplicate labels, unresolved insertions, macro conflicts, env balance.
+- Accepts --skeleton and --output so frozen drafts and revised paper architectures
+  can coexist without overwriting one another.
 """
+import argparse
 import os
 import re
+import sys
 
 BASE = os.path.dirname(os.path.abspath(__file__))
 EX = os.path.join(BASE, "extracted")
@@ -16,6 +20,7 @@ CLUSTER_DIRS = {
     "D": "D_criterion",
     "E": "E_packets",
     "F": "F_decoration",
+    "G": "G_separation",
 }
 
 MACRO_DEFS = {}
@@ -79,7 +84,14 @@ def load(cluster, name):
 
 
 def main():
-    skel = open(os.path.join(BASE, "skeleton.tex"), encoding="utf-8").read()
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--skeleton", default="skeleton.tex")
+    parser.add_argument("--output", default="main.tex")
+    args = parser.parse_args()
+
+    skeleton_path = os.path.join(BASE, args.skeleton)
+    output_path = os.path.join(BASE, args.output)
+    skel = open(skeleton_path, encoding="utf-8").read()
     missing = []
 
     def sub(m):
@@ -90,14 +102,19 @@ def main():
             return f"% [MISSING INSERT {cluster}:{name}]"
         return f"% ---- begin {cluster}:{name} ----\n{txt}\n% ---- end {cluster}:{name} ----"
 
-    out = re.sub(r"%%INSERT ([A-F]):([A-Za-z_0-9]+)", sub, skel)
-    open(os.path.join(BASE, "main.tex"), "w", encoding="utf-8").write(out)
+    out = re.sub(r"%%INSERT ([A-G]):([A-Za-z_0-9]+)", sub, skel)
+    with open(output_path, "w", encoding="utf-8", newline="\n") as stream:
+        stream.write(out)
 
     labels = re.findall(r"\\label\{([^}]*)\}", out)
     dupes = sorted({l for l in labels if labels.count(l) > 1})
-    refs = set(re.findall(r"\\(?:ref|eqref)\{([^}]*)\}", out))
+    refs = set(
+        re.findall(r"\\(?:ref|eqref|pageref|autoref|cref|Cref)\{([^}]*)\}", out)
+    )
     unresolved = sorted(r for r in refs if r not in set(labels))
-    print("bytes:", len(out))
+    print("skeleton:", args.skeleton)
+    print("output:", args.output)
+    print("bytes:", len(out.encode("utf-8")))
     print("missing inserts:", missing or "none")
     print("duplicate labels:", dupes or "none")
     print("unresolved refs:", unresolved or "none")
@@ -108,7 +125,8 @@ def main():
             print(f"  {name_}: {o1} defines {b1!r} vs {o2} defines {b2!r}")
     else:
         print("macro conflicts: none")
+    return 1 if (missing or dupes or unresolved or ENV_ERRORS or MACRO_CONFLICTS) else 0
 
 
 if __name__ == "__main__":
-    main()
+    sys.exit(main())
