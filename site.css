@@ -679,3 +679,26 @@ footer a {
     font-size: 9px;
   }
 }
+.paper-card__status {
+  flex: 0 0 auto;
+}
+
+@media (max-width: 760px) {
+  #atlas > div {
+    display: block !important;
+  }
+
+  #atlas > div:first-child {
+    position: static !important;
+    margin-bottom: 18px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--line);
+  }
+}
+
+@media (max-width: 430px) {
+  #atlas [style*='grid-template-columns: repeat(3, minmax(0, 1fr))'],
+  #atlas [style*='grid-template-columns: repeat(auto-fit, minmax(150px, 1fr))'] {
+    grid-template-columns: minmax(0, 1fr) !important;
+  }
+}
