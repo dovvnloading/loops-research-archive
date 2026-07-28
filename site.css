@@ -702,3 +702,9 @@ footer a {
     grid-template-columns: minmax(0, 1fr) !important;
   }
 }
+@media (max-width: 430px) {
+  #atlas [style*='grid-template-columns: repeat(3'],
+  #atlas [style*='grid-template-columns: repeat(auto-fit'] {
+    grid-template-columns: minmax(0, 1fr) !important;
+  }
+}
