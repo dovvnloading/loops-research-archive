@@ -8,12 +8,12 @@ This map connects the mathematical dependency structure to the public files. The
 |---|---|---|---|---|
 | 1. Localization correction | [Paper 1](./papers/paper1_canonical_localization/paper1_forced_noninjectivity_sheet_kernel_v1.1_visual.pdf) | Version 1.1 Visual Edition | Forced canonical collision, canonical covering/embedding resolution, infinite sheet kernel, winding quotient, and exact propagation on the complementary-cover locus | Decoration-stage alignment, a priori bounds, rigidity, MLC |
 | 2. One-scale compactification | [Paper 2](./papers/paper2_rooted_end_compactification/paper2_direct_decoration_rooted_end_compactification_v1.1_visual.pdf) | Version 1.1 Visual Edition | Direct-decoration realization of the binary rooted-end compactification, exact component quotient, shift dynamics, stable replacement, and protected accesses | Cross-scale transitions, end-fiber renormalization, analytic nondegeneration, MLC |
-| 3. Finite protected carriers | [Paper 3](./papers/paper3_protected_carriers/paper3_draft3_visual.pdf) | **Draft III Visual Edition ? QA audited** | Finite protected routing, exact recognition and packet audits, attachment separation ledger, and sharp Hausdorff-limit failure/stability tests | Virtual carrier construction, Wave horizon, analytic correspondence, uniform incidence control, MLC |
-| 4. Marked construction | `H1_MARKED_CONSTRUCTION` in [`ledger.json`](./ledger.json) | Open | The complete marked state and transition object consumed by the reduction | ? |
-| 5. Calibration | `H2_CALIBRATION` | Open | Quantitative comparison with source extremal-width observables | ? |
-| 6. Coercivity | `H3_COERCIVITY` | Open | Analytic nondegeneration and compactness of the marked state | ? |
-| 7. Rigidity | `H4_RIGIDITY` | Open | The rigidity input required at the terminal limit | ? |
-| 8. Universal closure | `UNIVERSAL_PROTECTED_TOWER_CLOSURE` | Open | Uniform closure of the protected-tower program | ? |
+| 3. Finite protected carriers | [Paper 3](./papers/paper3_protected_carriers/paper3_draft3_visual.pdf) | **Draft III Visual Edition · QA audited** | Finite protected routing, exact recognition and packet audits, attachment separation ledger, and sharp Hausdorff-limit failure/stability tests | Virtual carrier construction, Wave horizon, analytic correspondence, uniform incidence control, MLC |
+| 4. Marked construction | `H1_MARKED_CONSTRUCTION` in [`ledger.json`](./ledger.json) | Open | The complete marked state and transition object consumed by the reduction | — |
+| 5. Calibration | `H2_CALIBRATION` | Open | Quantitative comparison with source extremal-width observables | — |
+| 6. Coercivity | `H3_COERCIVITY` | Open | Analytic nondegeneration and compactness of the marked state | — |
+| 7. Rigidity | `H4_RIGIDITY` | Open | The rigidity input required at the terminal limit | — |
+| 8. Universal closure | `UNIVERSAL_PROTECTED_TOWER_CLOSURE` | Open | Uniform closure of the protected-tower program | — |
 | 9. Terminal implication | `UPTCR_IMPLIES_MLC` | Proved conditional implication | MLC from the universal compactness-and-rigidity proposition | A proof of UPTCR itself |
 
 The main manuscript integrates all nine stages and states the hypotheses consumed at each transition.
