@@ -658,3 +658,24 @@ footer a {
     transition-duration: 0.01ms !important;
   }
 }
+@media (max-width: 760px) {
+  .research-nav__inner {
+    justify-content: center;
+    gap: 0;
+    overflow-x: hidden;
+  }
+
+  .research-nav__brand {
+    display: none;
+  }
+
+  .research-nav__links {
+    flex: 1 1 auto;
+    justify-content: space-between;
+    gap: 8px;
+    flex-wrap: wrap;
+    row-gap: 4px;
+    padding: 6px 0;
+    font-size: 9px;
+  }
+}
