@@ -1,906 +1,250 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>A Marked-Width Reduction of Mandelbrot Local Connectivity</title>
-<meta name="description" content="A source-locked research program toward Mandelbrot local connectivity: three companion papers, a 214-page manuscript, and a public ledger of 465 proof obligations.">
-<meta name="author" content="Matthew Robert Wesney">
-<meta name="theme-color" content="#f3f2f2">
-<link rel="canonical" href="https://dovvnloading.github.io/loops-research-archive/">
-<meta property="og:type" content="article">
-<meta property="og:site_name" content="Marked-Width Research Program">
-<meta property="og:title" content="A Marked-Width Reduction of Mandelbrot Local Connectivity">
-<meta property="og:description" content="Three-paper research sequence, conditional reduction, proof ledger, adversarial audits, and reproducible diagnostics. MLC remains open.">
-<meta property="og:url" content="https://dovvnloading.github.io/loops-research-archive/">
-<meta property="og:image" content="https://dovvnloading.github.io/loops-research-archive/figs/m_overview.png">
-<meta name="twitter:card" content="summary_large_image">
-<link rel="stylesheet" href="./site.css?v=20260727-2">
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "ScholarlyArticle",
-  "name": "A Marked-Width Reduction of Mandelbrot Local Connectivity",
-  "author": {"@type": "Person", "name": "Matthew Robert Wesney"},
-  "dateModified": "2026-07-27",
-  "url": "https://dovvnloading.github.io/loops-research-archive/",
-  "isAccessibleForFree": true,
-  "license": "https://creativecommons.org/publicdomain/zero/1.0/",
-  "description": "A source-locked conditional reduction of Mandelbrot local connectivity with companion papers and a machine-readable proof-obligation ledger."
-}
-</script>
-<script src="./support.js"></script>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#071315">
+  <meta name="description" content="The public research archive for A Marked-Width Reduction of Mandelbrot Local Connectivity by Matthew Robert Wesney.">
+  <meta name="author" content="Matthew Robert Wesney">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://dovvnloading.github.io/loops-research-archive/">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Marked Width | Research Archive">
+  <meta property="og:description" content="Main manuscript, three-paper research sequence, and visual atlas for a marked-width approach to Mandelbrot local connectivity.">
+  <meta property="og:url" content="https://dovvnloading.github.io/loops-research-archive/">
+  <meta property="og:image" content="https://dovvnloading.github.io/loops-research-archive/research/mlc_unified/figures/mandelbrot_overview.png">
+  <meta property="og:image:alt" content="Rendered Mandelbrot parameter plane with marked reference locations">
+  <meta name="twitter:card" content="summary_large_image">
+  <title>Marked Width | Research Archive</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./site.css?v=20260727-4">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    "name": "Marked Width Research Archive",
+    "url": "https://dovvnloading.github.io/loops-research-archive/",
+    "description": "Public research archive for a marked-width reduction program in Mandelbrot local connectivity.",
+    "dateModified": "2026-07-27",
+    "inLanguage": "en",
+    "author": {"@type": "Person", "name": "Matthew Robert Wesney"},
+    "hasPart": [
+      {"@type": "ScholarlyArticle", "name": "A Marked-Width Reduction of Mandelbrot Local Connectivity", "url": "https://dovvnloading.github.io/loops-research-archive/marked_width_mlc_manuscript.pdf", "pagination": "214"},
+      {"@type": "ScholarlyArticle", "name": "Forced Noninjectivity and the Sheet Kernel at Primitive Canonical Localization Seeds", "url": "https://dovvnloading.github.io/loops-research-archive/papers/paper1_canonical_localization/paper1_forced_noninjectivity_sheet_kernel_v1.0.1.pdf"},
+      {"@type": "ScholarlyArticle", "name": "The Direct-Decoration Rooted-End Compactification", "url": "https://dovvnloading.github.io/loops-research-archive/papers/paper2_rooted_end_compactification/paper2_direct_decoration_rooted_end_compactification_v1.0.1.pdf"},
+      {"@type": "ScholarlyArticle", "name": "Protected Planar Carriers and Access-Preserving Connector Criteria", "url": "https://dovvnloading.github.io/loops-research-archive/papers/paper3_protected_carriers/paper3_draft1.pdf"}
+    ]
+  }
+  </script>
 </head>
 <body>
-<x-dc>
-<a class="skip-link" href="#main-content">Skip to research content</a>
-<helmet>
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>A Marked-Width Reduction of Mandelbrot Local Connectivity</title>
-<link rel="preconnect" href="https://fonts.googleapis.com" />
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&family=Lora:ital,wght@0,400;0,600;1,400;1,600&display=swap" rel="stylesheet" />
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css" />
-<script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"></script>
-<script src="./ledger.js"></script>
-<style>
-  html { -webkit-text-size-adjust: 100%; }
-  body { margin: 0; background: #f3f2f2; color: #201f1d; font-family: 'Lora', system-ui, serif; font-size: 16px; line-height: 1.6; }
-  *, *::before, *::after { box-sizing: border-box; }
-  h1, h2, h3, h4 { font-family: 'Cormorant Garamond', system-ui, serif; line-height: 1.1; letter-spacing: -0.012em; margin: 0; font-weight: 600; }
-  p { text-wrap: pretty; }
-  a { color: #7d5411; text-decoration: underline; text-decoration-thickness: 1px; text-decoration-color: rgba(182, 130, 53, 0.5); text-underline-offset: 3px; }
-  a:hover { color: #5a3b0a; text-decoration-color: #b68235; }
-  a:active { color: #a06f24; }
-  :focus-visible { outline: 2px solid #b68235; outline-offset: 2px; }
-  ::selection { background: #ffe3bf; }
-  .katex { font-size: 1.03em; }
-  .katex-display { margin: 13.8px 0; overflow-x: auto; overflow-y: hidden; }
-</style>
-</helmet>
-<div class="site-shell" style="max-width: 1140px; margin: 0 auto; padding: 0 27.6px 92px">
+  <a class="skip-link" href="#main-content">Skip to research</a>
 
-<nav class="research-nav" aria-label="Primary research navigation">
-  <div class="research-nav__inner">
-    <a class="research-nav__brand" href="#top" aria-label="Marked-Width Research Program home">Marked Width</a>
-    <div class="research-nav__links">
-      <a href="#papers">Papers</a>
-      <a href="#roadmap">Roadmap</a>
-      <a href="#frontier">Frontier</a>
-      <a href="#ledger">Ledger</a>
-      <a href="#contribute">Contribute</a>
-      <a href="#cite">Cite</a>
-    </div>
-  </div>
-</nav>
-
-<main id="main-content">
-<header id="top" style="padding: 55.2px 0 0; text-align: center">
-  <div class="hero-kicker" style="font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: #605d5d">Independent research program &nbsp;&middot;&nbsp; math.DS &nbsp;&middot;&nbsp; source lock 2026-07-27</div>
-  <h1 class="hero-title" style="font-family: 'Cormorant Garamond', serif; font-weight: 400; font-size: 62px; line-height: 1.02; letter-spacing: -0.02em; margin: 27.6px auto 0; max-width: 24ch">A Marked-Width Reduction of Mandelbrot Local Connectivity</h1>
-  <div style="margin: 27.6px 0 0; font-size: 18px; letter-spacing: 0.02em">Matthew Robert Wesney</div>
-  <div style="margin: 4.6px 0 0; font-size: 13px; color: #605d5d; font-feature-settings: 'tnum'">214 pages &nbsp;&middot;&nbsp; 465 ledger obligations &nbsp;&middot;&nbsp; three-paper sequence</div>
-  <div class="hero-actions" style="margin: 22px 0 0; display: flex; justify-content: center; flex-wrap: wrap; gap: 4.6px 18.4px; font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase">
-    <a href="./marked_width_mlc_manuscript.pdf">Main manuscript</a>
-    <a href="#papers">Papers 1&ndash;3</a>
-    <a href="#ledger">Proof ledger</a>
-    <a href="https://github.com/dovvnloading/loops-research-archive/blob/main/RESEARCH_MAP.md">Research map</a>
-    <a href="https://github.com/dovvnloading/loops-research-archive">Repository</a>
-  </div>
-  <div style="margin: 36.8px 0 0; border-top: 1px solid #201f1d; border-bottom: 1px solid rgba(32, 31, 29, 0.16); height: 3px"></div>
-</header>
-
-<section id="abstract" class="mlc-math" style="margin: 36.8px auto 0; max-width: 62ch">
-  <div style="text-align: center; font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: #605d5d; margin-bottom: 13.8px">Abstract</div>
-  <p style="margin: 0 0 13.8px; font-size: 16.5px; line-height: 1.68; text-align: justify; hyphens: auto">We develop a source-locked reduction of the Mandelbrot local connectivity conjecture to a marked backward transition theorem for mixed renormalization towers. The proposed state is a partially invariant virtual or pseudo-Siegel carrier with explicit postcritical, prime-end, obstacle, and curve-family records; an unmarked continuum is insufficient. We prove finite root-pullback and inverse-tree reductions, exact critical-value and attachment formulae, functorial finite routing, a common-domain theorem, finite Wave-horizon closure under stated hypotheses, and several source-locked KKL corrections and no-go results.</p>
-  <p style="margin: 0 0 13.8px; font-size: 15px; line-height: 1.7; text-align: justify; hyphens: auto; color: #2d2b2b">The stationary-Wave QA reconstructs the native proof line by line. It finds an unproved relative telescope before the separator argument, an undefined terminal index, a missing measurable final-exit lamination, and a false degree-one assertion; the canonical continuum degree is two. A cyclic-cover model also refutes the literal broad coefficient-one KKL Wave-pushforward statement under its printed definitions, while leaving the narrower Dudko&#x2013;Lyubich one-common-interval annular theorem intact. The native repair is therefore split into four explicit gates: relative continuation, pointwise two-path breaking, measurable final fixed-component exit, and typed bounded-degree pushforward. The present manuscript proves the relative-continuation gate; the other three remain open.</p>
-  <p style="margin: 0; font-size: 15px; line-height: 1.7; text-align: justify; hyphens: auto; color: #2d2b2b">We formulate the remaining construction, transition, compactness, and rigidity requirements as the Universal Protected-Tower Compactness and Rigidity Proposition and prove its implication to MLC only conditionally. That proposition, VAAPC-I, and MLC remain open; this manuscript does not claim an unconditional proof of Mandelbrot local connectivity.</p>
-</section>
-
-<div style="margin: 36.8px auto 0; max-width: 62ch; border-top: 1px solid rgba(32, 31, 29, 0.16); border-bottom: 1px solid rgba(32, 31, 29, 0.16); padding: 13.8px 0">
-  <p style="margin: 0; font-size: 14.5px; line-height: 1.65; text-align: center; font-style: italic; color: #2d2b2b"><span style="font-style: normal; font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: #7d5411">Status &nbsp;</span>Nothing here claims MLC. One implication is proved conditionally; the hypotheses it rests on are open, and the ledger below names every one of them.</p>
-</div>
-
-<div style="margin: 36.8px 0 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); border-top: 1px solid #201f1d; border-bottom: 1px solid #201f1d">
-  <div style="padding: 18.4px 18.4px 18.4px 0">
-    <div style="font-family: 'Cormorant Garamond', serif; font-size: 40px; font-weight: 400; font-feature-settings: 'tnum'; line-height: 1">465</div>
-    <div style="font-size: 10.5px; letter-spacing: 0.14em; text-transform: uppercase; color: #605d5d; margin-top: 4.6px">obligations</div>
-  </div>
-  <div style="padding: 18.4px; border-left: 1px solid rgba(32, 31, 29, 0.16)">
-    <div style="font-family: 'Cormorant Garamond', serif; font-size: 40px; font-weight: 400; font-feature-settings: 'tnum'; line-height: 1; color: #605d5d">34</div>
-    <div style="font-size: 10.5px; letter-spacing: 0.14em; text-transform: uppercase; color: #605d5d; margin-top: 4.6px">imported</div>
-  </div>
-  <div style="padding: 18.4px; border-left: 1px solid rgba(32, 31, 29, 0.16)">
-    <div style="font-family: 'Cormorant Garamond', serif; font-size: 40px; font-weight: 400; font-feature-settings: 'tnum'; line-height: 1">316</div>
-    <div style="font-size: 10.5px; letter-spacing: 0.14em; text-transform: uppercase; color: #605d5d; margin-top: 4.6px">proved</div>
-  </div>
-  <div style="padding: 18.4px; border-left: 1px solid rgba(32, 31, 29, 0.16)">
-    <div style="font-family: 'Cormorant Garamond', serif; font-size: 40px; font-weight: 400; font-feature-settings: 'tnum'; line-height: 1; color: #7d5411">115</div>
-    <div style="font-size: 10.5px; letter-spacing: 0.14em; text-transform: uppercase; color: #7d5411; margin-top: 4.6px">open</div>
-  </div>
-  <div style="padding: 18.4px; border-left: 1px solid rgba(32, 31, 29, 0.16); display: flex; flex-direction: column; justify-content: flex-end">
-    <div style="font-family: 'Cormorant Garamond', serif; font-size: 27px; font-weight: 400; line-height: 1; color: #7d5411">MLC open</div>
-    <div style="font-size: 10.5px; letter-spacing: 0.14em; text-transform: uppercase; color: #605d5d; margin-top: 4.6px">ledger target</div>
-  </div>
-</div>
-
-<section id="papers" class="publication-suite section-rule" aria-labelledby="papers-heading">
-  <div class="section-index">
-    <div class="section-index__number">I</div>
-    <h2 id="papers-heading">Paper sequence</h2>
-    <p>Three successive interfaces: localization, compactification, and protected planar realization.</p>
-  </div>
-  <div>
-    <p class="section-lede">The companion papers isolate the strongest finite and structural advances. Papers 1 and 2 are released at Version 1.0.1. Paper 3 is an active working draft and is being revised independently of this publication layer.</p>
-    <div class="paper-grid">
-      <article class="paper-card">
-        <div class="paper-card__meta"><span class="paper-card__number">Paper 1</span><span class="paper-card__status paper-card__status--released">Released</span></div>
-        <h3>Forced Noninjectivity and the Sheet Kernel</h3>
-        <p>Canonical localization is forced to be noninjective at every ordinary primitive seed in the stated class. The paper resolves the localized inclusion through an intermediate cover and identifies an infinite kernel with at least 2<sup>p</sup>&minus;2 independent winding coordinates.</p>
-        <div class="paper-card__links"><a href="./papers/paper1_canonical_localization/paper1_forced_noninjectivity_sheet_kernel_v1.0.1.pdf">Read PDF &middot; 37 pp.</a><a href="https://github.com/dovvnloading/loops-research-archive/tree/main/papers/paper1_canonical_localization">Source</a></div>
-      </article>
-      <article class="paper-card">
-        <div class="paper-card__meta"><span class="paper-card__number">Paper 2</span><span class="paper-card__status paper-card__status--released">Released</span></div>
-        <h3>The Direct-Decoration Rooted-End Compactification</h3>
-        <p>One direct-decoration scale realizes the binary rooted-end compactification inside a single dynamical plane, with exact component quotient, shift dynamics, fullness, stable replacement, and protected-access transport.</p>
-        <div class="paper-card__links"><a href="./papers/paper2_rooted_end_compactification/paper2_direct_decoration_rooted_end_compactification_v1.0.1.pdf">Read PDF &middot; 20 pp.</a><a href="https://github.com/dovvnloading/loops-research-archive/tree/main/papers/paper2_rooted_end_compactification">Source</a></div>
-      </article>
-      <article class="paper-card">
-        <div class="paper-card__meta"><span class="paper-card__number">Paper 3</span><span class="paper-card__status paper-card__status--active">Active draft</span></div>
-        <h3>Protected Planar Carriers and Connector Criteria</h3>
-        <p>The current draft develops a finite planar theory for joining full continua while preserving frozen obstacles and selected prime-end accesses. It separates exact existence criteria from the still-open virtual-dynamical realization problem.</p>
-        <div class="paper-card__links"><a href="./papers/paper3_protected_carriers/paper3_draft1.pdf">Read current draft</a><a href="https://github.com/dovvnloading/loops-research-archive/tree/main/papers/paper3_protected_carriers">Source and packets</a></div>
-      </article>
-    </div>
-  </div>
-</section>
-
-<section id="roadmap" class="program-map section-rule" aria-labelledby="roadmap-heading">
-  <div class="section-index">
-    <div class="section-index__number">II</div>
-    <h2 id="roadmap-heading">Research spine</h2>
-    <p>Finite structure feeds four open global interfaces; the terminal implication remains conditional.</p>
-  </div>
-  <div>
-    <p class="section-lede">The sequence below is a dependency map, not a progress bar. A proved finite theorem does not close a later analytic gate unless the transition between them is itself proved.</p>
-    <div class="spine" aria-label="Research dependency spine">
-      <div class="spine-step spine-step--proved"><span class="spine-step__state">Proved interface</span><strong>Papers 1&ndash;2</strong><small>Corrected localization state and exact one-scale end model</small></div>
-      <div class="spine-step spine-step--active"><span class="spine-step__state">Active draft</span><strong>Paper 3</strong><small>Finite protected carrier realization and obstruction criteria</small></div>
-      <div class="spine-step spine-step--open"><span class="spine-step__state">Open</span><strong>H1 &middot; H2</strong><small>Marked construction and quantitative calibration</small></div>
-      <div class="spine-step spine-step--open"><span class="spine-step__state">Open</span><strong>H3 &middot; H4</strong><small>Coercive compactness and terminal rigidity</small></div>
-      <div class="spine-step spine-step--open"><span class="spine-step__state">Conditional frontier</span><strong>UPTCR &rArr; MLC</strong><small>The implication is proved; its antecedent and MLC remain open</small></div>
-    </div>
-    <div class="contribution-cta"><a class="button-link" href="https://github.com/dovvnloading/loops-research-archive/blob/main/RESEARCH_MAP.md">Open the full research map</a><a href="#frontier">Inspect the frontier</a></div>
-  </div>
-</section>
-<section id="state" style="margin: 55.2px 0 0; display: grid; grid-template-columns: 156px minmax(0, 1fr); gap: 36.8px; align-items: start">
-  <div style="position: sticky; top: 18.4px">
-    <div style="font-family: 'Cormorant Garamond', serif; font-size: 34px; font-weight: 400; color: #b68235; line-height: 1">I</div>
-    <h2 style="font-size: 12px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; margin: 4.6px 0 0; font-family: 'Lora', serif">The marked state</h2>
-  </div>
-  <div class="mlc-math" style="max-width: 68ch">
-    <p style="margin: 0 0 13.8px; font-size: 16px; line-height: 1.7; text-align: justify; hyphens: auto">For $f_c(z)=z^2+c$ and $\mathcal{M}=\{c\in\mathbb{C}: (f_c^n(0))_{n\ge 0} \text{ bounded}\}$, the target is local connectivity of $\mathcal{M}$ at every parameter $c\in\mathcal{M}$. At a renormalization checkpoint $n$ the proposed state is not a continuum alone but</p>
-    <p style="margin: 0 0 13.8px; font-size: 16px">$$\mathcal{H}_n=\bigl(\Sigma_n,\;H_n,\;B_n,\;P_n^{\le \nu_n},\;I_n,\;\Gamma_n\bigr),\qquad \mathcal{D}^{\#}_n=\mathrm{Ext}_{\Sigma_n\setminus(H_n\cup B_n\cup P_n^{\le\nu_n})}(\Gamma_n).$$</p>
-    <p style="margin: 0 0 27.6px; font-size: 16px; line-height: 1.7; text-align: justify; hyphens: auto">Here $\Sigma_n$ is the ambient marked surface, $H_n$ the regularized carrier, $B_n$ the satellite base-cycle or neutral access data, $P_n^{\le\nu_n}$ the finite critical orbit actually used by the proof, $I_n$ the ideal or sectorial boundary marking, and $\Gamma_n$ the declared curve family. Neither existence nor uniform control of the state over all towers is assumed.</p>
-    <h3 style="font-family: 'Cormorant Garamond', serif; font-size: 27px; font-weight: 600; margin: 0 0 9.2px">Why root modulus cannot be the coordinate</h3>
-    <p style="margin: 0 0 13.8px; font-size: 16px; line-height: 1.7; text-align: justify; hyphens: auto">The BLOT satellite bound $\operatorname{mod}(A)<2\pi/\log(4(s+1))$ forbids any bounded scalar functional $D$ with $|D-1/\operatorname{mod}(A)|\le C$ uniformly over satellite relative periods $s$ (Theorem 4.1). This does not prohibit a regularized <em>marked</em> functional &#x2014; it says the marked surface and curve family must genuinely change. Renaming the ordinary root annulus cannot solve the satellite problem.</p>
-    <p style="margin: 0; font-size: 16px; line-height: 1.7; text-align: justify; hyphens: auto">The scalar closure is then supplied by the backward-record lemma: if $L_n>D_*$ forces some $p(n)<n$ with $L_{p(n)}\ge \lambda L_n - C$ for $\lambda>1$, then $\sup_n L_n \le \max\{D_*,L_0\}+C/(\lambda-1)$. Forward growth $L_{n+k}\ge \lambda L_n - C$ is <em>not</em> a contradiction; the direction needed for tower closure is the reverse one.</p>
-  </div>
-</section>
-
-<section id="proved" style="margin: 55.2px 0 0; display: grid; grid-template-columns: 156px minmax(0, 1fr); gap: 36.8px; align-items: start">
-  <div style="position: sticky; top: 18.4px">
-    <div style="font-family: 'Cormorant Garamond', serif; font-size: 34px; font-weight: 400; color: #b68235; line-height: 1">II</div>
-    <h2 style="font-size: 12px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; margin: 4.6px 0 0; font-family: 'Lora', serif">Proved here</h2>
-    <p style="margin: 9.2px 0 0; font-size: 13px; line-height: 1.55; color: #605d5d">Unconditional within their stated finite topological or arithmetic hypotheses.</p>
-  </div>
-  <div class="mlc-math" style="max-width: 68ch">
-    <div style="border-top: 1px solid #201f1d; padding: 13.8px 0 0">
-      <p style="margin: 0; font-size: 16px; line-height: 1.7; text-align: justify; hyphens: auto"><span style="float: right; font-size: 10.5px; letter-spacing: 0.12em; text-transform: uppercase; color: #b68235; padding-left: 13.8px">&#xA7;5</span><span style="font-family: 'Cormorant Garamond', serif; font-size: 19px; font-weight: 600">Theorem 1.3.</span> <em>Root-pullback carrier equivalence.</em> One full root continuum, together with the routed components of all its finite iterated pullbacks containing the complete required packages, determines a unique finite saturated carrier forest. Selected sheets are distinct exactly when their packages lie in distinct same-depth pullback components.</p>
-    </div>
-    <div style="border-top: 1px solid rgba(32, 31, 29, 0.16); padding: 13.8px 0 0; margin-top: 13.8px">
-      <p style="margin: 0; font-size: 16px; line-height: 1.7; text-align: justify; hyphens: auto"><span style="float: right; font-size: 10.5px; letter-spacing: 0.12em; text-transform: uppercase; color: #b68235; padding-left: 13.8px">&#xA7;5</span><span style="font-family: 'Cormorant Garamond', serif; font-size: 19px; font-weight: 600">Theorem 1.4.</span> <em>Critical-value corridor criterion.</em> For a quadratic polynomial, a selected pullback edge over a full target carrier has degree one exactly when the target avoids the critical value, and degree two exactly when it contains the critical value &#x2014; regardless of the label the target carries.</p>
-    </div>
-    <div style="border-top: 1px solid rgba(32, 31, 29, 0.16); padding: 13.8px 0 0; margin-top: 13.8px">
-      <p style="margin: 0 0 4.6px; font-size: 16px; line-height: 1.7; text-align: justify; hyphens: auto"><span style="float: right; font-size: 10.5px; letter-spacing: 0.12em; text-transform: uppercase; color: #b68235; padding-left: 13.8px">&#xA7;6.1</span><span style="font-family: 'Cormorant Garamond', serif; font-size: 19px; font-weight: 600">Theorem 1.5.</span> <em>Endpoint-birth accounting.</em> For successive boundary coverings of degrees $d_j$, terminal endpoint count $p_N$, and $b_j$ genuinely new endpoints born at stage $j$,</p>
-      <p style="margin: 0; font-size: 15px">$$p_0=\Bigl(\prod_{j=0}^{N-1} d_j\Bigr)p_N+\sum_{j=0}^{N-1}\Bigl(\prod_{i=0}^{j-1} d_i\Bigr)b_j.$$</p>
-    </div>
-    <div style="border-top: 1px solid rgba(32, 31, 29, 0.16); padding: 13.8px 0 0; margin-top: 13.8px">
-      <p style="margin: 0; font-size: 16px; line-height: 1.7; text-align: justify; hyphens: auto"><span style="float: right; font-size: 10.5px; letter-spacing: 0.12em; text-transform: uppercase; color: #b68235; padding-left: 13.8px">&#xA7;6.2</span><span style="font-family: 'Cormorant Garamond', serif; font-size: 19px; font-weight: 600">Theorem 1.6.</span> <em>Attachment-support reduction.</em> Under the exact KKL-form interval pullback description, genuine endpoint births vanish away from components of the pulled-carrier excess attached to the marked interval. Births confined to a bounded terminal quadratic window have a period-independent degree-weighted cost.</p>
-    </div>
-    <div style="border-top: 1px solid rgba(32, 31, 29, 0.16); padding: 13.8px 0 0; margin-top: 13.8px">
-      <p style="margin: 0; font-size: 16px; line-height: 1.7; text-align: justify; hyphens: auto"><span style="float: right; font-size: 10.5px; letter-spacing: 0.12em; text-transform: uppercase; color: #7d5411; padding-left: 13.8px">&#xA7;6.4 &#xB7; no-go</span><span style="font-family: 'Cormorant Garamond', serif; font-size: 19px; font-weight: 600">Theorem 1.7.</span> <em>Canonical-carrier obstruction.</em> No least connected full carrier exists even for a two-point package. Moreover an explicit critical-value-free branch of $z^2$ has a first pulled excess whose monotone absorption erases a protected upper prime-end access while producing no sheet, critical, obstacle, or localization collision.</p>
-    </div>
-    <div style="border-top: 1px solid rgba(32, 31, 29, 0.16); padding: 13.8px 0 0; margin-top: 13.8px">
-      <p style="margin: 0; font-size: 16px; line-height: 1.7; text-align: justify; hyphens: auto"><span style="float: right; font-size: 10.5px; letter-spacing: 0.12em; text-transform: uppercase; color: #b68235; padding-left: 13.8px">&#xA7;10.4</span><span style="font-family: 'Cormorant Garamond', serif; font-size: 19px; font-weight: 600">Theorem 1.8.</span> <em>Protected free-component criterion.</em> After the complete finite protected-collar and obstacle data are frozen, a protected connector exists exactly when one component of their complement has simultaneous singleton ports to every required full atom. A protected separator between two required port classes is an exact obstruction inside the current localization.</p>
-    </div>
-    <div style="border-top: 1px solid rgba(32, 31, 29, 0.16); padding: 13.8px 0 0; margin-top: 13.8px">
-      <p style="margin: 0; font-size: 16px; line-height: 1.7; text-align: justify; hyphens: auto"><span style="float: right; font-size: 10.5px; letter-spacing: 0.12em; text-transform: uppercase; color: #b68235; padding-left: 13.8px">&#xA7;10.5</span><span style="font-family: 'Cormorant Garamond', serif; font-size: 19px; font-weight: 600">Theorem 1.9.</span> <em>Augmented-atom common domain.</em> If the frozen forbidden inventory is covered by finitely many pairwise disjoint full augmented atom/obstacle packets compactly contained in one Jordan localization, and every original atom retains an explicit free singleton port, then all ports lie in one component of the original free domain. The proof uses Alexander duality for arbitrary compacta and assumes no local connectivity.</p>
-    </div>
-    <div style="border-top: 1px solid rgba(32, 31, 29, 0.16); padding: 13.8px 0 0; margin-top: 13.8px">
-      <p style="margin: 0; font-size: 16px; line-height: 1.7; text-align: justify; hyphens: auto"><span style="float: right; font-size: 10.5px; letter-spacing: 0.12em; text-transform: uppercase; color: #b68235; padding-left: 13.8px">&#xA7;10.7</span><span style="font-family: 'Cormorant Garamond', serif; font-size: 19px; font-weight: 600">Theorems 1.11&#x2013;1.12.</span> <em>Horizon-first inventory and the resolved Wave compiler.</em> Dependency reachability from the complete proof-use seed set is the unique least inventory. A finite acyclic analytic Wave program with actual marked branches, exact degree words and stability proofs has a finite maximal iterate horizon and an order-independent, analytically stable least final-root closure. KKL's native recursion is a positive control with forbidden critical-visit chain length $216b^2$; it does not construct the marked virtual correspondence.</p>
-    </div>
-    <div style="border-top: 1px solid rgba(32, 31, 29, 0.16); padding: 13.8px 0 0; margin-top: 13.8px">
-      <p style="margin: 0; font-size: 16px; line-height: 1.7; text-align: justify; hyphens: auto"><span style="float: right; font-size: 10.5px; letter-spacing: 0.12em; text-transform: uppercase; color: #b68235; padding-left: 13.8px">&#xA7;10.9&#x2013;10.10</span><span style="font-family: 'Cormorant Garamond', serif; font-size: 19px; font-weight: 600">Theorems 1.13&#x2013;1.14.</span> <em>First decoration-scale selector and terminal Hubbard-tree anchor.</em> For a fixed non-principal decoration outside a directly attached satellite copy $\mathcal{M}_{p/q}$, the least critical $q$-return escape $n$ selects the actual puzzle depth $\nu_{\mathrm{dec}}(1)=nq+1$; the terminal primitive little-Julia cycle does not fit in one critical return base, so the analytic replacement is a multi-base return chain. In KKL's native category the terminal cycle's compact forward-invariant Hubbard tree is a connected carrier, and every finite selected vertex package has a unique convex subtree.</p>
-    </div>
-    <div style="border-top: 1px solid rgba(32, 31, 29, 0.16); padding: 13.8px 0 0; margin-top: 13.8px">
-      <p style="margin: 0; font-size: 16px; line-height: 1.7; text-align: justify; hyphens: auto"><span style="float: right; font-size: 10.5px; letter-spacing: 0.12em; text-transform: uppercase; color: #7d5411; padding-left: 13.8px">&#xA7;10.11 &#xB7; no-go</span><span style="font-family: 'Cormorant Garamond', serif; font-size: 19px; font-weight: 600">Theorem 1.15.</span> <em>Cantor-package finite-trace criterion.</em> An infinite family of distinct virtual small-Julia components cannot be identified injectively with a finite terminal-tree package. A finite quotient supports a declared joint observable exactly when that observable is constant on every quotient fiber; copy-chain labels alone construct neither an embedded component family nor an analytic branch action.</p>
-    </div>
-    <div style="border-top: 1px solid rgba(32, 31, 29, 0.16); padding: 13.8px 0 0; margin-top: 13.8px">
-      <p style="margin: 0 0 4.6px; font-size: 16px; line-height: 1.7; text-align: justify; hyphens: auto"><span style="float: right; font-size: 10.5px; letter-spacing: 0.12em; text-transform: uppercase; color: #b68235; padding-left: 13.8px">&#xA7;12</span><span style="font-family: 'Cormorant Garamond', serif; font-size: 19px; font-weight: 600">Theorem 1.17.</span> <em>Normalized end tools, full-trace calculus, collar obstruction.</em> Finite-cylinder copies along one infinite direct-decoration address have a normalized direct limit canonically biholomorphic to the root, and fully transported extremal-length and electrode-response data are conformally invariant. Scalar nodal response nevertheless fails: on a length-$L$ cylinder the constant conductance is $2\pi/L$, while the $\cos(k\theta)$ trace carries energy</p>
-      <p style="margin: 0; font-size: 15px">$$\pi k \coth(kL).$$</p>
-    </div>
-    <div style="border-top: 1px solid rgba(32, 31, 29, 0.16); border-bottom: 1px solid #201f1d; padding: 13.8px 0; margin-top: 13.8px">
-      <p style="margin: 0; font-size: 16px; line-height: 1.7; text-align: justify; hyphens: auto"><span style="float: right; font-size: 10.5px; letter-spacing: 0.12em; text-transform: uppercase; color: #b68235; padding-left: 13.8px">&#xA7;8</span><span style="font-family: 'Cormorant Garamond', serif; font-size: 19px; font-weight: 600">Theorems 8.3&#x2013;8.5.</span> <em>Future-observable compactification.</em> Countably many partial deterministic transitions with a frozen countable observable catalog admit a compact metrizable future-faithful end topology on which every declared guard, hull encoding, branch, transport and authorized enlargement extends continuously. It removes bare symbolic discreteness; it does not compactify the virtual hull geometry.</p>
-    </div>
-  </div>
-</section>
-
-<section id="gates" style="margin: 55.2px 0 0; display: grid; grid-template-columns: 156px minmax(0, 1fr); gap: 36.8px; align-items: start">
-  <div style="position: sticky; top: 18.4px">
-    <div style="font-family: 'Cormorant Garamond', serif; font-size: 34px; font-weight: 400; color: #b68235; line-height: 1">III</div>
-    <h2 style="font-size: 12px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; margin: 4.6px 0 0; font-family: 'Lora', serif">The four gates</h2>
-    <p style="margin: 9.2px 0 0; font-size: 13px; line-height: 1.55; color: #605d5d">The repair of the native stationary-Wave argument splits into four independent gates. One is closed.</p>
-  </div>
-  <div class="mlc-math" style="max-width: 68ch">
-    <div style="border-top: 1px solid #201f1d; padding: 13.8px 0 18.4px">
-      <div style="display: flex; justify-content: space-between; align-items: baseline; gap: 18.4px">
-        <h3 style="font-family: 'Cormorant Garamond', serif; font-size: 27px; font-weight: 600"><span style="color: #b68235; font-size: 20px">N1 &nbsp;</span>Relative continuation</h3>
-        <span style="font-size: 10.5px; letter-spacing: 0.14em; text-transform: uppercase; color: #444141; white-space: nowrap">Proved &#xB7; Thm 12.101</span>
+  <header class="site-header">
+    <nav class="shell nav" aria-label="Primary navigation">
+      <a class="brand" href="#top" aria-label="Marked Width home">
+        <span class="brand-mark" aria-hidden="true">MW</span>
+        <span class="brand-name">Marked Width</span>
+      </a>
+      <div class="nav-links">
+        <a href="#manuscript"><span class="label-long">Manuscript</span><span class="label-short">PDF</span></a>
+        <a href="#papers">Papers</a>
+        <a class="nav-visuals" href="#visuals">Visuals</a>
+        <a class="nav-repo" href="https://github.com/dovvnloading/loops-research-archive">GitHub</a>
       </div>
-      <p style="margin: 9.2px 0 0; font-size: 15.5px; line-height: 1.7; text-align: justify; hyphens: auto; color: #2d2b2b">Borel leafwise-directed stationary continuation. For $b\ge 1$ and $N=b+3$ there are nested proper Borel subwaves $A_0\supset\cdots\supset A_{N-1}$ whose output waves $S_n=F^n_*A_n$ retain the no-short, unbreakability, occurrence, prime-end marking and leafwise direction data, with $W(A_n\setminus A_{n+1})\le C_b$ independent of the rotation denominator, the input width, the number of represented arc packets and all selector histories. The native Dudko&#x2013;Lyubich annular argument is applied only to the rectifiable core; the non-rectifiable remainder has zero width.</p>
-    </div>
-    <div style="border-top: 1px solid rgba(32, 31, 29, 0.16); padding: 13.8px 0 18.4px">
-      <div style="display: flex; justify-content: space-between; align-items: baseline; gap: 18.4px">
-        <h3 style="font-family: 'Cormorant Garamond', serif; font-size: 27px; font-weight: 600"><span style="color: #b68235; font-size: 20px">N2 &nbsp;</span>Pointwise two-path breaking</h3>
-        <span style="font-size: 10.5px; letter-spacing: 0.14em; text-transform: uppercase; color: #7d5411; white-space: nowrap">Open</span>
-      </div>
-      <p style="margin: 9.2px 0 0; font-size: 15.5px; line-height: 1.7; text-align: justify; hyphens: auto; color: #2d2b2b">The separator argument requires breaking on two paths pointwise, not merely on an aggregate family. The native text asserts it before proving a relative telescope.</p>
-    </div>
-    <div style="border-top: 1px solid rgba(32, 31, 29, 0.16); padding: 13.8px 0 18.4px">
-      <div style="display: flex; justify-content: space-between; align-items: baseline; gap: 18.4px">
-        <h3 style="font-family: 'Cormorant Garamond', serif; font-size: 27px; font-weight: 600"><span style="color: #b68235; font-size: 20px">N3 &nbsp;</span>Measurable final fixed-component exit</h3>
-        <span style="font-size: 10.5px; letter-spacing: 0.14em; text-transform: uppercase; color: #7d5411; white-space: nowrap">Open</span>
-      </div>
-      <p style="margin: 9.2px 0 0; font-size: 15.5px; line-height: 1.7; text-align: justify; hyphens: auto; color: #2d2b2b">The final-exit lamination is used but never constructed measurably, and the terminal index it is indexed by is undefined in the printed argument.</p>
-    </div>
-    <div style="border-top: 1px solid rgba(32, 31, 29, 0.16); border-bottom: 1px solid #201f1d; padding: 13.8px 0 18.4px">
-      <div style="display: flex; justify-content: space-between; align-items: baseline; gap: 18.4px">
-        <h3 style="font-family: 'Cormorant Garamond', serif; font-size: 27px; font-weight: 600"><span style="color: #b68235; font-size: 20px">N4 &nbsp;</span>Typed bounded-degree pushforward</h3>
-        <span style="font-size: 10.5px; letter-spacing: 0.14em; text-transform: uppercase; color: #7d5411; white-space: nowrap">Open</span>
-      </div>
-      <p style="margin: 9.2px 0 0; font-size: 15.5px; line-height: 1.7; text-align: justify; hyphens: auto; color: #2d2b2b">A usable coefficient-one theorem must prove single-crest, single-WAD-coordinate coherence for the actual source packet. Otherwise the state must retain the equivalence classes of source conductance coordinates that collapse downstairs and charge their multiplicity linearly.</p>
-    </div>
-  </div>
-</section>
+    </nav>
+  </header>
 
-<section id="qa" style="margin: 55.2px 0 0; display: grid; grid-template-columns: 156px minmax(0, 1fr); gap: 36.8px; align-items: start">
-  <div style="position: sticky; top: 18.4px">
-    <div style="font-family: 'Cormorant Garamond', serif; font-size: 34px; font-weight: 400; color: #b68235; line-height: 1">IV</div>
-    <h2 style="font-size: 12px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; margin: 4.6px 0 0; font-family: 'Lora', serif">Corrections</h2>
-    <p style="margin: 9.2px 0 0; font-size: 13px; line-height: 1.55; color: #605d5d">An audit of one printed source line, run against the locked source file. It proves no global closure theorem.</p>
-  </div>
-  <div class="mlc-math" style="max-width: 68ch">
-    <div style="border-top: 1px solid #201f1d; padding: 13.8px 0 0">
-      <p style="margin: 0 0 9.2px; font-size: 16px; line-height: 1.7; text-align: justify; hyphens: auto"><span style="font-family: 'Cormorant Garamond', serif; font-size: 19px; font-weight: 600">Theorem 12.100.</span> <em>Cyclic-cover obstruction to the broad Wave claim.</em> Under the broad printed definition of a KKL Wave, the coefficient-one estimate</p>
-      <p style="margin: 0 0 9.2px; font-size: 16px">$$W(A')\le W(A)+O(1+\log d),\qquad A\subset f_*A'$$</p>
-      <p style="margin: 0 0 13.8px; font-size: 16px; line-height: 1.7; text-align: justify; hyphens: auto">is false without an additional coherence or nonrepetition hypothesis.</p>
-      <p style="margin: 0 0 13.8px; font-size: 14.5px; line-height: 1.7; text-align: justify; hyphens: auto; color: #444141; padding-left: 18.4px; border-left: 1px solid #b68235"><em>Proof.</em> Take a finite cyclic annulus cover and $N$ disjoint lifts of one proper marked target Wave of width $w$; if necessary add one smooth outer leaf of width zero to force one connected source base. The finite Parallel Law gives $W(A')=Nw$, while all positive-width lift components have the same set-theoretic pushforward, so every target Wave $A\subset f_*A'$ has $W(A)\le w$. The covering degree is at most the fixed integer $M=N+2$, so the estimate would imply $(N-1)w\le C(1+\log M)$, which fails for $N=2$ and $w\to\infty$. &#x25A1;</p>
-      <p style="margin: 0; font-size: 15px; line-height: 1.7; text-align: justify; hyphens: auto; color: #2d2b2b">This refutes the candidate full-base collision reduction and the literal broad wording of the KKL Wave lemma under its printed definitions. It does <em>not</em> refute the cited Dudko&#x2013;Lyubich annular theorem, whose source family is one Wave above one fixed boundary interval.</p>
-    </div>
-    <h3 style="font-family: 'Cormorant Garamond', serif; font-size: 27px; font-weight: 600; margin: 27.6px 0 9.2px">Findings of the line-by-line reconstruction</h3>
-    <ol style="margin: 0; padding: 0; list-style: none">
-      <li style="display: grid; grid-template-columns: 27.6px minmax(0, 1fr); gap: 9.2px; font-size: 15.5px; line-height: 1.7; border-top: 1px solid rgba(32, 31, 29, 0.16); padding: 9.2px 0"><span style="color: #b68235; font-feature-settings: 'tnum'">i</span><span>An unproved relative telescope stands before the separator argument.</span></li>
-      <li style="display: grid; grid-template-columns: 27.6px minmax(0, 1fr); gap: 9.2px; font-size: 15.5px; line-height: 1.7; border-top: 1px solid rgba(32, 31, 29, 0.16); padding: 9.2px 0"><span style="color: #b68235; font-feature-settings: 'tnum'">ii</span><span>A terminal index used in the argument is undefined.</span></li>
-      <li style="display: grid; grid-template-columns: 27.6px minmax(0, 1fr); gap: 9.2px; font-size: 15.5px; line-height: 1.7; border-top: 1px solid rgba(32, 31, 29, 0.16); padding: 9.2px 0"><span style="color: #b68235; font-feature-settings: 'tnum'">iii</span><span>The measurable final-exit lamination is missing.</span></li>
-      <li style="display: grid; grid-template-columns: 27.6px minmax(0, 1fr); gap: 9.2px; font-size: 15.5px; line-height: 1.7; border-top: 1px solid rgba(32, 31, 29, 0.16); border-bottom: 1px solid rgba(32, 31, 29, 0.16); padding: 9.2px 0"><span style="color: #b68235; font-feature-settings: 'tnum'">iv</span><span>A degree-one assertion is false: the canonical continuum degree is two.</span></li>
-    </ol>
-    <p style="margin: 18.4px 0 0; font-size: 14.5px; line-height: 1.7; color: #605d5d; text-align: justify; hyphens: auto">Nineteen adversarial tests (A1&#x2013;A19, &#xA7;14.3) record the failure modes any completion must survive: root shadow split, late merger, hidden attachment, access explosion, relative-cover failure, horizon leakage, chart-cycle neutrality, rigidity circularity, trace-mode loss, and others. An open obligation may be promoted only with an exact quantified statement, a complete proof or a source with matching hypotheses, every constant dependence, an attack aimed at every hypothesis, its position in the dependency graph, and a successful build audit.</p>
-  </div>
-</section>
-
-<section id="endpoint" style="margin: 55.2px 0 0; display: grid; grid-template-columns: 156px minmax(0, 1fr); gap: 36.8px; align-items: start">
-  <div style="position: sticky; top: 18.4px">
-    <div style="font-family: 'Cormorant Garamond', serif; font-size: 34px; font-weight: 400; color: #b68235; line-height: 1">V</div>
-    <h2 style="font-size: 12px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; margin: 4.6px 0 0; font-family: 'Lora', serif">Conditional endpoint</h2>
-  </div>
-  <div class="mlc-math" style="max-width: 68ch">
-    <p style="margin: 0 0 18.4px; font-size: 16px; line-height: 1.7; text-align: justify; hyphens: auto">Constants $d_0,w_0,m_0\in\mathbb{N}$, $\rho_0,\kappa_0,T_0,D_*,E_0<\infty$, $\eta_0>0$, $\lambda_{\mathrm{raw}}>1$ and $0\le\delta<\lambda_{\mathrm{raw}}-1$ are chosen <em>before</em> the polynomial. The Universal Protected-Tower Compactness and Rigidity Proposition asserts that every infinitely renormalizable quadratic polynomial admits canonical checkpoints $n$ with predecessors $p(n)<n$ satisfying six clauses.</p>
-    <ol style="margin: 0; padding: 0; list-style: none">
-      <li style="border-top: 1px solid #201f1d; padding: 13.8px 0"><p style="margin: 0; font-size: 15.5px; line-height: 1.7; text-align: justify; hyphens: auto"><span style="font-size: 10.5px; letter-spacing: 0.14em; text-transform: uppercase; color: #b68235">UPTCR-1 &nbsp;</span><em>Canonical protected carrier.</em> Built from a lamination-lifted regulated tree or rooted predecessor puzzle-cell tree, containing every object used by Wave, Wanderers, quasi-additivity, covering, response or width arguments through the complete horizon. Every realized protected core, including every central degree-one corridor, has collision invariant $\chi_n=0$.</p></li>
-      <li style="border-top: 1px solid rgba(32, 31, 29, 0.16); padding: 13.8px 0"><p style="margin: 0; font-size: 15.5px; line-height: 1.7; text-align: justify; hyphens: auto"><span style="font-size: 10.5px; letter-spacing: 0.14em; text-transform: uppercase; color: #b68235">UPTCR-2 &nbsp;</span><em>Exact analytic realization.</em> At every stage of a complete Wave horizon, $g_j^{-1}(H_{j+1})=H'_j=\iota_j^{-1}(H_j)$. The selected return spine has exactly one declared degree-two stage; every auxiliary branch carries its full critical word with $\deg(\beta)=2^{m(\beta)}$, and all markings transport equivariantly with preserved cyclic order.</p></li>
-      <li style="border-top: 1px solid rgba(32, 31, 29, 0.16); padding: 13.8px 0"><p style="margin: 0; font-size: 15.5px; line-height: 1.7; text-align: justify; hyphens: auto"><span style="font-size: 10.5px; letter-spacing: 0.14em; text-transform: uppercase; color: #b68235">UPTCR-3 &nbsp;</span><em>Uniform finite response state.</em> Core and WAD modules of dimension at most $d_0,w_0$ with $\rho_n\le\rho_0$ and $\kappa_n/r_{B,n}\le\kappa_0$, future-observable for all required KKL Value functionals. No ordinary satellite-root modulus is used uniformly in the relative period.</p></li>
-      <li style="border-top: 1px solid rgba(32, 31, 29, 0.16); padding: 13.8px 0"><p style="margin: 0; font-size: 15.5px; line-height: 1.7; text-align: justify; hyphens: auto"><span style="font-size: 10.5px; letter-spacing: 0.14em; text-transform: uppercase; color: #b68235">UPTCR-4 &nbsp;</span><em>Backward transition.</em> One calibrated potential with $L_n>D_*\Rightarrow L_{p(n)}\ge(\lambda_{\mathrm{raw}}-\delta)L_n-E_0$; every complete block certified by entropy gain at least $\eta_0$, by controlled pseudo-Siegel absorption, or by a proved transient/shear alternative, with total error charge $G_B(e_B)\le\delta L_n+E_0$.</p></li>
-      <li style="border-top: 1px solid rgba(32, 31, 29, 0.16); padding: 13.8px 0"><p style="margin: 0; font-size: 15.5px; line-height: 1.7; text-align: justify; hyphens: auto"><span style="font-size: 10.5px; letter-spacing: 0.14em; text-transform: uppercase; color: #b68235">UPTCR-5 &nbsp;</span><em>Coercive marked compactness.</em> Bounded $L_n$ makes normalized marked towers sequentially precompact in a topology retaining carrier, access, relative-cover, response and Value data. Unbounded counters and stack words are forgotten after proved block closure or embedded in a compact end topology.</p></li>
-      <li style="border-top: 1px solid rgba(32, 31, 29, 0.16); border-bottom: 1px solid rgba(32, 31, 29, 0.16); padding: 13.8px 0"><p style="margin: 0; font-size: 15.5px; line-height: 1.7; text-align: justify; hyphens: auto"><span style="font-size: 10.5px; letter-spacing: 0.14em; text-transform: uppercase; color: #b68235">UPTCR-6 &nbsp;</span><em>Tower rigidity and parameter fiber.</em> Puzzle families of Teichm&#xFC;ller diameter at most $T_0$; equal full marked combinatorics give a limiting global quasiconformal conjugacy whose invariant Beltrami form vanishes for want of an invariant line field, so the quadratic parameters coincide.</p></li>
-    </ol>
-    <div style="margin: 27.6px 0 0; border-top: 1px solid #201f1d; border-bottom: 1px solid #201f1d; padding: 22px 0; text-align: center">
-      <div style="font-size: 10.5px; letter-spacing: 0.16em; text-transform: uppercase; color: #605d5d">Conditional Theorem 9.4</div>
-      <p style="margin: 9.2px 0 0; font-family: 'Cormorant Garamond', serif; font-size: 34px; font-weight: 400">UPTCR $\Rightarrow$ MLC</p>
-      <p style="margin: 9.2px auto 0; max-width: 56ch; font-size: 15px; line-height: 1.7; color: #2d2b2b">Assuming H1 (marked construction), H2 (marked backward transition), H3 (coercivity) and H4 (parameter rigidity), $\mathcal{M}$ is locally connected; Yoccoz&#x2013;Hubbard covers the non-infinitely-renormalizable side. A logical endpoint, not a proof of the hypotheses &#x2014; <span style="color: #7d5411">H1, H2, H3, H4, UPTCR and MLC are all open</span>.</p>
-    </div>
-  </div>
-</section>
-
-<section id="atlas" style="margin: 55.2px 0 0">
-  <div style="display: grid; grid-template-columns: 156px minmax(0, 1fr); gap: 36.8px; align-items: start">
-    <div style="position: sticky; top: 18.4px">
-      <div style="font-family: 'Cormorant Garamond', serif; font-size: 34px; font-weight: 400; color: #b68235; line-height: 1">VI</div>
-      <h2 style="font-size: 12px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; margin: 4.6px 0 0; font-family: 'Lora', serif">Atlas</h2>
-      <p class="mlc-math" style="margin: 9.2px 0 0; font-size: 13px; line-height: 1.55; color: #605d5d">Computed live by direct iteration of $f_c(z)=z^2+c$ at the parameters recorded in &#xA7;3. Each plate renders as it scrolls into view.</p>
-    </div>
-    <div>
-      <figure style="margin: 0">
-        <div style="border: 6px solid #eae9e9; outline: 1px solid rgba(32, 31, 29, 0.16); filter: sepia(0.2) saturate(0.85) contrast(1.04)">
-          <canvas id="plate-param" width="820" height="500" style="width: 100%; height: auto; display: block; background: #eae9e9"></canvas>
+  <main id="main-content">
+    <section class="hero" id="top">
+      <div class="hero-orbit hero-orbit-one" aria-hidden="true"></div>
+      <div class="hero-orbit hero-orbit-two" aria-hidden="true"></div>
+      <div class="shell hero-grid">
+        <div class="hero-copy">
+          <p class="eyebrow">Independent research program <span aria-hidden="true">/</span> <time datetime="2026-07-27">Source lock 2026-07-27</time></p>
+          <h1>A Marked-Width Reduction of Mandelbrot Local Connectivity</h1>
+          <p class="hero-deck">A public research program in quadratic dynamics, organized around a marked state space and a backward-transition reduction for mixed renormalization towers.</p>
+          <div class="status-row" aria-label="Research status">
+            <span class="status-open"><span class="status-dot" aria-hidden="true"></span>MLC remains open</span>
+            <span>Public research archive</span>
+          </div>
+          <div class="hero-actions">
+            <a class="button button-primary" href="./marked_width_mlc_manuscript.pdf">Open main manuscript <span aria-hidden="true">&rarr;</span></a>
+            <a class="button button-ghost" href="#papers">View the paper sequence</a>
+          </div>
         </div>
-        <figcaption style="margin: 9.2px 0 0; display: grid; grid-template-columns: 84px minmax(0, 1fr); gap: 13.8px; font-size: 13px; line-height: 1.6; color: #605d5d">
-          <span style="font-size: 10.5px; letter-spacing: 0.14em; text-transform: uppercase; color: #b68235; padding-top: 3px">Fig. 1</span>
-          <span>Finite escape-time rendering of the quadratic parameter plane. Markers A&#x2013;F are the parameters of Figure 3. An orientation map, not a certification of boundary membership or local connectivity.</span>
-        </figcaption>
-      </figure>
-      <div style="margin: 27.6px 0 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 13.8px">
-        <div style="border: 6px solid #eae9e9; outline: 1px solid rgba(32, 31, 29, 0.16); filter: sepia(0.2) saturate(0.85) contrast(1.04)">
-          <canvas id="plate-zoom0" width="320" height="240" style="width: 100%; height: auto; display: block; background: #eae9e9"></canvas>
-        </div>
-        <div style="border: 6px solid #eae9e9; outline: 1px solid rgba(32, 31, 29, 0.16); filter: sepia(0.2) saturate(0.85) contrast(1.04)">
-          <canvas id="plate-zoom1" width="320" height="240" style="width: 100%; height: auto; display: block; background: #eae9e9"></canvas>
-        </div>
-        <div style="border: 6px solid #eae9e9; outline: 1px solid rgba(32, 31, 29, 0.16); filter: sepia(0.2) saturate(0.85) contrast(1.04)">
-          <canvas id="plate-zoom2" width="320" height="240" style="width: 100%; height: auto; display: block; background: #eae9e9"></canvas>
-        </div>
-      </div>
-      <figcaption class="mlc-math" style="margin: 9.2px 0 0; display: grid; grid-template-columns: 84px minmax(0, 1fr); gap: 13.8px; font-size: 13px; line-height: 1.6; color: #605d5d">
-        <span style="font-size: 10.5px; letter-spacing: 0.14em; text-transform: uppercase; color: #b68235; padding-top: 3px">Fig. 2</span>
-        <span>Three windows centred at $c=-0.743643887037151+0.131825904205330\,i$, each frame marking the window of the next panel. The visible recurrence of fine structure motivates multiscale analysis and proves neither a renormalization theorem nor a uniform transition estimate.</span>
-      </figcaption>
-      <div style="margin: 27.6px 0 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 13.8px">
-        <figure style="margin: 0">
-          <div style="border: 5px solid #eae9e9; outline: 1px solid rgba(32, 31, 29, 0.16); filter: sepia(0.2) saturate(0.85) contrast(1.04)">
-            <canvas id="plate-julia-0" width="260" height="195" style="width: 100%; height: auto; display: block; background: #eae9e9"></canvas>
-          </div>
-          <figcaption style="margin: 4.6px 0 0; font-size: 11.5px; line-height: 1.5; color: #605d5d; font-feature-settings: 'tnum'"><span style="color: #b68235">A</span> Basilica &#xB7; c = &#x2212;1</figcaption>
-        </figure>
-        <figure style="margin: 0">
-          <div style="border: 5px solid #eae9e9; outline: 1px solid rgba(32, 31, 29, 0.16); filter: sepia(0.2) saturate(0.85) contrast(1.04)">
-            <canvas id="plate-julia-1" width="260" height="195" style="width: 100%; height: auto; display: block; background: #eae9e9"></canvas>
-          </div>
-          <figcaption style="margin: 4.6px 0 0; font-size: 11.5px; line-height: 1.5; color: #605d5d; font-feature-settings: 'tnum'"><span style="color: #b68235">B</span> Douady rabbit &#xB7; c&#xB3;+2c&#xB2;+c+1 = 0</figcaption>
-        </figure>
-        <figure style="margin: 0">
-          <div style="border: 5px solid #eae9e9; outline: 1px solid rgba(32, 31, 29, 0.16); filter: sepia(0.2) saturate(0.85) contrast(1.04)">
-            <canvas id="plate-julia-2" width="260" height="195" style="width: 100%; height: auto; display: block; background: #eae9e9"></canvas>
-          </div>
-          <figcaption style="margin: 4.6px 0 0; font-size: 11.5px; line-height: 1.5; color: #605d5d; font-feature-settings: 'tnum'"><span style="color: #b68235">C</span> Parabolic cusp &#xB7; c = 1/4</figcaption>
-        </figure>
-        <figure style="margin: 0">
-          <div style="border: 5px solid #eae9e9; outline: 1px solid rgba(32, 31, 29, 0.16); filter: sepia(0.2) saturate(0.85) contrast(1.04)">
-            <canvas id="plate-julia-3" width="260" height="195" style="width: 100%; height: auto; display: block; background: #eae9e9"></canvas>
-          </div>
-          <figcaption style="margin: 4.6px 0 0; font-size: 11.5px; line-height: 1.5; color: #605d5d; font-feature-settings: 'tnum'"><span style="color: #b68235">D</span> Golden-mean neutral &#xB7; c = &#x3B1; &#x2212; &#x3B1;&#xB2;</figcaption>
-        </figure>
-        <figure style="margin: 0">
-          <div style="border: 5px solid #eae9e9; outline: 1px solid rgba(32, 31, 29, 0.16); filter: sepia(0.2) saturate(0.85) contrast(1.04)">
-            <canvas id="plate-julia-4" width="260" height="195" style="width: 100%; height: auto; display: block; background: #eae9e9"></canvas>
-          </div>
-          <figcaption style="margin: 4.6px 0 0; font-size: 11.5px; line-height: 1.5; color: #605d5d; font-feature-settings: 'tnum'"><span style="color: #b68235">E</span> Feigenbaum &#xB7; c &#x2248; &#x2212;1.40115519</figcaption>
-        </figure>
-        <figure style="margin: 0">
-          <div style="border: 5px solid #eae9e9; outline: 1px solid rgba(32, 31, 29, 0.16); filter: sepia(0.2) saturate(0.85) contrast(1.04)">
-            <canvas id="plate-julia-5" width="260" height="195" style="width: 100%; height: auto; display: block; background: #eae9e9"></canvas>
-          </div>
-          <figcaption style="margin: 4.6px 0 0; font-size: 11.5px; line-height: 1.5; color: #605d5d; font-feature-settings: 'tnum'"><span style="color: #b68235">F</span> Misiurewicz &#xB7; c = i</figcaption>
-        </figure>
-      </div>
-      <figcaption class="mlc-math" style="margin: 9.2px 0 0; display: grid; grid-template-columns: 84px minmax(0, 1fr); gap: 13.8px; font-size: 13px; line-height: 1.6; color: #605d5d">
-        <span style="font-size: 10.5px; letter-spacing: 0.14em; text-transform: uppercase; color: #b68235; padding-top: 3px">Fig. 3</span>
-        <span>Dynamical-plane atlas in one common window $[-1.8,1.8]\times[-1.35,1.35]$; the light marker is the critical point $0$. For the neutral panel $\theta=(\sqrt5-1)/2$, $\lambda=e^{2\pi i\theta}$, $\alpha=\lambda/2$, $c_\theta=\alpha-\alpha^2$, so $f_{c_\theta}(\alpha)=\alpha$ and $f'_{c_\theta}(\alpha)=\lambda$. Dark pixels mean only that the sampled orbit did not escape before the cutoff: these plates are illustrations, never proof evidence (Warning 3.1).</span>
-      </figcaption>
-    </div>
-  </div>
-</section>
 
-<section id="ledger" style="margin: 55.2px 0 0">
-  <div style="display: grid; grid-template-columns: 156px minmax(0, 1fr); gap: 36.8px; align-items: start">
-    <div style="position: sticky; top: 18.4px">
-      <div style="font-family: 'Cormorant Garamond', serif; font-size: 34px; font-weight: 400; color: #b68235; line-height: 1">VII</div>
-      <h2 style="font-size: 12px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; margin: 4.6px 0 0; font-family: 'Lora', serif">Proof ledger</h2>
-      <p style="margin: 9.2px 0 0; font-size: 13px; line-height: 1.55; color: #605d5d">All 465 obligations of Appendix A. Search matches identifiers and statements; click a row for dependencies and its evidence anchor.</p>
-    </div>
-    <div>
-      <div style="display: flex; flex-wrap: wrap; gap: 9.2px; align-items: center; padding-bottom: 13.8px">
-        <input type="text" placeholder="Search identifiers and statements" value="{{ query }}" onInput="{{ onQuery }}" style="flex: 1 1 240px; min-width: 190px; min-height: 36px; padding: 6px 10px; font-family: 'Lora', serif; font-size: 14px; color: #201f1d; caret-color: #b68235; background: transparent; border: 0; border-bottom: 1px solid rgba(32, 31, 29, 0.16); outline: none" style-focus="border-bottom-color: #b68235" />
-        <div style="display: flex; gap: 4.6px; flex-wrap: wrap">
-          <sc-for list="{{ filters }}" as="f" hint-placeholder-count="4">
-            <sc-if value="{{ f.active }}" hint-placeholder-val="{{ false }}">
-              <button type="button" onClick="{{ f.onClick }}" style="min-height: 34px; padding: 4.6px 13.8px; border: 1px solid #b68235; border-radius: 4px; background: #fff3e4; font-family: 'Lora', serif; font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; cursor: pointer; color: #7d5411">{{ f.label }}</button>
-            </sc-if>
-            <sc-if value="{{ f.inactive }}" hint-placeholder-val="{{ true }}">
-              <button type="button" onClick="{{ f.onClick }}" style="min-height: 34px; padding: 4.6px 13.8px; border: 1px solid rgba(32, 31, 29, 0.16); border-radius: 4px; background: transparent; font-family: 'Lora', serif; font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; cursor: pointer; color: #444141" style-hover="background: #fff3e4; border-color: #b68235">{{ f.label }}</button>
-            </sc-if>
-          </sc-for>
-        </div>
-        <span style="font-size: 12px; color: #605d5d; font-feature-settings: 'tnum'">{{ resultLabel }}</span>
+        <figure class="hero-visual">
+          <img src="./research/mlc_unified/figures/mandelbrot_overview.png" width="2101" height="1954" alt="Mandelbrot parameter plane with six marked reference parameters" fetchpriority="high" decoding="async">
+          <figcaption><span>Figure 01</span>Mandelbrot parameter plane</figcaption>
+        </figure>
       </div>
-      <div style="display: grid; grid-template-columns: 96px minmax(0, 1fr); font-size: 10.5px; letter-spacing: 0.14em; text-transform: uppercase; color: #605d5d; padding: 9.2px 0; border-top: 1px solid #201f1d; border-bottom: 1px solid #201f1d">
-        <span>Status</span>
-        <span>Obligation</span>
+
+      <div class="shell hero-index" aria-label="Archive overview">
+        <div><span>Main manuscript</span><strong>214 pages</strong></div>
+        <div><span>Research sequence</span><strong>3 papers</strong></div>
+        <div><span>Current boundary</span><strong>Open problem</strong></div>
       </div>
-      <sc-for list="{{ rows }}" as="row" hint-placeholder-count="8">
-        <div onClick="{{ row.onClick }}" style="display: grid; grid-template-columns: 96px minmax(0, 1fr); padding: 13.8px 0; border-bottom: 1px solid rgba(32, 31, 29, 0.16); cursor: pointer; align-items: start" style-hover="background: rgba(32, 31, 29, 0.035)">
-          <span style="font-size: 10.5px; letter-spacing: 0.12em; text-transform: uppercase; padding-top: 4px; color: #7d5411">{{ row.openLabel }}<span style="color: #201f1d">{{ row.provedLabel }}</span><span style="color: #605d5d">{{ row.importedLabel }}</span></span>
+    </section>
+
+    <section class="section section-paper" id="manuscript">
+      <div class="shell">
+        <div class="section-heading">
           <div>
-            <div style="font-size: 12.5px; font-weight: 600; letter-spacing: 0.05em; line-height: 1.45; word-break: break-word">{{ row.id }}</div>
-            <p style="margin: 4.6px 0 0; font-size: 15px; line-height: 1.6; color: #2d2b2b; max-width: 92ch">{{ row.statement }}</p>
-            <sc-if value="{{ row.isOpen }}" hint-placeholder-val="{{ false }}">
-              <div style="margin: 9.2px 0 0; padding-left: 18.4px; border-left: 1px solid #b68235">
-                <div style="font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: #7d5411">Proof dependencies ({{ row.depCount }}) &#xB7; depended on by {{ row.dependents }}</div>
-                <p style="margin: 4.6px 0 0; font-size: 12.5px; line-height: 1.75; letter-spacing: 0.04em; word-break: break-word; color: #444141">{{ row.depsText }}</p>
-                <div style="font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: #7d5411; margin-top: 9.2px">Evidence</div>
-                <p style="margin: 4.6px 0 0; font-size: 12.5px; line-height: 1.6; letter-spacing: 0.04em; word-break: break-word; color: #444141">{{ row.evidence }}</p>
-              </div>
-            </sc-if>
+            <p class="section-kicker">Main manuscript</p>
+            <h2>The research architecture</h2>
           </div>
+          <p>The manuscript develops a source-locked reduction of the Mandelbrot local connectivity conjecture to a marked backward-transition theorem. The proposed state retains postcritical, prime-end, obstacle, and curve-family data; an unmarked continuum is not sufficient for the transition problem being studied.</p>
         </div>
-      </sc-for>
-      <div style="padding: 18.4px 0; display: flex; justify-content: center">
-        <button type="button" onClick="{{ onMore }}" style="min-height: 36px; padding: 6px 18.4px; border: 1px solid #b68235; border-radius: 4px; background: transparent; font-family: 'Lora', serif; font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; cursor: pointer; color: #7d5411" style-hover="background: #fff3e4">{{ moreLabel }}</button>
+
+        <article class="manuscript-card">
+          <div class="manuscript-copy">
+            <p class="document-label">Primary public manuscript <span>PDF</span></p>
+            <h3>A Marked-Width Reduction of Mandelbrot Local Connectivity</h3>
+            <p>The document separates proved finite modules, conditional reductions, computational diagnostics, and unresolved global obligations. It presents a research program and its current evidence boundary; it does not claim a proof of MLC.</p>
+            <div class="card-actions">
+              <a class="text-link" href="./marked_width_mlc_manuscript.pdf">Read the 214-page manuscript <span aria-hidden="true">&rarr;</span></a>
+              <a class="text-link text-link-muted" href="https://github.com/dovvnloading/loops-research-archive/blob/main/RESEARCH_MAP.md">Research map</a>
+            </div>
+          </div>
+          <dl class="manuscript-meta">
+            <div><dt>Author</dt><dd>Matthew Robert Wesney</dd></div>
+            <div><dt>Program</dt><dd>Quadratic dynamics</dd></div>
+            <div><dt>Status</dt><dd>Research manuscript in progress</dd></div>
+            <div><dt>Public format</dt><dd>Archival PDF</dd></div>
+          </dl>
+        </article>
+      </div>
+    </section>
+
+    <section class="section section-papers" id="papers">
+      <div class="shell">
+        <div class="section-heading section-heading-compact">
+          <div>
+            <p class="section-kicker">Paper sequence</p>
+            <h2>Three focused mathematical modules</h2>
+          </div>
+          <p>Localization, rooted-end structure, and protected planar carriers form the current paper-level sequence.</p>
+        </div>
+
+        <div class="paper-grid">
+          <article class="paper-card">
+            <div class="paper-topline">
+              <span class="paper-number">01</span>
+              <span class="paper-status status-released">Released v1.0.1</span>
+            </div>
+            <p class="paper-domain">Canonical localization</p>
+            <h3>Forced Noninjectivity and the Sheet Kernel at Primitive Canonical Localization Seeds</h3>
+            <p>Constructs the canonical localization obstruction at primitive seeds, resolves covering-versus-embedding issues, and identifies an infinite sheet kernel.</p>
+            <div class="paper-footer">
+              <span>37 pages</span>
+              <a href="./papers/paper1_canonical_localization/paper1_forced_noninjectivity_sheet_kernel_v1.0.1.pdf" aria-label="Open Paper 1 PDF">Open PDF <span aria-hidden="true">&rarr;</span></a>
+            </div>
+          </article>
+
+          <article class="paper-card">
+            <div class="paper-topline">
+              <span class="paper-number">02</span>
+              <span class="paper-status status-released">Released v1.0.1</span>
+            </div>
+            <p class="paper-domain">Rooted-end model</p>
+            <h3>The Direct-Decoration Rooted-End Compactification</h3>
+            <p>Builds an exact one-scale binary rooted-end compactification for direct decorations, with component-quotient and replacement/access results.</p>
+            <div class="paper-footer">
+              <span>20 pages</span>
+              <a href="./papers/paper2_rooted_end_compactification/paper2_direct_decoration_rooted_end_compactification_v1.0.1.pdf" aria-label="Open Paper 2 PDF">Open PDF <span aria-hidden="true">&rarr;</span></a>
+            </div>
+          </article>
+
+          <article class="paper-card paper-card-active">
+            <div class="paper-topline">
+              <span class="paper-number">03</span>
+              <span class="paper-status status-working">Active working draft</span>
+            </div>
+            <p class="paper-domain">Protected carriers</p>
+            <h3>Protected Planar Carriers and Access-Preserving Connector Criteria</h3>
+            <p>Develops finite planar-carrier criteria intended to preserve frozen obstacles and selected prime-end accesses. The current public snapshot is Draft I.</p>
+            <div class="paper-footer">
+              <span>79 pages</span>
+              <a href="./papers/paper3_protected_carriers/paper3_draft1.pdf" aria-label="Open Paper 3 working draft PDF">Open draft <span aria-hidden="true">&rarr;</span></a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-atlas" id="visuals">
+      <div class="shell">
+        <div class="section-heading section-heading-dark">
+          <div>
+            <p class="section-kicker">Visual atlas</p>
+            <h2>Parameter space and dynamical space</h2>
+          </div>
+          <p>Selected computational figures from the public research record. Open any panel for the full-resolution artifact.</p>
+        </div>
+
+        <div class="atlas-grid">
+          <figure class="atlas-card">
+            <a href="./research/mlc_unified/figures/mandelbrot_multiscale_zoom.png" aria-label="Open full-resolution Mandelbrot multiscale zoom">
+              <span class="image-stage"><img src="./research/mlc_unified/figures/mandelbrot_multiscale_zoom.png" width="2863" height="1247" alt="Three nested Mandelbrot parameter-plane views from global scale to a deep boundary scale" loading="lazy" decoding="async"></span>
+            </a>
+            <figcaption><span>01 / Multiscale structure</span>Nested windows near Seahorse Valley.</figcaption>
+          </figure>
+
+          <figure class="atlas-card">
+            <a href="./research/mlc_unified/figures/mandelbrot_overview.png" aria-label="Open full-resolution Mandelbrot parameter plane overview">
+              <span class="image-stage"><img src="./research/mlc_unified/figures/mandelbrot_overview.png" width="2101" height="1954" alt="Mandelbrot parameter plane with labeled Basilica, rabbit, cusp, Siegel, Feigenbaum, and Misiurewicz parameters" loading="lazy" decoding="async"></span>
+            </a>
+            <figcaption><span>02 / Parameter plane</span>Six marked reference locations.</figcaption>
+          </figure>
+
+          <figure class="atlas-card">
+            <a href="./research/mlc_unified/figures/julia_dynamical_atlas.png" aria-label="Open full-resolution quadratic Julia-set atlas">
+              <span class="image-stage"><img src="./research/mlc_unified/figures/julia_dynamical_atlas.png" width="2737" height="2001" alt="Atlas of six quadratic Julia sets including Basilica, rabbit, cusp, Siegel, Feigenbaum, and Misiurewicz examples" loading="lazy" decoding="async"></span>
+            </a>
+            <figcaption><span>03 / Dynamical atlas</span>Six representative quadratic Julia sets.</figcaption>
+          </figure>
+
+          <figure class="atlas-card">
+            <a href="./research/mlc_unified/figures/siegel_critical_orbit.png" aria-label="Open full-resolution golden-mean Siegel critical-orbit figure">
+              <span class="image-stage"><img src="./research/mlc_unified/figures/siegel_critical_orbit.png" width="2008" height="2160" alt="Golden-mean Siegel Julia set with the critical orbit and neutral fixed point marked" loading="lazy" decoding="async"></span>
+            </a>
+            <figcaption><span>04 / Siegel dynamics</span>Critical-orbit geometry at golden mean.</figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <section class="section research-boundary" aria-labelledby="boundary-title">
+      <div class="shell boundary-grid">
+        <p class="section-kicker">Research boundary</p>
+        <div>
+          <h2 id="boundary-title">The conjecture is not claimed solved.</h2>
+          <p>Mandelbrot local connectivity remains open. This archive publishes finite, conditional, and computational contributions at their stated scope, with dependencies and unresolved obligations kept explicit in the manuscript and research map.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="shell footer-grid">
+      <div class="stewardship">
+        <p class="section-kicker">Project authorship and stewardship</p>
+        <p><strong>Matthew Robert Wesney</strong> is the project author, research director, and orchestrator. The work was developed through sustained human&ndash;AI collaboration: <strong>Anthropic (Fable 5 / Opus 5)</strong> and <strong>OpenAI (GPT-5.6 Sol)</strong> contributed substantially to adversarial testing, computational and code-assisted exploration, proof-structure analysis, documentation, and editorial production. Wesney set the research direction, selected and integrated contributions, and retains final responsibility for the public claims.</p>
+      </div>
+      <div class="footer-links" aria-label="Archive links">
+        <a href="./marked_width_mlc_manuscript.pdf">Main PDF</a>
+        <a href="https://github.com/dovvnloading/loops-research-archive/blob/main/RESEARCH_MAP.md">Research map</a>
+        <a href="https://github.com/dovvnloading/loops-research-archive/blob/main/CITATION.cff">Cite</a>
+        <a href="https://github.com/dovvnloading/loops-research-archive">Repository</a>
       </div>
     </div>
-  </div>
-</section>
-
-<section id="context" style="margin: 55.2px 0 0; display: grid; grid-template-columns: 156px minmax(0, 1fr); gap: 36.8px; align-items: start">
-  <div style="position: sticky; top: 18.4px">
-    <div style="font-family: 'Cormorant Garamond', serif; font-size: 34px; font-weight: 400; color: #b68235; line-height: 1">VIII</div>
-    <h2 style="font-size: 12px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; margin: 4.6px 0 0; font-family: 'Lora', serif">Context</h2>
-    <p style="margin: 9.2px 0 0; font-size: 13px; line-height: 1.55; color: #605d5d">Statements below are from the cited sources; links go to the primary source.</p>
-  </div>
-  <div class="mlc-math" style="max-width: 68ch">
-    <div style="border-top: 1px solid #201f1d; padding: 13.8px 0; display: grid; grid-template-columns: 88px minmax(0, 1fr); gap: 18.4px">
-      <span style="font-size: 12px; color: #b68235; letter-spacing: 0.06em; font-feature-settings: 'tnum'; padding-top: 4px">1985</span>
-      <div>
-        <h3 style="font-family: 'Cormorant Garamond', serif; font-size: 22px; font-weight: 600; margin: 0 0 4.6px">Douady&#x2013;Hubbard pose MLC</h3>
-        <p style="margin: 0; font-size: 15px; line-height: 1.7; color: #2d2b2b; text-align: justify; hyphens: auto">The conjecture that $\mathcal{M}$ is locally connected; it would imply a precise topological model for $\mathcal{M}$ and the Fatou conjecture on density of hyperbolicity. The polynomial-like external construction of <a href="http://www.numdam.org/item/ASENS_1985_4_18_2_287_0/">Douady&#x2013;Hubbard</a> is imported here as Theorem 2.5.</p>
-      </div>
+    <div class="shell footer-base">
+      <span>&copy; 2026 Matthew Robert Wesney</span>
+      <span>Public research archive</span>
     </div>
-    <div style="border-top: 1px solid rgba(32, 31, 29, 0.16); padding: 13.8px 0; display: grid; grid-template-columns: 88px minmax(0, 1fr); gap: 18.4px">
-      <span style="font-size: 12px; color: #b68235; letter-spacing: 0.06em; font-feature-settings: 'tnum'; padding-top: 4px">c. 1990</span>
-      <div>
-        <h3 style="font-family: 'Cormorant Garamond', serif; font-size: 22px; font-weight: 600; margin: 0 0 4.6px">Yoccoz: everything not infinitely renormalizable</h3>
-        <p style="margin: 0; font-size: 15px; line-height: 1.7; color: #2d2b2b; text-align: justify; hyphens: auto">MLC at every parameter that is not infinitely quadratic-like renormalizable, written up by Hubbard in 1993 and imported here as Theorem 2.1. This tied the problem to quadratic-like renormalization theory and left the infinitely renormalizable side open.</p>
-      </div>
-    </div>
-    <div style="border-top: 1px solid rgba(32, 31, 29, 0.16); padding: 13.8px 0; display: grid; grid-template-columns: 88px minmax(0, 1fr); gap: 18.4px">
-      <span style="font-size: 12px; color: #b68235; letter-spacing: 0.06em; font-feature-settings: 'tnum'; padding-top: 4px">1997&#x2013;2009</span>
-      <div>
-        <h3 style="font-family: 'Cormorant Garamond', serif; font-size: 22px; font-weight: 600; margin: 0 0 4.6px">A priori bounds: Lyubich, Kahn, Kahn&#x2013;Lyubich</h3>
-        <p style="margin: 0; font-size: 15px; line-height: 1.7; color: #2d2b2b; text-align: justify; hyphens: auto">Lyubich reduced MLC, under a secondary limbs condition, to a priori bounds; <a href="https://arxiv.org/abs/math/0609045">Kahn (2006)</a> proved bounds at all parameters of bounded primitive type, and the <a href="https://arxiv.org/abs/math/0609046">Decorations</a> and <a href="https://arxiv.org/abs/math/0505194">unicritical local connectivity</a> papers built the near-degenerate machinery that has dominated the field since.</p>
-      </div>
-    </div>
-    <div style="border-top: 1px solid rgba(32, 31, 29, 0.16); padding: 13.8px 0; display: grid; grid-template-columns: 88px minmax(0, 1fr); gap: 18.4px">
-      <span style="font-size: 12px; color: #b68235; letter-spacing: 0.06em; font-feature-settings: 'tnum'; padding-top: 4px">2022&#x2013;2025</span>
-      <div>
-        <h3 style="font-family: 'Cormorant Garamond', serif; font-size: 22px; font-weight: 600; margin: 0 0 4.6px">Satellite side and Feigenbaum points</h3>
-        <p style="margin: 0; font-size: 15px; line-height: 1.7; color: #2d2b2b; text-align: justify; hyphens: auto"><a href="https://arxiv.org/abs/2309.02107">Dudko&#x2013;Lyubich (2023)</a> proved a priori bounds for Feigenbaum quadratics of bounded type, giving MLC at the classical period-doubling parameter and the complex tripling renormalizations. <a href="https://arxiv.org/abs/2205.03157">Blokh&#x2013;Levin&#x2013;Oversteegen&#x2013;Timorin (2022)</a> supplied the satellite root-annulus upper bound this manuscript uses to rule out any uniform scalar root-modulus coordinate.</p>
-      </div>
-    </div>
-    <div style="border-top: 1px solid rgba(32, 31, 29, 0.16); padding: 13.8px 0; display: grid; grid-template-columns: 88px minmax(0, 1fr); gap: 18.4px">
-      <span style="font-size: 12px; color: #b68235; letter-spacing: 0.06em; font-feature-settings: 'tnum'; padding-top: 4px">2026</span>
-      <div>
-        <h3 style="font-family: 'Cormorant Garamond', serif; font-size: 22px; font-weight: 600; margin: 0 0 4.6px">KKL: parabolically bounded primitive renormalization</h3>
-        <p style="margin: 0; font-size: 15px; line-height: 1.7; color: #2d2b2b; text-align: justify; hyphens: auto">Kahn, Kapiamba and Lyubich prove a priori bounds and MLC for a class of primitive parameters that can approach the cusp, developing the Thin-Thick Decomposition, the Value Calculus, the Wanderers Theorem and the Wave Lemma (<a href="https://arxiv.org/abs/2606.27272">arXiv:2606.27272</a>). This manuscript's source lock, imports and corrections are stated against that text and <a href="https://arxiv.org/abs/2512.24171">Dudko's survey</a>.</p>
-      </div>
-    </div>
-    <div style="border-top: 1px solid rgba(32, 31, 29, 0.16); border-bottom: 1px solid #201f1d; padding: 13.8px 0; display: grid; grid-template-columns: 88px minmax(0, 1fr); gap: 18.4px">
-      <span style="font-size: 12px; color: #7d5411; letter-spacing: 0.06em; padding-top: 4px">This work</span>
-      <div>
-        <h3 style="font-family: 'Cormorant Garamond', serif; font-size: 22px; font-weight: 600; margin: 0 0 4.6px">A marked-width reduction</h3>
-        <p style="margin: 0; font-size: 15px; line-height: 1.7; color: #2d2b2b; text-align: justify; hyphens: auto">Reduces MLC to a marked backward transition theorem for mixed towers, proves the finite root-pullback and attachment calculus, closes the relative-continuation gate, and records exactly which construction, transition, compactness and rigidity statements remain open. MLC itself is untouched.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section id="cite" style="margin: 55.2px 0 0; display: grid; grid-template-columns: 156px minmax(0, 1fr); gap: 36.8px; align-items: start">
-  <div style="position: sticky; top: 18.4px">
-    <div style="font-family: 'Cormorant Garamond', serif; font-size: 34px; font-weight: 400; color: #b68235; line-height: 1">IX</div>
-    <h2 style="font-size: 12px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; margin: 4.6px 0 0; font-family: 'Lora', serif">Citation</h2>
-  </div>
-  <div style="max-width: 68ch">
-    <div style="display: flex; justify-content: space-between; align-items: center; border-top: 1px solid #201f1d; padding: 9.2px 0">
-      <span style="font-size: 10.5px; letter-spacing: 0.14em; text-transform: uppercase; color: #605d5d">BibTeX</span>
-      <button type="button" onClick="{{ onCopy }}" style="min-height: 32px; padding: 4.6px 13.8px; border: 1px solid #b68235; border-radius: 4px; background: transparent; font-family: 'Lora', serif; font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; cursor: pointer; color: #7d5411" style-hover="background: #fff3e4">{{ copyLabel }}</button>
-    </div>
-    <pre id="bibtex" style="margin: 0; padding: 13.8px 0 0; border-top: 1px solid rgba(32, 31, 29, 0.16); overflow-x: auto; font-family: 'Lora', serif; font-size: 13.5px; line-height: 1.85; letter-spacing: 0.02em; color: #201f1d; white-space: pre-wrap">@misc{wesney2026markedwidth,
-  author       = {Wesney, Matthew Robert},
-  title        = {A Marked-Width Reduction of Mandelbrot Local Connectivity},
-  year         = {2026},
-  note         = {Research manuscript in progress; source lock 2026-07-27.
-                  Conditional reduction only: MLC is not claimed.},
-  howpublished = {\url{https://github.com/dovvnloading/loops-research-archive}}
-}</pre>
-  </div>
-</section>
-
-<section id="contribute" class="contribution-panel section-rule" aria-labelledby="contribute-heading">
-  <div class="section-index">
-    <div class="section-index__number">XI</div>
-    <h2 id="contribute-heading">Contribute</h2>
-    <p>Proofs, counterexamples, source audits, computations, and precise exposition are all first-class research contributions.</p>
-  </div>
-  <div>
-    <p class="section-lede">The highest-value work names an exact theorem or ledger ID, checks every hypothesis, identifies dependency changes, and states the result boundary. Public issues are structured for mathematical review.</p>
-    <div class="contribution-grid">
-      <article class="contribution-card"><h3>Proof or repair</h3><p>Close a declared obligation, repair the first unsupported inference, or prove a sharply stated conditional subcase.</p></article>
-      <article class="contribution-card"><h3>Counterexample</h3><p>Verify every advertised hypothesis, isolate the failed conclusion, and propose the strongest surviving formulation.</p></article>
-      <article class="contribution-card"><h3>Source audit</h3><p>Check theorem-level attribution, hypotheses, orientation, normalization, quantifiers, and downstream use.</p></article>
-      <article class="contribution-card"><h3>Reproducible diagnostic</h3><p>Supply code, parameters, precision, machine-readable output, and a proof-safe interpretation of the result.</p></article>
-    </div>
-    <div class="contribution-cta"><a class="button-link" href="https://github.com/dovvnloading/loops-research-archive/blob/main/CONTRIBUTING.md">Contribution standard</a><a href="https://github.com/dovvnloading/loops-research-archive/issues/new/choose">Open a research issue</a><a href="./ledger.json">Read the machine ledger</a></div>
-  </div>
-</section>
-<section id="refs" style="margin: 55.2px 0 0; display: grid; grid-template-columns: 156px minmax(0, 1fr); gap: 36.8px; align-items: start">
-  <div>
-    <h2 style="font-size: 12px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; margin: 0; font-family: 'Lora', serif">References</h2>
-  </div>
-  <ol style="margin: 0; padding: 0; list-style: none; display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 9.2px 36.8px; border-top: 1px solid #201f1d; padding-top: 13.8px">
-    <li style="font-size: 14px; line-height: 1.6; display: grid; grid-template-columns: 68px minmax(0, 1fr); gap: 9.2px"><span style="font-size: 11.5px; color: #605d5d; letter-spacing: 0.04em">[BLOT22]</span><span>Blokh, Levin, Oversteegen, Timorin. <em>Maps with no a priori bounds</em>, 2022. <a href="https://arxiv.org/abs/2205.03157">arXiv:2205.03157</a></span></li>
-    <li style="font-size: 14px; line-height: 1.6; display: grid; grid-template-columns: 68px minmax(0, 1fr); gap: 9.2px"><span style="font-size: 11.5px; color: #605d5d; letter-spacing: 0.04em">[CS15]</span><span>Cheraghi, Shishikura. <em>Satellite renormalization of quadratic polynomials</em>, 2015. <a href="https://arxiv.org/abs/1509.07843">arXiv:1509.07843</a></span></li>
-    <li style="font-size: 14px; line-height: 1.6; display: grid; grid-template-columns: 68px minmax(0, 1fr); gap: 9.2px"><span style="font-size: 11.5px; color: #605d5d; letter-spacing: 0.04em">[DH85]</span><span>Douady, Hubbard. <em>On the dynamics of polynomial-like mappings</em>. Ann. Sci. &#xC9;NS 18(2):287&#x2013;343. <a href="http://www.numdam.org/item/ASENS_1985_4_18_2_287_0/">numdam</a></span></li>
-    <li style="font-size: 14px; line-height: 1.6; display: grid; grid-template-columns: 68px minmax(0, 1fr); gap: 9.2px"><span style="font-size: 11.5px; color: #605d5d; letter-spacing: 0.04em">[DL22]</span><span>Dudko, Lyubich. <em>Uniform a priori bounds for neutral renormalization</em>, 2022. <a href="https://arxiv.org/abs/2210.09280">arXiv:2210.09280</a></span></li>
-    <li style="font-size: 14px; line-height: 1.6; display: grid; grid-template-columns: 68px minmax(0, 1fr); gap: 9.2px"><span style="font-size: 11.5px; color: #605d5d; letter-spacing: 0.04em">[DL23]</span><span>Dudko, Lyubich. <em>MLC at Feigenbaum points</em>, 2023. <a href="https://arxiv.org/abs/2309.02107">arXiv:2309.02107</a></span></li>
-    <li style="font-size: 14px; line-height: 1.6; display: grid; grid-template-columns: 68px minmax(0, 1fr); gap: 9.2px"><span style="font-size: 11.5px; color: #605d5d; letter-spacing: 0.04em">[DLL25]</span><span>Dudko, Luo, Lyubich. <em>Uniform a priori bounds for neutral renormalization II</em>, 2025. <a href="https://arxiv.org/abs/2509.23031">arXiv:2509.23031</a></span></li>
-    <li style="font-size: 14px; line-height: 1.6; display: grid; grid-template-columns: 68px minmax(0, 1fr); gap: 9.2px"><span style="font-size: 11.5px; color: #605d5d; letter-spacing: 0.04em">[Dud25]</span><span>Dudko. <em>On the MLC conjecture and the renormalization theory in complex dynamics</em>, 2025. <a href="https://arxiv.org/abs/2512.24171">arXiv:2512.24171</a></span></li>
-    <li style="font-size: 14px; line-height: 1.6; display: grid; grid-template-columns: 68px minmax(0, 1fr); gap: 9.2px"><span style="font-size: 11.5px; color: #605d5d; letter-spacing: 0.04em">[Hat02]</span><span>Hatcher. <em>Algebraic Topology</em>, CUP 2002. Ch. 3, pp. 255&#x2013;257 (Alexander duality for arbitrary compacta).</span></li>
-    <li style="font-size: 14px; line-height: 1.6; display: grid; grid-template-columns: 68px minmax(0, 1fr); gap: 9.2px"><span style="font-size: 11.5px; color: #605d5d; letter-spacing: 0.04em">[Hub93]</span><span>Hubbard. <em>Local connectivity of Julia sets and bifurcation loci: three theorems of J.-C. Yoccoz</em>, pp. 467&#x2013;511.</span></li>
-    <li style="font-size: 14px; line-height: 1.6; display: grid; grid-template-columns: 68px minmax(0, 1fr); gap: 9.2px"><span style="font-size: 11.5px; color: #605d5d; letter-spacing: 0.04em">[Kah06]</span><span>Kahn. <em>A priori bounds&#x2026; I. Bounded primitive combinatorics</em>, 2006. <a href="https://arxiv.org/abs/math/0609045">arXiv:math/0609045</a></span></li>
-    <li style="font-size: 14px; line-height: 1.6; display: grid; grid-template-columns: 68px minmax(0, 1fr); gap: 9.2px"><span style="font-size: 11.5px; color: #605d5d; letter-spacing: 0.04em">[Kiw04]</span><span>Kiwi. <em>Real laminations and the topological dynamics of complex polynomials</em>. Adv. Math. 184(2):207&#x2013;267.</span></li>
-    <li style="font-size: 14px; line-height: 1.6; display: grid; grid-template-columns: 68px minmax(0, 1fr); gap: 9.2px"><span style="font-size: 11.5px; color: #605d5d; letter-spacing: 0.04em">[KKL26]</span><span>Kahn, Kapiamba, Lyubich. <em>MLC for parabolically bounded primitive renormalization</em>, 2026. <a href="https://arxiv.org/abs/2606.27272">arXiv:2606.27272</a></span></li>
-    <li style="font-size: 14px; line-height: 1.6; display: grid; grid-template-columns: 68px minmax(0, 1fr); gap: 9.2px"><span style="font-size: 11.5px; color: #605d5d; letter-spacing: 0.04em">[KL08]</span><span>Kahn, Lyubich. <em>A priori bounds&#x2026; II. Decorations</em>. Ann. Sci. &#xC9;NS 41(1):57&#x2013;84. <a href="https://arxiv.org/abs/math/0609046">arXiv:math/0609046</a></span></li>
-    <li style="font-size: 14px; line-height: 1.6; display: grid; grid-template-columns: 68px minmax(0, 1fr); gap: 9.2px"><span style="font-size: 11.5px; color: #605d5d; letter-spacing: 0.04em">[KL09]</span><span>Kahn, Lyubich. <em>Local connectivity of Julia sets for unicritical polynomials</em>. Ann. Math. 170(1):413&#x2013;426. <a href="https://arxiv.org/abs/math/0505194">arXiv:math/0505194</a></span></li>
-    <li style="font-size: 14px; line-height: 1.6; display: grid; grid-template-columns: 68px minmax(0, 1fr); gap: 9.2px"><span style="font-size: 11.5px; color: #605d5d; letter-spacing: 0.04em">[KL26]</span><span>Kahn, Lyubich. <em>A priori bounds&#x2026; IV. Elephant Eyes</em>, 2026. <a href="https://arxiv.org/abs/2601.21905">arXiv:2601.21905</a></span></li>
-    <li style="font-size: 14px; line-height: 1.6; display: grid; grid-template-columns: 68px minmax(0, 1fr); gap: 9.2px"><span style="font-size: 11.5px; color: #605d5d; letter-spacing: 0.04em">[Lev08]</span><span>Levin. <em>Rigidity and non local connectivity of Julia sets of some quadratic polynomials</em>, 2008. <a href="https://arxiv.org/abs/0710.4406">arXiv:0710.4406</a></span></li>
-    <li style="font-size: 14px; line-height: 1.6; display: grid; grid-template-columns: 68px minmax(0, 1fr); gap: 9.2px"><span style="font-size: 11.5px; color: #605d5d; letter-spacing: 0.04em">[Lyu97]</span><span>Lyubich. <em>Dynamics of quadratic polynomials, I&#x2013;II</em>. Acta Math. 178:185&#x2013;297.</span></li>
-    <li style="font-size: 14px; line-height: 1.6; display: grid; grid-template-columns: 68px minmax(0, 1fr); gap: 9.2px"><span style="font-size: 11.5px; color: #605d5d; letter-spacing: 0.04em">[Gey16]</span><span>Geyer. <em>Complex dynamics</em>, 2016. Graduate course notes, Montana State University.</span></li>
-  </ol>
-</section>
-
-</main>
-
-<footer class="site-footer" style="margin: 55.2px 0 0; border-top: 1px solid #201f1d; padding: 18.4px 0 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 18.4px; font-size: 13.5px; line-height: 1.65; color: #605d5d">
-  <div>
-    <p style="margin: 0 0 4.6px; color: #201f1d">Matthew Robert Wesney</p>
-    <p style="margin: 0"><a href="https://github.com/dovvnloading/loops-research-archive">github.com/dovvnloading/loops-research-archive</a></p>
-  </div>
-  <div>
-    <p style="margin: 0"><a href="https://github.com/dovvnloading/loops-research-archive/blob/main/RESEARCH_MAP.md">Research map</a> &middot; <a href="https://github.com/dovvnloading/loops-research-archive/blob/main/CONTRIBUTING.md">Contribution standard</a> &middot; <a href="https://github.com/dovvnloading/loops-research-archive/blob/main/CITATION.cff">Citation metadata</a> &middot; <a href="https://github.com/dovvnloading/loops-research-archive/blob/main/LICENSE">CC0 1.0</a></p>
-  </div>
-  <div>
-    <p style="margin: 0">Research directed by Matthew Robert Wesney, with substantial AI-assisted adversarial, computational, and editorial work from Anthropic (Fable 5 / Opus 5) and OpenAI (GPT-5.6 Sol). UPTCR, VAAPC-I, and MLC remain open.</p>
-  </div>
-</footer>
-
-</div>
-</x-dc>
-<script type="text/x-dc" data-dc-script data-props="{&quot;plateTone&quot;: {&quot;editor&quot;: &quot;enum&quot;, &quot;options&quot;: [&quot;ink&quot;, &quot;gold&quot;], &quot;default&quot;: &quot;ink&quot;, &quot;tsType&quot;: &quot;'ink' | 'gold'&quot;, &quot;section&quot;: &quot;Atlas&quot;}, &quot;atlasDetail&quot;: {&quot;editor&quot;: &quot;range&quot;, &quot;min&quot;: 0.5, &quot;max&quot;: 1.5, &quot;step&quot;: 0.25, &quot;default&quot;: 1, &quot;tsType&quot;: &quot;number&quot;, &quot;section&quot;: &quot;Atlas&quot;, &quot;unit&quot;: &quot;?&quot;}}">
-// Classical token literals used by the canvas plates (the system has no canvas layer):
-// bg #f3f2f2, surface #eae9e9, ink #201f1d, neutral-900 #2d2b2b, accent #b68235.
-const TONES = {
-  ink: { lo: [243, 242, 242], hi: [32, 31, 29], set: [45, 43, 43] },
-  gold: { lo: [248, 244, 244], hi: [58, 39, 13], set: [45, 43, 43] }
-};
-
-class Component extends DCLogic {
-  state = { query: '', status: 'all', limit: 40, expanded: null, copied: false };
-
-  get ledger() {
-    return (typeof window !== 'undefined' && window.MLC_LEDGER) || { obligations: [] };
-  }
-
-  componentDidMount() {
-    this.jobs = this.buildJobs();
-    this.pending = [];
-    this.observePlates();
-    this.pollTypeset(0);
-  }
-
-  componentWillUnmount() {
-    this.dead = true;
-    if (this.observer) this.observer.disconnect();
-    if (this.typesetTimer) clearTimeout(this.typesetTimer);
-  }
-
-  // math: typeset once, scoped to .mlc-math containers, never from componentDidUpdate
-  pollTypeset(tries) {
-    if (this.dead || this.mathDone) return;
-    if (window.renderMathInElement) {
-      this.mathDone = true;
-      const opts = {
-        delimiters: [
-          { left: '$$', right: '$$', display: true },
-          { left: '$', right: '$', display: false }
-        ],
-        throwOnError: false
-      };
-      document.querySelectorAll('.mlc-math').forEach(el => {
-        try { window.renderMathInElement(el, opts); } catch (e) {}
-      });
-      return;
-    }
-    if (tries > 80) return;
-    this.typesetTimer = setTimeout(() => this.pollTypeset(tries + 1), 120);
-  }
-
-  buildJobs() {
-    const detail = Number(this.props.atlasDetail ?? 1);
-    const theta = (Math.sqrt(5) - 1) / 2;
-    const lam = { re: Math.cos(2 * Math.PI * theta), im: Math.sin(2 * Math.PI * theta) };
-    const a = { re: lam.re / 2, im: lam.im / 2 };
-    const cNeutral = { re: a.re - (a.re * a.re - a.im * a.im), im: a.im - 2 * a.re * a.im };
-    const rabbit = this.rabbitRoot();
-    const zc = { re: -0.743643887037151, im: 0.131825904205330 };
-    const jw = { cx: 0, cy: 0, w: 3.6 };
-    const it = n => Math.max(60, Math.round(n * detail));
-    return [
-      { id: 'plate-param', mode: 'param', cx: -0.62, cy: 0, w: 3.3, iter: it(240), markers: [
-        { re: -1, im: 0, label: 'A' },
-        { re: rabbit.re, im: rabbit.im, label: 'B' },
-        { re: 0.25, im: 0, label: 'C' },
-        { re: cNeutral.re, im: cNeutral.im, label: 'D' },
-        { re: -1.4011551890920506, im: 0, label: 'E' },
-        { re: 0, im: 1, label: 'F' }
-      ] },
-      { id: 'plate-zoom0', mode: 'param', cx: zc.re, cy: zc.im, w: 0.06, iter: it(360), frame: 0.006 },
-      { id: 'plate-zoom1', mode: 'param', cx: zc.re, cy: zc.im, w: 0.006, iter: it(600), frame: 0.0006 },
-      { id: 'plate-zoom2', mode: 'param', cx: zc.re, cy: zc.im, w: 0.0006, iter: it(900) },
-      { id: 'plate-julia-0', mode: 'julia', c: { re: -1, im: 0 }, iter: it(140), ...jw },
-      { id: 'plate-julia-1', mode: 'julia', c: rabbit, iter: it(140), ...jw },
-      { id: 'plate-julia-2', mode: 'julia', c: { re: 0.25, im: 0 }, iter: it(220), ...jw },
-      { id: 'plate-julia-3', mode: 'julia', c: cNeutral, iter: it(260), ...jw },
-      { id: 'plate-julia-4', mode: 'julia', c: { re: -1.4011551890920506, im: 0 }, iter: it(200), ...jw },
-      { id: 'plate-julia-5', mode: 'julia', c: { re: 0, im: 1 }, iter: it(140), ...jw }
-    ];
-  }
-
-  observePlates() {
-    if (this.observer) this.observer.disconnect();
-    this.queued = {};
-    const byId = {};
-    this.jobs.forEach(j => { byId[j.id] = j; });
-    if (!('IntersectionObserver' in window)) {
-      this.pending = this.jobs.slice();
-      return this.pump();
-    }
-    this.observer = new IntersectionObserver(entries => {
-      let added = false;
-      for (const e of entries) {
-        if (!e.isIntersecting) continue;
-        const job = byId[e.target.id];
-        if (!job || this.queued[job.id]) continue;
-        this.queued[job.id] = true;
-        this.pending.push(job);
-        added = true;
-        this.observer.unobserve(e.target);
-      }
-      if (added) this.pump();
-    }, { rootMargin: '320px 0px' });
-    this.jobs.forEach(j => {
-      const el = document.getElementById(j.id);
-      if (el) this.observer.observe(el);
-    });
-  }
-
-  pump() {
-    if (this.dead || this.busy) return;
-    const job = this.pending.shift();
-    if (!job) return;
-    this.busy = true;
-    this.paint(job, 4, () => {
-      this.paint(job, 1, () => {
-        this.busy = false;
-        requestAnimationFrame(() => this.pump());
-      });
-    });
-  }
-
-  rabbitRoot() {
-    // nonreal root with positive imaginary part of c^3 + 2c^2 + c + 1 = 0
-    let re = -0.1, im = 0.6;
-    for (let k = 0; k < 200; k++) {
-      const r2 = re * re - im * im, i2 = 2 * re * im;
-      const r3 = r2 * re - i2 * im, i3 = r2 * im + i2 * re;
-      const fr = r3 + 2 * r2 + re + 1, fi = i3 + 2 * i2 + im;
-      const dr = 3 * r2 + 4 * re + 1, di = 3 * i2 + 4 * im;
-      const d = dr * dr + di * di;
-      if (d === 0) break;
-      const sr = (fr * dr + fi * di) / d, si = (fi * dr - fr * di) / d;
-      re -= sr; im -= si;
-      if (Math.abs(sr) + Math.abs(si) < 1e-15) break;
-    }
-    return { re, im };
-  }
-
-  paint(job, step, done) {
-    const canvas = document.getElementById(job.id);
-    if (!canvas) return done();
-    const ctx = canvas.getContext('2d', { alpha: false });
-    const W = canvas.width, H = canvas.height;
-    const tone = TONES[this.props.plateTone] || TONES.ink;
-    const scale = job.w / W;
-    const x0 = job.cx - job.w / 2;
-    const y0 = job.cy + (H * scale) / 2;
-    const maxIter = step > 1 ? Math.max(40, Math.round(job.iter / 3)) : job.iter;
-    const lo = tone.lo, hi = tone.hi, set = tone.set;
-    // one ImageData for the whole plate; coarse pass fills step x step blocks
-    if (!this.buffers) this.buffers = {};
-    const key = job.id;
-    if (!this.buffers[key] || this.buffers[key].width !== W) {
-      this.buffers[key] = ctx.createImageData(W, H);
-    }
-    const img = this.buffers[key];
-    const data = img.data;
-    const rowsPerFrame = step > 1 ? H : 8;
-    let row = 0;
-    const chunk = () => {
-      if (this.dead) return;
-      const stop = Math.min(H, row + rowsPerFrame);
-      for (; row < stop; row += step) {
-        const ci = y0 - row * scale;
-        for (let px = 0; px < W; px += step) {
-          const cr = x0 + px * scale;
-          let zr, zi, pr, pi;
-          if (job.mode === 'param') { zr = 0; zi = 0; pr = cr; pi = ci; }
-          else { zr = cr; zi = ci; pr = job.c.re; pi = job.c.im; }
-          let n = 0, zr2 = zr * zr, zi2 = zi * zi;
-          while (zr2 + zi2 <= 256 && n < maxIter) {
-            zi = 2 * zr * zi + pi;
-            zr = zr2 - zi2 + pr;
-            zr2 = zr * zr; zi2 = zi * zi;
-            n++;
-          }
-          let r, g, b;
-          if (n >= maxIter) {
-            r = set[0]; g = set[1]; b = set[2];
-          } else {
-            const mod = Math.sqrt(zr2 + zi2);
-            const sn = n + 1 - Math.log(Math.log(Math.max(mod, 1.0000001))) / Math.LN2;
-            let t = Math.log(1 + Math.max(sn, 0)) / Math.log(1 + maxIter);
-            t = Math.pow(Math.min(Math.max(t, 0), 1), 0.55);
-            r = (lo[0] + (hi[0] - lo[0]) * t) | 0;
-            g = (lo[1] + (hi[1] - lo[1]) * t) | 0;
-            b = (lo[2] + (hi[2] - lo[2]) * t) | 0;
-          }
-          const yEnd = Math.min(H, row + step), xEnd = Math.min(W, px + step);
-          for (let yy = row; yy < yEnd; yy++) {
-            let o = (yy * W + px) * 4;
-            for (let xx = px; xx < xEnd; xx++) {
-              data[o] = r; data[o + 1] = g; data[o + 2] = b; data[o + 3] = 255;
-              o += 4;
-            }
-          }
-        }
-      }
-      ctx.putImageData(img, 0, 0);
-      if (row < H) return requestAnimationFrame(chunk);
-      if (step === 1) this.annotate(ctx, job, W, H, scale, x0, y0);
-      done();
-    };
-    requestAnimationFrame(chunk);
-  }
-
-  annotate(ctx, job, W, H, scale, x0, y0) {
-    const toPx = (re, im) => [(re - x0) / scale, (y0 - im) / scale];
-    if (job.frame) {
-      const half = job.frame / 2;
-      const [ax, ay] = toPx(job.cx - half, job.cy + half * (H / W));
-      const w = job.frame / scale, h = (job.frame * (H / W)) / scale;
-      ctx.strokeStyle = '#b68235';
-      ctx.lineWidth = 1.5;
-      ctx.strokeRect(ax, ay, Math.max(w, 3), Math.max(h, 3));
-    }
-    if (job.markers) {
-      ctx.font = '600 16px "Cormorant Garamond", serif';
-      ctx.textBaseline = 'middle';
-      for (const m of job.markers) {
-        const [x, y] = toPx(m.re, m.im);
-        ctx.beginPath();
-        ctx.arc(x, y, 4.5, 0, 2 * Math.PI);
-        ctx.fillStyle = '#f3f2f2';
-        ctx.fill();
-        ctx.strokeStyle = '#201f1d';
-        ctx.lineWidth = 1.2;
-        ctx.stroke();
-        ctx.fillStyle = '#201f1d';
-        ctx.fillText(m.label, x + 9, y - 1);
-      }
-    }
-    if (job.mode === 'julia') {
-      const [x, y] = toPx(0, 0);
-      ctx.beginPath();
-      ctx.arc(x, y, 3, 0, 2 * Math.PI);
-      ctx.fillStyle = '#f3f2f2';
-      ctx.fill();
-      ctx.strokeStyle = '#b68235';
-      ctx.lineWidth = 1;
-      ctx.stroke();
-    }
-  }
-
-  filtered() {
-    const q = this.state.query.trim().toLowerCase();
-    const st = this.state.status;
-    return this.ledger.obligations.filter(o => {
-      if (st !== 'all' && o.s !== st) return false;
-      if (!q) return true;
-      return o.i.toLowerCase().includes(q) || (o.t || '').toLowerCase().includes(q);
-    });
-  }
-
-  statusColor(s) {
-    if (s === 'open') return '#7d5411';
-    if (s === 'proved') return '#201f1d';
-    return '#605d5d';
-  }
-
-  copyBib = () => {
-    const el = document.getElementById('bibtex');
-    if (!el) return;
-    const done = () => {
-      this.setState({ copied: true });
-      setTimeout(() => { if (!this.dead) this.setState({ copied: false }); }, 1600);
-    };
-    if (navigator.clipboard && navigator.clipboard.writeText) {
-      navigator.clipboard.writeText(el.textContent).then(done, done);
-    } else {
-      done();
-    }
-  };
-
-  renderVals() {
-    const all = this.filtered();
-    const limit = this.state.limit;
-    const shown = all.slice(0, limit);
-    const statuses = [
-      { key: 'all', label: 'All 465' },
-      { key: 'imported', label: 'Imported' },
-      { key: 'proved', label: 'Proved' },
-      { key: 'open', label: 'Open' }
-    ];
-    return {
-      query: this.state.query,
-      onQuery: e => this.setState({ query: e.target.value, limit: 40 }),
-      filters: statuses.map(s => {
-        const on = this.state.status === s.key;
-        return {
-          label: s.label,
-          active: on,
-          inactive: !on,
-          onClick: () => this.setState({ status: s.key, limit: 40 })
-        };
-      }),
-      resultLabel: all.length + ' matches / ' + shown.length + ' shown',
-      rows: shown.map(o => ({
-        id: o.i,
-        openLabel: o.s === 'open' ? 'open' : '',
-        provedLabel: o.s === 'proved' ? 'proved' : '',
-        importedLabel: o.s === 'imported' ? 'imported' : '',
-        statement: o.t,
-        depsText: o.d.length ? o.d.join('  ?  ') : 'none',
-        depCount: o.d.length,
-        dependents: o.r,
-        evidence: o.e || '?',
-        isOpen: this.state.expanded === o.i,
-        onClick: () => this.setState({ expanded: this.state.expanded === o.i ? null : o.i })
-      })),
-      moreLabel: limit >= all.length ? 'All ' + all.length + ' shown' : 'Show 60 more (' + (all.length - limit) + ' remaining)',
-      onMore: () => this.setState({ limit: limit >= all.length ? 40 : limit + 60 }),
-      onCopy: this.copyBib,
-      copyLabel: this.state.copied ? 'Copied' : 'Copy'
-    };
-  }
-}
-</script>
+  </footer>
 </body>
 </html>
