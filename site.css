@@ -143,6 +143,11 @@ a {
 
 .nav-links a {
   position: relative;
+  display: inline-flex;
+  min-width: 44px;
+  min-height: 44px;
+  align-items: center;
+  justify-content: center;
   color: #34403c;
   font-size: 0.69rem;
   font-weight: 700;
