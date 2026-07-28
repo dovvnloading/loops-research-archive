@@ -37,7 +37,7 @@ A source correction should give:
 
 - the archive statement using the result;
 - the original source, stable link, theorem/proposition number, and page when available;
-- the source’s exact hypotheses and conclusion;
+- the source?s exact hypotheses and conclusion;
 - the mismatch, omission, orientation error, or attribution issue;
 - a proposed replacement citation or corrected use.
 
@@ -53,7 +53,7 @@ Computations are accepted as reproducible diagnostics. Supply:
 - machine-readable output;
 - tolerances, precision, stopping rules, and failure modes;
 - the claim being tested;
-- a clear statement that the result is evidence, falsification, or illustration—not proof—unless accompanied by a rigorous argument.
+- a clear statement that the result is evidence, falsification, or illustration?not proof?unless accompanied by a rigorous argument.
 
 Generated figures should include the data or program needed to reproduce them and a caption stating their mathematical role.
 
@@ -65,16 +65,16 @@ Expository contributions should reduce ambiguity without changing mathematical s
 
 A research issue or pull request should contain:
 
-1. **Target** — paper, theorem, section, or ledger ID.
-2. **Current status** — imported, proved, conditional, or open.
-3. **Claim** — one precise sentence describing the proposed change.
-4. **Evidence** — proof, counterexample, source passage, computation, or reproducible artifact.
-5. **Dependencies** — entries consumed or changed.
-6. **Boundary** — what the contribution does not establish.
-7. **Attribution** — authors and sources that must be credited.
-8. **AI disclosure** — systems materially used and the human verification performed.
+1. **Target** ? paper, theorem, section, or ledger ID.
+2. **Current status** ? imported, proved, conditional, or open.
+3. **Claim** ? one precise sentence describing the proposed change.
+4. **Evidence** ? proof, counterexample, source passage, computation, or reproducible artifact.
+5. **Dependencies** ? entries consumed or changed.
+6. **Boundary** ? what the contribution does not establish.
+7. **Attribution** ? authors and sources that must be credited.
+8. **AI disclosure** ? systems materially used and the human verification performed.
 
-Use displayed equations for substantive identities and define notation locally. Distinguish an implication from its antecedent: proving “UPTCR implies MLC” does not prove UPTCR.
+Use displayed equations for substantive identities and define notation locally. Distinguish an implication from its antecedent: proving ?UPTCR implies MLC? does not prove UPTCR.
 
 ## Status discipline
 
@@ -87,7 +87,7 @@ The public ledger uses four logical roles:
 | **Conditional** | The conclusion is proved from assumptions that remain unestablished in the program |
 | **Open** | No complete proof is claimed |
 
-A contribution may change status only when it supplies the missing argument and all dependencies have been audited. Numerical agreement, repeated model agreement, or the absence of a discovered counterexample does not change a theorem’s status.
+A contribution may change status only when it supplies the missing argument and all dependencies have been audited. Numerical agreement, repeated model agreement, or the absence of a discovered counterexample does not change a theorem?s status.
 
 ## Paper-specific safeguards
 
@@ -101,11 +101,11 @@ Preserve the one-scale boundary. Identifying the component quotient does not ide
 
 ### Paper 3
 
-Paper 3 Draft II is the current QA-audited research preprint. Proposals should cite the draft label and exact statement being reviewed. Separate its finite planar carrier criteria from the unrealized virtual-dynamical application.
+Paper 3 Draft III Visual Edition is the current QA-audited research preprint. Proposals should cite the draft label and exact statement being reviewed. Separate its finite planar carrier criteria from the unrealized virtual-dynamical application.
 
 ### Main reduction
 
-Claims affecting H1–H4, UPTCR, VAAPC-I, or MLC require a dependency-level audit. A result that closes a stationary, finite, bounded-type, or single-scale case must retain that qualifier.
+Claims affecting H1?H4, UPTCR, VAAPC-I, or MLC require a dependency-level audit. A result that closes a stationary, finite, bounded-type, or single-scale case must retain that qualifier.
 
 ## Reproducibility and file placement
 
@@ -121,7 +121,7 @@ Do not commit credentials, private correspondence, personal data, editor state, 
 
 ## AI-assisted research
 
-AI assistance is permitted and should be disclosed when material. Name the system and its role—for example proof search, counterexample generation, code generation, source comparison, or editing—and describe the human verification performed. AI output is not a source citation and does not independently establish a proof.
+AI assistance is permitted and should be disclosed when material. Name the system and its role?for example proof search, counterexample generation, code generation, source comparison, or editing?and describe the human verification performed. AI output is not a source citation and does not independently establish a proof.
 
 ## Scholarly conduct
 
