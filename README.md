@@ -12,7 +12,7 @@ Research direction, synthesis, authorship, and public stewardship
 [![Proof ledger: 465](https://img.shields.io/badge/proof%20ledger-465-334155?style=for-the-badge)](https://dovvnloading.github.io/loops-research-archive/#ledger)
 [![License: CC0 1.0](https://img.shields.io/badge/license-CC0%201.0-166534?style=for-the-badge)](./LICENSE)
 
-[**Project page**](https://dovvnloading.github.io/loops-research-archive/) · [**Main manuscript**](./marked_width_mlc_manuscript.pdf) · [**Paper 1**](./papers/paper1_canonical_localization/paper1_forced_noninjectivity_sheet_kernel_v1.0.1.pdf) · [**Paper 2**](./papers/paper2_rooted_end_compactification/paper2_direct_decoration_rooted_end_compactification_v1.0.1.pdf) · [**Paper 3 — active draft**](./papers/paper3_protected_carriers/paper3_draft1.pdf) · [**Research map**](./RESEARCH_MAP.md) · [**Contribute**](./CONTRIBUTING.md)
+[**Project page**](https://dovvnloading.github.io/loops-research-archive/) · [**Main manuscript**](./marked_width_mlc_manuscript.pdf) · [**Paper 1**](./papers/paper1_canonical_localization/paper1_forced_noninjectivity_sheet_kernel_v1.0.1.pdf) · [**Paper 2**](./papers/paper2_rooted_end_compactification/paper2_direct_decoration_rooted_end_compactification_v1.0.1.pdf) · [**Paper 3 — Draft II**](./papers/paper3_protected_carriers/paper3_draft2.pdf) · [**Research map**](./RESEARCH_MAP.md) · [**Contribute**](./CONTRIBUTING.md)
 
 </div>
 
@@ -31,7 +31,7 @@ The central methodological commitment is exact status separation. A statement in
 flowchart LR
     P1["Paper 1<br/>localization obstruction"] --> S["corrected marked state<br/>with sheet transport"]
     S --> P2["Paper 2<br/>rooted-end compactification"]
-    P2 --> P3["Paper 3<br/>protected carrier criterion<br/>(active draft)"]
+    P2 --> P3["Paper 3<br/>separation ledgers + protected routing<br/>(Draft II, QA audited)"]
     P3 --> H1["H1<br/>marked construction"]
     H1 --> H2["H2<br/>calibration"]
     H2 --> H3["H3<br/>coercivity"]
@@ -55,7 +55,7 @@ Papers 1–3 address successive finite or structural interfaces. They do not by 
 |---|---|---|---|
 | **Paper 1 — [*Forced Noninjectivity and the Sheet Kernel at Primitive Canonical Localization Seeds*](./papers/paper1_canonical_localization/paper1_forced_noninjectivity_sheet_kernel_v1.0.1.pdf)** | Version 1.0.1 · 37 pages | Proves forced noninjectivity at every ordinary primitive canonical seed of period $p>1$ in the stated class; constructs the canonical covering/embedding resolution; identifies an infinite sheet kernel with at least $2^p-2$ independent peripheral winding coordinates. | Does not prove MLC, rigidity, or a priori bounds; decoration-stage applications require a separate alignment theorem. |
 | **Paper 2 — [*The Direct-Decoration Rooted-End Compactification*](./papers/paper2_rooted_end_compactification/paper2_direct_decoration_rooted_end_compactification_v1.0.1.pdf)** | Version 1.0.1 · 20 pages | Realizes the binary rooted-end compactification at one direct-decoration scale, proves the exact component quotient and shift dynamics, and establishes stable replacement and protected-access results in the same planar model. | A one-scale theorem; it does not supply cross-scale transitions, self-renormalization of end fibers, or MLC. |
-| **Paper 3 — [*Protected Planar Carriers and Access-Preserving Connector Criteria*](./papers/paper3_protected_carriers/paper3_draft1.pdf)** | **Active working draft** · Draft I currently public | Develops a finite planar realization theory for full carriers joining disjoint full continua while preserving selected prime-end accesses and frozen obstacles; isolates free-component, packet, defect, and cellwise criteria and applies them to finite direct-decoration packets. | The manuscript is under active revision. Its finite planar results do not construct the virtual carrier, Wave horizon, analytic correspondence, or uniform incidence bounds required by the global program. |
+| **Paper 3 — [*Protected Planar Carriers: Separation Ledgers and Access-Preserving Routing*](./papers/paper3_protected_carriers/paper3_draft2.pdf)** | **Draft II** · 2026-07-27 · 72 pages · QA audited | Gives finite realization and exact recognition criteria for full carriers preserving selected prime-end data and frozen obstacles; proves a cohomological attachment ledger, persistent packet audits, sharp Hausdorff-limit defect examples, and a stable decreasing-envelope theorem. | A finite planar-topology paper, not a virtual dynamical-carrier construction, quantitative width theorem, or MLC result. Independent specialist review remains appropriate before journal submission. |
 
 A paper-level index with source files and version status is maintained in [`papers/README.md`](./papers/README.md).
 
@@ -87,9 +87,9 @@ The abstract compactification is classical. The paper’s contribution is its re
 
 ### Paper 3: the finite connector interface
 
-The active third paper isolates when a finite family of disjoint full continua can be joined by a full planar carrier without violating frozen obstacles or prescribed prime-end accesses. Its organizing criterion asks whether a single frozen free-domain component presents simultaneous singleton ports to all selected atoms. The draft develops corrected slit and packet lemmas, order-independent fullification for fixed typed packets, persistent obstruction defects, and a cellwise formulation suited to direct-decoration data.
+Draft II isolates when a finite family of disjoint full continua can be joined by a full planar carrier without violating frozen obstacles or prescribed prime-end accesses. Its organizing criterion asks whether one frozen free-domain component presents simultaneous singleton ports to all selected atoms. It develops corrected slit and packet lemmas, order-independent fullification for fixed typed packets, persistent obstruction defects, and checkable cellwise criteria.
 
-Paper 3 is being revised concurrently. The archive links to the current public draft while treating all downstream uses according to the statement and status actually present in that revision.
+The new attachment exact sequence records precisely how disconnected traces create holes and separating traces fill existing ones. It yields a connected-trace criterion for full unions, arbitrarily large separation defects born under Hausdorff convergence, and a positive decreasing-envelope stability theorem. The [release QA](./papers/paper3_protected_carriers/QA_REPORT.md) records deterministic builds, proof and citation audits, strict PDF-integrity checks, and full visual inspection.
 
 ## Main manuscript and current frontier
 
@@ -178,7 +178,7 @@ Original contributions are released under [CC0 1.0 Universal](./LICENSE). Citati
 1. [Project page](https://dovvnloading.github.io/loops-research-archive/) — orientation and result boundary.
 2. [Paper 1](./papers/paper1_canonical_localization/paper1_forced_noninjectivity_sheet_kernel_v1.0.1.pdf) — the localization obstruction and corrected state.
 3. [Paper 2](./papers/paper2_rooted_end_compactification/paper2_direct_decoration_rooted_end_compactification_v1.0.1.pdf) — the exact rooted-end model.
-4. [Paper 3](./papers/paper3_protected_carriers/paper3_draft1.pdf) — the active finite protected-carrier theory.
+4. [Paper 3](./papers/paper3_protected_carriers/paper3_draft2.pdf) — the QA-audited Draft II finite protected-carrier theory.
 5. [Main manuscript](./marked_width_mlc_manuscript.pdf) — the global reduction and remaining gates.
 6. [Interactive ledger](https://dovvnloading.github.io/loops-research-archive/#ledger) — dependency-level audit.
 7. [`research/mlc_unified`](./research/mlc_unified/) — detailed source, proof, adversarial, and validation record.

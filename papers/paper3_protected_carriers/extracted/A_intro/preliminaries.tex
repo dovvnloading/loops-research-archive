@@ -129,8 +129,9 @@ formal consequence of the three properties in clause~(4).
 
 \begin{definition}[Package, atoms, carrier, fullification]
 \label{def:A-package}
-A \emph{package} is a finite union $S=A_1\cup\dots\cup A_s$ of pairwise
-disjoint full continua, called its \emph{atoms}.  Atoms may be
+A \emph{package} is a nonempty finite union
+$S=A_1\cup\dots\cup A_s$, $s\ge1$, of pairwise disjoint full continua,
+called its \emph{atoms}.  Atoms may be
 degenerate: in Theorem~\ref{thm:no-least} the package consists of the two
 points $\pm1$.  A \emph{carrier} of the package $S$ is a compact
 connected full continuum $H\subset\C$ with $S\subset H$.  Both
@@ -148,7 +149,8 @@ $\Chat\setminus F$ is connected.  By Lemma~\ref{lem:A-full}(2), a compact
 subset of $\C$ is nonseparating in $\Chat$ exactly when it is full; the
 two words are used interchangeably for such sets.
 
-\begin{theorem}[Janiszewski's separation theorem; see \cite{New51,Why42}]
+\begin{theorem}[Janiszewski's separation theorem;
+{\cite{Jan15}; see also \cite{New51,Why42}}]
 \label{thm:A-janiszewski}
 Let $F_1,F_2\subset\Chat$ be closed sets whose intersection
 $F_1\cap F_2$ is connected and nonempty, and let
@@ -187,7 +189,7 @@ $\partial K$ from the complement.  It can be presented by a landing arc,
 as the access $p_0^{+}(m)$ of Proposition~\ref{prop:access-collision} is
 presented by the vertical segment $m+it$; but landing presentations
 presuppose that something lands, and for the arbitrary continua handled in
-this paper no landing is available.  The presentation that requires
+this paper a landing presentation need not be available.  The presentation that requires
 nothing is Carath\'eodory's theory of prime ends \cite{Pom92}, which we
 now recall in the normalization used throughout.
 
@@ -207,14 +209,22 @@ chains \cite{Pom92}, in the following normalization) is a sequence
 \[
 \Gamma=(\gamma_n,D_n)_{n\ge1}
 \]
-in which the $\gamma_n$ are pairwise disjoint crosscuts of $\Omega$ whose
-spherical diameters tend to zero, and $D_n$, the \emph{selected side} of
-$\gamma_n$, is one of the two components of $\Omega\setminus\gamma_n$,
-subject to the coherence condition $D_{n+1}\subset D_n$ for every $n$.
-Coherence and disjointness together force $\gamma_{n+1}\subset D_n$:
-the crosscut $\gamma_{n+1}$ lies on the boundary of
-$D_{n+1}\subset D_n$, so it lies in
-$\overline{D_n}\cap\Omega=D_n\cup\gamma_n$, and it misses $\gamma_n$.
+in which the $\gamma_n$ are pairwise disjoint crosscuts of $\Omega$,
+$\overline{\gamma_n}$ are pairwise disjoint,
+$D_n$ is one of the two components of
+$\Omega\setminus\gamma_n$, and
+\begin{equation}\label{eq:A-null-chain}
+ \overline{D_{n+1}}\cap\Omega\subset D_n,
+ \qquad
+ \operatorname{diam}_{\mathrm{sph}}(\gamma_n)\longrightarrow0 .
+\end{equation}
+The inclusion is the strict nesting condition, while diameter convergence
+is the null condition.  The strict nesting implies both
+$D_{n+1}\subset D_n$ and
+$\gamma_{n+1}\subset\overline{D_{n+1}}\cap\Omega\subset D_n$; thus a
+later crosscut lies strictly on the declared side of every earlier one.
+This stronger formulation rules out the large-side pathologies that mere
+nestedness of the open domains would permit.
 The record of a chain thus contains strictly more than the crosscuts: it
 contains, for every $n$, the declaration of the selected side, and it is
 exactly this declaration that the certificates of
@@ -227,18 +237,21 @@ $\Omega$.
 Two classical facts about prime ends are used.  First, the
 Carath\'eodory correspondence: an orientation-preserving Riemann map
 $\psi\colon\{|z|<1\}\to\Omega$ induces a bijection between the points of
-the unit circle and the prime ends of $\Omega$, under which radial limits
-correspond to chains; see \cite[Chapter~2]{Pom92}.  Second, the
+the unit circle and the prime ends of $\Omega$; radial approach converges
+in the prime-end compactification, although a Euclidean radial limit need
+not exist without additional boundary regularity; see
+\cite[Chapter~2]{Pom92}.  Second, the
 \emph{impression}
 \[
 I(\Gamma)\;=\;\bigcap_{n\ge1}\overline{D_n}
 \]
 (closures in $\Chat$) is a nonempty compact connected subset of
 $\partial\Omega$ --- the intersection of a decreasing sequence of
-nonempty compacta --- and depends only on the prime end of $\Gamma$, not
+nonempty compact connected sets --- and depends only on the prime end of
+$\Gamma$, not
 on the representing chain \cite{Pom92}.  The nested closures
 $\overline{D_n}$ decrease \emph{to} the impression; this is the form in
-which impressions enter Lemma~\ref{lem:impression-port}.
+which impressions enter later collar and exposure arguments.
 
 The prime ends of $\Omega$ carry a natural \emph{cyclic order}: the one
 transported from the unit circle by the Carath\'eodory correspondence.
@@ -256,22 +269,35 @@ to be invariant under carrier enlargement.
 
 \begin{definition}[Protected access; collar]\label{def:A-protected}
 Let $A$ be a nondegenerate atom.  A \emph{protected access} to $A$ is a
-distinguished prime-end crosscut chain
+distinguished null prime-end crosscut chain
 $\Gamma=(\gamma_n,D_n)_{n\ge1}$ of $\Chat\setminus A$, recorded together
 with its selected sides.  The terminal selected domain $D_1$ is the
-\emph{collar} of the access, and $D_1\setminus A$ is its \emph{collar
-tail}.  When finitely many protected accesses appear together inside a
-Jordan localization, they are \emph{truncated} --- an initial segment of
-each chain is discarded and the indices shifted --- so that the terminal
-collar tails are pairwise disjoint, lie in the localization, and miss the
-forbidden set and the other atoms; Section~\ref{sec:certificates} records
-this normalization as part of the certificate data.
+\emph{collar} of the access, and
+\[
+ \overline{D_1}\setminus A
+\]
+is its \emph{relative collar tail}.  When finitely many protected accesses
+appear together inside a Jordan localization, their labels are required to
+specify pairwise distinct prime ends at each fixed atom, and the chains are
+\emph{truncated}---an initial segment of each chain is discarded and the
+indices shifted---so that the relative terminal collar tails are pairwise
+disjoint, lie in the localization, and miss the forbidden set and the other
+atoms.  For chains based at one atom, disjoint sufficiently deep tails come
+from Hausdorff separation in that atom's prime-end closed disk.  For chains
+based at different atoms, and for avoidance of the forbidden compactum, the
+same conclusion follows separately from compact separation together with
+the fact that the nested compact sets
+$\overline{D_{i,a,n}}$ decrease to the impression in $A_i$.
+Their closures may meet inside a common atom: distinct prime ends can have
+overlapping impressions, and no local connectivity assumption is being
+smuggled into the normalization.  Section~\ref{sec:certificates} records
+this convention as part of the certificate data.
 \end{definition}
 
 The adjective \emph{protected} names a discipline, not a topological
 property: a protected access is one that every later construction is
 forbidden to disturb, in the precise sense that no connector may enter
-its collar tail (Definition~\ref{def:certificate}).  The reward for the
+its relative collar tail (Definition~\ref{def:certificate}).  The reward for the
 discipline is the survival theorem, Lemma~\ref{lem:crosscut-survival}:
 the chain then persists verbatim, with the same crosscuts and the same
 selected sides, as a prime-end chain of the enlarged complement.
@@ -281,7 +307,7 @@ selected sides, as a prime-end chain of the enlarged complement.
 
 For a compact set $K\subset S^2$, $\check H^*(K;\Z)$ denotes \v{C}ech
 cohomology with integer coefficients.  Two of its properties are needed
-\cite{Hat02}: continuity --- the \v{C}ech cohomology of $K$ is the direct
+\cite[Chapter~6]{Spa66}: continuity --- the \v{C}ech cohomology of $K$ is the direct
 limit of the singular cohomology of the open neighborhoods of $K$, so
 that every class and every relation is realized in some neighborhood ---
 and the Mayer--Vietoris sequence for pairs of compact sets in $S^2$.
@@ -290,18 +316,35 @@ the second proof of Lemma~\ref{lem:tree-full}.  The duality statement is
 the following.
 
 \begin{theorem}[Alexander duality, compacta form;
-{\cite[pp.~256--257]{Hat02}}]\label{thm:A-duality}
-For every nonempty proper compact subset $K\subset S^2$,
+{\cite[Chapter~6]{Spa66}}]\label{thm:A-duality}
+For every nonempty proper compact subset $K\subset S^2$ and every integer
+$q$, there is a natural isomorphism
+\[
+\widetilde{\check H}^{\,q}(K;\Z)
+\;\cong\;
+\widetilde H_{\,1-q}(S^2\setminus K;\Z).
+\]
+In particular,
 \begin{equation}\label{eq:A-duality}
 \widetilde H_0\bigl(S^2\setminus K;\Z\bigr)\;\cong\;\check H^1(K;\Z).
 \end{equation}
+For $q=2$, the same theorem gives $\check H^2(K;\Z)=0$, since
+$S^2\setminus K$ is nonempty and its reduced homology in degree $-1$
+vanishes.
 \end{theorem}
+
+The general statement above is the \v{C}ech-cohomology form for compacta
+given by Spanier.  Hatcher's Corollary~3.45 gives the familiar locally
+contractible special case \cite[pp.~255--257]{Hat02}.
 
 This is equation~(9.6) of the manuscript \cite{MWman}.  Reading
 \eqref{eq:A-duality} at the level of connectivity gives the dictionary
-used throughout the paper: $S^2\setminus K$ is connected exactly when
+used throughout the paper.  The complement is open in a surface and hence
+locally path connected, so its connected and path components agree and
+singular $H_0$ detects connectedness.  Thus $S^2\setminus K$ is connected exactly when
 $\check H^1(K;\Z)=0$, and hence, by Lemma~\ref{lem:A-full}(2), a compact
-set $K\subset\C$ is full exactly when $\check H^1(K;\Z)=0$.
+nonempty set $K\subset\C$ is full exactly when
+$\check H^1(K;\Z)=0$.
 ``Nonseparating'' and ``vanishing first \v{C}ech cohomology'' are
 synonyms, and the two proofs of Lemma~\ref{lem:tree-full} translate one
 into the other.
@@ -311,19 +354,19 @@ The \v{C}ech form of \eqref{eq:A-duality}, valid for an arbitrary
 nonempty proper compact $K\subset S^2$, is required; the locally
 contractible special case, in which \v{C}ech and singular cohomology
 agree \cite{Hat02}, is not sufficient.  The atoms of this paper are
-arbitrary full continua --- in general not locally connected, hence not
-locally contractible, and admitting no CW approximation compatible with
-their embedding --- and for such compacta duality genuinely fails with
-singular cohomology in place of \v{C}ech.  The standard example is the
-Warsaw circle $W\subset\C$, the closed topologist's sine curve completed
-by an arc: $W$ separates the plane, so
-$\widetilde H_0(S^2\setminus W;\Z)\cong\Z$, and accordingly
-$\check H^1(W;\Z)\cong\Z$; but $W$ is path connected with trivial
-fundamental group --- no loop can traverse the accumulation segment ---
-so its singular homology $H_1$ vanishes and its \emph{singular}
-cohomology gives $H^1_{\mathrm{sing}}(W;\Z)=0$.  Every duality argument in this paper ---
-Lemma~\ref{lem:tree-full} (second proof), Lemma~\ref{lem:packets},
-Lemma~\ref{lem:nested-packets} --- is therefore carried out in \v{C}ech
+arbitrary full continua---in general not locally connected or locally
+contractible, and not necessarily of the homotopy type of CW
+complexes---and for such compacta duality genuinely fails with singular
+cohomology in place of \v{C}ech.  Hatcher's standard quasi-circle (Warsaw
+circle) $W\subset\C$, obtained by completing the closed topologist's sine
+curve by an arc, is path connected and simply connected but has exactly two
+complementary components \cite[Exercise~1.3.7 and pp.~255--256]{Hat02}.
+Thus
+$\widetilde H_0(S^2\setminus W;\Z)\cong\Z$ and compacta duality gives
+$\check H^1(W;\Z)\cong\Z$, whereas $H_1(W;\Z)=0$ and the universal
+coefficient theorem gives $H^1_{\mathrm{sing}}(W;\Z)=0$.  Every duality argument in this paper ---
+including Lemma~\ref{lem:tree-full} (second proof),
+Theorem~\ref{thm:separation-budget}, and Lemma~\ref{lem:packets} --- is therefore carried out in \v{C}ech
 cohomology, and the nerve and continuity properties invoked there are the
 \v{C}ech ones.
 \end{warning}

@@ -8,7 +8,7 @@ This map connects the mathematical dependency structure to the public files. The
 |---|---|---|---|---|
 | 1. Localization correction | [Paper 1](./papers/paper1_canonical_localization/paper1_forced_noninjectivity_sheet_kernel_v1.0.1.pdf) | Version 1.0.1 | Forced canonical collision, canonical covering/embedding resolution, infinite sheet kernel, winding quotient, and exact propagation on the complementary-cover locus | Decoration-stage alignment, a priori bounds, rigidity, MLC |
 | 2. One-scale compactification | [Paper 2](./papers/paper2_rooted_end_compactification/paper2_direct_decoration_rooted_end_compactification_v1.0.1.pdf) | Version 1.0.1 | Direct-decoration realization of the binary rooted-end compactification, exact component quotient, shift dynamics, stable replacement, and protected accesses | Cross-scale transitions, end-fiber renormalization, analytic nondegeneration, MLC |
-| 3. Finite protected carriers | [Paper 3](./papers/paper3_protected_carriers/paper3_draft1.pdf) | **Active working draft** | Finite planar carrier and connector criteria with frozen obstacles and prescribed access data | Virtual carrier construction, Wave horizon, analytic correspondence, uniform incidence control, MLC |
+| 3. Finite protected carriers | [Paper 3](./papers/paper3_protected_carriers/paper3_draft2.pdf) | **Draft II · QA audited** | Finite protected routing, exact recognition and packet audits, attachment separation ledger, and sharp Hausdorff-limit failure/stability tests | Virtual carrier construction, Wave horizon, analytic correspondence, uniform incidence control, MLC |
 | 4. Marked construction | `H1_MARKED_CONSTRUCTION` in [`ledger.json`](./ledger.json) | Open | The complete marked state and transition object consumed by the reduction | — |
 | 5. Calibration | `H2_CALIBRATION` | Open | Quantitative comparison with source extremal-width observables | — |
 | 6. Coercivity | `H3_COERCIVITY` | Open | Analytic nondegeneration and compactness of the marked state | — |
@@ -32,7 +32,7 @@ The main manuscript integrates all nine stages and states the hypotheses consume
 - [`papers/README.md`](./papers/README.md): paper index, status, PDFs, and source roots.
 - [`papers/paper1_canonical_localization/`](./papers/paper1_canonical_localization/): Paper 1 PDF, LaTeX source, extracted theorem packets, certificates, and assembly tooling.
 - [`papers/paper2_rooted_end_compactification/`](./papers/paper2_rooted_end_compactification/): Paper 2 PDF and LaTeX source.
-- [`papers/paper3_protected_carriers/`](./papers/paper3_protected_carriers/): actively revised Paper 3 draft, source, conventions, packets, source digest, and assembly tooling.
+- [`papers/paper3_protected_carriers/`](./papers/paper3_protected_carriers/): Paper 3 Draft II, modular and assembled source, deterministic build/QA tooling, change record, research assessment, and release audit.
 
 ### 3. Claim-status system
 
@@ -78,7 +78,7 @@ The program is organized around interfaces rather than a single undifferentiated
 |---|---|---|
 | Localization | What data are lost when canonical localization is treated as embedded? | Paper 1; sheet-kernel and winding data |
 | End compactification | Can an exact address compactification be realized in one dynamical plane? | Paper 2; one-scale theorem |
-| Protected planar routing | When can selected atoms be joined while preserving frozen obstacles and accesses? | Paper 3; active finite theory |
+| Protected planar routing | When can selected atoms be joined while preserving frozen obstacles and accesses, and when does that control survive a limit? | Paper 3 Draft II; audited finite theory and compactness gate |
 | Virtual construction | Can the finite planar package be realized uniformly in the virtual carrier? | Open H1 layer |
 | Quantitative transport | Does the constructed state carry the required extremal-width inequality with controlled loss? | Open H2 and stationary-Wave subgates |
 | Compactness | Does the compactified state avoid analytic degeneration? | Open H3 layer |
@@ -113,6 +113,6 @@ Contributions should follow [`CONTRIBUTING.md`](./CONTRIBUTING.md) and name the 
 ## Version policy
 
 - Released papers carry explicit versions in their filenames and front matter.
-- Paper 3 is an active draft; its public file may be replaced by a later revision with an updated draft label and audit record.
+- Paper 3 Draft II is the current public research preprint; later revisions must update the draft label, PDF link, and audit record together.
 - The ledger source lock states the date to which aggregate counts and frontier summaries refer.
 - Historical evidence paths remain stable even after their conclusions are consolidated into `research/mlc_unified/`.

@@ -1,0 +1,460 @@
+\section{Attachment cohomology and the separation ledger}
+\label{sec:separation-budget}
+
+The realization theorem uses a finite tree meeting each atom at one point.
+There are two logically distinct requirements hidden in that choice: the
+connector itself has no holes, and every attachment trace is connected.  The
+next theorem separates these requirements and gives an exact attachment
+ledger.  An extra component of a trace creates a complementary component,
+whereas a complementary component of the trace itself fills one separation
+already carried by the connector.  Thus attachments can create and destroy
+holes, but only through two explicitly measured trace defects.
+
+For two nonseparating plane continua, the connected-intersection
+sufficiency is Janiszewski's theorem and the converse belongs to the
+classical Janiszewski--Mullikin theory \cite{Jan15,Mul22,New51,Why42}.  The
+form needed here keeps arbitrary initial connector cohomology, allows
+separating traces, records the homomorphism killed by each attachment, and
+iterates over a disjoint atom family.  It also sits naturally in the
+classical unicoherence and multicoherence tradition \cite{Bor31,Eil36}:
+the term $c_i-1$ is the classical multicoherence contribution of the
+decomposition $B_i=B_{i-1}\cup A_i$.  The contribution here is its
+simultaneous Mayer--Vietoris bookkeeping and carrier application; we make
+no priority claim for the underlying contact-count invariant.
+
+For a proper compact set $K\subset\Chat$ whose complement has finitely many
+components, define its \emph{separation excess} by
+\begin{equation}
+ \sigma(K):=\#\pi_0(\Chat\setminus K)-1.
+ \label{eq:G-separation-excess}
+\end{equation}
+Thus $\sigma(K)=0$ exactly when $K$ is nonseparating.  Since
+$\Chat\setminus K$ is open in a surface, it is locally path connected, so its
+connected components and path components agree.  Alexander duality for
+compacta therefore identifies
+\begin{equation}
+ \sigma(K)=\operatorname{rank}\check H^1(K;\Z).
+ \label{eq:G-dual-rank}
+\end{equation}
+We use the compact-pair Mayer--Vietoris sequence for \v{C}ech cohomology; both
+facts are recalled in the generality needed here in \cite[Chapter~6]{Spa66}.
+
+\begin{theorem}[Attachment exact sequence and separation ledger]
+\label{thm:separation-budget}
+Let $s\ge1$, and let $C,A_1,\dots,A_s\subset\C$ be compact connected sets.
+Assume that the
+atoms $A_i$ are pairwise disjoint full continua and that
+\[
+ T_i:=C\cap A_i
+\]
+is nonempty.  Put $H=C\cup\bigcup_iA_i$, and let
+$B_0=C$ and $B_i=C\cup A_1\cup\cdots\cup A_i$.  For each $i$, the
+restriction homomorphism
+\[
+ r_i\colon\check H^1(B_{i-1};\Z)\longrightarrow
+ \check H^1(T_i;\Z)
+\]
+is surjective, and there is a natural short exact
+sequence
+\begin{equation}
+ 0\longrightarrow
+ \widetilde{\check H}^{\,0}(T_i;\Z)
+ \xrightarrow{\ \delta_i\ }
+ \check H^1(B_i;\Z)
+ \longrightarrow
+ \ker r_i
+ \longrightarrow0.
+ \label{eq:G-attachment-exact}
+\end{equation}
+If $T_i$ is nonseparating for every $i$, this specializes, noncanonically,
+to
+\begin{equation}
+ \check H^1(H;\Z)
+ \cong
+ \check H^1(C;\Z)\oplus
+ \bigoplus_{i=1}^{s}
+ \widetilde{\check H}^{\,0}(T_i;\Z).
+ \label{eq:G-attachment-splitting}
+\end{equation}
+
+Suppose now that $\Chat\setminus C$ and every
+$\Chat\setminus T_i$ have finitely many components, and that $T_i$ has
+finitely many connected components, say $c_i$.  Then all groups in
+\eqref{eq:G-attachment-exact} have finite rank, all complements
+$\Chat\setminus B_i$ have finitely many components, and
+\begin{equation}
+ \boxed{\quad
+ \sigma(H)=\sigma(C)+
+ \sum_{i=1}^{s}\bigl(c_i-1-\sigma(T_i)\bigr).
+ \quad}
+ \label{eq:G-budget}
+\end{equation}
+In particular, at the $i$-th attachment
+\begin{equation}
+ \sigma(T_i)\le \sigma(B_{i-1}),
+ \qquad
+ \sigma(B_i)=\sigma(B_{i-1})+c_i-1-\sigma(T_i).
+ \label{eq:G-step-ledger}
+\end{equation}
+\end{theorem}
+
+\begin{proof}
+Every $B_i$ is connected.  Indeed, $B_0=C$ is connected, and at the
+$i$-th step the connected set $A_i$ meets $B_{i-1}$ in the nonempty set
+$T_i$.  Pairwise disjointness of the atoms gives the exact intersection
+identity
+\[
+ B_{i-1}\cap A_i
+ =
+ (C\cap A_i)\cup\bigcup_{j<i}(A_j\cap A_i)
+ =T_i .
+\]
+
+Apply the reduced compact-pair Mayer--Vietoris sequence to the closed cover
+$B_i=B_{i-1}\cup A_i$.  Its relevant segment is
+\[
+\begin{split}
+ \widetilde{\check H}^{\,0}(B_{i-1})
+ \oplus\widetilde{\check H}^{\,0}(A_i)
+ &\longrightarrow
+ \widetilde{\check H}^{\,0}(T_i)
+ \xrightarrow{\delta_i}
+ \check H^1(B_i)\\
+ &\longrightarrow
+ \check H^1(B_{i-1})\oplus\check H^1(A_i)
+ \longrightarrow
+ \check H^1(T_i).
+\end{split}
+\]
+The first two reduced groups vanish because $B_{i-1}$ and $A_i$ are
+connected.  Fullness of $A_i$ and Alexander duality give
+$\check H^1(A_i;\Z)=0$.  The next term of the sequence is
+$\check H^2(B_i;\Z)$, and it vanishes: $B_i$ is a compact subset of the
+plane, hence a proper compact subset of $S^2$, and compacta Alexander
+duality identifies its reduced second cohomology with reduced homology in
+degree $-1$ of the nonempty complement.  Exactness therefore makes $r_i$
+surjective and leaves exactly \eqref{eq:G-attachment-exact}.
+
+Alexander duality identifies $\check H^1(B_{i-1};\Z)$ with the reduced
+zeroth homology of the open surface $\Chat\setminus B_{i-1}$, hence with a
+free abelian group.  Its subgroup $\ker r_i$ is free and therefore
+projective, so \eqref{eq:G-attachment-exact} splits, although not
+canonically.  When every $T_i$ is nonseparating, the target of $r_i$
+vanishes and iteration gives \eqref{eq:G-attachment-splitting}.
+
+Under the finiteness hypotheses, the components of $T_i$ are clopen and
+\[
+ \operatorname{rank}\widetilde{\check H}^{\,0}(T_i;\Z)=c_i-1,
+ \qquad
+ \operatorname{rank}\check H^1(T_i;\Z)=\sigma(T_i).
+\]
+Surjectivity of $r_i$ gives the first inequality in
+\eqref{eq:G-step-ledger}; taking ranks in
+\eqref{eq:G-attachment-exact} gives its equality.  Starting from the
+finite-rank group $\check H^1(C;\Z)$, induction makes every
+$\check H^1(B_i;\Z)$ finite rank.  Alexander duality then makes every
+complement $\Chat\setminus B_i$ have finitely many components.  Summing
+the step equalities gives \eqref{eq:G-budget}.
+\end{proof}
+
+The ledger has a useful geometric reading.  For example, let $C$ be the
+unit circle together with the radial segment $[1,2]$, and attach the full
+closed unit disk $A$.  The trace $C\cap A$ is the unit circle.  It is
+connected but has separation excess one, so the attachment fills the one
+bounded complementary component of $C$:
+\[
+ \sigma(C\cup A)=1+(1-1)-1=0.
+\]
+In contrast, a nonseparating trace cannot cancel connector homology; its
+only possible contribution is the creation term $c_i-1$.
+
+The trace-separation term vanishes automatically for the carrier geometry
+that matters most here.
+
+\begin{lemma}[Intersections of full compacta are nonseparating]
+\label{lem:full-intersection}
+If $K,L\subset\C$ are compact and full, then $K\cap L$ is nonseparating
+(whether or not it is connected).  In particular
+$\check H^1(K\cap L;\Z)=0$.
+\end{lemma}
+
+\begin{proof}
+If $K\cap L=\varnothing$, its complement is $\C$ and
+$\check H^1(\varnothing;\Z)=0$, so the conclusion is immediate.  Assume
+$K\cap L\ne\varnothing$.
+The two connected sets $\C\setminus K$ and $\C\setminus L$ contain a common
+neighborhood of infinity.  Their union is therefore connected, and
+\[
+ \C\setminus(K\cap L)
+ =(\C\setminus K)\cup(\C\setminus L)
+\]
+is connected.  Alexander duality gives the cohomological conclusion.
+\end{proof}
+
+\begin{corollary}[Exact criterion for a full continuum connector]
+\label{cor:full-connector-traces}
+In Theorem~\ref{thm:separation-budget}, suppose that $C$ is also a full
+continuum.  Then every trace is nonseparating, and $H$ is full if and only
+if every attachment trace $C\cap A_i$ is connected.  If, in addition,
+$T_i$ has finitely many connected components $c_i$ for every $i$, then
+\begin{equation}
+ \#\pi_0(\Chat\setminus H)
+ =
+ 1+\sum_{i=1}^{s}(c_i-1).
+ \label{eq:G-full-budget}
+\end{equation}
+\end{corollary}
+
+\begin{proof}
+Lemma~\ref{lem:full-intersection}, applied to $C$ and $A_i$, verifies
+that $\check H^1(T_i;\Z)=0$.  The splitting
+\eqref{eq:G-attachment-splitting}, together with
+$\check H^1(C;\Z)=0$, gives
+\[
+ \check H^1(H;\Z)
+ \cong
+ \bigoplus_i\widetilde{\check H}^{\,0}(T_i;\Z).
+\]
+For a compact Hausdorff space, reduced \v{C}ech cohomology in degree zero
+vanishes exactly when the space is connected.  Alexander duality now gives
+the stated if-and-only-if criterion without a finiteness assumption.
+When all $c_i$ are finite, every $T_i$ has $\sigma(T_i)=0$ and
+$\sigma(C)=0$, so \eqref{eq:G-budget} becomes
+\eqref{eq:G-full-budget}.
+\end{proof}
+
+Corollary~\ref{cor:full-connector-traces} both strengthens and sharpens
+the one-point tree formulation of Lemma~\ref{lem:tree-full}, and its
+if-and-only-if clause recovers the Janiszewski--Mullikin criterion in this
+finite-trace setting.  The connector need not be a tree, locally
+connected, or one dimensional: any full continuum is allowed.  Singleton
+traces can be replaced by arbitrary connected traces.  Conversely,
+disconnected traces are not merely inconvenient.  When the connector is
+full they force holes, and the number forced is exact.
+
+\begin{corollary}[Protected realization by a continuum connector]
+\label{cor:continuum-connector}
+Retain the Jordan localization, atoms, obstacle set, and protected
+crosscut chains of Section~\ref{sec:certificates}, with pairwise disjoint
+relative terminal collar tails.  Let $C\Subset U$ be a full continuum such
+that:
+\begin{enumerate}
+\item $C\cap Z=\varnothing$;
+\item $C\cap A_i$ is nonempty and connected for every $i$; and
+\item
+\[
+ (C\setminus A_i)\cap
+ \bigl(\overline{D_{i,a,1}}\setminus A_i\bigr)=\varnothing
+ \quad\text{for every protected chain }(i,a).
+\]
+\end{enumerate}
+Then
+\[
+ H_C:=C\cup\bigcup_iA_i
+\]
+is a compact connected full carrier avoiding $Z$.  Every protected chain
+survives in $\Chat\setminus H_C$; the survival assignment is injective on
+families with disjoint relative terminal collar tails and preserves the
+cyclic order carried by each common source complement.  No local
+connectivity of $C$ or of any atom is required.
+\end{corollary}
+
+\begin{proof}
+Corollary~\ref{cor:full-connector-traces} makes $H_C$ full, and the nonempty
+traces make it connected.  The collar-clearance hypothesis for each chain is
+exactly the hypothesis of Lemma~\ref{lem:crosscut-survival}, because the
+other atoms miss its relative terminal collar tail.  That lemma supplies
+survival, injectivity, and cyclic-order preservation.  Compact containment
+and obstacle avoidance follow from the stated hypotheses and the finite
+union.
+\end{proof}
+
+\subsection{Sharpness and defect birth at a limit}
+\label{subsec:G-limit-defect}
+
+The separation ledger exposes a compactness obstruction that is invisible at
+every finite stage.  Even a sequence of tree carriers with singleton traces
+can converge to a carrier with arbitrarily many bounded complementary
+components.
+
+\begin{proposition}[Arbitrary separation defect born in a Hausdorff limit]
+\label{prop:trace-birth}
+For every integer $m\ge1$ there are a full atom $A$, full arc connectors
+$C_n$, and a full arc $C$ such that
+\[
+ C_n\longrightarrow C
+ \quad\text{and}\quad
+ A\cup C_n\longrightarrow A\cup C
+\]
+in the Hausdorff metric,
+\[
+ A\cap C_n\ \text{is a singleton for every }n,
+\qquad
+ \#(A\cap C)=m+1,
+\]
+every $A\cup C_n$ is full, but $\Chat\setminus(A\cup C)$ has exactly
+$m+1$ components.  Thus the limiting carrier has exactly $m$ bounded
+complementary components.
+\end{proposition}
+
+\begin{proof}
+Take
+\[
+ A=[0,m]\times\{0\}.
+\]
+For $n\ge1$, let $C_n$ be the polygonal arc whose ordered vertices are
+\[
+ (0,0),\
+ \left(\tfrac12,1\right),\ (1,n^{-1}),\
+ \left(\tfrac32,1\right),\ (2,n^{-1}),\ \dots,\
+ \left(m-\tfrac12,1\right),\ (m,n^{-1}).
+\]
+The first coordinate increases strictly along the vertex list, so $C_n$ is
+a Jordan arc.  It lies in the closed upper half-plane and meets the
+horizontal atom $A$ only at $(0,0)$.  Both $A$ and $C_n$ are full, and their
+intersection is connected; hence $A\cup C_n$ is full, either by
+Janiszewski's theorem or by
+Corollary~\ref{cor:full-connector-traces}.
+
+Let $C$ be the polygonal arc obtained by replacing every vertex
+$(j,n^{-1})$ by $(j,0)$.  The vertex convergence, with the same finite
+linear parametrization, gives $C_n\to C$ in the Hausdorff metric and hence
+$A\cup C_n\to A\cup C$.  The limit arc is still $x$-monotone and
+\[
+ A\cap C=\{(0,0),(1,0),\dots,(m,0)\},
+\]
+which has $m+1$ components.  Apply
+Corollary~\ref{cor:full-connector-traces} with connector $C$ and atom $A$:
+\[
+ \#\pi_0\bigl(\Chat\setminus(A\cup C)\bigr)
+ =1+\bigl((m+1)-1\bigr)=m+1.
+\]
+The component containing infinity is the unique unbounded component, so
+the other $m$ components are bounded.
+\end{proof}
+
+\begin{figure}[htbp]
+\centering
+\begin{tikzpicture}[scale=1.05, line cap=round, line join=round]
+  \begin{scope}[xshift=-3.8cm]
+    \draw[line width=2.4pt,gray!70] (0,0)--(3,0);
+    \draw[very thick,red!70!black]
+      (0,0)--(.75,1.35)--(1.5,.20)--(2.25,1.35)--(3,.20);
+    \fill (0,0) circle (1.5pt);
+    \node[below] at (1.5,-.12) {$A$};
+    \node[red!70!black,above] at (1.5,1.42) {$C_n$};
+    \node[align=center,text width=4.4cm,font=\small] at (1.5,-1.08)
+      {one attachment component\\no bounded complementary component};
+  \end{scope}
+  \begin{scope}[xshift=1.2cm]
+    \fill[blue!12] (0,0)--(.75,1.35)--(1.5,0)--cycle;
+    \fill[blue!12] (1.5,0)--(2.25,1.35)--(3,0)--cycle;
+    \draw[line width=2.4pt,gray!70] (0,0)--(3,0);
+    \draw[very thick,red!70!black]
+      (0,0)--(.75,1.35)--(1.5,0)--(2.25,1.35)--(3,0);
+    \foreach \x in {0,1.5,3} \fill (\x,0) circle (1.5pt);
+    \node[below] at (1.5,-.12) {$A$};
+    \node[red!70!black,above] at (1.5,1.42) {$C$};
+    \node[align=center,text width=4.4cm,font=\small] at (1.5,-1.08)
+      {three attachment components\\two bounded complementary components};
+  \end{scope}
+  \draw[-{Stealth[length=2.6mm]},thick]
+    (-.15,.72)--(.65,.72) node[midway,above,font=\small] {Hausdorff limit};
+\end{tikzpicture}
+\caption{Trace multiplication in Proposition~\ref{prop:trace-birth}, shown
+for $m=2$.  Every finite connector $C_n$ meets the atom once, so
+$A\cup C_n$ is full.  In the limit, two near-contacts close and the trace
+$A\cap C$ has three components.  Formula~\eqref{eq:G-full-budget} detects
+the two shaded bounded complementary components exactly.}
+\label{fig:trace-birth}
+\end{figure}
+
+\subsection{A safe limiting regime}
+\label{subsec:G-nested-limit}
+
+The preceding defect is specific to uncontrolled Hausdorff convergence.
+There is a useful inverse-limit regime in which neither connector holes nor
+trace components can be born.
+
+\begin{theorem}[Nested-limit stability]
+\label{thm:nested-limit-stability}
+Let $s\ge1$, let $A_1,\dots,A_s\subset\C$ be pairwise disjoint full
+continua, and let
+\[
+ C_1\supset C_2\supset\cdots
+\]
+be a decreasing sequence of nonempty full continua.  Suppose that
+$C_n\cap A_i$ is nonempty and connected for every $n$ and $i$.  Then
+\[
+ C_\infty:=\bigcap_{n\ge1}C_n
+\]
+is a full continuum, every trace $C_\infty\cap A_i$ is nonempty and
+connected, and
+\[
+ H_\infty:=C_\infty\cup\bigcup_{i=1}^{s}A_i
+\]
+is a full continuum.
+
+If, in addition, the data lie in the setup of
+Corollary~\ref{cor:continuum-connector}, every $C_n\Subset U$ avoids the
+fixed obstacle set, and every $C_n$ satisfies that corollary's
+relative-collar clearance conditions, then $H_\infty$
+inherits obstacle avoidance and every protected prime-end chain survives
+with the same injectivity and cyclic-order conclusions.
+\end{theorem}
+
+\begin{proof}
+The nested-intersection theorem for continua makes $C_\infty$ nonempty,
+compact, and connected.  Moreover
+\[
+ \Chat\setminus C_\infty
+ =
+ \bigcup_{n\ge1}(\Chat\setminus C_n).
+\]
+The sets on the right are connected and increasing, and all contain
+$\infty$; their union is connected.  Hence $C_\infty$ is full.
+
+For fixed $i$, the continua $C_n\cap A_i$ are nonempty, compact, connected,
+and decreasing.  Their intersection is therefore nonempty and connected,
+and distributivity of intersection gives
+\[
+ \bigcap_n(C_n\cap A_i)=C_\infty\cap A_i.
+\]
+Corollary~\ref{cor:full-connector-traces} now makes $H_\infty$ full.
+Avoidance and relative-collar clearance pass to the subset $C_\infty$;
+the final assertion follows from
+Corollary~\ref{cor:continuum-connector}.
+\end{proof}
+
+The theorem suggests a concrete route for an infinite construction:
+produce a \emph{decreasing} system of full connector envelopes with
+connected, nonempty traces, rather than take an arbitrary subsequential
+Hausdorff limit of finite trees.  It is a sufficient architecture, not a
+claim that the dynamical program already supplies such envelopes.
+
+\begin{warning}[The compactness gate]
+\label{warn:compactness-gate}
+Fullness and singleton attachment traces are not closed under Hausdorff
+limits.  Proposition~\ref{prop:trace-birth} isolates the trace-birth
+failure, while
+\[
+C_n=\{e^{it}:1/n\le t\le2\pi\}
+\]
+are closed arcs converging in Hausdorff distance to the separating Jordan
+curve $S^1$, isolating the independent cycle-birth failure in the connector
+itself.  Therefore a
+finite protected-carrier theorem cannot be passed to an infinite or virtual
+horizon by compactness alone.  At minimum, one must prove that the limiting
+connector remains nonseparating and that each limiting attachment trace
+remains nonempty and connected.  Under exactly those two conclusions,
+Corollary~\ref{cor:full-connector-traces} restores fullness of the limiting
+carrier.
+\end{warning}
+
+The warning is deliberately a no-go statement rather than a promoted
+dynamical claim.  It sharpens the finite/infinite boundary of this paper:
+the finite certificate solves routing, but a future limiting construction
+must control both connector cohomology and trace multiplication.  Neither
+control follows from Hausdorff precompactness.  Theorem
+\ref{thm:nested-limit-stability} supplies one sufficient replacement:
+decreasing full envelopes with nonempty connected traces.

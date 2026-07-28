@@ -9,8 +9,8 @@ theorem can promise.  Theorem~\ref{thm:no-least} shows that even the
 two-point package with identity dynamics and no obstacles admits no least
 compact connected full carrier, so no canonical minimal choice is available
 and a connector must be \emph{supplied}, not selected by an extremal
-principle.  Proposition~\ref{prop:access-collision} shows that a monotone,
-attachment-complete enlargement can permanently erase a protected prime-end
+principle.  Proposition~\ref{prop:access-collision} shows that a compact
+enlargement absorbing the pulled excess can permanently erase a protected prime-end
 access even along a conformal, critical-value-free branch: once a set
 occupying a protected side has been absorbed, no further monotone
 enlargement restores an access through it.  Together these force the shape
@@ -21,8 +21,9 @@ through the reserved-free region.  The theorem then owed to the reader is
 purely topological: every such certificate is realized by a compact
 connected full carrier, the protected accesses survive as prime ends of the
 enlarged complement, distinct accesses stay distinct, their cyclic order is
-unchanged, and the sides created by the connector itself appear in the
-boundary order dictated by the ribbon structure of the tree.  This is the
+unchanged, and the two regular-neighborhood side-readings of each connector
+edge appear in the boundary order dictated by the ribbon structure of the
+tree.  This is the
 content of Theorem~\ref{thm:realization} below.  The section closes with
 the naturality of the construction under univalent changes of the Jordan
 localization (Proposition~\ref{prop:naturality}).  The question of when a
@@ -36,7 +37,7 @@ simply connected domain whose boundary is a Jordan curve.  A
 continuum $K$ is \emph{full} if $\C\setminus K$ is connected, equivalently
 if $\Chat\setminus K$ is a simply connected domain containing $\infty$.
 Following the source manuscript \cite{MWman}, the full continua to be
-joined are called \emph{atoms}.  Let
+joined are called \emph{atoms}.  Fix $s\ge1$, and let
 \[
 A_1,\dots,A_s\Subset U
 \]
@@ -44,48 +45,53 @@ be pairwise disjoint atoms, and let
 \[
 Z\Subset U\setminus\bigcup_{i}A_i
 \]
-be a compact set, the frozen \emph{forbidden obstacle and critical-value
-set}.  Nothing in this section uses any dynamical structure on the $A_i$ or
-on $Z$; the data are purely planar.
+be the compact frozen forbidden set.  It bundles every non-collar
+obstacle, critical-value exclusion, and localization exclusion.  Nothing
+in this section uses any dynamical structure
+on the $A_i$ or on $Z$; the data are purely planar.
 
-Since each $A_i$ is full, $\Omega_i=\Chat\setminus A_i$ is a simply
-connected domain, and the prime-end formalism recalled in
-Section~\ref{sec:prelim} applies to it \cite{Pom92}.  We use it in the
-following normalized form.  A \emph{crosscut} of $\Omega_i$ is an open
-Jordan arc $\gamma\subset\Omega_i$ whose closure is a closed arc with two
-distinct endpoints on $\partial\Omega_i=\partial A_i$; the crosscut divides
-$\Omega_i$ into exactly two subdomains.  A \emph{prime-end chain} (null
-chain) is a sequence $(\gamma_n)_{n\ge1}$ of pairwise disjoint crosscuts
-whose spherical diameters tend to zero, together with a coherent choice of
-complementary domains $D_n$, the \emph{selected sides}: $D_n$ is one of the
-two components of $\Omega_i\setminus\gamma_n$, and $D_{n+1}\subset D_n$ for
-every $n$.  Two chains are \emph{equivalent} if each eventually divides the
-other, that is, every selected domain of either chain contains all
-sufficiently deep selected domains of the other; an equivalence class is a
-\emph{prime end} of $\Omega_i$.  The record of a chain therefore contains
-strictly more than the crosscuts themselves: it contains, for every $n$,
-the declaration of which side of $\gamma_n$ is selected.  It is exactly
-this declaration that the certificates below protect.
+For each nondegenerate atom $A_i$, the domain
+$\Omega_i=\Chat\setminus A_i$ is simply connected and the prime-end
+formalism of Section~\ref{subsec:A-primeends} applies \cite{Pom92}.
+Protected chains are permitted only at nondegenerate atoms; a degenerate
+atom may still carry a free port and participate in the carrier, but its
+protected-label set is empty.  All chains below are \emph{null chains} in the
+sense of
+\eqref{eq:A-null-chain}:
+\[
+ \overline{D_{n+1}}\setminus A_i\subset D_n,
+ \qquad
+ \operatorname{diam}_{\mathrm{sph}}(\gamma_n)\longrightarrow0.
+\]
+The record of a chain contains, for every $n$, the declaration of which
+side $D_n$ of $\gamma_n$ is selected.  It is exactly this declaration that
+the certificates below protect.
 
-For every protected access to $A_i$, indexed by a finite set of labels $a$,
-choose a prime-end crosscut chain
+For every protected access to a nondegenerate $A_i$, indexed by a finite
+set of labels $a$ specifying pairwise distinct prime ends at that fixed
+atom, choose a prime-end crosscut chain
 \[
 \Gamma_{i,a}=(\gamma_{i,a,n},\,D_{i,a,n})_{n\ge1}
 \]
 of $\Chat\setminus A_i$.  The chains are truncated, that is, an initial
 segment of each is discarded and the indices shifted, so that the terminal
-\emph{collar tails}
+\emph{relative collar tails}
 \[
-D_{i,a,1}\setminus A_i
+\overline{D_{i,a,1}}\setminus A_i
 \]
-are pairwise disjoint, lie in $U$, and miss $Z$ and the other atoms.  Such
-a truncation is possible because the finitely many chains define distinct
-accesses with shrinking selected domains, and because $Z$ and the atoms are
-compact and disjoint from the impressions being approached.  The set
-$D_{i,a,1}$ is called the (terminal, or first) \emph{protected collar} of
-the access $(i,a)$; every deeper selected domain $D_{i,a,n}$ lies inside
-it.  Figure~\ref{fig:collar} shows a single atom, one protected chain, its
-nested selected domains, and its collar.
+are pairwise disjoint, lie in $U$, and miss $Z$ and the other atoms.  For
+each fixed atom, Hausdorff separation in its prime-end closed disk gives
+pairwise disjoint sufficiently deep prime-end neighborhoods.  Across
+different atoms, choose pairwise disjoint Euclidean neighborhoods
+$V_i\Subset U$ of the compact sets $A_i$, all disjoint from $Z$.
+Because the nested compact sets $\overline{D_{i,a,n}}$ decrease to their
+impressions in $A_i$, sufficiently deep members lie in $V_i$.  A common
+finite truncation therefore has all the stated properties.  Their closures are allowed
+to meet inside a common atom, so overlapping prime-end impressions are not
+excluded.  The set $D_{i,a,1}$ is called the (terminal, or first)
+\emph{protected collar} of the access $(i,a)$; every deeper selected domain
+$D_{i,a,n}$ lies inside it.  Figure~\ref{fig:collar} shows a single atom,
+one protected chain, its nested selected domains, and its collar.
 
 \begin{figure}[htbp]
 \centering
@@ -145,8 +151,9 @@ $\Chat\setminus A_i$ with endpoints on $\partial A_i$ and shrinking
 diameters; the shaded regions are the nested selected sides
 $D_1\supset D_2\supset D_3$, drawn with increasing opacity toward the
 prime end.  The outermost selected domain $D_1$ is the protected collar of
-the access: after truncation the collar tail $D_1\setminus A_i$ is
-disjoint from every other collar tail, lies in $U$, and misses the
+the access: after truncation the relative collar tail
+$\overline{D_1}\setminus A_i$ is disjoint from every other relative tail,
+lies in $U$, and misses the
 obstacle set $Z$ and the other atoms.  The boundary of the atom is drawn
 deliberately oscillating: no local connectivity of $\partial A_i$ is
 assumed anywhere in this section, and the access is carried entirely by
@@ -159,32 +166,53 @@ Definition 10.1]\label{def:certificate}
 A \emph{protected ribbon-routing certificate} consists of the preceding
 data---the Jordan disk $U$, the atoms $A_1,\dots,A_s$, the forbidden set
 $Z$, and the truncated protected chains $\Gamma_{i,a}$---together with
-pairwise disjoint \emph{free-port arcs} $\alpha_i\colon[0,1]\to U$
+pairwise disjoint Jordan embeddings
+$\alpha_i\colon[0,1]\hookrightarrow U$, called \emph{free-port arcs},
 satisfying
 \[
 \alpha_i\cap A_i=\{x_i\},\qquad
 \alpha_i((0,1])\cap
-\Bigl(Z\cup\bigcup_{j}A_j\cup\bigcup_{j,a}D_{j,a,1}\Bigr)=\varnothing,
+\Bigl(Z\cup\bigcup_{j}A_j\cup
+\bigcup_{j,a}(\overline{D_{j,a,1}}\setminus A_j)\Bigr)=\varnothing,
 \]
 where $x_i=\alpha_i(0)$, and an embedded finite tree $G\subset U$ joining
 the outer port endpoints $\alpha_1(1),\dots,\alpha_s(1)$ while missing the
 same protected and forbidden sets
-$Z\cup\bigcup_jA_j\cup\bigcup_{j,a}D_{j,a,1}$.  The planar cyclic order of
+$Z\cup\bigcup_jA_j\cup
+\bigcup_{j,a}(\overline{D_{j,a,1}}\setminus A_j)$, subject to
+\[
+ G\cap\alpha_i=\{\alpha_i(1)\}\quad(1\le i\le s),
+ \qquad
+ G\cup\bigcup_i\alpha_i\ \text{an embedded finite plane tree}.
+\]
+As usual, a finite tree may be degenerate, consisting of one vertex and no
+edges; this convention is used when $s=1$.
+The planar cyclic order of
 half-edges at every vertex of $G$ is retained as part of the certificate
 (its \emph{ribbon structure}).  Every access read by a proof must be a
-protected chain $\Gamma_{i,a}$ or a declared side of this ribbon tree.
+protected chain $\Gamma_{i,a}$; every connector-side reading must be a
+declared side of this ribbon tree, interpreted through the boundary of a
+thin regular neighborhood.
 \end{definition}
 
 Given a certificate $R$, define its \emph{carrier}
 \begin{equation}\label{eq:C-HR}
 H_R \;=\; G\cup\bigcup_i\alpha_i\cup\bigcup_iA_i .
 \end{equation}
+The finite plane tree
+\[
+T_R:=G\cup\bigcup_i\alpha_i
+\]
+is its \emph{connector tree}, and $T_R\cap A_i$ is the
+\emph{connector attachment trace} at $A_i$.
 
 Four reading notes.  First, the port arc $\alpha_i$ touches its atom at
-the single \emph{free port} $x_i$, a point deliberately not lying in any
-protected collar: the second displayed condition includes
-$a$-indexed collars of the \emph{same} atom $i$, so the port enters the
-atom away from every protected access.  Second, ``joining the outer port
+the single \emph{free port} $x_i$, and its positive-parameter part avoids
+every protected relative collar tail, including those based at the same
+atom.  The abstract certificate does not require $x_i$ to avoid a protected
+impression inside $A_i$; applications that need that stronger marking
+condition impose it explicitly through the unprotected exposure locus of
+Section~\ref{sec:audit}.  Second, ``joining the outer port
 endpoints'' is read as part of the embeddedness of the certificate: the
 tree $G$ meets each port arc $\alpha_i$ in exactly the point
 $\alpha_i(1)$, so that $G\cup\bigcup_i\alpha_i$ is again an embedded
@@ -196,12 +224,14 @@ realization theorem below.  Third, the tree $G$ is a
 combinatorial object with a planar enhancement: recording the cyclic order
 of half-edges at each vertex fixes, up to isotopy, the two sides of every
 edge, and it is these \emph{declared ribbon sides} that the realization
-theorem converts into new accesses with a prescribed boundary order.
+theorem reads, through thin regular neighborhoods, in a prescribed
+boundary order.  No prime end associated with an individual tree edge is
+asserted.
 Fourth, the final sentence of the definition is a discipline on all later
 arguments, not a property of the data: any subsequent proof that consults
-an access of the carrier must consult either a protected chain or a
-declared ribbon side, never an incidental access created by the geometry
-of a particular embedding.  Figure~\ref{fig:certificate} shows a
+an access of the carrier must consult a protected chain, and any proof that
+consults a connector side must use a declared ribbon side rather than an
+incidental feature of a particular embedding.  Figure~\ref{fig:certificate} shows a
 certificate with three atoms.
 
 \begin{figure}[htbp]
@@ -312,11 +342,13 @@ certificate with three atoms.
 \caption{A protected ribbon-routing certificate with three atoms inside
 the Jordan disk $U$.  Each atom $A_i$ carries a protected collar (shaded,
 with two nested crosscuts indicated) and a free-port arc $\alpha_i$
-(heavy) landing at the single free point $x_i$, chosen away from every
-protected collar.  The embedded finite tree $G$ (heavy) joins the outer
-port endpoints; the interiors of the $\alpha_i$ and all of $G$ avoid the
-hatched obstacle set $Z$, all atoms, and all first collars
-$D_{j,a,1}$.  The planar cyclic order of the half-edges at the vertex of
+(heavy) landing at the single free point $x_i$; its positive-parameter
+part avoids every relative collar tail.  The embedded finite tree $G$
+(heavy) joins the outer
+port endpoints; the positive-parameter parts of the $\alpha_i$ and all of
+$G$ avoid the
+hatched obstacle set $Z$, all atoms, and all relative terminal collar
+tails.  The planar cyclic order of the half-edges at the vertex of
 $G$ is part of the certificate.  The carrier is
 $H_R=G\cup\bigcup_i\alpha_i\cup\bigcup_iA_i$.}
 \label{fig:certificate}
@@ -356,7 +388,8 @@ absent.
 
 A finite plane tree is nonseparating.  Indeed, $T$ is compact, connected,
 and simply connected, and one may argue by induction on the number of
-edges: a single closed arc does not separate the sphere, and if
+edges: a zero-edge tree is a singleton and a one-edge tree is a closed
+arc, neither of which separates the sphere; and if
 $T=T'\cup e$ with $e$ a closed pendant edge meeting $T'$ in one endpoint,
 then $T'$ and $e$ are nonseparating compacta with connected (one-point)
 intersection, so Janiszewski's theorem, quoted below, makes $T$
@@ -391,14 +424,14 @@ hence a full continuum.
 \begin{proof}[Second proof (Alexander duality and Mayer--Vietoris)]
 Work again in $\Chat=S^2$ and retain the notation $B_k$ of the first
 proof.  For a compact set $X\subset S^2$, Alexander duality in its
-\v{C}ech form \cite{Hat02} gives an isomorphism
+\v{C}ech form \cite[Chapter~6]{Spa66} gives an isomorphism
 \[
 \widetilde H_0\bigl(S^2\setminus X;\Z\bigr)\;\cong\;\check H^1(X;\Z),
 \]
 so $X$ is nonseparating precisely when its first reduced \v{C}ech
 cohomology vanishes.  (\v{C}ech cohomology is essential here: the atoms
-are arbitrary continua, in general not locally connected, and no
-CW-approximation of them is available; \v{C}ech theory has the required
+are arbitrary continua and need not be locally connected or of CW
+homotopy type; \v{C}ech theory has the required
 continuity under inverse limits of neighborhoods and satisfies the
 Mayer--Vietoris sequence for compact pairs in a normal ambient space.)
 
@@ -438,46 +471,51 @@ full continuum that stays out of a protected collar does not damage the
 protected access.  The chain survives verbatim---the same crosscuts, the
 same selected sides---as a prime-end chain of the complement of the
 enlarged continuum, and finitely many protected accesses with disjoint
-collars stay distinct and keep their cyclic order.
+relative collar tails stay distinct and keep their cyclic order.
 
 \begin{lemma}[Protected crosscut survival and order; manuscript
 Lemma 10.3]\label{lem:crosscut-survival}
 Let $H\supset A_i$ be a full continuum and let $(\gamma_n,D_n)_{n\ge1}$ be
 one of the protected chains above.  If
 \[
-(H\setminus A_i)\cap(D_1\setminus A_i)=\varnothing,
+(H\setminus A_i)\cap(\overline{D_1}\setminus A_i)=\varnothing,
 \]
-then a tail of the same crosscuts is a prime-end chain in
-$\Chat\setminus H$.  Its endpoints remain boundary points and its selected
-sides contain the old $D_n$.  A finite family of such chains with pairwise
-disjoint terminal selected domains induces distinct prime ends of
-$\Chat\setminus H$ with unchanged cyclic order.
+then the same crosscuts form a prime-end chain in
+$\Chat\setminus H$.  Their endpoints remain boundary points and their
+selected sides are the old domains $D_n$.  A finite family of such chains with
+pairwise disjoint relative terminal collar tails induces distinct prime
+ends of $\Chat\setminus H$ with unchanged cyclic order.  The order
+comparison is made for a family carried by one source complement; no
+identification of the prime-end circles of different atoms is asserted.
 \end{lemma}
 
 \begin{proof}
 Since $H$ is a full continuum, $\Chat\setminus H$ is a simply connected
-domain and has its own prime-end theory.  We verify that the tail
-$(\gamma_n)_{n\ge2}$, with the same selected sides, is a null chain for
+domain and has its own prime-end theory.  We verify that the entire chain
+$(\gamma_n)_{n\ge1}$, with the same selected sides, is a null chain for
 it.
 
 \emph{The selected domains avoid $H$ entirely.}
 For every $n$ the selected domain $D_n$ lies in $\Chat\setminus A_i$, so
-$D_n\setminus A_i=D_n$, and it is contained in $D_1$ by nestedness.
+$D_n\subset\overline{D_n}\setminus A_i\subset
+\overline{D_1}\setminus A_i$ by the null-chain relation.
 Hence
 \[
 H\cap D_n
 =(A_i\cap D_n)\cup\bigl((H\setminus A_i)\cap D_n\bigr)
-\subset\varnothing\cup\bigl((H\setminus A_i)\cap(D_1\setminus A_i)\bigr)
+\subset\varnothing\cup
+\bigl((H\setminus A_i)\cap(\overline{D_1}\setminus A_i)\bigr)
 =\varnothing,
 \]
 so $D_n\subset\Chat\setminus H$ for every $n$.
 
-\emph{Each deep crosscut remains a crosscut.}
-Fix $n\ge2$.  The open arc $\gamma_n$ lies in $D_{n-1}\subset D_1$:
-indeed $\gamma_n$ lies in the closure of $D_n\subset D_{n-1}$ and in
-$\Chat\setminus A_i$, and the part of $\partial D_{n-1}$ inside
-$\Chat\setminus A_i$ is $\gamma_{n-1}$, which $\gamma_n$ misses.  So by
-the preceding paragraph the arc $\gamma_n$ misses $H$; its two distinct
+\emph{Each crosscut remains a crosscut.}
+Fix $n\ge1$.  For $n=1$,
+$\gamma_1\subset\overline{D_1}\setminus A_i$; for $n\ge2$, the
+null-chain relation gives
+$\gamma_n\subset\overline{D_n}\setminus A_i\subset D_{n-1}\subset D_1$.
+The collar-clearance hypothesis therefore makes the open arc
+$\gamma_n$ miss $H$; its two distinct
 endpoints lie on $\partial A_i$, hence in $A_i\subset H$.  Every
 neighborhood of either endpoint meets the crosscut interior, which
 consists of points of $\Chat\setminus H$, so both endpoints remain
@@ -487,7 +525,7 @@ $\Chat\setminus H$ whose closure is an arc with two distinct endpoints on
 $\partial(\Chat\setminus H)$, that is, a crosscut of $\Chat\setminus H$.
 
 \emph{The selected sides are unchanged.}
-For $n\ge2$ let $D_n'$ denote the component of
+For $n\ge1$ let $D_n'$ denote the component of
 $(\Chat\setminus H)\setminus\gamma_n$ containing $D_n$; this is
 well defined because $D_n$ is connected and disjoint from
 $H\cup\gamma_n$.  We claim $D_n'=D_n$, so that the containment
@@ -508,19 +546,27 @@ lying in $\overline{D_n}$ already lies in $D_n$.  A nonempty connected
 subset of an open set that is both open and relatively closed is a
 component of it, so $D_n'=D_n$.  Nestedness of the new sides is now
 inherited from the original chain:
-$D_{n+1}'=D_{n+1}\subset D_n=D_n'$ for every $n\ge2$, and
+$D_{n+1}'=D_{n+1}\subset D_n=D_n'$ for every $n\ge1$, and
 $\gamma_{n+1}\subset D_n=D_n'$ lies in the selected side of $\gamma_n$,
 as a null chain requires.
 
 \emph{The diameters still tend to zero.}
 The crosscuts are unchanged as point sets, so their spherical diameters
-are the same numbers as before and still tend to zero.  Consequently
-$(\gamma_n,D_n')_{n\ge2}$ is a prime-end chain of $\Chat\setminus H$,
+are the same numbers as before and still tend to zero.  Moreover the
+original null-chain relation gives
+\[
+ \overline{D_{n+1}}\setminus H
+ \subset\overline{D_{n+1}}\setminus A_i
+ \subset D_n.
+\]
+Consequently $(\gamma_n,D_n')_{n\ge1}$ is the same null prime-end chain in
+$\Chat\setminus H$,
 which proves the first two assertions.
 
 \emph{Distinctness.}
 Now consider a finite family of protected chains satisfying the
-hypothesis, with pairwise disjoint terminal selected domains.  Recall
+hypothesis, with pairwise disjoint relative terminal collar tails.  Their
+terminal selected domains are then pairwise disjoint.  Recall
 that two null chains of the same domain define the same prime end if and
 only if they eventually divide one another: every selected domain of
 either chain contains all sufficiently deep selected domains of the
@@ -544,9 +590,11 @@ Riemann map \cite{Pom92}.  For a finite family of prime ends represented
 by pairwise disjoint crosscuts whose selected sides are also pairwise
 disjoint, this order can be read off inside the domain, as follows.
 Choose one deep crosscut from each chain, deep enough that the chosen
-crosscuts lie in the pairwise disjoint terminal collars; then the chosen
-crosscuts are pairwise disjoint and their selected sides are pairwise
-disjoint.  Fix three chains of the family, with chosen crosscuts
+crosscuts lie in the pairwise disjoint terminal collars and, in the
+prime-end closed disk, the closures of the corresponding cut-off caps are
+pairwise disjoint.  This is possible because the represented prime ends
+are distinct and that closed disk is Hausdorff.  Thus the chosen crosscuts
+and selected sides are pairwise disjoint.  Fix three chains of the family, with chosen crosscuts
 $c_1,c_2,c_3$ and selected sides $S_1,S_2,S_3$.  Call an embedded triod
 $Y$---three arcs with a common branch point, disjoint except at that
 point---\emph{computing} if $Y$ lies in the domain and meets the
@@ -583,7 +631,7 @@ order of the whole family is unchanged.
 \subsection*{The realization theorem}
 Assembling the two lemmas yields the main result of this section.
 
-\begin{theorem}[Protected regulated connector realization; manuscript
+\begin{theorem}[Protected ribbon-routing realization; manuscript
 Theorem 10.4]\label{thm:realization}
 Every protected ribbon-routing certificate $R$ has an actual carrier
 $H_R$, given by \eqref{eq:C-HR}, with the following properties:
@@ -593,9 +641,12 @@ $H_R$, given by \eqref{eq:C-HR}, with the following properties:
 trace $\{x_i\}$ at each atom;
 \item every protected crosscut chain remains a prime-end chain in
 $\Chat\setminus H_R$;
-\item the survival map is injective and preserves cyclic order;
-\item the connector-created sides have the boundary order of the retained
-ribbon tree; and
+\item the survival map is injective, and it preserves the cyclic order of
+every protected family carried by a common source complement;
+\item every sufficiently thin regular neighborhood of the connector tree
+has the boundary word of the retained ribbon structure; in particular,
+connector-side readings made through such a neighborhood occur in the
+declared order; and
 \item no local connectivity of any $A_i$ is required.
 \end{enumerate}
 \end{theorem}
@@ -625,18 +676,24 @@ $A_i$.  The difference $H_R\setminus A_i$ is contained in
 G\cup\bigcup_j\alpha_j((0,1])\cup\bigcup_{j\ne i}A_j .
 \]
 The tree $G$ and every half-open port arc $\alpha_j((0,1])$ miss
-\emph{all} first collars $D_{j',a',1}$, in particular $D_{i,a,1}$, by
+\emph{all} relative first collar tails, in particular
+$\overline{D_{i,a,1}}\setminus A_i$, by
 Definition~\ref{def:certificate}; and each atom $A_j$ with $j\ne i$
-misses the collar tail $D_{i,a,1}\setminus A_i$ by the truncation
+misses the same relative collar tail by the truncation
 normalization.  Hence
-$(H_R\setminus A_i)\cap(D_{i,a,1}\setminus A_i)=\varnothing$: the
-connector misses the terminal collar tail, and therefore misses every
-later closed collar tail $D_{i,a,n}\subset D_{i,a,1}$ as well.
-Lemma~\ref{lem:crosscut-survival} now shows that a tail of
-$\Gamma_{i,a}$ is a prime-end chain in $\Chat\setminus H_R$.
+\[
+(H_R\setminus A_i)\cap
+(\overline{D_{i,a,1}}\setminus A_i)=\varnothing:
+\]
+the connector misses the relative terminal collar tail, and therefore
+misses every deeper relative tail as well.
+Lemma~\ref{lem:crosscut-survival} now shows that
+$\Gamma_{i,a}$ itself is the same prime-end chain in
+$\Chat\setminus H_R$.
 
-\emph{Clause} (4).  The truncation normalization makes the terminal
-selected domains of distinct protected chains pairwise disjoint.  For
+\emph{Clause} (4).  The truncation normalization makes the relative
+terminal collar tails, hence the terminal selected domains, pairwise
+disjoint.  For
 each atom $A_i$, the final part of Lemma~\ref{lem:crosscut-survival}
 with $H=H_R$ gives distinctness and preservation of cyclic order for the
 subfamily of chains protecting $A_i$.  The distinctness argument of the
@@ -647,39 +704,38 @@ map is therefore injective on the full family over all $(i,a)$, and it
 preserves the cyclic order of every protected family with a common
 source domain.
 
-\emph{Clause} (5).  Let $N$ be a small regular neighborhood of the finite
-connector tree $T$ in the plane, chosen so thin that $N$ misses $Z$ and
-meets each atom only near its port point.  A regular neighborhood of a finite plane tree is a closed
+\emph{Clause} (5).  Let $N$ be a sufficiently thin regular neighborhood of
+the finite connector tree $T$ in the plane; it can be chosen to miss $Z$
+because $T$ and $Z$ are disjoint compact sets.  A regular neighborhood of a finite plane tree is a closed
 disk, and its boundary circle traverses every edge of $T$ on two sides:
 following $\partial N$, one passes along each edge once in each
 direction, and at a vertex of valence $d$ the boundary visits the $d$
 half-edges in exactly their planar cyclic order.  The resulting cyclic
 \emph{boundary word}, in which every edge appears twice with opposite
 orientations, is precisely the boundary word of the ribbon structure
-retained in the certificate.  The accesses to $H_R$ created by the
-connector---the two sides of every edge of $G$ and of every port
-arc---are read along this boundary circle, so their boundary order is the
-boundary order of the retained ribbon tree, as claimed.
+retained in the certificate.  This is the precise content of the
+connector-side order assertion: no additional prime end associated to an
+individual tree edge is asserted to exist.
 
 \emph{Clause} (6).  The argument uses crosscut chains only: atoms enter
 through their prime-end chains and through the single point $x_i$, never
 through a boundary parametrization.  No Euclidean boundary extension of
-any $A_i$---in particular no continuity of a Riemann map up to the
-boundary, equivalently no local connectivity of any atom---is assumed at
-any step.
+an exterior Riemann map is assumed, and no local-connectivity hypothesis
+is imposed on an atom or on its boundary.
 \end{proof}
 
 \begin{remark}\label{rem:C-no-lc}
 Clause (6) is the point of the whole construction and deserves emphasis.
-Realization arguments for connectors frequently assume that accesses
-land, that is, that radial limits of Riemann maps exist at the relevant
-boundary points; by Carath\'eodory's theorem this amounts to local
-connectivity of the atom boundaries.  The certificate formalism removes
-that hypothesis: an access is a chain of crosscuts with declared sides,
+Realization arguments for connectors frequently invoke a continuous
+boundary parametrization of a Riemann map, a blanket hypothesis equivalent
+by Carath\'eodory's theorem to local connectivity of the boundary.
+(Landing of one particular access is much weaker and is not conflated with
+local connectivity here.)  The certificate formalism removes the blanket
+hypothesis: an access is a chain of crosscuts with declared sides,
 an object available for an arbitrary full continuum, and
 Lemma~\ref{lem:crosscut-survival} shows it is preserved verbatim under
 any enlargement respecting the collar.  This is what allows the framework
-to be applied, in Section~\ref{sec:decoration}, to atoms that are not
+to be applied to atoms that are not
 known---and are not claimed---to be locally connected.
 \end{remark}
 
@@ -695,8 +751,12 @@ by $\phi$, then
 \begin{equation}\label{eq:C-naturality}
 H_{\phi_*R}=\phi(H_R).
 \end{equation}
-The protected survival map and the ribbon boundary order commute with the
-prime-end map induced by $\phi$.
+Choose any orientation-preserving sphere homeomorphism
+$\Phi\colon\Chat\to\Chat$ extending $\phi$.  The protected survival map
+commutes, on the recorded protected chains, with the prime-end map induced
+by $\Phi$, and the ribbon boundary order is preserved.  These restricted
+correspondences are independent of the chosen extension because all
+recorded data lie in $U$.
 \end{proposition}
 
 \begin{proof}
@@ -734,23 +794,21 @@ H_{\phi_*R}
 =\phi\Bigl(G\cup\bigcup_i\alpha_i\cup\bigcup_iA_i\Bigr)
 =\phi(H_R),
 \]
-which is \eqref{eq:C-naturality}.  Because $\Phi$ maps
+which is \eqref{eq:C-naturality}.  Because the chosen $\Phi$ maps
 $\Chat\setminus H_R$ onto $\Chat\setminus H_{\phi_*R}$ carrying null
 chains to null chains and preserving their division relation, it induces
 a bijection of prime ends under which the survival map of
 Lemma~\ref{lem:crosscut-survival} for $H_R$ corresponds to the survival
 map for $H_{\phi_*R}$, and the ribbon boundary words of
-Theorem~\ref{thm:realization}(5) correspond letter by letter.
+Theorem~\ref{thm:realization}(5) correspond letter by letter.  Any two
+such extensions agree with $\phi$ on the protected crosscuts, selected
+sides, atoms, ports, and connector tree, so this correspondence on the
+recorded data does not depend on the extension.
 \end{proof}
 
-Consequently one actual anchor certificate transports through the
-complete degree-one corridor of the source manuscript \cite{MWman}.  We
-record the manuscript's caveat: this transport does \emph{not} prove
-equality of the transported carrier with any carrier copy supplied by the
-$\psi$-ql immersion.  Naturality moves a certificate and its realization
-along a univalent map; it does not identify the result with an
-independently constructed carrier, and no such identification is claimed
-anywhere in this paper.
+Thus an orientation-preserving conformal map of Jordan localizations
+transports every certificate and its realization.  It does not identify
+the result with an independently constructed carrier.
 
 With realization settled, the burden shifts to existence: when do the
 port arcs and the routing tree demanded by

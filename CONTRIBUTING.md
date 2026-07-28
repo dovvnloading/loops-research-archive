@@ -101,7 +101,7 @@ Preserve the one-scale boundary. Identifying the component quotient does not ide
 
 ### Paper 3
 
-Paper 3 is an active draft. Proposals should cite the draft label and exact statement being reviewed. Separate finite planar carrier criteria from their unrealized virtual-dynamical application.
+Paper 3 Draft II is the current QA-audited research preprint. Proposals should cite the draft label and exact statement being reviewed. Separate its finite planar carrier criteria from the unrealized virtual-dynamical application.
 
 ### Main reduction
 

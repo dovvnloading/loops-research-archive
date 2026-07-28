@@ -1,8 +1,14 @@
 # Drafting conventions for paper3 (Draft I) — binding for every cluster file
 
+> **Draft II is current.** The release source of truth is
+> `skeleton_v2.tex` plus its inserted clusters, assembled as `main_v2.tex`
+> and released as `paper3_draft2.pdf`. This overrides the legacy Draft I
+> heading and digest-only architecture below. Every release must pass
+> `build_v2.ps1` and `qa_release.py`.
+
 ## Files
 
-- Source of truth: `SOURCES/digest.txt` (exact text extracted from the
+- Historical source extract: `SOURCES/digest.txt` (exact text extracted from the
   2026-07-27 manuscript PDF; page markers `@@PAGE n@@`; ligatures may appear
   as `ﬁ` etc. — normalize when transcribing).
 - Review being implemented: `REVIEW.md`.
@@ -25,8 +31,9 @@ TikZ is loaded with libraries: shapes.geometric, positioning, arrows.meta,
 decorations.pathmorphing, patterns. Figures are inline TikZ in `figure`
 environments with `\centering`, `\caption`, `\label{fig:...}`.
 
-Cite keys available (do NOT invent others): `DH85`, `Dud25`, `Hat02`,
-`KKL26`, `KL08`, `Moo25`, `MWman`, `New51`, `Pom92`, `Why42`.
+Cite keys available (do NOT invent others): `Bor31`, `DH85`, `Dud25`,
+`Eil36`, `Hat02`, `KKL26`, `KL08`, `Moo25`, `Mul22`, `MWman`, `New51`,
+`Pom92`, `Spa66`, `Wes26`, `Why42`.
 `MWman` = the source manuscript itself.
 
 ## Fixed cross-cluster labels (use EXACTLY these; they are referenced from
@@ -60,18 +67,38 @@ Internal labels beyond these: prefix with your cluster letter, e.g.
    title, e.g. `\begin{lemma}[One-ended slits do not disconnect a plane
    domain; manuscript Lemma 10.7, repaired]\label{lem:slits}`.
    All others say `manuscript Theorem 10.4` etc. with no `repaired`.
-2. Statements are transcribed faithfully (notational streamlining only).
-   The ONLY intentional divergence is the Lemma 10.7 repair and the
-   rewritten proof of Theorem 10.8 (cluster D), which must be flagged in
-   `rem:repair`.
+2. Departures from the source manuscript must be mathematically justified
+   and identified in the provenance crosswalk. The repaired Lemma 10.7 and
+   rewritten proof of Theorem 10.8 remain flagged in `rem:repair`.
 3. Never promote: no claims about UPTCR, virtual carriers, Wave horizon,
    MLC, or manuscript open problems 10.6/10.50-10.52/10.55/10.57/10.58.
    Mention them only as explicitly open, as the manuscript's Warning 10.59
    does.
 4. Proofs may be expanded for readability but must not silently change the
-   argument. If you strengthen wording, keep the mathematical content
-   identical to the digest.
+   argument. Any tightened hypothesis or strengthened conclusion must be
+   checked against its proof and recorded in the release QA.
 5. Tone: professional research-paper prose, amsart idiom, no bullet-point
    mathematics outside enumerated theorem clauses, no first-person plural
    excess. English throughout; "fullification" and "atom" are the
    manuscript's terms — keep them but define them at first use.
+
+## Architecture (Draft II)
+
+```text
+introduction
+preliminaries
+obstructions
+comparison with standard hull constructions
+certificate realization
+attachment cohomology and separation ledger
+exact free-component criterion
+packet criterion
+fixed-packet audit
+scope and next gates
+provenance appendix
+```
+
+`assemble.py` accepts `--skeleton` and `--output` and recognizes the
+`G_separation` cluster. Draft II is built only through `build_v2.ps1`,
+which performs structural validation, two clean deterministic builds,
+and the release PDF audit.
