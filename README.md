@@ -12,7 +12,7 @@ Assembled, authored, audited, and publicly released by **Matthew Robert Wesney**
 [![Proved: 316](https://img.shields.io/badge/proved-316-1f6f43?style=flat-square)](https://dovvnloading.github.io/loops-research-archive/#ledger)
 [![Open: 115](https://img.shields.io/badge/open-115-8a5a00?style=flat-square)](https://dovvnloading.github.io/loops-research-archive/#ledger)
 
-[**Explore the project page**](https://dovvnloading.github.io/loops-research-archive/) · [**Read the manuscript**](./marked_width_mlc_manuscript.pdf) · [**Read Paper 1**](./papers/paper1_canonical_localization/archive/paper1_v6_87pp_2026-07-27T1149.pdf) · [**Inspect the proof ledger**](https://dovvnloading.github.io/loops-research-archive/#ledger) · [**Browse the research dossier**](./dossier.html)
+[**Explore the project page**](https://dovvnloading.github.io/loops-research-archive/) · [**Read the manuscript**](./marked_width_mlc_manuscript.pdf) · [**Read Paper 1**](./papers/paper1_canonical_localization/paper1_forced_noninjectivity_sheet_kernel_v1.0.1.pdf) · [**Read Paper 2**](./papers/paper2_rooted_end_compactification/paper2_direct_decoration_rooted_end_compactification_v1.0.1.pdf) · [**Inspect the proof ledger**](https://dovvnloading.github.io/loops-research-archive/#ledger) · [**Browse the research dossier**](./dossier.html)
 
 </div>
 
@@ -25,9 +25,9 @@ This project studies the Mandelbrot Local Connectivity conjecture through a mark
 
 The manuscript develops finite root-pullback and inverse-tree reductions, exact critical-value and attachment formulae, finite routing, a common-domain theorem, finite Wave-horizon closure under stated hypotheses, and source-locked corrections and no-go results. The final passage to MLC is conditional on open compactness, transition, and rigidity inputs.
 
-## Paper 1 - forced noninjectivity and the canonical sheet resolution
+## Paper 1 — forced noninjectivity and the sheet kernel
 
-**Paper 1:** [*Forced Noninjectivity and Infinite Sheet Resolution in Canonical Localization*](./papers/paper1_canonical_localization/archive/paper1_v6_87pp_2026-07-27T1149.pdf) - 87 pages, draft of 2026-07-27.
+**Paper 1:** [*Forced Noninjectivity and the Sheet Kernel at Primitive Canonical Localization Seeds*](./papers/paper1_canonical_localization/paper1_forced_noninjectivity_sheet_kernel_v1.0.1.pdf) — 37 pages, Version 1.0.1, dated 2026-07-27.
 
 A central structural discovery made while adversarially testing the marked-carrier proposal is that Kahn's canonical localization does **not** preserve global injectivity at ordinary primitive canonical seeds. The published localization machinery is deliberately formulated in terms of immersions rather than embeddings. Paper 1 shows that this caution is sharp: for every ordinary quadratic-like restriction of a quadratic polynomial that is primitively renormalizable of period $p>1$, the canonically localized inclusion is forced to be noninjective. This is a forcing theorem at every seed in the stated class, not merely an example showing that failure is possible.
 
@@ -58,17 +58,35 @@ Consequently, the forgotten sheet system has at least $2^p-2$ independent periph
 | **Infinite coset fiber** | The sheet defect is intrinsically infinite; finite sheet bookkeeping cannot represent the unquotiented canonical localization. |
 | **Kernel normal form and winding surjection** | The defect is the kernel of the source-to-target hole-filling map and carries a surjection onto $\mathbb{Z}^{2^p-2}$. This kernel identification and winding quotient are the paper's principal quantitative novelty. |
 | **Exact propagation** | The collision and fiber data persist through the full, unselected exact Kahn equalizer tower on the complementary-cover locus. |
-| **Tile obstruction** | Under the paper's explicit alignment and annular-factorization hypotheses, the infinite resolution cannot be identified with a whole boundary-extended Kahn-Lyubich tile. |
+| **Abstract sharpness tests** | Two counterexamples show that the source hypotheses alone cannot restore injectivity, either for the annular collar model or for an abstract ψ-quadratic-like pair. |
 
 ### Consequence for the marked-width proposal
 
 Paper 1 changes the admissible state space for the broader program. Any argument consuming canonical localization must retain the coset-valued sheet fibration and its path-lifting transport, synchronize the removed obstacle packet, or prove a faithful quotient theorem preserving every path, access, and observable used later. Treating the localized inclusion as a globally embedded carrier silently discards infinitely many sheets and is invalid at the ordinary primitive canonical seeds covered by the theorem.
 
-The result is corrective with respect to an embedding-preservation route explored in this research program; it does **not** contradict Kahn or Kahn-Lyubich, whose published statements assert immersion rather than global embedding. The closest published anticipation is the observation that a component-index map can be surjective without being injective; Paper 1 upgrades that possibility to a forced collision for the glued canonical localization and then derives the kernel, infinitude, transport, and no-go structure.
+The result is corrective with respect to an embedding-preservation route explored in this research program; it does **not** contradict Kahn or Kahn-Lyubich, whose published statements assert immersion rather than global embedding. The closest published anticipation is the observation that a component-index map can be surjective without being injective; Paper 1 upgrades that possibility to a forced collision for the glued canonical localization and then derives the sheet kernel, winding quotient, infinitude, transport, and exact base-change structure.
 
 > [!CAUTION]
-> Paper 1 does not prove or refute MLC, rigidity, a priori bounds, or local connectivity. It does not disturb the dynamical covering arrow, the embedded inner collar, the homeomorphism on filled sets, or the exact pullback squares. Its unconditional core is at ordinary primitive canonical seeds. Statements about aligned Kahn-Lyubich decoration stages and whole-tile comparisons retain the explicit hypotheses stated in the paper; no claim is made for a general bold stage without an independent realization argument.
+> Paper 1 does not prove or refute MLC, rigidity, a priori bounds, or local connectivity. It does not disturb the dynamical covering arrow, the embedded inner collar, the homeomorphism on filled sets, or the exact pullback squares. Its unconditional core is at ordinary primitive canonical seeds. Applications to Kahn-Lyubich decoration stages require an additional stage-alignment hypothesis and are deferred to a sequel; Paper 1 makes no decoration-stage realization claim.
 
+## Paper 2 — direct-decoration rooted-end compactification
+
+**Paper 2:** [*The Direct-Decoration Rooted-End Compactification*](./papers/paper2_rooted_end_compactification/paper2_direct_decoration_rooted_end_compactification_v1.0.1.pdf) — 20 pages, Version 1.0.1, dated 2026-07-27.
+
+At a Kahn–Lyubich direct-decoration scale, and under the paper's explicit finite-depth graph-avoidance and standing hypotheses, Paper 2 realizes the binary end compactification inside one quadratic dynamical plane. Two univalent inverse branches generate finite fibers $K_w$ and nested end fibers $E_\omega$; their union $H_\partial$ is compact, those fibers are exactly its connected components, and the component quotient is the binary address compactification.
+
+| Paper 2 result | Mathematical content |
+|---|---|
+| **Exact component quotient** | The component projection $\pi_\partial:H_\partial\to\Omega_\partial$ is continuous and closed, with fibers exactly $K_w$ and $E_\omega$. |
+| **Shift dynamics away from the root** | On $H_\partial\setminus K_\epsilon$, the return map is a two-sheeted covering descending to first-symbol deletion on the binary address space. |
+| **Planar control** | Every component is full, and the complement of $H_\partial$ is connected. |
+| **Stable replacement theorem** | Fibers at an arbitrary set of finite addresses can be replaced inside pairwise disjoint Jordan cells without changing the component quotient; full replacements preserve connected complement. |
+| **Protected-carrier theorem** | Finitely many protected prime ends can be transported to a full carrier meeting $H_\partial$ exactly in the selected fibers while preserving cyclic order. |
+
+The abstract end compactification of a binary tree is classical. Paper 2's claimed contribution is its realization by direct-decoration inverse branches, puzzle pullbacks, and nested puzzle intersections in one dynamical plane, together with replacement and protected-access theorems in that same planar model.
+
+> [!CAUTION]
+> Paper 2 is an exact **one-scale model**. It does not identify the end fibers with small Julia sets, construct a self-return or renormalization map on an individual end fiber, establish cross-scale transitions, or prove MLC.
 ## Status at the source lock
 
 | Item | Recorded status |
@@ -91,8 +109,8 @@ Status labels are claims about this source-locked snapshot, not substitutes for 
 |---|---|
 | [Project page](https://dovvnloading.github.io/loops-research-archive/) | Scholarly overview, mathematical atlas, references, citation, and searchable proof ledger |
 | [Main manuscript](./marked_width_mlc_manuscript.pdf) | The 214-page marked-width reduction and its explicit result boundary |
-| **Paper 1:** [*Forced Noninjectivity and Infinite Sheet Resolution in Canonical Localization*](./papers/paper1_canonical_localization/archive/paper1_v6_87pp_2026-07-27T1149.pdf) | The 87-page forced-collision theorem, canonical covering/embedding resolution, infinite sheet defect, and winding invariant |
-| **Paper 2:** [*The Direct-Decoration Rooted-End Compactification: An Exact One-Scale Model for Rooted Component Packages*](./papers/paper2_rooted_end_compactification/paper2_draft3.pdf) | The 26-page Draft III constructing the binary rooted-end compactification, exact component quotient, stable infinite replacements, and finite protected-carrier routing |
+| **Paper 1:** [*Forced Noninjectivity and the Sheet Kernel at Primitive Canonical Localization Seeds*](./papers/paper1_canonical_localization/paper1_forced_noninjectivity_sheet_kernel_v1.0.1.pdf) | The 37-page Version 1.0.1 forced-collision theorem, canonical covering/embedding resolution, sheet-kernel model, and winding invariant |
+| **Paper 2:** [*The Direct-Decoration Rooted-End Compactification*](./papers/paper2_rooted_end_compactification/paper2_direct_decoration_rooted_end_compactification_v1.0.1.pdf) | The 20-page Version 1.0.1 construction of the binary rooted-end compactification, exact component quotient, stable infinite replacements, and finite protected-carrier routing |
 | [Machine-readable ledger](./ledger.json) | All 465 obligations, dependency links, evidence pointers, and statuses |
 | [Unified proof program](./research/mlc_unified/) | Source ledger, dependency and adversarial audits, proof obligations, validations, and research log |
 | [Companion papers](./papers/) | Drafts and extracted theorem-level materials for the localization, compactification, and protected-carrier subprograms |
@@ -151,8 +169,8 @@ Please cite **Wesney** for this archive and manuscript, and separately cite the 
 ## Reading order
 
 1. Start with the [project page](https://dovvnloading.github.io/loops-research-archive/) for the scope and result boundary.
-2. Read [Paper 1](./papers/paper1_canonical_localization/archive/paper1_v6_87pp_2026-07-27T1149.pdf) for the forced canonical collision, its infinite sheet resolution, and the resulting correction to the carrier proposal.
-3. Read [Paper 2](./papers/paper2_rooted_end_compactification/paper2_draft3.pdf) for the exact one-scale rooted-end compactification, component quotient, replacement theorem, and protected-carrier interface.
+2. Read [Paper 1](./papers/paper1_canonical_localization/paper1_forced_noninjectivity_sheet_kernel_v1.0.1.pdf) for the forced canonical collision, its infinite sheet resolution, and the resulting correction to the carrier proposal.
+3. Read [Paper 2](./papers/paper2_rooted_end_compactification/paper2_direct_decoration_rooted_end_compactification_v1.0.1.pdf) for the exact one-scale rooted-end compactification, component quotient, replacement theorem, and protected-carrier interface.
 4. Read the [main manuscript](./marked_width_mlc_manuscript.pdf) for the full marked-width program, definitions, theorem statements, and open gates.
 5. Use the [interactive ledger](https://dovvnloading.github.io/loops-research-archive/#ledger) to trace dependencies and isolate open obligations.
 6. Consult [`research/mlc_unified`](./research/mlc_unified/) for the source, dependency, adversarial, and validation record.
