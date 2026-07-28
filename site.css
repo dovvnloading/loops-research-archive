@@ -622,6 +622,30 @@ footer a {
   }
 }
 
+@media (max-width: 760px) {
+  #ledger,
+  #ledger > div,
+  #ledger div,
+  #ledger p,
+  #ledger span {
+    min-width: 0 !important;
+    max-width: 100% !important;
+  }
+
+  #ledger p,
+  #ledger div,
+  #ledger span {
+    overflow-wrap: anywhere !important;
+    word-break: break-word !important;
+  }
+
+  #ledger .katex-display {
+    width: 100%;
+    overflow-x: auto;
+    overflow-y: hidden;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
