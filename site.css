@@ -500,7 +500,7 @@ footer a {
   #proved,
   #gates,
   #qa,
-  #endpoint,
+  #frontier,
   #atlas,
   #context,
   #cite,
@@ -514,7 +514,7 @@ footer a {
   #proved > div:first-child,
   #gates > div:first-child,
   #qa > div:first-child,
-  #endpoint > div:first-child,
+  #frontier > div:first-child,
   #atlas > div:first-child,
   #context > div:first-child,
   #cite > div:first-child,
@@ -562,7 +562,7 @@ footer a {
   }
 
   #context [style*='grid-template-columns: 88px'],
-  #endpoint [style*='grid-template-columns: 88px'] {
+  #frontier [style*='grid-template-columns: 88px'] {
     grid-template-columns: 60px minmax(0, 1fr) !important;
     gap: 12px !important;
   }
@@ -611,12 +611,12 @@ footer a {
   }
 
   #context [style*='grid-template-columns: 88px'],
-  #endpoint [style*='grid-template-columns: 88px'] {
+  #frontier [style*='grid-template-columns: 88px'] {
     display: block !important;
   }
 
   #context [style*='grid-template-columns: 88px'] > span,
-  #endpoint [style*='grid-template-columns: 88px'] > span {
+  #frontier [style*='grid-template-columns: 88px'] > span {
     display: block;
     margin-bottom: 6px;
   }
