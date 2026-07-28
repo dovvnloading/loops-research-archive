@@ -103,7 +103,7 @@ The stationary-Wave audit splits the native repair into four gates. The manuscri
 
 Status labels are claims about this source-locked snapshot, not substitutes for the definitions, hypotheses, and evidence pointers in the manuscript and ledger.
 
-## What is public here
+## Research materials
 
 | Artifact | Purpose |
 |---|---|
@@ -116,8 +116,6 @@ Status labels are claims about this source-locked snapshot, not substitutes for 
 | [Companion papers](./papers/) | Drafts and extracted theorem-level materials for the localization, compactification, and protected-carrier subprograms |
 | [Numerical work](./code/) · [results](./results/) · [figures](./figs/) | Reproducible exploratory computations and visual diagnostics; these are supporting evidence, not proof |
 | [Research dossier](./dossier.html) | Archive-level synthesis of the public research effort |
-
-This repository is intentionally an **archive of research state**, not a software package. Temporary files, caches, duplicate exports, private correspondence, local-path artifacts, and unrelated working material are withheld from the public snapshot.
 
 ## Mathematical lineage and attribution
 
@@ -149,7 +147,6 @@ Imported theorems remain attributable to their original authors. New arguments, 
 - Counterexamples and no-go results are preserved because they constrain viable formulations.
 - Numerical experiments are separated from theorem claims.
 - The searchable web ledger is backed by both [`ledger.js`](./ledger.js) and [`ledger.json`](./ledger.json) so the public status map can be inspected without the interface.
-- Historical drafts remain visible where they document the evolution of the argument; the main manuscript and source lock define the current public snapshot.
 
 ## Citation
 
