@@ -948,10 +948,9 @@ pseudo-Siegel/sectorial regularization makes it unnecessary.
   verifies the external issue list against the live source, records every
   repair and source hash, and freezes the corrected dependency order without
   promoting UPTCR or MLC.
-- [external_research_partner_protocol.md](external_research_partner_protocol.md)
-  defines the external AI's adversarial-review role, the independent
-  reproduction requirement, and the promotion quarantine for every returned
-  claim.
+- [Public contribution and review protocol](../../CONTRIBUTING.md)
+  defines the proof, counterexample, source-audit, reproducibility, AI-disclosure,
+  and status-promotion standards for external contributions.
 - [root_pullback_virtual_carrier.md](root_pullback_virtual_carrier.md) proves
   the one-root component-routing equivalence, the exact critical-value
   corridor criterion, and the virtual root-carrier certificate.
