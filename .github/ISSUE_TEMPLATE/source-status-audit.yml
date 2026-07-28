@@ -1,0 +1,69 @@
+name: Source, status, or reproducibility audit
+description: Report a citation mismatch, status error, computational issue, or archive defect.
+title: "[Audit] "
+labels:
+  - audit
+body:
+  - type: dropdown
+    id: audit_type
+    attributes:
+      label: Audit type
+      options:
+        - Source or attribution
+        - Ledger status or dependency
+        - Computational reproducibility
+        - Notation or exposition
+        - Broken public artifact or link
+    validations:
+      required: true
+  - type: input
+    id: location
+    attributes:
+      label: Exact location
+      description: Give the file, page or line, theorem, and ledger ID when applicable.
+    validations:
+      required: true
+  - type: textarea
+    id: finding
+    attributes:
+      label: Finding
+      description: Describe the mismatch or failure precisely.
+    validations:
+      required: true
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Evidence
+      description: Link primary sources, quote the minimum relevant passage, or provide reproduction steps and output.
+    validations:
+      required: true
+  - type: textarea
+    id: correction
+    attributes:
+      label: Proposed correction
+      description: State the narrowest correction that resolves the issue.
+    validations:
+      required: true
+  - type: textarea
+    id: impact
+    attributes:
+      label: Dependency impact
+      description: Identify any theorem, paper, or ledger status affected downstream.
+    validations:
+      required: true
+  - type: textarea
+    id: ai
+    attributes:
+      label: AI-assistance disclosure
+      description: Name material AI use and the human verification performed, or write “None.”
+    validations:
+      required: true
+  - type: checkboxes
+    id: checks
+    attributes:
+      label: Submission checks
+      options:
+        - label: I checked the current public revision before filing this audit.
+          required: true
+        - label: I distinguish a mathematical error from an editorial or interface defect.
+          required: true

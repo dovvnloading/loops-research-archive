@@ -1,0 +1,29 @@
+cff-version: 1.2.0
+message: >-
+  Please cite this research archive and the specific paper used. Cite the
+  original literature separately for imported theorems.
+title: "A Marked-Width Reduction of Mandelbrot Local Connectivity: Public Research Archive"
+type: dataset
+authors:
+  - family-names: Wesney
+    given-names: Matthew Robert
+version: "2026.07.27"
+date-released: "2026-07-27"
+url: "https://github.com/dovvnloading/loops-research-archive"
+license: CC0-1.0
+abstract: >-
+  A source-locked research program toward Mandelbrot local connectivity,
+  including a 214-page conditional reduction, companion papers on canonical
+  localization, rooted-end compactification, and protected planar carriers,
+  a machine-readable proof-obligation ledger, adversarial audits,
+  counterexamples, and reproducible computational diagnostics. The MLC
+  conjecture remains open.
+keywords:
+  - Mandelbrot set
+  - local connectivity
+  - complex dynamics
+  - renormalization
+  - polynomial-like mappings
+  - extremal width
+  - prime ends
+  - proof ledger

@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Read the research map
+    url: https://github.com/dovvnloading/loops-research-archive/blob/main/RESEARCH_MAP.md
+    about: Locate the paper, interface, and ledger identifier before opening an issue.
+  - name: Search the proof ledger
+    url: https://dovvnloading.github.io/loops-research-archive/#ledger
+    about: Inspect current status, dependencies, and evidence pointers.

@@ -1,0 +1,87 @@
+name: Proof, repair, or counterexample
+description: Submit a mathematical argument, repair, obstruction, or counterexample.
+title: "[Mathematics] "
+labels:
+  - mathematics
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Identify the exact theorem, section, or ledger ID. Separate proved, conditional, and open content.
+  - type: input
+    id: target
+    attributes:
+      label: Target statement or ledger ID
+      placeholder: "Example: H2_CALIBRATION or Paper 2, Theorem …"
+    validations:
+      required: true
+  - type: dropdown
+    id: contribution
+    attributes:
+      label: Contribution type
+      options:
+        - Complete proof
+        - Proof repair
+        - Counterexample
+        - Obstruction or no-go result
+        - Conditional subcase
+    validations:
+      required: true
+  - type: textarea
+    id: claim
+    attributes:
+      label: Precise claim
+      description: State the proposed result and every hypothesis.
+    validations:
+      required: true
+  - type: textarea
+    id: argument
+    attributes:
+      label: Argument or construction
+      description: Give a complete proof, construction, or link to a reviewable manuscript.
+    validations:
+      required: true
+  - type: textarea
+    id: hypothesis_check
+    attributes:
+      label: Hypothesis-by-hypothesis check
+      description: Verify degree, marking, access, compactness, regularity, and source assumptions as applicable.
+    validations:
+      required: true
+  - type: textarea
+    id: dependencies
+    attributes:
+      label: Dependencies and status changes
+      description: List imported results and ledger nodes consumed or changed.
+    validations:
+      required: true
+  - type: textarea
+    id: boundary
+    attributes:
+      label: Result boundary
+      description: State explicitly what this contribution does not prove.
+    validations:
+      required: true
+  - type: textarea
+    id: attribution
+    attributes:
+      label: Sources and attribution
+      description: Provide theorem-level primary citations and credit original authors.
+    validations:
+      required: true
+  - type: textarea
+    id: ai
+    attributes:
+      label: AI-assistance disclosure
+      description: Name material AI use and the human verification performed, or write “None.”
+    validations:
+      required: true
+  - type: checkboxes
+    id: checks
+    attributes:
+      label: Submission checks
+      options:
+        - label: I have read CONTRIBUTING.md and the relevant manuscript statement.
+          required: true
+        - label: I have not represented a conditional or finite result as a global proof of MLC.
+          required: true
