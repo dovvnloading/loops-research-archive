@@ -1000,7 +1000,7 @@ h1 {
   }
 
   .brand-name,
-  .nav-visuals,
+  .nav-links .nav-visuals,
   .label-long {
     display: none;
   }
