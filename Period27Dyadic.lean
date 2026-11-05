@@ -51,10 +51,8 @@ def upperParameter : Bounds :=
 def addBounds (a b : Bounds) : Bounds :=
   ⟨a.lo + b.lo, a.hi + b.hi⟩
 
-/-- Integer floor and ceiling of an interval product divided by unit.
-    Int division uses the floor convention at positive denominators. -/
-/-- Resolution-parametric outward multiplication. The second argument
-    is the positive integer scale, not a floating-point precision. -/
+/-- Outward interval multiplication by integer endpoints. Int division
+    uses floor division when the positive integer scale is supplied. -/
 def mulBoundsAt (scale : Int) (a b : Bounds) : Bounds :=
   let p1 := a.lo * b.lo
   let p2 := a.lo * b.hi
