@@ -146,6 +146,7 @@ theorem iterate_next27_mod (time : Nat) (j : Phase 27) :
       change ((LoopsFormal.Paper2.iterate next27 time j).val + 1) % 27 =
         (j.val + (time + 1)) % 27
       rw [ih, Nat.mod_add_mod]
+      simp only [Nat.add_assoc]
 
 /-- The physical clock returns after 27 steps. -/
 theorem next27_returns (j : Phase 27) :
