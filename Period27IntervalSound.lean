@@ -245,6 +245,126 @@ theorem signed_add_sound_for_fractions
   · have hsum := Int.add_le_add hhiA hhiB
     grind
 
+
+/-- Full rounding-and-rectangle containment for arbitrary rational
+    values na/da and nb/db, with positive denominators. This extends
+    signed_multiplication_rounding_sound_on_grid to inputs that are
+    NOT represented exactly on the working dyadic grid. -/
+theorem signed_mul_sound_for_fractions
+    (scale : Int) (hscale : 0 < scale)
+    (a b : Bounds)
+    (na da nb db : Int)
+    (ha : FractionEnclosed scale a na da)
+    (hb : FractionEnclosed scale b nb db) :
+    FractionEnclosed scale (mulBoundsAt scale a b)
+      (na * nb) (da * db) := by
+  rcases ha with ⟨hda, halo, hahi⟩
+  rcases hb with ⟨hdb, hblo, hbhi⟩
+  let L : Int :=
+    min (min (a.lo * b.lo) (a.lo * b.hi))
+        (min (a.hi * b.lo) (a.hi * b.hi))
+  let U : Int :=
+    max (max (a.lo * b.lo) (a.lo * b.hi))
+        (max (a.hi * b.lo) (a.hi * b.hi))
+  have hden : 0 ≤ da * db := Int.le_of_lt (Int.mul_pos hda hdb)
+  have hdown : (L / scale) * scale ≤ L :=
+    signed_floor_rounds_outward L scale hscale
+  have hup : U ≤ (- ((-U) / scale)) * scale :=
+    signed_ceil_rounds_outward U scale hscale
+  have hL1 : L ≤ a.lo * b.lo :=
+    Int.le_trans (Int.min_le_left ..) (Int.min_le_left ..)
+  have hL2 : L ≤ a.lo * b.hi :=
+    Int.le_trans (Int.min_le_left ..) (Int.min_le_right ..)
+  have hL3 : L ≤ a.hi * b.lo :=
+    Int.le_trans (Int.min_le_right ..) (Int.min_le_left ..)
+  have hL4 : L ≤ a.hi * b.hi :=
+    Int.le_trans (Int.min_le_right ..) (Int.min_le_right ..)
+  have hU1 : a.lo * b.lo ≤ U :=
+    Int.le_trans (Int.le_max_left ..) (Int.le_max_left ..)
+  have hU2 : a.lo * b.hi ≤ U :=
+    Int.le_trans (Int.le_max_right ..) (Int.le_max_left ..)
+  have hU3 : a.hi * b.lo ≤ U :=
+    Int.le_trans (Int.le_max_left ..) (Int.le_max_right ..)
+  have hU4 : a.hi * b.hi ≤ U :=
+    Int.le_trans (Int.le_max_right ..) (Int.le_max_right ..)
+  have cornerLower (p q : Int) (hl : L ≤ p * q) :
+      ((L / scale) * scale) * (da * db) ≤
+        (p * da) * (q * db) := by
+    calc
+      ((L / scale) * scale) * (da * db)
+          ≤ (p * q) * (da * db) :=
+            Int.mul_le_mul_of_nonneg_right (Int.le_trans hdown hl) hden
+      _ = (p * da) * (q * db) := by ac_rfl
+  have cornerUpper (p q : Int) (hu : p * q ≤ U) :
+      (p * da) * (q * db) ≤
+        ((- ((-U) / scale)) * scale) * (da * db) := by
+    calc
+      (p * da) * (q * db) = (p * q) * (da * db) := by ac_rfl
+      _ ≤ ((- ((-U) / scale)) * scale) * (da * db) :=
+        Int.mul_le_mul_of_nonneg_right (Int.le_trans hu hup) hden
+  have hbox :=
+    integer_product_between_four_corners
+      (⟨a.lo * da, a.hi * da⟩ : Bounds)
+      (⟨b.lo * db, b.hi * db⟩ : Bounds)
+      (na * scale) (nb * scale)
+      halo hahi hblo hbhi
+  have hlowbox :
+      ((L / scale) * scale) * (da * db) ≤
+        (na * scale) * (nb * scale) := by
+    have hcorner :
+        ((L / scale) * scale) * (da * db) ≤
+          min
+            (min ((a.lo * da) * (b.lo * db))
+                 ((a.lo * da) * (b.hi * db)))
+            (min ((a.hi * da) * (b.lo * db))
+                 ((a.hi * da) * (b.hi * db))) :=
+      Int.le_min.mpr
+        ⟨Int.le_min.mpr ⟨cornerLower a.lo b.lo hL1,
+          cornerLower a.lo b.hi hL2⟩,
+         Int.le_min.mpr ⟨cornerLower a.hi b.lo hL3,
+          cornerLower a.hi b.hi hL4⟩⟩
+    exact Int.le_trans hcorner hbox.1
+  have hhighbox :
+      (na * scale) * (nb * scale) ≤
+        ((- ((-U) / scale)) * scale) * (da * db) := by
+    have hcorner :
+        max
+          (max ((a.lo * da) * (b.lo * db))
+               ((a.lo * da) * (b.hi * db)))
+          (max ((a.hi * da) * (b.lo * db))
+               ((a.hi * da) * (b.hi * db))) ≤
+        ((- ((-U) / scale)) * scale) * (da * db) :=
+      Int.max_le.mpr
+        ⟨Int.max_le.mpr ⟨cornerUpper a.lo b.lo hU1,
+          cornerUpper a.lo b.hi hU2⟩,
+         Int.max_le.mpr ⟨cornerUpper a.hi b.lo hU3,
+          cornerUpper a.hi b.hi hU4⟩⟩
+    exact Int.le_trans hbox.2 hcorner
+  have hlower :
+      (L / scale) * (da * db) ≤ (na * nb) * scale := by
+    apply Int.le_of_mul_le_mul_right (by
+      calc
+        ((L / scale) * (da * db)) * scale =
+            ((L / scale) * scale) * (da * db) := by ac_rfl
+        _ ≤ (na * scale) * (nb * scale) := hlowbox
+        _ = ((na * nb) * scale) * scale := by ac_rfl) hscale
+  have hupper :
+      (na * nb) * scale ≤ (- ((-U) / scale)) * (da * db) := by
+    apply Int.le_of_mul_le_mul_right (by
+      calc
+        ((na * nb) * scale) * scale =
+            (na * scale) * (nb * scale) := by ac_rfl
+        _ ≤ ((- ((-U) / scale)) * scale) * (da * db) := hhighbox
+        _ = ((- ((-U) / scale)) * (da * db)) * scale := by ac_rfl) hscale
+  dsimp only [FractionEnclosed]
+  constructor
+  · exact Int.mul_pos hda hdb
+  constructor
+  · change (L / scale) * (da * db) ≤ (na * nb) * scale
+    exact hlower
+  · change (na * nb) * scale ≤ (- ((-U) / scale)) * (da * db)
+    exact hupper
+
 /-- Multiplication by two is sound on arbitrary rational inputs. -/
 theorem signed_double_sound_for_fractions
     (scale : Int) (a : Bounds)
@@ -266,6 +386,7 @@ theorem signed_double_sound_for_fractions
 #print axioms signed_square_rounding_sound_on_grid
 #print axioms integer_product_between_four_corners
 #print axioms signed_add_sound_for_fractions
+#print axioms signed_mul_sound_for_fractions
 #print axioms signed_double_sound_for_fractions
 #print axioms signed_multiplication_rounding_sound_on_grid
 
