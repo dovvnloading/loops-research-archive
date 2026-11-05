@@ -195,4 +195,16 @@ A Lean 4.32.0 project on the same research branch provides three **kernel-checke
 2. [CloneGraph.lean](../../CloneGraph.lean) encodes the **actual five-vertex graph used in the counterexample**, with each gate cloned into \(n+1\) vertices for arbitrary \(n\ge0\), and proves all such clones primitive. The proof supplies one common positive walk length \(T=2(2n+5)^2\) from each vertex to every other vertex, and constructs the three gate-to-gate walks of lengths \(n+2,n+3,n+2\).
 3. [FirstReturn.lean](../../FirstReturn.lean) defines paths with **no intermediate cross-section visits**, proves no same-gate first-return path exists, proves the e-to-f first-return lengths must be \(n+2\) or \(n+3\), and f-to-e length must be \(n+2\), and constructs gate-avoiding witnesses of all three kinds.
 
-**Still not formally proved:** that the number of *distinct edge-occurrence paths* at each permitted length is exactly one, giving the weighted matrix \(R\) directly from the cloned graph. That counting bridge, the Perron spectral reduction and the comparison with the source's textual conventions remain separate proof obligations. Thus the Lean results strengthen the check of the combinatorial counterexample but should not be cited as a kernel check of Appendix C in full.
+**Historical status at this checkpoint:** The multiplicity-counting bridge remained open when the first three Lean modules were compiled. It is closed by the five-module extension below. The Perron spectral reduction and the comparison with the external source conventions remain separate proof obligations. The Lean results should not be cited as a kernel check of Appendix C in full.
+
+
+### All-n return-path multiplicities: kernel-checked extension
+
+The independent formalization now includes two further modules:
+
+- [ReturnBlocks.lean](../../ReturnBlocks.lean) proves that the actual five-vertex base graph has exactly the typed row-source adjacency blocks Q, C, D used in the note, that Q²=0, and that the base first-return coefficients R₂=DC, R₃=DQC satisfy R₂+R₃=[[0,2],[1,0]]. The nonprimitivity theorem for that graph-derived matrix follows by transport to the earlier explicit operator.
+- [ReturnPaths.lean](../../ReturnPaths.lean) defines Type-valued first-return paths whose intermediate vertex choices are retained. For **every n≥0**, the result proves exact path multiplicity one at lengths n+2 and n+3 from e to f, and at length n+2 from f to e; all other first-return types are empty. This is an all-n mathematical proof, not a finite numerical search. Since the graph has no parallel edge occurrences, these Type-valued routes faithfully enumerate the actual edge-occurrence routes.
+
+**Build evidence:** [passing Actions run 42027021716](https://github.com/dovvnloading/loops-research-archive/actions/runs/42027021716). A separate Python regression independently checks the integer path counts for n=0,...,64.
+
+**Remaining mathematical boundary:** The general first-return operator with its variable spectral parameter and the claimed Perron equation in the published Appendix C source are *not* yet formalized in Lean. In particular, this extension cannot be described as an independent verification of the global MLC theorem, the validity of the complete external paper, or mathematical publication priority.
