@@ -35,9 +35,14 @@ theorem full_clone_real_root_is_complex_eigenvalue (n : ℕ) (t : ℝ)
   · refine ⟨hub n, ?_⟩
     have hp : (fullCloneVector n t (hub n) : ℝ) ≠ 0 :=
       ne_of_gt (fullCloneVector_pos n t ht (hub n))
+    change (fullCloneVector n t (hub n) : ℂ) ≠ 0
     exact_mod_cast hp
   · intro u
     have hreal := fullAdjacencyMatrix_eigen n t ht hroot u
+    change (∑ w : Vertex n,
+      ((fullAdjacencyMatrix n u w : ℝ) : ℂ) *
+        (fullCloneVector n t w : ℂ)) =
+          (t : ℂ) * (fullCloneVector n t u : ℂ)
     exact_mod_cast hreal
 
 /-- Every clone length has a positive real eigenvalue which actually
