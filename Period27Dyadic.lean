@@ -107,6 +107,12 @@ theorem parameter_bracket_straddles_period27_root :
     (pointAfter27 upperParameter).hi < 0 := by
   decide +kernel
 
+/-- Full endpoint enclosures at precision 2^-144, not merely signs. -/
+theorem certified_endpoint_enclosures :
+    pointAfter27 lowerParameter = ⟨4251281, 4252485⟩ ∧
+    pointAfter27 upperParameter = ⟨-8835097, -8833684⟩ := by
+  decide +kernel
+
 theorem derivative_strict_negative :
     (derivativeAt 27).hi < 0 := by
   decide +kernel
@@ -149,6 +155,7 @@ theorem period27_dyadic_matches_symbolic_inputs :
     physical_orbit_order_verified_by_intervals, ?_⟩
   exact all_27_ranks_agree.1.trans all_27_ranks_agree.2.symm
 
+#print axioms certified_endpoint_enclosures
 #print axioms parameter_bracket_straddles_period27_root
 #print axioms derivative_strict_negative
 #print axioms physical_orbit_order_verified_by_intervals
