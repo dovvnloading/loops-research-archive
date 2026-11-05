@@ -108,6 +108,13 @@ At the source lock, the terminal implication **UPTCR ⇒ MLC** is recorded as pr
 
 The stationary-Wave repair has one proved gate—relative continuation—and three open interfaces: pointwise two-path breaking, measurable final fixed-component exit, and typed bounded-degree pushforward. Exact identifiers, dependencies, and evidence links are available in the [interactive ledger](https://dovvnloading.github.io/loops-research-archive/#ledger) and [`ledger.json`](./ledger.json).
 
+### November 2026 — certified two-scale complex return model
+
+A new [independently reproducible exact certificate](./research/independent_audits/complex_two_scale_quadratic_like_certificate_20261105.md) constructs **proper degree-two quadratic-like return maps of periods 3 and 9 in the same actual quadratic dynamical plane**, uniformly for every complex parameter within (2^{-32}) of the explicit period-27 center. The target disks are (U_3=D(0,1/4)) and (U_9=D(0,1/32)); their critical preimage components are compactly nested, with connected little filled Julia sets, pairwise disjoint phase images, and a physically realized 9-to-3 phase inclusion. [Exact outward integer checks](./research/independent_audits/verify_complex_quadratic_like_3_9.py) run in research CI.
+
+**Boundary:** This is a finite attracting-window complex renormalization example—not a source-compatible Kahn–Lyubich ray/prime-end/sheet atlas. Every parameter in the certified window fails Paper 2's (K(f)=J(f)) assumption. It does not close the global marked-construction or MLC analytic gates. The earlier [parameter-window and naive-stadium first-failure certificate](./research/independent_audits/two_scale_complex_window_obstructions_20261105.md) remains applicable and explains why different, larger complex return domains were required.
+
+
 ## Navigate the archive
 
 | Layer | Entry point | Use it for |
