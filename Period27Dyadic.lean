@@ -53,21 +53,29 @@ def addBounds (a b : Bounds) : Bounds :=
 
 /-- Integer floor and ceiling of an interval product divided by unit.
     Int division uses the floor convention at positive denominators. -/
-def mulBounds (a b : Bounds) : Bounds :=
+/-- Resolution-parametric outward multiplication. The second argument
+    is the positive integer scale, not a floating-point precision. -/
+def mulBoundsAt (scale : Int) (a b : Bounds) : Bounds :=
   let p1 := a.lo * b.lo
   let p2 := a.lo * b.hi
   let p3 := a.hi * b.lo
   let p4 := a.hi * b.hi
   let low := min (min p1 p2) (min p3 p4)
   let high := max (max p1 p2) (max p3 p4)
-  ⟨low / unit, - ((-high) / unit)⟩
+  ⟨low / scale, - ((-high) / scale)⟩
+
+def mulBounds (a b : Bounds) : Bounds :=
+  mulBoundsAt unit a b
 
 /-- Squaring a signed interval: handle a zero-crossing exactly. -/
-def squareBounds (a : Bounds) : Bounds :=
+def squareBoundsAt (scale : Int) (a : Bounds) : Bounds :=
   let p := a.lo * a.lo
   let q := a.hi * a.hi
   let low := if a.lo ≤ 0 ∧ 0 ≤ a.hi then 0 else min p q
-  ⟨low / unit, - ((-(max p q)) / unit)⟩
+  ⟨low / scale, - ((-(max p q)) / scale)⟩
+
+def squareBounds (a : Bounds) : Bounds :=
+  squareBoundsAt unit a
 
 def doubleBounds (a : Bounds) : Bounds :=
   ⟨2 * a.lo, 2 * a.hi⟩
@@ -82,6 +90,34 @@ def orbitTrace : Nat → Bounds → Bounds → List Bounds
 
 def pointAfter27 (c : Bounds) : Bounds :=
   (orbitTrace 27 c zeroBound).getD 27 zeroBound
+
+/-- The *same* squaring engine at the coarser resolution 2^-128.
+    This is an adversarial negative control, not a different enclosure
+    algorithm or a claim about analytic soundness. -/
+def coarseUnit : Int := 2 ^ 128
+
+def pointAfterAt (scale : Int) : Nat → Bounds → Bounds → Bounds
+  | 0, _, x => x
+  | k + 1, c, x =>
+      pointAfterAt scale k c (addBounds (squareBoundsAt scale x) c)
+
+def coarseLowerParameter : Bounds := ⟨parameterK, parameterK⟩
+def coarseUpperParameter : Bounds := ⟨parameterK + 1, parameterK + 1⟩
+def coarseLowerEndpoint : Bounds :=
+  pointAfterAt coarseUnit 27 coarseLowerParameter zeroBound
+def coarseUpperEndpoint : Bounds :=
+  pointAfterAt coarseUnit 27 coarseUpperParameter zeroBound
+
+/-- At 2^-128 **both** endpoint enclosures contain zero. Thus this
+    resolution does not certify either strict sign; the 2^-144
+    calculation below succeeds. The exact coarse bounds are checked
+    by the kernel rather than copied as trusted data. -/
+theorem precision128_endpoint_sign_test_fails :
+    coarseLowerEndpoint = ⟨-408, 796⟩ ∧
+    coarseUpperEndpoint = ⟨-736, 497⟩ ∧
+    coarseLowerEndpoint.lo ≤ 0 ∧ 0 ≤ coarseLowerEndpoint.hi ∧
+    coarseUpperEndpoint.lo ≤ 0 ∧ 0 ≤ coarseUpperEndpoint.hi := by
+  decide +kernel
 
 /-- Joint forward iteration of x_j and d_j = dx_j/dc, with
     d_(j+1) = 2*x_j*d_j + 1. -/
@@ -155,6 +191,7 @@ theorem period27_dyadic_matches_symbolic_inputs :
     physical_orbit_order_verified_by_intervals, ?_⟩
   exact all_27_ranks_agree.1.trans all_27_ranks_agree.2.symm
 
+#print axioms precision128_endpoint_sign_test_fails
 #print axioms certified_endpoint_enclosures
 #print axioms parameter_bracket_straddles_period27_root
 #print axioms derivative_strict_negative
