@@ -24,13 +24,16 @@ t^{-2}&0
 | [GraphWeightedBridge.lean](GraphWeightedBridge.lean) | Imports the five original core-Lean modules and constructs H(t) from the graph's already-checked integer R₂=DC and R₃=DQC coefficients. Proves the exact equality with the real-valued weighted operator and transports the eigenproblem theorem. |
 | [CloneBounds.lean](CloneBounds.lean) | For every n and t>1 with t^(2n+5)=t+1, proves t^(2n+4) < 2 < t^(2n+6), a uniform-in-n integer-power bracket. |
 | [CloneRoot.lean](CloneRoot.lean) | For every natural n, proves a **unique real root greater than 1** of t^(2n+5)=t+1 exists; it lies strictly between 1 and 2. |
+| [FullCloneEigen.lean](FullCloneEigen.lean) | For every n and root t>1, constructs the explicit positive full vector x_i=t^i for i≤n and x_i=t^i/(t+1) for i>n; verifies all local adjacency equations, including the shortcut and wrap. |
+| [FullCloneMatrix.lean](FullCloneMatrix.lean) | Constructs the complete (2n+5)-vertex 0/1 adjacency matrix directly from the certified Edge relation, proves its full finite row sums equal the local action, and checks the positive eigenpair using Matrix.mulVec. |
+| [SpectralDominance.lean](SpectralDominance.lean) | Proves a reusable finite-dimensional inequality: for any nonnegative real matrix with a strictly positive real eigenvector of eigenvalue t, every complex eigenvalue μ satisfies ‖μ‖≤t. Specializes it to every cloned adjacency matrix. |
+| [FullCloneSpectralMax.lean](FullCloneSpectralMax.lean) | Casts the checked real eigenvector to an actual nonzero complex eigenvector and proves its eigenvalue t attains the maximum modulus of all complex eigenvalues of the full matrix. Thus t is the spectral radius in the usual finite-dimensional sense. |
 
 Both Lean projects build without proof holes or custom axioms.
 An additional standard-library Fraction regression checks the
 negative-weight identity at 357 exact rational test points.
 
-**Passing CI:** [mathlib build #42032197008](https://github.com/dovvnloading/loops-research-archive/actions/runs/42032197008) and the separate root Lean/Python suite.
-Newer commits require their own head-specific CI check before merging.
+**Passing CI:** The completed full-matrix and spectral-dominance theorem suite was checked in [mathlib build #42038972966](https://github.com/dovvnloading/loops-research-archive/actions/runs/42038972966). The separate root Lean/Python suite is also checked. Newer commits require their own head-specific CI before merge.
 
 ## Meaning and limitations
 
@@ -41,20 +44,28 @@ preprint and not an unconditional proof of MLC.
 
 Outstanding obligations:
 
-1. Show directly that the full (2n+5)-vertex **cloned adjacency matrix**
-   has a positive eigenvector with the same eigenvalue t. The
-   current graph-to-return bridge is formally checked, but the
-   full-clone matrix eigenpair elimination is not yet formalized.
-2. Identify the full adjacency and two-gate positive eigenvalues
-   with the **Perron spectral radius**, and optionally prove the
-   exact spectral-radius limit. No full Perron theorem is invoked here.
-3. Generalize to arbitrary finite nilpotent-Q cross sections,
-   with explicit graph orientations, types, and hypotheses.
-4. Obtain independent expert and original-author review of the
-   *printed source conventions* and novelty; none of these proofs
-   establishes that the source's main dynamical theorem is false.
-5. MLC analytic gates (marked construction, calibration,
-   coercivity and rigidity) remain open and are not touched.
+1. Prove **strict** complex spectral dominance and simplicity using the
+   already verified primitivity of the graph, or cite an appropriate
+   formal Perron–Frobenius theorem. The current proof establishes the
+   non-strict modulus bound and attainment, sufficient to identify the
+   spectral radius, but not a strict gap.
+2. Connect the theorem to mathlib's named spectral-radius operator and
+   eigenvalue spectrum API (the current mathematical characterization
+   is stated directly in terms of complex eigenpairs).
+3. Generalize beyond the explicit five-vertex cycle-with-shortcut graph
+   to arbitrary finite nilpotent-Q cross sections and prove the
+   general Schur/first-return spectral reduction with precise typing.
+4. Obtain independent expert and original-author review of the literal
+   Appendix C conventions and novelty. This research does **not**
+   establish that the source's main complex-dynamics result is false.
+5. MLC analytic gates (marked construction, calibration, coercivity,
+   rigidity) remain open. Nothing here proves MLC.
+
+The independent [full adjacency test](../../research/independent_audits/verify_full_clone_adjacency.py)
+checks 528 exact rational full-matrix residual identities. The
+[spectral regression](../../research/independent_audits/verify_full_clone_spectral_radius.py)
+compares numerical eigenspectra and positive roots for 34 clone
+lengths. These support the all-n Lean proofs but are not substitutes.
 
 ## Reproduce
 
