@@ -43,7 +43,13 @@ theorem decode_encode27 : ∀ j : Phase 27,
 /-- Every three-digit address also survives encoding after decoding. -/
 theorem encode_decode27 : ∀ a : Address27,
     encode27 (decode27 a) = a := by
-  decide +kernel
+  intro a
+  cases a with
+  | mk x tail =>
+    cases tail with
+    | mk y z =>
+      revert x y z
+      decide +kernel
 
 theorem encode27_injective : Function.Injective encode27 := by
   intro i j h
@@ -101,7 +107,13 @@ def carry27 (a : Address27) : Address27 :=
     it is not an assumed diagram of how the digits behave. -/
 theorem carry_is_physical_successor : ∀ a : Address27,
     carry27 a = encode27 (next27 (decode27 a)) := by
-  decide +kernel
+  intro a
+  cases a with
+  | mk x tail =>
+    cases tail with
+    | mk y z =>
+      revert x y z
+      decide +kernel
 
 /-- The phase encoding intertwines physical successor and exact carry. -/
 theorem carry_conjugacy (j : Phase 27) :
@@ -134,8 +146,6 @@ theorem iterate_next27_mod (time : Nat) (j : Phase 27) :
       change ((LoopsFormal.Paper2.iterate next27 time j).val + 1) % 27 =
         (j.val + (time + 1)) % 27
       rw [ih, Nat.mod_add_mod]
-      congr 1
-      omega
 
 /-- The physical clock returns after 27 steps. -/
 theorem next27_returns (j : Phase 27) :
