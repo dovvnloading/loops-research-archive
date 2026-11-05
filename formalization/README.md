@@ -1,33 +1,49 @@
-# Formal proof program (Lean 4)
+# Formal proof program — Lean 4
 
-Formalization is a **separate verification track** for the research archive. Kernel-checked code can establish the exact statement encoded in Lean, but cannot establish that the encoded statement accurately reflects the intended analytical theorem without a mathematical specification review.
+The formalization is a **separate verification track**. A successful Lean build checks the exact encoded statements; it does not certify that the encoding matches all hypotheses of a cited analytical theorem. Mandelbrot Local Connectivity remains open.
 
-## First certified target
+## Verified graph formalization (2026-11-05)
 
-The current `LoopsFormal.lean` implements the two-gate return operator whose matrix in the standard basis is
-`[[0, 2], [1, 0]]`. It proves for **every natural exponent** that the image of each coordinate basis vector has a zero component, so no power has strictly positive entries. This verifies the imprimitive **reduced return matrix** obstruction used in the Appendix C audit.
+The repository pins **Lean 4.32.0**, with three source files compiled by Lake and GitHub Actions.
 
-This does **not yet** formalize (a) primitivity of the original five-vertex directed graph and each cloned graph, (b) the equality between this explicit operator and the general delayed-clone reduction, or (c) any Mandelbrot-local-connectivity claim. Those are separate formalization obligations. No unproved analytical hypothesis should be silently replaced by a definition.
+1. [LoopsFormal.lean](../LoopsFormal.lean) proves that the two-state operator with matrix
+   \[
+   R=\begin{pmatrix}0&2\\1&0\end{pmatrix}
+   \]
+   has no strictly positive power, for any natural exponent.
 
-## Staged roadmap
+2. [CloneGraph.lean](../CloneGraph.lean) defines every length-\(n\) delayed clone of the five-vertex graph, in the exact vertex order
+   \[
+   e_0,\ldots,e_n,b,a,f_0,\ldots,f_n,c.
+   \]
+   Every edge is a cycle edge except the shortcut \(e_n\to a\). **For all \(n\ge0\)** it constructs a common walk length \(T=2(2n+5)^2\) between every ordered pair of vertices, hence proves that each clone is primitive. It additionally constructs walks of lengths \(n+2,n+3\) from gate \(e_0\) to \(f_0\), and of length \(n+2\) from \(f_0\) to \(e_0\).
 
-1. **Finite graph layer (active):** verify the two-state support obstruction; next formalize graph cycle lengths, strong connectivity, and primitivity of every delayed clone. Add the bridge from the weighted return paths to the explicit matrix action.
-2. **Exact spectral layer (proposed):** introduce mathlib's finite matrices and prove the block elimination / Schur reduction `rho(H(lambda_n)) = lambda_n^n`, with typed row/column conventions and hypotheses. Formalize the positive-power counterexample separately.
-3. **Quantitative Perron layer (proposed):** prove the two-sided eigenvalue bounds under finite nilpotent cross-section hypotheses. The second-order asymptotic requires analytic perturbation and extra formal machinery.
-4. **Paper 1 (future):** formalize the abstract subgroup-reflection criterion for maps between covering spaces *before* attempting a quadratic dynamical realization. Verify the hypotheses about local path connectivity, lifting and source/target subgroups.
-5. **Paper 3 (future):** isolate elementary finite planar attachment lemmas. General compacta Čech cohomology, prime ends, and inverse-limit arguments may need substantial library development.
-6. **MLC gates (not currently formalizable):** the missing actual analytic carrier, calibration, coercivity, and rigidity theorems still require mathematical proofs; Lean does not invent those proofs.
+3. [FirstReturn.lean](../FirstReturn.lean) defines a first-return path to a gate as one avoiding **both gates** at all intermediate vertices. It proves that no first return from a gate to itself exists, that \(e_0\to f_0\) first returns have length **only** \(n+2\) or \(n+3\), and that \(f_0\to e_0\) first returns have length **only** \(n+2\). It constructs gate-avoiding path witnesses of all three permitted lengths.
+
+**Passing CI:** [GitHub Actions run #42021592679](https://github.com/dovvnloading/loops-research-archive/actions/runs/42021592679). The build uses Lean 4.32.0 and includes a proof-placeholder rejection check.
+
+### The explicit primitivity certificate
+
+Let \(L=2n+5\), \(M=2L\). For a source vertex at index \(u\) and target at index \(v\), set \(a=L-u\), \(b=v\), and \(d=a+b\), so \(d\le M\). Travel \(a\) edges to \(e_0\); use \(d\) shortcut cycles of length \(L-1\) and \(M-d\) ordinary cycles of length \(L\); then travel \(b\) edges to \(v\). The common length is
+
+\[
+a+d(L-1)+(M-d)L+b=ML=2L^2.
+\]
+
+Lean checks the complete construction, including all bounds and path compositions.
+
+## Remaining formal obligations
+
+**Exact return-path multiplicities:** The currently verified support theorem classifies possible first-return lengths, but does not yet prove uniqueness of the edge-occurrence path at each allowed length. A typed path-count proof is required to obtain the return matrix \(R\) directly from the graph instead of taking it as a separate explicit operator.
+
+**General spectral theorem:** A pinned compatible mathlib version could support formalization of weighted first-return matrices, Schur-complement elimination, Perron–Frobenius arguments, and the two-sided finite-clone estimates. The sign of return-length exponents must be checked against explicitly declared source/target matrix conventions.
+
+**Longer-term topology:** Paper 1's abstract covering-space arguments and Paper 3's prime ends and compacta cohomology are separate substantial formalization tasks. No open MLC gate has been closed by the finite graph work.
 
 ## Reproduce
 
-The repository root has a minimal `lean-toolchain` pin and `lakefile.toml`. Run:
+From the repository root, run the command:
 
-```bash
-lake build
-```
+    lake build
 
-GitHub Actions checks this on the research pull request. The script rejects placeholders and builds the Lean library. Only treat a file as **kernel-checked** if its build passes, with exact commit SHA and compiler version recorded.
-
-## Review discipline
-
-Maintain separate statuses: *informal argument*, *finite/numerical regression*, *Lean elaboration pending*, *Lean kernel checked*, *meaning/assumption audited*, and *independent specialist reviewed*. None of these automatically upgrades an existing open mathematical research obligation.
+The relevant files are lean-toolchain, lakefile.toml, lake-manifest.json and .github/workflows/lean-proofs.yml. Do not promote research obligations based only on a passing build; specification review and independent expert review remain distinct requirements.
