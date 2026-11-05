@@ -150,6 +150,31 @@ def check() -> None:
         assert all(Y[j].positive() or Y[j].negative()
                    for j in range(1, period))
         assert negatives % 2 == (1 if period == 3 else 0)
+        # A finite-horizon COMPLEX neighborhood certificate.
+        # For a real x in f^j(I), |x|<2, so if z stays within
+        # e_j of x, then |f(z)-f(x)|<=e_j*(4+e_j)<=5*e_j
+        # whenever e_j<=1. Start with e_0=2^-40.
+        # Thus e_j<=5^j*2^-40<10^-6 for j<=8.
+        assert all(max(abs(J.lo), abs(J.hi)) < 2*UNIT
+                   for J in Y[:period]), ("phase outside radius 2", period)
+        phase_zero_clearance = []
+        for j in range(1, period):
+            J = Y[j]
+            bound = J.lo if J.positive() else -J.hi
+            assert bound*10 > UNIT, ("phase approaches 0", period, j)
+            phase_zero_clearance.append(bound)
+        phase_gaps = [
+            B.lo-A.hi if A.below(B) else A.lo-B.hi
+            for j, A in enumerate(Y[:period])
+            for B in Y[j+1:period]
+        ]
+        assert phase_gaps and min(phase_gaps)*100 > UNIT, (
+            "phase gap smaller than 1/100", period)
+        assert 5**(period-1)*1_000_000 < 2**40
+        # Pairwise images of the complex 2^-40 stadium about I
+        # stay inside disjoint (<10^-6)-tubes around the Y[j].
+        # No f^j(z), 1<=j<period, can equal 0 in that tube,
+        # so f^period has no critical point other than z=0 there.
         certificates[period] = (I, Y, negatives)
 
     # Invariant period-3 interval:
@@ -183,6 +208,9 @@ def check() -> None:
         print(f"  verified return: f^{period}(I{period})=I{period} (see endpoint proof)")
         if period == 9:
             print("  I9 is strictly inside I3; f^3(I9) and f^6(I9) lie in I3")
+    print("  COMPLEX: epsilon=2^-40 phase tubes disjoint for j<3 and j<9")
+    print("  COMPLEX: all intermediate iterates avoid the critical point")
+    print("  COMPLEX LIMIT: no polynomial-like proper return or KL rays/sheets proved")
     print("LIMIT: real restrictive intervals; complex puzzle and MLC gates remain open")
 
 
