@@ -63,7 +63,6 @@ private theorem pow_mul_two (n : ℕ) (t f : ℝ) :
 private theorem inv_weight_three (t f : ℝ) (ht : t ≠ 0) :
     (((t ^ 2)⁻¹ + (t ^ 3)⁻¹) * f) * t ^ 3 = (t + 1) * f := by
   field_simp [ht]
-  ring
 
 private theorem inv_weight_two (t e : ℝ) (ht : t ≠ 0) :
     ((t ^ 2)⁻¹ * e) * t ^ 2 = e := by
