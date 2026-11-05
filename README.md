@@ -146,12 +146,14 @@ The archive deliberately separates **checked finite arithmetic**, **paper-level 
 
 | Evidence layer | What is checked | What is *not* checked |
 |---|---|---|
-| **Lean 4.32.0** | [Period27Dyadic.lean](./Period27Dyadic.lean) verifies signed $2^{-144}$-dyadic endpoint bounds, the parameter derivative, 26 nonzero orbit signs and 27 strict orbit ranks; [Period27Kneading.lean](./Period27Kneading.lean) verifies the 27-bit tuning word, doubling orbit, full twisted-shift ranks and a conditional marking-memory criterion. | General real interval-enclosure soundness and IVT/MVT, ray landing, complex geometry, KL sheet transport or MLC. |
+| **Lean 4.32.0** | [Period27Dyadic.lean](./Period27Dyadic.lean) and [Period27Kneading.lean](./Period27Kneading.lean) check the period-27 integer bracket, signs, order and twisted ranks. **New:** [Period27IntervalSound.lean](./Period27IntervalSound.lean) proves signed outward arithmetic for *arbitrary rational inputs*; [Period27RationalTrace.lean](./Period27RationalTrace.lean) verifies the genuine 27th rational critical-iterate signs using an all-horizons enclosure induction; [Period27RationalDerivative.lean](./Period27RationalDerivative.lean) proves the algebraic derivative recurrence is negative for every rational parameter in the bracket. | Real IVT/MVT, the calculus-derivative identity and a fully formal real center existence/uniqueness theorem remain open, as do ray landing, complex geometry, KL sheet transport and MLC. |
 | **Exact Python certificates** | Independent $2^{-224}$ outward integer arithmetic for the parameter, real restrictions, complex bound margins, candidate angles and finite graphs. | Numerical/algorithmic checks alone do not prove the full analytic bridge. |
 | **Written analytic arguments** | Rouché and Riemann–Hurwitz are used to interpret the complex domain bounds, with hypotheses and scope recorded in the [two-scale note](./research/independent_audits/complex_two_scale_quadratic_like_certificate_20261105.md). | These analytic deductions are not yet Lean-kernel-formalized. |
 | **Source-locked papers and ledger** | Precise claims, evidence links, dependencies, counterexamples and imported hypotheses. | Universal analytic construction, calibration, coercivity, rigidity and MLC remain open. |
 
 The [Lean arithmetic note](./research/independent_audits/lean_period27_kernel_arithmetic_20261105.md) explains the proof boundary, including why $2^{-128}$ arithmetic was too coarse to certify the period-27 **endpoint** signs and why the Lean computation uses $2^{-144}$. Kernel-reduced finite proofs use `decide +kernel`, not `native_decide` or proof holes; foundational Lean axioms can still appear in the declared imports.
+
+The [rational interval soundness proof note](./research/independent_audits/period27_rational_interval_soundness_20261105.md) closes a previous **arithmetic trust gap**: Lean now proves the interval operations are sound for general rational values, not just that one particular computed interval has favorable endpoints. This does not by itself prove a real root exists in Lean.
 
 ### Reproduce the central results
 
@@ -171,7 +173,7 @@ python research/independent_audits/verify_period27_symbolic_atlas.py --check-man
 python research/independent_audits/verify_period27_kneading_angle_permutation.py
 
 # Kernel-check the key formal modules and all default targets:
-lake build Period27Kneading Period27Dyadic
+lake build Period27Kneading Period27Dyadic Period27IntervalSound Period27RationalTrace Period27RationalDerivative
 lake build
 
 # Check README local links, chart provenance, and accessible SVGs:
@@ -193,7 +195,7 @@ The [main synthesis manuscript](./marked_width_mlc_manuscript.pdf) contains the 
 | `UNIVERSAL_PROTECTED_TOWER_CLOSURE` | **Open** | Close the protected tower across the admitted combinatorial regimes. |
 | `UPTCR_IMPLIES_MLC` | **Proved conditional implication** | Applies **only if** universal tower compactness and rigidity have already been proved. |
 
-**Most immediate tracked problems:** [Issue #12](https://github.com/dovvnloading/loops-research-archive/issues/12) seeks the *actual* period-27 component-root-ray identity and Kahn–Lyubich-compatible phase, access and sheet atlas. [Issue #15](https://github.com/dovvnloading/loops-research-archive/issues/15) seeks an end-to-end Lean proof of signed-dyadic interval soundness, IVT/MVT and unique period-27 parameter existence.
+**Most immediate tracked problems:** [Issue #12](https://github.com/dovvnloading/loops-research-archive/issues/12) seeks the *actual* period-27 component-root-ray identity and Kahn–Lyubich-compatible phase, access and sheet atlas. [Issue #15](https://github.com/dovvnloading/loops-research-archive/issues/15) has now completed the generic **rational interval soundness** step, but still seeks a fully formal real IVT/MVT, calculus-derivative identification, and unique period-27 parameter existence.
 
 The stationary-Wave research has proved relative continuation in the archived setting, but its two-path breaking, measurable fixed-component exit, and typed bounded-degree pushforward interfaces remain open. The [novelty/value audit](./research/mlc_unified/novelty_and_value_audit_20260725.md) cautions against treating the number of compiled proofs or conditional reductions as a measure of proximity to MLC.
 
