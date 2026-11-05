@@ -202,6 +202,19 @@ def check() -> None:
         # The same initial complex 2^-40 stadium and growth bound
         # 5^j*2^-40 < 10^-6 therefore work for every real parameter
         # in this explicit open 2^-32-neighborhood of c*.
+    # The finite complex phase separation also survives every COMPLEX
+    # quadratic parameter c' in the open disk |c'-c*| < 2^-26.
+    # For any z within 2^-40 of x in the center interval I_p, let
+    # e_j=|f_{c'}^j(z)-f_{c*}^j(x)|. Since center phase |f^j(x)|<2,
+    # e_(j+1) <= e_j*(4+e_j)+2^-26 <= 5*e_j+2^-26 if e_j<=1.
+    # Thus e_j <= 5^j*2^-40 + ((5^j-1)/4)*2^-26.
+    # At j=8 this is less than 1/500, checked entirely in integers.
+    # Each center real phase is separated by >1/100, so the COMPLEX
+    # perturbed images remain disjoint (2/500<1/100); noninitial
+    # images remain >1/10-1/500 from zero.
+    e8_num = 5**8 * (2**26) + ((5**8-1)//4) * (2**40)
+    assert 500*e8_num < (2**66)
+    assert 2*100 < 500  # 2/500 < 1/100
     # Invariant period-3 interval:
     # f^3(0)=x3 (maximum), f^3(x3)=x6 (minimum),
     # f^3(x6)=x9 (strictly inside [x6,x3]).
@@ -236,6 +249,7 @@ def check() -> None:
     print("  COMPLEX: epsilon=2^-40 phase tubes disjoint for j<3 and j<9")
     print("  COMPLEX: all intermediate iterates avoid the critical point")
     print("  COMPLEX: phase collars persist for |c-c*|<~2^-32 (dyadic bracket widened)")
+    print("  COMPLEX: finite phase disjointness uniform for |c'-c*|<2^-26")
     print("  COMPLEX LIMIT: no polynomial-like proper return or KL rays/sheets proved")
     print("LIMIT: real restrictive intervals; complex puzzle and MLC gates remain open")
 
