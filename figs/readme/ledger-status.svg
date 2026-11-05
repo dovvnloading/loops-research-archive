@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 980 264" role="img" aria-labelledby="chart-title chart-desc">
+  <title id="chart-title">Source-locked proof-ledger distribution</title>
+  <desc id="chart-desc">On July 27, 2026 the ledger contained 465 obligations: 34 imported, 316 internally proved, and 115 open. This is an inventory, not a percentage of the Mandelbrot Local Connectivity conjecture solved.</desc>
+  <rect width="980" height="264" rx="18" fill="#f8fafc"/>
+  <text x="46" y="48" font-family="Arial,sans-serif" font-size="24" font-weight="700" fill="#0f172a">Proof-obligation inventory</text>
+  <text x="46" y="77" font-family="Arial,sans-serif" font-size="15" fill="#475569">Source-locked snapshot: 2026-07-27  |  Total: 465 obligations</text>
+  <rect x="46" y="101" width="888" height="48" rx="10" fill="#dbe3e9"/>
+  <clipPath id="bar-clip"><rect x="46" y="101" width="888" height="48" rx="10"/></clipPath>
+  <g clip-path="url(#bar-clip)">
+    <rect x="46" y="101" width="65" height="48" fill="#64748b"/>
+    <rect x="111" y="101" width="603" height="48" fill="#0f766e"/>
+    <rect x="714" y="101" width="220" height="48" fill="#bb7b24"/>
+    <path d="M111 101 V149 M714 101 V149" stroke="#ffffff" stroke-width="3"/>
+  </g>
+  <g font-family="Arial,sans-serif" font-size="15" fill="#0f172a">
+    <circle cx="56" cy="192" r="8" fill="#64748b"/>
+    <text x="75" y="197" font-weight="700">Imported</text>
+    <text x="75" y="220" fill="#475569">34 · 7.3%</text>
+    <circle cx="344" cy="192" r="8" fill="#0f766e"/>
+    <text x="363" y="197" font-weight="700">Proved in ledger</text>
+    <text x="363" y="220" fill="#475569">316 · 68.0%</text>
+    <circle cx="705" cy="192" r="8" fill="#bb7b24"/>
+    <text x="724" y="197" font-weight="700">Open</text>
+    <text x="724" y="220" fill="#475569">115 · 24.7%</text>
+  </g>
+  <text x="46" y="251" font-family="Arial,sans-serif" font-size="13" fill="#64748b">Not a completion meter: obligation counts do not measure proximity to MLC.</text>
+</svg>
