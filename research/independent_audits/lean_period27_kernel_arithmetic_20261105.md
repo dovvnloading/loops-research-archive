@@ -48,7 +48,14 @@ P_{27}((K+1)/2^{128})\in
 
 It also checks that the *upper* bound of \(D_{27}\) over the entire parameter interval is strictly negative, and that \(x_1,x_3,x_9\) never vanish there. Taken with the independently explained interval soundness and continuity/differentiability facts, these inequalities isolate the unique exact-period-27 real root \(c_*\).
 
-**Important failed precision experiment:** rounding at \(2^{-128}\) is sufficient for all 26 orbit signs and the strict 27-point order, but **not** for the two tiny endpoint signs: at that resolution, both endpoint enclosures straddle zero. The first Lean attempt therefore failed exactly where it should. Increasing precision to \(2^{-144}\) resolves the endpoint enclosure and gives the strict positive and negative numbers above. This negative audit is relevant: a proof that quietly used the coarser endpoint enclosure would have a gap.
+**Kernel-checked negative precision control:** rounding at \(2^{-128}\) suffices for the 26 orbit signs and strict 27-point order, but **not** for the tiny parameter-bracket endpoint signs. The new **precision128_endpoint_sign_test_fails** Lean theorem uses the same scale-parametric outward square operation and checks the full coarse enclosures:
+
+\[
+P_{27}(K/2^{128})\in[-408,796]\,2^{-128},\qquad
+P_{27}((K+1)/2^{128})\in[-736,497]\,2^{-128}.
+\]
+
+Both contain zero. At \(2^{-144}\), the independently kernel-checked strict endpoint signs above are obtained. This regression is intentionally a **failed certification test**, not a claim that the mathematical endpoint values vanish. It does not close the separate Lean interval-soundness or real IVT/MVT formalization obligations in Issue #15.
 
 ## 3. Kernel-checked real critical orbit and exact word
 
