@@ -208,3 +208,45 @@ The independent formalization now includes two further modules:
 **Build evidence:** [passing Actions run 42027021716](https://github.com/dovvnloading/loops-research-archive/actions/runs/42027021716). A separate Python regression independently checks the integer path counts for n=0,...,64.
 
 **Remaining mathematical boundary:** The general first-return operator with its variable spectral parameter and the claimed Perron equation in the published Appendix C source are *not* yet formalized in Lean. In particular, this extension cannot be described as an independent verification of the global MLC theorem, the validity of the complete external paper, or mathematical publication priority.
+
+
+### Integrated mathlib eigenproblem and positive-root proof (2026-11-05)
+
+A *separate* Lean 4.32.0 / mathlib v4.32.0 workspace now imports
+the original five graph-theory modules into a single formal theorem
+dependency chain. The verified files are:
+
+- [WeightedReturn.lean](../../formalization/weighted/WeightedReturn.lean):
+  for \(t\ne0\) and \(n\in\mathbb N\), a weighted eigenvector
+  \((e,f)\) with \(f\ne0\) of
+  \(H(t)=\left(\begin{smallmatrix}
+  0&t^{-2}+t^{-3}\\t^{-2}&0
+  \end{smallmatrix}\right)\) at eigenvalue \(t^n\) exists
+  **if and only if** \(t^{2n+5}=t+1\). It constructs a positive
+  eigenvector \((t^{n+2},1)\) for positive roots.
+- [GraphWeightedBridge.lean](../../formalization/weighted/GraphWeightedBridge.lean):
+  imports the independently graph-checked R₂ and R₃ coefficients,
+  proves their real weighted action equals the displayed H(t),
+  and transports the exact eigenproblem theorem to that
+  graph-derived operator.
+- [WeightedReturn.lean](../../formalization/weighted/WeightedReturn.lean)
+  also formalizes the literal *positive-power* operator and shows
+  that for \(t>1\) satisfying the correct clone polynomial it has
+  **no** eigenvector with eigenvalue \(t^n\) and nonzero second
+  coordinate. This is a precise mathematical inconsistency under
+  the chosen literal source conventions.
+- [CloneBounds.lean](../../formalization/weighted/CloneBounds.lean):
+  proves \(t^{2n+4}<2<t^{2n+6}\) at the positive clone root.
+- [CloneRoot.lean](../../formalization/weighted/CloneRoot.lean):
+  proves there is **exactly one** real \(t>1\) satisfying the
+  clone polynomial for every \(n\), and it lies in (1,2).
+
+**Verification:** [passing mathlib CI run 42032197008](https://github.com/dovvnloading/loops-research-archive/actions/runs/42032197008).
+Run proofs on the exact PR head before publication or merge.
+
+**Boundary:** The current Lean theorems do not yet formalize the
+full-clone adjacency eigenproblem, Perron spectral-radius
+identification, the general nilpotent-Q theorem, or the complete
+source paper. The source-convention interpretation, priority, and
+effect on external proofs still require specialist and author review.
+No MLC analytic gate has been closed.
