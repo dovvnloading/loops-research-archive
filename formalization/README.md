@@ -111,6 +111,28 @@ mathlib builds remain separate.
 **Kernel check:** [mathlib run #42038972966](https://github.com/dovvnloading/loops-research-archive/actions/runs/42038972966).
 A newer PR-head build is required before merging.
 
+
+## New finite phase-tower formalization (2026-11-05)
+
+[`PhaseTower.lean`](../PhaseTower.lean) and
+[`PhaseTower27.lean`](../PhaseTower27.lean) formalize a general
+**lossless-marking criterion** for nested finite return clocks:
+a fine-phase label factors through a coarser projection **if and only if**
+it is constant on every projection fiber. When the fine clock is strictly
+larger, any injective fine-phase marking cannot factor through the smaller
+clock. Projected clocks compose when periods divide each other, and a
+separate conditional theorem transports actual physical iterates through
+nested forward-invariant return sets.
+
+At periods 3, 9, and 27, the second module constructs an exactly reversible
+three-digit clock address, verifies its carry automaton, proves conjugacy
+for every iterate, and checks that its period is exactly 27. These are
+finite/conditional statements, **not** the KL access/sheet realization or
+an MLC result.
+
+See the [mathematical theorem and boundary note](phase-tower.md)
+for the exact statements, proof structure, and reproduction instructions.
+
 ## Remaining formal obligations
 
 **General weighted return operators:** Exact integer first-return multiplicities and the base adjacency blocks are now kernel-checked. The all-n weighted return operator, its Perron equation, and its comparison to the published conventions still require distinct theorems.
