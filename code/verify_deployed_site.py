@@ -18,7 +18,7 @@ RESOURCES = {
     "site-v2.css": None,
     "site-v2.js": None,
     "ledger.json": b'"obligations"',
-    "dossier.html": b"<html",
+    "dossier.html": b"<title",
     "classic.html": b"<html",
     "figs/readme/two-scale-return.svg": b"<svg",
     "figs/readme/ledger-status.svg": b"<svg",
