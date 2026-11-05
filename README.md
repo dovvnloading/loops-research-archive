@@ -77,11 +77,11 @@ These papers provide the program's core finite and structural foundations. The P
 
 ### The three structural lessons
 
-**Paper 1 — localization cannot silently forget sheets.** At an ordinary primitive quadratic-like restriction of period \(p>1\), the overall return has degree \(2^p\), whereas the central component has degree two. The excess \(2^p-2\) pullback components create peripheral sheet information. The paper identifies a based fiber \(K/H_s\) and proves, under its stated hypotheses,
+**Paper 1 — localization cannot silently forget sheets.** At an ordinary primitive quadratic-like restriction of period $p>1$, the overall return has degree $2^p$, whereas the central component has degree two. The excess $2^p-2$ pullback components create peripheral sheet information. The paper identifies a based fiber $K/H_s$ and proves, under its stated hypotheses,
 
-\[
+$$
 N_{\mathrm{fill}}=\ker(a_*),\qquad K=N_{\mathrm{fill}}\rtimes H_s,\qquad N_{\mathrm{fill}}\twoheadrightarrow\mathbb Z^{\,2^p-2}.
-\]
+$
 
 This concerns the program's canonical **embedding** failure; it does not contradict the **immersion** statements used by Kahn and Kahn–Lyubich.
 
@@ -97,48 +97,48 @@ The most recent research builds an **explicit, finite real-and-complex model** t
 
 ![Diagram of one period-27 quadratic center, the degree-two outer period-3 return and inner period-9 return, with K9 contained in K3](./figs/readme/two-scale-return.svg)
 
-For \(f_c(z)=z^2+c\), the [exact real certificate](./research/independent_audits/real_quadratic_3_9_restrictive_certificate_20261105.md) isolates a unique real parameter \(c_*\approx-1.786429858055761\) in a specified \(2^{-128}\) rational bracket with **exact critical period 27**. It constructs nested restrictive intervals \(I_9\subset\operatorname{int}I_3\) with return times 9 and 3.
+For $f_c(z)=z^2+c$, the [exact real certificate](./research/independent_audits/real_quadratic_3_9_restrictive_certificate_20261105.md) isolates a unique real parameter $c_*\approx-1.786429858055761$ in a specified $2^{-128}$ rational bracket with **exact critical period 27**. It constructs nested restrictive intervals $I_9\subset\operatorname{int}I_3$ with return times 9 and 3.
 
 The [complex-domain certificate](./research/independent_audits/complex_two_scale_quadratic_like_certificate_20261105.md) then gives explicit target disks
 
-\[
+$$
 U_3=D(0,1/4),\qquad U_9=D(0,1/32),
-\]
+$
 
-and, for every \(\lvert c-c_*\rvert<2^{-32}\), proper degree-two quadratic-like restrictions
+and, for every $\lvert c-c_*\rvert<2^{-32}$, proper degree-two quadratic-like restrictions
 
-\[
+$$
 f_c^3:V_{3,c}\longrightarrow U_3,
 \qquad
 f_c^9:V_{9,c}\longrightarrow U_9.
-\]
+$
 
-The construction establishes connected little filled Julia sets and \(K_{9,c}\subset K_{3,c}\), with the nine inner physical phase images refining the three outer phases. These are **finite attracting-window results**, supported by exact outward-integer bounds and written Rouché/Riemann–Hurwitz arguments—not by a Lean proof of complex analysis.
+The construction establishes connected little filled Julia sets and $K_{9,c}\subset K_{3,c}$, with the nine inner physical phase images refining the three outer phases. These are **finite attracting-window results**, supported by exact outward-integer bounds and written Rouché/Riemann–Hurwitz arguments—not by a Lean proof of complex analysis.
 
 ### Three-scale symbolic correspondence
 
-The [symbolic atlas](./research/independent_audits/period27_three_scale_symbolic_marking_20261105.md) and [kneading source audit](./research/independent_audits/period27_kneading_angle_permutation_source_audit_20261105.md) compare these physical returns with the classical airplane substitution \(0\mapsto011,\ 1\mapsto100\):
+The [symbolic atlas](./research/independent_audits/period27_three_scale_symbolic_marking_20261105.md) and [kneading source audit](./research/independent_audits/period27_kneading_angle_permutation_source_audit_20261105.md) compare these physical returns with the classical airplane substitution $0\mapsto011,\ 1\mapsto100$:
 
 | Physical map | Critical period under that map | Angular period | Candidate characteristic-angle pair |
 |---|---:|---:|---|
-| \(f_c^9\) | 3 | 3 | \(3/7,\;4/7\) |
-| \(f_c^3\) | 9 | 9 | \(228/511,\;283/511\) |
-| \(f_c\) | 27 | 27 | \(59914011/134217727,\;74303716/134217727\) |
+| $f_c^9$ | 3 | 3 | $3/7,\;4/7$ |
+| $f_c^3$ | 9 | 9 | $228/511,\;283/511$ |
+| $f_c$ | 27 | 27 | $59914011/134217727,\;74303716/134217727$ |
 
-The exact real kneading-angle invariant of \(c_*\) is
+The exact real kneading-angle invariant of $c_*$ is
 
-\[
+$$
 \theta_{\mathrm{knead}}(c_*)=\frac{59914011}{2^{27}-1},
-\]
+$
 
 and the twisted-shift calculation reproduces **all 27** real critical-orbit ranks. The [machine-readable 26-edge real Markov graph](./results/period27_symbolic_marking.json) is an interval graph, **not** the full external-ray Hubbard-tree automaton.
 
 > [!CAUTION]
-> **Parameter rays do not land at the interior superattracting center \(c_*\).** Classical tuning associates the candidate ray pair with the **parabolic root of a specified twice-tuned airplane component**. Identifying that component as the one containing \(c_*\), and proving the required dynamical-plane landing/access/sheet transport, remain open in [Issue #12](https://github.com/dovvnloading/loops-research-archive/issues/12).
+> **Parameter rays do not land at the interior superattracting center $c_*$.** Classical tuning associates the candidate ray pair with the **parabolic root of a specified twice-tuned airplane component**. Identifying that component as the one containing $c_*$, and proving the required dynamical-plane landing/access/sheet transport, remain open in [Issue #12](https://github.com/dovvnloading/loops-research-archive/issues/12).
 
 ### The critical analytic boundary
 
-The center, and a certified surrounding parameter disk, are **attracting**: the ambient filled Julia set has nonempty interior. Therefore the example fails **Paper 2's hypothesis H3: \(K(f)=J(f)\)**. This is **different from** the global ledger gate named `H3_COERCIVITY`. The [complex-window obstruction audit](./research/independent_audits/two_scale_complex_window_obstructions_20261105.md) also rules out the naive equal-width stadium/preimage construction at both scales. Alternative domains make the finite complex result possible, but neither result supplies a source-compatible KL puzzle atlas or proves a new MLC case.
+The center, and a certified surrounding parameter disk, are **attracting**: the ambient filled Julia set has nonempty interior. Therefore the example fails **Paper 2's hypothesis H3: $K(f)=J(f)$**. This is **different from** the global ledger gate named `H3_COERCIVITY`. The [complex-window obstruction audit](./research/independent_audits/two_scale_complex_window_obstructions_20261105.md) also rules out the naive equal-width stadium/preimage construction at both scales. Alternative domains make the finite complex result possible, but neither result supplies a source-compatible KL puzzle atlas or proves a new MLC case.
 
 ## Proof evidence, Lean and reproducibility
 
@@ -146,12 +146,12 @@ The archive deliberately separates **checked finite arithmetic**, **paper-level 
 
 | Evidence layer | What is checked | What is *not* checked |
 |---|---|---|
-| **Lean 4.32.0** | `[Period27Dyadic.lean](./Period27Dyadic.lean)` verifies signed \(2^{-144}\)-dyadic endpoint bounds, the parameter derivative, 26 nonzero orbit signs and 27 strict orbit ranks; `[Period27Kneading.lean](./Period27Kneading.lean)` verifies the 27-bit tuning word, doubling orbit, full twisted-shift ranks and a conditional marking-memory criterion. | General real interval-enclosure soundness and IVT/MVT, ray landing, complex geometry, KL sheet transport or MLC. |
-| **Exact Python certificates** | Independent \(2^{-224}\) outward integer arithmetic for the parameter, real restrictions, complex bound margins, candidate angles and finite graphs. | Numerical/algorithmic checks alone do not prove the full analytic bridge. |
+| **Lean 4.32.0** | [Period27Dyadic.lean](./Period27Dyadic.lean) verifies signed $2^{-144}$-dyadic endpoint bounds, the parameter derivative, 26 nonzero orbit signs and 27 strict orbit ranks; [Period27Kneading.lean](./Period27Kneading.lean) verifies the 27-bit tuning word, doubling orbit, full twisted-shift ranks and a conditional marking-memory criterion. | General real interval-enclosure soundness and IVT/MVT, ray landing, complex geometry, KL sheet transport or MLC. |
+| **Exact Python certificates** | Independent $2^{-224}$ outward integer arithmetic for the parameter, real restrictions, complex bound margins, candidate angles and finite graphs. | Numerical/algorithmic checks alone do not prove the full analytic bridge. |
 | **Written analytic arguments** | Rouché and Riemann–Hurwitz are used to interpret the complex domain bounds, with hypotheses and scope recorded in the [two-scale note](./research/independent_audits/complex_two_scale_quadratic_like_certificate_20261105.md). | These analytic deductions are not yet Lean-kernel-formalized. |
 | **Source-locked papers and ledger** | Precise claims, evidence links, dependencies, counterexamples and imported hypotheses. | Universal analytic construction, calibration, coercivity, rigidity and MLC remain open. |
 
-The [Lean arithmetic note](./research/independent_audits/lean_period27_kernel_arithmetic_20261105.md) explains the proof boundary, including why \(2^{-128}\) arithmetic was too coarse to certify the period-27 **endpoint** signs and why the Lean computation uses \(2^{-144}\). Kernel-reduced finite proofs use `decide +kernel`, not `native_decide` or proof holes; foundational Lean axioms can still appear in the declared imports.
+The [Lean arithmetic note](./research/independent_audits/lean_period27_kernel_arithmetic_20261105.md) explains the proof boundary, including why $2^{-128}$ arithmetic was too coarse to certify the period-27 **endpoint** signs and why the Lean computation uses $2^{-144}$. Kernel-reduced finite proofs use `decide +kernel`, not `native_decide` or proof holes; foundational Lean axioms can still appear in the declared imports.
 
 ### Reproduce the central results
 
