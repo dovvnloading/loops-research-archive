@@ -7,12 +7,14 @@ on:
     paths:
       - lean-toolchain
       - lakefile.toml
+      - lake-manifest.json
       - 'LoopsFormal.lean'
       - '.github/workflows/lean-proofs.yml'
   pull_request:
     paths:
       - lean-toolchain
       - lakefile.toml
+      - lake-manifest.json
       - 'LoopsFormal.lean'
       - '.github/workflows/lean-proofs.yml'
   workflow_dispatch:
