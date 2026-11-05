@@ -1,6 +1,6 @@
 name = "loops_formal"
 version = "0.1.0"
-defaultTargets = ["LoopsFormal", "CloneGraph", "FirstReturn"]
+defaultTargets = ["LoopsFormal", "CloneGraph", "FirstReturn", "ReturnBlocks", "ReturnPaths"]
 
 [[lean_lib]]
 name = "LoopsFormal"
@@ -10,3 +10,9 @@ name = "CloneGraph"
 
 [[lean_lib]]
 name = "FirstReturn"
+
+[[lean_lib]]
+name = "ReturnBlocks"
+
+[[lean_lib]]
+name = "ReturnPaths"

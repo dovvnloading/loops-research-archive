@@ -32,9 +32,24 @@ a+d(L-1)+(M-d)L+b=ML=2L^2.
 
 Lean checks the complete construction, including all bounds and path compositions.
 
+## Completed next pass: exact multiplicities and graph-derived matrix
+
+Two additional Lean 4.32.0 modules now close the finite combinatorial path-counting gap.
+
+- [ReturnBlocks.lean](../ReturnBlocks.lean) reconstructs the base five-vertex graph, with internal atom order (a,b,c) and gate order (e,f). It *checks all entries* of the typed adjacency blocks Q, C and D against the graph's edge relation. It proves Q²=0, computes R₂=DC and R₃=DQC, and verifies R=R₂+R₃=[[0,2],[1,0]]. It proves that the graph-derived R inherits the previous nonprimitivity theorem.
+- [ReturnPaths.lean](../ReturnPaths.lean) uses a **Type-valued** inductive path data structure, rather than only the earlier Prop-valued first-return reachability predicate. It proves paths of equal source, target gate and length are equal, so their multiplicity is at most one. Combined with constructive witnesses, it proves each of the three permitted returns has exactly one concrete path for **every n≥0**, and that other first-return types have none. It also proves if-and-only-if support criteria for both cross-gate directions.
+
+This formalization establishes the claimed integer return multiplicities **for the particular explicit cycle-with-shortcut graph**. The graph has no parallel edge occurrences, so an edge predicate uniquely identifies each actual edge. The proof does not rely on finite enumeration or unverified existential claims.
+
+Independent [integer path-count regressions](../research/independent_audits/verify_clone_first_returns.py) enumerate all gate-avoiding edge sequences for n=0,...,64, verify the absence of cycles between gates and reproduce the same multiplicities. These are supplementary diagnostics; the Lean theorem holds for all n.
+
+**Passing build:** [GitHub Actions run #42027021716](https://github.com/dovvnloading/loops-research-archive/actions/runs/42027021716), which builds five Lean modules and runs the expanded Python suite.
+
+The next unproved steps are the general weighted matrix-valued renewal identity, its Perron-root reduction, and an expert source-convention check of the external complex-dynamics paper. A finite graph calculation is not a proof of Mandelbrot Local Connectivity.
+
 ## Remaining formal obligations
 
-**Exact return-path multiplicities:** The currently verified support theorem classifies possible first-return lengths, but does not yet prove uniqueness of the edge-occurrence path at each allowed length. A typed path-count proof is required to obtain the return matrix \(R\) directly from the graph instead of taking it as a separate explicit operator.
+**General weighted return operators:** Exact integer first-return multiplicities and the base adjacency blocks are now kernel-checked. The all-n weighted return operator, its Perron equation, and its comparison to the published conventions still require distinct theorems.
 
 **General spectral theorem:** A pinned compatible mathlib version could support formalization of weighted first-return matrices, Schur-complement elimination, Perron–Frobenius arguments, and the two-sided finite-clone estimates. The sign of return-length exponents must be checked against explicitly declared source/target matrix conventions.
 
