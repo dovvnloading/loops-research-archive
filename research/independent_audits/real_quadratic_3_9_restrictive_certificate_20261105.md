@@ -189,6 +189,32 @@ Finally, differentiating the polynomial iterate gives
 
 No factor with \(j\ge1\) vanishes anywhere in \(U_p\); hence the only critical point of \(f^p|_{U_p}\) is \(z=0\), with a simple derivative zero (local degree two). \(\square\)
 
+**Uniformity over a genuine complex parameter disk.** More strongly, fix these same center intervals \(I_3,I_9\) and their stadiums \(U_3,U_9\), but allow a different complex quadratic parameter \(c'\) with
+
+\[
+\boxed{|c'-c_*|<2^{-26}}.
+\]
+
+For any \(z\in U_p\), choose \(x\in I_p\), and put
+\(e_j=|f_{c'}^j(z)-f_{c_*}^j(x)|\). Since the center real phase images satisfy \(|f_{c_*}^j(x)|<2\), the exact identity
+
+\[
+f_{c'}(u)-f_{c_*}(v)=(u-v)(u+v)+(c'-c_*)
+\]
+
+gives \(e_{j+1}\le5e_j+2^{-26}\) whenever \(e_j\le1\).
+Starting at \(e_0<2^{-40}\), this yields
+
+\[
+e_j<5^j2^{-40}+\frac{5^j-1}{4}\,2^{-26}
+\le 5^82^{-40}+\frac{5^8-1}{4}\,2^{-26}
+<1/500\qquad(0\le j\le8).
+\]
+
+The final inequality is verified using integer multiplication in the certificate script, without floating-point approximation. Because \(2/500<1/100\) and \(1/500<1/10\), **the same finite-horizon complex phase separation and noninitial critical avoidance remain valid for every \(c'\) in this explicit open complex parameter disk**. In particular, \(f_{c'}^3|_{U_3}\) and \(f_{c'}^9|_{U_9}\) still each have exactly one critical point in their chosen domain, at \(0\), and all pre-return complex images are disjoint.
+
+This is a **parameter-uniform finite-stage analytic theorem** with exact constants and actual holomorphic iterates, not merely a single parameter's numerical orbit. It does **not** assert that the perturbed parameters are still periodic, that the real intervals remain invariant under the perturbed return maps, or that any parameter in this small disk satisfies Paper 2's H3. Those are distinct questions.
+
 **Exact limitation:** This is a genuine finite-horizon **complex** separation and unique-critical-point result for an explicitly bounded Jordan domain around each real return interval. It **does not** show that \(f^p:U_p'\to U_p\) admits a proper quadratic-like restriction with \(U_p'\Subset U_p\), nor does it provide canonical Kahn–Lyubich external rays, prime-end accesses, closed puzzle pieces, sheet/coset completeness, or a nonattracting H3-compatible parameter. These require separate constructions. In particular, the terminal superattracting center still fails \(K(f)=J(f)\).
 
 ## 4. Critical limit: this center does **not** satisfy Paper 2's H3
