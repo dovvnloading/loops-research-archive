@@ -173,6 +173,9 @@ python research/independent_audits/verify_period27_kneading_angle_permutation.py
 # Kernel-check the key formal modules and all default targets:
 lake build Period27Kneading Period27Dyadic
 lake build
+
+# Check README local links, chart provenance, and accessible SVGs:
+python code/verify_readme_integrity.py
 ```
 
 The [Research validation workflow](./.github/workflows/lean-proofs.yml) runs the modules and research regressions on GitHub Actions. The separate [independent-audits index](./research/independent_audits/README.md) describes individual certificates and their limitations. A green CI result verifies code and Lean proofs **as written**; it is not independent mathematical peer review.
