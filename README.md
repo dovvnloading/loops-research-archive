@@ -115,6 +115,12 @@ A new [independently reproducible exact certificate](./research/independent_audi
 **Boundary:** This is a finite attracting-window complex renormalization example—not a source-compatible Kahn–Lyubich ray/prime-end/sheet atlas. Every parameter in the certified window fails Paper 2's (K(f)=J(f)) assumption. It does not close the global marked-construction or MLC analytic gates. The earlier [parameter-window and naive-stadium first-failure certificate](./research/independent_audits/two_scale_complex_window_obstructions_20261105.md) remains applicable and explains why different, larger complex return domains were required.
 
 
+### November 2026 — source-checked kneading angle and 27-point order
+
+A [new exact primary-source comparison](./research/independent_audits/period27_kneading_angle_permutation_source_audit_20261105.md) applies the real kneading-angle definition and twisted-shift cyclic-permutation construction of Baker–Chen–Li–Qian (2026) to the certified \(c_*\). The signed critical orbit gives \(\theta_{\rm knead}(c_*)=59914011/(2^{27}-1)\), and the independently generated symbolic ranks agree with **all 27** rigorously ordered real critical-orbit vertices. [Arithmetic verification](./research/independent_audits/verify_period27_kneading_angle_permutation.py) is exercised in CI.
+
+Classical tuning places the matching candidate external *parameter* ray pair at the **parabolic root** of a specified twice-tuned airplane component—not at \(c_*\), an interior attracting center. Identifying that tuned component with the component containing \(c_*\), followed by the separate actual dynamical-ray, prime-end and localization-sheet transport, remains open. No global MLC proof status is affected.
+
 ### November 2026 — exact three-scale symbolic marking candidate
 
 A new [source-audited candidate-angle certificate](./research/independent_audits/period27_three_scale_symbolic_marking_20261105.md) takes the explicit period-27 center and independently verifies an exact 3/9/27 external-angle **kneading-word** match to the airplane tuning substitution \(0\mapsto011,\ 1\mapsto100\). It tests the correct orientation signs for the physical return maps \(f\), \(f^3\) and \(f^9\); certifies all six rational angle periods and the three un-angled internal addresses; and produces a reproducible [26-edge real Markov graph](./results/period27_symbolic_marking.json), checked against outward dyadic orbit enclosures in [research CI](./.github/workflows/lean-proofs.yml).
