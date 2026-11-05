@@ -161,7 +161,7 @@ theorem mod_three_fiber_indistinguishable
     L 0 = L 3 := by
   calc
     L 0 = g (0 % 3) := h 0 (by omega)
-    _ = g (3 % 3) := by decide
+    _ = g (3 % 3) := by rfl
     _ = L 3 := (h 3 (by omega)).symm
 
 theorem distinct_markings_cannot_factor_through_mod_three
