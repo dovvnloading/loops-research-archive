@@ -32,6 +32,7 @@ The main manuscript integrates all nine stages and states the hypotheses consume
 - [`papers/README.md`](./papers/README.md): paper index, status, PDFs, and source roots.
 - [`papers/paper1_canonical_localization/`](./papers/paper1_canonical_localization/): Paper 1 PDF, LaTeX source, extracted theorem packets, certificates, and assembly tooling.
 - [`papers/paper2_rooted_end_compactification/`](./papers/paper2_rooted_end_compactification/): Paper 2 PDF and LaTeX source.
+- [Paper 2 primary-source realization audit](./research/independent_audits/paper2_decorations_source_realization_20261105.md): checks the Kahn–Lyubich shallow and deep closed-pullback hypotheses, proves the primitive-orbit fixed-point exclusion, and records exactly which dynamical time and root-arrow statements must change in a deeper branch variant; no MLC gate is promoted.
 - [`papers/paper3_protected_carriers/`](./papers/paper3_protected_carriers/): Paper 3 Draft III Visual Edition, modular and assembled source, deterministic build/QA tooling, change record, research assessment, and release audit.
 
 ### 3. Claim-status system

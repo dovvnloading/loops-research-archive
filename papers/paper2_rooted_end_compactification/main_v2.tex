@@ -340,7 +340,9 @@ For $1\le i<p$ we have $\Kcyc_i\cap B=\varnothing$.  The complete cycle
 itinerary is
 $\Kcyc_1\to\Kcyc_2\to\cdots\to\Kcyc_{p-1}\to\Kcyc_0$, and the
 chronological degree word of the cycle, starting at $\Kcyc_0$, is
-$(2,1,\ldots,1)$.
+$(2,1,\ldots,1)$.  Moreover, if $\alpha$ is the dividing fixed point
+used to define the Yoccoz puzzle, then
+$f^m(0)\ne\alpha$ for every $m\ge0$.
 \end{proposition}
 
 \begin{proof}
@@ -352,6 +354,14 @@ point is $0\in\Kcyc_0$, because $A_0$ is the critical first-return
 domain; an intermediate critical encounter would make some $\Kcyc_i$,
 $1\le i<p$, contain $0\in B$, contradicting the first display.  Hence
 only the first factor of the cycle has degree two.
+
+For the last assertion, the connected terminal filled Julia set
+contains the critical point $0$ and is invariant under $f^p$.
+If $f^m(0)=\alpha$ for some $m$, then $f^j(0)=\alpha$ for every
+$j\ge m$, since $\alpha$ is fixed.  Choosing $k$ with $kp\ge m$,
+we get $\alpha=f^{kp}(0)\in\rootK$.  But the same fixed point
+also lies in $f(\rootK)=\Kcyc_1$, contrary to disjointness
+of the primitive cycle for $p>1$.
 \end{proof}
 
 \subsection{The package data}
@@ -479,10 +489,12 @@ is a regular point of $g=f^q$.  Indeed, the critical points of $g$ are
 the points $\zeta$ with $f^i(\zeta)=0$ for some $0\le i<q$, and $f$
 maps the depth-$d$ puzzle graph into the depth-$(d-1)$ graph; if $z$
 were critical, $0=f^i(z)$ would therefore lie on a puzzle graph.  But
-the critical pieces $Y^d$ are defined at every depth occurring in the
-construction---the critical orbit avoids the puzzle graphs
-\cite{KLDecorations08}---so $0$ lies in $\operatorname{int}Y^d$ and
-never on a graph.  Hence $z$ is a regular point of $g$, and
+the vertices of depth-$d$ puzzle graphs are preimages of the fixed
+point $\alpha$ \cite{KLDecorations08}, and the critical orbit cannot
+land on $\alpha$ by \cref{prop:cycle-exclusion}.  As this orbit is
+bounded in $K(f)$, it also cannot lie in an external-ray or
+equipotential interior.  Thus $0$ lies in the interior of its
+critical piece at each relevant depth and never on a puzzle graph.  Hence $z$ is a regular point of $g$, and
 \cref{lem:local-pullback} puts $z$ in the closure of at most one
 component of $g^{-1}(\operatorname{int}P)$.  Since
 $z\in Q_0\cap Q_1$ and the $Q_a$ are closures of distinct components,
@@ -509,17 +521,39 @@ $Q_1$.  Since $\rootK\Subset\operatorname{int}V^0$ and $V^0\subset P$
 
 \begin{remark}[Source audit and a documented fallback]
 \label{rem:fallback}
-The proof of \ref{H1} rests on two source facts: the two $f^q$-pullbacks
-of the separator are distinct pieces, and the critical orbit avoids the
-puzzle graphs.  Should a source expert question closed-piece
-disjointness for this pair, there is a robust fallback: Kahn--Lyubich
-construct, at the deeper $f^{nq}$-level, one univalent pullback $Q^v$ of
-$P$ for every vertex $v$ of the separator, and state that these are
-\emph{pairwise disjoint} \cite{KLDecorations08}.  Choosing two of them
-and setting $g=f^{nq}$ satisfies \ref{H1}--\ref{H2} verbatim and leaves
-the entire architecture of this paper intact; only the transition time
-per address symbol changes from $q$ to $nq$.  We record this as a
-fallback and do not silently depend on it.
+The closed-disjointness argument for the selected shallow $f^q$-pullbacks
+uses distinct source pullback components and regularity at any common
+boundary point; the critical-orbit exclusion is now supplied explicitly by
+\cref{prop:cycle-exclusion}, in the primitive terminal setting.
+
+There is also a distinct source-supported \emph{deep-block alternative}.
+Kahn--Lyubich construct, at the $f^{nq}$-level, one univalent
+pullback $Q^v\subset P$ for every vertex $v$ of the separator
+and assert that these \emph{closed pieces are pairwise disjoint}
+\cite[Lemma~2.1]{KLDecorations08}.  For two distinct vertices $v,w$,
+set $\tau=nq$, $g_*=f^\tau$, and choose $Q^*_0=Q^v$,
+$Q^*_1=Q^w$.  The source constructs these deeper pieces as pullbacks
+of the original two-branch map, hence each lies inside one of the
+shallow $Q_0,Q_1$; the terminal root remains in the first-level gap.
+The Jordan boundary extension applies to these univalent branches as
+well.  Thus the abstract standing hypotheses are recovered, provided
+the primitive-nest root placement and \ref{H3} are retained.
+
+The deep choice is a \emph{separately retimed} instance, not a literal
+substitution in the $q$-time theorem as printed.  Its first-symbol
+shift is realized by $g_*=f^\tau$, its bounded-orbit proof uses
+$\bigcup_{r=0}^{\tau-1} f^r(P)$, and its separate terminal root arrow
+must be
+\[
+  g_*(\rootK)=f^\tau(\rootK)=\Kcyc_{\tau\bmod p},
+\]
+rather than $\Kcyc_{q\bmod p}$.  The satellite period $q$,
+escape depth $n$, and puzzle depths of $P,V^0,Q^v$ remain unchanged.
+The selection of two of $2^n$ pieces is not claimed canonical or
+compatible with a next physical renormalization scale.  All theorem
+statements in this manuscript retain the original \emph{shallow}
+choice $g=f^q$; the deep-block retiming is an optional, conditional
+variant and is not silently invoked.
 \end{remark}
 
 \begin{remark}[Where each hypothesis is used]
