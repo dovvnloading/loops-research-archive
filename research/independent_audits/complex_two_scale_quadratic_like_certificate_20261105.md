@@ -249,6 +249,35 @@ It also shows that all \(f_c^{3k}(K_{9,c})\) are contained in \(K_{3,c}\), so th
 
 At the real center, the earlier interval certificate supplies \(f_{c_*}^p(I_p)=I_p\) and \(I_p\subset U_p\) for \(p=3,9\). Thus every point of \(I_p\) is nonescaping under the corresponding quadratic-like return, giving \(I_p\subset K_{p,c_*}\).
 
+## 4a. Corollary: source-independent identification of the inner straightening
+
+At the **exact real parameter \(c_*\)**, both complex target disks are centered at zero and the maps \(f_{c_*}\) commute with complex conjugation. The corresponding unique preimage components \(V_{3,c_*}\) and \(V_{9,c_*}\) are therefore also invariant under conjugation.
+
+Since both polynomial-like filled Julia sets are connected, the Douady–Hubbard straightening theorem assigns to each return a unique normalized complex quadratic polynomial \(z^2+t_p\), up to hybrid equivalence, where \(p\in\{3,9\}\) denotes the *return time* (so \(t_9\) belongs to the inner return). The conjugate normalized polynomial \(z^2+\overline{t_p}\) straightens the complex-conjugate return, which is the same return. Uniqueness implies
+
+\[
+\boxed{t_3,t_9\in\mathbb R.}
+\]
+
+The hybrid conjugacy respects the unique critical point and its forward orbit. From \(f_{c_*}^{27}(0)=0\) and \(x_3,x_9,x_{18}\ne0\), the outer return \(f_{c_*}^{3}\) has critical orbit of exact period **9**, while the inner return \(f_{c_*}^{9}\) has critical orbit of exact period **3**. Therefore their normalized straightenings satisfy
+
+\[
+\operatorname{per}_{z^2+t_3}(0)=9,\qquad
+\operatorname{per}_{z^2+t_9}(0)=3.
+\]
+
+In particular **the inner straightening parameter \(t_9\) is uniquely identified algebraically** as the one real root in \((-2,-1)\) of
+
+\[
+\boxed{t^3+2t^2+t+1=0.}
+\]
+
+Indeed \((z^2+t)^3(0)=t\bigl(t^3+2t^2+t+1\bigr)\); exact period 3 excludes \(t=0\). The cubic has derivative \((t+1)(3t+1)>0\) on \((-\infty,-1)\), and changes sign from \(-1\) at \(t=-2\) to \(+1\) at \(t=-1\). For \(-1\le t\le0\), it equals \(1+t(t+1)^2\ge23/27>0\), and for \(t\ge0\) it is positive. Thus it has exactly one real root.
+
+The outer straightening parameter \(t_3\) is a real exact-period-9 superattracting quadratic center, but this argument does **not** determine which of the possible real period-9 roots it is. Neither statement identifies the original parameter \(c_*\) by a KL external-angle portrait, equates hybrid straightening with a source-specific ray marking, nor proves compatibility of peripheral sheet/coset data across the two physical levels. Those stronger source-alignment tasks remain open.
+
+This is a classical-straightening corollary of the newly certified polynomial-like maps, not a claim that straightening theory itself is new.
+
 ## 5. Reproducible exact margins (strict lower displays)
 
 The code checks all inequalities as signed integers in units of \(2^{-224}\). The following are rounded **down**, solely for legibility:
