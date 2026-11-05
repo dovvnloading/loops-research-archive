@@ -132,6 +132,8 @@ def check() -> None:
     # X[k] enclose x_k(c*) for each k.
     assert X[6].negative() and X[18].positive()
     assert strictly_between(X[9], X[6], X[3])
+    assert X[18].below(X[3]), "exact inner upper endpoint must precede outer upper"
+    assert X[6].below(X[18]), "exact outer lower precedes inner upper"
     I3 = Interval(X[6].lo, X[3].hi)
     I9 = Interval(X[9].lo, X[18].hi)
     assert I9.strictly_inside(I3)
