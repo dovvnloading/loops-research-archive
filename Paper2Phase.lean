@@ -136,9 +136,16 @@ theorem terminal_root_phase_route
     have h : tau % p + p * (tau / p) = tau :=
       Nat.mod_add_div tau p
     dsimp [k]
-    omega
-  rw [hdecomp, iterate_add]
-  rfl
+    calc
+      tau = tau % p + p * (tau / p) := h.symm
+      _ = (tau / p) * p + tau % p := by
+        rw [Nat.mul_comm p (tau / p), Nat.add_comm]
+  calc
+    iterate f tau x =
+        iterate f (k * p + tau % p) x := by rw [hdecomp]
+    _ = iterate f (tau % p) (iterate f (k * p) x) :=
+        iterate_add f (k * p) (tau % p) x
+    _ = iterate f (tau % p) y := rfl
 
 /-- Source-facing phase obstruction without a separately postulated
     route table. If each nonzero primitive root-cycle phase lies
