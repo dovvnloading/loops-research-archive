@@ -98,4 +98,30 @@ Choose one **actual twice-renormalizable quadratic** (with documented primitive 
 - [ ] Fully edited and independently checked deep-block corollary, including protected prime-end data.
 - [ ] Actual two-scale source-verified geometric transition with all necessary markings.
 
+## Addendum: a machine-checked obstruction to unmarked deep self-returns
+
+The new [Paper2Phase.lean](../../Paper2Phase.lean) file formalizes two distinct deductions without assuming a source-geometry theorem by definition.
+
+**A. Primitive fixed-point avoidance.** If the terminal root K contains the critical point, is forward invariant under the p-block iterate, and is disjoint from its immediate image f(K), then the critical orbit cannot reach any fixed point of f. This justifies the critical-orbit step of Paper 2's shallow pullback separation *conditional on the specified primitive-cycle inputs*.
+
+**B. Deep block phase obstruction.** Suppose p>0, the terminal root K is invariant under f^p, and the nonzero phases f^r(K), 1≤r<p, are disjoint from the original first-return base B. For every block time τ, the orbit of every x∈K has a witness y∈K with
+
+\[
+f^\tau(x)=f^{\tau\bmod p}(y).
+\]
+
+This decomposition is proved from the return-block invariance and Euclidean division in Lean, rather than supplied as an additional phase-routing hypothesis. Therefore if **any** point of K returns to B under f^τ, necessarily
+
+\[
+\tau\bmod p=0.
+\]
+
+At the deeper suggested time τ=nq, a proposed unmarked self-return to the original base is impossible unless p divides nq. This is a **necessary, not sufficient** condition. Without it, the correct output is a phase-indexed component outside B, not a fabricated self-return.
+
+Arithmetic sanity example (not asserted as a realized quadratic parameter): p=3, q=2, n=2 gives shallow phase 2 and deep phase 1, so the two root arrows genuinely differ. The source's terminal p-cycle and first-return exclusion supply the relevant geometric disjointness condition in any actual instance.
+
+**Impact:** This gives a crisp failure test for a proposed two-scale transition. An atlas that drops the terminal-cycle phase before the first return must either establish p|nq, switch to an explicitly aligned return time, or carry the nonzero phase as part of its marked state. The first two options may change the analytic geometry; they are not automatically authorized. The theorem does not construct the next renormalization scale.
+
+**Verification:** Kernel compilation in the [research validation workflow](https://github.com/dovvnloading/loops-research-archive/actions). No proof holes or new axioms. The paper's source-geometry inputs are reviewed separately and remain conditional where appropriate.
+
 **Bottom line:** Paper 2's closed-piece hypotheses have a substantive mathematical justification in its specific primitive puzzle setting; the deeper fallback is directly supported for closed separation by the primary source. But a correct fallback requires retyping its time and terminal arrow and proves nothing yet about next-scale dynamical realization or universal MLC gates.
