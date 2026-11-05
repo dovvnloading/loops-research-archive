@@ -23,6 +23,9 @@ on:
       - 'research/independent_audits/*.md'
       - 'results/period27_symbolic_marking.json'
       - 'RESEARCH_MAP.md'
+      - 'README.md'
+      - 'figs/readme/*.svg'
+      - 'code/verify_readme_integrity.py'
       - 'ledger.json'
       - 'ledger.js'
       - 'research/mlc_unified/proof_obligations.json'
@@ -45,6 +48,9 @@ on:
       - 'research/independent_audits/*.py'
       - 'research/independent_audits/*.md'
       - 'RESEARCH_MAP.md'
+      - 'README.md'
+      - 'figs/readme/*.svg'
+      - 'code/verify_readme_integrity.py'
       - 'ledger.json'
       - 'ledger.js'
       - 'research/mlc_unified/proof_obligations.json'
@@ -82,6 +88,8 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
+      - name: Verify README links, charts, and source-locked ledger totals
+        run: python code/verify_readme_integrity.py
       - name: Install numerical-test dependency
         run: python -m pip install 'numpy>=2,<3'
       - name: Check finite delayed-clone matrices
