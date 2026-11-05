@@ -170,6 +170,37 @@ theorem exists_full_adjacency_positive_eigenpair (n : ℕ) :
   · exact fun u => fullCloneVector_pos n t ht u
   · exact fun u => fullAdjacencyMatrix_eigen n t ht hroot u
 
+
+/-- Every matrix coefficient is nonnegative because each is an
+    exact 0/1 indicator of a directed graph edge. -/
+theorem fullAdjacencyMatrix_nonneg (n : ℕ) (u w : Vertex n) :
+    0 ≤ fullAdjacencyMatrix n u w := by
+  classical
+  unfold fullAdjacencyMatrix
+  split_ifs <;> norm_num
+
+/-- The matrix contains coefficient 1 exactly at the directed edges
+    of the previously verified clone graph. -/
+theorem fullAdjacencyMatrix_one_iff_edge (n : ℕ) (u w : Vertex n) :
+    fullAdjacencyMatrix n u w = 1 ↔ Edge n u w := by
+  classical
+  unfold fullAdjacencyMatrix
+  split_ifs <;> simp_all
+
+/-- Same all-delay eigenpair expressed using mathlib's *actual*
+    finite matrix–vector multiplication, rather than an abbreviation
+    for the finite sum of the adjacency rows. -/
+theorem fullAdjacencyMatrix_mulVec_eigen (n : ℕ) (t : ℝ)
+    (ht : 1 < t) (hroot : t ^ (2 * n + 5) = t + 1) :
+    fullAdjacencyMatrix n *ᵥ fullCloneVector n t =
+      t • fullCloneVector n t := by
+  funext u
+  change (∑ w : Vertex n,
+    fullAdjacencyMatrix n u w * fullCloneVector n t w) =
+      t * fullCloneVector n t u
+  exact fullAdjacencyMatrix_eigen n t ht hroot u
+
+
 end
 
 end LoopsSpectral
