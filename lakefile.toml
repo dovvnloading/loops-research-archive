@@ -1,6 +1,6 @@
 name = "loops_formal"
 version = "0.1.0"
-defaultTargets = ["LoopsFormal", "CloneGraph", "FirstReturn", "ReturnBlocks", "ReturnPaths", "Paper2Phase", "RealTwoScalePhase", "Period27Kneading", "Period27Dyadic"]
+defaultTargets = ["LoopsFormal", "CloneGraph", "FirstReturn", "ReturnBlocks", "ReturnPaths", "Paper2Phase", "RealTwoScalePhase", "Period27Kneading", "Period27Dyadic", "Period27IntervalSound"]
 
 [[lean_lib]]
 name = "LoopsFormal"
@@ -28,3 +28,6 @@ name = "Period27Kneading"
 
 [[lean_lib]]
 name = "Period27Dyadic"
+
+[[lean_lib]]
+name = "Period27IntervalSound"
