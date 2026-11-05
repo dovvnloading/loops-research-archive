@@ -147,9 +147,82 @@ theorem numerator_neg_of_negative_interval
   have hnprod : x.num * unit < 0 := by omega
   exact Int.neg_of_mul_neg_left hnprod scale_positive
 
+
+/-- The actual lower endpoint cL = K / 2^128 as an exact fraction
+    with denominator 2^144. -/
+def lowerEndpointFraction : ExactFraction :=
+  ⟨parameterLower, unit, scale_positive⟩
+
+/-- The actual upper endpoint cU = (K+1) / 2^128. -/
+def upperEndpointFraction : ExactFraction :=
+  ⟨parameterLower + parameterStep, unit, scale_positive⟩
+
+theorem lower_parameter_is_enclosed :
+    Encloses lowerParameter lowerEndpointFraction := by
+  change 0 < unit ∧
+    parameterLower * unit ≤ parameterLower * unit ∧
+    parameterLower * unit ≤ parameterLower * unit
+  exact ⟨scale_positive, Int.le_refl _, Int.le_refl _⟩
+
+theorem upper_parameter_is_enclosed :
+    Encloses upperParameter upperEndpointFraction := by
+  change 0 < unit ∧
+    (parameterLower + parameterStep) * unit ≤
+      (parameterLower + parameterStep) * unit ∧
+    (parameterLower + parameterStep) * unit ≤
+      (parameterLower + parameterStep) * unit
+  exact ⟨scale_positive, Int.le_refl _, Int.le_refl _⟩
+
+/-- Existing 27-step dyadic endpoint values, this time for the
+    parametric pointAfterAt recurrence used in the new soundness proof. -/
+theorem sound_trace_endpoint_integer_enclosures :
+    pointAfterAt unit 27 lowerParameter zeroBound =
+      ⟨4251281, 4252485⟩ ∧
+    pointAfterAt unit 27 upperParameter zeroBound =
+      ⟨-8835097, -8833684⟩ := by
+  decide +kernel
+
+/-- First genuinely *semantic* endpoint sign: the numerator of the
+    exact 27th rational critical iterate at cL is positive.
+    Unlike the earlier certificate this is not just a sign of a
+    computer-generated interval; it follows from universal arithmetic
+    soundness and the kernel's separately computed interval bound. -/
+theorem exact_lower_endpoint_critical_iterate_positive :
+    0 < (exactIter lowerEndpointFraction 27 fzero).num := by
+  have hx :=
+    pointAfterAt_encloses_all_rational_orbits
+      lowerParameter lowerEndpointFraction
+      lower_parameter_is_enclosed 27 zeroBound fzero
+      zero_fraction_enclosed
+  have hb :
+      0 < (pointAfterAt unit 27 lowerParameter zeroBound).lo := by
+    rw [sound_trace_endpoint_integer_enclosures.1]
+    decide
+  exact numerator_pos_of_positive_interval
+    (pointAfterAt unit 27 lowerParameter zeroBound)
+    (exactIter lowerEndpointFraction 27 fzero) hb hx
+
+/-- Analogous strict negative sign at the exact upper rational endpoint. -/
+theorem exact_upper_endpoint_critical_iterate_negative :
+    (exactIter upperEndpointFraction 27 fzero).num < 0 := by
+  have hx :=
+    pointAfterAt_encloses_all_rational_orbits
+      upperParameter upperEndpointFraction
+      upper_parameter_is_enclosed 27 zeroBound fzero
+      zero_fraction_enclosed
+  have hb :
+      (pointAfterAt unit 27 upperParameter zeroBound).hi < 0 := by
+    rw [sound_trace_endpoint_integer_enclosures.2]
+    decide
+  exact numerator_neg_of_negative_interval
+    (pointAfterAt unit 27 upperParameter zeroBound)
+    (exactIter upperEndpointFraction 27 fzero) hb hx
+
 #print axioms signed_square_sound_for_fractions
 #print axioms nextOrbit_encloses_rational
 #print axioms pointAfterAt_encloses_all_rational_orbits
+#print axioms exact_lower_endpoint_critical_iterate_positive
+#print axioms exact_upper_endpoint_critical_iterate_negative
 #print axioms numerator_pos_of_positive_interval
 
 end LoopsFormal.Period27
