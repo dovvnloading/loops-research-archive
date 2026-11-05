@@ -47,6 +47,32 @@ Independent [integer path-count regressions](../research/independent_audits/veri
 
 The next unproved steps are the general weighted matrix-valued renewal identity, its Perron-root reduction, and an expert source-convention check of the external complex-dynamics paper. A finite graph calculation is not a proof of Mandelbrot Local Connectivity.
 
+## Weighted spectral extension (mathlib v4.32.0)
+
+A **separate mathlib-backed Lean project** at
+[formalization/weighted](weighted/README.md) now imports the original
+five graph modules in its own kernel-checked dependency chain.
+
+It proves for every clone length n:
+
+- The weighted first-return eigenproblem for the **graph-derived**
+  matrix \(H(t)=\bigl(\begin{smallmatrix}0&t^{-2}+t^{-3}\\
+  t^{-2}&0\end{smallmatrix}\bigr)\) has a nonzero-gate eigenvector
+  at eigenvalue \(t^n\) iff \(t^{2n+5}=t+1\), for \(t\ne0\).
+- The competing literal positive-power return operator cannot
+  have eigenvalue \(t^n\) at a real clone root \(t>1\).
+- There is exactly one real root \(t>1\) for each n, lying in (1,2).
+- At this root, \(t^{2n+4}<2<t^{2n+6}\).
+
+The resulting formal statements are explicitly bounded to the finite
+five-vertex graph and do not yet import full-adjacency
+Perron–Frobenius theory. The broader mathematical source
+interpretation remains subject to independent expert review, and
+MLC remains open.
+
+**CI example:** [mathlib proof build 42032197008](https://github.com/dovvnloading/loops-research-archive/actions/runs/42032197008).
+Newer commits require their own green checks.
+
 ## Remaining formal obligations
 
 **General weighted return operators:** Exact integer first-return multiplicities and the base adjacency blocks are now kernel-checked. The all-n weighted return operator, its Perron equation, and its comparison to the published conventions still require distinct theorems.
