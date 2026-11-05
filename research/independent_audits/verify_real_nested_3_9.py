@@ -122,6 +122,11 @@ def check() -> None:
     # with f^27(0)=0. Since 27=3^3 and P_1,P_3,P_9 are nonzero,
     # its exact critical period is 27.
     assert X[1].negative() and X[3].positive() and X[9].negative()
+    # Exact signed kneading/critical itinerary on the 26 nonzero phases.
+    # This is a reproducible input for later external-ray/lamination work.
+    signs = "".join("+" if X[j].positive() else "-" if X[j].negative()
+                    else "?" for j in range(1, 27))
+    assert signs == "-++-+--+--++-+--++-++-+--+", signs
 
     # Actual endpoint values at c*: I3=[x6,x3], I9=[x9,x18].
     # X[k] enclose x_k(c*) for each k.
@@ -169,6 +174,7 @@ def check() -> None:
     print(f"  parameter bracket = [{C_K}/2^{C_BITS}, {C_K+1}/2^{C_BITS}]")
     print("  sign(P27(lower))=+, sign(P27(upper))=-; P27'(c)<0 throughout")
     print("  exact critical period = 27; P1,P3,P9 never vanish in bracket")
+    print("  certified critical signs x1..x26 =", signs)
     for period, (I, Y, neg) in certificates.items():
         print(f"  I{period} display endpoints (rounded) = {I.display()}")
         print(f"  f^0...f^{period-1}(I{period}) pairwise disjoint; negative stages={neg}")
