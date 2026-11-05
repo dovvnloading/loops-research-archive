@@ -26,17 +26,19 @@ namespace LoopsFormal.CloneGraph.ReturnBlocks
 def atom (i : Fin 3) : Vertex 0 :=
   ⟨if i.val = 0 then 2 else if i.val = 1 then 1 else 4,
     by
-      have hi := i.isLt
-      dsimp [size]
-      split_ifs <;> omega⟩
+      by_cases hzero : i.val = 0
+      · simp [hzero, size]
+      · by_cases hone : i.val = 1
+        · simp [hzero, hone, size]
+        · simp [hzero, hone, size]⟩
 
 /-- The two designated gate vertices, enumerated e,f. -/
 def gate (i : Fin 2) : Vertex 0 :=
   ⟨if i.val = 0 then 0 else 3,
     by
-      have hi := i.isLt
-      dsimp [size]
-      split_ifs <;> omega⟩
+      by_cases hzero : i.val = 0
+      · simp [hzero, size]
+      · simp [hzero, size]⟩
 
 /-- Atom-to-atom incidence Q in the ordering a,b,c. -/
 def Q (i j : Fin 3) : Nat :=
@@ -53,27 +55,69 @@ def D (i : Fin 2) (j : Fin 3) : Nat :=
      (i.val = 1 ∧ j.val = 2)
   then 1 else 0
 
+
+/-- Exhaustive (constructive) elimination of Fin 2 without mathlib. -/
+private theorem fin2_all {P : Fin 2 → Prop}
+    (h0 : P 0) (h1 : P 1) : ∀ i : Fin 2, P i := by
+  intro i
+  have hval : i.val = 0 ∨ i.val = 1 := by
+    have hi := i.isLt
+    omega
+  cases hval with
+  | inl h =>
+      have heq : i = 0 := Fin.ext h
+      rw [heq]
+      exact h0
+  | inr h =>
+      have heq : i = 1 := Fin.ext h
+      rw [heq]
+      exact h1
+
+/-- Exhaustive (constructive) elimination of Fin 3 without mathlib. -/
+private theorem fin3_all {P : Fin 3 → Prop}
+    (h0 : P 0) (h1 : P 1) (h2 : P 2) :
+    ∀ i : Fin 3, P i := by
+  intro i
+  have hval : i.val = 0 ∨ i.val = 1 ∨ i.val = 2 := by
+    have hi := i.isLt
+    omega
+  cases hval with
+  | inl h =>
+      have heq : i = 0 := Fin.ext h
+      rw [heq]
+      exact h0
+  | inr other =>
+      cases other with
+      | inl h =>
+          have heq : i = 1 := Fin.ext h
+          rw [heq]
+          exact h1
+      | inr h =>
+          have heq : i = 2 := Fin.ext h
+          rw [heq]
+          exact h2
+
 /-- All entries of Q are the actual internal-edge incidences. -/
 theorem Q_matches_graph :
     ∀ i j : Fin 3, (Q i j = 1 ↔ Edge 0 (atom i) (atom j)) := by
-  decide
+  apply fin3_all <;> apply fin3_all <;> decide
 
 /-- All entries of C are the actual internal-to-gate incidences. -/
 theorem C_matches_graph :
     ∀ i : Fin 3, ∀ j : Fin 2,
       (C i j = 1 ↔ Edge 0 (atom i) (gate j)) := by
-  decide
+  apply fin3_all <;> apply fin2_all <;> decide
 
 /-- All entries of D are the actual gate-to-internal incidences. -/
 theorem D_matches_graph :
     ∀ i : Fin 2, ∀ j : Fin 3,
       (D i j = 1 ↔ Edge 0 (gate i) (atom j)) := by
-  decide
+  apply fin2_all <;> apply fin3_all <;> decide
 
 /-- There is no edge directly from one gate to another. -/
 theorem no_gate_edge :
     ∀ i j : Fin 2, ¬ Edge 0 (gate i) (gate j) := by
-  decide
+  apply fin2_all <;> apply fin2_all <;> decide
 
 /-- Finite, explicit three-coordinate summation for the internal atoms. -/
 def sumAtoms (f : Fin 3 → Nat) : Nat :=
@@ -155,6 +199,7 @@ theorem return_matrix_not_primitive :
   intro h
   obtain ⟨k, h⟩ := h
   apply LoopsFormal.no_positive_power k
+  dsimp [LoopsFormal.PowerStrictlyPositive]
   simpa only [iterateAction_eq_previous] using h
 
 end LoopsFormal.CloneGraph.ReturnBlocks
