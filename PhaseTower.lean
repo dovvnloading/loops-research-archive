@@ -34,7 +34,7 @@ def project (p q : Nat) (hp : 0 < p) (i : Phase q) : Phase p :=
 theorem project_surjective (p q : Nat) (hp : 0 < p)
     (hle : p ≤ q) : Function.Surjective (project p q hp) := by
   intro a
-  let b : Phase q := ⟨a.val, lt_of_lt_of_le a.isLt hle⟩
+  let b : Phase q := ⟨a.val, by have ha := a.isLt; omega⟩
   refine ⟨b, ?_⟩
   apply Fin.ext
   simpa [project, b] using (Nat.mod_eq_of_lt a.isLt)
@@ -43,8 +43,8 @@ theorem project_surjective (p q : Nat) (hp : 0 < p)
 theorem project_injective_of_le (p q : Nat) (hp : 0 < p)
     (hle : q ≤ p) : Function.Injective (project p q hp) := by
   intro i j hij
-  have hi : i.val < p := lt_of_lt_of_le i.isLt hle
-  have hj : j.val < p := lt_of_lt_of_le j.isLt hle
+  have hi : i.val < p := by have hi0 := i.isLt; omega
+  have hj : j.val < p := by have hj0 := j.isLt; omega
   apply Fin.ext
   have h := congrArg Fin.val hij
   dsimp [project] at h
@@ -68,19 +68,19 @@ theorem project_has_collision (p q : Nat) (hp : 0 < p)
 
 /-- A marking is realizable from a coarser phase *alone*. The output
     alphabet is completely arbitrary; no decidable equality is assumed. -/
-def FactorsThrough {α : Type*} (p q : Nat) (hp : 0 < p)
+def FactorsThrough {α : Type} (p q : Nat) (hp : 0 < p)
     (L : Phase q → α) : Prop :=
   ∃ g : Phase p → α, ∀ i, L i = g (project p q hp i)
 
 /-- All fine phases identified by the quotient must carry the same mark. -/
-def ConstantOnFibers {α : Type*} (p q : Nat) (hp : 0 < p)
+def ConstantOnFibers {α : Type} (p q : Nat) (hp : 0 < p)
     (L : Phase q → α) : Prop :=
   ∀ i j, project p q hp i = project p q hp j → L i = L j
 
 /-- Exact factorization criterion. For p <= q, being constant on quotient
     fibers is not merely necessary: it is sufficient. The proof constructs
     the coarse marking using the canonical representatives 0,...,p-1. -/
-theorem factorsThrough_iff_constantOnFibers {α : Type*}
+theorem factorsThrough_iff_constantOnFibers {α : Type}
     (p q : Nat) (hp : 0 < p) (hle : p ≤ q)
     (L : Phase q → α) :
     FactorsThrough p q hp L ↔ ConstantOnFibers p q hp L := by
@@ -91,19 +91,19 @@ theorem factorsThrough_iff_constantOnFibers {α : Type*}
       _ = g (project p q hp j) := by rw [hij]
       _ = L j := (hg j).symm
   · intro h
-    let section : Phase p → Phase q :=
-      fun a => ⟨a.val, lt_of_lt_of_le a.isLt hle⟩
-    have hsection : ∀ a : Phase p, project p q hp (section a) = a := by
+    let pick : Phase p → Phase q :=
+      fun a => ⟨a.val, by have ha := a.isLt; omega⟩
+    have hsection : ∀ a : Phase p, project p q hp (pick a) = a := by
       intro a
       apply Fin.ext
-      simpa [project, section] using (Nat.mod_eq_of_lt a.isLt)
-    refine ⟨fun a => L (section a), ?_⟩
+      simpa [project, pick] using (Nat.mod_eq_of_lt a.isLt)
+    refine ⟨fun a => L (pick a), ?_⟩
     intro i
-    exact h i (section (project p q hp i))
+    exact h i (pick (project p q hp i))
       (hsection (project p q hp i)).symm
 
 /-- The factorized coarse marking is unique when the projection is onto. -/
-theorem coarse_marking_unique {α : Type*}
+theorem coarse_marking_unique {α : Type}
     (p q : Nat) (hp : 0 < p) (hle : p ≤ q)
     (L : Phase q → α) (g h : Phase p → α)
     (hg : ∀ i, L i = g (project p q hp i))
@@ -117,7 +117,7 @@ theorem coarse_marking_unique {α : Type*}
 
 /-- Distinct fine-phase marks cannot be obtained from a smaller phase
     alphabet by any relabeling function whatsoever. -/
-theorem injective_marking_never_factors {α : Type*}
+theorem injective_marking_never_factors {α : Type}
     (p q : Nat) (hp : 0 < p) (hlt : p < q)
     (L : Phase q → α) (hL : Function.Injective L) :
     ¬ FactorsThrough p q hp L := by
@@ -129,7 +129,7 @@ theorem injective_marking_never_factors {α : Type*}
 
 /-- If two phases lie in the same coarse fiber and have different
     labels, they give a concrete obstruction to factoring. -/
-theorem two_marks_obstruct_factorization {α : Type*}
+theorem two_marks_obstruct_factorization {α : Type}
     (p q : Nat) (hp : 0 < p) (L : Phase q → α)
     (i j : Phase q)
     (heq : project p q hp i = project p q hp j)
@@ -149,7 +149,7 @@ theorem mod_mod_of_divisor (j p q : Nat)
   have hz : q % p = 0 := Nat.mod_eq_zero_of_dvd hdiv
   calc
     (j % q) % p = ((j % q) + q * (j / q)) % p := by
-      simp [Nat.add_mod, Nat.mul_mod, hz, Nat.mod_mod]
+      simp [Nat.add_mod, Nat.mul_mod, hz]
     _ = j % p := by rw [Nat.mod_add_div]
 
 /-- Phase reduction composes along a tower of divisible periods. -/
@@ -172,7 +172,7 @@ theorem project_of_time (p q j : Nat)
     forgets down to p, then any r-level marking factoring via q also
     forgets down to p. The contrapositive can identify an indispensable
     intermediate memory layer. -/
-theorem factorization_transitive {α : Type*}
+theorem factorization_transitive {α : Type}
     (p q r : Nat) (hp : 0 < p) (hq : 0 < q)
     (hpq : p ∣ q) (L : Phase r → α)
     (hL : FactorsThrough q r hq L)
@@ -191,7 +191,7 @@ theorem factorization_transitive {α : Type*}
 /-- A physical point of an inner restrictive set follows an actual
     outer orbit phase. This is inherited from the dynamical iterate
     identity; no symbolic phase-routing oracle is assumed. -/
-theorem physical_outer_phase_route {α : Type*}
+theorem physical_outer_phase_route {α : Type}
     (f : α → α) (outer inner : α → Prop)
     (p : Nat) (hp : 0 < p)
     (hcontain : ∀ x, inner x → outer x)
@@ -205,7 +205,7 @@ theorem physical_outer_phase_route {α : Type*}
     phase routes with the correct physical iterate, with no relabeling
     axiom. This does not assert that the witnesses are unique, or that
     they describe accesses or sheets. -/
-theorem physical_three_level_routes {α : Type*}
+theorem physical_three_level_routes {α : Type}
     (f : α → α) (outer middle inner : α → Prop)
     (p q : Nat) (hp : 0 < p) (hq : 0 < q)
     (hinner : ∀ x, inner x → middle x)
@@ -223,7 +223,7 @@ theorem physical_three_level_routes {α : Type*}
 
 /-- If a proposed return to the base is disjoint from all nonzero
     images of the outer root, its time must be aligned modulo p. -/
-theorem actual_return_requires_outer_alignment {α : Type*}
+theorem actual_return_requires_outer_alignment {α : Type}
     (f : α → α) (root base : α → Prop)
     (p time : Nat) (hp : 0 < p)
     (hinv : ∀ x, root x → root (iterate f p x))
