@@ -1,6 +1,6 @@
 name = "loops_weighted"
 version = "0.1.0"
-defaultTargets = ["WeightedReturn"]
+defaultTargets = ["WeightedReturn", "GraphWeightedBridge"]
 
 [[require]]
 name = "mathlib"
@@ -9,3 +9,29 @@ rev = "v4.32.0"
 
 [[lean_lib]]
 name = "WeightedReturn"
+
+# Import the already kernel-checked graph modules from the repository root.
+# srcDir is relative to this nested package and contains no file copies.
+
+[[lean_lib]]
+name = "LoopsFormal"
+srcDir = "../.."
+
+[[lean_lib]]
+name = "CloneGraph"
+srcDir = "../.."
+
+[[lean_lib]]
+name = "FirstReturn"
+srcDir = "../.."
+
+[[lean_lib]]
+name = "ReturnBlocks"
+srcDir = "../.."
+
+[[lean_lib]]
+name = "ReturnPaths"
+srcDir = "../.."
+
+[[lean_lib]]
+name = "GraphWeightedBridge"
