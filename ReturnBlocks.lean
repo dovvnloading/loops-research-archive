@@ -97,6 +97,13 @@ private theorem fin3_all {P : Fin 3 → Prop}
           rw [heq]
           exact h2
 
+/-- The underlying finite graph relation is decidable by its three
+explicit arithmetic edge clauses. -/
+private instance edgeDecidable (n : Nat) (u v : Vertex n) :
+    Decidable (Edge n u v) := by
+  unfold Edge
+  infer_instance
+
 /-- All entries of Q are the actual internal-edge incidences. -/
 theorem Q_matches_graph :
     ∀ i j : Fin 3, (Q i j = 1 ↔ Edge 0 (atom i) (atom j)) := by
