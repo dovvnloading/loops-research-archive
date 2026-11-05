@@ -19,6 +19,7 @@ on:
       - 'ledger.json'
       - 'ledger.js'
       - 'research/mlc_unified/proof_obligations.json'
+      - 'papers/paper2_rooted_end_compactification/main_v2.tex'
   pull_request:
     paths:
       - lean-toolchain
@@ -34,6 +35,7 @@ on:
       - 'ledger.json'
       - 'ledger.js'
       - 'research/mlc_unified/proof_obligations.json'
+      - 'papers/paper2_rooted_end_compactification/main_v2.tex'
   workflow_dispatch:
 
 permissions:
@@ -81,6 +83,8 @@ jobs:
         run: python research/independent_audits/verify_full_clone_spectral_radius.py
       - name: Check finite Dirichlet-to-Neumann gluing
         run: python research/independent_audits/verify_rectangle_response.py
+      - name: Check Paper 2 geometric source and return-time patch structure
+        run: python research/independent_audits/verify_paper2_source_clock.py
       - name: Check ledger mirrors, statuses and evidence pointers
         run: python research/independent_audits/check_ledger_mirrors.py
       - name: Report remaining evidence-pointer debt (non-blocking)
