@@ -1,6 +1,6 @@
 name = "loops_weighted"
 version = "0.1.0"
-defaultTargets = ["WeightedReturn", "GraphWeightedBridge", "CloneBounds", "CloneRoot", "FullCloneEigen", "FullCloneMatrix", "SpectralDominance"]
+defaultTargets = ["WeightedReturn", "GraphWeightedBridge", "CloneBounds", "CloneRoot", "FullCloneEigen", "FullCloneMatrix", "SpectralDominance", "FullCloneSpectralMax"]
 
 [[require]]
 name = "mathlib"
@@ -50,3 +50,6 @@ name = "FullCloneMatrix"
 
 [[lean_lib]]
 name = "SpectralDominance"
+
+[[lean_lib]]
+name = "FullCloneSpectralMax"
