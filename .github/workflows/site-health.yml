@@ -1,0 +1,54 @@
+name: Site health
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'index.html'
+      - '404.html'
+      - 'site-v2.css'
+      - 'site-v2.js'
+      - 'favicon.svg'
+      - 'ledger.json'
+      - 'figs/**'
+      - 'papers/**'
+      - 'marked_width_mlc_manuscript.pdf'
+      - 'docs/DEPLOYMENT.md'
+      - 'code/verify_site_integrity.py'
+      - '.github/workflows/site-health.yml'
+  pull_request:
+    paths:
+      - 'index.html'
+      - '404.html'
+      - 'site-v2.css'
+      - 'site-v2.js'
+      - 'favicon.svg'
+      - 'ledger.json'
+      - 'figs/**'
+      - 'papers/**'
+      - 'marked_width_mlc_manuscript.pdf'
+      - 'docs/DEPLOYMENT.md'
+      - 'code/verify_site_integrity.py'
+      - '.github/workflows/site-health.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate-static-site:
+    name: Verify site assets, content and HTTP responses
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Check JavaScript syntax without external dependencies
+        run: node --check site-v2.js
+      - name: Verify static website and local HTTP serving
+        run: python code/verify_site_integrity.py
