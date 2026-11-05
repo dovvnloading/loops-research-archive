@@ -203,4 +203,63 @@ theorem every_clone_is_primitive (n : Nat) :
   rw [hlength] at hpath
   exact hpath
 
+/-!
+## Exact gate-to-gate path witnesses
+
+Gate e is vertex 0; gate f is vertex n+3.  The following terms
+exhibit the two e→f walks, of lengths n+2 and n+3, and the f→e
+walk of length n+2.  Exhaustiveness and multiplicity are separate
+first-return classification obligations.
+-/
+
+def secondGate (n : Nat) : Vertex n :=
+  ⟨n + 3, by dsimp [size]; omega⟩
+
+/-- The route via eₙ→b→a→f₀ (without using the shortcut). -/
+theorem e_to_f_long (n : Nat) :
+    Walk n (n + 3) (hub n) (secondGate n) := by
+  simpa [secondGate] using (fromHub n (secondGate n))
+
+/-- The route via eₙ→a→f₀, using the shortcut. -/
+theorem e_to_f_short (n : Nat) :
+    Walk n (n + 2) (hub n) (secondGate n) := by
+  have hfirst : Walk n n (hub n) (tip n) := by
+    simpa [tip] using (fromHub n (tip n))
+  have hshortcut : Edge n (tip n) (afterTip n) := by
+    right
+    right
+    exact ⟨rfl, rfl⟩
+  have hfinal : Edge n (afterTip n) (secondGate n) := by
+    left
+    dsimp [afterTip, secondGate]
+    omega
+  have hpath := Walk.append
+    (Walk.append hfirst (Walk.edge hshortcut))
+    (Walk.edge hfinal)
+  have hlength : n + 1 + 1 = n + 2 := by omega
+  rw [hlength] at hpath
+  exact hpath
+
+/-- The route f₀→...→fₙ→c→e₀. -/
+theorem f_to_e (n : Nat) :
+    Walk n (n + 2) (secondGate n) (hub n) := by
+  simpa [secondGate, size] using (toHub n (secondGate n))
+
+/-- The two primitive cycles are exactly the compositions of
+    the available gate-to-gate paths. -/
+theorem short_cycle_from_gates (n : Nat) :
+    Walk n (2 * n + 4) (hub n) (hub n) := by
+  have p := Walk.append (e_to_f_short n) (f_to_e n)
+  have hlen : (n + 2) + (n + 2) = 2 * n + 4 := by omega
+  rw [hlen] at p
+  exact p
+
+theorem long_cycle_from_gates (n : Nat) :
+    Walk n (2 * n + 5) (hub n) (hub n) := by
+  have p := Walk.append (e_to_f_long n) (f_to_e n)
+  have hlen : (n + 3) + (n + 2) = 2 * n + 5 := by omega
+  rw [hlen] at p
+  exact p
+
+
 end LoopsFormal.CloneGraph
