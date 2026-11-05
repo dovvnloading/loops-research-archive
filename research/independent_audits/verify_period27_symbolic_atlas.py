@@ -209,6 +209,14 @@ def build_certificate() -> dict:
                 "+" if coeff[return_time].positive() else "-"
             ),
         }
+        # A 3-block substitution intertwines one old doubling step
+        # with three new doubling steps on periodic angle words.
+        for word in pair:
+            image = "".join(AIRPLANE_BITS[int(bit)] for bit in word)
+            rotated_input = word[1:] + word[:1]
+            image_of_shift = "".join(AIRPLANE_BITS[int(bit)]
+                                     for bit in rotated_input)
+            assert image[3:] + image[:3] == image_of_shift
         pair = tuple("".join(AIRPLANE_BITS[int(bit)] for bit in word)
                      for word in pair)
 
