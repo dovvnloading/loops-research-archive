@@ -2,161 +2,224 @@
 
 # A Marked-Width Reduction of Mandelbrot Local Connectivity
 
-### A source-locked research program in one-dimensional complex dynamics
+### A source-locked research archive in one-dimensional complex dynamics
 
 **Matthew Robert Wesney**  
 Research direction, synthesis, authorship, and public stewardship
 
-[![MLC status: open](https://img.shields.io/badge/MLC-open-9a6700?style=for-the-badge)](https://dovvnloading.github.io/loops-research-archive/#frontier)
-[![Source lock: 2026-07-27](https://img.shields.io/badge/source%20lock-2026--07--27-1f2937?style=for-the-badge)](./RESEARCH_MAP.md)
-[![Proof ledger: 465](https://img.shields.io/badge/proof%20ledger-465-334155?style=for-the-badge)](https://dovvnloading.github.io/loops-research-archive/#ledger)
-[![License: CC0 1.0](https://img.shields.io/badge/license-CC0%201.0-166534?style=for-the-badge)](./LICENSE)
+[![MLC: open](https://img.shields.io/badge/MLC-open-9a6700?style=for-the-badge)](./RESEARCH_MAP.md)
+[![Research validation](https://github.com/dovvnloading/loops-research-archive/actions/workflows/lean-proofs.yml/badge.svg?branch=main)](https://github.com/dovvnloading/loops-research-archive/actions/workflows/lean-proofs.yml)
+[![Proof ledger: 465](https://img.shields.io/badge/proof%20ledger-465-334155?style=for-the-badge)](./ledger.json)
+[![CC0 1.0](https://img.shields.io/badge/license-CC0%201.0-166534?style=for-the-badge)](./LICENSE)
 
-[**Project page**](https://dovvnloading.github.io/loops-research-archive/) · [**Main manuscript**](./marked_width_mlc_manuscript.pdf) · [**Paper 1**](./papers/paper1_canonical_localization/paper1_forced_noninjectivity_sheet_kernel_v1.1_visual.pdf) · [**Paper 2**](./papers/paper2_rooted_end_compactification/paper2_direct_decoration_rooted_end_compactification_v1.1_visual.pdf) · [**Paper 3 — Draft III Visual Edition**](./papers/paper3_protected_carriers/paper3_draft3_visual.pdf) · [**Research map**](./RESEARCH_MAP.md) · [**Contribute**](./CONTRIBUTING.md)
+[**Research website**](https://dovvnloading.github.io/loops-research-archive/) ·
+[**225-page manuscript**](./marked_width_mlc_manuscript.pdf) ·
+[**Papers**](./papers/README.md) ·
+[**Research map**](./RESEARCH_MAP.md) ·
+[**Interactive proof ledger**](https://dovvnloading.github.io/loops-research-archive/#ledger) ·
+[**Contribute**](./CONTRIBUTING.md)
+
+**Overview updated 2026-11-05** · **Manuscript and ledger source lock 2026-07-27**
 
 </div>
 
 > [!IMPORTANT]
-> **The Mandelbrot Local Connectivity conjecture remains open.** The archive establishes unconditional finite and structural results, records imported theorems, and gives a conditional reduction whose remaining hypotheses are explicit. It does not claim an unconditional proof of MLC.
+> **The Mandelbrot Local Connectivity conjecture (MLC) remains open.** This repository contains finite and structural theorems, source audits, computational certificates, a conditional marked-width reduction, and open proof obligations. The November 2026 two-scale examples and Lean checks do **not** constitute a proof of MLC or a completed Kahn–Lyubich marked construction.
 
-## Research thesis
+**On this page:** [Research status](#research-status) · [Mathematical program](#the-mathematical-program) · [Papers](#three-companion-papers) · [Two-scale research](#the-november-2026-two-scale-testbed) · [Lean and reproducibility](#proof-evidence-lean-and-reproducibility) · [Open frontier](#the-open-frontier) · [Reading and attribution](#navigate-the-archive)
 
-The program asks whether the global MLC problem can be reduced to a controlled sequence of marked geometric transitions. The proposed state retains more than an unmarked continuum: it carries the ambient marked surface, a regularized carrier, critical and postcritical data, satellite or neutral access information, prime-end or sectorial boundary data, declared curve families, and—after the obstruction found in Paper 1—the sheet transport lost by canonical localization.
+## Research status
 
-The central methodological commitment is exact status separation. A statement in this archive is classified as **imported**, **proved within the program**, **conditional**, or **open**. The machine-readable ledger records dependencies and evidence pointers for 465 obligations: **34 imported, 316 proved, and 115 open** at the 2026-07-27 source lock.
+The proof ledger is a **source-locked inventory**, not a measurement of how much of MLC has been solved.
 
-## The research spine
+![Stacked chart of the 465 source-locked obligations: 34 imported, 316 internally proved and 115 open](./figs/readme/ledger-status.svg)
+
+| Ledger status | Count | Meaning |
+|---|---:|---|
+| Imported | **34** | External mathematical results; each use requires its original hypotheses and attribution. |
+| Proved within the archive | **316** | Internal proof recorded for the stated claim; some are finite, structural, or conditional implications. |
+| Open | **115** | Missing arguments, constructions, or interfaces. |
+| **Total** | **465** | Status snapshot dated **2026-07-27**; see [ledger.json](./ledger.json). |
+
+The November 2026 research increments are documented separately, with newer exact code and proof notes. **The 465-entry classification has not been promoted to claim that new global analytic gates are closed.** The dependency structure, not the count of proved lemmas, determines progress toward MLC.
+
+## The mathematical program
+
+The central question is whether a **marked geometric state** can carry enough dynamical, topological, and analytic information across successive renormalization scales to support a uniform compactness-and-rigidity argument.
+
+An unmarked continuum is not sufficient for this program. The proposed state must retain the ambient marked surface, critical/postcritical data, protected obstacles, relevant curve families, prime-end or sectorial accesses, and localization **sheet transport**. Paper 1 explains why dropping the last item can force noninjectivity.
 
 ```mermaid
-flowchart LR
-    P1["Paper 1<br/>localization obstruction"] --> S["corrected marked state<br/>with sheet transport"]
-    S --> P2["Paper 2<br/>rooted-end compactification"]
-    P2 --> P3["Paper 3<br/>separation ledgers + protected routing<br/>(Draft III Visual Edition, QA audited)"]
-    P3 --> H1["H1<br/>marked construction"]
-    H1 --> H2["H2<br/>calibration"]
-    H2 --> H3["H3<br/>coercivity"]
-    H3 --> H4["H4<br/>rigidity"]
-    H4 --> U["UPTCR"]
-    U --> M["MLC"]
-
-    classDef proved fill:#e8f5ed,stroke:#166534,color:#102a1a;
-    classDef active fill:#fff4d6,stroke:#9a6700,color:#3f2a00;
-    classDef open fill:#f7e8e8,stroke:#9f2d2d,color:#3f1111;
-    class P1,P2 proved;
-    class P3 active;
-    class H1,H2,H3,H4,U,M open;
+flowchart TD
+    P1["Paper 1: localization<br/>sheet obstruction"] --> MS["Candidate marked state<br/>with access and sheet data"]
+    P2["Paper 2: one-scale<br/>rooted ends"] --> MS
+    P3["Paper 3: finite planar<br/>protected carriers"] --> MS
+    T["2026 finite 3/9 complex model<br/>and Lean checks"] -. "testbed, not H1" .-> MS
+    MS --> H1["H1: actual marked construction<br/>OPEN"]
+    H1 --> H2["H2: quantitative calibration<br/>OPEN"]
+    H2 --> H3["H3: analytic coercivity<br/>OPEN"]
+    H3 --> H4["H4: rigidity<br/>OPEN"]
+    H4 --> U["Universal protected-tower closure<br/>OPEN"]
+    U --> M["Mandelbrot local connectivity<br/>OPEN"]
 ```
 
-Papers 1–3 address successive finite or structural interfaces. They do not by themselves close the analytic transition, compactness, or rigidity gates. The [research map](./RESEARCH_MAP.md) gives the exact correspondence between this spine, the ledger, and the archive directories.
+The diagram is a **research dependency map**, not an established chain of completed implications. The source-locked manuscript records the implication from a universal protected compactness-and-rigidity proposition to MLC; it does **not** establish that proposition. See [RESEARCH_MAP.md](./RESEARCH_MAP.md) and the [interactive ledger](https://dovvnloading.github.io/loops-research-archive/#ledger) for exact claim IDs and dependencies.
 
-## Papers
+## Three companion papers
 
-| Work | Public state | Principal contribution | Boundary |
+These papers provide the program's core finite and structural foundations. The PDF releases below are unchanged by the November research increments.
+
+| Work | Released state | Core contribution | Boundary |
 |---|---|---|---|
-| **Paper 1 — [*Forced Noninjectivity and the Sheet Kernel at Primitive Canonical Localization Seeds*](./papers/paper1_canonical_localization/paper1_forced_noninjectivity_sheet_kernel_v1.1_visual.pdf)** | Version 1.1 Visual Edition · 41 pages | Proves forced noninjectivity at every ordinary primitive canonical seed of period $p>1$ in the stated class; constructs the canonical covering/embedding resolution; identifies an infinite sheet kernel with at least $2^p-2$ independent peripheral winding coordinates. | Does not prove MLC, rigidity, or a priori bounds; decoration-stage applications require a separate alignment theorem. |
-| **Paper 2 — [*The Direct-Decoration Rooted-End Compactification*](./papers/paper2_rooted_end_compactification/paper2_direct_decoration_rooted_end_compactification_v1.1_visual.pdf)** | Version 1.1 Visual Edition · 21 pages | Realizes the binary rooted-end compactification at one direct-decoration scale, proves the exact component quotient and shift dynamics, and establishes stable replacement and protected-access results in the same planar model. | A one-scale theorem; it does not supply cross-scale transitions, self-renormalization of end fibers, or MLC. |
-| **Paper 3 — [*Protected Planar Carriers: Separation Ledgers and Access-Preserving Routing*](./papers/paper3_protected_carriers/paper3_draft3_visual.pdf)** | **Draft III Visual Edition** · 2026-07-27 · 74 pages · QA audited | Gives finite realization and exact recognition criteria for full carriers preserving selected prime-end data and frozen obstacles; proves a cohomological attachment ledger, persistent packet audits, sharp Hausdorff-limit defect examples, and a stable decreasing-envelope theorem. | A finite planar-topology paper, not a virtual dynamical-carrier construction, quantitative width theorem, or MLC result. Independent specialist review remains appropriate before journal submission. |
+| **[Paper 1 — Forced Noninjectivity and the Sheet Kernel at Primitive Canonical Localization Seeds](./papers/paper1_canonical_localization/paper1_forced_noninjectivity_sheet_kernel_v1.1_visual.pdf)** | v1.1 Visual Edition · 41 pp. | Forced noninjectivity for the stated primitive seeds; canonical covering/embedding resolution, infinite sheet kernel and peripheral winding quotient. | No general KL decoration-stage alignment, a priori bound, rigidity or MLC proof. |
+| **[Paper 2 — The Direct-Decoration Rooted-End Compactification](./papers/paper2_rooted_end_compactification/paper2_direct_decoration_rooted_end_compactification_v1.1_visual.pdf)** | v1.1 Visual Edition · 21 pp. | One-scale binary rooted-end model, exact component quotient, shift dynamics, stable replacement and protected accesses under stated hypotheses. | No self-return or cross-scale theorem for end fibers; no MLC proof. |
+| **[Paper 3 — Protected Planar Carriers: Separation Ledgers and Access-Preserving Routing](./papers/paper3_protected_carriers/paper3_draft3_visual.pdf)** | Draft III Visual Edition · 74 pp. · QA audited | Finite full-carrier recognition and routing with protected accesses, attachment separation ledger, Hausdorff-limit failures and stable decreasing envelopes. | Finite planar topology—not an actual virtual carrier, quantitative width estimate or rigidity theorem. |
 
-A paper-level index with source files and version status is maintained in [`papers/README.md`](./papers/README.md).
+### The three structural lessons
 
-### Paper 1: why the state had to change
+**Paper 1 — localization cannot silently forget sheets.** At an ordinary primitive quadratic-like restriction of period \(p>1\), the overall return has degree \(2^p\), whereas the central component has degree two. The excess \(2^p-2\) pullback components create peripheral sheet information. The paper identifies a based fiber \(K/H_s\) and proves, under its stated hypotheses,
 
-For an ordinary primitive quadratic-like restriction of period $p>1$, the return $F=f^p$ has degree $2^p$ while the central component has degree $2$. The resulting $2^p-2$ excess pullback components create peripheral loops that survive in the source localization subgroup but die after target-side hole filling. Distinct lifted endpoints are therefore identified by the localized inclusion.
+\[
+N_{\mathrm{fill}}=\ker(a_*),\qquad K=N_{\mathrm{fill}}\rtimes H_s,\qquad N_{\mathrm{fill}}\twoheadrightarrow\mathbb Z^{\,2^p-2}.
+\]
 
-If $H_s$ and $H_t$ denote the source and target localization subgroups and $K=a_*^{-1}(H_t)$, Paper 1 identifies the based sheet fiber as $K/H_s$ and proves
+This concerns the program's canonical **embedding** failure; it does not contradict the **immersion** statements used by Kahn and Kahn–Lyubich.
 
-$$
-N_{\mathrm{fill}}=\ker(a_*),\qquad
-K=N_{\mathrm{fill}}\rtimes H_s,\qquad
-N_{\mathrm{fill}}\twoheadrightarrow \mathbb Z^{\,2^p-2}.
-$$
+**Paper 2 — a one-scale symbolic compactification has an actual planar realization.** Its binary end fibers, component quotient and protected-access results are proved at the stated decoration scale. A symbolic shift or quotient alone does not construct a second analytic renormalization scale.
 
-The elementary degree budget is not the claimed novelty. The contribution is the dynamical subgroup defect, its canonical resolution, the kernel normal form, the winding quotient, and exact propagation through the complementary-cover locus. The result corrects an embedding-preservation route explored in this program; it does not contradict Kahn or Kahn–Lyubich, whose localization statements use immersions.
+**Paper 3 — protected planar routing has exact finite criteria, but limits can fail.** The separation ledger explains how attachments can create or remove holes, while examples show why Hausdorff convergence alone cannot guarantee preservation of access or fullness. A dynamical marked carrier remains an additional construction problem.
 
-### Paper 2: the exact one-scale model
+See the [paper index](./papers/README.md) and [Paper 3 QA report](./papers/paper3_protected_carriers/QA_REPORT.md) for original versions, sources and audit methods.
 
-At a direct-decoration scale, two univalent inverse branches generate finite fibers $K_w$ and nested end fibers $E_\omega$. Their union $H_\partial$ is compact; these fibers are exactly its connected components; and the component projection
+## The November 2026 two-scale testbed
 
-$$
-\pi_\partial:H_\partial\longrightarrow\Omega_\partial
-$$
+The most recent research builds an **explicit, finite real-and-complex model** that can be checked independently of the global MLC reduction. It is useful precisely because the theorem boundaries are explicit.
 
-is continuous and closed. Away from the root fiber, the return map descends to first-symbol deletion on the binary address compactification. The theorem also proves fullness, connected complement, stable replacement inside disjoint Jordan cells, and finite protected-access transport under its stated hypotheses.
+![Diagram of one period-27 quadratic center, the degree-two outer period-3 return and inner period-9 return, with K9 contained in K3](./figs/readme/two-scale-return.svg)
 
-The abstract compactification is classical. The paper’s contribution is its realization by direct-decoration inverse branches, puzzle pullbacks, and nested puzzle intersections in a single dynamical plane, with replacement and access theorems proved in that same model.
+For \(f_c(z)=z^2+c\), the [exact real certificate](./research/independent_audits/real_quadratic_3_9_restrictive_certificate_20261105.md) isolates a unique real parameter \(c_*\approx-1.786429858055761\) in a specified \(2^{-128}\) rational bracket with **exact critical period 27**. It constructs nested restrictive intervals \(I_9\subset\operatorname{int}I_3\) with return times 9 and 3.
 
-### Paper 3: the finite connector interface
+The [complex-domain certificate](./research/independent_audits/complex_two_scale_quadratic_like_certificate_20261105.md) then gives explicit target disks
 
-Draft III Visual Edition isolates when a finite family of disjoint full continua can be joined by a full planar carrier without violating frozen obstacles or prescribed prime-end accesses. Its organizing criterion asks whether one frozen free-domain component presents simultaneous singleton ports to all selected atoms. It develops corrected slit and packet lemmas, order-independent fullification for fixed typed packets, persistent obstruction defects, and checkable cellwise criteria.
+\[
+U_3=D(0,1/4),\qquad U_9=D(0,1/32),
+\]
 
-The new attachment exact sequence records precisely how disconnected traces create holes and separating traces fill existing ones. It yields a connected-trace criterion for full unions, arbitrarily large separation defects born under Hausdorff convergence, and a positive decreasing-envelope stability theorem. The [release QA](./papers/paper3_protected_carriers/QA_REPORT.md) records deterministic builds, proof and citation audits, strict PDF-integrity checks, and full visual inspection.
+and, for every \(\lvert c-c_*\rvert<2^{-32}\), proper degree-two quadratic-like restrictions
 
-## Main manuscript and current frontier
+\[
+f_c^3:V_{3,c}\longrightarrow U_3,
+\qquad
+f_c^9:V_{9,c}\longrightarrow U_9.
+\]
 
-The [225-page main manuscript](./marked_width_mlc_manuscript.pdf) integrates the marked-width program: finite root-pullback and inverse-tree reductions, critical-value and attachment formulae, finite routing, common-domain constructions, finite Wave-horizon closure under stated hypotheses, source-locked corrections, and no-go results.
+The construction establishes connected little filled Julia sets and \(K_{9,c}\subset K_{3,c}\), with the nine inner physical phase images refining the three outer phases. These are **finite attracting-window results**, supported by exact outward-integer bounds and written Rouché/Riemann–Hurwitz arguments—not by a Lean proof of complex analysis.
 
-At the source lock, the terminal implication **UPTCR ⇒ MLC** is recorded as proved *conditional on UPTCR*. The hypotheses that would activate it remain open:
+### Three-scale symbolic correspondence
 
-| Gate | Ledger status | Required advance |
+The [symbolic atlas](./research/independent_audits/period27_three_scale_symbolic_marking_20261105.md) and [kneading source audit](./research/independent_audits/period27_kneading_angle_permutation_source_audit_20261105.md) compare these physical returns with the classical airplane substitution \(0\mapsto011,\ 1\mapsto100\):
+
+| Physical map | Critical period under that map | Angular period | Candidate characteristic-angle pair |
+|---|---:|---:|---|
+| \(f_c^9\) | 3 | 3 | \(3/7,\;4/7\) |
+| \(f_c^3\) | 9 | 9 | \(228/511,\;283/511\) |
+| \(f_c\) | 27 | 27 | \(59914011/134217727,\;74303716/134217727\) |
+
+The exact real kneading-angle invariant of \(c_*\) is
+
+\[
+\theta_{\mathrm{knead}}(c_*)=\frac{59914011}{2^{27}-1},
+\]
+
+and the twisted-shift calculation reproduces **all 27** real critical-orbit ranks. The [machine-readable 26-edge real Markov graph](./results/period27_symbolic_marking.json) is an interval graph, **not** the full external-ray Hubbard-tree automaton.
+
+> [!CAUTION]
+> **Parameter rays do not land at the interior superattracting center \(c_*\).** Classical tuning associates the candidate ray pair with the **parabolic root of a specified twice-tuned airplane component**. Identifying that component as the one containing \(c_*\), and proving the required dynamical-plane landing/access/sheet transport, remain open in [Issue #12](https://github.com/dovvnloading/loops-research-archive/issues/12).
+
+### The critical analytic boundary
+
+The center, and a certified surrounding parameter disk, are **attracting**: the ambient filled Julia set has nonempty interior. Therefore the example fails **Paper 2's hypothesis H3: \(K(f)=J(f)\)**. This is **different from** the global ledger gate named `H3_COERCIVITY`. The [complex-window obstruction audit](./research/independent_audits/two_scale_complex_window_obstructions_20261105.md) also rules out the naive equal-width stadium/preimage construction at both scales. Alternative domains make the finite complex result possible, but neither result supplies a source-compatible KL puzzle atlas or proves a new MLC case.
+
+## Proof evidence, Lean and reproducibility
+
+The archive deliberately separates **checked finite arithmetic**, **paper-level mathematical interpretation**, **imported theory**, and **genuinely open geometry**.
+
+| Evidence layer | What is checked | What is *not* checked |
 |---|---|---|
-| `H1_MARKED_CONSTRUCTION` | Open | Construct the marked carrier/state with all required access, obstacle, sheet, and transition data. |
-| `H2_CALIBRATION` | Open | Relate the marked observable quantitatively to the source extremal-width machinery. |
-| `H3_COERCIVITY` | Open | Prevent analytic degeneration in the compactified state. |
-| `H4_RIGIDITY` | Open | Convert the resulting limiting control into the rigidity conclusion needed by the reduction. |
-| `UNIVERSAL_PROTECTED_TOWER_CLOSURE` | Open | Close the protected tower uniformly across the admitted combinatorial regimes. |
-| `UPTCR_IMPLIES_MLC` | Proved conditional implication | Deduce MLC once the universal compactness-and-rigidity proposition is available. |
+| **Lean 4.32.0** | `[Period27Dyadic.lean](./Period27Dyadic.lean)` verifies signed \(2^{-144}\)-dyadic endpoint bounds, the parameter derivative, 26 nonzero orbit signs and 27 strict orbit ranks; `[Period27Kneading.lean](./Period27Kneading.lean)` verifies the 27-bit tuning word, doubling orbit, full twisted-shift ranks and a conditional marking-memory criterion. | General real interval-enclosure soundness and IVT/MVT, ray landing, complex geometry, KL sheet transport or MLC. |
+| **Exact Python certificates** | Independent \(2^{-224}\) outward integer arithmetic for the parameter, real restrictions, complex bound margins, candidate angles and finite graphs. | Numerical/algorithmic checks alone do not prove the full analytic bridge. |
+| **Written analytic arguments** | Rouché and Riemann–Hurwitz are used to interpret the complex domain bounds, with hypotheses and scope recorded in the [two-scale note](./research/independent_audits/complex_two_scale_quadratic_like_certificate_20261105.md). | These analytic deductions are not yet Lean-kernel-formalized. |
+| **Source-locked papers and ledger** | Precise claims, evidence links, dependencies, counterexamples and imported hypotheses. | Universal analytic construction, calibration, coercivity, rigidity and MLC remain open. |
 
-The stationary-Wave repair has one proved gate—relative continuation—and three open interfaces: pointwise two-path breaking, measurable final fixed-component exit, and typed bounded-degree pushforward. Exact identifiers, dependencies, and evidence links are available in the [interactive ledger](https://dovvnloading.github.io/loops-research-archive/#ledger) and [`ledger.json`](./ledger.json).
+The [Lean arithmetic note](./research/independent_audits/lean_period27_kernel_arithmetic_20261105.md) explains the proof boundary, including why \(2^{-128}\) arithmetic was too coarse to certify the period-27 **endpoint** signs and why the Lean computation uses \(2^{-144}\). Kernel-reduced finite proofs use `decide +kernel`, not `native_decide` or proof holes; foundational Lean axioms can still appear in the declared imports.
 
-### November 2026 — certified two-scale complex return model
+### Reproduce the central results
 
-A new [independently reproducible exact certificate](./research/independent_audits/complex_two_scale_quadratic_like_certificate_20261105.md) constructs **proper degree-two quadratic-like return maps of periods 3 and 9 in the same actual quadratic dynamical plane**, uniformly for every complex parameter within (2^{-32}) of the explicit period-27 center. The target disks are (U_3=D(0,1/4)) and (U_9=D(0,1/32)); their critical preimage components are compactly nested, with connected little filled Julia sets, pairwise disjoint phase images, and a physically realized 9-to-3 phase inclusion. [Exact outward integer checks](./research/independent_audits/verify_complex_quadratic_like_3_9.py) run in research CI.
+Install the repository-pinned Lean toolchain (see [lean-toolchain](./lean-toolchain)) and run from the repository root:
 
-**Boundary:** This is a finite attracting-window complex renormalization example—not a source-compatible Kahn–Lyubich ray/prime-end/sheet atlas. Every parameter in the certified window fails Paper 2's (K(f)=J(f)) assumption. It does not close the global marked-construction or MLC analytic gates. The earlier [parameter-window and naive-stadium first-failure certificate](./research/independent_audits/two_scale_complex_window_obstructions_20261105.md) remains applicable and explains why different, larger complex return domains were required.
+```bash
+git clone https://github.com/dovvnloading/loops-research-archive.git
+cd loops-research-archive
 
+# Exact real and complex research certificates (standard library only):
+python research/independent_audits/verify_real_nested_3_9.py
+python research/independent_audits/verify_complex_window_obstructions.py
+python research/independent_audits/verify_complex_quadratic_like_3_9.py
 
-### November 2026 — kernel-checked dyadic and 27-state symbolic certificate
+# Angle, orbit-permutation and source-marking arithmetic:
+python research/independent_audits/verify_period27_symbolic_atlas.py --check-manifest
+python research/independent_audits/verify_period27_kneading_angle_permutation.py
 
-The new [Lean arithmetic audit](./research/independent_audits/lean_period27_kernel_arithmetic_20261105.md) integrates the previously independent 27-step root, derivative, real-orbit ordering and symbolic-rank checks inside **Lean 4.32.0**. The two default-build modules [Period27Dyadic.lean](./Period27Dyadic.lean) and [Period27Kneading.lean](./Period27Kneading.lean) recompute both period-27 polynomial endpoint signs at \(2^{-144}\) signed-dyadic precision; prove a strictly negative parameter derivative, every critical-orbit sign, all 27 strict ranks, the 27-bit angle/tuning word and all twisted-shift ranks. The modular phase theorem also proves that if two labels in one \(9\to3\) fiber are distinct, no memoryless phase-only quotient preserves both. These **finite computations use kernel-reduced Lean proofs**, not native-decide or assumed results.
+# Kernel-check the key formal modules and all default targets:
+lake build Period27Kneading Period27Dyadic
+lake build
+```
 
-**Boundary:** the soundness proof of general real interval arithmetic and the IVT/MVT inference are still written mathematical arguments rather than Lean-formalized real analysis. Actual KL geometric sheets/accesses, parabolic root-ray identification, Paper 2 H3 and all global MLC proof gates remain unchanged.
+The [Research validation workflow](./.github/workflows/lean-proofs.yml) runs the modules and research regressions on GitHub Actions. The separate [independent-audits index](./research/independent_audits/README.md) describes individual certificates and their limitations. A green CI result verifies code and Lean proofs **as written**; it is not independent mathematical peer review.
 
-### November 2026 — source-checked kneading angle and 27-point order
+## The open frontier
 
-A [new exact primary-source comparison](./research/independent_audits/period27_kneading_angle_permutation_source_audit_20261105.md) applies the real kneading-angle definition and twisted-shift cyclic-permutation construction of Baker–Chen–Li–Qian (2026) to the certified \(c_*\). The signed critical orbit gives \(\theta_{\rm knead}(c_*)=59914011/(2^{27}-1)\), and the independently generated symbolic ranks agree with **all 27** rigorously ordered real critical-orbit vertices. [Arithmetic verification](./research/independent_audits/verify_period27_kneading_angle_permutation.py) is exercised in CI.
+The [main synthesis manuscript](./marked_width_mlc_manuscript.pdf) contains the source-locked conditional reduction. Its major unresolved analytic gates are:
 
-Classical tuning places the matching candidate external *parameter* ray pair at the **parabolic root** of a specified twice-tuned airplane component—not at \(c_*\), an interior attracting center. Identifying that tuned component with the component containing \(c_*\), followed by the separate actual dynamical-ray, prime-end and localization-sheet transport, remains open. No global MLC proof status is affected.
+| Ledger gate | State | Missing research |
+|---|---|---|
+| `H1_MARKED_CONSTRUCTION` | **Open** | Produce the *actual* marked dynamical carrier, access/sheet data and compatible all-scale transitions. |
+| `H2_CALIBRATION` | **Open** | Prove quantitative comparison with source extremal widths, with controlled losses. |
+| `H3_COERCIVITY` | **Open** | Rule out unwanted analytic degeneration in the compactified marked state. |
+| `H4_RIGIDITY` | **Open** | Derive the needed rigidity conclusion from the resulting analytic control. |
+| `UNIVERSAL_PROTECTED_TOWER_CLOSURE` | **Open** | Close the protected tower across the admitted combinatorial regimes. |
+| `UPTCR_IMPLIES_MLC` | **Proved conditional implication** | Applies **only if** universal tower compactness and rigidity have already been proved. |
 
-### November 2026 — exact three-scale symbolic marking candidate
+**Most immediate tracked problems:** [Issue #12](https://github.com/dovvnloading/loops-research-archive/issues/12) seeks the *actual* period-27 component-root-ray identity and Kahn–Lyubich-compatible phase, access and sheet atlas. [Issue #15](https://github.com/dovvnloading/loops-research-archive/issues/15) seeks an end-to-end Lean proof of signed-dyadic interval soundness, IVT/MVT and unique period-27 parameter existence.
 
-A new [source-audited candidate-angle certificate](./research/independent_audits/period27_three_scale_symbolic_marking_20261105.md) takes the explicit period-27 center and independently verifies an exact 3/9/27 external-angle **kneading-word** match to the airplane tuning substitution \(0\mapsto011,\ 1\mapsto100\). It tests the correct orientation signs for the physical return maps \(f\), \(f^3\) and \(f^9\); certifies all six rational angle periods and the three un-angled internal addresses; and produces a reproducible [26-edge real Markov graph](./results/period27_symbolic_marking.json), checked against outward dyadic orbit enclosures in [research CI](./.github/workflows/lean-proofs.yml).
-
-**Important distinction:** the angle pairs are **candidate source markings**. Equality of rational angular kneading and real critical-orbit kneading does **not** by itself identify actual parameter-ray landing, KL puzzle accesses or peripheral localization sheets. A sourced parameter-identification and landing argument is the next theorem; the attracting-window result still fails Paper 2's \(K(f)=J(f)\) assumption. No MLC gate status changes.
+The stationary-Wave research has proved relative continuation in the archived setting, but its two-path breaking, measurable fixed-component exit, and typed bounded-degree pushforward interfaces remain open. The [novelty/value audit](./research/mlc_unified/novelty_and_value_audit_20260725.md) cautions against treating the number of compiled proofs or conditional reductions as a measure of proximity to MLC.
 
 ## Navigate the archive
 
-| Layer | Entry point | Use it for |
-|---|---|---|
-| Scholarly overview | [Project page](https://dovvnloading.github.io/loops-research-archive/) | Results, frontier, paper sequence, atlas, references, and searchable ledger |
-| Program map | [`RESEARCH_MAP.md`](./RESEARCH_MAP.md) | Dependency spine, canonical directories, historical layers, and reading routes |
-| Main synthesis | [`marked_width_mlc_manuscript.pdf`](./marked_width_mlc_manuscript.pdf) | Full definitions, reduction, theorem boundaries, and open gates |
-| Companion papers | [`papers/`](./papers/) | Paper PDFs, LaTeX sources, theorem packets, and assembly records |
-| Claim status | [`ledger.json`](./ledger.json) | Machine-readable obligations, statuses, dependencies, and evidence pointers |
-| Canonical research record | [`research/mlc_unified/`](./research/mlc_unified/) | Source ledger, adversarial audits, proof obligations, validations, and research log |
-| Historical development | [`research/mlc_research_push_*`](./research/) | Dated research increments retained for provenance and ledger links |
-| Computation | [`code/`](./code/) · [`results/`](./results/) · [`figs/`](./figs/) | Reproducible diagnostics and visual evidence; not substitutes for proof |
-| Synthesis dossier | [`dossier.html`](./dossier.html) | Literature-facing context and computational atlas |
-| Contribution protocol | [`CONTRIBUTING.md`](./CONTRIBUTING.md) | Standards for proof, counterexample, source, computation, and exposition contributions |
+| What you need | Start here |
+|---|---|
+| A visual overview, mathematical atlas and searchable status ledger | [Project website](https://dovvnloading.github.io/loops-research-archive/) |
+| Dependency structure, scope and reading routes | [Research map](./RESEARCH_MAP.md) |
+| Full marked-width synthesis and universal conditional target | [Main manuscript](./marked_width_mlc_manuscript.pdf) |
+| Published paper versions, source and build records | [Papers directory](./papers/README.md) |
+| Exact November computations and mathematical audit notes | [Independent research audits](./research/independent_audits/README.md) |
+| Latest machine-readable graph and reproducible diagnostic data | [results/](./results/) and [code/](./code/) |
+| Full historical source and adversarial audit record | [research/mlc_unified/](./research/mlc_unified/) |
+| Contribution and independent review protocol | [CONTRIBUTING.md](./CONTRIBUTING.md) |
 
-## How to audit a claim
+### Auditing a mathematical claim
 
-1. Locate the theorem, proposition, definition, or gate in the relevant manuscript.
-2. Find its ledger identifier in the [web ledger](https://dovvnloading.github.io/loops-research-archive/#ledger) or [`ledger.json`](./ledger.json).
-3. Follow dependencies until each terminus is imported, proved, or explicitly open.
-4. Inspect the cited source or internal evidence artifact; check that its hypotheses match the use.
-5. Treat computations as diagnostics unless a manuscript supplies a proof promoting the observation to a theorem.
+1. Locate the exact theorem or ledger ID, not just a nearby summary.
+2. Check whether its status is imported, internally proved, conditional or open.
+3. Read the complete dependency chain and verify imported hypotheses in the cited primary source.
+4. Separate finite computation from the analytic theorem used to interpret it.
+5. Inspect later independent audits for first-failure certificates or narrowed conclusions.
 
-Corrections are welcome. A challenge is most useful when it names the exact statement or ledger ID, identifies the first unsupported inference, and supplies either a proof repair, a counterexample, or a precise source mismatch. See [`CONTRIBUTING.md`](./CONTRIBUTING.md).
+Contributions are most useful when they identify the **first unsupported implication**, give a proof repair or counterexample, and state the precise scope of the change. See [CONTRIBUTING.md](./CONTRIBUTING.md).
+
+---
+
+
 
 ## Mathematical lineage and attribution
 
@@ -198,18 +261,16 @@ Citation metadata is available in [`CITATION.cff`](./CITATION.cff). Please cite 
 
 Original contributions are released under [CC0 1.0 Universal](./LICENSE). Citations and attribution remain essential scholarly practice even where the license does not require them; third-party materials remain subject to their original rights and terms.
 
-## Recommended reading path
+## Recommended reading paths
 
-1. [Project page](https://dovvnloading.github.io/loops-research-archive/) — orientation and result boundary.
-2. [Paper 1](./papers/paper1_canonical_localization/paper1_forced_noninjectivity_sheet_kernel_v1.1_visual.pdf) — the localization obstruction and corrected state.
-3. [Paper 2](./papers/paper2_rooted_end_compactification/paper2_direct_decoration_rooted_end_compactification_v1.1_visual.pdf) — the exact rooted-end model.
-4. [Paper 3](./papers/paper3_protected_carriers/paper3_draft3_visual.pdf) — the QA-audited Draft III Visual Edition finite protected-carrier theory.
-5. [Main manuscript](./marked_width_mlc_manuscript.pdf) — the global reduction and remaining gates.
-6. [Interactive ledger](https://dovvnloading.github.io/loops-research-archive/#ledger) — dependency-level audit.
-7. [`research/mlc_unified`](./research/mlc_unified/) — detailed source, proof, adversarial, and validation record.
+**For the research frontier:** [Research map](./RESEARCH_MAP.md) → [two-scale complex certificate](./research/independent_audits/complex_two_scale_quadratic_like_certificate_20261105.md) → [Lean period-27 arithmetic audit](./research/independent_audits/lean_period27_kernel_arithmetic_20261105.md) → [Issue #12](https://github.com/dovvnloading/loops-research-archive/issues/12) / [Issue #15](https://github.com/dovvnloading/loops-research-archive/issues/15).
+
+**For the foundational mathematics:** [Paper 1](./papers/paper1_canonical_localization/paper1_forced_noninjectivity_sheet_kernel_v1.1_visual.pdf) → [Paper 2](./papers/paper2_rooted_end_compactification/paper2_direct_decoration_rooted_end_compactification_v1.1_visual.pdf) → [Paper 3](./papers/paper3_protected_carriers/paper3_draft3_visual.pdf) → [main synthesis](./marked_width_mlc_manuscript.pdf) → [claim ledger](./ledger.json).
+
+The November 2026 code and audit notes disclose OpenAI GPT-6 assistance separately. Their machine checks do not imply review, affiliation or endorsement by any cited researcher.
 
 ---
 
 <div align="center">
-<sub>Independent research program · math.DS · source lock 2026-07-27 · MLC remains open</sub>
+<sub>Independent research archive · math.DS · manuscripts/ledger source-locked 2026-07-27 · overview 2026-11-05 · MLC remains open</sub>
 </div>
