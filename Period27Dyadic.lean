@@ -5,7 +5,7 @@ import Period27Kneading
 
 This module reimplements the outward interval recurrence used by the
 standard-library Python verifier at the coarser, still sufficient
-integer resolution 2^128. The Lean kernel verifies the following
+integer resolution 2^144. The Lean kernel verifies the following
 FINITE arithmetic consequences:
 
 * opposite strict signs at the rational P27 bracket endpoints;
@@ -25,7 +25,7 @@ prime-end transport, sheet transport, or MLC.
 namespace LoopsFormal.Period27
 
 /-- Integer coordinates represent real numbers in units of 2^-128. -/
-def unit : Int := 2 ^ 128
+def unit : Int := 2 ^ 144
 
 def parameterK : Int := -607890580437450502081459824019535455703
 
@@ -37,9 +37,16 @@ structure Bounds where
 def zeroBound : Bounds := ⟨0, 0⟩
 def oneBound : Bounds := ⟨unit, unit⟩
 
-def centerParameter : Bounds := ⟨parameterK, parameterK + 1⟩
-def lowerParameter : Bounds := ⟨parameterK, parameterK⟩
-def upperParameter : Bounds := ⟨parameterK + 1, parameterK + 1⟩
+def parameterStep : Int := 2 ^ 16
+
+def parameterLower : Int := parameterK * parameterStep
+
+def centerParameter : Bounds :=
+  ⟨parameterLower, parameterLower + parameterStep⟩
+
+def lowerParameter : Bounds := ⟨parameterLower, parameterLower⟩
+def upperParameter : Bounds :=
+  ⟨parameterLower + parameterStep, parameterLower + parameterStep⟩
 
 def addBounds (a b : Bounds) : Bounds :=
   ⟨a.lo + b.lo, a.hi + b.hi⟩
