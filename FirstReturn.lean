@@ -228,4 +228,176 @@ theorem f_to_e_first_return_length (n : Nat) {k : Nat}
   dsimp [size, secondGate] at ht
   omega
 
+/-!
+## Constructive witnesses for all three allowed return lengths
+
+The preceding theorems exclude all other lengths. These inductive
+constructions supply genuine first-return paths (with no interior
+gate visits) at all three allowed lengths.
+-/
+
+/-- From position n+2-t, proceed forward to f₀ in t+1 edges. -/
+theorem straight_to_f (n : Nat) :
+    ∀ t (ht : t ≤ n + 2),
+      FirstReturn n (secondGate n) (t + 1)
+        (⟨n + 2 - t, by dsimp [size]; omega⟩ : Vertex n) := by
+  intro t
+  induction t with
+  | zero =>
+      intro ht
+      apply FirstReturn.finish
+      left
+      dsimp [secondGate]
+      omega
+  | succ t ih =>
+      intro ht
+      have hsmall : t ≤ n + 1 := by omega
+      let w : Vertex n := ⟨n + 2 - t, by dsimp [size]; omega⟩
+      have hnot : ¬ IsGate n w := by
+        intro hg
+        have hp : 0 < w.val ∧ w.val < n + 3 := by
+          dsimp [w]
+          omega
+        cases hg with
+        | inl he =>
+            have hval := congrArg Fin.val he
+            dsimp [hub] at hval
+            omega
+        | inr hf =>
+            have hval := congrArg Fin.val hf
+            dsimp [secondGate] at hval
+            omega
+      have hedge : Edge n
+          (⟨n + 2 - (t + 1), by dsimp [size]; omega⟩ : Vertex n) w := by
+        left
+        dsimp [w]
+        omega
+      have p : FirstReturn n (secondGate n) ((t + 1) + 1)
+          (⟨n + 2 - (t + 1), by dsimp [size]; omega⟩ : Vertex n) :=
+        FirstReturn.advance hedge hnot (ih (by omega))
+      simpa [Nat.succ_eq_add_one, Nat.add_assoc] using p
+
+/-- From position n-t, follow the ordinary chain to eₙ and then take
+    the one-vertex shortcut, reaching f₀ in t+2 edges. -/
+theorem shortcut_to_f (n : Nat) :
+    ∀ t (ht : t ≤ n),
+      FirstReturn n (secondGate n) (t + 2)
+        (⟨n - t, by dsimp [size]; omega⟩ : Vertex n) := by
+  intro t
+  induction t with
+  | zero =>
+      intro ht
+      have hchord : Edge n (tip n) (afterTip n) := by
+        right
+        right
+        exact ⟨rfl, rfl⟩
+      have hlast : FirstReturn n (secondGate n) 1 (afterTip n) := by
+        apply FirstReturn.finish
+        left
+        dsimp [afterTip, secondGate]
+      have hnot : ¬ IsGate n (afterTip n) := by
+        intro hg
+        cases hg with
+        | inl he =>
+            have hval := congrArg Fin.val he
+            dsimp [afterTip, hub] at hval
+            omega
+        | inr hf =>
+            have hval := congrArg Fin.val hf
+            dsimp [afterTip, secondGate] at hval
+            omega
+      have p := FirstReturn.advance hchord hnot hlast
+      simpa [tip] using p
+  | succ t ih =>
+      intro ht
+      have hsmall : t + 1 ≤ n := by omega
+      let w : Vertex n := ⟨n - t, by dsimp [size]; omega⟩
+      have hnot : ¬ IsGate n w := by
+        intro hg
+        have hp : 0 < w.val ∧ w.val < n + 3 := by
+          dsimp [w]
+          omega
+        cases hg with
+        | inl he =>
+            have hval := congrArg Fin.val he
+            dsimp [hub] at hval
+            omega
+        | inr hf =>
+            have hval := congrArg Fin.val hf
+            dsimp [secondGate] at hval
+            omega
+      have hedge : Edge n
+          (⟨n - (t + 1), by dsimp [size]; omega⟩ : Vertex n) w := by
+        left
+        dsimp [w]
+        omega
+      have p : FirstReturn n (secondGate n) ((t + 2) + 1)
+          (⟨n - (t + 1), by dsimp [size]; omega⟩ : Vertex n) :=
+        FirstReturn.advance hedge hnot (ih (by omega))
+      simpa [Nat.succ_eq_add_one, Nat.add_assoc] using p
+
+/-- From position (L-1)-t, follow the remaining cycle to e₀
+    without any intermediate gate visits. -/
+theorem straight_to_e (n : Nat) :
+    ∀ t (ht : t ≤ n + 1),
+      FirstReturn n (hub n) (t + 1)
+        (⟨size n - 1 - t, by dsimp [size]; omega⟩ : Vertex n) := by
+  intro t
+  induction t with
+  | zero =>
+      intro ht
+      apply FirstReturn.finish
+      right
+      left
+      constructor
+      · dsimp [size]
+        omega
+      · rfl
+  | succ t ih =>
+      intro ht
+      have hsmall : t ≤ n := by omega
+      let w : Vertex n := ⟨size n - 1 - t, by dsimp [size]; omega⟩
+      have hnot : ¬ IsGate n w := by
+        intro hg
+        have hp : n + 3 < w.val := by
+          dsimp [w, size]
+          omega
+        cases hg with
+        | inl he =>
+            have hval := congrArg Fin.val he
+            dsimp [hub] at hval
+            omega
+        | inr hf =>
+            have hval := congrArg Fin.val hf
+            dsimp [secondGate] at hval
+            omega
+      have hedge : Edge n
+          (⟨size n - 1 - (t + 1), by dsimp [size]; omega⟩ : Vertex n) w := by
+        left
+        dsimp [w, size]
+        omega
+      have p : FirstReturn n (hub n) ((t + 1) + 1)
+          (⟨size n - 1 - (t + 1), by dsimp [size]; omega⟩ : Vertex n) :=
+        FirstReturn.advance hedge hnot (ih (by omega))
+      simpa [Nat.succ_eq_add_one, Nat.add_assoc] using p
+
+theorem e_to_f_short_first_return_exists (n : Nat) :
+    FirstReturn n (secondGate n) (n + 2) (hub n) := by
+  have p := shortcut_to_f n n (Nat.le_refl n)
+  simpa [hub] using p
+
+theorem e_to_f_long_first_return_exists (n : Nat) :
+    FirstReturn n (secondGate n) (n + 3) (hub n) := by
+  have p := straight_to_f n (n + 2) (Nat.le_refl (n + 2))
+  simpa [hub] using p
+
+theorem f_to_e_first_return_exists (n : Nat) :
+    FirstReturn n (hub n) (n + 2) (secondGate n) := by
+  have p := straight_to_e n (n + 1) (Nat.le_refl (n + 1))
+  have hpos : size n - 1 - (n + 1) = n + 3 := by
+    dsimp [size]
+    omega
+  simpa [secondGate, hpos] using p
+
+
 end LoopsFormal.CloneGraph
