@@ -128,7 +128,21 @@ so
 
 Thus its exact period is 27. Finally, the \(r/2\)-disk is forward invariant under \(f_{c'}^{27}\), and its intermediate images under the finitely many maps \(f_{c'}^j\), \(0\le j<27\), are bounded. Every point in the disk therefore has a bounded full forward orbit, proving \(K(f_{c'})\) contains an open disk. The unique finite critical point \(0\) is attracted to the cycle. \(\square\)
 
-**Interpretation.** This is a *parameter-class exclusion for one source hypothesis*, not an obstruction to Mandelbrot local connectivity. It strengthens the earlier observation that the center alone fails \(K(f)=J(f)\): nearby parameters throughout the *certified* complex collar disk fail it too. A nonattracting Paper-2-compatible example cannot be selected simply by an arbitrarily small perturbation *within that disk*.
+**Corollary A.1 (an eightfold larger H3-exclusion window).** There is a stronger parameter-exclusion statement that does not require the specific \(3/4\)-contraction constant. Set
+
+\[
+\Delta=2^{-23},\qquad R=2^{-11}.
+\]
+
+For **every** complex parameter \(|c'-c_*|<\Delta\), the same 27-step complex-error recurrence, now beginning with \(E_0=R\) and using parameter error \(\Delta\), verifies the exact strict integer inequality \(16E_{27}<15R\). Consequently
+
+\[
+\boxed{\sup_{|z|\le R}|f_{c'}^{27}(z)|<\tfrac{15}{16}R<R.}
+\]
+
+The entire closed \(R\)-disk is forward invariant under the 27th iterate. Its finite intermediate images are bounded, so its interior lies inside \(K(f_{c'})\). Therefore **Paper 2 H3 fails on the larger \(|c'-c_*|<2^{-23}\) parameter disk**, which has eight times the radius of the earlier phase-collar disk. The code asserts this larger bound independently of the smaller-window contraction estimate. The stronger \(\lvert F'\rvert<3/4\) bound and the elementary exact-period argument above are only claimed on the smaller window; no additional dynamical conclusion is silently assigned to the larger disk.
+
+**Interpretation.** This is a *parameter-class exclusion for one source hypothesis*, not an obstruction to Mandelbrot local connectivity. It strengthens the earlier observation that the center alone fails \(K(f)=J(f)\): nearby parameters throughout the *certified* complex collar disk fail it too, and the corollary excludes a still larger explicit neighborhood. A nonattracting Paper-2-compatible example cannot be selected *within the larger disk*.
 
 ## 3. Theorem: the naïve thin-stadium quadratic-like domain fails
 
@@ -185,7 +199,7 @@ But \(\operatorname{dist}(2i\epsilon,I_p)=2\epsilon>\epsilon\), since \(0\in I_p
 A genuine next positive construction must solve **two distinct tasks**, rather than silently promoting finite-phase separation to quadratic-like properness.
 
 1. **At the center:** design source-adapted complex Jordan domains \(V_3\Subset U_3\) and \(V_9\Subset U_9\) that genuinely support proper degree-two returns, with verified boundary separation and nested little filled Julia data. These domains cannot simply be the thin equal-width stadium/preimage pairs rejected by Theorem B. The center remains a useful *complex renormalization testbed*, notwithstanding its failure of Paper 2 H3.
-2. **For a Paper-2-compatible application:** select a parameter **outside the certified disk** (or otherwise change the source setting) and independently prove the full geometric hypotheses, including \(K(f)=J(f)\), closed puzzle-pullback separation, exact retimed root arrows, ray/prime-end transport, sheet/coset data and protected obstacles. Theorem A rules out rescuing H3 by remaining inside the old \(2^{-26}\) parameter disk.
+2. **For a Paper-2-compatible application:** select a parameter **outside the larger (2^{-23}) exclusion disk** (or otherwise change the source setting) and independently prove the full geometric hypotheses, including \(K(f)=J(f)\), closed puzzle-pullback separation, exact retimed root arrows, ray/prime-end transport, sheet/coset data and protected obstacles. Theorem A rules out rescuing H3 by remaining inside the old \(2^{-26}\) parameter disk.
 
 Do not infer that the second task follows from the first, or that either solves any of the source-locked program's global \(H1/H2/H3/H4\), UPTCR, or MLC gates.
 
