@@ -192,7 +192,7 @@ theorem fullAdjacencyMatrix_one_iff_edge (n : ℕ) (u w : Vertex n) :
     for the finite sum of the adjacency rows. -/
 theorem fullAdjacencyMatrix_mulVec_eigen (n : ℕ) (t : ℝ)
     (ht : 1 < t) (hroot : t ^ (2 * n + 5) = t + 1) :
-    fullAdjacencyMatrix n *ᵥ fullCloneVector n t =
+    Matrix.mulVec (fullAdjacencyMatrix n) (fullCloneVector n t) =
       t • fullCloneVector n t := by
   funext u
   change (∑ w : Vertex n,
