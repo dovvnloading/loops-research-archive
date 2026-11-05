@@ -164,6 +164,74 @@ theorem positive_gate_eigenvector (n : ℕ) (t : ℝ)
       _ = (t + 1) * 1 := by ring
   · simp
 
+
+/-- The alternative operator using *positive* return-length powers.
+    This is the literal weighting under investigation, not a claim
+    about the intended asymptotics of the source paper. -/
+def printedPositiveReturn (t : ℝ) (v : ℝ × ℝ) : ℝ × ℝ :=
+  ((t ^ 2 + t ^ 3) * v.2, t ^ 2 * v.1)
+
+def PrintedPositiveEigen (n : ℕ) (t e f : ℝ) : Prop :=
+  printedPositiveReturn t (e, f) = (t ^ n * e, t ^ n * f)
+
+/-- A nonzero-gate eigenvector for the positive-power operator would
+    force the *different* scalar equation t^(2n)=t^4(t+1). -/
+theorem printed_positive_eigen_scalar (n : ℕ) (t e f : ℝ)
+    (hf : f ≠ 0) (h : PrintedPositiveEigen n t e f) :
+    t ^ (2 * n) = t ^ 4 * (t + 1) := by
+  have h1 : (t ^ 2 + t ^ 3) * f = t ^ n * e := by
+    have hfst := congrArg Prod.fst h
+    simpa [PrintedPositiveEigen, printedPositiveReturn] using hfst
+  have h2 : t ^ 2 * e = t ^ n * f := by
+    have hsnd := congrArg Prod.snd h
+    simpa [PrintedPositiveEigen, printedPositiveReturn] using hsnd
+  have hp : t ^ n * t ^ n = t ^ (2 * n) := by
+    rw [← pow_add]
+    congr 1
+    omega
+  have heq : t ^ (2 * n) * f = (t ^ 4 * (t + 1)) * f := by
+    calc
+      t ^ (2 * n) * f = (t ^ n * t ^ n) * f := by rw [hp]
+      _ = t ^ n * (t ^ n * f) := by ring
+      _ = t ^ n * (t ^ 2 * e) := by rw [← h2]
+      _ = t ^ 2 * (t ^ n * e) := by ring
+      _ = t ^ 2 * ((t ^ 2 + t ^ 3) * f) := by rw [← h1]
+      _ = (t ^ 4 * (t + 1)) * f := by ring
+  exact mul_right_cancel₀ hf heq
+
+/-- The literal positive-power scalar equation and the actual clone
+    polynomial cannot both hold for a real t>1. -/
+theorem printed_positive_scalar_incompatible (n : ℕ) (t : ℝ)
+    (ht : 1 < t)
+    (hcorrect : t ^ (2 * n + 5) = t + 1)
+    (hprinted : t ^ (2 * n) = t ^ 4 * (t + 1)) : False := by
+  have hp : t ^ (2 * n) * t ^ 5 = t ^ (2 * n + 5) := by
+    rw [← pow_add]
+  have heq : t ^ 9 * (t + 1) = t + 1 := by
+    calc
+      t ^ 9 * (t + 1) = (t ^ 4 * (t + 1)) * t ^ 5 := by ring
+      _ = t ^ (2 * n) * t ^ 5 := by rw [hprinted]
+      _ = t ^ (2 * n + 5) := hp
+      _ = t + 1 := hcorrect
+  have hnonzero : t + 1 ≠ 0 := by linarith
+  have hmul : t ^ 9 * (t + 1) = (1 : ℝ) * (t + 1) := by
+    simpa only [one_mul] using heq
+  have hnine : t ^ 9 = 1 := mul_right_cancel₀ hnonzero hmul
+  have hgt : 1 < t ^ 9 := one_lt_pow₀ ht (by norm_num)
+  linarith
+
+/-- Formal countercheck for the printed positive-power definition:
+    at any t>1 satisfying the actual finite-clone equation, it has
+    *no* eigenvector with eigenvalue t^n and nonzero second coordinate. -/
+theorem no_printed_positive_eigen_at_clone_root (n : ℕ) (t : ℝ)
+    (ht : 1 < t)
+    (hcorrect : t ^ (2 * n + 5) = t + 1) :
+    ¬ ∃ e f : ℝ, f ≠ 0 ∧ PrintedPositiveEigen n t e f := by
+  rintro ⟨e, f, hf, he⟩
+  exact printed_positive_scalar_incompatible n t ht hcorrect
+    (printed_positive_eigen_scalar n t e f hf he)
+
+
 end
 
 end LoopsSpectral
