@@ -232,7 +232,6 @@ theorem e_to_f_short (n : Nat) :
   have hfinal : Edge n (afterTip n) (secondGate n) := by
     left
     dsimp [afterTip, secondGate]
-    omega
   have hpath := Walk.append
     (Walk.append hfirst (Walk.edge hshortcut))
     (Walk.edge hfinal)
@@ -243,7 +242,11 @@ theorem e_to_f_short (n : Nat) :
 /-- The route f₀→...→fₙ→c→e₀. -/
 theorem f_to_e (n : Nat) :
     Walk n (n + 2) (secondGate n) (hub n) := by
-  simpa [secondGate, size] using (toHub n (secondGate n))
+  have hlen : size n - (secondGate n).val = n + 2 := by
+    dsimp [size, secondGate]
+    omega
+  rw [← hlen]
+  exact toHub n (secondGate n)
 
 /-- The two primitive cycles are exactly the compositions of
     the available gate-to-gate paths. -/
