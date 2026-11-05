@@ -133,6 +133,64 @@ which intertwines the physical forward dynamics. This is not merely shifting bin
 
 This verifies a concrete two-level *real* return geometry in a single quadratic polynomial. It also provides a nine-window physical marking/inclusion testbed for any proposed source-stage abstraction.
 
+## 3a. A certified finite-horizon complex Jordan collar
+
+The exact integer interval calculation yields **strict, quantitative** bounds for both return levels \(p\in\{3,9\}\):
+
+\[
+\begin{aligned}
+&|f^j(x)|<2
+ &&(0\le j<p,\ x\in I_p),\\
+&\operatorname{dist}(0,f^j(I_p))>1/10
+ &&(1\le j<p),\\
+&\operatorname{dist}(f^i(I_p),f^j(I_p))>1/100
+ &&(0\le i<j<p).
+\end{aligned}
+\]
+
+Here the distance is ordinary Euclidean distance along the embedded real line. The certificate computes enclosing intervals for the *whole* forward image, not just the orbit of \(0\), and checks these bounds via strict signed-integer comparisons.
+
+For each level let
+
+\[
+\epsilon=2^{-40},\qquad
+U_p=\{z\in\mathbb C:\operatorname{dist}(z,I_p)<\epsilon\}.
+\]
+
+This \(U_p\) is an **explicit bounded simply connected Jordan domain**, the open stadium/tube around the closed real interval.
+
+**Theorem (actual quadratic finite-horizon complex collar).** For the real algebraic \(c_*\) constructed above and either \(p=3\) or \(p=9\),
+
+1. the complex sets \(f^0(U_p),f^1(U_p),\ldots,f^{p-1}(U_p)\) are pairwise disjoint;
+2. for every \(1\le j<p\), the image \(f^j(U_p)\) omits the unique critical point \(0\) of \(f\);
+3. the holomorphic iterate \(f^p\) has **exactly one critical point inside \(U_p\)**, namely \(0\), with local degree two.
+
+**Proof.** Given \(z\in U_p\), choose \(x\in I_p\) with \(|z-x|<\epsilon\). If \(|f^j(z)-f^j(x)|\le\delta_j\le1\) and \(|f^j(x)|<2\), then
+
+\[
+|f^{j+1}(z)-f^{j+1}(x)|
+=|f^j(z)-f^j(x)|\,|f^j(z)+f^j(x)|
+\le\delta_j(4+\delta_j)\le5\delta_j.
+\]
+
+Induction gives \(\delta_j=5^j2^{-40}\). For \(0\le j\le8\),
+
+\[
+5^j2^{-40}\le5^82^{-40}<10^{-6},
+\]
+
+an exact rational inequality included in the script. Thus each complex image \(f^j(U_p)\) lies in the \(10^{-6}\)-neighborhood of the verified real interval \(f^j(I_p)\). Distinct phase intervals are separated by more than \(10^{-2}\), so their \(10^{-6}\)-tubes do not meet. Noninitial phase intervals lie farther than \(10^{-1}\) from \(0\), so none of their tubes contains \(0\).
+
+Finally, differentiating the polynomial iterate gives
+
+\[
+(f^p)'(z)=2^p z\prod_{j=1}^{p-1} f^j(z).
+\]
+
+No factor with \(j\ge1\) vanishes anywhere in \(U_p\); hence the only critical point of \(f^p|_{U_p}\) is \(z=0\), with a simple derivative zero (local degree two). \(\square\)
+
+**Exact limitation:** This is a genuine finite-horizon **complex** separation and unique-critical-point result for an explicitly bounded Jordan domain around each real return interval. It **does not** show that \(f^p:U_p'\to U_p\) admits a proper quadratic-like restriction with \(U_p'\Subset U_p\), nor does it provide canonical Kahn–Lyubich external rays, prime-end accesses, closed puzzle pieces, sheet/coset completeness, or a nonattracting H3-compatible parameter. These require separate constructions. In particular, the terminal superattracting center still fails \(K(f)=J(f)\).
+
 ## 4. Critical limit: this center does **not** satisfy Paper 2's H3
 
 The critical point is an exact period-27 superattracting point of \(f_{c_*}\): since \(f^{27}(0)=0\) and \(f'(0)=0\), the derivative \((f^{27})'(0)=0\). A sufficiently small complex neighborhood of \(0\) is attracted to this cycle. Consequently the filled Julia set \(K(f)\) has **nonempty interior** and is not equal to its boundary \(J(f)\).
