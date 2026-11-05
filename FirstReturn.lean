@@ -248,7 +248,6 @@ theorem straight_to_f (n : Nat) :
       apply FirstReturn.finish
       left
       dsimp [secondGate]
-      omega
   | succ t ih =>
       intro ht
       have hsmall : t ≤ n + 1 := by omega
@@ -351,7 +350,6 @@ theorem straight_to_e (n : Nat) :
       left
       constructor
       · dsimp [size]
-        omega
       · rfl
   | succ t ih =>
       intro ht
