@@ -115,6 +115,12 @@ A new [independently reproducible exact certificate](./research/independent_audi
 **Boundary:** This is a finite attracting-window complex renormalization example—not a source-compatible Kahn–Lyubich ray/prime-end/sheet atlas. Every parameter in the certified window fails Paper 2's (K(f)=J(f)) assumption. It does not close the global marked-construction or MLC analytic gates. The earlier [parameter-window and naive-stadium first-failure certificate](./research/independent_audits/two_scale_complex_window_obstructions_20261105.md) remains applicable and explains why different, larger complex return domains were required.
 
 
+### November 2026 — exact three-scale symbolic marking candidate
+
+A new [source-audited candidate-angle certificate](./research/independent_audits/period27_three_scale_symbolic_marking_20261105.md) takes the explicit period-27 center and independently verifies an exact 3/9/27 external-angle **kneading-word** match to the airplane tuning substitution \(0\mapsto011,\ 1\mapsto100\). It tests the correct orientation signs for the physical return maps \(f\), \(f^3\) and \(f^9\); certifies all six rational angle periods and the three un-angled internal addresses; and produces a reproducible [26-edge real Markov graph](./results/period27_symbolic_marking.json), checked against outward dyadic orbit enclosures in [research CI](./.github/workflows/lean-proofs.yml).
+
+**Important distinction:** the angle pairs are **candidate source markings**. Equality of rational angular kneading and real critical-orbit kneading does **not** by itself identify actual parameter-ray landing, KL puzzle accesses or peripheral localization sheets. A sourced parameter-identification and landing argument is the next theorem; the attracting-window result still fails Paper 2's \(K(f)=J(f)\) assumption. No MLC gate status changes.
+
 ## Navigate the archive
 
 | Layer | Entry point | Use it for |
