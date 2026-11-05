@@ -57,15 +57,12 @@ def check() -> None:
     # the main dynamics theorem must retain the published shallow clock.
     if source.count(r"\label{rem:fallback}") != 1:
         raise AssertionError("Fallback remark was duplicated or lost")
-    if r"g(K_{aw})=K_w" not in source:
-        # The paper uses a LaTeX macro / generic argument for this formula.
-        if r"g(K_{aw})" not in source and r"g(K_{aw})" not in source.replace(" ", ""):
-            # Don't fail on alternative macro formatting; the literal
-            # published source contains a version with \alpha or w.
-            if r"g(K_{aw})" in source:
-                raise AssertionError("Unexpected shallow clock declaration")
+    if r"\label{cpt:action}" not in source:
+        raise AssertionError("Missing original shallow branch theorem")
+    if "each transition having time $q$" not in source:
+        raise AssertionError("Original shallow q-time theorem was silently retimed")
     if r"g=f^q" not in source:
-        raise AssertionError("The source's original shallow base map disappeared")
+        raise AssertionError("Original shallow map disappeared")
 
     print("PASS: Paper 2 source proof/retiming anchors, LaTeX environments and labels")
     print("Limit: this checks textual structure, not analytic assumptions or TeX compilation")
