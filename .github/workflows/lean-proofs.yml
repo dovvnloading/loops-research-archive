@@ -1,0 +1,39 @@
+name: Lean formal proofs
+
+on:
+  push:
+    branches:
+      - research/clone-spectral-audit-2026-11-04
+    paths:
+      - lean-toolchain
+      - lakefile.toml
+      - 'LoopsFormal.lean'
+      - '.github/workflows/lean-proofs.yml'
+  pull_request:
+    paths:
+      - lean-toolchain
+      - lakefile.toml
+      - 'LoopsFormal.lean'
+      - '.github/workflows/lean-proofs.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  kernel-check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Reject proof holes
+        run: |
+          if grep -En '(^|[^A-Za-z_])(sorry|admit)([^A-Za-z_]|$)' LoopsFormal.lean; then
+            echo 'Proof placeholders are prohibited in formal audit files.'
+            exit 1
+          fi
+      - name: Install Lean and build proofs
+        uses: leanprover/lean-action@v1
+        with:
+          build: 'true'
+          test: 'false'
+          use-mathlib-cache: 'false'
