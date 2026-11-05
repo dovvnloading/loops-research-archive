@@ -141,6 +141,46 @@ Then \(k_{\min}\le\mu\le K\).
 
 The three-vertex example has \(\rho=2,\mu=5/2\). This is standard finite-dimensional perturbation theory and is **not** asserted as an original general spectral theorem.
 
+## Addendum: a primitive graph whose reduced return matrix is imprimitive
+
+A second source-convention check concerns Appendix C's numbered assertion (3): "\(\hat T_\lambda\) is primitive for \(\lambda>0\)." This need not hold even assuming, as the preprint explicitly does, that **both the original graph and every delayed clone are primitive**. Irreducibility, not primitivity, is the property that follows and suffices for the Perron-vector and spectral-radius parts of the argument.
+
+**Five-vertex counterexample.** Take \(E=\{e,f\}\), \(A=\{a,b,c\}\), with directed edges
+
+\[
+e\to a,\ e\to b,\ b\to a,\ a\to f,\ f\to c,\ c\to e.
+\]
+
+Every sufficiently long path visits \(E\), and there are no edges within \(E\). The base is strongly connected and has cycles of lengths \(4\) and \(5\): respectively \(e\,a\,f\,c\,e\) and \(e\,b\,a\,f\,c\,e\). Therefore its adjacency matrix is primitive. When \(E\) is cloned into \(E_0\to\cdots\to E_n\), the resulting graph is still strongly connected and has corresponding cycles of lengths \(2n+4\) and \(2n+5\). Their gcd is 1, proving **every** cloned adjacency matrix primitive, including all lengths allowed by the source assumptions.
+
+However the two first-return walks \(e\to f\) have lengths 2 and 3, while the sole first-return walk \(f\to e\) has length 2. Hence
+
+\[
+R_2=\begin{pmatrix}0&1\\1&0\end{pmatrix},\qquad
+R_3=\begin{pmatrix}0&1\\0&0\end{pmatrix},\qquad
+H(t)=\begin{pmatrix}0&t^{-2}+t^{-3}\\t^{-2}&0\end{pmatrix}.
+\]
+
+At \(t=1\),
+
+\[
+R=H(1)=\begin{pmatrix}0&2\\1&0\end{pmatrix},
+\quad R^2=2I,\quad
+\operatorname{spec}(R)=\{\sqrt2,-\sqrt2\}.
+\]
+
+Thus \(R\) (and the positively weighted return matrix \(\hat T_\lambda\), which has the **same bipartite support** for every \(\lambda>0\)) is irreducible of period two, not primitive. Nonetheless \(\rho(R)=\sqrt2>1\), and the corrected clone equation (1) gives
+
+\[
+\lambda_n^n=\lambda_n^{-2}\sqrt{1+\lambda_n^{-1}}
+\quad\Longleftrightarrow\quad
+\lambda_n^{2n+5}=\lambda_n+1.
+\]
+
+The explicit graph also shows why replacing a primitivity claim with irreducibility is sufficient: the Perron root and **normalized positive Perron vectors** remain unique; only the strict dominance of its modulus over all other eigenvalues is lost. The original \(\hat T_\lambda\) construction is still irreducible, and the corrected asymptotic argument does not require every return graph to be aperiodic.
+
+**Review boundary.** This refutes the stated primitivity conclusion under the printed graph hypotheses, not the claim that all \(T_n\) are primitive (they are, in this example). It does not establish a counterexample to Theorem A, B or C of the complex-dynamics paper. The two errors—positive rather than negative return-length weights, and unjustified primitivity of the reduced return graph—should be reported as separate finite-graph issues to the authors.
+
 ## 6. Reproducibility and publication boundary
 
 Run the accompanying \`verify_clone_spectral.py\` (NumPy required). It independently assembles full cloned adjacency matrices, independently assembles the return polynomial, compares the Perron roots for \(n=0,1,2,4,8,16\), and checks (3), (5) numerically on both a one-gate and a two-gate graph.
