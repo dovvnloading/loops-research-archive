@@ -1,0 +1,27 @@
+name: Public Pages smoke test
+
+on:
+  pull_request:
+    paths:
+      - 'code/verify_deployed_site.py'
+      - '.github/workflows/pages-live-smoke.yml'
+  push:
+    branches:
+      - main
+    paths:
+      - 'code/verify_deployed_site.py'
+      - '.github/workflows/pages-live-smoke.yml'
+  schedule:
+    - cron: '23 12 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  verify-deployed-website:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Verify the live public Pages URL, figures, ledger, and papers
+        run: python code/verify_deployed_site.py
