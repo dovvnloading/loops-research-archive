@@ -10,6 +10,8 @@ This directory contains reproducible audits of research claims in the archive. I
 - **audit_ledger_evidence.py**: standard-library-only diagnostic of the ledger's dependency wiring and plain Markdown proof pointers. It checks *traceability*, not theorem correctness.
 - **two_scale_complex_window_obstructions_20261105.md**: precise proofs that the original complex collar parameter disk is uniformly attracting of exact period 27, an eightfold larger disk also fails Paper 2 H3, and equal-width stadium/preimage domains fail compact containment at both real restrictive levels.
 - **verify_complex_window_obstructions.py**: exact (2^{-224})-dyadic recurrence checks for the attracting disk, lower-period exclusion, and stadium first-failure thresholds; depends only on the earlier exact real two-scale certificate engine.
+- **complex_two_scale_quadratic_like_certificate_20261105.md**: explicit uniform complex parameter-disk construction of nested quadratic-like degree-two period-3 and period-9 returns, with actual phase inclusion and connected filled Julia sets; retains Paper 2 H3 and MLC limitations.
+- **verify_complex_quadratic_like_3_9.py**: no-float outward signed-integer certificate of Rouché boundary margins, precritical avoidance, connected-return trapping, nine-phase separation and 9-to-3 complex phase nesting.
 
 ## Run locally
 
@@ -19,6 +21,7 @@ From the repository root:
     python research/independent_audits/verify_clone_spectral.py
     python research/independent_audits/verify_real_nested_3_9.py
     python research/independent_audits/verify_complex_window_obstructions.py
+    python research/independent_audits/verify_complex_quadratic_like_3_9.py
     python research/independent_audits/audit_ledger_evidence.py . --strict
 
 The last command is **expected to exit nonzero** until broken source pointers are repaired or the actual source files restored. Do not change an entry from open to proved or redirect evidence simply to make this check pass.
