@@ -22,7 +22,7 @@ theorem finite_clone_root_exists (n : ℕ) :
     ∃ t : ℝ, 1 < t ∧ t < 2 ∧ t ^ (2 * n + 5) = t + 1 := by
   let g : ℝ → ℝ := clonePolynomial n
   have hcont : ContinuousOn g (Set.Icc (1 : ℝ) 2) := by
-    dsimp [g, clonePolynomial]
+    change ContinuousOn (fun x : ℝ => x ^ (2 * n + 5) - x - 1) _
     fun_prop
   have h1 : g 1 < 0 := by
     dsimp [g, clonePolynomial]
@@ -74,14 +74,14 @@ private theorem cannot_order_clone_roots (n : ℕ)
     have hstep : x ^ k * x = x + 1 := by
       calc
         x ^ k * x = x ^ (k + 1) := (pow_succ x k).symm
-        _ = x ^ (2 * n + 5) := by congr 1; dsimp [k]; omega
+        _ = x ^ (2 * n + 5) := by congr 1
         _ = x + 1 := hpx
     nlinarith
   have hys : (y ^ k - 1) * y = 1 := by
     have hstep : y ^ k * y = y + 1 := by
       calc
         y ^ k * y = y ^ (k + 1) := (pow_succ y k).symm
-        _ = y ^ (2 * n + 5) := by congr 1; dsimp [k]; omega
+        _ = y ^ (2 * n + 5) := by congr 1
         _ = y + 1 := hpy
     nlinarith
   have ha : 0 < (x ^ k - 1) * (y - x) :=
