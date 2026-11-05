@@ -135,6 +135,7 @@ theorem fullMatrixAction_eq_fullCloneAction (n : ℕ)
         _ = fullCloneAction n v u := by
           unfold fullCloneAction
           rw [dif_pos hnext, if_neg htip]
+          simp
   · calc
       (∑ w : Vertex n, if Edge n u w then v w else 0) =
         ∑ w : Vertex n, (if w = hub n then v w else 0) := by
