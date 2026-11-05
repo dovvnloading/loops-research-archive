@@ -1,6 +1,6 @@
 name = "loops_weighted"
 version = "0.1.0"
-defaultTargets = ["WeightedReturn", "GraphWeightedBridge", "CloneBounds", "CloneRoot"]
+defaultTargets = ["WeightedReturn", "GraphWeightedBridge", "CloneBounds", "CloneRoot", "FullCloneEigen"]
 
 [[require]]
 name = "mathlib"
@@ -41,3 +41,6 @@ name = "CloneBounds"
 
 [[lean_lib]]
 name = "CloneRoot"
+
+[[lean_lib]]
+name = "FullCloneEigen"
