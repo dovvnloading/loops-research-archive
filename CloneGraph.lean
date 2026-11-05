@@ -104,7 +104,6 @@ theorem toHub (n : Nat) (v : Vertex n) :
     left
     constructor
     · dsimp [lastVertex, size]
-      omega
     · rfl
   have hpath := Walk.append hbase (Walk.edge hwrap)
   have hlength :
@@ -177,10 +176,9 @@ theorem every_clone_is_primitive (n : Nat) :
   have hsave : d * (L - 1) + d = d * L := by
     have hL : (L - 1) + 1 = L := by
       dsimp [L, size]
-      omega
     calc
       d * (L - 1) + d = d * (L - 1) + d * 1 := by simp
-      _ = d * ((L - 1) + 1) := by rw [Nat.mul_add]; simp
+      _ = d * ((L - 1) + 1) := by rw [Nat.mul_add]
       _ = d * L := by rw [hL]
   have hrest : (M - d) * L + d * L = M * L := by
     rw [← Nat.add_mul]
