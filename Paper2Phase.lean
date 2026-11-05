@@ -117,6 +117,66 @@ theorem return_to_base_requires_aligned_phase
     exact False.elim ((hseparate (tau % p) hpos hlt
       (iterate f tau x) (hroute x hx)) hB)
 
+
+/-- Recover the actual terminal root phase from periodic forward invariance.
+    After tau steps the orbit lies in the phase (tau mod p) image
+    of the original root. This uses no independent phase-routing axiom. -/
+theorem terminal_root_phase_route
+    (f : α → α) (K : α → Prop) (p tau : Nat)
+    (hstart : ∀ x, K x → K (iterate f p x))
+    (x : α) (hx : K x) :
+    ∃ y : α, K y ∧
+      iterate f tau x = iterate f (tau % p) y := by
+  let k := tau / p
+  let y := iterate f (k * p) x
+  have hy : K y := by
+    exact all_return_times_in_root f K p x hx hstart k
+  refine ⟨y, hy, ?_⟩
+  have hdecomp : tau = k * p + tau % p := by
+    have h : tau % p + p * (tau / p) = tau :=
+      Nat.mod_add_div tau p
+    dsimp [k]
+    omega
+  rw [hdecomp, iterate_add]
+  rfl
+
+/-- Source-facing phase obstruction without a separately postulated
+    route table. If each nonzero primitive root-cycle phase lies
+    outside the chosen first-return base B, a deep block can meet
+    B only when its clock is a multiple of the primitive period. -/
+theorem no_deep_root_return_without_phase_alignment
+    (f : α → α) (K B : α → Prop)
+    (p tau : Nat) (hp : 0 < p)
+    (hcycle : ∀ x : α, K x → K (iterate f p x))
+    (houtside : ∀ r : Nat, 0 < r → r < p →
+      ∀ y : α, K y → ¬ B (iterate f r y))
+    (hreturn : ∃ x : α, K x ∧ B (iterate f tau x)) :
+    tau % p = 0 := by
+  by_cases hz : tau % p = 0
+  · exact hz
+  · have hpos : 0 < tau % p := by omega
+    have hlt : tau % p < p := Nat.mod_lt tau hp
+    obtain ⟨x, hx, hB⟩ := hreturn
+    obtain ⟨y, hy, hroute⟩ :=
+      terminal_root_phase_route f K p tau hcycle x hx
+    have hn : ¬ B (iterate f (tau % p) y) :=
+      houtside (tau % p) hpos hlt y hy
+    rw [hroute] at hB
+    exact False.elim (hn hB)
+
+/-- In particular, changing to the deep block time n*q requires
+    p-period phase alignment for any proposed return to B. -/
+theorem deep_block_return_requires_phase_alignment
+    (f : α → α) (K B : α → Prop)
+    (p n q : Nat) (hp : 0 < p)
+    (hcycle : ∀ x : α, K x → K (iterate f p x))
+    (houtside : ∀ r : Nat, 0 < r → r < p →
+      ∀ y : α, K y → ¬ B (iterate f r y))
+    (hreturn : ∃ x : α, K x ∧ B (iterate f (n * q) x)) :
+    (n * q) % p = 0 := by
+  exact no_deep_root_return_without_phase_alignment
+    f K B p (n * q) hp hcycle houtside hreturn
+
 /-- Algebraic regression: the deep time n*q need not have the same
     root-cycle phase as the shallow time q. -/
 theorem deep_clock_can_change_root_phase :
