@@ -1,0 +1,26 @@
+# Independent mathematical and evidence audits
+
+This directory contains reproducible audits of research claims in the archive. It is **not** a proof of Mandelbrot local connectivity and does not change the status of any open obligation.
+
+## Contents
+
+- **clone_spectral_referee_note.md**: self-contained calculation checking a delayed-cross-section clone formula against the convention printed in Kahn–Kapiamba–Lyubich, arXiv:2606.27272v1, Appendix C. It includes two-sided finite-clone estimates and a second-order fixed-template asymptotic. Specialist confirmation of the source interpretation and novelty is still required.
+- **verify_clone_spectral.py**: standalone finite-matrix numerical regressions for the clone formula, including an independently constructed whole adjacency matrix and a two-gate example.
+- **evidence_audit_20261104.md**: baseline of unresolved proof-evidence pointers in the 465-entry proof ledger as found on November 4, 2026.
+- **audit_ledger_evidence.py**: standard-library-only diagnostic of the ledger's dependency wiring and plain Markdown proof pointers. It checks *traceability*, not theorem correctness.
+
+## Run locally
+
+From the repository root:
+
+    python -m pip install numpy
+    python research/independent_audits/verify_clone_spectral.py
+    python research/independent_audits/audit_ledger_evidence.py . --strict
+
+The last command is **expected to exit nonzero** until broken source pointers are repaired or the actual source files restored. Do not change an entry from open to proved or redirect evidence simply to make this check pass.
+
+## Scope and review rule
+
+An internal proof, a deterministic test, a correct citation, and independent expert verification are distinct forms of evidence. New entries in this directory preserve that distinction. No external mathematical priority, publication acceptance, or institutional endorsement is asserted.
+
+Baseline from GitHub main at 2026-11-04; this branch was created after the repository was unarchived.
