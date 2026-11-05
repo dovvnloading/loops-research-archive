@@ -176,4 +176,48 @@ theorem no_f_to_f_concrete (n k : Nat) :
   cases h with
   | intro p => exact no_f_to_f_first_return n k p.toProp
 
+/-- Complete presence/absence criterion for concrete e-to-f returns. -/
+theorem e_to_f_nonempty_iff (n k : Nat) :
+    Nonempty (ReturnPath n (secondGate n) k (hub n)) ↔
+      k = n + 2 ∨ k = n + 3 := by
+  constructor
+  · intro h
+    cases h with
+    | intro p =>
+        exact e_to_f_first_return_lengths n p.toProp
+  · intro h
+    cases h with
+    | inl hs =>
+        subst k
+        exact returnPath_nonempty_of_prop
+          (e_to_f_short_first_return_exists n)
+    | inr hl =>
+        subst k
+        exact returnPath_nonempty_of_prop
+          (e_to_f_long_first_return_exists n)
+
+/-- Complete presence/absence criterion for concrete f-to-e returns. -/
+theorem f_to_e_nonempty_iff (n k : Nat) :
+    Nonempty (ReturnPath n (hub n) k (secondGate n)) ↔
+      k = n + 2 := by
+  constructor
+  · intro h
+    cases h with
+    | intro p =>
+        exact f_to_e_first_return_length n p.toProp
+  · intro h
+    subst k
+    exact returnPath_nonempty_of_prop (f_to_e_first_return_exists n)
+
+/-- The gate-to-gate first-return diagram is now classified entirely by
+    two exact propositions (support iff) plus per-length uniqueness. -/
+theorem e_to_f_at_most_one (n k : Nat)
+    (p q : ReturnPath n (secondGate n) k (hub n)) : p = q := by
+  exact returnPaths_subsingleton n (secondGate n) (Or.inr rfl) p q
+
+theorem f_to_e_at_most_one (n k : Nat)
+    (p q : ReturnPath n (hub n) k (secondGate n)) : p = q := by
+  exact returnPaths_subsingleton n (hub n) (Or.inl rfl) p q
+
+
 end LoopsFormal.CloneGraph
