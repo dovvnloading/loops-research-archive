@@ -64,20 +64,58 @@ It proves for every clone length n:
 - There is exactly one real root \(t>1\) for each n, lying in (1,2).
 - At this root, \(t^{2n+4}<2<t^{2n+6}\).
 
-The resulting formal statements are explicitly bounded to the finite
-five-vertex graph and do not yet import full-adjacency
-Perron–Frobenius theory. The broader mathematical source
-interpretation remains subject to independent expert review, and
-MLC remains open.
+The original weighted-return pass above concerned the two-gate
+operator. A later kernel-checked extension now establishes the
+positive eigenpair and complex eigenvalue modulus dominance for the
+**full** cloned adjacency matrix (see below). All source interpretation
+remains subject to expert review, and MLC remains open.
 
 **CI example:** [mathlib proof build 42032197008](https://github.com/dovvnloading/loops-research-archive/actions/runs/42032197008).
 Newer commits require their own green checks.
+
+## Full cloned matrix and Perron-radius characterization
+
+The mathlib workspace now imports the complete graph formalization
+and has four further verified theorem modules:
+
+- [FullCloneEigen.lean](weighted/FullCloneEigen.lean):
+  a strictly positive eigenvector \(x_i=t^i\) for \(i\le n\),
+  \(x_i=t^i/(t+1)\) for \(i>n\), satisfying all ordinary,
+  shortcut and wrap adjacency equations for every delay.
+- [FullCloneMatrix.lean](weighted/FullCloneMatrix.lean):
+  constructs the full \(2n+5\)-vertex adjacency matrix using
+  the graph's exact Edge predicate; proves the row-sum
+  representation and the Matrix.mulVec eigenvector equation.
+- [SpectralDominance.lean](weighted/SpectralDominance.lean):
+  proves the general positive-eigenvector modulus bound
+  \(\lvert\mu\rvert\le t\) for every complex eigenvalue of a
+  finite nonnegative real matrix, and applies it to the clones.
+- [FullCloneSpectralMax.lean](weighted/FullCloneSpectralMax.lean):
+  gives a nonzero complex eigenvector of eigenvalue \(t\) for
+  every cloned graph and proves **all** complex eigenvalue
+  moduli are at most \(t\). Thus the unique positive
+  clone root **attains the spectral radius**.
+
+These theorems hold for all natural delays, not merely a finite
+numerical range. The spectral radius is characterized in terms
+of explicit complex eigenvectors; direct integration with
+mathlib's named spectralRadius definition, strict spectral
+gap/simplicity, and the *general* nilpotent-Q Schur reduction
+are separate formalization tasks.
+
+The matching computational suite includes 528 exact
+rational adjacency-vector identities and 34 numerical full
+eigenspectrum comparisons. The root Lean/Python and pinned
+mathlib builds remain separate.
+
+**Kernel check:** [mathlib run #42038972966](https://github.com/dovvnloading/loops-research-archive/actions/runs/42038972966).
+A newer PR-head build is required before merging.
 
 ## Remaining formal obligations
 
 **General weighted return operators:** Exact integer first-return multiplicities and the base adjacency blocks are now kernel-checked. The all-n weighted return operator, its Perron equation, and its comparison to the published conventions still require distinct theorems.
 
-**General spectral theorem:** A pinned compatible mathlib version could support formalization of weighted first-return matrices, Schur-complement elimination, Perron–Frobenius arguments, and the two-sided finite-clone estimates. The sign of return-length exponents must be checked against explicitly declared source/target matrix conventions.
+**General spectral theorem:** The explicit cloned graph's weighted eigenvalue and maximal-complex-eigenvalue characterization are kernel-checked. The remaining nontrivial generalization is a source-typed nilpotent-Q Schur/first-return theorem for arbitrary finite cross-sections, plus formal strict spectral dominance and direct use of mathlib's spectral-radius API.
 
 **Longer-term topology:** Paper 1's abstract covering-space arguments and Paper 3's prime ends and compacta cohomology are separate substantial formalization tasks. No open MLC gate has been closed by the finite graph work.
 
