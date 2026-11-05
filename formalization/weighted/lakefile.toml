@@ -1,6 +1,6 @@
 name = "loops_weighted"
 version = "0.1.0"
-defaultTargets = ["WeightedReturn", "GraphWeightedBridge"]
+defaultTargets = ["WeightedReturn", "GraphWeightedBridge", "CloneBounds"]
 
 [[require]]
 name = "mathlib"
@@ -35,3 +35,6 @@ srcDir = "../.."
 
 [[lean_lib]]
 name = "GraphWeightedBridge"
+
+[[lean_lib]]
+name = "CloneBounds"
