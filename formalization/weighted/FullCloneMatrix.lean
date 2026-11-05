@@ -107,7 +107,7 @@ theorem fullMatrixAction_eq_fullCloneAction (n : ℕ)
              (if w = afterTip n then v w else 0)) := by
             apply Finset.sum_congr rfl
             intro w _
-            rw [edge_from_nonlast_iff n u w hnext]
+            simp only [edge_from_nonlast_iff n u w hnext]
             by_cases hfirst : w = nextVertex n u hnext
             · subst w
               simp [htip, hneq]
@@ -121,24 +121,26 @@ theorem fullMatrixAction_eq_fullCloneAction (n : ℕ)
           rw [Finset.sum_add_distrib]
           simp
         _ = fullCloneAction n v u := by
-          simp [fullCloneAction, hnext, htip]
+          unfold fullCloneAction
+          rw [dif_pos hnext, if_pos htip]
     · calc
         (∑ w : Vertex n, if Edge n u w then v w else 0) =
           ∑ w : Vertex n,
             (if w = nextVertex n u hnext then v w else 0) := by
             apply Finset.sum_congr rfl
             intro w _
-            rw [edge_from_nonlast_iff n u w hnext]
+            simp only [edge_from_nonlast_iff n u w hnext]
             simp [htip]
         _ = v (nextVertex n u hnext) := by simp
         _ = fullCloneAction n v u := by
-          simp [fullCloneAction, hnext, htip]
+          unfold fullCloneAction
+          rw [dif_pos hnext, if_neg htip]
   · calc
       (∑ w : Vertex n, if Edge n u w then v w else 0) =
         ∑ w : Vertex n, (if w = hub n then v w else 0) := by
           apply Finset.sum_congr rfl
           intro w _
-          rw [edge_from_last_iff n u w hnext]
+          simp only [edge_from_last_iff n u w hnext]
       _ = v (hub n) := by simp
       _ = fullCloneAction n v u := by simp [fullCloneAction, hnext]
 
