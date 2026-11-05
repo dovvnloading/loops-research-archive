@@ -68,7 +68,7 @@ def center_and_coefficients() -> tuple[list[Interval], list[Interval]]:
     x, derivative = orbit_and_derivative(center, CENTER_PERIOD)
     assert derivative[CENTER_PERIOD].negative()
     assert x[CENTER_PERIOD].lo < 0 < x[CENTER_PERIOD].hi
-    for j in (1, 3, 9):
+    for j in (1, 3, 9, 18):
         assert abs_lower(x[j]) > 0, ("critical period", j)
 
     # Write f_c*^j(z) = x_j + a_j z^2 + O(z^4).
@@ -248,6 +248,8 @@ def check() -> None:
     print("  f^27 critical trapping disk: radius 2^-13")
     print("  connected inner/outer filled Julia sets; K9 subset K3")
     print("  complex physical phase projection j mod 9 -> j mod 3")
+    print("  at real center: F3 critical period 9; F9 critical period 3")
+    print("  inner real quadratic straightening: unique real period-3 center")
     print("LIMIT: center/nearby parameters fail Paper 2 K(f)=J(f);")
     print("       no KL rays, prime ends, coset sheets or MLC closure")
 
