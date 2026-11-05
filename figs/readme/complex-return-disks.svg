@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1040 465" role="img" aria-labelledby="ttl desc">
+<title id="ttl">Two quadratic-like target disks drawn at the exact scale ratio 8 to 1</title>
+<desc id="desc">Concentric complex-plane circles centered at zero: outer target U3 has radius one quarter and inner target U9 has radius one thirty-second. The outer drawn radius is eight times the inner drawn radius. Only target disks, not their preimage domains, are represented.</desc>
+<rect width="1040" height="465" fill="#f5f5ef"/>
+<g stroke="#dedfd5" stroke-width="1">
+<path d="M35 55H590 M35 100H590 M35 145H590 M35 190H590 M35 235H590 M35 280H590 M35 325H590 M35 370H590 M35 415H590"/>
+<path d="M65 36V429 M110 36V429 M155 36V429 M200 36V429 M245 36V429 M290 36V429 M335 36V429 M380 36V429 M425 36V429 M470 36V429 M515 36V429 M560 36V429"/>
+</g>
+<g stroke="#777f77" stroke-width="1.5">
+<path d="M35 235H590 M335 35V431"/>
+</g>
+<path d="M580 230L590 235L580 240 M330 44L335 34L340 44" stroke="#777f77" fill="none" stroke-width="1.5"/>
+<circle cx="335" cy="235" r="175" fill="#b0bdb0" fill-opacity=".12" stroke="#405c4f" stroke-width="2.4"/>
+<circle cx="335" cy="235" r="21.875" fill="#b7ca61" fill-opacity=".53" stroke="#a0442b" stroke-width="2.4"/>
+<circle cx="335" cy="235" r="2.5" fill="#17241c"/>
+<g font-family="Consolas,'Liberation Mono',monospace" font-size="12" fill="#4b554e">
+<text x="598" y="229">Re(z)</text>
+<text x="348" y="45">Im(z)</text>
+<text x="322" y="255">0</text>
+</g>
+<path d="M459 111L545 77L615 77" fill="none" stroke="#405c4f" stroke-width="1.6"/>
+<path d="M357 217L520 180L615 180" fill="none" stroke="#a0442b" stroke-width="1.7"/>
+<g font-family="Consolas,'Liberation Mono',monospace" fill="#2a302b">
+<text x="637" y="66" font-size="11" letter-spacing="1.6">OUTER TARGET</text>
+<text x="637" y="98" font-size="25" font-family="Georgia,serif">U₃ = D(0, ¼)</text>
+<text x="637" y="119" font-size="12" fill="#697368">f³ : V₃ → U₃ · degree 2</text>
+<text x="637" y="169" font-size="11" letter-spacing="1.6" fill="#a0442b">INNER TARGET</text>
+<text x="637" y="201" font-size="25" font-family="Georgia,serif">U₉ = D(0, ¹⁄₃₂)</text>
+<text x="637" y="222" font-size="12" fill="#697368">f⁹ : V₉ → U₉ · degree 2</text>
+</g>
+<path d="M620 260H985" stroke="#b9c0b4"/>
+<text x="637" y="293" font-family="Georgia,serif" font-size="29" fill="#28342b">radius(U₃)</text>
+<text x="827" y="293" font-family="Georgia,serif" font-size="30" fill="#a0442b">= 8 ×</text>
+<text x="637" y="329" font-family="Georgia,serif" font-size="29" fill="#28342b">radius(U₉)</text>
+<g font-family="Consolas,'Liberation Mono',monospace" font-size="11" fill="#6d736b">
+<text x="637" y="386">TARGET DISKS ONLY</text>
+<text x="637" y="406">PREIMAGE DOMAIN SHAPES ARE NOT DRAWN</text>
+</g>
+<path d="M36 447H1005" stroke="#b5bcb1"/>
+<text x="38" y="458" font-family="Consolas,'Liberation Mono',monospace" font-size="9" fill="#667167">TWO-SCALE QUADRATIC-LIKE RESTRICTION · EXACT RADIUS RATIO · SOURCE AUDIT 2026-11-05</text>
+</svg>
