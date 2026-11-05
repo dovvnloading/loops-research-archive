@@ -142,7 +142,8 @@ theorem terminal_root_phase_route
         rw [Nat.mul_comm p (tau / p), Nat.add_comm]
   calc
     iterate f tau x =
-        iterate f (k * p + tau % p) x := by rw [hdecomp]
+        iterate f (k * p + tau % p) x :=
+          congrArg (fun m => iterate f m x) hdecomp
     _ = iterate f (tau % p) (iterate f (k * p) x) :=
         iterate_add f (k * p) (tau % p) x
     _ = iterate f (tau % p) y := rfl
