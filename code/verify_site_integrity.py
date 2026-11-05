@@ -110,7 +110,9 @@ def validate() -> None:
     main, html = check_html("index.html")
     check_html("404.html")
     assert "MLC remains open" in html
-    assert "id=\"ledger\"" in html and "id=\"frontier\"" in html
+    assert "id=\"papers\"" in html and "id=\"model\"" in html and "id=\"formal\"" in html
+    assert "id=\"archive\"" in html and "The conjecture is" in html
+    assert "id=\"ledger\"" in html and "id=\"problems\"" in html
     assert "site-v2.css" in html and "site-v2.js" in html
     assert "ReactDOM" not in html and "<x-dc>" not in html
     assert all(script == "./site-v2.js" for script in main.scripts), (
