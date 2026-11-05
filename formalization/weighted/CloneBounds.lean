@@ -25,7 +25,7 @@ theorem finite_clone_power_bounds (n : ℕ) (t : ℝ)
     calc
       t ^ (2 * n + 4) * t =
           t ^ ((2 * n + 4) + 1) := (pow_succ t (2 * n + 4)).symm
-      _ = t ^ (2 * n + 5) := by congr 1; omega
+      _ = t ^ (2 * n + 5) := by congr 1
       _ = t + 1 := hpoly
   have h6 : t ^ (2 * n + 6) = (t + 1) * t := by
     rw [show 2 * n + 6 = (2 * n + 5) + 1 by omega, pow_succ, hpoly]
