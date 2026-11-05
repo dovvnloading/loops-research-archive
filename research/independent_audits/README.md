@@ -8,6 +8,8 @@ This directory contains reproducible audits of research claims in the archive. I
 - **verify_clone_spectral.py**: standalone finite-matrix numerical regressions for the clone formula, including an independently constructed whole adjacency matrix and a two-gate example.
 - **evidence_audit_20261104.md**: baseline of unresolved proof-evidence pointers in the 465-entry proof ledger as found on November 4, 2026.
 - **audit_ledger_evidence.py**: standard-library-only diagnostic of the ledger's dependency wiring and plain Markdown proof pointers. It checks *traceability*, not theorem correctness.
+- **two_scale_complex_window_obstructions_20261105.md**: precise proofs that the existing complex parameter disk is uniformly attracting of exact period 27 (so Paper 2 H3 fails everywhere in it) and that equal-width stadium/preimage domains fail compact containment at both real restrictive levels.
+- **verify_complex_window_obstructions.py**: exact (2^{-224})-dyadic recurrence checks for the attracting disk, lower-period exclusion, and stadium first-failure thresholds; depends only on the earlier exact real two-scale certificate engine.
 
 ## Run locally
 
@@ -15,6 +17,8 @@ From the repository root:
 
     python -m pip install numpy
     python research/independent_audits/verify_clone_spectral.py
+    python research/independent_audits/verify_real_nested_3_9.py
+    python research/independent_audits/verify_complex_window_obstructions.py
     python research/independent_audits/audit_ledger_evidence.py . --strict
 
 The last command is **expected to exit nonzero** until broken source pointers are repaired or the actual source files restored. Do not change an entry from open to proved or redirect evidence simply to make this check pass.
