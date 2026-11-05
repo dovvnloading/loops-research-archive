@@ -212,3 +212,5 @@ Do not infer that the second task follows from the first, or that either solves 
 - **Status:** no change to the released papers, 465-entry ledger, source lock, or MLC claims. Independent specialist review is still appropriate before publication.
 
 The result is deliberately a first-failure certificate: it tells a future construction **which parameter window and which domain shape cannot satisfy the intended source application**, while preserving the still-open positive complex renormalization task.
+
+**AI-assistance disclosure:** This research increment was drafted with OpenAI GPT-6 under the repository steward's direction. The arithmetic checks were run in an isolated local Python environment and connected GitHub Actions; the analytic proofs are supplied explicitly for human inspection. No independent human mathematical verification or external specialist review is represented as completed by this increment.
