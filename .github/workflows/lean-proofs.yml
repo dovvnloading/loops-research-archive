@@ -75,6 +75,10 @@ jobs:
         run: python research/independent_audits/verify_clone_first_returns.py
       - name: Check exact rational weighted-return identity
         run: python research/independent_audits/verify_weighted_return_exact.py
+      - name: Check full cloned adjacency eigenvector identity
+        run: python research/independent_audits/verify_full_clone_adjacency.py
+      - name: Check full clone spectral radius numerically
+        run: python research/independent_audits/verify_full_clone_spectral_radius.py
       - name: Check finite Dirichlet-to-Neumann gluing
         run: python research/independent_audits/verify_rectangle_response.py
       - name: Check ledger mirrors, statuses and evidence pointers

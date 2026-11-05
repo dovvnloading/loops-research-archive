@@ -250,3 +250,61 @@ identification, the general nilpotent-Q theorem, or the complete
 source paper. The source-convention interpretation, priority, and
 effect on external proofs still require specialist and author review.
 No MLC analytic gate has been closed.
+
+
+## Full cloned adjacency spectral dominance (2026-11-05)
+
+The further formalization now resolves the previous **full-matrix**
+eigenpair and maximum-eigenvalue-modulus gaps for this exact
+cycle-with-shortcut graph:
+
+1. [FullCloneEigen.lean](../../formalization/weighted/FullCloneEigen.lean)
+   defines the full \(2n+5\)-coordinate positive vector
+   \[
+   x_i=\begin{cases}
+   t^i,&0\le i\le n,\\
+   t^i/(t+1),&n<i\le2n+4,
+   \end{cases}
+   \]
+   and verifies all local adjacency equations, assuming the
+   previously kernel-checked unique positive root
+   \(t^{2n+5}=t+1\).
+2. [FullCloneMatrix.lean](../../formalization/weighted/FullCloneMatrix.lean)
+   defines the **actual entire adjacency matrix** from the
+   original graph's Edge relation; proves every row sum agrees
+   with the local action and exports an explicit Matrix.mulVec
+   eigenpair theorem. The entries are all nonnegative and are
+   1 precisely for actual graph edges.
+3. [SpectralDominance.lean](../../formalization/weighted/SpectralDominance.lean)
+   proves a reusable general lemma: if a finite nonnegative real
+   matrix has a strictly positive real eigenvector at \(t\), then
+   every complex eigenvalue \(\mu\) satisfies \(|\mu|\le t\).
+   This follows by maximizing \(\|z_i\|/x_i\) and applying the
+   triangle inequality to the maximal row. The lemma is then
+   specialized to the cloned adjacency matrices.
+4. [FullCloneSpectralMax.lean](../../formalization/weighted/FullCloneSpectralMax.lean)
+   casts the real positive eigenvector to an actual nonzero
+   complex eigenvector and proves the bound is **attained** at
+   \(t\) for every \(n\). Consequently \(t\) is the spectral
+   radius in the standard finite-dimensional sense.
+
+These are all-parameter quantified, kernel-checked mathematical
+claims for the **specific explicit graph**. A strictly stronger
+Perron claim—a simple dominant root with a **strict** spectral
+gap for all non-Perron eigenvalues—is not yet formally proved,
+despite the separately verified graph primitivity.
+
+**Verification:** [mathlib build 42038972966](https://github.com/dovvnloading/loops-research-archive/actions/runs/42038972966).
+The independent [exact rational test](verify_full_clone_adjacency.py)
+checks 528 complete adjacency-vector residual identities;
+the [numerical eigenspectrum check](verify_full_clone_spectral_radius.py)
+compares full graph eigenvalues against the unique root for 34
+clone lengths. The tests supplement rather than replace the theorem.
+
+**Remaining scope:** The *general* fixed-cross-section nilpotent-Q
+Schur/renewal formula is not formalized. The positive-power discrepancy
+is specifically a literal-text finite-graph issue in a June 2026
+preprint, not an independently accepted erratum or a disproof of its
+main complex-dynamics theorem. Its source conventions still require
+author/specialist confirmation. All MLC analytic obligations remain
+open and none was promoted by this work.
