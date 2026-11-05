@@ -1,0 +1,206 @@
+{
+  "airplane_tuning_substitution": {
+    "0": "011",
+    "1": "100"
+  },
+  "parameter_root": "(-607890580437450502081459824019535455703/2^128,-607890580437450502081459824019535455702/2^128)",
+  "period": 27,
+  "real_interval_markov_spine": {
+    "edge_adjacency_sha256": "1a9fdfc1a874090176ee3fcdf46db9efdcb5e05cf68318720afb35b04374d4d5",
+    "edge_destinations": [
+      [
+        25
+      ],
+      [
+        24
+      ],
+      [
+        23
+      ],
+      [
+        22
+      ],
+      [
+        21
+      ],
+      [
+        20
+      ],
+      [
+        19
+      ],
+      [
+        18
+      ],
+      [
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17
+      ],
+      [
+        4
+      ],
+      [
+        3
+      ],
+      [
+        2
+      ],
+      [
+        0,
+        1
+      ],
+      [
+        0
+      ],
+      [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      [
+        6
+      ],
+      [
+        7
+      ],
+      [
+        8
+      ],
+      [
+        9
+      ],
+      [
+        10
+      ],
+      [
+        11
+      ],
+      [
+        12
+      ],
+      [
+        13
+      ],
+      [
+        14
+      ],
+      [
+        15
+      ],
+      [
+        16
+      ]
+    ],
+    "ordered_orbit_indices": [
+      1,
+      19,
+      10,
+      16,
+      25,
+      7,
+      13,
+      22,
+      4,
+      6,
+      24,
+      15,
+      9,
+      0,
+      18,
+      12,
+      21,
+      3,
+      5,
+      23,
+      14,
+      8,
+      26,
+      17,
+      11,
+      20,
+      2
+    ],
+    "restrictive_interval_vertex_ranks": {
+      "3": [
+        9,
+        17
+      ],
+      "9": [
+        12,
+        14
+      ]
+    }
+  },
+  "scales": {
+    "27": {
+      "angular_kneading": "10010110110010110010010110*",
+      "internal_address": [
+        1,
+        2,
+        3,
+        6,
+        9,
+        18,
+        27
+      ],
+      "lower_angle": "59914011/134217727",
+      "lower_binary_period": "011100100100011011100011011",
+      "oriented_real_critical_kneading": "10010110110010110010010110*",
+      "physical_return_time": 1,
+      "return_quadratic_coefficient_sign": "+",
+      "upper_angle": "74303716/134217727",
+      "upper_binary_period": "100011011011100100011100100",
+      "upper_kneading_completion": "100101101100101100100101100"
+    },
+    "3": {
+      "angular_kneading": "10*",
+      "internal_address": [
+        1,
+        2,
+        3
+      ],
+      "lower_angle": "3/7",
+      "lower_binary_period": "011",
+      "oriented_real_critical_kneading": "10*",
+      "physical_return_time": 9,
+      "return_quadratic_coefficient_sign": "+",
+      "upper_angle": "4/7",
+      "upper_binary_period": "100",
+      "upper_kneading_completion": "100"
+    },
+    "9": {
+      "angular_kneading": "10010110*",
+      "internal_address": [
+        1,
+        2,
+        3,
+        6,
+        9
+      ],
+      "lower_angle": "228/511",
+      "lower_binary_period": "011100100",
+      "oriented_real_critical_kneading": "10010110*",
+      "physical_return_time": 3,
+      "return_quadratic_coefficient_sign": "-",
+      "upper_angle": "283/511",
+      "upper_binary_period": "100011011",
+      "upper_kneading_completion": "100101101"
+    }
+  },
+  "schema": "period27-symbolic-marking-v1",
+  "scope": "EXACT_SYMBOLIC_MATCH_NOT_CERTIFIED_PARAMETER_RAY_LANDING",
+  "source_reference": "Sodre arXiv:2611.04190v1 sections 2.3 and 2.5"
+}
