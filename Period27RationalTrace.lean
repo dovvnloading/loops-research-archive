@@ -53,9 +53,11 @@ def Encloses (b : Bounds) (x : ExactFraction) : Prop :=
 private theorem scale_positive : 0 < unit := by decide +kernel
 
 theorem zero_fraction_enclosed : Encloses zeroBound fzero := by
+  change FractionEnclosed unit zeroBound 0 1
   decide +kernel
 
 theorem one_fraction_enclosed : Encloses oneBound fone := by
+  change FractionEnclosed unit oneBound 1 1
   decide +kernel
 
 theorem exact_rational_addition_sound
