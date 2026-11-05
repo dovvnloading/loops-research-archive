@@ -15,6 +15,8 @@ RETURN_PERIOD = 27
 PARAM_BITS = 26
 TRAPPING_BITS = 13
 STADIUM_LIMIT_BITS = 21
+EXPANDED_PARAM_BITS = 23
+EXPANDED_TRAPPING_BITS = 11
 
 
 def ceil_div(n: int, d: int) -> int:
@@ -34,7 +36,10 @@ def center_orbit() -> list[Interval]:
     return orbit
 
 
-def uniform_error_bounds(orbit: list[Interval]) -> list[int]:
+def uniform_error_bounds(
+    orbit: list[Interval], *, param_bits: int = PARAM_BITS,
+    trapping_bits: int = TRAPPING_BITS
+) -> list[int]:
     """Outward dyadic bounds on |f_c'^j(z)-f_c*^j(0)| for |z|<=2^-13.
 
     c* is the unique period-27 root in the certified dyadic bracket;
@@ -42,8 +47,8 @@ def uniform_error_bounds(orbit: list[Interval]) -> list[int]:
     |f_c*^j(0)|, the exact complex identity gives
     E_(j+1) <= E_j(2*M_j+E_j)+2^-26.
     """
-    radius = UNIT >> TRAPPING_BITS
-    param_radius = UNIT >> PARAM_BITS
+    radius = UNIT >> trapping_bits
+    param_radius = UNIT >> param_bits
     errors = [radius]
     for j in range(RETURN_PERIOD):
         center_abs = max(abs(orbit[j].lo), abs(orbit[j].hi))
@@ -73,6 +78,18 @@ def check() -> None:
             "lower-period exclusion failed", j
         )
 
+    # A larger parameter disk is also excluded from Paper 2 H3.
+    # This check asserts trapping only, not the stronger contraction
+    # constant available on the smaller original collar disk.
+    expanded_radius = UNIT >> EXPANDED_TRAPPING_BITS
+    expanded_errors = uniform_error_bounds(
+        X, param_bits=EXPANDED_PARAM_BITS,
+        trapping_bits=EXPANDED_TRAPPING_BITS
+    )
+    assert 16 * expanded_errors[-1] < 15 * expanded_radius, (
+        "expanded H3 exclusion disk failed"
+    )
+
     # Each c' in this open parameter disk thus has an attracting
     # period-27 orbit that captures the critical point 0. The disk
     # |z|<radius/2 has bounded forward orbits: K(f_c') has interior,
@@ -100,7 +117,8 @@ def check() -> None:
     print("  all |z|<=2^-13 satisfy |f_c'^27(z)| < (3/8)*2^-13")
     print("  f_c'^27 is <3/4-Lipschitz on |z|<=2^-14")
     print("  attracting orbit has exact f-period 27, critical orbit captured")
-    print("  entire parameter disk violates Paper 2 H3: K(f)=J(f)")
+    print("  full |c'-c*|<2^-23 disk maps |z|<=2^-11 inside (15/16)*2^-11")
+    print("  expanded disk also violates Paper 2 H3: K(f)=J(f)")
     print("  for p=3,9 and 0<epsilon<=2^-21, thin stadium full preimage")
     print("  component at 0 is NOT contained in its target stadium")
     print("LIMIT: no proper quadratic-like restriction, complex KL atlas,")
