@@ -177,6 +177,31 @@ def check() -> None:
         # so f^period has no critical point other than z=0 there.
         certificates[period] = (I, Y, negatives)
 
+    # Uniform finite-horizon COMPLEX separation persists for a nontrivial
+    # REAL parameter neighborhood, not just the exact center c*. Keep
+    # the already-certified center intervals I3/I9 as fixed geometric
+    # sets and enlarge the allowed quadratic parameter by 2^-32.
+    delta = 1 << (PREC-32)
+    parameter_neighborhood = Interval(C.lo-delta, C.hi+delta)
+    for period, (I, _, _) in certificates.items():
+        Ynear = iterate(I, parameter_neighborhood, period)
+        assert disjoint(Ynear[:period]), ("parameter-phase collision", period)
+        assert all(max(abs(J.lo), abs(J.hi)) < 2*UNIT
+                   for J in Ynear[:period])
+        for j in range(1, period):
+            J = Ynear[j]
+            clearance = J.lo if J.positive() else -J.hi
+            assert 10*clearance > UNIT, ("parameter critical collision", period,j)
+        gaps = [
+            B.lo-A.hi if A.below(B) else A.lo-B.hi
+            for j,A in enumerate(Ynear[:period])
+            for B in Ynear[j+1:period]
+        ]
+        assert gaps and 100*min(gaps) > UNIT, (
+            "parameter phase gap falls below 1/100", period)
+        # The same initial complex 2^-40 stadium and growth bound
+        # 5^j*2^-40 < 10^-6 therefore work for every real parameter
+        # in this explicit open 2^-32-neighborhood of c*.
     # Invariant period-3 interval:
     # f^3(0)=x3 (maximum), f^3(x3)=x6 (minimum),
     # f^3(x6)=x9 (strictly inside [x6,x3]).
@@ -210,6 +235,7 @@ def check() -> None:
             print("  I9 is strictly inside I3; f^3(I9) and f^6(I9) lie in I3")
     print("  COMPLEX: epsilon=2^-40 phase tubes disjoint for j<3 and j<9")
     print("  COMPLEX: all intermediate iterates avoid the critical point")
+    print("  COMPLEX: phase collars persist for |c-c*|<~2^-32 (dyadic bracket widened)")
     print("  COMPLEX LIMIT: no polynomial-like proper return or KL rays/sheets proved")
     print("LIMIT: real restrictive intervals; complex puzzle and MLC gates remain open")
 
