@@ -185,20 +185,20 @@ theorem address_exact_period27 (a : Address27) :
 
 /-- Every injective nine-phase marking needs some information beyond
     the three-phase quotient: no relabeling on three phases recovers it. -/
-theorem nine_to_three_cannot_preserve_distinct_marks {α : Type*}
+theorem nine_to_three_cannot_preserve_distinct_marks {α : Type}
     (L : Phase 9 → α) (hL : Function.Injective L) :
     ¬ FactorsThrough 3 9 (by decide) L :=
   injective_marking_never_factors 3 9 (by decide) (by decide) L hL
 
 /-- The same obstruction at the top step of the 27 -> 9 -> 3 tower. -/
-theorem twentyseven_to_nine_cannot_preserve_distinct_marks {α : Type*}
+theorem twentyseven_to_nine_cannot_preserve_distinct_marks {α : Type}
     (L : Phase 27 → α) (hL : Function.Injective L) :
     ¬ FactorsThrough 9 27 (by decide) L :=
   injective_marking_never_factors 9 27 (by decide) (by decide) L hL
 
 /-- Projecting all the way from 27 to 3 loses even more information,
     regardless of how the nine-phase intermediate stage is organized. -/
-theorem twentyseven_to_three_cannot_preserve_distinct_marks {α : Type*}
+theorem twentyseven_to_three_cannot_preserve_distinct_marks {α : Type}
     (L : Phase 27 → α) (hL : Function.Injective L) :
     ¬ FactorsThrough 3 27 (by decide) L :=
   injective_marking_never_factors 3 27 (by decide) (by decide) L hL
