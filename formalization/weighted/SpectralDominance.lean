@@ -103,6 +103,7 @@ theorem full_clone_eigenvalue_modulus_le (n : ℕ) (t : ℝ)
     (hAz : ∀ u, (∑ w : Vertex n,
       ((fullAdjacencyMatrix n u w : ℝ) : ℂ) * z w) = μ * z u) :
     ‖μ‖ ≤ t := by
+  letI : Nonempty (Vertex n) := ⟨hub n⟩
   exact complex_eigenvalue_norm_le_of_positive_vector
     (fullAdjacencyMatrix n) (fullCloneVector n t) t
     (fullAdjacencyMatrix_nonneg n)
