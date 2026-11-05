@@ -186,3 +186,13 @@ The explicit graph also shows why replacing a primitivity claim with irreducibil
 Run the accompanying \`verify_clone_spectral.py\` (NumPy required). It independently assembles full cloned adjacency matrices, independently assembles the return polynomial, compares the Perron roots for \(n=0,1,2,4,8,16\), and checks (3), (5) numerically on both a one-gate and a two-gate graph.
 
 Before making a published correction claim: (i) obtain an independent specialist reading of the exact Appendix C conventions, (ii) check for newer versions or author errata, and (iii) ask the authors whether the power sign was intentional. No currently open MLC gate is affected by this document.
+
+## Formal proof status (2026-11-05)
+
+A Lean 4.32.0 project on the same research branch provides three **kernel-checked** components (see [passing CI run 42021592679](https://github.com/dovvnloading/loops-research-archive/actions/runs/42021592679)):
+
+1. [LoopsFormal.lean](../../LoopsFormal.lean) verifies directly that the explicit nonnegative matrix \(R=\left(\begin{smallmatrix}0&2\\1&0\end{smallmatrix}\right)\) has no strictly positive power.
+2. [CloneGraph.lean](../../CloneGraph.lean) encodes the **actual five-vertex graph used in the counterexample**, with each gate cloned into \(n+1\) vertices for arbitrary \(n\ge0\), and proves all such clones primitive. The proof supplies one common positive walk length \(T=2(2n+5)^2\) from each vertex to every other vertex, and constructs the three gate-to-gate walks of lengths \(n+2,n+3,n+2\).
+3. [FirstReturn.lean](../../FirstReturn.lean) defines paths with **no intermediate cross-section visits**, proves no same-gate first-return path exists, proves the e-to-f first-return lengths must be \(n+2\) or \(n+3\), and f-to-e length must be \(n+2\), and constructs gate-avoiding witnesses of all three kinds.
+
+**Still not formally proved:** that the number of *distinct edge-occurrence paths* at each permitted length is exactly one, giving the weighted matrix \(R\) directly from the cloned graph. That counting bridge, the Perron spectral reduction and the comparison with the source's textual conventions remain separate proof obligations. Thus the Lean results strengthen the check of the combinatorial counterexample but should not be cited as a kernel check of Appendix C in full.
