@@ -102,6 +102,12 @@ Since \(x_6<x_9<0<x_{18}<x_3\), the extreme-value/monotonicity argument proves *
 
 These are real restrictive intervals with first return periods **3** and **9**, respectively. No earlier iterate of either interval can return to it because the intermediate closed images are pairwise disjoint. Both return maps are real unimodal, with their unique critical point at the original critical point \(0\).
 
+The same outward integer enclosures certify the **entire 26-symbol critical sign itinerary** (at times \(1\) through \(26\), with the final iterate \(x_{27}=0\)):
+
+    -++-+--+--++-+--++-++-+--+
+
+Under the first return \(g=f^3\), the eight nonzero critical images have signs \(+--+-++-\); under the inner return \(f^9\), the two nonzero critical images have signs \(-+\). These exact sign words are reproducible inputs for a future real-kneading/external-ray audit, **not** a proof of a specific external-angle portrait.
+
 ## 3. Actual two-scale phase transport
 
 The first return is \(g=f^3|_{I_3}\); its inner return on \(I_9\) is
