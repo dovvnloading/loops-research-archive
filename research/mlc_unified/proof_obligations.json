@@ -2304,7 +2304,7 @@
       "statement": "For a width-one Euclidean rectangle of length R with natural Neumann side walls, the complete end-trace energy on the spectral H^{1/2} trace space is the functional-calculus form with diagonal A coth(RA), off-diagonal -A csch(RA), and continuous zero-mode value 1/R.",
       "status": "proved",
       "dependencies": [],
-      "evidence": "research_push_4_assessment_and_integration.md#4-independent-audit-of-the-rectangle-calculus"
+      "evidence": "research/mlc_research_push_4_bundle/mlc_research_push_4.md#6-exact-rectangle-dirichlet-to-neumann-theorem"
     },
     {
       "id": "TRACE_RESPONSE_SEMIGROUP",
@@ -2313,7 +2313,7 @@
       "dependencies": [
         "FULL_TRACE_RECTANGLE_DTN"
       ],
-      "evidence": "research_push_4_assessment_and_integration.md#41-exact-concatenation"
+      "evidence": "research/mlc_research_push_4_bundle/mlc_research_push_4.md#7-exact-response-semigroup"
     },
     {
       "id": "EQUIPOTENTIAL_COLLAPSE_CRITERION",
@@ -2322,7 +2322,7 @@
       "dependencies": [
         "FULL_TRACE_RECTANGLE_DTN"
       ],
-      "evidence": "research_push_4_assessment_and_integration.md#42-exact-scalar-collapse-criterion"
+      "evidence": "research/mlc_research_push_4_bundle/mlc_research_push_4.md#9-exact-criterion"
     },
     {
       "id": "SHORTED_EQUIPOTENTIAL_NODAL_RESPONSE",
@@ -2332,7 +2332,7 @@
         "EQUIPOTENTIAL_COLLAPSE_CRITERION",
         "TRACE_RESPONSE_SEMIGROUP"
       ],
-      "evidence": "research_push_4_assessment_and_integration.md#42-exact-scalar-collapse-criterion"
+      "evidence": "research/mlc_research_push_4_bundle/mlc_research_push_4.md#9-exact-criterion"
     },
     {
       "id": "TRACE_RENORMALIZED_NECK_ESTIMATE",
@@ -2341,7 +2341,7 @@
       "dependencies": [
         "FULL_TRACE_RECTANGLE_DTN"
       ],
-      "evidence": "research_push_4_assessment_and_integration.md#43-sharp-trace-renormalized-estimate"
+      "evidence": "research/mlc_research_push_4_bundle/mlc_research_push_4.md#11-sharp-exponential-trace-estimate"
     },
     {
       "id": "END_TRACE_RESPONSE_COMPACTIFICATION",
@@ -2350,14 +2350,14 @@
       "dependencies": [
         "TRACE_RENORMALIZED_NECK_ESTIMATE"
       ],
-      "evidence": "research_push_4_assessment_and_integration.md#43-sharp-trace-renormalized-estimate"
+      "evidence": "research/mlc_research_push_4_bundle/mlc_research_push_4.md#13-cylindrical-end-limit"
     },
     {
       "id": "HILBERT_TRACE_GLUE_CALCULUS",
       "statement": "Relative Loewner bounds between nonnegative closed interface trace forms survive addition of the same nonnegative component energy and minimization over the same complete Hilbert trace space.",
       "status": "proved",
       "dependencies": [],
-      "evidence": "research_push_4_assessment_and_integration.md#44-elimination-and-strict-transition"
+      "evidence": "research/mlc_research_push_4_bundle/mlc_research_push_4.md#14-variational-schur-complement"
     },
     {
       "id": "TRACE_STABLE_STRICT_TRANSITION_TRANSFER",
@@ -2367,7 +2367,7 @@
         "TRACE_RENORMALIZED_NECK_ESTIMATE",
         "HILBERT_TRACE_GLUE_CALCULUS"
       ],
-      "evidence": "research_push_4_assessment_and_integration.md#44-elimination-and-strict-transition"
+      "evidence": "research/mlc_research_push_4_bundle/mlc_research_push_4.md#17-strictness-survives"
     },
     {
       "id": "PULLED_EQUIPOTENTIAL_SERIAL_RECTANGLE_NO_GO",
@@ -2376,7 +2376,7 @@
       "dependencies": [
         "DIRECT_DECORATION_PULLBACK_COMPACTIFICATION"
       ],
-      "evidence": "research_push_4_assessment_and_integration.md#5-exact-obstruction-to-the-proposed-pulled-collar"
+      "evidence": "research/independent_audits/recovered_lemmas_20261105.md#1-pulled-equipotential-angular-mismatch"
     },
     {
       "id": "ACTIVE_INACTIVE_PHYSICAL_CELL",
@@ -2422,7 +2422,7 @@
       "dependencies": [
         "INFIMUM_PUSHFORWARD_FUNCTORIALITY"
       ],
-      "evidence": "research_push_5_assessment_and_integration.md#62-functoriality-of-infima"
+      "evidence": "research/independent_audits/recovered_lemmas_20261105.md#2-closed-form-pushforward-counterexample"
     },
     {
       "id": "FIXED_STANDARD_NECK_MULTIPORT_COMPACTIFICATION",
