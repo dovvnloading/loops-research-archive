@@ -7,6 +7,11 @@ on:
     paths:
       - 'index.html'
       - '404.html'
+      - 'classic.html'
+      - 'dossier.html'
+      - '.nojekyll'
+      - 'robots.txt'
+      - 'sitemap.xml'
       - 'site-v2.css'
       - 'site-v2.js'
       - 'favicon.svg'
@@ -21,6 +26,11 @@ on:
     paths:
       - 'index.html'
       - '404.html'
+      - 'classic.html'
+      - 'dossier.html'
+      - '.nojekyll'
+      - 'robots.txt'
+      - 'sitemap.xml'
       - 'site-v2.css'
       - 'site-v2.js'
       - 'favicon.svg'
