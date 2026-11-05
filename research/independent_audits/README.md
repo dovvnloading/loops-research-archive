@@ -16,6 +16,8 @@ This directory contains reproducible audits of research claims in the archive. I
 - **verify_period27_symbolic_atlas.py**: standard-library-only signed-dyadic/rational-integer audit of angle periods, substitution, internal addresses, real orbit order, all three kneading matches and byte-for-byte reproduction of `results/period27_symbolic_marking.json`.
 - **period27_kneading_angle_permutation_source_audit_20261105.md**: source-level separation of Baker–Chen–Li–Qian's real-center kneading angle, their lexicographic twisted-shift permutation, and Douady–Hubbard/Zakeri *root* parameter-ray tuning; records the still-open parameter-component and KL sheet/access bridge.
 - **verify_period27_kneading_angle_permutation.py**: exact all-27-sign kneading-angle reconstruction, modular doubled-angle admissibility, and independent lexical versus real-rank 27-cycle comparison.
+- **lean_period27_kernel_arithmetic_20261105.md**: sources, strict scope and reproduction for two core-Lean modules that recheck the parameter bracket at 2^-144, derivative, orbit order and symbolic kneading/rank correspondence; explicitly distinguishes kernel finite computation from nonformalized interval soundness and ray geometry.
+- **Period27Dyadic.lean / Period27Kneading.lean** (root): new default Lean targets checked by GitHub Actions without native_decide or proof holes.
 
 ## Run locally
 
