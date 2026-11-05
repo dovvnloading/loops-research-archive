@@ -16,6 +16,8 @@ It is strictly stronger than merely exhibiting a positive eigenpair.
 
 namespace LoopsSpectral
 
+open LoopsFormal.CloneGraph
+
 noncomputable section
 
 /-- General finite-dimensional Perron modulus bound from an exact
@@ -90,7 +92,7 @@ theorem complex_eigenvalue_norm_le_of_positive_vector
       _ ≤ ∑ j, A i j * (ratio i * x j) := hsum_bound
       _ = ratio i * (t * x i) := hsum_value
       _ = t * ‖z i‖ := by rw [← hratio_mul i]; ring
-  exact (mul_le_mul_right hnormpos).mp hmul
+  exact le_of_mul_le_mul_right hmul hnormpos
 
 /-- Every complex eigenvalue of the *full* cloned graph has
 modulus bounded by the positive real clone root. -/
