@@ -1,6 +1,6 @@
 name = "loops_formal"
 version = "0.1.0"
-defaultTargets = ["LoopsFormal", "CloneGraph", "FirstReturn", "ReturnBlocks", "ReturnPaths", "Paper2Phase", "RealTwoScalePhase", "Period27Kneading", "Period27Dyadic", "Period27IntervalSound", "Period27RationalTrace"]
+defaultTargets = ["LoopsFormal", "CloneGraph", "FirstReturn", "ReturnBlocks", "ReturnPaths", "Paper2Phase", "RealTwoScalePhase", "Period27Kneading", "Period27Dyadic", "Period27IntervalSound", "Period27RationalTrace", "Period27RationalDerivative"]
 
 [[lean_lib]]
 name = "LoopsFormal"
@@ -34,3 +34,6 @@ name = "Period27IntervalSound"
 
 [[lean_lib]]
 name = "Period27RationalTrace"
+
+[[lean_lib]]
+name = "Period27RationalDerivative"
