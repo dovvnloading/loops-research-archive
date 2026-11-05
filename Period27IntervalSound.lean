@@ -209,11 +209,64 @@ theorem signed_double_sound_on_grid
   dsimp [doubleBounds]
   constructor <;> omega
 
+
+/-- A fraction n/d with d>0 is inside a signed grid interval when
+    all three terms of this cross-multiplied inequality hold.
+    This represents an ARBITRARY rational, not only grid points. -/
+def FractionEnclosed (scale : Int) (b : Bounds)
+    (numer denom : Int) : Prop :=
+  0 < denom ∧
+  b.lo * denom ≤ numer * scale ∧
+  numer * scale ≤ b.hi * denom
+
+/-- Arithmetic addition soundness for arbitrary rational inputs.
+    No assumption that either exact input lies on the dyadic grid. -/
+theorem signed_add_sound_for_fractions
+    (scale : Int) (a b : Bounds)
+    (na da nb db : Int)
+    (ha : FractionEnclosed scale a na da)
+    (hb : FractionEnclosed scale b nb db) :
+    FractionEnclosed scale (addBounds a b)
+      (na * db + nb * da) (da * db) := by
+  rcases ha with ⟨hda, halo, hahi⟩
+  rcases hb with ⟨hdb, hblo, hbhi⟩
+  have hda0 : 0 ≤ da := by omega
+  have hdb0 : 0 ≤ db := by omega
+  have hloA := Int.mul_le_mul_of_nonneg_right halo hdb0
+  have hloB := Int.mul_le_mul_of_nonneg_right hblo hda0
+  have hhiA := Int.mul_le_mul_of_nonneg_right hahi hdb0
+  have hhiB := Int.mul_le_mul_of_nonneg_right hbhi hda0
+  dsimp only [FractionEnclosed, addBounds]
+  constructor
+  · exact Int.mul_pos hda hdb
+  constructor
+  · have hsum := Int.add_le_add hloA hloB
+    grind
+  · have hsum := Int.add_le_add hhiA hhiB
+    grind
+
+/-- Multiplication by two is sound on arbitrary rational inputs. -/
+theorem signed_double_sound_for_fractions
+    (scale : Int) (a : Bounds)
+    (n d : Int) (h : FractionEnclosed scale a n d) :
+    FractionEnclosed scale (doubleBounds a) (2 * n) d := by
+  rcases h with ⟨hd, hlo, hhi⟩
+  dsimp only [FractionEnclosed, doubleBounds]
+  constructor
+  · exact hd
+  constructor
+  · have hw := Int.mul_le_mul_of_nonneg_left hlo (by omega : (0 : Int) ≤ 2)
+    grind
+  · have hw := Int.mul_le_mul_of_nonneg_left hhi (by omega : (0 : Int) ≤ 2)
+    grind
+
 #print axioms signed_floor_rounds_outward
 #print axioms signed_ceil_rounds_outward
 #print axioms integer_square_between_endpoints
 #print axioms signed_square_rounding_sound_on_grid
 #print axioms integer_product_between_four_corners
+#print axioms signed_add_sound_for_fractions
+#print axioms signed_double_sound_for_fractions
 #print axioms signed_multiplication_rounding_sound_on_grid
 
 end LoopsFormal.Period27
