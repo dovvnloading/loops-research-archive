@@ -76,8 +76,10 @@ theorem fullCloneAction_eigen (n : ℕ) (t : ℝ)
           fullCloneAction n (fullCloneVector n t) u =
             t ^ (u.val + 1) / (t + 1) +
               t ^ (n + 2) / (t + 1) := by
-        simp [fullCloneAction, hnext, fullCloneVector,
-          nextVertex, afterTip, htip, hnextlarge, hsklarge]
+        unfold fullCloneAction
+        rw [dif_pos hnext, if_pos htip]
+        simp [fullCloneVector, nextVertex, afterTip,
+          hnextlarge, hsklarge]
       have htarget :
           t * fullCloneVector n t u = t * t ^ u.val := by
         simp [fullCloneVector, hcur]
@@ -121,7 +123,9 @@ theorem fullCloneAction_eigen (n : ℕ) (t : ℝ)
     have htarget :
         t * fullCloneVector n t u =
           t * (t ^ (2 * n + 4) / (t + 1)) := by
-      simp [fullCloneVector, hcur, hlast]
+      change t * (if u.val ≤ n then t ^ u.val else
+        t ^ u.val / (t + 1)) = _
+      rw [if_neg hcur, hlast]
     rw [hac, htarget]
     have hpow :
         t * t ^ (2 * n + 4) = t ^ (2 * n + 5) := by
