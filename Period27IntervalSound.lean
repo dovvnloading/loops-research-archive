@@ -365,6 +365,129 @@ theorem signed_mul_sound_for_fractions
   · change (na * nb) * scale ≤ (- ((-U) / scale)) * (da * db)
     exact hupper
 
+
+/-- The zero-crossing-aware squaring algorithm encloses the square of
+    ANY rational input n/d whose endpoints are in a signed grid interval.
+    A rational is represented directly by integer cross-products;
+    no rounding assumption on its numerator or denominator is made. -/
+theorem signed_square_sound_for_fractions
+    (scale : Int) (hscale : 0 < scale)
+    (a : Bounds) (n d : Int)
+    (ha : FractionEnclosed scale a n d) :
+    FractionEnclosed scale (squareBoundsAt scale a) (n * n) (d * d) := by
+  rcases ha with ⟨hd, hlo, hhi⟩
+  let L : Int :=
+    if a.lo ≤ 0 ∧ 0 ≤ a.hi then 0
+    else min (a.lo * a.lo) (a.hi * a.hi)
+  let U : Int := max (a.lo * a.lo) (a.hi * a.hi)
+  have hden : 0 ≤ d * d := Int.mul_nonneg (by omega) (by omega)
+  have hroundlow : (L / scale) * scale ≤ L :=
+    signed_floor_rounds_outward L scale hscale
+  have hroundup : U ≤ (- ((-U) / scale)) * scale :=
+    signed_ceil_rounds_outward U scale hscale
+  have hsquare := integer_square_between_endpoints
+    (a.lo * d) (a.hi * d) (n * scale) hlo hhi
+  have hmainlower :
+      ((L / scale) * scale) * (d * d) ≤
+        (n * scale) * (n * scale) := by
+    by_cases hcross : a.lo ≤ 0 ∧ 0 ≤ a.hi
+    · have hz : 0 ≤ (n * scale) * (n * scale) := by
+        by_cases hp : 0 ≤ n * scale
+        · exact Int.mul_nonneg hp hp
+        · exact Int.mul_nonneg_of_nonpos_of_nonpos
+            (by omega) (by omega)
+      have hL : L = 0 := by simp only [L, hcross, ↓reduceIte]
+      have hlow0 : (L / scale) * scale ≤ 0 := by
+        simpa only [hL] using hroundlow
+      exact Int.le_trans
+        (Int.mul_le_mul_of_nonneg_right hlow0 hden)
+        (by simpa using hz)
+    · have hcscaled : ¬ (a.lo * d ≤ 0 ∧ 0 ≤ a.hi * d) := by
+        intro hc
+        have hl : a.lo ≤ 0 :=
+          Int.nonpos_of_mul_nonpos_left hc.1 hd
+        have hh : 0 ≤ a.hi :=
+          Int.nonneg_of_mul_nonneg_left hc.2 hd
+        exact hcross ⟨hl, hh⟩
+      have hsqscaled :
+          min ((a.lo * d) * (a.lo * d))
+              ((a.hi * d) * (a.hi * d)) ≤
+            (n * scale) * (n * scale) := by
+        simpa only [hcscaled, ↓reduceIte] using hsquare.1
+      have hLmin : L = min (a.lo * a.lo) (a.hi * a.hi) := by
+        simp only [L, hcross, ↓reduceIte]
+      have hL1 : ((L / scale) * scale) ≤ a.lo * a.lo :=
+        Int.le_trans hroundlow (by
+          rw [hLmin]
+          exact Int.min_le_left ..)
+      have hL2 : ((L / scale) * scale) ≤ a.hi * a.hi :=
+        Int.le_trans hroundlow (by
+          rw [hLmin]
+          exact Int.min_le_right ..)
+      have hC1 :
+          ((L / scale) * scale) * (d * d) ≤
+            (a.lo * d) * (a.lo * d) := by
+        calc
+          _ ≤ (a.lo * a.lo) * (d * d) :=
+            Int.mul_le_mul_of_nonneg_right hL1 hden
+          _ = (a.lo * d) * (a.lo * d) := by ac_rfl
+      have hC2 :
+          ((L / scale) * scale) * (d * d) ≤
+            (a.hi * d) * (a.hi * d) := by
+        calc
+          _ ≤ (a.hi * a.hi) * (d * d) :=
+            Int.mul_le_mul_of_nonneg_right hL2 hden
+          _ = (a.hi * d) * (a.hi * d) := by ac_rfl
+      exact Int.le_trans (Int.le_min.mpr ⟨hC1, hC2⟩) hsqscaled
+  have hmainupper :
+      (n * scale) * (n * scale) ≤
+        ((- ((-U) / scale)) * scale) * (d * d) := by
+    have hU1 : a.lo * a.lo ≤ U := Int.le_max_left ..
+    have hU2 : a.hi * a.hi ≤ U := Int.le_max_right ..
+    have hC1 :
+        (a.lo * d) * (a.lo * d) ≤
+          ((- ((-U) / scale)) * scale) * (d * d) := by
+      calc
+        _ = (a.lo * a.lo) * (d * d) := by ac_rfl
+        _ ≤ U * (d * d) :=
+          Int.mul_le_mul_of_nonneg_right hU1 hden
+        _ ≤ ((- ((-U) / scale)) * scale) * (d * d) :=
+          Int.mul_le_mul_of_nonneg_right hroundup hden
+    have hC2 :
+        (a.hi * d) * (a.hi * d) ≤
+          ((- ((-U) / scale)) * scale) * (d * d) := by
+      calc
+        _ = (a.hi * a.hi) * (d * d) := by ac_rfl
+        _ ≤ U * (d * d) :=
+          Int.mul_le_mul_of_nonneg_right hU2 hden
+        _ ≤ ((- ((-U) / scale)) * scale) * (d * d) :=
+          Int.mul_le_mul_of_nonneg_right hroundup hden
+    exact Int.le_trans hsquare.2 (Int.max_le.mpr ⟨hC1, hC2⟩)
+  have hfraclower :
+      (L / scale) * (d * d) ≤ (n * n) * scale := by
+    apply Int.le_of_mul_le_mul_right (by
+      calc
+        ((L / scale) * (d * d)) * scale =
+          ((L / scale) * scale) * (d * d) := by ac_rfl
+        _ ≤ (n * scale) * (n * scale) := hmainlower
+        _ = ((n * n) * scale) * scale := by ac_rfl) hscale
+  have hfracupper :
+      (n * n) * scale ≤ (- ((-U) / scale)) * (d * d) := by
+    apply Int.le_of_mul_le_mul_right (by
+      calc
+        ((n * n) * scale) * scale =
+            (n * scale) * (n * scale) := by ac_rfl
+        _ ≤ ((- ((-U) / scale)) * scale) * (d * d) := hmainupper
+        _ = ((- ((-U) / scale)) * (d * d)) * scale := by ac_rfl) hscale
+  dsimp only [FractionEnclosed]
+  constructor
+  · exact Int.mul_pos hd hd
+  constructor
+  · change (L / scale) * (d * d) ≤ (n * n) * scale
+    exact hfraclower
+  · change (n * n) * scale ≤ (- ((-U) / scale)) * (d * d)
+    exact hfracupper
+
 /-- Multiplication by two is sound on arbitrary rational inputs. -/
 theorem signed_double_sound_for_fractions
     (scale : Int) (a : Bounds)
@@ -387,6 +510,7 @@ theorem signed_double_sound_for_fractions
 #print axioms integer_product_between_four_corners
 #print axioms signed_add_sound_for_fractions
 #print axioms signed_mul_sound_for_fractions
+#print axioms signed_square_sound_for_fractions
 #print axioms signed_double_sound_for_fractions
 #print axioms signed_multiplication_rounding_sound_on_grid
 
