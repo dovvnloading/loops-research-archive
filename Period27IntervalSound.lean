@@ -396,7 +396,7 @@ theorem signed_square_sound_for_fractions
         · exact Int.mul_nonneg hp hp
         · exact Int.mul_nonneg_of_nonpos_of_nonpos
             (by omega) (by omega)
-      have hL : L = 0 := by simp only [L, hcross, ↓reduceIte]
+      have hL : L = 0 := by simp [L, hcross]
       have hlow0 : (L / scale) * scale ≤ 0 := by
         simpa only [hL] using hroundlow
       exact Int.le_trans
