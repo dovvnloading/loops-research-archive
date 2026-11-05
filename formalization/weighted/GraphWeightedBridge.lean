@@ -1,5 +1,5 @@
 import WeightedReturn
-import ReturnBlocks
+import ReturnPaths
 
 /-!
 # Kernel bridge from the graph's counted return paths to weighted matrices
