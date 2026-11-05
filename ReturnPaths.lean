@@ -46,13 +46,15 @@ private theorem same_next_to_f (n : Nat) {u v w : Vertex n} {k : Nat}
     (pv : FirstReturn n (secondGate n) k v)
     (pw : FirstReturn n (secondGate n) k w) : v = w := by
   have hv : v.val < n + 3 := by
-    by_contra hn
-    have hge : n + 3 ≤ v.val := by omega
-    exact cannot_return_to_f_after_f n pv hge
+    by_cases hlt : v.val < n + 3
+    · exact hlt
+    · have hge : n + 3 ≤ v.val := by omega
+      exact False.elim (cannot_return_to_f_after_f n pv hge)
   have hw : w.val < n + 3 := by
-    by_contra hn
-    have hge : n + 3 ≤ w.val := by omega
-    exact cannot_return_to_f_after_f n pw hge
+    by_cases hlt : w.val < n + 3
+    · exact hlt
+    · have hge : n + 3 ≤ w.val := by omega
+      exact False.elim (cannot_return_to_f_after_f n pw hge)
   have phv := first_to_f_length_support n pv hv
   have phw := first_to_f_length_support n pw hw
   apply Fin.ext
@@ -64,13 +66,15 @@ private theorem same_next_to_e (n : Nat) {u v w : Vertex n} {k : Nat}
     (pv : FirstReturn n (hub n) k v)
     (pw : FirstReturn n (hub n) k w) : v = w := by
   have hv : n + 3 ≤ v.val := by
-    by_contra hn
-    have hlt : v.val < n + 3 := by omega
-    exact cannot_return_to_e_before_f n pv hlt
+    by_cases hge : n + 3 ≤ v.val
+    · exact hge
+    · have hlt : v.val < n + 3 := by omega
+      exact False.elim (cannot_return_to_e_before_f n pv hlt)
   have hw : n + 3 ≤ w.val := by
-    by_contra hn
-    have hlt : w.val < n + 3 := by omega
-    exact cannot_return_to_e_before_f n pw hlt
+    by_cases hge : n + 3 ≤ w.val
+    · exact hge
+    · have hlt : w.val < n + 3 := by omega
+      exact False.elim (cannot_return_to_e_before_f n pw hlt)
   apply Fin.ext
   dsimp [Edge, size] at h h'
   omega
@@ -111,29 +115,32 @@ theorem returnPaths_subsingleton (n : Nat) (target : Vertex n)
 
 /-- Exactly one short e-to-f first return for every n. -/
 theorem unique_e_to_f_short (n : Nat) :
-    ∃! p : ReturnPath n (secondGate n) (n + 2) (hub n), True := by
+    ∃ p : ReturnPath n (secondGate n) (n + 2) (hub n),
+      ∀ q : ReturnPath n (secondGate n) (n + 2) (hub n), q = p := by
   obtain ⟨p⟩ := returnPath_nonempty_of_prop
     (e_to_f_short_first_return_exists n)
-  refine ⟨p, trivial, ?_⟩
-  intro q _
+  refine ⟨p, ?_⟩
+  intro q
   exact returnPaths_subsingleton n (secondGate n) (Or.inr rfl) q p
 
 /-- Exactly one long e-to-f first return for every n. -/
 theorem unique_e_to_f_long (n : Nat) :
-    ∃! p : ReturnPath n (secondGate n) (n + 3) (hub n), True := by
+    ∃ p : ReturnPath n (secondGate n) (n + 3) (hub n),
+      ∀ q : ReturnPath n (secondGate n) (n + 3) (hub n), q = p := by
   obtain ⟨p⟩ := returnPath_nonempty_of_prop
     (e_to_f_long_first_return_exists n)
-  refine ⟨p, trivial, ?_⟩
-  intro q _
+  refine ⟨p, ?_⟩
+  intro q
   exact returnPaths_subsingleton n (secondGate n) (Or.inr rfl) q p
 
 /-- Exactly one f-to-e first return for every n. -/
 theorem unique_f_to_e (n : Nat) :
-    ∃! p : ReturnPath n (hub n) (n + 2) (secondGate n), True := by
+    ∃ p : ReturnPath n (hub n) (n + 2) (secondGate n),
+      ∀ q : ReturnPath n (hub n) (n + 2) (secondGate n), q = p := by
   obtain ⟨p⟩ := returnPath_nonempty_of_prop
     (f_to_e_first_return_exists n)
-  refine ⟨p, trivial, ?_⟩
-  intro q _
+  refine ⟨p, ?_⟩
+  intro q
   exact returnPaths_subsingleton n (hub n) (Or.inl rfl) q p
 
 /-- Every other e-to-f length has no actual first-return route. -/
