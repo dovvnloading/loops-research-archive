@@ -105,6 +105,39 @@ def test(name: str, Q: np.ndarray, C: np.ndarray, D: np.ndarray) -> None:
     print("  PASS")
 
 
+
+def test_imprimitive_reduction() -> None:
+    """Original and every clone primitive, but two-gate return graph has period two."""
+    # Internal vertices [a,b,c], gate vertices [e,f].
+    # Edges: e->a, e->b, b->a, a->f, f->c, c->e.
+    Q = np.array([[0, 0, 0], [1, 0, 0], [0, 0, 0]], dtype=float)
+    C = np.array([[0, 1], [0, 0], [1, 0]], dtype=float)
+    D = np.array([[1, 1, 0], [0, 0, 1]], dtype=float)
+    ret = returns(Q, C, D)
+    R = sum(ret.values())
+    assert np.array_equal(R, np.array([[0, 2], [1, 0]]))
+    assert np.array_equal(R @ R, 2 * np.eye(2))
+    assert spectral_radius(R) == np.sqrt(2.0) or np.isclose(
+        spectral_radius(R), np.sqrt(2.0), rtol=1e-14
+    )
+
+    # Boolean reachability; positivity of some adjacency power certifies primitivity.
+    # Clone periods are consecutive (2*n+4, 2*n+5), so all n are primitive.
+    # Check a finite subset by independent matrix multiplication.
+    for n in range(5):
+        M = clone_matrix(Q, C, D, n)
+        reachable = M.copy()
+        exponent = None
+        for power in range(1, 201):
+            if np.all(reachable > 0):
+                exponent = power
+                break
+            reachable = (reachable @ M > 0).astype(float)
+        assert exponent is not None, ("clone did not pass primitive test", n)
+        print(f"  PRIMITIVITY n={n}: positive adjacency power {exponent}")
+
+    test("primitive clones, period-two reduced return graph", Q, C, D)
+
 def main() -> None:
     Q = np.array([[0, 1], [0, 0]], dtype=float)
     C = np.array([[1], [1]], dtype=float)
@@ -124,6 +157,7 @@ def main() -> None:
     C = np.array([[1, 1], [1, 0]], dtype=float)
     D = np.array([[1, 1], [1, 0]], dtype=float)
     test("two-gate", Q, C, D)
+    test_imprimitive_reduction()
     print("ALL CHECKS PASSED")
 
 
