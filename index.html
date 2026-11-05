@@ -3,347 +3,255 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#f9f8f5">
+  <meta name="theme-color" content="#171d1a">
   <meta name="author" content="Matthew Robert Wesney">
-  <meta name="description" content="A source-locked research archive on Mandelbrot local connectivity, marked-width renormalization, three companion papers, exact two-scale quadratic dynamics, Lean formal proofs and an auditable 465-entry proof ledger. MLC remains open.">
+  <meta name="description" content="Marked Width: primary papers, exact renormalization examples, Lean verification, and the open proof obligations in a source-locked research program on Mandelbrot local connectivity.">
   <meta name="robots" content="index,follow">
-  <title>Marked Width | Mandelbrot Local Connectivity Research Archive</title>
+  <title>Marked Width — Notes on Mandelbrot Local Connectivity</title>
   <link rel="canonical" href="https://dovvnloading.github.io/loops-research-archive/">
   <link rel="icon" href="./favicon.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="./site-v2.css">
+  <link rel="stylesheet" href="./site-v2.css?v=20261105-2">
   <script src="./site-v2.js" defer></script>
   <meta property="og:type" content="website">
-  <meta property="og:title" content="Marked Width | Mandelbrot Local Connectivity Research Archive">
-  <meta property="og:description" content="Formalized finite results, research papers, exact quadratic-like returns and open proof gates toward MLC.">
+  <meta property="og:title" content="Marked Width — Notes on Mandelbrot Local Connectivity">
+  <meta property="og:description" content="An independent mathematical research archive: papers, exact quadratic dynamics, Lean formalization, and open analytic questions. MLC remains open.">
   <meta property="og:url" content="https://dovvnloading.github.io/loops-research-archive/">
   <meta property="og:image" content="https://dovvnloading.github.io/loops-research-archive/figs/m_overview.png">
 </head>
 <body>
-  <a class="skip-link" href="#main">Skip to content</a>
-  <header class="site-header">
-    <div class="container header-inner">
-      <a class="brand" href="#top" aria-label="Marked Width homepage"><span class="brand-mark" aria-hidden="true"></span>Marked Width</a>
-      <nav class="header-nav" aria-label="Main navigation">
-        <a href="#papers">Papers</a>
-        <a href="#results">Results</a>
-        <a href="#formal">Lean proofs</a>
-        <a href="#ledger">Proof ledger</a>
-        <a href="#frontier">Open frontier</a>
-        <a class="nav-action" href="https://github.com/dovvnloading/loops-research-archive">GitHub</a>
-      </nav>
-    </div>
-  </header>
-  <div class="status-strip">
-    <div class="container">
-      <span><strong>MLC remains open.</strong> A conditional reduction and source-audited finite results, not a solution to the conjecture.</span>
-      <span>Ledger source lock: 2026-07-27 · Research updates: 2026-11-05</span>
+<a class="skip-link" href="#main">Skip to the research</a>
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="identity" href="#top"><span class="identity-wordmark">Marked Width</span><span class="identity-dash">Independent research archive / math.DS</span></a>
+    <nav class="main-nav" aria-label="Primary navigation">
+      <a href="#papers">Papers</a>
+      <a href="#model">The 27-cycle</a>
+      <a href="#formal">Formal proof</a>
+      <a href="#ledger">Ledger</a>
+      <a href="#problems">Open problems</a>
+      <a class="nav-repo" href="https://github.com/dovvnloading/loops-research-archive">Repository ↗</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+<section class="hero" id="top" aria-labelledby="page-title">
+  <div class="wrap hero-inner">
+    <div class="eyebrow">Research archive &nbsp; / &nbsp; Complex dynamics &nbsp; / &nbsp; 2026</div>
+    <h1 class="hero-heading" id="page-title">On the <em>local</em><br>connectivity<br>of Mandelbrot.</h1>
+    <div class="hero-side">
+      <p class="hero-lede">A marked-width approach to quadratic renormalization: what has been established, what the calculations actually certify, and the analytic gaps that remain.</p>
+      <p class="hero-meta"><span>Matthew Robert Wesney</span><br>Research direction, authorship and stewardship<br><br>Source record: 27 July 2026<br>Working notes: 05 November 2026</p>
     </div>
   </div>
+  <div class="photo-stage">
+    <figure class="frame">
+      <span class="frame-label">Figure 01 / Parameter geometry</span>
+      <img src="./figs/m_overview.png" alt="Computed view of the Mandelbrot set and its intricate connected boundary" width="1200" height="750" fetchpriority="high">
+      <figcaption class="frame-caption">
+        <span>Mandelbrot set — parameter-plane computation</span>
+        <span>Visual study · not proof of local connectivity</span>
+      </figcaption>
+    </figure>
+  </div>
+  <div class="wrap hero-footline"><span>An open mathematical program</span><span>Three papers · 465 recorded obligations · two formal Lean modules</span></div>
+</section>
 
-  <main id="main">
-    <section class="hero" id="top">
-      <div class="container">
-        <div class="hero-grid">
-          <div class="hero-copy">
-            <span class="eyebrow">Mathematical research archive · Complex dynamics</span>
-            <h1>Connecting the geometry of renormalization.</h1>
-            <p class="lead">An open research program studying whether carefully marked geometric transitions can help bridge renormalization, extremal width, compactness and rigidity in the Mandelbrot local connectivity problem.</p>
-            <p class="author">Research direction, authorship and public stewardship: <strong>Matthew Robert Wesney</strong></p>
-            <div class="hero-actions">
-              <a class="btn" href="./marked_width_mlc_manuscript.pdf">Read the main manuscript</a>
-              <a class="btn btn--outline" href="#ledger">Explore 465 proof obligations</a>
-            </div>
-          </div>
-          <figure class="hero-visual">
-            <img src="./figs/m_overview.png" width="900" height="900" alt="Computational illustration of the Mandelbrot set in the complex parameter plane" fetchpriority="high">
-            <figcaption>Computational visual atlas · Illustration only, not evidence for an analytic theorem. <a href="#figures">More figures</a></figcaption>
-          </figure>
-        </div>
-        <div class="metrics" aria-label="Research archive snapshot">
-          <div class="metric"><b>465</b><span>Source-locked proof obligations</span></div>
-          <div class="metric"><b>3</b><span>Companion research papers</span></div>
-          <div class="metric"><b>27</b><span>Certified critical orbit period</span></div>
-          <div class="metric"><b>3 / 9</b><span>Nested quadratic-like return times</span></div>
-        </div>
+<section class="section" id="position" aria-labelledby="position-title">
+  <div class="wrap">
+    <div class="section-label"><div class="section-no">01 / Position</div><h2 class="display" id="position-title">The conjecture is <em>not</em> solved.</h2></div>
+    <div class="editorial-grid">
+      <div class="main-column prose">
+        <p>Local connectivity of the Mandelbrot set remains one of the central open problems in holomorphic dynamics. This archive develops a conditional reduction through marked geometric transitions, together with structural obstructions, explicit quadratic examples, and machine-checked finite calculations.</p>
+        <p>The distinction between a statement, a reduction, and a proof of the required hypotheses matters throughout. Our papers establish particular interfaces. They do not supply the uniform all-parameter compactness and rigidity needed to establish MLC.</p>
       </div>
-    </section>
+      <aside class="side-column marginalia">
+        <strong>Statement of scope</strong>
+        <span class="marker open">MLC / Open</span>
+        <p>Classical theorems are cited as imported. Internal theorems are evaluated under their written assumptions. Source-locked numerical and formal results carry separate evidence.</p>
+        <p><a href="./marked_width_mlc_manuscript.pdf">The full 225-page manuscript ↗</a></p>
+      </aside>
+    </div>
+    <div class="data-strip" aria-label="Source-locked research inventory">
+      <div><b>465</b><span>Ledger obligations</span></div>
+      <div><b>316</b><span>Internally proved entries</span></div>
+      <div><b>115</b><span>Open entries</span></div>
+      <div><b>34</b><span>Imported results</span></div>
+    </div>
+    <p class="note-line" style="margin-top:17px">Ledger source lock: 2026-07-27. Counts are an inventory, not a percentage of the conjecture resolved. <a href="#ledger">Inspect the entries ↓</a></p>
+  </div>
+</section>
 
-    <section class="section" id="overview" aria-labelledby="overview-title">
-      <div class="container">
-        <div class="section-head">
-          <span class="eyebrow">Purpose and boundaries</span>
-          <h2 id="overview-title">A research program, not a proof announcement.</h2>
-          <p class="lead">The archive combines manuscript arguments, primary-source audits, formal arithmetic, negative examples and explicit open hypotheses. Different evidence types are not interchangeable.</p>
-        </div>
-        <div class="notice">
-          <p><strong>Important:</strong> The Mandelbrot Local Connectivity conjecture is open. The source-locked conditional implication “universal protected-tower compactness and rigidity implies MLC” does not prove its antecedent. Finite quadratic-like constructions and green CI checks do not close the global analytic gates.</p>
-        </div>
-        <div class="grid grid--3" style="margin-top:25px">
-          <article class="card">
-            <div class="card-kicker">Topology</div>
-            <h3>Do not forget sheets</h3>
-            <p>Canonical localization can identify peripheral sheets. The marked state must remember the covering and access data needed for future arguments.</p>
-            <a href="./papers/paper1_canonical_localization/paper1_forced_noninjectivity_sheet_kernel_v1.1_visual.pdf">Paper 1: localization obstruction</a>
-          </article>
-          <article class="card">
-            <div class="card-kicker">Dynamics</div>
-            <h3>Realize finite returns</h3>
-            <p>Construct actual return domains and separated phase images, rather than inferring analytic geometry from symbolic addresses alone.</p>
-            <a href="#results">Examine the finite two-scale testbed</a>
-          </article>
-          <article class="card">
-            <div class="card-kicker">Analysis</div>
-            <h3>Control degeneration</h3>
-            <p>The missing global transition must compare marked data to conformal width, preserve it across scales and obtain genuine rigidity.</p>
-            <a href="#frontier">Read the open proof gates</a>
-          </article>
-        </div>
-      </div>
-    </section>
+<section class="section section--soft" id="papers" aria-labelledby="papers-title">
+  <div class="wrap">
+    <div class="section-label"><div class="section-no">02 / Publications</div><h2 class="display" id="papers-title">Three papers.<br>Three different boundaries.</h2></div>
+    <p class="section-intro">The paper sequence develops topology and dynamical models needed by a marked-width framework. The releases retain their own assumptions, source material, and review status.</p>
+    <div class="doc-list">
+      <a class="doc-row" href="./papers/paper1_canonical_localization/paper1_forced_noninjectivity_sheet_kernel_v1.1_visual.pdf">
+        <span class="doc-index">I</span>
+        <span class="doc-title">Forced noninjectivity<br>at localization seeds</span>
+        <span class="doc-summary">A covering/embedding factorization resolves canonical sheet collisions. Peripheral loops generate an infinite sheet kernel with explicit winding coordinates.</span>
+        <span class="doc-kind"><strong>41 pages</strong>Version 1.1 / PDF ↗</span>
+      </a>
+      <a class="doc-row" href="./papers/paper2_rooted_end_compactification/paper2_direct_decoration_rooted_end_compactification_v1.1_visual.pdf">
+        <span class="doc-index">II</span>
+        <span class="doc-title">The direct-decoration<br>rooted-end compactification</span>
+        <span class="doc-summary">A one-scale planar realization of binary rooted ends, a component quotient, shift dynamics, and protected access under stated geometric hypotheses.</span>
+        <span class="doc-kind"><strong>21 pages</strong>Version 1.1 / PDF ↗</span>
+      </a>
+      <a class="doc-row" href="./papers/paper3_protected_carriers/paper3_draft3_visual.pdf">
+        <span class="doc-index">III</span>
+        <span class="doc-title">Protected planar carriers<br>and separation ledgers</span>
+        <span class="doc-summary">Full-carrier recognition, finite access-preserving routing, exact attachment bookkeeping, and examples of failure or stability under limits.</span>
+        <span class="doc-kind"><strong>74 pages</strong>Draft III / PDF ↗</span>
+      </a>
+    </div>
+    <p class="note-line" style="margin-top:20px">Released manuscripts are unchanged by the November exact-computation and site updates. <a href="https://github.com/dovvnloading/loops-research-archive/blob/main/papers/README.md">Versions, source files, and QA record ↗</a></p>
+  </div>
+</section>
 
-    <section class="section section--tint" id="papers" aria-labelledby="papers-title">
-      <div class="container">
-        <div class="section-head">
-          <span class="eyebrow">Primary manuscripts</span>
-          <h2 id="papers-title">Three companion papers.</h2>
-          <p>The papers establish distinct finite or structural interfaces and retain their original released versions. They are not three steps of a completed proof of MLC.</p>
-        </div>
-        <div class="grid grid--3">
-          <article class="card card--paper">
-            <div class="card-kicker">Paper 01 · Version 1.1 · 41 pages</div>
-            <h3>Forced Noninjectivity and the Sheet Kernel</h3>
-            <p>Shows a canonical localization embedding obstruction at specified primitive seeds, constructs a covering/embedding resolution and identifies peripheral winding data.</p>
-            <div class="card-footer"><a href="./papers/paper1_canonical_localization/paper1_forced_noninjectivity_sheet_kernel_v1.1_visual.pdf">Read Paper 1 (PDF)</a></div>
-          </article>
-          <article class="card card--paper">
-            <div class="card-kicker">Paper 02 · Version 1.1 · 21 pages</div>
-            <h3>Direct-Decoration Rooted-End Compactification</h3>
-            <p>A one-scale dynamical-plane realization of binary rooted ends, component quotients, shift dynamics, stable replacement and protected access results under declared hypotheses.</p>
-            <div class="card-footer"><a href="./papers/paper2_rooted_end_compactification/paper2_direct_decoration_rooted_end_compactification_v1.1_visual.pdf">Read Paper 2 (PDF)</a></div>
-          </article>
-          <article class="card card--paper">
-            <div class="card-kicker">Paper 03 · Draft III · 74 pages</div>
-            <h3>Protected Planar Carriers</h3>
-            <p>Finite full-carrier recognition and access-preserving routing, cohomological attachment ledgers and exact examples showing failures of naive limiting stability.</p>
-            <div class="card-footer"><a href="./papers/paper3_protected_carriers/paper3_draft3_visual.pdf">Read Paper 3 (PDF)</a> · <a href="https://github.com/dovvnloading/loops-research-archive/blob/main/papers/paper3_protected_carriers/QA_REPORT.md">QA audit</a></div>
-          </article>
-        </div>
-        <div class="actions">
-          <a class="btn btn--outline" href="https://github.com/dovvnloading/loops-research-archive/blob/main/papers/README.md">Manuscript versions and sources</a>
-          <a class="btn btn--outline" href="https://github.com/dovvnloading/loops-research-archive/blob/main/RESEARCH_MAP.md">Research dependency map</a>
-        </div>
+<section class="section" id="model" aria-labelledby="model-title">
+  <div class="wrap">
+    <div class="section-label"><div class="section-no">03 / Concrete dynamics</div><h2 class="display" id="model-title">A period-27 center.<br>Two return maps.</h2></div>
+    <p class="section-intro">To test the proposed interfaces against actual dynamics, the November research isolates a superattracting real quadratic center and constructs complex quadratic-like returns at periods three and nine.</p>
+    <div class="theorem-block">
+      <div class="theorem-id">Certified parameter / c*</div>
+      <div class="theorem-body">For <i>f</i><sub>c</sub>(z) = z² + c, the critical point has exact period 27 at a unique real parameter in the certified 2⁻¹²⁸ dyadic bracket.</div>
+    </div>
+    <div class="theorem-block">
+      <div class="theorem-id">Quadratic-like restrictions / degree 2</div>
+      <div class="theorem-body"><span class="equation">f³ : V₃ → D(0, ¼) &nbsp;&nbsp; f⁹ : V₉ → D(0, ¹⁄₃₂)</span>Both are proper degree-two return maps, uniformly for |c − c*| &lt; 2⁻³², under the written analytic argument and exact outward bounds.</div>
+    </div>
+    <div class="theorem-block">
+      <div class="theorem-id">Nesting / Physical phases</div>
+      <div class="theorem-body">The smaller filled Julia set lies inside the larger: <i>K</i>₉ ⊂ <i>K</i>₃. The nine inner phase images are separated and refine the three outer phase images.</div>
+    </div>
+    <figure class="diagram-plain">
+      <img src="./figs/readme/two-scale-return.svg" width="980" height="330" loading="lazy" alt="Schematic of the degree-two period-three and period-nine return maps centered at a period-27 quadratic">
+      <figcaption>Fig. 02 / Exact two-scale construction. Schematic summary of a finite attracting-window result; not a KL puzzle atlas.</figcaption>
+    </figure>
+    <div class="two-up">
+      <div>
+        <h3 class="fine-title">A three-scale kneading match</h3>
+        <p class="fine-copy">The real signed orbit generates the 27-bit word <code>011100100100011011100011011</code>. Twice applying the airplane substitution 0 ↦ 011, 1 ↦ 100 gives the same word; the symbolic twisted shift reproduces all 27 orbit ranks.</p>
+        <p class="fine-copy">The associated candidate angles are exact. Identifying the *actual* parameter component and its necessary prime-end markings is a separate task.</p>
       </div>
-    </section>
-
-    <section class="section" id="results" aria-labelledby="results-title">
-      <div class="container">
-        <div class="section-head">
-          <span class="eyebrow">November 2026 · finite exact model</span>
-          <h2 id="results-title">A certified period-27 quadratic with two complex return scales.</h2>
-          <p>The most recent research uses one explicit real quadratic center as a controlled testbed for renormalization geometry and combinatorial marking.</p>
-        </div>
-        <figure class="diagram">
-          <img src="./figs/readme/two-scale-return.svg" width="980" height="330" alt="Schematic of the period-27 quadratic center, outer degree-two period-3 return and inner degree-two period-9 return">
-          <figcaption>Finite two-scale dynamical diagram. It summarizes the scoped polynomial-like construction; it is not a source-compatible KL puzzle atlas.</figcaption>
-        </figure>
-        <div class="article-stack">
-          <div>
-            <h3>Two proper quadratic-like returns</h3>
-            <p>For the algebraically isolated center <strong>c*</strong>, the critical point has exact period 27. Exact real interval arithmetic verifies periods 3 and 9 of nested restrictive intervals. A separate complex-domain argument certifies the following finite return maps uniformly for a small complex parameter disk:</p>
-            <div class="code-math">f<sub>c</sub>(z) = z² + c<br>f<sub>c</sub>³ : V₃ → D(0,¼)<br>f<sub>c</sub>⁹ : V₉ → D(0,¹⁄₃₂)<br>K₉ ⊂ K₃</div>
-            <p class="small">The source [complex return certificate](./research/independent_audits/complex_two_scale_quadratic_like_certificate_20261105.md) uses Rouché and Riemann–Hurwitz with exact outward-bound computations. The domain construction is not proved by Lean's finite arithmetic module.</p>
-          </div>
-          <div>
-            <h3>Three-scale symbolic matching</h3>
-            <p>Using the classical airplane substitution <strong>0 ↦ 011</strong>, <strong>1 ↦ 100</strong>, the symbolic work finds matching period-3, -9 and -27 kneading data. The actual real signed orbit and independently reconstructed twisted-shift ranks agree at all 27 points.</p>
-            <div class="table-scroll">
-              <table class="data-table">
-                <thead><tr><th>Physical return</th><th>Candidate angle pair</th></tr></thead>
-                <tbody>
-                  <tr><td>f⁹ · angular period 3</td><td>3/7 and 4/7</td></tr>
-                  <tr><td>f³ · angular period 9</td><td>228/511 and 283/511</td></tr>
-                  <tr><td>f · angular period 27</td><td>59914011/134217727 and 74303716/134217727</td></tr>
-                </tbody>
-              </table>
-            </div>
-            <p class="small">This is a combinatorial candidate atlas, <strong>not</strong> a proved parameter-ray landing atlas for the center. See the [source audit](./research/independent_audits/period27_kneading_angle_permutation_source_audit_20261105.md).</p>
-          </div>
-        </div>
-        <div class="notice notice--compact"><p><strong>Restriction:</strong> The center and a certified surrounding parameter disk are attracting, so the ambient filled Julia set has interior and fails Paper 2's separate hypothesis <em>K(f)=J(f)</em>. The parameter rays of the tuned component land at its parabolic <strong>root</strong>, not at an interior center. The precise source-compatible component identity, ray access and sheet transport remain open.</p></div>
-        <div class="actions">
-          <a class="btn" href="https://github.com/dovvnloading/loops-research-archive/blob/main/research/independent_audits/complex_two_scale_quadratic_like_certificate_20261105.md">Two-scale analytic certificate</a>
-          <a class="btn btn--outline" href="./results/period27_symbolic_marking.json">Exact orbit and graph data</a>
-        </div>
-      </div>
-    </section>
-
-    <section class="section section--tint" id="formal" aria-labelledby="formal-title">
-      <div class="container">
-        <div class="section-head">
-          <span class="eyebrow">Machine checked · Lean 4.32.0</span>
-          <h2 id="formal-title">What Lean checks—and what it does not.</h2>
-          <p>Two Lean modules reproduce the exact finite dynamics using the kernel's computation mechanism. The research archive explicitly distinguishes numerical integer facts from the analytic theorems needed to interpret them.</p>
-        </div>
-        <div class="grid grid--2">
-          <article class="card">
-            <div class="card-kicker">Kernel finite arithmetic</div>
-            <h3>Period27Dyadic.lean</h3>
-            <p>Computes 27 outward signed-dyadic iterates at precision 2⁻¹⁴⁴, opposite strict endpoint signs, a negative parameter derivative, 26 nonzero orbit signs and all 27 strict orbit ranks.</p>
-            <a href="https://github.com/dovvnloading/loops-research-archive/blob/main/Period27Dyadic.lean">View Lean source</a>
-          </article>
-          <article class="card">
-            <div class="card-kicker">Kernel finite combinatorics</div>
-            <h3>Period27Kneading.lean</h3>
-            <p>Checks the airplane tuning word, the primitive angle-doubling cycle, the complete 27-state twisted-shift permutation and a necessary condition for preserving labels under a 9-to-3 phase quotient.</p>
-            <a href="https://github.com/dovvnloading/loops-research-archive/blob/main/Period27Kneading.lean">View Lean source</a>
-          </article>
-        </div>
-        <blockquote><p><strong>Formalization boundary:</strong> The generic real-interval soundness argument and the IVT/MVT existence/uniqueness inference are not yet Lean formalized. Neither are complex ray landing, prime ends, localization-sheet geometry or any universal MLC proof gate. The <a href="https://github.com/dovvnloading/loops-research-archive/blob/main/research/independent_audits/lean_period27_kernel_arithmetic_20261105.md">Lean audit note</a> specifies the trust boundary and exact checks.</p></blockquote>
-        <div class="actions">
-          <a class="btn btn--outline" href="https://github.com/dovvnloading/loops-research-archive/actions/workflows/lean-proofs.yml">Research validation workflow</a>
-          <a class="btn btn--outline" href="https://github.com/dovvnloading/loops-research-archive/issues/15">Open formal analysis gate · Issue #15</a>
-        </div>
-      </div>
-    </section>
-
-    <section class="section" id="ledger" aria-labelledby="ledger-title">
-      <div class="container">
-        <div class="section-head">
-          <span class="eyebrow">Searchable proof inventory · source lock 2026-07-27</span>
-          <h2 id="ledger-title">465 obligations. Every claim has a status.</h2>
-          <p>The source-locked ledger contains <strong>34 imported</strong>, <strong>316 internally proved</strong>, and <strong>115 open</strong> entries. These counts describe a claim inventory, not a percentage of MLC solved. Search the source ledger below; the complete JSON is always available.</p>
-        </div>
-        <figure class="diagram">
-          <img src="./figs/readme/ledger-status.svg" alt="Stacked status chart with 34 imported, 316 proved and 115 open obligations, total 465" width="980" height="264" loading="lazy">
-          <figcaption>July 27, 2026 source-lock snapshot. The updated November research is independently audited without silently changing the ledger counts.</figcaption>
-        </figure>
-        <div class="ledger-controls">
-          <div class="control"><label for="ledger-query">Find a theorem, dependency, or identifier</label><input id="ledger-query" type="search" placeholder="Try H1, RETURN, MLC, rigidity…" autocomplete="off" disabled></div>
-          <div class="control"><label for="ledger-status">Status</label><select id="ledger-status" disabled><option value="all">All obligations</option><option value="open">Open</option><option value="proved">Proved</option><option value="imported">Imported</option></select></div>
-        </div>
-        <div class="ledger-stats"><span id="ledger-result-count" role="status" aria-live="polite">Loading the proof ledger…</span><a href="./ledger.json" download="ledger.json">Download complete JSON</a></div>
-        <p id="ledger-message" class="no-script" hidden>Interactive search is loading.</p>
-        <noscript><p class="notice no-script">JavaScript is optional for the website but required for live ledger filtering. <a href="./ledger.json">Open the complete ledger</a> or <a href="https://github.com/dovvnloading/loops-research-archive/blob/main/ledger.json">browse it on GitHub</a>.</p></noscript>
-        <div id="ledger-results" aria-live="polite" aria-relevant="additions text"></div>
-        <div class="ledger-footer"><button type="button" class="btn btn--outline" id="ledger-more" hidden disabled>Show 20 more</button></div>
-      </div>
-    </section>
-
-    <section class="section section--dark" id="frontier" aria-labelledby="frontier-title">
-      <div class="container">
-        <div class="section-head">
-          <span class="eyebrow">Conjecture frontier</span>
-          <h2 id="frontier-title">The important questions are still open.</h2>
-          <p>The latest exact finite models do not establish the analytic marked-tower construction, quantitative transition estimates, compactness or rigidity needed by the global reduction.</p>
-        </div>
-        <div class="grid grid--2">
-          <article class="card">
-            <div class="row-meta"><span class="tag tag--open">OPEN</span><span class="small">H1 · Construction</span></div>
-            <h3>Build the actual marked carrier</h3>
-            <p>Obtain a source-compatible all-scale dynamical object carrying prime-end accesses, critical/postcritical data, obstacles, localization sheets and correct transition clocks.</p>
-          </article>
-          <article class="card">
-            <div class="row-meta"><span class="tag tag--open">OPEN</span><span class="small">H2 · Calibration</span></div>
-            <h3>Compare to extremal width</h3>
-            <p>Prove uniform quantitative transport estimates on genuinely realized marked surfaces, with controlled errors and without assuming the desired bounds.</p>
-          </article>
-          <article class="card">
-            <div class="row-meta"><span class="tag tag--open">OPEN</span><span class="small">H3 · Coercivity</span></div>
-            <h3>Prevent analytic degeneration</h3>
-            <p>Show that the compactified state excludes invalid degenerations and retains the genuine analytic tower data needed downstream.</p>
-          </article>
-          <article class="card">
-            <div class="row-meta"><span class="tag tag--open">OPEN</span><span class="small">H4 · Rigidity</span></div>
-            <h3>Conclude geometric rigidity</h3>
-            <p>Relate the resulting controlled towers to shrinking parameter neighborhoods and the rigidity conclusion of the reduction.</p>
-          </article>
-        </div>
-        <div class="actions">
-          <a class="btn btn--light" href="https://github.com/dovvnloading/loops-research-archive/issues/12">Issue #12: Ray and sheet atlas</a>
-          <a class="btn btn--light" href="https://github.com/dovvnloading/loops-research-archive/issues/15">Issue #15: Lean interval soundness</a>
-          <a class="btn btn--light" href="https://github.com/dovvnloading/loops-research-archive/blob/main/RESEARCH_MAP.md">Full research map</a>
-        </div>
-      </div>
-    </section>
-
-    <section class="section" id="figures" aria-labelledby="figures-title">
-      <div class="container">
-        <div class="section-head">
-          <span class="eyebrow">Visual research atlas</span>
-          <h2 id="figures-title">See the geometry.</h2>
-          <p>The figures below are reproducible illustrations and exploratory diagnostics. They are not substitutes for proofs.</p>
-        </div>
-        <div class="figure-grid">
-          <figure class="figure-card"><img src="./figs/primitive_airplane.png" alt="Computational rendering of a primitive airplane quadratic Julia set" loading="lazy"><figcaption><strong>Primitive airplane</strong><br>Real-combinatorial reference and dynamical illustration.</figcaption></figure>
-          <figure class="figure-card"><img src="./figs/cascade_window.png" alt="Computational quadratic renormalization cascade illustration" loading="lazy"><figcaption><strong>Renormalization cascade</strong><br>Scale structure in an exploratory parameter-plane window.</figcaption></figure>
-          <figure class="figure-card"><img src="./figs/fig_rays_light.png" alt="Parameter-plane ray and wake illustration" loading="lazy"><figcaption><strong>Rays and wakes</strong><br>Computational context, not a certified ray landing proof.</figcaption></figure>
-        </div>
-        <div class="actions">
-          <a class="btn btn--outline" href="./dossier.html">Open the detailed visual dossier</a>
-          <a class="btn btn--outline" href="./classic.html">View original 2026 interactive site</a>
-        </div>
-      </div>
-    </section>
-
-    <section class="section section--tint" id="resources" aria-labelledby="resources-title">
-      <div class="container">
-        <div class="section-head">
-          <span class="eyebrow">Research and verification</span>
-          <h2 id="resources-title">Go straight to the evidence.</h2>
-          <p>Every interesting result should be read with its exact source hypotheses and recorded proof boundary.</p>
-        </div>
-        <div class="grid grid--2">
-          <div class="list-links">
-            <a href="./marked_width_mlc_manuscript.pdf">Main synthesis manuscript <small>225 pages · conditional global reduction</small></a>
-            <a href="https://github.com/dovvnloading/loops-research-archive/blob/main/RESEARCH_MAP.md">Research map <small>Paper sequence, dependencies and open interfaces</small></a>
-            <a href="https://github.com/dovvnloading/loops-research-archive/blob/main/research/independent_audits/README.md">Independent audit index <small>Source checks, exact programs and first-failure certificates</small></a>
-            <a href="https://github.com/dovvnloading/loops-research-archive/blob/main/CONTRIBUTING.md">Contribution guide <small>Proof repairs, counterexamples and reproducibility standards</small></a>
-          </div>
-          <div class="list-links">
-            <a href="https://github.com/dovvnloading/loops-research-archive/blob/main/research/independent_audits/real_quadratic_3_9_restrictive_certificate_20261105.md">Exact real period-3/9 certificate <small>Signed dyadic orbit and restrictive intervals</small></a>
-            <a href="https://github.com/dovvnloading/loops-research-archive/blob/main/research/independent_audits/complex_two_scale_quadratic_like_certificate_20261105.md">Complex two-scale return certificate <small>Proper degree-two restrictions and their boundaries</small></a>
-            <a href="https://github.com/dovvnloading/loops-research-archive/blob/main/research/independent_audits/period27_kneading_angle_permutation_source_audit_20261105.md">Kneading and permutation audit <small>Source-based exact 27-point correspondence</small></a>
-            <a href="https://github.com/dovvnloading/loops-research-archive/blob/main/research/independent_audits/lean_period27_kernel_arithmetic_20261105.md">Lean kernel verification note <small>Finite exact proof statements and remaining analysis</small></a>
-          </div>
-        </div>
-        <div class="actions"><a class="btn" href="https://github.com/dovvnloading/loops-research-archive">Repository and full research history</a></div>
-      </div>
-    </section>
-  </main>
-
-  <footer class="footer" id="about">
-    <div class="container">
-      <div class="footer-grid">
-        <div>
-          <h2>Marked Width</h2>
-          <p>Independent source-locked research on one-dimensional complex dynamics. Authored, directed and publicly stewarded by <strong>Matthew Robert Wesney</strong>.</p>
-          <p class="small">Substantial AI-assisted work in source comparison, formalization, adversarial tests, computation and writing is acknowledged in the repository. Imported mathematics remains attributable to its original authors. No affiliation or endorsement is implied.</p>
-        </div>
-        <div>
-          <h3>Research</h3>
-          <ul class="footer-links">
-            <li><a href="https://github.com/dovvnloading/loops-research-archive/blob/main/papers/README.md">Papers</a></li>
-            <li><a href="./ledger.json">Proof ledger</a></li>
-            <li><a href="https://github.com/dovvnloading/loops-research-archive/blob/main/RESEARCH_MAP.md">Research map</a></li>
-            <li><a href="./CITATION.cff">Cite this archive</a></li>
-            <li><a href="./LICENSE">CC0 1.0 license</a></li>
-          </ul>
-        </div>
-        <div>
-          <h3>Website</h3>
-          <ul class="footer-links">
-            <li><a href="./classic.html">Original interactive site</a></li>
-            <li><a href="./dossier.html">Research dossier</a></li>
-            <li><a href="https://github.com/dovvnloading/loops-research-archive/blob/main/docs/DEPLOYMENT.md">Deployment notes</a></li>
-            <li><a href="https://github.com/dovvnloading/loops-research-archive">GitHub repository</a></li>
-          </ul>
-        </div>
-      </div>
-      <div class="footer-meta">
-        <span>Manuscript / ledger source lock: 2026-07-27 · Website overview: 2026-11-05</span>
-        <span>MLC remains open · <a href="#top">Back to top</a></span>
+      <div>
+        <h3 class="fine-title">Where the example stops</h3>
+        <p class="fine-copy">The center lies in an attracting hyperbolic component. Thus its ambient filled Julia set has interior and fails Paper 2's hypothesis <i>K(f) = J(f)</i>. The paper-specific hypothesis is distinct from the global ledger gate H3_COERCIVITY.</p>
+        <p class="fine-copy">Periodic *parameter* rays land at the parabolic root of a component, not at this interior superattracting center.</p>
       </div>
     </div>
-  </footer>
+    <div class="disclosure" style="margin-top:42px"><strong>Interpretive boundary</strong>Properness, nesting, and connected little filled Julia sets are obtained from exact numerical interval inequalities together with written Rouché/Riemann–Hurwitz arguments. Those complex-analytic inferences are not formalized in the Lean modules below.</div>
+    <div class="resource-list">
+      <a href="https://github.com/dovvnloading/loops-research-archive/blob/main/research/independent_audits/complex_two_scale_quadratic_like_certificate_20261105.md">Complex return certificate <span>Proof note / analytic hypotheses and numerical margins ↗</span></a>
+      <a href="https://github.com/dovvnloading/loops-research-archive/blob/main/research/independent_audits/period27_kneading_angle_permutation_source_audit_20261105.md">Kneading and orbit-order audit <span>Source interpretation / all 27 ranks ↗</span></a>
+    </div>
+  </div>
+</section>
+
+<section class="section section--soft" id="formal" aria-labelledby="formal-title">
+  <div class="wrap">
+    <div class="section-label"><div class="section-no">04 / Formal methods</div><h2 class="display" id="formal-title">Exactly what<br>the kernel checks.</h2></div>
+    <p class="section-intro">The two Lean 4.32.0 modules certify finite arithmetic and combinatorics from explicit definitions. They do not silently replace analytic theorems or imported source claims.</p>
+    <div class="two-up" style="margin-top:0">
+      <div>
+        <div class="eyebrow">Period27Dyadic.lean</div>
+        <h3 class="fine-title">Integer interval arithmetic</h3>
+        <p class="fine-copy">Recomputes period-27 endpoint enclosures at 2⁻¹⁴⁴ resolution, the strictly negative parameter derivative enclosure, all nonzero critical-orbit signs, and the strict ordering of 27 orbit vertices.</p>
+        <p class="note-line"><a href="https://github.com/dovvnloading/loops-research-archive/blob/main/Period27Dyadic.lean">Inspect the Lean source ↗</a></p>
+      </div>
+      <div>
+        <div class="eyebrow">Period27Kneading.lean</div>
+        <h3 class="fine-title">A complete 27-state comparison</h3>
+        <p class="fine-copy">Verifies the kneading-angle bits, primitive doubling orbit, twice-tuned word, and equality of the 27 symbolic ranks with independently ordered real orbit ranks. A separate logical lemma identifies the information lost by a memoryless 9-to-3 phase quotient.</p>
+        <p class="note-line"><a href="https://github.com/dovvnloading/loops-research-archive/blob/main/Period27Kneading.lean">Inspect the Lean source ↗</a></p>
+      </div>
+    </div>
+    <div class="theorem-block" style="margin-top:42px">
+      <div class="theorem-id">What remains outside the kernel</div>
+      <div class="fine-copy">General real interval-enclosure soundness, IVT/MVT existence and uniqueness, the analytic polynomial-like argument, external-ray landing, and the geometric localization sheet/access atlas. The <a href="https://github.com/dovvnloading/loops-research-archive/blob/main/research/independent_audits/lean_period27_kernel_arithmetic_20261105.md">formalization audit</a> makes this separation explicit.</div>
+    </div>
+    <p class="note-line" style="margin-top:21px">Exact finite proofs use kernel-reduced <code>decide +kernel</code>, not <code>native_decide</code>. <a href="https://github.com/dovvnloading/loops-research-archive/actions/workflows/lean-proofs.yml">View research validation history ↗</a></p>
+  </div>
+</section>
+
+<section class="section" id="ledger" aria-labelledby="ledger-title">
+  <div class="wrap">
+    <div class="section-label"><div class="section-no">05 / Proof record</div><h2 class="display" id="ledger-title">The ledger is<br>not a progress bar.</h2></div>
+    <p class="section-intro">Every source-locked obligation carries an identifier, a status, dependencies, and an evidence reference. Counts give an inventory, not the fraction of MLC resolved.</p>
+    <figure class="diagram-plain">
+      <img src="./figs/readme/ledger-status.svg" width="980" height="264" loading="lazy" alt="465 source-locked obligations: 34 imported, 316 proved, and 115 open">
+      <figcaption>Fig. 03 / Source-lock snapshot dated 27 July 2026. The November work has separate evidence.</figcaption>
+    </figure>
+    <div class="ledger-headerline"><strong>Search the source-locked record</strong><span>34 imported · 316 proved · 115 open</span></div>
+    <div class="ledger-controls">
+      <div class="control"><label for="ledger-query">Claim identifier, dependency, or text</label><input id="ledger-query" type="search" placeholder="e.g. H1, localization, Wave..." autocomplete="off" disabled></div>
+      <div class="control"><label for="ledger-status">Status</label><select id="ledger-status" disabled><option value="all">All statuses</option><option value="open">Open</option><option value="proved">Proved</option><option value="imported">Imported</option></select></div>
+    </div>
+    <div class="ledger-stats"><span id="ledger-result-count" role="status" aria-live="polite">Loading the searchable ledger…</span><a href="./ledger.json" download="ledger.json">Download all 465 entries ↗</a></div>
+    <p id="ledger-message" class="fallback-call" hidden>Interactive search is temporarily unavailable. Use the complete JSON ledger.</p>
+    <noscript><p class="fallback-call">JavaScript is only needed for search. <a href="./ledger.json">Read the full static proof ledger ↗</a></p></noscript>
+    <div id="ledger-results" aria-live="polite" aria-relevant="additions text"></div>
+    <div class="ledger-footer"><button type="button" class="text-button" id="ledger-more" hidden disabled>Show 20 more entries</button></div>
+  </div>
+</section>
+
+<section class="section section--dark" id="problems" aria-labelledby="problems-title">
+  <div class="wrap">
+    <div class="section-label"><div class="section-no">06 / Unfinished work</div><h2 class="display" id="problems-title">The missing<br><em>analytic bridge.</em></h2></div>
+    <p class="section-intro">The source-locked reduction remains conditional on genuine all-scale geometric constructions, width estimates, compactness, and rigidity. The hard hypotheses cannot be inferred from finite examples.</p>
+    <div class="table-scroller">
+      <table class="evidence-table">
+        <thead><tr><th>Gate</th><th>What would have to be proved</th><th>Status</th></tr></thead>
+        <tbody>
+          <tr><td>H1 · Marked construction</td><td>A real source-compatible carrier with all proof-used accesses, obstacles, sheets, and transitions.</td><td><span class="marker">Open</span></td></tr>
+          <tr><td>H2 · Calibration</td><td>Quantitative comparison between the marked state and the analytic source extremal widths.</td><td><span class="marker">Open</span></td></tr>
+          <tr><td>H3 · Coercivity</td><td>A mechanism that prevents analytic degeneration of the compactified marked state.</td><td><span class="marker">Open</span></td></tr>
+          <tr><td>H4 · Rigidity</td><td>The limiting rigidity needed to deduce shrinking parameter neighborhoods.</td><td><span class="marker">Open</span></td></tr>
+          <tr><td>Universal protected-tower closure</td><td>Uniform all-parameter construction, analytic control, and rigidity in the admitted regimes.</td><td><span class="marker">Open</span></td></tr>
+          <tr><td>UPTCR ⇒ MLC</td><td>The terminal implication assuming the universal package.</td><td><span class="marker">Conditional implication proved</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <ol class="issue-list">
+      <li><span class="issue-number">ISSUE 12</span><div><a href="https://github.com/dovvnloading/loops-research-archive/issues/12">Identify the component root rays and the 9-to-3 access/sheet atlas ↗</a><p>The exact symbolic matching is not yet a KL geometric marking theorem on the same dynamical germ.</p></div></li>
+      <li><span class="issue-number">ISSUE 15</span><div><a href="https://github.com/dovvnloading/loops-research-archive/issues/15">Formalize dyadic interval soundness and the period-27 root theorem ↗</a><p>Extend the kernel's finite arithmetic into the real-analytic existence and uniqueness argument, without additional axioms.</p></div></li>
+    </ol>
+  </div>
+</section>
+
+<section class="section" id="archive" aria-labelledby="archive-title">
+  <div class="wrap">
+    <div class="section-label"><div class="section-no">07 / Archive and provenance</div><h2 class="display" id="archive-title">The documents<br>are the work.</h2></div>
+    <p class="section-intro">Start with the mathematical record. Computed figures are illustrations; proof depends on hypotheses, sources, and reproducible verification.</p>
+    <div class="figure-set">
+      <figure><img src="./figs/primitive_airplane.png" loading="lazy" alt="Computational rendering of a primitive airplane quadratic Julia set"><figcaption>Fig. 04 / The primitive airplane · visualization, not a landing certificate</figcaption></figure>
+      <figure><img src="./figs/fig_rays_light.png" loading="lazy" alt="Computational visualization of parameter rays and wakes"><figcaption>Fig. 05 / Rays and wakes · exploratory parameter-plane geometry</figcaption></figure>
+    </div>
+    <div class="resource-list">
+      <a href="./marked_width_mlc_manuscript.pdf">Main manuscript<span>225 pages / conditional reduction / PDF ↗</span></a>
+      <a href="https://github.com/dovvnloading/loops-research-archive/blob/main/RESEARCH_MAP.md">Research map<span>The dependency spine and reading routes ↗</span></a>
+      <a href="https://github.com/dovvnloading/loops-research-archive/blob/main/research/independent_audits/README.md">Independent audits<span>Primary source checks, certificates, first failures ↗</span></a>
+      <a href="./results/period27_symbolic_marking.json">Exact 27-orbit data<span>Machine-readable interval Markov graph / JSON ↗</span></a>
+      <a href="./dossier.html">Visual dossier<span>Exploratory computational plates and historical analysis ↗</span></a>
+      <a href="./classic.html">Previous site edition<span>Preserved interactive archive; uses third-party runtime ↗</span></a>
+      <a href="https://github.com/dovvnloading/loops-research-archive/blob/main/CONTRIBUTING.md">Contribute or challenge a claim<span>Theorem-specific source corrections and counterexamples ↗</span></a>
+      <a href="https://github.com/dovvnloading/loops-research-archive/blob/main/docs/DEPLOYMENT.md">Website provenance<span>Static publishing, testing, and recovery ↗</span></a>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer class="site-footer" id="about">
+  <div class="wrap">
+    <div class="footer-inner">
+      <div><div class="footer-title">Marked Width.</div><p>An independent research archive directed, authored, and stewarded by Matthew Robert Wesney. The research records substantial AI assistance with source comparison, formalization, testing, and writing. Imported theorems retain their original attribution; no external researcher affiliation or endorsement is implied.</p></div>
+      <div><h3>Sources</h3><ul><li><a href="https://github.com/dovvnloading/loops-research-archive">Repository</a></li><li><a href="https://github.com/dovvnloading/loops-research-archive/blob/main/papers/README.md">Paper index</a></li><li><a href="./ledger.json">Proof ledger</a></li><li><a href="./CITATION.cff">Citation</a></li></ul></div>
+      <div><h3>Reproduce</h3><ul><li><a href="https://github.com/dovvnloading/loops-research-archive/actions/workflows/lean-proofs.yml">Lean + research CI</a></li><li><a href="https://github.com/dovvnloading/loops-research-archive/actions/workflows/site-health.yml">Site health</a></li><li><a href="https://github.com/dovvnloading/loops-research-archive/blob/main/CONTRIBUTING.md">Audit a claim</a></li><li><a href="./LICENSE">License · CC0</a></li></ul></div>
+    </div>
+    <div class="legal"><span>Manuscript + ledger source lock: 2026-07-27 · Working research record: 2026-11-05</span><span>MLC remains open · <a href="#top">Return to top ↑</a></span></div>
+  </div>
+</footer>
 </body>
 </html>
