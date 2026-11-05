@@ -109,12 +109,13 @@ theorem return_to_base_requires_aligned_phase
       phase (tau % p) (iterate f tau x))
     (hreturn : ∃ x : α, root x ∧ B (iterate f tau x)) :
     tau % p = 0 := by
-  by_contra hnonzero
-  have hpos : 0 < tau % p := by omega
-  have hlt : tau % p < p := Nat.mod_lt tau hp
-  obtain ⟨x, hx, hB⟩ := hreturn
-  exact (hseparate (tau % p) hpos hlt
-    (iterate f tau x) (hroute x hx)) hB
+  by_cases hzero : tau % p = 0
+  · exact hzero
+  · have hpos : 0 < tau % p := by omega
+    have hlt : tau % p < p := Nat.mod_lt tau hp
+    obtain ⟨x, hx, hB⟩ := hreturn
+    exact False.elim ((hseparate (tau % p) hpos hlt
+      (iterate f tau x) (hroute x hx)) hB)
 
 /-- Algebraic regression: the deep time n*q need not have the same
     root-cycle phase as the shallow time q. -/
