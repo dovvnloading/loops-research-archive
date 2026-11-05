@@ -33,6 +33,7 @@ The main manuscript integrates all nine stages and states the hypotheses consume
 - [`papers/paper1_canonical_localization/`](./papers/paper1_canonical_localization/): Paper 1 PDF, LaTeX source, extracted theorem packets, certificates, and assembly tooling.
 - [`papers/paper2_rooted_end_compactification/`](./papers/paper2_rooted_end_compactification/): Paper 2 PDF and LaTeX source.
 - [Paper 2 primary-source realization audit](./research/independent_audits/paper2_decorations_source_realization_20261105.md): checks the Kahn–Lyubich shallow and deep closed-pullback hypotheses, proves the primitive-orbit fixed-point exclusion, and records exactly which dynamical time and root-arrow statements must change in a deeper branch variant; no MLC gate is promoted.
+- [Exact two-level **real** quadratic return certificate](./research/independent_audits/real_quadratic_3_9_restrictive_certificate_20261105.md): uniquely certifies an algebraic critical-period-27 real quadratic with nested period-3/9 restrictive intervals, disjoint physical phase windows and a 9-to-3 phase quotient. An exact dyadic interval program plus a core-Lean phase lemma verify the arithmetic and transport logic. The superattracting center **fails Paper 2 H3**, and no complex renormalization or MLC gate is claimed.
 - [`papers/paper3_protected_carriers/`](./papers/paper3_protected_carriers/): Paper 3 Draft III Visual Edition, modular and assembled source, deterministic build/QA tooling, change record, research assessment, and release audit.
 
 ### 3. Claim-status system
