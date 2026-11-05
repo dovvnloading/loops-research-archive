@@ -1,0 +1,40 @@
+name: Weighted spectral mathlib proofs
+
+on:
+  push:
+    branches:
+      - main
+      - 'research/**'
+    paths:
+      - 'formalization/weighted/**'
+      - '.github/workflows/weighted-lean.yml'
+  pull_request:
+    paths:
+      - 'formalization/weighted/**'
+      - '.github/workflows/weighted-lean.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  mathlib-kernel-check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Reject proof holes or added axioms
+        run: |
+          if grep -En '(^|[^A-Za-z_])(sorry|admit|axiom)([^A-Za-z_]|$)' formalization/weighted/WeightedReturn.lean; then
+            echo 'Proof placeholders and custom axioms are prohibited'
+            exit 1
+          fi
+      - name: Build mathlib-backed return theorem
+        uses: leanprover/lean-action@v1
+        with:
+          lake-package-directory: formalization/weighted
+          auto-config: 'false'
+          build: 'true'
+          test: 'false'
+          lint: 'false'
+          use-github-cache: 'true'
+          use-mathlib-cache: 'true'
