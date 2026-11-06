@@ -189,9 +189,43 @@ Then over any regular interior point \(y\in b\) there are exactly
 \tag{3.5}
 \]
 
-and each of the two target side germs has exactly two source preimages. The old and added counts per target *side* are respectively \(|\mathcal E_b^{\rm old}|\) and \(|\mathcal E_b^{\rm add}|\).
+and each of the two target side germs has exactly two source preimages. If (OLD-STRIP) holds, the full-old and full-added strip counts per target *side* are respectively \(|\mathcal E_b^{\rm old}|\) and \(|\mathcal E_b^{\rm add}|\). Otherwise this is only the **two total sheet germs**, not an old/new boundary split.
 
-**Proof.** Choose a small disk \(D\) at \(y\) meeting \(\mathcal T\) in a single embedded arc, with no critical value and no vertex. Since \(f\) is an unbranched degree-two covering over \(D\), its preimage is the disjoint union of two conformal disks, each mapped biholomorphically to \(D\). The source tree intersects each disk in one lifted arc, with two complementary local sides. A biholomorphism permutes these two sides bijectively. Thus the source supplies exactly four distinct *local Carathéodory side germs* and sends exactly two to each target side. Partitioning the two lifted arcs by old/new membership proves the last assertion. These are access germs, not claims of singleton impressions. \(\square\)
+**Proof.** Choose a small disk \(D\) at \(y\) meeting \(\mathcal T\) in a single embedded arc, with no critical value and no vertex. Since \(f\) is an unbranched degree-two covering over \(D\), its preimage is the disjoint union of two conformal disks, each mapped biholomorphically to \(D\). The source tree intersects each disk in one lifted arc, with two complementary local sides. A biholomorphism permutes these two sides bijectively. Thus the source supplies exactly four distinct *local Carathéodory side germs* and sends exactly two to each target side. Under (OLD-STRIP), partitioning the two lifted arcs by old/new membership gives the last assertion. These are access germs, not claims of singleton impressions. \(\square\)
+
+### Theorem 3.3 (source-defined **one-root** attachment and conditional actual gate-block census)
+
+KKL's *proof of Proposition 6.8* states the **stronger** fact that the components of the **actual** \(\mathcal T'\setminus\mathcal T\) all meet the old tree at **a single point \(x\)** (arXiv:2606.27272v1, §6.1, proof of Proposition 6.8). This is not inferred from the finite words: it is a statement made about the actual trees. In particular,
+
+\[
+\boxed{
+\bigcup_{X\in\pi_0(\mathcal T'\setminus\mathcal T)}
+\overline X\cap\mathcal T=\{x\}
+}
+\tag{3.6}
+\]
+
+when interpreted as the source's common-attachment assertion; individual components are not claimed to have the same **single prime-end access** at \(x\). The assertion is **imported** from the source, not independently reproved here.
+
+For a finite locally connected embedded ribbon-tree realization with \(x\) having a finite **regular collar fan**, each connected added component \(X\) is an attached subtree in an individual complementary sector of that fan. Then the **entire** Carathéodory contribution \(B_X\) occupies a consecutive contour interval, with two *distinct local side gates* \(\gamma_X^-,\gamma_X^+\) bounding it in the split/regular-neighborhood contour. As \(X\) varies, these blocks are recorded in the actual cyclic order of the halfedges at \(x\), **not** in a freely chosen word model.
+
+**Proof (finite regular-fan case).** Take a sufficiently small regular neighborhood \(N(\mathcal T')\) and shrink onto the old tree while retaining the embedded cyclic ordering at \(x\). The boundary of an attached finite tree \(X\) is traversed contiguously upon leaving \(x\) along one side of its attaching halfedge and returning along the other. Since the old and attached trees do not form a cycle, the contour cannot exit to a different old edge in the middle of that traversal. The two boundary gates are different **sided accesses** of the regular-neighborhood contour, even though their planar impressions contain the same point \(x\). The cyclic order is induced by the planar embedding. This is a finite, regular-neighborhood topological proof applied to the **actual embedded tree**, not an arbitrary synthetic automaton. \(\square\)
+
+When the hypotheses (OLD-STRIP) and a complete finite edge decomposition both hold, the **number of added edge strips** over \(b\) is determined from the actual edge map, without a synthetic matrix:
+
+\[
+\nu_b^{\rm add}=2-\sum_a M_{ab},
+\qquad
+\sum_b\nu_b^{\rm add}
+=2|E|-\sum_{a,b}M_{ab}.
+\tag{3.7}
+\]
+
+Equation (3.7) counts **strips**, not the number of attached *components* \(X\), not access endpoints, and not the number of full boundary atoms in \(B_X\). The finite-fan model provides a natural way to group strips by component and cyclic gates, but a global source-defined census still requires doing that grouping in each actual KKL stage.
+
+**Critical type warning:** \(x\) in (3.6) is first a *planar point of the Hubbard tree*. KKL then uses \(\iota^*x\) and tests whether \(x\) lies in a marked interval or at its endpoint. A non-locally-connected actual carrier, or even a branch point of a locally connected tree, can have **multiple different prime-end accesses** at the same planar \(x\). Consequently (3.6) does **not** itself define a unique \(x\in C\). The claim that one well-defined source ideal-boundary \(x\)-access (or connected endpoint fiber) encompasses every relevant \(B_X\) requires an **access selector** justified by the proper-path relation. The first note's critical-gate relation is an accurate statement of the *source's construction*, but extending it to all possible impressions is **not proved** here.
+
+**Non-LC boundary:** neither the finite regular-fan contour proof nor the two-sided gate count is asserted for the actual non-locally-connected lifted carrier without crosscut/access charts. Two gates of a graph are not automatically two prime ends. No finite component count is inferred from the single-point attachment statement.
 
 **What (3.3)–(3.5) do *not* provide:** They do not enumerate the components \(X\in\pi_0(\mathcal T'\setminus\mathcal T)\) at exceptional *vertices*, how their many edge lifts concatenate into the **complete** \(B_X\), which cyclic sector holds \(B_X\), whether two different components share a planar landing point but have distinct prime ends, or the endpoint-only records of (2.3). Those are exactly the remaining attachment-census obligations.
 
@@ -242,7 +276,7 @@ If the target saturates \(C\), it belongs to the separate saturated alternative.
 
 ### Corollary 4.3 (one distinguished critical access gains a genuine long limb image)
 
-Let \(x\) and \(\mathbf J'\) be the **actual** attachment access and source preimage package in the proof of KKL Proposition 6.8, under its nonempty-corridor hypothesis. The source gives
+Let \(x\) and \(\mathbf J'\) be the **actual** attachment point/ideal-boundary access used by the source and source preimage package in the proof of KKL Proposition 6.8, under its nonempty-corridor hypothesis. The source gives
 
 \[
 \mathbf J'\subset\operatorname{Int}\iota^*\{x\},
@@ -258,7 +292,7 @@ p\bigl(\iota^*\{x\}\bigr)\supset \mathbf L_{(\mathbf b,q-\mathbf b)}.
 \tag{4.4}
 \]
 
-If that corridor contains a genuine positive edge-side trace, this **particular** zero-dimensional marked input access \(x\) creates a positive-edge-side image after its source-defined restriction and covering. It is an actual critical-gate escape witness (not a finite model).
+If that corridor contains a genuine positive edge-side trace, this **particular source-selected** zero-dimensional marked access at \(x\) creates a positive-edge-side image after its source-defined restriction and covering. It is an actual critical-gate escape witness (not a finite model).
 
 **Proof.** Apply \(p\) to the two source inclusions stated in KKL's proof of Proposition 6.8. If a positive edge-side lies in the resulting corridor, it belongs to the image. No assumption about a globally continuous quotient, and no uniqueness of the planar impression at \(x\), is used. \(\square\)
 
@@ -319,7 +353,7 @@ This shows precisely where local degree two enters: it provides **real nontrappi
 
 ### First remaining native verification target
 
-At the distinguished point/access \(x\) of the proof of KKL Proposition 6.8, construct the **actual** finite or nonfinite list
+At the distinguished **planar attachment point and to-be-specified ideal access** \(x\) of the proof of KKL Proposition 6.8, construct the **actual** finite or nonfinite list
 
 \[
 \bigl\{(X,\partial_C X,\gamma_X^-,\gamma_X^+,j_X,
