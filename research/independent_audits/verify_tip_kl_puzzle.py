@@ -9,6 +9,12 @@ from __future__ import annotations
 
 from dataclasses import dataclass
 from fractions import Fraction as F
+from verify_real_nested_3_9 import (
+    Interval as GridInterval, ZERO, ONE, UNIT,
+    parameter, orbit_and_derivative,
+)
+from verify_complex_quadratic_like_3_9 import evaluate_bounds
+from verify_tip_complex_domains import U3, SMALL9
 
 TIP_K = -607918036626757496169199575185708826140
 LOW = F(-1786511, 1_000_000)
@@ -102,6 +108,37 @@ def certify() -> dict:
     second_phase_radius = 2 * max_c / 16 + F(1, 256)
     assert orbit[2].lo - second_phase_radius > F(9, 8)
 
+    # Three consecutive IVT inverse branches of g=f^3.
+    # Existence is proved analytically by the strict *exact* signs.
+    assert iterate(exact(1), 3).hi < 0
+    assert iterate(exact(F(17, 16)), 3).lo > 0
+    assert iterate(exact(F(6, 5)), 3).hi < 1
+    assert iterate(exact(F(49, 40)), 3).lo > F(17, 16)
+    assert iterate(exact(F(31, 25)), 3).hi < F(6, 5)
+    assert iterate(exact(F(5, 4)), 3).lo > F(49, 40)
+
+    # The independently audited 2^-224 phase-disk bounds show the
+    # first preimage is outside B3 and the third is outside B9.
+    pl, ph = parameter(TIP_K), parameter(TIP_K + 1)
+    physical = GridInterval(pl.lo, ph.hi)
+    stages, _ = orbit_and_derivative(physical, 18)
+    coefs = [ZERO, ONE]
+    for j in range(1, 9):
+        coefs.append(stages[j] * coefs[j].times(2))
+    bound3 = evaluate_bounds(stages, coefs, U3, 3)
+    bound9 = evaluate_bounds(stages, coefs, SMALL9, 9)
+
+    def misses_all_phase_disks(
+        start: int, upper: int, count: int, bounds
+    ) -> bool:
+        return all(
+            stages[j].hi + bounds.deviation[j] < start
+            or upper < stages[j].lo - bounds.deviation[j]
+            for j in range(count)
+        )
+    assert misses_all_phase_disks(UNIT, 17*UNIT//16, 3, bound3)
+    assert misses_all_phase_disks(31*UNIT//25, 5*UNIT//4, 9, bound9)
+
     # The fact a is outside B9={K9,g3(K9),g3^2(K9)} uses the
     # earlier proved disjointness and cycling of K9 phase components;
     # it is an imported geometric argument, not certified by this code.
@@ -148,7 +185,14 @@ def certify() -> dict:
         "depths_P_V0_Q": [1, 3, 3],
         "vertex_real_bracket_t": ["5/16", "7/16"],
         "outer_g3_fixed_a_bracket": ["1/16", "1/8"],
-        "extra_preimage_r_bracket": ["1", "9/8"],
+        "extra_preimage_r_bracket": ["1", "17/16"],
+        "extra_preimage_nested_three_brackets": [
+            ["1", "17/16"], ["6/5", "49/40"], ["31/25", "5/4"]
+        ],
+        "phase_disk_avoidance": {
+            "f3_inverse_component": "all three f^j(V3) avoid (1,17/16)",
+            "f9_inverse_component": "all nine f^j(V9) avoid (31/25,5/4)"
+        },
         "source_angular_pairs": {k:[str(x) for x in v] for k,v in rays.items()},
         "scope": "Exact rational inequalities and angular routing; actual landing/puzzle topology, KL localization and interscale naturality require separately named analytic inputs",
     }
