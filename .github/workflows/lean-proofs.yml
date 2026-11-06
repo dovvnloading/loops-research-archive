@@ -126,6 +126,8 @@ jobs:
         run: python research/independent_audits/verify_period27_symbolic_atlas.py --check-manifest
       - name: Compare real period-27 kneading angle and twisted-shift permutation
         run: python research/independent_audits/verify_period27_kneading_angle_permutation.py
+      - name: Check physical exterior 9-to-3 dyadic inverse-ray addresses and trace scaling
+        run: python research/independent_audits/verify_period27_exterior_pullback.py
       - name: Check finite Dirichlet-to-Neumann gluing
         run: python research/independent_audits/verify_rectangle_response.py
       - name: Check Paper 2 geometric source and return-time patch structure
