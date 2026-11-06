@@ -75,44 +75,46 @@ Conversely, any two protected prime ends mapping to the same carrier prime end h
 
 **No false landing assumption:** The proof works entirely with nested **prime-end shadows** and their compact impressions. It never asks that \(\operatorname{Imp}(a)\) be a singleton. It is therefore a genuine piece of the **nonlocally connected native geometry**, unlike a finite regular-star approximation.
 
-## 3. Real holomorphic access dynamics on the protected subset
+## 3. A **typed** commutation theorem for genuine covering pullbacks
 
-Choose an actual cycle arrow \(f:K_{i-1}\to K_i\), interpreted in the relevant source and target quadratic-like neighborhoods. Assume, as must be checked for that precise stage, that \(f^{-1}(K_i)\) has a distinguished full component \(K_{i-1}\) and that there are Jordan neighborhoods \(W_{i-1}\) and \(W_i\) on which
+For the actual KKL holomorphic covering \(f:V'=\mathcal U'\setminus\mathcal T'\to V=\mathcal U\setminus\mathcal T\), use **different source and target pairs**. This typing matters: the source is \(\mathcal T'=f^{-1}(\mathcal T)\), not the old \(\mathcal T\), even though \(\iota\) identifies the old tree with a subtree near \(\mathfrak K\).
+
+Take an actual source full continuum \(K_s\subset\mathcal T'\) and actual target full continuum \(K_t\subset\mathcal T\), with \(f(K_s)=K_t\). Assume source and target Jordan neighborhoods \(W_s\subset\mathcal U'\), \(W_t\subset\mathcal U\) have been chosen so that
 
 \[
-f:W_{i-1}\setminus K_{i-1}\longrightarrow W_i\setminus K_i
+f:W_s\setminus K_s\longrightarrow W_t\setminus K_t
 \tag{3.1}
 \]
 
-is a proper unbranched covering of degree \(d_i\in\{1,2\}\). The critical step containing \(c\in K_0\) is the candidate \(d_1=2\); all other actual one-step cycle arrows have \(d_i=1\). The **existence of the specified component, neighborhoods, and covering degree is part of the geometric hypothesis**, not a conclusion drawn merely from a graph label.
+is a **proper unbranched covering** of degree \(d\in\{1,2\}\). At a noncritical small-Julia cycle step \(d=1\) is the natural case, and at the critical step containing \(c\in K_0\) a degree-two component is the relevant candidate; *the actual selected component and neighborhood hypotheses must be verified before invoking this proposition*.
 
-The covering induces a genuine prime-end covering
+Apply Theorem 2.1 **twice**, to the nested **source** pair \((K_s,\mathcal T')\) and the nested **target** pair \((K_t,\mathcal T)\). This produces protected external-access sets \(\mathsf P_s,\mathsf P_t\) and actual embeddings
 
 \[
-p_i^{\mathrm{loc}}:
-\partial_C K_{i-1}\longrightarrow \partial_C K_i
+\tau_s:\mathsf P_s\to \partial_C^{\rm in}(\mathcal U'\setminus\mathcal T'),
+\qquad
+\tau_t:\mathsf P_t\to \partial_C^{\rm in}(\mathcal U\setminus\mathcal T).
 \tag{3.2}
 \]
 
-with local degree \(d_i\), regardless of local connectivity or impression size.
+The local small-Julia covering induces \(p_{\rm loc}:\partial_CK_s\to\partial_CK_t\). The **global carrier complement** covering induces \(p_T=f_*:\partial_C\mathcal T'\to\partial_C\mathcal T\), where the boundary circles/covering extensions must be the actual KKL ones.
 
-### Proposition 3.1 (commutation on actually protected access charts)
+### Proposition 3.1 (source-to-target protected access square)
 
-Let \(a\in\mathsf P_{i-1}\) be a source small-Julia prime end such that \(p_i^{\mathrm{loc}}(a)\in\mathsf P_i\). On a sufficiently small source prime-end interval \(J\) about \(a\), suppose the same holomorphic \(f\) maps the relevant old-carrier complement crosscut chains into the target old-carrier complement (this is the actual \(f\)-restriction from KKL §6.1). Then
+Let \(a\in\mathsf P_s\) with \(p_{\rm loc}(a)\in\mathsf P_t\). Assume its protected source crosscut tail lies in \(W_s\setminus K_s\) and, on a sufficiently small angular neighborhood of \(a\), the actual holomorphic image \(f(Q_n)\) is a defining crosscut chain in \(W_t\setminus K_t\) (this holds on the genuine local covering chart of (3.1)). Then the following **correctly typed** equality of carrier-relative prime ends holds:
 
 \[
 \boxed{
-f_*^{\mathcal T}\bigl(\mathfrak t_{i-1}(a)\bigr)
-=\mathfrak t_i\bigl(p_i^{\mathrm{loc}}(a)\bigr).
+p_T\bigl(\tau_s(a)\bigr)=\tau_t\bigl(p_{\rm loc}(a)\bigr).
 }
 \tag{3.3}
 \]
 
-Both sides refer to **prime ends**, not to planar landing points, and the local mapping has degree one on each sufficiently small protected access chart. At the critical cycle step, two different source access charts can map to the same target chart, reflecting the actual holomorphic degree two; no source chart is erased.
+Each sufficiently small protected access chart maps homeomorphically to its target chart; globally two distinct source charts may map to the same target when \(d=2\). Neither an impression with multiple points nor an added component is silently identified with one planar point.
 
-**Proof.** Represent \(a\) by the protected tail of actual crosscuts in \(W_{i-1}\setminus K_{i-1}\). Theorem 2.1 allows those same crosscuts to represent \(\mathfrak t_{i-1}(a)\) in the old carrier complement. By hypothesis the relevant \(f\)-image crosscuts are actual proper crosscuts in both target complements and are protected at \(p_i^{\mathrm{loc}}(a)\). The map \(f\) acts on exactly the same chains in both descriptions, hence the two target prime-end equivalence classes coincide. Local univalence on the **complement** and degree \(d_i\) of (3.1) give the local one-to-one chart and the two-sheet statement. \(\square\)
+**Proof.** Represent \(a\) by a defining source crosscut chain whose shadow eventually avoids \(\overline{\mathcal T'\setminus K_s}\); by Theorem 2.1, the **same** chain represents \(\tau_s(a)\) on the **source** carrier circle. Under the local covering hypothesis, the image crosscuts define \(p_{\rm loc}(a)\) on the target small-Julia boundary. Since the latter is protected, the tail of the image chain avoids \(\overline{\mathcal T\setminus K_t}\), and those **same target crosscuts** define \(\tau_t(p_{\rm loc}(a))\) on the **target** carrier circle. But \(p_T\) is defined by applying the *same actual holomorphic \(f\)* to the source carrier crosscut chain. Both routes therefore have the same defining target chain, proving (3.3). \(\square\)
 
-**Type separation:** Equation (3.3) is a commuting statement for the *covering* \(f_*\) on protected access chains. It is **not** yet the KKL operation \(F_*=f_*\iota^*\), because the proper-path immersion insertion of *added branches* at the unprotected contact accesses is the missing map. We do not assert any global identification \(C_i\simeq C_T\) or a global \(\iota\) boundary extension.
+**Strict typing boundary:** The square relates the **covering** \(f_*\) for two appropriately nested source/target pairs. It is **not yet** the KKL operation \(F_*=f_*\iota^*\). The latter also requires the source-defined proper-path immersion pullback \(\iota^*\), including complete attached-component boundary blocks at **unprotected contact** accesses. In particular, do not replace \(\tau_s\) by the old-target map \(\tau_{i-1}\) without changing the carrier from \(\mathcal T'\) to \(\mathcal T\): that would be a source/target type error.
 
 ## 4. Exact first-failure locus for the critical-limb pullback
 
