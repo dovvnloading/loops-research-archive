@@ -60,6 +60,53 @@ theorem explicit_extra_inverse_component_margins :
     (tipOrbit 1).hi + deviation outerRadius 1 < -unitTip := by
   decide +kernel
 
+/--
+Three consecutive real inverse returns under g=f³.
+The first s₁∈(1,17/16) satisfies g(s₁)=0, the next
+s₂∈(6/5,49/40) satisfies g(s₂)=s₁, and the third
+s₃∈(31/25,5/4) satisfies g(s₃)=s₂.
+These *exist* by the IVT and the strict bounds below.
+Consequently f⁹(s₃)=0∈K9, while s₃ is outside the nine
+little-Julia phase disks. This realizes an off-cycle component
+of (f⁹)^-1(K9), independently of any drawn ray picture.
+
+Lean checks *only* the six exact rational sign inequalities, not IVT.
+-/
+theorem three_nested_preimage_brackets :
+    (imageAt 3 unitTip).hi < 0 ∧
+    0 < (imageAt 3 (17 * unitTip / 16)).lo ∧
+    (imageAt 3 (6 * unitTip / 5)).hi < unitTip ∧
+    17 * unitTip / 16 <
+      (imageAt 3 (49 * unitTip / 40)).lo ∧
+    (imageAt 3 (31 * unitTip / 25)).hi <
+      6 * unitTip / 5 ∧
+    49 * unitTip / 40 <
+      (imageAt 3 (5 * unitTip / 4)).lo := by
+  decide +kernel
+
+def outsidePhaseDisk (j : Nat) (sourceRadius left right : Int) : Bool :=
+  (tipOrbit j).hi + deviation sourceRadius j < left ||
+  right < (tipOrbit j).lo - deviation sourceRadius j
+
+/-- Every period-nine complex phase enclosure misses the explicit
+    noncentral real preimage interval (31/25,5/4). -/
+theorem period_nine_extra_preimage_outside_all_phases :
+    (List.range 9).all
+      (fun j => outsidePhaseDisk j innerShrinkRadius
+        (31 * unitTip / 25) (5 * unitTip / 4)) = true := by
+  decide +kernel
+
+/-- Same for the outer first inverse preimage (1,17/16). -/
+theorem period_three_extra_preimage_outside_all_phases :
+    (List.range 3).all
+      (fun j => outsidePhaseDisk j outerRadius
+        unitTip (17 * unitTip / 16)) = true := by
+  decide +kernel
+
+#print axioms three_nested_preimage_brackets
+#print axioms period_nine_extra_preimage_outside_all_phases
+#print axioms period_three_extra_preimage_outside_all_phases
+
 /-- Source-printed p. 6 has q=2,n=1, with P depth 1,
     V^0 and Q_L,Q_R depth 3, and deep qn=q.
     This is NOT a period-3/period-9 return-time comparison. -/
