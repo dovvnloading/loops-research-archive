@@ -151,7 +151,7 @@ theorem hasDerivAt_polynomial (n : Nat) :
       have hh : HasDerivAt
           (fun x : ℝ => (polynomial n x) ^ 2 + x)
           (2 * (polynomial n c) * (derivativePolynomial n c) + 1) c := by
-        convert hsum using 1 <;> ring
+        simpa only [Nat.cast_ofNat, Nat.reduceSub, pow_one] using hsum
       have heq : polynomial (n+1) =
           fun x : ℝ => (polynomial n x) ^ 2 + x := by
         funext x
