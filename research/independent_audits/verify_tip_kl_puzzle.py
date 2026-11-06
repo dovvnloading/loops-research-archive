@@ -190,6 +190,32 @@ def certify() -> dict:
     assert rays["v_minus"] != rays["v_plus"]
     assert set(rays["v_minus"]).isdisjoint(rays["v_plus"])
 
+    # Stronger source-level obstruction: actual z*=31/1024 lies
+    # in I3 ⊂ B3 but outside *every* physical phase of B9.
+    # Reuse the independently certified exact signed-dyadic majorants
+    # rather than substituting numerical Julia plots.
+    from verify_real_nested_3_9 import (
+        Interval as DyadicInterval, ZERO, ONE, UNIT, parameter,
+        orbit_and_derivative,
+    )
+    from verify_complex_quadratic_like_3_9 import evaluate_bounds
+    from verify_period27_misiurewicz_tip import TIP_K as EXACT_TIP_K
+    assert EXACT_TIP_K == TIP_K
+    tip_c_lo, tip_c_hi = parameter(TIP_K), parameter(TIP_K + 1)
+    tip_interval = DyadicInterval(tip_c_lo.lo, tip_c_hi.hi)
+    X, _ = orbit_and_derivative(tip_interval, 18)
+    A = [ZERO, ONE]
+    for j in range(1, 9):
+        A.append(X[j] * A[j].times(2))
+    shrink_r = 27 * UNIT // 1024
+    phase = evaluate_bounds(X, A, shrink_r, 9)
+    z = 31 * UNIT // 1024
+    assert shrink_r < z < UNIT // 32
+    assert X[6].hi < z < X[3].lo
+    assert all(X[j].hi + phase.deviation[j] < z
+               or z + phase.deviation[j] < X[j].lo
+               for j in range(1, 9))
+
     # The KL q,n are not the quadratic-like return periods 3 and 9.
     q, n, p, next_p = 2, 1, 3, 9
     assert (n-1)*q+1 == 1
