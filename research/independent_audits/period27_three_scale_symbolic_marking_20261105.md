@@ -1,5 +1,7 @@
 # A three-scale exact symbolic marking candidate at the period-27 quadratic center
 
+**Update, 2026-11-06:** the [center-identification proof](period27_center_tuning_identification_20261106.md) now identifies the period-27 center with `A*A*A` and authenticates the component-root ray pair. This dated audit's earlier status language records the stage before that source bridge; its symbolic and real Markov computations remain unchanged.
+
 **Date:** November 5, 2026. **Status:** Exact algebraic/finite combinatorial certificate and a reproducible 26-edge **real interval** Markov graph. **Not** a certified parameter-ray identification, Julia-side external-ray automaton, prime-end atlas, or Paper-1 sheet transport theorem. MLC and every global gate remain open.
 
 ## Research question and why this is a useful increment

@@ -132,12 +132,12 @@ The exact real kneading-angle invariant of $c_*$ is
 
 $$
 \theta_{\mathrm{knead}}(c_*)=\frac{59914011}{2^{27}-1},
-$
+$$
 
 and the twisted-shift calculation reproduces **all 27** real critical-orbit ranks. The [machine-readable 26-edge real Markov graph](./results/period27_symbolic_marking.json) is an interval graph, **not** the full external-ray Hubbard-tree automaton.
 
 > [!CAUTION]
-> **Parameter rays do not land at the interior superattracting center $c_*$.** Classical tuning associates the candidate ray pair with the **parabolic root of a specified twice-tuned airplane component**. Identifying that component as the one containing $c_*$, and proving the required dynamical-plane landing/access/sheet transport, remain open in [Issue #12](https://github.com/dovvnloading/loops-research-archive/issues/12).
+> **Parameter rays land at the component's parabolic root.** The [center-identification proof](./research/independent_audits/period27_center_tuning_identification_20261106.md) now proves that $c_*$ is the unique center of **A*A*A**, using the precise real-center root-ray result of Buff–Floyd–Koch–Parry and Zakeri's tuning theorem. The root rays are exactly $59914011/134217727$ and $74303716/134217727$. The center remains superattracting and fails Paper 2's $K=J$ hypothesis.
 
 ### The critical analytic boundary
 
@@ -165,16 +165,20 @@ The [Levin ray-correspondence audit](./research/independent_audits/levin_tip_ray
 
 The [new two-scale complex-domain audit](./research/independent_audits/nonattracting_tip_complex_two_scale_20261106.md) finds actual nested degree-two **quadratic-like** periods 3 and 9 at the *nonattracting Misiurewicz parameter*, not just at the earlier attracting center. The [Lean integer certificate](./TipComplexMargins.lean) recomputes strict Rouché boundary inequalities, critical-preimage exclusion, complex phase separation and physical 9-to-3 routing. The independent [signed-integer regression](./research/independent_audits/verify_tip_complex_domains.py) checks a source-locked [JSON manifest](./results/tip_complex_domains.json); classical Rouché/Riemann–Hurwitz arguments supply the holomorphic interpretation and are **not Lean-proved** here.
 
-The inner domain requires a **27/1024** rational shrink for its certified Rouché inequality (the old 13/512 *bound*, not necessarily the domain, fails at this parameter). Both little filled Julia sets are connected and nested under the documented analytic deductions, supplying **Levin (p1)**. The [follow-up Carathéodory argument](./research/independent_audits/levin_tip_p2_carathéodory_two_scale_20261106.md) supplies his independent **(p2)** condition and concrete two-scale ray-map values; the source-faithful KL primitive puzzle, prime-end sides and localization-sheet/coset transport remain open in [Issue #29](https://github.com/dovvnloading/loops-research-archive/issues/29). No MLC ledger gate is promoted.
+The inner domain requires a **27/1024** rational shrink for its certified Rouché inequality (the old 13/512 *bound*, not necessarily the domain, fails at this parameter). Both little filled Julia sets are connected and nested under the documented analytic deductions, supplying **Levin (p1)**. The [follow-up Carathéodory argument](./research/independent_audits/levin_tip_p2_carathéodory_two_scale_20261106.md) supplies his independent **(p2)** condition and concrete two-scale ray-map values. The later puzzle and localization results below narrow [Issue #29](https://github.com/dovvnloading/loops-research-archive/issues/29) to the selected marked prime-end transition. No MLC ledger gate is promoted.
 
 ![Concentric target disks in the nonattracting 3/9 quadratic-like certificates, drawn with the exact 8-to-1 radius ratio](./figs/readme/complex-return-disks.svg)
 
 *Figure 3 — Certified target geometry, drawn to scale.* At the nonattracting tip, \(U_3=D(0,1/4)\) and \(U_9=D(0,1/32)\); the drawn radius ratio is exactly eight. These are **target disks only**, not sketches of the preimage domains \(V_3,V_9\), filled Julia sets or KL puzzle pieces. See the [signed-integer margin manifest](./results/tip_complex_domains.json) and [full complex proof audit](./research/independent_audits/nonattracting_tip_complex_two_scale_20261106.md).
 
 
-### Source-level KL top puzzle and local-sheet obstruction at the nonattracting tip
+### Terminal KL puzzles, landed accesses and restricted localization transport
 
 A further [KL source-alignment audit](./research/independent_audits/kl_tip_primitive_puzzle_and_localization_20261106.md) identifies **two successive q=2, n=1** Yoccoz top decorations, one for f and one for its actual quadratic-like G=f³, with two Q-branches and critical Y³ puzzle vertices at each level. It certifies the respective primitive critical first returns at physical times 3 and 9. New [Lean](./TipKLPuzzle.lean) and [exact Python](./research/independent_audits/verify_tip_kl_puzzle.py) checks certify concrete off-cycle inverse-preimage witnesses **at both physical periods 3 and 9**, realizing the archive's existing one-scale canonical-localization coset collision theorem twice. They also identify a fixed point a∈B₃\\B₉ that prevents the naive identity or f⁶ map from defining a 9→3 map of the corresponding deleted surfaces. This **does not** supply the fully marked *interscale* Kahn–Lyubich groupoid/prime-end naturality; [Issue #29](https://github.com/dovvnloading/loops-research-archive/issues/29) remains open. The source-locked MLC ledger and global H1–H4/UPTCR remain unchanged.
+
+The [terminal-nest proof](./research/independent_audits/tip_kl_terminal_first_child_20261106.md) now identifies **E⁰=int Y³, E¹=int Y⁶ and χ=1 at both stages**, with proper degree-two first-child returns and the same filled sets K₃ and K₉ as the complex certificates. The [ambient ray tree](./research/independent_audits/tip_puzzle_ray_tree_20261106.md) and [ambient lifts of the G-internal tree](./research/independent_audits/tip_internal_puzzle_ambient_lifts_20261106.md) each record 64 actual vertices and 128 rays at depth six, including cyclic orders, access sides, landing targets and return arrows. In particular, the second dividing point has ambient angles **2/9 and 7/9**, with Levin images **2/3 and 1/3**. Analytic landing and nest arguments are written proofs with cited inputs; the new Python certificates verify their finite arithmetic.
+
+The [common-exterior localization proof](./research/independent_audits/tip_localization_refinement_peripheral_monodromy_20261106.md) constructs an actual based holomorphic **9→3 comparison after restriction**. Every connected component of the restricted fine cover is universal, and its map to the coarse cyclic cover has countably infinite sheet fibers. The map commutes with transport along every path. A deck-transformation argument also proves that it cannot extend continuously over its entire conformal ideal boundary circle. **Remaining obligation:** identify the selected KL O/ξ/η sides and prove the required compatibility on the filled or protected prime-end pieces. The full-circle obstruction does not locate those selected sides, so #29 stays open.
 
 
 ## Proof evidence, Lean and reproducibility
@@ -208,12 +212,19 @@ python research/independent_audits/verify_complex_quadratic_like_3_9.py
 # Angle, orbit-permutation and source-marking arithmetic:
 python research/independent_audits/verify_period27_symbolic_atlas.py --check-manifest
 python research/independent_audits/verify_period27_kneading_angle_permutation.py
+python research/independent_audits/verify_period27_center_tuning_identification.py
 
 # Exact nonattracting tip, ray portrait and two different Levin maps:
 python research/independent_audits/verify_period27_misiurewicz_tip.py --check-manifest
 python research/independent_audits/verify_tip_ray_portrait.py --check-manifest
 python research/independent_audits/verify_tip_complex_domains.py --check-manifest
 python research/independent_audits/verify_tip_levin_transport.py
+
+# Source puzzle trees and finite inputs to both terminal first-child nests:
+python research/independent_audits/verify_tip_kl_puzzle.py
+python research/independent_audits/verify_tip_puzzle_ray_tree.py --check-manifest
+python research/independent_audits/verify_tip_internal_ray_lifts.py --check-manifest
+python research/independent_audits/verify_tip_kl_terminal_first_child.py
 
 # Kernel-check the key formal modules and all default targets:
 lake build Period27Kneading Period27Dyadic Period27IntervalSound Period27RationalTrace Period27RationalDerivative TipRayPortrait TipComplexMargins
@@ -245,7 +256,7 @@ The [main synthesis manuscript](./marked_width_mlc_manuscript.pdf) contains the 
 | `UNIVERSAL_PROTECTED_TOWER_CLOSURE` | **Open** | Close the protected tower across the admitted combinatorial regimes. |
 | `UPTCR_IMPLIES_MLC` | **Proved conditional implication** | Applies **only if** universal tower compactness and rigidity have already been proved. |
 
-**Most immediate tracked problems:** [Issue #29](https://github.com/dovvnloading/loops-research-archive/issues/29) seeks a genuine Kahn–Lyubich primitive puzzle, marked prime-end sides, localization-sheet/coset transport and compatible cross-scale naturality at the nonattracting tip. [Issue #12](https://github.com/dovvnloading/loops-research-archive/issues/12) tracks the separate period-27 component-root-ray identity. [Issue #15](https://github.com/dovvnloading/loops-research-archive/issues/15) and the [latest real-center Lean audit](./research/independent_audits/lean_period27_real_center_20261105.md) record the precise formal real-analysis state.
+**Most immediate tracked problem:** [Issue #29](https://github.com/dovvnloading/loops-research-archive/issues/29) still requires the selected Kahn–Lyubich O/ξ/η sides and their compatibility with a filled or protected prime-end transition. The two terminal primitive nests, finite landed access tables, restricted common-exterior sheet comparison, and separate [period-27 center/component identity](./research/independent_audits/period27_center_tuning_identification_20261106.md) are now supplied in the written audits above. The predecessor [Issue #12](https://github.com/dovvnloading/loops-research-archive/issues/12) records the earlier combined problem; [Issue #15](https://github.com/dovvnloading/loops-research-archive/issues/15) and the [real-center Lean audit](./research/independent_audits/lean_period27_real_center_20261105.md) record the formal real-analysis work.
 
 The stationary-Wave research has proved relative continuation in the archived setting, but its two-path breaking, measurable fixed-component exit, and typed bounded-degree pushforward interfaces remain open. The [novelty/value audit](./research/mlc_unified/novelty_and_value_audit_20260725.md) cautions against treating the number of compiled proofs or conditional reductions as a measure of proximity to MLC.
 

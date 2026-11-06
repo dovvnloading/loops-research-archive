@@ -1,0 +1,4206 @@
+{
+  "alpha_seed": [
+    "1/3",
+    "2/3"
+  ],
+  "analytic_dependencies": [
+    "certified tip critical-value ray landing (Zakeri Theorems 3.1/3.3)",
+    "ambient alpha rays 1/3,2/3 from the existing KL top-puzzle audit",
+    "slit-plane inverse-branch landing proof in accompanying audit",
+    "KL Decorations section 2.1 puzzle topology; not checked by Python"
+  ],
+  "branch_0": "open counterclockwise semicircle (tau/2,(tau+1)/2)",
+  "branch_1": "complementary open semicircle",
+  "critical_value_cut_ray": "116791/261632",
+  "cut_preimage_rays": [
+    "116791/523264",
+    "378423/523264"
+  ],
+  "first_nonreal_depth4_pairs": [
+    "11/48,13/48",
+    "35/48,37/48"
+  ],
+  "levels": [
+    {
+      "critical_piece_boundary_pairs": [
+        "1/3,2/3"
+      ],
+      "cyclic_ray_order": [
+        "1/3",
+        "2/3"
+      ],
+      "equipotential_height_relative_to_base": "1",
+      "new_vertices": 1,
+      "puzzle_depth": 0,
+      "ray_count": 2,
+      "vertex_count": 1,
+      "vertices": [
+        {
+          "ambient_prime_ends": [
+            "1/3",
+            "2/3"
+          ],
+          "angles": [
+            "1/3",
+            "2/3"
+          ],
+          "ccw_sector_endpoints": [
+            [
+              "1/3",
+              "2/3"
+            ],
+            [
+              "2/3",
+              "1/3"
+            ]
+          ],
+          "eventual_point_period": 1,
+          "eventual_ray_period": 2,
+          "first_depth": 0,
+          "id": "1/3,2/3",
+          "image_pair": "1/3,2/3",
+          "inverse_branch_word": "",
+          "landing_target": "alpha",
+          "localization_O_xi_eta": null,
+          "on_critical_piece": true,
+          "steps_to_fixed_alpha": 0
+        }
+      ]
+    },
+    {
+      "critical_piece_boundary_pairs": [
+        "1/3,2/3",
+        "1/6,5/6"
+      ],
+      "cyclic_ray_order": [
+        "1/6",
+        "1/3",
+        "2/3",
+        "5/6"
+      ],
+      "equipotential_height_relative_to_base": "1/2",
+      "new_vertices": 1,
+      "puzzle_depth": 1,
+      "ray_count": 4,
+      "vertex_count": 2,
+      "vertices": [
+        {
+          "ambient_prime_ends": [
+            "1/6",
+            "5/6"
+          ],
+          "angles": [
+            "1/6",
+            "5/6"
+          ],
+          "ccw_sector_endpoints": [
+            [
+              "1/6",
+              "5/6"
+            ],
+            [
+              "5/6",
+              "1/6"
+            ]
+          ],
+          "eventual_point_period": 1,
+          "eventual_ray_period": 2,
+          "first_depth": 1,
+          "id": "1/6,5/6",
+          "image_pair": "1/3,2/3",
+          "inverse_branch_word": "1",
+          "landing_target": "b_1(alpha)",
+          "localization_O_xi_eta": null,
+          "on_critical_piece": true,
+          "steps_to_fixed_alpha": 1
+        },
+        {
+          "ambient_prime_ends": [
+            "1/3",
+            "2/3"
+          ],
+          "angles": [
+            "1/3",
+            "2/3"
+          ],
+          "ccw_sector_endpoints": [
+            [
+              "1/3",
+              "2/3"
+            ],
+            [
+              "2/3",
+              "1/3"
+            ]
+          ],
+          "eventual_point_period": 1,
+          "eventual_ray_period": 2,
+          "first_depth": 0,
+          "id": "1/3,2/3",
+          "image_pair": "1/3,2/3",
+          "inverse_branch_word": "0",
+          "landing_target": "b_0(alpha)",
+          "localization_O_xi_eta": null,
+          "on_critical_piece": true,
+          "steps_to_fixed_alpha": 0
+        }
+      ]
+    },
+    {
+      "critical_piece_boundary_pairs": [
+        "1/3,2/3",
+        "1/6,5/6"
+      ],
+      "cyclic_ray_order": [
+        "1/12",
+        "1/6",
+        "1/3",
+        "5/12",
+        "7/12",
+        "2/3",
+        "5/6",
+        "11/12"
+      ],
+      "equipotential_height_relative_to_base": "1/4",
+      "new_vertices": 2,
+      "puzzle_depth": 2,
+      "ray_count": 8,
+      "vertex_count": 4,
+      "vertices": [
+        {
+          "ambient_prime_ends": [
+            "1/12",
+            "11/12"
+          ],
+          "angles": [
+            "1/12",
+            "11/12"
+          ],
+          "ccw_sector_endpoints": [
+            [
+              "1/12",
+              "11/12"
+            ],
+            [
+              "11/12",
+              "1/12"
+            ]
+          ],
+          "eventual_point_period": 1,
+          "eventual_ray_period": 2,
+          "first_depth": 2,
+          "id": "1/12,11/12",
+          "image_pair": "1/6,5/6",
+          "inverse_branch_word": "11",
+          "landing_target": "b_11(alpha)",
+          "localization_O_xi_eta": null,
+          "on_critical_piece": false,
+          "steps_to_fixed_alpha": 2
+        },
+        {
+          "ambient_prime_ends": [
+            "1/6",
+            "5/6"
+          ],
+          "angles": [
+            "1/6",
+            "5/6"
+          ],
+          "ccw_sector_endpoints": [
+            [
+              "1/6",
+              "5/6"
+            ],
+            [
+              "5/6",
+              "1/6"
+            ]
+          ],
+          "eventual_point_period": 1,
+          "eventual_ray_period": 2,
+          "first_depth": 1,
+          "id": "1/6,5/6",
+          "image_pair": "1/3,2/3",
+          "inverse_branch_word": "10",
+          "landing_target": "b_10(alpha)",
+          "localization_O_xi_eta": null,
+          "on_critical_piece": true,
+          "steps_to_fixed_alpha": 1
+        },
+        {
+          "ambient_prime_ends": [
+            "1/3",
+            "2/3"
+          ],
+          "angles": [
+            "1/3",
+            "2/3"
+          ],
+          "ccw_sector_endpoints": [
+            [
+              "1/3",
+              "2/3"
+            ],
+            [
+              "2/3",
+              "1/3"
+            ]
+          ],
+          "eventual_point_period": 1,
+          "eventual_ray_period": 2,
+          "first_depth": 0,
+          "id": "1/3,2/3",
+          "image_pair": "1/3,2/3",
+          "inverse_branch_word": "00",
+          "landing_target": "b_00(alpha)",
+          "localization_O_xi_eta": null,
+          "on_critical_piece": true,
+          "steps_to_fixed_alpha": 0
+        },
+        {
+          "ambient_prime_ends": [
+            "5/12",
+            "7/12"
+          ],
+          "angles": [
+            "5/12",
+            "7/12"
+          ],
+          "ccw_sector_endpoints": [
+            [
+              "5/12",
+              "7/12"
+            ],
+            [
+              "7/12",
+              "5/12"
+            ]
+          ],
+          "eventual_point_period": 1,
+          "eventual_ray_period": 2,
+          "first_depth": 2,
+          "id": "5/12,7/12",
+          "image_pair": "1/6,5/6",
+          "inverse_branch_word": "01",
+          "landing_target": "b_01(alpha)",
+          "localization_O_xi_eta": null,
+          "on_critical_piece": false,
+          "steps_to_fixed_alpha": 2
+        }
+      ]
+    },
+    {
+      "critical_piece_boundary_pairs": [
+        "7/24,17/24",
+        "5/24,19/24"
+      ],
+      "cyclic_ray_order": [
+        "1/24",
+        "1/12",
+        "1/6",
+        "5/24",
+        "7/24",
+        "1/3",
+        "5/12",
+        "11/24",
+        "13/24",
+        "7/12",
+        "2/3",
+        "17/24",
+        "19/24",
+        "5/6",
+        "11/12",
+        "23/24"
+      ],
+      "equipotential_height_relative_to_base": "1/8",
+      "new_vertices": 4,
+      "puzzle_depth": 3,
+      "ray_count": 16,
+      "vertex_count": 8,
+      "vertices": [
+        {
+          "ambient_prime_ends": [
+            "1/24",
+            "23/24"
+          ],
+          "angles": [
+            "1/24",
+            "23/24"
+          ],
+          "ccw_sector_endpoints": [
+            [
+              "1/24",
+              "23/24"
+            ],
+            [
+              "23/24",
+              "1/24"
+            ]
+          ],
+          "eventual_point_period": 1,
+          "eventual_ray_period": 2,
+          "first_depth": 3,
+          "id": "1/24,23/24",
+          "image_pair": "1/12,11/12",
+          "inverse_branch_word": "111",
+          "landing_target": "b_111(alpha)",
+          "localization_O_xi_eta": null,
+          "on_critical_piece": false,
+          "steps_to_fixed_alpha": 3
+        },
+        {
+          "ambient_prime_ends": [
+            "1/12",
+            "11/12"
+          ],
+          "angles": [
+            "1/12",
+            "11/12"
+          ],
+          "ccw_sector_endpoints": [
+            [
+              "1/12",
+              "11/12"
+            ],
+            [
+              "11/12",
+              "1/12"
+            ]
+          ],
+          "eventual_point_period": 1,
+          "eventual_ray_period": 2,
+          "first_depth": 2,
+          "id": "1/12,11/12",
+          "image_pair": "1/6,5/6",
+          "inverse_branch_word": "110",
+          "landing_target": "b_110(alpha)",
+          "localization_O_xi_eta": null,
+          "on_critical_piece": false,
+          "steps_to_fixed_alpha": 2
+        },
+        {
+          "ambient_prime_ends": [
+            "1/6",
+            "5/6"
+          ],
+          "angles": [
+            "1/6",
+            "5/6"
+          ],
+          "ccw_sector_endpoints": [
+            [
+              "1/6",
+              "5/6"
+            ],
+            [
+              "5/6",
+              "1/6"
+            ]
+          ],
+          "eventual_point_period": 1,
+          "eventual_ray_period": 2,
+          "first_depth": 1,
+          "id": "1/6,5/6",
+          "image_pair": "1/3,2/3",
+          "inverse_branch_word": "100",
+          "landing_target": "b_100(alpha)",
+          "localization_O_xi_eta": null,
+          "on_critical_piece": false,
+          "steps_to_fixed_alpha": 1
+        },
+        {
+          "ambient_prime_ends": [
+            "5/24",
+            "19/24"
+          ],
+          "angles": [
+            "5/24",
+            "19/24"
+          ],
+          "ccw_sector_endpoints": [
+            [
+              "5/24",
+              "19/24"
+            ],
+            [
+              "19/24",
+              "5/24"
+            ]
+          ],
+          "eventual_point_period": 1,
+          "eventual_ray_period": 2,
+          "first_depth": 3,
+          "id": "5/24,19/24",
+          "image_pair": "5/12,7/12",
+          "inverse_branch_word": "101",
+          "landing_target": "b_101(alpha)",
+          "localization_O_xi_eta": null,
+          "on_critical_piece": true,
+          "steps_to_fixed_alpha": 3
+        },
+        {
+          "ambient_prime_ends": [
+            "7/24",
+            "17/24"
+          ],
+          "angles": [
+            "7/24",
+            "17/24"
+          ],
+          "ccw_sector_endpoints": [
+            [
+              "7/24",
+              "17/24"
+            ],
+            [
+              "17/24",
+              "7/24"
+            ]
+          ],
+          "eventual_point_period": 1,
+          "eventual_ray_period": 2,
+          "first_depth": 3,
+          "id": "7/24,17/24",
+          "image_pair": "5/12,7/12",
+          "inverse_branch_word": "001",
+          "landing_target": "b_001(alpha)",
+          "localization_O_xi_eta": null,
+          "on_critical_piece": true,
+          "steps_to_fixed_alpha": 3
+        },
+        {
+          "ambient_prime_ends": [
+            "1/3",
+            "2/3"
+          ],
+          "angles": [
+            "1/3",
+            "2/3"
+          ],
+          "ccw_sector_endpoints": [
+            [
+              "1/3",
+              "2/3"
+            ],
+            [
+              "2/3",
+              "1/3"
+            ]
+          ],
+          "eventual_point_period": 1,
+          "eventual_ray_period": 2,
+          "first_depth": 0,
+          "id": "1/3,2/3",
+          "image_pair": "1/3,2/3",
+          "inverse_branch_word": "000",
+          "landing_target": "b_000(alpha)",
+          "localization_O_xi_eta": null,
+          "on_critical_piece": false,
+          "steps_to_fixed_alpha": 0
+        },
+        {
+          "ambient_prime_ends": [
+            "5/12",
+            "7/12"
+          ],
+          "angles": [
+            "5/12",
+            "7/12"
+          ],
+          "ccw_sector_endpoints": [
+            [
+              "5/12",
+              "7/12"
+            ],
+            [
+              "7/12",
+              "5/12"
+            ]
+          ],
+          "eventual_point_period": 1,
+          "eventual_ray_period": 2,
+          "first_depth": 2,
+          "id": "5/12,7/12",
+          "image_pair": "1/6,5/6",
+          "inverse_branch_word": "010",
+          "landing_target": "b_010(alpha)",
+          "localization_O_xi_eta": null,
+          "on_critical_piece": false,
+          "steps_to_fixed_alpha": 2
+        },
+        {
+          "ambient_prime_ends": [
+            "11/24",
+            "13/24"
+          ],
+          "angles": [
+            "11/24",
+            "13/24"
+          ],
+          "ccw_sector_endpoints": [
+            [
+              "11/24",
+              "13/24"
+            ],
+            [
+              "13/24",
+              "11/24"
+            ]
+          ],
+          "eventual_point_period": 1,
+          "eventual_ray_period": 2,
+          "first_depth": 3,
+          "id": "11/24,13/24",
+          "image_pair": "1/12,11/12",
+          "inverse_branch_word": "011",
+          "landing_target": "b_011(alpha)",
+          "localization_O_xi_eta": null,
+          "on_critical_piece": false,
+          "steps_to_fixed_alpha": 3
+        }
+      ]
+    },
+    {
+      "critical_piece_boundary_pairs": [
+        "11/48,13/48",
+        "7/24,17/24",
+        "35/48,37/48",
+        "5/24,19/24"
+      ],
+      "cyclic_ray_order": [
+        "1/48",
+        "1/24",
+        "1/12",
+        "5/48",
+        "7/48",
+        "1/6",
+        "5/24",
+        "11/48",
+        "13/48",
+        "7/24",
+        "1/3",
+        "17/48",
+        "19/48",
+        "5/12",
+        "11/24",
+        "23/48",
+        "25/48",
+        "13/24",
+        "7/12",
+        "29/48",
+        "31/48",
+        "2/3",
+        "17/24",
+        "35/48",
+        "37/48",
+        "19/24",
+        "5/6",
+        "41/48",
+        "43/48",
+        "11/12",
+        "23/24",
+        "47/48"
+      ],
+      "equipotential_height_relative_to_base": "1/16",
+      "new_vertices": 8,
+      "puzzle_depth": 4,
+      "ray_count": 32,
+      "vertex_count": 16,
+      "vertices": [
+        {
+          "ambient_prime_ends": [
+            "1/48",
+            "47/48"
+          ],
+          "angles": [
+            "1/48",
+            "47/48"
+          ],
+          "ccw_sector_endpoints": [
+            [
+              "1/48",
+              "47/48"
+            ],
+            [
+              "47/48",
+              "1/48"
+            ]
+          ],
+          "eventual_point_period": 1,
+          "eventual_ray_period": 2,
+          "first_depth": 4,
+          "id": "1/48,47/48",
+          "image_pair": "1/24,23/24",
+          "inverse_branch_word": "1111",
+          "landing_target": "b_1111(alpha)",
+          "localization_O_xi_eta": null,
+          "on_critical_piece": false,
+          "steps_to_fixed_alpha": 4
+        },
+        {
+          "ambient_prime_ends": [
+            "1/24",
+            "23/24"
+          ],
+          "angles": [
+            "1/24",
+            "23/24"
+          ],
+          "ccw_sector_endpoints": [
+            [
+              "1/24",
+              "23/24"
+            ],
+            [
+              "23/24",
+              "1/24"
+            ]
+          ],
+          "eventual_point_period": 1,
+          "eventual_ray_period": 2,
+          "first_depth": 3,
+          "id": "1/24,23/24",
+          "image_pair": "1/12,11/12",
+          "inverse_branch_word": "1110",
+          "landing_target": "b_1110(alpha)",
+          "localization_O_xi_eta": null,
+          "on_critical_piece": false,
+          "steps_to_fixed_alpha": 3
+        },
+        {
+          "ambient_prime_ends": [
+            "1/12",
+            "11/12"
+          ],
+          "angles": [
+            "1/12",
+            "11/12"
+          ],
+          "ccw_sector_endpoints": [
+            [
+              "1/12",
+              "11/12"
+            ],
+            [
+              "11/12",
+              "1/12"
+            ]
+          ],
+          "eventual_point_period": 1,
+          "eventual_ray_period": 2,
+          "first_depth": 2,
+          "id": "1/12,11/12",
+          "image_pair": "1/6,5/6",
+          "inverse_branch_word": "1100",
+          "landing_target": "b_1100(alpha)",
+          "localization_O_xi_eta": null,
+          "on_critical_piece": false,
+          "steps_to_fixed_alpha": 2
+        },
+        {
+          "ambient_prime_ends": [
+            "5/48",
+            "43/48"
+          ],
+          "angles": [
+            "5/48",
+            "43/48"
+          ],
+          "ccw_sector_endpoints": [
+            [
+              "5/48",
+              "43/48"
+            ],
+            [
+              "43/48",
+              "5/48"
+            ]
+          ],
+          "eventual_point_period": 1,
+          "eventual_ray_period": 2,
+          "first_depth": 4,
+          "id": "5/48,43/48",
+          "image_pair": "5/24,19/24",
+          "inverse_branch_word": "1101",
+          "landing_target": "b_1101(alpha)",
+          "localization_O_xi_eta": null,
+          "on_critical_piece": false,
+          "steps_to_fixed_alpha": 4
+        },
+        {
+          "ambient_prime_ends": [
+            "7/48",
+            "41/48"
+          ],
+          "angles": [
+            "7/48",
+            "41/48"
+          ],
+          "ccw_sector_endpoints": [
+            [
+              "7/48",
+              "41/48"
+            ],
+            [
+              "41/48",
+              "7/48"
+            ]
+          ],
+          "eventual_point_period": 1,
+          "eventual_ray_period": 2,
+          "first_depth": 4,
+          "id": "7/48,41/48",
+          "image_pair": "7/24,17/24",
+          "inverse_branch_word": "1001",
+          "landing_target": "b_1001(alpha)",
+          "localization_O_xi_eta": null,
+          "on_critical_piece": false,
+          "steps_to_fixed_alpha": 4
+        },
+        {
+          "ambient_prime_ends": [
+            "1/6",
+            "5/6"
+          ],
+          "angles": [
+            "1/6",
+            "5/6"
+          ],
+          "ccw_sector_endpoints": [
+            [
+              "1/6",
+              "5/6"
+            ],
+            [
+              "5/6",
+              "1/6"
+            ]
+          ],
+          "eventual_point_period": 1,
+          "eventual_ray_period": 2,
+          "first_depth": 1,
+          "id": "1/6,5/6",
+          "image_pair": "1/3,2/3",
+          "inverse_branch_word": "1000",
+          "landing_target": "b_1000(alpha)",
+          "localization_O_xi_eta": null,
+          "on_critical_piece": false,
+          "steps_to_fixed_alpha": 1
+        },
+        {
+          "ambient_prime_ends": [
+            "5/24",
+            "19/24"
+          ],
+          "angles": [
+            "5/24",
+            "19/24"
+          ],
+          "ccw_sector_endpoints": [
+            [
+              "5/24",
+              "19/24"
+            ],
+            [
+              "19/24",
+              "5/24"
+            ]
+          ],
+          "eventual_point_period": 1,
+          "eventual_ray_period": 2,
+          "first_depth": 3,
+          "id": "5/24,19/24",
+          "image_pair": "5/12,7/12",
+          "inverse_branch_word": "1010",
+          "landing_target": "b_1010(alpha)",
+          "localization_O_xi_eta": null,
+          "on_critical_piece": true,
+          "steps_to_fixed_alpha": 3
+        },
+        {
+          "ambient_prime_ends": [
+            "11/48",
+            "13/48"
+          ],
+          "angles": [
+            "11/48",
+            "13/48"
+          ],
+          "ccw_sector_endpoints": [
+            [
+              "11/48",
+              "13/48"
+            ],
+            [
+              "13/48",
+              "11/48"
+            ]
+          ],
+          "eventual_point_period": 1,
+          "eventual_ray_period": 2,
+          "first_depth": 4,
+          "id": "11/48,13/48",
+          "image_pair": "11/24,13/24",
+          "inverse_branch_word": "0011",
+          "landing_target": "b_0011(alpha)",
+          "localization_O_xi_eta": null,
+          "on_critical_piece": true,
+          "steps_to_fixed_alpha": 4
+        },
+        {
+          "ambient_prime_ends": [
+            "7/24",
+            "17/24"
+          ],
+          "angles": [
+            "7/24",
+            "17/24"
+          ],
+          "ccw_sector_endpoints": [
+            [
+              "7/24",
+              "17/24"
+            ],
+            [
+              "17/24",
+              "7/24"
+            ]
+          ],
+          "eventual_point_period": 1,
+          "eventual_ray_period": 2,
+          "first_depth": 3,
+          "id": "7/24,17/24",
+          "image_pair": "5/12,7/12",
+          "inverse_branch_word": "0010",
+          "landing_target": "b_0010(alpha)",
+          "localization_O_xi_eta": null,
+          "on_critical_piece": true,
+          "steps_to_fixed_alpha": 3
+        },
+        {
+          "ambient_prime_ends": [
+            "1/3",
+            "2/3"
+          ],
+          "angles": [
+            "1/3",
+            "2/3"
+          ],
+          "ccw_sector_endpoints": [
+            [
+              "1/3",
+              "2/3"
+            ],
+            [
+              "2/3",
+              "1/3"
+            ]
+          ],
+          "eventual_point_period": 1,
+          "eventual_ray_period": 2,
+          "first_depth": 0,
+          "id": "1/3,2/3",
+          "image_pair": "1/3,2/3",
+          "inverse_branch_word": "0000",
+          "landing_target": "b_0000(alpha)",
+          "localization_O_xi_eta": null,
+          "on_critical_piece": false,
+          "steps_to_fixed_alpha": 0
+        },
+        {
+          "ambient_prime_ends": [
+            "17/48",
+            "31/48"
+          ],
+          "angles": [
+            "17/48",
+            "31/48"
+          ],
+          "ccw_sector_endpoints": [
+            [
+              "17/48",
+              "31/48"
+            ],
+            [
+              "31/48",
+              "17/48"
+            ]
+          ],
+          "eventual_point_period": 1,
+          "eventual_ray_period": 2,
+          "first_depth": 4,
+          "id": "17/48,31/48",
+          "image_pair": "7/24,17/24",
+          "inverse_branch_word": "0001",
+          "landing_target": "b_0001(alpha)",
+          "localization_O_xi_eta": null,
+          "on_critical_piece": false,
+          "steps_to_fixed_alpha": 4
+        },
+        {
+          "ambient_prime_ends": [
+            "19/48",
+            "29/48"
+          ],
+          "angles": [
+            "19/48",
+            "29/48"
+          ],
+          "ccw_sector_endpoints": [
+            [
+              "19/48",
+              "29/48"
+            ],
+            [
+              "29/48",
+              "19/48"
+            ]
+          ],
+          "eventual_point_period": 1,
+          "eventual_ray_period": 2,
+          "first_depth": 4,
+          "id": "19/48,29/48",
+          "image_pair": "5/24,19/24",
+          "inverse_branch_word": "0101",
+          "landing_target": "b_0101(alpha)",
+          "localization_O_xi_eta": null,
+          "on_critical_piece": false,
+          "steps_to_fixed_alpha": 4
+        },
+        {
+          "ambient_prime_ends": [
+            "5/12",
+            "7/12"
+          ],
+          "angles": [
+            "5/12",
+            "7/12"
+          ],
+          "ccw_sector_endpoints": [
+            [
+              "5/12",
+              "7/12"
+            ],
+            [
+              "7/12",
+              "5/12"
+            ]
+          ],
+          "eventual_point_period": 1,
+          "eventual_ray_period": 2,
+          "first_depth": 2,
+          "id": "5/12,7/12",
+          "image_pair": "1/6,5/6",
+          "inverse_branch_word": "0100",
+          "landing_target": "b_0100(alpha)",
+          "localization_O_xi_eta": null,
+          "on_critical_piece": false,
+          "steps_to_fixed_alpha": 2
+        },
+        {
+          "ambient_prime_ends": [
+            "11/24",
+            "13/24"
+          ],
+          "angles": [
+            "11/24",
+            "13/24"
+          ],
+          "ccw_sector_endpoints": [
+            [
+              "11/24",
+              "13/24"
+            ],
+            [
+              "13/24",
+              "11/24"
+            ]
+          ],
+          "eventual_point_period": 1,
+          "eventual_ray_period": 2,
+          "first_depth": 3,
+          "id": "11/24,13/24",
+          "image_pair": "1/12,11/12",
+          "inverse_branch_word": "0110",
+          "landing_target": "b_0110(alpha)",
+          "localization_O_xi_eta": null,
+          "on_critical_piece": false,
+          "steps_to_fixed_alpha": 3
+        },
+        {
+          "ambient_prime_ends": [
+            "23/48",
+            "25/48"
+          ],
+          "angles": [
+            "23/48",
+            "25/48"
+          ],
+          "ccw_sector_endpoints": [
+            [
+              "23/48",
+              "25/48"
+            ],
+            [
+              "25/48",
+              "23/48"
+            ]
+          ],
+          "eventual_point_period": 1,
+          "eventual_ray_period": 2,
+          "first_depth": 4,
+          "id": "23/48,25/48",
+          "image_pair": "1/24,23/24",
+          "inverse_branch_word": "0111",
+          "landing_target": "b_0111(alpha)",
+          "localization_O_xi_eta": null,
+          "on_critical_piece": false,
+          "steps_to_fixed_alpha": 4
+        },
+        {
+          "ambient_prime_ends": [
+            "35/48",
+            "37/48"
+          ],
+          "angles": [
+            "35/48",
+            "37/48"
+          ],
+          "ccw_sector_endpoints": [
+            [
+              "35/48",
+              "37/48"
+            ],
+            [
+              "37/48",
+              "35/48"
+            ]
+          ],
+          "eventual_point_period": 1,
+          "eventual_ray_period": 2,
+          "first_depth": 4,
+          "id": "35/48,37/48",
+          "image_pair": "11/24,13/24",
+          "inverse_branch_word": "1011",
+          "landing_target": "b_1011(alpha)",
+          "localization_O_xi_eta": null,
+          "on_critical_piece": true,
+          "steps_to_fixed_alpha": 4
+        }
+      ]
+    },
+    {
+      "critical_piece_boundary_pairs": [
+        "11/48,13/48",
+        "7/24,17/24",
+        "35/48,37/48",
+        "5/24,19/24"
+      ],
+      "cyclic_ray_order": [
+        "1/96",
+        "1/48",
+        "1/24",
+        "5/96",
+        "7/96",
+        "1/12",
+        "5/48",
+        "11/96",
+        "13/96",
+        "7/48",
+        "1/6",
+        "17/96",
+        "19/96",
+        "5/24",
+        "11/48",
+        "23/96",
+        "25/96",
+        "13/48",
+        "7/24",
+        "29/96",
+        "31/96",
+        "1/3",
+        "17/48",
+        "35/96",
+        "37/96",
+        "19/48",
+        "5/12",
+        "41/96",
+        "43/96",
+        "11/24",
+        "23/48",
+        "47/96",
+        "49/96",
+        "25/48",
+        "13/24",
+        "53/96",
+        "55/96",
+        "7/12",
+        "29/48",
+        "59/96",
+        "61/96",
+        "31/48",
+        "2/3",
+        "65/96",
+        "67/96",
+        "17/24",
+        "35/48",
+        "71/96",
+        "73/96",
+        "37/48",
+        "19/24",
+        "77/96",
+        "79/96",
+        "5/6",
+        "41/48",
+        "83/96",
+        "85/96",
+        "43/48",
+        "11/12",
+        "89/96",
+        "91/96",
+        "23/24",
+        "47/48",
+        "95/96"
+      ],
+      "equipotential_height_relative_to_base": "1/32",
+      "new_vertices": 16,
+      "puzzle_depth": 5,
+      "ray_count": 64,
+      "vertex_count": 32,
+      "vertices": [
+        {
+          "ambient_prime_ends": [
+            "1/96",
+            "95/96"
+          ],
+          "angles": [
+            "1/96",
+            "95/96"
+          ],
+          "ccw_sector_endpoints": [
+            [
+              "1/96",
+              "95/96"
+            ],
+            [
+              "95/96",
+              "1/96"
+            ]
+          ],
+          "eventual_point_period": 1,
+          "eventual_ray_period": 2,
+          "first_depth": 5,
+          "id": "1/96,95/96",
+          "image_pair": "1/48,47/48",
+          "inverse_branch_word": "11111",
+          "landing_target": "b_11111(alpha)",
+          "localization_O_xi_eta": null,
+          "on_critical_piece": false,
+          "steps_to_fixed_alpha": 5
+        },
+        {
+          "ambient_prime_ends": [
+            "1/48",
+            "47/48"
+          ],
+          "angles": [
+            "1/48",
+            "47/48"
+          ],
+          "ccw_sector_endpoints": [
+            [
+              "1/48",
+              "47/48"
+            ],
+            [
+              "47/48",
+              "1/48"
+            ]
+          ],
+          "eventual_point_period": 1,
+          "eventual_ray_period": 2,
+          "first_depth": 4,
+          "id": "1/48,47/48",
+          "image_pair": "1/24,23/24",
+          "inverse_branch_word": "11110",
+          "landing_target": "b_11110(alpha)",
+          "localization_O_xi_eta": null,
+          "on_critical_piece": false,
+          "steps_to_fixed_alpha": 4
+        },
+        {
+          "ambient_prime_ends": [
+            "1/24",
+            "23/24"
+          ],
+          "angles": [
+            "1/24",
+            "23/24"
+          ],
+          "ccw_sector_endpoints": [
+            [
+              "1/24",
+              "23/24"
+            ],
+            [
+              "23/24",
+              "1/24"
+            ]
+          ],
+          "eventual_point_period": 1,
+          "eventual_ray_period": 2,
+          "first_depth": 3,
+          "id": "1/24,23/24",
+          "image_pair": "1/12,11/12",
+          "inverse_branch_word": "11100",
+          "landing_target": "b_11100(alpha)",
+          "localization_O_xi_eta": null,
+          "on_critical_piece": false,
+          "steps_to_fixed_alpha": 3
+        },
+        {
+          "ambient_prime_ends": [
+            "5/96",
+            "91/96"
+          ],
+          "angles": [
+            "5/96",
+            "91/96"
+          ],
+          "ccw_sector_endpoints": [
+            [
+              "5/96",
+              "91/96"
+            ],
+            [
+              "91/96",
+              "5/96"
+            ]
+          ],
+          "eventual_point_period": 1,
+          "eventual_ray_period": 2,
+          "first_depth": 5,
+          "id": "5/96,91/96",
+          "image_pair": "5/48,43/48",
+          "inverse_branch_word": "11101",
+          "landing_target": "b_11101(alpha)",
+          "localization_O_xi_eta": null,
+          "on_critical_piece": false,
+          "steps_to_fixed_alpha": 5
+        },
+        {
+          "ambient_prime_ends": [
+            "7/96",
+            "89/96"
+          ],
+          "angles": [
+            "7/96",
+            "89/96"
+          ],
+          "ccw_sector_endpoints": [
+            [
+              "7/96",
+              "89/96"
+            ],
+            [
+              "89/96",
+              "7/96"
+            ]
+          ],
+          "eventual_point_period": 1,
+          "eventual_ray_period": 2,
+          "first_depth": 5,
+          "id": "7/96,89/96",
+          "image_pair": "7/48,41/48",
+          "inverse_branch_word": "11001",
+          "landing_target": "b_11001(alpha)",
+          "localization_O_xi_eta": null,
+          "on_critical_piece": false,
+          "steps_to_fixed_alpha": 5
+        },
+        {
+          "ambient_prime_ends": [
+            "1/12",
+            "11/12"
+          ],
+          "angles": [
+            "1/12",
+            "11/12"
+          ],
+          "ccw_sector_endpoints": [
+            [
+              "1/12",
+              "11/12"
+            ],
+            [
+              "11/12",
+              "1/12"
+            ]
+          ],
+          "eventual_point_period": 1,
+          "eventual_ray_period": 2,
+          "first_depth": 2,
+          "id": "1/12,11/12",
+          "image_pair": "1/6,5/6",
+          "inverse_branch_word": "11000",
+          "landing_target": "b_11000(alpha)",
+          "localization_O_xi_eta": null,
+          "on_critical_piece": false,
+          "steps_to_fixed_alpha": 2
+        },
+        {
+          "ambient_prime_ends": [
+            "5/48",
+            "43/48"
+          ],
+          "angles": [
+            "5/48",
+            "43/48"
+          ],
+          "ccw_sector_endpoints": [
+            [
+              "5/48",
+              "43/48"
+            ],
+            [
+              "43/48",
+              "5/48"
+            ]
+          ],
+          "eventual_point_period": 1,
+          "eventual_ray_period": 2,
+          "first_depth": 4,
+          "id": "5/48,43/48",
+          "image_pair": "5/24,19/24",
+          "inverse_branch_word": "11010",
+          "landing_target": "b_11010(alpha)",
+          "localization_O_xi_eta": null,
+          "on_critical_piece": false,
+          "steps_to_fixed_alpha": 4
+        },
+        {
+          "ambient_prime_ends": [
+            "11/96",
+            "13/96"
+          ],
+          "angles": [
+            "11/96",
+            "13/96"
+          ],
+          "ccw_sector_endpoints": [
+            [
+              "11/96",
+              "13/96"
+            ],
+            [
+              "13/96",
+              "11/96"
+            ]
+          ],
+          "eventual_point_period": 1,
+          "eventual_ray_period": 2,
+          "first_depth": 5,
+          "id": "11/96,13/96",
+          "image_pair": "11/48,13/48",
+          "inverse_branch_word": "10011",
+          "landing_target": "b_10011(alpha)",
+          "localization_O_xi_eta": null,
+          "on_critical_piece": false,
+          "steps_to_fixed_alpha": 5
+        },
+        {
+          "ambient_prime_ends": [
+            "7/48",
+            "41/48"
+          ],
+          "angles": [
+            "7/48",
+            "41/48"
+          ],
+          "ccw_sector_endpoints": [
+            [
+              "7/48",
+              "41/48"
+            ],
+            [
+              "41/48",
+              "7/48"
+            ]
+          ],
+          "eventual_point_period": 1,
+          "eventual_ray_period": 2,
+          "first_depth": 4,
+          "id": "7/48,41/48",
+          "image_pair": "7/24,17/24",
+          "inverse_branch_word": "10010",
+          "landing_target": "b_10010(alpha)",
+          "localization_O_xi_eta": null,
+          "on_critical_piece": false,
+          "steps_to_fixed_alpha": 4
+        },
+        {
+          "ambient_prime_ends": [
+            "1/6",
+            "5/6"
+          ],
+          "angles": [
+            "1/6",
+            "5/6"
+          ],
+          "ccw_sector_endpoints": [
+            [
+              "1/6",
+              "5/6"
+            ],
+            [
+              "5/6",
+              "1/6"
+            ]
+          ],
+          "eventual_point_period": 1,
+          "eventual_ray_period": 2,
+          "first_depth": 1,
+          "id": "1/6,5/6",
+          "image_pair": "1/3,2/3",
+          "inverse_branch_word": "10000",
+          "landing_target": "b_10000(alpha)",
+          "localization_O_xi_eta": null,
+          "on_critical_piece": false,
+          "steps_to_fixed_alpha": 1
+        },
+        {
+          "ambient_prime_ends": [
+            "17/96",
+            "79/96"
+          ],
+          "angles": [
+            "17/96",
+            "79/96"
+          ],
+          "ccw_sector_endpoints": [
+            [
+              "17/96",
+              "79/96"
+            ],
+            [
+              "79/96",
+              "17/96"
+            ]
+          ],
+          "eventual_point_period": 1,
+          "eventual_ray_period": 2,
+          "first_depth": 5,
+          "id": "17/96,79/96",
+          "image_pair": "17/48,31/48",
+          "inverse_branch_word": "10001",
+          "landing_target": "b_10001(alpha)",
+          "localization_O_xi_eta": null,
+          "on_critical_piece": false,
+          "steps_to_fixed_alpha": 5
+        },
+        {
+          "ambient_prime_ends": [
+            "19/96",
+            "77/96"
+          ],
+          "angles": [
+            "19/96",
+            "77/96"
+          ],
+          "ccw_sector_endpoints": [
+            [
+              "19/96",
+              "77/96"
+            ],
+            [
+              "77/96",
+              "19/96"
+            ]
+          ],
+          "eventual_point_period": 1,
+          "eventual_ray_period": 2,
+          "first_depth": 5,
+          "id": "19/96,77/96",
+          "image_pair": "19/48,29/48",
+          "inverse_branch_word": "10101",
+          "landing_target": "b_10101(alpha)",
+          "localization_O_xi_eta": null,
+          "on_critical_piece": false,
+          "steps_to_fixed_alpha": 5
+        },
+        {
+          "ambient_prime_ends": [
+            "5/24",
+            "19/24"
+          ],
+          "angles": [
+            "5/24",
+            "19/24"
+          ],
+          "ccw_sector_endpoints": [
+            [
+              "5/24",
+              "19/24"
+            ],
+            [
+              "19/24",
+              "5/24"
+            ]
+          ],
+          "eventual_point_period": 1,
+          "eventual_ray_period": 2,
+          "first_depth": 3,
+          "id": "5/24,19/24",
+          "image_pair": "5/12,7/12",
+          "inverse_branch_word": "10100",
+          "landing_target": "b_10100(alpha)",
+          "localization_O_xi_eta": null,
+          "on_critical_piece": true,
+          "steps_to_fixed_alpha": 3
+        },
+        {
+          "ambient_prime_ends": [
+            "11/48",
+            "13/48"
+          ],
+          "angles": [
+            "11/48",
+            "13/48"
+          ],
+          "ccw_sector_endpoints": [
+            [
+              "11/48",
+              "13/48"
+            ],
+            [
+              "13/48",
+              "11/48"
+            ]
+          ],
+          "eventual_point_period": 1,
+          "eventual_ray_period": 2,
+          "first_depth": 4,
+          "id": "11/48,13/48",
+          "image_pair": "11/24,13/24",
+          "inverse_branch_word": "00110",
+          "landing_target": "b_00110(alpha)",
+          "localization_O_xi_eta": null,
+          "on_critical_piece": true,
+          "steps_to_fixed_alpha": 4
+        },
+        {
+          "ambient_prime_ends": [
+            "23/96",
+            "25/96"
+          ],
+          "angles": [
+            "23/96",
+            "25/96"
+          ],
+          "ccw_sector_endpoints": [
+            [
+              "23/96",
+              "25/96"
+            ],
+            [
+              "25/96",
+              "23/96"
+            ]
+          ],
+          "eventual_point_period": 1,
+          "eventual_ray_period": 2,
+          "first_depth": 5,
+          "id": "23/96,25/96",
+          "image_pair": "23/48,25/48",
+          "inverse_branch_word": "00111",
+          "landing_target": "b_00111(alpha)",
+          "localization_O_xi_eta": null,
+          "on_critical_piece": false,
+          "steps_to_fixed_alpha": 5
+        },
+        {
+          "ambient_prime_ends": [
+            "7/24",
+            "17/24"
+          ],
+          "angles": [
+            "7/24",
+            "17/24"
+          ],
+          "ccw_sector_endpoints": [
+            [
+              "7/24",
+              "17/24"
+            ],
+            [
+              "17/24",
+              "7/24"
+            ]
+          ],
+          "eventual_point_period": 1,
+          "eventual_ray_period": 2,
+          "first_depth": 3,
+          "id": "7/24,17/24",
+          "image_pair": "5/12,7/12",
+          "inverse_branch_word": "00100",
+          "landing_target": "b_00100(alpha)",
+          "localization_O_xi_eta": null,
+          "on_critical_piece": true,
+          "steps_to_fixed_alpha": 3
+        },
+        {
+          "ambient_prime_ends": [
+            "29/96",
+            "67/96"
+          ],
+          "angles": [
+            "29/96",
+            "67/96"
+          ],
+          "ccw_sector_endpoints": [
+            [
+              "29/96",
+              "67/96"
+            ],
+            [
+              "67/96",
+              "29/96"
+            ]
+          ],
+          "eventual_point_period": 1,
+          "eventual_ray_period": 2,
+          "first_depth": 5,
+          "id": "29/96,67/96",
+          "image_pair": "19/48,29/48",
+          "inverse_branch_word": "00101",
+          "landing_target": "b_00101(alpha)",
+          "localization_O_xi_eta": null,
+          "on_critical_piece": false,
+          "steps_to_fixed_alpha": 5
+        },
+        {
+          "ambient_prime_ends": [
+            "31/96",
+            "65/96"
+          ],
+          "angles": [
+            "31/96",
+            "65/96"
+          ],
+          "ccw_sector_endpoints": [
+            [
+              "31/96",
+              "65/96"
+            ],
+            [
+              "65/96",
+              "31/96"
+            ]
+          ],
+          "eventual_point_period": 1,
+          "eventual_ray_period": 2,
+          "first_depth": 5,
+          "id": "31/96,65/96",
+          "image_pair": "17/48,31/48",
+          "inverse_branch_word": "00001",
+          "landing_target": "b_00001(alpha)",
+          "localization_O_xi_eta": null,
+          "on_critical_piece": false,
+          "steps_to_fixed_alpha": 5
+        },
+        {
+          "ambient_prime_ends": [
+            "1/3",
+            "2/3"
+          ],
+          "angles": [
+            "1/3",
+            "2/3"
+          ],
+          "ccw_sector_endpoints": [
+            [
+              "1/3",
+              "2/3"
+            ],
+            [
+              "2/3",
+              "1/3"
+            ]
+          ],
+          "eventual_point_period": 1,
+          "eventual_ray_period": 2,
+          "first_depth": 0,
+          "id": "1/3,2/3",
+          "image_pair": "1/3,2/3",
+          "inverse_branch_word": "00000",
+          "landing_target": "b_00000(alpha)",
+          "localization_O_xi_eta": null,
+          "on_critical_piece": false,
+          "steps_to_fixed_alpha": 0
+        },
+        {
+          "ambient_prime_ends": [
+            "17/48",
+            "31/48"
+          ],
+          "angles": [
+            "17/48",
+            "31/48"
+          ],
+          "ccw_sector_endpoints": [
+            [
+              "17/48",
+              "31/48"
+            ],
+            [
+              "31/48",
+              "17/48"
+            ]
+          ],
+          "eventual_point_period": 1,
+          "eventual_ray_period": 2,
+          "first_depth": 4,
+          "id": "17/48,31/48",
+          "image_pair": "7/24,17/24",
+          "inverse_branch_word": "00010",
+          "landing_target": "b_00010(alpha)",
+          "localization_O_xi_eta": null,
+          "on_critical_piece": false,
+          "steps_to_fixed_alpha": 4
+        },
+        {
+          "ambient_prime_ends": [
+            "35/96",
+            "37/96"
+          ],
+          "angles": [
+            "35/96",
+            "37/96"
+          ],
+          "ccw_sector_endpoints": [
+            [
+              "35/96",
+              "37/96"
+            ],
+            [
+              "37/96",
+              "35/96"
+            ]
+          ],
+          "eventual_point_period": 1,
+          "eventual_ray_period": 2,
+          "first_depth": 5,
+          "id": "35/96,37/96",
+          "image_pair": "35/48,37/48",
+          "inverse_branch_word": "01011",
+          "landing_target": "b_01011(alpha)",
+          "localization_O_xi_eta": null,
+          "on_critical_piece": false,
+          "steps_to_fixed_alpha": 5
+        },
+        {
+          "ambient_prime_ends": [
+            "19/48",
+            "29/48"
+          ],
+          "angles": [
+            "19/48",
+            "29/48"
+          ],
+          "ccw_sector_endpoints": [
+            [
+              "19/48",
+              "29/48"
+            ],
+            [
+              "29/48",
+              "19/48"
+            ]
+          ],
+          "eventual_point_period": 1,
+          "eventual_ray_period": 2,
+          "first_depth": 4,
+          "id": "19/48,29/48",
+          "image_pair": "5/24,19/24",
+          "inverse_branch_word": "01010",
+          "landing_target": "b_01010(alpha)",
+          "localization_O_xi_eta": null,
+          "on_critical_piece": false,
+          "steps_to_fixed_alpha": 4
+        },
+        {
+          "ambient_prime_ends": [
+            "5/12",
+            "7/12"
+          ],
+          "angles": [
+            "5/12",
+            "7/12"
+          ],
+          "ccw_sector_endpoints": [
+            [
+              "5/12",
+              "7/12"
+            ],
+            [
+              "7/12",
+              "5/12"
+            ]
+          ],
+          "eventual_point_period": 1,
+          "eventual_ray_period": 2,
+          "first_depth": 2,
+          "id": "5/12,7/12",
+          "image_pair": "1/6,5/6",
+          "inverse_branch_word": "01000",
+          "landing_target": "b_01000(alpha)",
+          "localization_O_xi_eta": null,
+          "on_critical_piece": false,
+          "steps_to_fixed_alpha": 2
+        },
+        {
+          "ambient_prime_ends": [
+            "41/96",
+            "55/96"
+          ],
+          "angles": [
+            "41/96",
+            "55/96"
+          ],
+          "ccw_sector_endpoints": [
+            [
+              "41/96",
+              "55/96"
+            ],
+            [
+              "55/96",
+              "41/96"
+            ]
+          ],
+          "eventual_point_period": 1,
+          "eventual_ray_period": 2,
+          "first_depth": 5,
+          "id": "41/96,55/96",
+          "image_pair": "7/48,41/48",
+          "inverse_branch_word": "01001",
+          "landing_target": "b_01001(alpha)",
+          "localization_O_xi_eta": null,
+          "on_critical_piece": false,
+          "steps_to_fixed_alpha": 5
+        },
+        {
+          "ambient_prime_ends": [
+            "43/96",
+            "53/96"
+          ],
+          "angles": [
+            "43/96",
+            "53/96"
+          ],
+          "ccw_sector_endpoints": [
+            [
+              "43/96",
+              "53/96"
+            ],
+            [
+              "53/96",
+              "43/96"
+            ]
+          ],
+          "eventual_point_period": 1,
+          "eventual_ray_period": 2,
+          "first_depth": 5,
+          "id": "43/96,53/96",
+          "image_pair": "5/48,43/48",
+          "inverse_branch_word": "01101",
+          "landing_target": "b_01101(alpha)",
+          "localization_O_xi_eta": null,
+          "on_critical_piece": false,
+          "steps_to_fixed_alpha": 5
+        },
+        {
+          "ambient_prime_ends": [
+            "11/24",
+            "13/24"
+          ],
+          "angles": [
+            "11/24",
+            "13/24"
+          ],
+          "ccw_sector_endpoints": [
+            [
+              "11/24",
+              "13/24"
+            ],
+            [
+              "13/24",
+              "11/24"
+            ]
+          ],
+          "eventual_point_period": 1,
+          "eventual_ray_period": 2,
+          "first_depth": 3,
+          "id": "11/24,13/24",
+          "image_pair": "1/12,11/12",
+          "inverse_branch_word": "01100",
+          "landing_target": "b_01100(alpha)",
+          "localization_O_xi_eta": null,
+          "on_critical_piece": false,
+          "steps_to_fixed_alpha": 3
+        },
+        {
+          "ambient_prime_ends": [
+            "23/48",
+            "25/48"
+          ],
+          "angles": [
+            "23/48",
+            "25/48"
+          ],
+          "ccw_sector_endpoints": [
+            [
+              "23/48",
+              "25/48"
+            ],
+            [
+              "25/48",
+              "23/48"
+            ]
+          ],
+          "eventual_point_period": 1,
+          "eventual_ray_period": 2,
+          "first_depth": 4,
+          "id": "23/48,25/48",
+          "image_pair": "1/24,23/24",
+          "inverse_branch_word": "01110",
+          "landing_target": "b_01110(alpha)",
+          "localization_O_xi_eta": null,
+          "on_critical_piece": false,
+          "steps_to_fixed_alpha": 4
+        },
+        {
+          "ambient_prime_ends": [
+            "47/96",
+            "49/96"
+          ],
+          "angles": [
+            "47/96",
+            "49/96"
+          ],
+          "ccw_sector_endpoints": [
+            [
+              "47/96",
+              "49/96"
+            ],
+            [
+              "49/96",
+              "47/96"
+            ]
+          ],
+          "eventual_point_period": 1,
+          "eventual_ray_period": 2,
+          "first_depth": 5,
+          "id": "47/96,49/96",
+          "image_pair": "1/48,47/48",
+          "inverse_branch_word": "01111",
+          "landing_target": "b_01111(alpha)",
+          "localization_O_xi_eta": null,
+          "on_critical_piece": false,
+          "steps_to_fixed_alpha": 5
+        },
+        {
+          "ambient_prime_ends": [
+            "59/96",
+            "61/96"
+          ],
+          "angles": [
+            "59/96",
+            "61/96"
+          ],
+          "ccw_sector_endpoints": [
+            [
+              "59/96",
+              "61/96"
+            ],
+            [
+              "61/96",
+              "59/96"
+            ]
+          ],
+          "eventual_point_period": 1,
+          "eventual_ray_period": 2,
+          "first_depth": 5,
+          "id": "59/96,61/96",
+          "image_pair": "11/48,13/48",
+          "inverse_branch_word": "00011",
+          "landing_target": "b_00011(alpha)",
+          "localization_O_xi_eta": null,
+          "on_critical_piece": false,
+          "steps_to_fixed_alpha": 5
+        },
+        {
+          "ambient_prime_ends": [
+            "35/48",
+            "37/48"
+          ],
+          "angles": [
+            "35/48",
+            "37/48"
+          ],
+          "ccw_sector_endpoints": [
+            [
+              "35/48",
+              "37/48"
+            ],
+            [
+              "37/48",
+              "35/48"
+            ]
+          ],
+          "eventual_point_period": 1,
+          "eventual_ray_period": 2,
+          "first_depth": 4,
+          "id": "35/48,37/48",
+          "image_pair": "11/24,13/24",
+          "inverse_branch_word": "10110",
+          "landing_target": "b_10110(alpha)",
+          "localization_O_xi_eta": null,
+          "on_critical_piece": true,
+          "steps_to_fixed_alpha": 4
+        },
+        {
+          "ambient_prime_ends": [
+            "71/96",
+            "73/96"
+          ],
+          "angles": [
+            "71/96",
+            "73/96"
+          ],
+          "ccw_sector_endpoints": [
+            [
+              "71/96",
+              "73/96"
+            ],
+            [
+              "73/96",
+              "71/96"
+            ]
+          ],
+          "eventual_point_period": 1,
+          "eventual_ray_period": 2,
+          "first_depth": 5,
+          "id": "71/96,73/96",
+          "image_pair": "23/48,25/48",
+          "inverse_branch_word": "10111",
+          "landing_target": "b_10111(alpha)",
+          "localization_O_xi_eta": null,
+          "on_critical_piece": false,
+          "steps_to_fixed_alpha": 5
+        },
+        {
+          "ambient_prime_ends": [
+            "83/96",
+            "85/96"
+          ],
+          "angles": [
+            "83/96",
+            "85/96"
+          ],
+          "ccw_sector_endpoints": [
+            [
+              "83/96",
+              "85/96"
+            ],
+            [
+              "85/96",
+              "83/96"
+            ]
+          ],
+          "eventual_point_period": 1,
+          "eventual_ray_period": 2,
+          "first_depth": 5,
+          "id": "83/96,85/96",
+          "image_pair": "35/48,37/48",
+          "inverse_branch_word": "11011",
+          "landing_target": "b_11011(alpha)",
+          "localization_O_xi_eta": null,
+          "on_critical_piece": false,
+          "steps_to_fixed_alpha": 5
+        }
+      ]
+    },
+    {
+      "critical_piece_boundary_pairs": [
+        "43/192,53/192",
+        "55/192,137/192",
+        "139/192,149/192",
+        "41/192,151/192"
+      ],
+      "cyclic_ray_order": [
+        "1/192",
+        "1/96",
+        "1/48",
+        "5/192",
+        "7/192",
+        "1/24",
+        "5/96",
+        "11/192",
+        "13/192",
+        "7/96",
+        "1/12",
+        "17/192",
+        "19/192",
+        "5/48",
+        "11/96",
+        "23/192",
+        "25/192",
+        "13/96",
+        "7/48",
+        "29/192",
+        "31/192",
+        "1/6",
+        "17/96",
+        "35/192",
+        "37/192",
+        "19/96",
+        "5/24",
+        "41/192",
+        "43/192",
+        "11/48",
+        "23/96",
+        "47/192",
+        "49/192",
+        "25/96",
+        "13/48",
+        "53/192",
+        "55/192",
+        "7/24",
+        "29/96",
+        "59/192",
+        "61/192",
+        "31/96",
+        "1/3",
+        "65/192",
+        "67/192",
+        "17/48",
+        "35/96",
+        "71/192",
+        "73/192",
+        "37/96",
+        "19/48",
+        "77/192",
+        "79/192",
+        "5/12",
+        "41/96",
+        "83/192",
+        "85/192",
+        "43/96",
+        "11/24",
+        "89/192",
+        "91/192",
+        "23/48",
+        "47/96",
+        "95/192",
+        "97/192",
+        "49/96",
+        "25/48",
+        "101/192",
+        "103/192",
+        "13/24",
+        "53/96",
+        "107/192",
+        "109/192",
+        "55/96",
+        "7/12",
+        "113/192",
+        "115/192",
+        "29/48",
+        "59/96",
+        "119/192",
+        "121/192",
+        "61/96",
+        "31/48",
+        "125/192",
+        "127/192",
+        "2/3",
+        "65/96",
+        "131/192",
+        "133/192",
+        "67/96",
+        "17/24",
+        "137/192",
+        "139/192",
+        "35/48",
+        "71/96",
+        "143/192",
+        "145/192",
+        "73/96",
+        "37/48",
+        "149/192",
+        "151/192",
+        "19/24",
+        "77/96",
+        "155/192",
+        "157/192",
+        "79/96",
+        "5/6",
+        "161/192",
+        "163/192",
+        "41/48",
+        "83/96",
+        "167/192",
+        "169/192",
+        "85/96",
+        "43/48",
+        "173/192",
+        "175/192",
+        "11/12",
+        "89/96",
+        "179/192",
+        "181/192",
+        "91/96",
+        "23/24",
+        "185/192",
+        "187/192",
+        "47/48",
+        "95/96",
+        "191/192"
+      ],
+      "equipotential_height_relative_to_base": "1/64",
+      "new_vertices": 32,
+      "puzzle_depth": 6,
+      "ray_count": 128,
+      "vertex_count": 64,
+      "vertices": [
+        {
+          "ambient_prime_ends": [
+            "1/192",
+            "191/192"
+          ],
+          "angles": [
+            "1/192",
+            "191/192"
+          ],
+          "ccw_sector_endpoints": [
+            [
+              "1/192",
+              "191/192"
+            ],
+            [
+              "191/192",
+              "1/192"
+            ]
+          ],
+          "eventual_point_period": 1,
+          "eventual_ray_period": 2,
+          "first_depth": 6,
+          "id": "1/192,191/192",
+          "image_pair": "1/96,95/96",
+          "inverse_branch_word": "111111",
+          "landing_target": "b_111111(alpha)",
+          "localization_O_xi_eta": null,
+          "on_critical_piece": false,
+          "steps_to_fixed_alpha": 6
+        },
+        {
+          "ambient_prime_ends": [
+            "1/96",
+            "95/96"
+          ],
+          "angles": [
+            "1/96",
+            "95/96"
+          ],
+          "ccw_sector_endpoints": [
+            [
+              "1/96",
+              "95/96"
+            ],
+            [
+              "95/96",
+              "1/96"
+            ]
+          ],
+          "eventual_point_period": 1,
+          "eventual_ray_period": 2,
+          "first_depth": 5,
+          "id": "1/96,95/96",
+          "image_pair": "1/48,47/48",
+          "inverse_branch_word": "111110",
+          "landing_target": "b_111110(alpha)",
+          "localization_O_xi_eta": null,
+          "on_critical_piece": false,
+          "steps_to_fixed_alpha": 5
+        },
+        {
+          "ambient_prime_ends": [
+            "1/48",
+            "47/48"
+          ],
+          "angles": [
+            "1/48",
+            "47/48"
+          ],
+          "ccw_sector_endpoints": [
+            [
+              "1/48",
+              "47/48"
+            ],
+            [
+              "47/48",
+              "1/48"
+            ]
+          ],
+          "eventual_point_period": 1,
+          "eventual_ray_period": 2,
+          "first_depth": 4,
+          "id": "1/48,47/48",
+          "image_pair": "1/24,23/24",
+          "inverse_branch_word": "111100",
+          "landing_target": "b_111100(alpha)",
+          "localization_O_xi_eta": null,
+          "on_critical_piece": false,
+          "steps_to_fixed_alpha": 4
+        },
+        {
+          "ambient_prime_ends": [
+            "5/192",
+            "187/192"
+          ],
+          "angles": [
+            "5/192",
+            "187/192"
+          ],
+          "ccw_sector_endpoints": [
+            [
+              "5/192",
+              "187/192"
+            ],
+            [
+              "187/192",
+              "5/192"
+            ]
+          ],
+          "eventual_point_period": 1,
+          "eventual_ray_period": 2,
+          "first_depth": 6,
+          "id": "5/192,187/192",
+          "image_pair": "5/96,91/96",
+          "inverse_branch_word": "111101",
+          "landing_target": "b_111101(alpha)",
+          "localization_O_xi_eta": null,
+          "on_critical_piece": false,
+          "steps_to_fixed_alpha": 6
+        },
+        {
+          "ambient_prime_ends": [
+            "7/192",
+            "185/192"
+          ],
+          "angles": [
+            "7/192",
+            "185/192"
+          ],
+          "ccw_sector_endpoints": [
+            [
+              "7/192",
+              "185/192"
+            ],
+            [
+              "185/192",
+              "7/192"
+            ]
+          ],
+          "eventual_point_period": 1,
+          "eventual_ray_period": 2,
+          "first_depth": 6,
+          "id": "7/192,185/192",
+          "image_pair": "7/96,89/96",
+          "inverse_branch_word": "111001",
+          "landing_target": "b_111001(alpha)",
+          "localization_O_xi_eta": null,
+          "on_critical_piece": false,
+          "steps_to_fixed_alpha": 6
+        },
+        {
+          "ambient_prime_ends": [
+            "1/24",
+            "23/24"
+          ],
+          "angles": [
+            "1/24",
+            "23/24"
+          ],
+          "ccw_sector_endpoints": [
+            [
+              "1/24",
+              "23/24"
+            ],
+            [
+              "23/24",
+              "1/24"
+            ]
+          ],
+          "eventual_point_period": 1,
+          "eventual_ray_period": 2,
+          "first_depth": 3,
+          "id": "1/24,23/24",
+          "image_pair": "1/12,11/12",
+          "inverse_branch_word": "111000",
+          "landing_target": "b_111000(alpha)",
+          "localization_O_xi_eta": null,
+          "on_critical_piece": false,
+          "steps_to_fixed_alpha": 3
+        },
+        {
+          "ambient_prime_ends": [
+            "5/96",
+            "91/96"
+          ],
+          "angles": [
+            "5/96",
+            "91/96"
+          ],
+          "ccw_sector_endpoints": [
+            [
+              "5/96",
+              "91/96"
+            ],
+            [
+              "91/96",
+              "5/96"
+            ]
+          ],
+          "eventual_point_period": 1,
+          "eventual_ray_period": 2,
+          "first_depth": 5,
+          "id": "5/96,91/96",
+          "image_pair": "5/48,43/48",
+          "inverse_branch_word": "111010",
+          "landing_target": "b_111010(alpha)",
+          "localization_O_xi_eta": null,
+          "on_critical_piece": false,
+          "steps_to_fixed_alpha": 5
+        },
+        {
+          "ambient_prime_ends": [
+            "11/192",
+            "13/192"
+          ],
+          "angles": [
+            "11/192",
+            "13/192"
+          ],
+          "ccw_sector_endpoints": [
+            [
+              "11/192",
+              "13/192"
+            ],
+            [
+              "13/192",
+              "11/192"
+            ]
+          ],
+          "eventual_point_period": 1,
+          "eventual_ray_period": 2,
+          "first_depth": 6,
+          "id": "11/192,13/192",
+          "image_pair": "11/96,13/96",
+          "inverse_branch_word": "110011",
+          "landing_target": "b_110011(alpha)",
+          "localization_O_xi_eta": null,
+          "on_critical_piece": false,
+          "steps_to_fixed_alpha": 6
+        },
+        {
+          "ambient_prime_ends": [
+            "7/96",
+            "89/96"
+          ],
+          "angles": [
+            "7/96",
+            "89/96"
+          ],
+          "ccw_sector_endpoints": [
+            [
+              "7/96",
+              "89/96"
+            ],
+            [
+              "89/96",
+              "7/96"
+            ]
+          ],
+          "eventual_point_period": 1,
+          "eventual_ray_period": 2,
+          "first_depth": 5,
+          "id": "7/96,89/96",
+          "image_pair": "7/48,41/48",
+          "inverse_branch_word": "110010",
+          "landing_target": "b_110010(alpha)",
+          "localization_O_xi_eta": null,
+          "on_critical_piece": false,
+          "steps_to_fixed_alpha": 5
+        },
+        {
+          "ambient_prime_ends": [
+            "1/12",
+            "11/12"
+          ],
+          "angles": [
+            "1/12",
+            "11/12"
+          ],
+          "ccw_sector_endpoints": [
+            [
+              "1/12",
+              "11/12"
+            ],
+            [
+              "11/12",
+              "1/12"
+            ]
+          ],
+          "eventual_point_period": 1,
+          "eventual_ray_period": 2,
+          "first_depth": 2,
+          "id": "1/12,11/12",
+          "image_pair": "1/6,5/6",
+          "inverse_branch_word": "110000",
+          "landing_target": "b_110000(alpha)",
+          "localization_O_xi_eta": null,
+          "on_critical_piece": false,
+          "steps_to_fixed_alpha": 2
+        },
+        {
+          "ambient_prime_ends": [
+            "17/192",
+            "175/192"
+          ],
+          "angles": [
+            "17/192",
+            "175/192"
+          ],
+          "ccw_sector_endpoints": [
+            [
+              "17/192",
+              "175/192"
+            ],
+            [
+              "175/192",
+              "17/192"
+            ]
+          ],
+          "eventual_point_period": 1,
+          "eventual_ray_period": 2,
+          "first_depth": 6,
+          "id": "17/192,175/192",
+          "image_pair": "17/96,79/96",
+          "inverse_branch_word": "110001",
+          "landing_target": "b_110001(alpha)",
+          "localization_O_xi_eta": null,
+          "on_critical_piece": false,
+          "steps_to_fixed_alpha": 6
+        },
+        {
+          "ambient_prime_ends": [
+            "19/192",
+            "173/192"
+          ],
+          "angles": [
+            "19/192",
+            "173/192"
+          ],
+          "ccw_sector_endpoints": [
+            [
+              "19/192",
+              "173/192"
+            ],
+            [
+              "173/192",
+              "19/192"
+            ]
+          ],
+          "eventual_point_period": 1,
+          "eventual_ray_period": 2,
+          "first_depth": 6,
+          "id": "19/192,173/192",
+          "image_pair": "19/96,77/96",
+          "inverse_branch_word": "110101",
+          "landing_target": "b_110101(alpha)",
+          "localization_O_xi_eta": null,
+          "on_critical_piece": false,
+          "steps_to_fixed_alpha": 6
+        },
+        {
+          "ambient_prime_ends": [
+            "5/48",
+            "43/48"
+          ],
+          "angles": [
+            "5/48",
+            "43/48"
+          ],
+          "ccw_sector_endpoints": [
+            [
+              "5/48",
+              "43/48"
+            ],
+            [
+              "43/48",
+              "5/48"
+            ]
+          ],
+          "eventual_point_period": 1,
+          "eventual_ray_period": 2,
+          "first_depth": 4,
+          "id": "5/48,43/48",
+          "image_pair": "5/24,19/24",
+          "inverse_branch_word": "110100",
+          "landing_target": "b_110100(alpha)",
+          "localization_O_xi_eta": null,
+          "on_critical_piece": false,
+          "steps_to_fixed_alpha": 4
+        },
+        {
+          "ambient_prime_ends": [
+            "11/96",
+            "13/96"
+          ],
+          "angles": [
+            "11/96",
+            "13/96"
+          ],
+          "ccw_sector_endpoints": [
+            [
+              "11/96",
+              "13/96"
+            ],
+            [
+              "13/96",
+              "11/96"
+            ]
+          ],
+          "eventual_point_period": 1,
+          "eventual_ray_period": 2,
+          "first_depth": 5,
+          "id": "11/96,13/96",
+          "image_pair": "11/48,13/48",
+          "inverse_branch_word": "100110",
+          "landing_target": "b_100110(alpha)",
+          "localization_O_xi_eta": null,
+          "on_critical_piece": false,
+          "steps_to_fixed_alpha": 5
+        },
+        {
+          "ambient_prime_ends": [
+            "23/192",
+            "25/192"
+          ],
+          "angles": [
+            "23/192",
+            "25/192"
+          ],
+          "ccw_sector_endpoints": [
+            [
+              "23/192",
+              "25/192"
+            ],
+            [
+              "25/192",
+              "23/192"
+            ]
+          ],
+          "eventual_point_period": 1,
+          "eventual_ray_period": 2,
+          "first_depth": 6,
+          "id": "23/192,25/192",
+          "image_pair": "23/96,25/96",
+          "inverse_branch_word": "100111",
+          "landing_target": "b_100111(alpha)",
+          "localization_O_xi_eta": null,
+          "on_critical_piece": false,
+          "steps_to_fixed_alpha": 6
+        },
+        {
+          "ambient_prime_ends": [
+            "7/48",
+            "41/48"
+          ],
+          "angles": [
+            "7/48",
+            "41/48"
+          ],
+          "ccw_sector_endpoints": [
+            [
+              "7/48",
+              "41/48"
+            ],
+            [
+              "41/48",
+              "7/48"
+            ]
+          ],
+          "eventual_point_period": 1,
+          "eventual_ray_period": 2,
+          "first_depth": 4,
+          "id": "7/48,41/48",
+          "image_pair": "7/24,17/24",
+          "inverse_branch_word": "100100",
+          "landing_target": "b_100100(alpha)",
+          "localization_O_xi_eta": null,
+          "on_critical_piece": false,
+          "steps_to_fixed_alpha": 4
+        },
+        {
+          "ambient_prime_ends": [
+            "29/192",
+            "163/192"
+          ],
+          "angles": [
+            "29/192",
+            "163/192"
+          ],
+          "ccw_sector_endpoints": [
+            [
+              "29/192",
+              "163/192"
+            ],
+            [
+              "163/192",
+              "29/192"
+            ]
+          ],
+          "eventual_point_period": 1,
+          "eventual_ray_period": 2,
+          "first_depth": 6,
+          "id": "29/192,163/192",
+          "image_pair": "29/96,67/96",
+          "inverse_branch_word": "100101",
+          "landing_target": "b_100101(alpha)",
+          "localization_O_xi_eta": null,
+          "on_critical_piece": false,
+          "steps_to_fixed_alpha": 6
+        },
+        {
+          "ambient_prime_ends": [
+            "31/192",
+            "161/192"
+          ],
+          "angles": [
+            "31/192",
+            "161/192"
+          ],
+          "ccw_sector_endpoints": [
+            [
+              "31/192",
+              "161/192"
+            ],
+            [
+              "161/192",
+              "31/192"
+            ]
+          ],
+          "eventual_point_period": 1,
+          "eventual_ray_period": 2,
+          "first_depth": 6,
+          "id": "31/192,161/192",
+          "image_pair": "31/96,65/96",
+          "inverse_branch_word": "100001",
+          "landing_target": "b_100001(alpha)",
+          "localization_O_xi_eta": null,
+          "on_critical_piece": false,
+          "steps_to_fixed_alpha": 6
+        },
+        {
+          "ambient_prime_ends": [
+            "1/6",
+            "5/6"
+          ],
+          "angles": [
+            "1/6",
+            "5/6"
+          ],
+          "ccw_sector_endpoints": [
+            [
+              "1/6",
+              "5/6"
+            ],
+            [
+              "5/6",
+              "1/6"
+            ]
+          ],
+          "eventual_point_period": 1,
+          "eventual_ray_period": 2,
+          "first_depth": 1,
+          "id": "1/6,5/6",
+          "image_pair": "1/3,2/3",
+          "inverse_branch_word": "100000",
+          "landing_target": "b_100000(alpha)",
+          "localization_O_xi_eta": null,
+          "on_critical_piece": false,
+          "steps_to_fixed_alpha": 1
+        },
+        {
+          "ambient_prime_ends": [
+            "17/96",
+            "79/96"
+          ],
+          "angles": [
+            "17/96",
+            "79/96"
+          ],
+          "ccw_sector_endpoints": [
+            [
+              "17/96",
+              "79/96"
+            ],
+            [
+              "79/96",
+              "17/96"
+            ]
+          ],
+          "eventual_point_period": 1,
+          "eventual_ray_period": 2,
+          "first_depth": 5,
+          "id": "17/96,79/96",
+          "image_pair": "17/48,31/48",
+          "inverse_branch_word": "100010",
+          "landing_target": "b_100010(alpha)",
+          "localization_O_xi_eta": null,
+          "on_critical_piece": false,
+          "steps_to_fixed_alpha": 5
+        },
+        {
+          "ambient_prime_ends": [
+            "35/192",
+            "37/192"
+          ],
+          "angles": [
+            "35/192",
+            "37/192"
+          ],
+          "ccw_sector_endpoints": [
+            [
+              "35/192",
+              "37/192"
+            ],
+            [
+              "37/192",
+              "35/192"
+            ]
+          ],
+          "eventual_point_period": 1,
+          "eventual_ray_period": 2,
+          "first_depth": 6,
+          "id": "35/192,37/192",
+          "image_pair": "35/96,37/96",
+          "inverse_branch_word": "101011",
+          "landing_target": "b_101011(alpha)",
+          "localization_O_xi_eta": null,
+          "on_critical_piece": false,
+          "steps_to_fixed_alpha": 6
+        },
+        {
+          "ambient_prime_ends": [
+            "19/96",
+            "77/96"
+          ],
+          "angles": [
+            "19/96",
+            "77/96"
+          ],
+          "ccw_sector_endpoints": [
+            [
+              "19/96",
+              "77/96"
+            ],
+            [
+              "77/96",
+              "19/96"
+            ]
+          ],
+          "eventual_point_period": 1,
+          "eventual_ray_period": 2,
+          "first_depth": 5,
+          "id": "19/96,77/96",
+          "image_pair": "19/48,29/48",
+          "inverse_branch_word": "101010",
+          "landing_target": "b_101010(alpha)",
+          "localization_O_xi_eta": null,
+          "on_critical_piece": false,
+          "steps_to_fixed_alpha": 5
+        },
+        {
+          "ambient_prime_ends": [
+            "5/24",
+            "19/24"
+          ],
+          "angles": [
+            "5/24",
+            "19/24"
+          ],
+          "ccw_sector_endpoints": [
+            [
+              "5/24",
+              "19/24"
+            ],
+            [
+              "19/24",
+              "5/24"
+            ]
+          ],
+          "eventual_point_period": 1,
+          "eventual_ray_period": 2,
+          "first_depth": 3,
+          "id": "5/24,19/24",
+          "image_pair": "5/12,7/12",
+          "inverse_branch_word": "101000",
+          "landing_target": "b_101000(alpha)",
+          "localization_O_xi_eta": null,
+          "on_critical_piece": false,
+          "steps_to_fixed_alpha": 3
+        },
+        {
+          "ambient_prime_ends": [
+            "41/192",
+            "151/192"
+          ],
+          "angles": [
+            "41/192",
+            "151/192"
+          ],
+          "ccw_sector_endpoints": [
+            [
+              "41/192",
+              "151/192"
+            ],
+            [
+              "151/192",
+              "41/192"
+            ]
+          ],
+          "eventual_point_period": 1,
+          "eventual_ray_period": 2,
+          "first_depth": 6,
+          "id": "41/192,151/192",
+          "image_pair": "41/96,55/96",
+          "inverse_branch_word": "101001",
+          "landing_target": "b_101001(alpha)",
+          "localization_O_xi_eta": null,
+          "on_critical_piece": true,
+          "steps_to_fixed_alpha": 6
+        },
+        {
+          "ambient_prime_ends": [
+            "43/192",
+            "53/192"
+          ],
+          "angles": [
+            "43/192",
+            "53/192"
+          ],
+          "ccw_sector_endpoints": [
+            [
+              "43/192",
+              "53/192"
+            ],
+            [
+              "53/192",
+              "43/192"
+            ]
+          ],
+          "eventual_point_period": 1,
+          "eventual_ray_period": 2,
+          "first_depth": 6,
+          "id": "43/192,53/192",
+          "image_pair": "43/96,53/96",
+          "inverse_branch_word": "001101",
+          "landing_target": "b_001101(alpha)",
+          "localization_O_xi_eta": null,
+          "on_critical_piece": true,
+          "steps_to_fixed_alpha": 6
+        },
+        {
+          "ambient_prime_ends": [
+            "11/48",
+            "13/48"
+          ],
+          "angles": [
+            "11/48",
+            "13/48"
+          ],
+          "ccw_sector_endpoints": [
+            [
+              "11/48",
+              "13/48"
+            ],
+            [
+              "13/48",
+              "11/48"
+            ]
+          ],
+          "eventual_point_period": 1,
+          "eventual_ray_period": 2,
+          "first_depth": 4,
+          "id": "11/48,13/48",
+          "image_pair": "11/24,13/24",
+          "inverse_branch_word": "001100",
+          "landing_target": "b_001100(alpha)",
+          "localization_O_xi_eta": null,
+          "on_critical_piece": false,
+          "steps_to_fixed_alpha": 4
+        },
+        {
+          "ambient_prime_ends": [
+            "23/96",
+            "25/96"
+          ],
+          "angles": [
+            "23/96",
+            "25/96"
+          ],
+          "ccw_sector_endpoints": [
+            [
+              "23/96",
+              "25/96"
+            ],
+            [
+              "25/96",
+              "23/96"
+            ]
+          ],
+          "eventual_point_period": 1,
+          "eventual_ray_period": 2,
+          "first_depth": 5,
+          "id": "23/96,25/96",
+          "image_pair": "23/48,25/48",
+          "inverse_branch_word": "001110",
+          "landing_target": "b_001110(alpha)",
+          "localization_O_xi_eta": null,
+          "on_critical_piece": false,
+          "steps_to_fixed_alpha": 5
+        },
+        {
+          "ambient_prime_ends": [
+            "47/192",
+            "49/192"
+          ],
+          "angles": [
+            "47/192",
+            "49/192"
+          ],
+          "ccw_sector_endpoints": [
+            [
+              "47/192",
+              "49/192"
+            ],
+            [
+              "49/192",
+              "47/192"
+            ]
+          ],
+          "eventual_point_period": 1,
+          "eventual_ray_period": 2,
+          "first_depth": 6,
+          "id": "47/192,49/192",
+          "image_pair": "47/96,49/96",
+          "inverse_branch_word": "001111",
+          "landing_target": "b_001111(alpha)",
+          "localization_O_xi_eta": null,
+          "on_critical_piece": false,
+          "steps_to_fixed_alpha": 6
+        },
+        {
+          "ambient_prime_ends": [
+            "55/192",
+            "137/192"
+          ],
+          "angles": [
+            "55/192",
+            "137/192"
+          ],
+          "ccw_sector_endpoints": [
+            [
+              "55/192",
+              "137/192"
+            ],
+            [
+              "137/192",
+              "55/192"
+            ]
+          ],
+          "eventual_point_period": 1,
+          "eventual_ray_period": 2,
+          "first_depth": 6,
+          "id": "55/192,137/192",
+          "image_pair": "41/96,55/96",
+          "inverse_branch_word": "001001",
+          "landing_target": "b_001001(alpha)",
+          "localization_O_xi_eta": null,
+          "on_critical_piece": true,
+          "steps_to_fixed_alpha": 6
+        },
+        {
+          "ambient_prime_ends": [
+            "7/24",
+            "17/24"
+          ],
+          "angles": [
+            "7/24",
+            "17/24"
+          ],
+          "ccw_sector_endpoints": [
+            [
+              "7/24",
+              "17/24"
+            ],
+            [
+              "17/24",
+              "7/24"
+            ]
+          ],
+          "eventual_point_period": 1,
+          "eventual_ray_period": 2,
+          "first_depth": 3,
+          "id": "7/24,17/24",
+          "image_pair": "5/12,7/12",
+          "inverse_branch_word": "001000",
+          "landing_target": "b_001000(alpha)",
+          "localization_O_xi_eta": null,
+          "on_critical_piece": false,
+          "steps_to_fixed_alpha": 3
+        },
+        {
+          "ambient_prime_ends": [
+            "29/96",
+            "67/96"
+          ],
+          "angles": [
+            "29/96",
+            "67/96"
+          ],
+          "ccw_sector_endpoints": [
+            [
+              "29/96",
+              "67/96"
+            ],
+            [
+              "67/96",
+              "29/96"
+            ]
+          ],
+          "eventual_point_period": 1,
+          "eventual_ray_period": 2,
+          "first_depth": 5,
+          "id": "29/96,67/96",
+          "image_pair": "19/48,29/48",
+          "inverse_branch_word": "001010",
+          "landing_target": "b_001010(alpha)",
+          "localization_O_xi_eta": null,
+          "on_critical_piece": false,
+          "steps_to_fixed_alpha": 5
+        },
+        {
+          "ambient_prime_ends": [
+            "59/192",
+            "61/192"
+          ],
+          "angles": [
+            "59/192",
+            "61/192"
+          ],
+          "ccw_sector_endpoints": [
+            [
+              "59/192",
+              "61/192"
+            ],
+            [
+              "61/192",
+              "59/192"
+            ]
+          ],
+          "eventual_point_period": 1,
+          "eventual_ray_period": 2,
+          "first_depth": 6,
+          "id": "59/192,61/192",
+          "image_pair": "59/96,61/96",
+          "inverse_branch_word": "000011",
+          "landing_target": "b_000011(alpha)",
+          "localization_O_xi_eta": null,
+          "on_critical_piece": false,
+          "steps_to_fixed_alpha": 6
+        },
+        {
+          "ambient_prime_ends": [
+            "31/96",
+            "65/96"
+          ],
+          "angles": [
+            "31/96",
+            "65/96"
+          ],
+          "ccw_sector_endpoints": [
+            [
+              "31/96",
+              "65/96"
+            ],
+            [
+              "65/96",
+              "31/96"
+            ]
+          ],
+          "eventual_point_period": 1,
+          "eventual_ray_period": 2,
+          "first_depth": 5,
+          "id": "31/96,65/96",
+          "image_pair": "17/48,31/48",
+          "inverse_branch_word": "000010",
+          "landing_target": "b_000010(alpha)",
+          "localization_O_xi_eta": null,
+          "on_critical_piece": false,
+          "steps_to_fixed_alpha": 5
+        },
+        {
+          "ambient_prime_ends": [
+            "1/3",
+            "2/3"
+          ],
+          "angles": [
+            "1/3",
+            "2/3"
+          ],
+          "ccw_sector_endpoints": [
+            [
+              "1/3",
+              "2/3"
+            ],
+            [
+              "2/3",
+              "1/3"
+            ]
+          ],
+          "eventual_point_period": 1,
+          "eventual_ray_period": 2,
+          "first_depth": 0,
+          "id": "1/3,2/3",
+          "image_pair": "1/3,2/3",
+          "inverse_branch_word": "000000",
+          "landing_target": "b_000000(alpha)",
+          "localization_O_xi_eta": null,
+          "on_critical_piece": false,
+          "steps_to_fixed_alpha": 0
+        },
+        {
+          "ambient_prime_ends": [
+            "65/192",
+            "127/192"
+          ],
+          "angles": [
+            "65/192",
+            "127/192"
+          ],
+          "ccw_sector_endpoints": [
+            [
+              "65/192",
+              "127/192"
+            ],
+            [
+              "127/192",
+              "65/192"
+            ]
+          ],
+          "eventual_point_period": 1,
+          "eventual_ray_period": 2,
+          "first_depth": 6,
+          "id": "65/192,127/192",
+          "image_pair": "31/96,65/96",
+          "inverse_branch_word": "000001",
+          "landing_target": "b_000001(alpha)",
+          "localization_O_xi_eta": null,
+          "on_critical_piece": false,
+          "steps_to_fixed_alpha": 6
+        },
+        {
+          "ambient_prime_ends": [
+            "67/192",
+            "125/192"
+          ],
+          "angles": [
+            "67/192",
+            "125/192"
+          ],
+          "ccw_sector_endpoints": [
+            [
+              "67/192",
+              "125/192"
+            ],
+            [
+              "125/192",
+              "67/192"
+            ]
+          ],
+          "eventual_point_period": 1,
+          "eventual_ray_period": 2,
+          "first_depth": 6,
+          "id": "67/192,125/192",
+          "image_pair": "29/96,67/96",
+          "inverse_branch_word": "000101",
+          "landing_target": "b_000101(alpha)",
+          "localization_O_xi_eta": null,
+          "on_critical_piece": false,
+          "steps_to_fixed_alpha": 6
+        },
+        {
+          "ambient_prime_ends": [
+            "17/48",
+            "31/48"
+          ],
+          "angles": [
+            "17/48",
+            "31/48"
+          ],
+          "ccw_sector_endpoints": [
+            [
+              "17/48",
+              "31/48"
+            ],
+            [
+              "31/48",
+              "17/48"
+            ]
+          ],
+          "eventual_point_period": 1,
+          "eventual_ray_period": 2,
+          "first_depth": 4,
+          "id": "17/48,31/48",
+          "image_pair": "7/24,17/24",
+          "inverse_branch_word": "000100",
+          "landing_target": "b_000100(alpha)",
+          "localization_O_xi_eta": null,
+          "on_critical_piece": false,
+          "steps_to_fixed_alpha": 4
+        },
+        {
+          "ambient_prime_ends": [
+            "35/96",
+            "37/96"
+          ],
+          "angles": [
+            "35/96",
+            "37/96"
+          ],
+          "ccw_sector_endpoints": [
+            [
+              "35/96",
+              "37/96"
+            ],
+            [
+              "37/96",
+              "35/96"
+            ]
+          ],
+          "eventual_point_period": 1,
+          "eventual_ray_period": 2,
+          "first_depth": 5,
+          "id": "35/96,37/96",
+          "image_pair": "35/48,37/48",
+          "inverse_branch_word": "010110",
+          "landing_target": "b_010110(alpha)",
+          "localization_O_xi_eta": null,
+          "on_critical_piece": false,
+          "steps_to_fixed_alpha": 5
+        },
+        {
+          "ambient_prime_ends": [
+            "71/192",
+            "73/192"
+          ],
+          "angles": [
+            "71/192",
+            "73/192"
+          ],
+          "ccw_sector_endpoints": [
+            [
+              "71/192",
+              "73/192"
+            ],
+            [
+              "73/192",
+              "71/192"
+            ]
+          ],
+          "eventual_point_period": 1,
+          "eventual_ray_period": 2,
+          "first_depth": 6,
+          "id": "71/192,73/192",
+          "image_pair": "71/96,73/96",
+          "inverse_branch_word": "010111",
+          "landing_target": "b_010111(alpha)",
+          "localization_O_xi_eta": null,
+          "on_critical_piece": false,
+          "steps_to_fixed_alpha": 6
+        },
+        {
+          "ambient_prime_ends": [
+            "19/48",
+            "29/48"
+          ],
+          "angles": [
+            "19/48",
+            "29/48"
+          ],
+          "ccw_sector_endpoints": [
+            [
+              "19/48",
+              "29/48"
+            ],
+            [
+              "29/48",
+              "19/48"
+            ]
+          ],
+          "eventual_point_period": 1,
+          "eventual_ray_period": 2,
+          "first_depth": 4,
+          "id": "19/48,29/48",
+          "image_pair": "5/24,19/24",
+          "inverse_branch_word": "010100",
+          "landing_target": "b_010100(alpha)",
+          "localization_O_xi_eta": null,
+          "on_critical_piece": false,
+          "steps_to_fixed_alpha": 4
+        },
+        {
+          "ambient_prime_ends": [
+            "77/192",
+            "115/192"
+          ],
+          "angles": [
+            "77/192",
+            "115/192"
+          ],
+          "ccw_sector_endpoints": [
+            [
+              "77/192",
+              "115/192"
+            ],
+            [
+              "115/192",
+              "77/192"
+            ]
+          ],
+          "eventual_point_period": 1,
+          "eventual_ray_period": 2,
+          "first_depth": 6,
+          "id": "77/192,115/192",
+          "image_pair": "19/96,77/96",
+          "inverse_branch_word": "010101",
+          "landing_target": "b_010101(alpha)",
+          "localization_O_xi_eta": null,
+          "on_critical_piece": false,
+          "steps_to_fixed_alpha": 6
+        },
+        {
+          "ambient_prime_ends": [
+            "79/192",
+            "113/192"
+          ],
+          "angles": [
+            "79/192",
+            "113/192"
+          ],
+          "ccw_sector_endpoints": [
+            [
+              "79/192",
+              "113/192"
+            ],
+            [
+              "113/192",
+              "79/192"
+            ]
+          ],
+          "eventual_point_period": 1,
+          "eventual_ray_period": 2,
+          "first_depth": 6,
+          "id": "79/192,113/192",
+          "image_pair": "17/96,79/96",
+          "inverse_branch_word": "010001",
+          "landing_target": "b_010001(alpha)",
+          "localization_O_xi_eta": null,
+          "on_critical_piece": false,
+          "steps_to_fixed_alpha": 6
+        },
+        {
+          "ambient_prime_ends": [
+            "5/12",
+            "7/12"
+          ],
+          "angles": [
+            "5/12",
+            "7/12"
+          ],
+          "ccw_sector_endpoints": [
+            [
+              "5/12",
+              "7/12"
+            ],
+            [
+              "7/12",
+              "5/12"
+            ]
+          ],
+          "eventual_point_period": 1,
+          "eventual_ray_period": 2,
+          "first_depth": 2,
+          "id": "5/12,7/12",
+          "image_pair": "1/6,5/6",
+          "inverse_branch_word": "010000",
+          "landing_target": "b_010000(alpha)",
+          "localization_O_xi_eta": null,
+          "on_critical_piece": false,
+          "steps_to_fixed_alpha": 2
+        },
+        {
+          "ambient_prime_ends": [
+            "41/96",
+            "55/96"
+          ],
+          "angles": [
+            "41/96",
+            "55/96"
+          ],
+          "ccw_sector_endpoints": [
+            [
+              "41/96",
+              "55/96"
+            ],
+            [
+              "55/96",
+              "41/96"
+            ]
+          ],
+          "eventual_point_period": 1,
+          "eventual_ray_period": 2,
+          "first_depth": 5,
+          "id": "41/96,55/96",
+          "image_pair": "7/48,41/48",
+          "inverse_branch_word": "010010",
+          "landing_target": "b_010010(alpha)",
+          "localization_O_xi_eta": null,
+          "on_critical_piece": false,
+          "steps_to_fixed_alpha": 5
+        },
+        {
+          "ambient_prime_ends": [
+            "83/192",
+            "85/192"
+          ],
+          "angles": [
+            "83/192",
+            "85/192"
+          ],
+          "ccw_sector_endpoints": [
+            [
+              "83/192",
+              "85/192"
+            ],
+            [
+              "85/192",
+              "83/192"
+            ]
+          ],
+          "eventual_point_period": 1,
+          "eventual_ray_period": 2,
+          "first_depth": 6,
+          "id": "83/192,85/192",
+          "image_pair": "83/96,85/96",
+          "inverse_branch_word": "011011",
+          "landing_target": "b_011011(alpha)",
+          "localization_O_xi_eta": null,
+          "on_critical_piece": false,
+          "steps_to_fixed_alpha": 6
+        },
+        {
+          "ambient_prime_ends": [
+            "43/96",
+            "53/96"
+          ],
+          "angles": [
+            "43/96",
+            "53/96"
+          ],
+          "ccw_sector_endpoints": [
+            [
+              "43/96",
+              "53/96"
+            ],
+            [
+              "53/96",
+              "43/96"
+            ]
+          ],
+          "eventual_point_period": 1,
+          "eventual_ray_period": 2,
+          "first_depth": 5,
+          "id": "43/96,53/96",
+          "image_pair": "5/48,43/48",
+          "inverse_branch_word": "011010",
+          "landing_target": "b_011010(alpha)",
+          "localization_O_xi_eta": null,
+          "on_critical_piece": false,
+          "steps_to_fixed_alpha": 5
+        },
+        {
+          "ambient_prime_ends": [
+            "11/24",
+            "13/24"
+          ],
+          "angles": [
+            "11/24",
+            "13/24"
+          ],
+          "ccw_sector_endpoints": [
+            [
+              "11/24",
+              "13/24"
+            ],
+            [
+              "13/24",
+              "11/24"
+            ]
+          ],
+          "eventual_point_period": 1,
+          "eventual_ray_period": 2,
+          "first_depth": 3,
+          "id": "11/24,13/24",
+          "image_pair": "1/12,11/12",
+          "inverse_branch_word": "011000",
+          "landing_target": "b_011000(alpha)",
+          "localization_O_xi_eta": null,
+          "on_critical_piece": false,
+          "steps_to_fixed_alpha": 3
+        },
+        {
+          "ambient_prime_ends": [
+            "89/192",
+            "103/192"
+          ],
+          "angles": [
+            "89/192",
+            "103/192"
+          ],
+          "ccw_sector_endpoints": [
+            [
+              "89/192",
+              "103/192"
+            ],
+            [
+              "103/192",
+              "89/192"
+            ]
+          ],
+          "eventual_point_period": 1,
+          "eventual_ray_period": 2,
+          "first_depth": 6,
+          "id": "89/192,103/192",
+          "image_pair": "7/96,89/96",
+          "inverse_branch_word": "011001",
+          "landing_target": "b_011001(alpha)",
+          "localization_O_xi_eta": null,
+          "on_critical_piece": false,
+          "steps_to_fixed_alpha": 6
+        },
+        {
+          "ambient_prime_ends": [
+            "91/192",
+            "101/192"
+          ],
+          "angles": [
+            "91/192",
+            "101/192"
+          ],
+          "ccw_sector_endpoints": [
+            [
+              "91/192",
+              "101/192"
+            ],
+            [
+              "101/192",
+              "91/192"
+            ]
+          ],
+          "eventual_point_period": 1,
+          "eventual_ray_period": 2,
+          "first_depth": 6,
+          "id": "91/192,101/192",
+          "image_pair": "5/96,91/96",
+          "inverse_branch_word": "011101",
+          "landing_target": "b_011101(alpha)",
+          "localization_O_xi_eta": null,
+          "on_critical_piece": false,
+          "steps_to_fixed_alpha": 6
+        },
+        {
+          "ambient_prime_ends": [
+            "23/48",
+            "25/48"
+          ],
+          "angles": [
+            "23/48",
+            "25/48"
+          ],
+          "ccw_sector_endpoints": [
+            [
+              "23/48",
+              "25/48"
+            ],
+            [
+              "25/48",
+              "23/48"
+            ]
+          ],
+          "eventual_point_period": 1,
+          "eventual_ray_period": 2,
+          "first_depth": 4,
+          "id": "23/48,25/48",
+          "image_pair": "1/24,23/24",
+          "inverse_branch_word": "011100",
+          "landing_target": "b_011100(alpha)",
+          "localization_O_xi_eta": null,
+          "on_critical_piece": false,
+          "steps_to_fixed_alpha": 4
+        },
+        {
+          "ambient_prime_ends": [
+            "47/96",
+            "49/96"
+          ],
+          "angles": [
+            "47/96",
+            "49/96"
+          ],
+          "ccw_sector_endpoints": [
+            [
+              "47/96",
+              "49/96"
+            ],
+            [
+              "49/96",
+              "47/96"
+            ]
+          ],
+          "eventual_point_period": 1,
+          "eventual_ray_period": 2,
+          "first_depth": 5,
+          "id": "47/96,49/96",
+          "image_pair": "1/48,47/48",
+          "inverse_branch_word": "011110",
+          "landing_target": "b_011110(alpha)",
+          "localization_O_xi_eta": null,
+          "on_critical_piece": false,
+          "steps_to_fixed_alpha": 5
+        },
+        {
+          "ambient_prime_ends": [
+            "95/192",
+            "97/192"
+          ],
+          "angles": [
+            "95/192",
+            "97/192"
+          ],
+          "ccw_sector_endpoints": [
+            [
+              "95/192",
+              "97/192"
+            ],
+            [
+              "97/192",
+              "95/192"
+            ]
+          ],
+          "eventual_point_period": 1,
+          "eventual_ray_period": 2,
+          "first_depth": 6,
+          "id": "95/192,97/192",
+          "image_pair": "1/96,95/96",
+          "inverse_branch_word": "011111",
+          "landing_target": "b_011111(alpha)",
+          "localization_O_xi_eta": null,
+          "on_critical_piece": false,
+          "steps_to_fixed_alpha": 6
+        },
+        {
+          "ambient_prime_ends": [
+            "107/192",
+            "109/192"
+          ],
+          "angles": [
+            "107/192",
+            "109/192"
+          ],
+          "ccw_sector_endpoints": [
+            [
+              "107/192",
+              "109/192"
+            ],
+            [
+              "109/192",
+              "107/192"
+            ]
+          ],
+          "eventual_point_period": 1,
+          "eventual_ray_period": 2,
+          "first_depth": 6,
+          "id": "107/192,109/192",
+          "image_pair": "11/96,13/96",
+          "inverse_branch_word": "010011",
+          "landing_target": "b_010011(alpha)",
+          "localization_O_xi_eta": null,
+          "on_critical_piece": false,
+          "steps_to_fixed_alpha": 6
+        },
+        {
+          "ambient_prime_ends": [
+            "59/96",
+            "61/96"
+          ],
+          "angles": [
+            "59/96",
+            "61/96"
+          ],
+          "ccw_sector_endpoints": [
+            [
+              "59/96",
+              "61/96"
+            ],
+            [
+              "61/96",
+              "59/96"
+            ]
+          ],
+          "eventual_point_period": 1,
+          "eventual_ray_period": 2,
+          "first_depth": 5,
+          "id": "59/96,61/96",
+          "image_pair": "11/48,13/48",
+          "inverse_branch_word": "000110",
+          "landing_target": "b_000110(alpha)",
+          "localization_O_xi_eta": null,
+          "on_critical_piece": false,
+          "steps_to_fixed_alpha": 5
+        },
+        {
+          "ambient_prime_ends": [
+            "119/192",
+            "121/192"
+          ],
+          "angles": [
+            "119/192",
+            "121/192"
+          ],
+          "ccw_sector_endpoints": [
+            [
+              "119/192",
+              "121/192"
+            ],
+            [
+              "121/192",
+              "119/192"
+            ]
+          ],
+          "eventual_point_period": 1,
+          "eventual_ray_period": 2,
+          "first_depth": 6,
+          "id": "119/192,121/192",
+          "image_pair": "23/96,25/96",
+          "inverse_branch_word": "000111",
+          "landing_target": "b_000111(alpha)",
+          "localization_O_xi_eta": null,
+          "on_critical_piece": false,
+          "steps_to_fixed_alpha": 6
+        },
+        {
+          "ambient_prime_ends": [
+            "131/192",
+            "133/192"
+          ],
+          "angles": [
+            "131/192",
+            "133/192"
+          ],
+          "ccw_sector_endpoints": [
+            [
+              "131/192",
+              "133/192"
+            ],
+            [
+              "133/192",
+              "131/192"
+            ]
+          ],
+          "eventual_point_period": 1,
+          "eventual_ray_period": 2,
+          "first_depth": 6,
+          "id": "131/192,133/192",
+          "image_pair": "35/96,37/96",
+          "inverse_branch_word": "001011",
+          "landing_target": "b_001011(alpha)",
+          "localization_O_xi_eta": null,
+          "on_critical_piece": false,
+          "steps_to_fixed_alpha": 6
+        },
+        {
+          "ambient_prime_ends": [
+            "139/192",
+            "149/192"
+          ],
+          "angles": [
+            "139/192",
+            "149/192"
+          ],
+          "ccw_sector_endpoints": [
+            [
+              "139/192",
+              "149/192"
+            ],
+            [
+              "149/192",
+              "139/192"
+            ]
+          ],
+          "eventual_point_period": 1,
+          "eventual_ray_period": 2,
+          "first_depth": 6,
+          "id": "139/192,149/192",
+          "image_pair": "43/96,53/96",
+          "inverse_branch_word": "101101",
+          "landing_target": "b_101101(alpha)",
+          "localization_O_xi_eta": null,
+          "on_critical_piece": true,
+          "steps_to_fixed_alpha": 6
+        },
+        {
+          "ambient_prime_ends": [
+            "35/48",
+            "37/48"
+          ],
+          "angles": [
+            "35/48",
+            "37/48"
+          ],
+          "ccw_sector_endpoints": [
+            [
+              "35/48",
+              "37/48"
+            ],
+            [
+              "37/48",
+              "35/48"
+            ]
+          ],
+          "eventual_point_period": 1,
+          "eventual_ray_period": 2,
+          "first_depth": 4,
+          "id": "35/48,37/48",
+          "image_pair": "11/24,13/24",
+          "inverse_branch_word": "101100",
+          "landing_target": "b_101100(alpha)",
+          "localization_O_xi_eta": null,
+          "on_critical_piece": false,
+          "steps_to_fixed_alpha": 4
+        },
+        {
+          "ambient_prime_ends": [
+            "71/96",
+            "73/96"
+          ],
+          "angles": [
+            "71/96",
+            "73/96"
+          ],
+          "ccw_sector_endpoints": [
+            [
+              "71/96",
+              "73/96"
+            ],
+            [
+              "73/96",
+              "71/96"
+            ]
+          ],
+          "eventual_point_period": 1,
+          "eventual_ray_period": 2,
+          "first_depth": 5,
+          "id": "71/96,73/96",
+          "image_pair": "23/48,25/48",
+          "inverse_branch_word": "101110",
+          "landing_target": "b_101110(alpha)",
+          "localization_O_xi_eta": null,
+          "on_critical_piece": false,
+          "steps_to_fixed_alpha": 5
+        },
+        {
+          "ambient_prime_ends": [
+            "143/192",
+            "145/192"
+          ],
+          "angles": [
+            "143/192",
+            "145/192"
+          ],
+          "ccw_sector_endpoints": [
+            [
+              "143/192",
+              "145/192"
+            ],
+            [
+              "145/192",
+              "143/192"
+            ]
+          ],
+          "eventual_point_period": 1,
+          "eventual_ray_period": 2,
+          "first_depth": 6,
+          "id": "143/192,145/192",
+          "image_pair": "47/96,49/96",
+          "inverse_branch_word": "101111",
+          "landing_target": "b_101111(alpha)",
+          "localization_O_xi_eta": null,
+          "on_critical_piece": false,
+          "steps_to_fixed_alpha": 6
+        },
+        {
+          "ambient_prime_ends": [
+            "155/192",
+            "157/192"
+          ],
+          "angles": [
+            "155/192",
+            "157/192"
+          ],
+          "ccw_sector_endpoints": [
+            [
+              "155/192",
+              "157/192"
+            ],
+            [
+              "157/192",
+              "155/192"
+            ]
+          ],
+          "eventual_point_period": 1,
+          "eventual_ray_period": 2,
+          "first_depth": 6,
+          "id": "155/192,157/192",
+          "image_pair": "59/96,61/96",
+          "inverse_branch_word": "100011",
+          "landing_target": "b_100011(alpha)",
+          "localization_O_xi_eta": null,
+          "on_critical_piece": false,
+          "steps_to_fixed_alpha": 6
+        },
+        {
+          "ambient_prime_ends": [
+            "83/96",
+            "85/96"
+          ],
+          "angles": [
+            "83/96",
+            "85/96"
+          ],
+          "ccw_sector_endpoints": [
+            [
+              "83/96",
+              "85/96"
+            ],
+            [
+              "85/96",
+              "83/96"
+            ]
+          ],
+          "eventual_point_period": 1,
+          "eventual_ray_period": 2,
+          "first_depth": 5,
+          "id": "83/96,85/96",
+          "image_pair": "35/48,37/48",
+          "inverse_branch_word": "110110",
+          "landing_target": "b_110110(alpha)",
+          "localization_O_xi_eta": null,
+          "on_critical_piece": false,
+          "steps_to_fixed_alpha": 5
+        },
+        {
+          "ambient_prime_ends": [
+            "167/192",
+            "169/192"
+          ],
+          "angles": [
+            "167/192",
+            "169/192"
+          ],
+          "ccw_sector_endpoints": [
+            [
+              "167/192",
+              "169/192"
+            ],
+            [
+              "169/192",
+              "167/192"
+            ]
+          ],
+          "eventual_point_period": 1,
+          "eventual_ray_period": 2,
+          "first_depth": 6,
+          "id": "167/192,169/192",
+          "image_pair": "71/96,73/96",
+          "inverse_branch_word": "110111",
+          "landing_target": "b_110111(alpha)",
+          "localization_O_xi_eta": null,
+          "on_critical_piece": false,
+          "steps_to_fixed_alpha": 6
+        },
+        {
+          "ambient_prime_ends": [
+            "179/192",
+            "181/192"
+          ],
+          "angles": [
+            "179/192",
+            "181/192"
+          ],
+          "ccw_sector_endpoints": [
+            [
+              "179/192",
+              "181/192"
+            ],
+            [
+              "181/192",
+              "179/192"
+            ]
+          ],
+          "eventual_point_period": 1,
+          "eventual_ray_period": 2,
+          "first_depth": 6,
+          "id": "179/192,181/192",
+          "image_pair": "83/96,85/96",
+          "inverse_branch_word": "111011",
+          "landing_target": "b_111011(alpha)",
+          "localization_O_xi_eta": null,
+          "on_critical_piece": false,
+          "steps_to_fixed_alpha": 6
+        }
+      ]
+    }
+  ],
+  "maximum_puzzle_depth": 6,
+  "parameter": "c_tip: exact root and bracket in period27_misiurewicz_tip.json",
+  "scope": "Complete finite ambient alpha-ray tree and cyclic side data through depth6; O/xi/eta and localization naturality are not assigned",
+  "status": "EXACT_TIP_ALPHA_RAY_TREE_DEPTH6_PASS",
+  "top_child_boundary_ray_intersection": [],
+  "top_child_return_time": 3,
+  "word_convention": "b_i1...ik = b_i1 composed with ... composed with b_ik"
+}
