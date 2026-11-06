@@ -154,6 +154,27 @@ See [the precise future-observability audit](phase-future.md).
 These are symbolic clock facts, not a KL access/sheet atlas or any
 MLC global gate.
 
+## Real period-27 center: IVT, MVT and minimal period in mathlib
+
+The [pinned mathlib workspace](weighted/README.md) now imports the original
+certified rational interval arithmetic and proves a **real analytic**
+theorem, rather than only a finite symbolic or rational arithmetic fact.
+[Period27RealCenter.lean](weighted/Period27RealCenter.lean) establishes
+the ordinary real derivative identity and a real root inside the exact
+dyadic bracket using IVT. [Period27RealUniqueness.lean](weighted/Period27RealUniqueness.lean)
+transports the source's *uniform negative derivative cap* from rational
+to real parameters and proves strict monotonicity and uniqueness by MVT.
+[Period27RealExactPeriod.lean](weighted/Period27RealExactPeriod.lean) proves
+sound arbitrary-horizon orbit enclosures on the real bracket and checks
+that **all 26 earlier critical iterates are nonzero**, hence the uniquely
+isolated real quadratic parameter has *minimal critical period 27*.
+
+See the [source-facing analytic-bridge audit](../research/independent_audits/lean_period27_real_center_20261105.md).
+This formally completes one specific real polynomial testbed, **not**
+the complex KL marked state, ray/sheet transport, source-geometry or
+MLC analytic proof obligations. The superattracting example fails
+Paper 2's \(K(f)=J(f)\) hypothesis.
+
 ## Remaining formal obligations
 
 **General weighted return operators:** Exact integer first-return multiplicities and the base adjacency blocks are now kernel-checked. The all-n weighted return operator, its Perron equation, and its comparison to the published conventions still require distinct theorems.

@@ -1,6 +1,6 @@
 name = "loops_weighted"
 version = "0.1.0"
-defaultTargets = ["WeightedReturn", "GraphWeightedBridge", "CloneBounds", "CloneRoot", "FullCloneEigen", "FullCloneMatrix", "SpectralDominance", "FullCloneSpectralMax"]
+defaultTargets = ["WeightedReturn", "GraphWeightedBridge", "CloneBounds", "CloneRoot", "FullCloneEigen", "FullCloneMatrix", "SpectralDominance", "FullCloneSpectralMax", "Period27RealCenter", "Period27RealUniqueness", "Period27RealExactPeriod"]
 
 [[require]]
 name = "mathlib"
@@ -53,3 +53,38 @@ name = "SpectralDominance"
 
 [[lean_lib]]
 name = "FullCloneSpectralMax"
+
+# Import the core Lean verified exact integer/rational orbit certificates.
+[[lean_lib]]
+name = "Period27Kneading"
+srcDir = "../.."
+
+[[lean_lib]]
+name = "Period27Dyadic"
+srcDir = "../.."
+
+[[lean_lib]]
+name = "Period27IntervalSound"
+srcDir = "../.."
+
+[[lean_lib]]
+name = "Period27RationalTrace"
+srcDir = "../.."
+
+[[lean_lib]]
+name = "Period27RationalDerivative"
+srcDir = "../.."
+
+[[lean_lib]]
+name = "Period27RealCenter"
+
+[[lean_lib]]
+name = "Period27RealUniqueness"
+
+[[lean_lib]]
+name = "Period27RealExactPeriod"
+
+# Source-defined physical iterate used for the exact-period bridge.
+[[lean_lib]]
+name = "Paper2Phase"
+srcDir = "../.."

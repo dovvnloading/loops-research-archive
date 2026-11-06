@@ -35,6 +35,29 @@ negative-weight identity at 357 exact rational test points.
 
 **Passing CI:** The completed full-matrix and spectral-dominance theorem suite was checked in [mathlib build #42038972966](https://github.com/dovvnloading/loops-research-archive/actions/runs/42038972966). The separate root Lean/Python suite is also checked. Newer commits require their own head-specific CI before merge.
 
+## Verified real period-27 quadratic center (mathlib)
+
+Three further modules reuse the core Lean sound interval certificates and
+**close the real-variable period-27 parameter bridge**:
+
+- [Period27RealCenter.lean](Period27RealCenter.lean) proves fraction-to-real
+  recurrence compatibility, the ordinary calculus derivative identity
+  \(P'_n(c)=D_n(c)\) for every \(n,c\), exact real endpoint signs and
+  existence of a real zero of \(P_{27}\) by the intermediate value theorem.
+- [Period27RealUniqueness.lean](Period27RealUniqueness.lean) transports a
+  *uniform negative derivative bound* from all rational parameters to all
+  real parameters via density and continuity, then uses strict
+  monotonicity to prove uniqueness inside the specified dyadic bracket.
+- [Period27RealExactPeriod.lean](Period27RealExactPeriod.lean) transports
+  arbitrary-horizon orbit enclosures to real parameters, checks all 26
+  earlier iterates are nonzero and proves that the unique real center has
+  **exact minimal critical period 27** for \(x\mapsto x^2+c\).
+
+The [full theorem dependency and scope audit](../../research/independent_audits/lean_period27_real_center_20261105.md)
+explains the exact statement and why this does **not** construct KL rays,
+sheets or a nonattracting source stage. The superattracting center fails
+Paper 2's \(K(f)=J(f)\) requirement and no MLC gate is closed.
+
 ## Meaning and limitations
 
 These are **formal proofs of encoded finite-dimensional statements**.
