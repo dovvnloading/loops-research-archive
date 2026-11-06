@@ -184,7 +184,7 @@ theorem obstruction_point_in_outer_real_interval_not_V9 :
 /-- All noncentral physical nine-scale images f^j(V9), 1≤j<9,
     are excluded by their existing strict complex disk enclosures. -/
 def obstructionAvoidsNinePhase (j : Nat) : Bool :=
-  j = 0 ||
+  decide (j = 0) ||
     (tipOrbit j).hi + deviation innerShrinkRadius j < obstructionPoint ||
     obstructionPoint + deviation innerShrinkRadius j < (tipOrbit j).lo
 
@@ -193,9 +193,9 @@ theorem obstruction_point_outside_all_noncentral_nine_phases :
   decide +kernel
 
 /-- Consequently, at the geometric-analysis level, z=31/1024 is
-    in Ω_t9 = U9 \ B9 but is absent from Ω_t3 = U3 \ B3:
+    in Ω_t,9 = U⁰ \\ B9 but is absent from Ω_t,3 = U⁰ \\ B3:
     K3 contains I3, while B9 is confined to the nine complex phase
-    disks. In particular *identity inclusion* Ω_t9→Ω_t3 is undefined.
+    disks. In particular *identity inclusion* Ω_t,9→Ω_t,3 is undefined.
     This is a theorem about the actual target complements, **not** a
     source-defined KL 9-to-3 localization sheet functor. -/
 
