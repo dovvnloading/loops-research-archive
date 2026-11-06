@@ -148,6 +148,12 @@ The [November 6 exterior pullback theorem](./research/independent_audits/period2
 
 The [November 6 Misiurewicz-tip certificate](./research/independent_audits/period27_misiurewicz_tip_ray_access_20261106.md) isolates **a different, nonattracting real quadratic parameter** near the period-27 center. Exact outward-integer tests prove its critical point has preperiod 10 and a repelling period-9 cycle, and certify nested real return intervals of periods 3 and 9. Zakeri's real-parameter ray theorem then identifies the **actual parameter-ray and critical-value dynamical-ray pair** at angles \(116791/261632\) and \(144841/261632\), with four explicitly identified rays landing at the critical point. The physical \(f^6\) ray map merges two distinct accesses. [Reproduce the exact finite certificate and manifest](./research/independent_audits/verify_period27_misiurewicz_tip.py). Unlike the superattracting center, this Misiurewicz example has \(K=J\). **This still does not construct a full source-defined KL prime-end/puzzle or localization-sheet functor, nor close any global MLC proof gate.**
 
+### Landed nine-cycle rays and a source-defined renormalization interface
+
+The [Levin ray-correspondence audit](./research/independent_audits/levin_tip_ray_correspondence_20261106.md) traces a previously missing path from actual dynamical ray landing to degree-two polynomial-like ray angles at the **nonattracting Misiurewicz tip**. Nine pairs of genuine rays land along its repelling period-nine cycle; [Lean](./TipRayPortrait.lean) and a [reproducible exact manifest](./results/period27_tip_ray_portrait.json) certify 18 distinct primitive period-nine angles and nine unlinked chords.
+
+A **conditional** result shows that any qualifying period-nine Levin angular correspondence must identify the distinct rays at **114/511** and **397/511** to internal angle zero. A true complex quadratic-like restriction at the tip and Levin's positive Green-level boundary condition **(p2)** are not yet proved, nor is a KL prime-end or localization-sheet map. This is not a closure of H1–H4, UPTCR, or MLC.
+
 ## Proof evidence, Lean and reproducibility
 
 The archive deliberately separates **checked finite arithmetic**, **paper-level mathematical interpretation**, **imported theory**, and **genuinely open geometry**.
