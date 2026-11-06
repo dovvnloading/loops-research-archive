@@ -160,6 +160,11 @@ The [new two-scale complex-domain audit](./research/independent_audits/nonattrac
 
 The inner domain requires a **27/1024** rational shrink for its certified Rouché inequality (the old 13/512 *bound*, not necessarily the domain, fails at this parameter). Both little filled Julia sets are connected and nested under the documented analytic deductions, supplying **Levin (p1)**. The [follow-up Carathéodory argument](./research/independent_audits/levin_tip_p2_carathéodory_two_scale_20261106.md) supplies his independent **(p2)** condition and concrete two-scale ray-map values; the source-faithful KL primitive puzzle, prime-end sides and localization-sheet/coset transport remain open in [Issue #29](https://github.com/dovvnloading/loops-research-archive/issues/29). No MLC ledger gate is promoted.
 
+### Source-level KL top puzzle and local-sheet obstruction at the nonattracting tip
+
+A further [KL source-alignment audit](./research/independent_audits/kl_tip_primitive_puzzle_and_localization_20261106.md) identifies the top **q=2, n=1** Yoccoz decoration, its two Q-branches and the critical Y³ puzzle vertex rays. New [Lean](./TipKLPuzzle.lean) and [exact Python](./research/independent_audits/verify_tip_kl_puzzle.py) checks certify concrete off-cycle inverse-preimage witnesses **at both physical periods 3 and 9**, realizing the archive's existing one-scale canonical-localization coset collision theorem twice. They also identify a fixed point a∈B₃\\B₉ that prevents the naive identity or f⁶ map from defining a 9→3 map of the corresponding deleted surfaces. This **does not** supply the fully marked *interscale* Kahn–Lyubich groupoid/prime-end naturality; [Issue #29](https://github.com/dovvnloading/loops-research-archive/issues/29) remains open. The source-locked MLC ledger and global H1–H4/UPTCR remain unchanged.
+
+
 ## Proof evidence, Lean and reproducibility
 
 The archive deliberately separates **checked finite arithmetic**, **paper-level mathematical interpretation**, **imported theory**, and **genuinely open geometry**.
