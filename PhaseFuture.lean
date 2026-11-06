@@ -389,6 +389,71 @@ theorem strict_phase_quotient_loses_zero_future
   exact hne ((zeroSensor_future_sound_implies_injective
     q hq (project p q hp) h) heq)
 
+
+/-!
+## Adversarial boundary: static factorization without semiconjugacy
+
+An explicit four-state countermodel shows why the transition-compatibility
+hypothesis cannot be discarded. The quotient remembers parity, and the
+observable is parity; so the *current* observable factors perfectly.
+But one of two states in the same parity fiber jumps into the other
+fiber while the other stays put. Their very next readings disagree.
+-/
+
+/-- Reduction modulo two of a four-state model. -/
+def badQuotient (i : Phase 4) : Phase 2 :=
+  ⟨i.val % 2, by omega⟩
+
+/-- This deliberately violates compatibility with the parity quotient:
+    0 stays at 0, while 2 jumps to 1. -/
+def badTransition (i : Phase 4) : Phase 4 :=
+  if i.val = 2 then (1 : Phase 4) else i
+
+/-- A completely quotient-determined instantaneous observation. -/
+def badObservable (i : Phase 4) : Bool :=
+  decide (i.val % 2 = 0)
+
+/-- The observed value at time zero *does* factor through the quotient. -/
+theorem bad_static_observation_factors :
+    FactorsObservation badQuotient badObservable := by
+  refine ⟨fun a => decide (a.val = 0), ?_⟩
+  decide +kernel
+
+/-- The same quotient cannot support *any* compatible coarse transition. -/
+theorem bad_quotient_has_no_compatible_transition :
+    ¬ ∃ coarseStep : Phase 2 → Phase 2,
+      Semiconjugate badQuotient badTransition coarseStep := by
+  rintro ⟨coarseStep, hstep⟩
+  have h0 := hstep (0 : Phase 4)
+  have h2 := hstep (2 : Phase 4)
+  have hs : badQuotient (0 : Phase 4) =
+      badQuotient (2 : Phase 4) := by decide
+  have hne : badQuotient (badTransition (0 : Phase 4)) ≠
+      badQuotient (badTransition (2 : Phase 4)) := by decide
+  apply hne
+  calc
+    badQuotient (badTransition (0 : Phase 4)) =
+        coarseStep (badQuotient (0 : Phase 4)) := h0
+    _ = coarseStep (badQuotient (2 : Phase 4)) := by rw [hs]
+    _ = badQuotient (badTransition (2 : Phase 4)) := h2.symm
+
+/-- Despite static factorization, the quotient is *not future-sound*.
+    The failure occurs already at time one for states 0 and 2. -/
+theorem bad_static_does_not_preserve_future :
+    ¬ PreservesFuture badQuotient badTransition badObservable := by
+  intro h
+  have hs : badQuotient (0 : Phase 4) =
+      badQuotient (2 : Phase 4) := by decide
+  have hobs := h (0 : Phase 4) (2 : Phase 4) hs 1
+  have hne :
+      badObservable (iterate badTransition 1 (0 : Phase 4)) ≠
+      badObservable (iterate badTransition 1 (2 : Phase 4)) := by decide
+  exact hne hobs
+
+#print axioms bad_static_observation_factors
+#print axioms bad_quotient_has_no_compatible_transition
+#print axioms bad_static_does_not_preserve_future
+
 #print axioms futureSound_iff_observationFactor
 #print axioms clock_future_iff_static_factor
 #print axioms zeroSensor_bounded_future_separates
