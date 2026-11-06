@@ -105,6 +105,27 @@ At a true critical point \(x_c\) of the quadratic map with \(v_c=h(x_c)\), holom
 
 If (hypothetically) the target tree near \(v_c\) were an isolated \(m\)-spoke star, the preimage would have exactly \(2m\) spokes, and each target sector would have exactly two source-sector lifts. **In the actual KKL renormalization, however, the critical value lies in the nontrivial small filled Julia vertex \(K_1\)**. Consequently the target need *not* be an isolated star; equation (3.2) alone does **not** yield two gates per continuum or any finite count of accesses. Replacing a non-LC \(K_1\) by a single graph point before using (3.2) would be precisely the invalid shortcut Issue #40 forbids.
 
+### Corollary 3.3 (the actual repelling fixed point and its second preimage)
+
+Let \(\alpha_F\) be the distinguished repelling fixed point of the KKL stage and let \(\alpha_F'\ne\alpha_F\) be its second preimage, as explicitly named in §5.4, proof of Lemma 5.18. Since \(\alpha_F\notin\mathcal K\) for a *primitive* small-Julia cycle of period \(n>1\), it is not the critical value. The two inverse points of \(\alpha_F\) therefore lie on **different local univalent sheets** of the actual holomorphic degree-two map.
+
+If the actual Hubbard carrier has a **regular \(q\)-spoke star** at \(\alpha_F\), as it does for a finite embedded tree with the \(q\) occupied limbs, then the local preimage carrier at each of \(\alpha_F,\alpha_F'\) (when the point lies in the source domain) has precisely \(q\) spokes and \(q\) distinct local prime-end sector accesses, each mapping bijectively and in cyclic order onto the corresponding target sector. In particular:
+
+\[
+\boxed{
+\deg_{\rm loc}h|_{\alpha_F}
+=\deg_{\rm loc}h|_{\alpha_F'}=1,\qquad
+\#\operatorname{Gates}_{\rm loc}(\alpha_F')=q.
+}
+\tag{3.3}
+\]
+
+For \(q=2\) the same statement is a two-spoke local chart, not a claim that \(\alpha_F\) is a branch point of valence greater than two.
+
+**Proof.** The source's §2.4 describes the \(q\) limbs at \(\alpha_F\) and §5.4 names the second preimage. The critical point belongs to \(K_0\), so its critical value belongs to \(K_1\), and cannot equal \(\alpha_F\) for a primitive disjoint small-Julia cycle. Thus the two preimages are simple and Theorem 3.1 applies at both. The precise valence \(q\) requires the **actual** regular \(q\)-spoke target chart; it cannot be inferred solely from the number \(q\) when a non-LC lift has not been checked. \(\square\)
+
+**What is not asserted:** the source-defined common attachment root \(x\) in Proposition 6.8 is **not identified here** with \(\alpha_F'\); its proof uses \(x\) without that identification. Consequently the corollary cannot be used as the missing critical-gate atlas until one proves \(x=\alpha_F'\) (or supplies the appropriate different vertex-preimage chart) using actual source dynamics and proper paths. This is the smallest concrete candidate test for the next native stage.
+
 ## 4. The remaining native non-LC access obstruction is over small Julia vertices
 
 For the *actual* KKL stage, Theorem 2.1 excludes attachments over regular edge interiors. Theorem 3.1 supplies a complete **local** source-to-target prime-end sector atlas for each **isolated, regular branch/central vertex** of the target, including the exact old/new local spoke count when the old subtree has the regular source realization.
