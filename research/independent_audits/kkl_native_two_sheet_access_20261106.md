@@ -150,21 +150,32 @@ For every genuine target edge \(b\),
 \tag{3.3}
 \]
 
-After subdividing source old edges at the actual preimages of target vertices, let \(M_{ab}\) denote the number of components of the embedded old edge \(a\) that \(f\) carries homeomorphically over the target edge \(b\). With **row = source old edge**, **column = target edge**, we have
+After subdividing the old-tree paths at actual inverse images of target vertices, define the **row-source** incidence matrix
+
+\[
+M_{ab}:=\#\{\text{complete old edge subpaths in }a\text{ mapping homeomorphically over }b\},
+\quad(a,b\in E).
+\tag{3.4a}
+\]
+
+The standard **column-source** matrix is \(N_{ba}=M_{ab}\). The source calls the induced linear transformation \(T_F\) but §2.5 does not fix the index convention in coordinate notation, so the invariant statement is that \(M\) and \(T_F\) are the **same edge-graph operator up to matrix transpose**, and in particular \(\rho(M)=\lambda_F\). It is *not* safe to identify \(M_{ab}=(T_F)_{ab}\) without specifying this convention.
+
+There is a further geometric hypothesis for the old/new strip count: **(OLD-STRIP)** every preimage edge strip meeting the embedded old tree meets it either along the **whole** strip or not at all, and each old strip lies inside a unique old edge after subdivision. Under (OLD-STRIP) one obtains
 
 \[
 \boxed{
-M_{ab}=(T_F)_{ab},\qquad
-\sum_{a\in E}(T_F)_{ab}=|\mathcal E_b^{\rm old}|\le2.
+\sum_{a\in E}M_{ab}=|\mathcal E_b^{\rm old}|\le 2,
+\qquad
+|\mathcal E_b^{\rm old}|+|\mathcal E_b^{\rm add}|=2.
 }
-\tag{3.4}
+\tag{3.4b}
 \]
 
-In particular, all target-edge preimage **strips** are exhausted by two actual holomorphic sheets; the unused sheets in \(\mathcal E_b^{\rm add}\) are exactly those lying in the added-tree portion. There is no arbitrary third edge lift or numerical transition model.
+In all cases the two full preimage edge strips in \(\mathcal T'\) are a **source theorem**; their exact old-tree intersection and grouping are an **additional source-access verification**, not established simply by (3.1). (OLD-STRIP) holds for a finite embedded tree when the old vertex set is mapped into the target vertex set and the preimage-vertex subdivision respects the embedded old tree. It remains unproved here for the non-LC lifted carrier.
 
-**Proof.** Equation (3.3) is KKL's degree-two statement (3.1) with its actual source edge set partitioned by the old subtree. The map \(f\circ\iota^{-1}\) on the old Hubbard tree is the graph map used in §2.5 to define \(T_F\). An occurrence of \(b\) in the graph image of source edge \(a\) corresponds to precisely one lifted preimage edge \(\tilde b\) in the old subtree contained in \(a\) (after subdivision); conversely each old lifted preimage edge lies within exactly one old edge of the unsubdivided Hubbard tree. Thus each old lift contributes exactly once to the sum of the relevant graph row, proving (3.4). \(\square\)
+**Proof.** The two-sheet result (3.3) is directly KKL §2.5. Under (OLD-STRIP), each old preimage strip of \(b\) occurs in exactly one subdivided old edge \(a\) and contributes one to \(M_{ab}\); conversely every complete subpath counted by \(M_{ab}\) is one of the two strips over \(b\). This is the first equality in (3.4b), and its upper bound follows from the two-sheet result. By construction the matrix \(M\) counts the oriented target-edge traversals of \(f\circ\iota^{-1}\) with source indices as rows. It is therefore a transpose of the column-source presentation of that same graph action, not an independently selected automaton; transpose preserves the spectral radius. \(\square\)
 
-**Clarification for non-LC maps:** §2.5 explicitly transfers the *combinatorial* tree through the rational-lamination model. Equations (3.1)–(3.4) are native **abstract-edge counts**, but, without the additional regular-edge/access realization below, do **not** assert that every abstract lift supplies two distinct prime-end side atoms of the *actual* non-LC carrier.
+**Clarification for non-LC maps:** §2.5 explicitly transfers the *combinatorial* tree through the rational-lamination model. Equations (3.1)–(3.3) are native **abstract-edge counts**, while (3.4b) additionally requires (OLD-STRIP), but, without the additional regular-edge/access realization below, do **not** assert that every abstract lift supplies two distinct prime-end side atoms of the *actual* non-LC carrier.
 
 ### Lemma 3.2 (actual regular-edge four-side-germ census)
 
@@ -198,13 +209,13 @@ For a proof-used source \(\mathcal I\)-multi-interval \(I\), the **edge-trace re
 
 1. **Full-side detection.** For each old side trace that the comparison proposes to charge to \(I\), the *entire* \(s_a^\sigma\) is contained in \(I\), with no uncharged source subsegments. The charged sides are disjoint actual access subsets. Their inclusion is certified in the **original** marking, not chosen by relabeling.
 2. **Complete immersion restriction.** The old lift of every charged full side survives as a complete side trace in \(R(I)\), with all intervening actual attached-component Carathéodory blocks included in source cyclic order by Proposition 6.5.
-3. **Graph-to-access compatibility.** For every source edge \(a\) and each traversed target edge \(b\), the corresponding regular \(f\)-lift sends a complete source subtrace to one complete target \(b\)-side; all occurrences in the original source-defined graph word are included, and the target traces stay distinguished as access subsets. This is a **global side/access assertion**, not merely an equality of graph labels.
+3. **Graph-to-access compatibility.** For every source edge \(a\) and each traversed target edge \(b\), the corresponding regular \(f\)-lift sends a complete source subtrace to one complete target \(b\)-side; all occurrences in the original source-defined graph word (in the row-source convention \(M\)) are included, and the target traces stay distinguished as access subsets. This is a **global side/access assertion**, not merely an equality of graph labels.
 
 Local versions of Item 3 follow from the holomorphic side-germ census of Lemma 3.2. Extending them over every vertex endpoint and exceptional attached block is the unresolved analytic step.
 
 ### Proposition 4.2 (conditional positive edge-trace estimate)
 
-Write \(T_Fw=\lambda_Fw\), with positive Perron vector \(w=(w_a)_{a\in E}\) and \(\lambda_F>1\). Fix a native \(\mathcal I\)-multi-interval \(I\) for which \(\operatorname{ETR}(I)\) has been verified. Let \(\mathcal S(I)\) be its **verified list of complete old side traces** and set
+Use the **row-source** matrix \(M\) from (3.4a), with a positive right Perron eigenvector \(Mw=\lambda_Fw\), \(w=(w_a)_{a\in E}\) and \(\lambda_F>1\). This is an eigenvector for the source operator **or its transpose**, depending on the source's matrix index convention; it must not be conflated with an unspecified \(T_F\)-eigenweight. Fix a native \(\mathcal I\)-multi-interval \(I\) for which \(\operatorname{ETR}(I)\) has been verified. Let \(\mathcal S(I)\) be its **verified list of complete old side traces** and set
 
 \[
 m_{\mathcal S}(I)=\sum_{s_a^\sigma\in\mathcal S(I)}w_a.
@@ -217,7 +228,7 @@ If \(F_*I\ne C\), then the **target** contains the disjoint full target edge-sid
 \boxed{
 m_{\mathcal S}^{\rm output}(F_*I)
 \ \ge\ \sum_{s_a^\sigma\in\mathcal S(I)}
-\sum_b(T_F)_{ab}w_b
+\sum_b M_{ab}w_b
 =\lambda_Fm_{\mathcal S}(I).
 }
 \tag{4.2}
@@ -225,7 +236,7 @@ m_{\mathcal S}^{\rm output}(F_*I)
 
 If the target saturates \(C\), it belongs to the separate saturated alternative. This proves **edge-trace** expansion, not \(\ell(F_*I)>\ell(I)\) for the original Wave marking.
 
-**Proof.** For each complete charged source side, ETR Items 2–3 give its full old graph-image trace in \(R(I)\) and through \(f_*\); the weight of that trace is \(\sum_b(T_F)_{ab}w_b=\lambda_Fw_a\). Proposition 6.5 includes the attached pieces; none subtract from the old traces. For proper output Theorem 2.2 makes \(p\) injective on the **single connected** \(R(I)\), so independently tagged source occurrences cannot collapse to the same target access. Summing the disjoint complete target side traces gives (4.2). \(\square\)
+**Proof.** For each complete charged source side, ETR Items 2–3 give its full old graph-image trace in \(R(I)\) and through \(f_*\); the weight of that trace is \(\sum_b M_{ab}w_b=\lambda_Fw_a\). Proposition 6.5 includes the attached pieces; none subtract from the old traces. For proper output Theorem 2.2 makes \(p\) injective on the **single connected** \(R(I)\), so independently tagged source occurrences cannot collapse to the same target access. Summing the disjoint complete target side traces gives (4.2). \(\square\)
 
 **Do not infer** (i) that \(\operatorname{ETR}(I)\) holds for all original \(\mathcal I\)-multi-intervals, (ii) that all full edge sides form atoms of \(\mathcal I\), (iii) that the vertex-side length \(\ell_{\mathcal I}\) grows from the edge weight, or (iv) that any vertex-only/zero-edge sector escapes. These are **three separate native bridges**, not implications of the Perron eigenvalue.
 
@@ -301,7 +312,7 @@ This shows precisely where local degree two enters: it provides **real nontrappi
 | --- | --- | --- |
 | Actual cover and immersion | \(p=f_*\) annular covering separated from proper-path \(R=\iota^*\) | Annular carrier identification for each non-LC lift |
 | Attachment completeness | Proposition 6.5 entire \(B_X\) inserted for marked open/closed inputs; PR #41 endpoint origin localization | Full native \(X\)-by-\(X\) census at the exceptional \(x\) and neighboring limbs |
-| Edge incidence | Exactly two **actual** preimage edges over each target edge; old/new partition (3.3); source-defined \(T_F\) count (3.4); local four-germ census (3.5) | Global source-side endpoint matching and non-LC (ESR) |
+| Edge incidence | Exactly two **abstract** preimage edges over each target edge (3.3); old/new **full-strip** partition and incidence count under (OLD-STRIP), with explicit transpose convention (3.4); regular local four-germ census (3.5) | Global source-side endpoint matching and non-LC (ESR) |
 | Proper-output multiplicity | **Proved unconditionally in the annular prime-end setting** by Theorem 2.2 | Saturated output can identify covering sheets; record it as saturation, not a numerical edge-row identity |
 | Local zero-sector nontrapping | **Proved on the actual small-Julia quadratic-like access circle** (Theorem 5.1) | Faithful return selector between \(C_{K_0}\) and carrier \(C\) (Corollary 5.2) |\n| Edge-trace weight | **Conditional only** on native ETR and original-marking side detection: (4.2), not a theorem for \(\ell_{\mathcal I}\) | Original vertex-side marking ↔ edge-side trace comparison, all zero-mass sectors |
 | Closed Wave crests | Proper-closed endpoint defect transported by (2.3), when (2.2) is checked | Actual crest inclusions, proper/positive/short hypotheses, closure-triggered saturation |
