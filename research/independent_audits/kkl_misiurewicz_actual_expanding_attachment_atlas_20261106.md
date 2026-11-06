@@ -105,12 +105,16 @@ The source old-tree portion is the complementary arc \([\theta,1-\theta]\), whos
 
 ## 3. Full immersion pullback on open versus closed source markings
 
-Take the **actual two-side ideal marking** on the old target segment:
+Use an **actual finite vertex-refined ideal marking** on the old target slit, with endpoints
 \[
-I_+=(0,\tfrac12),\qquad I_-=(\tfrac12,1)
+\{0,\ 2\theta,\ \tfrac12,\ 1-2\theta\}\subset C.
+\]
+The points \(2\theta\) and \(1-2\theta\) are the **two genuine target accesses** of the repelling fixed vertex \(\alpha=-b\) (because \(P(b)=\alpha\) and the access cover is doubling). The upper and lower **connected multi-interval inputs** in this marking are
+\[
+I_+=(0,\tfrac12),\qquad I_-=(\tfrac12,1).
 \tag{3.1}
 \]
-(the two intervals are upper and lower physical slit sides; they are a valid ideal marking of this example, **not** asserted to be the KKL original small-Julia vertex-side marking).
+Each contains the relevant intermediate \(\alpha\)-marking endpoint and its adjoining open atoms. Unlike an unrefined two-atom marking, this refinement also makes \(F_*I_+=(2\theta,1)\) a union of actual marked atoms, so **the endpoint \(2\theta\) is not inserted by hand after computing the image**. The marking is genuinely source-defined by slit tips and the repelling fixed vertex, but it is **not** asserted to equal KKL's original small-Julia vertex-side marking.
 
 The real embedded contour also determines an order-preserving degree-one **coding map** \(q:C'\to C\): on the old source sides it is uniquely obtained by matching the physical landing points and their upper/lower sides; on the entire added block \(B_X\) it is constant with value 0 (the old tip access). For completeness, if
 \[
@@ -192,14 +196,16 @@ The **same polynomial** has the exact endpoint maps
 P(c)=b,\quad P(\alpha)=\alpha,\quad P(0)=c,\quad P(b)=\alpha.
 \tag{4.3}
 \]
-It is monotone on each chosen edge, hence the actual edge traversals are
+It is monotone on each chosen edge. Orient **all source and target edges from left to right** in the real plane. The complete, *ordered signed* edge traversals of the **same actual polynomial** are
 \[
-A\longmapsto B\,D,\qquad
-B\longmapsto A,\qquad
+\boxed{
+A\longmapsto D^{-1}B^{-1},\qquad
+B\longmapsto A^{-1},\qquad
 D\longmapsto A.
+}
 \tag{4.4}
 \]
-(The image of \(A\) is the interval \([\alpha,b]\) traversed once, while each of \(B,D\) maps homeomorphically to \([c,\alpha]\).)
+Indeed, along source \(A\), the polynomial decreases from \(b\) to \(\alpha\), visiting first \(D\) backwards (from \(b\) to \(0\)) then \(B\) backwards (from \(0\) to \(\alpha\)). Along \(B\) it decreases from \(\alpha\) to \(c\), and along \(D\) it increases from \(c\) to \(\alpha\). Thus no orientation or intermediate vertex is being silently discarded.
 
 With **row = source edge**, **column = target edge**, the exact access/graph incidence is
 \[
