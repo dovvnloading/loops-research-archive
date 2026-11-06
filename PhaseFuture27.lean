@@ -151,7 +151,9 @@ theorem outer_memory_requires_nine_distinct
   apply outerZeroFiber_injective
   apply hcode
   apply Prod.ext
-  · rw [outerZeroFiber_projects_zero a, outerZeroFiber_projects_zero b]
+  · change project 3 27 (by decide) (outerZeroFiber a) =
+        project 3 27 (by decide) (outerZeroFiber b)
+    rw [outerZeroFiber_projects_zero a, outerZeroFiber_projects_zero b]
   · exact hmem
 
 /-- The analogous lower bound over one middle-phase fiber is THREE
@@ -165,7 +167,9 @@ theorem middle_memory_requires_three_distinct
   apply middleZeroFiber_injective
   apply hcode
   apply Prod.ext
-  · rw [middleZeroFiber_projects_zero a, middleZeroFiber_projects_zero b]
+  · change project 9 27 (by decide) (middleZeroFiber a) =
+        project 9 27 (by decide) (middleZeroFiber b)
+    rw [middleZeroFiber_projects_zero a, middleZeroFiber_projects_zero b]
   · exact hmem
 
 /-- An arbitrary augmented 3-phase state that preserves the complete
@@ -227,6 +231,7 @@ theorem outerAddress_future_stream {O : Type} (obs : Phase 27 → O) :
     outerAddress next27 outerAddressStep obs outerAddress_step_commutes).mpr
   refine ⟨fun a => obs (outerDecode a), ?_⟩
   intro i
+  change obs i = obs (outerDecode (outerAddress i))
   rw [outerDecode_encode]
 
 def middleAddressStep (a : Phase 9 × Phase 3) : Phase 9 × Phase 3 :=
@@ -243,6 +248,7 @@ theorem middleAddress_future_stream {O : Type} (obs : Phase 27 → O) :
     middleAddress next27 middleAddressStep obs middleAddress_step_commutes).mpr
   refine ⟨fun a => obs (middleDecode a), ?_⟩
   intro i
+  change obs i = obs (middleDecode (middleAddress i))
   rw [middleDecode_encode]
 
 /-- A single snapshot fails to expose one kind of future aliasing:
