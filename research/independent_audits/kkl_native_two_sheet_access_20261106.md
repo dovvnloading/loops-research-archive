@@ -93,6 +93,27 @@ There are thus three distinct endpoint outcomes:
 
 This trichotomy is exact where (2.2) is verified. A claim that (2.2) holds for every non-locally-connected native closed pullback is **not** being smuggled in.
 
+### Notational warning: two meanings of “proper”
+
+Throughout Theorem 2.2, **proper output** means \(F_*I\ne C\), a *set-theoretic nonsaturation condition*. KKL Appendix A.3.4 defines “\(F_*\) is **proper on an interval**” to mean that **the immersion \(\iota\) is proper on \(\iota^*I\)** (and “end-proper” only on its end intervals). This is a different property. In particular, KKL Proposition 6.7's properness on the good corridor does **not** by itself invoke the nonsaturation hypothesis of Theorem 2.2.
+
+### Native one-step Wave endpoint interface (source A.14, plus Corollary 2.3)
+
+KKL Proposition A.14 provides a true source-defined Wave statement: if \(F_*\) acts combinatorially on \(I\), \(A\) is a Wave over \(I\), and \(B\subset F_*A^{\rm ubr}\) is the appropriate unbreakable descendant, then \(B\) is a Wave over \(F_*I\). For a source end \(E\Subset I\), the proposition separately places a target end of \(B\) inside **\(F_*\overline I\)**, *not* automatically inside \(\overline{F_*I}\).
+
+When the closed source pullback satisfies (2.2) and the closed target image is proper, Corollary 2.3 therefore gives an **exact two-location classification** for that target end:
+
+\[
+\text{end}(B)\subset
+\overline{F_*I}\ \cup\ 
+p\bigl(R(\overline I)\setminus\overline{R(I)}\bigr).
+\tag{2.4}
+\]
+
+The second set consists of the closure-only access births localized by the native attachment formula, which may matter even if the first set has no such access. If the closed target image saturates, this classification cannot be upgraded using covering injectivity and must be treated separately.
+
+This is **not** the missing assertion \(F_*^m(C_A)\subset C_B\) for the genuine **closed** Wave crests: A.14 controls the Wave-over-interval and an end, not every crest point. It does identify exactly why open/closed propagation needs distinct records.
+
 ## 3. Theorem B — two-sheet census for actual Hubbard **edges**
 
 Let \(E=E(\mathcal T)\) and \(E'=E(\mathcal T')\) be the genuine abstract edge sets of KKL §2.5. The critical point and critical value are in the distinguished vertex package; the restriction over the interior of any target edge \(b\in E\) is unbranched.
