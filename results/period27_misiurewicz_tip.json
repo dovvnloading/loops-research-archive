@@ -1,0 +1,46 @@
+{
+  "G_derivative_bounds": [
+    "-71",
+    "-70"
+  ],
+  "critical_period": 9,
+  "critical_preimage_angles": [
+    "116791/523264",
+    "144841/523264",
+    "378423/523264",
+    "406473/523264"
+  ],
+  "critical_preperiod": 10,
+  "critical_ray_f6_angles": [
+    "2327/8176",
+    "5849/8176",
+    "2327/8176",
+    "5849/8176"
+  ],
+  "inner_return": 9,
+  "outer_return": 3,
+  "parameter_bracket": {
+    "denominator_power_of_two": 128,
+    "lower_numerator": -607918036626757496169199575185708826140,
+    "upper_numerator": -607918036626757496169199575185708826139
+  },
+  "physical_f6_access_collision": {
+    "common_image": "2327/8176",
+    "first": "116791/523264",
+    "second": "378423/523264"
+  },
+  "repelling_f9_multiplier_bounds": [
+    "3",
+    "4"
+  ],
+  "scope": "Finite real-algebraic and angular claims; ray landing from Zakeri Theorem 3.1, K=J from classical Misiurewicz theory. This does not establish a KL puzzle/sheet atlas",
+  "status": "EXACT_PERIOD9_MISIUREWICZ_TIP_CERTIFICATE_PASS",
+  "tuned_tip_angles": [
+    "116791/261632",
+    "144841/261632"
+  ],
+  "tuning_blocks": {
+    "0": "011100100",
+    "1": "100011011"
+  }
+}
