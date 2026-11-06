@@ -232,7 +232,49 @@ If that corridor contains a genuine positive edge-side trace, this **particular*
 
 **Domain warning:** Appendix A.3.4 defines \(F_*\) on **multi-intervals**, while \(x\) above can be a marked **endpoint**. Equation (4.4) is therefore intentionally written as the set \(p(\iota^*\{x\})\), **not** as \(F_*x\) in the original multi-interval dynamical system. The proof of KKL Proposition 6.8 extends it to a short actual stretching multi-interval \(I_{\rm str}\); this does not establish escape for *every* zero-weight vertex sector.
 
-## 5. Which parts of Issue #40 have actually advanced?
+## 5. Native local zero-sector nontrapping **before** global access identification
+
+There is a second genuinely holomorphic input which does not require the synthetic automaton. Let \(K_0\) be a connected small filled Julia set of an actual KKL renormalization. Fix an **actual quadratic-like restriction** \(g:W'\to W\) of the renormalization in a neighborhood of \(K_0\), as supplied by KKL Theorem 2.1 for each fixed finite-width stage. Denote its inner prime-end access circle by \(C_{K_0}\).
+
+The Douady–Hubbard straightening theorem for connected polynomial-like maps gives a quasiconformal conjugacy near \(K_0\) with a degree-two polynomial \(P\) with connected filled Julia set. This homeomorphism of complementary collars induces a homeomorphism of their **prime-end circles**. Böttcher's map for \(P\) identifies the circle covering of accesses with angle doubling. Thus the actual *local* return map on accesses,
+
+\[
+g_\partial:C_{K_0}\to C_{K_0},
+\tag{5.1}
+\]
+
+is **topologically conjugate** to \(\theta\mapsto 2\theta\bmod 1\). This does not require any pointwise landing of external rays or local connectivity of \(K_0\). Source references: KKL §2.1 Theorem 2.1, §2.3 renormalization, and Douady–Hubbard *On the dynamics of polynomial-like mappings* (1985), Straightening Theorem.
+
+### Theorem 5.1 (native local degree-two return cannot trap an open access interval)
+
+For every nonempty connected open interval \(J\subset C_{K_0}\) there exists \(n\ge1\) such that
+
+\[
+\boxed{g_\partial^n(J)=C_{K_0}.}
+\tag{5.2}
+\]
+
+More precisely, in a straightened angular chart of length \(L\in(0,1]\), any \(n\) with \(2^nL>1\) suffices. In particular **no nonempty open local prime-end interval can remain forever disjoint from any fixed nonempty gate set \(G\subset C_{K_0}\)**.
+
+**Proof.** Under the prime-end conjugacy, \(g_\partial^n(J)\) is the image of a real open interval of length \(2^nL\) modulo \(\mathbb Z\). Once this length exceeds one, its projection is the entire circle. Every fixed nonempty gate set is then met. The proof is on the actual quadratic-like access circle, not on the combinatorial rational lamination. \(\square\)
+
+**Do not conflate** \(C_{K_0}\), the local prime-end circle of one *small filled Julia set*, with \(C=\partial_C\mathcal T\), the carrier-relative circle used by KKL's Wave marking. They are different complements, and an individual external access of \(K_0\) can be split or concealed by incident carrier edges. Theorem 5.1 **does not yet prove** zero-sector escape under the global \(F_*\).
+
+### Corollary 5.2 (conditional global vertex-gate escape criterion)
+
+Suppose an actual proof-used global zero-edge sector \(S\subset C\) has a **faithful return-access identification** with a nonempty open \(J\subset C_{K_0}\) satisfying:
+
+1. every successive proper zero-edge image of \(S\) under one full small-Julia return is represented by the corresponding \(g_\partial^m(J)\);
+2. there is a **nonempty** set \(G\subset C_{K_0}\) of source-defined actual carrier edge-attachment *accesses*, with the property that meeting \(G\) forces the global return image either to acquire a complete edge-side or to saturate \(C\);
+3. this implication is verified for distinct **prime ends** and both open and closed endpoints, not deduced from a planar point or graph valence.
+
+Then \(S\) cannot remain a proper zero-edge sector indefinitely.
+
+**Proof.** Theorem 5.1 gives \(n\) for which \(g_\partial^n(J)=C_{K_0}\), hence meets \(G\). Item 1 transfers the meeting to the actual global return, and Item 2 forces positive edge-side acquisition or saturation, contradicting permanent proper zero-edge evolution. \(\square\)
+
+This shows precisely where local degree two enters: it provides **real nontrapping on the small-Julia access circle**, but global zero-weight escape remains conditional on an *analytic gate correspondence* between the **two different prime-end circles**. The necessary faithful identification is part of Issue #40's still-open attachment census, especially in the non-LC case.
+
+## 6. Which parts of Issue #40 have actually advanced?
 
 | Item | Source-defined progress | Still open |
 | --- | --- | --- |
@@ -240,7 +282,7 @@ If that corridor contains a genuine positive edge-side trace, this **particular*
 | Attachment completeness | Proposition 6.5 entire \(B_X\) inserted for marked open/closed inputs; PR #41 endpoint origin localization | Full native \(X\)-by-\(X\) census at the exceptional \(x\) and neighboring limbs |
 | Edge incidence | Exactly two **actual** preimage edges over each target edge; old/new partition (3.3); source-defined \(T_F\) count (3.4); local four-germ census (3.5) | Global source-side endpoint matching and non-LC (ESR) |
 | Proper-output multiplicity | **Proved unconditionally in the annular prime-end setting** by Theorem 2.2 | Saturated output can identify covering sheets; record it as saturation, not a numerical edge-row identity |
-| Edge-trace weight | **Conditional only** on native ETR and original-marking side detection: (4.2), not a theorem for \(\ell_{\mathcal I}\) | Original vertex-side marking ↔ edge-side trace comparison, all zero-mass sectors |
+| Local zero-sector nontrapping | **Proved on the actual small-Julia quadratic-like access circle** (Theorem 5.1) | Faithful return selector between \(C_{K_0}\) and carrier \(C\) (Corollary 5.2) |\n| Edge-trace weight | **Conditional only** on native ETR and original-marking side detection: (4.2), not a theorem for \(\ell_{\mathcal I}\) | Original vertex-side marking ↔ edge-side trace comparison, all zero-mass sectors |
 | Closed Wave crests | Proper-closed endpoint defect transported by (2.3), when (2.2) is checked | Actual crest inclusions, proper/positive/short hypotheses, closure-triggered saturation |
 
 ### First remaining native verification target
