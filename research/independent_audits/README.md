@@ -8,6 +8,9 @@ This directory contains reproducible audits of research claims in the archive. I
 
 ## Contents
 
+- **[period27_exterior_ray_pullback_20261106.md](period27_exterior_ray_pullback_20261106.md)**: physical escaping-basin Böttcher inverse-ray theorem for the certified period-27 center. The 9-to-3 map is exactly 64-to-1 on distinct ray/equipotential points; a separate 64-branch homogeneous trace direct-sum formula has exact \(1/8\) normalization. These statements do **not** identify KL restrictive-domain sheet cosets or ray landing.
+- **verify_period27_exterior_pullback.py**: dependency-free exact audit of all 512 dyadic ray labels, the 64-fold projection and lifts, collision witnesses and trace-scale coefficients; it does not verify the imported Böttcher theorem.
+
 - **clone_spectral_referee_note.md**: self-contained calculation checking a delayed-cross-section clone formula against the convention printed in Kahn–Kapiamba–Lyubich, arXiv:2606.27272v1, Appendix C. It includes two-sided finite-clone estimates and a second-order fixed-template asymptotic. Specialist confirmation of the source interpretation and novelty is still required.
 - **verify_clone_spectral.py**: standalone finite-matrix numerical regressions for the clone formula, including an independently constructed whole adjacency matrix and a two-gate example.
 - **evidence_audit_20261104.md**: baseline of unresolved proof-evidence pointers in the 465-entry proof ledger as found on November 4, 2026.
