@@ -179,6 +179,41 @@ The same phenomenon occurs for the lower side. This realizes KKL Appendix A.3.4'
 
 **Distinction:** The full closed \(\iota^*\) adds a positive-length prime-end block, not merely an endpoint of angular measure zero. This is **genuinely immersion-born** attachment mass; the covering merely transports and saturates it. Under the original source's proper-path definition, discarding this \(B_X\) is wrong even though all planar roots are known.
 
+### Theorem 3.3 (a real, repelling quadratic **nonextension** at the contact access)
+
+Regard the nesting \(T\subset T'\) as an instance of the protected-prime-end transfer problem (the *smaller continuum* is now the old postcritical segment \(T\), and the *larger continuum* is its real full preimage \(T'\)). The complete added-contact set is the **single planar point**
+\[
+R=\overline{T'\setminus T}\cap T=\{b\}.
+\tag{3.8}
+\]
+Its small-continuum prime-end boundary has a **single contact tip access** \(t=0\). Every other target access \(t\in C\setminus\{0\}\) is protected from the additional continuum \(X\), so the canonical crosscut-chain transfer of the companion non-LC protected-access theorem is the genuine map
+\[
+\tau:C\setminus\{0\}\longrightarrow C',\qquad
+\tau(t)=q^{-1}(t)\quad(t\ne0),
+\tag{3.9}
+\]
+where \(q\) is the **derived**, monotone contour code (3.3). This is an order-preserving homeomorphism from the punctured target circle to the **old** source contour arc \((\theta,1-\theta)\).
+
+But its two one-sided limits at the *same* target contact access are distinct:
+\[
+\boxed{
+\lim_{t\downarrow0}\tau(t)=\theta,\qquad
+\lim_{t\uparrow1}\tau(t)=1-\theta,\qquad
+\theta\ne1-\theta\pmod1.
+}
+\tag{3.10}
+\]
+Therefore **there is no continuous single-valued extension** of the canonical protected transfer \(\tau\) to \(t=0\), despite:
+- a genuine holomorphic quadratic-like pair,
+- a **periodically repelling** connected Julia set,
+- a single planar attachment point,
+- locally connected *slit* carriers with completely explicit impressions,
+- and strictly expanding Markov edge incidence \(\lambda=\sqrt2>1\).
+
+**Proof.** On protected target accesses the same physical old upper and lower slit-side crosscuts define the identical source end accesses; the inverse contour code \(q^{-1}\) is therefore the actual canonical transfer, not a freely assigned section. On upper target accesses \(t\downarrow0\), the old source access approaches the gate \(s=\theta\) of (2.5), while lower target accesses \(t\uparrow1\) approach the other gate \(s=1-\theta\). The gates are different because \(0<\theta<1/4\). Continuity of an extension at the one target endpoint \(t=0=1\) would require the two limits to coincide, contradiction. \(\square\)
+
+**Correct conclusion:** A **set-valued/contact-block** correspondence is unavoidable at a blown-up attachment: the single target contact access has the entire *source* block \(B_X\) over it. Here an explicit **reverse collapse** \(q:C'\to C\) exists, but \(\iota\) itself has no continuous boundary extension on the added interior, and the inverse protected transfer has no continuous extension through the contact. In a non-LC KKL carrier this obstruction may be compounded by non-singleton impressions, but is **already present in a locally connected expanding quadratic**. This theorem is a true analytic counterexample to the **unqualified extension of protected accesses across contacts**, **not** to KKL's properly defined Proposition 6.5 or to the prime primitive theorem.
+
 ## 4. Exact expanding edge incidence from these very same maps
 
 The old real postcritical Hubbard interval has the four **actual distinguished points**
