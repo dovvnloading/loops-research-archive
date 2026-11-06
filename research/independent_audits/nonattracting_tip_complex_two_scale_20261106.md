@@ -1,5 +1,7 @@
 # Two actual complex quadratic-like returns at the nonattracting Misiurewicz tip
 
+> **Later addendum (2026-11-06):** The separate source-level condition Levin **(p2)**, called open in this pre-existing domain certificate, is now met by the same explicit U₃,V₃ and U₉,V₉ representatives via [a new uniform Carathéodory/Green-potential argument](levin_tip_p2_carathéodory_two_scale_20261106.md). The potential bound is positive by compact uniform continuity, but no numerical dyadic bound is computed. This original note's p2-open conclusion reflects its earlier date, not the latest proof state. The KL prime-end/sheet transport and global MLC gates remain open.
+
 **Audit date: 2026-11-06.** Exact finite inequalities are independently checked in [TipComplexMargins.lean](../../TipComplexMargins.lean) (kernel-recomputed) and [verify_tip_complex_domains.py](verify_tip_complex_domains.py) (signed integers at resolution 2^-224). The complex-analytic interpretation below invokes **classical Rouché, Riemann–Hurwitz, and polynomial-like connectedness theorems**; these are NOT yet formalized in Lean. Neither Levin (p2), a Kahn–Lyubich source puzzle, localization sheets, nor MLC is established here.
 
 ## Exact parameter and real return data
