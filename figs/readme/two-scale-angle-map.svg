@@ -1,0 +1,73 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1160 585" role="img" aria-labelledby="ttl desc">
+<title id="ttl">Distinct source-defined Levin ray-angle maps at periods three and nine</title>
+<desc id="desc">Among the 18 known external rays in the repository's certified tip portrait, six are eligible for the period-three Levin map and have exact angle correspondence 110 to 4 sevenths, 114 to 5 sevenths, 142 to 6 sevenths, 369 to 1 seventh, 397 to 2 sevenths, and 401 to 3 sevenths. At period nine, the two eligible portrait angles, 114 and 397 divided by 511, both map to internal angle zero. These maps depend on imported classical analytic theorems and the archive's Carathéodory p2 argument, and no map between the internal circle codomains is claimed.</desc>
+<defs>
+ <linearGradient id="bg" x1="0" x2="1" y1="0" y2="1"><stop stop-color="#111e32"/><stop offset="1" stop-color="#08121f"/></linearGradient>
+ <marker id="arr" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0 0L8 4L0 8Z" fill="#7d9fba"/></marker>
+ <marker id="arrGold" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0 0L8 4L0 8Z" fill="#f5b765"/></marker>
+</defs>
+<rect width="1160" height="585" rx="22" fill="url(#bg)"/>
+<text x="39" y="47" font-size="14" font-family="Arial,sans-serif" letter-spacing="2.3" font-weight="700" fill="#58dcc2">A TWO-SCALE DISTINCTION</text>
+<text x="39" y="87" font-size="30" font-family="Arial,sans-serif" font-weight="700" fill="#f4f7fb">The same two rays behave differently at returns 3 and 9</text>
+<text x="39" y="116" font-size="16" font-family="Arial,sans-serif" fill="#acbed0">Computed values of two genuine Levin correspondences on the known tip-ray subportrait</text>
+<rect x="29" y="142" width="684" height="372" rx="16" fill="#12243a" stroke="#2d425c"/>
+<rect x="728" y="142" width="402" height="372" rx="16" fill="#12243a" stroke="#2d425c"/>
+<text x="53" y="177" font-size="19" font-family="Arial,sans-serif" font-weight="700" fill="#f4f7fb">Period 3 · Π₃</text>
+<text x="53" y="202" font-size="13" font-family="Arial,sans-serif" fill="#a9bed2">Ambient θ</text>
+<text x="505" y="202" font-size="13" font-family="Arial,sans-serif" fill="#a9bed2">Internal angle</text>
+<g data-ambient="110/511" data-period3="4/7" data-phase="12">
+<rect x="51" y="224" width="190" height="34" rx="9" fill="#1b3049"/>
+<text x="145" y="248" font-family="Arial,sans-serif" text-anchor="middle" font-size="19" font-weight="500" fill="#d4e2f1">110/511</text>
+<path d="M257 241H479" fill="none" stroke="#5c7996" stroke-width="1.7" marker-end="url(#arr)"/>
+<rect x="504" y="224" width="165" height="34" rx="9" fill="#1b3049"/>
+<text x="586" y="248" font-family="Arial,sans-serif" text-anchor="middle" font-size="19" font-weight="500" fill="#d4e2f1">4/7</text>
+</g>
+<g data-ambient="114/511" data-period3="5/7" data-phase="18">
+<rect x="51" y="267" width="190" height="34" rx="9" fill="#253d60"/>
+<text x="145" y="291" font-family="Arial,sans-serif" text-anchor="middle" font-size="19" font-weight="700" fill="#8daeff">114/511</text>
+<path d="M257 284H479" fill="none" stroke="#8daeff" stroke-width="2.4" marker-end="url(#arr)"/>
+<rect x="504" y="267" width="165" height="34" rx="9" fill="#253d60"/>
+<text x="586" y="291" font-family="Arial,sans-serif" text-anchor="middle" font-size="19" font-weight="700" fill="#8daeff">5/7</text>
+</g>
+<g data-ambient="142/511" data-period3="6/7" data-phase="15">
+<rect x="51" y="310" width="190" height="34" rx="9" fill="#1b3049"/>
+<text x="145" y="334" font-family="Arial,sans-serif" text-anchor="middle" font-size="19" font-weight="500" fill="#d4e2f1">142/511</text>
+<path d="M257 327H479" fill="none" stroke="#5c7996" stroke-width="1.7" marker-end="url(#arr)"/>
+<rect x="504" y="310" width="165" height="34" rx="9" fill="#1b3049"/>
+<text x="586" y="334" font-family="Arial,sans-serif" text-anchor="middle" font-size="19" font-weight="500" fill="#d4e2f1">6/7</text>
+</g>
+<g data-ambient="369/511" data-period3="1/7" data-phase="15">
+<rect x="51" y="353" width="190" height="34" rx="9" fill="#1b3049"/>
+<text x="145" y="377" font-family="Arial,sans-serif" text-anchor="middle" font-size="19" font-weight="500" fill="#d4e2f1">369/511</text>
+<path d="M257 370H479" fill="none" stroke="#5c7996" stroke-width="1.7" marker-end="url(#arr)"/>
+<rect x="504" y="353" width="165" height="34" rx="9" fill="#1b3049"/>
+<text x="586" y="377" font-family="Arial,sans-serif" text-anchor="middle" font-size="19" font-weight="500" fill="#d4e2f1">1/7</text>
+</g>
+<g data-ambient="397/511" data-period3="2/7" data-phase="18">
+<rect x="51" y="396" width="190" height="34" rx="9" fill="#253d60"/>
+<text x="145" y="420" font-family="Arial,sans-serif" text-anchor="middle" font-size="19" font-weight="700" fill="#f5b765">397/511</text>
+<path d="M257 413H479" fill="none" stroke="#f5b765" stroke-width="2.4" marker-end="url(#arr)"/>
+<rect x="504" y="396" width="165" height="34" rx="9" fill="#253d60"/>
+<text x="586" y="420" font-family="Arial,sans-serif" text-anchor="middle" font-size="19" font-weight="700" fill="#f5b765">2/7</text>
+</g>
+<g data-ambient="401/511" data-period3="3/7" data-phase="12">
+<rect x="51" y="439" width="190" height="34" rx="9" fill="#1b3049"/>
+<text x="145" y="463" font-family="Arial,sans-serif" text-anchor="middle" font-size="19" font-weight="500" fill="#d4e2f1">401/511</text>
+<path d="M257 456H479" fill="none" stroke="#5c7996" stroke-width="1.7" marker-end="url(#arr)"/>
+<rect x="504" y="439" width="165" height="34" rx="9" fill="#1b3049"/>
+<text x="586" y="463" font-family="Arial,sans-serif" text-anchor="middle" font-size="19" font-weight="500" fill="#d4e2f1">3/7</text>
+</g>
+<text x="754" y="178" font-size="19" font-family="Arial,sans-serif" font-weight="700" fill="#f4f7fb">Period 9 · Π₉</text>
+<text x="754" y="202" font-size="13" font-family="Arial,sans-serif" fill="#a9bed2">Two eligible rays from x₁₈</text>
+<g data-ambient="114/511" data-period9="0"><rect x="755" y="241" width="143" height="46" rx="11" fill="#253d60" stroke="#8daeff"/>
+<text x="826" y="270" text-anchor="middle" font-size="19" font-family="Arial,sans-serif" fill="#a9c5ff">114/511</text></g>
+<g data-ambient="397/511" data-period9="0"><rect x="755" y="355" width="143" height="46" rx="11" fill="#42392e" stroke="#f5b765"/>
+<text x="826" y="384" text-anchor="middle" font-size="19" font-family="Arial,sans-serif" fill="#ffca82">397/511</text></g>
+<path d="M899 264C935 264 941 309 971 309M899 378C935 378 941 309 971 309" fill="none" stroke="#f5b765" stroke-width="2.5" marker-end="url(#arrGold)"/>
+<rect x="981" y="276" width="124" height="67" rx="14" fill="#285852" stroke="#61e0c2"/>
+<text x="1043" y="321" text-anchor="middle" font-size="36" font-weight="700" font-family="Arial,sans-serif" fill="#e7fff6">0</text>
+<text x="755" y="452" font-size="15" font-family="Arial,sans-serif" fill="#ccdded">A genuine two-to-one fiber</text>
+<text x="755" y="474" font-size="13" font-family="Arial,sans-serif" fill="#91aabd">within the known portrait rays</text>
+<path d="M39 540H1121" stroke="#30445a"/>
+<text x="40" y="562" font-size="13" font-family="Arial,sans-serif" fill="#b0c4d6">Levin (p1)+(p2) use imported classical analysis; finite values are checked here. No all-ray classification or KL sheet map.</text>
+</svg>

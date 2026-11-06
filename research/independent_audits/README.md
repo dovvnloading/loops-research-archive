@@ -6,10 +6,9 @@ This directory contains reproducible audits of research claims in the archive. I
 
 - **[lean_period27_real_center_20261105.md](lean_period27_real_center_20261105.md)**: kernel-checked real calculus, IVT and strict MVT uniqueness for the actual period-27 quadratic parameter, plus exact minimal period from all 26 early orbit enclosures. These are finite real-polynomial results; no global MLC or KL geometric gate is closed.
 
+## Contents
 
 - **[kl_tip_primitive_puzzle_and_localization_20261106.md](kl_tip_primitive_puzzle_and_localization_20261106.md)**: source-aligned successive top KL puzzles for the ambient f and the polynomial-like return G=f³ (both q=2, n=1, with distinct physical first returns p=3 and 9), exact landed α/α′/critical puzzle vertex ray-access table, and *two actual scale-specific Kahn localization coset collisions* based on exact off-cycle real preimages of 0. A separate point-level witness shows identity and f⁶ do **not** map the nine-scale deleted surfaces into the three-scale ones. **Not a construction of the 9→3 KL sheet functor**; #29 remains open. Companion [TipKLPuzzle.lean](../../TipKLPuzzle.lean) and [verify_tip_kl_puzzle.py](verify_tip_kl_puzzle.py) check finite arithmetic, not source geometry.
-
-## Contents
 
 - **[tip_kl_top_puzzle_and_localization_complement_20261106.md](tip_kl_top_puzzle_and_localization_complement_20261106.md)**: first source-level Kahn–Lyubich top-puzzle identification at the nonattracting tip (dividing q=2, first escape n=1, P=Y¹, V⁰=Y³), rational ray-vertex candidates, and a **certified obstruction** to the *naïve physical* 9→3 localization target-complement inclusion at z=31/1024. The separate based KL sheet/groupoid transport remains open. New [Lean arithmetic](../../TipKLPuzzle.lean) and [independent exact checker](verify_tip_kl_puzzle.py).
 

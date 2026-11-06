@@ -39,6 +39,7 @@ on:
       - 'README.md'
       - 'figs/readme/*.svg'
       - 'code/verify_readme_integrity.py'
+      - 'code/generate_readme_research_figures.mjs'
       - 'ledger.json'
       - 'ledger.js'
       - 'research/mlc_unified/proof_obligations.json'
@@ -74,6 +75,7 @@ on:
       - 'README.md'
       - 'figs/readme/*.svg'
       - 'code/verify_readme_integrity.py'
+      - 'code/generate_readme_research_figures.mjs'
       - 'ledger.json'
       - 'ledger.js'
       - 'research/mlc_unified/proof_obligations.json'
@@ -111,8 +113,10 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
-      - name: Verify README links, charts, and source-locked ledger totals
+      - name: Verify README links, exact research figures and ledger provenance
         run: python code/verify_readme_integrity.py
+      - name: Verify generated SVGs match exact source manifests
+        run: node code/generate_readme_research_figures.mjs --check
       - name: Install numerical-test dependency
         run: python -m pip install 'numpy>=2,<3'
       - name: Check finite delayed-clone matrices
