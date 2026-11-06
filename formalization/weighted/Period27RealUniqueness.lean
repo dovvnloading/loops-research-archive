@@ -142,8 +142,8 @@ theorem continuous_cap_of_rationals (a b M : ℝ)
   have hmap : Set.MapsTo F
       (cast '' (cast ⁻¹' Set.Ioo a b)) (Set.Iic M) := by
     intro y hy
-    obtain ⟨q, hq, rfl⟩ := hy
-    exact hq q hq.1.le hq.2.le
+    obtain ⟨q, hqi, rfl⟩ := hy
+    exact hq q hqi.1.le hqi.2.le
   have hopen : Set.MapsTo F (Set.Ioo a b) (Set.Iic M) := by
     intro y hy
     exact (hmap.closure_left hF isClosed_Iic) (hdense hy)
