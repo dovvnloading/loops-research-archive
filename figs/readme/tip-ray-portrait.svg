@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1160 620" role="img" aria-labelledby="ttl desc">
+<title id="ttl">Exact nine-pair external-angle portrait at the archive's nonattracting Misiurewicz tip</title>
+<desc id="desc">Nine disjoint straight chords join 18 rational external ray angles with denominator 511 from the repository's period-nine portrait manifest. Chord endpoints use their exact angular positions. Three highlighted pairs at phases 12, 15 and 18 also participate in the later two-scale Levin correspondence. The chords are combinatorial pairings, not drawn dynamical rays. Landing uses an imported theorem of Zakeri; finite pairing and noncrossing arithmetic are checked in this archive.</desc>
+<defs><linearGradient id="bg" x1="0" x2="1" y1="0" y2="1"><stop stop-color="#111e32"/><stop offset="1" stop-color="#08121f"/></linearGradient></defs>
+<rect width="1160" height="620" rx="22" fill="url(#bg)"/>
+<text x="40" y="47" font-size="14" font-family="Arial,sans-serif" letter-spacing="2.4" font-weight="700" fill="#58dcc2">A RESULT YOU CAN RECOMPUTE</text>
+<text x="40" y="88" font-size="31" font-family="Arial,sans-serif" font-weight="700" fill="#f4f7fb">Nine pairs of external angles at a nonattracting tip</text>
+<text x="40" y="117" font-size="17" font-family="Arial,sans-serif" fill="#acbed0">Actual exact-angle data, not a generic Mandelbrot illustration or a proof-completion score</text>
+<rect x="30" y="140" width="555" height="417" rx="17" fill="#12243a" stroke="#2d425c"/>
+<rect x="601" y="140" width="529" height="417" rx="17" fill="#12243a" stroke="#2d425c"/>
+<circle cx="300" cy="337" r="182" fill="#0c1b2e" stroke="#627f9c" stroke-width="2"/>
+<path d="M118 337H482 M300 155V519" stroke="#33475f" stroke-dasharray="4 7"/>
+<text x="489" y="342" font-size="14" font-family="Arial,sans-serif" fill="#a8bfd4">0</text>
+<text x="117" y="165" font-size="13" font-family="Arial,sans-serif" fill="#9bafc5">θ ↺</text>
+<line data-phase="10" data-lower="228/511" data-upper="283/511" x1="128.31" y1="276.63" x2="128.31" y2="397.37" stroke="#4f6884" stroke-width="2.2" stroke-linecap="round" opacity="0.78"><title>phase x10: 228/511 and 283/511</title></line>
+<circle cx="128.31" cy="276.63" r="3.3" fill="#4f6884" stroke="#10243a" stroke-width="1.5"/>
+<circle cx="128.31" cy="397.37" r="3.3" fill="#4f6884" stroke="#10243a" stroke-width="1.5"/>
+<line data-phase="11" data-lower="55/511" data-upper="456/511" x1="441.94" y1="223.09" x2="441.94" y2="450.91" stroke="#4f6884" stroke-width="2.2" stroke-linecap="round" opacity="0.78"><title>phase x11: 55/511 and 456/511</title></line>
+<circle cx="441.94" cy="223.09" r="3.3" fill="#4f6884" stroke="#10243a" stroke-width="1.5"/>
+<circle cx="441.94" cy="450.91" r="3.3" fill="#4f6884" stroke="#10243a" stroke-width="1.5"/>
+<line data-phase="13" data-lower="220/511" data-upper="291/511" x1="135.07" y1="260.06" x2="135.07" y2="413.94" stroke="#4f6884" stroke-width="2.2" stroke-linecap="round" opacity="0.78"><title>phase x13: 220/511 and 291/511</title></line>
+<circle cx="135.07" cy="260.06" r="3.3" fill="#4f6884" stroke="#10243a" stroke-width="1.5"/>
+<circle cx="135.07" cy="413.94" r="3.3" fill="#4f6884" stroke="#10243a" stroke-width="1.5"/>
+<line data-phase="14" data-lower="71/511" data-upper="440/511" x1="416.94" y1="197.54" x2="416.94" y2="476.46" stroke="#4f6884" stroke-width="2.2" stroke-linecap="round" opacity="0.78"><title>phase x14: 71/511 and 440/511</title></line>
+<circle cx="416.94" cy="197.54" r="3.3" fill="#4f6884" stroke="#10243a" stroke-width="1.5"/>
+<circle cx="416.94" cy="476.46" r="3.3" fill="#4f6884" stroke="#10243a" stroke-width="1.5"/>
+<line data-phase="16" data-lower="227/511" data-upper="284/511" x1="129.06" y1="274.52" x2="129.06" y2="399.48" stroke="#4f6884" stroke-width="2.2" stroke-linecap="round" opacity="0.78"><title>phase x16: 227/511 and 284/511</title></line>
+<circle cx="129.06" cy="274.52" r="3.3" fill="#4f6884" stroke="#10243a" stroke-width="1.5"/>
+<circle cx="129.06" cy="399.48" r="3.3" fill="#4f6884" stroke="#10243a" stroke-width="1.5"/>
+<line data-phase="17" data-lower="57/511" data-upper="454/511" x1="439.10" y1="219.63" x2="439.10" y2="454.37" stroke="#4f6884" stroke-width="2.2" stroke-linecap="round" opacity="0.78"><title>phase x17: 57/511 and 454/511</title></line>
+<circle cx="439.10" cy="219.63" r="3.3" fill="#4f6884" stroke="#10243a" stroke-width="1.5"/>
+<circle cx="439.10" cy="454.37" r="3.3" fill="#4f6884" stroke="#10243a" stroke-width="1.5"/>
+<line data-phase="12" data-lower="110/511" data-upper="401/511" x1="339.41" y1="159.32" x2="339.41" y2="514.68" stroke="#4fe0c1" stroke-width="4" stroke-linecap="round" opacity="1"><title>phase x12: 110/511 and 401/511</title></line>
+<circle cx="339.41" cy="159.32" r="5" fill="#4fe0c1" stroke="#10243a" stroke-width="1.5"/>
+<circle cx="339.41" cy="514.68" r="5" fill="#4fe0c1" stroke="#10243a" stroke-width="1.5"/>
+<line data-phase="15" data-lower="142/511" data-upper="369/511" x1="268.27" y1="157.79" x2="268.27" y2="516.21" stroke="#f5b765" stroke-width="4" stroke-linecap="round" opacity="1"><title>phase x15: 142/511 and 369/511</title></line>
+<circle cx="268.27" cy="157.79" r="5" fill="#f5b765" stroke="#10243a" stroke-width="1.5"/>
+<circle cx="268.27" cy="516.21" r="5" fill="#f5b765" stroke="#10243a" stroke-width="1.5"/>
+<line data-phase="18" data-lower="114/511" data-upper="397/511" x1="330.62" y1="157.59" x2="330.62" y2="516.41" stroke="#8daeff" stroke-width="4" stroke-linecap="round" opacity="1"><title>phase x18: 114/511 and 397/511</title></line>
+<circle cx="330.62" cy="157.59" r="5" fill="#8daeff" stroke="#10243a" stroke-width="1.5"/>
+<circle cx="330.62" cy="516.41" r="5" fill="#8daeff" stroke="#10243a" stroke-width="1.5"/>
+<circle cx="300" cy="337" r="3" fill="#d4e2f3"/>
+<text x="50" y="540" font-size="13" font-family="Arial,sans-serif" fill="#9db0c3">Angular position = 2π × (numerator / 511)</text>
+<text x="631" y="185" font-family="Arial,sans-serif" font-size="18" font-weight="700" fill="#f4f7fb">Three highlighted landing-point pairs</text>
+<text x="631" y="212" font-family="Arial,sans-serif" font-size="14" fill="#a7b9cd">The other six checked pairs appear in slate.</text>
+<rect x="628" y="238" width="473" height="85" rx="13" fill="#1b3049"/>
+<rect x="628" y="238" width="5" height="85" rx="2" fill="#4fe0c1"/>
+<text x="653" y="266" font-family="Arial,sans-serif" letter-spacing="1.1" font-size="12" font-weight="700" fill="#4fe0c1">PERIOD-3 PHASE  x₁₂</text>
+<text x="653" y="299" font-family="Arial,sans-serif" font-size="23" fill="#eff6ff">110/511 <tspan fill="#859cb8">and</tspan> 401/511</text>
+<rect x="628" y="338" width="473" height="85" rx="13" fill="#1b3049"/>
+<rect x="628" y="338" width="5" height="85" rx="2" fill="#f5b765"/>
+<text x="653" y="366" font-family="Arial,sans-serif" letter-spacing="1.1" font-size="12" font-weight="700" fill="#f5b765">PERIOD-3 PHASE  x₁₅</text>
+<text x="653" y="399" font-family="Arial,sans-serif" font-size="23" fill="#eff6ff">142/511 <tspan fill="#859cb8">and</tspan> 369/511</text>
+<rect x="628" y="438" width="473" height="85" rx="13" fill="#1b3049"/>
+<rect x="628" y="438" width="5" height="85" rx="2" fill="#8daeff"/>
+<text x="653" y="466" font-family="Arial,sans-serif" letter-spacing="1.1" font-size="12" font-weight="700" fill="#8daeff">COMMON 3/9 PHASE  x₁₈</text>
+<text x="653" y="499" font-family="Arial,sans-serif" font-size="23" fill="#eff6ff">114/511 <tspan fill="#859cb8">and</tspan> 397/511</text>
+<path d="M39 578H1122" stroke="#30445a"/>
+<text x="40" y="602" font-family="Arial,sans-serif" font-size="13" fill="#b0c4d6">Exact chord pairing and noncrossing: archive verification code · Ray landing: imported Zakeri theorem</text>
+</svg>

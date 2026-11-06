@@ -2,46 +2,49 @@
 
 # A Marked-Width Reduction of Mandelbrot Local Connectivity
 
-### A source-locked research archive in one-dimensional complex dynamics
+### A research archive of exact dynamics, planar topology, and marked-width obstructions
 
 **Matthew Robert Wesney**  
 Research direction, synthesis, authorship, and public stewardship
 
-[![MLC: open](https://img.shields.io/badge/MLC-open-9a6700?style=for-the-badge)](./RESEARCH_MAP.md)
 [![Research validation](https://github.com/dovvnloading/loops-research-archive/actions/workflows/lean-proofs.yml/badge.svg?branch=main)](https://github.com/dovvnloading/loops-research-archive/actions/workflows/lean-proofs.yml)
-[![Proof ledger: 465](https://img.shields.io/badge/proof%20ledger-465-334155?style=for-the-badge)](./ledger.json)
-[![CC0 1.0](https://img.shields.io/badge/license-CC0%201.0-166534?style=for-the-badge)](./LICENSE)
+[![CC0 1.0](https://img.shields.io/badge/license-CC0%201.0-166534?style=flat-square)](./LICENSE)
 
-[**Research website**](https://dovvnloading.github.io/loops-research-archive/) ·
-[**225-page manuscript**](./marked_width_mlc_manuscript.pdf) ·
-[**Papers**](./papers/README.md) ·
-[**Research map**](./RESEARCH_MAP.md) ·
-[**Interactive proof ledger**](https://dovvnloading.github.io/loops-research-archive/#ledger) ·
-[**Contribute**](./CONTRIBUTING.md)
+[**Explore the research**](https://dovvnloading.github.io/loops-research-archive/) ·
+[**Read the manuscript**](./marked_width_mlc_manuscript.pdf) ·
+[**Three papers**](./papers/README.md) ·
+[**Evidence map**](./RESEARCH_MAP.md) ·
+[**Reproduce results**](#reproduce-the-central-results) ·
+[**Contribute / review**](./CONTRIBUTING.md)
 
-**Overview updated 2026-11-05** · **Manuscript and ledger source lock 2026-07-27**
+**README updated 2026-11-06** · **Manuscript and ledger source lock 2026-07-27**
 
 </div>
 
 > [!IMPORTANT]
 > **The Mandelbrot Local Connectivity conjecture (MLC) remains open.** This repository contains finite and structural theorems, source audits, computational certificates, a conditional marked-width reduction, and open proof obligations. The November 2026 two-scale examples and Lean checks do **not** constitute a proof of MLC or a completed Kahn–Lyubich marked construction.
 
-**On this page:** [Research status](#research-status) · [Mathematical program](#the-mathematical-program) · [Papers](#three-companion-papers) · [Two-scale research](#the-november-2026-two-scale-testbed) · [Lean and reproducibility](#proof-evidence-lean-and-reproducibility) · [Open frontier](#the-open-frontier) · [Reading and attribution](#navigate-the-archive)
+**On this page:** [Results and original figures](#research-results-you-can-inspect) · [Mathematical program](#the-mathematical-program) · [Companion papers](#three-companion-papers) · [3/9 testbed](#the-november-2026-two-scale-testbed) · [Reproduce](#reproduce-the-central-results) · [Evidence ledger](#source-locked-evidence-ledger) · [Open problems](#the-open-frontier)
 
-## Research status
+## Research results you can inspect
 
-The proof ledger is a **source-locked inventory**, not a measurement of how much of MLC has been solved.
+These visuals come from **this archive's own computations, certificates, and finite constructions**. They show concrete angles, pairings, and return geometry—not a percentage of a conjecture solved, stock fractal art, or a diagram attributed to someone else.
 
-![Stacked chart of the 465 source-locked obligations: 34 imported, 316 internally proved and 115 open](./figs/readme/ledger-status.svg)
+![Exact external-angle portrait at the nonattracting tip: nine noncrossing paired chords at the angles recorded in this archive's JSON manifest](./figs/readme/tip-ray-portrait.svg)
 
-| Ledger status | Count | Meaning |
-|---|---:|---|
-| Imported | **34** | External mathematical results; each use requires its original hypotheses and attribution. |
-| Proved within the archive | **316** | Internal proof recorded for the stated claim; some are finite, structural, or conditional implications. |
-| Open | **115** | Missing arguments, constructions, or interfaces. |
-| **Total** | **465** | Status snapshot dated **2026-07-27**; see [ledger.json](./ledger.json). |
+*Figure 1 — An actual output of the project.* The nine chords join **18 exact periodic angles** at their correct positions on the angle circle. The pairing and noncrossing arithmetic are reproduced by the [portrait verifier](./research/independent_audits/verify_tip_ray_portrait.py) from the [machine-readable manifest](./results/period27_tip_ray_portrait.json). Straight chords encode combinatorial pairings; they are **not** drawn physical rays. The underlying **ray-landing theorem is imported from Zakeri**, not claimed as a new theorem of this project.
 
-The November 2026 research increments are documented separately, with newer exact code and proof notes. **The 465-entry classification has not been promoted to claim that new global analytic gates are closed.** The dependency structure, not the count of proved lemmas, determines progress toward MLC.
+### What was contributed here
+
+| Archive result | Inspect the evidence | Precise boundary |
+|---|---|---|
+| **Exact nonattracting 3/9 tip** with critically preperiodic dynamics and nested real return intervals | [Tip certificate](./research/independent_audits/period27_misiurewicz_tip_ray_access_20261106.md) · [exact manifest](./results/period27_misiurewicz_tip.json) | Exact algebraic and interval checks; ray landing uses cited classical results. |
+| **Period-nine ray subportrait:** nine landed pairs, 18 distinct rational angles and no crossed chords | [Portrait manifest](./results/period27_tip_ray_portrait.json) · [Lean checks](./TipRayPortrait.lean) | A certified *subportrait*, not an exhaustive ray automaton. |
+| **Two nonattracting complex returns**, at periods 3 and 9, with certified Rouché margins and physical phase refinement | [Complex-domain audit](./research/independent_audits/nonattracting_tip_complex_two_scale_20261106.md) · [Lean margins](./TipComplexMargins.lean) | Holomorphic topology invokes Rouché/Riemann–Hurwitz; no Kahn–Lyubich puzzle is supplied. |
+| **Two-scale Levin ray correspondences** and the explicit distinction between their internal angle fibers | [Carathéodory (p2) argument](./research/independent_audits/levin_tip_p2_carathéodory_two_scale_20261106.md) · [exact angle checker](./research/independent_audits/verify_tip_levin_transport.py) | Analytic theorem imports are identified; no localization-sheet functor or MLC conclusion. |
+| **Three structural papers** on localization sheets, rooted ends and protected planar carriers | [Paper index and versions](./papers/README.md) | Finite/conditional results, not global analytic closure. |
+
+The **ray portrait and two-scale angle-map figures** are generated from the exact portrait manifest by [our reproducible SVG generator](./code/generate_readme_research_figures.mjs). The return and target-disk figures are explicitly labeled schematics of the archive's certificates. No external illustration is presented as an original research result.
 
 ## The mathematical program
 
@@ -154,11 +157,20 @@ The [Levin ray-correspondence audit](./research/independent_audits/levin_tip_ray
 
 **Update (November 6):** The [new source-level (p2) audit](./research/independent_audits/levin_tip_p2_carathéodory_two_scale_20261106.md) uses the tip's **subhyperbolic local connectivity** and Carathéodory's uniform ray landing, together with the existing compact 3/9 polynomial-like domains, to produce genuine positive (though not numerically evaluated) ambient Green-level margins. Under the separately cited classical analytic theorems, both Levin angular maps now exist: **Π₉(114/511)=Π₉(397/511)=0**, while **Π₃(114/511)=5/7** and **Π₃(397/511)=2/7**. A new [Lean finite lemma](./TipRayPortrait.lean) and [Python exact check](./research/independent_audits/verify_tip_levin_transport.py) certify the six period-three angle residues. This is not a KL prime-end or localization-sheet map, nor a closure of H1–H4, UPTCR, or MLC.
 
+![Exact source-defined Levin angle correspondences: six known eligible period-3 angles and the two-to-one period-9 fiber](./figs/readme/two-scale-angle-map.svg)
+
+*Figure 2 — A calculated two-scale distinction.* Among the **18 recorded portrait rays**, the six eligible at period 3 have internal images \(4/7,5/7,6/7,1/7,2/7,3/7\) in ascending ambient-angle order. At period 9, the two eligible rays \(114/511\) and \(397/511\) both map to internal angle **0**, even though their period-3 images differ. This is about **two separate internal circles**, not a claimed map between them. [Derivation and imported analytic hypotheses](./research/independent_audits/levin_tip_p2_carathéodory_two_scale_20261106.md) · [exact finite verification](./research/independent_audits/verify_tip_levin_transport.py).
+
 ### Genuine complex 3/9 renormalizations at the nonattracting tip
 
 The [new two-scale complex-domain audit](./research/independent_audits/nonattracting_tip_complex_two_scale_20261106.md) finds actual nested degree-two **quadratic-like** periods 3 and 9 at the *nonattracting Misiurewicz parameter*, not just at the earlier attracting center. The [Lean integer certificate](./TipComplexMargins.lean) recomputes strict Rouché boundary inequalities, critical-preimage exclusion, complex phase separation and physical 9-to-3 routing. The independent [signed-integer regression](./research/independent_audits/verify_tip_complex_domains.py) checks a source-locked [JSON manifest](./results/tip_complex_domains.json); classical Rouché/Riemann–Hurwitz arguments supply the holomorphic interpretation and are **not Lean-proved** here.
 
 The inner domain requires a **27/1024** rational shrink for its certified Rouché inequality (the old 13/512 *bound*, not necessarily the domain, fails at this parameter). Both little filled Julia sets are connected and nested under the documented analytic deductions, supplying **Levin (p1)**. The [follow-up Carathéodory argument](./research/independent_audits/levin_tip_p2_carathéodory_two_scale_20261106.md) supplies his independent **(p2)** condition and concrete two-scale ray-map values; the source-faithful KL primitive puzzle, prime-end sides and localization-sheet/coset transport remain open in [Issue #29](https://github.com/dovvnloading/loops-research-archive/issues/29). No MLC ledger gate is promoted.
+
+![Concentric target disks in the nonattracting 3/9 quadratic-like certificates, drawn with the exact 8-to-1 radius ratio](./figs/readme/complex-return-disks.svg)
+
+*Figure 3 — Certified target geometry, drawn to scale.* At the nonattracting tip, \(U_3=D(0,1/4)\) and \(U_9=D(0,1/32)\); the drawn radius ratio is exactly eight. These are **target disks only**, not sketches of the preimage domains \(V_3,V_9\), filled Julia sets or KL puzzle pieces. See the [signed-integer margin manifest](./results/tip_complex_domains.json) and [full complex proof audit](./research/independent_audits/nonattracting_tip_complex_two_scale_20261106.md).
+
 
 ## Proof evidence, Lean and reproducibility
 
@@ -192,15 +204,28 @@ python research/independent_audits/verify_complex_quadratic_like_3_9.py
 python research/independent_audits/verify_period27_symbolic_atlas.py --check-manifest
 python research/independent_audits/verify_period27_kneading_angle_permutation.py
 
+# Exact nonattracting tip, ray portrait and two different Levin maps:
+python research/independent_audits/verify_period27_misiurewicz_tip.py --check-manifest
+python research/independent_audits/verify_tip_ray_portrait.py --check-manifest
+python research/independent_audits/verify_tip_complex_domains.py --check-manifest
+python research/independent_audits/verify_tip_levin_transport.py
+
 # Kernel-check the key formal modules and all default targets:
-lake build Period27Kneading Period27Dyadic Period27IntervalSound Period27RationalTrace Period27RationalDerivative
+lake build Period27Kneading Period27Dyadic Period27IntervalSound Period27RationalTrace Period27RationalDerivative TipRayPortrait TipComplexMargins
 lake build
 
-# Check README local links, chart provenance, and accessible SVGs:
+# Check README links, source provenance, and exact SVG figure data:
 python code/verify_readme_integrity.py
+node code/generate_readme_research_figures.mjs --check
 ```
 
 The [Research validation workflow](./.github/workflows/lean-proofs.yml) runs the modules and research regressions on GitHub Actions. The separate [independent-audits index](./research/independent_audits/README.md) describes individual certificates and their limitations. A green CI result verifies code and Lean proofs **as written**; it is not independent mathematical peer review.
+
+## Source-locked evidence ledger
+
+The [465-entry source-locked ledger](./ledger.json) (snapshot **2026-07-27**) records **34** imported results, **316** archive-internal proofs of their stated claims, and **115** open obligations. These categories are an **inventory, not progress percentages or evidence that MLC is nearly solved**. Newer November certificates are documented in their own audits; they do not automatically promote the global ledger gates.
+
+Imported theory, finite machine-checked steps, conditional implications and still-open geometric constructions must be read separately. Consult the [dependency map](./RESEARCH_MAP.md) and [interactive ledger](https://dovvnloading.github.io/loops-research-archive/#ledger) for exact claim IDs.
 
 ## The open frontier
 
@@ -215,7 +240,7 @@ The [main synthesis manuscript](./marked_width_mlc_manuscript.pdf) contains the 
 | `UNIVERSAL_PROTECTED_TOWER_CLOSURE` | **Open** | Close the protected tower across the admitted combinatorial regimes. |
 | `UPTCR_IMPLIES_MLC` | **Proved conditional implication** | Applies **only if** universal tower compactness and rigidity have already been proved. |
 
-**Most immediate tracked problems:** [Issue #12](https://github.com/dovvnloading/loops-research-archive/issues/12) seeks the *actual* period-27 component-root-ray identity and Kahn–Lyubich-compatible phase, access and sheet atlas. [Issue #15](https://github.com/dovvnloading/loops-research-archive/issues/15) has now completed the generic **rational interval soundness** step, but still seeks a fully formal real IVT/MVT, calculus-derivative identification, and unique period-27 parameter existence.
+**Most immediate tracked problems:** [Issue #29](https://github.com/dovvnloading/loops-research-archive/issues/29) seeks a genuine Kahn–Lyubich primitive puzzle, marked prime-end sides, localization-sheet/coset transport and compatible cross-scale naturality at the nonattracting tip. [Issue #12](https://github.com/dovvnloading/loops-research-archive/issues/12) tracks the separate period-27 component-root-ray identity. [Issue #15](https://github.com/dovvnloading/loops-research-archive/issues/15) and the [latest real-center Lean audit](./research/independent_audits/lean_period27_real_center_20261105.md) record the precise formal real-analysis state.
 
 The stationary-Wave research has proved relative continuation in the archived setting, but its two-path breaking, measurable fixed-component exit, and typed bounded-degree pushforward interfaces remain open. The [novelty/value audit](./research/mlc_unified/novelty_and_value_audit_20260725.md) cautions against treating the number of compiled proofs or conditional reductions as a measure of proximity to MLC.
 
@@ -288,7 +313,7 @@ Original contributions are released under [CC0 1.0 Universal](./LICENSE). Citati
 
 ## Recommended reading paths
 
-**For the research frontier:** [Research map](./RESEARCH_MAP.md) → [two-scale complex certificate](./research/independent_audits/complex_two_scale_quadratic_like_certificate_20261105.md) → [Lean period-27 arithmetic audit](./research/independent_audits/lean_period27_kernel_arithmetic_20261105.md) → [Issue #12](https://github.com/dovvnloading/loops-research-archive/issues/12) / [Issue #15](https://github.com/dovvnloading/loops-research-archive/issues/15).
+**For the research frontier:** [Nonattracting 3/9 complex audit](./research/independent_audits/nonattracting_tip_complex_two_scale_20261106.md) → [Levin (p2) and two-scale angle maps](./research/independent_audits/levin_tip_p2_carathéodory_two_scale_20261106.md) → [Tip ray portrait manifest](./results/period27_tip_ray_portrait.json) → [open KL interface, Issue #29](https://github.com/dovvnloading/loops-research-archive/issues/29).
 
 **For the foundational mathematics:** [Paper 1](./papers/paper1_canonical_localization/paper1_forced_noninjectivity_sheet_kernel_v1.1_visual.pdf) → [Paper 2](./papers/paper2_rooted_end_compactification/paper2_direct_decoration_rooted_end_compactification_v1.1_visual.pdf) → [Paper 3](./papers/paper3_protected_carriers/paper3_draft3_visual.pdf) → [main synthesis](./marked_width_mlc_manuscript.pdf) → [claim ledger](./ledger.json).
 
@@ -297,5 +322,5 @@ The November 2026 code and audit notes disclose OpenAI GPT-6 assistance separate
 ---
 
 <div align="center">
-<sub>Independent research archive · math.DS · manuscripts/ledger source-locked 2026-07-27 · overview 2026-11-05 · MLC remains open</sub>
+<sub>Independent research archive · math.DS · manuscripts/ledger source-locked 2026-07-27 · overview 2026-11-06 · MLC remains open</sub>
 </div>
