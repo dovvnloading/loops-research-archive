@@ -422,3 +422,8 @@ where the \(\gamma_X^\pm\) are **distinct prime-end gate accesses** determined b
 - **Original Wave-marked atom assumed to be an edge-side atom:** invalid; the source marking is induced by sides of \(\widehat{\mathcal K}\), and ETR needs an original-marking comparison.\n- **Zero-sector claimed expanding from \(\lambda_F>1\):** invalid without an actual gate-escape proof.
 
 **Ledger decision:** retain \(KKL\_BOUNDED\_VISITS\_INTERVAL\_GROWTH\_REPAIR\), \(KKL\_PARABOLIC\_WAVE\_AMPLIFICATION\), and MLC as **OPEN**. The native gate realization over the whole non-LC category, not a more elaborate synthetic regression, is next. No independent specialist review has been obtained.
+
+
+## Postscript — two precise native reductions (2026-11-06)
+
+The follow-up [vertex-preimage localization theorem](./kkl_native_vertex_preimage_gate_localization_20261106.md) proves that **no added-tree component can attach over the interior of a genuinely regular Hubbard edge**, using vertex forward invariance and actual univalent inverse disks. It constructs explicit \(m\)-sector prime-end gates over isolated target branch/central vertices under an actual finite-star chart. The [non-LC protected-prime-end theorem](./kkl_nonlc_protected_prime_end_access_20261106.md) gives canonical order-preserving carrier-relative access charts for small-filled-Julia prime ends whose **impressions avoid actual carrier contact**, without assuming LC or a finite fan. Neither result supplies the unprotected critical contact access census or original Wave marking edge-incidence comparison; Issue #40 remains OPEN.
