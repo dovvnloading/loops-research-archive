@@ -5,7 +5,7 @@ import Period27IntervalSound
 
 These finite integer theorems use the already-audited generic signed
 outward interval implementation at precision 2^-224. No numerical
-floating point or sorry/native_decide is used. Theorems about complex
+floating-point arithmetic or proof placeholders are used. Theorems about complex
 holomorphic topology (Rouché, Riemann-Hurwitz, Julia connectivity) are
 NOT Lean formalized here; see the separate mathematical audit.
 -/
