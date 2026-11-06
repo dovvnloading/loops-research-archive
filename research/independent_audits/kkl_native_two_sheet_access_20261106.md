@@ -340,7 +340,56 @@ Then \(S\) cannot remain a proper zero-edge sector indefinitely.
 
 This shows precisely where local degree two enters: it provides **real nontrapping on the small-Julia access circle**, but global zero-weight escape remains conditional on an *analytic gate correspondence* between the **two different prime-end circles**. The necessary faithful identification is part of Issue #40's still-open attachment census, especially in the non-LC case.
 
-## 6. Which parts of Issue #40 have actually advanced?
+## 6. Native Wave crests: a **closed** source-defined witness and the exact type obstruction
+
+KKL Appendix A.1 defines an *admissible multi-interval* as a **connected open** union of marking atoms and endpoints. But for a Wave \(A\) with base \(B\) and open end multi-intervals \(E_-,E_+\), it defines the **actual crest**
+
+\[
+C_A=B\setminus(E_-\cup E_+).
+\tag{6.1}
+\]
+
+That is a **relative-closed remainder**, not generally an open multi-interval. This is not cosmetic: KKL Proposition 6.9 is stated for *multi-intervals*, while the proof of Lemma 6.4 immediately uses the **actual** crests of a chain of critical visits as its inputs.
+
+### Theorem 6.1 (actual carrier-collar Wave with a non-open crest)
+
+Suppose the genuine KKL inner ideal-boundary circle of \(V=\mathcal U\setminus\mathcal T\) contains **at least four consecutive nondegenerate marking atoms**
+\(\mathbf I_0,\mathbf I_1,\mathbf I_2,\mathbf I_3\) in the original vertex-side marking \(\mathcal I\), with distinct intervening marked endpoints \(e_1,e_2\). Then there exists an actual positive-width, nontrivial Wave \(A\) in \(V\), supported in a thin conformal collar of the **inner boundary**, whose ends are \(E_-=\mathbf I_0\) and \(E_+=\mathbf I_2\), whose base traverses \(\mathbf I_0,\mathbf I_1,\mathbf I_2\), and whose crest is
+
+\[
+\boxed{
+C_A=\{e_1\}\cup\mathbf I_1\cup\{e_2\}
+=\overline{\mathbf I_1}.
+}
+\tag{6.2}
+\]
+
+In particular, \(\ell_{\mathcal I}(C_A)=1\), but **\(C_A\) is not an open \(\mathcal I\)-multi-interval** and therefore is not automatically an input to a proposition quantified only over open marked multi-intervals.
+
+**Proof.** Uniformize the actual carrier complement as a conformal annulus and take an arbitrarily thin half-collar of the inner ideal circle. Choose compact nondegenerate subarcs \(A_0\Subset\mathbf I_0\) and \(A_2\Subset\mathbf I_2\). In the half-collar, choose an embedded quadrilateral whose opposing boundary sides are \(A_0,A_2\) and whose interior arcs turn along the sector \(\mathbf I_1\), not the opposite sector containing \(\mathbf I_3\). Its conformal modulus is positive. The pullback of a vertical foliation of that quadrilateral supplies a genuine positive-width lamination of simple proper paths in \(V\). All leaves are subordinate, up to homotopy rel endpoints, to the open marked three-atom boundary arc
+\[
+B=\mathbf I_0\cup\{e_1\}\cup\mathbf I_1
+\cup\{e_2\}\cup\mathbf I_2.
+\]
+No leaf can be subordinate to a marked multi-interval of length at most two, because its ends lie in the **nonadjacent** atoms \(\mathbf I_0,\mathbf I_2\); by Appendix A.1 it is a valid lamination in \((V,\mathcal I)\), hence a Wave over this base. By its chosen collar homotopy class and the minimality of marked intervals containing its endpoints, its ends are exactly \(\mathbf I_0,\mathbf I_2\) and its base is \(B\). The set difference (6.1) is precisely (6.2). \(\square\)
+
+The theorem uses the **actual analytic annular collar of a KKL stage**, not an independent cyclic simulator. It is **not** a counterexample to the intended global growth theorem, because no claim is made that this Wave is a member of a complete critical-visit sequence, or that its dynamical crest violates growth. It is a source-defined counterexample to the *unqualified type assertion* that all genuine crests are open multi-intervals.
+
+### Corollary 6.2 (the exact missing Wave type bridge)
+
+For a genuine critical-visit sequence \(A_0,\ldots,A_N\), set \(C_j=B_j\setminus(E_{j,-}\cup E_{j,+})\) using **Appendix A.1's actual closed crest**. To invoke a repaired interval-growth statement, one must prove for **each** \(j\):
+
+1. **Domain:** either the full set \(C_j\) is admitted as a closed marked input to \(F_*\), with all endpoint-only proper-path contributions, or one chooses an open core \(I_j\) and proves independently that discarding closed-only accesses is harmless for the specific implication.
+2. **Transport:** \(F_*^{m_j}C_j\subset C_{j+1}\) (or a precisely justified closed-core variant), with the same original vertex-side marking. It does *not* follow from the set inclusion of *some* Wave end in \(F_*\overline I\) in Proposition A.14, which controls an **end** rather than a full crest.
+3. **Nonvacuity:** \(C_j\) contains a **positive** number of actual marking atoms; \(\ell(C_j)>0\) is not implied solely by the existence of an endpoint-access crest. Its upper shortness bound must be checked using the actual \(B_j,E_{j,\pm}\).
+4. **Saturation:** distinguish \(F_*^{m_j}C_j=C\) (full-circle absorbing outcome) from a proper image with strictly increased marked length.
+5. **Endpoint birth:** when \(C_j=\overline{I_j}\), use the actual \(R(\overline{I_j})\), not \(\overline{R(I_j)}\). If (2.2) holds and the closed image remains proper, (2.3) gives the exact additional access; otherwise a closure-triggered saturation must be logged separately.
+
+**Proof.** Items 1, 3 follow from (6.1)–(6.2) and Appendix A.1's open input definition. Item 2 is the exact dynamical inclusion needed by the proof of Lemma 6.4; the source's Proposition A.14 has a different quantified output (an end of a descendant). Item 4 is necessary because the whole boundary is allowed as a multi-interval and remains invariant under the cover. Item 5 follows from the immersion's independent closed pullback and Theorem 2.2/Corollary 2.3. \(\square\)
+
+The existence of the witness in Theorem 6.1 **does not** prove that the source's actual critical crests fail Item 2 or 3. It proves that those statements need **additional analytic/marking hypotheses** and cannot be obtained by silently replacing a closed crest with an open interval.
+
+## 7. Which parts of Issue #40 have actually advanced?
 
 | Item | Source-defined progress | Still open |
 | --- | --- | --- |
@@ -349,7 +398,7 @@ This shows precisely where local degree two enters: it provides **real nontrappi
 | Edge incidence | Exactly two **abstract** preimage edges over each target edge (3.3); old/new **full-strip** partition and incidence count under (OLD-STRIP), with explicit transpose convention (3.4); regular local four-germ census (3.5) | Global source-side endpoint matching and non-LC (ESR) |
 | Proper-output multiplicity | **Proved unconditionally in the annular prime-end setting** by Theorem 2.2 | Saturated output can identify covering sheets; record it as saturation, not a numerical edge-row identity |
 | Local zero-sector nontrapping | **Proved on the actual small-Julia quadratic-like access circle** (Theorem 5.1) | Faithful return selector between \(C_{K_0}\) and carrier \(C\) (Corollary 5.2) |\n| Edge-trace weight | **Conditional only** on native ETR and original-marking side detection: (4.2), not a theorem for \(\ell_{\mathcal I}\) | Original vertex-side marking ↔ edge-side trace comparison, all zero-mass sectors |
-| Closed Wave crests | Proper-closed endpoint defect transported by (2.3), when (2.2) is checked | Actual crest inclusions, proper/positive/short hypotheses, closure-triggered saturation |
+| Closed Wave crests | **Actual positive-width native Wave with a non-open crest** (Theorem 6.1); proper-closed endpoint defect under (2.2) | Actual critical-visit crest inclusions, positivity/shortness, closure-triggered saturation (Corollary 6.2) |
 
 ### First remaining native verification target
 
