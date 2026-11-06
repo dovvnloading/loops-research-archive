@@ -149,11 +149,10 @@ theorem hasDerivAt_polynomial (n : Nat) :
       have hsquare := (ih c).pow 2
       have hsum := hsquare.add (hasDerivAt_id c)
       have hh : HasDerivAt
-          (fun x : ℝ => (polynomial n x) ^ 2 + x)
+          (polynomial n ^ 2 + id)
           (2 * (polynomial n c) * (derivativePolynomial n c) + 1) c := by
         simpa only [Nat.cast_ofNat, Nat.reduceSub, pow_one] using hsum
-      have heq : polynomial (n+1) =
-          fun x : ℝ => (polynomial n x) ^ 2 + x := by
+      have heq : polynomial (n+1) = polynomial n ^ 2 + id := by
         funext x
         simp [polynomial, state_succ, next]
       have hd : derivativePolynomial (n+1) c =
