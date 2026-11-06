@@ -46,6 +46,23 @@ although \(R(\overline I)\setminus\overline{R(I)}=\varnothing\). In particular, 
 
 This conditional diagnostic must not be mistaken for a claim that some actual KKL critical visit realizes this half-turn position. Theorem 2.1 is an exact necessary constraint for any stage-level access census. Nor does this example witness the source's independent warning that \(F_*\overline I\) can differ from \(\overline{F_*I}\): in (2.2) these two closed sets are both \(C\).
 
+### Corollary 2.3 (positive angular access mass cannot disappear in a proper image)
+
+Let \(\sigma_{C'}\) and \(\sigma_C\) denote normalized angular Lebesgue measure in the **actual** conformal annulus charts of §1. The measures are intrinsic to the distinguished inner boundary circles up to rotation of those charts.
+
+For a connected native source interval \(J=R(I)\) with **nonsaturated** covering image, and any Borel set \(S\subset J\),
+
+\[
+\boxed{\sigma_C(p(S))=2\,\sigma_{C'}(S).}
+\tag{2.4}
+\]
+
+In particular, if an eligible actual attached-component boundary \(B_X\) is a **nondegenerate interval** contained in \(R(I)\), its full image is still a nondegenerate interval with positive angular access mass. Disjoint source access blocks inside the *same* proper-output pullback have disjoint images, so their positive angular masses add without overlap. **Nothing of positive angular access length can be erased by the covering in the nonsaturated case.**
+
+**Proof.** By Theorem 2.1 the covering is injective on the connected \(J\) and is represented by \(t\mapsto 2t\pmod1\) within one sheet. On that sheet the normalized circular arclength Jacobian is exactly two. The Borel change-of-variables formula gives (2.4). \(\square\)
+
+**This is not Hubbard edge weight expansion.** The conformal angular access mass of a Carathéodory side is not automatically the Perron weight of the combinatorial Hubbard edge, and it does not measure KKL's original vertex-side marking length \(\ell_{\mathcal I}\). Points and closed-only endpoints have angular measure zero, even though they can alter **set-level saturation** at the exact half-turn threshold (Corollary 2.2). Thus positive access mass preservation does not itself solve the missing endpoint/gate census or the Wave interface.
+
 ## 3. A real quadratic-dynamics counterexample to unique access from one planar point
 
 Consider the genuine quadratic polynomial
