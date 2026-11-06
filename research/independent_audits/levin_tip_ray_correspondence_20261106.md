@@ -1,5 +1,8 @@
 # The overlooked ray-correspondence interface at the real Misiurewicz tip
 
+> **2026-11-06 progress addendum:** The new [nonattracting complex 3/9 certificate](nonattracting_tip_complex_two_scale_20261106.md) now constructs concrete connected proper quadratic-like restrictions at the tip, using Lean-certified finite bounds plus Rouché/Riemann–Hurwitz. This supplies Levin **(p1)** under those named classical analytic inputs. **(p2) remains open**, so the renormalization-ray map and forced angular fiber remain explicitly conditional. Earlier text below records the pre-certificate frontier.
+
+
 **Research audit, 2026-11-06.** Mathematical status: exact nine-cycle angular portrait (Lean kernel + independent integer/rational regression), with ray landing inherited from a cited theorem of Zakeri. The proposed **renormalization-ray projection is conditional** on substantial complex-geometric hypotheses that this archive has **not** verified. No KL sheet/prime-end functor or global MLC gate is claimed.
 
 ## 1. A source that actually covers connected quadratic Julia sets

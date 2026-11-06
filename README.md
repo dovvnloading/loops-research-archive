@@ -154,6 +154,12 @@ The [Levin ray-correspondence audit](./research/independent_audits/levin_tip_ray
 
 A **conditional** result shows that any qualifying period-nine Levin angular correspondence must identify the distinct rays at **114/511** and **397/511** to internal angle zero. A true complex quadratic-like restriction at the tip and Levin's positive Green-level boundary condition **(p2)** are not yet proved, nor is a KL prime-end or localization-sheet map. This is not a closure of H1–H4, UPTCR, or MLC.
 
+### Genuine complex 3/9 renormalizations at the nonattracting tip
+
+The [new two-scale complex-domain audit](./research/independent_audits/nonattracting_tip_complex_two_scale_20261106.md) finds actual nested degree-two **quadratic-like** periods 3 and 9 at the *nonattracting Misiurewicz parameter*, not just at the earlier attracting center. The [Lean integer certificate](./TipComplexMargins.lean) recomputes strict Rouché boundary inequalities, critical-preimage exclusion, complex phase separation and physical 9-to-3 routing. The independent [signed-integer regression](./research/independent_audits/verify_tip_complex_domains.py) checks a source-locked [JSON manifest](./results/tip_complex_domains.json); classical Rouché/Riemann–Hurwitz arguments supply the holomorphic interpretation and are **not Lean-proved** here.
+
+The inner domain now requires a **27/1024** rational shrink (the old 13/512 margin fails at this parameter). Both little filled Julia sets are connected and nested under the documented analytic deductions, so **Levin (p1)** now has a concrete nonattracting example. Levin's separate **(p2) positive Green-level boundary crossing**, actual renormalization ray map and KL puzzle/prime-end/sheet atlas remain open. No MLC ledger gate is promoted.
+
 ## Proof evidence, Lean and reproducibility
 
 The archive deliberately separates **checked finite arithmetic**, **paper-level mathematical interpretation**, **imported theory**, and **genuinely open geometry**.

@@ -8,6 +8,9 @@ This directory contains reproducible audits of research claims in the archive. I
 
 ## Contents
 
+- **[nonattracting_tip_complex_two_scale_20261106.md](nonattracting_tip_complex_two_scale_20261106.md)**: positive nonattracting 3/9 complex polynomial-like realization from exact inequalities and classical analytic steps. Lean 4.32 recomputes 3/9 Rouché margins, phase disjointness, critical exclusion and 9-to-3 containment, including a failed old-radius negative control. Levin (p2) and the KL marking remain open.
+- **[TipComplexMargins.lean](../../TipComplexMargins.lean)**, **verify_tip_complex_domains.py**, and [exact JSON manifest](../../results/tip_complex_domains.json): finite arithmetic and reproducibility; analytic topology is a separately written theorem, not kernel formalized.
+
 - **[levin_tip_ray_correspondence_20261106.md](levin_tip_ray_correspondence_20261106.md)**: a missing source connection (Levin, Theorems 1–3), the needed (p1)/(p2) hypotheses, actual period-nine ray landing along the Misiurewicz tip's repelling cycle, and a conditional forced noninjective renormalization-angle fiber.
 - **[TipRayPortrait.lean](../../TipRayPortrait.lean)**: core Lean theorems checking 18 primitive-period-nine distinct angles, unlinked chords and the semiconjugacy collapse implication.
 - **verify_tip_ray_portrait.py**: independent exact rational arithmetic regression and comparison against [manifest](../../results/period27_tip_ray_portrait.json).

@@ -33,6 +33,7 @@ on:
       - 'results/period27_symbolic_marking.json'
       - 'results/period27_misiurewicz_tip.json'
       - 'results/period27_tip_ray_portrait.json'
+      - 'results/tip_complex_domains.json'
       - 'RESEARCH_MAP.md'
       - 'README.md'
       - 'figs/readme/*.svg'
@@ -138,6 +139,8 @@ jobs:
         run: python research/independent_audits/verify_period27_misiurewicz_tip.py --check-manifest
       - name: Kernel-independent exact period-nine tip ray portrait
         run: python research/independent_audits/verify_tip_ray_portrait.py --check-manifest
+      - name: Verify nonattracting tip complex 3/9 margins and exact manifest
+        run: python research/independent_audits/verify_tip_complex_domains.py --check-manifest
       - name: Check finite Dirichlet-to-Neumann gluing
         run: python research/independent_audits/verify_rectangle_response.py
       - name: Check Paper 2 geometric source and return-time patch structure
