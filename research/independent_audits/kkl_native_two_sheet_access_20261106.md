@@ -1,0 +1,233 @@
+# Issue #40 — native two-sheet edge-access census and proper-image noncancellation
+
+**Date:** 2026-11-06  
+**Input:** [PR #41, native critical-gate theorem](./kkl_native_critical_gate_prime_end_20261106.md).  
+**Status:** **partial native theorem**, with a proved proper-image covering dichotomy, actual two-sheet edge census, and a **hypothesis-explicit** edge-mass implication. **No global \(\iota\) boundary quotient, no synthetic transition matrix, and no closure of interval growth/Wave/MLC**.
+
+**Primary source version:** Kahn–Kapiamba–Lyubich, [arXiv:2606.27272v1](https://arxiv.org/html/2606.27272v1), §2.1 (pseudo-ql maps), §2.5 (complete Hubbard tree and *two preimage edges per edge*), §6.1 (Propositions 6.5–6.8), Appendix A.1 (connected open multi-intervals, including a whole component), Appendix A.3.1–A.3.4 (covering pushforward and proper-path immersion restriction).
+
+This note uses **actual** \(F=(f,\iota)\) and \(\mathcal T\), not the finite circles of merged PRs #38–39. The new claims are topology/geometry consequences of source statements plus explicitly stated regular-edge hypotheses; they are **not** an independent proof of the paper's whole §6.1.
+
+## 1. Native types and an essential domain qualification
+
+For a source-admissible primitively renormalizable, periodically repelling KKL stage let
+
+\[
+\mathcal T'=f^{-1}(\mathcal T),\quad V=\mathcal U\setminus\mathcal T,\quad
+V'=\mathcal U'\setminus\mathcal T',\quad
+C=\partial_C^{\rm in}V,\quad C'=\partial_C^{\rm in}V'.
+\tag{1.1}
+\]
+
+The restriction \(f:V'\to V\) is an **unbranched covering**; \(\iota:V'\to V\) is the *different* holomorphic immersion. We work at stages where \(V,V'\) are connected annuli and the inner ideal boundaries are circles. The initial note's Lemma 2.1 explains this when the **actual** carrier \(\mathcal T\) is compact, connected, full and contains the unique critical value. For a non-locally-connected lifted carrier, verifying the actual annulus/fullness hypothesis is a separate required native check; replacing \(\mathcal T\) by the rational-lamination tree does not prove it.
+
+In this annular case the actual covering induces a degree-two map
+
+\[
+p=f_*:C'\longrightarrow C
+\tag{1.2}
+\]
+
+on **accesses** (not on planar landing points); annular uniformization makes it conjugate to angular doubling. The immersion pullback \(R(J)=\iota^*J\) is the Appendix A.3.2 **maximal proper-path restriction relation**, not the preimage under an assumed global monotone \(q:C'\to C\). For a source-marked open multi-interval \(I\) and separately its closure, Proposition 6.5 provides
+
+\[
+R(J)=H(J)\cup\bigcup_{X\in\mathscr A(J)}B_X,\qquad
+J\in\{I,\overline I\},
+\tag{1.3}
+\]
+
+where \(\mathscr A(J)\) indexes the **actual** attached components of \(\mathcal T'\setminus\mathcal T\) meeting the old carrier over \(J\), and \(B_X\) is the **complete** Carathéodory boundary contribution. Proposition 6.5 says the resulting \(R(I)\) is an interval, and Appendix A.3.4 defines \(F_*I=p(R(I))\). None of (1.1)–(1.3) identifies individual endpoint impressions in the non-LC case.
+
+## 2. Theorem A — exact no-folding dichotomy for *actual* proper images
+
+### Lemma 2.1 (general circle covering)
+
+Let \(p:C'\to C\) be any finite-degree covering of **connected circles**. If \(J\subset C'\) is connected and \(p(J)\ne C\), then \(p|_J\) is injective. Moreover, after deleting any \(y\notin p(J)\), \(J\) lies in **one** connected component of \(C'\setminus p^{-1}(y)\), and \(p\) maps that component homeomorphically to \(C\setminus\{y\}\). Thus the restriction preserves local cyclic order after choosing these oriented charts.
+
+**Proof.** Choose \(y\in C\setminus p(J)\). Because \(p\) is a finite circle covering, the complement of the finite fiber \(p^{-1}(y)\) consists of \(\deg p\) open arcs, each mapped *homeomorphically* onto the punctured circle \(C\setminus\{y\}\). Connected \(J\) avoids the fiber, so it lies in exactly one such arc. The claimed injectivity and order follow. \(\square\)
+
+### Theorem 2.2 (native proper-or-saturated access transport)
+
+Let \(F\) be as in §1 and \(I\) an *open connected marked multi-interval*. Put \(J=R(I)\).
+
+\[
+\boxed{F_*I\ne C\ \Longrightarrow\
+p|_{R(I)}\text{ is injective and preserves access order.}}
+\tag{2.1}
+\]
+
+Consequently two **distinct accesses inside the same actual \(R(I)\)** cannot collide under \(f_*\) while the image remains proper. If a collision occurs between distinct points of \(R(I)\), necessarily \(F_*I=C\). This includes every accessible old or added edge-side atom that actually belongs to \(R(I)\).
+
+**Proof.** Proposition 6.5 supplies connected \(R(I)\); apply Lemma 2.1 to the actual annular covering \(p\). No pointwise \(\iota\)-boundary extension is needed. \(\square\)
+
+**Critical limitation.** This is **not** a proof that a missing edge-side or endpoint belongs to \(R(I)\) in the first place. Also, different pulled-back intervals \(R(I_1),R(I_2)\) may have overlapping *images* even when each image separately is proper. The theorem concerns the single connected interval used in each proper-output comparison.
+
+### Corollary 2.3 (closed-endpoint transport, with the necessary hypothesis)
+
+Let \(J_o=R(I)\), \(J_c=R(\overline I)\), and assume, as must be checked for the actual closed pullback, that
+
+\[
+\overline{J_o}\subset J_c,\qquad J_c\text{ is connected}.
+\tag{2.2}
+\]
+
+If \(p(J_c)\ne C\), then \(p\) is injective on \(J_c\) and
+
+\[
+\boxed{
+F_*(\overline I)\setminus\overline{F_*I}
+=p\bigl(J_c\setminus\overline{J_o}\bigr).
+}
+\tag{2.3}
+\]
+
+In this proper-closed case, closure-only accesses **remain distinct** after covering pushforward. Their source is localized by PR #41, Theorem 3.1, to old lifted endpoints or to complete boundaries of components in \(\mathscr A(\overline I)\setminus\mathscr A(I)\).
+
+**Proof.** Lemma 2.1 applies to connected \(J_c\) with proper image. By (2.2), \(\overline{J_o}\subset J_c\), so the image of \(J_c\setminus\overline{J_o}\) is the image of \(J_c\) minus \(p(\overline{J_o})\). For a continuous map on compact circles, \(p(\overline{J_o})=\overline{p(J_o)}\). Substitution gives (2.3). \(\square\)
+
+There are thus three distinct endpoint outcomes:
+
+1. **Open saturation:** \(p(J_o)=C\), so also \(p(J_c)=C\).
+2. **Proper closed image:** \(p(J_c)\ne C\), and (2.3) records each newly born access injectively.
+3. **Closure-triggered saturation:** \(p(J_o)\ne C\) but \(p(J_c)=C\). In this case **do not** apply (2.3); recording only \(\overline{F_*I}\) would lose the closed-crest behavior.
+
+This trichotomy is exact where (2.2) is verified. A claim that (2.2) holds for every non-locally-connected native closed pullback is **not** being smuggled in.
+
+## 3. Theorem B — two-sheet census for actual Hubbard **edges**
+
+Let \(E=E(\mathcal T)\) and \(E'=E(\mathcal T')\) be the genuine abstract edge sets of KKL §2.5. The critical point and critical value are in the distinguished vertex package; the restriction over the interior of any target edge \(b\in E\) is unbranched.
+
+KKL §2.5 explicitly states that
+
+\[
+f:E'\longrightarrow E
+\quad\text{is two-to-one on edge sets.}
+\tag{3.1}
+\]
+
+For a target edge \(b\), set
+
+\[
+\mathcal E_b=\{\tilde b\in E':f(\tilde b)=b\},
+\quad
+\mathcal E_b^{\rm old}=\{\tilde b\in\mathcal E_b:\tilde b\subset\iota^{-1}(\mathcal T)\},
+\quad
+\mathcal E_b^{\rm add}=\mathcal E_b\setminus\mathcal E_b^{\rm old}.
+\tag{3.2}
+\]
+
+Membership here is in the **actual old subtree** identified inside \(\mathcal T'\) by \(\iota\) near \(\mathfrak K\), not in a conjectural circular quotient.
+
+### Theorem 3.1 (complete *edge-lift* census)
+
+For every genuine target edge \(b\),
+
+\[
+\boxed{
+|\mathcal E_b^{\rm old}|+|\mathcal E_b^{\rm add}|=2.
+}
+\tag{3.3}
+\]
+
+After subdividing source old edges at the actual preimages of target vertices, let \(M_{ab}\) denote the number of components of the embedded old edge \(a\) that \(f\) carries homeomorphically over the target edge \(b\). With **row = source old edge**, **column = target edge**, we have
+
+\[
+\boxed{
+M_{ab}=(T_F)_{ab},\qquad
+\sum_{a\in E}(T_F)_{ab}=|\mathcal E_b^{\rm old}|\le2.
+}
+\tag{3.4}
+\]
+
+In particular, all target-edge preimage **strips** are exhausted by two actual holomorphic sheets; the unused sheets in \(\mathcal E_b^{\rm add}\) are exactly those lying in the added-tree portion. There is no arbitrary third edge lift or numerical transition model.
+
+**Proof.** Equation (3.3) is KKL's degree-two statement (3.1) with its actual source edge set partitioned by the old subtree. The map \(f\circ\iota^{-1}\) on the old Hubbard tree is the graph map used in §2.5 to define \(T_F\). An occurrence of \(b\) in the graph image of source edge \(a\) corresponds to precisely one lifted preimage edge \(\tilde b\) in the old subtree contained in \(a\) (after subdivision); conversely each old lifted preimage edge lies within exactly one old edge of the unsubdivided Hubbard tree. Thus each old lift contributes exactly once to the sum of the relevant graph row, proving (3.4). \(\square\)
+
+**Clarification for non-LC maps:** §2.5 explicitly transfers the *combinatorial* tree through the rational-lamination model. Equations (3.1)–(3.4) are native **abstract-edge counts**, but, without the additional regular-edge/access realization below, do **not** assert that every abstract lift supplies two distinct prime-end side atoms of the *actual* non-LC carrier.
+
+### Lemma 3.2 (actual regular-edge four-side-germ census)
+
+Assume each relevant open edge of \(\mathcal T'\) is locally isolated as an embedded planar open arc: around each of its interior points, there is a disk meeting \(\mathcal T'\) in one subarc that separates the disk into two sides. This holds for a finite locally connected embedded ribbon tree with compact vertex bodies, and must be **verified** for a non-LC lifted carrier.
+
+Then over any regular interior point \(y\in b\) there are exactly
+
+\[
+2\text{ preimage points}\times2\text{ local sides}
+=\boxed{4\text{ distinct source side germs}},
+\tag{3.5}
+\]
+
+and each of the two target side germs has exactly two source preimages. The old and added counts per target *side* are respectively \(|\mathcal E_b^{\rm old}|\) and \(|\mathcal E_b^{\rm add}|\).
+
+**Proof.** Choose a small disk \(D\) at \(y\) meeting \(\mathcal T\) in a single embedded arc, with no critical value and no vertex. Since \(f\) is an unbranched degree-two covering over \(D\), its preimage is the disjoint union of two conformal disks, each mapped biholomorphically to \(D\). The source tree intersects each disk in one lifted arc, with two complementary local sides. A biholomorphism permutes these two sides bijectively. Thus the source supplies exactly four distinct *local Carathéodory side germs* and sends exactly two to each target side. Partitioning the two lifted arcs by old/new membership proves the last assertion. These are access germs, not claims of singleton impressions. \(\square\)
+
+**What (3.3)–(3.5) do *not* provide:** They do not enumerate the components \(X\in\pi_0(\mathcal T'\setminus\mathcal T)\) at exceptional *vertices*, how their many edge lifts concatenate into the **complete** \(B_X\), which cyclic sector holds \(B_X\), whether two different components share a planar landing point but have distinct prime ends, or the endpoint-only records of (2.3). Those are exactly the remaining attachment-census obligations.
+
+## 4. A carefully typed edge-weight comparison
+
+For a *locally connected native ribbon realization*, assume the following **edge-side realization** condition, which is automatic at individual regular interior germs by Lemma 3.2 but has to be verified **globally** across every proof-used endpoint, attached block and vertex:
+
+> **(ESR)** For every full old marked edge-side atom \(s_a^\pm\subset I\), the old-boundary portion \(H(I)\subset R(I)\) contains the entire corresponding source side trace through all subdivisions of \(a\). The image under \(f_*\) of each such trace contains, as full target side atoms, exactly one occurrence for every corresponding traversal in the source-defined graph word \(T_F(a,-)\). Distinct traces are tagged by their actual source accesses. Every additional component boundary from (1.3) is included, not thrown away.
+
+This is a **native geometric condition**, not a free choice of graph transition words. For locally connected finite ribbon trees with fully realized old sides, it follows from the old-side embedding near \(\mathfrak K\), the complete attachment insertion of Proposition 6.5, and the local biholomorphic side maps of Lemma 3.2. Its extension to all KKL lifted non-LC vertices is not proved.
+
+Let \(w=(w_a)_{a\in E}>0\) satisfy \(T_Fw=\lambda_Fw\), \(\lambda_F>1\) (KKL §2.5), with source-edge rows. Define the weight of a marked interval \(I\) to be
+
+\[
+m_w(I)=\sum_{s_a^\sigma\subset I}w_a,
+\tag{4.1}
+\]
+
+counting each full old edge-side atom once, with vertex-only sectors weight zero.
+
+### Proposition 4.1 (proper-or-positive-edge expansion, **conditional on ESR**)
+
+For a KKL native stage satisfying the annular hypotheses in §1 and (ESR) on the actual input interval \(I\),
+
+\[
+\boxed{
+F_*I=C\quad\text{or}\quad
+m_w(F_*I)\ge\lambda_F m_w(I).
+}
+\tag{4.2}
+\]
+
+In particular, if the output is proper and \(m_w(I)>0\), its positive edge-side weight increases strictly.
+
+**Proof.** For each old edge-side atom \(s_a^\sigma\subset I\), (ESR) supplies the full actual \(f\)-image trace, whose target edge-side weight is \(\sum_b (T_F)_{ab}w_b=\lambda_Fw_a\). Proposition 6.5 includes those traces in \(R(I)\), plus all attached boundary pieces. If \(F_*I\) is proper, Theorem 2.2 makes \(p\) injective on the entire connected \(R(I)\); distinct source trace atoms cannot overlap or cancel in the target, and each full target edge-side atom contributes its weight once. Sum over all source edge sides to obtain (4.2). All added pieces have nonnegative contribution; no identity relating \(\iota^*\) to a global monotone quotient was used. If \(F_*I=C\) we are in the other stated alternative. \(\square\)
+
+**Review boundary.** The proof is an actual holomorphic *implication*, not a completed **all-native** verification of (ESR). Do not replace (ESR) with the bare existence of \(T_F\), a Perron root, a finite automaton, or graph valence. The needed full-side trace assertion at exceptional attachment gates—especially for the non-locally-connected lifted carrier—is precisely the missing bridge. Similarly, (4.2) is silent on \(m_w(I)=0\); Perron–Frobenius theory cannot by itself rule out a trapped sector at a vertex.
+
+## 5. Which parts of Issue #40 have actually advanced?
+
+| Item | Source-defined progress | Still open |
+| --- | --- | --- |
+| Actual cover and immersion | \(p=f_*\) annular covering separated from proper-path \(R=\iota^*\) | Annular carrier identification for each non-LC lift |
+| Attachment completeness | Proposition 6.5 entire \(B_X\) inserted for marked open/closed inputs; PR #41 endpoint origin localization | Full native \(X\)-by-\(X\) census at the exceptional \(x\) and neighboring limbs |
+| Edge incidence | Exactly two **actual** preimage edges over each target edge; old/new partition (3.3); source-defined \(T_F\) count (3.4); local four-germ census (3.5) | Global source-side endpoint matching and non-LC (ESR) |
+| Proper-output multiplicity | **Proved unconditionally in the annular prime-end setting** by Theorem 2.2 | Saturated output can identify covering sheets; record it as saturation, not a numerical edge-row identity |
+| Positive edge mass | Conditional proper-or-expanding estimate (4.2) | Universal verification of (ESR), and all zero-mass sectors |
+| Closed Wave crests | Proper-closed endpoint defect transported by (2.3), when (2.2) is checked | Actual crest inclusions, proper/positive/short hypotheses, closure-triggered saturation |
+
+### First remaining native verification target
+
+At the distinguished point/access \(x\) of the proof of KKL Proposition 6.8, construct the **actual** finite or nonfinite list
+
+\[
+\bigl\{(X,\partial_C X,\gamma_X^-,\gamma_X^+,j_X,
+\text{source old/new edge sheets},\text{closed-only membership})\bigr\},
+\tag{5.1}
+\]
+
+where the \(\gamma_X^\pm\) are **distinct prime-end gate accesses** determined by genuine proper-path/crosscut charts, \(j_X\) is the cyclic insertion sector, and the edge sheets are the actual \(f^{-1}(E(\mathcal T))\) from (3.2). In the non-LC setting, **do not** infer gates from point impressions or from \(\pi:\mathfrak K\to\mathfrak K_{\rm com}\). Verify that this grouping exhausts \(\mathcal E_b^{\rm add}\) for every edge \(b\), then use its records to discharge (ESR) and zero-sector escape. Finally test the **closed** Wave crest as a separate input \(J_c\), using the trichotomy of §2 and the source's warning that \(F_*\overline I\) can differ from \(\overline{F_*I}\).
+
+### Failure controls (analytical, not a new finite simulation)
+
+- **Covering fold claimed while target proper:** impossible for **one connected** pullback interval (Theorem 2.2). If observed, either an interval was disconnected, boundary types were mixed, or the asserted covering/access chart was wrong.
+- **A third preimage edge strip:** impossible under the actual degree-two source edge map (3.3). It is either a duplicate label or an incorrect \(\mathcal T\)-/\(\mathcal T'\)-identification.
+- **A missing added edge sheet:** detectable by failing (3.3), even before classifying complete attached components.
+- **Duplicate target trace in a proper output:** violates Theorem 2.2 when both source traces are genuinely in the *same* \(R(I)\); a separate abstract matrix can conceal this.
+- **Endpoint-only large attachment dropped:** violates the source-separated \(R(\overline I)\) audit. If it saturates the target, classify as closure-triggered saturation, **not** a proper image.
+- **Zero-sector claimed expanding from \(\lambda_F>1\):** invalid without an actual gate-escape proof.
+
+**Ledger decision:** retain \(KKL\_BOUNDED\_VISITS\_INTERVAL\_GROWTH\_REPAIR\), \(KKL\_PARABOLIC\_WAVE\_AMPLIFICATION\), and MLC as **OPEN**. The native gate realization over the whole non-LC category, not a more elaborate synthetic regression, is next. No independent specialist review has been obtained.
