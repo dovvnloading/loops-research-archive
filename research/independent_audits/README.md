@@ -2,6 +2,10 @@
 
 This directory contains reproducible audits of research claims in the archive. It is **not** a proof of Mandelbrot local connectivity and does not change the status of any open obligation.
 
+## New mathlib-backed real center verification
+
+- **[lean_period27_real_center_20261105.md](lean_period27_real_center_20261105.md)**: kernel-checked real calculus, IVT and strict MVT uniqueness for the actual period-27 quadratic parameter, plus exact minimal period from all 26 early orbit enclosures. These are finite real-polynomial results; no global MLC or KL geometric gate is closed.
+
 ## Contents
 
 - **clone_spectral_referee_note.md**: self-contained calculation checking a delayed-cross-section clone formula against the convention printed in Kahn–Kapiamba–Lyubich, arXiv:2606.27272v1, Appendix C. It includes two-sided finite-clone estimates and a second-order fixed-template asymptotic. Specialist confirmation of the source interpretation and novelty is still required.
