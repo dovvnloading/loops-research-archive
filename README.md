@@ -172,6 +172,11 @@ The inner domain requires a **27/1024** rational shrink for its certified Rouch�
 *Figure 3 — Certified target geometry, drawn to scale.* At the nonattracting tip, \(U_3=D(0,1/4)\) and \(U_9=D(0,1/32)\); the drawn radius ratio is exactly eight. These are **target disks only**, not sketches of the preimage domains \(V_3,V_9\), filled Julia sets or KL puzzle pieces. See the [signed-integer margin manifest](./results/tip_complex_domains.json) and [full complex proof audit](./research/independent_audits/nonattracting_tip_complex_two_scale_20261106.md).
 
 
+### Source-level KL top puzzle and local-sheet obstruction at the nonattracting tip
+
+A further [KL source-alignment audit](./research/independent_audits/kl_tip_primitive_puzzle_and_localization_20261106.md) identifies **two successive q=2, n=1** Yoccoz top decorations, one for f and one for its actual quadratic-like G=f³, with two Q-branches and critical Y³ puzzle vertices at each level. It certifies the respective primitive critical first returns at physical times 3 and 9. New [Lean](./TipKLPuzzle.lean) and [exact Python](./research/independent_audits/verify_tip_kl_puzzle.py) checks certify concrete off-cycle inverse-preimage witnesses **at both physical periods 3 and 9**, realizing the archive's existing one-scale canonical-localization coset collision theorem twice. They also identify a fixed point a∈B₃\\B₉ that prevents the naive identity or f⁶ map from defining a 9→3 map of the corresponding deleted surfaces. This **does not** supply the fully marked *interscale* Kahn–Lyubich groupoid/prime-end naturality; [Issue #29](https://github.com/dovvnloading/loops-research-archive/issues/29) remains open. The source-locked MLC ledger and global H1–H4/UPTCR remain unchanged.
+
+
 ## Proof evidence, Lean and reproducibility
 
 The archive deliberately separates **checked finite arithmetic**, **paper-level mathematical interpretation**, **imported theory**, and **genuinely open geometry**.
