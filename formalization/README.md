@@ -133,6 +133,27 @@ an MLC result.
 See the [mathematical theorem and boundary note](phase-tower.md)
 for the exact statements, proof structure, and reproduction instructions.
 
+## Future-observable phase quotients and minimal memory
+
+Two successor modules continue the finite phase-tower work:
+[`PhaseFuture.lean`](../PhaseFuture.lean) proves the universal
+**future-sound quotient criterion** (for surjective, transition-compatible
+quotients, current-observable factorization is equivalent to preservation
+of every future reading). It proves a single Boolean zero-phase sensor,
+read over at most one full period, distinguishes all phases of **every**
+positive-length cyclic clock.
+
+[`PhaseFuture27.lean`](../PhaseFuture27.lean) turns this into concrete
+3/9/27 memory obligations. Any augmentation of the 3-phase clock that
+retains all future Boolean readings must distinguish nine states over a
+single coarse fiber; a 9-phase augmentation must distinguish three.
+Both bounds are met by explicit reversible encodings with completely
+specified induced transitions and all-time readouts.
+
+See [the precise future-observability audit](phase-future.md).
+These are symbolic clock facts, not a KL access/sheet atlas or any
+MLC global gate.
+
 ## Remaining formal obligations
 
 **General weighted return operators:** Exact integer first-return multiplicities and the base adjacency blocks are now kernel-checked. The all-n weighted return operator, its Perron equation, and its comparison to the published conventions still require distinct theorems.
