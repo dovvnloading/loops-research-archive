@@ -18,7 +18,7 @@ Fix an **actual** KKL stage \(F=(f,\iota)\). Work in its actual embedded carrier
 
 We impose the following **local** regular-root hypotheses, which are **not** being asserted for arbitrary non-LC KKL lifts:
 
-**(RF1)** There is a closed Jordan disk \(D\) centered at x such that \(D\cap\mathcal T\) is precisely a finite star of \(m\ge2\) nonoverlapping simple old arcs \(h_0,\dots,h_{m-1}\) from x to \(\partial D\), and no other old carrier material accumulates in \(D\setminus\{x\}\). The cyclic ordering is induced by the orientation of the dynamical plane.
+**(RF1)** There is a closed Jordan disk \(D\) centered at x such that \(D\cap\mathcal T\) is precisely a finite star of \(m\ge1\) nonoverlapping simple old arcs \(h_0,\dots,h_{m-1}\) from x to \(\partial D\), and no other old carrier material accumulates in \(D\setminus\{x\}\). The cyclic ordering is induced by the orientation of the dynamical plane.
 
 **(RF2)** In that disk, every nontrivial *actual* added component \(X\in\pi_0(\mathcal T'\setminus\mathcal T)\) meeting x has **exactly one** attaching simple-arc germ \(e_X\) from x to \(\partial D\). There are only finitely many such components and germs. Distinct arcs are disjoint away from x, each lies in a unique old sector of \(D\setminus\mathcal T\), and no additional source carrier material accumulates at x between them. Each arc is part of the actual component \(X\), not a chosen abstract graph half-edge. This **one-germ-per-component and finite regular-fan** hypothesis is stronger than the source's planar one-root assertion.
 
@@ -105,6 +105,12 @@ In the **actual** non-locally-connected lift \(\pi:\mathfrak K\to\mathfrak K_{\r
 
 **Ledger:** Issue #40, KKL_BOUNDED_VISITS_INTERVAL_GROWTH_REPAIR, KKL_PARABOLIC_WAVE_AMPLIFICATION, and global MLC all remain OPEN. No synthetic simulation, no global non-LC prime-end atlas, and no independent referee verification.
 
+
+## Postscript — the regular **tip** case matters
+
+The old-root star hypothesis (RF1) now explicitly allows \(m=1\), a **terminal old edge**. In that case there is one old access at its tip, and inserting one actual additional branch germ divides it into two **source** terminal accesses. This endpoint-birth phenomenon occurs in the genuine quadratic \(P(z)=z^2-1\) with \(T=[-1,0]\), \(T'=[-1,1]\), and added branch \(X=(0,1]\), as worked out in [the fully analytic quadratic attachment atlas](./kkl_basilica_actual_immersion_attachment_atlas_20261106.md). The target tip \(x=0\) has one access whereas the source has two gates \(s=1/4,3/4\). In this case the new full branch contour is attached in the *one* old sector; it cannot be excluded by imposing \(m\ge2\) just because the old point is not a graph branch vertex.
+
+The quadratic example verifies a true immersion-pullback endpoint birth and a strict \(F_*\overline I\ne\overline{F_*I}\), but its one-edge Perron root is one and it is **outside** the required KKL primitive-renormalization class. It is a rigorously analytic adversarial control for RF1–RF4, not proof of those hypotheses at a non-LC small-Julia contact.
 
 ## Postscript — source-defined non-LC refinement (2026-11-06)
 
