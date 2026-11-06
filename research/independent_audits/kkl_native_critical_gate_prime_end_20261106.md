@@ -174,18 +174,22 @@ KKL Proposition 6.8 constructs a stretching multi-interval \(I_{\rm str}\) of co
 
 **Proof.** In the proof of Proposition 6.8, \(\mathcal L'_{[\mathbf b,q-\mathbf b-2]}\) and its minimal Carathéodory marking multi-interval are precisely \(\mathcal P'\) and \(\mathbf J'\) above. The proof states both \(f_*\mathbf J'=\mathbf L_{(\mathbf b,q-\mathbf b)}\) and \(\mathbf J'\subset\operatorname{Int}\iota^*x\). By Lemma 2.1 the covering pushforward on the actual Carathéodory inner boundary is \(p\), which yields (4.2). The subsequent two-case construction of \(\tilde{\mathbf I}_{\rm str}\) is exactly KKL's atom/endpoint distinction. We do not identify \(x\) with a unique planar landing point or count distinct accesses using the valence of \(x\). \(\square\)
 
-### Corollary 4.2 (what proper corridor geometry actually excludes)
+### Source audit 4.2 (proper corridor, with a notation trap)
 
-By KKL Proposition 6.7,
+KKL Proposition 6.7 **states** that \(F_*\) acts properly on the noncritical corridor \(\mathbf L_G\). Its proof invokes the geometric assertion that all components of \(F^{-1}(\mathcal K)\) in the relevant corridor are already components of \(\mathcal K\).
+
+There is a source-notation pitfall worth recording before claiming a separate proof of **no interior attachment birth**. In §2.5, \(\mathcal L_G\) is defined as \(\mathfrak L_G\cap\mathcal T\), so \(\mathcal L_G\subset\mathcal T\). After §6.1's identification of the old forward-invariant \(\mathcal T\) with a subset of \(\mathcal T'=f^{-1}(\mathcal T)\), the equation **printed** in the proof of Proposition 6.7,
 
 \[
-\mathcal T'\cap\mathcal L_G=\mathcal T\cap\mathcal L_G.
+\mathcal T'\cap\mathcal L_G=\mathcal T\cap\mathcal L_G,
 \tag{4.3}
 \]
 
-Hence no **new interior tree component** can be attributed to a sector contained strictly inside the good corridor. For such sectors the complete attachment contribution in (3.2) is absent. This does **not** remove closed endpoint accesses at the boundary of \(G\), and does **not** bound return times, the number of exceptional components, or the multiplicity of their boundary accesses.
+is automatically true: both sides are \(\mathcal L_G\). **By itself** it does not rule out a branch of \(\mathcal T'\setminus\mathcal T\) lying in the *ambient* limb \(\mathfrak L_G\setminus\mathcal T\). To derive that stronger no-birth fact one must use the preceding component assertion together with the hull/preimage geometry, or supply the intended stronger intersection statement with \(\mathfrak L_G\). This note **does not** silently replace the printed symbol or claim an independently verified proof of the stronger assertion.
 
-At the level of the marked open limb multi-intervals, KKL §6.1 also identifies
+The theorem of the source remains a source input; this observation is a possible **proof-exposition gap**, **not** a native counterexample to Proposition 6.7. It is especially relevant for source-defined endpoint checks, because neither corridor properness nor the displayed intersection equality alone enumerates attachments at the boundary of \(G\).
+
+At the level of marked **open** limb multi-intervals, KKL §6.1 also identifies
 
 \[
 F_*\mathbf L_0=C,\qquad
@@ -193,7 +197,7 @@ F_*\mathbf L_j=\mathbf L_{j+1}\quad(j\ne0).
 \tag{4.4}
 \]
 
-These are native set-level interval images, **not** a statement that every small-Julia edge-side and every closed crest has preserved positive edge mass.
+These native set-level interval images are **not** a statement that every small-Julia edge-side and every closed crest has preserved positive edge mass.
 
 ## 5. Non-locally-connected access discipline
 
