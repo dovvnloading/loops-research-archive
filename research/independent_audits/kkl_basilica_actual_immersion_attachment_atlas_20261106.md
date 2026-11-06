@@ -34,7 +34,7 @@ Write \(X=(0,1]\). It is a single actual added branch with **one planar attachme
 \]
 The critical point \(0\in T'\) maps to the target endpoint \(-1\in T\).
 
-**Scope warning.** The segment \(T\) is the bona fide postcritical Hubbard tree for this postcritically finite quadratic map. It is **not** the complete *small-Julia-cycle* Hubbard tree for a prime primitive renormalization: \(P(z)=z^2-1\) is the period-two basilica (satellite), and the induced one-edge matrix below has Perron root one. Therefore none of the special KKL \(q,b\)-corridor or \(\lambda_F>1\) conclusions is attributed to this example.
+**Scope warning.** The segment \(T\) is the bona fide postcritical Hubbard tree for this postcritically finite quadratic map. It is **not** the complete *small-Julia-cycle* Hubbard tree for a prime primitive renormalization: \(P(z)=z^2-1\) has a **superattracting period-two** orbit, so it is **not periodically repelling**, and is satellite rather than prime primitive; the induced one-edge matrix below also has Perron root one. Therefore none of the special KKL \(q,b\)-corridor or \(\lambda_F>1\) conclusions is attributed to this example.
 
 ## 2. Genuine source and target prime-end circles, same covering
 
@@ -224,3 +224,8 @@ This provides an adversarial **holomorphic** test for future KKL claims:
 The local atlas cannot be imported wholesale to a small filled Julia continuum with non-singleton prime-end impressions: its contact sectors may lack the simple slit crosscut charts of (2.2). In KKL's **required** primitive category, the missing theorem remains the actual contact-impression/root gate selection (source and target), full \(B_X\) placement, equality with the original vertex-side marking and \(T_F\), all zero-sector escape, and the real **closed** critical-Wave crest inclusions.
 
 **Disposition:** a rigorously source-defined **quadratic analytic attachment control**, not a full-category native counterexample and not Issue #40 acceptance. Keep \`KKL_BOUNDED_VISITS_INTERVAL_GROWTH_REPAIR\`, \`KKL_PARABOLIC_WAVE_AMPLIFICATION\` and MLC OPEN. No synthetic interval simulations or independent specialist proof review are claimed.
+
+
+## Postscript — a stronger periodically repelling analytic control
+
+The companion [exact Misiurewicz quadratic attachment/incidence atlas](./kkl_misiurewicz_actual_expanding_attachment_atlas_20261106.md) replaces the attracting basilica by a **periodically repelling** quadratic \(P_c(z)=z^2+c\) whose critical orbit lands on a repelling fixed point. Its old real postcritical Hubbard tree \(T=[c,c^2+c]\) has an actual added inverse branch attached at the second preimage of that fixed point. The **same** Joukowski source and target charts still give angular doubling, a complete \(\iota^*\) boundary block and a strict \(F_*\overline I\ne\overline{F_*I}\), but now a Markov-refined **signed edge-word** matrix has Perron root \(\sqrt2>1\). This is substantially closer to the source's periodically repelling, expanding setting, but remains **outside** its prime primitive renormalization category. It does not close Issue #40.
