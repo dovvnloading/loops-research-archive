@@ -6,6 +6,9 @@ This directory contains reproducible audits of research claims in the archive. I
 
 - **[lean_period27_real_center_20261105.md](lean_period27_real_center_20261105.md)**: kernel-checked real calculus, IVT and strict MVT uniqueness for the actual period-27 quadratic parameter, plus exact minimal period from all 26 early orbit enclosures. These are finite real-polynomial results; no global MLC or KL geometric gate is closed.
 
+
+- **[kl_tip_primitive_puzzle_and_localization_20261106.md](kl_tip_primitive_puzzle_and_localization_20261106.md)**: source-aligned top ambient KL puzzle at the nonattracting tip (q=2, n=1, P=Y¹, V⁰=Y³), exact landed α/α′/critical puzzle vertex ray-access table, and *two actual scale-specific Kahn localization coset collisions* based on exact off-cycle real preimages of 0. A separate point-level witness shows identity and f⁶ do **not** map the nine-scale deleted surfaces into the three-scale ones. **Not a construction of the 9→3 KL sheet functor**; #29 remains open. Companion [TipKLPuzzle.lean](../../TipKLPuzzle.lean) and [verify_tip_kl_puzzle.py](verify_tip_kl_puzzle.py) check finite arithmetic, not source geometry.
+
 ## Contents
 
 - **[levin_tip_p2_carathéodory_two_scale_20261106.md](levin_tip_p2_carathéodory_two_scale_20261106.md)**: exact source (p2) quantifiers; a uniform positive ambient Green-level margin via Milnor's subhyperbolic Julia-local-connectivity theorem and Carathéodory ray landing; actual Levin Π9 collision at 0 and distinct Π3 angle pair 5/7 vs 2/7. Analytic theorems imported, not Lean-formalized; no numerical b or KL sheet groupoid. **[verify_tip_levin_transport.py](verify_tip_levin_transport.py)** independently checks the finite angle enumeration.
