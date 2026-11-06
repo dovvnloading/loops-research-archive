@@ -8,7 +8,7 @@
 
 ## 1. Source, definitions, and the distinct clocks
 
-Primary source: J. Kahn and M. Lyubich, [*A priori bounds for some infinitely renormalizable quadratics: II. Decorations*](https://www.math.stonybrook.edu/preprints/ims06-06.pdf), **§2.1, printed pp. 4–5; Lemma 2.1 on p. 5; §2.2, printed pp. 6–7**. This audit uses **that** source's notation.
+Primary source: J. Kahn and M. Lyubich, [*A priori bounds for some infinitely renormalizable quadratics: II. Decorations*](https://www.math.stonybrook.edu/preprints/ims06-06.pdf), **§2.1, printed pp. 5–6; Lemma 2.1 on p. 6; §2.2, printed pp. 7–8**. This audit uses **that** source's notation.
 
 * The *top* Yoccoz puzzle uses the dividing fixed point α, whose rays rotate by combinatorial rotation number **1/q** in this real case. The first decoration escape depth is the **least** positive integer n for which f^{qn}(0) lies in the **interior** of an off-critical depth-one piece Z^1_κ, not merely any point outside Y^1.
 * Once n is known, **P=Y^{(n−1)q+1}**, **V^0=Y^{nq+1}**, and the two univalent f^q-pullbacks **Q_L,Q_R** of P have **depth nq+1** and attach at α,α′=−α. Lemma 2.1 produces 2^n pairwise disjoint *closed* pieces Q^v inside P of depth (2n−1)q+1, univalent under **f^{nq}**.

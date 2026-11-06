@@ -55,7 +55,7 @@ We use the normalized Böttcher coordinate at infinity. Milnor,
 `f(R_theta)=R_(2 theta)`. **Lemma 18.7**, pp. 18-3–18-4, gives the
 corresponding landing relation. The puzzle convention is Kahn–Lyubich,
 [*Decorations*](https://www.math.stonybrook.edu/preprints/ims06-06.pdf),
-**§2.1, printed pp. 4–5**: choose any positive ambient equipotential height
+**§2.1, printed pp. 5–6**: choose any positive ambient equipotential height
 `h`; the depth-`m` graph uses its preimage of height `h/2^m` and all rays in
 `f^(-m)({R_(1/3),R_(2/3)})`. Pieces are closed Jordan puzzle disks in that
 source convention. The earlier audit verifies that the critical orbit avoids
