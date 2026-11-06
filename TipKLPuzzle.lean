@@ -168,6 +168,37 @@ theorem two_distinct_kl_escape_clocks :
 #print axioms inner_return_kl_fixed_and_vertex_brackets
 #print axioms two_distinct_kl_escape_clocks
 
+/-- The *actual* dyadic obstruction point: 31/1024 lies in U9
+    but outside the certified V9 ⊂ D(0,27/1024). -/
+def obstructionPoint : Int := 31 * unitTip / 1024
+
+/-- This point belongs to the real outer restrictive interval I3,
+    hence to K3, but not to the central nine-scale K9. -/
+theorem obstruction_point_in_outer_real_interval_not_V9 :
+    innerShrinkRadius < obstructionPoint ∧
+    obstructionPoint < innerRadius ∧
+    (tipOrbit 6).hi < obstructionPoint ∧
+    obstructionPoint < (tipOrbit 3).lo := by
+  decide +kernel
+
+/-- All noncentral physical nine-scale images f^j(V9), 1≤j<9,
+    are excluded by their existing strict complex disk enclosures. -/
+def obstructionAvoidsNinePhase (j : Nat) : Bool :=
+  j = 0 ||
+    (tipOrbit j).hi + deviation innerShrinkRadius j < obstructionPoint ||
+    obstructionPoint + deviation innerShrinkRadius j < (tipOrbit j).lo
+
+theorem obstruction_point_outside_all_noncentral_nine_phases :
+    (List.range 9).all obstructionAvoidsNinePhase = true := by
+  decide +kernel
+
+/-- Consequently, at the geometric-analysis level, z=31/1024 is
+    in Ω_t9 = U9 \ B9 but is absent from Ω_t3 = U3 \ B3:
+    K3 contains I3, while B9 is confined to the nine complex phase
+    disks. In particular *identity inclusion* Ω_t9→Ω_t3 is undefined.
+    This is a theorem about the actual target complements, **not** a
+    source-defined KL 9-to-3 localization sheet functor. -/
+
 /-- Source-printed p. 6 has q=2,n=1, with P depth 1,
     V^0 and Q_L,Q_R depth 3, and deep qn=q.
     This is NOT a period-3/period-9 return-time comparison. -/
