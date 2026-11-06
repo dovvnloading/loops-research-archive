@@ -33,6 +33,14 @@ At \(n=1\), the “deep” branch time \(nq=2\) happens to coincide with the sha
 
 The nontrivial real vertices of the central \(Y^3\) pullback satisfy \(f^2(\pm t)=\alpha'\) for a root \(t\in(5/16,7/16)\). The signs \(f^2(5/16)>1>\alpha'\) and \(f^2(7/16)<7/8<\alpha'\) prove this bracket by IVT. In particular \(I_3\subset U_3\subset(-t,t)\) is **not** concluded: \(I_3=[x_6,x_3]\) is indeed inside \((-t,t)\) by rational bounds, but \(U_3\) is a complex disk and no identity of complex domains is claimed. The existing complex phase separation and primitive first return for the period-3 and period-9 physical restrictions are distinct from proving the entire **modified principal nest** in KL's chosen puzzle.
 
+### The second top puzzle belongs to \(G=f^3\), not to \(f\)
+
+A second application of the source's *top-puzzle algorithm* must use the actual degree-two polynomial-like map \(G=f^3:V_3\to U_3\), not the ambient \(f^6\) ray map. The analytic Rouché and critical-exclusion theorem in the preceding complex audit gives precisely this degree-two restriction, so \(G\) has its own external marking and \(G\)-internal rays by straightening. These are **not** identified with arbitrary ambient \(f\)-rays.
+
+The new finite Lean theorem `inner_return_kl_fixed_and_vertex_brackets` checks that \(G(a)=a\) has a root \(a\in(3/32,1/10)\) on the positive real axis; the exact interval derivative inequality in the independent checker shows \(G'(a)<-1\). Evenness gives the other preimage \(-a\). Strict signs locate a positive preimage \(b_G\in(17/100,7/40)\) with \(G(b_G)=-a\), and the central depth-three vertices \(\pm t_G\), where \(G(t_G)=b_G\), satisfy \(1/32<t_G<1/16\). The original critical orbit satisfies \(G^2(0)=x_6<-1/10<-a\), so the first \(G\)-critical escape is again \(q_G=2,n_G=1\); the candidate second top pieces have \(P_G=Y_G^1\), \(V^0_G=Y_G^3\), and depth-three univalent \(G^2=f^6\) branches. The **terminal next renormalization** is the separate \(G^3=f^9\) return.
+
+An additional *full complex* exclusion is finite-certified: \(\mathrm{Re}\,G(D(0,1/32))>7/40\). All potential central \(G^2\)-preimages of \(a\) lie between \(-7/40\) and \(7/40\), so no \(G^3\)-preimage of \(a\) can lie inside \(U_9\). This separates the second-scale top-puzzle vertices from \(K_9\) without pretending that the full nested KL **modified principal nest**, its landing prime-end side-markings, or the canonical localization of \(G\) has been built. The \(G\)-external ray table at this second scale remains to be source-marked and lifted; it cannot be copied from the ambient \(f\)-angle table above.
+
 ## 3. Actual source-facing ray/puzzle vertices (partial table)
 
 Angles are ambient Böttcher dynamical angles; the landing assertions for the fixed/preperiodic rays use classical rational-ray landing and real-symmetric pullback, *plus* separation of the relevant real preimages. The table tracks **known top-puzzle vertices only**, not unbuilt Paper-1 localization prime ends.
@@ -68,7 +76,7 @@ The inclusion is strict, with an explicit rational witness
 \[
 \boxed{z_*=\frac{31}{1024}.}
 \]
-Indeed, the Lean theorem \`obstruction_point_in_outer_real_interval_not_V9\` proves \(x_6<z_*<x_3\), so \(z_*\in I_3\subset K_3\subset B_3\), and also \(27/1024<z_*<1/32\), so \(z_*\notin V_9\supset K_9\). The theorem \`obstruction_point_outside_all_noncentral_nine_phases\` further checks the strict disk inequalities for **every** \(j=1,\ldots,8\), using the existing certified dyadic majorant \(\operatorname{deviation}(27/1024,j)\). Thus \(z_*\notin f^j(K_9)\) for all nine phases, and \(z_*\in B_3\setminus B_9\) is **actual complex-dynamical geometry**, not merely symbolic.
+Indeed, the Lean theorem `obstruction_point_in_outer_real_interval_not_V9` proves \(x_6<z_*<x_3\), so \(z_*\in I_3\subset K_3\subset B_3\), and also \(27/1024<z_*<1/32\), so \(z_*\notin V_9\supset K_9\). The theorem `obstruction_point_outside_all_noncentral_nine_phases` further checks the strict disk inequalities for **every** \(j=1,\ldots,8\), using the existing certified dyadic majorant \(\operatorname{deviation}(27/1024,j)\). Thus \(z_*\notin f^j(K_9)\) for all nine phases, and \(z_*\in B_3\setminus B_9\) is **actual complex-dynamical geometry**, not merely symbolic.
 
 Consequently \(z_*\in\Omega_{t,9}\setminus\Omega_{t,3}\). The identity on the physical plane **does not even define a map**
 \[
@@ -86,11 +94,11 @@ Hence a real \(r\in(1,9/8)\) has \(f^3(r)=0\in K_3\). Since \(r>1>1/4\), \(r\not
 \[
 \Omega_{s,3}=U^3\setminus (f^3)^{-1} B_3
 \]
-is nontrivial in its local source subgroup \(H_{s,3}\), but contracts after inclusion in \(U^0\setminus B_3\) (where \(X\) is not removed). This gives an honest **one-stage** coset collision by the Kahn subgroup-reflection criterion, provided the global ordinary quadratic-like domains and local Jordan neighborhoods are taken as in that theorem. A newly certified \`r\` bracket is not by itself a construction of the required relative loop and local covers, nor is it the sought *interstage* 9→3 groupoid functor.
+is nontrivial in its local source subgroup \(H_{s,3}\), but contracts after inclusion in \(U^0\setminus B_3\) (where \(X\) is not removed). This gives an honest **one-stage** coset collision by the Kahn subgroup-reflection criterion, provided the global ordinary quadratic-like domains and local Jordan neighborhoods are taken as in that theorem. Separately, the six signed rational inequalities in `three_nested_preimage_brackets` give three consecutive actual real inverse branches of \(G=f^3\): \(s_1\in(1,17/16)\) with \(G(s_1)=0\), \(s_2\in(6/5,49/40)\) with \(G(s_2)=s_1\), and \(s_3\in(31/25,5/4)\) with \(G(s_3)=s_2\). Thus \(f^9(s_3)=0\in K_9\). The exact `period_nine_extra_preimage_outside_all_phases` theorem excludes the **entire** \(s_3\) bracket from all nine \(f^j(V_9)\), yielding a second one-stage extra inverse component at period nine. Neither bracket, by itself, constructs the relative loops and local covers of the source theorem, and neither witnesses the sought *interstage* 9→3 groupoid functor.
 
 ## 6. Remaining KL acceptance gates and a safe route to closure
 
-1. The finite top-puzzle \(q=2,n=1\) and the source \(P,V^0,Q_L,Q_R,Q^v\) have a compelling **source-level candidate**. A full topological certificate must still specify the actual finite equipotential arcs, critical graph avoidance at every needed depth, a **closed** Jordan pullback proof for the exact phase tree, and the *modified principal-nest stopping times* matching \(p=3\) then \(g_3\)-period 3 (\(f\)-period 9). The existing \`U_p,V_p\` restrictions are not that selected puzzle.
+1. The finite top-puzzle \(q=2,n=1\) and the source \(P,V^0,Q_L,Q_R,Q^v\) have a compelling **source-level candidate**. A full topological certificate must still specify the actual finite equipotential arcs, critical graph avoidance at every needed depth, a **closed** Jordan pullback proof for the exact phase tree, and the *modified principal-nest stopping times* matching \(p=3\) then \(g_3\)-period 3 (\(f\)-period 9). The existing `U_p,V_p` restrictions are not that selected puzzle.
 2. The table lacks authenticated KL **prime-end side labels** \(O,\xi,\eta\), all proof-used depths, based path classes, and complete ray/access enumeration.
 3. The 9-to-3 identity-based target-complement transition is demonstrably **undefined** at \(z_*\). To repair it, construct a separately source-defined map between appropriately restricted marked complements and prove naturality of all localization subgroup/groupoid data; then test whether the earlier distinct Levin ray values \(\Pi_3(114/511)=5/7\), \(\Pi_3(397/511)=2/7\) versus \(\Pi_9=0\) lift to an *actual KL prime-end/coset* identification. The angular data alone do not.
 4. The older period-27 superattracting center's exact triple-airplane **component identity** remains separately conditional on a cited tuning/real-kneading rigidity theorem, and that center fails \(K(f)=J(f)\) regardless.
@@ -98,11 +106,11 @@ is nontrivial in its local source subgroup \(H_{s,3}\), but contracts after incl
 
 ### Reproduce and trust
 
-\`\`\`sh
+```sh
 lake build TipKLPuzzle TipComplexMargins
 python research/independent_audits/verify_tip_kl_puzzle.py
 python research/independent_audits/verify_tip_complex_domains.py --check-manifest
-\`\`\`
+```
 
 Lean recomputes integer/dyadic margins, not inverse Böttcher maps, ray landing, or KL localization. Python uses exact standard-library fractions. Classical imported topological and analytic inputs are cited above; peer review is still recommended.
 
