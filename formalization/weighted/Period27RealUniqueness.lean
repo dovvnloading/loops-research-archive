@@ -179,7 +179,7 @@ theorem polynomial27_strictAntiOn :
       (polynomial_continuous 27).continuousOn
       (fun x _ => (hasDerivAt_polynomial 27 x).hasDerivWithinAt)
   intro x hx
-  exact real_derivative_strict_negative x (Set.interior_subset hx)
+  exact real_derivative_strict_negative x (interior_subset hx)
 
 /-- Unique REAL root in the exact 2^-128 dyadic bracket.
     This combines the previously kernel-proved real IVT existence with
@@ -195,9 +195,9 @@ theorem exists_unique_period27_center_in_dyadic_bracket :
     ⟨hy.1.le, hy.2.1.le⟩
   by_contra hne
   rcases lt_or_gt_of_ne hne with hlt | hgt
-  · have hh := polynomial27_strictAntiOn hc hy' hlt
+  · have hh := polynomial27_strictAntiOn hy' hc hlt
     linarith [hroot, hy.2.2]
-  · have hh := polynomial27_strictAntiOn hy' hc hgt
+  · have hh := polynomial27_strictAntiOn hc hy' hgt
     linarith [hroot, hy.2.2]
 
 #print axioms enclosed_iff_real
