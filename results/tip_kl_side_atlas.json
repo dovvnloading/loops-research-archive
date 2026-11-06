@@ -1,0 +1,2333 @@
+{
+  "analytic_dependencies": [
+    "Existing analytic landing proofs for the two complete depth-six ray trees",
+    "KL Decorations Lemmas 3.3 and 3.4 and section 3.2.4",
+    "Written phase-avoidance proof and Kahn Theorem 7.12 for same-root canonical immersions"
+  ],
+  "basepoint_convention": "angle 0 at height h/256; increase angle to the listed midpoint, then change height to h_m/2",
+  "carrier_to_geometric_puzzle_height": "2",
+  "height_unit": "initial geometric puzzle height h; carrier height H=2h",
+  "ledger_status_changes": [],
+  "retained_sheet_coordinate": "all integer translates in each universal tile; no finite coset quotient",
+  "scope": "Ordinary source pseudo-piece sides, ambient endpoint labels, finite branch routing, and same-stage inclusion collisions; no cross-scale protected-side functor",
+  "source_boundary_identity": "partial^v_i Psi(Y) = eta_i union xi_(i+1)",
+  "stages": [
+    {
+      "coordinate_type": "ambient Bottcher angle and height",
+      "dynamics": {
+        "QL_to_P": {
+          "degree": 1,
+          "physical_f_time": 2,
+          "stage_time": 2,
+          "tile_routes": [
+            {
+              "angular_integer_carry": 1,
+              "source_tile": "f:QL:tile0",
+              "target_tile": "f:P:tile0"
+            },
+            {
+              "angular_integer_carry": 2,
+              "source_tile": "f:QL:tile1",
+              "target_tile": "f:P:tile1"
+            }
+          ]
+        },
+        "QR_to_P": {
+          "degree": 1,
+          "physical_f_time": 2,
+          "stage_time": 2,
+          "tile_routes": [
+            {
+              "angular_integer_carry": 0,
+              "source_tile": "f:QR:tile0",
+              "target_tile": "f:P:tile1"
+            },
+            {
+              "angular_integer_carry": 3,
+              "source_tile": "f:QR:tile1",
+              "target_tile": "f:P:tile0"
+            }
+          ]
+        },
+        "W_to_V0": {
+          "degree": 2,
+          "physical_f_time": 3,
+          "stage_time": 3,
+          "tile_routes": [
+            {
+              "angular_integer_carry": 1,
+              "source_tile": "f:W:tile0",
+              "target_tile": "f:V0:tile1"
+            },
+            {
+              "angular_integer_carry": 2,
+              "source_tile": "f:W:tile1",
+              "target_tile": "f:V0:tile0"
+            },
+            {
+              "angular_integer_carry": 5,
+              "source_tile": "f:W:tile2",
+              "target_tile": "f:V0:tile1"
+            },
+            {
+              "angular_integer_carry": 6,
+              "source_tile": "f:W:tile3",
+              "target_tile": "f:V0:tile0"
+            }
+          ]
+        }
+      },
+      "inclusions": {
+        "QL_into_P": {
+          "boundary_image_warning": "Source outer and Julia boundary can map into target interior",
+          "tile_routes": [
+            {
+              "angular_integer_shift": 0,
+              "source_tile": "f:QL:tile0",
+              "target_tile": "f:P:tile0"
+            },
+            {
+              "angular_integer_shift": 0,
+              "source_tile": "f:QL:tile1",
+              "target_tile": "f:P:tile1"
+            }
+          ]
+        },
+        "QR_into_P": {
+          "boundary_image_warning": "Source outer and Julia boundary can map into target interior",
+          "tile_routes": [
+            {
+              "angular_integer_shift": 0,
+              "source_tile": "f:QR:tile0",
+              "target_tile": "f:P:tile0"
+            },
+            {
+              "angular_integer_shift": 0,
+              "source_tile": "f:QR:tile1",
+              "target_tile": "f:P:tile1"
+            }
+          ]
+        },
+        "V0_into_P": {
+          "boundary_image_warning": "Source outer and Julia boundary can map into target interior",
+          "tile_routes": [
+            {
+              "angular_integer_shift": 0,
+              "source_tile": "f:V0:tile0",
+              "target_tile": "f:P:tile0"
+            },
+            {
+              "angular_integer_shift": 0,
+              "source_tile": "f:V0:tile1",
+              "target_tile": "f:P:tile1"
+            }
+          ]
+        },
+        "W_into_V0": {
+          "boundary_image_warning": "Source outer and Julia boundary can map into target interior",
+          "tile_routes": [
+            {
+              "angular_integer_shift": 0,
+              "source_tile": "f:W:tile0",
+              "target_tile": "f:V0:tile0"
+            },
+            {
+              "angular_integer_shift": 0,
+              "source_tile": "f:W:tile1",
+              "target_tile": "f:V0:tile0"
+            },
+            {
+              "angular_integer_shift": 0,
+              "source_tile": "f:W:tile2",
+              "target_tile": "f:V0:tile1"
+            },
+            {
+              "angular_integer_shift": 0,
+              "source_tile": "f:W:tile3",
+              "target_tile": "f:V0:tile1"
+            }
+          ]
+        }
+      },
+      "ordinary_stage_filled_set": "K(f)",
+      "physical_time_per_stage_step": 1,
+      "pieces": {
+        "P": {
+          "boundary_vertices": [
+            {
+              "ambient_representatives_in_stage_angle_order": [
+                "1/6",
+                "5/6"
+              ],
+              "physical_landing_target": "b_1(alpha)",
+              "stage_angles": [
+                "1/6",
+                "5/6"
+              ],
+              "stage_ray_pair": "1/6,5/6"
+            },
+            {
+              "ambient_representatives_in_stage_angle_order": [
+                "1/3",
+                "2/3"
+              ],
+              "physical_landing_target": "b_0(alpha)",
+              "stage_angles": [
+                "1/3",
+                "2/3"
+              ],
+              "stage_ray_pair": "1/3,2/3"
+            }
+          ],
+          "depth": 1,
+          "face_probe_stage_angle": "1/4",
+          "height_relative_to_initial": "1/2",
+          "physical_inverse_time": 1,
+          "tile_count": 2,
+          "tiles": [
+            {
+              "ambient_endpoint_representatives": [
+                "1/6",
+                "1/3"
+              ],
+              "basepoint_height_relative_to_initial": "1/256",
+              "central_seam_warning": "The open inner seam is glued to the central copy; it is not a remaining ideal J side",
+              "eta": {
+                "finite_endpoint_vertex": {
+                  "ambient_representatives_in_stage_angle_order": [
+                    "1/3",
+                    "2/3"
+                  ],
+                  "physical_landing_target": "b_0(alpha)",
+                  "stage_angles": [
+                    "1/3",
+                    "2/3"
+                  ],
+                  "stage_ray_pair": "1/3,2/3"
+                },
+                "inner_halfline": [
+                  "1/3",
+                  "+infinity"
+                ]
+              },
+              "finite_gluing_height_relative_to_initial": "1/2",
+              "id": "f:P:tile0",
+              "index": 0,
+              "lambda": {
+                "carrier_height_relative_to_initial": "1",
+                "outer_line": "all real x",
+                "wrapping_endpoints": [
+                  "-infinity",
+                  "+infinity"
+                ]
+              },
+              "outgoing_vertex_boundary": [
+                "f:P:tile0:eta",
+                "f:P:tile1:xi"
+              ],
+              "seam_midpoint_lift": "1/4",
+              "seam_stage_angles": [
+                "1/6",
+                "1/3"
+              ],
+              "tile_mark_height_relative_to_initial": "1/4",
+              "xi": {
+                "finite_endpoint_vertex": {
+                  "ambient_representatives_in_stage_angle_order": [
+                    "1/6",
+                    "5/6"
+                  ],
+                  "physical_landing_target": "b_1(alpha)",
+                  "stage_angles": [
+                    "1/6",
+                    "5/6"
+                  ],
+                  "stage_ray_pair": "1/6,5/6"
+                },
+                "inner_halfline": [
+                  "-infinity",
+                  "1/6"
+                ]
+              }
+            },
+            {
+              "ambient_endpoint_representatives": [
+                "2/3",
+                "5/6"
+              ],
+              "basepoint_height_relative_to_initial": "1/256",
+              "central_seam_warning": "The open inner seam is glued to the central copy; it is not a remaining ideal J side",
+              "eta": {
+                "finite_endpoint_vertex": {
+                  "ambient_representatives_in_stage_angle_order": [
+                    "1/6",
+                    "5/6"
+                  ],
+                  "physical_landing_target": "b_1(alpha)",
+                  "stage_angles": [
+                    "1/6",
+                    "5/6"
+                  ],
+                  "stage_ray_pair": "1/6,5/6"
+                },
+                "inner_halfline": [
+                  "5/6",
+                  "+infinity"
+                ]
+              },
+              "finite_gluing_height_relative_to_initial": "1/2",
+              "id": "f:P:tile1",
+              "index": 1,
+              "lambda": {
+                "carrier_height_relative_to_initial": "1",
+                "outer_line": "all real x",
+                "wrapping_endpoints": [
+                  "-infinity",
+                  "+infinity"
+                ]
+              },
+              "outgoing_vertex_boundary": [
+                "f:P:tile1:eta",
+                "f:P:tile0:xi"
+              ],
+              "seam_midpoint_lift": "3/4",
+              "seam_stage_angles": [
+                "2/3",
+                "5/6"
+              ],
+              "tile_mark_height_relative_to_initial": "1/4",
+              "xi": {
+                "finite_endpoint_vertex": {
+                  "ambient_representatives_in_stage_angle_order": [
+                    "1/3",
+                    "2/3"
+                  ],
+                  "physical_landing_target": "b_0(alpha)",
+                  "stage_angles": [
+                    "1/3",
+                    "2/3"
+                  ],
+                  "stage_ray_pair": "1/3,2/3"
+                },
+                "inner_halfline": [
+                  "-infinity",
+                  "2/3"
+                ]
+              }
+            }
+          ],
+          "vertex_count": 2
+        },
+        "QL": {
+          "boundary_vertices": [
+            {
+              "ambient_representatives_in_stage_angle_order": [
+                "7/24",
+                "17/24"
+              ],
+              "physical_landing_target": "b_001(alpha)",
+              "stage_angles": [
+                "7/24",
+                "17/24"
+              ],
+              "stage_ray_pair": "7/24,17/24"
+            },
+            {
+              "ambient_representatives_in_stage_angle_order": [
+                "1/3",
+                "2/3"
+              ],
+              "physical_landing_target": "b_000(alpha)",
+              "stage_angles": [
+                "1/3",
+                "2/3"
+              ],
+              "stage_ray_pair": "1/3,2/3"
+            }
+          ],
+          "depth": 3,
+          "face_probe_stage_angle": "5/16",
+          "height_relative_to_initial": "1/8",
+          "physical_inverse_time": 3,
+          "tile_count": 2,
+          "tiles": [
+            {
+              "ambient_endpoint_representatives": [
+                "7/24",
+                "1/3"
+              ],
+              "basepoint_height_relative_to_initial": "1/256",
+              "central_seam_warning": "The open inner seam is glued to the central copy; it is not a remaining ideal J side",
+              "eta": {
+                "finite_endpoint_vertex": {
+                  "ambient_representatives_in_stage_angle_order": [
+                    "1/3",
+                    "2/3"
+                  ],
+                  "physical_landing_target": "b_000(alpha)",
+                  "stage_angles": [
+                    "1/3",
+                    "2/3"
+                  ],
+                  "stage_ray_pair": "1/3,2/3"
+                },
+                "inner_halfline": [
+                  "1/3",
+                  "+infinity"
+                ]
+              },
+              "finite_gluing_height_relative_to_initial": "1/8",
+              "id": "f:QL:tile0",
+              "index": 0,
+              "lambda": {
+                "carrier_height_relative_to_initial": "1/4",
+                "outer_line": "all real x",
+                "wrapping_endpoints": [
+                  "-infinity",
+                  "+infinity"
+                ]
+              },
+              "outgoing_vertex_boundary": [
+                "f:QL:tile0:eta",
+                "f:QL:tile1:xi"
+              ],
+              "seam_midpoint_lift": "5/16",
+              "seam_stage_angles": [
+                "7/24",
+                "1/3"
+              ],
+              "tile_mark_height_relative_to_initial": "1/16",
+              "xi": {
+                "finite_endpoint_vertex": {
+                  "ambient_representatives_in_stage_angle_order": [
+                    "7/24",
+                    "17/24"
+                  ],
+                  "physical_landing_target": "b_001(alpha)",
+                  "stage_angles": [
+                    "7/24",
+                    "17/24"
+                  ],
+                  "stage_ray_pair": "7/24,17/24"
+                },
+                "inner_halfline": [
+                  "-infinity",
+                  "7/24"
+                ]
+              }
+            },
+            {
+              "ambient_endpoint_representatives": [
+                "2/3",
+                "17/24"
+              ],
+              "basepoint_height_relative_to_initial": "1/256",
+              "central_seam_warning": "The open inner seam is glued to the central copy; it is not a remaining ideal J side",
+              "eta": {
+                "finite_endpoint_vertex": {
+                  "ambient_representatives_in_stage_angle_order": [
+                    "7/24",
+                    "17/24"
+                  ],
+                  "physical_landing_target": "b_001(alpha)",
+                  "stage_angles": [
+                    "7/24",
+                    "17/24"
+                  ],
+                  "stage_ray_pair": "7/24,17/24"
+                },
+                "inner_halfline": [
+                  "17/24",
+                  "+infinity"
+                ]
+              },
+              "finite_gluing_height_relative_to_initial": "1/8",
+              "id": "f:QL:tile1",
+              "index": 1,
+              "lambda": {
+                "carrier_height_relative_to_initial": "1/4",
+                "outer_line": "all real x",
+                "wrapping_endpoints": [
+                  "-infinity",
+                  "+infinity"
+                ]
+              },
+              "outgoing_vertex_boundary": [
+                "f:QL:tile1:eta",
+                "f:QL:tile0:xi"
+              ],
+              "seam_midpoint_lift": "11/16",
+              "seam_stage_angles": [
+                "2/3",
+                "17/24"
+              ],
+              "tile_mark_height_relative_to_initial": "1/16",
+              "xi": {
+                "finite_endpoint_vertex": {
+                  "ambient_representatives_in_stage_angle_order": [
+                    "1/3",
+                    "2/3"
+                  ],
+                  "physical_landing_target": "b_000(alpha)",
+                  "stage_angles": [
+                    "1/3",
+                    "2/3"
+                  ],
+                  "stage_ray_pair": "1/3,2/3"
+                },
+                "inner_halfline": [
+                  "-infinity",
+                  "2/3"
+                ]
+              }
+            }
+          ],
+          "vertex_count": 2
+        },
+        "QR": {
+          "boundary_vertices": [
+            {
+              "ambient_representatives_in_stage_angle_order": [
+                "1/6",
+                "5/6"
+              ],
+              "physical_landing_target": "b_100(alpha)",
+              "stage_angles": [
+                "1/6",
+                "5/6"
+              ],
+              "stage_ray_pair": "1/6,5/6"
+            },
+            {
+              "ambient_representatives_in_stage_angle_order": [
+                "5/24",
+                "19/24"
+              ],
+              "physical_landing_target": "b_101(alpha)",
+              "stage_angles": [
+                "5/24",
+                "19/24"
+              ],
+              "stage_ray_pair": "5/24,19/24"
+            }
+          ],
+          "depth": 3,
+          "face_probe_stage_angle": "3/16",
+          "height_relative_to_initial": "1/8",
+          "physical_inverse_time": 3,
+          "tile_count": 2,
+          "tiles": [
+            {
+              "ambient_endpoint_representatives": [
+                "1/6",
+                "5/24"
+              ],
+              "basepoint_height_relative_to_initial": "1/256",
+              "central_seam_warning": "The open inner seam is glued to the central copy; it is not a remaining ideal J side",
+              "eta": {
+                "finite_endpoint_vertex": {
+                  "ambient_representatives_in_stage_angle_order": [
+                    "5/24",
+                    "19/24"
+                  ],
+                  "physical_landing_target": "b_101(alpha)",
+                  "stage_angles": [
+                    "5/24",
+                    "19/24"
+                  ],
+                  "stage_ray_pair": "5/24,19/24"
+                },
+                "inner_halfline": [
+                  "5/24",
+                  "+infinity"
+                ]
+              },
+              "finite_gluing_height_relative_to_initial": "1/8",
+              "id": "f:QR:tile0",
+              "index": 0,
+              "lambda": {
+                "carrier_height_relative_to_initial": "1/4",
+                "outer_line": "all real x",
+                "wrapping_endpoints": [
+                  "-infinity",
+                  "+infinity"
+                ]
+              },
+              "outgoing_vertex_boundary": [
+                "f:QR:tile0:eta",
+                "f:QR:tile1:xi"
+              ],
+              "seam_midpoint_lift": "3/16",
+              "seam_stage_angles": [
+                "1/6",
+                "5/24"
+              ],
+              "tile_mark_height_relative_to_initial": "1/16",
+              "xi": {
+                "finite_endpoint_vertex": {
+                  "ambient_representatives_in_stage_angle_order": [
+                    "1/6",
+                    "5/6"
+                  ],
+                  "physical_landing_target": "b_100(alpha)",
+                  "stage_angles": [
+                    "1/6",
+                    "5/6"
+                  ],
+                  "stage_ray_pair": "1/6,5/6"
+                },
+                "inner_halfline": [
+                  "-infinity",
+                  "1/6"
+                ]
+              }
+            },
+            {
+              "ambient_endpoint_representatives": [
+                "19/24",
+                "5/6"
+              ],
+              "basepoint_height_relative_to_initial": "1/256",
+              "central_seam_warning": "The open inner seam is glued to the central copy; it is not a remaining ideal J side",
+              "eta": {
+                "finite_endpoint_vertex": {
+                  "ambient_representatives_in_stage_angle_order": [
+                    "1/6",
+                    "5/6"
+                  ],
+                  "physical_landing_target": "b_100(alpha)",
+                  "stage_angles": [
+                    "1/6",
+                    "5/6"
+                  ],
+                  "stage_ray_pair": "1/6,5/6"
+                },
+                "inner_halfline": [
+                  "5/6",
+                  "+infinity"
+                ]
+              },
+              "finite_gluing_height_relative_to_initial": "1/8",
+              "id": "f:QR:tile1",
+              "index": 1,
+              "lambda": {
+                "carrier_height_relative_to_initial": "1/4",
+                "outer_line": "all real x",
+                "wrapping_endpoints": [
+                  "-infinity",
+                  "+infinity"
+                ]
+              },
+              "outgoing_vertex_boundary": [
+                "f:QR:tile1:eta",
+                "f:QR:tile0:xi"
+              ],
+              "seam_midpoint_lift": "13/16",
+              "seam_stage_angles": [
+                "19/24",
+                "5/6"
+              ],
+              "tile_mark_height_relative_to_initial": "1/16",
+              "xi": {
+                "finite_endpoint_vertex": {
+                  "ambient_representatives_in_stage_angle_order": [
+                    "5/24",
+                    "19/24"
+                  ],
+                  "physical_landing_target": "b_101(alpha)",
+                  "stage_angles": [
+                    "5/24",
+                    "19/24"
+                  ],
+                  "stage_ray_pair": "5/24,19/24"
+                },
+                "inner_halfline": [
+                  "-infinity",
+                  "19/24"
+                ]
+              }
+            }
+          ],
+          "vertex_count": 2
+        },
+        "V0": {
+          "boundary_vertices": [
+            {
+              "ambient_representatives_in_stage_angle_order": [
+                "5/24",
+                "19/24"
+              ],
+              "physical_landing_target": "b_101(alpha)",
+              "stage_angles": [
+                "5/24",
+                "19/24"
+              ],
+              "stage_ray_pair": "5/24,19/24"
+            },
+            {
+              "ambient_representatives_in_stage_angle_order": [
+                "7/24",
+                "17/24"
+              ],
+              "physical_landing_target": "b_001(alpha)",
+              "stage_angles": [
+                "7/24",
+                "17/24"
+              ],
+              "stage_ray_pair": "7/24,17/24"
+            }
+          ],
+          "depth": 3,
+          "face_probe_stage_angle": "1/4",
+          "height_relative_to_initial": "1/8",
+          "physical_inverse_time": 3,
+          "tile_count": 2,
+          "tiles": [
+            {
+              "ambient_endpoint_representatives": [
+                "5/24",
+                "7/24"
+              ],
+              "basepoint_height_relative_to_initial": "1/256",
+              "central_seam_warning": "The open inner seam is glued to the central copy; it is not a remaining ideal J side",
+              "eta": {
+                "finite_endpoint_vertex": {
+                  "ambient_representatives_in_stage_angle_order": [
+                    "7/24",
+                    "17/24"
+                  ],
+                  "physical_landing_target": "b_001(alpha)",
+                  "stage_angles": [
+                    "7/24",
+                    "17/24"
+                  ],
+                  "stage_ray_pair": "7/24,17/24"
+                },
+                "inner_halfline": [
+                  "7/24",
+                  "+infinity"
+                ]
+              },
+              "finite_gluing_height_relative_to_initial": "1/8",
+              "id": "f:V0:tile0",
+              "index": 0,
+              "lambda": {
+                "carrier_height_relative_to_initial": "1/4",
+                "outer_line": "all real x",
+                "wrapping_endpoints": [
+                  "-infinity",
+                  "+infinity"
+                ]
+              },
+              "outgoing_vertex_boundary": [
+                "f:V0:tile0:eta",
+                "f:V0:tile1:xi"
+              ],
+              "seam_midpoint_lift": "1/4",
+              "seam_stage_angles": [
+                "5/24",
+                "7/24"
+              ],
+              "tile_mark_height_relative_to_initial": "1/16",
+              "xi": {
+                "finite_endpoint_vertex": {
+                  "ambient_representatives_in_stage_angle_order": [
+                    "5/24",
+                    "19/24"
+                  ],
+                  "physical_landing_target": "b_101(alpha)",
+                  "stage_angles": [
+                    "5/24",
+                    "19/24"
+                  ],
+                  "stage_ray_pair": "5/24,19/24"
+                },
+                "inner_halfline": [
+                  "-infinity",
+                  "5/24"
+                ]
+              }
+            },
+            {
+              "ambient_endpoint_representatives": [
+                "17/24",
+                "19/24"
+              ],
+              "basepoint_height_relative_to_initial": "1/256",
+              "central_seam_warning": "The open inner seam is glued to the central copy; it is not a remaining ideal J side",
+              "eta": {
+                "finite_endpoint_vertex": {
+                  "ambient_representatives_in_stage_angle_order": [
+                    "5/24",
+                    "19/24"
+                  ],
+                  "physical_landing_target": "b_101(alpha)",
+                  "stage_angles": [
+                    "5/24",
+                    "19/24"
+                  ],
+                  "stage_ray_pair": "5/24,19/24"
+                },
+                "inner_halfline": [
+                  "19/24",
+                  "+infinity"
+                ]
+              },
+              "finite_gluing_height_relative_to_initial": "1/8",
+              "id": "f:V0:tile1",
+              "index": 1,
+              "lambda": {
+                "carrier_height_relative_to_initial": "1/4",
+                "outer_line": "all real x",
+                "wrapping_endpoints": [
+                  "-infinity",
+                  "+infinity"
+                ]
+              },
+              "outgoing_vertex_boundary": [
+                "f:V0:tile1:eta",
+                "f:V0:tile0:xi"
+              ],
+              "seam_midpoint_lift": "3/4",
+              "seam_stage_angles": [
+                "17/24",
+                "19/24"
+              ],
+              "tile_mark_height_relative_to_initial": "1/16",
+              "xi": {
+                "finite_endpoint_vertex": {
+                  "ambient_representatives_in_stage_angle_order": [
+                    "7/24",
+                    "17/24"
+                  ],
+                  "physical_landing_target": "b_001(alpha)",
+                  "stage_angles": [
+                    "7/24",
+                    "17/24"
+                  ],
+                  "stage_ray_pair": "7/24,17/24"
+                },
+                "inner_halfline": [
+                  "-infinity",
+                  "17/24"
+                ]
+              }
+            }
+          ],
+          "vertex_count": 2
+        },
+        "W": {
+          "boundary_vertices": [
+            {
+              "ambient_representatives_in_stage_angle_order": [
+                "41/192",
+                "151/192"
+              ],
+              "physical_landing_target": "b_101001(alpha)",
+              "stage_angles": [
+                "41/192",
+                "151/192"
+              ],
+              "stage_ray_pair": "41/192,151/192"
+            },
+            {
+              "ambient_representatives_in_stage_angle_order": [
+                "43/192",
+                "53/192"
+              ],
+              "physical_landing_target": "b_001101(alpha)",
+              "stage_angles": [
+                "43/192",
+                "53/192"
+              ],
+              "stage_ray_pair": "43/192,53/192"
+            },
+            {
+              "ambient_representatives_in_stage_angle_order": [
+                "55/192",
+                "137/192"
+              ],
+              "physical_landing_target": "b_001001(alpha)",
+              "stage_angles": [
+                "55/192",
+                "137/192"
+              ],
+              "stage_ray_pair": "55/192,137/192"
+            },
+            {
+              "ambient_representatives_in_stage_angle_order": [
+                "139/192",
+                "149/192"
+              ],
+              "physical_landing_target": "b_101101(alpha)",
+              "stage_angles": [
+                "139/192",
+                "149/192"
+              ],
+              "stage_ray_pair": "139/192,149/192"
+            }
+          ],
+          "depth": 6,
+          "face_probe_stage_angle": "116791/523264",
+          "height_relative_to_initial": "1/64",
+          "physical_inverse_time": 6,
+          "tile_count": 4,
+          "tiles": [
+            {
+              "ambient_endpoint_representatives": [
+                "41/192",
+                "43/192"
+              ],
+              "basepoint_height_relative_to_initial": "1/256",
+              "central_seam_warning": "The open inner seam is glued to the central copy; it is not a remaining ideal J side",
+              "eta": {
+                "finite_endpoint_vertex": {
+                  "ambient_representatives_in_stage_angle_order": [
+                    "43/192",
+                    "53/192"
+                  ],
+                  "physical_landing_target": "b_001101(alpha)",
+                  "stage_angles": [
+                    "43/192",
+                    "53/192"
+                  ],
+                  "stage_ray_pair": "43/192,53/192"
+                },
+                "inner_halfline": [
+                  "43/192",
+                  "+infinity"
+                ]
+              },
+              "finite_gluing_height_relative_to_initial": "1/64",
+              "id": "f:W:tile0",
+              "index": 0,
+              "lambda": {
+                "carrier_height_relative_to_initial": "1/32",
+                "outer_line": "all real x",
+                "wrapping_endpoints": [
+                  "-infinity",
+                  "+infinity"
+                ]
+              },
+              "outgoing_vertex_boundary": [
+                "f:W:tile0:eta",
+                "f:W:tile1:xi"
+              ],
+              "seam_midpoint_lift": "7/32",
+              "seam_stage_angles": [
+                "41/192",
+                "43/192"
+              ],
+              "tile_mark_height_relative_to_initial": "1/128",
+              "xi": {
+                "finite_endpoint_vertex": {
+                  "ambient_representatives_in_stage_angle_order": [
+                    "41/192",
+                    "151/192"
+                  ],
+                  "physical_landing_target": "b_101001(alpha)",
+                  "stage_angles": [
+                    "41/192",
+                    "151/192"
+                  ],
+                  "stage_ray_pair": "41/192,151/192"
+                },
+                "inner_halfline": [
+                  "-infinity",
+                  "41/192"
+                ]
+              }
+            },
+            {
+              "ambient_endpoint_representatives": [
+                "53/192",
+                "55/192"
+              ],
+              "basepoint_height_relative_to_initial": "1/256",
+              "central_seam_warning": "The open inner seam is glued to the central copy; it is not a remaining ideal J side",
+              "eta": {
+                "finite_endpoint_vertex": {
+                  "ambient_representatives_in_stage_angle_order": [
+                    "55/192",
+                    "137/192"
+                  ],
+                  "physical_landing_target": "b_001001(alpha)",
+                  "stage_angles": [
+                    "55/192",
+                    "137/192"
+                  ],
+                  "stage_ray_pair": "55/192,137/192"
+                },
+                "inner_halfline": [
+                  "55/192",
+                  "+infinity"
+                ]
+              },
+              "finite_gluing_height_relative_to_initial": "1/64",
+              "id": "f:W:tile1",
+              "index": 1,
+              "lambda": {
+                "carrier_height_relative_to_initial": "1/32",
+                "outer_line": "all real x",
+                "wrapping_endpoints": [
+                  "-infinity",
+                  "+infinity"
+                ]
+              },
+              "outgoing_vertex_boundary": [
+                "f:W:tile1:eta",
+                "f:W:tile2:xi"
+              ],
+              "seam_midpoint_lift": "9/32",
+              "seam_stage_angles": [
+                "53/192",
+                "55/192"
+              ],
+              "tile_mark_height_relative_to_initial": "1/128",
+              "xi": {
+                "finite_endpoint_vertex": {
+                  "ambient_representatives_in_stage_angle_order": [
+                    "43/192",
+                    "53/192"
+                  ],
+                  "physical_landing_target": "b_001101(alpha)",
+                  "stage_angles": [
+                    "43/192",
+                    "53/192"
+                  ],
+                  "stage_ray_pair": "43/192,53/192"
+                },
+                "inner_halfline": [
+                  "-infinity",
+                  "53/192"
+                ]
+              }
+            },
+            {
+              "ambient_endpoint_representatives": [
+                "137/192",
+                "139/192"
+              ],
+              "basepoint_height_relative_to_initial": "1/256",
+              "central_seam_warning": "The open inner seam is glued to the central copy; it is not a remaining ideal J side",
+              "eta": {
+                "finite_endpoint_vertex": {
+                  "ambient_representatives_in_stage_angle_order": [
+                    "139/192",
+                    "149/192"
+                  ],
+                  "physical_landing_target": "b_101101(alpha)",
+                  "stage_angles": [
+                    "139/192",
+                    "149/192"
+                  ],
+                  "stage_ray_pair": "139/192,149/192"
+                },
+                "inner_halfline": [
+                  "139/192",
+                  "+infinity"
+                ]
+              },
+              "finite_gluing_height_relative_to_initial": "1/64",
+              "id": "f:W:tile2",
+              "index": 2,
+              "lambda": {
+                "carrier_height_relative_to_initial": "1/32",
+                "outer_line": "all real x",
+                "wrapping_endpoints": [
+                  "-infinity",
+                  "+infinity"
+                ]
+              },
+              "outgoing_vertex_boundary": [
+                "f:W:tile2:eta",
+                "f:W:tile3:xi"
+              ],
+              "seam_midpoint_lift": "23/32",
+              "seam_stage_angles": [
+                "137/192",
+                "139/192"
+              ],
+              "tile_mark_height_relative_to_initial": "1/128",
+              "xi": {
+                "finite_endpoint_vertex": {
+                  "ambient_representatives_in_stage_angle_order": [
+                    "55/192",
+                    "137/192"
+                  ],
+                  "physical_landing_target": "b_001001(alpha)",
+                  "stage_angles": [
+                    "55/192",
+                    "137/192"
+                  ],
+                  "stage_ray_pair": "55/192,137/192"
+                },
+                "inner_halfline": [
+                  "-infinity",
+                  "137/192"
+                ]
+              }
+            },
+            {
+              "ambient_endpoint_representatives": [
+                "149/192",
+                "151/192"
+              ],
+              "basepoint_height_relative_to_initial": "1/256",
+              "central_seam_warning": "The open inner seam is glued to the central copy; it is not a remaining ideal J side",
+              "eta": {
+                "finite_endpoint_vertex": {
+                  "ambient_representatives_in_stage_angle_order": [
+                    "41/192",
+                    "151/192"
+                  ],
+                  "physical_landing_target": "b_101001(alpha)",
+                  "stage_angles": [
+                    "41/192",
+                    "151/192"
+                  ],
+                  "stage_ray_pair": "41/192,151/192"
+                },
+                "inner_halfline": [
+                  "151/192",
+                  "+infinity"
+                ]
+              },
+              "finite_gluing_height_relative_to_initial": "1/64",
+              "id": "f:W:tile3",
+              "index": 3,
+              "lambda": {
+                "carrier_height_relative_to_initial": "1/32",
+                "outer_line": "all real x",
+                "wrapping_endpoints": [
+                  "-infinity",
+                  "+infinity"
+                ]
+              },
+              "outgoing_vertex_boundary": [
+                "f:W:tile3:eta",
+                "f:W:tile0:xi"
+              ],
+              "seam_midpoint_lift": "25/32",
+              "seam_stage_angles": [
+                "149/192",
+                "151/192"
+              ],
+              "tile_mark_height_relative_to_initial": "1/128",
+              "xi": {
+                "finite_endpoint_vertex": {
+                  "ambient_representatives_in_stage_angle_order": [
+                    "139/192",
+                    "149/192"
+                  ],
+                  "physical_landing_target": "b_101101(alpha)",
+                  "stage_angles": [
+                    "139/192",
+                    "149/192"
+                  ],
+                  "stage_ray_pair": "139/192,149/192"
+                },
+                "inner_halfline": [
+                  "-infinity",
+                  "149/192"
+                ]
+              }
+            }
+          ],
+          "vertex_count": 4
+        }
+      },
+      "same_stage_side_collision": {
+        "ambient_representative": "11/48",
+        "analytic_dependence": "Distinct interior tile points, ideal side points, and their common images follow from the note's gluing proof",
+        "common_physical_landing_vertex": {
+          "ambient_representatives_in_stage_angle_order": [
+            "11/48",
+            "13/48"
+          ],
+          "physical_landing_target": "b_001100(alpha)",
+          "stage_angles": [
+            "11/48",
+            "13/48"
+          ],
+          "stage_ray_pair": "11/48,13/48"
+        },
+        "cross_scale": false,
+        "interior_collision_height_relative_to_initial": "1/128",
+        "interior_source_points": [
+          "f:W:tile0",
+          "f:W:tile1"
+        ],
+        "same_finite_angle_lift": "11/48",
+        "side_points": [
+          "f:W:tile0:eta",
+          "f:W:tile1:xi"
+        ],
+        "source_defined_map": "KL Lemma 3.4 inclusion Psi(W) into Psi(V0)",
+        "target_location": "central interior of Psi(V0), outside the terminal root"
+      },
+      "stage": "f",
+      "terminal_root": "K3"
+    },
+    {
+      "coordinate_type": "straightening-transported topological angle and height; not a physical conformal metric",
+      "dynamics": {
+        "QL_to_P": {
+          "degree": 1,
+          "physical_f_time": 6,
+          "stage_time": 2,
+          "tile_routes": [
+            {
+              "angular_integer_carry": 1,
+              "source_tile": "G:QL:tile0",
+              "target_tile": "G:P:tile0"
+            },
+            {
+              "angular_integer_carry": 2,
+              "source_tile": "G:QL:tile1",
+              "target_tile": "G:P:tile1"
+            }
+          ]
+        },
+        "QR_to_P": {
+          "degree": 1,
+          "physical_f_time": 6,
+          "stage_time": 2,
+          "tile_routes": [
+            {
+              "angular_integer_carry": 0,
+              "source_tile": "G:QR:tile0",
+              "target_tile": "G:P:tile1"
+            },
+            {
+              "angular_integer_carry": 3,
+              "source_tile": "G:QR:tile1",
+              "target_tile": "G:P:tile0"
+            }
+          ]
+        },
+        "W_to_V0": {
+          "degree": 2,
+          "physical_f_time": 9,
+          "stage_time": 3,
+          "tile_routes": [
+            {
+              "angular_integer_carry": 1,
+              "source_tile": "G:W:tile0",
+              "target_tile": "G:V0:tile1"
+            },
+            {
+              "angular_integer_carry": 2,
+              "source_tile": "G:W:tile1",
+              "target_tile": "G:V0:tile0"
+            },
+            {
+              "angular_integer_carry": 5,
+              "source_tile": "G:W:tile2",
+              "target_tile": "G:V0:tile1"
+            },
+            {
+              "angular_integer_carry": 6,
+              "source_tile": "G:W:tile3",
+              "target_tile": "G:V0:tile0"
+            }
+          ]
+        }
+      },
+      "inclusions": {
+        "QL_into_P": {
+          "boundary_image_warning": "Source outer and Julia boundary can map into target interior",
+          "tile_routes": [
+            {
+              "angular_integer_shift": 0,
+              "source_tile": "G:QL:tile0",
+              "target_tile": "G:P:tile0"
+            },
+            {
+              "angular_integer_shift": 0,
+              "source_tile": "G:QL:tile1",
+              "target_tile": "G:P:tile1"
+            }
+          ]
+        },
+        "QR_into_P": {
+          "boundary_image_warning": "Source outer and Julia boundary can map into target interior",
+          "tile_routes": [
+            {
+              "angular_integer_shift": 0,
+              "source_tile": "G:QR:tile0",
+              "target_tile": "G:P:tile0"
+            },
+            {
+              "angular_integer_shift": 0,
+              "source_tile": "G:QR:tile1",
+              "target_tile": "G:P:tile1"
+            }
+          ]
+        },
+        "V0_into_P": {
+          "boundary_image_warning": "Source outer and Julia boundary can map into target interior",
+          "tile_routes": [
+            {
+              "angular_integer_shift": 0,
+              "source_tile": "G:V0:tile0",
+              "target_tile": "G:P:tile0"
+            },
+            {
+              "angular_integer_shift": 0,
+              "source_tile": "G:V0:tile1",
+              "target_tile": "G:P:tile1"
+            }
+          ]
+        },
+        "W_into_V0": {
+          "boundary_image_warning": "Source outer and Julia boundary can map into target interior",
+          "tile_routes": [
+            {
+              "angular_integer_shift": 0,
+              "source_tile": "G:W:tile0",
+              "target_tile": "G:V0:tile0"
+            },
+            {
+              "angular_integer_shift": 0,
+              "source_tile": "G:W:tile1",
+              "target_tile": "G:V0:tile0"
+            },
+            {
+              "angular_integer_shift": 0,
+              "source_tile": "G:W:tile2",
+              "target_tile": "G:V0:tile1"
+            },
+            {
+              "angular_integer_shift": 0,
+              "source_tile": "G:W:tile3",
+              "target_tile": "G:V0:tile1"
+            }
+          ]
+        }
+      },
+      "ordinary_stage_filled_set": "K3",
+      "physical_time_per_stage_step": 3,
+      "pieces": {
+        "P": {
+          "boundary_vertices": [
+            {
+              "ambient_representatives_in_stage_angle_order": [
+                "13/18",
+                "5/18"
+              ],
+              "physical_landing_target": "b_001(alpha_G)",
+              "stage_angles": [
+                "1/6",
+                "5/6"
+              ],
+              "stage_ray_pair": "1/6,5/6"
+            },
+            {
+              "ambient_representatives_in_stage_angle_order": [
+                "7/9",
+                "2/9"
+              ],
+              "physical_landing_target": "b_101(alpha_G)",
+              "stage_angles": [
+                "1/3",
+                "2/3"
+              ],
+              "stage_ray_pair": "1/3,2/3"
+            }
+          ],
+          "depth": 1,
+          "face_probe_stage_angle": "1/4",
+          "height_relative_to_initial": "1/2",
+          "physical_inverse_time": 3,
+          "tile_count": 2,
+          "tiles": [
+            {
+              "ambient_endpoint_representatives": [
+                "13/18",
+                "7/9"
+              ],
+              "basepoint_height_relative_to_initial": "1/256",
+              "central_seam_warning": "The open inner seam is glued to the central copy; it is not a remaining ideal J side",
+              "eta": {
+                "finite_endpoint_vertex": {
+                  "ambient_representatives_in_stage_angle_order": [
+                    "7/9",
+                    "2/9"
+                  ],
+                  "physical_landing_target": "b_101(alpha_G)",
+                  "stage_angles": [
+                    "1/3",
+                    "2/3"
+                  ],
+                  "stage_ray_pair": "1/3,2/3"
+                },
+                "inner_halfline": [
+                  "1/3",
+                  "+infinity"
+                ]
+              },
+              "finite_gluing_height_relative_to_initial": "1/2",
+              "id": "G:P:tile0",
+              "index": 0,
+              "lambda": {
+                "carrier_height_relative_to_initial": "1",
+                "outer_line": "all real x",
+                "wrapping_endpoints": [
+                  "-infinity",
+                  "+infinity"
+                ]
+              },
+              "outgoing_vertex_boundary": [
+                "G:P:tile0:eta",
+                "G:P:tile1:xi"
+              ],
+              "seam_midpoint_lift": "1/4",
+              "seam_stage_angles": [
+                "1/6",
+                "1/3"
+              ],
+              "tile_mark_height_relative_to_initial": "1/4",
+              "xi": {
+                "finite_endpoint_vertex": {
+                  "ambient_representatives_in_stage_angle_order": [
+                    "13/18",
+                    "5/18"
+                  ],
+                  "physical_landing_target": "b_001(alpha_G)",
+                  "stage_angles": [
+                    "1/6",
+                    "5/6"
+                  ],
+                  "stage_ray_pair": "1/6,5/6"
+                },
+                "inner_halfline": [
+                  "-infinity",
+                  "1/6"
+                ]
+              }
+            },
+            {
+              "ambient_endpoint_representatives": [
+                "2/9",
+                "5/18"
+              ],
+              "basepoint_height_relative_to_initial": "1/256",
+              "central_seam_warning": "The open inner seam is glued to the central copy; it is not a remaining ideal J side",
+              "eta": {
+                "finite_endpoint_vertex": {
+                  "ambient_representatives_in_stage_angle_order": [
+                    "13/18",
+                    "5/18"
+                  ],
+                  "physical_landing_target": "b_001(alpha_G)",
+                  "stage_angles": [
+                    "1/6",
+                    "5/6"
+                  ],
+                  "stage_ray_pair": "1/6,5/6"
+                },
+                "inner_halfline": [
+                  "5/6",
+                  "+infinity"
+                ]
+              },
+              "finite_gluing_height_relative_to_initial": "1/2",
+              "id": "G:P:tile1",
+              "index": 1,
+              "lambda": {
+                "carrier_height_relative_to_initial": "1",
+                "outer_line": "all real x",
+                "wrapping_endpoints": [
+                  "-infinity",
+                  "+infinity"
+                ]
+              },
+              "outgoing_vertex_boundary": [
+                "G:P:tile1:eta",
+                "G:P:tile0:xi"
+              ],
+              "seam_midpoint_lift": "3/4",
+              "seam_stage_angles": [
+                "2/3",
+                "5/6"
+              ],
+              "tile_mark_height_relative_to_initial": "1/4",
+              "xi": {
+                "finite_endpoint_vertex": {
+                  "ambient_representatives_in_stage_angle_order": [
+                    "7/9",
+                    "2/9"
+                  ],
+                  "physical_landing_target": "b_101(alpha_G)",
+                  "stage_angles": [
+                    "1/3",
+                    "2/3"
+                  ],
+                  "stage_ray_pair": "1/3,2/3"
+                },
+                "inner_halfline": [
+                  "-infinity",
+                  "2/3"
+                ]
+              }
+            }
+          ],
+          "vertex_count": 2
+        },
+        "QL": {
+          "boundary_vertices": [
+            {
+              "ambient_representatives_in_stage_angle_order": [
+                "895/1152",
+                "257/1152"
+              ],
+              "physical_landing_target": "b_101101001(alpha_G)",
+              "stage_angles": [
+                "7/24",
+                "17/24"
+              ],
+              "stage_ray_pair": "7/24,17/24"
+            },
+            {
+              "ambient_representatives_in_stage_angle_order": [
+                "7/9",
+                "2/9"
+              ],
+              "physical_landing_target": "b_101101101(alpha_G)",
+              "stage_angles": [
+                "1/3",
+                "2/3"
+              ],
+              "stage_ray_pair": "1/3,2/3"
+            }
+          ],
+          "depth": 3,
+          "face_probe_stage_angle": "5/16",
+          "height_relative_to_initial": "1/8",
+          "physical_inverse_time": 9,
+          "tile_count": 2,
+          "tiles": [
+            {
+              "ambient_endpoint_representatives": [
+                "895/1152",
+                "7/9"
+              ],
+              "basepoint_height_relative_to_initial": "1/256",
+              "central_seam_warning": "The open inner seam is glued to the central copy; it is not a remaining ideal J side",
+              "eta": {
+                "finite_endpoint_vertex": {
+                  "ambient_representatives_in_stage_angle_order": [
+                    "7/9",
+                    "2/9"
+                  ],
+                  "physical_landing_target": "b_101101101(alpha_G)",
+                  "stage_angles": [
+                    "1/3",
+                    "2/3"
+                  ],
+                  "stage_ray_pair": "1/3,2/3"
+                },
+                "inner_halfline": [
+                  "1/3",
+                  "+infinity"
+                ]
+              },
+              "finite_gluing_height_relative_to_initial": "1/8",
+              "id": "G:QL:tile0",
+              "index": 0,
+              "lambda": {
+                "carrier_height_relative_to_initial": "1/4",
+                "outer_line": "all real x",
+                "wrapping_endpoints": [
+                  "-infinity",
+                  "+infinity"
+                ]
+              },
+              "outgoing_vertex_boundary": [
+                "G:QL:tile0:eta",
+                "G:QL:tile1:xi"
+              ],
+              "seam_midpoint_lift": "5/16",
+              "seam_stage_angles": [
+                "7/24",
+                "1/3"
+              ],
+              "tile_mark_height_relative_to_initial": "1/16",
+              "xi": {
+                "finite_endpoint_vertex": {
+                  "ambient_representatives_in_stage_angle_order": [
+                    "895/1152",
+                    "257/1152"
+                  ],
+                  "physical_landing_target": "b_101101001(alpha_G)",
+                  "stage_angles": [
+                    "7/24",
+                    "17/24"
+                  ],
+                  "stage_ray_pair": "7/24,17/24"
+                },
+                "inner_halfline": [
+                  "-infinity",
+                  "7/24"
+                ]
+              }
+            },
+            {
+              "ambient_endpoint_representatives": [
+                "2/9",
+                "257/1152"
+              ],
+              "basepoint_height_relative_to_initial": "1/256",
+              "central_seam_warning": "The open inner seam is glued to the central copy; it is not a remaining ideal J side",
+              "eta": {
+                "finite_endpoint_vertex": {
+                  "ambient_representatives_in_stage_angle_order": [
+                    "895/1152",
+                    "257/1152"
+                  ],
+                  "physical_landing_target": "b_101101001(alpha_G)",
+                  "stage_angles": [
+                    "7/24",
+                    "17/24"
+                  ],
+                  "stage_ray_pair": "7/24,17/24"
+                },
+                "inner_halfline": [
+                  "17/24",
+                  "+infinity"
+                ]
+              },
+              "finite_gluing_height_relative_to_initial": "1/8",
+              "id": "G:QL:tile1",
+              "index": 1,
+              "lambda": {
+                "carrier_height_relative_to_initial": "1/4",
+                "outer_line": "all real x",
+                "wrapping_endpoints": [
+                  "-infinity",
+                  "+infinity"
+                ]
+              },
+              "outgoing_vertex_boundary": [
+                "G:QL:tile1:eta",
+                "G:QL:tile0:xi"
+              ],
+              "seam_midpoint_lift": "11/16",
+              "seam_stage_angles": [
+                "2/3",
+                "17/24"
+              ],
+              "tile_mark_height_relative_to_initial": "1/16",
+              "xi": {
+                "finite_endpoint_vertex": {
+                  "ambient_representatives_in_stage_angle_order": [
+                    "7/9",
+                    "2/9"
+                  ],
+                  "physical_landing_target": "b_101101101(alpha_G)",
+                  "stage_angles": [
+                    "1/3",
+                    "2/3"
+                  ],
+                  "stage_ray_pair": "1/3,2/3"
+                },
+                "inner_halfline": [
+                  "-infinity",
+                  "2/3"
+                ]
+              }
+            }
+          ],
+          "vertex_count": 2
+        },
+        "QR": {
+          "boundary_vertices": [
+            {
+              "ambient_representatives_in_stage_angle_order": [
+                "13/18",
+                "5/18"
+              ],
+              "physical_landing_target": "b_001101101(alpha_G)",
+              "stage_angles": [
+                "1/6",
+                "5/6"
+              ],
+              "stage_ray_pair": "1/6,5/6"
+            },
+            {
+              "ambient_representatives_in_stage_angle_order": [
+                "833/1152",
+                "319/1152"
+              ],
+              "physical_landing_target": "b_001101001(alpha_G)",
+              "stage_angles": [
+                "5/24",
+                "19/24"
+              ],
+              "stage_ray_pair": "5/24,19/24"
+            }
+          ],
+          "depth": 3,
+          "face_probe_stage_angle": "3/16",
+          "height_relative_to_initial": "1/8",
+          "physical_inverse_time": 9,
+          "tile_count": 2,
+          "tiles": [
+            {
+              "ambient_endpoint_representatives": [
+                "13/18",
+                "833/1152"
+              ],
+              "basepoint_height_relative_to_initial": "1/256",
+              "central_seam_warning": "The open inner seam is glued to the central copy; it is not a remaining ideal J side",
+              "eta": {
+                "finite_endpoint_vertex": {
+                  "ambient_representatives_in_stage_angle_order": [
+                    "833/1152",
+                    "319/1152"
+                  ],
+                  "physical_landing_target": "b_001101001(alpha_G)",
+                  "stage_angles": [
+                    "5/24",
+                    "19/24"
+                  ],
+                  "stage_ray_pair": "5/24,19/24"
+                },
+                "inner_halfline": [
+                  "5/24",
+                  "+infinity"
+                ]
+              },
+              "finite_gluing_height_relative_to_initial": "1/8",
+              "id": "G:QR:tile0",
+              "index": 0,
+              "lambda": {
+                "carrier_height_relative_to_initial": "1/4",
+                "outer_line": "all real x",
+                "wrapping_endpoints": [
+                  "-infinity",
+                  "+infinity"
+                ]
+              },
+              "outgoing_vertex_boundary": [
+                "G:QR:tile0:eta",
+                "G:QR:tile1:xi"
+              ],
+              "seam_midpoint_lift": "3/16",
+              "seam_stage_angles": [
+                "1/6",
+                "5/24"
+              ],
+              "tile_mark_height_relative_to_initial": "1/16",
+              "xi": {
+                "finite_endpoint_vertex": {
+                  "ambient_representatives_in_stage_angle_order": [
+                    "13/18",
+                    "5/18"
+                  ],
+                  "physical_landing_target": "b_001101101(alpha_G)",
+                  "stage_angles": [
+                    "1/6",
+                    "5/6"
+                  ],
+                  "stage_ray_pair": "1/6,5/6"
+                },
+                "inner_halfline": [
+                  "-infinity",
+                  "1/6"
+                ]
+              }
+            },
+            {
+              "ambient_endpoint_representatives": [
+                "319/1152",
+                "5/18"
+              ],
+              "basepoint_height_relative_to_initial": "1/256",
+              "central_seam_warning": "The open inner seam is glued to the central copy; it is not a remaining ideal J side",
+              "eta": {
+                "finite_endpoint_vertex": {
+                  "ambient_representatives_in_stage_angle_order": [
+                    "13/18",
+                    "5/18"
+                  ],
+                  "physical_landing_target": "b_001101101(alpha_G)",
+                  "stage_angles": [
+                    "1/6",
+                    "5/6"
+                  ],
+                  "stage_ray_pair": "1/6,5/6"
+                },
+                "inner_halfline": [
+                  "5/6",
+                  "+infinity"
+                ]
+              },
+              "finite_gluing_height_relative_to_initial": "1/8",
+              "id": "G:QR:tile1",
+              "index": 1,
+              "lambda": {
+                "carrier_height_relative_to_initial": "1/4",
+                "outer_line": "all real x",
+                "wrapping_endpoints": [
+                  "-infinity",
+                  "+infinity"
+                ]
+              },
+              "outgoing_vertex_boundary": [
+                "G:QR:tile1:eta",
+                "G:QR:tile0:xi"
+              ],
+              "seam_midpoint_lift": "13/16",
+              "seam_stage_angles": [
+                "19/24",
+                "5/6"
+              ],
+              "tile_mark_height_relative_to_initial": "1/16",
+              "xi": {
+                "finite_endpoint_vertex": {
+                  "ambient_representatives_in_stage_angle_order": [
+                    "833/1152",
+                    "319/1152"
+                  ],
+                  "physical_landing_target": "b_001101001(alpha_G)",
+                  "stage_angles": [
+                    "5/24",
+                    "19/24"
+                  ],
+                  "stage_ray_pair": "5/24,19/24"
+                },
+                "inner_halfline": [
+                  "-infinity",
+                  "19/24"
+                ]
+              }
+            }
+          ],
+          "vertex_count": 2
+        },
+        "V0": {
+          "boundary_vertices": [
+            {
+              "ambient_representatives_in_stage_angle_order": [
+                "833/1152",
+                "319/1152"
+              ],
+              "physical_landing_target": "b_001101001(alpha_G)",
+              "stage_angles": [
+                "5/24",
+                "19/24"
+              ],
+              "stage_ray_pair": "5/24,19/24"
+            },
+            {
+              "ambient_representatives_in_stage_angle_order": [
+                "895/1152",
+                "257/1152"
+              ],
+              "physical_landing_target": "b_101101001(alpha_G)",
+              "stage_angles": [
+                "7/24",
+                "17/24"
+              ],
+              "stage_ray_pair": "7/24,17/24"
+            }
+          ],
+          "depth": 3,
+          "face_probe_stage_angle": "1/4",
+          "height_relative_to_initial": "1/8",
+          "physical_inverse_time": 9,
+          "tile_count": 2,
+          "tiles": [
+            {
+              "ambient_endpoint_representatives": [
+                "833/1152",
+                "895/1152"
+              ],
+              "basepoint_height_relative_to_initial": "1/256",
+              "central_seam_warning": "The open inner seam is glued to the central copy; it is not a remaining ideal J side",
+              "eta": {
+                "finite_endpoint_vertex": {
+                  "ambient_representatives_in_stage_angle_order": [
+                    "895/1152",
+                    "257/1152"
+                  ],
+                  "physical_landing_target": "b_101101001(alpha_G)",
+                  "stage_angles": [
+                    "7/24",
+                    "17/24"
+                  ],
+                  "stage_ray_pair": "7/24,17/24"
+                },
+                "inner_halfline": [
+                  "7/24",
+                  "+infinity"
+                ]
+              },
+              "finite_gluing_height_relative_to_initial": "1/8",
+              "id": "G:V0:tile0",
+              "index": 0,
+              "lambda": {
+                "carrier_height_relative_to_initial": "1/4",
+                "outer_line": "all real x",
+                "wrapping_endpoints": [
+                  "-infinity",
+                  "+infinity"
+                ]
+              },
+              "outgoing_vertex_boundary": [
+                "G:V0:tile0:eta",
+                "G:V0:tile1:xi"
+              ],
+              "seam_midpoint_lift": "1/4",
+              "seam_stage_angles": [
+                "5/24",
+                "7/24"
+              ],
+              "tile_mark_height_relative_to_initial": "1/16",
+              "xi": {
+                "finite_endpoint_vertex": {
+                  "ambient_representatives_in_stage_angle_order": [
+                    "833/1152",
+                    "319/1152"
+                  ],
+                  "physical_landing_target": "b_001101001(alpha_G)",
+                  "stage_angles": [
+                    "5/24",
+                    "19/24"
+                  ],
+                  "stage_ray_pair": "5/24,19/24"
+                },
+                "inner_halfline": [
+                  "-infinity",
+                  "5/24"
+                ]
+              }
+            },
+            {
+              "ambient_endpoint_representatives": [
+                "257/1152",
+                "319/1152"
+              ],
+              "basepoint_height_relative_to_initial": "1/256",
+              "central_seam_warning": "The open inner seam is glued to the central copy; it is not a remaining ideal J side",
+              "eta": {
+                "finite_endpoint_vertex": {
+                  "ambient_representatives_in_stage_angle_order": [
+                    "833/1152",
+                    "319/1152"
+                  ],
+                  "physical_landing_target": "b_001101001(alpha_G)",
+                  "stage_angles": [
+                    "5/24",
+                    "19/24"
+                  ],
+                  "stage_ray_pair": "5/24,19/24"
+                },
+                "inner_halfline": [
+                  "19/24",
+                  "+infinity"
+                ]
+              },
+              "finite_gluing_height_relative_to_initial": "1/8",
+              "id": "G:V0:tile1",
+              "index": 1,
+              "lambda": {
+                "carrier_height_relative_to_initial": "1/4",
+                "outer_line": "all real x",
+                "wrapping_endpoints": [
+                  "-infinity",
+                  "+infinity"
+                ]
+              },
+              "outgoing_vertex_boundary": [
+                "G:V0:tile1:eta",
+                "G:V0:tile0:xi"
+              ],
+              "seam_midpoint_lift": "3/4",
+              "seam_stage_angles": [
+                "17/24",
+                "19/24"
+              ],
+              "tile_mark_height_relative_to_initial": "1/16",
+              "xi": {
+                "finite_endpoint_vertex": {
+                  "ambient_representatives_in_stage_angle_order": [
+                    "895/1152",
+                    "257/1152"
+                  ],
+                  "physical_landing_target": "b_101101001(alpha_G)",
+                  "stage_angles": [
+                    "7/24",
+                    "17/24"
+                  ],
+                  "stage_ray_pair": "7/24,17/24"
+                },
+                "inner_halfline": [
+                  "-infinity",
+                  "17/24"
+                ]
+              }
+            }
+          ],
+          "vertex_count": 2
+        },
+        "W": {
+          "boundary_vertices": [
+            {
+              "ambient_representatives_in_stage_angle_order": [
+                "426497/589824",
+                "163327/589824"
+              ],
+              "physical_landing_target": "b_001101001101101001(alpha_G)",
+              "stage_angles": [
+                "41/192",
+                "151/192"
+              ],
+              "stage_ray_pair": "41/192,151/192"
+            },
+            {
+              "ambient_representatives_in_stage_angle_order": [
+                "426559/589824",
+                "458177/589824"
+              ],
+              "physical_landing_target": "b_101101001001101001(alpha_G)",
+              "stage_angles": [
+                "43/192",
+                "53/192"
+              ],
+              "stage_ray_pair": "43/192,53/192"
+            },
+            {
+              "ambient_representatives_in_stage_angle_order": [
+                "458239/589824",
+                "131585/589824"
+              ],
+              "physical_landing_target": "b_101101001101101001(alpha_G)",
+              "stage_angles": [
+                "55/192",
+                "137/192"
+              ],
+              "stage_ray_pair": "55/192,137/192"
+            },
+            {
+              "ambient_representatives_in_stage_angle_order": [
+                "131647/589824",
+                "163265/589824"
+              ],
+              "physical_landing_target": "b_001101001001101001(alpha_G)",
+              "stage_angles": [
+                "139/192",
+                "149/192"
+              ],
+              "stage_ray_pair": "139/192,149/192"
+            }
+          ],
+          "depth": 6,
+          "face_probe_stage_angle": "25/112",
+          "height_relative_to_initial": "1/64",
+          "physical_inverse_time": 18,
+          "tile_count": 4,
+          "tiles": [
+            {
+              "ambient_endpoint_representatives": [
+                "426497/589824",
+                "426559/589824"
+              ],
+              "basepoint_height_relative_to_initial": "1/256",
+              "central_seam_warning": "The open inner seam is glued to the central copy; it is not a remaining ideal J side",
+              "eta": {
+                "finite_endpoint_vertex": {
+                  "ambient_representatives_in_stage_angle_order": [
+                    "426559/589824",
+                    "458177/589824"
+                  ],
+                  "physical_landing_target": "b_101101001001101001(alpha_G)",
+                  "stage_angles": [
+                    "43/192",
+                    "53/192"
+                  ],
+                  "stage_ray_pair": "43/192,53/192"
+                },
+                "inner_halfline": [
+                  "43/192",
+                  "+infinity"
+                ]
+              },
+              "finite_gluing_height_relative_to_initial": "1/64",
+              "id": "G:W:tile0",
+              "index": 0,
+              "lambda": {
+                "carrier_height_relative_to_initial": "1/32",
+                "outer_line": "all real x",
+                "wrapping_endpoints": [
+                  "-infinity",
+                  "+infinity"
+                ]
+              },
+              "outgoing_vertex_boundary": [
+                "G:W:tile0:eta",
+                "G:W:tile1:xi"
+              ],
+              "seam_midpoint_lift": "7/32",
+              "seam_stage_angles": [
+                "41/192",
+                "43/192"
+              ],
+              "tile_mark_height_relative_to_initial": "1/128",
+              "xi": {
+                "finite_endpoint_vertex": {
+                  "ambient_representatives_in_stage_angle_order": [
+                    "426497/589824",
+                    "163327/589824"
+                  ],
+                  "physical_landing_target": "b_001101001101101001(alpha_G)",
+                  "stage_angles": [
+                    "41/192",
+                    "151/192"
+                  ],
+                  "stage_ray_pair": "41/192,151/192"
+                },
+                "inner_halfline": [
+                  "-infinity",
+                  "41/192"
+                ]
+              }
+            },
+            {
+              "ambient_endpoint_representatives": [
+                "458177/589824",
+                "458239/589824"
+              ],
+              "basepoint_height_relative_to_initial": "1/256",
+              "central_seam_warning": "The open inner seam is glued to the central copy; it is not a remaining ideal J side",
+              "eta": {
+                "finite_endpoint_vertex": {
+                  "ambient_representatives_in_stage_angle_order": [
+                    "458239/589824",
+                    "131585/589824"
+                  ],
+                  "physical_landing_target": "b_101101001101101001(alpha_G)",
+                  "stage_angles": [
+                    "55/192",
+                    "137/192"
+                  ],
+                  "stage_ray_pair": "55/192,137/192"
+                },
+                "inner_halfline": [
+                  "55/192",
+                  "+infinity"
+                ]
+              },
+              "finite_gluing_height_relative_to_initial": "1/64",
+              "id": "G:W:tile1",
+              "index": 1,
+              "lambda": {
+                "carrier_height_relative_to_initial": "1/32",
+                "outer_line": "all real x",
+                "wrapping_endpoints": [
+                  "-infinity",
+                  "+infinity"
+                ]
+              },
+              "outgoing_vertex_boundary": [
+                "G:W:tile1:eta",
+                "G:W:tile2:xi"
+              ],
+              "seam_midpoint_lift": "9/32",
+              "seam_stage_angles": [
+                "53/192",
+                "55/192"
+              ],
+              "tile_mark_height_relative_to_initial": "1/128",
+              "xi": {
+                "finite_endpoint_vertex": {
+                  "ambient_representatives_in_stage_angle_order": [
+                    "426559/589824",
+                    "458177/589824"
+                  ],
+                  "physical_landing_target": "b_101101001001101001(alpha_G)",
+                  "stage_angles": [
+                    "43/192",
+                    "53/192"
+                  ],
+                  "stage_ray_pair": "43/192,53/192"
+                },
+                "inner_halfline": [
+                  "-infinity",
+                  "53/192"
+                ]
+              }
+            },
+            {
+              "ambient_endpoint_representatives": [
+                "131585/589824",
+                "131647/589824"
+              ],
+              "basepoint_height_relative_to_initial": "1/256",
+              "central_seam_warning": "The open inner seam is glued to the central copy; it is not a remaining ideal J side",
+              "eta": {
+                "finite_endpoint_vertex": {
+                  "ambient_representatives_in_stage_angle_order": [
+                    "131647/589824",
+                    "163265/589824"
+                  ],
+                  "physical_landing_target": "b_001101001001101001(alpha_G)",
+                  "stage_angles": [
+                    "139/192",
+                    "149/192"
+                  ],
+                  "stage_ray_pair": "139/192,149/192"
+                },
+                "inner_halfline": [
+                  "139/192",
+                  "+infinity"
+                ]
+              },
+              "finite_gluing_height_relative_to_initial": "1/64",
+              "id": "G:W:tile2",
+              "index": 2,
+              "lambda": {
+                "carrier_height_relative_to_initial": "1/32",
+                "outer_line": "all real x",
+                "wrapping_endpoints": [
+                  "-infinity",
+                  "+infinity"
+                ]
+              },
+              "outgoing_vertex_boundary": [
+                "G:W:tile2:eta",
+                "G:W:tile3:xi"
+              ],
+              "seam_midpoint_lift": "23/32",
+              "seam_stage_angles": [
+                "137/192",
+                "139/192"
+              ],
+              "tile_mark_height_relative_to_initial": "1/128",
+              "xi": {
+                "finite_endpoint_vertex": {
+                  "ambient_representatives_in_stage_angle_order": [
+                    "458239/589824",
+                    "131585/589824"
+                  ],
+                  "physical_landing_target": "b_101101001101101001(alpha_G)",
+                  "stage_angles": [
+                    "55/192",
+                    "137/192"
+                  ],
+                  "stage_ray_pair": "55/192,137/192"
+                },
+                "inner_halfline": [
+                  "-infinity",
+                  "137/192"
+                ]
+              }
+            },
+            {
+              "ambient_endpoint_representatives": [
+                "163265/589824",
+                "163327/589824"
+              ],
+              "basepoint_height_relative_to_initial": "1/256",
+              "central_seam_warning": "The open inner seam is glued to the central copy; it is not a remaining ideal J side",
+              "eta": {
+                "finite_endpoint_vertex": {
+                  "ambient_representatives_in_stage_angle_order": [
+                    "426497/589824",
+                    "163327/589824"
+                  ],
+                  "physical_landing_target": "b_001101001101101001(alpha_G)",
+                  "stage_angles": [
+                    "41/192",
+                    "151/192"
+                  ],
+                  "stage_ray_pair": "41/192,151/192"
+                },
+                "inner_halfline": [
+                  "151/192",
+                  "+infinity"
+                ]
+              },
+              "finite_gluing_height_relative_to_initial": "1/64",
+              "id": "G:W:tile3",
+              "index": 3,
+              "lambda": {
+                "carrier_height_relative_to_initial": "1/32",
+                "outer_line": "all real x",
+                "wrapping_endpoints": [
+                  "-infinity",
+                  "+infinity"
+                ]
+              },
+              "outgoing_vertex_boundary": [
+                "G:W:tile3:eta",
+                "G:W:tile0:xi"
+              ],
+              "seam_midpoint_lift": "25/32",
+              "seam_stage_angles": [
+                "149/192",
+                "151/192"
+              ],
+              "tile_mark_height_relative_to_initial": "1/128",
+              "xi": {
+                "finite_endpoint_vertex": {
+                  "ambient_representatives_in_stage_angle_order": [
+                    "131647/589824",
+                    "163265/589824"
+                  ],
+                  "physical_landing_target": "b_001101001001101001(alpha_G)",
+                  "stage_angles": [
+                    "139/192",
+                    "149/192"
+                  ],
+                  "stage_ray_pair": "139/192,149/192"
+                },
+                "inner_halfline": [
+                  "-infinity",
+                  "149/192"
+                ]
+              }
+            }
+          ],
+          "vertex_count": 4
+        }
+      },
+      "same_stage_side_collision": {
+        "ambient_representative": "6665/9216",
+        "analytic_dependence": "Distinct interior tile points, ideal side points, and their common images follow from the note's gluing proof",
+        "common_physical_landing_vertex": {
+          "ambient_representatives_in_stage_angle_order": [
+            "6665/9216",
+            "7159/9216"
+          ],
+          "physical_landing_target": "b_101101001001101101(alpha_G)",
+          "stage_angles": [
+            "11/48",
+            "13/48"
+          ],
+          "stage_ray_pair": "11/48,13/48"
+        },
+        "cross_scale": false,
+        "interior_collision_height_relative_to_initial": "1/128",
+        "interior_source_points": [
+          "G:W:tile0",
+          "G:W:tile1"
+        ],
+        "same_finite_angle_lift": "11/48",
+        "side_points": [
+          "G:W:tile0:eta",
+          "G:W:tile1:xi"
+        ],
+        "source_defined_map": "KL Lemma 3.4 inclusion Psi(W) into Psi(V0)",
+        "target_location": "central interior of Psi(V0), outside the terminal root"
+      },
+      "stage": "G",
+      "terminal_root": "K9"
+    }
+  ],
+  "status": "EXACT_TIP_KL_ORDINARY_SIDE_ATLAS_PASS",
+  "total_pieces": 10,
+  "total_tiles": 24
+}

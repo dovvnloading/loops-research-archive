@@ -37,6 +37,8 @@ on:
       - 'results/tip_complex_domains.json'
       - 'results/tip_puzzle_ray_tree.json'
       - 'results/tip_internal_ray_lifts.json'
+      - 'results/tip_root_interval_geometry.json'
+      - 'results/tip_kl_side_atlas.json'
       - 'RESEARCH_MAP.md'
       - 'README.md'
       - 'figs/readme/*.svg'
@@ -75,6 +77,8 @@ on:
       - 'research/independent_audits/*.md'
       - 'results/tip_puzzle_ray_tree.json'
       - 'results/tip_internal_ray_lifts.json'
+      - 'results/tip_root_interval_geometry.json'
+      - 'results/tip_kl_side_atlas.json'
       - 'RESEARCH_MAP.md'
       - 'README.md'
       - 'figs/readme/*.svg'
@@ -163,6 +167,10 @@ jobs:
         run: python research/independent_audits/verify_tip_internal_ray_lifts.py --check-manifest
       - name: Verify finite inputs to both terminal KL first-child nests
         run: python research/independent_audits/verify_tip_kl_terminal_first_child.py
+      - name: Verify exact interval phases and finite inputs to the root-type obstruction
+        run: python research/independent_audits/verify_tip_root_topology.py --check-manifest
+      - name: Verify actual ordinary KL side atlas and finite side collisions
+        run: python research/independent_audits/verify_tip_kl_side_atlas.py --check-manifest
       - name: Check finite Dirichlet-to-Neumann gluing
         run: python research/independent_audits/verify_rectangle_response.py
       - name: Check Paper 2 geometric source and return-time patch structure

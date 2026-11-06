@@ -6,7 +6,7 @@
 
 ## 1. Which source construction is being tested?
 
-Primary source: J. Kahn and M. Lyubich, *A priori bounds for some infinitely renormalizable quadratics: II. Decorations*, [arXiv:math/0609046v2](https://arxiv.org/pdf/math/0609046v2), **§2.1, printed pp. 4–5, and Lemma 2.1 printed p. 5**; §2.2 printed pp. 6–7. The paper takes a dividing fixed point \(\alpha\) with \(q>1\) landing rays, obtains a critical Yoccoz piece \(Y^1\), and defines \(n\) as the *least positive* number with \(f^{qn}(0)\) in an off-critical depth-one piece \(Z_\kappa^1\). This is **not** the renormalization return period \(p\).
+Primary source: J. Kahn and M. Lyubich, *A priori bounds for some infinitely renormalizable quadratics: II. Decorations*, [arXiv:math/0609046v2](https://arxiv.org/pdf/math/0609046v2), **§2.1, printed pp. 5–6, and Lemma 2.1 printed p. 6**; §2.2 printed pp. 7–8. The paper takes a dividing fixed point \(\alpha\) with \(q>1\) landing rays, obtains a critical Yoccoz piece \(Y^1\), and defines \(n\) as the *least positive* number with \(f^{qn}(0)\) in an off-critical depth-one piece \(Z_\kappa^1\). This is **not** the renormalization return period \(p\).
 
 Its source-defined objects are
 \[

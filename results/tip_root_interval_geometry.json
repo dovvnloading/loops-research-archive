@@ -1,0 +1,228 @@
+{
+  "analytic_trust_boundary": [
+    "Connected quadratic-like restrictions and their equality to terminal puzzle filled sets",
+    "Douady-Hubbard normalized straightening; parameter reality from reflection and uniqueness",
+    "Filled Julia set of z^2-2 is [-2,2]",
+    "Embedded cross excludes interval topology",
+    "Compact marked-root image is clopen in the connected target root by the open mapping theorem",
+    "A local holomorphic map pulls back a branched star to a branched star",
+    "Kahn local-cover definition requires a bijection of the marked roots"
+  ],
+  "exact_orbit_relations": [
+    "x18=-x9",
+    "x19=x10",
+    "x27=x18"
+  ],
+  "inner_root_exact_interval": "[x9,x18]",
+  "normalized_inner_critical_orbit": [
+    0,
+    -2,
+    2,
+    2
+  ],
+  "normalized_inner_parameter": -2,
+  "normalized_inner_parameter_relation_coefficients_ascending": [
+    0,
+    0,
+    0,
+    2,
+    1
+  ],
+  "parameter_bracket": {
+    "denominator_power_of_two": 128,
+    "lower_numerator": -607918036626757496169199575185708826140,
+    "upper_numerator": -607918036626757496169199575185708826139
+  },
+  "phase_intervals": [
+    {
+      "coarse_phase": 0,
+      "exact_interval": "[x9,x18]",
+      "f_on_phase": "two monotone branches; unique minimum at 0",
+      "left_endpoint_enclosure": {
+        "denominator_power_of_two": 224,
+        "lower_numerator": -615729268058790233834158125228516369379533191836379323644985166392,
+        "upper_numerator": -615729268058790233834158125228516355392867561096449548550114432630
+      },
+      "left_endpoint_orbit_index": 9,
+      "next_physical_phase": 1,
+      "physical_phase": 0,
+      "right_endpoint_enclosure": {
+        "denominator_power_of_two": 224,
+        "lower_numerator": 615729268058790233834158125228516328600201277549469753457594933643,
+        "upper_numerator": 615729268058790233834158125228516393261549855546870343467281333401
+      },
+      "right_endpoint_orbit_index": 18
+    },
+    {
+      "coarse_phase": 1,
+      "exact_interval": "[x1,x10]",
+      "f_on_phase": "decreasing",
+      "left_endpoint_enclosure": {
+        "denominator_power_of_two": 224,
+        "lower_numerator": -48164229001217242858234956520328758590777058936834026659397018583040,
+        "upper_numerator": -48164229001217242858234956520328758590697830774319762321803474632704
+      },
+      "left_endpoint_orbit_index": 1,
+      "next_physical_phase": 2,
+      "physical_phase": 1,
+      "right_endpoint_enclosure": {
+        "denominator_power_of_two": 224,
+        "lower_numerator": -48150166564958563029564602541025278700314772791203053539679977060238,
+        "upper_numerator": -48150166564958563029564602541025278699596671006442953718056963891488
+      },
+      "right_endpoint_orbit_index": 10
+    },
+    {
+      "coarse_phase": 2,
+      "exact_interval": "[x11,x2]",
+      "f_on_phase": "increasing",
+      "left_endpoint_enclosure": {
+        "denominator_power_of_two": 224,
+        "lower_numerator": 37831435933022262841163603494065045236379966147449191575649198306862,
+        "upper_numerator": 37831435933022262841163603494065045239024238000418737939437642901666
+      },
+      "left_endpoint_orbit_index": 11,
+      "next_physical_phase": 3,
+      "physical_phase": 2,
+      "right_endpoint_enclosure": {
+        "denominator_power_of_two": 224,
+        "lower_numerator": 37881673979304932608346202257869563195121443039322187088737456142405,
+        "upper_numerator": 37881673979304932608346202257869563195483755097349660706036397679632
+      },
+      "right_endpoint_orbit_index": 2
+    },
+    {
+      "coarse_phase": 0,
+      "exact_interval": "[x12,x3]",
+      "f_on_phase": "increasing",
+      "left_endpoint_enclosure": {
+        "denominator_power_of_two": 224,
+        "lower_numerator": 4922580198529274761608616674820545641174182580300055728807715250798,
+        "upper_numerator": 4922580198529274761608616674820545648674538271749761450626859337040
+      },
+      "left_endpoint_orbit_index": 12,
+      "next_physical_phase": 4,
+      "physical_phase": 3,
+      "right_endpoint_enclosure": {
+        "denominator_power_of_two": 224,
+        "lower_numerator": 5063666483563174734442849458596629950540856947784756150260925535753,
+        "upper_numerator": 5063666483563174734442849458596629951638261253628783346680149492644
+      },
+      "right_endpoint_orbit_index": 3
+    },
+    {
+      "coarse_phase": 1,
+      "exact_interval": "[x13,x4]",
+      "f_on_phase": "decreasing",
+      "left_endpoint_enclosure": {
+        "denominator_power_of_two": 224,
+        "lower_numerator": -47265421740575375284147173082123579081904531853573287059425411028738,
+        "upper_numerator": -47265421740575375284147173082123579079086344088172033070530268170496
+      },
+      "left_endpoint_orbit_index": 13,
+      "next_physical_phase": 5,
+      "physical_phase": 4,
+      "right_endpoint_enclosure": {
+        "denominator_power_of_two": 224,
+        "lower_numerator": -47213161902557029518629621075193653904252138832167195097215491150246,
+        "upper_numerator": -47213161902557029518629621075193653903760677702649987350274253727971
+      },
+      "right_endpoint_orbit_index": 4
+    },
+    {
+      "coarse_phase": 2,
+      "exact_interval": "[x5,x14]",
+      "f_on_phase": "increasing",
+      "left_endpoint_enclosure": {
+        "denominator_power_of_two": 224,
+        "lower_numerator": 34517042010089666030572083502603796293449043526373816097213275981171,
+        "upper_numerator": 34517042010089666030572083502603796295249598081939273979328779132640
+      },
+      "left_endpoint_orbit_index": 5,
+      "next_physical_phase": 6,
+      "physical_phase": 5,
+      "right_endpoint_enclosure": {
+        "denominator_power_of_two": 224,
+        "lower_numerator": 34700181670503343773573783538759939825398667181371402723375681638412,
+        "upper_numerator": 34700181670503343773573783538759939835359430713398917846715290397395
+      },
+      "right_endpoint_orbit_index": 14
+    },
+    {
+      "coarse_phase": 0,
+      "exact_interval": "[x6,x15]",
+      "f_on_phase": "decreasing",
+      "left_endpoint_enclosure": {
+        "denominator_power_of_two": 224,
+        "lower_numerator": -3971775513243964507053371378915289305769908276757736412558907494068,
+        "upper_numerator": -3971775513243964507053371378915289301080150427132650537893499366237
+      },
+      "left_endpoint_orbit_index": 6,
+      "next_physical_phase": 7,
+      "physical_phase": 6,
+      "right_endpoint_enclosure": {
+        "denominator_power_of_two": 224,
+        "lower_numerator": -3501581005957087488881255713079558857021810917379023840669453482812,
+        "upper_numerator": -3501581005957087488881255713079558831301559914161226199268292848296
+      },
+      "right_endpoint_orbit_index": 15
+    },
+    {
+      "coarse_phase": 1,
+      "exact_interval": "[x16,x7]",
+      "f_on_phase": "decreasing",
+      "left_endpoint_enclosure": {
+        "denominator_power_of_two": 224,
+        "lower_numerator": -47709440655652043541689044795962618097790120678589730260323582237084,
+        "upper_numerator": -47709440655652043541689044795962618091029755977251990064927882677980
+      },
+      "left_endpoint_orbit_index": 16,
+      "next_physical_phase": 8,
+      "physical_phase": 7,
+      "right_endpoint_enclosure": {
+        "denominator_power_of_two": 224,
+        "lower_numerator": -47579101703957956546922844207505786975661886397787546130983569410699,
+        "upper_numerator": -47579101703957956546922844207505786974200855398631898053095496516084
+      },
+      "right_endpoint_orbit_index": 7
+    },
+    {
+      "coarse_phase": 2,
+      "exact_interval": "[x8,x17]",
+      "f_on_phase": "increasing",
+      "left_endpoint_enclosure": {
+        "denominator_power_of_two": 224,
+        "lower_numerator": 35803701162156103417297801741817221286938172503292249938600214486160,
+        "upper_numerator": 35803701162156103417297801741817221292174276037979406558126232000969
+      },
+      "left_endpoint_orbit_index": 8,
+      "next_physical_phase": 0,
+      "physical_phase": 8,
+      "right_endpoint_enclosure": {
+        "denominator_power_of_two": 224,
+        "lower_numerator": 36264377471087459434883788310671592960285790584855077163985694342959,
+        "upper_numerator": 36264377471087459434883788310671592984291862706747682928805909758753
+      },
+      "right_endpoint_orbit_index": 17
+    }
+  ],
+  "phase_intervals_pairwise_disjoint": true,
+  "scope": "Finite exact inputs and interval phase table; the all-morphism obstruction is a separate written analytic proof, with no full canonical KL tile or global MLC closure claimed by this checker",
+  "source_interface_obstructions": [
+    "Written proof: no holomorphic Kahn marked morphism has full source root K9 and full target root K3",
+    "No Kahn local cover can biject the full fine and coarse roots",
+    "Written proof: every physical iterate fails the inverse-root equality already as a germ at 0"
+  ],
+  "stage_critical_clocks": {
+    "3": {
+      "critical_preperiod": 4,
+      "eventual_period": 3
+    },
+    "9": {
+      "critical_preperiod": 2,
+      "eventual_period": 1
+    }
+  },
+  "status": "EXACT_TIP_ROOT_INTERVAL_INPUTS_PASS",
+  "written_analytic_result": "K9=[x9,x18]; K3 contains an embedded four-arm cross at 0"
+}
