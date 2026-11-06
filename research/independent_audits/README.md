@@ -8,6 +8,9 @@ This directory contains reproducible audits of research claims in the archive. I
 
 ## Contents
 
+- **[period27_misiurewicz_tip_ray_access_20261106.md](period27_misiurewicz_tip_ray_access_20261106.md)**: exact nonattracting real postcritically finite parameter with real period-3/9 restrictive returns; imported Zakeri theorem identifies genuine parameter and dynamical ray landings, and critical-point rays yield a first explicit physical \(f^6\) access collision. No KL prime-end/sheet atlas or MLC gate is claimed.
+- **verify_period27_misiurewicz_tip.py**: deterministic standard-library signed-integer/fraction certificate, with exact published JSON manifest [results/period27_misiurewicz_tip.json](../../results/period27_misiurewicz_tip.json); this checks finite recurrence and angles, not the imported landing theorem.
+
 - **[period27_exterior_ray_pullback_20261106.md](period27_exterior_ray_pullback_20261106.md)**: physical escaping-basin Böttcher inverse-ray theorem for the certified period-27 center. The 9-to-3 map is exactly 64-to-1 on distinct ray/equipotential points; a separate 64-branch homogeneous trace direct-sum formula has exact \(1/8\) normalization. These statements do **not** identify KL restrictive-domain sheet cosets or ray landing.
 - **verify_period27_exterior_pullback.py**: dependency-free exact audit of all 512 dyadic ray labels, the 64-fold projection and lifts, collision witnesses and trace-scale coefficients; it does not verify the imported Böttcher theorem.
 
