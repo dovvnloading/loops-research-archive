@@ -58,7 +58,11 @@ theorem futureEqual_next {S O : Type} (step : S → S)
   intro t
   change obs (iterate step t (step x)) =
     obs (iterate step t (step y))
-  rw [← iterate_add step 1 t x, ← iterate_add step 1 t y]
+  have hx : iterate step t (step x) = iterate step (1 + t) x := by
+    simpa [iterate] using (iterate_add step 1 t x).symm
+  have hy : iterate step t (step y) = iterate step (1 + t) y := by
+    simpa [iterate] using (iterate_add step 1 t y).symm
+  rw [hx, hy]
   exact h (1 + t)
 
 /-- A quotient map commutes with one physical transition. -/
@@ -203,7 +207,20 @@ theorem clockNext_injective (p : Nat) (hp : 0 < p) :
   dsimp [clockNext] at hv
   have hi := i.isLt
   have hj := j.isLt
-  omega
+  by_cases hieq : i.val + 1 = p
+  · by_cases hjeq : j.val + 1 = p
+    · omega
+    · have hjlt : j.val + 1 < p := by omega
+      rw [hieq, Nat.mod_self, Nat.mod_eq_of_lt hjlt] at hv
+      omega
+  · by_cases hjeq : j.val + 1 = p
+    · have hilt : i.val + 1 < p := by omega
+      rw [Nat.mod_eq_of_lt hilt, hjeq, Nat.mod_self] at hv
+      omega
+    · have hilt : i.val + 1 < p := by omega
+      have hjlt : j.val + 1 < p := by omega
+      rw [Nat.mod_eq_of_lt hilt, Nat.mod_eq_of_lt hjlt] at hv
+      omega
 
 /-- Every future iterate adds its time to the phase, modulo the period. -/
 theorem clock_iterate_formula (p : Nat) (hp : 0 < p)
