@@ -101,10 +101,10 @@ Throughout Theorem 2.2, **proper output** means \(F_*I\ne C\), a *set-theoretic 
 
 KKL Proposition A.14 provides a true source-defined Wave statement: if \(F_*\) acts combinatorially on \(I\), \(A\) is a Wave over \(I\), and \(B\subset F_*A^{\rm ubr}\) is the appropriate unbreakable descendant, then \(B\) is a Wave over \(F_*I\). For a source end \(E\Subset I\), the proposition separately places a target end of \(B\) inside **\(F_*\overline I\)**, *not* automatically inside \(\overline{F_*I}\).
 
-When the closed source pullback satisfies (2.2) and the closed target image is proper, Corollary 2.3 therefore gives an **exact two-location classification** for that target end:
+When the closed source pullback satisfies (2.2) and the closed target image is proper, Corollary 2.3 therefore gives an **exact two-location classification** for **at least one** such target end \(E_B\) (as guaranteed by A.14):
 
 \[
-\text{end}(B)\subset
+E_B\subset
 \overline{F_*I}\ \cup\ 
 p\bigl(R(\overline I)\setminus\overline{R(I)}\bigr).
 \tag{2.4}
