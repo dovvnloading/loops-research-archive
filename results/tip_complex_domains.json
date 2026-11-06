@@ -1,0 +1,19 @@
+{
+  "limits": "No Levin p2 Green-level boundary condition, KL Jordan puzzle, actual renormalization-ray projection, groupoid or MLC closure",
+  "lower_rational_margins": {
+    "four_outer_containment": "0.052357673",
+    "nine_phase_separation": "0.003222141",
+    "rouche_period3": "0.127132476",
+    "rouche_period9": "0.021187404",
+    "rouche_shrink_period9": "0.002966858",
+    "three_phase_separation": "0.927889313"
+  },
+  "parameter": "root of P18(c)+P9(c)=0 in exact 2^-128 bracket",
+  "status": "EXACT_NONATTRACTING_TIP_COMPLEX_3_9_MARGIN_PASS",
+  "target_radii": {
+    "U3": "1/4",
+    "U9": "1/32",
+    "V9_shrink": "27/1024"
+  },
+  "topological_deductions": "Using classical Rouche and Riemann-Hurwitz: proper degree-two Jordan quadratic-like restrictions at both 3 and 9, connected little filled Julia sets, K9 subset K3, phase disjointness and 9-to-3 refinement at the nonattracting tip"
+}
