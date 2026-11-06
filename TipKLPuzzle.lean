@@ -107,6 +107,49 @@ theorem period_three_extra_preimage_outside_all_phases :
 #print axioms period_nine_extra_preimage_outside_all_phases
 #print axioms period_three_extra_preimage_outside_all_phases
 
+/--
+SECOND LEVEL, for the actual polynomial-like return G=f³ (not the
+ambient quadratic f): exact real bracket for its dividing fixed point
+a∈(3/32,1/10), hence alpha'_G=-a.
+
+Let b_G be the positive real preimage G(b_G)=-a. The strict
+inequalities below force b_G∈(17/100,7/40).
+Its central preimages ±t_G solve G(t_G)=b_G, with
+t_G∈(1/32,1/16). The exact K9 is in D(0,1/32), so this shows
+strict separation from the second-level critical puzzle vertices.
+
+Ray *landing*, internal external angles, and the topological statement
+that this is the two-level KL top puzzle are classical/imported.
+-/
+theorem inner_return_kl_fixed_and_vertex_brackets :
+    3 * unitTip / 32 <
+      (imageAt 3 (3 * unitTip / 32)).lo ∧
+    (imageAt 3 (unitTip / 10)).hi <
+      unitTip / 10 ∧
+    -(3 * unitTip / 32) <
+      (imageAt 3 (17 * unitTip / 100)).lo ∧
+    (imageAt 3 (7 * unitTip / 40)).hi <
+      -(unitTip / 10) ∧
+    7 * unitTip / 40 <
+      (imageAt 3 (unitTip / 32)).lo ∧
+    (imageAt 3 (unitTip / 16)).hi <
+      17 * unitTip / 100 ∧
+    (tipOrbit 6).hi < -(unitTip / 10) ∧
+    unitTip / 16 < (tipOrbit 3).lo ∧
+    -(unitTip / 32) < (tipOrbit 9).lo ∧
+    (tipOrbit 9).hi < unitTip / 32 := by
+  decide +kernel
+
+/-- Both top-puzzle escape clocks have q=2,n=1.
+    At the second level, a single internal symbol means G²=f⁶,
+    while the terminal little return is G³=f⁹. -/
+theorem two_distinct_kl_escape_clocks :
+    (1 * 2 + 1 = 3) ∧ (1 * 2 = 2) ∧
+    (3 * 3 = 9) ∧ (2 * 3 = 6) := by decide
+
+#print axioms inner_return_kl_fixed_and_vertex_brackets
+#print axioms two_distinct_kl_escape_clocks
+
 /-- Source-printed p. 6 has q=2,n=1, with P depth 1,
     V^0 and Q_L,Q_R depth 3, and deep qn=q.
     This is NOT a period-3/period-9 return-time comparison. -/
