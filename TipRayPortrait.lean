@@ -32,6 +32,10 @@ def tailRay (i : Fin 9) (side : Fin 2) : Fin 511 :=
 /-- All eighteen explicit angle labels are distinct. -/
 theorem eighteen_angles_distinct :
     Function.Injective (fun x : Fin 9 × Fin 2 => tailRay x.1 x.2) := by
+  intro x y
+  rcases x with ⟨i, side⟩
+  rcases y with ⟨j, other⟩
+  revert i side j other
   decide +kernel
 
 /-- Every angle in the portrait has least positive doubling period nine. -/
@@ -80,7 +84,13 @@ theorem innerDouble_fixed_is_zero (q : Nat) (a : Fin q)
     have hv := congrArg Fin.val h
     simpa [innerDouble] using hv
   have ha := a.isLt
-  omega
+  by_cases hsmall : 2 * a.val < q
+  · rw [Nat.mod_eq_of_lt hsmall] at hh
+    omega
+  · have hbig : q ≤ 2 * a.val := by omega
+    have hsub : 2 * a.val - q < q := by omega
+    rw [Nat.mod_eq_sub_mod hbig, Nat.mod_eq_of_lt hsub] at hh
+    omega
 
 def ambientReturn9 (a : Fin 511) : Fin 511 :=
   ⟨(512 * a.val) % 511, Nat.mod_lt _ (by decide)⟩
