@@ -44,7 +44,7 @@ These visuals come from **this archive's own computations, certificates, and fin
 | **Two-scale Levin ray correspondences** and the explicit distinction between their internal angle fibers | [Carathéodory (p2) argument](./research/independent_audits/levin_tip_p2_carathéodory_two_scale_20261106.md) · [exact angle checker](./research/independent_audits/verify_tip_levin_transport.py) | Analytic theorem imports are identified; no localization-sheet functor or MLC conclusion. |
 | **Three structural papers** on localization sheets, rooted ends and protected planar carriers | [Paper index and versions](./papers/README.md) | Finite/conditional results, not global analytic closure. |
 
-The illustrations are generated without external image assets by [a small source-backed SVG generator](./code/generate_readme_research_figures.mjs); the certificates and original references remain the evidence for each claim.
+The **ray portrait and two-scale angle-map figures** are generated from the exact portrait manifest by [our reproducible SVG generator](./code/generate_readme_research_figures.mjs). The return and target-disk figures are explicitly labeled schematics of the archive's certificates. No external illustration is presented as an original research result.
 
 ## The mathematical program
 
