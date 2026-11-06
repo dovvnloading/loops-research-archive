@@ -1,0 +1,88 @@
+{
+  "conditional_renormalization_fiber": {
+    "ambient_return": "x -> 512*x mod 1",
+    "forced_common_internal_angle": "0/1",
+    "internal_return": "t -> 2*t mod 1",
+    "requires": "true connected degree-two period-nine renormalization with endpoint in its Julia set, Levin p1 and p2, and both rays in its admissible set"
+  },
+  "critical_value_rays": [
+    "116791/261632",
+    "144841/261632"
+  ],
+  "distinct_rational_angles": 18,
+  "first_periodic_landing_phase": 10,
+  "nine_landing_pairs": [
+    {
+      "lower": "228/511",
+      "lower_from_critical_value": "283/511",
+      "phase": 10,
+      "upper": "283/511",
+      "upper_from_critical_value": "228/511"
+    },
+    {
+      "lower": "55/511",
+      "lower_from_critical_value": "55/511",
+      "phase": 11,
+      "upper": "456/511",
+      "upper_from_critical_value": "456/511"
+    },
+    {
+      "lower": "110/511",
+      "lower_from_critical_value": "110/511",
+      "phase": 12,
+      "upper": "401/511",
+      "upper_from_critical_value": "401/511"
+    },
+    {
+      "lower": "220/511",
+      "lower_from_critical_value": "220/511",
+      "phase": 13,
+      "upper": "291/511",
+      "upper_from_critical_value": "291/511"
+    },
+    {
+      "lower": "71/511",
+      "lower_from_critical_value": "440/511",
+      "phase": 14,
+      "upper": "440/511",
+      "upper_from_critical_value": "71/511"
+    },
+    {
+      "lower": "142/511",
+      "lower_from_critical_value": "369/511",
+      "phase": 15,
+      "upper": "369/511",
+      "upper_from_critical_value": "142/511"
+    },
+    {
+      "lower": "227/511",
+      "lower_from_critical_value": "227/511",
+      "phase": 16,
+      "upper": "284/511",
+      "upper_from_critical_value": "284/511"
+    },
+    {
+      "lower": "57/511",
+      "lower_from_critical_value": "454/511",
+      "phase": 17,
+      "upper": "454/511",
+      "upper_from_critical_value": "57/511"
+    },
+    {
+      "lower": "114/511",
+      "lower_from_critical_value": "397/511",
+      "phase": 18,
+      "upper": "397/511",
+      "upper_from_critical_value": "114/511"
+    }
+  ],
+  "pairwise_chord_crossings": 0,
+  "periodic_orbit_length": 9,
+  "scope": "Exact finite arithmetic only; ray landing imported from Zakeri; no proof of a Levin map at this tip or any KL prime-end/sheet functor",
+  "status": "EXACT_TIP_PERIOD9_RAY_PORTRAIT_PASS",
+  "tip_interval_endpoint_phase": 18,
+  "tip_interval_endpoint_rays": [
+    "114/511",
+    "397/511"
+  ]
+}
