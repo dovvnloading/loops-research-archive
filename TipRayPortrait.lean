@@ -138,6 +138,43 @@ theorem tip_phase_eighteen_forced_fiber (q : Nat) (read : Fin 511 → Fin q)
     ⟨397, by decide⟩ ⟨114, by decide⟩
     (ambientReturn9_fixed _) (ambientReturn9_fixed _) hleft hright
 
+/--
+Exact cyclic-order obstruction for a source-defined degree-two period-three
+Levin map. In sorted ambient angle order 110,114,142,369,397,401 (all /511),
+put a = 7 Π₃(110/511), b = 7 Π₃(114/511). Semiconjugacy forces the
+six internal residues to be [a,b,4b,2a,4a,2b] modulo 7.
+Any monotone degree-one circle map has at most one strict circular descent.
+
+The analytical existence, eligibility, monotonicity, and nonzero period-three
+internal angles are imported and **not** formalized in Lean.
+-/
+def threeScaleCircularDescents (a b : Fin 7) : Nat :=
+  let u := a.val
+  let v := b.val
+  (if u > v then 1 else 0) +
+  (if v > (4 * v) % 7 then 1 else 0) +
+  (if (4 * v) % 7 > (2 * u) % 7 then 1 else 0) +
+  (if (2 * u) % 7 > (4 * u) % 7 then 1 else 0) +
+  (if (4 * u) % 7 > (2 * v) % 7 then 1 else 0) +
+  (if (2 * v) % 7 > u then 1 else 0)
+
+/-- Exactly two residue pairs fit weak circular order, one all-zero. -/
+theorem three_scale_two_circular_orders :
+    ∀ a b : Fin 7, threeScaleCircularDescents a b ≤ 1 ↔
+      ((a.val = 0 ∧ b.val = 0) ∨ (a.val = 4 ∧ b.val = 5)) := by
+  decide +kernel
+
+/-- Once zero is analytically excluded by least period three, the
+    six genuine internal ray angles are forced, not merely guessed. -/
+theorem three_scale_monotone_forced :
+    ∀ a b : Fin 7, a.val ≠ 0 → b.val ≠ 0 →
+      threeScaleCircularDescents a b ≤ 1 →
+      a.val = 4 ∧ b.val = 5 := by
+  decide +kernel
+
+#print axioms three_scale_two_circular_orders
+#print axioms three_scale_monotone_forced
+
 #print axioms tip_phase_eighteen_forced_fiber
 #print axioms eighteen_angles_distinct
 #print axioms nine_chords_pairwise_unlinked
