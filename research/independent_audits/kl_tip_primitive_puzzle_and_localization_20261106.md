@@ -68,6 +68,60 @@ The **two Q pieces have depth 3** but attach at α and α′ (P vertices), **not
 
 Since K₃⊂D(0,1/4), while the only Julia vertices on ∂Y³ are ±t with |t|>5/16>1/4, K₃ is disjoint from ∂Y³: the remaining ray/equipotential arcs are outside K(f) altogether. Connected K₃ contains 0, so it lies in **int(Y³)**. On the real line the critical piece is bounded by −t,t and the two earlier critical orbit points x₁,x₂ lie outside; x₃∈K₃⊂int(Y³). Thus the **first return of 0 to Y³ occurs at time 3**. This is consistent with the certified primitive period-three return and supplies the initial modified-nest first child, but the *full* named KL stopping nest, with its exact terminal extension/marking, has **not** yet been identified with the round disks V₃,U₃. This is a remaining gate, not an implied equality of two domains.
 
+### The second top puzzle: apply KL to the actual quadratic-like g=f³
+
+The next scale is **not** obtained by simply relabeling the ambient f-puzzle. Apply KL §2.1 anew to the previously certified degree-two polynomial-like germ
+
+\[
+G=f^3:V_3\to U_3,\qquad R(G)=G^3=f^9:V_9\to U_9.
+\]
+
+External angles for this **second** puzzle are **G-internal angles**, defined by straightening G and, on qualifying ambient external rays, by the already established **Levin map Π₃**. They are not arbitrary degree-eight ambient rays. This is the correct source distinction between the first- and second-stage return clocks.
+
+**A second exact real source certificate.** The function G is real and even, with a strict **local maximum at 0**. (The quadratic coefficient a₃<0 from the existing complex expansion.) The dividing repelling fixed point of its real quadratic-like straightening is a **positive** fixed point a of G (the coordinate orientation reverses relative to z²+c). Strict rational tests give
+
+\[
+G(3/32)>3/32,\quad G(1/10)<1/10
+\quad\Longrightarrow\quad
+3/32<a<1/10,\quad G(a)=a.
+\]
+
+The derivative is strictly less than −1 throughout a coarser interval (1/16,1/8), checked by the Python interval method; it is repelling. Since G is even, its **other** central preimage of a is α′_G=−a. As at the ambient scale, the standard *internal* dividing fixed point ray portrait has **1/3 and 2/3** landing at a, so **q_G=2**.
+
+Let b_G>0 be a real solution of G(b_G)=−a, and let t_G>0 solve G(t_G)=b_G. Six new exact dyadic/rational inequalities (independently checked in both [Lean](../../TipKLPuzzle.lean) and [Python](verify_tip_kl_puzzle.py)) give
+
+\[
+\begin{aligned}
+&G(17/100)>-3/32,\qquad G(7/40)<-1/10,\\
+&G(1/32)>7/40,\qquad G(1/16)<17/100.
+\end{aligned}
+\]
+
+By IVT, they produce
+
+\[
+17/100<b_G<7/40,\qquad
+1/32<t_G<1/16,\qquad
+G^2(\pm t_G)=-a,\quad G^3(\pm t_G)=a.
+\]
+
+The exact critical orbit obeys **G²(0)=x₆<−1/10<−a**, and G(0)=x₃>1/16. Relative to the *G-internal* real α-puzzle, the first q_G=2 critical return therefore already lies in the **interior of the off-critical depth-one piece** attached at α′_G (the other side from the ambient f-puzzle). Its least KL decoration escape index is **n_G=1**.
+
+The actual source pieces at the second scale are therefore
+
+\[
+P_G=Y_G^1,\quad V_G^0=Y_G^3,\quad
+Q_{L,G}=Q_G^{a},\quad Q_{R,G}=Q_G^{-a},
+\quad\operatorname{depth}(Q_{\bullet,G})=3.
+\]
+
+KL Lemma 2.1 supplies pairwise disjoint source branches **under G²=f⁶**; this is the internal symbolic two-step clock, **not** the true primitive **G³=f⁹** quadratic-like return. The critical central Y³_G vertex pair is **±t_G**. The internal rays at a,−a have angles 1/3,2/3 and 1/6,5/6; the next two-generation internal pullbacks give the 5/12,7/12 and 5/24,7/24,17/24,19/24 labels with positive/negative assignment determined by the real orientation reversal. **Their full ambient angle preimages are not certified here.** The proof uses standard real-symmetric **quadratic-like straightening**, local connectivity of the PCF little Julia, and the source KL puzzle-topology theorem; it does not assert that the round-disk boundaries are the literal KL puzzle boundaries.
+
+Since K₉⊂D(0,1/32) but |t_G|>1/32, the little K₉ is disjoint from the finite Julia vertices on the critical depth-three G-puzzle boundary, and it cannot meet the external-ray/equipotential arcs. Thus connected K₉ containing 0 lies in **int Y³_G**. The first two critical G-iterates x₃>1/16 and x₆<−1/10 lie outside that real central piece, while **G³(0)=x₉∈K₉⊂int Y³_G**. Therefore **the first return of 0 to the second top critical piece has G-time 3, i.e. physical time 9**.
+
+This supplies an **actual source-level 3-then-9 top-puzzle/first-return match**, under the named classical inputs and without confusing the two KL decoration clocks with the two primitive return clocks. It is **not** the complete KL modified principal nest and does not establish its canonical localization's marked germ identity on every puzzle piece or the based O/ξ/η transport between these nested return levels.
+
+
 ## 3. Separate actual Kahn canonical-localization witnesses at p=3 and p=9
 
 We can do more than list possible nonfaithful ray angles. The [Paper-1 source-locked canonical-localization theorem](../mlc_unified/kl_canonical_localization_forced_collision.md) supplies an **actual based loop/coset collision for every ordinary primitive stage** once an off-cycle component of the pulled-back little Julia set is identified. The two primitive stages at this tip meet the earlier complex phase disjointness assumptions. Here is a finite **real-point certificate** of such a component **for each stage**.
