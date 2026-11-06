@@ -1,5 +1,7 @@
 # The overlooked ray-correspondence interface at the real Misiurewicz tip
 
+> **Latest source-status correction (2026-11-06):** The [subsequent Carathéodory argument](levin_tip_p2_carathéodory_two_scale_20261106.md) proves Levin **(p2)** for the already certified compact round-disk 3/9 representatives using the *ambient* polynomial's subhyperbolic local connectivity and a uniform positive Green-margin existence lemma. The genuine Levin Π₉ and Π₃ angle maps are now available under the explicitly imported analytic theorems. The 114/511 and 397/511 pair **collapses to 0** under Π₉ but remains **5/7 and 2/7** under Π₃. The prior conditional/p2-open statements below document the earlier stage and are superseded; KL sheets and MLC remain open.
+
 > **2026-11-06 progress addendum:** The new [nonattracting complex 3/9 certificate](nonattracting_tip_complex_two_scale_20261106.md) now constructs concrete connected proper quadratic-like restrictions at the tip, using Lean-certified finite bounds plus Rouché/Riemann–Hurwitz. This supplies Levin **(p1)** under those named classical analytic inputs. **(p2) remains open**, so the renormalization-ray map and forced angular fiber remain explicitly conditional. Earlier text below records the pre-certificate frontier.
 
 
