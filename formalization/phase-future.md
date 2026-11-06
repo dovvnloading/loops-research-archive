@@ -75,13 +75,24 @@ it require a decidable or numeric observable type. It proves
 future-*observation* soundness, not injectivity of the quotient or
 preservation of every conceivable future observable.
 
-### The necessary hypothesis
+### The necessary hypothesis, with a Lean-checked countermodel
 
 It would be incorrect to say static factorization always implies future
 soundness for any quotient. If a quotient is not transition compatible,
 two states with equal coarse state can evolve to states with different
 coarse states and different readings. The semiconjugacy hypothesis
 prevents precisely this failure.
+
+The `bad_static_does_not_preserve_future` theorem gives an explicit
+four-state countermodel. Take the quotient `pi : Fin 4 -> Fin 2`
+given by parity, and observe `obs(i)=(i mod 2 == 0)`. Then the current
+observable factors through the quotient exactly. But a deterministic
+transition that fixes phase 0 and sends phase 2 to phase 1 has no
+compatible quotient transition: phases 0 and 2 have the same parity
+at time zero, yet their observations differ at time one. Lean proves
+all three claims (`bad_static_observation_factors`,
+`bad_quotient_has_no_compatible_transition`, and
+`bad_static_does_not_preserve_future`) by kernel-checked proofs.
 
 ## 2. Concrete cyclic clock semiconjugacy
 
@@ -206,6 +217,7 @@ a later observable distinction.
 | `PhaseFuture.lean` | `futureEqual_next`, `semiconjugate_iterate` | Forward-invariant future equality, all-time semiconjugacy |
 | `PhaseFuture.lean` | `futureSound_iff_observationFactor`, `factorsFutureStream_iff_factorsObservation` | Exact abstract quotient criteria |
 | `PhaseFuture.lean` | `clock_project_semiconjugate`, `clock_future_iff_static_factor` | Dynamic phase projection criterion for arbitrary divisible periods |
+| `PhaseFuture.lean` | `bad_static_observation_factors`, `bad_static_does_not_preserve_future` | Four-state countermodel showing why semiconjugacy is essential |
 | `PhaseFuture.lean` | `clock_reaches_zero`, `zeroSensor_bounded_future_separates`, `zeroTrace_injective` | One-bit sensor separates all states over one full clock period |
 | `PhaseFuture.lean` | `strict_phase_quotient_loses_zero_future` | Strict phase reduction without memory fails for named sensor |
 | `PhaseFuture27.lean` | `outerDecode_encode`, `outerEncode_decode`, `middleDecode_encode`, `middleEncode_decode` | Two exact reversible 27-phase representations |
