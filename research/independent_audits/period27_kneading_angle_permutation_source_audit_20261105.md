@@ -1,5 +1,7 @@
 # Period-27 kneading-angle identity and full cyclic orbit permutation
 
+**Update, 2026-11-06:** the [center-identification proof](period27_center_tuning_identification_20261106.md) supplies the missing source bridge and identifies `c_*` as the center of `A*A*A`. The earlier open-status statements below are retained as a historical record of this audit; the new result concerns component-root parameter rays, with no change to the attracting-center or localization limitations.
+
 **Date:** 2026-11-05. **Status:** Exact signed-integer verification of a classical symbolic-combinatorial correspondence on the archive's unique real period-27 quadratic center. This is a new source comparison *within this archive*, not a new general theorem of kneading theory, a complete parameter-ray identification, a prime-end/sheet atlas, or progress claimed on an MLC gate.
 
 ## 1. Correct the parameter-ray target
