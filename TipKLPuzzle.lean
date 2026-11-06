@@ -192,7 +192,7 @@ theorem obstruction_point_outside_all_noncentral_nine_phases :
     (List.range 9).all obstructionAvoidsNinePhase = true := by
   decide +kernel
 
-/-- Consequently, at the geometric-analysis level, z=31/1024 is
+/- Consequently, at the geometric-analysis level, z=31/1024 is
     in Ω_t,9 = U⁰ \\ B9 but is absent from Ω_t,3 = U⁰ \\ B3:
     K3 contains I3, while B9 is confined to the nine complex phase
     disks. In particular *identity inclusion* Ω_t,9→Ω_t,3 is undefined.
