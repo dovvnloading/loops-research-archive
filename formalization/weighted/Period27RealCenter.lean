@@ -142,15 +142,25 @@ theorem hasDerivAt_polynomial (n : Nat) :
   induction n with
   | zero =>
       intro c
-      simpa [polynomial, derivativePolynomial, state_zero] using
-        (hasDerivAt_const c (0 : ℝ))
+      change HasDerivAt (fun _ : ℝ => 0) 0 c
+      exact hasDerivAt_const c 0
   | succ n ih =>
       intro c
       have hsquare := (ih c).pow 2
       have hsum := hsquare.add (hasDerivAt_id c)
-      convert hsum using 1 <;>
-        simp only [polynomial, derivativePolynomial, state_succ, next] <;>
-        ring
+      have hh : HasDerivAt
+          (fun x : ℝ => (polynomial n x) ^ 2 + x)
+          (2 * (polynomial n c) * (derivativePolynomial n c) + 1) c := by
+        convert hsum using 1 <;> ring
+      have heq : polynomial (n+1) =
+          fun x : ℝ => (polynomial n x) ^ 2 + x := by
+        funext x
+        simp [polynomial, state_succ, next]
+      have hd : derivativePolynomial (n+1) c =
+          2 * polynomial n c * derivativePolynomial n c + 1 := by
+        simp [derivativePolynomial, polynomial, state_succ, next]
+      rw [heq, hd]
+      exact hh
 
 /-- Both real orbit and real derivative recurrence are continuous for
     arbitrary time and all real parameters. -/
@@ -175,12 +185,12 @@ theorem state_continuous (n : Nat) :
 theorem polynomial_continuous (n : Nat) :
     Continuous (polynomial n) := by
   change Continuous (fun c => (state n c).1)
-  fun_prop
+  exact continuous_fst.comp (state_continuous n)
 
 theorem derivativePolynomial_continuous (n : Nat) :
     Continuous (derivativePolynomial n) := by
   change Continuous (fun c => (state n c).2)
-  fun_prop
+  exact continuous_snd.comp (state_continuous n)
 
 /-- Both dyadic endpoints, exactly as represented by the source.
     They are not decimal approximations. -/
