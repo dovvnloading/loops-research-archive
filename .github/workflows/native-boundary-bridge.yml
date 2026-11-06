@@ -1,0 +1,35 @@
+name: Native boundary bridge exact regression
+
+on:
+  push:
+    branches:
+      - main
+      - 'research/**'
+    paths:
+      - '.github/workflows/native-boundary-bridge.yml'
+      - 'research/independent_audits/verify_native_boundary_bridge.py'
+      - 'research/independent_audits/native_boundary_bridge_identifiability_20261106.md'
+      - 'results/native_boundary_bridge_20261106.json'
+  pull_request:
+    paths:
+      - '.github/workflows/native-boundary-bridge.yml'
+      - 'research/independent_audits/verify_native_boundary_bridge.py'
+      - 'research/independent_audits/native_boundary_bridge_identifiability_20261106.md'
+      - 'results/native_boundary_bridge_20261106.json'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  exact-boundary-certificate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Compile exact boundary certificate verifier
+        run: python -m py_compile research/independent_audits/verify_native_boundary_bridge.py
+      - name: Verify coupled covering, edge incidence and deterministic manifest
+        run: python research/independent_audits/verify_native_boundary_bridge.py --check-manifest
