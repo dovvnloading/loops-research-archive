@@ -108,6 +108,21 @@ def certify() -> dict:
     second_phase_radius = 2 * max_c / 16 + F(1, 256)
     assert orbit[2].lo - second_phase_radius > F(9, 8)
 
+    # SECOND KL top puzzle: degree-two polynomial-like G=f^3
+    # has a real dividing fixed a in (3/32,1/10) with
+    # G'(a)<-1 (standard real quadratic-like straightening).
+    # Its symmetric preimage alpha'_G=-a, a positive b_G with
+    # G(b_G)=-a, and central vertices ±t_G with G(t_G)=b_G.
+    assert iterate(exact(F(3, 32)), 3).lo > F(3, 32)
+    assert iterate(exact(F(1, 10)), 3).hi < F(1, 10)
+    assert iterate(exact(F(17, 100)), 3).lo > -F(3, 32)
+    assert iterate(exact(F(7, 40)), 3).hi < -F(1, 10)
+    assert iterate(exact(F(1, 32)), 3).lo > F(7, 40)
+    assert iterate(exact(F(1, 16)), 3).hi < F(17, 100)
+    assert orbit[3].lo > F(1, 16)
+    assert orbit[6].hi < -F(1, 10)
+    assert -F(1, 32) < orbit[9].lo <= orbit[9].hi < F(1, 32)
+
     # Three consecutive IVT inverse branches of g=f^3.
     # Existence is proved analytically by the strict *exact* signs.
     assert iterate(exact(1), 3).hi < 0
@@ -184,7 +199,18 @@ def certify() -> dict:
         "outer_puzzle_first_escape_q_n": [q, n],
         "depths_P_V0_Q": [1, 3, 3],
         "vertex_real_bracket_t": ["5/16", "7/16"],
-        "outer_g3_fixed_a_bracket": ["1/16", "1/8"],
+        "outer_g3_fixed_a_bracket": ["3/32", "1/10"],
+        "second_level_kl_puzzle": {
+            "quadratic_like_map": "G=f^3:V3->U3, one return unit = 3 physical iterates",
+            "alpha_G_dividing_real_bracket": ["3/32", "1/10"],
+            "alpha_prime_G": "-alpha_G",
+            "positive_offcritical_preimage_b_G_bracket": ["17/100", "7/40"],
+            "central_vertex_t_G_bracket": ["1/32", "1/16"],
+            "escape_clock_q_n": [2, 1],
+            "source_piece_depths": [1, 3, 3],
+            "first_critical_return_under_G": 3,
+            "physical_return": 9
+        },
         "extra_preimage_r_bracket": ["1", "17/16"],
         "extra_preimage_nested_three_brackets": [
             ["1", "17/16"], ["6/5", "49/40"], ["31/25", "5/4"]
