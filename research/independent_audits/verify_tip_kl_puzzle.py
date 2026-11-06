@@ -14,7 +14,7 @@ from verify_real_nested_3_9 import (
     parameter, orbit_and_derivative,
 )
 from verify_complex_quadratic_like_3_9 import evaluate_bounds
-from verify_tip_complex_domains import U3, SMALL9
+from verify_tip_complex_domains import U3, U9, SMALL9
 
 TIP_K = -607918036626757496169199575185708826140
 LOW = F(-1786511, 1_000_000)
@@ -142,6 +142,12 @@ def certify() -> dict:
         coefs.append(stages[j] * coefs[j].times(2))
     bound3 = evaluate_bounds(stages, coefs, U3, 3)
     bound9 = evaluate_bounds(stages, coefs, SMALL9, 9)
+    bound_inner = evaluate_bounds(stages, coefs, U9, 9)
+    assert stages[3].lo - bound_inner.deviation[3] > 7*UNIT//40
+    # All G^2-central preimages of alpha_G consist of ±a, ±b_G,
+    # bounded by |b_G|<7/40. Hence no G^3 alpha_G vertex is
+    # in U9, since Re G(U9)>7/40 by the previous strict test.
+
 
     def misses_all_phase_disks(
         start: int, upper: int, count: int, bounds
