@@ -140,6 +140,24 @@ theorem inner_return_kl_fixed_and_vertex_brackets :
     (tipOrbit 9).hi < unitTip / 32 := by
   decide +kernel
 
+/--
+Every point of G(U9)=f³(D(0,1/32)) has real part
+strictly greater than 7/40, by its complex-disk majorant.
+All four *central* G²-preimages of alpha_G=a are contained
+in the real interval (-7/40,7/40): ±a and ±b_G.
+Therefore no central G³-preimage of a lies in U9;
+the genuine second-level Y³_G puzzle Julia vertices
+are strictly outside the entire inner polynomial-like U9.
+The geometric identification of the four preimages uses
+degree-two properness, evenness, and the IVT signs above.
+-/
+theorem inner_puzzle_all_vertices_outside_inner_disk :
+    7 * unitTip / 40 <
+      (tipOrbit 3).lo - deviation innerRadius 3 := by
+  decide +kernel
+
+#print axioms inner_puzzle_all_vertices_outside_inner_disk
+
 /-- Both top-puzzle escape clocks have q=2,n=1.
     At the second level, a single internal symbol means G²=f⁶,
     while the terminal little return is G³=f⁹. -/
