@@ -1,6 +1,6 @@
 name = "loops_weighted"
 version = "0.1.0"
-defaultTargets = ["WeightedReturn", "GraphWeightedBridge", "CloneBounds", "CloneRoot", "FullCloneEigen", "FullCloneMatrix", "SpectralDominance", "FullCloneSpectralMax", "Period27RealCenter"]
+defaultTargets = ["WeightedReturn", "GraphWeightedBridge", "CloneBounds", "CloneRoot", "FullCloneEigen", "FullCloneMatrix", "SpectralDominance", "FullCloneSpectralMax", "Period27RealCenter", "Period27RealUniqueness"]
 
 [[require]]
 name = "mathlib"
@@ -77,3 +77,6 @@ srcDir = "../.."
 
 [[lean_lib]]
 name = "Period27RealCenter"
+
+[[lean_lib]]
+name = "Period27RealUniqueness"
