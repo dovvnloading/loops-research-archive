@@ -1,4 +1,5 @@
 import Period27RealUniqueness
+import Paper2Phase
 
 /-!
 # Actual exact period 27 for the uniquely isolated real quadratic center
