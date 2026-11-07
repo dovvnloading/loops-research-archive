@@ -230,6 +230,37 @@ If any intermediate access is stretching, the next crest **cannot** remain zero-
 
 **Remaining finite problem:** The source does not here supply the full **actual endpoint map \(g\)** at the finitely many exceptional endpoint accesses. Nor does the paper establish from §2.7 alone that every guarded endpoint cycle misses the critical limb. The theorem is a **rigorous conditional reduction to a native finite gate graph**, not an assertion that the graph has been computed or is acyclic. In particular a positive-width zero-core Wave exists by Theorem 4.3; positive conformal width cannot be used to remove these states.
 
+### Theorem 4.5 (a corrected **bounded-visits Wave chain** from dual visibility and positive cores)
+
+The dual-arc theorem and open-core transport can be combined into an exact **conditional** replacement for the source's Lemma 6.4 **without** any global prime-end quotient.
+
+Assume a native KKL stage with original **finite cyclic marking** \(\mathcal I\) and a critical-limb block of at most \(r=6\mathbf b\) marking atoms (KKL Lemma 4.8). Write \(\Phi=F_*\) for its real open multi-interval action. Suppose:
+
+1. **Nondecreasing proper length:** whenever \(\Phi J\) remains proper, \(\ell(\Phi J)\ge\ell(J)\); the full inner circle is absorbing, and a saturated output cannot belong to the crest of a nontrivial subsequent Wave.
+2. **Real dual nonreturn:** every nonempty proper *positive-length* periodic marked interval \(J\) has a **nonzero actual dual witness** obeying Theorem 3.2's \(d(\Phi^pJ)\ge T_F^p d(J)\), or a positive native WAD whose inverse return dominates it in the forbidden direction of Theorem 3.1.
+3. **Critical open-core visibility:** a chain \(A_0,\ldots,A_N\) of genuine critical visits has **regular positive** crests and each successor's open core \(J_i=\operatorname{Int}C_{A_i}\) intersects \(\mathbf L_0\) through **at least one complete marking atom**, not solely at an endpoint.
+4. **Shortness:** each \(\ell(J_i)<12\mathbf b\), as in the source's short critical-visit bound, and each successor \(A_{i+1}\) crests over the genuine closed \(F_*^{m_i}C_{A_i}\), with \(m_i\ge1\).
+
+Then
+
+\[
+\boxed{N<216\mathbf b^2.}
+\tag{4.10}
+\]
+
+**Proof.** By Theorem 4.2, \(J_{i+1}\supset\Phi^{m_i}J_i\). Condition 1 implies \(\ell(J_i)\) is nondecreasing, except that full-circle saturation terminates the chain; the latter is already excluded by the existence of the nontrivial successor Wave crest. Therefore all the \(J_i\) are proper with
+\(1\le\ell(J_i)\le12\mathbf b-1\).
+
+Suppose a consecutive block of \(18\mathbf b\) visit transitions had no increase in \(\ell(J_i)\), and let its constant length be \(k\). Nondecreasing proper length means no **intermediate one-step** iterate can increase its marked length. Since both \(\Phi^{m_i}J_i\) and \(J_{i+1}\) are connected open marked intervals of the same length \(k\) with one included in the other, they are equal. Concatenating these equalities gives **one deterministic real forward orbit** under \(\Phi\), with at least \(18\mathbf b\) distinct iterate times whose interval state meets \(\mathbf L_0\) in a full atom (Condition 3).
+
+A cyclic finite marking has at most \(r+k-1\le6\mathbf b+k-1\le18\mathbf b-2\) distinct proper length-\(k\) interval states meeting a consecutive \(r\)-atom limb block. Indeed, if the limb has \(r\) consecutive atoms, the start of a length-\(k\) block must lie in the string of \(r+k-1\) possible cyclic positions (or fewer if that string wraps). Hence two different actual iterate times have the same interval state. Determinism makes this a proper periodic interval of positive length \(k\), impossible by Condition 2 and Theorem 3.1/3.2.
+
+Thus **every** block of \(18\mathbf b\) critical-visit transitions increases \(\ell\) by at least one. If \(N\ge216\mathbf b^2=12\mathbf b\cdot18\mathbf b\), there are at least \(12\mathbf b\) such blocks and \(\ell(J_N)\ge\ell(J_0)+12\mathbf b\ge12\mathbf b+1\), contradicting Condition 4. \(\square\)
+
+**What was repaired:** The pigeonhole threshold is **strict**: only \(r+k-1\) possible length-\(k\) interval positions meet an \(r\)-atom limb, so \(r+k\) occurrences force repetition. The original v1 proof's count \(r+k\) followed by the same number of encounters did **not** give strict excess. And a repeated proper interval is not contradicted by the bare statement \(\lambda_F>1\); **Condition 2 identifies the exact missing dual witness** that makes the Perron contradiction valid.
+
+**What is still not proved:** Conditions 1–3 are not all supplied by the KKL source for **every** proof-used native critical crest. In particular the unqualified existence of the dual witness (2), positive regular crests and **full-atom** critical encounters (3), and the non-LC endpoint gate chart are open. Theorem 4.5 is a **correct quantitative conditional theorem**, not a declaration that KKL Lemma 6.4 or the full Wave amplification theorem is now repaired.
+
 ## 5. Root-contact endpoint localization without a global prime-end quotient
 
 Let \(A=\overline{\mathcal T'\setminus\mathcal T}\) be the actual excess carrier and let
@@ -270,7 +301,7 @@ There are now **two independently typed native bridges**, not one giant access c
 
 ### Strict status
 
-**Established in this note:** native WAD non-return (Theorem 3.1); Perron witness contradiction (Theorem 3.2); type-safe positive-crest open-core transport (Theorem 4.2); **a genuine short positive-width native Wave with zero marked crest** (Theorem 4.3); no newly born attached block at a guarded endpoint (Proposition 5.1); precise identification and proof-licensed repair of the **\(n=0\)** exponent typo in KKL §2.7's definition.
+**Established in this note:** native WAD non-return (Theorem 3.1); Perron witness contradiction (Theorem 3.2); type-safe positive-crest open-core transport (Theorem 4.2); **a genuine short positive-width native Wave with zero marked crest** (Theorem 4.3); zero-core reduction to a finite actual endpoint gate graph (Theorem 4.4); a corrected **conditional** \(216\mathbf b^2\) bounded-visits Wave chain (Theorem 4.5); no newly born attached block at a guarded endpoint (Proposition 5.1); precise identification and proof-licensed repair of the **\(n=0\)** exponent typo in KKL §2.7's definition.
 
 **Open:** construct a dual witness/domination for every proper recurrent *native* interval; classify the actual **finite marked endpoint gate graph** and exclude guarded critical-limb cycles under the source's typed closed-input action; verify contact/guard status for actual non-LC exceptional marked endpoints and the full source-specific closed-crest admissibility. Theorems 3.1 and 4.2 do **not** jointly imply KKL Proposition 6.9, Lemma 6.4, the corrected bounded-visit growth repair, full Wave amplification, or MLC.
 
