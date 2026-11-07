@@ -97,3 +97,10 @@ The earlier [proper-base no-point-crest theorem](./kkl_wave_nonempty_crest_noncr
 - The theorem does not claim the resulting Wave is *wide*, *short* under KKL's critical limb notion, or participates in any actual critical-visit chain. It only refutes **unique smallest-base selection at the definition stage**.
 
 **Status:** a real positive-width native annular first-failure certificate for universal base uniqueness; the correct repair is base-tagging or restricting to packets with canonical bases. **Issue #40, KKL_BOUNDED_VISITS_INTERVAL_GROWTH_REPAIR, KKL_PARABOLIC_WAVE_AMPLIFICATION, and MLC remain OPEN.** No specialist referee review or priority claim.
+
+
+## Postscript — canonicality returns automatically for *active proper-base* Waves
+
+The companion [canonical active-Wave theorem](./kkl_active_wave_canonical_base_20261106.md), Theorem 3.1, proves that **if an admissible lamination has a specified proper minimal base and a nonempty crest with minimal connected ends**, its base is in fact **globally uniquely least**, and the end pair giving a **nonempty** crest is unique up to swapping. Each leaf's actual boundary-parallel support contains the same positive open crest core; their union is connected and has one marked convex hull. The old nonuniqueness construction still witnesses the literal definition problem **outside that active subclass**. Do **not** cite it as showing ambiguous bases for a proof-used short critical Wave whose nonempty crest has been established.
+
+Combined with the [large-rotation short-Wave proper-base theorem](./kkl_short_wave_proper_base_large_rotation_20261106.md), this confines the literal nonuniqueness obstruction away from **short critical successors at \(q\ge24\mathbf b\)**. The source's still-unproved critical-return dual witness and endpoint-accurate closed \(\iota^*\) transport are unaffected.
