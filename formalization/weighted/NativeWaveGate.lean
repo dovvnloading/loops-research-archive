@@ -117,4 +117,50 @@ theorem atomic_ends_leave_positive_crest (k : ℕ)
     (hadmissible : 2 < k) : 0 < k - 2 := by
   omega
 
+
+/-- The finite *order* part of the no-touching-crest argument:
+a leaf from the last left-end atom cannot end in the adjacent
+first right-end atom; similarly in the opposite direction.
+The four marked endpoint atoms are therefore alternating.
+The final Jordan crossing obstruction is geometric, not encoded here. -/
+theorem touching_end_extrema_alternate
+    (cut leftFar rightFar : ℕ)
+    (hcut : 2 ≤ cut)
+    (hleft : leftFar + 2 ≤ cut)
+    (hright : cut + 1 ≤ rightFar) :
+    leftFar < cut - 1 ∧ cut - 1 < cut ∧ cut < rightFar := by
+  omega
+
+/-- If two connected end packets cover every marked atom of a full
+base, the total number of atoms is at most the sum of their lengths.
+With the source's strict short-end bounds this is impossible when
+the total marking contains at least 24*b atoms. -/
+theorem short_full_base_no_zero_atom_crest
+    (b total leftEnd rightEnd : ℕ)
+    (hlarge : 24 * b ≤ total)
+    (hleft : leftEnd < 12 * b)
+    (hright : rightEnd < 12 * b)
+    (hcovered : total ≤ leftEnd + rightEnd) : False := by
+  omega
+
+/-- The q-version, after independently verifying the genuine marking
+has at least one atom in each rotational limb (total ≥ q). -/
+theorem long_rotation_short_full_base_positive_atom
+    (b q total leftEnd rightEnd : ℕ)
+    (hq : 24 * b ≤ q)
+    (hmark : q ≤ total)
+    (hleft : leftEnd < 12 * b)
+    (hright : rightEnd < 12 * b)
+    (hcovered : total ≤ leftEnd + rightEnd) : False := by
+  omega
+
+/-- The positive-gap arithmetic, separate from the topological
+statement that a genuine proper-base Wave with nonempty crest
+cannot have two end packets merely touching at a marked cut. -/
+theorem separated_end_packets_leave_atom
+    (base leftEnd rightEnd : ℕ)
+    (hgap : leftEnd + rightEnd < base) :
+    0 < base - (leftEnd + rightEnd) := by
+  omega
+
 end LoopsNativeKKL
