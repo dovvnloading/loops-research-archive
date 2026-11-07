@@ -189,11 +189,40 @@ This correction yields a useful **positive** theorem directly from the actual so
 \tag{4.7}
 \]
 
-Consequently \(C_A=B_A\setminus(E_-\cup E_+)\) has a **nonempty open marked core**, and every complete atom not equal to \(E_-\) or \(E_+\) is in the crest. If \(B_A\) is a proper marked interval with the usual finite endpoint cuts, the crest is also the closure of its open marked core, as required by Theorem 4.2.
+Consequently \(C_A=B_A\setminus(E_-\cup E_+)\) has a **nonempty open marked core**, and every complete atom not equal to \(E_-\) or \(E_+\) is in the crest. If **in addition** the two end atoms are the two *outermost atoms of the proper base* and the ordinary finite endpoint cuts are retained, the crest equals the closure of its open marked core. For general end positions that closure identity requires an independent check.
 
-**Proof.** Since \(A\) is nonempty, it contains a leaf \(\gamma\). By the Wave definition in Appendix A.1, \(\gamma\) is subordinate to \(B_A\), and by the *marked path* definition it is **not subordinate to any multi-interval of length at most two**. Therefore \(k=\ell(B_A)\ge3\). As the two ends are distinct singleton atoms of the original marking, their union removes **exactly two** full atoms from \(B_A\), leaving the other \(k-2\) full atoms in the crest. This proves both equations. Each remaining full atom is open in the ideal boundary and lies in \(C_A\), so the open core is nonempty. Under the stated proper finite-cut convention, its closure also includes the separating marked cuts retained in \(C_A\). \(\square\)
+**Proof.** Since \(A\) is nonempty, it contains a leaf \(\gamma\). By the Wave definition in Appendix A.1, \(\gamma\) is subordinate to \(B_A\), and by the *marked path* definition it is **not subordinate to any multi-interval of length at most two**. Therefore \(k=\ell(B_A)\ge3\). As the two ends are distinct singleton atoms of the original marking, their union removes **exactly two** full atoms from \(B_A\), leaving the other \(k-2\) full atoms in the crest. This proves both equations. Each remaining full atom is open in the ideal boundary and lies in \(C_A\), so the open core is nonempty. Under the **extra end-at-extremities condition**, its closure also includes exactly the separating marked cuts retained in \(C_A\); without that condition the positivity statement alone does not imply regularity. \(\square\)
 
 **Sharp remaining case:** The source defines Wave *ends* to be minimal **multi-intervals**, not necessarily singleton atoms. Thus this theorem establishes positivity for the atomic-end subclass and does **not** prove it for general Waves with composite or overlapping end multi-intervals. The existence or impossibility of genuine **zero-core** Waves with such ends is **unresolved in this note**. The endpoint-gate graph in Theorem 4.4 is therefore an **if-they-exist conditional analysis**, not evidence that a zero-core critical-visit chain occurs.
+
+### Proposition 4.3a (the **end-cover formula** for arbitrary native marked crests)
+
+No local connectivity or Wave geometry is needed for the following exact atom-level identity. Let \(A\) be a genuine KKL Wave with finite marked base \(B_A\), and let \(E_-,E_+\) be its two **minimal marked end multi-intervals**, each contained in \(B_A\) as in Appendix A.1. Denote by \(\operatorname{At}(Y)\) the set of *complete original marking atoms contained in* a union of atoms and marked endpoints \(Y\). Then
+
+\[
+\boxed{
+\operatorname{At}(C_A)
+=\operatorname{At}(B_A)\setminus
+  \bigl(\operatorname{At}(E_-)\cup\operatorname{At}(E_+)\bigr).
+}
+\tag{4.7a}
+\]
+
+Consequently,
+
+\[
+\boxed{
+\#\operatorname{At}(C_A)\ \ge\
+\ell(B_A)-\ell(E_-)-\ell(E_+).
+}
+\tag{4.7b}
+\]
+
+In particular **every Wave with \(\ell(B_A)>\ell(E_-)+\ell(E_+)\) has a nonempty open marked crest core**; this is a strictly broader positive subclass than atomic ends. Conversely, a *zero-core* Wave (if one exists) must have all its base atoms covered by its two end multi-intervals. Thus the nonpositive case is an **end-cover/overlap problem**, not a consequence of small extremal width or non-LC impressions.
+
+**Proof.** Original marking atoms are pairwise disjoint connected open subsets of the ideal boundary; each of \(B_A,E_-,E_+\) is, by definition, a union of whole atoms and marked endpoints. Removing \(E_-\cup E_+\) from \(B_A\) therefore removes precisely those full atoms in their union and leaves all the other full atoms. This is (4.7a). The union has at most \(\ell(E_-)+\ell(E_+)\) atoms, giving (4.7b). \(\square\)
+
+**Topological caution:** A positive open marked core need **not** equal the entire crest or have its closure equal the crest without an additional **regularity/endpoint** check. Theorem 4.2 requires \(C_A=\overline{\operatorname{Int}C_A}\) and that the interior is connected. These properties are not deduced from (4.7b). Likewise, a zero-core crest is not automatically a *singleton endpoint* unless it is **connected** as assumed in Theorem 4.4.
 
 ### Theorem 4.4 (zero-core critical visits reduce to an **actual endpoint gate graph**)
 
