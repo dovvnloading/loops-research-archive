@@ -1,0 +1,35 @@
+name: Smooth ideal-gate Dirichlet response
+
+on:
+  push:
+    branches:
+      - main
+      - 'research/**'
+    paths:
+      - '.github/workflows/smooth-gate-response.yml'
+      - 'research/independent_audits/kkl_smooth_gate_dirichlet_response_20261107.md'
+      - 'research/independent_audits/verify_smooth_gate_response.py'
+      - 'results/smooth_gate_response_20261107.json'
+  pull_request:
+    paths:
+      - '.github/workflows/smooth-gate-response.yml'
+      - 'research/independent_audits/kkl_smooth_gate_dirichlet_response_20261107.md'
+      - 'research/independent_audits/verify_smooth_gate_response.py'
+      - 'results/smooth_gate_response_20261107.json'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  exact-annulus-response:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Exact finite Fourier checks, negative controls and deterministic manifest
+        run: |
+          python -m py_compile research/independent_audits/verify_smooth_gate_response.py
+          python research/independent_audits/verify_smooth_gate_response.py --check-manifest
