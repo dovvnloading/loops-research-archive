@@ -58,6 +58,31 @@ explains the exact statement and why this does **not** construct KL rays,
 sheets or a nonattracting source stage. The superattracting center fails
 Paper 2's \(K(f)=J(f)\) requirement and no MLC gate is closed.
 
+## General phase-memory cardinality bound (mathlib)
+
+[PhaseMemoryCardinality.lean](PhaseMemoryCardinality.lean) imports the
+root project's [all-period clock theorem](../../PhaseMemoryGeneral.lean)
+and upgrades its injection statement to a finite-cardinality result:
+
+- For every positive p,k and every finite memory type M, retaining
+  the future of the **single Boolean zero-phase sensor** after a
+  `Fin (p*k) → Fin p` quotient forces `k ≤ Fintype.card M`.
+- `Fin r` cannot be a future-faithful memory alphabet if `r<k`.
+  This holds without a chosen transition on the memory alphabet.
+- For three-level periods p, p*m, p*m*n, retaining the full p*m*n
+  zero-sensor future at the outer p-level needs at least m*n states.
+- The original mixed-radix address with exactly k memory states
+  attains the bound and carries a deterministic, correct successor
+  for the full future of every observable.
+
+These are sharp **finite symbolic information** theorems.
+They are not realization theorems for KKL prime-end markings or actual
+holomorphic sheets, and they do not close MLC gates.
+
+Build this companion with `lake build PhaseMemoryCardinality`
+from this weighted directory. It is part of the weighted project's
+default targets and its hole/axiom CI check.
+
 ## Meaning and limitations
 
 These are **formal proofs of encoded finite-dimensional statements**.
