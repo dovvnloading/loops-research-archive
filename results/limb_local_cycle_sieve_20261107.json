@@ -1,0 +1,54 @@
+{
+  "analytic_boundary": "No proof of the actual KKL cut return map, WAD witness, or MLC",
+  "cycle_sieve": {
+    "accepted_states_with_multiplicity": 259000,
+    "critical_only_counterexample": {
+      "all_limb_avoidance": 2,
+      "critical_limb": 0,
+      "critical_limb_only": 4,
+      "k": 2,
+      "limb_lengths": [
+        3,
+        1,
+        2,
+        1,
+        1
+      ]
+    },
+    "cross": "max(0, min(r-1,k-1)-max(1,k-neighbor+1)+1)",
+    "distinct_limb_partitions": 3875,
+    "distinguished_critical_limb_cases": 18500,
+    "exhaustive_limb_lengths": "1 <= length <= 5",
+    "exhaustive_q": "3 <= q <= 5",
+    "extended_partition_cases": 240,
+    "extended_seed": 27072026,
+    "length_by_critical_cases": 249250,
+    "max_per_length_gap_in_test": 8,
+    "per_length_formula": "(r-k+1 if 1<=k<r else 0) + cross(k,r,left) + cross(k,r,right)",
+    "strict_improvement_over_critical_limb_only_cases": 174240,
+    "total_formula": "r*(r+1)//2 - 1 + (r-1)*(left+right-2)"
+  },
+  "finite_poset_controls": {
+    "global_critical_hitting_required_to_exclude_enclosure_repeats": true,
+    "nonvanishing_required": true,
+    "proper_subordinate_positive_periodic_witnesses": 1530,
+    "toy_controls_are_native_KKL_models": false,
+    "union_generated_positive_monotone_maps_checked": 265
+  },
+  "method": "exact integer marked-limb tiling regression only",
+  "schema_version": 1,
+  "source": "KKL arXiv:2606.27272v1, section 6.1 after Proposition 6.6 and Lemma 4.8",
+  "uniform_bounds": {
+    "actual_native_first_return_arrows_verified": false,
+    "b1_critical_only_prior_cap": 110,
+    "b1_worst_case_candidates": 70,
+    "conditional_critical_crest_chain_transition_cap_without_monotonicity": "144*b*b-24*b",
+    "marked_length_monotonicity_required_for_cycle_iff": false,
+    "max_b_checked": 1000,
+    "max_candidate_length_when_nonempty": "12*b-2",
+    "max_local_cycle_candidates": "90*b*b - 21*b + 1",
+    "positive_open_crest_inclusion_and_global_hitting_required": true,
+    "root_placement_required": false,
+    "source_inputs": "q>=24b, all actual limb lengths <=6b, original limbs tile the marked circle"
+  }
+}
