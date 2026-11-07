@@ -351,4 +351,27 @@ theorem refined_critical_visit_count_arithmetic
   have hh : 2 * r - 1 ≤ 12 * b - 1 := by omega
   exact Nat.mul_le_mul_right (12 * b - 1) hh
 
+
+/-- The q-independent size bound for all short critical-cut/side
+candidates: at each of r-1 internal critical cuts, two choices of
+endpoint orientation and at most 12*b-1 positive short lengths.
+The combinatorial bound is kernel-checked; the genuine native gate
+return map's values and acyclicity are NOT formalized here. -/
+theorem native_short_critical_cut_gate_capacity
+    (r b : ℕ)
+    (hb : 1 ≤ b)
+    (hr : r ≤ 6 * b) :
+    2 * (r - 1) * (12 * b - 1) ≤
+      (12 * b - 2) * (12 * b - 1) := by
+  have hside : 2 * (r - 1) ≤ 12 * b - 2 := by
+    omega
+  exact Nat.mul_le_mul_right (12 * b - 1) hside
+
+/-- In particular, b=1 leaves at most 110 short genuine gate
+input states, independently of the rotation number. -/
+theorem native_b_one_gate_capacity (r : ℕ)
+    (hr : r ≤ 6) :
+    2 * (r - 1) * (12 * 1 - 1) ≤ 110 := by
+  omega
+
 end LoopsNativeKKL
