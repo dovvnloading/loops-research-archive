@@ -163,4 +163,44 @@ theorem separated_end_packets_leave_atom
     0 < base - (leftEnd + rightEnd) := by
   omega
 
+
+/-- Exact fiber-level collision identity for a **real two-sheet covering**.
+A target point is in both images iff its source representatives
+coincide or are related by the nontrivial deck involution.
+This is purely set-theoretic: analytic proper-path survival and
+admissible Wave crest inputs are separate native hypotheses. -/
+theorem two_sheet_image_intersection
+    {A B : Type*} (p : A → B) (deck : A → A)
+    (hdeck : ∀ x, p (deck x) = p x)
+    (hfiber : ∀ x z, p x = p z → z = x ∨ z = deck x)
+    (S T : Set A) :
+    p '' S ∩ p '' T =
+      p '' (S ∩ T) ∪ p '' (S ∩ deck ⁻¹' T) := by
+  ext y
+  constructor
+  · rintro ⟨⟨x, hx, hxy⟩, ⟨z, hz, hzy⟩⟩
+    rcases hfiber x z (hxy.trans hzy.symm) with hsame | hother
+    · left
+      refine ⟨x, ⟨hx, ?_⟩, hxy⟩
+      simpa [hsame] using hz
+    · right
+      refine ⟨x, ⟨hx, ?_⟩, hxy⟩
+      change deck x ∈ T
+      simpa [hother] using hz
+  · rintro (⟨x, ⟨hx, ht⟩, hxy⟩ | ⟨x, ⟨hx, ht⟩, hxy⟩)
+    · exact ⟨⟨x, hx, hxy⟩, ⟨x, ht, hxy⟩⟩
+    · change deck x ∈ T at ht
+      exact ⟨⟨x, hx, hxy⟩, ⟨deck x, ht, (hdeck x).trans hxy⟩⟩
+
+/-- When two source packets are disjoint, *all* target collisions
+are deck pairings, not folds inside a single source packet. -/
+theorem disjoint_two_sheet_collision_only_deck
+    {A B : Type*} (p : A → B) (deck : A → A)
+    (hdeck : ∀ x, p (deck x) = p x)
+    (hfiber : ∀ x z, p x = p z → z = x ∨ z = deck x)
+    (S T : Set A) (hdisj : S ∩ T = ∅) :
+    p '' S ∩ p '' T = p '' (S ∩ deck ⁻¹' T) := by
+  rw [two_sheet_image_intersection p deck hdeck hfiber S T, hdisj]
+  simp
+
 end LoopsNativeKKL
