@@ -238,7 +238,7 @@ The dual-arc theorem and open-core transport can be combined into an exact **con
 Assume a native KKL stage with original **finite cyclic marking** \(\mathcal I\) and a critical-limb block of at most \(r=6\mathbf b\) marking atoms (KKL Lemma 4.8). Write \(\Phi=F_*\) for its real open multi-interval action. Suppose:
 
 1. **Nondecreasing proper length:** whenever \(\Phi J\) remains proper, \(\ell(\Phi J)\ge\ell(J)\); the full inner circle is absorbing, and a saturated output cannot belong to the crest of a nontrivial subsequent Wave.
-2. **Real dual nonreturn:** every nonempty proper *positive-length* periodic marked interval \(J\) has a **nonzero actual dual witness** obeying Theorem 3.2's \(d(\Phi^pJ)\ge T_F^p d(J)\), or a positive native WAD whose inverse return dominates it in the forbidden direction of Theorem 3.1.
+2. **Critical-cycle-only dual nonreturn:** every nonempty proper *positive-length* periodic marked interval \(J\) **meeting the critical block \(\mathbf L_0\) in a complete marking atom** has a **nonzero actual dual witness** obeying Theorem 3.2's \(d(\Phi^pJ)\ge T_F^p d(J)\), or a positive native WAD whose inverse return dominates it in the forbidden direction of Theorem 3.1. No witness is required for periodic states that never encounter the critical limb.
 3. **Critical open-core visibility:** a chain \(A_0,\ldots,A_N\) of genuine critical visits has **regular positive** crests and each successor's open core \(J_i=\operatorname{Int}C_{A_i}\) intersects \(\mathbf L_0\) through **at least one complete marking atom**, not solely at an endpoint.
 4. **Shortness:** each \(\ell(J_i)<12\mathbf b\), as in the source's short critical-visit bound, and each successor \(A_{i+1}\) crests over the genuine closed \(F_*^{m_i}C_{A_i}\), with \(m_i\ge1\).
 
@@ -290,11 +290,40 @@ provided the actual closed pullback is closed and contains \(\overline{\iota^*I}
 
 KKL Proposition 6.8 states that **all added components of \(\mathcal T'\setminus\mathcal T\) meet the old tree at the same planar point \(x\)**. If the excess components form a finite contact family, then \(R=\{x\}\); in general a countable family can have additional accumulation contacts without a separate compactness argument, so **do not equate** all impression/contact pathology with \(\{x\}\) by notation alone. Under the finite-contact hypothesis, the **only potentially unguarded endpoint accesses** are those whose impressions contain the actual critical attachment root \(x\). This sharply narrows the closed-only Wave gate problem without enumerating all non-LC prime ends.
 
+### Theorem 5.2 (the only recurrent states needing exclusion are **critical-return cycles**)
+
+In the corrected counting argument, suppose the critical limb occupies \(r\) consecutive original marking atoms. For a fixed positive length \(k\), let
+
+\[
+\mathsf S_{k,\mathrm{crit}}
+=\{J:\ J\text{ is a proper open }k\text{-atom interval and }
+J\cap\mathbf L_0\text{ contains a whole atom}\}.
+\tag{5.3}
+\]
+
+Its cardinal is at most \(r+k-1\), because a length-\(k\) consecutive block meets an \(r\)-atom block iff its starting cut belongs to one of at most \(r+k-1\) consecutive cyclic positions. (If the marking has fewer than that many atoms, the number is even smaller.) Consider a native forward orbit staying proper and of **constant positive marked length** that has at least \(r+k\) distinct iterate times belonging to \(\mathsf S_{k,\mathrm{crit}}\). Then two such times have the **same** state by strict pigeonhole, and that repeated state is itself a **periodic critical-return state**.
+
+Therefore the statement needed to prove bounded critical visits is only
+
+\[
+\boxed{
+\text{No proper positive-length periodic interval meets }
+\mathbf L_0\text{ in a full atom.}
+}
+\tag{5.4}
+\]
+
+It is **strictly weaker** than excluding every proper periodic interval globally. Any periodic interval avoiding the critical block is *irrelevant* to this visit-counting argument. For example, all noncritical long-corridor cycles can remain unclassified as long as they never produce a critical-return cycle.
+
+**Proof.** The \(r+k\) visited states lie in a set of size at most \(r+k-1\). Two states at different forward times are equal. Determinism makes the repeated state periodic, and because this state belongs to \(\mathsf S_{k,\mathrm{crit}}\), its period contains an actual full-atom critical encounter. \(\square\)
+
+**Lean scope:** The strict cardinal inequality and repeated-state conclusion are formalized as \`strict_critical_pigeonhole\` in \`formalization/weighted/NativeWaveGate.lean\`. The analytic qualification that the visited states are the **actual** KKL \(\Phi=F_*\) iterates, properly marked and length-preserving during the considered block, is not established by the finite theorem or the Lean code. The new **critical-only** dual witness is the narrower mathematical target.
+
 ## 6. Revised proof architecture / falsification targets
 
 There are now **two independently typed native bridges**, not one giant access census.
 
-**Bridge A — nonperiodicity in the actual dual-arc category.** KKL §2.6–2.7 *already proves* the \(T_F\) ↔ \(\mathcal H^{\mathrm{biv}}\) identity and the strict pullback value estimate. To eliminate a hypothetical proper periodic **open** marked interval, it suffices to extract **one nonzero source horizontal WAD** with \((f^p)^*X\multimap X\), or a nonzero real edge-witness \(d(I)\) satisfying (3.2) on that periodic orbit. No full global prime-end quotient is needed. The first failure is a proper periodic interval **invisible** to all usable dual witnesses (zero dual mass), or a failure of the required domination **direction**. Neither can be ruled out by \(\lambda_F>1\) alone.
+**Bridge A — nonperiodicity of critical-recurrent proper states.** KKL §2.6–2.7 *already proves* the \(T_F\) ↔ \(\mathcal H^{\mathrm{biv}}\) identity and the strict pullback value estimate. To eliminate a hypothetical proper periodic **open** marked interval **visiting the critical limb**, it suffices to extract **one nonzero source horizontal WAD** with \((f^p)^*X\multimap X\), or a nonzero real edge-witness \(d(I)\) satisfying (3.2) on that periodic orbit. No full global prime-end quotient is needed. The first failure is a proper periodic interval **invisible** to all usable dual witnesses (zero dual mass), or a failure of the required domination **direction**. Neither can be ruled out by \(\lambda_F>1\) alone.
 
 **Bridge B — original closed Wave crests.** When a proof-used crest has a **regular positive marked core**, Theorem 4.2 already gives the exact open-core inclusion with unchanged length, without any forbidden closure commutation. The remaining cases are zero-core crests and those whose closed transport or original-marking regularity is not verified. The source's critical-visit *definition* supplies closed inclusion only after \(F_*^m C\) is well typed; the closed-input end effects must remain in its computation, not be silently replaced by \(\overline{F_*^mJ}\).
 
