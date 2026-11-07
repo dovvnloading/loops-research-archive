@@ -194,6 +194,42 @@ No connected open marked multi-interval smaller than \(B_A\) can contain **both*
 
 **Bounded-visits consequence:** The zero-core obstruction in Theorem 4.2 is not merely a technical corner case that one could erase by assuming every Wave of positive width has a positive crest. This genuine native Wave does **not** itself supply a chain of repeated critical visits or refute KKL Lemma 6.4. It proves that a repair must either prove that **proof-used** critical-visit crests belong to the regular-positive subclass, or supply a distinct endpoint/zero-core escape or terminality argument.
 
+### Theorem 4.4 (zero-core critical visits reduce to an **actual endpoint gate graph**)
+
+Assume the original KKL vertex-side ideal marking \(\mathcal I\) is **finite**, as in its finite combinatorial Hubbard-tree presentation. Let \(\mathsf E(\mathcal I)\) be its **actual marked endpoint accesses**, not the planar vertex points. Define a partial **native endpoint map** on \(\mathsf E(\mathcal I)\):
+
+\[
+g(e)=e'
+\quad\Longleftrightarrow\quad
+R_\iota(\{e\})\text{ is one source endpoint and }
+f_*(R_\iota(\{e\}))=\{e'\},\quad e'\in\mathsf E(\mathcal I).
+\tag{4.8}
+\]
+
+A marked endpoint \(e\) is **stretching** if the actual set \(f_*\iota^*\{e\}\) contains a nonempty *open original marked multi-interval*; such an \(e\) has **no** arrow in \(g\). The map is **partial**: we do not assert that a source singleton necessarily maps to a marked endpoint, nor that \(F_*\) is defined on all singletons outside the source's closed-input extension.
+
+**Lemma (zero-core classification).** If \(C\) is a **connected** crest assembled from original full marking atoms and endpoints, has \(\ell(C)=0\), and is nonempty, then \(C=\{e\}\) for some \(e\in\mathsf E(\mathcal I)\).
+
+**Proof.** Such a crest contains no full open marking atom, so is a connected subset of the **finite discrete set** of marked endpoints. A connected finite subset of a circle is a singleton. \(\square\)
+
+**Theorem.** Suppose \(A_0,\dots,A_N\) is a genuine sequence of critical visits with **zero-core** nonempty connected crests \(C_{A_j}=\{e_j\}\), and the extended native actions on these closed inputs and their intermediate outputs are **marking-aligned** (each image is either a union of complete marking atoms and endpoints, or a singleton marked endpoint). Then the concatenated dynamics between successive crests must follow the **actual** partial endpoint graph \(g\):
+
+\[
+\boxed{
+e_{j+1}=g^{m_j}(e_j)
+\quad\text{for the critical-visit iterate }m_j\ge1.
+}
+\tag{4.9}
+\]
+
+If any intermediate access is stretching, the next crest **cannot** remain zero-core. Consequently an arbitrarily long zero-core chain must contain an eventually periodic directed **endpoint cycle** of \(g\). To rule out all such chains, it suffices to exclude directed cycles of **guarded/nonstretching endpoints** whose orbits make the required critical-limb visits.
+
+**Proof.** The crest being zero-core forces it to be a marked endpoint by the preceding lemma. By the critical-visit definition and the Wave-over relation, the nonempty image \(F_*^{m_j}\{e_j\}\) is contained in the singleton \(\{e_{j+1}\}\), hence is that singleton. If any intermediate closed image contained a nonempty open marked multi-interval \(J\), native monotonicity (Lemma 4.1) and combinatorial action (KKL Proposition 6.6) would force every subsequent image to contain the **nonempty open** marked multi-interval \(F_*^r J\). It could not become a singleton. Thus, under the stated marking-alignment hypothesis, **every** intermediate image is a singleton marked endpoint, and each one-step transition is an arrow of \(g\). This yields (4.9). A directed path of length at least \(|\mathsf E(\mathcal I)|\) in a finite partial functional graph either terminates or repeats an endpoint, and repetition produces a directed cycle. \(\square\)
+
+**Source-specific critical-root exclusion.** In the proof of KKL Proposition 6.8, the selected old access \(x\) has a source interval \(\mathbf J'\subset\operatorname{Int}\iota^*x\) whose cover image includes the long corridor \(\mathbf L_{(\mathbf b,q-\mathbf b)}\). When that corridor contains a nonempty open marked atom, the corresponding **selected** endpoint access at \(x\) is **stretching**, so it cannot belong to a zero-core endpoint cycle. This is a **genuine native gate statement** already present in the source, not an assigned edge in a synthetic graph. Other distinct prime-end occurrences at the **same planar x** remain separately typed; do not assume they share the selected stretching property without checking their actual proper-path restrictions.
+
+**Remaining finite problem:** The source does not here supply the full **actual endpoint map \(g\)** at the finitely many exceptional endpoint accesses. Nor does the paper establish from §2.7 alone that every guarded endpoint cycle misses the critical limb. The theorem is a **rigorous conditional reduction to a native finite gate graph**, not an assertion that the graph has been computed or is acyclic. In particular a positive-width zero-core Wave exists by Theorem 4.3; positive conformal width cannot be used to remove these states.
+
 ## 5. Root-contact endpoint localization without a global prime-end quotient
 
 Let \(A=\overline{\mathcal T'\setminus\mathcal T}\) be the actual excess carrier and let
@@ -236,6 +272,6 @@ There are now **two independently typed native bridges**, not one giant access c
 
 **Established in this note:** native WAD non-return (Theorem 3.1); Perron witness contradiction (Theorem 3.2); type-safe positive-crest open-core transport (Theorem 4.2); **a genuine short positive-width native Wave with zero marked crest** (Theorem 4.3); no newly born attached block at a guarded endpoint (Proposition 5.1); precise identification and proof-licensed repair of the **\(n=0\)** exponent typo in KKL §2.7's definition.
 
-**Open:** construct a dual witness/domination for every proper recurrent *native* interval; exclude or treat zero-visibility and zero-core Waves; verify contact/guard status for actual non-LC exceptional marked endpoints and the full source-specific closed-crest admissibility. Theorems 3.1 and 4.2 do **not** jointly imply KKL Proposition 6.9, Lemma 6.4, the corrected bounded-visit growth repair, full Wave amplification, or MLC.
+**Open:** construct a dual witness/domination for every proper recurrent *native* interval; classify the actual **finite marked endpoint gate graph** and exclude guarded critical-limb cycles under the source's typed closed-input action; verify contact/guard status for actual non-LC exceptional marked endpoints and the full source-specific closed-crest admissibility. Theorems 3.1 and 4.2 do **not** jointly imply KKL Proposition 6.9, Lemma 6.4, the corrected bounded-visit growth repair, full Wave amplification, or MLC.
 
 No synthetic simulation was run or relied upon; no independent specialist referee review is claimed. **Leave Issue #40 and all ledger gates OPEN.**
