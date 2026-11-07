@@ -261,4 +261,34 @@ theorem short_wave_end_count_below_rotation
     leftEnd + rightEnd < q := by
   omega
 
+
+/-- Pure integer core of the *actual marked-cut contact lemma*.
+For nondegenerate integer-cut closed crest [s,t] and an OPEN
+critical limb (a,b), if the closed interval intersects the open limb
+then the overlap contains an entire atom (j,j+1).
+Here s < b and a < t record the nonempty closed-open overlap;
+validating those from the actual prime-end overlap is geometric.
+This arithmetic is entirely independent of local connectivity. -/
+theorem closed_crest_open_limb_has_full_atom
+    (s t a b : ℤ)
+    (hcrest : s < t)
+    (hlimb : a < b)
+    (hoverlapLeft : s < b)
+    (hoverlapRight : a < t) :
+    ∃ j : ℤ, s ≤ j ∧ j + 1 ≤ t ∧ a ≤ j ∧ j + 1 ≤ b := by
+  by_cases h : s ≤ a
+  · refine ⟨a, ?_, ?_, ?_, ?_⟩ <;> omega
+  · refine ⟨s, ?_, ?_, ?_, ?_⟩ <;> omega
+
+/-- A single marked cut at the endpoint of an OPEN limb cannot
+be its only intersection with a positive closed marked crest:
+the interval overlap includes a full unit atom. This variant gives
+the explicit j as max of the two lower marked cuts. -/
+theorem closed_open_marked_overlap_of_integer_cuts
+    (s t a b : ℤ)
+    (h : s < t ∧ a < b ∧ s < b ∧ a < t) :
+    ∃ j : ℤ, s ≤ j ∧ j + 1 ≤ t ∧ a ≤ j ∧ j + 1 ≤ b := by
+  exact closed_crest_open_limb_has_full_atom s t a b
+    h.1 h.2.1 h.2.2.1 h.2.2.2
+
 end LoopsNativeKKL
