@@ -51,10 +51,10 @@ theorem finite_gate_orbit_repetition
     {E : Type*} [Fintype E]
     (g : E → E) (start : E) :
     ∃ i j : Fin (Fintype.card E + 1),
-      i ≠ j ∧ Function.iterate g i.val start =
-        Function.iterate g j.val start := by
+      i ≠ j ∧ Nat.iterate g i.val start =
+        Nat.iterate g j.val start := by
   exact finite_gate_repetition
-    (fun i => Function.iterate g i.val start)
+    (fun i => Nat.iterate g i.val start)
 
 /-- Positive mass cannot satisfy a nontrivial multiplicative
 return inequality with expansion factor > 1. -/
