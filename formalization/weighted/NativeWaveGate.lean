@@ -237,4 +237,28 @@ theorem no_two_subhalf_wad_packets
     (hb : b < total / 2) : False := by
   linarith
 
+
+/-- A short KKL Wave has both tagged end lengths < 12*b.
+If q ≥ 24*b, their combined length is strictly less than q.
+The geometric missed-limb/crosscut conclusion is NOT a Lean theorem:
+it requires the true source limb marking and actual short-leaf
+subordination. -/
+theorem short_wave_ends_miss_some_limb_arithmetic
+    (b q leftEnd rightEnd : ℕ)
+    (hleft : leftEnd < 12 * b)
+    (hright : rightEnd < 12 * b)
+    (hq : 24 * b ≤ q) :
+    leftEnd + rightEnd < q := by
+  omega
+
+/-- The sharper integer threshold q ≥ 24*b-1, written without
+natural-number subtraction to avoid an edge case at b=0. -/
+theorem short_wave_end_count_below_rotation
+    (b q leftEnd rightEnd : ℕ)
+    (hleft : leftEnd < 12 * b)
+    (hright : rightEnd < 12 * b)
+    (hsharp : 24 * b ≤ q + 1) :
+    leftEnd + rightEnd < q := by
+  omega
+
 end LoopsNativeKKL
