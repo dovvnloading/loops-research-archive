@@ -26,14 +26,14 @@ The **proper-base** hypothesis is essential: if \(B=C\), different winding/deck 
 
 ## 2. Theorem — no nonempty point-only crest for a proper base
 
-Let \(A\) be a **nonempty admissible KKL Wave** in the actual marked annulus. Let \(B_A\subsetneq C\) be its **proper** minimal base and \(E_-,E_+\subset B_A\) its two **minimal connected** end multi-intervals in the sense of Appendix A.1 (all leaves have one endpoint in each end interval). Set
+Let \((A,B_A,E_-,E_+)\) be a **nonempty admissible base-tagged KKL Wave datum** in the actual marked annulus: \(B_A\subsetneq C\) is a **specified proper inclusion-minimal** base, and \(E_-,E_+\subset B_A\) are **specified minimal connected** end multi-intervals (each leaf has one endpoint in each). We do not assume that this base/end pair is *uniquely* determined by the underlying lamination. Set
 
 \[
 C_A=B_A\setminus(E_-\cup E_+).
 \tag{2.1}
 \]
 
-### Theorem 2.1 (proper-base crest dichotomy)
+### Theorem 2.1 (specified proper-base crest dichotomy)
 
 \[
 \boxed{
@@ -46,7 +46,7 @@ C_A=\overline{\operatorname{Int}C_A},
 \tag{2.2}
 \]
 
-In particular **a genuine Wave with proper base cannot have a nonempty crest consisting only of one or more marked endpoints.** Every nonempty proper-base crest is a *regular positive marked crest* in the exact sense of the earlier dual-arc Wave-core reduction, even if the two minimal ends are **composite** and even if \(\mathcal T\) has non-singleton prime-end impressions.
+In particular **a genuine admissible Wave with a **specified proper minimal base/end tag** cannot have a nonempty crest consisting only of one or more marked endpoints.** Every nonempty proper-base crest is a *regular positive marked crest* in the exact sense of the earlier dual-arc Wave-core reduction, even if the two minimal ends are **composite** and even if \(\mathcal T\) has non-singleton prime-end impressions.
 
 **Proof.** Work in the linear order of the marked proper base \(B=B_A\), with atoms \(\mathbf I_0,\ldots,\mathbf I_{k-1}\). Minimality of the base ensures there is at least one *leaf endpoint* in each of the two **outermost base atoms**. Indeed, if an outermost atom had no endpoint, then by Lemma 1.1(1)'s **unique boundary-subarc property** every leaf would still be subordinate to the proper base obtained by removing that atom and its outer cut; this would contradict minimality of \(B\). (The argument is about the unique homotopy class in a proper boundary collar, not merely about the set of occupied endpoints.)
 
@@ -119,3 +119,12 @@ The argument is on the **actual Carathéodory ideal boundary**, and its noncross
 6. **“Universal” constants:** The bound \(24\mathbf b\) follows from the source's short-end bound; it is a **combinatorial threshold**, not a new analytic Wave width-amplification estimate.
 
 **Status:** Theorems 2.1 and 3.1 are new topological/combinatorial deductions from the *actual* KKL Wave definitions and annular ideal-boundary geometry. They do **not** prove KKL Lemma 6.4, full Wave amplification or MLC. **Issue #40 and all named ledger gates remain OPEN.** No independent specialist review or priority claim.
+
+
+## Postscript — base ambiguity correction and scope of Theorem 2.1
+
+The companion [genuine native Wave-base nonuniqueness certificate](./kkl_native_wave_base_nonuniqueness_20261106.md) constructs two **disjoint positive-width**, individually admissible three-atom leaf packets in an actual KKL annular carrier collar. Their union has **two different incomparable inclusion-minimal connected marked bases**, and for an even number of original atoms the bases can have equal minimum length. Therefore the unqualified phrase **"the smallest base" in Appendix A.1 need not determine a unique base for arbitrary disconnected laminations**, unless a separate connected/indecomposable-support convention is intended.
+
+Accordingly **Theorem 2.1 must be read as a theorem about a Wave with a fixed specified proper minimal base and specified minimal end pair contained in it**, rather than a proof of global uniqueness of such a base. Its no-point-crest argument applies **to each such tag separately** and is unaffected by this correction. The full-circle theorem analogously applies **to a selected full-base tag** and does not imply that a full base is forced/canonical for all underlying laminations. Any application to the actual source's “critical visit” definition must either specify consistent Wave tags through transport, prove a canonical base in the intended subclass, or establish that the desired conclusion is independent of base choice.
+
+This is **a mathematical source-domain type issue**, not proof that the analytic Wave amplification theorem is false. It strengthens the need to make the actual closed Wave crest a precisely typed input before applying \(F_*\) to it.
