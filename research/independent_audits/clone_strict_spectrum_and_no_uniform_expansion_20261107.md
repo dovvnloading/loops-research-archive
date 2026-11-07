@@ -121,9 +121,55 @@ statement are the targets of
 [CloneRootRate.lean](../../formalization/weighted/CloneRootRate.lean).
 
 This rules out deducing a stage-uniform **Perron expansion factor**
-`t_n≥1+ε` from abstract primitivity of the clone family. It does
-*not* by itself prove that the separation between the first and
-second eigenvalue vanishes uniformly; that is a different inequality.
+`t_n≥1+ε` from abstract primitivity of the clone family.
+
+### Theorem — the strict spectral gap itself collapses
+
+The **written exact characteristic-polynomial identity above** permits
+a further new conclusion, stronger than merely `t_n→1`. Write
+`r_n=max{|μ|:μ≠t_n is an eigenvalue of A_n}`, counting the
+other `d-1` roots with algebraic multiplicity. Because `d=2n+5`
+is odd and the constant term of the monic characteristic polynomial
+is `-1`, Vieta's product identity gives
+
+[
+t_n\prod_{\mu\ne t_n}|\mu|=1.
+]
+
+In particular `r_n^(d-1)≥1/t_n`, whence
+`r_n≥t_n^(-1/(d-1))≥1/t_n` (as `t_n>1` and
+`d-1≥4`). Combining this with the **Lean-verified** strict
+spectral separation and root excess bound yields
+
+[
+\boxed{
+0<t_n-r_n\le t_n-t_n^{-1/(d-1)}
+\le t_n-1/t_n
+<2(t_n-1)\le\frac2{d-1}=\frac1{n+2}.
+}
+]
+
+Therefore
+
+[
+\boxed{\lim_{n\to\infty}(t_n-r_n)=0,\qquad
+\lim_{n\to\infty}\frac{r_n}{t_n}=1.}
+]
+
+So **even though every graph is primitive and its leading root is
+strictly separated for that n, the family has no stage-uniform
+absolute or relative spectral gap**. This proves nonuniformity of
+spectral separation in the specific full cloned-graph family, not just
+of the leading eigenvalue's expansion factor.
+
+**Trust split:** the leading spectral strictness, eigenvalue equation,
+eigenline uniqueness, and root bound are Lean-kernel-checked. The
+all-n product identity, algebraic multiplicity accounting, and
+deduced quantitative gap-collapse theorem above presently use the
+written (fully elementary) cycle-cover characteristic-polynomial
+proof, which is *not* yet Lean-kernel-checked. The independent
+determinant regression exercises this unformalized link for many
+finite delays. This is not a native KKL `T_F` spectral-gap estimate.
 
 The regression separately computes the non-leading eigenvalue modulus
 for small n:
@@ -134,9 +180,12 @@ for small n:
 | 2 | 9 | 1.085070 | 0.008937 |
 | 10 | 25 | 1.028700 | 0.000346 |
 
-These observations suggest increasingly slow spectral mixing, but are
-**finite numerical diagnostics**, not an all-n proof of a gap decay
-rate.
+These observations are **finite numerical diagnostics** illustrating
+the independently proved all-n bound `0<t_n-r_n≤1/(n+2)` above.
+The displayed numerical decay appears much faster than that crude
+universal bound; no sharper rate is claimed. The exact bound is a
+written theorem conditional on the separately proved characteristic
+polynomial, not a Lean determinant proof.
 
 ## Reproduction and trust boundary
 
