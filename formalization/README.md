@@ -154,6 +154,28 @@ See [the precise future-observability audit](phase-future.md).
 These are symbolic clock facts, not a KL access/sheet atlas or any
 MLC global gate.
 
+## General mixed-radix phase memory (all finite periods)
+
+[PhaseMemoryGeneral.lean](../PhaseMemoryGeneral.lean) removes the fixed
+3/9/27 restriction from the finite-memory analysis. For **every**
+positive pair (p,k), it constructs an exact inverse between the
+(p*k)-phase clock and the augmented state (p-phase, k-state memory),
+then transports the physical successor to a deterministic augmented
+transition. The first coordinate follows the coarse clock; the full
+future of any observable can be recovered.
+
+It also proves a sharp *necessary* memory condition for **arbitrary**
+candidate memory types: if an augmentation retains just the future
+readings of the Boolean zero-phase sensor, it already induces an
+injection from k distinct points in a single coarse fiber to the
+memory alphabet. Thus k states are necessary and sufficient in this
+symbolic setting. This does **not** furnish a physical KL
+access/sheet map or any analytic MLC result.
+
+See [the general phase-memory theorem note](phase-memory-general.md)
+for the exact quantified claim, comparison to the concrete 27-clock,
+and reproduction instructions.
+
 ## Real period-27 center: IVT, MVT and minimal period in mathlib
 
 The [pinned mathlib workspace](weighted/README.md) now imports the original
