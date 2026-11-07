@@ -221,8 +221,12 @@ proves all other eigenvalues have smaller modulus, and
 proves geometric simplicity. However
 [CloneRootRate](./formalization/weighted/CloneRootRate.lean)
 proves `(2n+4)*(t_n-1)≤1`: primitivity does **not** ensure a
-uniform positive expansion factor as delay grows.
-[Source, written determinant proof and exact regression](./research/independent_audits/clone_strict_spectrum_and_no_uniform_expansion_20261107.md).
+uniform positive expansion factor as delay grows. A separate
+**written exact determinant/Vieta proof** further gives
+`0<t_n-r_n≤1/(n+2)` for the leading spectral gap and shows
+`r_n/t_n→1`—so even the strict gap is nonuniform in this
+graph family. The determinant/product step is not yet Lean-checked.
+[Source, cycle-cover proof and exact regression](./research/independent_audits/clone_strict_spectrum_and_no_uniform_expansion_20261107.md).
 This settles an **internal finite spectral gap**, not a KL
 edge-incidence/prime-end realization, uniform WAD coercivity, or MLC.
 
