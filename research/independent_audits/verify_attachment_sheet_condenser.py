@@ -203,6 +203,63 @@ def test_two_parameter_no_go():
     }
 
 
+def test_exact_two_scale_threshold():
+    """Regression for the newly proved global dual lower inequality.
+
+    The iff theorem follows from that inequality and the logarithmic cutoff;
+    the following checks only its independently evaluated finite series.
+    """
+    samples=[]
+    checks=0
+    for ell in (.05,.1,.25,.7,1.2,1.991940058558682,3.0):
+        nmax=20001
+        s1=sum(sinc(n*ell/2)**2/n for n in range(1,nmax+1,2))
+        s1_tail_upper=2/(ell*ell*nmax*nmax)
+        assert s1+s1_tail_upper <= 1.5+math.log1p(2/ell)+1e-12
+        s2=sum(sinc(n*ell/2)**2/(n*n) for n in range(1,nmax+1,2))
+        assert s2 <= math.pi**2/8+1e-12
+        for h in (.025,.2,.69):
+            dual, _tail=return_dual(h,ell,nmax)
+            global_upper_R=math.pi/(2*h)+(4/math.pi)*(1.5+math.log1p(2/ell))
+            assert 0<dual <=global_upper_R+1e-12
+            normalized_cap_lower=1/(math.pi/2+(4*h/math.pi)*(1.5+math.log1p(2/ell)))
+            normalized_cap_upper=2/(math.pi-ell)
+            assert 0<normalized_cap_lower <=normalized_cap_upper+1e-12
+            checks+=1
+        samples.append({'ell':ell,'s1_plus_certified_tail':round(s1+s1_tail_upper,10),
+                        's1_global_bound':round(1.5+math.log1p(2/ell),10)})
+
+    poly=[]
+    exp_scale=[]
+    for h in (.2,.1,.05,.025,.0125):
+        ell=h**3
+        z=h*math.log(1/ell)
+        lower=1/(math.pi/2+(4*h/math.pi)*(1.5+math.log1p(2/ell)))
+        upper=2/(math.pi-ell)
+        assert 0<lower<=upper
+        poly.append({'h':h,'ell_h_cubed':ell,'scale_h_log_inverse':round(z,12),
+                     'normalized_width_lower':round(lower,12),
+                     'normalized_width_upper':round(upper,12)})
+        # ell=exp(-1/h) has the critical exponential scale h log(1/ell)=1.
+        ell_crit=math.exp(-1/h)
+        lower_crit=1/(math.pi/2+(4*h/math.pi)*(1.5+math.log1p(2/ell_crit)))
+        exp_scale.append({'h':h,'critical_scale_h_log_inverse':1,
+                          'normalized_width_lower':round(lower_crit,12)})
+    assert poly[-1]['normalized_width_lower']>poly[0]['normalized_width_lower']
+    assert poly[-1]['normalized_width_upper']<poly[0]['normalized_width_upper']
+    assert exp_scale[-1]['normalized_width_lower']>.34
+    return {
+        'proved_global_lower': 'W_h(ell)/h >= 1/(pi/2+(4*h/pi)*(3/2+log(1+2/ell)))',
+        'sharp_nondegeneration_criterion': 'liminf W_hn(ell_n)/h_n > 0 iff limsup h_n*log+(1/ell_n) < infinity',
+        'joint_universal_limit': 'if ell(h)->0 and h*log(1/ell(h))->0, W_h(ell(h))/h->2/pi',
+        'complete_charge_series_checks': checks,
+        's1_upper_checks': samples,
+        'polynomial_shrinking_examples': poly,
+        'critical_exponential_scale_examples': exp_scale,
+        'superexponential_collapse': 'ell(h)=(h/4)*exp(-1/h^2) gives W_h/h->0',
+    }
+
+
 def test_reciprocal_polarization():
     modes=0
     for h in (.003,.02,.1,.69,1.3,3.):
@@ -235,6 +292,7 @@ def build_manifest():
         'actual_quadratic':actual,
         'continuum_bounds':test_continuum_formulas(actual['attached_arc_angular_length_approx']),
         'two_parameter_no_go':test_two_parameter_no_go(),
+        'sharp_coercivity_threshold':test_exact_two_scale_threshold(),
         'reciprocal_polarization':test_reciprocal_polarization(),
         'scope':'condenser full path family between source attached block and its deck translate; NOT actual canonical WAD',
     }
