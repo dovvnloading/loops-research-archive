@@ -203,4 +203,38 @@ theorem disjoint_two_sheet_collision_only_deck
   rw [two_sheet_image_intersection p deck hdeck hfiber S T, hdisj]
   simp
 
+
+/-- Integer portion of the two-winding theorem for a simple annular
+inner-boundary path. The geometric Jordan-intersection argument proves
+the two inequalities; Lean proves their exact finite consequence.
+This does NOT formalize prime ends or the Jordan curve theorem. -/
+theorem simple_annular_arc_two_windings
+    (n : ℤ)
+    (hpos : n < 1)
+    (hneg : -2 < n) :
+    n = 0 ∨ n = -1 := by
+  omega
+
+/-- WAD norms of the two winding packets are nonnegative numbers a,b.
+Their exact sum is the full induced WAD norm (source A.2.2).
+A packet has at least half the total norm; this says nothing about
+the conformal Wave width unless an analytic Parallel Law is verified. -/
+theorem two_packet_half_wad_norm (a b : ℝ) :
+    (a + b) / 2 ≤ a ∨ (a + b) / 2 ≤ b := by
+  rcases le_total a b with h | h
+  · right
+    linarith
+  · left
+    linarith
+
+/-- A finite two-packet WAD norm cannot disappear into two strictly
+sub-half-mass pieces. This is the contradiction form used in packet
+selection arguments. -/
+theorem no_two_subhalf_wad_packets
+    (a b total : ℝ)
+    (hsum : total = a + b)
+    (ha : a < total / 2)
+    (hb : b < total / 2) : False := by
+  linarith
+
 end LoopsNativeKKL
