@@ -1,0 +1,35 @@
+name: Sheet-character energy and full-width calibration
+
+on:
+  push:
+    branches:
+      - main
+      - 'research/**'
+    paths:
+      - '.github/workflows/sheet-character-width-duality.yml'
+      - 'research/independent_audits/kkl_sheet_character_energy_and_width_duality_20261107.md'
+      - 'research/independent_audits/verify_sheet_character_width_duality.py'
+      - 'results/sheet_character_width_duality_20261107.json'
+  pull_request:
+    paths:
+      - '.github/workflows/sheet-character-width-duality.yml'
+      - 'research/independent_audits/kkl_sheet_character_energy_and_width_duality_20261107.md'
+      - 'research/independent_audits/verify_sheet_character_width_duality.py'
+      - 'results/sheet_character_width_duality_20261107.json'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  exact-character-and-width-check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Check exact Fourier algebra, continuum response and the manifest
+        run: |
+          python -m py_compile research/independent_audits/verify_sheet_character_width_duality.py
+          python research/independent_audits/verify_sheet_character_width_duality.py --check-manifest
