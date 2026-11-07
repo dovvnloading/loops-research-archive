@@ -42,11 +42,12 @@ def memoryDigit (p k : Nat) (hp : 0 < p)
     have hi := i.isLt
     have hdiv := Nat.mod_add_div i.val p
     have hbound : p * (i.val / p) ≤ i.val := by omega
-    by_contra hnot
-    have hk : k ≤ i.val / p := by omega
-    have hprod : p * k ≤ p * (i.val / p) :=
-      Nat.mul_le_mul_left p hk
-    omega⟩
+    by_cases hlt : i.val / p < k
+    · exact hlt
+    · have hk : k ≤ i.val / p := by omega
+      have hprod : p * k ≤ p * (i.val / p) :=
+        Nat.mul_le_mul_left p hk
+      omega⟩
 
 /-- The reversible address of a physical phase. The first coordinate
 is exactly the pre-existing modulo-p projection. -/
@@ -82,7 +83,7 @@ theorem address_decode (p k : Nat) (hp : 0 < p)
   cases a with
   | mk a b =>
     have hmod : (a.val + p * b.val) % p = a.val := by
-      simp [Nat.add_mod, Nat.mul_mod, Nat.mod_eq_of_lt a.isLt]
+      simp [Nat.add_mod, Nat.mod_eq_of_lt a.isLt]
     apply Prod.ext
     · apply Fin.ext
       exact hmod
@@ -115,9 +116,9 @@ def zeroFiber (p k : Nat) (hp : 0 < p)
 
 theorem zeroFiber_projects_zero (p k : Nat) (hp : 0 < p)
     (a : Phase k) :
-    project p (p * k) hp (zeroFiber p k hp a) = (0 : Phase p) := by
+    project p (p * k) hp (zeroFiber p k hp a) = (⟨0, hp⟩ : Phase p) := by
   apply Fin.ext
-  simp [project, zeroFiber, Nat.mul_mod]
+  simp [project, zeroFiber]
 
 theorem zeroFiber_injective (p k : Nat) (hp : 0 < p) :
     Function.Injective (zeroFiber p k hp) := by
@@ -138,7 +139,9 @@ theorem memory_injective_on_zeroFiber
   apply zeroFiber_injective p k hp
   apply hcode
   apply Prod.ext
-  · rw [zeroFiber_projects_zero p k hp a,
+  · change project p (p * k) hp (zeroFiber p k hp a) =
+        project p (p * k) hp (zeroFiber p k hp b)
+    rw [zeroFiber_projects_zero p k hp a,
         zeroFiber_projects_zero p k hp b]
   · exact hmem
 
