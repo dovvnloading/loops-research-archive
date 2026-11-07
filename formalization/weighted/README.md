@@ -56,7 +56,13 @@ simplicity of `t_n`. This determinant identity is a **written**
 proof, not a kernel-checked `Matrix.charpoly` theorem. The
 [independent regression](../../research/independent_audits/verify_clone_strict_gap.py)
 checks 144 exact finite-field determinants plus small-n spectral gaps.
-It does not prove a uniform rate of mixing, nor any native KKL
+The written cycle-cover/Vieta argument additionally proves the
+all-delay spectral-gap-collapse estimate
+`0 < t_n - r_n ≤ 1/(n+2)`, where `r_n` is the greatest modulus of
+the other full-matrix eigenvalues. Thus this family has **no uniform
+spectral separation** even though every individual graph is
+primitive; the Vieta step and the gap-collapse bound are not yet Lean
+`charpoly`-checked. Nothing here establishes a native KKL
 prime-end or edge-incidence realization.
 
 **Passing branch CI:** [mathlib build #42402605130](https://github.com/dovvnloading/loops-research-archive/actions/runs/42402605130)
