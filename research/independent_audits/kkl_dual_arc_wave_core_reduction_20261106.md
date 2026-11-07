@@ -394,3 +394,16 @@ The combined [large-\(q\) proper-base](./kkl_short_wave_proper_base_large_rotati
 - Because the **critical limb \(\mathbf L_0\) is open**, its required intersection with the **successor's regular closed crest** forces a **complete original marking atom** inside \(J_{i+1}\cap\mathbf L_0\). The stricter full-atom encounter condition previously imposed in Theorem 4.5 is **not an independent assumption** for these genuine successors.
 
 Thus the remaining substantive nonreturn condition in Theorem 4.5 is: **exclude a proper positive-length periodic interval whose orbit meets the critical limb through a full marking atom**, e.g. by proving a nonzero bivertical/WAD witness with the forbidden domination direction. Length monotonicity and well-typed closed input iterations still require source checking; no unconditional repair of KKL Proposition 6.9 is claimed.
+
+
+## Postscript — stronger **native internal critical-cut** reduction
+
+The new [critical-cut gate theorem](./kkl_native_critical_cut_gate_reduction_20261106.md) uses the exact KKL §6.1 source statement \(\Phi(\mathbf L_0)=C\), with \(\Phi=F_*\) and true immersion monotonicity, to improve the previous critical-return localization substantially. Every **proper periodic** interval intersecting the *open* critical limb must **fail to contain the whole limb**, otherwise its next iterate saturates. A connected proper open marked interval that partly intersects but does not contain the critical limb has an endpoint at one of the limb's **\(r-1\) internal marked cuts**, where \(r=\ell(\mathbf L_0)\le6\mathbf b\). For each fixed interval length \(k\), at most **two** states (one starting, one ending) attach to each internal cut, yielding at most \(2(r-1)\le12\mathbf b-2\) candidate critical-return states. The entire remaining nonperiodicity theorem needs checking only on **actual internal critical-cut/side states** of the native \(\Phi\), not all positive intervals with arbitrary endpoints.
+
+**Unconditional special case:** if \(r=1\), any interval meeting \(\mathbf L_0\) contains it and saturates on the next iterate. There are **no proper periodic critical-return intervals**, independently of a dual-WAD witness or \(\lambda_F\).
+
+With the existing canonical positive cores, full-atom critical visits, nondecreasing proper length and a *still-open* no-periodic-critical-cut-gate hypothesis, the corrected visit bound improves to
+\[
+N<(2r-1)(12\mathbf b-1)\le(12\mathbf b-1)^2.
+\]
+The algebraic strict cut-side pigeonhole is included in the Lean module. **This does not claim that the native internal-cut return map has been computed or shown acyclic for \(r\ge2\).** Source-dependent \(\iota^*\) endpoint attachments still have to be checked at those internal cuts.
