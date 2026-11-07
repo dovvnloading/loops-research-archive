@@ -128,3 +128,10 @@ The companion [genuine native Wave-base nonuniqueness certificate](./kkl_native_
 Accordingly **Theorem 2.1 must be read as a theorem about a Wave with a fixed specified proper minimal base and specified minimal end pair contained in it**, rather than a proof of global uniqueness of such a base. Its no-point-crest argument applies **to each such tag separately** and is unaffected by this correction. The full-circle theorem analogously applies **to a selected full-base tag** and does not imply that a full base is forced/canonical for all underlying laminations. Any application to the actual source's “critical visit” definition must either specify consistent Wave tags through transport, prove a canonical base in the intended subclass, or establish that the desired conclusion is independent of base choice.
 
 This is **a mathematical source-domain type issue**, not proof that the analytic Wave amplification theorem is false. It strengthens the need to make the actual closed Wave crest a precisely typed input before applying \(F_*\) to it.
+
+
+## Postscript — two improvements in the source's *active* category
+
+The follow-up [large-rotation cut theorem](./kkl_short_wave_proper_base_large_rotation_20261106.md) proves that every **short** Wave has a **proper** supporting base when \(q\ge24\mathbf b\), by finding a whole limb missed by both short ends and using that limb as a common proper boundary cut. Thus the earlier full-base two-component/isolated-endpoint case is **absent for short critical successors in this high-\(q\) regime**—stronger than the earlier positive-atom bound.
+
+The [canonical active-Wave theorem](./kkl_active_wave_canonical_base_20261106.md) now proves that for a **nonempty** proper-base crest, the base is **unique globally** and the **active** minimal end pair is unique up to swapping. The present noncrossing theorem's fixed-tag hypothesis is therefore an **intermediate proof device**, not a persistent ambiguity for active proper-base Waves. Neither follow-up asserts that arbitrary crest-empty or full-base laminations have canonical bases/end pairs.
