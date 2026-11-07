@@ -24,6 +24,9 @@ The new [PhaseMemoryGeneral.lean](../PhaseMemoryGeneral.lean) proves, for
   lossless mixed-radix representation.
 - `zeroFiber_projects_zero` and `zeroFiber_injective`: the k distinct
   fine phases `i=p*s` lie over the same coarse phase zero.
+- `fiber_projects`, `fiber_injective`, and `memory_injective_on_fiber`:
+  the same exact k-point description and injection hold over **every**
+  coarse phase, not just zero.
 - `memory_injective_on_zeroFiber`: if any code
   `i ↦ (i mod p, mem(i))` is injective, its memory values on that
   zero fiber are already pairwise distinct, for an **arbitrary memory
@@ -33,6 +36,8 @@ The new [PhaseMemoryGeneral.lean](../PhaseMemoryGeneral.lean) proves, for
   readings of the single Boolean sensor `(i == 0)` forces the same
   injection `Fin k → M`, using the pre-existing general clock
   observability theorem.
+- `zeroSensor_future_requires_memory_everywhere`: this lower bound
+  holds **simultaneously on all p fibers**, not only the zero fiber.
 - `address_step_semiconjugate` and `addressNext_coarse`: the
   deterministic update induced by the physical successor advances the
   coarse phase correctly, including carries and wraparound.
@@ -43,8 +48,12 @@ The new [PhaseMemoryGeneral.lean](../PhaseMemoryGeneral.lean) proves, for
 Thus the number of auxiliary states required for a lossless
 future-faithful augmentation is **exactly k**, in the precise sense that
 every candidate memory type must admit an injection from `Fin k`,
-and the concrete type `Fin k` suffices. No entropic or asymptotic
-approximation is used.
+and the concrete type `Fin k` suffices. The mathlib-backed
+[PhaseMemoryCardinality.lean](weighted/PhaseMemoryCardinality.lean)
+converts the injection into the numeric bound `k ≤ Fintype.card M`
+for any finite memory alphabet, rules out every `Fin r` with `r<k`,
+and proves the product bound for three-level towers. No entropic or
+asymptotic approximation is used.
 
 ## Relation to the 3/9/27 example
 
@@ -62,11 +71,15 @@ In the repository root, run:
 ```bash
 lake build PhaseMemoryGeneral
 lake build
+cd formalization/weighted
+lake exe cache get
+lake build PhaseMemoryCardinality
 ```
 
 The [research-validation workflow](../.github/workflows/lean-proofs.yml)
-includes the module in its default kernel build and scans for
-`sorry`/`admit`. The module includes explicit `#print axioms`
+includes the core module in its default kernel build and scans for
+`sorry`/`admit`. The [mathlib workflow](../.github/workflows/weighted-lean.yml)
+checks the cardinal companion and rejects added `axiom` declarations. The module includes explicit `#print axioms`
 commands for its key theorems.
 
 **Critical boundary:** preservation of the Boolean clock sensor is an
