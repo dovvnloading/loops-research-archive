@@ -211,6 +211,25 @@ construction attains the bound. These are symbolic clock theorems,
 **not** a source-defined KL prime-end/sheet realization or a closure
 of any MLC gate. [Precise scope and reproduction](./formalization/phase-memory-general.md).
 
+**Strict clone spectrum (new Lean closure):** The archive's finite
+cycle-with-shortcut graph now has a [kernel-checked complex eigenvalue
+polynomial](./formalization/weighted/FullClonePolynomial.lean)
+`μ^(2n+5)=μ+1` derived from the **actual graph matrix** for every
+delay. [StrictGap](./formalization/weighted/FullCloneStrictGap.lean)
+proves all other eigenvalues have smaller modulus, and
+[Eigenline](./formalization/weighted/FullCloneEigenline.lean)
+proves geometric simplicity. However
+[CloneRootRate](./formalization/weighted/CloneRootRate.lean)
+proves `(2n+4)*(t_n-1)≤1`: primitivity does **not** ensure a
+uniform positive expansion factor as delay grows. A separate
+**written exact determinant/Vieta proof** further gives
+`0<t_n-r_n≤1/(n+2)` for the leading spectral gap and shows
+`r_n/t_n→1`—so even the strict gap is nonuniform in this
+graph family. The determinant/product step is not yet Lean-checked.
+[Source, cycle-cover proof and exact regression](./research/independent_audits/clone_strict_spectrum_and_no_uniform_expansion_20261107.md).
+This settles an **internal finite spectral gap**, not a KL
+edge-incidence/prime-end realization, uniform WAD coercivity, or MLC.
+
 The [Lean arithmetic note](./research/independent_audits/lean_period27_kernel_arithmetic_20261105.md) explains the proof boundary, including why $2^{-128}$ arithmetic was too coarse to certify the period-27 **endpoint** signs and why the Lean computation uses $2^{-144}$. Kernel-reduced finite proofs use `decide +kernel`, not `native_decide` or proof holes; foundational Lean axioms can still appear in the declared imports.
 
 The [rational interval soundness proof note](./research/independent_audits/period27_rational_interval_soundness_20261105.md) closes a previous **arithmetic trust gap**: Lean now proves the interval operations are sound for general rational values, not just that one particular computed interval has favorable endpoints. This does not by itself prove a real root exists in Lean.
