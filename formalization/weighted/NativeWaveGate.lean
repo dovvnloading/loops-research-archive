@@ -374,4 +374,87 @@ theorem native_b_one_gate_capacity (r : ℕ)
     2 * (r - 1) * (12 * 1 - 1) ≤ 110 := by
   omega
 
+
+/-- Pure arithmetic behind KKL Prop. 6.8's long corridor.
+At q≥14*b+1 the number of its complete limb blocks is already
+at least 12*b, too long for a short crest. -/
+theorem native_root_corridor_exceeds_short
+    (q b : ℕ)
+    (hb : 1 ≤ b)
+    (hq : 14 * b + 1 ≤ q) :
+    12 * b ≤ q - 2 * b - 1 := by
+  omega
+
+/-- With a two-atom critical limb (a,a+2), every proper
+positive marked interval that intersects but does not contain it
+has an endpoint at its UNIQUE internal marked cut a+1.
+The corresponding closed crest contains that cut. -/
+theorem two_atom_critical_gate_is_unique_cut
+    (a s t : ℤ)
+    (hJ : s < t)
+    (hleft : s < a + 2)
+    (hright : a < t)
+    (hnotcontain : ¬ (s ≤ a ∧ a + 2 ≤ t)) :
+    s = a + 1 ∨ t = a + 1 := by
+  rcases partial_critical_overlap_has_internal_endpoint a 2 s t
+    (by norm_num) hJ hleft hright hnotcontain with hs | ht
+  · left
+    omega
+  · right
+    omega
+
+/-- The actual KKL root-attachment mechanism has a general,
+non-spectral ordered-set form. The carrier set operation F below
+is the native map if hmono is its true proper-path monotonicity;
+chain stands for genuine consecutively translated limb packets.
+All analytic hypotheses remain explicitly required. -/
+def sourceSetIter {X : Type*} (F : Set X → Set X) :
+    ℕ → Set X → Set X
+  | 0, D => D
+  | n + 1, D => F (sourceSetIter F n D)
+
+/-- Root exposure at time 1 and monotonicity propagate every
+native source-defined limb packet down the real forward orbit. -/
+theorem source_root_chain_propagates
+    {X : Type*} (F : Set X → Set X) (D : Set X)
+    (chain : ℕ → Set X)
+    (hmono : Monotone F)
+    (hroot : chain 0 ⊆ F D)
+    (hstep : ∀ n, chain (n+1) ⊆ F (chain n)) :
+    ∀ n, chain n ⊆ sourceSetIter F (n+1) D := by
+  intro n
+  induction n with
+  | zero =>
+      simpa [sourceSetIter] using hroot
+  | succ n ih =>
+      have hn : chain (n+1) ⊆
+          F (sourceSetIter F (n+1) D) :=
+        (hstep n).trans (hmono ih)
+      simpa [sourceSetIter] using hn
+
+/-- Once a genuine translated limb packet reaches the critical limb,
+whose next native F-image is the full boundary, a root-exposed
+original interval MUST saturate within b+3 steps. This theorem
+depends ONLY on set-monotone dynamics and a source-provided chain,
+not on Perron weights or marked-length monotonicity. -/
+theorem native_root_exposure_absorbs
+    {X : Type*} (F : Set X → Set X) (D : Set X)
+    (chain : ℕ → Set X) (b : ℕ)
+    (hmono : Monotone F)
+    (hroot : chain 0 ⊆ F D)
+    (hstep : ∀ n, chain (n+1) ⊆ F (chain n))
+    (hcritical : F (chain (b+1)) = Set.univ) :
+    sourceSetIter F (b+3) D = Set.univ := by
+  have hh := source_root_chain_propagates
+      F D chain hmono hroot hstep (b+1)
+  have hsub : (Set.univ : Set X) ⊆
+      sourceSetIter F (b+3) D := by
+    calc
+      (Set.univ : Set X) = F (chain (b+1)) :=
+        hcritical.symm
+      _ ⊆ F (sourceSetIter F (b+2) D) :=
+        hmono hh
+      _ = sourceSetIter F (b+3) D := rfl
+  exact Set.Subset.antisymm (Set.subset_univ _) hsub
+
 end LoopsNativeKKL
