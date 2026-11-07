@@ -131,7 +131,7 @@ That prime end is genuinely fixed:
 
 The full analytic degree-two circle map **has a fixed zero-dimensional gate**, even though the Markov edge matrix (1.9) is strictly positive and expanding. It is the actual polynomial dynamics, not a finite circle simulation.
 
-## 3. An actual short Wave with positive width and a zero-core fixed crest
+## 3. An actual positive-width Wave with a zero-core fixed crest
 
 Use the two physical slit sides as the original ideal marking of this *example*:
 
@@ -161,7 +161,7 @@ Hence
 \tag{3.3}
 \]
 
-Since a single marked endpoint does not contain any nondegenerate limb, the Wave is short. Its **zero core is a truly periodic access under the holomorphic \(F_*=f_*\iota^*\)** by (2.5).
+Since a single marked endpoint contains no nondegenerate limb-block, this Wave would satisfy the analogous *no-crest-over-a-limb* restriction whenever such limbs are defined. However **the formal KKL short-Wave predicate is not assigned here**, because this nonrenormalizable polynomial has no KKL small-Julia limb data. Its **zero core is a truly periodic access under the holomorphic \(F_*=f_*\iota^*\)** by (2.5).
 
 **Proof.** All slit coordinates are actual conformal prime-end charts. The quadrilateral supplies proper disjoint paths and positive extremal width; no shorter connected marked multi-interval contains endpoints in both distinct atoms \(\mathbf I_0,\mathbf I_1\), so its base and ends are those of (3.2). The crest identity is exactly the source definition. The point is fixed by direct polynomial calculation, and the immersion has no missing attached component because \(T'=T\). \(\square\)
 
