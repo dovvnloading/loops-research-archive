@@ -1,6 +1,6 @@
 name = "loops_weighted"
 version = "0.1.0"
-defaultTargets = ["WeightedReturn", "GraphWeightedBridge", "CloneBounds", "CloneRoot", "FullCloneEigen", "FullCloneMatrix", "SpectralDominance", "FullCloneSpectralMax", "Period27RealCenter", "Period27RealUniqueness", "Period27RealExactPeriod", "NativeWaveGate", "LimbInsertionHolonomy", "AtomCutDefect"]
+defaultTargets = ["WeightedReturn", "GraphWeightedBridge", "CloneBounds", "CloneRoot", "FullCloneEigen", "FullCloneMatrix", "SpectralDominance", "FullCloneSpectralMax", "Period27RealCenter", "Period27RealUniqueness", "Period27RealExactPeriod", "NativeWaveGate", "LimbInsertionHolonomy", "AtomCutDefect", "PhaseMemoryCardinality"]
 
 [[require]]
 name = "mathlib"
@@ -97,3 +97,28 @@ name = "Period27RealExactPeriod"
 [[lean_lib]]
 name = "Paper2Phase"
 srcDir = "../.."
+
+# General root clock theorem imported by the finite-cardinality corollary.
+
+[[lean_lib]]
+name = "RealTwoScalePhase"
+srcDir = "../.."
+
+[[lean_lib]]
+name = "PhaseTower"
+srcDir = "../.."
+
+[[lean_lib]]
+name = "PhaseTower27"
+srcDir = "../.."
+
+[[lean_lib]]
+name = "PhaseFuture"
+srcDir = "../.."
+
+[[lean_lib]]
+name = "PhaseMemoryGeneral"
+srcDir = "../.."
+
+[[lean_lib]]
+name = "PhaseMemoryCardinality"
