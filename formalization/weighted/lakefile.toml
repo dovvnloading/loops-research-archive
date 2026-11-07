@@ -1,6 +1,6 @@
 name = "loops_weighted"
 version = "0.1.0"
-defaultTargets = ["WeightedReturn", "GraphWeightedBridge", "CloneBounds", "CloneRoot", "FullCloneEigen", "FullCloneMatrix", "SpectralDominance", "FullCloneSpectralMax", "Period27RealCenter", "Period27RealUniqueness", "Period27RealExactPeriod", "NativeWaveGate"]
+defaultTargets = ["WeightedReturn", "GraphWeightedBridge", "CloneBounds", "CloneRoot", "FullCloneEigen", "FullCloneMatrix", "SpectralDominance", "FullCloneSpectralMax", "Period27RealCenter", "Period27RealUniqueness", "Period27RealExactPeriod", "NativeWaveGate", "LimbInsertionHolonomy"]
 
 [[require]]
 name = "mathlib"
@@ -50,6 +50,9 @@ name = "FullCloneMatrix"
 
 [[lean_lib]]
 name = "NativeWaveGate"
+
+[[lean_lib]]
+name = "LimbInsertionHolonomy"
 
 [[lean_lib]]
 name = "SpectralDominance"
