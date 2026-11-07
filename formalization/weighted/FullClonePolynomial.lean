@@ -202,7 +202,8 @@ theorem complex_eigen_shortcut
   have ht := hAz (tip n)
   rw [complex_full_matrix_action] at ht
   unfold complexAction at ht
-  rw [dif_pos hn, if_pos (show (tip n).val = n by rfl)] at ht
+  dsimp [tip] at ht
+  rw [dif_pos hn, if_pos rfl] at ht
   change z (⟨n + 1, hn⟩ : Vertex n) + z (afterTip n) =
     μ * z (tip n) at ht
   have he := complex_succ n μ z hAz (n + 1) hn hs (by omega)
