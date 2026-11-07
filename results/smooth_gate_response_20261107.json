@@ -1,0 +1,94 @@
+{
+  "analytic_trust_boundary": "no actual KKL f_*iota^* graph arrows, non-LC attachment census, or WAD comparison checked",
+  "boundary_voltage_no_go": {
+    "conclusion": "sharp 0/1 Dirichlet trace has infinite energy",
+    "estimated_log_growth_slope": 0.636619703938,
+    "predicted_coefficient": 0.636619772368,
+    "smooth_epsilon_residuals": [
+      3.075334911816,
+      3.101654827013,
+      3.115197316593,
+      3.122066231353
+    ],
+    "step_energy_partial_1024": 8.350451266037,
+    "step_energy_partial_256": 7.467910383229,
+    "step_energy_partial_4096": 9.232993571784
+  },
+  "covering_energy": {
+    "covering_degree": 2,
+    "pullback_energy": 4.712388980385,
+    "ratio": 2.0,
+    "target_energy": 2.356194490192
+  },
+  "physical_annulus": {
+    "height": "log(2)",
+    "starts": [
+      "0",
+      "pi/2",
+      "pi"
+    ],
+    "width": "pi/3"
+  },
+  "schema_version": 1,
+  "scope": "exact analytic smooth annulus example and numerical checks only; not KKL native WAD",
+  "smooth_average_response": {
+    "alpha": 0.110317800076,
+    "beta": 0.184252358022,
+    "certified_min_eigenvalue_lower_bound": 0.07890561963,
+    "gram_256": [
+      [
+        0.582723960978,
+        0.021773441513,
+        0.001236481549
+      ],
+      [
+        0.021773441513,
+        0.582723960978,
+        0.021773441513
+      ],
+      [
+        0.001236481549,
+        0.021773441513,
+        0.582723960978
+      ]
+    ],
+    "kron_2terminal_residual": 0.0,
+    "nmax": 256,
+    "number_of_probes": 3,
+    "observed_gram_128_vs_256_gap": 2.8e-11,
+    "rigorous_entrywise_tail_256": 2e-12,
+    "two_terminal_opposite_charge_energy": 3.565376856962
+  },
+  "thin_modulus_obstruction": {
+    "interpretation": "no uniform positive lower eigenvalue over arbitrary thin annuli; not a KKL stage",
+    "limit_coefficient": 1.432394487827,
+    "measurements": [
+      {
+        "diag_over_height": 1.216284631742,
+        "height": 0.25,
+        "offdiag_over_height": 0.000497170328
+      },
+      {
+        "diag_over_height": 1.357249402813,
+        "height": 0.125,
+        "offdiag_over_height": 1.407137e-06
+      },
+      {
+        "diag_over_height": 1.411118919221,
+        "height": 0.0625,
+        "offdiag_over_height": 8.2e-11
+      },
+      {
+        "diag_over_height": 1.426873873267,
+        "height": 0.03125,
+        "offdiag_over_height": -0.0
+      },
+      {
+        "diag_over_height": 1.431000472687,
+        "height": 0.015625,
+        "offdiag_over_height": -0.0
+      }
+    ],
+    "theorem": "0 < G_h <= (9*h/(2*pi))*identity; G_h/h -> (9/(2*pi))*identity as h -> 0"
+  }
+}
