@@ -1,0 +1,42 @@
+name: Root-stalk and source-stretch closed-crest sieves
+
+on:
+  push:
+    branches:
+      - main
+      - 'research/**'
+    paths:
+      - '.github/workflows/root-stalk-sieve.yml'
+      - 'research/independent_audits/verify_root_stalk_sieve.py'
+      - 'research/independent_audits/kkl_exact_root_stalk_sieve_20261106.md'
+      - 'results/root_stalk_sieve_20261106.json'
+      - 'research/independent_audits/verify_stretching_block_sieve.py'
+      - 'research/independent_audits/kkl_stretching_block_terminal_sieve_20261106.md'
+      - 'results/stretching_block_sieve_20261106.json'
+  pull_request:
+    paths:
+      - '.github/workflows/root-stalk-sieve.yml'
+      - 'research/independent_audits/verify_root_stalk_sieve.py'
+      - 'research/independent_audits/kkl_exact_root_stalk_sieve_20261106.md'
+      - 'results/root_stalk_sieve_20261106.json'
+      - 'research/independent_audits/verify_stretching_block_sieve.py'
+      - 'research/independent_audits/kkl_stretching_block_terminal_sieve_20261106.md'
+      - 'results/stretching_block_sieve_20261106.json'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  exact-cyclic-count:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Check exact finite cyclic regressions and deterministic manifests
+        run: |
+          python -m py_compile research/independent_audits/verify_root_stalk_sieve.py research/independent_audits/verify_stretching_block_sieve.py
+          python research/independent_audits/verify_root_stalk_sieve.py --check-manifest
+          python research/independent_audits/verify_stretching_block_sieve.py --check-manifest

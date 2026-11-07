@@ -1,0 +1,40 @@
+{
+  "high_rotation": {
+    "candidate_cap_t1": "(r-1)*(12*b-1)",
+    "candidate_cap_t2_inside": "r*(12*b-1)",
+    "candidate_cap_t2_straddling": "(r-1)*12*b",
+    "large_rotation": "q >= 24*b; M >= q; r <= 6*b; 1 <= k < 12*b",
+    "long_corridor_limb_count": "q-2*b-1 >= 12*b",
+    "max_b_checked": 1000,
+    "native_bridge": "requires actual I_str to touch critical limb, typed closed crest inclusion, and proper dynamics; not proved by cyclic test",
+    "placement_free_touching_cap": "r*(12*b-1)"
+  },
+  "method": "Exact cyclic marked intervals; not holomorphic KKL proof",
+  "schema_version": 1,
+  "sieve": {
+    "critical_state_enumerations": 213199,
+    "exact_critical_meeting_states": "r+k-1",
+    "negative_closed_cut_only": "crest contains shared marked cut but not full 2-atom stretch block",
+    "negative_remote_block": {
+      "M": 10,
+      "block_start": 6,
+      "k": 1,
+      "r": 3,
+      "survivors": 3
+    },
+    "regime": "1 <= r < M; 1 <= k <= M-r; 1 <= t <= 2",
+    "stretch_block_disjoint_cases": 415739,
+    "stretch_block_inside_cases": 213199,
+    "stretch_block_straddling_cases": 21318,
+    "stretch_block_touching_cases": 234517,
+    "survivor_one_atom": "r-1",
+    "survivor_two_atom_crossing_boundary": "r - 1_{k>=r}",
+    "survivor_two_atom_inside": "r",
+    "tested_placements": 650256,
+    "touching_one_atom_cases": 111929,
+    "touching_two_atom_boundary_cases": 21318,
+    "touching_two_atom_inside_cases": 101270,
+    "verified_marking_sizes": "3 <= M <= 40"
+  },
+  "source": "KKL arXiv:2606.27272v1 Proposition 6.8 stretching multi-interval; source dynamics used only in written argument"
+}

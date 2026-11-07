@@ -1,0 +1,38 @@
+{
+  "counting": {
+    "atom_root_cases": 111930,
+    "case_triples": 10660,
+    "closure_extra_forbidden_internal_cut": 2,
+    "closure_extra_forbidden_outer_cut": 1,
+    "critical_intervals_scanned": 213200,
+    "critical_meeting_count": "r+k-1",
+    "cut_root_cases": 122590,
+    "max_atoms_exhaustive": 40,
+    "outside_regime_counterexample": {
+      "M": 4,
+      "incorrect_extrapolation": 1,
+      "k": 3,
+      "r": 3,
+      "root_cut": 1,
+      "survivors": 0
+    },
+    "regime": "1 <= r < M; 1 <= k <= M-r; root in closed critical limb",
+    "survivors_root_atom": "r-1",
+    "survivors_root_internal_cut": "r-2",
+    "survivors_root_outer_cut": "r-1",
+    "theorem": "closed critical-root sieve for finite cyclic marked intervals",
+    "total_open_closed_cut_difference": 223860
+  },
+  "high_rotation": {
+    "extremal_inequality": "12*b-1 < 24*b-6*b <= M-r",
+    "large_rotation_range": "q >= 24*b; M >= q; r <= 6*b",
+    "max_b": 1000,
+    "root_atom_or_outer_cut_candidate_cap": "(r-1)*(12*b-1)",
+    "root_cut_candidate_cap": "(r-2)*(12*b-1)",
+    "short_length_range": "1 <= k < 12*b",
+    "symbolic_r_k_cases_implied": 24033009000,
+    "visit_transition_cap_conditional": "candidate cap, if proper length monotone and no proper critical-return cycles"
+  },
+  "provenance": "finite integer checks only; no native KKL analytic verification",
+  "schema_version": 1
+}
