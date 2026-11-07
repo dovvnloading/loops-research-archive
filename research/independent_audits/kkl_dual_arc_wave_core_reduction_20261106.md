@@ -175,6 +175,25 @@ KKL Proposition 6.6 says the left-hand side is a **connected open marked multi-i
 
 **Not yet solved:** A crest of **zero marked length** can consist of one or several endpoints; then \(J(C)=\varnothing\). Such a Wave is a genuine possibility under the source definitions (e.g. an annular Wave between adjacent marking atoms with crest their separating endpoint). The core theorem gives **no** growth mechanism for that case. Nor does it prove a source Wave has positive length merely because it has positive conformal width. The **zero-core case** must be settled by a separate local gate/terminality theorem, not ignored.
 
+### Theorem 4.3 (an actual short positive-width Wave with **zero** marked crest)
+
+Suppose a **genuine KKL annular carrier complement** \(V=\mathcal U\setminus\mathcal T\) has two consecutive **distinct** original marking intervals \(\mathbf I_0,\mathbf I_1\subset C=\partial_C^{\rm in}V\), separated by the marked endpoint \(e\). Assume both are nondegenerate open arcs of the actual inner prime-end circle. Then there exists a **genuine positive-extremal-width** lamination \(A\) of proper paths in \(V\) with
+
+\[
+B_A=\mathbf I_0\cup\{e\}\cup\mathbf I_1,\quad
+E_{A,-}=\mathbf I_0,\quad E_{A,+}=\mathbf I_1,
+\quad\boxed{C_A=\{e\},\ \ell(C_A)=0.}
+\tag{4.7}
+\]
+
+Every leaf of this Wave is short in the sense of KKL §6: its singleton crest cannot contain a whole limb of the original marking. Thus **positive conformal width + actual shortness does not imply positive marked crest length** even before any non-LC complications.
+
+**Proof.** Uniformize a genuine collar of the actual annulus \(V\) by a round annular collar; the inner prime-end boundary is then an honest circle of accesses, without assuming that any planar impression is a singleton. Pick compact nondegenerate disjoint subarcs \(J_0\Subset\mathbf I_0\), \(J_1\Subset\mathbf I_1\) close to \(e\). There is an embedded topological quadrilateral \(Q\) in the collar with these two opposite boundary sides and the other two sides in \(V\), following the *short* boundary arc through \(e\), not the long way round the annulus. By conformal uniformization of a Jordan quadrilateral, \(Q\) has finite strictly positive extremal modulus and supports a positive-width foliation by pairwise disjoint simple arcs connecting \(J_0\) to \(J_1\). These curves are proper paths in \(V\) with endpoints in the corresponding **prime-end** arcs and are subordinate to the short marked base \(B_A=\mathbf I_0\cup\{e\}\cup\mathbf I_1\).
+
+No connected open marked multi-interval smaller than \(B_A\) can contain **both** distinct endpoint atoms, so \(B_A\) is the minimal base. As all leaves begin in \(\mathbf I_0\) and end in \(\mathbf I_1\), the minimal end multi-intervals are exactly those two atoms. By Appendix A.1's *definition* of crest, \(C_A=B_A\setminus(\mathbf I_0\cup\mathbf I_1)=\{e\}\). Since a single marking endpoint contains no complete limb, the Wave is short. \(\square\)
+
+**Bounded-visits consequence:** The zero-core obstruction in Theorem 4.2 is not merely a technical corner case that one could erase by assuming every Wave of positive width has a positive crest. This genuine native Wave does **not** itself supply a chain of repeated critical visits or refute KKL Lemma 6.4. It proves that a repair must either prove that **proof-used** critical-visit crests belong to the regular-positive subclass, or supply a distinct endpoint/zero-core escape or terminality argument.
+
 ## 5. Root-contact endpoint localization without a global prime-end quotient
 
 Let \(A=\overline{\mathcal T'\setminus\mathcal T}\) be the actual excess carrier and let
@@ -215,7 +234,7 @@ There are now **two independently typed native bridges**, not one giant access c
 
 ### Strict status
 
-**Established in this note:** native WAD non-return (Theorem 3.1); Perron witness contradiction (Theorem 3.2); type-safe positive-crest open-core transport (Theorem 4.2); no newly born attached block at a guarded endpoint (Proposition 5.1); precise identification and proof-licensed repair of the **\(n=0\)** exponent typo in KKL §2.7's definition.
+**Established in this note:** native WAD non-return (Theorem 3.1); Perron witness contradiction (Theorem 3.2); type-safe positive-crest open-core transport (Theorem 4.2); **a genuine short positive-width native Wave with zero marked crest** (Theorem 4.3); no newly born attached block at a guarded endpoint (Proposition 5.1); precise identification and proof-licensed repair of the **\(n=0\)** exponent typo in KKL §2.7's definition.
 
 **Open:** construct a dual witness/domination for every proper recurrent *native* interval; exclude or treat zero-visibility and zero-core Waves; verify contact/guard status for actual non-LC exceptional marked endpoints and the full source-specific closed-crest admissibility. Theorems 3.1 and 4.2 do **not** jointly imply KKL Proposition 6.9, Lemma 6.4, the corrected bounded-visit growth repair, full Wave amplification, or MLC.
 
