@@ -1,7 +1,7 @@
-# Issue #40 — a real quadratic with **primitive** expanding edge incidence and a fixed zero-core prime-end gate
+# Issue #40 — a real quadratic with primitive expanding Markov incidence and a fixed prime-end access
 
 **Date:** 2026-11-06.  
-**Status:** exact holomorphic **negative control** for the shortcut “primitive \(T_F\)-like edge growth rules out periodic zero-mass marked sectors,” and a genuine positive-width zero-core Wave on its actual prime-end circle. It does **not** disprove KKL's prime primitive **renormalization** theorem because this quadratic has no such renormalization; its matrix is a *real Markov-refined postcritical* incidence matrix, not the KKL small-Julia-cycle \(T_F\).
+**Status:** exact holomorphic **negative control** for the shortcut “primitive \(T_F\)-like edge growth rules out periodic zero-mass marked sectors,” and a formal admissibility audit showing why the tempting adjacent-atom zero-core Wave construction **fails**. It does **not** disprove KKL's prime primitive **renormalization** theorem because this quadratic has no such renormalization; its matrix is a *real Markov-refined postcritical* incidence matrix, not the KKL small-Julia-cycle \(T_F\).
 
 **Source issue:** Kahn–Kapiamba–Lyubich [arXiv:2606.27272v1](https://arxiv.org/html/2606.27272v1), §2.5 for the true primitive Hubbard-edge operator and §2.6–2.7 for its native dual-arc realization, §6.1 Proposition 6.9's invocation of \(\lambda_F>1\), Appendix A.1 for marked intervals and Wave crests. The test is motivated by the exact dual-WAD/endpoint reduction in [the companion note](./kkl_dual_arc_wave_core_reduction_20261106.md).
 
@@ -131,50 +131,42 @@ That prime end is genuinely fixed:
 
 The full analytic degree-two circle map **has a fixed zero-dimensional gate**, even though the Markov edge matrix (1.9) is strictly positive and expanding. It is the actual polynomial dynamics, not a finite circle simulation.
 
-## 3. An actual positive-width Wave with a zero-core fixed crest
+## 3. A fixed access **does not** automatically give a KKL Wave
 
-Use the two physical slit sides as the original ideal marking of this *example*:
+The *genuine* polynomial fixed-access conclusion (2.5) remains correct. However **the original proposed positive-width Wave between the two adjacent marking atoms was invalid**, and is **withdrawn**. Here is the exact source-defined obstruction:
+
+KKL Appendix A.1 says that a proper path in \((\mathcal V,\mathcal I)\) is **not subordinate to any multi-interval of combinatorial length at most two**. The proposed collar paths have endpoints in the adjacent slit-side atoms \(\mathbf I_0=(0,1/2)\), \(\mathbf I_1=(1/2,1)\), and are subordinate to their connected two-atom short base
 
 \[
-\mathbf I_0=(0,\tfrac12),\quad
-\mathbf I_1=(\tfrac12,1);
+B=\mathbf I_0\cup\{e\}\cup\mathbf I_1,\qquad \ell(B)=2.
 \tag{3.1}
 \]
 
-they are adjacent at the fixed terminal prime end \(e=1/2\). This is a genuine finite prime-end marking, **not asserted** to be the KKL original vertex-side marking.
+Consequently **none of those collar paths is a valid marked path**, so their positive-modulus quadrilateral is **not a KKL Wave**. In particular, there is no established positive-width zero-crest Wave \(A\) with \(C_A=\{e\}\) in this example.
 
-Take two nondegenerate compact subarcs \(J_0\Subset\mathbf I_0\), \(J_1\Subset\mathbf I_1\) approaching \(e\). Inside a genuine conformal collar of \(V\), construct a Jordan quadrilateral with these opposite end sides, following the **short** boundary route through \(e\). Its conformal modulus is strictly positive. The canonical foliation by disjoint proper paths connecting \(J_0\) to \(J_1\) is a genuine Wave \(A\) in KKL Appendix A.1's terminology. Its **smallest marked base** and **end multi-intervals** are
-
-\[
-B_A=\mathbf I_0\cup\{e\}\cup\mathbf I_1,
-\quad E_-=\mathbf I_0,\quad E_+=\mathbf I_1.
-\tag{3.2}
-\]
-
-Hence
+The **correct** surviving analytic statement is
 
 \[
 \boxed{
-\mathcal W(A)>0,\quad C_A=B_A\setminus(E_-\cup E_+)=\{e\},\quad
-\ell(C_A)=0.
+M=\begin{pmatrix}1&1\\1&1\end{pmatrix}
+\text{ is primitive with }\rho(M)=2,
+\quad p(e)=e,\quad \iota^*\{e\}=\{e\}.
 }
-\tag{3.3}
+\tag{3.2}
 \]
 
-Since a single marked endpoint contains no nondegenerate limb-block, this Wave would satisfy the analogous *no-crest-over-a-limb* restriction whenever such limbs are defined. However **the formal KKL short-Wave predicate is not assigned here**, because this nonrenormalizable polynomial has no KKL small-Julia limb data. Its **zero core is a truly periodic access under the holomorphic \(F_*=f_*\iota^*\)** by (2.5).
-
-**Proof.** All slit coordinates are actual conformal prime-end charts. The quadrilateral supplies proper disjoint paths and positive extremal width; no shorter connected marked multi-interval contains endpoints in both distinct atoms \(\mathbf I_0,\mathbf I_1\), so its base and ends are those of (3.2). The crest identity is exactly the source definition. The point is fixed by direct polynomial calculation, and the immersion has no missing attached component because \(T'=T\). \(\square\)
+This shows primitive Markov expansion alone does not prevent a fixed **marked endpoint access**. It does **not** show that the endpoint is the crest of an admissible KKL Wave or that it belongs to a genuine critical-visit chain. These extra assertions require additional native geometric proof.
 
 ## 4. Precise implication and no overclaim
 
-This analytically realized package proves the failure of the following **unqualified** implication:
+This analytic calculation tests the following **unqualified** inference, but only its endpoint part:
 
-> A genuine holomorphic degree-two tree map with a primitive expanding positive edge matrix cannot have periodic proper zero-core prime-end sectors or positive-width Waves cresting over such sectors.
+> A genuine holomorphic degree-two tree map with a primitive expanding positive edge matrix cannot have periodic proper zero-core prime-end sectors or that they can be valid KKL Wave crests.
 
-That implication is **false** by (1.9), (2.5), and (3.3). Primitive edge expansion constrains the **positive edge cone**; it does **not** automatically control fixed **vertex-side/endpoint gates**.
+The weaker claim that primitive expansion forces every **marked endpoint** to be nonperiodic is **false** by (1.9) and (2.5). The stronger claimed implication about **genuine Wave crests is not tested** by this example, because the proposed Wave is inadmissible as shown in §3. Primitive edge expansion constrains the positive edge cone; it does not alone control fixed endpoint accesses.
 
 This is **not** a counterexample to KKL Proposition 6.9 or Lemma 6.4 in their required class. The polynomial is not primitively renormalizable, has no KKL small-Julia cycle, and no native limb \(\mathbf L_0\) or KKL critical-visit chain was constructed. In particular one cannot infer the hypothesis “intersects \(\mathbf L_0\)” from this fixed tip.
 
-**Use in Issue #40:** A zero-core proof must rule out (or declare terminal) cycles of the **actual endpoint/turn gate dynamics** meeting the specific critical-limb condition, and separately handle the non-LC impression/attachment locus. The dual-bivertical-arc spectral machinery of KKL §2.6–2.7 is already valid in its typed domain and cannot **alone** exclude cycles outside that positive cone. This precisely justifies the **finite marked endpoint gate graph** proposed in the companion note.
+**Use in Issue #40:** A zero-core proof must rule out (or declare terminal) cycles of the **actual endpoint/turn gate dynamics** meeting the specific critical-limb condition, and separately handle the non-LC impression/attachment locus **if those endpoints actually occur as admissible critical crests**. The dual-bivertical-arc spectral machinery of KKL §2.6–2.7 is valid in its typed domain and does not alone exclude cycles outside that positive cone. This precisely justifies the **finite marked endpoint gate graph** proposed in the companion note.
 
 **Keep OPEN:** Issue #40, KKL_BOUNDED_VISITS_INTERVAL_GROWTH_REPAIR, KKL_PARABOLIC_WAVE_AMPLIFICATION, and MLC. No synthetic simulator, full native-category proof, or independent referee validation is claimed.
