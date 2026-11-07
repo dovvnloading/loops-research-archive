@@ -36,7 +36,7 @@ private theorem mul_left_cancel_pos (p : Nat) (hp : 0 < p) {a b : Nat}
 
 /-- The quotient digit, specifying which of k copies of the coarse
 p-phase clock the physical phase occupies. -/
-def memoryDigit (p k : Nat) (hp : 0 < p)
+def memoryDigit (p k : Nat) (_hp : 0 < p)
     (i : Phase (p * k)) : Phase k :=
   ⟨i.val / p, by
     have hi := i.isLt
@@ -56,7 +56,7 @@ def address (p k : Nat) (hp : 0 < p)
   (project p (p * k) hp i, memoryDigit p k hp i)
 
 /-- Recover the physical phase from the coarse phase and memory digit. -/
-def decode (p k : Nat) (hp : 0 < p)
+def decode (p k : Nat) (_hp : 0 < p)
     (a : Phase p × Phase k) : Phase (p * k) :=
   ⟨a.1.val + p * a.2.val, by
     have ha := a.1.isLt
@@ -127,6 +127,47 @@ theorem zeroFiber_injective (p k : Nat) (hp : 0 < p) :
   apply mul_left_cancel_pos p hp
   exact congrArg Fin.val hab
 
+/-- All k elements of the fiber over an *arbitrary* coarse phase,
+not only over zero. -/
+def fiber (p k : Nat) (hp : 0 < p)
+    (r : Phase p) (a : Phase k) : Phase (p * k) :=
+  decode p k hp (r, a)
+
+theorem fiber_projects (p k : Nat) (hp : 0 < p)
+    (r : Phase p) (a : Phase k) :
+    project p (p * k) hp (fiber p k hp r a) = r := by
+  have h := congrArg Prod.fst (address_decode p k hp (r, a))
+  change project p (p * k) hp (fiber p k hp r a) = r at h
+  exact h
+
+theorem fiber_injective (p k : Nat) (hp : 0 < p)
+    (r : Phase p) : Function.Injective (fiber p k hp r) := by
+  intro a b hab
+  have h := congrArg (fun i : Phase (p * k) =>
+    (address p k hp i).2) hab
+  change (address p k hp (decode p k hp (r, a))).2 =
+    (address p k hp (decode p k hp (r, b))).2 at h
+  rw [address_decode p k hp (r, a), address_decode p k hp (r, b)] at h
+  exact h
+
+/-- Every coarse phase has k distinct fine representatives. Injectivity
+of an augmented quotient forces pairwise distinct memories on EACH fiber. -/
+theorem memory_injective_on_fiber
+    {M : Type} (p k : Nat) (hp : 0 < p)
+    (mem : Phase (p * k) → M)
+    (hcode : Function.Injective (fun i : Phase (p * k) =>
+      (project p (p * k) hp i, mem i)))
+    (r : Phase p) :
+    Function.Injective (fun a : Phase k => mem (fiber p k hp r a)) := by
+  intro a b hmem
+  apply fiber_injective p k hp r
+  apply hcode
+  apply Prod.ext
+  · change project p (p * k) hp (fiber p k hp r a) =
+        project p (p * k) hp (fiber p k hp r b)
+    rw [fiber_projects p k hp r a, fiber_projects p k hp r b]
+  · exact hmem
+
 /-- Regardless of the memory alphabet, any *injective* augmented
 coarse code needs k distinct memory values within one projection fiber. -/
 theorem memory_injective_on_zeroFiber
@@ -159,6 +200,22 @@ theorem zeroSensor_future_requires_memory
   apply memory_injective_on_zeroFiber p k hp mem
   exact zeroSensor_future_sound_implies_injective
     (p * k) (Nat.mul_pos hp hk) _ hfuture
+
+/-- Strong form: preserving the future Boolean zero-sensor forces
+k distinct memories on EVERY one of the p coarse fibers. -/
+theorem zeroSensor_future_requires_memory_everywhere
+    {M : Type} (p k : Nat) (hp : 0 < p) (hk : 0 < k)
+    (mem : Phase (p * k) → M)
+    (hfuture : PreservesFuture
+      (fun i : Phase (p * k) => (project p (p * k) hp i, mem i))
+      (clockNext (p * k) (Nat.mul_pos hp hk))
+      (zeroSensor (p * k))) :
+    ∀ r : Phase p,
+      Function.Injective (fun a : Phase k => mem (fiber p k hp r a)) := by
+  intro r
+  apply memory_injective_on_fiber p k hp mem
+    (zeroSensor_future_sound_implies_injective
+      (p * k) (Nat.mul_pos hp hk) _ hfuture) r
 
 /-- The deterministic transition on the mixed-radix address is
 induced by the actual physical clock, not an independently chosen
@@ -212,6 +269,7 @@ theorem address_factors_all_future_streams
 #print axioms decode_address
 #print axioms address_decode
 #print axioms zeroSensor_future_requires_memory
+#print axioms zeroSensor_future_requires_memory_everywhere
 #print axioms addressNext_coarse
 #print axioms address_factors_all_future_streams
 
