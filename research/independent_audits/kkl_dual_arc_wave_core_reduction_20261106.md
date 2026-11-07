@@ -101,7 +101,7 @@ coordinatewise, using the same **column-source** convention for both \(d\) and \
 \]
 impossible. \(\square\)
 
-The **actual source** already provides \(T_F\) through (1.1); the **new** task is a boundary-to-dual **observable** \(d\) satisfying (3.2). It need only be constructed on a hypothetical proper periodic orbit (or on proof-used recurrent intervals), **not on every prime end**. This is a strictly narrower geometric requirement than full exceptional \(X\)-by-\(X\) access classification.
+The **actual source** already provides \(T_F\) through (1.1); the **new** task is a boundary-to-dual **observable** \(d\) satisfying (3.2). For corrected critical-visit growth it need only be constructed on a hypothetical proper periodic orbit **that itself contains a full-atom critical encounter**, not on every periodic state and not on every prime end. This is a strictly narrower geometric requirement than full exceptional \(X\)-by-\(X\) access classification.
 
 **Zero-witness obstruction:** A periodic interval with \(d(I)=0\), or one for which the domination direction cannot be established, is **not** excluded. Such intervals are exactly the “zero-edge sector” obstruction isolated in the earlier contour repair. Perron growth itself is not a zero-sector escape argument.
 
