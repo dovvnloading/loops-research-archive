@@ -17,7 +17,7 @@ The only limb-marking property used below is
 \tag{1.1}
 \]
 
-This property holds for the standard vertex-side limb marking described in KKL §6.1. If applying the theorem to a *different* induced/refined marking, (1.1) is an explicit stage-specific assumption, **not** a consequence of graph valence.
+**Source verification of (1.1).** KKL §4, proof of Lemma 4.8 (around its equation (4.10)), explicitly identifies every atom of \(\mathbf L_j\) with a **side of an edge or vertex other than \(\alpha_F\)** in the limb hull \(\mathcal G_j\). Distinct limb hulls lie in disjoint components of \(\mathcal T\setminus\{\alpha_F\}\); hence one such edge/vertex-side atom cannot belong to two *different* \(\mathbf L_j\) interiors. Each limb contains at least one small filled Julia vertex, so its boundary has a nonempty atom. This verifies the injection/count property **for the standard full KKL marking** even in the non-LC case insofar as §2.5 transports this graph-side combinatorics by its model lift. It does **not** identify individual prime-end impressions. For a *nonstandard* induced/refined marking, (1.1) remains an explicit stage-specific assumption and must not be inferred from graph valence alone.
 
 ### Lemma 1.1 (missed-limb cut)
 
