@@ -167,10 +167,14 @@ future of any observable can be recovered.
 It also proves a sharp *necessary* memory condition for **arbitrary**
 candidate memory types: if an augmentation retains just the future
 readings of the Boolean zero-phase sensor, it already induces an
-injection from k distinct points in a single coarse fiber to the
-memory alphabet. Thus k states are necessary and sufficient in this
-symbolic setting. This does **not** furnish a physical KL
-access/sheet map or any analytic MLC result.
+injection from k distinct points in **every** coarse fiber to the
+memory alphabet. The mathlib-backed
+[PhaseMemoryCardinality.lean](weighted/PhaseMemoryCardinality.lean)
+converts this to the exact bound `k ≤ Fintype.card M` for finite
+memory types and shows that every smaller finite alphabet fails.
+Thus k states are necessary and sufficient in this symbolic setting.
+This does **not** furnish a physical KL access/sheet map or any
+analytic MLC result.
 
 See [the general phase-memory theorem note](phase-memory-general.md)
 for the exact quantified claim, comparison to the concrete 27-clock,
