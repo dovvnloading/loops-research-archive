@@ -31,7 +31,7 @@ def fullAdjacencyMatrix (n : ℕ) : Matrix (Vertex n) (Vertex n) ℝ := by
 def fullMatrixAction (n : ℕ) (v : Vertex n → ℝ) (u : Vertex n) : ℝ :=
   ∑ w : Vertex n, fullAdjacencyMatrix n u w * v w
 
-private theorem edge_from_nonlast_iff (n : ℕ) (u w : Vertex n)
+theorem edge_from_nonlast_iff (n : ℕ) (u w : Vertex n)
     (hnext : u.val + 1 < size n) :
     Edge n u w ↔
       w = nextVertex n u hnext ∨
@@ -60,7 +60,7 @@ private theorem edge_from_nonlast_iff (n : ℕ) (u w : Vertex n)
       have hval := congrArg Fin.val hskip
       simpa [afterTip] using hval
 
-private theorem edge_from_last_iff (n : ℕ) (u w : Vertex n)
+theorem edge_from_last_iff (n : ℕ) (u w : Vertex n)
     (hnot : ¬ (u.val + 1 < size n)) :
     Edge n u w ↔ w = hub n := by
   have hlast : u.val + 1 = size n := by
