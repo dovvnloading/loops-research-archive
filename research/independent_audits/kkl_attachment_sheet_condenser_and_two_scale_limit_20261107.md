@@ -137,6 +137,62 @@ Moreover the **explicit diagonal** `ell(h)=(h/4) exp(-1/h²)` for `0<h<1` satisf
 
 **Consequence for a parabolic tail.** Even when an actual attached prime-end interval is disjoint from its deck translate, the two arrows `f`/`iota` do NOT force a stage-uniform positive width, nor does merely dividing by annular height repair this. A useful native WAD coercivity theorem must control **both collar modulus and attachment access size/capacity** (or supply a stronger transverse quantity). This is a mathematically sharp two-parameter counterexample to an over-optimistic use of the PR #45 modulus-independent pinned-outer sheet trace inequality. It is **not** a counterexample to KKL's actual Wave Lemma, whose wave families and boundary conditions are different.
 
+### Theorem 4.2 — a sharp if-and-only-if two-scale coercivity criterion
+
+The apparent gap between fixed-`ell` positivity and the rapidly shrinking counterexample can be **closed exactly**. Define `log⁺(x)=max(log(x),0)`.
+
+**Theorem 4.2 (necessary and sufficient condition for normalized nondegeneration).** For **any** sequences `h_n↓0`, `0<ell_n<pi`,
+
+\[
+\boxed{
+\liminf_{n\to\infty}\frac{W_{h_n}(\ell_n)}{h_n}>0
+\quad\Longleftrightarrow\quad
+\limsup_{n\to\infty}h_n\log^+(1/\ell_n)<\infty.}\tag{4.4}
+\]
+
+More quantitatively, for **every** `h>0` and `0<ell<pi`,
+
+\[
+\boxed{
+\frac{W_h(\ell)}h\ge
+\left[\frac{\pi}{2}+\frac{4h}{\pi}
+\left(\frac32+\log\bigl(1+2/\ell\bigr)\right)\right]^{-1}.}\tag{4.5}
+\]
+
+In particular, if `ell(h)↓0` and `h log(1/ell(h))→0` (which includes **any polynomial rate** `ell(h)=h^p`, `p>0`), the sharp **joint**, not merely iterated, limit is
+
+\[
+\boxed{\lim_{h\downarrow0}\frac{W_h(\ell(h))}h=\frac2\pi.}\tag{4.6}
+\]
+
+*Proof.* In the explicit charge response (2.1), use the elementary pointwise inequality `coth(x)≤1+1/x` to obtain
+
+\[
+R_h(\ell)\le\frac4\pi\Bigl[S_1(\ell)+h^{-1}S_2(\ell)\Bigr],
+\quad S_j(\ell)=\sum_{n\ge1,\ n\ \mathrm{odd}}\frac{\operatorname{sinc}^2(n\ell/2)}{n^j}.
+\]
+
+Clearly `S_2≤sum_(n odd) n^{-2}=pi²/8`. To bound `S_1`, split at the integer `N=ceil(2/ell)≥1`. For `n≤N`, `sinc²≤1` and the harmonic sum is at most `1+log N≤1+log(1+2/ell)`. For `n>N`, `|sinc(n ell/2)|≤2/(n ell)`; hence the (even-overcounted) tail is at most
+
+\[
+\frac4{\ell^2}\sum_{n>N}n^{-3}\le\frac2{\ell^2N^2}\le\frac12.
+\]
+
+Thus `S_1≤3/2+log(1+2/ell)`, giving `R_h≤pi/(2h)+(4/pi)(3/2+log(1+2/ell))`. The lower capacity inequality `W_h≥1/R_h` from Theorem 1.2 proves (4.5).
+
+If `h_n log⁺(1/ell_n)` is bounded, the denominators in (4.5) are eventually bounded, since `h_n log(1+2/ell_n)≤h_n log 3+h_n log⁺(1/ell_n)` for `ell_n≤pi`; hence the normalized capacities have positive liminf.
+
+Conversely, suppose `h_n log⁺(1/ell_n)` is unbounded. Along a subsequence it tends to infinity. On that subsequence `ell_n<rho_n=min(h_n/2,pi/4)` eventually, because `h_n log(1/ell_n)→∞` while `h_n |log h_n|→0`. The logarithmic cutoff (4.1) then gives
+
+\[
+0\le\frac{W_{h_n}(\ell_n)}{h_n}
+\le\frac\pi{h_n\log(\rho_n/\ell_n)}\longrightarrow0.
+\]
+
+That rules out a positive full-sequence liminf, proving the equivalence (4.4). Finally if `ell(h)→0` and `h log(1/ell(h))→0`, (4.5) gives liminf ≥`2/pi` while the radial-constant upper bound (2.2) gives limsup ≤`2/pi`. This proves (4.6). \(\square\)
+
+**Interpretation.** An attached access interval may shrink to zero and **still** carry uniformly positive *modulus-normalized* sheet-odd full-condenser width, provided its size does not shrink faster than an exponential scale `exp(-O(1/h))`. This is an exact criterion for the specified conformal condenser, **not** proof that actual parabolic KKL attached arcs obey such a scale law or that canonical Waves dominate the condenser. The controlling geometric datum is the mixed quantity `h log⁺(1/ell)`, not sheet count, marked-atom count, `h` alone, or `ell` alone.
+
 ## 5. Why two complementary boundary responses may survive where one fails
 
 For an annular cylinder and an arbitrary nonzero Fourier mode `n`, the boundary Dirichlet-to-Neumann multipliers with **outer Dirichlet-pinned** and **outer Neumann-free** conditions are, respectively,
