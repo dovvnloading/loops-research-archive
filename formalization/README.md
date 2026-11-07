@@ -131,11 +131,14 @@ A second, easily overlooked quantifier is now formal:
 `(2n+4)*(t_n-1)≤1` and, for every `ε>0`, some primitive
 clone has `1<t_n<1+ε`. Individual primitivity and strict gaps do
 not supply a uniform positive **Perron expansion factor** across
-arbitrarily long delays. The exact characteristic-polynomial
-determinant identity and algebraic simplicity have a
-[separate written cycle-cover proof](../research/independent_audits/clone_strict_spectrum_and_no_uniform_expansion_20261107.md),
-but not a `Matrix.charpoly` kernel proof. This remains an explicit
-next formalization obligation.
+arbitrarily long delays. The exact characteristic-polynomial determinant identity and
+algebraic simplicity have a
+[separate written cycle-cover proof](../research/independent_audits/clone_strict_spectrum_and_no_uniform_expansion_20261107.md).
+Together with Vieta's product formula and the Lean root bound, this
+written argument **also** establishes the all-delay leading-gap
+collapse bound `0<t_n-r_n≤1/(n+2)` (and `r_n/t_n→1`).
+The determinant/product part is **not** yet a `Matrix.charpoly`
+kernel proof; it is an explicit next formalization obligation.
 
 All of this is **finite graph mathematics**, not a source-defined
 KKL critical-Wave or analytic MLC result. The native prime-end,
