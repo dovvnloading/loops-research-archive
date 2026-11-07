@@ -87,11 +87,21 @@ together. Accordingly the only terms are the all-diagonal term
 A directed cycle of any length L contributes `(-1)^(L-1)` from its
 permutation and `(-1)^L` from off-diagonal entries, totaling `-1`.
 
-Since `p_n'(t_n)=d t_n^(d-1)-1>0`, the positive root is also
-**algebraically simple**. This last determinant/derivative statement
-is a *written combinatorial proof*, not yet a Lean `Matrix.charpoly`
-theorem. It is independently tested by the deterministic
+In fact **every root is algebraically simple**, and the complete
+matrix `A_n` is diagonalizable over `ℂ`. To see this, suppose
+`p_n(μ)=p_n'(μ)=0`. Then `μ^(d-1)=1/d`; multiplying by `μ`
+and comparing with `μ^d=μ+1` gives
+`μ/d=μ+1`, or `μ=-d/(d-1)`. Thus `|μ|>1`,
+contradicting `|μ|^(d-1)=1/d<1`. So the monic
+characteristic polynomial is squarefree; its `d` complex roots
+are distinct, giving a full simple spectrum and diagonalizability.
+
+The determinant/derivative and full diagonalizability statements are
+*written combinatorial/algebraic proofs*, not yet Lean
+`Matrix.charpoly` or `Matrix.IsDiag` theorems. They are
+independently tested at finite inputs by the deterministic
 [finite-field determinant regression](./verify_clone_strict_gap.py).
+The leading-eigenline uniqueness is **separately Lean-proved** below.
 
 For geometric simplicity Lean additionally proves, in
 [FullCloneEigenline.lean](../../formalization/weighted/FullCloneEigenline.lean),
@@ -205,8 +215,9 @@ regression. The exact determinant identity is documented with a
 written cycle-cover proof but is **not** yet formalized using the
 mathlib determinant or characteristic-polynomial API.
 
-**Next relevant open task:** formalize the determinant equality and
-algebraic multiplicity in Lean, and separately characterize any
+**Next relevant open task:** formalize the determinant equality,
+squarefreeness, complete diagonalizability and algebraic multiplicity
+in Lean, and separately characterize any
 uniform spectral estimate under actual source-defined geometric
 hypotheses. This finite graph work does not supply the missing native
 prime-end immersion/Wave bridge of Issue #40, or any MLC gate.
