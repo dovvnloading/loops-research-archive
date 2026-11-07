@@ -156,8 +156,14 @@ theorem stuttering_insertion_potential_drop
     have hlocalbound :
         (budget + 1) * oldRank (proj y) + stutter y <
           (budget + 1) * (oldRank (proj y) + 1) := by
-      simp only [Nat.mul_add, mul_one]
-      omega
+      calc
+        (budget + 1) * oldRank (proj y) + stutter y
+            ≤ (budget + 1) * oldRank (proj y) + budget :=
+              Nat.add_le_add_left (hbudget y) _
+        _ < (budget + 1) * oldRank (proj y) + (budget + 1) := by
+              omega
+        _ = (budget + 1) * (oldRank (proj y) + 1) := by
+              ring
     calc
       (budget + 1) * oldRank (proj y) + stutter y
           < (budget + 1) * (oldRank (proj y) + 1) := hlocalbound
