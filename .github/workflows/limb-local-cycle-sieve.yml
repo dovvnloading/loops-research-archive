@@ -1,0 +1,35 @@
+name: All-limb critical-cycle sieve
+
+on:
+  push:
+    branches:
+      - main
+      - 'research/**'
+    paths:
+      - '.github/workflows/limb-local-cycle-sieve.yml'
+      - 'research/independent_audits/verify_limb_local_cycle_sieve.py'
+      - 'research/independent_audits/kkl_all_limb_absorption_and_local_critical_return_20261107.md'
+      - 'results/limb_local_cycle_sieve_20261107.json'
+  pull_request:
+    paths:
+      - '.github/workflows/limb-local-cycle-sieve.yml'
+      - 'research/independent_audits/verify_limb_local_cycle_sieve.py'
+      - 'research/independent_audits/kkl_all_limb_absorption_and_local_critical_return_20261107.md'
+      - 'results/limb_local_cycle_sieve_20261107.json'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  exact-limb-census:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Check exact cycle-state counts and deterministic manifest
+        run: |
+          python -m py_compile research/independent_audits/verify_limb_local_cycle_sieve.py
+          python research/independent_audits/verify_limb_local_cycle_sieve.py --check-manifest
