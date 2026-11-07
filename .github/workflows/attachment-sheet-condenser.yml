@@ -1,0 +1,35 @@
+name: Actual attachment sheet condenser regression
+
+on:
+  push:
+    branches:
+      - main
+      - 'research/**'
+    paths:
+      - '.github/workflows/attachment-sheet-condenser.yml'
+      - 'research/independent_audits/kkl_attachment_sheet_condenser_and_two_scale_limit_20261107.md'
+      - 'research/independent_audits/verify_attachment_sheet_condenser.py'
+      - 'results/attachment_sheet_condenser_20261107.json'
+  pull_request:
+    paths:
+      - '.github/workflows/attachment-sheet-condenser.yml'
+      - 'research/independent_audits/kkl_attachment_sheet_condenser_and_two_scale_limit_20261107.md'
+      - 'research/independent_audits/verify_attachment_sheet_condenser.py'
+      - 'results/attachment_sheet_condenser_20261107.json'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  exact-algebra-and-continuum-regression:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Recheck algebraic cover, analytic formulas and deterministic manifest
+        run: |
+          python -m py_compile research/independent_audits/verify_attachment_sheet_condenser.py
+          python research/independent_audits/verify_attachment_sheet_condenser.py --check-manifest
