@@ -87,6 +87,114 @@
   },
   "schema_version": 1,
   "scope": "condenser full path family between source attached block and its deck translate; NOT actual canonical WAD",
+  "sharp_coercivity_threshold": {
+    "complete_charge_series_checks": 21,
+    "critical_exponential_scale_examples": [
+      {
+        "critical_scale_h_log_inverse": 1,
+        "h": 0.2,
+        "normalized_width_lower": 0.293826182267
+      },
+      {
+        "critical_scale_h_log_inverse": 1,
+        "h": 0.1,
+        "normalized_width_lower": 0.320176334322
+      },
+      {
+        "critical_scale_h_log_inverse": 1,
+        "h": 0.05,
+        "normalized_width_lower": 0.335159285873
+      },
+      {
+        "critical_scale_h_log_inverse": 1,
+        "h": 0.025,
+        "normalized_width_lower": 0.343189046144
+      },
+      {
+        "critical_scale_h_log_inverse": 1,
+        "h": 0.0125,
+        "normalized_width_lower": 0.347349958601
+      }
+    ],
+    "joint_universal_limit": "if ell(h)->0 and h*log(1/ell(h))->0, W_h(ell(h))/h->2/pi",
+    "polynomial_shrinking_examples": [
+      {
+        "ell_h_cubed": 0.008000000000000002,
+        "h": 0.2,
+        "normalized_width_lower": 0.297635592336,
+        "normalized_width_upper": 0.638245050041,
+        "scale_h_log_inverse": 0.96566274746
+      },
+      {
+        "ell_h_cubed": 0.0010000000000000002,
+        "h": 0.1,
+        "normalized_width_lower": 0.366350975972,
+        "normalized_width_upper": 0.636822479258,
+        "scale_h_log_inverse": 0.690775527898
+      },
+      {
+        "ell_h_cubed": 0.00012500000000000003,
+        "h": 0.05,
+        "normalized_width_lower": 0.438103987244,
+        "normalized_width_upper": 0.636645103671,
+        "scale_h_log_inverse": 0.449359841033
+      },
+      {
+        "ell_h_cubed": 1.5625000000000004e-05,
+        "h": 0.025,
+        "normalized_width_lower": 0.50178921521,
+        "normalized_width_upper": 0.63662293867,
+        "scale_h_log_inverse": 0.276665959059
+      },
+      {
+        "ell_h_cubed": 1.9531250000000005e-06,
+        "h": 0.0125,
+        "normalized_width_lower": 0.550986128503,
+        "normalized_width_upper": 0.636620168154,
+        "scale_h_log_inverse": 0.1643259988
+      }
+    ],
+    "proved_global_lower": "W_h(ell)/h >= 1/(pi/2+(4*h/pi)*(3/2+log(1+2/ell)))",
+    "s1_upper_checks": [
+      {
+        "ell": 0.05,
+        "s1_global_bound": 5.2135720667,
+        "s1_plus_certified_tail": 2.594423864
+      },
+      {
+        "ell": 0.1,
+        "s1_global_bound": 4.5445224377,
+        "s1_plus_certified_tail": 2.247797051
+      },
+      {
+        "ell": 0.25,
+        "s1_global_bound": 3.6972245773,
+        "s1_plus_certified_tail": 1.7892861686
+      },
+      {
+        "ell": 0.7,
+        "s1_global_bound": 2.8499267169,
+        "s1_plus_certified_tail": 1.2714686519
+      },
+      {
+        "ell": 1.2,
+        "s1_global_bound": 2.480829253,
+        "s1_plus_certified_tail": 0.9950572302
+      },
+      {
+        "ell": 1.991940058558682,
+        "s1_global_bound": 2.1951682753,
+        "s1_plus_certified_tail": 0.721439031
+      },
+      {
+        "ell": 3.0,
+        "s1_global_bound": 2.0108256238,
+        "s1_plus_certified_tail": 0.4628468812
+      }
+    ],
+    "sharp_nondegeneration_criterion": "liminf W_hn(ell_n)/h_n > 0 iff limsup h_n*log+(1/ell_n) < infinity",
+    "superexponential_collapse": "ell(h)=(h/4)*exp(-1/h^2) gives W_h/h->0"
+  },
   "source": "actual Misiurewicz quadratic slit covering / degree-two KKL covering-leg interface",
   "status": "finite exact algebra plus verified analytic formulas; PDE thin-limit is written proof; no KKL Wave transport",
   "two_parameter_no_go": {
