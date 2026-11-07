@@ -64,22 +64,22 @@ g^{-1}(y_0)\cap V.
 \tag{2.1}
 \]
 
-The subset \(\operatorname{Lift}^{\rm proper}_V(\gamma)\) consisting of lifts that **remain proper paths in the actual source punctured surface** is therefore bounded by
+Because \(g:V^\circ\to U^\circ\) is **proper**, every lift of a target-proper path is itself proper in \(V^\circ\). Now let \(\operatorname{Lift}^{\rm admiss}_V(\gamma)\) be **any** subpacket whose members have *additionally* been verified to be admissible under the distinct KKL immersion/marking restriction in the intended application. Then
 
 \[
 \boxed{
-\#\operatorname{Lift}^{\rm proper}_V(\gamma)\le d\le2^m.
+\#\operatorname{Lift}^{\rm admiss}_V(\gamma)\le d\le2^m.
 }
 \tag{2.2}
 \]
 
-The upper bound on proper restrictions does **not** assert that every lift remains proper: KKL's Appendix A.3.2 explicitly discards nonproper restrictions. Nor does it classify the full \(\partial_C X\) of any attached excess-tree component.
+The proper finite **covering** does preserve properness: it is the *different immersion* \(\iota\), or an additional marking/path-admissibility requirement, that may discard members of this full \(d\)-sheet packet. Appendix A.3.2 concerns the immersion restriction, not the covering lift. Nor does it classify the full \(\partial_C X\) of any attached excess-tree component.
 
-**Proof.** The restriction (1.3) is a covering map. The interval \((0,1)\) is simply connected. Fix any \(z_0\in g^{-1}(y_0)\cap V\). Unique path lifting gives exactly one lift \(\tilde\gamma\) of the entire parametrized path with \(\tilde\gamma(t_0)=z_0\). For a proper finite cover, every path through the base lifts for the whole interval, and different starting points yield different lifts. There are exactly \(d\) distinct fiber points over the regular value \(y_0\), proving (2.1). The proper source paths form a subset of these \(d\) lifts, giving the first inequality in (2.2). The second is KKL Lemma 5.27. This proof takes place in the **interior** of actual Riemann surfaces, so uses neither pointwise landing nor a complete extension of the covering to a non-LC prime-end circle. \(\square\)
+**Proof.** The restriction (1.3) is a covering map. The interval \((0,1)\) is simply connected. Fix any \(z_0\in g^{-1}(y_0)\cap V\). Unique path lifting gives exactly one lift \(\tilde\gamma\) of the entire parametrized path with \(\tilde\gamma(t_0)=z_0\). For a proper finite cover, every path through the base lifts for the whole interval, and different starting points yield different lifts. There are exactly \(d\) distinct fiber points over the regular value \(y_0\), proving (2.1). Every lift is proper in \(V^\circ\) because inverse images of compact sets under the proper covering are compact, so a nonproper lift of a proper \(\gamma\) would contradict properness of \(\gamma\). The separately **admissible** subpacket is a subset of the \(d\) lifts, giving the first inequality in (2.2). The second is KKL Lemma 5.27. This proof takes place in the **interior** of actual Riemann surfaces, so uses neither pointwise landing nor a complete extension of the covering to a non-LC prime-end circle. \(\square\)
 
 ### Corollary 2.2 (typed multiplicity preservation)
 
-Let \(\mathscr P\subset\operatorname{Lift}^{\rm proper}_V(\gamma)\) be any subpacket that has independently been certified to survive the KKL \(\iota^*\) **proper-path** restriction in the required source/target direction. Then the multiset
+Let \(\mathscr P\subset\operatorname{Lift}^{\rm admiss}_V(\gamma)\) be any subpacket that has independently been certified to survive the KKL \(\iota^*\) **proper-path** restriction in the required source/target direction. Then the multiset
 
 \[
 \mathcal M_\gamma:=
@@ -102,7 +102,7 @@ If the selected simply connected target \(U\) contains at most \(b\) components 
 m\le b
 \quad\Longrightarrow\quad
 \boxed{
-\#\operatorname{Lift}^{\rm proper}_V(\gamma)\le2^b.
+\#\operatorname{Lift}^{\rm admiss}_V(\gamma)\le2^b.
 }
 \tag{3.1}
 \]
@@ -134,7 +134,7 @@ The **first unresolved geometric gate** is consequently no longer “construct t
 ## 5. Adversarial checks / no-go inferences
 
 - A bound on \(\deg(g|_V)\) does **not** imply a bound on total distinct prime ends at a non-LC point. Theorem 2.1 counts *lifts of one chosen path*, not all paths.
-- The number of source **proper** restrictions may be smaller than \(d\). The omission must be certified by Appendix A.3.2; no counting argument can invent a missing lift.
+- All \(d\) lifts of a proper path stay proper **for the proper covering**. Only the **additional immersion/marking-admissible subpacket** may be smaller. Any omission must be certified by Appendix A.3.2 or by a specified marking filter; no counting argument can invent a missing lift.
 - Distinct source proper paths pushed to one **set** are not automatically two disjoint target WAD classes; the labeled multiset stores multiplicity, but a geometric WAD proof must establish actual disjointness/validity.
 - A sheet bound for the \(\mathcal K\)-punctured surface is not automatically a bound for a path in the \(\mathcal T\)-complement without an explicit inclusion/transfer.
 - Nonempty horizontal WAD valuation cannot be obtained from covering degree alone. The source's §2.7 requires a **positive dual-crossing witness**, not just a covering multiplicity.
