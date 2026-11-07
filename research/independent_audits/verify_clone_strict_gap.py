@@ -12,8 +12,6 @@ determinant identity has a separate written cycle-cover proof.
 
 from __future__ import annotations
 
-from math import isclose
-
 PRIMES = (1000003, 1000033)
 DELAYS = (0, 1, 2, 3, 5, 8, 12, 20, 30)
 PARAMETERS = (-5, -2, -1, 0, 1, 2, 4, 7)
@@ -87,7 +85,9 @@ def check_numerical_gap() -> list[dict[str, float]]:
         others = [abs(r) for r in roots if abs(r - t) > 1e-7]
         second = max(others)
         assert second < t - 1e-8, (n, t, second)
-        assert t ** m - t - 1 < 1e-5
+        assert abs(t ** m - t - 1) < 1e-5
+        assert second >= 1 / t - 1e-8
+        assert 0 < t - second <= 1 / (n + 2) + 1e-8
         assert (m - 1) * (t - 1) <= 1 + 1e-8
         result.append({"n": n, "degree": m, "root": float(t),
                        "other_max": float(second),
