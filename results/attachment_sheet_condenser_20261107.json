@@ -1,0 +1,146 @@
+{
+  "actual_quadratic": {
+    "attached_arc_angular_length_approx": 1.991940058558682,
+    "bracket_steps": 115,
+    "bracket_width_less_than_2_power_minus_100": true,
+    "exact_joukowski_rational_w_samples": [
+      "1",
+      "5/4",
+      "3/2",
+      "4/3",
+      "2",
+      "5/2",
+      "4"
+    ],
+    "isolating_interval": [
+      "-8/5",
+      "-3/2"
+    ],
+    "polynomial": "c^3+2*c^2+2*c+2=0",
+    "root_access_theta_approx": 0.158513553331187,
+    "root_approx": -1.543689012692076,
+    "sharp_thin_density_approx": 1.739655969676542,
+    "two_gap_length_approx": 1.149652595031111
+  },
+  "continuum_bounds": {
+    "1d_Fourier_tail_check_less_than": 2e-05,
+    "1d_fourier_energy_partial": 1.73964794198,
+    "lower_and_upper_probes": [
+      {
+        "certified_charge_response_tail_le": 1.0914e-08,
+        "h": 0.69,
+        "rigorous_charge_lower": 0.655106557793,
+        "rigorous_radial_constant_upper": 1.200362619077,
+        "test_trace_energy_divided_by_h": 1.207339758113,
+        "test_trace_free_harmonic_energy": 0.833064433098
+      },
+      {
+        "certified_charge_response_tail_le": 2.6736e-08,
+        "h": 0.2,
+        "rigorous_charge_lower": 0.217417078739,
+        "rigorous_radial_constant_upper": 0.347931193935,
+        "test_trace_energy_divided_by_h": 1.575415260071,
+        "test_trace_free_harmonic_energy": 0.315083052014
+      },
+      {
+        "certified_charge_response_tail_le": 4.9017e-08,
+        "h": 0.1,
+        "rigorous_charge_lower": 0.109875131804,
+        "rigorous_radial_constant_upper": 0.173965596968,
+        "test_trace_energy_divided_by_h": 1.657526245728,
+        "test_trace_free_harmonic_energy": 0.165752624573
+      },
+      {
+        "certified_charge_response_tail_le": 9.3578e-08,
+        "h": 0.05,
+        "rigorous_charge_lower": 0.055087426777,
+        "rigorous_radial_constant_upper": 0.086982798484,
+        "test_trace_energy_divided_by_h": 1.698591056983,
+        "test_trace_free_harmonic_energy": 0.084929552849
+      },
+      {
+        "certified_charge_response_tail_le": 1.82699e-07,
+        "h": 0.025,
+        "rigorous_charge_lower": 0.027562639814,
+        "rigorous_radial_constant_upper": 0.043491399242,
+        "test_trace_energy_divided_by_h": 1.719123413011,
+        "test_trace_free_harmonic_energy": 0.042978085325
+      },
+      {
+        "certified_charge_response_tail_le": 3.60942e-07,
+        "h": 0.0125,
+        "rigorous_charge_lower": 0.013783695865,
+        "rigorous_radial_constant_upper": 0.021745699621,
+        "test_trace_energy_divided_by_h": 1.729389490707,
+        "test_trace_free_harmonic_energy": 0.021617368634
+      }
+    ],
+    "source_ell": 1.991940058558682,
+    "thin_density_approx": 1.739655969677,
+    "thin_density_exact_formula": "2/(pi-ell)"
+  },
+  "reciprocal_polarization": {
+    "energy_product_lower": "(4*pi*sum_n n*|g_hat(n)|^2)^2",
+    "identity": "Lambda_pinned(n)*Lambda_free(n)=n^2",
+    "mode_pairs_checked": 900,
+    "pure_mode_equality": true
+  },
+  "schema_version": 1,
+  "scope": "condenser full path family between source attached block and its deck translate; NOT actual canonical WAD",
+  "source": "actual Misiurewicz quadratic slit covering / degree-two KKL covering-leg interface",
+  "status": "finite exact algebra plus verified analytic formulas; PDE thin-limit is written proof; no KKL Wave transport",
+  "two_parameter_no_go": {
+    "diagonal_ell": "(h/4)*exp(-1/h^2)",
+    "diagonal_exact_normalized_upper": "pi*h/(1+h^2*log(2))",
+    "diagonal_upper_values": [
+      {
+        "h": 0.5,
+        "normalized_width_upper": 1.338799970563
+      },
+      {
+        "h": 0.2,
+        "normalized_width_upper": 0.611367815611
+      },
+      {
+        "h": 0.1,
+        "normalized_width_upper": 0.311996669243
+      },
+      {
+        "h": 0.05,
+        "normalized_width_upper": 0.156807905286
+      },
+      {
+        "h": 0.025,
+        "normalized_width_upper": 0.078505806291
+      }
+    ],
+    "fixed_h": 0.2,
+    "fixed_h_small_electrode_log_cutoff": [
+      {
+        "capacity_upper": 0.628318530718,
+        "capacity_upper_divided_by_h": 3.14159265359,
+        "log_rho_over_ell": 5
+      },
+      {
+        "capacity_upper": 0.157079632679,
+        "capacity_upper_divided_by_h": 0.785398163397,
+        "log_rho_over_ell": 20
+      },
+      {
+        "capacity_upper": 0.062831853072,
+        "capacity_upper_divided_by_h": 0.314159265359,
+        "log_rho_over_ell": 50
+      },
+      {
+        "capacity_upper": 0.031415926536,
+        "capacity_upper_divided_by_h": 0.157079632679,
+        "log_rho_over_ell": 100
+      }
+    ],
+    "iterated_limits": {
+      "shrink_then_thin": "0",
+      "thin_then_shrink": "2/pi"
+    },
+    "rho": 0.1
+  }
+}
