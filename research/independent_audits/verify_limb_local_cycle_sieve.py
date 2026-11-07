@@ -133,6 +133,70 @@ def audit(max_q: int = 5, max_limb: int = 5) -> dict:
     }
 
 
+def order_theory_controls() -> dict:
+    """Finite positive-set controls; NOT a KKL analytic return map."""
+    states = tuple(range(1, 8))  # nonempty subsets of {0,1,2}
+    top = 7
+    union_maps = 0
+    strict_inclusions = 0
+    for atom_images in itertools.product(states, repeat=3):
+        def f(mask: int) -> int:
+            return (atom_images[0] if mask & 1 else 0) | (atom_images[1] if mask & 2 else 0) | (atom_images[2] if mask & 4 else 0)
+        if f(top) != top:
+            continue
+        union_maps += 1
+        assert all(f(s) != 0 for s in states)
+        for s in states:
+            for t in range(1, 8):
+                iterate = s
+                for _ in range(t):
+                    iterate = f(iterate)
+                if (iterate & s) != iterate or s == top:
+                    continue
+                strict_inclusions += 1
+                # f^t(s) <= s guarantees f^(nt)(s) forms a descending
+                # chain, ultimately periodic and NONEMPTY/PROPER.
+                seen = set()
+                cur = s
+                for _ in range(8):
+                    nxt = cur
+                    for _ in range(t):
+                        nxt = f(nxt)
+                    assert nxt & cur == nxt
+                    assert nxt in states and nxt != top
+                    if nxt == cur:
+                        break
+                    assert nxt not in seen
+                    seen.add(cur)
+                    cur = nxt
+                else:
+                    raise AssertionError('finite descent failed')
+
+    # If positivity is dropped, a larger input can repeatedly enclose empty.
+    assert set() <= {0} and len(set()) == 0
+
+    # If global critical hitting is dropped, a POS monotone map can have
+    # a noncritical fixed state, so enlarging a critical state can repeat.
+    def bad_hit(mask: int) -> int:
+        if mask == top:
+            return top
+        return (2 if mask & 1 else 0) | (2 if mask & 2 else 0) | (4 if mask & 4 else 0)
+    assert all(bad_hit(s) != 0 for s in states)
+    assert all((bad_hit(s) & bad_hit(t)) == bad_hit(s)
+               for s in states for t in states if s & t == s)
+    critical_enlarged = 3  # {0,1}, meets distinguished critical atom 0
+    assert bad_hit(critical_enlarged) == 2
+    assert bad_hit(2) == 2  # noncritical positive fixed state
+    assert all(not (s & 1) or bad_hit(s) != s for s in range(1, 7))
+    return {
+        'union_generated_positive_monotone_maps_checked': union_maps,
+        'proper_subordinate_positive_periodic_witnesses': strict_inclusions,
+        'nonvanishing_required': True,
+        'global_critical_hitting_required_to_exclude_enclosure_repeats': True,
+        'toy_controls_are_native_KKL_models': False,
+    }
+
+
 def high_rotation_arithmetic(max_b: int = 1000) -> dict:
     for b in range(1, max_b + 1):
         r = left = right = 6*b
@@ -140,6 +204,9 @@ def high_rotation_arithmetic(max_b: int = 1000) -> dict:
         assert cap == 90*b*b - 21*b + 1
         assert r + max(left, right) - 2 == 12*b - 2
         assert cap < (12*b-2)*(12*b-1)
+        short_length_max = 12*b-1
+        all_short_critical = short_length_max*(r-1) + short_length_max*(short_length_max+1)//2
+        assert all_short_critical == 144*b*b-24*b+1
     assert total_formula(6,6,6) == 70
     assert total_formula(3,1,1) == 5
     assert total_formula(1,6,6) == 0
@@ -152,6 +219,8 @@ def high_rotation_arithmetic(max_b: int = 1000) -> dict:
         'b1_critical_only_prior_cap': 110,
         'root_placement_required': False,
         'marked_length_monotonicity_required_for_cycle_iff': False,
+        'conditional_critical_crest_chain_transition_cap_without_monotonicity': '144*b*b-24*b',
+        'positive_open_crest_inclusion_and_global_hitting_required': True,
         'actual_native_first_return_arrows_verified': False,
     }
 
@@ -163,6 +232,7 @@ def manifest() -> dict:
         'analytic_boundary': 'No proof of the actual KKL cut return map, WAD witness, or MLC',
         'source': 'KKL arXiv:2606.27272v1, section 6.1 after Proposition 6.6 and Lemma 4.8',
         'cycle_sieve': audit(),
+        'finite_poset_controls': order_theory_controls(),
         'uniform_bounds': high_rotation_arithmetic(),
     }
 

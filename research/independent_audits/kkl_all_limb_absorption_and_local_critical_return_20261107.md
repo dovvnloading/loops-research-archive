@@ -108,9 +108,64 @@ All arrows are to be computed from the **real KKL** `f_*iota^*` and all attached
 
 **Finite certificate consequence:** To rule out the *periodic critical-return* obstruction, it would suffice to compute source-authenticated arrows on at most `90b^2-21b+1` actual original-marking candidate intervals and certify that this finite directed partial functional graph has no cycle. Such a graph admits an integer rank strictly decreasing along each arrow **iff** it is acyclic (topological ordering). The arithmetic checker in this PR verifies the **candidate set only**, and cannot attest actual arrows or such a rank.
 
-**Important separation:** absence of periodic `Phi` states in (6) alone does **not** prove the Wave critical-visit bound when subsequent crests are permitted to be *strict enlargements* of positive-time images. Acyclicity of a deterministic first-return graph does not automatically rule out cycles in that larger inclusion relation. The remaining analytic non-LC endpoint behavior, attached-component census, proper-length monotonicity (where used by the Wave proof), and genuine WAD/Shift-Lemma arguments are still open.
+**Important separation:** absence of periodic *critical* `Phi` states in (6), *in isolation*, does **not** automatically rule out cycles in the larger relation that allows strict **inclusions** at each visit. However, the native noncritical-limb shifts supply the additional critical-hitting condition needed for the stronger finite-poset argument below. This is an additional *typed positive-open-interval* proof, not an equality between closed and open crest actions.
 
-## 4. Reproducibility and next source-facing action
+## 4. An additional finite-poset theorem removes length monotonicity from a conditional Wave-visit bound
+
+We make the remaining action hypothesis explicit rather than silently filling a non-LC endpoint gap:
+
+**(POS)** Every defined iterate of a nonempty **positive-length open** original marked multi-interval is itself a nonempty open marked multi-interval (or the full circle), and the actual source action is inclusion-monotone. In the source setting, §6.1 Proposition 6.6 asserts `F_*` acts on marked multi-intervals, and Appendix A.3.4 defines this action; the corresponding nonvanishing/open typing must be retained on *all intermediate iterates*. The following argument is **not** asserted for singleton marked cuts, arbitrary closed images, or a synthetic action.
+
+**Lemma 4.1 (every positive proper orbit reaches the critical limb).** Under TILE and POS, for every nonempty positive original open marked interval `J`, either an iterate is `C`, or there is some `0<=t<q` such that `Phi^t(J)` meets `L_0`. Consequently **every proper positive periodic orbit has a critical visit**.
+
+**Proof.** Choose an original atom `A⊂J`, contained in some `L_j` by TILE. Let `d(j)=(-j) mod q`. Until the critical limb is reached, monotonicity and the actual limb identities yield `Phi^t(A)⊂L_(j+t mod q)` for `0<=t<=d(j)`, provided no earlier image saturates. POS guarantees `Phi^t(A)` is still a nonempty positive open marked interval, hence it **meets** that whole limb. Since `Phi^t(A)⊂Phi^t(J)`, the latter meets `L_0` by time `d(j)<q`, unless it saturated earlier. A proper periodic orbit cannot saturate, so it meets `L_0`. □
+
+**Corollary 4.2 (global periodic-obstruction equivalence).** Under TILE and POS, Theorem 3.1 strengthens to:
+
+\[
+\boxed{R\text{ is acyclic}\iff\Phi\text{ has NO proper periodic positive open marked interval anywhere on }C.}\tag{7}
+\]
+
+A periodic noncritical orbit cannot evade the finite native critical-return graph; its positive marking atom is carried into the critical limb before one circuit.
+
+**Lemma 4.3 (finite monotone descent from one inclusion return).** Let `J` be a positive proper open marked interval with `Phi^T(J)⊂J` for some `T>=1`, under POS and finite original marking. Then there is a **proper positive** marked interval `K⊂J` satisfying `Phi^T(K)=K`.
+
+**Proof.** Iterating the inclusion with monotonicity gives a descending sequence of positive marked intervals
+
+\[
+J\supset\Phi^T J\supset\Phi^{2T}J\supset\cdots.
+\]
+
+Each is nonempty by POS, and proper because contained in `J`. The finite marking admits only finitely many open marked multi-interval states; the descending sequence stabilizes at `K`. Then `Phi^T K=K`. Note the positive/open assumption is essential: with singleton or empty limit states, a periodic limit need not be a positive periodic interval. □
+
+**Theorem 4.4 (conditional critical-visit transition bound, *without* length monotonicity).** Assume TILE, POS, and that the **actual** partial native return map `R` is acyclic. Let
+
+\[
+J_0,\ldots,J_N
+\]
+
+be a chain of genuine **positive regular open critical crest cores** of marked lengths `1<=ell(J_i)<12b`, each meeting `L_0`, with correctly typed positive times `m_i>=1` satisfying the **open-core** inclusions `Phi^(m_i)(J_i)⊂J_(i+1)`. These are the exact extra Wave interface hypotheses: **closed crest inclusion alone is not silently substituted for them**. Then
+
+\[
+\boxed{N\le(12b-1)(r-1)+\frac{(12b-1)(12b)}2-1\le144b^2-24b.}\tag{8}
+\]
+
+**Proof.** Suppose some source cores repeat: `J_s=J_t` with `s<t`. By monotonicity, concatenating the inclusion chain yields `Phi^T(J_s)⊂J_s` for the positive integer `T=m_s+...+m_(t-1)`. Lemma 4.3 then constructs a proper positive periodic `K`. By Lemma 4.1 the periodic orbit of `K` meets `L_0`, contradicting acyclicity of `R` through Theorem 3.1. Therefore **all `N+1` critical source cores are distinct**, without assuming their marked lengths grow monotonically.
+
+For `q>=24b`, the original marking has `M>=q` atoms, `r<=6b` and every allowed `k<=12b-1` satisfies `k<=M-r`. The exact number of all marked connected open `k`-atom intervals meeting a fixed `r`-atom critical limb is `r+k-1`. Thus the total possible source cores is
+
+\[
+S=\sum_{k=1}^{12b-1}(r+k-1)
+=(12b-1)(r-1)+\frac{(12b-1)(12b)}2.
+\]
+
+Since `N+1<=S`, (8) follows from `r<=6b`. □
+
+This is a **different tradeoff** from PR #42: for `b=1`, at most **120 transitions** under acyclicity and typed-positive Wave core hypotheses, *without* any nondecreasing-length or stretching-root-placement assumption. The earlier smaller `r`-dependent bounds additionally require length monotonicity and more specific root placement. Equation (8) does **not** prove that `R` is acyclic or that all actual Wave crests furnish the required open-core inclusions.
+
+**Adversarial controls (not KKL stages):** If positive inputs can collapse to the empty set, the descending inclusion may stabilize at empty, so Lemma 4.3's *positive* conclusion fails. If an abstract monotone finite interval action has a fixed **noncritical** positive state, an inclusion chain of larger critical states may repeat despite no *critical* periodic orbit. Source limb translation plus POS (Lemma 4.1) removes exactly this second loophole. Both controls are checked as finite set models in the verifier; neither is a holomorphic counterexample.
+
+## 5. Reproducibility and next source-facing action
 
 `python research/independent_audits/verify_limb_local_cycle_sieve.py --check-manifest` exhaustively enumerates all integer circular tilings with `3<=q<=5`, every limb size `1,...,5`, every designated critical limb and every positive proper interval length. It checks (3) and (4) against *independently enumerated subsets* and checks the claimed counterexample. It also covers 240 seeded longer partitions with `q=6,9,24`, checks the `b`-uniform algebra through `b=1000`, and compares the deterministic manifest byte-for-byte. This verification concerns **only finite combinatorics**.
 
