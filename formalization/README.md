@@ -112,6 +112,35 @@ mathlib builds remain separate.
 A newer PR-head build is required before merging.
 
 
+## Direct strict spectrum theorem and the no-uniformity boundary
+
+Four new [mathlib-backed modules](weighted/README.md#strict-spectrum-and-nonuniformity--all-delays-lean-4320)
+close the previously unformalized **strict complex gap** and
+**geometric eigenspace uniqueness** for the complete delayed clone.
+For every delay `n≥0`, [FullClonePolynomial.lean](weighted/FullClonePolynomial.lean)
+derives `μ^(2n+5)=μ+1` from the actual full adjacency rows for
+*every* nonzero complex eigenvector and proves its hub coordinate is
+nonzero. [FullCloneStrictGap.lean](weighted/FullCloneStrictGap.lean)
+then proves that every eigenvalue distinct from the positive root
+has **strictly smaller modulus**, and
+[FullCloneEigenline.lean](weighted/FullCloneEigenline.lean) proves
+all leading eigenvectors are multiples of one explicit positive vector.
+
+A second, easily overlooked quantifier is now formal:
+[CloneRootRate.lean](weighted/CloneRootRate.lean) proves
+`(2n+4)*(t_n-1)≤1` and, for every `ε>0`, some primitive
+clone has `1<t_n<1+ε`. Individual primitivity and strict gaps do
+not supply a uniform positive **Perron expansion factor** across
+arbitrarily long delays. The exact characteristic-polynomial
+determinant identity and algebraic simplicity have a
+[separate written cycle-cover proof](../research/independent_audits/clone_strict_spectrum_and_no_uniform_expansion_20261107.md),
+but not a `Matrix.charpoly` kernel proof. This remains an explicit
+next formalization obligation.
+
+All of this is **finite graph mathematics**, not a source-defined
+KKL critical-Wave or analytic MLC result. The native prime-end,
+attachment, calibration and rigidity gaps remain open.
+
 ## New finite phase-tower formalization (2026-11-05)
 
 [`PhaseTower.lean`](../PhaseTower.lean) and
