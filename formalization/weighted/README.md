@@ -35,6 +35,35 @@ negative-weight identity at 357 exact rational test points.
 
 **Passing CI:** The completed full-matrix and spectral-dominance theorem suite was checked in [mathlib build #42038972966](https://github.com/dovvnloading/loops-research-archive/actions/runs/42038972966). The separate root Lean/Python suite is also checked. Newer commits require their own head-specific CI before merge.
 
+## Strict spectrum and nonuniformity — all delays (Lean 4.32.0)
+
+The previously open **strict complex spectral gap** and **geometric
+eigenvector uniqueness** for the full cloned graph are now proved
+directly from its actual adjacency rows, without importing a general
+Perron–Frobenius theorem.
+
+| Module | Exact kernel-checked result |
+|---|---|
+| [FullClonePolynomial.lean](FullClonePolynomial.lean) | Every nonzero complex eigenvector has nonzero hub coordinate; every complex eigenvalue `μ` of the full `(2n+5)×(2n+5)` adjacency matrix satisfies `μ^(2n+5)=μ+1`, for all `n≥0`. No guessed polynomial premise. |
+| [FullCloneStrictGap.lean](FullCloneStrictGap.lean) | At the unique positive real root `t_n>1`, *every other* complex eigenvalue satisfies `‖μ‖<t_n`. The equality case is excluded by comparing squared complex norms. |
+| [FullCloneEigenline.lean](FullCloneEigenline.lean) | Every complex eigenvector at `t_n` is its hub value times the existing explicit positive vector. Thus the leading complex eigenspace is one-dimensional (geometric simplicity). |
+| [CloneRootRate.lean](CloneRootRate.lean) | `(2n+4)*(t_n-1)≤1`, and for **every** `ε>0` some delay has `1<t_n<1+ε`. Primitive graphs therefore do not yield a stage-uniform positive expansion factor from primitivity alone. |
+
+A separate [cycle-cover argument](../../research/independent_audits/clone_strict_spectrum_and_no_uniform_expansion_20261107.md)
+derives the exact characteristic polynomial
+`det(λI-A_n)=λ^(2n+5)-λ-1`, and hence algebraic
+simplicity of `t_n`. This determinant identity is a **written**
+proof, not a kernel-checked `Matrix.charpoly` theorem. The
+[independent regression](../../research/independent_audits/verify_clone_strict_gap.py)
+checks 144 exact finite-field determinants plus small-n spectral gaps.
+It does not prove a uniform rate of mixing, nor any native KKL
+prime-end or edge-incidence realization.
+
+**Passing branch CI:** [mathlib build #42402605130](https://github.com/dovvnloading/loops-research-archive/actions/runs/42402605130)
+and [root research validation #42402714782](https://github.com/dovvnloading/loops-research-archive/actions/runs/42402714782).
+These verify the encoded all-n theorems and the regression without
+proof holes or custom axioms. New commits require their own CI.
+
 ## Verified real period-27 quadratic center (mathlib)
 
 Three further modules reuse the core Lean sound interval certificates and
@@ -92,17 +121,19 @@ preprint and not an unconditional proof of MLC.
 
 Outstanding obligations:
 
-1. Prove **strict** complex spectral dominance and simplicity using the
-   already verified primitivity of the graph, or cite an appropriate
-   formal Perron–Frobenius theorem. The current proof establishes the
-   non-strict modulus bound and attainment, sufficient to identify the
-   spectral radius, but not a strict gap.
+1. Kernel-check the **exact characteristic polynomial**
+   `det(λI-A_n)=λ^(2n+5)-λ-1` and its **algebraic simplicity**
+   consequence using mathlib's determinant/charpoly API. The all-n
+   complex root equation, strict dominance and *geometric*
+   simplicity are already kernel-checked; the determinant formula
+   currently has a separate written cycle-cover proof.
 2. Connect the theorem to mathlib's named spectral-radius operator and
-   eigenvalue spectrum API (the current mathematical characterization
-   is stated directly in terms of complex eigenpairs).
+   eigenvalue spectrum API (the current characterization uses exact
+   complex eigenpairs).
 3. Generalize beyond the explicit five-vertex cycle-with-shortcut graph
-   to arbitrary finite nilpotent-Q cross sections and prove the
-   general Schur/first-return spectral reduction with precise typing.
+   to arbitrary finite nilpotent-Q cross sections, proving the
+   Schur/first-return spectral reduction with precise typing and
+   quantifying conditions that guarantee **uniform** expansion.
 4. Obtain independent expert and original-author review of the literal
    Appendix C conventions and novelty. This research does **not**
    establish that the source's main complex-dynamics result is false.
