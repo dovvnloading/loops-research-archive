@@ -114,3 +114,8 @@ Thus the **central bounded-visits obstacle** is now even more concentrated: for 
 This is a **large-q original-native-category** reduction, not a synthetic interval simulation. It uses no global monotone \(\iota^*\) boundary map, no LC assumption, and no artificial finite transition matrix.
 
 **Status / ledger:** The new proper-base and corollary are concrete geometric theorems subject to independent specialist review. They do NOT prove the missing critical-return dual witness, original closed crest transport on arbitrary accesses, KKL Lemma 6.4, global Wave amplification or MLC. **Keep Issue #40, KKL_BOUNDED_VISITS_INTERVAL_GROWTH_REPAIR, KKL_PARABOLIC_WAVE_AMPLIFICATION and MLC OPEN.**
+
+
+## Postscript — full-atom critical encounters from regular closed crests
+
+The companion [critical atom-contact theorem](./kkl_native_critical_atom_contact_and_full_wave_interface_20261106.md) proves an exact source-defined statement: if a genuine active short critical successor at \(q\ge24\mathbf b\) has canonical regular crest \(C_B=\overline{J_B}\) and \(C_B\cap\mathbf L_0\ne\varnothing\), then **a whole original marked atom** lies in \(J_B\cap\mathbf L_0\), because \(\mathbf L_0\) is **open** while the crest's endpoints are marked cuts. This removes the separate endpoint-only critical-encounter hypothesis. It does **not** imply \(F_*^mJ_A\cap\mathbf L_0\ne\varnothing\) before a plateau equality, and leaves the analytic critical-return dual-WAD witness unresolved.
