@@ -291,4 +291,64 @@ theorem closed_open_marked_overlap_of_integer_cuts
   exact closed_crest_open_limb_has_full_atom s t a b
     h.1 h.2.1 h.2.2.1 h.2.2.2
 
+
+/-- The *integer-cut* form of the new native critical-root gate lemma.
+For one circular lift with critical limb (a,a+r), positive overlap
+s < a+r and a < t, and failure to contain the entire limb,
+one of the interval's two end cuts lies STRICTLY inside the limb.
+The conversion from cyclic prime-end intervals to a common lift
+is a separate topological step, not established by this Lean lemma. -/
+theorem partial_critical_overlap_has_internal_endpoint
+    (a r s t : ℤ)
+    (hr : 1 ≤ r)
+    (hJ : s < t)
+    (hleft : s < a + r)
+    (hright : a < t)
+    (hnotcontain : ¬(s ≤ a ∧ a + r ≤ t)) :
+    (a < s ∧ s < a + r) ∨
+    (a < t ∧ t < a + r) := by
+  omega
+
+/-- In the one-marked-atom critical limb case r=1,
+overlap without containment is impossible in integer-cut geometry. -/
+theorem single_atom_limb_overlap_implies_containment
+    (a s t : ℤ)
+    (hJ : s < t)
+    (hleft : s < a + 1)
+    (hright : a < t) :
+    s ≤ a ∧ a + 1 ≤ t := by
+  omega
+
+/-- There are at most two interval states of any fixed length at
+each internal critical marked cut: start at the cut or end there.
+For r critical atoms, the total candidate state code has size
+2*(r-1). One more critical visit forces repetition in the
+abstract cut-side code. That this code represents the ACTUAL
+F_* interval state is a separate native geometry hypothesis. -/
+theorem critical_cut_side_strict_pigeonhole
+    (r : ℕ)
+    (visit : Fin (2 * (r - 1) + 1) → Fin (r - 1) × Bool) :
+    ∃ i j, i ≠ j ∧ visit i = visit j := by
+  classical
+  have hcard :
+      Fintype.card (Fin (r - 1) × Bool) <
+        Fintype.card (Fin (2 * (r - 1) + 1)) := by
+    simp only [Fintype.card_prod, Fintype.card_fin, Fintype.card_bool]
+    omega
+  exact Fintype.exists_ne_map_eq_of_card_lt visit hcard
+
+/-- The source r≤6*b critical-limb length bound sharpens the
+conditional critical transition count to at most (12*b-1)^2.
+No assumption that the native critical gate is a singleton
+prime end occurs in this arithmetic. -/
+theorem refined_critical_visit_count_arithmetic
+    (r b : ℕ)
+    (hr : 1 ≤ r)
+    (hb : 1 ≤ b)
+    (hlimb : r ≤ 6 * b) :
+    (2 * r - 1) * (12 * b - 1) ≤
+      (12 * b - 1) * (12 * b - 1) := by
+  have hh : 2 * r - 1 ≤ 12 * b - 1 := by omega
+  exact Nat.mul_le_mul_right (12 * b - 1) hh
+
 end LoopsNativeKKL
