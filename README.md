@@ -200,6 +200,17 @@ The archive deliberately separates **checked finite arithmetic**, **paper-level 
 | **Written analytic arguments** | Rouché and Riemann–Hurwitz are used to interpret the complex domain bounds, with hypotheses and scope recorded in the [two-scale note](./research/independent_audits/complex_two_scale_quadratic_like_certificate_20261105.md). | These analytic deductions are not yet Lean-kernel-formalized. |
 | **Source-locked papers and ledger** | Precise claims, evidence links, dependencies, counterexamples and imported hypotheses. | Universal analytic construction, calibration, coercivity, rigidity and MLC remain open. |
 
+**General finite-memory Lean theorem:** [PhaseMemoryGeneral.lean](./PhaseMemoryGeneral.lean)
+proves for arbitrary positive p,k that a (p*k)-phase clock has an
+exactly reversible (p-phase, k-state memory) address. If an arbitrary
+augmented quotient retains the *future* of even the one-bit zero-phase
+sensor, its memory must distinguish k points in **every** coarse fiber.
+The [mathlib cardinality companion](./formalization/weighted/PhaseMemoryCardinality.lean)
+proves `k ≤ Fintype.card M` for finite memory types and that the
+construction attains the bound. These are symbolic clock theorems,
+**not** a source-defined KL prime-end/sheet realization or a closure
+of any MLC gate. [Precise scope and reproduction](./formalization/phase-memory-general.md).
+
 The [Lean arithmetic note](./research/independent_audits/lean_period27_kernel_arithmetic_20261105.md) explains the proof boundary, including why $2^{-128}$ arithmetic was too coarse to certify the period-27 **endpoint** signs and why the Lean computation uses $2^{-144}$. Kernel-reduced finite proofs use `decide +kernel`, not `native_decide` or proof holes; foundational Lean axioms can still appear in the declared imports.
 
 The [rational interval soundness proof note](./research/independent_audits/period27_rational_interval_soundness_20261105.md) closes a previous **arithmetic trust gap**: Lean now proves the interval operations are sound for general rational values, not just that one particular computed interval has favorable endpoints. This does not by itself prove a real root exists in Lean.
