@@ -154,6 +154,50 @@ In particular its original marked access set cannot contain the **source-selecte
 
 **Proof.** Contrapositive of Corollary 3.2 and the source monotonicity of the actual closed pullback. \(\square\)
 
+### Corollary 4.3 (root-pruned gate capacity, independent of \(q\))
+
+Retain the hypotheses that the source-selected \(a_x\) is one of the \(r-1\) **internal marked cuts of \(\mathbf L_0\)**, where \(r\ge2\), and \(q\ge14\mathbf b+1\). For each fixed positive short interval length \(k\), the **native open critical-cut candidate family** from [the return-graph reduction](./kkl_native_finite_critical_cut_first_return_graph_20261106.md) has at most \(2(r-1)\) states. But any state \(J\) with \(a_x\in\overline J\) has a **closed** root-exposed crest and is therefore **terminal** for continuing short critical Waves by Corollary 3.2.
+
+A continuing short critical-Wave core \(J\) must, therefore, have its critical-intersecting **boundary cut at one of the remaining \(r-2\) internal cuts**. For each fixed \(k\), at most two genuine intervals begin/end at each such cut, giving
+
+\[
+\boxed{
+|\mathcal G_{k,\mathrm{short\ continuable}}|
+\le 2(r-2)\le12\mathbf b-4.
+}
+\tag{4.2}
+\]
+
+In particular **when \(r=2\), the continuable closed-crest gate set is empty**, in agreement with Corollary 4.1. Summing over the \(12\mathbf b-1\) allowable positive short lengths gives a **root-pruned total candidate capacity**
+
+\[
+\boxed{
+|\mathcal G_{\mathrm{short\ continuable}}|
+\le 2(r-2)(12\mathbf b-1).
+}
+\tag{4.3}
+\]
+
+**Proof.** Any proper continuing interval meeting the critical limb but not containing it has at least one boundary cut among its \(r-1\) internal cuts, by the actual cut-gate theorem. If that cut is the distinguished \(a_x\), then \(a_x\in\overline J\), contradicting Corollary 3.2 for a continuing **closed** short Wave crest. Thus at least one boundary cut lies among the remaining \(r-2\) cuts. At fixed \(k\), specifying which of those cuts is the start or end determines at most one marked interval. Count them; other root-exposed states are *also* excluded and can only reduce the family further. \(\square\)
+
+**Why this is stronger than a graph subtraction:** The source-selected \(a_x\) is a **closed-input** obstruction, so a candidate gate with *open* interval endpoint \(a_x\) is rejected even though \(a_x\notin J\). The true complete \(\iota^*\) attached-root block in \(\overline J\), not a synthetic transition word, enforces this exclusion. The finite gate count uses real marked cuts and is uniform in the rotation denominator \(q\).
+
+### Corollary 4.4 (improved conditional bound for root-avoiding critical visits)
+
+Assume \(r\ge3\), \(a_x\) is an internal critical cut, \(q\ge24\mathbf b\), and the source's actual short critical Wave crests have the regular positive/core and full-atom intersection properties proved in the companion high-rotation Wave notes. Suppose furthermore that **proper marked length is nondecreasing** and there are **no periodic proper critical-return orbits among the root-avoiding cut-side states** (the remaining native nonreturn/dual-WAD gate). Then a continuing short critical-visit chain satisfies the sharper strict bound
+
+\[
+\boxed{
+N < \bigl(2(r-2)+1\bigr)(12\mathbf b-1)
+=(2r-3)(12\mathbf b-1).
+}
+\tag{4.4}
+\]
+
+**Proof.** The corrected plateau argument is identical to the [native critical-cut theorem](./kkl_native_critical_cut_gate_reduction_20261106.md), except that a constant-length block of continuing critical visits can only use the at most \(2(r-2)\) genuine **root-avoiding** states counted in Corollary 4.3. Therefore \(2(r-2)+1\) visit states in one constant-length orbit force a periodic root-avoiding critical return by strict pigeonhole; this is excluded by the stated nonreturn assumption. The core length is between \(1\) and \(12\mathbf b-1\), giving the bound. \(\square\)
+
+This conditional estimate improves the already sharpened \((2r-1)(12\mathbf b-1)\) bound while preserving the exact root-guard and other analytic hypotheses. It is **not** an unconditional repair for \(r\ge3\).
+
 ## 5. What this does NOT assert
 
 - The theorem is *not* a new global pointwise continuous map for the immersion \(\iota\); only the source-selected \(a_x\) of KKL's proof of Proposition 6.8 is charged.
