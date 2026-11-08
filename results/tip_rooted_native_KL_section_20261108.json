@@ -1,0 +1,239 @@
+{
+  "actual_source_G_KL_atlas": {
+    "adjacent_W_tile_fine_end_edges": [
+      {
+        "fine_angle": "3/4",
+        "from_W_tile": 0,
+        "physical_target": "zero_lower",
+        "same_V0_parent": true,
+        "source_incidence_side_names": [
+          "G:W:tile0:eta",
+          "G:W:tile1:xi"
+        ],
+        "to_W_tile": 1,
+        "two_source_rays": [
+          "d",
+          "e"
+        ]
+      },
+      {
+        "fine_angle": "0",
+        "from_W_tile": 1,
+        "physical_target": "right_tip",
+        "same_V0_parent": false,
+        "source_incidence_side_names": [
+          "G:W:tile1:eta",
+          "G:W:tile2:xi"
+        ],
+        "to_W_tile": 2,
+        "two_source_rays": [
+          "pR",
+          "pL"
+        ]
+      },
+      {
+        "fine_angle": "1/4",
+        "from_W_tile": 2,
+        "physical_target": "zero_upper",
+        "same_V0_parent": true,
+        "source_incidence_side_names": [
+          "G:W:tile2:eta",
+          "G:W:tile3:xi"
+        ],
+        "to_W_tile": 3,
+        "two_source_rays": [
+          "a",
+          "b"
+        ]
+      },
+      {
+        "fine_angle": "1/2",
+        "from_W_tile": 3,
+        "physical_target": "left_tip",
+        "same_V0_parent": false,
+        "source_incidence_side_names": [
+          "G:W:tile3:eta",
+          "G:W:tile0:xi"
+        ],
+        "to_W_tile": 0,
+        "two_source_rays": [
+          "qL",
+          "qR"
+        ]
+      }
+    ],
+    "angle_rows": [
+      {
+        "P_tile": 0,
+        "Pi3": "3/14",
+        "Pi9": "1/2",
+        "V0_tile": 0,
+        "W_tile": 0,
+        "ambient_523264_num": 378368,
+        "ambient_angle": "739/1022",
+        "name": "qR",
+        "original_W_gluing_open_seam": [
+          "41/192",
+          "43/192"
+        ],
+        "physical_K9_target": "left_tip",
+        "slot": 0,
+        "source_tile_id": "G:W:tile0"
+      },
+      {
+        "P_tile": 0,
+        "Pi3": "25/112",
+        "Pi9": "3/4",
+        "V0_tile": 0,
+        "W_tile": 0,
+        "ambient_523264_num": 378423,
+        "ambient_angle": "378423/523264",
+        "name": "d",
+        "original_W_gluing_open_seam": [
+          "41/192",
+          "43/192"
+        ],
+        "physical_K9_target": "zero_lower",
+        "slot": 1,
+        "source_tile_id": "G:W:tile0"
+      },
+      {
+        "P_tile": 0,
+        "Pi3": "31/112",
+        "Pi9": "3/4",
+        "V0_tile": 0,
+        "W_tile": 1,
+        "ambient_523264_num": 406473,
+        "ambient_angle": "406473/523264",
+        "name": "e",
+        "original_W_gluing_open_seam": [
+          "53/192",
+          "55/192"
+        ],
+        "physical_K9_target": "zero_lower",
+        "slot": 0,
+        "source_tile_id": "G:W:tile1"
+      },
+      {
+        "P_tile": 0,
+        "Pi3": "2/7",
+        "Pi9": "0",
+        "V0_tile": 0,
+        "W_tile": 1,
+        "ambient_523264_num": 406528,
+        "ambient_angle": "397/511",
+        "name": "pR",
+        "original_W_gluing_open_seam": [
+          "53/192",
+          "55/192"
+        ],
+        "physical_K9_target": "right_tip",
+        "slot": 1,
+        "source_tile_id": "G:W:tile1"
+      },
+      {
+        "P_tile": 1,
+        "Pi3": "5/7",
+        "Pi9": "0",
+        "V0_tile": 1,
+        "W_tile": 2,
+        "ambient_523264_num": 116736,
+        "ambient_angle": "114/511",
+        "name": "pL",
+        "original_W_gluing_open_seam": [
+          "137/192",
+          "139/192"
+        ],
+        "physical_K9_target": "right_tip",
+        "slot": 0,
+        "source_tile_id": "G:W:tile2"
+      },
+      {
+        "P_tile": 1,
+        "Pi3": "81/112",
+        "Pi9": "1/4",
+        "V0_tile": 1,
+        "W_tile": 2,
+        "ambient_523264_num": 116791,
+        "ambient_angle": "116791/523264",
+        "name": "a",
+        "original_W_gluing_open_seam": [
+          "137/192",
+          "139/192"
+        ],
+        "physical_K9_target": "zero_upper",
+        "slot": 1,
+        "source_tile_id": "G:W:tile2"
+      },
+      {
+        "P_tile": 1,
+        "Pi3": "87/112",
+        "Pi9": "1/4",
+        "V0_tile": 1,
+        "W_tile": 3,
+        "ambient_523264_num": 144841,
+        "ambient_angle": "144841/523264",
+        "name": "b",
+        "original_W_gluing_open_seam": [
+          "149/192",
+          "151/192"
+        ],
+        "physical_K9_target": "zero_upper",
+        "slot": 0,
+        "source_tile_id": "G:W:tile3"
+      },
+      {
+        "P_tile": 1,
+        "Pi3": "11/14",
+        "Pi9": "1/2",
+        "V0_tile": 1,
+        "W_tile": 3,
+        "ambient_523264_num": 144896,
+        "ambient_angle": "283/1022",
+        "name": "qL",
+        "original_W_gluing_open_seam": [
+          "149/192",
+          "151/192"
+        ],
+        "physical_K9_target": "left_tip",
+        "slot": 1,
+        "source_tile_id": "G:W:tile3"
+      }
+    ],
+    "different_parent_edge_count": 2,
+    "finite_rule": "Pi9((W tile i, sorted slot e))=(i+2+e)%4 / 4",
+    "original_KL_gluing_caveat": "source arcs xi/eta are IDEAL SIDES; rays lie strictly inside OPEN GLUING SEAMS, not on those ideal sides",
+    "physical_K9_endpoint_classification": {
+      "0": "right_tip",
+      "1/2": "left_tip",
+      "1/4": "zero_upper",
+      "3/4": "zero_lower"
+    },
+    "same_parent_edge_count": 2
+  },
+  "analytic_theorems_written_not_formalized": [
+    "for Y=P,V0,W, unique rooted holomorphic section Y->fine canonical localization",
+    "all other pullback components of (Y\\K9) are universal annular covers by malnormality of H=<b00>",
+    "the root section gives an inner prime-end circle homeomorphism, nonroot covers have two nonextendible wrapping ends",
+    "rooted sections for general connected U iff image pi1(U\\K9) <= H",
+    "the embedded G^3=f^9:W->V0 is proper degree two and agrees with the canonical fine return germ",
+    "the four fine access edges are ordered adjacent-source-tile incidence tags, NOT identifications with original KL xi/eta side points"
+  ],
+  "finite_free_group_diagnostic": {
+    "finite_nonroot_reduced_conjugators": 928,
+    "finite_nontrivial_H_conjugacy_tests": 7424,
+    "infinite_malnormality_not_machine_proved": true,
+    "sampled_double_coset_w01_charge_range": [
+      -20,
+      20
+    ]
+  },
+  "global_gates": [
+    "H1-H4 open",
+    "UPTCR open",
+    "MLC open",
+    "infinite native KL whole O/xi/eta ideal extension open"
+  ],
+  "schema_version": 1,
+  "theorem_scope": "exact nonattracting real 3/9 tip, physical central G puzzle P, V0, W; not full KL ideal side map"
+}
