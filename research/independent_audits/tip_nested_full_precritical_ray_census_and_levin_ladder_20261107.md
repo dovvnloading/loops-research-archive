@@ -232,9 +232,28 @@ In each interval there is **exactly one** solution of `8x = the required rationa
 
 **Dynamical consistency.** In the outer scale the critical quartet's internal angles are **four distinct preperiodic period-three angles** (`81,87,25,31` over `112`). In the fine scale they are identified in two pairs (`1/4,1/4,3/4,3/4`). The finite **two-scale quotient of this precisely delimited eight-ray set** therefore has a genuine, source-derived 2-to-1 pattern. It is not an established map between the *whole* internal straightening circles, and the extra `12` coarse-stage points have not been given their individual angular addresses in this note.
 
+### Theorem 6.2 (complete **32-angle internal census**, with a forced finite bijection)
+
+The period-three straightening's **entire** internal ray set over the *16-point* depth-ten central fiber is the following explicitly defined, 32-element set:
+
+\[
+\boxed{\mathcal A_3^{\mathrm{int}}=
+\left\{\frac{q+k}{8}:q\in
+\left\{\frac27,\frac57,\frac3{14},\frac{11}{14}\right\},
+\ k=0,\ldots,7\right\}.}\tag{6.6}
+\]
+
+Each angle occurs **once**. The outer Levin map `Pi3` is a **bijection from the 32 ambient rays landing in** `K3\cap\mathscr P_{c_*}` **onto** `\mathcal A_3^{\mathrm{int}}`. The eight source-labelled rows of Theorem 6.1 are part of this 32-element bijection. The other **24 internal angle values** are completely listed in the machine-readable manifest, although their individual ambient source-angle labels are not yet identified in this work. By contrast, the *eight* ambient period-nine rays map exactly **two-to-one** under `Pi9` to the four internal angles `{0,1/4,1/2,3/4}`.
+
+**Proof.** The two physical target points `p` and `-p` belong to `K3`. Theorem 6.1 determines **four distinct** internal rays landing there, with angles `5/7,2/7,3/14,11/14`. A standard polynomial-like straightening gives a genuine connected quadratic filled set on which the return `g3=f³` is conjugate to a degree-two polynomial. Every preimage under three iterations of `g3` of either target point is a member of the 16-point central fiber established in Theorem 4.2, and conversely. Pulling back each of the four internal rays three times gives **eight** internal ray angles `x` with `8x=q mod1`. The four target angles have disjoint inverse sets, so the result is **32 distinct internal angles**, precisely (6.6). Their rays land at the 16 central preimage points, with the critical double preimage at the tip accounted for by local degree.
+
+Levin Theorems 1 and 3(c) establish that every one of these internal rays corresponds to **at least one ambient external ray sharing its landing point** in `K3`. Each such landing point lies in the physical equation `f^{10}(z)=Z_*`. By Theorem 5.1 there are **exactly 32 ambient rays** landing in that same stage-selected fiber. Since `Pi3` is a function, 32 different target values require at least 32 different source angles; equality forces **one and only one ambient ray for each internal angle**. Therefore `Pi3` is bijective on this selected finite set. The fine-stage statement is the exhaustive eight-angle table in Theorem 6.1. `□`
+
+**Scope.** This does not make `Pi3` globally injective on all external-ray angles landing in `K3`, nor does it identify the remaining 24 ambient angles with KL pseudo-piece sides. It is a **complete, finite, source-defined internal-angle census** of one genuine polynomial preimage fiber. The calculation uses source-supplied Levin surjectivity and full component membership; its 32-element arithmetic is independently checked.
+
 ## 7. Consequences, acceptance test and boundaries
 
-**A genuinely realized finite access interface.** The previously known data separated the period-3/9 external rays and their individual Levin maps, but did not compute the **complete eight-ray ladder** at the precritical defect. We now have (a) exact stage counts `1024/16/4`, (b) one and only one local branch transposition, (c) exactly `2048/32/8` ambient access angles, and (d) a complete **eight-ray source-derived pair of Levin markings** at the true branch defect. The only new finite rays are preimages of the repelling orbit's exact periodic rays, not independently chosen model labels.
+**A genuinely realized finite access interface.** The previously known data separated the period-3/9 external rays and their individual Levin maps, but did not compute the **complete eight-ray ladder** at the precritical defect. We now have (a) exact stage counts `1024/16/4`, (b) one and only one local branch transposition, (c) exactly `2048/32/8` ambient access angles, and (d) a complete **eight-ray source-derived pair of Levin markings** and a 32-ray **outer Levin bijection** at the true branch defect. The only new finite rays are preimages of the repelling orbit's exact periodic rays, not independently chosen model labels.
 
 **Still not a Kahn localization-sheet comparison.** Kahn's canonical localization sheet groupoid is an **infinite coset-valued cover** on a different marked Riemann surface. It cannot be replaced by the degree-1024 physical inverse-point fiber or the eight Levin ray angles. No `O/xi/eta` pseudo-piece-side natural transformation or full Carathéodory border welding is proved. Similarly, the complex root monodromy does not claim globally continued ray labels outside the Mandelbrot connectedness locus.
 
