@@ -1,0 +1,59 @@
+name: Actual 3-9 coarse-only precritical ray pairs and Lean sectors
+
+on:
+  push:
+    branches:
+      - main
+      - 'research/**'
+    paths:
+      - '.github/workflows/tip-actual-coarse-ray-pairs.yml'
+      - 'research/independent_audits/tip_actual_coarse_only_ray_pairs_and_alpha_faces_20261107.md'
+      - 'research/independent_audits/verify_tip_actual_coarse_only_ray_pairing.py'
+      - 'results/tip_actual_coarse_only_ray_pairing_20261107.json'
+      - 'TipActualCoarseRays.lean'
+      - 'lakefile.toml'
+  pull_request:
+    paths:
+      - '.github/workflows/tip-actual-coarse-ray-pairs.yml'
+      - 'research/independent_audits/tip_actual_coarse_only_ray_pairs_and_alpha_faces_20261107.md'
+      - 'research/independent_audits/verify_tip_actual_coarse_only_ray_pairing.py'
+      - 'results/tip_actual_coarse_only_ray_pairing_20261107.json'
+      - 'TipActualCoarseRays.lean'
+      - 'lakefile.toml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  exact-angular-and-landing-census:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Exact physical 2048-to-32 alpha-puzzle sector sieve and 15 landed classes
+        run: |
+          python -m py_compile research/independent_audits/verify_tip_actual_coarse_only_ray_pairing.py
+          python research/independent_audits/verify_tip_actual_coarse_only_ray_pairing.py --check-manifest
+
+  lean-exact-sector-kernel:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Reject proof placeholders in ray-sector formalization
+        run: |
+          if grep -En '(^|[^A-Za-z_])(sorry|admit)([^A-Za-z_]|$)' TipActualCoarseRays.lean; then
+            echo 'Forbidden proof holes found.'
+            exit 1
+          fi
+      - name: Install Lean 4 and kernel-check all finite ray-sector theorems
+        uses: leanprover/lean-action@v1
+        with:
+          auto-config: 'false'
+          build: 'true'
+          test: 'false'
+          lint: 'false'
+          use-github-cache: 'false'
+          use-mathlib-cache: 'false'
