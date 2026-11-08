@@ -1,0 +1,61 @@
+name: Real 3-9 based sheet grid and all-sheet ray lifts
+
+on:
+  push:
+    branches:
+      - main
+      - 'research/**'
+    paths:
+      - '.github/workflows/tip-sheet-grid-root-lifts.yml'
+      - 'research/independent_audits/tip_based_sheet_grid_universal_lift_and_root_access_20261108.md'
+      - 'research/independent_audits/verify_tip_sheet_grid_root_lifts.py'
+      - 'results/tip_sheet_grid_root_lifts_20261108.json'
+      - 'TipSheetGrid.lean'
+      - 'lakefile.toml'
+  pull_request:
+    paths:
+      - '.github/workflows/tip-sheet-grid-root-lifts.yml'
+      - 'research/independent_audits/tip_based_sheet_grid_universal_lift_and_root_access_20261108.md'
+      - 'research/independent_audits/verify_tip_sheet_grid_root_lifts.py'
+      - 'results/tip_sheet_grid_root_lifts_20261108.json'
+      - 'TipSheetGrid.lean'
+      - 'lakefile.toml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  exact-sheet-grid-and-rays:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Exact nine-generator free words, 83521 sheet cosets and real 32-ray types
+        run: |
+          python -m py_compile research/independent_audits/verify_tip_sheet_grid_root_lifts.py
+          python research/independent_audits/verify_tip_sheet_grid_root_lifts.py --check-manifest
+
+  lean-integer-sheet-charges:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Reject Lean proof holes
+        run: |
+          if grep -En '(^|[^A-Za-z_])(sorry|admit)([^A-Za-z_]|$)' TipSheetGrid.lean; then
+            echo 'Lean proof placeholders are forbidden'
+            exit 1
+          fi
+      - name: Build registered Lean4 modules
+        uses: leanprover/lean-action@v1
+        with:
+          auto-config: 'false'
+          build: 'true'
+          test: 'false'
+          lint: 'false'
+          use-github-cache: 'false'
+          use-mathlib-cache: 'false'
+      - name: Kernel-check independent sheet charges
+        run: lake build TipSheetGrid
