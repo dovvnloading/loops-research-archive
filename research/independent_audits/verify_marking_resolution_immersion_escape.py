@@ -27,12 +27,17 @@ def circle_dist(x: float, center: float) -> float:
 
 
 def cut_threshold(cuts: tuple[float, ...], center: float, R: float) -> float:
+    # No inner boundary path is admissible with <=2 marked atoms:
+    # the full inner circle itself is a multi-interval of length <=2.
+    if len(cuts) <= 2:
+        return R
     nearby = sorted(circle_dist(x, center) for x in cuts if circle_dist(x, center) < R - 1e-13)
     return nearby[1] if len(nearby) >= 2 else R
 
 
 def counted_atoms(cuts: tuple[float, ...], center: float, r: float) -> int:
-    return 1 + sum(circle_dist(x, center) < r - 1e-13 for x in cuts)
+    # The arc may cross *every* cut; its starting/ending atom then repeats.
+    return min(len(cuts), 1 + sum(circle_dist(x, center) < r - 1e-13 for x in cuts))
 
 
 def width(r0: float, R: float, threshold: float) -> float:
@@ -87,6 +92,17 @@ def test_marking_threshold() -> dict:
             tests.append({'epsilon':eps,'marking':name,
                           'second_cut_distances':[round(x,12) for x in thresholds],
                           'admissible_widths':[round(x,12) for x in widths]})
+    # Previously missed adversarial boundary case: with just TWO marked
+    # atoms, even two nearby cuts flanking one gap cannot make a leaf valid.
+    # A naive 1 + number-of-crossed-cuts formula gives the WRONG count 3.
+    center = PI/2
+    r0 = math.asin(.001)
+    close_two = (center-r0, center+r0)
+    naive_atoms = 1+sum(circle_dist(x, center) < .05 for x in close_two)
+    assert naive_atoms == 3 and len(close_two) == 2
+    assert counted_atoms(close_two, center, .05) == 2
+    assert cut_threshold(close_two, center, .125) == .125
+    assert width(r0, .125, cut_threshold(close_two, center, .125)) == 0.
     # Minimum 4 distinct cuts for *both* packets: in two disjoint small
     # source neighborhoods, each needs two cuts. This exact finite count
     # is the pigeonhole arithmetic, not a simulation of prime ends.
