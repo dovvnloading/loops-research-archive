@@ -1,0 +1,477 @@
+{
+  "fractional_width": {
+    "asymptotic_formula": "second-cut scale r0^beta retains fraction beta of logarithmic Wave width",
+    "fractional_marking_loss": [
+      {
+        "beta": 0.25,
+        "limiting_fraction": 0.25,
+        "samples": [
+          {
+            "r0": 0.0001,
+            "retained_fraction": 0.03129248593,
+            "second_cut_distance": 0.1
+          },
+          {
+            "r0": 1e-06,
+            "retained_fraction": 0.117112134898,
+            "second_cut_distance": 0.03162277660168
+          },
+          {
+            "r0": 1e-08,
+            "retained_fraction": 0.154561634711,
+            "second_cut_distance": 0.01
+          },
+          {
+            "r0": 1e-10,
+            "retained_fraction": 0.175544224437,
+            "second_cut_distance": 0.00316227766017
+          },
+          {
+            "r0": 1e-12,
+            "retained_fraction": 0.18896341509,
+            "second_cut_distance": 0.001
+          },
+          {
+            "r0": 1e-14,
+            "retained_fraction": 0.198284176224,
+            "second_cut_distance": 0.00031622776602
+          },
+          {
+            "r0": 1e-16,
+            "retained_fraction": 0.205135356198,
+            "second_cut_distance": 0.0001
+          }
+        ]
+      },
+      {
+        "beta": 0.5,
+        "limiting_fraction": 0.5,
+        "samples": [
+          {
+            "r0": 0.0001,
+            "retained_fraction": 0.35419499062,
+            "second_cut_distance": 0.01
+          },
+          {
+            "r0": 1e-06,
+            "retained_fraction": 0.411408089932,
+            "second_cut_distance": 0.001
+          },
+          {
+            "r0": 1e-08,
+            "retained_fraction": 0.436374423141,
+            "second_cut_distance": 0.0001
+          },
+          {
+            "r0": 1e-10,
+            "retained_fraction": 0.450362816291,
+            "second_cut_distance": 1e-05
+          },
+          {
+            "r0": 1e-12,
+            "retained_fraction": 0.459308943394,
+            "second_cut_distance": 1e-06
+          },
+          {
+            "r0": 1e-14,
+            "retained_fraction": 0.465522784149,
+            "second_cut_distance": 1e-07
+          },
+          {
+            "r0": 1e-16,
+            "retained_fraction": 0.470090237465,
+            "second_cut_distance": 1e-08
+          }
+        ]
+      },
+      {
+        "beta": 0.75,
+        "limiting_fraction": 0.75,
+        "samples": [
+          {
+            "r0": 0.0001,
+            "retained_fraction": 0.67709749531,
+            "second_cut_distance": 0.001
+          },
+          {
+            "r0": 1e-06,
+            "retained_fraction": 0.705704044966,
+            "second_cut_distance": 3.16227766e-05
+          },
+          {
+            "r0": 1e-08,
+            "retained_fraction": 0.71818721157,
+            "second_cut_distance": 1e-06
+          },
+          {
+            "r0": 1e-10,
+            "retained_fraction": 0.725181408146,
+            "second_cut_distance": 3.162278e-08
+          },
+          {
+            "r0": 1e-12,
+            "retained_fraction": 0.729654471697,
+            "second_cut_distance": 1e-09
+          },
+          {
+            "r0": 1e-14,
+            "retained_fraction": 0.732761392075,
+            "second_cut_distance": 3.162e-11
+          },
+          {
+            "r0": 1e-16,
+            "retained_fraction": 0.735045118733,
+            "second_cut_distance": 1e-12
+          }
+        ]
+      }
+    ]
+  },
+  "marking": {
+    "exact_width": "max(0,log(R/max(r0,second_nearest_cut)))/pi",
+    "local_cut_inequalities_checked": 3200,
+    "marking_placements": [
+      {
+        "admissible_widths": [
+          1.536899943129,
+          1.536899943129
+        ],
+        "epsilon": 0.001,
+        "marking": "four_actual_gate_cuts",
+        "second_cut_distances": [
+          0.001000000167,
+          0.001000000167
+        ]
+      },
+      {
+        "admissible_widths": [
+          1.536899943129,
+          1.536899943129
+        ],
+        "epsilon": 0.001,
+        "marking": "six_actual_gate_and_critical_cuts",
+        "second_cut_distances": [
+          0.001000000167,
+          0.001000000167
+        ]
+      },
+      {
+        "admissible_widths": [
+          0.0,
+          0.0
+        ],
+        "epsilon": 0.001,
+        "marking": "two_coarse_gap_center_cuts",
+        "second_cut_distances": [
+          0.125,
+          0.125
+        ]
+      },
+      {
+        "admissible_widths": [
+          1.536899943129,
+          0.0
+        ],
+        "epsilon": 0.001,
+        "marking": "three_cuts_one_gap_unresolved",
+        "second_cut_distances": [
+          0.001000000167,
+          0.125
+        ]
+      },
+      {
+        "admissible_widths": [
+          2.269835594529,
+          2.269835594529
+        ],
+        "epsilon": 0.0001,
+        "marking": "four_actual_gate_cuts",
+        "second_cut_distances": [
+          0.0001,
+          0.0001
+        ]
+      },
+      {
+        "admissible_widths": [
+          2.269835594529,
+          2.269835594529
+        ],
+        "epsilon": 0.0001,
+        "marking": "six_actual_gate_and_critical_cuts",
+        "second_cut_distances": [
+          0.0001,
+          0.0001
+        ]
+      },
+      {
+        "admissible_widths": [
+          0.0,
+          0.0
+        ],
+        "epsilon": 0.0001,
+        "marking": "two_coarse_gap_center_cuts",
+        "second_cut_distances": [
+          0.125,
+          0.125
+        ]
+      },
+      {
+        "admissible_widths": [
+          2.269835594529,
+          0.0
+        ],
+        "epsilon": 0.0001,
+        "marking": "three_cuts_one_gap_unresolved",
+        "second_cut_distances": [
+          0.0001,
+          0.125
+        ]
+      },
+      {
+        "admissible_widths": [
+          3.002771193934,
+          3.002771193934
+        ],
+        "epsilon": 1e-05,
+        "marking": "four_actual_gate_cuts",
+        "second_cut_distances": [
+          1e-05,
+          1e-05
+        ]
+      },
+      {
+        "admissible_widths": [
+          3.002771193934,
+          3.002771193934
+        ],
+        "epsilon": 1e-05,
+        "marking": "six_actual_gate_and_critical_cuts",
+        "second_cut_distances": [
+          1e-05,
+          1e-05
+        ]
+      },
+      {
+        "admissible_widths": [
+          0.0,
+          0.0
+        ],
+        "epsilon": 1e-05,
+        "marking": "two_coarse_gap_center_cuts",
+        "second_cut_distances": [
+          0.125,
+          0.125
+        ]
+      },
+      {
+        "admissible_widths": [
+          3.002771193934,
+          0.0
+        ],
+        "epsilon": 1e-05,
+        "marking": "three_cuts_one_gap_unresolved",
+        "second_cut_distances": [
+          1e-05,
+          0.125
+        ]
+      },
+      {
+        "admissible_widths": [
+          3.735706792774,
+          3.735706792774
+        ],
+        "epsilon": 1e-06,
+        "marking": "four_actual_gate_cuts",
+        "second_cut_distances": [
+          1e-06,
+          1e-06
+        ]
+      },
+      {
+        "admissible_widths": [
+          3.735706792774,
+          3.735706792774
+        ],
+        "epsilon": 1e-06,
+        "marking": "six_actual_gate_and_critical_cuts",
+        "second_cut_distances": [
+          1e-06,
+          1e-06
+        ]
+      },
+      {
+        "admissible_widths": [
+          0.0,
+          0.0
+        ],
+        "epsilon": 1e-06,
+        "marking": "two_coarse_gap_center_cuts",
+        "second_cut_distances": [
+          0.125,
+          0.125
+        ]
+      },
+      {
+        "admissible_widths": [
+          3.735706792774,
+          0.0
+        ],
+        "epsilon": 1e-06,
+        "marking": "three_cuts_one_gap_unresolved",
+        "second_cut_distances": [
+          1e-06,
+          0.125
+        ]
+      }
+    ],
+    "minimal_source_inner_cuts_for_both_packets": 4,
+    "sharp_rule": "leaf radius r is valid iff at least two cuts lie inside its short support"
+  },
+  "physical_escape": {
+    "all_direct_immersed_leaves_proper": false,
+    "exact_joukowski_identity_tests": 84,
+    "exact_rational_endpoint_tests": 63,
+    "lower_sin_1_over_8": "383/3072",
+    "representative_rational_witnesses": [
+      {
+        "eps": "1/1000",
+        "interior_disk_radius": "9009/4000000",
+        "new_end": "1001/100000",
+        "old_end": "-1001/100000",
+        "old_tip": "1001/1000000",
+        "sin_radius": "1/100"
+      },
+      {
+        "eps": "1/1000",
+        "interior_disk_radius": "49049/4000000",
+        "new_end": "1001/20000",
+        "old_end": "-1001/20000",
+        "old_tip": "1001/1000000",
+        "sin_radius": "1/20"
+      },
+      {
+        "eps": "1/1000",
+        "interior_disk_radius": "99099/4000000",
+        "new_end": "1001/10000",
+        "old_end": "-1001/10000",
+        "old_tip": "1001/1000000",
+        "sin_radius": "1/10"
+      },
+      {
+        "eps": "1/1000000",
+        "interior_disk_radius": "9999009999/4000000000000",
+        "new_end": "1000001/100000000",
+        "old_end": "-1000001/100000000",
+        "old_tip": "1000001/1000000000000",
+        "sin_radius": "1/100"
+      },
+      {
+        "eps": "1/1000000",
+        "interior_disk_radius": "49999049999/4000000000000",
+        "new_end": "1000001/20000000",
+        "old_end": "-1000001/20000000",
+        "old_tip": "1000001/1000000000000",
+        "sin_radius": "1/20"
+      },
+      {
+        "eps": "1/1000000",
+        "interior_disk_radius": "99999099999/4000000000000",
+        "new_end": "1000001/10000000",
+        "old_end": "-1000001/10000000",
+        "old_tip": "1000001/1000000000000",
+        "sin_radius": "1/10"
+      },
+      {
+        "eps": "1/1000000000000",
+        "interior_disk_radius": "9999999999009999999999/4000000000000000000000000",
+        "new_end": "1000000000001/100000000000000",
+        "old_end": "-1000000000001/100000000000000",
+        "old_tip": "1000000000001/1000000000000000000000000",
+        "sin_radius": "1/100"
+      },
+      {
+        "eps": "1/1000000000000",
+        "interior_disk_radius": "49999999999049999999999/4000000000000000000000000",
+        "new_end": "1000000000001/20000000000000",
+        "old_end": "-1000000000001/20000000000000",
+        "old_tip": "1000000000001/1000000000000000000000000",
+        "sin_radius": "1/20"
+      },
+      {
+        "eps": "1/1000000000000",
+        "interior_disk_radius": "99999999999099999999999/4000000000000000000000000",
+        "new_end": "1000000000001/10000000000000",
+        "old_end": "-1000000000001/10000000000000",
+        "old_tip": "1000000000001/1000000000000000000000000",
+        "sin_radius": "1/10"
+      },
+      {
+        "eps": "1/100000000000000000000000",
+        "interior_disk_radius": "99999999999999999999900999999999999999999999/40000000000000000000000000000000000000000000000",
+        "new_end": "100000000000000000000001/10000000000000000000000000",
+        "old_end": "-100000000000000000000001/10000000000000000000000000",
+        "old_tip": "100000000000000000000001/10000000000000000000000000000000000000000000000",
+        "sin_radius": "1/100"
+      },
+      {
+        "eps": "1/100000000000000000000000",
+        "interior_disk_radius": "499999999999999999999904999999999999999999999/40000000000000000000000000000000000000000000000",
+        "new_end": "100000000000000000000001/2000000000000000000000000",
+        "old_end": "-100000000000000000000001/2000000000000000000000000",
+        "old_tip": "100000000000000000000001/10000000000000000000000000000000000000000000000",
+        "sin_radius": "1/20"
+      },
+      {
+        "eps": "1/100000000000000000000000",
+        "interior_disk_radius": "999999999999999999999909999999999999999999999/40000000000000000000000000000000000000000000000",
+        "new_end": "100000000000000000000001/1000000000000000000000000",
+        "old_end": "-100000000000000000000001/1000000000000000000000000",
+        "old_tip": "100000000000000000000001/10000000000000000000000000000000000000000000000",
+        "sin_radius": "1/10"
+      }
+    ],
+    "source_end_in_new_branch": "b < x_r < -c",
+    "source_other_end_in_old_tree": "c < y_r < b",
+    "target_image_proper_end_count_per_leaf": 1
+  },
+  "schema_version": 1,
+  "scope": "actual non-prime-primitive quadratic-like covering/immersion; sharp marking/Wave resolution and improper-end escape, NOT native KKL Wave theorem",
+  "source": "KKL arXiv:2606.27272v1 A.1 A.3.2, actual Joukowski attachment from PR #50",
+  "unbounded_loss": {
+    "exact_source_width": "(1/pi)*log(h/(2*arcsin(epsilon)))",
+    "full_direct_immersion_proper_path_loss": true,
+    "qualifier": "this does NOT imply iota^* of every target lamination is empty",
+    "sample_unbounded_source_widths": [
+      {
+        "epsilon": 0.001,
+        "proper_direct_image_leaf_fraction": 0.0,
+        "source_width": 1.536899943129
+      },
+      {
+        "epsilon": 0.0001,
+        "proper_direct_image_leaf_fraction": 0.0,
+        "source_width": 2.269835594529
+      },
+      {
+        "epsilon": 1e-06,
+        "proper_direct_image_leaf_fraction": 0.0,
+        "source_width": 3.735706792819
+      },
+      {
+        "epsilon": 1e-08,
+        "proper_direct_image_leaf_fraction": 0.0,
+        "source_width": 5.201577990577
+      },
+      {
+        "epsilon": 1e-10,
+        "proper_direct_image_leaf_fraction": 0.0,
+        "source_width": 6.667449188336
+      },
+      {
+        "epsilon": 1e-12,
+        "proper_direct_image_leaf_fraction": 0.0,
+        "source_width": 8.133320386095
+      }
+    ]
+  }
+}
