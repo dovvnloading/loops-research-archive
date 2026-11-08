@@ -144,6 +144,21 @@ def levin_eight_ray_ladder():
                     'e':outer['e'],'pR':outer_pR}
     assert len(set(outer_complete.values()))==8
     assert len(set(inner.values()))==4
+    # Every one of the 16 K3 points is an F3^3-preimage of p or -p.
+    # Their complete INTERNAL rays are the 8-fold inverse images of the
+    # four distinct base angles (2/7,5/7,3/14,11/14), total 32.
+    coarse_base=(Q(2,7),Q(5,7),Q(3,14),Q(11,14))
+    coarse32=sorted({(t+k)/8 for t in coarse_base for k in range(8)})
+    assert len(coarse32)==32
+    assert set(outer_complete.values()).issubset(coarse32)
+    assert len(set(coarse32)-set(outer_complete.values()))==24
+    assert {mod1(8*x) for x in coarse32}==set(coarse_base)
+    assert all(sum(mod1(8*x)==t for x in coarse32)==8 for t in coarse_base)
+    # By Levin surjectivity every one of these 32 internal angles has an
+    # ambient source ray at a precritical point in K3. The independent
+    # complete ambient precritical census has exactly 32 such angles;
+    # hence Pi3 is bijective on this selected, finite, REAL fiber.
+    # The checker verifies counts; surjectivity/landing is imported analysis.
     # The internal action of g3^3 is multiplication by 8 and of g9 by 2.
     ray_g9={'a':'qL','b':'qR','d':'qL','e':'qR'}
     for src,tgt in ray_g9.items():
@@ -166,6 +181,11 @@ def levin_eight_ray_ladder():
             'monotone_weak_inner':True,
             'one_step_outer_semiconjugacy_9_to_3':True,
             'single_stage_ray_fiber_sizes':{'K3':32,'K9':8},
+            'complete_coarse_internal_32':list(map(str,coarse32)),
+            'coarse_internal_angles_closed_form':'(q+k)/8, q in {2/7,5/7,3/14,11/14}, k=0..7',
+            'new_coarse_internal_24':list(map(str,sorted(set(coarse32)-set(outer_complete.values())))),
+            'coarse_Levin_ray_census_bijective':True,
+            'fine_Levin_ray_census_two_to_one':True,
             'no_global_cross_scale_naturality_claim':True}
 
 def build():
