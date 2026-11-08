@@ -1,6 +1,6 @@
 name = "loops_formal"
 version = "0.1.0"
-defaultTargets = ["LoopsFormal", "CloneGraph", "FirstReturn", "ReturnBlocks", "ReturnPaths", "Paper2Phase", "RealTwoScalePhase", "Period27Kneading", "Period27Dyadic", "Period27IntervalSound", "Period27RationalTrace", "Period27RationalDerivative", "PhaseTower", "PhaseTower27", "PhaseFuture", "PhaseFuture27", "PhaseMemoryGeneral", "TipRayPortrait", "TipComplexMargins", "TipKLPuzzle", "TipActualCoarseRays", "TipLevinComposition"]
+defaultTargets = ["LoopsFormal", "CloneGraph", "FirstReturn", "ReturnBlocks", "ReturnPaths", "Paper2Phase", "RealTwoScalePhase", "Period27Kneading", "Period27Dyadic", "Period27IntervalSound", "Period27RationalTrace", "Period27RationalDerivative", "PhaseTower", "PhaseTower27", "PhaseFuture", "PhaseFuture27", "PhaseMemoryGeneral", "TipRayPortrait", "TipComplexMargins", "TipKLPuzzle", "TipActualCoarseRays", "TipLevinComposition", "TipSheetGrid"]
 
 [[lean_lib]]
 name = "LoopsFormal"
@@ -67,3 +67,6 @@ name = "TipActualCoarseRays"
 
 [[lean_lib]]
 name = "TipLevinComposition"
+
+[[lean_lib]]
+name = "TipSheetGrid"

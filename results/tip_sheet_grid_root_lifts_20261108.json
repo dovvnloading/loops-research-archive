@@ -1,0 +1,96 @@
+{
+  "schema_version": 1,
+  "scope": "ACTUAL based 3/9 canonical-localization sheets and specified physical ray cohort; MLC open",
+  "grid": {
+    "window": [
+      -8,
+      8
+    ],
+    "source_grid_sheets": 289,
+    "exact_pairwise_left_coset_tests": 83521,
+    "two_characters": [
+      "w01-w02",
+      "w02"
+    ],
+    "grid_word": "H*b01^k*(b00*b01*b02)^n",
+    "coarse_peripheral": "right beta0 adds one to winding n"
+  },
+  "universal_cover": {
+    "coarse_generator_words": [
+      [
+        1,
+        2,
+        3
+      ],
+      [
+        4,
+        5,
+        6
+      ],
+      [
+        7,
+        8,
+        9
+      ]
+    ],
+    "fine_H_generator": 1,
+    "certified_nonzero_core_vs_conjugate_checks": 1024,
+    "full_theorem": "Gamma_coarse intersect g^-1 H g = {1} for all g in F9; injective coarse free-product map needed",
+    "lifting_consequence": "any connected coarse cover admitting a based fine lift must be the universal cover"
+  },
+  "physical_8_24_types": {
+    "ambient_denominator": 523264,
+    "source_ray_count": 32,
+    "fine_survivors": [
+      116736,
+      116791,
+      144841,
+      144896,
+      378368,
+      378423,
+      406473,
+      406528
+    ],
+    "interior_escapes": [
+      112137,
+      112192,
+      112648,
+      112703,
+      116225,
+      116280,
+      145352,
+      145407,
+      148929,
+      148984,
+      149440,
+      149495,
+      373769,
+      373824,
+      374280,
+      374335,
+      377857,
+      377912,
+      406984,
+      407039,
+      410561,
+      410616,
+      411072,
+      411127
+    ],
+    "fine_physical_landing_points": 3,
+    "coarse_only_interior_points": 12,
+    "coarse_only_original_face_counts": {
+      "11011101": 4,
+      "11111111": 2,
+      "00000000": 2,
+      "00010001": 4
+    },
+    "root_compatible_lifts_per_surviving_ray": 1,
+    "proper_fine_exterior_lifts_per_surviving_ray": "countably infinite",
+    "proper_fine_exterior_lifts_per_escaped_ray": 0,
+    "interior_convergent_fine_lifts_per_escaped_ray": "countably infinite",
+    "source_of_analytic_lift_claims": "Kahn marked local cover, local inverse and evenly-covered disks: written proof, not machine certification"
+  },
+  "slit_transport": "radial slit in finite-modulus coarse annulus makes each universal pullback component biholomorphic",
+  "nonimplication": "one ROOT-compatible lift is NOT one proper lift"
+}
