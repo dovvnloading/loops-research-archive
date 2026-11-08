@@ -31,6 +31,7 @@ on:
       - 'TipKLPuzzle.lean'
       - 'TipActualCoarseRays.lean'
       - 'TipLevinComposition.lean'
+      - 'TipSheetGrid.lean'
       - '.github/workflows/lean-proofs.yml'
       - 'research/independent_audits/*.py'
       - 'research/independent_audits/*.md'
@@ -78,6 +79,7 @@ on:
       - 'TipKLPuzzle.lean'
       - 'TipActualCoarseRays.lean'
       - 'TipLevinComposition.lean'
+      - 'TipSheetGrid.lean'
       - '.github/workflows/lean-proofs.yml'
       - 'research/independent_audits/*.py'
       - 'research/independent_audits/*.md'
@@ -106,7 +108,7 @@ jobs:
       - uses: actions/checkout@v4
       - name: Reject proof holes
         run: |
-          if grep -En '(^|[^A-Za-z_])(sorry|admit)([^A-Za-z_]|$)' LoopsFormal.lean CloneGraph.lean FirstReturn.lean ReturnBlocks.lean ReturnPaths.lean Paper2Phase.lean RealTwoScalePhase.lean Period27Kneading.lean Period27Dyadic.lean Period27IntervalSound.lean Period27RationalTrace.lean Period27RationalDerivative.lean PhaseTower.lean PhaseTower27.lean PhaseFuture.lean PhaseFuture27.lean PhaseMemoryGeneral.lean TipRayPortrait.lean TipComplexMargins.lean TipKLPuzzle.lean TipActualCoarseRays.lean TipLevinComposition.lean; then
+          if grep -En '(^|[^A-Za-z_])(sorry|admit)([^A-Za-z_]|$)' LoopsFormal.lean CloneGraph.lean FirstReturn.lean ReturnBlocks.lean ReturnPaths.lean Paper2Phase.lean RealTwoScalePhase.lean Period27Kneading.lean Period27Dyadic.lean Period27IntervalSound.lean Period27RationalTrace.lean Period27RationalDerivative.lean PhaseTower.lean PhaseTower27.lean PhaseFuture.lean PhaseFuture27.lean PhaseMemoryGeneral.lean TipRayPortrait.lean TipComplexMargins.lean TipKLPuzzle.lean TipActualCoarseRays.lean TipLevinComposition.lean TipSheetGrid.lean; then
             echo 'Proof placeholders are prohibited in formal audit files.'
             exit 1
           fi
