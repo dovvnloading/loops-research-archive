@@ -149,20 +149,28 @@ def trial_fourier(h:float,d:float) ->tuple[float,float]:
 def test_full_condenser() -> dict:
     h=.25
     samples=[]
-    for eps in (.025,.01,.005,.002):
+    for eps in (.025,.01,.005,.002,.0002):
         d=2*math.asin(eps)
         assert d<h
         one=wave_exact(eps,h)
         lower=2*one
         upper,tail=trial_fourier(h,d)
         assert lower<=upper+tail+1e-9,(eps,lower,upper,tail)
+        # For each tested configuration this is a certified *minimum*
+        # fraction of the full condenser carried by the disjoint Wave packets.
+        fraction=lower/(upper+tail)
+        assert 0<fraction<=1
         samples.append({'epsilon':eps,'gap_d':round(d,13),
                         'full_width_lower_two_disjoint_packets':round(lower,11),
                         'full_width_upper_harmonic_trial':round(upper+tail,11),
                         'certified_Fourier_tail':round(tail,11),
+                        'certified_packet_fraction_lower':round(fraction,12),
                         'asymptotic_leading_coefficient':'2/pi'})
-    # The above two-sided estimate implies W_h(d)/log(1/d)->2/pi.
+    # Two-sided asymptotics imply both packet/full width ratios 1 and 1/2.
+    fracs=[x['certified_packet_fraction_lower'] for x in samples]
+    assert all(a<b for a,b in zip(fracs,fracs[1:]))
     return {'fixed_height':h,'full_condenser_limit':'lim_{epsilon->0} W_h/log(1/epsilon)=2/pi',
+            'asymptotically_complete_packets':'lim W(Splus union Sminus)/W_full=1; lim W(Splus)/W_full=1/2',
             'trial_fourier_formula':'(4/pi)sum_{odd n}tanh(n*h)*sinc(n*d/2)^2/n',
             'samples':samples}
 

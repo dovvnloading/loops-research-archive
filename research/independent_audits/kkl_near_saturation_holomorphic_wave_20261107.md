@@ -160,7 +160,24 @@ Combined with (3.1), this proves the **sharp opposite extreme** of the previous 
 \qquad\text{for every fixed }0<h\le1/4.}\tag{3.5}
 \]
 
-At fixed small `h`, the full condenser width **blows up** when its two electrode blocks almost reach half-circles, contrasting with the `ell->0` regime of PR #49 where it vanishes. Equation (2.3) independently proves that a full half of this logarithmic blow-up is carried by two explicitly marked, disjoint **Wave leaves**, not inferred through a speculative WAD-full-condenser inequality.
+At fixed small `h`, the full condenser width **blows up** when its two electrode blocks almost reach half-circles, contrasting with the `ell->0` regime of PR #49 where it vanishes. Equation (2.3) supplies two explicitly marked, disjoint **Wave packets**, not a speculative WAD-full-condenser identification.
+
+### Corollary 3.2 (asymptotically complete full-condenser coverage by genuine Waves)
+
+The lower and upper asymptotics match in the strongest proportionate sense:
+
+\[
+\boxed{\lim_{\epsilon\downarrow0}
+\frac{\mathcal W(S_+)}{W_h(\ell_\epsilon)}=\frac12,
+\qquad
+\lim_{\epsilon\downarrow0}
+\frac{\mathcal W(S_+\cup S_-)}{W_h(\ell_\epsilon)}=1.}
+\tag{3.6}
+\]
+
+**Proof.** Theorem 2.1 gives \mathcal W(S_+)=\pi^{-1}\log(1/\epsilon)+O_h(1) and its two-packet union has double this width. Equation (3.5) gives \mathcal W(\Gamma_{\rm full})=(2/\pi)\log(1/\epsilon)+o(\log(1/\epsilon)). Divide and let \epsilon\downarrow0. `□`
+
+This is a quantitative **Wave-to-full-condenser calibration in the explicit holomorphic model**: the two actual packets capture the entire leading logarithmic width, while either winding direction captures one half. It does not supply a corresponding family inclusion or ratio for native KKL proof-used Waves, and is not a claim that a full condenser generally supplies a Wave lower bound.
 
 ## 4. The exact dual exponential: a genuinely holomorphic high-width family
 

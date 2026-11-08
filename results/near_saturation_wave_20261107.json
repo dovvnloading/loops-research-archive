@@ -70,12 +70,14 @@
     "source_preimage": "T=[c,c^2+c]; Tprime=[c,-c]"
   },
   "full_condenser": {
+    "asymptotically_complete_packets": "lim W(Splus union Sminus)/W_full=1; lim W(Splus)/W_full=1/2",
     "fixed_height": 0.25,
     "full_condenser_limit": "lim_{epsilon->0} W_h/log(1/epsilon)=2/pi",
     "samples": [
       {
         "asymptotic_leading_coefficient": "2/pi",
         "certified_Fourier_tail": 1.13153e-06,
+        "certified_packet_fraction_lower": 0.480073189806,
         "epsilon": 0.025,
         "full_width_lower_two_disjoint_packets": 1.02453366769,
         "full_width_upper_harmonic_trial": 2.13411973309,
@@ -84,6 +86,7 @@
       {
         "asymptotic_leading_coefficient": "2/pi",
         "certified_Fourier_tail": 7.07332e-06,
+        "certified_packet_fraction_lower": 0.591847591009,
         "epsilon": 0.01,
         "full_width_lower_two_disjoint_packets": 1.60791818388,
         "full_width_upper_harmonic_trial": 2.7167774412,
@@ -92,6 +95,7 @@
       {
         "asymptotic_leading_coefficient": "2/pi",
         "certified_Fourier_tail": 2.829398e-05,
+        "certified_packet_fraction_lower": 0.648897460615,
         "epsilon": 0.005,
         "full_width_lower_two_disjoint_packets": 2.0491973423,
         "full_width_upper_harmonic_trial": 3.15796788657,
@@ -100,10 +104,20 @@
       {
         "asymptotic_leading_coefficient": "2/pi",
         "certified_Fourier_tail": 0.00017683859,
+        "certified_packet_fraction_lower": 0.703624862017,
         "epsilon": 0.002,
         "full_width_lower_two_disjoint_packets": 2.63252836764,
         "full_width_upper_harmonic_trial": 3.74138054203,
         "gap_d": 0.0040000026667
+      },
+      {
+        "asymptotic_leading_coefficient": "2/pi",
+        "certified_Fourier_tail": 0.00070735529,
+        "certified_packet_fraction_lower": 0.786996588727,
+        "epsilon": 0.0002,
+        "full_width_lower_two_disjoint_packets": 4.09839998557,
+        "full_width_upper_harmonic_trial": 5.20764644253,
+        "gap_d": 0.0004000000027
       }
     ],
     "trial_fourier_formula": "(4/pi)sum_{odd n}tanh(n*h)*sinc(n*d/2)^2/n"
