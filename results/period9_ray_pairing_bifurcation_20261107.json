@@ -1,0 +1,103 @@
+{
+  "certified_repelling_ninth_return_multiplier": [
+    "3",
+    "4"
+  ],
+  "certified_tip_derivative": [
+    "276/1000",
+    "277/1000"
+  ],
+  "formalization_limit": "external periodic-ray landing persistence, pullback topology and planar half-plane order are classical written arguments, not verified by this script",
+  "period9_return_phase_window_accesses": "for sufficiently large n, a,b land at +i sqrt(-R(c_n(t))), d,e at conjugate root",
+  "ray_angles": {
+    "angle_quartet": {
+      "a": "116791/523264",
+      "b": "144841/523264",
+      "d": "378423/523264",
+      "e": "406473/523264"
+    },
+    "antipodal_pairs": [
+      [
+        "a",
+        "d"
+      ],
+      [
+        "b",
+        "e"
+      ]
+    ],
+    "both_target_rays_have_exact_doubling_period": 9,
+    "conjugate_pairs": [
+      [
+        "a",
+        "e"
+      ],
+      [
+        "b",
+        "d"
+      ]
+    ],
+    "f10_target_angles": {
+      "a": "283/511",
+      "b": "228/511",
+      "d": "283/511",
+      "e": "228/511"
+    },
+    "illegal_crossing_partition": [
+      [
+        "a",
+        "d"
+      ],
+      [
+        "b",
+        "e"
+      ]
+    ],
+    "left_real_parameter_negative_real_root_rays": [
+      "b",
+      "d"
+    ],
+    "left_real_parameter_positive_real_root_rays": [
+      "a",
+      "e"
+    ],
+    "left_reflection_invariant_pairs": true,
+    "noncrossing_partitions": {
+      "left": [
+        [
+          "a",
+          "e"
+        ],
+        [
+          "b",
+          "d"
+        ]
+      ],
+      "right": [
+        [
+          "a",
+          "b"
+        ],
+        [
+          "d",
+          "e"
+        ]
+      ]
+    },
+    "positive_angle_rays_stay_in_upper_halfplane_for_real_c_in_M": true,
+    "right_real_parameter_negative_imaginary_root_rays": [
+      "d",
+      "e"
+    ],
+    "right_real_parameter_positive_imaginary_root_rays": [
+      "a",
+      "b"
+    ],
+    "right_reflection_swaps_pairs": true,
+    "strict_cyclic_order": "0<a<b<1/2<d<e<1"
+  },
+  "real_slice": "all real c sufficiently close to cstar on either side are in [-2,1/4] subset Mandelbrot",
+  "schema_version": 1,
+  "scope": "full ambient rational rays, and terminal V9/V3 access germs; NO complete KL O/xi/eta side atlas, no H1-H4, no MLC",
+  "type": "exact angular combinatorics + source-certified simple precritical fold; classical ray landing/stability imported"
+}
