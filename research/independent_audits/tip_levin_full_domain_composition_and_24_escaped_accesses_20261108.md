@@ -100,3 +100,28 @@ The accompanying exact Python verifier independently rebuilds the **2,048 → 80
 The next real frontier is the **actual based infinite-sheet KL localization comparison**, with these eight surviving accesses and four original face classes equipped with their true \(O/\xi/\eta\) tile and integer-winding coordinates. The 24 escaped rays will require source-typed broken-path/continuation records; simply pretending the raw inclusion preserves their proper endpoints is now conclusively invalid.
 
 **Attribution:** Levin's ray correspondences and uniqueness, Douady–Hubbard straightening, classical locally connected Misiurewicz dynamics, and the existing archive's source geometric certificates retain their original authorship. OpenAI GPT-6 assisted this specific proof audit, mathematical synthesis, exact tests and finite Lean verification. Independent specialist review is still required.
+
+
+## 6. A complete *stratified* prime-end transition: 32 → 16, exactly two-to-one
+
+The previous theorem can be sharpened into a genuine finite **access-type** transition that respects the two distinct mathematical sorts of the target. Let \(\mathscr E_3\) be the 32 *distinct* coarse prime-end access classes represented by the 32 ambient rays: their distinctness follows from the **source-established injectivity of \(\Pi_3\) on the complete 32-ray physical fiber** (PRs #55–56) and Levin's K3-equivalence characterization. The extra phase obstacles in the bounded exterior \(\Omega_3\) are disjoint from \(K_3\), so these 32 distinct K3 accesses remain distinct local access germs of \(\Omega_3\).
+
+Define the selected target as the **disjoint union of different types**
+\[
+\mathscr T_{\mathrm{fine}}
+ =\underbrace{\{\text{four selected \(K_9\) prime ends}\}}_{\text{boundary sort}}
+\;\sqcup\;
+ \underbrace{\{\text{twelve selected points of }\Omega_9\}}_{\text{interior sort}}.
+\]
+For each of the 32 ambient ray germs, take its landing limit under the physical inclusion: this is either its proper \(K_9\) prime end when the ray is one of the eight fine-stage accesses, or the actual interior point when its landing point is one of the twelve coarse-only precritical points.
+
+**Corollary 6.1 (fully typed two-to-one finite access map).** The thus-defined transition
+\[
+\boxed{\mathsf T:\mathscr E_3\longrightarrow\mathscr T_{\mathrm{fine}}}
+\]
+is a **surjection with every fiber of cardinality exactly two**. Its four boundary outputs have the exact Levin internal angles \(0,1/4,1/2,3/4\). Their incoming source ray sets are respectively \(\{114/511,397/511\}\), \(\{a,b\}\), \(\{283/1022,739/1022\}\), and \(\{d,e\}\), with \(a,b,d,e\) as in the earlier table. The twelve interior outputs are the twelve **distinct** coarse-only physical precritical roots, each with its exact pair of ambient ray accesses, listed in the merged 15-group source manifest. No two of those distinct physical interior endpoints are identified.
+
+**Proof.** The global factorization \(\Pi_9=Q\circ\Pi_3\) and the certified selected eight-ray table give precisely four different K9 prime ends (two input angles at each), because Levin Theorem 1 identifies polynomial-like ray angles with prime-end equivalence, not just with a landing point. The two fine-cycle obstacles outside K9 remain a **positive physical distance** from K9, so the local prime-end equivalence at K9 is unchanged by restricting from \(\mathbb C\setminus K_9\) to \(\Omega_9\) sufficiently close to each selected landing point. The other 24 rays terminate in the **interior** of \(\Omega_9\) by Lemma 3.1 and Theorem 3.2. The merged complete 15-group census proves these form exactly twelve distinct, ordinary **two-ray** physical landing classes (the one exceptional four-ray class is in K9). The two sorts are disjoint by definition, hence all sixteen images are distinct, and every one has precisely two incoming coarse prime ends. \(\square\)
+
+The mixed-sort distinction is essential: \(\mathsf T\) is **not** a total boundary-prime-end map \(\partial^{\mathrm{pe}}\Omega_3\to\partial^{\mathrm{pe}}\Omega_9\), and it is not Kahn's based localization-sheet functor. It is a precise, source-defined **selected** ray-access map into a stratified target, giving the exact point where a candidate categorical proof must charge or reroute improper endpoints instead of silently promoting them to fine boundary marks.
+
