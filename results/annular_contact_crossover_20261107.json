@@ -1,0 +1,192 @@
+{
+  "actual_attachment_control": {
+    "actual_attachment_ell": 1.991940058559,
+    "correct_fixed_ell_density": 1.739655969677,
+    "critical_exponential_law_not_claimed_for_actual_fixed_ell": true,
+    "native_cover_dichotomy": "ell>=pi -> saturated covering image; 0<ell<pi -> disjoint deck electrodes",
+    "physical_model_is_constant_ell": true
+  },
+  "arcsine_kernel_brackets": [
+    {
+      "analytic_resistance_upper": 10.49823755045,
+      "arcsine_trial_resistance_upper": 10.49821137099,
+      "ell": 0.004,
+      "eta_main_law": 10.49823755045,
+      "h": 0.2,
+      "log_kernel_error": -1.66667e-07,
+      "ratio": 0.02,
+      "thermal_variation": 2.0394629e-05,
+      "uniform_truncation_bound": "R_main - R_* = O(ell^2 + (ell/h)^2)"
+    },
+    {
+      "analytic_resistance_upper": 18.35221918442,
+      "arcsine_trial_resistance_upper": 18.35219300497,
+      "ell": 0.002,
+      "eta_main_law": 18.35221918442,
+      "h": 0.1,
+      "log_kernel_error": -4.1667e-08,
+      "ratio": 0.02,
+      "thermal_variation": 2.0519629e-05,
+      "uniform_truncation_bound": "R_main - R_* = O(ell^2 + (ell/h)^2)"
+    },
+    {
+      "analytic_resistance_upper": 34.06018245237,
+      "arcsine_trial_resistance_upper": 34.06015627291,
+      "ell": 0.001,
+      "eta_main_law": 34.06018245237,
+      "h": 0.05,
+      "log_kernel_error": -1.0417e-08,
+      "ratio": 0.02,
+      "thermal_variation": 2.0550879e-05,
+      "uniform_truncation_bound": "R_main - R_* = O(ell^2 + (ell/h)^2)"
+    }
+  ],
+  "contact": {
+    "arcsine_log_energy": "log(4/ell)",
+    "error_regime": "0<h<=1, 0<ell<=h/4; O((ell/h)^2 + ell^2 + exp(-pi^2/h))",
+    "uniform_charge_energy_excess": 0.113705638880109,
+    "uniform_log_energy": "log(1/ell)+3/2",
+    "universal_reciprocal_resistance": "pi/(2h)+(2/pi)log(4h/(pi ell))+o(1)"
+  },
+  "eta_modularity": {
+    "identity": "sum_{k>=1} log coth(kh) = pi^2/(8h)+(1/2)log(h/(2pi))+eta-modular-correction",
+    "samples": [
+      {
+        "abs_independent_difference": 0.0,
+        "h": 2.0,
+        "log_coth_product": 0.0373188177189,
+        "modular_correction": -0.0071665144244,
+        "modular_eta_value": 0.0373188177189
+      },
+      {
+        "abs_independent_difference": 0.0,
+        "h": 1.0,
+        "log_coth_product": 0.3147102950828,
+        "modular_correction": -5.17218487e-05,
+        "modular_eta_value": 0.3147102950828
+      },
+      {
+        "abs_independent_difference": 1e-15,
+        "h": 0.5,
+        "log_coth_product": 1.2018889741124,
+        "modular_correction": -2.6753e-09,
+        "modular_eta_value": 1.2018889741124
+      },
+      {
+        "abs_independent_difference": 4e-15,
+        "h": 0.2,
+        "log_coth_product": 4.4448452612591,
+        "modular_correction": -0.0,
+        "modular_eta_value": 4.4448452612591
+      },
+      {
+        "abs_independent_difference": 2e-15,
+        "h": 0.1,
+        "log_coth_product": 10.26677442166,
+        "modular_correction": -0.0,
+        "modular_eta_value": 10.26677442166
+      },
+      {
+        "abs_independent_difference": 1.4e-14,
+        "h": 0.05,
+        "log_coth_product": 22.2572063327417,
+        "modular_correction": -0.0,
+        "modular_eta_value": 22.2572063327417
+      }
+    ]
+  },
+  "exponential_crossover": {
+    "all_shrinking_access_scales": "h log(1/ell)->C in [0,infinity] gives the same crossover, with 0 at C=infinity",
+    "critical_exponential_law": "W_h(exp(-C/h))/h -> 1/(pi/2 + 2C/pi)",
+    "fixed_access_negative_control": {
+      "correct_density": 0.933884413849,
+      "ell": 1.0,
+      "incorrect_shrinking_access_density": 0.636619772368
+    },
+    "samples": [
+      {
+        "C": 0.25,
+        "ell": 0.006737946999085,
+        "finite_h_log_correction": -0.08766788384,
+        "h": 0.05,
+        "h_times_main_resistance": 1.642283386047,
+        "limiting_h_over_width": 1.729951269887
+      },
+      {
+        "C": 0.25,
+        "ell": 4.5399929762e-05,
+        "finite_h_log_correction": -0.054865721928,
+        "h": 0.025,
+        "h_times_main_resistance": 1.675085547959,
+        "limiting_h_over_width": 1.729951269887
+      },
+      {
+        "C": 1,
+        "ell": 0.006737946999085,
+        "finite_h_log_correction": -0.174163055239,
+        "h": 0.2,
+        "h_times_main_resistance": 2.033253043924,
+        "limiting_h_over_width": 2.207416099162
+      },
+      {
+        "C": 1,
+        "ell": 4.5399929762e-05,
+        "finite_h_log_correction": -0.13120864765,
+        "h": 0.1,
+        "h_times_main_resistance": 2.076207451512,
+        "limiting_h_over_width": 2.207416099162
+      },
+      {
+        "C": 1,
+        "ell": 2.061154e-09,
+        "finite_h_log_correction": -0.08766788384,
+        "h": 0.05,
+        "h_times_main_resistance": 2.119748215322,
+        "limiting_h_over_width": 2.207416099162
+      },
+      {
+        "C": 1,
+        "ell": 0.0,
+        "finite_h_log_correction": -0.054865721928,
+        "h": 0.025,
+        "h_times_main_resistance": 2.152550377235,
+        "limiting_h_over_width": 2.207416099162
+      },
+      {
+        "C": 2,
+        "ell": 4.5399929762e-05,
+        "finite_h_log_correction": -0.174163055239,
+        "h": 0.2,
+        "h_times_main_resistance": 2.669872816291,
+        "limiting_h_over_width": 2.84403587153
+      },
+      {
+        "C": 2,
+        "ell": 2.061154e-09,
+        "finite_h_log_correction": -0.13120864765,
+        "h": 0.1,
+        "h_times_main_resistance": 2.71282722388,
+        "limiting_h_over_width": 2.84403587153
+      },
+      {
+        "C": 2,
+        "ell": 0.0,
+        "finite_h_log_correction": -0.08766788384,
+        "h": 0.05,
+        "h_times_main_resistance": 2.75636798769,
+        "limiting_h_over_width": 2.84403587153
+      },
+      {
+        "C": 2,
+        "ell": 0.0,
+        "finite_h_log_correction": -0.054865721928,
+        "h": 0.025,
+        "h_times_main_resistance": 2.789170149602,
+        "limiting_h_over_width": 2.84403587153
+      }
+    ]
+  },
+  "provenance": "analytic written proof + deterministic tests only; NOT native KKL Wave/WAD certificate",
+  "schema_version": 1,
+  "source": "Actual KKL f-leg is a covering; iota*-born attached blocks must be separately verified"
+}
