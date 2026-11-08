@@ -151,6 +151,29 @@ Define on the **entire embedded central source disk**
 
 This is an **all-central-piece dynamical embedding**, not merely a finite combinatorial atlas or an arbitrary local inverse. For any additional source-central Jordan descendant lying in `P_G`, its geometric inclusion is automatically carried by the already defined `s_{P_G}`. Nothing here asserts that every native KL *universal-cover tile* embeds or that source ideal sides map continuously.
 
+### Theorem 3.2 — an explicit **based coset gauge** for all eight root-compatible rays
+
+This is the missing *based* part of the rooted construction, with the path type fixed. Choose a physical basepoint `x∈W_G\setminus K3` in one of the actual four W exterior components, and use `s_{W_G}(x)` as the fine base sheet. Let `γ_θ` be the short terminal ambient ray for any of the eight certified fine accesses, starting at `y_θ∈W_G\setminus K3` and ending at `z_θ∈K9`. For each θ choose **any** physical connector
+
+\[
+\kappa_\theta:x\longrightarrow y_\theta,
+\qquad \kappa_\theta\subset W_G\setminus K9.\tag{3.3}
+\]
+
+Such connectors exist because `W_G\setminus K9` is connected, even though `W_G\setminus K3` has multiple exterior components. Then the lifted connector starting at `s_{W_G}(x)` **always** ends at `s_{W_G}(y_θ)`, by (2.4). The continued ray `s_{W_G}\circ γ_θ` is the **unique** lift that converges to the marked fine root, by PR #59. As every loop in the connector domain maps to `H`, the result is independent of the choice of connector (3.3). Thus **all eight root-compatible rays have the SAME based sheet label `H` under this explicit W-rooted connector convention**, and their four distinct fine prime ends are separated by the ray-access labels, not by different root sheet objects. This is a positive simultaneous based alignment on the entire actual W core, not just eight pointwise selections.
+
+**Why this does not silently close coarse KL path transport.** A connector in (3.3) may pass through `K3\setminus K9`, which is *allowed in the fine exterior* but **forbidden in the coarse exterior**. If instead a based connector `κ'_θ` is required to lie in `Ω3`, the comparison of the two choices is the actual based loop
+
+\[
+g_\theta=[\kappa'_\theta\cdot\kappa_\theta^{-1}]
+\in\Gamma,\qquad
+\text{relative fine-sheet coset }H g_\theta.\tag{3.4}
+\]
+
+The formula uses the compatible basepoint and the archive's **left-coset/right-monodromy** convention. Varying the coarse connector by `n` positive loops about the *entire* coarse root changes the relative word to `β0^n g_θ` and hence its fine coset to `H β0^n g_θ` under right monodromy. These cosets are pairwise distinct for **all** `n∈ℤ` because `β0` has winding one around `D_{0,1}` whereas `H` has zero. Consequently the rooted core section gives a fully defined gauge **and** the exact obstruction to treating it as a choice-free KL based section on `Ω3`: one must retain the relative loop word (3.4), including its infinite monodromy, for each proof-used coarse connector.
+
+Theorem 3.2 therefore answers the based-coset question for the precisely authorized *fine-compatible W-gauge*, without falsely claiming that the original KL `ξ/η/O` tile-side based paths are homotopic to those W-gauge connectors. The remaining source alignment problem is to calculate those exact `g_θ` for the original prescribed KL paths or to exhibit a counterexample using the side path groupoid.
+
 ## 4. The complete original four-tile W access cycle: an exact, non-synthetic bridge
 
 The source's genuine *ordinary G-stage* `W=Y_G^6` pseudo-piece has four universal-cover tiles, indexed in its prescribed cyclic order by `i=0,1,2,3`. Its **open inner gluing seams** in the `G`-straightening angle coordinate are
