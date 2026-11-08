@@ -1,0 +1,60 @@
+name: Actual 3-9 Levin composition and 24 escaped ray accesses
+
+on:
+  push:
+    branches:
+      - main
+      - 'research/**'
+    paths:
+      - '.github/workflows/tip-levin-composition.yml'
+      - 'research/independent_audits/tip_levin_full_domain_composition_and_24_escaped_accesses_20261108.md'
+      - 'research/independent_audits/verify_tip_levin_composition_escape.py'
+      - 'results/tip_levin_composition_escape_20261108.json'
+      - 'TipLevinComposition.lean'
+      - 'lakefile.toml'
+  pull_request:
+    paths:
+      - '.github/workflows/tip-levin-composition.yml'
+      - 'research/independent_audits/tip_levin_full_domain_composition_and_24_escaped_accesses_20261108.md'
+      - 'research/independent_audits/verify_tip_levin_composition_escape.py'
+      - 'results/tip_levin_composition_escape_20261108.json'
+      - 'TipLevinComposition.lean'
+      - 'lakefile.toml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  source-angle-certificates:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Verify exact source sectors, 8/24 split, and semiconjugacy
+        run: |
+          python -m py_compile research/independent_audits/verify_tip_levin_composition_escape.py
+          python research/independent_audits/verify_tip_levin_composition_escape.py --check-manifest
+
+  lean-source-finite-factorization:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Reject Lean proof holes
+        run: |
+          if grep -En '(^|[^A-Za-z_])(sorry|admit)([^A-Za-z_]|$)' TipLevinComposition.lean; then
+            echo 'Formal audit must contain no proof placeholders'
+            exit 1
+          fi
+      - name: Build all registered Lean modules
+        uses: leanprover/lean-action@v1
+        with:
+          auto-config: 'false'
+          build: 'true'
+          test: 'false'
+          lint: 'false'
+          use-github-cache: 'false'
+      - name: Kernel-check the selected finite composition
+        run: lake build TipLevinComposition
