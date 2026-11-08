@@ -1,0 +1,199 @@
+{
+  "actual_Levin_3_to_9_ladder": {
+    "Pi3_outer_internal": {
+      "a": "81/112",
+      "b": "87/112",
+      "d": "25/112",
+      "e": "31/112",
+      "pL": "5/7",
+      "pR": "2/7",
+      "qL": "11/14",
+      "qR": "3/14"
+    },
+    "Pi9_inner_internal": {
+      "a": "1/4",
+      "b": "1/4",
+      "d": "3/4",
+      "e": "3/4",
+      "pL": "0",
+      "pR": "0",
+      "qL": "1/2",
+      "qR": "1/2"
+    },
+    "inner_critical_quartet": {
+      "a": "1/4",
+      "b": "1/4",
+      "d": "3/4",
+      "e": "3/4"
+    },
+    "inner_four_angle_values": 4,
+    "input_cyclic_order": [
+      [
+        "pL",
+        "114/511"
+      ],
+      [
+        "a",
+        "116791/523264"
+      ],
+      [
+        "b",
+        "144841/523264"
+      ],
+      [
+        "qL",
+        "283/1022"
+      ],
+      [
+        "qR",
+        "739/1022"
+      ],
+      [
+        "d",
+        "378423/523264"
+      ],
+      [
+        "e",
+        "406473/523264"
+      ],
+      [
+        "pR",
+        "397/511"
+      ]
+    ],
+    "monotone_strict_outer": true,
+    "monotone_weak_inner": true,
+    "no_global_cross_scale_naturality_claim": true,
+    "one_step_outer_semiconjugacy_9_to_3": true,
+    "outer_critical_quartet": {
+      "a": "81/112",
+      "b": "87/112",
+      "d": "25/112",
+      "e": "31/112"
+    },
+    "outer_eight_distinct_angles": 8,
+    "single_stage_ray_fiber_sizes": {
+      "K3": 32,
+      "K9": 8
+    }
+  },
+  "classical_inputs": [
+    "Milnor primitive orbit-portrait valence <=2",
+    "positive-Green B\u00f6ttcher inverse lifting",
+    "actual proper degree-2 period-3 and period-9 restrictions",
+    "Levin monotone degree-one semiconjugacies",
+    "already certified period-3 internal 5/7 and 2/7 values"
+  ],
+  "first_critical_arrival": {
+    "all_10_earlier_critical_arrivals_avoided": true,
+    "analytic_local_branch_derivative": "-kappa, 0.276<kappa<0.277",
+    "computed_minimum_gap_approx": 0.000521604750643,
+    "smallest_critical_arrival_gap_gt": "1/2048",
+    "tightest_earlier_time": 1
+  },
+  "precritical_fiber": {
+    "ambient_degree_10": 1024,
+    "at_tip_distinct_point_counts": {
+      "K3": 15,
+      "K9": 3,
+      "whole_fiber": 1023
+    },
+    "complete_nine_cycle_pairs": [
+      [
+        "228/511",
+        "283/511"
+      ],
+      [
+        "55/511",
+        "456/511"
+      ],
+      [
+        "110/511",
+        "401/511"
+      ],
+      [
+        "220/511",
+        "291/511"
+      ],
+      [
+        "71/511",
+        "440/511"
+      ],
+      [
+        "142/511",
+        "369/511"
+      ],
+      [
+        "227/511",
+        "284/511"
+      ],
+      [
+        "57/511",
+        "454/511"
+      ],
+      [
+        "114/511",
+        "397/511"
+      ]
+    ],
+    "full_inverse_angle_count": 2048,
+    "near_tip_angle_incidence_counts": {
+      "K3": 32,
+      "K9": 8,
+      "whole_fiber": 2048
+    },
+    "near_tip_distinct_point_counts": {
+      "K3": 16,
+      "K9": 4,
+      "whole_fiber": 1024
+    },
+    "nine_cycle_total_distinct_ray_angles": 18,
+    "periodic_p_rays": [
+      "114/511",
+      "397/511"
+    ],
+    "preperiodic_minus_p_rays": [
+      "283/1022",
+      "739/1022"
+    ],
+    "ramified_s_rays": [
+      "116791/523264",
+      "144841/523264",
+      "378423/523264",
+      "406473/523264"
+    ],
+    "repelling_orbit_periods": 9,
+    "stage_fiber_degree_counts": {
+      "K3": 16,
+      "K9": 4,
+      "whole_fiber": 1024
+    },
+    "stage_nine_complete_angles": [
+      "114/511",
+      "116791/523264",
+      "144841/523264",
+      "283/1022",
+      "378423/523264",
+      "397/511",
+      "406473/523264",
+      "739/1022"
+    ],
+    "stage_nine_rays_per_f10_periodic_target": {
+      "228/511": 4,
+      "283/511": 4
+    },
+    "stage_three_extra_preimages": 12,
+    "tip_angle_incidence_counts": {
+      "K3": 32,
+      "K9": 8,
+      "whole_fiber": 2048
+    },
+    "two_repelling_fixed_angles": [
+      "228/511",
+      "283/511"
+    ]
+  },
+  "schema_version": 1,
+  "scope": "FULL 10-step ray census at the actual tip plus exact two-scale selected Levin angle ladder; not full KL sheet functor",
+  "status": "integer/rational identities exact; analytic continuations and connected little-set at tip source-imported; H1-H4 UPTCR MLC open"
+}
