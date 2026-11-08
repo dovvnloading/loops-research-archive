@@ -1,0 +1,35 @@
+name: Holomorphic near-saturation Wave packet regression
+
+on:
+  push:
+    branches:
+      - main
+      - 'research/**'
+    paths:
+      - '.github/workflows/near-saturation-wave.yml'
+      - 'research/independent_audits/kkl_near_saturation_holomorphic_wave_20261107.md'
+      - 'research/independent_audits/verify_near_saturation_wave.py'
+      - 'results/near_saturation_wave_20261107.json'
+  pull_request:
+    paths:
+      - '.github/workflows/near-saturation-wave.yml'
+      - 'research/independent_audits/kkl_near_saturation_holomorphic_wave_20261107.md'
+      - 'research/independent_audits/verify_near_saturation_wave.py'
+      - 'results/near_saturation_wave_20261107.json'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  exact-holomorphic-and-modulus-regression:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Check exact physical slit covering, marked Wave modulus and manifest
+        run: |
+          python -m py_compile research/independent_audits/verify_near_saturation_wave.py
+          python research/independent_audits/verify_near_saturation_wave.py --check-manifest

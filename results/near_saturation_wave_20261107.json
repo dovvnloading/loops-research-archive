@@ -1,0 +1,210 @@
+{
+  "dual_exponential": {
+    "exact_wave_width": "C/(pi*h)",
+    "samples": [
+      {
+        "C": 0.4,
+        "d": 0.05047412949866,
+        "epsilon": 0.02523438588053,
+        "formula_C_div_pi_h": 0.509295817894,
+        "h": 0.25,
+        "one_packet_width": 0.509295817894
+      },
+      {
+        "C": 0.4,
+        "d": 0.0050952754973,
+        "epsilon": 0.00254763499276,
+        "formula_C_div_pi_h": 1.018591635788,
+        "h": 0.125,
+        "one_packet_width": 1.018591635788
+      },
+      {
+        "C": 0.4,
+        "d": 0.00010384732957,
+        "epsilon": 5.192366476e-05,
+        "formula_C_div_pi_h": 2.037183271576,
+        "h": 0.0625,
+        "one_packet_width": 2.037183271576
+      }
+    ],
+    "scale": "d(h)=h*exp(-C/h), epsilon(h)=sin(d(h)/2)",
+    "status": "actual quadratic family, not prime primitive KKL"
+  },
+  "exact_holomorphic_carrier": {
+    "at_zero": "ell=pi; closed source attachment covers entire target circle",
+    "deck_gap": "d=2*arcsin(epsilon)",
+    "exact_joukowski_checks": 25,
+    "parameter_interval": "c=-1-epsilon, 0<=epsilon<=1/4",
+    "samples": [
+      {
+        "attachment_span": 2.63623214330564,
+        "epsilon": "1/4",
+        "old_tip_b": "5/16",
+        "source_attached_arc_proper": true,
+        "two_gap_span": 0.50536051028416
+      },
+      {
+        "attachment_span": 3.01651112999681,
+        "epsilon": "1/16",
+        "old_tip_b": "17/256",
+        "source_attached_arc_proper": true,
+        "two_gap_span": 0.12508152359298
+      },
+      {
+        "attachment_span": 3.12159232024146,
+        "epsilon": "1/100",
+        "old_tip_b": "101/10000",
+        "source_attached_arc_proper": true,
+        "two_gap_span": 0.02000033334833
+      },
+      {
+        "attachment_span": 3.14139265358946,
+        "epsilon": "1/10000",
+        "old_tip_b": "10001/100000000",
+        "source_attached_arc_proper": true,
+        "two_gap_span": 0.00020000000033
+      }
+    ],
+    "source_block": "|phi| <= arccos(epsilon)",
+    "source_block_span": "ell=2*arccos(epsilon)",
+    "source_preimage": "T=[c,c^2+c]; Tprime=[c,-c]"
+  },
+  "full_condenser": {
+    "fixed_height": 0.25,
+    "full_condenser_limit": "lim_{epsilon->0} W_h/log(1/epsilon)=2/pi",
+    "samples": [
+      {
+        "asymptotic_leading_coefficient": "2/pi",
+        "certified_Fourier_tail": 1.13153e-06,
+        "epsilon": 0.025,
+        "full_width_lower_two_disjoint_packets": 1.02453366769,
+        "full_width_upper_harmonic_trial": 2.13411973309,
+        "gap_d": 0.0500052097987
+      },
+      {
+        "asymptotic_leading_coefficient": "2/pi",
+        "certified_Fourier_tail": 7.07332e-06,
+        "epsilon": 0.01,
+        "full_width_lower_two_disjoint_packets": 1.60791818388,
+        "full_width_upper_harmonic_trial": 2.7167774412,
+        "gap_d": 0.0200003333483
+      },
+      {
+        "asymptotic_leading_coefficient": "2/pi",
+        "certified_Fourier_tail": 2.829398e-05,
+        "epsilon": 0.005,
+        "full_width_lower_two_disjoint_packets": 2.0491973423,
+        "full_width_upper_harmonic_trial": 3.15796788657,
+        "gap_d": 0.0100000416671
+      },
+      {
+        "asymptotic_leading_coefficient": "2/pi",
+        "certified_Fourier_tail": 0.00017683859,
+        "epsilon": 0.002,
+        "full_width_lower_two_disjoint_packets": 2.63252836764,
+        "full_width_upper_harmonic_trial": 3.74138054203,
+        "gap_d": 0.0040000026667
+      }
+    ],
+    "trial_fourier_formula": "(4/pi)sum_{odd n}tanh(n*h)*sinc(n*d/2)^2/n"
+  },
+  "independent_metric": {
+    "extremal_density": "rho=1/(pi*r) on one half-annular sector",
+    "method": "Cauchy Schwarz radial slicings and an explicit sharp metric",
+    "test_cases": [
+      {
+        "angular_deformation": 0,
+        "energy": 3.735706792819,
+        "width_lower": 3.735706792819
+      },
+      {
+        "angular_deformation": 0.125,
+        "energy": 3.764892002137,
+        "width_lower": 3.735706792819
+      },
+      {
+        "angular_deformation": 0.5,
+        "energy": 4.202670141921,
+        "width_lower": 3.735706792819
+      },
+      {
+        "angular_deformation": 0.875,
+        "energy": 5.165782049444,
+        "width_lower": 3.735706792819
+      }
+    ]
+  },
+  "marked_wave": {
+    "KKL_canonical_maximality": "W_can(alpha)>=max(0, log(h/d)/pi-2)",
+    "exact_valid_lamination_modulus": "log(h/d)/pi",
+    "height": 0.25,
+    "minimal_support_length": 4,
+    "packet_radius_max": "R=h/2",
+    "packet_radius_min": "r0=arcsin(epsilon)=d/2",
+    "samples": [
+      {
+        "canonical_nonzero": false,
+        "canonical_one_arc_lower": 0,
+        "epsilon": 0.02,
+        "gap_d": 0.040002667146781,
+        "h": 0.25,
+        "one_packet_width": 0.583307573376,
+        "two_packet_valid_width": 1.166615146752
+      },
+      {
+        "canonical_nonzero": false,
+        "canonical_one_arc_lower": 0,
+        "epsilon": 0.001,
+        "gap_d": 0.002000000333333,
+        "h": 0.25,
+        "one_packet_width": 1.536899943129,
+        "two_packet_valid_width": 3.073799886257
+      },
+      {
+        "canonical_nonzero": true,
+        "canonical_one_arc_lower": 0.049199992785,
+        "epsilon": 0.0002,
+        "gap_d": 0.000400000002667,
+        "h": 0.25,
+        "one_packet_width": 2.049199992785,
+        "two_packet_valid_width": 4.09839998557
+      },
+      {
+        "canonical_nonzero": true,
+        "canonical_one_arc_lower": 1.735706792819,
+        "epsilon": 1e-06,
+        "gap_d": 2e-06,
+        "h": 0.25,
+        "one_packet_width": 3.735706792819,
+        "two_packet_valid_width": 7.471413585637
+      },
+      {
+        "canonical_nonzero": true,
+        "canonical_one_arc_lower": 4.667449188336,
+        "epsilon": 1e-10,
+        "gap_d": 2e-10,
+        "h": 0.25,
+        "one_packet_width": 6.667449188336,
+        "two_packet_valid_width": 13.334898376673
+      },
+      {
+        "canonical_nonzero": true,
+        "canonical_one_arc_lower": 8.332127182733,
+        "epsilon": 1e-15,
+        "gap_d": 2e-15,
+        "h": 0.25,
+        "one_packet_width": 10.332127182733,
+        "two_packet_valid_width": 20.664254365467
+      }
+    ],
+    "source_admissible_marking": "I0, two gap atoms I1,I2, I3, two opposite gap atoms I4,I5, outer circle"
+  },
+  "negative_controls": [
+    "with only two inner marking atoms the KKL path is inadmissible",
+    "epsilon=0 immediately covers target circle",
+    "the fixed-epsilon Misiurewicz parameter is NOT this varying family",
+    "full condenser width is NOT automatically the width of an arbitrary KKL wave"
+  ],
+  "schema_version": 1,
+  "scope": "genuine holomorphic c=-1-epsilon slit carriers and source-marked annular Wave packets; not native prime-primitive MLC"
+}
