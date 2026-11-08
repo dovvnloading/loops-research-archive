@@ -1,0 +1,35 @@
+name: Marking resolution and immersion escape regression
+
+on:
+  push:
+    branches:
+      - main
+      - 'research/**'
+    paths:
+      - '.github/workflows/marking-immersion-escape.yml'
+      - 'research/independent_audits/kkl_marking_resolution_and_immersion_escape_20261107.md'
+      - 'research/independent_audits/verify_marking_resolution_immersion_escape.py'
+      - 'results/marking_resolution_immersion_escape_20261107.json'
+  pull_request:
+    paths:
+      - '.github/workflows/marking-immersion-escape.yml'
+      - 'research/independent_audits/kkl_marking_resolution_and_immersion_escape_20261107.md'
+      - 'research/independent_audits/verify_marking_resolution_immersion_escape.py'
+      - 'results/marking_resolution_immersion_escape_20261107.json'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  exact-source-control:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Verify rational physical escape and exact cut-scale regression
+        run: |
+          python -m py_compile research/independent_audits/verify_marking_resolution_immersion_escape.py
+          python research/independent_audits/verify_marking_resolution_immersion_escape.py --check-manifest
