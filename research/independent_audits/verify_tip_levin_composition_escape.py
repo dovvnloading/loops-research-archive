@@ -70,9 +70,15 @@ def compute() -> dict:
         assert q[COARSE_112[i]]==FINE_4[i]
         assert q[(8*COARSE_112[i])%112]==(2*q[COARSE_112[i]])%4
     assert sorted(FINE_4.count(k) for k in range(4)) == [2,2,2,2]
+    assert len(coarse_groups)+len(set(FINE_4))==16
+    assert all(len(g['ambient_523264_numerators'])==2 for g in coarse_groups)
 
     return {
       'schema_version':1,
+      'stratified_target_objects':16,
+      'fine_boundary_prime_end_objects':4,
+      'coarse_only_interior_point_objects':12,
+      'each_stratified_target_fiber_size':2,
       'full_candidate_count':2048,
       'first_original_alpha_sector_count':80,
       'second_original_alpha_sector_count':32,
