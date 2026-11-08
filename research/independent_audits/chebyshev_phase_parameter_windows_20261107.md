@@ -56,7 +56,7 @@ parametrizes an entire nontrivial interval of **real physical exit phases** afte
 
 **Proof.** For `c∈[-2,-9/5]`, the interval `[1,β(c)]` is invariant under the increasing inverse branch `g_c`. Moreover `g_c(y)>y` for `1≤y<β(c)` because `y²-y+c<0` between the two real fixed points. The inverse iterates satisfy `t<g_c(t)<⋯<g_c^n(t)<β(c)`.
 
-Let `F_n(c,t)=c²+c-g_c^n(t)`. At `c=-2`, `x_2=2=β(-2)>g_{-2}^n(t)`, so `F_n(-2,t)>0`. At `c=-9/5`, `x_2=36/25-9/5=36/25` and `g_c^n(t)≥g_c(1)=sqrt(14/5)>36/25`, hence `F_n(-9/5,t)<0`.
+Let `F_n(c,t)=c²+c-g_c^n(t)`. At `c=-2`, `x_2=2=β(-2)>g_{-2}^n(t)`, so `F_n(-2,t)>0`. At `c=-9/5`, `x_2=81/25-9/5=36/25` and `g_c^n(t)≥g_c(1)=sqrt(14/5)>36/25`, hence `F_n(-9/5,t)<0`.
 
 To prove **uniqueness**, write `v_j=∂_c g_c^j(t)`. Then
 
