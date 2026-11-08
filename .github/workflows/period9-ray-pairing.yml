@@ -1,0 +1,37 @@
+name: Period-nine tip real ray-pairing bifurcation
+
+on:
+  push:
+    branches:
+      - main
+      - 'research/**'
+    paths:
+      - '.github/workflows/period9-ray-pairing.yml'
+      - 'research/independent_audits/period9_tip_real_ray_pairing_bifurcation_20261107.md'
+      - 'research/independent_audits/verify_period9_ray_pairing_bifurcation.py'
+      - 'research/independent_audits/verify_tip_ramified_precritical_pair.py'
+      - 'results/period9_ray_pairing_bifurcation_20261107.json'
+  pull_request:
+    paths:
+      - '.github/workflows/period9-ray-pairing.yml'
+      - 'research/independent_audits/period9_tip_real_ray_pairing_bifurcation_20261107.md'
+      - 'research/independent_audits/verify_period9_ray_pairing_bifurcation.py'
+      - 'research/independent_audits/verify_tip_ramified_precritical_pair.py'
+      - 'results/period9_ray_pairing_bifurcation_20261107.json'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  exact-source-ray-pairing:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Verify exact ray portrait and fold coefficient
+        run: |
+          python -m py_compile research/independent_audits/verify_period9_ray_pairing_bifurcation.py
+          python research/independent_audits/verify_period9_ray_pairing_bifurcation.py --check-manifest
