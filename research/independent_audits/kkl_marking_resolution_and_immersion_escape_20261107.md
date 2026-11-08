@@ -1,6 +1,6 @@
 # Issue #40 — exact marked-cut resolution and total improper-end escape for a holomorphic Wave
 
-**Date:** 2026-11-07. **Status:** two independently proved theorems on an *actual* quadratic-like immersion/covering: an exact quantitative formula for which near-saturation leaves remain admissible under an arbitrary finite original marking; and an explicit full-width **failure of direct proper-path transport** through the immersion. This is an adversarial, source-typed bridge audit for [PR #50](https://github.com/dovvnloading/loops-research-archive/pull/50), not a prime-primitive KKL counterexample, a canonical Wave amplification theorem, or MLC.
+**Date:** 2026-11-07. **Status:** two independently proved theorems on an *actual* quadratic-like immersion/covering: an exact quantitative formula for which near-saturation leaves remain admissible under a finite original marking, including the essential one-/two-atom exception; and an explicit full-width **failure of direct proper-path transport** through the immersion. This is an adversarial, source-typed bridge audit for [PR #50](https://github.com/dovvnloading/loops-research-archive/pull/50), not a prime-primitive KKL counterexample, a canonical Wave amplification theorem, or MLC.
 
 **Source rules:** Kahn–Kapiamba–Lyubich (KKL), [arXiv:2606.27272v1](https://arxiv.org/html/2606.27272v1), Appendix **A.1** (a marked path is excluded if it is subordinate to a multi-interval of length at most two; original cuts are part of the data), **A.2.2–A.2.3** (valid lamination and the canonical +2 bound), **A.3.2** (the immersion `iota^*` is a *restriction* of TARGET proper paths, not a general pushforward of SOURCE paths), and §6.2 (breakable/unbreakable Wave splitting). In §6, the *native* marking is given by **sides of small-Julia vertices on the Hubbard tree**. A convenient refinement is not automatically that marking. PR #50 supplied the exact Joukowski source family and the unmarked semicircle modulus.
 
@@ -64,33 +64,38 @@ Let `I` be **any finite ideal marking** of the source inner circle, with marked 
 
 All assertions can ignore the **finitely many** radii for which a leaf endpoint lands exactly on a marked cut; deleting finitely many radii does not change extremal width.
 
-**Theorem A (exact cut-scale sieve).** A leaf `gamma_r` of (3) is an admissible path in KKL Appendix A.1 for the marking `I` **if and only if**
+**Theorem A (exact cut-scale sieve, with the global two-atom exception).** Write `N` for the number of marked open atoms on the inner boundary circle. If `N>=3`, a leaf `gamma_r` of (3) is an admissible path in KKL Appendix A.1 for the marking `I` **if and only if**
 
 \[
-\boxed{r>s_2(I).}\tag{6}
+\boxed{r>s_2(I)\quad (N\ge3).}\tag{6}
 \]
+
+If `N<=2`, **no such leaf is admissible**, regardless of the locations of its cuts: the *entire* inner circle is already a marked multi-interval of length at most two, to which these boundary-parallel paths are subordinate.
 
 Consequently the sublamination `S_+(I)` of admissible leaves has **exact** conformal width
 
 \[
 \boxed{
-\mathcal W(S_+(I))=\frac1\pi
-\left[\log\frac{R}{\max(r_0,s_2(I))}\right]_+,
+\mathcal W(S_+(I))=
+\begin{cases}0,&N\le2,\\
+\displaystyle\frac1\pi\left[\log\frac{R}{\max(r_0,s_2(I))}\right]_+,&N\ge3.\end{cases}
 }\tag{7}
 \]
 
 where `[x]_+=max(0,x)`. The original, unfiltered family has width `(1/pi)log(R/r0)`. Formula (7) holds regardless of whether the admissible leaves use one or several marked homotopy classes; it is a width statement for their explicitly defined **source sublamination**, not an assumed original-KKL canonical WAD coefficient.
 
-*Proof.* A lifted leaf `gamma_r` is boundary-parallel in the annulus to the **unique** short angular support `[theta0-r,theta0+r]`; the opposite boundary arc represents the other winding class, not the same proper-path homotopy rel endpoints. For generic `r`, the smallest open marked multi-interval containing this short support consists of exactly `1+#\{e\in C(I):|e-theta0|<r\}` consecutive original marking atoms. By Appendix A.1, the path is excluded precisely when that count is at most two. This proves (6). The admissible radii form `(max(r0,s2),R)`, up to finitely many points. On the corresponding Euclidean half-annulus, admissibility of a conformal metric for the semicircles forces `\int_0^pi rho(r,s)r ds>=1`; by Cauchy–Schwarz the energy is at least `(1/pi)\int dr/r`. The metric `rho=1/(pi r)` on the admitted half-annulus and zero elsewhere attains equality, proving (7). Deleting finitely many radial leaves changes neither bound. `□`
+*Proof.* A lifted leaf `gamma_r` is boundary-parallel in the annulus to the **unique** short angular support `[theta0-r,theta0+r]`; the opposite boundary arc represents the other winding class, not the same proper-path homotopy rel endpoints. For generic `r`, the marked length of the smallest connected marked support of the short boundary-parallel arc is `min(N, 1+#\{e\in C(I):|e-theta0|<r\})`: the cap at `N` matters when the short support crosses **every** marked cut and comes back to the initial atom. When `N>=3`, this length exceeds two exactly if at least two cuts lie in the open angular support, establishing (6). When `N<=2`, the entire circle of length at most two supports every such leaf, so none is admissible. For `N>=3`, the admissible radii form `(max(r0,s2),R)`, up to finitely many points; for `N<=2`, this family is empty. On the corresponding Euclidean half-annulus, admissibility of a conformal metric for the semicircles forces `\int_0^pi rho(r,s)r ds>=1`; by Cauchy–Schwarz the energy is at least `(1/pi)\int dr/r`. The metric `rho=1/(pi r)` on the admitted half-annulus and zero elsewhere attains equality, proving (7). Deleting finitely many radial leaves changes neither bound. `□`
 
 **Sharp examples and marking-minimality.**
+
+- **Adversarial two-cut marking with both cuts inside the short gap:** choose just the two gate cuts `theta0-r0,theta0+r0`, and take `r0<r<R`. The old unqualified second-nearest-cut rule would falsely call every leaf admissible. In fact there are only `N=2` marked atoms; the full inner circle is a multi-interval of length two, so **every leaf is inadmissible**. This is the precise reason for the `N>=3` hypothesis in (6) and (7).
 
 - **Six-cut marking of PR #50:** cuts at both attachment gates and at the two gap centers; each gap has `s2=r0`, so **all** near-saturation leaves are admissible.
 - **Four-cut gate marking:** use only the four *real, physical* prime-end accesses of `+b` and `-b` (the two endpoints of each attached/deck-opposite block). There are exactly two marked cuts at distance `r0` from each gap center. Both packets are still fully admissible; the extra critical-point cuts of PR #50 are **unnecessary** for this particular statement. Each short-gap leaf has minimal marked support length **three**, not four.
 - **Coarse two-atom marking:** cut at the two gap centers `pi/2,3pi/2`. Each packet has only one cut in its `R`-neighborhood, so `s2=R` and **no leaf** is admissible despite unchanged positive geometric width.
 - For **both** disjoint packets to admit even a nonempty open range of radii, each of the disjoint angular neighborhoods of its gap center must contain at least **two** original cuts. Thus at least **four** distinct inner cuts are necessary, and the gate marking attains the minimum. This counts **source marking** cuts, not original KKL vertices.
 
-There is also an exact **fractional-loss law**. Suppose `R` is fixed, `r0->0`, and a moving marking has two local cuts at distances `s2=r0^beta` for some `0<beta<1`. Then
+There is also an exact **fractional-loss law**. Suppose `R` is fixed, `r0->0`, and a moving marking has at least three inner atoms and two local cuts at distances `s2=r0^beta` for some `0<beta<1`. Then
 
 \[
  \boxed{\lim_{r_0\to0}\frac{\mathcal W(S_+(I))}{\mathcal W(S_+)}=\beta.}\tag{8}
@@ -122,4 +127,4 @@ For the explicit holomorphic test family, the old idea “wide source deck-odd f
 
 This suggests a falsifiable next native theorem: under a true prime-primitive KKL critical attachment, either its original vertex-side marking has the two required cut accesses on a proof-used gap *and* its proper-path restriction contributes a quantitatively charged surviving/escaped WAD packet; **or** one must switch to source-defined saturation or an independently justified vertical-width/Shift-Lemma alternative. Neither that dichotomy nor the WAD comparison is yet proved.
 
-The exact physical parameter family here is attracting of period two, with an **invariant selected slit**, not the complete KKL prime-primitive Hubbard tree. The immersion result is source-authentic for these real holomorphic sets, but it is **not** a counterexample to the intended KKL Wave Lemma or MLC. All ledger statuses remain OPEN, including Issue #40, native interval-growth nonreturn, Wave amplification, H1–H4, and MLC. Independent specialist review and novelty assessment remain necessary. OpenAI GPT-6 assisted this proof, counterexample design, and exact verification.
+The two-cut exception is a mathematical scope correction found during PR #51 review; it changes neither the four-/six-cut witnesses nor the direct-immersion escape theorem. The exact physical parameter family here is attracting of period two, with an **invariant selected slit**, not the complete KKL prime-primitive Hubbard tree. The immersion result is source-authentic for these real holomorphic sets, but it is **not** a counterexample to the intended KKL Wave Lemma or MLC. All ledger statuses remain OPEN, including Issue #40, native interval-growth nonreturn, Wave amplification, H1–H4, and MLC. Independent specialist review and novelty assessment remain necessary. OpenAI GPT-6 assisted this proof, counterexample design, and exact verification.
