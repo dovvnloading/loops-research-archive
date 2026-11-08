@@ -1,0 +1,91 @@
+{
+  "actual_polynomial": "f_c(z)=z^2+c, cstar solves P18(c)+P9(c)=0 in certified 2^-128 bracket",
+  "certified": {
+    "A8_midpoint": "93.439846624553450984",
+    "A8_strict_bounds": [
+      "9343/100",
+      "9345/100"
+    ],
+    "A9_midpoint": "-4.268083248084746372",
+    "A9_strict_bounds": [
+      "-427/100",
+      "-426/100"
+    ],
+    "Delta_prime_bounds": [
+      "-1181/1000",
+      "-1180/1000"
+    ],
+    "Delta_prime_midpoint": "-1.180517938622309910",
+    "Gprime_bounds": [
+      "-71",
+      "-70"
+    ],
+    "P9_bounds": [
+      "-23/1000",
+      "-22/1000"
+    ],
+    "P9_plus_pprime_interval_midpoint": "25.844719681112555",
+    "certified_sign": "Rprime=-kappa<0; for real c>tip two pure imaginary points; for c<tip two real points",
+    "independent_kappa_formulas": [
+      "Delta_prime/A9",
+      "-Gprime/((lambda-1)*A8)",
+      "(P9_prime+p_prime)/A8"
+    ],
+    "integer_interval_precision_bits": 256,
+    "kappa_midpoint": "0.276592060183468506",
+    "kappa_strict_bounds": [
+      "276/1000",
+      "277/1000"
+    ],
+    "lambda_midpoint": "3.732982339860120342",
+    "lambda_strict_bounds": [
+      "3",
+      "4"
+    ],
+    "sqrt_kappa_strict_bounds": [
+      "525/1000",
+      "527/1000"
+    ],
+    "three_kappa_intervals_overlap": true,
+    "tip_bracket": {
+      "denominator_bits": 128,
+      "numerators": [
+        "-607918036626757496169199575185708826140",
+        "-607918036626757496169199575185708826139"
+      ]
+    }
+  },
+  "diagnostic": {
+    "decimal_cross_checks": [
+      {
+        "F9_image_minus_p": "0E-50",
+        "delta": "0.0000000001",
+        "imaginary_root_abs": "0.0000052592019857496195",
+        "negative_R_div_delta": "0.2765920552691274145"
+      },
+      {
+        "F9_image_minus_p": "-0E-50",
+        "delta": "0.0000000000001",
+        "imaginary_root_abs": "1.663105709744736E-7",
+        "negative_R_div_delta": "0.2765920601785541652"
+      },
+      {
+        "F9_image_minus_p": "-0E-50",
+        "delta": "0.0000000000000001",
+        "imaginary_root_abs": "5.2592020324709E-9",
+        "negative_R_div_delta": "0.2765920601834635916"
+      }
+    ],
+    "scope": "diagnostic only; exact interval inequalities prove sign"
+  },
+  "monodromy": "once-around cstar exchanges two local precritical branches; unordered pair is holomorphic",
+  "no_ray_identification_claim": "no assignment of individual external ray angles to branches is established",
+  "phase_clock": "for c_n(t)>cstar with c_n-cstar~B(t)*lambda^-n, pair distance ~2sqrt(kappa B(t))*lambda^(-n/2)",
+  "precritical_equation": "f_c^10(s)=Z(c) iff s^2=R(c)=W(c)-c near (cstar,0)",
+  "schema_version": 1,
+  "source_return_9_orbit": "F9(s_pm)=-p(c), F9(-p)=p, F9(p)=p",
+  "spatial_splitting": "s_plus-minus_s_minus = 2i sqrt(kappa)*sqrt(c-cstar)*(1+O(c-cstar)) on real c>cstar",
+  "status": "exact integer interval branch coefficient plus written analytic topological theorem; global gates OPEN",
+  "tip_branch_point_order": 2,
+  "two_scale_domain_statement": "both branches remain in actual polynomial-like filled K9(c) subset K3(c), no connectedness of Kp(c) assumed"
+}
