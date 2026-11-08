@@ -111,10 +111,13 @@ def universal_cover_test() -> dict:
 def ray_type_test() -> dict:
     d = json.loads(SOURCE.read_text(encoding="utf-8"))
     atlas = json.loads(ATLAS.read_text(encoding="utf-8"))
-    g = d["geometric_32_8_24"]
+    # Actual merged #58 manifest is a compact *flat* JSON object.
+    # The local development report used an expanded nested variant.
+    g = d.get("geometric_32_8_24", d)
     coarse = sorted(g["coarse32_numerators"])
     fine = sorted(g["fine8_numerators"])
-    escaped = sorted(g["excluded24_numerators"])
+    escaped = sorted(g["excluded24_numerators"] if "excluded24_numerators" in g
+                     else g["escaped24_numerators"])
     assert (len(coarse), len(fine), len(escaped)) == (32, 8, 24)
     assert len(set(coarse)) == 32 and set(coarse) == set(fine) | set(escaped)
     assert set(fine).isdisjoint(set(escaped))
