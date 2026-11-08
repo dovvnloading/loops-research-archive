@@ -1,0 +1,39 @@
+name: Complete 1023-class physical precritical ray lamination
+
+on:
+  push:
+    branches:
+      - main
+      - 'research/**'
+    paths:
+      - 'research/independent_audits/tip_full_precritical_global_ray_lamination_and_single_flip_20261107.md'
+      - 'research/independent_audits/verify_tip_full_precritical_ray_lamination.py'
+      - 'research/independent_audits/verify_tip_actual_coarse_only_ray_pairing.py'
+      - 'results/tip_full_precritical_ray_lamination_20261107.json'
+      - 'results/tip_actual_coarse_only_ray_pairing_20261107.json'
+      - '.github/workflows/tip-full-precritical-ray-lamination.yml'
+  pull_request:
+    paths:
+      - 'research/independent_audits/tip_full_precritical_global_ray_lamination_and_single_flip_20261107.md'
+      - 'research/independent_audits/verify_tip_full_precritical_ray_lamination.py'
+      - 'research/independent_audits/verify_tip_actual_coarse_only_ray_pairing.py'
+      - 'results/tip_full_precritical_ray_lamination_20261107.json'
+      - 'results/tip_actual_coarse_only_ray_pairing_20261107.json'
+      - '.github/workflows/tip-full-precritical-ray-lamination.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  complete-physical-ray-partition:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Recompute all 1023 actual rational landing classes and verify noncrossing
+        run: |
+          python -m py_compile research/independent_audits/verify_tip_full_precritical_ray_lamination.py
+          python research/independent_audits/verify_tip_full_precritical_ray_lamination.py --check-manifest
