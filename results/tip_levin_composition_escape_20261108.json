@@ -110,5 +110,9 @@
     7
   ],
   "source_limit": "Levin analytic composition/physical properness are written proofs, NOT formalized by this checker",
-  "global_circle_warning": "semiconjugacy Q o sigma8=sigma2 o Q holds only on eligible domain"
+  "global_circle_warning": "semiconjugacy Q o sigma8=sigma2 o Q holds only on eligible domain",
+  "stratified_target_objects": 16,
+  "fine_boundary_prime_end_objects": 4,
+  "coarse_only_interior_point_objects": 12,
+  "each_stratified_target_fiber_size": 2
 }
