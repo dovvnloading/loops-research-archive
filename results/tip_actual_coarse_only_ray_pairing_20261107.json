@@ -1,0 +1,746 @@
+{
+  "Levin_cyclic_ranking": {
+    "anchor_ambient": "114/511",
+    "anchor_internal_G": "5/7",
+    "coarse_internal_32": [
+      "3/112",
+      "1/28",
+      "5/56",
+      "11/112",
+      "17/112",
+      "9/56",
+      "3/14",
+      "25/112",
+      "31/112",
+      "2/7",
+      "19/56",
+      "39/112",
+      "45/112",
+      "23/56",
+      "13/28",
+      "53/112",
+      "59/112",
+      "15/28",
+      "33/56",
+      "67/112",
+      "73/112",
+      "37/56",
+      "5/7",
+      "81/112",
+      "87/112",
+      "11/14",
+      "47/56",
+      "95/112",
+      "101/112",
+      "51/56",
+      "27/28",
+      "109/112"
+    ],
+    "independent_phase_shifted_airplane_substitution_all_32_matches": true,
+    "shift_for_32_sorted_lists": 16,
+    "sorted_ambient_internal_pairs": [
+      [
+        "112137/523264",
+        "59/112"
+      ],
+      [
+        "1753/8176",
+        "15/28"
+      ],
+      [
+        "14081/65408",
+        "33/56"
+      ],
+      [
+        "112703/523264",
+        "67/112"
+      ],
+      [
+        "116225/523264",
+        "73/112"
+      ],
+      [
+        "14535/65408",
+        "37/56"
+      ],
+      [
+        "114/511",
+        "5/7"
+      ],
+      [
+        "116791/523264",
+        "81/112"
+      ],
+      [
+        "144841/523264",
+        "87/112"
+      ],
+      [
+        "283/1022",
+        "11/14"
+      ],
+      [
+        "18169/65408",
+        "47/56"
+      ],
+      [
+        "145407/523264",
+        "95/112"
+      ],
+      [
+        "148929/523264",
+        "101/112"
+      ],
+      [
+        "18623/65408",
+        "51/56"
+      ],
+      [
+        "2335/8176",
+        "27/28"
+      ],
+      [
+        "149495/523264",
+        "109/112"
+      ],
+      [
+        "373769/523264",
+        "3/112"
+      ],
+      [
+        "5841/8176",
+        "1/28"
+      ],
+      [
+        "46785/65408",
+        "5/56"
+      ],
+      [
+        "374335/523264",
+        "11/112"
+      ],
+      [
+        "377857/523264",
+        "17/112"
+      ],
+      [
+        "47239/65408",
+        "9/56"
+      ],
+      [
+        "739/1022",
+        "3/14"
+      ],
+      [
+        "378423/523264",
+        "25/112"
+      ],
+      [
+        "406473/523264",
+        "31/112"
+      ],
+      [
+        "397/511",
+        "2/7"
+      ],
+      [
+        "50873/65408",
+        "19/56"
+      ],
+      [
+        "407039/523264",
+        "39/112"
+      ],
+      [
+        "410561/523264",
+        "45/112"
+      ],
+      [
+        "51327/65408",
+        "23/56"
+      ],
+      [
+        "6423/8176",
+        "13/28"
+      ],
+      [
+        "411127/523264",
+        "53/112"
+      ]
+    ],
+    "substitution": {
+      "0": "011",
+      "1": "100",
+      "discard_first_bits": 2,
+      "proof_use": "only an independent exact check, not a landing theorem"
+    }
+  },
+  "complete_15_landing_points": [
+    {
+      "G_first_child_Y6_face": false,
+      "G_original_depth3_alpha_face_signature": "11011101",
+      "G_top_critical_Y3_face": false,
+      "ambient_523264_numerators": [
+        116280,
+        406984
+      ],
+      "ambient_f_angle_pair_or_quartet": [
+        "14535/65408",
+        "50873/65408"
+      ],
+      "branch": "p",
+      "fine_K9_member": false,
+      "inner_G_angle_pair_or_quartet": [
+        "19/56",
+        "37/56"
+      ],
+      "inverse_path_index": 0,
+      "local_degree": 1
+    },
+    {
+      "G_first_child_Y6_face": false,
+      "G_original_depth3_alpha_face_signature": "00010001",
+      "G_top_critical_Y3_face": false,
+      "ambient_523264_numerators": [
+        145352,
+        377912
+      ],
+      "ambient_f_angle_pair_or_quartet": [
+        "18169/65408",
+        "47239/65408"
+      ],
+      "branch": "p",
+      "fine_K9_member": false,
+      "inner_G_angle_pair_or_quartet": [
+        "9/56",
+        "47/56"
+      ],
+      "inverse_path_index": 1,
+      "local_degree": 1
+    },
+    {
+      "G_first_child_Y6_face": false,
+      "G_original_depth3_alpha_face_signature": "11011101",
+      "G_top_critical_Y3_face": false,
+      "ambient_523264_numerators": [
+        112648,
+        410616
+      ],
+      "ambient_f_angle_pair_or_quartet": [
+        "14081/65408",
+        "51327/65408"
+      ],
+      "branch": "p",
+      "fine_K9_member": false,
+      "inner_G_angle_pair_or_quartet": [
+        "23/56",
+        "33/56"
+      ],
+      "inverse_path_index": 2,
+      "local_degree": 1
+    },
+    {
+      "G_first_child_Y6_face": false,
+      "G_original_depth3_alpha_face_signature": "00010001",
+      "G_top_critical_Y3_face": false,
+      "ambient_523264_numerators": [
+        148984,
+        374280
+      ],
+      "ambient_f_angle_pair_or_quartet": [
+        "18623/65408",
+        "46785/65408"
+      ],
+      "branch": "p",
+      "fine_K9_member": false,
+      "inner_G_angle_pair_or_quartet": [
+        "5/56",
+        "51/56"
+      ],
+      "inverse_path_index": 3,
+      "local_degree": 1
+    },
+    {
+      "G_first_child_Y6_face": true,
+      "G_original_depth3_alpha_face_signature": "01010101",
+      "G_top_critical_Y3_face": true,
+      "ambient_523264_numerators": [
+        116736,
+        406528
+      ],
+      "ambient_f_angle_pair_or_quartet": [
+        "114/511",
+        "397/511"
+      ],
+      "branch": "p",
+      "fine_K9_member": true,
+      "inner_G_angle_pair_or_quartet": [
+        "2/7",
+        "5/7"
+      ],
+      "inverse_path_index": 4,
+      "local_degree": 1
+    },
+    {
+      "G_first_child_Y6_face": true,
+      "G_original_depth3_alpha_face_signature": "01010101",
+      "G_top_critical_Y3_face": true,
+      "ambient_523264_numerators": [
+        144896,
+        378368
+      ],
+      "ambient_f_angle_pair_or_quartet": [
+        "283/1022",
+        "739/1022"
+      ],
+      "branch": "p",
+      "fine_K9_member": true,
+      "inner_G_angle_pair_or_quartet": [
+        "3/14",
+        "11/14"
+      ],
+      "inverse_path_index": 5,
+      "local_degree": 1
+    },
+    {
+      "G_first_child_Y6_face": false,
+      "G_original_depth3_alpha_face_signature": "11111111",
+      "G_top_critical_Y3_face": false,
+      "ambient_523264_numerators": [
+        112192,
+        411072
+      ],
+      "ambient_f_angle_pair_or_quartet": [
+        "1753/8176",
+        "6423/8176"
+      ],
+      "branch": "p",
+      "fine_K9_member": false,
+      "inner_G_angle_pair_or_quartet": [
+        "13/28",
+        "15/28"
+      ],
+      "inverse_path_index": 6,
+      "local_degree": 1
+    },
+    {
+      "G_first_child_Y6_face": false,
+      "G_original_depth3_alpha_face_signature": "00000000",
+      "G_top_critical_Y3_face": false,
+      "ambient_523264_numerators": [
+        149440,
+        373824
+      ],
+      "ambient_f_angle_pair_or_quartet": [
+        "2335/8176",
+        "5841/8176"
+      ],
+      "branch": "p",
+      "fine_K9_member": false,
+      "inner_G_angle_pair_or_quartet": [
+        "1/28",
+        "27/28"
+      ],
+      "inverse_path_index": 7,
+      "local_degree": 1
+    },
+    {
+      "G_first_child_Y6_face": false,
+      "G_original_depth3_alpha_face_signature": "11011101",
+      "G_top_critical_Y3_face": false,
+      "ambient_523264_numerators": [
+        116225,
+        407039
+      ],
+      "ambient_f_angle_pair_or_quartet": [
+        "116225/523264",
+        "407039/523264"
+      ],
+      "branch": "-p",
+      "fine_K9_member": false,
+      "inner_G_angle_pair_or_quartet": [
+        "39/112",
+        "73/112"
+      ],
+      "inverse_path_index": 0,
+      "local_degree": 1
+    },
+    {
+      "G_first_child_Y6_face": false,
+      "G_original_depth3_alpha_face_signature": "00010001",
+      "G_top_critical_Y3_face": false,
+      "ambient_523264_numerators": [
+        145407,
+        377857
+      ],
+      "ambient_f_angle_pair_or_quartet": [
+        "145407/523264",
+        "377857/523264"
+      ],
+      "branch": "-p",
+      "fine_K9_member": false,
+      "inner_G_angle_pair_or_quartet": [
+        "17/112",
+        "95/112"
+      ],
+      "inverse_path_index": 1,
+      "local_degree": 1
+    },
+    {
+      "G_first_child_Y6_face": false,
+      "G_original_depth3_alpha_face_signature": "11011101",
+      "G_top_critical_Y3_face": false,
+      "ambient_523264_numerators": [
+        112703,
+        410561
+      ],
+      "ambient_f_angle_pair_or_quartet": [
+        "112703/523264",
+        "410561/523264"
+      ],
+      "branch": "-p",
+      "fine_K9_member": false,
+      "inner_G_angle_pair_or_quartet": [
+        "45/112",
+        "67/112"
+      ],
+      "inverse_path_index": 2,
+      "local_degree": 1
+    },
+    {
+      "G_first_child_Y6_face": false,
+      "G_original_depth3_alpha_face_signature": "00010001",
+      "G_top_critical_Y3_face": false,
+      "ambient_523264_numerators": [
+        148929,
+        374335
+      ],
+      "ambient_f_angle_pair_or_quartet": [
+        "148929/523264",
+        "374335/523264"
+      ],
+      "branch": "-p",
+      "fine_K9_member": false,
+      "inner_G_angle_pair_or_quartet": [
+        "11/112",
+        "101/112"
+      ],
+      "inverse_path_index": 3,
+      "local_degree": 1
+    },
+    {
+      "G_first_child_Y6_face": true,
+      "G_original_depth3_alpha_face_signature": "01010101",
+      "G_top_critical_Y3_face": true,
+      "ambient_523264_numerators": [
+        116791,
+        144841,
+        378423,
+        406473
+      ],
+      "ambient_f_angle_pair_or_quartet": [
+        "116791/523264",
+        "144841/523264",
+        "378423/523264",
+        "406473/523264"
+      ],
+      "branch": "-p",
+      "fine_K9_member": true,
+      "inner_G_angle_pair_or_quartet": [
+        "25/112",
+        "31/112",
+        "81/112",
+        "87/112"
+      ],
+      "inverse_path_index": 4,
+      "local_degree": 2
+    },
+    {
+      "G_first_child_Y6_face": false,
+      "G_original_depth3_alpha_face_signature": "11111111",
+      "G_top_critical_Y3_face": false,
+      "ambient_523264_numerators": [
+        112137,
+        411127
+      ],
+      "ambient_f_angle_pair_or_quartet": [
+        "112137/523264",
+        "411127/523264"
+      ],
+      "branch": "-p",
+      "fine_K9_member": false,
+      "inner_G_angle_pair_or_quartet": [
+        "53/112",
+        "59/112"
+      ],
+      "inverse_path_index": 5,
+      "local_degree": 1
+    },
+    {
+      "G_first_child_Y6_face": false,
+      "G_original_depth3_alpha_face_signature": "00000000",
+      "G_top_critical_Y3_face": false,
+      "ambient_523264_numerators": [
+        149495,
+        373769
+      ],
+      "ambient_f_angle_pair_or_quartet": [
+        "149495/523264",
+        "373769/523264"
+      ],
+      "branch": "-p",
+      "fine_K9_member": false,
+      "inner_G_angle_pair_or_quartet": [
+        "3/112",
+        "109/112"
+      ],
+      "inverse_path_index": 6,
+      "local_degree": 1
+    }
+  ],
+  "exact_ambient_census": {
+    "actual_source_F_Y6_seams": [
+      [
+        "41/192",
+        "43/192"
+      ],
+      [
+        "53/192",
+        "55/192"
+      ],
+      [
+        "137/192",
+        "139/192"
+      ],
+      [
+        "149/192",
+        "151/192"
+      ]
+    ],
+    "all_depth10_inverse_angles": 2048,
+    "coarse_only_24_ambient_angles": [
+      "112137/523264",
+      "1753/8176",
+      "14081/65408",
+      "112703/523264",
+      "116225/523264",
+      "14535/65408",
+      "18169/65408",
+      "145407/523264",
+      "148929/523264",
+      "18623/65408",
+      "2335/8176",
+      "149495/523264",
+      "373769/523264",
+      "5841/8176",
+      "46785/65408",
+      "374335/523264",
+      "377857/523264",
+      "47239/65408",
+      "50873/65408",
+      "407039/523264",
+      "410561/523264",
+      "51327/65408",
+      "6423/8176",
+      "411127/523264"
+    ],
+    "complete_K3_ambient_523264_numerators": [
+      112137,
+      112192,
+      112648,
+      112703,
+      116225,
+      116280,
+      116736,
+      116791,
+      144841,
+      144896,
+      145352,
+      145407,
+      148929,
+      148984,
+      149440,
+      149495,
+      373769,
+      373824,
+      374280,
+      374335,
+      377857,
+      377912,
+      378368,
+      378423,
+      406473,
+      406528,
+      406984,
+      407039,
+      410561,
+      410616,
+      411072,
+      411127
+    ],
+    "complete_K3_ambient_angles": [
+      "112137/523264",
+      "1753/8176",
+      "14081/65408",
+      "112703/523264",
+      "116225/523264",
+      "14535/65408",
+      "114/511",
+      "116791/523264",
+      "144841/523264",
+      "283/1022",
+      "18169/65408",
+      "145407/523264",
+      "148929/523264",
+      "18623/65408",
+      "2335/8176",
+      "149495/523264",
+      "373769/523264",
+      "5841/8176",
+      "46785/65408",
+      "374335/523264",
+      "377857/523264",
+      "47239/65408",
+      "739/1022",
+      "378423/523264",
+      "406473/523264",
+      "397/511",
+      "50873/65408",
+      "407039/523264",
+      "410561/523264",
+      "51327/65408",
+      "6423/8176",
+      "411127/523264"
+    ],
+    "fine_K9_ambient_angles": [
+      "114/511",
+      "116791/523264",
+      "144841/523264",
+      "283/1022",
+      "739/1022",
+      "378423/523264",
+      "406473/523264",
+      "397/511"
+    ],
+    "inside_after_three_G_checkpoints": 32,
+    "inside_seams_after_two_G_checkpoints": 32,
+    "inside_source_F_Y6_critical_seams": 80
+  },
+  "not_proved": [
+    "analytic source alpha-puzzle theorems and Levin map are imported",
+    "no KL canonical localization O/xi/eta cross-scale sheet functor",
+    "H1-H4 UPTCR MLC unchanged"
+  ],
+  "schema_version": 1,
+  "scope": "ACTUAL 3/9 tip, full 24 coarse-only ambient ray labels and original G alpha-depth3 puzzle faces; not KL O/xi/eta sheet functor",
+  "source_G_alpha_depth3_faces": {
+    "alpha_depth3_chords": [
+      [
+        "1/3",
+        "2/3"
+      ],
+      [
+        "1/6",
+        "5/6"
+      ],
+      [
+        "5/12",
+        "7/12"
+      ],
+      [
+        "1/12",
+        "11/12"
+      ],
+      [
+        "7/24",
+        "17/24"
+      ],
+      [
+        "5/24",
+        "19/24"
+      ],
+      [
+        "11/24",
+        "13/24"
+      ],
+      [
+        "1/24",
+        "23/24"
+      ]
+    ],
+    "coarse_only_depth3_face_sizes": [
+      2,
+      2,
+      4,
+      4
+    ],
+    "coarse_only_in_G_critical_top_Y3": 0,
+    "coarse_only_in_G_first_child_Y6": 0,
+    "critical_face_signature": "01010101",
+    "fine_angles_in_G_first_child_Y6": 8,
+    "original_G_depth3_faces": [
+      {
+        "fine_K9": false,
+        "pair_ids": [
+          "p7",
+          "-p6"
+        ],
+        "physical_point_count": 2,
+        "ray_count": 4,
+        "signature": "00000000"
+      },
+      {
+        "fine_K9": false,
+        "pair_ids": [
+          "p1",
+          "p3",
+          "-p1",
+          "-p3"
+        ],
+        "physical_point_count": 4,
+        "ray_count": 8,
+        "signature": "00010001"
+      },
+      {
+        "fine_K9": true,
+        "pair_ids": [
+          "p4",
+          "p5",
+          "-p4"
+        ],
+        "physical_point_count": 3,
+        "ray_count": 8,
+        "signature": "01010101"
+      },
+      {
+        "fine_K9": false,
+        "pair_ids": [
+          "p0",
+          "p2",
+          "-p0",
+          "-p2"
+        ],
+        "physical_point_count": 4,
+        "ray_count": 8,
+        "signature": "11011101"
+      },
+      {
+        "fine_K9": false,
+        "pair_ids": [
+          "p6",
+          "-p5"
+        ],
+        "physical_point_count": 2,
+        "ray_count": 4,
+        "signature": "11111111"
+      }
+    ]
+  },
+  "source_inputs": [
+    "actual ambient f alpha-depth6 Y6 critical face sectors (November 6 atlas)",
+    "g3:f^3|Y6 central quadratic-like representative with filled K3",
+    "Levin real Misiurewicz p1/p2 and monotone angle semiconjugacy",
+    "G inner critical-value rays 25/56 and 31/56 from certified 8-ray ladder",
+    "analytic simple-branch ray inverse pairing, including critical fold"
+  ]
+}
