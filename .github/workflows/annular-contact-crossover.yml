@@ -1,0 +1,35 @@
+name: Annular contact resistance crossover
+
+on:
+  push:
+    branches:
+      - main
+      - 'research/**'
+    paths:
+      - '.github/workflows/annular-contact-crossover.yml'
+      - 'research/independent_audits/kkl_annular_contact_resistance_crossover_20261107.md'
+      - 'research/independent_audits/verify_annular_contact_crossover.py'
+      - 'results/annular_contact_crossover_20261107.json'
+  pull_request:
+    paths:
+      - '.github/workflows/annular-contact-crossover.yml'
+      - 'research/independent_audits/kkl_annular_contact_resistance_crossover_20261107.md'
+      - 'research/independent_audits/verify_annular_contact_crossover.py'
+      - 'results/annular_contact_crossover_20261107.json'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  crossover-exact-checks:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Check independent Fourier/modular identities and deterministic manifest
+        run: |
+          python -m py_compile research/independent_audits/verify_annular_contact_crossover.py
+          python research/independent_audits/verify_annular_contact_crossover.py --check-manifest
