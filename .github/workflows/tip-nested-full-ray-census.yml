@@ -1,0 +1,37 @@
+name: Actual nested 3-9 full precritical ray census
+
+on:
+  push:
+    branches:
+      - main
+      - 'research/**'
+    paths:
+      - '.github/workflows/tip-nested-full-ray-census.yml'
+      - 'research/independent_audits/tip_nested_full_precritical_ray_census_and_levin_ladder_20261107.md'
+      - 'research/independent_audits/verify_tip_nested_full_ray_census.py'
+      - 'research/independent_audits/verify_tip_ramified_precritical_pair.py'
+      - 'results/tip_nested_full_ray_census_20261107.json'
+  pull_request:
+    paths:
+      - '.github/workflows/tip-nested-full-ray-census.yml'
+      - 'research/independent_audits/tip_nested_full_precritical_ray_census_and_levin_ladder_20261107.md'
+      - 'research/independent_audits/verify_tip_nested_full_ray_census.py'
+      - 'research/independent_audits/verify_tip_ramified_precritical_pair.py'
+      - 'results/tip_nested_full_ray_census_20261107.json'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  ray-census-exact:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Check actual orbit separation and nested ray arithmetic
+        run: |
+          python -m py_compile research/independent_audits/verify_tip_nested_full_ray_census.py
+          python research/independent_audits/verify_tip_nested_full_ray_census.py --check-manifest
