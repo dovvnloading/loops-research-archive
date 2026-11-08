@@ -1,0 +1,35 @@
+name: Chebyshev critical-orbit phase / parameter calibration
+
+on:
+  push:
+    branches:
+      - main
+      - 'research/**'
+    paths:
+      - '.github/workflows/chebyshev-phase-parameter.yml'
+      - 'research/independent_audits/chebyshev_phase_parameter_windows_20261107.md'
+      - 'research/independent_audits/verify_chebyshev_phase_parameter.py'
+      - 'results/chebyshev_phase_parameter_20261107.json'
+  pull_request:
+    paths:
+      - '.github/workflows/chebyshev-phase-parameter.yml'
+      - 'research/independent_audits/chebyshev_phase_parameter_windows_20261107.md'
+      - 'research/independent_audits/verify_chebyshev_phase_parameter.py'
+      - 'results/chebyshev_phase_parameter_20261107.json'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  exact-phase-parameter-windows:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Exact dyadic inverse-branch and independent forward-orbit checks
+        run: |
+          python -m py_compile research/independent_audits/verify_chebyshev_phase_parameter.py
+          python research/independent_audits/verify_chebyshev_phase_parameter.py --check-manifest

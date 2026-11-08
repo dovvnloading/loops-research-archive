@@ -1,0 +1,39 @@
+{
+  "Gprime_certified_interval": [
+    "-71",
+    "-70"
+  ],
+  "actual_physical_clock": "10+9*n iterates",
+  "critical_preperiod": 10,
+  "critical_value_x9_sign": "negative",
+  "factorization": "P19-P10=(P18-P9)*(P18+P9)",
+  "independent_forward_derivative_identity_check": true,
+  "log_multiplier_parameter_derivative_approx": -496.856624051,
+  "log_multiplier_parameter_derivative_bound": [
+    "-500",
+    "-490"
+  ],
+  "native_two_scale_context": "same exact real tip has certified period-3/9 quadratic-like restrictions, but those markings are not transported here",
+  "parameter_bracket": {
+    "denominator_power_of_two": 128,
+    "lower_numerator": -607918036626757496169199575185708826140,
+    "upper_numerator": -607918036626757496169199575185708826139
+  },
+  "phase_transversality_approx": -1.180517938622,
+  "phase_transversality_delta_prime_interval": [
+    "-1181/1000",
+    "-1180/1000"
+  ],
+  "precision_bits": 256,
+  "provenance": "exact dyadic integer arithmetic only; general Koenigs phase theorem is written proof; MLC remains open",
+  "repelling_fixed_point_z0_approx": -1.785988939794,
+  "repelling_return_period": 9,
+  "return_multiplier_interval": [
+    "3",
+    "4"
+  ],
+  "second_order_n_term_coefficient": "-lambda9_prime/lambda9 * B(t)^2, with 490 < -lambda9_prime/lambda9 < 500",
+  "status": "EXACT_REPELLING_PERIOD9_TRANSVERSALITY",
+  "transversality_identity": "d/dc(P10-z(c_tip))=(P18-P9)*(P18_prime+P9_prime)/(lambda9-1)",
+  "x18_sign": "positive"
+}

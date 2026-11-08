@@ -1,0 +1,35 @@
+name: Period-nine Misiurewicz tip phase transversality
+
+on:
+  push:
+    branches:
+      - main
+      - 'research/**'
+    paths:
+      - '.github/workflows/period9-tip-phase.yml'
+      - 'research/independent_audits/period9_tip_phase_parameter_transversality_20261107.md'
+      - 'research/independent_audits/verify_period9_tip_phase_transversality.py'
+      - 'results/period9_tip_phase_transversality_20261107.json'
+  pull_request:
+    paths:
+      - '.github/workflows/period9-tip-phase.yml'
+      - 'research/independent_audits/period9_tip_phase_parameter_transversality_20261107.md'
+      - 'research/independent_audits/verify_period9_tip_phase_transversality.py'
+      - 'results/period9_tip_phase_transversality_20261107.json'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  exact-9cycle-transversality:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Independent exact dyadic critical-cycle derivative and phase checks
+        run: |
+          python -m py_compile research/independent_audits/verify_period9_tip_phase_transversality.py
+          python research/independent_audits/verify_period9_tip_phase_transversality.py --check-manifest

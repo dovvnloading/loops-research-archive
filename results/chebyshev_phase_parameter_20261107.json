@@ -1,0 +1,391 @@
+{
+  "asymptotic_theorem": "delta_n(t)=a(t)*4^-n+(a(t)^2/6)*n*16^-n+O(16^-n), a(t)=3/8*acos(t/2)^2; uniform C1 in t",
+  "chebyshev_inverse_identity_checked": 54,
+  "exact_integer_sqrt_interval_brackets": true,
+  "exits": [
+    {
+      "exact_root_brackets": [
+        {
+          "delta_dyadic_high_numerator": "11905811967270163588089589729159409150676007589031761435993259660103944069081",
+          "delta_dyadic_low_numerator": "11905811967270163588089589729159409150676007589031761435993259660103944068671",
+          "dyadic_denominator_bits": 256,
+          "interval_bisection_steps": 245,
+          "interval_width_in_units": 410,
+          "n": 1,
+          "scaled_4pow_n_delta": 0.411282395738423
+        },
+        {
+          "delta_dyadic_high_numerator": "2989323128053216425061547991965918885904075572038653026247839175007373447543",
+          "delta_dyadic_low_numerator": "2989323128053216425061547991965918885904075572038653026247839175007373447134",
+          "dyadic_denominator_bits": 256,
+          "interval_bisection_steps": 245,
+          "interval_width_in_units": 409,
+          "n": 2,
+          "scaled_4pow_n_delta": 0.413060774392156
+        },
+        {
+          "delta_dyadic_high_numerator": "745649380080990315046940662024985374961509974357449331686030522374841007274",
+          "delta_dyadic_low_numerator": "745649380080990315046940662024985374961509974357449331686030522374841006864",
+          "dyadic_denominator_bits": 256,
+          "interval_bisection_steps": 245,
+          "interval_width_in_units": 410,
+          "n": 3,
+          "scaled_4pow_n_delta": 0.412131438680391
+        },
+        {
+          "delta_dyadic_high_numerator": "186157366003997115560575617586996213209147068096151103339566571073865729192",
+          "delta_dyadic_low_numerator": "186157366003997115560575617586996213209147068096151103339566571073865728783",
+          "dyadic_denominator_bits": 256,
+          "interval_bisection_steps": 245,
+          "interval_width_in_units": 409,
+          "n": 4,
+          "scaled_4pow_n_delta": 0.411567715989229
+        },
+        {
+          "delta_dyadic_high_numerator": "11626366554419410215835471556212242921092018080288124916221522984592754245",
+          "delta_dyadic_low_numerator": "11626366554419410215835471556212242921092018080288124916221522984592753835",
+          "dyadic_denominator_bits": 256,
+          "interval_bisection_steps": 245,
+          "interval_width_in_units": 410,
+          "n": 6,
+          "scaled_4pow_n_delta": 0.411268142068853
+        },
+        {
+          "delta_dyadic_high_numerator": "726592074831483886926981432661991165120626175603013672388738160416273580",
+          "delta_dyadic_low_numerator": "726592074831483886926981432661991165120626175603013672388738160416273171",
+          "dyadic_denominator_bits": 256,
+          "interval_bisection_steps": 245,
+          "interval_width_in_units": 409,
+          "n": 8,
+          "scaled_4pow_n_delta": 0.411236540680798
+        },
+        {
+          "delta_dyadic_high_numerator": "2838229549549706124695121521603775097502117166580388586838939393526958",
+          "delta_dyadic_low_numerator": "2838229549549706124695121521603775097502117166580388586838939393526548",
+          "dyadic_denominator_bits": 256,
+          "interval_bisection_steps": 245,
+          "interval_width_in_units": 410,
+          "n": 12,
+          "scaled_4pow_n_delta": 0.411233535244241,
+          "second_coefficient_lower": 0.025909871148,
+          "second_coefficient_predicted": 0.028185500878,
+          "second_coefficient_upper": 0.025909871148
+        },
+        {
+          "delta_dyadic_high_numerator": "692927104905635805969072531115629599091301452621643010046064635058",
+          "delta_dyadic_low_numerator": "692927104905635805969072531115629599091301452621643010046064634648",
+          "dyadic_denominator_bits": 256,
+          "interval_bisection_steps": 245,
+          "interval_width_in_units": 410,
+          "n": 18,
+          "scaled_4pow_n_delta": 0.411233516719042,
+          "second_coefficient_lower": 0.026668413151,
+          "second_coefficient_predicted": 0.028185500878,
+          "second_coefficient_upper": 0.026668413151
+        },
+        {
+          "delta_dyadic_high_numerator": "169171656468229823088253960589795725515148929159814902864194735",
+          "delta_dyadic_low_numerator": "169171656468229823088253960589795725515148929159814902864194325",
+          "dyadic_denominator_bits": 256,
+          "interval_bisection_steps": 245,
+          "interval_width_in_units": 410,
+          "n": 24,
+          "scaled_4pow_n_delta": 0.411233516712059,
+          "second_coefficient_lower": 0.027047685082,
+          "second_coefficient_predicted": 0.028185500878,
+          "second_coefficient_upper": 0.027047685082
+        },
+        {
+          "delta_dyadic_high_numerator": "41301673942438690101209269592838878354560414398227674529357",
+          "delta_dyadic_low_numerator": "41301673942438690101209269592838878354560414398227674528947",
+          "dyadic_denominator_bits": 256,
+          "interval_bisection_steps": 245,
+          "interval_width_in_units": 410,
+          "n": 30,
+          "scaled_4pow_n_delta": 0.411233516712057,
+          "second_coefficient_lower": 0.027275248241,
+          "second_coefficient_predicted": 0.028185500878,
+          "second_coefficient_upper": 0.027275248241
+        },
+        {
+          "delta_dyadic_high_numerator": "10083416489853195808093259748615676188225570179072941236",
+          "delta_dyadic_low_numerator": "10083416489853195808093259748615676188225570179072940826",
+          "dyadic_denominator_bits": 256,
+          "interval_bisection_steps": 245,
+          "interval_width_in_units": 410,
+          "n": 36,
+          "scaled_4pow_n_delta": 0.411233516712057,
+          "second_coefficient_lower": 0.027426957014,
+          "second_coefficient_predicted": 0.028185500878,
+          "second_coefficient_upper": 0.027426957014
+        },
+        {
+          "delta_dyadic_high_numerator": "2461771603968065382834017210481901102528710628214763",
+          "delta_dyadic_low_numerator": "2461771603968065382834017210481901102528710628214354",
+          "dyadic_denominator_bits": 256,
+          "interval_bisection_steps": 245,
+          "interval_width_in_units": 409,
+          "n": 42,
+          "scaled_4pow_n_delta": 0.411233516712057,
+          "second_coefficient_lower": 0.027535320423,
+          "second_coefficient_predicted": 0.028185500878,
+          "second_coefficient_upper": 0.027535320423
+        }
+      ],
+      "predicted_leading_constant": 0.411233516712057,
+      "target": "1",
+      "theta_acos_t_over_two": 1.047197551196598
+    },
+    {
+      "exact_root_brackets": [
+        {
+          "delta_dyadic_high_numerator": "8629077687353363537447344766511748113730329080422965032216974577165565801640",
+          "delta_dyadic_low_numerator": "8629077687353363537447344766511748113730329080422965032216974577165565801231",
+          "dyadic_denominator_bits": 256,
+          "interval_bisection_steps": 245,
+          "interval_width_in_units": 409,
+          "n": 1,
+          "scaled_4pow_n_delta": 0.298088677531953
+        },
+        {
+          "delta_dyadic_high_numerator": "2179165285879916533130259825715220281399908731203109231933714692469512908349",
+          "delta_dyadic_low_numerator": "2179165285879916533130259825715220281399908731203109231933714692469512907940",
+          "dyadic_denominator_bits": 256,
+          "interval_bisection_steps": 245,
+          "interval_width_in_units": 409,
+          "n": 2,
+          "scaled_4pow_n_delta": 0.301114219492312
+        },
+        {
+          "delta_dyadic_high_numerator": "544836514813394512385861067575335686887221306606186519884312630735566646031",
+          "delta_dyadic_low_numerator": "544836514813394512385861067575335686887221306606186519884312630735566645622",
+          "dyadic_denominator_bits": 256,
+          "interval_bisection_steps": 245,
+          "interval_width_in_units": 409,
+          "n": 3,
+          "scaled_4pow_n_delta": 0.301139198521516
+        },
+        {
+          "delta_dyadic_high_numerator": "136131165391479752542526373367501432307484308094214141359856032417688895458",
+          "delta_dyadic_low_numerator": "136131165391479752542526373367501432307484308094214141359856032417688895048",
+          "dyadic_denominator_bits": 256,
+          "interval_bisection_steps": 245,
+          "interval_width_in_units": 410,
+          "n": 4,
+          "scaled_4pow_n_delta": 0.300966832620098
+        },
+        {
+          "delta_dyadic_high_numerator": "8504800245475194400259188747066825819972707998668435133708876527111997397",
+          "delta_dyadic_low_numerator": "8504800245475194400259188747066825819972707998668435133708876527111996988",
+          "dyadic_denominator_bits": 256,
+          "interval_bisection_steps": 245,
+          "interval_width_in_units": 409,
+          "n": 6,
+          "scaled_4pow_n_delta": 0.300846647080273
+        },
+        {
+          "delta_dyadic_high_numerator": "531524551938310664410561882933164088807503817726689163785705684172428461",
+          "delta_dyadic_low_numerator": "531524551938310664410561882933164088807503817726689163785705684172428052",
+          "dyadic_denominator_bits": 256,
+          "interval_bisection_steps": 245,
+          "interval_width_in_units": 409,
+          "n": 8,
+          "scaled_4pow_n_delta": 0.300832235304406
+        },
+        {
+          "delta_dyadic_high_numerator": "2076257825730077307600741772354250305656119057640871020256715642470367",
+          "delta_dyadic_low_numerator": "2076257825730077307600741772354250305656119057640871020256715642469957",
+          "dyadic_denominator_bits": 256,
+          "interval_bisection_steps": 245,
+          "interval_width_in_units": 410,
+          "n": 12,
+          "scaled_4pow_n_delta": 0.300830792875426
+        },
+        {
+          "delta_dyadic_high_numerator": "506898867626460038179423189638405580091472189489641202348075518334",
+          "delta_dyadic_low_numerator": "506898867626460038179423189638405580091472189489641202348075517924",
+          "dyadic_denominator_bits": 256,
+          "interval_bisection_steps": 245,
+          "interval_width_in_units": 410,
+          "n": 18,
+          "scaled_4pow_n_delta": 0.300830783612249
+        },
+        {
+          "delta_dyadic_high_numerator": "123754606352644262020404515861083450682094555176684135463518589",
+          "delta_dyadic_low_numerator": "123754606352644262020404515861083450682094555176684135463518180",
+          "dyadic_denominator_bits": 256,
+          "interval_bisection_steps": 245,
+          "interval_width_in_units": 409,
+          "n": 24,
+          "scaled_4pow_n_delta": 0.300830783608671
+        },
+        {
+          "delta_dyadic_high_numerator": "30213526941563420513481540626249821061831694943117223937616",
+          "delta_dyadic_low_numerator": "30213526941563420513481540626249821061831694943117223937206",
+          "dyadic_denominator_bits": 256,
+          "interval_bisection_steps": 245,
+          "interval_width_in_units": 410,
+          "n": 30,
+          "scaled_4pow_n_delta": 0.300830783608669
+        },
+        {
+          "delta_dyadic_high_numerator": "7376349350967631952221289322195008591289559583386774709",
+          "delta_dyadic_low_numerator": "7376349350967631952221289322195008591289559583386774299",
+          "dyadic_denominator_bits": 256,
+          "interval_bisection_steps": 245,
+          "interval_width_in_units": 410,
+          "n": 36,
+          "scaled_4pow_n_delta": 0.300830783608669
+        },
+        {
+          "delta_dyadic_high_numerator": "1800866540763582019584619934224851823063728078722639",
+          "delta_dyadic_low_numerator": "1800866540763582019584619934224851823063728078722229",
+          "dyadic_denominator_bits": 256,
+          "interval_bisection_steps": 245,
+          "interval_width_in_units": 410,
+          "n": 42,
+          "scaled_4pow_n_delta": 0.300830783608669
+        }
+      ],
+      "predicted_leading_constant": 0.300830783608669,
+      "target": "5/4",
+      "theta_acos_t_over_two": 0.895664793857865
+    },
+    {
+      "exact_root_brackets": [
+        {
+          "delta_dyadic_high_numerator": "5573320075627426395454612429031147233850832455710909338679474006191202011508",
+          "delta_dyadic_low_numerator": "5573320075627426395454612429031147233850832455710909338679474006191202011098",
+          "dyadic_denominator_bits": 256,
+          "interval_bisection_steps": 245,
+          "interval_width_in_units": 410,
+          "n": 1,
+          "scaled_4pow_n_delta": 0.192528526338441
+        },
+        {
+          "delta_dyadic_high_numerator": "1414428423812803192827638136282446434459115960369930981351883581665309689819",
+          "delta_dyadic_low_numerator": "1414428423812803192827638136282446434459115960369930981351883581665309689410",
+          "dyadic_denominator_bits": 256,
+          "interval_bisection_steps": 245,
+          "interval_width_in_units": 409,
+          "n": 2,
+          "scaled_4pow_n_delta": 0.195443876434623
+        },
+        {
+          "delta_dyadic_high_numerator": "354380330134528108287205391388710886126155493975753137515321050138800254528",
+          "delta_dyadic_low_numerator": "354380330134528108287205391388710886126155493975753137515321050138800254119",
+          "dyadic_denominator_bits": 256,
+          "interval_bisection_steps": 245,
+          "interval_width_in_units": 409,
+          "n": 3,
+          "scaled_4pow_n_delta": 0.195871248873715
+        },
+        {
+          "delta_dyadic_high_numerator": "88609143413646745850233525318574385292571221874500917453873339082816089258",
+          "delta_dyadic_low_numerator": "88609143413646745850233525318574385292571221874500917453873339082816088848",
+          "dyadic_denominator_bits": 256,
+          "interval_bisection_steps": 245,
+          "interval_width_in_units": 410,
+          "n": 4,
+          "scaled_4pow_n_delta": 0.195902335498954
+        },
+        {
+          "delta_dyadic_high_numerator": "5537549187389751346565590506374927222489090842912388891681442730436267587",
+          "delta_dyadic_low_numerator": "5537549187389751346565590506374927222489090842912388891681442730436267178",
+          "dyadic_denominator_bits": 256,
+          "interval_bisection_steps": 245,
+          "interval_width_in_units": 409,
+          "n": 6,
+          "scaled_4pow_n_delta": 0.195883860641481
+        },
+        {
+          "delta_dyadic_high_numerator": "346089610302353199817950240785200066514544514754667965719480447406704610",
+          "delta_dyadic_low_numerator": "346089610302353199817950240785200066514544514754667965719480447406704201",
+          "dyadic_denominator_bits": 256,
+          "interval_bisection_steps": 245,
+          "interval_width_in_units": 409,
+          "n": 8,
+          "scaled_4pow_n_delta": 0.195879777713394
+        },
+        {
+          "delta_dyadic_high_numerator": "1351909248445431536029595078639118613383042647956569280414232846728361",
+          "delta_dyadic_low_numerator": "1351909248445431536029595078639118613383042647956569280414232846727951",
+          "dyadic_denominator_bits": 256,
+          "interval_bisection_steps": 245,
+          "interval_width_in_units": 410,
+          "n": 12,
+          "scaled_4pow_n_delta": 0.195879300761914
+        },
+        {
+          "delta_dyadic_high_numerator": "330055963130405149587151547979841408108994621263717314569070313849",
+          "delta_dyadic_low_numerator": "330055963130405149587151547979841408108994621263717314569070313440",
+          "dyadic_denominator_bits": 256,
+          "interval_bisection_steps": 245,
+          "interval_width_in_units": 409,
+          "n": 18,
+          "scaled_4pow_n_delta": 0.195879297362298
+        },
+        {
+          "delta_dyadic_high_numerator": "80580069123063003017307602670640630729680829346553989093738877",
+          "delta_dyadic_low_numerator": "80580069123063003017307602670640630729680829346553989093738467",
+          "dyadic_denominator_bits": 256,
+          "interval_bisection_steps": 245,
+          "interval_width_in_units": 410,
+          "n": 24,
+          "scaled_4pow_n_delta": 0.195879297360909
+        },
+        {
+          "delta_dyadic_high_numerator": "19672868438247755745727260179061313880265297298770123918514",
+          "delta_dyadic_low_numerator": "19672868438247755745727260179061313880265297298770123918104",
+          "dyadic_denominator_bits": 256,
+          "interval_bisection_steps": 245,
+          "interval_width_in_units": 410,
+          "n": 30,
+          "scaled_4pow_n_delta": 0.195879297360909
+        },
+        {
+          "delta_dyadic_high_numerator": "4802946396056580988948732355044663641337528303586874954",
+          "delta_dyadic_low_numerator": "4802946396056580988948732355044663641337528303586874544",
+          "dyadic_denominator_bits": 256,
+          "interval_bisection_steps": 245,
+          "interval_width_in_units": 410,
+          "n": 36,
+          "scaled_4pow_n_delta": 0.195879297360909
+        },
+        {
+          "delta_dyadic_high_numerator": "1172594334974751218004794803349684731244297744038273",
+          "delta_dyadic_low_numerator": "1172594334974751218004794803349684731244297744037863",
+          "dyadic_denominator_bits": 256,
+          "interval_bisection_steps": 245,
+          "interval_width_in_units": 410,
+          "n": 42,
+          "scaled_4pow_n_delta": 0.195879297360909
+        }
+      ],
+      "predicted_leading_constant": 0.195879297360909,
+      "target": "3/2",
+      "theta_acos_t_over_two": 0.722734247813416
+    }
+  ],
+  "independent_forward_orbit_sign_brackets": true,
+  "manifest_snapshot_n_values": [
+    1,
+    2,
+    3,
+    4,
+    6,
+    8,
+    12,
+    18,
+    24,
+    30,
+    36,
+    42
+  ],
+  "parameter_family": "f_c(z)=z^2+c, -2<c<-9/5 subset Mandelbrot set",
+  "phase_interval": "1 <= t <= 3/2",
+  "pi_arctan_rational_bound_width_lt_2pow_minus_300": true,
+  "provenance": "finite exact integer root enclosures + analytic written proof; no global MLC or UPTCR claim",
+  "root_parameter_bracket_count": 126,
+  "schema_version": 1
+}
