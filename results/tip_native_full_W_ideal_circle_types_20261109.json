@@ -1,0 +1,290 @@
+{
+  "schema_version": 1,
+  "theorem_scope": "Pointwise extension and obstruction into UNCOMPACTIFIED fine canonical T_hat9 for full original ordinary G:W KL ideal O/xi/eta boundary (no claim of one continuous whole-boundary map)",
+  "original_source_boundary_identity": "partial^v_i Psi(Y) = eta_i union xi_(i+1)",
+  "actual_W_source_depth": 6,
+  "actual_V_parent_depth": 3,
+  "original_source_ideal_arc_counts": {
+    "O_lambda": 4,
+    "J_xi_eta": 8,
+    "finite_vertices": 4,
+    "wrapping_O_J_joints": 8
+  },
+  "source_vertex_incidence": [
+    {
+      "vertex_after_W_tile": 0,
+      "vertex_before_W_tile": 1,
+      "original_incidence": [
+        "G:W:tile0:eta",
+        "G:W:tile1:xi"
+      ],
+      "G_ray_pair": "43/192,53/192",
+      "G_angle_endpoints": [
+        "43/192",
+        "53/192"
+      ],
+      "physical_vertex_label": "b_101101001001101001(alpha_G)",
+      "target_class": "ordinary fine exterior Omega9 via compact W in V and K9 compact in W"
+    },
+    {
+      "vertex_after_W_tile": 1,
+      "vertex_before_W_tile": 2,
+      "original_incidence": [
+        "G:W:tile1:eta",
+        "G:W:tile2:xi"
+      ],
+      "G_ray_pair": "55/192,137/192",
+      "G_angle_endpoints": [
+        "55/192",
+        "137/192"
+      ],
+      "physical_vertex_label": "b_101101001101101001(alpha_G)",
+      "target_class": "ordinary fine exterior Omega9 via compact W in V and K9 compact in W"
+    },
+    {
+      "vertex_after_W_tile": 2,
+      "vertex_before_W_tile": 3,
+      "original_incidence": [
+        "G:W:tile2:eta",
+        "G:W:tile3:xi"
+      ],
+      "G_ray_pair": "139/192,149/192",
+      "G_angle_endpoints": [
+        "139/192",
+        "149/192"
+      ],
+      "physical_vertex_label": "b_001101001001101001(alpha_G)",
+      "target_class": "ordinary fine exterior Omega9 via compact W in V and K9 compact in W"
+    },
+    {
+      "vertex_after_W_tile": 3,
+      "vertex_before_W_tile": 0,
+      "original_incidence": [
+        "G:W:tile3:eta",
+        "G:W:tile0:xi"
+      ],
+      "G_ray_pair": "41/192,151/192",
+      "G_angle_endpoints": [
+        "41/192",
+        "151/192"
+      ],
+      "physical_vertex_label": "b_001101001101101001(alpha_G)",
+      "target_class": "ordinary fine exterior Omega9 via compact W in V and K9 compact in W"
+    }
+  ],
+  "source_wrapping_joints": [
+    {
+      "tile": 0,
+      "source_joint": "lambda_xi",
+      "ideal_sides": [
+        "lambda_0",
+        "xi_0"
+      ],
+      "deck_limit": "-infinity",
+      "extension_to_uncompactified_fine_surface": false,
+      "reason": "Source positive/negative full deck iterates converge to same KL wrapping ideal end while their physical projections stay distinct constant points"
+    },
+    {
+      "tile": 0,
+      "source_joint": "lambda_eta",
+      "ideal_sides": [
+        "lambda_0",
+        "eta_0"
+      ],
+      "deck_limit": "+infinity",
+      "extension_to_uncompactified_fine_surface": false,
+      "reason": "Source positive/negative full deck iterates converge to same KL wrapping ideal end while their physical projections stay distinct constant points"
+    },
+    {
+      "tile": 1,
+      "source_joint": "lambda_xi",
+      "ideal_sides": [
+        "lambda_1",
+        "xi_1"
+      ],
+      "deck_limit": "-infinity",
+      "extension_to_uncompactified_fine_surface": false,
+      "reason": "Source positive/negative full deck iterates converge to same KL wrapping ideal end while their physical projections stay distinct constant points"
+    },
+    {
+      "tile": 1,
+      "source_joint": "lambda_eta",
+      "ideal_sides": [
+        "lambda_1",
+        "eta_1"
+      ],
+      "deck_limit": "+infinity",
+      "extension_to_uncompactified_fine_surface": false,
+      "reason": "Source positive/negative full deck iterates converge to same KL wrapping ideal end while their physical projections stay distinct constant points"
+    },
+    {
+      "tile": 2,
+      "source_joint": "lambda_xi",
+      "ideal_sides": [
+        "lambda_2",
+        "xi_2"
+      ],
+      "deck_limit": "-infinity",
+      "extension_to_uncompactified_fine_surface": false,
+      "reason": "Source positive/negative full deck iterates converge to same KL wrapping ideal end while their physical projections stay distinct constant points"
+    },
+    {
+      "tile": 2,
+      "source_joint": "lambda_eta",
+      "ideal_sides": [
+        "lambda_2",
+        "eta_2"
+      ],
+      "deck_limit": "+infinity",
+      "extension_to_uncompactified_fine_surface": false,
+      "reason": "Source positive/negative full deck iterates converge to same KL wrapping ideal end while their physical projections stay distinct constant points"
+    },
+    {
+      "tile": 3,
+      "source_joint": "lambda_xi",
+      "ideal_sides": [
+        "lambda_3",
+        "xi_3"
+      ],
+      "deck_limit": "-infinity",
+      "extension_to_uncompactified_fine_surface": false,
+      "reason": "Source positive/negative full deck iterates converge to same KL wrapping ideal end while their physical projections stay distinct constant points"
+    },
+    {
+      "tile": 3,
+      "source_joint": "lambda_eta",
+      "ideal_sides": [
+        "lambda_3",
+        "eta_3"
+      ],
+      "deck_limit": "+infinity",
+      "extension_to_uncompactified_fine_surface": false,
+      "reason": "Source positive/negative full deck iterates converge to same KL wrapping ideal end while their physical projections stay distinct constant points"
+    }
+  ],
+  "finite_outer_O_sample_points": [
+    {
+      "source_W_tile": 0,
+      "original_ideal_side": "lambda_0",
+      "finite_source_angle": "1/8",
+      "outer_carrier_height": "1/32",
+      "physical_target_class": "ordinary fine exterior Omega9",
+      "local_continuation": true
+    },
+    {
+      "source_W_tile": 0,
+      "original_ideal_side": "lambda_0",
+      "finite_source_angle": "1/2",
+      "outer_carrier_height": "1/32",
+      "physical_target_class": "ordinary fine exterior Omega9",
+      "local_continuation": true
+    },
+    {
+      "source_W_tile": 0,
+      "original_ideal_side": "lambda_0",
+      "finite_source_angle": "7/8",
+      "outer_carrier_height": "1/32",
+      "physical_target_class": "ordinary fine exterior Omega9",
+      "local_continuation": true
+    },
+    {
+      "source_W_tile": 1,
+      "original_ideal_side": "lambda_1",
+      "finite_source_angle": "1/8",
+      "outer_carrier_height": "1/32",
+      "physical_target_class": "ordinary fine exterior Omega9",
+      "local_continuation": true
+    },
+    {
+      "source_W_tile": 1,
+      "original_ideal_side": "lambda_1",
+      "finite_source_angle": "1/2",
+      "outer_carrier_height": "1/32",
+      "physical_target_class": "ordinary fine exterior Omega9",
+      "local_continuation": true
+    },
+    {
+      "source_W_tile": 1,
+      "original_ideal_side": "lambda_1",
+      "finite_source_angle": "7/8",
+      "outer_carrier_height": "1/32",
+      "physical_target_class": "ordinary fine exterior Omega9",
+      "local_continuation": true
+    },
+    {
+      "source_W_tile": 2,
+      "original_ideal_side": "lambda_2",
+      "finite_source_angle": "1/8",
+      "outer_carrier_height": "1/32",
+      "physical_target_class": "ordinary fine exterior Omega9",
+      "local_continuation": true
+    },
+    {
+      "source_W_tile": 2,
+      "original_ideal_side": "lambda_2",
+      "finite_source_angle": "1/2",
+      "outer_carrier_height": "1/32",
+      "physical_target_class": "ordinary fine exterior Omega9",
+      "local_continuation": true
+    },
+    {
+      "source_W_tile": 2,
+      "original_ideal_side": "lambda_2",
+      "finite_source_angle": "7/8",
+      "outer_carrier_height": "1/32",
+      "physical_target_class": "ordinary fine exterior Omega9",
+      "local_continuation": true
+    },
+    {
+      "source_W_tile": 3,
+      "original_ideal_side": "lambda_3",
+      "finite_source_angle": "1/8",
+      "outer_carrier_height": "1/32",
+      "physical_target_class": "ordinary fine exterior Omega9",
+      "local_continuation": true
+    },
+    {
+      "source_W_tile": 3,
+      "original_ideal_side": "lambda_3",
+      "finite_source_angle": "1/2",
+      "outer_carrier_height": "1/32",
+      "physical_target_class": "ordinary fine exterior Omega9",
+      "local_continuation": true
+    },
+    {
+      "source_W_tile": 3,
+      "original_ideal_side": "lambda_3",
+      "finite_source_angle": "7/8",
+      "outer_carrier_height": "1/32",
+      "physical_target_class": "ordinary fine exterior Omega9",
+      "local_continuation": true
+    }
+  ],
+  "inherited_strict_finite_J_side_trichotomy": {
+    "manifest_path": "results/tip_native_finite_J_side_trichotomy_20261109.json",
+    "types": [
+      "marked K9 root",
+      "physically removed D_(0,1) or D_(0,2)",
+      "ordinary Omega9"
+    ],
+    "sample_witnesses": 32
+  },
+  "complete_pointwise_boundary_types": {
+    "lambda_i finite open O arcs": "ordinary fine exterior Omega9; source immersion has a unique local extension into it",
+    "xi_i eta_i strictly interior finite J arcs": "source original physical landing target trichotomy of merged PR #65",
+    "four finite vertices eta_i cap xi_(i+1)": "ordinary fine exterior Omega9; source W->V inclusion naturality maps each to a central V point, giving unique fine extension",
+    "eight infinite wrapping lambda_i cap xi_i or lambda_i cap eta_i joints": "no continuous extension of any projection-commuting map into the same uncompactified fine target"
+  },
+  "analytic_proofs_written_not_formalized": [
+    "Original KL II §3.2.1 path-space and universal-carrier tile source projection, source §3.2.4 prime end circle/side/joint and naturality boundary extension",
+    "Geometric W closure compact in V and K9 compact in W, V contained in T9 (previous source phase-avoidance proof)",
+    "Source positive carrier equipotential O-boundary physical location in Omega9 and local covering argument",
+    "Native source deck iterates approach actual wrapping ideal prime ends in uniformizing whole-piece boundary",
+    "Merged PR #65 genuine strict finite J-side physical-target analytic trichotomy"
+  ],
+  "still_open": [
+    "Whole continuous extension into a NEW compactification with extra boundary objects, rather than pointwise extension into the uncompactified fine surface",
+    "Complete KL proof-used path groupoid/subordination, literal nine-generator connector words, and KKL unique proper restriction",
+    "H1-H4, UPTCR, MLC remain open and ledger unchanged"
+  ]
+}

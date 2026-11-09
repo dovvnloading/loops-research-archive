@@ -1,6 +1,6 @@
 name = "loops_formal"
 version = "0.1.0"
-defaultTargets = ["LoopsFormal", "CloneGraph", "FirstReturn", "ReturnBlocks", "ReturnPaths", "Paper2Phase", "RealTwoScalePhase", "Period27Kneading", "Period27Dyadic", "Period27IntervalSound", "Period27RationalTrace", "Period27RationalDerivative", "PhaseTower", "PhaseTower27", "PhaseFuture", "PhaseFuture27", "PhaseMemoryGeneral", "TipRayPortrait", "TipComplexMargins", "TipKLPuzzle", "TipActualCoarseRays", "TipLevinComposition", "TipSheetGrid", "TipRootedNativeKL", "TipNativeRootDeck", "TipNativeC4Wake", "TipNativeSideExclusion", "TipNativeFiniteJTrichotomy"]
+defaultTargets = ["LoopsFormal", "CloneGraph", "FirstReturn", "ReturnBlocks", "ReturnPaths", "Paper2Phase", "RealTwoScalePhase", "Period27Kneading", "Period27Dyadic", "Period27IntervalSound", "Period27RationalTrace", "Period27RationalDerivative", "PhaseTower", "PhaseTower27", "PhaseFuture", "PhaseFuture27", "PhaseMemoryGeneral", "TipRayPortrait", "TipComplexMargins", "TipKLPuzzle", "TipActualCoarseRays", "TipLevinComposition", "TipSheetGrid", "TipRootedNativeKL", "TipNativeRootDeck", "TipNativeC4Wake", "TipNativeSideExclusion", "TipNativeFiniteJTrichotomy", "TipNativeFullBoundaryTypes"]
 
 [[lean_lib]]
 name = "LoopsFormal"
@@ -85,3 +85,6 @@ name = "TipNativeSideExclusion"
 
 [[lean_lib]]
 name = "TipNativeFiniteJTrichotomy"
+
+[[lean_lib]]
+name = "TipNativeFullBoundaryTypes"
