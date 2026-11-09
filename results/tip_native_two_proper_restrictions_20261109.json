@@ -3205,5 +3205,18 @@
     "KKL Proposition A.12 selected marked/refined path-family chain or unique-subordinate-path conditional",
     "Any global MLC, UPTCR, H1-H4, source proper-end wave amplification or whole original KL marked path groupoid theorem"
   ],
-  "unresolved": "Specify an actual KKL target ideal marking, compute maximal source pullbacks and subordination and decide for this source proper target path which restrictions remain admissible"
+  "unresolved": "Specify an actual KKL target ideal marking, compute maximal source pullbacks and subordination and decide for this source proper target path which restrictions remain admissible",
+  "natural_KL_arc_markings_basic_KKL_A1_admissibility": {
+    "source_W_original_marked_open_arcs": 12,
+    "target_V_original_marked_open_arcs": 6,
+    "KL_cyclic_order_for_each_tile": [
+      "xi",
+      "lambda",
+      "eta"
+    ],
+    "all_128_target_and_256_source_proper_paths_have_xi_eta_endpoints": true,
+    "xi_eta_minimal_connected_marked_arc_span": 3,
+    "KKL_A1_subordinate_length_at_most_two_exclusion_does_not_remove_these": true,
+    "not_asserted_to_be_KKL_A3_2_pulled_back_refined_marking": true
+  }
 }

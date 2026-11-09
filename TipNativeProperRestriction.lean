@@ -73,10 +73,37 @@ theorem actual_source_11_over_48_J_side_collision_brackets :
     44 < VUpper192 ⟨0, by decide⟩ := by
   decide +kernel
 
+/-!
+The original source KL ideal marking has cyclic xi,lambda,eta
+intervals for every source tile. The finite interval-index theorem
+below checks that xi and eta are SEPARATED by one O(lambda) interval,
+so any connected marked boundary multi-interval containing both has
+at least three *source* marking intervals. The KKL topological
+subordination predicate is NOT Lean-formalized here.
+-/
+
+def originalKLXiIndex (j : Nat) : Nat := 3 * j
+def originalKLLambdaIndex (j : Nat) : Nat := 3 * j + 1
+def originalKLEtaIndex (j : Nat) : Nat := 3 * j + 2
+
+theorem original_W_marked_xi_and_eta_have_intervening_lambda
+    (j : Fin 4) :
+    originalKLLambdaIndex j.val = originalKLXiIndex j.val + 1 ∧
+    originalKLEtaIndex j.val = originalKLLambdaIndex j.val + 1 := by
+  simp [originalKLXiIndex, originalKLLambdaIndex, originalKLEtaIndex]
+
+theorem original_V_marked_xi_and_eta_have_intervening_lambda
+    (j : Fin 2) :
+    originalKLLambdaIndex j.val = originalKLXiIndex j.val + 1 ∧
+    originalKLEtaIndex j.val = originalKLLambdaIndex j.val + 1 := by
+  simp [originalKLXiIndex, originalKLLambdaIndex, originalKLEtaIndex]
+
 #print axioms original_four_W_seams_strict_inside_original_V_parent
 #print axioms every_W_original_J_side_has_nonproper_parent_interior_open_subarc
 #print axioms original_two_distinct_W_tiles_per_V_parent
 #print axioms all_integer_winding_source_and_target_endpoint_brackets
 #print axioms actual_source_11_over_48_J_side_collision_brackets
+#print axioms original_W_marked_xi_and_eta_have_intervening_lambda
+#print axioms original_V_marked_xi_and_eta_have_intervening_lambda
 
 end LoopsFormal.TipNativeProperRestriction
