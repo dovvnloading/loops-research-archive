@@ -164,7 +164,7 @@ The only **completed** connector class in this note is the own-seam native deck 
 - We do **not** claim an open interval of native J-side points landing in `K9`, a whole-circle side map, an all-θ classification across mismatched source tiles, or a globally proved analytic naturality theorem.
 - There is no promotion of H1–H4, UPTCR or MLC, no ledger changes, and no assertion of specialist peer review or novelty/priority beyond this archive-specific construction.
 
-## 4. Source references and verification
+## 5. Source references and verification
 
 1. Kahn–Lyubich, *A priori bounds for some infinitely renormalizable quadratics II: Decorations*, §3.2.1, Lemma 3.3 (the path-space / universal-cover tile equivalence), §3.2.2, Lemma 3.4 (inclusion naturality), and §3.2.4 printed pp. 11–13 (the actual `λ,ξ,η` source ideal sides). https://www.math.stonybrook.edu/preprints/ims06-06.pdf
 2. Kahn, *A priori bounds ... I*, arXiv:math/0609045v3, §7.4.1 Theorem 7.12 (marked localization, root-neighborhood biholomorphism). https://arxiv.org/pdf/math/0609045
