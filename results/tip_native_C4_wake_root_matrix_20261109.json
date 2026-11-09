@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "scope": "Source G=f^3 original W=Y_G^6 native universal tiles, eight physically certified fine-root rays and all integer deck shifts in each of four source tiles; NOT whole KL groupoid or general KKL restriction",
+  "scope": "Source G=f^3 original W=Y_G^6 native universal tiles, eight exactly certified root rays and all four tile/deck classes; analytic theorem also parametrizes ALL finite source J-side points with physical G landing in K9 (not an angle enumeration). NOT whole KL groupoid/KKL restriction",
   "edge_winding_scope": "Real-symmetric G external-angle wake / source-local connector; phase winding conclusion is written planar proof and not Lean-formalized",
   "original_source_inclusion": "W_into_V0 with tile routes [0,1]->0 and [2,3]->1, all integer shifts zero",
   "original_angular_wake_edges": [
@@ -582,5 +582,18 @@
     "Literal nine-generator connector words for cross-parent paths (the transverse obstruction is decisive for this cohort without them)",
     "All other KL proof-used rays, arbitrary ideal J-side intervals, full proper-end groupoid/KKL unique restriction",
     "H1-H4 UPTCR MLC and ledger remain unchanged"
-  ]
+  ],
+  "parametric_all_finite_Jside_root_landing": {
+    "source_angle_sets": [
+      "E_0 = {theta in I_0: physical G ray landing(theta) in K9}",
+      "E_1 = {theta in I_1: physical G ray landing(theta) in K9}",
+      "E_2 = {theta in I_2: physical G ray landing(theta) in K9}",
+      "E_3 = {theta in I_3: physical G ray landing(theta) in K9}"
+    ],
+    "definition": "For tile j: all finite xi_j/eta_j angles theta+n with theta in some E_i and n integer, outside tile j's own glued open seam",
+    "root_compatible_exactly": "j = mate(i) in the same V0 parent and n = 0; all other finite K9-landing source J-side ends escape the fine uncompactified target",
+    "angle_sets_may_be_infinite": true,
+    "no_open_interval_of_root_angles_claimed": true,
+    "Caratheodory_and_source_sector_proof_written_not_machine_formalized": true
+  }
 }

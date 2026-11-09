@@ -169,12 +169,20 @@ def compute():
                                 "opposite_parent_original_Jside_cohorts_no_root_shift")] == [8, 8, 16]
     return {
         "schema_version": 1,
-        "scope": "Source G=f^3 original W=Y_G^6 native universal tiles, eight physically certified fine-root rays and all integer deck shifts in each of four source tiles; NOT whole KL groupoid or general KKL restriction",
+        "scope": "Source G=f^3 original W=Y_G^6 native universal tiles, eight exactly certified root rays and all four tile/deck classes; analytic theorem also parametrizes ALL finite source J-side points with physical G landing in K9 (not an angle enumeration). NOT whole KL groupoid/KKL restriction",
         "edge_winding_scope": "Real-symmetric G external-angle wake / source-local connector; phase winding conclusion is written planar proof and not Lean-formalized",
         "original_source_inclusion": "W_into_V0 with tile routes [0,1]->0 and [2,3]->1, all integer shifts zero",
         "original_angular_wake_edges": edge_rows,
         "source_tile_transverse_potential": potentials,
         "root_ray_tile_cases": results,
+        "parametric_all_finite_Jside_root_landing": {
+            "source_angle_sets": [f"E_{i} = {{theta in I_{i}: physical G ray landing(theta) in K9}}" for i in range(4)],
+            "definition": "For tile j: all finite xi_j/eta_j angles theta+n with theta in some E_i and n integer, outside tile j's own glued open seam",
+            "root_compatible_exactly": "j = mate(i) in the same V0 parent and n = 0; all other finite K9-landing source J-side ends escape the fine uncompactified target",
+            "angle_sets_may_be_infinite": True,
+            "no_open_interval_of_root_angles_claimed": True,
+            "Caratheodory_and_source_sector_proof_written_not_machine_formalized": True,
+        },
         "counts": counts,
         "analytic_inputs_not_formalized": [
             "Real-symmetric order-reversing physical G straightening, noncrossing external rays, and the positive/negative real ray identification",

@@ -35,6 +35,15 @@ theorem exact_strict_same_parent_Jside_brackets :
         upper (mate i) * 112 < coarse i e * 192) := by
   decide +kernel
 
+/-- The entire original open own-seam interval lies strictly on the mate's
+remaining J-side (xi for even source indices, eta for odd), not just the
+eight finite authenticated ray angles. -/
+theorem whole_open_source_seam_in_mate_Jside :
+    ∀ i : Fin 4,
+      (i.val % 2 = 0 → upper i < lower (mate i)) ∧
+      (i.val % 2 = 1 → upper (mate i) < lower i) := by
+  decide +kernel
+
 /-- Source C4 Jordan-wake physical right/left charges are documented
 separately: the finite kernel checks the exact integer C4 cocycle. -/
 def wakeRightCharge (i : Fin 4) : Int :=
@@ -87,6 +96,7 @@ theorem eight_exact_source_mate_root_angle_candidates :
 
 #print axioms original_same_parent_mates
 #print axioms exact_strict_same_parent_Jside_brackets
+#print axioms whole_open_source_seam_in_mate_Jside
 #print axioms c4_wake_charge_is_parent_difference
 #print axioms transverse_zero_iff_source_parent_same
 #print axioms no_native_winding_repairs_cross_parent

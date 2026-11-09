@@ -2,6 +2,8 @@
 
 **2026-11-09, Issue #62; proposed research theorem under explicitly imported analytic inputs.** This note advances the *actual* ordinary \(G=f^3\) Kahn–Lyubich (KL) pseudo-piece \(W=Y_G^6\), not an invented finite tile model. It resolves the based root/nonroot sheet **decision for all 8 authenticated root-landing G rays in each of all 4 original W universal-carrier tiles, at every integer deck translate**. It does *not* compute literal full nine-generator defect words for unrelated KL paths, nor prove the global KKL unique-proper-restriction axiom, H1–H4, UPTCR, or MLC.
 
+ The same proof yields the **complete parameterized subset of finite original J-side points whose G rays land on K9**, with an exact rooted/nonroot decision and no assertion that this angular set has interior; see §5.
+
 The two new inputs that make the finite-cohort decision possible are (1) **KL Lemma 3.4's actual source-defined W→V immersion**, whose *two-to-one tile routing has zero integer shift*, and (2) a **planar-real Jordan-wake calculation** of the transverse difference of the two fine obstacle windings. The latter is a *written analytic/topological argument*, not something Lean or a rational-angle table proves.
 
 ## 1. Actual surfaces and distinct kinds of root access
@@ -134,7 +136,52 @@ In particular, all **16 zero-shift cross-parent** original ideal J-side accesses
 
 **Precise achievement.** The *root/nonroot decision* is now complete for **every original W tile and every integer lift of every one of the eight certified G rays**. The complete *nine-generator connector words* remain unknown; for these 32 cohorts they are unnecessary because the certified transverse obstruction is decisive and the positive cases have a source-defined holomorphic equality. The whole-ideal-side KL path groupoid and the KKL unique-proper-restriction requirement remain **open** for other proof-used paths, not silently redefined as this eight-ray theorem.
 
-## 5. Exact reproducibility and trust boundary
+## 5. The complete *source-defined* finite root-landing J-side domain
+
+The eight certified rays above are only a finite cohort in a much larger analytic source category. The proof in §§2–4 actually classifies **every finite original KL J-side prime end whose physical G-external ray lands in the marked \(K_9\)**, without enumerating those angles or pretending their set contains an interval.
+
+Let \(L_G:\mathbb R/\mathbb Z\to K_3\) denote the **actual continuous Carathéodory landing map** for the connected, postcritically finite/subhyperbolic G straightening, transported to the physical G carrier. Define the four source-native *angular access sets*
+
+\[
+\boxed{E_i=\{\theta\in I_i: L_G(\theta)\in K_9\},\quad i=0,1,2,3.}\tag{7}
+\]
+
+**Lemma 5.1 (the source root-angle census is complete, with no finite-size claim).** The sets \(E_i\) are disjoint and compact subsets of their respective **open** source seam intervals \(I_i\); each is nonempty, containing the two explicitly certified G angles from the eight-ray table. Every actual G external ray landing on \(K_9\) has **exactly one** angle \(\theta\in\bigcup_i E_i\).
+
+**Proof.** Because \(K_9\Subset W_G=\operatorname{int}Y_G^6\), any ray landing at a point of \(K_9\) has a sufficiently short terminal external segment inside \(W_G\setminus K_3\). The *actual ordinary source puzzle* has precisely four simply connected exterior components there, with disjoint **open** angle intervals (2); a short ray segment belongs to exactly one component. Conversely every angle in (7) lands in \(K_9\) by definition. The source seam endpoints land at the four W puzzle vertices on \(\partial W_G\), all outside \(K_9\); hence no angle mapping into \(K_9\) is one of these endpoints. Continuity of \(L_G\) and compactness of \(K_9\) imply \(L_G^{-1}(K_9)\) is compact and stays away from those finitely many endpoint angles, so its intersection with each \(I_i\) is compact. The archived two rays per source tile verify nonemptiness. This uses the genuine G landing theorem and actual KL puzzle geometry, not finite rational enumeration. \(\square\)
+
+For each original universal tile \(j\), let a **finite original remaining J-side** mean an unwrapped angle \(x<a_j\) on \(\xi_j^\circ\) or \(x>b_j\) on \(\eta_j^\circ\). KL's source-side universal-cover coordinate and continuous external ray landing map give the **entire** physically \(K_9\)-landing finite J-side set:
+
+\[
+\mathcal J_j(K_9)=
+\left\{(j,\theta+n):
+\, \theta\in E_i\ \text{for some }i\in\{0,1,2,3\},
+\, n\in\mathbb Z,\,
+\theta+n\notin[a_j,b_j]\right\}.\tag{8}
+\]
+
+**Theorem 5.2 (complete finite J-side marked-root selection).** For every \((j,\theta+n)\in\mathcal J_j(K_9)\) with the unique \(\theta\in E_i\), the corresponding fine localized ray lift converges to the marked point over \(L_G(\theta)\) **if and only if** \(j=m(i)\) and \(n=0\). Equivalently, *as a subset of actual finite source J-side prime ends*,
+
+\[
+\boxed{
+\operatorname{RootJ}_j(K_9)=
+\{(j,\theta):\theta\in E_{m(j)}\}
+\ \subset\
+\begin{cases}
+\eta_j^\circ,&j=0,2,\\
+\xi_j^\circ,&j=1,3.
+\end{cases}}\tag{9}
+\]
+
+Every other element of \(\mathcal J_j(K_9)\) is a **proper nonroot fine lift**, with no accumulation in the uncompactified \(\widehat T_9\), and has no continuous extension into that space at its indicated finite J-side point. This says nothing about infinitely wrapping \(\lambda/\xi/\eta\) joints, and it is **not** a KKL unique-proper-restriction theorem.
+
+**Proof.** Fix \(\theta\in E_i\) and one of the already certified anchor angles \(\theta_i^*\in I_i\). The two sufficiently short G external-ray tails lie in the **same genuine simply connected W exterior component** \(W_i\subset W_G\setminus K_3\). A connector between their positive-height points lies inside \(W_i\), so its change of based source access has no winding about either **excluded** fine interval. Similarly any rooted fine connector variation in \(W_G\setminus K_9\) changes neither winding. Therefore the \(\delta\)-class of the source tile \(j\) relative to the root-normalized W sheet is **constant throughout \(I_i\)** and equal to the authenticated anchor's charge: \(\delta=p(j)-p(i)\) by the source-specific wake proof and its C4 potential (5). No assumption that \(E_i\) is connected or contains an open interval is used; the allowed connecting path travels within the *open angular W sector*, not within \(E_i\).
+
+If \(j=i\) and \(n=0\), the lift is the central open gluing seam itself and is *not* an original J-side point; its fine image is rooted because \(L_G(\theta)\in K_9\). If \(j=m(i)\) and \(n=0\), the positive-height **literal KL W→V tile naturality equality** (4) gives the same rooted image, and this point is strictly on the genuine remaining mate J-side. For any opposite-parent \(j\), the nonzero charge \(\delta=\pm1\) cannot be repaired by a coarse full deck turn: it vanishes on every possible marked-root subgroup conjugate and on the entire coarse path subgroup. For any same-parent source tile with \(n\ne0\), the native coarse meridian winds \(n\ne0\) about \(D_{0,1}\), whereas the actual marked-root stabilizer winds zero there, as in the merged PR #63 theorem. Thus precisely the class in (9) extends to the fine marked root. The source's existing Kahn root-chart argument makes every other lift over a physical ray landing at \(K_9\) proper in the uncompactified target. \(\square\)
+
+**What is now closed, exactly.** Equations (7)–(9) give a *complete non-finite, source-defined and deck-resolved classification* of the **physical \(K_9\)-landing part of the finite ideal J-boundary of the original ordinary G:W pseudo-piece**. The eight known rays provide exact rational witnesses and a reproducible regression, not a spurious enumeration of the potentially large sets \(E_i\). The entire original \(\lambda_i\) sides, the non-finite wrapping prime ends, KL side path/groupoid words outside this marked subset, and the KKL proof-used proper-restriction condition are **separate and still open**. The Carathéodory, original exterior-sector and Jordan-wake steps remain written imported analytic mathematics and require independent specialist correctness review.
+
+## 6. Exact reproducibility and trust boundary
 
 From the repository root:
 
