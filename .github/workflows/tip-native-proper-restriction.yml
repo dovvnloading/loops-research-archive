@@ -1,0 +1,65 @@
+name: "Native KL genuine two-channel proper-path restriction vs KKL marking"
+
+on:
+  push:
+    branches:
+      - main
+      - 'research/**'
+    paths:
+      - '.github/workflows/tip-native-proper-restriction.yml'
+      - 'research/independent_audits/tip_native_KL_two_proper_restrictions_and_KKL_marking_gate_20261109.md'
+      - 'research/independent_audits/verify_tip_native_two_proper_restrictions.py'
+      - 'results/tip_native_two_proper_restrictions_20261109.json'
+      - 'results/tip_kl_side_atlas.json'
+      - 'TipNativeProperRestriction.lean'
+      - 'TipNativeFullBoundaryTypes.lean'
+      - 'lakefile.toml'
+  pull_request:
+    paths:
+      - '.github/workflows/tip-native-proper-restriction.yml'
+      - 'research/independent_audits/tip_native_KL_two_proper_restrictions_and_KKL_marking_gate_20261109.md'
+      - 'research/independent_audits/verify_tip_native_two_proper_restrictions.py'
+      - 'results/tip_native_two_proper_restrictions_20261109.json'
+      - 'results/tip_kl_side_atlas.json'
+      - 'TipNativeProperRestriction.lean'
+      - 'TipNativeFullBoundaryTypes.lean'
+      - 'lakefile.toml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  original-KL-proper-path-two-channel-audit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Exact original source W-to-V J-side cuts and all integer proper path samples
+        run: |
+          python -m py_compile research/independent_audits/verify_tip_native_two_proper_restrictions.py
+          python research/independent_audits/verify_tip_native_two_proper_restrictions.py --check-manifest
+
+  original-KL-source-finite-Lean:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Reject proof placeholders
+        run: |
+          if grep -En '(^|[^A-Za-z_])(sorry|admit)([^A-Za-z_]|$)' TipNativeProperRestriction.lean; then
+            echo 'No Lean placeholders accepted'
+            exit 1
+          fi
+      - name: Lean kernel build and exact source interval audit
+        uses: leanprover/lean-action@v1
+        with:
+          auto-config: 'false'
+          build: 'true'
+          test: 'false'
+          lint: 'false'
+          use-github-cache: 'false'
+          use-mathlib-cache: 'false'
+      - name: Explicit original source proper path endpoint arithmetic
+        run: lake build TipNativeProperRestriction

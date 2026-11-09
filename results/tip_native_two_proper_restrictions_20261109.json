@@ -1,0 +1,3209 @@
+{
+  "schema_version": 1,
+  "source_scope": "ACTUAL ordinary G=f^3 KL Psi(Y_G^6)->Psi(Y_G^3) inclusion immersion; KKL A.3.2 unmarked set-valued proper-path restriction",
+  "target": "Two original V0 universal carrier tiles; their genuine xi and eta ideal sides",
+  "source": "Four original W universal carrier tiles; two source channels per V parent with source disjointness KL Lemma 3.3",
+  "source_endpoint_reference": "Kahn-Lyubich II Decorations §3.2.1 Lemma 3.3, Lemma 3.4(ii), §3.2.4",
+  "KKL_reference": "Kahn-Kapiamba-Lyubich 2026 Appendix A.1, A.3.2, Proposition A.12 (set-valued proper path restriction; marked selection extra)",
+  "source_W_child_original_side_cuts": [
+    {
+      "W_tile": 0,
+      "V_parent_tile": 0,
+      "source_W_seam": [
+        "41/192",
+        "43/192"
+      ],
+      "target_V_seam": [
+        "5/24",
+        "7/24"
+      ],
+      "proper_xi_original_closed_tail": "[-infinity,5/24]",
+      "proper_eta_original_closed_tail": "[7/24,+infinity]",
+      "xi_interior_collapse_interval": [
+        "5/24",
+        "41/192"
+      ],
+      "eta_interior_collapse_interval": [
+        "43/192",
+        "7/24"
+      ],
+      "strict_xi_interior_collapse_sample": "81/384",
+      "strict_eta_interior_collapse_sample": "99/384",
+      "zero_based_angular_shift": 0,
+      "full_original_xi_eta_lambda_sides_boundary_proper": false
+    },
+    {
+      "W_tile": 1,
+      "V_parent_tile": 0,
+      "source_W_seam": [
+        "53/192",
+        "55/192"
+      ],
+      "target_V_seam": [
+        "5/24",
+        "7/24"
+      ],
+      "proper_xi_original_closed_tail": "[-infinity,5/24]",
+      "proper_eta_original_closed_tail": "[7/24,+infinity]",
+      "xi_interior_collapse_interval": [
+        "5/24",
+        "53/192"
+      ],
+      "eta_interior_collapse_interval": [
+        "55/192",
+        "7/24"
+      ],
+      "strict_xi_interior_collapse_sample": "93/384",
+      "strict_eta_interior_collapse_sample": "111/384",
+      "zero_based_angular_shift": 0,
+      "full_original_xi_eta_lambda_sides_boundary_proper": false
+    },
+    {
+      "W_tile": 2,
+      "V_parent_tile": 1,
+      "source_W_seam": [
+        "137/192",
+        "139/192"
+      ],
+      "target_V_seam": [
+        "17/24",
+        "19/24"
+      ],
+      "proper_xi_original_closed_tail": "[-infinity,17/24]",
+      "proper_eta_original_closed_tail": "[19/24,+infinity]",
+      "xi_interior_collapse_interval": [
+        "17/24",
+        "137/192"
+      ],
+      "eta_interior_collapse_interval": [
+        "139/192",
+        "19/24"
+      ],
+      "strict_xi_interior_collapse_sample": "273/384",
+      "strict_eta_interior_collapse_sample": "291/384",
+      "zero_based_angular_shift": 0,
+      "full_original_xi_eta_lambda_sides_boundary_proper": false
+    },
+    {
+      "W_tile": 3,
+      "V_parent_tile": 1,
+      "source_W_seam": [
+        "149/192",
+        "151/192"
+      ],
+      "target_V_seam": [
+        "17/24",
+        "19/24"
+      ],
+      "proper_xi_original_closed_tail": "[-infinity,17/24]",
+      "proper_eta_original_closed_tail": "[19/24,+infinity]",
+      "xi_interior_collapse_interval": [
+        "17/24",
+        "149/192"
+      ],
+      "eta_interior_collapse_interval": [
+        "151/192",
+        "19/24"
+      ],
+      "strict_xi_interior_collapse_sample": "285/384",
+      "strict_eta_interior_collapse_sample": "303/384",
+      "zero_based_angular_shift": 0,
+      "full_original_xi_eta_lambda_sides_boundary_proper": false
+    }
+  ],
+  "physical_full_deck_untouched": true,
+  "exact_independent_original_11_over_48_collision_confirmed": true,
+  "path_formula": "x_m(s)=-m+(2m+1)*s, t(s)/h=4s(1-s)/128; 0<s<1, m nonnegative integer",
+  "infinite_theorem_written_not_machine_proved": "For EVERY m>=0 and either p=0,1, the same original V-p universal-tile proper path has AT LEAST TWO distinct original W proper restrictions; conditional only on original KL universal-cover/naturality theorem",
+  "finite_tested_target_paths": 128,
+  "finite_tested_source_proper_lift_occurrences": 256,
+  "sampled_target_proper_paths": [
+    {
+      "V_parent_tile": 0,
+      "native_target_universal_tile": "G:V0:tile0",
+      "winding_parameter_m": 0,
+      "target_proper_path_x_start": "0",
+      "target_proper_path_x_end": "1",
+      "target_ideal_ends": [
+        "xi",
+        "eta"
+      ],
+      "two_distinct_source_proper_W_tiles": [
+        0,
+        1
+      ],
+      "two_source_ideal_ends_per_tile": [
+        "xi",
+        "eta"
+      ],
+      "source_target_same_unwrapped_positive_height_path": true,
+      "source_assigned_zero_based_integer_shifts": [
+        0,
+        0
+      ]
+    },
+    {
+      "V_parent_tile": 0,
+      "native_target_universal_tile": "G:V0:tile0",
+      "winding_parameter_m": 1,
+      "target_proper_path_x_start": "-1",
+      "target_proper_path_x_end": "2",
+      "target_ideal_ends": [
+        "xi",
+        "eta"
+      ],
+      "two_distinct_source_proper_W_tiles": [
+        0,
+        1
+      ],
+      "two_source_ideal_ends_per_tile": [
+        "xi",
+        "eta"
+      ],
+      "source_target_same_unwrapped_positive_height_path": true,
+      "source_assigned_zero_based_integer_shifts": [
+        0,
+        0
+      ]
+    },
+    {
+      "V_parent_tile": 0,
+      "native_target_universal_tile": "G:V0:tile0",
+      "winding_parameter_m": 2,
+      "target_proper_path_x_start": "-2",
+      "target_proper_path_x_end": "3",
+      "target_ideal_ends": [
+        "xi",
+        "eta"
+      ],
+      "two_distinct_source_proper_W_tiles": [
+        0,
+        1
+      ],
+      "two_source_ideal_ends_per_tile": [
+        "xi",
+        "eta"
+      ],
+      "source_target_same_unwrapped_positive_height_path": true,
+      "source_assigned_zero_based_integer_shifts": [
+        0,
+        0
+      ]
+    },
+    {
+      "V_parent_tile": 0,
+      "native_target_universal_tile": "G:V0:tile0",
+      "winding_parameter_m": 3,
+      "target_proper_path_x_start": "-3",
+      "target_proper_path_x_end": "4",
+      "target_ideal_ends": [
+        "xi",
+        "eta"
+      ],
+      "two_distinct_source_proper_W_tiles": [
+        0,
+        1
+      ],
+      "two_source_ideal_ends_per_tile": [
+        "xi",
+        "eta"
+      ],
+      "source_target_same_unwrapped_positive_height_path": true,
+      "source_assigned_zero_based_integer_shifts": [
+        0,
+        0
+      ]
+    },
+    {
+      "V_parent_tile": 0,
+      "native_target_universal_tile": "G:V0:tile0",
+      "winding_parameter_m": 4,
+      "target_proper_path_x_start": "-4",
+      "target_proper_path_x_end": "5",
+      "target_ideal_ends": [
+        "xi",
+        "eta"
+      ],
+      "two_distinct_source_proper_W_tiles": [
+        0,
+        1
+      ],
+      "two_source_ideal_ends_per_tile": [
+        "xi",
+        "eta"
+      ],
+      "source_target_same_unwrapped_positive_height_path": true,
+      "source_assigned_zero_based_integer_shifts": [
+        0,
+        0
+      ]
+    },
+    {
+      "V_parent_tile": 0,
+      "native_target_universal_tile": "G:V0:tile0",
+      "winding_parameter_m": 5,
+      "target_proper_path_x_start": "-5",
+      "target_proper_path_x_end": "6",
+      "target_ideal_ends": [
+        "xi",
+        "eta"
+      ],
+      "two_distinct_source_proper_W_tiles": [
+        0,
+        1
+      ],
+      "two_source_ideal_ends_per_tile": [
+        "xi",
+        "eta"
+      ],
+      "source_target_same_unwrapped_positive_height_path": true,
+      "source_assigned_zero_based_integer_shifts": [
+        0,
+        0
+      ]
+    },
+    {
+      "V_parent_tile": 0,
+      "native_target_universal_tile": "G:V0:tile0",
+      "winding_parameter_m": 6,
+      "target_proper_path_x_start": "-6",
+      "target_proper_path_x_end": "7",
+      "target_ideal_ends": [
+        "xi",
+        "eta"
+      ],
+      "two_distinct_source_proper_W_tiles": [
+        0,
+        1
+      ],
+      "two_source_ideal_ends_per_tile": [
+        "xi",
+        "eta"
+      ],
+      "source_target_same_unwrapped_positive_height_path": true,
+      "source_assigned_zero_based_integer_shifts": [
+        0,
+        0
+      ]
+    },
+    {
+      "V_parent_tile": 0,
+      "native_target_universal_tile": "G:V0:tile0",
+      "winding_parameter_m": 7,
+      "target_proper_path_x_start": "-7",
+      "target_proper_path_x_end": "8",
+      "target_ideal_ends": [
+        "xi",
+        "eta"
+      ],
+      "two_distinct_source_proper_W_tiles": [
+        0,
+        1
+      ],
+      "two_source_ideal_ends_per_tile": [
+        "xi",
+        "eta"
+      ],
+      "source_target_same_unwrapped_positive_height_path": true,
+      "source_assigned_zero_based_integer_shifts": [
+        0,
+        0
+      ]
+    },
+    {
+      "V_parent_tile": 0,
+      "native_target_universal_tile": "G:V0:tile0",
+      "winding_parameter_m": 8,
+      "target_proper_path_x_start": "-8",
+      "target_proper_path_x_end": "9",
+      "target_ideal_ends": [
+        "xi",
+        "eta"
+      ],
+      "two_distinct_source_proper_W_tiles": [
+        0,
+        1
+      ],
+      "two_source_ideal_ends_per_tile": [
+        "xi",
+        "eta"
+      ],
+      "source_target_same_unwrapped_positive_height_path": true,
+      "source_assigned_zero_based_integer_shifts": [
+        0,
+        0
+      ]
+    },
+    {
+      "V_parent_tile": 0,
+      "native_target_universal_tile": "G:V0:tile0",
+      "winding_parameter_m": 9,
+      "target_proper_path_x_start": "-9",
+      "target_proper_path_x_end": "10",
+      "target_ideal_ends": [
+        "xi",
+        "eta"
+      ],
+      "two_distinct_source_proper_W_tiles": [
+        0,
+        1
+      ],
+      "two_source_ideal_ends_per_tile": [
+        "xi",
+        "eta"
+      ],
+      "source_target_same_unwrapped_positive_height_path": true,
+      "source_assigned_zero_based_integer_shifts": [
+        0,
+        0
+      ]
+    },
+    {
+      "V_parent_tile": 0,
+      "native_target_universal_tile": "G:V0:tile0",
+      "winding_parameter_m": 10,
+      "target_proper_path_x_start": "-10",
+      "target_proper_path_x_end": "11",
+      "target_ideal_ends": [
+        "xi",
+        "eta"
+      ],
+      "two_distinct_source_proper_W_tiles": [
+        0,
+        1
+      ],
+      "two_source_ideal_ends_per_tile": [
+        "xi",
+        "eta"
+      ],
+      "source_target_same_unwrapped_positive_height_path": true,
+      "source_assigned_zero_based_integer_shifts": [
+        0,
+        0
+      ]
+    },
+    {
+      "V_parent_tile": 0,
+      "native_target_universal_tile": "G:V0:tile0",
+      "winding_parameter_m": 11,
+      "target_proper_path_x_start": "-11",
+      "target_proper_path_x_end": "12",
+      "target_ideal_ends": [
+        "xi",
+        "eta"
+      ],
+      "two_distinct_source_proper_W_tiles": [
+        0,
+        1
+      ],
+      "two_source_ideal_ends_per_tile": [
+        "xi",
+        "eta"
+      ],
+      "source_target_same_unwrapped_positive_height_path": true,
+      "source_assigned_zero_based_integer_shifts": [
+        0,
+        0
+      ]
+    },
+    {
+      "V_parent_tile": 0,
+      "native_target_universal_tile": "G:V0:tile0",
+      "winding_parameter_m": 12,
+      "target_proper_path_x_start": "-12",
+      "target_proper_path_x_end": "13",
+      "target_ideal_ends": [
+        "xi",
+        "eta"
+      ],
+      "two_distinct_source_proper_W_tiles": [
+        0,
+        1
+      ],
+      "two_source_ideal_ends_per_tile": [
+        "xi",
+        "eta"
+      ],
+      "source_target_same_unwrapped_positive_height_path": true,
+      "source_assigned_zero_based_integer_shifts": [
+        0,
+        0
+      ]
+    },
+    {
+      "V_parent_tile": 0,
+      "native_target_universal_tile": "G:V0:tile0",
+      "winding_parameter_m": 13,
+      "target_proper_path_x_start": "-13",
+      "target_proper_path_x_end": "14",
+      "target_ideal_ends": [
+        "xi",
+        "eta"
+      ],
+      "two_distinct_source_proper_W_tiles": [
+        0,
+        1
+      ],
+      "two_source_ideal_ends_per_tile": [
+        "xi",
+        "eta"
+      ],
+      "source_target_same_unwrapped_positive_height_path": true,
+      "source_assigned_zero_based_integer_shifts": [
+        0,
+        0
+      ]
+    },
+    {
+      "V_parent_tile": 0,
+      "native_target_universal_tile": "G:V0:tile0",
+      "winding_parameter_m": 14,
+      "target_proper_path_x_start": "-14",
+      "target_proper_path_x_end": "15",
+      "target_ideal_ends": [
+        "xi",
+        "eta"
+      ],
+      "two_distinct_source_proper_W_tiles": [
+        0,
+        1
+      ],
+      "two_source_ideal_ends_per_tile": [
+        "xi",
+        "eta"
+      ],
+      "source_target_same_unwrapped_positive_height_path": true,
+      "source_assigned_zero_based_integer_shifts": [
+        0,
+        0
+      ]
+    },
+    {
+      "V_parent_tile": 0,
+      "native_target_universal_tile": "G:V0:tile0",
+      "winding_parameter_m": 15,
+      "target_proper_path_x_start": "-15",
+      "target_proper_path_x_end": "16",
+      "target_ideal_ends": [
+        "xi",
+        "eta"
+      ],
+      "two_distinct_source_proper_W_tiles": [
+        0,
+        1
+      ],
+      "two_source_ideal_ends_per_tile": [
+        "xi",
+        "eta"
+      ],
+      "source_target_same_unwrapped_positive_height_path": true,
+      "source_assigned_zero_based_integer_shifts": [
+        0,
+        0
+      ]
+    },
+    {
+      "V_parent_tile": 0,
+      "native_target_universal_tile": "G:V0:tile0",
+      "winding_parameter_m": 16,
+      "target_proper_path_x_start": "-16",
+      "target_proper_path_x_end": "17",
+      "target_ideal_ends": [
+        "xi",
+        "eta"
+      ],
+      "two_distinct_source_proper_W_tiles": [
+        0,
+        1
+      ],
+      "two_source_ideal_ends_per_tile": [
+        "xi",
+        "eta"
+      ],
+      "source_target_same_unwrapped_positive_height_path": true,
+      "source_assigned_zero_based_integer_shifts": [
+        0,
+        0
+      ]
+    },
+    {
+      "V_parent_tile": 0,
+      "native_target_universal_tile": "G:V0:tile0",
+      "winding_parameter_m": 17,
+      "target_proper_path_x_start": "-17",
+      "target_proper_path_x_end": "18",
+      "target_ideal_ends": [
+        "xi",
+        "eta"
+      ],
+      "two_distinct_source_proper_W_tiles": [
+        0,
+        1
+      ],
+      "two_source_ideal_ends_per_tile": [
+        "xi",
+        "eta"
+      ],
+      "source_target_same_unwrapped_positive_height_path": true,
+      "source_assigned_zero_based_integer_shifts": [
+        0,
+        0
+      ]
+    },
+    {
+      "V_parent_tile": 0,
+      "native_target_universal_tile": "G:V0:tile0",
+      "winding_parameter_m": 18,
+      "target_proper_path_x_start": "-18",
+      "target_proper_path_x_end": "19",
+      "target_ideal_ends": [
+        "xi",
+        "eta"
+      ],
+      "two_distinct_source_proper_W_tiles": [
+        0,
+        1
+      ],
+      "two_source_ideal_ends_per_tile": [
+        "xi",
+        "eta"
+      ],
+      "source_target_same_unwrapped_positive_height_path": true,
+      "source_assigned_zero_based_integer_shifts": [
+        0,
+        0
+      ]
+    },
+    {
+      "V_parent_tile": 0,
+      "native_target_universal_tile": "G:V0:tile0",
+      "winding_parameter_m": 19,
+      "target_proper_path_x_start": "-19",
+      "target_proper_path_x_end": "20",
+      "target_ideal_ends": [
+        "xi",
+        "eta"
+      ],
+      "two_distinct_source_proper_W_tiles": [
+        0,
+        1
+      ],
+      "two_source_ideal_ends_per_tile": [
+        "xi",
+        "eta"
+      ],
+      "source_target_same_unwrapped_positive_height_path": true,
+      "source_assigned_zero_based_integer_shifts": [
+        0,
+        0
+      ]
+    },
+    {
+      "V_parent_tile": 0,
+      "native_target_universal_tile": "G:V0:tile0",
+      "winding_parameter_m": 20,
+      "target_proper_path_x_start": "-20",
+      "target_proper_path_x_end": "21",
+      "target_ideal_ends": [
+        "xi",
+        "eta"
+      ],
+      "two_distinct_source_proper_W_tiles": [
+        0,
+        1
+      ],
+      "two_source_ideal_ends_per_tile": [
+        "xi",
+        "eta"
+      ],
+      "source_target_same_unwrapped_positive_height_path": true,
+      "source_assigned_zero_based_integer_shifts": [
+        0,
+        0
+      ]
+    },
+    {
+      "V_parent_tile": 0,
+      "native_target_universal_tile": "G:V0:tile0",
+      "winding_parameter_m": 21,
+      "target_proper_path_x_start": "-21",
+      "target_proper_path_x_end": "22",
+      "target_ideal_ends": [
+        "xi",
+        "eta"
+      ],
+      "two_distinct_source_proper_W_tiles": [
+        0,
+        1
+      ],
+      "two_source_ideal_ends_per_tile": [
+        "xi",
+        "eta"
+      ],
+      "source_target_same_unwrapped_positive_height_path": true,
+      "source_assigned_zero_based_integer_shifts": [
+        0,
+        0
+      ]
+    },
+    {
+      "V_parent_tile": 0,
+      "native_target_universal_tile": "G:V0:tile0",
+      "winding_parameter_m": 22,
+      "target_proper_path_x_start": "-22",
+      "target_proper_path_x_end": "23",
+      "target_ideal_ends": [
+        "xi",
+        "eta"
+      ],
+      "two_distinct_source_proper_W_tiles": [
+        0,
+        1
+      ],
+      "two_source_ideal_ends_per_tile": [
+        "xi",
+        "eta"
+      ],
+      "source_target_same_unwrapped_positive_height_path": true,
+      "source_assigned_zero_based_integer_shifts": [
+        0,
+        0
+      ]
+    },
+    {
+      "V_parent_tile": 0,
+      "native_target_universal_tile": "G:V0:tile0",
+      "winding_parameter_m": 23,
+      "target_proper_path_x_start": "-23",
+      "target_proper_path_x_end": "24",
+      "target_ideal_ends": [
+        "xi",
+        "eta"
+      ],
+      "two_distinct_source_proper_W_tiles": [
+        0,
+        1
+      ],
+      "two_source_ideal_ends_per_tile": [
+        "xi",
+        "eta"
+      ],
+      "source_target_same_unwrapped_positive_height_path": true,
+      "source_assigned_zero_based_integer_shifts": [
+        0,
+        0
+      ]
+    },
+    {
+      "V_parent_tile": 0,
+      "native_target_universal_tile": "G:V0:tile0",
+      "winding_parameter_m": 24,
+      "target_proper_path_x_start": "-24",
+      "target_proper_path_x_end": "25",
+      "target_ideal_ends": [
+        "xi",
+        "eta"
+      ],
+      "two_distinct_source_proper_W_tiles": [
+        0,
+        1
+      ],
+      "two_source_ideal_ends_per_tile": [
+        "xi",
+        "eta"
+      ],
+      "source_target_same_unwrapped_positive_height_path": true,
+      "source_assigned_zero_based_integer_shifts": [
+        0,
+        0
+      ]
+    },
+    {
+      "V_parent_tile": 0,
+      "native_target_universal_tile": "G:V0:tile0",
+      "winding_parameter_m": 25,
+      "target_proper_path_x_start": "-25",
+      "target_proper_path_x_end": "26",
+      "target_ideal_ends": [
+        "xi",
+        "eta"
+      ],
+      "two_distinct_source_proper_W_tiles": [
+        0,
+        1
+      ],
+      "two_source_ideal_ends_per_tile": [
+        "xi",
+        "eta"
+      ],
+      "source_target_same_unwrapped_positive_height_path": true,
+      "source_assigned_zero_based_integer_shifts": [
+        0,
+        0
+      ]
+    },
+    {
+      "V_parent_tile": 0,
+      "native_target_universal_tile": "G:V0:tile0",
+      "winding_parameter_m": 26,
+      "target_proper_path_x_start": "-26",
+      "target_proper_path_x_end": "27",
+      "target_ideal_ends": [
+        "xi",
+        "eta"
+      ],
+      "two_distinct_source_proper_W_tiles": [
+        0,
+        1
+      ],
+      "two_source_ideal_ends_per_tile": [
+        "xi",
+        "eta"
+      ],
+      "source_target_same_unwrapped_positive_height_path": true,
+      "source_assigned_zero_based_integer_shifts": [
+        0,
+        0
+      ]
+    },
+    {
+      "V_parent_tile": 0,
+      "native_target_universal_tile": "G:V0:tile0",
+      "winding_parameter_m": 27,
+      "target_proper_path_x_start": "-27",
+      "target_proper_path_x_end": "28",
+      "target_ideal_ends": [
+        "xi",
+        "eta"
+      ],
+      "two_distinct_source_proper_W_tiles": [
+        0,
+        1
+      ],
+      "two_source_ideal_ends_per_tile": [
+        "xi",
+        "eta"
+      ],
+      "source_target_same_unwrapped_positive_height_path": true,
+      "source_assigned_zero_based_integer_shifts": [
+        0,
+        0
+      ]
+    },
+    {
+      "V_parent_tile": 0,
+      "native_target_universal_tile": "G:V0:tile0",
+      "winding_parameter_m": 28,
+      "target_proper_path_x_start": "-28",
+      "target_proper_path_x_end": "29",
+      "target_ideal_ends": [
+        "xi",
+        "eta"
+      ],
+      "two_distinct_source_proper_W_tiles": [
+        0,
+        1
+      ],
+      "two_source_ideal_ends_per_tile": [
+        "xi",
+        "eta"
+      ],
+      "source_target_same_unwrapped_positive_height_path": true,
+      "source_assigned_zero_based_integer_shifts": [
+        0,
+        0
+      ]
+    },
+    {
+      "V_parent_tile": 0,
+      "native_target_universal_tile": "G:V0:tile0",
+      "winding_parameter_m": 29,
+      "target_proper_path_x_start": "-29",
+      "target_proper_path_x_end": "30",
+      "target_ideal_ends": [
+        "xi",
+        "eta"
+      ],
+      "two_distinct_source_proper_W_tiles": [
+        0,
+        1
+      ],
+      "two_source_ideal_ends_per_tile": [
+        "xi",
+        "eta"
+      ],
+      "source_target_same_unwrapped_positive_height_path": true,
+      "source_assigned_zero_based_integer_shifts": [
+        0,
+        0
+      ]
+    },
+    {
+      "V_parent_tile": 0,
+      "native_target_universal_tile": "G:V0:tile0",
+      "winding_parameter_m": 30,
+      "target_proper_path_x_start": "-30",
+      "target_proper_path_x_end": "31",
+      "target_ideal_ends": [
+        "xi",
+        "eta"
+      ],
+      "two_distinct_source_proper_W_tiles": [
+        0,
+        1
+      ],
+      "two_source_ideal_ends_per_tile": [
+        "xi",
+        "eta"
+      ],
+      "source_target_same_unwrapped_positive_height_path": true,
+      "source_assigned_zero_based_integer_shifts": [
+        0,
+        0
+      ]
+    },
+    {
+      "V_parent_tile": 0,
+      "native_target_universal_tile": "G:V0:tile0",
+      "winding_parameter_m": 31,
+      "target_proper_path_x_start": "-31",
+      "target_proper_path_x_end": "32",
+      "target_ideal_ends": [
+        "xi",
+        "eta"
+      ],
+      "two_distinct_source_proper_W_tiles": [
+        0,
+        1
+      ],
+      "two_source_ideal_ends_per_tile": [
+        "xi",
+        "eta"
+      ],
+      "source_target_same_unwrapped_positive_height_path": true,
+      "source_assigned_zero_based_integer_shifts": [
+        0,
+        0
+      ]
+    },
+    {
+      "V_parent_tile": 0,
+      "native_target_universal_tile": "G:V0:tile0",
+      "winding_parameter_m": 32,
+      "target_proper_path_x_start": "-32",
+      "target_proper_path_x_end": "33",
+      "target_ideal_ends": [
+        "xi",
+        "eta"
+      ],
+      "two_distinct_source_proper_W_tiles": [
+        0,
+        1
+      ],
+      "two_source_ideal_ends_per_tile": [
+        "xi",
+        "eta"
+      ],
+      "source_target_same_unwrapped_positive_height_path": true,
+      "source_assigned_zero_based_integer_shifts": [
+        0,
+        0
+      ]
+    },
+    {
+      "V_parent_tile": 0,
+      "native_target_universal_tile": "G:V0:tile0",
+      "winding_parameter_m": 33,
+      "target_proper_path_x_start": "-33",
+      "target_proper_path_x_end": "34",
+      "target_ideal_ends": [
+        "xi",
+        "eta"
+      ],
+      "two_distinct_source_proper_W_tiles": [
+        0,
+        1
+      ],
+      "two_source_ideal_ends_per_tile": [
+        "xi",
+        "eta"
+      ],
+      "source_target_same_unwrapped_positive_height_path": true,
+      "source_assigned_zero_based_integer_shifts": [
+        0,
+        0
+      ]
+    },
+    {
+      "V_parent_tile": 0,
+      "native_target_universal_tile": "G:V0:tile0",
+      "winding_parameter_m": 34,
+      "target_proper_path_x_start": "-34",
+      "target_proper_path_x_end": "35",
+      "target_ideal_ends": [
+        "xi",
+        "eta"
+      ],
+      "two_distinct_source_proper_W_tiles": [
+        0,
+        1
+      ],
+      "two_source_ideal_ends_per_tile": [
+        "xi",
+        "eta"
+      ],
+      "source_target_same_unwrapped_positive_height_path": true,
+      "source_assigned_zero_based_integer_shifts": [
+        0,
+        0
+      ]
+    },
+    {
+      "V_parent_tile": 0,
+      "native_target_universal_tile": "G:V0:tile0",
+      "winding_parameter_m": 35,
+      "target_proper_path_x_start": "-35",
+      "target_proper_path_x_end": "36",
+      "target_ideal_ends": [
+        "xi",
+        "eta"
+      ],
+      "two_distinct_source_proper_W_tiles": [
+        0,
+        1
+      ],
+      "two_source_ideal_ends_per_tile": [
+        "xi",
+        "eta"
+      ],
+      "source_target_same_unwrapped_positive_height_path": true,
+      "source_assigned_zero_based_integer_shifts": [
+        0,
+        0
+      ]
+    },
+    {
+      "V_parent_tile": 0,
+      "native_target_universal_tile": "G:V0:tile0",
+      "winding_parameter_m": 36,
+      "target_proper_path_x_start": "-36",
+      "target_proper_path_x_end": "37",
+      "target_ideal_ends": [
+        "xi",
+        "eta"
+      ],
+      "two_distinct_source_proper_W_tiles": [
+        0,
+        1
+      ],
+      "two_source_ideal_ends_per_tile": [
+        "xi",
+        "eta"
+      ],
+      "source_target_same_unwrapped_positive_height_path": true,
+      "source_assigned_zero_based_integer_shifts": [
+        0,
+        0
+      ]
+    },
+    {
+      "V_parent_tile": 0,
+      "native_target_universal_tile": "G:V0:tile0",
+      "winding_parameter_m": 37,
+      "target_proper_path_x_start": "-37",
+      "target_proper_path_x_end": "38",
+      "target_ideal_ends": [
+        "xi",
+        "eta"
+      ],
+      "two_distinct_source_proper_W_tiles": [
+        0,
+        1
+      ],
+      "two_source_ideal_ends_per_tile": [
+        "xi",
+        "eta"
+      ],
+      "source_target_same_unwrapped_positive_height_path": true,
+      "source_assigned_zero_based_integer_shifts": [
+        0,
+        0
+      ]
+    },
+    {
+      "V_parent_tile": 0,
+      "native_target_universal_tile": "G:V0:tile0",
+      "winding_parameter_m": 38,
+      "target_proper_path_x_start": "-38",
+      "target_proper_path_x_end": "39",
+      "target_ideal_ends": [
+        "xi",
+        "eta"
+      ],
+      "two_distinct_source_proper_W_tiles": [
+        0,
+        1
+      ],
+      "two_source_ideal_ends_per_tile": [
+        "xi",
+        "eta"
+      ],
+      "source_target_same_unwrapped_positive_height_path": true,
+      "source_assigned_zero_based_integer_shifts": [
+        0,
+        0
+      ]
+    },
+    {
+      "V_parent_tile": 0,
+      "native_target_universal_tile": "G:V0:tile0",
+      "winding_parameter_m": 39,
+      "target_proper_path_x_start": "-39",
+      "target_proper_path_x_end": "40",
+      "target_ideal_ends": [
+        "xi",
+        "eta"
+      ],
+      "two_distinct_source_proper_W_tiles": [
+        0,
+        1
+      ],
+      "two_source_ideal_ends_per_tile": [
+        "xi",
+        "eta"
+      ],
+      "source_target_same_unwrapped_positive_height_path": true,
+      "source_assigned_zero_based_integer_shifts": [
+        0,
+        0
+      ]
+    },
+    {
+      "V_parent_tile": 0,
+      "native_target_universal_tile": "G:V0:tile0",
+      "winding_parameter_m": 40,
+      "target_proper_path_x_start": "-40",
+      "target_proper_path_x_end": "41",
+      "target_ideal_ends": [
+        "xi",
+        "eta"
+      ],
+      "two_distinct_source_proper_W_tiles": [
+        0,
+        1
+      ],
+      "two_source_ideal_ends_per_tile": [
+        "xi",
+        "eta"
+      ],
+      "source_target_same_unwrapped_positive_height_path": true,
+      "source_assigned_zero_based_integer_shifts": [
+        0,
+        0
+      ]
+    },
+    {
+      "V_parent_tile": 0,
+      "native_target_universal_tile": "G:V0:tile0",
+      "winding_parameter_m": 41,
+      "target_proper_path_x_start": "-41",
+      "target_proper_path_x_end": "42",
+      "target_ideal_ends": [
+        "xi",
+        "eta"
+      ],
+      "two_distinct_source_proper_W_tiles": [
+        0,
+        1
+      ],
+      "two_source_ideal_ends_per_tile": [
+        "xi",
+        "eta"
+      ],
+      "source_target_same_unwrapped_positive_height_path": true,
+      "source_assigned_zero_based_integer_shifts": [
+        0,
+        0
+      ]
+    },
+    {
+      "V_parent_tile": 0,
+      "native_target_universal_tile": "G:V0:tile0",
+      "winding_parameter_m": 42,
+      "target_proper_path_x_start": "-42",
+      "target_proper_path_x_end": "43",
+      "target_ideal_ends": [
+        "xi",
+        "eta"
+      ],
+      "two_distinct_source_proper_W_tiles": [
+        0,
+        1
+      ],
+      "two_source_ideal_ends_per_tile": [
+        "xi",
+        "eta"
+      ],
+      "source_target_same_unwrapped_positive_height_path": true,
+      "source_assigned_zero_based_integer_shifts": [
+        0,
+        0
+      ]
+    },
+    {
+      "V_parent_tile": 0,
+      "native_target_universal_tile": "G:V0:tile0",
+      "winding_parameter_m": 43,
+      "target_proper_path_x_start": "-43",
+      "target_proper_path_x_end": "44",
+      "target_ideal_ends": [
+        "xi",
+        "eta"
+      ],
+      "two_distinct_source_proper_W_tiles": [
+        0,
+        1
+      ],
+      "two_source_ideal_ends_per_tile": [
+        "xi",
+        "eta"
+      ],
+      "source_target_same_unwrapped_positive_height_path": true,
+      "source_assigned_zero_based_integer_shifts": [
+        0,
+        0
+      ]
+    },
+    {
+      "V_parent_tile": 0,
+      "native_target_universal_tile": "G:V0:tile0",
+      "winding_parameter_m": 44,
+      "target_proper_path_x_start": "-44",
+      "target_proper_path_x_end": "45",
+      "target_ideal_ends": [
+        "xi",
+        "eta"
+      ],
+      "two_distinct_source_proper_W_tiles": [
+        0,
+        1
+      ],
+      "two_source_ideal_ends_per_tile": [
+        "xi",
+        "eta"
+      ],
+      "source_target_same_unwrapped_positive_height_path": true,
+      "source_assigned_zero_based_integer_shifts": [
+        0,
+        0
+      ]
+    },
+    {
+      "V_parent_tile": 0,
+      "native_target_universal_tile": "G:V0:tile0",
+      "winding_parameter_m": 45,
+      "target_proper_path_x_start": "-45",
+      "target_proper_path_x_end": "46",
+      "target_ideal_ends": [
+        "xi",
+        "eta"
+      ],
+      "two_distinct_source_proper_W_tiles": [
+        0,
+        1
+      ],
+      "two_source_ideal_ends_per_tile": [
+        "xi",
+        "eta"
+      ],
+      "source_target_same_unwrapped_positive_height_path": true,
+      "source_assigned_zero_based_integer_shifts": [
+        0,
+        0
+      ]
+    },
+    {
+      "V_parent_tile": 0,
+      "native_target_universal_tile": "G:V0:tile0",
+      "winding_parameter_m": 46,
+      "target_proper_path_x_start": "-46",
+      "target_proper_path_x_end": "47",
+      "target_ideal_ends": [
+        "xi",
+        "eta"
+      ],
+      "two_distinct_source_proper_W_tiles": [
+        0,
+        1
+      ],
+      "two_source_ideal_ends_per_tile": [
+        "xi",
+        "eta"
+      ],
+      "source_target_same_unwrapped_positive_height_path": true,
+      "source_assigned_zero_based_integer_shifts": [
+        0,
+        0
+      ]
+    },
+    {
+      "V_parent_tile": 0,
+      "native_target_universal_tile": "G:V0:tile0",
+      "winding_parameter_m": 47,
+      "target_proper_path_x_start": "-47",
+      "target_proper_path_x_end": "48",
+      "target_ideal_ends": [
+        "xi",
+        "eta"
+      ],
+      "two_distinct_source_proper_W_tiles": [
+        0,
+        1
+      ],
+      "two_source_ideal_ends_per_tile": [
+        "xi",
+        "eta"
+      ],
+      "source_target_same_unwrapped_positive_height_path": true,
+      "source_assigned_zero_based_integer_shifts": [
+        0,
+        0
+      ]
+    },
+    {
+      "V_parent_tile": 0,
+      "native_target_universal_tile": "G:V0:tile0",
+      "winding_parameter_m": 48,
+      "target_proper_path_x_start": "-48",
+      "target_proper_path_x_end": "49",
+      "target_ideal_ends": [
+        "xi",
+        "eta"
+      ],
+      "two_distinct_source_proper_W_tiles": [
+        0,
+        1
+      ],
+      "two_source_ideal_ends_per_tile": [
+        "xi",
+        "eta"
+      ],
+      "source_target_same_unwrapped_positive_height_path": true,
+      "source_assigned_zero_based_integer_shifts": [
+        0,
+        0
+      ]
+    },
+    {
+      "V_parent_tile": 0,
+      "native_target_universal_tile": "G:V0:tile0",
+      "winding_parameter_m": 49,
+      "target_proper_path_x_start": "-49",
+      "target_proper_path_x_end": "50",
+      "target_ideal_ends": [
+        "xi",
+        "eta"
+      ],
+      "two_distinct_source_proper_W_tiles": [
+        0,
+        1
+      ],
+      "two_source_ideal_ends_per_tile": [
+        "xi",
+        "eta"
+      ],
+      "source_target_same_unwrapped_positive_height_path": true,
+      "source_assigned_zero_based_integer_shifts": [
+        0,
+        0
+      ]
+    },
+    {
+      "V_parent_tile": 0,
+      "native_target_universal_tile": "G:V0:tile0",
+      "winding_parameter_m": 50,
+      "target_proper_path_x_start": "-50",
+      "target_proper_path_x_end": "51",
+      "target_ideal_ends": [
+        "xi",
+        "eta"
+      ],
+      "two_distinct_source_proper_W_tiles": [
+        0,
+        1
+      ],
+      "two_source_ideal_ends_per_tile": [
+        "xi",
+        "eta"
+      ],
+      "source_target_same_unwrapped_positive_height_path": true,
+      "source_assigned_zero_based_integer_shifts": [
+        0,
+        0
+      ]
+    },
+    {
+      "V_parent_tile": 0,
+      "native_target_universal_tile": "G:V0:tile0",
+      "winding_parameter_m": 51,
+      "target_proper_path_x_start": "-51",
+      "target_proper_path_x_end": "52",
+      "target_ideal_ends": [
+        "xi",
+        "eta"
+      ],
+      "two_distinct_source_proper_W_tiles": [
+        0,
+        1
+      ],
+      "two_source_ideal_ends_per_tile": [
+        "xi",
+        "eta"
+      ],
+      "source_target_same_unwrapped_positive_height_path": true,
+      "source_assigned_zero_based_integer_shifts": [
+        0,
+        0
+      ]
+    },
+    {
+      "V_parent_tile": 0,
+      "native_target_universal_tile": "G:V0:tile0",
+      "winding_parameter_m": 52,
+      "target_proper_path_x_start": "-52",
+      "target_proper_path_x_end": "53",
+      "target_ideal_ends": [
+        "xi",
+        "eta"
+      ],
+      "two_distinct_source_proper_W_tiles": [
+        0,
+        1
+      ],
+      "two_source_ideal_ends_per_tile": [
+        "xi",
+        "eta"
+      ],
+      "source_target_same_unwrapped_positive_height_path": true,
+      "source_assigned_zero_based_integer_shifts": [
+        0,
+        0
+      ]
+    },
+    {
+      "V_parent_tile": 0,
+      "native_target_universal_tile": "G:V0:tile0",
+      "winding_parameter_m": 53,
+      "target_proper_path_x_start": "-53",
+      "target_proper_path_x_end": "54",
+      "target_ideal_ends": [
+        "xi",
+        "eta"
+      ],
+      "two_distinct_source_proper_W_tiles": [
+        0,
+        1
+      ],
+      "two_source_ideal_ends_per_tile": [
+        "xi",
+        "eta"
+      ],
+      "source_target_same_unwrapped_positive_height_path": true,
+      "source_assigned_zero_based_integer_shifts": [
+        0,
+        0
+      ]
+    },
+    {
+      "V_parent_tile": 0,
+      "native_target_universal_tile": "G:V0:tile0",
+      "winding_parameter_m": 54,
+      "target_proper_path_x_start": "-54",
+      "target_proper_path_x_end": "55",
+      "target_ideal_ends": [
+        "xi",
+        "eta"
+      ],
+      "two_distinct_source_proper_W_tiles": [
+        0,
+        1
+      ],
+      "two_source_ideal_ends_per_tile": [
+        "xi",
+        "eta"
+      ],
+      "source_target_same_unwrapped_positive_height_path": true,
+      "source_assigned_zero_based_integer_shifts": [
+        0,
+        0
+      ]
+    },
+    {
+      "V_parent_tile": 0,
+      "native_target_universal_tile": "G:V0:tile0",
+      "winding_parameter_m": 55,
+      "target_proper_path_x_start": "-55",
+      "target_proper_path_x_end": "56",
+      "target_ideal_ends": [
+        "xi",
+        "eta"
+      ],
+      "two_distinct_source_proper_W_tiles": [
+        0,
+        1
+      ],
+      "two_source_ideal_ends_per_tile": [
+        "xi",
+        "eta"
+      ],
+      "source_target_same_unwrapped_positive_height_path": true,
+      "source_assigned_zero_based_integer_shifts": [
+        0,
+        0
+      ]
+    },
+    {
+      "V_parent_tile": 0,
+      "native_target_universal_tile": "G:V0:tile0",
+      "winding_parameter_m": 56,
+      "target_proper_path_x_start": "-56",
+      "target_proper_path_x_end": "57",
+      "target_ideal_ends": [
+        "xi",
+        "eta"
+      ],
+      "two_distinct_source_proper_W_tiles": [
+        0,
+        1
+      ],
+      "two_source_ideal_ends_per_tile": [
+        "xi",
+        "eta"
+      ],
+      "source_target_same_unwrapped_positive_height_path": true,
+      "source_assigned_zero_based_integer_shifts": [
+        0,
+        0
+      ]
+    },
+    {
+      "V_parent_tile": 0,
+      "native_target_universal_tile": "G:V0:tile0",
+      "winding_parameter_m": 57,
+      "target_proper_path_x_start": "-57",
+      "target_proper_path_x_end": "58",
+      "target_ideal_ends": [
+        "xi",
+        "eta"
+      ],
+      "two_distinct_source_proper_W_tiles": [
+        0,
+        1
+      ],
+      "two_source_ideal_ends_per_tile": [
+        "xi",
+        "eta"
+      ],
+      "source_target_same_unwrapped_positive_height_path": true,
+      "source_assigned_zero_based_integer_shifts": [
+        0,
+        0
+      ]
+    },
+    {
+      "V_parent_tile": 0,
+      "native_target_universal_tile": "G:V0:tile0",
+      "winding_parameter_m": 58,
+      "target_proper_path_x_start": "-58",
+      "target_proper_path_x_end": "59",
+      "target_ideal_ends": [
+        "xi",
+        "eta"
+      ],
+      "two_distinct_source_proper_W_tiles": [
+        0,
+        1
+      ],
+      "two_source_ideal_ends_per_tile": [
+        "xi",
+        "eta"
+      ],
+      "source_target_same_unwrapped_positive_height_path": true,
+      "source_assigned_zero_based_integer_shifts": [
+        0,
+        0
+      ]
+    },
+    {
+      "V_parent_tile": 0,
+      "native_target_universal_tile": "G:V0:tile0",
+      "winding_parameter_m": 59,
+      "target_proper_path_x_start": "-59",
+      "target_proper_path_x_end": "60",
+      "target_ideal_ends": [
+        "xi",
+        "eta"
+      ],
+      "two_distinct_source_proper_W_tiles": [
+        0,
+        1
+      ],
+      "two_source_ideal_ends_per_tile": [
+        "xi",
+        "eta"
+      ],
+      "source_target_same_unwrapped_positive_height_path": true,
+      "source_assigned_zero_based_integer_shifts": [
+        0,
+        0
+      ]
+    },
+    {
+      "V_parent_tile": 0,
+      "native_target_universal_tile": "G:V0:tile0",
+      "winding_parameter_m": 60,
+      "target_proper_path_x_start": "-60",
+      "target_proper_path_x_end": "61",
+      "target_ideal_ends": [
+        "xi",
+        "eta"
+      ],
+      "two_distinct_source_proper_W_tiles": [
+        0,
+        1
+      ],
+      "two_source_ideal_ends_per_tile": [
+        "xi",
+        "eta"
+      ],
+      "source_target_same_unwrapped_positive_height_path": true,
+      "source_assigned_zero_based_integer_shifts": [
+        0,
+        0
+      ]
+    },
+    {
+      "V_parent_tile": 0,
+      "native_target_universal_tile": "G:V0:tile0",
+      "winding_parameter_m": 61,
+      "target_proper_path_x_start": "-61",
+      "target_proper_path_x_end": "62",
+      "target_ideal_ends": [
+        "xi",
+        "eta"
+      ],
+      "two_distinct_source_proper_W_tiles": [
+        0,
+        1
+      ],
+      "two_source_ideal_ends_per_tile": [
+        "xi",
+        "eta"
+      ],
+      "source_target_same_unwrapped_positive_height_path": true,
+      "source_assigned_zero_based_integer_shifts": [
+        0,
+        0
+      ]
+    },
+    {
+      "V_parent_tile": 0,
+      "native_target_universal_tile": "G:V0:tile0",
+      "winding_parameter_m": 62,
+      "target_proper_path_x_start": "-62",
+      "target_proper_path_x_end": "63",
+      "target_ideal_ends": [
+        "xi",
+        "eta"
+      ],
+      "two_distinct_source_proper_W_tiles": [
+        0,
+        1
+      ],
+      "two_source_ideal_ends_per_tile": [
+        "xi",
+        "eta"
+      ],
+      "source_target_same_unwrapped_positive_height_path": true,
+      "source_assigned_zero_based_integer_shifts": [
+        0,
+        0
+      ]
+    },
+    {
+      "V_parent_tile": 0,
+      "native_target_universal_tile": "G:V0:tile0",
+      "winding_parameter_m": 63,
+      "target_proper_path_x_start": "-63",
+      "target_proper_path_x_end": "64",
+      "target_ideal_ends": [
+        "xi",
+        "eta"
+      ],
+      "two_distinct_source_proper_W_tiles": [
+        0,
+        1
+      ],
+      "two_source_ideal_ends_per_tile": [
+        "xi",
+        "eta"
+      ],
+      "source_target_same_unwrapped_positive_height_path": true,
+      "source_assigned_zero_based_integer_shifts": [
+        0,
+        0
+      ]
+    },
+    {
+      "V_parent_tile": 1,
+      "native_target_universal_tile": "G:V0:tile1",
+      "winding_parameter_m": 0,
+      "target_proper_path_x_start": "0",
+      "target_proper_path_x_end": "1",
+      "target_ideal_ends": [
+        "xi",
+        "eta"
+      ],
+      "two_distinct_source_proper_W_tiles": [
+        2,
+        3
+      ],
+      "two_source_ideal_ends_per_tile": [
+        "xi",
+        "eta"
+      ],
+      "source_target_same_unwrapped_positive_height_path": true,
+      "source_assigned_zero_based_integer_shifts": [
+        0,
+        0
+      ]
+    },
+    {
+      "V_parent_tile": 1,
+      "native_target_universal_tile": "G:V0:tile1",
+      "winding_parameter_m": 1,
+      "target_proper_path_x_start": "-1",
+      "target_proper_path_x_end": "2",
+      "target_ideal_ends": [
+        "xi",
+        "eta"
+      ],
+      "two_distinct_source_proper_W_tiles": [
+        2,
+        3
+      ],
+      "two_source_ideal_ends_per_tile": [
+        "xi",
+        "eta"
+      ],
+      "source_target_same_unwrapped_positive_height_path": true,
+      "source_assigned_zero_based_integer_shifts": [
+        0,
+        0
+      ]
+    },
+    {
+      "V_parent_tile": 1,
+      "native_target_universal_tile": "G:V0:tile1",
+      "winding_parameter_m": 2,
+      "target_proper_path_x_start": "-2",
+      "target_proper_path_x_end": "3",
+      "target_ideal_ends": [
+        "xi",
+        "eta"
+      ],
+      "two_distinct_source_proper_W_tiles": [
+        2,
+        3
+      ],
+      "two_source_ideal_ends_per_tile": [
+        "xi",
+        "eta"
+      ],
+      "source_target_same_unwrapped_positive_height_path": true,
+      "source_assigned_zero_based_integer_shifts": [
+        0,
+        0
+      ]
+    },
+    {
+      "V_parent_tile": 1,
+      "native_target_universal_tile": "G:V0:tile1",
+      "winding_parameter_m": 3,
+      "target_proper_path_x_start": "-3",
+      "target_proper_path_x_end": "4",
+      "target_ideal_ends": [
+        "xi",
+        "eta"
+      ],
+      "two_distinct_source_proper_W_tiles": [
+        2,
+        3
+      ],
+      "two_source_ideal_ends_per_tile": [
+        "xi",
+        "eta"
+      ],
+      "source_target_same_unwrapped_positive_height_path": true,
+      "source_assigned_zero_based_integer_shifts": [
+        0,
+        0
+      ]
+    },
+    {
+      "V_parent_tile": 1,
+      "native_target_universal_tile": "G:V0:tile1",
+      "winding_parameter_m": 4,
+      "target_proper_path_x_start": "-4",
+      "target_proper_path_x_end": "5",
+      "target_ideal_ends": [
+        "xi",
+        "eta"
+      ],
+      "two_distinct_source_proper_W_tiles": [
+        2,
+        3
+      ],
+      "two_source_ideal_ends_per_tile": [
+        "xi",
+        "eta"
+      ],
+      "source_target_same_unwrapped_positive_height_path": true,
+      "source_assigned_zero_based_integer_shifts": [
+        0,
+        0
+      ]
+    },
+    {
+      "V_parent_tile": 1,
+      "native_target_universal_tile": "G:V0:tile1",
+      "winding_parameter_m": 5,
+      "target_proper_path_x_start": "-5",
+      "target_proper_path_x_end": "6",
+      "target_ideal_ends": [
+        "xi",
+        "eta"
+      ],
+      "two_distinct_source_proper_W_tiles": [
+        2,
+        3
+      ],
+      "two_source_ideal_ends_per_tile": [
+        "xi",
+        "eta"
+      ],
+      "source_target_same_unwrapped_positive_height_path": true,
+      "source_assigned_zero_based_integer_shifts": [
+        0,
+        0
+      ]
+    },
+    {
+      "V_parent_tile": 1,
+      "native_target_universal_tile": "G:V0:tile1",
+      "winding_parameter_m": 6,
+      "target_proper_path_x_start": "-6",
+      "target_proper_path_x_end": "7",
+      "target_ideal_ends": [
+        "xi",
+        "eta"
+      ],
+      "two_distinct_source_proper_W_tiles": [
+        2,
+        3
+      ],
+      "two_source_ideal_ends_per_tile": [
+        "xi",
+        "eta"
+      ],
+      "source_target_same_unwrapped_positive_height_path": true,
+      "source_assigned_zero_based_integer_shifts": [
+        0,
+        0
+      ]
+    },
+    {
+      "V_parent_tile": 1,
+      "native_target_universal_tile": "G:V0:tile1",
+      "winding_parameter_m": 7,
+      "target_proper_path_x_start": "-7",
+      "target_proper_path_x_end": "8",
+      "target_ideal_ends": [
+        "xi",
+        "eta"
+      ],
+      "two_distinct_source_proper_W_tiles": [
+        2,
+        3
+      ],
+      "two_source_ideal_ends_per_tile": [
+        "xi",
+        "eta"
+      ],
+      "source_target_same_unwrapped_positive_height_path": true,
+      "source_assigned_zero_based_integer_shifts": [
+        0,
+        0
+      ]
+    },
+    {
+      "V_parent_tile": 1,
+      "native_target_universal_tile": "G:V0:tile1",
+      "winding_parameter_m": 8,
+      "target_proper_path_x_start": "-8",
+      "target_proper_path_x_end": "9",
+      "target_ideal_ends": [
+        "xi",
+        "eta"
+      ],
+      "two_distinct_source_proper_W_tiles": [
+        2,
+        3
+      ],
+      "two_source_ideal_ends_per_tile": [
+        "xi",
+        "eta"
+      ],
+      "source_target_same_unwrapped_positive_height_path": true,
+      "source_assigned_zero_based_integer_shifts": [
+        0,
+        0
+      ]
+    },
+    {
+      "V_parent_tile": 1,
+      "native_target_universal_tile": "G:V0:tile1",
+      "winding_parameter_m": 9,
+      "target_proper_path_x_start": "-9",
+      "target_proper_path_x_end": "10",
+      "target_ideal_ends": [
+        "xi",
+        "eta"
+      ],
+      "two_distinct_source_proper_W_tiles": [
+        2,
+        3
+      ],
+      "two_source_ideal_ends_per_tile": [
+        "xi",
+        "eta"
+      ],
+      "source_target_same_unwrapped_positive_height_path": true,
+      "source_assigned_zero_based_integer_shifts": [
+        0,
+        0
+      ]
+    },
+    {
+      "V_parent_tile": 1,
+      "native_target_universal_tile": "G:V0:tile1",
+      "winding_parameter_m": 10,
+      "target_proper_path_x_start": "-10",
+      "target_proper_path_x_end": "11",
+      "target_ideal_ends": [
+        "xi",
+        "eta"
+      ],
+      "two_distinct_source_proper_W_tiles": [
+        2,
+        3
+      ],
+      "two_source_ideal_ends_per_tile": [
+        "xi",
+        "eta"
+      ],
+      "source_target_same_unwrapped_positive_height_path": true,
+      "source_assigned_zero_based_integer_shifts": [
+        0,
+        0
+      ]
+    },
+    {
+      "V_parent_tile": 1,
+      "native_target_universal_tile": "G:V0:tile1",
+      "winding_parameter_m": 11,
+      "target_proper_path_x_start": "-11",
+      "target_proper_path_x_end": "12",
+      "target_ideal_ends": [
+        "xi",
+        "eta"
+      ],
+      "two_distinct_source_proper_W_tiles": [
+        2,
+        3
+      ],
+      "two_source_ideal_ends_per_tile": [
+        "xi",
+        "eta"
+      ],
+      "source_target_same_unwrapped_positive_height_path": true,
+      "source_assigned_zero_based_integer_shifts": [
+        0,
+        0
+      ]
+    },
+    {
+      "V_parent_tile": 1,
+      "native_target_universal_tile": "G:V0:tile1",
+      "winding_parameter_m": 12,
+      "target_proper_path_x_start": "-12",
+      "target_proper_path_x_end": "13",
+      "target_ideal_ends": [
+        "xi",
+        "eta"
+      ],
+      "two_distinct_source_proper_W_tiles": [
+        2,
+        3
+      ],
+      "two_source_ideal_ends_per_tile": [
+        "xi",
+        "eta"
+      ],
+      "source_target_same_unwrapped_positive_height_path": true,
+      "source_assigned_zero_based_integer_shifts": [
+        0,
+        0
+      ]
+    },
+    {
+      "V_parent_tile": 1,
+      "native_target_universal_tile": "G:V0:tile1",
+      "winding_parameter_m": 13,
+      "target_proper_path_x_start": "-13",
+      "target_proper_path_x_end": "14",
+      "target_ideal_ends": [
+        "xi",
+        "eta"
+      ],
+      "two_distinct_source_proper_W_tiles": [
+        2,
+        3
+      ],
+      "two_source_ideal_ends_per_tile": [
+        "xi",
+        "eta"
+      ],
+      "source_target_same_unwrapped_positive_height_path": true,
+      "source_assigned_zero_based_integer_shifts": [
+        0,
+        0
+      ]
+    },
+    {
+      "V_parent_tile": 1,
+      "native_target_universal_tile": "G:V0:tile1",
+      "winding_parameter_m": 14,
+      "target_proper_path_x_start": "-14",
+      "target_proper_path_x_end": "15",
+      "target_ideal_ends": [
+        "xi",
+        "eta"
+      ],
+      "two_distinct_source_proper_W_tiles": [
+        2,
+        3
+      ],
+      "two_source_ideal_ends_per_tile": [
+        "xi",
+        "eta"
+      ],
+      "source_target_same_unwrapped_positive_height_path": true,
+      "source_assigned_zero_based_integer_shifts": [
+        0,
+        0
+      ]
+    },
+    {
+      "V_parent_tile": 1,
+      "native_target_universal_tile": "G:V0:tile1",
+      "winding_parameter_m": 15,
+      "target_proper_path_x_start": "-15",
+      "target_proper_path_x_end": "16",
+      "target_ideal_ends": [
+        "xi",
+        "eta"
+      ],
+      "two_distinct_source_proper_W_tiles": [
+        2,
+        3
+      ],
+      "two_source_ideal_ends_per_tile": [
+        "xi",
+        "eta"
+      ],
+      "source_target_same_unwrapped_positive_height_path": true,
+      "source_assigned_zero_based_integer_shifts": [
+        0,
+        0
+      ]
+    },
+    {
+      "V_parent_tile": 1,
+      "native_target_universal_tile": "G:V0:tile1",
+      "winding_parameter_m": 16,
+      "target_proper_path_x_start": "-16",
+      "target_proper_path_x_end": "17",
+      "target_ideal_ends": [
+        "xi",
+        "eta"
+      ],
+      "two_distinct_source_proper_W_tiles": [
+        2,
+        3
+      ],
+      "two_source_ideal_ends_per_tile": [
+        "xi",
+        "eta"
+      ],
+      "source_target_same_unwrapped_positive_height_path": true,
+      "source_assigned_zero_based_integer_shifts": [
+        0,
+        0
+      ]
+    },
+    {
+      "V_parent_tile": 1,
+      "native_target_universal_tile": "G:V0:tile1",
+      "winding_parameter_m": 17,
+      "target_proper_path_x_start": "-17",
+      "target_proper_path_x_end": "18",
+      "target_ideal_ends": [
+        "xi",
+        "eta"
+      ],
+      "two_distinct_source_proper_W_tiles": [
+        2,
+        3
+      ],
+      "two_source_ideal_ends_per_tile": [
+        "xi",
+        "eta"
+      ],
+      "source_target_same_unwrapped_positive_height_path": true,
+      "source_assigned_zero_based_integer_shifts": [
+        0,
+        0
+      ]
+    },
+    {
+      "V_parent_tile": 1,
+      "native_target_universal_tile": "G:V0:tile1",
+      "winding_parameter_m": 18,
+      "target_proper_path_x_start": "-18",
+      "target_proper_path_x_end": "19",
+      "target_ideal_ends": [
+        "xi",
+        "eta"
+      ],
+      "two_distinct_source_proper_W_tiles": [
+        2,
+        3
+      ],
+      "two_source_ideal_ends_per_tile": [
+        "xi",
+        "eta"
+      ],
+      "source_target_same_unwrapped_positive_height_path": true,
+      "source_assigned_zero_based_integer_shifts": [
+        0,
+        0
+      ]
+    },
+    {
+      "V_parent_tile": 1,
+      "native_target_universal_tile": "G:V0:tile1",
+      "winding_parameter_m": 19,
+      "target_proper_path_x_start": "-19",
+      "target_proper_path_x_end": "20",
+      "target_ideal_ends": [
+        "xi",
+        "eta"
+      ],
+      "two_distinct_source_proper_W_tiles": [
+        2,
+        3
+      ],
+      "two_source_ideal_ends_per_tile": [
+        "xi",
+        "eta"
+      ],
+      "source_target_same_unwrapped_positive_height_path": true,
+      "source_assigned_zero_based_integer_shifts": [
+        0,
+        0
+      ]
+    },
+    {
+      "V_parent_tile": 1,
+      "native_target_universal_tile": "G:V0:tile1",
+      "winding_parameter_m": 20,
+      "target_proper_path_x_start": "-20",
+      "target_proper_path_x_end": "21",
+      "target_ideal_ends": [
+        "xi",
+        "eta"
+      ],
+      "two_distinct_source_proper_W_tiles": [
+        2,
+        3
+      ],
+      "two_source_ideal_ends_per_tile": [
+        "xi",
+        "eta"
+      ],
+      "source_target_same_unwrapped_positive_height_path": true,
+      "source_assigned_zero_based_integer_shifts": [
+        0,
+        0
+      ]
+    },
+    {
+      "V_parent_tile": 1,
+      "native_target_universal_tile": "G:V0:tile1",
+      "winding_parameter_m": 21,
+      "target_proper_path_x_start": "-21",
+      "target_proper_path_x_end": "22",
+      "target_ideal_ends": [
+        "xi",
+        "eta"
+      ],
+      "two_distinct_source_proper_W_tiles": [
+        2,
+        3
+      ],
+      "two_source_ideal_ends_per_tile": [
+        "xi",
+        "eta"
+      ],
+      "source_target_same_unwrapped_positive_height_path": true,
+      "source_assigned_zero_based_integer_shifts": [
+        0,
+        0
+      ]
+    },
+    {
+      "V_parent_tile": 1,
+      "native_target_universal_tile": "G:V0:tile1",
+      "winding_parameter_m": 22,
+      "target_proper_path_x_start": "-22",
+      "target_proper_path_x_end": "23",
+      "target_ideal_ends": [
+        "xi",
+        "eta"
+      ],
+      "two_distinct_source_proper_W_tiles": [
+        2,
+        3
+      ],
+      "two_source_ideal_ends_per_tile": [
+        "xi",
+        "eta"
+      ],
+      "source_target_same_unwrapped_positive_height_path": true,
+      "source_assigned_zero_based_integer_shifts": [
+        0,
+        0
+      ]
+    },
+    {
+      "V_parent_tile": 1,
+      "native_target_universal_tile": "G:V0:tile1",
+      "winding_parameter_m": 23,
+      "target_proper_path_x_start": "-23",
+      "target_proper_path_x_end": "24",
+      "target_ideal_ends": [
+        "xi",
+        "eta"
+      ],
+      "two_distinct_source_proper_W_tiles": [
+        2,
+        3
+      ],
+      "two_source_ideal_ends_per_tile": [
+        "xi",
+        "eta"
+      ],
+      "source_target_same_unwrapped_positive_height_path": true,
+      "source_assigned_zero_based_integer_shifts": [
+        0,
+        0
+      ]
+    },
+    {
+      "V_parent_tile": 1,
+      "native_target_universal_tile": "G:V0:tile1",
+      "winding_parameter_m": 24,
+      "target_proper_path_x_start": "-24",
+      "target_proper_path_x_end": "25",
+      "target_ideal_ends": [
+        "xi",
+        "eta"
+      ],
+      "two_distinct_source_proper_W_tiles": [
+        2,
+        3
+      ],
+      "two_source_ideal_ends_per_tile": [
+        "xi",
+        "eta"
+      ],
+      "source_target_same_unwrapped_positive_height_path": true,
+      "source_assigned_zero_based_integer_shifts": [
+        0,
+        0
+      ]
+    },
+    {
+      "V_parent_tile": 1,
+      "native_target_universal_tile": "G:V0:tile1",
+      "winding_parameter_m": 25,
+      "target_proper_path_x_start": "-25",
+      "target_proper_path_x_end": "26",
+      "target_ideal_ends": [
+        "xi",
+        "eta"
+      ],
+      "two_distinct_source_proper_W_tiles": [
+        2,
+        3
+      ],
+      "two_source_ideal_ends_per_tile": [
+        "xi",
+        "eta"
+      ],
+      "source_target_same_unwrapped_positive_height_path": true,
+      "source_assigned_zero_based_integer_shifts": [
+        0,
+        0
+      ]
+    },
+    {
+      "V_parent_tile": 1,
+      "native_target_universal_tile": "G:V0:tile1",
+      "winding_parameter_m": 26,
+      "target_proper_path_x_start": "-26",
+      "target_proper_path_x_end": "27",
+      "target_ideal_ends": [
+        "xi",
+        "eta"
+      ],
+      "two_distinct_source_proper_W_tiles": [
+        2,
+        3
+      ],
+      "two_source_ideal_ends_per_tile": [
+        "xi",
+        "eta"
+      ],
+      "source_target_same_unwrapped_positive_height_path": true,
+      "source_assigned_zero_based_integer_shifts": [
+        0,
+        0
+      ]
+    },
+    {
+      "V_parent_tile": 1,
+      "native_target_universal_tile": "G:V0:tile1",
+      "winding_parameter_m": 27,
+      "target_proper_path_x_start": "-27",
+      "target_proper_path_x_end": "28",
+      "target_ideal_ends": [
+        "xi",
+        "eta"
+      ],
+      "two_distinct_source_proper_W_tiles": [
+        2,
+        3
+      ],
+      "two_source_ideal_ends_per_tile": [
+        "xi",
+        "eta"
+      ],
+      "source_target_same_unwrapped_positive_height_path": true,
+      "source_assigned_zero_based_integer_shifts": [
+        0,
+        0
+      ]
+    },
+    {
+      "V_parent_tile": 1,
+      "native_target_universal_tile": "G:V0:tile1",
+      "winding_parameter_m": 28,
+      "target_proper_path_x_start": "-28",
+      "target_proper_path_x_end": "29",
+      "target_ideal_ends": [
+        "xi",
+        "eta"
+      ],
+      "two_distinct_source_proper_W_tiles": [
+        2,
+        3
+      ],
+      "two_source_ideal_ends_per_tile": [
+        "xi",
+        "eta"
+      ],
+      "source_target_same_unwrapped_positive_height_path": true,
+      "source_assigned_zero_based_integer_shifts": [
+        0,
+        0
+      ]
+    },
+    {
+      "V_parent_tile": 1,
+      "native_target_universal_tile": "G:V0:tile1",
+      "winding_parameter_m": 29,
+      "target_proper_path_x_start": "-29",
+      "target_proper_path_x_end": "30",
+      "target_ideal_ends": [
+        "xi",
+        "eta"
+      ],
+      "two_distinct_source_proper_W_tiles": [
+        2,
+        3
+      ],
+      "two_source_ideal_ends_per_tile": [
+        "xi",
+        "eta"
+      ],
+      "source_target_same_unwrapped_positive_height_path": true,
+      "source_assigned_zero_based_integer_shifts": [
+        0,
+        0
+      ]
+    },
+    {
+      "V_parent_tile": 1,
+      "native_target_universal_tile": "G:V0:tile1",
+      "winding_parameter_m": 30,
+      "target_proper_path_x_start": "-30",
+      "target_proper_path_x_end": "31",
+      "target_ideal_ends": [
+        "xi",
+        "eta"
+      ],
+      "two_distinct_source_proper_W_tiles": [
+        2,
+        3
+      ],
+      "two_source_ideal_ends_per_tile": [
+        "xi",
+        "eta"
+      ],
+      "source_target_same_unwrapped_positive_height_path": true,
+      "source_assigned_zero_based_integer_shifts": [
+        0,
+        0
+      ]
+    },
+    {
+      "V_parent_tile": 1,
+      "native_target_universal_tile": "G:V0:tile1",
+      "winding_parameter_m": 31,
+      "target_proper_path_x_start": "-31",
+      "target_proper_path_x_end": "32",
+      "target_ideal_ends": [
+        "xi",
+        "eta"
+      ],
+      "two_distinct_source_proper_W_tiles": [
+        2,
+        3
+      ],
+      "two_source_ideal_ends_per_tile": [
+        "xi",
+        "eta"
+      ],
+      "source_target_same_unwrapped_positive_height_path": true,
+      "source_assigned_zero_based_integer_shifts": [
+        0,
+        0
+      ]
+    },
+    {
+      "V_parent_tile": 1,
+      "native_target_universal_tile": "G:V0:tile1",
+      "winding_parameter_m": 32,
+      "target_proper_path_x_start": "-32",
+      "target_proper_path_x_end": "33",
+      "target_ideal_ends": [
+        "xi",
+        "eta"
+      ],
+      "two_distinct_source_proper_W_tiles": [
+        2,
+        3
+      ],
+      "two_source_ideal_ends_per_tile": [
+        "xi",
+        "eta"
+      ],
+      "source_target_same_unwrapped_positive_height_path": true,
+      "source_assigned_zero_based_integer_shifts": [
+        0,
+        0
+      ]
+    },
+    {
+      "V_parent_tile": 1,
+      "native_target_universal_tile": "G:V0:tile1",
+      "winding_parameter_m": 33,
+      "target_proper_path_x_start": "-33",
+      "target_proper_path_x_end": "34",
+      "target_ideal_ends": [
+        "xi",
+        "eta"
+      ],
+      "two_distinct_source_proper_W_tiles": [
+        2,
+        3
+      ],
+      "two_source_ideal_ends_per_tile": [
+        "xi",
+        "eta"
+      ],
+      "source_target_same_unwrapped_positive_height_path": true,
+      "source_assigned_zero_based_integer_shifts": [
+        0,
+        0
+      ]
+    },
+    {
+      "V_parent_tile": 1,
+      "native_target_universal_tile": "G:V0:tile1",
+      "winding_parameter_m": 34,
+      "target_proper_path_x_start": "-34",
+      "target_proper_path_x_end": "35",
+      "target_ideal_ends": [
+        "xi",
+        "eta"
+      ],
+      "two_distinct_source_proper_W_tiles": [
+        2,
+        3
+      ],
+      "two_source_ideal_ends_per_tile": [
+        "xi",
+        "eta"
+      ],
+      "source_target_same_unwrapped_positive_height_path": true,
+      "source_assigned_zero_based_integer_shifts": [
+        0,
+        0
+      ]
+    },
+    {
+      "V_parent_tile": 1,
+      "native_target_universal_tile": "G:V0:tile1",
+      "winding_parameter_m": 35,
+      "target_proper_path_x_start": "-35",
+      "target_proper_path_x_end": "36",
+      "target_ideal_ends": [
+        "xi",
+        "eta"
+      ],
+      "two_distinct_source_proper_W_tiles": [
+        2,
+        3
+      ],
+      "two_source_ideal_ends_per_tile": [
+        "xi",
+        "eta"
+      ],
+      "source_target_same_unwrapped_positive_height_path": true,
+      "source_assigned_zero_based_integer_shifts": [
+        0,
+        0
+      ]
+    },
+    {
+      "V_parent_tile": 1,
+      "native_target_universal_tile": "G:V0:tile1",
+      "winding_parameter_m": 36,
+      "target_proper_path_x_start": "-36",
+      "target_proper_path_x_end": "37",
+      "target_ideal_ends": [
+        "xi",
+        "eta"
+      ],
+      "two_distinct_source_proper_W_tiles": [
+        2,
+        3
+      ],
+      "two_source_ideal_ends_per_tile": [
+        "xi",
+        "eta"
+      ],
+      "source_target_same_unwrapped_positive_height_path": true,
+      "source_assigned_zero_based_integer_shifts": [
+        0,
+        0
+      ]
+    },
+    {
+      "V_parent_tile": 1,
+      "native_target_universal_tile": "G:V0:tile1",
+      "winding_parameter_m": 37,
+      "target_proper_path_x_start": "-37",
+      "target_proper_path_x_end": "38",
+      "target_ideal_ends": [
+        "xi",
+        "eta"
+      ],
+      "two_distinct_source_proper_W_tiles": [
+        2,
+        3
+      ],
+      "two_source_ideal_ends_per_tile": [
+        "xi",
+        "eta"
+      ],
+      "source_target_same_unwrapped_positive_height_path": true,
+      "source_assigned_zero_based_integer_shifts": [
+        0,
+        0
+      ]
+    },
+    {
+      "V_parent_tile": 1,
+      "native_target_universal_tile": "G:V0:tile1",
+      "winding_parameter_m": 38,
+      "target_proper_path_x_start": "-38",
+      "target_proper_path_x_end": "39",
+      "target_ideal_ends": [
+        "xi",
+        "eta"
+      ],
+      "two_distinct_source_proper_W_tiles": [
+        2,
+        3
+      ],
+      "two_source_ideal_ends_per_tile": [
+        "xi",
+        "eta"
+      ],
+      "source_target_same_unwrapped_positive_height_path": true,
+      "source_assigned_zero_based_integer_shifts": [
+        0,
+        0
+      ]
+    },
+    {
+      "V_parent_tile": 1,
+      "native_target_universal_tile": "G:V0:tile1",
+      "winding_parameter_m": 39,
+      "target_proper_path_x_start": "-39",
+      "target_proper_path_x_end": "40",
+      "target_ideal_ends": [
+        "xi",
+        "eta"
+      ],
+      "two_distinct_source_proper_W_tiles": [
+        2,
+        3
+      ],
+      "two_source_ideal_ends_per_tile": [
+        "xi",
+        "eta"
+      ],
+      "source_target_same_unwrapped_positive_height_path": true,
+      "source_assigned_zero_based_integer_shifts": [
+        0,
+        0
+      ]
+    },
+    {
+      "V_parent_tile": 1,
+      "native_target_universal_tile": "G:V0:tile1",
+      "winding_parameter_m": 40,
+      "target_proper_path_x_start": "-40",
+      "target_proper_path_x_end": "41",
+      "target_ideal_ends": [
+        "xi",
+        "eta"
+      ],
+      "two_distinct_source_proper_W_tiles": [
+        2,
+        3
+      ],
+      "two_source_ideal_ends_per_tile": [
+        "xi",
+        "eta"
+      ],
+      "source_target_same_unwrapped_positive_height_path": true,
+      "source_assigned_zero_based_integer_shifts": [
+        0,
+        0
+      ]
+    },
+    {
+      "V_parent_tile": 1,
+      "native_target_universal_tile": "G:V0:tile1",
+      "winding_parameter_m": 41,
+      "target_proper_path_x_start": "-41",
+      "target_proper_path_x_end": "42",
+      "target_ideal_ends": [
+        "xi",
+        "eta"
+      ],
+      "two_distinct_source_proper_W_tiles": [
+        2,
+        3
+      ],
+      "two_source_ideal_ends_per_tile": [
+        "xi",
+        "eta"
+      ],
+      "source_target_same_unwrapped_positive_height_path": true,
+      "source_assigned_zero_based_integer_shifts": [
+        0,
+        0
+      ]
+    },
+    {
+      "V_parent_tile": 1,
+      "native_target_universal_tile": "G:V0:tile1",
+      "winding_parameter_m": 42,
+      "target_proper_path_x_start": "-42",
+      "target_proper_path_x_end": "43",
+      "target_ideal_ends": [
+        "xi",
+        "eta"
+      ],
+      "two_distinct_source_proper_W_tiles": [
+        2,
+        3
+      ],
+      "two_source_ideal_ends_per_tile": [
+        "xi",
+        "eta"
+      ],
+      "source_target_same_unwrapped_positive_height_path": true,
+      "source_assigned_zero_based_integer_shifts": [
+        0,
+        0
+      ]
+    },
+    {
+      "V_parent_tile": 1,
+      "native_target_universal_tile": "G:V0:tile1",
+      "winding_parameter_m": 43,
+      "target_proper_path_x_start": "-43",
+      "target_proper_path_x_end": "44",
+      "target_ideal_ends": [
+        "xi",
+        "eta"
+      ],
+      "two_distinct_source_proper_W_tiles": [
+        2,
+        3
+      ],
+      "two_source_ideal_ends_per_tile": [
+        "xi",
+        "eta"
+      ],
+      "source_target_same_unwrapped_positive_height_path": true,
+      "source_assigned_zero_based_integer_shifts": [
+        0,
+        0
+      ]
+    },
+    {
+      "V_parent_tile": 1,
+      "native_target_universal_tile": "G:V0:tile1",
+      "winding_parameter_m": 44,
+      "target_proper_path_x_start": "-44",
+      "target_proper_path_x_end": "45",
+      "target_ideal_ends": [
+        "xi",
+        "eta"
+      ],
+      "two_distinct_source_proper_W_tiles": [
+        2,
+        3
+      ],
+      "two_source_ideal_ends_per_tile": [
+        "xi",
+        "eta"
+      ],
+      "source_target_same_unwrapped_positive_height_path": true,
+      "source_assigned_zero_based_integer_shifts": [
+        0,
+        0
+      ]
+    },
+    {
+      "V_parent_tile": 1,
+      "native_target_universal_tile": "G:V0:tile1",
+      "winding_parameter_m": 45,
+      "target_proper_path_x_start": "-45",
+      "target_proper_path_x_end": "46",
+      "target_ideal_ends": [
+        "xi",
+        "eta"
+      ],
+      "two_distinct_source_proper_W_tiles": [
+        2,
+        3
+      ],
+      "two_source_ideal_ends_per_tile": [
+        "xi",
+        "eta"
+      ],
+      "source_target_same_unwrapped_positive_height_path": true,
+      "source_assigned_zero_based_integer_shifts": [
+        0,
+        0
+      ]
+    },
+    {
+      "V_parent_tile": 1,
+      "native_target_universal_tile": "G:V0:tile1",
+      "winding_parameter_m": 46,
+      "target_proper_path_x_start": "-46",
+      "target_proper_path_x_end": "47",
+      "target_ideal_ends": [
+        "xi",
+        "eta"
+      ],
+      "two_distinct_source_proper_W_tiles": [
+        2,
+        3
+      ],
+      "two_source_ideal_ends_per_tile": [
+        "xi",
+        "eta"
+      ],
+      "source_target_same_unwrapped_positive_height_path": true,
+      "source_assigned_zero_based_integer_shifts": [
+        0,
+        0
+      ]
+    },
+    {
+      "V_parent_tile": 1,
+      "native_target_universal_tile": "G:V0:tile1",
+      "winding_parameter_m": 47,
+      "target_proper_path_x_start": "-47",
+      "target_proper_path_x_end": "48",
+      "target_ideal_ends": [
+        "xi",
+        "eta"
+      ],
+      "two_distinct_source_proper_W_tiles": [
+        2,
+        3
+      ],
+      "two_source_ideal_ends_per_tile": [
+        "xi",
+        "eta"
+      ],
+      "source_target_same_unwrapped_positive_height_path": true,
+      "source_assigned_zero_based_integer_shifts": [
+        0,
+        0
+      ]
+    },
+    {
+      "V_parent_tile": 1,
+      "native_target_universal_tile": "G:V0:tile1",
+      "winding_parameter_m": 48,
+      "target_proper_path_x_start": "-48",
+      "target_proper_path_x_end": "49",
+      "target_ideal_ends": [
+        "xi",
+        "eta"
+      ],
+      "two_distinct_source_proper_W_tiles": [
+        2,
+        3
+      ],
+      "two_source_ideal_ends_per_tile": [
+        "xi",
+        "eta"
+      ],
+      "source_target_same_unwrapped_positive_height_path": true,
+      "source_assigned_zero_based_integer_shifts": [
+        0,
+        0
+      ]
+    },
+    {
+      "V_parent_tile": 1,
+      "native_target_universal_tile": "G:V0:tile1",
+      "winding_parameter_m": 49,
+      "target_proper_path_x_start": "-49",
+      "target_proper_path_x_end": "50",
+      "target_ideal_ends": [
+        "xi",
+        "eta"
+      ],
+      "two_distinct_source_proper_W_tiles": [
+        2,
+        3
+      ],
+      "two_source_ideal_ends_per_tile": [
+        "xi",
+        "eta"
+      ],
+      "source_target_same_unwrapped_positive_height_path": true,
+      "source_assigned_zero_based_integer_shifts": [
+        0,
+        0
+      ]
+    },
+    {
+      "V_parent_tile": 1,
+      "native_target_universal_tile": "G:V0:tile1",
+      "winding_parameter_m": 50,
+      "target_proper_path_x_start": "-50",
+      "target_proper_path_x_end": "51",
+      "target_ideal_ends": [
+        "xi",
+        "eta"
+      ],
+      "two_distinct_source_proper_W_tiles": [
+        2,
+        3
+      ],
+      "two_source_ideal_ends_per_tile": [
+        "xi",
+        "eta"
+      ],
+      "source_target_same_unwrapped_positive_height_path": true,
+      "source_assigned_zero_based_integer_shifts": [
+        0,
+        0
+      ]
+    },
+    {
+      "V_parent_tile": 1,
+      "native_target_universal_tile": "G:V0:tile1",
+      "winding_parameter_m": 51,
+      "target_proper_path_x_start": "-51",
+      "target_proper_path_x_end": "52",
+      "target_ideal_ends": [
+        "xi",
+        "eta"
+      ],
+      "two_distinct_source_proper_W_tiles": [
+        2,
+        3
+      ],
+      "two_source_ideal_ends_per_tile": [
+        "xi",
+        "eta"
+      ],
+      "source_target_same_unwrapped_positive_height_path": true,
+      "source_assigned_zero_based_integer_shifts": [
+        0,
+        0
+      ]
+    },
+    {
+      "V_parent_tile": 1,
+      "native_target_universal_tile": "G:V0:tile1",
+      "winding_parameter_m": 52,
+      "target_proper_path_x_start": "-52",
+      "target_proper_path_x_end": "53",
+      "target_ideal_ends": [
+        "xi",
+        "eta"
+      ],
+      "two_distinct_source_proper_W_tiles": [
+        2,
+        3
+      ],
+      "two_source_ideal_ends_per_tile": [
+        "xi",
+        "eta"
+      ],
+      "source_target_same_unwrapped_positive_height_path": true,
+      "source_assigned_zero_based_integer_shifts": [
+        0,
+        0
+      ]
+    },
+    {
+      "V_parent_tile": 1,
+      "native_target_universal_tile": "G:V0:tile1",
+      "winding_parameter_m": 53,
+      "target_proper_path_x_start": "-53",
+      "target_proper_path_x_end": "54",
+      "target_ideal_ends": [
+        "xi",
+        "eta"
+      ],
+      "two_distinct_source_proper_W_tiles": [
+        2,
+        3
+      ],
+      "two_source_ideal_ends_per_tile": [
+        "xi",
+        "eta"
+      ],
+      "source_target_same_unwrapped_positive_height_path": true,
+      "source_assigned_zero_based_integer_shifts": [
+        0,
+        0
+      ]
+    },
+    {
+      "V_parent_tile": 1,
+      "native_target_universal_tile": "G:V0:tile1",
+      "winding_parameter_m": 54,
+      "target_proper_path_x_start": "-54",
+      "target_proper_path_x_end": "55",
+      "target_ideal_ends": [
+        "xi",
+        "eta"
+      ],
+      "two_distinct_source_proper_W_tiles": [
+        2,
+        3
+      ],
+      "two_source_ideal_ends_per_tile": [
+        "xi",
+        "eta"
+      ],
+      "source_target_same_unwrapped_positive_height_path": true,
+      "source_assigned_zero_based_integer_shifts": [
+        0,
+        0
+      ]
+    },
+    {
+      "V_parent_tile": 1,
+      "native_target_universal_tile": "G:V0:tile1",
+      "winding_parameter_m": 55,
+      "target_proper_path_x_start": "-55",
+      "target_proper_path_x_end": "56",
+      "target_ideal_ends": [
+        "xi",
+        "eta"
+      ],
+      "two_distinct_source_proper_W_tiles": [
+        2,
+        3
+      ],
+      "two_source_ideal_ends_per_tile": [
+        "xi",
+        "eta"
+      ],
+      "source_target_same_unwrapped_positive_height_path": true,
+      "source_assigned_zero_based_integer_shifts": [
+        0,
+        0
+      ]
+    },
+    {
+      "V_parent_tile": 1,
+      "native_target_universal_tile": "G:V0:tile1",
+      "winding_parameter_m": 56,
+      "target_proper_path_x_start": "-56",
+      "target_proper_path_x_end": "57",
+      "target_ideal_ends": [
+        "xi",
+        "eta"
+      ],
+      "two_distinct_source_proper_W_tiles": [
+        2,
+        3
+      ],
+      "two_source_ideal_ends_per_tile": [
+        "xi",
+        "eta"
+      ],
+      "source_target_same_unwrapped_positive_height_path": true,
+      "source_assigned_zero_based_integer_shifts": [
+        0,
+        0
+      ]
+    },
+    {
+      "V_parent_tile": 1,
+      "native_target_universal_tile": "G:V0:tile1",
+      "winding_parameter_m": 57,
+      "target_proper_path_x_start": "-57",
+      "target_proper_path_x_end": "58",
+      "target_ideal_ends": [
+        "xi",
+        "eta"
+      ],
+      "two_distinct_source_proper_W_tiles": [
+        2,
+        3
+      ],
+      "two_source_ideal_ends_per_tile": [
+        "xi",
+        "eta"
+      ],
+      "source_target_same_unwrapped_positive_height_path": true,
+      "source_assigned_zero_based_integer_shifts": [
+        0,
+        0
+      ]
+    },
+    {
+      "V_parent_tile": 1,
+      "native_target_universal_tile": "G:V0:tile1",
+      "winding_parameter_m": 58,
+      "target_proper_path_x_start": "-58",
+      "target_proper_path_x_end": "59",
+      "target_ideal_ends": [
+        "xi",
+        "eta"
+      ],
+      "two_distinct_source_proper_W_tiles": [
+        2,
+        3
+      ],
+      "two_source_ideal_ends_per_tile": [
+        "xi",
+        "eta"
+      ],
+      "source_target_same_unwrapped_positive_height_path": true,
+      "source_assigned_zero_based_integer_shifts": [
+        0,
+        0
+      ]
+    },
+    {
+      "V_parent_tile": 1,
+      "native_target_universal_tile": "G:V0:tile1",
+      "winding_parameter_m": 59,
+      "target_proper_path_x_start": "-59",
+      "target_proper_path_x_end": "60",
+      "target_ideal_ends": [
+        "xi",
+        "eta"
+      ],
+      "two_distinct_source_proper_W_tiles": [
+        2,
+        3
+      ],
+      "two_source_ideal_ends_per_tile": [
+        "xi",
+        "eta"
+      ],
+      "source_target_same_unwrapped_positive_height_path": true,
+      "source_assigned_zero_based_integer_shifts": [
+        0,
+        0
+      ]
+    },
+    {
+      "V_parent_tile": 1,
+      "native_target_universal_tile": "G:V0:tile1",
+      "winding_parameter_m": 60,
+      "target_proper_path_x_start": "-60",
+      "target_proper_path_x_end": "61",
+      "target_ideal_ends": [
+        "xi",
+        "eta"
+      ],
+      "two_distinct_source_proper_W_tiles": [
+        2,
+        3
+      ],
+      "two_source_ideal_ends_per_tile": [
+        "xi",
+        "eta"
+      ],
+      "source_target_same_unwrapped_positive_height_path": true,
+      "source_assigned_zero_based_integer_shifts": [
+        0,
+        0
+      ]
+    },
+    {
+      "V_parent_tile": 1,
+      "native_target_universal_tile": "G:V0:tile1",
+      "winding_parameter_m": 61,
+      "target_proper_path_x_start": "-61",
+      "target_proper_path_x_end": "62",
+      "target_ideal_ends": [
+        "xi",
+        "eta"
+      ],
+      "two_distinct_source_proper_W_tiles": [
+        2,
+        3
+      ],
+      "two_source_ideal_ends_per_tile": [
+        "xi",
+        "eta"
+      ],
+      "source_target_same_unwrapped_positive_height_path": true,
+      "source_assigned_zero_based_integer_shifts": [
+        0,
+        0
+      ]
+    },
+    {
+      "V_parent_tile": 1,
+      "native_target_universal_tile": "G:V0:tile1",
+      "winding_parameter_m": 62,
+      "target_proper_path_x_start": "-62",
+      "target_proper_path_x_end": "63",
+      "target_ideal_ends": [
+        "xi",
+        "eta"
+      ],
+      "two_distinct_source_proper_W_tiles": [
+        2,
+        3
+      ],
+      "two_source_ideal_ends_per_tile": [
+        "xi",
+        "eta"
+      ],
+      "source_target_same_unwrapped_positive_height_path": true,
+      "source_assigned_zero_based_integer_shifts": [
+        0,
+        0
+      ]
+    },
+    {
+      "V_parent_tile": 1,
+      "native_target_universal_tile": "G:V0:tile1",
+      "winding_parameter_m": 63,
+      "target_proper_path_x_start": "-63",
+      "target_proper_path_x_end": "64",
+      "target_ideal_ends": [
+        "xi",
+        "eta"
+      ],
+      "two_distinct_source_proper_W_tiles": [
+        2,
+        3
+      ],
+      "two_source_ideal_ends_per_tile": [
+        "xi",
+        "eta"
+      ],
+      "source_target_same_unwrapped_positive_height_path": true,
+      "source_assigned_zero_based_integer_shifts": [
+        0,
+        0
+      ]
+    }
+  ],
+  "original_all_twelve_full_sides_cannot_be_globally_proper": true,
+  "source_boundary_proper_tail_arcs_per_W_tile": 2,
+  "source_original_J_side_interior_collapse_intervals_per_W_tile": 2,
+  "analytic_trust_boundary": [
+    "KL Lemma 3.3 original universal tile path-space equivalence and disjointness",
+    "KL Lemma 3.4 W->V holomorphic immersion and source naturality; atlas exact zero based integer shifts",
+    "KL §3.2.4 actual ideal prime-end O/xi/eta finite-point and wrapping topology",
+    "KKL Appendix A.1 and A.3.2 proper path/ideal marking/subordination definitions"
+  ],
+  "NOT_a_counterexample_to": [
+    "KKL Appendix A.3.2 definition (which is deliberately set-valued)",
+    "KKL Proposition A.12 selected marked/refined path-family chain or unique-subordinate-path conditional",
+    "Any global MLC, UPTCR, H1-H4, source proper-end wave amplification or whole original KL marked path groupoid theorem"
+  ],
+  "unresolved": "Specify an actual KKL target ideal marking, compute maximal source pullbacks and subordination and decide for this source proper target path which restrictions remain admissible"
+}
