@@ -1,0 +1,71 @@
+name: "Native KL four-tile root access: C4 real-wake and source naturality"
+
+on:
+  push:
+    branches:
+      - main
+      - 'research/**'
+    paths:
+      - '.github/workflows/tip-native-C4-wake-root-matrix.yml'
+      - 'research/independent_audits/tip_native_C4_wake_root_sheet_naturality_20261109.md'
+      - 'research/independent_audits/verify_tip_native_C4_wake_root_matrix.py'
+      - 'results/tip_native_C4_wake_root_matrix_20261109.json'
+      - 'results/tip_kl_side_atlas.json'
+      - 'results/tip_rooted_native_KL_section_20261108.json'
+      - 'results/tip_native_root_deck_monodromy_20261109.json'
+      - 'results/tip_root_interval_geometry.json'
+      - 'TipNativeC4Wake.lean'
+      - 'TipNativeRootDeck.lean'
+      - 'lakefile.toml'
+  pull_request:
+    paths:
+      - '.github/workflows/tip-native-C4-wake-root-matrix.yml'
+      - 'research/independent_audits/tip_native_C4_wake_root_sheet_naturality_20261109.md'
+      - 'research/independent_audits/verify_tip_native_C4_wake_root_matrix.py'
+      - 'results/tip_native_C4_wake_root_matrix_20261109.json'
+      - 'results/tip_kl_side_atlas.json'
+      - 'results/tip_rooted_native_KL_section_20261108.json'
+      - 'results/tip_native_root_deck_monodromy_20261109.json'
+      - 'results/tip_root_interval_geometry.json'
+      - 'TipNativeC4Wake.lean'
+      - 'TipNativeRootDeck.lean'
+      - 'lakefile.toml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  source-C4-ray-and-phase-manifest:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Verify original W parent routes, exact phase inequalities and all native cohorts
+        run: |
+          python -m py_compile research/independent_audits/verify_tip_native_C4_wake_root_matrix.py
+          python research/independent_audits/verify_tip_native_C4_wake_root_matrix.py --check-manifest
+
+  lean-finite-C4-cocycle:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Reject Lean proof holes
+        run: |
+          if grep -En '(^|[^A-Za-z_])(sorry|admit)([^A-Za-z_]|$)' TipNativeC4Wake.lean; then
+            echo 'No Lean proof placeholders allowed'
+            exit 1
+          fi
+      - name: Lean kernel build with registered source module
+        uses: leanprover/lean-action@v1
+        with:
+          auto-config: 'false'
+          build: 'true'
+          test: 'false'
+          lint: 'false'
+          use-github-cache: 'false'
+          use-mathlib-cache: 'false'
+      - name: Explicit finite parent/wake checks
+        run: lake build TipNativeC4Wake
