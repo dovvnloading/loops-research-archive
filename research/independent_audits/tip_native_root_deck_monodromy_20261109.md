@@ -93,6 +93,14 @@ Assume for \`n≠0\` that \`j_W(u_{i,n}(t_k))\` has a convergent subsequence in 
 
 This is a **negative root-landing theorem** for all nonzero translates of the eight source-*anchored* rays. It does not compute the unrelated base-path defects of a ray taken from a different original W tile.
 
+### Corollary A' — arbitrary native-tile root-landing rays, without an anchor choice
+
+Let \`i\` be **any** of the original W universal-cover tiles, and let \`θ\` be **any** genuine G external angle whose physical ray lands at \`q∈K9\`. For every \`n∈Z\`, a finite tile lift \`v_{i,n}(t)\` of that ray exists at unwrapped angle \`θ+n\`, whether or not \`θ\` lies in tile \`i\`'s own gluing seam. Then **at most one** of these integer translates can converge to the fine marked root; all other translates are proper nonroot ends in \`widehat T9\` and have no continuous extension into it at their finite J-side prime ends (whenever \`θ+n\` is strictly in the appropriate remaining ideal J half-line).
+
+**Proof.** The annular tile path from translate \`n\` to \`m\` has \`D_(0,1)\`-winding \`n-m\`. If their fine lift endpoints at any common physical positive-height point coincided, that loop would belong to the stabilizer of **the sheet at translate m**, which is a conjugate of \`H\` and still has zero \`D_(0,1)\`-winding. Hence all integer-translate lift points are pairwise distinct, independently of whether any translate is rooted. Were two distinct integer translate paths both to converge to the marked root above \`q\`, eventually they would lie in Kahn's single injective root chart and share the same physical image, forcing equality. So at most one does. Any nonroot translate can have no compact accumulation, by the same root-chart argument used in Theorem A, and is proper. A finite ideal side translate therefore has no extension into the uncompactified fine target. \`□\`
+
+This result is genuinely broader than the eight source-certified anchors but **does not** prove that a particular other-tile ray has *any* rooted translate. Its missing input is the original based KL connector defect, addressed conditionally by Theorem B below. The corollary asserts nothing about infinite wrapping endpoints or a whole ideal boundary interval.
+
 ## 2. The exact *arbitrary connector* root-shift selector, once its word is known
 
 The next theorem is general free-group theory and is independent of the source-specific gluing result. Its value is to replace an infinite search over coarse winding shifts by one forced candidate and an exact freely reduced word test.
