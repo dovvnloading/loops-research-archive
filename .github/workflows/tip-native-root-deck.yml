@@ -1,0 +1,69 @@
+name: "Native KL root landing: original W deck orbits and exact source J-sides"
+
+on:
+  push:
+    branches:
+      - main
+      - 'research/**'
+    paths:
+      - '.github/workflows/tip-native-root-deck.yml'
+      - 'research/independent_audits/tip_native_root_deck_monodromy_20261109.md'
+      - 'research/independent_audits/verify_tip_native_root_deck_monodromy.py'
+      - 'results/tip_native_root_deck_monodromy_20261109.json'
+      - 'results/tip_rooted_native_KL_section_20261108.json'
+      - 'results/tip_nested_full_ray_census_20261107.json'
+      - 'results/tip_kl_side_atlas.json'
+      - 'TipNativeRootDeck.lean'
+      - 'TipRootedNativeKL.lean'
+      - 'lakefile.toml'
+  pull_request:
+    paths:
+      - '.github/workflows/tip-native-root-deck.yml'
+      - 'research/independent_audits/tip_native_root_deck_monodromy_20261109.md'
+      - 'research/independent_audits/verify_tip_native_root_deck_monodromy.py'
+      - 'results/tip_native_root_deck_monodromy_20261109.json'
+      - 'results/tip_rooted_native_KL_section_20261108.json'
+      - 'results/tip_nested_full_ray_census_20261107.json'
+      - 'results/tip_kl_side_atlas.json'
+      - 'TipNativeRootDeck.lean'
+      - 'TipRootedNativeKL.lean'
+      - 'lakefile.toml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  exact-original-source-and-free-group:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Check original W sides, source rays and full free-word selector
+        run: |
+          python -m py_compile research/independent_audits/verify_tip_native_root_deck_monodromy.py
+          python research/independent_audits/verify_tip_native_root_deck_monodromy.py --check-manifest
+
+  lean-source-rational-inequalities:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Reject Lean proof holes
+        run: |
+          if grep -En '(^|[^A-Za-z_])(sorry|admit)([^A-Za-z_]|$)' TipNativeRootDeck.lean; then
+            echo 'No Lean proof placeholders allowed'
+            exit 1
+          fi
+      - name: Install Lean and build registered modules
+        uses: leanprover/lean-action@v1
+        with:
+          auto-config: 'false'
+          build: 'true'
+          test: 'false'
+          lint: 'false'
+          use-github-cache: 'false'
+          use-mathlib-cache: 'false'
+      - name: Check source-native deck angle layer explicitly
+        run: lake build TipNativeRootDeck
