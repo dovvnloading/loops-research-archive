@@ -174,7 +174,7 @@ def main():
         OUT.write_text(payload,encoding="utf-8")
         print("WROTE", OUT)
     elif o.check_manifest:
-        assert OUT.read_text(encoding="utf-8")==payload, "manifest drift"
+        assert json.loads(OUT.read_text(encoding="utf-8"))==result, "manifest drift"
         print("PASS: 8 fine-root, 16 excluded-phase, 8 ordinary-fine interior strict finite KL J-side samples; 3 analytic target classes unchanged")
     else: print(payload,end="")
 
