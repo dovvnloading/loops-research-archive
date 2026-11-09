@@ -1,0 +1,60 @@
+name: "Actual KKL tree marking and marked two-versus-one breakage"
+
+on:
+  push:
+    branches: [main, 'research/**']
+    paths:
+      - '.github/workflows/tip-KKL-tree-marked-breakage.yml'
+      - 'TipKKLTreeMarking.lean'
+      - 'lakefile.toml'
+      - 'research/independent_audits/tip_KKL_native_tree_marking_and_marked_wave_breakage_20261109.md'
+      - 'research/independent_audits/verify_tip_KKL_tree_marked_breakage.py'
+      - 'results/tip_KKL_tree_marked_breakage_20261109.json'
+      - 'results/tip_root_interval_geometry.json'
+  pull_request:
+    paths:
+      - '.github/workflows/tip-KKL-tree-marked-breakage.yml'
+      - 'TipKKLTreeMarking.lean'
+      - 'lakefile.toml'
+      - 'research/independent_audits/tip_KKL_native_tree_marking_and_marked_wave_breakage_20261109.md'
+      - 'research/independent_audits/verify_tip_KKL_tree_marked_breakage.py'
+      - 'results/tip_KKL_tree_marked_breakage_20261109.json'
+      - 'results/tip_root_interval_geometry.json'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  exact-native-tree-and-whole-disk-certificate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Verify original parameter, full marking and whole complex disks
+        run: |
+          python -m py_compile research/independent_audits/verify_tip_KKL_tree_marked_breakage.py
+          python research/independent_audits/verify_tip_KKL_tree_marked_breakage.py --check-manifest
+
+  lean-native-marking-and-filters:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Reject placeholders and unsound shortcuts
+        run: |
+          if grep -En '(^|[^A-Za-z_])(sorry|admit|axiom|unsafe)([^A-Za-z_]|$)' TipKKLTreeMarking.lean; then
+            echo 'No proof placeholders or custom axioms allowed'
+            exit 1
+          fi
+      - uses: leanprover/lean-action@v1
+        with:
+          auto-config: 'false'
+          build: 'true'
+          test: 'false'
+          lint: 'false'
+          use-github-cache: 'false'
+          use-mathlib-cache: 'false'
+      - name: Explicit native finite marking check
+        run: lake build TipKKLTreeMarking
