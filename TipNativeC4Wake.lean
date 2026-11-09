@@ -59,7 +59,7 @@ transverse obstruction is zero exactly in the same-parent cases. -/
 theorem transverse_zero_iff_source_parent_same (i j : Fin 4) :
     (transversePotential j - transversePotential i = 0) ↔
       parentTile i = parentTile j := by
-  simp only [transversePotential, sub_eq_zero]
+  dsimp [transversePotential]
   omega
 
 /-- Native KL coarse winding n adds to both excluded fine phase
