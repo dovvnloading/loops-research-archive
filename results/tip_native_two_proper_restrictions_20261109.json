@@ -27,8 +27,8 @@
         "43/192",
         "7/24"
       ],
-      "strict_xi_interior_collapse_sample": "81/384",
-      "strict_eta_interior_collapse_sample": "99/384",
+      "strict_xi_interior_collapse_sample": "27/128",
+      "strict_eta_interior_collapse_sample": "33/128",
       "zero_based_angular_shift": 0,
       "full_original_xi_eta_lambda_sides_boundary_proper": false
     },
@@ -53,8 +53,8 @@
         "55/192",
         "7/24"
       ],
-      "strict_xi_interior_collapse_sample": "93/384",
-      "strict_eta_interior_collapse_sample": "111/384",
+      "strict_xi_interior_collapse_sample": "31/128",
+      "strict_eta_interior_collapse_sample": "37/128",
       "zero_based_angular_shift": 0,
       "full_original_xi_eta_lambda_sides_boundary_proper": false
     },
@@ -79,8 +79,8 @@
         "139/192",
         "19/24"
       ],
-      "strict_xi_interior_collapse_sample": "273/384",
-      "strict_eta_interior_collapse_sample": "291/384",
+      "strict_xi_interior_collapse_sample": "91/128",
+      "strict_eta_interior_collapse_sample": "97/128",
       "zero_based_angular_shift": 0,
       "full_original_xi_eta_lambda_sides_boundary_proper": false
     },
@@ -105,8 +105,8 @@
         "151/192",
         "19/24"
       ],
-      "strict_xi_interior_collapse_sample": "285/384",
-      "strict_eta_interior_collapse_sample": "303/384",
+      "strict_xi_interior_collapse_sample": "95/128",
+      "strict_eta_interior_collapse_sample": "101/128",
       "zero_based_angular_shift": 0,
       "full_original_xi_eta_lambda_sides_boundary_proper": false
     }
