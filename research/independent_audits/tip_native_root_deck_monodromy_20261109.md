@@ -135,7 +135,27 @@ An adversarial example is the reduced commutator \`g=[b01,b02]\`: **every abelia
 
 **Important gauge qualification.** Formula (2.2) uses the archive's fixed global based basis and exact right-monodromy convention. For the source tile deck loop alone, only a conjugacy class is fixed before choosing the KL prescribed connector into that global base. Theorem A does **not** assume those missing conjugating words are known: its source-native obstruction is the conjugacy-invariant \`D_(0,1)\`-winding. Theorem B is ready to process an actual \`g_θ\` as soon as it has been geometrically authenticated; it does **not** manufacture one.
 
-## 3. Strict source-type boundaries and research consequences
+## 3. Exact next geometric obligation: a *based* nine-cut word certificate
+
+Theorem B is a complete **decision** algorithm once a source word is known, but **not** a way to infer that word from rational ray endpoints. The following standard planar covering reduction makes the remaining source-side computation explicit and falsifiable.
+
+**Cut-word lemma (standard topology).** Let \`Ω9\` be a Jordan disk with the nine disjoint, full physical continua \`D_(r,j)\` removed. Choose disjoint topological cut arcs \`C_(r,j)\` joining each \`D_(r,j)\` to the outer boundary such that the cut-open exterior is simply connected; choose an ordered based meridian system dual to those cuts. If a *genuine based physical loop* \`γ\` is transverse to the cuts in finitely many points and does not pass through their endpoints, record in **traversal order** the signed cut-crossings \`b_(r,j)^(±1)\`. The freely reduced crossing word represents \`[γ]∈π1(Ω9)\` in this **cut-adapted basis**. To compare with the archive's fixed \`b_(r,j)\` basis, include the explicit based change-of-basis paths. This is the standard fundamental-polygon/van Kampen description of the fundamental group of a finitely punctured Jordan disk, and it is an infinite theorem about **all based loops**—not a statement that any of the missing KL loops has already been evaluated.
+
+The physical fine holes at this parameter are **nine disjoint closed real intervals**, so cut arcs can in principle be chosen disjointly on one side of the real axis and kept separate from the marked root. But a list of rational external *angles* is **not** a certified path/cut intersection sequence, because the G hybrid straightening angle coordinate is not a physical conformal Böttcher coordinate for \`f^3\`. The source paths must be geometrically realized before their ordered crossing words are asserted.
+
+To compute **one genuine outstanding cross-tile defect** \`g_θ=[κ'_θ κ_θ^{-1}]\`:
+
+1. Fix the original \`KL II §3.2.1\` based path in its actual **G carrier** \`A_6\`, including its tile, unwrapped angle, positive Green level and a specific connector to the common physical basepoint. Record the source path class, not merely its terminal ray.
+2. Fix the PR #60 rooted \`W_G\setminus K9\` connector with the **same physical endpoints**. Its allowance to traverse \`K3\setminus K9\` is the reason the two path categories differ; never replace it by an arbitrary coarse-admissible connector without recording the difference.
+3. Express their concatenation as a based loop in \`Ω9\`. Give a **geometric homotopy certificate** (or rigorously bounded piecewise analytic/polygonal representative) that avoids all nine intervals, including the endpoint neighborhoods. Select the actual nine-cut system and certify each crossing's ordering and sign.
+4. Reduce the complete ordered word, conjugate into the repository's exact archived based meridian conventions, and apply the **single-candidate** test from Theorem B. Do not call a homology or interval-label match a free-group word. Verify the result against at least one *independently specified* path homotopy.
+5. For a proposed continuous/prime-end extension, separately prove the **source-typed proper-end footprint** (the ideal \`O/ξ/η\` side of the native pseudo-piece), not merely convergence of an arbitrary ordinary physical ray.
+
+**A conditional Jordan-shortcut:** If the difference loop is actually certified to be a *simple* Jordan loop, its free homotopy class is peripheral around the subset of the nine full continua in its bounded complementary component. Its based representative is therefore a conjugate of the corresponding product of meridians. In that special case, checking which obstacles are inside the Jordan loop may settle whether it is in the root peripheral subgroup, **provided the based conjugator and the required root normalization are also certified**. The existing finite angular atlas does not by itself supply that simple-loop or conjugator certificate, and no cross-tile interior/exterior claim is being made here.
+
+The only **completed** connector class in this note is the own-seam native deck family, for which the source tiling fixes the root anchor and the coarse generator's nonzero obstacle winding proves every nonzero shift nonroot. All other \`g_θ\` remain explicitly **uncomputed**. This is the first-failure boundary that a future genuinely source-faithful proof or counterexample must cross.
+
+## 4. Strict source-type boundaries and research consequences
 
 - The original eight ray **anchors** live in open gluing seams and therefore are not ideal side points. The 16 unit deck **translates** are actual remaining finite \`ξ/η\` ideal prime ends, not artificial endpoint tags.
 - The new obstruction occurs **above the marked fine root itself**. It is logically independent of draft PR #61's stronger *excluded physical phase* nonextension and its positive ordinary-exterior collar theorem; both remain valid in their distinct target categories.
