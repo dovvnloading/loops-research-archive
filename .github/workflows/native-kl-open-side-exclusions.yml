@@ -1,0 +1,71 @@
+name: Native KL W ideal J-side excluded fine phases
+
+on:
+  push:
+    branches:
+      - main
+      - 'research/**'
+    paths:
+      - '.github/workflows/native-kl-open-side-exclusions.yml'
+      - '.github/workflows/lean-proofs.yml'
+      - 'TipNativeSideExclusion.lean'
+      - 'TipRootedNativeKL.lean'
+      - 'lakefile.toml'
+      - 'research/independent_audits/tip_native_ideal_side_excluded_phase_first_failure_20261108.md'
+      - 'research/independent_audits/verify_tip_native_ideal_side_exclusions.py'
+      - 'results/tip_native_ideal_side_exclusions_20261108.json'
+      - 'results/tip_kl_side_atlas.json'
+      - 'results/tip_nested_full_ray_census_20261107.json'
+      - 'results/tip_root_interval_geometry.json'
+  pull_request:
+    paths:
+      - '.github/workflows/native-kl-open-side-exclusions.yml'
+      - '.github/workflows/lean-proofs.yml'
+      - 'TipNativeSideExclusion.lean'
+      - 'TipRootedNativeKL.lean'
+      - 'lakefile.toml'
+      - 'research/independent_audits/tip_native_ideal_side_excluded_phase_first_failure_20261108.md'
+      - 'research/independent_audits/verify_tip_native_ideal_side_exclusions.py'
+      - 'results/tip_native_ideal_side_exclusions_20261108.json'
+      - 'results/tip_kl_side_atlas.json'
+      - 'results/tip_nested_full_ray_census_20261107.json'
+      - 'results/tip_root_interval_geometry.json'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  original-native-side-angle-audit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Check strict xi/eta source witness angles against original merged manifests
+        run: |
+          python -m py_compile research/independent_audits/verify_tip_native_ideal_side_exclusions.py
+          python research/independent_audits/verify_tip_native_ideal_side_exclusions.py --check-manifest
+
+  original-native-side-Lean:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Reject formal proof placeholders
+        run: |
+          if grep -En '(^|[^A-Za-z_])(sorry|admit)([^A-Za-z_]|$)' TipNativeSideExclusion.lean; then
+            echo 'Lean proof placeholders forbidden'
+            exit 1
+          fi
+      - name: Build registered Lean kernel proof modules
+        uses: leanprover/lean-action@v1
+        with:
+          auto-config: 'false'
+          build: 'true'
+          test: 'false'
+          lint: 'false'
+          use-github-cache: 'false'
+          use-mathlib-cache: 'false'
+      - name: Independently kernel-check finite postcritical source side arithmetic
+        run: lake build TipNativeSideExclusion
