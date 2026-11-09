@@ -55,8 +55,52 @@ theorem original_adjacent_W_tile_pairing :
       fine i ⟨1, by decide⟩ = fine (nextTile i) ⟨0, by decide⟩ :=
   fine_end_pairs_across_adjacent_tiles
 
+/-!
+The following is an **all-integer** formal consequence of the actual
+three phase-charge formula. It is not the nonabelian free-word theorem:
+a zero-abelianization commutator can still be a nonroot sheet.
+-/
+
+open LoopsFormal.TipSheetGrid
+
+/-- The three physical fine obstacle windings after n coarse turns. -/
+def shiftedNativeCharge (g : Winding) (n : Int) : Winding :=
+  ⟨g.w00 + n, g.w01 + n, g.w02 + n⟩
+
+/-- A root representative has zero D_(0,1) and D_(0,2) windings,
+so both charges force the SAME unique candidate native deck offset. -/
+theorem root_shift_forced_by_two_phase_charges
+    (g : Winding) (n h : Int)
+    (a : shiftedNativeCharge g n = Hwind h) :
+    n = -g.w01 ∧ g.w01 = g.w02 := by
+  have h01 := congrArg Winding.w01 a
+  have h02 := congrArg Winding.w02 a
+  dsimp [shiftedNativeCharge, Hwind] at h01 h02
+  omega
+
+/-- Universal integer quantifiers: at most one native deck shift can
+carry the given source defect's winding vector into root-subgroup form. -/
+theorem at_most_one_deck_shift_can_match_H_charges
+    (g : Winding) (n m h k : Int)
+    (a : shiftedNativeCharge g n = Hwind h)
+    (b : shiftedNativeCharge g m = Hwind k) : n = m := by
+  have ha := (root_shift_forced_by_two_phase_charges g n h a).1
+  have hb := (root_shift_forced_by_two_phase_charges g m k b).1
+  omega
+
+/-- The anchored native source ray has defect charge zero;
+no nonzero integer deck shift has the H charge vector. -/
+theorem nonzero_anchored_shift_cannot_have_H_charges
+    (n h : Int)
+    (a : shiftedNativeCharge ⟨0, 0, 0⟩ n = Hwind h) : n = 0 := by
+  have ha := (root_shift_forced_by_two_phase_charges ⟨0, 0, 0⟩ n h a).1
+  omega
+
 #print axioms all_source_anchor_angles_strict_in_W_seams
 #print axioms negative_unit_deck_is_on_original_xi
 #print axioms positive_unit_deck_is_on_original_eta
+#print axioms root_shift_forced_by_two_phase_charges
+#print axioms at_most_one_deck_shift_can_match_H_charges
+#print axioms nonzero_anchored_shift_cannot_have_H_charges
 
 end LoopsFormal.TipNativeRootDeck
