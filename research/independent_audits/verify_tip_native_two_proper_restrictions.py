@@ -48,7 +48,7 @@ def compute():
     assert all(t["lambda"]["carrier_height_relative_to_initial"]=="1/4" for t in vs)
     assert F(1,128)<F(1,32)<F(1,4)
 
-    child=[],links=[]
+    child=[]
     for j,t in enumerate(ws):
         a,b=map(F,t["seam_stage_angles"])
         p=j//2

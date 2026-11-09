@@ -57,10 +57,10 @@ strictly J-side endpoints at unwrapped x=-m, x=m+1. The same endpoints
 lie in both original source W sides. This is integer inequality only. -/
 theorem all_integer_winding_source_and_target_endpoint_brackets
     (m : Nat) (i : Fin 4) :
-      (-(Int.ofNat m) * 192 < (VLower192 i : Int)) ∧
-      ((VUpper192 i : Int) < Int.ofNat (m+1) * 192) ∧
-      (-(Int.ofNat m) * 192 < (lower i : Int)) ∧
-      ((upper i : Int) < Int.ofNat (m+1) * 192) := by
+      0 < m * 192 + VLower192 i ∧
+      VUpper192 i < (m+1) * 192 ∧
+      0 < m * 192 + lower i ∧
+      upper i < (m+1) * 192 := by
   have h := original_four_W_seams_strict_inside_original_V_parent i
   omega
 
