@@ -62,6 +62,12 @@ def compute() -> dict:
     assert second == [Q(3, 28), Q(25, 28)]
 
     phases = json.loads(PHASES.read_text(encoding="utf-8"))
+    # Source G dividing-fixed-point rays, used as locally extendible
+    # counterpoints to the x3/x6 omitted-phase ideal J-side rays.
+    p_boundary = stage["pieces"]["P"]["boundary_vertices"]
+    assert "1/3,2/3" in {v["stage_ray_pair"] for v in p_boundary}
+    assert "1/3" not in {str(x) for seam in seams for x in seam}
+
     assert phases["phase_intervals_pairwise_disjoint"] is True
     assert phases["inner_root_exact_interval"] == "[x9,x18]"
     physical = {row["physical_phase"]: row for row in phases["phase_intervals"]}
@@ -76,7 +82,9 @@ def compute() -> dict:
     targets = [(angle, "x3", "D_(0,1)") for angle in value] + [
         (angle, "x6", "D_(0,2)") for angle in second]
     canonical = []
+    positive = []
     exhaustive_finite = 0
+    positive_tail_finite = 0
     for i, ((lo, hi), tile) in enumerate(zip(seams, W["tiles"])):
         assert tile["index"] == i and tile["id"] == f"G:W:tile{i}"
         assert tile["xi"]["inner_halfline"] == ["-infinity", str(lo)]
@@ -92,6 +100,20 @@ def compute() -> dict:
             for k in range(1, 17):
                 assert side_of(angle + k, lo, hi) == "eta"
                 exhaustive_finite += 1
+        # The original dividing fixed point a, reached by source rays 1/3
+        # and 2/3, cannot belong to a disjoint G-three-cycle phase D_(0,j).
+        # Its prime-end tails therefore have ordinary fine-cover limits.
+        for side, stage_lift in (("xi", Q(1, 3) - 1), ("eta", Q(1, 3) + 1)):
+            assert side_of(stage_lift, lo, hi) == side
+            assert mod1(stage_lift) == Q(1, 3)
+            positive.append({"W_tile": i, "ideal_side": side,
+                             "lifted_stage_G_angle": str(stage_lift),
+                             "stage_G_angle_mod_one": "1/3",
+                             "physical_landing_point": "a (G-fixed dividing point)",
+                             "fine_target_location": "Omega9 (nonroot exterior)"})
+        for k in list(range(-16, 0)) + list(range(1, 17)):
+            assert side_of(Q(1, 3) + k, lo, hi) == ("xi" if k < 0 else "eta")
+            positive_tail_finite += 1
         # A very small canonical witness set: every source W tile has both
         # excluded fine-phase landing targets on EACH open J-side.
         examples = [
@@ -111,6 +133,7 @@ def compute() -> dict:
                 "excluded_fine_phase": phase,
             })
     assert len(canonical) == 16 and exhaustive_finite == 512
+    assert len(positive) == 8 and positive_tail_finite == 128
     assert {r["ideal_side"] for r in canonical} == {"xi", "eta"}
 
     return {
@@ -123,10 +146,13 @@ def compute() -> dict:
         "G_second_critical_value_x6_angles": [str(x) for x in second],
         "excluded_fine_phases": ["D_(0,1)=G(K9)", "D_(0,2)=G^2(K9)"],
         "canonical_strict_open_J_side_witnesses": canonical,
+        "canonical_fine_exterior_extension_witnesses": positive,
+        "positive_witness_count": len(positive),
+        "positive_integer_tail_regression_count": positive_tail_finite,
         "canonical_witness_count": len(canonical),
         "translated_side_regression_count": exhaustive_finite,
         "all_integer_tail_statement": "each of the four postcritical angles theta has theta+n strictly in xi_i for all n<=-1 and strictly in eta_i for all n>=1, for every original W tile i",
-        "written_analytic_consequence_not_machine_proved": "no physical-projection-preserving lift Psi_G(W)->T_hat_9 can extend continuously into T_hat_9 at any listed finite ideal-side point: its projected limit lies in D_(0,1) or D_(0,2), excluded from T_9",
+        "written_analytic_consequence_not_machine_proved": "x3/x6 excluded-phase ideal side points cannot extend into T_hat9; by covering local triviality, each source ray at the G-fixed dividing point a outside all fine phases has a unique local extension into T_hat9, with source sheet retained",
         "not_claimed": [
             "no impossibility for other target compactifications or protected side subarcs",
             "no proof of the remaining KL-prescribed connector defect words",
@@ -147,7 +173,7 @@ def main() -> None:
         print("WROTE", OUT)
     elif args.check_manifest:
         assert OUT.read_text(encoding="utf-8") == output, "manifest mismatch"
-        print("PASS: 16 strict native xi/eta excluded-phase witnesses; 512 exact translated-side checks")
+        print("PASS: 16 excluded-phase and 8 locally extendible native J-side witnesses; 640 exact translated-side checks")
     else:
         print(output, end="")
 

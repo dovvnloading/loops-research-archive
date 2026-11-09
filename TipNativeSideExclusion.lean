@@ -50,6 +50,15 @@ theorem x3_ray_strict_original_side_classification :
       (2 ≤ i.val → 25 * 192 < 56 * lower i) := by
   decide +kernel
 
+/-- The G dividing fixed-point rays at 1/3 and 2/3 are also finite
+    ORIGINAL J-side points, not W gluing-seam points. Unlike x3/x6,
+    the fixed point itself lies in the fine exterior Omega9. -/
+theorem dividing_fixed_ray_strict_source_side_classification :
+    ∀ i : Fin 4,
+      (i.val < 2 → 3 * upper i < 192) ∧
+      (2 ≤ i.val → 192 < 3 * lower i) := by
+  decide +kernel
+
 /-- Every original W seam sits strictly inside a period-one angle interval.
     Consequently any theta with 0<theta<1 has all theta+n, n<=-1 in xi
     and theta+n, n>=1 in eta, for all original W tiles. -/
@@ -68,6 +77,7 @@ theorem four_postcritical_angles_are_distinct :
 #print axioms second_critical_value_ray_doubling
 #print axioms x6_rays_strictly_in_both_original_side_tails
 #print axioms x3_ray_strict_original_side_classification
+#print axioms dividing_fixed_ray_strict_source_side_classification
 #print axioms all_seams_in_open_unit_angle
 #print axioms four_postcritical_angles_are_distinct
 

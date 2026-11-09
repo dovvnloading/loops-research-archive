@@ -88,6 +88,48 @@ failure but **narrower in target category**: it concerns `T_hat9` itself.
 It does not prohibit extensions into other compactifications that add
 boundary points corresponding to `D_(0,1),D_(0,2)`.
 
+### Proposition 1.2 (a positive local extension on every J-side)
+
+The negative theorem does **not** imply that the whole `xi/eta` boundary
+has to be discarded. Let `a` be the dividing fixed point of the
+polynomial-like map `G` and consider the actual source rays
+`1/3,2/3` landing at `a` (KL source puzzle and the merged internal
+ray-lift table). Since `G(a)=a` and the three sets
+`K9,G(K9),G²(K9)` are pairwise disjoint and permuted by `G`, this
+fixed point belongs to none of them. It is also outside all the
+other coarse phases, so **`a in Omega9`**.
+
+Each of the four original W tiles has strict finite ideal side points
+
+\[
+\xi_i^\circ:\ x=-2/3\quad (\theta=1/3),\qquad
+\eta_i^\circ:\ x=4/3\quad (\theta=1/3).\tag{1.2}
+\]
+
+These points **do** admit unique local continuous extensions of
+the existing holomorphic immersion `j_W` into the actual fine exterior
+`T_hat9\K_hat9`. Every integer translate far enough into a side
+tail has the same local extension property (the extended images need
+not coincide across different deck translates).
+
+More generally, at **any finite source ideal J-side prime end whose
+single G-ray landing target lies in `Omega9`**, a given interior
+projection-preserving lift extends uniquely, at least locally among
+nearby ideal points with targets remaining in `Omega9`. This is the
+standard evenly-covered-neighborhood lifting argument and needs no
+new selection of a relative coset. At finite ideal points whose
+physical targets lie in the **removed** sets `D_(0,1)` or `D_(0,2)`,
+Theorem 1 rules out extension **into the same fine surface**. The
+third case, landings on the marked `K9`, is different: root versus
+nonroot sheet convergence must be analyzed with the full based
+monodromy and cannot be decided from the projected point alone.
+
+Thus **each one of the eight original J-sides contains both explicitly
+extendible and explicitly nonextendible finite ideal points**.
+There is no contradiction with PR #60's rooted core section: that
+section and the global native universal-tile boundary have different
+domains and boundary objects.
+
 ## 2. The four postcritical source rays are genuine, not guessed
 
 The source-certified 3/9 Levin table
@@ -225,6 +267,27 @@ applies **simultaneously to every possible based lift** with the stated
 target and projection. The strict finite side placement and all-integer
 translates are (3.1)--(3.2), completing the proof. `square`
 
+**Proof of Proposition 1.2.** The source atlas puts the pair
+`1/3,2/3` at the actual fixed point `a`. The cyclic phase disjointness
+and `G(a)=a` exclude its belonging to any of the three cyclic fine
+root phases; phase separation excludes every fine obstacle in a
+nonzero coarse phase. Thus `a in Omega9`. The inequalities
+`-2/3<0<a_i<b_i<1<4/3` place the two claimed finite lifts strictly
+inside the source J-side half-lines. Fix either prime end and choose a
+small simply connected disk `B` about `a` that is evenly covered by
+`pi9:T_hatOmega9->Omega9`. Carathéodory landing in the source
+polynomial-like annulus gives a connected terminal collar of that
+ideal point whose **physical** projection lies in `B`, and the
+landing map is continuous on a sufficiently small adjacent ideal
+interval. Since the interior lift `j_W` is continuous, the connected
+collar lies in a single sheet of `pi9^{-1}(B)`. Compose the physical
+projection with the inverse of that sheet; it gives the unique
+continuous extension of `j_W` on the collar and its ideal boundary
+interval. Uniqueness follows from the interior and the local covering
+homeomorphism. This proof works verbatim for any finite source
+landing in `Omega9`, but **not** for a landing on `K9` where the fine
+localization is no longer an exterior covering. `square`
+
 **Important nonimplications.** The theorem is about the failure of a
 whole-side extension to the uncompactified fine canonical surface
 `T_hat9`. It does *not* exclude a boundary map into a separately
@@ -244,7 +307,8 @@ uses only the **merged, original** KL atlas, the full 3/9 Levin table,
 and the exact physical-phase manifest. It recomputes both image-ray
 pairs by rational doubling, verifies all four source tile side intervals,
 checks the original fine-obstacle labels and their disjointness,
-constructs all 16 strict open-side witnesses, and performs 512 exact
+constructs 16 strictly nonextendible and eight locally extendible
+finite original J-side witnesses, and performs 640 exact
 integer-translation regressions. The stored manifest
 [`tip_native_ideal_side_exclusions_20261108.json`](../../results/tip_native_ideal_side_exclusions_20261108.json)
 is deterministic. Run at repository root:
@@ -262,9 +326,10 @@ already documented source-specific classical arguments, and the
 conclusion is a new **logical deduction** from those inputs, not
 specialist-certified theorem priority.
 
-**The remaining positive research target is now narrower and better
+**The remaining research target is now narrower and better
 typed.** First explicitly choose a protected set of original native
-`xi/eta` ideal points whose physical landings lie in `T9`, and define
+`xi/eta` ideal points with a typed physical landing class
+(`Omega9`, removed phase, or marked `K9`), and define
 what *target compactification* is allowed. On that selected set, use
 source KL Lemmas 3.3/3.4 to compute the prescribed access paths and
 relative words `g_theta in pi1(Omega9)` (not free choices of fine
