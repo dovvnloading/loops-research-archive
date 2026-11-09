@@ -1,0 +1,163 @@
+{
+  "G_critical_value_x3_angles": [
+    "25/56",
+    "31/56"
+  ],
+  "G_second_critical_value_x6_angles": [
+    "3/28",
+    "25/28"
+  ],
+  "all_integer_tail_statement": "each of the four postcritical angles theta has theta+n strictly in xi_i for all n<=-1 and strictly in eta_i for all n>=1, for every original W tile i",
+  "canonical_strict_open_J_side_witnesses": [
+    {
+      "W_tile": 0,
+      "excluded_fine_phase": "D_(0,1)",
+      "ideal_side": "xi",
+      "lifted_stage_G_angle": "-31/56",
+      "physical_landing_point": "x3",
+      "stage_G_angle_mod_one": "25/56"
+    },
+    {
+      "W_tile": 0,
+      "excluded_fine_phase": "D_(0,2)",
+      "ideal_side": "xi",
+      "lifted_stage_G_angle": "3/28",
+      "physical_landing_point": "x6",
+      "stage_G_angle_mod_one": "3/28"
+    },
+    {
+      "W_tile": 0,
+      "excluded_fine_phase": "D_(0,1)",
+      "ideal_side": "eta",
+      "lifted_stage_G_angle": "81/56",
+      "physical_landing_point": "x3",
+      "stage_G_angle_mod_one": "25/56"
+    },
+    {
+      "W_tile": 0,
+      "excluded_fine_phase": "D_(0,2)",
+      "ideal_side": "eta",
+      "lifted_stage_G_angle": "25/28",
+      "physical_landing_point": "x6",
+      "stage_G_angle_mod_one": "25/28"
+    },
+    {
+      "W_tile": 1,
+      "excluded_fine_phase": "D_(0,1)",
+      "ideal_side": "xi",
+      "lifted_stage_G_angle": "-31/56",
+      "physical_landing_point": "x3",
+      "stage_G_angle_mod_one": "25/56"
+    },
+    {
+      "W_tile": 1,
+      "excluded_fine_phase": "D_(0,2)",
+      "ideal_side": "xi",
+      "lifted_stage_G_angle": "3/28",
+      "physical_landing_point": "x6",
+      "stage_G_angle_mod_one": "3/28"
+    },
+    {
+      "W_tile": 1,
+      "excluded_fine_phase": "D_(0,1)",
+      "ideal_side": "eta",
+      "lifted_stage_G_angle": "81/56",
+      "physical_landing_point": "x3",
+      "stage_G_angle_mod_one": "25/56"
+    },
+    {
+      "W_tile": 1,
+      "excluded_fine_phase": "D_(0,2)",
+      "ideal_side": "eta",
+      "lifted_stage_G_angle": "25/28",
+      "physical_landing_point": "x6",
+      "stage_G_angle_mod_one": "25/28"
+    },
+    {
+      "W_tile": 2,
+      "excluded_fine_phase": "D_(0,1)",
+      "ideal_side": "xi",
+      "lifted_stage_G_angle": "-31/56",
+      "physical_landing_point": "x3",
+      "stage_G_angle_mod_one": "25/56"
+    },
+    {
+      "W_tile": 2,
+      "excluded_fine_phase": "D_(0,2)",
+      "ideal_side": "xi",
+      "lifted_stage_G_angle": "3/28",
+      "physical_landing_point": "x6",
+      "stage_G_angle_mod_one": "3/28"
+    },
+    {
+      "W_tile": 2,
+      "excluded_fine_phase": "D_(0,1)",
+      "ideal_side": "eta",
+      "lifted_stage_G_angle": "81/56",
+      "physical_landing_point": "x3",
+      "stage_G_angle_mod_one": "25/56"
+    },
+    {
+      "W_tile": 2,
+      "excluded_fine_phase": "D_(0,2)",
+      "ideal_side": "eta",
+      "lifted_stage_G_angle": "25/28",
+      "physical_landing_point": "x6",
+      "stage_G_angle_mod_one": "25/28"
+    },
+    {
+      "W_tile": 3,
+      "excluded_fine_phase": "D_(0,1)",
+      "ideal_side": "xi",
+      "lifted_stage_G_angle": "-31/56",
+      "physical_landing_point": "x3",
+      "stage_G_angle_mod_one": "25/56"
+    },
+    {
+      "W_tile": 3,
+      "excluded_fine_phase": "D_(0,2)",
+      "ideal_side": "xi",
+      "lifted_stage_G_angle": "3/28",
+      "physical_landing_point": "x6",
+      "stage_G_angle_mod_one": "3/28"
+    },
+    {
+      "W_tile": 3,
+      "excluded_fine_phase": "D_(0,1)",
+      "ideal_side": "eta",
+      "lifted_stage_G_angle": "81/56",
+      "physical_landing_point": "x3",
+      "stage_G_angle_mod_one": "25/56"
+    },
+    {
+      "W_tile": 3,
+      "excluded_fine_phase": "D_(0,2)",
+      "ideal_side": "eta",
+      "lifted_stage_G_angle": "25/28",
+      "physical_landing_point": "x6",
+      "stage_G_angle_mod_one": "25/28"
+    }
+  ],
+  "canonical_witness_count": 16,
+  "excluded_fine_phases": [
+    "D_(0,1)=G(K9)",
+    "D_(0,2)=G^2(K9)"
+  ],
+  "not_claimed": [
+    "no impossibility for other target compactifications or protected side subarcs",
+    "no proof of the remaining KL-prescribed connector defect words",
+    "no unique proper restriction, UPTCR, H1-H4 or MLC proof"
+  ],
+  "original_KL_source": "Kahn--Lyubich II Decorations, section 3.2.1, Lemmas 3.3/3.4, section 3.2.4",
+  "outer_K3_critical_point_angles": [
+    "25/112",
+    "31/112",
+    "81/112",
+    "87/112"
+  ],
+  "schema_version": 1,
+  "scope": "finite points strictly inside every native G:W xi/eta ideal side; not central glued seams or a global KL proper-path theorem",
+  "source_stage": "G=f^3; ordinary K3 Julia set with fine K9 marked root",
+  "translated_side_regression_count": 512,
+  "written_analytic_consequence_not_machine_proved": "no physical-projection-preserving lift Psi_G(W)->T_hat_9 can extend continuously into T_hat_9 at any listed finite ideal-side point: its projected limit lies in D_(0,1) or D_(0,2), excluded from T_9"
+}
