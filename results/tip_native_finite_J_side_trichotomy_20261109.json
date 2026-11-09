@@ -1,0 +1,291 @@
+{
+  "schema_version": 1,
+  "scope": "Strict INTERIORS of finite original G:W KL xi/eta J-side arcs, excluding source vertices, gluing seams, wrapping O/J joints, and entire O sides",
+  "mathematical_case_by_physical_G_ray_landing": {
+    "K9": "marked root: exactly theta in source E_i and tile j=mate(i) with zero integer native deck shift extends to marked fine root; other strict J-side K9 accesses proper/nonroot",
+    "D01_or_D02": "removed fine physical phase: all side lifts proper in full fine surface, no extension into it",
+    "K3_minus_three_fine_coarse_root_phases": "ordinary fine exterior Omega9: all side lifts locally extend uniquely to an interior fine-cover point"
+  },
+  "original_source_phase_sets": {
+    "K9": "D_(0,0)",
+    "excluded_left": "D_(0,2)",
+    "excluded_right": "D_(0,1)",
+    "other_six": "D_(r,j),r=1 or 2, lie outside K3"
+  },
+  "printed_source": "Kahn-Lyubich II Decorations §§3.2.1-3.2.4, Lemmas 3.3-3.4; Kahn I §7.4.1",
+  "sample_exact_witnesses": {
+    "marked_fine_root": [
+      {
+        "source_W_tile": 1,
+        "ideal_side": "xi",
+        "G_angle": "3/14",
+        "ray": "qR",
+        "physical_target": "left_tip"
+      },
+      {
+        "source_W_tile": 1,
+        "ideal_side": "xi",
+        "G_angle": "25/112",
+        "ray": "d",
+        "physical_target": "zero_lower"
+      },
+      {
+        "source_W_tile": 0,
+        "ideal_side": "eta",
+        "G_angle": "31/112",
+        "ray": "e",
+        "physical_target": "zero_lower"
+      },
+      {
+        "source_W_tile": 0,
+        "ideal_side": "eta",
+        "G_angle": "2/7",
+        "ray": "pR",
+        "physical_target": "right_tip"
+      },
+      {
+        "source_W_tile": 3,
+        "ideal_side": "xi",
+        "G_angle": "5/7",
+        "ray": "pL",
+        "physical_target": "right_tip"
+      },
+      {
+        "source_W_tile": 3,
+        "ideal_side": "xi",
+        "G_angle": "81/112",
+        "ray": "a",
+        "physical_target": "zero_upper"
+      },
+      {
+        "source_W_tile": 2,
+        "ideal_side": "eta",
+        "G_angle": "87/112",
+        "ray": "b",
+        "physical_target": "zero_upper"
+      },
+      {
+        "source_W_tile": 2,
+        "ideal_side": "eta",
+        "G_angle": "11/14",
+        "ray": "qL",
+        "physical_target": "left_tip"
+      }
+    ],
+    "removed_fine_target": [
+      {
+        "source_W_tile": 0,
+        "ideal_side": "xi",
+        "G_angle_unwrapped": "-31/56",
+        "angle_mod_one": "25/56",
+        "physical_target": "x3",
+        "removed_fine_phase": "D_(0,1)"
+      },
+      {
+        "source_W_tile": 0,
+        "ideal_side": "xi",
+        "G_angle_unwrapped": "3/28",
+        "angle_mod_one": "3/28",
+        "physical_target": "x6",
+        "removed_fine_phase": "D_(0,2)"
+      },
+      {
+        "source_W_tile": 0,
+        "ideal_side": "eta",
+        "G_angle_unwrapped": "81/56",
+        "angle_mod_one": "25/56",
+        "physical_target": "x3",
+        "removed_fine_phase": "D_(0,1)"
+      },
+      {
+        "source_W_tile": 0,
+        "ideal_side": "eta",
+        "G_angle_unwrapped": "25/28",
+        "angle_mod_one": "25/28",
+        "physical_target": "x6",
+        "removed_fine_phase": "D_(0,2)"
+      },
+      {
+        "source_W_tile": 1,
+        "ideal_side": "xi",
+        "G_angle_unwrapped": "-31/56",
+        "angle_mod_one": "25/56",
+        "physical_target": "x3",
+        "removed_fine_phase": "D_(0,1)"
+      },
+      {
+        "source_W_tile": 1,
+        "ideal_side": "xi",
+        "G_angle_unwrapped": "3/28",
+        "angle_mod_one": "3/28",
+        "physical_target": "x6",
+        "removed_fine_phase": "D_(0,2)"
+      },
+      {
+        "source_W_tile": 1,
+        "ideal_side": "eta",
+        "G_angle_unwrapped": "81/56",
+        "angle_mod_one": "25/56",
+        "physical_target": "x3",
+        "removed_fine_phase": "D_(0,1)"
+      },
+      {
+        "source_W_tile": 1,
+        "ideal_side": "eta",
+        "G_angle_unwrapped": "25/28",
+        "angle_mod_one": "25/28",
+        "physical_target": "x6",
+        "removed_fine_phase": "D_(0,2)"
+      },
+      {
+        "source_W_tile": 2,
+        "ideal_side": "xi",
+        "G_angle_unwrapped": "-31/56",
+        "angle_mod_one": "25/56",
+        "physical_target": "x3",
+        "removed_fine_phase": "D_(0,1)"
+      },
+      {
+        "source_W_tile": 2,
+        "ideal_side": "xi",
+        "G_angle_unwrapped": "3/28",
+        "angle_mod_one": "3/28",
+        "physical_target": "x6",
+        "removed_fine_phase": "D_(0,2)"
+      },
+      {
+        "source_W_tile": 2,
+        "ideal_side": "eta",
+        "G_angle_unwrapped": "81/56",
+        "angle_mod_one": "25/56",
+        "physical_target": "x3",
+        "removed_fine_phase": "D_(0,1)"
+      },
+      {
+        "source_W_tile": 2,
+        "ideal_side": "eta",
+        "G_angle_unwrapped": "25/28",
+        "angle_mod_one": "25/28",
+        "physical_target": "x6",
+        "removed_fine_phase": "D_(0,2)"
+      },
+      {
+        "source_W_tile": 3,
+        "ideal_side": "xi",
+        "G_angle_unwrapped": "-31/56",
+        "angle_mod_one": "25/56",
+        "physical_target": "x3",
+        "removed_fine_phase": "D_(0,1)"
+      },
+      {
+        "source_W_tile": 3,
+        "ideal_side": "xi",
+        "G_angle_unwrapped": "3/28",
+        "angle_mod_one": "3/28",
+        "physical_target": "x6",
+        "removed_fine_phase": "D_(0,2)"
+      },
+      {
+        "source_W_tile": 3,
+        "ideal_side": "eta",
+        "G_angle_unwrapped": "81/56",
+        "angle_mod_one": "25/56",
+        "physical_target": "x3",
+        "removed_fine_phase": "D_(0,1)"
+      },
+      {
+        "source_W_tile": 3,
+        "ideal_side": "eta",
+        "G_angle_unwrapped": "25/28",
+        "angle_mod_one": "25/28",
+        "physical_target": "x6",
+        "removed_fine_phase": "D_(0,2)"
+      }
+    ],
+    "ordinary_fine_exterior": [
+      {
+        "source_W_tile": 0,
+        "ideal_side": "xi",
+        "G_angle_unwrapped": "-2/3",
+        "angle_mod_one": "1/3",
+        "physical_target": "a",
+        "fine_target": "Omega9"
+      },
+      {
+        "source_W_tile": 0,
+        "ideal_side": "eta",
+        "G_angle_unwrapped": "4/3",
+        "angle_mod_one": "1/3",
+        "physical_target": "a",
+        "fine_target": "Omega9"
+      },
+      {
+        "source_W_tile": 1,
+        "ideal_side": "xi",
+        "G_angle_unwrapped": "-2/3",
+        "angle_mod_one": "1/3",
+        "physical_target": "a",
+        "fine_target": "Omega9"
+      },
+      {
+        "source_W_tile": 1,
+        "ideal_side": "eta",
+        "G_angle_unwrapped": "4/3",
+        "angle_mod_one": "1/3",
+        "physical_target": "a",
+        "fine_target": "Omega9"
+      },
+      {
+        "source_W_tile": 2,
+        "ideal_side": "xi",
+        "G_angle_unwrapped": "-2/3",
+        "angle_mod_one": "1/3",
+        "physical_target": "a",
+        "fine_target": "Omega9"
+      },
+      {
+        "source_W_tile": 2,
+        "ideal_side": "eta",
+        "G_angle_unwrapped": "4/3",
+        "angle_mod_one": "1/3",
+        "physical_target": "a",
+        "fine_target": "Omega9"
+      },
+      {
+        "source_W_tile": 3,
+        "ideal_side": "xi",
+        "G_angle_unwrapped": "-2/3",
+        "angle_mod_one": "1/3",
+        "physical_target": "a",
+        "fine_target": "Omega9"
+      },
+      {
+        "source_W_tile": 3,
+        "ideal_side": "eta",
+        "G_angle_unwrapped": "4/3",
+        "angle_mod_one": "1/3",
+        "physical_target": "a",
+        "fine_target": "Omega9"
+      }
+    ]
+  },
+  "witness_counts": {
+    "marked_fine_root": 8,
+    "removed_fine_target": 16,
+    "ordinary_fine_exterior": 8,
+    "total": 32
+  },
+  "finite_source_angle_comparison": "All witness angles are strictly inside genuine original xi/eta J-side half-lines; none is an original vertex or glued seam point",
+  "proof_trust_boundary": [
+    "K3=J(G) locally connected and its G external Caratheodory landing map is continuous (imported classical analytic theorem)",
+    "K3 phase separation: all six fine phases with physical coarse index r=1,2 are disjoint from K3 (previously sourced complex phase argument)",
+    "source-native Psi_G(W) holomorphic immersion and continuous physical side-angle landing (Kahn-Lyubich path-space and naturality)",
+    "source-native C4 wake transverse character and parameterized K9 root-sheet selection (merged PR #64 written analytic theorem, not Lean)",
+    "covering local triviality near ordinary fine exterior and unique marked-root chart near K9 (Kahn I theorem)"
+  ],
+  "explicitly_open": [
+    "Original KL finite vertices at xi/eta endpoint, infinite wrapping O/J joints, full O-lambda sides, and boundary maps to alternate compactifications",
+    "Full nine-generator based words for remaining actual KL paths, source path groupoid and KKL unique proper restriction",
+    "H1-H4, UPTCR, MLC and all ledger statuses unchanged"
+  ]
+}

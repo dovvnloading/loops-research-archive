@@ -1,0 +1,75 @@
+name: "Actual KL W finite ideal J-side physical-target trichotomy"
+
+on:
+  push:
+    branches:
+      - main
+      - 'research/**'
+    paths:
+      - '.github/workflows/tip-native-finite-J-side-trichotomy.yml'
+      - 'research/independent_audits/tip_native_finite_J_side_target_trichotomy_20261109.md'
+      - 'research/independent_audits/verify_tip_native_finite_J_side_trichotomy.py'
+      - 'results/tip_native_finite_J_side_trichotomy_20261109.json'
+      - 'TipNativeFiniteJTrichotomy.lean'
+      - 'TipNativeSideExclusion.lean'
+      - 'TipNativeC4Wake.lean'
+      - 'results/tip_native_ideal_side_exclusions_20261108.json'
+      - 'results/tip_native_C4_wake_root_matrix_20261109.json'
+      - 'results/tip_root_interval_geometry.json'
+      - 'results/tip_kl_side_atlas.json'
+      - 'lakefile.toml'
+      - '.github/workflows/lean-proofs.yml'
+  pull_request:
+    paths:
+      - '.github/workflows/tip-native-finite-J-side-trichotomy.yml'
+      - 'research/independent_audits/tip_native_finite_J_side_target_trichotomy_20261109.md'
+      - 'research/independent_audits/verify_tip_native_finite_J_side_trichotomy.py'
+      - 'results/tip_native_finite_J_side_trichotomy_20261109.json'
+      - 'TipNativeFiniteJTrichotomy.lean'
+      - 'TipNativeSideExclusion.lean'
+      - 'TipNativeC4Wake.lean'
+      - 'results/tip_native_ideal_side_exclusions_20261108.json'
+      - 'results/tip_native_C4_wake_root_matrix_20261109.json'
+      - 'results/tip_root_interval_geometry.json'
+      - 'results/tip_kl_side_atlas.json'
+      - 'lakefile.toml'
+      - '.github/workflows/lean-proofs.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  native-finite-J-side-source-matrix:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Check all three physical target classes and source strict prime-end positions
+        run: |
+          python research/independent_audits/verify_tip_native_ideal_side_exclusions.py --check-manifest
+          python research/independent_audits/verify_tip_native_finite_J_side_trichotomy.py --check-manifest
+
+  lean-three-target-source-angle-layer:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Reject formal placeholders
+        run: |
+          if grep -En '(^|[^A-Za-z_])(sorry|admit)([^A-Za-z_]|$)' TipNativeSideExclusion.lean TipNativeFiniteJTrichotomy.lean; then
+            echo 'No Lean proof placeholders'
+            exit 1
+          fi
+      - name: Build registered Lean kernels
+        uses: leanprover/lean-action@v1
+        with:
+          auto-config: 'false'
+          build: 'true'
+          test: 'false'
+          lint: 'false'
+          use-github-cache: 'false'
+          use-mathlib-cache: 'false'
+      - name: Independently kernel-check exact source trichotomy witnesses
+        run: lake build TipNativeSideExclusion TipNativeFiniteJTrichotomy
