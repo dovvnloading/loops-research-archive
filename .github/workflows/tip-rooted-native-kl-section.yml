@@ -1,0 +1,63 @@
+name: Actual 3-9 rooted KL core section and W four-tile ray cycle
+
+on:
+  push:
+    branches:
+      - main
+      - 'research/**'
+    paths:
+      - '.github/workflows/tip-rooted-native-kl-section.yml'
+      - 'research/independent_audits/tip_rooted_native_KL_section_and_four_tile_prime_end_cycle_20261108.md'
+      - 'research/independent_audits/verify_tip_rooted_native_KL_section.py'
+      - 'results/tip_rooted_native_KL_section_20261108.json'
+      - 'TipRootedNativeKL.lean'
+      - 'lakefile.toml'
+      - '.github/workflows/lean-proofs.yml'
+  pull_request:
+    paths:
+      - '.github/workflows/tip-rooted-native-kl-section.yml'
+      - 'research/independent_audits/tip_rooted_native_KL_section_and_four_tile_prime_end_cycle_20261108.md'
+      - 'research/independent_audits/verify_tip_rooted_native_KL_section.py'
+      - 'results/tip_rooted_native_KL_section_20261108.json'
+      - 'TipRootedNativeKL.lean'
+      - 'lakefile.toml'
+      - '.github/workflows/lean-proofs.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  source-native-KL-W-ray-audit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Exactly check physical P/V/W gluing seams, eight source rays, and reduced-word adversaries
+        run: |
+          python -m py_compile research/independent_audits/verify_tip_rooted_native_KL_section.py
+          python research/independent_audits/verify_tip_rooted_native_KL_section.py --check-manifest
+
+  W-tile-Lean-kernel:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Reject formal proof placeholders
+        run: |
+          if grep -En '(^|[^A-Za-z_])(sorry|admit)([^A-Za-z_]|$)' TipRootedNativeKL.lean; then
+            echo 'Lean proof placeholders forbidden'
+            exit 1
+          fi
+      - name: Install Lean and build all registered proof modules
+        uses: leanprover/lean-action@v1
+        with:
+          auto-config: 'false'
+          build: 'true'
+          test: 'false'
+          lint: 'false'
+          use-github-cache: 'false'
+          use-mathlib-cache: 'false'
+      - name: Independently kernel-check source ray/side incidence
+        run: lake build TipRootedNativeKL
