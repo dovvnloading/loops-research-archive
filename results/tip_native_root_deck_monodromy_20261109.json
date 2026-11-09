@@ -1,0 +1,127 @@
+{
+  "schema_version": 1,
+  "theorem_scope": "Native original G=f^3 W=Y_G^6 universal tiles; exact own-seam root anchors and all nonzero integer deck translates. Not all source prescribed KL connectors.",
+  "canonical_root_subgroup": "H=<b00> in F(b00,b01,b02,b10,...,b22)",
+  "archived_based_coarse_meridian_word": [
+    "b00",
+    "b01",
+    "b02"
+  ],
+  "winding_D01_per_positive_native_tile_deck": 1,
+  "winding_D02_per_positive_native_tile_deck": 1,
+  "anchor_rows": [
+    {
+      "tile": 0,
+      "slot": 0,
+      "ray": "qR",
+      "anchor_G_angle": "3/14",
+      "fine_Pi9": "1/2",
+      "physical_K9_target": "left_tip",
+      "minus_one_source_xi_angle": "-11/14",
+      "plus_one_source_eta_angle": "17/14",
+      "zero_shift_root": true,
+      "nonzero_integer_shift_root": false
+    },
+    {
+      "tile": 0,
+      "slot": 1,
+      "ray": "d",
+      "anchor_G_angle": "25/112",
+      "fine_Pi9": "3/4",
+      "physical_K9_target": "zero_lower",
+      "minus_one_source_xi_angle": "-87/112",
+      "plus_one_source_eta_angle": "137/112",
+      "zero_shift_root": true,
+      "nonzero_integer_shift_root": false
+    },
+    {
+      "tile": 1,
+      "slot": 0,
+      "ray": "e",
+      "anchor_G_angle": "31/112",
+      "fine_Pi9": "3/4",
+      "physical_K9_target": "zero_lower",
+      "minus_one_source_xi_angle": "-81/112",
+      "plus_one_source_eta_angle": "143/112",
+      "zero_shift_root": true,
+      "nonzero_integer_shift_root": false
+    },
+    {
+      "tile": 1,
+      "slot": 1,
+      "ray": "pR",
+      "anchor_G_angle": "2/7",
+      "fine_Pi9": "0",
+      "physical_K9_target": "right_tip",
+      "minus_one_source_xi_angle": "-5/7",
+      "plus_one_source_eta_angle": "9/7",
+      "zero_shift_root": true,
+      "nonzero_integer_shift_root": false
+    },
+    {
+      "tile": 2,
+      "slot": 0,
+      "ray": "pL",
+      "anchor_G_angle": "5/7",
+      "fine_Pi9": "0",
+      "physical_K9_target": "right_tip",
+      "minus_one_source_xi_angle": "-2/7",
+      "plus_one_source_eta_angle": "12/7",
+      "zero_shift_root": true,
+      "nonzero_integer_shift_root": false
+    },
+    {
+      "tile": 2,
+      "slot": 1,
+      "ray": "a",
+      "anchor_G_angle": "81/112",
+      "fine_Pi9": "1/4",
+      "physical_K9_target": "zero_upper",
+      "minus_one_source_xi_angle": "-31/112",
+      "plus_one_source_eta_angle": "193/112",
+      "zero_shift_root": true,
+      "nonzero_integer_shift_root": false
+    },
+    {
+      "tile": 3,
+      "slot": 0,
+      "ray": "b",
+      "anchor_G_angle": "87/112",
+      "fine_Pi9": "1/4",
+      "physical_K9_target": "zero_upper",
+      "minus_one_source_xi_angle": "-25/112",
+      "plus_one_source_eta_angle": "199/112",
+      "zero_shift_root": true,
+      "nonzero_integer_shift_root": false
+    },
+    {
+      "tile": 3,
+      "slot": 1,
+      "ray": "qL",
+      "anchor_G_angle": "11/14",
+      "fine_Pi9": "1/2",
+      "physical_K9_target": "left_tip",
+      "minus_one_source_xi_angle": "-3/14",
+      "plus_one_source_eta_angle": "25/14",
+      "zero_shift_root": true,
+      "nonzero_integer_shift_root": false
+    }
+  ],
+  "certified_finite_source_side_witnesses": 16,
+  "source_anchor_count": 8,
+  "sampled_nonzero_deck_shifts_per_anchor": 40,
+  "sampled_nonroot_lifts": 320,
+  "free_word_selector_reduced_samples_length_le_5": 4687,
+  "commutator_zero_abelianization_nonroot": true,
+  "analytic_proofs_not_formalized": [
+    "KL universal-tile ideal-side prime ends and carrier-annulus source deck normalization",
+    "The native tile generator winds once about excluded fine D_(0,1) and D_(0,2)",
+    "Kahn root-biholomorphic chart and the previously source-certified marked holomorphic immersion",
+    "Infinite distinctness, nonroot convergence obstruction and proper escape from all compacta"
+  ],
+  "unresolved": [
+    "Other-tile prescribed KL coarse connectors g_theta are not computed",
+    "Full source-native whole-side ideal circle map and unique KKL proper restriction not proved",
+    "H1-H4, UPTCR, MLC unchanged and open"
+  ]
+}
