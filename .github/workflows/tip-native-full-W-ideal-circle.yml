@@ -1,0 +1,67 @@
+name: "Native KL entire W ideal-circle pointwise extension and obstruction"
+
+on:
+  push:
+    branches:
+      - main
+      - 'research/**'
+    paths:
+      - '.github/workflows/tip-native-full-W-ideal-circle.yml'
+      - 'research/independent_audits/tip_native_full_W_ideal_circle_pointwise_extension_20261109.md'
+      - 'research/independent_audits/verify_tip_native_full_W_ideal_circle_types.py'
+      - 'results/tip_native_full_W_ideal_circle_types_20261109.json'
+      - 'results/tip_kl_side_atlas.json'
+      - 'results/tip_native_finite_J_side_trichotomy_20261109.json'
+      - 'TipNativeFullBoundaryTypes.lean'
+      - 'TipNativeFiniteJTrichotomy.lean'
+      - 'lakefile.toml'
+  pull_request:
+    paths:
+      - '.github/workflows/tip-native-full-W-ideal-circle.yml'
+      - 'research/independent_audits/tip_native_full_W_ideal_circle_pointwise_extension_20261109.md'
+      - 'research/independent_audits/verify_tip_native_full_W_ideal_circle_types.py'
+      - 'results/tip_native_full_W_ideal_circle_types_20261109.json'
+      - 'results/tip_kl_side_atlas.json'
+      - 'results/tip_native_finite_J_side_trichotomy_20261109.json'
+      - 'TipNativeFullBoundaryTypes.lean'
+      - 'TipNativeFiniteJTrichotomy.lean'
+      - 'lakefile.toml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  source-original-W-ideal-boundary-atlas:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Verify real source KL W original vertices, O samples and wrapping joint types
+        run: |
+          python -m py_compile research/independent_audits/verify_tip_native_full_W_ideal_circle_types.py
+          python research/independent_audits/verify_tip_native_full_W_ideal_circle_types.py --check-manifest
+
+  lean-finite-original-W-vertex-and-wrap:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Reject formal placeholders
+        run: |
+          if grep -En '(^|[^A-Za-z_])(sorry|admit)([^A-Za-z_]|$)' TipNativeFullBoundaryTypes.lean; then
+            echo 'No Lean proof placeholders'
+            exit 1
+          fi
+      - name: Build registered Lean kernels
+        uses: leanprover/lean-action@v1
+        with:
+          auto-config: 'false'
+          build: 'true'
+          test: 'false'
+          lint: 'false'
+          use-github-cache: 'false'
+          use-mathlib-cache: 'false'
+      - name: Independently kernel-check original J-vertex pairs and O/J joint count
+        run: lake build TipNativeFullBoundaryTypes
