@@ -93,8 +93,8 @@ no nonzero integer deck shift has the H charge vector. -/
 theorem nonzero_anchored_shift_cannot_have_H_charges
     (n h : Int)
     (a : shiftedNativeCharge ⟨0, 0, 0⟩ n = Hwind h) : n = 0 := by
-  have ha := (root_shift_forced_by_two_phase_charges ⟨0, 0, 0⟩ n h a).1
-  omega
+  have h01 := congrArg Winding.w01 a
+  simpa [shiftedNativeCharge, Hwind] using h01
 
 #print axioms all_source_anchor_angles_strict_in_W_seams
 #print axioms negative_unit_deck_is_on_original_xi
