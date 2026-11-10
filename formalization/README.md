@@ -1,5 +1,12 @@
 # Formal proof program — Lean 4
 
+## Comprehensive frontier audit (2026-11-09)
+
+The [Lean frontier audit](FRONTIER_2026-11-09.md) indexes all 115 open source-ledger obligations, the 20 immediately unblocked nodes and all 14 conditional documentary-proved statements with their explicit unresolved hypotheses. This is a **source-status audit**, not a closure of MLC or any analytic H1–H4 gate.
+
+[`ResearchLedger.lean`](../ResearchLedger.lean) mirrors the complete 465-node dependency and conditional-hypothesis DAG and has Lean proofs of its count/order/status invariants, while [`ResearchGates.lean`](../ResearchGates.lean) supplies a typed six-clause same-carrier terminal interface and countermodels against invalid closure shortcuts. [`TipNativeDeckWords.lean`](../TipNativeDeckWords.lean) adds exact finite nonabelian word controls, including a zero-winding/nonroot commutator. None of these proves that a physical KL connector has a particular free-group word. The [mirror auditor](../code/verify_lean_frontier_sync.py) is wired into the main CI workflow.
+
+
 The formalization is a **separate verification track**. A successful Lean build checks the exact encoded statements; it does not certify that the encoding matches all hypotheses of a cited analytical theorem. Mandelbrot Local Connectivity remains open.
 
 ## Verified graph formalization (2026-11-05)
