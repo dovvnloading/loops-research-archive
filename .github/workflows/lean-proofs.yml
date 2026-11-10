@@ -40,6 +40,10 @@ on:
       - 'TipNativeFullBoundaryTypes.lean'
       - 'TipKKLTreeMarking.lean'
       - 'TipNativeProperRestriction.lean'
+      - 'ResearchLedger.lean'
+      - 'ResearchGates.lean'
+      - 'TipNativeDeckWords.lean'
+      - 'code/verify_lean_frontier_sync.py'
       - 'results/tip_native_two_proper_restrictions_20261109.json'
       - 'results/tip_native_full_W_ideal_circle_types_20261109.json'
       - 'results/tip_native_ideal_side_exclusions_20261108.json'
@@ -102,6 +106,10 @@ on:
       - 'TipNativeFullBoundaryTypes.lean'
       - 'TipKKLTreeMarking.lean'
       - 'TipNativeProperRestriction.lean'
+      - 'ResearchLedger.lean'
+      - 'ResearchGates.lean'
+      - 'TipNativeDeckWords.lean'
+      - 'code/verify_lean_frontier_sync.py'
       - 'results/tip_native_two_proper_restrictions_20261109.json'
       - 'results/tip_native_full_W_ideal_circle_types_20261109.json'
       - 'results/tip_native_ideal_side_exclusions_20261108.json'
@@ -136,7 +144,7 @@ jobs:
       - uses: actions/checkout@v4
       - name: Reject proof holes
         run: |
-          if grep -En '(^|[^A-Za-z_])(sorry|admit)([^A-Za-z_]|$)' LoopsFormal.lean CloneGraph.lean FirstReturn.lean ReturnBlocks.lean ReturnPaths.lean Paper2Phase.lean RealTwoScalePhase.lean Period27Kneading.lean Period27Dyadic.lean Period27IntervalSound.lean Period27RationalTrace.lean Period27RationalDerivative.lean PhaseTower.lean PhaseTower27.lean PhaseFuture.lean PhaseFuture27.lean PhaseMemoryGeneral.lean TipRayPortrait.lean TipComplexMargins.lean TipKLPuzzle.lean TipActualCoarseRays.lean TipLevinComposition.lean TipSheetGrid.lean TipRootedNativeKL.lean TipNativeRootDeck.lean TipNativeC4Wake.lean TipNativeSideExclusion.lean TipNativeFiniteJTrichotomy.lean TipNativeFullBoundaryTypes.lean TipKKLTreeMarking.lean TipNativeProperRestriction.lean; then
+          if grep -En '(^|[^A-Za-z_])(sorry|admit)([^A-Za-z_]|$)' LoopsFormal.lean CloneGraph.lean FirstReturn.lean ReturnBlocks.lean ReturnPaths.lean Paper2Phase.lean RealTwoScalePhase.lean Period27Kneading.lean Period27Dyadic.lean Period27IntervalSound.lean Period27RationalTrace.lean Period27RationalDerivative.lean PhaseTower.lean PhaseTower27.lean PhaseFuture.lean PhaseFuture27.lean PhaseMemoryGeneral.lean TipRayPortrait.lean TipComplexMargins.lean TipKLPuzzle.lean TipActualCoarseRays.lean TipLevinComposition.lean TipSheetGrid.lean TipRootedNativeKL.lean TipNativeRootDeck.lean TipNativeC4Wake.lean TipNativeSideExclusion.lean TipNativeFiniteJTrichotomy.lean TipNativeFullBoundaryTypes.lean TipKKLTreeMarking.lean TipNativeProperRestriction.lean ResearchLedger.lean ResearchGates.lean TipNativeDeckWords.lean; then
             echo 'Proof placeholders are prohibited in formal audit files.'
             exit 1
           fi
@@ -159,6 +167,8 @@ jobs:
           python-version: '3.12'
       - name: Verify README links, exact research figures and ledger provenance
         run: python code/verify_readme_integrity.py
+      - name: Verify source ledger dependency and Lean status mirror
+        run: python code/verify_lean_frontier_sync.py
       - name: Verify generated SVGs match exact source manifests
         run: node code/generate_readme_research_figures.mjs --check
       - name: Install numerical-test dependency
