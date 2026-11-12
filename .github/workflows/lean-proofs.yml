@@ -173,6 +173,8 @@ jobs:
         run: node code/generate_readme_research_figures.mjs --check
       - name: Install numerical-test dependency
         run: python -m pip install 'numpy>=2,<3'
+      - name: Check boundary-spectrum exact rational regression
+        run: python research/independent_audits/verify_mlc_boundary_spectrum.py
       - name: Check finite delayed-clone matrices
         run: python research/independent_audits/verify_clone_spectral.py
       - name: Check complete first-return edge-occurrence counts
