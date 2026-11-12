@@ -23,7 +23,7 @@ The coefficients `b_n` are real rational numbers (indeed dyadic rationals) that 
 \tag{1.2}
 \]
 
-See Ewing--Schober, *Computing the Laurent Series of the Map* `Psi: C-D -> C-M`, **Advances in Applied Mathematics** 14 (1993), 25--38, DOI `10.1006/aama.1993.1002`; and Beretta--Dimino--Fang--Martinez--Miller--Stoll, *Fractal Fract.* 6 (2022), 534, DOI `10.3390/fractalfract6100534`. Their coefficient work predates this archive: **Laurent coefficients as an MLC route are not original here**.
+See Bielefeld--Fisher--von Haeseler, *Computing the Laurent Series of the Map* `Psi: C-D -> C-M`, **Advances in Applied Mathematics** 14 (1993), 25--38, DOI `10.1006/aama.1993.1002` (including the conditional non-Hölder theorem); Ewing--Schober, *The Area of the Mandelbrot Set*, **Numerische Mathematik** 61 (1992), 59--72; and Beretta--Dimino--Fang--Martinez--Miller--Stoll, *Fractal Fract.* 6 (2022), 534, DOI `10.3390/fractalfract6100534`. Their coefficient work predates this archive: **Laurent coefficients as an MLC route are not original here**.
 
 Write `G(z)=sum_{n>=1} b_n z^n`, analytic on `|z|<1`. Then `Psi(w)=w-1/2+G(1/w)` and, by Carathéodory's boundary correspondence for the complement of the full connected Mandelbrot set,
 
@@ -118,9 +118,9 @@ The condition (3.3) is **sufficient, not known necessary**, and may be too stron
 
 ## 4. No algebraic decay of the Mandelbrot area tail
 
-Put `E_N=sum_{n>N} n|b_n|^2`; by (3.2), `E_N -> 0`. Ewing--Schober (1993) also established that **if** the Laurent boundary series extends continuously, its boundary function is *not Hölder continuous of any positive exponent*. That published input has not been re-proved in this note.
+Put `E_N=sum_{n>N} n|b_n|^2`; by (3.2), `E_N -> 0`. Bielefeld--Fisher--von Haeseler (1993) also established that **if** the Laurent boundary series extends continuously, its boundary function is *not Hölder continuous of any positive exponent*. That published input has not been re-proved in this note.
 
-**Theorem 4.1 (conditional-on-published-theorem, but unconditional in MLC).** Assuming the Ewing--Schober non-Hölder statement in the cited meaning, for **every** `alpha>0`,
+**Theorem 4.1 (conditional-on-published-theorem, but unconditional in MLC).** Assuming the Bielefeld--Fisher--von Haeseler non-Hölder statement in the cited meaning, for **every** `alpha>0`,
 
 \[
 \boxed{E_N\ne O(N^{-\alpha})\quad\text{as }N\to\infty.}
@@ -157,7 +157,7 @@ The same block bound without `n^beta` gives absolute convergence of `sum b_n exp
 
 ### Corollary 4.2 — the exact critical Sobolev threshold
 
-Interpreting the analytic boundary trace of `G` as a periodic distribution, the area theorem and Ewing--Schober's published conditional non-Hölder theorem together give the unconditional regularity classification
+Interpreting the analytic boundary trace of `G` as a periodic distribution, the area theorem and Bielefeld--Fisher--von Haeseler's published conditional non-Hölder theorem together give the unconditional regularity classification
 
 \[
 \boxed{G|_{S^1}\in H^{1/2}(S^1),\qquad
@@ -185,7 +185,7 @@ Equivalently, **the exact coefficient-summability barrier** is
 \tag{4.6}
 \]
 
-Thus `sum b_n exp(in theta)` converges uniformly, and the elementary difference bound `|exp(in theta)-exp(in phi)| <= C_beta (n |theta-phi|)^beta` makes its limit Hölder `beta`. This contradicts the Ewing--Schober theorem. Hence no `epsilon>0` works. `QED`
+Thus `sum b_n exp(in theta)` converges uniformly, and the elementary difference bound `|exp(in theta)-exp(in phi)| <= C_beta (n |theta-phi|)^beta` makes its limit Hölder `beta`. This contradicts the Bielefeld--Fisher--von Haeseler theorem. Hence no `epsilon>0` works. `QED`
 
 This **critical** `H^(1/2)` membership is not a proof of MLC: periodic `H^(1/2)` does not embed into `C^0`. The preceding finite-Fejér criterion precisely asks whether *this particular* critical trace nevertheless has a continuous representative. The equivalence between (4.4) and (4.5) is classical Fourier--Sobolev theory; novelty/priority of applying it to `M` has not been independently established.
 
@@ -245,7 +245,7 @@ Run from the repository root:
 python research/independent_audits/verify_mlc_boundary_spectrum.py
 ```
 
-The checker uses only `fractions.Fraction` and the five published coefficients to verify (5.3)--(5.5) and rational squared error budgets at `R=5/4, 3/2, 2`. It does not derive the published coefficients, test infinite quantifiers, calculate Fejér sup norms at large N, prove the Ewing--Schober non-Hölder theorem, or certify the area theorem.
+The checker uses only `fractions.Fraction` and the five published coefficients to verify (5.3)--(5.5) and rational squared error budgets at `R=5/4, 3/2, 2`. It does not derive the published coefficients, test infinite quantifiers, calculate Fejér sup norms at large N, prove the Bielefeld--Fisher--von Haeseler non-Hölder theorem, or certify the area theorem.
 
 A real advance would be **one of**:
 
@@ -257,4 +257,4 @@ A finite table of apparent convergence, or a bound only for `R>1` fixed, does **
 
 ## 7. Position versus the existing Loops research
 
-The archive's `H1_MARKED_CONSTRUCTION`, `H2_CALIBRATION`, `H3_COERCIVITY`, `H4_RIGIDITY`, and `UNIVERSAL_PROTECTED_TOWER_CLOSURE` remain **open**. No ledger node is promoted. This note does not repair KKL native prime-end markings, sheet groupoids or Wave returns; it **bypasses those as hypotheses** and transfers the open difficulty to a rigorously equivalent uniform spectral Cauchy problem. It complements, rather than invalidates, the marked-width program. The Fejér/Besov tools are classical and the Ewing--Schober results predate the archive. New priority claims require specialist review.
+The archive's `H1_MARKED_CONSTRUCTION`, `H2_CALIBRATION`, `H3_COERCIVITY`, `H4_RIGIDITY`, and `UNIVERSAL_PROTECTED_TOWER_CLOSURE` remain **open**. No ledger node is promoted. This note does not repair KKL native prime-end markings, sheet groupoids or Wave returns; it **bypasses those as hypotheses** and transfers the open difficulty to a rigorously equivalent uniform spectral Cauchy problem. It complements, rather than invalidates, the marked-width program. The Fejér/Besov tools are classical and the Bielefeld--Fisher--von Haeseler and Ewing--Schober results predate the archive. New priority claims require specialist review.
