@@ -22,7 +22,7 @@ T_j=E_{2^j-1}.
 
 \[
 \boxed{\displaystyle \limsup_{j\to\infty} j^3 T_j\;\ge\;
-\frac{\pi^2}{16\log2}=0.8899268328\ldots.}
+\frac{\pi^2}{12\log2}=1.1865691104\ldots.}
 \tag{1}
 \]
 
@@ -30,7 +30,7 @@ Consequently the rigorous Laurent area upper approximants satisfy
 
 \[
 \boxed{\displaystyle\limsup_{N\to\infty} (\log N)^3\bigl(A_N-\operatorname{Area}(M)\bigr)
-\ge \frac{\pi^3(\log2)^2}{16}>0.}
+\ge \frac{\pi^3(\log2)^2}{12}>0.}
 \tag{2}
 \]
 
@@ -66,7 +66,7 @@ T_j\le A j^{-3},
 then for all sufficiently large integers \(J\),
 
 \[
-\sum_{j\ge J}B_j\le\frac{2\sqrt A}{J},
+\sum_{j\ge J}B_j\le\frac{\sqrt{3A}}{J}\sqrt{1+J^{-1}},
 \tag{4}
 \]
 
@@ -75,19 +75,34 @@ and
 \[
 \boxed{\displaystyle
 \sum_{n\ge2^J}|b_n|\le
-\frac{2\sqrt A}{J}\sqrt{\log2+2^{-J}}.}
+\frac{\sqrt{3A}}{J}\sqrt{(1+J^{-1})(\log2+2^{-J})}.}
 \tag{5}
 \]
 
-**Proof.** Split the packet indices \(j\ge J\) into integer groups \(I_\ell=[2^\ell J,2^{\ell+1}J)\), \(\ell=0,1,2,\dots\). The group has \(2^\ell J\) indices, hence Cauchy--Schwarz and (3) give
+**Proof (weighted discrete Hardy estimate).** Since \(B_j^2=T_j-T_{j+1}\), Abel/summation by parts and the nonnegativity of \(T_j\) give, for \(J\) past the threshold in (3),
 
 \[
-\sum_{j\in I_\ell}B_j\le\sqrt{(2^\ell J)\sum_{j\in I_\ell}B_j^2}
-\le\sqrt{(2^\ell J)T_{2^\ell J}}
-\le\frac{\sqrt A}{2^\ell J}.
+\begin{aligned}
+\sum_{j\ge J}j^2B_j^2
+&\le J^2T_J+\sum_{j>J}(j^2-(j-1)^2)T_j\\
+&\le \frac{A}{J}+A\sum_{j>J}\frac{2j-1}{j^3}\\
+&\le \frac{A}{J}+2A\sum_{j>J}j^{-2}
+\le\frac{3A}{J}.
+\end{aligned}
 \]
 
-Summing the geometric series proves (4). For every dyadic frequency block, weighted Cauchy--Schwarz gives
+Here the boundary term \(M^2T_{M+1}\) vanishes as \(M\to\infty\) by (3), and \(\sum_{j>J}j^{-2}\le J^{-1}\). A second Cauchy--Schwarz estimate, using \(\sum_{j\ge J}j^{-2}\le J^{-1}+J^{-2}\), yields
+
+\[
+\sum_{j\ge J}B_j
+\le\left(\sum_{j\ge J}j^2 B_j^2\right)^{1/2}
+\left(\sum_{j\ge J}j^{-2}\right)^{1/2}
+\le\frac{\sqrt{3A}}{J}\sqrt{1+J^{-1}},
+\]
+
+which is (4). The leading \(\sqrt3\) factor is **optimal for this abstract nonnegative sequence lemma**: setting \(B_j^2=3A/j^4\) gives \(T_j\sim A/j^3\) and \(\sum_{k\ge J}B_k\sim\sqrt{3A}/J\). This does **not** imply sharpness of the Mandelbrot-specific constant (1).
+
+For every dyadic frequency block, weighted Cauchy--Schwarz gives
 
 \[
 \sum_{n=2^j}^{2^{j+1}-1}|b_n|
@@ -143,7 +158,7 @@ For the remaining frequencies, the elementary bound \(|e^{ix}-e^{iy}|\le2\) and 
 \begin{aligned}
 \left|\sum_{n\ge2^{J_m}}b_n(e^{-in\theta_m}-e^{-in\theta_\infty})\right|
 &\le2\sum_{n\ge2^{J_m}}|b_n|\\
-&\le\frac{4\sqrt A}{J_m}\sqrt{\log2+2^{-J_m}}.
+&\le\frac{2\sqrt{3A}}{J_m}\sqrt{(1+J_m^{-1})(\log2+2^{-J_m})}.
 \end{aligned}
 \tag{8}
 \]
@@ -151,11 +166,11 @@ For the remaining frequencies, the elementary bound \(|e^{ix}-e^{iy}|\le2\) and 
 Multiply (7)--(8) by \(m\) and let \(m\to\infty\). Since \(J_m/m\to2\), the source landing separation (6) forces
 
 \[
-\frac\pi2\le 2\sqrt{A\log2},\qquad
-A\ge\frac{\pi^2}{16\log2}.
+\frac\pi2\le \sqrt{3A\log2},\qquad
+A\ge\frac{\pi^2}{12\log2}.
 \]
 
-This holds for every \(A>L\), hence \(L\ge\pi^2/(16\log2)\). Finally Gronwall's area equality yields \(A_N-\operatorname{Area}(M)=\pi E_N\). Along \(N_j=2^j-1\), \(\log N_j\sim j\log2\), giving (2). \(\square\)
+This holds for every \(A>L\), hence \(L\ge\pi^2/(12\log2)\). Finally Gronwall's area equality yields \(A_N-\operatorname{Area}(M)=\pi E_N\). Along \(N_j=2^j-1\), \(\log N_j\sim j\log2\), giving (2). \(\square\)
 
 ## Interpretation and failure conditions
 
