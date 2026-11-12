@@ -2,7 +2,7 @@
 
 **2026-11-11 | Independent research note | MLC remains OPEN**
 
-This is a deliberately different route from Loops' marked-width tower. It gives (i) a *necessary and sufficient* finite-polynomial uniform-Cauchy criterion for MLC, (ii) a critical spectral-energy sufficient condition, (iii) a no-power-law theorem for the Laurent-area tail using a published non-Hölder result, and (iv) a rigorous positive-Green-level finite-coefficient error certificate. The general ingredients are classical (Douady--Hubbard, Carathéodory, Fejér, Gronwall, Cauchy--Schwarz); this note **does not claim priority**, prove MLC, or discharge H1--H4. Its contribution within this archive is a concrete independent spectral program with explicit acceptance and failure criteria.
+This is a deliberately different route from Loops' marked-width tower. It gives (i) a *necessary and sufficient* finite-polynomial uniform-Cauchy criterion for MLC, (ii) a critical spectral-energy sufficient condition, (iii) a critical-Sobolev-threshold/no-power-law consequence of a published non-Hölder result, and (iv) a rigorous positive-Green-level finite-coefficient error certificate. The general ingredients are classical (Douady--Hubbard, Carathéodory, Fejér, Gronwall, Cauchy--Schwarz); this note **does not claim priority**, prove MLC, or discharge H1--H4. Its contribution within this archive is a concrete independent spectral program with explicit acceptance and failure criteria.
 
 ## 1. Map, coefficients and scope
 
@@ -154,6 +154,40 @@ C_\beta\delta^\beta\sum_j 2^{\beta j}B_j<\infty\cdot\delta^\beta.
 The same block bound without `n^beta` gives absolute convergence of `sum b_n exp(in theta)`, so `g` is a *continuous boundary extension* and (4.3) makes it Hölder. Both conclusions together contradict the published non-Hölder statement. Hence the premise is false for every positive `alpha`. `QED`
 
 **Interpretation.** This rules out a power-law decay target for `E_N` or the dyadic packet energies. It does **not** rule out summable *subpower* packet energy, compensated oscillations, or uniform Fejér convergence. It also does not independently establish the originality of this corollary: a specialist literature check is required.
+
+### Corollary 4.2 — the exact critical Sobolev threshold
+
+Interpreting the analytic boundary trace of `G` as a periodic distribution, the area theorem and Ewing--Schober's published conditional non-Hölder theorem together give the unconditional regularity classification
+
+\[
+\boxed{G|_{S^1}\in H^{1/2}(S^1),\qquad
+G|_{S^1}\notin H^{1/2+\varepsilon}(S^1)
+\quad\text{for every }\varepsilon>0.}
+\tag{4.4}
+\]
+
+Equivalently, **the exact coefficient-summability barrier** is
+
+\[
+\boxed{\sum_{n\ge1}n|b_n|^2<\infty,
+\qquad\sum_{n\ge1}n^{1+2\varepsilon}|b_n|^2=\infty
+\ \text{for every }\varepsilon>0.}
+\tag{4.5}
+\]
+
+**Proof.** The first weighted sum is finite by (3.2), and the standard Fourier definition of periodic Sobolev spaces gives the `H^(1/2)` trace. Suppose the second sum were finite for some `epsilon>0`. Choose `0<beta<min(epsilon,1)`. Weighted Cauchy--Schwarz yields
+
+\[
+\sum_{n\ge1}n^\beta|b_n|
+\le\left(\sum n^{1+2\varepsilon}|b_n|^2\right)^{1/2}
+\left(\sum n^{2\beta-1-2\varepsilon}\right)^{1/2}
+<\infty.
+\tag{4.6}
+\]
+
+Thus `sum b_n exp(in theta)` converges uniformly, and the elementary difference bound `|exp(in theta)-exp(in phi)| <= C_beta (n |theta-phi|)^beta` makes its limit Hölder `beta`. This contradicts the Ewing--Schober theorem. Hence no `epsilon>0` works. `QED`
+
+This **critical** `H^(1/2)` membership is not a proof of MLC: periodic `H^(1/2)` does not embed into `C^0`. The preceding finite-Fejér criterion precisely asks whether *this particular* critical trace nevertheless has a continuous representative. The equivalence between (4.4) and (4.5) is classical Fourier--Sobolev theory; novelty/priority of applying it to `M` has not been independently established.
 
 ## 5. A rigorous finite-coefficient spectral microscope, away from the boundary
 
