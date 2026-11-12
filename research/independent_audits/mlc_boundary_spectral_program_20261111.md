@@ -2,7 +2,7 @@
 
 **2026-11-11 | Independent research note | MLC remains OPEN**
 
-This is a deliberately different route from Loops' marked-width tower. It gives (i) a *necessary and sufficient* finite-polynomial uniform-Cauchy criterion for MLC, (ii) a critical spectral-energy sufficient condition, (iii) a critical-Sobolev-threshold/no-power-law consequence of a published non-Hölder result, and (iv) a rigorous positive-Green-level finite-coefficient error certificate. The general ingredients are classical (Douady--Hubbard, Carathéodory, Fejér, Gronwall, Cauchy--Schwarz); this note **does not claim priority**, prove MLC, or discharge H1--H4. Its contribution within this archive is a concrete independent spectral program with explicit acceptance and failure criteria.
+This is a deliberately different route from Loops' marked-width tower. It gives (i) a *necessary and sufficient* finite-polynomial uniform-Cauchy criterion for MLC, (ii) a critical spectral-energy sufficient condition, (iii) critical-Sobolev/no-power-law and inverse-logarithmic best-approximation barriers from a published ray-landing witness, and (iv) a rigorous positive-Green-level finite-coefficient error certificate. The general ingredients are classical (Douady--Hubbard, Carathéodory, Fejér, Gronwall, Cauchy--Schwarz); this note **does not claim priority**, prove MLC, or discharge H1--H4. Its contribution within this archive is a concrete independent spectral program with explicit acceptance and failure criteria.
 
 ## 1. Map, coefficients and scope
 
@@ -188,6 +188,66 @@ Equivalently, **the exact coefficient-summability barrier** is
 Thus `sum b_n exp(in theta)` converges uniformly, and the elementary difference bound `|exp(in theta)-exp(in phi)| <= C_beta (n |theta-phi|)^beta` makes its limit Hölder `beta`. This contradicts the Bielefeld--Fisher--von Haeseler theorem. Hence no `epsilon>0` works. `QED`
 
 This **critical** `H^(1/2)` membership is not a proof of MLC: periodic `H^(1/2)` does not embed into `C^0`. The preceding finite-Fejér criterion precisely asks whether *this particular* critical trace nevertheless has a continuous representative. The equivalence between (4.4) and (4.5) is classical Fourier--Sobolev theory; novelty/priority of applying it to `M` has not been independently established.
+
+### Theorem 4.3 — a universal inverse-logarithmic *best-approximation* obstruction
+
+The source paper's concrete landing-angle witness (Bielefeld--Fisher--von Haeseler, 1988 MPIM preprint pp. 14--15, published 1993) yields a **strictly stronger, quantitative restriction** than the abstract non-Hölder conclusion. This is a deduction using the classical Bernstein inequality, not a claim of new priority. The source establishes the following exact boundary ray landings without requiring general MLC:
+
+\[
+\theta_m=2\pi\left(\frac13+\frac1{4^m-1}\right),\quad
+\theta_\infty=\frac{2\pi}{3},\quad
+c_m=-1+\frac14 e^{2\pi i/m},\quad
+c_\infty=-\frac34.
+\tag{4.7}
+\]
+
+Here the external ray of angle `theta_m` lands at `c_m`. Assuming MLC, the continuous boundary parametrization `f(theta)=Psi(e^{i theta})` therefore satisfies, for `m>=2`,
+
+\[
+|f(\theta_m)-f(\theta_\infty)|
+=\tfrac12\sin(\pi/m)\ge\frac1m,
+\qquad
+|\theta_m-\theta_\infty|=\frac{2\pi}{4^m-1}.
+\tag{4.8}
+\]
+
+Let `T_N` be the space of **arbitrary complex trigonometric polynomials of degree at most N**, and let `N>=2`. Define `m_N=ceil(log_2 N)+8`. Then
+
+\[
+\boxed{\inf_{Q\in T_N}\|f-Q\|_{L^\infty(S^1)}
+\ge\frac1{4(\lceil\log_2 N\rceil+8)}.}
+\tag{4.9}
+\]
+
+In particular, if MLC is true and `g(theta)=sum_{n>=1}b_n exp(in theta)` is the continuous boundary value of `G`, its *specific Fejer approximants* satisfy
+
+\[
+\boxed{\|g-\sigma_N\|_\infty
+\ge\frac1{4(\lceil\log_2 N\rceil+8)}\quad(N\ge2).}
+\tag{4.10}
+\]
+
+**Proof.** The Mandelbrot set is contained in `|c|<=2`, so `||f||_infty<=2`. Let `Q in T_N` and put `e=||f-Q||_infty`. If `e>=1`, (4.9) is immediate. Otherwise `||Q||_infty<=3`. Bernstein's inequality for trigonometric polynomials gives `||Q'||_infty<=3N`. Choose `m=m_N`. Since `4^m>=65536*N^2` and `2*pi<65535/10000`,
+
+\[
+\delta_m:=|\theta_m-\theta_\infty|
+=\frac{2\pi}{4^m-1}<\frac1{10000N^2}.
+\]
+
+The elementary inequality `ceil(log_2 N)<=N` implies `m<=N+8<=5N`. By the triangle inequality and (4.8),
+
+\[
+2e\ge |f(\theta_m)-f(\theta_\infty)|
+-|Q(\theta_m)-Q(\theta_\infty)|
+\ge \frac1m-3N\delta_m
+>\frac1m-\frac3{10000N}
+\ge\frac1m-\frac{15}{10000m}>
+rac1{2m}.
+\]
+
+Thus `e>1/(4m)`, which implies (4.9). For the Fejer consequence, use the degree-`N` trigonometric polynomial `Q_N(theta)=exp(i theta)-1/2+sigma_N(-theta)`, whose uniform error to `f(theta)` is exactly `||g-sigma_N||_infty`. `QED`
+
+This theorem excludes **any faster-than-inverse-logarithmic uniform accuracy** for degree-limited spectral reconstructions *if MLC holds*; it does **not** establish the matching upper bound or prove MLC. The ray-landing input (4.7) is imported from the 1988/1993 source, and the approximation argument is standard; the precise combination is new *to this Loops track*, with external priority unverified. It shows why a target such as uniform Fejer error `O(N^(-alpha))` is not merely difficult but impossible.
 
 ## 5. A rigorous finite-coefficient spectral microscope, away from the boundary
 
