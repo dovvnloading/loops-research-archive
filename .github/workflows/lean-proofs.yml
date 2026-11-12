@@ -53,6 +53,7 @@ on:
       - '.github/workflows/lean-proofs.yml'
       - 'research/independent_audits/*.py'
       - 'research/independent_audits/*.md'
+      - 'results/mlc_spectrum_exact_511_20261112.json'
       - 'results/period27_symbolic_marking.json'
       - 'results/period27_misiurewicz_tip.json'
       - 'results/period27_tip_ray_portrait.json'
@@ -119,6 +120,7 @@ on:
       - '.github/workflows/lean-proofs.yml'
       - 'research/independent_audits/*.py'
       - 'research/independent_audits/*.md'
+      - 'results/mlc_spectrum_exact_511_20261112.json'
       - 'results/tip_puzzle_ray_tree.json'
       - 'results/tip_internal_ray_lifts.json'
       - 'results/tip_root_interval_geometry.json'
@@ -175,6 +177,8 @@ jobs:
         run: python -m pip install 'numpy>=2,<3'
       - name: Check boundary-spectrum exact rational regression
         run: python research/independent_audits/verify_mlc_boundary_spectrum.py
+      - name: Check exact Mandelbrot coefficient packets and locked 511-manifest
+        run: python research/independent_audits/verify_mlc_spectrum_extended.py --max-index 511 --check-manifest results/mlc_spectrum_exact_511_20261112.json
       - name: Check finite delayed-clone matrices
         run: python research/independent_audits/verify_clone_spectral.py
       - name: Check complete first-return edge-occurrence counts
