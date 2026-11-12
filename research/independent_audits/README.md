@@ -5,7 +5,7 @@ This directory contains reproducible audits of research claims in the archive. I
 ## Independent boundary-spectrum route (November 2026)
 
 - [Fejér/critical-Sobolev MLC spectrum](mlc_boundary_spectral_program_20261111.md): exact finite rational uniform-Cauchy equivalence, published non-Hölder boundary obstruction, and positive-potential Laurent-error estimates. **MLC remains open**.
-- [Quantitative log-cubed area-tail barrier](mlc_logarithmic_area_tail_barrier_20261112.md): written proof that `limsup_j j³ E_(2^j-1) >= pi²/(16 log 2)` from published ray landing and the classical area theorem; does **not** assume MLC but depends on its imported classical inputs and needs independent specialist review.
+- [Quantitative log-cubed area-tail barrier](mlc_logarithmic_area_tail_barrier_20261112.md): written proof that `limsup_j j³ E_(2^j-1) >= pi²/(12 log 2)` from published ray landing and the classical area theorem; does **not** assume MLC but depends on its imported classical inputs and needs independent specialist review.
 - [Exact rational coefficient verifier](verify_mlc_spectrum_extended.py) and [512-coefficient manifest](../../results/mlc_spectrum_exact_511_20261112.json): published Ewing–Schober recurrence, agreement with 28 independent OEIS integers, nine finite dyadic packets. Finite arithmetic is not an infinite-series proof.
 
 ## Issue 29: source-defined collision resolution
