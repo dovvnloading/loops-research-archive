@@ -1,0 +1,74 @@
+[
+  {
+    "phases_fine_to_coarse": "---",
+    "angle_numerator": 59914011,
+    "angle_denominator": 134217727,
+    "bit_word": "011100100100011011100011011",
+    "kneading": "10010110110010110010010110*",
+    "first_gap_hit": null,
+    "forward_phase_slope": 39
+  },
+  {
+    "phases_fine_to_coarse": "--+",
+    "angle_numerator": 59885851,
+    "angle_denominator": 134217727,
+    "bit_word": "011100100011100100100011011",
+    "kneading": "10010110110010110110010110*",
+    "first_gap_hit": 9,
+    "forward_phase_slope": 3
+  },
+  {
+    "phases_fine_to_coarse": "-+-",
+    "angle_numerator": 57820963,
+    "angle_denominator": 134217727,
+    "bit_word": "011011100100100011100100011",
+    "kneading": "10010010110110110010110010*",
+    "first_gap_hit": 3,
+    "forward_phase_slope": 27
+  },
+  {
+    "phases_fine_to_coarse": "-++",
+    "angle_numerator": 57784611,
+    "angle_denominator": 134217727,
+    "bit_word": "011011100011011100100100011",
+    "kneading": "10010010110010010110110010*",
+    "first_gap_hit": 3,
+    "forward_phase_slope": -9
+  },
+  {
+    "phases_fine_to_coarse": "+--",
+    "angle_numerator": 31134601,
+    "angle_denominator": 134217727,
+    "bit_word": "001110110110001001110001001",
+    "kneading": "11000100101011111001011111*",
+    "first_gap_hit": 1,
+    "forward_phase_slope": 35
+  },
+  {
+    "phases_fine_to_coarse": "+-+",
+    "angle_numerator": 30993801,
+    "angle_denominator": 134217727,
+    "bit_word": "001110110001110110110001001",
+    "kneading": "11000101111000100101011111*",
+    "first_gap_hit": 1,
+    "forward_phase_slope": -1
+  },
+  {
+    "phases_fine_to_coarse": "++-",
+    "angle_numerator": 20669361,
+    "angle_denominator": 134217727,
+    "bit_word": "001001110110110001110110001",
+    "kneading": "11011000100101111000101011*",
+    "first_gap_hit": 1,
+    "forward_phase_slope": 23
+  },
+  {
+    "phases_fine_to_coarse": "+++",
+    "angle_numerator": 20487601,
+    "angle_denominator": 134217727,
+    "bit_word": "001001110001001110110110001",
+    "kneading": "11011001111011000100101011*",
+    "first_gap_hit": 1,
+    "forward_phase_slope": -13
+  }
+]
