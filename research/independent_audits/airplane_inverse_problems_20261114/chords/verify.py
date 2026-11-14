@@ -84,11 +84,15 @@ def verify_tip(manifest):
     points = signed_orbit(9, 228)
     if manifest:
         source = json.loads(manifest.read_text(encoding="utf-8"))
-        denominator = {Fraction(pair[k]).denominator for pair in source["nine_landing_pairs"]
-                       for k in ("lower", "upper")}
-        numerators = {Fraction(pair[k]).numerator for pair in source["nine_landing_pairs"]
-                      for k in ("lower", "upper")}
-        require(denominator == {modulus} and numerators == points, "manifest mismatch")
+        rows = source["nine_landing_pairs"]
+        require(source["first_periodic_landing_phase"] == 10 and len(rows) == 9,
+                "manifest phase range mismatch")
+        recorded = {pair["phase"]: (Fraction(pair["lower"]), Fraction(pair["upper"]))
+                    for pair in rows}
+        for i in range(9):
+            site = (228 << i) % modulus
+            chord = tuple(sorted((Fraction(site, modulus), Fraction(-site % modulus, modulus))))
+            require(recorded.get(10 + i) == chord, f"manifest chord mismatch at phase {10 + i}")
     enlarged = points | {0}
     actual = histogram(points, modulus)
     require({d for d, count in actual.items() if count % 2} == points, "odd bins")

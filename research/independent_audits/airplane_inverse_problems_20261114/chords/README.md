@@ -95,4 +95,4 @@ Periodic phase retrieval and the circular distance reconstruction problem are cl
 - [G. Averkov, *Detecting and reconstructing centrally symmetric sets from the autocorrelation*](https://www.sciencedirect.com/science/article/pii/S0893965909001505), for reconstruction of finite sets in Euclidean space from full autocorrelation.
 - [J. Milnor, *Periodic orbits, external rays and the Mandelbrot set*](https://www.numdam.org/item/AST_2000__261__277_0/), for the dynamical setting and orbit portraits.
 
-Run `python verify.py` from this directory with Python 3.9 or newer. The verifier uses integer arithmetic and the standard library. Optionally pass `--manifest /path/to/results/period27_tip_ray_portrait.json` to compare its angle set against the archive directly.
+Run `python verify.py` from this directory with Python 3.9 or newer. The verifier uses exact rational and integer arithmetic in the standard library. With `--manifest /path/to/results/period27_tip_ray_portrait.json`, it also compares the reconstructed chord with both ordered angle fields at each archived phase from 10 through 18.
