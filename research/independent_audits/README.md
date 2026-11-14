@@ -4,9 +4,10 @@ This directory contains reproducible audits of research claims in the archive. I
 
 ## Independent boundary-spectrum route (November 2026)
 
-- [Fejér/critical-Sobolev MLC spectrum](mlc_boundary_spectral_program_20261111.md): exact finite rational uniform-Cauchy equivalence, published non-Hölder boundary obstruction, and positive-potential Laurent-error estimates. **MLC remains open**.
-- [Quantitative log-cubed area-tail barrier](mlc_logarithmic_area_tail_barrier_20261112.md): written proof that `limsup_j j³ E_(2^j-1) >= pi²/(12 log 2)` from published ray landing and the classical area theorem; does **not** assume MLC but depends on its imported classical inputs and needs independent specialist review.
-- [Exact rational coefficient verifier](verify_mlc_spectrum_extended.py) and [512-coefficient manifest](../../results/mlc_spectrum_exact_511_20261112.json): published Ewing–Schober recurrence, agreement with 28 independent OEIS integers, nine finite dyadic packets. Finite arithmetic is not an infinite-series proof.
+- [Fejér criterion and critical Sobolev regularity](mlc_boundary_spectral_program_20261111.md) derives the uniformly Cauchy criterion, distinguishes ordinary boundary sums from continuous radial traces, and gives finite estimates away from the circle.
+- [Inverse-log-cubed area-tail obstruction](mlc_logarithmic_area_tail_barrier_20261112.md) derives the lower bound $\limsup_j j^3 E_{2^j-1}\ge \pi^2/(12\log 2)$ from the published landing sequence and Gronwall's area identity. MLC remains open.
+- [Coefficient verifier](verify_mlc_spectrum_extended.py) and [512-coefficient manifest](../../results/mlc_spectrum_exact_511_20261112.json) record nine complete dyadic packets. The published OEIS prefix is a table cross-check. The verifier also checks the critical-orbit polynomial identity against the finite coefficient series.
+- [Lean certificates](../../MandelbrotSpectrum.lean) cover finite summation by parts with both endpoint terms, its square-weight specialization, the five-coefficient energy and residual, the radius-two squared error budget, and the arithmetic of the first Fejér difference. Run `lake build MandelbrotSpectrum` from the root. The analytic inequalities and asymptotic obstruction have written proofs.
 
 ## Issue 29: source-defined collision resolution
 

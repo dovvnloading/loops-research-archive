@@ -63,7 +63,7 @@ P(k,m,n):\quad\sup_{\theta}|\sigma_m(\theta)-\sigma_n(\theta)|<2^{-k}
 \tag{2.3}
 \]
 
-is *decidable in principle by exact rational polynomial arithmetic*: use `x=cos(theta)`, `y=sin(theta)`, express the squared modulus of the finite trigonometric difference as a polynomial in rational `x,y`, and decide
+is *decidable in principle by exact rational polynomial arithmetic*: use `x=cos(theta)`, `y=sin(theta)`, express the squared modulus of the finite trigonometric difference as a polynomial with rational coefficients in real variables `x,y`, and decide
 `forall x,y: (x*x+y*y=1 -> |sigma_m-sigma_n|^2 < 2^(-2k))`
 by real-closed-field quantifier elimination. Therefore MLC has the explicit arithmetical upper-bound representation
 
@@ -153,7 +153,7 @@ C_\beta\delta^\beta\sum_j 2^{\beta j}B_j<\infty\cdot\delta^\beta.
 
 The same block bound without `n^beta` gives absolute convergence of `sum b_n exp(in theta)`, so `g` is a *continuous boundary extension* and (4.3) makes it Hölder. Both conclusions together contradict the published non-Hölder statement. Hence the premise is false for every positive `alpha`. `QED`
 
-**Interpretation.** This rules out a power-law decay target for `E_N` or the dyadic packet energies. It does **not** rule out summable *subpower* packet energy, compensated oscillations, or uniform Fejér convergence. It also does not independently establish the originality of this corollary: a specialist literature check is required.
+**Interpretation.** An eventual bound `B_j = O(2^(-delta j))` with `delta>0` would, on summing the squared bound, give the forbidden power-law decay of `E_N`. Polynomial decay in the scale index `j` corresponds to logarithmic decay in frequency. Summable subpower packet bounds and angular cancellation therefore remain possible on the evidence of this theorem. Historical priority of the area-tail corollary remains unverified.
 
 ### Corollary 4.2 — the exact critical Sobolev threshold
 
@@ -191,7 +191,7 @@ This **critical** `H^(1/2)` membership is not a proof of MLC: periodic `H^(1/2)`
 
 ### Theorem 4.3 — a universal inverse-logarithmic *best-approximation* obstruction
 
-The source paper's concrete landing-angle witness (Bielefeld--Fisher--von Haeseler, 1988 MPIM preprint pp. 14--15, published 1993) yields a **strictly stronger, quantitative restriction** than the abstract non-Hölder conclusion. This is a deduction using the classical Bernstein inequality, not a claim of new priority. The source establishes the following exact boundary ray landings without requiring general MLC:
+The source paper's concrete landing-angle witness (Bielefeld--Fisher--von Haeseler, 1988 MPIM preprint pp. 14--15, published 1993) yields a **strictly stronger, quantitative restriction** than the abstract non-Hölder conclusion. The original paper already derives an inverse-logarithmic lower bound along this sequence for angular variation and discusses a possible matching global modulus. The deduction here applies Bernstein’s inequality to the best error among all trigonometric polynomials of bounded degree. [Bielefeld–Fisher–von Haeseler, §4, Claim 4.0 and following remark, pp. 14–15](https://archive.mpim-bonn.mpg.de/3259/1/preprint_1988_46.pdf#page=15). The source establishes the following exact boundary ray landings without requiring general MLC:
 
 \[
 \theta_m=2\pi\left(\frac13+\frac1{4^m-1}\right),\quad
@@ -219,7 +219,7 @@ Let `T_N` be the space of **arbitrary complex trigonometric polynomials of degre
 \tag{4.9}
 \]
 
-In particular, if MLC is true and `g(theta)=sum_{n>=1}b_n exp(in theta)` is the continuous boundary value of `G`, its *specific Fejer approximants* satisfy
+In particular, if MLC holds, let `g(theta)=lim_{r↑1} G(r exp(i theta))` denote the continuous boundary trace. Then its *specific Fejer approximants* satisfy
 
 \[
 \boxed{\|g-\sigma_N\|_\infty
@@ -241,8 +241,7 @@ The elementary inequality `ceil(log_2 N)<=N` implies `m<=N+8<=5N`. By the triang
 -|Q(\theta_m)-Q(\theta_\infty)|
 \ge \frac1m-3N\delta_m
 >\frac1m-\frac3{10000N}
-\ge\frac1m-\frac{15}{10000m}>
-rac1{2m}.
+\ge\frac1m-\frac{15}{10000m}>\frac1{2m}.
 \]
 
 Thus `e>1/(4m)`, which implies (4.9). For the Fejer consequence, use the degree-`N` trigonometric polynomial `Q_N(theta)=exp(i theta)-1/2+sigma_N(-theta)`, whose uniform error to `f(theta)` is exactly `||g-sigma_N||_infty`. `QED`

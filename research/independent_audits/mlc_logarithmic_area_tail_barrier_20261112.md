@@ -43,7 +43,7 @@ In particular \(A_N-\operatorname{Area}(M)\ne o((\log N)^{-3})\). This is a **qu
 2. Gronwall's area theorem for exterior univalent maps: \(\sum_{n\ge1}n|b_n|^2=1-\operatorname{Area}(M)/\pi\le1\). Its application to the Mandelbrot map is classical and appears in Ewing--Schober, *The Area of the Mandelbrot Set*, *Numerische Mathematik* **61** (1992), 59--72.
 3. Carathéodory's theorem: a continuous boundary extension of the normalized inverse exterior map is equivalent to local connectivity of \(M\) (a connected, full compact set). Only the implication "uniform absolute convergence \(\Rightarrow\) continuous extension" is used in the argument.
 
-The 1993 paper already proves a weaker non-Hoelder consequence. **The constant (1) and log-cubed estimate are derived here, not attributed to the source authors.** External novelty/priority remains unassessed.
+Bielefeld, Fisher and von Haeseler use these landings in their Corollary 4.0 to prove failure of Hölder continuity under a continuous extension. Bittner, Cheong, Gates and Nguyen document slow numerical convergence of the area approximants through five million terms in §4 and Figure 1 of [*New approximations for the area of the Mandelbrot set*](https://msp.org/involve/2017/10-4/involve-v10-n4-p02-s.pdf). Neither cited result states (1). A targeted literature search did not establish publication priority for the quantitative limsup.
 
 ## Proof
 
@@ -100,7 +100,7 @@ Here the boundary term \(M^2T_{M+1}\) vanishes as \(M\to\infty\) by (3), and \(\
 \le\frac{\sqrt{3A}}{J}\sqrt{1+J^{-1}},
 \]
 
-which is (4). The leading \(\sqrt3\) factor is **optimal for this abstract nonnegative sequence lemma**: setting \(B_j^2=3A/j^4\) gives \(T_j\sim A/j^3\) and \(\sum_{k\ge J}B_k\sim\sqrt{3A}/J\). This does **not** imply sharpness of the Mandelbrot-specific constant (1).
+which is (4). The leading \(\sqrt3\) factor is optimal for the abstract nonnegative sequence lemma. For \(A>0\) take \(B_j^2=A(j^{-3}-(j+1)^{-3})\) for \(j\ge1\). Telescoping gives \(T_j=A/j^3\) exactly, so the example satisfies (3) at every index. Since \(j^4(j^{-3}-(j+1)^{-3})\to3\), comparison with \(\sum_{j\ge J}j^{-2}\sim J^{-1}\) gives \(\sum_{j\ge J}B_j\sim\sqrt{3A}/J\). Sharpness of (1) for the Mandelbrot coefficients remains open.
 
 For every dyadic frequency block, weighted Cauchy--Schwarz gives
 
@@ -177,18 +177,18 @@ This holds for every \(A>L\), hence \(L\ge\pi^2/(12\log2)\). Finally Gronwall's 
 - (1) is **unconditional with respect to MLC**, not unconditional with respect to the classical published ray-landing and area inputs: if the limsup were finite, the hypothesized rapid decay would *itself* force a continuous boundary extension. If it is infinite, the result is immediate. The argument therefore does not assume the conjectural extension.
 - This is a necessary constraint on **global area energy**, not a construction of a dynamically faithful marked-width carrier, a KKL Wave bound, or an MLC proof.
 - It permits \(E_{2^j-1}=O(j^{-3})\) with a sufficiently large constant, but excludes \(o(j^{-3})\). It does **not** show the area tail has a lower bound at *every* scale, nor does it establish a matching upper bound.
-- A short finite table cannot verify any limsup result. The companion script independently recomputes Laurent coefficients from the **published Ewing--Schober recursion** and checks deterministic finite arithmetic; it does not machine-prove Lemma 2, Claim 4.0, or the infinite limit.
+- A short finite table cannot verify any limsup result. The companion script independently recomputes Laurent coefficients from the **published Ewing--Schober recursion** and checks deterministic finite arithmetic; [The Lean companion](../../MandelbrotSpectrum.lean) proves the finite Abel identity for arbitrary weights and the square-weight specialization used in Lemma 2. The limiting estimates and the application of Claim 4.0 are established in the written argument.
 - Contrast with PR #70's earlier **conditional best-degree approximation** bound \(\gtrsim (\log N)^{-1}\); (1) is a distinct, genuinely unconditional obstruction to *area-tail* convergence speed.
 
 ## Reproducibility and next research action
 
-Run the companion verifier from the repository root (default 127 coefficients, or 511 for nine complete dyadic packets):
+Run the companion verifier from the repository root. The default last index is 127 (128 coefficients). Index 511 gives 512 coefficients and nine complete dyadic packets.
 
 ```sh
 python research/independent_audits/verify_mlc_spectrum_extended.py --max-index 127
 python research/independent_audits/verify_mlc_spectrum_extended.py --max-index 511 --check-manifest results/mlc_spectrum_exact_511_20261112.json
 ```
 
-The exact recursion is independently checked against 28 published scaled integers in OEIS A331814, as well as the initial published rational coefficients. It yields finite packet energies, not a rate bound. The main unresolved positive target remains a uniform spectral Cauchy/cancellation certificate, compatible with the obligatory slow rates (1)--(2).
+The first 28 scaled coefficients agree with OEIS A331814, whose published program uses the same recurrence. The verifier independently checks the full computed prefix by composing the critical-orbit polynomial with the normalized series. It yields finite packet energies, not a rate bound. The main unresolved positive target remains a uniform spectral Cauchy/cancellation certificate, compatible with the obligatory slow rates (1)--(2).
 
 **Source index:** Bielefeld--Fisher--von Haeseler (1993) DOI `10.1006/aama.1993.1002`; https://archive.mpim-bonn.mpg.de/id/eprint/3259/1/preprint_1988_46.pdf ; Ewing--Schober (1992), *Numerische Mathematik* 61; OEIS A331814 at https://oeis.org/A331814 ; PR #70 and the parent file `mlc_boundary_spectral_program_20261111.md`.

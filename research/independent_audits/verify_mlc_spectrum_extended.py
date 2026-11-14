@@ -1,11 +1,13 @@
 #!/usr/bin/env python3
 """Exact finite Jungreis coefficients and Mandelbrot Laurent packet energies.
 
-Implements the published Ewing--Schober beta recursion with Fraction arithmetic.
-Checks 28 independently published OEIS scaled integers. It does NOT prove the
-infinite log-cubed theorem, MLC, or any decay rate of unknown coefficients.
+Implements the Ewing--Schober beta recursion and certifies every coefficient
+by forward composition with a Faber polynomial. The published OEIS table
+provides a separate comparison for the first 28 scaled integers.
 
 Sources:
+Ewing--Schober, On the coefficients of the mapping to the exterior of the
+Mandelbrot set (1990), https://doi.org/10.1307/mmj/1029004138 .
 Ewing--Schober, The Area of the Mandelbrot Set (Numer. Math. 61, 1992).
 OEIS A331814, https://oeis.org/A331814 .
 """
@@ -69,6 +71,44 @@ def verify_prefix(coefficients: list[Q]) -> None:
         assert number.denominator & (number.denominator - 1) == 0
 
 
+def verify_faber_composition(coefficients: list[Q]) -> None:
+    """Check p_k(Psi(w)) = w^(2^k) + O(1/w) through the supplied prefix.
+
+    Put t=1/(4w), X=Psi(w)/w, and Y=p_k(Psi(w))/w^d for d=2^k.
+    Start with d=1, Y=X. The forward orbit p -> p^2 + c gives
+    Y_next = Y^2 + (4t)^(2d-1) X. All operations are truncated at degree
+    len(coefficients), and scaling makes the coefficients integers.
+
+    At d >= len(coefficients) the Faber identity forces Y=1 through that
+    degree. This determines every checked coefficient: the first change
+    at degree j in X changes Y_j by d times that change, since the
+    derivative in X at t=0, X=1 is d.
+    """
+    order = len(coefficients)
+    source = [1]
+    for j, value in enumerate(coefficients, 1):
+        scaled = value * (1 << (2 * j))
+        if scaled.denominator != 1:
+            raise ValueError(f"coefficient b_{j - 1} does not have integral scaling")
+        source.append(scaled.numerator)
+
+    series = source
+    degree = 1
+    while degree < max(order, 2):
+        degree *= 2
+        shift = degree - 1
+        square = [
+            sum(series[i] * series[j - i] for i in range(j + 1))
+            for j in range(order + 1)
+        ]
+        for j in range(shift, order + 1):
+            square[j] += source[j - shift] << (2 * shift)
+        series = square
+    for j in range(1, order + 1):
+        if series[j] != 0:
+            raise ValueError(f"degree-{degree} Faber identity fails at b_{j - 1}")
+
+
 def verify_finite_lemma_steps() -> None:
     """Only sample elementary finite inequalities, never an infinite proof."""
     # Integral comparison for reciprocal harmonic block, checked at finite j.
@@ -92,6 +132,7 @@ def verify_finite_lemma_steps() -> None:
 def exact_manifest(last_index: int) -> dict:
     coefficients = jungreis_coefficients(last_index)
     verify_prefix(coefficients)
+    verify_faber_composition(coefficients)
     verify_finite_lemma_steps()
     zero_indices = [n for n in range(1, last_index + 1) if coefficients[n] == 0]
     packets = []
@@ -112,7 +153,8 @@ def exact_manifest(last_index: int) -> dict:
         "scope": "finite rational arithmetic only; no proof of MLC, ray landing or asymptotic tail",
         "last_index": last_index,
         "recurrence": "Ewing-Schober (1992) beta recurrence",
-        "independent_prefix_check": "OEIS A331814 first 28 scaled integers",
+        "published_prefix_check": "OEIS A331814 first 28 scaled integers",
+        "independent_full_check": "forward Faber polynomial composition through every supplied coefficient",
         "exact_coefficient_sha256": digest,
         "coefficient_count": len(coefficients),
         "zero_indices": zero_indices,
@@ -135,7 +177,7 @@ def main() -> None:
         expected = json.loads(options.check_manifest.read_text(encoding="utf-8"))
         if actual != expected:
             raise SystemExit(f"Manifest mismatch: {options.check_manifest}")
-        print("PASS: exact published coefficient prefix, rational packets and locked manifest")
+        print("PASS: published coefficient prefix, full Faber identity, rational packets and locked manifest")
         print(f"n={options.max_index} coefficients={actual['coefficient_count']} "
               f"zeroes={len(actual['zero_indices'])} "
               f"sha256={actual['exact_coefficient_sha256']}")

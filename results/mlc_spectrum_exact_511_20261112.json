@@ -2,7 +2,8 @@
   "scope": "finite rational arithmetic only; no proof of MLC, ray landing or asymptotic tail",
   "last_index": 511,
   "recurrence": "Ewing-Schober (1992) beta recurrence",
-  "independent_prefix_check": "OEIS A331814 first 28 scaled integers",
+  "published_prefix_check": "OEIS A331814 first 28 scaled integers",
+  "independent_full_check": "forward Faber polynomial composition through every supplied coefficient",
   "exact_coefficient_sha256": "320a6d4bb5465c51b85c8e0cb90c20c69781c79dc32221e7d73791097f124a8e",
   "coefficient_count": 512,
   "zero_indices": [

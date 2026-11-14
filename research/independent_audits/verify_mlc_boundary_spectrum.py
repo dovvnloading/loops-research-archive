@@ -2,8 +2,8 @@
 """Exact finite arithmetic for a boundary-spectrum MLC research direction.
 
 This program does NOT test the infinite Cauchy condition and does NOT prove MLC.
-The initial Laurent coefficients are published data (Ewing--Schober; see
-https://mathworld.wolfram.com/MandelbrotSet.html), not newly computed here.
+The initial rational coefficients agree with the b_1,...,b_5 entries of
+David A. Madore's scaled table, https://oeis.org/A331814 (offset 0).
 """
 
 from fractions import Fraction as Q
@@ -34,7 +34,7 @@ def residual_area_budget(N=5):
 def outer_tail_bound_squared(N, R):
     """Exact rational upper bound for |Psi(w)-P_N(w)|^2, |w|>=R.
 
-    By Gronwall's area theorem, sum_{n>N} n|b_n|^2 <= E_N.
+    The disk bound gives sum_{n>N} n|b_n|^2 <= residual_area_budget(N).
     Cauchy--Schwarz and 1/n <= 1/(N+1) for n>N give the
     purely rational estimate E_N*q^(N+1)/((N+1)*(1-q)), q=R^-2.
     """
@@ -71,7 +71,7 @@ def manifest():
     radii = [Q(5, 4), Q(3, 2), Q(2)]
     return {
         "scope": "finite rational checks, not an MLC proof or a convergence test",
-        "provenance": "Ewing-Schober Laurent coefficients as reproduced by MathWorld",
+        "provenance": "OEIS A331814, b_n = a(n) / 2^(2n+1)",
         "coefficients": {str(i): str(B[i]) for i in B},
         "fejer_1_2_uniform_difference": str(exact_fejer_1_to_2_norm()),
         "known_area_energy_S5": str(squared_energy()),
