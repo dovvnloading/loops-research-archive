@@ -18,6 +18,7 @@ on:
       - 'RealTwoScalePhase.lean'
       - 'Period27Kneading.lean'
       - 'AirplaneDiffraction.lean'
+      - 'MandelbrotSpectrum.lean'
       - 'research/independent_audits/airplane_inverse_problems_20261114/**'
       - 'Period27Dyadic.lean'
       - 'Period27IntervalSound.lean'
@@ -55,6 +56,7 @@ on:
       - '.github/workflows/lean-proofs.yml'
       - 'research/independent_audits/*.py'
       - 'research/independent_audits/*.md'
+      - 'results/mlc_spectrum_exact_511_20261112.json'
       - 'results/period27_symbolic_marking.json'
       - 'results/period27_misiurewicz_tip.json'
       - 'results/period27_tip_ray_portrait.json'
@@ -86,6 +88,7 @@ on:
       - 'RealTwoScalePhase.lean'
       - 'Period27Kneading.lean'
       - 'AirplaneDiffraction.lean'
+      - 'MandelbrotSpectrum.lean'
       - 'research/independent_audits/airplane_inverse_problems_20261114/**'
       - 'Period27Dyadic.lean'
       - 'Period27IntervalSound.lean'
@@ -123,6 +126,7 @@ on:
       - '.github/workflows/lean-proofs.yml'
       - 'research/independent_audits/*.py'
       - 'research/independent_audits/*.md'
+      - 'results/mlc_spectrum_exact_511_20261112.json'
       - 'results/period27_symbolic_marking.json'
       - 'results/period27_tip_ray_portrait.json'
       - 'results/tip_puzzle_ray_tree.json'
@@ -150,7 +154,7 @@ jobs:
       - uses: actions/checkout@v4
       - name: Reject proof holes
         run: |
-          if grep -En '(^|[^A-Za-z_])(sorry|admit)([^A-Za-z_]|$)' LoopsFormal.lean CloneGraph.lean FirstReturn.lean ReturnBlocks.lean ReturnPaths.lean Paper2Phase.lean RealTwoScalePhase.lean Period27Kneading.lean Period27Dyadic.lean Period27IntervalSound.lean Period27RationalTrace.lean Period27RationalDerivative.lean PhaseTower.lean PhaseTower27.lean PhaseFuture.lean PhaseFuture27.lean PhaseMemoryGeneral.lean AirplaneDiffraction.lean TipRayPortrait.lean TipComplexMargins.lean TipKLPuzzle.lean TipActualCoarseRays.lean TipLevinComposition.lean TipSheetGrid.lean TipRootedNativeKL.lean TipNativeRootDeck.lean TipNativeC4Wake.lean TipNativeSideExclusion.lean TipNativeFiniteJTrichotomy.lean TipNativeFullBoundaryTypes.lean TipKKLTreeMarking.lean TipNativeProperRestriction.lean ResearchLedger.lean ResearchGates.lean TipNativeDeckWords.lean; then
+          if grep -En '(^|[^A-Za-z_])(sorry|admit)([^A-Za-z_]|$)' LoopsFormal.lean CloneGraph.lean FirstReturn.lean ReturnBlocks.lean ReturnPaths.lean Paper2Phase.lean RealTwoScalePhase.lean Period27Kneading.lean Period27Dyadic.lean Period27IntervalSound.lean Period27RationalTrace.lean Period27RationalDerivative.lean PhaseTower.lean PhaseTower27.lean PhaseFuture.lean PhaseFuture27.lean PhaseMemoryGeneral.lean AirplaneDiffraction.lean MandelbrotSpectrum.lean TipRayPortrait.lean TipComplexMargins.lean TipKLPuzzle.lean TipActualCoarseRays.lean TipLevinComposition.lean TipSheetGrid.lean TipRootedNativeKL.lean TipNativeRootDeck.lean TipNativeC4Wake.lean TipNativeSideExclusion.lean TipNativeFiniteJTrichotomy.lean TipNativeFullBoundaryTypes.lean TipKKLTreeMarking.lean TipNativeProperRestriction.lean ResearchLedger.lean ResearchGates.lean TipNativeDeckWords.lean; then
             echo 'Proof placeholders are prohibited in formal audit files.'
             exit 1
           fi
@@ -179,6 +183,10 @@ jobs:
         run: node code/generate_readme_research_figures.mjs --check
       - name: Install numerical-test dependency
         run: python -m pip install 'numpy>=2,<3'
+      - name: Check boundary-spectrum exact rational regression
+        run: python research/independent_audits/verify_mlc_boundary_spectrum.py
+      - name: Check exact Mandelbrot coefficient packets and locked 511-manifest
+        run: python research/independent_audits/verify_mlc_spectrum_extended.py --max-index 511 --check-manifest results/mlc_spectrum_exact_511_20261112.json
       - name: Check finite delayed-clone matrices
         run: python research/independent_audits/verify_clone_spectral.py
       - name: Check complete first-return edge-occurrence counts

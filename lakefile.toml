@@ -1,6 +1,6 @@
 name = "loops_formal"
 version = "0.1.0"
-defaultTargets = ["LoopsFormal", "CloneGraph", "FirstReturn", "ReturnBlocks", "ReturnPaths", "Paper2Phase", "RealTwoScalePhase", "Period27Kneading", "AirplaneDiffraction", "Period27Dyadic", "Period27IntervalSound", "Period27RationalTrace", "Period27RationalDerivative", "PhaseTower", "PhaseTower27", "PhaseFuture", "PhaseFuture27", "PhaseMemoryGeneral", "TipRayPortrait", "TipComplexMargins", "TipKLPuzzle", "TipActualCoarseRays", "TipLevinComposition", "TipSheetGrid", "TipRootedNativeKL", "TipNativeRootDeck", "TipNativeC4Wake", "TipNativeSideExclusion", "TipNativeFiniteJTrichotomy", "TipNativeFullBoundaryTypes", "TipKKLTreeMarking", "TipNativeProperRestriction", "ResearchLedger", "ResearchGates", "TipNativeDeckWords"]
+defaultTargets = ["LoopsFormal", "CloneGraph", "FirstReturn", "ReturnBlocks", "ReturnPaths", "Paper2Phase", "RealTwoScalePhase", "Period27Kneading", "AirplaneDiffraction", "MandelbrotSpectrum", "Period27Dyadic", "Period27IntervalSound", "Period27RationalTrace", "Period27RationalDerivative", "PhaseTower", "PhaseTower27", "PhaseFuture", "PhaseFuture27", "PhaseMemoryGeneral", "TipRayPortrait", "TipComplexMargins", "TipKLPuzzle", "TipActualCoarseRays", "TipLevinComposition", "TipSheetGrid", "TipRootedNativeKL", "TipNativeRootDeck", "TipNativeC4Wake", "TipNativeSideExclusion", "TipNativeFiniteJTrichotomy", "TipNativeFullBoundaryTypes", "TipKKLTreeMarking", "TipNativeProperRestriction", "ResearchLedger", "ResearchGates", "TipNativeDeckWords"]
 
 [[lean_lib]]
 name = "LoopsFormal"
@@ -28,6 +28,9 @@ name = "Period27Kneading"
 
 [[lean_lib]]
 name = "AirplaneDiffraction"
+
+[[lean_lib]]
+name = "MandelbrotSpectrum"
 
 [[lean_lib]]
 name = "Period27Dyadic"

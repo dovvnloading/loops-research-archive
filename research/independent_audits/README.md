@@ -2,6 +2,13 @@
 
 This directory contains reproducible audits of research claims in the archive. It is **not** a proof of Mandelbrot local connectivity and does not change the status of the source-locked global ledger obligations. The finite issues resolved here have their own explicit acceptance criteria and proof boundaries.
 
+## Independent boundary-spectrum route (November 2026)
+
+- [Fejér criterion and critical Sobolev regularity](mlc_boundary_spectral_program_20261111.md) derives the uniformly Cauchy criterion, distinguishes ordinary boundary sums from continuous radial traces, and gives finite estimates away from the circle.
+- [Inverse-log-cubed area-tail obstruction](mlc_logarithmic_area_tail_barrier_20261112.md) derives the lower bound $\limsup_j j^3 E_{2^j-1}\ge \pi^2/(12\log 2)$ from the published landing sequence and Gronwall's area identity. MLC remains open.
+- [Coefficient verifier](verify_mlc_spectrum_extended.py) and [512-coefficient manifest](../../results/mlc_spectrum_exact_511_20261112.json) record nine complete dyadic packets. The published OEIS prefix is a table cross-check. The verifier also checks the critical-orbit polynomial identity against the finite coefficient series.
+- [Lean certificates](../../MandelbrotSpectrum.lean) cover finite summation by parts with both endpoint terms, its square-weight specialization, the five-coefficient energy and residual, the radius-two squared error budget, and the arithmetic of the first Fejér difference. Run `lake build MandelbrotSpectrum` from the root. The analytic inequalities and asymptotic obstruction have written proofs.
+
 ## Issue 29: source-defined collision resolution
 
 The [five-objective resolution record](issue29_source_defined_collision_resolution_20261106.md) identifies the actual canonical map, the infinite fine-sheet fiber and the native KL boundary joints where the displayed whole-mark comparison fails. This satisfies the issue's explicit collision alternative; it does not assert faithful all-scale or protected transport.
