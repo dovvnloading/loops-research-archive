@@ -25,7 +25,7 @@ theorem abel_identity {R : Type} [CommRing R] (w t : Nat → R) (start count : N
       w start * t start +
         intervalSum (fun j => (w (j + 1) - w j) * t (j + 1)) start count := by
   induction count with
-  | zero => simp [intervalSum]
+  | zero => simp [intervalSum] <;> grind
   | succ n ih =>
     simp only [intervalSum, Nat.add_succ] at *
     grind
@@ -36,9 +36,13 @@ theorem square_weight_abel (t : Nat → Rat) (start count : Nat) :
         ((start + count : Nat) : Rat)^2 * t (start + count) =
       (start : Rat)^2 * t start +
         intervalSum (fun j => (2 * (j : Rat) + 1) * t (j + 1)) start count := by
-  have step (j : Nat) : ((j + 1 : Nat) : Rat)^2 - (j : Rat)^2 = 2 * (j : Rat) + 1 := by
+  have increments :
+      (fun j : Nat => (((j + 1 : Nat) : Rat)^2 - (j : Rat)^2) * t (j + 1)) =
+      (fun j : Nat => (2 * (j : Rat) + 1) * t (j + 1)) := by
+    funext j
     grind
-  simpa only [step] using abel_identity (fun j => (j : Rat)^2) t start count
+  rw [← increments]
+  exact abel_identity (fun j => (j : Rat)^2) t start count
 
 /-- Positive-index coefficients b1,...,b5 from the published Laurent expansion. -/
 def firstFive : List Rat := [1/8, -1/4, 15/128, 0, -47/1024]
