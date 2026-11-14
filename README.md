@@ -17,7 +17,7 @@ Research direction, synthesis, authorship, and public stewardship
 [**Reproduce results**](#reproduce-the-central-results) ·
 [**Contribute / review**](./CONTRIBUTING.md)
 
-**README updated 2026-11-06** · **Manuscript and ledger source lock 2026-07-27**
+**README updated 2026-11-14** · **Manuscript and ledger source lock 2026-07-27**
 
 </div>
 
@@ -346,7 +346,9 @@ The project page and manuscripts carry the source-locked bibliography and theore
 
 **Matthew Robert Wesney** is the human author, research director, and archive steward. He established the agenda, selected and locked the source corpus, framed and sequenced the investigations, adjudicated competing outputs, maintained the proof-obligation and adversarial-audit record, integrated the retained results, and authorized the public release. He retains responsibility for the mathematical claims, status designations, citations, disclosures, and publication decisions.
 
-This work was developed through sustained human–AI research collaboration. **Anthropic (Fable 5 / Opus 5)** and **OpenAI (GPT-5.6 Sol)** provided substantial assistance across the research lifecycle, including adversarial testing of definitions and proofs, counterexample search, proof-obligation analysis, source comparison, computational design, code generation and review, numerical experimentation, synthesis, manuscript development, technical editing, quality assurance, and archive preparation. Their contribution was integral to the iterative construction and stress-testing of the program.
+**Current announced AI model lineup (checked 2026-11-14):** Anthropic's releases include **Claude Fable 5.2**, **Claude Mythos 5.2**, **Claude Opus 5.5**, **Claude Sonnet 5.5**, and **Claude Haiku 5.5** ([official model releases](https://www.anthropic.com/news/models)). OpenAI's GPT-6 family includes **GPT-6 Astra**, **GPT-6.1 Sol**, **GPT-6.1 Terra**, and **GPT-6 Sol / Luna** ([model catalog](https://developers.openai.com/api/docs/models) · [release history](https://openai.com/research/index/release/)). **This is a dated release reference, not a claim that every listed model contributed to the archive.**
+
+This work was developed through sustained human–AI research collaboration. **Historically documented assistance** includes **Anthropic (Claude Fable 5 and Claude Opus 5)** and **OpenAI (GPT-5.6 Sol)**; later November 2026 notes explicitly disclose **OpenAI GPT-6** ([formalization audit](./research/independent_audits/lean_period27_real_center_20261105.md)) and **GPT-6 Astra Pro** ([source audit](./research/independent_audits/tip_kl_terminal_first_child_20261106.md)) assistance. Across the research lifecycle, AI systems aided adversarial testing of definitions and proofs, counterexample search, proof-obligation analysis, source comparison, computational design, code generation and review, numerical experimentation, synthesis, manuscript development, technical editing, quality assurance, and archive preparation. Their contribution was integral to the iterative construction and stress-testing of the program. Historical model names are retained for attribution accuracy; newer releases are not retroactively credited with earlier work.
 
 The collaboration was directed and orchestrated by Matthew Robert Wesney: he defined objectives, supplied context, assigned and sequenced investigations, evaluated and reconciled model outputs, and selected what entered the research record. The systems are acknowledged as substantial computational research collaborators, not human authors. This acknowledgment does not imply review or endorsement by Anthropic or OpenAI.
 
@@ -380,5 +382,5 @@ The November 2026 code and audit notes disclose OpenAI GPT-6 assistance separate
 ---
 
 <div align="center">
-<sub>Independent research archive · math.DS · manuscripts/ledger source-locked 2026-07-27 · overview 2026-11-06 · MLC remains open</sub>
+<sub>Independent research archive · math.DS · manuscripts/ledger source-locked 2026-07-27 · overview 2026-11-14 · MLC remains open</sub>
 </div>
