@@ -1,0 +1,147 @@
+{
+  "code": {
+    "path": "research/native_wave_transfer/regenerate_satellite2_tip.py",
+    "sha256": "61da31e816a0889ad63ed5e1d93eff9fef26286eb1718b6eb71fb512cae6dada"
+  },
+  "experiment_id": "native-satellite2-misiurewicz-tip-refusal-v1",
+  "format": "native-wave-transfer-satellite-tip-manifest/v1",
+  "inputs": {
+    "example_sha256": "7fd2579b85e2e9f36d2760ba1f2c388f05bf360241bf87a1196ee41c8dfd2a77",
+    "source_locks": {
+      "research/native_wave_transfer/SPECIFICATION.md": "4288c3c7a9680fffd8d094b8f25d51c6cd5df648",
+      "research/native_wave_transfer/source_contracts/primitive4_record_fields.json": "0be9f9dc3961a020ca59a2f9be4957fb04926e9e",
+      "research/native_wave_transfer/source_contracts/record_fields.json": "0a345322213b9d5c084259406c721181e93e9ee5"
+    },
+    "source_reference": "arXiv:2606.27272v1 \u00a7\u00a72.3-2.5,6.1,Appendix A",
+    "unchanged_reference_blobs": {
+      "experiment_manifests/primitive4_tip12.json": "abcc01ad0b5ab0b59cd46e9d080ce44141603392",
+      "experiment_manifests/satellite2_period4_obstruction.json": "063132e808fe209473663e28cd12b7eb876c27ed",
+      "experiment_manifests/tip_pr68.json": "39233f576e7de78cf707b4d616177d0313b98b25",
+      "physical_examples/primitive4_tip12.json": "d0154c8aec14b9355ed81144075486306ee7ab89",
+      "physical_examples/primitive4_tip12_parameter.json": "99192901551611390ef8d5ab81458e8316a9c70b",
+      "physical_examples/satellite2_period4_obstruction.json": "9393ef6757df0c37eb1414a807f77f852b38c5dd",
+      "physical_examples/tip_pr68.json": "65ecc49937b3c341005407a59b353b38f804afec",
+      "regenerate.py": "0dfa4f4c8d5321a7b9fdd74c9c1218228087e0f2",
+      "regenerate_period4.py": "00bae744fbf752beb98994930fe666c02bb652c8",
+      "regenerate_satellite2.py": "c3577f8b276341316ee6905389707034d0e26737"
+    }
+  },
+  "outputs": {
+    "central_return": {
+      "central_component_compactly_contained_in_target": true,
+      "critical_value_a_strictly_between": [
+        "4/5",
+        "9/10"
+      ],
+      "global_degree": 4,
+      "iterate": 2,
+      "noncentral_critical_points_outside_target_disk": true,
+      "restricted_degree": 2,
+      "rouche_margin_strictly_greater_than": "1/5",
+      "source": "component((f^2)^-1(D(0,1)),0)",
+      "target": "D(0,1)"
+    },
+    "compatibility": {
+      "covering_f_star_and_immersion_iota_star": "distinct maps, not fabricated as atomic tables",
+      "filtered_two_versus_one": null,
+      "first_incompatible_field": "MarkedHubbardTree.small_julia_intervals",
+      "harmonic_width_verdict": "not defined for the unchanged primitive three-phase Wave protocol",
+      "kind": "semantic three-phase contract / primitive source hypothesis, not a JSON list type error",
+      "parent_and_child_wave_widths": null,
+      "perron_root_of_old_edge_matrix": null,
+      "source_hypothesis": "KKL arXiv:2606.27272v1 \u00a7\u00a72.3-2.5 assumes primitive: f(K0) disjoint from K0; here they meet at -a",
+      "status": "refused",
+      "unasserted": [
+        "v1 complete ideal-boundary atom and cut census",
+        "v1 covering f_* atomic table or immersion iota^* pullback blocks",
+        "filtered two-versus-one proper sheet/path restrictions",
+        "nonempty once-per-old-edge Perron operator and zero-edge Wave crest census",
+        "two-child Wave extremal widths and harmonic equality"
+      ],
+      "v1_example_emitted": false,
+      "zero_old_edge_wave_crests": null
+    },
+    "exact_real_geometry": {
+      "central_real_inverse_tree_equals_inner_interval": true,
+      "excluded_outer_branch_squared_modulus_strictly_gt": "1",
+      "inner_invariant_interval": "[-a,a]",
+      "inner_old_edge_count_under_KKL_vertex_convention": 0,
+      "inner_small_julia_set_count": 1,
+      "intersection_of_phases": "{-a}",
+      "new_attachments": 0,
+      "orbit_identity_mod_parameter_polynomial": "0 -> c -> a -> -a -> -a, a=c^2+c",
+      "other_phase_interval": "[c,-a]",
+      "real_inverse_branches_in_U": "only +/-sqrt(-c-sqrt(y-c)), y in [-a,a]",
+      "terminal_point_repelling_G": true,
+      "terminal_point_repelling_f": true
+    },
+    "parameter": {
+      "approximation_for_orientation_only": "-1.5436890126920764",
+      "denominator_power_of_two": 128,
+      "equation": "c^3+2*c^2+2*c+2=0",
+      "lower_numerator": -5.252901510287064e+38,
+      "opposite_strict_signs": true,
+      "unique_real_root_by_positive_derivative": true,
+      "upper_numerator": -5.252901510287064e+38
+    },
+    "primitive_comparison": {
+      "p3": {
+        "attachments": 1,
+        "child_width": "log(4/3)/pi",
+        "filtered_restrictions": [
+          2,
+          1
+        ],
+        "harmonic_equality": true,
+        "pushed_crests": [
+          2,
+          8
+        ],
+        "source_atoms": 20,
+        "target_atoms": 10,
+        "target_width": "log(4/3)/(2*pi)"
+      },
+      "p4": {
+        "attachments": 1,
+        "child_width": "log(3/2)/pi",
+        "filtered_restrictions": [
+          2,
+          1
+        ],
+        "harmonic_equality": true,
+        "pushed_crests": [
+          2,
+          8
+        ],
+        "source_atoms": 20,
+        "target_atoms": 10,
+        "target_width": "log(3/2)/(2*pi)"
+      }
+    }
+  },
+  "outputs_sha256": "3d4454627f2e46d766373e9e1be8b498503f6c35abc1312b63c2916a8b18477f",
+  "proof_status": {
+    "certified_by_exact_arithmetic": [
+      "unique real P(c)=0 root in adjacent 2^-128 dyadic bracket",
+      "whole-circle Rouche margin >1/5 and degree-two f^2 central restriction",
+      "critical preperiod and repelling terminal point",
+      "two invariant real phase intervals meet at exactly -a",
+      "no extra inverse branches of the real inner interval within V",
+      "Tprime=T, no inner attachments, one small interval and no KKL old edges"
+    ],
+    "conditional_on_cited_analytic_inputs": [
+      "backward-orbit density and standard quadratic-like dynamics identify the full small filled Julia set with the invariant real interval",
+      "KKL \u00a7\u00a72.3-2.5 define its core edge/ideal construction only for primitive renormalization",
+      "induced prime-end/Wave semantics for primitive benchmarks"
+    ],
+    "numeric_only": [
+      "display decimal parameter approximation, never used in comparisons"
+    ],
+    "unproved": [
+      "a replacement satellite-native marking, sheet/path and wave framework",
+      "satellite atom multiplicities, source versus covering crest census",
+      "nontrivial Perron comparison and quantitative harmonic transfer"
+    ]
+  },
+  "schema_version": 1
+}
