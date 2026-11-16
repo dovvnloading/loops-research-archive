@@ -118,11 +118,11 @@ jobs:
       - name: "Re-execute independently merged exact verifier"
         run: |
           set -euo pipefail
-          python -B "research/independent_audits/$AUDIT/verify.py"
+          python -B "research/independent_audits/${AUDIT}_20261116/verify.py"
       - name: "Rerun adversarial unit tests"
         run: |
           python -B -m unittest discover \
-             -s "research/independent_audits/$AUDIT" -p 'test_*.py' -v
+             -s "research/independent_audits/${AUDIT}_20261116" -p 'test_*.py' -v
       - name: "Check exact verifier changed no files"
         run: |
           git diff --exit-code
