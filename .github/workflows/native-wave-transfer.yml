@@ -35,6 +35,8 @@ jobs:
         run: python research/native_wave_transfer/regenerate_satellite2_tip.py --check
       - name: Certify satellite v2 contact, separate pullbacks and immutable manifest
         run: python research/native_wave_transfer/regenerate_satellite_v2.py --check
+      - name: Review candidate immutable near-parabolic manifest (branch bootstrap only)
+        run: python research/native_wave_transfer/regenerate_near_parabolic.py --print-manifest
       - name: Certify near-parabolic primitive tips and immutable v1 refusal
         run: python research/native_wave_transfer/regenerate_near_parabolic.py --check
       - name: Compile and run adversarial independent regression
