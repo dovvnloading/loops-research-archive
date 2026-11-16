@@ -241,12 +241,14 @@ def leaf_fields(value, path: str = "") -> dict[str, object]:
         merged = {}
         for member in value:
             one = leaf_fields(member, "members[]")
-            ensure(not (set(merged) - set(one) or set(one) - set(merged)),
-                   "inconsistent per-member leaf schema") if merged else None
-            merged.update(one)
+            if merged:
+                ensure(set(merged) == set(one),
+                       "inconsistent per-member leaf schema")
+            for field, values in one.items():
+                merged.setdefault(field, []).extend(values)
         return merged
     ensure(not isinstance(value, float), "untrusted binary-float certification")
-    return {path: value}
+    return {path: [value]}
 
 
 def valid_type(value, t: str) -> bool:
@@ -283,7 +285,7 @@ def check_contract(outputs: dict, contract: dict) -> None:
            + str(sorted(set(actual) ^ set(fields))))
     valid_status = {"exact-finite", "conditional-slit",
                     "not-defined", "declared-choice"}
-    for path, value in actual.items():
+    for path, values in actual.items():
         info = fields[path]
         ensure(isinstance(info, dict) and set(info) ==
                {"type", "source", "status"}
@@ -291,14 +293,16 @@ def check_contract(outputs: dict, contract: dict) -> None:
                and info["source"] in sources
                and isinstance(sources[info["source"]], str)
                and len(sources[info["source"]]) > 15
-               and info["status"] in valid_status
-               and valid_type(value, info["type"]),
-               "invalid type, citation or status: " + path)
-        ensure((value is None) == (info["type"] == "null"),
-               "null must have a refusal annotation: " + path)
-        if value is None:
-            ensure(info["status"] == "not-defined",
-                   "null lacks explicit unresolved status: " + path)
+               and info["status"] in valid_status,
+               "invalid source citation or status: " + path)
+        for value in values:  # Validate *every* period, never only the last.
+            ensure(valid_type(value, info["type"]),
+                   "invalid type: " + path)
+            ensure((value is None) == (info["type"] == "null"),
+                   "null must have a refusal annotation: " + path)
+            if value is None:
+                ensure(info["status"] == "not-defined",
+                       "null lacks explicit unresolved status: " + path)
     # Non-null statuses cannot mark missing quantities as exact witnesses.
     ensure(set(contract) == {"format", "schema_version", "sources", "fields"},
            "unreviewed v1.1 field registry additions")
