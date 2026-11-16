@@ -1,0 +1,67 @@
+{
+  "format": "native-wave-transfer-field-contract/v1",
+  "notation": "Each field path is relative to its record; [] denotes each array item. [type, source-id] is mandatory. Rational means a reduced fraction string, never a float.",
+  "sources": {
+    "LAB": "research/native_wave_transfer/SPECIFICATION.md §§1-4 (this executable record protocol)",
+    "ROOT": "results/tip_root_interval_geometry.json (root/phase/parameter source manifest; pinned in LOCK.json)",
+    "TIP3": "research/independent_audits/nonattracting_tip_complex_two_scale_20261106.md (degree-two G:V3->U3; PR #68 §1)",
+    "PR1": "research/independent_audits/tip_KKL_native_tree_marking_and_marked_wave_breakage_20261109.md §1, Proposition 1.1",
+    "PR2": "research/independent_audits/tip_KKL_native_tree_marking_and_marked_wave_breakage_20261109.md §2, Proposition 2.1",
+    "PR3": "research/independent_audits/tip_KKL_native_tree_marking_and_marked_wave_breakage_20261109.md §3, Theorem 3.1",
+    "PR4": "research/independent_audits/tip_KKL_native_tree_marking_and_marked_wave_breakage_20261109.md §4",
+    "PR5": "research/independent_audits/tip_KKL_native_tree_marking_and_marked_wave_breakage_20261109.md §5",
+    "KKL2": "Kahn-Kapiamba-Lyubich, arXiv:2606.27272v1 §2.1 (ordinary quadratic-like member of the psi-ql category)",
+    "KKLT": "Kahn-Kapiamba-Lyubich, arXiv:2606.27272v1 §2.5 (Hubbard tree and marked vertices)",
+    "KKLA": "Kahn-Kapiamba-Lyubich, arXiv:2606.27272v1 §6.1, Propositions 6.5-6.6 (attachments, pullback marking, refinement)",
+    "KKLI": "Kahn-Kapiamba-Lyubich, arXiv:2606.27272v1 Appendix A.1 (ideal-boundary marking and short multi-interval subordination)",
+    "KKLP": "Kahn-Kapiamba-Lyubich, arXiv:2606.27272v1 Appendix A.3.2-A.3.4 (restriction, paths, domination and breakage)",
+    "KKLW": "Kahn-Kapiamba-Lyubich, arXiv:2606.27272v1 Appendix A.3.2, Lemma A.11 (series width with joint injectivity); PR #68 §5"
+  },
+  "records": {
+    "PhysicalExample": {
+      "source_contract": ["uri", "LAB"], "id": ["identifier", "LAB"],
+      "polynomial.family": ["symbol", "ROOT"], "polynomial.critical_point": ["rational", "ROOT"], "polynomial.parameter_reference": ["uri-json-pointer", "ROOT"],
+      "return.physical_iterate": ["positive-integer", "TIP3"], "return.restricted_degree": ["positive-integer", "TIP3"], "return.global_degree": ["positive-integer", "ROOT"],
+      "domains.source.symbol": ["symbol", "TIP3"], "domains.source.definition": ["string", "TIP3"], "domains.source.restricted_degree": ["positive-integer", "TIP3"],
+      "domains.target.symbol": ["symbol", "TIP3"], "domains.target.shape": ["enum", "TIP3"], "domains.target.center": ["rational", "TIP3"], "domains.target.radius": ["positive-rational", "TIP3"],
+      "marking.induced_from": ["symbol", "KKLT"], "marking.target_cuts": ["list-symbol", "PR2"], "marking.outer_boundary": ["enum", "KKLI"],
+      "operations.covering.map": ["symbol", "KKL2"], "operations.covering.ideal_action": ["enum-f_*", "KKLA"], "operations.covering.domain": ["set-expression", "PR1"], "operations.covering.codomain": ["set-expression", "PR1"],
+      "operations.immersion.map": ["symbol", "KKLA"], "operations.immersion.ideal_action": ["enum-iota^*", "KKLA"], "operations.immersion.domain": ["set-expression", "PR1"], "operations.immersion.codomain": ["set-expression", "PR1"], "operations.immersion.new_attachment_sides": ["enum-target-interior", "PR2"],
+      "paths[].name": ["identifier", "PR3"], "paths[].q": ["rational", "PR3"], "paths[].w": ["rational", "PR3"], "paths[].disk_limit": ["positive-rational", "PR3"],
+      "wave.center": ["rational", "PR5"], "wave.open_radii": ["pair-rational", "PR5"], "wave.target_angular_height_pi": ["positive-rational", "PR5"], "wave.child_angular_height_pi": ["positive-rational", "PR5"]
+    },
+    "PolynomialParameter": {
+      "family": ["symbol", "ROOT"], "critical_point": ["rational", "ROOT"], "parameter_bracket.denominator_power_of_two": ["positive-integer", "ROOT"], "parameter_bracket.lower_numerator": ["integer", "ROOT"], "parameter_bracket.upper_numerator": ["integer", "ROOT"], "orbit_index_range": ["integer-pair", "ROOT"]
+    },
+    "PhysicalReturn": {"physical_iterate": ["positive-integer", "TIP3"], "restricted_degree": ["positive-integer", "TIP3"], "global_degree": ["positive-integer", "ROOT"]},
+    "DomainPair": {
+      "source.symbol": ["symbol", "TIP3"], "source.definition": ["set-expression", "TIP3"], "source.degree": ["positive-integer", "TIP3"],
+      "target.symbol": ["symbol", "TIP3"], "target.center": ["rational", "TIP3"], "target.radius": ["positive-rational", "TIP3"]
+    },
+    "MarkedHubbardTree": {"small_julia_intervals": ["list-interval-symbol", "ROOT"], "hull": ["interval-symbol", "KKLT"], "preimage_in_V3": ["interval-symbol", "PR1"], "dividing_fixed_point": ["symbol", "KKLT"]},
+    "AttachmentCensus": {
+      "complete_in_V3_given_degree_two": ["conditional-boolean", "PR1"], "components[].interval": ["half-open-interval", "KKLA"], "components[].root": ["symbol", "PR1"], "components[].boundary_atoms": ["list-int", "PR2"], "components[].immersion_boundary_destination": ["enum-target-interior", "PR2"]
+    },
+    "IdealBoundaryIntervals": {
+      "target_atom_count": ["nonnegative-integer", "KKLI"], "target_atom_names": ["list-symbol", "PR2"], "target_real_cuts": ["list-symbol", "PR2"], "covering_source_atom_count": ["nonnegative-integer", "KKLI"], "source_real_cuts": ["list-symbol", "PR2"], "outer_component_atom_count": ["nonnegative-integer", "KKLI"]
+    },
+    "CoveringFStar": {"action": ["enum-f_*", "KKLA"], "degree": ["positive-integer", "KKL2"], "source_to_target": ["list-int", "PR2"]},
+    "ImmersionPullback": {
+      "action": ["enum-iota^*", "KKLA"], "source_to_pullback": ["list-int", "KKLA"], "connected_blocks": ["list-list-int", "KKLA"], "block_lengths": ["list-int", "PR2"], "end_proper_inner": ["boolean", "KKLA"], "nonproper_target_atoms": ["list-int", "PR2"]
+    },
+    "SheetPathFamily": {
+      "endpoint_target_atoms": ["pair-int", "KKLP"], "circles[].name": ["identifier", "PR3"], "circles[].center": ["rational", "PR3"], "circles[].radius": ["positive-rational", "PR3"], "circles[].real_left_intersection": ["rational", "PR3"], "circles[].real_right_endpoint": ["rational", "PR3"], "circles[].certified_G_disk_image_absolute_bound": ["positive-rational", "PR3"], "circles[].certified_clearance_to_target_radius_1_over_4": ["positive-rational", "PR3"],
+      "instances.*.source_restrictions": ["list-pair-int", "KKLP"], "instances.*.immersion_endpoint_pairs": ["list-pair-int", "KKLA"], "instances.*.covering_pushforward_pairs": ["list-pair-int", "KKLP"], "instances.*.surviving_count": ["nonnegative-integer", "KKLP"], "instances.*.filters.A1_short_span": ["boolean", "KKLI"], "instances.*.filters.A3_2_not_in_one_pullback": ["boolean", "KKLP"],
+      "homotopy": ["conditional-symbol", "PR4"], "counts": ["list-int", "PR4"]
+    },
+    "WaveFamily": {
+      "center": ["rational", "PR5"], "open_radii": ["pair-rational", "PR5"], "right_endpoint_range": ["pair-rational", "PR5"], "attachment_crossing_range": ["pair-rational", "PR5"], "target_base": ["list-int", "KKLW"], "target_crest": ["int", "KKLW"], "pushed_bases": ["list-list-int", "PR5"], "pushed_crests": ["list-int", "PR5"], "ratio": ["positive-rational", "PR5"], "target_width": ["symbolic-log-over-pi", "KKLW"], "each_child_and_pushed_width": ["symbolic-log-over-pi", "KKLW"], "child_multiplier": ["positive-integer", "PR5"], "harmonic_series_equality": ["conditional-boolean", "KKLW"], "symbolic_width_coefficients_in_log_ratio_over_pi.target": ["rational", "KKLW"], "symbolic_width_coefficients_in_log_ratio_over_pi.each_child": ["rational", "KKLW"]
+    },
+    "ExperimentOutputs": {
+      "polynomial": ["PolynomialParameter", "ROOT"], "return": ["PhysicalReturn", "TIP3"], "domains": ["DomainPair", "TIP3"], "marked_tree": ["MarkedHubbardTree", "KKLT"], "attachment_census": ["AttachmentCensus", "KKLA"], "ideal_boundary": ["IdealBoundaryIntervals", "KKLI"], "operations.covering_f_star": ["CoveringFStar", "KKLA"], "operations.immersion_iota_star": ["ImmersionPullback", "KKLA"], "sheet_paths": ["SheetPathFamily", "KKLP"], "wave": ["WaveFamily", "KKLW"]
+    },
+    "ExperimentManifest": {
+      "schema_version": ["positive-integer", "LAB"], "experiment_id": ["identifier", "LAB"], "inputs.source_locks": ["list-Git-blob-lock", "LAB"], "inputs.arxiv_source": ["source-identifier", "LAB"], "inputs.example_sha256": ["hex-sha256", "LAB"], "inputs.contracts_sha256": ["hex-sha256", "LAB"], "inputs.lock_sha256": ["hex-sha256", "LAB"], "code.file": ["repository-path", "LAB"], "code.sha256": ["hex-sha256", "LAB"], "outputs": ["ExperimentOutputs", "LAB"], "outputs_sha256": ["hex-sha256", "LAB"], "proof_status.certified_by_exact_arithmetic": ["list-text", "LAB"], "proof_status.conditional_on_cited_analytic_inputs": ["list-text", "LAB"], "proof_status.numeric_only": ["list-text", "LAB"], "proof_status.unproved": ["list-text", "LAB"]
+    }
+  }
+}
