@@ -509,8 +509,8 @@ not the KKL primitive old-edge operator; their spectral radii do
 
 * **Certified exact by the executable:** strict rational parameter enclosure
   and phase order; reduction of contact/fixed-point and factor identities
-  modulo \(P\); the return-degree and no-new-attachment facts via locked
-  v1 exact certificates; local covering/inclusion germ counts, distinct
+  modulo \(P\); the degree-two return and empty pullback-attachment facts from
+  rational inequalities under the unchanged v1 physical input; local covering/inclusion germ counts, distinct
   map types, image-edge incidence, \(M^3=2M\) and Perron root \(\sqrt2\);
   v1 primitive manifests checked by immutable Git-blob identities.
 * **Cited but not independently formalized:** identification of the whole

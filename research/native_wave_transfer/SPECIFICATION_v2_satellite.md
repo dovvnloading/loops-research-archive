@@ -159,6 +159,5 @@ UTF-8 JSON serialization (sorted keys, 2-space indentation, terminal
 newline, ASCII escaped) to the immutable manifest. Only `--write` can
 regenerate it. It source-locks both primitive baseline manifest blobs;
 **neither their bytes nor any v1 file is edited.**
-Run `python -m unittest discover -s research/native_wave_transfer -p
- 'test_*.py' -v` for positive and adversarial cases. The CI step is
+Run `python -m unittest discover -s research/native_wave_transfer -p 'test_*.py' -v` for positive and adversarial cases. The CI step is
 separate and does not freeze outputs.

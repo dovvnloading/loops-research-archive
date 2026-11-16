@@ -8,7 +8,7 @@
   "inputs": {
     "fixture_sha256": "7fd2579b85e2e9f36d2760ba1f2c388f05bf360241bf87a1196ee41c8dfd2a77",
     "registry_sha256": "72a5b260af1cfb94ee8323c674172a66d82e5b45789fc2c4fb2582bd050b8153",
-    "specification_sha256": "388a40c0dca4acca468a8f43f188b23bd3ab814f6d18b14d0bf116dccf37f10b",
+    "specification_sha256": "3ce9870c050a6a73d9e5c21c5f3d43929de5b6b55c95e1293611937fa1738bc2",
     "unchanged_v1_blobs": {
       "experiment_manifests/primitive4_tip12.json": "abcc01ad0b5ab0b59cd46e9d080ce44141603392",
       "experiment_manifests/tip_pr68.json": "39233f576e7de78cf707b4d616177d0313b98b25"
