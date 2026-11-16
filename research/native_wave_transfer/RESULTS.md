@@ -546,84 +546,81 @@ outputs byte-identical.
 
 ### Selection and what the literature establishes
 
-Set \\(f_c(z)=z^2+c\\), \\(x_0=0\\), and \\(x_{j+1}=x_j^2+c\\).
+Set \(f_c(z)=z^2+c\), \(x_0=0\), and \(x_{j+1}=x_j^2+c\).
 The classical real period-three saddle-node is at exactly
-\\(c_{\mathrm{par}}=-7/4\\), with the intermittency/chaotic side
-\\(c>-7/4\\). See the [explicit saddle-node calculation]
-(https://dummit.cos.northeastern.edu/teaching_su23_3543/dynamics_3_chaotic_dynamics_v2.00.pdf)
-and [Hunt–Gallas–Grebogi–Koçak–Yorke, *Bifurcation rigidity*, Physica D 129 (1999)]
-(https://yorke.umd.edu/Yorke_papers_most_cited_and_post2000/1999_01_Hunt_Gallas_Grebogi_Kocak_PhysicaD_Bifurcation_rigidity.pdf)
+\(c_{\mathrm{par}}=-7/4\), with the intermittency/chaotic side
+\(c>-7/4\). See the [explicit saddle-node calculation](https://dummit.cos.northeastern.edu/teaching_su23_3543/dynamics_3_chaotic_dynamics_v2.00.pdf)
+and [Hunt–Gallas–Grebogi–Koçak–Yorke, *Bifurcation rigidity*, Physica D 129 (1999)](https://yorke.umd.edu/Yorke_papers_most_cited_and_post2000/1999_01_Hunt_Gallas_Grebogi_Kocak_PhysicaD_Bifurcation_rigidity.pdf)
 for primary windows and their superstable points. The theory of primitive
 little Mandelbrot copies and their parabolic roots is described in
-[Lyubich, *Dynamics of quadratic polynomials, I–II*]
-(https://commack.math.stonybrook.edu/~mlyubich/papers/acta.pdf).
+[Lyubich, *Dynamics of quadratic polynomials, I–II*](https://commack.math.stonybrook.edu/~mlyubich/papers/acta.pdf).
 The relevant three-phase marking, and **separate covering and immersion**,
 are from [KKL, arXiv:2606.27272v1](https://arxiv.org/abs/2606.27272v1),
 §§2.1, 2.5, 6.1 and Appendix A.
 
 The proposed **selected saddle-node-window branch** takes
-\\(p=3n\\), here \\(p=24,27,30\\). For each, choose the *noncentral*
+\(p=3n\), here \(p=24,27,30\). For each, choose the *noncentral*
 real root of
-\\(P_p(c)=x_{2p}(c)+x_p(c)=0\\), with \\(x_p<0<x_{2p}\\),
-just to the left of the near-saddle-node superattracting period-\\(p\\)
+\(P_p(c)=x_{2p}(c)+x_p(c)=0\), with \(x_p<0<x_{2p}\),
+just to the left of the near-saddle-node superattracting period-\(p\)
 window center. This equation **also vanishes at superattracting centers**
-\\(x_p=0\\) and may have many other roots: its equation alone is
+\(x_p=0\) and may have many other roots: its equation alone is
 **not** a branch selector. The strict nonzero itinerary, adjacent dyadic
 isolator, and monotone derivative are checked for each chosen root.
 The general literature supports the saddle-node/primitive-window
 mechanism; it does **not**, by itself, identify these exact three
-parameter brackets or prove that *every* \\(p=3n\\) has a member of
+parameter brackets or prove that *every* \(p=3n\) has a member of
 this branch. Our local certificates establish the three selected
-instances, not existence/uniqueness for all \\(n\\), nor their infinite
+instances, not existence/uniqueness for all \(n\), nor their infinite
 limit. That further statement remains **open** in this audit.
 
 ### Three individually certified complex primitive returns
 
-Put \\(G=f_c^p\\) and \\(U_p=D(0,R_p)\\).
-For \\(G(z)=d_p+A_pz^2+E_p(z)\\) on \\(|z|=R_p\\),
+Put \(G=f_c^p\) and \(U_p=D(0,R_p)\).
+For \(G(z)=d_p+A_pz^2+E_p(z)\) on \(|z|=R_p\),
 the checker encloses the exact orbit and parameter derivative on a
-\\(2^{-256}\\) integer lattice, and propagates an outward
+\(2^{-256}\) integer lattice, and propagates an outward
 whole-circle upper tail
-\\(T_{j+1}=2|d_j|T_j+(|A_j|R_p^2+T_j)^2\\).
+\(T_{j+1}=2|d_j|T_j+(|A_j|R_p^2+T_j)^2\).
 Its **certified Rouché lower bound** is
-\\(m_p=|A_p|_{\rm lo}R_p^2-|d_p|_{\rm hi}-T_p-R_p>0\\).
-Thus for *every* \\(|w|\le R_p\\) the source disk has exactly
-two preimages of \\(w\\), all in the central critical component,
-and \\(G:V_p\Subset U_p\\) is a proper degree-two return,
-despite global degree \\(2^p\\). Applying the same inequality at
-source radius \\(7R_p/8\\) and target radius \\(R_p\\)
+\(m_p=|A_p|_{\rm lo}R_p^2-|d_p|_{\rm hi}-T_p-R_p>0\).
+Thus for *every* \(|w|\le R_p\) the source disk has exactly
+two preimages of \(w\), all in the central critical component,
+and \(G:V_p\Subset U_p\) is a proper degree-two return,
+despite global degree \(2^p\). Applying the same inequality at
+source radius \(7R_p/8\) and target radius \(R_p\)
 certifies a **round subcollar**. Propagating complete complex disks
-\\(f^j(D(0,R_p))\\) for \\(0\le j<p\\), not just sampled
+\(f^j(D(0,R_p))\) for \(0\le j<p\), not just sampled
 real points, proves all physical phases disjoint.
 
-| Certified field | \\(p=24\\) | \\(p=27\\) | \\(p=30\\) |
+| Certified field | \(p=24\) | \(p=27\) | \(p=30\) |
 | --- | --- | --- | --- |
-| \\(c\\) (display only) | ≈ -1.746090732932034 | ≈ -1.747022165663388 | ≈ -1.747652549465951 |
-| Dyadic root precision | adjacent \\(2^{-160}\\) | adjacent \\(2^{-160}\\) | adjacent \\(2^{-160}\\) |
-| Exact physical / global degree | \\(f^{24}\\) / \\(2^{24}\\) | \\(f^{27}\\) / \\(2^{27}\\) | \\(f^{30}\\) / \\(2^{30}\\) |
+| \(c\) (display only) | ≈ -1.746090732932034 | ≈ -1.747022165663388 | ≈ -1.747652549465951 |
+| Dyadic root precision | adjacent \(2^{-160}\) | adjacent \(2^{-160}\) | adjacent \(2^{-160}\) |
+| Exact physical / global degree | \(f^{24}\) / \(2^{24}\) | \(f^{27}\) / \(2^{27}\) | \(f^{30}\) / \(2^{30}\) |
 | Central restricted degree | 2 | 2 | 2 |
-| Target and boundary radius \\(R_p\\) | \\(1/1024\\) | \\(3/4096\\) | \\(5/8192\\) |
-| Certified strict \\(m_p\\) enclosure | \\(1/625<m_p<17/10000\\) | \\(9/10000<m_p<1/1000\\) | \\(3/5000<m_p<7/10000\\) |
-| Smallest pairwise *complex phase disk* gap | \\(23/10000<g<1/400\\) | \\(9/5000<g<19/10000\\) | \\(7/5000<g<3/2000\\) |
-| Full central inverse of inner interval | one \\([-a,a]\\), no attachments | one \\([-a,a]\\), no attachments | one \\([-a,a]\\), no attachments |
-| Certified round subcollar | \\(\operatorname{mod}(U_p\\setminus\\overline{V_p})\ge\log(8/7)/(2\pi)\\) | same lower bound | same lower bound |
+| Target and boundary radius \(R_p\) | \(1/1024\) | \(3/4096\) | \(5/8192\) |
+| Certified strict \(m_p\) enclosure | \(1/625<m_p<17/10000\) | \(9/10000<m_p<1/1000\) | \(3/5000<m_p<7/10000\) |
+| Conservative lower-gap certificate for all phase disks | \(23/10000<g<1/400\) | \(9/5000<g<19/10000\) | \(7/5000<g<3/2000\) |
+| Full central inverse of inner interval | one \([-a,a]\), no attachments | one \([-a,a]\), no attachments | one \([-a,a]\), no attachments |
+| Certified round subcollar | \(\operatorname{mod}(U_p\setminus\overline{V_p})\ge\log(8/7)/(2\pi)\) | same lower bound | same lower bound |
 
-The dyadic numerators, **opposite strict signs** of \\(P_p\\) at the
+The dyadic numerators, **opposite strict signs** of \(P_p\) at the
 two endpoints, negative interval derivative, strict tip itinerary,
-full complex disk arithmetic, and \\(G'(a)\\) repelling with
-\\(3<|G'(a)|<5\\), are rerun by the checker and frozen in the manifest.
+full complex disk arithmetic, and \(G'(a)\) repelling with
+\(3<|G'(a)|<5\), are rerun by the checker and frozen in the manifest.
 In particular the three **chosen lower Rouché bounds shrink**, since
-\\(m_{24}>1/625>1/1000>m_{27}>9/10000>7/10000>m_{30}\\);
+\(m_{24}>1/625>1/1000>m_{27}>9/10000>7/10000>m_{30}\);
 this asserts decreasing *finite certificate margins*, **not**
 a demonstrated vanishing canonical modulus.
 
-Here \\(a=-x_p>0\\). The exact tip equation and evenness of
-\\(G\\) give \\(0\mapsto-a\mapsto a\mapsto a\\) and
-\\(G([-a,a])=[-a,a]\\). Since all intermediate phase disks avoid
-zero, \\(G\\) is strictly monotone on each half of this interval.
+Here \(a=-x_p>0\). The exact tip equation and evenness of
+\(G\) give \(0\mapsto-a\mapsto a\mapsto a\) and
+\(G([-a,a])=[-a,a]\). Since all intermediate phase disks avoid
+zero, \(G\) is strictly monotone on each half of this interval.
 Both inverse branches lie inside it, exhausting the proper
 degree-two central source. Thus
-\\(G^{-1}([-a,a])\cap V_p=[-a,a]\\), and there are **zero
+\(G^{-1}([-a,a])\cap V_p=[-a,a]\), and there are **zero
 new inverse-tree attachments**. Identifying the entire small filled
 Julia set with this real interval uses the standard backward-orbit
 density/straightening argument and is an **analytic cited input**,
@@ -632,38 +629,38 @@ physical-phase separation **is** directly certified.
 
 ### First v1 refusal and comparison with the near-(-2) tips
 
-**First unfaithful field: \`MarkedHubbardTree.small_julia_intervals\`
-(via \`ExperimentOutputs.marked_tree\`).** The unchanged v1
-[specification](SPECIFICATION.md) requires *three* small \\(G\\)-cycled
-inner Julia intervals, the corresponding nontrivial real hull \\(T\\)
-and \\(T'\\), and a one-attachment slit marking. The selected near-parabolic
+**First unfaithful field: `MarkedHubbardTree.small_julia_intervals`
+(via `ExperimentOutputs.marked_tree`).** The unchanged v1
+[specification](SPECIFICATION.md) requires *three* small \(G\)-cycled
+inner Julia intervals, the corresponding nontrivial real hull \(T\)
+and \(T'\), and a one-attachment slit marking. The selected near-parabolic
 tips are genuine **primitive** physical quadratic-like returns, but
-have **one** invariant inner Chebyshev interval and \\(T'=T\\).
-One cannot turn its single interval into three genuine \\(G\\)-phases
+have **one** invariant inner Chebyshev interval and \(T'=T\).
+One cannot turn its single interval into three genuine \(G\)-phases
 by inventing two extra intervals. The generic JSON list type would
 accept the wrong semantic input; the executable refuses it.
 
 Here **N/C** means not defined or not certified by the *unchanged* v1
 three-phase marking, never zero or a negative Wave inequality.
 
-| v1 observable | near-(-2) \\(p=3\\) | near-(-2) \\(p=4\\) | near-parabolic \\(p=24,27,30\\) |
+| v1 observable | near-(-2) \(p=3\) | near-(-2) \(p=4\) | near-parabolic \(p=24,27,30\) |
 | --- | --- | --- | --- |
 | Inner Julia intervals / new inverse-tree attachments | 3 / 1 | 3 / 1 | **1 / 0** at each certified tip |
 | Target / covering-source ideal atoms, plus outer | 10 / 20, plus 1 | 10 / 20, plus 1 | **N/C**, no faithful v1 three-phase atom census |
-| Complete v1 attachment sectors | \`S19,S0,S1\` (one) | \`S19,S0,S1\` (one) | no new inverse-tree segment; v1 sector labels **N/C** |
-| \\(f_*\\) covering vs \\(\iota^*\\) inclusion pullback | distinct maps | distinct maps | **distinct**, no fabricated atomic tables |
+| Complete v1 attachment sectors | `S19,S0,S1` (one) | `S19,S0,S1` (one) | no new inverse-tree segment; v1 sector labels **N/C** |
+| \(f_*\) covering vs \(\iota^*\) inclusion pullback | distinct maps | distinct maps | **distinct**, no fabricated atomic tables |
 | Proper restrictions (crossing / avoiding) | 2 / 1 | 2 / 1 | **N/C**, no source-valid v1 filtration |
-| Old-edge transition matrix | \`[[0,0,1],[1,0,1],[1,1,0]]\` | same | **N/C**, no three old-edge types |
-| Perron root | \\(\varphi=(1+\sqrt5)/2\\) | same | **N/C**, not a zero Perron root |
-| Zero-old-edge atom / closed crest types | \`I0,I2,I5,I8\` / \`I0,I2,I8\` | same | **N/C**, no canonical v1 crests |
-| Exact parent Wave width | \\(\log(4/3)/(2\pi)\\) | \\(\log(3/2)/(2\pi)\\) | **N/C** |
-| Exact each child and pushed width | \\(\log(4/3)/\pi\\) | \\(\log(3/2)/\pi\\) | **N/C** |
+| Old-edge transition matrix | `[[0,0,1],[1,0,1],[1,1,0]]` | same | **N/C**, no three old-edge types |
+| Perron root | \(\varphi=(1+\sqrt5)/2\) | same | **N/C**, not a zero Perron root |
+| Zero-old-edge atom / closed crest types | `I0,I2,I5,I8` / `I0,I2,I8` | same | **N/C**, no canonical v1 crests |
+| Exact parent Wave width | \(\log(4/3)/(2\pi)\) | \(\log(3/2)/(2\pi)\) | **N/C** |
+| Exact each child and pushed width | \(\log(4/3)/\pi\) | \(\log(3/2)/\pi\) | **N/C** |
 | Harmonic reciprocal equality | yes (conditional analytic Wave identification) | yes (same conditional input) | **no verdict**, neither equality nor strictness shown |
 
-The *covering* \\(f_*\\) comes from the proper return
-\\(G:V_p\to U_p\\), while the *immersion pullback*
-\\(\iota^*\\) comes from actual inclusion
-\\(V_p\setminus T'\hookrightarrow U_p\setminus T\\).
+The *covering* \(f_*\) comes from the proper return
+\(G:V_p\to U_p\), while the *immersion pullback*
+\(\iota^*\) comes from actual inclusion
+\(V_p\setminus T'\hookrightarrow U_p\setminus T\).
 Their types and meanings remain distinct. Neither one can be
 instantiated as a v1 atom table after the earlier marking refusal.
 In particular, a trivial-looking real tree is **not** a license to
@@ -671,22 +668,21 @@ identify the two operations.
 
 ### Collar modulus, angular electrode and resistance test: precise stop
 
-The proved inclusion \\(V_p\Subset D(0,7R_p/8)\\) supplies a **positive
-round-annulus subcollar** of height \\(\log(8/7)\\), equivalently
-a **lower bound** \\(\log(8/7)/(2\pi)\\) on the ordinary
+The proved inclusion \(V_p\Subset D(0,7R_p/8)\) supplies a **positive
+round-annulus subcollar** of height \(\log(8/7)\), equivalently
+a **lower bound** \(\log(8/7)/(2\pi)\) on the ordinary
 quadratic-like annulus modulus. It is **not** an enclosure of the full
-modulus, nor a measurement of the **KKL attachment collar \\(h\\)**.
+modulus, nor a measurement of the **KKL attachment collar \(h\)**.
 Because the exact inner inverse tree has *no newly attached interval*,
 there is **no associated nonempty v1 attachment electrode**, hence no
-source-defined angular width \\(0<\ell<\pi\\) to enclose.
-Setting \\(\ell=0\\), calling \\(h=\log(8/7)\\), or fitting a
+source-defined angular width \(0<\ell<\pi\) to enclose.
+Setting \(\ell=0\), calling \(h=\log(8/7)\), or fitting a
 surrogate log-ratio would be mathematically false.
 
-The [annular contact-resistance crossover theorem]
-(../independent_audits/kkl_annular_contact_resistance_crossover_20261107.md)
+The [annular contact-resistance crossover theorem](../independent_audits/kkl_annular_contact_resistance_crossover_20261107.md)
 concerns a **full free-outer Neumann annular condenser with two
-deck-exchanged arcs**, requiring specified \\(h\\) and \\(\ell\\).
-It predicts a normalized width through \\(h\log(1/\ell)\\)
+deck-exchanged arcs**, requiring specified \(h\) and \(\ell\).
+It predicts a normalized width through \(h\log(1/\ell)\)
 in that model; it is **not** automatically a canonical KKL Wave
 identity. Its hypotheses do **not** arise from the refused v1
 one-interval geometry, so **no model test or observed parent/child
@@ -701,15 +697,15 @@ little Julia set with the invariant Chebyshev interval, standard
 primitive renormalization/straightening semantics, and the existing
 near-(-2) prime-end/Wave interpretation. *Numerical only:* the
 three displayed decimal parameters; no decimal controls a test.
-*Open/not measured:* all-\\(n\\) existence and accumulation of this
+*Open/not measured:* all-\(n\) existence and accumulation of this
 selected branch, any source-valid replacement one-phase native
 marking and corresponding restriction multiplicities/Wave widths,
-canonical KKL attachment \\(h,\ell\\), and a justified contact-resistance
+canonical KKL attachment \(h,\ell\), and a justified contact-resistance
 comparison. The negative result is a **stop at the first v1 field**,
 as permitted by the contract, not a new claim of Wave equality,
 failure, or strict gain.
 
 Run at repository root:
-\`python research/native_wave_transfer/regenerate_near_parabolic.py --check\`
+`python research/native_wave_transfer/regenerate_near_parabolic.py --check`
 and
-\`python -m unittest discover -s research/native_wave_transfer -p 'test_*.py' -v\`.
+`python -m unittest discover -s research/native_wave_transfer -p 'test_*.py' -v`.
