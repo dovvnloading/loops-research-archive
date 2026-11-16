@@ -70,7 +70,7 @@ Bers–Royden [BR86] extends a *previously given holomorphic motion* for a small
 
 ## 3. A weaker sufficient statement and the exact constants
 
-For a curve family \(\Gamma\) in a marked physical domain, write \(w(\Gamma)>0\) for its extremal **width**, with the source's usual convention (whether expressed directly as extremal length or the reciprocal of its transverse convention). A \(K'\)-QC homeomorphism distorts either width convention by factors in \([1/K',K']\); see [Ah66], [McM94] Appendix A. Put
+For a curve family \(\Gamma\) in a marked physical domain, write \(w(\Gamma)\ge0\) for its extremal **width** (finite for the matched families used below), with the source's usual convention (whether expressed directly as extremal length or the reciprocal of its transverse convention). A \(K'\)-QC homeomorphism distorts either width convention by factors in \([1/K',K']\); see [Ah66], [McM94] Appendix A. Put
 \[
  W_j^*=\sup_{\Gamma\in\mathcal A_j}w(\Gamma),\qquad
  W_{\mathrm{ref}}^*=\sup_{\gamma\in\mathcal A_{\mathrm{ref}}}w(\gamma).
