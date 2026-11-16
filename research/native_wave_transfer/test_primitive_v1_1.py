@@ -107,7 +107,8 @@ class PrimitiveOneSlitV11Tests(unittest.TestCase):
         with self.assertRaisesRegex(AssertionError, "null lacks"):
             v11.check_contract(self.outputs, bad)
         bad = copy.deepcopy(self.outputs)
-        bad["members"][0]["wave"]["alien_width"] = "1"
+        for member in bad["members"]:
+            member["wave"]["alien_width"] = "1"
         with self.assertRaisesRegex(AssertionError, "uncited"):
             v11.check_contract(bad, self.contract)
         bad = copy.deepcopy(self.outputs)
