@@ -106,7 +106,7 @@ It does not assert that the unbuffered ideal quadrilateral embeds in
 All four integrals \(\int_1^t dr/r=\log t\) are bounded using rational
 dyadic reduction and the atanh series with an explicit geometric
 remainder. \(2\pi\) is enclosed by alternating Machin arctangent series.
-The checker uses only Python integers and \`Fraction\`, not floating
+The checker uses only Python integers and `Fraction`, not floating
 point; the outward rational brackets for each integral and its reciprocal
 energy appear in [results.json](results.json). It **does not** evaluate
 a two-dimensional finite-element integral or any individual \(q_\gamma\).
@@ -160,10 +160,10 @@ It would be incorrect to call this a *first rigorous evaluation of every
 
 From repository root:
 
-\`\`\`sh
+```sh
 python research/independent_audits/canonical_wad_quadrilateral_moduli_20261116/verify.py --check-manifest
 python -m unittest discover -s research/independent_audits/canonical_wad_quadrilateral_moduli_20261116 -p 'test_*.py' -v
-\`\`\`
+```
 
 The verifier reads, but never modifies, the three existing results
 manifests, recomputes the full exact physical orbit, verifies the strict
