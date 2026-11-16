@@ -1,0 +1,147 @@
+name: "Tip family global marked QC: exact finite data, global step OPEN"
+
+on:
+  push:
+    branches: [main, 'research/**']
+    paths:
+      - 'research/independent_audits/tip_family_global_marked_qc_20261116/**'
+      - '.github/workflows/tip-family-global-marked-qc.yml'
+  pull_request:
+    paths:
+      - 'research/independent_audits/tip_family_global_marked_qc_20261116/**'
+      - '.github/workflows/tip-family-global-marked-qc.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: global-marked-qc-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  exact-finite-regression:
+    name: Nine depth-two charts, (3,3,3), and anti-promotion tests
+    runs-on: ubuntu-latest
+    timeout-minutes: 55
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Reject existing-file edits and unexpected new paths
+        if: github.event_name == 'pull_request'
+        env:
+          BASE_BRANCH: ${{ github.base_ref }}
+        run: |
+          set -euo pipefail
+          base="$(git merge-base HEAD "origin/$BASE_BRANCH")"
+          git diff --name-only "$base" HEAD | while IFS= read -r path; do
+            case "$path" in
+              research/independent_audits/tip_family_global_marked_qc_20261116/*|.github/workflows/tip-family-global-marked-qc.yml)
+                ;;
+              *)
+                echo "Forbidden changed path: $path"
+                exit 1
+                ;;
+            esac
+          done
+      - name: Reject tracked generated files
+        run: |
+          set -euo pipefail
+          if git ls-files research/independent_audits/tip_family_global_marked_qc_20261116 | grep -E '(__pycache__|\.pyc$|\.pyo$)'; then
+            echo "Tracked bytecode is forbidden"
+            exit 1
+          fi
+      - name: Recompute all nine plus three-depth exact rational certificates
+        env:
+          PYTHONDONTWRITEBYTECODE: '1'
+        run: |
+          set -euo pipefail
+          python -B research/independent_audits/tip_family_global_marked_qc_20261116/verify.py
+          python -B -m unittest discover -s research/independent_audits/tip_family_global_marked_qc_20261116 -p 'test_*.py' -v
+      - name: Check previously merged marking and theorem-chain algebra unchanged
+        env:
+          PYTHONDONTWRITEBYTECODE: '1'
+        run: |
+          set -euo pipefail
+          python -B research/independent_audits/tip_family_depth_uniform_qc_20261116/verify.py --quick
+          python -B -m unittest discover -s research/independent_audits/tip_family_depth_uniform_qc_20261116 -p 'test_*.py' -v
+          python -B research/tip_family_theorem/verify_chain.py
+      - name: Verify audit is strictly read-only
+        run: |
+          set -euo pipefail
+          git diff --exit-code
+          git status --porcelain --untracked-files=all | tee /tmp/audit-status
+          test ! -s /tmp/audit-status
+
+  unchanged-lean-kernel:
+    name: Build unchanged formal layer, no proof holes
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+      - name: Reject sorry and admit in checked formal modules
+        run: |
+          set -euo pipefail
+          if grep -En '(^|[^A-Za-z_])(sorry|admit)([^A-Za-z_]|$)' TipKKLTreeMarking.lean TipNativeProperRestriction.lean; then
+            exit 1
+          fi
+      - uses: leanprover/lean-action@v1
+        with:
+          auto-config: 'false'
+          build: 'true'
+          test: 'false'
+          lint: 'false'
+          use-github-cache: 'false'
+          use-mathlib-cache: 'false'
+      - name: Recheck marked tree and proper restriction
+        run: lake build TipKKLTreeMarking TipNativeProperRestriction
+
+  require-existing-ci:
+    name: Existing Research validation and Weighted Lean at PR head
+    if: github.event_name == 'pull_request' && github.event.pull_request.head.repo.full_name == github.repository
+    needs: [exact-finite-regression, unchanged-lean-kernel]
+    runs-on: ubuntu-latest
+    timeout-minutes: 100
+    permissions:
+      contents: read
+      actions: write
+    steps:
+      - name: Dispatch and verify both unchanged workflows at exact SHA
+        env:
+          GH_TOKEN: ${{ github.token }}
+          REPO: ${{ github.repository }}
+          PR_BRANCH: ${{ github.event.pull_request.head.ref }}
+          PR_SHA: ${{ github.event.pull_request.head.sha }}
+        run: |
+          set -euo pipefail
+          current="$(gh api "repos/$REPO/git/ref/heads/$PR_BRANCH" --jq '.object.sha')"
+          [[ "$current" == "$PR_SHA" ]] || { echo "Head SHA moved before CI"; exit 1; }
+          for workflow in lean-proofs.yml weighted-lean.yml; do
+            gh workflow run "$workflow" --repo "$REPO" --ref "$PR_BRANCH"
+          done
+          for workflow in lean-proofs.yml weighted-lean.yml; do
+            found=0
+            for attempt in $(seq 1 320); do
+              runs="$(gh run list --repo "$REPO" --workflow "$workflow" --branch "$PR_BRANCH" --event workflow_dispatch --limit 50 --json databaseId,headSha,status,conclusion)"
+              match="$(printf '%s' "$runs" | jq -c --arg sha "$PR_SHA" '[.[] | select(.headSha == $sha)] | first // empty')"
+              if [[ -n "$match" ]]; then
+                run_id="$(printf '%s' "$match" | jq -r .databaseId)"
+                status="$(printf '%s' "$match" | jq -r .status)"
+                conclusion="$(printf '%s' "$match" | jq -r .conclusion)"
+                if [[ "$status" == completed ]]; then
+                  echo "$workflow exact SHA $PR_SHA: $conclusion (run $run_id)"
+                  [[ "$conclusion" == success ]] || { gh run view "$run_id" --repo "$REPO" || true; exit 1; }
+                  found=1
+                  break
+                fi
+              fi
+              sleep 15
+            done
+            [[ "$found" == 1 ]] || { echo "$workflow has no success for exact PR SHA"; exit 1; }
+          done
+          current="$(gh api "repos/$REPO/git/ref/heads/$PR_BRANCH" --jq '.object.sha')"
+          [[ "$current" == "$PR_SHA" ]] || { echo "PR head changed during CI"; exit 1; }
