@@ -176,7 +176,7 @@ def run() -> dict:
     check(t.inside(v.MODEL_LO,v.MODEL_HI), "limiting model root drift")
     child_cap = model_child_envelope(13, model_orbit)
     check(child_cap.high()<TAIL_CHILD_CAP,
-          "p>=13 child plane-slit envelope not < 1.25")
+          f"p>=13 child plane-slit envelope not < 1.25: strict interval ( {float(child_cap.low())}, {float(child_cap.high())} )")
     for p in (14,15,16,17):
         smaller=model_child_envelope(p,model_orbit)
         check(child_cap.low() <= smaller.low() and smaller.high() <= child_cap.high(),
