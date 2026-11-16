@@ -1,0 +1,62 @@
+name: Issue 62 honest prescribed connector word gauge
+
+on:
+  push:
+    branches:
+      - main
+      - 'research/**'
+    paths:
+      - 'research/independent_audits/issue62_connector_words_20261116/**'
+      - '.github/workflows/issue62-connector-words.yml'
+  pull_request:
+    paths:
+      - 'research/independent_audits/issue62_connector_words_20261116/**'
+      - '.github/workflows/issue62-connector-words.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  exact-word-evidence-gate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Exact original-source census, honest nulls, F9 and adversarial tests
+        run: |
+          python -m py_compile research/independent_audits/issue62_connector_words_20261116/verify_connector_words.py
+          python research/independent_audits/issue62_connector_words_20261116/verify_connector_words.py --check-manifest
+      - name: Prior rooted source/physical-angle regressions
+        run: |
+          python research/independent_audits/verify_tip_kl_side_atlas.py --check-manifest
+          python research/independent_audits/verify_tip_rooted_native_KL_section.py --check-manifest
+          python research/independent_audits/verify_tip_native_root_deck_monodromy.py --check-manifest
+      - name: Existing research validation and README integrity
+        run: |
+          python code/verify_lean_frontier_sync.py
+          python code/verify_readme_integrity.py
+          node code/generate_readme_research_figures.mjs --check
+
+  all-registered-lean-and-exact-gauge:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Reject proof holes in the new finite word layer
+        run: |
+          if grep -En '(^|[^A-Za-z_])(sorry|admit)([^A-Za-z_]|$)' research/independent_audits/issue62_connector_words_20261116/RelativeWordGauge.lean; then
+            exit 1
+          fi
+      - name: Existing registered Lean CI
+        uses: leanprover/lean-action@v1
+        with:
+          auto-config: 'false'
+          build: 'true'
+          test: 'false'
+          lint: 'false'
+          use-github-cache: 'false'
+          use-mathlib-cache: 'false'
+      - name: Faithful finite word-only gauge checks
+        run: lake env lean research/independent_audits/issue62_connector_words_20261116/RelativeWordGauge.lean
