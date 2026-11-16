@@ -49,7 +49,7 @@ class LimitingGainTests(unittest.TestCase):
                                     F(1, 1))
         with self.assertRaises(AssertionError):
             a.parent_semidisk_width(x[1], x[2], x[5], x[3],
-                                    F(3, 1))
+                                    F(22, 7))
 
     def test_all_p_error_not_before_p13(self):
         with self.assertRaises(AssertionError):
