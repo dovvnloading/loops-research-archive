@@ -397,3 +397,108 @@ def recompute(example: dict, source: dict) -> dict:
                 "harmonic_series_equality":True,
                 "symbolic_width_coefficients_in_log_ratio_over_pi":{"target":"1/2","each_child":"1"}}}
 
+def crosscheck(actual: dict, ref: dict) -> None:
+    """Compare independent geometric derivation, not a copied saved output."""
+    b = actual["ideal_boundary"]
+    op = actual["operations"]
+    paths = actual["sheet_paths"]
+    wave = actual["wave"]
+    expected = {
+        "source_parameter":actual["polynomial"]["parameter_bracket"],
+        "target_inner_marking_atoms":b["target_atom_names"],
+        "target_inner_cut_positions_increasing":b["target_real_cuts"],
+        "source_inner_cut_positions_increasing":b["source_real_cuts"],
+        "source_f_cover_atom_map":op["covering_f_star"]["source_to_target"],
+        "source_inclusion_pullback_atom_map":op["immersion_iota_star"]["source_to_pullback"],
+        "inner_pullback_blocks":op["immersion_iota_star"]["connected_blocks"],
+        "inner_pullback_lengths":op["immersion_iota_star"]["block_lengths"],
+        "attachment_boundary_source_atoms":actual["attachment_census"]["components"][0]["boundary_atoms"],
+        "not_proper_on_target_inner_atoms":op["immersion_iota_star"]["nonproper_target_atoms"],
+        "end_proper_on_all_ten_inner_intervals":op["immersion_iota_star"]["end_proper_inner"],
+        "tree":actual["marked_tree"]["hull"],
+        "tree_preimage_in_V3":actual["marked_tree"]["preimage_in_V3"],
+        "single_new_attachment":actual["attachment_census"]["components"][0]["interval"],
+        "target_endpoint_atom_pair":paths["endpoint_target_atoms"],
+        "crossing_circle_source_restrictions":paths["instances"]["crossing"]["source_restrictions"],
+        "crossing_circle_coarse_endpoint_pairs":paths["instances"]["crossing"]["immersion_endpoint_pairs"],
+        "crossing_circle_F_pushforward_atom_pairs":paths["instances"]["crossing"]["covering_pushforward_pairs"],
+        "avoiding_circle_source_restrictions":paths["instances"]["avoiding"]["source_restrictions"],
+        "avoiding_circle_F_pushforward_atom_pairs":paths["instances"]["avoiding"]["covering_pushforward_pairs"],
+        "same_target_arc_class_different_marked_restriction_counts":paths["counts"],
+        "marked_breakable_wave":{
+            "center":wave["center"],"open_radius_interval":wave["open_radii"],
+            "right_endpoint_range":wave["right_endpoint_range"],
+            "attachment_crossing_range":wave["attachment_crossing_range"],
+            "target_base_atoms":wave["target_base"],"target_crest_atom":wave["target_crest"],
+            "two_pushed_base_atoms":wave["pushed_bases"],"two_pushed_crest_atoms":wave["pushed_crests"],
+            "target_extremal_width":wave["target_width"],
+            "each_restriction_and_pushforward_width":wave["each_child_and_pushed_width"],
+            "child_width_multiplier":wave["child_multiplier"],
+            "harmonic_series_inequality_is_equality":wave["harmonic_series_equality"]}}
+    for key,value in expected.items():
+        if key == "marked_breakable_wave":
+            for subkey,subvalue in value.items():
+                ensure(ref[key][subkey] == subvalue, "reference mismatch: wave."+subkey)
+        else:
+            ensure(ref[key] == value, "reference mismatch: "+key)
+    for circle, old in zip(paths["circles"],ref["circles"]):
+        ensure(circle == old, "reference mismatch: closed complex disk certificate")
+    ensure(len(paths["circles"]) == len(ref["circles"]) == 2, "circle count mismatch")
+    ensure(ref["both_crossing_restrictions_pass_A1_and_single_pullback_cell_filters"] is True,
+           "reference marked filters changed")
+
+
+def source_lock() -> dict:
+    lock = load(LOCK)
+    for item in lock["repository_files"]:
+        path = REPO / item["path"]
+        ensure(git_blob(path) == item["git_blob_sha1"], "source lock mismatch: "+item["path"])
+    return lock
+
+
+def build_manifest() -> dict:
+    lock = source_lock()
+    example, source, reference = load(INPUT), load(ORIGINAL), load(REFERENCE)
+    actual = recompute(example,source)
+    crosscheck(actual,reference)
+    ensure(example["source_contract"] == "source_contracts/record_fields.json#/records/PhysicalExample",
+           "example contract identity drift")
+    return {"schema_version":1,"experiment_id":example["id"],
+            "inputs":{"source_locks":lock["repository_files"],
+                      "arxiv_source":lock["arxiv_source"],
+                      "example_sha256":sha256(INPUT),"contracts_sha256":sha256(CONTRACT),
+                      "lock_sha256":sha256(LOCK)},
+            "code":{"file":"research/native_wave_transfer/regenerate.py",
+                    "sha256":sha256(Path(__file__))},
+            "outputs":actual,"outputs_sha256":hashlib.sha256(canonical(actual)).hexdigest(),
+            "proof_status":{
+                "certified_by_exact_arithmetic":["orbit cut strict order","real monotonicity signs",
+                    "all ten inverse cut brackets","20 covering and immersed source samples",
+                    "unique cyclic blocks and finite marking filters","closed complex disks",
+                    "whole wave endpoint intervals","rational symbolic harmonic coefficient equality"],
+                "conditional_on_cited_analytic_inputs":["physical quadratic-like V3 degree two",
+                    "Misiurewicz dendrite and exact small Julia identifications",
+                    "KKL induced ideal marking, attachment Proposition 6.5 and proper restriction definitions",
+                    "relative-endpoint prime-end homotopy","extremal width rectangle/conformal-invariance argument"],
+                "numeric_only":[],
+                "unproved":["canonical-localization transfer","general wave amplification",
+                    "global H1-H4 and MLC", "machine formalization of Caratheodory topology"]}}
+
+
+def main() -> None:
+    ap = argparse.ArgumentParser(description=__doc__)
+    ap.add_argument("--check", action="store_true", help="default: enforce immutable manifest")
+    ap.add_argument("--write", action="store_true", help="explicitly re-freeze manifest after review")
+    args = ap.parse_args()
+    ensure(not (args.check and args.write), "--check and --write are exclusive")
+    actual = canonical(build_manifest())
+    if args.write:
+        MANIFEST.write_bytes(actual)
+        print("WROTE", MANIFEST)
+    else:
+        ensure(MANIFEST.read_bytes() == actual, "immutable experiment manifest mismatch")
+        print("PASS: independently regenerated 10/20 atoms, unique attachment, 2/1 filtered paths, exact harmonic Wave widths; source and code hashes locked")
+
+
+if __name__ == "__main__":
+    main()
