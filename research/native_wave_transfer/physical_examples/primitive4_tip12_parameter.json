@@ -5,8 +5,8 @@
   "orbit_notation": "x0=0; x(k+1)=x(k)^2+c",
   "parameter_bracket": {
     "denominator_power_of_two": 160,
-    "lower_numerator": "-2839046102243570105666380255822873122323992946925",
-    "upper_numerator": "-2839046102243570105666380255822873122323992946924"
+    "lower_numerator": -2839046102243570105666380255822873122323992946925,
+    "upper_numerator": -2839046102243570105666380255822873122323992946924
   },
   "physical_return": 4,
   "inner_chebyshev_return": 12,
