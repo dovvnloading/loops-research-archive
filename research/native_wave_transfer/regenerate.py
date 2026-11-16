@@ -263,3 +263,137 @@ def recompute(example: dict, source: dict) -> dict:
     candidates = []
     for name, target in zip(t_symbols,target_cuts):
         neg = isolate_negative_preimage(target,c,-x["x3"])
+        candidates += [(neg,"G^-1("+name+")_-"),(-neg,"G^-1("+name+")_+")]
+    candidates.sort(key=lambda item:item[0].center())
+    source_cuts = [v for v,_ in candidates]
+    ensure(all(a.before(b) for a,b in zip(source_cuts,source_cuts[1:])), "source cuts overlap")
+    # Source-locked exact polynomial orbit identities identify preimages.
+    preimage_names = {"x15":"x12", "x9":"x6", "x18":"x15",
+                      "alpha":"alpha", "x12":"x9"}
+    symcuts = []
+    for value, label in candidates:
+        for target, src in preimage_names.items():
+            if label == "G^-1("+target+")_-":
+                candidate = -x[src] if x[src].low > 0 else x[src]
+                ensure(value.overlaps(candidate), "negative symbolic preimage not located")
+                symcuts.append("-"+src if x[src].low > 0 else src)
+                break
+            if label == "G^-1("+target+")_+":
+                candidate = x[src] if x[src].low > 0 else -x[src]
+                ensure(value.overlaps(candidate), "positive symbolic preimage not located")
+                symcuts.append(src if x[src].low > 0 else ("x18" if src == "x9" else "-"+src))
+                break
+        else:
+            raise AssertionError("unknown source preimage label")
+    # Convert real source cells to two *distinct* boundary operations.
+    covering, immersed, attachment_atoms = [], [], []
+    for s in range(2*len(source_cuts)):
+        real, side = source_sample(s, source_cuts, -x["x3"], x["x3"])
+        real_box = Box.rational(real)
+        mapped_side = side if real < 0 else -side
+        covering.append(index_of(iterate3(real_box,c),mapped_side,target_cuts))
+        attached = real_box.before(x["x6"])
+        immersed.append(0 if attached else index_of(real_box,side,target_cuts))
+        if attached:
+            attachment_atoms.append(s)
+    blocks = cyclic_blocks(immersed, 2*len(target_cuts))
+    attachment_set = set(attachment_atoms)
+    ensure(all(b[0] not in attachment_set and b[-1] not in attachment_set for b in blocks),
+           "a pulled-back interval is not end-proper")
+    nonproper = [i for i,b in enumerate(blocks) if attachment_set.intersection(b)]
+    ensure(nonproper == [0], "wrong number of nonproper attachment blocks")
+    ensure(all(covering.count(t) == 2 for t in range(len(target_cuts)*2)),
+           "covering degree != 2 on ideal atoms")
+    # The only new attachment interval follows from T' (two preimages per
+    # fiber in V3) and T, *conditional* on the sourced degree-two theorem.
+    q = Q(example["paths"][0]["q"])
+    ensure(all(Q(path["q"]) == q for path in example["paths"]), "path endpoints differ")
+    ensure(x["x15"].before(Box.rational(q)) and Box.rational(q).before(-x["alpha"]),
+           "marked target base endpoint left its interval")
+    pairs = {}
+    circles = []
+    c0, cr = (clo+chi)/2, (chi-clo)/2
+    for row in example["paths"]:
+        w = Q(row["w"])
+        bound = Q(row["disk_limit"])
+        circle = certify_circle(q,w,c0,cr,bound,((-x["x3"]).center(),x["x3"].center()))
+        circle["name"] = row["name"]
+        ensure((w < -x["x3"].center()) if row["name"] == "avoiding" else
+               (-x["x3"].center() < w < x["x6"].center()), "path/attachment intersection changed")
+        rows = restrictions(q,w,source_cuts,-x["x3"],x["x3"],x["x6"])
+        for a,b in rows:
+            ensure(len(short_arc(a,b,len(covering))) > 2, "A.1 short source path")
+            ensure(immersed[a] != immersed[b], "A.3.2 one-cell path")
+            ensure(len(short_arc(covering[a],covering[b],len(target_cuts)*2))>2,
+                   "A.1 short dynamical image")
+        pairs[row["name"]] = {
+            "source_restrictions":rows,
+            "immersion_endpoint_pairs":[[immersed[a],immersed[b]] for a,b in rows],
+            "covering_pushforward_pairs":[[covering[a],covering[b]] for a,b in rows],
+            "surviving_count":len(rows),
+            "filters":{"A1_short_span":True,"A3_2_not_in_one_pullback":True}}
+        circles.append(circle)
+    target_endpoints = [index_of(Box.rational(q),s,target_cuts) for s in (1,-1)]
+    ensure(len(short_arc(*target_endpoints,2*len(target_cuts)))>2, "A1 target path short")
+    # Every concentric wave leaf satisfies the attachment and endpoint
+    # inequalities, because the *closed* endpoint ranges are enclosed.
+    wave = example["wave"]
+    center, r0, r1 = Q(wave["center"]), *map(Q,wave["open_radii"])
+    ensure(0 < r0 < r1, "wave radii reversed")
+    qr = Box(Box.rational(center+r0).low, Box.rational(center+r1).high)
+    wr = Box(Box.rational(center-r1).low, Box.rational(center-r0).high)
+    ensure(x["x15"].before(qr) and qr.before(-x["alpha"]), "wave endpoints leave target base")
+    ensure((-x["x3"]).before(wr) and wr.before(x["x6"]), "wave misses attachment")
+    ensure(source_cuts[0].before(wr) and wr.before(source_cuts[1]), "wave crossing leaves first attachment side")
+    # The existing full small closed disk covers the entire family.
+    ensure(center == Q(circles[0]["center"]) and r1 == Q(circles[0]["radius"]),
+           "wave not covered by the certified small disk")
+    ratio = r1/r0
+    # In W = coefficient * log(r1/r0)/pi, rectangle height is 2pi
+    # for target and pi for each child. Exact rational harmonic law.
+    target_height = Q(wave["target_angular_height_pi"])
+    child_height = Q(wave["child_angular_height_pi"])
+    ensure(target_height == 2*child_height and child_height == 1, "wrong angular split")
+    parent_coeff, child_coeff = 1/target_height, 1/child_height
+    ensure(1/(1/child_coeff+1/child_coeff) == parent_coeff, "series width law")
+    push_bases = [short_arc(*r,2*len(target_cuts)) for r in
+                  pairs["crossing"]["covering_pushforward_pairs"]]
+    base = short_arc(*target_endpoints,2*len(target_cuts))
+    ensure(all(len(v)==3 for v in [base]+push_bases), "wave crest not an atom")
+    target_names = ["K2_terminal"] + ["edge_K2_K0_upper", "K0_upper",
+        "edge_K0_alpha_upper", "edge_alpha_K1_upper", "K1_terminal",
+        "edge_alpha_K1_lower", "edge_K0_alpha_lower", "K0_lower", "edge_K2_K0_lower"]
+    return {
+        "polynomial":{"family":example["polynomial"]["family"],"parameter_bracket":p,
+                      "critical_point":"0","orbit_index_range":[0,27]},
+        "return":{"physical_iterate":3,"restricted_degree":2,"global_degree":8},
+        "domains":{"source":{"symbol":"V3","definition":"component(G^-1(U3),0)","degree":2},
+                   "target":{"symbol":"U3","center":"0","radius":"1/4"}},
+        "marked_tree":{"small_julia_intervals":["[x9,x18]","[x12,x3]","[x6,x15]"],
+                       "hull":"[x6,x3]","preimage_in_V3":"[-x3,x3]",
+                       "dividing_fixed_point":"alpha"},
+        "attachment_census":{"complete_in_V3_given_degree_two":True,"components":[{
+            "interval":"[-x3,x6)","root":"x6","boundary_atoms":attachment_atoms,
+            "immersion_boundary_destination":"target_interior_not_I0_boundary"}]},
+        "ideal_boundary":{"target_atom_count":len(target_names),"target_atom_names":target_names,
+                          "target_real_cuts":t_symbols,"covering_source_atom_count":len(covering),
+                          "source_real_cuts":symcuts,"outer_component_atom_count":1},
+        "operations":{
+            "covering_f_star":{"action":"f_*","degree":2,"source_to_target":covering},
+            "immersion_iota_star":{"action":"iota^*","source_to_pullback":immersed,
+                "connected_blocks":blocks,"block_lengths":[len(b) for b in blocks],
+                "end_proper_inner":True,"nonproper_target_atoms":nonproper}},
+        "sheet_paths":{"endpoint_target_atoms":target_endpoints,"circles":circles,
+                       "instances":pairs,"homotopy":"same_target_relative_ideal_endpoints",
+                       "counts":[pairs["crossing"]["surviving_count"],pairs["avoiding"]["surviving_count"]]},
+        "wave":{"center":str(center),"open_radii":[str(r0),str(r1)],
+                "right_endpoint_range":[str(center+r0),str(center+r1)],
+                "attachment_crossing_range":[str(center-r1),str(center-r0)],
+                "target_base":base,"target_crest":base[1],
+                "pushed_bases":push_bases,"pushed_crests":[b[1] for b in push_bases],
+                "ratio":str(ratio),"target_width":f"log({ratio})/(2*pi)",
+                "each_child_and_pushed_width":f"log({ratio})/pi",
+                "child_multiplier":int(child_coeff/parent_coeff),
+                "harmonic_series_equality":True,
+                "symbolic_width_coefficients_in_log_ratio_over_pi":{"target":"1/2","each_child":"1"}}}
+
