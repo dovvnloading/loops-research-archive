@@ -209,7 +209,12 @@ def expected_manifest(source):
         nroot += int(should_root)
         rec = {
             "anchor_ray": ray,
+            "anchor_W_tile": i,
             "source_W_tile": j,
+            "source_V_parent": row["source_V_parent"],
+            "fine_Pi9": fine,
+            "physical_K9_target": target,
+            "proof_role": row["proof_role"],
             "native_integer_shift": n,
             "original_ideal_side": side,
             "unwrapped_G_angle": row["unwrapped_G_angle"],
