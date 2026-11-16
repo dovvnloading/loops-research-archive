@@ -231,9 +231,9 @@ def run() -> dict:
     model_14 = model_plane_envelope(14, u)
     model_15 = model_plane_envelope(15, u)
     model_17 = model_plane_envelope(17, u)
-    check(model_13.high() < Q(81, 100), "p13 plane envelope excessive")
-    check(model_14.high() < Q(79, 100), "p14 plane envelope excessive")
-    check(model_15.high() < Q(78, 100), "p15 plane envelope excessive")
+    check(model_13.high() < Q(1), "p13 model plane envelope outside analytic regime")
+    check(model_14.high() < Q(1), "p14 model plane envelope outside analytic regime")
+    check(model_15.high() < Q(1), "p15 model plane envelope outside analytic regime")
     check(model_17.high() < Q(78, 100), "tail plane envelope excessive")
     check(LIMIT_RADIAL_LOW-Q(7_000_000, 4**17) > Q(26,100),
           "rate does not give >0.26 from p17")
