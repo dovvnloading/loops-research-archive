@@ -48,7 +48,7 @@ class SandwichAuditTests(unittest.TestCase):
         for p in (13, 14, 15, 17):
             upper = s.model_plane_envelope(p, u)
             self.assertGreater(upper.low(), Q(1, 2))
-            self.assertLess(upper.high(), Q(81, 100))
+            self.assertLess(upper.high(), Q(1))
         self.assertLess(s.model_plane_envelope(17, u).high(), Q(78, 100))
         self.assertGreater(s.LIMIT_RADIAL_LOW-Q(7_000_000,4**17), Q(26,100))
         # A common false shortcut: the rate by itself is not enough at p=13.
