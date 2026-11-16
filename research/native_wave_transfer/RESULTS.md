@@ -182,7 +182,8 @@ The **exact** identity
 
 `|2c|*(4/5)^2 - |c^2+c| - (4/5)^4 - 4/5 > 3/50 > 0`.
 
-Rouché therefore yields **exactly two preimages for every w in U2**.
+Rouché therefore yields **exactly two preimages inside
+D(0,4/5) for every w in U2** (not two globally: G has degree four).
 The critical point 0 lies in their central component; the other critical
 points of G are outside the disk. Consequently
 `G:V2 -> U2` is a proper degree-two quadratic-like return with
