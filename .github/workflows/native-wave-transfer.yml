@@ -1,0 +1,61 @@
+name: Native Wave Transfer Laboratory
+
+on:
+  push:
+    branches: [main, 'research/**']
+    paths:
+      - '.github/workflows/native-wave-transfer.yml'
+      - 'research/native_wave_transfer/**'
+      - 'results/tip_root_interval_geometry.json'
+      - 'results/tip_KKL_tree_marked_breakage_20261109.json'
+  pull_request:
+    paths:
+      - '.github/workflows/native-wave-transfer.yml'
+      - 'research/native_wave_transfer/**'
+      - 'results/tip_root_interval_geometry.json'
+      - 'results/tip_KKL_tree_marked_breakage_20261109.json'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  independent-regression:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Compile and run adversarial independent regression
+        run: |
+          python -m py_compile research/native_wave_transfer/regenerate.py research/native_wave_transfer/test_regenerate.py
+          python -m unittest discover -s research/native_wave_transfer -p 'test_*.py' -v
+      - name: Enforce source/code locks, exact physical computations and immutable manifest
+        run: python research/native_wave_transfer/regenerate.py --check
+      - name: Existing physical research manifest check (separate process)
+        run: python research/independent_audits/verify_tip_KKL_tree_marked_breakage.py --check-manifest
+      - name: Research validation provenance checks
+        run: |
+          python code/verify_readme_integrity.py
+          python code/verify_lean_frontier_sync.py
+
+  lean-native-kernel:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Prohibit proof holes in the prior physical finite kernel
+        run: |
+          if grep -En '(^|[^A-Za-z_])(sorry|admit|axiom|unsafe)([^A-Za-z_]|$)' TipKKLTreeMarking.lean; then
+            echo 'No proof placeholders or custom axioms allowed'; exit 1
+          fi
+      - uses: leanprover/lean-action@v1
+        with:
+          auto-config: 'false'
+          build: 'true'
+          test: 'false'
+          lint: 'false'
+          use-github-cache: 'false'
+          use-mathlib-cache: 'false'
+      - name: Build source finite KKL marking target
+        run: lake build TipKKLTreeMarking
