@@ -1,0 +1,115 @@
+name: Tip-family physical hypothesis M discharge
+
+on:
+  push:
+    branches: [main, 'research/**']
+    paths:
+      - 'research/independent_audits/tip_family_hypothesis_M_discharge_20261116/**'
+      - '.github/workflows/tip-family-hypothesis-M-discharge.yml'
+  pull_request:
+    paths:
+      - 'research/independent_audits/tip_family_hypothesis_M_discharge_20261116/**'
+      - '.github/workflows/tip-family-hypothesis-M-discharge.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  m-discharge-finite-and-hostile:
+    name: Exact selected-chart replay and hostile review
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    env:
+      PYTHONDONTWRITEBYTECODE: '1'
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Assert strictly add-only allowed paths against PR base
+        if: github.event_name == 'pull_request'
+        shell: bash
+        run: |
+          set -euo pipefail
+          while IFS=$'\t' read -r state path; do
+            [[ "$state" == A ]] || { echo "Non-additive change: $state $path"; exit 1; }
+            case "$path" in
+              research/independent_audits/tip_family_hypothesis_M_discharge_20261116/*|.github/workflows/tip-family-hypothesis-M-discharge.yml) ;;
+              *) echo "Outside locked paths: $path"; exit 1 ;;
+            esac
+          done < <(git diff --name-status "${{ github.event.pull_request.base.sha }}...HEAD")
+      - name: Validate syntax and exact note/verifier/test presence
+        run: |
+          python -B - <<'PY'
+          import ast
+          from pathlib import Path
+          d=Path("research/independent_audits/tip_family_hypothesis_M_discharge_20261116")
+          for name in ("verify.py", "test_verify.py"):
+              ast.parse((d/name).read_text(), filename=str(d/name))
+          text=(d/"NOTE.md").read_text()
+          for term in ("M'_{\\mathrm{selected}}", "M'_{\\mathrm{alt}}",
+                       "Theorem A", "Theorem B", "Theorem C"):
+              assert term in text, f"Missing audit disposition {term}"
+          PY
+      - name: Replay actual p3..12 brackets, all-p chart, strict gain and finite markings
+        run: python -B research/independent_audits/tip_family_hypothesis_M_discharge_20261116/verify.py
+      - name: Adversarial in-memory marking and strict reciprocal tests
+        run: python -B -m unittest discover -s research/independent_audits/tip_family_hypothesis_M_discharge_20261116 -p 'test_*.py' -v
+      - name: No modified source or generated artifacts
+        run: |
+          set -euo pipefail
+          if [[ -n "$(git status --porcelain --untracked-files=all)" ]]; then
+            git status --short
+            echo "Verifier or tests wrote files"; exit 1
+          fi
+
+  exact-head-original-research-and-lean:
+    name: Dispatch and require original Research validation plus weighted Lean
+    needs: m-discharge-finite-and-hostile
+    if: github.event_name == 'pull_request' && github.event.pull_request.head.repo.full_name == github.repository
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    permissions:
+      contents: read
+      actions: write
+    steps:
+      - name: Dispatch original workflows and require successful exact-PR-head runs
+        env:
+          GH_TOKEN: ${{ github.token }}
+          REPO: ${{ github.repository }}
+          PR_BRANCH: ${{ github.event.pull_request.head.ref }}
+          PR_SHA: ${{ github.event.pull_request.head.sha }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          head="$(gh api "repos/$REPO/git/ref/heads/$PR_BRANCH" --jq '.object.sha')"
+          [[ "$head" == "$PR_SHA" ]] || { echo "PR moved before original validation"; exit 1; }
+          for workflow in lean-proofs.yml weighted-lean.yml; do
+            gh workflow run "$workflow" --repo "$REPO" --ref "$PR_BRANCH"
+          done
+          for workflow in lean-proofs.yml weighted-lean.yml; do
+            matched=0
+            for attempt in $(seq 1 360); do
+              runs="$(gh run list --repo "$REPO" --workflow "$workflow" --branch "$PR_BRANCH" --event workflow_dispatch --limit 60 --json databaseId,headSha,status,conclusion)"
+              item="$(printf '%s' "$runs" | jq -c --arg sha "$PR_SHA" '[.[] | select(.headSha == $sha)] | first // empty')"
+              if [[ -n "$item" ]]; then
+                id="$(printf '%s' "$item" | jq -r .databaseId)"
+                status="$(printf '%s' "$item" | jq -r .status)"
+                conclusion="$(printf '%s' "$item" | jq -r .conclusion)"
+                if [[ "$status" == completed ]]; then
+                  echo "$workflow at $PR_SHA: $conclusion (run $id)"
+                  [[ "$conclusion" == success ]] || { gh run view "$id" --repo "$REPO" || true; exit 1; }
+                  matched=1
+                  break
+                fi
+              fi
+              sleep 15
+            done
+            [[ "$matched" == 1 ]] || { echo "$workflow has no successful PR-head run"; exit 1; }
+          done
+          head="$(gh api "repos/$REPO/git/ref/heads/$PR_BRANCH" --jq '.object.sha')"
+          [[ "$head" == "$PR_SHA" ]] || { echo "PR moved during validation"; exit 1; }
