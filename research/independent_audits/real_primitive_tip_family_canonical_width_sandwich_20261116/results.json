@@ -1,0 +1,305 @@
+{
+  "all_p_ge_13": {
+    "for_p_ge_17": "0.26 < W_p* < 0.78 (using enclosing model p=17 box)",
+    "full_lift_upper_formula": "W_p* <= Q_p <= Q_plane(p) <= model_plane_envelope(p)",
+    "model_plane_envelope_13_1e-7_strict": [
+      7382100,
+      8162190
+    ],
+    "model_plane_envelope_14_1e-7_strict": [
+      7653655,
+      7847647
+    ],
+    "model_plane_envelope_15_1e-7_strict": [
+      7725078,
+      7773562
+    ],
+    "model_plane_envelope_17_1e-7_strict": [
+      7747715,
+      7750748
+    ],
+    "round_lower_formula_strict": "2604925/10000000 - 7000000/4^p < W_p^rad <= W_p*"
+  },
+  "arithmetic": "rational and outward 2^-512; old dyadic packets rechecked; new p13..16 roots independently bisected",
+  "finite": [
+    {
+      "full_lift_upper_1e-7_strict": [
+        5967637,
+        5967640
+      ],
+      "p": 3,
+      "plane_full_lift_upper_1e-7_strict": [
+        7640320,
+        7640323
+      ],
+      "round_lower_1e-7_strict": [
+        2516729,
+        2516732
+      ],
+      "whole_gate_disk_margin_gt_2_5_of_R": true
+    },
+    {
+      "full_lift_upper_1e-7_strict": [
+        6080487,
+        6080490
+      ],
+      "p": 4,
+      "plane_full_lift_upper_1e-7_strict": [
+        7724227,
+        7724230
+      ],
+      "round_lower_1e-7_strict": [
+        2584721,
+        2584724
+      ],
+      "whole_gate_disk_margin_gt_2_5_of_R": true
+    },
+    {
+      "full_lift_upper_1e-7_strict": [
+        6811880,
+        6811883
+      ],
+      "p": 5,
+      "plane_full_lift_upper_1e-7_strict": [
+        7743173,
+        7743176
+      ],
+      "round_lower_1e-7_strict": [
+        2600034,
+        2600037
+      ],
+      "whole_gate_disk_margin_gt_2_5_of_R": true
+    },
+    {
+      "full_lift_upper_1e-7_strict": [
+        7182629,
+        7182632
+      ],
+      "p": 6,
+      "plane_full_lift_upper_1e-7_strict": [
+        7747730,
+        7747733
+      ],
+      "round_lower_1e-7_strict": [
+        2603715,
+        2603718
+      ],
+      "whole_gate_disk_margin_gt_2_5_of_R": true
+    },
+    {
+      "full_lift_upper_1e-7_strict": [
+        7377890,
+        7377893
+      ],
+      "p": 7,
+      "plane_full_lift_upper_1e-7_strict": [
+        7748856,
+        7748859
+      ],
+      "round_lower_1e-7_strict": [
+        2604624,
+        2604627
+      ],
+      "whole_gate_disk_margin_gt_2_5_of_R": true
+    },
+    {
+      "full_lift_upper_1e-7_strict": [
+        7489371,
+        7489374
+      ],
+      "p": 8,
+      "plane_full_lift_upper_1e-7_strict": [
+        7749136,
+        7749139
+      ],
+      "round_lower_1e-7_strict": [
+        2604850,
+        2604853
+      ],
+      "whole_gate_disk_margin_gt_2_5_of_R": true
+    },
+    {
+      "full_lift_upper_1e-7_strict": [
+        7558001,
+        7558004
+      ],
+      "p": 9,
+      "plane_full_lift_upper_1e-7_strict": [
+        7749206,
+        7749209
+      ],
+      "round_lower_1e-7_strict": [
+        2604907,
+        2604910
+      ],
+      "whole_gate_disk_margin_gt_2_5_of_R": true
+    },
+    {
+      "full_lift_upper_1e-7_strict": [
+        7602937,
+        7602940
+      ],
+      "p": 10,
+      "plane_full_lift_upper_1e-7_strict": [
+        7749224,
+        7749227
+      ],
+      "round_lower_1e-7_strict": [
+        2604921,
+        2604924
+      ],
+      "whole_gate_disk_margin_gt_2_5_of_R": true
+    },
+    {
+      "full_lift_upper_1e-7_strict": [
+        7633845,
+        7633848
+      ],
+      "p": 11,
+      "plane_full_lift_upper_1e-7_strict": [
+        7749228,
+        7749231
+      ],
+      "round_lower_1e-7_strict": [
+        2604924,
+        2604927
+      ],
+      "whole_gate_disk_margin_gt_2_5_of_R": true
+    },
+    {
+      "full_lift_upper_1e-7_strict": [
+        7655967,
+        7655970
+      ],
+      "p": 12,
+      "plane_full_lift_upper_1e-7_strict": [
+        7749229,
+        7749232
+      ],
+      "round_lower_1e-7_strict": [
+        2604925,
+        2604928
+      ],
+      "whole_gate_disk_margin_gt_2_5_of_R": true
+    },
+    {
+      "full_lift_upper_1e-7_strict": [
+        7672322,
+        7672325
+      ],
+      "p": 13,
+      "plane_full_lift_upper_1e-7_strict": [
+        7749230,
+        7749233
+      ],
+      "round_lower_1e-7_strict": [
+        2604925,
+        2604928
+      ],
+      "whole_gate_disk_margin_gt_2_5_of_R": true
+    },
+    {
+      "full_lift_upper_1e-7_strict": [
+        7684743,
+        7684746
+      ],
+      "p": 14,
+      "plane_full_lift_upper_1e-7_strict": [
+        7749230,
+        7749233
+      ],
+      "round_lower_1e-7_strict": [
+        2604925,
+        2604928
+      ],
+      "whole_gate_disk_margin_gt_2_5_of_R": true
+    },
+    {
+      "full_lift_upper_1e-7_strict": [
+        7694393,
+        7694396
+      ],
+      "p": 15,
+      "plane_full_lift_upper_1e-7_strict": [
+        7749230,
+        7749233
+      ],
+      "round_lower_1e-7_strict": [
+        2604925,
+        2604928
+      ],
+      "whole_gate_disk_margin_gt_2_5_of_R": true
+    },
+    {
+      "full_lift_upper_1e-7_strict": [
+        7702036,
+        7702039
+      ],
+      "p": 16,
+      "plane_full_lift_upper_1e-7_strict": [
+        7749230,
+        7749233
+      ],
+      "round_lower_1e-7_strict": [
+        2604925,
+        2604928
+      ],
+      "whole_gate_disk_margin_gt_2_5_of_R": true
+    }
+  ],
+  "limits": {
+    "convergence_of_W_p_star": "OPEN: requires two-sided continuity/compactness of maximal admissible KKL Wave class",
+    "deduction": "0.26 < liminf W_p* <= limsup W_p* < 0.78",
+    "plane_upper_1e-7_strict": [
+      7749230,
+      7749233
+    ],
+    "round_lower_1e-7_strict": [
+      2604925,
+      2604928
+    ]
+  },
+  "logical_scope": {
+    "covering_A3_1": "S_j maps to I_(j mod 10), separate from immersion",
+    "immersion_A3_2": "set-valued restriction only, not an extra A1 parent condition",
+    "parent_wave_A1": "proved in NOTE.md, not executable",
+    "prime_end_marking": "cited slit/prime-end identification, not proved by Python",
+    "upper_periodization": "proved by an l2 pushdown of covering-strip conformal metrics in NOTE.md"
+  },
+  "marking": {
+    "A1_crest": 0,
+    "A1_parent_base": [
+      9,
+      0,
+      1
+    ],
+    "cover_avoiding_endpoints": [
+      3,
+      7
+    ],
+    "cover_avoiding_span": 5,
+    "cover_crossing_endpoints": [
+      [
+        3,
+        1
+      ],
+      [
+        9,
+        7
+      ]
+    ],
+    "cover_crossing_spans": [
+      3,
+      3
+    ],
+    "covering_is_not_immersion": true,
+    "crossing_children_in_distinct_immersion_blocks": true,
+    "source_avoiding_span": 7,
+    "source_crossing_spans": [
+      3,
+      3
+    ]
+  },
+  "schema": "real-primitive-tip-canonical-wave-sandwich/v1",
+  "scope": "finite arithmetic and conditional analytic KKL curve inclusions; NOT a computation of W_p*"
+}
