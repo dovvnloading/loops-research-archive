@@ -397,6 +397,7 @@ def recompute(example: dict, source: dict) -> dict:
                 "harmonic_series_equality":True,
                 "symbolic_width_coefficients_in_log_ratio_over_pi":{"target":"1/2","each_child":"1"}}}
 
+
 def crosscheck(actual: dict, ref: dict) -> None:
     """Compare independent geometric derivation, not a copied saved output."""
     b = actual["ideal_boundary"]
