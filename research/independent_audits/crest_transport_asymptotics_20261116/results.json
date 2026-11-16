@@ -1,0 +1,639 @@
+{
+  "arithmetic": "outward fixed grid 2^-512, exact rationals, Machin/asin/atanh with explicit tails",
+  "covering_G_star": "S_s -> I_(s mod 10)",
+  "immersion_iota_star_blocks": [
+    [
+      18,
+      19,
+      0,
+      1,
+      2
+    ],
+    [
+      3,
+      4
+    ],
+    [
+      5
+    ],
+    [
+      6
+    ],
+    [
+      7,
+      8,
+      9
+    ],
+    [
+      10
+    ],
+    [
+      11,
+      12,
+      13
+    ],
+    [
+      14
+    ],
+    [
+      15
+    ],
+    [
+      16,
+      17
+    ]
+  ],
+  "meaning": "maximal connected circular subcollar of the specified parent Wave with the selected S0 terminal gate, not the unconstrained KKL-maximal Wave",
+  "results": [
+    {
+      "central_Rouche_margin_gt_1_25": true,
+      "complex_primitive_phase_disks_pairwise_disjoint": true,
+      "normalized_Taylor_error_upper_1e12_on_abs_t_le_5_4": 258393655313,
+      "normalized_quadratic_kappa_bracket_1e8": [
+        188591351,
+        188591352
+      ],
+      "optimal_circular_collar": {
+        "lower_active": "terminal -x_4p cut",
+        "lower_bracket": [
+          "112552228643184139/9223372036854775808",
+          "28138057160796035/2305843009213693952"
+        ],
+        "upper_bracket": [
+          "30055055880877137/2305843009213693952",
+          "120220223523508549/9223372036854775808"
+        ]
+      },
+      "p": 3,
+      "parameter_bracket_2pow256": [
+        -206863788397282802267408702538793977315584867630598294361534944901352850303604,
+        -206863788397282802267408702538793977315584867630598294361534944901352850303603
+      ],
+      "parent": {
+        "center": "-9/64",
+        "radius_variable": "absolute radius",
+        "range": [
+          "3/256",
+          "1/64"
+        ]
+      },
+      "ratio_bracket_1e5": [
+        98017,
+        98038
+      ],
+      "two_selected_terminal_crests": [
+        "upper: S0,S3 -> I0,I3; closed I1,I2 with E0 upper",
+        "lower: S17,S0 -> I7,I0; closed I8,I9 with E0 lower"
+      ],
+      "width_interpretation": "conditional on physical prime-end/KKL/univalence and exact conformal strip-width hypotheses"
+    },
+    {
+      "central_Rouche_margin_gt_1_25": true,
+      "complex_primitive_phase_disks_pairwise_disjoint": true,
+      "normalized_Taylor_error_upper_1e12_on_abs_t_le_5_4": 57873803088,
+      "normalized_quadratic_kappa_bracket_1e8": [
+        181238658,
+        181238659
+      ],
+      "optimal_circular_collar": {
+        "lower_active": "terminal -x_4p cut",
+        "lower_bracket": [
+          "36284422198158645/576460752303423488",
+          "72568844396317291/1152921504606846976"
+        ],
+        "upper_bracket": [
+          "77254452790491251/1152921504606846976",
+          "19313613197622813/288230376151711744"
+        ]
+      },
+      "p": 4,
+      "parameter_bracket_2pow256": [
+        -224932405974042298957915524477148973464551640119884252130376804385108645516290,
+        -224932405974042298957915524477148973464551640119884252130376804385108645516289
+      ],
+      "parent": {
+        "center": "-3*x_p/4",
+        "radius_variable": "s=r/x_p",
+        "range": [
+          "1/16",
+          "3/32"
+        ]
+      },
+      "ratio_bracket_1e5": [
+        62810,
+        62818
+      ],
+      "two_selected_terminal_crests": [
+        "upper: S0,S3 -> I0,I3; closed I1,I2 with E0 upper",
+        "lower: S17,S0 -> I7,I0; closed I8,I9 with E0 lower"
+      ],
+      "width_interpretation": "conditional on physical prime-end/KKL/univalence and exact conformal strip-width hypotheses"
+    },
+    {
+      "central_Rouche_margin_gt_1_25": true,
+      "complex_primitive_phase_disks_pairwise_disjoint": true,
+      "normalized_Taylor_error_upper_1e12_on_abs_t_le_5_4": 13909530827,
+      "normalized_quadratic_kappa_bracket_1e8": [
+        179567443,
+        179567444
+      ],
+      "optimal_circular_collar": {
+        "lower_active": "terminal -x_4p cut",
+        "lower_bracket": [
+          "45064316404463557/720575940379279360",
+          "180257265617854231/2882303761517117440"
+        ],
+        "upper_bracket": [
+          "95873774860692719/1441151880758558720",
+          "191747549721385441/2882303761517117440"
+        ]
+      },
+      "p": 5,
+      "parameter_bracket_2pow256": [
+        -229908455009726844371636647325851011168021710766793344328591203466498463304892,
+        -229908455009726844371636647325851011168021710766793344328591203466498463304891
+      ],
+      "parent": {
+        "center": "-3*x_p/4",
+        "radius_variable": "s=r/x_p",
+        "range": [
+          "1/16",
+          "1/10"
+        ]
+      },
+      "ratio_bracket_1e5": [
+        52758,
+        52764
+      ],
+      "two_selected_terminal_crests": [
+        "upper: S0,S3 -> I0,I3; closed I1,I2 with E0 upper",
+        "lower: S17,S0 -> I7,I0; closed I8,I9 with E0 lower"
+      ],
+      "width_interpretation": "conditional on physical prime-end/KKL/univalence and exact conformal strip-width hypotheses"
+    },
+    {
+      "central_Rouche_margin_gt_1_25": true,
+      "complex_primitive_phase_disks_pairwise_disjoint": true,
+      "normalized_Taylor_error_upper_1e12_on_abs_t_le_5_4": 3436628462,
+      "normalized_quadratic_kappa_bracket_1e8": [
+        179165138,
+        179165139
+      ],
+      "optimal_circular_collar": {
+        "lower_active": "parent inner radius",
+        "lower_bracket": [
+          "1/16",
+          "1/16"
+        ],
+        "upper_bracket": [
+          "14357104583770633/216172782113783808",
+          "57428418335082533/864691128455135232"
+        ]
+      },
+      "p": 6,
+      "parameter_bracket_2pow256": [
+        -231165301948715810770228801979889868997710711484378648858382566481886798601362,
+        -231165301948715810770228801979889868997710711484378648858382566481886798601361
+      ],
+      "parent": {
+        "center": "-3*x_p/4",
+        "radius_variable": "s=r/x_p",
+        "range": [
+          "1/16",
+          "5/48"
+        ]
+      },
+      "ratio_bracket_1e5": [
+        47562,
+        47566
+      ],
+      "two_selected_terminal_crests": [
+        "upper: S0,S3 -> I0,I3; closed I1,I2 with E0 upper",
+        "lower: S17,S0 -> I7,I0; closed I8,I9 with E0 lower"
+      ],
+      "width_interpretation": "conditional on physical prime-end/KKL/univalence and exact conformal strip-width hypotheses"
+    },
+    {
+      "central_Rouche_margin_gt_1_25": true,
+      "complex_primitive_phase_disks_pairwise_disjoint": true,
+      "normalized_Taylor_error_upper_1e12_on_abs_t_le_5_4": 856241804,
+      "normalized_quadratic_kappa_bracket_1e8": [
+        179065751,
+        179065752
+      ],
+      "optimal_circular_collar": {
+        "lower_active": "parent inner radius",
+        "lower_bracket": [
+          "1/16",
+          "1/16"
+        ],
+        "upper_bracket": [
+          "133945013148090213/2017612633061982208",
+          "267890026296180431/4035225266123964416"
+        ]
+      },
+      "p": 7,
+      "parameter_bracket_2pow256": [
+        -231479511493544950186069647316998533527551584431058987623697926625334430730271,
+        -231479511493544950186069647316998533527551584431058987623697926625334430730270
+      ],
+      "parent": {
+        "center": "-3*x_p/4",
+        "radius_variable": "s=r/x_p",
+        "range": [
+          "1/16",
+          "3/28"
+        ]
+      },
+      "ratio_bracket_1e5": [
+        44735,
+        44740
+      ],
+      "two_selected_terminal_crests": [
+        "upper: S0,S3 -> I0,I3; closed I1,I2 with E0 upper",
+        "lower: S17,S0 -> I7,I0; closed I8,I9 with E0 lower"
+      ],
+      "width_interpretation": "conditional on physical prime-end/KKL/univalence and exact conformal strip-width hypotheses"
+    },
+    {
+      "central_Rouche_margin_gt_1_25": true,
+      "complex_primitive_phase_disks_pairwise_disjoint": true,
+      "normalized_Taylor_error_upper_1e12_on_abs_t_le_5_4": 213854599,
+      "normalized_quadratic_kappa_bracket_1e8": [
+        179040992,
+        179040993
+      ],
+      "optimal_circular_collar": {
+        "lower_active": "parent inner radius",
+        "lower_bracket": [
+          "1/16",
+          "1/16"
+        ],
+        "upper_bracket": [
+          "76532252721566689/1152921504606846976",
+          "153064505443133381/2305843009213693952"
+        ]
+      },
+      "p": 8,
+      "parameter_bracket_2pow256": [
+        -231558017961263534024166083767791669928606608564833463355994069705641667440255,
+        -231558017961263534024166083767791669928606608564833463355994069705641667440254
+      ],
+      "parent": {
+        "center": "-3*x_p/4",
+        "radius_variable": "s=r/x_p",
+        "range": [
+          "1/16",
+          "7/64"
+        ]
+      },
+      "ratio_bracket_1e5": [
+        43006,
+        43010
+      ],
+      "two_selected_terminal_crests": [
+        "upper: S0,S3 -> I0,I3; closed I1,I2 with E0 upper",
+        "lower: S17,S0 -> I7,I0; closed I8,I9 with E0 lower"
+      ],
+      "width_interpretation": "conditional on physical prime-end/KKL/univalence and exact conformal strip-width hypotheses"
+    },
+    {
+      "central_Rouche_margin_gt_1_25": true,
+      "complex_primitive_phase_disks_pairwise_disjoint": true,
+      "normalized_Taylor_error_upper_1e12_on_abs_t_le_5_4": 53449287,
+      "normalized_quadratic_kappa_bracket_1e8": [
+        179034809,
+        179034810
+      ],
+      "optimal_circular_collar": {
+        "lower_active": "parent inner radius",
+        "lower_bracket": [
+          "1/16",
+          "1/16"
+        ],
+        "upper_bracket": [
+          "114795476058950413/1729382256910270464",
+          "172193214088425623/2594073385365405696"
+        ]
+      },
+      "p": 9,
+      "parameter_bracket_2pow256": [
+        -231577638920564092579136255421939630884836906131569849829313081641534396423027,
+        -231577638920564092579136255421939630884836906131569849829313081641534396423026
+      ],
+      "parent": {
+        "center": "-3*x_p/4",
+        "radius_variable": "s=r/x_p",
+        "range": [
+          "1/16",
+          "1/9"
+        ]
+      },
+      "ratio_bracket_1e5": [
+        41809,
+        41813
+      ],
+      "two_selected_terminal_crests": [
+        "upper: S0,S3 -> I0,I3; closed I1,I2 with E0 upper",
+        "lower: S17,S0 -> I7,I0; closed I8,I9 with E0 lower"
+      ],
+      "width_interpretation": "conditional on physical prime-end/KKL/univalence and exact conformal strip-width hypotheses"
+    },
+    {
+      "central_Rouche_margin_gt_1_25": true,
+      "complex_primitive_phase_disks_pairwise_disjoint": true,
+      "normalized_Taylor_error_upper_1e12_on_abs_t_le_5_4": 13361330,
+      "normalized_quadratic_kappa_bracket_1e8": [
+        179033264,
+        179033265
+      ],
+      "optimal_circular_collar": {
+        "lower_active": "parent inner radius",
+        "lower_bracket": [
+          "1/16",
+          "1/16"
+        ],
+        "upper_bracket": [
+          "47831146100931579/720575940379279360",
+          "2391557305046579/36028797018963968"
+        ]
+      },
+      "p": 10,
+      "parameter_bracket_2pow256": [
+        -231582543633546533526283756991348241519646229656381644300932701776334013313375,
+        -231582543633546533526283756991348241519646229656381644300932701776334013313374
+      ],
+      "parent": {
+        "center": "-3*x_p/4",
+        "radius_variable": "s=r/x_p",
+        "range": [
+          "1/16",
+          "9/80"
+        ]
+      },
+      "ratio_bracket_1e5": [
+        40920,
+        40924
+      ],
+      "two_selected_terminal_crests": [
+        "upper: S0,S3 -> I0,I3; closed I1,I2 with E0 upper",
+        "lower: S17,S0 -> I7,I0; closed I8,I9 with E0 lower"
+      ],
+      "width_interpretation": "conditional on physical prime-end/KKL/univalence and exact conformal strip-width hypotheses"
+    },
+    {
+      "central_Rouche_margin_gt_1_25": true,
+      "complex_primitive_phase_disks_pairwise_disjoint": true,
+      "normalized_Taylor_error_upper_1e12_on_abs_t_le_5_4": 3340265,
+      "normalized_quadratic_kappa_bracket_1e8": [
+        179032877,
+        179032878
+      ],
+      "optimal_circular_collar": {
+        "lower_active": "parent inner radius",
+        "lower_bracket": [
+          "1/16",
+          "1/16"
+        ],
+        "upper_bracket": [
+          "420913420806430363/6341068275337658368",
+          "105228355201607593/1585267068834414592"
+        ]
+      },
+      "p": 11,
+      "parameter_bracket_2pow256": [
+        -231583769768046569854648970766680764658829534892687229250012680253511623627757,
+        -231583769768046569854648970766680764658829534892687229250012680253511623627756
+      ],
+      "parent": {
+        "center": "-3*x_p/4",
+        "radius_variable": "s=r/x_p",
+        "range": [
+          "1/16",
+          "5/44"
+        ]
+      },
+      "ratio_bracket_1e5": [
+        40231,
+        40235
+      ],
+      "two_selected_terminal_crests": [
+        "upper: S0,S3 -> I0,I3; closed I1,I2 with E0 upper",
+        "lower: S17,S0 -> I7,I0; closed I8,I9 with E0 lower"
+      ],
+      "width_interpretation": "conditional on physical prime-end/KKL/univalence and exact conformal strip-width hypotheses"
+    },
+    {
+      "central_Rouche_margin_gt_1_25": true,
+      "complex_primitive_phase_disks_pairwise_disjoint": true,
+      "normalized_Taylor_error_upper_1e12_on_abs_t_le_5_4": 835062,
+      "normalized_quadratic_kappa_bracket_1e8": [
+        179032781,
+        179032782
+      ],
+      "optimal_circular_collar": {
+        "lower_active": "parent inner radius",
+        "lower_bracket": [
+          "1/16",
+          "1/16"
+        ],
+        "upper_bracket": [
+          "38264841326506973/576460752303423488",
+          "229589047959041843/3458764513820540928"
+        ]
+      },
+      "p": 12,
+      "parameter_bracket_2pow256": [
+        -231584076298261366026035660140568367251093068401698564453360469439884152023717,
+        -231584076298261366026035660140568367251093068401698564453360469439884152023716
+      ],
+      "parent": {
+        "center": "-3*x_p/4",
+        "radius_variable": "s=r/x_p",
+        "range": [
+          "1/16",
+          "11/96"
+        ]
+      },
+      "ratio_bracket_1e5": [
+        39680,
+        39684
+      ],
+      "two_selected_terminal_crests": [
+        "upper: S0,S3 -> I0,I3; closed I1,I2 with E0 upper",
+        "lower: S17,S0 -> I7,I0; closed I8,I9 with E0 lower"
+      ],
+      "width_interpretation": "conditional on physical prime-end/KKL/univalence and exact conformal strip-width hypotheses"
+    },
+    {
+      "central_Rouche_margin_gt_1_25": true,
+      "complex_primitive_phase_disks_pairwise_disjoint": true,
+      "normalized_Taylor_error_upper_1e12_on_abs_t_le_5_4": 208766,
+      "normalized_quadratic_kappa_bracket_1e8": [
+        179032757,
+        179032758
+      ],
+      "optimal_circular_collar": {
+        "lower_active": "parent inner radius",
+        "lower_bracket": [
+          "1/16",
+          "1/16"
+        ],
+        "upper_bracket": [
+          "497442888136096439/7493989779944505344",
+          "248721444068048225/3746994889972252672"
+        ]
+      },
+      "p": 13,
+      "parameter_bracket_2pow256": [
+        -231584152930559666515303967650834348256481862329075540046349754537259200892081,
+        -231584152930559666515303967650834348256481862329075540046349754537259200892080
+      ],
+      "parent": {
+        "center": "-3*x_p/4",
+        "radius_variable": "s=r/x_p",
+        "range": [
+          "1/16",
+          "3/26"
+        ]
+      },
+      "ratio_bracket_1e5": [
+        39229,
+        39233
+      ],
+      "two_selected_terminal_crests": [
+        "upper: S0,S3 -> I0,I3; closed I1,I2 with E0 upper",
+        "lower: S17,S0 -> I7,I0; closed I8,I9 with E0 lower"
+      ],
+      "width_interpretation": "conditional on physical prime-end/KKL/univalence and exact conformal strip-width hypotheses"
+    },
+    {
+      "central_Rouche_margin_gt_1_25": true,
+      "complex_primitive_phase_disks_pairwise_disjoint": true,
+      "normalized_Taylor_error_upper_1e12_on_abs_t_le_5_4": 52192,
+      "normalized_quadratic_kappa_bracket_1e8": [
+        179032751,
+        179032752
+      ],
+      "optimal_circular_collar": {
+        "lower_active": "parent inner radius",
+        "lower_bracket": [
+          "1/16",
+          "1/16"
+        ],
+        "upper_bracket": [
+          "133926928115885173/2017612633061982208",
+          "16740866014485647/252201579132747776"
+        ]
+      },
+      "p": 14,
+      "parameter_bracket_2pow256": [
+        -231584172088615637851266831576303849748697550697125275380614674797195062691559,
+        -231584172088615637851266831576303849748697550697125275380614674797195062691558
+      ],
+      "parent": {
+        "center": "-3*x_p/4",
+        "radius_variable": "s=r/x_p",
+        "range": [
+          "1/16",
+          "13/112"
+        ]
+      },
+      "ratio_bracket_1e5": [
+        38853,
+        38857
+      ],
+      "two_selected_terminal_crests": [
+        "upper: S0,S3 -> I0,I3; closed I1,I2 with E0 upper",
+        "lower: S17,S0 -> I7,I0; closed I8,I9 with E0 lower"
+      ],
+      "width_interpretation": "conditional on physical prime-end/KKL/univalence and exact conformal strip-width hypotheses"
+    },
+    {
+      "central_Rouche_margin_gt_1_25": true,
+      "complex_primitive_phase_disks_pairwise_disjoint": true,
+      "normalized_Taylor_error_upper_1e12_on_abs_t_le_5_4": 13048,
+      "normalized_quadratic_kappa_bracket_1e8": [
+        179032749,
+        179032750
+      ],
+      "optimal_circular_collar": {
+        "lower_active": "parent inner radius",
+        "lower_bracket": [
+          "1/16",
+          "1/16"
+        ],
+        "upper_bracket": [
+          "573972545526612007/8646911284551352320",
+          "28698627276330601/432345564227567616"
+        ]
+      },
+      "p": 15,
+      "parameter_bracket_2pow256": [
+        -231584176878128302859622673046256263221575212163151167105653190928991956027351,
+        -231584176878128302859622673046256263221575212163151167105653190928991956027350
+      ],
+      "parent": {
+        "center": "-3*x_p/4",
+        "radius_variable": "s=r/x_p",
+        "range": [
+          "1/16",
+          "7/60"
+        ]
+      },
+      "ratio_bracket_1e5": [
+        38534,
+        38538
+      ],
+      "two_selected_terminal_crests": [
+        "upper: S0,S3 -> I0,I3; closed I1,I2 with E0 upper",
+        "lower: S17,S0 -> I7,I0; closed I8,I9 with E0 lower"
+      ],
+      "width_interpretation": "conditional on physical prime-end/KKL/univalence and exact conformal strip-width hypotheses"
+    },
+    {
+      "central_Rouche_margin_gt_1_25": true,
+      "complex_primitive_phase_disks_pairwise_disjoint": true,
+      "normalized_Taylor_error_upper_1e12_on_abs_t_le_5_4": 3262,
+      "normalized_quadratic_kappa_bracket_1e8": [
+        179032749,
+        179032750
+      ],
+      "optimal_circular_collar": {
+        "lower_active": "parent inner radius",
+        "lower_bracket": [
+          "1/16",
+          "1/16"
+        ],
+        "upper_bracket": [
+          "306118690475330847/4611686018427387904",
+          "153059345237665427/2305843009213693952"
+        ]
+      },
+      "p": 16,
+      "parameter_bracket_2pow256": [
+        -231584178075506375804479650715242823625679539211828532799419525784242925600673,
+        -231584178075506375804479650715242823625679539211828532799419525784242925600672
+      ],
+      "parent": {
+        "center": "-3*x_p/4",
+        "radius_variable": "s=r/x_p",
+        "range": [
+          "1/16",
+          "15/128"
+        ]
+      },
+      "ratio_bracket_1e5": [
+        38261,
+        38265
+      ],
+      "two_selected_terminal_crests": [
+        "upper: S0,S3 -> I0,I3; closed I1,I2 with E0 upper",
+        "lower: S17,S0 -> I7,I0; closed I8,I9 with E0 lower"
+      ],
+      "width_interpretation": "conditional on physical prime-end/KKL/univalence and exact conformal strip-width hypotheses"
+    }
+  ],
+  "schema": "crest-transport-asymptotics-finite-optimal-circular-v1",
+  "uniform_p_asymptotics": "numerical conjecture only; physical and quantitative all-p estimates open"
+}
