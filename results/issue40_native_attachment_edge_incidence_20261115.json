@@ -169,6 +169,90 @@
       }
     ]
   ],
+  "all_ten_iota_star_edge_incidence": [
+    {
+      "F_star_image_edge_side_set": [
+        "E20"
+      ],
+      "new_attached_preimage_edge_sides": [
+        "E20"
+      ],
+      "old_tree_edge_sides": []
+    },
+    {
+      "F_star_image_edge_side_set": [
+        "E0a",
+        "Ea1"
+      ],
+      "new_attached_preimage_edge_sides": [],
+      "old_tree_edge_sides": [
+        "E20"
+      ]
+    },
+    {
+      "F_star_image_edge_side_set": [],
+      "new_attached_preimage_edge_sides": [],
+      "old_tree_edge_sides": []
+    },
+    {
+      "F_star_image_edge_side_set": [
+        "Ea1"
+      ],
+      "new_attached_preimage_edge_sides": [],
+      "old_tree_edge_sides": [
+        "E0a"
+      ]
+    },
+    {
+      "F_star_image_edge_side_set": [
+        "E20",
+        "E0a"
+      ],
+      "new_attached_preimage_edge_sides": [],
+      "old_tree_edge_sides": [
+        "Ea1"
+      ]
+    },
+    {
+      "F_star_image_edge_side_set": [],
+      "new_attached_preimage_edge_sides": [],
+      "old_tree_edge_sides": []
+    },
+    {
+      "F_star_image_edge_side_set": [
+        "E20",
+        "E0a"
+      ],
+      "new_attached_preimage_edge_sides": [],
+      "old_tree_edge_sides": [
+        "Ea1"
+      ]
+    },
+    {
+      "F_star_image_edge_side_set": [
+        "Ea1"
+      ],
+      "new_attached_preimage_edge_sides": [],
+      "old_tree_edge_sides": [
+        "E0a"
+      ]
+    },
+    {
+      "F_star_image_edge_side_set": [],
+      "new_attached_preimage_edge_sides": [],
+      "old_tree_edge_sides": []
+    },
+    {
+      "F_star_image_edge_side_set": [
+        "E0a",
+        "Ea1"
+      ],
+      "new_attached_preimage_edge_sides": [],
+      "old_tree_edge_sides": [
+        "E20"
+      ]
+    }
+  ],
   "all_ten_iota_star_source_blocks": [
     [
       18,
@@ -210,6 +294,50 @@
       16,
       17
     ]
+  ],
+  "all_twenty_source_cover_image_regions": [
+    "K2",
+    "E20",
+    "K0",
+    "E0a",
+    "Ea1",
+    "K1",
+    "Ea1",
+    "E0a",
+    "K0",
+    "E20",
+    "K2",
+    "E20",
+    "K0",
+    "E0a",
+    "Ea1",
+    "K1",
+    "Ea1",
+    "E0a",
+    "K0",
+    "E20"
+  ],
+  "all_twenty_source_physical_regions": [
+    "attachment",
+    "attachment",
+    "K2",
+    "E20",
+    "E20",
+    "K0",
+    "E0a",
+    "Ea1",
+    "Ea1",
+    "Ea1",
+    "K1",
+    "Ea1",
+    "Ea1",
+    "Ea1",
+    "E0a",
+    "K0",
+    "E20",
+    "E20",
+    "K2",
+    "attachment"
   ],
   "all_zero_edge_sector_escape_steps": [
     {

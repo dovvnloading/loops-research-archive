@@ -527,6 +527,15 @@ def compact_result(full: dict) -> dict:
     )
     result={k:full[k] for k in keys}
     result['all_full_source_incidence_sha256'] = hashlib.sha256(canonical).hexdigest()
+    result['all_twenty_source_physical_regions']=[row['physical_region'] for row in
+                 full['source_atom_real_incidence']]
+    result['all_twenty_source_cover_image_regions']=[row['cover_image_region'] for row in
+                 full['source_atom_real_incidence']]
+    result['all_ten_iota_star_edge_incidence']=[{
+        'old_tree_edge_sides':row['old_tree_edge_sides'],
+        'new_attached_preimage_edge_sides':row['new_attached_preimage_edge_sides'],
+        'F_star_image_edge_side_set':row['F_star_image_edge_side_set']}
+        for row in full['atomic_iota_pullback_and_F_star_incidence']]
     result['all_ten_iota_star_source_blocks']=[x['open_source_atoms'] for x in
                   full['iota_star_open_and_closed_attachment_intervals']]
     result['all_ten_iota_star_closure_endpoints']=[x['closed_endpoint_accesses'] for x in
