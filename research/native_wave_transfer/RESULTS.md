@@ -294,3 +294,131 @@ Only the named two primitive examples retain their exact 2/1, edge
 and harmonic-equality certificates. The satellite obstruction is a
 **scope limitation**, not a theorem refuting KKL or proving a
 quantitative loss.
+
+## Real period-two satellite Misiurewicz tip: exact return, *semantic* v1 refusal
+
+**This is a different obstruction from the superattracting period-four center.**
+The previous `satellite2_period4_obstruction` record and every primitive
+output are left byte-for-byte unchanged. The new independent input
+`physical_examples/satellite2_misiurewicz_tip_refusal.json` is deliberately
+a **negative compatibility record, not a fabricated v1 `PhysicalExample`**.
+Its executable and immutable output are
+`regenerate_satellite2_tip.py` and
+`experiment_manifests/satellite2_misiurewicz_tip_refusal.json`.
+
+Write `P(c)=c^3+2c^2+2c+2`, let `c_*` be its unique real root,
+and put `a=c_*^2+c_*`. The exact adjacent dyadic isolator has denominator
+`2^128` and numerators
+`[-525290151028706361181936933686549192168,
+-525290151028706361181936933686549192167]`.
+The endpoint values of `P` have strict opposite signs, and
+`P'(c)=3(c+2/3)^2+2/3>0` globally. Consequently the
+critical orbit is **exactly** `0 -> c -> a -> -a -> -a`
+(`f(a)+a=c P(c)=0`), with `4a^2>2` for the terminal
+`f^2` multiplier. The decimal `c≈-1.5436890126920764`
+is orientation only, **not** a numerical certificate.
+
+For `G=f^2=z^4+2cz^2+a`, choose `U=D(0,1)` and
+`V=component(G^-1(U),0)`. On the entire circle `|z|=1`,
+uniformly for `|w|<=1`, the Rouché comparison with `2cz^2`
+has the explicit, strictly certified lower margin
+`2|c|-|a|-1-|w| >= -2*c_high-a_high-2 > 1/5`.
+The only critical point of `G` inside `U` is `0`;
+the other two are `±sqrt(-c)`, strictly outside `U`.
+Rouché counts **two**, not four, roots in `U` for every `w`
+in the closed target disk. Thus `G:V -> U` is a
+proper degree-two quadratic-like restriction with `V` compactly
+contained in `U`. This is a physical return certificate,
+not merely a real one-dimensional mapping.
+
+Its real invariant inner interval is `K0=[-a,a]`:
+`G(0)=a`, `G(±a)=-a`, and
+`G'(x)=4x(x^2+c)` has only the central turning point
+there. For `y∈K0`, the inverse formula
+`z^2=-c±sqrt(y-c)` has an inner branch
+`0<=z^2<=a^2` and an outer branch
+`z^2>=-c+a>1`; hence
+`G^-1(K0)∩V=K0`, giving `Tprime=T=K0` and
+**zero new attachments**. Identification of the *entire*
+small filled Julia set with that real interval uses the standard
+backward-density theorem for repelling points of a quadratic-like
+map and the absence of bounded complementary components when its
+Julia set lies in a real line. It is an analytic argument with exact
+algebraic hypotheses, not a claim that finite samples prove Julia
+topology.
+
+But `f(K0)=[c,-a]` **touches** `K0` at
+the repelling endpoint `-a`, whereas KKL
+[arXiv:2606.27272v1 §§2.3–2.5](https://arxiv.org/abs/2606.27272)
+defines the tree/edge construction here for **primitive** renormalization
+with disjoint small filled Julia sets. This model has only *one*
+`G`-inner Julia interval, not the three distinct inner intervals
+specified by the current executable v1 contract. The first semantic
+incompatibility is therefore
+**`MarkedHubbardTree.small_julia_intervals`**. A one-element JSON
+list passes the generic list *type*, but does **not** satisfy the
+source-locked three-phase construction. It would be misleading to
+invent two additional inner intervals from the touching *ambient*
+`f`-phases. **Stop the v1 record here**; do not emit atomic
+`f_*` or `iota^*` tables, sheet/path counts, or Wave widths.
+The maps remain distinct: `f_*` comes from the degree-two
+covering `G`; `iota^*` comes from physical inclusion. They are
+not interchangeable, even though there is no extra inverse-tree
+attachment.
+
+| Observable | Primitive `p=3` tip | Primitive `p=4` tip | Satellite `p=2` tip |
+| --- | --- | --- | --- |
+| Small inner Julia intervals / tree attachments | 3 / 1 | 3 / 1 | **1 / 0** |
+| Target / covering-source inner atoms in locked primitive v1 marking | 10 / 20 | 10 / 20 | **not defined by that marking** |
+| Filtered restrictions (crossing / avoiding) | 2 / 1 | 2 / 1 | **not evaluated:** no new attachment |
+| Old edges counted once per *real* edge | 3 | 3 | 0 (one vertex = `K0`) |
+| Old-edge matrix | `[[0,0,1],[1,0,1],[1,1,0]]` (same three-phase inner kneading; not separately frozen in the `p=3` manifest) | `[[0,0,1],[1,0,1],[1,1,0]]` (independent certified once-edge audit) | empty `0×0` matrix |
+| Perron root of old-edge matrix | `(1+sqrt(5))/2` under the same old-edge convention | `(1+sqrt(5))/2` | **undefined**, not `0` or `1` |
+| Zero-old-edge closed Wave crests | not separately frozen for `p=3`; analogous three-phase geometry | `I0,I2,I8` all zero-edge | **not defined:** no v1 Wave marking |
+| Parent symbolic Wave width | `log(4/3)/(2*pi)` | `log(3/2)/(2*pi)` | **not defined** |
+| Each child and pushed symbolic width | `log(4/3)/pi` | `log(3/2)/pi` | **not defined** |
+| Harmonic series | conditional analytic **equality** | conditional analytic **equality** | **no verdict**: neither strictness nor failure established |
+
+**First structural difference and quantitative meaning.** The satellite
+touching of two ambient `f`-phases violates the primitive separation
+hypothesis and collapses the three-interval inner tree to a single
+vertex, *before* any sheet filtration or Wave comparison. The
+lack of a nonempty old-edge Perron operator or a two-child Wave is
+**not evidence of quantitative width loss**. The primitive 2-versus-1
+breakage and harmonic equality are not transferable by assertion;
+the satellite extension of the induced ideal marking and its analytic
+Wave width remain open. Neither `f_*` nor `iota^*` is replaced by
+a synthetic table.
+
+### Certification / numerical / open boundary for this tip
+
+**Exact, executable:** uniqueness of the real parameter root in the
+adjacent dyadic bracket; critical orbit identities; strict repelling
+multiplier; uniform complex Rouché margin `>1/5`; degree two and
+compact containment; exact monotone real interval and inverse-branch
+inequalities; contact of two `f`-phases; absence of additional *real
+tree inverse branches within the full complex central source*; and
+the empty attachment census. Baseline primitive results are read
+from immutable, blob-locked files.
+
+**Analytic, explicitly cited/conditional:** the standard
+quadratic-like Julia/backward-orbit argument upgrading the invariant
+interval to the entire small filled Julia set, the definition
+and hypothesis of primitive KKL Hubbard-tree/ideal marking, and
+analytic identification of the *primitive* example's symbolic
+rectangle expressions with extremal Wave widths.
+
+**Numerical only:** the displayed decimal approximation of `c_*`;
+it is never used for a sign, branch, degree or width conclusion.
+
+**Open / deliberately unasserted:** any satellite-native ideal-boundary
+atom and attachment-sector atlas outside this real interval,
+filtered proper restrictions, independent `f_*` / `iota^*`
+atomic maps on such an atlas, old-edge Wave crest census, actual
+parent/child extremal widths, and strict/equal/failed harmonic
+transfer. This is a **source/contract limitation** and does not
+claim a counterexample to a theorem for primitive maps.
+
+Read-only reproduction:
+`python research/native_wave_transfer/regenerate_satellite2_tip.py --check`
+and `python -m unittest discover -s research/native_wave_transfer -p 'test_*.py' -v`.
