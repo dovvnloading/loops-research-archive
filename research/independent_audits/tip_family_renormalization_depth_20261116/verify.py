@@ -387,6 +387,9 @@ def verify_case(p1: int,p2: int,seed: str | None=None, upper_blocks=BLOCKS):
     for k in range(1,p1):
         z=z.square()+c
         require(z.hi<0 if k==1 else z.lo>0, 'earlier critical branch on real connector')
+    zend=I.point(frac(M))
+    for _ in range(p1):zend=zend.square()+c
+    require(frac(zend.abshi())<radius1, 'outer real connector escapes U1')
     require(all(frac(x[j*p1].abshi())<radius1 for j in range(1,6*p2+1)),
             'real orbit connectors outside U1')
     # For second-level KKL normalization u=-A_n z the leading coefficient
@@ -407,6 +410,8 @@ def verify_case(p1: int,p2: int,seed: str | None=None, upper_blocks=BLOCKS):
         zn=zn.square()+c
         require(x[j].lo>0 or x[j].hi<0, 'ambiguous precritical orbit sign')
         require(zn.lo>0 if x[j].lo>0 else zn.hi<0,'second real monotone branch')
+    zn=zn.square()+c
+    require(frac(zn.abshi())<radius2,'inner real connector escapes U2')
     require(frac(max(y[1].abshi(),y[2].abshi())) < frac(a[n].abslo())*radius2,
             'second-level tree outside U2')
     # Extra KKL prerequisite: a proper degree-two third return of H,
