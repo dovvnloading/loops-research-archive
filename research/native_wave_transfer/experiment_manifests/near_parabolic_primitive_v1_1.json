@@ -1,7 +1,7 @@
 {
   "code": {
     "path": "research/native_wave_transfer/regenerate_primitive_v1_1.py",
-    "sha256": "bc7d1f45a715dc60c3792aa9343228544e879200ab48aed5a2ab5c62a6a24cda"
+    "sha256": "f8c8c3c32141ed25c6a25b9f82cae678f909f1781571d06fa6c5e6729c5fae72"
   },
   "experiment_id": "native-near-parabolic-primitive-Chebyshev-tips-v1.1",
   "format": "native-wave-primitive-one-slit-manifest/v1.1",
