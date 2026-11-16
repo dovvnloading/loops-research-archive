@@ -250,6 +250,21 @@ def run(p,nbins=512):
             -x[5*p],-x[2*p],x[4*p],xp]
     check(all(a.lt(b) for a,b in zip(source,source[1:])),'source cut order')
     cover,blocks=actions_from_physical_cuts(c,p,x,alpha)
+    source_cuts=source[1:-1]
+    host={atom:parent for parent,block in enumerate(blocks) for atom in block}
+    # Four successive *typed* proper restrictions, before applying G_*.
+    # Intermediate arrays are source accesses; only the indicated last
+    # q-side paths survive the third-step w-endpoint cut crossing.
+    stage_pairs=( ((3,1),(19,17)), ((6,4),(16,14)),
+                  ((9,11),), ((0,3),(17,0)) )
+    for pairs in stage_pairs:
+        for left,right in pairs:
+            check(host[left]!=host[right],'proper iota* hosts coincident')
+            check(1+min((right-left)%20,(left-right)%20)>2,
+                  'source short-path KKL deletion')
+            a0,b0=cover[left],cover[right]
+            check(1+min((b0-a0)%10,(a0-b0)%10)>2,
+                  'cover-pushed target short-path deletion')
     a,b=COLLARS[p]
     if p==3:
         d=I.point(F(-9,64));ra,rb=I.point(a),I.point(b)
@@ -286,14 +301,29 @@ def run(p,nbins=512):
         q,w=d+r,d-r
         check(x[5*p].lt(q) and q.lt(-alpha),'initial q access changed')
         check((-x[4*p]).lt(w) and w.lt(x[2*p]),'initial w access changed')
+        check((index_of(q,1,source_cuts),index_of(w,1,source_cuts),
+               index_of(w,-1,source_cuts),index_of(q,-1,source_cuts))==
+              (3,1,19,17),'step 0 source accesses changed')
         for k in range(1,5):
             q,w=iterate(q,c,p),iterate(w,c,p)
             if k==1:
                 check(x[6*p].lt(q) and q.lt(alpha) and (-alpha).lt(w) and w.lt(x[3*p]),'first push endpoint gates')
+                check((index_of(q,1,source_cuts),index_of(w,1,source_cuts),
+                       index_of(w,-1,source_cuts),index_of(q,-1,source_cuts))==
+                      (6,4,16,14),'step 1 source accesses changed')
             if k==2:
                 check((-x[2*p]).lt(q) and q.lt(x[4*p]) and (-x[2*p]).lt(w) and w.lt(x[4*p]),'second push endpoint gates')
+                check((index_of(q,1,source_cuts),index_of(w,1,source_cuts),
+                       index_of(w,-1,source_cuts),index_of(q,-1,source_cuts))==
+                      (9,9,11,11),'step 2 source accesses changed')
             if k==3:
                 check(x[5*p].lt(q) and q.lt(-alpha) and x[5*p].lt(w) and w.lt(x[3*p]),'third push q-side gates')
+                # The other w-side can cross -alpha, so DO NOT assign it a
+                # globally fixed source atom at this stage.
+                check((index_of(q,1,source_cuts),index_of(q,-1,source_cuts))==
+                      (3,17),'step 3 selected q-side changed')
+                check(index_of(r3,1,source_cuts)==0,
+                      'step 3 terminal real gate lost source S0')
             if k==4:
                 check(x[6*p].lt(q) and q.lt(alpha),'fourth push q access')
         ulo=u.low()
