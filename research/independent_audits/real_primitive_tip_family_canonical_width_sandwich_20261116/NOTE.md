@@ -319,7 +319,7 @@ following strict brackets, and the new verifier recomputes them
 independently of this table. Decimal brackets are outward rational
 intervals, **not floats**:
 
-| \(p\) | \(W_p^{\rm rad}<W_p^*\): lower strict interval | \(W_p^*\le Q(L_+)\): upper strict interval |
+| \(p\) | \(W_p^{\rm rad}\): strict witness interval | \(Q(L_+)\): strict upper-envelope interval |
 |---:|---:|---:|
 | 3 | (0.2516729, 0.2516732) | (0.5967637, 0.5967640) |
 | 4 | (0.2584721, 0.2584724) | (0.6080487, 0.6080490) |
@@ -340,6 +340,23 @@ can include other, incorrectly kneaded roots. It then checks the
 full-hull derivative, entire signed itinerary, fixed-point bracket,
 whole-gate-disk margin and both strict width intervals. The
 new results snapshot records the four additional numerical rows.
+
+The four newly certified strict enclosures are:
+
+| \(p\) | \(W_p^{\rm rad}\) strict enclosure (lower witness) | \(Q(L_+)\) strict enclosure (upper envelope) |
+|---:|---:|---:|
+| 13 | (0.2604925, 0.2604928) | (0.7672322, 0.7672325) |
+| 14 | (0.2604925, 0.2604928) | (0.7684743, 0.7684746) |
+| 15 | (0.2604925, 0.2604928) | (0.7694393, 0.7694396) |
+| 16 | (0.2604925, 0.2604928) | (0.7702036, 0.7702039) |
+
+For **each** finite row, if \((L_p,U_p)\) encloses the radial
+witness and \((A_p,B_p)\) encloses the full-path envelope, the
+proved canonical statement is
+\(L_p<W_p^{\rm rad}\le W_p^*\le Q(L_+)<B_p\).
+Neither auxiliary interval by itself encloses the canonical
+width, and the upper endpoint is **not** an attained Wave width.
+
 
 For all \(p\ge13\), the old all-period normalized-orbit theorem gives,
 with \(q=4^{-p}\), \(\tau_*\) the distinguished limiting root,
