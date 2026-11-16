@@ -27,9 +27,15 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
+      - name: TEMPORARY parameter and manifest regeneration diagnostic
+        run: |
+          python research/native_wave_transfer/regenerate_period4.py --write
+          echo 'BEGIN_NATIVE_P4_MANIFEST'
+          cat research/native_wave_transfer/experiment_manifests/primitive4_tip12.json
+          echo 'END_NATIVE_P4_MANIFEST'
       - name: Compile and run adversarial independent regression
         run: |
-          python -m py_compile research/native_wave_transfer/regenerate.py research/native_wave_transfer/test_regenerate.py
+          python -m py_compile research/native_wave_transfer/regenerate.py research/native_wave_transfer/regenerate_period4.py research/native_wave_transfer/test_regenerate.py research/native_wave_transfer/test_period4.py
           python -m unittest discover -s research/native_wave_transfer -p 'test_*.py' -v
       - name: Enforce source/code locks, exact physical computations and immutable manifest
         run: python research/native_wave_transfer/regenerate.py --check
