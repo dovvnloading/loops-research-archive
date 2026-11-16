@@ -350,12 +350,13 @@ The four newly certified strict enclosures are:
 | 15 | (0.2604925, 0.2604928) | (0.7694393, 0.7694396) |
 | 16 | (0.2604925, 0.2604928) | (0.7702036, 0.7702039) |
 
-For **each** finite row, if \((L_p,U_p)\) encloses the radial
-witness and \((A_p,B_p)\) encloses the full-path envelope, the
-proved canonical statement is
-\(L_p<W_p^{\rm rad}\le W_p^*\le Q(L_+)<B_p\).
+For **each** finite row, let \(\ell_p\) be the displayed
+radial lower endpoint and \(u_p^{\rm env}\) the displayed
+full-path upper endpoint. The proved statement is
+\(\ell_p<W_p^{\rm rad}\le W_p^*\le Q(L_+)<u_p^{\rm env}\).
 Neither auxiliary interval by itself encloses the canonical
-width, and the upper endpoint is **not** an attained Wave width.
+width; in particular the upper endpoint is **not** an attained
+Wave width.
 
 
 For all \(p\ge13\), the old all-period normalized-orbit theorem gives,
@@ -377,7 +378,9 @@ series to form explicit interval functions \(H_p\) with
 \(Q_{\rm plane,p}\le H_p\) for **every** \(p\ge13\).
 At and beyond \(p=17\), all coordinate uncertainty intervals
 are contained in the \(p=17\) interval box; interval inclusion
-then supplies a *single* certified upper bound \(H_{17}<0.78\).
+then supplies a *single* certified strict upper enclosure
+\(H_{17}<0.7750748<0.78\), with
+\(H_{17}\in(0.7747715,0.7750748)\).
 The round lower error from the prior audit is
 \[
  W_p^* \ge W_p^{\rm rad}
@@ -389,8 +392,14 @@ That lower expression already exceeds \(0.26\) for \(p\ge17\).
 **Do not claim it exceeds \(0.26\) for \(13\le p\le16\)**:
 those periods need the separate exact bisections above.
 Combining (5.1)–(5.4), every period \(p\ge13\) has an
-explicitly certified pair of bounds. In particular the first
-four high periods and the universal tail yield
+explicitly certified pair of bounds: the individual rows above
+give the strict bounds for \(13\le p\le16\), while for **all**
+\(p\ge17\) the rational formulas imply
+\[
+ 0.2604925-7{,}000{,}000\cdot4^{-p}
+ <W_p^*<0.7750748.
+\]
+In particular the first four high periods and the universal tail yield
 \[
  0.26<W_p^*<0.78\qquad(p\ge13).
 \tag{5.5}
