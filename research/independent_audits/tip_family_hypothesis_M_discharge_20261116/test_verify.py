@@ -100,7 +100,7 @@ class RationalImplicationTests(unittest.TestCase):
         with self.assertRaises(AssertionError):
             audit.check_finite_report(rows)
         rows = synthetic_rows()
-        rows[0]["parent_competitor_strict_1e-6"] = [489999, 490001]
+        rows[0]["parent_competitor_strict_1e-6"] = [489999, 490000]
         with self.assertRaises(AssertionError):
             audit.check_finite_report(rows)
 
