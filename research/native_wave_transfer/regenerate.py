@@ -302,6 +302,10 @@ def recompute(example: dict, source: dict) -> dict:
            "a pulled-back interval is not end-proper")
     nonproper = [i for i,b in enumerate(blocks) if attachment_set.intersection(b)]
     ensure(nonproper == [0], "wrong number of nonproper attachment blocks")
+    # Report *connected cyclic order* on the attachment host, not numeric order.
+    attachment_atoms = [s for s in blocks[0] if s in attachment_set]
+    ensure(len(attachment_atoms) == len(attachment_set) == 3,
+           "attachment atoms not a single three-atom connected strip")
     ensure(all(covering.count(t) == 2 for t in range(len(target_cuts)*2)),
            "covering degree != 2 on ideal atoms")
     # The only new attachment interval follows from T' (two preimages per
