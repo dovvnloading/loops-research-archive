@@ -144,3 +144,153 @@ same-path edge-charge-to-extremal-width bridge; any general strict
 harmonic inequality, H1–H4, UPTCR or MLC. The exact harmonic equality
 in *both* physical cases rules out inferring strict gain merely from
 a larger physical iterate or from the old-edge Perron root.
+
+## Satellite comparison — real period-doubling return, specification refusal
+
+**Status: source-valid satellite candidate, exact quadratic-like certificate,
+but *not representable* as the unchanged v1 physical interval-marking record.**
+Following the explicit refusal rule of this laboratory, no fake
+`PhysicalExample`, satellite `f_*` / `iota^*` table, or Wave width is
+asserted. See the [negative physical input](physical_examples/satellite2_period4_obstruction.json),
+[exact executable](regenerate_satellite2.py),
+[adversarial tests](test_satellite2.py), and
+[immutable obstruction manifest](experiment_manifests/satellite2_period4_obstruction.json).
+The existing two primitive code paths, data records, source contracts, and
+manifests are still byte-identical; the new tests check the original seven
+input/code/manifest Git blob identities.
+
+### Choice of parameter, return, and first structural difference
+
+Let `f(z)=z^2+c`, `x0=0`, and `x(k+1)=x(k)^2+c`.
+Choose the **unique** real zero of `x4=0` in the adjacent
+`2^-128` dyadics with numerators
+
+`[-446008997123623373135743845318053032736,
+  -446008997123623373135743845318053032735]`.
+
+This is approximately `c=-1.31070264133683288356`, the
+period-four superattracting center in the real doubling cascade.
+The code certifies **strict** endpoint signs `x4(lo)<0<x4(hi)` and
+`d(x4)/dc>0` over the entire bracket; it verifies `x2 in (2/5,1/2)`,
+`x1<-1`, `x3<-1`. Thus the original critical orbit has exact
+period four. Take **physical return p=2**, `G=f^2`, of global degree four,
+not the physical `p=4` return of `primitive4_tip12`.
+
+Use `U2=D(0,4/5)` and `V2=component(G^-1(U2),0)`.
+The **exact** identity
+`G(z)=z^4+2*c*z^2+(c^2+c)` gives, on `|z|=4/5`,
+
+`|2c|*(4/5)^2 - |c^2+c| - (4/5)^4 - 4/5 > 3/50 > 0`.
+
+Rouché therefore yields **exactly two preimages inside
+D(0,4/5) for every w in U2** (not two globally: G has degree four).
+The critical point 0 lies in their central component; the other critical
+points of G are outside the disk. Consequently
+`G:V2 -> U2` is a proper degree-two quadratic-like return with
+`V2` compactly contained in `U2`, and the postcritical orbit stays
+in `V2`. This is a genuine renormalization, not a schematic Markov map.
+
+The real fixed point `alpha=f(alpha)` lies strictly between
+`-3/4` and `-7/10` by exact sign bounds. Monotonicity of `G` on
+both halves of `[-3/4,1/2]`, together with exact endpoint bounds,
+places the **entire** interval in the same central preimage component.
+Hence `alpha in K(G)` and `alpha=f(alpha) in f(K(G))`.
+The two phase sets are distinct, since `f(0)=c` lies outside `U2`.
+Their **nonempty contact** is proved here; the classical **simple
+satellite period-doubling** (in particular the uniqueness of the
+phase-contact point) uses Douady–Hubbard tuning/Julia topology, rather
+than being inferred from sampled disks. See the [primitive/satellite
+definition](https://www.cambridge.org/core/journals/ergodic-theory-and-dynamical-systems/article/on-invariant-measures-of-satellite-infinitely-renormalizable-quadratic-polynomials/AF8B693630F2234A9CA96C55A4F39852)
+and the [doubling renormalization background](https://www.math.stonybrook.edu/~mlyubich/book.pdf).
+
+**First incompatible field: `MarkedHubbardTree.small_julia_intervals`
+(via `ExperimentOutputs.marked_tree`).**
+At this exact parameter, `G(0)=x2`, `G(x2)=0` and `G'(0)=0`.
+The exact *whole-complex-disk* enclosure further gives
+`f^4(D(0,1/64)) subset D(0,1/128)` and
+`f^2(D(0,1/64)) subset U2`. The real bridge places `x2` in `V2`;
+by connectedness, the whole image `G(D(0,1/64))` lies in that central
+component. Repeated `G^2` contracts the disk, so
+**`D(0,1/64) subset K(G)` is certified**, not merely inferred
+from a derivative calculation.
+Thus `G^2` has a superattracting fixed point at 0, and the small
+filled Julia set `K(G)` contains a **nonempty complex Fatou interior**.
+A real interval cannot represent `K(G)`. In contrast, the v1
+specification requires *three small Julia intervals*, a real hull and
+its single slit interval pullback; the two primitive examples realize
+precisely that real Chebyshev-tip structure. Replacing this satellite
+Julia set with the real postcritical segment `[-3/4,1/2]` would
+alter the meaning of the marking.
+
+Downstream, `PhysicalExample.marking.induced_from` presumes that
+three-interval marking, `AttachmentCensus.components[].interval`
+stores one-dimensional half-open attached segments,
+`IdealBoundaryIntervals.target_real_cuts` and
+`ImmersionPullback.connected_blocks` rely on two-sided real slit
+prime ends, and `SheetPathFamily` / `WaveFamily` rely on the resulting
+one- or two-semicircle filtration. No unchanged v1 definition
+guarantees these represent the **planar satellite** accesses.
+The covering `f_*` and inclusion pullback `iota^*` remain
+different mathematical operations; neither was replaced with the other
+or assigned a guessed satellite table.
+
+### Side-by-side native observables
+
+Here **N/C** means *not certified or not meaningfully defined by the
+unchanged v1 marking*, **not** zero and **not** a failed width
+inequality. The two primitive columns are their pre-existing,
+byte-identical outputs.
+
+| Observable | `tip_pr68` (primitive, p=3) | `primitive4_tip12` (primitive, p=4) | period-four center (satellite, **p=2**) |
+| --- | --- | --- | --- |
+| Parameter | `c≈-1.7865105445`; pinned tip bracket | `c≈-1.9425541715`; `x24=-x12` certified | `c≈-1.3107026413`; unique `x4=0` root in adjacent `2^-128` bracket |
+| Return degree | `f^3`: global 8, central 2 | `f^4`: global 16, central 2 | `f^2`: global 4, **central 2 proved**, Rouché margin `>3/50` |
+| Little Julia geometry | three real inner intervals | three real inner intervals, primitive phase separation | **interior-filled little Julia set**; distinct physical phase sets meet at `alpha` |
+| Inner target/source atoms | **10 / 20**, outer atom 1 | **10 / 20**, outer atom 1 | **N/C**: no v1 prime-end atom census |
+| Complete new attachment | one `[-x3,x6)` rooted at `x6`; `S19,S0,S1` | one `[-x4,x8)` rooted at `x8`; `S19,S0,S1` | **N/C**: planar attachment / accesses unresolved |
+| Immersion filtered blocks | `5,2,1,1,3,1,3,1,1,2`; only `P0` nonproper | same, only `P0` nonproper | **N/C**: no `iota^*` partition |
+| Proper restrictions | **2 crossing / 1 avoiding** | **2 crossing / 1 avoiding** | **N/C**: cannot assert 2/1 or any multiplicity |
+| Real-edge matrix, each edge once | `[[0,0,1],[1,0,1],[1,1,0]]` | `[[0,0,1],[1,0,1],[1,1,0]]` | **N/C**: no canonical three-old-edge model |
+| Perron root | `(1+sqrt(5))/2` | `(1+sqrt(5))/2` | **N/C**: matrix not constructed |
+| Zero-old-edge atom types / Wave crests | `I0,I2,I5,I8` / `I0,I2,I8` | `I0,I2,I5,I8` / `I0,I2,I8` | **N/C**: no certified crest gates |
+| Exact parent Wave width | `log(4/3)/(2*pi)` | `log(3/2)/(2*pi)` | **N/C** |
+| Exact each child / pushed width | `log(4/3)/pi` | `log(3/2)/pi` | **N/C** |
+| Harmonic-series test | **equality**, not strict | **equality**, not strict | **undetermined**: neither equality, failure nor strictness established |
+
+**Quantitative answer.** The first real structural difference is satellite
+phase contact and a non-interval little Julia set, *before* the primitive
+slit/atom and proper-restriction counts can be formed. It **blocks
+transfer of the primitive quantitative width certificate**, but it is
+**not** evidence of decreased satellite width, failure of harmonic
+equality or strict improvement. Those are genuinely open under the
+unchanged specification. In particular the Perron root in the primitive
+three-edge model must not be copied into the satellite case.
+
+### Certification / numerical / open boundary
+
+**Machine-certified exact:** uniqueness of the period-four center in
+the printed dyadic bracket; period-four critical orbit and period-two
+central return; strict uniform Rouché degree-two enclosure; the real
+bridge and fixed-point phase contact; nonempty complex interior of
+`K(G)`; refusal at the first typed v1 interval field; negative mutation
+tests and immutable byte-canonical manifest. All checks use standard
+library integer/rational interval arithmetic, with **no floating-point
+certificate**.
+
+**Cited/conditional:** identification with the classical simple
+period-doubling satellite tuning and the uniqueness of phase contact;
+the KKL full Hubbard-tree and prime-end marking framework for
+non-interval satellite sets. No path/width theorem is imported as
+if numerically verified.
+
+**Numerical-only:** the displayed decimal `c≈-1.3107026413` is
+orientation only; no claimed result depends on that rounding.
+
+**Open:** native satellite attachment and planar access census,
+separate `f_*` and `iota^*` tables, sheet/path filtration, old-edge
+incidence and spectral radius, zero-edge closed crest transport,
+satellite parent/child extremal Wave widths and any strict harmonic gain.
+Only the named two primitive examples retain their exact 2/1, edge
+and harmonic-equality certificates. The satellite obstruction is a
+**scope limitation**, not a theorem refuting KKL or proving a
+quantitative loss.

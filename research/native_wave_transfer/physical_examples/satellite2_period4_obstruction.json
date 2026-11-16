@@ -1,0 +1,32 @@
+{
+  "format": "native-wave-transfer-satellite-obstruction/v1",
+  "id": "native-satellite2-period4-obstruction-v1",
+  "purpose": "negative compatibility certificate, NOT a PhysicalExample",
+  "parameter": {
+    "family": "z^2+c",
+    "equation": "x4=0",
+    "orbit_notation": "x0=0; x(k+1)=x(k)^2+c",
+    "denominator_power_of_two": 128,
+    "lower_numerator": -446008997123623373135743845318053032736,
+    "upper_numerator": -446008997123623373135743845318053032735
+  },
+  "renormalization": {
+    "physical_iterate": 2,
+    "global_degree": 4,
+    "restricted_degree": 2,
+    "target": "D(0,4/5)",
+    "source": "component((f^2)^-1(D(0,4/5)),0)",
+    "satellite_type": "period-doubling tuning; simple satellite identification conditional on classical Douady-Hubbard theory"
+  },
+  "first_incompatible_field": "MarkedHubbardTree.small_julia_intervals",
+  "record_compatibility": "refused",
+  "refusal_reason": "The small filled Julia set for G=f^2 has nonempty complex interior around its superattracting G-two-cycle. It is not a real Julia interval, so the executable v1 three-interval marking and its slit/cut/atom algorithms cannot represent it.",
+  "not_asserted": [
+    "MarkedHubbardTree for the satellite with correct planar accesses",
+    "AttachmentCensus and ideal-boundary atom count",
+    "covering f_* or immersion iota^* satellite tables",
+    "proper sheet/path restrictions and filtered multiplicities",
+    "once-per-real-edge transition or zero-old-edge crests",
+    "parent or child Wave extremal widths and harmonic equality"
+  ]
+}

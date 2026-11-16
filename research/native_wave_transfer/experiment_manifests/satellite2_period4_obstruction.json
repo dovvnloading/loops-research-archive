@@ -1,0 +1,91 @@
+{
+  "code": {
+    "path": "research/native_wave_transfer/regenerate_satellite2.py",
+    "sha256": "9393905086d5359c737680373d9b2bbe3940c30ba63d90306483ddd14ddff8e8"
+  },
+  "experiment_id": "native-satellite2-period4-obstruction-v1",
+  "format": "native-wave-transfer-satellite-obstruction-manifest/v1",
+  "inputs": {
+    "example_sha256": "2524a7565f1a80bdf5d9aad84a3110df15fbf0bc7a9eefb270d8bfd7f2a1bb04",
+    "source_locks": {
+      "research/native_wave_transfer/SPECIFICATION.md": "4288c3c7a9680fffd8d094b8f25d51c6cd5df648",
+      "research/native_wave_transfer/source_contracts/primitive4_record_fields.json": "0be9f9dc3961a020ca59a2f9be4957fb04926e9e"
+    },
+    "source_reference": "arXiv:2606.27272v1, \u00a7\u00a72.1,2.5,6.1,Appendix A; classical period-doubling tuning"
+  },
+  "outputs": {
+    "central_return": {
+      "K_of_G_has_nonempty_complex_interior": true,
+      "alpha_in_both_physical_phase_filled_sets": true,
+      "central_component_compactly_contained_in_target": true,
+      "certified_open_Fatou_disk_radius": "1/64",
+      "critical_orbit_period_under_G": 2,
+      "critical_value_x2_between": [
+        "2/5",
+        "1/2"
+      ],
+      "fixed_alpha_between": [
+        "-3/4",
+        "-7/10"
+      ],
+      "four_iterate_whole_disk_absolute_bound_lt": "1/128",
+      "global_degree": 4,
+      "iterate": 2,
+      "other_G_critical_points_outside_target_disk": true,
+      "real_bridge_in_central_source": "[-3/4,1/2]",
+      "restricted_degree": 2,
+      "rouche_margin_strictly_gt": "3/50",
+      "superattracting_G_squared_at_zero": true,
+      "target_radius": "4/5",
+      "two_physical_phase_sets_distinct": true
+    },
+    "compatibility": {
+      "first_incompatible_field": "MarkedHubbardTree.small_julia_intervals",
+      "physical_example_v1_emitted": false,
+      "reason": "The small filled Julia set for G=f^2 has nonempty complex interior around its superattracting G-two-cycle. It is not a real Julia interval, so the executable v1 three-interval marking and its slit/cut/atom algorithms cannot represent it.",
+      "status": "refused",
+      "uncertified_satellite_observables": [
+        "MarkedHubbardTree for the satellite with correct planar accesses",
+        "AttachmentCensus and ideal-boundary atom count",
+        "covering f_* or immersion iota^* satellite tables",
+        "proper sheet/path restrictions and filtered multiplicities",
+        "once-per-real-edge transition or zero-old-edge crests",
+        "parent or child Wave extremal widths and harmonic equality"
+      ],
+      "wave_harmonic_verdict": "not defined under the unchanged interval/slit specification"
+    },
+    "parameter": {
+      "critical_orbit_exact_period": 4,
+      "denominator_power_of_two": 128,
+      "derivative_x4_dc_strictly_positive_on_bracket": true,
+      "equation": "x4=0",
+      "left_x4_strictly_negative": true,
+      "lower_numerator": -446008997123623373135743845318053032736,
+      "right_x4_strictly_positive": true,
+      "unique_real_parameter_in_bracket": true,
+      "upper_numerator": -446008997123623373135743845318053032735
+    }
+  },
+  "outputs_sha256": "1375f77f93e0790b439fa1bfc1cc14e528bad8ff547fed242e3a6227f6b10ea2",
+  "proof_status": {
+    "certified_by_exact_arithmetic": [
+      "unique x4=0 root in adjacent 2^-128 dyadic bracket",
+      "exact critical period four and G=f^2 period-two superattracting cycle",
+      "strict uniform Rouche margin >3/50 and degree-two central proper map",
+      "real bridge, dividing fixed alpha in K(G), and f(K(G)) intersect",
+      "strict entire f4(D(0,1/64)) bound <1/128 and an open disk in K(G)",
+      "open Fatou interior of K(G), so not a real Julia interval"
+    ],
+    "conditional_on_cited_analytic_inputs": [
+      "classical Douady-Hubbard period-doubling satellite classification",
+      "general KKL native tree/ideal-endpoint interpretation"
+    ],
+    "numeric_only": [],
+    "unproved": [
+      "satellite native planar attachment and ideal-boundary census",
+      "filtered proper restrictions or once-per-real-edge transition",
+      "satellite Wave widths and their harmonic comparison"
+    ]
+  },
+  "schema_version": 1
+}
