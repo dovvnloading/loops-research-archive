@@ -352,6 +352,9 @@ def bound_for_finite_disk(xp: Iv, x2: Iv, x5: Iv, x3: Iv, R: Q, pi: Iv) -> tuple
 def radial_data(p: int,c: Iv,x: list[Iv],alpha: Iv,pi: Iv) -> tuple[Iv, Iv, Iv]:
     """All circles in the exact orbit-defined gate, not its maximal-wave width."""
     xp,x2,x5,x3,x4=x[p],x[2*p],x[5*p],x[3*p],x[4*p]
+    source_order=[-xp,-x4,x2,x5,-alpha,x3,x[6*p],alpha,-x5,-x2,x4,xp]
+    need(all(a.lt(b) for a,b in zip(source_order,source_order[1:])),
+         'full twelve-cut source order fails')
     m=(x2+x5)/TWO
     rin=(x5-x2)/TWO
     rright=-alpha-m
