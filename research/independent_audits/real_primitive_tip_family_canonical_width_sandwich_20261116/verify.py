@@ -83,17 +83,51 @@ def p_value(c: Q, p: int) -> v.Iv:
     return x[6*p] + x[3*p]
 
 
-def certify_tip(p: int) -> tuple[v.Iv, list[v.Iv]]:
-    """New bisection, root signs and full-hull derivative, p=13..16.
+def tau_at(c: Q, p: int) -> v.Iv:
+    """Normalized chart coordinate at one rational parameter point."""
+    x, _ = v.poly_orbit(v.Iv.point(c), p)
+    A = v.Iv.point(1)
+    for j in range(1, p):
+        A = A*v.TWO*x[j]
+    return A*x[p]
 
-    The search interval follows the all-p near--2 chart, but no stored
-    high-period parameter packet is used.  Fractions avoid floating seeds.
+
+def invert_tau(p: int, target: Q) -> tuple[Q, Q]:
+    """Bracket a target tau-level without assuming monotonicity outside chart.
+
+    On every bisection step the one-point interval establishes which side of
+    target holds; this method is not a root-isolation proof until certify_tip
+    checks the final parameter hull and the itinerary.
+    """
+    q = Q(1, 4**p)
+    lo, hi = -2 + Q(148, 10)*q, -2 + Q(149, 10)*q
+    check(tau_at(lo, p).high() < target < tau_at(hi, p).low(),
+          f"p={p}: normalized chart seed does not straddle {target}")
+    for _ in range(110):
+        mid = (lo + hi)/2
+        t = tau_at(mid, p)
+        if t.high() < target:
+            lo = mid
+        elif t.low() > target:
+            hi = mid
+        else:
+            raise AssertionError(f"p={p}: ambiguous tau bisection")
+    return lo, hi
+
+
+def certify_tip(p: int) -> tuple[v.Iv, list[v.Iv]]:
+    """New exact chart-based bisection, full-hull derivative, p=13..16.
+
+    Locates the unique root within tau in (-1.795,-1.785).  A broad
+    P_p sign bracket alone is NOT sufficient: P_p has other roots.
     """
     check(13 <= p <= 16, "period is outside individual high-period certificates")
     q = Q(1, 4**p)
-    lo, hi = -2 + Q(148, 10)*q, -2 + Q(149, 10)*q
+    lo, _ = invert_tau(p, v.MODEL_LO)
+    _, hi = invert_tau(p, v.MODEL_HI)
+    check(lo < hi, "inverted chart")
     check(p_value(lo, p).positive() and p_value(hi, p).negative(),
-          f"p={p}: root seed signs not certified")
+          f"p={p}: distinguished root endpoint signs")
     for _ in range(200):
         mid = (lo + hi)/2
         s = p_value(mid, p)
@@ -102,7 +136,7 @@ def certify_tip(p: int) -> tuple[v.Iv, list[v.Iv]]:
         elif s.negative():
             hi = mid
         else:
-            raise AssertionError(f"p={p}: ambiguous midpoint; increase interval precision")
+            raise AssertionError(f"p={p}: ambiguous P midpoint")
     c = v.Iv.hull(lo, hi)
     x, dx = v.poly_orbit(c, 6*p, derivative=True)
     P = x[6*p] + x[3*p]
@@ -123,7 +157,6 @@ def certify_tip(p: int) -> tuple[v.Iv, list[v.Iv]]:
     check(A.negative() and tau.inside(v.MODEL_LO, v.MODEL_HI),
           f"p={p}: not the distinguished normalized root")
     return c, x
-
 
 def finite_case(p: int, c: v.Iv, x: list[v.Iv], pi: v.Iv) -> dict:
     alpha = v.alpha_interval(p, c, x)
