@@ -34,7 +34,7 @@ class MisiurewiczSatelliteTipTests(unittest.TestCase):
         self.assertEqual(geom["intersection_of_phases"], "{-a}")
         self.assertTrue(geom["central_real_inverse_tree_equals_inner_interval"])
         self.assertEqual(geom["new_attachments"], 0)
-        self.assertEqual(geom["inner_old_edge_count_under_KKL_vertex_convention"], 0)
+        self.assertEqual(geom["formal_old_edge_count_from_single_inner_vertex"], 0)
         self.assertEqual(result["compatibility"]["first_incompatible_field"],
                          "MarkedHubbardTree.small_julia_intervals")
         self.assertFalse(result["compatibility"]["v1_example_emitted"])
