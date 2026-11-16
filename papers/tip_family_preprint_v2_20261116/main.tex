@@ -1,0 +1,70 @@
+\documentclass[11pt,reqno]{amsart}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{geometry,booktabs}
+\usepackage[colorlinks=true,linkcolor=blue,citecolor=blue,urlcolor=blue]{hyperref}
+\geometry{margin=1in}
+\numberwithin{equation}{section}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem{question}[theorem]{Open question}
+\newcommand{\C}{\mathbb C}
+\newcommand{\R}{\mathbb R}
+\newcommand{\Q}{\mathbb Q}
+\newcommand{\W}{\mathcal W}
+\newcommand{\T}{\mathcal T}
+\newcommand{\Om}{\Omega}
+\newcommand{\eps}{\varepsilon}
+\newcommand{\pp}{\mathrm{pair}}
+\DeclareMathOperator{\comp}{component}
+\title[Real primitive tips: conditional geometry]{Real primitive-tip returns and conditional marked-Wave bounds:\\ a referee-controlled revision}
+\author{Research compilation from loops-research-archive}
+\date{16 November 2026 (AI-assisted; not independently reviewed)}
+\begin{document}
+\begin{abstract}
+We revisit a selected real near-$-2$ family of primitive-tip return
+candidates, with exact finite root packets and a written uniform
+$p\ge13$ tail argument for local parameter isolation, orbit order and
+degree-two polynomial-like returns.  No global real-root uniqueness
+is asserted.  The original manuscript further announces an exact
+KKL physical marking, a marked-width sandwich and
+$D_p=2/C_p-1/P_p>1/100$ for every $p\ge3$.
+The exact verifiers check rational inequalities and finite
+incidence predicates, \emph{not} the continuum identification,
+primeness transport, full KKL A.1 proper-path classes or
+Schwarz--Christoffel admissibility.  We therefore retain the
+strict numerical consequences only \emph{conditionally on the
+explicit geometric bridges (H1)--(H3)}.  Likewise, exclusion of
+outer-incident buffered canonical WAD weights for $p\ge11$
+is conditional on the cyclic-cover interpretation (H4).
+The six remaining inner endpoint types, a strictly positive
+buffered coefficient, a four-push limit and uniform
+marked quasiconformal depth transport are not settled.
+We give finite depth witnesses but no unconditional
+suffix-straightening claim.  The accompanying hostile
+referee report records source-specific gaps and the
+verification boundary.  This AI-assisted archive revision
+is not independent mathematical peer review and
+does not claim new Mandelbrot-set local connectivity.
+\end{abstract}
+\maketitle
+\tableofcontents
+\section{Introduction and proof status}
+This paper studies a \emph{real}, selected, postcritically finite quadratic family.  The period-three tip belongs to the $p$-return, not to the original polynomial of period $p$.  In particular $x_{jp}=f^{jp}(0)$, not $x_j=f^j(0)$.  The results concern the physical tree slit and its central degree-two pullback, not an arbitrary puzzle or a global Mandelbrot statement.  KKL \cite{KKL2026} is a posted research preprint, not a claimed peer-reviewed journal publication.
+
+The stated unconditional algebraic and local-return arguments are distinguished from the \emph{conditional} global marked-geometry deductions.  Earlier claimed proofs of the missing bridges are preserved for checking, not endorsed by a passing finite verifier.  Each derivation distinguishes exact rational interval computations, written complex-analytic deductions, and named external theorems.  Passing a Python or Lean check certifies the finite premises it implements but never formalizes KKL, straightening, Carath\'eodory boundaries, or conformal extremal width.  The complete verification commands and precision are in \S\ref{sec:reproduce}.  The copied \texttt{REVIEW\_FINDINGS.md} records the original audit's assertions; the independent root-level \texttt{REFEREE\_REPORT.md} supersedes its assessment wherever they differ.  The mathematical authorship and independent review of this synthesis remain to be established.
+
+\input{sections/referee_scope}
+\input{sections/parameter}
+\input{sections/marking}
+\input{sections/wave_proofs}
+\input{sections/buffer_depth}
+\input{sections/reproduction}
+\bibliographystyle{plain}
+\bibliography{references}
+\end{document}

@@ -1,0 +1,390 @@
+\section{Exact reproducibility, provenance and audit method}
+\label{sec:reproduce}
+The source of the finite statements in this
+paper is the merged version of the repository
+\url{https://github.com/dovvnloading/loops-research-archive}
+as of 16 November 2026.
+All source files cited here are \emph{read-only}
+dependencies; this preprint lives entirely
+under \texttt{papers/tip\_family\_preprint\_v2\_20261116/}
+with one new dedicated workflow.
+In particular no existing research
+certificate, Lean proof, native-wave
+source lock, result JSON or prior
+CI workflow is modified.
+
+\subsection{Exact verifiers and what they do}
+Every key in the following displayed set
+means the directory
+\texttt{research/independent\_audits/KEY\_20261116/}.
+For each of these directories the
+new CI workflow runs
+\texttt{python -B DIR/verify.py}
+and discovers its adversarial
+\texttt{test\_*.py} unit tests.
+The whole theorem-chain verifier
+\texttt{research/tip\_family\_theorem/verify\_chain.py}
+and its unit tests are run separately.
+\begingroup\fontsize{7}{8.5}\selectfont
+\begin{verbatim}
+real_primitive_tip_family_uniform
+real_primitive_tip_family_unconditional
+real_primitive_tip_family_all_p
+real_primitive_tip_family_prime_end_identification
+real_primitive_tip_family_canonical_width
+real_primitive_tip_family_canonical_width_sandwich
+tip_family_canonical_wave_gain
+tip_family_limiting_wave_gain
+tip_family_finite_p_wave_gain
+tip_family_hypothesis_M_discharge
+tip_family_buffered_wad
+tip_family_renormalization_depth
+tip_family_all_depths
+tip_family_depth_uniform_qc
+tip_family_global_marked_qc
+crest_transport_tip_family
+crest_transport_asymptotics
+\end{verbatim}
+\endgroup
+The source-locked native-wave
+reproductions are
+\texttt{research/native\_wave\_transfer/regenerate.py}
+and
+\texttt{research/native\_wave\_transfer/regenerate\_period4.py},
+both invoked with their
+nonwriting \texttt{--check} option
+where supported.  The
+native \texttt{SPECIFICATION.md},
+\texttt{RESULTS.md},
+and experiment manifests
+record the original
+$p=3,4$ gate and
+ideal marking.  They
+are \emph{not} independent
+mathematical proofs of
+the KKL prime-end
+identification.
+
+The exact checks are divided
+by mathematical function:
+\begin{itemize}
+\item The finite/unconditional
+and all-period real auditors
+check root-endpoint signs,
+strict derivatives over
+\emph{whole} parameter
+intervals, signed
+$6p$ orbit orders,
+fixed-point brackets,
+central return components,
+full-complex-disk
+Rouch\'e tail margins,
+the $\kappa$-chart
+rational inequalities,
+and model-root isolation
+(including six thousand
+nonroot rational cells).
+The prime-end auditor
+checks the full
+$3p$ disk gate
+and discrete
+$10/20$ labels
+but \emph{not}
+Carath\'eodory's theorem.
+\item The width-sandwich,
+canonical/limiting/finite
+gain and M-discharge
+auditors check entire
+embedded parent
+quadrilaterals,
+source upper
+cross-ratios,
+the finite
+missing-energy boxes,
+the shrinking
+normalized model
+interval box
+for all $p\ge13$,
+the exact ordering
+of physical source
+versus target cuts,
+and strict
+reciprocal inequalities.
+They do \emph{not}
+synthesize or formally
+verify a general
+extremal-length proof.
+\item The buffered auditor
+checks \emph{whole
+Joukowski ellipses},
+disjointness from
+each foreign hole,
+peripheral-length
+thresholds,
+the rational
+Landen comparison
+and a strict
+upper WAD norm.
+It does not
+enumerate the
+inner ideal
+arc classes.
+\item The crest auditors
+check entire
+radius bins,
+endpoint gates,
+monotonicity,
+imaginary-axis
+crossings, the
+source attachment
+side, finite
+integral enclosures
+and the selected
+parent denominator.
+The depth auditors
+check only the
+specified finite
+depth-two and
+depth-three
+realized charts,
+and the QC
+auditors check
+the \emph{logical
+conditional}
+statements, not
+a new global
+QC construction.
+\end{itemize}
+
+\subsection{Why arithmetic is rigorous}
+The main finite
+primitive-root
+packets have
+\emph{adjacent}
+dyadic endpoints
+of denominator
+$2^{256}$, obtained
+from explicit
+rational seeds and
+sign bisection.
+Every polynomial
+interval evaluation
+and derivative
+uses a fixed
+integer grid
+$S=2^{512}$:
+a rational lower
+value is rounded
+by \emph{floor}
+and an upper
+value by
+\emph{ceiling}.
+For interval
+addition and
+multiplication,
+the four
+endpoint products
+are enclosed
+with the same
+outward rule;
+interval squaring
+explicitly uses
+zero whenever
+the input
+straddles zero.
+Inclusion
+follows inductively
+under each
+polynomial
+operation.
+This works
+equally for a
+full complex
+disk when
+combined with
+the analytic
+majorant
+recurrence
+\eqref{eq:tail}.
+The third-return
+finite tail
+uses a separately
+outward $2^{-192}$
+upper grid.
+The original
+crest checker
+uses a $384$-bit
+outward rational
+interval grid
+and $512$
+\emph{whole}
+radius bins,
+with independent
+bisection and
+strict angular
+monotonicity,
+not floating
+point quadrature.
+
+For transcendental
+bounds, Machin's
+identity
+$\pi=16\arctan(1/5)
+-4\arctan(1/239)$
+and rational
+alternating arctangent
+remainders give
+certified $\pi$
+brackets.
+For positive
+$x$ in the
+specified domains
+the atanh series
+\[
+ \log x=2\sum_{j=0}^{N-1}
+ \frac{u^{2j+1}}{2j+1}
+ +\mathcal{R}_N,\qquad
+ u=\frac{x-1}{x+1},\quad
+ |\mathcal{R}_N|\le
+ \frac{2|u|^{2N+1}}
+ {(2N+1)(1-u^2)}
+\]
+and alternating
+trigonometric
+Taylor bounds
+give rational
+enclosures for
+logs, trigonometric
+and inverse
+trigonometric
+functions.
+The elliptic
+$K(k)$ ratios
+are enclosed by
+outward rational
+AGM or equivalent
+power-series
+bounds, with
+explicit tails.
+Every numerical
+entry in a
+strict theorem
+is thus a
+rational
+inequality;
+any human-readable
+decimal endpoint
+is a \emph{literal
+rational number},
+not a machine
+float or a
+measured approximation.
+The all-$p$
+tail steps
+prove the
+universal
+monotonicity
+or nested-box
+property and
+check its
+worst $p=13$
+or $p=17$
+case by
+rational
+arithmetic.
+They are
+\emph{not}
+finite sampling
+extrapolations.
+
+The proof
+and code
+trust boundary
+is important.
+KKL definitions
+and Lemma A.11
+\cite{KKL2026};
+Douady--Hubbard's
+straightening
+\cite{DH1985};
+McMullen's
+almost-disjointness
+\cite{McMullen1994};
+the Misiurewicz
+dendrite theorem
+\cite{LyubichNotes};
+Carath\'eodory's
+extension
+\cite{Caratheodory1913};
+SC and
+Riemann--Hurwitz
+\cite{AhlforsInvariants,Forster1981}
+are imported
+\emph{by theorem
+and explicit
+hypotheses},
+not certified
+by Python or
+the existing
+finite Lean
+incidence
+models.
+No novel
+classical
+theorem is
+secretly
+encoded as
+a numeric
+test.
+
+\subsection{Build and CI contract}
+From the
+repository root:
+\begin{verbatim}
+bash papers/tip_family_preprint_v2_20261116/build.sh
+python -B research/tip_family_theorem/verify_chain.py
+python -B -m unittest discover -s \
+  research/tip_family_theorem -p 'test_*.py' -v
+\end{verbatim}
+The dedicated
+\texttt{tip-family-preprint-v2-20261116.yml}
+GitHub Actions workflow also runs
+the newer \texttt{tip\_family\_buffered\_wad\_inner}
+audit, whose support-cardinality result
+does \emph{not} enumerate the inner classes.
+The workflow uses
+plain
+\texttt{pdflatex}
+and \texttt{bibtex}
+to produce and
+upload the
+\texttt{main.pdf}
+artifact, and
+rechecks all
+seventeen named
+verifiers and
+their unit
+tests.  Its
+last job
+dispatches the
+unchanged
+\texttt{lean-proofs.yml}
+(Research validation)
+and
+\texttt{weighted-lean.yml}
+(Weighted spectral
+mathlib proofs)
+\emph{at the
+exact same
+PR head SHA}
+and demands
+success from
+both.  A
+successful
+build is not
+an independent
+mathematical
+peer review,
+nor proof of
+the open
+claims above.

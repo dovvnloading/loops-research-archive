@@ -1,0 +1,201 @@
+name: "Tip-family v2: conditional PDF, exact audits and existing Lean"
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'papers/tip_family_preprint_v2_20261116/**'
+      - 'REFEREE_REPORT.md'
+      - '.github/workflows/tip-family-preprint-v2-20261116.yml'
+  pull_request:
+    paths:
+      - 'papers/tip_family_preprint_v2_20261116/**'
+      - 'REFEREE_REPORT.md'
+      - '.github/workflows/tip-family-preprint-v2-20261116.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: "tip-preprint-${{ github.workflow }}-${{ github.ref }}"
+  cancel-in-progress: true
+
+jobs:
+  latex:
+    name: "Compile self-contained LaTeX preprint and upload PDF"
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          fetch-depth: 0
+      - name: "Enforce strictly add-only diff for this paper"
+        if: github.event_name == 'pull_request'
+        shell: bash
+        run: |
+          set -euo pipefail
+          while IFS=$'\t' read -r status path; do
+            [[ "$status" == A ]] || { echo "Not add-only: $status $path"; exit 1; }
+            case "$path" in
+              papers/tip_family_preprint_v2_20261116/*|.github/workflows/tip-family-preprint-v2-20261116.yml|REFEREE_REPORT.md) ;;
+              *) echo "Out-of-scope changed file: $path"; exit 1 ;;
+            esac
+          done < <(git diff --name-status "${{ github.event.pull_request.base.sha }}...HEAD")
+      - name: "Install plain pdflatex, bibtex and LaTeX packages"
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y --no-install-recommends \
+            texlive-latex-base texlive-latex-recommended texlive-fonts-recommended
+      - name: "Compile PDF three times with BibTeX"
+        run: bash papers/tip_family_preprint_v2_20261116/build.sh
+      - name: "Verify generated PDF is nonempty"
+        run: test -s papers/tip_family_preprint_v2_20261116/main.pdf
+      - name: "Upload final PDF"
+        uses: actions/upload-artifact@v4
+        with:
+          name: tip-family-preprint-v2-20261116-pdf
+          path: papers/tip_family_preprint_v2_20261116/main.pdf
+          if-no-files-found: error
+
+  theorem-chain:
+    name: "Recheck full merged tip-family theorem chain and hostile tests"
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    env:
+      PYTHONDONTWRITEBYTECODE: '1'
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: "Merged theorem chain"
+        run: python -B research/tip_family_theorem/verify_chain.py
+      - name: "Theorem-chain hostile tests"
+        run: python -B -m unittest discover -s research/tip_family_theorem -p 'test_*.py' -v
+      - name: "Assert verifier is source read-only"
+        run: |
+          git diff --exit-code
+          test -z "$(git status --porcelain --untracked-files=all)"
+
+  audits:
+    name: "Independent exact verifier and tests — ${{ matrix.audit }}"
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    strategy:
+      fail-fast: false
+      max-parallel: 6
+      matrix:
+        audit:
+          - real_primitive_tip_family_uniform
+          - real_primitive_tip_family_unconditional
+          - real_primitive_tip_family_all_p
+          - real_primitive_tip_family_prime_end_identification
+          - real_primitive_tip_family_canonical_width
+          - real_primitive_tip_family_canonical_width_sandwich
+          - tip_family_canonical_wave_gain
+          - tip_family_limiting_wave_gain
+          - tip_family_finite_p_wave_gain
+          - tip_family_hypothesis_M_discharge
+          - tip_family_buffered_wad
+          - tip_family_buffered_wad_inner
+          - tip_family_renormalization_depth
+          - tip_family_all_depths
+          - tip_family_depth_uniform_qc
+          - tip_family_global_marked_qc
+          - crest_transport_tip_family
+          - crest_transport_asymptotics
+    env:
+      PYTHONDONTWRITEBYTECODE: '1'
+      AUDIT: ${{ matrix.audit }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: "Re-execute independently merged exact verifier"
+        run: |
+          set -euo pipefail
+          python -B "research/independent_audits/${AUDIT}_20261116/verify.py"
+      - name: "Rerun adversarial unit tests"
+        run: |
+          python -B -m unittest discover \
+             -s "research/independent_audits/${AUDIT}_20261116" -p 'test_*.py' -v
+      - name: "Check exact verifier changed no files"
+        run: |
+          git diff --exit-code
+          test -z "$(git status --porcelain --untracked-files=all)"
+
+  native-sources:
+    name: "Recheck native Wave p3/p4 source locks"
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    env:
+      PYTHONDONTWRITEBYTECODE: '1'
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: "p3 source-locked nonwriting regeneration"
+        run: python -B research/native_wave_transfer/regenerate.py --check
+      - name: "p4 source-locked nonwriting regeneration"
+        run: python -B research/native_wave_transfer/regenerate_period4.py --check
+      - name: "No research source mutation"
+        run: |
+          git diff --exit-code
+          test -z "$(git status --porcelain --untracked-files=all)"
+
+  existing-research-and-lean:
+    name: "Require unchanged Research validation and weighted Lean at exact PR head"
+    if: github.event_name == 'pull_request' && github.event.pull_request.head.repo.full_name == github.repository
+    needs: [latex, theorem-chain, audits, native-sources]
+    runs-on: ubuntu-latest
+    timeout-minutes: 180
+    permissions:
+      contents: read
+      actions: write
+    steps:
+      - name: "Dispatch both original workflows at current PR branch and check exact SHA"
+        env:
+          GH_TOKEN: ${{ github.token }}
+          REPO: ${{ github.repository }}
+          PR_BRANCH: ${{ github.event.pull_request.head.ref }}
+          PR_SHA: ${{ github.event.pull_request.head.sha }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          current="$(gh api "repos/$REPO/git/ref/heads/$PR_BRANCH" --jq '.object.sha')"
+          [[ "$current" == "$PR_SHA" ]] || { echo "PR moved before dispatch"; exit 1; }
+          for wf in lean-proofs.yml weighted-lean.yml; do
+            gh workflow run "$wf" --repo "$REPO" --ref "$PR_BRANCH"
+          done
+          for wf in lean-proofs.yml weighted-lean.yml; do
+            success=0
+            for attempt in $(seq 1 400); do
+              runs="$(gh run list --repo "$REPO" --workflow "$wf" --branch "$PR_BRANCH" --event workflow_dispatch --limit 50 --json databaseId,headSha,status,conclusion)"
+              match="$(printf '%s' "$runs" | jq -c --arg sha "$PR_SHA" '[.[] | select(.headSha == $sha)] | first // empty')"
+              if [[ -n "$match" ]]; then
+                runid="$(printf '%s' "$match" | jq -r .databaseId)"
+                status="$(printf '%s' "$match" | jq -r .status)"
+                conclusion="$(printf '%s' "$match" | jq -r .conclusion)"
+                if [[ "$status" == completed ]]; then
+                  echo "$wf exact head $PR_SHA: $conclusion (run $runid)"
+                  [[ "$conclusion" == success ]] || { gh run view "$runid" --repo "$REPO" || true; exit 1; }
+                  success=1
+                  break
+                fi
+              fi
+              sleep 15
+            done
+            [[ "$success" == 1 ]] || { echo "Missing successful exact-SHA $wf"; exit 1; }
+          done
+          current="$(gh api "repos/$REPO/git/ref/heads/$PR_BRANCH" --jq '.object.sha')"
+          [[ "$current" == "$PR_SHA" ]] || { echo "PR moved during validation"; exit 1; }
