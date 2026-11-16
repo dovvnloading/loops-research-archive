@@ -1,0 +1,224 @@
+{
+  "schema_version": 1,
+  "scope": "NEW certified peripheral-collar and norm bounds; NO per-class q_gamma evaluation",
+  "physical_tip": "results/tip_KKL_tree_marked_breakage_20261109.json",
+  "parents": [
+    "results/canonical_wad_electrode_incidence_20261116.json",
+    "results/canonical_wad_conformal_weights_20261116.json"
+  ],
+  "surface": "U3\\(K0 union K1 union K2), U3=D(0,1/4), 4 whole-boundary minimal marking",
+  "certification": "Fraction-only outward 256-bit orbit; exact rational pi and log intervals; analytic Joukowski/cyclic-cover/modulus comparison in NOTE.md",
+  "annular_collars": {
+    "outer": {
+      "joukowski_parameter_t": "23/10",
+      "log_t_integral_rational_interval": [
+        "832909121/1000000000",
+        "208227281/250000000"
+      ],
+      "annulus_conductance_2pi_over_log_t_interval": [
+        "7543662487/1000000000",
+        "754366249/100000000"
+      ],
+      "peripheral_local_width_strict_upper": "943/125",
+      "local_width_lower_certified": "0",
+      "reason": "collar of outer boundary, annular cover of outer peripheral loop"
+    },
+    "K0": {
+      "joukowski_parameter_t": "11",
+      "log_t_integral_rational_interval": [
+        "2397895271/1000000000",
+        "1198947637/500000000"
+      ],
+      "annulus_conductance_2pi_over_log_t_interval": [
+        "2620291793/1000000000",
+        "655072949/250000000"
+      ],
+      "peripheral_local_width_strict_upper": "2621/1000",
+      "local_width_lower_certified": "0",
+      "reason": "collar of K0, annular cover of its peripheral loop"
+    },
+    "K1": {
+      "joukowski_parameter_t": "49",
+      "log_t_integral_rational_interval": [
+        "3891820297/1000000000",
+        "38918203/10000000"
+      ],
+      "annulus_conductance_2pi_over_log_t_interval": [
+        "201807407/125000000",
+        "1614459259/1000000000"
+      ],
+      "peripheral_local_width_strict_upper": "323/200",
+      "local_width_lower_certified": "0",
+      "reason": "collar of K1, annular cover of its peripheral loop"
+    },
+    "K2": {
+      "joukowski_parameter_t": "25",
+      "log_t_integral_rational_interval": [
+        "3218875823/1000000000",
+        "1609437913/500000000"
+      ],
+      "annulus_conductance_2pi_over_log_t_interval": [
+        "121998829/62500000",
+        "1951981267/1000000000"
+      ],
+      "peripheral_local_width_strict_upper": "1953/1000",
+      "local_width_lower_certified": "0",
+      "reason": "collar of K2, annular cover of its peripheral loop"
+    }
+  },
+  "local_width_inequality": "W(I) <= 2*pi/log(t_I), by essential annulus in I-cyclic cover; sum_I W_can(I) = 2*norm(W_can) <= sum_I W(I)",
+  "uniform_endpoint_pair_brackets": [
+    {
+      "boundary_pair": [
+        "outer",
+        "outer"
+      ],
+      "class_status": "open: NO per-class ideal quadrilateral solved",
+      "uniform_q_gamma_strict_bracket": [
+        "0",
+        "1443/250"
+      ],
+      "applies_to": "every admissible simple ideal arc of this endpoint type; not a finite class enumeration",
+      "positive_canonical_weight_certified": false
+    },
+    {
+      "boundary_pair": [
+        "outer",
+        "K0"
+      ],
+      "class_status": "open: NO per-class ideal quadrilateral solved",
+      "uniform_q_gamma_strict_bracket": [
+        "0",
+        "4621/1000"
+      ],
+      "applies_to": "every admissible simple ideal arc of this endpoint type; not a finite class enumeration",
+      "positive_canonical_weight_certified": false
+    },
+    {
+      "boundary_pair": [
+        "outer",
+        "K1"
+      ],
+      "class_status": "open: NO per-class ideal quadrilateral solved",
+      "uniform_q_gamma_strict_bracket": [
+        "0",
+        "723/200"
+      ],
+      "applies_to": "every admissible simple ideal arc of this endpoint type; not a finite class enumeration",
+      "positive_canonical_weight_certified": false
+    },
+    {
+      "boundary_pair": [
+        "outer",
+        "K2"
+      ],
+      "class_status": "open: NO per-class ideal quadrilateral solved",
+      "uniform_q_gamma_strict_bracket": [
+        "0",
+        "3953/1000"
+      ],
+      "applies_to": "every admissible simple ideal arc of this endpoint type; not a finite class enumeration",
+      "positive_canonical_weight_certified": false
+    },
+    {
+      "boundary_pair": [
+        "K0",
+        "K0"
+      ],
+      "class_status": "open: NO per-class ideal quadrilateral solved",
+      "uniform_q_gamma_strict_bracket": [
+        "0",
+        "6621/2000"
+      ],
+      "applies_to": "every admissible simple ideal arc of this endpoint type; not a finite class enumeration",
+      "positive_canonical_weight_certified": false
+    },
+    {
+      "boundary_pair": [
+        "K0",
+        "K1"
+      ],
+      "class_status": "open: NO per-class ideal quadrilateral solved",
+      "uniform_q_gamma_strict_bracket": [
+        "0",
+        "723/200"
+      ],
+      "applies_to": "every admissible simple ideal arc of this endpoint type; not a finite class enumeration",
+      "positive_canonical_weight_certified": false
+    },
+    {
+      "boundary_pair": [
+        "K0",
+        "K2"
+      ],
+      "class_status": "open: NO per-class ideal quadrilateral solved",
+      "uniform_q_gamma_strict_bracket": [
+        "0",
+        "3953/1000"
+      ],
+      "applies_to": "every admissible simple ideal arc of this endpoint type; not a finite class enumeration",
+      "positive_canonical_weight_certified": false
+    },
+    {
+      "boundary_pair": [
+        "K1",
+        "K1"
+      ],
+      "class_status": "open: NO per-class ideal quadrilateral solved",
+      "uniform_q_gamma_strict_bracket": [
+        "0",
+        "1123/400"
+      ],
+      "applies_to": "every admissible simple ideal arc of this endpoint type; not a finite class enumeration",
+      "positive_canonical_weight_certified": false
+    },
+    {
+      "boundary_pair": [
+        "K1",
+        "K2"
+      ],
+      "class_status": "open: NO per-class ideal quadrilateral solved",
+      "uniform_q_gamma_strict_bracket": [
+        "0",
+        "723/200"
+      ],
+      "applies_to": "every admissible simple ideal arc of this endpoint type; not a finite class enumeration",
+      "positive_canonical_weight_certified": false
+    },
+    {
+      "boundary_pair": [
+        "K2",
+        "K2"
+      ],
+      "class_status": "open: NO per-class ideal quadrilateral solved",
+      "uniform_q_gamma_strict_bracket": [
+        "0",
+        "5953/2000"
+      ],
+      "applies_to": "every admissible simple ideal arc of this endpoint type; not a finite class enumeration",
+      "positive_canonical_weight_certified": false
+    }
+  ],
+  "every_individual_q_gamma_certified": false,
+  "positive_support_classified": false,
+  "exhaustive_other_classes_q_le_2_proved": false,
+  "positive_support_upper_cardinality_KKL": 10,
+  "positive_support_list": null,
+  "total_canonical_norm_strict_bracket": [
+    "0",
+    "687/100"
+  ],
+  "horizontal_vertical_projection_norm_strict_bracket": [
+    "0",
+    "687/100"
+  ],
+  "norm_bracket_semantics": "0 <= norm < upper (non-strict at zero); positive support unknown",
+  "numerical_only": [],
+  "open": [
+    "which q_gamma>2",
+    "finite exhaustive candidate class enumeration",
+    "nontrivial individual q_gamma lower bounds and decisions",
+    "exact canonical WAD and h+v support",
+    "sharper norm and transfer constant"
+  ]
+}
