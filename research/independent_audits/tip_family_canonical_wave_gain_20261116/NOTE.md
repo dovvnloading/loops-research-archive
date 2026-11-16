@@ -153,7 +153,7 @@ The same quadrilateral formula gives `E_p <= E_p^coarse`; enlarging the electrod
 `-A_p>0` is a **positive affine** normalization; the four ratios in (4.4) are unchanged. The `p=13` box contains every `p>=13` box, and the *rational outward 2^-512* calculation of (4.2)/(4.4) gives
 
 \[
-\boxed{E_p\le E_p^{coarse}<5/4=1.25\quad\text{for all }p\ge13.}
+\boxed{E_p\le E_p^{coarse}<63/50=1.26\quad\text{for all }p\ge13.}
 \tag{4.6}
 \]
 
@@ -182,12 +182,12 @@ The **lower** side uses an explicit parent *lower* competitor and the two child 
 | 10 | `-1.814 < D_10 < 2.524` | **OPEN** |
 | 11 | `-1.814 < D_11 < 2.529` | **OPEN** |
 | 12 | `-1.814 < D_12 < 2.533` | **OPEN** |
-| **every `p>=13`** | **`-2.25 < D_p < 2.57`** | **OPEN** |
+| **every `p>=13`** | **`-2.26 < D_p < 2.57`** | **OPEN** |
 
-The final row is **all-period**, not interpolation: the sandwich's individual strict `0.26<P_p<0.78` for `p=13,14,15,16`, its all-period `p>=17` proof (including the radial-rate boundary check at `p=17`), and (4.6) imply `0.52<C_p<1.25` for every `p>=13`. The *exact rational* inequalities
+The final row is **all-period**, not interpolation: the sandwich's individual strict `0.26<P_p<0.78` for `p=13,14,15,16`, its all-period `p>=17` proof (including the radial-rate boundary check at `p=17`), and (4.6) imply `0.52<C_p<1.26` for every `p>=13`. The *exact rational* inequalities
 
 \[
--2.25<\frac2{1.25}-\frac1{0.26}<D_p
+-2.26<\frac2{1.26}-\frac1{0.26}<D_p
 <\frac1{0.26}-\frac1{0.78}<2.57
 \tag{5.2}
 \]
