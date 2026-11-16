@@ -208,6 +208,16 @@ def verify_whole_kneading_window() -> dict[str, str]:
     center_v = u[3].wider(wide[3])
     require(-Q(1, 40) < center_v.lo and center_v.hi < Q(1, 40),
             'period-three center chart')
+    # On the entire segment from 0 to v, enclose h(w), then h^2(w).
+    # The error 88q applies on the whole |w|<=12/5 complex disk.
+    center_param = Iv(Q('-1.756'), Q('-1.753'))
+    center_inputs = Iv(-Q(1, 40), Q(1, 40))
+    first = (center_inputs.square()+center_param).wider(88*q)
+    second = (first.square()+center_param).wider(88*q)
+    require(first.lo > -Q(9, 5) and first.hi < Q(9, 5),
+            'center derivative intermediate-1 outside disk')
+    require(second.lo > -Q(3, 2) and second.hi < Q(3, 2),
+            'center derivative intermediate-2 outside disk')
     require((Q(1, 20)+256*q)*(Q(18, 5)+256*q)*(3+256*q) < 1,
             'center factor may vanish')
 
