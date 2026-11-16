@@ -38,7 +38,7 @@ All displayed decimals in the table are **strict rational bounds**, not optimize
 
 Every finite row reruns the independent old dyadic root isolation and fixed-point intervals. The finite source-bound improvement is stronger than the displayed rounded cap:
 \[
-\boxed{C_p\le E_p-9/10^6<E_p\quad(3\le p\le12),}
+\boxed{C_p\le E_p-1/5{,}000{,}000<E_p\quad(3\le p\le12),}
 \]
 where \(E_p\) is the earlier **plane-slit full-log-lift** source child upper envelope. These strict bounds already give the rational positive margins
 \[
@@ -156,19 +156,29 @@ The checker independently reruns the exact Rouché expansion \(G_p(z)=x_p+A_pz^2
 \]
 as well as \(|G_p(0)|=x_p<R_p\). Therefore \(|G_p|>R_p\) on the circle and the central quadratic-like pullback component satisfies **\(V_p\subset D(0,R_p)=U_p\)**. This crucial source-domain fact is not borrowed from parent containment or a limiting chart.
 
-Consider the fixed open unit box \(B=\{2<s<3,\ 0<t<1\}\) in the universal log lift. Since \(e^2>7\) by a rational Taylor partial sum, \(\sinh2>3\), and each finite packet certifies \(3x_p>R_p\),
+The open unit box must be chosen **separately for each physical period**: the first tempting fixed box \(2<s<3\) does *not* lie outside \(U_p\) for all \(p\). The corrected verifier constructs the smallest integer \(s_p\ge2\), with \(s_p\le p\), such that
 \[
-|x_p\cosh(s+it)|\ge x_p\sinh s>3x_p>R_p\quad(z\in B).
-\]
-So **every deck translate of B is absent from the physical source lift**. Also \(0<e_j<\pi<4\) and \(|z-ie_j|<5\) on B, giving \(|F'|^2>1/5^4\). Combine this with (3.1):
-\[
-\int_B\widetilde\rho^2\,dA
->\frac{(b_c-a_c)(d_c-c_c)}{5^4\pi^2}
->\frac{(b_c-a_c)(d_c-c_c)}{10000}
->\boxed{9/10^6}.
+x_{p,\mathrm{low}}\left(\frac12\sum_{n=0}^{24}\frac{s_p^n}{n!}-\frac12\right)>R_p.
 \tag{3.3}
 \]
-The last strict step is the *individual* certified interval assertion \((b_c-a_c)(d_c-c_c)>9/100\) for every \(p=3,\dots,12\). Restricting the full admissible quotient metric to \(\Omega'_p\) removes the strictly positive energy of B without changing any physical child path length; so \(C_p\le E_p-9/10^6<E_p\). Conjugation gives the identical lower-child upper bound. We have used actual bounded **child** domains and a specific deleted positive-area set, not merely a strict-monotonicity slogan or an unproved child optimizer.
+Because \(e^{s_p}>\sum_{n=0}^{24}s_p^n/n!\) and \(e^{-s_p}<1\), this is a **strict rational certificate** for \(x_p\sinh(s_p)>R_p\). Define
+\[
+B_p=\{s_p<s<s_p+1,\quad 0<t<1\}.
+\]
+On \(B_p\), \(|x_p\cosh(s+it)|\ge x_p\sinh s>R_p\), so **every deck translate of \(B_p\) is absent from the physical source lift**. The verifier computes \(s_p=2,2,2,3,4,4,5,6,6,7\) for \(p=3,\ldots,12\), respectively, using the physical outward root packet and no numerical threshold inference. Since \(0<e_j<\pi<4\), we have \(|z-ie_j|<s_p+5\) on \(B_p\), yielding \(|F'|^2>(s_p+5)^{-4}\). By (3.1), the **missing positive energy** is
+\[
+\int_{B_p}\widetilde\rho^2\,dA
+>\frac{(b_c-a_c)(d_c-c_c)}{\pi^2(s_p+5)^4}
+>\frac{(b_c-a_c)(d_c-c_c)}{16(s_p+5)^4}
+>\boxed{\frac1{5{,}000{,}000}}.
+\tag{3.4}
+\]
+The last strict inequality is verified separately for each \(p\) from the outward angle intervals, including the gap \((b_c-a_c)(d_c-c_c)>9/100\). Restricting the full admissible quotient metric to \(\Omega'_p\) removes the positive energy of \(B_p\) without changing any physical child path length; hence
+\[
+\boxed{C_p\le E_p-\frac1{5{,}000{,}000}<E_p\quad(3\le p\le12).}
+\tag{3.5}
+\]
+Conjugation gives the identical lower-child upper bound. We use actual bounded **child** domains and a period-specific deleted positive-area set, not an unproved monotonicity slogan or a fictitious child optimizer.
 
 ## 4. Why this is not KKL-style Wave amplification
 
