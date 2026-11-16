@@ -1,0 +1,51 @@
+{
+  "format": "native-wave-near-parabolic-primitive-tip-refusal/v1",
+  "id": "native-near-parabolic-primitive-Chebyshev-tips-v1",
+  "family": "z^2+c",
+  "parabolic_parameter": "-7/4",
+  "side": "c > -7/4 (chaotic/intermittency side)",
+  "critical_orbit": "x0=0; x(k+1)=x(k)^2+c",
+  "tip_equation": "x(2*p)+x(p)=0; x(p)<0<x(2*p)",
+  "sequence_rule": "p=3*n; nearest selected Chebyshev-tip branch adjacent to the first superattracting p-window beyond the period-3 saddle-node channel; finite members only are certified",
+  "record_compatibility": "refused",
+  "first_incompatible_field": "MarkedHubbardTree.small_julia_intervals",
+  "purpose": "negative v1 marking compatibility certificate, NOT a PhysicalExample",
+  "members": [
+    {
+      "p": 24,
+      "denominator_power_of_two": 160,
+      "lower_numerator": "-2551914465108484579617401324842852154640068134308",
+      "upper_numerator": "-2551914465108484579617401324842852154640068134307",
+      "outer_radius": "1/1024",
+      "rouche_margin_between": ["1/625", "17/10000"],
+      "phase_separation_between": ["23/10000", "1/400"]
+    },
+    {
+      "p": 27,
+      "denominator_power_of_two": 160,
+      "lower_numerator": "-2553275755570421998660459007092359881945255630742",
+      "upper_numerator": "-2553275755570421998660459007092359881945255630741",
+      "outer_radius": "3/4096",
+      "rouche_margin_between": ["9/10000", "1/1000"],
+      "phase_separation_between": ["9/5000", "19/10000"]
+    },
+    {
+      "p": 30,
+      "denominator_power_of_two": 160,
+      "lower_numerator": "-2554197062530014440012717955456885164630387263690",
+      "upper_numerator": "-2554197062530014440012717955456885164630387263689",
+      "outer_radius": "5/8192",
+      "rouche_margin_between": ["3/5000", "7/10000"],
+      "phase_separation_between": ["7/5000", "3/2000"]
+    }
+  ],
+  "not_asserted": [
+    "infinite-branch existence or convergence theorem for p=3*n",
+    "a v1 three-small-interval MarkedHubbardTree or v1 ideal atom census",
+    "covering f_* atom table and immersion iota^* pullback table",
+    "two-versus-one sheet multiplicities and old-edge Perron matrix",
+    "zero-edge Wave crests, parent/child extremal widths or harmonic equality",
+    "a canonical attachment collar modulus h or contact arc angle ell",
+    "application of h*log(1/ell) annular contact-resistance crossover"
+  ]
+}
