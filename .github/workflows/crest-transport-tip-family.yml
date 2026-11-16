@@ -1,0 +1,104 @@
+name: Crest transport across real primitive tip family
+
+on:
+  push:
+    branches: [main, 'research/**']
+    paths:
+      - 'research/independent_audits/crest_transport_tip_family_20261116/**'
+      - '.github/workflows/crest-transport-tip-family.yml'
+  pull_request:
+    paths:
+      - 'research/independent_audits/crest_transport_tip_family_20261116/**'
+      - '.github/workflows/crest-transport-tip-family.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  whole-radius-interval-certificates:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Reject bytecode and compile the new standalone verifier
+        run: |
+          if git ls-files research/independent_audits/crest_transport_tip_family_20261116 | grep -E '__pycache__|\.pyc$'; then exit 1; fi
+          python -m py_compile research/independent_audits/crest_transport_tip_family_20261116/verify.py research/independent_audits/crest_transport_tip_family_20261116/test_verify.py
+      - name: Recompute all six locked 512-whole-bin two-sided certificates
+        run: python research/independent_audits/crest_transport_tip_family_20261116/verify.py
+      - name: Adversarial tests
+        run: python -m unittest discover -s research/independent_audits/crest_transport_tip_family_20261116 -p 'test_*.py' -v
+      - name: Recheck unchanged source physical interval verifiers
+        run: |
+          python research/independent_audits/real_primitive_tip_family_uniform_20261116/verify.py
+          python research/independent_audits/issue40_crest_transport_20261116/verify_crest_transport.py --check-manifest
+          python research/independent_audits/issue40_crest_transport_20261116/verify_crest_transport.py --adversarial
+          python research/native_wave_transfer/regenerate.py --check
+          python research/native_wave_transfer/regenerate_period4.py --check
+
+  existing-native-discrete-lean:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: No proof holes in existing native marking models
+        run: |
+          if grep -En '(^|[^A-Za-z_])(sorry|admit|axiom|unsafe)([^A-Za-z_]|$)' TipKKLTreeMarking.lean TipNativeProperRestriction.lean; then exit 1; fi
+      - uses: leanprover/lean-action@v1
+        with:
+          auto-config: 'false'
+          build: 'true'
+          test: 'false'
+          lint: 'false'
+          use-github-cache: 'false'
+          use-mathlib-cache: 'false'
+      - name: Rebuild unchanged faithful discrete Lean targets
+        run: lake build TipKKLTreeMarking TipNativeProperRestriction
+
+  unchanged-legacy-workflows-at-exact-pr-sha:
+    name: Require Research validation and weighted Lean CI at exact PR head
+    needs: [whole-radius-interval-certificates, existing-native-discrete-lean]
+    if: github.event_name == 'pull_request' && github.event.pull_request.head.repo.full_name == github.repository
+    runs-on: ubuntu-latest
+    timeout-minutes: 85
+    permissions:
+      contents: read
+      actions: write
+    steps:
+      - name: Dispatch existing workflows and require exact SHA success
+        env:
+          GH_TOKEN: ${{ github.token }}
+          REPO: ${{ github.repository }}
+          PR_BRANCH: ${{ github.event.pull_request.head.ref }}
+          PR_SHA: ${{ github.event.pull_request.head.sha }}
+        run: |
+          set -euo pipefail
+          current="$(gh api "repos/$REPO/git/ref/heads/$PR_BRANCH" --jq '.object.sha')"
+          [[ "$current" == "$PR_SHA" ]] || { echo 'PR head moved before dispatch'; exit 1; }
+          for workflow in lean-proofs.yml weighted-lean.yml; do
+            gh workflow run "$workflow" --repo "$REPO" --ref "$PR_BRANCH"
+          done
+          for workflow in lean-proofs.yml weighted-lean.yml; do
+            found=0
+            for attempt in $(seq 1 280); do
+              runs="$(gh run list --repo "$REPO" --workflow "$workflow" --branch "$PR_BRANCH" --event workflow_dispatch --limit 40 --json databaseId,headSha,status,conclusion)"
+              match="$(printf '%s' "$runs" | jq -c --arg sha "$PR_SHA" '[.[] | select(.headSha == $sha)] | first // empty')"
+              if [[ -n "$match" ]]; then
+                run_id="$(printf '%s' "$match" | jq -r .databaseId)"
+                status="$(printf '%s' "$match" | jq -r .status)"
+                conclusion="$(printf '%s' "$match" | jq -r .conclusion)"
+                if [[ "$status" == completed ]]; then
+                  echo "$workflow at $PR_SHA: $conclusion (run $run_id)"
+                  [[ "$conclusion" == success ]] || { gh run view "$run_id" --repo "$REPO" || true; exit 1; }
+                  found=1
+                  break
+                fi
+              fi
+              sleep 15
+            done
+            [[ "$found" == 1 ]] || { echo "$workflow lacks exact-SHA success"; exit 1; }
+          done
+          current="$(gh api "repos/$REPO/git/ref/heads/$PR_BRANCH" --jq '.object.sha')"
+          [[ "$current" == "$PR_SHA" ]] || { echo 'PR moved during validation'; exit 1; }
