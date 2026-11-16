@@ -279,7 +279,24 @@ def verify_period13_bracket() -> dict[str, str]:
     require(contains.lo < 0 < contains.hi, 'p13 hull does not contain zero')
     require(derivative.hi < 0, 'p13 full-hull derivative sign')
     require(x3.hi < 0, 'p13 full-hull negative x3p')
-    return {'parameter_lower_numerator': str(N13),
+    # Link the independently bracketed root to the *actual* analytic chart.
+    # All comparisons use 2^-512 outward interval arithmetic, not a seed.
+    epsilon = hull + Grid.exact(2)
+    require(epsilon.lo > 14*q*S and epsilon.hi < 16*q*S,
+            'p13 bracket outside analytic epsilon window')
+    xx, aa = Grid.exact(0), Grid.exact(1)
+    for j in range(1, 14):
+        if j >= 2:
+            aa = Grid.exact(2)*xx*aa
+        xx = xx.square()+hull
+        if j == 1:
+            require(xx.hi < 0, 'p13 first sign wrong')
+        else:
+            require(xx.lo > 0, f'p13 prefix sign j={j} wrong')
+    require(xx.hi < 12*q*S, 'p13 root outside central 12q window')
+    tau = aa*xx
+    require(tau.lo > t0*S and tau.hi < t1*S, 'p13 normalized root outside J')
+    return {'chart_tau_in_J': 'true', 'parameter_lower_numerator': str(N13),
             'parameter_upper_numerator': str(N13+1),
             'denominator_power_of_two': '256'}
 
