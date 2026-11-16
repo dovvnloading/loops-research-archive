@@ -286,8 +286,8 @@ Run from the repository root:
 \]
 The new checker **independently recomputes** the physical critical
 orbit at outward dyadic precision \(2^{-256}\) from the immutable PR #68
-parameter enclosure; tests \(x_3,x_6\), cos-angle bounds, the two
-certified whole physical collars and the original wave's marking,
+parameter enclosure; tests \(x_3,x_6\), cos-angle bounds, the
+certified whole physical collar and the original wave's marking,
 width formulas and restriction count. It uses exact
 \(\mathbb Q\) operations for Machin's \(\pi\), alternating
 Taylor bounds on \(\cos\), and the positive atanh
