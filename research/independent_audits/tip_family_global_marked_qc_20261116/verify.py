@@ -127,14 +127,19 @@ def _strict_interval(value: object, numbers: tuple[int, int],
 
 def check_row(pair: tuple[int, int], record: dict) -> None:
     """Validate an archived exact output; no float conversions or new geometry."""
-    require(pair in GRID and type(pair[0]) is int and type(pair[1]) is int,
+    require(type(pair) is tuple and len(pair) == 2
+            and all(type(n) is int for n in pair) and pair in GRID,
             "unsupported depth-two grid key")
+    require(type(record) is dict, "invalid depth-two record")
     require(record.get("pair") == pair, "wrong grid row/period")
     rad5, plane5, gaps = GRID[pair]
     _strict_interval(record.get("radial"), rad5, 100000, "radial witness")
     _strict_interval(record.get("qplane"), plane5, 100000, "plane envelope")
-    require(tuple(record.get("radial5", ())) == rad5, "radial grid bins drifted")
-    require(tuple(record.get("qplane5", ())) == plane5, "plane grid bins drifted")
+    rad_bins, plane_bins = record.get("radial5"), record.get("qplane5")
+    require(type(rad_bins) in (tuple, list) and tuple(rad_bins) == rad5,
+            "radial grid bins drifted")
+    require(type(plane_bins) in (tuple, list) and tuple(plane_bins) == plane5,
+            "plane grid bins drifted")
     for key, floor in zip(
             ("rouche1", "rouche2", "rouche3_normalized_lower"), gaps):
         x = record.get(key)
