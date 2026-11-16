@@ -1,0 +1,46 @@
+\documentclass[11pt,reqno]{amsart}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{geometry,booktabs}
+\usepackage[colorlinks=true,linkcolor=blue,citecolor=blue,urlcolor=blue]{hyperref}
+\geometry{margin=1in}
+\numberwithin{equation}{section}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem{question}[theorem]{Open question}
+\newcommand{\C}{\mathbb C}
+\newcommand{\R}{\mathbb R}
+\newcommand{\Q}{\mathbb Q}
+\newcommand{\W}{\mathcal W}
+\newcommand{\T}{\mathcal T}
+\newcommand{\Om}{\Omega}
+\newcommand{\eps}{\varepsilon}
+\newcommand{\pp}{\mathrm{pair}}
+\DeclareMathOperator{\comp}{component}
+\title[Real primitive tips and marked Waves]{A real primitive-tip family: quadratic-like realization,\\ physical ideal markings, and independent marked-Wave gain}
+\author{Research compilation from loops-research-archive}
+\date{16 November 2026 (AI-assisted; not independently reviewed)}
+\begin{document}
+\begin{abstract}
+For every integer $p\ge3$ we construct a selected real primitive-tip parameter $c_p$ with $c_p+2\sim(3\pi^2/2)4^{-p}$, proper degree-two first and third polynomial-like returns, and uniform Rouch\'e margins.  Straightening, dendrite, prime-end and Kahn--Kapiamba--Lyubich (KKL) theorems identify the physical period-three little Julia intervals, ten/twenty ideal atoms, one attachment, distinct covering and immersion, the golden-ratio edge matrix and zero-old-edge crests.  On the physical marked slit surfaces, a radial lower Wave and a lifted-quadrilateral upper envelope give a canonical marked-width sandwich.  Embedded parent quadrilaterals and domain-sensitive source metrics imply the strict \emph{independent unbuffered} defect $D_p=2/C_p-1/P_p>1/100$ for all $p\ge3$, where parent and children are optimized separately; the leafwise-pairable parent obeys KKL's opposite loss-or-equality inequality.  For the \emph{different} buffered canonical WAD we exclude every outer-incident class for $p\ge11$ but leave its inner support open.  Finite crest and nested-renormalization certificates are distinguished from conjectural limits and missing depth-uniform global marked quasiconformal transport.  No Mandelbrot-set local-connectivity result is claimed.  This unreviewed manuscript was prepared with AI assistance from the versioned archive.
+\end{abstract}
+\maketitle
+\tableofcontents
+\section{Introduction and proof status}
+This paper studies a \emph{real}, selected, postcritically finite quadratic family.  The period-three tip belongs to the $p$-return, not to the original polynomial of period $p$.  In particular $x_{jp}=f^{jp}(0)$, not $x_j=f^j(0)$.  The results concern the physical tree slit and its central degree-two pullback, not an arbitrary puzzle or a global Mandelbrot statement.  KKL \cite{KKL2026} is a posted research preprint, not a claimed peer-reviewed journal publication.
+
+Each proof distinguishes exact rational interval computations, written complex-analytic deductions, and named external theorems.  Passing a Python or Lean check certifies the finite premises it implements but never formalizes KKL, straightening, Carath\'eodory boundaries, or conformal extremal width.  The complete verification commands and precision are in \S\ref{sec:reproduce}.  The accompanying \texttt{REVIEW\_FINDINGS.md} records superseded errors and remaining proof boundaries.  The mathematical authorship and independent review of this synthesis remain to be established.
+
+\input{sections/parameter}
+\input{sections/marking}
+\input{sections/wave_proofs}
+\input{sections/buffer_depth}
+\input{sections/reproduction}
+\bibliographystyle{plain}
+\bibliography{references}
+\end{document}

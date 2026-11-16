@@ -1,0 +1,60 @@
+\section{Selected parameter, orbit order and proper returns}\label{sec:parameter}
+Throughout $x_j=x_j(c_p)$ means $f_{c_p}^j(0)$ in the physical coordinate.
+
+Define $q=4^{-p}$ and
+\begin{equation}\label{eq:basic}
+ f_c(z)=z^2+c,\quad G_c=f_c^p,\quad
+ P_p(c)=x_{6p}(c)+x_{3p}(c),\quad
+ A_p(c)=\prod_{j=1}^{p-1}2x_j(c),\quad
+ \tau_p(c)=A_p(c)x_p(c).
+\end{equation}
+For $3\le p\le12$ let $\sigma_p$ be the exact rational decimal in Table~\ref{tab:seeds}, and use the open chart
+$(\sigma_p-10^{-75},\sigma_p+10^{-75})$.
+
+For $p\ge13$ define the explicit near-minus-two chart
+\begin{align}
+ \mathcal{C}_p&=\{c=-2+\eps:14q<\eps<16q,\ 
+ |x_p(c)|<14q,\ -2<\tau_p(c)<1/4\},\label{eq:chart}\\
+ \mathcal{K}_p&=\{c\in\mathcal{C}_p:x_1<0,\ x_j>0\ (2\le j\le p),\
+ (\operatorname{sgn}x_{jp})_{j=1}^6=(+,-,-,+,-,+)\}.\label{eq:knead}
+\end{align}
+These conditions contain no critical-orbit equation.
+\begin{theorem}[Selected real tips]\label{thm:real}
+There is exactly one simple zero $c_p$ of $P_p$ in the finite chart for $3\le p\le12$ or in $\mathcal K_p$ for $p\ge13$.  No larger-window uniqueness is claimed.  The dividing fixed point $\alpha_p$ is unique in $(x_{6p},x_{4p})$, and
+\begin{align}
+ x_{2p}&<x_{5p}<x_{3p}<0<x_{6p}<\alpha_p<x_{4p}<x_p,\label{eq:order1}\\
+ -x_p&<-x_{4p}<x_{2p}<x_{5p}<-\alpha_p<x_{3p}<x_{6p}
+ <\alpha_p<-x_{5p}<-x_{2p}<x_{4p}<x_p.\label{eq:order2}
+\end{align}
+The map $G_p$ is increasing on $[-x_p,0]$ and decreasing on $[0,x_p]$; $A_p<0$ and there is no earlier central critical return.  For every $p\ge13$,
+\begin{equation}\label{eq:tip-rate}
+ \left|c_p+2-\frac{3\pi^2}{2}4^{-p}\right|
+ <500p\,16^{-p},
+ \qquad c_p+2\sim\frac{3\pi^2}{2}4^{-p}.
+\end{equation}
+\end{theorem}
+
+\begin{theorem}[Degree-two first and third returns]\label{thm:rouche}
+Put $R_3=1/4$, $R_p=2^{-p}$ for $p\ge4$,
+$U_p=D(0,R_p)$, and $V_p=\comp_0 G_p^{-1}(U_p)$.
+For all $p\ge3$, $V_p\Subset U_p$ and
+$G_p:V_p\to U_p$ is proper holomorphic of \emph{degree two},
+with the full-complex-disk Rouch\'e gap $>1/25$.
+For $p\ge13$ the explicit margin is
+\begin{equation}\label{eq:p-margin}
+ |A_p|R_p^2-|x_p|-T_p-R_p
+ \ge 3/20-12q-1/128-2^{-p}>1/25,
+\end{equation}
+where $T_p$ bounds every term of degree at least four
+in $G_p(z)-x_p-A_pz^2$ on the entire disk $|z|\le R_p$.
+The \emph{different} third return, normalized by
+$h_p(w)=A_pG_p(w/A_p)$, has a central proper
+degree-two restriction into $D(0,3/10)$, with
+normalized Rouch\'e gap $>1/8$.
+The unrestrained polynomial has degree $2^p$; nothing
+here gives a uniform modulus for subsequently shrunken
+three-return annuli.
+\end{theorem}
+
+\input{sections/parameter_proof}
+\input{sections/finite_seeds}
