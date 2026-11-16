@@ -1,0 +1,224 @@
+{
+  "covering_G_star": "S_s -> I_(s mod 10)",
+  "finite_scope": "p=3..8, full radius bins, outward fixed point 2^-384",
+  "immersion_iota_star_blocks": [
+    [
+      18,
+      19,
+      0,
+      1,
+      2
+    ],
+    [
+      3,
+      4
+    ],
+    [
+      5
+    ],
+    [
+      6
+    ],
+    [
+      7,
+      8,
+      9
+    ],
+    [
+      10
+    ],
+    [
+      11,
+      12,
+      13
+    ],
+    [
+      14
+    ],
+    [
+      15
+    ],
+    [
+      16,
+      17
+    ]
+  ],
+  "results": [
+    {
+      "analytic_status": "conditional on prime-end KKL proper restriction, univalence and exact strip width",
+      "certified_ratio_lower": "5676/10000",
+      "certified_ratio_upper": "5684/10000",
+      "collar": {
+        "radius": "(1/80,1/77)",
+        "u_max_upper": "7/64",
+        "u_min_lower": "11/128",
+        "whole_bins": 512
+      },
+      "first_image_angular_derivative_margin_positive": true,
+      "full_disk_images_in_target": true,
+      "lower_bound_is_for_declared_collar_only": true,
+      "old_edge_crest_descendants": [
+        "upper q side: S0->S3, crest closure I1,I2 (I1=E0 upper)",
+        "lower q side: S17->S0, crest closure I8,I9 (I9=E0 lower)"
+      ],
+      "p": 3,
+      "parameter_bracket_2pow192": [
+        -11214108439445784980951565438958061530896939533591746653709,
+        -11214108439445784980951565438958061530896939533591746653708
+      ],
+      "parent_wave": {
+        "center": "-9/64",
+        "radius": "(3/256,1/64)",
+        "width": "log(4/3)/(2*pi)"
+      },
+      "width_formula": "(2*pi/log(parent ratio))*integral_collar dr/(r*acos(u_p(r)))"
+    },
+    {
+      "analytic_status": "conditional on prime-end KKL proper restriction, univalence and exact strip width",
+      "certified_ratio_lower": "5729/10000",
+      "certified_ratio_upper": "5733/10000",
+      "collar": {
+        "radius": "x_p*(63/1000,667/10000)",
+        "u_max_upper": "5/128",
+        "u_min_lower": "1/64",
+        "whole_bins": 512
+      },
+      "first_image_angular_derivative_margin_positive": true,
+      "full_disk_images_in_target": true,
+      "lower_bound_is_for_declared_collar_only": true,
+      "old_edge_crest_descendants": [
+        "upper q side: S0->S3, crest closure I1,I2 (I1=E0 upper)",
+        "lower q side: S17->S0, crest closure I8,I9 (I9=E0 lower)"
+      ],
+      "p": 4,
+      "parameter_bracket_2pow192": [
+        -12193610160972405830120367485459353629138957223175502573913,
+        -12193610160972405830120367485459353629138957223175502573912
+      ],
+      "parent_wave": {
+        "center": "-3*x_p/4",
+        "radius": "(x_p/16,(p-1)*x_p/(8*p))",
+        "width": "log(3/2)/(2*pi)"
+      },
+      "width_formula": "(2*pi/log(parent ratio))*integral_collar dr/(r*acos(u_p(r)))"
+    },
+    {
+      "analytic_status": "conditional on prime-end KKL proper restriction, univalence and exact strip width",
+      "certified_ratio_lower": "4902/10000",
+      "certified_ratio_upper": "4904/10000",
+      "collar": {
+        "radius": "x_p*(313/5000,663/10000)",
+        "u_max_upper": "1/64",
+        "u_min_lower": "-1/128",
+        "whole_bins": 512
+      },
+      "first_image_angular_derivative_margin_positive": true,
+      "full_disk_images_in_target": true,
+      "lower_bound_is_for_declared_collar_only": true,
+      "old_edge_crest_descendants": [
+        "upper q side: S0->S3, crest closure I1,I2 (I1=E0 upper)",
+        "lower q side: S17->S0, crest closure I8,I9 (I9=E0 lower)"
+      ],
+      "p": 5,
+      "parameter_bracket_2pow192": [
+        -12463362319716585005872989311512332060925612005103192709893,
+        -12463362319716585005872989311512332060925612005103192709892
+      ],
+      "parent_wave": {
+        "center": "-3*x_p/4",
+        "radius": "(x_p/16,(p-1)*x_p/(8*p))",
+        "width": "log(8/5)/(2*pi)"
+      },
+      "width_formula": "(2*pi/log(parent ratio))*integral_collar dr/(r*acos(u_p(r)))"
+    },
+    {
+      "analytic_status": "conditional on prime-end KKL proper restriction, univalence and exact strip width",
+      "certified_ratio_lower": "4620/10000",
+      "certified_ratio_upper": "4622/10000",
+      "collar": {
+        "radius": "x_p*(1/16,663/10000)",
+        "u_max_upper": "1/256",
+        "u_min_lower": "-1/128",
+        "whole_bins": 512
+      },
+      "first_image_angular_derivative_margin_positive": true,
+      "full_disk_images_in_target": true,
+      "lower_bound_is_for_declared_collar_only": true,
+      "old_edge_crest_descendants": [
+        "upper q side: S0->S3, crest closure I1,I2 (I1=E0 upper)",
+        "lower q side: S17->S0, crest closure I8,I9 (I9=E0 lower)"
+      ],
+      "p": 6,
+      "parameter_bracket_2pow192": [
+        -12531496128803264686629812787093463121894480287952440515685,
+        -12531496128803264686629812787093463121894480287952440515684
+      ],
+      "parent_wave": {
+        "center": "-3*x_p/4",
+        "radius": "(x_p/16,(p-1)*x_p/(8*p))",
+        "width": "log(5/3)/(2*pi)"
+      },
+      "width_formula": "(2*pi/log(parent ratio))*integral_collar dr/(r*acos(u_p(r)))"
+    },
+    {
+      "analytic_status": "conditional on prime-end KKL proper restriction, univalence and exact strip width",
+      "certified_ratio_lower": "4375/10000",
+      "certified_ratio_upper": "4376/10000",
+      "collar": {
+        "radius": "x_p*(1/16,663/10000)",
+        "u_max_upper": "1/256",
+        "u_min_lower": "-1/128",
+        "whole_bins": 512
+      },
+      "first_image_angular_derivative_margin_positive": true,
+      "full_disk_images_in_target": true,
+      "lower_bound_is_for_declared_collar_only": true,
+      "old_edge_crest_descendants": [
+        "upper q side: S0->S3, crest closure I1,I2 (I1=E0 upper)",
+        "lower q side: S17->S0, crest closure I8,I9 (I9=E0 lower)"
+      ],
+      "p": 7,
+      "parameter_bracket_2pow192": [
+        -12548529462359236409168186108132124778502513816111687694548,
+        -12548529462359236409168186108132124778502513816111687694547
+      ],
+      "parent_wave": {
+        "center": "-3*x_p/4",
+        "radius": "(x_p/16,(p-1)*x_p/(8*p))",
+        "width": "log(12/7)/(2*pi)"
+      },
+      "width_formula": "(2*pi/log(parent ratio))*integral_collar dr/(r*acos(u_p(r)))"
+    },
+    {
+      "analytic_status": "conditional on prime-end KKL proper restriction, univalence and exact strip width",
+      "certified_ratio_lower": "4213/10000",
+      "certified_ratio_upper": "4214/10000",
+      "collar": {
+        "radius": "x_p*(1/16,663/10000)",
+        "u_max_upper": "1/256",
+        "u_min_lower": "-1/128",
+        "whole_bins": 512
+      },
+      "first_image_angular_derivative_margin_positive": true,
+      "full_disk_images_in_target": true,
+      "lower_bound_is_for_declared_collar_only": true,
+      "old_edge_crest_descendants": [
+        "upper q side: S0->S3, crest closure I1,I2 (I1=E0 upper)",
+        "lower q side: S17->S0, crest closure I8,I9 (I9=E0 lower)"
+      ],
+      "p": 8,
+      "parameter_bracket_2pow192": [
+        -12552785306501968995178380515935992615386967495660640540189,
+        -12552785306501968995178380515935992615386967495660640540188
+      ],
+      "parent_wave": {
+        "center": "-3*x_p/4",
+        "radius": "(x_p/16,(p-1)*x_p/(8*p))",
+        "width": "log(7/4)/(2*pi)"
+      },
+      "width_formula": "(2*pi/log(parent ratio))*integral_collar dr/(r*acos(u_p(r)))"
+    }
+  ],
+  "schema": "crest-tip-family-binned-v1",
+  "uniform_all_p": "open under PR80 hypotheses"
+}
