@@ -63,7 +63,7 @@ class NearParabolicPrimitiveTests(unittest.TestCase):
             self.assertGreater(noncentral, 0)
             # A wildly enlarged disk must fail the *primitive* phase certificate.
             with self.assertRaisesRegex(AssertionError, "phase disks overlap"):
-                near.complex_phase_bounds(bracket(c, 2*p), p, Q(1, 8))
+                near.complex_phase_bounds(bracket(c, 2*p), p, Q(1, 64))
 
     def test_incorrect_root_and_parameter_precision_rejected(self):
         for i in range(3):
