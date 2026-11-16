@@ -173,8 +173,10 @@ def tail_chart(finite):
     radius_floor = v.Iv.point(F(3, 20)*2**13)
     # By the all-p theorem -A_p * 4^-p > 3/20, hence
     # (-A_p) R_p > (3/20) 2^p. This grows with p.
-    require(radius_floor.low() == F(3, 20)*2**13,
-            "wrong all-period physical target radius")
+    exact_floor = F(3, 20)*2**13
+    require(radius_floor.low() <= exact_floor <= radius_floor.high() and
+            radius_floor.low() > F(1200),
+            "wrong outward all-period target-radius enclosure")
     check_order(xi)
     return xi, radius_floor
 
