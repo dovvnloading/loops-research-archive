@@ -55,6 +55,8 @@ class CanonicalWidthAuditTests(unittest.TestCase):
             v.log_iv(v.Iv.point(v.Q(1,2)))
         with self.assertRaises(AssertionError):
             v.arccos_pos(v.Iv.point(0))
+        with self.assertRaises(AssertionError):
+            v.atan_unit(v.Iv.point(v.Q(-1,1000000000000)))
 
     def test_committed_read_only_exact_output(self):
         expected=json.loads(v.RESULT.read_text())
