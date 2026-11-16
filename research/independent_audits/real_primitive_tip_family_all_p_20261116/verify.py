@@ -82,8 +82,20 @@ def verify_universal_constants() -> dict[str, str]:
     require(eps < Q(1, 4_000_000), 'epsilon upper bound')
     require(P0*eps < Q(1, 300_000), 'p*epsilon decays from p=13')
     require(P0*P0*eps < Q(1, 20_000), 'p^2*epsilon decays from p=13')
-    require(Q(38, 25)**2 < Q(7, 3) and Q(8, 3) < Q(41, 25)**2,
-            'initial angle bounds')
+    require((1+eps)*(1-Q(7, 12)*eps) >= 1,
+            'initial theta2 squared/y2 cosine bound')
+    require(Q(38, 25)**2 < Q(7, 3)*(1-eps)
+            and Q(8, 3)*(1+eps) < Q(41, 25)**2,
+            'initial angle bounds with perturbation')
+    require(Q(9)-4*eps > Q(29, 10)**2,
+            'parameter fixed-point radical lower bound')
+    require(Q(3)-2*eps-Q(10, 29) > Q(99, 100)*Q(8, 3),
+            'normalized initial derivative r2 lower bound')
+    require(Q(38, 25)*(1-P0*eps/2) > Q(3, 2),
+            'p-th angle remains above 3/2')
+    t = Q(3, 2)
+    require(2*(t*t/2-t**4/24)> Q(9, 5),
+            'p-th logistic displacement exceeds 9/5')
     require((Q(41, 25)-Q(157, 100)) <= Q(7, 100), 'sin lower bound: right side')
     require(Q(11, 7)-Q(38, 25) < Q(7, 100), 'sin lower bound: left side')
     require(1-Q(7, 100)**2/2 > Q(99, 100), 'sin on [1.52,1.64]')
