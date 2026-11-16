@@ -231,7 +231,7 @@ def source_inputs():
 def proof_role(i: int, j: int, n: int) -> str:
     same_parent = i // 2 == j // 2
     if n == 0 and same_parent:
-        require(j == i ^ 1, "the own seam is not an ideal J point")
+        require(j == (i ^ 1), "the own seam is not an ideal J point")
         return "mate_naturality_root"
     if n == 0:
         return "opposite_parent_wake_nonroot"
@@ -299,12 +299,13 @@ def compute_manifest(tiles, parents, rays, trichotomy, wake_lookup):
     require((len(rooted_rows), len(nonroot_rows), len(interior),
              len(proper_tail)) == (8, 80, 8, 80),
             "dual source/fine J-side footprint counts changed")
-    require({id(r) for r in rooted_rows} == {id(r) for r in interior} and
-            {id(r) for r in nonroot_rows} == {id(r) for r in proper_tail},
+    require(all((r["fine_sheet_footprint"] == "marked_root") ==
+                (r["KL_W_to_V_boundary_footprint"] == "V_interior_collapse")
+                for r in rows),
             "the original source V-proper tails must be fine nonroot in cohort")
 
     prior_root = trichotomy["sample_exact_witnesses"]["marked_fine_root"]
-    require({(r["ray"], r["source_W_tile"], r["original_ideal_side"],
+    require({(r["anchor_ray"], r["source_W_tile"], r["original_ideal_side"],
               r["unwrapped_G_angle"]) for r in rooted_rows} ==
             {(r["ray"], r["source_W_tile"], r["ideal_side"], r["G_angle"])
              for r in prior_root},
