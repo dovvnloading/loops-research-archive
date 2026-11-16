@@ -1,0 +1,111 @@
+name: Canonical WAD quadrilateral moduli (partial certified collar bound)
+
+on:
+  pull_request:
+    paths:
+      - '.github/workflows/canonical-wad-quadrilateral-moduli.yml'
+      - 'research/independent_audits/canonical_wad_quadrilateral_moduli_20261116/**'
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/canonical-wad-quadrilateral-moduli.yml'
+      - 'research/independent_audits/canonical_wad_quadrilateral_moduli_20261116/**'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  certified-peripheral-annuli:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Block existing-file edits and forbidden paths
+        if: github.event_name == 'pull_request'
+        env:
+          BASE_SHA: ${{ github.event.pull_request.base.sha }}
+        run: |
+          set -euo pipefail
+          mapfile -t changes < <(git diff --name-status "$BASE_SHA" HEAD)
+          [[ "${#changes[@]}" -eq 5 ]] || {
+            printf 'Expected five new files; got:\n%s\n' "${changes[*]}"
+            exit 1
+          }
+          for change in "${changes[@]}"; do
+            IFS=$'\t' read -r status path <<< "$change"
+            [[ "$status" == A ]] || { echo "Existing-file edit: $change"; exit 1; }
+            case "$path" in
+              .github/workflows/canonical-wad-quadrilateral-moduli.yml|\
+              research/independent_audits/canonical_wad_quadrilateral_moduli_20261116/*) ;;
+              *) echo "Unexpected path: $path"; exit 1 ;;
+            esac
+          done
+      - name: Exact rational annular integrals and deterministic results
+        run: |
+          python -m py_compile research/independent_audits/canonical_wad_quadrilateral_moduli_20261116/verify.py
+          python research/independent_audits/canonical_wad_quadrilateral_moduli_20261116/verify.py --check-manifest
+      - name: Rejection tests for changed marking, dyadic tip, collars and false claims
+        run: python -m unittest discover -s research/independent_audits/canonical_wad_quadrilateral_moduli_20261116 -p 'test_*.py' -v
+      - name: Independently rerun unchanged canonical parent certificates
+        run: |
+          python research/independent_audits/canonical_wad_conformal_weights_20261116/verify.py --check-manifest
+          python -m unittest discover -s research/independent_audits/canonical_wad_conformal_weights_20261116 -p 'test_*.py' -v
+          python research/independent_audits/canonical_wad_electrode_incidence_20261116/verify.py --check-manifest
+          python research/independent_audits/verify_tip_KKL_tree_marked_breakage.py --check-manifest
+
+  unchanged-research-validation-and-weighted-lean:
+    name: Require existing Research validation and Weighted Lean at exact PR SHA
+    needs: certified-peripheral-annuli
+    if: github.event_name == 'pull_request' && github.event.pull_request.head.repo.full_name == github.repository
+    runs-on: ubuntu-latest
+    timeout-minutes: 95
+    permissions:
+      contents: read
+      actions: write
+    steps:
+      - name: Dispatch both unchanged workflows and check exact head conclusion
+        env:
+          GH_TOKEN: ${{ github.token }}
+          REPO: ${{ github.repository }}
+          BRANCH: ${{ github.event.pull_request.head.ref }}
+          HEAD_SHA: ${{ github.event.pull_request.head.sha }}
+        run: |
+          set -euo pipefail
+          for workflow in lean-proofs.yml weighted-lean.yml; do
+            gh workflow run "$workflow" --repo "$REPO" --ref "$BRANCH"
+          done
+          for workflow in lean-proofs.yml weighted-lean.yml; do
+            success=0
+            for attempt in $(seq 1 300); do
+              runs="$(gh run list --repo "$REPO" --workflow "$workflow" \
+                --branch "$BRANCH" --event workflow_dispatch --limit 40 \
+                --json databaseId,headSha,status,conclusion)"
+              match="$(printf '%s' "$runs" | jq -c --arg sha "$HEAD_SHA" \
+                '[.[] | select(.headSha == $sha)] | first // empty')"
+              if [[ -n "$match" ]]; then
+                run_id="$(printf '%s' "$match" | jq -r .databaseId)"
+                status="$(printf '%s' "$match" | jq -r .status)"
+                conclusion="$(printf '%s' "$match" | jq -r .conclusion)"
+                if [[ "$status" == completed ]]; then
+                  echo "$workflow at $HEAD_SHA: $conclusion (run $run_id)"
+                  if [[ "$conclusion" != success ]]; then
+                    gh run view "$run_id" --repo "$REPO" || true
+                    exit 1
+                  fi
+                  success=1
+                  break
+                fi
+              fi
+              sleep 15
+            done
+            if [[ "$success" != 1 ]]; then
+              echo "Missing successful $workflow dispatch at exact PR head $HEAD_SHA"
+              exit 1
+            fi
+          done
