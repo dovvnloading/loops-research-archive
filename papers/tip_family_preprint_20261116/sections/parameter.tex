@@ -33,3 +33,28 @@ The map $G_p$ is increasing on $[-x_p,0]$ and decreasing on $[0,x_p]$; $A_p<0$ a
  \qquad c_p+2\sim\frac{3\pi^2}{2}4^{-p}.
 \]
 \end{theorem}
+
+\begin{theorem}[Degree-two first and third returns]\label{thm:rouche}
+Put $R_3=1/4$, $R_p=2^{-p}$ for $p\ge4$,
+$U_p=D(0,R_p)$, and $V_p=\comp_0 G_p^{-1}(U_p)$.
+For all $p\ge3$, $V_p\Subset U_p$ and
+$G_p:V_p\to U_p$ is proper holomorphic of \emph{degree two},
+with the full-complex-disk Rouch\'e gap $>1/25$.
+For $p\ge13$ the explicit margin is
+\begin{equation}\label{eq:p-margin}
+ |A_p|R_p^2-|x_p|-T_p-R_p
+ \ge 3/20-12q-1/128-2^{-p}>1/25,
+\end{equation}
+where $T_p$ bounds every term of degree at least four
+in $G_p(z)-x_p-A_pz^2$ on the entire disk $|z|\le R_p$.
+The \emph{different} third return, normalized by
+$h_p(w)=A_pG_p(w/A_p)$, has a central proper
+degree-two restriction into $D(0,3/10)$, with
+normalized Rouch\'e gap $>1/8$.
+The unrestrained polynomial has degree $2^p$; nothing
+here gives a uniform modulus for subsequently shrunken
+three-return annuli.
+\end{theorem}
+
+\input{sections/parameter_proof}
+\input{sections/finite_seeds}
