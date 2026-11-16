@@ -1,0 +1,20 @@
+{
+  "source_contract": "source_contracts/record_fields.json#/records/PhysicalExample",
+  "id": "native-tip-pr68-v1",
+  "polynomial": {"family": "z^2+c", "critical_point": "0", "parameter_reference": "results/tip_root_interval_geometry.json#/parameter_bracket"},
+  "return": {"physical_iterate": 3, "restricted_degree": 2, "global_degree": 8},
+  "domains": {
+    "source": {"symbol": "V3", "definition": "component(G^-1(U3),0)", "restricted_degree": 2},
+    "target": {"symbol": "U3", "shape": "open_disk", "center": "0", "radius": "1/4"}
+  },
+  "marking": {"induced_from": "K0 U K1 U K2 U {alpha}", "target_cuts": ["x15", "x9", "x18", "alpha", "x12"], "outer_boundary": "single_whole_component_atom"},
+  "operations": {
+    "covering": {"map": "G", "ideal_action": "f_*", "domain": "V3\\Tprime", "codomain": "U3\\T"},
+    "immersion": {"map": "identity_inclusion", "ideal_action": "iota^*", "domain": "V3\\Tprime", "codomain": "U3\\T", "new_attachment_sides": "target_interior"}
+  },
+  "paths": [
+    {"name": "crossing", "q": "-1/8", "w": "-5/32", "disk_limit": "1/20"},
+    {"name": "avoiding", "q": "-1/8", "w": "-13/64", "disk_limit": "21/100"}
+  ],
+  "wave": {"center": "-9/64", "open_radii": ["3/256", "1/64"], "target_angular_height_pi": "2", "child_angular_height_pi": "1"}
+}
