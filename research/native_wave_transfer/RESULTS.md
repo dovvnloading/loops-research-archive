@@ -709,3 +709,127 @@ Run at repository root:
 `python research/native_wave_transfer/regenerate_near_parabolic.py --check`
 and
 `python -m unittest discover -s research/native_wave_transfer -p 'test_*.py' -v`.
+
+
+## v1.1 near-parabolic primitive side-access experiment (additive)
+
+**New contract:** [SPECIFICATION_v1_1.md](SPECIFICATION_v1_1.md);
+[per-field citations and proof statuses](source_contracts/primitive_v1_1_field_sources.json);
+[read-only exact checker](regenerate_primitive_v1_1.py),
+[adversarial tests](test_primitive_v1_1.py), and
+[immutable manifest](experiment_manifests/near_parabolic_primitive_v1_1.json).
+The earlier v1 *refusal* remains an immutable, valid result: v1.1
+adds a **new, tagged and deliberately chosen local real-slit refinement**,
+not a retroactive interpretation of the v1 three-phase records.
+
+### Computed finite records, with the operations kept distinct
+
+The checker calls the **unchanged** outward-dyadic near-parabolic verifier,
+checks its historical manifest byte-identically, rechecks the terminal
+positive branch orientation, and never uses floating point to decide an
+inequality. The following certified Rouché and phase-gap enclosures
+are strict; they come from the existing whole-complex-disk proof.
+
+| Quantity | Period 24 | Period 27 | Period 30 |
+| --- | --- | --- | --- |
+| Degree of physical return / central restriction | 2^24 / 2 | 2^27 / 2 | 2^30 / 2 |
+| Physical phase disks | 24, pairwise disjoint | 27, pairwise disjoint | 30, pairwise disjoint |
+| Inner G-return interval | one, K0=[-a,a] | one, K0=[-a,a] | one, K0=[-a,a] |
+| Strict Rouché margin enclosure | (1/625, 17/10000) | (9/10000, 1/1000) | (3/5000, 7/10000) |
+| Strict phase-disk gap enclosure | (23/10000, 1/400) | (9/5000, 19/10000) | (7/5000, 3/2000) |
+| Local return-slit new attachments | 0 | 0 | 0 |
+| Chosen target/source inner side atoms | 2 / 4 | 2 / 4 | 2 / 4 |
+| Full outer-component interval count | 1 | 1 | 1 |
+| Local complement edge matrix | empty 0×0 | empty 0×0 | empty 0×0 |
+| KKL ambient Perron root / KKL ambient edge matrix | undefined / not computed | undefined / not computed | undefined / not computed |
+| Whole-path filtered restriction multiplicities | not defined | not defined | not defined |
+| KKL closed-Wave crests, parent/children widths and harmonic equality | not defined | not defined | not defined |
+| Ordinary quadratic-like round subcollar modulus lower bound | log(8/7)/(2π) | log(8/7)/(2π) | log(8/7)/(2π) |
+| KKL attachment collar h / angular width ell | not defined / not defined | not defined / not defined | not defined / not defined |
+
+**The two actions are different finite tables.** For the **chosen**
+upper/lower real-slit side marking of the **central return**,
+target intervals are `(I_upper,I_lower)`, and cyclic source intervals
+are `(S_upper_negative,S_upper_positive,S_lower_positive,S_lower_negative)`.
+The covering pushforward `f_*` has source-to-target labels
+`[1,0,1,0]`; each target side receives **two** source sides.
+The actual immersion pullback `ι^*` under inclusion has labels
+`[0,0,1,1]` and **two connected blocks** `[[0,1],[2,3]]`,
+with **no additional attached-component boundary blocks**.
+These 2/4 counts are exact for that stated slit refinement,
+*conditional on the already documented analytic identification of the
+whole little Julia with the real Chebyshev interval and its prime ends*.
+KKL Appendix A.1 permits further refinements, so neither 2 nor 4 is
+a universal/canonical atom count.
+
+The source distinguishes the **ambient** cycle of `p` disjoint
+`f^j(K0)` from the one-interval **inner G-return**.
+By exact central inverse exhaustion `T_G'=T_G=K0`. This certifies
+zero **local** attachment components and zero **local** complementary
+old edges. It does **not** identify the ambient KKL tree `T_f` or
+`f_*ι^*` old-edge matrix. The local incidence matrix is legitimately
+the empty 0×0 matrix; its spectral radius is **not an eigenvalue 0**
+and no Perron root is returned. Both declared local target side
+atoms have zero *local* old-edge incidence, but no one has thereby
+constructed a **closed KKL Wave crest**.
+
+A local unramified side has **two covering lift germs** versus
+**one inclusion germ**. These numbers **must not** be substituted
+for the `(2,1)` filtered **whole-path** counts of the near-(−2)
+examples. Without a specified proper path/homotopy class, source
+restriction components, KKL A.1 short-span check and A.3.2
+one-pullback filter, no filtered multiplicity can be computed.
+Likewise, no target/child Wave has been defined, so parent and child
+extremal widths are `null` and harmonic reciprocal equality is
+**undetermined** (not false, and not the v1 identity).
+
+### Contact-resistance stress test: data stop before the model's inputs
+
+The Rouché margin bands strictly shrink across 24→27→30,
+but they are **domain-existence margins**, not a monotone width
+enclosure. The common positive bound
+`mod(U_p\V_p) ≥ log(8/7)/(2π)` concerns a **quadratic-like
+round subcollar**, not KKL's attachment collar height `h`.
+The complete **local** inverse tree has *no new attached component*,
+hence there is no nonempty attached electrode or actual angular
+width `0<ell<π`. It would be invalid to set `ell=0`, identify
+`h=log(8/7)`, or divide by an empty Wave width.
+
+The [independent annular contact-resistance calculation](../independent_audits/kkl_annular_contact_resistance_crossover_20261107.md)
+does prove a scaling law for an explicitly chosen *full,
+free-outer-boundary, sheet-opposed condenser* when `h` and `ell`
+are both known, and explicitly disclaims its automatic application
+to KKL Waves. For the present three tips **all three products**
+`h*log(1/ell)` are *undefined*, and there are **no certified
+Wave-width observations** against which to fit or test a trend.
+The requested "does it track degeneration" experiment therefore
+has outcome **not testable with these sources**, not a positive,
+negative, or zero correlation.
+
+**Proof-status ledger.** *Certified exact finite:* three isolated
+parameter brackets, Rouché/phase-disk separation, central
+orientation, local inverse-tree attachments and empty local
+edge matrix, common subcollar lower bound, and action tables
+conditional only on the stated side marking. *Analytic/
+source-conditional:* Chebyshev identification of the full little
+Julia, slit prime ends and the chosen refinement; the old p3/p4
+extremal-width interpretation remains its original assumption.
+*Numerical only:* previously displayed decimal orientations
+of parameters (not used in any check); **no** numeric
+Wave-width estimate. *Open/not defined:* the prime ψ-ql
+ambient marked-tree/operator data, full path filtration, actual
+KKL zero-edge crests, exact Wave widths and harmonic status,
+canonical `h` and `ell`, crossover comparison, and an infinite
+near-parabolic sequence theorem.
+
+**Regression and non-migration:** The v1 record embeds by
+`v1_record ↦ {"mode":"v1-three-inner-phase","v1_record":v1_record}`
+and projects back to *exactly the same canonical bytes*.
+The v1, v2 satellite, and old near-parabolic manifests, source
+contracts, test programs and algorithm files are unchanged.
+A read-only CI step checks the new immutable manifest and
+new hostile tests **in addition** to every existing native job.
+
+Run `python research/native_wave_transfer/regenerate_primitive_v1_1.py --check`
+and `python -m unittest discover -s research/native_wave_transfer -p 'test_*.py' -v`
+from the repository root.
