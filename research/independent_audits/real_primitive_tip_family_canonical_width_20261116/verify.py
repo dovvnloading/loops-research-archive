@@ -211,7 +211,7 @@ def alpha_interval(p: int, c: Iv, x: list[Iv]) -> Iv:
 
 def atan_unit(x: Iv, terms: int = 190) -> Iv:
     """Alternating atan series, valid for 0 <= x <= 4/5; even truncation."""
-    need(terms%2==0 and x.inside(Q(-1,10**10),Q(4,5)), 'atan range')
+    need(terms%2==0 and x.lo >= 0 and x.high() < Q(4,5), 'atan range')
     z=x.square()
     powx=x
     out=ZERO
