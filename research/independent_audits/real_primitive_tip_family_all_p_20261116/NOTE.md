@@ -212,11 +212,11 @@ In the first three other neighborhoods the *true* normalized orbit respectively 
 \[
  |(h^3)'(w)|\le(1/20+256q)(18/5+256q)(3+256q)<1.
 \]
-The *exact* identity
+The first and second intermediate images of the whole segment \([0,v]\) are enclosed respectively in \((-9/5,9/5)\) and \((-3/2,3/2)\) by direct rational interval squaring and the \(88q\) error; these enclosures justify **all three factors** in the derivative bound, and are checked in the verifier. The *exact* identity
 \[
  h^6(0)+h^3(0)=v\left(2+\int_0^1(h^3)'(sv)\,ds\right)
 \]
-forces \(v=0\) at any zero, contradicting **strict** \(x_{3p}<0\). Finally, for \(-0.01<\tau<0\), Schwarz's order-four estimate from (12), \(E_p(z)=O(z^4)\), gives
+forces \(v=0\) at any zero, contradicting **strict** \(x_{3p}<0\). Finally, for \(-0.01<\tau<0\), observe that \(|w|\le12/5\) implies \(|w/A|\le16q\), so the **whole complex disk** \(|w|\le12/5\) has \(|e_\tau(w)|\le88q\). Since \(E_p(z)=O(z^4)\) (exactly, by evenness and subtraction of the constant/quadratic terms), Schwarz's order-four lemma on this disk gives
 \[
  |e_\tau(\tau)|\le88q\left(\frac5{12}|\tau|\right)^4<|\tau|/100;
 \]
