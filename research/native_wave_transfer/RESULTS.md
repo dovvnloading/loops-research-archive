@@ -205,8 +205,15 @@ and the [doubling renormalization background](https://www.math.stonybrook.edu/~m
 **First incompatible field: `MarkedHubbardTree.small_julia_intervals`
 (via `ExperimentOutputs.marked_tree`).**
 At this exact parameter, `G(0)=x2`, `G(x2)=0` and `G'(0)=0`.
-Thus `G^2` has a superattracting fixed point at 0, giving an **open
-complex Fatou basin inside the small filled Julia set `K(G)`**.
+The exact *whole-complex-disk* enclosure further gives
+`f^4(D(0,1/64)) subset D(0,1/128)` and
+`f^2(D(0,1/64)) subset U2`. The real bridge places `x2` in `V2`;
+by connectedness, the whole image `G(D(0,1/64))` lies in that central
+component. Repeated `G^2` contracts the disk, so
+**`D(0,1/64) subset K(G)` is certified**, not merely inferred
+from a derivative calculation.
+Thus `G^2` has a superattracting fixed point at 0, and the small
+filled Julia set `K(G)` contains a **nonempty complex Fatou interior**.
 A real interval cannot represent `K(G)`. In contrast, the v1
 specification requires *three small Julia intervals*, a real hull and
 its single slit interval pullback; the two primitive examples realize
