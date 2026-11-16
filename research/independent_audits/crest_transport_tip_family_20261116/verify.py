@@ -322,9 +322,24 @@ def run(p,nbins=512):
     check(len(host)==20 and (host[0],host[3],host[17])==(0,1,9),'iota blocks')
     check((cover[0],cover[3],cover[17])==(0,3,7),'cover labels')
     check(all(1+min((v-u)%n,(u-v)%n)>2 for u,v,n in [(0,3,20),(17,0,20),(0,3,10)]),'KKL short deletion')
-    # An S0-to-S3 upper, S17-to-S0 lower terminal path has a *closed*
-    # crest containing I1 / I9, both sides of one old physical E0 edge.
-    check(x[5*p].lt(x[3*p]),'E0 old edge disappeared')
+    # Reconstruct old-edge carriers *from real coordinates*, not just
+    # from a predeclared I1/I9 label: slit sides of the same real edge
+    # count as one edge, while K0/K1/K2 atoms remain zero-edge.
+    target_cuts=[x[5*p],x[3*p],x[6*p],alpha,x[4*p]]
+    edges=[(x[5*p],x[3*p]),(x[6*p],alpha),(alpha,x[4*p])]
+    incidence={}
+    for i in range(10):
+        point,side=sample_atom(i,target_cuts,x[2*p],xp)
+        incidence[i]=[j for j,(lo,hi) in enumerate(edges) if lo.lt(point) and point.lt(hi)]
+    check([i for i in range(10) if incidence[i]]==[1,3,4,6,7,9],
+          'physical target old-edge incidence drift')
+    check(incidence[1]==[0] and incidence[9]==[0],
+          'two closed crests do not share one genuine E0 edge')
+    check(sample_atom(1,target_cuts,x[2*p],xp)[1]==1 and
+          sample_atom(9,target_cuts,x[2*p],xp)[1]==-1,
+          'the E0 sides are not opposite prime-end accesses')
+    # The selected terminal source endpoints belong to distinct iota*
+    # hosts, survive the short-span deletion, then *cover* to I0/I3/I7.
     return {
       'p':p,'parameter_bracket_2pow192':[PARAMETER[p],PARAMETER[p]+1],
       'parent_wave':{'center':'-9/64' if p==3 else '-3*x_p/4',
