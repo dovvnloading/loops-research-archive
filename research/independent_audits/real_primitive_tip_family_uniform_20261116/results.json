@@ -1,0 +1,273 @@
+{
+  "arithmetic": "integer outward fixed-point intervals, 2^-384; seed signs + strictly negative derivative",
+  "common_discrete_output_checked_each_period": {
+    "attached_source_sides": [
+      19,
+      0,
+      1
+    ],
+    "child_crests": [
+      2,
+      8
+    ],
+    "cover_pushed_avoiding_pair": [
+      3,
+      7
+    ],
+    "cover_pushed_crossing_pairs": [
+      [
+        3,
+        1
+      ],
+      [
+        9,
+        7
+      ]
+    ],
+    "covering_f_star": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+    ],
+    "harmonic_width_coefficients": {
+      "each_child": "1",
+      "parent": "1/2"
+    },
+    "immersion_iota_pullback_blocks": [
+      [
+        18,
+        19,
+        0,
+        1,
+        2
+      ],
+      [
+        3,
+        4
+      ],
+      [
+        5
+      ],
+      [
+        6
+      ],
+      [
+        7,
+        8,
+        9
+      ],
+      [
+        10
+      ],
+      [
+        11,
+        12,
+        13
+      ],
+      [
+        14
+      ],
+      [
+        15
+      ],
+      [
+        16,
+        17
+      ]
+    ],
+    "old_edge_matrix_output_rows_input_cols": [
+      [
+        0,
+        0,
+        1
+      ],
+      [
+        1,
+        0,
+        1
+      ],
+      [
+        1,
+        1,
+        0
+      ]
+    ],
+    "outer_component_atom": 1,
+    "parent_crest": 0,
+    "perron_root": "(1+sqrt(5))/2",
+    "proper_avoiding_pair": [
+      3,
+      17
+    ],
+    "proper_crossing_pairs": [
+      [
+        3,
+        1
+      ],
+      [
+        19,
+        17
+      ]
+    ],
+    "source_atoms": 20,
+    "source_cuts": [
+      "-x4p",
+      "x2p",
+      "x5p",
+      "-alpha",
+      "x3p",
+      "x6p",
+      "alpha",
+      "-x5p",
+      "-x2p",
+      "x4p"
+    ],
+    "target_atoms": 10,
+    "target_cuts": [
+      "x5p",
+      "x3p",
+      "x6p",
+      "alpha",
+      "x4p"
+    ],
+    "target_zero_edge_atoms": [
+      0,
+      2,
+      5,
+      8
+    ]
+  },
+  "results": [
+    {
+      "central_degree_two": {
+        "method": "prior_source_p3",
+        "strict_margin_lower": null
+      },
+      "interval_checks": "PASS: orbit, source/target cuts, both actions, paths, edges, crests, disks",
+      "p": 3,
+      "parameter_root_bracket": {
+        "denominator_power_of_two": 192,
+        "lower_numerator": -11214108439445784980951565438958061530896939533591746653709,
+        "unique_in_seed_window": true,
+        "upper_numerator": -11214108439445784980951565438958061530896939533591746653708
+      },
+      "real_and_complex_primitive_phase_balls_disjoint": true,
+      "selected_wave_ratio": "4/3",
+      "target_radius": "1/4"
+    },
+    {
+      "central_degree_two": {
+        "method": "complex_Rouche",
+        "strict_margin_lower": "831903444230357347/18446744073709551616"
+      },
+      "interval_checks": "PASS: orbit, source/target cuts, both actions, paths, edges, crests, disks",
+      "p": 4,
+      "parameter_root_bracket": {
+        "denominator_power_of_two": 192,
+        "lower_numerator": -12193610160972405830120367485459353629138957223175502573913,
+        "unique_in_seed_window": true,
+        "upper_numerator": -12193610160972405830120367485459353629138957223175502573912
+      },
+      "real_and_complex_primitive_phase_balls_disjoint": true,
+      "selected_wave_ratio": "3/2",
+      "target_radius": "1/16"
+    },
+    {
+      "central_degree_two": {
+        "method": "complex_Rouche",
+        "strict_margin_lower": "2062077620876495581/18446744073709551616"
+      },
+      "interval_checks": "PASS: orbit, source/target cuts, both actions, paths, edges, crests, disks",
+      "p": 5,
+      "parameter_root_bracket": {
+        "denominator_power_of_two": 192,
+        "lower_numerator": -12463362319716585005872989311512332060925612005103192709893,
+        "unique_in_seed_window": true,
+        "upper_numerator": -12463362319716585005872989311512332060925612005103192709892
+      },
+      "real_and_complex_primitive_phase_balls_disjoint": true,
+      "selected_wave_ratio": "8/5",
+      "target_radius": "1/32"
+    },
+    {
+      "central_degree_two": {
+        "method": "complex_Rouche",
+        "strict_margin_lower": "1257836626900290107/9223372036854775808"
+      },
+      "interval_checks": "PASS: orbit, source/target cuts, both actions, paths, edges, crests, disks",
+      "p": 6,
+      "parameter_root_bracket": {
+        "denominator_power_of_two": 192,
+        "lower_numerator": -12531496128803264686629812787093463121894480287952440515685,
+        "unique_in_seed_window": true,
+        "upper_numerator": -12531496128803264686629812787093463121894480287952440515684
+      },
+      "real_and_complex_primitive_phase_balls_disjoint": true,
+      "selected_wave_ratio": "5/3",
+      "target_radius": "1/64"
+    },
+    {
+      "central_degree_two": {
+        "method": "complex_Rouche",
+        "strict_margin_lower": "1351052614638798227/9223372036854775808"
+      },
+      "interval_checks": "PASS: orbit, source/target cuts, both actions, paths, edges, crests, disks",
+      "p": 7,
+      "parameter_root_bracket": {
+        "denominator_power_of_two": 192,
+        "lower_numerator": -12548529462359236409168186108132124778502513816111687694548,
+        "unique_in_seed_window": true,
+        "upper_numerator": -12548529462359236409168186108132124778502513816111687694547
+      },
+      "real_and_complex_primitive_phase_balls_disjoint": true,
+      "selected_wave_ratio": "12/7",
+      "target_radius": "1/128"
+    },
+    {
+      "central_degree_two": {
+        "method": "complex_Rouche",
+        "strict_margin_lower": "2785033289095261937/18446744073709551616"
+      },
+      "interval_checks": "PASS: orbit, source/target cuts, both actions, paths, edges, crests, disks",
+      "p": 8,
+      "parameter_root_bracket": {
+        "denominator_power_of_two": 192,
+        "lower_numerator": -12552785306501968995178380515935992615386967495660640540189,
+        "unique_in_seed_window": true,
+        "upper_numerator": -12552785306501968995178380515935992615386967495660640540188
+      },
+      "real_and_complex_primitive_phase_balls_disjoint": true,
+      "selected_wave_ratio": "7/4",
+      "target_radius": "1/256"
+    }
+  ],
+  "schema": "real-primitive-tip-family-interval-audit/v1",
+  "scope": "p=3..8 only; prime ends, complete Julia tree and extremal widths are analytic inputs",
+  "selected_wave_family": {
+    "center_over_xp": "-3/4",
+    "limit": "log(2)/(2*pi)",
+    "r0_over_xp": "1/16",
+    "r1_over_xp": "(p-1)/(8p)",
+    "ratio": "2(p-1)/p (chosen, not canonical)",
+    "width_each_child": "log(2-2/p)/pi",
+    "width_parent": "log(2-2/p)/(2*pi)"
+  },
+  "uniform_theorem_status": "conditional finite combinatorial theorem; physical all-p realization open"
+}
