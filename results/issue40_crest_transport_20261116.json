@@ -1,0 +1,101 @@
+{
+  "KKL_short_span_source_and_target": 4,
+  "certified_lower_bound": {
+    "analytic_comparison": "theta(r)<pi/2 implies W_new>2*log(80/77)/pi",
+    "c": "1/2",
+    "rational_witness": "(80/77)^8 > 4/3"
+  },
+  "claim": "four covering pushes and distinct immersion restrictions yield TWO genuine crest-positive marked sub-Waves on a certified rational radius slab",
+  "exact_new_width": "integral_{1/80}^{1/77} dr/(r*theta(r)), theta(r)=arccos(u(r)), Re G(-9/64+r*(u+i*sqrt(1-u^2)))=0, 0<u<1/2",
+  "exact_original_width": "log(4/3)/(2*pi)",
+  "exact_ratio": "(2*pi/log(4/3))*integral_{1/80}^{1/77} dr/(r*theta(r))",
+  "finite_proof_scope": [
+    "All radius bins, exact orbit/cut endpoint orders, degree-two source and covering labels, unique cos(theta) gate, and margin from cut endpoints are certified by 256-bit outward balls.",
+    "Univalence, entire central component and slit prime ends use existing native analytic inputs. The integral formula is proved by Cauchy-Schwarz and Fubini, not inferred by machine arithmetic.",
+    "This 1/2 is a fixed physical-tip statement USING a quantitatively certified analytic collar; it is not a theorem from finite atom counts or Perron eigenvalues alone.",
+    "No arbitrary proof-selected or non-LC Wave, no uniform return-step count, and no global KKL crest-transport theorem is certified."
+  ],
+  "first_image_imaginary_axis_gate_cosine_strict_bounds": [
+    "3/32",
+    "7/64"
+  ],
+  "first_three_closed_crest_types": [
+    [
+      2,
+      8
+    ],
+    [
+      5,
+      5
+    ],
+    [
+      0,
+      0
+    ]
+  ],
+  "fourth_closed_crest_atoms": {
+    "lower_q_side": [
+      8,
+      9
+    ],
+    "upper_q_side": [
+      1,
+      2
+    ]
+  },
+  "fourth_closed_crest_old_tree_edge_atoms": {
+    "lower_q_side": [
+      9
+    ],
+    "upper_q_side": [
+      1
+    ]
+  },
+  "input_parameter_bracket": {
+    "denominator_power_of_two": 128,
+    "lower_numerator": -607918036626757496169199575185708826140,
+    "upper_numerator": -607918036626757496169199575185708826139
+  },
+  "n3_gate_min_strict_margin_lower_bound": "1/4096",
+  "n3_gate_source_atom": "S0 (between -x3 and -x12, one terminal atom through the tip)",
+  "n4_gate_image": "I0 K2 interior",
+  "original_radius_open": [
+    "3/256",
+    "1/64"
+  ],
+  "schema_version": 1,
+  "slab_radius_open": [
+    "1/80",
+    "1/77"
+  ],
+  "source_lock": {
+    "PR68_target_wave_base": [
+      9,
+      0,
+      1
+    ],
+    "PR68_two_pushed_crests": [
+      2,
+      8
+    ],
+    "issue40_zero_edge_atoms": [
+      0,
+      2,
+      5,
+      8
+    ]
+  },
+  "source_q_side_covering_endpoint_atoms": [
+    0,
+    3
+  ],
+  "source_q_side_endpoint_atoms": [
+    0,
+    3
+  ],
+  "source_q_side_iota_pullback_hosts": [
+    0,
+    1
+  ],
+  "whole_radius_bin_count": 384
+}
