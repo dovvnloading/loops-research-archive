@@ -198,7 +198,6 @@ def edge_analysis(x: dict[str, Box], c: Box, neg: dict[str, Box],
     for name, (start, end) in zip(EDGE_NAMES, OLD_EDGES):
         na, nb = neg[start], neg[end]
         ensure(na.before(nb), "negative inverse edge orientation")
-        a_in = x["x8"].before(na) is False and nb.before(x["x8"]) or nb.overlaps(x["x8"])
         # A sheet ending at the attachment root is attached in its interior.
         attached = na.before(x["x8"]) and (nb.before(x["x8"]) or nb.overlaps(x["x8"]))
         sheets.append({"edge":name,
@@ -231,7 +230,7 @@ def edge_analysis(x: dict[str, Box], c: Box, neg: dict[str, Box],
         lhs = (sum(weights[i][0]*m[i][j] for i in range(3)),
                sum(weights[i][1]*m[i][j] for i in range(3)))
         ensure(lhs == phi_mul(weights[j]), "Perron left-weight identity")
-    ensure(sum(row) == 5 for row in m, "wrong total old edge occurrences")
+    ensure(sum(sum(row) for row in m) == 5, "wrong total old edge occurrences")
     return {"edges":EDGE_NAMES,
             "matrix_output_rows_input_columns":matrix,
             "characteristic_polynomial":"t^3-2*t-1=(t+1)*(t^2-t-1)",
