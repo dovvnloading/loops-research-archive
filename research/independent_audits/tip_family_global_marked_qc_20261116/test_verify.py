@@ -68,6 +68,10 @@ class MarkedGlobalQCAuditTests(unittest.TestCase):
                     check_row(pair, bad)
                 with self.assertRaisesRegex(CertificateError, "wrong grid row"):
                     check_row(pair, dict(row, pair=(7, 7)))
+                with self.assertRaisesRegex(CertificateError, "unsupported depth-two"):
+                    check_row([3, 3], row)
+                with self.assertRaisesRegex(CertificateError, "radial grid bins"):
+                    check_row(pair, dict(row, radial5=None))
 
     def test_distinct_three_level_certificate(self):
         r = {name: Q(floor, 10**6) + Q(1, 10**12)
