@@ -1,0 +1,239 @@
+{
+  "arithmetic": "integer outward 2^-512; rational Taylor, hypergeometric and geometric remainders",
+  "finite": [
+    {
+      "NOT_a_canonical_width_certificate": true,
+      "full_lift_path_width_upper_1e-7_strict": [
+        5967637,
+        5967640
+      ],
+      "p": 3,
+      "radial_ratio_1e-7_strict": [
+        48613134,
+        48613137
+      ],
+      "radial_wave_width_1e-7_strict": [
+        2516729,
+        2516732
+      ],
+      "round_annular_full_path_lower_1e-7_strict": [
+        4990475,
+        4990478
+      ],
+      "source_gate_disk_margin_over_R_gt_2_5": true
+    },
+    {
+      "NOT_a_canonical_width_certificate": true,
+      "full_lift_path_width_upper_1e-7_strict": [
+        6080487,
+        6080490
+      ],
+      "p": 4,
+      "radial_ratio_1e-7_strict": [
+        50734892,
+        50734895
+      ],
+      "radial_wave_width_1e-7_strict": [
+        2584721,
+        2584724
+      ],
+      "round_annular_full_path_lower_1e-7_strict": [
+        5224859,
+        5224862
+      ],
+      "source_gate_disk_margin_over_R_gt_2_5": true
+    },
+    {
+      "NOT_a_canonical_width_certificate": true,
+      "full_lift_path_width_upper_1e-7_strict": [
+        6811880,
+        6811883
+      ],
+      "p": 5,
+      "radial_ratio_1e-7_strict": [
+        51225388,
+        51225391
+      ],
+      "radial_wave_width_1e-7_strict": [
+        2600034,
+        2600037
+      ],
+      "round_annular_full_path_lower_1e-7_strict": [
+        6706692,
+        6706695
+      ],
+      "source_gate_disk_margin_over_R_gt_2_5": true
+    },
+    {
+      "NOT_a_canonical_width_certificate": true,
+      "full_lift_path_width_upper_1e-7_strict": [
+        7182629,
+        7182632
+      ],
+      "p": 6,
+      "radial_ratio_1e-7_strict": [
+        51344000,
+        51344003
+      ],
+      "radial_wave_width_1e-7_strict": [
+        2603715,
+        2603718
+      ],
+      "round_annular_full_path_lower_1e-7_strict": [
+        7163191,
+        7163194
+      ],
+      "source_gate_disk_margin_over_R_gt_2_5": true
+    },
+    {
+      "NOT_a_canonical_width_certificate": true,
+      "full_lift_path_width_upper_1e-7_strict": [
+        7377890,
+        7377893
+      ],
+      "p": 7,
+      "radial_ratio_1e-7_strict": [
+        51373336,
+        51373339
+      ],
+      "radial_wave_width_1e-7_strict": [
+        2604624,
+        2604627
+      ],
+      "round_annular_full_path_lower_1e-7_strict": [
+        7373351,
+        7373354
+      ],
+      "source_gate_disk_margin_over_R_gt_2_5": true
+    },
+    {
+      "NOT_a_canonical_width_certificate": true,
+      "full_lift_path_width_upper_1e-7_strict": [
+        7489371,
+        7489374
+      ],
+      "p": 8,
+      "radial_ratio_1e-7_strict": [
+        51380646,
+        51380649
+      ],
+      "radial_wave_width_1e-7_strict": [
+        2604850,
+        2604853
+      ],
+      "round_annular_full_path_lower_1e-7_strict": [
+        7488128,
+        7488131
+      ],
+      "source_gate_disk_margin_over_R_gt_2_5": true
+    },
+    {
+      "NOT_a_canonical_width_certificate": true,
+      "full_lift_path_width_upper_1e-7_strict": [
+        7558001,
+        7558004
+      ],
+      "p": 9,
+      "radial_ratio_1e-7_strict": [
+        51382472,
+        51382475
+      ],
+      "radial_wave_width_1e-7_strict": [
+        2604907,
+        2604910
+      ],
+      "round_annular_full_path_lower_1e-7_strict": [
+        7557622,
+        7557625
+      ],
+      "source_gate_disk_margin_over_R_gt_2_5": true
+    },
+    {
+      "NOT_a_canonical_width_certificate": true,
+      "full_lift_path_width_upper_1e-7_strict": [
+        7602937,
+        7602940
+      ],
+      "p": 10,
+      "radial_ratio_1e-7_strict": [
+        51382928,
+        51382931
+      ],
+      "radial_wave_width_1e-7_strict": [
+        2604921,
+        2604924
+      ],
+      "round_annular_full_path_lower_1e-7_strict": [
+        7602812,
+        7602815
+      ],
+      "source_gate_disk_margin_over_R_gt_2_5": true
+    },
+    {
+      "NOT_a_canonical_width_certificate": true,
+      "full_lift_path_width_upper_1e-7_strict": [
+        7633845,
+        7633848
+      ],
+      "p": 11,
+      "radial_ratio_1e-7_strict": [
+        51383042,
+        51383045
+      ],
+      "radial_wave_width_1e-7_strict": [
+        2604924,
+        2604927
+      ],
+      "round_annular_full_path_lower_1e-7_strict": [
+        7633802,
+        7633805
+      ],
+      "source_gate_disk_margin_over_R_gt_2_5": true
+    },
+    {
+      "NOT_a_canonical_width_certificate": true,
+      "full_lift_path_width_upper_1e-7_strict": [
+        7655967,
+        7655970
+      ],
+      "p": 12,
+      "radial_ratio_1e-7_strict": [
+        51383070,
+        51383073
+      ],
+      "radial_wave_width_1e-7_strict": [
+        2604925,
+        2604928
+      ],
+      "round_annular_full_path_lower_1e-7_strict": [
+        7655951,
+        7655954
+      ],
+      "source_gate_disk_margin_over_R_gt_2_5": true
+    }
+  ],
+  "large_p_radial_result": {
+    "from_period": 13,
+    "radial_width_difference_bound": "7000000*4^(-p)",
+    "radius_ratio_difference_bound": "150000000*4^(-p)",
+    "source_dependency": "all_p NOTE.md equations (13)-(18) and strict cuts"
+  },
+  "model_limit_full_path_upper_envelope_1e-7_strict": [
+    7749230,
+    7749233
+  ],
+  "model_limit_radial_ratio_1e-7_strict": [
+    51383080,
+    51383083
+  ],
+  "model_limit_radial_width_1e-7_strict": [
+    2604925,
+    2604928
+  ],
+  "model_tau_star_1e-7_strict": [
+    -17903276,
+    -17903273
+  ],
+  "schema": "canonical-width-gap-audit/v1",
+  "scope": "certified radial lower witnesses and full-lift extremal upper envelopes; maximal KKL Wave NOT computed"
+}
