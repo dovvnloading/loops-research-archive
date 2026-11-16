@@ -39,9 +39,9 @@ CHILD_CEILINGS = {3: F(974, 1000), 4: F(985, 1000),
                   **{p: F(988, 1000) for p in range(5, 13)}}
 GAIN_FLOORS = {3: F(1, 100), 4: F(7, 100),
                **{p: F(3, 10) for p in range(5, 13)}}
-CHILD_DOMAIN_SAVING = F(9, 10**6)
-# Fixed missing-energy box in the log covering, same for every p.
-EXCLUDED_BOX = (F(2), F(3), F(0), F(1))
+CHILD_DOMAIN_SAVING = F(1, 5_000_000)  # strict uniform actual-source saving
+# The certified omitted box is (s,s+1) x (0,1), with s chosen from
+# the physical source radius separately for each primitive period.
 
 
 def require(ok: bool, why: str) -> None:
@@ -134,30 +134,40 @@ def certify_source_inside_target(p: int, c: I, x: list[I]) -> None:
             "source V_p not certified inside U_p")
 
 
+def source_missing_box_start(p: int, xp: I) -> int:
+    """Find an excluded (s,s+1)x(0,1) box from exact positive Taylor sums.
+
+    exp(s)>sum(s**n/n!, n=0..24), exp(-s)<1, so
+    sinh(s)>(sum-1)/2. The search is finite and rejects failed gates.
+    """
+    require(type(p) is int and 3 <= p <= 12 and xp.positive(),
+            "source exclusion requires a physical positive critical value")
+    R = F(1, 4) if p == 3 else F(1, 2**p)
+    for s in range(2, p+1):
+        lower_exp = sum((F(s**n, math.factorial(n))
+                         for n in range(25)), F(0))
+        lower_sinh = (lower_exp - 1)/2
+        if xp.low()*lower_sinh > R:
+            return s
+    raise AssertionError("physical source cutoff box could not be certified")
+
+
 def strict_child_domain_cap(p: int, xp: I, x2: I, x5: I,
                             x4: I, alpha: I) -> tuple[I, I]:
-    """Upper child SC metric restricted to ACTUAL source V_p, not whole plane.
+    """Upper SC metric restricted to ACTUAL source V_p, not the plane.
 
-    The four reflected upper-side angular endpoints are
-    e=(pi-d,pi-c,pi-b,pi-a). In the right-half-plane log cover the
-    SC derivative is [product(z-i*e_j)]^-1/2. If H is the SC image
-    side across the electrode gap, H<=pi/sqrt((b-a)*(d-c)).
-    The voltage-one metric |F'|/H has total plane-lift energy E_p.
+    The reflected upper-side electrodes are e=(pi-d,pi-c,pi-b,pi-a).
+    On the whole right-half-plane log cover F'=product(z-i*e_j)^(-1/2).
+    The SC electrode-gap side H<=pi/sqrt((b-a)*(d-c)); |F'|/H
+    has full plane-lift area E_p and periodizes to an admissible metric.
 
-    Its periodized square gives an admissible physical source metric.
-    The 1x1 box 2<s<3,0<t<1 is absent from all lifts of V_p:
-    |xp*cosh(s+it)|>=xp*sinh(2)>3*xp>R_p.  As 0<e_j<pi<4,
-    |z-i*e_j|<5 on the box. The plane metric energy removed there is
-       > (b-a)*(d-c)/(pi^2*5^4) > 9/10^6.
-    Therefore BOTH independently optimized source widths obey
-       C_p <= E_p - 9/10^6,
-    strictly sharper than the upstream unrestricted-plane upper cap.
+    The separately certified unit box (s,s+1)x(0,1) is outside U_p:
+       |xp*cosh(z)| >= xp*sinh(s)>R_p.
+    As 0<e_j<pi<4, each |z-i*e_j|<s+5 on the box, so its
+    missing energy exceeds (b-a)*(d-c)/(16*(s+5)^4) > 1/5,000,000.
+    This is a strictly tighter actual-domain upper for both children.
     """
-    R = F(1, 4) if p == 3 else F(1, 2**p)
-    require(3*xp.low() > R, "excluded-energy box may meet physical source")
-    # Rational Taylor lower bound exp(2)>7, and exp(-2)<1 imply sinh(2)>3.
-    require(sum((F(2)**n/F(math.factorial(n)) for n in range(6)), F(0))>7,
-            "hyperbolic exclusion Taylor witness failed")
+    s = source_missing_box_start(p, xp)
     args = (x4/xp, (-x2)/xp, (-x5)/xp, alpha/xp)
     require(all(z.positive() and z.lt(ONE) for z in args),
             "child angle branches not in (0,1)")
@@ -167,8 +177,8 @@ def strict_child_domain_cap(p: int, xp: I, x2: I, x5: I,
     product = (b-a)*(d-c)
     require(product.low() > F(9, 100),
             "SC density missing-energy rational gap not certified")
-    require(EXCLUDED_BOX == (F(2), F(3), F(0), F(1)),
-            "missing-energy region changed")
+    require(product.low() / (16*(s+5)**4) > CHILD_DOMAIN_SAVING,
+            "not enough missing SC energy on certified physical box")
     envelope = gain.sharp_child_plane(xp, x2, x5, x4, alpha)
     cap = envelope - I.point(CHILD_DOMAIN_SAVING)
     require(cap.positive() and cap.lt(envelope),
