@@ -79,10 +79,10 @@
       "approximation_for_orientation_only": "-1.5436890126920764",
       "denominator_power_of_two": 128,
       "equation": "c^3+2*c^2+2*c+2=0",
-      "lower_numerator": -5.252901510287064e+38,
+      "lower_numerator": -525290151028706361181936933686549192168,
       "opposite_strict_signs": true,
       "unique_real_root_by_positive_derivative": true,
-      "upper_numerator": -5.252901510287064e+38
+      "upper_numerator": -525290151028706361181936933686549192167
     },
     "primitive_comparison": {
       "p3": {
