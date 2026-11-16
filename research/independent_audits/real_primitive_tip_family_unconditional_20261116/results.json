@@ -1,0 +1,179 @@
+{
+  "arithmetic": "outward fixed grid 2^-512 plus exact fractions",
+  "cover_pushed_avoiding_short_arc_atoms": 5,
+  "periods": [
+    {
+      "central_degree_two_Rouche_margin_lower_2^-64": "1172590127954296043/9223372036854775808",
+      "complex_phase_disks_pairwise_disjoint": true,
+      "p": 3,
+      "parameter_bracket": {
+        "denominator_power_of_two": 256,
+        "lower_numerator": -206863788397282802267408702538793977315584867630598294361534944901352850303604,
+        "unique_in_seed_window": true,
+        "upper_numerator": -206863788397282802267408702538793977315584867630598294361534944901352850303603
+      },
+      "radial_active_upper_gate": "right_-alpha",
+      "radial_ratio_millionth_strict_bracket": [
+        4861313,
+        4861314
+      ],
+      "radial_whole_disk_margin_lower_2^-64": "1093273635695977203/9223372036854775808"
+    },
+    {
+      "central_degree_two_Rouche_margin_lower_2^-64": "831903444230357347/18446744073709551616",
+      "complex_phase_disks_pairwise_disjoint": true,
+      "p": 4,
+      "parameter_bracket": {
+        "denominator_power_of_two": 256,
+        "lower_numerator": -224932405974042298957915524477148973464551640119884252130376804385108645516290,
+        "unique_in_seed_window": true,
+        "upper_numerator": -224932405974042298957915524477148973464551640119884252130376804385108645516289
+      },
+      "radial_active_upper_gate": "right_-alpha",
+      "radial_ratio_millionth_strict_bracket": [
+        5073489,
+        5073490
+      ],
+      "radial_whole_disk_margin_lower_2^-64": "141764559771011107/4611686018427387904"
+    },
+    {
+      "central_degree_two_Rouche_margin_lower_2^-64": "2062077620876495581/18446744073709551616",
+      "complex_phase_disks_pairwise_disjoint": true,
+      "p": 5,
+      "parameter_bracket": {
+        "denominator_power_of_two": 256,
+        "lower_numerator": -229908455009726844371636647325851011168021710766793344328591203466498463304892,
+        "unique_in_seed_window": true,
+        "upper_numerator": -229908455009726844371636647325851011168021710766793344328591203466498463304891
+      },
+      "radial_active_upper_gate": "right_-alpha",
+      "radial_ratio_millionth_strict_bracket": [
+        5122538,
+        5122539
+      ],
+      "radial_whole_disk_margin_lower_2^-64": "432523641296815163/18446744073709551616"
+    },
+    {
+      "central_degree_two_Rouche_margin_lower_2^-64": "1257836626900290107/9223372036854775808",
+      "complex_phase_disks_pairwise_disjoint": true,
+      "p": 6,
+      "parameter_bracket": {
+        "denominator_power_of_two": 256,
+        "lower_numerator": -231165301948715810770228801979889868997710711484378648858382566481886798601362,
+        "unique_in_seed_window": true,
+        "upper_numerator": -231165301948715810770228801979889868997710711484378648858382566481886798601361
+      },
+      "radial_active_upper_gate": "right_-alpha",
+      "radial_ratio_millionth_strict_bracket": [
+        5134400,
+        5134401
+      ],
+      "radial_whole_disk_margin_lower_2^-64": "126234578132066791/9223372036854775808"
+    },
+    {
+      "central_degree_two_Rouche_margin_lower_2^-64": "1351052614638798227/9223372036854775808",
+      "complex_phase_disks_pairwise_disjoint": true,
+      "p": 7,
+      "parameter_bracket": {
+        "denominator_power_of_two": 256,
+        "lower_numerator": -231479511493544950186069647316998533527551584431058987623697926625334430730271,
+        "unique_in_seed_window": true,
+        "upper_numerator": -231479511493544950186069647316998533527551584431058987623697926625334430730270
+      },
+      "radial_active_upper_gate": "right_-alpha",
+      "radial_ratio_millionth_strict_bracket": [
+        5137333,
+        5137334
+      ],
+      "radial_whole_disk_margin_lower_2^-64": "67596398339865607/9223372036854775808"
+    },
+    {
+      "central_degree_two_Rouche_margin_lower_2^-64": "2785033289095261937/18446744073709551616",
+      "complex_phase_disks_pairwise_disjoint": true,
+      "p": 8,
+      "parameter_bracket": {
+        "denominator_power_of_two": 256,
+        "lower_numerator": -231558017961263534024166083767791669928606608564833463355994069705641667440255,
+        "unique_in_seed_window": true,
+        "upper_numerator": -231558017961263534024166083767791669928606608564833463355994069705641667440254
+      },
+      "radial_active_upper_gate": "right_-alpha",
+      "radial_ratio_millionth_strict_bracket": [
+        5138064,
+        5138065
+      ],
+      "radial_whole_disk_margin_lower_2^-64": "69828365287093287/18446744073709551616"
+    },
+    {
+      "central_degree_two_Rouche_margin_lower_2^-64": "2823856525280541327/18446744073709551616",
+      "complex_phase_disks_pairwise_disjoint": true,
+      "p": 9,
+      "parameter_bracket": {
+        "denominator_power_of_two": 256,
+        "lower_numerator": -231577638920564092579136255421939630884836906131569849829313081641534396423027,
+        "unique_in_seed_window": true,
+        "upper_numerator": -231577638920564092579136255421939630884836906131569849829313081641534396423026
+      },
+      "radial_active_upper_gate": "right_-alpha",
+      "radial_ratio_millionth_strict_bracket": [
+        5138247,
+        5138248
+      ],
+      "radial_whole_disk_margin_lower_2^-64": "17735795535115179/9223372036854775808"
+    },
+    {
+      "central_degree_two_Rouche_margin_lower_2^-64": "2842589057191722359/18446744073709551616",
+      "complex_phase_disks_pairwise_disjoint": true,
+      "p": 10,
+      "parameter_bracket": {
+        "denominator_power_of_two": 256,
+        "lower_numerator": -231582543633546533526283756991348241519646229656381644300932701776334013313375,
+        "unique_in_seed_window": true,
+        "upper_numerator": -231582543633546533526283756991348241519646229656381644300932701776334013313374
+      },
+      "radial_active_upper_gate": "right_-alpha",
+      "radial_ratio_millionth_strict_bracket": [
+        5138292,
+        5138293
+      ],
+      "radial_whole_disk_margin_lower_2^-64": "4468776082880337/4611686018427387904"
+    },
+    {
+      "central_degree_two_Rouche_margin_lower_2^-64": "712945173738054639/4611686018427387904",
+      "complex_phase_disks_pairwise_disjoint": true,
+      "p": 11,
+      "parameter_bracket": {
+        "denominator_power_of_two": 256,
+        "lower_numerator": -231583769768046569854648970766680764658829534892687229250012680253511623627757,
+        "unique_in_seed_window": true,
+        "upper_numerator": -231583769768046569854648970766680764658829534892687229250012680253511623627756
+      },
+      "radial_active_upper_gate": "right_-alpha",
+      "radial_ratio_millionth_strict_bracket": [
+        5138304,
+        5138305
+      ],
+      "radial_whole_disk_margin_lower_2^-64": "4486188114249883/9223372036854775808"
+    },
+    {
+      "central_degree_two_Rouche_margin_lower_2^-64": "2856331632293829203/18446744073709551616",
+      "complex_phase_disks_pairwise_disjoint": true,
+      "p": 12,
+      "parameter_bracket": {
+        "denominator_power_of_two": 256,
+        "lower_numerator": -231584076298261366026035660140568367251093068401698564453360469439884152023717,
+        "unique_in_seed_window": true,
+        "upper_numerator": -231584076298261366026035660140568367251093068401698564453360469439884152023716
+      },
+      "radial_active_upper_gate": "right_-alpha",
+      "radial_ratio_millionth_strict_bracket": [
+        5138307,
+        5138308
+      ],
+      "radial_whole_disk_margin_lower_2^-64": "561861738380131/2305843009213693952"
+    }
+  ],
+  "schema": "real-primitive-tip-unconditional-finite-interval/v1",
+  "scope": "ten individual local roots p=3..12; all-p realization and full canonical KKL Wave open",
+  "source_avoiding_short_arc_atoms": 7
+}
