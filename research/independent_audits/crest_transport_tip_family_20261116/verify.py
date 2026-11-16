@@ -297,7 +297,7 @@ def run(p,nbins=512):
             if k==4:
                 check(x[6*p].lt(q) and q.lt(alpha),'fourth push q access')
         ulo=u.low()
-        check(ulo>=F(-1,8),'angular enclosure exceeds arcsin bound')
+        check(ulo>=F(-1,8) and u.high()<=F(1,8),'angular enclosure exceeds arcsin bound')
         if ulo>=0:
             theta=theta_bound-ulo  # asin(u)>=u
         else:
