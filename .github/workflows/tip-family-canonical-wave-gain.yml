@@ -1,0 +1,112 @@
+name: Real primitive-tip canonical Wave gain and defect audit
+
+on:
+  push:
+    branches: [main, 'research/**']
+    paths:
+      - 'research/independent_audits/tip_family_canonical_wave_gain_20261116/**'
+      - '.github/workflows/tip-family-canonical-wave-gain.yml'
+  pull_request:
+    paths:
+      - 'research/independent_audits/tip_family_canonical_wave_gain_20261116/**'
+      - '.github/workflows/tip-family-canonical-wave-gain.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  certified-defect-enclosures:
+    name: Source-faithful marking, rational intervals, and adversarial tests
+    runs-on: ubuntu-latest
+    timeout-minutes: 70
+    env:
+      PYTHONDONTWRITEBYTECODE: '1'
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Restrict PR to new-only audit paths
+        if: github.event_name == 'pull_request'
+        run: |
+          set -euo pipefail
+          while IFS=$'\t' read -r status path; do
+            [[ "$status" == A ]] || { echo "Modification/deletion prohibited: $status $path"; exit 1; }
+            case "$path" in
+              research/independent_audits/tip_family_canonical_wave_gain_20261116/*|.github/workflows/tip-family-canonical-wave-gain.yml) ;;
+              *) echo "Existing or out-of-scope path changed: $path"; exit 1 ;;
+            esac
+          done < <(git diff --name-status "origin/${{ github.event.pull_request.base.ref }}...HEAD")
+      - name: Syntax parse without creating tracked or untracked bytecode
+        run: |
+          python -B - <<'PY'
+          import ast
+          from pathlib import Path
+          d=Path('research/independent_audits/tip_family_canonical_wave_gain_20261116')
+          for p in (d/'verify.py',d/'test_verify.py'):
+              ast.parse(p.read_text(),filename=str(p))
+          print('Syntax PASS')
+          PY
+      - name: Certified parent and child upper/lower brackets and universal tail
+        run: python -B research/independent_audits/tip_family_canonical_wave_gain_20261116/verify.py
+      - name: Hostile mutation and parallel/serial sign tests
+        run: python -B -m unittest discover -s research/independent_audits/tip_family_canonical_wave_gain_20261116 -p 'test_*.py' -v
+      - name: Revalidate the upstream interval sandwich unchanged
+        run: python -B research/independent_audits/real_primitive_tip_family_canonical_width_sandwich_20261116/verify.py
+      - name: Reject generated evidence and modifications to forbidden sources
+        run: |
+          set -euo pipefail
+          git diff --exit-code -- research/tip_family_theorem research/independent_audits/crest_transport_limit_proof_20261116 research/independent_audits/tip_family_renormalization_depth_20261116
+          if git status --porcelain --untracked-files=all | grep -E '(^\?\?|^ M|^ A) (research/|results/|formalization/|\.github/workflows/)'; then
+            echo 'Unexpected changes, bytecode or generated evidence'
+            exit 1
+          fi
+
+  original-research-validation-and-weighted-lean:
+    name: Require original Research validation and weighted Lean at exact PR SHA
+    needs: certified-defect-enclosures
+    if: github.event_name == 'pull_request' && github.event.pull_request.head.repo.full_name == github.repository
+    runs-on: ubuntu-latest
+    timeout-minutes: 100
+    permissions:
+      contents: read
+      actions: write
+    steps:
+      - name: Dispatch original workflows on this PR branch and enforce SHA-matched success
+        env:
+          GH_TOKEN: ${{ github.token }}
+          REPO: ${{ github.repository }}
+          PR_BRANCH: ${{ github.event.pull_request.head.ref }}
+          PR_SHA: ${{ github.event.pull_request.head.sha }}
+        run: |
+          set -euo pipefail
+          current="$(gh api "repos/$REPO/git/ref/heads/$PR_BRANCH" --jq '.object.sha')"
+          [[ "$current" == "$PR_SHA" ]] || { echo 'Head moved before CI'; exit 1; }
+          for wf in lean-proofs.yml weighted-lean.yml; do
+            gh workflow run "$wf" --repo "$REPO" --ref "$PR_BRANCH"
+          done
+          for wf in lean-proofs.yml weighted-lean.yml; do
+            success=0
+            for attempt in $(seq 1 360); do
+              runs="$(gh run list --repo "$REPO" --workflow "$wf" --branch "$PR_BRANCH" --event workflow_dispatch --limit 50 --json databaseId,headSha,status,conclusion)"
+              match="$(printf '%s' "$runs" | jq -c --arg sha "$PR_SHA" '[.[] | select(.headSha == $sha)] | first // empty')"
+              if [[ -n "$match" ]]; then
+                rid="$(printf '%s' "$match" | jq -r .databaseId)"
+                status="$(printf '%s' "$match" | jq -r .status)"
+                conclusion="$(printf '%s' "$match" | jq -r .conclusion)"
+                if [[ "$status" == completed ]]; then
+                  echo "$wf at exact $PR_SHA: $conclusion (run $rid)"
+                  [[ "$conclusion" == success ]] || { gh run view "$rid" --repo "$REPO" || true; exit 1; }
+                  success=1
+                  break
+                fi
+              fi
+              sleep 15
+            done
+            [[ "$success" == 1 ]] || { echo "$wf lacks exact-head successful run"; exit 1; }
+          done
+          current="$(gh api "repos/$REPO/git/ref/heads/$PR_BRANCH" --jq '.object.sha')"
+          [[ "$current" == "$PR_SHA" ]] || { echo 'Head moved during CI'; exit 1; }
