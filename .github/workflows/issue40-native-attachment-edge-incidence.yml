@@ -1,0 +1,86 @@
+name: "Issue 40 source-native attachment and edge-incidence audit"
+
+on:
+  push:
+    branches: [main, 'research/**']
+    paths:
+      - '.github/workflows/issue40-native-attachment-edge-incidence.yml'
+      - 'research/independent_audits/issue40_native_attachment_edge_incidence_20261115/**'
+      - 'results/issue40_native_attachment_edge_incidence_20261115.json'
+      - 'results/tip_root_interval_geometry.json'
+      - 'results/tip_KKL_tree_marked_breakage_20261109.json'
+  pull_request:
+    paths:
+      - '.github/workflows/issue40-native-attachment-edge-incidence.yml'
+      - 'research/independent_audits/issue40_native_attachment_edge_incidence_20261115/**'
+      - 'results/issue40_native_attachment_edge_incidence_20261115.json'
+      - 'results/tip_root_interval_geometry.json'
+      - 'results/tip_KKL_tree_marked_breakage_20261109.json'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  physical-geometry-and-adversarial-certificate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Reject Python bytecode and other untracked audit files
+        run: |
+          if git ls-files research/independent_audits/issue40_native_attachment_edge_incidence_20261115 | grep -E '__pycache__|\.pyc$'; then
+            echo 'Do not commit generated Python bytecode'
+            exit 1
+          fi
+      - name: Check complete source-derived 256-bit and rational certificate
+        run: |
+          python -m py_compile research/independent_audits/issue40_native_attachment_edge_incidence_20261115/verify_native_attachment_edge_incidence.py
+          python research/independent_audits/issue40_native_attachment_edge_incidence_20261115/verify_native_attachment_edge_incidence.py --check-manifest
+      - name: Demand negative controls reject erroneous hypotheses
+        run: python research/independent_audits/issue40_native_attachment_edge_incidence_20261115/verify_native_attachment_edge_incidence.py --adversarial
+      - name: Re-verify original physical tip marking with unchanged checker
+        run: python research/independent_audits/verify_tip_KKL_tree_marked_breakage.py --check-manifest
+
+  existing-lean-kernel-regression:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Reject proof placeholders in source Lean files
+        run: |
+          if grep -En '(^|[^A-Za-z_])(sorry|admit|axiom|unsafe)([^A-Za-z_]|$)' TipKKLTreeMarking.lean TipNativeProperRestriction.lean; then
+            echo 'Existing physical tip Lean layers must remain hole-free'
+            exit 1
+          fi
+      - uses: leanprover/lean-action@v1
+        with:
+          auto-config: 'false'
+          build: 'true'
+          test: 'false'
+          lint: 'false'
+          use-github-cache: 'false'
+          use-mathlib-cache: 'false'
+      - name: Explicit original physical-tip finite Lean checks
+        run: lake build TipKKLTreeMarking TipNativeProperRestriction
+
+  dispatch-existing-research-and-weighted-lean-ci:
+    # The original workflows' path filters do not match this new nested audit.
+    # Dispatch their UNMODIFIED workflow_dispatch entry points on this very
+    # same-repository head branch; never give a fork PR Actions-write rights.
+    if: github.event_name == 'pull_request' && github.event.pull_request.head.repo.full_name == github.repository
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      actions: write
+    steps:
+      - name: Trigger unchanged Research validation and Weighted spectral mathlib proofs
+        env:
+          GH_TOKEN: ${{ github.token }}
+          REPOSITORY: ${{ github.repository }}
+          HEAD_REF: ${{ github.event.pull_request.head.ref }}
+        run: |
+          gh api -X POST "repos/$REPOSITORY/actions/workflows/lean-proofs.yml/dispatches" -f ref="$HEAD_REF"
+          gh api -X POST "repos/$REPOSITORY/actions/workflows/weighted-lean.yml/dispatches" -f ref="$HEAD_REF"
+          echo "Dispatched both existing CI workflows; review their completed conclusions before merging."
