@@ -1,0 +1,435 @@
+{
+  "T_F_characteristic_polynomial": "t^3-2*t-1=(t+1)*(t^2-t-1)",
+  "T_F_exact_Perron_eigenvalue": "(1+sqrt(5))/2",
+  "T_F_positive_left_edge_weights": [
+    "phi",
+    "1",
+    "phi"
+  ],
+  "T_F_primitive_positive_power": 4,
+  "T_F_rows_output_columns_old_input": [
+    [
+      0,
+      0,
+      1
+    ],
+    [
+      1,
+      0,
+      1
+    ],
+    [
+      1,
+      1,
+      0
+    ]
+  ],
+  "all_full_source_incidence_sha256": "b896324caed1d11f8a660070162c10037db729b6a3221f59beab20203bf890e6",
+  "all_ten_atomic_F_star_words": [
+    [
+      8,
+      9,
+      0,
+      1,
+      2
+    ],
+    [
+      3,
+      4
+    ],
+    [
+      5
+    ],
+    [
+      6
+    ],
+    [
+      7,
+      8,
+      9
+    ],
+    [
+      0
+    ],
+    [
+      1,
+      2,
+      3
+    ],
+    [
+      4
+    ],
+    [
+      5
+    ],
+    [
+      6,
+      7
+    ]
+  ],
+  "all_ten_iota_star_closure_endpoints": [
+    [
+      {
+        "access": "lower",
+        "landing": "x15"
+      },
+      {
+        "access": "upper",
+        "landing": "x15"
+      }
+    ],
+    [
+      {
+        "access": "upper",
+        "landing": "x15"
+      },
+      {
+        "access": "upper",
+        "landing": "x9"
+      }
+    ],
+    [
+      {
+        "access": "upper",
+        "landing": "x9"
+      },
+      {
+        "access": "upper",
+        "landing": "x18"
+      }
+    ],
+    [
+      {
+        "access": "upper",
+        "landing": "x18"
+      },
+      {
+        "access": "upper",
+        "landing": "alpha"
+      }
+    ],
+    [
+      {
+        "access": "upper",
+        "landing": "alpha"
+      },
+      {
+        "access": "upper",
+        "landing": "x12"
+      }
+    ],
+    [
+      {
+        "access": "upper",
+        "landing": "x12"
+      },
+      {
+        "access": "lower",
+        "landing": "x12"
+      }
+    ],
+    [
+      {
+        "access": "lower",
+        "landing": "x12"
+      },
+      {
+        "access": "lower",
+        "landing": "alpha"
+      }
+    ],
+    [
+      {
+        "access": "lower",
+        "landing": "alpha"
+      },
+      {
+        "access": "lower",
+        "landing": "x18"
+      }
+    ],
+    [
+      {
+        "access": "lower",
+        "landing": "x18"
+      },
+      {
+        "access": "lower",
+        "landing": "x9"
+      }
+    ],
+    [
+      {
+        "access": "lower",
+        "landing": "x9"
+      },
+      {
+        "access": "lower",
+        "landing": "x15"
+      }
+    ]
+  ],
+  "all_ten_iota_star_source_blocks": [
+    [
+      18,
+      19,
+      0,
+      1,
+      2
+    ],
+    [
+      3,
+      4
+    ],
+    [
+      5
+    ],
+    [
+      6
+    ],
+    [
+      7,
+      8,
+      9
+    ],
+    [
+      10
+    ],
+    [
+      11,
+      12,
+      13
+    ],
+    [
+      14
+    ],
+    [
+      15
+    ],
+    [
+      16,
+      17
+    ]
+  ],
+  "all_zero_edge_sector_escape_steps": [
+    {
+      "crest": 0,
+      "first_edge": 1,
+      "saturation": 2
+    },
+    {
+      "crest": 2,
+      "first_edge": 3,
+      "saturation": 4
+    },
+    {
+      "crest": 5,
+      "first_edge": 2,
+      "saturation": 3
+    },
+    {
+      "crest": 8,
+      "first_edge": 3,
+      "saturation": 4
+    }
+  ],
+  "cover_f_star_source_to_target_atom": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9
+  ],
+  "existing_physical_Wave_witness": {
+    "base_atoms": [
+      9,
+      0,
+      1
+    ],
+    "closed_crest_atom": 0,
+    "first_failed_edge_transfer_hypothesis": "positive Wave width DOES NOT imply positive old-tree edge mass of its closed crest",
+    "full_F_star_I0_contains_edge_sides": true,
+    "old_tree_edge_mass_of_crest": 0,
+    "old_tree_edge_mass_of_each_pushed_child_crest": [
+      0,
+      0
+    ],
+    "radius_ratio_exact": "4/3",
+    "two_child_crest_atoms": [
+      2,
+      8
+    ],
+    "width_from_analytic_rectangle": "log(4/3)/(2*pi)"
+  },
+  "full_two_sheet_preimages_of_each_marked_edge": {
+    "E0a": [
+      {
+        "carrier": "E20",
+        "upper_atom": 3
+      },
+      {
+        "carrier": "Ea1",
+        "upper_atom": 7
+      }
+    ],
+    "E20": [
+      {
+        "carrier": "attachment",
+        "upper_atom": 1
+      },
+      {
+        "carrier": "Ea1",
+        "upper_atom": 9
+      }
+    ],
+    "Ea1": [
+      {
+        "carrier": "E20",
+        "upper_atom": 4
+      },
+      {
+        "carrier": "E0a",
+        "upper_atom": 6
+      }
+    ]
+  },
+  "immersion_iota_star_source_to_target_host": [
+    0,
+    0,
+    0,
+    1,
+    1,
+    2,
+    3,
+    4,
+    4,
+    4,
+    5,
+    6,
+    6,
+    6,
+    7,
+    8,
+    9,
+    9,
+    0,
+    0
+  ],
+  "input_parameter_bracket": {
+    "denominator_power_of_two": 128,
+    "lower_numerator": -607918036626757496169199575185708826140,
+    "upper_numerator": -607918036626757496169199575185708826139
+  },
+  "new_attachment": "[-x3,x6)",
+  "new_attachment_source_boundary_atoms": [
+    19,
+    0,
+    1
+  ],
+  "old_edge_forward_traversals_with_vertex_gaps": {
+    "E0a": [
+      "Ea1"
+    ],
+    "E20": [
+      "E0a",
+      "Ea1"
+    ],
+    "Ea1": [
+      "E0a",
+      "K0",
+      "E20"
+    ]
+  },
+  "precision_bits": 256,
+  "proof_boundary": [
+    "The integers certify strict orbit/vertex/cut/gate order, whole-disk bounds, complete physical segment and attachment incidence, and exact matrix arithmetic.",
+    "The existing Misiurewicz dendrite/connected quadratic-like source and KKL Proposition 6.5 identify real slit sides with the actual ideal-boundary pullback; they are imported analytic results, not proved by this Python file.",
+    "All ten three-atom entries are formal crest TYPES only; Appendix A.1 gives arbitrary laminations with closed crests, not a finite canonical Wave family. Their existence and widths are not deduced from this table.",
+    "The actual positive-width witness is the earlier explicitly constructed concentric wave; its extremal rectangle width and path properness rely on analytic arguments.",
+    "No arbitrary proper-path zero-sector escape, universal no-cancellation for analytic immersed lifts, higher iterates in a non-locally-connected model, or Issue #40 theorem is established."
+  ],
+  "schema_version": 1,
+  "scope": "physical degree-two G=f_c^3:V3->D(0,1/4), one-step actual KKL tree; no non-LC/canonical-psi generalization",
+  "source_tree": "[-x3,x3]",
+  "target_marked_tree_edges": [
+    {
+      "left": "x15",
+      "name": "E20",
+      "right": "x9"
+    },
+    {
+      "left": "x18",
+      "name": "E0a",
+      "right": "alpha"
+    },
+    {
+      "left": "alpha",
+      "name": "Ea1",
+      "right": "x12"
+    }
+  ],
+  "target_tree": "[x6,x3]",
+  "target_tree_vertices": [
+    {
+      "left": "x6",
+      "name": "K2",
+      "right": "x15"
+    },
+    {
+      "left": "x9",
+      "name": "K0",
+      "right": "x18"
+    },
+    {
+      "left": "alpha",
+      "name": "alpha",
+      "right": "alpha"
+    },
+    {
+      "left": "x12",
+      "name": "K1",
+      "right": "x3"
+    }
+  ],
+  "zero_f_output_edge_source_atoms": [
+    0,
+    2,
+    5,
+    8,
+    10,
+    12,
+    15,
+    18
+  ],
+  "zero_old_edge_source_atoms": [
+    0,
+    1,
+    2,
+    5,
+    10,
+    15,
+    18,
+    19
+  ],
+  "zero_old_edge_target_crest_atoms": [
+    0,
+    2,
+    5,
+    8
+  ]
+}
