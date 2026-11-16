@@ -1,7 +1,7 @@
 {
   "code": {
     "file": "research/native_wave_transfer/regenerate.py",
-    "sha256": "56d19b26918298ca0b0471567cc263962481fd97dc75b0876dc90305f112bdaa"
+    "sha256": "cb63619d2134896a3b38716ffa709c251635431f6c34cc9bf89b7973631e3ad3"
   },
   "experiment_id": "native-tip-pr68-v1",
   "inputs": {
@@ -45,9 +45,9 @@
       "components": [
         {
           "boundary_atoms": [
+            19,
             0,
-            1,
-            19
+            1
           ],
           "immersion_boundary_destination": "target_interior_not_I0_boundary",
           "interval": "[-x3,x6)",
@@ -384,7 +384,7 @@
       "target_width": "log(4/3)/(2*pi)"
     }
   },
-  "outputs_sha256": "65c57cd7e0018f42719860ef7dfa51a05df28389783f40114c54da0c648d61c9",
+  "outputs_sha256": "1f3dcad139aee80be3abbc3304e3c0c10a2055487b55fb86ec346cc8dd4780cb",
   "proof_status": {
     "certified_by_exact_arithmetic": [
       "orbit cut strict order",
