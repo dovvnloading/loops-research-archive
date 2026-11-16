@@ -26,6 +26,8 @@ PAIRS = ((3, 1), (19, 17), (3, 17))
 EDGE_CUT_IMAGES = (2, 4, 4, 3, 0)
 EDGES = ((0, 1), (2, 3), (3, 4))
 MATRIX = ((0, 0, 1), (1, 0, 1), (1, 1, 0))
+# Two cyclic ideal-side approaches to ONE marked old edge E0; typed census only.
+EDGE_SIDES = ((1, 'E0'), (9, 'E0'))
 
 # The large-period 0.26 lower bound is certified only for p>=13.
 GENERAL_REFERENCE = (Q(1, 4), Q(39, 50))
@@ -61,6 +63,7 @@ def marked_table_check(
     cover: tuple[int, ...] = COVER,
     pairs: tuple[tuple[int, int], ...] = PAIRS,
     cut_images: tuple[int, ...] = EDGE_CUT_IMAGES,
+    edge_sides: tuple[tuple[int, str], ...] = EDGE_SIDES,
 ) -> dict[str, object]:
     """Reject collapsing the distinct cover/immersion and malformed marking."""
     ensure(len(blocks) == 10, "need ten target immersion blocks")
@@ -95,10 +98,13 @@ def marked_table_check(
             max(cut_images[EDGES[col][0]], cut_images[EDGES[col][1]]))
         for col in range(3)) for row in EDGES)
     ensure(computed == MATRIX, "old-edge incidence matrix changed")
-    # I1 and I9 are sides of the SAME old real edge; do not count twice.
-    ensure(len({(0, 1)}) == 1 and blocks[1] != blocks[9],
-           "old edge side bookkeeping failed")
-    return {"source_spans": src, "target_spans": tgt, "edge_matrix": computed}
+    # Check the declared typed census. No arithmetic proves geometric identity.
+    ensure(edge_sides == EDGE_SIDES, "old edge sides changed")
+    ensure({atom for atom, _ in edge_sides} == {1, 9}
+           and len({edge for _, edge in edge_sides}) == 1,
+           "opposite accesses counted as two old edges")
+    return {"source_spans": src, "target_spans": tgt,
+            "edge_matrix": computed, "opposite_accesses": edge_sides}
 
 
 def reference_bounds(period: int) -> tuple[Q, Q]:
