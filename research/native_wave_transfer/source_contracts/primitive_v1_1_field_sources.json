@@ -1,0 +1,304 @@
+{
+  "format": "native-wave-primitive-v1.1-field-sources",
+  "schema_version": "1.1",
+  "sources": {
+    "ATLAS": "SPECIFICATION_v1_1.md §2; KKL arXiv:2606.27272v1 §6.1, Propositions 6.5–6.6 and Appendix A.1 (declared real-slit side marking; finite covering vs immersion)",
+    "CONTACT": "research/independent_audits/kkl_annular_contact_resistance_crossover_20261107.md §§1,6–7 (conditional condenser, not a canonical KKL Wave)",
+    "IDEAL": "KKL arXiv:2606.27272v1 Appendix A.1 (ideal boundary intervals, variable refinements, outer circle)",
+    "KKL23": "KKL arXiv:2606.27272v1 §2.3; Kahn–Lyubich arXiv:0712.2444 §§1,2.2 (primitive phase disjointness vs prime)",
+    "KKL25": "KKL arXiv:2606.27272v1 §2.5 (ambient marked Hubbard tree edges; cannot equate with local return slit)",
+    "KKL61": "KKL arXiv:2606.27272v1 §6.1, Propositions 6.5 and 6.6 (attachments and distinct covering/immersion)",
+    "NEAR": "research/native_wave_transfer/regenerate_near_parabolic.py:certify_member and immutable experiment_manifests/near_parabolic_primitive_tips.json (outward 2^-256 finite certificate)",
+    "PATH": "KKL arXiv:2606.27272v1 Appendix A.1 and A.3.2–A.3.4 (whole proper paths, restrictions, Wave widths)",
+    "PROTOCOL": "SPECIFICATION_v1_1.md §§1,4–5 (tagged additive union, manifest and undecidable-data policy)",
+    "SLIT": "SPECIFICATION_v1_1.md §2; KKL Appendix A.1 (chosen real-slit upper/lower accesses, subject to the pre-existing analytic Chebyshev identification)",
+    "SUBCOLLAR": "research/native_wave_transfer/regenerate_near_parabolic.py:rouche_margin, certify_member; SPECIFICATION_v1_1.md §3 (ordinary annular modulus lower bound only)"
+  },
+  "fields": {
+    "finite_parameter_order": {
+      "type": "string",
+      "source": "NEAR",
+      "status": "exact-finite"
+    },
+    "legacy_v1_inclusion": {
+      "type": "string",
+      "source": "PROTOCOL",
+      "status": "declared-choice"
+    },
+    "members[].ambient_phase_count": {
+      "type": "integer",
+      "source": "KKL23",
+      "status": "exact-finite"
+    },
+    "members[].collar.canonical_attachment_ell": {
+      "type": "null",
+      "source": "CONTACT",
+      "status": "not-defined"
+    },
+    "members[].collar.canonical_attachment_h": {
+      "type": "null",
+      "source": "CONTACT",
+      "status": "not-defined"
+    },
+    "members[].collar.round_quadratic_like_modulus_lower_bound": {
+      "type": "string",
+      "source": "SUBCOLLAR",
+      "status": "exact-finite"
+    },
+    "members[].complex_certificates.global_degree": {
+      "type": "string",
+      "source": "NEAR",
+      "status": "exact-finite"
+    },
+    "members[].complex_certificates.phase_gap_strict_enclosure": {
+      "type": "string-list",
+      "source": "NEAR",
+      "status": "exact-finite"
+    },
+    "members[].complex_certificates.restricted_degree": {
+      "type": "integer",
+      "source": "NEAR",
+      "status": "exact-finite"
+    },
+    "members[].complex_certificates.rouche_margin_strict_enclosure": {
+      "type": "string-list",
+      "source": "NEAR",
+      "status": "exact-finite"
+    },
+    "members[].complex_certificates.target_radius": {
+      "type": "string",
+      "source": "NEAR",
+      "status": "exact-finite"
+    },
+    "members[].ideal_boundary.count_invariant_under_refinement": {
+      "type": "boolean",
+      "source": "IDEAL",
+      "status": "declared-choice"
+    },
+    "members[].ideal_boundary.covering_source_inner_atom_count": {
+      "type": "integer",
+      "source": "ATLAS",
+      "status": "conditional-slit"
+    },
+    "members[].ideal_boundary.covering_source_side_atoms": {
+      "type": "string-list",
+      "source": "SLIT",
+      "status": "declared-choice"
+    },
+    "members[].ideal_boundary.marking": {
+      "type": "string",
+      "source": "SLIT",
+      "status": "declared-choice"
+    },
+    "members[].ideal_boundary.outer_component_atom_count": {
+      "type": "integer",
+      "source": "IDEAL",
+      "status": "exact-finite"
+    },
+    "members[].ideal_boundary.target_inner_atom_count": {
+      "type": "integer",
+      "source": "IDEAL",
+      "status": "conditional-slit"
+    },
+    "members[].ideal_boundary.target_side_atoms": {
+      "type": "string-list",
+      "source": "SLIT",
+      "status": "declared-choice"
+    },
+    "members[].ideal_boundary.tip_accesses_per_slit": {
+      "type": "integer",
+      "source": "SLIT",
+      "status": "conditional-slit"
+    },
+    "members[].inner_return_interval_count": {
+      "type": "integer",
+      "source": "NEAR",
+      "status": "exact-finite"
+    },
+    "members[].local_edges.ambient_KKL_old_edge_matrix": {
+      "type": "null",
+      "source": "KKL25",
+      "status": "not-defined"
+    },
+    "members[].local_edges.ambient_KKL_perron_root": {
+      "type": "null",
+      "source": "KKL25",
+      "status": "not-defined"
+    },
+    "members[].local_edges.KKL_closed_wave_crests": {
+      "type": "null",
+      "source": "PATH",
+      "status": "not-defined"
+    },
+    "members[].local_edges.local_complementary_edge_count": {
+      "type": "integer",
+      "source": "KKL25",
+      "status": "exact-finite"
+    },
+    "members[].local_edges.local_complementary_incidence_matrix": {
+      "type": "integer-list-list",
+      "source": "KKL25",
+      "status": "exact-finite"
+    },
+    "members[].local_edges.local_perron_root": {
+      "type": "null",
+      "source": "KKL25",
+      "status": "not-defined"
+    },
+    "members[].local_edges.zero_local_edge_side_atoms": {
+      "type": "string-list",
+      "source": "SLIT",
+      "status": "conditional-slit"
+    },
+    "members[].local_tree.ambient_KKL_attachment_census": {
+      "type": "null",
+      "source": "KKL61",
+      "status": "not-defined"
+    },
+    "members[].local_tree.complete_for_central_return": {
+      "type": "boolean",
+      "source": "NEAR",
+      "status": "exact-finite"
+    },
+    "members[].local_tree.hull": {
+      "type": "string",
+      "source": "SLIT",
+      "status": "conditional-slit"
+    },
+    "members[].local_tree.new_attachment_components": {
+      "type": "string-list",
+      "source": "NEAR",
+      "status": "exact-finite"
+    },
+    "members[].local_tree.new_attachment_count": {
+      "type": "integer",
+      "source": "NEAR",
+      "status": "exact-finite"
+    },
+    "members[].local_tree.preimage_hull_in_V": {
+      "type": "string",
+      "source": "SLIT",
+      "status": "conditional-slit"
+    },
+    "members[].operations.covering_f_star.degree": {
+      "type": "integer",
+      "source": "NEAR",
+      "status": "exact-finite"
+    },
+    "members[].operations.covering_f_star.map": {
+      "type": "string",
+      "source": "KKL61",
+      "status": "exact-finite"
+    },
+    "members[].operations.covering_f_star.preimages_per_target_side": {
+      "type": "integer-list",
+      "source": "ATLAS",
+      "status": "conditional-slit"
+    },
+    "members[].operations.covering_f_star.source_to_target": {
+      "type": "integer-list",
+      "source": "ATLAS",
+      "status": "conditional-slit"
+    },
+    "members[].operations.immersion_iota_star.attached_component_boundary_blocks": {
+      "type": "integer-list-list",
+      "source": "KKL61",
+      "status": "exact-finite"
+    },
+    "members[].operations.immersion_iota_star.map": {
+      "type": "string",
+      "source": "KKL61",
+      "status": "exact-finite"
+    },
+    "members[].operations.immersion_iota_star.source_to_target_pullback": {
+      "type": "integer-list",
+      "source": "ATLAS",
+      "status": "conditional-slit"
+    },
+    "members[].operations.immersion_iota_star.target_to_source_blocks": {
+      "type": "integer-list-list",
+      "source": "ATLAS",
+      "status": "conditional-slit"
+    },
+    "members[].p": {
+      "type": "integer",
+      "source": "NEAR",
+      "status": "exact-finite"
+    },
+    "members[].parameter_bracket.denominator_power_of_two": {
+      "type": "integer",
+      "source": "NEAR",
+      "status": "exact-finite"
+    },
+    "members[].parameter_bracket.lower_numerator": {
+      "type": "string",
+      "source": "NEAR",
+      "status": "exact-finite"
+    },
+    "members[].parameter_bracket.upper_numerator": {
+      "type": "string",
+      "source": "NEAR",
+      "status": "exact-finite"
+    },
+    "members[].resistance.contact_resistance_test": {
+      "type": "null",
+      "source": "CONTACT",
+      "status": "not-defined"
+    },
+    "members[].resistance.h_times_log_inverse_ell": {
+      "type": "null",
+      "source": "CONTACT",
+      "status": "not-defined"
+    },
+    "members[].resistance.rouche_margin_order_is_wave_width_order": {
+      "type": "null",
+      "source": "CONTACT",
+      "status": "not-defined"
+    },
+    "members[].restrictions.filtered_restriction_counts": {
+      "type": "null",
+      "source": "PATH",
+      "status": "not-defined"
+    },
+    "members[].restrictions.local_covering_side_germs": {
+      "type": "integer",
+      "source": "ATLAS",
+      "status": "conditional-slit"
+    },
+    "members[].restrictions.local_inclusion_side_germs": {
+      "type": "integer",
+      "source": "ATLAS",
+      "status": "conditional-slit"
+    },
+    "members[].restrictions.specified_whole_target_path": {
+      "type": "null",
+      "source": "PATH",
+      "status": "not-defined"
+    },
+    "members[].wave.child_widths": {
+      "type": "null",
+      "source": "PATH",
+      "status": "not-defined"
+    },
+    "members[].wave.harmonic_equality": {
+      "type": "null",
+      "source": "PATH",
+      "status": "not-defined"
+    },
+    "members[].wave.parent_width": {
+      "type": "null",
+      "source": "PATH",
+      "status": "not-defined"
+    },
+    "members[].wave.width_degeneracy_status": {
+      "type": "null",
+      "source": "PATH",
+      "status": "not-defined"
+    },
+    "mode": {
+      "type": "string",
+      "source": "PROTOCOL",
+      "status": "declared-choice"
+    }
+  }
+}
