@@ -113,6 +113,13 @@ def prove_all_sector_inequalities(tiles, parents) -> None:
 
 def source_inputs():
     atlas = load("results/tip_kl_side_atlas.json")
+    require(atlas["basepoint_convention"] ==
+            "angle 0 at height h/256; increase angle to the listed midpoint, then change height to h_m/2" and
+            atlas["height_unit"] ==
+            "initial geometric puzzle height h; carrier height H=2h" and
+            atlas["retained_sheet_coordinate"] ==
+            "all integer translates in each universal tile; no finite coset quotient",
+            "original G carrier/within-tile basepoint or retained deck convention changed")
     source = load("results/tip_rooted_native_KL_section_20261108.json")
     native_deck = load("results/tip_native_root_deck_monodromy_20261109.json")
     wake = load("results/tip_native_C4_wake_root_matrix_20261109.json")
@@ -134,6 +141,9 @@ def source_inputs():
             "wrong original G=f^3 source stages")
     for j, t in enumerate(tiles):
         require(t["id"] == f"G:W:tile{j}" and
+                t["basepoint_height_relative_to_initial"] == "1/256" and
+                t["tile_mark_height_relative_to_initial"] == "1/128" and
+                t["finite_gluing_height_relative_to_initial"] == "1/64" and
                 t["seam_stage_angles"] == list(SOURCE_W_SEAMS[j]),
                 f"changed original W tile {j}")
         require(t["xi"]["inner_halfline"][1] == SOURCE_W_SEAMS[j][0]
