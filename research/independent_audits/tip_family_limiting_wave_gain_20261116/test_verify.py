@@ -39,7 +39,7 @@ class LimitingGainTests(unittest.TestCase):
     def test_source_and_target_not_the_same_slit(self):
         x = self.x
         self.assertTrue(x[2].negative() and x[1].positive())
-        self.assertTrue(((-x[1]).lt(x[2]))  # source extends farther left
+        self.assertTrue((-x[1]).lt(x[2]))  # source extends farther left
         self.assertTrue(x[2].lt(x[5]) and x[5].lt(x[3]))
 
     def test_left_tip_semidisk_not_allowed_to_hit_tip_seam(self):
