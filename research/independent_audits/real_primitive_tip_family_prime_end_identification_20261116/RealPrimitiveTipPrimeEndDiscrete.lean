@@ -69,8 +69,8 @@ theorem cover_pushed_lengths_are_three_three_five :
     shortArcAtoms 10 (cover 3) (cover 17) = 5 := by decide
 
 theorem different_immersion_blocks_at_filtered_ends :
-    sourceLabels[3]! != sourceLabels[1]! ∧
-    sourceLabels[19]! != sourceLabels[17]! ∧
-    sourceLabels[3]! != sourceLabels[17]! := by decide
+    sourceLabels[3]! ≠ sourceLabels[1]! ∧
+    sourceLabels[19]! ≠ sourceLabels[17]! ∧
+    sourceLabels[3]! ≠ sourceLabels[17]! := by decide
 
 end RealPrimitiveTipPrimeEndDiscrete
