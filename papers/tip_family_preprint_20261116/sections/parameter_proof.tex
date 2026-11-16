@@ -1,0 +1,312 @@
+\subsection{Finite roots and interval-soundness}
+\begin{proof}[Proof of Theorem~\ref{thm:real}]
+First take $3\le p\le12$.  Define exact polynomial recurrences
+\[
+ X_0=Y_0=0,\quad X_{j+1}=X_j^2+c,\quad
+ Y_{j+1}=2X_jY_j+1.
+\]
+Then $X_j=x_j(c)$ and $Y_j=x'_j(c)$ identically
+over $\Q[c]$.  For each rational seed in
+Table~\ref{tab:seeds}, the finite checker verifies
+\begin{equation}\label{eq:finite-sign}
+ P_p(\sigma_p-10^{-75})>0,\quad
+ P_p(\sigma_p+10^{-75})<0,\quad
+ \sup_{|c-\sigma_p|\le10^{-75}}
+ (Y_{6p}(c)+Y_{3p}(c))<0.
+\end{equation}
+The endpoints are rational, and the derivative is evaluated
+on the \emph{entire} chart by outward $2^{-512}$
+interval recurrences, not by sampling.  The intermediate
+value theorem and strict monotonicity prove one simple root
+in each open chart.  Eighty-two further sign-separated
+bisections locate it in an adjacent $2^{-256}$
+rational root cell; every operation on the $X_j,Y_j$
+arrays and every comparison is an integer inequality.
+The resulting full-hull orbit and a two-sided
+fixed-point sign bracket prove all inequalities in
+\eqref{eq:order1}--\eqref{eq:order2}, $A_p<0$, and the
+real monotonicity.  Thus the proof of each finite assertion
+is a finite exact decision procedure with explicitly supplied
+input seeds, recursion, precision and required output signs.
+The complete-disk properness check is proved separately below.
+
+For $p\ge13$ use $q=4^{-p}$, $c=-2+\eps$,
+$14q\le\eps\le16q$.  The positive repelling
+fixed point of $f_c$ is
+\[
+ \beta=\frac{1+\sqrt{9-4\eps}}2,\quad
+ \lambda=2\beta=4-\delta,\quad
+ \delta=\frac{4\eps}{3+\sqrt{9-4\eps}}\in(0,\eps).
+\]
+Setting $y_j=\beta-x_j$, exact substitution gives
+\begin{equation}\label{eq:cheb}
+ y_{j+1}=\lambda y_j-y_j^2,\quad
+ y_2=\frac83\eps-\eps^2-
+ \frac{4\eps^2}{3(3+\sqrt{9-4\eps})^2},\quad
+ \frac83\eps-2\eps^2<y_2<\frac83\eps.
+\end{equation}
+For $j\ge2$ put $y_j=2(1-\cos\theta_j)$
+on the positive small-angle branch, and put
+$\Theta=2^{p-2}\theta_2$ and $\kappa=\eps/q$.
+The alternating Taylor inequalities for cosine,
+$\sin u\ge2u/\pi$ on $[0,\pi/2]$ and
+$157/50<\pi<22/7$ imply
+\begin{equation}\label{eq:angle-bds}
+ \frac{\kappa}{6}(1-\eps)<\Theta^2
+ <\frac{\kappa}{6}(1+3\eps),\qquad
+ \frac{38}{25}<\Theta<\frac{41}{25},\qquad
+ \theta_j<\frac{41}{50}\quad(2\le j<p).
+\end{equation}
+To see the main squared-angle comparison explicitly,
+$1-3\eps/4<y_2/((8/3)\eps)<1$,
+$\theta_2^2\le(\pi^2/4)y_2<7\eps$,
+and $1\le\theta_2^2/y_2
+\le(1-7\eps/12)^{-1}\le1+\eps$.
+Multiplication by $4^{p-2}$ gives the first inequality.
+In the above small-angle regime the perturbation of the
+exact Chebyshev doubling map satisfies
+\[
+ (2-\eps)\theta_j\le\theta_{j+1}\le2\theta_j.
+\]
+Iteration, the $1$-Lipschitz property of cosine,
+and $|\beta-2|<\eps/2$ yield
+\begin{equation}\label{eq:escape}
+ |\theta_p-\sqrt{\kappa/6}|\le(p+6)\eps,\qquad
+ |x_p-2\cos\sqrt{\kappa/6}|\le3p\eps.
+\end{equation}
+In particular rational endpoint comparisons using
+$38/25<\sqrt{14/6}<77/50$ and
+$\sqrt{16/6}>81/50$ show
+$x_p(-2+14q)>1/20$ and
+$x_p(-2+16q)<-1/20$.
+
+These opposite signs alone would not give
+parameter uniqueness.  Differentiating
+\eqref{eq:cheb} gives, with $Y_j=dy_j/d\eps$,
+\[
+ Y_{j+1}=(\lambda-2y_j)Y_j+\lambda' y_j,\quad
+ r_j=\frac{\eps Y_j}{y_j},\quad
+ r_{j+1}=\left(1-\frac{y_j}{\lambda-y_j}\right)r_j+
+ \frac{\eps\lambda'}{\lambda-y_j}.
+\]
+The verified rational bounds
+$r_2>99/100$, $0<y_j<7/10$ for $2\le j<p$,
+$\sum y_j<21/20$,
+$\sum y_j/(\lambda-y_j)<7/20$ and
+$p\eps<1/300000$, together with
+$\prod(1-a_j)\ge1-\sum a_j$,
+prove $r_p>1/2$.  Since $\theta_p>3/2$,
+$y_p>9/5$, this gives
+\begin{equation}\label{eq:slope}
+ \frac{dx_p}{dc}<-\frac{1}{20q}.
+\end{equation}
+Thus the window $|x_p|\le14q$ is
+crossed exactly once by the parameter.
+
+We next normalize the first return, including its
+\emph{parameter derivative}.  Write $a_j=[z^2]f_c^j$,
+with $a_1=1$ and $a_{j+1}=2x_ja_j$.
+The exact cosine product identity
+\[
+ \prod_{j=2}^{p-1}\cos(2^{j-2}\theta_2)
+       =\frac{\sin\Theta}{2^{p-2}\sin\theta_2}
+\]
+and bounds $1-\eps\le
+2x_j/(4\cos(2^{j-2}\theta_2))\le1+p\eps$
+give
+\begin{equation}\label{eq:A-bds}
+ A_p<0,\qquad 3/20<-A_pq<17/100.
+\end{equation}
+Differentiation of the $x_j,a_j$ recursions,
+using $|x_j|<2$ before return, gives
+$|x'_j|\le4^j/3$, $|a_j|\le4^{j-1}$,
+$|a'_j|\le16^{j-1}/3$.
+Consequently $\tau_p'=A'_px_p+A_px'_p
+>7/(1000q^2)$ on $|x_p|\le14q$,
+with $\tau_p$ traversing $[-2,1/4]$ only once.
+In the subchart
+$J=[-1795/1000,-1785/1000]$,
+one has $0<x_p<12q$.
+
+The full complex perturbation estimate below yields
+\[
+ h_\tau(w)=A_pG_p(w/A_p)=w^2+\tau+e_\tau(w),\quad
+ |e_\tau(w)|<88q,\quad
+ |\partial_we_\tau(w)|\le256q,\quad
+ |\partial_\tau e_\tau(w)|<30000q^2
+ \quad(|w|\le21/10).
+\]
+On $|w|\le19/10$, the spatial derivative bound is
+$171q$.  For $g_\tau(w)=w^2+\tau$ let
+$u_j=g_\tau^j(0)$ and $\Pi(\tau)=u_6+u_3$.
+On $J$, rational evaluation gives
+\[
+ \Pi(-1795/1000)<-1/20,\quad
+ \Pi(-1785/1000)>1/20,\quad
+ \Pi'(\tau)>2,\quad
+ |u_j|<9/5\quad(0\le j\le6).
+\]
+Set $E_0=D_0=0$ and inductively
+\begin{equation}\label{eq:two-errors}
+ E_{j+1}=4E_j+88q,\quad
+ D_{j+1}=4D_j+25(2E_j+171q)+30000q^2.
+\end{equation}
+For $p=13$ (and therefore for all larger $p$)
+the strict rational bounds are
+$E_6+E_3<1/500$ and $D_6+D_3<1/5$.
+This proves that the perturbed six/three-return
+expression has opposite endpoint signs
+and derivative $>2-1/5>0$ throughout $J$.
+It has exactly one simple zero there.
+
+To exclude a second root in the \emph{whole signed chart},
+first the quadratic model on $[-2,0]$ is trapped in
+a real invariant interval; the comparison recurrence
+$E_{j+1}^{\rm wide}=(21/5)E_j^{\rm wide}+88q$
+gives $E_6^{\rm wide}+E_3^{\rm wide}<1/400$.
+The six rational closed nonroot segments
+\[
+\begin{split}
+ [-2,-1.989],\ [-1.988,-1.982],\
+ [-1.980,-1.894],\ [-1.892,-1.795],\\
+ [-1.785,-1.756],\ [-1.753,-0.01]
+\end{split}
+\]
+are each covered by \emph{1000} rational subintervals;
+the outward interval evaluation on each entire cell
+proves $|\Pi|>1/400$.  In the intervening neighborhoods
+$[-1.989,-1.988]$, $[-1.982,-1.980]$ and
+$[-1.894,-1.892]$, the required signed normalized
+itinerary is contradicted respectively by the
+fourth or fifth return.  On
+$[-1.756,-1.753]$ put $v=h_\tau^3(0)$:
+the bounds $|v|<1/40$ and
+$|(h_\tau^3)'(w)|<1$ for all $w\in[0,v]$
+give
+\[
+ h_\tau^6(0)+h_\tau^3(0)
+ =v\left(2+\int_0^1(h_\tau^3)'(sv)\,ds\right),
+\]
+so a zero would force $v=0$, which is forbidden by the
+strict $x_{3p}<0$ condition.
+For $-0.01<\tau<0$, evenness gives
+$e_\tau(w)=O(w^4)$; the order-four Schwarz
+lemma on $|w|\le12/5$ yields
+$|e_\tau(\tau)|<|\tau|/100$ and then
+$h_\tau^2(0)=\tau(1+\tau)+e_\tau(\tau)<0$,
+also forbidden.  Finally $\tau\ge0$
+contradicts $x_p>0$.
+These analytic exclusions and all finite rational
+cells, \emph{not} an unisolated broad polynomial root,
+prove uniqueness in $\mathcal K_p$.
+
+At that root the normalized model's strict
+six-return cut bounds with errors \eqref{eq:two-errors}
+give \eqref{eq:order1} and
+\eqref{eq:order2}.  The fixed point is bracketed
+on the relevant interval with strictly negative
+$h_\tau'$ and opposite endpoint signs.  The
+negative factor $A_p$ reverses the normalized
+real cut order, which is included in the
+outward computations.  Finally the derivative
+of $2\cos\sqrt{\kappa/6}$ has absolute value
+$>1/10$ on $[14,16]$; with $|x_p|<12q$,
+\eqref{eq:escape} and the mean-value theorem
+give
+$|\kappa-3\pi^2/2|<500pq$, exactly
+\eqref{eq:tip-rate}.  The strict orbit enclosure
+also gives the two monotone inverse sheets and
+absence of an earlier central critical return.
+\end{proof}
+
+\subsection{Proper degree-two returns (not globally degree two)}
+\begin{proof}[Proof of Theorem~\ref{thm:rouche}]
+For $f_c^j(z)=x_j+a_jz^2+E_j(z)$,
+$a_1=1$, $a_{j+1}=2x_ja_j$, and
+$E_1=0$, the \emph{identity}
+\[
+ E_{j+1}(z)=2x_jE_j(z)+(a_jz^2+E_j(z))^2
+\]
+proves by induction, \emph{on the whole complex disk} $|z|\le R$,
+\begin{equation}\label{eq:tail}
+ T_1=0,\quad
+ T_{j+1}=2|x_j|T_j+(|a_j|R^2+T_j)^2,\quad
+ \sup_{|z|\le R}|E_j(z)|\le T_j.
+\end{equation}
+This is a complete tail, not a finite Taylor truncation.
+For $p\ge13$, $|x_j|<2$ and $|a_j|\le4^{j-1}$.
+If $t_j=4^jR^2\le1$, induction yields
+$T_j\le t_j^2/128$: for $j<p$,
+$t_j\le1/4$ and
+$4/128+(1/4+1/512)^2<16/128$.
+With $R=R_p=2^{-p}$, $t_p=1$ and
+$T_p\le1/128$.  Thus
+\eqref{eq:A-bds}, $|x_p|<12q$ and
+$R_p\le2^{-13}$ imply \eqref{eq:p-margin}.
+Every one of these strict comparisons reduces
+to a rational inequality at the worst $p=13$.
+For $3\le p\le12$ the original ten root packets
+are propagated via \eqref{eq:tail}, respecting
+the exceptional $R_3=1/4$, to prove
+the identical $>1/25$ boundary margin.
+
+For any $|y|\le R_p$, on $|z|=R_p$,
+\[
+ |G_p(z)-y-A_pz^2|
+ \le|x_p|+T_p+R_p<|A_p|R_p^2.
+\]
+Rouch\'e's theorem
+\cite[Chapter 4, \S5.2, corollary to Theorem 18]{AhlforsComplex}
+counts exactly two solutions of $G_p(z)=y$
+inside the disk, with none on its boundary.
+Since $G_p(0)=x_p\in U_p$ and zero has
+local multiplicity two, both solutions
+near this critical value lie in the central
+component.  By proper continuation this
+component maps onto $U_p$ with degree two.
+The strict boundary inequality and
+Riemann--Hurwitz
+\cite[\S17.14]{Forster1981} give the
+central proper quadratic-like restriction,
+$V_p\Subset U_p$, with a single critical point.
+
+For the \emph{different} normalized third return
+$H=h_\tau^3$, the model $g_\tau(w)=w^2+\tau$
+has the \emph{exact} degree-eight polynomial
+\[
+ g_\tau^3(w)=(v^2+\tau)+(4\tau v)w^2
+ +(2v+4\tau^2)w^4+4\tau w^6+w^8,
+ \qquad v=\tau^2+\tau.
+\]
+For $\tau\in J$ one has the verified bounds
+$7/5<v<10/7$, $|v^2+\tau|<13/50$,
+$4|\tau|v>99/10$, $2v+4\tau^2<16$,
+$4|\tau|<8$.  On the \emph{whole}
+complex disk $|w|\le r=3/10$,
+the first two intermediate images remain in
+$|w|<21/10$, so the three-step perturbation
+is bounded by $1848q$.  The Rouch\'e gap is
+therefore strictly larger than
+\[
+ \frac{99}{10}r^2-\left(
+   \frac{13}{50}+16r^4+8r^6+r^8+
+   1848\cdot4^{-13}+r\right)>\frac18.
+\]
+The third-return central local degree is two;
+both intermediate model images stay away from
+additional critical points.  Rouch\'e and
+Riemann--Hurwitz prove the proper central
+$H$ restriction.  For $3\le p\le12$ the
+separate full-disk $3p$-return check applies
+\eqref{eq:tail} at $R=r/|A_p|$ with outward
+$2^{-192}$ tail rounding and certifies the
+same $>1/8$ strict gap and intermediate
+component containment.
+The three phase compact real intervals are
+disjoint by \eqref{eq:order1}; shrinking
+their analytic neighborhoods gives a
+primitive three-return restriction
+inside the original $G_p$ domain.  This
+shrinking proves \emph{existence} but not
+a uniform modulus of the chosen neighborhoods.
+\end{proof}
