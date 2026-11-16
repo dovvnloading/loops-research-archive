@@ -1,0 +1,91 @@
+name: Canonical KKL WAD electrode incidence (exact finite audit)
+
+on:
+  pull_request:
+    paths:
+      - '.github/workflows/canonical-wad-electrode-incidence.yml'
+      - 'research/independent_audits/canonical_wad_electrode_incidence_20261116/**'
+      - 'results/canonical_wad_electrode_incidence_20261116.json'
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/canonical-wad-electrode-incidence.yml'
+      - 'research/independent_audits/canonical_wad_electrode_incidence_20261116/**'
+      - 'results/canonical_wad_electrode_incidence_20261116.json'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  typed-native-electrodes:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Syntax, exact contact and canonical-typing manifest
+        run: |
+          python -m py_compile research/independent_audits/canonical_wad_electrode_incidence_20261116/verify.py
+          python research/independent_audits/canonical_wad_electrode_incidence_20261116/verify.py --check-manifest
+      - name: Reject intentionally perturbed covering / immersion / endpoint data
+        run: python -m unittest discover -s research/independent_audits/canonical_wad_electrode_incidence_20261116 -p 'test_*.py' -v
+      - name: Independently rerun unchanged physical original-marking and contact proofs
+        run: |
+          python research/independent_audits/verify_tip_KKL_tree_marked_breakage.py --check-manifest
+          python research/independent_audits/wave_vs_dirichlet_contact_transfer_20261115/verify.py --check-manifest
+          python research/independent_audits/verify_annular_contact_crossover.py --check-manifest
+          python research/independent_audits/verify_attachment_sheet_condenser.py --check-manifest
+
+  unchanged-existing-validation-and-lean:
+    name: Require existing Research validation and Weighted Lean at the exact PR SHA
+    needs: typed-native-electrodes
+    if: github.event_name == 'pull_request' && github.event.pull_request.head.repo.full_name == github.repository
+    runs-on: ubuntu-latest
+    timeout-minutes: 85
+    permissions:
+      contents: read
+      actions: write
+    steps:
+      - name: Dispatch both existing workflows and verify exact-head success
+        env:
+          GH_TOKEN: ${{ github.token }}
+          REPO: ${{ github.repository }}
+          BRANCH: ${{ github.event.pull_request.head.ref }}
+          HEAD_SHA: ${{ github.event.pull_request.head.sha }}
+        run: |
+          set -euo pipefail
+          for workflow in lean-proofs.yml weighted-lean.yml; do
+            gh workflow run "$workflow" --repo "$REPO" --ref "$BRANCH"
+          done
+          for workflow in lean-proofs.yml weighted-lean.yml; do
+            found_success=0
+            for attempt in $(seq 1 280); do
+              runs="$(gh run list --repo "$REPO" --workflow "$workflow" \
+                --branch "$BRANCH" --event workflow_dispatch --limit 40 \
+                --json databaseId,headSha,status,conclusion)"
+              match="$(printf '%s' "$runs" | jq -c --arg sha "$HEAD_SHA" \
+                '[.[] | select(.headSha == $sha)] | first // empty')"
+              if [[ -n "$match" ]]; then
+                run_id="$(printf '%s' "$match" | jq -r .databaseId)"
+                status="$(printf '%s' "$match" | jq -r .status)"
+                conclusion="$(printf '%s' "$match" | jq -r .conclusion)"
+                if [[ "$status" == completed ]]; then
+                  echo "$workflow at $HEAD_SHA: $conclusion (run $run_id)"
+                  if [[ "$conclusion" != success ]]; then
+                    gh run view "$run_id" --repo "$REPO" || true
+                    exit 1
+                  fi
+                  found_success=1
+                  break
+                fi
+              fi
+              sleep 15
+            done
+            if [[ "$found_success" != 1 ]]; then
+              echo "Missing successful $workflow dispatch at exact PR SHA $HEAD_SHA"
+              exit 1
+            fi
+          done
