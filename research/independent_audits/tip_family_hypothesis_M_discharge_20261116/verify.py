@@ -142,6 +142,27 @@ def check_finite_report(rows: list[dict]) -> None:
                 lo_E < hi_E, f"p={p}: malformed bracket")
 
 
+def check_physical_cut_order(finite, rows: list[dict]) -> None:
+    """Reconstruct BOTH real orders with outward enclosures, not labels alone.
+
+    Every selected period is independently re-isolated from the immutable
+    exact dyadic packet. This is an arithmetic test of (O1),(O2), NOT a
+    Python proof that the prime-end accesses have these labels.
+    """
+    for row in rows:
+        p, c, orbit = finite.v.checked_packet(row)
+        xp, x2, x3, x4, x5, x6 = (orbit[j*p] for j in range(1, 7))
+        alpha = finite.v.alpha_interval(p, c, orbit)
+        zero = finite.v.Iv.point(0)
+        target = (x2, x5, x3, zero, x6, alpha, x4, xp)
+        source = (-xp, -x4, x2, x5, -alpha, x3, x6, alpha,
+                  -x5, -x2, x4, xp)
+        require(all(a.lt(b) for a, b in zip(target, target[1:])),
+                f"p={p}: selected physical target cuts cross")
+        require(all(a.lt(b) for a, b in zip(source, source[1:])),
+                f"p={p}: selected physical inverse cuts cross")
+
+
 def check_tail_floor(parent: F = F(2, 3),
                      child: F = F(63, 50)) -> F:
     require(parent > 0 and child > 0, "nonpositive tail data")
@@ -187,6 +208,7 @@ def run() -> None:
     finite = load_verifier(
         "tip_family_finite_p_wave_gain_20261116", "m_discharge_finite")
     check_finite_report(finite.certify())
+    check_physical_cut_order(finite, old["periods"])
     require(finite.lim.PARENT_TAIL_FLOOR == F(2, 3) and
             finite.lim.CHILD_TAIL_CEILING == F(63, 50) and
             finite.lim.TAIL_GAIN_FLOOR == F(11, 126),
