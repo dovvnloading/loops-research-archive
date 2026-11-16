@@ -87,7 +87,8 @@ def parent_semidisk_width(x1: I, x2: I, x5: I, x3: I,
     the boundary angle t is sent to 2Rt/(R^2+t^2).
     Its SC rectangle foliation projects injectively because R<pi.
     """
-    require(F(0) < radius < F(3), "semidisk must be below pi")
+    require(radius > 0 and I.point(radius).lt(v.pi_interval()),
+            "semidisk must be strictly below pi")
     a, b, _, _ = parent_angle_data(x1, x2, x5, x3)
     RR = I.point(radius)
     require(b.lt(RR), "parent electrode outside bounded semidisk")
