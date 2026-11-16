@@ -1,0 +1,408 @@
+{
+  "code": {
+    "path": "research/native_wave_transfer/regenerate_primitive_v1_1.py",
+    "sha256": "f8c8c3c32141ed25c6a25b9f82cae678f909f1781571d06fa6c5e6729c5fae72"
+  },
+  "experiment_id": "native-near-parabolic-primitive-Chebyshev-tips-v1.1",
+  "format": "native-wave-primitive-one-slit-manifest/v1.1",
+  "inputs": {
+    "existing_near_parabolic_fixture_sha256": "a9b732686d8a595b861c829e2788a5995bf37a4452ad79735e34bfecce6b9824",
+    "existing_refusal_manifest_sha256": "d550a9b8d3e822b876af5e281ad6e56261684cfc94a390e7adc1af8d3ffa3cff",
+    "locked_legacy_git_blobs": {
+      "research/native_wave_transfer/SPECIFICATION.md": "4288c3c7a9680fffd8d094b8f25d51c6cd5df648",
+      "research/native_wave_transfer/experiment_manifests/primitive4_tip12.json": "abcc01ad0b5ab0b59cd46e9d080ce44141603392",
+      "research/native_wave_transfer/experiment_manifests/satellite2_misiurewicz_tip_refusal.json": "cc78196b8ad25a6ea24912131d6c4f0887317a89",
+      "research/native_wave_transfer/experiment_manifests/satellite2_misiurewicz_v2.json": "6bd66c3dac16cace7f52c84a3f848684240c564a",
+      "research/native_wave_transfer/experiment_manifests/satellite2_period4_obstruction.json": "063132e808fe209473663e28cd12b7eb876c27ed",
+      "research/native_wave_transfer/experiment_manifests/tip_pr68.json": "39233f576e7de78cf707b4d616177d0313b98b25",
+      "research/native_wave_transfer/regenerate.py": "0dfa4f4c8d5321a7b9fdd74c9c1218228087e0f2"
+    },
+    "v1_1_field_contract_sha256": "301e73872c07d94495e60696afae60b8bd65eec7dc85b16e603efe3951c01ccf",
+    "v1_1_spec_sha256": "d90cac68fcd0c8774fc87407abeb20005a6deabd6bc76de3db8945384b8374b1"
+  },
+  "outputs": {
+    "finite_parameter_order": "-7/4 < c30 < c27 < c24",
+    "legacy_v1_inclusion": "identity-only; no v1 reserialization",
+    "members": [
+      {
+        "ambient_phase_count": 24,
+        "collar": {
+          "canonical_attachment_ell": null,
+          "canonical_attachment_h": null,
+          "round_quadratic_like_modulus_lower_bound": "log(8/7)/(2*pi)"
+        },
+        "complex_certificates": {
+          "global_degree": "16777216",
+          "phase_gap_strict_enclosure": [
+            "23/10000",
+            "1/400"
+          ],
+          "restricted_degree": 2,
+          "rouche_margin_strict_enclosure": [
+            "1/625",
+            "17/10000"
+          ],
+          "target_radius": "1/1024"
+        },
+        "ideal_boundary": {
+          "count_invariant_under_refinement": false,
+          "covering_source_inner_atom_count": 4,
+          "covering_source_side_atoms": [
+            "S_upper_negative",
+            "S_upper_positive",
+            "S_lower_positive",
+            "S_lower_negative"
+          ],
+          "marking": "chosen-real-slit-upper-lower/v1.1",
+          "outer_component_atom_count": 1,
+          "target_inner_atom_count": 2,
+          "target_side_atoms": [
+            "I_upper",
+            "I_lower"
+          ],
+          "tip_accesses_per_slit": 2
+        },
+        "inner_return_interval_count": 1,
+        "local_edges": {
+          "KKL_closed_wave_crests": null,
+          "ambient_KKL_old_edge_matrix": null,
+          "ambient_KKL_perron_root": null,
+          "local_complementary_edge_count": 0,
+          "local_complementary_incidence_matrix": [],
+          "local_perron_root": null,
+          "zero_local_edge_side_atoms": [
+            "I_upper",
+            "I_lower"
+          ]
+        },
+        "local_tree": {
+          "ambient_KKL_attachment_census": null,
+          "complete_for_central_return": true,
+          "hull": "K0=[-a,a]",
+          "new_attachment_components": [],
+          "new_attachment_count": 0,
+          "preimage_hull_in_V": "K0=[-a,a]"
+        },
+        "operations": {
+          "covering_f_star": {
+            "degree": 2,
+            "map": "G=f_c^p:V\\K0 -> U\\K0",
+            "preimages_per_target_side": [
+              2,
+              2
+            ],
+            "source_to_target": [
+              1,
+              0,
+              1,
+              0
+            ]
+          },
+          "immersion_iota_star": {
+            "attached_component_boundary_blocks": [],
+            "map": "iota:V\\K0 -> U\\K0 (inclusion)",
+            "source_to_target_pullback": [
+              0,
+              0,
+              1,
+              1
+            ],
+            "target_to_source_blocks": [
+              [
+                0,
+                1
+              ],
+              [
+                2,
+                3
+              ]
+            ]
+          }
+        },
+        "p": 24,
+        "parameter_bracket": {
+          "denominator_power_of_two": 160,
+          "lower_numerator": "-2551914465108484579617401324842852154640068134308",
+          "upper_numerator": "-2551914465108484579617401324842852154640068134307"
+        },
+        "resistance": {
+          "contact_resistance_test": null,
+          "h_times_log_inverse_ell": null,
+          "rouche_margin_order_is_wave_width_order": null
+        },
+        "restrictions": {
+          "filtered_restriction_counts": null,
+          "local_covering_side_germs": 2,
+          "local_inclusion_side_germs": 1,
+          "specified_whole_target_path": null
+        },
+        "wave": {
+          "child_widths": null,
+          "harmonic_equality": null,
+          "parent_width": null,
+          "width_degeneracy_status": null
+        }
+      },
+      {
+        "ambient_phase_count": 27,
+        "collar": {
+          "canonical_attachment_ell": null,
+          "canonical_attachment_h": null,
+          "round_quadratic_like_modulus_lower_bound": "log(8/7)/(2*pi)"
+        },
+        "complex_certificates": {
+          "global_degree": "134217728",
+          "phase_gap_strict_enclosure": [
+            "9/5000",
+            "19/10000"
+          ],
+          "restricted_degree": 2,
+          "rouche_margin_strict_enclosure": [
+            "9/10000",
+            "1/1000"
+          ],
+          "target_radius": "3/4096"
+        },
+        "ideal_boundary": {
+          "count_invariant_under_refinement": false,
+          "covering_source_inner_atom_count": 4,
+          "covering_source_side_atoms": [
+            "S_upper_negative",
+            "S_upper_positive",
+            "S_lower_positive",
+            "S_lower_negative"
+          ],
+          "marking": "chosen-real-slit-upper-lower/v1.1",
+          "outer_component_atom_count": 1,
+          "target_inner_atom_count": 2,
+          "target_side_atoms": [
+            "I_upper",
+            "I_lower"
+          ],
+          "tip_accesses_per_slit": 2
+        },
+        "inner_return_interval_count": 1,
+        "local_edges": {
+          "KKL_closed_wave_crests": null,
+          "ambient_KKL_old_edge_matrix": null,
+          "ambient_KKL_perron_root": null,
+          "local_complementary_edge_count": 0,
+          "local_complementary_incidence_matrix": [],
+          "local_perron_root": null,
+          "zero_local_edge_side_atoms": [
+            "I_upper",
+            "I_lower"
+          ]
+        },
+        "local_tree": {
+          "ambient_KKL_attachment_census": null,
+          "complete_for_central_return": true,
+          "hull": "K0=[-a,a]",
+          "new_attachment_components": [],
+          "new_attachment_count": 0,
+          "preimage_hull_in_V": "K0=[-a,a]"
+        },
+        "operations": {
+          "covering_f_star": {
+            "degree": 2,
+            "map": "G=f_c^p:V\\K0 -> U\\K0",
+            "preimages_per_target_side": [
+              2,
+              2
+            ],
+            "source_to_target": [
+              1,
+              0,
+              1,
+              0
+            ]
+          },
+          "immersion_iota_star": {
+            "attached_component_boundary_blocks": [],
+            "map": "iota:V\\K0 -> U\\K0 (inclusion)",
+            "source_to_target_pullback": [
+              0,
+              0,
+              1,
+              1
+            ],
+            "target_to_source_blocks": [
+              [
+                0,
+                1
+              ],
+              [
+                2,
+                3
+              ]
+            ]
+          }
+        },
+        "p": 27,
+        "parameter_bracket": {
+          "denominator_power_of_two": 160,
+          "lower_numerator": "-2553275755570421998660459007092359881945255630742",
+          "upper_numerator": "-2553275755570421998660459007092359881945255630741"
+        },
+        "resistance": {
+          "contact_resistance_test": null,
+          "h_times_log_inverse_ell": null,
+          "rouche_margin_order_is_wave_width_order": null
+        },
+        "restrictions": {
+          "filtered_restriction_counts": null,
+          "local_covering_side_germs": 2,
+          "local_inclusion_side_germs": 1,
+          "specified_whole_target_path": null
+        },
+        "wave": {
+          "child_widths": null,
+          "harmonic_equality": null,
+          "parent_width": null,
+          "width_degeneracy_status": null
+        }
+      },
+      {
+        "ambient_phase_count": 30,
+        "collar": {
+          "canonical_attachment_ell": null,
+          "canonical_attachment_h": null,
+          "round_quadratic_like_modulus_lower_bound": "log(8/7)/(2*pi)"
+        },
+        "complex_certificates": {
+          "global_degree": "1073741824",
+          "phase_gap_strict_enclosure": [
+            "7/5000",
+            "3/2000"
+          ],
+          "restricted_degree": 2,
+          "rouche_margin_strict_enclosure": [
+            "3/5000",
+            "7/10000"
+          ],
+          "target_radius": "5/8192"
+        },
+        "ideal_boundary": {
+          "count_invariant_under_refinement": false,
+          "covering_source_inner_atom_count": 4,
+          "covering_source_side_atoms": [
+            "S_upper_negative",
+            "S_upper_positive",
+            "S_lower_positive",
+            "S_lower_negative"
+          ],
+          "marking": "chosen-real-slit-upper-lower/v1.1",
+          "outer_component_atom_count": 1,
+          "target_inner_atom_count": 2,
+          "target_side_atoms": [
+            "I_upper",
+            "I_lower"
+          ],
+          "tip_accesses_per_slit": 2
+        },
+        "inner_return_interval_count": 1,
+        "local_edges": {
+          "KKL_closed_wave_crests": null,
+          "ambient_KKL_old_edge_matrix": null,
+          "ambient_KKL_perron_root": null,
+          "local_complementary_edge_count": 0,
+          "local_complementary_incidence_matrix": [],
+          "local_perron_root": null,
+          "zero_local_edge_side_atoms": [
+            "I_upper",
+            "I_lower"
+          ]
+        },
+        "local_tree": {
+          "ambient_KKL_attachment_census": null,
+          "complete_for_central_return": true,
+          "hull": "K0=[-a,a]",
+          "new_attachment_components": [],
+          "new_attachment_count": 0,
+          "preimage_hull_in_V": "K0=[-a,a]"
+        },
+        "operations": {
+          "covering_f_star": {
+            "degree": 2,
+            "map": "G=f_c^p:V\\K0 -> U\\K0",
+            "preimages_per_target_side": [
+              2,
+              2
+            ],
+            "source_to_target": [
+              1,
+              0,
+              1,
+              0
+            ]
+          },
+          "immersion_iota_star": {
+            "attached_component_boundary_blocks": [],
+            "map": "iota:V\\K0 -> U\\K0 (inclusion)",
+            "source_to_target_pullback": [
+              0,
+              0,
+              1,
+              1
+            ],
+            "target_to_source_blocks": [
+              [
+                0,
+                1
+              ],
+              [
+                2,
+                3
+              ]
+            ]
+          }
+        },
+        "p": 30,
+        "parameter_bracket": {
+          "denominator_power_of_two": 160,
+          "lower_numerator": "-2554197062530014440012717955456885164630387263690",
+          "upper_numerator": "-2554197062530014440012717955456885164630387263689"
+        },
+        "resistance": {
+          "contact_resistance_test": null,
+          "h_times_log_inverse_ell": null,
+          "rouche_margin_order_is_wave_width_order": null
+        },
+        "restrictions": {
+          "filtered_restriction_counts": null,
+          "local_covering_side_germs": 2,
+          "local_inclusion_side_germs": 1,
+          "specified_whole_target_path": null
+        },
+        "wave": {
+          "child_widths": null,
+          "harmonic_equality": null,
+          "parent_width": null,
+          "width_degeneracy_status": null
+        }
+      }
+    ],
+    "mode": "v1.1-one-inner-return-slit"
+  },
+  "outputs_sha256": "8a5e3250c96cf3031b233d02e537a4e6c311fa23eb6d82a009d7ee42142261ca",
+  "proof_status": {
+    "certified_exact": [
+      "unchanged finite dyadic root, Rouch\u00e9, phase-gap and return-inverse certificates",
+      "local return-slit T_G'=T_G, zero local attachments/edges",
+      "branch orientation and return degree two",
+      "explicit annular quadratic-like modulus lower bound"
+    ],
+    "conditional_analytic_and_chosen": [
+      "whole little Julia set equals real Chebyshev interval, including slit prime ends",
+      "2/4 side-access atoms are for one declared refinement, not canonical"
+    ],
+    "numerical_only": [],
+    "open_or_undefined": [
+      "full ambient KKL prime \u03c8-ql tree, attachments and core Perron matrix",
+      "globally filtered proper paths, KKL Wave crests and harmonic widths",
+      "canonical attachment h and ell, crossover scale and wave-width trend",
+      "infinite parabolic accumulation theorem"
+    ]
+  },
+  "schema_version": "1.1"
+}
