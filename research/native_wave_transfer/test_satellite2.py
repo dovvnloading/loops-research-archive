@@ -38,6 +38,8 @@ class SatelliteRefusalTests(unittest.TestCase):
         self.assertEqual(out["central_return"]["rouche_margin_strictly_gt"], "3/50")
         self.assertTrue(out["central_return"]["alpha_in_both_physical_phase_filled_sets"])
         self.assertTrue(out["central_return"]["K_of_G_has_nonempty_complex_interior"])
+        self.assertEqual(out["central_return"]["certified_open_Fatou_disk_radius"], "1/64")
+        self.assertEqual(out["central_return"]["four_iterate_whole_disk_absolute_bound_lt"], "1/128")
         self.assertFalse(out["compatibility"]["physical_example_v1_emitted"])
         self.assertEqual(out["compatibility"]["first_incompatible_field"],
                          "MarkedHubbardTree.small_julia_intervals")
@@ -57,6 +59,12 @@ class SatelliteRefusalTests(unittest.TestCase):
                           "precision changed")
         self.mutate_fails(lambda o: o["parameter"].__setitem__("equation", "x2=0"),
                           "parameter equation")
+
+    def test_disk_and_domain_adversary(self) -> None:
+        from fractions import Fraction as F
+        with patch.object(sat, "R", F(1, 2)):
+            with self.assertRaisesRegex(AssertionError, "Rouché degree-two margin"):
+                sat.certify(self.input)
 
     def test_no_forged_interval_or_operations(self) -> None:
         self.mutate_fails(lambda o: o.__setitem__("source_contract", "fake/v1"),
