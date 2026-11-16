@@ -1,0 +1,414 @@
+{
+  "definitions": {
+    "ambient_markov.characteristic_polynomial": {
+      "source_ids": [
+        "DS2",
+        "EXACT"
+      ],
+      "status": "exact-derived"
+    },
+    "ambient_markov.edge_images": {
+      "source_ids": [
+        "DS2",
+        "EXACT"
+      ],
+      "status": "exact-derived"
+    },
+    "ambient_markov.edges": {
+      "source_ids": [
+        "DS2",
+        "EXACT"
+      ],
+      "status": "exact-derived"
+    },
+    "ambient_markov.matrix_output_rows_input_columns": {
+      "source_ids": [
+        "DS2",
+        "EXACT"
+      ],
+      "status": "exact-derived"
+    },
+    "ambient_markov.operator_scope": {
+      "source_ids": [
+        "DS2",
+        "EXACT"
+      ],
+      "status": "exact-derived"
+    },
+    "ambient_markov.perron_root": {
+      "source_ids": [
+        "DS2",
+        "EXACT"
+      ],
+      "status": "exact-derived"
+    },
+    "ambient_markov.vertices": {
+      "source_ids": [
+        "DS2",
+        "EXACT"
+      ],
+      "status": "exact-derived"
+    },
+    "attachments.central_pullback_Tprime": {
+      "source_ids": [
+        "EXACT",
+        "KKL",
+        "AL210"
+      ],
+      "status": "exact-derived"
+    },
+    "attachments.new_components": {
+      "source_ids": [
+        "EXACT",
+        "KKL",
+        "AL210"
+      ],
+      "status": "exact-derived"
+    },
+    "attachments.phase_contacts_not_attachments": {
+      "source_ids": [
+        "EXACT",
+        "KKL",
+        "AL210"
+      ],
+      "status": "exact-derived"
+    },
+    "attachments.return_tree_T": {
+      "source_ids": [
+        "EXACT",
+        "KKL",
+        "AL210"
+      ],
+      "status": "exact-derived"
+    },
+    "bouquet.ambient_contact_accesses": {
+      "source_ids": [
+        "AL210",
+        "EXACT",
+        "KKL"
+      ],
+      "status": "unformalized"
+    },
+    "bouquet.ambient_hull": {
+      "source_ids": [
+        "AL210",
+        "LY91",
+        "EXACT"
+      ],
+      "status": "exact-derived"
+    },
+    "bouquet.contact_multiplier_sign_f": {
+      "source_ids": [
+        "AL210",
+        "LY91",
+        "EXACT"
+      ],
+      "status": "exact-derived"
+    },
+    "bouquet.contact_period_f": {
+      "source_ids": [
+        "AL210",
+        "LY91",
+        "EXACT"
+      ],
+      "status": "exact-derived"
+    },
+    "bouquet.contact_point": {
+      "source_ids": [
+        "AL210",
+        "LY91",
+        "EXACT"
+      ],
+      "status": "exact-derived"
+    },
+    "bouquet.critical_phase": {
+      "source_ids": [
+        "AL210",
+        "LY91",
+        "EXACT"
+      ],
+      "status": "exact-derived"
+    },
+    "bouquet.next_phase": {
+      "source_ids": [
+        "AL210",
+        "LY91",
+        "EXACT"
+      ],
+      "status": "exact-derived"
+    },
+    "bouquet.phase_cycle_under_f": {
+      "source_ids": [
+        "AL210",
+        "LY91",
+        "EXACT"
+      ],
+      "status": "exact-derived"
+    },
+    "bouquet.phase_intersection": {
+      "source_ids": [
+        "AL210",
+        "LY91",
+        "EXACT"
+      ],
+      "status": "exact-derived"
+    },
+    "bouquet.return_slit_tip_access_count": {
+      "source_ids": [
+        "AL210",
+        "EXACT",
+        "KKL"
+      ],
+      "status": "unformalized"
+    },
+    "bouquet.rotation_number_f": {
+      "source_ids": [
+        "AL210",
+        "LY91",
+        "EXACT"
+      ],
+      "status": "exact-derived"
+    },
+    "contact_germs.covering": {
+      "source_ids": [
+        "KKL",
+        "EXACT"
+      ],
+      "status": "unformalized"
+    },
+    "contact_germs.covering_endpoint_germs": {
+      "source_ids": [
+        "EXACT",
+        "AL210",
+        "KKL"
+      ],
+      "status": "exact-derived"
+    },
+    "contact_germs.covering_local_degrees": {
+      "source_ids": [
+        "EXACT",
+        "AL210",
+        "KKL"
+      ],
+      "status": "exact-derived"
+    },
+    "contact_germs.covering_preimages": {
+      "source_ids": [
+        "EXACT",
+        "AL210",
+        "KKL"
+      ],
+      "status": "exact-derived"
+    },
+    "contact_germs.global_filtered_proper_restrictions": {
+      "source_ids": [
+        "OPEN",
+        "KKL",
+        "DLS2"
+      ],
+      "status": "unformalized"
+    },
+    "contact_germs.global_ideal_atom_tables": {
+      "source_ids": [
+        "OPEN",
+        "KKL",
+        "DLS2"
+      ],
+      "status": "unformalized"
+    },
+    "contact_germs.immersion": {
+      "source_ids": [
+        "KKL",
+        "EXACT"
+      ],
+      "status": "unformalized"
+    },
+    "contact_germs.immersion_endpoint_germs": {
+      "source_ids": [
+        "EXACT",
+        "AL210",
+        "KKL"
+      ],
+      "status": "exact-derived"
+    },
+    "contact_germs.immersion_local_degrees": {
+      "source_ids": [
+        "EXACT",
+        "AL210",
+        "KKL"
+      ],
+      "status": "exact-derived"
+    },
+    "contact_germs.immersion_preimages": {
+      "source_ids": [
+        "EXACT",
+        "AL210",
+        "KKL"
+      ],
+      "status": "exact-derived"
+    },
+    "contact_germs.through_deleted_contact_proper_paths": {
+      "source_ids": [
+        "KKL",
+        "EXACT"
+      ],
+      "status": "unformalized"
+    },
+    "parameter_and_return.bracket": {
+      "source_ids": [
+        "EXACT",
+        "AL210"
+      ],
+      "status": "exact-derived"
+    },
+    "parameter_and_return.central_map": {
+      "source_ids": [
+        "EXACT",
+        "AL210"
+      ],
+      "status": "exact-derived"
+    },
+    "parameter_and_return.equation": {
+      "source_ids": [
+        "EXACT",
+        "AL210"
+      ],
+      "status": "exact-derived"
+    },
+    "parameter_and_return.restricted_degree": {
+      "source_ids": [
+        "EXACT",
+        "AL210"
+      ],
+      "status": "exact-derived"
+    },
+    "primitive_comparison.p3.attachments": {
+      "source_ids": [
+        "PRIM",
+        "KKL"
+      ],
+      "status": "exact-derived"
+    },
+    "primitive_comparison.p3.each_child_width": {
+      "source_ids": [
+        "PRIM",
+        "KKL"
+      ],
+      "status": "exact-derived"
+    },
+    "primitive_comparison.p3.harmonic_equality": {
+      "source_ids": [
+        "PRIM",
+        "KKL"
+      ],
+      "status": "exact-derived"
+    },
+    "primitive_comparison.p3.parent_width": {
+      "source_ids": [
+        "PRIM",
+        "KKL"
+      ],
+      "status": "exact-derived"
+    },
+    "primitive_comparison.p3.proper_restrictions_crossing_avoiding": {
+      "source_ids": [
+        "PRIM",
+        "KKL"
+      ],
+      "status": "exact-derived"
+    },
+    "primitive_comparison.p4.attachments": {
+      "source_ids": [
+        "PRIM",
+        "KKL"
+      ],
+      "status": "exact-derived"
+    },
+    "primitive_comparison.p4.each_child_width": {
+      "source_ids": [
+        "PRIM",
+        "KKL"
+      ],
+      "status": "exact-derived"
+    },
+    "primitive_comparison.p4.harmonic_equality": {
+      "source_ids": [
+        "PRIM",
+        "KKL"
+      ],
+      "status": "exact-derived"
+    },
+    "primitive_comparison.p4.parent_width": {
+      "source_ids": [
+        "PRIM",
+        "KKL"
+      ],
+      "status": "exact-derived"
+    },
+    "primitive_comparison.p4.proper_restrictions_crossing_avoiding": {
+      "source_ids": [
+        "PRIM",
+        "KKL"
+      ],
+      "status": "exact-derived"
+    },
+    "wave.children_exact_widths": {
+      "source_ids": [
+        "OPEN",
+        "KKL",
+        "DLS2",
+        "KL22"
+      ],
+      "status": "unformalized"
+    },
+    "wave.harmonic_width_transfer": {
+      "source_ids": [
+        "OPEN",
+        "KKL",
+        "DLS2",
+        "KL22"
+      ],
+      "status": "unformalized"
+    },
+    "wave.parent_exact_width": {
+      "source_ids": [
+        "OPEN",
+        "KKL",
+        "DLS2",
+        "KL22"
+      ],
+      "status": "unformalized"
+    },
+    "wave.satellite_marked_wave": {
+      "source_ids": [
+        "OPEN",
+        "KKL",
+        "DLS2",
+        "KL22"
+      ],
+      "status": "unformalized"
+    },
+    "wave.width_degradation_forced": {
+      "source_ids": [
+        "OPEN",
+        "KKL",
+        "DLS2",
+        "KL22"
+      ],
+      "status": "unformalized"
+    }
+  },
+  "format": "native-wave-transfer-satellite-v2-field-sources",
+  "schema_version": 2,
+  "sources": {
+    "AL210": "Avila and Lyubich, The Full Renormalization Horseshoe for Unimodal Maps of Higher Degree (Publ. Math. IHES 2011), \u00a72.10, conditions R1\u2013R3, beta-fixed marker, and primitive/satellite definition: https://www.numdam.org/item/10.1007/s10240-011-0034-2.pdf",
+    "DLS2": "Dudko, Lyubich and Selinger, Pacman Renormalization and Self-Similarity of the Mandelbrot Set near Siegel Parameters, JAMS 33 (2020), Definition 2.1 and \u00a7\u00a72.1\u20132.2 (sector cuts, glued arcs), Appendix C (molecule): https://doi.org/10.1090/jams/942",
+    "DS2": "Dudko and Schleicher, Core Entropy of Quadratic Polynomials, Arnold Math. J. 6 (2020), \u00a72, discussion after Definition 2.2 and Lemma 2.3 (finite Hubbard-tree Markov edges, incidence and spectral radius): https://doi.org/10.1007/s40598-020-00134-y",
+    "EXACT": "Existing immutable research/native_wave_transfer/physical_examples/satellite2_misiurewicz_tip_refusal.json and exact return proof in regenerate_satellite2_tip.py; independently recertified in regenerate_satellite_v2.py (local field definitions; not attributed to a paper)",
+    "KKL": "Kahn, Kapiamba and Lyubich, MLC for parabolically bounded primitive renormalization, arXiv:2606.27272v1, \u00a7\u00a72.3\u20132.5, \u00a76.1 Props. 6.5\u20136.6, Appendix A.1/A.3.2\u2013A.3.4 (primitive path, ideal access, Wave): https://arxiv.org/abs/2606.27272v1",
+    "KL22": "Kahn and Lyubich, A priori bounds for some infinitely renormalizable quadratics: III. Molecules (2007), \u00a7\u00a71, 2.2 (molecule/primitive scope): https://arxiv.org/abs/0712.2444",
+    "LY91": "Lyubich, Dynamics of Quadratic Polynomials I\u2013II, Part II \u00a79.1 (little Julia bouquets touching at periodic beta points): https://www.math.stonybrook.edu/~mlyubich/Archive/Selected/puzzle.pdf",
+    "OPEN": "Explicit absence of a satellite-native KKL proper-endpoint filtration/Wave-transfer statement in AL \u00a72.10, KL \u00a72.2, DLS \u00a7\u00a72.1\u20132.2 and KKL \u00a7\u00a72.3\u20132.5, \u00a76.1, Appendix A; this is a scope declaration, not a theorem",
+    "PRIM": "Existing immutable research/native_wave_transfer/experiment_manifests/tip_pr68.json and primitive4_tip12.json, v1 SPECIFICATION.md \u00a7\u00a72\u20135 (comparison only)"
+  }
+}

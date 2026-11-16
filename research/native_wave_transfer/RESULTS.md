@@ -428,3 +428,107 @@ claim a counterexample to a theorem for primitive maps.
 Read-only reproduction:
 `python research/native_wave_transfer/regenerate_satellite2_tip.py --check`
 and `python -m unittest discover -s research/native_wave_transfer -p 'test_*.py' -v`.
+
+
+## v2 satellite contact certificate: period-two Misiurewicz tip (additive)
+
+**Contract:** [`SPECIFICATION_v2_satellite.md`](SPECIFICATION_v2_satellite.md);
+field-by-field [`source_contracts/satellite_v2_field_sources.json`](source_contracts/satellite_v2_field_sources.json);
+computed [`experiment_manifests/satellite2_misiurewicz_v2.json`](experiment_manifests/satellite2_misiurewicz_v2.json).
+The original v1 refusal above and **all existing source files, code, tests and
+manifests remain byte-identical**. The new `regenerate_satellite_v2.py`
+is independent and uses only exact integers/rationals and symbolic identities.
+
+### What the satellite record actually represents
+
+For \(P(c)=c^3+2c^2+2c+2\), unique real root \(c_*\), and
+\(a=c_*^2+c_*\), retain the v1 **physical** central return
+\(G=f_{c_*}^2:V\to D(0,1)\), **restricted degree two**, not global degree
+four. It has **one** Chebyshev inner interval \(K_0=[-a,a]\), and
+\(G^{-1}(K_0)\cap V=K_0\). Its ambient \(f\)-images are the **two**
+touching phases \(K_0\) and \(K_1=f(K_0)=[c_*,-a]\);
+\(K_0\cap K_1=\{-a\}\). The shared point \(q=-a\) is fixed under
+\(f\), its multiplier \(-2a\) is negative and repelling, and the two
+real incident arms exchange (arm rotation \(1/2\)). This is a
+period-two satellite **bouquet**, as defined in
+[Avila–Lyubich §2.10](https://www.numdam.org/item/10.1007/s10240-011-0034-2.pdf)
+and [Lyubich, *Dynamics of Quadratic Polynomials*, Part II §9.1](https://www.math.stonybrook.edu/~mlyubich/Archive/Selected/puzzle.pdf).
+It is not an additional \(G\)-little Julia interval or a new attachment.
+
+The **return-tree** attachment count remains **zero**:
+\(T=T'=K_0\). Replace the v1 primitive attachment list by a separate
+phase-contact vertex census \(\{q\}\), without treating it as a component
+of \(T'\setminus T\). The central-return slit has one tip access at
+\(-a\); the ambient bouquet interval has upper/lower local side
+accesses at that same interior point. They are **not** interchangeable
+prime-end markings. This is local topological bookkeeping, not a fully
+constructed satellite ideal atlas [KKL v1 §§2.3–2.5, Appendix A.1](https://arxiv.org/abs/2606.27272v1).
+
+Modulo \(P(c)\) the exact identity
+\(G(z)+a=(z^2-a^2)(z^2-c_*^2)\) gives **two unramified central
+covering endpoint lifts** of the return slit tip, at \(-a\) and \(+a\)
+(each local degree one); the actual inclusion \(\iota\) has **one
+local endpoint germ**, at \(-a\) (degree one). The covering
+\(f_*\) and immersion pullback \(\iota^*\) remain **separate typed
+operations**, not guessed complete atomic tables. A path passing
+*through* the deleted point \(q\) is not a proper path of the slit
+complement, so it has zero admissible through-contact crossings.
+The **global** filtered KKL restriction multiplicities are **undefined**,
+not the local `2/1` germ count. Cf.
+[KKL §6.1 Props. 6.5–6.6, Appendix A.1/A.3.2](https://arxiv.org/abs/2606.27272v1);
+[Dudko–Lyubich–Selinger §§2.1–2.2](https://doi.org/10.1090/jams/942)
+supplies pacman sectors, *not* a KKL full-path rule here.
+
+### Computed invariants and honest primitive comparison
+
+| Observable | Primitive \(p=3\) tip (unchanged) | Primitive \(p=4\) tip (unchanged) | Satellite \(p=2\) tip v2 |
+| --- | --- | --- | --- |
+| Central \(G\)-inner intervals / new return-tree attachments | 3 / 1 | 3 / 1 | **1 / 0**; two touching ambient \(f\) phases |
+| Phase contacts / local rotation | primitive disjoint | primitive disjoint | **1 contact** \(q=-a\); \(1/2\) under \(f\) |
+| Full filtered crossing/avoiding proper restrictions | **2 / 1** | **2 / 1** | **undefined**; through-\(q\) crossing not proper |
+| Local slit-tip covering/immersion endpoint lifts | not this v1 observable | not this v1 observable | **2 / 1**, both unramified; *not* full-path counts |
+| Old-edge KKL \(G\)-matrix and Perron root | \(3\times3\), \(\varphi=(1+\sqrt5)/2\) | \(3\times3\), \(\varphi\) | **undefined** (no \(G\)-old edges) |
+| **Ambient** \(f\)-Hubbard-tree Markov matrix | not compared in this convention | not compared in this convention | \(\left[\begin{smallmatrix}0&1&1\\1&0&0\\1&0&0\end{smallmatrix}\right]\), \(\rho=\sqrt2\) |
+| Parent symbolic Wave width | \(\log(4/3)/(2\pi)\) | \(\log(3/2)/(2\pi)\) | **undefined**, not zero |
+| Each child and pushed symbolic Wave width | \(\log(4/3)/\pi\) | \(\log(3/2)/\pi\) | **undefined**, not zero |
+| Harmonic width transfer | conditional analytic equality | conditional analytic equality | **undetermined**: neither preservation, loss nor forced degradation established |
+
+For the **ambient** real Hubbard tree \(H=[c_*,a]\), the exact
+vertex partition \(c_*<-a<0<a\) yields
+`E0=[c*,-a]`, `E1=[-a,0]`, `E2=[0,a]` with images
+`E0 -> E1,E2`, `E1 -> E0`, `E2 -> E0`.
+Counting each physical edge once (output rows, input columns)
+gives \(M=\bigl[\begin{smallmatrix}0&1&1\\1&0&0\\1&0&0\end{smallmatrix}\bigr]\),
+\(\chi_M(t)=t(t^2-2)\), and \(\rho(M)=\sqrt2\).
+This is the **Hubbard-tree Markov operator** of the type described
+in [Dudko–Schleicher §2, Lemma 2.3](https://doi.org/10.1007/s40598-020-00134-y),
+not the KKL primitive old-edge operator; their spectral radii do
+**not** compare satellite Wave widths.
+
+### Evidence boundaries and immutable reproduction
+
+* **Certified exact by the executable:** strict rational parameter enclosure
+  and phase order; reduction of contact/fixed-point and factor identities
+  modulo \(P\); the return-degree and no-new-attachment facts via locked
+  v1 exact certificates; local covering/inclusion germ counts, distinct
+  map types, image-edge incidence, \(M^3=2M\) and Perron root \(\sqrt2\);
+  v1 primitive manifests checked by immutable Git-blob identities.
+* **Cited but not independently formalized:** identification of the whole
+  central filled Julia set with \([-a,a]\); bouquet/arm rotation
+  interpretation and full complex prime-end access identifications.
+  The cited literature supplies the satellite topology but does *not*
+  establish a KKL satellite Wave family in this setting.
+* **Numerical-only:** **none** in v2's deductions. The decimal approximation
+  of \(c_*\) elsewhere in the unchanged v1 refusal remains orientation only.
+* **Open:** full satellite ideal-atom and \(\iota^*\) atlas, globally
+  filtered proper contact paths, a non-vacuous satellite KKL old-edge
+  operator, parent/child **extremal** Wave widths and whether a genuine
+  transfer inequality is preserved, lost, or must degrade. Neither
+  pacman moduli nor ambient \(\rho(M)\) substitutes for this missing
+  analytic theorem.
+
+Read-only reproduction:
+`python research/native_wave_transfer/regenerate_satellite_v2.py --check`
+and `python -m unittest discover -s research/native_wave_transfer -p 'test_*.py' -v`.
+The new CI step explicitly checks the immutable v2 manifest and
+source-to-field contract, while every existing job is retained.
