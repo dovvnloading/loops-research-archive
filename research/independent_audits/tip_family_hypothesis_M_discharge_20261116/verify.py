@@ -126,15 +126,19 @@ def check_finite_report(rows: list[dict]) -> None:
         lo_C, hi_C = strict_bracket(row, "child_actual_upper_strict_1e-6")
         lo_E, hi_E = strict_bracket(row, "child_plane_upper_strict_1e-6")
         lo_D, hi_D = strict_bracket(row, "defect_strict_lower_1e-6")
-        require(lo_P > parent_floor and lo_C > 0 and
-                hi_C < child_cap and lo_E > hi_C,
-                f"p={p}: strict physical parent/child comparison missing")
-        require(lo_D > gain_floor and hi_D > lo_D,
-                f"p={p}: interval sign not strict")
+        # The 10^-6 display brackets can STRADDLE a strict threshold:
+        # the p3 source-metric saving is only 1/5,000,000. Strict
+        # comparisons are made on full 2^-512 intervals in finite.certify(),
+        # not inferred by rounding these presentation brackets.
+        require(hi_P > parent_floor and lo_C < child_cap and
+                lo_E < hi_E and hi_C > 0,
+                f"p={p}: inconsistent physical parent/child brackets")
+        require(hi_D > gain_floor and hi_D > lo_D,
+                f"p={p}: reported gain bracket cannot contain strict sign")
         # Correct reciprocal reversal: P > floor, C < cap.
         require(F(2) / child_cap - F(1) / parent_floor > gain_floor,
                 f"p={p}: displayed defect does not follow")
-        require(lo_D > 0 and lo_P < hi_P and lo_C < hi_C and
+        require(hi_D > 0 and lo_P < hi_P and lo_C < hi_C and
                 lo_E < hi_E, f"p={p}: malformed bracket")
 
 
