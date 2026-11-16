@@ -90,6 +90,17 @@ class FiniteWaveGainHostileTests(unittest.TestCase):
         self.assertTrue(cap.lt(plane))
         self.assertGreater(cap.low(), 0)
 
+    def test_period_specific_missing_box_gate(self):
+        # Regression for the original incorrect fixed 2<s<3 exclusion:
+        # p=12 needs 7<s<8, while p=3 can use 2<s<3.
+        expected = {3: 2, 4: 2, 5: 2, 6: 3, 7: 4,
+                    8: 4, 9: 5, 10: 6, 11: 6, 12: 7}
+        for p, start in expected.items():
+            _, _, x = self.cases[p]
+            self.assertEqual(a.source_missing_box_start(p, x[p]), start)
+        with self.assertRaises(AssertionError):
+            a.source_missing_box_start(12, a.I.point(F(1, 10**15)))
+
     def test_child_order_reversal_rejected(self):
         p,c,orbit = self.cases[4]
         alpha=a.v.alpha_interval(p,c,orbit)
