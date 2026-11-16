@@ -1,0 +1,81 @@
+name: Real primitive tip family uniform audit
+
+on:
+  push:
+    branches: [main, 'research/**']
+    paths:
+      - 'research/independent_audits/real_primitive_tip_family_uniform_20261116/**'
+      - '.github/workflows/real-primitive-tip-family-uniform.yml'
+  pull_request:
+    paths:
+      - 'research/independent_audits/real_primitive_tip_family_uniform_20261116/**'
+      - '.github/workflows/real-primitive-tip-family-uniform.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  independent-interval-and-native-regressions:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Compile and check the independent six-period interval certificate
+        run: |
+          python -m py_compile research/independent_audits/real_primitive_tip_family_uniform_20261116/verify.py research/independent_audits/real_primitive_tip_family_uniform_20261116/test_verify.py
+          python research/independent_audits/real_primitive_tip_family_uniform_20261116/verify.py
+      - name: Run adversarial interval and combinatorial tests
+        run: python -m unittest discover -s research/independent_audits/real_primitive_tip_family_uniform_20261116 -p 'test_*.py' -v
+      - name: Recheck both original physical wave manifests without modifying them
+        run: |
+          python research/native_wave_transfer/regenerate.py --check
+          python research/native_wave_transfer/regenerate_period4.py --check
+          python -m unittest discover -s research/native_wave_transfer -p 'test_*.py' -v
+          python research/independent_audits/verify_tip_KKL_tree_marked_breakage.py --check-manifest
+
+  existing-research-validation-mirror:
+    name: Existing Research validation Python provenance and figures (mirrored)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: README and ledger provenance
+        run: |
+          python code/verify_readme_integrity.py
+          python code/verify_lean_frontier_sync.py
+      - name: Exact existing research figures
+        run: node code/generate_readme_research_figures.mjs --check
+      - name: Existing finite exact consistency checks
+        run: |
+          python research/independent_audits/verify_weighted_return_exact.py
+          python research/independent_audits/verify_clone_first_returns.py
+          python research/independent_audits/verify_real_nested_3_9.py
+          python research/independent_audits/verify_tip_native_C4_wake_root_matrix.py
+
+  lean-existing-and-discrete-shadow:
+    name: Existing Lean CI plus new finite shadow
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Reject formal proof holes and custom axioms in the new file
+        run: |
+          if grep -En '(^|[^A-Za-z_])(sorry|admit|axiom|unsafe)([^A-Za-z_]|$)' research/independent_audits/real_primitive_tip_family_uniform_20261116/RealPrimitiveTipDiscrete.lean; then
+            echo 'Formal placeholders or custom axioms are forbidden'; exit 1
+          fi
+      - uses: leanprover/lean-action@v1
+        with:
+          auto-config: 'false'
+          build: 'true'
+          test: 'false'
+          lint: 'false'
+          use-github-cache: 'false'
+          use-mathlib-cache: 'false'
+      - name: Check new decidable finite model (not analytic geometry)
+        run: lake env lean research/independent_audits/real_primitive_tip_family_uniform_20261116/RealPrimitiveTipDiscrete.lean
+      - name: Rebuild existing finite native marking kernel
+        run: lake build TipKKLTreeMarking
