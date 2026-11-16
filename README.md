@@ -17,14 +17,14 @@ Research direction, synthesis, authorship, and public stewardship
 [**Reproduce results**](#reproduce-the-central-results) ·
 [**Contribute / review**](./CONTRIBUTING.md)
 
-**README updated 2026-11-14** · **Manuscript and ledger source lock 2026-07-27**
+**README updated 2026-11-16** · **Manuscript and ledger source lock 2026-07-27**
 
 </div>
 
 > [!IMPORTANT]
 > **The Mandelbrot Local Connectivity conjecture (MLC) remains open.** This repository contains finite and structural theorems, source audits, computational certificates, a conditional marked-width reduction, and open proof obligations. The November 2026 two-scale examples and Lean checks do **not** constitute a proof of MLC or a compatible all-scale Kahn–Lyubich marked construction.
 
-**On this page:** [Results and original figures](#research-results-you-can-inspect) · [Mathematical program](#the-mathematical-program) · [Companion papers](#three-companion-papers) · [3/9 testbed](#the-november-2026-two-scale-testbed) · [Reproduce](#reproduce-the-central-results) · [Evidence ledger](#source-locked-evidence-ledger) · [Open problems](#the-open-frontier)
+**On this page:** [November research](#november-1516-2026-research-integration-merged-prs-72100) · [Results and original figures](#research-results-you-can-inspect) · [Mathematical program](#the-mathematical-program) · [Companion papers](#three-companion-papers) · [3/9 testbed](#the-november-2026-two-scale-testbed) · [Reproduce](#reproduce-the-central-results) · [Evidence ledger](#source-locked-evidence-ledger) · [Open problems](#the-open-frontier)
 
 ## Research results you can inspect
 
@@ -47,6 +47,71 @@ These visuals come from **this archive's own computations, certificates, and fin
 | **Three structural papers** on localization sheets, rooted ends and protected planar carriers | [Paper index and versions](./papers/README.md) | Finite/conditional results, not global analytic closure. |
 
 The **ray portrait and two-scale angle-map figures** are generated from the exact portrait manifest by [our reproducible SVG generator](./code/generate_readme_research_figures.mjs). The return and target-disk figures are explicitly labeled schematics of the archive's certificates. No external illustration is presented as an original research result.
+
+## November 15–16, 2026 research integration (merged PRs #72–#100)
+
+These new files were merged between 2026-11-15 and 2026-11-16. **Status is scoped to each one-line claim.** Finite arithmetic/Lean incidence does not automatically prove an analytic slit, prime-end or extremal-width identification. **M** is the physical KKL slit/prime-end marking hypothesis named in the [canonical sandwich note](./research/independent_audits/real_primitive_tip_family_canonical_width_sandwich_20261116/NOTE.md). A conditional result remains conditional even if the rational verifier passes. Strict **unbuffered independently optimized** Wave gain from PR #100 is not a claim of buffered canonical WAD or paired iterated gain. The manuscript and 465 original proof obligations remain source-locked to 2026-07-27.
+
+### Native Wave Transfer Lab and canonical WAD audits
+
+| Merged PR / result | Status and precise scope | Note and verifier |
+|---|---|---|
+| [#73](https://github.com/dovvnloading/loops-research-archive/pull/73) PR #68 physical native Wave lab | **Conditional on KKL physical marking** — 10/20 atoms, distinct G_* and iota*, two crossing versus one avoiding path, and chosen round Wave equality; no unrestricted gain. | [Note](./research/native_wave_transfer/SPECIFICATION.md) · [Verifier](./research/native_wave_transfer/regenerate.py) |
+| [#77](https://github.com/dovvnloading/loops-research-archive/pull/77) Native primitive period-four tip | **Finite certificate, conditional Wave reading** — A separate degree-two period-12 tip and p=4 round Wave are reproduced; its equality is not a canonical extremal-width theorem. | [Note](./research/native_wave_transfer/RESULTS.md) · [Verifier](./research/native_wave_transfer/regenerate_period4.py) |
+| [#72](https://github.com/dovvnloading/loops-research-archive/pull/72) Wave versus free annular Dirichlet response | **Conditional comparison; finite certificate** — Common-surface/electrode monotonicity and exact response brackets do not equate a marked Wave to a free outer Neumann condenser. | [Note](./research/independent_audits/wave_vs_dirichlet_contact_transfer_20261115/NOTE.md) · [Verifier](./research/independent_audits/wave_vs_dirichlet_contact_transfer_20261115/verify.py) |
+| [#75](https://github.com/dovvnloading/loops-research-archive/pull/75) Canonical WAD electrode obstruction | **Proved negative identification** — Buffered canonical WAD, an admissible A.1 Wave and the free annular condenser live on different typed objects; the literal electrode match fails. | [Note](./research/independent_audits/canonical_wad_electrode_incidence_20261116/NOTE.md) · [Verifier](./research/independent_audits/canonical_wad_electrode_incidence_20261116/verify.py) |
+| [#81](https://github.com/dovvnloading/loops-research-archive/pull/81) Auxiliary conformal-weight audit | **Finite certificate; canonical weights open** — Exact auxiliary annular capacity bounds do not compute individual q-gamma, canonical support, WAD total weight or a repaired scalar transfer. | [Note](./research/independent_audits/canonical_wad_conformal_weights_20261116/NOTE.md) · [Verifier](./research/independent_audits/canonical_wad_conformal_weights_20261116/verify.py) |
+| [#76](https://github.com/dovvnloading/loops-research-archive/pull/76) Canonical quadrilateral-moduli bounds | **Finite certificate; individual moduli open** — Peripheral cyclic-cover collars, coarse endpoint-type bounds and a canonical norm upper bound do not certify any individual q-gamma or support list. | [Note](./research/independent_audits/canonical_wad_quadrilateral_moduli_20261116/NOTE.md) · [Verifier](./research/independent_audits/canonical_wad_quadrilateral_moduli_20261116/verify.py) |
+
+### Real primitive tip family theorem and dependency chain
+
+| Merged PR / result | Status and precise scope | Note and verifier |
+|---|---|---|
+| [#80](https://github.com/dovvnloading/loops-research-archive/pull/80) Uniform real-tip combinatorial implication | **Conditional; six finite certificates** — A uniform result from explicit physical geometry, plus p=3..8 interval packets; the older 3/3/3 source-path assertion is corrected by later audits. | [Note](./research/independent_audits/real_primitive_tip_family_uniform_20261116/NOTE.md) · [Verifier](./research/independent_audits/real_primitive_tip_family_uniform_20261116/verify.py) |
+| [#83](https://github.com/dovvnloading/loops-research-archive/pull/83) Selected real tips p=3..12 | **Finite certificate** — Ten locally unique seed-bracket roots, signed cuts and direct degree-two Rouche disks, with a noncanonical radial witness; not global uniqueness. | [Note](./research/independent_audits/real_primitive_tip_family_unconditional_20261116/NOTE.md) · [Verifier](./research/independent_audits/real_primitive_tip_family_unconditional_20261116/verify.py) |
+| [#87](https://github.com/dovvnloading/loops-research-archive/pull/87) Selected real tips p>=13 | **Proved within signed chart** — Unique root of the selected near-minus-two kneading chart, proper degree-two returns and c_p+2=(3 pi^2/2)4^-p+O(p16^-p), not maximal-window uniqueness. | [Note](./research/independent_audits/real_primitive_tip_family_all_p_20261116/NOTE.md) · [Verifier](./research/independent_audits/real_primitive_tip_family_all_p_20261116/verify.py) |
+| [#91](https://github.com/dovvnloading/loops-research-archive/pull/91) All-period physical prime-end marking | **Proved with named published inputs** — Selected p>=3 tips have the actual 10/20 KKL slit atoms, one attachment and different covering/immersion tables; DH, McMullen, Misiurewicz and Caratheodory are not Lean-formalized. | [Note](./research/independent_audits/real_primitive_tip_family_prime_end_identification_20261116/NOTE.md) · [Verifier](./research/independent_audits/real_primitive_tip_family_prime_end_identification_20261116/verify.py) |
+| [#93](https://github.com/dovvnloading/loops-research-archive/pull/93) Typed all-period primitive-tip synthesis | **Proved scoped realization; conditional round Wave** — Selected physical tips, source arcs 3/3/7 and covering arcs 3/3/5; chosen harmonic log-Wave equality requires KKL conformal identification, never an identity for maximal Waves. | [Note](./research/tip_family_theorem/THEOREM.md) · [Verifier](./research/tip_family_theorem/verify_chain.py) |
+| [#90](https://github.com/dovvnloading/loops-research-archive/pull/90) Canonical-width gap and round witness | **Finite witness; canonical optimum open** — Orbit-centred round-witness limit and full-lift upper envelope are certified separately; unrestricted optimal KKL width, attainment and convergence are not. | [Note](./research/independent_audits/real_primitive_tip_family_canonical_width_20261116/NOTE.md) · [Verifier](./research/independent_audits/real_primitive_tip_family_canonical_width_20261116/verify.py) |
+| [#92](https://github.com/dovvnloading/loops-research-archive/pull/92) Canonical KKL Wave sandwich | **Conditional on M** — W_rad <= W_p,2* <= W_p* <= Q_p; 0.26 < liminf W_p* <= limsup W_p* < 0.78, without an optimal-width convergence claim. | [Note](./research/independent_audits/real_primitive_tip_family_canonical_width_sandwich_20261116/NOTE.md) · [Verifier](./research/independent_audits/real_primitive_tip_family_canonical_width_sandwich_20261116/verify.py) |
+
+### Wave gain and crest transport
+
+| Merged PR / result | Status and precise scope | Note and verifier |
+|---|---|---|
+| [#84](https://github.com/dovvnloading/loops-research-archive/pull/84) Four-push p=3..8 crest-collar grid | **Finite certificate; conditional physical Wave** — Strict whole-bin interval collars for selected four-push crests, not an all-period or unrestricted Wave transport law. | [Note](./research/independent_audits/crest_transport_tip_family_20261116/NOTE.md) · [Verifier](./research/independent_audits/crest_transport_tip_family_20261116/verify.py) |
+| [#89](https://github.com/dovvnloading/loops-research-archive/pull/89) Connected crest collars p=3..16 | **Finite certificate; numerical-only limit** — Full maximal connected collars within the stated circular family are certified; c_infinity approximately 0.347005 is only a numerical conjecture. | [Note](./research/independent_audits/crest_transport_asymptotics_20261116/NOTE.md) · [Verifier](./research/independent_audits/crest_transport_asymptotics_20261116/verify.py) |
+| [#94](https://github.com/dovvnloading/loops-research-archive/pull/94) Pairable-wave serial loss | **Conditional on M; historical sign-indefinite bounds** — Leafwise-pairable parents obey loss-or-equality; this note's independent-width enclosures straddle zero, but later PR #100 proves the unrestricted sign. | [Note](./research/independent_audits/tip_family_canonical_wave_gain_20261116/NOTE.md) · [Verifier](./research/independent_audits/tip_family_canonical_wave_gain_20261116/verify.py) |
+| [#97](https://github.com/dovvnloading/loops-research-archive/pull/97) Strict limiting and p>=13 unbuffered Wave gain | **Conditional on M; proved analytic sign** — Embedded semidisk/half-strip witnesses give D_p>11/126 for p>=13 and 0.696<D_infinity<0.793; no buffered WAD gain or optimal-width convergence. | [Note](./research/independent_audits/tip_family_limiting_wave_gain_20261116/NOTE.md) · [Verifier](./research/independent_audits/tip_family_limiting_wave_gain_20261116/verify.py) |
+| [#100](https://github.com/dovvnloading/loops-research-archive/pull/100) Strict independent unbuffered Wave gain for all p | **Conditional on M; strict certified margins** — Finite p=3..12 embedded witnesses plus the p>=13 result prove D_p>1/100 for every p>=3; independent maxima are not jointly pairable, and no buffered WAD/iterated gain follows. | [Note](./research/independent_audits/tip_family_finite_p_wave_gain_20261116/NOTE.md) · [Verifier](./research/independent_audits/tip_family_finite_p_wave_gain_20261116/verify.py) |
+
+### Renormalization depth and marked QC
+
+| Merged PR / result | Status and precise scope | Note and verifier |
+|---|---|---|
+| [#95](https://github.com/dovvnloading/loops-research-archive/pull/95) Nine exact depth-two charts | **Finite certificate; conditional width** — The (3..5)x(3..5) selected grid has strict root/restriction and typed marking checks; 0.25<W*<0.775 imports physical KKL cuts and width hypotheses. | [Note](./research/independent_audits/tip_family_renormalization_depth_20261116/NOTE.md) · [Verifier](./research/independent_audits/tip_family_renormalization_depth_20261116/verify.py) |
+| [#96](https://github.com/dovvnloading/loops-research-archive/pull/96) One depth-three (3,3,3) chart | **Finite certificate only** — A strict rational (3,3,3) packet with terminal three-return margins, not the other 26 small triples or an all-depth uniform physical width theorem. | [Note](./research/independent_audits/tip_family_all_depths_20261116/NOTE.md) · [Verifier](./research/independent_audits/tip_family_all_depths_20261116/verify.py) |
+| [#98](https://github.com/dovvnloading/loops-research-archive/pull/98) Direct-at-depth QC and modulus | **Imported published modulus; conditional marked transport** — Non-doubling real optimal moduli give local noncompounding straightening bounds, but K-uniform whole-marked-Wave correspondence is an additional unproved premise. | [Note](./research/independent_audits/tip_family_depth_uniform_qc_20261116/NOTE.md) · [Verifier](./research/independent_audits/tip_family_depth_uniform_qc_20261116/verify.py) |
+| [#99](https://github.com/dovvnloading/loops-research-archive/pull/99) Global marked QC gap and countermodel | **Negative inference; conditional K and K^2 lemma** — An abstract annulus countermodel refutes modulus-only global transport inference; conditional two-sided cofinal-width comparison holds, while K'(mu) for this family is open. | [Note](./research/independent_audits/tip_family_global_marked_qc_20261116/NOTE.md) · [Verifier](./research/independent_audits/tip_family_global_marked_qc_20261116/verify.py) |
+
+### Satellite and near-parabolic refusals
+
+| Merged PR / result | Status and precise scope | Note and verifier |
+|---|---|---|
+| [#79](https://github.com/dovvnloading/loops-research-archive/pull/79) Period-doubling satellite v1 refusal | **Finite certificate; negative/refusal** — A degree-two satellite return is certified but fails primitive v1 marking/attachment assumptions; no claimed satellite Wave measurement. | [Note](./research/native_wave_transfer/RESULTS.md) · [Verifier](./research/native_wave_transfer/regenerate_satellite2.py) |
+| [#82](https://github.com/dovvnloading/loops-research-archive/pull/82) Satellite Misiurewicz tip refusal | **Finite certificate; negative/refusal** — Exact satellite tip and bouquet contact have zero new return-tree attachment, so primitive v1 opposite-side Wave labels do not apply. | [Note](./research/native_wave_transfer/RESULTS.md) · [Verifier](./research/native_wave_transfer/regenerate_satellite2_tip.py) |
+| [#85](https://github.com/dovvnloading/loops-research-archive/pull/85) Source-typed satellite v2 contact atlas | **Finite source certificate; Wave undefined** — Typed phase-contact, distinct covering and immersion endpoint germs; neither an attachment electrode nor a canonical satellite Wave weight is established. | [Note](./research/native_wave_transfer/SPECIFICATION_v2_satellite.md) · [Verifier](./research/native_wave_transfer/regenerate_satellite_v2.py) |
+| [#86](https://github.com/dovvnloading/loops-research-archive/pull/86) Three near-parabolic primitive-tip refusals | **Finite certificate; missing observable** — p=24,27,30 selected roots, quadratic-like collars and empty new attachment are certified; the proposed h*log(1/ell) is undefined, not zero. | [Note](./research/native_wave_transfer/RESULTS.md) · [Verifier](./research/native_wave_transfer/regenerate_near_parabolic.py) |
+| [#88](https://github.com/dovvnloading/loops-research-archive/pull/88) Near-parabolic v1.1 chosen one-slit marks | **Finite certificate; noncanonical/refusal** — Source-typed chosen two-side real-slit records do not instantiate primitive v1 10/20 atoms or canonical KKL Wave widths. | [Note](./research/native_wave_transfer/SPECIFICATION_v1_1.md) · [Verifier](./research/native_wave_transfer/regenerate_primitive_v1_1.py) |
+
+### Issue #40
+
+| Merged PR / result | Status and precise scope | Note and verifier |
+|---|---|---|
+| [#74](https://github.com/dovvnloading/loops-research-archive/pull/74) Issue #40 native attachment and edge census | **Finite certificate; general open** — One physical attachment, complete old-edge incidence and zero-old-edge atomic sectors identify an exact crest gate, not universal amplification. | [Note](./research/independent_audits/issue40_native_attachment_edge_incidence_20261115/NOTE.md) · [Verifier](./research/independent_audits/issue40_native_attachment_edge_incidence_20261115/verify_native_attachment_edge_incidence.py) |
+| [#78](https://github.com/dovvnloading/loops-research-archive/pull/78) Issue #40 genuine finite depth-four crest | **Conditional physical example; general open** — A selected depth-four KKL descendant has an old-edge closed crest and a chosen exact conformal log-strip width, not a general transport theorem. | [Note](./research/independent_audits/issue40_crest_transport_20261116/NOTE.md) · [Verifier](./research/independent_audits/issue40_crest_transport_20261116/verify_crest_transport.py) |
+
+The source-note [theorem referee audit](./research/tip_family_theorem/AUDIT.md) documents the corrected source **3/3/7** versus cover-pushed **3/3/5** short arcs. The [November open-obligation register](./RESEARCH_MAP.md#november-2026-open-obligations) and the machine `research_updates` supplement in [ledger.json](./ledger.json) track further gaps, including canonical widths and convergence, satellite/refused transfer, physical all-depth round gates, and globally marked K'(mu). **Issue [#40](https://github.com/dovvnloading/loops-research-archive/issues/40)** is not solved in general by one finite crest example; **Issue [#62](https://github.com/dovvnloading/loops-research-archive/issues/62)** supplies predecessor native marking/operator context, not all-scale transport. The abstract QC countermodel of PR #99 is not a counterexample in this physical tip family.
 
 ## The mathematical program
 
@@ -382,5 +447,5 @@ The November 2026 code and audit notes disclose OpenAI GPT-6 assistance separate
 ---
 
 <div align="center">
-<sub>Independent research archive · math.DS · manuscripts/ledger source-locked 2026-07-27 · overview 2026-11-14 · MLC remains open</sub>
+<sub>Independent research archive · math.DS · manuscripts/ledger source-locked 2026-07-27 · overview 2026-11-16 · MLC remains open</sub>
 </div>
