@@ -150,6 +150,32 @@ three pairs `K2-K0`, `K0-K1`, `K2-K1` at each `p=3..12` and in the
 tail, with exact outward rational cross-ratio and elliptic-width
 brackets. It supplies no self-endpoint lower comparison construction.
 
+
+**Certified period-by-period physical comparison enclosures.** In the
+three `s_H` columns, `L..U` means strictly `L/10^9 < s_H < U/10^9`;
+in the three `E_H` columns, it means strictly
+`L/1000 < E(s_H) < U/1000`. All bounds are exact rational outward
+enclosures for the *complete physical slit endpoints* and the actual
+physical radius; the `>=13` row is uniform for every later period.
+These are **not** intervals enclosing the ideal-lift `s_gamma`.
+The certified direct-class **true `q_gamma` lower bound** is the left
+endpoint of its `E_H` column divided by 1000, while its true upper
+comes only from the separate six-type caps in §3.
+
+| p | `s_H` K2--K0 | `s_H` K0--K1 | `s_H` K2--K1 | `E_H` K2--K0 | `E_H` K0--K1 | `E_H` K2--K1 |
+|:--|--:|--:|--:|--:|--:|--:|
+| 3 | 29581976..29581978 | 3230471..3230473 | 137108..137110 | 499..501 | 368..370 | 268..270 |
+| 4 | 28078343..28078345 | 3153149..3153151 | 139957..139959 | 495..497 | 367..369 | 268..270 |
+| 5 | 35659224..35659226 | 5445025..5445027 | 509238..509240 | 515..517 | 392..394 | 302..304 |
+| 6 | 37427892..37427894 | 5973551..5973553 | 673864..673866 | 519..521 | 397..399 | 310..312 |
+| 7 | 37860691..37860693 | 6102571..6102573 | 721592..721594 | 520..522 | 398..400 | 312..314 |
+| 8 | 37968191..37968193 | 6134599..6134601 | 733967..733969 | 520..522 | 398..400 | 313..315 |
+| 9 | 37995015..37995017 | 6142590..6142592 | 737089..737091 | 520..522 | 398..400 | 313..315 |
+| 10 | 38001717..38001719 | 6144586..6144588 | 737871..737873 | 520..522 | 398..400 | 313..315 |
+| 11 | 38003393..38003395 | 6145085..6145087 | 738066..738068 | 520..522 | 398..400 | 313..315 |
+| 12 | 38003811..38003813 | 6145210..6145212 | 738115..738117 | 520..522 | 398..400 | 313..315 |
+| >=13 | 33394143..42851588 | 4949773..7425507 | 563909..934149 | 509..533 | 387..410 | 305..323 |
+
 ## 3. Genuine class brackets and the reflection counterexample
 
 The complete classwise **strict upper** bounds from the predecessor's
