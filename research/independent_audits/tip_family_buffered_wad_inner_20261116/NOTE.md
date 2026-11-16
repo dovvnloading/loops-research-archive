@@ -210,6 +210,26 @@ output for the three pairs \((K_2,K_0),(K_0,K_1),(K_2,K_1)\), each
 rounded **down**, with a strict fourth-power comparison. No
 interpolation between periods is used.
 
+The strict rational lower certificates printed by the verifier are:
+
+| Selected period | \(q_{\gamma_{K_2K_0}^{\rm upper}}>\) | \(q_{\gamma_{K_0K_1}^{\rm upper}}>\) | \(q_{\gamma_{K_2K_1}^{\rm upper}}>\) |
+|:--|--:|--:|--:|
+| \(3\) | \(207/500\) | \(119/500\) | \(27/250\) |
+| \(4\) | \(409/1000\) | \(59/250\) | \(27/250\) |
+| \(5\) | \(217/500\) | \(271/1000\) | \(3/20\) |
+| \(6\) | \(439/1000\) | \(139/500\) | \(161/1000\) |
+| \(7\) | \(441/1000\) | \(279/1000\) | \(163/1000\) |
+| \(8\) | \(441/1000\) | \(279/1000\) | \(41/250\) |
+| \(9\) | \(441/1000\) | \(279/1000\) | \(41/250\) |
+| \(10\) | \(441/1000\) | \(279/1000\) | \(41/250\) |
+| \(11\) | \(441/1000\) | \(279/1000\) | \(41/250\) |
+| \(12\) | \(441/1000\) | \(279/1000\) | \(41/250\) |
+| Every \(p\ge13\) | \(427/1000\) | \(53/200\) | \(77/500\) |
+
+They are rigorously rounded *below* the halfdisk subquadrilateral
+width, which is itself only a lower bound for the true ideal width.
+They cannot be read as buffered weights or q-value approximations.
+
 For **every** \(p\ge13\), the inherited uniform p13-model error box
 contains all six real \(\xi_{jp}\), and the actual normalized radius
 obeys \(\rho_p>(3/20)2^p\ge(3/20)2^{13}\). The verifier uses
