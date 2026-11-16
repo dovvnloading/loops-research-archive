@@ -115,6 +115,15 @@ class PrimitiveOneSlitV11Tests(unittest.TestCase):
         bad["members"][0]["complex_certificates"]["restricted_degree"] = 2.0
         with self.assertRaises(AssertionError):
             v11.check_contract(bad, self.contract)
+        # An earlier member must not be masked by a correctly typed last one.
+        bad = copy.deepcopy(self.outputs)
+        bad["members"][0]["complex_certificates"]["restricted_degree"] = "two"
+        with self.assertRaisesRegex(AssertionError, "invalid type"):
+            v11.check_contract(bad, self.contract)
+        bad = copy.deepcopy(self.outputs)
+        bad["members"][1]["wave"]["parent_width"] = 0
+        with self.assertRaisesRegex(AssertionError, "invalid type"):
+            v11.check_contract(bad, self.contract)
 
     def test_legacy_v1_tag_round_trip_is_canonical_byte_identity(self):
         for name in ("tip_pr68", "primitive4_tip12"):
