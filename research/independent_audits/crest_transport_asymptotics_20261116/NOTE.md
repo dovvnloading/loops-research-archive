@@ -35,6 +35,23 @@ The table gives outward rational enclosures for \(c_p^*\). Every decimal endpoin
 | 15 | (0.38534, 0.38538) | \(s=1/16\) | 0.06637891 |
 | 16 | (0.38261, 0.38265) | \(s=1/16\) | 0.06637891 |
 
+### Original fixed-bin witnesses, independently extended to p=16
+
+The verifier also **independently re-encloses** the inherited, much smaller fixed bins (the original p=3,4,5 choices and, from p=6 onward, \(1/16<s<663/10000\)). Unlike \(c_p^*\), these coefficients are *not* circular-collar maxima. The eight newly certified two-sided fixed-bin ratios are:
+
+| \(p\) | Old fixed-bin ratio, exact decimal outer bracket |
+|---:|:---:|
+| 9 | (0.40978, 0.40982) |
+| 10 | (0.40112, 0.40116) |
+| 11 | (0.39437, 0.39441) |
+| 12 | (0.38897, 0.38901) |
+| 13 | (0.38455, 0.38459) |
+| 14 | (0.38086, 0.38090) |
+| 15 | (0.37774, 0.37778) |
+| 16 | (0.37507, 0.37510) |
+
+The new verifier also checks p=3..8 against the **unchanged** earlier 512-bin certificates, detecting an incompatible branch, collar, or width denominator. Each row is computed from all 512 full radius bins with rational transcendental tails, not floating-point radius samples; the optimum and fixed-bin computations are separately recorded in `results.json`.
+
 For \(p=9,\ldots,16\), the **new** independently checked signed local parameter root, full physical cut order, named inverse-cut images, unique real fixed \(\alpha\), degree-two central Rouché margin \(>1/25\), and **pairwise-disjoint full complex phase disks** extend the earlier \(p\le12\) finite certificates. Roots are isolated by strict rational endpoint signs in adjacent \(2^{-256}\) brackets and negative derivative on the entire rational seed interval, not by trusting decimal seed values. Uniqueness is **local to each chosen seed**; no global uniqueness in the entire real parameter window is claimed. Prior \(p\le12\) root branches are crosschecked against the frozen source certificates. The full parent and all remaining gates are then checked with interval arithmetic for each period.
 
 ## Why these are global optima **within the declared circular family**

@@ -486,6 +486,22 @@ def run(p,bins=512):
  other_gates(p,c,x,al,d,rad,aL,bU,idx)
  whole_disk_four(p,c,d,rad,bU,x[p])
  ll,uu=width_bounds(p,c,x,d,rad,aL,aU,bL,bU,lo,hi,bins)
+ # Independently extend the previous audit's chosen narrow-radius bins
+ # for p=9..16 (and cross-check the six original choices) without
+ # confusing these smaller witnesses with the circular-family optimum.
+ if p==3:fixed_a,fixed_b=F(1,80),F(1,77)
+ elif p==4:fixed_a,fixed_b=F(63,1000),F(667,10000)
+ elif p==5:fixed_a,fixed_b=F(313,5000),F(663,10000)
+ else:fixed_a,fixed_b=F(1,16),F(663,10000)
+ must(aU<=fixed_a<fixed_b<=bL,'original fixed bin no longer inside certified full collar')
+ fixed_ll,fixed_uu=width_bounds(p,c,x,d,rad,fixed_a,fixed_a,
+                                fixed_b,fixed_b,lo,hi,bins)
+ if p<=8:
+  old=json.loads((ROOT/'research/independent_audits/crest_transport_tip_family_20261116/results.json').read_text())['results'][p-3]
+  from_old=lambda label:F(old[label])
+  must(F(fixed_ll,100000)<=from_old('certified_ratio_upper') and
+       from_old('certified_ratio_lower')<=F(fixed_uu,100000),
+       'fixed-bin result disagrees with prior source certificate')
  return {
   'p':p,'parameter_bracket_2pow256':[n,n+1],
   'central_Rouche_margin_gt_1_25':True,
@@ -498,6 +514,8 @@ def run(p,bins=512):
   'optimal_circular_collar':{'lower_active':lower_active,
              'lower_bracket':[str(aL),str(aU)],'upper_bracket':[str(bL),str(bU)]},
   'ratio_bracket_1e5':[ll,uu],
+  'original_fixed_subcollar':{'radius':[str(fixed_a),str(fixed_b)],
+    'ratio_bracket_1e5':[fixed_ll,fixed_uu]},
   'width_interpretation':'conditional on physical prime-end/KKL/univalence and exact conformal strip-width hypotheses',
   'two_selected_terminal_crests':['upper: S0,S3 -> I0,I3; closed I1,I2 with E0 upper',
                                   'lower: S17,S0 -> I7,I0; closed I8,I9 with E0 lower'],

@@ -75,6 +75,8 @@ class CertificateTests(unittest.TestCase):
  def test_certified_coarse_run_and_no_float_proof_oracle(self):
   row=v.run(9,64)
   self.assertEqual(row['p'],9)
+  self.assertLess(row['original_fixed_subcollar']['ratio_bracket_1e5'][1],
+                  row['ratio_bracket_1e5'][0])
   self.assertLess(row['ratio_bracket_1e5'][0],41811)
   self.assertGreater(row['ratio_bracket_1e5'][1],41810)
   parsed=ast.parse((HERE/'verify.py').read_text())
