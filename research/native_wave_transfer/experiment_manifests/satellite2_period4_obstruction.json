@@ -1,7 +1,7 @@
 {
   "code": {
     "path": "research/native_wave_transfer/regenerate_satellite2.py",
-    "sha256": "d8286af360fcf6c08dcd0c5f4e5915a6a192376c4246ab478e3f9d716fc92014"
+    "sha256": "9393905086d5359c737680373d9b2bbe3940c30ba63d90306483ddd14ddff8e8"
   },
   "experiment_id": "native-satellite2-period4-obstruction-v1",
   "format": "native-wave-transfer-satellite-obstruction-manifest/v1",
@@ -18,6 +18,7 @@
       "K_of_G_has_nonempty_complex_interior": true,
       "alpha_in_both_physical_phase_filled_sets": true,
       "central_component_compactly_contained_in_target": true,
+      "certified_open_Fatou_disk_radius": "1/64",
       "critical_orbit_period_under_G": 2,
       "critical_value_x2_between": [
         "2/5",
@@ -27,6 +28,7 @@
         "-3/4",
         "-7/10"
       ],
+      "four_iterate_whole_disk_absolute_bound_lt": "1/128",
       "global_degree": 4,
       "iterate": 2,
       "other_G_critical_points_outside_target_disk": true,
@@ -64,13 +66,14 @@
       "upper_numerator": -446008997123623373135743845318053032735
     }
   },
-  "outputs_sha256": "c1ea4ba24807763ab9fced6e131b42004604c51b896b5ff49184e107213bda32",
+  "outputs_sha256": "1375f77f93e0790b439fa1bfc1cc14e528bad8ff547fed242e3a6227f6b10ea2",
   "proof_status": {
     "certified_by_exact_arithmetic": [
       "unique x4=0 root in adjacent 2^-128 dyadic bracket",
       "exact critical period four and G=f^2 period-two superattracting cycle",
       "strict uniform Rouche margin >3/50 and degree-two central proper map",
       "real bridge, dividing fixed alpha in K(G), and f(K(G)) intersect",
+      "strict entire f4(D(0,1/64)) bound <1/128 and an open disk in K(G)",
       "open Fatou interior of K(G), so not a real Julia interval"
     ],
     "conditional_on_cited_analytic_inputs": [
