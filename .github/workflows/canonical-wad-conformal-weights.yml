@@ -1,0 +1,89 @@
+name: Canonical WAD conformal weights (partial exact capacity audit)
+
+on:
+  pull_request:
+    paths:
+      - '.github/workflows/canonical-wad-conformal-weights.yml'
+      - 'research/independent_audits/canonical_wad_conformal_weights_20261116/**'
+      - 'results/canonical_wad_conformal_weights_20261116.json'
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/canonical-wad-conformal-weights.yml'
+      - 'research/independent_audits/canonical_wad_conformal_weights_20261116/**'
+      - 'results/canonical_wad_conformal_weights_20261116.json'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  exact-target-capacity:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Exact rational collars and manifest
+        run: |
+          python -m py_compile research/independent_audits/canonical_wad_conformal_weights_20261116/verify.py
+          python research/independent_audits/canonical_wad_conformal_weights_20261116/verify.py --check-manifest
+      - name: Adversarial interval and noncertification tests
+        run: python -m unittest discover -s research/independent_audits/canonical_wad_conformal_weights_20261116 -p 'test_*.py' -v
+      - name: Verify inherited physical source incidence and capacity without modification
+        run: |
+          python research/independent_audits/canonical_wad_electrode_incidence_20261116/verify.py --check-manifest
+          python research/independent_audits/wave_vs_dirichlet_contact_transfer_20261115/verify.py --check-manifest
+
+  unchanged-research-validation-and-lean:
+    name: Require both existing Lean/research workflows at exact PR SHA
+    needs: exact-target-capacity
+    if: github.event_name == 'pull_request' && github.event.pull_request.head.repo.full_name == github.repository
+    runs-on: ubuntu-latest
+    timeout-minutes: 95
+    permissions:
+      contents: read
+      actions: write
+    steps:
+      - name: Dispatch and await both existing workflows at exact head
+        env:
+          GH_TOKEN: ${{ github.token }}
+          REPO: ${{ github.repository }}
+          BRANCH: ${{ github.event.pull_request.head.ref }}
+          HEAD_SHA: ${{ github.event.pull_request.head.sha }}
+        run: |
+          set -euo pipefail
+          for workflow in lean-proofs.yml weighted-lean.yml; do
+            gh workflow run "$workflow" --repo "$REPO" --ref "$BRANCH"
+          done
+          for workflow in lean-proofs.yml weighted-lean.yml; do
+            success=0
+            for attempt in $(seq 1 300); do
+              runs="$(gh run list --repo "$REPO" --workflow "$workflow" \
+                  --branch "$BRANCH" --event workflow_dispatch --limit 40 \
+                  --json databaseId,headSha,status,conclusion)"
+              match="$(printf '%s' "$runs" | jq -c --arg sha "$HEAD_SHA" \
+                  '[.[] | select(.headSha == $sha)] | first // empty')"
+              if [[ -n "$match" ]]; then
+                run_id="$(printf '%s' "$match" | jq -r .databaseId)"
+                status="$(printf '%s' "$match" | jq -r .status)"
+                conclusion="$(printf '%s' "$match" | jq -r .conclusion)"
+                if [[ "$status" == completed ]]; then
+                  echo "$workflow SHA $HEAD_SHA: $conclusion (run $run_id)"
+                  if [[ "$conclusion" != success ]]; then
+                    gh run view "$run_id" --repo "$REPO" || true
+                    exit 1
+                  fi
+                  success=1
+                  break
+                fi
+              fi
+              sleep 15
+            done
+            if [[ "$success" != 1 ]]; then
+              echo "No successful exact-SHA run for $workflow at $HEAD_SHA"
+              exit 1
+            fi
+          done
