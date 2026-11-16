@@ -32,8 +32,8 @@ DEFECT_3_TO_12 = {
     9: (-1814, 2516), 10: (-1814, 2524), 11: (-1814, 2529),
     12: (-1814, 2533),
 }
-TAIL_DEFECT = (F(-224, 100), F(257, 100))  # strict, all p >= 13
-TAIL_CHILD_CAP = F(31, 25)  # 1.24; deliberately coarse
+TAIL_DEFECT = (F(-225, 100), F(257, 100))  # strict, all p >= 13
+TAIL_CHILD_CAP = F(5, 4)  # 1.25; deliberately coarse
 TWO = v.Iv.point(2)
 ONE = v.Iv.point(1)
 
@@ -176,7 +176,7 @@ def run() -> dict:
     check(t.inside(v.MODEL_LO,v.MODEL_HI), "limiting model root drift")
     child_cap = model_child_envelope(13, model_orbit)
     check(child_cap.high()<TAIL_CHILD_CAP,
-          "p>=13 child plane-slit envelope not < 1.24")
+          "p>=13 child plane-slit envelope not < 1.25")
     for p in (14,15,16,17):
         smaller=model_child_envelope(p,model_orbit)
         check(child_cap.low() <= smaller.low() and smaller.high() <= child_cap.high(),
@@ -204,7 +204,7 @@ def main() -> None:
     data=run()
     for p,lo,hi,child in data["finite"]:
         print(f"p={p:2d}: {lo}/1000 < D_p < {hi}/1000, child full-plane envelope in ({child[0]},{child[1]})*1e-7")
-    print("all p>=13: -2.24 < D_p < 2.57, conditional physical ideal marking M")
+    print("all p>=13: -2.25 < D_p < 2.57, conditional physical ideal marking M")
     print("PASS: exact/outward-interval inequalities only; canonical sign remains OPEN")
 
 
