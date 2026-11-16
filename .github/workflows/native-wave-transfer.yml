@@ -31,9 +31,11 @@ jobs:
         run: python research/native_wave_transfer/regenerate_period4.py --check
       - name: Certify period-two satellite return and immutable v1-marking refusal
         run: python research/native_wave_transfer/regenerate_satellite2.py --check
+      - name: Certify satellite Misiurewicz tip and read-only immutable manifest
+        run: python research/native_wave_transfer/regenerate_satellite2_tip.py --check
       - name: Compile and run adversarial independent regression
         run: |
-          python -m py_compile research/native_wave_transfer/regenerate.py research/native_wave_transfer/regenerate_period4.py research/native_wave_transfer/regenerate_satellite2.py research/native_wave_transfer/test_regenerate.py research/native_wave_transfer/test_period4.py research/native_wave_transfer/test_satellite2.py
+          python -m py_compile research/native_wave_transfer/regenerate.py research/native_wave_transfer/regenerate_period4.py research/native_wave_transfer/regenerate_satellite2.py research/native_wave_transfer/regenerate_satellite2_tip.py research/native_wave_transfer/test_regenerate.py research/native_wave_transfer/test_period4.py research/native_wave_transfer/test_satellite2.py research/native_wave_transfer/test_satellite2_tip.py
           python -m unittest discover -s research/native_wave_transfer -p 'test_*.py' -v
       - name: Enforce source/code locks, exact physical computations and immutable manifest
         run: python research/native_wave_transfer/regenerate.py --check

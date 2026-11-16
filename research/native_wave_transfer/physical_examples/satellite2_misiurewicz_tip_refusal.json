@@ -1,0 +1,30 @@
+{
+  "first_incompatible_field": "MarkedHubbardTree.small_julia_intervals",
+  "format": "native-wave-transfer-satellite-tip-refusal/v1",
+  "id": "native-satellite2-misiurewicz-tip-refusal-v1",
+  "not_asserted": [
+    "v1 complete ideal-boundary atom and cut census",
+    "v1 covering f_* atomic table or immersion iota^* pullback blocks",
+    "filtered two-versus-one proper sheet/path restrictions",
+    "nonempty once-per-old-edge Perron operator and zero-edge Wave crest census",
+    "two-child Wave extremal widths and harmonic equality"
+  ],
+  "parameter": {
+    "denominator_power_of_two": 128,
+    "equation": "c^3+2*c^2+2*c+2=0",
+    "family": "z^2+c",
+    "lower_numerator": "-525290151028706361181936933686549192168",
+    "orbit_notation": "x0=0; x(k+1)=x(k)^2+c",
+    "upper_numerator": "-525290151028706361181936933686549192167"
+  },
+  "purpose": "exact physical return plus negative semantic compatibility certificate; NOT a v1 PhysicalExample",
+  "record_compatibility": "refused",
+  "refusal_reason": "The analytic satellite has one Chebyshev inner Julia interval K0, not the three distinct inner Julia intervals and primitive source hypothesis of the v1 executable. K0 intersects f(K0) at the common repelling endpoint, Tprime=T, and there is no new attachment. A singleton JSON list would parse but would not implement the source-locked three-phase marked-tree construction.",
+  "renormalization": {
+    "global_degree": 4,
+    "physical_iterate": 2,
+    "restricted_degree": 2,
+    "source": "component((f^2)^-1(D(0,1)),0)",
+    "target": "D(0,1)"
+  }
+}
