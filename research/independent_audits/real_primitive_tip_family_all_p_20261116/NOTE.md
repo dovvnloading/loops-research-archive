@@ -71,6 +71,25 @@ Set \(y_j=2(1-\cos\theta_j)\), with \(\theta_j\ge0\), and set \(\Theta=2^{p-2}\t
  \qquad \frac{38}{25}<\Theta<\frac{41}{25},
  \qquad \theta_j<\frac{41}{50}\quad(2\le j<p).\tag{2}
 \]
+For completeness, the first inequality of (2) has a short explicit proof. From (1),
+\(1-3\varepsilon/4<y_2/((8/3)\varepsilon)<1\).
+Since \(y=4\sin^2(\theta/2)\), \(\sin u\ge2u/\pi\) and
+\(\pi^2<10\), the initial angle obeys
+\(\theta_2^2\le(\pi^2/4)y_2<7\varepsilon\).
+The alternating cosine estimate
+\(y_2\ge\theta_2^2(1-\theta_2^2/12)\) gives
+\[
+1\le\frac{\theta_2^2}{y_2}
+ \le\frac{1}{1-7\varepsilon/12}\le1+\varepsilon,
+\]
+where the last inequality is a rational check for
+\(0<\varepsilon<1/4{,}000{,}000\).
+Multiplying by \(4^{p-2}\) gives the stronger bound
+\((\kappa/6)(1-\varepsilon)<\Theta^2<
+(\kappa/6)(1+\varepsilon)\). The stated angle endpoints
+\(38/25,41/25\) follow by squaring and using \(\kappa\in[14,16]\).
+Every constant in this chain is verified at \(p=13\).
+
 For \(j<p\), \(\lambda-y_j>3\). Hence \(\theta_{j+1}\ge\theta_j\), while the Chebyshev map gives \(\theta_{j+1}\le2\theta_j\). Using \(y_{j+1}=(4y_j-y_j^2)-\delta y_j\), the mean-value derivative \(d\theta/dy=(2\sin\theta)^{-1}\), \(y_j\le\theta_j^2\), \(\sin(2\theta_j)\ge\sin\theta_j\), and \(\pi<4\), one gets the *explicit perturbation inequality*
 \[
  (2-\varepsilon)\theta_j\le\theta_{j+1}\le2\theta_j.
@@ -99,7 +118,9 @@ Set \(r_j=\varepsilon Y_j/y_j\). The exact ratio recurrence is
         +\frac{\varepsilon\lambda'}{\lambda-y_j}.
  \tag{6}
 \]
-Here \(r_2>99/100\), \(0<y_j<7/10\) for \(2\le j<p\), successive \(y_j\) grow by a factor greater than 3, \(\sum_{j=2}^{p-1}y_j<21/20\), and \(\sum y_j/(\lambda-y_j)<7/20\). The product inequality \(\prod(1-a_j)\ge1-\sum a_j\), \(|\lambda'|<1\), and \(p\varepsilon<1/300000\) give \(r_p>1/2\). As \(\theta_p>3/2\), \(y_p>9/5\), so
+Here \(r_2>99/100\): indeed \(\sqrt{9-4\varepsilon}>29/10\),
+so \(Y_2>3-2\varepsilon-10/29>(99/100)(8/3)\) while
+\(y_2<(8/3)\varepsilon\). Also \(0<y_j<7/10\) for \(2\le j<p\), successive \(y_j\) grow by a factor greater than 3, \(\sum_{j=2}^{p-1}y_j<21/20\), and \(\sum y_j/(\lambda-y_j)<7/20\). The product inequality \(\prod(1-a_j)\ge1-\sum a_j\), \(|\lambda'|<1\), and \(p\varepsilon<1/300000\) give \(r_p>1/2\). As \(\theta_p>3/2\), \(y_p>9/5\), so
 \[
  \frac{dx_p}{dc}=\beta'-Y_p<-\frac{1}{20q}.
  \tag{7}
