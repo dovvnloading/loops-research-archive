@@ -25,9 +25,19 @@ class DepthAuditTests(unittest.TestCase):
             verify_case(5, 5, seed=str(Q(SEEDS[5, 5])+Q(1, 10**12)))
 
     def test_false_period_three_centre_or_wrong_branch(self):
-        # The adjacent wrong branch must not be accepted just because P_n=0.
-        with self.assertRaises(AssertionError):
-            verify_case(3, 3, seed='-1.78651054454432475738526')
+        # A genuine *different* zero of P_9: period-27 superattracting
+        # centre x_27=0 implies P_9=x_54+x_27=0, but is not our tip.
+        wrong = '-1.78642985805576106026749805395604231500265068173077897378292442911657376478956193436485765750783022635433'
+        w = Q(wrong)
+        c = I.hull(w-Q(1,10**80),w+Q(1,10**80))
+        x,dx,_ = orbit(c,54)
+        self.assertLessEqual(x[27].lo,0)
+        self.assertGreaterEqual(x[27].hi,0)
+        self.assertLessEqual((x[27]+x[54]).lo,0)
+        self.assertGreaterEqual((x[27]+x[54]).hi,0)
+        self.assertGreater((dx[27]+dx[54]).abslo(),0)
+        with self.assertRaisesRegex(AssertionError, 'tuning kneading mismatch|wrong tip branch'):
+            verify_case(3, 3, seed=wrong)
 
     def test_pulled_blocks_are_not_covering(self):
         proper_atom_tables()
