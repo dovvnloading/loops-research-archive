@@ -1,0 +1,220 @@
+{
+  "code": {
+    "path": "research/native_wave_transfer/regenerate_near_parabolic.py",
+    "sha256": "a921f9b1acb43937055395b2d2fc5faf6a890e939dec310e9911830f506acfe8"
+  },
+  "experiment_id": "native-near-parabolic-primitive-Chebyshev-tips-v1",
+  "format": "native-wave-near-parabolic-refusal-manifest/v1",
+  "inputs": {
+    "example_sha256": "a9b732686d8a595b861c829e2788a5995bf37a4452ad79735e34bfecce6b9824",
+    "literature": [
+      "Lyubich, Dynamics of quadratic polynomials I-II, \u00a72 (primitive copies and parabolic roots)",
+      "Hunt-Gallas-Grebogi-Kocak-Yorke, Bifurcation rigidity, Physica D 129 (1999), periodic windows",
+      "KKL arXiv:2606.27272v1 \u00a7\u00a72.1,2.5,6.1 and Appendix A"
+    ],
+    "unchanged_source_and_output_git_blobs": {
+      "research/native_wave_transfer/SPECIFICATION.md": "4288c3c7a9680fffd8d094b8f25d51c6cd5df648",
+      "research/native_wave_transfer/experiment_manifests/primitive4_tip12.json": "abcc01ad0b5ab0b59cd46e9d080ce44141603392",
+      "research/native_wave_transfer/experiment_manifests/satellite2_misiurewicz_tip_refusal.json": "cc78196b8ad25a6ea24912131d6c4f0887317a89",
+      "research/native_wave_transfer/experiment_manifests/satellite2_misiurewicz_v2.json": "6bd66c3dac16cace7f52c84a3f848684240c564a",
+      "research/native_wave_transfer/experiment_manifests/satellite2_period4_obstruction.json": "063132e808fe209473663e28cd12b7eb876c27ed",
+      "research/native_wave_transfer/experiment_manifests/tip_pr68.json": "39233f576e7de78cf707b4d616177d0313b98b25",
+      "research/native_wave_transfer/regenerate.py": "0dfa4f4c8d5321a7b9fdd74c9c1218228087e0f2"
+    }
+  },
+  "outputs": {
+    "annular_contact_resistance_test": "inapplicable: no v1 attachment electrode or certified angular width",
+    "canonical_KKL_attachment_ell": null,
+    "canonical_KKL_attachment_h": null,
+    "distinct_operations": {
+      "covering_f_star": "map from quadratic-like return; no v1 atom table",
+      "immersion_iota_star": "physical inclusion pullback; no v1 atom table"
+    },
+    "finite_parameter_order": "-7/4 < c30 < c27 < c24",
+    "finite_selected_members": [
+      {
+        "all_noncentral_phase_disks_avoid_critical_point": true,
+        "central_rouche_margin_strictly_between": [
+          "1/625",
+          "17/10000"
+        ],
+        "complex_phases_pairwise_disjoint": true,
+        "global_degree": "16777216",
+        "parabolic_side": "strictly greater than -7/4",
+        "parameter_bracket": {
+          "denominator_power_of_two": 160,
+          "lower_numerator": "-2551914465108484579617401324842852154640068134308",
+          "opposite_endpoint_signs": true,
+          "unique_real_tip_root_by_strict_negative_derivative": true,
+          "upper_numerator": "-2551914465108484579617401324842852154640068134307",
+          "width": "2^-160"
+        },
+        "physical_return": 24,
+        "primitive_phase_disk_gap_strictly_between": [
+          "23/10000",
+          "1/400"
+        ],
+        "real_inner_geometry": {
+          "G_inverse_of_K_in_central_V_equals_K": true,
+          "G_of_K_equals_K": true,
+          "new_inverse_tree_attachments": 0,
+          "number_of_inner_G_phase_intervals": 1,
+          "one_invariant_Chebyshev_tip_interval": "K=[-a,a]",
+          "repelling_terminal_G_fixed_point": true
+        },
+        "restricted_degree": 2,
+        "round_subcollar": {
+          "certificate": "Rouche margin at source 7R/8, target R is strictly positive",
+          "conformal_modulus_lower_bound": "log(8/7)/(2*pi)",
+          "inverse_of_full_target_inside_radius": "7*R/8",
+          "not_a_measured_KKL_attachment_collar_h": true
+        },
+        "target_radius": "1/1024",
+        "tip_orbit": "0 -> -a -> a -> a, a=-x_p>0"
+      },
+      {
+        "all_noncentral_phase_disks_avoid_critical_point": true,
+        "central_rouche_margin_strictly_between": [
+          "9/10000",
+          "1/1000"
+        ],
+        "complex_phases_pairwise_disjoint": true,
+        "global_degree": "134217728",
+        "parabolic_side": "strictly greater than -7/4",
+        "parameter_bracket": {
+          "denominator_power_of_two": 160,
+          "lower_numerator": "-2553275755570421998660459007092359881945255630742",
+          "opposite_endpoint_signs": true,
+          "unique_real_tip_root_by_strict_negative_derivative": true,
+          "upper_numerator": "-2553275755570421998660459007092359881945255630741",
+          "width": "2^-160"
+        },
+        "physical_return": 27,
+        "primitive_phase_disk_gap_strictly_between": [
+          "9/5000",
+          "19/10000"
+        ],
+        "real_inner_geometry": {
+          "G_inverse_of_K_in_central_V_equals_K": true,
+          "G_of_K_equals_K": true,
+          "new_inverse_tree_attachments": 0,
+          "number_of_inner_G_phase_intervals": 1,
+          "one_invariant_Chebyshev_tip_interval": "K=[-a,a]",
+          "repelling_terminal_G_fixed_point": true
+        },
+        "restricted_degree": 2,
+        "round_subcollar": {
+          "certificate": "Rouche margin at source 7R/8, target R is strictly positive",
+          "conformal_modulus_lower_bound": "log(8/7)/(2*pi)",
+          "inverse_of_full_target_inside_radius": "7*R/8",
+          "not_a_measured_KKL_attachment_collar_h": true
+        },
+        "target_radius": "3/4096",
+        "tip_orbit": "0 -> -a -> a -> a, a=-x_p>0"
+      },
+      {
+        "all_noncentral_phase_disks_avoid_critical_point": true,
+        "central_rouche_margin_strictly_between": [
+          "3/5000",
+          "7/10000"
+        ],
+        "complex_phases_pairwise_disjoint": true,
+        "global_degree": "1073741824",
+        "parabolic_side": "strictly greater than -7/4",
+        "parameter_bracket": {
+          "denominator_power_of_two": 160,
+          "lower_numerator": "-2554197062530014440012717955456885164630387263690",
+          "opposite_endpoint_signs": true,
+          "unique_real_tip_root_by_strict_negative_derivative": true,
+          "upper_numerator": "-2554197062530014440012717955456885164630387263689",
+          "width": "2^-160"
+        },
+        "physical_return": 30,
+        "primitive_phase_disk_gap_strictly_between": [
+          "7/5000",
+          "3/2000"
+        ],
+        "real_inner_geometry": {
+          "G_inverse_of_K_in_central_V_equals_K": true,
+          "G_of_K_equals_K": true,
+          "new_inverse_tree_attachments": 0,
+          "number_of_inner_G_phase_intervals": 1,
+          "one_invariant_Chebyshev_tip_interval": "K=[-a,a]",
+          "repelling_terminal_G_fixed_point": true
+        },
+        "restricted_degree": 2,
+        "round_subcollar": {
+          "certificate": "Rouche margin at source 7R/8, target R is strictly positive",
+          "conformal_modulus_lower_bound": "log(8/7)/(2*pi)",
+          "inverse_of_full_target_inside_radius": "7*R/8",
+          "not_a_measured_KKL_attachment_collar_h": true
+        },
+        "target_radius": "5/8192",
+        "tip_orbit": "0 -> -a -> a -> a, a=-x_p>0"
+      }
+    ],
+    "first_incompatible_v1_field": "MarkedHubbardTree.small_julia_intervals",
+    "infinite_accumulation_status": "not certified by three finite cases",
+    "new_attachment_electrode_arc": null,
+    "prior_primitive_comparison": {
+      "p3": {
+        "attachments": 1,
+        "each_child_width": "log(4/3)/pi",
+        "filtered_restrictions_cross_avoid": [
+          2,
+          1
+        ],
+        "harmonic_equality": true,
+        "parent_width": "log(4/3)/(2*pi)",
+        "source_atoms": 20,
+        "target_atoms": 10
+      },
+      "p4": {
+        "attachments": 1,
+        "each_child_width": "log(3/2)/pi",
+        "filtered_restrictions_cross_avoid": [
+          2,
+          1
+        ],
+        "harmonic_equality": true,
+        "parent_width": "log(3/2)/(2*pi)",
+        "source_atoms": 20,
+        "target_atoms": 10
+      }
+    },
+    "unasserted": [
+      "infinite-branch existence or convergence theorem for p=3*n",
+      "a v1 three-small-interval MarkedHubbardTree or v1 ideal atom census",
+      "covering f_* atom table and immersion iota^* pullback table",
+      "two-versus-one sheet multiplicities and old-edge Perron matrix",
+      "zero-edge Wave crests, parent/child extremal widths or harmonic equality",
+      "a canonical attachment collar modulus h or contact arc angle ell",
+      "application of h*log(1/ell) annular contact-resistance crossover"
+    ],
+    "v1_physical_examples_emitted": false
+  },
+  "outputs_sha256": "df45927a60a610f709e46a14f99af3888b82e2ee11007970d9c9cdbfc004cce0",
+  "proof_status": {
+    "analytic_inputs": [
+      "standard backward-orbit density/straightening identifying the full inner Julia with the real invariant interval",
+      "the KKL three-phase primitive marking and its prime-end interpretation"
+    ],
+    "certified": [
+      "three locally unique exact dyadic tip-equation roots",
+      "whole-complex-circle Rouch\u00e9 degree-two domains and shrinking positive bounds",
+      "three complete pairwise-disjoint f^j(V) phase enclosures",
+      "one Chebyshev real inner interval, two central inverse branches, no new attachments",
+      "strict terminal repelling multiplier and a round annular subcollar lower bound",
+      "first unchanged v1 three-phase marking field semantically incompatible"
+    ],
+    "numerical_only": [
+      "decimal parameter displays in RESULTS.md; no decimal is used by the checker"
+    ],
+    "open": [
+      "existence and convergence of the infinite specified saddle-node sequence",
+      "replacement source-valid one-phase prime-end/covering and immersion atlas",
+      "canonical attachment collar h, angular electrode ell, and any Wave/contact-resistance verdict"
+    ]
+  },
+  "schema_version": 1
+}
