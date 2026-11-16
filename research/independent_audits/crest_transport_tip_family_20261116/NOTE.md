@@ -89,13 +89,13 @@ The only *period-uniform numerical coefficient* proved from the published finite
 
 From repository root:
 
-\`\`\`sh
+```sh
 python research/independent_audits/crest_transport_tip_family_20261116/verify.py
 python -m unittest discover -s research/independent_audits/crest_transport_tip_family_20261116 -p 'test_*.py' -v
 python research/independent_audits/real_primitive_tip_family_uniform_20261116/verify.py
 python research/independent_audits/issue40_crest_transport_20261116/verify_crest_transport.py --check-manifest
 lake build TipKKLTreeMarking TipNativeProperRestriction
-\`\`\`
+```
 
 The new read-only verifier uses only Python standard-library integer/rational arithmetic. Its locked result JSON holds every period's parameter bracket, radial collar, rational \(u\)-bounds, exact width expression, two-sided ratio bound and the typed endpoint/crest census. Seven adversarial unit tests exercise bad parameter brackets, misplaced collars, broken \(\iota^*\) blocks, nonmonotone imaginary gates, and basic outward arithmetic. No new Lean theorem about physical prime ends or analytic widths is introduced; the dedicated workflow rebuilds the existing honest discrete Lean targets and dispatches the **unchanged** Research validation and Weighted spectral mathlib workflows against the exact PR SHA.
 
