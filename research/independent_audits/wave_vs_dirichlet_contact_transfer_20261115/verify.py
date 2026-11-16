@@ -116,7 +116,7 @@ def check_original_wave(s: dict) -> None:
     demand(s["scope"].startswith("ACTUAL KKL"), "not native KKL physical source")
     demand(s["single_new_attachment"] == "[-x3,x6)", "physical attachment")
     demand(s["tree_preimage_in_V3"] == "[-x3,x3]", "preimage tree")
-    demand(s["inner_pullback_lengths"] == [5, 2, 1, 1, 3, 1, 3, 1, 3 if False else 1, 2],
+    demand(s["inner_pullback_lengths"] == [5, 2, 1, 1, 3, 1, 3, 1, 1, 2],
            "physical original pullback lengths")
     demand(s["attachment_boundary_source_atoms"] == [19, 0, 1], "attachment block")
     demand(s["crossing_circle_source_restrictions"] == [[3, 1], [19, 17]],
