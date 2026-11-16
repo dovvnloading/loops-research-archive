@@ -1,0 +1,16 @@
+{
+  "format": "native-wave-transfer-parameter-certificate/v1",
+  "family": "f_c(z)=z^2+c",
+  "equation": "x24+x12=0",
+  "orbit_notation": "x0=0; x(k+1)=x(k)^2+c",
+  "parameter_bracket": {
+    "denominator_power_of_two": 160,
+    "lower_numerator": "-2839046102243570105666380255822873122323992946925",
+    "upper_numerator": "-2839046102243570105666380255822873122323992946924"
+  },
+  "physical_return": 4,
+  "inner_chebyshev_return": 12,
+  "parameter_certificate": "opposite outward-rounded 2^-256 signs of x24+x12 at endpoints; strictly negative interval derivative on bracket",
+  "domains_certificate": "Rouche d+A*z^2+tail strict inequalities for f^4 on |z|=1/16 onto D(0,1/16), f^12 on |z|=3/256 onto D(0,1/128)",
+  "primitive_certificate": "four f^j(D(0,1/16)), j=0..3, enclosed by disjoint complex balls"
+}
