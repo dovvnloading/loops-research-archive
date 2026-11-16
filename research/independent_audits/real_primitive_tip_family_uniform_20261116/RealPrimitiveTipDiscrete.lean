@@ -79,6 +79,7 @@ def selectedRatioNumerator (p : Nat) : Nat := 2 * (p - 1)
 
 theorem selected_ratio_between_one_and_two (p : Nat) (hp : 3 ≤ p) :
     p < selectedRatioNumerator p ∧ selectedRatioNumerator p < 2*p := by
+  simp only [selectedRatioNumerator]
   omega
 
 /-- The reciprocal-width series law after factoring out log(r1/r0)/pi. -/
