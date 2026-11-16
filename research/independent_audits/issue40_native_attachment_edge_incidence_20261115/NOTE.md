@@ -43,7 +43,7 @@ Applying **\(\iota^*\)** via KKL Proposition 6.5 instead produces the following 
 | \(P_8\) | `15` | lower `x18` / lower `x9` | none | `5` |
 | \(P_9\) | `16,17` | lower `x9` / lower `x15` | `E20` | `6,7` |
 
-**Care with the tip gates:** the two ideal accesses at `-x12` lie **inside** \(P_0\); \(-x_3\) lies inside atom \(S_0\), not at a marking cut. Likewise \(x_3\) lies inside \(S_{10}\), and the closure of \(P_5\) has two `x12` accesses, not two `x3` accesses. Internal cuts are included in each displayed open connected block; only the external endpoints are omitted. The attached-component boundary contributes **all** `S19,S0,S1` (two sides and its tip), together with original `S18,S2` in \(P_0\). It cannot be counted only once as a graph edge. Every \(P_i\) is end-proper, but only \(P_0\) fails full properness (its attached sides map into the target interior). Disjointness and completeness are checked on the entire 20-cycle.
+**Care with the tip gates:** the *attachment root* `x6` has an upper access at the cut between `S1/S2` and a distinct lower access at `S18/S19`. Both are literal source prime-end gates, not a single graph-valence label. The two ideal accesses at `-x12` lie **inside** \(P_0\); \(-x_3\) lies inside atom \(S_0\), not at a marking cut. Likewise \(x_3\) lies inside \(S_{10}\), and the closure of \(P_5\) has two `x12` accesses, not two `x3` accesses. Internal cuts are included in each displayed open connected block; only the external endpoints are omitted. The attached-component boundary contributes **all** `S19,S0,S1` (two sides and its tip), together with original `S18,S2` in \(P_0\). It cannot be counted only once as a graph edge. Every \(P_i\) is end-proper, but only \(P_0\) fails full properness (its attached sides map into the target interior). Disjointness and completeness are checked on the entire 20-cycle.
 
 ## Every old edge, every new sheet, and the source-derived \(T_F\)
 
@@ -83,7 +83,7 @@ For *whole atomic open multi-intervals only*, the genuine \(F_*=G_*\iota^*\) com
 | `I2` | 3 | 4 |
 | `I8` | 3 | 4 |
 
-These use a **cyclic source-word composition of actual computed blocks**, not a free-standing finite-state machine. The verifier distinguishes an open *ten*-source-atom halfturn (its covering image is a punctured circle) from a block of *more than ten* source atoms (its image includes every angle). The finite result **does not** prove that every positive-length *subsector*, every source-eligible path, or every native zero-edge Wave must grow or saturate. Such paths can terminate on distinct accesses within one marking atom and need a genuine gate/collar theorem; nothing about graph valence alone establishes it.
+These use a **cyclic source-word composition of actual computed blocks**, not a free-standing finite-state machine. They are images of complete **open marked atoms** under the KKL interval combinatorics, **not** iterates of arbitrary subarcs, actual subsets of the Julia set, or automatically transported **closed** Wave crests. The verifier distinguishes an open *ten*-source-atom halfturn (its covering image is a punctured circle) from a block of *more than ten* source atoms (its image includes every angle). The finite result **does not** prove that every positive-length *subsector*, every source-eligible path, or every native zero-edge Wave must grow or saturate. Such paths can terminate on distinct accesses within one marking atom and need a genuine gate/collar theorem; nothing about graph valence alone establishes it.
 
 ## Exact Wave compatibility decision and first false hypothesis
 
@@ -97,6 +97,44 @@ There *is*, however, a previously certified **actual positive-width Wave**, not 
 This hypothesis is **false already in the actual physical tip**: the explicit positive-width `(I9,I0,I1)` Wave and its two children give a source-defined witness, not a synthetic matrix. The **narrowest corrected statement** is the exact \(\phi\)-edge growth for genuine traversals of the three old tree edges; Wave amplification needs an *additional* independently proved positive edge-charge/closed-crest transport lemma. No claimed contradiction of KKL follows: KKL permits breakable Waves and does not posit this invalid auxiliary edge-transfer hypothesis.
 
 The source also explicitly warns that \(F_*\overline I\) may differ from \(\overline{F_* I}\). All displayed block closures are **source-access closures**, not asserted equality of those two different operations. A Wave with a closed crest is not automatically an allowed *open* interval word after lifting. A positive-width Wave whose crest is zero-edge can still have nontrivial properly restricted leaves, as this example proves.
+
+## Precise missing analytic crest-transport theorem (not an output of the matrix)
+
+A **sufficient, still unproved Issue #40 bridge** would apply to the *proof-used*
+short, active, positive-width native KKL Waves along critical returns, in the
+original vertex-side marking (not an arbitrary 10-state finite automaton).
+For every such Wave \(S\), with an **actual closed** crest \(C\) and properly
+restricted, admissible descendant families, it must construct a bounded
+native critical-return transport alternative **uniform in the limb count**:
+
+1. Either a genuine chosen proper descendant saturates, or within a controlled
+   number of return steps a descendant Wave \(S'\) has a **nonzero
+   source-defined Hubbard dual-edge witness** on its closed crest. The
+   starting crest is *allowed* to have zero edge mass, as \(I_0\) does here.
+   Mere full-*atom* escape in 1/2/3 steps does not prove this for subatom
+   accesses, canonical selected paths, or arbitrary locally nonconnected
+   carriers.
+2. The construction must establish the **actual closed crest inclusions
+   required by the selected Wave domination/critical-visit relation**, using
+   full \(F_*\overline C\) and the whole attached-component boundary of
+   KKL Proposition 6.5. It must **not** replace this by
+   \(\overline{F_* C}\); nor may it demand that the entire
+   \(F_* C\) lie inside *each* child crest (false for this branching example).
+   Check each child's two endpoint **accesses** and the open/closed gate
+   births separately.
+3. For a descendant with positive edge witness, prove a **same-path**,
+   noncancelling comparison with the genuinely derived native \(T_F\),
+   compatible with admissible \(G_*\circ\iota^*\) restrictions and the
+   required extremal-width/shortness control. Width positivity by itself
+   gives no positive initial edge charge, and the Perron eigenvalue alone
+   supplies no width estimate.
+
+The bounded-time alternative, closed-endpoint transport, and edge-charge
+versus Wave-width comparison above are **analytic hypotheses to prove**,
+not consequences of the present certificate. In particular this audit does
+not refute the KKL Wave Lemma: it rules out using the *false first bridge*
+\(\mathcal W(S)>0\implies d_{\mathrm{old}}(C)>0\) in a proposed
+edge-based proof of that lemma.
 
 ## What is certified, what is analytic, what remains open
 
