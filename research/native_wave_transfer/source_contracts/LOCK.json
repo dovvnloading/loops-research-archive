@@ -1,0 +1,15 @@
+{
+  "contract_revision": 1,
+  "arxiv_source": {
+    "authors": "Jeremy Kahn, Alex Kapiamba, Mikhail Lyubich",
+    "id": "arXiv:2606.27272v1",
+    "sections": ["2.1", "2.5", "6.1 Propositions 6.5-6.6", "Appendix A.1", "Appendix A.3.2-A.3.4"],
+    "url": "https://arxiv.org/abs/2606.27272v1"
+  },
+  "repository_files": [
+    {"path": "results/tip_root_interval_geometry.json", "git_blob_sha1": "ec9d4a791c7c2a42c98e88261c3d9e322dcccbe2"},
+    {"path": "results/tip_KKL_tree_marked_breakage_20261109.json", "git_blob_sha1": "c3992172a2985054e687f78b9d6c3643a02a5d2b"},
+    {"path": "research/independent_audits/tip_KKL_native_tree_marking_and_marked_wave_breakage_20261109.md", "git_blob_sha1": "036bf82f97117ca3c0d0ea718b51df19ea8b593f"},
+    {"path": "research/independent_audits/verify_tip_KKL_tree_marked_breakage.py", "git_blob_sha1": "53d35f93d7db2e39a2b74a3aaf666a26e72a8503"}
+  ]
+}
