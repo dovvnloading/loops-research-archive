@@ -1,0 +1,81 @@
+{
+  "arithmetic": "exact Fraction and integer outward 256-bit orbit, rational Machin pi and atanh log brackets; no floating point",
+  "auxiliary_capacity_consequences": {
+    "K0_exceeds_2": true,
+    "K1_below_2": true,
+    "K2_below_2": true
+  },
+  "auxiliary_condenser_theorem": "For boundary values on one real slit and the whole outer circle, floating other collinear zero-thickness slits do not affect Dirichlet energy: symmetrize then glue traces across floating slits. For a single slit, Joukowski ellipses bracket its condenser capacity.",
+  "canonical_WAD": {
+    "excluded_remaining_classes_proved": false,
+    "formula": "W_can(gamma)=max(q_gamma-2,0)",
+    "horizontal_vertical_projected_support": null,
+    "horizontal_vertical_weight_certified_bounds": null,
+    "quadrilateral_enclosures_certified": false,
+    "support": null,
+    "support_cardinality_upper_bound_from_KKL": 10,
+    "total_weight_certified_bounds": null,
+    "warning": "Physical condenser capacities are NOT per-class universal-cover q_gamma; no WAD support inference is allowed."
+  },
+  "certified_auxiliary_target_slit_outer_condenser_bounds": {
+    "K0": {
+      "canonical_quadrilateral_width": null,
+      "ellipse_t_enclosing_disk": 22,
+      "ellipse_t_inside_disk": 21,
+      "exact_analytic_lower": "2*pi/log(22)",
+      "exact_analytic_upper": "2*pi/log(21)",
+      "physical_condenser_status": "certified, conditional on written variational/gluing proof",
+      "strict_rational_lower": "203/100",
+      "strict_rational_upper": "207/100"
+    },
+    "K1": {
+      "canonical_quadrilateral_width": null,
+      "ellipse_t_enclosing_disk": 340,
+      "ellipse_t_inside_disk": 49,
+      "exact_analytic_lower": "2*pi/log(340)",
+      "exact_analytic_upper": "2*pi/log(49)",
+      "physical_condenser_status": "certified, conditional on written variational/gluing proof",
+      "strict_rational_lower": "107/100",
+      "strict_rational_upper": "81/50"
+    },
+    "K2": {
+      "canonical_quadrilateral_width": null,
+      "ellipse_t_enclosing_disk": 90,
+      "ellipse_t_inside_disk": 25,
+      "exact_analytic_lower": "2*pi/log(90)",
+      "exact_analytic_upper": "2*pi/log(25)",
+      "physical_condenser_status": "certified, conditional on written variational/gluing proof",
+      "strict_rational_lower": "139/100",
+      "strict_rational_upper": "49/25"
+    }
+  },
+  "embedded_collar_t_for_each_slit": {
+    "K0": 11,
+    "K1": 49,
+    "K2": 25
+  },
+  "numerical_only": [],
+  "open": [
+    "All q_gamma two-sided conformal enclosures and exhaustive q<=2 exclusion",
+    "Canonical WAD support and norm and h+v projection weights",
+    "Intrinsic scalar transfer bounds and constants for the canonical WAD"
+  ],
+  "schema_version": 1,
+  "source_audit": "results/canonical_wad_electrode_incidence_20261116.json",
+  "source_electrode_Dh": {
+    "height": "1/1024",
+    "status": "inherited from unchanged canonical_wad_electrode_incidence_20261116 finite/analytic certificate",
+    "strict_lower": "3/5120",
+    "strict_upper": "3/2560"
+  },
+  "source_tip": "results/tip_KKL_tree_marked_breakage_20261109.json",
+  "target_surface": "U3\\(K0 union K1 union K2), U3=D(0,1/4), minimal four-component marking",
+  "transfer": {
+    "hypothesis_failure": "W_can is on U3\\K, not the source C_h; deck f_* identifies A_X and B_X and iota is nonproper on the attachment",
+    "no_positive_constants_possible_proved": false,
+    "physical_electrode_incidence_hypothesis": false,
+    "positive_kappa_and_C_certified": false,
+    "scalar_upper_and_lower_inequality_decided": false,
+    "warning": "Failure of a sufficient geometric clause is not a mathematical disproof of an accidentally true scalar inequality."
+  }
+}
