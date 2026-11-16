@@ -1,0 +1,103 @@
+{
+  "arithmetic": "exact Fraction; 256-bit outward dyadic orbit; alternating rational pi/cos and atanh-log brackets",
+  "canonical_definition": {
+    "formula": "W_can(alpha)=max(0, Width(ideal_quadrilateral_of_lifted_end_intervals(alpha))-2)",
+    "proof_selected_wave_constructed": false,
+    "proof_wave_selection": "KKL Section 6: existential nearly maximal eta-controllable Wave; no specified canonical Wave at this tip",
+    "source": "KKL Appendix A.2.1 and A.2.3; NOT the unbuffered width of a hand-chosen Wave",
+    "surface": "U3\\K; K=K0 union K1 union K2 (three disjoint small Julia intervals)",
+    "weights_numerically_enclosed": false,
+    "minimal_marking": "four entire ideal boundary components: K0, K1, K2 and outer U3",
+    "tree_wave_surface": "U3\\T, ten-atom induced tree marking; distinct from proof-used canonical WAD"
+  },
+  "exhibited_noncanonical_wave": {
+    "full_width": "log(4/3)/(2*pi)",
+    "relationship": "W(subwave)<D_h<W(full wave); does not estimate W_can",
+    "strict_full_interval": [
+      "1/25",
+      "1/20"
+    ],
+    "subwave_width": "h/(2*pi)"
+  },
+  "geometry": {
+    "attachment": "X=[-x3,x6), A_X=prime-end sides of X",
+    "cover": "G=f_c^3, even, degree two on V3; f_star",
+    "covered_real_image": "G(X)=G(-X)=[x6,x9] (appropriate endpoint closures)",
+    "immersion": "iota: V3\\Tprime -> U3\\T, identity inclusion; iota_star restriction",
+    "opposite": "B_X=deck translate of A_X, corresponding to [-x6,x3]",
+    "physical_collar": "0<h<=1/1024; finite contact check at h=1/1024",
+    "source": "V3\\Tprime, Tprime=[-x3,x3]",
+    "source_electrode_angle_interval": [
+      "6/5",
+      "7/5"
+    ],
+    "source_electrodes_disjoint": true,
+    "source_slit_chart": "z=x3*(w+w^-1)/2, w->-w is deck halfturn",
+    "target": "U3\\T, T=[x6,x3]",
+    "canonical_small_julia_sets": "K0=[x9,x18]; K1=[x12,x3]; K2=[x6,x15]",
+    "canonical_WAD_surface": "U3\\K, three-hole domain with minimal marking"
+  },
+  "incidence": {
+    "comparison_from_this_certificate": "none for canonical W_can; conditional general 0<=W(S)<=D_h has constant 1 only under verified inclusion",
+    "countercheck": "canonical U3\\K is not tree-Wave U3\\T or source C_h; cover folds A_X and B_X; iota is nonproper at A_X; marked restrictions fail",
+    "failed_clause": "same C_h and every curve has endpoints in A_X and B_X; canonical U3\\K and tree Wave U3\\T are different surfaces",
+    "theorem_6_applicable_to_canonical_target_WAD_and_source_Dh": false
+  },
+  "marking": {
+    "attachment_atoms": [
+      19,
+      0,
+      1
+    ],
+    "deck_opposite_atoms": [
+      9,
+      10,
+      11
+    ],
+    "f_star_attachment": [
+      9,
+      0,
+      1
+    ],
+    "f_star_opposite": [
+      9,
+      0,
+      1
+    ],
+    "iota_star_attachment": [
+      0,
+      0,
+      0
+    ],
+    "iota_star_opposite": [
+      4,
+      5,
+      6
+    ],
+    "known_wave_source_restrictions": [
+      [
+        3,
+        1
+      ],
+      [
+        19,
+        17
+      ]
+    ]
+  },
+  "numerical_only_observations": [],
+  "open": [
+    "evaluate all canonical buffered ideal quadrilaterals rigorously",
+    "specify or establish existence of Section 6 proof-selected wide Wave at tip",
+    "construct a surface/endpoint respecting transfer with quantitative richness",
+    "uniform stage bounds and any large-rotation application"
+  ],
+  "physical_free_outer_Dh": {
+    "analytic_input": "prior wave_vs_dirichlet_contact_transfer_20261115 NOTE theorem (10)",
+    "h": "1/1024",
+    "strict_lower": "3*h/5",
+    "strict_upper": "6*h/5"
+  },
+  "schema_version": 1,
+  "source_tip": "results/tip_KKL_tree_marked_breakage_20261109.json"
+}
