@@ -372,7 +372,11 @@ def compute(phase_path: Path = PHASE, previous_path: Path = PREVIOUS) -> dict:
           'eleven-atom proper saturation is lost')
     zero = [row['target_atom'] for row in interval_incidence
             if not row['old_tree_edge_sides']]
-    check(zero == [0,2,5,8], 'some zero-old-edge native sector omitted')
+    # Independently count ACTUAL target crest carriers, not only source P_i.
+    zero_target = [i for i, region in enumerate(TARGET_ATOM_TYPES)
+                   if region not in edge_names]
+    check(zero == zero_target == [0,2,5,8],
+          'target closed-crest edge mass and source pullback mass disagree')
     zero_source_old = [s for s in range(20) if physical[s] not in edge_names]
     check(zero_source_old == [0,1,2,5,10,15,18,19],
           'missed a zero-old-edge source sector (attachment is not an old edge)')
@@ -436,9 +440,30 @@ def compute(phase_path: Path = PHASE, previous_path: Path = PREVIOUS) -> dict:
     check(abs(diskcenter)+diskradius<Q(1,20) and
           Q(1,4)-abs(diskcenter)-diskradius>Q(1,5),
           'whole complex disk no longer certified in V3')
+    # Reconstruct BOTH child bases and closed crests from the actual gate
+    # crossings (S1,S19), their adjacent old K2 sectors (S2,S18), and
+    # the degree-two COVERING map.  Prior-wave JSON is only cross-checked.
+    upper_source_base = [1,2,3]
+    lower_source_base = [17,18,19]
+    child_bases = [[f_atom[s] for s in side]
+                   for side in (upper_source_base, lower_source_base)]
+    child_crests = [f_atom[2], f_atom[18]]
+    check(physical[1] == physical[19] == 'attachment' and
+          physical[2] == physical[18] == 'K2' and
+          iota_atom[3] == 1 and iota_atom[17] == 9,
+          'one of the two physical Wave gates or old-tree crests was lost')
+    check(child_bases == [[1,2,3],[7,8,9]] and
+          child_crests == [2,8] and
+          all(TARGET_ATOM_TYPES[i] not in edge_names for i in
+              [0] + child_crests),
+          'native pushed child crest/base does not match covering geometry')
+    check(endpoint(2,SOURCE_CUTS) == {'landing':'x6','access':'upper'} and
+          endpoint(19,SOURCE_CUTS) == {'landing':'x6','access':'lower'},
+          'the two ATTACHMENT ROOT gates at x6 were confused with -x12')
     check(old['marked_breakable_wave']['target_base_atoms']==[9,0,1] and
           old['marked_breakable_wave']['target_crest_atom']==0 and
-          old['marked_breakable_wave']['two_pushed_crest_atoms']==[2,8],
+          old['marked_breakable_wave']['two_pushed_base_atoms']==child_bases and
+          old['marked_breakable_wave']['two_pushed_crest_atoms']==child_crests,
           'original genuine marked Wave witness has changed')
     check(f_atom[5]==f_atom[15]==5 and f_atom[0]==f_atom[10]==0,
           'critical fold / two distinct terminal sources were conflated')
