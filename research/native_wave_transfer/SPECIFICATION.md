@@ -142,3 +142,108 @@ marking, action separation, disk margin, Wave endpoint range, parameter, and
 one reference table cell. These are regression tests of an *implementation*
 under fixed analytic inputs, not formal proofs of prime ends, dendrites,
 KKL Propositions 6.5–6.6, or the extremal-width lemma.
+
+## 5. Source-locked primitive period-four configuration (inner period-12 tip)
+
+The existing `tip_pr68` source records, `regenerate.py`, contracts, lock
+and immutable manifest remain **byte-identical**. A second executable
+`regenerate_period4.py` imports the same exact `Box`, cyclic atom,
+proper-restriction, and canonical-manifest primitives, but recomputes from its
+own parameter and geometric data. The separate
+`source_contracts/primitive4_record_fields.json` supplies source-specific
+IDs for the *same record grammar*, plus typed domain, old-edge and zero-edge
+certificates. Its lock pins the parameter file and the pre-existing
+physical old-edge convention audit. Run
+`python research/native_wave_transfer/regenerate_period4.py --check`;
+only explicit `--write` can re-freeze its own canonical manifest.
+
+**Parameter.** Put `x0=0` and `x(k+1)=x(k)^2+c`. The parameter is the
+**unique** real zero of `x24+x12` in the adjacent `2^-160` dyadic bracket
+in `physical_examples/primitive4_tip12_parameter.json`. The left endpoint
+is strictly positive, the right strictly negative, and the interval derivative
+is strictly negative, all certified by outward `2^-256` arithmetic. The
+exact relation `x24=-x12` implies `x36=x24`, by evenness of `f^12`.
+This is not the period-four superattracting center: `G=f^4` is global
+degree 16 with a *central quadratic-like degree-two* restriction.
+
+**Complex source and target.** Set `U4=D(0,1/16)`. For the entire circle
+`|z|=1/16` write `G(z)=d+A z^2+E(z)`; propagate the exact rational tail
+bound `E_next <= 2|d| E + (|A|rho^2+E)^2`. The Rouché margin
+`|A|rho^2 - |d| - E - 1/16 > 1/25` guarantees a proper degree-two
+`V4=component(G^-1(U4),0)`, compact in `U4`; the central critical point
+exhausts both preimages. The same calculation for `f^12` on
+`|z|=3/256`, target `D(0,1/128)`, has margin `>1/100`. Exact complex
+balls enclosing `f^j(V4)` for `j=0,1,2,3` are pairwise disjoint.
+Thus the physical period-four renormalization is **primitive**, rather
+than a period-doubling satellite. Real derivative-factor signs on
+`[0,x24]`, together with `x24=-x12`, make `f^12` send
+`[x12,x24]` onto itself with one critical minimum. Identifying this
+real interval with the full inner Chebyshev-tip Julia set uses the
+standard analytic backward-density/straightening argument and is not
+claimed as a conclusion of finite interval sampling alone.
+
+**Marked Hubbard tree and both operations.** The three small intervals are
+`K0=[x12,x24]`, `K1=[x16,x4]`, `K2=[x8,x20]`;
+their certified order is
+`x8<x20<x12<0<x24<alpha<x16<x4`, where the fixed
+`alpha=G(alpha)` is isolated by strict interval bisection.
+The native hull is `T=[x8,x4]` and its *complete* real inverse in the
+degree-two central source is `Tprime=[-x4,x4]`. Both monotone branches
+account for all inverse fibers, ruling out additional complex inverse
+tree components in `V4`. The single new attachment
+`[-x4,x8)` has root `x8` and boundary atoms `S19,S0,S1`:
+they map by actual **immersion inclusion** to target interior, not to a
+target boundary atom. The target cuts are `x20,x12,x24,alpha,x16`,
+and the independently isolated ordered inverse cuts are
+`-x16,x8,x20,-alpha,x12,x24,alpha,-x20,-x8,x16`.
+The ten target inner atoms and twenty source inner atoms have separate
+maps `f_*` (covering, two copies of ten) and `iota^*` (immersion pullback,
+ten cyclic blocks). The one whole outer-boundary atom is not asserted
+to have end-proper immersion behavior.
+
+**Paths and entire Wave families.** The common right target ideal endpoint
+is `q=-7/256`. The left crossings `w=-5/128` and `w=-3/64` are,
+respectively, inside the new attachment and outside the source slit.
+The entire corresponding closed disks satisfy
+`|G(B)|<1/32` and `|G(B)|<1/20`, strictly within `U4`.
+The original A.1 short-span and A.3.2 one-pullback filters produce
+proper source restrictions `(S3,S1),(S19,S17)` versus
+`(S3,S17)`, and **cover** outputs `(I3,I1),(I9,I7)` versus
+`(I3,I7)`. Equality of relative *ideal-endpoint* homotopy classes
+still depends on the usual prime-end identification, not on identical
+real impressions. The concentric positive-width Wave has center
+`-17/512`, all `1/256<r<3/512`, target base `(I9,I0,I1)`
+and pushed child bases `(I1,I2,I3)`, `(I7,I8,I9)`;
+the endpoint/gate inequalities hold for the *whole radius interval*.
+Exact rectangle coefficients give parent width `log(3/2)/(2*pi)` and
+both child widths `log(3/2)/pi`, hence **harmonic-series equality**.
+The analytic extremal-width/conformal-invariance identification remains
+an explicit cited assumption.
+
+**Old-edge and zero-edge guard.** The three real **old** edges
+`E20=(x20,x12)`, `E0a=(x24,alpha)`, `Ea1=(alpha,x16)`
+map as `E20 -> (E0a,Ea1)`, `E0a -> Ea1`,
+`Ea1 -> (E0a,K0,E20)`; `K0` is a vertex interval *gap*,
+not an old edge. Count each real physical traversal **once**, not once
+per upper/lower boundary side. With output rows and input columns,
+`T_F=[[0,0,1],[1,0,1],[1,1,0]]`, characteristic polynomial
+`t^3-2t-1`, Perron root `phi=(1+sqrt(5))/2`, positive left
+weights `(phi,1,phi)` and strictly positive fourth power.
+The zero-old-edge target atom types are `I0,I2,I5,I8`; the distinct
+source-inclusion and covering-pushforward zero lists are frozen in the
+second manifest. In particular **all three actual Wave closed crests**
+`I0,I2,I8` have *zero* old-edge incidence. No Perron edge growth or
+finite whole-atom saturation is misreported as a closed-crest Wave gain.
+
+**Trust boundary:** the dyadic parameter, complex Rouché and phase balls,
+finite real cut/attachment/edge arithmetic, whole-disk and full-radius
+bounds, and symbolic harmonic coefficient equality are certified.
+The inner Julia identification, slit Carathéodory marking, KKL attachment
+and proper-path definitions, homotopy, and analytic extremal widths are
+conditional on cited mathematics. There is **no numeric-only certificate**.
+Canonical non-LC attachments, zero-edge subsector transport and a general
+strict Wave inequality remain open. The difference in *physical* iterate
+`p=4` changes polynomial, global degree, scale and domain certificates;
+this example intentionally retains the same three-phase *inner* kneading,
+so the finite 10/20 counts, edge matrix and breakage multiplicities need
+not vary with `p` alone.

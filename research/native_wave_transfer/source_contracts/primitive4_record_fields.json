@@ -1,0 +1,651 @@
+{
+  "format": "native-wave-transfer-field-contract/v1",
+  "notation": "Each field path is relative to its record; [] denotes each array item. [type, source-id] is mandatory. Rational means a reduced fraction string, never a float. Primitive-four fields follow the same record grammar; physical source IDs are separately pinned.",
+  "sources": {
+    "LAB": "research/native_wave_transfer/SPECIFICATION.md §§1-5",
+    "ROOT": "results/tip_root_interval_geometry.json (root/phase/parameter source manifest; pinned in LOCK.json)",
+    "TIP3": "research/independent_audits/nonattracting_tip_complex_two_scale_20261106.md (degree-two G:V3->U3; PR #68 §1)",
+    "PR1": "research/independent_audits/tip_KKL_native_tree_marking_and_marked_wave_breakage_20261109.md §1, Proposition 1.1",
+    "PR2": "research/independent_audits/tip_KKL_native_tree_marking_and_marked_wave_breakage_20261109.md §2, Proposition 2.1",
+    "PR3": "research/independent_audits/tip_KKL_native_tree_marking_and_marked_wave_breakage_20261109.md §3, Theorem 3.1",
+    "PR4": "research/independent_audits/tip_KKL_native_tree_marking_and_marked_wave_breakage_20261109.md §4",
+    "PR5": "research/independent_audits/tip_KKL_native_tree_marking_and_marked_wave_breakage_20261109.md §5",
+    "KKL2": "Kahn-Kapiamba-Lyubich, arXiv:2606.27272v1 §2.1 (ordinary quadratic-like member of the psi-ql category)",
+    "KKLT": "Kahn-Kapiamba-Lyubich, arXiv:2606.27272v1 §2.5 (Hubbard tree and marked vertices)",
+    "KKLA": "Kahn-Kapiamba-Lyubich, arXiv:2606.27272v1 §6.1, Propositions 6.5-6.6 (attachments, pullback marking, refinement)",
+    "KKLI": "Kahn-Kapiamba-Lyubich, arXiv:2606.27272v1 Appendix A.1 (ideal-boundary marking and short multi-interval subordination)",
+    "KKLP": "Kahn-Kapiamba-Lyubich, arXiv:2606.27272v1 Appendix A.3.2-A.3.4 (restriction, paths, domination and breakage)",
+    "KKLW": "Kahn-Kapiamba-Lyubich, arXiv:2606.27272v1 Appendix A.3.2, Lemma A.11 (series width with joint injectivity); PR #68 §5",
+    "P4ROOT": "research/native_wave_transfer/physical_examples/primitive4_tip12_parameter.json (exact dyadic parameter and preperiodic orbit equation; signed-interval root proof in regenerate_period4.py)",
+    "P4DOMAIN": "research/native_wave_transfer/SPECIFICATION.md §5 (Rouche f4/f12 complex-ball physical domains, degree-two, primitive phase separation)",
+    "P4TREE": "research/native_wave_transfer/SPECIFICATION.md §5 and regenerate_period4.py real phase/complete degree-two inverse proof; KKL §2.5",
+    "P4MARK": "research/native_wave_transfer/SPECIFICATION.md §5 and KKL §6.1/A.1; primitive4 real inverse cut computation",
+    "P4PATH": "research/native_wave_transfer/SPECIFICATION.md §5, KKL Appendix A.1 and A.3.2-A.3.4",
+    "P4WAVE": "research/native_wave_transfer/SPECIFICATION.md §5, KKL Lemma A.11 (symbolic rectangles and analytic assumption)",
+    "P4EDGE": "research/native_wave_transfer/SPECIFICATION.md §5 (physical old-edge occurrence matrix and zero-edge census); compatible p3 convention in research/independent_audits/issue40_native_attachment_edge_incidence_20261115/NOTE.md"
+  },
+  "records": {
+    "PhysicalExample": {
+      "source_contract": [
+        "uri",
+        "LAB"
+      ],
+      "id": [
+        "identifier",
+        "LAB"
+      ],
+      "polynomial.family": [
+        "symbol",
+        "P4ROOT"
+      ],
+      "polynomial.critical_point": [
+        "rational",
+        "P4ROOT"
+      ],
+      "polynomial.parameter_reference": [
+        "uri-json-pointer",
+        "P4ROOT"
+      ],
+      "return.physical_iterate": [
+        "positive-integer",
+        "P4DOMAIN"
+      ],
+      "return.restricted_degree": [
+        "positive-integer",
+        "P4DOMAIN"
+      ],
+      "return.global_degree": [
+        "positive-integer",
+        "P4ROOT"
+      ],
+      "domains.source.symbol": [
+        "symbol",
+        "P4DOMAIN"
+      ],
+      "domains.source.definition": [
+        "string",
+        "P4DOMAIN"
+      ],
+      "domains.source.restricted_degree": [
+        "positive-integer",
+        "P4DOMAIN"
+      ],
+      "domains.target.symbol": [
+        "symbol",
+        "P4DOMAIN"
+      ],
+      "domains.target.shape": [
+        "enum",
+        "P4DOMAIN"
+      ],
+      "domains.target.center": [
+        "rational",
+        "P4DOMAIN"
+      ],
+      "domains.target.radius": [
+        "positive-rational",
+        "P4DOMAIN"
+      ],
+      "marking.induced_from": [
+        "symbol",
+        "KKLT"
+      ],
+      "marking.target_cuts": [
+        "list-symbol",
+        "P4MARK"
+      ],
+      "marking.outer_boundary": [
+        "enum",
+        "KKLI"
+      ],
+      "operations.covering.map": [
+        "symbol",
+        "KKL2"
+      ],
+      "operations.covering.ideal_action": [
+        "enum-f_*",
+        "KKLA"
+      ],
+      "operations.covering.domain": [
+        "set-expression",
+        "P4TREE"
+      ],
+      "operations.covering.codomain": [
+        "set-expression",
+        "P4TREE"
+      ],
+      "operations.immersion.map": [
+        "symbol",
+        "KKLA"
+      ],
+      "operations.immersion.ideal_action": [
+        "enum-iota^*",
+        "KKLA"
+      ],
+      "operations.immersion.domain": [
+        "set-expression",
+        "P4TREE"
+      ],
+      "operations.immersion.codomain": [
+        "set-expression",
+        "P4TREE"
+      ],
+      "operations.immersion.new_attachment_sides": [
+        "enum-target-interior",
+        "P4MARK"
+      ],
+      "paths[].name": [
+        "identifier",
+        "P4PATH"
+      ],
+      "paths[].q": [
+        "rational",
+        "P4PATH"
+      ],
+      "paths[].w": [
+        "rational",
+        "P4PATH"
+      ],
+      "paths[].disk_limit": [
+        "positive-rational",
+        "P4PATH"
+      ],
+      "wave.center": [
+        "rational",
+        "P4WAVE"
+      ],
+      "wave.open_radii": [
+        "pair-rational",
+        "P4WAVE"
+      ],
+      "wave.target_angular_height_pi": [
+        "positive-rational",
+        "P4WAVE"
+      ],
+      "wave.child_angular_height_pi": [
+        "positive-rational",
+        "P4WAVE"
+      ]
+    },
+    "PolynomialParameter": {
+      "family": [
+        "symbol",
+        "P4ROOT"
+      ],
+      "critical_point": [
+        "rational",
+        "P4ROOT"
+      ],
+      "parameter_bracket.denominator_power_of_two": [
+        "positive-integer",
+        "P4ROOT"
+      ],
+      "parameter_bracket.lower_numerator": [
+        "integer",
+        "P4ROOT"
+      ],
+      "parameter_bracket.upper_numerator": [
+        "integer",
+        "P4ROOT"
+      ],
+      "orbit_index_range": [
+        "integer-pair",
+        "P4ROOT"
+      ]
+    },
+    "PhysicalReturn": {
+      "physical_iterate": [
+        "positive-integer",
+        "P4DOMAIN"
+      ],
+      "restricted_degree": [
+        "positive-integer",
+        "P4DOMAIN"
+      ],
+      "global_degree": [
+        "positive-integer",
+        "P4ROOT"
+      ]
+    },
+    "DomainPair": {
+      "source.symbol": [
+        "symbol",
+        "P4DOMAIN"
+      ],
+      "source.definition": [
+        "set-expression",
+        "P4DOMAIN"
+      ],
+      "source.degree": [
+        "positive-integer",
+        "P4DOMAIN"
+      ],
+      "target.symbol": [
+        "symbol",
+        "P4DOMAIN"
+      ],
+      "target.center": [
+        "rational",
+        "P4DOMAIN"
+      ],
+      "target.radius": [
+        "positive-rational",
+        "P4DOMAIN"
+      ],
+      "certificate.outer_rouche_margin_gt": [
+        "positive-rational",
+        "P4DOMAIN"
+      ],
+      "certificate.inner_f12_rouche_margin_gt": [
+        "positive-rational",
+        "P4DOMAIN"
+      ],
+      "certificate.primitive_four_phase_balls_disjoint": [
+        "boolean",
+        "P4DOMAIN"
+      ]
+    },
+    "MarkedHubbardTree": {
+      "small_julia_intervals": [
+        "list-interval-symbol",
+        "P4ROOT"
+      ],
+      "hull": [
+        "interval-symbol",
+        "KKLT"
+      ],
+      "dividing_fixed_point": [
+        "symbol",
+        "KKLT"
+      ],
+      "preimage_in_V4": [
+        "interval-symbol",
+        "P4TREE"
+      ]
+    },
+    "AttachmentCensus": {
+      "components[].interval": [
+        "half-open-interval",
+        "KKLA"
+      ],
+      "components[].root": [
+        "symbol",
+        "P4TREE"
+      ],
+      "components[].boundary_atoms": [
+        "list-int",
+        "P4MARK"
+      ],
+      "components[].immersion_boundary_destination": [
+        "enum-target-interior",
+        "P4MARK"
+      ],
+      "complete_in_V4_given_degree_two": [
+        "conditional-boolean",
+        "P4TREE"
+      ]
+    },
+    "IdealBoundaryIntervals": {
+      "target_atom_count": [
+        "nonnegative-integer",
+        "KKLI"
+      ],
+      "target_atom_names": [
+        "list-symbol",
+        "P4MARK"
+      ],
+      "target_real_cuts": [
+        "list-symbol",
+        "P4MARK"
+      ],
+      "covering_source_atom_count": [
+        "nonnegative-integer",
+        "KKLI"
+      ],
+      "source_real_cuts": [
+        "list-symbol",
+        "P4MARK"
+      ],
+      "outer_component_atom_count": [
+        "nonnegative-integer",
+        "KKLI"
+      ]
+    },
+    "CoveringFStar": {
+      "action": [
+        "enum-f_*",
+        "KKLA"
+      ],
+      "degree": [
+        "positive-integer",
+        "KKL2"
+      ],
+      "source_to_target": [
+        "list-int",
+        "P4MARK"
+      ]
+    },
+    "ImmersionPullback": {
+      "action": [
+        "enum-iota^*",
+        "KKLA"
+      ],
+      "source_to_pullback": [
+        "list-int",
+        "KKLA"
+      ],
+      "connected_blocks": [
+        "list-list-int",
+        "KKLA"
+      ],
+      "block_lengths": [
+        "list-int",
+        "P4MARK"
+      ],
+      "end_proper_inner": [
+        "boolean",
+        "KKLA"
+      ],
+      "nonproper_target_atoms": [
+        "list-int",
+        "P4MARK"
+      ]
+    },
+    "SheetPathFamily": {
+      "endpoint_target_atoms": [
+        "pair-int",
+        "KKLP"
+      ],
+      "circles[].name": [
+        "identifier",
+        "P4PATH"
+      ],
+      "circles[].center": [
+        "rational",
+        "P4PATH"
+      ],
+      "circles[].radius": [
+        "positive-rational",
+        "P4PATH"
+      ],
+      "circles[].real_left_intersection": [
+        "rational",
+        "P4PATH"
+      ],
+      "circles[].real_right_endpoint": [
+        "rational",
+        "P4PATH"
+      ],
+      "circles[].certified_G_disk_image_absolute_bound": [
+        "positive-rational",
+        "P4PATH"
+      ],
+      "instances.*.source_restrictions": [
+        "list-pair-int",
+        "KKLP"
+      ],
+      "instances.*.immersion_endpoint_pairs": [
+        "list-pair-int",
+        "KKLA"
+      ],
+      "instances.*.covering_pushforward_pairs": [
+        "list-pair-int",
+        "KKLP"
+      ],
+      "instances.*.surviving_count": [
+        "nonnegative-integer",
+        "KKLP"
+      ],
+      "instances.*.filters.A1_short_span": [
+        "boolean",
+        "KKLI"
+      ],
+      "instances.*.filters.A3_2_not_in_one_pullback": [
+        "boolean",
+        "KKLP"
+      ],
+      "homotopy": [
+        "conditional-symbol",
+        "P4PATH"
+      ],
+      "counts": [
+        "list-int",
+        "P4PATH"
+      ],
+      "circles[].certified_clearance_to_target_radius_1_over_16": [
+        "positive-rational",
+        "P4PATH"
+      ]
+    },
+    "WaveFamily": {
+      "center": [
+        "rational",
+        "P4WAVE"
+      ],
+      "open_radii": [
+        "pair-rational",
+        "P4WAVE"
+      ],
+      "right_endpoint_range": [
+        "pair-rational",
+        "P4WAVE"
+      ],
+      "attachment_crossing_range": [
+        "pair-rational",
+        "P4WAVE"
+      ],
+      "target_base": [
+        "list-int",
+        "KKLW"
+      ],
+      "target_crest": [
+        "int",
+        "KKLW"
+      ],
+      "pushed_bases": [
+        "list-list-int",
+        "P4WAVE"
+      ],
+      "pushed_crests": [
+        "list-int",
+        "P4WAVE"
+      ],
+      "ratio": [
+        "positive-rational",
+        "P4WAVE"
+      ],
+      "target_width": [
+        "symbolic-log-over-pi",
+        "KKLW"
+      ],
+      "each_child_and_pushed_width": [
+        "symbolic-log-over-pi",
+        "KKLW"
+      ],
+      "child_multiplier": [
+        "positive-integer",
+        "P4WAVE"
+      ],
+      "harmonic_series_equality": [
+        "conditional-boolean",
+        "KKLW"
+      ],
+      "symbolic_width_coefficients_in_log_ratio_over_pi.target": [
+        "rational",
+        "KKLW"
+      ],
+      "symbolic_width_coefficients_in_log_ratio_over_pi.each_child": [
+        "rational",
+        "KKLW"
+      ]
+    },
+    "ExperimentOutputs": {
+      "polynomial": [
+        "PolynomialParameter",
+        "P4ROOT"
+      ],
+      "return": [
+        "PhysicalReturn",
+        "P4DOMAIN"
+      ],
+      "domains": [
+        "DomainPair",
+        "P4DOMAIN"
+      ],
+      "marked_tree": [
+        "MarkedHubbardTree",
+        "KKLT"
+      ],
+      "attachment_census": [
+        "AttachmentCensus",
+        "KKLA"
+      ],
+      "ideal_boundary": [
+        "IdealBoundaryIntervals",
+        "KKLI"
+      ],
+      "operations.covering_f_star": [
+        "CoveringFStar",
+        "KKLA"
+      ],
+      "operations.immersion_iota_star": [
+        "ImmersionPullback",
+        "KKLA"
+      ],
+      "sheet_paths": [
+        "SheetPathFamily",
+        "KKLP"
+      ],
+      "wave": [
+        "WaveFamily",
+        "KKLW"
+      ],
+      "edge_transition": [
+        "EdgeTransition",
+        "P4EDGE"
+      ],
+      "zero_edge_sectors": [
+        "ZeroEdgeSectors",
+        "P4EDGE"
+      ]
+    },
+    "ExperimentManifest": {
+      "schema_version": [
+        "positive-integer",
+        "LAB"
+      ],
+      "experiment_id": [
+        "identifier",
+        "LAB"
+      ],
+      "inputs.source_locks": [
+        "list-Git-blob-lock",
+        "LAB"
+      ],
+      "inputs.arxiv_source": [
+        "source-identifier",
+        "LAB"
+      ],
+      "inputs.example_sha256": [
+        "hex-sha256",
+        "LAB"
+      ],
+      "inputs.contracts_sha256": [
+        "hex-sha256",
+        "LAB"
+      ],
+      "inputs.lock_sha256": [
+        "hex-sha256",
+        "LAB"
+      ],
+      "code.file": [
+        "repository-path",
+        "LAB"
+      ],
+      "code.sha256": [
+        "hex-sha256",
+        "LAB"
+      ],
+      "outputs": [
+        "ExperimentOutputs",
+        "LAB"
+      ],
+      "outputs_sha256": [
+        "hex-sha256",
+        "LAB"
+      ],
+      "proof_status.certified_by_exact_arithmetic": [
+        "list-text",
+        "LAB"
+      ],
+      "proof_status.conditional_on_cited_analytic_inputs": [
+        "list-text",
+        "LAB"
+      ],
+      "proof_status.numeric_only": [
+        "list-text",
+        "LAB"
+      ],
+      "proof_status.unproved": [
+        "list-text",
+        "LAB"
+      ],
+      "inputs.parameter_certificate_sha256": [
+        "hex-sha256",
+        "P4ROOT"
+      ]
+    },
+    "EdgeTransition": {
+      "edges": [
+        "list-symbol",
+        "P4EDGE"
+      ],
+      "matrix_output_rows_input_columns": [
+        "list-list-int",
+        "P4EDGE"
+      ],
+      "characteristic_polynomial": [
+        "symbol",
+        "P4EDGE"
+      ],
+      "perron_root": [
+        "symbol",
+        "P4EDGE"
+      ],
+      "strictly_positive_power": [
+        "positive-integer",
+        "P4EDGE"
+      ],
+      "inverse_edge_sheets[].edge": [
+        "symbol",
+        "P4EDGE"
+      ],
+      "inverse_edge_sheets[].physical_source_sheets": [
+        "list-pair-symbol",
+        "P4EDGE"
+      ],
+      "inverse_edge_sheets[].new_attachment_sheets": [
+        "list-boolean",
+        "P4EDGE"
+      ]
+    },
+    "ZeroEdgeSectors": {
+      "target_zero_old_edge_atoms": [
+        "list-int",
+        "P4EDGE"
+      ],
+      "source_inclusion_zero_old_edge_atoms": [
+        "list-int",
+        "P4EDGE"
+      ],
+      "cover_pushforward_zero_old_edge_atoms": [
+        "list-int",
+        "P4EDGE"
+      ],
+      "parent_and_child_wave_crests_zero_old_edge": [
+        "boolean",
+        "P4WAVE"
+      ]
+    }
+  }
+}

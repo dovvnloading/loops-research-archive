@@ -1,0 +1,25 @@
+{
+  "contract_revision": 1,
+  "arxiv_source": {
+    "authors": "Jeremy Kahn, Alex Kapiamba, Mikhail Lyubich",
+    "id": "arXiv:2606.27272v1",
+    "sections": [
+      "2.1",
+      "2.5",
+      "6.1 Propositions 6.5-6.6",
+      "Appendix A.1",
+      "Appendix A.3.2-A.3.4"
+    ],
+    "url": "https://arxiv.org/abs/2606.27272v1"
+  },
+  "repository_files": [
+    {
+      "path": "research/native_wave_transfer/physical_examples/primitive4_tip12_parameter.json",
+      "git_blob_sha1": "99192901551611390ef8d5ab81458e8316a9c70b"
+    },
+    {
+      "path": "research/independent_audits/issue40_native_attachment_edge_incidence_20261115/NOTE.md",
+      "git_blob_sha1": "aca2c8aea6ad71bb86efcf3119fc2f90376461f6"
+    }
+  ]
+}

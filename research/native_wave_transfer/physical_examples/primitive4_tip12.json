@@ -1,0 +1,76 @@
+{
+  "source_contract": "source_contracts/primitive4_record_fields.json#/records/PhysicalExample",
+  "id": "native-primitive4-tip12-v1",
+  "polynomial": {
+    "family": "z^2+c",
+    "critical_point": "0",
+    "parameter_reference": "physical_examples/primitive4_tip12_parameter.json#/parameter_bracket"
+  },
+  "return": {
+    "physical_iterate": 4,
+    "restricted_degree": 2,
+    "global_degree": 16
+  },
+  "domains": {
+    "source": {
+      "symbol": "V4",
+      "definition": "component(G^-1(U4),0)",
+      "restricted_degree": 2
+    },
+    "target": {
+      "symbol": "U4",
+      "shape": "open_disk",
+      "center": "0",
+      "radius": "1/16"
+    }
+  },
+  "marking": {
+    "induced_from": "K0 U K1 U K2 U {alpha}",
+    "target_cuts": [
+      "x20",
+      "x12",
+      "x24",
+      "alpha",
+      "x16"
+    ],
+    "outer_boundary": "single_whole_component_atom"
+  },
+  "operations": {
+    "covering": {
+      "map": "G",
+      "ideal_action": "f_*",
+      "domain": "V4\\Tprime",
+      "codomain": "U4\\T"
+    },
+    "immersion": {
+      "map": "identity_inclusion",
+      "ideal_action": "iota^*",
+      "domain": "V4\\Tprime",
+      "codomain": "U4\\T",
+      "new_attachment_sides": "target_interior"
+    }
+  },
+  "paths": [
+    {
+      "name": "crossing",
+      "q": "-7/256",
+      "w": "-5/128",
+      "disk_limit": "1/32"
+    },
+    {
+      "name": "avoiding",
+      "q": "-7/256",
+      "w": "-3/64",
+      "disk_limit": "1/20"
+    }
+  ],
+  "wave": {
+    "center": "-17/512",
+    "open_radii": [
+      "1/256",
+      "3/512"
+    ],
+    "target_angular_height_pi": "2",
+    "child_angular_height_pi": "1"
+  }
+}

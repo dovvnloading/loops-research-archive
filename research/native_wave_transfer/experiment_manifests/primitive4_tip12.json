@@ -1,0 +1,523 @@
+{
+  "code": {
+    "file": "research/native_wave_transfer/regenerate_period4.py",
+    "sha256": "b8588d95a8fb0da8457b94f181c7adcb1d8dfb16af1b9744e659a5306ae27038"
+  },
+  "experiment_id": "native-primitive4-tip12-v1",
+  "inputs": {
+    "arxiv_source": {
+      "authors": "Jeremy Kahn, Alex Kapiamba, Mikhail Lyubich",
+      "id": "arXiv:2606.27272v1",
+      "sections": [
+        "2.1",
+        "2.5",
+        "6.1 Propositions 6.5-6.6",
+        "Appendix A.1",
+        "Appendix A.3.2-A.3.4"
+      ],
+      "url": "https://arxiv.org/abs/2606.27272v1"
+    },
+    "contracts_sha256": "ede5113cb5572db634d93e863191d82e1aba7a1397aec0c107661fcbfe10bd7c",
+    "example_sha256": "01813bb461b84562d786262d82e5ca01544be108d6233d40745c4df852159638",
+    "lock_sha256": "4cecfc5180395c5308b92610f675a8c89d1f837a82be03adec1a47e77e5c0452",
+    "parameter_certificate_sha256": "c8c005891945c2b6baa9574f91a619606b2be29d2020f4625065913aba8b19be",
+    "source_locks": [
+      {
+        "git_blob_sha1": "99192901551611390ef8d5ab81458e8316a9c70b",
+        "path": "research/native_wave_transfer/physical_examples/primitive4_tip12_parameter.json"
+      },
+      {
+        "git_blob_sha1": "aca2c8aea6ad71bb86efcf3119fc2f90376461f6",
+        "path": "research/independent_audits/issue40_native_attachment_edge_incidence_20261115/NOTE.md"
+      }
+    ]
+  },
+  "outputs": {
+    "attachment_census": {
+      "complete_in_V4_given_degree_two": true,
+      "components": [
+        {
+          "boundary_atoms": [
+            19,
+            0,
+            1
+          ],
+          "immersion_boundary_destination": "target_interior_not_I0_boundary",
+          "interval": "[-x4,x8)",
+          "root": "x8"
+        }
+      ]
+    },
+    "domains": {
+      "certificate": {
+        "inner_f12_rouche_margin_gt": "1/100",
+        "outer_rouche_margin_gt": "1/25",
+        "primitive_four_phase_balls_disjoint": true
+      },
+      "source": {
+        "definition": "component(G^-1(U4),0)",
+        "degree": 2,
+        "symbol": "V4"
+      },
+      "target": {
+        "center": "0",
+        "radius": "1/16",
+        "symbol": "U4"
+      }
+    },
+    "edge_transition": {
+      "characteristic_polynomial": "t^3-2*t-1=(t+1)*(t^2-t-1)",
+      "edges": [
+        "E20",
+        "E0a",
+        "Ea1"
+      ],
+      "inverse_edge_sheets": [
+        {
+          "edge": "E20",
+          "new_attachment_sheets": [
+            true,
+            false
+          ],
+          "physical_source_sheets": [
+            [
+              "-x16",
+              "x8"
+            ],
+            [
+              "-x8",
+              "x16"
+            ]
+          ]
+        },
+        {
+          "edge": "E0a",
+          "new_attachment_sheets": [
+            false,
+            false
+          ],
+          "physical_source_sheets": [
+            [
+              "x20",
+              "-alpha"
+            ],
+            [
+              "alpha",
+              "-x20"
+            ]
+          ]
+        },
+        {
+          "edge": "Ea1",
+          "new_attachment_sheets": [
+            false,
+            false
+          ],
+          "physical_source_sheets": [
+            [
+              "-alpha",
+              "x12"
+            ],
+            [
+              "x24",
+              "alpha"
+            ]
+          ]
+        }
+      ],
+      "matrix_output_rows_input_columns": [
+        [
+          0,
+          0,
+          1
+        ],
+        [
+          1,
+          0,
+          1
+        ],
+        [
+          1,
+          1,
+          0
+        ]
+      ],
+      "perron_root": "(1+sqrt(5))/2",
+      "strictly_positive_power": 4
+    },
+    "ideal_boundary": {
+      "covering_source_atom_count": 20,
+      "outer_component_atom_count": 1,
+      "source_real_cuts": [
+        "-x16",
+        "x8",
+        "x20",
+        "-alpha",
+        "x12",
+        "x24",
+        "alpha",
+        "-x20",
+        "-x8",
+        "x16"
+      ],
+      "target_atom_count": 10,
+      "target_atom_names": [
+        "K2_terminal",
+        "edge_K2_K0_upper",
+        "K0_upper",
+        "edge_K0_alpha_upper",
+        "edge_alpha_K1_upper",
+        "K1_terminal",
+        "edge_alpha_K1_lower",
+        "edge_K0_alpha_lower",
+        "K0_lower",
+        "edge_K2_K0_lower"
+      ],
+      "target_real_cuts": [
+        "x20",
+        "x12",
+        "x24",
+        "alpha",
+        "x16"
+      ]
+    },
+    "marked_tree": {
+      "dividing_fixed_point": "alpha",
+      "hull": "[x8,x4]",
+      "preimage_in_V4": "[-x4,x4]",
+      "small_julia_intervals": [
+        "[x12,x24]",
+        "[x16,x4]",
+        "[x8,x20]"
+      ]
+    },
+    "operations": {
+      "covering_f_star": {
+        "action": "f_*",
+        "degree": 2,
+        "source_to_target": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9
+        ]
+      },
+      "immersion_iota_star": {
+        "action": "iota^*",
+        "block_lengths": [
+          5,
+          2,
+          1,
+          1,
+          3,
+          1,
+          3,
+          1,
+          1,
+          2
+        ],
+        "connected_blocks": [
+          [
+            18,
+            19,
+            0,
+            1,
+            2
+          ],
+          [
+            3,
+            4
+          ],
+          [
+            5
+          ],
+          [
+            6
+          ],
+          [
+            7,
+            8,
+            9
+          ],
+          [
+            10
+          ],
+          [
+            11,
+            12,
+            13
+          ],
+          [
+            14
+          ],
+          [
+            15
+          ],
+          [
+            16,
+            17
+          ]
+        ],
+        "end_proper_inner": true,
+        "nonproper_target_atoms": [
+          0
+        ],
+        "source_to_pullback": [
+          0,
+          0,
+          0,
+          1,
+          1,
+          2,
+          3,
+          4,
+          4,
+          4,
+          5,
+          6,
+          6,
+          6,
+          7,
+          8,
+          9,
+          9,
+          0,
+          0
+        ]
+      }
+    },
+    "polynomial": {
+      "critical_point": "0",
+      "family": "z^2+c",
+      "orbit_index_range": [
+        0,
+        36
+      ],
+      "parameter_bracket": {
+        "denominator_power_of_two": 160,
+        "lower_numerator": -2839046102243570105666380255822873122323992946925,
+        "upper_numerator": -2839046102243570105666380255822873122323992946924
+      }
+    },
+    "return": {
+      "global_degree": 16,
+      "physical_iterate": 4,
+      "restricted_degree": 2
+    },
+    "sheet_paths": {
+      "circles": [
+        {
+          "center": "-17/512",
+          "certified_G_disk_image_absolute_bound": "1/32",
+          "certified_clearance_to_target_radius_1_over_16": "1/32",
+          "name": "crossing",
+          "radius": "3/512",
+          "real_left_intersection": "-5/128",
+          "real_right_endpoint": "-7/256"
+        },
+        {
+          "center": "-19/512",
+          "certified_G_disk_image_absolute_bound": "1/20",
+          "certified_clearance_to_target_radius_1_over_16": "1/80",
+          "name": "avoiding",
+          "radius": "5/512",
+          "real_left_intersection": "-3/64",
+          "real_right_endpoint": "-7/256"
+        }
+      ],
+      "counts": [
+        2,
+        1
+      ],
+      "endpoint_target_atoms": [
+        1,
+        9
+      ],
+      "homotopy": "same_target_relative_ideal_endpoints",
+      "instances": {
+        "avoiding": {
+          "covering_pushforward_pairs": [
+            [
+              3,
+              7
+            ]
+          ],
+          "filters": {
+            "A1_short_span": true,
+            "A3_2_not_in_one_pullback": true
+          },
+          "immersion_endpoint_pairs": [
+            [
+              1,
+              9
+            ]
+          ],
+          "source_restrictions": [
+            [
+              3,
+              17
+            ]
+          ],
+          "surviving_count": 1
+        },
+        "crossing": {
+          "covering_pushforward_pairs": [
+            [
+              3,
+              1
+            ],
+            [
+              9,
+              7
+            ]
+          ],
+          "filters": {
+            "A1_short_span": true,
+            "A3_2_not_in_one_pullback": true
+          },
+          "immersion_endpoint_pairs": [
+            [
+              1,
+              0
+            ],
+            [
+              0,
+              9
+            ]
+          ],
+          "source_restrictions": [
+            [
+              3,
+              1
+            ],
+            [
+              19,
+              17
+            ]
+          ],
+          "surviving_count": 2
+        }
+      }
+    },
+    "wave": {
+      "attachment_crossing_range": [
+        "-5/128",
+        "-19/512"
+      ],
+      "center": "-17/512",
+      "child_multiplier": 2,
+      "each_child_and_pushed_width": "log(3/2)/pi",
+      "harmonic_series_equality": true,
+      "open_radii": [
+        "1/256",
+        "3/512"
+      ],
+      "pushed_bases": [
+        [
+          1,
+          2,
+          3
+        ],
+        [
+          7,
+          8,
+          9
+        ]
+      ],
+      "pushed_crests": [
+        2,
+        8
+      ],
+      "ratio": "3/2",
+      "right_endpoint_range": [
+        "-15/512",
+        "-7/256"
+      ],
+      "symbolic_width_coefficients_in_log_ratio_over_pi": {
+        "each_child": "1",
+        "target": "1/2"
+      },
+      "target_base": [
+        9,
+        0,
+        1
+      ],
+      "target_crest": 0,
+      "target_width": "log(3/2)/(2*pi)"
+    },
+    "zero_edge_sectors": {
+      "cover_pushforward_zero_old_edge_atoms": [
+        0,
+        2,
+        5,
+        8,
+        10,
+        12,
+        15,
+        18
+      ],
+      "parent_and_child_wave_crests_zero_old_edge": true,
+      "source_inclusion_zero_old_edge_atoms": [
+        0,
+        1,
+        2,
+        5,
+        10,
+        15,
+        18,
+        19
+      ],
+      "target_zero_old_edge_atoms": [
+        0,
+        2,
+        5,
+        8
+      ]
+    }
+  },
+  "outputs_sha256": "723e631b3ba0788cfc56cb44bdecdde5efa79e26b1270ce56cc7ceb7aa916881",
+  "proof_status": {
+    "certified_by_exact_arithmetic": [
+      "unique degree-160 dyadic parameter root with derivative sign",
+      "two complex quadratic-like degree-two Rouch\u00e9 enclosures",
+      "disjoint four physical phase balls; primitive p=4 return",
+      "real interval phase orders and complete two-sheet inverse cuts",
+      "one attached component given the central degree-two map",
+      "separate covering and immersion and filtered 2/1 restrictions",
+      "one occurrence per real old edge and exact phi Perron identity",
+      "zero old-edge census on source, target, and covering images",
+      "closed four-iterate disks and entire wave endpoint ranges",
+      "rational coefficients of the symbolic harmonic width equality"
+    ],
+    "conditional_on_cited_analytic_inputs": [
+      "real Chebyshev tip filled-Julia interval from the inner f12 portrait",
+      "slit-side prime-end boundary marking and KKL Proposition 6.5",
+      "KKL shortness and proper restriction semantics",
+      "relative ideal endpoint homotopy of the two circles",
+      "extremal-width rectangle and conformal-invariance identification"
+    ],
+    "numeric_only": [],
+    "unproved": [
+      "non-locally-connected canonical KL localization",
+      "closed crest transport and zero-edge subsector escape",
+      "general strict Wave gain or MLC"
+    ]
+  },
+  "schema_version": 1
+}
