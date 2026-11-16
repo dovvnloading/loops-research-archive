@@ -155,6 +155,26 @@ def certify(fixture: dict) -> dict:
     # Furthermore G(0)=d and G(d)=x4=0 at the isolated root.
     # Thus (G^2)'(0)=0, giving an open attracting basin in K(G).
     require(hi < -R, "f(0)=c must lie outside U to separate the two phases")
+
+    # Construct an explicit *complex* Fatou disk rather than relying only
+    # on a derivative-zero fixed-point theorem. For B(center,radius),
+    # f_c(B) is enclosed by B(center^2+c_mid,
+    #                             2*|center|*radius+radius^2+c_rad).
+    # G(D_delta) lies in V because it is connected, contains d in V,
+    # and G(G(D_delta)) lies in U. D_delta also lies in V; even G
+    # iterates contract into D_delta/2 and odd iterates lie in G(D_delta).
+    c_mid, c_rad = (lo + hi) / 2, (hi - lo) / 2
+    ball_center, ball_radius = F(0), F(1, 64)
+    for step in range(1, 5):
+        ball_radius = (2 * abs(ball_center) * ball_radius
+                       + ball_radius**2 + c_rad)
+        ball_center = ball_center**2 + c_mid
+        if step == 2:
+            require(abs(ball_center) + ball_radius < R,
+                    "two-iterate whole Fatou ball leaves U")
+    require(abs(ball_center) + ball_radius < F(1, 128),
+            "four-iterate Fatou disk not strictly contracting")
+
     require("small filled Julia" in fixture["refusal_reason"]
             and "nonempty complex interior" in fixture["refusal_reason"],
             "reason must identify the exact false interval premise")
@@ -182,6 +202,8 @@ def certify(fixture: dict) -> dict:
             "two_physical_phase_sets_distinct": True,
             "critical_orbit_period_under_G": 2,
             "superattracting_G_squared_at_zero": True,
+            "certified_open_Fatou_disk_radius": "1/64",
+            "four_iterate_whole_disk_absolute_bound_lt": "1/128",
             "K_of_G_has_nonempty_complex_interior": True
         },
         "compatibility": {
@@ -214,6 +236,7 @@ def manifest(fixture: dict) -> dict:
                 "exact critical period four and G=f^2 period-two superattracting cycle",
                 "strict uniform Rouche margin >3/50 and degree-two central proper map",
                 "real bridge, dividing fixed alpha in K(G), and f(K(G)) intersect",
+                "strict entire f4(D(0,1/64)) bound <1/128 and an open disk in K(G)",
                 "open Fatou interior of K(G), so not a real Julia interval"],
             "conditional_on_cited_analytic_inputs": [
                 "classical Douady-Hubbard period-doubling satellite classification",
