@@ -1,0 +1,703 @@
+\section{Canonical marked widths and the strict unbuffered defect}
+\label{sec:wave-proofs}
+The word \emph{canonical} here describes the
+specified base/crest \emph{unbuffered A.1 Wave class}.
+It does not identify KKL's distinct
+buffered canonical WAD of Appendix A.2.3.
+
+\begin{definition}[Extremal width and three independent suprema]
+For a family $\Gamma$ of locally rectifiable proper
+curves in a marked Riemann surface $Y$, set
+\begin{equation}\label{eq:width}
+ \W_Y(\Gamma)=
+ \inf\left\{\int_Y\rho^2\,dA:
+    \rho\ge0,\ \int_\gamma\rho\,|dz|\ge1
+       \text{ for every }\gamma\in\Gamma\right\}.
+\end{equation}
+If $Y=(0,L)\times(0,H)$ and $\Gamma$ consists
+of the vertical leaves, $\W_Y(\Gamma)=L/H$.
+Put $P_p=\sup\W(\mathcal S)$ over \emph{all}
+KKL A.1 Waves on $\Om_p=U_p\setminus\T_p$
+with base $(I_9,I_0,I_1)$ and crest
+containing $I_0$.  Independently put
+$C_p^+$ and $C_p^-$ equal to the suprema
+of all A.1 Waves on
+$\Om'_p=V_p\setminus\T'_p$
+with bases $(S_1,S_2,S_3)$ and
+$(S_{17},S_{18},S_{19})$, and crests
+$S_2$ and $S_{18}$, respectively.
+Reflection across $\R$ identifies
+the two child classes isometrically,
+hence $C_p^+=C_p^-=C_p$.
+No attainment, selection of a
+common parent, or bijection of
+all arbitrary parent and child
+families is presumed.
+\end{definition}
+
+\begin{lemma}[Physical marked-closure bridge]\label{lem:M}
+The unbuffered marked surfaces used in the
+canonical-sandwich and strict-gain calculations
+are \emph{identically} $\Om_p$ and $\Om'_p$ as
+embedded complex plane domains.  By
+Theorems~\ref{thm:marking} and \ref{thm:incidence},
+the identity extends to their physically
+marked KKL Carath\'eodory ideal closures.
+It therefore bijects \emph{every} A.1
+proper-path class and Wave, with base,
+ends and crest, and preserves its conformal
+extremal width.  Thus the earlier
+family-specific identification hypothesis
+$M$ is discharged \emph{on these two
+selected physical slits}.  No analogous
+claim is made for a different physical
+puzzle surface or for the four-hole WAD.
+\end{lemma}
+\begin{proof}
+The point sets and complex coordinates
+are exactly $U_p\setminus[x_{2p},x_p]$
+and $V_p\setminus[-x_p,x_p]$, not
+homeomorphic substitutes.  The
+Carath\'eodory identification in
+Theorem~\ref{thm:marking}
+matches every marked side and every
+outer whole-component circle.
+KKL Appendix A.1 defines properness,
+the forbidden length-at-most-two
+subordination, relative-endpoint
+homotopy into \emph{every} ideal collar,
+simple laminations, their smallest
+base multi-interval and its crest.
+All these conditions are invariant
+under the \emph{same marked-closure
+identity} in both directions.
+For a conformal coordinate map
+$w=\phi(z)$ an admissible density
+transforms as
+$\rho_w(\phi(z))=\rho_z(z)/|\phi'(z)|$;
+the curve lengths and area integrals
+in \eqref{eq:width} are unchanged.
+The identification here is the identity
+and the auxiliary positive rescaling
+$\xi=-A_pz$ is conformal.
+Thus both classes and their
+\emph{actual} widths are equal.
+A bare topological equivalence
+would not give the width equality.
+\end{proof}
+
+\begin{theorem}[Canonical marked Wave sandwich]
+\label{thm:sandwich}
+For every $p\ge3$ put
+\[
+ m_p=\frac{x_{2p}+x_{5p}}2,\quad
+ r_{0,p}=\frac{x_{5p}-x_{2p}}2,\quad
+ r_{1,p}=\min\{-\alpha_p-m_p,\ x_{4p}+m_p\},\quad
+ W_p^{\rm rad}=\frac1{2\pi}\log\frac{r_{1,p}}{r_{0,p}}.
+\]
+Write $P_{p,2}$ for the smaller parent
+supremum requiring that \emph{every}
+leaf has the two named surviving proper
+A.3.2 children.  For the full lifted-path
+envelopes $Q_p,Q(L_{+,p}),Q_{\rm plane,p}$
+defined in the proof,
+\begin{equation}\label{eq:sandwich}
+ W_p^{\rm rad}\le P_{p,2}\le P_p
+ \le Q_p\le Q(L_{+,p})\le Q_{\rm plane,p}.
+\end{equation}
+For $p\ge13$,
+\[
+ 0.26<P_p<0.78,\qquad
+ 0.26<\liminf_{p\to\infty}P_p
+ \le\limsup_{p\to\infty}P_p<0.78.
+\]
+The limiting inequalities \emph{do not}
+assert convergence or equality to an
+extremal quadrilateral.
+\end{theorem}
+\begin{proof}
+By \eqref{eq:order1}--\eqref{eq:order2},
+$0<r_0<r_1$ (we suppress $p$).
+For $r_0<s<r_1$ consider the open
+circle $\gamma_s(t)=m+s e^{2\pi it}$,
+$0<t<1$.  Its real right meeting
+$q_s=m+s$ satisfies
+$x_{5p}<q_s<-\alpha_p<x_{3p}$,
+while its left meeting $w_s=m-s$
+lies in $(-x_{4p},x_{2p})$.
+Thus the \emph{only} removed target
+slit point is the right meeting,
+whose two accesses are precisely
+$I_9,I_1$.  The curve goes around
+the \emph{left} tip, so its
+relative-endpoint class is
+subordinate to the three-atom
+arc $(I_9,I_0,I_1)$ and cannot
+be subordinate to any one-
+or two-atom arc.  This checks
+KKL A.1 properness and the crest,
+rather than assuming every
+circle gives a Wave.
+
+The complete closed radial gate disk
+lies in the \emph{central} $V_p$.
+For $3\le p\le12$ the whole-disk
+bound and real connector are
+certified by the finite Rouch\'e
+interval checker; it is not a
+test of one radius.  For $p\ge13$,
+the normalized $h_p(w)=w^2+\tau_p+e_p(w)$
+bounds the entire gate by
+$|A_pz|<2$, and
+\[
+ |G_p(z)|<\frac7{|A_p|}
+ <\frac{140}{3}4^{-p}
+ <\frac35\,2^{-p}<R_p.
+\]
+Since the gate center belongs to
+the certified central real pullback,
+connectedness of the gate disk
+places the whole disk in $V_p$.
+The same circle in $\Om'_p$
+is cut by the \emph{one} newly
+attached real interval into two
+proper open semicircles.  Their
+source endpoints are $(S_3,S_1)$
+and $(S_{19},S_{17})$, so both
+survive the strict $>2$ atom
+filter and meet distinct
+immersion blocks.
+
+The log chart
+$z\mapsto\log((z-m_p)/r_{0,p})$
+identifies the cut collar with
+$(0,\log(r_1/r_0))\times(0,2\pi)$.
+The vertical-leaf extremal density
+and Cauchy--Schwarz give width
+$\log(r_1/r_0)/(2\pi)$.
+The two semicircle children have
+angular height $\pi$, so each has
+\emph{exactly} twice that width.
+This is a width identity for
+\emph{these chosen leaves only}.
+The A.1 family inclusion and
+two A.3.2 survivals prove
+$W_p^{\rm rad}\le P_{p,2}\le P_p$.
+
+To prove the upper bound for
+\emph{every} parent leaf rather
+than only circular ones, use the
+Joukowski uniformization of the
+plane complement of $\T_p$.
+Set $m=(x_{2p}+x_p)/2$,
+$r=(x_p-x_{2p})/2$ and
+\[
+ J(\zeta)=m+\frac r2(\zeta+\zeta^{-1}),
+ \quad \zeta=-e^{s+it},\qquad
+ a=\arccos\frac{m-x_{5p}}r,\quad
+ b=\arccos\frac{m-x_{3p}}r,\quad0<a<b<\pi.
+\]
+The left-tip upper/lower
+end-interval lifts in the
+logarithmic cover are
+$E_-=\{s=0,-b<t<-a\}$
+and $E_+=\{s=0,a<t<b\}$.
+Let $\widetilde\Gamma_p$
+be \emph{all} proper
+locally rectifiable curves
+in the lifted physical
+target joining these
+sets.  KKL A.1
+subordination to the
+specified \emph{left-tip}
+base selects precisely this
+lift: a route around the
+right tip, an additional
+whole-slit winding, or
+an outer-boundary endpoint
+does not belong to that
+relative-endpoint class.
+Every admissible parent
+leaf therefore lifts into
+$\widetilde\Gamma_p$.
+No circularity, simplicity
+or child property is assumed
+of $\widetilde\Gamma_p$.
+
+One cannot equate conformal
+width upstairs and downstairs
+under a noninjective cover.
+Here is the required
+inequality proof.
+For an admissible finite-area
+density $\widetilde\rho$
+on the lifted surface, define
+on the physical surface
+\begin{equation}\label{eq:period}
+ \rho(\pi z)^2=
+ \sum_{n\in\mathbb Z}
+ \widetilde\rho(z+2\pi i n)^2.
+\end{equation}
+The sum is well-defined
+almost everywhere; Tonelli
+gives equal total areas,
+and pointwise $\rho$ is at
+least the chosen lifted
+density along any selected
+lift of a parent leaf.
+Thus the pushdown density
+is admissible for every
+parent leaf.  Taking
+infima proves
+$P_p\le\W_{\widetilde\Om_p}
+(\widetilde\Gamma_p)=:Q_p$.
+This is an inequality, not
+a width identity under
+a covering.
+
+The lifted physical
+domain lies in the
+upper full strip envelope
+$0<s<L_+$, where
+\[
+ B_+=\frac{R_p+m}{r},\qquad
+ \rho_+=B_++\sqrt{B_+^2+1},\qquad
+ L_+=\log\rho_+.
+\]
+Indeed $|J(\zeta)|\ge
+(r/2)(|\zeta|-|\zeta|^{-1})-m
+>R_p$ when $|\zeta|>\rho_+$.
+Conformal monotonicity
+for the \emph{full lifted
+path class}, followed by
+exponentiating the strip
+and applying the
+Schwarz--Christoffel
+quadrilateral formula
+\cite[Chapter I, \S\S1--4]{AhlforsInvariants},
+gives
+\begin{align}
+ Q_p&\le Q(L_+),&
+ Q(L)&=\frac{K(k_L)}{K(\sqrt{1-k_L^2})},&
+ k_L&=\frac{\sinh(\pi(b-a)/(2L))}
+             {\sinh(\pi(b+a)/(2L))},\label{eq:Q}\\
+ Q(L_+)&\le Q_{\rm plane,p},&
+ Q_{\rm plane,p}&=\frac{K(k_\infty)}
+                       {K(\sqrt{1-k_\infty^2})},&
+ k_\infty&=\frac{b-a}{b+a}.\label{eq:Qplane}
+\end{align}
+Here $K(k)=\int_0^{\pi/2}
+(1-k^2\sin^2\theta)^{-1/2}\,d\theta$;
+the last inequality uses
+$\sinh u/\sinh v\le u/v$
+for $0<u<v$ and
+monotonicity of $K(k)/K(k')$.
+Equations \eqref{eq:Q}--\eqref{eq:Qplane}
+are \emph{full all-path
+upper envelopes}, not
+claimed optimizer widths.
+
+For $3\le p\le12$
+the strict rational certificates
+give $W_p^{\rm rad}>0.25$
+and $Q(L_+)<0.78$,
+with the individual finite
+rows in the source audit.
+For $13\le p\le16$
+independent adjacent-dyadic
+root cells give
+$W_p^{\rm rad}>0.2604925$
+and $Q(L_+)<0.771$.
+For all $p\ge17$
+the normalized-coordinate
+error estimates yield
+\begin{equation}\label{eq:tail-sandwich}
+ W_p^{\rm rad}>
+ 0.2604925-7\,000\,000\,4^{-p}>0.26,\qquad
+ Q_{\rm plane,p}<0.7750748<0.78.
+\end{equation}
+The first inequality is
+indeed $>0.26$ at $p=17$
+and improves thereafter.
+For the upper error box,
+$|\tau_p-\tau_*|\le15246q$
+and the $j=2,3,5$ cut
+errors are bounded by
+$(30\cdot15246+88(4^j-1)/3)q$;
+the box at $p=17$
+contains every later one.
+The exact rational-interval
+cosine, logarithm and
+elliptic AGM bounds
+certify the numerical
+claims.  As $p\to\infty$,
+\eqref{eq:tail-sandwich}
+gives a lower liminf at
+least $0.2604925$ and
+an upper limsup at most
+$0.7750748$; both are
+strictly inside $(0.26,0.78)$.
+No continuity theorem
+for the unrestricted
+supremum has been used.
+\end{proof}
+
+\begin{theorem}[Strict gain of \emph{independent}
+unbuffered Wave suprema]\label{thm:gain}
+For every integer $p\ge3$,
+$P_p,C_p^+,C_p^-$ are
+positive and finite and
+\begin{equation}\label{eq:gain}
+ D_p:=\frac1{C_p^+}+\frac1{C_p^-}
+             -\frac1{P_p}
+   =\frac2{C_p}-\frac1{P_p}>\frac1{100}.
+\end{equation}
+The strict arithmetic cases
+are
+\begin{align}
+ P_3&>49/100,& C_3&<487/500,&
+ D_3&>300/23863>1/100,\nonumber\\
+ P_4&>511/1000,& C_4&<197/200,&
+ D_4&>7400/100667>7/100,\label{eq:gain-cases}\\
+ P_p&>581/1000,& C_p&<247/250,&
+ D_p&>43500/143507>3/10\quad (5\le p\le12),
+ \nonumber\\
+ P_p&>2/3,& C_p&<63/50,&
+ D_p&>11/126>1/100\quad (p\ge13).\nonumber
+\end{align}
+These are strict inequalities for the
+\emph{full} marked A.1 suprema;
+they do not assume the suprema
+are attained or paired.
+\end{theorem}
+\begin{proof}
+Use the positive conformal
+normalization $\xi=-A_pz$,
+whose scale is $\lambda_p=-A_p>0$
+(and distinguish it from
+the negative-order normalization
+used in the real recurrence).
+Write $X_j=\lambda_px_{jp}$,
+$\rho_p=\lambda_pR_p$,
+$m=(X_2+X_1)/2$ and
+$r=(X_1-X_2)/2$.  In the
+target Joukowski logarithmic
+coordinates the conformal map
+to the physical target is
+\[
+ {\cal J}_P(-e^{s+it})=
+ m-r\cosh(s+it).
+\]
+It is injective for $s>0$,
+$|t|<\pi$; it meets the
+left-tip electrodes at the
+same two angles $0<a<b<\pi$
+as in the sandwich proof.
+We construct an \emph{embedded
+full quadrilateral foliation}
+of A.1 Waves for a lower
+bound, not merely evaluate an
+abstract all-path modulus.
+
+For $p=3,4$ take the right
+circular segment
+$Q_{h,T}=\{\Re z>0,\ |z+d|<L\}$,
+with $T=31/10$, with
+$h=83/100$ or $88/100$
+respectively, and
+\[
+ d=\frac{T^2-h^2}{2h},\qquad
+ L=\frac{T^2+h^2}{2h}.
+\]
+The ratio $(z-iT)/(z+iT)$
+maps it to a wedge of opening
+$2\arctan(h/T)$; raising to
+$\eta=\pi/(2\arctan(h/T))$
+maps to a half-plane.
+On the imaginary diameter
+the two electrode values
+are expressed by
+$u=\eta\operatorname{artanh}(a/T)$,
+$v=\eta\operatorname{artanh}(b/T)$.
+The symmetric cross-ratio
+modulus is
+\begin{equation}\label{eq:segmod}
+ k=\frac{\sinh(v-u)}{\sinh(v+u)},\qquad
+ W_{\rm seg}=\frac{K(k)}{K(\sqrt{1-k^2})}.
+\end{equation}
+The full-domain inequalities
+$b<T<\pi$ and
+$|m|+r\cosh h<\rho_p$
+are certified over the
+selected \emph{entire}
+complex quadrilateral,
+so its SC rectangle
+\emph{foliation} maps
+to a family of simple
+disjoint left-tip A.1
+paths with base
+$(I_9,I_0,I_1)$.
+The exact interval
+AGM evaluation
+of \eqref{eq:segmod}
+proves $P_3>49/100$
+and $P_4>511/1000$.
+A right semidisk of radius
+$5/2$ would \emph{not}
+satisfy the $p=3,4$
+physical containment
+and is not used.
+
+For $5\le p\le12$
+take the right semidisk
+$\{\Re z>0,\ |z|<R\}$
+with $R=7/5$.
+The Möbius map
+$z\mapsto2Rz/(R^2-z^2)$
+takes it to a half-plane;
+on the imaginary diameter
+the real symmetric
+electrodes have values
+$B_R(t)=2Rt/(R^2+t^2)$.
+The quadrilateral ratio
+and embedded Wave width are
+\begin{equation}\label{eq:semidiskmod}
+ k=\frac{B_R(b)-B_R(a)}{B_R(b)+B_R(a)},
+ \qquad W_{\rm semi}=\frac{K(k)}
+                              {K(\sqrt{1-k^2})}.
+\end{equation}
+The \emph{whole} semidisk
+is inside the target
+because $b<R<\pi$
+and $|m|+r\cosh R<\rho_p$
+on each exact finite chart.
+The SC rectangle foliation
+therefore supplies a lower
+\emph{actual A.1 parent
+competitor} of width
+$>581/1000$ for every
+$5\le p\le12$.
+
+For all $p\ge13$ use the
+same construction with
+$R=5/2<\pi$.
+The largest normalized
+orbit interval box is
+at $p=13$; it proves
+$b<R$, $|m|<2$, $r<2$,
+$e^{5/2}<13$, and
+\[
+ |{\cal J}_P(-e^{s+it})|
+ \le|m|+r\cosh R<16
+ <\frac3{20}\,2^p
+ <\lambda_pR_p.
+\]
+The last strict gate uses
+\eqref{eq:A-bds}.
+All later normalized boxes
+are nested inside the $p=13$
+box.  Exact evaluation of
+\eqref{eq:semidiskmod}
+therefore proves the
+\emph{all-period} strict
+embedded width $P_p>2/3$.
+The embedding, injectivity,
+correct homotopy and
+physical gate are checked
+independently of the
+abstract SC formula.
+
+For the \emph{upper} child
+bound, let
+\[
+ a_c=\arccos(x_{4p}/x_p),\
+ b_c=\arccos(-x_{2p}/x_p),\
+ c_c=\arccos(-x_{5p}/x_p),\
+ d_c=\arccos(\alpha_p/x_p).
+\]
+The strict cuts give
+$0<a_c<b_c<c_c<d_c<\pi$.
+Lift the entire source
+complement of its slit
+into the universal
+right-half-plane chart
+$\xi=x_p\cosh(s+it)$.
+The \emph{full} lifted
+four-electrode quadrilateral
+has cross-ratio
+\begin{equation}\label{eq:child}
+ k_c^2=
+ \frac{(b_c-a_c)(d_c-c_c)}
+ {(c_c-a_c)(d_c-b_c)},\qquad
+ E_p=\frac{K(k_c)}{K(\sqrt{1-k_c^2})}.
+\end{equation}
+By the square-sum metric
+periodization \eqref{eq:period},
+any admissible physical
+child Wave width is at most
+this \emph{all-path}
+envelope.  In particular
+no child maximal Wave is
+identified with an
+elliptic optimizer.
+
+For $3\le p\le12$
+there is a \emph{strict}
+source-domain saving.
+The actual source lies in
+$|z|<R_p$.  In its log
+Joukowski chart the open
+unit box
+\[
+ B_p=(s_p,s_p+1)\times(0,1),\quad
+ (s_p)_{p=3}^{12}=
+ (2,2,2,3,4,4,5,6,6,7)
+\]
+lies \emph{outside} this
+source because the
+rational Taylor lower
+bound certifies
+$x_p\sinh(s_p)>R_p$,
+while
+$|\cosh(s+it)|^2=
+ \sinh^2s+\cos^2t$.
+An admissible extremal
+metric for the full
+half-plane rectangle
+can be periodized and
+then restricted to the
+actual source.  It remains
+admissible for every
+physical child path,
+but its area is smaller
+by the positive energy
+of this entire omitted
+box.  The four-electrode
+SC derivative, bounded
+below on the box, and
+the rectangle height
+bound certify
+\[
+ \int_{B_p}\rho_{\rm SC}^2\,dA>
+ \frac1{5\,000\,000},\qquad
+ C_p\le E_p-\frac1{5\,000\,000}.
+\]
+This is an \emph{actual
+physical source metric}
+saving, not the fictitious
+claim that a target-parent
+semidisk fits inside
+the source.  The
+$2^{-512}$ outward
+evaluations of
+\eqref{eq:child} and
+the missing energy give,
+respectively,
+$C_3<487/500$,
+$C_4<197/200$ and
+$C_p<247/250$ for
+$5\le p\le12$.
+
+For $p\ge13$ a simpler,
+weaker estimate suffices:
+the uniform normalized
+orbit/cut enclosure
+around the model root
+$\tau_*$, with
+$|\tau_p-\tau_*|\le15246q$,
+contains every actual
+child cross-ratio in
+the $p=13$ worst-case
+interval box.
+The complete full
+right-half-plane
+elliptic envelope
+\eqref{eq:child} is
+strictly $<63/50$
+there, using rational
+cosine inverses and
+AGM remainder bounds.
+Consequently $C_p<63/50$
+\emph{for every} $p\ge13$,
+without any missing-box
+assumption at large $p$.
+
+Finally take reciprocals
+in the \emph{correct}
+direction.  From $P_p>L_p$
+and $0<C_p<U_p$,
+\[
+ \frac2{C_p}-\frac1{P_p}>
+ \frac2{U_p}-\frac1{L_p}.
+\]
+Substitution yields
+\[
+ \frac2{487/500}-\frac1{49/100}
+  =\frac{300}{23863},\quad
+ \frac2{197/200}-\frac1{511/1000}
+  =\frac{7400}{100667},
+\]
+\[
+ \frac2{247/250}-\frac1{581/1000}
+  =\frac{43500}{143507},\quad
+ \frac2{63/50}-\frac1{2/3}=\frac{11}{126}.
+\]
+Each is strictly greater than the
+claimed threshold.  All three
+suprema are defined on their
+independent full classes;
+no common parent Wave has
+been selected in this argument.
+\end{proof}
+
+\begin{proposition}[Leafwise-pairable loss, not a contradiction]
+\label{prop:loss}
+Let $P_{p,\pp}$ be the
+supremum over \emph{only}
+those parent A.1 Waves
+whose every leaf has both
+named A.3.2-surviving
+proper source restrictions,
+for which $\iota$ is injective
+on their union, and for
+which the two restrictions
+belong to the two
+designated source classes.
+Then
+\[
+ P_{p,\pp}\le C_p/2,\qquad
+ \frac2{C_p}-\frac1{P_{p,\pp}}\le0.
+\]
+\end{proposition}
+\begin{proof}
+For each such parent
+$\mathcal S$, KKL
+\cite[Lemma A.11 and
+Proposition A.12]{KKL2026}
+gives, with its
+\emph{properness and
+injectivity hypotheses},
+\[
+ \W(\mathcal S)\le
+ \W(\mathcal S_+)\oplus\W(\mathcal S_-),
+ \qquad a\oplus b=\frac{ab}{a+b}.
+\]
+By definition each
+source width is at most
+the independently optimized
+$C_p$, so their harmonic
+combination is $\le C_p/2$.
+Taking the supremum over
+the \emph{smaller}
+pairable class gives
+the first inequality,
+and reciprocal inversion
+gives the second.
+In particular
+Theorem~\ref{thm:gain}
+proves $P_p>P_{p,\pp}$.
+It \emph{does not}
+provide gain for
+the two restrictions
+of any one parent.
+\end{proof}
