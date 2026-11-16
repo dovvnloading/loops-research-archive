@@ -1,0 +1,134 @@
+name: Tip family theorem and hostile dependency chain
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'research/tip_family_theorem/**'
+      - '.github/workflows/tip-family-theorem-chain.yml'
+  pull_request:
+    paths:
+      - 'research/tip_family_theorem/**'
+      - '.github/workflows/tip-family-theorem-chain.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  theorem-read-only-chain:
+    name: Complete upstream chain, locked packets, and adversarial tests
+    runs-on: ubuntu-latest
+    timeout-minutes: 95
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Assert no tracked bytecode, compile new verifier and its tests
+        run: |
+          set -euo pipefail
+          if git ls-files research/tip_family_theorem | grep -E '(__pycache__|\.pyc$)'; then
+            echo 'No generated Python bytecode may be committed'
+            exit 1
+          fi
+          python -B -m py_compile research/tip_family_theorem/verify_chain.py research/tip_family_theorem/test_verify_chain.py
+      - name: Run adversarial theorem-specific tests
+        env:
+          PYTHONDONTWRITEBYTECODE: '1'
+        run: python -B -m unittest discover -s research/tip_family_theorem -p 'test_*.py' -v
+      - name: Run every dependency verifier and upstream adversarial tests read-only
+        env:
+          PYTHONDONTWRITEBYTECODE: '1'
+        run: python -B research/tip_family_theorem/verify_chain.py --with-tests
+      - name: Re-check cross-file structural claims independently
+        run: python -B research/tip_family_theorem/verify_chain.py --consistency-only
+      - name: Reject unexpected changes to existing tracked files
+        run: |
+          set -euo pipefail
+          git diff --exit-code -- research/native_wave_transfer research/independent_audits results
+          if git status --porcelain --untracked-files=all | grep -E '^(\?\?|[ MADRCU?!]{2}) (research/native_wave_transfer/|research/independent_audits/|results/)'; then
+            echo 'An upstream verification task created or modified research data'
+            exit 1
+          fi
+
+  existing-lean-discrete:
+    name: Existing Lean kernel and three finite tip-family shadows
+    runs-on: ubuntu-latest
+    timeout-minutes: 50
+    steps:
+      - uses: actions/checkout@v4
+      - name: Reject Lean proof placeholders in source finite shadows
+        run: |
+          set -euo pipefail
+          for file in \
+            research/independent_audits/real_primitive_tip_family_uniform_20261116/RealPrimitiveTipDiscrete.lean \
+            research/independent_audits/real_primitive_tip_family_unconditional_20261116/RealPrimitiveTipUnconditionalDiscrete.lean \
+            research/independent_audits/real_primitive_tip_family_prime_end_identification_20261116/RealPrimitiveTipPrimeEndDiscrete.lean; do
+            if grep -En '(^|[^A-Za-z_])(sorry|admit|axiom|unsafe)([^A-Za-z_]|$)' "$file"; then
+              echo "No placeholders or custom axioms: $file"
+              exit 1
+            fi
+          done
+      - uses: leanprover/lean-action@v1
+        with:
+          auto-config: 'false'
+          build: 'true'
+          test: 'false'
+          lint: 'false'
+          use-github-cache: 'false'
+          use-mathlib-cache: 'false'
+      - name: Kernel-check finite uniform combinatorial template
+        run: lake env lean research/independent_audits/real_primitive_tip_family_uniform_20261116/RealPrimitiveTipDiscrete.lean
+      - name: Kernel-check corrected 3/3/7 and 3/3/5 source arc lengths
+        run: lake env lean research/independent_audits/real_primitive_tip_family_unconditional_20261116/RealPrimitiveTipUnconditionalDiscrete.lean
+      - name: Kernel-check prime-end marking's finite shadow
+        run: lake env lean research/independent_audits/real_primitive_tip_family_prime_end_identification_20261116/RealPrimitiveTipPrimeEndDiscrete.lean
+      - name: Rebuild unchanged native KKL and proper restriction targets
+        run: lake build TipKKLTreeMarking TipNativeProperRestriction
+
+  require-original-research-and-weighted-lean:
+    name: Require original Research validation and weighted Lean at exact PR SHA
+    needs: [theorem-read-only-chain, existing-lean-discrete]
+    if: github.event_name == 'pull_request' && github.event.pull_request.head.repo.full_name == github.repository
+    runs-on: ubuntu-latest
+    timeout-minutes: 100
+    permissions:
+      contents: read
+      actions: write
+    steps:
+      - name: Dispatch both original workflows; require exact-SHA success
+        env:
+          GH_TOKEN: ${{ github.token }}
+          REPO: ${{ github.repository }}
+          PR_BRANCH: ${{ github.event.pull_request.head.ref }}
+          PR_SHA: ${{ github.event.pull_request.head.sha }}
+        run: |
+          set -euo pipefail
+          current="$(gh api "repos/$REPO/git/ref/heads/$PR_BRANCH" --jq '.object.sha')"
+          [[ "$current" == "$PR_SHA" ]] || { echo 'PR head moved before validation'; exit 1; }
+          for workflow in lean-proofs.yml weighted-lean.yml; do
+            gh workflow run "$workflow" --repo "$REPO" --ref "$PR_BRANCH"
+          done
+          for workflow in lean-proofs.yml weighted-lean.yml; do
+            found=0
+            for attempt in $(seq 1 320); do
+              runs="$(gh run list --repo "$REPO" --workflow "$workflow" --branch "$PR_BRANCH" --event workflow_dispatch --limit 40 --json databaseId,headSha,status,conclusion)"
+              match="$(printf '%s' "$runs" | jq -c --arg sha "$PR_SHA" '[.[] | select(.headSha == $sha)] | first // empty')"
+              if [[ -n "$match" ]]; then
+                run_id="$(printf '%s' "$match" | jq -r .databaseId)"
+                status="$(printf '%s' "$match" | jq -r .status)"
+                conclusion="$(printf '%s' "$match" | jq -r .conclusion)"
+                if [[ "$status" == completed ]]; then
+                  echo "$workflow at $PR_SHA: $conclusion (run $run_id)"
+                  [[ "$conclusion" == success ]] || { gh run view "$run_id" --repo "$REPO" || true; exit 1; }
+                  found=1
+                  break
+                fi
+              fi
+              sleep 15
+            done
+            [[ "$found" == 1 ]] || { echo "$workflow lacks exact-SHA success"; exit 1; }
+          done
+          current="$(gh api "repos/$REPO/git/ref/heads/$PR_BRANCH" --jq '.object.sha')"
+          [[ "$current" == "$PR_SHA" ]] || { echo 'PR head moved during validation'; exit 1; }
