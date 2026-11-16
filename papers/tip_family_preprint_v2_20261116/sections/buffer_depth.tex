@@ -1,0 +1,742 @@
+\section{The buffered canonical WAD is a different object}
+\label{sec:buffer}
+Let $K_0,K_1,K_2$ be the three
+\emph{actual} little Julia intervals in
+\eqref{eq:tree}.  The minimal
+four-boundary KKL surface is
+\begin{equation}\label{eq:four}
+ Y_{K,p}=D(0,R_p)\setminus(K_0\cup K_1\cup K_2).
+\end{equation}
+Its four \emph{whole ideal boundary
+components}, rather than ten or
+twenty individual cut atoms, are
+$I_{\rm out},I_{K_0},I_{K_1},I_{K_2}$.
+For an A.1 admissible unoriented
+simple ideal class $\gamma$,
+choose its two \emph{universal-cover}
+ideal interval lifts, and put
+$q_\gamma$ equal to their full
+quadrilateral extremal width.
+KKL \cite[Appendix A.2.3--A.2.5]{KKL2026}
+defines the buffered weight
+$w_\gamma=(q_\gamma-2)_+$ and
+$\lVert W_{\rm can}\rVert=\sum_\gamma
+w_\gamma$.  The exceptional
+unbuffered annulus convention
+does not apply to \eqref{eq:four}.
+Self-endpoint types can use
+distinct lifts and must not be
+summarily discarded.
+
+\begin{lemma}[Uniform cyclic-cover exclusion test]
+\label{lem:peripheral}
+Let $I$ be any minimally
+marked nonsimply connected
+peripheral ideal circle
+of a finite-type hyperbolic
+surface which is not the
+exceptional marked annulus.
+Write $\W(I)$ for the
+width of its peripheral
+cyclic cover.  For \emph{every}
+A.1 admissible class $\gamma$
+incident on $I$, including
+essential self-endpoint
+classes using different lifts,
+\begin{equation}\label{eq:peripheral}
+ q_\gamma\le
+ \frac{K(\sqrt{1-e^{-\pi\W(I)}})}
+ {K(e^{-\pi\W(I)/2})}.
+\end{equation}
+If $\pi\W(I)<\log(17+12\sqrt2)$,
+then $q_\gamma<2$ and
+$w_\gamma=0$ for all such
+classes, with \emph{no}
+winding-word cutoff.
+\end{lemma}
+\begin{proof}
+Uniformize the universal
+cover as $\mathbb H$ with a
+lift of $I$ equal to
+$(0,\infty)$ and its
+primitive stabilizer
+$\tau(z)=\lambda z$,
+$\lambda>1$.  Writing
+$\ell=\log\lambda$,
+the logarithmic cyclic
+quotient is a strip
+of height $\pi$ and
+circumference $\ell$.
+Its transverse width is
+$\ell/\pi$, not the reciprocal:
+$\ell=\pi\W(I)$.
+
+Another ideal lift
+is, after normalization,
+$J=(-b,-a)$ with $0<a<b$.
+The translates $J$ and
+$\tau J$ have disjoint
+interiors: different
+lifts of ideal boundary
+components do not overlap.
+If a translate stabilized
+$J$ itself, its peripheral
+stabilizer would coincide
+with that of $I$,
+forcing the same
+boundary lift and an
+A.1-boundary-subordinate
+class, which is excluded.
+Thus $b/a\le\lambda$.
+For ideal intervals
+$(0,\infty)$ and $(-b,-a)$
+in $\mathbb H$, the
+Schwarz--Christoffel
+four-point formula gives
+$k^2=1-a/b$ and
+$q_\gamma=K(k)/K(\sqrt{1-k^2})$.
+Since this ratio increases
+strictly with $k$, we
+obtain \eqref{eq:peripheral}.
+The descending quadratic
+Landen identity, applied
+at $k_0=1/\sqrt2$, gives
+\[
+ \frac{K(\sqrt{12\sqrt2-16})}
+      {K(\sqrt{17-12\sqrt2})}=2,
+ \qquad
+ 1-(12\sqrt2-16)=17-12\sqrt2
+  =(17+12\sqrt2)^{-1}.
+\]
+Hence the strict peripheral
+length cutoff stated in
+the lemma implies
+$q_\gamma<2$.
+The continuum inputs are
+the uniformization,
+peripheral stabilizers,
+SC quadrilateral formula
+and Landen's identity,
+not Python theorems.
+\end{proof}
+
+\begin{theorem}[Conditional exclusion of outer-incident buffered weights
+for $p\ge11$]\label{thm:buffer}
+Assume \emph{(H1)}, \emph{(H2)} and
+\emph{(H4)} of Definition~\ref{def:bridges}.
+For $p=11,12$ and
+\emph{every} integer $p\ge13$,
+every KKL buffered class on
+$Y_{K,p}$ incident on
+$I_{\rm out}$ has $q_\gamma<2$
+and $w_\gamma=0$,
+including all possible
+essential outer self-classes.
+Moreover
+\[
+ 0\le\lVert W_{\rm can}\rVert<619/200.
+\]
+Only six \emph{inner
+endpoint types} remain
+possible: $(K_i,K_j)$
+for $0\le i\le j\le2$.
+This is \emph{not}
+an enumeration or exclusion
+of all infinitely many
+inner isotopy classes.
+\end{theorem}
+\begin{proof}
+In the positive scale
+$\xi=-A_pz$ a real segment
+$[l,r]$, with midpoint
+$m$ and half-length $a$,
+has Joukowski chart
+$\xi=m+(a/2)(w+w^{-1})$.
+An embedded ellipse
+$|w|=t>1$ has horizontal
+semiaxis $(a/2)(t+t^{-1})$.
+If its entire annulus
+is contained in the
+physical complement
+of all four holes,
+its essential cyclic
+annulus lifts into the
+corresponding peripheral
+cover.  The explicit
+potential $\log|w|/\log t$,
+extended by constants,
+has Dirichlet energy
+$2\pi/\log t$.
+The elementary annular
+capacity comparison
+therefore yields
+\begin{equation}\label{eq:collar}
+ \W(I)\le\frac{2\pi}{\log t},
+ \qquad \pi\W(I)\le
+ \frac{2\pi^2}{\log t}.
+\end{equation}
+For the \emph{outer}
+component, use the whole
+tree carrier
+$[x_{2p},x_p]$ to build
+the surrounding ellipse;
+the carrier is not
+misidentified as a
+fourth Julia boundary.
+The outward dyadic
+finite chart checks give
+an embedded outer ellipse
+with $t=300$ at $p=11$
+and $t=512$ at $p=12$,
+both with
+$\pi\W(I_{\rm out})<7/2$.
+For all $p\ge13$ the
+largest normalized
+coordinate box occurs at
+$p=13$, where the carrier
+has $|m|<2$, $0<a<2$ and
+$\lambda_pR_p>(3/20)2^p$.
+With $t=1024$,
+\[
+ |m|+\tfrac a2(t+t^{-1})
+ <2+1024+1/1024
+ <(3/20)2^{13}
+ \le\lambda_pR_p.
+\]
+The full ellipse, not a
+sampled boundary point,
+thus embeds for every
+$p\ge13$, and
+\[
+ \pi\W(I_{\rm out})\le
+ \frac{2\pi^2}{\log 1024}
+ =\frac{\pi^2}{5\log2}<3
+\]
+using $\pi^2<10$
+and $\log2>2/3$.
+For $p=11,12$ the
+simple exact sufficient
+test $e^{7/2}<(33/20)^7
+<169/5<17+12\sqrt2$
+makes Lemma~\ref{lem:peripheral}
+apply.  For the tail,
+$e^3<27<17+12\sqrt2$
+does the same.  All
+four outer-incident
+unoriented endpoint
+types therefore vanish,
+regardless of winding.
+
+There are also disjoint
+whole ellipses around
+the individual $K_0,K_1,K_2$,
+with $t$ respectively
+$11,49,25$.  The exact
+finite and all-$p$
+physical-domain checks
+include exclusion of
+\emph{both other holes}
+from each collar.
+Equation \eqref{eq:collar}
+gives the strict widths
+\[
+ \W(I_{K_0})<2.621,\quad
+ \W(I_{K_1})<1.615,\quad
+ \W(I_{K_2})<1.953.
+\]
+Under (H4), KKL Appendix A.2.3--A.2.5
+bounds the total canonical
+buffered weight, counting
+returning arcs twice in
+the local sums, by half
+the sum of the peripheral
+widths.  Since the outer
+weights vanish,
+\[
+ 0\le\lVert W_{\rm can}\rVert
+ <\tfrac12(2.621+1.615+1.953)
+ =3.0945<619/200.
+\]
+The remaining six
+inner endpoint \emph{types}
+can contain infinitely
+many separate classes.
+For any \emph{fixed} $p$,
+KKL Appendix A.2.2 does imply
+the nonconstructive support bound
+$\#\{\gamma:q_\gamma>2\}
+\le 3|\chi(Y_{K,p})|+4=10$;
+this does not enumerate or give
+a deck-word cutoff for any of them.
+Thus
+their classwise $q_\gamma$
+and even the positivity
+of the complete WAD
+remain open.
+\end{proof}
+
+\section{Crest transport, nesting and global QC: precise limits}
+\label{sec:limits}
+\subsection{Finite collared four-push crest descendants}
+The finite crest-transport problem uses
+\emph{chosen nonmaximal circular parents},
+not $P_p$ or $W_{\rm can}$.
+At $p=3$ the parent is the native
+Wave centered at $-9/64$,
+$3/256<r<1/64$; for $p\ge4$
+its chosen center is $-3x_p/4$
+and radii $x_p/16<r<(p-1)x_p/(8p)$.
+The parent conformal width is
+$\log R_p^{\rm chosen}/(2\pi)$,
+where $R_3^{\rm chosen}=4/3$
+and $R_p^{\rm chosen}=2(p-1)/p$
+for $p\ge4$.  The four
+successive \emph{proper}
+$\iota^*$ restrictions and
+separate covering pushes
+select two source terminal
+families with endpoints
+$(S_0,S_3)$ and
+$(S_{17},S_0)$; their
+target bases are
+$(I_0,I_1,I_2,I_3)$
+and $(I_7,I_8,I_9,I_0)$,
+and their closed crests
+$\overline{I_1\cup I_2}$
+and $\overline{I_8\cup I_9}$
+meet \emph{opposite sides}
+$I_1,I_9$ of the \emph{same}
+old edge $E_0$.
+There is no assertion for
+every third-stage path.
+
+Let $\theta_p(r)=\arccos u_p(r)$,
+where $u_p(r)\in(-1/8,1/4)$ is
+the unique zero of
+\[
+ \Re G_p\!\left(d_p+r
+ (u+i\sqrt{1-u^2})\right)=0.
+\]
+On a certified terminal
+radius interval $(a,b)$
+the conformal foliation
+calculation gives the
+\emph{selected} descendant
+width and ratio
+\begin{equation}\label{eq:crest}
+ \W(S^\pm_{4,p})=
+ \int_a^b\frac{dr}{r\,\theta_p(r)},
+ \qquad
+ \frac{\W(S^\pm_{4,p})}{\W(S_p)}
+ =\frac{2\pi}{\log R_p^{\rm chosen}}
+       \int_a^b\frac{dr}{r\,\theta_p(r)}.
+\end{equation}
+This follows from the
+conformal logarithmic
+strip with variable
+angular height:
+Cauchy--Schwarz
+provides the extremal
+density $1/\theta_p(e^x)$.
+The archival certificate
+bounds \emph{whole}
+rational radius bins,
+not sampled radii, using
+the square-root-free
+real/imaginary recurrence
+\[
+ X_{j+1}=X_j^2-Y^2B_j^2+c_p,\quad
+ B_{j+1}=2X_jB_j,\quad
+ Y^2=r^2(1-u^2).
+\]
+The relative cut and
+full complex gate checks
+make the family a
+legitimate selected
+KKL proper-path
+subfamily.
+
+For the maximal connected
+\emph{circular collar only}
+among those chosen
+parent radii, the strict
+finite outward enclosures
+from the archive are:
+\begin{center}
+\begin{tabular}{rcc}
+\toprule
+$p$& lower bound $c_p^*$& upper bound $c_p^*$\\\midrule
+3&0.98017&0.98038\\
+4&0.62810&0.62818\\
+5&0.52758&0.52764\\
+6&0.47562&0.47566\\
+8&0.43006&0.43010\\
+12&0.39680&0.39684\\
+13&0.39229&0.39233\\
+16&0.38261&0.38265\\
+\bottomrule
+\end{tabular}
+\end{center}
+At $p=3$ the much
+\emph{smaller fixed subcollar}
+in the first transport
+audit gives a \emph{different}
+ratio in $(0.5676,0.5684)$;
+it must not be conflated
+with the full circular
+optimum $(0.98017,0.98038)$.
+These are rigorous
+finite interval statements
+about specifically
+selected collars, and
+not a canonical supremum
+over all KKL Waves.
+
+\begin{question}[Crest-transport limit]\label{q:crest}
+Numerics suggest that
+$c_p^*$ tends to the
+positive constant
+$c_\infty\approx0.3470049860435258$.
+The proposed normalized
+quadratic map is
+$Q_\kappa(t)=1-\kappa t^2$,
+where $\kappa\approx1.7903274919993457$
+solves
+$Q_\kappa^6(0)+Q_\kappa^3(0)=0$
+on the distinguished branch.
+The proposed first-order
+law is
+\[
+ c_p^*=
+ \frac{A_\infty}{\log(2-2/p)}
+       +O(4^{-p}),\quad
+ A_\infty\approx0.2405255277163131.
+\]
+Neither the convergence,
+the $O(4^{-p})$ error,
+nor a uniform all-period
+selected q-side collar
+survival is proved by
+the finite audits.
+The parameter asymptotic
+\eqref{eq:tip-rate}
+does \emph{not} alone
+prove this stronger
+four-stage
+complex-domain and
+prime-end statement.
+\end{question}
+
+\subsection{Depth two and the unique certified depth-three row}
+For a \emph{realized} primitive
+tuning word
+$(p_1,\ldots,p_d)$
+the depth-$j$ return is a
+\emph{central degree-two
+polynomial-like restriction}
+of $f_c^{n_j}$ with
+$n_j=\prod_{i=1}^j p_i$,
+not the unrestricted
+degree-$2^{n_j}$ polynomial.
+For the nine \emph{candidate} depth-two
+words $(p_1,p_2)\in\{3,4,5\}^2$,
+the archived finite program reports
+locally isolated real parameter
+root cells, signed cut orders,
+central degree-two returns and
+a separately normalized third-return
+Rouch\'e gap.  Their interpretation
+as the \emph{named tuning suffixes}
+requires a complete kneading and
+straightening identification that
+the following numbers alone do not
+establish.  Subject also to (H1)--(H3),
+the displayed numbers are proposed
+strict lower witnesses and full-path
+upper envelopes:
+\begin{center}
+\begin{tabular}{rcc}
+\toprule
+$(p_1,p_2)$ & $W^{\rm rad}$ lies in&
+$Q_{\rm plane}$ lies in\\\midrule
+$(3,3)$&(0.25224,0.25225)&(0.76475,0.76476)\\
+$(3,4)$&(0.25854,0.25855)&(0.77250,0.77251)\\
+$(3,5)$&(0.25999,0.26000)&(0.77430,0.77431)\\
+$(4,3)$&(0.25179,0.25180)&(0.76418,0.76419)\\
+$(4,4)$&(0.25848,0.25849)&(0.77243,0.77244)\\
+$(4,5)$&(0.25999,0.26000)&(0.77431,0.77432)\\
+$(5,3)$&(0.25170,0.25171)&(0.76406,0.76407)\\
+$(5,4)$&(0.25847,0.25848)&(0.77242,0.77243)\\
+$(5,5)$&(0.26000,0.26001)&(0.77431,0.77432)\\
+\bottomrule
+\end{tabular}
+\end{center}
+Consequently the inequality
+$0.25<W^*<0.775$ is \emph{conditional}
+on the geometric input and correct
+suffix identification at these
+nine physical depth-two charts.
+The de Melo--van Strien rigidity
+statement \cite[Theorem II.10.1]{deMeloVanStrien1993}
+concerns quadratic maps with
+equal \emph{complete} kneading
+invariants.  It does \emph{not}
+supply, from finite signed cut
+tables alone, the hybrid
+straightening or identification
+of the chosen suffix.
+Equating two independent
+tip equations
+$P_{p_1}=P_{p_1p_2}=0$
+would be incorrect.
+The data are finite exact
+rational \emph{witness and
+envelope} bounds, not
+a characterization of
+the optimum.
+
+For depth three only the
+realized word $(3,3,3)$
+has the archived
+complete independent
+certificate:
+$n_j=3,9,27$,
+the nested target radii
+$1/4,1/40,1/250$,
+the three initial
+Rouch\'e gaps strictly
+$>0.127470,\ 0.006346,\
+0.003900$, a \emph{separately
+normalized} $81$-return
+gap $>0.172673$,
+and
+\[
+ W^{\rm rad}>0.252105,\qquad
+ Q_{\rm plane}<0.764704.
+\]
+Consequently, subject to the
+analogous geometric bridges
+and identification of the nested
+return, the physical marked
+supremum would satisfy
+$0.25<W^*<0.775$ \emph{for this one
+depth-three row}.
+None of these exact
+finite recurrences proves
+an all-word or infinite
+tower theorem.
+
+\subsection{Complex bounds, local hybrid maps and the missing global mark}
+Lyubich--Yampolsky
+\cite[p.~1220, Complex Bounds Theorem]{LyubichYampolsky1997}
+gives an absolute positive
+\emph{optimal} fundamental
+annulus modulus for
+every actually realized
+finite non-doubling
+renormalization of a real
+quadratic, subject to its
+explicit last-doubling
+near-cusp exception.
+This is \emph{not}
+Theorem 1.1 restricted
+to bounded essential period,
+and it is not a modulus
+bound for the specific
+physical round gates
+used here.
+Douady--Hubbard
+\cite[Theorem 1]{DH1985}
+straightens each
+appropriate quadratic-like
+restriction \emph{locally}
+around its little filled
+Julia set.  The available
+quantitative local
+straightening formulation
+\cite[Lemma 4.33]{LyubichNotes}
+depends on its chosen
+modulus, but furnishes
+no explicit numerical
+global marked slit
+dilatation.  Neither
+holomorphic-motion
+extension
+\cite{BersRoyden1986,Slodkowski1991}
+nor Beltrami pullback
+manufactures a missing
+external prime-end marking
+or an identification of
+\emph{every} KKL A.1
+and A.3.2 Wave class.
+
+Here is an exact
+conditional implication,
+which makes the missing
+hypothesis testable.
+Let $\mathcal A_j$ be
+the entire admissible
+parent Wave class
+on a physical depth-$j$
+marked slit and
+$\mathcal A_{\rm ref}$
+a specified single-level
+reference class.  Assume
+for some \emph{common}
+$C\ge1$:
+\begin{itemize}
+\item for every $\Gamma\in\mathcal A_j$
+there is $\gamma\in\mathcal A_{\rm ref}$
+with $\W(\Gamma)\le C\W(\gamma)$;
+\item for every $\gamma\in\mathcal A_{\rm ref}$
+there is $\Gamma\in\mathcal A_j$
+with $\W(\gamma)\le C\W(\Gamma)$.
+\end{itemize}
+Taking suprema \emph{separately}
+proves
+\begin{equation}\label{eq:depth}
+ \frac{W_{\rm ref}^*}{C}
+ \le W_j^*\le C W_{\rm ref}^*.
+\end{equation}
+This \emph{two-sided
+cofinal domination}
+is strictly weaker than
+the existence of a
+global QC map.  A
+globally defined real
+equivariant $K'$-QC
+marked conjugacy that
+extends to the \emph{entire}
+physical prime-end
+completions, respects
+$G_*$ and the set-valued
+$\iota^*$, and
+bijects all A.1/A.3.2
+Wave classes would
+imply it with $C=K'$
+by extremal-length
+quasi-invariance
+\cite{AhlforsQC1966}.
+\emph{Such a map has
+not been constructed.}
+If one \emph{assumes}
+it with a depth-independent
+$K'$, a general
+single-level reference
+gives
+\[
+ 0.25/K'<W_j^*<0.78K',
+\]
+and a separately certified
+reference with period
+$p_{\rm ref}\ge13$ gives
+$0.26/K'<W_j^*<0.78K'$.
+These are \emph{conditional}
+at every depth, with no
+$K'^j$ factor because
+the comparison is directly
+to the reference.
+For a positive \emph{matched}
+parent and collared
+four-push descendant,
+their ratio is distorted
+by at most $K'^2$
+in either direction;
+this does not apply
+to two unrelated
+optimizing suprema.
+At infinite depth the
+analogous liminf/limsup
+bounds are \emph{closed},
+and no limiting marked
+slit or Wave convergence
+is constructed.
+
+A concrete obstruction
+to \emph{deducing}
+global marked $K'$
+from local straightening
+is furnished by
+\[
+ A_1=\{1<|z|<e^{2\pi}\},\qquad
+ A_N=\{1<|z|<e^{2\pi N}\}.
+\]
+Both have an identical
+real-symmetric conformal
+collar near the inner
+boundary, but their
+full marked annuli
+have moduli $1$ and
+$N$.  Any QC map of
+\emph{both marked
+boundary components}
+has $K\ge N$ by
+modulus distortion.
+This is a countermodel
+to the \emph{logical
+inference from local
+data}, not a
+counterexample in the
+actual primitive-tip
+KKL family.
+The all-depth global
+marked-QC transport
+and an effective
+$K'(\mu)$ are open.
+
+\section{Limitations and disclosure}
+The proved mathematical
+statements are about
+the \emph{selected
+real} quadratic family
+and the exact physical
+slit surfaces.  The
+local parameter
+uniqueness does not
+extend to all real
+solutions or all
+parameter components.
+Neither the positive
+unbuffered independent
+Wave defect nor the
+finite edge matrix
+gives a positive
+buffered WAD coefficient
+or KKL \S5--6
+amplification.  The
+four-boundary
+\emph{inner} buffered
+support, maximizing
+Waves, convergence of
+canonical unrestricted
+widths, the
+four-push crest limit,
+an all-word or
+infinite-depth optimal
+Wave theorem, and
+uniform global
+marked quasiconformal
+transport remain open.
+The family is real
+and MLC in this
+setting was already
+settled by classical
+theory; \emph{no
+new MLC result} is
+proved here.
+The computation is
+not a replacement
+for independent
+review of the
+cited analytic proofs
+or of this manuscript.
+This text was
+drafted and assembled
+using AI assistance
+from merged public
+audit sources; it is
+not yet independently
+reviewed or
+submitted as a
+peer-reviewed
+publication.

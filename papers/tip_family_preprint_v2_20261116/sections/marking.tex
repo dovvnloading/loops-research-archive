@@ -1,0 +1,388 @@
+\section{The actual little Julia arcs and KKL ideal boundaries}
+\label{sec:marking}
+All markings in this section refer to the \emph{physical}
+slit complements of the proper central restriction.
+They are not a substitute for a marked ambient puzzle
+or a specification of external ray angles.
+
+\begin{theorem}[Physical period-three marking, conditional on (H1)--(H2)]
+\label{thm:marking}
+Assume the geometric renormalization and physical ideal-marking
+bridges \emph{(H1)}--\emph{(H2)} of
+Definition~\ref{def:bridges}.
+Put $t=x_{6p}=-x_{3p}>0$, and
+\begin{equation}\label{eq:tree}
+ K_0=[-t,t],\quad K_1=[x_{4p},x_p],\quad
+ K_2=[x_{2p},x_{5p}],\quad
+ \T_p=[x_{2p},x_p],\quad
+ \T'_p=[-x_p,x_p].
+\end{equation}
+The renormalization of $G_p$ of period three is
+\emph{prime and primitive}, and its \emph{actual}
+little filled Julia sets are $K_0,K_1,K_2$.
+The KKL Hubbard tree is exactly $\T_p$, with
+dividing fixed point $\alpha_p$.
+Moreover $\T'_p=G_p^{-1}(\T_p)\cap V_p$.
+
+The target marked surface $\Om_p=U_p\setminus\T_p$
+has ten consecutive \emph{inner} ideal atoms
+$I_0,\ldots,I_9$, indexed by the five physical
+increasing cuts
+\[
+ (a,b,d,e,h)=(x_{5p},x_{3p},x_{6p},\alpha_p,x_{4p}).
+\]
+The source $\Om'_p=V_p\setminus\T'_p$
+has twenty consecutive inner ideal atoms
+$S_0,\ldots,S_{19}$ indexed by
+\[
+ (-x_{4p},x_{2p},x_{5p},-\alpha_p,x_{3p},
+ x_{6p},\alpha_p,-x_{5p},-x_{2p},x_{4p}).
+\]
+The two \emph{outer} ideal circles each have one
+whole-component atom, not ten or twenty.
+The unique new source-tree attachment is
+$\T'_p\setminus\T_p=[-x_p,x_{2p})$, with
+consecutive source sides $S_{19},S_0,S_1$.
+\end{theorem}
+
+\begin{proof}
+The exact equation $x_{6p}=-x_{3p}$,
+evenness of $G_p$ and of its iterates,
+and \eqref{eq:order1} give
+\begin{equation}\label{eq:portrait}
+ G_p^3(0)=-t,\quad G_p^3(-t)=G_p^3(t)=t,\qquad
+ G_p(K_0)=K_1,\quad G_p(K_1)=K_2,\quad
+ G_p(K_2)=K_0.
+\end{equation}
+The full third-return disk in Theorem~\ref{thm:rouche}
+has a central proper degree-two restriction.
+In the normalized coordinate $w=A_pz$ its
+connected filled Julia set contains the actual
+real invariant interval $[-|A_p|t,|A_p|t]$:
+the interval is forward invariant by \eqref{eq:portrait},
+lies in the certified central disk component and
+contains the sole critical point.  The Douady--Hubbard
+connectedness criterion
+\cite[Proposition 2]{DH1985} therefore makes the
+filled Julia set connected.  By the
+\emph{Straightening Theorem}
+\cite[Theorem 1]{DH1985} it is hybrid-conjugate
+to a unique monic centered quadratic $z^2+\gamma$.
+Its critical portrait, in the normalized orientation,
+is $0\mapsto u\mapsto -u\mapsto -u$ with $u>0$.
+For a monic quadratic the relation
+$f_\gamma^3(0)=f_\gamma^2(0)$ reduces
+\emph{exactly} to $\gamma^3(\gamma+2)=0$.
+The nonfixed critical point excludes $\gamma=0$,
+so $\gamma=-2$.  Since $K(z^2-2)=[-2,2]$,
+the filled Julia set of the third return is an arc.
+It contains the entire straight segment joining
+its endpoints $\pm u$, and an arc cannot contain
+a proper different arc with the \emph{same}
+endpoints.  Thus it is exactly this segment,
+not merely homeomorphic to it.  Rescaling and
+\eqref{eq:portrait} yield $K_0,K_1,K_2$ as
+the three actual little filled Julia intervals.
+
+The strict separations in \eqref{eq:order1}
+make the three little filled sets pairwise
+disjoint; this is \emph{primitive}
+in \cite[\S2.3]{KKL2026}.  We prove primeness
+rather than infer it from the word primitive.
+The global polynomial $f_{c_p}$ is postcritically
+finite and its critical point is strictly
+preperiodic: $f^{9p}(0)=f^{6p}(0)=t\ne0$,
+whereas $f^{3p}(0)=-t\ne0$.
+The Misiurewicz local-connectivity/dendrite and
+periodic-repulsion theorem
+\cite[Theorem 27.4]{LyubichNotes}
+and the subhyperbolic treatment
+\cite[\S17]{Milnor2006} make its connected
+Julia set a locally connected dendrite,
+with all periodic cycles repelling.
+The \emph{global} filled Julia sets agree,
+$K(G_p)=K(f_{c_p})$, since $G_p=f_{c_p}^p$;
+they are connected because the \emph{unique
+critical point of the quadratic polynomial
+$f_{c_p}$} has bounded orbit.  This does
+not use the false premise that the
+degree-$2^p$ global polynomial $G_p$
+has only one critical point.  The relevant
+central little filled set, once its
+connectedness is proved for the restricted
+proper map, is a subcontinuum of the
+ambient dendrite and hence is a dendrite.
+
+Suppose a connected period-two degree-two
+renormalization of $G_p$ had little filled set
+$L\ni0$.  Since the even-return critical orbit
+lies in $L$, both $x_{2p}$ and $x_{4p}$
+belong to it.  Uniqueness of dendrite arcs
+then forces $[x_{2p},x_{4p}]\subset L$.
+By the real monotonicity and \eqref{eq:portrait},
+$L\cap G_p(L)$ contains the nondegenerate
+interval $[x_{5p},x_{4p}]$.
+Under the \emph{nestedness/straightening
+transport} clause of (H1), these are
+little filled Julia sets to which
+McMullen's \emph{almost-disjoint little Julia
+sets theorem} \cite[Theorem 7.3]{McMullen1994}
+applies, so distinct such sets meet in
+at most one repelling periodic point;
+hence $L=G_p(L)$.  The theorem is
+\emph{not} applied directly to the
+unrestricted degree-$2^p$ polynomial.
+But $0\in G_p(L)$ then has an inverse
+$y\in L$, $y\ne0$ because $G_p(0)=x_p>0$.
+The proper-domain containment demanded
+by (H1) places both $0$ and $y$ in
+the alleged degree-two return domain;
+there they are distinct critical points
+of $G_p^2$, contradicting its degree.
+Without that domain containment the
+original argument would be incomplete.
+Thus no period-two renormalization exists.
+The period-three renormalization is prime.
+(The period-one case is the original $G_p$.)
+
+Real invariance and the order \eqref{eq:order1}
+show $\T_p=[x_{2p},x_p]\subset K(G_p)$ and
+$G_p(\T_p)\subset\T_p$.  The three little
+Julia intervals have extreme endpoints
+$x_{2p}$ and $x_p$.  By dendrite arc
+uniqueness any connected subset containing
+them contains their real joining interval.
+KKL's \emph{smallest connected Hubbard
+continuum} definition
+\cite[\S2.5]{KKL2026} therefore gives
+precisely $\T_p$, not a conjectural drawn
+subtree.  The unique fixed point
+$\alpha_p\in(x_{6p},x_{4p})$ has the
+dividing property by real cut order, as
+in KKL \S2.4.  Finally
+$G_p([-x_p,x_p])=\T_p$
+under the two strictly monotone sheets.
+The proper degree-two count exhausts
+the two central inverse sheets; therefore
+$G_p^{-1}(\T_p)\cap V_p=[-x_p,x_p]$,
+not an additional off-real preimage arc.
+
+For the \emph{ideal boundaries}, $U_p\setminus\T_p$
+is a doubly connected domain with a round
+outer boundary and a locally connected real
+slit inner boundary.  So is
+$V_p\setminus\T_p'$: the central proper degree-two preimage
+component has a finite analytic
+lemniscate boundary and hence locally
+connected boundary (possible critical
+boundary values require care);
+a Jordan boundary is \emph{not}
+inferred merely from the Rouch\'e count.
+Also $\T'_p\Subset V_p$.
+Cut either annulus along a short crosscut
+joining its two boundary components.
+The remaining simply connected slit
+domain has locally connected boundary.
+The Carath\'eodory prime-end
+compactification \cite{Caratheodory1913}
+provides an ideal circle for each
+doubly-connected slit complement;
+the further \emph{physical identification}
+of all accesses with the claimed KKL
+labels is precisely condition (H2).
+Gluing the two crosscut banks then recovers the \emph{two}
+ideal boundary circles of KKL Appendix A.1.
+An interior point of the real slit has
+exactly two local approach sectors
+(above and below the slit) in a small
+disk, and a terminal slit tip has
+exactly one.  Shrinking crosscuts
+show no third access is hidden.
+The five inner target cut positions
+therefore give ten inner ideal atoms,
+and the ten source cut positions give
+twenty.  The \emph{outer} circle
+is entirely uncut, hence contributes
+one ideal atom.  The physical order
+\eqref{eq:order2} identifies all source
+cuts.  These are actual
+Carath\'eodory/KKL slit-side atoms,
+without an unproved external ray-angle
+atlas or an extra family-dependent
+marking hypothesis.  Since $\T'_p$
+extends $\T_p$ only to the left,
+the set difference is the asserted
+\emph{single} attachment, with
+sides $S_{19},S_0,S_1$ by cyclic order.
+\end{proof}
+
+\begin{theorem}[Covering, immersion and incidence, conditional on (H1)--(H2)]
+\label{thm:incidence}
+Assume \emph{(H1)}--\emph{(H2)} of
+Definition~\ref{def:bridges}, including the KKL
+prime-end and pulled-marking compatibility.
+On $\Om'_p$ the proper unbranched map
+$G_p:\Om'_p\to\Om_p$ induces the
+\emph{cover} $G_{p*}$, while the
+nonproper inclusion $\iota:\Om'_p\hookrightarrow
+\Om_p$ induces the \emph{set-valued proper-path
+restriction} $\iota^*$.  With the above cyclic
+indices their exact distinct tables are
+\begin{equation}\label{eq:cover}
+ G_{p*}(S_s)=I_{s\bmod10},\quad 0\le s<20,
+\end{equation}
+\begin{equation}\label{eq:blocks}
+\begin{array}{c|l@{\qquad}c|l}
+I_j&\iota^*I_j&I_j&\iota^*I_j\\ \hline
+I_0&S_{18},S_{19},S_0,S_1,S_2&
+I_5&S_{10}\\
+I_1&S_3,S_4&I_6&S_{11},S_{12},S_{13}\\
+I_2&S_5&I_7&S_{14}\\
+I_3&S_6&I_8&S_{15}\\
+I_4&S_7,S_8,S_9&I_9&S_{16},S_{17}
+\end{array}.
+\end{equation}
+The attachment makes the $I_0$ block
+not fully proper.  For the specified
+crossing-attachment relative isotopy
+class the two proper source pairs are
+$(S_3,S_1)$ and $(S_{19},S_{17})$;
+for the avoiding class the one pair
+is $(S_3,S_{17})$.  Their inclusive
+short source spans are $3,3,7$;
+their \emph{cover-pushed} target
+pairs are $(I_3,I_1),(I_9,I_7),(I_3,I_7)$,
+with short spans $3,3,5$.
+All pass the KKL A.1 filter $>2$.
+No arbitrary A.1 parent is asserted
+to have two restrictions.
+
+For $E_0=(x_{5p},x_{3p})$,
+$E_1=(x_{6p},\alpha_p)$,
+$E_2=(\alpha_p,x_{4p})$,
+the image incidence, indexed by output
+rows and input columns, is
+\begin{equation}\label{eq:M}
+ M=\begin{pmatrix}0&0&1\\1&0&1\\1&1&0\end{pmatrix},
+ \quad\det(zI-M)=(z+1)(z^2-z-1),\quad
+ \rho(M)=\varphi=\frac{1+\sqrt5}{2}.
+\end{equation}
+The positive left Perron vector is
+$(\varphi,1,\varphi)$.
+Target zero-old-edge atom types are
+$I_0,I_2,I_5,I_8$.
+The atomic parent crest $I_0$ and
+the cover-pushed first-child crests
+$I_2,I_8$ have no old-edge carrier.
+The two banks $I_1,I_9$ are \emph{one}
+physical edge $E_0$, not two edges.
+\end{theorem}
+\begin{proof}
+The restriction $G_p$ has no
+critical points in $\Om'_p$:
+its only central critical point
+$0$ was removed with $\T'_p$.
+The degree-two properness of
+Theorem~\ref{thm:rouche} makes
+$G_p:\Om'_p\to\Om_p$ an unbranched
+cover.  KKL Appendix A.3.1
+extends it to the ideal circle,
+where one rotation-compatible
+sheet labeling gives
+\eqref{eq:cover}; every target
+atom has two preimages.
+
+By contrast the \emph{inclusion}
+$\Om'_p\hookrightarrow\Om_p$
+is nonproper precisely because
+the source slit extends to the
+left of the target one.  KKL
+\cite[Proposition 6.5]{KKL2026}
+describes the pullback of an
+ideal interval as inverse-side
+accesses \emph{together with}
+Carath\'eodory boundaries of
+attached tree components.
+Traversing the physical
+ten source cuts in
+\eqref{eq:order2} and inserting
+the three attachment sides
+produces successively the
+ten consecutive source blocks
+\eqref{eq:blocks}, which
+partition all twenty indices
+exactly once.  The attached
+part of the $I_0$ block
+maps by inclusion to target
+\emph{interior}; no point map
+$I_0\mapsto S_s$ can replace
+$\iota^*$ here.  KKL
+\cite[Proposition 6.6 and
+Appendix A.3.2--A.3.4]{KKL2026}
+then gives the proper-path
+restriction semantics.
+
+A crossing arc whose right
+intersection belongs to
+$(x_{5p},-\alpha_p)$ and
+whose left intersection belongs
+to $(-x_{4p},x_{2p})$ splits
+at the attached tree into two
+proper source components, whose
+upper/lower endpoints, read from
+the cut order, are $(3,1)$ and
+$(19,17)$.  If the specified
+comparison arc avoids the attached
+piece and its left endpoint is
+left of $-x_p$, it leaves the
+one proper pair $(3,17)$.
+For twenty cyclic atoms the
+inclusive short lengths are,
+respectively, $3$, $3$ and $7$;
+for example the shorter arc
+from $S_3$ to $S_{17}$ is
+$S_{17},S_{18},S_{19},S_0,S_1,S_2,S_3$.
+Applying the \emph{different}
+cover table gives target spans
+$3,3,5$.  Every one exceeds two,
+so none is removed by KKL A.1.
+This is a statement about these
+\emph{relative isotopy classes},
+not a selection theorem for all
+A.1 Waves.
+
+The five cut-end images under
+$G_p$ have index sequence
+$(2,4,4,3,0)$, by the exact
+orbit identity and fixed
+point.  On the old real edges
+$(a,b),(d,e),(e,h)$,
+coverage counts give:
+$E_0$ maps across $E_1,E_2$,
+$E_1$ across $E_2$,
+and $E_2$ across $E_0,E_1$.
+This is exactly \eqref{eq:M}.
+Its characteristic factorization
+is a direct determinant.
+Since $M^4$ has strictly
+positive entries, Perron--Frobenius
+\cite[Chapter XIII, \S2]{Gantmacher1959}
+identifies the positive eigenvalue
+$\varphi$ as the simple spectral
+radius; alternatively
+$(\varphi,1,\varphi)M
+=\varphi(\varphi,1,\varphi)$
+is a direct check.  The
+real-edge carriers among the
+ten cyclic banks are found
+by looking at which atom
+interiors lie over the three
+old open intervals; the
+remaining isolated atomic
+types are $0,2,5,8$.
+The given closed atomic crests
+avoid these carriers.  This
+does not assert an edge-free
+crest for every fine
+subsector or later iterate.
+\end{proof}
