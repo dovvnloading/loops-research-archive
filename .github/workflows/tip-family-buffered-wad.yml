@@ -25,7 +25,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
-          ref: \${{ github.event.pull_request.head.sha || github.sha }}
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
           fetch-depth: 0
       - uses: actions/setup-python@v5
         with:
@@ -33,15 +33,15 @@ jobs:
       - name: Restrict changes to four new audit files
         if: github.event_name == 'pull_request'
         env:
-          BASE_SHA: \${{ github.event.pull_request.base.sha }}
+          BASE_SHA: ${{ github.event.pull_request.base.sha }}
         shell: bash
         run: |
           set -euo pipefail
           mapfile -t changes < <(git diff --name-status "$BASE_SHA...HEAD")
-          [[ "\${#changes[@]}" -eq 4 ]] || {
-            printf 'Expected four new files; got:\n%s\n' "\${changes[*]}"; exit 1;
+          [[ "${#changes[@]}" -eq 4 ]] || {
+            printf 'Expected four new files; got:\n%s\n' "${changes[*]}"; exit 1;
           }
-          for change in "\${changes[@]}"; do
+          for change in "${changes[@]}"; do
             IFS=$'\t' read -r status path <<< "$change"
             [[ "$status" == A ]] || { echo "Existing-file change: $change"; exit 1; }
             case "$path" in
@@ -61,7 +61,7 @@ jobs:
           for name in ('verify.py', 'test_verify.py'):
               ast.parse((d/name).read_text(), filename=str(d/name))
           note = (d/'NOTE.md').read_text()
-          for marker in ('not a support solution', 'all *', 'six endpoint types',
+          for marker in ('not** a support solution', 'all *', 'six endpoint types',
                          '17+12\\sqrt2', 'Numerical-only', 'OPEN', 'f_*', '\\iota^*'):
               assert marker.lower() in note.lower(), marker
           PY
@@ -97,10 +97,10 @@ jobs:
       - name: Dispatch original workflows and require successful exact-head runs
         shell: bash
         env:
-          GH_TOKEN: \${{ github.token }}
-          REPO: \${{ github.repository }}
-          PR_BRANCH: \${{ github.event.pull_request.head.ref }}
-          PR_SHA: \${{ github.event.pull_request.head.sha }}
+          GH_TOKEN: ${{ github.token }}
+          REPO: ${{ github.repository }}
+          PR_BRANCH: ${{ github.event.pull_request.head.ref }}
+          PR_SHA: ${{ github.event.pull_request.head.sha }}
         run: |
           set -euo pipefail
           current="$(gh api "repos/$REPO/git/ref/heads/$PR_BRANCH" --jq '.object.sha')"
