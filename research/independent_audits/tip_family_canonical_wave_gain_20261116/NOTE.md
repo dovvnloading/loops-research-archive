@@ -153,7 +153,7 @@ The same quadrilateral formula gives `E_p <= E_p^coarse`; enlarging the electrod
 `-A_p>0` is a **positive affine** normalization; the four ratios in (4.4) are unchanged. The `p=13` box contains every `p>=13` box, and the *rational outward 2^-512* calculation of (4.2)/(4.4) gives
 
 \[
-\boxed{E_p\le E_p^{coarse}<31/25=1.24\quad\text{for all }p\ge13.}
+\boxed{E_p\le E_p^{coarse}<5/4=1.25\quad\text{for all }p\ge13.}
 \tag{4.6}
 \]
 
@@ -182,12 +182,12 @@ The **lower** side uses an explicit parent *lower* competitor and the two child 
 | 10 | `-1.814 < D_10 < 2.524` | **OPEN** |
 | 11 | `-1.814 < D_11 < 2.529` | **OPEN** |
 | 12 | `-1.814 < D_12 < 2.533` | **OPEN** |
-| **every `p>=13`** | **`-2.24 < D_p < 2.57`** | **OPEN** |
+| **every `p>=13`** | **`-2.25 < D_p < 2.57`** | **OPEN** |
 
-The final row is **all-period**, not interpolation: the sandwich's individual strict `0.26<P_p<0.78` for `p=13,14,15,16`, its all-period `p>=17` proof (including the radial-rate boundary check at `p=17`), and (4.6) imply `0.52<C_p<1.24` for every `p>=13`. The *exact rational* inequalities
+The final row is **all-period**, not interpolation: the sandwich's individual strict `0.26<P_p<0.78` for `p=13,14,15,16`, its all-period `p>=17` proof (including the radial-rate boundary check at `p=17`), and (4.6) imply `0.52<C_p<1.25` for every `p>=13`. The *exact rational* inequalities
 
 \[
--2.24<\frac2{1.24}-\frac1{0.26}<D_p
+-2.25<\frac2{1.25}-\frac1{0.26}<D_p
 <\frac1{0.26}-\frac1{0.78}<2.57
 \tag{5.2}
 \]
@@ -200,7 +200,7 @@ The unresolved question is **not** a failure to compute the harmonic ratio of th
 
 1. Determine the supremum `P_p` of **all** parent A.1 laminations subordinate to `I_9,I_0,I_1` in `U_p\T_p`, *without silently requiring two immersion children*, including possible near-optimizing avoiding leaves and deck/projection obstacles.
 2. Determine the supremum `C_p` of A.1 source laminations with base `S_1,S_2,S_3` in `V_p\T'_p` (its conjugate has the same width), and decide whether the independently optimal source laminations are jointly realizable as proper restrictions of one parent.
-3. Compare `P_p` to `C_p/2`; equivalently show or refute equality `P_p=P_{p,pair}^*` and characterize any strict serial loss/extra parent width. **This one comparison is exactly the sign test (3.3)**. No finite atom table, whole-disk existence proof, coarse full-path upper envelope or KKL A.11 supplies the missing attainment/compactness/composition argument.
+3. Compare `P_p` to `C_p/2` (the **exact** sign test (3.3)). Separately decide whether `P_p=P_{p,pair}^*`; equality of those parent suprema would rule out gain by (3.2), but is **not equivalent** to `P_p=C_p/2`. Characterize any strict serial loss or excess unrestricted parent width. No finite atom table, whole-disk existence proof, coarse full-path upper envelope or KKL A.11 supplies the missing attainment/compactness/composition argument.
 
 **Certified by `verify.py`:** separate source/target blocks and inclusive spans, physical root/cut-order interval premises for `p=3..12` (reusing the immutable upstream exact packets), both child quadrilateral angle and cross-ratio intervals, strict rational defect bounds, the `p=13` normalized box containing the tail, and strict zero-weight `<2` upper-envelope gates. All arithmetic is `Fraction` plus the prior **outward `2^-512`** routines; it reruns the prior sandwich packet **read-only** and rejects drift. **Not machine proved:** the physical ideal marking M, the homotopy-lift inclusions, the KKL Lemma A.11 application, Schwarz–Christoffel and density periodization as analytic theorems, the all-period complex dynamics imported from earlier work, or any canonical optimizer. No Monte Carlo, finite-difference, floating-point optimizer or guessed sign is relabeled as a certificate.
 
