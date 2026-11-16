@@ -74,6 +74,13 @@ def exact_certificate(fixture: dict) -> dict:
     lo, hi = Q(lo_n,2**n), Q(hi_n,2**n)
     require(Q(-31,20) < lo < hi < Q(-3,2), "wrong satellite parameter branch")
     require(polynomial(lo) < 0 < polynomial(hi), "missing strict parameter root signs")
+    # Identity f(a)+a=c*P(c), a=c^2+c, has degree <=4 in c.
+    # Five distinct exact-zero evaluations therefore PROVE the polynomial
+    # identity, not merely its truth at the rounded root.
+    for t in (Q(-2), Q(-1), Q(0), Q(1), Q(2)):
+        at = t*t+t
+        require(at*at+t+at == t*polynomial(t),
+                "orbit polynomial identity fails")
     # P'(c)=3(c+2/3)^2+2/3 >0 on ALL of R.
     # Consequently the bracket isolates the unique real root c_*.
     require(3*lo*lo+4*lo+2 > 0 and 3*hi*hi+4*hi+2 > 0,
@@ -141,7 +148,7 @@ def exact_certificate(fixture: dict) -> dict:
             "central_real_inverse_tree_equals_inner_interval": True,
             "new_attachments": 0,
             "inner_small_julia_set_count": 1,
-            "inner_old_edge_count_under_KKL_vertex_convention": 0},
+            "formal_old_edge_count_from_single_inner_vertex": 0},
         "compatibility": {
             "status": "refused",
             "first_incompatible_field": fixture["first_incompatible_field"],
@@ -205,7 +212,7 @@ def make_manifest(fixture: dict) -> dict:
                 "critical preperiod and repelling terminal point",
                 "two invariant real phase intervals meet at exactly -a",
                 "no extra inverse branches of the real inner interval within V",
-                "Tprime=T, no inner attachments, one small interval and no KKL old edges"],
+                "real inverse tree Tprime=T and zero additional interval attachments"],
             "conditional_on_cited_analytic_inputs": [
                 "backward-orbit density and standard quadratic-like dynamics identify the full small filled Julia set with the invariant real interval",
                 "KKL §§2.3-2.5 define its core edge/ideal construction only for primitive renormalization",
