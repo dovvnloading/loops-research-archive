@@ -31,8 +31,6 @@ jobs:
         run: python research/native_wave_transfer/regenerate_period4.py --check
       - name: Certify period-two satellite return and immutable v1-marking refusal
         run: python research/native_wave_transfer/regenerate_satellite2.py --check
-      - name: Emit exact manifest after reviewer fixes (temporary)
-        run: python research/native_wave_transfer/regenerate_satellite2_tip.py --print-manifest
       - name: Certify satellite Misiurewicz tip and read-only immutable manifest
         run: python research/native_wave_transfer/regenerate_satellite2_tip.py --check
       - name: Compile and run adversarial independent regression
