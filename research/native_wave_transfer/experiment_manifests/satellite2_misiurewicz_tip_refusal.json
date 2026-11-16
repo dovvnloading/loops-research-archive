@@ -1,7 +1,7 @@
 {
   "code": {
     "path": "research/native_wave_transfer/regenerate_satellite2_tip.py",
-    "sha256": "61da31e816a0889ad63ed5e1d93eff9fef26286eb1718b6eb71fb512cae6dada"
+    "sha256": "1fa9f34cb6627440d944d152cb403b82484fb206b171c10f80f5092ccff373c0"
   },
   "experiment_id": "native-satellite2-misiurewicz-tip-refusal-v1",
   "format": "native-wave-transfer-satellite-tip-manifest/v1",
@@ -64,8 +64,8 @@
     "exact_real_geometry": {
       "central_real_inverse_tree_equals_inner_interval": true,
       "excluded_outer_branch_squared_modulus_strictly_gt": "1",
+      "formal_old_edge_count_from_single_inner_vertex": 0,
       "inner_invariant_interval": "[-a,a]",
-      "inner_old_edge_count_under_KKL_vertex_convention": 0,
       "inner_small_julia_set_count": 1,
       "intersection_of_phases": "{-a}",
       "new_attachments": 0,
@@ -119,7 +119,7 @@
       }
     }
   },
-  "outputs_sha256": "3d4454627f2e46d766373e9e1be8b498503f6c35abc1312b63c2916a8b18477f",
+  "outputs_sha256": "02c3492e57e2ce658a971033975537f41fa132942243f4765811aa4b901e0421",
   "proof_status": {
     "certified_by_exact_arithmetic": [
       "unique real P(c)=0 root in adjacent 2^-128 dyadic bracket",
@@ -127,7 +127,7 @@
       "critical preperiod and repelling terminal point",
       "two invariant real phase intervals meet at exactly -a",
       "no extra inverse branches of the real inner interval within V",
-      "Tprime=T, no inner attachments, one small interval and no KKL old edges"
+      "real inverse tree Tprime=T and zero additional interval attachments"
     ],
     "conditional_on_cited_analytic_inputs": [
       "backward-orbit density and standard quadratic-like dynamics identify the full small filled Julia set with the invariant real interval",
