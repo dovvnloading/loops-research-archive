@@ -3,7 +3,7 @@ import unittest
 from fractions import Fraction as Q
 
 from verify import (
-    BLOCKS, COVER, CREST_P3_REFERENCE, EDGE_CUT_IMAGES, MATRIX, PAIRS,
+    BLOCKS, COVER, CREST_P3_REFERENCE, EDGE_CUT_IMAGES, EDGE_SIDES, MATRIX, PAIRS,
     VerificationError, crest_ratio_bounds, level_bounds, marked_table_check,
     qc_image_bounds, quick_checks, reference_bounds, shortest_inclusive_span,
 )
@@ -39,6 +39,13 @@ class DepthUniformQCAuditTests(unittest.TestCase):
         wrong[0] = (18, 0, 19, 1, 2)
         with self.assertRaisesRegex(VerificationError, "consecutive"):
             marked_table_check(blocks=tuple(wrong))
+
+    def test_two_opposite_accesses_are_one_old_edge(self):
+        self.assertEqual(marked_table_check()["opposite_accesses"], EDGE_SIDES)
+        with self.assertRaisesRegex(VerificationError, "old edge sides changed"):
+            marked_table_check(edge_sides=((1, "E0"), (9, "E1")))
+        with self.assertRaisesRegex(VerificationError, "old edge sides changed"):
+            marked_table_check(edge_sides=((1, "E0"), (1, "E0")))
 
     def test_proper_spans_not_all_three_and_not_short(self):
         self.assertEqual(shortest_inclusive_span(3, 17, 20), 7)
