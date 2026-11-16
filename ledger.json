@@ -5563,9 +5563,7 @@
    "id": "NOV26_NATIVE_P4",
    "status": "proved",
    "statement": "Native primitive period-four tip: A separate degree-two period-12 tip and p=4 round Wave are reproduced; its equality is not a canonical extremal-width theorem.",
-   "deps": [
-    "NOV26_NATIVE_V1"
-   ],
+   "deps": [],
    "evidence": "research/native_wave_transfer/RESULTS.md",
    "clauses": "",
    "hyp": "finite arithmetic only",
@@ -5593,9 +5591,7 @@
    "id": "NOV26_WAD_INCIDENCE",
    "status": "proved",
    "statement": "Canonical WAD electrode obstruction: Buffered canonical WAD, an admissible A.1 Wave and the free annular condenser live on different typed objects; the literal electrode match fails.",
-   "deps": [
-    "NOV26_DIRICHLET"
-   ],
+   "deps": [],
    "evidence": "research/independent_audits/canonical_wad_electrode_incidence_20261116/NOTE.md",
    "clauses": "",
    "hyp": "KKL surface/electrode definitions",
@@ -5651,9 +5647,7 @@
    "id": "NOV26_TIP_FINITE",
    "status": "proved",
    "statement": "Selected real tips p=3..12: Ten locally unique seed-bracket roots, signed cuts and direct degree-two Rouche disks, with a noncanonical radial witness; not global uniqueness.",
-   "deps": [
-    "NOV26_TIP_UNIFORM"
-   ],
+   "deps": [],
    "evidence": "research/independent_audits/real_primitive_tip_family_unconditional_20261116/NOTE.md",
    "clauses": "",
    "hyp": "specific finite charts",
@@ -5834,9 +5828,7 @@
    "id": "NOV26_DEPTH3",
    "status": "proved",
    "statement": "One depth-three (3,3,3) chart: A strict rational (3,3,3) packet with terminal three-return margins, not the other 26 small triples or an all-depth uniform physical width theorem.",
-   "deps": [
-    "NOV26_DEPTH2"
-   ],
+   "deps": [],
    "evidence": "research/independent_audits/tip_family_all_depths_20261116/NOTE.md",
    "clauses": "",
    "hyp": "one exact arithmetic chart only",
