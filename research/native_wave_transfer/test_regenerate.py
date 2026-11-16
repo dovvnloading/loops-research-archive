@@ -35,7 +35,7 @@ class IndependentRegeneratorTests(unittest.TestCase):
         self.assertEqual(a["ideal_boundary"]["source_real_cuts"],
             ["-x12","x6","x15","-alpha","x9","x18","alpha","-x15","-x6","x12"])
         self.assertEqual(a["attachment_census"]["components"],
-            [{"interval":"[-x3,x6)","root":"x6","boundary_atoms":[0,1,19],
+            [{"interval":"[-x3,x6)","root":"x6","boundary_atoms":[19,0,1],
               "immersion_boundary_destination":"target_interior_not_I0_boundary"}])
         g=a["operations"]["covering_f_star"]
         i=a["operations"]["immersion_iota_star"]
@@ -98,7 +98,7 @@ class IndependentRegeneratorTests(unittest.TestCase):
             "source_inclusion_pullback_atom_map":a["operations"]["immersion_iota_star"]["source_to_pullback"],
             "inner_pullback_blocks":a["operations"]["immersion_iota_star"]["connected_blocks"],
             "inner_pullback_lengths":a["operations"]["immersion_iota_star"]["block_lengths"],
-            "attachment_boundary_source_atoms":[0,1,19],
+            "attachment_boundary_source_atoms":[19,0,1],
             "not_proper_on_target_inner_atoms":[0],
             "end_proper_on_all_ten_inner_intervals":True,
             "tree":"[x6,x3]","tree_preimage_in_V3":"[-x3,x3]",
