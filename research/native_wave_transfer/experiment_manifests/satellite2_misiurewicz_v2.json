@@ -1,0 +1,175 @@
+{
+  "code": {
+    "path": "research/native_wave_transfer/regenerate_satellite_v2.py",
+    "sha256": "42eea9e3f6219661ec541dc401cd88077b1dd136fce0bb058c925d1e6b652326"
+  },
+  "experiment_id": "satellite2_misiurewicz_tip_contact_v2",
+  "format": "native-wave-transfer-satellite-v2-manifest",
+  "inputs": {
+    "fixture_sha256": "7fd2579b85e2e9f36d2760ba1f2c388f05bf360241bf87a1196ee41c8dfd2a77",
+    "registry_sha256": "72a5b260af1cfb94ee8323c674172a66d82e5b45789fc2c4fb2582bd050b8153",
+    "specification_sha256": "3ce9870c050a6a73d9e5c21c5f3d43929de5b6b55c95e1293611937fa1738bc2",
+    "unchanged_v1_blobs": {
+      "experiment_manifests/primitive4_tip12.json": "abcc01ad0b5ab0b59cd46e9d080ce44141603392",
+      "experiment_manifests/tip_pr68.json": "39233f576e7de78cf707b4d616177d0313b98b25"
+    }
+  },
+  "outputs": {
+    "ambient_markov": {
+      "characteristic_polynomial": "t*(t^2-2)",
+      "edge_images": [
+        [
+          1,
+          2
+        ],
+        [
+          0
+        ],
+        [
+          0
+        ]
+      ],
+      "edges": [
+        "[c,-a]",
+        "[-a,0]",
+        "[0,a]"
+      ],
+      "matrix_output_rows_input_columns": [
+        [
+          0,
+          1,
+          1
+        ],
+        [
+          1,
+          0,
+          0
+        ],
+        [
+          1,
+          0,
+          0
+        ]
+      ],
+      "operator_scope": "ambient_real_Hubbard_tree; NOT KKL_old_edge_operator",
+      "perron_root": "sqrt(2)",
+      "vertices": [
+        "c",
+        "-a",
+        "0",
+        "a"
+      ]
+    },
+    "attachments": {
+      "central_pullback_Tprime": "[-a,a]",
+      "new_components": [],
+      "phase_contacts_not_attachments": [
+        "-a"
+      ],
+      "return_tree_T": "[-a,a]"
+    },
+    "bouquet": {
+      "ambient_contact_accesses": [
+        "upper",
+        "lower"
+      ],
+      "ambient_hull": "[c,a]",
+      "contact_multiplier_sign_f": "negative",
+      "contact_period_f": 1,
+      "contact_point": "-a",
+      "critical_phase": "K0=[-a,a]",
+      "next_phase": "K1=f(K0)=[c,-a]",
+      "phase_cycle_under_f": [
+        "K0->K1",
+        "K1->K0"
+      ],
+      "phase_intersection": "K0 intersect K1={-a}",
+      "return_slit_tip_access_count": 1,
+      "rotation_number_f": "1/2"
+    },
+    "contact_germs": {
+      "covering": "local f_* from G:V\\K0 -> U\\K0; no full atom table",
+      "covering_endpoint_germs": 2,
+      "covering_local_degrees": [
+        1,
+        1
+      ],
+      "covering_preimages": [
+        "-a",
+        "+a"
+      ],
+      "global_filtered_proper_restrictions": null,
+      "global_ideal_atom_tables": null,
+      "immersion": "local iota^* from inclusion V\\K0 -> U\\K0; no full pullback table",
+      "immersion_endpoint_germs": 1,
+      "immersion_local_degrees": [
+        1
+      ],
+      "immersion_preimages": [
+        "-a"
+      ],
+      "through_deleted_contact_proper_paths": 0
+    },
+    "parameter_and_return": {
+      "bracket": [
+        "-525290151028706361181936933686549192168",
+        "-525290151028706361181936933686549192167",
+        128
+      ],
+      "central_map": "G=f^2:V->U; U=D(0,1); V=component(G^-1(U),0)",
+      "equation": "c^3+2*c^2+2*c+2=0",
+      "restricted_degree": 2
+    },
+    "primitive_comparison": {
+      "p3": {
+        "attachments": 1,
+        "each_child_width": "log(4/3)/pi",
+        "harmonic_equality": true,
+        "parent_width": "log(4/3)/(2*pi)",
+        "proper_restrictions_crossing_avoiding": [
+          2,
+          1
+        ]
+      },
+      "p4": {
+        "attachments": 1,
+        "each_child_width": "log(3/2)/pi",
+        "harmonic_equality": true,
+        "parent_width": "log(3/2)/(2*pi)",
+        "proper_restrictions_crossing_avoiding": [
+          2,
+          1
+        ]
+      }
+    },
+    "wave": {
+      "children_exact_widths": null,
+      "harmonic_width_transfer": "undetermined",
+      "parent_exact_width": null,
+      "satellite_marked_wave": null,
+      "width_degradation_forced": null
+    }
+  },
+  "outputs_sha256": "8a5a3fa9afaf2f8f6e10b094686562c8c6aaa425427e371b0ccab7ebe7d6a10b",
+  "proof_status": {
+    "cited_but_unformalized": [
+      "complex small filled Julia identification from v1",
+      "satellite bouquet and rotation interpretation",
+      "Caratheodory slit access and local endpoint proper-lift interpretation"
+    ],
+    "exact": [
+      "parameter and phase order by rational signs",
+      "reduced polynomial identities and real Markov image census",
+      "contact local derivatives, unramified covering and inclusion germs",
+      "ambient Markov characteristic polynomial and Perron root sqrt(2)"
+    ],
+    "numerical_only": [],
+    "open": [
+      "global satellite ideal atlas and KKL iota* pullback blocks",
+      "global contact-filtration multiplicities",
+      "satellite marked Wave and extremal widths",
+      "width preservation, loss, or forced degradation"
+    ]
+  },
+  "schema_version": 2
+}
