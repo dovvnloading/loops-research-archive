@@ -24,7 +24,7 @@ class PrimitiveOneSlitV11Tests(unittest.TestCase):
                          "-7/4 < c30 < c27 < c24")
         for item in self.outputs["members"]:
             with self.subTest(p=item["p"]):
-                v11.source_local_geometry(item)
+                v11.validate_member(item)
                 self.assertEqual(item["ambient_phase_count"], item["p"])
                 self.assertEqual(item["inner_return_interval_count"], 1)
                 self.assertEqual(item["local_tree"]["new_attachment_components"], [])
