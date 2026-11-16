@@ -198,7 +198,7 @@ def run(phase_path: Path = PHASE, pr68_path: Path = PR68,
            'covering drift')
     demand(audit['zero_old_edge_target_crest_atoms'] == [0,2,5,8],
            'old-edge carrier drift')
-    demand(audit['target_atom_physical_regions'] ==
+    demand(audit['all_twenty_source_cover_image_regions'][:10] ==
            ['K2','E20','K0','E0a','Ea1','K1','Ea1','E0a','K0','E20'],
            'physical edge types drift')
 
@@ -321,8 +321,8 @@ def run(phase_path: Path = PHASE, pr68_path: Path = PR68,
            1+min((3-0)%20,(0-3)%20) == 4 and
            1+min((3-0)%10,(0-3)%10) == 4,
            'native KKL short family exclusions not cleared')
-    demand(audit['target_atom_physical_regions'][1] == 'E20' and
-           audit['target_atom_physical_regions'][9] == 'E20',
+    demand(audit['all_twenty_source_cover_image_regions'][:10][1] == 'E20' and
+           audit['all_twenty_source_cover_image_regions'][:10][9] == 'E20',
            'closed crest lacks actual old-tree edge sides')
 
     return {
