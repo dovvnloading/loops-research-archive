@@ -1,0 +1,139 @@
+name: Tip-family buffered WAD inner bounds (partial, exact)
+
+on:
+  pull_request:
+    paths:
+      - 'research/independent_audits/tip_family_buffered_wad_inner_20261116/**'
+      - '.github/workflows/tip-family-buffered-wad-inner.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'research/independent_audits/tip_family_buffered_wad_inner_20261116/**'
+      - '.github/workflows/tip-family-buffered-wad-inner.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  exact-inner-bounds:
+    name: Exact inner AGM/SC intervals, hostile tests and unchanged predecessors
+    runs-on: ubuntu-latest
+    timeout-minutes: 110
+    env:
+      PYTHONDONTWRITEBYTECODE: '1'
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Enforce exactly four new files, no edits to prior work
+        if: github.event_name == 'pull_request'
+        env:
+          BASE_SHA: ${{ github.event.pull_request.base.sha }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          mapfile -t changes < <(git diff --name-status "$BASE_SHA...HEAD")
+          [[ "${#changes[@]}" -eq 4 ]] || {
+            printf 'Expected four additions, got:\n%s\n' "${changes[*]}"; exit 1;
+          }
+          for change in "${changes[@]}"; do
+            IFS=$'\t' read -r status path <<< "$change"
+            [[ "$status" == A ]] || { echo "Existing-file edit: $change"; exit 1; }
+            case "$path" in
+              .github/workflows/tip-family-buffered-wad-inner.yml|\
+              research/independent_audits/tip_family_buffered_wad_inner_20261116/NOTE.md|\
+              research/independent_audits/tip_family_buffered_wad_inner_20261116/verify.py|\
+              research/independent_audits/tip_family_buffered_wad_inner_20261116/test_verify.py) ;;
+              *) echo "Unexpected file: $path"; exit 1 ;;
+            esac
+          done
+      - name: Syntax and explicit nonclosure markers
+        run: |
+          python -B - <<'PY'
+          import ast
+          from pathlib import Path
+          d=Path('research/independent_audits/tip_family_buffered_wad_inner_20261116')
+          for p in (d/'verify.py', d/'test_verify.py'):
+              ast.parse(p.read_text(), filename=str(p))
+          note=(d/'NOTE.md').read_text()
+          for word in ('PARTIAL', 'OPEN', 'A.2.2', '10', 'AGM',
+                       'K_0', 'K_1', 'K_2', 'f_*', r'\iota^*',
+                       'Numerical-only', 'halfdisk', 'p\ge13'):
+              assert word.lower() in note.lower(), word
+          PY
+      - name: Recheck exact selected p3..12 and all-p p13 error chart, AGM and SC arithmetic
+        run: python -B research/independent_audits/tip_family_buffered_wad_inner_20261116/verify.py
+      - name: Hostile mutation tests and no false support claim
+        run: python -B -m unittest discover -s research/independent_audits/tip_family_buffered_wad_inner_20261116 -p 'test_*.py' -v
+      - name: Replay prior outer WAD, canonical capacities, and unbuffered M-discharge
+        run: |
+          python -B research/independent_audits/tip_family_buffered_wad_20261116/verify.py
+          python -B research/independent_audits/canonical_wad_quadrilateral_moduli_20261116/verify.py --check-manifest
+          python -B research/independent_audits/tip_family_hypothesis_M_discharge_20261116/verify.py
+      - name: Strictly read-only verification
+        shell: bash
+        run: |
+          set -euo pipefail
+          [[ -z "$(git status --porcelain --untracked-files=all)" ]] || {
+            git status --short
+            echo 'Verification wrote files'; exit 1;
+          }
+
+  unchanged-research-and-weighted-lean:
+    name: Require existing Research validation and Weighted Lean on exact PR SHA
+    needs: exact-inner-bounds
+    if: github.event_name == 'pull_request' && github.event.pull_request.head.repo.full_name == github.repository
+    runs-on: ubuntu-latest
+    timeout-minutes: 135
+    permissions:
+      contents: read
+      actions: write
+    steps:
+      - name: Dispatch and require both unchanged workflows on exact head
+        shell: bash
+        env:
+          GH_TOKEN: ${{ github.token }}
+          REPO: ${{ github.repository }}
+          PR_BRANCH: ${{ github.event.pull_request.head.ref }}
+          PR_SHA: ${{ github.event.pull_request.head.sha }}
+        run: |
+          set -euo pipefail
+          current="$(gh api "repos/$REPO/git/ref/heads/$PR_BRANCH" --jq '.object.sha')"
+          [[ "$current" == "$PR_SHA" ]] || { echo 'PR head moved before validation'; exit 1; }
+          for workflow in lean-proofs.yml weighted-lean.yml; do
+            gh workflow run "$workflow" --repo "$REPO" --ref "$PR_BRANCH"
+          done
+          for workflow in lean-proofs.yml weighted-lean.yml; do
+            matched=0
+            for attempt in $(seq 1 480); do
+              runs="$(gh run list --repo "$REPO" --workflow "$workflow" \
+                --branch "$PR_BRANCH" --event workflow_dispatch --limit 80 \
+                --json databaseId,headSha,status,conclusion)"
+              item="$(printf '%s' "$runs" | jq -c --arg sha "$PR_SHA" \
+                '[.[] | select(.headSha == $sha)] | first // empty')"
+              if [[ -n "$item" ]]; then
+                id="$(printf '%s' "$item" | jq -r .databaseId)"
+                status="$(printf '%s' "$item" | jq -r .status)"
+                conclusion="$(printf '%s' "$item" | jq -r .conclusion)"
+                if [[ "$status" == completed ]]; then
+                  echo "$workflow @ $PR_SHA: $conclusion (run $id)"
+                  [[ "$conclusion" == success ]] || {
+                    gh run view "$id" --repo "$REPO" || true; exit 1;
+                  }
+                  matched=1
+                  break
+                fi
+              fi
+              sleep 15
+            done
+            [[ "$matched" == 1 ]] || {
+              echo "No successful $workflow for exact PR head $PR_SHA"; exit 1;
+            }
+          done
+          current="$(gh api "repos/$REPO/git/ref/heads/$PR_BRANCH" --jq '.object.sha')"
+          [[ "$current" == "$PR_SHA" ]] || { echo 'PR head moved during CI'; exit 1; }
