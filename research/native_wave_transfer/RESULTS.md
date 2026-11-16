@@ -372,12 +372,18 @@ attachment.
 | Target / covering-source inner atoms in locked primitive v1 marking | 10 / 20 | 10 / 20 | **not defined by that marking** |
 | Filtered restrictions (crossing / avoiding) | 2 / 1 | 2 / 1 | **not evaluated:** no new attachment |
 | Old edges counted once per *real* edge | 3 | 3 | 0 (one vertex = `K0`) |
-| Old-edge matrix | `[[0,0,1],[1,0,1],[1,1,0]]` (same three-phase inner kneading; not separately frozen in the `p=3` manifest) | `[[0,0,1],[1,0,1],[1,1,0]]` (independent certified once-edge audit) | empty `0×0` matrix |
+| Old-edge matrix | `[[0,0,1],[1,0,1],[1,1,0]]` (same three-phase inner kneading; not separately frozen in the `p=3` manifest) | `[[0,0,1],[1,0,1],[1,1,0]]` (independent certified once-edge audit) | formally empty `0×0` graph matrix (**not** a source-defined KKL Perron operator) |
 | Perron root of old-edge matrix | `(1+sqrt(5))/2` under the same old-edge convention | `(1+sqrt(5))/2` | **undefined**, not `0` or `1` |
 | Zero-old-edge closed Wave crests | not separately frozen for `p=3`; analogous three-phase geometry | `I0,I2,I8` all zero-edge | **not defined:** no v1 Wave marking |
 | Parent symbolic Wave width | `log(4/3)/(2*pi)` | `log(3/2)/(2*pi)` | **not defined** |
 | Each child and pushed symbolic width | `log(4/3)/pi` | `log(3/2)/pi` | **not defined** |
 | Harmonic series | conditional analytic **equality** | conditional analytic **equality** | **no verdict**: neither strictness nor failure established |
+
+Because touching of small Julia sets is the defining satellite
+obstruction to *primitive* separation, choosing another genuine real
+period-doubling satellite tip cannot restore the KKL §2.5 primitive
+hypothesis. A different inner tuning could change its number of marked
+intervals but would require a satellite-specific replacement contract.
 
 **First structural difference and quantitative meaning.** The satellite
 touching of two ambient `f`-phases violates the primitive separation
