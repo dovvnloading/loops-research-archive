@@ -1,0 +1,89 @@
+name: Physical KKL Wave versus annular Dirichlet contact transfer
+
+on:
+  pull_request:
+    paths:
+      - '.github/workflows/wave-vs-dirichlet-contact-transfer.yml'
+      - 'research/independent_audits/wave_vs_dirichlet_contact_transfer_20261115/**'
+      - 'results/wave_vs_dirichlet_contact_transfer_20261115.json'
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/wave-vs-dirichlet-contact-transfer.yml'
+      - 'research/independent_audits/wave_vs_dirichlet_contact_transfer_20261115/**'
+      - 'results/wave_vs_dirichlet_contact_transfer_20261115.json'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  exact-physical-contact-transfer:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Syntax and exact native Wave / free condenser certificates
+        run: |
+          python -m py_compile research/independent_audits/wave_vs_dirichlet_contact_transfer_20261115/verify.py
+          python research/independent_audits/wave_vs_dirichlet_contact_transfer_20261115/verify.py --check-manifest
+      - name: Revalidate original physical marked-wave certificate unchanged
+        run: python research/independent_audits/verify_tip_KKL_tree_marked_breakage.py --check-manifest
+      - name: Revalidate independent Dirichlet crossover and source countercontrol
+        run: |
+          python research/independent_audits/verify_annular_contact_crossover.py --check-manifest
+          python research/independent_audits/verify_attachment_sheet_condenser.py --check-manifest
+          python research/independent_audits/verify_near_saturation_wave.py --check-manifest
+
+  existing-research-validation-and-lean:
+    name: Dispatch and verify unchanged existing research-validation and Lean workflows
+    needs: exact-physical-contact-transfer
+    if: github.event_name == 'pull_request' && github.event.pull_request.head.repo.full_name == github.repository
+    runs-on: ubuntu-latest
+    timeout-minutes: 85
+    permissions:
+      contents: read
+      actions: write
+    steps:
+      - name: Run existing workflows on exact PR head and require both to succeed
+        env:
+          GH_TOKEN: ${{ github.token }}
+          REPO: ${{ github.repository }}
+          PR_BRANCH: ${{ github.event.pull_request.head.ref }}
+          PR_SHA: ${{ github.event.pull_request.head.sha }}
+        run: |
+          set -euo pipefail
+          for workflow in lean-proofs.yml weighted-lean.yml; do
+            gh workflow run "$workflow" --repo "$REPO" --ref "$PR_BRANCH"
+          done
+          for workflow in lean-proofs.yml weighted-lean.yml; do
+            found_success=0
+            for attempt in $(seq 1 280); do
+              runs="$(gh run list --repo "$REPO" --workflow "$workflow" \
+                  --branch "$PR_BRANCH" --event workflow_dispatch \
+                  --limit 40 --json databaseId,headSha,status,conclusion)"
+              match="$(printf '%s' "$runs" | jq -c --arg sha "$PR_SHA" \
+                  '[.[] | select(.headSha == $sha)] | first // empty')"
+              if [[ -n "$match" ]]; then
+                run_id="$(printf '%s' "$match" | jq -r .databaseId)"
+                status="$(printf '%s' "$match" | jq -r .status)"
+                conclusion="$(printf '%s' "$match" | jq -r .conclusion)"
+                if [[ "$status" == completed ]]; then
+                  echo "$workflow at $PR_SHA: $conclusion (run $run_id)"
+                  if [[ "$conclusion" != success ]]; then
+                    gh run view "$run_id" --repo "$REPO" || true
+                    exit 1
+                  fi
+                  found_success=1
+                  break
+                fi
+              fi
+              sleep 15
+            done
+            if [[ "$found_success" != 1 ]]; then
+              echo "No successful completed $workflow dispatch at exact PR SHA $PR_SHA"
+              exit 1
+            fi
+          done

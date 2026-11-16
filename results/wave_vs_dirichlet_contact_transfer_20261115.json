@@ -1,0 +1,73 @@
+{
+  "schema_version": 1,
+  "source_tip": "results/tip_KKL_tree_marked_breakage_20261109.json",
+  "arithmetic": "256-bit outward dyadic polynomial orbit; exact Fraction pi, cosine and logarithm enclosures",
+  "physical_tip": {
+    "source_conformal_chart": "z=x3*(w+w^-1)/2; t=log|w|; theta=arg(w); tau(w)=-w",
+    "real_attachment": "[-x3,x6)",
+    "electrode_angular_length": "ell_X=2*acos(-x6/x3)",
+    "certified_angular_interval": [
+      "6/5",
+      "7/5"
+    ],
+    "whole_physical_collar_certified_for": "0<h<=1/1024",
+    "target_wave_chart": "z=-9/64+r*exp(i*theta); log(r) in (log(3/256),log(1/64))",
+    "native_full_wave_width": "log(4/3)/(2*pi)",
+    "each_filtered_child_width": "log(4/3)/pi",
+    "filtered_children": 2,
+    "native_full_width_certified_interval": [
+      "1/25",
+      "1/20"
+    ]
+  },
+  "finite_physical_comparison": {
+    "collar_height": "1/1024",
+    "full_native_wave_width": "log(4/3)/(2*pi)",
+    "native_subwave_width": "h/(2*pi)",
+    "dirichlet_full_capacity_certified_interval": [
+      "(3/5)*h",
+      "(6/5)*h"
+    ],
+    "strict_order_certified": "W(native S_h) < W_dir(h,ell_X) < W(native S_full)",
+    "failing_hypothesis": "PR68 target Wave and source condenser are not on the same surface and native Wave leaves do not join the opposed source electrodes"
+  },
+  "thin_collar_controls": [
+    {
+      "access": "ell=ell_X, fixed actual physical attachment",
+      "type": "fixed_physical_tip",
+      "dirichlet_certified": "(3/5)*h < W_dir < (6/5)*h",
+      "wave_certified": "W(native tip S_h)=h/(2*pi)"
+    },
+    {
+      "access": "ell=h^2, formal polynomial control",
+      "type": "polynomial",
+      "dirichlet_certified": "h/2 < W_dir < (2/3)*h",
+      "wave_certified": "W(native tip S_h)=h/(2*pi)"
+    },
+    {
+      "access": "ell=exp(-1/h), formal crossover control",
+      "type": "critical_exponential",
+      "dirichlet_certified": "h/4 < W_dir < (2/3)*h",
+      "wave_certified": "W(native tip S_h)=h/(2*pi)"
+    },
+    {
+      "access": "ell=(h/4)*exp(-1/h^2), archive literal formal negative control",
+      "type": "superexponential",
+      "dirichlet_certified": "h^2/2 < W_dir < 4*h^2",
+      "wave_certified": "W(native tip S_h)=h/(2*pi)"
+    }
+  ],
+  "certified_h_values": [
+    "1/1024",
+    "1/2048",
+    "1/4096"
+  ],
+  "conditional_comparison": "On a common annulus, S subset Gamma_h(A,tau A) implies 0<=W(S)<=W_dir; optimal constant 1",
+  "not_certified": [
+    "No identification of PR68 target Wave with the source Dirichlet curve family",
+    "Formal variable-ell controls are not physical KKL attachment stages",
+    "Canonical maximal WAD weight is not computed; PR68 marked Wave is not an identified proof-selected WAD",
+    "No uniform converse, period/depth bridge, parabolic access law or MLC conclusion"
+  ],
+  "numerical_only_observations": []
+}
