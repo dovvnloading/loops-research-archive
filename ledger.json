@@ -5544,5 +5544,693 @@
    "clauses": "",
    "hyp": "none"
   }
+ ],
+ "research_updates": [
+  {
+   "id": "NOV26_NATIVE_V1",
+   "status": "open",
+   "statement": "PR #68 physical native Wave lab: 10/20 atoms, distinct G_* and iota*, two crossing versus one avoiding path, and chosen round Wave equality; no unrestricted gain.",
+   "deps": [],
+   "evidence": "research/native_wave_transfer/SPECIFICATION.md",
+   "clauses": "",
+   "hyp": "physical KKL slit/width identification",
+   "classification": "Conditional on KKL physical marking",
+   "group": "Native Wave Transfer Lab and canonical WAD audits",
+   "pr": 73,
+   "verifier": "research/native_wave_transfer/regenerate.py"
+  },
+  {
+   "id": "NOV26_NATIVE_P4",
+   "status": "proved",
+   "statement": "Native primitive period-four tip: A separate degree-two period-12 tip and p=4 round Wave are reproduced; its equality is not a canonical extremal-width theorem.",
+   "deps": [
+    "NOV26_NATIVE_V1"
+   ],
+   "evidence": "research/native_wave_transfer/RESULTS.md",
+   "clauses": "",
+   "hyp": "finite arithmetic only",
+   "classification": "Finite certificate, conditional Wave reading",
+   "group": "Native Wave Transfer Lab and canonical WAD audits",
+   "pr": 77,
+   "verifier": "research/native_wave_transfer/regenerate_period4.py"
+  },
+  {
+   "id": "NOV26_DIRICHLET",
+   "status": "open",
+   "statement": "Wave versus free annular Dirichlet response: Common-surface/electrode monotonicity and exact response brackets do not equate a marked Wave to a free outer Neumann condenser.",
+   "deps": [
+    "NOV26_NATIVE_V1"
+   ],
+   "evidence": "research/independent_audits/wave_vs_dirichlet_contact_transfer_20261115/NOTE.md",
+   "clauses": "",
+   "hyp": "common electrodes and physical marked Wave",
+   "classification": "Conditional comparison; finite certificate",
+   "group": "Native Wave Transfer Lab and canonical WAD audits",
+   "pr": 72,
+   "verifier": "research/independent_audits/wave_vs_dirichlet_contact_transfer_20261115/verify.py"
+  },
+  {
+   "id": "NOV26_WAD_INCIDENCE",
+   "status": "proved",
+   "statement": "Canonical WAD electrode obstruction: Buffered canonical WAD, an admissible A.1 Wave and the free annular condenser live on different typed objects; the literal electrode match fails.",
+   "deps": [
+    "NOV26_DIRICHLET"
+   ],
+   "evidence": "research/independent_audits/canonical_wad_electrode_incidence_20261116/NOTE.md",
+   "clauses": "",
+   "hyp": "KKL surface/electrode definitions",
+   "classification": "Proved negative identification",
+   "group": "Native Wave Transfer Lab and canonical WAD audits",
+   "pr": 75,
+   "verifier": "research/independent_audits/canonical_wad_electrode_incidence_20261116/verify.py"
+  },
+  {
+   "id": "NOV26_WAD_WEIGHTS",
+   "status": "proved",
+   "statement": "Auxiliary conformal-weight audit: Exact auxiliary annular capacity bounds do not compute individual q-gamma, canonical support, WAD total weight or a repaired scalar transfer.",
+   "deps": [
+    "NOV26_WAD_INCIDENCE"
+   ],
+   "evidence": "research/independent_audits/canonical_wad_conformal_weights_20261116/NOTE.md",
+   "clauses": "",
+   "hyp": "auxiliary condenser only",
+   "classification": "Finite certificate; canonical weights open",
+   "group": "Native Wave Transfer Lab and canonical WAD audits",
+   "pr": 81,
+   "verifier": "research/independent_audits/canonical_wad_conformal_weights_20261116/verify.py"
+  },
+  {
+   "id": "NOV26_WAD_MODULI",
+   "status": "proved",
+   "statement": "Canonical quadrilateral-moduli bounds: Peripheral cyclic-cover collars, coarse endpoint-type bounds and a canonical norm upper bound do not certify any individual q-gamma or support list.",
+   "deps": [
+    "NOV26_WAD_INCIDENCE"
+   ],
+   "evidence": "research/independent_audits/canonical_wad_quadrilateral_moduli_20261116/NOTE.md",
+   "clauses": "",
+   "hyp": "KKL source definitions",
+   "classification": "Finite certificate; individual moduli open",
+   "group": "Native Wave Transfer Lab and canonical WAD audits",
+   "pr": 76,
+   "verifier": "research/independent_audits/canonical_wad_quadrilateral_moduli_20261116/verify.py"
+  },
+  {
+   "id": "NOV26_TIP_UNIFORM",
+   "status": "open",
+   "statement": "Uniform real-tip combinatorial implication: A uniform result from explicit physical geometry, plus p=3..8 interval packets; the older 3/3/3 source-path assertion is corrected by later audits.",
+   "deps": [],
+   "evidence": "research/independent_audits/real_primitive_tip_family_uniform_20261116/NOTE.md",
+   "clauses": "",
+   "hyp": "KKL prime ends and stated realization conditions",
+   "classification": "Conditional; six finite certificates",
+   "group": "Real primitive tip family theorem and dependency chain",
+   "pr": 80,
+   "verifier": "research/independent_audits/real_primitive_tip_family_uniform_20261116/verify.py"
+  },
+  {
+   "id": "NOV26_TIP_FINITE",
+   "status": "proved",
+   "statement": "Selected real tips p=3..12: Ten locally unique seed-bracket roots, signed cuts and direct degree-two Rouche disks, with a noncanonical radial witness; not global uniqueness.",
+   "deps": [
+    "NOV26_TIP_UNIFORM"
+   ],
+   "evidence": "research/independent_audits/real_primitive_tip_family_unconditional_20261116/NOTE.md",
+   "clauses": "",
+   "hyp": "specific finite charts",
+   "classification": "Finite certificate",
+   "group": "Real primitive tip family theorem and dependency chain",
+   "pr": 83,
+   "verifier": "research/independent_audits/real_primitive_tip_family_unconditional_20261116/verify.py"
+  },
+  {
+   "id": "NOV26_TIP_ALLP",
+   "status": "proved",
+   "statement": "Selected real tips p>=13: Unique root of the selected near-minus-two kneading chart, proper degree-two returns and c_p+2=(3 pi^2/2)4^-p+O(p16^-p), not maximal-window uniqueness.",
+   "deps": [
+    "NOV26_TIP_FINITE"
+   ],
+   "evidence": "research/independent_audits/real_primitive_tip_family_all_p_20261116/NOTE.md",
+   "clauses": "",
+   "hyp": "signed chart, not all component roots",
+   "classification": "Proved within signed chart",
+   "group": "Real primitive tip family theorem and dependency chain",
+   "pr": 87,
+   "verifier": "research/independent_audits/real_primitive_tip_family_all_p_20261116/verify.py"
+  },
+  {
+   "id": "NOV26_TIP_PRIME_END",
+   "status": "proved",
+   "statement": "All-period physical prime-end marking: Selected p>=3 tips have the actual 10/20 KKL slit atoms, one attachment and different covering/immersion tables; DH, McMullen, Misiurewicz and Caratheodory are not Lean-formalized.",
+   "deps": [
+    "NOV26_TIP_FINITE",
+    "NOV26_TIP_ALLP"
+   ],
+   "evidence": "research/independent_audits/real_primitive_tip_family_prime_end_identification_20261116/NOTE.md",
+   "clauses": "",
+   "hyp": "cited published dynamical/topological theorems",
+   "classification": "Proved with named published inputs",
+   "group": "Real primitive tip family theorem and dependency chain",
+   "pr": 91,
+   "verifier": "research/independent_audits/real_primitive_tip_family_prime_end_identification_20261116/verify.py"
+  },
+  {
+   "id": "NOV26_TIP_THEOREM",
+   "status": "open",
+   "statement": "Typed all-period primitive-tip synthesis: Selected physical tips, source arcs 3/3/7 and covering arcs 3/3/5; chosen harmonic log-Wave equality requires KKL conformal identification, never an identity for maximal Waves.",
+   "deps": [
+    "NOV26_TIP_PRIME_END"
+   ],
+   "evidence": "research/tip_family_theorem/THEOREM.md",
+   "clauses": "",
+   "hyp": "named external theorems; selected Wave analytic meaning",
+   "classification": "Proved scoped realization; conditional round Wave",
+   "group": "Real primitive tip family theorem and dependency chain",
+   "pr": 93,
+   "verifier": "research/tip_family_theorem/verify_chain.py"
+  },
+  {
+   "id": "NOV26_TIP_CANONICAL",
+   "status": "open",
+   "statement": "Canonical-width gap and round witness: Orbit-centred round-witness limit and full-lift upper envelope are certified separately; unrestricted optimal KKL width, attainment and convergence are not.",
+   "deps": [
+    "NOV26_TIP_PRIME_END"
+   ],
+   "evidence": "research/independent_audits/real_primitive_tip_family_canonical_width_20261116/NOTE.md",
+   "clauses": "",
+   "hyp": "M for physical KKL supremum",
+   "classification": "Finite witness; canonical optimum open",
+   "group": "Real primitive tip family theorem and dependency chain",
+   "pr": 90,
+   "verifier": "research/independent_audits/real_primitive_tip_family_canonical_width_20261116/verify.py"
+  },
+  {
+   "id": "NOV26_TIP_SANDWICH",
+   "status": "open",
+   "statement": "Canonical KKL Wave sandwich: W_rad <= W_p,2* <= W_p* <= Q_p; 0.26 < liminf W_p* <= limsup W_p* < 0.78, without an optimal-width convergence claim.",
+   "deps": [
+    "NOV26_TIP_CANONICAL",
+    "NOV26_TIP_PRIME_END"
+   ],
+   "evidence": "research/independent_audits/real_primitive_tip_family_canonical_width_sandwich_20261116/NOTE.md",
+   "clauses": "",
+   "hyp": "M: physical KKL slit/prime-end identification",
+   "classification": "Conditional on M",
+   "group": "Real primitive tip family theorem and dependency chain",
+   "pr": 92,
+   "verifier": "research/independent_audits/real_primitive_tip_family_canonical_width_sandwich_20261116/verify.py"
+  },
+  {
+   "id": "NOV26_CREST_SIX",
+   "status": "open",
+   "statement": "Four-push p=3..8 crest-collar grid: Strict whole-bin interval collars for selected four-push crests, not an all-period or unrestricted Wave transport law.",
+   "deps": [
+    "NOV26_TIP_UNIFORM"
+   ],
+   "evidence": "research/independent_audits/crest_transport_tip_family_20261116/NOTE.md",
+   "clauses": "",
+   "hyp": "proper paths, KKL geometry and conformal interpretation",
+   "classification": "Finite certificate; conditional physical Wave",
+   "group": "Wave gain and crest transport",
+   "pr": 84,
+   "verifier": "research/independent_audits/crest_transport_tip_family_20261116/verify.py"
+  },
+  {
+   "id": "NOV26_CREST_16",
+   "status": "open",
+   "statement": "Connected crest collars p=3..16: Full maximal connected collars within the stated circular family are certified; c_infinity approximately 0.347005 is only a numerical conjecture.",
+   "deps": [
+    "NOV26_CREST_SIX"
+   ],
+   "evidence": "research/independent_audits/crest_transport_asymptotics_20261116/NOTE.md",
+   "clauses": "",
+   "hyp": "specified circular family; physical width cited KKL",
+   "classification": "Finite certificate; numerical-only limit",
+   "group": "Wave gain and crest transport",
+   "pr": 89,
+   "verifier": "research/independent_audits/crest_transport_asymptotics_20261116/verify.py"
+  },
+  {
+   "id": "NOV26_GAIN_PAIRED",
+   "status": "open",
+   "statement": "Pairable-wave serial loss: Leafwise-pairable parents obey loss-or-equality; this note's independent-width enclosures straddle zero, but later PR #100 proves the unrestricted sign.",
+   "deps": [
+    "NOV26_TIP_SANDWICH"
+   ],
+   "evidence": "research/independent_audits/tip_family_canonical_wave_gain_20261116/NOTE.md",
+   "clauses": "",
+   "hyp": "M; independent optima distinct from pairable class",
+   "classification": "Conditional on M; historical sign-indefinite bounds",
+   "group": "Wave gain and crest transport",
+   "pr": 94,
+   "verifier": "research/independent_audits/tip_family_canonical_wave_gain_20261116/verify.py"
+  },
+  {
+   "id": "NOV26_GAIN_LARGE",
+   "status": "open",
+   "statement": "Strict limiting and p>=13 unbuffered Wave gain: Embedded semidisk/half-strip witnesses give D_p>11/126 for p>=13 and 0.696<D_infinity<0.793; no buffered WAD gain or optimal-width convergence.",
+   "deps": [
+    "NOV26_GAIN_PAIRED"
+   ],
+   "evidence": "research/independent_audits/tip_family_limiting_wave_gain_20261116/NOTE.md",
+   "clauses": "",
+   "hyp": "M and written Schwarz-Christoffel admissibility",
+   "classification": "Conditional on M; proved analytic sign",
+   "group": "Wave gain and crest transport",
+   "pr": 97,
+   "verifier": "research/independent_audits/tip_family_limiting_wave_gain_20261116/verify.py"
+  },
+  {
+   "id": "NOV26_GAIN_ALLP",
+   "status": "open",
+   "statement": "Strict independent unbuffered Wave gain for all p: Finite p=3..12 embedded witnesses plus the p>=13 result prove D_p>1/100 for every p>=3; independent maxima are not jointly pairable, and no buffered WAD/iterated gain follows.",
+   "deps": [
+    "NOV26_GAIN_LARGE",
+    "NOV26_GAIN_PAIRED"
+   ],
+   "evidence": "research/independent_audits/tip_family_finite_p_wave_gain_20261116/NOTE.md",
+   "clauses": "",
+   "hyp": "M for actual physical KKL marking",
+   "classification": "Conditional on M; strict certified margins",
+   "group": "Wave gain and crest transport",
+   "pr": 100,
+   "verifier": "research/independent_audits/tip_family_finite_p_wave_gain_20261116/verify.py"
+  },
+  {
+   "id": "NOV26_DEPTH2",
+   "status": "open",
+   "statement": "Nine exact depth-two charts: The (3..5)x(3..5) selected grid has strict root/restriction and typed marking checks; 0.25<W*<0.775 imports physical KKL cuts and width hypotheses.",
+   "deps": [
+    "NOV26_TIP_THEOREM"
+   ],
+   "evidence": "research/independent_audits/tip_family_renormalization_depth_20261116/NOTE.md",
+   "clauses": "",
+   "hyp": "tuning/straightening and KKL physical width",
+   "classification": "Finite certificate; conditional width",
+   "group": "Renormalization depth and marked QC",
+   "pr": 95,
+   "verifier": "research/independent_audits/tip_family_renormalization_depth_20261116/verify.py"
+  },
+  {
+   "id": "NOV26_DEPTH3",
+   "status": "proved",
+   "statement": "One depth-three (3,3,3) chart: A strict rational (3,3,3) packet with terminal three-return margins, not the other 26 small triples or an all-depth uniform physical width theorem.",
+   "deps": [
+    "NOV26_DEPTH2"
+   ],
+   "evidence": "research/independent_audits/tip_family_all_depths_20261116/NOTE.md",
+   "clauses": "",
+   "hyp": "one exact arithmetic chart only",
+   "classification": "Finite certificate only",
+   "group": "Renormalization depth and marked QC",
+   "pr": 96,
+   "verifier": "research/independent_audits/tip_family_all_depths_20261116/verify.py"
+  },
+  {
+   "id": "NOV26_DEPTH_QC",
+   "status": "open",
+   "statement": "Direct-at-depth QC and modulus: Non-doubling real optimal moduli give local noncompounding straightening bounds, but K-uniform whole-marked-Wave correspondence is an additional unproved premise.",
+   "deps": [
+    "NOV26_DEPTH3"
+   ],
+   "evidence": "research/independent_audits/tip_family_depth_uniform_qc_20261116/NOTE.md",
+   "clauses": "",
+   "hyp": "T: global marked QC Wave family bijection",
+   "classification": "Imported published modulus; conditional marked transport",
+   "group": "Renormalization depth and marked QC",
+   "pr": 98,
+   "verifier": "research/independent_audits/tip_family_depth_uniform_qc_20261116/verify.py"
+  },
+  {
+   "id": "NOV26_GLOBAL_QC",
+   "status": "open",
+   "statement": "Global marked QC gap and countermodel: An abstract annulus countermodel refutes modulus-only global transport inference; conditional two-sided cofinal-width comparison holds, while K'(mu) for this family is open.",
+   "deps": [
+    "NOV26_DEPTH_QC"
+   ],
+   "evidence": "research/independent_audits/tip_family_global_marked_qc_20261116/NOTE.md",
+   "clauses": "",
+   "hyp": "two-sided cofinal marked width correspondence",
+   "classification": "Negative inference; conditional K and K^2 lemma",
+   "group": "Renormalization depth and marked QC",
+   "pr": 99,
+   "verifier": "research/independent_audits/tip_family_global_marked_qc_20261116/verify.py"
+  },
+  {
+   "id": "NOV26_SAT_P4",
+   "status": "proved",
+   "statement": "Period-doubling satellite v1 refusal: A degree-two satellite return is certified but fails primitive v1 marking/attachment assumptions; no claimed satellite Wave measurement.",
+   "deps": [],
+   "evidence": "research/native_wave_transfer/RESULTS.md",
+   "clauses": "",
+   "hyp": "finite period-doubling case",
+   "classification": "Finite certificate; negative/refusal",
+   "group": "Satellite and near-parabolic refusals",
+   "pr": 79,
+   "verifier": "research/native_wave_transfer/regenerate_satellite2.py"
+  },
+  {
+   "id": "NOV26_SAT_TIP",
+   "status": "proved",
+   "statement": "Satellite Misiurewicz tip refusal: Exact satellite tip and bouquet contact have zero new return-tree attachment, so primitive v1 opposite-side Wave labels do not apply.",
+   "deps": [
+    "NOV26_SAT_P4"
+   ],
+   "evidence": "research/native_wave_transfer/RESULTS.md",
+   "clauses": "",
+   "hyp": "satellite marking not primitive",
+   "classification": "Finite certificate; negative/refusal",
+   "group": "Satellite and near-parabolic refusals",
+   "pr": 82,
+   "verifier": "research/native_wave_transfer/regenerate_satellite2_tip.py"
+  },
+  {
+   "id": "NOV26_SAT_V2",
+   "status": "proved",
+   "statement": "Source-typed satellite v2 contact atlas: Typed phase-contact, distinct covering and immersion endpoint germs; neither an attachment electrode nor a canonical satellite Wave weight is established.",
+   "deps": [
+    "NOV26_SAT_TIP"
+   ],
+   "evidence": "research/native_wave_transfer/SPECIFICATION_v2_satellite.md",
+   "clauses": "",
+   "hyp": "local contact only",
+   "classification": "Finite source certificate; Wave undefined",
+   "group": "Satellite and near-parabolic refusals",
+   "pr": 85,
+   "verifier": "research/native_wave_transfer/regenerate_satellite_v2.py"
+  },
+  {
+   "id": "NOV26_NEAR_PARAB",
+   "status": "proved",
+   "statement": "Three near-parabolic primitive-tip refusals: p=24,27,30 selected roots, quadratic-like collars and empty new attachment are certified; the proposed h*log(1/ell) is undefined, not zero.",
+   "deps": [],
+   "evidence": "research/native_wave_transfer/RESULTS.md",
+   "clauses": "",
+   "hyp": "only three selected parameters",
+   "classification": "Finite certificate; missing observable",
+   "group": "Satellite and near-parabolic refusals",
+   "pr": 86,
+   "verifier": "research/native_wave_transfer/regenerate_near_parabolic.py"
+  },
+  {
+   "id": "NOV26_NATIVE_V11",
+   "status": "open",
+   "statement": "Near-parabolic v1.1 chosen one-slit marks: Source-typed chosen two-side real-slit records do not instantiate primitive v1 10/20 atoms or canonical KKL Wave widths.",
+   "deps": [
+    "NOV26_NEAR_PARAB"
+   ],
+   "evidence": "research/native_wave_transfer/SPECIFICATION_v1_1.md",
+   "clauses": "",
+   "hyp": "chosen geometry, canonical marking unknown",
+   "classification": "Finite certificate; noncanonical/refusal",
+   "group": "Satellite and near-parabolic refusals",
+   "pr": 88,
+   "verifier": "research/native_wave_transfer/regenerate_primitive_v1_1.py"
+  },
+  {
+   "id": "NOV26_ISSUE40_EDGE",
+   "status": "open",
+   "statement": "Issue #40 native attachment and edge census: One physical attachment, complete old-edge incidence and zero-old-edge atomic sectors identify an exact crest gate, not universal amplification.",
+   "deps": [
+    "NOV26_NATIVE_V1"
+   ],
+   "evidence": "research/independent_audits/issue40_native_attachment_edge_incidence_20261115/NOTE.md",
+   "clauses": "",
+   "hyp": "physical KKL source/prime ends",
+   "classification": "Finite certificate; general open",
+   "group": "Issue #40",
+   "pr": 74,
+   "verifier": "research/independent_audits/issue40_native_attachment_edge_incidence_20261115/verify_native_attachment_edge_incidence.py"
+  },
+  {
+   "id": "NOV26_ISSUE40_CREST",
+   "status": "open",
+   "statement": "Issue #40 genuine finite depth-four crest: A selected depth-four KKL descendant has an old-edge closed crest and a chosen exact conformal log-strip width, not a general transport theorem.",
+   "deps": [
+    "NOV26_ISSUE40_EDGE"
+   ],
+   "evidence": "research/independent_audits/issue40_crest_transport_20261116/NOTE.md",
+   "clauses": "",
+   "hyp": "physical KKL proper paths and conformal width",
+   "classification": "Conditional physical example; general open",
+   "group": "Issue #40",
+   "pr": 78,
+   "verifier": "research/independent_audits/issue40_crest_transport_20261116/verify_crest_transport.py"
+  },
+  {
+   "id": "NOV26_OPEN_WINDOW",
+   "status": "open",
+   "statement": "Global primitive-component uniqueness: Local p=3..12 seed intervals and signed p>=13 chart do not prove full maximal-real-component uniqueness (F02).",
+   "deps": [
+    "NOV26_TIP_THEOREM"
+   ],
+   "evidence": "research/tip_family_theorem/AUDIT.md",
+   "clauses": "",
+   "hyp": "unproved",
+   "classification": "Open",
+   "group": "Open November research obligations",
+   "pr": null,
+   "verifier": "research/tip_family_theorem/verify_chain.py"
+  },
+  {
+   "id": "NOV26_OPEN_3P_MODULUS",
+   "status": "open",
+   "statement": "Uniform physical three-return modulus: Two strict Rouche margins do not bound all arbitrarily shrunk 3p collars by one universal physical modulus (F04).",
+   "deps": [
+    "NOV26_TIP_THEOREM"
+   ],
+   "evidence": "research/tip_family_theorem/AUDIT.md",
+   "clauses": "",
+   "hyp": "unproved",
+   "classification": "Open",
+   "group": "Open November research obligations",
+   "pr": null,
+   "verifier": "research/tip_family_theorem/verify_chain.py"
+  },
+  {
+   "id": "NOV26_OPEN_PSI",
+   "status": "open",
+   "statement": "Unrestricted psi-localization correspondence: No identification with unrestricted canonical psi-localization or draft KL Psi(W)→Psi(V) immersion is provided (F06).",
+   "deps": [
+    "NOV26_TIP_PRIME_END"
+   ],
+   "evidence": "research/tip_family_theorem/AUDIT.md",
+   "clauses": "",
+   "hyp": "unproved",
+   "classification": "Open",
+   "group": "Open November research obligations",
+   "pr": null,
+   "verifier": "research/tip_family_theorem/verify_chain.py"
+  },
+  {
+   "id": "NOV26_OPEN_ALL_PATHS",
+   "status": "open",
+   "statement": "All-path-groupoid marking control: Selected 2-versus-1 proper paths do not certify arbitrary proper representatives or all-path-groupoid transport (F10).",
+   "deps": [
+    "NOV26_TIP_PRIME_END"
+   ],
+   "evidence": "research/tip_family_theorem/AUDIT.md",
+   "clauses": "",
+   "hyp": "unproved",
+   "classification": "Open",
+   "group": "Open November research obligations",
+   "pr": null,
+   "verifier": "research/tip_family_theorem/verify_chain.py"
+  },
+  {
+   "id": "NOV26_OPEN_SUBSECTOR",
+   "status": "open",
+   "statement": "Fine-subsector edge escape: Old-edge spectral data do not imply iterated fine-subsector domination or zero-edge escape (F12).",
+   "deps": [
+    "NOV26_ISSUE40_EDGE"
+   ],
+   "evidence": "research/tip_family_theorem/AUDIT.md",
+   "clauses": "",
+   "hyp": "unproved",
+   "classification": "Open",
+   "group": "Open November research obligations",
+   "pr": null,
+   "verifier": "research/tip_family_theorem/verify_chain.py"
+  },
+  {
+   "id": "NOV26_OPEN_PAIR_OPTIMA",
+   "status": "open",
+   "statement": "Pairable/joint optimizer existence: No general round-wave equality, attainment of jointly compatible independent optima, or positive buffered/iterated WAD gain follows (F14 and PR #100).",
+   "deps": [
+    "NOV26_GAIN_ALLP"
+   ],
+   "evidence": "research/tip_family_theorem/AUDIT.md",
+   "clauses": "",
+   "hyp": "unproved",
+   "classification": "Open",
+   "group": "Open November research obligations",
+   "pr": null,
+   "verifier": "research/tip_family_theorem/verify_chain.py"
+  },
+  {
+   "id": "NOV26_OPEN_OPTIMAL_LIMIT",
+   "status": "open",
+   "statement": "Canonical optimal widths and convergence: Exact W_p*, equality W_p*=W_p,2*, optimizer attainment and convergence to the limiting-domain maxima remain open (F16).",
+   "deps": [
+    "NOV26_TIP_SANDWICH"
+   ],
+   "evidence": "research/tip_family_theorem/AUDIT.md",
+   "clauses": "",
+   "hyp": "unproved",
+   "classification": "Open",
+   "group": "Open November research obligations",
+   "pr": null,
+   "verifier": "research/tip_family_theorem/verify_chain.py"
+  },
+  {
+   "id": "NOV26_OPEN_CREST_LIMIT",
+   "status": "open",
+   "statement": "All-period crest transport limit: Selected full-circle collars are only certified through p=16; p>=17 persistence or positive limit ~0.347005 remains unproved (F17).",
+   "deps": [
+    "NOV26_CREST_16"
+   ],
+   "evidence": "research/tip_family_theorem/AUDIT.md",
+   "clauses": "",
+   "hyp": "unproved",
+   "classification": "Open",
+   "group": "Open November research obligations",
+   "pr": null,
+   "verifier": "research/tip_family_theorem/verify_chain.py"
+  },
+  {
+   "id": "NOV26_OPEN_EXTERNAL_REVIEW",
+   "status": "open",
+   "statement": "Formalization of imported hypotheses: Independent expert hypothesis-checking and formalization of DH, McMullen, Misiurewicz, Caratheodory and KKL arguments are absent (F20).",
+   "deps": [
+    "NOV26_TIP_PRIME_END"
+   ],
+   "evidence": "research/tip_family_theorem/AUDIT.md",
+   "clauses": "",
+   "hyp": "unproved",
+   "classification": "Open",
+   "group": "Open November research obligations",
+   "pr": null,
+   "verifier": "research/tip_family_theorem/verify_chain.py"
+  },
+  {
+   "id": "NOV26_OPEN_QGAMMA",
+   "status": "open",
+   "statement": "Canonical buffered WAD q-gamma and support: Every individual q-gamma, exhaustive q-gamma>2 arc support and repaired scalar electrode transfer remain open.",
+   "deps": [
+    "NOV26_WAD_MODULI"
+   ],
+   "evidence": "research/independent_audits/canonical_wad_quadrilateral_moduli_20261116/NOTE.md",
+   "clauses": "",
+   "hyp": "unproved",
+   "classification": "Open",
+   "group": "Open November research obligations",
+   "pr": null,
+   "verifier": "research/independent_audits/canonical_wad_quadrilateral_moduli_20261116/verify.py"
+  },
+  {
+   "id": "NOV26_OPEN_DEPTH_GATES",
+   "status": "open",
+   "statement": "Arbitrary-depth physical wave gates: Uniform round gates, Rouche errors, marked KKL prime ends and physical optimal-width comparison for all finite tuning words are unproved.",
+   "deps": [
+    "NOV26_DEPTH3"
+   ],
+   "evidence": "research/independent_audits/tip_family_all_depths_20261116/NOTE.md",
+   "clauses": "",
+   "hyp": "unproved",
+   "classification": "Open",
+   "group": "Open November research obligations",
+   "pr": null,
+   "verifier": "research/independent_audits/tip_family_all_depths_20261116/verify.py"
+  },
+  {
+   "id": "NOV26_OPEN_26_TRIPLES",
+   "status": "open",
+   "statement": "Remaining depth-three finite triples: The (3,3,3) exact packet does not check the other 26 triples in {3,4,5}^3.",
+   "deps": [
+    "NOV26_DEPTH3"
+   ],
+   "evidence": "research/independent_audits/tip_family_all_depths_20261116/NOTE.md",
+   "clauses": "",
+   "hyp": "unproved",
+   "classification": "Open",
+   "group": "Open November research obligations",
+   "pr": null,
+   "verifier": "research/independent_audits/tip_family_all_depths_20261116/verify.py"
+  },
+  {
+   "id": "NOV26_OPEN_MARKED_QC",
+   "status": "open",
+   "statement": "Uniform whole-slit QC correspondence: A global K'(mu)-uniform marked prime-end/A.1/A.3.2 family map, or two-sided cofinal-width domination, is not proved.",
+   "deps": [
+    "NOV26_GLOBAL_QC"
+   ],
+   "evidence": "research/independent_audits/tip_family_global_marked_qc_20261116/NOTE.md",
+   "clauses": "",
+   "hyp": "unproved",
+   "classification": "Open",
+   "group": "Open November research obligations",
+   "pr": null,
+   "verifier": "research/independent_audits/tip_family_global_marked_qc_20261116/verify.py"
+  },
+  {
+   "id": "NOV26_OPEN_QC_CONSTANT",
+   "status": "open",
+   "statement": "Effective QC and all-p reference: Neither effective K'(mu), a 0.26 reference for every p>=3 nor a depth-uniform physical crest ratio is certified.",
+   "deps": [
+    "NOV26_DEPTH_QC"
+   ],
+   "evidence": "research/independent_audits/tip_family_depth_uniform_qc_20261116/NOTE.md",
+   "clauses": "",
+   "hyp": "unproved",
+   "classification": "Open",
+   "group": "Open November research obligations",
+   "pr": null,
+   "verifier": "research/independent_audits/tip_family_depth_uniform_qc_20261116/verify.py"
+  },
+  {
+   "id": "NOV26_OPEN_TOWER_CONVERGENCE",
+   "status": "open",
+   "statement": "Infinite-tower canonical Wave limits: Published real non-doubling optimal-modulus bounds do not imply physical KKL optimal Wave convergence or a depth-independent selected round gate.",
+   "deps": [
+    "NOV26_GLOBAL_QC"
+   ],
+   "evidence": "research/independent_audits/tip_family_global_marked_qc_20261116/NOTE.md",
+   "clauses": "",
+   "hyp": "unproved",
+   "classification": "Open",
+   "group": "Open November research obligations",
+   "pr": null,
+   "verifier": "research/independent_audits/tip_family_global_marked_qc_20261116/verify.py"
+  },
+  {
+   "id": "NOV26_OPEN_SAT_WAVE",
+   "status": "open",
+   "statement": "Satellite/near-parabolic canonical transfer: The refused primitive v1 types supply neither a complete satellite canonical Wave nor an attachment angular electrode for the three near-parabolic tips.",
+   "deps": [
+    "NOV26_SAT_V2",
+    "NOV26_NEAR_PARAB"
+   ],
+   "evidence": "research/native_wave_transfer/SPECIFICATION_v2_satellite.md",
+   "clauses": "",
+   "hyp": "unproved",
+   "classification": "Open",
+   "group": "Open November research obligations",
+   "pr": null,
+   "verifier": "research/native_wave_transfer/regenerate_satellite_v2.py"
+  },
+  {
+   "id": "NOV26_OPEN_ISSUE40",
+   "status": "open",
+   "statement": "General Issue #40 amplification: The finite depth-four crest and conditional bounded-collar lemma do not establish general uniform old-edge crest amplification.",
+   "deps": [
+    "NOV26_ISSUE40_CREST"
+   ],
+   "evidence": "research/independent_audits/issue40_crest_transport_20261116/NOTE.md",
+   "clauses": "",
+   "hyp": "unproved",
+   "classification": "Open",
+   "group": "Open November research obligations",
+   "pr": null,
+   "verifier": "research/independent_audits/issue40_crest_transport_20261116/verify_crest_transport.py"
+  }
  ]
 }
