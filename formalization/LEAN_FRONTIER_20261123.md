@@ -1,6 +1,8 @@
 # Lean frontier: canonical sheet kernels and protected-carrier audits
 
-**Subsequent proof at the planar-fill interface.** The [planar realization](PHYSICAL_BRIDGES.md#planar-fill) constructs the filled hull on the complex plane, proves compactness for compact inputs, and specializes the finite-packet theorem. The [current proof index](PHYSICAL_BRIDGES.md) also links the verified period-27 sign and order results. The rankings below describe their stated base revision.
+> **Update to this dated snapshot.** The based-fiber equivalence and naturality for actual covering spaces now have [Lean proofs](weighted/LocalizationSheetKernel.lean). The specialization to a named KL square still needs its physical maps and a prescribed defect loop. The [attachment rank algebra](weighted/AttachmentDefectLedger.lean) is also present. [Current model-to-physical register](PHYSICAL_BRIDGES.md)
+
+**Subsequent proof at the planar-fill interface.** The [planar realization](PHYSICAL_BRIDGES_CONTRACTS.md#planar-fill) constructs the filled hull on the complex plane, proves compactness for compact inputs, and specializes the finite-packet theorem. The [current proof index](PHYSICAL_BRIDGES_CONTRACTS.md) also links the verified period-27 sign and order results. The rankings below describe their stated base revision.
 
 **Repository snapshot:** `main` commit `4840f628c25ef7a3ae91686ddf5ffb57dc0548b4` (2026-11-23).
 **Toolchain:** Lean 4.32.0; Mathlib v4.32.0 via `formalization/weighted/`.

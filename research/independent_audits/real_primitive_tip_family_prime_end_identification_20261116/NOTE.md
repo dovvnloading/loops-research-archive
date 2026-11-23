@@ -1,5 +1,7 @@
 # Prime-end and KKL marking identification for the real primitive-tip family
 
+> **Current proof status.** The all-period physical marking below is a historical proof attempt. V2 requires its H1–H2 for the complete KKL ideal-boundary and proper-path identification. The newer audit gives direct geometric arguments for the filled interval and the period-two obstruction. [Proofs and remaining hypotheses](../../tip_family_theorem/PHYSICAL_BRIDGES.md)
+
 **Audit dated 2026-11-16. Additive proof, all integers p >= 3.** This note discharges the specific *family-dependent* identification assumed in [the uniform family theorem](../real_primitive_tip_family_uniform_20261116/NOTE.md), without editing that theorem or any old certificate. The argument uses named, independently published theorems. **It does not identify an extremal Wave, give a canonical width, or prove a larger parameter-chart uniqueness statement.** In particular the source short-arc spans are **3, 3, 7** (not 3, 3, 3), and the covered spans are **3, 3, 5**, as corrected by [the ten-period audit](../real_primitive_tip_family_unconditional_20261116/NOTE.md).
 
 ## Precise statement and provenance

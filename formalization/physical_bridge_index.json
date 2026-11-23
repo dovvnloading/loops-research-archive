@@ -1,6 +1,6 @@
 {
   "ledger": {
-    "guide": "formalization/PHYSICAL_BRIDGES.md#ledger",
+    "guide": "formalization/PHYSICAL_BRIDGES_CONTRACTS.md#ledger",
     "theorems": {
       "ResearchLedger.lean": [
         "exact_ledger_size",
@@ -28,7 +28,7 @@
     ]
   },
   "clone-spectrum": {
-    "guide": "formalization/PHYSICAL_BRIDGES.md#clone-spectrum",
+    "guide": "formalization/PHYSICAL_BRIDGES_CONTRACTS.md#clone-spectrum",
     "theorems": {
       "CloneGraph.lean": [
         "forward",
@@ -96,11 +96,28 @@
         "e_to_f_at_most_one",
         "f_to_e_at_most_one"
       ],
-      "formalization/weighted/CloneBounds.lean": ["finite_clone_power_bounds"],
-      "formalization/weighted/CloneRoot.lean": ["finite_clone_root_exists", "finite_clone_root_unique", "finite_clone_root_existsUnique"],
-      "formalization/weighted/CloneRootRate.lean": ["clone_root_excess_bound", "clone_root_can_approach_one"],
-      "formalization/weighted/FullCloneEigen.lean": ["fullCloneVector_pos", "fullCloneAction_eigen", "exists_full_clone_positive_eigenpair"],
-      "formalization/weighted/FullCloneEigenline.lean": ["complex_clone_same_eigenvalue_cross", "full_clone_root_eigenline_unique", "full_clone_root_eigenvector_unique_of_hub"],
+      "formalization/weighted/CloneBounds.lean": [
+        "finite_clone_power_bounds"
+      ],
+      "formalization/weighted/CloneRoot.lean": [
+        "finite_clone_root_exists",
+        "finite_clone_root_unique",
+        "finite_clone_root_existsUnique"
+      ],
+      "formalization/weighted/CloneRootRate.lean": [
+        "clone_root_excess_bound",
+        "clone_root_can_approach_one"
+      ],
+      "formalization/weighted/FullCloneEigen.lean": [
+        "fullCloneVector_pos",
+        "fullCloneAction_eigen",
+        "exists_full_clone_positive_eigenpair"
+      ],
+      "formalization/weighted/FullCloneEigenline.lean": [
+        "complex_clone_same_eigenvalue_cross",
+        "full_clone_root_eigenline_unique",
+        "full_clone_root_eigenvector_unique_of_hub"
+      ],
       "formalization/weighted/FullCloneMatrix.lean": [
         "edge_from_nonlast_iff",
         "edge_from_last_iff",
@@ -121,10 +138,25 @@
         "complex_eigen_hub_nonzero",
         "full_clone_complex_eigenvalue_polynomial"
       ],
-      "formalization/weighted/FullCloneSpectralMax.lean": ["full_clone_real_root_is_complex_eigenvalue", "full_clone_root_is_dominant_complex_eigenvalue", "exists_dominant_full_clone_root"],
-      "formalization/weighted/FullCloneStrictGap.lean": ["clone_polynomial_norm_rigidity", "full_clone_strict_complex_spectral_gap", "exists_strictly_dominant_full_clone_root"],
-      "formalization/weighted/GraphWeightedBridge.lean": ["fromGraphWeighted_eq_weightedReturn", "graph_weighted_eigen_iff_polynomial", "graph_weighted_positive_witness"],
-      "formalization/weighted/SpectralDominance.lean": ["complex_eigenvalue_norm_le_of_positive_vector", "full_clone_eigenvalue_modulus_le"],
+      "formalization/weighted/FullCloneSpectralMax.lean": [
+        "full_clone_real_root_is_complex_eigenvalue",
+        "full_clone_root_is_dominant_complex_eigenvalue",
+        "exists_dominant_full_clone_root"
+      ],
+      "formalization/weighted/FullCloneStrictGap.lean": [
+        "clone_polynomial_norm_rigidity",
+        "full_clone_strict_complex_spectral_gap",
+        "exists_strictly_dominant_full_clone_root"
+      ],
+      "formalization/weighted/GraphWeightedBridge.lean": [
+        "fromGraphWeighted_eq_weightedReturn",
+        "graph_weighted_eigen_iff_polynomial",
+        "graph_weighted_positive_witness"
+      ],
+      "formalization/weighted/SpectralDominance.lean": [
+        "complex_eigenvalue_norm_le_of_positive_vector",
+        "full_clone_eigenvalue_modulus_le"
+      ],
       "formalization/weighted/WeightedReturn.lean": [
         "weighted_iff_cleared",
         "cleared_eigen_iff_polynomial",
@@ -151,7 +183,7 @@
     ]
   },
   "boundary-spectrum": {
-    "guide": "formalization/PHYSICAL_BRIDGES.md#boundary-spectrum",
+    "guide": "formalization/PHYSICAL_BRIDGES_CONTRACTS.md#boundary-spectrum",
     "theorems": {
       "MandelbrotSpectrum.lean": [
         "abel_identity",
@@ -168,9 +200,12 @@
     ]
   },
   "gate-h1": {
-    "guide": "formalization/PHYSICAL_BRIDGES.md#gate-h1",
+    "guide": "formalization/PHYSICAL_BRIDGES_CONTRACTS.md#gate-h1",
     "theorems": {
-      "ResearchGates.lean": ["no_bridge_H1", "separate_exists_does_not_supply_a_joint_tower"]
+      "ResearchGates.lean": [
+        "no_bridge_H1",
+        "separate_exists_does_not_supply_a_joint_tower"
+      ]
     },
     "obligations": [
       "FINITE_HORIZON_ASSEMBLY",
@@ -192,9 +227,11 @@
     ]
   },
   "gate-h2": {
-    "guide": "formalization/PHYSICAL_BRIDGES.md#gate-h2",
+    "guide": "formalization/PHYSICAL_BRIDGES_CONTRACTS.md#gate-h2",
     "theorems": {
-      "ResearchGates.lean": ["no_bridge_H2"]
+      "ResearchGates.lean": [
+        "no_bridge_H2"
+      ]
     },
     "obligations": [
       "H2_CALIBRATION",
@@ -226,9 +263,11 @@
     ]
   },
   "gate-h3": {
-    "guide": "formalization/PHYSICAL_BRIDGES.md#gate-h3",
+    "guide": "formalization/PHYSICAL_BRIDGES_CONTRACTS.md#gate-h3",
     "theorems": {
-      "ResearchGates.lean": ["no_bridge_H3"]
+      "ResearchGates.lean": [
+        "no_bridge_H3"
+      ]
     },
     "obligations": [
       "H3_COERCIVITY",
@@ -236,18 +275,23 @@
     ]
   },
   "gate-h4": {
-    "guide": "formalization/PHYSICAL_BRIDGES.md#gate-h4",
+    "guide": "formalization/PHYSICAL_BRIDGES_CONTRACTS.md#gate-h4",
     "theorems": {
-      "ResearchGates.lean": ["no_bridge_H4"]
+      "ResearchGates.lean": [
+        "no_bridge_H4"
+      ]
     },
     "obligations": [
       "H4_RIGIDITY"
     ]
   },
   "gate-universal": {
-    "guide": "formalization/PHYSICAL_BRIDGES.md#gate-universal",
+    "guide": "formalization/PHYSICAL_BRIDGES_CONTRACTS.md#gate-universal",
     "theorems": {
-      "ResearchGates.lean": ["package_of_same_carrier_gates", "no_bridge_has_package"]
+      "ResearchGates.lean": [
+        "package_of_same_carrier_gates",
+        "no_bridge_has_package"
+      ]
     },
     "obligations": [
       "CONDITIONAL_REDUCTION",
@@ -256,9 +300,12 @@
     ]
   },
   "gate-terminal": {
-    "guide": "formalization/PHYSICAL_BRIDGES.md#gate-terminal",
+    "guide": "formalization/PHYSICAL_BRIDGES_CONTRACTS.md#gate-terminal",
     "theorems": {
-      "ResearchGates.lean": ["conditional_local_connectivity", "no_bridge_does_not_imply_local_connectivity"]
+      "ResearchGates.lean": [
+        "conditional_local_connectivity",
+        "no_bridge_does_not_imply_local_connectivity"
+      ]
     },
     "obligations": [
       "MLC",
@@ -267,7 +314,7 @@
     ]
   },
   "planar-fill": {
-    "guide": "formalization/PHYSICAL_BRIDGES.md#planar-fill",
+    "guide": "formalization/PHYSICAL_BRIDGES_CONTRACTS.md#planar-fill",
     "theorems": {
       "formalization/weighted/PlanarFullification.lean": [
         "planarFill_extensive",
@@ -302,7 +349,7 @@
     ]
   },
   "numerical-observations": {
-    "guide": "formalization/PHYSICAL_BRIDGES.md#numerical-observations",
+    "guide": "formalization/PHYSICAL_BRIDGES_CONTRACTS.md#numerical-observations",
     "checks": [
       "code/exp1_limbs.py",
       "code/exp1b_limbs_wake.py",
@@ -411,7 +458,11 @@
         "polynomial_eq_quadratic_iterate",
         "exact_real_quadratic_period27"
       ],
-      "formalization/weighted/Period27RealKneading.lean": ["physical_sign_at", "physical_adjacent_order", "physical_kneading_numerator"],
+      "formalization/weighted/Period27RealKneading.lean": [
+        "physical_sign_at",
+        "physical_adjacent_order",
+        "physical_kneading_numerator"
+      ],
       "formalization/weighted/Period27RealUniqueness.lean": [
         "enclosed_iff_real",
         "fromRat_value",
@@ -554,8 +605,18 @@
         "twentyseven_to_three_cannot_preserve_distinct_marks",
         "period27_projection_commutes"
       ],
-      "RealTwoScalePhase.lean": ["nested_three_nine_phase_transport", "reduction_of_nine_phase", "phase_projection_respects_successor", "inner_clock_preserves_outer_phase"],
-      "formalization/weighted/PhaseMemoryCardinality.lean": ["finite_memory_card_ge", "no_small_fin_memory", "tower_memory_card_ge", "exactly_k_memory_states_suffice"]
+      "RealTwoScalePhase.lean": [
+        "nested_three_nine_phase_transport",
+        "reduction_of_nine_phase",
+        "phase_projection_respects_successor",
+        "inner_clock_preserves_outer_phase"
+      ],
+      "formalization/weighted/PhaseMemoryCardinality.lean": [
+        "finite_memory_card_ge",
+        "no_small_fin_memory",
+        "tower_memory_card_ge",
+        "exactly_k_memory_states_suffice"
+      ]
     },
     "checks": [
       "research/independent_audits/verify_paper2_source_clock.py"
@@ -831,7 +892,11 @@
   "parabolic": {
     "guide": "formalization/PHYSICAL_BRIDGES_DYNAMICS.md#parabolic",
     "theorems": {
-      "formalization/weighted/ParabolicArchiveBrackets.lean": ["archive_period24_exit", "archive_period27_exit", "archive_period30_exit"],
+      "formalization/weighted/ParabolicArchiveBrackets.lean": [
+        "archive_period24_exit",
+        "archive_period27_exit",
+        "archive_period30_exit"
+      ],
       "formalization/weighted/ParabolicBranches.lean": [
         "channel_strictMono",
         "block_abs",
@@ -877,13 +942,44 @@
         "complex_pullback_component",
         "straightening_parameter"
       ],
-      "formalization/weighted/ParabolicComplexPullback.lean": ["cquad_ofReal", "cquad_iterate_ofReal", "continuous_cquad", "sameSheet_pullback", "isOpen_sameSheet"],
-      "formalization/weighted/ParabolicDisjoint.lean": ["phase_images_disjoint", "first_return_on_interval"],
-      "formalization/weighted/ParabolicPhaseBands.lean": ["band_disjoint", "small_phase_bands", "exit_phase_bands", "small_phase_abs_injective"],
-      "formalization/weighted/ParabolicRealSheet.lean": ["phase_sign_agrees", "return_image_eq"],
-      "formalization/weighted/ParabolicSegment.lean": ["mem_realSegment_iff", "realSegment_compact", "realSegment_connected", "realSegment_compl_connected"],
-      "formalization/weighted/ParabolicShooting.lean": ["exists_crossing_Icc", "exists_descending_crossing_Icc", "exists_last_upper_hit"],
-      "formalization/weighted/ParabolicTipFamily.lean": ["Shot.on_exit_slab", "Shot.companion_center", "near_parabolic_primitive_tips", "tip_sequence_converges"],
+      "formalization/weighted/ParabolicComplexPullback.lean": [
+        "cquad_ofReal",
+        "cquad_iterate_ofReal",
+        "continuous_cquad",
+        "sameSheet_pullback",
+        "isOpen_sameSheet"
+      ],
+      "formalization/weighted/ParabolicDisjoint.lean": [
+        "phase_images_disjoint",
+        "first_return_on_interval"
+      ],
+      "formalization/weighted/ParabolicPhaseBands.lean": [
+        "band_disjoint",
+        "small_phase_bands",
+        "exit_phase_bands",
+        "small_phase_abs_injective"
+      ],
+      "formalization/weighted/ParabolicRealSheet.lean": [
+        "phase_sign_agrees",
+        "return_image_eq"
+      ],
+      "formalization/weighted/ParabolicSegment.lean": [
+        "mem_realSegment_iff",
+        "realSegment_compact",
+        "realSegment_connected",
+        "realSegment_compl_connected"
+      ],
+      "formalization/weighted/ParabolicShooting.lean": [
+        "exists_crossing_Icc",
+        "exists_descending_crossing_Icc",
+        "exists_last_upper_hit"
+      ],
+      "formalization/weighted/ParabolicTipFamily.lean": [
+        "Shot.on_exit_slab",
+        "Shot.companion_center",
+        "near_parabolic_primitive_tips",
+        "tip_sequence_converges"
+      ],
       "formalization/weighted/ParabolicTipPeriod.lean": [
         "reflected_blocks",
         "positive_iterates_even",
@@ -892,9 +988,18 @@
         "exact_period_of_shot",
         "critical_preperiod_of_shot"
       ],
-      "formalization/weighted/ParabolicTipRate.lean": ["channel_quadratic_step", "channel_inverse_square"],
-      "formalization/weighted/ParabolicTipShooting.lean": ["shot_exists", "Shot.first_rate_bound"],
-      "formalization/weighted/ParabolicTipWindow.lean": ["window_walls", "track_four_at_endpoint"]
+      "formalization/weighted/ParabolicTipRate.lean": [
+        "channel_quadratic_step",
+        "channel_inverse_square"
+      ],
+      "formalization/weighted/ParabolicTipShooting.lean": [
+        "shot_exists",
+        "Shot.first_rate_bound"
+      ],
+      "formalization/weighted/ParabolicTipWindow.lean": [
+        "window_walls",
+        "track_four_at_endpoint"
+      ]
     }
   },
   "diagnostics": {
@@ -939,7 +1044,13 @@
         "original_kernel_eq_resolved_kernel",
         "original_representatives_collision_iff",
         "original_injective_iff_pullback_equal",
-        "original_defect_collision"
+        "original_defect_collision",
+        "reversed_difference_can_reject_equal_sheets",
+        "endpoint_closed_iff",
+        "endpoints_eq_iff",
+        "sheetsEquivFiber_sheet",
+        "mapFiber_monodromy",
+        "physical_defect_collision"
       ],
       "research/independent_audits/issue62_connector_defects_20261116/RelativeDeck.lean": [
         "coarse_peripheral_is_not_in_fine_root_cyclic_subgroup",
@@ -954,7 +1065,9 @@
         "correct_nonabelian_prefix_order",
         "old_root_basis_not_invariant_under_conjugation"
       ],
-      "TipNativeDeckWords.lean": ["commutator_has_zero_winding_in_all_nine_generators"]
+      "TipNativeDeckWords.lean": [
+        "commutator_has_zero_winding_in_all_nine_generators"
+      ]
     },
     "checks": [
       "research/independent_audits/issue62_connector_defects_20261116/verify_issue62.py",
@@ -996,7 +1109,9 @@
   "w2": {
     "guide": "formalization/PHYSICAL_BRIDGES_WIDTH.md#w2",
     "theorems": {
-      "PhaseTower.lean": ["actual_return_requires_outer_alignment"]
+      "PhaseTower.lean": [
+        "actual_return_requires_outer_alignment"
+      ]
     },
     "obligations": [
       "COUNTABLE_FOLLOWER_STONE_COMPACTIFICATION",
@@ -1021,7 +1136,9 @@
         "connected_separating_trace_forces_strict_drop",
         "finite_rank_monotonicity_counterexample"
       ],
-      "formalization/weighted/ProtectedCarrierLogic.lean": ["diamond_has_no_least_carrier"]
+      "formalization/weighted/ProtectedCarrierLogic.lean": [
+        "diamond_has_no_least_carrier"
+      ]
     },
     "checks": [
       "research/independent_audits/verify_attachment_sheet_condenser.py",
@@ -1064,7 +1181,12 @@
   "w4": {
     "guide": "formalization/PHYSICAL_BRIDGES_WIDTH.md#w4",
     "theorems": {
-      "formalization/weighted/AtomCutDefect.lean": ["atom_only_apparent_two_cycle", "internal_cut_stalk_kills_atom_only_cycle", "realGate_rank_decreases", "no_real_gate_two_cycle"],
+      "formalization/weighted/AtomCutDefect.lean": [
+        "atom_only_apparent_two_cycle",
+        "internal_cut_stalk_kills_atom_only_cycle",
+        "realGate_rank_decreases",
+        "no_real_gate_two_cycle"
+      ],
       "formalization/weighted/LimbInsertionHolonomy.lean": [
         "clocked_orbit_semiconjugacy",
         "clock_one_or_two_bounds",
@@ -1105,9 +1227,15 @@
         "source_root_chain_propagates",
         "native_root_exposure_absorbs"
       ],
-      "TipKKLTreeMarking.lean": ["source_filter_negative_controls"],
-      "research/independent_audits/real_primitive_tip_family_unconditional_20261116/RealPrimitiveTipUnconditionalDiscrete.lean": ["immersion_labels"],
-      "research/independent_audits/real_primitive_tip_family_prime_end_identification_20261116/RealPrimitiveTipPrimeEndDiscrete.lean": ["different_immersion_blocks_at_filtered_ends"]
+      "TipKKLTreeMarking.lean": [
+        "source_filter_negative_controls"
+      ],
+      "research/independent_audits/real_primitive_tip_family_unconditional_20261116/RealPrimitiveTipUnconditionalDiscrete.lean": [
+        "immersion_labels"
+      ],
+      "research/independent_audits/real_primitive_tip_family_prime_end_identification_20261116/RealPrimitiveTipPrimeEndDiscrete.lean": [
+        "different_immersion_blocks_at_filtered_ends"
+      ]
     },
     "checks": [
       "research/independent_audits/canonical_wad_electrode_incidence_20261116/verify.py",
@@ -1180,7 +1308,17 @@
   "w5": {
     "guide": "formalization/PHYSICAL_BRIDGES_WIDTH.md#w5",
     "theorems": {
-      "formalization/weighted/NativeWaveGate.lean": ["no_two_subhalf_wad_packets"]
+      "formalization/weighted/NativeWaveGate.lean": [
+        "no_two_subhalf_wad_packets"
+      ],
+      "formalization/weighted/MarkedWaveSuprema.lean": [
+        "width_le_energy",
+        "le_width",
+        "optimum_positive_le",
+        "period_margin",
+        "gain_of_marked_metric_witnesses",
+        "one_test_leaf_misses_a_constraint"
+      ]
     },
     "checks": [
       "research/independent_audits/issue40_crest_transport_20261116/verify_crest_transport.py",
@@ -1228,7 +1366,9 @@
   "w6": {
     "guide": "formalization/PHYSICAL_BRIDGES_WIDTH.md#w6",
     "theorems": {
-      "research/independent_audits/real_primitive_tip_family_uniform_20261116/RealPrimitiveTipDiscrete.lean": ["symbolic_harmonic_coefficients"]
+      "research/independent_audits/real_primitive_tip_family_uniform_20261116/RealPrimitiveTipDiscrete.lean": [
+        "symbolic_harmonic_coefficients"
+      ]
     },
     "checks": [
       "research/independent_audits/canonical_wad_conformal_weights_20261116/verify.py",
@@ -1281,7 +1421,9 @@
   "w8": {
     "guide": "formalization/PHYSICAL_BRIDGES_WIDTH.md#w8",
     "theorems": {
-      "formalization/weighted/ParabolicTipFamily.lean": ["near_parabolic_primitive_tips"]
+      "formalization/weighted/ParabolicTipFamily.lean": [
+        "near_parabolic_primitive_tips"
+      ]
     },
     "checks": [
       "research/mlc_unified/validate_finite_modulus_infinite_end_no_go.py",

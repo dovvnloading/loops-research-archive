@@ -10,6 +10,8 @@ The companion papers isolate the principal finite and structural interfaces of t
 | **2. The Direct-Decoration Rooted-End Compactification** | Version 1.1 Visual Edition · 2026-07-27 · 21 pages | [PDF](./paper2_rooted_end_compactification/paper2_direct_decoration_rooted_end_compactification_v1.1_visual.pdf) | [`paper2_rooted_end_compactification/`](./paper2_rooted_end_compactification/) | Constructs the exact one-scale binary end compactification and its planar replacement/access interface. |
 | **3. Protected Planar Carriers: Separation Ledgers and Access-Preserving Routing** | **Draft III Visual Edition** · 2026-07-27 · 74 pages · QA audited | [PDF](./paper3_protected_carriers/paper3_draft3_visual.pdf) | [`paper3_protected_carriers/`](./paper3_protected_carriers/) | Gives finite realization and recognition criteria, an exact attachment ledger, persistent packet audits, and sharp compactness failure/stability tests. |
 
+The [two-scale physical proof audit](../formalization/TWO_SCALE_PHYSICAL_BRIDGES.md) traces the covering, component-quotient and planar-carrier theorems to their source hypotheses and records the open cross-scale steps.
+
 ## Logical sequence
 
 1. **Paper 1 changes the state space.** Canonical localization can force noninjectivity, so later constructions must retain sheet data or prove a faithful quotient.

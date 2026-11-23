@@ -1,6 +1,6 @@
 # Formal proof program — Lean 4
 
-For the current proof status, use the [model-to-geometry guide](PHYSICAL_BRIDGES.md). It covers the scoped period-27 and planar-fill realizations, distinguishes conditional geometric arguments, and links the historical entries below to the current theorem index.
+For the current proof status, use the [model-to-geometry guide](PHYSICAL_BRIDGES_CONTRACTS.md). It covers the scoped period-27 and planar-fill realizations, distinguishes conditional geometric arguments, and links the historical entries below to the current theorem index.
 
 ## Comprehensive frontier audit (2026-11-09)
 
