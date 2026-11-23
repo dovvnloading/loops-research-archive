@@ -114,6 +114,10 @@ The [model-to-physical proof register](./formalization/PHYSICAL_BRIDGES.md) reco
 
 The source-note [theorem referee audit](./research/tip_family_theorem/AUDIT.md) documents the corrected source **3/3/7** versus cover-pushed **3/3/5** short arcs. The [November open-obligation register](./RESEARCH_MAP.md#november-2026-open-obligations) and the machine `research_updates` supplement in [ledger.json](./ledger.json) track further gaps, including canonical widths and convergence, satellite/refused transfer, physical all-depth round gates, and globally marked K'(mu). **Issue [#40](https://github.com/dovvnloading/loops-research-archive/issues/40)** is not solved in general by one finite crest example; **Issue [#62](https://github.com/dovvnloading/loops-research-archive/issues/62)** supplies predecessor native marking/operator context, not all-scale transport. The abstract QC countermodel of PR #99 is not a counterexample in this physical tip family.
 
+**November 23 update for the channel near −7/4.** For every p=3n with n≥6, Lean proves existence of a parameter with critical preperiod p+1, eventual period p, disjoint real interval phases and an isolated complex pullback component. The analytic passage to a polynomial-like restriction and straightening uses external theorems. The period-doubling satellite contacts above have a separate marking, and the near-parabolic Wave observable still needs a source-designated electrode. [Family theorem](./formalization/weighted/ParabolicTipFamily.lean) · [Complex component and fibers](./formalization/weighted/ParabolicComplexComponent.lean) · [Contact and electrode obligations](./formalization/PHYSICAL_BRIDGES_WIDTH.md#w8)
+
+To check how a model theorem applies to an actual orbit, marked surface or parameter, start with the [model-to-geometry proof guide](./formalization/PHYSICAL_BRIDGES_CONTRACTS.md). It links each indexed Lean theorem to the relevant argument and identifies the hypotheses still needing proof.
+
 ## The mathematical program
 
 The central question is whether a **marked geometric state** can carry enough dynamical, topological, and analytic information across successive renormalization scales to support a uniform compactness-and-rigidity argument.
@@ -298,7 +302,7 @@ edge-incidence/prime-end realization, uniform WAD coercivity, or MLC.
 
 The [Lean arithmetic note](./research/independent_audits/lean_period27_kernel_arithmetic_20261105.md) explains the proof boundary, including why $2^{-128}$ arithmetic was too coarse to certify the period-27 **endpoint** signs and why the Lean computation uses $2^{-144}$. Kernel-reduced finite proofs use `decide +kernel`, not `native_decide` or proof holes; foundational Lean axioms can still appear in the declared imports.
 
-The [rational interval soundness proof note](./research/independent_audits/period27_rational_interval_soundness_20261105.md) closes a previous **arithmetic trust gap**: Lean now proves the interval operations are sound for general rational values, not just that one particular computed interval has favorable endpoints. This does not by itself prove a real root exists in Lean.
+The [rational interval soundness proof note](./research/independent_audits/period27_rational_interval_soundness_20261105.md) closes a previous **arithmetic trust gap**: Lean now proves the interval operations are sound for general rational values, not just that one particular computed interval has favorable endpoints. The [real-center and kneading proofs](./formalization/PHYSICAL_BRIDGES_DYNAMICS.md#period27) carry those bounds through continuity and differentiation to the unique exact-period center in the bracket, and read the finite sign word from actual iterates.
 
 ### Reproduce the central results
 

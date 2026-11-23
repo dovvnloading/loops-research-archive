@@ -2,6 +2,8 @@
 
 > **Update to this dated snapshot.** The attachment rank algebra from #111 is on main. The covering-space endpoint equivalence and variational width implication now have separate Lean modules. Source-specific KL maps, admissible foliations and all-child metrics still require independent realizations. [Current model-to-physical register](PHYSICAL_BRIDGES.md)
 
+**Subsequent proof at the planar-fill interface.** The [planar realization](PHYSICAL_BRIDGES_CONTRACTS.md#planar-fill) constructs the filled hull on the complex plane, proves compactness for compact inputs, and specializes the finite-packet theorem. The [current proof index](PHYSICAL_BRIDGES_CONTRACTS.md) also links the verified period-27 sign and order results. The rankings below describe their stated base revision.
+
 **Base revision:** `7df9b19ab8d87983a7a2c89160235d0576dbcb66`
 (2026-11-23). **Toolchain:** Lean 4.32.0; Mathlib v4.32.0 in
 `formalization/weighted`.
