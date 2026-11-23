@@ -152,6 +152,31 @@ checks 528 exact rational full-matrix residual identities. The
 compares numerical eigenspectra and positive roots for 34 clone
 lengths. These support the all-n Lean proofs but are not substitutes.
 
+## Paper 3 attachment-defect rank ledger (2026-11-23)
+
+[AttachmentDefectLedger.lean](AttachmentDefectLedger.lean) checks the precise
+finite-dimensional rational linear-algebra consequence of Paper 3's two
+attachment short exact sequences. Under explicitly supplied injective and
+surjective linear maps, exactness of both sequences, and the reduced
+degree-zero component-count identity, it proves
+
+`finrank(New) + finrank(Trace) + 1 = finrank(Old) + components`
+
+and the equivalent corrected, natural-number subtraction form, including
+the essential **negative** trace-separation correction. In particular,
+a connected trace with positive H¹ rank must decrease separation rank.
+The file also has a finite arithmetic anti-monotonicity regression and
+prints the axioms of its principal theorems.
+
+This is **not yet a planar/Čech cohomology theorem**: the actual
+Mayer–Vietoris maps, Alexander duality, finite-rank assumptions, and
+geometric attachment criteria remain to be supplied and proved. It does
+not modify the H1–H4/UPTCR/MLC status. See
+[the scoped audit](../LEAN_RISK_REGISTER_20261123.md) and
+[draft PR #111](https://github.com/dovvnloading/loops-research-archive/pull/111).
+
+CI: [successful weighted build at commit 6a3bac5](https://github.com/dovvnloading/loops-research-archive/actions/runs/45258094941).
+
 ## Reproduce
 
 From the formalization/weighted directory, execute:

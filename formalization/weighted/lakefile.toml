@@ -1,6 +1,6 @@
 name = "loops_weighted"
 version = "0.1.0"
-defaultTargets = ["WeightedReturn", "GraphWeightedBridge", "CloneBounds", "CloneRoot", "FullCloneEigen", "FullCloneMatrix", "SpectralDominance", "FullCloneSpectralMax", "Period27RealCenter", "Period27RealUniqueness", "Period27RealExactPeriod", "NativeWaveGate", "LimbInsertionHolonomy", "AtomCutDefect", "PhaseMemoryCardinality", "FullClonePolynomial", "FullCloneStrictGap", "FullCloneEigenline", "CloneRootRate", "LocalizationSheetKernel", "ProtectedCarrierLogic"]
+defaultTargets = ["WeightedReturn", "GraphWeightedBridge", "CloneBounds", "CloneRoot", "FullCloneEigen", "FullCloneMatrix", "SpectralDominance", "FullCloneSpectralMax", "Period27RealCenter", "Period27RealUniqueness", "Period27RealExactPeriod", "NativeWaveGate", "LimbInsertionHolonomy", "AtomCutDefect", "PhaseMemoryCardinality", "FullClonePolynomial", "FullCloneStrictGap", "FullCloneEigenline", "CloneRootRate", "LocalizationSheetKernel", "ProtectedCarrierLogic", "AttachmentDefectLedger"]
 
 [[require]]
 name = "mathlib"
@@ -140,3 +140,6 @@ name = "LocalizationSheetKernel"
 
 [[lean_lib]]
 name = "ProtectedCarrierLogic"
+
+[[lean_lib]]
+name = "AttachmentDefectLedger"

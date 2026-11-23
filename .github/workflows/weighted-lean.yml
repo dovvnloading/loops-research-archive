@@ -11,10 +11,12 @@ on:
       - 'research/**'
     paths:
       - 'formalization/weighted/**'
+      - '*.lean'
       - '.github/workflows/weighted-lean.yml'
   pull_request:
     paths:
       - 'formalization/weighted/**'
+      - '*.lean'
       - '.github/workflows/weighted-lean.yml'
   workflow_dispatch:
 
@@ -26,9 +28,28 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+      - name: Require each weighted Lean module in default Lake targets
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import tomllib
+
+          d = tomllib.loads(Path("formalization/weighted/lakefile.toml").read_text())
+          sources = {p.stem for p in Path("formalization/weighted").glob("*.lean")}
+          declared = {entry["name"] for entry in d["lean_lib"]}
+          defaults = set(d["defaultTargets"])
+          missing_declared = sorted(sources - declared)
+          missing_default = sorted(sources - defaults)
+          if missing_declared or missing_default:
+              raise SystemExit(
+                  f"Unregistered Lean sources: {missing_declared}; "
+                  f"omitted from Lake default targets: {missing_default}"
+              )
+          print(f"Every one of {len(sources)} weighted Lean files is a Lake default target.")
+          PY
       - name: Reject proof holes or added axioms
         run: |
-          if grep -En '(^|[^A-Za-z_])(sorry|admit|axiom)([^A-Za-z_]|$)' formalization/weighted/WeightedReturn.lean formalization/weighted/GraphWeightedBridge.lean formalization/weighted/CloneBounds.lean formalization/weighted/CloneRoot.lean formalization/weighted/FullCloneEigen.lean formalization/weighted/FullCloneMatrix.lean formalization/weighted/SpectralDominance.lean formalization/weighted/NativeWaveGate.lean formalization/weighted/LimbInsertionHolonomy.lean formalization/weighted/AtomCutDefect.lean formalization/weighted/FullCloneSpectralMax.lean formalization/weighted/Period27RealCenter.lean formalization/weighted/Period27RealUniqueness.lean formalization/weighted/Period27RealExactPeriod.lean formalization/weighted/PhaseMemoryCardinality.lean formalization/weighted/FullClonePolynomial.lean formalization/weighted/FullCloneStrictGap.lean formalization/weighted/FullCloneEigenline.lean formalization/weighted/CloneRootRate.lean formalization/weighted/LocalizationSheetKernel.lean formalization/weighted/ProtectedCarrierLogic.lean; then
+          if grep -En '(^|[^A-Za-z_])(sorry|admit|axiom)([^A-Za-z_]|$)' formalization/weighted/*.lean; then
             echo 'Proof placeholders and custom axioms are prohibited'
             exit 1
           fi
