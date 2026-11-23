@@ -44,7 +44,8 @@ theorem sheet_eq_iff (H : Subgroup G) (a b : G) :
     sheet H a = sheet H b ↔ a⁻¹ * b ∈ H := by
   constructor
   · exact Quotient.exact
-  · exact Quotient.sound
+  · intro h
+    exact Quotient.sound h
 
 /-- In particular, the base sheet records exactly subgroup membership. -/
 theorem base_sheet_eq_iff (H : Subgroup G) (g : G) :
@@ -214,7 +215,8 @@ theorem original_kernel_eq_resolved_kernel
     originalTarget φ J hHK x = originalTarget φ J hHK y ↔
       coarsen hHK x = coarsen hHK y := by
   constructor
-  · exact resolvedTarget_injective φ J
+  · intro h
+    exact resolvedTarget_injective φ J h
   · exact congrArg (resolvedTarget φ J)
 
 /-- A detected collision is exactly membership of the difference
