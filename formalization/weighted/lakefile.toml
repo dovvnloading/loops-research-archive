@@ -1,6 +1,6 @@
 name = "loops_weighted"
 version = "0.1.0"
-defaultTargets = ["WeightedReturn", "GraphWeightedBridge", "CloneBounds", "CloneRoot", "FullCloneEigen", "FullCloneMatrix", "SpectralDominance", "FullCloneSpectralMax", "Period27RealCenter", "Period27RealUniqueness", "Period27RealExactPeriod", "NativeWaveGate", "LimbInsertionHolonomy", "AtomCutDefect", "PhaseMemoryCardinality", "FullClonePolynomial", "FullCloneStrictGap", "FullCloneEigenline", "CloneRootRate", "LocalizationSheetKernel", "ProtectedCarrierLogic", "AttachmentDefectLedger"]
+defaultTargets = ["WeightedReturn", "GraphWeightedBridge", "CloneBounds", "CloneRoot", "FullCloneEigen", "FullCloneMatrix", "SpectralDominance", "FullCloneSpectralMax", "Period27RealCenter", "Period27RealUniqueness", "Period27RealExactPeriod", "NativeWaveGate", "LimbInsertionHolonomy", "AtomCutDefect", "PhaseMemoryCardinality", "FullClonePolynomial", "FullCloneStrictGap", "FullCloneEigenline", "CloneRootRate", "LocalizationSheetKernel", "ProtectedCarrierLogic", "AttachmentDefectLedger", "ParabolicArchiveBrackets", "ParabolicBranches", "ParabolicCenterBranch", "ParabolicChannel", "ParabolicComplexComponent", "ParabolicComplexPullback", "ParabolicDisjoint", "ParabolicPhaseBands", "ParabolicRealSheet", "ParabolicSegment", "ParabolicShooting", "ParabolicTipFamily", "ParabolicTipPeriod", "ParabolicTipRate", "ParabolicTipShooting", "ParabolicTipWindow"]
 
 [[require]]
 name = "mathlib"
@@ -143,3 +143,52 @@ name = "ProtectedCarrierLogic"
 
 [[lean_lib]]
 name = "AttachmentDefectLedger"
+
+# All-period parabolic family; each source is registered as a default target.
+[[lean_lib]]
+name = "ParabolicArchiveBrackets"
+
+[[lean_lib]]
+name = "ParabolicBranches"
+
+[[lean_lib]]
+name = "ParabolicCenterBranch"
+
+[[lean_lib]]
+name = "ParabolicChannel"
+
+[[lean_lib]]
+name = "ParabolicComplexComponent"
+
+[[lean_lib]]
+name = "ParabolicComplexPullback"
+
+[[lean_lib]]
+name = "ParabolicDisjoint"
+
+[[lean_lib]]
+name = "ParabolicPhaseBands"
+
+[[lean_lib]]
+name = "ParabolicRealSheet"
+
+[[lean_lib]]
+name = "ParabolicSegment"
+
+[[lean_lib]]
+name = "ParabolicShooting"
+
+[[lean_lib]]
+name = "ParabolicTipFamily"
+
+[[lean_lib]]
+name = "ParabolicTipPeriod"
+
+[[lean_lib]]
+name = "ParabolicTipRate"
+
+[[lean_lib]]
+name = "ParabolicTipShooting"
+
+[[lean_lib]]
+name = "ParabolicTipWindow"
