@@ -1,5 +1,7 @@
 # Hostile referee report: near-\(-2\) real primitive-tip dependency chain
 
+> **Current proof status.** The entries below record the earlier synthesis. The referee-controlled v2 retains the complete physical KKL marking, all-path metric and peripheral-cover comparisons as hypotheses H1–H4. The subsequent proof audit gives the current statement for each transition. [Proofs and remaining hypotheses](PHYSICAL_BRIDGES.md)
+
 **Audited:** 2026-11-16, against the merged source files cited in [THEOREM.md](THEOREM.md). This is a **new-only** record: no legacy NOTE, source manifest, code, theorem-status ledger or workflow is altered. A passing verifier means its particular *rational/finite* premises and pinned outputs survive; it does not confer independent expert review on an external theorem or turn an imported conformal identification into a computer proof.
 
 ## Disposition

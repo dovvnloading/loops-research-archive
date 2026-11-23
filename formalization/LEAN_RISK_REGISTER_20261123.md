@@ -1,5 +1,7 @@
 # Source-grounded Lean risk register and proof contracts (2026-11-23)
 
+> **Update to this dated snapshot.** The attachment rank algebra from #111 is on main. The covering-space endpoint equivalence and variational width implication now have separate Lean modules. Source-specific KL maps, admissible foliations and all-child metrics still require independent realizations. [Current model-to-physical register](PHYSICAL_BRIDGES.md)
+
 **Base revision:** `7df9b19ab8d87983a7a2c89160235d0576dbcb66`
 (2026-11-23). **Toolchain:** Lean 4.32.0; Mathlib v4.32.0 in
 `formalization/weighted`.

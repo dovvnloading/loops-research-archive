@@ -18,6 +18,8 @@ Submit a complete argument for a stated lemma, theorem, or open gate. Include:
 
 A proof that closes only a conditional subcase should state that subcase precisely. Do not promote a finite or one-scale theorem to a global conclusion without the transition theorem that justifies the promotion.
 
+For a model-to-physical claim, register the mathematical implication and its evidence in the [proof register](./formalization/PHYSICAL_BRIDGES.md) and associate the executable source in the [source index](./formalization/physical_bridge_sources.tsv). State which map sends model data to the named physical object, prove that it preserves the observable used in the conclusion, and identify the evidence for each nontrivial premise. Record an unproved identification as open and a result using it as conditional. Run `python3 code/verify_physical_bridges.py` to check the wiring.
+
 ### Counterexample or obstruction
 
 A counterexample should identify the smallest claim it defeats and verify each advertised hypothesis. Include:
