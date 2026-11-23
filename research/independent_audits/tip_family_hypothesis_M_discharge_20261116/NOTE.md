@@ -1,7 +1,5 @@
 # Discharge of the selected physical ideal marking M for the real primitive-tip Wave
 
-> **Current proof status.** The discharge asserted below was challenged in referee findings F1–F2. V2 retains the physical marking and the all-path width comparison as separate hypotheses. The finite tables and rational bounds can be checked independently. [Proofs and remaining hypotheses](../../tip_family_theorem/PHYSICAL_BRIDGES.md)
-
 **2026-11-16. Additive audit, all integers \(p\ge3\).**  
 **Result:** The physical marking hypothesis **M is discharged for exactly the
 quadratic-like restrictions and slit surfaces used in the four merged

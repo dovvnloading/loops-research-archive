@@ -1,7 +1,5 @@
 # Buffered canonical WAD on the real primitive-tip family: an exact peripheral exclusion, **not** a support solution
 
-> **Current proof status.** The physical outer-class exclusion in this historical audit requires v2 H1, H2 and the peripheral-cover comparison H4. The ellipse and modulus calculations supply the quantitative inputs. [Proofs and remaining hypotheses](../../tip_family_theorem/PHYSICAL_BRIDGES.md)
-
 **2026-11-16 — partial independent audit, all selected integers \(p\ge3\).**
 **New result:** for \(p=11,12\) and **every** \(p\ge13\), **every**
 KKL A.2.3 ideal quadrilateral whose arc is incident on the *outer* boundary

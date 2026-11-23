@@ -1,7 +1,5 @@
 # Physical endpoint cross-ratios for the primitive-tip inner WAD: rigorous comparison bounds and a symmetry obstruction
 
-> **Current proof status.** The physical classwise interpretation of the comparison bounds uses the v2 ideal-marking and peripheral-cover hypotheses H1, H2 and H4. The actual inner support remains open. [Proofs and remaining hypotheses](../../tip_family_theorem/PHYSICAL_BRIDGES.md)
-
 **2026-11-16 — ADDITIVE / PARTIAL / support still OPEN.** This is a
 read-only sequel to the merged [inner audit](../tip_family_buffered_wad_inner_20261116/NOTE.md)
 and its [outer audit](../tip_family_buffered_wad_20261116/NOTE.md).
