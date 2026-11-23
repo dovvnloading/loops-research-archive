@@ -18,6 +18,8 @@ Submit a complete argument for a stated lemma, theorem, or open gate. Include:
 
 A proof that closes only a conditional subcase should state that subcase precisely. Do not promote a finite or one-scale theorem to a global conclusion without the transition theorem that justifies the promotion.
 
+For a model theorem used on an actual orbit, cover, continuum or curve family, add its name and source to the [bridge index](./formalization/physical_bridge_index.json). In the linked [proof guide](./formalization/PHYSICAL_BRIDGES.md), specify the physical object and quantifiers, construct the identification, and show how the conclusion follows. Cite the proof for each geometric premise or mark the premise open. Run `python3 -B code/verify_physical_bridges.py` to check the references and coverage. The mathematical review concerns the argument at those references.
+
 ### Counterexample or obstruction
 
 A counterexample should identify the smallest claim it defeats and verify each advertised hypothesis. Include:

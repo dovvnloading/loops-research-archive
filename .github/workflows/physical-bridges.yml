@@ -1,0 +1,21 @@
+name: Model-to-geometry coverage
+
+on:
+  push:
+    branches: [main, 'research/**']
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  check-references:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Check theorem, certificate and proof-obligation coverage
+        run: python3 -B code/verify_physical_bridges.py

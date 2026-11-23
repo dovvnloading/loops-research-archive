@@ -1,5 +1,7 @@
 # Formal proof program — Lean 4
 
+For the current proof status, use the [model-to-geometry guide](PHYSICAL_BRIDGES.md). It covers the scoped period-27 and planar-fill realizations, distinguishes conditional geometric arguments, and links the historical entries below to the current theorem index.
+
 ## Comprehensive frontier audit (2026-11-09)
 
 The [Lean frontier audit](FRONTIER_2026-11-09.md) indexes all 115 open source-ledger obligations, the 20 immediately unblocked nodes and all 14 conditional documentary-proved statements with their explicit unresolved hypotheses. This is a **source-status audit**, not a closure of MLC or any analytic H1–H4 gate.

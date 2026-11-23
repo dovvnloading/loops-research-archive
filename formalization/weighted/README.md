@@ -177,6 +177,10 @@ not modify the H1–H4/UPTCR/MLC status. See
 
 CI: [successful weighted build at commit 6a3bac5](https://github.com/dovvnloading/loops-research-archive/actions/runs/45258094941).
 
+## Realizations on actual orbits and compact planar sets
+
+[Period27RealKneading.lean](Period27RealKneading.lean) evaluates the sign word and all adjacent order comparisons on the real quadratic iterates in the isolated parameter bracket. [PlanarFullification.lean](PlanarFullification.lean) constructs the operator filling bounded complementary components of actual subsets of the complex plane, proves compactness on compact inputs, and applies the existing finite-packet theorem to that operator. The [proof guide](../PHYSICAL_BRIDGES.md) gives the independent hypotheses for ray landing and protected-access survival.
+
 ## Reproduce
 
 From the formalization/weighted directory, execute:

@@ -1,0 +1,1316 @@
+{
+  "ledger": {
+    "guide": "formalization/PHYSICAL_BRIDGES.md#ledger",
+    "theorems": {
+      "ResearchLedger.lean": [
+        "exact_ledger_size",
+        "imported_count",
+        "documentary_proved_count",
+        "open_count",
+        "recorded_dependency_count",
+        "recorded_conditional_count",
+        "open_frontier_count",
+        "acyclic_including_hypotheses",
+        "documentary_proved_deps_not_open",
+        "terminal_research_gates_remain_open",
+        "terminal_conditional_hypothesis_is_explicit"
+      ]
+    },
+    "checks": [
+      "research/independent_audits/audit_ledger_evidence.py",
+      "research/independent_audits/check_ledger_mirrors.py",
+      "research/mlc_unified/audit_ledger_tooling_regressions.py",
+      "research/mlc_unified/audit_proof.py",
+      "research/mlc_unified/audit_side_research_library.py"
+    ],
+    "research_updates": [
+      "NOV26_OPEN_EXTERNAL_REVIEW"
+    ]
+  },
+  "clone-spectrum": {
+    "guide": "formalization/PHYSICAL_BRIDGES.md#clone-spectrum",
+    "theorems": {
+      "CloneGraph.lean": [
+        "forward",
+        "fromHub",
+        "toHub",
+        "longLoop",
+        "shortLoop",
+        "repeatLoop",
+        "every_clone_is_primitive",
+        "e_to_f_long",
+        "e_to_f_short",
+        "f_to_e",
+        "short_cycle_from_gates",
+        "long_cycle_from_gates"
+      ],
+      "FirstReturn.lean": [
+        "first_to_f_length_support",
+        "first_to_e_length_support",
+        "cannot_return_to_e_before_f",
+        "cannot_return_to_f_after_f",
+        "no_e_to_e_first_return",
+        "no_f_to_f_first_return",
+        "e_to_f_first_return_lengths",
+        "f_to_e_first_return_length",
+        "straight_to_f",
+        "shortcut_to_f",
+        "straight_to_e",
+        "e_to_f_short_first_return_exists",
+        "e_to_f_long_first_return_exists",
+        "f_to_e_first_return_exists"
+      ],
+      "LoopsFormal.lean": [
+        "returnStep_square",
+        "zero_coordinate_survives",
+        "first_column_has_zero",
+        "second_column_has_zero",
+        "no_positive_power",
+        "two_gate_return_not_primitive"
+      ],
+      "ReturnBlocks.lean": [
+        "Q_matches_graph",
+        "C_matches_graph",
+        "D_matches_graph",
+        "no_gate_edge",
+        "Q_squared_zero",
+        "R2_exact",
+        "R3_exact",
+        "R_exact",
+        "returnAction_matches_previous",
+        "iterateAction_eq_previous",
+        "return_matrix_not_primitive"
+      ],
+      "ReturnPaths.lean": [
+        "returnPath_nonempty_of_prop",
+        "returnPaths_subsingleton",
+        "unique_e_to_f_short",
+        "unique_e_to_f_long",
+        "unique_f_to_e",
+        "no_other_e_to_f_lengths",
+        "no_other_f_to_e_lengths",
+        "no_e_to_e_concrete",
+        "no_f_to_f_concrete",
+        "e_to_f_nonempty_iff",
+        "f_to_e_nonempty_iff",
+        "e_to_f_at_most_one",
+        "f_to_e_at_most_one"
+      ],
+      "formalization/weighted/CloneBounds.lean": ["finite_clone_power_bounds"],
+      "formalization/weighted/CloneRoot.lean": ["finite_clone_root_exists", "finite_clone_root_unique", "finite_clone_root_existsUnique"],
+      "formalization/weighted/CloneRootRate.lean": ["clone_root_excess_bound", "clone_root_can_approach_one"],
+      "formalization/weighted/FullCloneEigen.lean": ["fullCloneVector_pos", "fullCloneAction_eigen", "exists_full_clone_positive_eigenpair"],
+      "formalization/weighted/FullCloneEigenline.lean": ["complex_clone_same_eigenvalue_cross", "full_clone_root_eigenline_unique", "full_clone_root_eigenvector_unique_of_hub"],
+      "formalization/weighted/FullCloneMatrix.lean": [
+        "edge_from_nonlast_iff",
+        "edge_from_last_iff",
+        "fullMatrixAction_eq_fullCloneAction",
+        "fullAdjacencyMatrix_eigen",
+        "exists_full_adjacency_positive_eigenpair",
+        "fullAdjacencyMatrix_nonneg",
+        "fullAdjacencyMatrix_one_iff_edge",
+        "fullAdjacencyMatrix_mulVec_eigen"
+      ],
+      "formalization/weighted/FullClonePolynomial.lean": [
+        "complex_full_matrix_action",
+        "complex_eigen_prefix",
+        "complex_eigen_suffix",
+        "complex_eigen_shortcut",
+        "complex_eigen_wrap",
+        "complex_eigen_polynomial_times_hub",
+        "complex_eigen_hub_nonzero",
+        "full_clone_complex_eigenvalue_polynomial"
+      ],
+      "formalization/weighted/FullCloneSpectralMax.lean": ["full_clone_real_root_is_complex_eigenvalue", "full_clone_root_is_dominant_complex_eigenvalue", "exists_dominant_full_clone_root"],
+      "formalization/weighted/FullCloneStrictGap.lean": ["clone_polynomial_norm_rigidity", "full_clone_strict_complex_spectral_gap", "exists_strictly_dominant_full_clone_root"],
+      "formalization/weighted/GraphWeightedBridge.lean": ["fromGraphWeighted_eq_weightedReturn", "graph_weighted_eigen_iff_polynomial", "graph_weighted_positive_witness"],
+      "formalization/weighted/SpectralDominance.lean": ["complex_eigenvalue_norm_le_of_positive_vector", "full_clone_eigenvalue_modulus_le"],
+      "formalization/weighted/WeightedReturn.lean": [
+        "weighted_iff_cleared",
+        "cleared_eigen_iff_polynomial",
+        "weighted_eigen_iff_polynomial",
+        "positive_gate_eigenvector",
+        "printed_positive_eigen_scalar",
+        "printed_positive_scalar_incompatible",
+        "no_printed_positive_eigen_at_clone_root"
+      ]
+    },
+    "checks": [
+      "research/independent_audits/verify_clone_first_returns.py",
+      "research/independent_audits/verify_clone_spectral.py",
+      "research/independent_audits/verify_clone_strict_gap.py",
+      "research/independent_audits/verify_full_clone_adjacency.py",
+      "research/independent_audits/verify_full_clone_spectral_radius.py",
+      "research/independent_audits/verify_weighted_return_exact.py"
+    ],
+    "obligations": [
+      "H2_VIRTUAL_CLONE_REALIZATION",
+      "KKL_CLONE_EIGEN",
+      "KKL_PRINTED_CLONE_EQUATION_NO_GO",
+      "KKL_TYPED_VALUE_INCIDENCE"
+    ]
+  },
+  "boundary-spectrum": {
+    "guide": "formalization/PHYSICAL_BRIDGES.md#boundary-spectrum",
+    "theorems": {
+      "MandelbrotSpectrum.lean": [
+        "abel_identity",
+        "square_weight_abel",
+        "five_coefficient_energy",
+        "five_coefficient_residual",
+        "radius_two_budget",
+        "first_fejer_difference"
+      ]
+    },
+    "checks": [
+      "research/independent_audits/verify_mlc_boundary_spectrum.py",
+      "research/independent_audits/verify_mlc_spectrum_extended.py"
+    ]
+  },
+  "gate-h1": {
+    "guide": "formalization/PHYSICAL_BRIDGES.md#gate-h1",
+    "theorems": {
+      "ResearchGates.lean": ["no_bridge_H1", "separate_exists_does_not_supply_a_joint_tower"]
+    },
+    "obligations": [
+      "FINITE_HORIZON_ASSEMBLY",
+      "H1_ANALYTIC_ACCESS_REALIZATION",
+      "H1_CELL_TREE_EXTRACTION",
+      "H1_FINITE_HORIZON_INFLATION",
+      "H1_MARKED_CONSTRUCTION",
+      "MAPPING_TELESCOPE",
+      "VIRTUAL_ACCESS_ACTION_CERTIFICATE",
+      "VIRTUAL_CYLINDER_TARGET_ADDRESS_SELECTOR",
+      "VIRTUAL_FINITE_WORD_ROOT_PORTRAIT_AUTHORIZATION",
+      "VIRTUAL_PROVISIONAL_COMPLEMENT_PAIR",
+      "VIRTUAL_REACHED_CYLINDER_COMPONENT_EXHAUSTION",
+      "VIRTUAL_RETURN_BASE_ATLAS",
+      "VIRTUAL_RETURN_BRANCH_LANGUAGE",
+      "VIRTUAL_WAVE_DEMAND_SCHEMA",
+      "VIRTUAL_WAVE_HORIZON_CERTIFICATE",
+      "VIRTUAL_WAVE_MARKED_CORRESPONDENCE"
+    ]
+  },
+  "gate-h2": {
+    "guide": "formalization/PHYSICAL_BRIDGES.md#gate-h2",
+    "theorems": {
+      "ResearchGates.lean": ["no_bridge_H2"]
+    },
+    "obligations": [
+      "H2_CALIBRATION",
+      "H2_CHART_CYCLE_EXPANSION",
+      "H2_CONE_CALIBRATION",
+      "H2_DISCOUNTED_ERROR_CHARGE",
+      "H2_ENTROPY_DICHOTOMY",
+      "H2_FORWARD_CONTRACTION_CALIBRATION",
+      "H2_MEMORY_SAFE_PUMPING_COMPILATION",
+      "H2_RESPONSE_REALIZATION",
+      "H2_SUMMABILITY",
+      "H2_UNIFORM_CORE_WAD_DIMENSION",
+      "H2_UNIFORM_COUNTER_FOLLOWER",
+      "H2_VALUE_FEATURE_REALIZATION",
+      "H2_VIRTUAL_CORE_COCYCLE_REALIZATION",
+      "H2_VIRTUAL_CORRIDOR_GRAPH_REALIZATION",
+      "H2_VIRTUAL_LONG_ITERATE_WAVE",
+      "H2_VIRTUAL_SECTION4_INTERFACE",
+      "H2_VIRTUAL_SUPPORT_AUTOMATON",
+      "H2_VIRTUAL_TAME_FULL_RETURN",
+      "H2_VIRTUAL_TRANSFER_TRICHOTOMY",
+      "MBTT"
+    ],
+    "checks": [
+      "research/mlc_research_push_3_bundle/plumbing_response_audit.py",
+      "research/mlc_research_push_7_bundle/push7/kkl_value_moment_audit.py",
+      "research/mlc_research_push_7_bundle/push7/matrix_product_observable_audit.py",
+      "research/mlc_unified/audit_transfer_regressions.py"
+    ]
+  },
+  "gate-h3": {
+    "guide": "formalization/PHYSICAL_BRIDGES.md#gate-h3",
+    "theorems": {
+      "ResearchGates.lean": ["no_bridge_H3"]
+    },
+    "obligations": [
+      "H3_COERCIVITY",
+      "H3_SYMBOLIC_SIDE_COMPACTNESS"
+    ]
+  },
+  "gate-h4": {
+    "guide": "formalization/PHYSICAL_BRIDGES.md#gate-h4",
+    "theorems": {
+      "ResearchGates.lean": ["no_bridge_H4"]
+    },
+    "obligations": [
+      "H4_RIGIDITY"
+    ]
+  },
+  "gate-universal": {
+    "guide": "formalization/PHYSICAL_BRIDGES.md#gate-universal",
+    "theorems": {
+      "ResearchGates.lean": ["package_of_same_carrier_gates", "no_bridge_has_package"]
+    },
+    "obligations": [
+      "CONDITIONAL_REDUCTION",
+      "UNIVERSAL_PROTECTED_TOWER_CLOSURE",
+      "UPTCR_CROSS_VALIDATION"
+    ]
+  },
+  "gate-terminal": {
+    "guide": "formalization/PHYSICAL_BRIDGES.md#gate-terminal",
+    "theorems": {
+      "ResearchGates.lean": ["conditional_local_connectivity", "no_bridge_does_not_imply_local_connectivity"]
+    },
+    "obligations": [
+      "MLC",
+      "UPTCR_IMPLIES_MLC",
+      "YOCCOZ"
+    ]
+  },
+  "planar-fill": {
+    "guide": "formalization/PHYSICAL_BRIDGES.md#planar-fill",
+    "theorems": {
+      "formalization/weighted/PlanarFullification.lean": [
+        "planarFill_extensive",
+        "mem_planarFill_iff",
+        "planarFill_mono",
+        "planarFill_idempotent",
+        "planarFill_exterior",
+        "planarFill_compact",
+        "planar_fill_absorption",
+        "planar_packet_completion"
+      ],
+      "formalization/weighted/ProtectedCarrierLogic.lean": [
+        "fill_absorption",
+        "fill_absorption_right",
+        "two_piece_fill_order_independent",
+        "packetUnion_nil",
+        "packetUnion_cons",
+        "complete_eq_hull_union",
+        "packetUnion_perm",
+        "complete_perm",
+        "hull_intersection_fixed",
+        "packet_merger_persists",
+        "enlarged_packets_cannot_be_disjoint",
+        "localization_escape_persists",
+        "no_surviving_port_persists",
+        "no_least_of_two_carriers",
+        "diamond_has_no_least_carrier"
+      ]
+    },
+    "obligations": [
+      "FULLIFICATION"
+    ]
+  },
+  "numerical-observations": {
+    "guide": "formalization/PHYSICAL_BRIDGES.md#numerical-observations",
+    "checks": [
+      "code/exp1_limbs.py",
+      "code/exp1b_limbs_wake.py",
+      "code/exp2_rays.py",
+      "code/exp3_feigenbaum.py",
+      "code/exp4_images.py",
+      "code/exp5_figs.py"
+    ]
+  },
+  "period27": {
+    "guide": "formalization/PHYSICAL_BRIDGES_DYNAMICS.md#period27",
+    "theorems": {
+      "Period27Dyadic.lean": [
+        "precision128_endpoint_sign_test_fails",
+        "parameter_bracket_straddles_period27_root",
+        "certified_endpoint_enclosures",
+        "derivative_strict_negative",
+        "critical_period_proper_divisors_nonzero",
+        "all_critical_signs_are_certified",
+        "physical_orbit_order_verified_by_intervals",
+        "period27_dyadic_matches_symbolic_inputs"
+      ],
+      "Period27IntervalSound.lean": [
+        "signed_floor_rounds_outward",
+        "signed_ceil_rounds_outward",
+        "integer_square_between_endpoints",
+        "signed_square_rounding_sound_on_grid",
+        "integer_product_between_four_corners",
+        "signed_multiplication_rounding_sound_on_grid",
+        "signed_interval_add_sound_on_grid",
+        "signed_double_sound_on_grid",
+        "signed_add_sound_for_fractions",
+        "signed_mul_sound_for_fractions",
+        "signed_square_sound_for_fractions",
+        "signed_double_sound_for_fractions"
+      ],
+      "Period27Kneading.lean": [
+        "critical_sign_count",
+        "exactly_27_kneading_bits",
+        "kneading_matches_twice_tuned_airplane",
+        "exactly_certified_angle",
+        "period_27_doubling",
+        "closest_to_half_in_doubling_orbit",
+        "exact_vertex_order",
+        "twisted_cycle_closes",
+        "twisted_cycle_has_distinct_states",
+        "all_27_ranks_agree",
+        "mod_three_fiber_indistinguishable",
+        "distinct_markings_cannot_factor_through_mod_three"
+      ],
+      "Period27RationalDerivative.lean": [
+        "exact_joint_next_enclosed",
+        "joint_rational_trace_enclosed",
+        "every_bracket_derivative_interval_is_negative",
+        "all_rational_bracket_parameter_derivatives_are_negative"
+      ],
+      "Period27RationalTrace.lean": [
+        "zero_fraction_enclosed",
+        "one_fraction_enclosed",
+        "exact_rational_addition_sound",
+        "exact_rational_multiplication_sound",
+        "exact_rational_square_sound",
+        "exact_rational_double_sound",
+        "nextOrbit_encloses_rational",
+        "pointAfterAt_encloses_all_rational_orbits",
+        "numerator_pos_of_positive_interval",
+        "numerator_neg_of_negative_interval",
+        "lower_parameter_is_enclosed",
+        "upper_parameter_is_enclosed",
+        "sound_trace_endpoint_integer_enclosures",
+        "exact_lower_endpoint_critical_iterate_positive",
+        "exact_upper_endpoint_critical_iterate_negative"
+      ],
+      "formalization/weighted/Period27RealCenter.lean": [
+        "value_zero",
+        "value_one",
+        "value_add",
+        "value_mul",
+        "value_square",
+        "value_double",
+        "jointValue_next",
+        "jointValue_iter",
+        "exactJoint_orbit",
+        "realIter_succ",
+        "state_zero",
+        "state_succ",
+        "hasDerivAt_polynomial",
+        "state_continuous",
+        "polynomial_continuous",
+        "derivativePolynomial_continuous",
+        "left_lt_right",
+        "value_pos",
+        "value_neg",
+        "lower_real_sign",
+        "upper_real_sign",
+        "exists_real_period27_root"
+      ],
+      "formalization/weighted/Period27RealExactPeriod.lean": [
+        "rational_orbit_bounds",
+        "real_orbit_upper",
+        "real_orbit_lower",
+        "real_orbit_bounds",
+        "all_first_26_orbit_bounds_strict",
+        "real_no_early_critical_return",
+        "exists_unique_exact_period27_center",
+        "polynomial_eq_quadratic_iterate",
+        "exact_real_quadratic_period27"
+      ],
+      "formalization/weighted/Period27RealKneading.lean": ["physical_sign_at", "physical_adjacent_order", "physical_kneading_numerator"],
+      "formalization/weighted/Period27RealUniqueness.lean": [
+        "enclosed_iff_real",
+        "fromRat_value",
+        "rat_parameter_enclosed",
+        "derivativeCap_strict_negative",
+        "rational_derivative_le_cap",
+        "continuous_cap_of_rationals",
+        "real_derivative_le_cap",
+        "real_derivative_strict_negative",
+        "polynomial27_strictAntiOn",
+        "exists_unique_period27_center_in_dyadic_bracket"
+      ]
+    },
+    "checks": [
+      "research/independent_audits/verify_period27_center_tuning_identification.py",
+      "research/independent_audits/verify_period27_kneading_angle_permutation.py",
+      "research/independent_audits/verify_period27_symbolic_atlas.py"
+    ]
+  },
+  "clocks": {
+    "guide": "formalization/PHYSICAL_BRIDGES_DYNAMICS.md#clocks",
+    "theorems": {
+      "Paper2Phase.lean": [
+        "iterate_add",
+        "iterate_fixed",
+        "all_return_times_in_root",
+        "primitive_cycle_excludes_fixed_landing",
+        "return_to_base_requires_aligned_phase",
+        "terminal_root_phase_route",
+        "no_deep_root_return_without_phase_alignment",
+        "deep_block_return_requires_phase_alignment",
+        "deep_clock_can_change_root_phase"
+      ],
+      "PhaseFuture.lean": [
+        "futureEqual_refl",
+        "futureEqual_symm",
+        "futureEqual_trans",
+        "futureEqual_next",
+        "semiconjugate_iterate",
+        "factorsFutureStream_iff_factorsObservation",
+        "preservesFuture_of_streamFactor",
+        "fiber_constant_of_preservesFuture",
+        "factorsObservation_of_fiber_constant",
+        "futureSound_iff_observationFactor",
+        "injective_of_future_separating",
+        "clockNext_injective",
+        "clock_iterate_formula",
+        "clock_project_semiconjugate",
+        "clock_future_iff_static_factor",
+        "clock_future_stream_iff_static_factor",
+        "iterate_injective",
+        "zeroSensor_true_iff",
+        "clock_reaches_zero",
+        "zeroSensor_bounded_future_separates",
+        "zeroSensor_future_separates",
+        "zeroTrace_injective",
+        "zeroSensor_future_sound_implies_injective",
+        "strict_phase_quotient_loses_zero_future",
+        "bad_static_observation_factors",
+        "bad_quotient_has_no_compatible_transition",
+        "bad_static_does_not_preserve_future"
+      ],
+      "PhaseFuture27.lean": [
+        "outerDecode_encode",
+        "outerEncode_decode",
+        "outerAddress_injective",
+        "middleDecode_encode",
+        "middleEncode_decode",
+        "middleAddress_injective",
+        "outerMemory_matches_digits",
+        "middleMemory_matches_digits",
+        "outerZeroFiber_projects_zero",
+        "outerZeroFiber_injective",
+        "middleZeroFiber_projects_zero",
+        "middleZeroFiber_injective",
+        "outer_memory_requires_nine_distinct",
+        "middle_memory_requires_three_distinct",
+        "outer_future_memory_lower_bound",
+        "middle_future_memory_lower_bound",
+        "outerAddress_future_sound",
+        "middleAddress_future_sound",
+        "outerAddress_step_commutes",
+        "outerAddress_future_stream",
+        "middleAddress_step_commutes",
+        "middleAddress_future_stream",
+        "same_snapshot_but_different_future",
+        "no_memory_3_phase_is_not_future_sound",
+        "no_memory_9_phase_is_not_future_sound"
+      ],
+      "PhaseMemoryGeneral.lean": [
+        "decode_address",
+        "address_decode",
+        "address_injective",
+        "address_surjective",
+        "zeroFiber_projects_zero",
+        "zeroFiber_injective",
+        "fiber_projects",
+        "fiber_injective",
+        "memory_injective_on_fiber",
+        "memory_injective_on_zeroFiber",
+        "zeroSensor_future_requires_memory",
+        "zeroSensor_future_requires_memory_everywhere",
+        "address_step_semiconjugate",
+        "addressNext_coarse",
+        "address_factors_all_future_streams"
+      ],
+      "PhaseTower.lean": [
+        "project_surjective",
+        "project_injective_of_le",
+        "project_has_collision",
+        "factorsThrough_iff_constantOnFibers",
+        "coarse_marking_unique",
+        "injective_marking_never_factors",
+        "two_marks_obstruct_factorization",
+        "mod_mod_of_divisor",
+        "project_compose",
+        "project_of_time",
+        "factorization_transitive",
+        "physical_outer_phase_route",
+        "physical_three_level_routes",
+        "actual_return_requires_outer_alignment"
+      ],
+      "PhaseTower27.lean": [
+        "decode_encode27",
+        "encode_decode27",
+        "encode27_injective",
+        "encode27_surjective",
+        "first_digit_is_outer_phase",
+        "first_two_digits_are_middle_phase",
+        "first_two_digits_project_to_first",
+        "carry_is_physical_successor",
+        "carry_conjugacy",
+        "carry_conjugacy_all_times",
+        "iterate_next27_mod",
+        "next27_returns",
+        "next27_no_early_return",
+        "address_exact_period27",
+        "nine_to_three_cannot_preserve_distinct_marks",
+        "twentyseven_to_nine_cannot_preserve_distinct_marks",
+        "twentyseven_to_three_cannot_preserve_distinct_marks",
+        "period27_projection_commutes"
+      ],
+      "RealTwoScalePhase.lean": ["nested_three_nine_phase_transport", "reduction_of_nine_phase", "phase_projection_respects_successor", "inner_clock_preserves_outer_phase"],
+      "formalization/weighted/PhaseMemoryCardinality.lean": ["finite_memory_card_ge", "no_small_fin_memory", "tower_memory_card_ge", "exactly_k_memory_states_suffice"]
+    },
+    "checks": [
+      "research/independent_audits/verify_paper2_source_clock.py"
+    ]
+  },
+  "two-scale": {
+    "guide": "formalization/PHYSICAL_BRIDGES_DYNAMICS.md#two-scale",
+    "theorems": {
+      "TipComplexMargins.lean": [
+        "positive_rouche_margins",
+        "old_shrink_bound_is_inconclusive",
+        "phase_disks_pairwise_separated",
+        "unique_critical_point_on_source_disks",
+        "nested_outer_return_disk_margins"
+      ]
+    },
+    "checks": [
+      "research/independent_audits/verify_complex_quadratic_like_3_9.py",
+      "research/independent_audits/verify_complex_window_obstructions.py",
+      "research/independent_audits/verify_period27_misiurewicz_tip.py",
+      "research/independent_audits/verify_period9_tip_phase_transversality.py",
+      "research/independent_audits/verify_real_nested_3_9.py",
+      "research/independent_audits/verify_tip_complex_domains.py"
+    ],
+    "obligations": [
+      "DOUADY_HUBBARD_CONNECTED_QUADRATIC_LIKE_STRAIGHTENING"
+    ]
+  },
+  "ray-portraits": {
+    "guide": "formalization/PHYSICAL_BRIDGES_DYNAMICS.md#ray-portraits",
+    "theorems": {
+      "TipActualCoarseRays.lean": [
+        "actual_physical_face_counts",
+        "ambient32_exactly_thirty_two_distinct_survivors",
+        "genuine_G_top_and_child_face_counts",
+        "complete_precritical_landing_partition"
+      ],
+      "TipLevinComposition.lean": [
+        "eight_fine_twenty_four_coarse",
+        "all_eight_source_return_equations",
+        "coarse_eight_distinct",
+        "four_exact_two_element_fibers",
+        "all_eight_factor",
+        "eligible_eight_semi"
+      ],
+      "TipRayPortrait.lean": [
+        "critical_value_enters_period_nine",
+        "eighteen_angles_distinct",
+        "eighteen_angles_have_no_early_return",
+        "ambient_ninth_return_fixed",
+        "phase_eighteen_pair",
+        "nine_chords_pairwise_unlinked",
+        "innerDouble_fixed_is_zero",
+        "ambientReturn9_fixed",
+        "fixed_ray_maps_to_internal_zero",
+        "two_fixed_rays_forced_to_one_internal_angle",
+        "tip_phase_eighteen_forced_fiber",
+        "three_scale_two_circular_orders",
+        "three_scale_monotone_forced"
+      ]
+    },
+    "checks": [
+      "research/independent_audits/verify_period27_exterior_pullback.py",
+      "research/independent_audits/verify_period9_ray_pairing_bifurcation.py",
+      "research/independent_audits/verify_tip_actual_coarse_only_ray_pairing.py",
+      "research/independent_audits/verify_tip_full_precritical_ray_lamination.py",
+      "research/independent_audits/verify_tip_internal_ray_lifts.py",
+      "research/independent_audits/verify_tip_levin_composition_escape.py",
+      "research/independent_audits/verify_tip_levin_transport.py",
+      "research/independent_audits/verify_tip_nested_full_ray_census.py",
+      "research/independent_audits/verify_tip_puzzle_ray_tree.py",
+      "research/independent_audits/verify_tip_ramified_precritical_pair.py",
+      "research/independent_audits/verify_tip_ray_portrait.py"
+    ]
+  },
+  "kl-pieces": {
+    "guide": "formalization/PHYSICAL_BRIDGES_DYNAMICS.md#kl-pieces",
+    "theorems": {
+      "TipKLPuzzle.lean": [
+        "top_escape_positive_margins",
+        "root_vertex_bracket_margins",
+        "outer_return_fixed_point_bracket",
+        "explicit_extra_inverse_component_margins",
+        "three_nested_preimage_brackets",
+        "period_nine_extra_preimage_outside_all_phases",
+        "period_three_extra_preimage_outside_all_phases",
+        "inner_return_kl_fixed_and_vertex_brackets",
+        "inner_puzzle_all_vertices_outside_inner_disk",
+        "two_distinct_kl_escape_clocks",
+        "obstruction_point_in_outer_real_interval_not_V9",
+        "obstruction_point_outside_all_noncentral_nine_phases",
+        "shallow_deep_clock_at_first_escape",
+        "kl_boundary_ray_modular_dynamics"
+      ]
+    },
+    "checks": [
+      "research/independent_audits/verify_tip_kl_puzzle.py",
+      "research/independent_audits/verify_tip_kl_side_atlas.py",
+      "research/independent_audits/verify_tip_kl_terminal_first_child.py",
+      "research/independent_audits/verify_tip_root_topology.py"
+    ]
+  },
+  "native-sheets": {
+    "guide": "formalization/PHYSICAL_BRIDGES_DYNAMICS.md#native-sheets",
+    "theorems": {
+      "TipNativeC4Wake.lean": [
+        "original_same_parent_mates",
+        "exact_strict_same_parent_Jside_brackets",
+        "whole_open_source_seam_in_mate_Jside",
+        "c4_wake_charge_is_parent_difference",
+        "transverse_zero_iff_source_parent_same",
+        "no_native_winding_repairs_cross_parent",
+        "eight_exact_source_mate_root_angle_candidates"
+      ],
+      "TipNativeDeckWords.lean": [
+        "coarse_meridian_inverse_cancels",
+        "commutator_is_freely_reduced",
+        "commutator_has_zero_winding_in_all_nine_generators",
+        "zero_winding_is_not_root_subgroup_membership",
+        "known_based_defect_has_forced_shift_two",
+        "root_subgroup_positive_control"
+      ],
+      "TipNativeFiniteJTrichotomy.lean": [
+        "all_eight_root_class_mate_ideal_angles",
+        "all_four_tiles_have_removed_second_phase_witnesses",
+        "dividing_fixed_real_access_not_glued",
+        "rootMateCandidatePairs_eight",
+        "rootMateUniqueSourceIndex"
+      ],
+      "TipNativeFullBoundaryTypes.lean": [
+        "exact_original_J_vertex_endpoint_angles",
+        "four_original_source_vertices",
+        "exactly_eight_original_O_J_wrapping_joint_indices",
+        "cyclic_original_vertex_incidence"
+      ],
+      "TipNativeProperRestriction.lean": [
+        "original_four_W_seams_strict_inside_original_V_parent",
+        "every_W_original_J_side_has_nonproper_parent_interior_open_subarc",
+        "original_two_distinct_W_tiles_per_V_parent",
+        "all_integer_winding_source_and_target_endpoint_brackets",
+        "actual_source_11_over_48_J_side_collision_brackets",
+        "original_W_marked_xi_and_eta_have_intervening_lambda",
+        "original_V_marked_xi_and_eta_have_intervening_lambda"
+      ],
+      "TipNativeRootDeck.lean": [
+        "all_source_anchor_angles_strict_in_W_seams",
+        "own_seam_anchors_between_zero_and_one",
+        "negative_unit_deck_is_on_original_xi",
+        "positive_unit_deck_is_on_original_eta",
+        "two_distinct_fine_anchors_per_original_tile",
+        "original_adjacent_W_tile_pairing",
+        "root_shift_forced_by_two_phase_charges",
+        "at_most_one_deck_shift_can_match_H_charges",
+        "nonzero_anchored_shift_cannot_have_H_charges"
+      ],
+      "TipNativeSideExclusion.lean": [
+        "authentic_K3_critical_quartet",
+        "critical_value_ray_doubling",
+        "second_critical_value_ray_doubling",
+        "x6_rays_strictly_in_both_original_side_tails",
+        "x3_ray_strict_original_side_classification",
+        "dividing_fixed_ray_strict_source_side_classification",
+        "all_seams_in_open_unit_angle",
+        "four_postcritical_angles_are_distinct"
+      ],
+      "TipRootedNativeKL.lean": [
+        "all_eight_in_original_W_open_seams",
+        "exact_match_to_source_Levin_ladder",
+        "one_tile_cannot_determine_fine_prime_end",
+        "fine_end_pairs_across_adjacent_tiles",
+        "four_fine_ends_distinct",
+        "exact_original_parent_tile_crossings",
+        "eight_ambient_distinct",
+        "every_fine_end_has_two_tile_channels",
+        "source_eight_seams_give_complete_four_fine_labels"
+      ],
+      "TipSheetGrid.lean": [
+        "two_coordinates",
+        "grid_injective_from_charges",
+        "core_loop_shift",
+        "nonzero_core_cannot_be_H_winding",
+        "delta_unchanged_by_coarse_winding",
+        "source_selected_8_24"
+      ]
+    },
+    "checks": [
+      "research/independent_audits/verify_tip_native_C4_wake_root_matrix.py",
+      "research/independent_audits/verify_tip_native_finite_J_side_trichotomy.py",
+      "research/independent_audits/verify_tip_native_full_W_ideal_circle_types.py",
+      "research/independent_audits/verify_tip_native_ideal_side_exclusions.py",
+      "research/independent_audits/verify_tip_native_root_deck_monodromy.py",
+      "research/independent_audits/verify_tip_native_two_proper_restrictions.py",
+      "research/independent_audits/verify_tip_rooted_native_KL_section.py",
+      "research/independent_audits/verify_tip_sheet_grid_root_lifts.py"
+    ]
+  },
+  "kkl-marking": {
+    "guide": "formalization/PHYSICAL_BRIDGES_DYNAMICS.md#kkl-marking",
+    "theorems": {
+      "TipKKLTreeMarking.lean": [
+        "inner_pullback_partition",
+        "refinement_block_labels",
+        "two_source_atoms_over_each_target_atom",
+        "all_inner_blocks_end_proper_finite_predicate",
+        "one_attachment_host_block",
+        "crossing_path_source_and_target_spans",
+        "both_crossing_pieces_escape_single_interval_filter",
+        "two_distinct_marked_pushforward_pairs",
+        "avoiding_path_marked_filter_data",
+        "source_filter_negative_controls"
+      ],
+      "research/independent_audits/real_primitive_tip_family_prime_end_identification_20261116/RealPrimitiveTipPrimeEndDiscrete.lean": [
+        "three_old_edges_once",
+        "each_target_has_two_cover_preimages",
+        "blocks_partition_the_inner_source_circle",
+        "labels_equal_the_declared_blocks",
+        "unique_immersion_attachment_block",
+        "filtered_two_crossing_one_avoiding",
+        "cover_pushed_lengths_are_three_three_five",
+        "different_immersion_blocks_at_filtered_ends"
+      ]
+    },
+    "checks": [
+      "research/independent_audits/real_primitive_tip_family_prime_end_identification_20261116/verify.py",
+      "research/independent_audits/verify_tip_KKL_tree_marked_breakage.py"
+    ],
+    "research_updates": [
+      "NOV26_TIP_PRIME_END"
+    ]
+  },
+  "tip-family": {
+    "guide": "formalization/PHYSICAL_BRIDGES_DYNAMICS.md#tip-family",
+    "theorems": {
+      "research/independent_audits/real_primitive_tip_family_unconditional_20261116/RealPrimitiveTipUnconditionalDiscrete.lean": [
+        "source_crossing_1",
+        "source_crossing_2",
+        "source_avoiding",
+        "target_crossing_1",
+        "target_crossing_2",
+        "target_avoiding",
+        "two_preimages_each",
+        "old_edge_occurrences",
+        "immersion_partition",
+        "immersion_labels",
+        "crests_zero_edge",
+        "harmonic_coefficients"
+      ],
+      "research/independent_audits/real_primitive_tip_family_uniform_20261116/RealPrimitiveTipDiscrete.lean": [
+        "edge_matrix_from_endpoint_images",
+        "two_cover_atoms_per_target",
+        "immersion_blocks_partition",
+        "each_block_has_its_declared_label",
+        "attachment_only_in_block_zero",
+        "parent_and_children_are_zero_edge_types",
+        "selected_ratio_between_one_and_two",
+        "symbolic_harmonic_coefficients"
+      ]
+    },
+    "checks": [
+      "research/independent_audits/real_primitive_tip_family_all_p_20261116/verify.py",
+      "research/independent_audits/real_primitive_tip_family_unconditional_20261116/verify.py",
+      "research/independent_audits/real_primitive_tip_family_uniform_20261116/verify.py",
+      "research/tip_family_theorem/verify_chain.py"
+    ],
+    "research_updates": [
+      "NOV26_OPEN_WINDOW",
+      "NOV26_TIP_ALLP",
+      "NOV26_TIP_FINITE",
+      "NOV26_TIP_THEOREM",
+      "NOV26_TIP_UNIFORM"
+    ]
+  },
+  "parabolic": {
+    "guide": "formalization/PHYSICAL_BRIDGES_DYNAMICS.md#parabolic",
+    "theorems": {
+      "formalization/weighted/ParabolicArchiveBrackets.lean": ["archive_period24_exit", "archive_period27_exit", "archive_period30_exit"],
+      "formalization/weighted/ParabolicBranches.lean": [
+        "channel_strictMono",
+        "block_abs",
+        "block_small",
+        "block_exit",
+        "block_interleave",
+        "return_mem",
+        "full_branches"
+      ],
+      "formalization/weighted/ParabolicCenterBranch.lean": [
+        "channel_parameter_strictMono",
+        "track_monotone_parameter",
+        "exit_return_strictAnti",
+        "unique_center_on_exit_slab",
+        "exitSlab_iff_orbit",
+        "unique_center_on_exit_itinerary",
+        "exit_slabs_ordered",
+        "exit_center_minimalPeriod"
+      ],
+      "formalization/weighted/ParabolicChannel.lean": [
+        "reflected",
+        "continuous_H",
+        "continuous_H_iter",
+        "parabolic_identity",
+        "channel_mono",
+        "channel_drift",
+        "continuous_flight",
+        "continuous_track",
+        "flight_mem",
+        "flight_steps",
+        "flight_true",
+        "flight_compare",
+        "flight_shift",
+        "track_mem",
+        "track_step",
+        "track_true",
+        "parabolic_trap"
+      ],
+      "formalization/weighted/ParabolicComplexComponent.lean": [
+        "complex_segment_invariant",
+        "open_complex_isolation",
+        "interior_complex_fiber",
+        "complex_pullback_component",
+        "straightening_parameter"
+      ],
+      "formalization/weighted/ParabolicComplexPullback.lean": ["cquad_ofReal", "cquad_iterate_ofReal", "continuous_cquad", "sameSheet_pullback", "isOpen_sameSheet"],
+      "formalization/weighted/ParabolicDisjoint.lean": ["phase_images_disjoint", "first_return_on_interval"],
+      "formalization/weighted/ParabolicPhaseBands.lean": ["band_disjoint", "small_phase_bands", "exit_phase_bands", "small_phase_abs_injective"],
+      "formalization/weighted/ParabolicRealSheet.lean": ["phase_sign_agrees", "return_image_eq"],
+      "formalization/weighted/ParabolicSegment.lean": ["mem_realSegment_iff", "realSegment_compact", "realSegment_connected", "realSegment_compl_connected"],
+      "formalization/weighted/ParabolicShooting.lean": ["exists_crossing_Icc", "exists_descending_crossing_Icc", "exists_last_upper_hit"],
+      "formalization/weighted/ParabolicTipFamily.lean": ["Shot.on_exit_slab", "Shot.companion_center", "near_parabolic_primitive_tips", "tip_sequence_converges"],
+      "formalization/weighted/ParabolicTipPeriod.lean": [
+        "reflected_blocks",
+        "positive_iterates_even",
+        "small_block_separation",
+        "exit_block_separation",
+        "exact_period_of_shot",
+        "critical_preperiod_of_shot"
+      ],
+      "formalization/weighted/ParabolicTipRate.lean": ["channel_quadratic_step", "channel_inverse_square"],
+      "formalization/weighted/ParabolicTipShooting.lean": ["shot_exists", "Shot.first_rate_bound"],
+      "formalization/weighted/ParabolicTipWindow.lean": ["window_walls", "track_four_at_endpoint"]
+    }
+  },
+  "diagnostics": {
+    "guide": "formalization/PHYSICAL_BRIDGES_DYNAMICS.md#diagnostics",
+    "theorems": {
+      "AirplaneDiffraction.lean": [
+        "factor_times_reciprocal",
+        "archive_angle_is_first",
+        "eight_numerators",
+        "eight_equal_full_correlations",
+        "three_marks_separate_eight",
+        "airplane_rabbit_kneading_difference",
+        "period_first_hits",
+        "two_gaps_select_original"
+      ]
+    },
+    "checks": [
+      "research/independent_audits/airplane_inverse_problems_20261114/chords/verify.py",
+      "research/independent_audits/airplane_inverse_problems_20261114/diffraction/verify_airplane_phase_retrieval.py",
+      "research/independent_audits/airplane_inverse_problems_20261114/markov/verify_markov.py",
+      "research/independent_audits/airplane_inverse_problems_20261114/study/verify_geometric_readout.py"
+    ]
+  },
+  "w1": {
+    "guide": "formalization/PHYSICAL_BRIDGES_WIDTH.md#w1",
+    "theorems": {
+      "formalization/weighted/LocalizationSheetKernel.lean": [
+        "sheet_eq_iff",
+        "base_sheet_eq_iff",
+        "coarsen_sheet",
+        "coarsen_surjective",
+        "coarsen_injective_of_eq",
+        "coarsen_injective_iff",
+        "defect_forces_collision",
+        "coarsen_representatives_iff",
+        "coarsen_comp",
+        "equal_sheet_kernels_force_equal_subgroups",
+        "intermediate_injective_iff",
+        "resolvedTarget_sheet",
+        "resolvedTarget_injective",
+        "originalTarget_sheet",
+        "original_kernel_eq_resolved_kernel",
+        "original_representatives_collision_iff",
+        "original_injective_iff_pullback_equal",
+        "original_defect_collision"
+      ],
+      "research/independent_audits/issue62_connector_defects_20261116/RelativeDeck.lean": [
+        "coarse_peripheral_is_not_in_fine_root_cyclic_subgroup",
+        "coarse_left_prefix_is_not_right_suffix",
+        "one_based_prefix_inverse_control",
+        "commutator_survives_based_prefix_cancellation",
+        "other_fine_obstacle_not_in_H"
+      ],
+      "research/independent_audits/issue62_connector_words_20261116/RelativeWordGauge.lean": [
+        "root_word_reference_gauge",
+        "nonroot_reference_changes_coset_coordinate",
+        "correct_nonabelian_prefix_order",
+        "old_root_basis_not_invariant_under_conjugation"
+      ],
+      "TipNativeDeckWords.lean": ["commutator_has_zero_winding_in_all_nine_generators"]
+    },
+    "checks": [
+      "research/independent_audits/issue62_connector_defects_20261116/verify_issue62.py",
+      "research/independent_audits/issue62_connector_words_20261116/verify_connector_words.py",
+      "research/mlc_unified/validate_canonical_kl_geometric_trace_proper_end_response.py",
+      "research/mlc_unified/validate_canonical_kl_restricted_interface_classification.py",
+      "research/mlc_unified/validate_canonical_resolution_kl_tile_correspondence_no_go.py",
+      "research/mlc_unified/validate_finite_horizon_kahn_collar_embedding.py",
+      "research/mlc_unified/validate_kahn_annulus_no_go.py",
+      "research/mlc_unified/validate_kahn_iterate_component_alignment.py",
+      "research/mlc_unified/validate_kl_canonical_localization_forced_collision.py",
+      "research/mlc_unified/validate_kl_localization_sheet_resolution.py",
+      "research/mlc_unified/validate_kl_localization_subgroup_reflection.py",
+      "research/mlc_unified/validate_kl_relative_overlap_cartesianity.py",
+      "research/mlc_unified/validate_kl_tile_injectivity_gate.py",
+      "research/mlc_unified/validate_outer_port_footprint.py",
+      "research/mlc_unified/validate_path_lifted_collared_interface.py",
+      "research/mlc_unified/validate_psi_ql_global_injectivity_no_go.py",
+      "research/mlc_unified/validate_resolved_intermediate_relative_ideal_boundary.py"
+    ],
+    "obligations": [
+      "DIRECT_DECORATION_CANONICAL_KL_RELATION_PROPER_END_RESPONSE",
+      "DIRECT_DECORATION_CANONICAL_KL_STAGE_ALIGNMENT",
+      "DIRECT_DECORATION_DEGREE_ONE_PSEUDO_EMBEDDING",
+      "DIRECT_DECORATION_FINAL_ROOT_RELATION_NO_BIRTH",
+      "DIRECT_DECORATION_PSEUDO_PIECE_PATH_LIFT_EXHAUSTION",
+      "DIRECT_DECORATION_RELATION_PROPER_PATH_END_INTERVAL_CLASSIFICATION",
+      "DIRECT_DECORATION_TILE_CENTRAL_OVERLAP_REFLECTION",
+      "DIRECT_DECORATION_WAVE_PROOF_USE_LEDGER",
+      "ESCAPE_RETURN_KL_PSEUDOPIECE_CONFORMAL_IDEAL_BOUNDARY",
+      "FINITE_LIVE_COMMON_REFINEMENT_FRONTIER",
+      "KAHN_ANNULUS_GLOBAL_INJECTIVITY_NO_GO",
+      "KL_TILE_INJECTIVITY_BASE_ANNULUS_REDUCTION"
+    ],
+    "research_updates": [
+      "NOV26_OPEN_PSI"
+    ]
+  },
+  "w2": {
+    "guide": "formalization/PHYSICAL_BRIDGES_WIDTH.md#w2",
+    "theorems": {
+      "PhaseTower.lean": ["actual_return_requires_outer_alignment"]
+    },
+    "obligations": [
+      "COUNTABLE_FOLLOWER_STONE_COMPACTIFICATION",
+      "DIRECT_DECORATION_END_PRIME_END_COFINALITY",
+      "VIRTUAL_CANTOR_PACKAGE_REALIZATION",
+      "VIRTUAL_DISCONNECTED_MARKING_TRANSFER",
+      "VIRTUAL_END_BLOWUP_REALIZATION",
+      "VIRTUAL_PREFIX_LOCAL_SCALE_SELECTOR",
+      "VIRTUAL_SCALE_TO_PUZZLE_SELECTOR",
+      "VIRTUAL_VERTEX_PACKAGE_SELECTOR"
+    ]
+  },
+  "w3": {
+    "guide": "formalization/PHYSICAL_BRIDGES_WIDTH.md#w3",
+    "theorems": {
+      "formalization/weighted/AttachmentDefectLedger.lean": [
+        "short_exact_finrank",
+        "attachment_balance",
+        "trace_rank_le_old",
+        "attachment_component_balance",
+        "attachment_defect_formula",
+        "connected_separating_trace_forces_strict_drop",
+        "finite_rank_monotonicity_counterexample"
+      ],
+      "formalization/weighted/ProtectedCarrierLogic.lean": ["diamond_has_no_least_carrier"]
+    },
+    "checks": [
+      "research/independent_audits/verify_attachment_sheet_condenser.py",
+      "research/mlc_research_push_2_bundle/push2/critical_spine_audit.py",
+      "research/mlc_research_push_4_bundle/full_trace_plumbing_audit.py",
+      "research/mlc_research_push_5_bundle/push5/multiport_trace_audit.py",
+      "research/mlc_research_push_6_bundle/push6/contact_mask_compiler.py",
+      "research/mlc_research_push_6_bundle/push6/separator_contact_audit.py",
+      "research/mlc_research_push_7_bundle/push7/binary_contact_trace_compiler.py",
+      "research/mlc_research_push_8_bundle/marked_interface_compiler_v2.py",
+      "research/mlc_research_push_8_bundle/welding_naturality_audit.py",
+      "research/mlc_unified/validate_push5_contact_welding_no_go.py",
+      "research/mlc_unified/validate_push5_independent_reverification.py",
+      "research/mlc_unified/validate_push6_separator_audit.py",
+      "research/mlc_unified/validate_push7_audit.py",
+      "research/mlc_unified/validate_push8_audit.py",
+      "research/mlc_unified/validate_trace_collar_no_go.py",
+      "research/mlc_unified/validate_weak_welding_graph_compactification.py"
+    ],
+    "obligations": [
+      "ALEXANDER_DUALITY_COMPACTA",
+      "DIRECT_DECORATION_ALL_DEPTH_CONTACT_CLOSURE",
+      "DIRECT_DECORATION_OUTER_CAP_FOOTPRINT",
+      "DIRECT_DECORATION_TRACE_COLLAR_REALIZATION",
+      "DIRECT_DECORATION_TRACE_WELDING_COMPACTNESS",
+      "END_PLUMBING_TRACE_RESPONSE_CONTROL",
+      "TREE_NERVE_FULLNESS",
+      "VIRTUAL_ATTACHMENT_FREE_ANCHOR",
+      "VIRTUAL_ATTACHMENT_RESOLUTION",
+      "VIRTUAL_AUGMENTED_ATOM_PORT_CERTIFICATE",
+      "VIRTUAL_BOUNDED_ATTACHMENT_SUPPORT",
+      "VIRTUAL_CANONICAL_INTERFACE_CARRIER",
+      "VIRTUAL_COMMON_FREE_COMPONENT",
+      "VIRTUAL_CORRIDOR_PAIR_NATURALITY",
+      "VIRTUAL_PROTECTED_ROUTING_CERTIFICATE",
+      "VIRTUAL_ROOT_CARRIER_SEPARATION",
+      "VIRTUAL_UNPROTECTED_ATOM_EXPOSURE"
+    ]
+  },
+  "w4": {
+    "guide": "formalization/PHYSICAL_BRIDGES_WIDTH.md#w4",
+    "theorems": {
+      "formalization/weighted/AtomCutDefect.lean": ["atom_only_apparent_two_cycle", "internal_cut_stalk_kills_atom_only_cycle", "realGate_rank_decreases", "no_real_gate_two_cycle"],
+      "formalization/weighted/LimbInsertionHolonomy.lean": [
+        "clocked_orbit_semiconjugacy",
+        "clock_one_or_two_bounds",
+        "partialIter_rank_le",
+        "no_periodic_partial_gate_of_rank",
+        "stuttering_insertion_potential_drop",
+        "no_gate_cycle_under_stuttering_insertion"
+      ],
+      "formalization/weighted/NativeWaveGate.lean": [
+        "strict_critical_pigeonhole",
+        "finite_gate_repetition",
+        "finite_gate_orbit_repetition",
+        "no_positive_scalar_return",
+        "no_self_domination",
+        "no_positive_pf_witness_return",
+        "atomic_ends_leave_positive_crest",
+        "touching_end_extrema_alternate",
+        "short_full_base_no_zero_atom_crest",
+        "long_rotation_short_full_base_positive_atom",
+        "separated_end_packets_leave_atom",
+        "two_sheet_image_intersection",
+        "disjoint_two_sheet_collision_only_deck",
+        "simple_annular_arc_two_windings",
+        "two_packet_half_wad_norm",
+        "no_two_subhalf_wad_packets",
+        "short_wave_ends_miss_some_limb_arithmetic",
+        "short_wave_end_count_below_rotation",
+        "closed_crest_open_limb_has_full_atom",
+        "closed_open_marked_overlap_of_integer_cuts",
+        "partial_critical_overlap_has_internal_endpoint",
+        "single_atom_limb_overlap_implies_containment",
+        "critical_cut_side_strict_pigeonhole",
+        "refined_critical_visit_count_arithmetic",
+        "native_short_critical_cut_gate_capacity",
+        "native_b_one_gate_capacity",
+        "native_root_corridor_exceeds_short",
+        "two_atom_critical_gate_is_unique_cut",
+        "source_root_chain_propagates",
+        "native_root_exposure_absorbs"
+      ],
+      "TipKKLTreeMarking.lean": ["source_filter_negative_controls"],
+      "research/independent_audits/real_primitive_tip_family_unconditional_20261116/RealPrimitiveTipUnconditionalDiscrete.lean": ["immersion_labels"],
+      "research/independent_audits/real_primitive_tip_family_prime_end_identification_20261116/RealPrimitiveTipPrimeEndDiscrete.lean": ["different_immersion_blocks_at_filtered_ends"]
+    },
+    "checks": [
+      "research/independent_audits/canonical_wad_electrode_incidence_20261116/verify.py",
+      "research/independent_audits/issue40_native_attachment_edge_incidence_20261115/verify_native_attachment_edge_incidence.py",
+      "research/independent_audits/verify_chebyshev_phase_parameter.py",
+      "research/independent_audits/verify_interval_growth_repair.py",
+      "research/independent_audits/verify_limb_local_cycle_sieve.py",
+      "research/independent_audits/verify_marking_resolution_immersion_escape.py",
+      "research/independent_audits/verify_native_boundary_bridge.py",
+      "research/independent_audits/verify_root_stalk_sieve.py",
+      "research/independent_audits/verify_stretching_block_sieve.py",
+      "research/mlc_unified/audit_n2_marked_tree_pruning.py",
+      "research/mlc_unified/audit_n2_monotone_full_lift.py",
+      "research/mlc_unified/audit_n2_wave_to_wave_collision.py",
+      "research/mlc_unified/audit_stationary_route_exit_schema.py",
+      "research/mlc_unified/audit_stationary_segmented_binder_schema.py",
+      "research/mlc_unified/audit_stationary_two_occurrence_binder_schema.py",
+      "research/mlc_unified/generate_kkl_wave_atomic_source_manifest.py",
+      "research/native_wave_transfer/regenerate.py",
+      "research/native_wave_transfer/regenerate_period4.py",
+      "research/native_wave_transfer/regenerate_primitive_v1_1.py"
+    ],
+    "obligations": [
+      "FINITE_HORIZON_KKL_WAVE_REDUCTION",
+      "KKL_BOUNDED_VISITS_ARITHMETIC_AFTER_GROWTH",
+      "KKL_BOUNDED_VISITS_INTERVAL_GROWTH_REPAIR",
+      "KKL_PARABOLIC_WAVE_STATIONARY_PROOF_REPAIR",
+      "KKL_PRIMITIVE_ROTATION_LIMB_CYCLE_DATA",
+      "KKL_STATIONARY_CONDITIONAL_PAIRED_WAVE_RESPONSE_ALGEBRA",
+      "KKL_STATIONARY_FINAL_FIXED_COMPONENT_EXIT",
+      "KKL_STATIONARY_FINAL_INCIDENCE_REFINEMENT",
+      "KKL_STATIONARY_FINAL_PASS_THROUGH_PATH_EXTRACTION",
+      "KKL_STATIONARY_FIXED_PAIR_PROPER_RESTRICTION",
+      "KKL_STATIONARY_INCOMING_WINDOW_ANCHOR",
+      "KKL_STATIONARY_LINE1598_TREE_DISJOINTNESS_REDUCTION",
+      "KKL_STATIONARY_MARKED_ACCESS_ITINERARY",
+      "KKL_STATIONARY_MARKED_FIXED_END_PAIR_CERTIFICATE",
+      "KKL_STATIONARY_MONOTONE_FULL_LIFT_IDENTIFICATION",
+      "KKL_STATIONARY_MONOTONE_FULL_LIFT_IMPLIES_MCI",
+      "KKL_STATIONARY_NESTED_INCIDENCE_ORDER",
+      "KKL_STATIONARY_NONLC_SELECTED_GEOMETRIC_CONTINUUM_LIFT",
+      "KKL_STATIONARY_OFF_BY_ONE_PASS_THROUGH_REDUCTION",
+      "KKL_STATIONARY_PREDECESSOR_ENDPOINT_GATE_COHERENCE",
+      "KKL_STATIONARY_PROOF_USED_PREDECESSOR_SELECTION",
+      "KKL_STATIONARY_RETAINED_PORTION_REALIZATION",
+      "KKL_STATIONARY_SELECTED_COLLAR_DECK_NONCOLLISION",
+      "KKL_STATIONARY_SELECTED_CORRIDOR_CONFINEMENT",
+      "KKL_STATIONARY_SELECTED_PREDECESSOR_MARKED_COMPONENT_INCIDENCE",
+      "KKL_STATIONARY_SELECTED_PREDECESSOR_TERMINAL_VERTEX_SATURATION",
+      "KKL_STATIONARY_SELECTED_SEPARATOR_REALIZATION",
+      "KKL_STATIONARY_TWO_OCCURRENCE_BINDER",
+      "KKL_STATIONARY_TWO_PULLBACK_PASS_THROUGH",
+      "KKL_STATIONARY_TYPED_PAIRED_WAVE_REALIZATION",
+      "TERMINAL_KL_SUBMULTICURVE_BINDER_SELECTOR",
+      "TERMINAL_LOCAL_KL_KKL_ALIGNMENT_RECORD",
+      "TERMINAL_NONLC_HUBBARD_CARRIER_PROPER",
+      "TERMINAL_STATIONARY_RESTRICTION_KL_PUZZLE_SELECTOR",
+      "TERMINAL_TAGGED_ENDPOINT_ACCESS_MATCH",
+      "TERMINAL_WAVE_KL_CONNECTING_SUBFAMILY",
+      "WAVE_TO_KL_ADDRESS_ACCESS_SELECTOR"
+    ],
+    "research_updates": [
+      "NOV26_ISSUE40_EDGE",
+      "NOV26_NATIVE_P4",
+      "NOV26_NATIVE_V1",
+      "NOV26_OPEN_ISSUE40",
+      "NOV26_OPEN_SUBSECTOR"
+    ]
+  },
+  "w5": {
+    "guide": "formalization/PHYSICAL_BRIDGES_WIDTH.md#w5",
+    "theorems": {
+      "formalization/weighted/NativeWaveGate.lean": ["no_two_subhalf_wad_packets"]
+    },
+    "checks": [
+      "research/independent_audits/issue40_crest_transport_20261116/verify_crest_transport.py",
+      "research/independent_audits/real_primitive_tip_family_canonical_width_20261116/verify.py",
+      "research/independent_audits/real_primitive_tip_family_canonical_width_sandwich_20261116/verify.py",
+      "research/independent_audits/tip_family_canonical_wave_gain_20261116/verify.py",
+      "research/independent_audits/tip_family_finite_p_wave_gain_20261116/verify.py",
+      "research/independent_audits/tip_family_hypothesis_M_discharge_20261116/verify.py",
+      "research/independent_audits/tip_family_limiting_wave_gain_20261116/verify.py",
+      "research/independent_audits/verify_near_saturation_wave.py",
+      "research/mlc_unified/audit_stationary_paired_wave_response.py",
+      "research/mlc_unified/audit_stationary_quantitative_defect_schema.py"
+    ],
+    "obligations": [
+      "FINITE_HORIZON_WAVE_BOUND",
+      "KKL_LOCALIZED_WANDERERS_APPLICATION_REDUCTION",
+      "KKL_LOCALIZED_WANDERERS_ROUTE_REALIZATION_CERTIFICATE",
+      "KKL_NATIVE_WAVE_HORIZON_CONTROL",
+      "KKL_NATIVE_WAVE_WANDERERS_QUERY_SCHEMA_BOUNDARY_MAP",
+      "KKL_PARABOLIC_WAVE_AMPLIFICATION",
+      "KKL_STATIONARY_BL0_UNIFORM_SURVIVOR_RESPONSE",
+      "KKL_STATIONARY_POINTWISE_TWO_PATH_BREAK",
+      "KKL_STATIONARY_QSDB_SUFFICIENCY",
+      "KKL_STATIONARY_QUANTITATIVE_DEFECT_BOUND",
+      "KKL_STATIONARY_SURVIVOR_EXCLUSION_OR_CHARGE",
+      "KKL_STATIONARY_TWO_SIDED_WAVE_NONCOLLISION",
+      "KKL_STATIONARY_TYPED_BOUNDED_DEGREE_PUSHFORWARD",
+      "KKL_STATIONARY_UNIFORM_COLLAR_EXIT_CHARGE",
+      "KKL_WANDERERS_THEOREM_COMPLETE_REPAIR",
+      "KKL_WAVE_PUSHFORWARD_STATED",
+      "KKL_WAVE_PUSHFORWARD_UNIFORM_PACKET_CONSTANT",
+      "TERMINAL_WAVE_CREST_TO_KL_SKIPPING_BINDER"
+    ],
+    "research_updates": [
+      "NOV26_GAIN_ALLP",
+      "NOV26_GAIN_LARGE",
+      "NOV26_GAIN_PAIRED",
+      "NOV26_OPEN_ALL_PATHS",
+      "NOV26_OPEN_OPTIMAL_LIMIT",
+      "NOV26_OPEN_PAIR_OPTIMA",
+      "NOV26_TIP_CANONICAL",
+      "NOV26_TIP_SANDWICH"
+    ]
+  },
+  "w6": {
+    "guide": "formalization/PHYSICAL_BRIDGES_WIDTH.md#w6",
+    "theorems": {
+      "research/independent_audits/real_primitive_tip_family_uniform_20261116/RealPrimitiveTipDiscrete.lean": ["symbolic_harmonic_coefficients"]
+    },
+    "checks": [
+      "research/independent_audits/canonical_wad_conformal_weights_20261116/verify.py",
+      "research/independent_audits/canonical_wad_quadrilateral_moduli_20261116/verify.py",
+      "research/independent_audits/tip_family_buffered_wad_20261116/verify.py",
+      "research/independent_audits/tip_family_buffered_wad_crossratio_20261116/verify.py",
+      "research/independent_audits/tip_family_buffered_wad_inner_20261116/verify.py",
+      "research/independent_audits/verify_annular_contact_crossover.py",
+      "research/independent_audits/verify_rectangle_response.py",
+      "research/independent_audits/verify_sheet_character_width_duality.py",
+      "research/independent_audits/verify_smooth_gate_response.py",
+      "research/independent_audits/wave_vs_dirichlet_contact_transfer_20261115/verify.py"
+    ],
+    "research_updates": [
+      "NOV26_DIRICHLET",
+      "NOV26_OPEN_QGAMMA",
+      "NOV26_WAD_INCIDENCE",
+      "NOV26_WAD_MODULI",
+      "NOV26_WAD_WEIGHTS"
+    ]
+  },
+  "w7": {
+    "guide": "formalization/PHYSICAL_BRIDGES_WIDTH.md#w7",
+    "checks": [
+      "research/independent_audits/crest_transport_asymptotics_20261116/numerical_limit.py",
+      "research/independent_audits/crest_transport_asymptotics_20261116/verify.py",
+      "research/independent_audits/crest_transport_tip_family_20261116/verify.py",
+      "research/independent_audits/tip_family_all_depths_20261116/verify.py",
+      "research/independent_audits/tip_family_depth_uniform_qc_20261116/verify.py",
+      "research/independent_audits/tip_family_global_marked_qc_20261116/verify.py",
+      "research/independent_audits/tip_family_renormalization_depth_20261116/verify.py"
+    ],
+    "research_updates": [
+      "NOV26_CREST_16",
+      "NOV26_CREST_SIX",
+      "NOV26_DEPTH2",
+      "NOV26_DEPTH3",
+      "NOV26_DEPTH_QC",
+      "NOV26_GLOBAL_QC",
+      "NOV26_ISSUE40_CREST",
+      "NOV26_OPEN_26_TRIPLES",
+      "NOV26_OPEN_3P_MODULUS",
+      "NOV26_OPEN_CREST_LIMIT",
+      "NOV26_OPEN_DEPTH_GATES",
+      "NOV26_OPEN_MARKED_QC",
+      "NOV26_OPEN_QC_CONSTANT",
+      "NOV26_OPEN_TOWER_CONVERGENCE"
+    ]
+  },
+  "w8": {
+    "guide": "formalization/PHYSICAL_BRIDGES_WIDTH.md#w8",
+    "theorems": {
+      "formalization/weighted/ParabolicTipFamily.lean": ["near_parabolic_primitive_tips"]
+    },
+    "checks": [
+      "research/mlc_unified/validate_finite_modulus_infinite_end_no_go.py",
+      "research/mlc_unified/validate_parabolic_commutation_lemma.py",
+      "research/mlc_unified/validate_parabolic_resonance_recurrence.py",
+      "research/mlc_unified/validate_parabolic_root_family.py",
+      "research/mlc_unified/validate_parabolic_satellite_anchor.py",
+      "research/mlc_unified/validate_sector_bridge_attempt.py",
+      "research/mlc_unified/validate_serial_annulus_singleton_bridge.py",
+      "research/mlc_unified/validate_side_research_retained_lemmas.py",
+      "research/mlc_unified/validate_unbounded_satellite_no_bounds.py",
+      "research/native_wave_transfer/regenerate_near_parabolic.py",
+      "research/native_wave_transfer/regenerate_satellite2.py",
+      "research/native_wave_transfer/regenerate_satellite2_tip.py",
+      "research/native_wave_transfer/regenerate_satellite_v2.py"
+    ],
+    "obligations": [
+      "BLOT_NONPARABOLIC_LIMIT_MODULUS_COLLAPSE",
+      "BLOT_ROOT",
+      "FIXED_MODULUS_AMBIENT_END_NO_GO",
+      "SERIAL_ANNULUS_SINGLETON_BRIDGE"
+    ],
+    "research_updates": [
+      "NOV26_NATIVE_V11",
+      "NOV26_NEAR_PARAB",
+      "NOV26_OPEN_SAT_WAVE",
+      "NOV26_SAT_P4",
+      "NOV26_SAT_TIP",
+      "NOV26_SAT_V2"
+    ]
+  }
+}
