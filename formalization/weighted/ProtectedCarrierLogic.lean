@@ -253,15 +253,36 @@ theorem diamond_has_no_least_carrier :
         IsLeastCarrier DiamondConnects diamondPackage H := by
   apply no_least_of_two_carriers DiamondConnects diamondPackage
     diamondUpper diamondLower
-  · simp [DiamondConnects, diamondUpper]
-  · simp [DiamondConnects, diamondLower]
+  · change (DiamondVertex.left ≠ DiamondVertex.lower) ∧
+      (DiamondVertex.right ≠ DiamondVertex.lower) ∧
+      (DiamondVertex.upper ≠ DiamondVertex.lower ∨
+        DiamondVertex.lower ≠ DiamondVertex.lower)
+    decide
+  · change (DiamondVertex.left ≠ DiamondVertex.upper) ∧
+      (DiamondVertex.right ≠ DiamondVertex.upper) ∧
+      (DiamondVertex.upper ≠ DiamondVertex.upper ∨
+        DiamondVertex.lower ≠ DiamondVertex.upper)
+    decide
   · intro v hv
-    cases v <;> simp_all [diamondPackage, diamondUpper]
+    change v = DiamondVertex.left ∨ v = DiamondVertex.right at hv
+    change v ≠ DiamondVertex.lower
+    rcases hv with rfl | rfl <;> decide
   · intro v hv
-    cases v <;> simp_all [diamondPackage, diamondLower]
+    change v = DiamondVertex.left ∨ v = DiamondVertex.right at hv
+    change v ≠ DiamondVertex.upper
+    rcases hv with rfl | rfl <;> decide
   · ext v
-    cases v <;> simp [diamondPackage, diamondUpper, diamondLower]
-  · simp [DiamondConnects, diamondPackage]
+    change (v ≠ DiamondVertex.lower ∧ v ≠ DiamondVertex.upper) ↔
+      (v = DiamondVertex.left ∨ v = DiamondVertex.right)
+    cases v <;> decide
+  · intro h
+    have hmid := h.2.2
+    change
+      (DiamondVertex.upper = DiamondVertex.left ∨
+        DiamondVertex.upper = DiamondVertex.right) ∨
+      (DiamondVertex.lower = DiamondVertex.left ∨
+        DiamondVertex.lower = DiamondVertex.right) at hmid
+    rcases hmid with (h | h) | (h | h) <;> cases h
 
 #print axioms fill_absorption
 #print axioms complete_perm
