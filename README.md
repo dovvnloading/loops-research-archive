@@ -49,6 +49,57 @@ These visuals come from **this archive's own computations, certificates, and fin
 
 The **ray portrait and two-scale angle-map figures** are generated from the exact portrait manifest by [our reproducible SVG generator](./code/generate_readme_research_figures.mjs). The return and target-disk figures are explicitly labeled schematics of the archive's certificates. No external illustration is presented as an original research result.
 
+## November 23: actual interval rows and two different spectral clocks
+
+The [period-27 real Markov bridge](./research/independent_audits/period27_real_markov_bridge_20261123.md)
+connects the finite 26-edge table to the **actual quadratic**: every listed
+target interior point has exactly one preimage on its source edge, and an
+omitted target has none. [Lean](./formalization/weighted/Period27RealMarkov.lean)
+proves the whole-interval images, both row implications, and existence of the
+same certified center. A separate written cycle proof and exact integer check give
+
+$$
+\det(\lambda I-A)=(\lambda^2-\lambda-1)(\lambda^6-\lambda^3-1)
+(\lambda^{18}-\lambda^9-1).
+$$
+
+The three return clocks remain visible in the full spectrum, even though the
+leading eigenvalue is the golden ratio. The written inverse-itinerary proof
+also gives exact Fibonacci preimage counts at clocks 1, 3 and 9.
+[Spectrum certificate](./research/independent_audits/verify_period27_markov_spectrum.py)
+
+For the **different, primitive delayed clone graph**, the
+[renewal-clock proof](./research/independent_audits/clone_renewal_clock_20261123.md)
+sharpens the old gap-collapse bound to
+
+$$
+(2n+9/2)^3(1-r_n/t_n)\longrightarrow\pi^2/2.
+$$
+
+[Lean](./formalization/weighted/FullCloneRenewal.lean) constructs its stochastic
+normalization and proves both directions needed to turn polynomial roots into
+actual matrix modes. The root-ordering and asymptotic proof are **written**.
+An explicitly constructed piecewise affine interval map, invariant density,
+and all-finite-cylinder law realize the exact correlation
+$(z_1/t_n)^q\|G\|_2^2$. Thus $t_n^n\to\sqrt2$ coexists with
+$(r_n/t_n)^n\to1$: expansion over a delay block does not ensure uniform
+decay of correlations over that block. The note includes a fixed-graph,
+variable-probability counterexample to transferring a mixing rate from
+adjacency alone.
+
+These are specific additions to the archive, with classical predecessors
+credited. The affine map is distinct from the quadratic example. Native KL
+probability, marking, width and global MLC identifications remain separate
+obligations. The [bridge register](./formalization/PHYSICAL_BRIDGES.md) records
+the evidence at each step; its validator now rejects unresolved prerequisites
+even when they are hidden behind intermediate model rows.
+
+![The actual quadratic spectrum resolves return clocks 1, 3 and 9; the separate clone family has linear growth times and cubic correlation times.](./figs/research/spectral_clocks_20261123.png)
+
+The figure is a numerical illustration of the exact determinant and written
+asymptotic proofs, generated from declared sources by
+[this script](./code/generate_spectral_clock_figure.py).
+
 ## November 15–16, 2026 research integration (merged PRs #72–#100)
 
 The [model-to-physical proof register](./formalization/PHYSICAL_BRIDGES.md) records the current scope. The [referee-controlled v2](./papers/tip_family_preprint_v2_20261116/sections/referee_scope.tex) states which nesting, ideal-boundary and path-class hypotheses a physical width claim consumes. The following rows retain their November provenance. The July manuscript and 465 source-locked obligations have their original status.

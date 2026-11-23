@@ -2,6 +2,13 @@
 
 This directory contains reproducible audits of research claims in the archive. It is **not** a proof of Mandelbrot local connectivity and does not change the status of the source-locked global ledger obligations. The finite issues resolved here have their own explicit acceptance criteria and proof boundaries.
 
+## Actual interval rows and renewal clocks (November 23)
+
+- [Period-27 real Markov bridge](period27_real_markov_bridge_20261123.md): actual quadratic interval images and unique/no-preimage row semantics in Lean; written finite-itinerary and Fibonacci counting proofs; exact three-factor spectrum from independent integer trace and cycle-cover certificates. [Verifier](verify_period27_markov_spectrum.py)
+- [Clone renewal-clock theorem](clone_renewal_clock_20261123.md): the distinct full clone adjacency, its exact stochastic normalization and converse eigenvector construction, sharp cubic gap, actual affine interval realization, invariant measure, cylinder law and exact correlation. Root asymptotics and measure-theoretic steps are written. [Exact regression and optional diagnostics](verify_clone_renewal_clock.py)
+
+The general methods have established predecessors, cited in each note. These additions do not identify a native KL invariant measure or close a global MLC gate.
+
 ## Independent boundary-spectrum route (November 2026)
 
 - [Fejér criterion and critical Sobolev regularity](mlc_boundary_spectral_program_20261111.md) derives the uniformly Cauchy criterion, distinguishes ordinary boundary sums from continuous radial traces, and gives finite estimates away from the circle.

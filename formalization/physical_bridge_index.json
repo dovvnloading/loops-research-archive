@@ -1454,5 +1454,49 @@
       "NOV26_SAT_TIP",
       "NOV26_SAT_V2"
     ]
+  },
+  "clone-renewal": {
+    "guide": "formalization/PHYSICAL_BRIDGES_CONTRACTS.md#clone-renewal",
+    "theorems": {
+      "formalization/weighted/FullCloneRenewal.lean": [
+        "cloneTransition_long_choice",
+        "cloneTransition_short_choice",
+        "cloneTransition_stochastic",
+        "clone_normalized_root_is_eigenvalue",
+        "clone_polynomial_root_is_eigenvalue",
+        "clone_stochastic_root_mode",
+        "complexCloneVector_eigen",
+        "consecutive_return_mean",
+        "consecutive_return_variance",
+        "perronTransition_complex_eigen",
+        "perronTransition_nonneg",
+        "perronTransition_row_sum"
+      ]
+    },
+    "checks": [
+      "research/independent_audits/verify_clone_renewal_clock.py"
+    ]
+  },
+  "real-markov": {
+    "guide": "formalization/PHYSICAL_BRIDGES_DYNAMICS.md#real-markov",
+    "theorems": {
+      "formalization/weighted/Period27RealMarkov.lean": [
+        "edge_one_side",
+        "exists_physical_center_with_markov_rows",
+        "first_edge_omits_first_target",
+        "markovRows_exact",
+        "physical_edge_image",
+        "quadratic_injOn_edge",
+        "row_iff_physical_edge_covered",
+        "row_iff_physical_preimage",
+        "row_iff_unique_physical_preimage",
+        "vertex_step",
+        "vertex_strictMono",
+        "vertex_thirteen"
+      ]
+    },
+    "checks": [
+      "research/independent_audits/verify_period27_markov_spectrum.py"
+    ]
   }
 }

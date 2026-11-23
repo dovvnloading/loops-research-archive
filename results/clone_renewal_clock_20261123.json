@@ -1,0 +1,207 @@
+{
+  "scope": "Finite exact quotient-ring regressions; not an all-delay analytic proof",
+  "polynomial": "x^(2*n+5)-x-1",
+  "exact_checks": [
+    {
+      "delay": 0,
+      "vertices": 5,
+      "similarity_entries": 25,
+      "mutations_rejected": 3
+    },
+    {
+      "delay": 1,
+      "vertices": 7,
+      "similarity_entries": 49,
+      "mutations_rejected": 3
+    },
+    {
+      "delay": 2,
+      "vertices": 9,
+      "similarity_entries": 81,
+      "mutations_rejected": 3
+    },
+    {
+      "delay": 3,
+      "vertices": 11,
+      "similarity_entries": 121,
+      "mutations_rejected": 3
+    },
+    {
+      "delay": 4,
+      "vertices": 13,
+      "similarity_entries": 169,
+      "mutations_rejected": 3
+    },
+    {
+      "delay": 5,
+      "vertices": 15,
+      "similarity_entries": 225,
+      "mutations_rejected": 3
+    },
+    {
+      "delay": 6,
+      "vertices": 17,
+      "similarity_entries": 289,
+      "mutations_rejected": 3
+    },
+    {
+      "delay": 7,
+      "vertices": 19,
+      "similarity_entries": 361,
+      "mutations_rejected": 3
+    },
+    {
+      "delay": 8,
+      "vertices": 21,
+      "similarity_entries": 441,
+      "mutations_rejected": 3
+    },
+    {
+      "delay": 9,
+      "vertices": 23,
+      "similarity_entries": 529,
+      "mutations_rejected": 3
+    },
+    {
+      "delay": 10,
+      "vertices": 25,
+      "similarity_entries": 625,
+      "mutations_rejected": 3
+    },
+    {
+      "delay": 11,
+      "vertices": 27,
+      "similarity_entries": 729,
+      "mutations_rejected": 3
+    },
+    {
+      "delay": 12,
+      "vertices": 29,
+      "similarity_entries": 841,
+      "mutations_rejected": 3
+    },
+    {
+      "delay": 13,
+      "vertices": 31,
+      "similarity_entries": 961,
+      "mutations_rejected": 3
+    },
+    {
+      "delay": 14,
+      "vertices": 33,
+      "similarity_entries": 1089,
+      "mutations_rejected": 3
+    },
+    {
+      "delay": 15,
+      "vertices": 35,
+      "similarity_entries": 1225,
+      "mutations_rejected": 3
+    },
+    {
+      "delay": 16,
+      "vertices": 37,
+      "similarity_entries": 1369,
+      "mutations_rejected": 3
+    },
+    {
+      "delay": 24,
+      "vertices": 53,
+      "similarity_entries": 2809,
+      "mutations_rejected": 3
+    },
+    {
+      "delay": 32,
+      "vertices": 69,
+      "similarity_entries": 4761,
+      "mutations_rejected": 3
+    }
+  ],
+  "numeric_status": "90-digit diagnostics, not certified enclosures",
+  "numeric_diagnostics": [
+    {
+      "delay": 0,
+      "vertices": 5,
+      "D": "4.5",
+      "perron_root": "1.1673039782614186842560459",
+      "subleading_modulus": "1.099000315146457193987811802",
+      "relative_gap": "0.0585140326658467267197244",
+      "D_cubed_times_relative_gap": "5.33209122667528297233488",
+      "target_pi_squared_over_two": "4.93480220054467930941725",
+      "log_entropy_rate": "0.154696797758926829306744",
+      "correlation_efolding_time": "16.5848933078130606323926",
+      "root_equation_residual": "1.2272734e-91",
+      "centering_residual": "1.1062493e-91"
+    },
+    {
+      "delay": 2,
+      "vertices": 9,
+      "D": "8.5",
+      "perron_root": "1.085070245491450828336895864",
+      "subleading_modulus": "1.076133134033461231393586119",
+      "relative_gap": "0.00823643583917628644180807",
+      "D_cubed_times_relative_gap": "5.05820115973413691107538",
+      "target_pi_squared_over_two": "4.93480220054467930941725",
+      "log_entropy_rate": "0.0816447272851588398568004",
+      "correlation_efolding_time": "120.911049983601199721732",
+      "root_equation_residual": "1.2272734e-91",
+      "centering_residual": "2.1367425e-91"
+    },
+    {
+      "delay": 10,
+      "vertices": 25,
+      "D": "24.5",
+      "perron_root": "1.02869993552825111314343574",
+      "subleading_modulus": "1.028353621718505231411048139",
+      "relative_gap": "0.000336651921308855706513018",
+      "D_cubed_times_relative_gap": "4.95084523625819562694376",
+      "target_pi_squared_over_two": "4.93480220054467930941725",
+      "log_entropy_rate": "0.0282958064818124943746085",
+      "correlation_efolding_time": "2969.9271006860927084376",
+      "root_equation_residual": "1.2272734e-91",
+      "centering_residual": "1.7144161e-91"
+    },
+    {
+      "delay": 50,
+      "vertices": 105,
+      "D": "104.5",
+      "perron_root": "1.006655087331752996448112205",
+      "subleading_modulus": "1.006650733396582199864666953",
+      "relative_gap": "0.00000432515091374261507062559",
+      "D_cubed_times_relative_gap": "4.93571570827586928751241",
+      "target_pi_squared_over_two": "4.93480220054467930941725",
+      "log_entropy_rate": "0.00663304000193609273186607",
+      "correlation_efolding_time": "231205.305286716979426193",
+      "root_equation_residual": "2.4545467e-91",
+      "centering_residual": "6.5483399e-91"
+    },
+    {
+      "delay": 100,
+      "vertices": 205,
+      "D": "204.5",
+      "perron_root": "1.003395230570093595817339876",
+      "subleading_modulus": "1.003394651564240429236298237",
+      "relative_gap": "0.000000577046646751161497785463",
+      "D_cubed_times_relative_gap": "4.93504206338863100287743",
+      "target_pi_squared_over_two": "4.93480220054467930941725",
+      "log_entropy_rate": "0.00338947978792621990737617",
+      "correlation_efolding_time": "1732961.65415181150555447",
+      "root_equation_residual": "1.2272734e-91",
+      "centering_residual": "1.0018576e-90"
+    },
+    {
+      "delay": 500,
+      "vertices": 1005,
+      "D": "1004.5",
+      "perron_root": "1.000690280184637799502029678",
+      "subleading_modulus": "1.000690275312489635176624776",
+      "relative_gap": "4.86878733690352495649955e-9",
+      "D_cubed_times_relative_gap": "4.93481218845068550788711",
+      "target_pi_squared_over_two": "4.93480220054467930941725",
+      "log_entropy_rate": "0.000690042050850869209914811",
+      "correlation_efolding_time": "205389952.02891551846175",
+      "root_equation_residual": "1.2272734e-91",
+      "centering_residual": "2.1559079e-89"
+    }
+  ]
+}

@@ -197,6 +197,17 @@ universal bound; no sharper rate is claimed. The exact bound is a
 written theorem conditional on the separately proved characteristic
 polynomial, not a Lean determinant proof.
 
+**Subsequent result, 2026-11-23.** The [renewal-clock proof](clone_renewal_clock_20261123.md)
+now identifies the actual subleading conjugate pair and proves
+$(2n+9/2)^3(1-r_n/t_n)\to\pi^2/2$, sharpening the above dated bound.
+It separately constructs a stochastic normalization and an actual affine
+interval map with the corresponding exact correlation law. The analytic
+asymptotic is a written proof. The general simplicity and positive-root
+dominance facts for $x^d-x-1$ already appear in Shallit and Yamron,
+[*On Linear Recurrences and Divisibility by Primes*](https://www.fq.math.ca/Scanned/22-4/shallit2.pdf),
+Theorem, pp. 367–368 (1984); the actual graph identification remains a
+distinct part of the archive's work.
+
 ## Reproduction and trust boundary
 
 ```bash

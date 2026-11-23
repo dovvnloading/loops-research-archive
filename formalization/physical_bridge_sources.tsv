@@ -51,6 +51,7 @@ formalization/weighted/FullCloneEigen.lean	CLONE EDGE
 formalization/weighted/FullCloneEigenline.lean	CLONE EDGE
 formalization/weighted/FullCloneMatrix.lean	CLONE EDGE
 formalization/weighted/FullClonePolynomial.lean	CLONE EDGE
+formalization/weighted/FullCloneRenewal.lean	CLONE-MARKOV RENEWAL-GAP AFFINE-CORRELATION NATIVE-CORRELATION
 formalization/weighted/FullCloneSpectralMax.lean	CLONE EDGE
 formalization/weighted/FullCloneStrictGap.lean	CLONE EDGE
 formalization/weighted/GraphWeightedBridge.lean	CLONE EDGE
@@ -77,6 +78,7 @@ formalization/weighted/ParabolicTipWindow.lean	PARABOLIC STRAIGHTEN
 formalization/weighted/Period27RealCenter.lean	CENTER
 formalization/weighted/Period27RealExactPeriod.lean	CENTER
 formalization/weighted/Period27RealKneading.lean	CENTER DIFFRACTION
+formalization/weighted/Period27RealMarkov.lean	REAL-MARKOV MARKOV-SPECTRUM
 formalization/weighted/Period27RealUniqueness.lean	CENTER
 formalization/weighted/PhaseMemoryCardinality.lean	CLOCK ENDS
 formalization/weighted/PlanarFullification.lean	HULL
@@ -143,6 +145,7 @@ research/independent_audits/verify_annular_contact_crossover.py	CONDENSER RESPON
 research/independent_audits/verify_attachment_sheet_condenser.py	CONDENSER RESPONSE
 research/independent_audits/verify_chebyshev_phase_parameter.py	LOCAL-PHASE
 research/independent_audits/verify_clone_first_returns.py	CLONE EDGE
+research/independent_audits/verify_clone_renewal_clock.py	CLONE-MARKOV RENEWAL-GAP
 research/independent_audits/verify_clone_spectral.py	CLONE EDGE
 research/independent_audits/verify_clone_strict_gap.py	CLONE EDGE
 research/independent_audits/verify_complex_quadratic_like_3_9.py	TWO-SCALE
@@ -160,6 +163,7 @@ research/independent_audits/verify_paper2_source_clock.py	CLOCK ENDS
 research/independent_audits/verify_period27_center_tuning_identification.py	CENTER DIFFRACTION LANDING
 research/independent_audits/verify_period27_exterior_pullback.py	CENTER DIFFRACTION LANDING
 research/independent_audits/verify_period27_kneading_angle_permutation.py	CENTER DIFFRACTION LANDING
+research/independent_audits/verify_period27_markov_spectrum.py	MARKOV-SPECTRUM
 research/independent_audits/verify_period27_misiurewicz_tip.py	TWO-SCALE
 research/independent_audits/verify_period27_symbolic_atlas.py	CENTER DIFFRACTION LANDING
 research/independent_audits/verify_period9_ray_pairing_bifurcation.py	LANDING

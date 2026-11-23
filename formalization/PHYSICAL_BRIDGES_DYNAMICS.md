@@ -10,6 +10,22 @@ Throughout, $f_c(z)=z^2+c$ and $x_j(c)=f_c^j(0)$. Parameter rays live in the par
 2. **Orbit order → symbolic input.** For each adjacent index pair $u,v$ in `realIncreasingIndices`, verify $U_u<L_v$ in the same integer scale $S=2^{144}$. Then $x_u\le U_u/S<L_v/S\le x_v$. For times 1 through 26 use $U_j<0$ or $L_j>0$ to read the sign of the physical iterate. The first state is $x_0=0$, and the center closes with $x_{27}=0$. Starting with digit 0, flip on a negative iterate to recover numerator 59914011. For the order comparison use the cyclic shift starting at $x_1$, as in `realRanks`. The Lean theorem `physical_kneading_numerator` builds the bits from comparisons on the real orbit for every parameter in the closed bracket. Exact periodicity singles out the center when this finite word is read as periodic. [Physical sign, order and word theorems](weighted/Period27RealKneading.lean) · [Finite adjacent comparisons and sign checks](../Period27Dyadic.lean) · [Sign-to-word and rank conventions](../Period27Kneading.lean) · [Exact symbolic marking](../research/independent_audits/period27_three_scale_symbolic_marking_20261105.md)
 3. **Word → component root.** Apply Buff–Floyd–Koch–Parry §4.4, pp. 9–10, to the physical kneading word of this exact-period real center. Use Zakeri §2, eq. (2.2), to compute the angles from two airplane tunings and compare the resulting characteristic pair. Uniqueness of the component determined by its characteristic pair identifies the center's component. The rays of angles $59914011/(2^{27}-1)$ and its complement land at its *parabolic root*. The attracting basin at the center has interior, which rules out using the center as an instance of Paper 2's $K=J$. [Written application of the real-center and tuning theorems](../research/independent_audits/period27_center_tuning_identification_20261106.md)
 
+<a id="real-markov"></a>
+
+## From the finite period-27 rows to every real point of an interval
+
+Fix $c\in[a,b]$ with the actual orbit equation $f_c^{27}(0)=0$. Define $v_i=f_c^{j_i}(0)$ using the previously verified increasing orbit-index list, and $E_i=[v_i,v_{i+1}]$ for $i<26$. `vertex_strictMono` transports the existing real-orbit inequalities to $v_0<\cdots<v_{26}$; `vertex_thirteen` identifies $v_{13}=0$. The kernel checks the finite successor-rank permutation $\pi$, and `vertex_step` proves $f_c(v_i)=v_{\pi(i)}$ using the true orbit closure.
+
+Each edge lies wholly on one side of zero. Thus the actual quadratic is strictly monotone and injective on that whole edge. Continuity and the intermediate value theorem give
+
+$$
+f_c(E_i)=[v_{\min(\pi(i),\pi(i+1))},v_{\max(\pi(i),\pi(i+1))}].
+$$
+
+The row predicate $A_{ij}=1$ means exactly $\min(\pi(i),\pi(i+1))\le j<\max(\pi(i),\pi(i+1))$. `row_iff_physical_edge_covered` proves $A_{ij}=1\iff E_j\subset f_c(E_i)$. For every $y\in\operatorname{int}E_j$, `row_iff_unique_physical_preimage` proves $A_{ij}=1$ if and only if there is exactly one $x\in E_i$ with $f_c(x)=y$; `row_iff_physical_preimage` rules out even existence when the row omits $j$. Target interiors prevent shared endpoints from being counted twice. `exists_physical_center_with_markov_rows` supplies an actual parameter satisfying these assertions, using the already proved center theorem. [Lean realization](weighted/Period27RealMarkov.lean) · [Exact objects, quantifiers and negative test](../research/independent_audits/period27_real_markov_bridge_20261123.md)
+
+This conclusion identifies the real interval spine only. A native KL edge operator, external-ray automaton or marked width requires its independently constructed identification with these intervals. No such identification follows from an equal matrix size or matching finite labels.
+
 <a id="two-scale"></a>
 
 ## Real restrictive intervals and complex returns

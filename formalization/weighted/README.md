@@ -181,6 +181,27 @@ CI: [successful weighted build at commit 6a3bac5](https://github.com/dovvnloadin
 
 [Period27RealKneading.lean](Period27RealKneading.lean) evaluates the sign word and all adjacent order comparisons on the real quadratic iterates in the isolated parameter bracket. [PlanarFullification.lean](PlanarFullification.lean) constructs the operator filling bounded complementary components of actual subsets of the complex plane, proves compactness on compact inputs, and applies the existing finite-packet theorem to that operator. The [proof guide](../PHYSICAL_BRIDGES_CONTRACTS.md) gives the independent hypotheses for ray landing and protected-access survival.
 
+## Physical interval rows and clone renewal normalization
+
+[Period27RealMarkov.lean](Period27RealMarkov.lean) proves that the archived
+26-edge table has exactly the claimed whole-interval images and unique/no
+preimage meanings for the actual period-27 real quadratic center. It supplies
+the parameter using the independently proved existence theorem. The separate
+[spectral note](../../research/independent_audits/period27_real_markov_bridge_20261123.md)
+proves the three Fibonacci factors and the finite-itinerary interpretation in writing.
+
+[FullCloneRenewal.lean](FullCloneRenewal.lean) concerns the **different** primitive
+clone adjacency. It constructs the positive-eigenvector normalization, proves
+nonnegative rows summing to one, computes both branch probabilities, and
+constructs an actual nonzero complex eigenvector for every polynomial root.
+`clone_stochastic_root_mode` packages the probability law and normalized mode
+on the same real root and matrix. The
+[renewal note](../../research/independent_audits/clone_renewal_clock_20261123.md)
+supplies the separately written cubic asymptotic and measure-theoretic realization.
+Neither Lean file postulates a native KL identification.
+
+Build both new modules with `lake build Period27RealMarkov FullCloneRenewal`.
+
 ## Reproduce
 
 From the formalization/weighted directory, execute:

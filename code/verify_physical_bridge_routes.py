@@ -49,7 +49,16 @@ def read_register() -> dict[str, tuple[str, list[str]]]:
 
 
 def check_dependencies(routes: dict[str, tuple[str, list[str]]]) -> None:
+    """Check assumptions transitively, including across model-only rows.
+
+    The register's input column denotes premises, not related evidence.
+    A model status does not discharge an open premise inherited through it.
+    Retain a shortest witness so a rejected promotion identifies the exact
+    dependency path instead of merely reporting an unresolved ancestor.
+    """
     checked, active = set(), set()
+    unresolved: dict[str, tuple[str, ...] | None] = {}
+    unfinished = {"conditional", "open", "diagnostic"}
 
     def visit(key: str) -> None:
         if key in active:
@@ -58,12 +67,18 @@ def check_dependencies(routes: dict[str, tuple[str, list[str]]]) -> None:
             return
         active.add(key)
         status, deps = routes[key]
+        witnesses = []
         for dep in deps:
             if dep not in routes:
                 fail(f"{key} refers to unknown premise {dep}")
             visit(dep)
-            if status in STANDING and routes[dep][0] in {"conditional", "open", "diagnostic"}:
-                fail(f"{key} claims {status} while relying on {dep} ({routes[dep][0]})")
+            if unresolved[dep] is not None:
+                witnesses.append((key, *unresolved[dep]))
+        witness = min(witnesses, key=lambda path: (len(path), path)) if witnesses else None
+        if status in STANDING and witness is not None:
+            fail(f"{key} claims {status} while relying on "
+                 f"{' -> '.join(witness)} ({routes[witness[-1]][0]})")
+        unresolved[key] = (key,) if status in unfinished else witness
         checked.add(key)
         active.remove(key)
 
