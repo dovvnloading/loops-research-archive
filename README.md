@@ -67,6 +67,11 @@ The three return clocks remain visible in the full spectrum, even though the
 leading eigenvalue is the golden ratio. The written inverse-itinerary proof
 also gives exact Fibonacci preimage counts at clocks 1, 3 and 9.
 [Spectrum certificate](./research/independent_audits/verify_period27_markov_spectrum.py)
+The [earlier Markov observability study](./research/independent_audits/airplane_inverse_problems_20261114/markov/RESEARCH.md)
+already identified the three symbolic components, return clocks and weighted
+growth polynomials. The additions here are the kernel-checked physical
+realization, a full characteristic-polynomial certificate, and the explicit
+transfer to actual inverse fibers at every finite time.
 
 For the **different, primitive delayed clone graph**, the
 [renewal-clock proof](./research/independent_audits/clone_renewal_clock_20261123.md)

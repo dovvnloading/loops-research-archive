@@ -63,7 +63,7 @@ theorem perronTransition_complex_eigen {ι : Type*} [Fintype ι]
           apply Finset.sum_congr rfl
           intro j _
           simp only [perronTransition, Complex.ofReal_div, Complex.ofReal_mul]
-          field_simp
+          field_simp [ht0, hv0 i, hv0 j]
     _ = (∑ j, (A i j : ℂ) * z j) / ((t : ℂ) * (v i : ℂ)) := by
           rw [Finset.sum_div]
     _ = (μ / (t : ℂ)) * (z i / (v i : ℂ)) := by
@@ -145,11 +145,10 @@ theorem complexCloneVector_eigen (n : ℕ) (μ : ℂ)
     · have hcur : u.val ≤ n := by omega
       have hnextlarge : ¬ u.val + 1 ≤ n := by omega
       have hsklarge : ¬ n + 2 ≤ n := by omega
-      simp only [htip, ite_true, complexCloneVector, nextVertex, afterTip,
-        hcur, hnextlarge, hsklarge, ite_false]
-      simp only [htip]
-      rw [pow_succ, pow_succ]
-      field_simp
+      simp only [complexCloneVector, nextVertex, afterTip]
+      rw [if_neg hnextlarge, if_pos htip, if_neg hsklarge, if_pos hcur, htip]
+      simp only [pow_add, pow_one, pow_two]
+      field_simp [hden]
       <;> ring
     · rw [if_neg htip, add_zero]
       by_cases hlow : u.val < n

@@ -16,6 +16,8 @@ To read a transition, fix the parameter, stage, domains, marks, and observable i
 
 The earlier `PlanarFullification` and `Period27RealKneading` realization modules build with the repository’s pinned Lean 4.32.0 and Mathlib. The printed dependencies of their principal theorems are `propext`, `Classical.choice`, and `Quot.sound`. This linked run concerns those earlier modules; it does not validate subsequent additions. [Earlier weighted proof build](https://github.com/dovvnloading/loops-research-archive/actions/runs/45268559641)
 
+The added `Period27RealMarkov` and `FullCloneRenewal` modules are explicit Lake default targets. Reproduce them with `lake build Period27RealMarkov FullCloneRenewal` in `formalization/weighted`, using the pinned toolchain. Their own principal-theorem dependency reports and current build result are in the [PR 115 checks](https://github.com/dovvnloading/loops-research-archive/pull/115/checks).
+
 A **kernel proof** can already be about the physical target. A **written proof** can use a source theorem with its hypotheses verified here. A **conditional deduction** displays its unproved inputs, and an **open obligation** names a statement still requiring proof. A verifier can establish exact arithmetic or identify a counterexample within its declared model. Check the proof that makes that computation decisive for the target. [Declaration and evidence index](physical_bridge_index.json) · [source risk register](LEAN_RISK_REGISTER_20261123.md)
 
 <a id="planar-fill"></a>

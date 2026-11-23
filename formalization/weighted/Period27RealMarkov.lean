@@ -130,8 +130,8 @@ theorem edge_one_side (c : ℝ) (hc : c ∈ Icc left right) (i : Fin 26) :
 theorem quadratic_injOn_edge (c : ℝ) (hc : c ∈ Icc left right) (i : Fin 26) :
     InjOn (quadratic c) (edge c i) := by
   rcases edge_one_side c hc i with h | h
-  · exact (quadratic_strictAntiOn c _ _ h).injOn
-  · exact (quadratic_strictMonoOn c _ _ h).injOn
+  · exact (quadratic_strictAntiOn c (vertex c i.castSucc) (vertex c i.succ) h).injOn
+  · exact (quadratic_strictMonoOn c (vertex c i.castSucc) (vertex c i.succ) h).injOn
 
 private theorem vertex_min (c : ℝ) (hc : c ∈ Icc left right) (i j : Fin 27) :
     vertex c (min i j) = min (vertex c i) (vertex c j) := by
@@ -160,11 +160,11 @@ theorem physical_edge_image (c : ℝ) (hc : c ∈ Icc left right)
           (max (quadratic c (vertex c i.castSucc))
                (quadratic c (vertex c i.succ))) := by
     rcases edge_one_side c hc i with h | h
-    · have hm := quadratic_strictAntiOn c _ _ h
+    · have hm := quadratic_strictAntiOn c (vertex c i.castSucc) (vertex c i.succ) h
       have ho := hm.antitoneOn (left_mem_Icc.mpr hab) (right_mem_Icc.mpr hab) hab
       simpa only [edge, min_eq_right ho, max_eq_left ho] using
         hcont.continuousOn.image_Icc_of_antitoneOn hab hm.antitoneOn
-    · have hm := quadratic_strictMonoOn c _ _ h
+    · have hm := quadratic_strictMonoOn c (vertex c i.castSucc) (vertex c i.succ) h
       have ho := hm.monotoneOn (left_mem_Icc.mpr hab) (right_mem_Icc.mpr hab) hab
       simpa only [edge, min_eq_left ho, max_eq_right ho] using
         hcont.continuousOn.image_Icc_of_monotoneOn hab hm.monotoneOn

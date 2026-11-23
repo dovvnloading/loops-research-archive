@@ -21,8 +21,12 @@ rate unresolved. Equation (1), the probability normalization, and the interval
 correlation formula below are additional results for that specified family.
 
 **Evidence status.** The new analytic and measure-theoretic arguments in this note
-are written proofs, not Lean-kernel proofs. Existing Lean modules establish the
-actual adjacency's eigenvalue equation and strict Perron dominance. The companion
+are written proofs, not Lean-kernel proofs.
+[FullCloneRenewal.lean](../../formalization/weighted/FullCloneRenewal.lean)
+provides the kernel proof of the polynomial-root-to-actual-matrix converse,
+stochastic normalization, normalized complex mode, branch probabilities,
+and algebraic return-moment identities. Existing Lean modules establish the
+other spectral direction and strict Perron dominance. The companion
 [verifier](verify_clone_renewal_clock.py) checks the new finite algebra in exact
 integer quotient rings and, optionally, computes high-precision diagnostic values.
 Neither finite regression nor numerical asymptotics substitutes for the proofs.
@@ -501,6 +505,16 @@ alter the explicitly specified measure (19) on the constructed interval
 map; a different physical measure would need its own cylinder-law proof.
 
 ## 8. Reproduction and related work
+
+With the pinned Lean 4.32.0 and mathlib revision, from `formalization/weighted`:
+
+```bash
+lake build FullCloneRenewal
+```
+
+The source prints the dependencies of its principal theorems. The current
+repository build evidence is available in the
+[PR 115 checks](https://github.com/dovvnloading/loops-research-archive/pull/115/checks).
 
 From the repository root:
 

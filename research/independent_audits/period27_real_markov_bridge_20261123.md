@@ -290,6 +290,19 @@ induction is not presently a Lean declaration. It exhibits three physical
 inverse-branch clocks with the same normalized Fibonacci law; it does not
 construct a new complex restriction or a marked-width estimate.
 
+**Earlier work in this archive.** The baseline
+[airplane Markov study](airplane_inverse_problems_20261114/markov/RESEARCH.md)
+already records all three components, their first-return words of lengths
+1/2, 3/6 and 9/18, and weighted positive-growth polynomials. Specializing
+its weights to one gives the same three factors used here. The three
+clocks, component decomposition and underlying growth polynomials are
+therefore **not new discoveries within this project**. The present
+contribution is the explicit Lean identification with actual quadratic
+interval images and fiber multiplicities, the full characteristic-polynomial
+certificate, and the written all-horizon transfer to physical inverse-fiber
+and Fibonacci counts. These additions use and credit the earlier finite
+Markov investigation.
+
 **Prior art and novelty scope.** Spectral and kneading descriptions of
 interval dynamics are classical: see Milnor and Thurston,
 [*On iterated maps of the interval*](https://websites.umich.edu/~kochsc/MilnorThurston.pdf),
@@ -314,8 +327,7 @@ appropriate Markov/monotone interval-map theorem separately.
 With the pinned Lean 4.32.0 and mathlib version, in `formalization/weighted`:
 
 ```bash
-lake build Period27RealKneading
-lake env lean Period27RealMarkov.lean
+lake build Period27RealMarkov
 ```
 
 From the repository root, reproduce the exact finite spectral certificate:
