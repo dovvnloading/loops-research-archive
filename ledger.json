@@ -5557,7 +5557,11 @@
    "classification": "Conditional on KKL physical marking",
    "group": "Native Wave Transfer Lab and canonical WAD audits",
    "pr": 73,
-   "verifier": "research/native_wave_transfer/regenerate.py"
+   "verifier": "research/native_wave_transfer/regenerate.py",
+   "physical_bridges": [
+    "SELECTED",
+    "MARK"
+   ]
   },
   {
    "id": "NOV26_NATIVE_P4",
@@ -5570,7 +5574,11 @@
    "classification": "Finite certificate, conditional Wave reading",
    "group": "Native Wave Transfer Lab and canonical WAD audits",
    "pr": 77,
-   "verifier": "research/native_wave_transfer/regenerate_period4.py"
+   "verifier": "research/native_wave_transfer/regenerate_period4.py",
+   "physical_bridges": [
+    "SELECTED",
+    "MARK"
+   ]
   },
   {
    "id": "NOV26_DIRICHLET",
@@ -5585,7 +5593,11 @@
    "classification": "Conditional comparison; finite certificate",
    "group": "Native Wave Transfer Lab and canonical WAD audits",
    "pr": 72,
-   "verifier": "research/independent_audits/wave_vs_dirichlet_contact_transfer_20261115/verify.py"
+   "verifier": "research/independent_audits/wave_vs_dirichlet_contact_transfer_20261115/verify.py",
+   "physical_bridges": [
+    "RESPONSE",
+    "CONDENSER"
+   ]
   },
   {
    "id": "NOV26_WAD_INCIDENCE",
@@ -5598,7 +5610,11 @@
    "classification": "Proved negative identification",
    "group": "Native Wave Transfer Lab and canonical WAD audits",
    "pr": 75,
-   "verifier": "research/independent_audits/canonical_wad_electrode_incidence_20261116/verify.py"
+   "verifier": "research/independent_audits/canonical_wad_electrode_incidence_20261116/verify.py",
+   "physical_bridges": [
+    "CONDENSER",
+    "BUFFER"
+   ]
   },
   {
    "id": "NOV26_WAD_WEIGHTS",
@@ -5613,7 +5629,11 @@
    "classification": "Finite certificate; canonical weights open",
    "group": "Native Wave Transfer Lab and canonical WAD audits",
    "pr": 81,
-   "verifier": "research/independent_audits/canonical_wad_conformal_weights_20261116/verify.py"
+   "verifier": "research/independent_audits/canonical_wad_conformal_weights_20261116/verify.py",
+   "physical_bridges": [
+    "CONDENSER",
+    "BUFFER"
+   ]
   },
   {
    "id": "NOV26_WAD_MODULI",
@@ -5628,7 +5648,10 @@
    "classification": "Finite certificate; individual moduli open",
    "group": "Native Wave Transfer Lab and canonical WAD audits",
    "pr": 76,
-   "verifier": "research/independent_audits/canonical_wad_quadrilateral_moduli_20261116/verify.py"
+   "verifier": "research/independent_audits/canonical_wad_quadrilateral_moduli_20261116/verify.py",
+   "physical_bridges": [
+    "BUFFER"
+   ]
   },
   {
    "id": "NOV26_TIP_UNIFORM",
@@ -5641,7 +5664,11 @@
    "classification": "Conditional; six finite certificates",
    "group": "Real primitive tip family theorem and dependency chain",
    "pr": 80,
-   "verifier": "research/independent_audits/real_primitive_tip_family_uniform_20261116/verify.py"
+   "verifier": "research/independent_audits/real_primitive_tip_family_uniform_20261116/verify.py",
+   "physical_bridges": [
+    "SELECTED",
+    "MARK"
+   ]
   },
   {
    "id": "NOV26_TIP_FINITE",
@@ -5654,53 +5681,68 @@
    "classification": "Finite certificate",
    "group": "Real primitive tip family theorem and dependency chain",
    "pr": 83,
-   "verifier": "research/independent_audits/real_primitive_tip_family_unconditional_20261116/verify.py"
+   "verifier": "research/independent_audits/real_primitive_tip_family_unconditional_20261116/verify.py",
+   "physical_bridges": [
+    "SELECTED"
+   ]
   },
   {
    "id": "NOV26_TIP_ALLP",
    "status": "proved",
-   "statement": "Selected real tips p>=13: Unique root of the selected near-minus-two kneading chart, proper degree-two returns and c_p+2=(3 pi^2/2)4^-p+O(p16^-p), not maximal-window uniqueness.",
+   "statement": "Selected real tips p>=13: For p>=13, local uniqueness, the degree-two return disks and c_p+2=(3 pi^2/2)4^-p+O(p16^-p) use uniform analytic estimates on the selected chart. The verifier checks their rational inputs.",
    "deps": [
     "NOV26_TIP_FINITE"
    ],
    "evidence": "research/independent_audits/real_primitive_tip_family_all_p_20261116/NOTE.md",
    "clauses": "",
-   "hyp": "signed chart, not all component roots",
-   "classification": "Proved within signed chart",
+   "hyp": "uniform signed-chart and complex-disk estimates",
+   "classification": "Written signed-chart argument",
    "group": "Real primitive tip family theorem and dependency chain",
    "pr": 87,
-   "verifier": "research/independent_audits/real_primitive_tip_family_all_p_20261116/verify.py"
+   "verifier": "research/independent_audits/real_primitive_tip_family_all_p_20261116/verify.py",
+   "physical_bridges": [
+    "SELECTED"
+   ]
   },
   {
    "id": "NOV26_TIP_PRIME_END",
-   "status": "proved",
-   "statement": "All-period physical prime-end marking: Selected p>=3 tips have the actual 10/20 KKL slit atoms, one attachment and different covering/immersion tables; DH, McMullen, Misiurewicz and Caratheodory are not Lean-formalized.",
+   "status": "open",
+   "statement": "All-period physical prime-end marking: The 10/20 model distinguishes the covering and immersion tables. Identifying all physical accesses and the proper-path relation needs the nesting and ideal-marking proofs.",
    "deps": [
     "NOV26_TIP_FINITE",
     "NOV26_TIP_ALLP"
    ],
    "evidence": "research/independent_audits/real_primitive_tip_family_prime_end_identification_20261116/NOTE.md",
    "clauses": "",
-   "hyp": "cited published dynamical/topological theorems",
-   "classification": "Proved with named published inputs",
+   "hyp": "v2 H1 (return geometry) and H2 (physical ideal marking)",
+   "classification": "Conditional on v2 H1 and H2",
    "group": "Real primitive tip family theorem and dependency chain",
    "pr": 91,
-   "verifier": "research/independent_audits/real_primitive_tip_family_prime_end_identification_20261116/verify.py"
+   "verifier": "research/independent_audits/real_primitive_tip_family_prime_end_identification_20261116/verify.py",
+   "physical_bridges": [
+    "PERIOD-TWO",
+    "MARK"
+   ]
   },
   {
    "id": "NOV26_TIP_THEOREM",
    "status": "open",
-   "statement": "Typed all-period primitive-tip synthesis: Selected physical tips, source arcs 3/3/7 and covering arcs 3/3/5; chosen harmonic log-Wave equality requires KKL conformal identification, never an identity for maximal Waves.",
+   "statement": "Typed all-period primitive-tip synthesis: The tabulated source and cover arc spans are 3/3/7 and 3/3/5. Their KKL interpretation requires v2 H1 and H2. The selected round equality also requires the marked conformal foliation.",
    "deps": [
     "NOV26_TIP_PRIME_END"
    ],
    "evidence": "research/tip_family_theorem/THEOREM.md",
    "clauses": "",
-   "hyp": "named external theorems; selected Wave analytic meaning",
-   "classification": "Proved scoped realization; conditional round Wave",
+   "hyp": "v2 H1 and H2, and admissibility of the selected round foliation",
+   "classification": "Finite incidence and conditional Wave interpretation",
    "group": "Real primitive tip family theorem and dependency chain",
    "pr": 93,
-   "verifier": "research/tip_family_theorem/verify_chain.py"
+   "verifier": "research/tip_family_theorem/verify_chain.py",
+   "physical_bridges": [
+    "SELECTED",
+    "MARK",
+    "ALL-PATHS"
+   ]
   },
   {
    "id": "NOV26_TIP_CANONICAL",
@@ -5715,23 +5757,31 @@
    "classification": "Finite witness; canonical optimum open",
    "group": "Real primitive tip family theorem and dependency chain",
    "pr": 90,
-   "verifier": "research/independent_audits/real_primitive_tip_family_canonical_width_20261116/verify.py"
+   "verifier": "research/independent_audits/real_primitive_tip_family_canonical_width_20261116/verify.py",
+   "physical_bridges": [
+    "MARK",
+    "ALL-PATHS"
+   ]
   },
   {
    "id": "NOV26_TIP_SANDWICH",
    "status": "open",
-   "statement": "Canonical KKL Wave sandwich: W_rad <= W_p,2* <= W_p* <= Q_p; 0.26 < liminf W_p* <= limsup W_p* < 0.78, without an optimal-width convergence claim.",
+   "statement": "Canonical KKL Wave sandwich: W_rad <= W_p,2* <= W_p* <= Q_p and 0.26 < liminf W_p* <= limsup W_p* < 0.78 require the physical marking, admissible witnesses and full-path upper comparison.",
    "deps": [
     "NOV26_TIP_CANONICAL",
     "NOV26_TIP_PRIME_END"
    ],
    "evidence": "research/independent_audits/real_primitive_tip_family_canonical_width_sandwich_20261116/NOTE.md",
    "clauses": "",
-   "hyp": "M: physical KKL slit/prime-end identification",
-   "classification": "Conditional on M",
+   "hyp": "v2 H1, H2 and H3",
+   "classification": "Conditional on v2 H1–H3",
    "group": "Real primitive tip family theorem and dependency chain",
    "pr": 92,
-   "verifier": "research/independent_audits/real_primitive_tip_family_canonical_width_sandwich_20261116/verify.py"
+   "verifier": "research/independent_audits/real_primitive_tip_family_canonical_width_sandwich_20261116/verify.py",
+   "physical_bridges": [
+    "MARK",
+    "ALL-PATHS"
+   ]
   },
   {
    "id": "NOV26_CREST_SIX",
@@ -5746,7 +5796,11 @@
    "classification": "Finite certificate; conditional physical Wave",
    "group": "Wave gain and crest transport",
    "pr": 84,
-   "verifier": "research/independent_audits/crest_transport_tip_family_20261116/verify.py"
+   "verifier": "research/independent_audits/crest_transport_tip_family_20261116/verify.py",
+   "physical_bridges": [
+    "MARK",
+    "CREST"
+   ]
   },
   {
    "id": "NOV26_CREST_16",
@@ -5761,53 +5815,71 @@
    "classification": "Finite certificate; numerical-only limit",
    "group": "Wave gain and crest transport",
    "pr": 89,
-   "verifier": "research/independent_audits/crest_transport_asymptotics_20261116/verify.py"
+   "verifier": "research/independent_audits/crest_transport_asymptotics_20261116/verify.py",
+   "physical_bridges": [
+    "MARK",
+    "CREST"
+   ]
   },
   {
    "id": "NOV26_GAIN_PAIRED",
    "status": "open",
-   "statement": "Pairable-wave serial loss: Leafwise-pairable parents obey loss-or-equality; this note's independent-width enclosures straddle zero, but later PR #100 proves the unrestricted sign.",
+   "statement": "Pairable-wave serial loss: Loss or equality applies to a designated pair with a restriction from each child in every parent leaf and injectivity on their union (KKL Lemma A.11).",
    "deps": [
     "NOV26_TIP_SANDWICH"
    ],
    "evidence": "research/independent_audits/tip_family_canonical_wave_gain_20261116/NOTE.md",
    "clauses": "",
-   "hyp": "M; independent optima distinct from pairable class",
-   "classification": "Conditional on M; historical sign-indefinite bounds",
+   "hyp": "physical marking and the leafwise pairing and injectivity hypotheses of KKL A.11",
+   "classification": "Conditional leafwise serial inequality",
    "group": "Wave gain and crest transport",
    "pr": 94,
-   "verifier": "research/independent_audits/tip_family_canonical_wave_gain_20261116/verify.py"
+   "verifier": "research/independent_audits/tip_family_canonical_wave_gain_20261116/verify.py",
+   "physical_bridges": [
+    "MARK",
+    "GAIN"
+   ]
   },
   {
    "id": "NOV26_GAIN_LARGE",
    "status": "open",
-   "statement": "Strict limiting and p>=13 unbuffered Wave gain: Embedded semidisk/half-strip witnesses give D_p>11/126 for p>=13 and 0.696<D_infinity<0.793; no buffered WAD gain or optimal-width convergence.",
+   "statement": "Strict limiting and p>=13 unbuffered Wave gain: The rational comparisons give D_p>11/126 for p>=13 and 0.696<D_infinity<0.793 for the limiting model. The physical interpretation requires the full marked path comparison.",
    "deps": [
     "NOV26_GAIN_PAIRED"
    ],
    "evidence": "research/independent_audits/tip_family_limiting_wave_gain_20261116/NOTE.md",
    "clauses": "",
-   "hyp": "M and written Schwarz-Christoffel admissibility",
-   "classification": "Conditional on M; proved analytic sign",
+   "hyp": "v2 H1, H2 and H3, with separate hypotheses for the limiting model",
+   "classification": "Conditional on v2 H1–H3",
    "group": "Wave gain and crest transport",
    "pr": 97,
-   "verifier": "research/independent_audits/tip_family_limiting_wave_gain_20261116/verify.py"
+   "verifier": "research/independent_audits/tip_family_limiting_wave_gain_20261116/verify.py",
+   "physical_bridges": [
+    "MARK",
+    "ALL-PATHS",
+    "GAIN"
+   ]
   },
   {
    "id": "NOV26_GAIN_ALLP",
    "status": "open",
-   "statement": "Strict independent unbuffered Wave gain for all p: Finite p=3..12 embedded witnesses plus the p>=13 result prove D_p>1/100 for every p>=3; independent maxima are not jointly pairable, and no buffered WAD/iterated gain follows.",
+   "statement": "Strict independent unbuffered Wave gain for all p: For independently optimized unbuffered widths the four period bounds give D_p>1/100 for every p>=3 once the marked parent witnesses and all-child upper metrics are established.",
    "deps": [
     "NOV26_GAIN_LARGE",
     "NOV26_GAIN_PAIRED"
    ],
    "evidence": "research/independent_audits/tip_family_finite_p_wave_gain_20261116/NOTE.md",
    "clauses": "",
-   "hyp": "M for actual physical KKL marking",
-   "classification": "Conditional on M; strict certified margins",
+   "hyp": "v2 H1, H2 and H3",
+   "classification": "Conditional on v2 H1–H3",
    "group": "Wave gain and crest transport",
    "pr": 100,
-   "verifier": "research/independent_audits/tip_family_finite_p_wave_gain_20261116/verify.py"
+   "verifier": "research/independent_audits/tip_family_finite_p_wave_gain_20261116/verify.py",
+   "physical_bridges": [
+    "MARK",
+    "ALL-PATHS",
+    "GAIN"
+   ]
   },
   {
    "id": "NOV26_DEPTH2",
@@ -5822,7 +5894,10 @@
    "classification": "Finite certificate; conditional width",
    "group": "Renormalization depth and marked QC",
    "pr": 95,
-   "verifier": "research/independent_audits/tip_family_renormalization_depth_20261116/verify.py"
+   "verifier": "research/independent_audits/tip_family_renormalization_depth_20261116/verify.py",
+   "physical_bridges": [
+    "DEPTH"
+   ]
   },
   {
    "id": "NOV26_DEPTH3",
@@ -5835,7 +5910,10 @@
    "classification": "Finite certificate only",
    "group": "Renormalization depth and marked QC",
    "pr": 96,
-   "verifier": "research/independent_audits/tip_family_all_depths_20261116/verify.py"
+   "verifier": "research/independent_audits/tip_family_all_depths_20261116/verify.py",
+   "physical_bridges": [
+    "DEPTH"
+   ]
   },
   {
    "id": "NOV26_DEPTH_QC",
@@ -5850,7 +5928,11 @@
    "classification": "Imported published modulus; conditional marked transport",
    "group": "Renormalization depth and marked QC",
    "pr": 98,
-   "verifier": "research/independent_audits/tip_family_depth_uniform_qc_20261116/verify.py"
+   "verifier": "research/independent_audits/tip_family_depth_uniform_qc_20261116/verify.py",
+   "physical_bridges": [
+    "DEPTH",
+    "CALIBRATE"
+   ]
   },
   {
    "id": "NOV26_GLOBAL_QC",
@@ -5865,7 +5947,11 @@
    "classification": "Negative inference; conditional K and K^2 lemma",
    "group": "Renormalization depth and marked QC",
    "pr": 99,
-   "verifier": "research/independent_audits/tip_family_global_marked_qc_20261116/verify.py"
+   "verifier": "research/independent_audits/tip_family_global_marked_qc_20261116/verify.py",
+   "physical_bridges": [
+    "DEPTH",
+    "CALIBRATE"
+   ]
   },
   {
    "id": "NOV26_SAT_P4",
@@ -5878,7 +5964,11 @@
    "classification": "Finite certificate; negative/refusal",
    "group": "Satellite and near-parabolic refusals",
    "pr": 79,
-   "verifier": "research/native_wave_transfer/regenerate_satellite2.py"
+   "verifier": "research/native_wave_transfer/regenerate_satellite2.py",
+   "physical_bridges": [
+    "SATELLITE",
+    "DEPTH"
+   ]
   },
   {
    "id": "NOV26_SAT_TIP",
@@ -5893,7 +5983,11 @@
    "classification": "Finite certificate; negative/refusal",
    "group": "Satellite and near-parabolic refusals",
    "pr": 82,
-   "verifier": "research/native_wave_transfer/regenerate_satellite2_tip.py"
+   "verifier": "research/native_wave_transfer/regenerate_satellite2_tip.py",
+   "physical_bridges": [
+    "SATELLITE",
+    "DEPTH"
+   ]
   },
   {
    "id": "NOV26_SAT_V2",
@@ -5908,7 +6002,11 @@
    "classification": "Finite source certificate; Wave undefined",
    "group": "Satellite and near-parabolic refusals",
    "pr": 85,
-   "verifier": "research/native_wave_transfer/regenerate_satellite_v2.py"
+   "verifier": "research/native_wave_transfer/regenerate_satellite_v2.py",
+   "physical_bridges": [
+    "SATELLITE",
+    "DEPTH"
+   ]
   },
   {
    "id": "NOV26_NEAR_PARAB",
@@ -5921,7 +6019,12 @@
    "classification": "Finite certificate; missing observable",
    "group": "Satellite and near-parabolic refusals",
    "pr": 86,
-   "verifier": "research/native_wave_transfer/regenerate_near_parabolic.py"
+   "verifier": "research/native_wave_transfer/regenerate_near_parabolic.py",
+   "physical_bridges": [
+    "PARABOLIC",
+    "STRAIGHTEN",
+    "CONDENSER"
+   ]
   },
   {
    "id": "NOV26_NATIVE_V11",
@@ -5936,7 +6039,11 @@
    "classification": "Finite certificate; noncanonical/refusal",
    "group": "Satellite and near-parabolic refusals",
    "pr": 88,
-   "verifier": "research/native_wave_transfer/regenerate_primitive_v1_1.py"
+   "verifier": "research/native_wave_transfer/regenerate_primitive_v1_1.py",
+   "physical_bridges": [
+    "PARABOLIC",
+    "CUTS"
+   ]
   },
   {
    "id": "NOV26_ISSUE40_EDGE",
@@ -5951,7 +6058,11 @@
    "classification": "Finite certificate; general open",
    "group": "Issue #40",
    "pr": 74,
-   "verifier": "research/independent_audits/issue40_native_attachment_edge_incidence_20261115/verify_native_attachment_edge_incidence.py"
+   "verifier": "research/independent_audits/issue40_native_attachment_edge_incidence_20261115/verify_native_attachment_edge_incidence.py",
+   "physical_bridges": [
+    "CUTS",
+    "CREST"
+   ]
   },
   {
    "id": "NOV26_ISSUE40_CREST",
@@ -5966,7 +6077,11 @@
    "classification": "Conditional physical example; general open",
    "group": "Issue #40",
    "pr": 78,
-   "verifier": "research/independent_audits/issue40_crest_transport_20261116/verify_crest_transport.py"
+   "verifier": "research/independent_audits/issue40_crest_transport_20261116/verify_crest_transport.py",
+   "physical_bridges": [
+    "MARK",
+    "CREST"
+   ]
   },
   {
    "id": "NOV26_OPEN_WINDOW",
@@ -5981,7 +6096,10 @@
    "classification": "Open",
    "group": "Open November research obligations",
    "pr": null,
-   "verifier": "research/tip_family_theorem/verify_chain.py"
+   "verifier": "research/tip_family_theorem/verify_chain.py",
+   "physical_bridges": [
+    "SELECTED"
+   ]
   },
   {
    "id": "NOV26_OPEN_3P_MODULUS",
@@ -5996,7 +6114,11 @@
    "classification": "Open",
    "group": "Open November research obligations",
    "pr": null,
-   "verifier": "research/tip_family_theorem/verify_chain.py"
+   "verifier": "research/tip_family_theorem/verify_chain.py",
+   "physical_bridges": [
+    "SELECTED",
+    "DEPTH"
+   ]
   },
   {
    "id": "NOV26_OPEN_PSI",
@@ -6011,7 +6133,12 @@
    "classification": "Open",
    "group": "Open November research obligations",
    "pr": null,
-   "verifier": "research/tip_family_theorem/verify_chain.py"
+   "verifier": "research/tip_family_theorem/verify_chain.py",
+   "physical_bridges": [
+    "SHEETS",
+    "NATIVE-SIDES",
+    "MARK"
+   ]
   },
   {
    "id": "NOV26_OPEN_ALL_PATHS",
@@ -6026,7 +6153,10 @@
    "classification": "Open",
    "group": "Open November research obligations",
    "pr": null,
-   "verifier": "research/tip_family_theorem/verify_chain.py"
+   "verifier": "research/tip_family_theorem/verify_chain.py",
+   "physical_bridges": [
+    "ALL-PATHS"
+   ]
   },
   {
    "id": "NOV26_OPEN_SUBSECTOR",
@@ -6041,7 +6171,11 @@
    "classification": "Open",
    "group": "Open November research obligations",
    "pr": null,
-   "verifier": "research/tip_family_theorem/verify_chain.py"
+   "verifier": "research/tip_family_theorem/verify_chain.py",
+   "physical_bridges": [
+    "CUTS",
+    "CREST"
+   ]
   },
   {
    "id": "NOV26_OPEN_PAIR_OPTIMA",
@@ -6056,7 +6190,10 @@
    "classification": "Open",
    "group": "Open November research obligations",
    "pr": null,
-   "verifier": "research/tip_family_theorem/verify_chain.py"
+   "verifier": "research/tip_family_theorem/verify_chain.py",
+   "physical_bridges": [
+    "GAIN"
+   ]
   },
   {
    "id": "NOV26_OPEN_OPTIMAL_LIMIT",
@@ -6071,7 +6208,11 @@
    "classification": "Open",
    "group": "Open November research obligations",
    "pr": null,
-   "verifier": "research/tip_family_theorem/verify_chain.py"
+   "verifier": "research/tip_family_theorem/verify_chain.py",
+   "physical_bridges": [
+    "ALL-PATHS",
+    "GAIN"
+   ]
   },
   {
    "id": "NOV26_OPEN_CREST_LIMIT",
@@ -6086,7 +6227,11 @@
    "classification": "Open",
    "group": "Open November research obligations",
    "pr": null,
-   "verifier": "research/tip_family_theorem/verify_chain.py"
+   "verifier": "research/tip_family_theorem/verify_chain.py",
+   "physical_bridges": [
+    "MARK",
+    "CREST"
+   ]
   },
   {
    "id": "NOV26_OPEN_EXTERNAL_REVIEW",
@@ -6101,7 +6246,12 @@
    "classification": "Open",
    "group": "Open November research obligations",
    "pr": null,
-   "verifier": "research/tip_family_theorem/verify_chain.py"
+   "verifier": "research/tip_family_theorem/verify_chain.py",
+   "physical_bridges": [
+    "MARK",
+    "ALL-PATHS",
+    "BUFFER"
+   ]
   },
   {
    "id": "NOV26_OPEN_QGAMMA",
@@ -6116,7 +6266,10 @@
    "classification": "Open",
    "group": "Open November research obligations",
    "pr": null,
-   "verifier": "research/independent_audits/canonical_wad_quadrilateral_moduli_20261116/verify.py"
+   "verifier": "research/independent_audits/canonical_wad_quadrilateral_moduli_20261116/verify.py",
+   "physical_bridges": [
+    "BUFFER"
+   ]
   },
   {
    "id": "NOV26_OPEN_DEPTH_GATES",
@@ -6131,7 +6284,10 @@
    "classification": "Open",
    "group": "Open November research obligations",
    "pr": null,
-   "verifier": "research/independent_audits/tip_family_all_depths_20261116/verify.py"
+   "verifier": "research/independent_audits/tip_family_all_depths_20261116/verify.py",
+   "physical_bridges": [
+    "DEPTH"
+   ]
   },
   {
    "id": "NOV26_OPEN_26_TRIPLES",
@@ -6146,7 +6302,10 @@
    "classification": "Open",
    "group": "Open November research obligations",
    "pr": null,
-   "verifier": "research/independent_audits/tip_family_all_depths_20261116/verify.py"
+   "verifier": "research/independent_audits/tip_family_all_depths_20261116/verify.py",
+   "physical_bridges": [
+    "DEPTH"
+   ]
   },
   {
    "id": "NOV26_OPEN_MARKED_QC",
@@ -6161,7 +6320,10 @@
    "classification": "Open",
    "group": "Open November research obligations",
    "pr": null,
-   "verifier": "research/independent_audits/tip_family_global_marked_qc_20261116/verify.py"
+   "verifier": "research/independent_audits/tip_family_global_marked_qc_20261116/verify.py",
+   "physical_bridges": [
+    "DEPTH"
+   ]
   },
   {
    "id": "NOV26_OPEN_QC_CONSTANT",
@@ -6176,7 +6338,11 @@
    "classification": "Open",
    "group": "Open November research obligations",
    "pr": null,
-   "verifier": "research/independent_audits/tip_family_depth_uniform_qc_20261116/verify.py"
+   "verifier": "research/independent_audits/tip_family_depth_uniform_qc_20261116/verify.py",
+   "physical_bridges": [
+    "DEPTH",
+    "CALIBRATE"
+   ]
   },
   {
    "id": "NOV26_OPEN_TOWER_CONVERGENCE",
@@ -6191,7 +6357,11 @@
    "classification": "Open",
    "group": "Open November research obligations",
    "pr": null,
-   "verifier": "research/independent_audits/tip_family_global_marked_qc_20261116/verify.py"
+   "verifier": "research/independent_audits/tip_family_global_marked_qc_20261116/verify.py",
+   "physical_bridges": [
+    "DEPTH",
+    "COMPACT"
+   ]
   },
   {
    "id": "NOV26_OPEN_SAT_WAVE",
@@ -6207,7 +6377,11 @@
    "classification": "Open",
    "group": "Open November research obligations",
    "pr": null,
-   "verifier": "research/native_wave_transfer/regenerate_satellite_v2.py"
+   "verifier": "research/native_wave_transfer/regenerate_satellite_v2.py",
+   "physical_bridges": [
+    "SATELLITE",
+    "MARK"
+   ]
   },
   {
    "id": "NOV26_OPEN_ISSUE40",
@@ -6222,7 +6396,10 @@
    "classification": "Open",
    "group": "Open November research obligations",
    "pr": null,
-   "verifier": "research/independent_audits/issue40_crest_transport_20261116/verify_crest_transport.py"
+   "verifier": "research/independent_audits/issue40_crest_transport_20261116/verify_crest_transport.py",
+   "physical_bridges": [
+    "CREST"
+   ]
   }
  ]
 }

@@ -1,4 +1,4 @@
-import Mathlib
+import Mathlib.Topology.Homotopy.Lifting
 
 /-!
 # Paper 1: algebraic kernel of canonical localization sheets
@@ -8,11 +8,12 @@ subgroup K = a_*⁻¹(H_t), the based fiber K/H_s, and the unique embedded
 intermediate factor. The statements below formalize the **group/coset
 part** of this picture for arbitrary (possibly nonnormal) subgroups.
 
-They do NOT construct topological covering spaces, establish a holomorphic
-localization, or prove that the geometric source subgroup actually has
-a nontrivial defect. Those are separately identified geometric inputs.
+The last section constructs the correspondence for actual based covering
+maps with path-connected total space, by lifting paths. A particular
+KL covering square and a peripheral word in its subgroup difference
+remain separate source-specific obligations.
 
-A group is written multiplicatively. We use right cosets gH, with
+A group is written multiplicatively. We use left cosets gH, with
 g ~ h iff g⁻¹h ∈ H. Inversion exchanges the left/right conventions
 used in the paper; no normality or group structure on cosets is assumed.
 -/
@@ -21,7 +22,7 @@ namespace LoopsFormal.LocalizationSheets
 
 variable {G : Type*} [Group G]
 
-/-- The equivalence relation for right cosets by an arbitrary subgroup. -/
+/-- The equivalence relation for left cosets by an arbitrary subgroup. -/
 def cosetSetoid (H : Subgroup G) : Setoid G where
   r a b := a⁻¹ * b ∈ H
   iseqv := ⟨
@@ -46,6 +47,13 @@ theorem sheet_eq_iff (H : Subgroup G) (a b : G) :
   · exact Quotient.exact
   · intro h
     exact Quotient.sound h
+
+/-- Reversing the order of the difference word can reject equal cosets
+when conjugation takes a subgroup element outside the subgroup. -/
+theorem reversed_difference_can_reject_equal_sheets (H : Subgroup G)
+    (a k : G) (hk : k ∈ H) (hconj : a * k * a⁻¹ ∉ H) :
+    sheet H a = sheet H (a * k) ∧ (a * k) * a⁻¹ ∉ H :=
+  ⟨(sheet_eq_iff H a (a * k)).2 (by simpa using hk), hconj⟩
 
 /-- In particular, the base sheet records exactly subgroup membership. -/
 theorem base_sheet_eq_iff (H : Subgroup G) (g : G) :
@@ -265,6 +273,136 @@ theorem original_defect_collision
 
 end Target
 
+section BasedCover
+
+open Set Path.Homotopic
+
+variable {E X F Y : Type*} [TopologicalSpace E] [TopologicalSpace X]
+  [TopologicalSpace F] [TopologicalSpace Y]
+
+/-- Paper 1, Theorem `sheet-resolution`, based-fiber step. A loop closes
+up at the chosen point exactly when its class comes from a loop upstairs. -/
+theorem endpoint_closed_iff (p : C(E, X)) (hp : IsCoveringMap p) (e : E)
+    (g : FundamentalGroup X (p e)) :
+    hp.monodromy g ⟨e, rfl⟩ = ⟨e, rfl⟩ ↔ g ∈ (FundamentalGroup.map p e).range := by
+  let b : p ⁻¹' {p e} := ⟨e, rfl⟩
+  constructor
+  · intro h
+    have hend : (hp.monodromy g b).val = e := congrArg Subtype.val h
+    let γ := (hp.liftPathQuotient g b).cast rfl hend.symm
+    refine ⟨FundamentalGroup.fromPath γ, ?_⟩
+    change γ.map p = g
+    dsimp only [γ]
+    have hproj : (hp.liftPathQuotient g b).map p =
+        g.toPath.cast b.property (hp.monodromy g b).property :=
+      hp.map_liftPathQuotient g b
+    rw [Quotient.map_cast, hproj]
+    simp
+  · rintro ⟨γ, rfl⟩
+    exact hp.monodromy_map γ
+
+/-- Equality of two actual lift endpoints uses g⁻¹h (the gH convention).
+The subgroup is constructed as the image of the induced map on π₁. -/
+theorem endpoints_eq_iff (p : C(E, X)) (hp : IsCoveringMap p) (e : E)
+    (g h : FundamentalGroup X (p e)) :
+    hp.monodromy g ⟨e, rfl⟩ = hp.monodromy h ⟨e, rfl⟩ ↔
+      g⁻¹ * h ∈ (FundamentalGroup.map p e).range := by
+  letI := hp.fundamentalGroupMulAction (p e)
+  let b : p ⁻¹' {p e} := ⟨e, rfl⟩
+  rw [← endpoint_closed_iff p hp e]
+  change g • b = h • b ↔ (g⁻¹ * h) • b = b
+  rw [mul_smul]
+  constructor
+  · intro hab
+    rw [← hab, inv_smul_smul]
+  · intro hab
+    calc
+      g • b = g • (g⁻¹ • (h • b)) := congrArg (g • ·) hab.symm
+      _ = h • b := smul_inv_smul _ _
+
+/-- Endpoint lifting constructs the bijection to the *whole* based fiber.
+Path connectedness is used only for surjectivity. -/
+noncomputable def sheetsEquivFiber (p : C(E, X)) (hp : IsCoveringMap p)
+    [PathConnectedSpace E] (e : E) :
+    Sheets (FundamentalGroup.map p e).range ≃ (p ⁻¹' {p e}) := by
+  let f : Sheets (FundamentalGroup.map p e).range → (p ⁻¹' {p e}) :=
+    _root_.Quotient.lift (fun g => hp.monodromy g ⟨e, rfl⟩)
+      (fun g h hgh => (endpoints_eq_iff p hp e g h).2 hgh)
+  apply Equiv.ofBijective f
+  constructor
+  · intro x y
+    induction x using _root_.Quotient.inductionOn with | h g =>
+      induction y using _root_.Quotient.inductionOn with | h h =>
+        exact fun heq => (sheet_eq_iff _ g h).2 ((endpoints_eq_iff p hp e g h).1 heq)
+  · intro z
+    let γ := Path.Homotopic.Quotient.mk (PathConnectedSpace.somePath e z.val)
+    let loop := (γ.map p).cast rfl z.property.symm
+    refine ⟨sheet _ (FundamentalGroup.fromPath loop), ?_⟩
+    apply hp.monodromy_eq_of_map_eq γ
+    simp [loop]
+    rfl
+
+@[simp] theorem sheetsEquivFiber_sheet (p : C(E, X)) (hp : IsCoveringMap p)
+    [PathConnectedSpace E] (e : E) (g : FundamentalGroup X (p e)) :
+    sheetsEquivFiber p hp e (sheet _ g) = hp.monodromy g ⟨e, rfl⟩ := rfl
+
+/-- The map on actual fibers is induced by the upper map of the covering
+square. The equality of base maps fixes the marking used in both fibers. -/
+def mapFiber (p : C(E, X)) (q : C(F, Y)) (a : C(X, Y)) (A : C(E, F))
+    (square : q.comp A = a.comp p) {x : X} (e : p ⁻¹' {x}) : q ⁻¹' {a x} :=
+  ⟨A e.val, (DFunLike.congr_fun square e.val).trans (congrArg a e.property)⟩
+
+/-- Naturality is proved from the commutative square and uniqueness of
+lifting. It is not an extra identification of an abstract table with A. -/
+theorem mapFiber_monodromy (p : C(E, X)) (hp : IsCoveringMap p)
+    (q : C(F, Y)) (hq : IsCoveringMap q) (a : C(X, Y)) (A : C(E, F))
+    (square : q.comp A = a.comp p) {x y : X} (γ : Path.Homotopic.Quotient x y) (e : p ⁻¹' {x}) :
+    hq.monodromy (γ.map a) (mapFiber p q a A square e) =
+      mapFiber p q a A square (hp.monodromy γ e) := by
+  let δ := hp.liftPathQuotient γ e
+  apply hq.monodromy_eq_of_map_eq (δ.map A)
+  apply eq_of_heq
+  have hA : (δ.map A).map ⟨q, hq.continuous⟩ = δ.map (q.comp A) :=
+    Quotient.map_comp.symm
+  have hsquare : HEq (δ.map (q.comp A)) (δ.map (a.comp p)) := by rw [square]
+  have hpA : δ.map (a.comp p) = (δ.map p).map a := Quotient.map_comp
+  have hproj : δ.map p = γ.cast e.property (hp.monodromy γ e).property :=
+    hp.map_liftPathQuotient γ e
+  have hbase : HEq ((δ.map p).map a) (γ.map a) := by
+    rw [hproj, Quotient.map_cast]
+    exact Quotient.cast_heq ..
+  exact (heq_of_eq hA).trans (hsquare.trans ((heq_of_eq hpA).trans
+    (hbase.trans (Quotient.cast_heq ..).symm)))
+
+/-- A defect on a specified physical square, witnessed by a loop which
+fails to close upstairs on the source but closes on the target, forces a
+collision of the actual upper map A. No embedding is needed here. -/
+theorem physical_defect_collision (p : C(E, X)) (hp : IsCoveringMap p)
+    (q : C(F, Y)) (hq : IsCoveringMap q) (a : C(X, Y)) (A : C(E, F))
+    (square : q.comp A = a.comp p) (e : E) (g : FundamentalGroup X (p e))
+    (hSource : g ∉ (FundamentalGroup.map p e).range)
+    (hTarget : FundamentalGroup.mapOfEq a (DFunLike.congr_fun square e).symm g ∈
+      (FundamentalGroup.map q (A e)).range) :
+    ∃ z : E, z ≠ e ∧ p z = p e ∧ A z = A e := by
+  let b : p ⁻¹' {p e} := ⟨e, rfl⟩
+  let z := hp.monodromy g b
+  refine ⟨z.val, ?_, z.property, ?_⟩
+  · exact fun h => hSource ((endpoint_closed_iff p hp e g).1 (Subtype.ext h))
+  · obtain ⟨δ, hδ⟩ := hTarget
+    have hclosed : hq.monodromy (g.toPath.map a) (mapFiber p q a A square b) =
+        mapFiber p q a A square b := by
+      apply hq.monodromy_eq_of_map_eq (ex := mapFiber p q a A square b) (ey := mapFiber p q a A square b) δ.toPath
+      rw [FundamentalGroup.mapOfEq_apply] at hδ
+      change δ.toPath.map q = (g.toPath.map a).cast _ _ at hδ
+      exact hδ
+    exact congrArg Subtype.val ((mapFiber_monodromy p hp q hq a A square g b).symm.trans hclosed)
+
+end BasedCover
+
+#print axioms endpoint_closed_iff
+#print axioms sheetsEquivFiber
+#print axioms mapFiber_monodromy
+#print axioms physical_defect_collision
 #print axioms coarsen_injective_iff
 #print axioms equal_sheet_kernels_force_equal_subgroups
 #print axioms resolvedTarget_injective

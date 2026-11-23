@@ -1,5 +1,7 @@
 # Inner classes in the real primitive-tip buffered canonical WAD: exact uniform enclosures, **not** a support verdict
 
+> **Current proof status.** V2 conditions the peripheral width bounds used here on H1, H2 and H4. Identifying each actual ideal class and its transverse normalization is a separate geometric step. [Proofs and remaining hypotheses](../../tip_family_theorem/PHYSICAL_BRIDGES.md)
+
 **2026-11-16. Additive independent audit. Status: PARTIAL.** The merged
 [outer/collar audit](../tip_family_buffered_wad_20261116/NOTE.md) excludes
 **every** outer-incident admissible ideal class for selected periods

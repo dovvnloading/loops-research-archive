@@ -1,6 +1,6 @@
 name = "loops_weighted"
 version = "0.1.0"
-defaultTargets = ["WeightedReturn", "GraphWeightedBridge", "CloneBounds", "CloneRoot", "FullCloneEigen", "FullCloneMatrix", "SpectralDominance", "FullCloneSpectralMax", "Period27RealCenter", "Period27RealUniqueness", "Period27RealExactPeriod", "NativeWaveGate", "LimbInsertionHolonomy", "AtomCutDefect", "PhaseMemoryCardinality", "FullClonePolynomial", "FullCloneStrictGap", "FullCloneEigenline", "CloneRootRate", "LocalizationSheetKernel", "ProtectedCarrierLogic", "AttachmentDefectLedger", "ParabolicArchiveBrackets", "ParabolicBranches", "ParabolicCenterBranch", "ParabolicChannel", "ParabolicComplexComponent", "ParabolicComplexPullback", "ParabolicDisjoint", "ParabolicPhaseBands", "ParabolicRealSheet", "ParabolicSegment", "ParabolicShooting", "ParabolicTipFamily", "ParabolicTipPeriod", "ParabolicTipRate", "ParabolicTipShooting", "ParabolicTipWindow"]
+defaultTargets = ["WeightedReturn", "GraphWeightedBridge", "CloneBounds", "CloneRoot", "FullCloneEigen", "FullCloneMatrix", "SpectralDominance", "FullCloneSpectralMax", "Period27RealCenter", "Period27RealUniqueness", "Period27RealExactPeriod", "NativeWaveGate", "LimbInsertionHolonomy", "AtomCutDefect", "PhaseMemoryCardinality", "FullClonePolynomial", "FullCloneStrictGap", "FullCloneEigenline", "CloneRootRate", "LocalizationSheetKernel", "ProtectedCarrierLogic", "AttachmentDefectLedger", "MarkedWaveSuprema", "ParabolicArchiveBrackets", "ParabolicBranches", "ParabolicCenterBranch", "ParabolicChannel", "ParabolicComplexComponent", "ParabolicComplexPullback", "ParabolicDisjoint", "ParabolicPhaseBands", "ParabolicRealSheet", "ParabolicSegment", "ParabolicShooting", "ParabolicTipFamily", "ParabolicTipPeriod", "ParabolicTipRate", "ParabolicTipShooting", "ParabolicTipWindow"]
 
 [[require]]
 name = "mathlib"
@@ -192,3 +192,6 @@ name = "ParabolicTipShooting"
 
 [[lean_lib]]
 name = "ParabolicTipWindow"
+
+[[lean_lib]]
+name = "MarkedWaveSuprema"
