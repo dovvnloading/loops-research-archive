@@ -102,7 +102,7 @@ theorem complete_eq_hull_union (F : Fullifier α)
     (pieces : List (Set α)) :
     complete F pieces = F.hull (packetUnion pieces) := by
   induction pieces with
-  | nil => rfl
+  | nil => simp only [complete, packetUnion_nil]
   | cons S rest ih =>
     calc
       complete F (S :: rest) =
@@ -138,7 +138,7 @@ theorem hull_intersection_fixed (F : Fullifier α) {ι : Type*}
     F.hull (⋂ i, S i) = ⋂ i, S i := by
   apply Set.Subset.antisymm
   · intro x hx
-    change ∀ i, x ∈ S i
+    apply Set.mem_iInter.mpr
     intro i
     have hsubset : (⋂ j, S j) ⊆ S i := Set.iInter_subset _ i
     have h : x ∈ F.hull (S i) := (F.monotone hsubset) hx
@@ -253,13 +253,15 @@ theorem diamond_has_no_least_carrier :
         IsLeastCarrier DiamondConnects diamondPackage H := by
   apply no_least_of_two_carriers DiamondConnects diamondPackage
     diamondUpper diamondLower
-  · decide
-  · decide
-  · decide
-  · decide
+  · simp [DiamondConnects, diamondUpper]
+  · simp [DiamondConnects, diamondLower]
+  · intro v hv
+    cases v <;> simp_all [diamondPackage, diamondUpper]
+  · intro v hv
+    cases v <;> simp_all [diamondPackage, diamondLower]
   · ext v
-    cases v <;> decide
-  · decide
+    cases v <;> simp [diamondPackage, diamondUpper, diamondLower]
+  · simp [DiamondConnects, diamondPackage]
 
 #print axioms fill_absorption
 #print axioms complete_perm
