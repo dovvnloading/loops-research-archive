@@ -42,12 +42,16 @@ theorem short_exact_finrank
     Module.finrank ℚ V = Module.finrank ℚ U + Module.finrank ℚ W := by
   have hkernel : i.ker = ⊥ := LinearMap.ker_eq_bot.mpr hi
   have hrange : r.range = ⊤ := LinearMap.range_eq_top.mpr hr
-  have hleft : Module.finrank ℚ (↥i.range) = Module.finrank ℚ U := by
-    simpa [hkernel] using LinearMap.finrank_range_add_finrank_ker i
+  have hleft0 := LinearMap.finrank_range_add_finrank_ker i
+  rw [hkernel] at hleft0
+  simp at hleft0
+  have hleft : Module.finrank ℚ (↥i.range) = Module.finrank ℚ U := hleft0
+  have hright0 := LinearMap.finrank_range_add_finrank_ker r
+  rw [hrange] at hright0
+  simp at hright0
   have hright :
       Module.finrank ℚ W + Module.finrank ℚ (↥r.ker) =
-        Module.finrank ℚ V := by
-    simpa [hrange] using LinearMap.finrank_range_add_finrank_ker r
+        Module.finrank ℚ V := hright0
   rw [← hexact, hleft] at hright
   omega
 
