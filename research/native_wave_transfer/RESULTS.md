@@ -572,7 +572,11 @@ mechanism; it does **not**, by itself, identify these exact three
 parameter brackets or prove that *every* \(p=3n\) has a member of
 this branch. Our local certificates establish the three selected
 instances, not existence/uniqueness for all \(n\), nor their infinite
-limit. That further statement remains **open** in this audit.
+limit. A subsequent Lean proof constructs a tip on the same first-exit itinerary for every
+\(p=3n\) with \(n\ge6\), proves inverse-square accumulation at \(-7/4\),
+and identifies its central interval as a component of the full complex pullback.
+The companion center is unique on this itinerary. Uniqueness of the noncentral
+tip is open. [All-period theorem and proof](near_parabolic_tip_family.md)
 
 ### Three individually certified complex primitive returns
 
