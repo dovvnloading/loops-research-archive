@@ -1498,5 +1498,64 @@
     "checks": [
       "research/independent_audits/verify_period27_markov_spectrum.py"
     ]
+  },
+  "real-fibers": {
+    "guide": "formalization/PHYSICAL_BRIDGES_DYNAMICS.md#real-fibers",
+    "theorems": {
+      "formalization/weighted/FiniteMarkovFibers.lean": [
+        "core_fiber_card_eq_matrix_column_sum",
+        "core_fiber_finite",
+        "exists_interior_index",
+        "fiber_successor_decomposition",
+        "interior_index_unique",
+        "interior_ne_vertex",
+        "iterate_vertex",
+        "paths_card_eq_matrix_power",
+        "physical_fiber_card_eq_matrix_power",
+        "physical_fiber_finite",
+        "preimage_interior",
+        "unique_interior_preimage"
+      ],
+      "formalization/weighted/Period27FiniteFibers.lean": [
+        "exists_physical_center_with_all_fiber_counts",
+        "physical_core_preimage_count",
+        "physical_core_preimage_finite",
+        "physical_preimage_count",
+        "physical_preimage_finite"
+      ]
+    }
+  },
+  "finite-correlation": {
+    "guide": "formalization/PHYSICAL_BRIDGES_CONTRACTS.md#finite-correlation",
+    "theorems": {
+      "formalization/weighted/FiniteMarkovCorrelation.lean": [
+        "complexify_mul",
+        "complexify_pow",
+        "joint_probability",
+        "lazy_mode",
+        "lazy_mode_correlation",
+        "lazy_stationary",
+        "lazy_stochastic",
+        "mode_centered",
+        "mode_correlation",
+        "mode_power",
+        "normalized_mode_correlation",
+        "secondMoment_pos",
+        "stationary_mode_correlation",
+        "stationary_pow",
+        "stochastic_pow"
+      ],
+      "formalization/weighted/FullCloneCorrelation.lean": [
+        "clone_joint_probability",
+        "clone_stationary_mode_correlation",
+        "clone_transition_stochastic_certificate"
+      ]
+    }
+  },
+  "clone-readout": {
+    "guide": "formalization/PHYSICAL_BRIDGES_CONTRACTS.md#clone-readout",
+    "checks": [
+      "research/independent_audits/verify_clone_resonant_readout.py"
+    ]
   }
 }

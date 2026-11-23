@@ -16,7 +16,7 @@ To read a transition, fix the parameter, stage, domains, marks, and observable i
 
 The earlier `PlanarFullification` and `Period27RealKneading` realization modules build with the repository’s pinned Lean 4.32.0 and Mathlib. The printed dependencies of their principal theorems are `propext`, `Classical.choice`, and `Quot.sound`. This linked run concerns those earlier modules; it does not validate subsequent additions. [Earlier weighted proof build](https://github.com/dovvnloading/loops-research-archive/actions/runs/45268559641)
 
-The added `Period27RealMarkov` and `FullCloneRenewal` modules are explicit Lake default targets. Reproduce them with `lake build Period27RealMarkov FullCloneRenewal` in `formalization/weighted`, using the pinned toolchain. Their own principal-theorem dependency reports and current build result are in the [PR 115 checks](https://github.com/dovvnloading/loops-research-archive/pull/115/checks).
+The added `Period27RealMarkov`, `FullCloneRenewal`, `FiniteMarkovFibers`, `Period27FiniteFibers`, `FiniteMarkovCorrelation`, and `FullCloneCorrelation` modules are explicit Lake default targets. Reproduce them with `lake build` in `formalization/weighted`, using the pinned toolchain. Their own principal-theorem dependency reports and current build result are in the [PR 115 checks](https://github.com/dovvnloading/loops-research-archive/pull/115/checks).
 
 A **kernel proof** can already be about the physical target. A **written proof** can use a source theorem with its hypotheses verified here. A **conditional deduction** displays its unproved inputs, and an **open obligation** names a statement still requiring proof. A verifier can establish exact arithmetic or identify a counterexample within its declared model. Check the proof that makes that computation decisive for the target. [Declaration and evidence index](physical_bridge_index.json) · [source risk register](LEAN_RISK_REGISTER_20261123.md)
 
@@ -52,6 +52,85 @@ These are separate transitions, with different evidence. Fix the **same** delay 
 4. **Stochastic model → constructed real dynamics.** Concatenate half-open intervals of lengths $h_i$, and give each the affine map of slope $t$ onto its declared successor interval(s). On interval $i$ put the explicitly computed density $\pi_i/h_i$. Prove invariance, then prove the formula for **every** finite itinerary cylinder by affine inverse branches. This identifies the stationary process of this constructed map with $P$. Pulling back a nonzero eigenvector gives the exact complex correlation $\int\overline{G}\,G\circ T^q\,d\mu=(z/t)^q\|G\|_2^2$. The interval, invariant measure and correlation deductions are **written**; the map is generally discontinuous. [Construction and independent checks](../research/independent_audits/clone_renewal_clock_20261123.md)
 
 **Application to a different physical system remains conditional.** For a quadratic iterate or native KL return, construct its measurable coding and invariant measure, prove the entire finite-cylinder law, match the physical time unit, and prove the transported observable has positive squared norm. A finite edge bijection supplies no probability law by itself. A width or coercivity conclusion additionally requires its own analytic comparison. The new result proves that $t_n^n\to\sqrt2$ while $(r_n/t_n)^n\to1$, so expansion on a delay block cannot alone imply a uniform decay of correlations on that block. It supplies no closure of the global H1–H4 gates. Parry normalization and renewal diffusion have established predecessors, identified in the note; no worldwide priority claim is made.
+
+<a id="finite-correlation"></a>
+## Finite probability laws and their observable
+
+[FiniteMarkovCorrelation](weighted/FiniteMarkovCorrelation.lean) makes the
+probability and observation premises explicit. A row-stochastic real matrix
+$P$ and a stationary probability vector $\pi$ determine, for every $q\ge0$,
+
+$$
+J_q(i,j)=\pi_i(P^q)_{ij}.
+$$
+
+`joint_probability` proves nonnegativity, total mass one, and both marginals
+$\pi$. For the **same** matrix, a complex right mode $Pg=\lambda g$ with
+$\lambda\ne1$ has stationary mean zero. Strictly positive $\pi_i$ and a
+nonzero coordinate of $g$ give $M=\sum_i\pi_i|g_i|^2>0$. The separately
+proved matrix-power action yields
+
+$$
+\sum_{i,j}J_q(i,j)\overline{g_i}g_j=\lambda^q M,
+\qquad \frac{\sum_{i,j}J_q(i,j)\overline{g_i}g_j}{M}=\lambda^q.
+$$
+
+The orientation, conjugation, nonzero denominator, and every finite horizon
+are part of the formal statements. The fair holding matrix $Q=(I+P)/2$
+has the same stationary law and mode $(1+\lambda)/2$; its two-time laws and
+correlations obey the corresponding identities. Lean proves this finite
+matrix transformation. Independence of clock increments and realization as
+a probability process are additional written steps below.
+
+[FullCloneCorrelation](weighted/FullCloneCorrelation.lean) applies these
+results to `cloneTransition n t` and the previously constructed nonzero
+root eigenvector. Its stationary-vector and strict positivity premises
+explicitly refer to that matrix. The formula $\pi_{n+1}=a/m$ and
+$\pi_i=1/m$ otherwise, with $a=1/(1+t)$ and $m=2n+5-t/(1+t)$, is checked
+by the written incoming-flow proof in the [renewal note](../research/independent_audits/clone_renewal_clock_20261123.md).
+That explicit stationary formula and its physical invariant-density
+realization are not labeled as Lean measure-theory proofs. The all-cylinder
+proof is what turns the finite endpoint calculation into the correlation
+of the actual constructed interval map.
+
+<a id="clone-readout"></a>
+## The measured statistic and the full clock law
+
+The [readout note](../research/independent_audits/clone_resonant_readout_20261123.md)
+continues from the explicitly realized affine map and its normalized complex
+mode $\lambda=\rho e^{i\theta}$. It proves the following distinct transitions.
+
+1. Choose a phase using $\int G^2\,d\mu$, then normalize the real part to
+   obtain the actual real observable $F$ with covariance
+   $\rho^q\cos(q\theta)$. An arbitrary real part need not have this covariance.
+2. Sum the absolutely convergent covariance Fourier series to obtain the
+   Poisson kernel $S(\omega)=(1-\rho^2)/|1-\lambda e^{-i\omega}|^2$.
+   The real observable has the average of the positive- and negative-frequency
+   kernels. Fourier evaluation is not a theorem identifying a causal response
+   or an extremal width.
+3. Derive the finite variance from its double covariance sum, retaining the
+   endpoint remainder. With $D=2n+9/2$, the long-run coefficient is
+   $S(0)\sim1/(4D)$, while the resonance height is
+   $S(\theta)\sim4D^3/\pi^2$. At the integer window $N=2D$, the original real
+   average has variance asymptotic to $1/(4D^2)$ even though $\rho^N\to1$.
+4. Construct an actual product with a measure-preserving circle rotation to
+   realize a phase-tracking readout. Its real normalized covariance is
+   $\rho^q$ and its long-run variance coefficient is $S(\theta)$. Thus the
+   coefficient ratio is asymptotic to $16D^4/\pi^2$. The product has a
+   nonmixing circle factor; only the specified observable is being compared.
+5. Construct the Bernoulli skew product or an independent Poisson observation
+   clock. Compute the full transform $\mathbb E[\lambda^{N_t}]$, not just
+   $\mathbb E N_t$. Equal expected iteration counts can give quadratic rather
+   than cubic envelope decay. Even holding probability $c/D\to0$ changes
+   the cubic leading constant from $\pi^2/2$ to $\pi^2/2+2\pi^2c$.
+
+These analytic, real-phase, and measure-theoretic steps have complete written
+proofs and [exact finite regressions](../research/independent_audits/verify_clone_resonant_readout.py).
+The regressions are not universal proofs or certified root enclosures.
+Transferring any conclusion to native quadratic/KL dynamics still requires
+the actual probability law, observable, and full clock identification;
+transferring it to a width additionally requires an independently proved
+comparison to that defined width.
 
 <a id="boundary-spectrum"></a>
 ## From finite coefficients to the exterior map

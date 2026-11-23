@@ -2,6 +2,25 @@
 
 For the current proof status, use the [model-to-geometry guide](PHYSICAL_BRIDGES_CONTRACTS.md). It covers the scoped period-27 and planar-fill realizations, distinguishes conditional geometric arguments, and links the historical entries below to the current theorem index.
 
+## November 23: actual inverse fibers and stationary observations
+
+[Period27FiniteFibers](weighted/Period27FiniteFibers.lean) now identifies
+every finite matrix-power entry with the number of distinct actual quadratic
+preimages in its source interval. The generic path/fiber equivalence,
+finiteness, endpoint exclusions, full closed-core column sum, and existence
+of the same actual center are all formalized.
+[Finite-fiber proof guide](PHYSICAL_BRIDGES_DYNAMICS.md#real-fibers)
+
+[FiniteMarkovCorrelation](weighted/FiniteMarkovCorrelation.lean) proves the
+finite stationary endpoint probability law and exact normalized correlations
+of a nonzero centered eigenmode, with the positivity premises explicit.
+[FullCloneCorrelation](weighted/FullCloneCorrelation.lean) specializes this
+to the actual normalized clone matrix and its root-derived mode.
+The explicit clone stationary-vector formula and affine invariant measure
+remain written identifications; the formal wrapper consumes stationarity
+for precisely that matrix.
+[Observable and clock contracts](PHYSICAL_BRIDGES_CONTRACTS.md#finite-correlation)
+
 ## Comprehensive frontier audit (2026-11-09)
 
 The [Lean frontier audit](FRONTIER_2026-11-09.md) indexes all 115 open source-ledger obligations, the 20 immediately unblocked nodes and all 14 conditional documentary-proved statements with their explicit unresolved hypotheses. This is a **source-status audit**, not a closure of MLC or any analytic H1–H4 gate.

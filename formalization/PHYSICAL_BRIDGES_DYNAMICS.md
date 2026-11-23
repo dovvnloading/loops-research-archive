@@ -26,6 +26,36 @@ The row predicate $A_{ij}=1$ means exactly $\min(\pi(i),\pi(i+1))\le j<\max(\pi(
 
 This conclusion identifies the real interval spine only. A native KL edge operator, external-ray automaton or marked width requires its independently constructed identification with these intervals. No such identification follows from an equal matrix size or matching finite labels.
 
+<a id="real-fibers"></a>
+## All finite physical inverse fibers
+
+The one-step result now extends in Lean to **every** natural iteration count
+on the actual quadratic at the certified center. Write $E_i^\circ=(v_i,v_{i+1})$
+and $K=[v_0,v_{26}]$. For every $q\ge0$, source $i$, target $j$, and
+$y\in E_j^\circ$, the actual inverse-fiber type is finite and
+
+$$
+\#\{x\in E_i^\circ:f_c^q(x)=y\}=(A^q)_{ij},\qquad
+\#\{x\in K:f_c^q(x)=y\}=\sum_i(A^q)_{ij}.
+$$
+
+[FiniteMarkovFibers](weighted/FiniteMarkovFibers.lean) constructs the finite
+admissible path type and an equivalence with the actual fiber. It derives
+finiteness before applying `Nat.card`, then proves the matrix-power recurrence.
+Forward invariance of the orbit vertices excludes every endpoint hit for a
+fiber ending in an interior. Unique location among the disjoint edge interiors
+therefore gives a complete partition of the fiber in the **closed** core.
+The $q=0$ case is included, with one point for $i=j$ and none otherwise.
+
+[Period27FiniteFibers](weighted/Period27FiniteFibers.lean) discharges every
+realization field using the specified quadratic, actual orbit vertices,
+whole interval images, branch injectivity, and the already checked row
+predicate. `exists_physical_center_with_all_fiber_counts` supplies one
+actual parameter for all these horizons simultaneously. These statements
+count distinct points in the stated real domain; points outside $K$ are not
+included. The later Fibonacci formulas use the separate written cycle
+enumeration. [Complete finite-fiber proof and declaration map](../research/independent_audits/period27_finite_physical_fibers_20261123.md)
+
 <a id="two-scale"></a>
 
 ## Real restrictive intervals and complex returns

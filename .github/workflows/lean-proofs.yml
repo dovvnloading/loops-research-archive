@@ -35,6 +35,7 @@ on:
       - 'results/period27_symbolic_marking.json'
       - 'results/period27_real_markov_spectrum.json'
       - 'results/clone_renewal_clock_20261123.json'
+      - 'results/clone_resonant_readout_20261123.json'
       - 'results/period27_misiurewicz_tip.json'
       - 'results/period27_tip_ray_portrait.json'
       - 'results/tip_complex_domains.json'
@@ -47,6 +48,8 @@ on:
       - 'figs/readme/*.svg'
       - 'figs/research/spectral_clocks_20261123.*'
       - 'code/generate_spectral_clock_figure.py'
+      - 'figs/research/clone_readout_20261123.*'
+      - 'code/generate_clone_readout_figure.py'
       - 'code/verify_readme_integrity.py'
       - 'code/generate_readme_research_figures.mjs'
       - 'ledger.json'
@@ -84,6 +87,7 @@ on:
       - 'results/period27_symbolic_marking.json'
       - 'results/period27_real_markov_spectrum.json'
       - 'results/clone_renewal_clock_20261123.json'
+      - 'results/clone_resonant_readout_20261123.json'
       - 'results/period27_tip_ray_portrait.json'
       - 'results/tip_puzzle_ray_tree.json'
       - 'results/tip_internal_ray_lifts.json'
@@ -94,6 +98,8 @@ on:
       - 'figs/readme/*.svg'
       - 'figs/research/spectral_clocks_20261123.*'
       - 'code/generate_spectral_clock_figure.py'
+      - 'figs/research/clone_readout_20261123.*'
+      - 'code/generate_clone_readout_figure.py'
       - 'code/verify_readme_integrity.py'
       - 'code/generate_readme_research_figures.mjs'
       - 'ledger.json'
@@ -152,6 +158,7 @@ jobs:
       - name: Check exact renewal normalization and physical-spine spectrum
         run: |
           python research/independent_audits/verify_clone_renewal_clock.py
+          python research/independent_audits/verify_clone_resonant_readout.py
           python research/independent_audits/verify_period27_markov_spectrum.py --check-manifest
       - name: Check finite delayed-clone matrices
         run: python research/independent_audits/verify_clone_spectral.py

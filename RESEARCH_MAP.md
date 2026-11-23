@@ -6,8 +6,10 @@ This map connects the mathematical dependency structure to the public files. The
 
 ## November 23: two explicit model-to-dynamics routes
 
-- [Actual period-27 interval matrix](./research/independent_audits/period27_real_markov_bridge_20261123.md): Lean proves whole-interval images and exact preimage multiplicities for the real quadratic. Written finite-path and cycle arguments identify its three Fibonacci return clocks and exact characteristic factors. This is the reducible real spine, not the primitive clone graph.
+- [Actual period-27 interval matrix](./research/independent_audits/period27_real_markov_bridge_20261123.md): Lean proves whole-interval images and exact preimage multiplicities for the real quadratic. The all-horizon finite-path/actual-fiber equivalence and complete-core column-sum count are now Lean theorems; written cycle arguments identify the three Fibonacci return clocks and exact characteristic factors. This is the reducible real spine, not the primitive clone graph.
 - [Clone renewal clock](./research/independent_audits/clone_renewal_clock_20261123.md): Lean proves the stochastic normalization and polynomial-to-matrix eigenmode converse. Written root ordering proves the sharp cubic gap, and an explicit piecewise affine map with invariant density and a full cylinder-law proof realizes the correlation. Native quadratic/KL transfer requires independently proved measure and clock identifications.
+
+- [Observable and random-clock continuation](./research/independent_audits/clone_resonant_readout_20261123.md): finite stationary endpoint correlations and the lazy eigenvalue transform are formalized. Written proofs identify a phase-aligned real observable, vanishing long-run averaging variance, a two-rotation cancellation window, quartic readout contrast, and an explicit clock-jitter threshold. Every altered readout/clock is realized as a specified stationary system.
 
 The shared insight is that a scalar leading eigenvalue omits return-time information. Exact periodic clocks and nearly periodic renewal clocks have different spectral consequences. The new source-specific proofs are separate from the classical general methods and from the global open gates.
 

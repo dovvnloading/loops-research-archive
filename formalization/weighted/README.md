@@ -188,7 +188,12 @@ CI: [successful weighted build at commit 6a3bac5](https://github.com/dovvnloadin
 preimage meanings for the actual period-27 real quadratic center. It supplies
 the parameter using the independently proved existence theorem. The separate
 [spectral note](../../research/independent_audits/period27_real_markov_bridge_20261123.md)
-proves the three Fibonacci factors and the finite-itinerary interpretation in writing.
+proves the three Fibonacci factors by a written cycle argument.
+[FiniteMarkovFibers.lean](FiniteMarkovFibers.lean) and
+[Period27FiniteFibers.lean](Period27FiniteFibers.lean) now prove the complete
+finite-path/actual-inverse-fiber equivalence and matrix-power count in Lean,
+for every horizon including zero. Finiteness and the closed orbit-core
+column-sum count are included; outside-core preimages are outside this claim.
 
 [FullCloneRenewal.lean](FullCloneRenewal.lean) concerns the **different** primitive
 clone adjacency. It constructs the positive-eigenvector normalization, proves
@@ -200,7 +205,21 @@ on the same real root and matrix. The
 supplies the separately written cubic asymptotic and measure-theoretic realization.
 Neither Lean file postulates a native KL identification.
 
-Build both new modules with `lake build Period27RealMarkov FullCloneRenewal`.
+[FiniteMarkovCorrelation.lean](FiniteMarkovCorrelation.lean) proves the finite
+stationary two-time laws, centered mode, positive second moment, normalized
+correlation, and the fair holding matrix transformation.
+[FullCloneCorrelation.lean](FullCloneCorrelation.lean) instantiates these
+statements with the actual clone matrix, retaining the stationary positive
+probability vector as an explicit premise. The explicit stationary formula,
+affine invariant measure and full cylinder law are supplied in writing.
+The [readout continuation](../../research/independent_audits/clone_resonant_readout_20261123.md)
+then proves vanishing ordinary averaging variance, the two-rotation window,
+quartic readout contrast, and the random-clock counterexamples. Those
+analytic and measure-theoretic conclusions are not labeled Lean proofs.
+
+All six modules are default targets; reproduce them with `lake build`.
+Their principal declarations print their kernel dependencies in the
+[PR 115 checks](https://github.com/dovvnloading/loops-research-archive/pull/115/checks).
 
 ## Reproduce
 

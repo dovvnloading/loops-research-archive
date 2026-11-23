@@ -102,7 +102,7 @@ vertex/edge map, orientation conventions and multiplicity proof. This
 result may be reused only after those objects have actually been
 identified with these real intervals.
 
-## Written extension: every finite path counts actual preimages
+## Formal extension: every finite path counts actual preimages
 
 Write $E_i^\circ=(v_i,v_{i+1})$ and
 $I=[v_0,v_{26}]=\bigcup_{i=0}^{25}E_i$.
@@ -133,11 +133,26 @@ length-$n$ admissible words and the displayed fiber. Matrix multiplication
 counts those words by induction; for $n=0$ both sides are $1$ if $i=j$
 and $0$ otherwise. All fibers are finite, with at most $2^n$ points.
 
-This extension is a written proof using the Lean one-step theorem; its
-finite-word induction and cardinality statement are not yet formalized.
-It concerns preimages of a specified interior point. It asserts neither
-unique infinite symbolic coding nor periodic-point counts nor equality
-with topological entropy.
+This finite-word induction and exact cardinality statement are now
+formalized in
+[FiniteMarkovFibers.lean](../../formalization/weighted/FiniteMarkovFibers.lean)
+and instantiated for the actual quadratic in
+[Period27FiniteFibers.lean](../../formalization/weighted/Period27FiniteFibers.lean).
+`physicalPathFiberEquiv` constructs the finite-path/physical-point
+equivalence; `physical_preimage_finite` proves finiteness separately;
+`physical_preimage_count` proves the displayed matrix-power formula for
+every natural horizon, including zero. The additional bound $2^n$ in the
+written argument is not separately formalized here.
+
+`physicalCoreFiberPartition` proves that these source-interior fibers
+partition the entire inverse fiber inside the closed physical core $I$.
+`physical_core_preimage_count` gives its cardinality as
+$\sum_i(A^n)_{ij}$. The
+[finite-fiber proof note](period27_finite_physical_fibers_20261123.md)
+records every transition and the endpoint exclusions. Preimages outside
+$I$ are outside this count's scope. The result concerns a specified
+interior target point and asserts neither unique infinite symbolic coding
+nor periodic-point counts nor equality with topological entropy.
 
 ## A spectral correlation visible after the physical bridge
 

@@ -47,6 +47,9 @@ formalization/weighted/AttachmentDefectLedger.lean	DEFECT
 formalization/weighted/CloneBounds.lean	CLONE EDGE
 formalization/weighted/CloneRoot.lean	CLONE EDGE
 formalization/weighted/CloneRootRate.lean	CLONE EDGE
+formalization/weighted/FiniteMarkovCorrelation.lean	FINITE-CORRELATION CLONE-OBSERVABLE RANDOM-CLOCK
+formalization/weighted/FiniteMarkovFibers.lean	REAL-FIBERS
+formalization/weighted/FullCloneCorrelation.lean	CLONE-OBSERVABLE
 formalization/weighted/FullCloneEigen.lean	CLONE EDGE
 formalization/weighted/FullCloneEigenline.lean	CLONE EDGE
 formalization/weighted/FullCloneMatrix.lean	CLONE EDGE
@@ -75,6 +78,7 @@ formalization/weighted/ParabolicTipPeriod.lean	PARABOLIC STRAIGHTEN
 formalization/weighted/ParabolicTipRate.lean	PARABOLIC STRAIGHTEN
 formalization/weighted/ParabolicTipShooting.lean	PARABOLIC STRAIGHTEN
 formalization/weighted/ParabolicTipWindow.lean	PARABOLIC STRAIGHTEN
+formalization/weighted/Period27FiniteFibers.lean	REAL-FIBERS MARKOV-SPECTRUM
 formalization/weighted/Period27RealCenter.lean	CENTER
 formalization/weighted/Period27RealExactPeriod.lean	CENTER
 formalization/weighted/Period27RealKneading.lean	CENTER DIFFRACTION
@@ -146,6 +150,7 @@ research/independent_audits/verify_attachment_sheet_condenser.py	CONDENSER RESPO
 research/independent_audits/verify_chebyshev_phase_parameter.py	LOCAL-PHASE
 research/independent_audits/verify_clone_first_returns.py	CLONE EDGE
 research/independent_audits/verify_clone_renewal_clock.py	CLONE-MARKOV RENEWAL-GAP
+research/independent_audits/verify_clone_resonant_readout.py	RESONANT-READOUT RANDOM-CLOCK
 research/independent_audits/verify_clone_spectral.py	CLONE EDGE
 research/independent_audits/verify_clone_strict_gap.py	CLONE EDGE
 research/independent_audits/verify_complex_quadratic_like_3_9.py	TWO-SCALE

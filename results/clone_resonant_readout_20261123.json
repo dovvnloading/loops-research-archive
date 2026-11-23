@@ -1,0 +1,136 @@
+{
+  "exact_regressions": {
+    "chains": [
+      {
+        "name": "circulant-1",
+        "states": 4,
+        "horizons": 18,
+        "correlation_lags": 19,
+        "poisson_kernel_points": 4,
+        "lazy_clock_lags": 19
+      },
+      {
+        "name": "circulant-2",
+        "states": 4,
+        "horizons": 18,
+        "correlation_lags": 19,
+        "poisson_kernel_points": 4,
+        "lazy_clock_lags": 19
+      },
+      {
+        "name": "circulant-3",
+        "states": 4,
+        "horizons": 18,
+        "correlation_lags": 19,
+        "poisson_kernel_points": 4,
+        "lazy_clock_lags": 19
+      },
+      {
+        "name": "circulant-4",
+        "states": 4,
+        "horizons": 18,
+        "correlation_lags": 19,
+        "poisson_kernel_points": 4,
+        "lazy_clock_lags": 19
+      },
+      {
+        "name": "nonorthogonal-real-imaginary",
+        "states": 3,
+        "horizons": 18,
+        "correlation_lags": 19,
+        "poisson_kernel_points": 4,
+        "lazy_clock_lags": 19
+      }
+    ],
+    "phase_aligned_real_horizons": 18,
+    "mutations_rejected": 3,
+    "scope": "Finite rational regressions; not universal proofs or clone root certificates"
+  },
+  "numeric_status": "90-digit diagnostics, not certified enclosures",
+  "numeric_diagnostics": [
+    {
+      "delay": 0,
+      "D": "4.5",
+      "D_times_DC": "0.324401839698652913444938",
+      "peak_over_D_cubed": "0.364113419069299637182191",
+      "peak_DC_ratio_over_D_fourth": "1.12241477855839553994856",
+      "two_rotation_sum_variance": "1.14621827759404965408793",
+      "two_rotation_correlation_envelope": "0.581198737092054229396713",
+      "D_squared_times_lazy_mode_gap": "5.24274701884817943506615",
+      "D_squared_times_poisson_mode_rate": "17.1060400128328127390203",
+      "quality_factor_over_D_squared": "0.575232570982501148048109",
+      "sampled_rescaled_profile_max_error": "0.0585140326658",
+      "root_equation_residual": "1.2272734e-91"
+    },
+    {
+      "delay": 2,
+      "D": "8.5",
+      "D_times_DC": "0.268163534049671798315597",
+      "peak_over_D_cubed": "0.393769148608852953513331",
+      "peak_DC_ratio_over_D_fourth": "1.46839185277113512963406",
+      "two_rotation_sum_variance": "1.0358722003827138691422",
+      "two_rotation_correlation_envelope": "0.868837449696376190426649",
+      "D_squared_times_lazy_mode_gap": "5.17804073572543973156217",
+      "D_squared_times_poisson_mode_rate": "19.3773275104474941291809",
+      "quality_factor_over_D_squared": "0.619925947955203402090676",
+      "sampled_rescaled_profile_max_error": "0.00823643583918",
+      "root_equation_residual": "1.2272734e-91"
+    },
+    {
+      "delay": 10,
+      "D": "24.5",
+      "D_times_DC": "0.25209007847321679013074",
+      "peak_over_D_cubed": "0.403903425102825219120691",
+      "peak_DC_ratio_over_D_fourth": "1.60221864957584111136973",
+      "two_rotation_sum_variance": "1.00413466158025177545888",
+      "two_rotation_correlation_envelope": "0.983636637005582515470771",
+      "D_squared_times_lazy_mode_gap": "5.03107631206022883714974",
+      "D_squared_times_poisson_mode_rate": "19.8379266580080923459071",
+      "quality_factor_over_D_squared": "0.634632050553437409062218",
+      "sampled_rescaled_profile_max_error": "0.000336651921309",
+      "root_equation_residual": "1.2272734e-91"
+    },
+    {
+      "delay": 50,
+      "D": "104.5",
+      "D_times_DC": "0.250114228919675716280115",
+      "peak_over_D_cubed": "0.405208847725088946972488",
+      "peak_DC_ratio_over_D_fourth": "1.62009514402805899129635",
+      "two_rotation_sum_variance": "1.00022601959692289217078",
+      "two_rotation_correlation_envelope": "0.999096449951546602759641",
+      "D_squared_times_lazy_mode_gap": "4.95819227710703051557267",
+      "D_squared_times_poisson_mode_rate": "19.7810350805981519404806",
+      "quality_factor_over_D_squared": "0.636510666488510446569209",
+      "sampled_rescaled_profile_max_error": "4.32515091374e-6",
+      "root_equation_residual": "2.4545467e-91"
+    },
+    {
+      "delay": 100,
+      "D": "204.5",
+      "D_times_DC": "0.25002982053262084032945",
+      "peak_over_D_cubed": "0.405264919176810415945542",
+      "peak_DC_ratio_over_D_fourth": "1.62086633631741696184256",
+      "two_rotation_sum_variance": "1.00005900507983865489811",
+      "two_rotation_correlation_envelope": "0.999764015702059516365231",
+      "D_squared_times_lazy_mode_gap": "4.94681073440784668391179",
+      "D_squared_times_poisson_mode_rate": "19.7619404183096539220817",
+      "quality_factor_over_D_squared": "0.636591283968930774891346",
+      "sampled_rescaled_profile_max_error": "5.77046646751e-7",
+      "root_equation_residual": "1.2272734e-91"
+    },
+    {
+      "delay": 500,
+      "D": "1004.5",
+      "D_times_DC": "0.250001235850736872538966",
+      "peak_over_D_cubed": "0.40528391329906415412963",
+      "peak_DC_ratio_over_D_fourth": "1.62112763930910619812468",
+      "two_rotation_sum_variance": "1.00000244535195539049099",
+      "two_rotation_correlation_envelope": "0.999990218654054025257494",
+      "D_squared_times_lazy_mode_gap": "4.93725621358613665015696",
+      "D_squared_times_poisson_mode_rate": "19.7440638321756966016946",
+      "quality_factor_over_D_squared": "0.636618591650220345666609",
+      "sampled_rescaled_profile_max_error": "4.8687873369e-9",
+      "root_equation_residual": "1.2272734e-91"
+    }
+  ]
+}
