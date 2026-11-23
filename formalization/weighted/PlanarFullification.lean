@@ -20,7 +20,7 @@ def planarFill (S : Set ℂ) : Set ℂ :=
 theorem planarFill_extensive (S : Set ℂ) : S ⊆ planarFill S := by
   intro z hz
   change IsBounded (connectedComponentIn Sᶜ z)
-  rw [connectedComponentIn_eq_empty (fun h => h hz)]
+  rw [connectedComponentIn_eq_empty (show z ∉ Sᶜ from fun h => h hz)]
   exact isBounded_empty
 
 /-- Outside the seed this is precisely the membership test in Paper 3. -/
@@ -33,11 +33,13 @@ theorem mem_planarFill_iff (S : Set ℂ) (z : ℂ) :
 
 theorem planarFill_mono {S T : Set ℂ} (h : S ⊆ T) : planarFill S ⊆ planarFill T := by
   intro z hz
+  change IsBounded (connectedComponentIn Sᶜ z) at hz
   exact hz.subset (connectedComponentIn_mono z (compl_subset_compl.mpr h))
 
 theorem planarFill_idempotent (S : Set ℂ) : planarFill (planarFill S) = planarFill S := by
   apply Subset.antisymm _ (planarFill_extensive _)
   intro z hz
+  change IsBounded (connectedComponentIn (planarFill S)ᶜ z) at hz
   by_contra h
   have outside : z ∈ Sᶜ := fun hS => h (planarFill_extensive S hS)
   have survives : connectedComponentIn Sᶜ z ⊆ (planarFill S)ᶜ := by
@@ -50,7 +52,7 @@ theorem planarFill_idempotent (S : Set ℂ) : planarFill (planarFill S) = planar
 def planarFullifier : Fullifier ℂ where
   hull := planarFill
   extensive := planarFill_extensive
-  monotone := planarFill_mono
+  monotone := fun _ _ h => planarFill_mono h
   idempotent := planarFill_idempotent
 
 /-- Outside a sufficiently large closed disk there is only one component
@@ -69,7 +71,7 @@ private theorem exterior_preconnected {r : ℝ} (hr : 0 < r) :
       exact ⟨Complex.log z, by simpa [Complex.log_re] using Real.log_lt_log hr hz,
         Complex.exp_log hne⟩
   rw [← image_eq]
-  exact (Complex.convex_halfSpace_re_gt _).isPreconnected.image _ Complex.continuous_exp.continuousOn
+  exact (convex_halfSpace_re_gt _).isPreconnected.image _ Complex.continuous_exp.continuousOn
 
 /-- The hull complement is the unique unbounded component of the complement
 of a bounded seed, and contains the exterior of a disk enclosing the seed. -/
@@ -110,6 +112,7 @@ theorem planarFill_compact {S : Set ℂ} (hs : IsCompact S) : IsCompact (planarF
   obtain ⟨r, hr, hS⟩ := hs.isBounded.subset_closedBall_lt 0 0
   have hbound : planarFill S ⊆ closedBall 0 r := by
     intro z hz
+    change IsBounded (connectedComponentIn Sᶜ z) at hz
     by_contra hfar
     have hsub := (exterior_preconnected hr).subset_connectedComponentIn
       (show z ∈ (closedBall 0 r)ᶜ from hfar) (compl_subset_compl.mpr hS)
