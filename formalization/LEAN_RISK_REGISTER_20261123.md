@@ -116,17 +116,18 @@ corrected; **the next push build at commit `6a3bac5` passed**:
 
 ## CI / maintainability risks
 
-- The root `.github/workflows/lean-proofs.yml` and weighted
-  `.github/workflows/weighted-lean.yml` both use long, explicit
-  handwritten proof-file lists for their placeholder scans. Such lists
-  can silently omit future modules, even if one default-target build
-  compiles them. Prefer a source-discovery guard that checks every
-  tracked `.lean` file, with separately maintained exceptions for
-  intentionally experimental modules.
-- The weighted proof workflow is triggered by changes under
-  `formalization/weighted/**`. Changes that alter assumptions in
-  imported root modules deserve a same-commit integration run of the
-  weighted package, not only the root Lean workflow.
+- The root `.github/workflows/lean-proofs.yml` uses a long,
+  explicit handwritten proof-file list for its placeholder scan and
+  path filters; future files can be silently omitted. Give it an
+  all-root-source discovery/registration check analogous to the
+  *weighted workflow's repair in this PR*.
+- This PR repairs two weighted-workflow blind spots: the placeholder
+  and axiom scanner now covers **every** direct
+  `formalization/weighted/*.lean` file, and a Python/TOML guard
+  requires each such source to appear both as a Lake library and
+  in the default build targets. It also triggers the weighted build
+  on root `*.lean` changes, so changes to imported root modules get
+  a same-commit integration check.
 - A green finite-computation verifier or a successful formal proof of
   `assumptions → conclusion` is *not* a verification that analytic
   hypotheses are true. Report the categories separately in PR checks.
