@@ -14,7 +14,9 @@ Here **physical** means an object specified independently in the mathematics, su
 
 To read a transition, fix the parameter, stage, domains, marks, and observable in the **target** first. Identify the theorem actually verified on the **model**. Then prove the map between these objects, its domain of definition, and exactly the naturality or comparison the conclusion consumes. For example, if a model map $F$ describes a return $g$ through $qg=Fq$, induction gives $qg^k=F^kq$ wherever all $k$ returns exist. This only identifies projected iterates. To infer $g^k x=x$ from $F^k qx=qx$, prove $q$ separates $x$ and $g^kx$ in that fiber. A two-point involution projected onto one point satisfies the commuting identity and defeats the stronger inference at $k=1$.
 
-Both new realization modules build with the repository’s pinned Lean 4.32.0 and Mathlib. The printed dependencies of their principal theorems are `propext`, `Classical.choice`, and `Quot.sound`. [Weighted proof build](https://github.com/dovvnloading/loops-research-archive/actions/runs/45268559641)
+The earlier `PlanarFullification` and `Period27RealKneading` realization modules build with the repository’s pinned Lean 4.32.0 and Mathlib. The printed dependencies of their principal theorems are `propext`, `Classical.choice`, and `Quot.sound`. This linked run concerns those earlier modules; it does not validate subsequent additions. [Earlier weighted proof build](https://github.com/dovvnloading/loops-research-archive/actions/runs/45268559641)
+
+The added `Period27RealMarkov`, `FullCloneRenewal`, `FiniteMarkovFibers`, `Period27FiniteFibers`, `FiniteMarkovCorrelation`, and `FullCloneCorrelation` modules are explicit Lake default targets. Reproduce them with `lake build` in `formalization/weighted`, using the pinned toolchain. Their own principal-theorem dependency reports and current build result are in the [PR 115 checks](https://github.com/dovvnloading/loops-research-archive/pull/115/checks).
 
 A **kernel proof** can already be about the physical target. A **written proof** can use a source theorem with its hypotheses verified here. A **conditional deduction** displays its unproved inputs, and an **open obligation** names a statement still requiring proof. A verifier can establish exact arithmetic or identify a counterexample within its declared model. Check the proof that makes that computation decisive for the target. [Declaration and evidence index](physical_bridge_index.json) · [source risk register](LEAN_RISK_REGISTER_20261123.md)
 
@@ -38,6 +40,97 @@ For every delay $n$, the row-source adjacency matrix $A_n$ constructed from the 
 For a proposed physical edge operator $B$, first construct the marked physical edge set $E$. Produce a bijection $b:V_n\to E$ and a bijection, preserving orientation, multiplicity and stopping time, from **every** graph transition $u\to v$ to the proof-used physical occurrences from $b(u)$ to $b(v)$. Construct the stopping sections and certify exhaustion, including edges skipped or collapsed by an immersion. Compare the normalization of the weights if the operator is weighted. These are geometric obligations at the proposed stage. [Physical incidence contract](PHYSICAL_BRIDGES_WIDTH.md#w4) · [KKL Appendix C convention audit](../research/independent_audits/clone_spectral_referee_note.md)
 
 **Conditional deduction.** For row-source counting operators put $Px(b(u))=x(u)$. Reindex the finite sum over $v$ using the proved occurrence bijections. This gives $(BPx)(b(u))=(A_nx)(u)$, hence $B=PA_nP^{-1}$. The spectral assertions transfer in both directions by applying $P$ and $P^{-1}$ to eigenvectors. If a separate comparison identifies a block or quotient only, the conclusion is limited to that block or quotient. Even an exact spectral identification gives a claim about edge counts. A width estimate additionally needs a lower bound comparing the physical widths on those very edges with the action of $B$, including loss, uniformly for the asserted range of stages. [Width and loss](PHYSICAL_BRIDGES_WIDTH.md#w5) · [depth and normalization](PHYSICAL_BRIDGES_WIDTH.md#w7)
+
+<a id="clone-renewal"></a>
+## From graph eigenvalues to a probability law and an actual correlation
+
+These are separate transitions, with different evidence. Fix the **same** delay $n$, actual row-source adjacency $A$, positive root $t$, and positive vector $h$ throughout.
+
+1. **Polynomial → actual matrix mode.** For any complex root $z^{2n+5}=z+1$, construct $v_i=z^i$ before and including the shortcut and $v_i=z^i/(z+1)$ afterwards. Check ordinary, shortcut and wrap rows. The hub coordinate is one. `complexCloneVector_eigen` and `clone_polynomial_root_is_eigenvalue` prove this converse; a necessary polynomial equation alone would not suffice.
+2. **Actual matrix → stochastic kernel.** Set $P_{ij}=A_{ij}h_j/(t h_i)$. Positivity and $Ah=th$ give nonnegative entries and row sums one. The long and short probabilities are $1/(1+t)$ and $t/(1+t)$. `clone_stochastic_root_mode` proves stochasticity and a nonzero mode at $z/t$ together, consuming the real root equation and complex root equation explicitly. An arbitrary $t>1$ only gives an algebraic normalization, not probability rows. [Lean proofs](weighted/FullCloneRenewal.lean)
+3. **Complex root selection → asymptotic.** The polar modulus equation has a strictly decreasing radius; the phase equation is strictly increasing. These identify the first conjugate pair as the actual subleading pair for every delay. The analytic implicit-function expansion then proves $(2n+9/2)^3(1-r/t)\to\pi^2/2$. Root selection and the infinite Taylor limit are **written**, with the analytic branch and remainder stated; the finite Python checks are regressions. [Full proof, §§3–4](../research/independent_audits/clone_renewal_clock_20261123.md)
+4. **Stochastic model → constructed real dynamics.** Concatenate half-open intervals of lengths $h_i$, and give each the affine map of slope $t$ onto its declared successor interval(s). On interval $i$ put the explicitly computed density $\pi_i/h_i$. Prove invariance, then prove the formula for **every** finite itinerary cylinder by affine inverse branches. This identifies the stationary process of this constructed map with $P$. Pulling back a nonzero eigenvector gives the exact complex correlation $\int\overline{G}\,G\circ T^q\,d\mu=(z/t)^q\|G\|_2^2$. The interval, invariant measure and correlation deductions are **written**; the map is generally discontinuous. [Construction and independent checks](../research/independent_audits/clone_renewal_clock_20261123.md)
+
+**Application to a different physical system remains conditional.** For a quadratic iterate or native KL return, construct its measurable coding and invariant measure, prove the entire finite-cylinder law, match the physical time unit, and prove the transported observable has positive squared norm. A finite edge bijection supplies no probability law by itself. A width or coercivity conclusion additionally requires its own analytic comparison. The new result proves that $t_n^n\to\sqrt2$ while $(r_n/t_n)^n\to1$, so expansion on a delay block cannot alone imply a uniform decay of correlations on that block. It supplies no closure of the global H1–H4 gates. Parry normalization and renewal diffusion have established predecessors, identified in the note; no worldwide priority claim is made.
+
+<a id="finite-correlation"></a>
+## Finite probability laws and their observable
+
+[FiniteMarkovCorrelation](weighted/FiniteMarkovCorrelation.lean) makes the
+probability and observation premises explicit. A row-stochastic real matrix
+$P$ and a stationary probability vector $\pi$ determine, for every $q\ge0$,
+
+$$
+J_q(i,j)=\pi_i(P^q)_{ij}.
+$$
+
+`joint_probability` proves nonnegativity, total mass one, and both marginals
+$\pi$. For the **same** matrix, a complex right mode $Pg=\lambda g$ with
+$\lambda\ne1$ has stationary mean zero. Strictly positive $\pi_i$ and a
+nonzero coordinate of $g$ give $M=\sum_i\pi_i|g_i|^2>0$. The separately
+proved matrix-power action yields
+
+$$
+\sum_{i,j}J_q(i,j)\overline{g_i}g_j=\lambda^q M,
+\qquad \frac{\sum_{i,j}J_q(i,j)\overline{g_i}g_j}{M}=\lambda^q.
+$$
+
+The orientation, conjugation, nonzero denominator, and every finite horizon
+are part of the formal statements. The fair holding matrix $Q=(I+P)/2$
+has the same stationary law and mode $(1+\lambda)/2$; its two-time laws and
+correlations obey the corresponding identities. Lean proves this finite
+matrix transformation. Independence of clock increments and realization as
+a probability process are additional written steps below.
+
+[FullCloneCorrelation](weighted/FullCloneCorrelation.lean) applies these
+results to `cloneTransition n t` and the previously constructed nonzero
+root eigenvector. Its stationary-vector and strict positivity premises
+explicitly refer to that matrix. The formula $\pi_{n+1}=a/m$ and
+$\pi_i=1/m$ otherwise, with $a=1/(1+t)$ and $m=2n+5-t/(1+t)$, is checked
+by the written incoming-flow proof in the [renewal note](../research/independent_audits/clone_renewal_clock_20261123.md).
+That explicit stationary formula and its physical invariant-density
+realization are not labeled as Lean measure-theory proofs. The all-cylinder
+proof is what turns the finite endpoint calculation into the correlation
+of the actual constructed interval map.
+
+<a id="clone-readout"></a>
+## The measured statistic and the full clock law
+
+The [readout note](../research/independent_audits/clone_resonant_readout_20261123.md)
+continues from the explicitly realized affine map and its normalized complex
+mode $\lambda=\rho e^{i\theta}$. It proves the following distinct transitions.
+
+1. Choose a phase using $\int G^2\,d\mu$, then normalize the real part to
+   obtain the actual real observable $F$ with covariance
+   $\rho^q\cos(q\theta)$. An arbitrary real part need not have this covariance.
+2. Sum the absolutely convergent covariance Fourier series to obtain the
+   Poisson kernel $S(\omega)=(1-\rho^2)/|1-\lambda e^{-i\omega}|^2$.
+   The real observable has the average of the positive- and negative-frequency
+   kernels. Fourier evaluation is not a theorem identifying a causal response
+   or an extremal width.
+3. Derive the finite variance from its double covariance sum, retaining the
+   endpoint remainder. With $D=2n+9/2$, the long-run coefficient is
+   $S(0)\sim1/(4D)$, while the resonance height is
+   $S(\theta)\sim4D^3/\pi^2$. At the integer window $N=2D$, the original real
+   average has variance asymptotic to $1/(4D^2)$ even though $\rho^N\to1$.
+4. Construct an actual product with a measure-preserving circle rotation to
+   realize a phase-tracking readout. Its real normalized covariance is
+   $\rho^q$ and its long-run variance coefficient is $S(\theta)$. Thus the
+   coefficient ratio is asymptotic to $16D^4/\pi^2$. The product has a
+   nonmixing circle factor; only the specified observable is being compared.
+5. Construct the Bernoulli skew product or an independent Poisson observation
+   clock. Compute the full transform $\mathbb E[\lambda^{N_t}]$, not just
+   $\mathbb E N_t$. Equal expected iteration counts can give quadratic rather
+   than cubic envelope decay. Even holding probability $c/D\to0$ changes
+   the cubic leading constant from $\pi^2/2$ to $\pi^2/2+2\pi^2c$.
+
+These analytic, real-phase, and measure-theoretic steps have complete written
+proofs and [exact finite regressions](../research/independent_audits/verify_clone_resonant_readout.py).
+The regressions are not universal proofs or certified root enclosures.
+Transferring any conclusion to native quadratic/KL dynamics still requires
+the actual probability law, observable, and full clock identification;
+transferring it to a width additionally requires an independently proved
+comparison to that defined width.
 
 <a id="boundary-spectrum"></a>
 ## From finite coefficients to the exterior map

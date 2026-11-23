@@ -49,6 +49,115 @@ These visuals come from **this archive's own computations, certificates, and fin
 
 The **ray portrait and two-scale angle-map figures** are generated from the exact portrait manifest by [our reproducible SVG generator](./code/generate_readme_research_figures.mjs). The return and target-disk figures are explicitly labeled schematics of the archive's certificates. No external illustration is presented as an original research result.
 
+## November 23: actual interval rows and two different spectral clocks
+
+The [period-27 real Markov bridge](./research/independent_audits/period27_real_markov_bridge_20261123.md)
+connects the finite 26-edge table to the **actual quadratic**: every listed
+target interior point has exactly one preimage on its source edge, and an
+omitted target has none. [Lean](./formalization/weighted/Period27RealMarkov.lean)
+proves the whole-interval images, both row implications, and existence of the
+same certified center. The new
+[all-horizon Lean theorem](./formalization/weighted/Period27FiniteFibers.lean)
+proves that every matrix-power entry counts distinct actual preimages in
+its source interval; the column sum counts all preimages in the closed orbit
+core. Its parameter existence and endpoint exclusions are included.
+A separate written cycle proof and exact integer check give
+
+$$
+\det(\lambda I-A)=(\lambda^2-\lambda-1)(\lambda^6-\lambda^3-1)
+(\lambda^{18}-\lambda^9-1).
+$$
+
+The three return clocks remain visible in the full spectrum, even though the
+leading eigenvalue is the golden ratio. The formal inverse-fiber equivalence
+and written cycle enumeration give exact Fibonacci preimage counts at clocks 1, 3 and 9.
+[Spectrum certificate](./research/independent_audits/verify_period27_markov_spectrum.py)
+The [earlier Markov observability study](./research/independent_audits/airplane_inverse_problems_20261114/markov/RESEARCH.md)
+already identified the three symbolic components, return clocks and weighted
+growth polynomials. The additions here are the kernel-checked physical
+realization, a full characteristic-polynomial certificate, and the explicit
+transfer to actual inverse fibers at every finite time.
+
+For the **different, primitive delayed clone graph**, the
+[renewal-clock proof](./research/independent_audits/clone_renewal_clock_20261123.md)
+sharpens the old gap-collapse bound to
+
+$$
+(2n+9/2)^3(1-r_n/t_n)\longrightarrow\pi^2/2.
+$$
+
+[Lean](./formalization/weighted/FullCloneRenewal.lean) constructs its stochastic
+normalization and proves both directions needed to turn polynomial roots into
+actual matrix modes. The root-ordering and asymptotic proof are **written**.
+An explicitly constructed piecewise affine interval map, invariant density,
+and all-finite-cylinder law realize the exact correlation
+$(z_1/t_n)^q\|G\|_2^2$. Thus $t_n^n\to\sqrt2$ coexists with
+$(r_n/t_n)^n\to1$: expansion over a delay block does not ensure uniform
+decay of correlations over that block. The note includes a fixed-graph,
+variable-probability counterexample to transferring a mixing rate from
+adjacency alone.
+
+These are specific additions to the archive, with classical predecessors
+credited. The affine map is distinct from the quadratic example. Native KL
+probability, marking, width and global MLC identifications remain separate
+obligations. The [bridge register](./formalization/PHYSICAL_BRIDGES.md) records
+the evidence at each step; its validator now rejects unresolved prerequisites
+even when they are hidden behind intermediate model rows.
+
+![The actual quadratic spectrum resolves return clocks 1, 3 and 9; the separate clone family has linear growth times and cubic correlation times.](./figs/research/spectral_clocks_20261123.png)
+
+The figure is a numerical illustration of the exact determinant and written
+asymptotic proofs, generated from declared sources by
+[this script](./code/generate_spectral_clock_figure.py).
+
+### Continuation: the readout and the clock change the conclusion
+
+The [readout proof](./research/independent_audits/clone_resonant_readout_20261123.md)
+connects the same explicitly realized clone mode to its temporal spectrum,
+real observable, finite-window variance, and independent random clocks.
+Writing $D=2n+9/2$ and $\lambda=\rho e^{i\theta}$, it proves
+
+$$
+S(0)\sim\frac1{4D},\qquad
+S(\theta)\sim\frac{4D^3}{\pi^2},\qquad
+\frac{S(\theta)}{S(0)}\sim\frac{16D^4}{\pi^2}.
+$$
+
+Thus a cubic correlation envelope coexists with a decreasing ordinary
+averaging variance. At the exactly integral window $N=2D=4n+9$, a specified
+real observable has average variance asymptotic to $1/(4D^2)$ while its
+envelope tends to one. An actual circle-reference product realizes a
+phase-tracking readout whose average variance tends to one on that same
+window. These are covariance measurements, with their measure and observable
+specified; no causal response or native width is identified by the formulas.
+
+Independent Bernoulli or Poisson observation clocks give quadratic envelope
+decay even at the same expected number of original iterations. A vanishing
+holding probability $c/D$ already changes the cubic gap constant to
+$\pi^2/2+2\pi^2c$. This gives an explicit test for a missing clock-law premise.
+The Fourier and clock-asymptotic proofs are written; classical Poisson-kernel,
+nonreversible-variance, and Markov-clock methods are credited.
+
+[FiniteMarkovCorrelation](./formalization/weighted/FiniteMarkovCorrelation.lean)
+proves normalized two-time probability laws, centering, positive variance,
+exact mode correlations and the finite lazy-clock transformation in Lean.
+[FullCloneCorrelation](./formalization/weighted/FullCloneCorrelation.lean)
+applies them to the actual clone matrix with the stationary-distribution
+premises displayed. The explicit stationary formula and physical
+invariant-measure/cylinder realization remain written proofs.
+[Exact finite regression](./research/independent_audits/verify_clone_resonant_readout.py)
+checks independently propagated path moments and rejects the uncorrected
+real-part readout and reversed complex phase.
+
+![The same affine clone mode has oscillatory covariance, tuned averaging cancellation, and different decay under equal-mean clocks.](./figs/research/clone_readout_20261123.png)
+
+At delay 50, closed formulas illustrate the specified real readouts and
+three clock laws. The blue average cancels near complete rotations while
+the rotating-reference average retains its variance. The clock comparison
+uses exactly equal expected iteration counts. These are numerical
+illustrations of the written proofs, generated by
+[this script](./code/generate_clone_readout_figure.py).
+
 ## November 15–16, 2026 research integration (merged PRs #72–#100)
 
 The [model-to-physical proof register](./formalization/PHYSICAL_BRIDGES.md) records the current scope. The [referee-controlled v2](./papers/tip_family_preprint_v2_20261116/sections/referee_scope.tex) states which nesting, ideal-boundary and path-class hypotheses a physical width claim consumes. The following rows retain their November provenance. The July manuscript and 465 source-locked obligations have their original status.

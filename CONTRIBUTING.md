@@ -22,6 +22,8 @@ For a model-to-physical claim, register the mathematical implication and its evi
 
 For a model theorem used on an actual orbit, cover, continuum or curve family, add its name and source to the [bridge index](./formalization/physical_bridge_index.json). In the linked [proof guide](./formalization/PHYSICAL_BRIDGES_CONTRACTS.md), specify the physical object and quantifiers, construct the identification, and show how the conclusion follows. Cite the proof for each geometric premise or mark the premise open. Run `python3 -B code/verify_physical_bridges.py` to check the references and coverage. The mathematical review concerns the argument at those references.
 
+Input edges in the bridge register are mathematical prerequisites. An unresolved prerequisite stays unresolved through intermediate model rows; the route checker rejects its promotion to a formal, written or imported standing claim and reports the dependency path. Run `python3 -B code/verify_physical_bridge_routes_test.py` for the adversarial regressions. Status consistency does not itself establish a realization theorem.
+
 ### Counterexample or obstruction
 
 A counterexample should identify the smallest claim it defeats and verify each advertised hypothesis. Include:
