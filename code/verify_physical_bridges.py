@@ -9,6 +9,7 @@ import argparse
 import json
 import os
 import re
+import shlex
 from collections import defaultdict
 from pathlib import Path
 from urllib.parse import unquote, urlsplit
@@ -16,6 +17,7 @@ from urllib.parse import unquote, urlsplit
 from verify_lean_frontier_sync import ROOT, assumptions, canonical_order
 
 INDEX = ROOT / "formalization/physical_bridge_index.json"
+CROSSWALK = Path("formalization/LEDGER_EVIDENCE_CROSSWALK.md")
 # Public, named theorem/lemma declarations in the syntax used in this archive.
 # Supports same-line attributes. Private helper lemmas have no separate entry.
 DECLARATION = re.compile(
@@ -69,8 +71,18 @@ def unique_keys(pairs):
     return result
 
 
-def guide_sources(index):
-    guides = {}
+def evidence_filenames(row):
+    return dict.fromkeys(re.findall(r"[\w.-]+\.md\b", row["evidence"]))
+
+
+def guide_sources(index, records, files):
+    crosswalk = (ROOT / CROSSWALK).read_text(encoding="utf-8")
+    guides = {ROOT / CROSSWALK: crosswalk}
+    markdown = {Path(path).name for path in files if path.endswith(".md")}
+    for row in records:
+        if any(name not in markdown for name in evidence_filenames(row)):
+            if crosswalk.count(f'<a id="{row["id"]}"></a>') != 1:
+                raise ValueError(f"{row['id']}: missing evidence needs a crosswalk entry")
     for key, row in index.items():
         path, anchor = row["guide"].split("#")
         doc = (ROOT / path).resolve()
@@ -94,7 +106,7 @@ def guide_sources(index):
 
 def check(index, records, updates, files):
     declarations = defaultdict(set)
-    guide_sources(index)
+    guide_sources(index, records, files)
     scripts, targets, supplements = set(), set(), set()
     by_id = {row["id"]: row for row in records}
     for key, row in index.items():
@@ -171,9 +183,11 @@ def inspect_claim(claim_id, records, updates, index, files):
         print("Source clauses:", row["clauses"])
     print("Evidence as recorded:", row["evidence"])
     # A basename match locates candidate files, never authenticates an anchor.
-    for name in dict.fromkeys(re.findall(r"[\w.-]+\.md\b", row["evidence"])):
+    for name in evidence_filenames(row):
         candidates = sorted(p for p in files if Path(p).name == name)
         print(f"  {name} (file lookup):", ", ".join(candidates) or "missing from checkout")
+        if not candidates:
+            print(f"  Alternative evidence and remaining scope: {CROSSWALK}#{claim_id}")
     contracts = [e["guide"] for e in index.values() if claim_id in e.get("obligations", [])]
     print("Contract references:", ", ".join(contracts or [index["ledger"]["guide"]]))
     seen = set()
@@ -198,6 +212,15 @@ def inspect_theorem(name, index):
         raise ValueError(f"unknown public theorem/lemma {name}")
     for path, references in matches.items():
         print(f"{path} — {name}")
+        source = Path(path)
+        target = shlex.quote(source.stem)
+        if source.parent == Path("formalization/weighted"):
+            command = f"(cd formalization/weighted && lake build {target})"
+        elif source.parent == Path("."):
+            command = f"lake build {target}"
+        else:
+            command = f"lake build && lake env lean {shlex.quote(path)}"
+        print("Kernel check from the repository root:", command)
         for ref in references:
             print(f"  {ref}")
 

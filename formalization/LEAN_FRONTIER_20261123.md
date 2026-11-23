@@ -1,5 +1,7 @@
 # Lean frontier: canonical sheet kernels and protected-carrier audits
 
+**Subsequent proof at the planar-fill interface.** The [planar realization](PHYSICAL_BRIDGES.md#planar-fill) constructs the filled hull on the complex plane, proves compactness for compact inputs, and specializes the finite-packet theorem. The [current proof index](PHYSICAL_BRIDGES.md) also links the verified period-27 sign and order results. The rankings below describe their stated base revision.
+
 **Repository snapshot:** `main` commit `4840f628c25ef7a3ae91686ddf5ffb57dc0548b4` (2026-11-23).
 **Toolchain:** Lean 4.32.0; Mathlib v4.32.0 via `formalization/weighted/`.
 **Status discipline:** "Not formalized" below means **not identified in the

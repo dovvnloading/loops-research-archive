@@ -1,5 +1,7 @@
 # Source-grounded Lean risk register and proof contracts (2026-11-23)
 
+**Subsequent proof at the planar-fill interface.** The [planar realization](PHYSICAL_BRIDGES.md#planar-fill) constructs the filled hull on the complex plane, proves compactness for compact inputs, and specializes the finite-packet theorem. The [current proof index](PHYSICAL_BRIDGES.md) also links the verified period-27 sign and order results. The rankings below describe their stated base revision.
+
 **Base revision:** `7df9b19ab8d87983a7a2c89160235d0576dbcb66`
 (2026-11-23). **Toolchain:** Lean 4.32.0; Mathlib v4.32.0 in
 `formalization/weighted`.
