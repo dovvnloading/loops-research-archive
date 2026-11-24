@@ -635,6 +635,103 @@ equilibrium on `C1` is ruled out. This statement concerns that
 specific dynamical interval and makes no assertion about an
 equilibrium measure on a parameter compact.
 
+### 6.3. A dense class of actual observables has finite energy
+
+Every Lipschitz function on the physical interval `C1` has finite
+pullback energy `mathfrak E`. Here the existing straightening
+supplies the required physical comparison in one direction.
+
+Let `h_G` be the actual quasiconformal straightening of `G` to the
+quadratic `Q_G`, defined on a neighborhood of `K3`. Let `Psi_Q`
+be the normalized inverse Böttcher map of `Q_G`. The source
+identification is `L=h_G^-1 o ell_Q`, as recorded in
+[the dimension proof, §7](../issue62_landing_angle_bound_20261123/EXACT_DIMENSION.md)
+from [the terminal-first-child proof, §7](../tip_kl_terminal_first_child_20261106.md).
+Local connectivity gives a continuous extension of `Psi_Q` to the
+unit circle, with boundary values `ell_Q`. Choose `R>1` sufficiently
+close to one that the image of the closed annulus under this
+extension lies inside the neighborhood where `h_G^-1` is defined.
+Then
+
+\[
+\varphi=h_G^{-1}\circ\Psi_Q:
+A_R=\{1<|\zeta|<R\}\longrightarrow\Omega
+\]
+
+is a quasiconformal homeomorphism with a finite dilatation bound
+`kappa>=1` onto a bounded physical collar, and extends continuously
+to the inner circle with values
+`L(theta)`. The distortion inequality and the area formula give
+
+\[
+\int_{A_R}|D\varphi|_{\mathrm{HS}}^2\,dA
+\le 2\kappa\int_{A_R}J_\varphi\,dA
+=2\kappa\operatorname{area}(\Omega)<\infty.
+\tag{29e}
+\]
+
+For a Lipschitz `v:C1->R`, extend it to the real line by making it
+constant beyond each endpoint. This preserves its supremum norm
+and Lipschitz constant. The function
+
+\[
+u(\zeta)=\widetilde v(\operatorname{Re}\varphi(\zeta))
+\]
+
+belongs to `H^1(A_R)`: its squared gradient integral is at most
+`2 kappa area(Omega) Lip(v)^2`, and it is bounded by `||v||_infinity`.
+Radial reflection across the two boundary circles, followed by a
+smooth cutoff, gives an `H^1(R^2)` extension `U`, with a bounded
+extension norm depending on this fixed annulus. It is continuous
+at the unit circle. At `theta in C`, its value is exactly
+`v(L(theta))`, since `L(theta) in C1` is real.
+
+Apply Jonsson's restriction theorem, **Theorem 1, printed p. 4**
+of the primary source in §4, directly to
+`F={exp(2 pi i theta):theta in C}` and the pushforward of
+`H^s|C`. The ball bound follows from §2 and (16). With
+`n=2`, `p=2`, `alpha=1`, and `d=1/3`, its trace exponent is
+`beta=1/6`, and its difference kernel has exponent
+`d+2 beta=2/3`. Continuity identifies the corrected representative
+with the boundary values just constructed. All chord distances in
+`F` are at most `2 pi/7<1`, so the theorem's local difference
+integral covers every pair in `F`. The chord comparison (16)
+converts that trace integral into the angular energy. Thus,
+for a finite constant depending on this fixed physical collar,
+
+\[
+\boxed{\mathfrak E(v)\le
+C_{\mathrm{tip}}\bigl(\|v\|_\infty^2+
+\operatorname{Lip}(v)^2\bigr)<\infty.}
+\tag{29f}
+\]
+
+Complex-valued functions follow by applying the argument to their
+real and imaginary parts. In particular the coordinate observable
+`v(x)=x` has positive finite energy: `C1` is nondegenerate and
+`nu` has full support by (29c). Piecewise linear functions are
+uniformly dense in `C(C1)`, and continuous functions are dense in
+`L^2(nu)`. Hence the finite-energy physical observable space is
+dense in `L^2(nu)`. Approximation by this class, (29), and the
+`L^2(nu)` contractivity of `Q` give
+
+\[
+\boxed{Q^n v\longrightarrow\int v\,d\nu
+\quad\text{in }L^2(\nu)\quad\text{for every }v\in L^2(\nu).}
+\tag{29g}
+\]
+
+This strong convergence has no uniform operator-norm decay on
+all mean-zero `L^2(nu)` data. Indeed put
+`psi_m(x)=T_m(h(x)/2)`. For `m>=1`, (29c) gives mean zero and
+`||psi_m||_L2(nu)^2=1/2`, while (29b) gives
+`Q^n psi_(2^n)=psi_1`. Consequently the operator norm of `Q^n`
+on the mean-zero subspace is exactly one at every finite `n`.
+The quantitative estimate (29) remains an estimate in terms of
+the finite pullback energy. Neither (29e) nor (29f) supplies a
+uniform straightening constant along a renormalization tower or
+a reverse comparison with a physical Dirichlet norm.
+
 This is an operator on actual physical observables, with its energy
 and reference measure defined explicitly by the actual landing map.
 It supplies no unproved equivalence with planar Dirichlet energy,

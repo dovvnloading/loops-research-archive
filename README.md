@@ -108,6 +108,12 @@ actual landing map L to the **physical G³ interval Perron operator**
 $\mathcal P$, with
 $\mathfrak E(\mathcal P v)\le\tfrac12\mathfrak E(v)$ in the stated
 pullback energy $\mathfrak E(v)=\mathcal E_{\mathcal C}(v\circ L)$.
+The actual quasiconformal exterior collar proves that every Lipschitz
+observable on the physical interval has finite energy, including the
+coordinate function; this class is dense in $L^2(\nu)$. The Perron iterates
+converge strongly to the mean for every $L^2(\nu)$ observable, while their
+operator norm on the entire mean-zero $L^2$ subspace stays one at every
+finite iterate. The quantitative decay bound uses the pullback energy.
 The actual reference probability is the pullback of arcsine measure under
 the Chebyshev conjugacy, and the proof shows that it differs from ordinary
 logarithmic equilibrium of the physical interval. Comparison with planar
