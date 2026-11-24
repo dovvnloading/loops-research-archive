@@ -4,17 +4,34 @@ To trace a claim from a checked model to its independently defined geometric obj
 
 This map connects the mathematical dependency structure to the public files. The canonical route through the project is the paper sequence, the main manuscript, the proof ledger, and `research/mlc_unified/`. Dated push bundles preserve the development record and remain addressable because ledger entries cite them.
 
+## November 24: complete selected-family canonical exclusion
+
+Start with the [current proof packet](./research/independent_audits/native_resolution_20261124.md).
+It gives three scoped advances:
+
+| Interface | Current result |
+|---|---|
+| Complete buffered support | [Every eligible full quadrilateral has width less than 1999/1000, so the canonical buffered diagram is zero for selected p≥10](./research/independent_audits/canonical_width_attack_20261124/NOTE.md). The proof covers all windings in the whole-component marking. Refined markings and p≤9 remain separate. |
+| Repeated paths and simple leaves | [Unindexed and occurrence-indexed maximal restrictions induce the same ideal-set pullback; simple leaves have the same nontrivial arc support under raw-trace restriction](./research/independent_audits/native_mark_attack_20261124/NOTE.md). The finite native action and five-push chain obstruction for a crest containing an original marked interval are separately labeled applications of imported KKL propositions. |
+| Variable stationary exits | [Actual exits may use different endpoint components](./research/independent_audits/stationary_transport_attack_20261124/VARIABLE_END_EXIT_TRANSFER.md). Fractional endpoint covers and summed peripheral degrees give terminal width bounds. The physical exits must still be constructed. |
+
+The buffered zero theorem is compatible with the positive independent
+unbuffered defect. It excludes the direct lower comparison
+`||W_can(Y_p)|| >= a D_p` for every `a>0` on this family. Full independent MARK, native exit
+existence, all-scale calibration, and MLC remain open. These written
+proofs and exact certificates have not received human specialist review.
+
 ## November 23: native-interface proof repairs
 
 The [native-interface review packet](./research/independent_audits/native_frontier_20261123.md)
-is the current entry point for the following additions. These are written
+records the preceding additions. These are written
 proofs with explicit physical inputs and exact arithmetic checks, awaiting
 human specialist review.
 
 | Interface | New result and review target |
 |---|---|
-| Selected real-family intrinsic classes and widths | [Analytic source boundary, intrinsic ideal atlas and contour-code subarc escape](./research/independent_audits/maximal_native_wave_20261123/NOTE.md), followed by [the full-path metric and parent-foliation proof](./research/independent_audits/maximal_native_wave_20261123/H3_WIDTH.md). Full immersion MARK remains open; native saturation is conditional on identifying the contour code with the geometric-trace pullback. The repaired widest box gives `D_p > 40/819`; the [separate p=13/p≥14 certificate](./research/independent_audits/tip_family_wave_gain_correction_20261123/NOTE.md) gives `D_p > 11/126`. |
-| Selected outer buffered classes | [The matched four-boundary proof](./research/independent_audits/maximal_native_wave_20261123/OUTER_BUFFER_EXCLUSION.md) identifies the primitive outer collar, the cyclic modulus and all incident quadrilaterals, including outer self-classes. Every outer buffered coefficient is zero for selected p≥11; inner coefficients remain undetermined. |
+| Selected real-family intrinsic classes and widths | [Analytic source boundary, intrinsic ideal atlas and contour-code subarc escape](./research/independent_audits/maximal_native_wave_20261123/NOTE.md), followed by [the full-path metric and parent-foliation proof](./research/independent_audits/maximal_native_wave_20261123/H3_WIDTH.md). Full independent immersion MARK remains open; an independent native saturation proof still requires identifying the contour code with the geometric-trace pullback. The source-imported finite action above covers the original marked intervals. The repaired widest box gives `D_p > 40/819`; the [separate p=13/p≥14 certificate](./research/independent_audits/tip_family_wave_gain_correction_20261123/NOTE.md) gives `D_p > 11/126`. |
+| Selected outer buffered classes | [The matched four-boundary proof](./research/independent_audits/maximal_native_wave_20261123/OUTER_BUFFER_EXCLUSION.md) identifies the primitive outer collar, the cyclic modulus and all incident quadrilaterals, including outer self-classes. Its p≥11 outer exclusion is strengthened by the complete p≥10 whole-component exclusion above. |
 | Stationary terminal width | [Two actual filled-set hits imply a proper inner or outer exit](./research/independent_audits/maximal_exit_transfer_20261123/NOTE.md). Borel selection and cyclic-end degree two give `W(A_(b+2)) ≤ 2 W(RF)` once the two N2 pass-through statements hold. Corollary 6.6 supplies the same comparison at the longer noncollision horizon. |
 | Native 3/9 connectors | [Exactly two coarse inverse-image components](./research/independent_audits/maximal_root_landing_20261123/NOTE.md) obstruct the proposed one-sheet coarse-only connector for 44 of 88 specified lifts. Allowing the original W prefix is compatible with the [88 computed physical words](./research/independent_audits/issue62_physical_connector_reconstruction_20261123/NOTE.md) in one specified compatible basis. |
 | Physical pruning, properness and collision | [Singleton-cut full-hull incidence](./research/independent_audits/maximal_global_closure_20261123/CUTPOINT_PRUNING.md), [ideal properness of maximal annular restrictions](./research/independent_audits/maximal_global_closure_20261123/ANNULAR_RESTRICTION_PROPERNESS.md), and [connected-carrier noncollision](./research/independent_audits/maximal_global_closure_20261123/CONNECTED_CARRIER_NONCOLLISION.md) narrow the stationary inputs. Canonical paired germs, native contour correspondence and sequential retention remain open. |
@@ -52,8 +69,10 @@ whiskers. Its all-angle root/proper-end result does not establish general
 KKL unique proper restriction or full immersion-pulled MARK. The selected
 [slit-class and independent-width proof](./research/independent_audits/marked_slit_path_bridge_20261123/README.md)
 and [corrected all-period runner](./research/independent_audits/tip_family_wave_gain_correction_20261123/NOTE.md)
-remain separate results. Full immersion MARK, inner buffered coefficients and iterated transport,
-H1–H4, UPTCR and MLC remain open; the July ledger below is unchanged.
+remain separate results. Full independent immersion MARK, iterated transport,
+H1–H4, UPTCR and MLC remain open. The complete minimally marked canonical
+diagram is now zero for selected p≥10; smaller periods and refined markings
+remain separate. The July ledger below is unchanged.
 
 ## November 23: two explicit model-to-dynamics routes
 
@@ -117,7 +136,7 @@ Each entry links the dated note and its verifier. The referee-controlled v2 reco
 
 ### Wave gain and crest transport
 
-**November 23 correction.** The #97/#100 entries below preserve their historical scope. Their original tail verifier divided the parameter-error contribution by three incorrectly. Use the [corrected all-period certificate](./research/independent_audits/tip_family_wave_gain_correction_20261123/NOTE.md) and [finite-slit width proof](./research/independent_audits/marked_slit_path_bridge_20261123/WIDTH_TRANSFER.md) for the current result: p=13 is certified separately, and the corrected uniform tail starts at p=14. The independent unbuffered bound remains D_p>1/100 for every selected p≥3. The repaired dated runner additionally supplies the weaker uniform 40/819 margin. Full immersion marking, inner buffered coefficients, iterated transport, and the global MLC gates remain open; selected outer-buffer exclusion is linked above.
+**November 23 correction, with November 24 support update.** The #97/#100 entries below preserve their historical scope. Their original tail verifier divided the parameter-error contribution by three incorrectly. Use the [corrected all-period certificate](./research/independent_audits/tip_family_wave_gain_correction_20261123/NOTE.md) and [finite-slit width proof](./research/independent_audits/marked_slit_path_bridge_20261123/WIDTH_TRANSFER.md) for the current result: p=13 is certified separately, and the corrected uniform tail starts at p=14. The independent unbuffered bound remains D_p>1/100 for every selected p≥3. The repaired dated runner additionally supplies the weaker uniform 40/819 margin. Full independent immersion marking, iterated transport, and the global MLC gates remain open. The complete canonical diagram on the minimally marked four-boundary surface is now zero for selected p≥10, as proved above; p≤9 and refined markings remain separate.
 
 | Merged PR / result | Status and precise scope | Note and verifier |
 |---|---|---|

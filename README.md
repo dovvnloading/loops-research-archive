@@ -27,6 +27,48 @@ Research direction, synthesis, authorship, and public stewardship
 
 **On this page:** [November research](#november-1516-2026-research-integration-merged-prs-72100) · [Results and original figures](#research-results-you-can-inspect) · [Mathematical program](#the-mathematical-program) · [Companion papers](#three-companion-papers) · [3/9 testbed](#the-november-2026-two-scale-testbed) · [Reproduce](#reproduce-the-central-results) · [Evidence ledger](#source-locked-evidence-ledger) · [Open problems](#the-open-frontier)
 
+## November 24: complete buffered support and sharper transport results
+
+The [new proof packet](./research/independent_audits/native_resolution_20261124.md)
+determines the entire canonical buffered diagram on the selected
+four-boundary surface, with its whole-component ideal marking:
+
+$$
+q_\alpha<1999/1000<2,\qquad W_{\rm can}(Y_p)=0
+\quad\text{for every selected }p\ge10\text{ and every eligible arc class }\alpha.
+$$
+
+The [all-class proof and exact certificate](./research/independent_audits/canonical_width_attack_20261124/NOTE.md)
+use physical slit-and-cut annuli, peripheral shadow packing, and the
+hyperbolic collar lemma. They cover every winding and essential returning
+class, with no deck-word cutoff. The finite roots p=10…16 and a uniform
+analytic box for all p≥17 supply the arithmetic. This closes the previous
+large-period inner-support question. It also proves that the positive
+independent **unbuffered** defect cannot give a positive lower bound for
+this particular buffered diagram. The theorem does not cover arbitrary
+refinements of the marking or selected p≤9.
+
+The [path proof](./research/independent_audits/native_mark_attack_20261124/NOTE.md)
+shows that forgetting repeated maximal-component occurrences preserves
+the ideal-set pullback, and that simple parent leaves acquire no extra
+nontrivial arc classes from trace-contained paths. A separate application
+of explicitly imported KKL Propositions 6.5–6.6 and A.14 gives the native
+finite action and an obstruction to five successive nonempty unbreakable
+lamination descendants when the starting crest contains an original
+marked interval. Full independent MARK remains open.
+
+The [stationary transfer theorem](./research/independent_audits/stationary_transport_attack_20261124/VARIABLE_END_EXIT_TRANSFER.md)
+allows different actual exit ends for different leaves. A fractional
+endpoint-cover estimate controls their total width; a bank of r actual
+degree-two predecessor ends gives the bound 2r W(RF), once each selected
+proper exit joins distinct ideal components and is incident to that bank.
+This bank construction requires 2≤r<P for native primitive cycle period P.
+The required exits remain the geometric obligation.
+
+These are written analytic results with exact finite checks and explicit
+classical inputs, awaiting human specialist review. H1–H4, UPTCR, MLC,
+and the 465 canonical July obligations retain their existing statuses.
+
 ## November 24: reconciled native-interface proofs and arithmetic
 
 The [native-interface review packet](./research/independent_audits/native_frontier_20261123.md)
@@ -39,8 +81,9 @@ remains outstanding.
 **Full immersion MARK remains open.** Proper temporal intersection components
 do not establish uniqueness among all proper paths in the geometric inverse
 trace. The selected five-step and positive-subarc saturation results apply
-to the explicit contour-code action; their native interpretation requires
-the missing identification. Independent parent and child widths use the
+to the explicit contour-code action; an independent native proof still
+requires the missing identification. The source-imported finite action
+above covers the original marked intervals. Independent parent and child widths use the
 intrinsic classes and do not consume that open premise.
 
 Both repairs of the misplaced division by three are retained:
@@ -60,7 +103,8 @@ are unchanged, and the all-period D_p > 1/100 conclusion survives.
 The [matched outer-buffer proof](./research/independent_audits/maximal_native_wave_20261123/OUTER_BUFFER_EXCLUSION.md)
 gives zero for every outer-incident canonical buffered coefficient on the
 selected four-boundary surface for p≥11, including essential outer
-self-classes. Inner coefficients remain undetermined. The stationary work
+self-classes. The complete exclusion above now covers the inner classes
+as well for p≥10 in the whole-component marking. The stationary work
 also gives [ideal properness of maximal annular restrictions](./research/independent_audits/maximal_global_closure_20261123/ANNULAR_RESTRICTION_PROPERNESS.md)
 under its full-carrier hypotheses and [conditional noncollision](./research/independent_audits/maximal_global_closure_20261123/CONNECTED_CARRIER_NONCOLLISION.md).
 
@@ -210,9 +254,11 @@ stronger 11/126 margin is supplied by the [versioned correction and all-period r
 The packet also [repairs the H4 endgame](./research/independent_audits/marked_slit_path_bridge_20261123/RIGIDITY_AND_REMAINING_GAP.md)
 using hybrid uniqueness and checks the scope of current area theorems.
 These are written local results with exact arithmetic and explicit classical
-inputs. Human specialist review, full immersion KKL MARK, inner buffered
-coefficients, iterated transport, and the global H1–H4, UPTCR and MLC gates
-remain open. The selected outer-buffer exclusion is stated above.
+inputs. Human specialist review, full independent immersion KKL MARK,
+iterated transport, and the global H1–H4, UPTCR and MLC gates remain open.
+The November 24 result above determines every minimally marked canonical
+coefficient for selected p≥10: all are zero. Smaller periods and refined
+markings remain separate questions.
 
 ## November 23: actual interval rows and two different spectral clocks
 

@@ -7,6 +7,10 @@ on:
       - 'code/require_exact_head_workflows.py'
       - 'code/test_require_exact_head_workflows.py'
       - 'research/independent_audits/immersion_mark_resolution_20261124/**'
+      - 'research/independent_audits/canonical_width_attack_20261124/**'
+      - 'research/independent_audits/native_mark_attack_20261124/**'
+      - 'research/independent_audits/stationary_transport_attack_20261124/**'
+      - 'research/independent_audits/native_resolution_20261124.md'
       - 'research/independent_audits/maximal_*_20261123/**'
       - 'research/independent_audits/issue62_connector*/**'
       - 'research/independent_audits/real_primitive_tip_family*/**'
@@ -18,6 +22,10 @@ on:
       - 'code/require_exact_head_workflows.py'
       - 'code/test_require_exact_head_workflows.py'
       - 'research/independent_audits/immersion_mark_resolution_20261124/**'
+      - 'research/independent_audits/canonical_width_attack_20261124/**'
+      - 'research/independent_audits/native_mark_attack_20261124/**'
+      - 'research/independent_audits/stationary_transport_attack_20261124/**'
+      - 'research/independent_audits/native_resolution_20261124.md'
       - 'research/independent_audits/maximal_*_20261123/**'
       - 'research/independent_audits/issue62_connector*/**'
       - 'research/independent_audits/real_primitive_tip_family*/**'
@@ -51,6 +59,14 @@ jobs:
         run: python -B research/independent_audits/maximal_native_wave_20261123/verify.py
       - name: Check selected slit marking and endpoint-aware saturation
         run: python -B research/independent_audits/immersion_mark_resolution_20261124/verify.py
+      - name: Check all-class canonical buffer exclusion and exact manifest
+        run: python -B research/independent_audits/canonical_width_attack_20261124/verify.py --check-manifest
+      - name: Test canonical-width normalization and analytic dependency guards
+        run: python -B -m unittest discover -s research/independent_audits/canonical_width_attack_20261124 -p 'test_verify.py' -v
+      - name: Check source-eligible finite native action
+        run: python -B research/independent_audits/native_mark_attack_20261124/verify.py --check-manifest
+      - name: Check variable-end exit width budgets
+        run: python -B research/independent_audits/stationary_transport_attack_20261124/verify.py
       - name: Replay exact full-path width arithmetic and corrected tail
         run: python -B research/independent_audits/maximal_native_wave_20261123/verify_width.py
       - name: Check corrected large-period error arithmetic

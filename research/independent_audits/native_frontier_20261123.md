@@ -1,5 +1,12 @@
 # Native interfaces: proof repairs and the remaining stationary gate
 
+**24 November follow-up:** the [current proof packet](native_resolution_20261124.md)
+now gives complete whole-component buffered-WAD exclusion for selected
+p≥10, the unindexed component-set pullback and simple-leaf arc-support
+theorems, and variable-end stationary width bounds. This resolves the
+large-period inner-support question left open below. The all-path MARK
+audit, actual stationary exit existence, and the global gates remain open.
+
 **23 November 2026 · Review packet based on `ed64c7a`; integration review
 updated 24 November 2026.**
 
