@@ -1,22 +1,28 @@
 # Versioned Wave-gain correction: exact p=13 isolation and the uniform tail
 
-**2026-11-23. Current corrected certificate, preserving the historical
-20261116 audit.** This directory supplies the corrected tail program,
+**2026-11-23. Sharper corrected certificate; integration updated
+2026-11-24.** This directory supplies the corrected tail program,
 its regression tests, and an explicit composition with the unchanged
-finite p=3,...,12 calculations. The original
-[limiting audit](../tip_family_limiting_wave_gain_20261116/NOTE.md), its
-program/tests, and its add-only workflow remain byte-for-byte at the
-original base `ed64c7ad839dcc8b799d53379434f892fdc92a2c`. The original
-[finite aggregate](../tip_family_finite_p_wave_gain_20261116/verify.py)
-also remains unchanged; it imports that historical tail and is not the
-current all-period reproduction entrypoint.
+finite p=3,...,12 calculations. The original defective program remains
+available at the
+[historical base `ed64c7a`](https://github.com/dovvnloading/loops-research-archive/blob/ed64c7ad839dcc8b799d53379434f892fdc92a2c/research/independent_audits/tip_family_limiting_wave_gain_20261116/verify.py).
+Integration of the two November 23 packets also repairs the
+[dated limiting audit](../tip_family_limiting_wave_gain_20261116/NOTE.md)
+in place: its current program uses the full error coefficient and the
+single widest p=13 box to prove `P_p>13/20` and `D_p>40/819` for p>=13.
+Its tests and maintenance workflows have been updated accordingly.
+The unchanged [finite aggregate](../tip_family_finite_p_wave_gain_20261116/verify.py)
+now imports that repaired, weaker tail.
 
-The historical limiting program's PASS result does not validate its
-cited parameter-error enclosure. The new [verify.py](verify.py) retains
-the full coefficient and repairs the p=13 seam. The new
-[verify_all_periods.py](verify_all_periods.py) runs that corrected tail,
-then executes all ten original finite-case checks without calling either
-historical aggregate. Section 6 gives the precise composition and commands.
+The original revision's PASS did not validate its cited parameter-error
+enclosure. The [verify.py](verify.py) here uses the same corrected
+coefficient, isolates the actual p=13 parameter separately, and starts
+the uniform parent box at p=14, giving the stronger `D_p>11/126`.
+Both corrected certificates are valid and have different arithmetic
+scopes. The [verify_all_periods.py](verify_all_periods.py) here combines
+the stronger tail with all ten original finite-case checks without
+calling either dated aggregate. Section 6 gives the precise composition
+and commands.
 
 > **Arithmetic repair, 2026-11-23.** The original `model_positive_boxes`
 > implementation divided the parameter-error term `30*15246` by three,
@@ -310,9 +316,9 @@ case includes the whole physical target-domain check, source-domain
 Rouché check, strict omitted-energy saving, and reciprocal defect bound.
 The final ordered list is checked again to contain exactly ten periods.
 
-The runner does **not** call the old finite `certify()` or `main()`:
-those aggregate entrypoints always call the historical limiting
-certificate. The finite cases use only the old tail module's unchanged
+The runner does **not** call the dated finite `certify()` or `main()`:
+those aggregate entrypoints now call the corrected single-box limiting
+certificate with floor `40/819`. The finite cases use only that module's unchanged
 angle and semidisk helper formulas. Each branch keeps its own interval
 objects; there is no module monkeypatching or conversion between copies
 of the interval implementation. A routing regression makes both old
@@ -337,11 +343,12 @@ python -B research/independent_audits/tip_family_wave_gain_correction_20261123/v
 ```
 
 These commands use only the Python standard library and do not rewrite
-historical source or evidence files. The general Research validation
-workflow runs the corrected tests and combined certificate. The original
-audit-specific add-only workflows are preserved unchanged. The current
-source guide identifies this versioned audit as the corrected entrypoint;
-the old programs remain available to reproduce the historical error.
+source or evidence files. The general Research validation workflow runs
+this directory's tests and combined certificate. The audit-specific
+workflows separately check the repaired single-box route; their add-only
+creation guards now distinguish initial package creation from maintenance.
+The versioned audit is the entrypoint for the sharper bound. The exact
+historical revision linked above remains available to reproduce the error.
 
 ## Attribution and review
 

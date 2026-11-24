@@ -367,12 +367,34 @@ The puzzle families associated with every UPTCR tower have Teichmüller
 diameter at most \(T_0\) in the precisely declared marked category. If two
 quadratic parameters have identical full marked combinatorics, finite-depth
 pullback produces quasiconformal conjugacies with a universal dilatation
-bound. Compactness from UPTCR-5 supplies a limiting global quasiconformal
-conjugacy of the sphere, normalized at infinity. Every limiting Beltrami form
-is invariant, and every controlled UPTCR tower supports no invariant line
-field. Hence the limiting Beltrami form vanishes, the conjugacy is conformal,
-and comparison of coefficients in the monic centered normalization gives
-equality of parameters.
+bound. Compactness from UPTCR-5 supplies an orientation-preserving limiting
+global quasiconformal conjugacy of the sphere fixing infinity. Every
+limiting Beltrami form is invariant, and every controlled UPTCR tower
+supports no invariant line field on its physical Julia set. In the
+infinitely renormalizable quadratic case, \(K=J\); the invariant form
+therefore vanishes almost everywhere on K, giving a hybrid equivalence.
+Connected-case straightening uniqueness supplies an affine conjugacy
+between the polynomials, and monic centered normalization gives equality
+of parameters. The [hybrid-uniqueness proof and primary theorem locators](../independent_audits/marked_slit_path_bridge_20261123/RIGIDITY_AND_REMAINING_GAP.md#1-minimal-valid-replacement-for-the-h4-endgame)
+make those implications explicit. No conformality of the chosen map on
+the basin of infinity is needed for this parameter-equality conclusion.
+
+There is also a stronger sufficient route: require the limiting conjugacy
+to agree with the normalized Böttcher conjugacy on the basin of infinity.
+When \(K=J\), this supplies vanishing on the whole Fatou set; if bounded
+Fatou components are included, their conformal normalization is an
+additional premise. The Julia no-line-field input then makes the chosen
+global map conformal, hence affine. This stronger route gives the same
+parameter equality and additionally identifies the chosen map.
+
+**Support clarification (2026-11-23).** Fixing infinity, fixing three
+points, or preserving external ray angles alone does not imply
+vanishing on the Fatou set for the stronger route. The explicit Chebyshev self-conjugacy
+and the corrected terminal theorem are proved in the
+[exterior-gauge repair](../independent_audits/maximal_global_closure_20261123/EXTERIOR_GAUGE_REPAIR.md).
+That note also gives a compact-exhaustion condition preserving the
+Böttcher normalization under the limiting process. It does not prove
+the open no-line-field or uniform pullback clauses.
 
 For each infinitely renormalizable \(c\), there is in addition a nested
 sequence \(\Pi_N(c)\) of nonempty compact connected relative neighborhoods
@@ -468,11 +490,14 @@ the earlier value \(L_{p(n)}\) to be still larger, a contradiction.
 UPTCR-5 converts (7.1), together with the universal side constraints, into
 precompactness of the normalized marked tower. UPTCR-6 constructs the
 uniformly quasiconformal finite-depth pullback conjugacies and a limiting
-global normalized conjugacy. If its invariant Beltrami form were nonzero on
-a positive-measure invariant set, normalization by its modulus would give an
-invariant line field. Thus the Beltrami form vanishes. The conjugacy is
-conformal and hence affine, say \(h(z)=az+b\). Comparing coefficients in
-\(h\circ f_c=f_{c'}\circ h\) gives \(a=a^2\), \(2ab=0\), and therefore
+global conjugacy. Its invariant Beltrami form vanishes almost everywhere
+on the physical Julia set by the no-line-field premise. Since the
+quadratics here are infinitely renormalizable, \(K=J\), so this is a
+hybrid equivalence. Connected straightening uniqueness gives an affine
+conjugacy \(A(z)=az+b\) between the polynomials. Alternatively the
+stronger Fatou-conformality route makes the chosen map itself affine.
+Comparing coefficients in \(A\circ f_c=f_{c'}\circ A\) gives
+\(a=a^2\), \(2ab=0\), and therefore
 \(a=1\), \(b=0\), and \(c=c'\). Hence the full marked combinatorial fiber in
 (5.7) is \(\{c\}\).
 
@@ -506,7 +531,7 @@ the first failure and record the specified certificate.
 | UPTCR-3 | independent core/WAD dimension bounds and exact Value observability | state dimension, missing future functional, failed quotient square, or congestion ratio |
 | UPTCR-4 | complete-block routing and (5.5)--(5.6) | block word, transition matrix, chart cycle, entropy charge, error term, failed margin |
 | UPTCR-5 | sequential compactness in an explicit marked topology | escaping carrier/access or uncontrolled counter/stack subsequence |
-| UPTCR-6 | qc pullback, limiting conjugacy, no line field, connected parameter basis | finite depth, dilatation defect, limiting Beltrami form, or failed relative-neighborhood property |
+| UPTCR-6 | qc pullback, global limiting conjugacy, no Julia line field, connected hybrid uniqueness when K=J, connected parameter basis | finite depth, dilatation defect, nonzero Julia Beltrami form, failed hybrid input, or failed relative-neighborhood property; exterior/Fatou support is additionally required if the chosen map must be conformal |
 
 If the first failure is a protected-access collision, the failed raw core is
 inadmissible even in a bounded window. The state may be enlarged or retimed
@@ -532,7 +557,7 @@ not admissible.
 | neutral chart cycle | 4 | prove strict product gain in one gauge or retime the block |
 | unbounded counters or stack words | 3, 5 | prove forgetting or continuous extension to a compact end topology |
 | prime-end monodromy or non-locally-connected carrier | 1--2 | use full-carrier collars and explicit cyclic-order transport |
-| qc limit with nonzero invariant Beltrami form | 6 | stop; rigidity has failed and no singleton fiber follows |
+| qc limit with nonzero invariant Beltrami form on the Julia set | 6 | the required no-line-field premise has failed; the stated endgame cannot produce a singleton fiber |
 | bounded-type Feigenbaum or bounded satellite | all | recover the established native theorem without weakening its hypotheses |
 | KKL parabolically bounded primitive tower | 3, 4, 6 | specialize to the native KKL state and invoke Theorem B only after its beau-bound and puzzle-diameter hypotheses hold |
 

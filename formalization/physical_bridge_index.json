@@ -1074,8 +1074,8 @@
       "research/independent_audits/issue62_connector_words_20261116/verify_connector_words.py",
       "research/independent_audits/issue62_landing_angle_bound_20261123/verify.py",
       "research/independent_audits/issue62_octal_reconstruction_20261123/verify.py",
-      "research/independent_audits/issue62_physical_connector_reconstruction_20261123/verify.py",
       "research/independent_audits/issue62_physical_connector_reconstruction_20261123/test_verify.py",
+      "research/independent_audits/issue62_physical_connector_reconstruction_20261123/verify.py",
       "research/mlc_unified/validate_canonical_kl_geometric_trace_proper_end_response.py",
       "research/mlc_unified/validate_canonical_kl_restricted_interface_classification.py",
       "research/mlc_unified/validate_canonical_resolution_kl_tile_correspondence_no_go.py",
@@ -1568,6 +1568,22 @@
     "guide": "formalization/PHYSICAL_BRIDGES_CONTRACTS.md#parameter-capacity",
     "checks": [
       "research/independent_audits/parameter_capacity_increment_20261123/verify.py"
+    ]
+  },
+  "native-frontier": {
+    "guide": "formalization/PHYSICAL_BRIDGES_CONTRACTS.md#native-frontier",
+    "checks": [
+      "research/independent_audits/maximal_global_closure_20261123/verify_cutpoint_pruning.py",
+      "research/independent_audits/maximal_global_closure_20261123/verify_exterior_gauge.py",
+      "research/independent_audits/maximal_native_wave_20261123/verify.py",
+      "research/independent_audits/maximal_native_wave_20261123/verify_width.py",
+      "research/independent_audits/maximal_root_landing_20261123/verify.py"
+    ],
+    "obligations": [
+      "KKL_STATIONARY_FINAL_FIXED_COMPONENT_EXIT",
+      "KKL_STATIONARY_FINAL_PASS_THROUGH_PATH_EXTRACTION",
+      "KKL_STATIONARY_TWO_SIDED_WAVE_NONCOLLISION",
+      "H4_RIGIDITY"
     ]
   }
 }

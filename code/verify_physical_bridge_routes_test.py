@@ -70,6 +70,26 @@ class DependencyPromotionTests(unittest.TestCase):
     def test_current_archive_routes_keep_their_declared_statuses(self):
         check_dependencies(read_register())
 
+    def test_native_saturation_retains_geometric_trace_identification(self):
+        # Temporal-component properness does not prove the unique-restriction
+        # premise. Keep the native conclusion behind that actual open gate.
+        routes = read_register()
+        self.assertEqual(routes["MARK"][0], "open")
+        self.assertEqual(routes["CONTOUR-ESCAPE"][0], "written")
+        self.assertEqual(routes["SELECTED-ESCAPE"][0], "conditional")
+        self.assertIn("MARK", routes["SELECTED-ESCAPE"][1])
+        self.assertIn("CONTOUR-ESCAPE", routes["SELECTED-ESCAPE"][1])
+
+    def test_independent_widths_use_intrinsic_classes_without_full_mark(self):
+        # The independent variational problem has no immersion operation.
+        # Retain the proved route while the geometric-trace gate stays open.
+        routes = read_register()
+        for key in ("ALL-PATHS", "GAIN"):
+            self.assertEqual(routes[key][0], "written")
+            self.assertIn("SLIT-CLASSES", routes[key][1])
+            self.assertNotIn("MARK", routes[key][1])
+        check_dependencies(routes)
+
 
 if __name__ == "__main__":
     unittest.main()

@@ -27,6 +27,19 @@ and [four-boundary collar bound at \(p=3\)](../canonical_wad_quadrilateral_modul
 The finite verifier imports those **existing** exact selected-root and
 all-period chart checks read-only; no old file is changed.
 
+### 23 November 2026: matched outer-class application
+
+The [new peripheral-cover proof](../maximal_native_wave_20261123/OUTER_BUFFER_EXCLUSION.md)
+supplies the physical interpretation for this note's selected outer
+exclusion: the actual four-boundary surface, primitive collar lift,
+cyclic modulus convention, every incident quadrilateral including outer
+self-classes, and the exact elliptic threshold are matched explicitly.
+Thus the outer coefficients vanish for selected \(p\ge11\) from the
+stated physical package and existing exact collar estimates. The generic
+formula and numerical collars are credited to this original note.
+Individual inner coefficients, positive support and amplification remain
+separate. The new argument is written and awaits human specialist review.
+
 ## 1. Source-faithful surface and the class set
 
 For the *selected* primitive parameter of each integer \(p\ge3\),
@@ -303,7 +316,7 @@ published dynamical/prime-end and geometric theorems, the **unbuffered**
 A.1 independent-supremum result
 \[
 D_p=1/C_p^++1/C_p^--1/P_p>1/100\quad(p\ge3),
-\qquad D_p>11/126\quad(p\ge13).
+\qquad D_p>40/819\quad(p\ge13).
 \]
 Here \(P_p\) is a supremum of parent Waves on the *tree annulus*
 \(\Omega_p\) with ten-atom marking, and \(C_p^\pm\) are **independent**

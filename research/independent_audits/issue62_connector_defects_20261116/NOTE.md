@@ -4,6 +4,27 @@
 
 **Trust boundary.** Rational inequalities and finite free-word controls in this note are checked exactly by the new Python verifier; the all-integer sector implications are proved below. KL original source prime ends, Carathéodory landing, Kahn's fine root chart, the real Jordan wake obstruction and native proper escape are *imported written analytic inputs*, **not certified by Python or Lean**. All require independent specialist review before claiming analytic closure or novelty.
 
+**2026-11-23 construction correction.** The single-root,
+coarse-exterior-only connector requirement in §3 cannot realize the
+prescribed native lifts for all rows. The
+[two-component consequence of the C4 obstruction](../maximal_root_landing_20261123/NOTE.md)
+proves that 44 of the 88 rows are unreachable with that requirement,
+including four rows whose native lifts are rooted. Original KL paths may
+instead use a prefix in W; alternatively two starting fine sheets are
+necessary and sufficient for the four native tile images. The existing
+source census, native 8/80 classification, and null crossing words remain
+as recorded. A coarse path to the same downstairs endpoint cannot inherit
+a native lift's classification unless its path class realizes that lift.
+
+**Current reading, 24 November 2026.** The opening zero-word status and
+null manifest fields describe this dated audit. The separate
+[physical reconstruction](../issue62_physical_connector_reconstruction_20261123/NOTE.md)
+uses allowed W prefixes and a newly specified compatible ray-cut basis to
+compute all 88 ordered words, with eight rooted and 80 nonroot. It also
+gives the all-root-angle, all-integer formula. That result does not supply
+the impossible single-sheet coarse-only connectors or recover unspecified
+historical whiskers; the original census remains unchanged.
+
 ## 1. The actual source ideal domain and three physical landing types
 
 The stage is the ordinary `G=f³` Kahn–Lyubich `W=Y_G⁶` pseudo-piece `Ψ_G(W)`, with a **physical G carrier** and four distinct annular universal-cover tiles, as in KL II ``3.2.1–3.2.4 and Lemmas 3.3–3.4. The fine physical target has `K9=D_(0,0)⊂K3`, while `D_(0,1)` and `D_(0,2)` are removed fine obstacles within the coarse root. The fine uncompactified canonical localization is `π9:T̂9→T9`, `Ω9=T9\K9`.
@@ -142,7 +163,7 @@ The checker re-reads original `results/tip_kl_side_atlas.json`, the source exact
 
 The dedicated new workflow `.github/workflows/issue62-connector-defects.yml` runs this verifier and the independent prior PR #60/#63–67 regressions plus the registered Lean suite and the new discrete file. No README, research map, ledger, older file, Lakefile or other existing file is altered.
 
-**Issue #62 acceptance status**: (1) genuine source subset typed by (1), with eight authenticated root angles and exact 88 J witnesses, **conditional** on imported landing/sector completeness; (2) KL source path equivalence and comparison defined with correct carriers/basepoint/monodromy, all-integer based-prefix groupoid law (5) proved, but **full original KL-prescribed connector words remain UNCOMPUTED**; (3) every instance in the certified eight-angle finite J cohort classified by the **previous written analytic source theorem**, newly cross-classified against actual W→V proper-tail vs collapse status; (4) complete source-KKL proof-used proper-restriction groupoid and all other source-defined based F9 words **OPEN**. H1–H4, UPTCR, MLC and the original 465-entry ledger remain **OPEN**. Independently verified specialist correctness/novelty has not been established.
+**Historical Issue #62 acceptance status (16 November 2026)**: (1) genuine source subset typed by (1), with eight authenticated root angles and exact 88 J witnesses, **conditional** on imported landing/sector completeness; (2) KL source path equivalence and comparison defined with correct carriers/basepoint/monodromy, all-integer based-prefix groupoid law (5) proved, but **full original KL-prescribed connector words remain UNCOMPUTED**; (3) every instance in the certified eight-angle finite J cohort classified by the **previous written analytic source theorem**, newly cross-classified against actual W→V proper-tail vs collapse status; (4) complete source-KKL proof-used proper-restriction groupoid and all other source-defined based F9 words **OPEN**. H1–H4, UPTCR, MLC and the original 465-entry ledger remain **OPEN**. Independently verified specialist correctness/novelty has not been established.
 
 ### Primary source and archive provenance
 

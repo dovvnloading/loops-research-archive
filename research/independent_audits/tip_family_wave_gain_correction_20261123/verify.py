@@ -1,7 +1,8 @@
 #!/usr/bin/env python3
 """Versioned repair of the limiting and p>=13 independent Wave gain certificate.
 
-The 20261116 audit remains an unchanged historical artifact.  This verifier
+The original 20261116 audit is retained in git history; its current entrypoint
+also repairs the coefficient, using the weaker single-box tail. This verifier
 retains the full cited parameter-error coefficient, isolates the actual p=13
 tip separately, and starts the uniform parent box at p=14.  The intrinsic
 path and conformal arguments are in NOTE.md and the selected-slit proof

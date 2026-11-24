@@ -372,8 +372,8 @@ are
  P_p&>581/1000,& C_p&<247/250,&
  D_p&>43500/143507>3/10\quad (5\le p\le12),
  \nonumber\\
- P_p&>2/3,& C_p&<63/50,&
- D_p&>11/126>1/100\quad (p\ge13).\nonumber
+ P_p&>13/20,& C_p&<63/50,&
+ D_p&>40/819>1/100\quad (p\ge13).\nonumber
 \end{align}
 These are strict inequalities for the
 \emph{full} marked A.1 suprema;
@@ -510,7 +510,22 @@ box.  Exact evaluation of
 \eqref{eq:semidiskmod}
 therefore proves the
 \emph{all-period} strict
-embedded width $P_p>2/3$.
+embedded width $P_p>13/20$.
+\emph{Correction of 2026-11-23:} the original arithmetic implementation
+divided the entire sum $30\cdot15246+88(4^j-1)$ by $3$, whereas only
+the second summand carries that denominator.  The corrected full
+$p=13$ cut box certifies the stated $13/20$ floor.  The strict
+$1/100$ defect conclusion survives with the corrected $40/819$
+tail constant.
+\emph{Integration note, 24 November 2026.}
+The separate
+\href{https://github.com/dovvnloading/loops-research-archive/blob/main/research/independent_audits/tip_family_wave_gain_correction_20261123/NOTE.md}{versioned Wave-gain correction},
+Section~4, isolates the actual $p=13$ parameter and starts its uniform
+box at $p=14$. It proves the stronger $P_p>2/3$, hence
+$D_p>11/126$, for every $p\ge13$ with the same full error coefficient.
+Both certificates coexist; the single widest box in this argument
+proves the displayed $40/819$ margin. Their physical interpretation
+still requires the stated analytic class and metric arguments.
 The embedding, injectivity,
 correct homotopy and
 physical gate are checked
@@ -650,7 +665,7 @@ Substitution yields
 \[
  \frac2{247/250}-\frac1{581/1000}
   =\frac{43500}{143507},\quad
- \frac2{63/50}-\frac1{2/3}=\frac{11}{126}.
+ \frac2{63/50}-\frac1{13/20}=\frac{40}{819}.
 \]
 Each is strictly greater than the
 claimed threshold.  All three

@@ -163,11 +163,11 @@ def check_physical_cut_order(finite, rows: list[dict]) -> None:
                 f"p={p}: selected physical inverse cuts cross")
 
 
-def check_tail_floor(parent: F = F(2, 3),
+def check_tail_floor(parent: F = F(13, 20),
                      child: F = F(63, 50)) -> F:
     require(parent > 0 and child > 0, "nonpositive tail data")
     defect = F(2)/child - F(1)/parent
-    require(defect == F(11, 126) and defect > F(1, 100),
+    require(defect == F(40, 819) and defect > F(1, 100),
             "p>=13 rational tail gain does not imply finite bound")
     return defect
 
@@ -209,9 +209,9 @@ def run() -> None:
         "tip_family_finite_p_wave_gain_20261116", "m_discharge_finite")
     check_finite_report(finite.certify())
     check_physical_cut_order(finite, old["periods"])
-    require(finite.lim.PARENT_TAIL_FLOOR == F(2, 3) and
+    require(finite.lim.PARENT_TAIL_FLOOR == F(13, 20) and
             finite.lim.CHILD_TAIL_CEILING == F(63, 50) and
-            finite.lim.TAIL_GAIN_FLOOR == F(11, 126),
+            finite.lim.TAIL_GAIN_FLOOR == F(40, 819),
             "all-p normalized chart constants changed")
     print("PASS: physical p3..12 charts + p>=13 chart, strict gain floors; "
           "KKL prime ends/A.1/conformal embeddings require the cited "

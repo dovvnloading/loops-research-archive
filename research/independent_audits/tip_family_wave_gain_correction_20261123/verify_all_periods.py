@@ -1,10 +1,11 @@
 #!/usr/bin/env python3
 """Compose the corrected tail with the unchanged ten finite-period checks.
 
-The historical finite aggregate calls its historical limiting aggregate and
-therefore retains the under-enclosure documented in NOTE.md.  This runner
-does not call either historical aggregate.  It explicitly runs the repaired
-tail and the ten original finite_case checks, preserving their input gates.
+The dated finite aggregate now calls the repaired single-box limiting
+aggregate, whose tail floor is 40/819. This runner separately retains the
+stronger 11/126 route: actual p=13 isolation followed by the uniform p>=14
+box. It calls the ten original finite_case checks directly, preserving
+their input gates, without invoking either dated aggregate.
 Each branch uses its own interval implementation; no monkeypatching or
 cross-module interval-object conversion is used.
 """
@@ -73,7 +74,7 @@ def main() -> None:
     print(f'PASS: repaired p>=13 defect floor {tail["all_p_defect_strict_floor"]}.')
     print("PASS: all p>=3 independent defect >1/100; ten finite cases, "
           "actual p=13 isolation, and corrected uniform tail from p=14.")
-    print("Neither the historical limiting nor finite aggregate was used. Analytic interpretation and "
+    print("Neither dated aggregate was used; the sharper split tail was checked directly. Analytic interpretation and "
           "the open full immersion-marking obligation are stated in NOTE.md.")
 
 

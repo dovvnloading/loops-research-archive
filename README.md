@@ -18,7 +18,7 @@ Research direction, synthesis, authorship, and public stewardship
 [**Reproduce results**](#reproduce-the-central-results) ·
 [**Contribute / review**](./CONTRIBUTING.md)
 
-**README updated 2026-11-23** · **Manuscript and ledger source lock 2026-07-27**
+**README updated 2026-11-24** · **Manuscript and ledger source lock 2026-07-27**
 
 </div>
 
@@ -26,6 +26,49 @@ Research direction, synthesis, authorship, and public stewardship
 > **The Mandelbrot Local Connectivity conjecture (MLC) remains open.** This repository contains finite and structural theorems, source audits, computational certificates, a conditional marked-width reduction, and open proof obligations. The November 2026 two-scale examples and Lean checks do **not** constitute a proof of MLC or a compatible all-scale Kahn–Lyubich marked construction.
 
 **On this page:** [November research](#november-1516-2026-research-integration-merged-prs-72100) · [Results and original figures](#research-results-you-can-inspect) · [Mathematical program](#the-mathematical-program) · [Companion papers](#three-companion-papers) · [3/9 testbed](#the-november-2026-two-scale-testbed) · [Reproduce](#reproduce-the-central-results) · [Evidence ledger](#source-locked-evidence-ledger) · [Open problems](#the-open-frontier)
+
+## November 24: reconciled native-interface proofs and arithmetic
+
+The [native-interface review packet](./research/independent_audits/native_frontier_20261123.md)
+adds the selected real family's analytic source-boundary proof and intrinsic
+ideal atlas, full-path width comparisons, stationary exit estimates, and
+connector and rigidity repairs. These written arguments use the cited
+physical restriction and signed-chart estimates. Human specialist review
+remains outstanding.
+
+**Full immersion MARK remains open.** Proper temporal intersection components
+do not establish uniqueness among all proper paths in the geometric inverse
+trace. The selected five-step and positive-subarc saturation results apply
+to the explicit contour-code action; their native interpretation requires
+the missing identification. Independent parent and child widths use the
+intrinsic classes and do not consume that open premise.
+
+Both repairs of the misplaced division by three are retained:
+
+| Corrected certificate for p≥13 | Parent lower bound | Independent defect |
+|---|---|---|
+| One uniform widest box, including p=13 | P_p > 13/20 | D_p > 40/819 > 1/100 |
+| Actual p=13 isolation, then uniform boxes from p=14 | P_p > 2/3 | D_p > 11/126 > 1/100 |
+
+The child bound is C_p < 63/50 in both routes. The original erroneous
+certificate is superseded; the stronger numerical conclusion is recovered
+by the separate split proof. The finite-period and limiting-model bounds
+are unchanged, and the all-period D_p > 1/100 conclusion survives.
+[Widest-box proof](./research/independent_audits/maximal_native_wave_20261123/H3_WIDTH.md)
+· [Sharper split certificate](./research/independent_audits/tip_family_wave_gain_correction_20261123/NOTE.md)
+
+The [matched outer-buffer proof](./research/independent_audits/maximal_native_wave_20261123/OUTER_BUFFER_EXCLUSION.md)
+gives zero for every outer-incident canonical buffered coefficient on the
+selected four-boundary surface for p≥11, including essential outer
+self-classes. Inner coefficients remain undetermined. The stationary work
+also gives [ideal properness of maximal annular restrictions](./research/independent_audits/maximal_global_closure_20261123/ANNULAR_RESTRICTION_PROPERNESS.md)
+under its full-carrier hypotheses and [conditional noncollision](./research/independent_audits/maximal_global_closure_20261123/CONNECTED_CARRIER_NONCOLLISION.md).
+
+Actual pass-through at the two valid final stationary indices implies
+W(A_(b+2)) ≤ 2 W(RF); proving that pass-through for native retained Waves
+remains open. The general construction, calibration, compactness and
+rigidity gates retain their open status. The 465 source-locked July
+obligations are unchanged.
 
 ## Research results you can inspect
 
@@ -160,14 +203,16 @@ interval, the old broad p=13 box does not certify its stated 2/3 floor.
 An exact certificate for the actual p=13 parameter, followed by the corrected
 uniform box from p=14 onward, preserves the claimed bound. New regressions
 check those inputs against the independently implemented upstream estimates.
-The dated November 16 audit remains intact; its tail PASS is superseded by
-the [versioned correction and all-period runner](./research/independent_audits/tip_family_wave_gain_correction_20261123/NOTE.md).
+The original November 16 revision remains in Git history. Its dated
+executable is now repaired to the weaker uniform 40/819 margin, while the
+stronger 11/126 margin is supplied by the [versioned correction and all-period runner](./research/independent_audits/tip_family_wave_gain_correction_20261123/NOTE.md).
 
 The packet also [repairs the H4 endgame](./research/independent_audits/marked_slit_path_bridge_20261123/RIGIDITY_AND_REMAINING_GAP.md)
 using hybrid uniqueness and checks the scope of current area theorems.
 These are written local results with exact arithmetic and explicit classical
-inputs. Human specialist review, general KKL MARK, buffered and iterated
-transport, and the global H1–H4, UPTCR and MLC gates remain open.
+inputs. Human specialist review, full immersion KKL MARK, inner buffered
+coefficients, iterated transport, and the global H1–H4, UPTCR and MLC gates
+remain open. The selected outer-buffer exclusion is stated above.
 
 ## November 23: actual interval rows and two different spectral clocks
 
@@ -319,8 +364,8 @@ The [model-to-physical proof register](./formalization/PHYSICAL_BRIDGES.md) reco
 | [#84](https://github.com/dovvnloading/loops-research-archive/pull/84) Four-push p=3..8 crest-collar grid | **Finite certificate; conditional physical Wave** — Strict whole-bin interval collars for selected four-push crests, not an all-period or unrestricted Wave transport law. | [Note](./research/independent_audits/crest_transport_tip_family_20261116/NOTE.md) · [Verifier](./research/independent_audits/crest_transport_tip_family_20261116/verify.py) |
 | [#89](https://github.com/dovvnloading/loops-research-archive/pull/89) Connected crest collars p=3..16 | **Finite certificate; numerical-only limit** — Full maximal connected collars within the stated circular family are certified; c_infinity approximately 0.347005 is only a numerical conjecture. | [Note](./research/independent_audits/crest_transport_asymptotics_20261116/NOTE.md) · [Verifier](./research/independent_audits/crest_transport_asymptotics_20261116/verify.py) |
 | [#94](https://github.com/dovvnloading/loops-research-archive/pull/94) Pairable-wave serial loss | **Conditional leafwise serial inequality** — Loss or equality applies to a designated pair with a restriction from each child in every parent leaf and injectivity on their union (KKL Lemma A.11). | [Note](./research/independent_audits/tip_family_canonical_wave_gain_20261116/NOTE.md) · [Verifier](./research/independent_audits/tip_family_canonical_wave_gain_20261116/verify.py) |
-| [#97](https://github.com/dovvnloading/loops-research-archive/pull/97) Strict limiting and p>=13 unbuffered Wave gain | **Archived scope:** **Conditional on v2 H1–H3** — The rational comparisons give D_p>11/126 for p>=13 and 0.696<D_infinity<0.793 for the limiting model. The physical interpretation requires the full marked path comparison. **Current correction:** the historical parameter-error radius is too narrow; its tail PASS is superseded by the [November 23 correction](./research/independent_audits/tip_family_wave_gain_correction_20261123/NOTE.md), using actual p=13 isolation and corrected boxes from p=14. | [Note](./research/independent_audits/tip_family_limiting_wave_gain_20261116/NOTE.md) · [Verifier](./research/independent_audits/tip_family_limiting_wave_gain_20261116/verify.py) |
-| [#100](https://github.com/dovvnloading/loops-research-archive/pull/100) Strict independent unbuffered Wave gain for all p | **Archived scope:** **Conditional on v2 H1–H3** — For independently optimized unbuffered widths the four period bounds give D_p>1/100 for every p>=3 once the marked parent witnesses and all-child upper metrics are established. **Current correction:** its finite p=3..12 calculations are retained, but its aggregate runner invokes the defective historical tail. Use the [current all-period runner](./research/independent_audits/tip_family_wave_gain_correction_20261123/verify_all_periods.py) and the November 23 physical proof. | [Note](./research/independent_audits/tip_family_finite_p_wave_gain_20261116/NOTE.md) · [Verifier](./research/independent_audits/tip_family_finite_p_wave_gain_20261116/verify.py) |
+| [#97](https://github.com/dovvnloading/loops-research-archive/pull/97) Strict limiting and p>=13 unbuffered Wave gain | **Archived scope:** **Conditional on v2 H1–H3** — The corrected rational comparisons give D_p>40/819 for p>=13 and 0.696<D_infinity<0.793 for the limiting model. The physical interpretation requires the full marked path comparison. **Current correction:** the original parameter-error radius was too narrow. The repaired dated verifier proves D_p>40/819 from one uniform box; the [separate split certificate](./research/independent_audits/tip_family_wave_gain_correction_20261123/NOTE.md) recovers D_p>11/126 using actual p=13 isolation and corrected boxes from p=14. | [Note](./research/independent_audits/tip_family_limiting_wave_gain_20261116/NOTE.md) · [Verifier](./research/independent_audits/tip_family_limiting_wave_gain_20261116/verify.py) |
+| [#100](https://github.com/dovvnloading/loops-research-archive/pull/100) Strict independent unbuffered Wave gain for all p | **Archived scope:** **Conditional on v2 H1–H3** — For independently optimized unbuffered widths the four period bounds give D_p>1/100 for every p>=3 once the marked parent witnesses and all-child upper metrics are established. **Current correction:** its finite p=3..12 calculations are retained and its aggregate now invokes the repaired 40/819 tail. The [separate all-period runner](./research/independent_audits/tip_family_wave_gain_correction_20261123/verify_all_periods.py) uses the stronger split tail; both support the intrinsic November 23 physical width proof. | [Note](./research/independent_audits/tip_family_finite_p_wave_gain_20261116/NOTE.md) · [Verifier](./research/independent_audits/tip_family_finite_p_wave_gain_20261116/verify.py) |
 
 ### Renormalization depth and marked QC
 

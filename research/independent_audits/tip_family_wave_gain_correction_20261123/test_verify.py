@@ -102,6 +102,22 @@ class LimitingGainTests(unittest.TestCase):
         width = a.parent_semidisk_width(full[1], full[2], full[5], full[3])
         self.assertGreater(width.low(), a.PARENT_TAIL_FLOOR)
 
+    def test_integrated_tail_routes_use_the_same_complete_error(self):
+        # Integration retains two independent certificates: the dated route
+        # uses one box from p=13, while this route isolates p=13 and starts
+        # its common box at p=14. Neither may restore the former smaller error.
+        broad = runner.finite.lim
+        _, broad_orbit = broad.v.isolate_model()
+        for period in (13, 14, 64):
+            current_boxes = a.model_positive_boxes(period, self.orbit)
+            broad_boxes = broad.model_positive_boxes(period, broad_orbit)
+            for j in (1, 2, 3, 5):
+                self.assertEqual(current_boxes[j].low(), broad_boxes[j].low())
+                self.assertEqual(current_boxes[j].high(), broad_boxes[j].high())
+        self.assertEqual(broad.PARENT_TAIL_FLOOR, F(13, 20))
+        self.assertEqual(broad.TAIL_GAIN_FLOOR, F(40, 819))
+        self.assertGreater(a.TAIL_GAIN_FLOOR, broad.TAIL_GAIN_FLOOR)
+
     def test_disk_competitor_and_strip_not_confused(self):
         x = self.x
         w_disk = a.parent_semidisk_width(
@@ -118,9 +134,9 @@ class LimitingGainTests(unittest.TestCase):
         self.assertGreater(result["all_p_parent_disk_lower"].low(), F(2, 3))
 
     def test_all_periods_composes_corrected_tail_without_historical_aggregates(self):
-        # The failure being prevented is concrete: the old finite aggregate
-        # always calls the defective historical tail.  This test checks the
-        # replacement entrypoint while avoiding a duplicate expensive finite
+        # The dated finite aggregate calls the weaker single-box tail.
+        # This regression keeps the sharper certificate's explicit routing
+        # while avoiding a duplicate expensive finite
         # arithmetic run (the runner executes that arithmetic separately).
         tail = object()
         fail_legacy = AssertionError("historical aggregate must not run")

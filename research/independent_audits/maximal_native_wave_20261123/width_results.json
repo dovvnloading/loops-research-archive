@@ -1,0 +1,512 @@
+{
+  "all_selected_periods_defect_strict_floor": "1/100",
+  "finite": [
+    {
+      "child_actual_upper_strict_1e-6": [
+        973217,
+        973220
+      ],
+      "child_plane_upper_strict_1e-6": [
+        973218,
+        973221
+      ],
+      "construction": "right-circular-segment",
+      "defect_strict_lower_1e-6": [
+        16287,
+        16290
+      ],
+      "p": 3,
+      "parent_competitor_strict_1e-6": [
+        490496,
+        490499
+      ],
+      "parent_entire_domain_gate_margin": {
+        "decimal_denominator": 1000000000,
+        "strict_decimal_endpoints": [
+          10718666,
+          10718669
+        ]
+      },
+      "proved_D_gt": "1/100",
+      "proved_child_lt": "487/500",
+      "proved_parent_gt": "49/100",
+      "source_angle_gap_product": {
+        "decimal_denominator": 1000000000,
+        "strict_decimal_endpoints": [
+          97656481,
+          97656484
+        ]
+      },
+      "source_missing_energy_strict_lower": "163669920461143255680531187210688468596311985396254488868627098578050079090983674246319564338704834238446314954277132774026755231670725449022578630231827/64384293679584351272154468041384473104155914670484672999828542052751910872413172582602600379797470259767532983011506016199726145262967428882774382527215828992",
+      "source_missing_energy_uniform_floor": "1/5000000",
+      "source_omitted_box_start": 2,
+      "source_rouche_strict_margin": {
+        "decimal_denominator": 1000000000,
+        "strict_decimal_endpoints": [
+          127132475,
+          127132478
+        ]
+      }
+    },
+    {
+      "child_actual_upper_strict_1e-6": [
+        984362,
+        984365
+      ],
+      "child_plane_upper_strict_1e-6": [
+        984362,
+        984365
+      ],
+      "construction": "right-circular-segment",
+      "defect_strict_lower_1e-6": [
+        75568,
+        75571
+      ],
+      "p": 4,
+      "parent_competitor_strict_1e-6": [
+        511193,
+        511196
+      ],
+      "parent_entire_domain_gate_margin": {
+        "decimal_denominator": 1000000000,
+        "strict_decimal_endpoints": [
+          25614859,
+          25614862
+        ]
+      },
+      "proved_D_gt": "7/100",
+      "proved_child_lt": "197/200",
+      "proved_parent_gt": "511/1000",
+      "source_angle_gap_product": {
+        "decimal_denominator": 1000000000,
+        "strict_decimal_endpoints": [
+          100469285,
+          100469288
+        ]
+      },
+      "source_missing_energy_strict_lower": "1347072900455335637012068948099843057927620925135416040680729375668263565232506692471040072117999500144537313369105597777427842426335585393532649602379385/515074349436674810177235744331075784833247317363877383998628336422015286979305380660820803038379762078140263864092048129597809162103739431062195060217726631936",
+      "source_missing_energy_uniform_floor": "1/5000000",
+      "source_omitted_box_start": 2,
+      "source_rouche_strict_margin": {
+        "decimal_denominator": 1000000000,
+        "strict_decimal_endpoints": [
+          45097575,
+          45097578
+        ]
+      }
+    },
+    {
+      "child_actual_upper_strict_1e-6": [
+        986852,
+        986855
+      ],
+      "child_plane_upper_strict_1e-6": [
+        986852,
+        986855
+      ],
+      "construction": "right-semidisk",
+      "defect_strict_lower_1e-6": [
+        306525,
+        306528
+      ],
+      "p": 5,
+      "parent_competitor_strict_1e-6": [
+        581354,
+        581357
+      ],
+      "parent_entire_domain_gate_margin": {
+        "decimal_denominator": 1000000000,
+        "strict_decimal_endpoints": [
+          1415093310,
+          1415093313
+        ]
+      },
+      "proved_D_gt": "3/10",
+      "proved_child_lt": "247/250",
+      "proved_parent_gt": "581/1000",
+      "source_angle_gap_product": {
+        "decimal_denominator": 1000000000,
+        "strict_decimal_endpoints": [
+          101083159,
+          101083162
+        ]
+      },
+      "source_missing_energy_strict_lower": "677651800061555989623098786235764545880394462671660317463568473607527607010152794242355722430300098758790975915112589270582321516919677481046327524418387/257537174718337405088617872165537892416623658681938691999314168211007643489652690330410401519189881039070131932046024064798904581051869715531097530108863315968",
+      "source_missing_energy_uniform_floor": "1/5000000",
+      "source_omitted_box_start": 2,
+      "source_rouche_strict_margin": {
+        "decimal_denominator": 1000000000,
+        "strict_decimal_endpoints": [
+          111785450,
+          111785453
+        ]
+      }
+    },
+    {
+      "child_actual_upper_strict_1e-6": [
+        987449,
+        987452
+      ],
+      "child_plane_upper_strict_1e-6": [
+        987450,
+        987453
+      ],
+      "construction": "right-semidisk",
+      "defect_strict_lower_1e-6": [
+        306349,
+        306352
+      ],
+      "p": 6,
+      "parent_competitor_strict_1e-6": [
+        581710,
+        581713
+      ],
+      "parent_entire_domain_gate_margin": {
+        "decimal_denominator": 1000000000,
+        "strict_decimal_endpoints": [
+          6526028443,
+          6526028446
+        ]
+      },
+      "proved_D_gt": "3/10",
+      "proved_child_lt": "247/250",
+      "proved_parent_gt": "581/1000",
+      "source_angle_gap_product": {
+        "decimal_denominator": 1000000000,
+        "strict_decimal_endpoints": [
+          101229648,
+          101229651
+        ]
+      },
+      "source_missing_energy_strict_lower": "1357267700582452009336769307094947050411691820942828829182517726315486009551389032999263497585851975627516880060273732653451273700877820303741008826894259/878694100496718043517683302282418331810487718418343092402491322775749527474899974671687634004666183037093927858109549828751614463963730408009475621262727315456",
+      "source_missing_energy_uniform_floor": "1/5000000",
+      "source_omitted_box_start": 3,
+      "source_rouche_strict_margin": {
+        "decimal_denominator": 1000000000,
+        "strict_decimal_endpoints": [
+          136374919,
+          136374922
+        ]
+      }
+    },
+    {
+      "child_actual_upper_strict_1e-6": [
+        987597,
+        987600
+      ],
+      "child_plane_upper_strict_1e-6": [
+        987597,
+        987600
+      ],
+      "construction": "right-semidisk",
+      "defect_strict_lower_1e-6": [
+        306306,
+        306309
+      ],
+      "p": 7,
+      "parent_competitor_strict_1e-6": [
+        581797,
+        581800
+      ],
+      "parent_entire_domain_gate_margin": {
+        "decimal_denominator": 1000000000,
+        "strict_decimal_endpoints": [
+          16722067280,
+          16722067283
+        ]
+      },
+      "proved_D_gt": "3/10",
+      "proved_child_lt": "247/250",
+      "proved_parent_gt": "581/1000",
+      "source_angle_gap_product": {
+        "decimal_denominator": 1000000000,
+        "strict_decimal_endpoints": [
+          101265762,
+          101265765
+        ]
+      },
+      "source_missing_energy_strict_lower": "678875954030582273901581805225881199443949178120101379603120260720579707202322255769264055935871042108766379063555362789116223896062470699582985027332579/703749022626827036562441424105828451539136953191253543609954293058067950410500333718376778162184427112594392172492279837211833801033451563348409369031342030848",
+      "source_missing_energy_uniform_floor": "1/5000000",
+      "source_omitted_box_start": 4,
+      "source_rouche_strict_margin": {
+        "decimal_denominator": 1000000000,
+        "strict_decimal_endpoints": [
+          146481416,
+          146481419
+        ]
+      }
+    },
+    {
+      "child_actual_upper_strict_1e-6": [
+        987634,
+        987637
+      ],
+      "child_plane_upper_strict_1e-6": [
+        987634,
+        987637
+      ],
+      "construction": "right-semidisk",
+      "defect_strict_lower_1e-6": [
+        306295,
+        306298
+      ],
+      "p": 8,
+      "parent_competitor_strict_1e-6": [
+        581819,
+        581822
+      ],
+      "parent_entire_domain_gate_margin": {
+        "decimal_denominator": 1000000000,
+        "strict_decimal_endpoints": [
+          37100011188,
+          37100011191
+        ]
+      },
+      "proved_D_gt": "3/10",
+      "proved_child_lt": "247/250",
+      "proved_parent_gt": "581/1000",
+      "source_angle_gap_product": {
+        "decimal_denominator": 1000000000,
+        "strict_decimal_endpoints": [
+          101274754,
+          101274757
+        ]
+      },
+      "source_missing_energy_strict_lower": "452624156593652568015189398116927455805035061394593587197245032753864532774007118636881186549788370038578389145591342858192174129521054539460364894527075/469166015084551357708294282737218967692757968794169029073302862038711966940333555812251185441456284741729594781661519891474555867355634375565606246020894687232",
+      "source_missing_energy_uniform_floor": "1/5000000",
+      "source_omitted_box_start": 4,
+      "source_rouche_strict_margin": {
+        "decimal_denominator": 1000000000,
+        "strict_decimal_endpoints": [
+          150976956,
+          150976959
+        ]
+      }
+    },
+    {
+      "child_actual_upper_strict_1e-6": [
+        987643,
+        987646
+      ],
+      "child_plane_upper_strict_1e-6": [
+        987643,
+        987646
+      ],
+      "construction": "right-semidisk",
+      "defect_strict_lower_1e-6": [
+        306293,
+        306296
+      ],
+      "p": 9,
+      "parent_competitor_strict_1e-6": [
+        581825,
+        581828
+      ],
+      "parent_entire_domain_gate_margin": {
+        "decimal_denominator": 1000000000,
+        "strict_decimal_endpoints": [
+          77847377763,
+          77847377766
+        ]
+      },
+      "proved_D_gt": "3/10",
+      "proved_child_lt": "247/250",
+      "proved_parent_gt": "581/1000",
+      "source_angle_gap_product": {
+        "decimal_denominator": 1000000000,
+        "strict_decimal_endpoints": [
+          101276999,
+          101277002
+        ]
+      },
+      "source_missing_energy_strict_lower": "1357902575427374342370828618913178637626571105476451126099037049011189445754323678336360877165052377583094608844183018098811780578556309233383108286119233/2145249268790815535931843999712935380396698531294782940435769830995482244811767516288299887706704548430405097309837768136600621249911451191429383840973455360000",
+      "source_missing_energy_uniform_floor": "1/5000000",
+      "source_omitted_box_start": 5,
+      "source_rouche_strict_margin": {
+        "decimal_denominator": 1000000000,
+        "strict_decimal_endpoints": [
+          153081567,
+          153081570
+        ]
+      }
+    },
+    {
+      "child_actual_upper_strict_1e-6": [
+        987645,
+        987648
+      ],
+      "child_plane_upper_strict_1e-6": [
+        987645,
+        987648
+      ],
+      "construction": "right-semidisk",
+      "defect_strict_lower_1e-6": [
+        306292,
+        306295
+      ],
+      "p": 10,
+      "parent_competitor_strict_1e-6": [
+        581826,
+        581829
+      ],
+      "parent_entire_domain_gate_margin": {
+        "decimal_denominator": 1000000000,
+        "strict_decimal_endpoints": [
+          159336912271,
+          159336912274
+        ]
+      },
+      "proved_D_gt": "3/10",
+      "proved_child_lt": "247/250",
+      "proved_parent_gt": "581/1000",
+      "source_angle_gap_product": {
+        "decimal_denominator": 1000000000,
+        "strict_decimal_endpoints": [
+          101277561,
+          101277564
+        ]
+      },
+      "source_missing_energy_strict_lower": "1357910099401731661527006925684567877111962014419886750668233395454620343746130336778734961976889865032604510941053525114175525001258473368430080770556095/3140859454436633026157812799979708690438806319668691703092010609560485554628908820597699865591386129356956102971333476328796969571995355689371760881569235992576",
+      "source_missing_energy_uniform_floor": "1/5000000",
+      "source_omitted_box_start": 6,
+      "source_rouche_strict_margin": {
+        "decimal_denominator": 1000000000,
+        "strict_decimal_endpoints": [
+          154097060,
+          154097063
+        ]
+      }
+    },
+    {
+      "child_actual_upper_strict_1e-6": [
+        987646,
+        987649
+      ],
+      "child_plane_upper_strict_1e-6": [
+        987646,
+        987649
+      ],
+      "construction": "right-semidisk",
+      "defect_strict_lower_1e-6": [
+        306292,
+        306295
+      ],
+      "p": 11,
+      "parent_competitor_strict_1e-6": [
+        581826,
+        581829
+      ],
+      "parent_entire_domain_gate_margin": {
+        "decimal_denominator": 1000000000,
+        "strict_decimal_endpoints": [
+          322312859957,
+          322312859960
+        ]
+      },
+      "proved_D_gt": "3/10",
+      "proved_child_lt": "247/250",
+      "proved_parent_gt": "581/1000",
+      "source_angle_gap_product": {
+        "decimal_denominator": 1000000000,
+        "strict_decimal_endpoints": [
+          101277701,
+          101277704
+        ]
+      },
+      "source_missing_energy_strict_lower": "1357911980226445236250990888831943733118354916013919426159515799180511568424553084007672864984017675390898795095149552256425501704013339683492526119108397/3140859454436633026157812799979708690438806319668691703092010609560485554628908820597699865591386129356956102971333476328796969571995355689371760881569235992576",
+      "source_missing_energy_uniform_floor": "1/5000000",
+      "source_omitted_box_start": 6,
+      "source_rouche_strict_margin": {
+        "decimal_denominator": 1000000000,
+        "strict_decimal_endpoints": [
+          154595340,
+          154595343
+        ]
+      }
+    },
+    {
+      "child_actual_upper_strict_1e-6": [
+        987646,
+        987649
+      ],
+      "child_plane_upper_strict_1e-6": [
+        987646,
+        987649
+      ],
+      "construction": "right-semidisk",
+      "defect_strict_lower_1e-6": [
+        306292,
+        306295
+      ],
+      "p": 12,
+      "parent_competitor_strict_1e-6": [
+        581827,
+        581830
+      ],
+      "parent_entire_domain_gate_margin": {
+        "decimal_denominator": 1000000000,
+        "strict_decimal_endpoints": [
+          648262920361,
+          648262920364
+        ]
+      },
+      "proved_D_gt": "3/10",
+      "proved_child_lt": "247/250",
+      "proved_parent_gt": "581/1000",
+      "source_angle_gap_product": {
+        "decimal_denominator": 1000000000,
+        "strict_decimal_endpoints": [
+          101277736,
+          101277739
+        ]
+      },
+      "source_missing_energy_strict_lower": "678956225210516313079964912791128429030945043125718284878943486235285155939021874660711178385925567547293048099946226082413755225172448678892372200182881/2224194441882317547654135858902371402395297037246430952643806160776115991420840560887709323574311275812644004890839798004027524111908192595273985166321278517248",
+      "source_missing_energy_uniform_floor": "1/5000000",
+      "source_omitted_box_start": 7,
+      "source_rouche_strict_margin": {
+        "decimal_denominator": 1000000000,
+        "strict_decimal_endpoints": [
+          154842047,
+          154842050
+        ]
+      }
+    }
+  ],
+  "parameter_manifest": "research/independent_audits/real_primitive_tip_family_unconditional_20261116/results.json",
+  "parameter_manifest_sha256": "ddca5992b40a94b2acd8bd43ce4c3e79ddab2012d5056008bdcf5f14fd3bfc21",
+  "schema": "maximal-native-wave-width/v1",
+  "scope": "Exact arithmetic premises of H3_WIDTH.md. Actual ideal classes, SC uniformization, complete A.1 foliations and all-path metric admissibility are the separately written analytic proof; the physical all-period chart remains an explicit upstream input.",
+  "tail": {
+    "all_periods": "p>=13",
+    "child_coarse_full_path_upper_expression": {
+      "decimal_denominator": 1000000000,
+      "strict_decimal_endpoints": [
+        1155037409,
+        1253261059
+      ]
+    },
+    "error_coefficients": {
+      "1": "15246",
+      "2": "457820",
+      "3": "459228",
+      "5": "487388"
+    },
+    "old_divide_entire_sum_by_3_rejected_at_coordinates": [
+      2,
+      3,
+      5
+    ],
+    "old_parent_gt_two_thirds_not_certified_by_corrected_interval": true,
+    "parent_explicit_competitor": {
+      "decimal_denominator": 1000000000,
+      "strict_decimal_endpoints": [
+        658663060,
+        749148532
+      ]
+    },
+    "proved_child_lt": "63/50",
+    "proved_defect_gt": "40/819",
+    "proved_parent_gt": "13/20",
+    "widest_box_period": 13
+  }
+}

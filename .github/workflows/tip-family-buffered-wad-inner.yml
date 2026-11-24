@@ -5,11 +5,15 @@ on:
     paths:
       - 'research/independent_audits/tip_family_buffered_wad_inner_20261116/**'
       - '.github/workflows/tip-family-buffered-wad-inner.yml'
+      - 'code/require_exact_head_workflows.py'
+      - 'code/test_require_exact_head_workflows.py'
   push:
     branches: [main]
     paths:
       - 'research/independent_audits/tip_family_buffered_wad_inner_20261116/**'
       - '.github/workflows/tip-family-buffered-wad-inner.yml'
+      - 'code/require_exact_head_workflows.py'
+      - 'code/test_require_exact_head_workflows.py'
   workflow_dispatch:
 
 permissions:
@@ -37,6 +41,13 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
+          # The add-only scope is the initial package-creation contract.
+          # Maintenance must retain all mathematical and exact-head checks.
+          git cat-file -e "$BASE_SHA^{commit}"
+          if git cat-file -e "$BASE_SHA:research/independent_audits/tip_family_buffered_wad_inner_20261116" 2>/dev/null; then
+            echo "Existing package at exact PR base; running maintenance checks"
+            exit 0
+          fi
           mapfile -t changes < <(git diff --name-status "$BASE_SHA...HEAD")
           [[ "${#changes[@]}" -eq 4 ]] || {
             printf 'Expected four additions, got:\n%s\n' "${changes[*]}"; exit 1;
@@ -94,46 +105,18 @@ jobs:
       contents: read
       actions: write
     steps:
-      - name: Dispatch and require both unchanged workflows on exact head
-        shell: bash
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Test exact-head reuse, cancellation replacement and failure semantics
+        run: python -B -m unittest discover -s code -p 'test_require_exact_head_workflows.py' -v
+      - name: Require both original workflows at the exact PR head
         env:
           GH_TOKEN: ${{ github.token }}
           REPO: ${{ github.repository }}
           PR_BRANCH: ${{ github.event.pull_request.head.ref }}
           PR_SHA: ${{ github.event.pull_request.head.sha }}
-        run: |
-          set -euo pipefail
-          current="$(gh api "repos/$REPO/git/ref/heads/$PR_BRANCH" --jq '.object.sha')"
-          [[ "$current" == "$PR_SHA" ]] || { echo 'PR head moved before validation'; exit 1; }
-          for workflow in lean-proofs.yml weighted-lean.yml; do
-            gh workflow run "$workflow" --repo "$REPO" --ref "$PR_BRANCH"
-          done
-          for workflow in lean-proofs.yml weighted-lean.yml; do
-            matched=0
-            for attempt in $(seq 1 480); do
-              runs="$(gh run list --repo "$REPO" --workflow "$workflow" \
-                --branch "$PR_BRANCH" --event workflow_dispatch --limit 80 \
-                --json databaseId,headSha,status,conclusion)"
-              item="$(printf '%s' "$runs" | jq -c --arg sha "$PR_SHA" \
-                '[.[] | select(.headSha == $sha)] | first // empty')"
-              if [[ -n "$item" ]]; then
-                id="$(printf '%s' "$item" | jq -r .databaseId)"
-                status="$(printf '%s' "$item" | jq -r .status)"
-                conclusion="$(printf '%s' "$item" | jq -r .conclusion)"
-                if [[ "$status" == completed ]]; then
-                  echo "$workflow @ $PR_SHA: $conclusion (run $id)"
-                  [[ "$conclusion" == success ]] || {
-                    gh run view "$id" --repo "$REPO" || true; exit 1;
-                  }
-                  matched=1
-                  break
-                fi
-              fi
-              sleep 15
-            done
-            [[ "$matched" == 1 ]] || {
-              echo "No successful $workflow for exact PR head $PR_SHA"; exit 1;
-            }
-          done
-          current="$(gh api "repos/$REPO/git/ref/heads/$PR_BRANCH" --jq '.object.sha')"
-          [[ "$current" == "$PR_SHA" ]] || { echo 'PR head moved during CI'; exit 1; }
+        run: python -B code/require_exact_head_workflows.py --attempts 480
