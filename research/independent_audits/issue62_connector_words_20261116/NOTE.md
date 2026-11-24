@@ -16,6 +16,15 @@ here remains valid for specified paths; it does not prove those paths
 exist with the originally proposed simultaneous prescriptions. No null
 word has been replaced by a fabricated crossing certificate.
 
+**Current reading, 24 November 2026.** The zero-of-88 statement above is
+the historical status of this packet's unspecified physical gauge. The
+separate [physical ray-cut reconstruction](../issue62_physical_connector_reconstruction_20261123/NOTE.md)
+has an explicit compatible nine-cut basis and allowed W prefixes, and
+computes all 88 words with the original 8/80 root classification. Its
+all-root-angle formula retains every integer shift. The old null fields
+remain valid provenance for this packet; they do not negate that newer
+construction or identify its basis with independently prescribed whiskers.
+
 ## 1. Re-reading the ORIGINAL path definition
 
 Kahn--Lyubich, *A priori bounds ... II: Decorations*, arXiv:math/0609046v2, original printed **pp. 11--13**, Section 3.2.1 and Lemmas 3.3--3.4 (https://arxiv.org/pdf/math/0609046), defines a path space for a geometric piece Y of depth m:
@@ -65,6 +74,6 @@ The new verifier uses exact Fraction comparisons and checks all 325 freely reduc
 
 To replace an individual null, one must exhibit: (i) an identified **actual** source ideal row and representative endpoint y at positive height, with a certified physical G-carrier region; (ii) an endpoint-fixed KL Lemma 3.3 path and the *start-whisker from the common physical x*, with subordination/homotopy checked in U_G^6 minus S_W; (iii) a separately fixed W\K9 rooted reference homotopy class; (iv) explicit interval enclosures for actual physical path vertices and nine disjoint signed cuts in Omega9, all segment/cut intersections, and the conjugating paths into this archive's based b_rj basis; (v) a second representative/homotopy computation, followed by a nonabelian reduced-word equality and root membership test. Ray angle and tile integer alone never certify (ii)--(iv).
 
-**Issue #62 status:** Criterion 1 (typed finite J witness cohort) remains inherited and conditional on analytic landing; the exact source census is rechecked. Criterion 2 (the FULL specified physical connector groupoid and literal words) is **NOT MET: 0/88 words**, though the correct path category and new reference-gauge rule are recorded. Criterion 3 (all integer word behavior and proper endpoints) has exact formal-algebraic controls and prior conditional 8/80 source-side outcomes, **NOT new physical F9 words or an unqualified KKL unique restriction**. Criterion 4 (new full physical source certificate and specialist-confirmed KKL proper restriction) remains **OPEN**. The 465-entry ledger, H1--H4, UPTCR and MLC are unchanged; independent specialist analytic review is outstanding.
+**Historical Issue #62 status (16 November 2026):** Criterion 1 (typed finite J witness cohort) remains inherited and conditional on analytic landing; the exact source census is rechecked. Criterion 2 (the FULL specified physical connector groupoid and literal words) is **NOT MET: 0/88 words**, though the correct path category and new reference-gauge rule are recorded. Criterion 3 (all integer word behavior and proper endpoints) has exact formal-algebraic controls and prior conditional 8/80 source-side outcomes, **NOT new physical F9 words or an unqualified KKL unique restriction**. Criterion 4 (new full physical source certificate and specialist-confirmed KKL proper restriction) remains **OPEN**. The 465-entry ledger, H1--H4, UPTCR and MLC are unchanged; independent specialist analytic review is outstanding.
 
 Reproduce: python research/independent_audits/issue62_connector_words_20261116/verify_connector_words.py --check-manifest. The dedicated workflow also runs the old source checker, research provenance/README integrity checks, the full registered Lean build and the standalone faithful discrete Lean module. **No existing file is changed.**

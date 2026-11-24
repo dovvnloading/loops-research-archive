@@ -26,6 +26,23 @@ ideal-boundary and full-path hypotheses; the complete new proposed
 selected-family argument is recorded separately in
 [the H3 audit](../maximal_native_wave_20261123/H3_WIDTH.md).
 
+**Integrated stronger certificate, 2026-11-24.** The
+[versioned correction](../tip_family_wave_gain_correction_20261123/NOTE.md)
+uses the same complete error coefficient but isolates the actual p=13
+parameter and starts its common box at p=14. It proves `P_p>2/3` and
+`D_p>11/126` for all p>=13. That sharper certificate and this note's
+single-box `40/819` certificate coexist; failure of the widest-box
+enclosure to prove `2/3` does not refute the separately isolated result.
+The original defective implementation is preserved in git at
+`ed64c7ad839dcc8b799d53379434f892fdc92a2c`; the current implementation is
+the in-place arithmetic repair. For the finite physical interpretation,
+the [intrinsic slit-class proof](../marked_slit_path_bridge_20261123/IDEAL_BOUNDARY.md)
+and [independent-width proof](../marked_slit_path_bridge_20261123/WIDTH_TRANSFER.md)
+do not require the unresolved complete immersion marking. The limiting
+plane slit has a cusp at infinity; its inner-marked comparison classes
+are specified in §1 of the versioned correction, with no outer ideal
+circle assigned to that limit.
+
 ## 1. Exactly which limiting maps, domains, cuts and marks?
 
 Let `f_c(z)=z^2+c`; `G_p=f_{c_p}^p` with the **distinguished** period-`p` tip root and chart of [the all-period audit](../real_primitive_tip_family_all_p_20261116/NOTE.md), not an arbitrary root of `x_{6p}+x_{3p}=0`. Write
@@ -249,4 +266,9 @@ python -B research/independent_audits/tip_family_limiting_wave_gain_20261116/ver
 python -B -m unittest discover -s research/independent_audits/tip_family_limiting_wave_gain_20261116 -p 'test_*.py' -v
 ```
 
-The dedicated workflow also runs the unchanged predecessor, verifies an add-only diff, and dispatches the original research-validation and weighted Lean workflows at the PR's exact head SHA. It is a regression gate for the declared arithmetic results and source boundaries, not a substitute for peer review of the conformal geometry.
+The dedicated workflow also runs the unchanged predecessor and requires
+research-validation and weighted Lean workflows at the PR's exact head
+SHA. Its add-only guard applies to initial package creation; maintenance
+retains the arithmetic and exact-commit checks. It is a regression gate
+for the declared arithmetic results and source boundaries, not a
+substitute for peer review of the conformal geometry.

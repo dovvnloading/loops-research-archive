@@ -1,10 +1,12 @@
 #!/usr/bin/env python3
-"""Endpoint-aware checks accompanying the written selected-slit theorem.
+"""Endpoint-aware checks accompanying the written selected-slit contour theorem.
 
 The input is the ten already isolated physical parameter cells.  All interval
 arithmetic here is independent and uses outward rounding on a 2^-640 grid.
-The analytic identification, the full-path collar lemma, and the all-period
-Chebyshev argument are WRITTEN proofs in NOTE.md, not outputs of this script.
+The intrinsic ideal atlas and all-period Chebyshev contour argument are
+WRITTEN proofs in NOTE.md, not outputs of this script. These finite checks
+do not prove the native immersion MARK bridge, which remains open. The
+legacy marked_action key records the explicit contour action g_* q_0^-1.
 
 Run with --write to create this new contribution's results.json, or without
 arguments to compare it.  No upstream file is modified.
@@ -326,7 +328,7 @@ def compute() -> dict:
     lift = atlases[0]["cut_lift"]
     require(all(x["cut_lift"] == lift for x in atlases), "period-specific incidence drift")
     return {"schema": 1, "arithmetic": f"outward dyadic intervals 2^-{PRECISION}",
-            "scope": "selected real slit family; geometric and Chebyshev proofs in NOTE.md",
+            "scope": "selected real slit contour action; intrinsic atlas and Chebyshev proofs in NOTE.md; native immersion MARK remains open",
             "all_period_status": "p>=13 uses the cited written chart theorem, not this finite check",
             "physical_atlases": atlases, "marked_action": check_marked_action(lift),
             "chebyshev_escape": check_tent()}
@@ -341,7 +343,8 @@ def main() -> None:
         OUTPUT.write_text(json.dumps(result, indent=2, sort_keys=True) + "\n", encoding="utf-8")
     else:
         require(json.loads(OUTPUT.read_text(encoding="utf-8")) == result, "result manifest changed")
-    print(json.dumps({"physical_periods": len(result["physical_atlases"]),
+    print(json.dumps({"scope": result["scope"],
+                      "physical_periods": len(result["physical_atlases"]),
                       "cut_lift": result["physical_atlases"][0]["cut_lift"],
                       "marked_action": result["marked_action"],
                       "chebyshev_escape": result["chebyshev_escape"]}, indent=2))

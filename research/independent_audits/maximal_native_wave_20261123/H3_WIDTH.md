@@ -2,8 +2,9 @@
 
 **Date:** 2026-11-23. **Status:** a proposed written analytic proof, conditional
 on the explicit physical input package of [NOTE.md](NOTE.md), §1, and using
-the access and full-path results proved there. No assumption of local H3
-is made. This is not an external referee certification, a formalized proof,
+the intrinsic access and all-winding class results proved there. The full
+immersion marking MARK/H2 remains open and is not an input to this
+independent-supremum comparison. No assumption of local H3 is made. This is not an external referee certification, a formalized proof,
 or a result about MLC. GPT-6 Astra Pro assisted the derivation and checks.
 
 ## 1. Exact result, dependencies, and what is new
@@ -18,8 +19,11 @@ physical quadratic-like restriction in the companion note, and write
 
 The two actual slit domains are
 \(\Omega=U\setminus[\ell,r]\) and
-\(\Omega'=V\setminus[-r,r]\). Their complete ideal marking and relative
-homotopy classes are those proved in NOTE, §§2–4. In particular
+\(\Omega'=V\setminus[-r,r]\). Their intrinsic ideal boundaries and relative
+homotopy classes are given by NOTE, §2; the source marking is the pullback
+of the target marking by the actual covering in §4. These are the
+SLIT-CLASSES inputs, independent of the unresolved immersion-pulled
+marking in §3. In particular
 
 \[
  -r<-h_0<\ell<a_0<-e<b_0<0<e<h_0<r.
@@ -57,7 +61,9 @@ This proves the specific **local H3 implication** isolated in the
 [v2 referee scope](../../../papers/tip_family_preprint_v2_20261116/sections/referee_scope.tex).
 It is conditional on the physical degree-two restrictions, filled
 intervals, order, and analytic all-period chart bounds, rather than on
-H2 or H3. The companion note supplies the actual ideal-class bridge.
+the full immersion H2 or H3. The companion note supplies the intrinsic
+ideal-class bridge on each surface. No statement here identifies a
+contour inverse image with the native geometric-trace restriction.
 
 The segment and semidisk constructions, finite constants, omitted boxes,
 and the intended independent gain already appear in the November 16
@@ -84,8 +90,14 @@ here is
 
 The old executable checker and its direct dependent assertions have been
 corrected, with a dated erratum and an adversarial recurrence-based
-regression. A failure to certify the old stronger floor is not a
-counterexample to that floor; it invalidates the particular certificate.
+regression. A failure of the widest-box certificate is not a
+counterexample to the stronger floor. A separate
+[corrected all-period proof](../tip_family_wave_gain_correction_20261123/NOTE.md)
+isolates the actual \(p=13\) parameter and uses the corrected uniform box
+starting at \(p=14\). That route proves \(P_p>2/3\) and
+\(D_p>11/126\) for every \(p\ge13\). Both certificates are retained:
+(1.3) is the broader single-box estimate, while the separate proof supplies
+the sharper bound.
 
 ## 2. Width convention and the exact Schwarz–Christoffel normalization
 
@@ -672,18 +684,28 @@ in the original limiting checker and a regression reconstructs both
 terms of (7.2) independently. The limiting \(p=\infty\) numerical
 enclosures and the finite-period rows are unaffected.
 
+The stronger \(P_p>2/3\), \(D_p>11/126\) conclusion also remains available
+through the distinct corrected route: exact isolation at \(p=13\), then
+uniform bounds for \(p\ge14\). Its verifier is
+[`verify_all_periods.py`](../tip_family_wave_gain_correction_20261123/verify_all_periods.py).
+This does not assert that the single widest box in (7.3) proves that floor.
+
 ## 8. Scope and reproducibility
 
 The proof above discharges the named **local H3** comparison from the
-explicit actual-slit physical package and the companion complete ideal
-atlas. It does not discharge global H1–H4 in the MLC closure proposition,
+explicit actual-slit physical package and the companion intrinsic ideal
+atlas and covering marking. It does not consume the open full immersion
+MARK/H2 claim or identify independent children with restrictions of every
+parent. It does not discharge global H1–H4 in the MLC closure proposition,
 prove an all-parameter ideal atlas, or remove the upstream physical
 chart hypotheses by passing a test.
 
 The gain compares three independently optimized unbuffered A.1 suprema.
 It neither constructs simultaneous parent/child optimizers nor asserts
 that every parent can be restricted to both children. For a single
-leafwise pairable family, KKL Lemma A.11 still gives
+leafwise pairable family, one must additionally exhibit for every leaf
+both surviving children in the specified classes and injectivity of the
+immersion on their union. Under those conditions KKL Lemma A.11 gives
 \(P_{\rm pair}\le C_p/2\); the corresponding reciprocal defect is
 nonpositive. The present result instead implies
 \(P_p>C_p/2\ge P_{\rm pair}\). There is no contradiction and no iterated

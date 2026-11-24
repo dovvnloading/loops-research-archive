@@ -401,6 +401,16 @@ hypotheses.  The v2 referee-controlled scope remains authoritative, and
 the new proposed full-path proof is in
 [the H3 audit](../maximal_native_wave_20261123/H3_WIDTH.md).
 
+**Integration, 2026-11-24.** The sharper
+[versioned certificate](../tip_family_wave_gain_correction_20261123/NOTE.md)
+separately proves `P_p>2/3` and `D_p>11/126` by isolating the actual
+p=13 parameter and using the corrected uniform box from p=14. The
+`40/819` computation retained here is the compatible widest-box bound.
+The [intrinsic slit-class proof](../marked_slit_path_bridge_20261123/IDEAL_BOUNDARY.md)
+and its companion width argument provide the independent width classes;
+the full immersion/geometric-trace comparison remains a separate
+obligation. Neither arithmetic certificate discharges it.
+
 The original claim of this note was: there is **no hypothesis M or M'** for (7)–(8) on the surfaces
 (1), beyond accepting the established chart/prime-end/standard
 analytic theorems identified above. Exact suprema and

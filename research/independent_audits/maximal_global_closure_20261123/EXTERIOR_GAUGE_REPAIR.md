@@ -10,13 +10,23 @@ AI disclosure: GPT-6 Astra Pro was used for proof search, source comparison,
 drafting, and exact symbolic verification. No new human mathematical
 verification is represented.
 
+**Integration clarification, 24 November 2026.** This note concerns
+conformality of the **chosen** quasiconformal conjugacy. The separate
+[hybrid-uniqueness repair](../marked_slit_path_bridge_20261123/RIGIDITY_AND_REMAINING_GAP.md)
+obtains equality of infinitely renormalizable quadratic parameters from
+the global conjugacy and the Julia no-line-field premise without requiring
+exterior conformality. Both arguments are retained: the additional
+exterior condition below proves a stronger conclusion about that map.
+
 ## 1. The exact inference to make explicit
 
 [UPTCR-6 and its terminal proof](../../mlc_unified/mlc_closure_proposition.md)
 and [CV-4 in the cross-validation](../../mlc_unified/uptcr_cross_validation.md)
-use a global quasiconformal conjugacy “normalized at infinity”, an
-invariant limiting Beltrami coefficient, and absence of invariant line
-fields to conclude that the conjugacy is conformal.
+in their pre-integration formulations used a global quasiconformal
+conjugacy “normalized at infinity”, an invariant limiting Beltrami
+coefficient, and absence of invariant line fields to conclude that the
+conjugacy is conformal. Their current formulations distinguish the
+hybrid parameter-equality route from that stronger assertion about h.
 
 In the standard dynamical usage, the no-invariant-line-field assertion is
 an assertion **on the Julia set**. To make the indicated argument valid,
@@ -225,6 +235,26 @@ requirement that `h` be conformal on the entire Fatou set, or supply
 the relevant conformal internal conjugacies as well. No theorem here
 deduces that extra requirement from a normalization at infinity.
 
+### 4.2. Parameter equality through hybrid uniqueness
+
+For infinitely renormalizable quadratic polynomials, the
+[companion rigidity lemma, §1](../marked_slit_path_bridge_20261123/RIGIDITY_AND_REMAINING_GAP.md#1-minimal-valid-replacement-for-the-h4-endgame)
+uses McMullen's Theorem 8.1(2) to obtain `K=J`. A global quasiconformal
+conjugacy and absence of invariant line fields on J then give
+`mu_h=0` almost everywhere on K, by the same invariance argument as above.
+The conjugacy is a hybrid equivalence of connected polynomial-like
+restrictions. Douady–Hubbard Theorem 1(b), connected-case straightening
+uniqueness, supplies an affine conjugacy between the two polynomials;
+monic centered normalization gives equality of their parameters.
+
+This argument does not say that the original map h is affine. The
+Chebyshev example in §2 is consistent with that distinction: its
+parameters are equal while its chosen exterior self-conjugacy is
+nonconformal. Therefore an exterior support certificate is required for
+Theorem 4.1's conclusion about h, but is not an additional necessary
+premise of the infinitely renormalizable parameter-equality endgame.
+Both routes retain the global-conjugacy and Julia no-line-field inputs.
+
 ## 5. Passing the exterior normalization to a limit
 
 The following elementary condition is sufficient for the limiting
@@ -252,8 +282,10 @@ each finite approximation is not the compact-exhaustion condition
 
 ## 6. Proposed precise replacement for UPTCR-6
 
-The following is a mathematical wording repair, not a proof of its
-antecedents:
+The following is a sufficient mathematical wording repair for the route
+that proves the chosen limiting map conformal, not a proof of its
+antecedents. For parameter equality in the infinitely renormalizable
+case, the hybrid route in §4.2 is the weaker sufficient contract:
 
 > The finite-depth pullback conjugacies are normalized by the same
 > Böttcher conjugacy on every compact subset of the basin of infinity

@@ -1,54 +1,60 @@
 # The near-\(-2\) real primitive-tip family: a typed all-period theorem
 
-**Current selected-family status — 2026-11-23.** Part A gives the written analytic theorem with exact finite inputs for the selected near-\(-2\) charts. The [physical bridge audit](PHYSICAL_BRIDGES.md) derives the actual filled intervals, phase neighborhoods and period-two exclusion from the stated proper restrictions and signed orders. The new [complete access proof](../independent_audits/maximal_native_wave_20261123/NOTE.md) and [full-path width proof](../independent_audits/maximal_native_wave_20261123/H3_WIDTH.md) prove the local H2 and H3 implications from that physical package, without assuming H2 or H3. Parts B–D below preserve their historical conditional formulations to identify the original obligations. This is written, unformalized mathematics with adversarial AI review and exact finite checks; it is not external referee certification. The [v2 scope](../../papers/tip_family_preprint_v2_20261116/sections/referee_scope.tex) and [referee report](../../REFEREE_REPORT.md) remain the historical statement of those obligations, and the dated update below records the selected-family progress. Global MLC statuses and source locks are unchanged.
+**Current selected-family status — 2026-11-24 integration.** Part A gives the written analytic theorem with exact finite inputs for the selected near-\(-2\) charts. The [physical bridge audit](PHYSICAL_BRIDGES.md) derives the actual filled intervals, phase neighborhoods and period-two exclusion from the stated proper restrictions and signed orders. The [intrinsic access proof](../independent_audits/maximal_native_wave_20261123/NOTE.md) and [independent full-path width proof](../independent_audits/maximal_native_wave_20261123/H3_WIDTH.md) establish the ideal classes on each surface and the independent local H3 comparison from that physical package. **Full immersion MARK/H2 remains open.** Parts B–D preserve their historical conditional formulations to identify the original obligations. This is written, unformalized mathematics with exact finite checks, not external referee certification. The [v2 scope](../../papers/tip_family_preprint_v2_20261116/sections/referee_scope.tex) and [referee report](../../REFEREE_REPORT.md) retain the historical obligations. Global MLC statuses and source locks are unchanged.
 
-## Selected-family proof update — 2026-11-23
+## Selected-family proof update — 2026-11-24 integration
 
-**Physical H2.** For the actual slits \(T=[x_{2p},x_p]\) and
-\(T'=[-x_p,x_p]\), the new atlas identifies the complete hyperbolic ideal
-circles, including both outer components and every relative-endpoint deck
-class. The strict Rouché barrier produces an analytic Jordan boundary
-for \(V_p\), so every maximal source-intersection component is proper.
-This closes the omitted-component issue in the inclusion criterion.
-The proof derives the full attachment fiber, the distinct \(G_*\) and
-\(\iota^*\) operations, and the required marking refinement on these
-physical surfaces. [Access proof, §§1–4](../independent_audits/maximal_native_wave_20261123/NOTE.md)
+**Intrinsic classes and the remaining H2 gap.** For the actual slits
+\(T=[x_{2p},x_p]\) and \(T'=[-x_p,x_p]\), the atlas identifies the complete
+hyperbolic ideal circles and every relative-endpoint deck class. The
+strict Rouché barrier produces an analytic Jordan boundary for \(V_p\),
+so maximal temporal source-intersection components are proper. This does
+not establish uniqueness among all proper paths contained in the geometric
+inverse trace: even a simple crosscut contains distinct prefix-and-return
+paths. The contour attachment fiber and partition are explicit, but their
+identification with the native immersion-pulled marking and outer
+refinement remains open. [Intrinsic atlas, contour code and retained gap,
+§§1–4](../independent_audits/maximal_native_wave_20261123/NOTE.md)
 
-**Physical H3 and corrected independent gain.** The complete embedded
-parent foliations have exactly the minimal prescribed bases and closed
-crests. Every admissible parent or child leaf lies in the stated full
-lifted family. The physical-Jacobian square-sum density is admissible for
-all of them; the finite omitted boxes remove positive source energy,
-and both reflected child suprema are positive. Therefore the independently
-optimized unbuffered suprema obey
+**Independent physical H3 and corrected gain.** The complete embedded
+parent foliations have the prescribed minimal bases and closed crests.
+Every admissible parent or child leaf lies in its full lifted comparison
+family. The physical-Jacobian square-sum density is admissible for all of
+them; omitted boxes remove positive source energy, and both reflected
+child suprema are positive. These arguments use the intrinsic classes and
+the actual covering marking, independently of the open full immersion
+relation. Thus the independently optimized unbuffered suprema satisfy
 
 \[
  D_p=\frac1{C_p^+}+\frac1{C_p^-}-\frac1{P_p}>\frac1{100}
- \qquad(p\ge3)
+ \qquad(p\ge3).
 \]
 
-on the stated physical family. The old all-period error coefficient
-incorrectly divided the parameter-displacement term by \(3\). Its
-correction replaces the November 16 tail certificate, including the
-corresponding dated preprint/PDF statements, by
+The original error coefficient divided the parameter-displacement term
+by \(3\). Two corrected tail certificates coexist. The broad single box
+proves
 
 \[
  P_p>\frac{13}{20},\qquad C_p<\frac{63}{50},\qquad
  D_p>\frac{40}{819}>\frac1{100}\qquad(p\ge13).
 \]
 
-The former \(2/3\) and \(11/126\) constants are not justified by the
-corrected widest-box calculation. The finite \(3\le p\le12\) margins
-and separate limiting-model bounds are unchanged. [Complete H3 proof
-and arithmetic correction](../independent_audits/maximal_native_wave_20261123/H3_WIDTH.md)
+A [separate corrected route](../independent_audits/tip_family_wave_gain_correction_20261123/NOTE.md)
+isolates the actual \(p=13\) parameter and starts its uniform parent box
+at \(p=14\). It proves the stronger \(P_p>2/3\) and \(D_p>11/126\) for
+every \(p\ge13\); the broad box alone does not certify that floor. The
+finite \(3\le p\le12\) margins remain unchanged. The limiting plane-slit
+model has a cusp at infinity and is separate from the finite annuli.
+[Independent H3 proof and broad certificate](../independent_audits/maximal_native_wave_20261123/H3_WIDTH.md)
 
-**Positive zero-edge subarcs.** Every nondegenerate zero-edge subarc
-eventually acquires a complete old-edge side and saturates under the
-actual interval action \(\Phi=G_*\iota^*\). This uses the Chebyshev return
-and complete attachment fiber, not just the old-edge Perron eigenvalue.
-No bound independent of initial subarc size exists even for a fixed
-selected \(p\), and singleton accesses are excluded. [Escape and delay
-proofs, §6](../independent_audits/maximal_native_wave_20261123/NOTE.md)
+**Positive zero-edge contour subarcs.** Every nondegenerate zero-edge
+subarc eventually acquires a complete old-edge side and saturates under
+the explicit contour action \(\Psi=g_*q_0^{-1}\). This uses the actual
+Chebyshev return and the contour's complete attachment fiber. No bound
+independent of initial subarc size exists even for fixed selected \(p\),
+and singleton accesses are excluded. Identifying this action with the
+native \(G_*\iota^*\) remains conditional on MARK. [Escape and delay
+proofs, §§3–6](../independent_audits/maximal_native_wave_20261123/NOTE.md)
 
 **Outer buffered classes.** The [matched four-boundary proof](../independent_audits/maximal_native_wave_20261123/OUTER_BUFFER_EXCLUSION.md)
 supplies the actual primitive outer-collar lift, cyclic modulus and full
@@ -58,14 +64,13 @@ vanishes for selected \(p\ge11\), including essential outer self-classes.
 The six inner endpoint types and their positive coefficients remain
 undetermined.
 
-**Residual scope.** These interval images have not been identified with
-every chosen Wave descendant's closed crest. Simultaneous leafwise
-pairing, iterated amplification, positive inner buffered classes, all-Wave uniform
-four-push transport, full depth kneading and global marked QC transport
-remain separate gates. The general non-locally-connected native Wave
-problem and global H1–H4/UPTCR/MLC remain open. Parts B–D's conditional
-wording is retained for provenance; the selected H2/H3 implications now
-have the explicit proofs linked above.
+**Residual scope.** Full immersion MARK/H2, identification of contour
+images with chosen Wave descendants' crests, simultaneous leafwise
+pairing, iterated amplification, positive inner buffered classes,
+all-Wave uniform four-push transport, full depth kneading and global marked
+QC transport remain separate gates. The general non-locally-connected
+native Wave problem and global H1–H4/UPTCR/MLC remain open. The independent
+local H3 comparison above does not promote those missing hypotheses.
 
 ## 1. Statement: one theorem with its exact domains of validity
 
@@ -187,7 +192,7 @@ Writing output-edge rows and input-edge columns, their occurrence matrix and pos
  \rho(M)=\varphi=\frac{1+\sqrt5}{2},\quad
  (\varphi,1,\varphi)M=\varphi(\varphi,1,\varphi).              \tag{7}
 \]
-The target **atomic zero-old-edge** types are \(\{I_0,I_2,I_5,I_8\}\). The source *inclusion* zero types are \(\{S_0,S_1,S_2,S_5,S_{10},S_{15},S_{18},S_{19}\}\), versus the different *cover-pushed* zero types \(\{S_0,S_2,S_5,S_8,S_{10},S_{12},S_{15},S_{18}\}\). The parent base \(B=(I_9,I_0,I_1)\) has **closed** crest \(\overline I_0\); the two cover-pushed child bases \((I_1,I_2,I_3)\) and \((I_7,I_8,I_9)\) have closed crests \(\overline I_2,\overline I_8\). Each of these **three closed atomic crest types** has no old edge. These finite calculations alone do not settle finer subarcs; their eventual exposure under the actual interval action is proved separately in the 2026-11-23 update above. Arbitrary Wave-descendant inheritance does not follow from either calculation.
+The target **atomic zero-old-edge** types are \(\{I_0,I_2,I_5,I_8\}\). The source *inclusion* zero types are \(\{S_0,S_1,S_2,S_5,S_{10},S_{15},S_{18},S_{19}\}\), versus the different *cover-pushed* zero types \(\{S_0,S_2,S_5,S_8,S_{10},S_{12},S_{15},S_{18}\}\). The parent base \(B=(I_9,I_0,I_1)\) has **closed** crest \(\overline I_0\); the two cover-pushed child bases \((I_1,I_2,I_3)\) and \((I_7,I_8,I_9)\) have closed crests \(\overline I_2,\overline I_8\). Each of these **three closed atomic crest types** has no old edge. These finite calculations alone do not settle finer subarcs; their eventual exposure under the explicit contour action is proved separately in the integration update above, while native interpretation remains conditional on MARK. Arbitrary Wave-descendant inheritance does not follow from either calculation.
 
 There is, **for each \(p\)**, a physically admissible *orbit-centred round crossing annulus* with
 \[
@@ -248,9 +253,9 @@ These are ratios for the *maximal connected circular subcollar of that fixed par
 \]
 The suggested \(c_\infty(1+1/(p\log2)+O(p^{-2}))+O(4^{-p})\) expansion is **conjectural**, not a verified all-period rate. It needs all-\(p\) complex \(C^1\) control through four compositions, persistence of the KKL proper path class, endpoint transversality and noncancellation. The \(p\ge13\) *basic* quadratic-like theorem does **not** supply that transport estimate.
 
-**Open problem 2 — canonical-width convergence.** With a fixed KKL base \(B=(I_9,I_0,I_1)\) and crest containing \(I_0\), let \(W_p^*\) be the supremum of conformal widths over **all** A.1-admissible parent laminations. In the v2 definition, \(W_{p,2}^*\) requires both designated surviving children on every parent leaf and injectivity of the immersion on their union. For the selected physical family, the new H2/H3 proof and KKL's pairable loss inequality give \(W_{p,2}^*\le C_p/2<W_p^*\). This separates the two suprema without producing paired optimizers. Convergence of \(W_p^*\), exact values and attainment remain open. [Current full-path proof and scope](../independent_audits/maximal_native_wave_20261123/H3_WIDTH.md) · [Historical v2 width theorem](../../papers/tip_family_preprint_v2_20261116/sections/wave_proofs.tex) The canonical-width audit gives the separate inequality \(W_{\rm round,p}^{\rm sym}\le W_{p,2}^*\le W_p^*\le Q_p\) *in the declared KKL slit/width setting*, with a convergent **full-path upper envelope** \(Q_p\), but the two bounding families need not coincide.
+**Open problem 2 — canonical-width convergence.** With a fixed KKL base \(B=(I_9,I_0,I_1)\) and crest containing \(I_0\), let \(W_p^*\) be the supremum of conformal widths over **all** A.1-admissible parent laminations. In the v2 definition, \(W_{p,2}^*\) requires both designated surviving children on every parent leaf and injectivity of the immersion on their union. For the selected physical family, the intrinsic class and independent H3 proofs, together with KKL's pairable loss inequality under those per-leaf conditions, give \(W_{p,2}^*\le C_p/2<W_p^*\). This separates the two suprema without producing paired optimizers. Convergence of \(W_p^*\), exact values and attainment remain open. [Current full-path proof and scope](../independent_audits/maximal_native_wave_20261123/H3_WIDTH.md) · [Historical v2 width theorem](../../papers/tip_family_preprint_v2_20261116/sections/wave_proofs.tex) The canonical-width audit gives the separate inequality \(W_{\rm round,p}^{\rm sym}\le W_{p,2}^*\le W_p^*\le Q_p\) *in the declared KKL slit/width setting*, with a convergent **full-path upper envelope** \(Q_p\), but the two bounding families need not coincide.
 
-**Other open problems.** Uniqueness across a maximal real primitive window beyond \(\mathcal C_p\); the bridge from interval escape to chosen Wave descendants and simultaneous child pairing; all-Wave uniform four-push transport; inner buffered-class identification and positivity; complete depth and global marked QC transfer; the general native Wave problem and global H1–H4/UPTCR/MLC; and a machine-checked formalization of the external complex-analytic/topological arguments. Positive selected-family zero-edge subarc escape, the independent unbuffered \(1/100\) gain, and outer buffered exclusion for selected \(p\ge11\) are covered by the dated proofs above, with their explicit physical prerequisites. They do not settle these residual problems.
+**Other open problems.** Uniqueness across a maximal real primitive window beyond \(\mathcal C_p\); full immersion MARK/H2 and the native interpretation of contour escape; the bridge to chosen Wave descendants and simultaneous child pairing; all-Wave uniform four-push transport; inner buffered-class identification and positivity; complete depth and global marked QC transfer; the general native Wave problem and global H1–H4/UPTCR/MLC; and a machine-checked formalization of the external complex-analytic/topological arguments. Positive selected-family zero-edge subarc escape for the explicit contour action, the independent unbuffered \(1/100\) gain, and outer buffered exclusion for selected \(p\ge11\) are covered by the dated proofs above, with their explicit physical prerequisites. They do not settle these residual problems.
 
 ## 3. Complete dependency proof skeleton (type of input at every link)
 
@@ -264,14 +269,14 @@ All paths are relative to this directory. “Verifier” means the *exact ration
 | **4. Genuine \(3p\)-return exists separately.** Normalized \(h_p^3\), \(>1/8\) disk gap, compact degree-two component, phase neighborhoods. | [Prime-end identification NOTE §1 “New uniformly proper three-return restriction”](../independent_audits/real_primitive_tip_family_prime_end_identification_20261116/NOTE.md#1-new-uniformly-proper-three-return-restriction), eqs. (1)–(3). | [prime-end/verify.py](../independent_audits/real_primitive_tip_family_prime_end_identification_20261116/verify.py), check_all_finite and check_large_model; analytic **Rouché and Riemann–Hurwitz** (R1–R2). Distinct \(>1/8\) from step 3 \(>1/25\). |
 | **5. Identify actual small Julia intervals.** Critical Chebyshev portrait and straightening to \(z^2-2\), \(K_0,K_1,K_2\). | [Prime-end NOTE §2 “The little Julia sets really are intervals”](../independent_audits/real_primitive_tip_family_prime_end_identification_20261116/NOTE.md#2-the-little-julia-sets-really-are-intervals), (4)–(5); intermediate domains paragraph. | Polynomial identities from steps 2–4; external **Douady–Hubbard** connectedness criterion/straightening (R3). **No mechanical verification** of DH85. |
 | **6. Competing period-two return and selected KKL tree.** Exclude a connected critical period-two quadratic-like restriction. The three actual disjoint little intervals have the stated dendrite hull and dividing point. | [Direct period-two exclusion and actual interval proof](PHYSICAL_BRIDGES.md#2-a-direct-exclusion-of-a-competing-period-two-restriction); [selected access NOTE §1](../independent_audits/maximal_native_wave_20261123/NOTE.md#1-the-physical-input-package-and-fixed-notation). | The exclusion uses A's order and monotonicity, R5, dendrite arc separation and R2. The full hull uses the actual intervals from step 5; the ideal interpretation is established in step 7. |
-| **7. Full ideal atlas and attachment, proved for the selected physical inputs.** Ten/twenty inner atoms, one whole outer atom each, every deck class, complete \(T_p'\) and attachment fiber, proper-component restriction and source refinement. | [Selected access NOTE, Lemmas 1.1, 2.1–2.2, 3.1 and §4](../independent_audits/maximal_native_wave_20261123/NOTE.md). The earlier prime-end and v2 formulations are retained as provenance. | [new access verifier](../independent_audits/maximal_native_wave_20261123/verify.py) checks the ten physical parameter cells and exact endpoint consequences. The written proof uses the strict Rouché enlarged disk, annulus uniformization/reflection, the full hyperbolic deck quotient, and the actual KKL proper-path criterion. No finite table proves these continuum identifications. |
-| **8. Distinct \(G_*\) vs. \(\iota^*\), 2/1 filters.** Covering degree two; ten disjoint immersion blocks; source lengths 3,3,7 and covering 3,3,5. | [Prime-end NOTE §5 “Covering”, “Immersion”, “Old real edges and filtered proper restrictions”](../independent_audits/real_primitive_tip_family_prime_end_identification_20261116/NOTE.md#5-attachment-covering-and-immersion-explicit-tables); [Unconditional NOTE “Hostile review: correction”](../independent_audits/real_primitive_tip_family_unconditional_20261116/NOTE.md); source-locked [PR #68 manifest](../native_wave_transfer/experiment_manifests/tip_pr68.json). | [uniform/verify.py](../independent_audits/real_primitive_tip_family_uniform_20261116/verify.py), [unconditional/verify.py](../independent_audits/real_primitive_tip_family_unconditional_20261116/verify.py), [prime-end discrete Lean](../independent_audits/real_primitive_tip_family_prime_end_identification_20261116/RealPrimitiveTipPrimeEndDiscrete.lean), [TipKKLTreeMarking.lean](../../TipKKLTreeMarking.lean); **KKL Appendix A.1/A.3.1–A.3.4** (R7) for proper restriction semantics. |
+| **7. Intrinsic ideal atlas, Jordan boundary and contour attachment.** Ten/twenty inner atoms, genuine outer circles, every winding class, and proper temporal source components are established from the physical inputs. Full immersion MARK remains open. | [Selected access NOTE, Lemmas 1.1, 2.1–2.2, 3.1 and §4](../independent_audits/maximal_native_wave_20261123/NOTE.md). The contour inverse image is explicit; temporal properness does not imply raw geometric-trace uniqueness or full native refinement. | [new access verifier](../independent_audits/maximal_native_wave_20261123/verify.py) checks the ten physical parameter cells and contour endpoint consequences. Rouché, annulus uniformization/reflection and the hyperbolic deck quotient are written arguments; no finite table proves the open immersion identification. |
+| **8. Distinct covering and proposed immersion operations, 2/1 filters.** Covering degree two; ten contour blocks; specified short representative spans 3,3,7 and covering spans 3,3,5. Full native interpretation remains conditional on MARK. | [Prime-end NOTE §5 “Covering”, “Immersion”, “Old real edges and filtered proper restrictions”](../independent_audits/real_primitive_tip_family_prime_end_identification_20261116/NOTE.md#5-attachment-covering-and-immersion-explicit-tables); [Unconditional NOTE “Hostile review: correction”](../independent_audits/real_primitive_tip_family_unconditional_20261116/NOTE.md); source-locked [PR #68 manifest](../native_wave_transfer/experiment_manifests/tip_pr68.json). | [uniform/verify.py](../independent_audits/real_primitive_tip_family_uniform_20261116/verify.py), [unconditional/verify.py](../independent_audits/real_primitive_tip_family_unconditional_20261116/verify.py), [prime-end discrete Lean](../independent_audits/real_primitive_tip_family_prime_end_identification_20261116/RealPrimitiveTipPrimeEndDiscrete.lean), [TipKKLTreeMarking.lean](../../TipKKLTreeMarking.lean); **KKL Appendix A.1/A.3.1–A.3.4** (R7) for proper restriction semantics. |
 | **9. Edges, spectral and closed crests.** Cut images \((2,4,4,3,0)\) give (7); incidence yields zero types. | [Uniform NOTE §2 proof](../independent_audits/real_primitive_tip_family_uniform_20261116/NOTE.md); [Prime-end NOTE §5 old edges](../independent_audits/real_primitive_tip_family_prime_end_identification_20261116/NOTE.md); [native PR #68 manifest](../native_wave_transfer/experiment_manifests/tip_pr68.json), [native p4 manifest](../native_wave_transfer/experiment_manifests/primitive4_tip12.json). | [uniform/verify.py](../independent_audits/real_primitive_tip_family_uniform_20261116/verify.py), [unconditional/verify.py](../independent_audits/real_primitive_tip_family_unconditional_20261116/verify.py), [RealPrimitiveTipDiscrete.lean](../independent_audits/real_primitive_tip_family_uniform_20261116/RealPrimitiveTipDiscrete.lean), verify_chain.py. Perron–Frobenius theorem R8 or direct positive eigenvector/positive power. |
 | **10. Round gate geometry and conditional KKL admissibility.** Equation (8), whole disks for finite and large \(p\); separate native \(p=3,4\) waves. | [Unconditional NOTE “Source-defined radial witness”](../independent_audits/real_primitive_tip_family_unconditional_20261116/NOTE.md); [Canonical-width NOTE §§1–2](../independent_audits/real_primitive_tip_family_canonical_width_20261116/NOTE.md#2-certified-round-lower-witnesses-theorem-value-rate); [Uniform NOTE §3](../independent_audits/real_primitive_tip_family_uniform_20261116/NOTE.md#3-one-explicit-width-normalization-and-why-it-is-not-canonical). | [unconditional/verify.py](../independent_audits/real_primitive_tip_family_unconditional_20261116/verify.py), [canonical-width/verify.py](../independent_audits/real_primitive_tip_family_canonical_width_20261116/verify.py), both native regenerate.py --check. |
 | **11. Harmonic Wave-width identity, with the correct analytic boundary.** Log-strip heights \(2\pi,\pi,\pi\) yield (9), but not a general Wave equality. | [Uniform NOTE §2, (7) and its final proof paragraph](../independent_audits/real_primitive_tip_family_uniform_20261116/NOTE.md); [Native RESULT/specification](../native_wave_transfer/RESULTS.md), [Canonical-width NOTE §1](../independent_audits/real_primitive_tip_family_canonical_width_20261116/NOTE.md); [Prime-end NOTE §5](../independent_audits/real_primitive_tip_family_prime_end_identification_20261116/NOTE.md). | Symbolic coefficients in [native PR #68 manifest](../native_wave_transfer/experiment_manifests/tip_pr68.json) and [uniform/results.json](../independent_audits/real_primitive_tip_family_uniform_20261116/results.json); **KKL Appendix A.2 (conformal width), A.3.2 Lemma A.11 (only inequality)** (R7), classical extremal rectangle formula R9, plus the stated geometric univalence/homotopy. |
 | **12. Sharp separation of proved convergence, finite conditional transport, and numerical conjectures.** Round witness tends to (10); selected 4-push \(c_p^*\) finite only, canonical \(W_p^*\) unknown. | [Canonical-width NOTE §§2–4](../independent_audits/real_primitive_tip_family_canonical_width_20261116/NOTE.md); [Crest finite NOTE “six certified collars”](../independent_audits/crest_transport_tip_family_20261116/NOTE.md); [Crest asymptotics NOTE “Certified complete circular-collar data”, “Numerical conjecture”](../independent_audits/crest_transport_asymptotics_20261116/NOTE.md). | [canonical-width/verify.py](../independent_audits/real_primitive_tip_family_canonical_width_20261116/verify.py), [crest finite/verify.py](../independent_audits/crest_transport_tip_family_20261116/verify.py), [crest asymptotics/verify.py](../independent_audits/crest_transport_asymptotics_20261116/verify.py) and locked JSON. These finite scripts **do not prove the limiting transport conjecture**. |
-| **13. Complete selected-family H3 and corrected strict independent gain.** Every physical parent/child leaf lies in its full lifted comparison; complete parent foliations have the prescribed minimal bases; source boxes remove positive admissible energy; both children have positive width. | [H3_WIDTH.md, §§2–7](../independent_audits/maximal_native_wave_20261123/H3_WIDTH.md). The corrected tail is \(P_p>13/20,\ C_p<63/50,\ D_p>40/819\). | [new width verifier](../independent_audits/maximal_native_wave_20261123/verify_width.py) rechecks finite whole-domain and omitted-energy premises and reconstructs the tail error by its recurrence plus parameter motion. The SC, all-path and periodization statements are the written proof, not Python theorems. |
-| **14. Positive zero-edge subarc escape and absence of uniform time.** Every nondegenerate selected zero-edge subarc eventually exposes an old edge and saturates; arbitrarily small subarcs have arbitrarily long delays. | [Selected access NOTE, Theorems 6.1–6.2](../independent_audits/maximal_native_wave_20261123/NOTE.md). The actual Chebyshev return and complete attachment fiber supply the proof. | [new access verifier](../independent_audits/maximal_native_wave_20261123/verify.py) checks the endpoint action, open/full-turn distinction, tent interval regressions and long-delay witnesses. Singleton accesses and arbitrary Wave-descendant inheritance are outside the theorem. |
+| **13. Independent local H3 and corrected strict gain.** Every parent/child leaf lies in its full lifted comparison; parent foliations have prescribed minimal bases; source boxes remove positive energy; both children have positive width. No full immersion MARK assumption is used. | [H3_WIDTH.md, §§2–7](../independent_audits/maximal_native_wave_20261123/H3_WIDTH.md). The broad tail is \(P_p>13/20,\ C_p<63/50,\ D_p>40/819\); the [separate corrected route](../independent_audits/tip_family_wave_gain_correction_20261123/NOTE.md) proves \(D_p>11/126\) via actual \(p=13\) isolation and the uniform \(p\ge14\) box. | [new width verifier](../independent_audits/maximal_native_wave_20261123/verify_width.py) rechecks finite whole-domain and omitted-energy premises and reconstructs the tail error. [corrected all-period runner](../independent_audits/tip_family_wave_gain_correction_20261123/verify_all_periods.py) checks the sharper route. SC, all-path and periodization statements remain written proofs. |
+| **14. Positive zero-edge contour subarc escape and no uniform time.** Every nondegenerate selected zero-edge subarc exposes an old edge and saturates under \(\Psi=g_*q_0^{-1}\); arbitrarily small subarcs have arbitrarily long delays. | [Selected access NOTE, Theorems 6.1–6.2 and §3 scope](../independent_audits/maximal_native_wave_20261123/NOTE.md). The actual Chebyshev return and explicit contour attachment fiber supply the proof; native \(G_*\iota^*\) interpretation remains conditional on MARK. | [new access verifier](../independent_audits/maximal_native_wave_20261123/verify.py) checks the contour endpoint action, open/full-turn distinction, tent regressions and long-delay witnesses. Singleton accesses and arbitrary Wave-descendant inheritance are outside the theorem. |
 
 ### Exactly which external theorems are imported?
 

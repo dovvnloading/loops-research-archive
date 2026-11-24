@@ -1,11 +1,14 @@
 # Native interfaces: proof repairs and the remaining stationary gate
 
-**23 November 2026 · Review packet based on `ed64c7a`.**
+**23 November 2026 · Review packet based on `ed64c7a`; integration review
+updated 24 November 2026.**
 
-This packet supplies complete proposed written proofs at several physical
-interfaces and repairs a concrete error in a numerical certificate. The
-selected real-family ideal marking and full-path width comparison now have
-written proofs from the explicitly cited physical input package. The
+This packet supplies written arguments at several physical interfaces and
+repairs a concrete error in a numerical certificate. The selected family's
+intrinsic ideal classes and independent full-path width comparison have
+written proofs from the explicitly cited physical input package. Its full
+immersion-pulled MARK remains open: proper temporal components have not
+been shown to exhaust the retained geometric inverse-trace category. The
 stationary terminal width estimate is reduced to two actual pass-through
 statements. The general pass-through argument, compatible all-scale tower,
 and MLC remain open.
@@ -55,6 +58,14 @@ enclosures are unchanged. The selected-family all-period \(1/100\)
 conclusion survives. Legitimate appearances of \(2/3\) in the limiting
 model are not replaced by (2).
 
+There is also a stronger repaired certificate already integrated from the
+[versioned all-period correction](tip_family_wave_gain_correction_20261123/NOTE.md):
+it isolates the actual p=13 parameter separately and starts the corrected
+uniform parent box at p=14. That proof retains \(P_p>2/3\) and
+\(D_p>11/126\) for p≥13. Equation (2) remains a valid, weaker consequence
+of the single widest corrected box; its inability to prove 2/3 does not
+invalidate the separate stronger certificate.
+
 The production verifier, its dependent M-discharge verifier, their tests,
 current notes, preprint source constants, public November statement, and
 the Lean metric-bound constant have been corrected. A new regression
@@ -76,24 +87,33 @@ The finite parameter packets cover \(p=3,\ldots,12\); the uniform tail uses
 the existing signed-chart analytic estimates. The new notes do not replace
 that analytic tail proof with a finite sampling argument.
 
-### Full ideal marking and proper paths
+### Intrinsic ideal classes and the remaining immersion marking
 
 The [access proof, §§2–4](maximal_native_wave_20261123/NOTE.md) constructs
 the complete hyperbolic ideal circles using Joukowski collars, annulus
 uniformization, and the strip quotient. It proves the subordination
 criterion for every relative-endpoint path class, including integer deck
-classes and distinct accesses to the same physical point. The immersion's
-attachment fiber is derived from proper restrictions; it is not identified
-with the degree-two covering map.
+classes and distinct accesses to the same physical point. The covering
+marking follows from the actual two branches. A separate physical contour
+code \(q_0\) retains the complete attachment boundary as its root fiber;
+it is not a pointwise boundary extension of the inclusion.
 
 A necessary boundary point is proved explicitly. The strict uniform
 Rouché barrier gives an enlarged degree-two source restriction and an
 analytic Jordan outer boundary. Thus every relevant maximal source
-intersection has ideal endpoints. This closes the additional-tail gap
-that would remain if one merely drew the marked inner circle.
+intersection has ideal endpoints. This establishes properness of those
+temporal components. It does not prove that they enumerate every proper
+path in the geometric inverse trace: loop-omitting and retracing paths
+remain in the archive's stated category. In particular, the maximality
+witnesses used in the former §3 proof have not been shown to have a unique
+proper restriction in that category.
 
-These arguments supply local **H2 of the selected tip-family paper**.
-That label is distinct from the global calibration gate `H2_CALIBRATION`.
+Thus the intrinsic portion of local H2 is written, while the full
+immersion-pulled marking, outer maximality and native refinement remain
+open, as recorded in the [merged intrinsic proof, §§5–6](marked_slit_path_bridge_20261123/IDEAL_BOUNDARY.md).
+The code-based connected-arc formula is not promoted to the native A.3.2
+operation without that identification. These local H2 obligations are
+distinct from the global calibration gate `H2_CALIBRATION`.
 
 ### All-path comparison and strict independent gain
 
@@ -117,8 +137,9 @@ independently optimized child suprema, the proof gives
  \tag{3}
 \]
 
-This supplies the local H3 implication from the named physical inputs and
-the newly proved access theorem. It does not assert attainment of the
+This supplies the independent-width comparison from the named physical
+inputs and intrinsic target/covering-source classes. It does not consume
+the unresolved full immersion marking. It does not assert attainment of the
 suprema, simultaneous optimization, or leafwise pairing of both children
 of an optimizing parent. The inner buffered canonical WAD question and
 iterative width amplification are separate. For the actual four-boundary
@@ -132,15 +153,18 @@ coefficients and their positive support remain undetermined.
 
 ### Positive subarcs escape, with a size-dependent clock
 
-The physical cut action gives saturation within five \(G\)-steps for every
-positive original marked interval; the bound is sharp. The genuine
-\(G^3\) Chebyshev return proves that **every nondegenerate zero-edge
-subarc** eventually acquires a whole old edge and saturates.
+The explicitly constructed contour action \(\Psi=g_*q_0^{-1}\) gives
+saturation within five steps for every positive original marked interval;
+the bound is sharp. The genuine \(G^3\) Chebyshev return proves that
+**every nondegenerate zero-edge subarc** eventually acquires a whole old
+edge and saturates under this action.
 An explicit shrinking family shows that the time cannot be bounded
 independently of the starting subarc. Singleton accesses are excluded.
-These are statements about the interval action. Identifying a particular
-Wave descendant's crest with that action, with the needed width charge,
-is still a separate task.
+These are statements about the geometric contour-code action. Their
+interpretation as native \(G_*\iota^*\) dynamics is conditional on the
+open MARK identification. Identifying a particular Wave descendant's
+crest with either interval action, with the needed width charge, is an
+additional separate task.
 
 ## 3. The stationary width estimate needs only two actual hits
 
@@ -196,10 +220,10 @@ the dynamical marking filters.
 
 | Interface | Written result | Exact limitation |
 |---|---|---|
-| Native coarse connectors | [The four tile images occupy exactly two coarse inverse-image components](maximal_root_landing_20261123/NOTE.md). A lower-root coarse-only prescription cannot reach 44 of the 88 specified lifts, including four native root witnesses. Two initial sheets, or an allowed native W prefix, repair existence. | This corrects the connector prescription. It does not compute the missing full nonabelian F9 crossing words or invalidate the original eight native root witnesses. |
+| Native coarse connectors | [The four tile images occupy exactly two coarse inverse-image components](maximal_root_landing_20261123/NOTE.md). A lower-root coarse-only prescription cannot reach 44 of the 88 specified lifts, including four native root witnesses. Two initial sheets, or an allowed native W prefix, repair existence. | The separate [physical connector reconstruction](issue62_physical_connector_reconstruction_20261123/NOTE.md) uses the allowed prefixes and computes all 88 words in one specified compatible basis, with the original 8/80 root classification. The obstruction concerns the stricter coarse-only paths; transport to independently prescribed historical whiskers remains separate. |
 | Physical cutpoint pruning | [A singleton cut fiber under a monotone dendrite quotient gives exact full-hull marked incidence](maximal_global_closure_20261123/CUTPOINT_PRUNING.md). The periodically repelling Kiwi quotient supplies an actual physical carrier, including critical-fiber and forward-invariance arguments. | Applying this to a separately fixed native carrier still requires its monotone quotient, singleton cut fibers, and full-hull identification. Hull incidence alone is not a retained Wave occurrence. |
 | Geometric collisions | [The critical-cap proof](maximal_global_closure_20261123/MONODROMY_COLLISION.md) is strengthened by [a connected-carrier homotopy argument](maximal_global_closure_20261123/CONNECTED_CARRIER_NONCOLLISION.md). The actual closed selected limb replaces a connected contact subsegment of the parent. Two further compatible selected Wave stages exclude the remaining common-image possibility. | Canonically anchored ordered occurrences, native critical-contour locality, simple target paths, and sequential survival remain explicit. The parent's intervening contact need not be connected. General N2 extraction remains open. |
-| Terminal quasiconformal rigidity | [An explicit Chebyshev self-conjugacy fixes the Julia interval, three normalizing points, and all ray angles while remaining nonconformal](maximal_global_closure_20261123/EXTERIOR_GAUGE_REPAIR.md). The corrected implication excludes Fatou-set support before invoking Julia no-line-field rigidity. | Exterior Böttcher agreement suffices when \(K=J\). Bounded Fatou components require conformality there as well. The global pullback and no-line-field hypotheses are not supplied for arbitrary mixed towers. |
+| Terminal quasiconformal rigidity | [An explicit Chebyshev self-conjugacy fixes the Julia interval, three normalizing points, and all ray angles while remaining nonconformal](maximal_global_closure_20261123/EXTERIOR_GAUGE_REPAIR.md). Exterior/Fatou support control plus the Julia no-line-field premise makes the chosen map conformal. | For infinitely renormalizable quadratics the separate [hybrid-uniqueness proof](marked_slit_path_bridge_20261123/RIGIDITY_AND_REMAINING_GAP.md) gives parameter equality without exterior conformality of that map. Neither route supplies the required global conjugacy, no-line-field theorem or parameter-neighborhood basis for arbitrary towers. |
 
 ## 5. What still prevents the MLC conclusion
 
@@ -218,13 +242,16 @@ arithmetic error.
 Beyond that stationary step, the global program still requires one
 compatible physical protected tower, quantitative calibration on that
 same tower, nondegenerate marked compactness, and terminal rigidity and
-phase–parameter control in the required parameter class. The local H2/H3
-proofs in §2 do not discharge the similarly numbered global gates.
+phase–parameter control in the required parameter class. The intrinsic
+class and independent-width proofs in §2 do not discharge full local
+immersion MARK or any similarly numbered global gate.
 
 The [proof register](../../formalization/PHYSICAL_BRIDGES.md) records
-selected-family results as **written**, the stationary terminal estimate
-as **conditional**, and the general stationary and global construction,
-calibration, compactness, and rigidity gates as **open**. All 465 historical
+the intrinsic class, independent-width and contour-code results as
+**written**, native contour interpretation and the stationary terminal
+estimate as **conditional**, and full MARK and the general stationary and
+global construction, calibration, compactness, and rigidity gates as
+**open**. All 465 historical
 obligations retain their content and statuses. The current November
 large-period statement is corrected without changing its status or the
 number of research-update entries.
@@ -239,6 +266,8 @@ python -B research/independent_audits/maximal_global_closure_20261123/verify_cut
 python -B research/independent_audits/maximal_global_closure_20261123/verify_exterior_gauge.py
 python -B research/independent_audits/maximal_native_wave_20261123/verify.py
 python -B research/independent_audits/maximal_native_wave_20261123/verify_width.py
+python -B research/independent_audits/tip_family_wave_gain_correction_20261123/verify_all_periods.py
+python -B research/independent_audits/issue62_physical_connector_reconstruction_20261123/verify.py --check-manifest
 python -B research/independent_audits/tip_family_limiting_wave_gain_20261116/test_verify.py
 python -B research/independent_audits/tip_family_finite_p_wave_gain_20261116/test_verify.py
 python -B research/independent_audits/tip_family_hypothesis_M_discharge_20261116/test_verify.py
@@ -272,8 +301,9 @@ For Lean, use the pinned toolchain and run `lake build` in
 existing metric-witness implication with the corrected \(13/20\) constant;
 it does not formalize the new analytic realization proofs.
 
-For mathematical review, start with the physical input package and H2,
-then read H3's full-path and density arguments, and separately read the
+For mathematical review, start with the physical input package, intrinsic
+ideal classes and retained MARK gap, then read the independent full-path
+and density arguments, and separately read the
 exit theorem's Borel, cyclic-cover, and failed-lift arguments. The exact
 remaining premises appear at the conclusion of each note. Existing BOWR
 measurability, filled-graph degree, C4 winding, and November competitor

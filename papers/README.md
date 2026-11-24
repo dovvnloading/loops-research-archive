@@ -27,7 +27,10 @@ Read the [dated erratum and new full-path
 proof](../research/independent_audits/maximal_native_wave_20261123/H3_WIDTH.md)
 with any earlier PDF, and the [current review
 packet](../research/independent_audits/native_frontier_20261123.md) for the
-selected-family H2/H3 proofs and their remaining global boundaries.
+intrinsic selected-family classes, independent widths, and the retained full
+immersion MARK gap. The [separate split certificate](../research/independent_audits/tip_family_wave_gain_correction_20261123/NOTE.md)
+recovers the stronger 11/126 margin by isolating actual p=13 and starting
+the corrected uniform box at p=14. Both arithmetic routes remain valid.
 No July paper or source-locked manuscript is changed by this correction.
 
 ## Logical sequence

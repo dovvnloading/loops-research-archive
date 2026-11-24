@@ -20,10 +20,19 @@ that the requested coarse-only defect must lie in `H` cannot hold. The
 native rooted witnesses remain valid; it is the proposed common-base
 coarse-only representation of them that fails.
 
-This does not compute the missing literal words in an unspecified archived
+This does not compute literal words in an independently specified archived
 cut basis, prove KKL unique proper restriction, or establish MLC. It replaces
 an impossible simultaneous calibration with a realizable two-sheet
 groupoid construction and locates a specific mismatch in the current task.
+
+**Integration clarification, 24 November 2026.** The separate
+[physical ray-cut reconstruction](../issue62_physical_connector_reconstruction_20261123/NOTE.md)
+now computes all 88 words, with eight in the root subgroup and 80 outside,
+in one explicitly constructed compatible nine-cut basis. Its prefixes lie
+in `W\K9`, exactly as permitted in §4 below. Thus its word certificate and
+the 44-row coarse-only obstruction concern different path requirements
+and are compatible. The historical unspecified-gauge `null` fields remain
+unchanged; they are not the status of the new physical certificate.
 
 ## 1. Precisely which objects are being compared
 
@@ -373,9 +382,12 @@ It does not certify rays, Jordan separation, homotopy classes, or MLC.
 single rooted base sheet and exclusively coarse connectors is disproved
 under the archive's realized geometry. The narrow corrected statement is
 (10), with either the legitimate W-prefix construction (12) or the
-minimal two-component construction (13). Full based F9 computation for
-selected, correctly typed paths and the proof-used KKL marking remain
-open. H1--H4, universal tower closure, and MLC remain open.
+minimal two-component construction (13). The separate physical
+reconstruction supplies full based F9 words for all actual root-sector
+angles, all four original tiles and every integer shift in its fixed
+compatible gauge. Transport to an additional prescribed historical access
+system and the proof-used full KKL marking remain open. H1--H4, universal
+tower closure, and MLC remain open.
 
 Prepared with OpenAI GPT-6 Astra Pro assistance for proof search,
 primary-source checking, and exact bookkeeping. No independent external

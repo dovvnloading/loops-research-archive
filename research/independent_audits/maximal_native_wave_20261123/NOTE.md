@@ -1,4 +1,4 @@
-# Selected real slits: a complete access atlas and escape of positive zero-edge subarcs
+# Selected real slits: an intrinsic access atlas and contour subarc dynamics
 
 **Date:** 2026-11-23.  **Nature of contribution:** a written analytic/topological
 proof for the selected real primitive-tip family, with exact finite checks of
@@ -8,12 +8,17 @@ derivation and verifier; no new human mathematical verification is represented.
 
 ## Result and dependency boundary
 
-The new argument addresses the specific **selected-family H2** in
+This note supplies intrinsic ideal-boundary and contour results relevant to
+the specific **selected-family H2** in
 [the v2 scope](../../../papers/tip_family_preprint_v2_20261116/sections/referee_scope.tex),
 and the positive **subatom zero-edge escape** left open in
 [the family theorem](../../tip_family_theorem/THEOREM.md) and
 [the November 15 attachment audit](../issue40_native_attachment_edge_incidence_20261115/NOTE.md).
-It does not assume H2 in its proof.
+The integration review of 2026-11-24 retains **full immersion MARK/H2 as
+open**. The temporal-component argument in the original §3 does not
+establish the geometric-trace uniqueness required by KKL A.3.2. Section 3
+below states that gap explicitly; none of the retained results assumes it
+has been repaired.
 
 From the physical degree-two restrictions, actual filled intervals, and
 signed real orders specified in §1, we obtain:
@@ -23,11 +28,12 @@ signed real orders specified in §1, we obtain:
    The identification preserves and reflects proper paths and their
    relative-endpoint subordination classes.  The ten/twenty incidence table
    is derived from these coordinates and the actual two monotone branches.
-2. An exact connected-arc formula for the inclusion's boundary restriction.
+2. An explicit monotone contour code and its connected-arc inverse images.
    Its one nontrivial fiber is the **complete** attachment boundary.  The
    formula distinguishes open, closed and half-open inputs.
-3. Every positive original marked interval, and its closure, saturates in at
-   most **five iterations of \(G=f^p\)**.  Five is sharp for this marking.
+3. For the contour action \(\Psi=g_*q_0^{-1}\), every positive original
+   marked interval, and its closure, saturates in at most **five iterations**.
+   Five is sharp for this marking.
    Original marked inputs commute with closure at every iterate in this
    family, for a geometric reason that fails for arbitrary finer inputs.
 4. Every nondegenerate zero-old-edge **subarc**, including subarcs strictly
@@ -40,7 +46,12 @@ signed real orders specified in §1, we obtain:
    \]
    There is **no bound independent of the initial subarc**: arbitrarily
    small positive subarcs can avoid all old edges for arbitrarily many
-   iterations of this same physical map.
+   iterations of this contour action for the same physical map.
+
+Items 3–4 concern \(\Psi\). Their identification with the native composite
+\(G_*\iota^*\) remains conditional on the open immersion-marking bridge.
+The analytic Jordan boundary in Lemma 1.1 and the intrinsic all-winding
+class criterion in §2 do not supply that identification.
 
 The physical input package is established by the **written** arguments in
 [the family bridge proof, §§1–3](../../tip_family_theorem/PHYSICAL_BRIDGES.md),
@@ -63,13 +74,14 @@ subsequently required a complete geometric argument for that claim.
 | Existing result or open item | Addition in this note |
 |---|---|
 | Two slit approaches and a proposed H2 identification | An explicit annulus-uniformization/strip calculation of the **hyperbolic ideal quotient**, followed by a criterion retaining every integer relative winding (§2). |
-| The already tabulated inclusion blocks | A physical contour code and connected-arc proof, including singleton attachment fibers and all endpoint conventions (§3); the old table is re-derived, not advertised as new (§4). |
+| The already tabulated proposed inclusion blocks | A physical contour code with singleton attachment fibers and all endpoint conventions (§3); the old table is re-derived (§4), while its full native interpretation remains open. |
 | Whole zero-edge atom escape and saturation | A sharp bound for **every original marked interval**, and an all-iterate closure theorem using the singleton fibers and invariant marked cut set (§5). |
-| Arbitrary positive fine zero-edge subarcs explicitly left open | A genuine Chebyshev return argument proving escape for every such arc, plus a proof that no initial-size-independent escape time exists (§6). |
+| Arbitrary positive fine zero-edge subarcs explicitly left open | A Chebyshev return argument proving escape for the contour action on every such arc, plus a proof that no initial-size-independent escape time exists (§6). Its native interpretation remains conditional. |
 | Full-path envelope arguments stated subject to the marking bridge | The complete ideal-lift criterion supplies their class-inclusion part; numerical SC competitors and excluded-energy estimates remain separate (§7). |
 
-The conclusion concerns **the interval action** of the actual inclusion and
-covering on these slit surfaces.  It does not assert that the image of a
+The interval conclusion concerns the explicit contour inverse image
+followed by the actual covering on these slit surfaces. It does not assert
+that this is the native immersion restriction, or that the image of a
 parent crest is contained in each of its child crests.  It does not identify
 arbitrary Wave descendants with those interval images, prove the full H3
 extremal comparison, or settle Issue #40 in the general non-locally-connected
@@ -208,9 +220,10 @@ to its two endpoints, and every maximal open component of its intersection
 with \(\Omega'\) has ideal endpoints.  At an interior point of \(T'\), a
 connected tail must eventually remain in one of the two local slit banks;
 at a slit tip there is a single access; at \(\partial V\), use its Jordan
-collar.  Thus these maximal components really are the proper source
-components used in A.3.2, including for paths with many such components.
-This fact will be used in the uniqueness argument in §3.
+collar. Thus every such temporal component is a proper source path.
+This statement does not enumerate all proper paths contained in a
+geometric inverse trace, and does not imply the uniqueness premise in
+A.3.2. Retracing paths in a single component remain possible; see §3.
 
 ## 2. The hyperbolic ideal circles and every deck access
 
@@ -300,12 +313,13 @@ endpoint representatives they include an integer deck displacement.  The
 criterion (2.2) quantifies over **every** proper path.  It preserves and
 reflects the A.1 exclusion of paths subordinate to at most two atoms,
 simplicity, laminations, and the minimal base and ends used to define a
-Wave.  This proves the complete path-class part of the marking comparison.
+Wave. This proves the intrinsic path-class comparison on each marked
+surface, independently of the immersion-pulled marking.
 The same strip argument handles paths ending on the outer circle; paths
 between the two different boundary components are not subordinate to an arc
 of one boundary component.
 
-## 3. The actual inclusion restriction, including the full root fiber
+## 3. The contour inverse image and the open native restriction bridge
 
 Use coordinates increasing from the left tip along the upper bank.  Set
 
@@ -345,81 +359,64 @@ Its one non-singleton fiber is
 
 This is the complete two-bank boundary of the attachment, including the two
 distinct source gates at \(\ell\) and its far tip \(-r\).  Formula (3.2)
-is **not the boundary extension of the holomorphic inclusion**.  It records
-relative path subordination, and will only be used for that purpose.
+is **not the boundary extension of the holomorphic inclusion**. It is an
+explicit geometric contour correspondence. Its identification with KKL's
+immersion-pulled marking is a separate, unresolved claim.
 
-### Lemma 3.1 — connected-arc pullback in a pair of nested real slits
+### Lemma 3.1 — connected-arc inverse images of the contour code
 
-For an open or closed connected inner ideal arc \(J\), the connected-arc
-restriction defined by the proper-path criterion of KKL A.3.2 is
+Define the contour operation on inner ideal subsets by
 
 \[
-                  \iota^*J=q_0^{-1}(J).                 \tag{3.4}
+                  R_0(J):=q_0^{-1}(J).                 \tag{3.4}
 \]
 
-The same formula holds for a half-open arc and for a singleton.  In
-particular the source-root fiber is the **closed** arc \(B_X\).  Maximality
-here is among all subsets of the full source ideal boundary, as in A.3.2,
-not only among connected arcs on its inner circle.
+For an open, closed or half-open proper connected arc \(J\), its inverse
+image is the connected arc with the endpoint conventions below. For a
+singleton different from the root it is a singleton; for the root it is
+the **closed** arc \(B_X\).
 
-**Proof.** On either old bank \(T\setminus\{\ell\}\), the actual inclusion
-extends to the same ideal point.  Thus its restriction there is the
-ordinary bank-preserving inverse correspondence of (3.2).
+**Proof.** On each common old bank, (3.2) is a strictly increasing
+bank-preserving correspondence. Its only constant interval is precisely
+\(B_X\), whose image is 0. A monotone degree-one lift therefore has
+interval point fibers and preserves their cyclic order. Taking the
+inverse image of the defining endpoint inequalities gives (3.5).
+The full block \(B_X\) is included exactly when \(0\in J\).
+This proves the stated geometric inverse-image rules. \(\square\)
 
-The only part of \(T'\) absent from \(T\) is the connected interval \(X\),
-attached at the single terminal access 0 of \(T\).  A source collar of its
-complete boundary has two gates, one on each bank above \(\ell\), joined
-around \(-r\).  In the target this collar, with its ends completed along
-\(X\) when necessary, can be contracted through the target interior to an
-arbitrarily small collar of the old terminal access.  Thus the full block
-\(B_X\) is eligible precisely when that access belongs to \(J\).  No proper
-sub-block can replace it: completing a collar crosscut on either bank of
-\(X\), or around its far end, gives a proper target path subordinate to the
-old terminal access.  All of those source collar classes must be retained.
+### The unresolved identification with KKL A.3.2
 
-To check the defining implication for an arbitrary path, suppose a target
-proper path has one source restriction and that restriction is subordinate
-to \(q_0^{-1}(J)\).  By Lemma 1.1, every maximal source intersection is
-proper, so there is exactly one such component.  Both of its endpoints
-are on the inner source circle.  Each omitted initial or final tail is
-connected and lies in the complement of \(\Omega'\) within \(\Omega\).
-That complement consists of the outer part \(\Omega\setminus V\) and the
-attached interval \(X\), separated by the positive gap \(T'\Subset V\).
-At an inner endpoint the tail therefore stays in \(X\), if it is nonempty;
-it cannot reach the outer part without creating another proper source
-component.  Contract those
-portions toward the old root as just described.  The endpoints now lie in
-\(J\), and the lifted boundary interval is carried into the chosen lift of
-\(J\).  The integer deck displacement is unchanged: this is a contraction
-of an attached interval, while the annular generator surrounding \(T'\)
-maps to the generator surrounding \(T\).  Lemma 2.2 therefore says that the
-target path is subordinate to \(J\).
+Equation (3.4) is a definition of a contour operation, **not a proof of**
+\(\iota^*J=R_0(J)\). KKL A.3.2 defines the raw pullback of a path by
+all proper paths contained in its geometric inverse trace. The archive
+retains that category, including retracing paths, as recorded in the
+[geometric-trace audit, §§1 and 4](../../mlc_unified/canonical_kl_geometric_trace_proper_end_response.md)
+and the [retained immersion gap, §§5–6](../marked_slit_path_bridge_20261123/IDEAL_BOUNDARY.md).
+Its ideal-set maximality condition uses uniqueness in that raw category.
 
-For maximality, first enlarge the candidate source arc beyond either
-endpoint.  If the new part is on an old bank, take a sufficiently thin
-source collar path whose corresponding target endpoint lies outside \(J\).
-The same path in the target fails subordination to \(J\).  If the enlargement
-enters the attachment block while 0 is excluded from \(J\), complete a
-source collar crosscut to the old terminal access along \(X\).  The completed
-target path has a unique source restriction but has an endpoint at 0, so
-again it is not subordinate to \(J\).  Both constructions can be made in a
-small collar of the real slits; they have no extra outer excursion.
-These are pointwise exclusions, not just exclusions of connected
-enlargements: a small source collar loop with both ideal endpoints at any
-extra inner access is subordinate to that singleton, and the same
-completion gives the forbidden target endpoint.  Finally, an extra outer
-source access is excluded by a small collar loop based at that access on
-the analytic curve \(\partial V\).  Complete both of its endpoints through
-\(U\setminus\overline V\) to \(\partial U\).  The target path has exactly
-that one proper source component, subordinate to the added singleton,
-but its outer endpoints prevent subordination to the inner \(J\).
-Consequently no disconnected inner or outer access can be adjoined.
-If an
-endpoint of \(J\) is included, its corresponding access (or the whole root
-fiber) is included.  If it is excluded, that access or fiber is excluded.
-This proves (3.4), including the endpoint conventions.  It is a direct
-real-slit proof of the attachment rule in KKL Proposition 6.5; no global
-monotone quotient is assumed for a general KKL carrier.  \(\square\)
+The original argument in this section silently replaced that uniqueness
+by the existence of one maximal temporal component. Lemma 1.1 proves
+properness of such components, but cannot justify this replacement.
+For example, let \(\delta:(0,1)\to\Omega'\) be an embedded proper
+crosscut in an inverse trace. For each \(a\in(0,1)\), traverse
+\(\delta((0,a])\) from its ideal endpoint to \(\delta(a)\) and back.
+The resulting path has that same ideal endpoint at both ends, is proper,
+and has trace contained in the crosscut. Different turning points give
+different traces, hence distinct paths even up to reparametrization.
+They remain available when the source boundary is analytic Jordan.
+
+Consequently a collar crosscut or collar-loop witness with one temporal
+component does not by itself satisfy the raw uniqueness premise. The
+marked-path and single-pulled-interval filters are imposed only after
+the immersion-pulled marking has been defined; they cannot establish it
+without a further argument. In particular the original pointwise
+maximality witnesses do not exclude all additional inner or outer ideal
+subsets. The full native immersion marking, including the outer
+whole-circle pullback and required refinement, remains **open**.
+
+The explicit contour code, its full attachment fiber, and the dynamical
+results below survive this distinction. Their use as statements about
+the native operator requires a separate proof of the identification.
 
 An equivalent precise endpoint rule is useful.  For a monotone lift
 \(\widetilde q_0\), write
@@ -433,18 +430,14 @@ An equivalent precise endpoint rule is useful.  For a monotone lift
 The analogous half-open rules choose the indicated endpoint independently.
 Thus closing an arbitrary finer arc **can** add an entire attachment block.
 
-The outer target whole-circle atom pulls back to the source outer circle.
-For completeness, Lemma 1.1 makes every maximal source component proper.
-If there is only one and both its endpoints are outer, its omitted tails
-stay in \(\Omega\setminus V\), by the same separation argument.  They
-cannot reach an inner target endpoint without passing through an additional
-source component.  Thus both target endpoints are outer.  Every such
-relative path class is subordinate to that whole circle, by the strip
-criterion.  Inner collar paths exclude adjoining any inner access to this
-pullback.  The inclusion is not asserted proper on the source outer circle;
-that physical curve lies inside \(U\).
+Each finite-modulus slit surface has its own genuine outer ideal circle
+by §2. The covering sends the source outer circle to the target outer
+circle. These intrinsic and covering statements do not establish the
+immersion pullback of the whole-circle atom: the physical source outer
+curve lies inside \(U\), and the raw uniqueness/maximality issue above
+also affects the proposed outer refinement.
 
-## 4. Deriving the native marking, covering, and refinement
+## 4. Intrinsic marking, covering, and contour refinement
 
 KKL §2.5 defines the vertices from the actual small filled sets, branch
 points, and dividing fixed point.  Here the tree is an interval and has no
@@ -486,9 +479,9 @@ when \(u\) increases by \(1/2\).  Its total increase over a source turn is
 2.  This formula fixes the sheet order and treats every deck translate.
 
 Using the physical \(q_0\) of (3.2), not (4.3), gives the following
-**different** inclusion restrictions:
+**different** contour inverse images:
 
-| Target atom | Full connected inclusion pullback | Cover-pushed atom word |
+| Target atom | Full contour inverse image \(R_0(I_j)\) | Cover-pushed atom word |
 |---|---|---|
 | \(I_0\) | \(S_{18},S_{19},S_0,S_1,S_2\) | \(I_8,I_9,I_0,I_1,I_2\) |
 | \(I_1\) | \(S_3,S_4\) | \(I_3,I_4\) |
@@ -508,31 +501,32 @@ and **all** of \(B_X\).  The other rows follow in the same way from (4.2).
 Internal source cuts in every row are included, while its two outer cuts
 are omitted for an open input.
 
-These ten blocks are consecutive and disjoint.  Their endpoints are
-source covering cuts; hence the twenty-atom covering marking refines the
-inclusion marking.  Its end-atoms are on the old slit, so the inclusion
-is end-proper on every inner block.  Only \(I_0\)'s block contains
-nonproper interior sides.  The two outer whole-circle atoms are compatible
-with the covering and the outer restriction described in §3.
+These ten blocks are consecutive and disjoint. Their endpoints are
+source covering cuts; hence the twenty-atom covering marking refines this
+contour partition. Its end-atoms are on the old slit. Only \(I_0\)'s block
+contains interior sides of the attachment. This finite refinement is not
+yet the refinement of an immersion-pulled marking required by KKL A.12.
 
-Thus the hypotheses of KKL A.12 are checked on these actual surfaces,
-rather than inferred from table consistency.  Its filtered restrictions
-are literally the proper components of the same physical path, with the
-A.1 short classes and single-inclusion-block classes removed.  Lemma 2.2
-identifies those classes in both directions.  Their number can depend on
-the geometric representative, as the archived crossing/avoiding example
-already proves; the present result does not replace the operation by a
-function on endpoint words.
+Lemma 2.2 identifies intrinsic marked path classes on both surfaces,
+including all windings. The actual annular covering gives (4.3). The
+separate identity of the contour partition with the native immersion
+marking remains unproved for the raw geometric-trace path category.
+The archived crossing/avoiding examples also show why representative
+dependence cannot be replaced by a function on endpoint words.
 
-This completes the selected-slit ideal-marking implication H2 from the
-physical input package.  Since the physical and model domains are the
+Thus this section supplies the intrinsic target marking, its covering
+pullback, and the contour refinement, while full H2/MARK stays open.
+Since the physical and model domains are the
 same subsets of the same \(z\)-plane, the identification is also the
 conformal identity on their interiors.  No conformal-width invariance is
 claimed for the nonconformal code \(q_0\).
 
 ## 5. Exact endpoint dynamics and the sharp five-step theorem
 
-Let \(\Phi=g_*\iota^*\) act on connected inner ideal arcs.  Assign integer
+Let \(\Psi=g_*R_0=g_*q_0^{-1}\) act on connected inner ideal arcs.
+All results in §§5–6 concern this explicit contour action. They apply
+to the native composite \(G_*\iota^*\) only if the open identification
+in §3 is proved. Assign integer
 labels to the target cuts so that \(I_j=(j,j+1)\) in a lifted indexing
 coordinate, modulo 10.  Source atoms have period 20.  The table just derived
 gives the target-cut lift
@@ -557,8 +551,8 @@ Every nonempty positive-length connected multi-interval \(J\) in the
 original ten-atom marking satisfies
 
 \[
- \Phi^5(J)=C_T,\qquad
- \Phi^n(\overline J)=\overline{\Phi^n(J)}\quad(n\ge0). \tag{5.2}
+ \Psi^5(J)=C_T,\qquad
+ \Psi^n(\overline J)=\overline{\Psi^n(J)}\quad(n\ge0). \tag{5.2}
 \]
 
 The same five-step bound holds for half-open intervals with original marked
@@ -573,7 +567,7 @@ endpoint is the full circle.  A span below 10 is the corresponding proper
 arc.  This is the full endpoint rule, including the possible equality case.
 
 In particular singleton endpoint fibers give
-\(\iota^*\overline J=\overline{\iota^*J}\).  The continuous covering map
+\(R_0(\overline J)=\overline{R_0(J)}\).  The continuous covering map
 commutes with closure of these compact arcs.  Images have original marked
 endpoints or are full/punctured circles; induction proves the second
 identity in (5.2).  This is a special property of this family and marking,
@@ -603,7 +597,7 @@ the whole circle.  Reflection gives \(I_7\).  The remaining times follow
 from the same rows: \(I_0\) has a five-atom first image whose next source
 span is 11; \(I_5\to I_0\); \(I_2,I_8\to I_5\); and the edge atoms use the
 displayed three remaining nontrivial rows.  Every positive marked
-multi-interval contains a whole atom, and \(\Phi\) is monotone, proving the
+multi-interval contains a whole atom, and \(\Psi\) is monotone, proving the
 bound.  \(\square\)
 
 The equality case in the covering rule is real.  For example the open
@@ -617,7 +611,7 @@ source cut indexing its closed lift is \([19,22]\), with interiors
 \(S_{19},S_0,S_1\).  Its covered image has closed cut span \([9,12]\), hence
 
 \[
-             \Phi(\{0\})\supset I_9\cup I_0\cup I_1.  \tag{5.5}
+             \Psi(\{0\})\supset I_9\cup I_0\cup I_1.  \tag{5.5}
 \]
 
 Closing a fine arc at that access can therefore add a positive interval,
@@ -639,7 +633,7 @@ inside those atoms; it is not a whole-atom convention.
 ### Theorem 6.1 — every nondegenerate zero-edge subarc saturates
 
 Let \(J\) contain a nonempty open subarc of one of those four atoms.  Then
-some \(\Phi^n(J)\) contains a complete side of \(E_0\), and a later iterate
+some \(\Psi^n(J)\) contains a complete side of \(E_0\), and a later iterate
 is \(C_T\).  More precisely, select an interior compact nondegenerate
 subarc, avoiding terminal tips unless one is already present.  In at most
 \(d\le2\) iterations it either exposes the root or becomes a side arc over
@@ -665,10 +659,9 @@ and saturation occurs within two more steps, giving (0.1).
 point \(0\in K_0\) has two slit accesses in \(C_T\).  An open side arc
 containing one of them maps under the annular covering to an open arc
 containing the single right tip \(r\).  The next image contains the single
-left tip \(\ell\).  There has been no attachment loss: the first two
-inclusion restrictions are proper at the relevant old-side accesses.
-On the next restriction the **entire** block \(B_X\) is inserted by Lemma
-3.1.  Its image is the two-sided contour of
+left tip \(\ell\). The relevant old-side accesses have singleton contour
+fibers in these first two steps. On the next contour inverse image the
+**entire** block \(B_X\) is inserted by Lemma 3.1.  Its image is the two-sided contour of
 
 \[
                   G(\overline X)=[\ell,b],             \tag{6.3}
@@ -682,7 +675,7 @@ which saturates in two further steps by Theorem 5.1.
 
 Until this event, a side subarc strictly inside a little interval is
 transported by the actual real branch and its corresponding slit bank.
-This follows from (3.4), since the only nontrivial inclusion fiber is at
+This follows from (3.4), since the only nontrivial contour fiber is at
 \(\ell\).  If a \(K_1\)-arc contains its terminal access \(r\), it reaches
 \(\ell\) in one step and exposes the attachment in the next.  If a
 \(K_2\)-arc already contains \(\ell\), it exposes it immediately.
@@ -708,13 +701,13 @@ is doubled at each return.  If all of its first \(N+1\) images avoided
 For \(N=\lceil\log_2(1/\delta)\rceil\), however, its putative length at
 time \(N\) is \(2^N\delta\ge1\), a contradiction.  Thus for some
 \(k\le N\), \(F^k(A)\) contains 0 in its interior.  Before that time the
-native arc has stayed in the corresponding little-set sides, unless an
+contour arc has stayed in the corresponding little-set sides, unless an
 earlier root exposure has already proved the result.  At that time the
 three-step critical-access mechanism gives (6.2) and then (0.1).
 
 If the original \(J\) has closed endpoints or crosses a marked endpoint,
-work with the chosen open interior subarc.  Monotonicity of the actual
-restriction and covering puts all of its images inside the images of
+work with the chosen open interior subarc. Monotonicity of the contour
+inverse image and covering puts all of its images inside the images of
 \(J\).  Thus no unjustified interchange of closure and restriction is used
 for these finer subarcs.  \(\square\)
 
@@ -725,8 +718,8 @@ does not enter it.
 ### Theorem 6.2 — a uniform bound over all positive subarcs is false
 
 For this same fixed physical \(G\), and for every integer \(N\ge1\), there
-is a positive zero-edge open subarc whose first \(3N\) images contain no
-old edge.
+is a positive zero-edge open subarc whose first \(3N\) images under
+\(\Psi\) contain no old edge.
 
 **Proof.** In the angular coordinate (6.1), choose
 
@@ -779,8 +772,10 @@ omitted-energy subtraction, or the claimed numerical strict defect.
 Those remaining statements need their own domain and foliation checks.
 The separate [H3_WIDTH.md](H3_WIDTH.md) now supplies those checks, including
 both child widths' positivity and the corrected strict independent defect.
-It uses the present note as its actual ideal-class input; the interval
-results in this note alone do not imply that width conclusion.
+It uses only the intrinsic ideal-class criterion in §2 and the covering
+marking in §4. These are the SLIT-CLASSES input and do not require the
+unresolved immersion MARK identification in §3. The contour dynamics in
+this note alone do not imply that width conclusion.
 
 In particular, the new interval saturation theorem must not be substituted
 for a theorem about restrictions of every leaf or inheritance of a closed
@@ -798,13 +793,14 @@ python3 -B research/independent_audits/maximal_native_wave_20261123/verify.py
 The checker independently propagates outward 640-bit dyadic intervals from
 the ten already isolated \(p=3,\ldots,12\) parameter cells.  It checks the
 whole real derivative sign, brackets the dividing fixed point, derives the
-covering and inclusion labels from physical interval samples after the
+covering and contour labels from physical interval samples after the
 complete-cut argument, and derives (5.1) from those labels.  It checks all
 370 nontrivial original marked open/closed/half-open states, the sharp
 five-step bound, closure commutation, four exact open-halfturn examples,
 and deck-equivariance.  It also checks 2,780 rational tent intervals and
 long-avoidance examples through \(N=1000\).  These are finite regressions
-of the written proof, not its analytic justification.  Only this new
+of the written contour proof, not its analytic justification or a check
+of the raw geometric-trace uniqueness needed for MARK. Only this new
 directory's result manifest is written with `--write`.
 
 The exact analytic inputs and uses are:
@@ -812,14 +808,16 @@ The exact analytic inputs and uses are:
 | Source | Result used here | Use and checked hypotheses |
 |---|---|---|
 | Douady–Hubbard, *On the dynamics of polynomial-like mappings* (1985), [Proposition 2 and Theorem 1](https://doi.org/10.24033/asens.1491) | Connectedness and straightening of the actual degree-two return | The return has one trapped critical point; the three-point critical portrait selects \(z^2-2\). The full restricted filled set is the named interval by the bridge proof. |
-| Annulus uniformization and Schwarz reflection across analytic arcs | Round-annulus model and inner-boundary extension | The Joukowski image contains a full inner collar and is bounded; its inner circle is analytic. This inner-circle identification uses no outer Jordan regularity; the distinct proper-component argument uses Lemma 1.1. |
+| Annulus uniformization and Schwarz reflection across analytic arcs | Round-annulus model and inner-boundary extension | The Joukowski image contains a full inner collar and is bounded; its inner circle is analytic. This inner-circle identification uses no outer Jordan regularity; temporal-component properness uses Lemma 1.1 and does not imply raw-trace uniqueness. |
 | Kahn–Kapiamba–Lyubich, [arXiv:2606.27272v1, §2.5](https://arxiv.org/html/2606.27272v1#S2.SS5) | Definition of the native Hubbard continuum and its vertices | The actual disjoint little filled intervals and dendrite hull give \(T\); there are no extra branch vertices. |
-| KKL [§6.1, Propositions 6.5–6.6](https://arxiv.org/html/2606.27272v1#S6.SS1) | Attachment-complete boundary restriction and combinatorial marking | The real-slit proof in §3 explicitly realizes its complete attachment rule; §4 derives the refinement on the physical cuts. |
+| KKL [§6.1, Propositions 6.5–6.6](https://arxiv.org/html/2606.27272v1#S6.SS1) | Attachment-complete boundary restriction and combinatorial marking | Section 3 realizes the proposed attachment rule as an explicit contour code. Its native immersion interpretation and full A.12 refinement remain open. |
 | KKL [Appendix A.1](https://arxiv.org/html/2606.27272v1#A1.SS1) | Hyperbolic ideal boundary, subordination, marked paths, Waves | The strip computation identifies the exact boundary quotient; Lemma 2.2 treats all deck classes and the short-path exclusion. |
-| KKL [Appendix A.3.2, Proposition A.12](https://arxiv.org/html/2606.27272v1#A1.SS3.SSS2) | Proper-component restriction and refined path-chain condition | The source marking refines the derived inclusion blocks; the operation remains representative-dependent and set-valued. |
-| KKL [Appendix A.3.4](https://arxiv.org/html/2606.27272v1#A1.SS3.SSS4) | Distinct cover/inclusion composite and open/closed warning | The endpoint-fiber rule (3.5) explains both the original-cut commutation and the finer root-cut failure. |
+| KKL [Appendix A.3.2, Proposition A.12](https://arxiv.org/html/2606.27272v1#A1.SS3.SSS2) | Geometric-trace proper-path restriction and refined path-chain condition | The raw trace may contain retracing paths beyond the temporal components. The required native refinement is not established by the contour table. |
+| KKL [Appendix A.3.4](https://arxiv.org/html/2606.27272v1#A1.SS3.SSS4) | Distinct cover/inclusion composite and open/closed warning | The endpoint-fiber rule (3.5) proves original-cut commutation and finer root-cut failure for the contour action; native identification is conditional. |
 
-The primary KKL v1 HTML was retrieved directly from arXiv and checked at
-the cited sections.  The imported statements are attributed to their
-authors; the new real-slit proof, sharp local clock, and subarc escape/no-
-uniform-time claims are the assertions submitted here for review.
+The original note reports checking the primary KKL v1 HTML at the cited
+sections. The integration review also checked the authors' text of A.3.2
+against the archive's source-locked geometric-trace audit. Imported
+statements remain attributed to their authors. The intrinsic real-slit
+atlas, contour clock and contour subarc escape/no-uniform-time claims are
+the assertions retained here; full native MARK remains an open bridge.

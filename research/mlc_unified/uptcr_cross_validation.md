@@ -117,32 +117,43 @@ rule; it may not infer mathematical disjointness.
 
 ### CV-4 — two implicit steps in the rigidity implication
 
-The terminal argument has two steps. The first needs the explicit
-Fatou-support condition recorded below; ordinary point normalization
-does not supply it.
+The terminal argument has two valid routes to an affine conjugacy. The
+weaker route suffices for equality of infinitely renormalizable quadratic
+parameters; the stronger route also makes the chosen limit conformal.
 
-First, the limiting conjugacy in UPTCR-6 must be a global quasiconformal
-conjugacy of the sphere, conformal on the Fatou set. In the connected
-periodically repelling case, agreement with the normalized Böttcher
-conjugacy on the basin of infinity supplies this condition. If bounded
-Fatou components are allowed, their conformal normalization is also
-required. Its Beltrami coefficient \(\mu\) is then supported on the
-Julia set. If it were nonzero on a positive-measure set there,
-\(\mu/|\mu|\) would define an invariant line field on the Julia set.
-The no-line-field clause therefore gives \(\mu=0\) almost everywhere.
+First, UPTCR-6 supplies an orientation-preserving global quasiconformal
+conjugacy fixing infinity. Its invariant Beltrami coefficient \(\mu\)
+vanishes almost everywhere on the Julia set: otherwise normalizing
+\(\mu/|\mu|\) on its nonzero set would give the excluded invariant line
+field. For an infinitely renormalizable quadratic, McMullen's Theorem
+8.1(2) gives \(K=J\). The conjugacy is consequently hybrid on K.
+Douady–Hubbard's connected-case straightening uniqueness gives an affine
+conjugacy between the two polynomials. The
+[complete hybrid endgame and primary references](../independent_audits/marked_slit_path_bridge_20261123/RIGIDITY_AND_REMAINING_GAP.md#1-minimal-valid-replacement-for-the-h4-endgame)
+state precisely why exterior conformality of the original map is
+unnecessary for this conclusion.
+
+If conformality of that chosen global map is required, add agreement with
+the normalized Böttcher conjugacy on the basin of infinity. When K=J,
+this makes \(\mu=0\) on the entire Fatou set as well. If bounded Fatou
+components are allowed, their conformal normalization is also required.
+The Julia argument then gives \(\mu=0\) almost everywhere on the sphere,
+so the chosen map itself is affine. These extra support conditions are
+premises of this stronger conclusion, not consequences of fixing points.
 
 The [2026-11-23 exterior-gauge repair](../independent_audits/maximal_global_closure_20261123/EXTERIOR_GAUGE_REPAIR.md)
 proves why fixing infinity, even together with two other fixed points
-and all external ray angles, is insufficient. It gives the exact
+and all external ray angles, is insufficient to make the chosen map
+conformal. It gives the exact
 conditional theorem and a sufficient compact-exhaustion hypothesis for
 passing the exterior normalization to the limit. This clarification
 does not discharge UPTCR-6.
 
-Second, a conformal conjugacy between monic centered quadratics is affine.
-Write it as \(h(z)=az+b\). From
+Second, write the affine conjugacy furnished by either route as
+\(A(z)=az+b\). From
 
 \[
-  h\circ(z^2+c)=(z^2+c')\circ h
+  A\circ(z^2+c)=(z^2+c')\circ A
 \]
 
 comparison of the \(z^2\) and \(z\) coefficients gives
@@ -204,8 +215,10 @@ contradicting \(p(n)<n\) and the choice of \(L_n\) as a running record.
 Hence \(\sup_nL_n\leq K(c)\).
 
 UPTCR-5 supplies precompactness in the marked topology. UPTCR-6 supplies the
-global quasiconformal limit conformal on the Fatou set. By CV-4, its Beltrami coefficient
-vanishes and equal full marked combinatorics force equality of parameters.
+global quasiconformal limit and the Julia no-line-field premise. By CV-4,
+hybrid uniqueness when K=J gives equality of parameters with equal full
+marked combinatorics. The stronger Fatou-conformal route has the same
+parameter consequence.
 Thus the full marked fiber at \(c\) is \(\{c\}\).
 
 Let \(\Pi_N(c)\) be the compact connected relative neighborhoods from

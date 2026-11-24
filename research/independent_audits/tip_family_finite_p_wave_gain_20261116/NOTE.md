@@ -28,6 +28,17 @@ all-period \(1/100\) conclusion and does not change any finite row below.
 See the dated correction in the limiting audit and
 [the separate complete H3 proof](../maximal_native_wave_20261123/H3_WIDTH.md).
 
+**Integrated stronger route, 2026-11-24.** The
+[versioned all-period runner](../tip_family_wave_gain_correction_20261123/verify_all_periods.py)
+combines these same ten finite cases with actual p=13 isolation and a
+corrected common box from p=14 onward. Its tail gives `P_p>2/3` and
+`D_p>11/126`. This note's aggregate instead runs the repaired widest-box
+tail with the weaker `40/819` floor. Both give the all-period `1/100`
+conclusion. The [finite-slit width proof](../marked_slit_path_bridge_20261123/WIDTH_TRANSFER.md)
+supplies the current intrinsic physical interpretation, independently
+of the unresolved full immersion-pulled marking; the dated hypotheses
+below remain provenance.
+
 All displayed decimals in the table are **strict rational bounds**, not optimizer approximations.
 
 | p | Actual embedded parent width \(W_{P,p}>\) | Actual-source independent child \(C_p<\) | Defect \(D_p>\) |
@@ -210,7 +221,21 @@ python -B research/independent_audits/tip_family_finite_p_wave_gain_20261116/ver
 python -B -m unittest discover -s research/independent_audits/tip_family_finite_p_wave_gain_20261116 -p 'test_*.py' -v
 ~~~
 
-The new verifier imports and reruns the unchanged limiting/canonical-gain/sandwich and finite-primitive source packets read-only. It uses exact \(\mathbb Q\) and outward grid \(2^{-512}\) elementary/elliptic series with rigorous tail bounds. It checks individually: the distinguished physical root and sign of \(A_p\); all full-domain parent disk and deck gates; the independent complex Rouché source gate; the **actual** child missing-energy gap; and strict reciprocals. The dedicated add-only workflow also invokes the original research-validation and weighted Lean workflows at the PR's exact head commit. These checks certify **arithmetic premises** only. Classical SC uniformization, the foliation/homotopy A.1 argument, covering-periodized conformal metrics, and KKL A.11 are **analytic arguments in this note**, not machine-proved theorems. M remains conditional.
+The verifier imports and reruns the corrected limiting verifier and the
+unchanged canonical-gain/sandwich and finite-primitive source packets
+read-only. It uses exact \(\mathbb Q\) and outward grid \(2^{-512}\)
+elementary/elliptic series with rigorous tail bounds. It checks
+individually: the distinguished physical root and sign of \(A_p\); all
+full-domain parent disk and deck gates; the independent complex Rouché
+source gate; the **actual** child missing-energy gap; and strict
+reciprocals. The dedicated workflow also requires research-validation and
+weighted Lean workflows at the PR's exact head commit. Its add-only
+creation guard permits later maintenance while retaining those checks.
+These checks certify **arithmetic premises** only. Classical SC
+uniformization, the foliation/homotopy A.1 argument,
+covering-periodized conformal metrics, and KKL A.11 are **analytic
+arguments**, not machine-proved theorems. The current intrinsic width
+proof and remaining immersion gap are distinguished in the update above.
 
 Hostile-review points resolved: (i) do not use \(x_j\) in place of \(x_{jp}\), or the negative-order \(A_p\) scale; (ii) \(|t|<\pi\) for the *entire* parent foliation prevents quotient self-overlap; (iii) the \(p=3,4\) physical disk requires a circular segment and is checked with full complex-domain bounds; (iv) the removed child energy lies outside independently checked \(V_p\subset U_p\), and is counted **once** in the universal cover; (v) normalization is by the SC electrode-gap length H, not the wrong rectangle side; (vi) parent embedded widths are **lower** bounds whereas actual-source metric areas are **upper** bounds, and inversion reverses inequalities; (vii) no output is called a canonical optimizer or positive buffered WAD.
 
