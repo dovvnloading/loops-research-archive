@@ -1,10 +1,13 @@
 #!/usr/bin/env python3
 """Finite bookkeeping for Corollary 3.3 of NOTE.md (selected slit pair).
 
-Everything is derived from the two real cut lists and the order (O2); no
-block or image table is typed in by hand except as the expected value that
-the derivation is compared against.  The topological theorem is a written
-proof; this script certifies only the combinatorics read off from it.
+Blocks are derived from the two real cut lists and the order (O2). Images
+also consume the covering alignment f_*(S_s) = I_(s mod 10), proved in
+IDEAL_BOUNDARY.md (9); that alignment is not derived from the cut lists.
+No block or image table is typed in by hand except as an expected value.
+This checks finite contour bookkeeping. The component-pullback theorem
+is a written proof, and its native KKL interpretation remains conditional
+on the source-identification premise (MC) in NOTE.md.
 """
 from __future__ import annotations
 
@@ -158,7 +161,7 @@ require(all(loc[s][0] == "endpoint" for s in boundary), "block boundary not over
 require(set(TARGET_CUTS) <= set(SOURCE_CUTS), "target cuts are not source cuts")
 
 # (4) properness: iota fails to be proper exactly on atoms meeting the
-# attachment arc A (accesses over [-y1, y2]).
+# interior of attachment arc A (accesses over [-y1, y2)).
 
 
 def meets_attachment(s):
@@ -175,7 +178,8 @@ for k in range(10):
 proper_targets = [k for k in range(10) if not (set(blocks[k]) & set(non_proper))]
 require(proper_targets == list(range(1, 10)), "F should be proper exactly on I_1..I_9")
 
-# (5) the native action F_* = f_* iota^*, with f_* S_s = I_{s mod 10}.
+# (5) the contour/component action, with f_* S_s = I_{s mod 10}.
+# This is the native action F_* only under premise (MC) in NOTE.md.
 F = {k: [s % 10 for s in blocks[k]] for k in range(10)}
 EXPECTED_F = {
     0: [8, 9, 0, 1, 2], 1: [3, 4], 2: [5], 3: [6], 4: [7, 8, 9],
@@ -186,30 +190,70 @@ for k in range(10):
     require(cyclic_run(F[k], 10) == F[k], f"F_* I_{k} is not a connected run")
 
 
-def push(multi):
-    """F_* of a multi-interval given as a cyclic run of target atoms."""
-    out = []
-    for k in multi:
-        for j in F[k]:
-            if j not in out:
-                out.append(j)
-    return out
+# Derive the increasing degree-two lift on target marking cuts.  Cut k is
+# the left endpoint of I_k, so its image is the first source cut of B_k.
+# Adding ten to a target cut adds twenty to its lifted image.
+CUT_LIFT = [blocks[0][0] - 20]
+for k in range(10):
+    CUT_LIFT.append(CUT_LIFT[-1] + len(blocks[k]))
+require(CUT_LIFT[-1] == CUT_LIFT[0] + 20, "cut lift has wrong degree")
 
 
-# Saturation: every proper connected run of atoms fills the circle within
-# five steps, and five is attained.
-worst = 0
-count = 0
+def lifted_cut(k):
+    turn, index = divmod(k, 10)
+    return CUT_LIFT[index] + 20 * turn
+
+
+def push_open_arc(arc):
+    """Push an open connected arc, preserving its two excluded endpoints.
+
+    A pair (a, b) denotes the projection of (a, b) from the cut-index lift.
+    None denotes the full circle.  A span of exactly ten is a punctured
+    circle, even though it contains every open atom; only a span greater
+    than ten includes every point of the circle.
+    """
+    if arc is None:
+        return None
+    a, b = arc
+    require(0 < b - a <= 10, "invalid open arc")
+    left, right = lifted_cut(a), lifted_cut(b)
+    span = right - left
+    if span > 10:
+        return None
+    left %= 10
+    return left, left + span
+
+
+# Regression: these open half-turns contain all atom labels after one
+# iterate but omit their common endpoint.  The following iterate fills it.
+halfturns = []
 for start in range(10):
     for length in range(1, 10):
-        cur = [(start + i) % 10 for i in range(length)]
+        if lifted_cut(start + length) - lifted_cut(start) == 10:
+            image = push_open_arc((start, start + length))
+            require(image is not None and image[1] - image[0] == 10,
+                    "punctured circle incorrectly declared full")
+            require(push_open_arc(image) is None, "punctured circle did not fill")
+            halfturns.append([start, start + length])
+require(halfturns == [[2, 8], [3, 9], [8, 12], [9, 13]],
+        "open half-turn regression witnesses changed")
+
+# Saturation: every proper connected open run of atoms, including internal
+# joints and excluding its two endpoints, fills the circle within five
+# steps, and five is attained.  Atom-label coverage alone is insufficient.
+worst = 0
+count = 0
+open_atom_times = []
+for start in range(10):
+    for length in range(1, 10):
+        cur = (start, start + length)
         steps = 0
-        while len(set(cur)) < 10:
-            cur = push(cur)
-            require(cyclic_run(cur, 10) is not None or len(set(cur)) == 10,
-                    "image of a run is not a run")
+        while cur is not None:
+            cur = push_open_arc(cur)
             steps += 1
             require(steps <= 5, f"no saturation within five steps from {start},{length}")
+        if length == 1:
+            open_atom_times.append(steps)
         worst = max(worst, steps)
         count += 1
 require(worst == 5, f"sharp bound should be five, got {worst}")
@@ -217,9 +261,12 @@ require(worst == 5, f"sharp bound should be five, got {worst}")
 json.dump({
     "blocks": {f"I_{k}": [f"S_{s}" for s in blocks[k]] for k in range(10)},
     "non_proper_source_atoms": [f"S_{s}" for s in non_proper],
-    "F_star": {f"I_{k}": [f"I_{j}" for j in F[k]] for k in range(10)},
+    "contour_action": {f"I_{k}": [f"I_{j}" for j in F[k]] for k in range(10)},
     "marked_runs_checked": count,
     "max_saturation_steps": worst,
-    "status": "finite bookkeeping of Corollary 3.3 verified; topology is a written proof",
+    "cut_lift": CUT_LIFT,
+    "open_atom_saturation_steps": open_atom_times,
+    "open_halfturn_examples": halfturns,
+    "status": "finite contour bookkeeping verified; component topology is a written proof; native identification conditional on (MC)",
 }, sys.stdout, indent=2)
 print()

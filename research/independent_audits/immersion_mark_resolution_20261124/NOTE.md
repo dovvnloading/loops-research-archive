@@ -1,13 +1,17 @@
-# The immersion-pulled marking of the selected slit pair (the "full MARK" row)
+# Maximal-component pullback of the selected slit pair (MARK remains open)
 
-**24 November 2026.** Written by Claude (Anthropic, Fable 5.2) from a clean
-clone of `main`. No human specialist review. This note is elementary planar
-topology applied to one explicit example; it is the specialization of
-Kahn–Kapiamba–Lyubich (KKL, arXiv:2606.27272v1) Propositions 6.5–6.6 to the
-selected real slit pair. It proves nothing about the stationary pass-through
-step, buffered coefficients, any global gate, or MLC.
+**24 November 2026.** Original argument by Claude (Anthropic, Fable 5.2).
+Integration review and corrections by OpenAI GPT-6 Astra Pro, including
+independent mathematical/code review and Lean 4.32.0 finite verification.
+No human specialist review. This note proves an elementary planar-topology
+statement for an explicitly defined maximal-component restriction. Its
+formula agrees with Kahn–Kapiamba–Lyubich (KKL,
+[arXiv:2606.27272v1](https://arxiv.org/html/2606.27272v1)) Propositions
+6.5–6.6 on the selected marked intervals, but the identification of path
+restriction conventions is not established here. The proof-register rows
+remain **MARK: open** and **SELECTED-ESCAPE: conditional**.
 
-## 0. What is settled, and what the obstruction actually was
+## 0. What is proved, and what remains open
 
 `IDEAL_BOUNDARY.md` §5 and `maximal_native_wave_20261123/NOTE.md` §3 leave the
 identification
@@ -16,21 +20,33 @@ identification
  \iota^*J = R_0(J):=q_0^{-1}(J)
 \]
 
-open, because they read KKL A.3.2 as letting the pullback \(\iota^*\gamma\)
-contain *every* proper path whose trace lies in \(\iota^{-1}(\gamma)\),
-including hairpins that run out along a crosscut and back. Two facts close
-the row:
+open. Section 2 shows that allowing *every* proper path whose trace lies
+in \(\iota^{-1}(\gamma)\), including arbitrary hairpins, makes the
+singleton premise vacuous. This diagnoses a problem with that reading;
+it does not uniquely determine a replacement definition.
 
-1. **That reading is excluded by the source itself** (§2). With hairpins
-   admitted, the uniqueness clause in the definition of \(\iota^*X\) is never
-   satisfied, the defining implication is vacuous, and \(\iota^*X\) is the
-   whole ideal boundary for every \(X\). That contradicts KKL Proposition 6.5
-   (a formula giving proper subsets), Proposition 6.6 (the pullbacks are
-   pairwise disjoint) and Figure A.1. The restriction of a path is therefore
-   its set of maximal lifted subpaths, the "temporal components".
-2. **With the source's definition the identification is a theorem** (§3),
-   proved here in full for every connected inner subset, with the outer
-   circle and maximality included.
+Here \(\iota^*_{\mathrm{mc}}\) denotes the ideal-set pullback defined using
+**occurrence-indexed maximal temporal components** in §2. Section 3 proves
+
+\[
+ \iota^*_{\mathrm{mc}}X=q_0^{-1}(X),\qquad
+ \iota^*_{\mathrm{mc}}O=O'.
+\]
+
+This is a written theorem for every nonempty connected inner subset and
+for the outer circle, including the required maximality statement. To
+read it as a statement about the native KKL operation requires the
+additional source-identification premise:
+
+**(MC)** For this embedded slit pair, KKL's path restriction in the
+ideal-set maximality definition agrees with the occurrence-indexed
+maximal-component convention, including the meaning of uniqueness.
+
+Neither the hairpin contradiction nor the finite scripts prove (MC).
+Under (MC), the native marking and escape conclusions follow from the
+theorem; without it, the established conclusions concern the explicit
+component/contour operation. No proof-register or canonical-ledger
+status is promoted by this contribution.
 
 ## 1. Setting and inputs
 
@@ -77,14 +93,19 @@ This is the archive's \(q_0\) of (3.2) in angular coordinates. It is not a
 boundary extension of \(\iota\): points of \(A^\circ\) are accesses to interior
 points of \(\Omega\).
 
-## 2. The definition, and why the hairpin category is not the source's
+## 2. Source definition, trace degeneracy, and the component convention
 
-KKL A.1: a proper path \(\gamma\) is *subordinate to* \(X\subset\partial^i V\)
+KKL [§1.4](https://arxiv.org/html/2606.27272v1#S1.SS4) treats paths up to
+reparameterization and defines properness by continuous extension to
+ideal endpoints. It does not require simplicity. In
+[A.1](https://arxiv.org/html/2606.27272v1#A1.SS1), a proper path \(\gamma\)
+is *subordinate to* \(X\subset\partial^i V\)
 if, up to homotopy rel endpoints, it lies in every neighbourhood of \(X\) in
 the ideal closure. In particular its endpoints lie in \(X\), because the
 intersection of all neighbourhoods of \(X\) is \(X\).
 
-KKL A.3.2 defines \(\iota^*\gamma\) as the set of proper paths in the source
+KKL [A.3.2](https://arxiv.org/html/2606.27272v1#A1.SS3.SSS2)
+defines \(\iota^*\gamma\) as the set of proper paths in the source
 "contained in \(\iota^{-1}(\gamma)\)", and \(\iota^*X\) as the maximal subset
 \(Y\subset\partial^iV'\) with the property
 
@@ -96,20 +117,18 @@ KKL A.3.2 defines \(\iota^*\gamma\) as the set of proper paths in the source
  \tag{2.1}
 \]
 
-**Definition (restriction).** For a proper path \(\gamma:(0,1)\to\Omega\), the
-restriction \(\iota^*\gamma\) is the set of paths \(\gamma|_J\), \(J\) a
-connected component of \(\gamma^{-1}(\Omega')\), that are proper in \(\Omega'\).
-(For a general immersion: the maximal lifts of subpaths.)
-
-**Proposition 2.1 (the raw-trace reading is self-refuting).** Suppose instead
+**Proposition 2.1 (degeneracy of the all-trace-contained-paths reading).** Suppose
 that \(\iota^*\gamma\) contains every proper path of \(\Omega'\) whose trace
 lies in \(\iota^{-1}(\gamma)\). Then for every \(X\) the property (2.1) holds
 for every \(Y\), so \(\iota^*X=\partial^i\Omega'\).
 
 *Proof.* If \(\iota^{-1}(\gamma)\) contains no proper path, \(\iota^*\gamma\) is
-empty. If it contains a proper path \(\delta\), then for each \(a\in(0,1)\) the
-hairpin following \(\delta|_{(0,a]}\) and returning is a proper path with trace
-in \(\iota^{-1}(\gamma)\); different \(a\) give different paths. So
+empty. If it contains a proper path \(\delta\), the hairpin following
+\(\delta|_{(0,a]}\) and returning is a proper path with trace in
+\(\iota^{-1}(\gamma)\). Choose two initial segments with different traces:
+after fixing \(a\), a sufficiently short initial segment lies in an ideal
+neighbourhood that excludes the interior point \(\delta(a)\). The resulting
+hairpins are distinct even up to reparameterization. So
 \(\iota^*\gamma\) is never a singleton, the hypothesis of (2.1) is never met,
 and every \(Y\) qualifies. ∎
 
@@ -119,13 +138,33 @@ boundary. KKL Proposition 6.5 computes \(\iota^*I\) as
 components meeting \(I\), a proper subset, and Proposition 6.6 uses that the
 sets \(\iota^*I\) are pairwise disjoint. Lemma A.11's hypothesis
 ("\(\iota^*\gamma\) contains a leaf of each \(S'_n\)") and KKL's use of
-"restriction" in Lemma 4.7 are likewise statements about maximal subpaths.
-Hence the Definition above is the source's operation. The archive's
-"geometric inverse-trace category" is a different, degenerate object and
-should be retired from the MARK row; it was never a gap in the mathematics.
+"restriction" in Lemma 4.7 motivate a component interpretation. However,
+excluding the degenerate reading does not prove that a particular
+alternative is the source's operation, especially for nonsimple paths.
+The marked-path filters in A.3.2 are imposed after the pulled marking is
+defined, so they cannot resolve that prior identification by themselves.
 
-The same remark disposes of "loop-omitting" paths for non-simple \(\gamma\):
-they are not lifts of subpaths of \(\gamma\).
+**Definition (maximal-component convention).** For a proper path
+\(\gamma:(0,1)\to\Omega\), let \(\mathcal R_{\mathrm{mc}}(\gamma)\) be the
+family of occurrences \((J,\gamma|_J)\), where \(J\) runs over connected
+components of \(\gamma^{-1}(\Omega')\) for which the restriction is proper
+in \(\Omega'\). Paths within an occurrence may be reparameterized, but
+different occurrences are retained. Thus a singleton means exactly one
+component. Lemma 3.1(a) shows that every component is proper in this setting.
+Define \(\mathsf P_X^{\mathrm{mc}}(Y)\) by (2.1) with
+\(\mathcal R_{\mathrm{mc}}(\gamma)=\{(J,\gamma')\}\) as its singleton
+premise, and define \(\iota^*_{\mathrm{mc}}X\) as its greatest admissible
+subset when one exists. Theorem 3.2 proves existence and uniqueness here.
+
+Occurrence indexing matters: a target path can visit the same source
+hairpin twice, separated by a segment in \(X_{\rm sl}\). The unindexed set
+of source paths is then a singleton up to reparameterization although
+there are two temporal components. Lemma 3.1(b) applies to a single
+component, so deduplicating those visits would require an additional
+argument. Arbitrary hairpins and loop-omitting paths are not added to
+\(\mathcal R_{\mathrm{mc}}(\gamma)\) merely because their traces are contained
+in the inverse trace. These are explicit model conventions, not a proof
+of (MC).
 
 ## 3. The theorem
 
@@ -172,21 +211,24 @@ positive distance from \(T\), so \(\gamma(0)\in O\). In \(X_{\rm sl}\): then
 \(y_2\), so \(\gamma(0)=\tau\). The cases \(s=0\) were treated in (a); note
 \(e'=u_\pm\) forces \(s=0\), since \(\gamma(s)=y_2\notin\Omega\). ∎
 
-### Theorem 3.2 (immersion pullback = contour inverse image)
+### Theorem 3.2 (component pullback = contour inverse image)
 
-For every connected \(X\subset C\) (a point, or an open, closed or half-open
+For every nonempty connected \(X\subset C\) (a point, or an open, closed or half-open
 arc, or all of \(C\)),
 
 \[
- \boxed{\ \iota^*X=q^{-1}(X)\ },\qquad\text{and}\qquad \iota^*O=O'.
+ \boxed{\ \iota^*_{\mathrm{mc}}X=q^{-1}(X)\ },\qquad\text{and}\qquad
+ \iota^*_{\mathrm{mc}}O=O'.
  \tag{3.1}
 \]
 
-More precisely \(\mathsf P_X(q^{-1}(X))\) holds, and every \(Y\) with
-\(\mathsf P_X(Y)\) satisfies \(Y\subset q^{-1}(X)\); so the maximal subset in
-KKL's definition exists and is unique. The same holds for \(X=O\), \(Y=O'\).
+More precisely \(\mathsf P_X^{\mathrm{mc}}(q^{-1}(X))\) holds, and every \(Y\)
+with \(\mathsf P_X^{\mathrm{mc}}(Y)\) satisfies \(Y\subset q^{-1}(X)\).
+Thus the greatest subset for the component convention exists and is
+unique. The same holds for \(X=O\), \(Y=O'\). In this proof a unique
+restriction always means a unique component occurrence as defined in §2.
 
-*Proof.* **Maximality.** Let \(\mathsf P_X(Y)\) hold with \(X\subset C\) and
+*Proof.* **Maximality.** Let \(\mathsf P_X^{\mathrm{mc}}(Y)\) hold with \(X\subset C\) and
 let \(y\in Y\). A null-homotopic proper loop \(\gamma'\) based at \(y\) is
 subordinate to \(\{y\}\), hence to \(Y\).
 
@@ -232,18 +274,21 @@ where each \(\gamma_i\) is either trivial or a path inside
 \(\gamma'\) in \(A^\circ\); the ends of \(\gamma\) are \(q(e'_0),q(e'_1)\in X\).
 
 Choose an access \(z_0\in C\setminus X\) with \(z_0\ne\tau\), over a point
-\(x_0\in(y_2,y_1]\), and a closed arc \(\rho\subset\Omega\) from \(z_0\) to
-\(\partial U\) that is a vertical segment near \(x_0\) (the real segment to the
-right if \(x_0=y_1\)); it is disjoint from \(X_{\rm sl}\). For small
-\(\varepsilon\) let \(S_\varepsilon\subset V\) be the open
-\(\varepsilon\)-neighbourhood of \(T'\), and
+\(x_0\in(y_2,y_1]\), and a closed arc \(\rho\) in the ideal closure of
+\(\Omega\), from \(z_0\) to \(O\), with interior in \(\Omega\). Choose a
+vertical segment on the bank of \(z_0\) (the real segment to the right if
+\(x_0=y_1\)); thus \(\rho\) is disjoint from \(X_{\rm sl}\), and for small
+\(\varepsilon\) it exits the open \(\varepsilon\)-neighbourhood
+\(S_\varepsilon\) of \(T'\) exactly once without reentry. Take
+\(\overline{S_\varepsilon}\subset V\), and put
 
 \[
  E=S_\varepsilon\setminus(T\cup\rho).
 \]
 
-\(T\cup(\rho\cap S_\varepsilon)\) is a compact tree meeting \(\partial S_\varepsilon\)
-in one point, so \(E\) is simply connected with locally connected boundary,
+In the physical plane, \(T\cup(\rho\cap\overline{S_\varepsilon})\) is a
+compact tree meeting \(\partial S_\varepsilon\) in one point. Therefore
+\(E\) is simply connected with locally connected boundary,
 and \(X\) is an arc of prime ends of \(E\).
 
 The set
@@ -270,43 +315,55 @@ with ends in \(C'\) has \(\gamma\)-ends in \(C\).
 **\(X=O\), \(Y=O'\).** If \(\gamma'\) is the unique restriction and is
 subordinate to \(O'\), then by Lemma 3.1(b) both complementary pieces of
 \(\gamma\) lie in \(U\setminus V\) and both ends of \(\gamma\) lie on \(O\).
-Homotope \(\gamma'\) rel endpoints into the collar
+For sufficiently small \(\varepsilon\), analyticity and compactness of
+\(\partial V\) give a tubular inner collar. Homotope \(\gamma'\) rel endpoints into it,
 \(\{z\in V:\operatorname{dist}(z,\partial V)<\varepsilon\}\). Then \(\gamma\)
 lies in the annulus \(U\setminus\{z\in V:\operatorname{dist}(z,\partial V)\ge\varepsilon\}\),
 disjoint from \(T\), which retracts within itself, rel \(O\), into any collar
 of \(O\). So \(\gamma\) is subordinate to \(O\). ∎
 
-### Corollary 3.3 (the MARK row for the selected slit pair)
+### Corollary 3.3 (component marking and conditional native interpretation)
 
 Let \(\mathcal I=\{I_0,\dots,I_9,O\}\) be the target marking of
 `IDEAL_BOUNDARY.md` (7) and \(S_0,\dots,S_{19},O'\) the covering atoms of
 \(f^*\mathcal I\).
 
-1. \(\iota^*I_k=B_k\), the open blocks of the table in `IDEAL_BOUNDARY.md` §5:
+1. \(\iota^*_{\mathrm{mc}}I_k=B_k\), the open blocks of the table in `IDEAL_BOUNDARY.md` §5:
    \(B_0=S_{18}S_{19}S_0S_1S_2\), \(B_1=S_3S_4\), \(B_2=S_5\), \(B_3=S_6\),
    \(B_4=S_7S_8S_9\), \(B_5=S_{10}\), \(B_6=S_{11}S_{12}S_{13}\),
    \(B_7=S_{14}\), \(B_8=S_{15}\), \(B_9=S_{16}S_{17}\) (internal joints
-   included), and \(\iota^*O=O'\).
+   included), and \(\iota^*_{\mathrm{mc}}O=O'\).
 2. These eleven sets are pairwise disjoint, open and connected, and their
    complement is the ten accesses \(\hat\iota^{-1}\) of the target endpoints.
-   So \(\iota^*\mathcal I\) is defined (KKL A.3.2).
-3. \(f^*\mathcal I\) refines \(\iota^*\mathcal I\): the five target cut
+   So the component-pulled ideal marking \(\iota^*_{\mathrm{mc}}\mathcal I\)
+   is defined. Under (MC) this is the marking of KKL A.3.2.
+3. \(f^*\mathcal I\) refines \(\iota^*_{\mathrm{mc}}\mathcal I\): the five target cut
    locations \((y_5,y_3,y_6,a,y_4)\) are among the ten source cut locations.
-   So \(F=(f,\iota)\) acts on \((\Omega,\mathcal I)\) (KKL A.3.4).
+   Under (MC), \(F=(f,\iota)\) therefore acts on \((\Omega,\mathcal I)\)
+   in the sense of KKL A.3.4.
 4. \(\iota\) is proper on every covering atom other than
-   \(S_{19},S_0,S_1\). Hence \(F\) is proper on \(I_1,\dots,I_9\), is
-   end-proper but not proper on \(I_0\) (end-intervals \(S_{18},S_2\)), and
-   acts combinatorially on \(C\).
-5. On connected inner arcs the native operator is the contour operator:
+   \(S_{19},S_0,S_1\). These three atoms meet the interior \(A^\circ\) of
+   the attachment arc; the end-intervals \(S_{18},S_2\) of \(B_0\) do not.
+   Thus the component marking has the finite properness and end-properness
+   data required for combinatorial action. Under (MC), \(F\) is proper on
+   \(I_1,\dots,I_9\), end-proper but not proper on \(I_0\), and acts
+   combinatorially on \(C\).
+5. On connected inner arcs the component operator is the contour operator:
 
 \[
- F_*=f_*\iota^*=g_*q_0^{-1}=\Psi .
+ F_{\mathrm{mc},*}:=f_*\iota^*_{\mathrm{mc}}=g_*q_0^{-1}=\Psi .
 \]
 
-   With \(f_*S_s=I_{s\bmod 10}\): \(F_*I_0=I_8I_9I_0I_1I_2\),
-   \(F_*I_1=I_3I_4\), \(F_*I_2=I_5\), \(F_*I_3=I_6\), \(F_*I_4=I_7I_8I_9\),
-   \(F_*I_5=I_0\), \(F_*I_6=I_1I_2I_3\), \(F_*I_7=I_4\), \(F_*I_8=I_5\),
-   \(F_*I_9=I_6I_7\).
+   With the covering alignment \(f_*S_s=I_{s\bmod 10}\) established in
+   `IDEAL_BOUNDARY.md` (9), the ordered image lists for \(I_0,\ldots,I_9\) are
+
+   \[
+   (I_8I_9I_0I_1I_2,\ I_3I_4,\ I_5,\ I_6,\ I_7I_8I_9,\ I_0,
+     I_1I_2I_3,\ I_4,\ I_5,\ I_6I_7).
+   \]
+
+   This alignment is an analytic input to the finite checker; it is not
+   inferred from the cut lists alone. Under (MC), \(F_*=F_{\mathrm{mc},*}\).
 
 *Proof.* (1) is (3.1) with \(q^{-1}(I_k)\) read off from (1.2): only \(I_0\)
 contains \(\tau\), and its preimage absorbs \(A\). (2)–(4) are then read from
@@ -314,18 +371,21 @@ the two cut lists; `verify.py` checks the finite bookkeeping. (5) is (3.1)
 followed by the covering push-forward. ∎
 
 Consequently the five-step saturation and the positive-subarc escape proved
-for \(\Psi\) in `maximal_native_wave_20261123/NOTE.md` §5 are statements about
-the native \(F_*\) on this slit pair, for every selected period for which
-(G1)–(G2) hold.
+for \(\Psi\) in `maximal_native_wave_20261123/NOTE.md` §§5–6 apply to
+\(F_{\mathrm{mc},*}\) on this slit pair, for every selected period for which
+(G1)–(G2) hold. Their interpretation as native \(F_*\) statements additionally
+requires (MC). Positive-subarc escape uses the written dynamical argument;
+the finite checks below concern marked runs.
 
 ## 4. Scope
 
 * One finite-type, locally connected, embedded slit pair. Nothing here
   addresses non-locally-connected carriers (Issue #40) or the ordinary KL
   universal-cover immersion (Issue #62).
-* The result is KKL Propositions 6.5–6.6 in an example; it is not new
-  mathematics and does not bear on MLC, which is already known at real
-  parameters.
+* The component formula agrees with KKL Propositions 6.5–6.6 on the marked
+  intervals. Agreement of formulas is not a proof of (MC) for all proper
+  paths. **Full native MARK remains open; SELECTED-ESCAPE remains
+  conditional.**
 * Not addressed: identification of a Wave descendant's crest with these
   interval images, the stationary pass-through statements, inner buffered
   coefficients, and every global gate (H1–H4, UPTCR).
@@ -334,9 +394,24 @@ the native \(F_*\) on this slit pair, for every selected period for which
 
 ```sh
 python -B research/independent_audits/immersion_mark_resolution_20261124/verify.py
+lake build ImmersionMarkFinite
 ```
 
-The script checks only the finite bookkeeping of Corollary 3.3 (blocks,
-partition, refinement, end-properness, the \(F_*\) table, and saturation of
-every proper arc of atoms within five steps). The topology of §§2–3 is a
-written proof.
+The Python script derives blocks from the two cut lists and consumes the
+covering alignment in (9). It checks the partition, refinement, finite
+end-properness predicates, contour image table, and saturation of all 90
+proper open runs of one to nine atoms within five steps. Internal joints
+are included and both endpoints are excluded. It preserves the distinction
+between a punctured circle (lifted span exactly ten) and the full circle
+(span greater than ten). In particular, the runs with lifted endpoints
+\((2,8),(3,9),(8,12),(9,13)\) are punctured after one step and full after two.
+The sharp five-step bound is attained by \(I_3\) and \(I_7\).
+
+[`ImmersionMarkFinite.lean`](../../../ImmersionMarkFinite.lean) independently
+derives the finite blocks from the ordered cut ranks, checks agreement
+with the archive's existing table, and kernel-checks the endpoint-aware
+saturation and punctured-circle regressions with the pinned Lean 4.32.0.
+All twelve theorems use `decide +kernel`; their printed axiom dependencies
+are empty or only the standard `propext`. Neither checker formalizes prime
+ends, homotopies, (MC), or the topology of §§2–3. Those topology statements
+remain written arguments under the explicit component convention.

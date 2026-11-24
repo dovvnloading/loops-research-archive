@@ -1572,6 +1572,22 @@
   },
   "native-frontier": {
     "guide": "formalization/PHYSICAL_BRIDGES_CONTRACTS.md#native-frontier",
+    "theorems": {
+      "ImmersionMarkFinite.lean": [
+        "target_cuts_are_source_cuts",
+        "cut_derived_blocks_match_archive",
+        "cut_derived_owners_match_archive",
+        "cut_derived_partition",
+        "cut_derived_attachment_atoms",
+        "cut_derived_end_proper_finite_predicate",
+        "cut_derived_contour_image_table",
+        "cut_derived_lift",
+        "all_ninety_open_runs_saturate_within_five",
+        "five_steps_are_sharp",
+        "full_atom_support_can_be_a_punctured_circle",
+        "punctured_circles_saturate_on_the_next_step"
+      ]
+    },
     "checks": [
       "research/independent_audits/immersion_mark_resolution_20261124/verify.py",
       "research/independent_audits/maximal_global_closure_20261123/verify_cutpoint_pruning.py",
