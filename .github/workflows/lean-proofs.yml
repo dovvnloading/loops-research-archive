@@ -19,6 +19,9 @@ on:
       - 'research/independent_audits/marked_slit_path_bridge_20261123/**'
       - 'research/independent_audits/tip_family_wave_gain_correction_20261123/**'
       - 'research/independent_audits/issue62_landing_angle_bound_20261123/**'
+      - 'research/independent_audits/issue62_octal_reconstruction_20261123/**'
+      - 'research/independent_audits/issue62_physical_connector_reconstruction_20261123/**'
+      - 'research/independent_audits/parameter_capacity_increment_20261123/**'
       - 'research/tip_family_theorem/PHYSICAL_BRIDGES.md'
       - 'code/exp*.py'
       - 'code/mlc_common.py'
@@ -74,6 +77,9 @@ on:
       - 'research/independent_audits/marked_slit_path_bridge_20261123/**'
       - 'research/independent_audits/tip_family_wave_gain_correction_20261123/**'
       - 'research/independent_audits/issue62_landing_angle_bound_20261123/**'
+      - 'research/independent_audits/issue62_octal_reconstruction_20261123/**'
+      - 'research/independent_audits/issue62_physical_connector_reconstruction_20261123/**'
+      - 'research/independent_audits/parameter_capacity_increment_20261123/**'
       - 'research/tip_family_theorem/PHYSICAL_BRIDGES.md'
       - 'code/exp*.py'
       - 'code/mlc_common.py'
@@ -157,6 +163,14 @@ jobs:
           python -B research/independent_audits/tip_family_wave_gain_correction_20261123/verify_all_periods.py
       - name: Check exact fine-landing angle certificate
         run: python -B research/independent_audits/issue62_landing_angle_bound_20261123/verify.py --check-certificate
+      - name: Check complete physical octal reconstruction
+        run: python -B research/independent_audits/issue62_octal_reconstruction_20261123/verify.py --check-certificate
+      - name: Check actual connector words and path-order regressions
+        run: |
+          python -B research/independent_audits/issue62_physical_connector_reconstruction_20261123/verify.py --check-manifest
+          python -B -m unittest discover -s research/independent_audits/issue62_physical_connector_reconstruction_20261123 -p 'test_verify.py' -v
+      - name: Check physical parameter-capacity calibration
+        run: python -B research/independent_audits/parameter_capacity_increment_20261123/verify.py --check-certificate
       - name: Verify source ledger dependency and Lean status mirror
         run: python code/verify_lean_frontier_sync.py
       - name: Verify generated SVGs match exact source manifests

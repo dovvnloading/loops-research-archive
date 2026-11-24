@@ -1,0 +1,326 @@
+{
+  "scope": "Finite exact arithmetic. Physical equality and entropy saturation are proved in README.md.",
+  "sources": [
+    {
+      "path": "results/tip_kl_side_atlas.json",
+      "sha256": "ff43b044ddde9c11a80848e3bb3041f709cabeec7cbba886f57c222955bb675a"
+    },
+    {
+      "path": "research/independent_audits/issue62_landing_angle_bound_20261123/certificate.json",
+      "sha256": "20b3339c855ad9eb372e4249c7d3b5321ba2ac5a7b384796759804eca4f50e7d"
+    }
+  ],
+  "octal_base": 8,
+  "digits": [
+    3,
+    4
+  ],
+  "doubled_source_seams": [
+    [
+      "41/96",
+      "43/96"
+    ],
+    [
+      "53/96",
+      "55/96"
+    ]
+  ],
+  "cantor_hull": [
+    "3/7",
+    "4/7"
+  ],
+  "root_seams": [
+    {
+      "seam": 0,
+      "shift": 3,
+      "denominator": 16,
+      "hull": [
+        "3/14",
+        "25/112"
+      ],
+      "clearance": [
+        "1/1344",
+        "1/1344"
+      ]
+    },
+    {
+      "seam": 1,
+      "shift": 4,
+      "denominator": 16,
+      "hull": [
+        "31/112",
+        "2/7"
+      ],
+      "clearance": [
+        "1/1344",
+        "1/1344"
+      ]
+    },
+    {
+      "seam": 2,
+      "shift": 11,
+      "denominator": 16,
+      "hull": [
+        "5/7",
+        "81/112"
+      ],
+      "clearance": [
+        "1/1344",
+        "1/1344"
+      ]
+    },
+    {
+      "seam": 3,
+      "shift": 12,
+      "denominator": 16,
+      "hull": [
+        "87/112",
+        "11/14"
+      ],
+      "clearance": [
+        "1/1344",
+        "1/1344"
+      ]
+    }
+  ],
+  "primary_gap": [
+    "25/56",
+    "31/56"
+  ],
+  "level_k_gap_count": "2^k",
+  "level_k_gap_length": "3/(28*8^k)",
+  "actual_recurrent_graph": {
+    "cylinder_depth": 3,
+    "phase_cells": {
+      "0": [
+        164,
+        165,
+        170,
+        171,
+        212,
+        213,
+        218,
+        219,
+        548,
+        549,
+        554,
+        555,
+        596,
+        597,
+        602,
+        603
+      ],
+      "1": [
+        329,
+        330,
+        341,
+        342,
+        425,
+        426,
+        437,
+        438
+      ],
+      "2": [
+        82,
+        85,
+        106,
+        109,
+        658,
+        661,
+        682,
+        685
+      ]
+    },
+    "edges": {
+      "82": [
+        164,
+        165
+      ],
+      "85": [
+        170,
+        171
+      ],
+      "106": [
+        212,
+        213
+      ],
+      "109": [
+        218,
+        219
+      ],
+      "164": [
+        329
+      ],
+      "165": [
+        330
+      ],
+      "170": [
+        341
+      ],
+      "171": [
+        342
+      ],
+      "212": [
+        425
+      ],
+      "213": [
+        426
+      ],
+      "218": [
+        437
+      ],
+      "219": [
+        438
+      ],
+      "329": [
+        658
+      ],
+      "330": [
+        661
+      ],
+      "341": [
+        682
+      ],
+      "342": [
+        685
+      ],
+      "425": [
+        82
+      ],
+      "426": [
+        85
+      ],
+      "437": [
+        106
+      ],
+      "438": [
+        109
+      ],
+      "548": [
+        329
+      ],
+      "549": [
+        330
+      ],
+      "554": [
+        341
+      ],
+      "555": [
+        342
+      ],
+      "596": [
+        425
+      ],
+      "597": [
+        426
+      ],
+      "602": [
+        437
+      ],
+      "603": [
+        438
+      ],
+      "658": [
+        548,
+        549
+      ],
+      "661": [
+        554,
+        555
+      ],
+      "682": [
+        596,
+        597
+      ],
+      "685": [
+        602,
+        603
+      ]
+    }
+  },
+  "old_graph_live_vertex_count": 64,
+  "old_graph_dead_vertex_count": 32,
+  "old_graph_transient_heights": {
+    "0": 32,
+    "1": 16,
+    "2": 16
+  },
+  "strict_survivor_counterexample": {
+    "angle": "3/56",
+    "double": "3/28",
+    "double_phase": 2
+  },
+  "physical_cut_addresses": [
+    {
+      "label": "root",
+      "angle": "249/896",
+      "physical_phase": 0,
+      "addresses": [
+        {
+          "shift": 0,
+          "denominator": 2,
+          "address": {
+            "in_C": true,
+            "prefix": [
+              4,
+              3
+            ],
+            "period": [
+              4
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "label": "D01",
+      "angle": "25/56",
+      "physical_phase": 1,
+      "addresses": [
+        {
+          "shift": 0,
+          "denominator": 1,
+          "address": {
+            "in_C": true,
+            "prefix": [
+              3
+            ],
+            "period": [
+              4
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "label": "D02",
+      "angle": "25/28",
+      "physical_phase": 2,
+      "addresses": [
+        {
+          "shift": 3,
+          "denominator": 4,
+          "address": {
+            "in_C": true,
+            "prefix": [],
+            "period": [
+              4
+            ]
+          }
+        }
+      ]
+    }
+  ],
+  "hausdorff_measure_convention": "sum of diameter powers, s=1/3",
+  "hausdorff_measure_C": "7^(-1/3)",
+  "hausdorff_measure_each_Ai": "112^(-1/3)",
+  "basic_log_capacity_bounds_C": [
+    "3/224",
+    "1/56"
+  ],
+  "basic_log_capacity_bounds_each_Ai": [
+    "3/3584",
+    "1/896"
+  ],
+  "analytic_status": "written, not Lean-formalized; finite checks do not certify the physical analytic inputs"
+}

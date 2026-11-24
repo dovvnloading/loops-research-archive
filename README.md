@@ -49,7 +49,95 @@ These visuals come from **this archive's own computations, certificates, and fin
 
 The **ray portrait and two-scale angle-map figures** are generated from the exact portrait manifest by [our reproducible SVG generator](./code/generate_readme_research_figures.mjs). The return and target-disk figures are explicitly labeled schematics of the archive's certificates. No external illustration is presented as an original research result.
 
-## November 23: corrected slit widths and exact fine-landing dimension
+## November 23: exact landing sets and actual connector words
+
+At the selected nonattracting 3/9 tip, the
+[octal reconstruction theorem](./research/independent_audits/issue62_octal_reconstruction_20261123/README.md)
+determines the complete physical fine-landing sets, including every irrational
+angle. In the actual G=f³ external coordinate, put
+
+$$
+\mathcal C=\left\{\sum_{k\ge1}a_k8^{-k}:a_k\in\{3,4\}\right\}.
+$$
+
+The three phase sets are $E_1=\mathcal C$,
+$E_0=\mathcal C/2\cup(\mathcal C+1)/2$, and
+$E_2=\mathcal C/4\cup(\mathcal C+3)/4$. The four original W seam root
+sets are **exactly** $A_i=(\mathcal C+u_i)/16$, with
+$(u_0,u_1,u_2,u_3)=(3,4,11,12)$. This strengthens the
+[dimension-1/3 theorem](./research/independent_audits/issue62_landing_angle_bound_20261123/EXACT_DIMENSION.md)
+to a complete description of the actual Cantor sets and their gaps.
+
+The [physical connector construction](./research/independent_audits/issue62_physical_connector_reconstruction_20261123/NOTE.md)
+now computes the full ordered F9 word for **every** $\theta\in A_i$,
+every original source tile j, and every integer n:
+
+$$
+g_{j,\theta,n}=\operatorname{red}\!\left(P_j^{-1}
+(b_{00}b_{01}b_{02})^nQ(\theta)\right),\qquad
+(P_0,P_1,P_2,P_3)=(1,b_{00},b_{00}b_{01},b_{00}b_{01}).
+$$
+
+Here Q is 1 on A0 and the first-octal-digit-3 part of A1, b00 on the
+first-digit-4 part of A1, and b00b01 on A2 and A3. The original integer
+coordinate remains unbounded. The [88-row certificate](./research/independent_audits/issue62_physical_connector_reconstruction_20261123/certificate.json)
+contains actual signed cut intersections and reduced words: **8 rooted,
+80 nonroot**, with a second representative and a source-admissible homotopy.
+The construction uses the original KL allowance for a prefix inside W;
+the older additional requirement of an entirely coarse-exterior prefix
+cannot realize all those rooted source tiles. It fixes **one compatible
+physical meridian basis**, rather than claiming unique historical whiskers
+that were never specified. Root convergence and proper nonroot ends are
+proved on this complete root-landing domain; general KKL MARK remains open.
+
+### Exact measure, positive capacity, and physical Perron contraction
+
+The [measure and trace theorem](./research/independent_audits/issue62_octal_reconstruction_20261123/MEASURE_AND_TRACE.md)
+gives, in its real angular and diameter-power normalization,
+
+$$
+\mathcal H^{1/3}(\mathcal C)=7^{-1/3},\qquad
+\mathcal H^{1/3}(A_i)=112^{-1/3},\qquad
+\frac3{3584}\le\operatorname{cap}(A_i)\le\frac1{896}.
+$$
+
+The note also supplies sharper capacity bounds and explicit Ahlfors
+regularity. These zero-length root sets therefore cannot be discarded as
+zero-capacity exceptions. The two-branch average descends through the
+actual landing map L to the **physical G³ interval Perron operator**
+$\mathcal P$, with
+$\mathfrak E(\mathcal P v)\le\tfrac12\mathfrak E(v)$ in the stated
+pullback energy $\mathfrak E(v)=\mathcal E_{\mathcal C}(v\circ L)$.
+The actual reference probability is the pullback of arcsine measure under
+the Chebyshev conjugacy, and the proof shows that it differs from ordinary
+logarithmic equilibrium of the physical interval. Comparison with planar
+Dirichlet energy, canonical Wave width, or parameter equilibrium charge
+remains a separate problem. A continuous quotient counterexample
+in the same note shows why a generic interval-energy comparison cannot be
+assumed.
+
+## November 23: a separate parameter-capacity criterion
+
+The [parameter-capacity argument](./research/independent_audits/parameter_capacity_increment_20261123/NOTE.md)
+works directly with actual parameter compacts in one fixed Green domain.
+For nested nonpolar continua, their probability equilibrium measures have
+orthogonal increments and Robin energies satisfy
+$V_N=V_0+\sum_{n<N}I_D(\mu_{n+1}-\mu_n)$.
+For continua inside the Mandelbrot set with ground $D_1$, the explicit
+bound is $\operatorname{diam}F_N\le20e^{-V_N}$. A divergent sequence of
+certified physical increments would therefore force a singleton;
+local connectivity additionally requires connected **relative parameter
+neighborhoods**, not arbitrary subsets containing the parameter.
+
+The [exact finite calibration](./research/independent_audits/parameter_capacity_increment_20261123/certificate.json)
+uses $F_0=\mathcal M$ and $F_1=\overline{B(-1,3/32)}$ and certifies
+$V_{D_1}(F_1)-V_{D_1}(\mathcal M)>\frac{1}{3\,686\,400}$.
+It supplies a physical parameter example, **not an infinite divergent
+certificate sequence**. Angular trace contraction and parameter equilibrium
+energy remain distinct quantities. The needed all-scale parameter
+certificates and global MLC conclusion remain open.
+
+## November 23: corrected slit widths and the remaining marking boundary
 
 The [selected-slit proof packet](./research/independent_audits/marked_slit_path_bridge_20261123/README.md)
 identifies every intrinsic A.1 path class on the actual finite slit surfaces,
@@ -69,20 +157,11 @@ check those inputs against the independently implemented upstream estimates.
 The dated November 16 audit remains intact; its tail PASS is superseded by
 the [versioned correction and all-period runner](./research/independent_audits/tip_family_wave_gain_correction_20261123/NOTE.md).
 
-For issue #62, the [exact angle theorem](./research/independent_audits/issue62_landing_angle_bound_20261123/EXACT_DIMENSION.md)
-gives **Hausdorff and box dimension exactly 1/3** for the actual fine-cycle
-landing-angle set, its three phases, and each of the four source seam root
-subsets. The [rational 96-state certificate](./research/independent_audits/issue62_landing_angle_bound_20261123/NOTE.md)
-proves the upper bound for every horizon; the actual Chebyshev return and
-Furstenberg's entropy–dimension theorem give the matching lower bound.
-Dense ordinary fine-interior landings rule out promoting any nondegenerate
-original W ideal interval to a wholly boundary-valued fine end. These are
-external-angle results; the prescribed F9 connector words remain uncomputed.
-
 The packet also [repairs the H4 endgame](./research/independent_audits/marked_slit_path_bridge_20261123/RIGIDITY_AND_REMAINING_GAP.md)
 using hybrid uniqueness and checks the scope of current area theorems.
 These are written local results with exact arithmetic and explicit classical
-inputs. Human specialist review, the native global bridges, and MLC remain open.
+inputs. Human specialist review, general KKL MARK, buffered and iterated
+transport, and the global H1–H4, UPTCR and MLC gates remain open.
 
 ## November 23: actual interval rows and two different spectral clocks
 
@@ -194,6 +273,13 @@ illustrations of the written proofs, generated by
 [this script](./code/generate_clone_readout_figure.py).
 
 ## November 15–16, 2026 research integration (merged PRs #72–#100)
+
+**Current reading, November 23.** The dated inventory below preserves its
+original rows. The exact octal sets, physical connector words, specified
+trace-energy contraction, separate parameter-capacity criterion, and
+corrected slit-width result are described above and in their linked proofs.
+These scoped updates do not change the source-locked July ledger or close
+general KKL MARK and the global MLC gates.
 
 The [model-to-physical proof register](./formalization/PHYSICAL_BRIDGES.md) records the current scope. The [referee-controlled v2](./papers/tip_family_preprint_v2_20261116/sections/referee_scope.tex) states which nesting, ideal-boundary and path-class hypotheses a physical width claim consumes. The following rows retain their November provenance. The July manuscript and 465 source-locked obligations have their original status.
 

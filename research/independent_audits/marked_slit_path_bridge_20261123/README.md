@@ -5,6 +5,22 @@ This packet supplies written local geometric results, repairs an exact-arithmeti
 under-enclosure, and identifies the remaining native restriction and global
 rigidity obligations. MLC, UPTCR and the global H1–H4 package remain open.
 
+**Constructive continuation.** The later
+[octal reconstruction](../issue62_octal_reconstruction_20261123/README.md)
+determines the complete actual landing sets, and its
+[measure and trace companion](../issue62_octal_reconstruction_20261123/MEASURE_AND_TRACE.md)
+proves exact measure, positive capacity and contraction on physical
+interval observables in the stated pullback norm. The
+[physical connector construction](../issue62_physical_connector_reconstruction_20261123/NOTE.md)
+now supplies full words for all 88 finite instances and an all-angle,
+all-integer formula in one fixed compatible gauge. It corrects the extra
+coarse-only prefix restriction using the original KL definition.
+An independent [parameter-capacity route](../parameter_capacity_increment_20261123/NOTE.md)
+proves additive equilibrium-energy increments and an exact finite physical
+calibration; its infinite dynamical schedule remains open. The earlier
+angle proof below supplies no words by itself, and the general KKL MARK
+obligation is not discharged by this continuation.
+
 ## Results and their dependencies
 
 | Result | Evidence | Exact scope |

@@ -8,6 +8,8 @@ This note proves an upper bound of **one third** for both the Hausdorff dimensio
 
 The accompanying `verify.py` uses only the Python standard library. It reads the actual `results/tip_kl_side_atlas.json`, constructs the graph, checks all strongly connected components, and verifies an exact vector identity that proves the path-count formula for **every** horizon. No finite sampling of long orbits, numerical eigenvalue, or unproved spectral asymptotic enters the estimate.
 
+**Subsequent reconstruction.** The [new octal theorem](../issue62_octal_reconstruction_20261123/README.md) identifies the complete actual sets with explicit affine octal Cantor sets and proves equality with the 32-state core survivor. The full 96-state survivor used here remains strictly larger. The [new physical connector proof](../issue62_physical_connector_reconstruction_20261123/NOTE.md) supplies the all-angle words in one fixed compatible basis. These are additional proofs; the finite certificate and one-way implication in this note retain their original scope.
+
 ## 1. Actual dynamical set and the analytic inputs
 
 Use the archive's actual parameter c_* and G=f_{c_*}^3. Let K3 be the connected, locally connected filled set of this quadratic-like return, and let

@@ -3,6 +3,8 @@
 Date: 2026-11-23 (America/New_York). Repository at initial base
 ed64c7ad839dcc8b799d53379434f892fdc92a2c.
 
+**Continuation.** The [physical octal reconstruction](../issue62_octal_reconstruction_20261123/README.md) now determines the sets themselves by an inverse-fiber argument and entropy saturation. Its [measure and trace proof](../issue62_octal_reconstruction_20261123/MEASURE_AND_TRACE.md) supplies quantitative consequences on those actual sets. The independent dimension proof below remains valid with its original hypotheses and source attribution.
+
 ## Conclusion and dependence
 
 The established upper bound can be sharpened to
