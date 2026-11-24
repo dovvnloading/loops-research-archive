@@ -5843,7 +5843,7 @@
   {
    "id": "NOV26_GAIN_LARGE",
    "status": "open",
-   "statement": "Strict limiting and p>=13 unbuffered Wave gain: The rational comparisons give D_p>11/126 for p>=13 and 0.696<D_infinity<0.793 for the limiting model. The physical interpretation requires the full marked path comparison.",
+   "statement": "Strict limiting and p>=13 unbuffered Wave gain: The corrected rational comparisons give D_p>40/819 for p>=13 and 0.696<D_infinity<0.793 for the limiting model. The physical interpretation requires the full marked path comparison.",
    "deps": [
     "NOV26_GAIN_PAIRED"
    ],

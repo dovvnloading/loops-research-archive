@@ -320,7 +320,7 @@ proves, relative to its explicit external dynamical/topological
 inputs, the A.1 independent-supremum unbuffered gain
 \[
 D_p=1/C_p^++1/C_p^--1/P_p>1/100\quad(p\ge3),
-\qquad D_p>11/126\quad(p\ge13).
+\qquad D_p>40/819\quad(p\ge13).
 \]
 Those parent and child suprema concern respectively
 \(\Omega_p=U_p\setminus T_p\) and

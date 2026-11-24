@@ -28,9 +28,9 @@ v = gain.v
 I = v.Iv
 ONE, TWO = v.ONE, v.TWO
 RADIUS = F(5, 2)
-PARENT_TAIL_FLOOR = F(2, 3)
+PARENT_TAIL_FLOOR = F(13, 20)
 CHILD_TAIL_CEILING = F(63, 50)
-TAIL_GAIN_FLOOR = F(11, 126)
+TAIL_GAIN_FLOOR = F(40, 819)
 
 
 def require(ok: bool, msg: str) -> None:
@@ -48,7 +48,11 @@ def model_positive_boxes(period: int, orbit: list[I]) -> dict[int, I]:
     q = F(1, 4**period)
     coefficients = {1: F(15246)}
     for j in (2, 3, 5):
-        coefficients[j] = F(30 * 15246 + 88 * (4**j - 1), 3)
+        # The parameter displacement contributes 30*15246, while only the
+        # geometric sum of dynamical errors has denominator 3.  The
+        # former expression divided BOTH terms by 3 and under-enclosed
+        # the physical cuts (corrected 2026-11-23).
+        coefficients[j] = F(30 * 15246) + F(88 * (4**j - 1), 3)
     return {j: -gain.pad(orbit[j], coefficients[j] * q)
             for j in (1, 2, 3, 5)}
 
@@ -208,8 +212,8 @@ def certify() -> dict[str, object]:
         boxes13[1], boxes13[2], boxes13[5], boxes13[3])
     strict_brackets("all p>=13 parent semidisk",
                     p_disk, PARENT_TAIL_FLOOR, F(3, 4))
-    # From P_p >= W_disk > 2/3 and C_p <= E_p^coarse < 63/50:
-    # D_p = 2/C_p - 1/P_p > 2/(63/50) - 1/(2/3) = 11/126.
+    # From P_p >= W_disk > 13/20 and C_p <= E_p^coarse < 63/50:
+    # D_p = 2/C_p - 1/P_p > 2/(63/50) - 1/(13/20) = 40/819.
     require(2 / CHILD_TAIL_CEILING - 1 / PARENT_TAIL_FLOOR
             == TAIL_GAIN_FLOOR and TAIL_GAIN_FLOOR > 0,
             "inverse-width direction or tail gain rational identity wrong")
@@ -234,7 +238,7 @@ def main() -> None:
         else:
             print(f"{key}: {value}")
     print("PASS: limiting 0.696 < D_inf < 0.793; "
-          "all p>=13 D_p>11/126; conditional physical marking M")
+          "all p>=13 D_p>40/819; conditional physical marking M")
     print("NOT PROVED: exact optimum, P_p -> P_inf, "
           "any buffered canonical WAD amplification")
 

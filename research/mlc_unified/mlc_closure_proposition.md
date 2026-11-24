@@ -368,11 +368,25 @@ diameter at most \(T_0\) in the precisely declared marked category. If two
 quadratic parameters have identical full marked combinatorics, finite-depth
 pullback produces quasiconformal conjugacies with a universal dilatation
 bound. Compactness from UPTCR-5 supplies a limiting global quasiconformal
-conjugacy of the sphere, normalized at infinity. Every limiting Beltrami form
-is invariant, and every controlled UPTCR tower supports no invariant line
-field. Hence the limiting Beltrami form vanishes, the conjugacy is conformal,
+conjugacy of the sphere. On the basin of infinity it agrees with the
+normalized Böttcher conjugacy. Its Beltrami form must vanish on the entire
+Fatou set; in the periodically repelling connected case the exterior
+condition already gives this because \(K=J\). If bounded Fatou components
+are included in the declared tower category, conformality on those
+components is an additional part of this clause. Every limiting Beltrami
+form is invariant, and every controlled UPTCR tower supports no invariant
+line field on its Julia set. Hence the limiting Beltrami form vanishes, the conjugacy is conformal,
 and comparison of coefficients in the monic centered normalization gives
 equality of parameters.
+
+**Support clarification (2026-11-23).** Fixing infinity, fixing three
+points, or preserving external ray angles alone does not imply the
+required vanishing on the Fatou set. The explicit Chebyshev self-conjugacy
+and the corrected terminal theorem are proved in the
+[exterior-gauge repair](../independent_audits/maximal_global_closure_20261123/EXTERIOR_GAUGE_REPAIR.md).
+That note also gives a compact-exhaustion condition preserving the
+Böttcher normalization under the limiting process. It does not prove
+the open no-line-field or uniform pullback clauses.
 
 For each infinitely renormalizable \(c\), there is in addition a nested
 sequence \(\Pi_N(c)\) of nonempty compact connected relative neighborhoods
@@ -468,9 +482,11 @@ the earlier value \(L_{p(n)}\) to be still larger, a contradiction.
 UPTCR-5 converts (7.1), together with the universal side constraints, into
 precompactness of the normalized marked tower. UPTCR-6 constructs the
 uniformly quasiconformal finite-depth pullback conjugacies and a limiting
-global normalized conjugacy. If its invariant Beltrami form were nonzero on
-a positive-measure invariant set, normalization by its modulus would give an
-invariant line field. Thus the Beltrami form vanishes. The conjugacy is
+global conjugacy conformal on the Fatou set. Its invariant Beltrami form
+is therefore supported on the Julia set modulo a null set. If it were
+nonzero on a positive-measure set there, normalization by its modulus
+would give an invariant line field on the Julia set. Thus the Beltrami
+form vanishes. The conjugacy is
 conformal and hence affine, say \(h(z)=az+b\). Comparing coefficients in
 \(h\circ f_c=f_{c'}\circ h\) gives \(a=a^2\), \(2ab=0\), and therefore
 \(a=1\), \(b=0\), and \(c=c'\). Hence the full marked combinatorial fiber in
@@ -506,7 +522,7 @@ the first failure and record the specified certificate.
 | UPTCR-3 | independent core/WAD dimension bounds and exact Value observability | state dimension, missing future functional, failed quotient square, or congestion ratio |
 | UPTCR-4 | complete-block routing and (5.5)--(5.6) | block word, transition matrix, chart cycle, entropy charge, error term, failed margin |
 | UPTCR-5 | sequential compactness in an explicit marked topology | escaping carrier/access or uncontrolled counter/stack subsequence |
-| UPTCR-6 | qc pullback, limiting conjugacy, no line field, connected parameter basis | finite depth, dilatation defect, limiting Beltrami form, or failed relative-neighborhood property |
+| UPTCR-6 | qc pullback, limiting conjugacy conformal on the Fatou set, no Julia line field, connected parameter basis | finite depth, dilatation defect, exterior normalization or Fatou-support failure, limiting Beltrami form, or failed relative-neighborhood property |
 
 If the first failure is a protected-access collision, the failed raw core is
 inadmissible even in a bounded window. The state may be enlarged or retimed

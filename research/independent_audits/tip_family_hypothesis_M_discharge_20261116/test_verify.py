@@ -62,11 +62,12 @@ class MarkingTests(unittest.TestCase):
 
 class RationalImplicationTests(unittest.TestCase):
     def test_rational_tail_not_decimal(self):
-        self.assertEqual(audit.check_tail_floor(), F(11, 126))
-        self.assertGreater(F(11, 126), F(1, 100))
+        self.assertEqual(audit.check_tail_floor(), F(40, 819))
+        self.assertGreater(F(40, 819), F(1, 100))
 
     def test_tightened_or_wrong_tail_rejected(self):
         for parent, child in [(F(2, 3), F(3, 2)),
+                              (F(2, 3), F(63, 50)),
                               (F(3, 4), F(63, 50)),
                               (F(0), F(63, 50))]:
             with self.subTest(parent=parent, child=child):

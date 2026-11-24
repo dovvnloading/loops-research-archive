@@ -27,6 +27,38 @@ Research direction, synthesis, authorship, and public stewardship
 
 **On this page:** [November research](#november-1516-2026-research-integration-merged-prs-72100) · [Results and original figures](#research-results-you-can-inspect) · [Mathematical program](#the-mathematical-program) · [Companion papers](#three-companion-papers) · [3/9 testbed](#the-november-2026-two-scale-testbed) · [Reproduce](#reproduce-the-central-results) · [Evidence ledger](#source-locked-evidence-ledger) · [Open problems](#the-open-frontier)
 
+## November 23: native-interface proofs and an arithmetic correction
+
+The [new review packet](./research/independent_audits/native_frontier_20261123.md)
+contains written proofs of the selected real family's full ideal marking
+and all-path width comparison, a stationary terminal estimate from two
+actual physical hits, and corrections to the connector and rigidity
+interfaces. The selected-family proofs use the explicitly cited physical
+restriction and signed-chart estimates; they are awaiting human specialist
+review.
+
+The audit also found a misplaced division by three in the large-period
+coordinate-error verifier. Its corrected bounds give
+
+$$
+P_p>13/20,\qquad C_p<63/50,\qquad
+D_p>40/819>1/100\quad(p\ge13).
+$$
+
+The previous uniform `11/126` certificate is superseded. The finite-period
+and limiting-model bounds are unchanged, and the all-period `1/100`
+conclusion survives. The [full correction and analytic
+proof](./research/independent_audits/maximal_native_wave_20261123/H3_WIDTH.md)
+distinguish independently optimized unbuffered widths from a single
+pairable dynamical parent.
+
+For the general stationary argument, actual pass-through at its two valid
+final indices now implies `W(A_(b+2)) ≤ 2 W(RF)`; proving that pass-through
+for the native retained Waves remains open. The new local H2/H3 results
+are specific to the selected tip family. The global construction,
+calibration, compactness and rigidity gates retain their open status.
+[Proofs, remaining hypotheses and reproduction commands](./research/independent_audits/native_frontier_20261123.md)
+
 ## Research results you can inspect
 
 These visuals come from **this archive's own computations, certificates, and finite constructions**. They show concrete angles, pairings, and return geometry—not a percentage of a conjecture solved, stock fractal art, or a diagram attributed to someone else.
@@ -192,7 +224,7 @@ The [model-to-physical proof register](./formalization/PHYSICAL_BRIDGES.md) reco
 | [#84](https://github.com/dovvnloading/loops-research-archive/pull/84) Four-push p=3..8 crest-collar grid | **Finite certificate; conditional physical Wave** — Strict whole-bin interval collars for selected four-push crests, not an all-period or unrestricted Wave transport law. | [Note](./research/independent_audits/crest_transport_tip_family_20261116/NOTE.md) · [Verifier](./research/independent_audits/crest_transport_tip_family_20261116/verify.py) |
 | [#89](https://github.com/dovvnloading/loops-research-archive/pull/89) Connected crest collars p=3..16 | **Finite certificate; numerical-only limit** — Full maximal connected collars within the stated circular family are certified; c_infinity approximately 0.347005 is only a numerical conjecture. | [Note](./research/independent_audits/crest_transport_asymptotics_20261116/NOTE.md) · [Verifier](./research/independent_audits/crest_transport_asymptotics_20261116/verify.py) |
 | [#94](https://github.com/dovvnloading/loops-research-archive/pull/94) Pairable-wave serial loss | **Conditional leafwise serial inequality** — Loss or equality applies to a designated pair with a restriction from each child in every parent leaf and injectivity on their union (KKL Lemma A.11). | [Note](./research/independent_audits/tip_family_canonical_wave_gain_20261116/NOTE.md) · [Verifier](./research/independent_audits/tip_family_canonical_wave_gain_20261116/verify.py) |
-| [#97](https://github.com/dovvnloading/loops-research-archive/pull/97) Strict limiting and p>=13 unbuffered Wave gain | **Conditional on v2 H1–H3** — The rational comparisons give D_p>11/126 for p>=13 and 0.696<D_infinity<0.793 for the limiting model. The physical interpretation requires the full marked path comparison. | [Note](./research/independent_audits/tip_family_limiting_wave_gain_20261116/NOTE.md) · [Verifier](./research/independent_audits/tip_family_limiting_wave_gain_20261116/verify.py) |
+| [#97](https://github.com/dovvnloading/loops-research-archive/pull/97) Strict limiting and p>=13 unbuffered Wave gain | **Conditional on v2 H1–H3** — The corrected rational comparisons give D_p>40/819 for p>=13 and 0.696<D_infinity<0.793 for the limiting model. The physical interpretation requires the full marked path comparison. | [Note](./research/independent_audits/tip_family_limiting_wave_gain_20261116/NOTE.md) · [Verifier](./research/independent_audits/tip_family_limiting_wave_gain_20261116/verify.py) |
 | [#100](https://github.com/dovvnloading/loops-research-archive/pull/100) Strict independent unbuffered Wave gain for all p | **Conditional on v2 H1–H3** — For independently optimized unbuffered widths the four period bounds give D_p>1/100 for every p>=3 once the marked parent witnesses and all-child upper metrics are established. | [Note](./research/independent_audits/tip_family_finite_p_wave_gain_20261116/NOTE.md) · [Verifier](./research/independent_audits/tip_family_finite_p_wave_gain_20261116/verify.py) |
 
 ### Renormalization depth and marked QC

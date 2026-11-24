@@ -4,6 +4,27 @@ To trace a claim from a checked model to its independently defined geometric obj
 
 This map connects the mathematical dependency structure to the public files. The canonical route through the project is the paper sequence, the main manuscript, the proof ledger, and `research/mlc_unified/`. Dated push bundles preserve the development record and remain addressable because ledger entries cite them.
 
+## November 23: native-interface proof repairs
+
+The [native-interface review packet](./research/independent_audits/native_frontier_20261123.md)
+is the current entry point for the following additions. These are written
+proofs with explicit physical inputs and exact arithmetic checks, awaiting
+human specialist review.
+
+| Interface | New result and review target |
+|---|---|
+| Selected real-family local H2 and H3 | [Complete ideal marking and positive-subarc escape](./research/independent_audits/maximal_native_wave_20261123/NOTE.md), followed by [the full-path metric and parent-foliation proof](./research/independent_audits/maximal_native_wave_20261123/H3_WIDTH.md). The repaired large-period error gives `D_p > 40/819 > 1/100`; the old `11/126` certificate is superseded. |
+| Stationary terminal width | [Two actual filled-set hits imply a proper inner or outer exit](./research/independent_audits/maximal_exit_transfer_20261123/NOTE.md). Borel selection and cyclic-end degree two give `W(A_(b+2)) ≤ 2 W(RF)` once the two N2 pass-through statements hold. |
+| Native 3/9 connectors | [Exactly two coarse inverse-image components](./research/independent_audits/maximal_root_landing_20261123/NOTE.md) obstruct the proposed one-sheet coarse connector for 44 of 88 specified lifts. |
+| Physical pruning and collision | [Singleton-cut full-hull incidence](./research/independent_audits/maximal_global_closure_20261123/CUTPOINT_PRUNING.md) and [a critical-cap obstruction for actual adjacent occurrences](./research/independent_audits/maximal_global_closure_20261123/MONODROMY_COLLISION.md) narrow the stationary inputs without proving general retained occurrence extraction. |
+| Terminal rigidity | [A Chebyshev exterior-gauge counterexample](./research/independent_audits/maximal_global_closure_20261123/EXTERIOR_GAUGE_REPAIR.md) identifies the required Fatou-set conformality premise before Julia no-line-field rigidity applies. |
+
+The [bridge register](./formalization/PHYSICAL_BRIDGES.md) distinguishes
+these selected-family written results from the conditional stationary
+estimate and open global gates. The 465 July obligations and their statuses
+are unchanged. Local H2/H3 in the tip paper are distinct from the global
+H2/H3 calibration and coercivity obligations below.
+
 ## November 23: two explicit model-to-dynamics routes
 
 - [Actual period-27 interval matrix](./research/independent_audits/period27_real_markov_bridge_20261123.md): Lean proves whole-interval images and exact preimage multiplicities for the real quadratic. The all-horizon finite-path/actual-fiber equivalence and complete-core column-sum count are now Lean theorems; written cycle arguments identify the three Fibonacci return clocks and exact characteristic factors. This is the reducible real spine, not the primitive clone graph.
@@ -65,7 +86,7 @@ Each entry links the dated note and its verifier. The current scope of the physi
 | [#84](https://github.com/dovvnloading/loops-research-archive/pull/84) Four-push p=3..8 crest-collar grid | **Finite certificate; conditional physical Wave** — Strict whole-bin interval collars for selected four-push crests, not an all-period or unrestricted Wave transport law. | [Note](./research/independent_audits/crest_transport_tip_family_20261116/NOTE.md) · [Verifier](./research/independent_audits/crest_transport_tip_family_20261116/verify.py) |
 | [#89](https://github.com/dovvnloading/loops-research-archive/pull/89) Connected crest collars p=3..16 | **Finite certificate; numerical-only limit** — Full maximal connected collars within the stated circular family are certified; c_infinity approximately 0.347005 is only a numerical conjecture. | [Note](./research/independent_audits/crest_transport_asymptotics_20261116/NOTE.md) · [Verifier](./research/independent_audits/crest_transport_asymptotics_20261116/verify.py) |
 | [#94](https://github.com/dovvnloading/loops-research-archive/pull/94) Pairable-wave serial loss | **Conditional leafwise serial inequality** — Loss or equality applies to a designated pair with a restriction from each child in every parent leaf and injectivity on their union (KKL Lemma A.11). | [Note](./research/independent_audits/tip_family_canonical_wave_gain_20261116/NOTE.md) · [Verifier](./research/independent_audits/tip_family_canonical_wave_gain_20261116/verify.py) |
-| [#97](https://github.com/dovvnloading/loops-research-archive/pull/97) Strict limiting and p>=13 unbuffered Wave gain | **Conditional on v2 H1–H3** — The rational comparisons give D_p>11/126 for p>=13 and 0.696<D_infinity<0.793 for the limiting model. The physical interpretation requires the full marked path comparison. | [Note](./research/independent_audits/tip_family_limiting_wave_gain_20261116/NOTE.md) · [Verifier](./research/independent_audits/tip_family_limiting_wave_gain_20261116/verify.py) |
+| [#97](https://github.com/dovvnloading/loops-research-archive/pull/97) Strict limiting and p>=13 unbuffered Wave gain | **Conditional on v2 H1–H3** — The corrected rational comparisons give D_p>40/819 for p>=13 and 0.696<D_infinity<0.793 for the limiting model. The physical interpretation requires the full marked path comparison. | [Note](./research/independent_audits/tip_family_limiting_wave_gain_20261116/NOTE.md) · [Verifier](./research/independent_audits/tip_family_limiting_wave_gain_20261116/verify.py) |
 | [#100](https://github.com/dovvnloading/loops-research-archive/pull/100) Strict independent unbuffered Wave gain for all p | **Conditional on v2 H1–H3** — For independently optimized unbuffered widths the four period bounds give D_p>1/100 for every p>=3 once the marked parent witnesses and all-child upper metrics are established. | [Note](./research/independent_audits/tip_family_finite_p_wave_gain_20261116/NOTE.md) · [Verifier](./research/independent_audits/tip_family_finite_p_wave_gain_20261116/verify.py) |
 
 ### Renormalization depth and marked QC

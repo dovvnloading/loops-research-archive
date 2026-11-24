@@ -69,12 +69,14 @@ theorem optimum_positive_le {waves : Set (Set Leaf)} {U : ℝ}
 
 end Metrics
 
-/-- Lower parent / upper child width in the four ranges of eq:gain-cases. -/
+/-- Lower parent / upper child width in the four ranges of eq:gain-cases.
+The p ≥ 13 parent floor uses the corrected 2026-11-23 coordinate-error
+certificate; its reciprocal margin is 40/819. -/
 noncomputable def bounds (p : ℕ) : ℝ × ℝ :=
   if p = 3 then (49 / 100, 487 / 500)
   else if p = 4 then (511 / 1000, 197 / 200)
   else if p ≤ 12 then (581 / 1000, 247 / 250)
-  else (2 / 3, 63 / 50)
+  else (13 / 20, 63 / 50)
 
 /-- A separate rational calculation, valid also when p passes from 12 to 13. -/
 theorem period_margin (p : ℕ) (_hp : 3 ≤ p) :

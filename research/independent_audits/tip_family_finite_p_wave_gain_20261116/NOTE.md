@@ -18,7 +18,15 @@ For every integer \(p\ge3\), **conditional on M for the physical interpretation*
 \boxed{D_p>1/100>0.}
 \]
 
-For \(3\le p\le12\), this note supplies individually certified physical parent competitors and domain-sensitive physical child upper bounds. For every \(p\ge13\), the unchanged limiting audit already proves \(D_p>11/126>1/100\). There is **no interpolation at 12/13**, no presumed convergence of the unrestricted optima, and no extrapolation of numerical measurements. The separate limiting marked model has \(0.696<D_\infty<0.793\) by that predecessor; we do not assert \(D_p\to D_\infty\).
+For \(3\le p\le12\), this note supplies individually certified physical parent competitors and domain-sensitive physical child upper bounds. For every \(p\ge13\), the corrected limiting audit proves \(D_p>40/819>1/100\). There is **no interpolation at 12/13**, no presumed convergence of the unrestricted optima, and no extrapolation of numerical measurements. The separate limiting marked model has \(0.696<D_\infty<0.793\) by that predecessor; we do not assert \(D_p\to D_\infty\).
+
+**Tail correction, 2026-11-23.** The limiting verifier formerly divided
+the parameter-displacement contribution to its physical cut error by 3.
+Its corrected all-period parent certificate is \(P_p>13/20\); combined
+with the unchanged \(C_p<63/50\), it gives \(40/819\).  This preserves the
+all-period \(1/100\) conclusion and does not change any finite row below.
+See the dated correction in the limiting audit and
+[the separate complete H3 proof](../maximal_native_wave_20261123/H3_WIDTH.md).
 
 All displayed decimals in the table are **strict rational bounds**, not optimizer approximations.
 
@@ -34,7 +42,7 @@ All displayed decimals in the table are **strict rational bounds**, not optimize
 | 10 | 0.581 | 0.988 | **0.300** |
 | 11 | 0.581 | 0.988 | **0.300** |
 | 12 | 0.581 | 0.988 | **0.300** |
-| all p >= 13 | 2/3 | 63/50 | **11/126** |
+| all p >= 13 | 13/20 | 63/50 | **40/819** |
 
 Every finite row reruns the independent old dyadic root isolation and fixed-point intervals. The finite source-bound improvement is stronger than the displayed rounded cap:
 \[

@@ -1557,5 +1557,20 @@
     "checks": [
       "research/independent_audits/verify_clone_resonant_readout.py"
     ]
+  },
+  "native-frontier": {
+    "guide": "formalization/PHYSICAL_BRIDGES_CONTRACTS.md#native-frontier",
+    "checks": [
+      "research/independent_audits/maximal_global_closure_20261123/verify_cutpoint_pruning.py",
+      "research/independent_audits/maximal_global_closure_20261123/verify_exterior_gauge.py",
+      "research/independent_audits/maximal_native_wave_20261123/verify.py",
+      "research/independent_audits/maximal_native_wave_20261123/verify_width.py",
+      "research/independent_audits/maximal_root_landing_20261123/verify.py"
+    ],
+    "obligations": [
+      "KKL_STATIONARY_FINAL_FIXED_COMPONENT_EXIT",
+      "KKL_STATIONARY_FINAL_PASS_THROUGH_PATH_EXTRACTION",
+      "H4_RIGIDITY"
+    ]
   }
 }

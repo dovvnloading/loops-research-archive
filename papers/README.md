@@ -12,6 +12,24 @@ The companion papers isolate the principal finite and structural interfaces of t
 
 The [two-scale physical proof audit](../formalization/TWO_SCALE_PHYSICAL_BRIDGES.md) traces the covering, component-quotient and planar-carrier theorems to their source hypotheses and records the open cross-scale steps.
 
+## November tip-family preprints: arithmetic correction on 23 November
+
+The November 16 tip-family preprints are separate from the three July
+papers above. The [v1 source](./tip_family_preprint_20261116/main.tex) and
+[referee-controlled v2 source](./tip_family_preprint_v2_20261116/main.tex)
+now use the corrected uniform tail constants. Earlier generated PDF
+artifacts contain a stronger bound whose coordinate-error certificate
+misplaced a division by three. The replacement is `P_p > 13/20` and
+`D_p > 40/819 > 1/100` for `p >= 13`; finite-period and limiting-model
+bounds are unchanged.
+
+Read the [dated erratum and new full-path
+proof](../research/independent_audits/maximal_native_wave_20261123/H3_WIDTH.md)
+with any earlier PDF, and the [current review
+packet](../research/independent_audits/native_frontier_20261123.md) for the
+selected-family H2/H3 proofs and their remaining global boundaries.
+No July paper or source-locked manuscript is changed by this correction.
+
 ## Logical sequence
 
 1. **Paper 1 changes the state space.** Canonical localization can force noninjectivity, so later constructions must retain sheet data or prove a faithful quotient.

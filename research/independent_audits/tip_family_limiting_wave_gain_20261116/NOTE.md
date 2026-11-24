@@ -4,12 +4,27 @@
 
 \[
 \boxed{D_\infty>0.696>0,\qquad
-       D_p=2/C_p-1/P_p>11/126>0\quad(p\ge13).}
+       D_p=2/C_p-1/P_p>40/819>0\quad(p\ge13).}
 \]
 
 Here `P` and `C` are **unbuffered suprema over A.1-marked Waves**, as defined by the prior [canonical gain audit](../tip_family_canonical_wave_gain_20261116/NOTE.md). This is **not** strict gain for a single leafwise-pairable parent, nor for KKL's *buffered canonical WAD arc weights*. No optimizer is asserted. Our analysis proves the sign without claiming convergence of the unrestricted finite-period suprema to their limiting-domain counterparts.
 
 **Arithmetic:** [verify.py](verify.py) re-executes the previously merged certified gain/sandwich verifiers, uses integer outward `2^-512` intervals with rational Taylor/elliptic remainders, and independently checks the new limiting quadrilaterals and the *entire* all-period parent semidisk gate. [test_verify.py](test_verify.py) probes reversed cuts, invalid radii and reciprocal signs. **Analytic, not machine-proved:** Schwarz–Christoffel rectangle foliations, conformal invariance, the geometric admissibility proof below, and M. The printed rational intervals are certificates **of their arithmetic premises**, not of these analytic theorems. No floating-point optimizer or numerical-only datum enters any proof.
+
+**Correction, 2026-11-23.** The original implementation of
+\(\bigl(30\cdot15246+88(4^j-1)/3\bigr)4^{-p}\) mistakenly divided both
+summands by 3.  This under-enclosed the all-period physical cut boxes.
+The corrected complete \(p=13\) box gives the strict parent enclosure
+\((658663060,749148532)\,10^{-9}\), which certifies \(P_p>13/20\), rather
+than the previously claimed \(P_p>2/3\) by this calculation.  The correctly
+computed child cap remains \(C_p<63/50\), so the repaired uniform conclusion
+is \(D_p>40/819>1/100\).  A regression reconstructs the error from the
+recurrence \(E_{j+1}=4E_j+88q\) plus the separate parameter displacement.
+The limiting model bounds and the finite \(3\le p\le12\) calculations are
+unchanged.  This correction does not certify the previously conditional
+ideal-boundary and full-path hypotheses; the complete new proposed
+selected-family argument is recorded separately in
+[the H3 audit](../maximal_native_wave_20261123/H3_WIDTH.md).
 
 ## 1. Exactly which limiting maps, domains, cuts and marks?
 
@@ -182,7 +197,7 @@ In particular, **the sign of the limiting marked model defect is strictly positi
 
 Apply (9) in **each finite target slit** in the positive `xi=lambda_p z` chart. For every `p>=13`, all four normalized cuts in (7) lie in the **widest p=13 rational interval box** (5): increasing the period only shrinks these error boxes. The new verifier evaluates (9) on that whole box and proves the *strict* inequality
 \[
-\boxed{W_{P,p}^{(5/2)}>2/3\quad\text{for every }p\ge13.}\tag{16}
+\boxed{W_{P,p}^{(5/2)}>13/20\quad\text{for every }p\ge13.}\tag{16}
 \]
 It separately checks all endpoint orders, `b<5/2<pi`, the cross-ratio interval, and the positive elliptic denominators. This is a certificate for an entire **continuum** of admissible leaves, not finite sampling and not a numerical optimizer.
 
@@ -202,9 +217,9 @@ The merged gain audit already proves `C_p\le E_p\le E_p^coarse<63/50` for **all*
 \[
 \begin{aligned}
 D_p&=\frac{2}{C_p}-\frac1{P_p}
->\frac{2}{63/50}-\frac1{2/3}
-=\frac{100}{63}-\frac32
-=\boxed{\frac{11}{126}>0}\quad(p\ge13).
+>\frac{2}{63/50}-\frac1{13/20}
+=\frac{100}{63}-\frac{20}{13}
+=\boxed{\frac{40}{819}>\frac1{100}}\quad(p\ge13).
 \end{aligned}\tag{18}
 \]
 Hence **`p0=13`** works, with no interpolation, optimizer stability assumption, or empirical period trend. This *strict sign theorem* supersedes the earlier sign-indefinite bounds for that tail (without changing the predecessor files). It makes **no assertion for periods 3–12**, for which the older intervals still cross zero.

@@ -117,13 +117,26 @@ rule; it may not infer mathematical disjointness.
 
 ### CV-4 — two implicit steps in the rigidity implication
 
-Two steps were correct but underexplained.
+The terminal argument has two steps. The first needs the explicit
+Fatou-support condition recorded below; ordinary point normalization
+does not supply it.
 
 First, the limiting conjugacy in UPTCR-6 must be a global quasiconformal
-conjugacy of the sphere, normalized at infinity. If its Beltrami coefficient
-\(\mu\) were nonzero on a positive-measure invariant set, then
-\(\mu/|\mu|\) would define an invariant line field. The no-line-field clause
-therefore gives \(\mu=0\) almost everywhere.
+conjugacy of the sphere, conformal on the Fatou set. In the connected
+periodically repelling case, agreement with the normalized Böttcher
+conjugacy on the basin of infinity supplies this condition. If bounded
+Fatou components are allowed, their conformal normalization is also
+required. Its Beltrami coefficient \(\mu\) is then supported on the
+Julia set. If it were nonzero on a positive-measure set there,
+\(\mu/|\mu|\) would define an invariant line field on the Julia set.
+The no-line-field clause therefore gives \(\mu=0\) almost everywhere.
+
+The [2026-11-23 exterior-gauge repair](../independent_audits/maximal_global_closure_20261123/EXTERIOR_GAUGE_REPAIR.md)
+proves why fixing infinity, even together with two other fixed points
+and all external ray angles, is insufficient. It gives the exact
+conditional theorem and a sufficient compact-exhaustion hypothesis for
+passing the exterior normalization to the limit. This clarification
+does not discharge UPTCR-6.
 
 Second, a conformal conjugacy between monic centered quadratics is affine.
 Write it as \(h(z)=az+b\). From
@@ -191,7 +204,7 @@ contradicting \(p(n)<n\) and the choice of \(L_n\) as a running record.
 Hence \(\sup_nL_n\leq K(c)\).
 
 UPTCR-5 supplies precompactness in the marked topology. UPTCR-6 supplies the
-global normalized quasiconformal limit. By CV-4, its Beltrami coefficient
+global quasiconformal limit conformal on the Fatou set. By CV-4, its Beltrami coefficient
 vanishes and equal full marked combinatorics force equality of parameters.
 Thus the full marked fiber at \(c\) is \(\{c\}\).
 

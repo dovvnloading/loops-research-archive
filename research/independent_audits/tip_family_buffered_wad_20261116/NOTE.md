@@ -303,7 +303,7 @@ published dynamical/prime-end and geometric theorems, the **unbuffered**
 A.1 independent-supremum result
 \[
 D_p=1/C_p^++1/C_p^--1/P_p>1/100\quad(p\ge3),
-\qquad D_p>11/126\quad(p\ge13).
+\qquad D_p>40/819\quad(p\ge13).
 \]
 Here \(P_p\) is a supremum of parent Waves on the *tree annulus*
 \(\Omega_p\) with ten-atom marking, and \(C_p^\pm\) are **independent**

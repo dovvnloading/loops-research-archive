@@ -300,9 +300,9 @@ are the separate reasons there is nevertheless no residual
    The middle strict bound uses \(e^{5/2}<13\);
    the last is the *whole normalized physical target disk*
    bound, not a few sampled leaves. Together with
-   \(0<|t|<R<\pi\), injectivity and the simply
+   \(|t|<R<\pi\), injectivity and the simply
    connected left-tip homotopy, this supplies an embedded
-   foliation of width \(W_{P,p}^{(5/2)}>2/3\).
+   foliation of width \(W_{P,p}^{(5/2)}>13/20\).
    The interval box shrinks as \(p\) grows; the check at
    its largest \(p=13\) box covers **all** \(p\ge13\).
 
@@ -385,14 +385,23 @@ The ten original **individual** strict rational implications are
        \quad(5\le p\le12).
 \]
 For every \(p\ge13\), the separate all-p
-\(P_p>2/3,\ C_p<63/50\) certificates give, with
+\(P_p>13/20,\ C_p<63/50\) certificates give, with
 the **correct reversed reciprocals**,
 \[
- \boxed{D_p>\frac2{63/50}-\frac1{2/3}
-        =\frac{11}{126}>\frac1{100}.}
+ \boxed{D_p>\frac2{63/50}-\frac1{13/20}
+        =\frac{40}{819}>\frac1{100}.}
  \tag{8}
 \]
-There is **no hypothesis M or M'** for (7)–(8) on the surfaces
+**Arithmetic correction, 2026-11-23.** The upstream limiting checker
+under-enclosed its physical orbit boxes by dividing the parameter-error
+term by 3.  Its corrected bounds are the \(13/20\) and \(40/819\) values
+in (8).  This repairs the arithmetic dependency; it does not independently
+validate this historical note's claimed discharge of the geometric
+hypotheses.  The v2 referee-controlled scope remains authoritative, and
+the new proposed full-path proof is in
+[the H3 audit](../maximal_native_wave_20261123/H3_WIDTH.md).
+
+The original claim of this note was: there is **no hypothesis M or M'** for (7)–(8) on the surfaces
 (1), beyond accepting the established chart/prime-end/standard
 analytic theorems identified above. Exact suprema and
 attainment are not asserted.
@@ -510,7 +519,7 @@ independently checks cyclic atom partitions and consecutive
 immersion blocks, the distinct degree-two covering,
 the **3,3,7 / 3,3,5** inclusive lengths, each finite
 segment/semidisk choice and strict rational reciprocal
-threshold, and the \(11/126\) tail implication. The hostile
+threshold, and the corrected \(40/819\) tail implication. The hostile
 tests mutate these assumptions in memory; no source JSON
 is rewritten. The dedicated workflow runs these checks,
 enforces the add-only file boundary and dispatches both

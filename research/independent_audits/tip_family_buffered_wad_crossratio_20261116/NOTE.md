@@ -252,7 +252,7 @@ The independently proved unbuffered A.1 supremum gain remains
 
 \[
 D_p=1/C_p^++1/C_p^--1/P_p>1/100\quad(p\ge3),
-\quad D_p>11/126\quad(p\ge13),                         \tag{8}
+\quad D_p>40/819\quad(p\ge13),                         \tag{8}
 \]
 
 relative to the explicitly stated dynamical and topological inputs of

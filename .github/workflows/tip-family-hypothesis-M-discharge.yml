@@ -6,10 +6,14 @@ on:
     paths:
       - 'research/independent_audits/tip_family_hypothesis_M_discharge_20261116/**'
       - '.github/workflows/tip-family-hypothesis-M-discharge.yml'
+      - 'code/require_exact_head_workflows.py'
+      - 'code/test_require_exact_head_workflows.py'
   pull_request:
     paths:
       - 'research/independent_audits/tip_family_hypothesis_M_discharge_20261116/**'
       - '.github/workflows/tip-family-hypothesis-M-discharge.yml'
+      - 'code/require_exact_head_workflows.py'
+      - 'code/test_require_exact_head_workflows.py'
   workflow_dispatch:
 
 permissions:
@@ -32,16 +36,25 @@ jobs:
           python-version: '3.12'
       - name: Assert strictly add-only allowed paths against PR base
         if: github.event_name == 'pull_request'
+        env:
+          BASE_SHA: ${{ github.event.pull_request.base.sha }}
         shell: bash
         run: |
           set -euo pipefail
+          # The add-only scope is the initial package-creation contract.
+          # Maintenance must retain all mathematical and exact-head checks.
+          git cat-file -e "$BASE_SHA^{commit}"
+          if git cat-file -e "$BASE_SHA:research/independent_audits/tip_family_hypothesis_M_discharge_20261116" 2>/dev/null; then
+            echo "Existing package at exact PR base; running maintenance checks"
+            exit 0
+          fi
           while IFS=$'\t' read -r state path; do
             [[ "$state" == A ]] || { echo "Non-additive change: $state $path"; exit 1; }
             case "$path" in
               research/independent_audits/tip_family_hypothesis_M_discharge_20261116/*|.github/workflows/tip-family-hypothesis-M-discharge.yml) ;;
               *) echo "Outside locked paths: $path"; exit 1 ;;
             esac
-          done < <(git diff --name-status "${{ github.event.pull_request.base.sha }}...HEAD")
+          done < <(git diff --name-status "$BASE_SHA...HEAD")
       - name: Validate syntax and exact note/verifier/test presence
         run: |
           python -B - <<'PY'
@@ -77,39 +90,18 @@ jobs:
       contents: read
       actions: write
     steps:
-      - name: Dispatch original workflows and require successful exact-PR-head runs
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Test exact-head reuse, cancellation replacement and failure semantics
+        run: python -B -m unittest discover -s code -p 'test_require_exact_head_workflows.py' -v
+      - name: Require both original workflows at the exact PR head
         env:
           GH_TOKEN: ${{ github.token }}
           REPO: ${{ github.repository }}
           PR_BRANCH: ${{ github.event.pull_request.head.ref }}
           PR_SHA: ${{ github.event.pull_request.head.sha }}
-        shell: bash
-        run: |
-          set -euo pipefail
-          head="$(gh api "repos/$REPO/git/ref/heads/$PR_BRANCH" --jq '.object.sha')"
-          [[ "$head" == "$PR_SHA" ]] || { echo "PR moved before original validation"; exit 1; }
-          for workflow in lean-proofs.yml weighted-lean.yml; do
-            gh workflow run "$workflow" --repo "$REPO" --ref "$PR_BRANCH"
-          done
-          for workflow in lean-proofs.yml weighted-lean.yml; do
-            matched=0
-            for attempt in $(seq 1 360); do
-              runs="$(gh run list --repo "$REPO" --workflow "$workflow" --branch "$PR_BRANCH" --event workflow_dispatch --limit 60 --json databaseId,headSha,status,conclusion)"
-              item="$(printf '%s' "$runs" | jq -c --arg sha "$PR_SHA" '[.[] | select(.headSha == $sha)] | first // empty')"
-              if [[ -n "$item" ]]; then
-                id="$(printf '%s' "$item" | jq -r .databaseId)"
-                status="$(printf '%s' "$item" | jq -r .status)"
-                conclusion="$(printf '%s' "$item" | jq -r .conclusion)"
-                if [[ "$status" == completed ]]; then
-                  echo "$workflow at $PR_SHA: $conclusion (run $id)"
-                  [[ "$conclusion" == success ]] || { gh run view "$id" --repo "$REPO" || true; exit 1; }
-                  matched=1
-                  break
-                fi
-              fi
-              sleep 15
-            done
-            [[ "$matched" == 1 ]] || { echo "$workflow has no successful PR-head run"; exit 1; }
-          done
-          head="$(gh api "repos/$REPO/git/ref/heads/$PR_BRANCH" --jq '.object.sha')"
-          [[ "$head" == "$PR_SHA" ]] || { echo "PR moved during validation"; exit 1; }
+        run: python -B code/require_exact_head_workflows.py --attempts 360

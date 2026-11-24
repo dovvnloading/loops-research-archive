@@ -2,6 +2,20 @@
 
 **2026-11-16. Result: 0 certified based F9 words; 88 still null.** This is a source-check and a nontrivial exact word-gauge theorem, **not** a physical polygonal KL-connector reconstruction. It does not close Issue #62. The preceding 88-row source census and its conditional root / proper-tail conclusions are retained without modification.
 
+**2026-11-23 correction to the construction target.** The single common
+fine-root start and coarse-exterior-only path prescription below cannot
+represent all 88 specified native tile lifts. The archived C4 wake
+obstruction implies that 44 rows, including four native root rows, are
+unreachable from a root-normalized lower-parent start in that path domain.
+The exact native tile images occupy two coarse inverse-image components.
+Use either an initial path inside W followed by a coarse annular path, as
+the original KL category permits, or two initial fine sheets. The
+[two-component proof and row manifest](../maximal_root_landing_20261123/NOTE.md)
+give the obstruction and the corrected alternatives. The gauge algebra
+here remains valid for specified paths; it does not prove those paths
+exist with the originally proposed simultaneous prescriptions. No null
+word has been replaced by a fabricated crossing certificate.
+
 ## 1. Re-reading the ORIGINAL path definition
 
 Kahn--Lyubich, *A priori bounds ... II: Decorations*, arXiv:math/0609046v2, original printed **pp. 11--13**, Section 3.2.1 and Lemmas 3.3--3.4 (https://arxiv.org/pdf/math/0609046), defines a path space for a geometric piece Y of depth m:

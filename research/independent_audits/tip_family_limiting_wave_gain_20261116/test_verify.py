@@ -19,8 +19,8 @@ class LimitingGainTests(unittest.TestCase):
         cls.alpha = -(a.ONE - (a.ONE - a.I.point(4) * cls.tau).sqrt()) / a.TWO
 
     def test_strict_tail_rational_direction(self):
-        self.assertEqual(2 / F(63, 50) - 1 / F(2, 3), F(11, 126))
-        self.assertGreater(a.TAIL_GAIN_FLOOR, 0)
+        self.assertEqual(2 / F(63, 50) - 1 / F(13, 20), F(40, 819))
+        self.assertGreater(a.TAIL_GAIN_FLOOR, F(1, 100))
         # Equality of paired serial rectangles gives zero, not gain.
         parent, child = F(1, 2), F(1)
         self.assertEqual(2 / child - 1 / parent, 0)
@@ -55,6 +55,34 @@ class LimitingGainTests(unittest.TestCase):
         with self.assertRaises(AssertionError):
             a.model_positive_boxes(12, self.orbit)
 
+    def test_parameter_and_orbit_errors_are_added_before_enclosure(self):
+        """Rebuild the source error by its recurrence, not a copied formula.
+
+        The first-return model perturbation is <=88*q; each subsequent
+        iterate multiplies its inherited error by <=4.  Parameter motion
+        contributes a separate derivative bound 30 times 15246*q.
+        This fails with the former whole-numerator /3 precedence error.
+        """
+        q = F(1, 4**13)
+        boxes = a.model_positive_boxes(13, self.orbit)
+        accumulated = F(0)
+        for j in range(1, 6):
+            accumulated = 4*accumulated + 88*q
+            if j in (2, 3, 5):
+                parameter_motion = 30*15246*q
+                full_radius = parameter_motion + accumulated
+                self.assertLessEqual(
+                    boxes[j].low(), -self.orbit[j].high()-full_radius)
+                self.assertGreaterEqual(
+                    boxes[j].high(), -self.orbit[j].low()+full_radius)
+
+    def test_corrected_widest_box_does_not_claim_old_two_thirds(self):
+        boxes = a.model_positive_boxes(13, self.orbit)
+        width = a.parent_semidisk_width(
+            boxes[1], boxes[2], boxes[5], boxes[3])
+        self.assertGreater(width.low(), F(13, 20))
+        self.assertLess(width.low(), F(2, 3))
+
     def test_disk_competitor_and_strip_not_confused(self):
         x = self.x
         w_disk = a.parent_semidisk_width(
@@ -68,7 +96,7 @@ class LimitingGainTests(unittest.TestCase):
         result = a.certify()
         self.assertGreater(result["limit_defect_lower"].low(), F(696, 1000))
         self.assertLess(result["limit_defect_upper"].high(), F(793, 1000))
-        self.assertGreater(result["all_p_parent_disk_lower"].low(), F(2, 3))
+        self.assertGreater(result["all_p_parent_disk_lower"].low(), F(13, 20))
 
 
 if __name__ == "__main__":
