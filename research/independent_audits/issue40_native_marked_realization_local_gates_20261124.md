@@ -1,5 +1,7 @@
 # Issue #40 — source-authenticated saturated lift and local four-gate comparison
 
+> **Superseding first-failure result:** [canonical localization uniqueness failure](issue40_canonical_localization_uniqueness_failure_20261124.md) proves that the unrestricted maximal-subset definition of A.3.2 cannot agree with the geometric inner contour blocks of Prop. 6.5 on the canonical 3/9-tip localization. The four-gate argument below is conditional on the intended geometric/connected-interval reading, not a proof of the printed unrestricted subset equality. Global singleton exclusion is impossible on the exterior covering, and no unique restriction can reach an inner access outside the countable attachment-host set in the LC example. Use the superseding note as the focused proof and review target.
+
 2026-11-24. This is the next analytic proof candidate following the monotone prime-end bridge, marked-gate sandwich and ambient-angle exactness notes. It removes the previous **global finite-host hypothesis**, identifies the canonical source marking from rational puzzle and vertex contact data, and separates the remaining path-semantics and wave-selection obligations. It imports the interval and component-union assertions of source Propositions 6.5–6.6; it is not an independent proof of the maximal-restriction definition for arbitrary ideal subsets.
 
 ## 1. Precisely which model and which carrier
