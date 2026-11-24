@@ -1602,5 +1602,28 @@
       "KKL_STATIONARY_TWO_SIDED_WAVE_NONCOLLISION",
       "H4_RIGIDITY"
     ]
+  },
+  "selected-buffer-zero": {
+    "guide": "formalization/PHYSICAL_BRIDGES_CONTRACTS.md#selected-buffer-zero",
+    "checks": [
+      "research/independent_audits/canonical_width_attack_20261124/verify.py",
+      "research/independent_audits/canonical_width_attack_20261124/test_verify.py"
+    ]
+  },
+  "native-component-refinements": {
+    "guide": "formalization/PHYSICAL_BRIDGES_CONTRACTS.md#native-component-refinements",
+    "checks": [
+      "research/independent_audits/native_mark_attack_20261124/verify.py"
+    ]
+  },
+  "variable-end-exits": {
+    "guide": "formalization/PHYSICAL_BRIDGES_CONTRACTS.md#variable-end-exits",
+    "checks": [
+      "research/independent_audits/stationary_transport_attack_20261124/verify.py"
+    ],
+    "obligations": [
+      "KKL_STATIONARY_FINAL_FIXED_COMPONENT_EXIT",
+      "KKL_STATIONARY_FINAL_PASS_THROUGH_PATH_EXTRACTION"
+    ]
   }
 }

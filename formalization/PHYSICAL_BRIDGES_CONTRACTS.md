@@ -242,4 +242,128 @@ theorem-level source index. The mathematical statements are the named
 written theorems above; passing the source-index check does not certify
 their proofs.
 
+The following November 24 contracts refine the selected and stationary
+interfaces. Their classifications distinguish written analytic proofs,
+exact finite certificates, and explicit imports from the source. The
+historical table above and the source-locked ledger are preserved.
+
+<a id="selected-buffer-zero"></a>
+## Complete buffered exclusion for the selected four-boundary surface
+
+**Object and quantifier.** For every selected integer $p\ge10$, take the
+actual surface $Y_p=U_p\setminus(K_0\cup K_1\cup K_2)$ with its minimal
+marking by the four whole ideal boundary circles. Every admissible simple
+ideal arc class, including every winding and essential returning class,
+has full quadrilateral width $q_\alpha<1999/1000<2$. Consequently all
+canonical coefficients $(q_\alpha-2)_+$ vanish and
+$W_{\rm can}(Y_p)=0$. This strengthens the earlier outer-only result
+BUFFER to BUFFER-ZERO on this precise marking. [Written theorem and
+surface identification, §§1–5](../research/independent_audits/canonical_width_attack_20261124/NOTE.md)
+
+**Proof and evidence.** Embedded slit-and-cut rings lift to primitive
+peripheral cyclic covers. Their exact bounds give peripheral lengths
+below $5.97$, $3.2$, $4.19$ and $3.75$. Disjoint hyperbolic collars handle
+distinct boundary classes; the two oriented peripheral shadows of an
+essential returning class give the necessary factor two. These are
+written analytic arguments. The checker proves the numerical premises
+with exact intervals for $p=10,\ldots,16$ and a uniform tail for $p\ge17$.
+The tail uses the established derivative estimates only through the fifth
+iterate and the exact reflection $X_6=-X_3$. The regression suite checks
+this restriction, the width normalization and certificate replay.
+
+```sh
+python3 -B research/independent_audits/canonical_width_attack_20261124/verify.py --check-manifest
+python3 -B -m unittest discover -s research/independent_audits/canonical_width_attack_20261124 -p 'test_*.py' -v
+```
+
+Uniformization, the collar lemma and the continuum proof are not newly
+kernel-verified. Arbitrary marking refinements, the ten-atom tree annulus,
+and $p\le9$ are outside this theorem. The independent unbuffered Wave
+defect therefore cannot be identified with a positive buffered canonical
+coefficient on these minimally marked surfaces. [Scope and exact
+certificate](../research/independent_audits/canonical_width_attack_20261124/certificate.json)
+
+<a id="native-component-refinements"></a>
+## Component conventions and the source-imported finite native action
+
+**Independent written results.** On the selected slit pair, deduplicating
+maximal component restrictions modulo reparameterization preserves the
+greatest ideal-set pullback $q^{-1}(X)$ for every nonempty connected inner
+$X$, and preserves the outer-circle pullback. Uniform continuity makes
+any singleton unindexed restriction set have finitely many occurrences;
+their proper subordinate homotopies can be pasted. For a simple proper
+parent, a trace-contained proper source path is homotopic relative to its
+ideal endpoints to a full component, its reversal, or a null hairpin.
+After the marking filters, the nontrivial arc support agrees with
+component restriction. These are COMPONENT-SET and SIMPLE-TRACE;
+multiplicity, path-as-map singleton tests, nonsimple parents and width
+transport are not identified. [Theorems 3.4 and 4.1](../research/independent_audits/native_mark_attack_20261124/NOTE.md)
+
+**Explicit source import.** The actual interval Hubbard hull, complete
+pullback, prime primitive period-three little cycle, rotation denominator
+$q=2$ and bound $b=2$ verify the physical hypotheses for KKL Propositions
+6.5–6.6. Accepting those propositions gives the finite native action on
+the original multi-intervals and their closures. With Proposition A.14,
+a nonempty starting Wave whose crest contains an original marked interval
+cannot have nonempty unbreakable lamination descendants through that
+interval's saturation time, at most five pushes. This is NATIVE-FINITE,
+an imported theorem application. It does not independently reconstruct
+the source's compressed all-path argument or produce surviving descendants.
+Full immersion MARK remains open. [Hypothesis audit, source-proof issue
+and chain obstruction, §§5–6](../research/independent_audits/native_mark_attack_20261124/NOTE.md)
+
+```sh
+python3 -B research/independent_audits/native_mark_attack_20261124/verify.py --check-manifest
+```
+
+The checker covers 191 finite inputs: 100 proper open multi-intervals
+including ten punctured circles, 90 proper closed closures, and the full
+circle. It checks endpoint-aware saturation and the finite limb census.
+It does not prove the homotopy theorems or the imported analytic statements.
+[Exact certificate](../research/independent_audits/native_mark_attack_20261124/certificate.json)
+
+<a id="variable-end-exits"></a>
+## Terminal width from actual exits with varying endpoints
+
+**Written modulus theorem.** Let $A$ be a Borel lamination of simple proper
+parents. Suppose one maximal immersion lift per parent can be selected
+measurably, proper in the actual final surface and joining two distinct
+ideal boundary components. If $L_v$ denotes the local cyclic-cover width
+of end $v$, then
+
+$$
+\mathcal W(A)\le\inf\left\{\sum_v a_vL_v:
+a_v\ge0,\quad a_u+a_v\ge1
+\text{ for every occurring endpoint pair }\{u,v\}\right\}.
+$$
+
+The sum uses only positively charged ends of finite local width. The
+proof selects disjoint actual Borel lift supports, partitions them by
+their endpoint pairs, proves exact parallel additivity, and applies the
+whole-end cyclic width bounds. It does not use a counting-measure model
+for overlapping pushed images. [VARIABLE-EXIT, Theorem 4.1](../research/independent_audits/stationary_transport_attack_20261124/VARIABLE_END_EXIT_TRANSFER.md)
+
+For a final degree-$2^m$ native covering, all preimages of at most $b$
+target little filled sets have total peripheral degree at most $b2^m$.
+Thus actual exits incident to that bank imply
+$\mathcal W(A)\le b2^m\mathcal W(\mathcal RF)$. For the sharper predecessor
+bank at horizon $m=b+r$, with $2\le r<P$ and $P$ the native primitive cycle
+period, its $r$ distinct whole ends each have degree two. Actual selected
+maximal exits incident to that bank give $2r\mathcal W(\mathcal RF)$;
+if both endpoints lie in the bank the bound is $r\mathcal W(\mathcal RF)$.
+Different parents may use different endpoints. [Degree proof and exact
+bank conditions, §5](../research/independent_audits/stationary_transport_attack_20261124/VARIABLE_END_EXIT_TRANSFER.md)
+
+```sh
+python3 -B research/independent_audits/stationary_transport_attack_20261124/verify.py
+```
+
+This checker establishes finite rational endpoint-cover and degree-budget
+certificates and rejects invalid accounting. It does not construct native
+exits. The stationary hypotheses still need to supply one eligible actual
+exit per retained parent, or the sufficient two-bank-hit condition. An
+endpoint on a full carrier edge need not be an ideal end of the final
+small-Julia surface. Those existence obligations, the independent repair
+of the source stationary argument, and the global gates remain open.
+
 This audit and its new formalizations were prepared with OpenAI GPT-6 Astra Pro. Human mathematical review is pending.

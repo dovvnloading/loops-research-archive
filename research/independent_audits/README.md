@@ -2,6 +2,18 @@
 
 This directory contains reproducible audits of research claims in the archive. It is **not** a proof of Mandelbrot local connectivity and does not change the status of the source-locked global ledger obligations. The finite issues resolved here have their own explicit acceptance criteria and proof boundaries.
 
+## Complete selected-family support and native transport (November 24)
+
+The [current proof packet](native_resolution_20261124.md) combines:
+
+- [Complete buffered-WAD exclusion for selected p≥10](canonical_width_attack_20261124/NOTE.md): every winding class in the whole-component marking has full quadrilateral width below 1999/1000. The empty canonical support gives an explicit obstruction to transferring the positive unbuffered defect.
+- [Component-set and simple-leaf theorems](native_mark_attack_20261124/NOTE.md): repeated occurrence labels do not change the ideal-set pullback, and simple leaves acquire no extra nontrivial raw-trace arc classes. A separate source-imported finite-action consequence keeps its trust boundary explicit.
+- [Variable-end stationary exit transfer](stationary_transport_attack_20261124/VARIABLE_END_EXIT_TRANSFER.md): fractional endpoint-cover bounds and actual peripheral-degree budgets replace a common endpoint in the terminal estimate. Actual exits remain to be proved.
+
+Each packet supplies its exact checks and states which analytic inputs are
+written or imported. Full independent MARK and the global MLC gates are
+unchanged; no human specialist review is claimed.
+
 ## Actual interval rows and renewal clocks (November 23)
 
 - [Period-27 real Markov bridge](period27_real_markov_bridge_20261123.md): actual quadratic interval images and unique/no-preimage row semantics in Lean; written finite-itinerary and Fibonacci counting proofs; exact three-factor spectrum from independent integer trace and cycle-cover certificates. [Verifier](verify_period27_markov_spectrum.py)

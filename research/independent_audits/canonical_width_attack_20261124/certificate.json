@@ -1,0 +1,333 @@
+{
+  "status": "Exact arithmetic premises for the written all-class zero theorem",
+  "surface": "D(0,R_p) minus three actual selected filled intervals, minimal whole-circle marking",
+  "conclusion": "W_can(Y_p)=0 for every selected integer p>=10",
+  "all_class_argument": "peripheral shadows plus disjoint hyperbolic collars",
+  "deck_word_cutoff": null,
+  "peripheral_length_strict_caps": {
+    "K0": "597/100",
+    "K1": "16/5",
+    "K2": "419/100"
+  },
+  "outer_length_strict_cap": "15/4",
+  "thresholds": {
+    "cosh_distance_strict_lower": "1061/1000",
+    "collar_cosh_expression_outward_1e9": [
+      1061364497,
+      1061364500
+    ],
+    "s_star_strict_lower": "7/2",
+    "q_equals_2_distance": "(log 2)/2",
+    "all_classes_raw_q_strict_upper": "1999/1000",
+    "raw_q_envelope_outward_1e9": [
+      1998248143,
+      1998248146
+    ]
+  },
+  "cases": [
+    {
+      "case": "10",
+      "ring_cross_ratio_outward_1e9": {
+        "K0": [
+          442430737,
+          442430740
+        ],
+        "K1": [
+          28941917,
+          28941920
+        ],
+        "K2": [
+          133455172,
+          133455175
+        ]
+      },
+      "peripheral_length_upper_certificate_outward_1e9": {
+        "K0": [
+          5960039071,
+          5960039074
+        ],
+        "K1": [
+          3133004380,
+          3133004383
+        ],
+        "K2": [
+          4185654529,
+          4185654532
+        ],
+        "outer": [
+          3725561802,
+          3725561805
+        ]
+      }
+    },
+    {
+      "case": "11",
+      "ring_cross_ratio_outward_1e9": {
+        "K0": [
+          442410233,
+          442410236
+        ],
+        "K1": [
+          28670458,
+          28670461
+        ],
+        "K2": [
+          132601853,
+          132601856
+        ]
+      },
+      "peripheral_length_upper_certificate_outward_1e9": {
+        "K0": [
+          5959926189,
+          5959926192
+        ],
+        "K1": [
+          3128256351,
+          3128256354
+        ],
+        "K2": [
+          4179545042,
+          4179545045
+        ],
+        "outer": [
+          3725561802,
+          3725561805
+        ]
+      }
+    },
+    {
+      "case": "12",
+      "ring_cross_ratio_outward_1e9": {
+        "K0": [
+          442405108,
+          442405111
+        ],
+        "K1": [
+          28535779,
+          28535782
+        ],
+        "K2": [
+          132177399,
+          132177402
+        ]
+      },
+      "peripheral_length_upper_certificate_outward_1e9": {
+        "K0": [
+          5959897970,
+          5959897973
+        ],
+        "K1": [
+          3125889637,
+          3125889640
+        ],
+        "K2": [
+          4176499251,
+          4176499254
+        ],
+        "outer": [
+          3725561802,
+          3725561805
+        ]
+      }
+    },
+    {
+      "case": "13",
+      "ring_cross_ratio_outward_1e9": {
+        "K0": [
+          442403826,
+          442403829
+        ],
+        "K1": [
+          28468699,
+          28468702
+        ],
+        "K2": [
+          131965719,
+          131965722
+        ]
+      },
+      "peripheral_length_upper_certificate_outward_1e9": {
+        "K0": [
+          5959890915,
+          5959890918
+        ],
+        "K1": [
+          3124708076,
+          3124708079
+        ],
+        "K2": [
+          4174978566,
+          4174978569
+        ],
+        "outer": [
+          3725561802,
+          3725561805
+        ]
+      }
+    },
+    {
+      "case": "14",
+      "ring_cross_ratio_outward_1e9": {
+        "K0": [
+          442403506,
+          442403509
+        ],
+        "K1": [
+          28435224,
+          28435227
+        ],
+        "K2": [
+          131860014,
+          131860017
+        ]
+      },
+      "peripheral_length_upper_certificate_outward_1e9": {
+        "K0": [
+          5959889151,
+          5959889154
+        ],
+        "K1": [
+          3124117740,
+          3124117743
+        ],
+        "K2": [
+          4174218772,
+          4174218775
+        ],
+        "outer": [
+          3725561802,
+          3725561805
+        ]
+      }
+    },
+    {
+      "case": "15",
+      "ring_cross_ratio_outward_1e9": {
+        "K0": [
+          442403426,
+          442403429
+        ],
+        "K1": [
+          28418503,
+          28418506
+        ],
+        "K2": [
+          131807196,
+          131807199
+        ]
+      },
+      "peripheral_length_upper_certificate_outward_1e9": {
+        "K0": [
+          5959888710,
+          5959888713
+        ],
+        "K1": [
+          3123822683,
+          3123822686
+        ],
+        "K2": [
+          4173839011,
+          4173839014
+        ],
+        "outer": [
+          3725561802,
+          3725561805
+        ]
+      }
+    },
+    {
+      "case": "16",
+      "ring_cross_ratio_outward_1e9": {
+        "K0": [
+          442403406,
+          442403409
+        ],
+        "K1": [
+          28410146,
+          28410149
+        ],
+        "K2": [
+          131780795,
+          131780798
+        ]
+      },
+      "peripheral_length_upper_certificate_outward_1e9": {
+        "K0": [
+          5959888600,
+          5959888603
+        ],
+        "K1": [
+          3123675182,
+          3123675185
+        ],
+        "K2": [
+          4173649165,
+          4173649168
+        ],
+        "outer": [
+          3725561802,
+          3725561805
+        ]
+      }
+    },
+    {
+      "case": "all p>=17",
+      "ring_cross_ratio_outward_1e9": {
+        "K0": [
+          442310627,
+          442496190
+        ],
+        "K1": [
+          28388021,
+          28424430
+        ],
+        "K2": [
+          131716827,
+          131819986
+        ]
+      },
+      "peripheral_length_upper_certificate_outward_1e9": {
+        "K0": [
+          5959377833,
+          5960399416
+        ],
+        "K1": [
+          3123284524,
+          3123927231
+        ],
+        "K2": [
+          4173189098,
+          4173930957
+        ],
+        "outer": [
+          3725561802,
+          3725561805
+        ]
+      }
+    }
+  ],
+  "range_boundary_p9": {
+    "period": 9,
+    "status": "These peripheral caps do not certify all-class exclusion; actual support remains undecided",
+    "largest_admissible_ellipse_t_outward_1e9": [
+      101440043641,
+      101440043644
+    ],
+    "central_length_upper_expression_outward_1e9": [
+      5960490631,
+      5960490634
+    ],
+    "whole_carrier_ring_length_upper_expression_outward_1e9": [
+      4270831108,
+      4270831111
+    ],
+    "guaranteed_collar_cosh_expression_outward_1e9": [
+      1058064473,
+      1058064476
+    ],
+    "collar_expression_upper_squared_strictly_below": "9/8",
+    "positive_canonical_weight_proved": false
+  },
+  "formalized_analysis": false,
+  "scope": "Written theorem from named physical and classical analytic inputs; no MLC closure"
+}
