@@ -1072,6 +1072,7 @@
     "checks": [
       "research/independent_audits/issue62_connector_defects_20261116/verify_issue62.py",
       "research/independent_audits/issue62_connector_words_20261116/verify_connector_words.py",
+      "research/independent_audits/issue62_landing_angle_bound_20261123/verify.py",
       "research/mlc_unified/validate_canonical_kl_geometric_trace_proper_end_response.py",
       "research/mlc_unified/validate_canonical_kl_restricted_interface_classification.py",
       "research/mlc_unified/validate_canonical_resolution_kl_tile_correspondence_no_go.py",

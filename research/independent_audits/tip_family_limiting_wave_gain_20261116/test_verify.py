@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import sys
 import unittest
+from unittest.mock import patch
 from fractions import Fraction as F
 from pathlib import Path
 
@@ -54,6 +55,38 @@ class LimitingGainTests(unittest.TestCase):
     def test_all_p_error_not_before_p13(self):
         with self.assertRaises(AssertionError):
             a.model_positive_boxes(12, self.orbit)
+
+    def test_parent_boxes_include_the_upstream_proved_cut_bounds(self):
+        # The upstream child envelope independently uses the same physical
+        # cut estimate.  Capture those inputs rather than duplicating its
+        # formula: a parent certificate may not silently use smaller errors.
+        for p in (13, 14, 64):
+            with self.subTest(period=p):
+                with patch.object(a.gain, "coarse_child_plane") as envelope:
+                    a.gain.model_child_envelope(p, self.orbit)
+                parent = a.model_positive_boxes(p, self.orbit)
+                for j, required in zip((1, 2, 5, 3), envelope.call_args.args):
+                    self.assertLessEqual(parent[j].low(), required.low())
+                    self.assertGreaterEqual(parent[j].high(), required.high())
+
+    def test_period13_uses_an_actual_root_not_the_insufficient_tail_box(self):
+        full = a.model_positive_boxes(13, self.orbit)
+        broad_width = a.parent_semidisk_width(
+            full[1], full[2], full[5], full[3])
+        self.assertLess(broad_width.low(), a.PARENT_TAIL_FLOOR)
+        actual = a.certified_period13_boxes()
+        for j in actual:
+            self.assertLessEqual(full[j].low(), actual[j].low())
+            self.assertGreaterEqual(full[j].high(), actual[j].high())
+        actual_width = a.parent_semidisk_width(
+            actual[1], actual[2], actual[5], actual[3])
+        self.assertGreater(actual_width.low(), a.PARENT_TAIL_FLOOR)
+        a.disk_cutoff_certificate(actual)
+
+    def test_corrected_period14_box_proves_the_uniform_tail_floor(self):
+        full = a.model_positive_boxes(14, self.orbit)
+        width = a.parent_semidisk_width(full[1], full[2], full[5], full[3])
+        self.assertGreater(width.low(), a.PARENT_TAIL_FLOOR)
 
     def test_disk_competitor_and_strip_not_confused(self):
         x = self.x

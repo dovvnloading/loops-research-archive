@@ -48,9 +48,28 @@ def model_positive_boxes(period: int, orbit: list[I]) -> dict[int, I]:
     q = F(1, 4**period)
     coefficients = {1: F(15246)}
     for j in (2, 3, 5):
-        coefficients[j] = F(30 * 15246 + 88 * (4**j - 1), 3)
+        # The factor 1/3 applies only to the accumulated iterate error.
+        # Equation (5) of NOTE.md and the upstream sandwich both retain
+        # the full parameter-error term 30*15246.
+        coefficients[j] = F(30 * 15246) + F(88 * (4**j - 1), 3)
     return {j: -gain.pad(orbit[j], coefficients[j] * q)
             for j in (1, 2, 3, 5)}
+
+
+def certified_period13_boxes() -> dict[int, I]:
+    """Actual p=13 cuts, independently isolated in the signed chart.
+
+    The corrected uniform p=13 error box is too wide to prove the
+    claimed parent floor.  The existing exact root/derivative/itinerary
+    certificate supplies a separate finite case; no decimal seed is
+    accepted as a root or substituted for the actual iterate.
+    """
+    _, orbit = gain.s.certify_tip(13)
+    A = ONE
+    for j in range(1, 13):
+        A = A * TWO * orbit[j]
+    require(A.negative(), "p13 physical scaling needs A_p<0")
+    return {j: (-A) * orbit[13*j] for j in (1, 2, 3, 5)}
 
 
 def parent_angle_data(x1: I, x2: I, x5: I, x3: I) -> tuple[I, I, I, I]:
@@ -195,19 +214,29 @@ def certify() -> dict[str, object]:
             and defect_upper.high() < F(793, 1000),
             "limiting positive defect enclosure failed")
 
-    # p=13 is the WIDEST of the all-p normalized model error boxes.
-    boxes13 = model_positive_boxes(13, orbit)
-    for p in (14, 15, 17, 64):
+    # Keep the full cited errors.  Their p=13 box does NOT certify >2/3;
+    # isolate that physical tip separately, then use p=14 for the tail.
+    boxes14 = model_positive_boxes(14, orbit)
+    for p in (15, 17, 64):
         smaller = model_positive_boxes(p, orbit)
-        require(all(boxes13[j].low() <= smaller[j].low()
-                    and smaller[j].high() <= boxes13[j].high()
+        require(all(boxes14[j].low() <= smaller[j].low()
+                    and smaller[j].high() <= boxes14[j].high()
                     for j in (1, 2, 3, 5)),
                 "normalized all-period error boxes not nested")
-    disk_cutoff_certificate(boxes13)
-    p_disk = parent_semidisk_width(
-        boxes13[1], boxes13[2], boxes13[5], boxes13[3])
-    strict_brackets("all p>=13 parent semidisk",
-                    p_disk, PARENT_TAIL_FLOOR, F(3, 4))
+    disk_cutoff_certificate(boxes14)
+    p_tail_disk = parent_semidisk_width(
+        boxes14[1], boxes14[2], boxes14[5], boxes14[3])
+    strict_brackets("all p>=14 parent semidisk",
+                    p_tail_disk, PARENT_TAIL_FLOOR, F(3, 4))
+
+    physical13 = certified_period13_boxes()
+    disk_cutoff_certificate(physical13)
+    p13_disk = parent_semidisk_width(
+        physical13[1], physical13[2], physical13[5], physical13[3])
+    strict_brackets("actual p=13 parent semidisk",
+                    p13_disk, PARENT_TAIL_FLOOR, F(3, 4))
+    p_disk = I.hull(min(p13_disk.low(), p_tail_disk.low()),
+                    max(p13_disk.high(), p_tail_disk.high()))
     # From P_p >= W_disk > 2/3 and C_p <= E_p^coarse < 63/50:
     # D_p = 2/C_p - 1/P_p > 2/(63/50) - 1/(2/3) = 11/126.
     require(2 / CHILD_TAIL_CEILING - 1 / PARENT_TAIL_FLOOR
@@ -220,6 +249,8 @@ def certify() -> dict[str, object]:
         "limit_child_upper": c_high,
         "limit_defect_lower": defect_lower,
         "limit_defect_upper": defect_upper,
+        "p13_parent_disk_lower": p13_disk,
+        "p_ge_14_parent_disk_lower": p_tail_disk,
         "all_p_parent_disk_lower": p_disk,
         "all_p_child_cap": CHILD_TAIL_CEILING,
         "all_p_defect_strict_floor": TAIL_GAIN_FLOOR,

@@ -49,6 +49,39 @@ These visuals come from **this archive's own computations, certificates, and fin
 
 The **ray portrait and two-scale angle-map figures** are generated from the exact portrait manifest by [our reproducible SVG generator](./code/generate_readme_research_figures.mjs). The return and target-disk figures are explicitly labeled schematics of the archive's certificates. No external illustration is presented as an original research result.
 
+## November 23: corrected slit widths and exact fine-landing dimension
+
+The [selected-slit proof packet](./research/independent_audits/marked_slit_path_bridge_20261123/README.md)
+identifies every intrinsic A.1 path class on the actual finite slit surfaces,
+retains its winding, and supplies the embedded lower foliations and universal
+upper metrics for the independent unbuffered defect. For every selected
+period p≥3, the written argument gives **D_p>1/100**. Its dependency chain
+uses the intrinsic target and covering-pulled source markings. The complete
+immersion-pulled marking remains open because temporal excursions do not
+exhaust the archive's geometric inverse-trace restrictions.
+
+This work also repairs an actual error in the limiting-gain verifier: the
+parameter-error term was divided by three incorrectly. With the correct
+interval, the old broad p=13 box does not certify its stated 2/3 floor.
+An exact certificate for the actual p=13 parameter, followed by the corrected
+uniform box from p=14 onward, preserves the claimed bound. New regressions
+check those inputs against the independently implemented upstream estimates.
+
+For issue #62, the [exact angle theorem](./research/independent_audits/issue62_landing_angle_bound_20261123/EXACT_DIMENSION.md)
+gives **Hausdorff and box dimension exactly 1/3** for the actual fine-cycle
+landing-angle set, its three phases, and each of the four source seam root
+subsets. The [rational 96-state certificate](./research/independent_audits/issue62_landing_angle_bound_20261123/NOTE.md)
+proves the upper bound for every horizon; the actual Chebyshev return and
+Furstenberg's entropy–dimension theorem give the matching lower bound.
+Dense ordinary fine-interior landings rule out promoting any nondegenerate
+original W ideal interval to a wholly boundary-valued fine end. These are
+external-angle results; the prescribed F9 connector words remain uncomputed.
+
+The packet also [repairs the H4 endgame](./research/independent_audits/marked_slit_path_bridge_20261123/RIGIDITY_AND_REMAINING_GAP.md)
+using hybrid uniqueness and checks the scope of current area theorems.
+These are written local results with exact arithmetic and explicit classical
+inputs. Human specialist review, the native global bridges, and MLC remain open.
+
 ## November 23: actual interval rows and two different spectral clocks
 
 The [period-27 real Markov bridge](./research/independent_audits/period27_real_markov_bridge_20261123.md)
