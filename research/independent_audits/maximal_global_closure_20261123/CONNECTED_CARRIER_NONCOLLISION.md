@@ -414,6 +414,14 @@ The source's high-type threshold permits the explicit inequality
 on \(q\), as checked in the earlier note. It does not supply any
 missing occurrence or contact-end premise.
 
+[The exit-transfer note, Corollary 6.6](../maximal_exit_transfer_20261123/NOTE.md)
+supplies the final component and whole-end degree-two typing at
+this horizon. Conditional on the same two actual physical
+pass-through statements, it gives
+\(\mathcal W(A_{b+4})\le 2\mathcal W(\mathcal RF)\).
+Its upstream canonical-occurrence and contour obligations remain
+those stated here.
+
 ## 6. Exact dependency change
 
 Relative to MONODROMY_COLLISION.md, the following condition is removed:
@@ -445,6 +453,16 @@ The following remain explicit:
 * survival through every required sequential filter;
 * simple retained Wave projections and the compatible further
   selected outputs (5.2).
+
+[The annular properness note, Corollary 5.2](ANNULAR_RESTRICTION_PROPERNESS.md)
+removes a separate proper-landing premise for maximal raw restrictions
+when the actual carrier is a full nondegenerate forward-invariant
+continuum containing the critical point and the iterate domains are
+hyperbolic disks. It proves the finite-annulus topology of the full
+pulled carrier and ideal convergence at both ends of every maximal
+lift. Actual paired canonical contact germs, their order, physical
+endpoint identification, and survival through the native filters
+remain required.
 
 This is a further analytic reduction of noncollision. It does not
 prove that a bypass supplies those two retained occurrences, and

@@ -689,7 +689,10 @@ nonpositive. The present result instead implies
 \(P_p>C_p/2\ge P_{\rm pair}\). There is no contradiction and no iterated
 KKL amplification theorem. Buffered canonical WAD weights and the
 four-hole peripheral comparison belong to local H4 and are not proved
-by this argument.
+by this argument. The separate [matched outer-buffer proof](OUTER_BUFFER_EXCLUSION.md)
+now supplies that selected peripheral comparison and zero outer
+coefficients for \(p\ge11\), while leaving inner coefficients and
+amplification undetermined.
 
 Run the new arithmetic record and the corrected targeted regressions:
 

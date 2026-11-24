@@ -1118,6 +1118,9 @@ session by an independent agent, including support injectivity, terminal
 boundary location, degree scaling, and the possible confusion between
 condenser capacity and extremal length of a single separating loop class.
 This is AI-assisted adversarial review, not specialist human review.
+The same independent review checked Corollary 6.6's composable Jordan
+restrictions, whole-component identification, single critical encounter,
+and the source local-width comparison at every cycle index.
 
 Prepared with OpenAI GPT-6 Astra Pro assistance in proof search, source
 comparison, and writing. The standard cover/modulus and descriptive-set

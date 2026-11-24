@@ -52,6 +52,14 @@ proof](./research/independent_audits/maximal_native_wave_20261123/H3_WIDTH.md)
 distinguish independently optimized unbuffered widths from a single
 pairable dynamical parent.
 
+The [matched outer-buffer proof](./research/independent_audits/maximal_native_wave_20261123/OUTER_BUFFER_EXCLUSION.md)
+also proves that every outer-incident canonical buffered coefficient is
+zero for selected `p ≥ 11`, including essential outer self-classes.
+Inner coefficients remain undetermined. The stationary work now includes
+[ideal properness of all maximal annular restrictions](./research/independent_audits/maximal_global_closure_20261123/ANNULAR_RESTRICTION_PROPERNESS.md)
+under the explicit full-carrier package and
+[noncollision via the connected selected carrier](./research/independent_audits/maximal_global_closure_20261123/CONNECTED_CARRIER_NONCOLLISION.md).
+
 For the general stationary argument, actual pass-through at its two valid
 final indices now implies `W(A_(b+2)) ≤ 2 W(RF)`; proving that pass-through
 for the native retained Waves remains open. The new local H2/H3 results

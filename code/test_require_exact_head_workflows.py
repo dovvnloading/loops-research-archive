@@ -93,6 +93,26 @@ class ExactHeadWorkflowTests(unittest.TestCase):
         self.require(client)
         self.assertEqual(client.dispatched, list(gate.REQUIRED_WORKFLOWS))
 
+    def test_cancelled_retry_gap_cannot_revive_superseded_failure(self):
+        client = self.client([
+            [run(20, "in_progress"), run(10, "completed", "failure")],
+            [run(20, "completed", "cancelled"), run(10, "completed", "failure")],
+            [run(21, "queued"), run(20, "completed", "cancelled"),
+             run(10, "completed", "failure")],
+            [run(21, "completed", "success"), run(10, "completed", "failure")],
+        ])
+        self.require(client)
+        self.assertEqual(client.dispatched, [])
+
+    def test_accepted_retry_actual_failure_remains_fatal(self):
+        client = self.client([
+            [run(20, "in_progress"), run(10, "completed", "failure")],
+            [run(20, "completed", "failure"), run(10, "completed", "failure")],
+        ])
+        with self.assertRaisesRegex(gate.GateError, "failed check is fatal"):
+            self.require(client)
+        self.assertEqual(client.dispatched, [])
+
     def test_cancelled_only_polling_cannot_pass(self):
         client = self.client([[run(1, "completed", "cancelled")]])
         with self.assertRaisesRegex(gate.GateError, "No successful exact-head"):

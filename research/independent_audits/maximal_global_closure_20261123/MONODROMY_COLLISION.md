@@ -440,9 +440,9 @@ threshold to be enlarged. It is stated explicitly here and is not
 asserted for every small-\(q\) parameter.
 
 Changing \(N\) does not itself prove the missing bypass realization.
-Nor does this note claim that every other use of the terminal
-index in the stationary proof has been rewritten. For example, the
-two proposed final graph projections would now be
+The final component, degree, and width typing at this longer horizon
+is supplied by [the exit-transfer note, Corollary 6.6](../maximal_exit_transfer_20261123/NOTE.md).
+The two final graph projections are now
 
 \[
  P_m(\widehat K_b)=F^4(K_0),\qquad
@@ -450,11 +450,15 @@ two proposed final graph projections would now be
  \tag{6.5}
 \]
 
-rather than the source's shorter-horizon formulas. The primitive
-period is at least \(q>b+4\), so these are distinct cycle members,
-and the factorization still contains only one central degree-two
-step. Applying any final width theorem requires its own correctly
-typed final incidence statement at this new level.
+The primitive period is at least \(q>b+4\), so these are distinct
+cycle members. Corollary 6.6 constructs the composable Jordan
+restrictions, proves that each final graph continuum is an entire
+pullback component, and obtains degree two on its whole ideal end.
+Conditional on the same two actual physical pass-through statements
+at \(n=b,b+1\), it proves
+\(\mathcal W(A_{b+4})\le 2\mathcal W(\mathcal RF)\).
+It does not supply the canonically anchored retained occurrences or
+the native contour correspondence needed in the bypass argument.
 
 ## 7. The exact surviving N2 work
 
@@ -489,10 +493,23 @@ outside the theorem:
 5. The native non-locally-connected carrier and its full ideal
    contours must be identified where the proof uses them.
 
-The first local germs follow if an actual two-sided crossing in the
-embedded graph neighborhood is supplied. The existing binder audit
-correctly explains why those germs alone do not give items 2--4.
-The theorem above does not overwrite that distinction.
+Two subsequent results refine these obligations without changing
+the theorem above. [The connected-carrier addendum](CONNECTED_CARRIER_NONCOLLISION.md)
+replaces item 2 by actual location of the two canonical contact ends
+in one connected selected physical carrier. [The annular properness
+note, Corollary 5.2](ANNULAR_RESTRICTION_PROPERNESS.md) supplies the
+proper ideal continuation in item 3 when the actual carrier is a
+full nondegenerate continuum containing the critical point,
+is forward invariant, and the iterate domains are hyperbolic disks.
+That note proves the required finite-annulus topology for the full
+pulled carrier. It does not identify the proper endpoints with the
+named canonical contacts.
+
+An actual two-sided crossing in the embedded graph neighborhood
+supplies local germs. Neither addendum manufactures the required
+paired canonical germs, their source order, or survival through
+item 4's native filters. The carrier and contour identification
+in item 5 remains explicit.
 
 No actual source-admissible counterexample to the complete stationary
 statement has been constructed here. The result is a new analytic

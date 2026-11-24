@@ -50,10 +50,17 @@ No bound independent of initial subarc size exists even for a fixed
 selected \(p\), and singleton accesses are excluded. [Escape and delay
 proofs, §6](../independent_audits/maximal_native_wave_20261123/NOTE.md)
 
+**Outer buffered classes.** The [matched four-boundary proof](../independent_audits/maximal_native_wave_20261123/OUTER_BUFFER_EXCLUSION.md)
+supplies the actual primitive outer-collar lift, cyclic modulus and full
+quadrilateral comparison. The exact elliptic threshold and existing
+physical estimates imply that every outer-incident buffered coefficient
+vanishes for selected \(p\ge11\), including essential outer self-classes.
+The six inner endpoint types and their positive coefficients remain
+undetermined.
+
 **Residual scope.** These interval images have not been identified with
 every chosen Wave descendant's closed crest. Simultaneous leafwise
-pairing, iterated amplification, local H4's four-hole peripheral-cover
-comparison and positive inner buffered classes, all-Wave uniform
+pairing, iterated amplification, positive inner buffered classes, all-Wave uniform
 four-push transport, full depth kneading and global marked QC transport
 remain separate gates. The general non-locally-connected native Wave
 problem and global H1–H4/UPTCR/MLC remain open. Parts B–D's conditional
@@ -243,7 +250,7 @@ The suggested \(c_\infty(1+1/(p\log2)+O(p^{-2}))+O(4^{-p})\) expansion is **conj
 
 **Open problem 2 — canonical-width convergence.** With a fixed KKL base \(B=(I_9,I_0,I_1)\) and crest containing \(I_0\), let \(W_p^*\) be the supremum of conformal widths over **all** A.1-admissible parent laminations. In the v2 definition, \(W_{p,2}^*\) requires both designated surviving children on every parent leaf and injectivity of the immersion on their union. For the selected physical family, the new H2/H3 proof and KKL's pairable loss inequality give \(W_{p,2}^*\le C_p/2<W_p^*\). This separates the two suprema without producing paired optimizers. Convergence of \(W_p^*\), exact values and attainment remain open. [Current full-path proof and scope](../independent_audits/maximal_native_wave_20261123/H3_WIDTH.md) · [Historical v2 width theorem](../../papers/tip_family_preprint_v2_20261116/sections/wave_proofs.tex) The canonical-width audit gives the separate inequality \(W_{\rm round,p}^{\rm sym}\le W_{p,2}^*\le W_p^*\le Q_p\) *in the declared KKL slit/width setting*, with a convergent **full-path upper envelope** \(Q_p\), but the two bounding families need not coincide.
 
-**Other open problems.** Uniqueness across a maximal real primitive window beyond \(\mathcal C_p\); the bridge from interval escape to chosen Wave descendants and simultaneous child pairing; all-Wave uniform four-push transport; local H4's peripheral-cover/inner-buffered-class identification; complete depth and global marked QC transfer; the general native Wave problem and global H1–H4/UPTCR/MLC; and a machine-checked formalization of the external complex-analytic/topological arguments. Positive selected-family zero-edge subarc escape and the selected independent unbuffered \(1/100\) gain are now covered by the dated proofs above, with their explicit physical prerequisites. They do not settle these residual problems.
+**Other open problems.** Uniqueness across a maximal real primitive window beyond \(\mathcal C_p\); the bridge from interval escape to chosen Wave descendants and simultaneous child pairing; all-Wave uniform four-push transport; inner buffered-class identification and positivity; complete depth and global marked QC transfer; the general native Wave problem and global H1–H4/UPTCR/MLC; and a machine-checked formalization of the external complex-analytic/topological arguments. Positive selected-family zero-edge subarc escape, the independent unbuffered \(1/100\) gain, and outer buffered exclusion for selected \(p\ge11\) are covered by the dated proofs above, with their explicit physical prerequisites. They do not settle these residual problems.
 
 ## 3. Complete dependency proof skeleton (type of input at every link)
 

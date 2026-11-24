@@ -120,8 +120,15 @@ independently optimized child suprema, the proof gives
 This supplies the local H3 implication from the named physical inputs and
 the newly proved access theorem. It does not assert attainment of the
 suprema, simultaneous optimization, or leafwise pairing of both children
-of an optimizing parent. The buffered canonical WAD question and iterative
-width amplification are separate.
+of an optimizing parent. The inner buffered canonical WAD question and
+iterative width amplification are separate. For the actual four-boundary
+surface, the companion [outer-buffer proof](maximal_native_wave_20261123/OUTER_BUFFER_EXCLUSION.md)
+now supplies the physical peripheral-cover comparison and proves that
+every outer-incident buffered coefficient is zero for selected
+\(p\ge11\), including essential outer self-classes. Its precise threshold
+is \(\pi\mathcal W(I_{\rm out})<\log(17+12\sqrt2)\); the local width
+is not identified with an individual class quadrilateral. Inner
+coefficients and their positive support remain undetermined.
 
 ### Positive subarcs escape, with a size-dependent clock
 
@@ -168,7 +175,22 @@ unpunctured lift, an inner-to-inner exit, retention in the successor
 marking, or a target-lamination extraction. It still needs the two actual
 pass-through statements. The proof explicitly handles the conformal-plane
 case through Kahn's isomorphism statement and avoids the undefined
-terminal-family index from the old formulation.
+terminal-family index from the old formulation. Corollary 6.6 also types
+the whole-component and degree-two comparison at \(m=b+r\),
+\(2\le r<p\). In particular, the longer noncollision horizon
+\(m=b+4\), with \(q>b+4\) and primitive period \(p\ge q\), has the same
+\(2\mathcal W(\mathcal RF)\) bound once the two actual hits hold.
+
+A separate [annular properness theorem](maximal_global_closure_20261123/ANNULAR_RESTRICTION_PROPERNESS.md)
+shows that every maximal lift of a proper path has ideal endpoints on the
+actual full-carrier annuli. The proof establishes connectedness and
+fullness of the pulled carrier, proves that the immersion maps the whole
+source annulus into the target annulus, and applies a bounded analytic
+boundary-uniqueness argument. Its explicit package includes hyperbolic
+disk domains and a nondegenerate full forward-invariant carrier containing
+the critical point. It proves properness for existing lift germs;
+it does not construct the required canonical pair or make it survive
+the dynamical marking filters.
 
 ## 4. Two topological reductions and one rigidity correction
 
@@ -176,7 +198,7 @@ terminal-family index from the old formulation.
 |---|---|---|
 | Native coarse connectors | [The four tile images occupy exactly two coarse inverse-image components](maximal_root_landing_20261123/NOTE.md). A lower-root coarse-only prescription cannot reach 44 of the 88 specified lifts, including four native root witnesses. Two initial sheets, or an allowed native W prefix, repair existence. | This corrects the connector prescription. It does not compute the missing full nonabelian F9 crossing words or invalidate the original eight native root witnesses. |
 | Physical cutpoint pruning | [A singleton cut fiber under a monotone dendrite quotient gives exact full-hull marked incidence](maximal_global_closure_20261123/CUTPOINT_PRUNING.md). The periodically repelling Kiwi quotient supplies an actual physical carrier, including critical-fiber and forward-invariance arguments. | Applying this to a separately fixed native carrier still requires its monotone quotient, singleton cut fibers, and full-hull identification. Hull incidence alone is not a retained Wave occurrence. |
-| Adjacent geometric collisions | [A collision of actual adjacent occurrences forces a critical value inside the resulting Jordan cap](maximal_global_closure_20261123/MONODROMY_COLLISION.md). The full finite iterate supplies the covering argument. | Actual adjacency, a connected physical contact, simple target paths, native contour identification, and the two further selected Wave stages remain explicit premises. This does not prove the general N2 extraction. |
+| Geometric collisions | [The critical-cap proof](maximal_global_closure_20261123/MONODROMY_COLLISION.md) is strengthened by [a connected-carrier homotopy argument](maximal_global_closure_20261123/CONNECTED_CARRIER_NONCOLLISION.md). The actual closed selected limb replaces a connected contact subsegment of the parent. Two further compatible selected Wave stages exclude the remaining common-image possibility. | Canonically anchored ordered occurrences, native critical-contour locality, simple target paths, and sequential survival remain explicit. The parent's intervening contact need not be connected. General N2 extraction remains open. |
 | Terminal quasiconformal rigidity | [An explicit Chebyshev self-conjugacy fixes the Julia interval, three normalizing points, and all ray angles while remaining nonconformal](maximal_global_closure_20261123/EXTERIOR_GAUGE_REPAIR.md). The corrected implication excludes Fatou-set support before invoking Julia no-line-field rigidity. | Exterior Böttcher agreement suffices when \(K=J\). Bounded Fatou components require conformality there as well. The global pullback and no-line-field hypotheses are not supplied for arbitrary mixed towers. |
 
 ## 5. What still prevents the MLC conclusion
@@ -185,9 +207,13 @@ The immediate stationary problem is precise: obtain **two distinct actual
 retained pushed Waves** from the proposed bypass, or prove the needed
 physical pass-through directly. Two tagged source portions can have the
 same geometric image. Neither finite multiplicity nor the one-cut hull
-count resolves that equality. The monodromy result reduces a connected
-adjacent-contact case but does not establish the occurrence hypotheses
-for every native parent leaf.
+count resolves that equality. The connected-carrier result removes the
+connected-contact premise, and the annular theorem supplies ideal
+properness under its stated physical package. What remains is producing
+the correctly ordered canonical germs, identifying the native contours,
+and checking the required marking and sequential-retention predicates for
+every parent leaf. Those are geometric obligations, not a remaining
+arithmetic error.
 
 Beyond that stationary step, the global program still requires one
 compatible physical protected tower, quantitative calibration on that
@@ -216,11 +242,13 @@ python -B research/independent_audits/maximal_native_wave_20261123/verify_width.
 python -B research/independent_audits/tip_family_limiting_wave_gain_20261116/test_verify.py
 python -B research/independent_audits/tip_family_finite_p_wave_gain_20261116/test_verify.py
 python -B research/independent_audits/tip_family_hypothesis_M_discharge_20261116/test_verify.py
+python -B research/independent_audits/tip_family_buffered_wad_20261116/verify.py
 python -B research/tip_family_theorem/verify_chain.py
 python -B code/verify_physical_bridges.py
 python -B code/verify_physical_bridge_routes_test.py
 python -B code/verify_lean_frontier_sync.py
 python -B research/independent_audits/check_ledger_mirrors.py
+python -B -m unittest discover -s code -p 'test_require_exact_head_workflows.py' -v
 ```
 
 The new finite controls cover 88 connector records, 1,442 finite trees,
@@ -231,6 +259,13 @@ interval arithmetic and the independent error recurrence. Negative
 controls reject non-singleton cut fibers, a uniform fine-subarc clock,
 and the original misplaced division. The existing targeted arithmetic
 suites contain 37 tests.
+
+The workflow helper has 15 regressions for exact-commit matching, both
+required validations, cancelled replacements, superseded failures, and
+branch-head movement. The dated packages' creation-only scope checks now
+apply to initial introduction; later maintenance retains their mathematical
+checks. This allows the arithmetic correction without disabling proof or
+source-integrity validation.
 
 For Lean, use the pinned toolchain and run `lake build` in
 `formalization/weighted` after fetching the mathlib cache. This checks the

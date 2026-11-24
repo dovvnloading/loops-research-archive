@@ -3,7 +3,8 @@
 
 Audit workflows may reach this gate concurrently. Reuse exact-head dispatches
 and follow active replacements after concurrency cancellation. A cancelled run
-never counts as success; actual failed checks remain fatal.
+never counts as success; failures in the current, unsuperseded attempt remain
+fatal. An accepted retry must not revive an older failed sibling when cancelled.
 """
 from __future__ import annotations
 
@@ -23,9 +24,15 @@ class GateError(RuntimeError):
     pass
 
 
-def select_run(runs: list[dict], sha: str) -> dict | None:
+def select_run(runs: list[dict], sha: str, *, minimum_id: int = 0) -> dict | None:
     """Prefer exact-head success, then active, then failure, then cancellation."""
-    matches = [run for run in runs if run.get("headSha") == sha]
+    matches = [
+        run for run in runs
+        if run.get("headSha") == sha
+        and (int(run["databaseId"]) >= minimum_id
+             or (run.get("status") == "completed"
+                 and run.get("conclusion") == "success"))
+    ]
 
     def priority(run: dict) -> tuple[int, int]:
         status, conclusion = run.get("status"), run.get("conclusion")
@@ -97,15 +104,19 @@ def require_exact_head(
     if client.head_sha() != sha:
         raise GateError("PR head moved before original workflow validation")
 
+    watermarks = dict.fromkeys(REQUIRED_WORKFLOWS, 0)
     for workflow in REQUIRED_WORKFLOWS:
         run = select_run(client.runs(workflow), sha)
         reject_failure(workflow, run)
         if run and (run.get("status") != "completed"
                     or run.get("conclusion") == "success"):
+            watermarks[workflow] = int(run["databaseId"])
             emit(f"Reusing {workflow} exact-head run {run['databaseId']}")
         else:
             # Two callers can still race here. The polling rule below follows
             # the surviving run rather than failing on its cancelled sibling.
+            if run:
+                watermarks[workflow] = int(run["databaseId"])+1
             client.dispatch(workflow)
             emit(f"Dispatched {workflow} for {sha}")
 
@@ -114,8 +125,18 @@ def require_exact_head(
         for workflow in REQUIRED_WORKFLOWS:
             if workflow not in pending:
                 continue
-            run = select_run(client.runs(workflow), sha)
+            run = select_run(
+                client.runs(workflow), sha, minimum_id=watermarks[workflow]
+            )
             reject_failure(workflow, run)
+            if run:
+                # Once a retry is accepted, cancellation must not make an
+                # older failed sibling fatal during the replacement's brief
+                # API-visibility gap. A failure at this watermark or newer
+                # still fails above; any exact-head success remains valid.
+                watermarks[workflow] = max(
+                    watermarks[workflow], int(run["databaseId"])
+                )
             if (run and run.get("status") == "completed"
                     and run.get("conclusion") == "success"):
                 emit(f"PASS {workflow} at {sha}: run {run['databaseId']}")
