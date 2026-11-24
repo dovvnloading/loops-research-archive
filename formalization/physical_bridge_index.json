@@ -1072,6 +1072,10 @@
     "checks": [
       "research/independent_audits/issue62_connector_defects_20261116/verify_issue62.py",
       "research/independent_audits/issue62_connector_words_20261116/verify_connector_words.py",
+      "research/independent_audits/issue62_landing_angle_bound_20261123/verify.py",
+      "research/independent_audits/issue62_octal_reconstruction_20261123/verify.py",
+      "research/independent_audits/issue62_physical_connector_reconstruction_20261123/verify.py",
+      "research/independent_audits/issue62_physical_connector_reconstruction_20261123/test_verify.py",
       "research/mlc_unified/validate_canonical_kl_geometric_trace_proper_end_response.py",
       "research/mlc_unified/validate_canonical_kl_restricted_interface_classification.py",
       "research/mlc_unified/validate_canonical_resolution_kl_tile_correspondence_no_go.py",
@@ -1328,6 +1332,8 @@
       "research/independent_audits/tip_family_finite_p_wave_gain_20261116/verify.py",
       "research/independent_audits/tip_family_hypothesis_M_discharge_20261116/verify.py",
       "research/independent_audits/tip_family_limiting_wave_gain_20261116/verify.py",
+      "research/independent_audits/tip_family_wave_gain_correction_20261123/verify.py",
+      "research/independent_audits/tip_family_wave_gain_correction_20261123/verify_all_periods.py",
       "research/independent_audits/verify_near_saturation_wave.py",
       "research/mlc_unified/audit_stationary_paired_wave_response.py",
       "research/mlc_unified/audit_stationary_quantitative_defect_schema.py"
@@ -1556,6 +1562,12 @@
     "guide": "formalization/PHYSICAL_BRIDGES_CONTRACTS.md#clone-readout",
     "checks": [
       "research/independent_audits/verify_clone_resonant_readout.py"
+    ]
+  },
+  "parameter-capacity": {
+    "guide": "formalization/PHYSICAL_BRIDGES_CONTRACTS.md#parameter-capacity",
+    "checks": [
+      "research/independent_audits/parameter_capacity_increment_20261123/verify.py"
     ]
   }
 }

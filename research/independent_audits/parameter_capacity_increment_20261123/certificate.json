@@ -1,0 +1,67 @@
+{
+  "bump": {
+    "center": "0/1",
+    "inner_radius": "1/4",
+    "normalized_dirichlet_energy": "1/log(2)",
+    "outer_radius": "1/2"
+  },
+  "child": {
+    "distance_from_bump_center_lower": "29/32",
+    "dynamical_two_step_trap_radius": "1/4",
+    "parameter_center": "-1/1",
+    "parameter_radius": "3/32",
+    "two_step_image_radius_upper": "249/1024"
+  },
+  "circle_green_average_strict_lower": "1/1920",
+  "date": "2026-11-23",
+  "escaping_arc": {
+    "angle_half_width_radians": "1/20",
+    "circle_radius": "1/2",
+    "critical_orbit_enclosures": [
+      {
+        "center": "1/2",
+        "error_upper": "1/40",
+        "modulus_lower": "19/40",
+        "n": 1
+      },
+      {
+        "center": "3/4",
+        "error_upper": "81/1600",
+        "modulus_lower": "1119/1600",
+        "n": 2
+      },
+      {
+        "center": "17/16",
+        "error_upper": "264961/2560000",
+        "modulus_lower": "2455039/2560000",
+        "n": 3
+      },
+      {
+        "center": "417/256",
+        "error_upper": "1675432171521/6553600000000",
+        "modulus_lower": "8999767828479/6553600000000",
+        "n": 4
+      },
+      {
+        "center": "206657/65536",
+        "error_upper": "39651961820209531963453441/42949672960000000000000000",
+        "modulus_lower": "95782769699790468036546559/42949672960000000000000000",
+        "n": 5
+      }
+    ],
+    "critical_value_normalization": "1/16",
+    "escape_factor": "217/242",
+    "escape_iterate": 5,
+    "escape_log_argument": "217/110",
+    "escape_radius_strict_lower": "11/5",
+    "exp_two_thirds_strict_upper": "253600903/130203045",
+    "green_strict_lower": "1/24",
+    "parameter_error": "1/40"
+  },
+  "ground": "D_1={G_M<1}",
+  "normalization": "G_M(c)=lim 2^(-(n-1)) log^+|f_c^n(0)|",
+  "parent": "F_0=M; V_D1(F_0)=1",
+  "physical_robin_increment_strict_lower": "1/3686400",
+  "schema": "parameter-capacity-increment-v1",
+  "scope": "Finite physical parameter calibration; analytic potential identities are written proofs; no infinite schedule, new nonhyperbolic MLC case, MARK discharge, or global MLC proof."
+}

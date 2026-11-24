@@ -4,6 +4,33 @@ To trace a claim from a checked model to its independently defined geometric obj
 
 This map connects the mathematical dependency structure to the public files. The canonical route through the project is the paper sequence, the main manuscript, the proof ledger, and `research/mlc_unified/`. Dated push bundles preserve the development record and remain addressable because ledger entries cite them.
 
+## November 23: physical root sets, connector words, and energy
+
+The [exact octal theorem](./research/independent_audits/issue62_octal_reconstruction_20261123/README.md)
+reconstructs the complete landing sets at the selected physical G=f³ tip.
+With $\mathcal C=\{\sum_{k\ge1}a_k8^{-k}:a_k\in\{3,4\}\}$, the actual
+phase sets are $E_1=\mathcal C$, $E_0=\mathcal C/2\cup(\mathcal C+1)/2$
+and $E_2=\mathcal C/4\cup(\mathcal C+3)/4$. The four original W root
+seams are $A_i=(\mathcal C+u_i)/16$ with $u=(3,4,11,12)$.
+
+| Current result | Exact scope and evidence |
+|---|---|
+| **Actual noncommutative connectors** | The [physical construction](./research/independent_audits/issue62_physical_connector_reconstruction_20261123/NOTE.md) proves $g_{j,\theta,n}=\operatorname{red}(P_j^{-1}(b_{00}b_{01}b_{02})^nQ(\theta))$ for every actual $\theta\in A_i$, source tile j and integer n, where $P=(1,b_{00},b_{00}b_{01},b_{00}b_{01})$. Q needs only the seam and the first octal digit in A1. The [88-row certificate](./research/independent_audits/issue62_physical_connector_reconstruction_20261123/certificate.json) gives all ordered physical crossings, with 8 rooted and 80 nonroot words. |
+| **Exact measure and positive capacity** | The [measure proof](./research/independent_audits/issue62_octal_reconstruction_20261123/MEASURE_AND_TRACE.md) gives $\mathcal H^{1/3}(\mathcal C)=7^{-1/3}$, $\mathcal H^{1/3}(A_i)=112^{-1/3}$ and $3/3584\le\operatorname{cap}(A_i)\le1/896$ in the stated angular normalization, with sharper bounds and explicit Ahlfors regularity. |
+| **Physical Perron energy contraction** | The same note descends the actual angular inverse branches to the physical G³ interval return. Its Perron average contracts the explicitly defined landing-pullback energy by a factor 1/2 for every finite-energy observable. The physical reference probability becomes arcsine under the actual Chebyshev conjugacy and is proved different from ordinary logarithmic equilibrium of the physical interval. No comparison with planar Dirichlet energy, canonical Wave width or parameter equilibrium charge is assumed; a continuous quotient counterexample excludes a generic interval-energy descent. |
+| **Separate parameter-capacity criterion** | The [parameter proof](./research/independent_audits/parameter_capacity_increment_20261123/NOTE.md) gives orthogonal equilibrium-charge increments in a fixed Green domain and $\operatorname{diam}F_N\le20e^{-V_N}$ for nested continua in the Mandelbrot set with ground D1. Its [finite physical calibration](./research/independent_audits/parameter_capacity_increment_20261123/certificate.json) proves a Robin-energy increment greater than $\frac{1}{3\,686\,400}$ for $\mathcal M\supset\overline{B(-1,3/32)}$. An infinite divergent certificate sequence and connected relative parameter neighborhoods are still required for a local-connectivity application. |
+
+The connector construction uses the **original KL W-prefix category**;
+the older extra requirement of a globally coarse-exterior prefix cannot
+realize all rooted native tiles. It realizes **one compatible physical
+based meridian system**, without claiming unique unspecified historical
+whiskers. Its all-angle root/proper-end result does not establish general
+KKL unique proper restriction or full immersion-pulled MARK. The selected
+[slit-class and independent-width proof](./research/independent_audits/marked_slit_path_bridge_20261123/README.md)
+and [corrected all-period runner](./research/independent_audits/tip_family_wave_gain_correction_20261123/NOTE.md)
+remain separate results. General MARK, buffered and iterated transport,
+H1–H4, UPTCR and MLC remain open; the July ledger below is unchanged.
+
 ## November 23: two explicit model-to-dynamics routes
 
 - [Actual period-27 interval matrix](./research/independent_audits/period27_real_markov_bridge_20261123.md): Lean proves whole-interval images and exact preimage multiplicities for the real quadratic. The all-horizon finite-path/actual-fiber equivalence and complete-core column-sum count are now Lean theorems; written cycle arguments identify the three Fibonacci return clocks and exact characteristic factors. This is the reducible real spine, not the primitive clone graph.
@@ -31,9 +58,15 @@ The main manuscript integrates all nine stages and states the hypotheses consume
 
 ## November 15–16, 2026 research inventory (merged PRs #72–#100)
 
+**Current reading, November 23.** The current physical results and their
+limits are stated above. The following PR rows are preserved as dated
+provenance; their original conditional labels do not replace the newer
+octal, connector, trace, parameter-capacity, or corrected slit-width proofs.
+The global open gates and source-locked July statuses are unchanged.
+
 The [model-to-physical proof register](./formalization/PHYSICAL_BRIDGES.md) records the current scope. The [referee-controlled v2](./papers/tip_family_preprint_v2_20261116/sections/referee_scope.tex) states which nesting, ideal-boundary and path-class hypotheses a physical width claim consumes. The following rows retain their November provenance. The July manuscript and 465 source-locked obligations have their original status.
 
-Each entry links the dated note and its verifier. The current scope of the physical claims follows the referee-controlled v2. The source-locked July ledger and the November research register have separate status records.
+Each entry links the dated note and its verifier. The referee-controlled v2 records the hypotheses consumed by those dated physical claims; current refinements are linked above and in the proof register. The source-locked July ledger and the November research register have separate status records.
 
 ### Native Wave Transfer Lab and canonical WAD audits
 
@@ -59,6 +92,8 @@ Each entry links the dated note and its verifier. The current scope of the physi
 | [#92](https://github.com/dovvnloading/loops-research-archive/pull/92) Canonical KKL Wave sandwich | **Conditional on v2 H1–H3** — W_rad <= W_p,2* <= W_p* <= Q_p and 0.26 < liminf W_p* <= limsup W_p* < 0.78 require the physical marking, admissible witnesses and full-path upper comparison. | [Note](./research/independent_audits/real_primitive_tip_family_canonical_width_sandwich_20261116/NOTE.md) · [Verifier](./research/independent_audits/real_primitive_tip_family_canonical_width_sandwich_20261116/verify.py) |
 
 ### Wave gain and crest transport
+
+**November 23 correction.** The #97/#100 entries below preserve their historical scope. Their original tail verifier divided the parameter-error contribution by three incorrectly. Use the [corrected all-period certificate](./research/independent_audits/tip_family_wave_gain_correction_20261123/NOTE.md) and [finite-slit width proof](./research/independent_audits/marked_slit_path_bridge_20261123/WIDTH_TRANSFER.md) for the current result: p=13 is certified separately, and the corrected uniform tail starts at p=14. The independent unbuffered bound remains D_p>1/100 for every selected p≥3. Full immersion marking, buffered and iterated transport, and the global MLC gates remain open.
 
 | Merged PR / result | Status and precise scope | Note and verifier |
 |---|---|---|

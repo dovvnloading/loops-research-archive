@@ -49,6 +49,126 @@ These visuals come from **this archive's own computations, certificates, and fin
 
 The **ray portrait and two-scale angle-map figures** are generated from the exact portrait manifest by [our reproducible SVG generator](./code/generate_readme_research_figures.mjs). The return and target-disk figures are explicitly labeled schematics of the archive's certificates. No external illustration is presented as an original research result.
 
+## November 23: exact landing sets and actual connector words
+
+At the selected nonattracting 3/9 tip, the
+[octal reconstruction theorem](./research/independent_audits/issue62_octal_reconstruction_20261123/README.md)
+determines the complete physical fine-landing sets, including every irrational
+angle. In the actual G=f³ external coordinate, put
+
+$$
+\mathcal C=\left\{\sum_{k\ge1}a_k8^{-k}:a_k\in\{3,4\}\right\}.
+$$
+
+The three phase sets are $E_1=\mathcal C$,
+$E_0=\mathcal C/2\cup(\mathcal C+1)/2$, and
+$E_2=\mathcal C/4\cup(\mathcal C+3)/4$. The four original W seam root
+sets are **exactly** $A_i=(\mathcal C+u_i)/16$, with
+$(u_0,u_1,u_2,u_3)=(3,4,11,12)$. This strengthens the
+[dimension-1/3 theorem](./research/independent_audits/issue62_landing_angle_bound_20261123/EXACT_DIMENSION.md)
+to a complete description of the actual Cantor sets and their gaps.
+
+The [physical connector construction](./research/independent_audits/issue62_physical_connector_reconstruction_20261123/NOTE.md)
+now computes the full ordered F9 word for **every** $\theta\in A_i$,
+every original source tile j, and every integer n:
+
+$$
+g_{j,\theta,n}=\operatorname{red}\!\left(P_j^{-1}
+(b_{00}b_{01}b_{02})^nQ(\theta)\right),\qquad
+(P_0,P_1,P_2,P_3)=(1,b_{00},b_{00}b_{01},b_{00}b_{01}).
+$$
+
+Here Q is 1 on A0 and the first-octal-digit-3 part of A1, b00 on the
+first-digit-4 part of A1, and b00b01 on A2 and A3. The original integer
+coordinate remains unbounded. The [88-row certificate](./research/independent_audits/issue62_physical_connector_reconstruction_20261123/certificate.json)
+contains actual signed cut intersections and reduced words: **8 rooted,
+80 nonroot**, with a second representative and a source-admissible homotopy.
+The construction uses the original KL allowance for a prefix inside W;
+the older additional requirement of an entirely coarse-exterior prefix
+cannot realize all those rooted source tiles. It fixes **one compatible
+physical meridian basis**, rather than claiming unique historical whiskers
+that were never specified. Root convergence and proper nonroot ends are
+proved on this complete root-landing domain; general KKL MARK remains open.
+
+### Exact measure, positive capacity, and physical Perron contraction
+
+The [measure and trace theorem](./research/independent_audits/issue62_octal_reconstruction_20261123/MEASURE_AND_TRACE.md)
+gives, in its real angular and diameter-power normalization,
+
+$$
+\mathcal H^{1/3}(\mathcal C)=7^{-1/3},\qquad
+\mathcal H^{1/3}(A_i)=112^{-1/3},\qquad
+\frac3{3584}\le\operatorname{cap}(A_i)\le\frac1{896}.
+$$
+
+The note also supplies sharper capacity bounds and explicit Ahlfors
+regularity. These zero-length root sets therefore cannot be discarded as
+zero-capacity exceptions. The two-branch average descends through the
+actual landing map L to the **physical G³ interval Perron operator**
+$\mathcal P$, with
+$\mathfrak E(\mathcal P v)\le\tfrac12\mathfrak E(v)$ in the stated
+pullback energy $\mathfrak E(v)=\mathcal E_{\mathcal C}(v\circ L)$.
+The actual quasiconformal exterior collar proves that every Lipschitz
+observable on the physical interval has finite energy, including the
+coordinate function; this class is dense in $L^2(\nu)$. The Perron iterates
+converge strongly to the mean for every $L^2(\nu)$ observable, while their
+operator norm on the entire mean-zero $L^2$ subspace stays one at every
+finite iterate. The quantitative decay bound uses the pullback energy.
+The actual reference probability is the pullback of arcsine measure under
+the Chebyshev conjugacy, and the proof shows that it differs from ordinary
+logarithmic equilibrium of the physical interval. Comparison with planar
+Dirichlet energy, canonical Wave width, or parameter equilibrium charge
+remains a separate problem. A continuous quotient counterexample
+in the same note shows why a generic interval-energy comparison cannot be
+assumed.
+
+## November 23: a separate parameter-capacity criterion
+
+The [parameter-capacity argument](./research/independent_audits/parameter_capacity_increment_20261123/NOTE.md)
+works directly with actual parameter compacts in one fixed Green domain.
+For nested nonpolar continua, their probability equilibrium measures have
+orthogonal increments and Robin energies satisfy
+$V_N=V_0+\sum_{n<N}I_D(\mu_{n+1}-\mu_n)$.
+For continua inside the Mandelbrot set with ground $D_1$, the explicit
+bound is $\operatorname{diam}F_N\le20e^{-V_N}$. A divergent sequence of
+certified physical increments would therefore force a singleton;
+local connectivity additionally requires connected **relative parameter
+neighborhoods**, not arbitrary subsets containing the parameter.
+
+The [exact finite calibration](./research/independent_audits/parameter_capacity_increment_20261123/certificate.json)
+uses $F_0=\mathcal M$ and $F_1=\overline{B(-1,3/32)}$ and certifies
+$V_{D_1}(F_1)-V_{D_1}(\mathcal M)>\frac{1}{3\,686\,400}$.
+It supplies a physical parameter example, **not an infinite divergent
+certificate sequence**. Angular trace contraction and parameter equilibrium
+energy remain distinct quantities. The needed all-scale parameter
+certificates and global MLC conclusion remain open.
+
+## November 23: corrected slit widths and the remaining marking boundary
+
+The [selected-slit proof packet](./research/independent_audits/marked_slit_path_bridge_20261123/README.md)
+identifies every intrinsic A.1 path class on the actual finite slit surfaces,
+retains its winding, and supplies the embedded lower foliations and universal
+upper metrics for the independent unbuffered defect. For every selected
+period p≥3, the written argument gives **D_p>1/100**. Its dependency chain
+uses the intrinsic target and covering-pulled source markings. The complete
+immersion-pulled marking remains open because temporal excursions do not
+exhaust the archive's geometric inverse-trace restrictions.
+
+This work also repairs an actual error in the limiting-gain verifier: the
+parameter-error term was divided by three incorrectly. With the correct
+interval, the old broad p=13 box does not certify its stated 2/3 floor.
+An exact certificate for the actual p=13 parameter, followed by the corrected
+uniform box from p=14 onward, preserves the claimed bound. New regressions
+check those inputs against the independently implemented upstream estimates.
+The dated November 16 audit remains intact; its tail PASS is superseded by
+the [versioned correction and all-period runner](./research/independent_audits/tip_family_wave_gain_correction_20261123/NOTE.md).
+
+The packet also [repairs the H4 endgame](./research/independent_audits/marked_slit_path_bridge_20261123/RIGIDITY_AND_REMAINING_GAP.md)
+using hybrid uniqueness and checks the scope of current area theorems.
+These are written local results with exact arithmetic and explicit classical
+inputs. Human specialist review, general KKL MARK, buffered and iterated
+transport, and the global H1–H4, UPTCR and MLC gates remain open.
+
 ## November 23: actual interval rows and two different spectral clocks
 
 The [period-27 real Markov bridge](./research/independent_audits/period27_real_markov_bridge_20261123.md)
@@ -160,6 +280,13 @@ illustrations of the written proofs, generated by
 
 ## November 15–16, 2026 research integration (merged PRs #72–#100)
 
+**Current reading, November 23.** The dated inventory below preserves its
+original rows. The exact octal sets, physical connector words, specified
+trace-energy contraction, separate parameter-capacity criterion, and
+corrected slit-width result are described above and in their linked proofs.
+These scoped updates do not change the source-locked July ledger or close
+general KKL MARK and the global MLC gates.
+
 The [model-to-physical proof register](./formalization/PHYSICAL_BRIDGES.md) records the current scope. The [referee-controlled v2](./papers/tip_family_preprint_v2_20261116/sections/referee_scope.tex) states which nesting, ideal-boundary and path-class hypotheses a physical width claim consumes. The following rows retain their November provenance. The July manuscript and 465 source-locked obligations have their original status.
 
 ### Native Wave Transfer Lab and canonical WAD audits
@@ -192,8 +319,8 @@ The [model-to-physical proof register](./formalization/PHYSICAL_BRIDGES.md) reco
 | [#84](https://github.com/dovvnloading/loops-research-archive/pull/84) Four-push p=3..8 crest-collar grid | **Finite certificate; conditional physical Wave** — Strict whole-bin interval collars for selected four-push crests, not an all-period or unrestricted Wave transport law. | [Note](./research/independent_audits/crest_transport_tip_family_20261116/NOTE.md) · [Verifier](./research/independent_audits/crest_transport_tip_family_20261116/verify.py) |
 | [#89](https://github.com/dovvnloading/loops-research-archive/pull/89) Connected crest collars p=3..16 | **Finite certificate; numerical-only limit** — Full maximal connected collars within the stated circular family are certified; c_infinity approximately 0.347005 is only a numerical conjecture. | [Note](./research/independent_audits/crest_transport_asymptotics_20261116/NOTE.md) · [Verifier](./research/independent_audits/crest_transport_asymptotics_20261116/verify.py) |
 | [#94](https://github.com/dovvnloading/loops-research-archive/pull/94) Pairable-wave serial loss | **Conditional leafwise serial inequality** — Loss or equality applies to a designated pair with a restriction from each child in every parent leaf and injectivity on their union (KKL Lemma A.11). | [Note](./research/independent_audits/tip_family_canonical_wave_gain_20261116/NOTE.md) · [Verifier](./research/independent_audits/tip_family_canonical_wave_gain_20261116/verify.py) |
-| [#97](https://github.com/dovvnloading/loops-research-archive/pull/97) Strict limiting and p>=13 unbuffered Wave gain | **Conditional on v2 H1–H3** — The rational comparisons give D_p>11/126 for p>=13 and 0.696<D_infinity<0.793 for the limiting model. The physical interpretation requires the full marked path comparison. | [Note](./research/independent_audits/tip_family_limiting_wave_gain_20261116/NOTE.md) · [Verifier](./research/independent_audits/tip_family_limiting_wave_gain_20261116/verify.py) |
-| [#100](https://github.com/dovvnloading/loops-research-archive/pull/100) Strict independent unbuffered Wave gain for all p | **Conditional on v2 H1–H3** — For independently optimized unbuffered widths the four period bounds give D_p>1/100 for every p>=3 once the marked parent witnesses and all-child upper metrics are established. | [Note](./research/independent_audits/tip_family_finite_p_wave_gain_20261116/NOTE.md) · [Verifier](./research/independent_audits/tip_family_finite_p_wave_gain_20261116/verify.py) |
+| [#97](https://github.com/dovvnloading/loops-research-archive/pull/97) Strict limiting and p>=13 unbuffered Wave gain | **Archived scope:** **Conditional on v2 H1–H3** — The rational comparisons give D_p>11/126 for p>=13 and 0.696<D_infinity<0.793 for the limiting model. The physical interpretation requires the full marked path comparison. **Current correction:** the historical parameter-error radius is too narrow; its tail PASS is superseded by the [November 23 correction](./research/independent_audits/tip_family_wave_gain_correction_20261123/NOTE.md), using actual p=13 isolation and corrected boxes from p=14. | [Note](./research/independent_audits/tip_family_limiting_wave_gain_20261116/NOTE.md) · [Verifier](./research/independent_audits/tip_family_limiting_wave_gain_20261116/verify.py) |
+| [#100](https://github.com/dovvnloading/loops-research-archive/pull/100) Strict independent unbuffered Wave gain for all p | **Archived scope:** **Conditional on v2 H1–H3** — For independently optimized unbuffered widths the four period bounds give D_p>1/100 for every p>=3 once the marked parent witnesses and all-child upper metrics are established. **Current correction:** its finite p=3..12 calculations are retained, but its aggregate runner invokes the defective historical tail. Use the [current all-period runner](./research/independent_audits/tip_family_wave_gain_correction_20261123/verify_all_periods.py) and the November 23 physical proof. | [Note](./research/independent_audits/tip_family_finite_p_wave_gain_20261116/NOTE.md) · [Verifier](./research/independent_audits/tip_family_finite_p_wave_gain_20261116/verify.py) |
 
 ### Renormalization depth and marked QC
 
