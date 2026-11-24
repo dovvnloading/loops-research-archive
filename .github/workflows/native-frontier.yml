@@ -6,6 +6,7 @@ on:
     paths:
       - 'code/require_exact_head_workflows.py'
       - 'code/test_require_exact_head_workflows.py'
+      - 'research/independent_audits/immersion_mark_resolution_20261124/**'
       - 'research/independent_audits/maximal_*_20261123/**'
       - 'research/independent_audits/issue62_connector*/**'
       - 'research/independent_audits/real_primitive_tip_family*/**'
@@ -16,6 +17,7 @@ on:
     paths:
       - 'code/require_exact_head_workflows.py'
       - 'code/test_require_exact_head_workflows.py'
+      - 'research/independent_audits/immersion_mark_resolution_20261124/**'
       - 'research/independent_audits/maximal_*_20261123/**'
       - 'research/independent_audits/issue62_connector*/**'
       - 'research/independent_audits/real_primitive_tip_family*/**'
@@ -47,6 +49,8 @@ jobs:
         run: python -B research/independent_audits/maximal_global_closure_20261123/verify_exterior_gauge.py
       - name: Check physical cut derivation and subarc arithmetic
         run: python -B research/independent_audits/maximal_native_wave_20261123/verify.py
+      - name: Check selected slit marking and endpoint-aware saturation
+        run: python -B research/independent_audits/immersion_mark_resolution_20261124/verify.py
       - name: Replay exact full-path width arithmetic and corrected tail
         run: python -B research/independent_audits/maximal_native_wave_20261123/verify_width.py
       - name: Check corrected large-period error arithmetic

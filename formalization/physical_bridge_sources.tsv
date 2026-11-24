@@ -2,6 +2,7 @@ source	routes
 AirplaneDiffraction.lean	DIFFRACTION LANDING
 CloneGraph.lean	CLONE EDGE
 FirstReturn.lean	CLONE EDGE
+ImmersionMarkFinite.lean	CONTOUR-ESCAPE MARK SELECTED-ESCAPE
 LoopsFormal.lean	CLONE EDGE
 MandelbrotSpectrum.lean	FOURIER UNIFORM-TAIL
 Paper2Phase.lean	CLOCK ENDS
@@ -107,6 +108,7 @@ research/independent_audits/crest_transport_asymptotics_20261116/test_verify.py	
 research/independent_audits/crest_transport_asymptotics_20261116/verify.py	MARK CREST
 research/independent_audits/crest_transport_tip_family_20261116/test_verify.py	MARK CREST
 research/independent_audits/crest_transport_tip_family_20261116/verify.py	MARK CREST
+research/independent_audits/immersion_mark_resolution_20261124/verify.py	CONTOUR-ESCAPE MARK SELECTED-ESCAPE
 research/independent_audits/issue40_crest_transport_20261116/verify_crest_transport.py	MARK CREST
 research/independent_audits/issue40_native_attachment_edge_incidence_20261115/verify_native_attachment_edge_incidence.py	MARK CREST
 research/independent_audits/issue62_connector_defects_20261116/verify_issue62.py	CONNECTOR NATIVE-SIDES
