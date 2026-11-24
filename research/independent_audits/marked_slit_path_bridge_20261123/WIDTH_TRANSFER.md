@@ -303,6 +303,12 @@ term by three as well. The error is 304920·4^{-p} in each such
 coordinate radius. Correcting the formula is necessary even though
 the old executable returned PASS.
 
+The dated November 16 audit remains unchanged. Its aggregate PASS is not a
+certificate for this corrected bound. The
+[November 23 correction](../tip_family_wave_gain_correction_20261123/NOTE.md)
+contains the repaired verifier and a separate all-period runner that composes
+the unchanged finite p=3…12 calculations with the corrected p≥13 argument.
+
 The corrected broad p=13 box has the outward parent-width enclosure
 (0.658663060,0.749148532), so that box alone cannot establish >2/3.
 The repair uses the actual p=13 parameter, certified by the existing
@@ -377,8 +383,8 @@ directions are displayed above.
 
 Reproduce the corrected arithmetic from the repository root:
 
-    python -B -m unittest discover -s research/independent_audits/tip_family_limiting_wave_gain_20261116 -p 'test_verify.py' -v
-    python -B research/independent_audits/tip_family_finite_p_wave_gain_20261116/verify.py
+    python -B -m unittest discover -s research/independent_audits/tip_family_wave_gain_correction_20261123 -p 'test_verify.py' -v
+    python -B research/independent_audits/tip_family_wave_gain_correction_20261123/verify_all_periods.py
 
 These commands certify the exact finite arithmetic and rejection of
 the old under-enclosure, not the analytic theorems. The arguments were

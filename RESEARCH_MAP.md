@@ -60,6 +60,8 @@ Each entry links the dated note and its verifier. The current scope of the physi
 
 ### Wave gain and crest transport
 
+**November 23 correction.** The #97/#100 entries below preserve their historical scope. Their original tail verifier divided the parameter-error contribution by three incorrectly. Use the [corrected all-period certificate](./research/independent_audits/tip_family_wave_gain_correction_20261123/NOTE.md) and [finite-slit width proof](./research/independent_audits/marked_slit_path_bridge_20261123/WIDTH_TRANSFER.md) for the current result: p=13 is certified separately, and the corrected uniform tail starts at p=14. The independent unbuffered bound remains D_p>1/100 for every selected p≥3. Full immersion marking, buffered and iterated transport, and the global MLC gates remain open.
+
 | Merged PR / result | Status and precise scope | Note and verifier |
 |---|---|---|
 | [#84](https://github.com/dovvnloading/loops-research-archive/pull/84) Four-push p=3..8 crest-collar grid | **Finite certificate; conditional physical Wave** — Strict whole-bin interval collars for selected four-push crests, not an all-period or unrestricted Wave transport law. | [Note](./research/independent_audits/crest_transport_tip_family_20261116/NOTE.md) · [Verifier](./research/independent_audits/crest_transport_tip_family_20261116/verify.py) |

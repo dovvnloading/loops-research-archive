@@ -77,8 +77,8 @@ From the repository root, run the following checks. The first command runs the n
 
 ```sh
 python -B research/tip_family_theorem/verify_chain.py
-python -B research/independent_audits/tip_family_finite_p_wave_gain_20261116/verify.py
-python -B research/independent_audits/tip_family_limiting_wave_gain_20261116/verify.py
+python -B research/independent_audits/tip_family_wave_gain_correction_20261123/verify_all_periods.py
+python -B -m unittest discover -s research/independent_audits/tip_family_wave_gain_correction_20261123 -p 'test_verify.py' -v
 python -B research/independent_audits/tip_family_buffered_wad_crossratio_20261116/verify.py
 (cd formalization/weighted && lake build ParabolicTipFamily ParabolicArchiveBrackets)
 ```

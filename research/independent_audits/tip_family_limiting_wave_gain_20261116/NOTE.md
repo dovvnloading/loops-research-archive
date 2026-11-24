@@ -1,22 +1,5 @@
 # Limiting primitive-tip Wave gain: a bounded-quadrilateral certificate
 
-> **Arithmetic repair, 2026-11-23.** The original `model_positive_boxes`
-> implementation divided the parameter-error term `30*15246` by three,
-> although equation (5) does not. The corrected full box at p=13 gives
-> a parent-width lower enclosure below 2/3. Section 4 now treats the actual
-> p=13 parameter by exact root isolation and starts the uniform box argument
-> at p=14. The stated conditional bound `D_p > 11/126` for every p>=13
-> survives. The new regression compares the parent boxes with the
-> independently implemented upstream cut bounds and checks the seam.
->
-> **Geometric scope correction, 2026-11-23.** The plane-slit limit has a
-> cusp at infinity, not a second KKL ideal circle. Its limiting widths
-> below refer to the explicitly defined inner-marked slit model. The
-> finite physical annuli have both ideal circles. Their complete path
-> identification, Jacobian-correct covering comparison, and corrected
-> all-period estimates are proved in the
-> [finite-slit bridge packet](../marked_slit_path_bridge_20261123/README.md).
-
 **2026-11-16 — RESULT: STRICT POSITIVE UNBUFFERED INDEPENDENTLY OPTIMIZED DEFECT IN THE LIMITING MARKED MODEL, AND UNIFORMLY FOR EVERY PHYSICAL PERIOD `p >= 13`.** Subject to the same **physical ideal-prime-end identification M** explicitly isolated in the merged sandwich and gain audits, the new bounded parent competitor proves
 
 \[
@@ -24,7 +7,7 @@
        D_p=2/C_p-1/P_p>11/126>0\quad(p\ge13).}
 \]
 
-For finite periods, `P` and `C` are **unbuffered suprema over A.1-marked Waves**, as defined by the prior [canonical gain audit](../tip_family_canonical_wave_gain_20261116/NOTE.md). At infinity they are the inner-marked comparison classes defined below, outside the source's cusp-free category. This is **not** strict gain for a single leafwise-pairable parent, nor for KKL's *buffered canonical WAD arc weights*. No optimizer is asserted. Our analysis proves the sign without claiming convergence of the unrestricted finite-period suprema to their limiting-domain counterparts.
+Here `P` and `C` are **unbuffered suprema over A.1-marked Waves**, as defined by the prior [canonical gain audit](../tip_family_canonical_wave_gain_20261116/NOTE.md). This is **not** strict gain for a single leafwise-pairable parent, nor for KKL's *buffered canonical WAD arc weights*. No optimizer is asserted. Our analysis proves the sign without claiming convergence of the unrestricted finite-period suprema to their limiting-domain counterparts.
 
 **Arithmetic:** [verify.py](verify.py) re-executes the previously merged certified gain/sandwich verifiers, uses integer outward `2^-512` intervals with rational Taylor/elliptic remainders, and independently checks the new limiting quadrilaterals and the *entire* all-period parent semidisk gate. [test_verify.py](test_verify.py) probes reversed cuts, invalid radii and reciprocal signs. **Analytic, not machine-proved:** Schwarz–Christoffel rectangle foliations, conformal invariance, the geometric admissibility proof below, and M. The printed rational intervals are certificates **of their arithmetic premises**, not of these analytic theorems. No floating-point optimizer or numerical-only datum enters any proof.
 
@@ -66,9 +49,9 @@ In the `xi` chart the normalized *target* and *source* marked slit domains are, 
 \Omega'_\infty=\mathbb C\setminus[-X_1,X_1].
 \tag{4}
 \]
-The normalized map `-xi^2-tau_*` sends the entire source slit onto the target slit: `[-X_1,X_1] -> [X_2,X_1]`. The source slit is strictly longer on the left. Each plane-slit domain is conformal to a punctured disk. Its end at infinity is a **cusp**, not an outer ideal-circle atom of KKL A.1. The finite annuli have an outer circle; no such circle is assigned to this limit.
+The normalized map `-xi^2-tau_*` sends the entire source slit onto the target slit: `[-X_1,X_1] -> [X_2,X_1]`. The source slit is strictly longer on the left. The end `infinity` is an ideal **single outer component**, not ten/twenty replicated atoms.
 
-**Marked electrodes, including both source child types.** On the target *opposite sides* of the real subinterval `(X_5,X_3)`, the two electrodes are `I_9,I_1`; their three-atom base crests over `I_0`. The source upper child has electrodes on the same upper slit side `(-X_4,X_2)` and `(X_5,-alpha_infinity)`, with base `(S_1,S_2,S_3)` cresting over `S_2`. Its conjugate is the lower child with base `(S_17,S_18,S_19)` cresting over `S_18`. Atoms are **open at atom junctions**; a three-atom crest is the closure of its middle atom within that base and includes the two junctions. Define the limiting classes directly as laminations of simple proper inner-to-inner paths with these bases and the same subordination exclusions as A.1, retaining the actual winding. Their independent width suprema are `P_infinity` and `C_infinity^+,C_infinity^-`. This definition does not place the cusped domain (4) inside KKL's cusp-free category, or admit arbitrary projected full-lift paths. Conjugation proves `C_infinity^+=C_infinity^-=C_infinity`.
+**Marked electrodes, including both source child types.** On the target *opposite sides* of the real subinterval `(X_5,X_3)`, the two electrodes are `I_9,I_1`; the included left-tip terminal atom `I_0` is the crest. The source upper child has electrodes on the same upper slit side `(-X_4,X_2)` and `(X_5,-alpha_infinity)`, with base `(S_1,S_2,S_3)` and crest `S_2`. Its conjugate is the lower child with base `(S_17,S_18,S_19)` and crest `S_18`. All intervals are **open at atom junctions**. As before, the parent-width supremum `P_infinity` and the two independent child suprema `C_infinity^+,C_infinity^-` are taken over A.1 Waves in (4), not over arbitrary projected full-lift paths. Conjugation proves `C_infinity^+=C_infinity^-=C_infinity`.
 
 The finite *positive-scale* cuts `X_{j,p}=lambda_p*x_{jp}` satisfy the all-period proven boxes
 \[
@@ -197,36 +180,13 @@ In particular, **the sign of the limiting marked model defect is strictly positi
 
 ## 4. Uniform physical tail with an explicit cutoff `p0=13`
 
-Apply (9) in **each finite target slit** in the positive `xi=lambda_p z` chart.
-Retain the full error `30*15246 + 88*(4^j-1)/3` in (5). Its p=13 box gives
-the outward enclosure `0.658663060 < W_box < 0.749148532`, which does
-**not** certify the desired lower bound. This is failure of that enclosure,
-not a counterexample to the width theorem.
-
-For **p=13**, `certified_period13_boxes` instead calls the existing
-`certify_tip(13)` root certificate. The latter checks opposite signs,
-the derivative over its isolation window, and the actual selected itinerary.
-It then propagates the actual orbit and the positive scale
-`-A_13 = -product_{j=1}^{12}(2x_j)` with outward rational arithmetic.
-The resulting semidisk width satisfies
-`0.701260568 < W_{P,13}^{(5/2)} < 0.701260571`.
-
-For **every p>=14**, all four cuts lie in the corrected widest p=14 box;
-the coefficients times `4^-p` decrease thereafter. Evaluating (9) on
-that full box gives `0.690181183 < W_box < 0.712667273`.
-Both independently justified cases therefore imply
+Apply (9) in **each finite target slit** in the positive `xi=lambda_p z` chart. For every `p>=13`, all four normalized cuts in (7) lie in the **widest p=13 rational interval box** (5): increasing the period only shrinks these error boxes. The new verifier evaluates (9) on that whole box and proves the *strict* inequality
 \[
 \boxed{W_{P,p}^{(5/2)}>2/3\quad\text{for every }p\ge13.}\tag{16}
 \]
-Each case separately checks all endpoint orders, `b<5/2<pi`, the cross-ratio
-interval, and positive elliptic denominators. These are exact arithmetic
-inputs to the written embedded-foliation proof; the program does not check
-the continuum/path-class argument.
+It separately checks all endpoint orders, `b<5/2<pi`, the cross-ratio interval, and the positive elliptic denominators. This is a certificate for an entire **continuum** of admissible leaves, not finite sampling and not a numerical optimizer.
 
-The full mapped semidisk is inside the **physical** target `U_p`: in normalized
-coordinates `|m|<2`, `0<r<2` both on the actual p=13 packet and on the uniform
-p=14 box. For `s<=5/2`, the elementary Taylor/geometric-tail certificate
-`e^(5/2)<13` and `e^(-s)<=1` yield
+The full mapped semidisk is inside the **physical** target `U_p`: in normalized coordinates `|m|<2`, `0<r<2` on the `p=13` box. For `s<=5/2`, the elementary Taylor/geometric-tail certificate `e^(5/2)<13` and `e^(-s)<=1` yield
 \[
 |\mathcal J_P(-e^{s+it})|
  \le |m|+{r\over2}(e^s+e^{-s})<2+{2\over2}(13+1)=16.
@@ -264,7 +224,7 @@ For **literal KKL A.2.3 buffered canonical WAD arcs**, the earlier upper full-pa
 - **No wrong analytic scaling:** `A_p<0`; `h_p(w)=w^2+tau_p+e_p(w)` and `widehat G_p(xi)=-xi^2-tau_p-e_p(-xi)`. The positive `-A_p` scale preserves physical real order. Normalized cuts refer to `x_{jp}`.
 - **No wrong inequalities:** Embedding a rectangle foliation makes a lower bound on a supremum, whereas including all lifts makes an upper bound. Inversion reverses both comparisons, and (18) is an *unrestricted* rather than paired defect.
 - **No disguised maximum:** Neither half-strip lower competitor nor full-lift upper envelope is claimed to be optimal. Rectangular horizontal foliations have exactly the stated widths by Cauchy–Schwarz and the constant dual metric.
-- **No unwarranted all-period chart extension:** The parent disk cutoff uses the actual `p=13` packet, the corrected common box starting at `p=14`, and `lambda R_p>(3/20)2^p`. It does not use the non-uniform `p=3` radius or a guessed `alpha_p` limit. Periods below 13 are outside this dated note's tail argument; the separate finite-period verifier treats them.
+- **No unwarranted all-period chart extension:** The parent disk cutoff uses the `p=13` common box and `lambda R_p>(3/20)2^p`, not the non-uniform `p=3` radius or a guessed `alpha_p` limit. Periods below 13 are explicitly left open.
 - **No false software proof:** The checker re-runs the upstream packets read-only, computes new cross-ratios and elliptic series with outward rational bounds, and fails on changed signs/orders. It does not formalize conformal mapping, prime-end M, A.1, or KKL Lemma A.11 in Lean.
 
 Run from the repository root:

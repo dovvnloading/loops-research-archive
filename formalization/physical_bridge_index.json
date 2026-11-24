@@ -1329,6 +1329,8 @@
       "research/independent_audits/tip_family_finite_p_wave_gain_20261116/verify.py",
       "research/independent_audits/tip_family_hypothesis_M_discharge_20261116/verify.py",
       "research/independent_audits/tip_family_limiting_wave_gain_20261116/verify.py",
+      "research/independent_audits/tip_family_wave_gain_correction_20261123/verify.py",
+      "research/independent_audits/tip_family_wave_gain_correction_20261123/verify_all_periods.py",
       "research/independent_audits/verify_near_saturation_wave.py",
       "research/mlc_unified/audit_stationary_paired_wave_response.py",
       "research/mlc_unified/audit_stationary_quantitative_defect_schema.py"

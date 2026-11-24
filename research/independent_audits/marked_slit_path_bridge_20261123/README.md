@@ -37,6 +37,14 @@ The old limiting-gain verifier divided the first term by three as well.
 Its input intervals were therefore narrower than the stated theorem permits.
 The old executable could return PASS without detecting that mismatch.
 
+The November 16 files are preserved unchanged as historical evidence. Their
+PASS result does not certify the stated all-period enclosure; the old finite
+runner also invokes that defective tail. The
+[versioned correction](../tip_family_wave_gain_correction_20261123/NOTE.md)
+is the current certificate. Its all-period runner explicitly combines the
+unchanged p=3…12 calculations with the repaired tail, without invoking the
+legacy aggregate certificate.
+
 Correcting the coefficient alone does not preserve the old p=13 box proof:
 the corrected broad parent-width interval is
 `(0.658663060, 0.749148532)`, whose lower endpoint is below 2/3.
@@ -113,15 +121,16 @@ transport and parameter-neighborhood construction are substantive open inputs.
 From the repository root:
 
 ```sh
-python -B -m unittest discover -s research/independent_audits/tip_family_limiting_wave_gain_20261116 -p 'test_verify.py' -v
-python -B research/independent_audits/tip_family_finite_p_wave_gain_20261116/verify.py
+python -B -m unittest discover -s research/independent_audits/tip_family_wave_gain_correction_20261123 -p 'test_verify.py' -v
+python -B research/independent_audits/tip_family_wave_gain_correction_20261123/verify_all_periods.py
 python -B research/independent_audits/issue62_landing_angle_bound_20261123/verify.py --check-certificate
 python -B code/verify_physical_bridges.py
 python -B code/verify_physical_bridge_routes_test.py
 ```
 
-The width regression has 11 passing tests. The finite width verifier checks
-p=3…12 and invokes the corrected tail argument. The new graph verifier checks
+The width regression has 12 passing tests, including rejection of routing
+through either historical aggregate. The versioned all-period runner
+checks p=3…12 and invokes the corrected tail argument. The new graph verifier checks
 the 96 vertices, 144 edges, complete grid-endpoint exclusion, exact all-horizon
 recurrence and every field of the committed certificate. These checks are
 included in the Research validation workflow. No Lean source was changed or

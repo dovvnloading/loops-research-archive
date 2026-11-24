@@ -17,6 +17,7 @@ on:
       - 'formalization/weighted/lakefile.toml'
       - 'research/**/*.py'
       - 'research/independent_audits/marked_slit_path_bridge_20261123/**'
+      - 'research/independent_audits/tip_family_wave_gain_correction_20261123/**'
       - 'research/independent_audits/issue62_landing_angle_bound_20261123/**'
       - 'research/tip_family_theorem/PHYSICAL_BRIDGES.md'
       - 'code/exp*.py'
@@ -71,6 +72,7 @@ on:
       - 'formalization/weighted/lakefile.toml'
       - 'research/**/*.py'
       - 'research/independent_audits/marked_slit_path_bridge_20261123/**'
+      - 'research/independent_audits/tip_family_wave_gain_correction_20261123/**'
       - 'research/independent_audits/issue62_landing_angle_bound_20261123/**'
       - 'research/tip_family_theorem/PHYSICAL_BRIDGES.md'
       - 'code/exp*.py'
@@ -151,8 +153,8 @@ jobs:
         run: python -B code/verify_physical_bridge_routes_test.py
       - name: Check corrected all-period Wave arithmetic
         run: |
-          python -B -m unittest discover -s research/independent_audits/tip_family_limiting_wave_gain_20261116 -p 'test_verify.py' -v
-          python -B research/independent_audits/tip_family_finite_p_wave_gain_20261116/verify.py
+          python -B -m unittest discover -s research/independent_audits/tip_family_wave_gain_correction_20261123 -p 'test_verify.py' -v
+          python -B research/independent_audits/tip_family_wave_gain_correction_20261123/verify_all_periods.py
       - name: Check exact fine-landing angle certificate
         run: python -B research/independent_audits/issue62_landing_angle_bound_20261123/verify.py --check-certificate
       - name: Verify source ledger dependency and Lean status mirror
