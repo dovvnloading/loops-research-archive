@@ -79,7 +79,9 @@ theorem connected_image_separator {K D : Type*}
   obtain ⟨y, hy, hp⟩ :=
     hbase (r '' E) (hconn.image r hcont.continuousOn) hr hd
   obtain ⟨w, hw, he⟩ := hy
-  exact ⟨w, hw, hpre w (he ▸ hp)⟩
+  refine ⟨w, hw, hpre w ?_⟩
+  rw [he]
+  exact hp
 
 /-- Two distinct deck-related anchors cannot belong to a single base
 on which the covering map is injective. -/
