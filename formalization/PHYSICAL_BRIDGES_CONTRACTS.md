@@ -409,6 +409,27 @@ ambient vertical width disproves automatic calibration from the
 abstract planar hypotheses. These are written analytic estimates
 and a planar countermodel, not additional kernel theorems.
 
+The [prefix-potential charge](../research/independent_audits/stationary_transport_attack_20261124/PREFIX_POTENTIAL_CHARGE.md)
+uses the stronger full-hull consequence that every physical
+carrier point exits the open critical limb by time b. A single
+base potential equal to one near the first closed inverse limb,
+and zero near the noncritical filled set and ambient boundary,
+is pulled back by the actual finite degree-2^j maps and pushed
+through all immersion sheets. Every proper parent with a deep
+encounter has two unit-length halves in this metric even if its
+two sides use different prefixes. Thus the width of the whole
+encounter union is at most (2^(b+1)−1)/4 times the infimum
+of this base Dirichlet energy; no separate collar calibration
+per depth or bank is required. A quadratic cover of actual
+endpoint indices gives a cheaper conditional outside-end
+estimate. One actual raw restriction ending at a physically
+localized selected deep contour suffices for a hit modulo zero;
+the saturated monotone model provides a separate locality check.
+The native occurrence assertion and a uniform bound on this
+single response by R+V+1 remain open. The [finite Lean module](weighted/StationaryPrefixCharge.lean)
+formalizes the orbit and quadratic-weight algebra and is subject
+to the weighted kernel check; the conformal analysis is written.
+
 This checker establishes finite rational endpoint-cover and degree-budget
 certificates and rejects invalid accounting. It does not construct native
 exits. The stationary hypotheses still need to supply one eligible actual
