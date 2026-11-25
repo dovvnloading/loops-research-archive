@@ -35,7 +35,7 @@ The generalization has a testable boundary. For $S=\mathbb R\subset\mathbb C$, b
 <a id="clone-spectrum"></a>
 ## From a clone matrix to an edge operator
 
-The scalar [clone polynomial root module](weighted/ClonePolynomialRoots.lean) proves separability, squarefreeness, exactly `2n+5` distinct complex roots, and an exact product of root moduli equal to one. These statements concern the polynomial derived from eigenpairs. The matrix characteristic-polynomial identification remains a separate obligation until its reverse bridge is supplied.
+The scalar [clone polynomial root module](weighted/ClonePolynomialRoots.lean) proves separability, squarefreeness, exactly `2n+5` distinct complex roots, and an exact product of root moduli equal to one. The [actual matrix bridge](weighted/FullCloneCharpoly.lean) constructs a nonzero eigenvector of the graph matrix for every scalar root. Separability and matching monic degrees identify its characteristic polynomial, including multiplicities; the final results state semisimplicity and that all complex eigenspaces span the space. These conclusions concern the explicitly defined finite graph.
 
 For every delay $n$, the row-source adjacency matrix $A_n$ constructed from the archive's edge relation has a positive simple *eigenline* at $t_n\in(1,2)$, $t_n^{2n+5}=t_n+1$, and every other eigenvalue has modulus strictly below $t_n$. Existence and strictness are quantified over all delays. The bound $(2n+4)(t_n-1)\le1$ rules out a uniform $t_n\ge 1+\epsilon$ for $\epsilon>0$. [Matrix construction](weighted/FullCloneMatrix.lean) · [strict gap](weighted/FullCloneStrictGap.lean) · [eigenline](weighted/FullCloneEigenline.lean) · [rate](weighted/CloneRootRate.lean)
 

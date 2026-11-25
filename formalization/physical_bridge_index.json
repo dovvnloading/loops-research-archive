@@ -167,14 +167,26 @@
         "no_printed_positive_eigen_at_clone_root"
       ],
       "formalization/weighted/ClonePolynomialRoots.lean": [
-        "clonePolynomial_monic",
-        "clonePolynomial_natDegree",
+        "cloneCharPolynomial_monic",
+        "cloneCharPolynomial_natDegree",
         "unit_trinomial_derivative_ne_zero",
-        "clonePolynomial_separable",
-        "clonePolynomial_squarefree",
-        "clonePolynomial_roots_nodup",
-        "clonePolynomial_card_roots",
-        "clonePolynomial_norm_product"
+        "cloneCharPolynomial_separable",
+        "cloneCharPolynomial_squarefree",
+        "cloneCharPolynomial_roots_nodup",
+        "cloneCharPolynomial_card_roots",
+        "cloneCharPolynomial_norm_product"
+      ],
+      "formalization/weighted/FullCloneCharpoly.lean": [
+        "cloneComplexRootVector_nonzero",
+        "cloneComplexRootVector_eigen",
+        "clone_root_has_actual_eigenvalue",
+        "clone_root_is_actual_charpoly_root",
+        "full_clone_complex_charpoly",
+        "full_clone_complex_charpoly_separable",
+        "full_clone_complex_charpoly_roots",
+        "full_clone_complex_charpoly_norm_product",
+        "full_clone_complex_semisimple",
+        "full_clone_complex_eigenspaces_span"
       ]
     },
     "checks": [
@@ -1630,6 +1642,7 @@
         "source_grammar_has_191_distinct_inputs",
         "source_realizations_are_distinct",
         "source_enumeration_is_complete",
+        "advance_stays_in_source_grammar",
         "all_open_inputs_saturate_within_five",
         "all_closed_inputs_saturate_within_five",
         "all_source_inputs_saturate_within_five",

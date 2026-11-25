@@ -6,6 +6,11 @@ on:
       - main
       - 'research/**'
     paths:
+      - '**/*.lean'
+      - 'formalization/weighted/lean-toolchain'
+      - 'formalization/weighted/lake-manifest.json'
+      - 'code/verify_lean_coverage.py'
+      - 'code/verify_physical_bridge_contracts.py'
       - lean-toolchain
       - lakefile.toml
       - lake-manifest.json
@@ -64,6 +69,11 @@ on:
       - 'papers/paper2_rooted_end_compactification/main_v2.tex'
   pull_request:
     paths:
+      - '**/*.lean'
+      - 'formalization/weighted/lean-toolchain'
+      - 'formalization/weighted/lake-manifest.json'
+      - 'code/verify_lean_coverage.py'
+      - 'code/verify_physical_bridge_contracts.py'
       - lean-toolchain
       - lakefile.toml
       - lake-manifest.json
@@ -128,12 +138,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Reject proof holes
+      - name: Require complete Lean source coverage and reject proof trust escapes
         run: |
-          if grep -En '(^|[^A-Za-z_])(sorry|admit)([^A-Za-z_]|$)' ./*.lean; then
-            echo 'Proof placeholders are prohibited in formal audit files.'
-            exit 1
-          fi
+          python3 -B code/verify_lean_coverage.py
+          python3 -B code/verify_lean_coverage.py --self-test
       - name: Install Lean and build proofs
         uses: leanprover/lean-action@v1
         with:
@@ -143,6 +151,13 @@ jobs:
           lint: 'false'
           use-github-cache: 'false'
           use-mathlib-cache: 'false'
+
+      - name: Exercise the kernel axiom audit against invalid proof fixtures
+        run: python3 -B code/verify_lean_coverage.py --test-kernel-audit
+      - name: Audit transitive axioms of every root Lean declaration
+        run: python3 -B code/verify_lean_coverage.py --audit root
+      - name: Kernel-check and audit all standalone research Lean sources
+        run: python3 -B code/verify_lean_coverage.py --audit standalone
 
   python-audit:
     runs-on: ubuntu-latest

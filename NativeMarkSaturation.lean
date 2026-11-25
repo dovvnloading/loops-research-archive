@@ -98,6 +98,24 @@ theorem source_enumeration_is_complete (input : SourceInput) :
       decide +kernel
     exact h s l
 
+/-- Every successor is again a valid source-eligible state. In
+particular the iteration cannot pass through a zero-length arc or a
+closed full-turn representation that should have been the circle. -/
+theorem advance_stays_in_source_grammar (input : SourceInput) :
+    advance (realize input) ∈ sourceInputs.map realize := by
+  cases input with
+  | circle => decide +kernel
+  | openArc s l =>
+    have h : ∀ s : Fin 10, ∀ l : Fin 10,
+        advance (realize (.openArc s l)) ∈ sourceInputs.map realize := by
+      decide +kernel
+    exact h s l
+  | closedArc s l =>
+    have h : ∀ s : Fin 10, ∀ l : Fin 9,
+        advance (realize (.closedArc s l)) ∈ sourceInputs.map realize := by
+      decide +kernel
+    exact h s l
+
 /-- All 100 open inputs, including the ten punctured circles. -/
 theorem all_open_inputs_saturate_within_five :
     ∀ s : Fin 10, ∀ l : Fin 10,
@@ -233,6 +251,7 @@ theorem no_source_chain_through_five
 #print axioms source_grammar_has_191_distinct_inputs
 #print axioms source_realizations_are_distinct
 #print axioms source_enumeration_is_complete
+#print axioms advance_stays_in_source_grammar
 #print axioms all_open_inputs_saturate_within_five
 #print axioms all_closed_inputs_saturate_within_five
 #print axioms all_source_inputs_saturate_within_five

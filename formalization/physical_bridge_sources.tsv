@@ -52,6 +52,7 @@ formalization/weighted/CloneRoot.lean	CLONE EDGE
 formalization/weighted/CloneRootRate.lean	CLONE EDGE
 formalization/weighted/FiniteMarkovCorrelation.lean	FINITE-CORRELATION CLONE-OBSERVABLE RANDOM-CLOCK
 formalization/weighted/FiniteMarkovFibers.lean	REAL-FIBERS
+formalization/weighted/FullCloneCharpoly.lean	CLONE EDGE
 formalization/weighted/FullCloneCorrelation.lean	CLONE-OBSERVABLE
 formalization/weighted/FullCloneEigen.lean	CLONE EDGE
 formalization/weighted/FullCloneEigenline.lean	CLONE EDGE

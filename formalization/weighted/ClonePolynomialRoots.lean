@@ -20,19 +20,19 @@ noncomputable section
 open Polynomial
 
 /-- The scalar polynomial already forced by every actual clone eigenpair. -/
-def clonePolynomial (n : ℕ) : ℂ[X] :=
+def cloneCharPolynomial (n : ℕ) : ℂ[X] :=
   X ^ (2 * n + 5) - (X + 1)
 
-theorem clonePolynomial_monic (n : ℕ) : (clonePolynomial n).Monic := by
+theorem cloneCharPolynomial_monic (n : ℕ) : (cloneCharPolynomial n).Monic := by
   apply Polynomial.monic_X_pow_sub
   have hdeg : (X + 1 : ℂ[X]).degree = 1 := by
     simpa using Polynomial.degree_X_add_C (1 : ℂ)
   rw [hdeg]
   exact_mod_cast (show 1 < 2 * n + 5 by omega)
 
-theorem clonePolynomial_natDegree (n : ℕ) :
-    (clonePolynomial n).natDegree = 2 * n + 5 := by
-  unfold clonePolynomial
+theorem cloneCharPolynomial_natDegree (n : ℕ) :
+    (cloneCharPolynomial n).natDegree = 2 * n + 5 := by
+  unfold cloneCharPolynomial
   rw [Polynomial.natDegree_sub_eq_left_of_natDegree_lt]
   · simp
   · have hdeg : (X + 1 : ℂ[X]).natDegree = 1 := by
@@ -91,31 +91,31 @@ theorem unit_trinomial_derivative_ne_zero (d : ℕ) (hd : 2 ≤ d)
   linarith
 
 /-- The clone polynomial is separable over the complex numbers for all n. -/
-theorem clonePolynomial_separable (n : ℕ) : (clonePolynomial n).Separable := by
+theorem cloneCharPolynomial_separable (n : ℕ) : (cloneCharPolynomial n).Separable := by
   rw [Polynomial.separable_def,
     Polynomial.isCoprime_iff_aeval_ne_zero_of_isAlgClosed ℂ]
   intro z
-  by_cases hz : Polynomial.aeval z (clonePolynomial n) = 0
+  by_cases hz : Polynomial.aeval z (cloneCharPolynomial n) = 0
   · right
     have hroot : z ^ (2 * n + 5) = z + 1 := by
       have h : z ^ (2 * n + 5) - (z + 1) = 0 := by
-        simpa [clonePolynomial] using hz
+        simpa [cloneCharPolynomial] using hz
       exact sub_eq_zero.mp h
-    simpa [clonePolynomial, Polynomial.derivative_sub,
+    simpa [cloneCharPolynomial, Polynomial.derivative_sub,
       Polynomial.derivative_add, Polynomial.derivative_X_pow] using
       unit_trinomial_derivative_ne_zero (2 * n + 5) (by omega) z hroot
   · exact Or.inl hz
 
-theorem clonePolynomial_squarefree (n : ℕ) : Squarefree (clonePolynomial n) :=
-  (clonePolynomial_separable n).squarefree
+theorem cloneCharPolynomial_squarefree (n : ℕ) : Squarefree (cloneCharPolynomial n) :=
+  (cloneCharPolynomial_separable n).squarefree
 
-theorem clonePolynomial_roots_nodup (n : ℕ) : (clonePolynomial n).roots.Nodup :=
-  Polynomial.nodup_roots (clonePolynomial_separable n)
+theorem cloneCharPolynomial_roots_nodup (n : ℕ) : (cloneCharPolynomial n).roots.Nodup :=
+  Polynomial.nodup_roots (cloneCharPolynomial_separable n)
 
 /-- There are exactly d distinct complex scalar roots. -/
-theorem clonePolynomial_card_roots (n : ℕ) :
-    (clonePolynomial n).roots.card = 2 * n + 5 := by
-  rw [IsAlgClosed.card_roots_eq_natDegree, clonePolynomial_natDegree]
+theorem cloneCharPolynomial_card_roots (n : ℕ) :
+    (cloneCharPolynomial n).roots.card = 2 * n + 5 := by
+  rw [IsAlgClosed.card_roots_eq_natDegree, cloneCharPolynomial_natDegree]
 
 private theorem norm_multiset_product (s : Multiset ℂ) :
     ‖s.prod‖ = (s.map (fun z : ℂ => ‖z‖)).prod := by
@@ -125,21 +125,21 @@ private theorem norm_multiset_product (s : Multiset ℂ) :
 
 /-- Exact Vieta product in modulus, with multiplicities supplied by
 mathlib's polynomial roots. No numerical root approximation is used. -/
-theorem clonePolynomial_norm_product (n : ℕ) :
-    ((clonePolynomial n).roots.map (fun z : ℂ => ‖z‖)).prod = 1 := by
-  have h := (IsAlgClosed.splits (clonePolynomial n)).eval_eq_prod_roots_of_monic
-    (clonePolynomial_monic n) 0
+theorem cloneCharPolynomial_norm_product (n : ℕ) :
+    ((cloneCharPolynomial n).roots.map (fun z : ℂ => ‖z‖)).prod = 1 := by
+  have h := (IsAlgClosed.splits (cloneCharPolynomial n)).eval_eq_prod_roots_of_monic
+    (cloneCharPolynomial_monic n) 0
   have hn := congrArg (fun z : ℂ => ‖z‖) h
   rw [norm_multiset_product] at hn
-  simpa [clonePolynomial, show 2 * n + 5 ≠ 0 by omega,
+  simpa [cloneCharPolynomial, show 2 * n + 5 ≠ 0 by omega,
     Multiset.map_map, Function.comp_def] using hn.symm
 
 #print axioms unit_trinomial_derivative_ne_zero
-#print axioms clonePolynomial_separable
-#print axioms clonePolynomial_squarefree
-#print axioms clonePolynomial_roots_nodup
-#print axioms clonePolynomial_card_roots
-#print axioms clonePolynomial_norm_product
+#print axioms cloneCharPolynomial_separable
+#print axioms cloneCharPolynomial_squarefree
+#print axioms cloneCharPolynomial_roots_nodup
+#print axioms cloneCharPolynomial_card_roots
+#print axioms cloneCharPolynomial_norm_product
 
 end
 
