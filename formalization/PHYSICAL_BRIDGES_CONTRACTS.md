@@ -462,8 +462,40 @@ condenser also splits into a free internal separation
 cost and at most the full exterior width W(F); internal
 calibration remains open. The [finite stage-counting module](weighted/StationaryEndpointVisits.lean)
 isolates the occupancy, birth and degree-sum algebra;
-kernel status is determined by weighted CI. No native
-stationary or global gate is promoted.
+kernel verification succeeded at c752905eb80e78614e8cc52d7d743b45f33a3c1d
+(weighted mathlib run 45666874695, all seven workflows passed).
+No native stationary or global gate is promoted.
+
+The [canonical lift and direction theorem](../research/independent_audits/stationary_transport_attack_20261124/CANONICAL_LIFT_AND_DIRECTION.md)
+charges incomplete canonical lifts of inner-ended parents by
+2^h V(F), automatically using the last departure from the
+actual full pulled carrier before outer escape. On the
+complete family every inner-ended maximal raw restriction
+is a gap of the nested physical contact sets, on a single
+canonical lift at each prefix. Those lifts and gap records
+have a Borel presentation. A compact connected set on which
+an immersion is injective has a univalent filled-hull
+neighborhood by the Jordan-boundary argument principle;
+this supplies univalent parent caps without arbitrary collar
+selection. Under the stated protected crest and geometric
+fine/coarse filters, a signed crossing count and singleton
+covering output give a unique positively oriented directed
+component. For the corrected contour action with precritical
+host locality, the positive critical source endpoint is
+forced into the selected first inverse limb, not the
+precritical limb. One-sided stationary endpoint births are
+then forced already at h=b<q under the total-visit hypotheses.
+These conditional direction results do not propagate a
+later interior birth through all preceding selected limbs.
+The free internal response between the first closed inverse
+limb and T outside the critical limb gives a further
+conditional width bound, with the entire outer-escape cost
+explicitly charged to V(F), rather than the full filled-set
+width. Uniform free-response calibration and native protected
+block realization remain open. The new [finite module](weighted/StationaryCanonicalLift.lean)
+checks ten crossing-indicator, saturation, birth and charge
+theorems; the conformal and topological arguments are written
+proofs, not kernel-formalized analysis.
 
 This checker establishes finite rational endpoint-cover and degree-budget
 certificates and rejects invalid accounting. It does not construct native
