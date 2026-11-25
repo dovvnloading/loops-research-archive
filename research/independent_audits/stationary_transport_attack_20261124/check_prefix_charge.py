@@ -303,6 +303,43 @@ def attachment_screening_checks():
     return checked
 
 
+def auxiliary_response_checks():
+    checked = 0
+    # Exact finite contact labels: distinct endpoints force a transition.
+    for length in range(2, 10):
+        for labels in product(range(3), repeat=length):
+            if labels[0] != labels[-1]:
+                assert any(a != b for a,b in zip(labels, labels[1:]))
+            checked += 1
+    # Exact series optimum and its quadratic excess.
+    for P,B in product(range(1, 33), repeat=2):
+        w = Q(P*B, P+B)
+        assert P >= w+w*w/B
+        a,c = Q(B,P+B),Q(P,P+B)
+        assert a+c == 1
+        assert a*a*P+c*c*B == w
+        checked += 1
+    # Fractional response with a prescribed positive-width packet,
+    # a bounded sum of auxiliary capacities and exact series equality.
+    for W in range(1, 17):
+        for denominator in range(2, 9):
+            for numerator in range(1, denominator+1):
+                eta = Q(numerator, denominator)
+                w = eta*W
+                for K in range(2, 9):
+                    B = K*W
+                    P = w*B/(B-w)
+                    E = eta*eta*W/(2*K)
+                    G = W-E
+                    if G < w:
+                        G = w
+                    D = G-w+P
+                    assert D >= W-E+eta*eta*W/K
+                    assert D >= (1+eta*eta/(2*K))*W
+                    checked += 1
+    return checked
+
+
 def main():
     cases, stays = partial_inverse_models()
     shifts = shift_checks()
@@ -316,6 +353,7 @@ def main():
     print(f"PASS: {deck_collision_checks()} deck-window, threshold and symmetric-gap cases")
     print(f"PASS: {coherent_packet_checks()} coherent-packet and response-budget cases")
     print(f"PASS: {attachment_screening_checks()} exact attachment-screening polygon/neck cases")
+    print(f"PASS: {auxiliary_response_checks()} auxiliary contact/series response cases")
     print("Scope: finite orbit, endpoint census, orientation and energy-weight algebra only.")
 
 
