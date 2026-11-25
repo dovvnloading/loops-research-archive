@@ -987,6 +987,31 @@ problem is not silently repaired. [Finite checker](../research/independent_audit
 three finite algebra declarations await CI. No canonical ledger
 promotion or unconditional MLC claim.
 
+The [saturated graph geometric marking construction](../research/independent_audits/stationary_transport_attack_20261124/SATURATED_GRAPH_CHARTS.md)
+derives several analytic chart hypotheses from explicit actual model
+graph data. An open preimage edge is all-in or all-out of the old
+minimal hull, since every point outside original whole bodies is on
+an arc joining those bodies. Marked-cut extreme gates are fine cuts
+by forward marked landings and access completeness. The first/last
+fine atom of a coarse open pull must lie on an included edge or in
+a whole original preimage vertex, so the carriers agree locally
+around its entire physical impression by saturation. This gives
+the actual proper old limits and also the critical whole-body
+deck pair. The noncritical closed limb map is injective by the
+unique critical deck fixed point, onto by relative openness and
+compactness; parabolic critical-image placement forces all
+preimage little bodies in the proper middle to be original.
+Minimal hull equality then gives the actual proper middle
+chart, including dividing cuts. These deductions are conditional
+on the specified native saturated graph, model/physical contour
+and exact marked access data, not a verification of the literal
+A.3.2 operation. The live source was unavailable; use the
+source-locked hypotheses. The previous no-fixed-point regression
+passed 76,592 cases at 3d25a21; its weighted check exposed an
+algebra cancellation API error, corrected in this revision.
+No new numerical checker or declaration in the graph note.
+No canonical ledger promotion.
+
 This checker establishes finite rational endpoint-cover and degree-budget
 certificates and rejects invalid accounting. It does not construct native
 exits. The stationary hypotheses still need to supply one eligible actual

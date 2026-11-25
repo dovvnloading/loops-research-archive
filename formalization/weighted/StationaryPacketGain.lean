@@ -599,7 +599,11 @@ theorem gap_free_vertical_amplification (W C R V L : ℝ)
     L*R ≤ V := by
   have h : C*((L+2)*R) ≤ C*(R+V+1) := by
     nlinarith only [hupper,hwide]
-  have hh := (mul_le_mul_left hC).mp h
+  have hh : (L+2)*R ≤ R+V+1 := by
+    by_contra! hn
+    have hp : 0 < C*((L+2)*R-(R+V+1)) :=
+      mul_pos hC (sub_pos.mpr hn)
+    nlinarith only [h,hp]
   nlinarith
 
 end LoopsStationaryPacketGain
