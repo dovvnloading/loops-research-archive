@@ -29,9 +29,11 @@ noncomputable section
 private theorem product_norm_le_one (s : Multiset ℂ)
     (h : ∀ z ∈ s, ‖z‖ ≤ 1) :
     (s.map (fun z : ℂ => ‖z‖)).prod ≤ 1 := by
+  revert h
   induction s using Multiset.induction_on with
-  | empty => simp
+  | empty => intro h; simp
   | @cons z s ih =>
+      intro h
       have hz : ‖z‖ ≤ 1 := h z (by simp)
       have hs : (s.map (fun w : ℂ => ‖w‖)).prod ≤ 1 := by
         apply ih
@@ -179,6 +181,7 @@ theorem full_clone_relative_gap_can_approach_zero (ε : ℝ) (hε : 0 < ε) :
     exact div_pos hpos ht0
   · rw [hformula]
     apply (div_lt_iff₀ ht0).mpr
+    have hgain : 0 < ε * (t - 1) := mul_pos hε (by linarith)
     nlinarith
 
 #print axioms clone_exists_nonleading_root_modulus_ge_inv

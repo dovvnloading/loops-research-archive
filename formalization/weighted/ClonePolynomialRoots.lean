@@ -102,7 +102,7 @@ theorem cloneCharPolynomial_separable (n : ℕ) : (cloneCharPolynomial n).Separa
         simpa [cloneCharPolynomial] using hz
       exact sub_eq_zero.mp h
     simpa [cloneCharPolynomial, Polynomial.derivative_sub,
-      Polynomial.derivative_add, Polynomial.derivative_X_pow] using
+      Polynomial.derivative_add, Polynomial.derivative_X_pow, add_assoc] using
       unit_trinomial_derivative_ne_zero (2 * n + 5) (by omega) z hroot
   · exact Or.inl hz
 
