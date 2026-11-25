@@ -213,6 +213,101 @@ changes the neighborhoods; thus one may not take the infimum
 in (5) for a family specified only by a single fixed O_n unless
 its plateau condition persists for every candidate.
 
+### Equivalent direct variational construction
+
+There is also a construction on U alone after pushing the scalar
+potentials through the immersions. It proves the capacity inequality,
+not just the curve-family bound.
+
+For the same u and u_j as above set
+
+\[
+ H_j(w)=\max\bigl(\{0\}\cup
+       \{u_j(z):I_j(z)=w\}\bigr),\qquad
+ H(w)=\min_{0\le j\le b}H_j(w).
+\]
+
+The maximum is attained: the positive values come from the compact
+support of u_j, and I_j has discrete fibers. More precisely, at a
+fixed w the intersection of that support with the fiber is finite.
+Take pairwise disjoint inverse-chart neighborhoods of those finitely
+many points. Compactness of the rest of the support excludes its
+image from a sufficiently small neighborhood of w. Shrinking that
+neighborhood further, every possibly nonzero branch is among the
+finitely many selected local inverses. Thus H_j is locally a maximum
+of finitely many smooth nonnegative scalar functions and zero; in
+particular it is locally Lipschitz. Its support is contained in the
+compact image of the support of u_j.
+
+The a.e. gradient of a finite maximum or minimum of locally
+Lipschitz functions equals the gradient of an active function:
+at differentiability points of the functions and their envelope,
+an active function touches the envelope and their difference has
+a local extremum. Consequently
+
+\[
+ |\nabla H_j|^2\le f_j^2,\qquad
+ |\nabla H|^2\le\sum_{j=0}^b f_j^2
+ \quad\text{a.e.},
+\]
+
+with f_j defined in (7). In fact the second inequality can use
+only the gradient on each active-index cell. No measurable
+choice of individual curves or lifts is involved.
+
+For every x in C_(b+1), (3) and the canonical graph give H_j=1
+on a neighborhood of x for all j. Hence H=1 near the entire
+closed deep limb. For p in T, choose j as in (2). The only
+preimage of p under I_j is Γ_j(p); the function u_j is zero
+in a neighborhood of that point. Thus p is not in the image
+of the support of u_j, and compactness of that image implies
+H_j=0 near p. It follows that H=0 near T, not merely pointwise
+on T. Also H vanishes near the ambient boundary by compact
+support. These arguments include the identity prefix j=0.
+
+Define the direct condenser response
+
+\[
+ D_b(F)=\inf_v\int_U|\nabla v|^2\,dA,
+\]
+
+where v ranges over smooth compactly supported functions on U
+with 0≤v≤1, one near C_(b+1) and zero near T. Extend H by zero
+outside the disk coordinate and mollify at sufficiently small
+radius. The exact plateaus persist, by compactness of T and
+C_(b+1), and Jensen's inequality for the weak gradient gives
+no increase in energy. Taking the infimum over the original
+u therefore proves
+
+\[
+ \boxed{D_b(F)\le (2^{b+1}-1)\mathfrak S(F).}
+\]
+
+Every proper curve hitting any C_n with n≥b+1 has two
+disjoint variations from 0 to 1 or from 1 to 0 in every
+admissible v for this condenser, since C_n⊂C_(b+1).
+The density |∇v|/2 (plus an arbitrarily small constant
+for infinite-length paths in disk coordinates) is admissible.
+It follows that
+
+\[
+ \boxed{W(A_{\rm deep})\le D_b(F)/4
+                  \le (2^{b+1}-1)\mathfrak S(F)/4.}
+\]
+
+This supplies a second proof of (5), without following any
+curve lifts. It also identifies a weaker sufficient
+calibration target: a direct uniform estimate
+D_b(F)≤C_b(R(F)+V(F)+1) suffices, even if the stronger
+base-response estimate (12) is unavailable. The infimum D_b
+has an explicitly grounded electrode pair (the actual carrier
+and the first closed limb strictly beyond the bounded stay),
+so an independent geometric or variational estimate can use
+that pair directly. Neither uniform calibration nor the
+native encounter assertion follows merely from its finite
+energy. The scalar envelope argument is written analysis,
+not a Lean theorem.
+
 ## 3. Quadratic endpoint-index cover and a cheaper special case
 
 For a finite-length parent assign the first exit index of each
