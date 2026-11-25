@@ -35,6 +35,8 @@ The generalization has a testable boundary. For $S=\mathbb R\subset\mathbb C$, b
 <a id="clone-spectrum"></a>
 ## From a clone matrix to an edge operator
 
+The scalar [clone polynomial root module](weighted/ClonePolynomialRoots.lean) proves separability, squarefreeness, exactly `2n+5` distinct complex roots, and an exact product of root moduli equal to one. These statements concern the polynomial derived from eigenpairs. The matrix characteristic-polynomial identification remains a separate obligation until its reverse bridge is supplied.
+
 For every delay $n$, the row-source adjacency matrix $A_n$ constructed from the archive's edge relation has a positive simple *eigenline* at $t_n\in(1,2)$, $t_n^{2n+5}=t_n+1$, and every other eigenvalue has modulus strictly below $t_n$. Existence and strictness are quantified over all delays. The bound $(2n+4)(t_n-1)\le1$ rules out a uniform $t_n\ge 1+\epsilon$ for $\epsilon>0$. [Matrix construction](weighted/FullCloneMatrix.lean) · [strict gap](weighted/FullCloneStrictGap.lean) · [eigenline](weighted/FullCloneEigenline.lean) · [rate](weighted/CloneRootRate.lean)
 
 For a proposed physical edge operator $B$, first construct the marked physical edge set $E$. Produce a bijection $b:V_n\to E$ and a bijection, preserving orientation, multiplicity and stopping time, from **every** graph transition $u\to v$ to the proof-used physical occurrences from $b(u)$ to $b(v)$. Construct the stopping sections and certify exhaustion, including edges skipped or collapsed by an immersion. Compare the normalization of the weights if the operator is weighted. These are geometric obligations at the proposed stage. [Physical incidence contract](PHYSICAL_BRIDGES_WIDTH.md#w4) · [KKL Appendix C convention audit](../research/independent_audits/clone_spectral_referee_note.md)
@@ -285,6 +287,8 @@ certificate](../research/independent_audits/canonical_width_attack_20261124/cert
 
 <a id="native-component-refinements"></a>
 ## Component conventions and the source-imported finite native action
+
+The [complete finite Lean module](../NativeMarkSaturation.lean) represents all 191 distinct endpoint-aware inputs, checks saturation within five pushes, the ten exact first atom times, the four full-turn endpoint regressions, and the `q=2, b=2` limb census. Its chain obstruction explicitly assumes propagation and the impossibility of a full-circle crest. This formalizes the finite and logical layer; the geometric identification and KKL propagation theorem retain the written/source-imported status described below.
 
 **Independent written results.** On the selected slit pair, deduplicating
 maximal component restrictions modulo reparameterization preserves the
