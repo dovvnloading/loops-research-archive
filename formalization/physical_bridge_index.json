@@ -1654,6 +1654,18 @@
         "final_bank_degree_budget",
         "at_least_one_birth",
         "latest_bank_degree_budget"
+      ],
+      "formalization/weighted/StationaryCanonicalLift.lean": [
+        "indicator_telescope",
+        "signed_component_crossings",
+        "unique_positive_anchor",
+        "proper_image_excludes_saturation",
+        "intervening_block_contained",
+        "prefix_failures_eq_last",
+        "one_side_visit_budget",
+        "one_side_birth_excess",
+        "one_side_birth_at_bound",
+        "free_response_charge"
       ]
     },
     "checks": [
