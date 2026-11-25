@@ -1,4 +1,4 @@
-# Finite stationary endpoint accounting: proposed Lean layer
+# Finite stationary endpoint accounting: kernel-checked Lean layer
 
 Source: [Variable-end stationary exit transfer](VARIABLE_END_EXIT_TRANSFER.md), especially equations (4.2)–(4.4), Corollary 4.2 and the degree-budget applications in Section 5. Base revision: `411fd90a48c9eb6af162d23184ba51ab23ae73ae`.
 
@@ -26,6 +26,6 @@ cd formalization/weighted
 lake build StationaryEndpointCover
 ```
 
-An independent local exact-arithmetic experiment checked 2,376 assignments including uncharged endpoints, and reproduced the source's fixed-end, variable-bank, inner-bank, and triangle costs 2, 8, 4, and 3/2. The committed regression reproduces that experiment. Lean compilation was not available in the authoring runtime; the module has been registered in the existing weighted mathlib CI and requires successful kernel checking before being described as Lean-verified. No source ledger status is changed.
+An independent local exact-arithmetic experiment checked 2,376 assignments including uncharged endpoints, and reproduced the source's fixed-end, variable-bank, inner-bank, and triangle costs 2, 8, 4, and 3/2. The committed regression reproduces that experiment. Lean compilation was not available in the authoring runtime. The weighted mathlib CI [successful rerun](https://github.com/dovvnloading/loops-research-archive/actions/runs/45655448328/job/139352354071) at source revision `100575d96dd12acce42db2e085aa56e4f69c5ca7` explicitly built `StationaryEndpointCover` and reported successful completion of 8,766 jobs. The Lean module blob `1fb914fb7bd1b1c31a5b932926243cf240341b71`, weighted Lake configuration, toolchain and dependency manifest are unchanged in the later documentation-only commits. This establishes kernel checking of the eight finite theorems, not the analytic realization premises. The [exceptional-width reduction](EXCEPTIONAL_WIDTH_REDUCTION.md) gives a separate written analysis of the residual. No source ledger status is changed.
 
 Prepared with ChatGPT assistance; no human specialist review or novelty claim.
