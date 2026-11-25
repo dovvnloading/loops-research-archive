@@ -776,6 +776,26 @@ await CI. All seven workflows passed at 9f2408f, including
 1,981,536 finite phase-assembly regressions and three
 new Lean declarations. No canonical ledger promotion.
 
+The [phase-free anchored comparison](../research/independent_audits/stationary_transport_attack_20261124/ANCHORED_PHASE_FREE_RESPONSE.md)
+takes a different maximality class: actual marked simple Borel
+laminations sharing one whole crest atom, anywhere on the circle.
+Fixed-map supremum finiteness follows by the cap-span band metric.
+With a near-critical common anchor and this class's width cap,
+a bounded-probe median Shift argument controls all away nonshort
+modules without singleton hypotheses. Signed probe disagreements
+give distinct actual raw windows, even when their terminal images
+differ. A whole selected common primary sequence and the earlier
+suffix/separator geometry give a quantitative mostly-short
+conclusion for near-maximal near-critical anchored packets
+without unbreakability or phase selection. The new class does
+not impose the original source-uniform controllability bound,
+and remote maximizing anchors, short-crest saturation and
+uniform long fast-forward in this class remain genuine gates.
+[Finite checker](../research/independent_audits/stationary_transport_attack_20261124/check_anchored_phase_free.py); three finite algebra lemmas
+await CI. All seven workflows passed at 2bf9128, including
+226,670 critical phase/selection checks and two Lean additions.
+No ledger status is promoted.
+
 This checker establishes finite rational endpoint-cover and degree-budget
 certificates and rejects invalid accounting. It does not construct native
 exits. The stationary hypotheses still need to supply one eligible actual

@@ -384,4 +384,37 @@ theorem optimized_phase_deficit_le_fixed (W best fixed : ℝ)
     (h : fixed ≤ best) : W-best ≤ W-fixed := by
   linarith
 
+/-- A bounded set of signed-probe failures may be removed from the
+upper median half before applying reciprocal quadrilateral widths.
+The geometric ordering and the two half-width bounds are separate
+inputs supplied by ANCHORED_PHASE_FREE_RESPONSE. -/
+theorem median_reciprocal_loss (g L x y : ℝ)
+    (hL : 0 ≤ L) (hx : g/2 ≤ x) (hy : g/2-L ≤ y)
+    (hxy : x*y ≤ 1) :
+    g ≤ 2+2*L := by
+  by_contra! hn
+  have ha : 1 < x := by linarith
+  have hb : 1 < y := by linarith
+  nlinarith [mul_pos (sub_pos.mpr ha) (sub_pos.mpr hb)]
+
+/-- Collect the phase-free defects. Every square-root allowance
+comes from actual distinct raw windows against the whole primary
+packet, not a singleton output or a disjoint auxiliary-image sum. -/
+theorem anchored_defect_bookkeeping
+    (s E H C K Ea R Q2 QK QN : ℝ)
+    (hpart : s ≤ E+2*(4*K+24*K*C+2*QK)+
+       2*(2*C+Q2)+2*(4*C+2*Q2)+H*(2*C+Q2)+Ea+4*R+QN) :
+    s ≤ E+8*K+(48*K+12+2*H)*C+Ea+4*R+
+       4*QK+(H+6)*Q2+QN := by
+  nlinarith only [hpart]
+
+/-- If the absolute and series charges are each at most one fourth
+of the proposed nonshort mass fraction, that fraction is impossible. -/
+theorem anchored_nonshort_fraction_excluded (W s B Q sigma : ℝ)
+    (hW : 0 < W) (hsigma : 0 < sigma)
+    (hfrac : sigma*W ≤ s) (hpart : s ≤ B+Q)
+    (hB : B ≤ sigma*W/4) (hQ : Q ≤ sigma*W/4) :
+    False := by
+  nlinarith [mul_pos hsigma hW]
+
 end LoopsStationaryPacketGain
