@@ -931,6 +931,29 @@ unavailable; the proof uses the explicit source-locked
 archive graph hypotheses. No new Lean declaration or finite
 checker is added and no ledger promotion.
 
+The [directional boundary compression theorem](../research/independent_audits/stationary_transport_attack_20261124/DIRECTIONAL_COMPRESSION.md)
+splits the positive Herglotz boundary derivative into a left
+contribution comparable monotonically to the left (loss exp(pi V))
+and a right contribution monotonically increasing to the right.
+A large average old/new compression therefore forces simultaneous
+contraction on one entire side of the proper middle chart. The
+right case transports a new minimum atom to BL_(q-b-1), contradicting
+its being smaller than every original-bank atom, even with
+whole-atom subdivisions. Thus a new minimum with large ratio
+forces the left inequalities L_j/L_(j+1)>=exp(-pi V) A/2 for all
+b<=j<c. The bank gap is bounded by C_env+log(S)/pi+
+t(V+log(2)/pi)+(t/pi) log_+ min_j(L_j/L_(j+1)).
+Under exact atom-to-atom ancestry S=1, this replaces the previous
+angular-margin estimate by an absolute bound on any one of the
+early actual whole-limb ratios. Telescoping also gives relative
+coefficient t/(c-b) times the actual whole-BL_c radial nonshort
+width plus the stated errors. This coefficient does not by itself
+close the c-dependent deficit program. The remaining native
+compression estimate and actual chart/marking hypotheses remain
+explicit. [Finite checker](../research/independent_audits/stationary_transport_attack_20261124/check_directional_compression.py); two finite algebra
+declarations await kernel CI. All seven workflows passed at
+d2879cf. No canonical ledger promotion.
+
 This checker establishes finite rational endpoint-cover and degree-budget
 certificates and rejects invalid accounting. It does not construct native
 exits. The stationary hypotheses still need to supply one eligible actual

@@ -542,4 +542,26 @@ theorem backward_marked_atom_ratio (old L G D ell S : ℝ)
   rw [he]
   exact h
 
+/-- A positive derivative decomposed into two nonnegative averages
+has a side containing at least half of its total average.
+The simultaneous directional kernel comparison is an analytic input. -/
+theorem derivative_average_side (L R A : ℝ)
+    (h : A = L+R) :
+    A/2 ≤ L ∨ A/2 ≤ R := by
+  by_cases hl : A/2 ≤ L
+  · exact Or.inl hl
+  · right
+    linarith
+
+/-- If a compression witness forces a uniform lower quotient on
+the early proper run, any one of its actual limb ratios controls
+the witness. This is finite algebra, not a native ratio bound. -/
+theorem directional_compression_ratio (A D Q : ℝ)
+    (hD : 0 < D)
+    (h : A/(2*D) ≤ Q) :
+    A ≤ 2*D*Q := by
+  have hd : 0 < 2*D := by positivity
+  have hh := (div_le_iff₀ hd).mp h
+  linarith [mul_comm Q (2*D)]
+
 end LoopsStationaryPacketGain
