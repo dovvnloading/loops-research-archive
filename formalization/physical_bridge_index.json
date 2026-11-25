@@ -177,8 +177,6 @@
         "cloneCharPolynomial_norm_product"
       ],
       "formalization/weighted/FullCloneCharpoly.lean": [
-        "cloneComplexRootVector_nonzero",
-        "cloneComplexRootVector_eigen",
         "clone_root_has_actual_eigenvalue",
         "clone_root_is_actual_charpoly_root",
         "full_clone_complex_charpoly",

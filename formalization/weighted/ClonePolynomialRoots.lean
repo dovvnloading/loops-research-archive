@@ -101,9 +101,10 @@ theorem cloneCharPolynomial_separable (n : ℕ) : (cloneCharPolynomial n).Separa
       have h : z ^ (2 * n + 5) - (z + 1) = 0 := by
         simpa [cloneCharPolynomial] using hz
       exact sub_eq_zero.mp h
-    simpa [cloneCharPolynomial, Polynomial.derivative_sub,
-      Polynomial.derivative_add, Polynomial.derivative_X_pow, add_assoc] using
-      unit_trinomial_derivative_ne_zero (2 * n + 5) (by omega) z hroot
+    have hder := unit_trinomial_derivative_ne_zero (2 * n + 5) (by omega) z hroot
+    norm_num [cloneCharPolynomial, Polynomial.derivative_sub,
+      Polynomial.derivative_add, Polynomial.derivative_X_pow, add_assoc] at hder ⊢
+    exact hder
   · exact Or.inl hz
 
 theorem cloneCharPolynomial_squarefree (n : ℕ) : Squarefree (cloneCharPolynomial n) :=

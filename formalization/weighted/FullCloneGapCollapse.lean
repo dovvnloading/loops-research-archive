@@ -119,12 +119,9 @@ theorem full_clone_nonleading_eigenvalue_close (n : ℕ) (t : ℝ)
       μ ≠ (t : ℂ) ∧ 0 < t - ‖μ‖ ∧ t - ‖μ‖ < 1 / ((n : ℝ) + 2) := by
   obtain ⟨μ, hμroot, hμne, hμbound⟩ :=
     clone_exists_nonleading_root_modulus_ge_inv n t ht hroot
-  have hz : ∃ u : Vertex n, cloneComplexRootVector n μ u ≠ 0 := by
-    refine ⟨⟨n + 1, by dsimp [size]; omega⟩, ?_⟩
-    simp [cloneComplexRootVector, show ¬n + 1 ≤ n by omega]
+  obtain ⟨z, hz, hAz⟩ := clone_polynomial_root_is_eigenvalue n μ hμroot
   have hstrict : ‖μ‖ < t := full_clone_strict_complex_spectral_gap
-    n t ht hroot μ (cloneComplexRootVector n μ) hz
-      (cloneComplexRootVector_eigen n μ hμroot) hμne
+    n t ht hroot μ z hz hAz hμne
   have ht0 : 0 < t := by linarith
   have hinverse : t * (1 / t) = 1 := by field_simp [ne_of_gt ht0]
   have hsq : 0 < (t - 1) ^ 2 := sq_pos_of_pos (by linarith)
