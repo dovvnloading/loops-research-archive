@@ -1,5 +1,7 @@
 # Issue #40 — finite-host marked-gate sandwich (2026-11-24)
 
+> **Status (2026-11-25): historical, conditional.** The review target of this PR is the [canonical-localization certificate](issue40_canonical_localization_uniqueness_failure_20261124.md). What is proved below is plane topology of explicitly defined contour maps and model dynamics. Every transfer to the native KKL interval action is conditional on the source-identification hypotheses stated in the note, and in particular on using the geometric contour formula of Prop. 6.5; the certificate shows that the printed A.3.2 maximal-subset definition does not produce that formula on the canonical 3/9-tip localization. Read "theorem", "identity" and "proved" in that conditional sense. No ledger entry is promoted, Issue #40 stays open, and there has been no specialist review.
+
 Companion to issue40_monotone_model_prime_end_bridge_20261124.md. This note advances its remaining marked-path comparison by using the *interval assertion* of KKL Proposition 6.5, rather than assuming the physical immersion extends at every old access. It is a theorem under specified native identification hypotheses, not an unconditional resolution of #40.
 
 ## 1. Hypotheses and claim

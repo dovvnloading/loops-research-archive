@@ -1,5 +1,7 @@
 # Issue #40: continuum sector escape, side-weight growth, and closed crests at the physical 3/9 tip
 
+> **Status (2026-11-25): separate special case.** This note concerns the embedded physical representative G:V_3→U_3, whose immersion is the inclusion, under the maximal-parametrized-lift reading of restriction stated in §2. That is reading (L) of the [canonical-localization certificate](issue40_canonical_localization_uniqueness_failure_20261124.md), §0; compare the occurrence-indexed convention of [the selected-slit note](immersion_mark_resolution_20261124/NOTE.md). It is not a statement about the canonical localization, whose exterior is infinite-sheeted and where the same pullback identity fails as printed. Whether KKL's restriction agrees with reading (L) is a source-identification question that is not settled here. No ledger entry is promoted, Issue #40 stays open, and there has been no specialist review.
+
 2026-11-24. Written analytic continuation of merged [PR #74](https://github.com/dovvnloading/loops-research-archive/pull/74), **not a general non-LC KKL proof**. No new synthetic interval automaton, numerical simulation, or ledger change.
 
 ## 1. Source and imported hypotheses

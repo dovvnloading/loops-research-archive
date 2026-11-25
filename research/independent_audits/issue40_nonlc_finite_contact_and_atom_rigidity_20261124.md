@@ -1,5 +1,7 @@
 # Non-LC contact-angle surgery and the periodic-atom obstruction (Issue #40)
 
+> **Status (2026-11-25): historical, conditional.** The review target of this PR is the [canonical-localization certificate](issue40_canonical_localization_uniqueness_failure_20261124.md). What is proved below is plane topology of explicitly defined contour maps and model dynamics. Every transfer to the native KKL interval action is conditional on the source-identification hypotheses stated in the note, and in particular on using the geometric contour formula of Prop. 6.5; the certificate shows that the printed A.3.2 maximal-subset definition does not produce that formula on the canonical 3/9-tip localization. Read "theorem", "identity" and "proved" in that conditional sense. No ledger entry is promoted, Issue #40 stays open, and there has been no specialist review.
+
 2026-11-24. Follow-up to the physical slit computation in PR #119. This note gives a conditional analytic repair on full continua, not a synthetic finite transition matrix. It does **not** claim the unrestricted native KKL realization or close #40.
 
 ## 1. Ambient impressions descend to subcontinua at a singleton contact

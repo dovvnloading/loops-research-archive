@@ -1,5 +1,7 @@
 # Issue #40: full-base short waves, nonunique positive crests, and the common-crest correction
 
+> **Status (2026-11-25): unreviewed source-level audit.** A counterexample candidate to the literal wording of the wave and shortness definitions, not to the intended argument, the Wave Lemma or MLC. The common-crest correction is a proposal; whether the proof-selected waves of §§6.2–6.3 can be taken in that class without losing the width bounds is open. This note is independent of the [canonical-localization certificate](issue40_canonical_localization_uniqueness_failure_20261124.md), which is the review target of this PR. No ledger entry is promoted, Issue #40 stays open, and there has been no specialist review.
+
 2026-11-24. Written source-level audit; not a numerical experiment. This note **corrects** the blanket large-rotation proper-base inference in the earlier short-wave notes. It is independent of the marked interval nonreturn argument.
 
 ## 1. Literal definitions being tested

@@ -1,5 +1,7 @@
 # Issue #40 — weighted trace, angular growth, and positive crest audit (2026-11-24)
 
+> **Status (2026-11-25): historical, conditional.** The review target of this PR is the [canonical-localization certificate](issue40_canonical_localization_uniqueness_failure_20261124.md). What is proved below is plane topology of explicitly defined contour maps and model dynamics. Every transfer to the native KKL interval action is conditional on the source-identification hypotheses stated in the note, and in particular on using the geometric contour formula of Prop. 6.5; the certificate shows that the printed A.3.2 maximal-subset definition does not produce that formula on the canonical 3/9-tip localization. Read "theorem", "identity" and "proved" in that conditional sense. No ledger entry is promoted, Issue #40 stays open, and there has been no specialist review.
+
 This supplements the three preceding monotone-transfer, marked-gate, and ambient-exactness notes. All transfers to the actual KKL category remain subject to the source-identification hypotheses recorded there. The following statements explain what those transfers would establish for the remaining numbered acceptance requirements of Issue #40.
 
 ## 1. Same-source complete edge traces
@@ -71,7 +73,7 @@ for positive integer b. The first wave in a chain need not be a critical visit; 
 1. Prime-end circles, separate cover and immersion, actual collar coordinates: constructed in the saturated-lift setting.
 2. Complete marked host/attachment correspondence and open/closed extreme gates: constructed using the source interval and component assertions of Prop. 6.5, the singleton cuts, and finite host family. The full individual contours, not only host points, enter the marked block. The proof is not an independent validation of all maximal proper-path assertions in A.3.2.
 3. Same-source edge incidence and strict positive Perron growth: proved by model subdivision and transferred through the marked identity, conditional on native model/marking identification.
-4. Positive zero-edge marked sector escape: proved by ambient exactness, a different mechanism from local gate enumeration. Arbitrary unmarked physical subarc dynamics are not claimed.
-5. Actual positive proper-base closed crests: positivity, shortness and critical visit count proved in the specified class. Full-circle bases and precise source conventions remain to be authenticated.
+4. Positive zero-edge marked sector escape: proved in the model by ambient exactness, a different mechanism from local gate enumeration; the transfer to the native action is conditional, as in item 3. Arbitrary unmarked physical subarc dynamics are not claimed.
+5. Actual positive proper-base closed crests: positivity, shortness and critical visit count proved in the specified class, conditional on the same transfer. Full-circle bases and precise source conventions remain to be authenticated.
 
 The remaining tasks are now chiefly to authenticate the saturated canonical KKL small Julia/tree lift and singleton original marking, the precise Prop. 6.5 path/access semantics including closed gates, and the proper-base or alternative crest geometry of all waves used by the source. The topological proofs in this PR require independent review. There is no new formal verification or CI assertion, and neither the repair issue nor the Wave amplification ledger entry should be closed on this basis alone.

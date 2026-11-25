@@ -1,5 +1,7 @@
 # Issue #40 — saturated-carrier monotone prime-end transfer (2026-11-24)
 
+> **Status (2026-11-25): historical, conditional.** The review target of this PR is the [canonical-localization certificate](issue40_canonical_localization_uniqueness_failure_20261124.md). What is proved below is plane topology of explicitly defined contour maps and model dynamics. Every transfer to the native KKL interval action is conditional on the source-identification hypotheses stated in the note, and in particular on using the geometric contour formula of Prop. 6.5; the certificate shows that the printed A.3.2 maximal-subset definition does not produce that formula on the canonical 3/9-tip localization. Read "theorem", "identity" and "proved" in that conditional sense. No ledger entry is promoted, Issue #40 stays open, and there has been no specialist review.
+
 Status: new topological theorem and source-specific reduction. Not a claim of full KKL Proposition 6.9, Wave Lemma, or MLC. This is an analytic argument, not a numerical contour test. It extends the finite-contact and atom-rigidity note in this PR. In particular it avoids requiring every exceptional attachment root to be preperiodic.
 
 ## 1. Monotone boundary extension theorem
