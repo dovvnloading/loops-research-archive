@@ -368,6 +368,17 @@ outside this module. The native degree census and actual exit existence
 remain separate geometric inputs. See the [scope and reproduction note](../research/independent_audits/stationary_transport_attack_20261124/LEAN_ENDPOINT_ACCOUNTING.md).
 Kernel status is determined by the weighted Lean workflow.
 
+A [one-hit landing reduction](../research/independent_audits/stationary_transport_attack_20261124/ONE_HIT_LANDING_REDUCTION.md)
+shows that a single actual bank hit together with a genuine physical
+landing on a different deleted continuum (or an ambient outer ideal
+limit) supplies an eligible exit. At the high-type horizon m<P the
+selected bank is disjoint from the original cycle, so a physical
+landing on an original small Julia set is sufficient. A mere
+carrier-edge endpoint or non-singleton impression is not sufficient;
+the note contains an explicit planar counterexample to one-hit
+properness in the carrier complement alone. This is a written
+conditional reduction, not proof of the actual stationary premise.
+
 This checker establishes finite rational endpoint-cover and degree-budget
 certificates and rejects invalid accounting. It does not construct native
 exits. The stationary hypotheses still need to supply one eligible actual
