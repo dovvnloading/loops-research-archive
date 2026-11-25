@@ -358,7 +358,7 @@ bank conditions, §5](../research/independent_audits/stationary_transport_attack
 python3 -B research/independent_audits/stationary_transport_attack_20261124/verify.py
 ```
 
-The proposed [finite Lean accounting module](weighted/StationaryEndpointCover.lean)
+The kernel-checked [finite Lean accounting module](weighted/StationaryEndpointCover.lean)
 isolates the real-valued double-counting identity, weak duality, one-end
 and two-end bank bounds, and the conditional degree budget.
 The input is the incidence-width bound at every positively charged end,
@@ -366,7 +366,7 @@ not an assumption that all ideal widths are finite. Uncharged values are
 unused real placeholders; modulus and its extended-real infimum are
 outside this module. The native degree census and actual exit existence
 remain separate geometric inputs. See the [scope and reproduction note](../research/independent_audits/stationary_transport_attack_20261124/LEAN_ENDPOINT_ACCOUNTING.md).
-Kernel status is determined by the weighted Lean workflow.
+The [weighted Lean workflow successfully built this module](https://github.com/dovvnloading/loops-research-archive/actions/runs/45655448328/job/139352354071) at revision `100575d96dd12acce42db2e085aa56e4f69c5ca7`; subsequent documentation-only commits preserve the Lean source, Lake configuration and toolchain. This verifies the finite algebra only.
 
 A [one-hit landing reduction](../research/independent_audits/stationary_transport_attack_20261124/ONE_HIT_LANDING_REDUCTION.md)
 shows that a single actual bank hit together with a genuine physical
@@ -378,6 +378,19 @@ carrier-edge endpoint or non-singleton impression is not sufficient;
 the note contains an explicit planar counterexample to one-hit
 properness in the carrier complement alone. This is a written
 conditional reduction, not proof of the actual stationary premise.
+
+The [simultaneous finite-length core](../research/independent_audits/stationary_transport_attack_20261124/EXCEPTIONAL_WIDTH_REDUCTION.md)
+constructs one finite-energy all-sheet density on the ambient target
+that removes nonlanding parents and controls every raw lift and all
+its final collar coordinates modulo a width-zero family. After a bank
+hit, failure of all eligible exits forces full unpunctured continuation,
+no different-component hit, and two physical carrier-only endpoints
+in the high-type application. Countable endpoint gates contribute
+zero width; a planar rectangular example with width exactly 1/4
+shows that unrestricted carrier-edge failures can have positive
+width. Native dynamics or a separate quantitative residual bound
+is still required. This is written analysis, not a Lean formalization
+or a native stationary counterexample.
 
 This checker establishes finite rational endpoint-cover and degree-budget
 certificates and rejects invalid accounting. It does not construct native
