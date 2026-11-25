@@ -238,7 +238,137 @@ then gives a response with no noncollision premise.
 A single duplicate late in a long chain does not
 by itself imply ambient amplification.
 
-## 5. Verification boundary
+## 5. Long angular bases have a uniform charge; robust double-stage test
+
+There is a way to avoid requiring exact antipodal anchors. It also
+gives a useful quantitative restriction on the remaining output
+geometry without calibrating any carrier collar.
+
+Uniformize the actual inner/outer annulus X by the flat conformal
+cylinder (R/Z)×(0,M), where the circumference is normalized to one
+and M=mod(X)>0. For a simple proper inner-to-inner path with
+distinct ideal endpoints and disk-side cap, define its angular
+base span ℓ to be the length, in this coordinate, of the
+cap's actual boundary arc on the inner circle. This is the
+physical cap arc, not the number of marked atoms. The arc lifts
+together with its disk-side cap to the universal strip.
+Consequently the endpoints of the corresponding strip path
+have absolute horizontal displacement exactly ℓ; one must
+not replace it by the shorter circle distance if the cap
+uses the longer boundary arc.
+
+**Lemma (uniform long-base charge).** For any family D of these
+paths with ℓ≥ε, where 0<ε≤1,
+
+\[
+ \boxed{W_X(D)\le {1\over 2\varepsilon}.} \tag{5}
+\]
+
+Indeed choose the flat cylinder metric ρ=1/ε on
+0<y≤min(M,ε/2) and zero above it. Its squared area is
+min(M,ε/2)/ε²≤1/(2ε). If a path stays in that band,
+its horizontal variation in the lift is at least ε.
+If it exits the band, its initial and final tails must
+each traverse the band height ε/2, since both ends
+land at y=0. The two disjoint tail lengths add to
+at least ε in the unscaled metric. Either way its
+ρ-length is at least one. The metric includes its top
+edge when the edge is in the open cylinder, to avoid
+losing paths that run along it. Improper length
+statements follow by exhausting compact subpaths.
+A small positive constant handles paths of infinite
+flat length if needed (M is finite); taking its energy
+to zero does not change the estimate. No landing in
+physical planar coordinates is needed for this lemma.
+
+Take a family A_h of actual stationary simple outputs
+through h. For each j=0,...,h discard all parents
+whose output δ_j has angular span at least ε. This
+costs at most 2^j/(2ε) in original-parent width:
+pull the metric of (5) through the actual P_j-cover
+and push through I_j, using one actual segmented
+witness window. Sum by subadditivity and also remove
+the incomplete canonical lifts at h. Thus the total
+exceptional width is bounded by
+
+\[
+ \boxed{E_{\varepsilon,h}
+       =2^h V(F)+{2^{h+1}-1\over2\varepsilon}.} \tag{6}
+\]
+
+The term for j=0 is the direct metric (5). No parallel
+law for arbitrary curve families is used.
+
+On the remaining complete family every output cap
+has span <ε. Each of its retained simple source
+lifts at the preceding step has span <ε/2 in the
+normalized source annulus, because the actual
+degree-two annular covering doubles horizontal
+coordinates and maps a lifted cap homeomorphically
+to the output cap.
+
+Call an anchor qualified when it belongs to a
+protected block satisfying conditions 1–3 of
+CANONICAL_LIFT_AND_DIRECTION, §4, for this parent
+cap and the same corrected fine/coarse filters.
+By the signed-crossing theorem, every qualified
+anchor belongs to the cap base of one positively
+oriented retained component. If two qualified
+anchors have normalized geodesic circle distance
+at least ε/2, they cannot belong to the same
+retained component: its entire base has span <ε/2.
+Since the output is a singleton and the cover
+has degree two, this supplies a genuine double
+stage. There is no requirement that their target
+images coincide as access points. In particular
+deck-opposed anchors still suffice, but an exact
+opposite pair is not necessary.
+
+Equivalently, on this residual all qualified
+anchors at a stage lie in the one or two short
+cap-base packets of its retained components.
+If there are two components these are deck
+translates of the same proper output base.
+With only one component all qualified anchors
+are confined to one short arc. This is a
+restriction on actual conformal access angles,
+not on the diameter of a planar Julia limb.
+
+Let S⊂A_h be the complete small-span family whose
+parents have at least k stages with the separated
+qualified-anchor certificate just described.
+If S has width ≥ηW(A_h), and D_h is contained
+in an actual controllable Wave C, (3) applies
+with this k. In the special case that *every*
+parent outside the family charged by (6) has
+more double stages than simple ones, one obtains
+
+\[
+ W(C)\ge2\,[W(A_h)-E_{\varepsilon,h}].
+\]
+
+For instance when W(A_h)>0 and
+W(A_h)≥4 E_{\varepsilon,h}, this is at least
+(3/2)W(A_h). A fixed choice ε=1/4 makes the
+angular loss in (6) exactly 2(2^(h+1)−1),
+so at h=b+2 the loss is a b-only constant
+plus a b-only multiple of vertical width.
+This provides another possible native
+terminal-response route, rather than a new
+uncontrolled collar conductance.
+
+The remaining native difficulty is to realize
+enough separated qualified anchors, or otherwise
+control the single-short-packet stages. The
+antipodal host theorem of SYMMETRIC_SEPARATOR
+does not itself place its two hosts in protected
+blocks in the parent cap; even an exact deck phase
+does not establish that qualification. Formula
+(6) is an unconditional metric bound for the
+stated geometric path families, not a proof of
+the native anchor-frequency assertion.
+
+## 6. Verification boundary
 
 StationaryDeckSeparator.lean formalizes the real
 interval fixed-point step, abstract retraction
