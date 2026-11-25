@@ -7,7 +7,6 @@ export class DeepRenderer {
   private generation=0;
   private complete=false;
   private stage=document.createElement('canvas');
-  private preview=false;
   private disposed=false;
   constructor(private canvas:HTMLCanvasElement,private onUpdate:(status:string)=>void,private onError:(message:string)=>void){}
   get ready(){return this.complete;}
@@ -18,11 +17,13 @@ export class DeepRenderer {
   capture(){return this.complete?this.canvas.toDataURL('image/png'):'';}
   render(state:EngineState,aspect:number,preview:boolean){
     if(this.disposed)return;
-    this.cancel();const generation=this.generation;this.complete=false;this.preview=preview;
+    this.cancel();const generation=this.generation;this.complete=false;
     const max=preview?120:state.quality==='high'?640:state.quality==='low'?256:448;
     const width=Math.max(1,Math.round(max*Math.min(1,aspect))),height=Math.max(1,Math.round(max/Math.max(1,aspect)));
     this.stage.width=width;this.stage.height=height;
     const ctx=this.stage.getContext('2d');if(!ctx){this.onError('Float64 canvas unavailable');return;}
+    const display=preview?this.canvas.getContext('2d'):null;
+    if(preview){this.canvas.width=width;this.canvas.height=height;if(display){display.fillStyle='#10181a';display.fillRect(0,0,width,height);}this.canvas.hidden=false;}
     const frame:VolumeFrame={state,width,height,preview};
     let worker:Worker;
     try{worker=new Worker(new URL('../workers/volume64.worker.ts',import.meta.url),{type:'module'});}
@@ -32,8 +33,9 @@ export class DeepRenderer {
       if(this.disposed||generation!==this.generation)return;
       const m=event.data;
       if(m.type==='strip'){
-        ctx.putImageData(new ImageData(new Uint8ClampedArray(m.buffer),m.width,m.rows),0,m.y);
-        this.onUpdate((preview?'Preview ':'Refining ')+Math.round(100*(m.y+m.rows)/height)+'%');
+        const image=new ImageData(new Uint8ClampedArray(m.buffer),m.width,m.rows);
+        ctx.putImageData(image,0,m.y);display?.putImageData(image,0,m.y);
+        this.onUpdate((preview?'Preview ':'Refining ')+Math.round(100*m.completedRows/height)+'%');
       }else if(m.type==='complete'){
         this.canvas.width=width;this.canvas.height=height;
         this.canvas.getContext('2d')?.drawImage(this.stage,0,0);

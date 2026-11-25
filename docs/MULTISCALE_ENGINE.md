@@ -14,3 +14,7 @@ Four curated close-flight entry points (Surface descent, Into the folds, Beyond 
 ## Binary64 close flight
 
 The volume precision selector offers Auto, GPU and CPU Float64. Auto switches near the Float32 floor; GPU mode explicitly retains the original limit. The Float64 implementation runs the same recurrence in a cancellable worker, with its own raymarch, normals and shading, a coarse pass followed by a full pass. It preserves binary64 camera coordinates and uses a conservative 2e-12 world-coordinate floor (rather than 2e-6). This is a numerical budget, not a guaranteed six-decade increase in geometrically reliable detail. The higher iteration cap is 120; the output is capped at 448 pixels on the longest side by default (640 high quality). CPU shading is intentionally not pixel-identical to GPU output. PNG capture waits for a completed pass. Both renderers are finite precision. No arbitrary-precision 3D claim is made.
+
+## Browser regression
+
+`node scripts/smoke_webgl.mjs` (after `npm run build`, with Node 24 and Chrome/Chromium) starts the actual production app, connects to a headless browser, samples pixels from all three GPU volume scenes, sends real wheel input, and verifies the Float64 worker's completed image. The Site health workflow uploads screenshots. This checks actual rendering and interaction, not physical GPU performance or mathematical proof.

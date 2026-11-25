@@ -422,7 +422,7 @@ export class FractalEngine {
   private emitStats(fps: number) {
     this.hooks.onStats?.({
       fps,
-      resolution: this.deepActive&&this.deep?.ready?this.deep.size:`${this.canvas.width} × ${this.canvas.height}`,
+      resolution: this.deepActive&&this.deep?this.deep.size:`${this.canvas.width} × ${this.canvas.height}`,
       precision: this.deepActive?'Float64 · numerical raymarch':this.cpu ? 'Float64 · CPU' : planar(this.state.scene) ? 'Double-single · finite precision' : this.state.scene === 'landscape' ? 'Float32 · height field' : 'Float32 · adaptive distance estimate',
       ...(volumeScene(this.state.scene)?{iterations:this.effectiveIterations,clearance:this.clearance,refinement:this.deepActive?this.deepStatus:['Preview','Refining','Settled'][this.refinement]}:{}),
       renderer: this.deepActive?'CPU worker · Float64':this.cpu ? 'CPU · 2D fallback' : this.lost ? 'GPU unavailable' : 'WebGL2 · custom GLSL',

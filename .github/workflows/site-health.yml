@@ -30,3 +30,28 @@ jobs:
       - run: npm run build
       - run: npm test
       - run: python3 code/verify_site_integrity.py
+
+  browser-rendering:
+    name: Actual WebGL2 and Float64 browser rendering
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+          cache: npm
+      - run: npm ci
+      - run: npm run build
+      - run: node scripts/smoke_webgl.mjs
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: fractal-browser-rendering
+          path: browser-smoke/
+          if-no-files-found: warn
