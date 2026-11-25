@@ -525,4 +525,21 @@ theorem remote_probe_local_cap (Q Ql Qr M : ℝ)
     (hpart : Q ≤ Ql+Qr) (hl : Ql ≤ M) (hr : Qr ≤ M) :
     Q ≤ 2*M := by linarith
 
+/-- The bounded backward-chart derivative and marking subdivision
+bounds give a multiplicative upper bound on the old/new atom ratio.
+The actual chart, margin, and source marking are separate hypotheses. -/
+theorem backward_marked_atom_ratio (old L G D ell S : ℝ)
+    (hG : 0 < G) (hell : 0 < ell)
+    (hbound : old*G ≤ 16*D^2*L)
+    (hsub : L = S*ell) :
+    old/ell ≤ 16*D^2*S/G := by
+  apply (le_div_iff₀ hG).2
+  have h := (div_le_iff₀ hell).2
+    (show old*G ≤ (16*D^2*S)*ell by
+      rw [hsub] at hbound
+      nlinarith only [hbound])
+  have he : (old/ell)*G = (old*G)/ell := by ring
+  rw [he]
+  exact h
+
 end LoopsStationaryPacketGain

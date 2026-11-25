@@ -891,6 +891,30 @@ All seven workflows passed at f1eabb4, including 622,077 exact
 guard-free jump checks and the corrected prior guard lemma.
 No ledger promotion.
 
+The [asymmetric bank gap certificate](../research/independent_audits/stationary_transport_attack_20261124/ASYMMETRIC_BANK_GAP.md)
+observes that only the positive side of the local comparison
+bank needs expansion: primary anchors translate forward or
+reset inside B_b, and the two far-corridor boundary images
+in the median probe proof are BL_(c+2) and BL_(q-c).
+Use c=2b+20, t=H+2 and B^+=BL_[-c,c+t].
+The same conditional source-width bound now depends on
+Delta_+=M_(B^+)-M_B only. A new minimum outside B is in
+a bounded positive strip, with a bounded r<=t proper
+backward chart. Its actual whole original atom ancestor
+in BL_c may have a multi-atom image; retain the true
+angular subdivision S and terminal chart margin G.
+The positive derivative kernel and integration on the
+chart bound the old atom length by 16 exp(6pi V)L/G.
+Thus Delta_+<=C_env+log(16)/pi+6V+log(S/G)/pi.
+A sufficient remaining quantitative certificate is
+log(S/G)=O_b(R+V+1). The small-margin whole-limb witness
+only gives a relative constraint, not that absolute
+bound; atom-to-atom ancestry is not assumed.
+[Finite checker](../research/independent_audits/stationary_transport_attack_20261124/check_asymmetric_bank_gap.py); one algebra declaration
+awaits CI. All seven workflows passed at e990fbb,
+including 465,199 local-bank checks and two Lean additions.
+No ledger promotion.
+
 This checker establishes finite rational endpoint-cover and degree-budget
 certificates and rejects invalid accounting. It does not construct native
 exits. The stationary hypotheses still need to supply one eligible actual
