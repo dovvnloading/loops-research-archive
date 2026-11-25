@@ -533,7 +533,30 @@ free-response calibration and the corrected marking
 interface remain open. The [finite/real module](weighted/StationaryDeckSeparator.lean)
 checks the interval fixed point, connected-image separation,
 deck injectivity exclusion, and gain and gap algebra.
-Its kernel status is determined by weighted CI.
+Its eleven public theorems compiled successfully at
+f6702318e9e35b1bb0ef11de1b2edaeae5ab1af7
+(weighted run 45671447375, log reports 8774 successful build
+jobs; the workflow was cancelled after compilation when a
+documentation revision advanced the branch).
+
+The [angular calibration note](../research/independent_audits/stationary_transport_attack_20261124/ANGULAR_CALIBRATION.md)
+gives a uniform flat-cylinder charge 1/(2ε) for a base of
+angular span at least ε, and improves it to
+π log(8/ε)/(log 2)^2 for families whose caps contain a
+common fixed crest access. Thus exponentially small
+qualified-anchor separations can suffice at linear
+width cost. On the small-span residual, separated
+qualified source anchors must occur in different
+retained caps, giving a double stage even without
+exact antipodality. Independently the positive strip
+Poisson kernel bounds the degree-one inner-circle
+distortion of I on the old-carrier annulus by
+exp(±π V(F)), using its modulus at least half the
+target modulus. This estimate does not apply to the
+full pulled carrier inclusion, whose added pieces
+land in the old annulus interior. Quantitative
+attachment distortion and qualification of the
+actual anchors remain separate native obligations.
 
 This checker establishes finite rational endpoint-cover and degree-budget
 certificates and rejects invalid accounting. It does not construct native
