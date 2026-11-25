@@ -1642,6 +1642,17 @@
         "half_minimal",
         "series_weight_optimal",
         "series_weight_attained"
+      ],
+      "formalization/weighted/StationaryEndpointVisits.lean": [
+        "owner_phase_count",
+        "more_than_b_distinct_components",
+        "original_horizon_residual",
+        "window_birth_budget",
+        "excess_requires_births",
+        "no_full_window_at_double_bound",
+        "degree_prefix_sum",
+        "final_bank_degree_budget",
+        "at_least_one_birth"
       ]
     },
     "checks": [
