@@ -264,4 +264,41 @@ theorem suffix_series_strict_response (W G w P B D E N : ℝ)
   have hp : 0 < W/(64*N) := by positivity
   linarith
 
+/-- The double and over-critical source classes share a common
+injective primary output. A half-width cap for the over-critical
+part then gives the mixed three-quarter cap. -/
+theorem precritical_mixed_cap (Z wD wO D O M L E : ℝ)
+    (hZ : Z ≤ wD+wO+E) (hD : wD ≤ D/2) (hO : wO ≤ O)
+    (hP : D+O ≤ M) (hOC : O ≤ M/2+L) :
+    Z ≤ 3*M/4+L/2+E := by
+  linarith
+
+/-- A three-quarter terminal cap on the excluded orientation
+class leaves a positive auxiliary fraction after small losses. -/
+theorem precritical_auxiliary_fraction (W w Z E Ez lam : ℝ)
+    (hpart : W ≤ w+Z+E)
+    (hcap : Z ≤ 3*(1+lam)*W/4+Ez)
+    (hscale : E+Ez ≤ W/16) (hlam : lam*W ≤ W/16) :
+    W/8 ≤ w := by
+  linarith
+
+/-- Strict integrated response with one-eighth auxiliary fraction.
+The actual precritical exclusion and separator/suffix windows
+remain premises of the analytic proof. -/
+theorem precritical_integrated_strict_response (W G w P B D E N : ℝ)
+    (hW : 0 < W) (hN : 0 < N) (hB : 0 < B) (hP : 0 ≤ P)
+    (hfrac : W/8 ≤ w) (hcap : B ≤ (2*N)*W)
+    (hgood : W ≤ G+E) (hadd : G-w+P ≤ D)
+    (hseries : w*(P+B) ≤ P*B) (hscale : E ≤ W/(512*N)) :
+    W+W/(512*N) < D := by
+  have hK : 0 < 2*N := by positivity
+  have hf : (1/8 : ℝ)*W ≤ w := by linarith
+  have hr := auxiliary_fraction_response W G w P B D E (1/8) (2*N)
+    hW (by norm_num) hK hB hP hf hcap hgood hadd hseries
+  have he : (1/8 : ℝ)^2*W/(2*N) = 4*(W/(512*N)) := by
+    field_simp [ne_of_gt hN] <;> ring
+  rw [he] at hr
+  have hp : 0 < W/(512*N) := by positivity
+  linarith
+
 end LoopsStationaryPacketGain

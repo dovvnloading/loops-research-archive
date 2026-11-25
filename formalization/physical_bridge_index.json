@@ -1698,7 +1698,10 @@
         "no_gain_bounds_auxiliary_fraction",
         "auxiliary_response_at_scale",
         "suffix_backward_or_auxiliary",
-        "suffix_series_strict_response"
+        "suffix_series_strict_response",
+        "precritical_mixed_cap",
+        "precritical_auxiliary_fraction",
+        "precritical_integrated_strict_response"
       ]
     },
     "checks": [
@@ -1706,7 +1709,8 @@
       "research/independent_audits/stationary_transport_attack_20261124/check_endpoint_cover_lean_model.py",
       "research/independent_audits/stationary_transport_attack_20261124/check_prefix_charge.py",
       "research/independent_audits/stationary_transport_attack_20261124/check_near_critical_packet.py",
-      "research/independent_audits/stationary_transport_attack_20261124/check_suffix_anchor_response.py"
+      "research/independent_audits/stationary_transport_attack_20261124/check_suffix_anchor_response.py",
+      "research/independent_audits/stationary_transport_attack_20261124/check_precritical_response.py"
     ],
     "obligations": [
       "KKL_STATIONARY_FINAL_FIXED_COMPONENT_EXIT",

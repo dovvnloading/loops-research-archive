@@ -657,6 +657,23 @@ checker](../research/independent_audits/stationary_transport_attack_20261124/che
 check only the finite backward and strict-response algebra, pending CI.
 No native ledger promotion.
 
+The [precritical terminal response](../research/independent_audits/stationary_transport_attack_20261124/PRECRITICAL_TERMINAL_RESPONSE.md)
+uses the genuine deck-related old-proper atoms of the entire critical
+little vertex to obtain a two-window width cap M/2+2(V+C_2) for
+actual over-critical packets, without retained action. First/last
+precritical end atoms give a common primary and the mixed cap
+3M/4+3(V+C_2) with only one available singleton step. Combined with
+the suffix/ separator series response this removes the final
+orientation exception at scale 1/(512N) and treats small q by
+stopping at the first precritical crest, on the stated exact
+geometric directed-chain hypotheses. It is a relative cap, not
+an absolute precritical discard for N1. The [new finite checker](../research/independent_audits/stationary_transport_attack_20261124/check_precritical_response.py)
+passed 1,165,122 local cases; three added real-number Lean
+inequalities await kernel CI. All seven workflows passed at
+9fd71ee (including the two suffix theorems). Native relative
+continuation, exact source marking and ambient comparison remain
+open; no canonical ledger promotion.
+
 This checker establishes finite rational endpoint-cover and degree-budget
 certificates and rejects invalid accounting. It does not construct native
 exits. The stationary hypotheses still need to supply one eligible actual
