@@ -54,7 +54,7 @@ vec2 bulb(vec3 p) {
     float theta=acos(clamp(z.z/r,-1.0,1.0));
     float phi=atan(z.y,z.x);
     float zr=pow(r,power-1.0);
-    dr=zr*power*dr+1.0;
+    dr=min(1e30,zr*power*dr+1.0);
     zr*=r;
     theta*=power; phi*=power;
     z=zr*vec3(sin(theta)*cos(phi),sin(phi)*sin(theta),cos(theta))+p;

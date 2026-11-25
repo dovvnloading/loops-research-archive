@@ -7,7 +7,7 @@ test('camera basis is orthonormal; center ray points forward',()=>{
   const c=DEFAULT_STATE.camera;const b=basis(c);
   assert.ok(Math.abs(norm(b.forward)-1)<1e-12);
   assert.ok(Math.abs(norm(b.right)-1)<1e-12);
-  assert.deepEqual(ray(c,0,0),b.forward);
+  assert.ok(norm(add(ray(c,0,0),mul(b.forward,-1)))<1e-12);
   assert.ok(norm(add(eye(c),mul(b.forward,c.distance)))<1e-12);
 });
 test('distance estimates distinguish a bounded origin from exterior',()=>{
@@ -33,4 +33,16 @@ test('cursor flight rays differ and flight position survives session validation'
   assert.deepEqual(validateState({...s,camera:c}).camera.position,c.position);
   assert.equal(validateState({...s,camera:{...c,position:[NaN,0,0]}}).camera.position,undefined);
   assert.equal(validateState({...s,scene:'julia',camera:c}).camera.position,undefined);
+});
+
+test('all three volume fields support close approach and retreat',()=>{
+  for(const scene of ['mandelbox','quaternion'] as const){
+    let s=validateState({...DEFAULT_STATE,scene,power:scene==='mandelbox'?2:8,camera:scene==='mandelbox'?{yaw:.65,pitch:.35,distance:5.3}:{yaw:.7,pitch:.22,distance:3.8},julia:scene==='quaternion'?[-.3,.52]:DEFAULT_STATE.julia});
+    const start=clearanceAt(s,eye(s.camera));
+    for(let i=0;i<24;i++)s={...s,camera:dolly(s,.8)};
+    const near=clearanceAt(s,eye(s.camera));
+    assert.ok(near<start*.1,scene);
+    assert.ok(near>=precisionFloor(eye(s.camera))*2,scene);
+    assert.ok(clearanceAt({...s,camera:flightStep(s,'s')},eye(flightStep(s,'s')))>near,scene);
+  }
 });

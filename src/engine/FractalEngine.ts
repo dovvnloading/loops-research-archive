@@ -136,7 +136,7 @@ export class FractalEngine {
     if (this.disposed) return;
     const bounds = this.canvas.getBoundingClientRect();
     const quality = this.state.quality;
-    const base = quality === 'high' ? 1 : quality === 'balanced' ? 0.8 : quality === 'low' ? 0.52 : this.autoScale;
+    const base = quality === 'high' ? 1 : quality === 'balanced' ? 0.8 : quality === 'low' ? 0.52 : volumeScene(this.state.scene)&&this.refinement===2 ? Math.max(.78,this.autoScale) : this.autoScale;
     let ratio = Math.min(window.devicePixelRatio || 1, quality === 'high' ? 2 : 1.5) * base;
     const maxPixels = quality === 'high' ? 2_400_000 : quality === 'low' ? 350_000 : 1_000_000;
     // Render interaction previews first; recover spatial detail after input stops.

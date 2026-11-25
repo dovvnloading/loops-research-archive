@@ -34,7 +34,7 @@ export function estimate(s: EngineState,p: Vec3,iterations=s.iterations): number
     for(let i=0;i<Math.min(40,iterations);i++){
       z=z.map(x=>2*Math.max(-1,Math.min(1,x))-x) as Vec3;
       const f=Math.max(1,Math.min(4,1/Math.max(norm(z)**2,1e-5)));
-      z=add(mul(z,scale*f),c);dr=dr*f*Math.abs(scale)+1;
+      z=add(mul(z,scale*f),c);dr=Math.min(1e30,dr*f*Math.abs(scale)+1);
     }
     return norm(z)/dr*.5;
   }
@@ -43,7 +43,7 @@ export function estimate(s: EngineState,p: Vec3,iterations=s.iterations): number
     for(let i=0;i<Math.min(64,iterations);i++){
       r=Math.hypot(x,y,z,w);
       if(r>s.bailout)return .5*r*Math.log(r)/Math.max(dr,1e-12);
-      dr*=Math.max(2*r,1e-6);
+      dr=Math.min(1e30,dr*Math.max(2*r,1e-6));
       [x,y,z,w]=[x*x-y*y-z*z-w*w+s.julia[0],2*x*y+s.julia[1],2*x*z+.18,2*x*w];
     }
     r=Math.hypot(x,y,z,w);
@@ -57,7 +57,7 @@ export function estimate(s: EngineState,p: Vec3,iterations=s.iterations): number
     if(r<1e-7){z=[...p];continue;}
     const theta=Math.acos(Math.max(-1,Math.min(1,z[2]/r)))*power;
     const phi=Math.atan2(z[1],z[0])*power;
-    dr=power*r**(power-1)*dr+1;
+    dr=Math.min(1e30,power*r**(power-1)*dr+1);
     const zr=r**power;
     z=add([zr*Math.sin(theta)*Math.cos(phi),zr*Math.sin(theta)*Math.sin(phi),zr*Math.cos(theta)],p);
   }
@@ -80,7 +80,7 @@ export function travel(s: EngineState,direction: Vec3,amount: number): Camera {
       // Allow retreat from a point very close to (or numerically on) a surface.
       const probe=Math.min(remaining,Math.max(floor*8,1e-5));
       const q=add(p,mul(dir,probe));
-      if(clearanceAt(s,q)<=Math.max(d,floor*3))break;
+      if(norm(q)>14||clearanceAt(s,q)<=Math.max(d,floor*3))break;
       p=q;remaining-=probe;continue;
     }
     const step=Math.min(remaining,d*.45,.5);
@@ -91,6 +91,7 @@ export function travel(s: EngineState,direction: Vec3,amount: number): Camera {
   return {...s.camera,position:p};
 }
 export function dolly(s: EngineState,multiplier: number,x=0,y=0): Camera {
+  if(!Number.isFinite(multiplier)||multiplier<=0||multiplier===1)return s.camera;
   const p=eye(s.camera),d=clearanceAt(s,p);
   const direction=ray(s.camera,x,y);
   const amount=Math.min(3,Math.max(d,precisionFloor(p)*12)*Math.abs(Math.log(multiplier))*4);

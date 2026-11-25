@@ -22,6 +22,9 @@ export const CURATED: ScenePreset[] = [
   {...PRESETS[0],id:'cathedral',name:'Cathedral',subtitle:'Power 12 · Silver',state:{...PRESETS[0].state,power:12,palette:'mono',camera:{yaw:1.6,pitch:.28,distance:3.5}}},
   {...PRESETS[1],id:'folded',name:'Folded space',subtitle:'Mandelbox · Glacier',state:{...PRESETS[1].state,palette:'glacier'}},
   {...PRESETS[2],id:'fourth',name:'Fourth dimension',subtitle:'Quaternion · Violet',state:{...PRESETS[2].state,palette:'violet',slice:.2}},
+  {...PRESETS[0],id:'bulb-descent',name:'Surface descent',subtitle:'Mandelbulb · close flight',state:{...PRESETS[0].state,camera:{yaw:.35,pitch:.18,distance:3.6,position:[.3810285605586059,.20220481498623247,1.043832374608493]},showGrid:false,detail:.85}},
+  {...PRESETS[1],id:'box-cavern',name:'Into the folds',subtitle:'Mandelbox · close flight',state:{...PRESETS[1].state,camera:{yaw:.65,pitch:.35,distance:5.3,position:[.7767875104338589,.46853262573187776,1.0218140164922487]},iterations:12,showGrid:false,detail:.85}},
+  {...PRESETS[0],id:'bulb-micro',name:'Microstructure',subtitle:'Mandelbulb · deep flight',state:{...PRESETS[0].state,camera:{yaw:.35,pitch:.18,distance:3.6,position:[.36865741643119526,.19563967743910538,1.0099414748496738]},showGrid:false,detail:1}},
   {...PRESETS[3],id:'seahorse',name:'Seahorse valley',subtitle:'Mandelbrot · 640 iterations',state:{scene:'mandelbrot',center:[-.7435,.1314],scale:.006,iterations:640,palette:'ember'}},
   {...PRESETS[3],id:'period27',name:'Period 27',subtitle:'The airplane tuning cascade',kind:'RESEARCH ATLAS',state:{scene:'mandelbrot',center:[-1.786429858055761,0],scale:.0012,iterations:768,palette:'glacier'}},
 ];
