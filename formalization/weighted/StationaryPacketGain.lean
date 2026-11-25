@@ -276,10 +276,13 @@ theorem precritical_mixed_cap (Z wD wO D O M L E : ℝ)
 /-- A three-quarter terminal cap on the excluded orientation
 class leaves a positive auxiliary fraction after small losses. -/
 theorem precritical_auxiliary_fraction (W w Z E Ez lam : ℝ)
+    (hW : 0 ≤ W)
     (hpart : W ≤ w+Z+E)
     (hcap : Z ≤ 3*(1+lam)*W/4+Ez)
     (hscale : E+Ez ≤ W/16) (hlam : lam*W ≤ W/16) :
     W/8 ≤ w := by
+  have hc : Z ≤ 3*W/4 + 3*(lam*W)/4 + Ez := by
+    nlinarith only [hcap]
   linarith
 
 /-- Strict integrated response with one-eighth auxiliary fraction.
