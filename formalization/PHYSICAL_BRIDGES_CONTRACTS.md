@@ -642,6 +642,21 @@ combinatorics, not analytic or native geometric realization. Selected
 deep contact, host/fine-side realization, directed retained occurrences
 and native terminality integration remain open. No ledger status changes.
 
+The [suffix-anchor response](../research/independent_audits/stationary_transport_attack_20261124/SUFFIX_ANCHOR_RESPONSE.md)
+constructs full old-proper fine atoms by the commuting immersion/cover
+square, extends critical saturation by degree-matched contour squares,
+and applies signed raw-gap counts at every suffix. Either a distinct
+auxiliary physical window exists or backward critical origin exclusion
+forces the selected depth-h carrier contact on the positively oriented
+class. Combined with the two-bank response this gives a conditional
+O_b(R+V+1) bound at explicit terminal scale 1/(64N), with N=h+12b*2^h.
+Final orientation (or an extra singleton step), the corrected geometric
+marking and exact saturated graph/host realization, relative continuation
+and ambient terminality remain explicit requirements. The [finite
+checker](../research/independent_audits/stationary_transport_attack_20261124/check_suffix_anchor_response.py) passed 146,402 local cases; the new two Lean declarations
+check only the finite backward and strict-response algebra, pending CI.
+No native ledger promotion.
+
 This checker establishes finite rational endpoint-cover and degree-budget
 certificates and rejects invalid accounting. It does not construct native
 exits. The stationary hypotheses still need to supply one eligible actual

@@ -214,4 +214,54 @@ theorem auxiliary_response_at_scale (W E D eta K : ℝ)
   rw [hf]
   linarith
 
+/-- If every backward critical step either remains critical or has a
+different raw auxiliary window, terminal criticality gives the entire
+critical itinerary or at least one auxiliary. The geometry producing
+hstep is the suffix-anchor argument, not a theorem of this finite layer. -/
+theorem suffix_backward_or_auxiliary {L : Type*} (a : ℕ → L)
+    (c : L) (aux : ℕ → Prop) (n : ℕ) (hlast : a n = c)
+    (hstep : ∀ j < n, a (j+1) = c → a j = c ∨ aux j) :
+    (∀ j ≤ n, a j = c) ∨ ∃ j < n, aux j := by
+  classical
+  by_cases hex : ∃ j < n, aux j
+  · exact Or.inr hex
+  · left
+    have hb : ∀ k ≤ n, a (n-k) = c := by
+      intro k
+      induction k with
+      | zero => intro _; simpa using hlast
+      | succ k ih =>
+        intro hk
+        have hk' : k ≤ n := by omega
+        have hi : n-(k+1) < n := by omega
+        have heq : n-(k+1)+1 = n-k := by omega
+        have hc : a (n-(k+1)+1) = c := by
+          rw [heq]
+          exact ih hk'
+        rcases hstep (n-(k+1)) hi hc with hp | ha
+        · exact hp
+        · exact False.elim (hex ⟨_, hi, ha⟩)
+    intro j hj
+    have heq : n-(n-j) = j := by omega
+    simpa only [heq] using hb (n-j) (by omega)
+
+/-- Explicit positive strict-response parameter when at least half of
+the input has a separate physical auxiliary window. The series premise
+and bounded output budget are supplied by the written proof. -/
+theorem suffix_series_strict_response (W G w P B D E N : ℝ)
+    (hW : 0 < W) (hN : 0 < N) (hB : 0 < B) (hP : 0 ≤ P)
+    (hfrac : W/2 ≤ w) (hcap : B ≤ (2*N)*W)
+    (hgood : W ≤ G+E) (hadd : G-w+P ≤ D)
+    (hseries : w*(P+B) ≤ P*B) (hscale : E ≤ W/(64*N)) :
+    W+W/(64*N) < D := by
+  have hK : 0 < 2*N := by positivity
+  have hf : (1/2 : ℝ)*W ≤ w := by linarith
+  have hr := auxiliary_fraction_response W G w P B D E (1/2) (2*N)
+    hW (by norm_num) hK hB hP hf hcap hgood hadd hseries
+  have he : (1/2 : ℝ)^2*W/(2*N) = 8*(W/(64*N)) := by
+    field_simp [ne_of_gt hN] <;> ring
+  rw [he] at hr
+  have hp : 0 < W/(64*N) := by positivity
+  linarith
+
 end LoopsStationaryPacketGain
