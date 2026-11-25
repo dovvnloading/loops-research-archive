@@ -148,6 +148,54 @@ def latest_bank_checks():
     return cases, equalities
 
 
+def canonical_direction_checks():
+    checked = 0
+    # Signed crossing telescopes even for arbitrarily interleaved
+    # inward/outward crossings of each raw component.
+    for n in range(11):
+        for bits in product(range(2), repeat=n+1):
+            for sign in (-1, 1):
+                assert sum(sign*(bits[j]-bits[j+1]) for j in range(n)) == sign*(bits[0]-bits[-1])
+                checked += 1
+    # At most one anchor plus total +1 forces a unique positive one.
+    for n in range(1, 9):
+        for signs in product((-1, 1), repeat=n):
+            for chosen in range(n):
+                active = [j == chosen for j in range(n)]
+                if sum(signs[j] for j in range(n) if active[j]) == 1:
+                    assert signs[chosen] == 1
+                    assert sum(active) == 1
+                checked += 1
+    # Actual cyclic order of positive bases. Use two distinct
+    # representative positions per marked block so that both
+    # endpoints can lie in the same physical limb.
+    for q in range(3, 15):
+        for start in range(2*q):
+            for span in range(1, 2*q):
+                end = (start+span) % (2*q)
+                interior = {(start+j) % (2*q) for j in range(1, span)}
+                for k in range(1, q-1):
+                    if not {2*k, 2*k+1} <= interior:
+                        continue
+                    if start//2 == q-1:
+                        assert {0, 1} <= interior
+                    if 0 in (start//2, end//2) and not {2*q-2, 2*q-1} <= interior:
+                        assert start//2 == 0 and end//2 != 0
+                    checked += 1
+    for b in range(1, 65):
+        for h in range(65):
+            e = max(0, (h+b)//b-1)
+            assert h+1 <= (1+e)*b
+            assert h+1-b <= e*b
+            if e:
+                assert h+1 > e*b
+            if h >= b:
+                assert e >= 1
+            checked += 1
+    assert checked == 30130
+    return checked
+
+
 def main():
     cases, stays = partial_inverse_models()
     shifts = shift_checks()
@@ -157,7 +205,8 @@ def main():
     print(f"PASS: {endpoint_census_checks()} exact endpoint census and birth-budget cases")
     cases, equalities = latest_bank_checks()
     print(f"PASS: {cases} latest-bank cases, including {equalities} exact budget equalities")
-    print("Scope: finite orbit, endpoint census and energy-weight algebra only.")
+    print(f"PASS: {canonical_direction_checks()} crossing, cyclic-order and one-sided birth cases")
+    print("Scope: finite orbit, endpoint census, orientation and energy-weight algebra only.")
 
 
 if __name__ == "__main__":
