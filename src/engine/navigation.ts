@@ -1,4 +1,5 @@
 import type { EngineState, SceneId } from '../types';
+import { projection } from '../lib/controls.ts';
 
 export type Vec3 = [number, number, number];
 type Camera = EngineState['camera'];
@@ -14,9 +15,9 @@ export function basis(c: Camera) {
   return {forward,right,up:cross(right,forward)};
 }
 export function eye(c: Camera): Vec3 {return c.position ? [...c.position] : mul(basis(c).forward,-c.distance);}
-export function ray(c: Camera,x: number,y: number): Vec3 {
+export function ray(c: Camera,x: number,y: number, lens=.97): Vec3 {
   const {forward,right,up}=basis(c);
-  return unit(add(forward,add(mul(right,x*.97),mul(up,y*.97))));
+  return unit(add(forward,add(mul(right,x*lens),mul(up,y*lens))));
 }
 // Conservative numerical floors, not a geometric error certificate.
 export type VolumeMode = 'gpu' | 'float64';
@@ -104,13 +105,13 @@ export function travel(s: EngineState,direction: Vec3,amount: number): Camera {
 export function dolly(s: EngineState,multiplier: number,x=0,y=0): Camera {
   if(!Number.isFinite(multiplier)||multiplier<=0||multiplier===1)return s.camera;
   const p=eye(s.camera),d=clearanceAt(s,p);
-  const direction=ray(s.camera,x,y);
-  const amount=Math.min(3,Math.max(d,navigationFloor(s,p)*12)*Math.abs(Math.log(multiplier))*4);
+  const direction=ray(s.camera,x,y,projection(s.controls));
+  const amount=Math.min(3,Math.max(d,navigationFloor(s,p)*12)*Math.abs(Math.log(multiplier))*4*s.controls.flightSpeed);
   return travel(s,mul(direction,multiplier<1?1:-1),amount);
 }
 export function flightStep(s: EngineState,key: string): Camera {
   const {forward,right,up}=basis(s.camera);
   const dirs:Record<string,Vec3>={w:forward,s:mul(forward,-1),a:mul(right,-1),d:right,q:mul(up,-1),e:up};
   const dir=dirs[key];if(!dir)return s.camera;
-  return travel(s,dir,Math.min(.6,Math.max(clearanceAt(s,eye(s.camera)),navigationFloor(s,eye(s.camera))*12)*.55));
+  return travel(s,dir,Math.min(.6,Math.max(clearanceAt(s,eye(s.camera)),navigationFloor(s,eye(s.camera))*12)*.55*s.controls.flightSpeed));
 }

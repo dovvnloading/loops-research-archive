@@ -7,16 +7,21 @@ void main() {
 }`;
 
 const palette = `
+uniform float uGamma;
+uniform float uContrast;
+uniform float uSaturation;
 vec3 palette(float t) {
   if (uPalette == 1) return mix(vec3(0.18,0.025,0.018),vec3(1.0,0.73,0.36),clamp(t,0.0,1.0));
   if (uPalette == 2) return mix(vec3(0.12,0.055,0.22),vec3(0.81,0.73,1.0),clamp(t,0.0,1.0));
   if (uPalette == 3) return vec3(0.12+0.82*clamp(t,0.0,1.0));
-  return mix(vec3(0.075,0.20,0.20),vec3(0.85,0.93,0.87),clamp(t,0.0,1.0));
+  return mix(vec3(0.055,0.105,0.23),vec3(0.73,0.84,1.0),clamp(t,0.0,1.0));
 }
 float hash21(vec2 p) { return fract(sin(dot(p,vec2(127.1,311.7)))*43758.5453); }
 vec3 finishColor(vec3 color) {
   color = vec3(1.0)-exp(-max(color,vec3(0.0))*uExposure);
-  color = pow(color,vec3(1.0/2.2));
+  color = pow(color,vec3(1.0/uGamma));
+  color = clamp((color-0.5)*uContrast+0.5,0.0,1.0);
+  color = clamp(mix(vec3(dot(color,vec3(0.2126,0.7152,0.0722))),color,uSaturation),0.0,1.0);
   return color + (hash21(gl_FragCoord.xy)-0.5)/255.0;
 }
 `;
@@ -27,6 +32,10 @@ out vec4 outColor;
 uniform vec2 uResolution;
 uniform vec3 uCamera;
 uniform vec3 uEye;
+uniform float uProjection;
+uniform vec3 uKeyLight;
+uniform float uLightIntensity;
+uniform float uAmbientIntensity;
 uniform int uScene;
 uniform int uIterations;
 uniform int uPalette;
@@ -137,9 +146,9 @@ void main() {
   vec3 forward=-vec3(sin(uCamera.x)*cos(uCamera.y),sin(uCamera.y),cos(uCamera.x)*cos(uCamera.y));
   vec3 right=normalize(cross(forward,vec3(0,1,0)));
   vec3 up=cross(right,forward);
-  vec3 rd=normalize(forward+0.97*(uv.x*right+uv.y*up));
-  vec3 color=vec3(0.008,0.014,0.017);
-  color+=vec3(0.007,0.011,0.011)*exp(-3.0*dot(uv,uv));
+  vec3 rd=normalize(forward+uProjection*(uv.x*right+uv.y*up));
+  vec3 color=vec3(0.008,0.012,0.022);
+  color+=vec3(0.007,0.009,0.018)*exp(-3.0*dot(uv,uv));
   float radius=uScene==1 ? 6.0 : max(1.55,pow(2.0,1.0/(max(uPower,2.0)-1.0))+0.05);
   if(uScene==2) radius=max(1.55,0.5*(1.0+sqrt(1.0+4.0*length(vec4(uJuliaHi,0.18,0.0))))+0.05);
   float b=dot(ro,rd), disc=b*b-dot(ro,ro)+radius*radius;
@@ -162,7 +171,7 @@ void main() {
   if(hit) {
     vec3 p=ro+rd*travel;
     vec3 n=normalAt(p,epsilon*1.5);
-    vec3 key=normalize(vec3(-2.5,3.5,4.0));
+    vec3 key=normalize(uKeyLight);
     vec3 rim=normalize(vec3(3.0,1.0,-2.0));
     float diffuse=max(dot(n,key),0.0);
     float ao=ambientOcclusion(p,n,epsilon);
@@ -170,15 +179,15 @@ void main() {
     float orbit=clamp(exp(-3.5*trap),0.0,1.0);
     float material=clamp(0.54+(0.06+0.32*uTrap)*sin(trap*8.0)+0.18*n.y,0.0,1.0);
     vec3 base=palette(material);
-    if(uPalette==0) base=mix(base,vec3(0.72,0.51,0.27),orbit*uTrap*0.48);
+    if(uPalette==0) base=mix(base,vec3(0.34,0.48,0.79),orbit*uTrap*0.30);
     float specular=pow(max(dot(n,normalize(key-rd)),0.0),38.0);
     float edge=pow(1.0-max(dot(n,-rd),0.0),3.5);
     float headlight=max(dot(n,-rd),0.0);
     float nearLight=1.0-smoothstep(0.02,0.65,travel);
-    color=base*(0.16*ao+diffuse*shade*1.15*ao+headlight*nearLight*0.65);
-    color+=vec3(0.78,0.9,0.94)*specular*shade*0.34;
+    color=base*(0.16*ao*uAmbientIntensity+diffuse*shade*1.15*ao*uLightIntensity+headlight*nearLight*0.65);
+    color+=vec3(0.78,0.9,0.94)*specular*shade*0.34*uLightIntensity;
     color+=palette(0.75)*pow(max(dot(n,rim),0.0),2.0)*0.22*ao;
-    color+=vec3(0.20,0.32,0.30)*edge*0.30;
+    color+=vec3(0.24,0.30,0.44)*edge*0.30;
     color*=mix(0.8,1.0,ao);
   } else if(uGrid && rd.y<-0.001) {
     float t=(-1.35-ro.y)/rd.y;
@@ -189,7 +198,7 @@ void main() {
       vec2 grid=abs(fract(coord-0.5)-0.5)/derivative;
       float line=1.0-min(min(grid.x,grid.y),1.0);
       float fade=exp(-0.14*dot(point.xz,point.xz))*exp(-0.05*t);
-      color+=vec3(0.025,0.055,0.052)*line*fade;
+      color+=vec3(0.025,0.043,0.072)*line*fade;
     }
   }
   color*=1.0-0.3*smoothstep(0.25,1.2,length(uv));
@@ -205,6 +214,9 @@ uniform vec2 uCenterLo;
 uniform vec2 uJuliaHi;
 uniform vec2 uJuliaLo;
 uniform float uScale;
+uniform float uBandFrequency;
+uniform float uBandPhase;
+uniform float uPlaneBailout;
 uniform int uScene;
 uniform int uIterations;
 uniform int uPalette;
@@ -257,12 +269,12 @@ void main() {
     mag2=zx.x*zx.x+zy.x*zy.x;
     orbit=min(orbit,abs(zy.x)+0.05*abs(zx.x));
     count=float(i);
-    if(mag2>256.0) { escaped=true; break; }
+    if(mag2>uPlaneBailout*uPlaneBailout) { escaped=true; break; }
   }
-  vec3 color=vec3(0.008,0.016,0.018);
+  vec3 color=vec3(0.008,0.012,0.022);
   if(escaped) {
     float smoothN=count+1.0-log2(max(log2(max(sqrt(mag2),1.00001)),0.0001));
-    float bands=0.5+0.5*cos(smoothN*0.21+0.15);
+    float bands=0.5+0.5*cos(smoothN*uBandFrequency+uBandPhase);
     float light=0.22+0.78*bands;
     color=palette(light);
     color*=0.25+0.75*(1.0-exp(-smoothN*0.07));
@@ -274,9 +286,9 @@ void main() {
     vec2 q=p/spacing;
     vec2 grid=abs(fract(q-0.5)-0.5)/max(fwidth(q),vec2(0.00001));
     float line=1.0-min(min(grid.x,grid.y),1.0);
-    color+=vec3(0.018,0.033,0.032)*line;
+    color+=vec3(0.018,0.028,0.049)*line;
     vec2 axes=abs(p)/max(fwidth(p),vec2(0.0000001));
-    color+=vec3(0.07,0.12,0.10)*(1.0-min(min(axes.x,axes.y),1.0));
+    color+=vec3(0.07,0.10,0.17)*(1.0-min(min(axes.x,axes.y),1.0));
   }
   outColor=vec4(finishColor(color),1.0);
 }`;
@@ -290,6 +302,8 @@ uniform float uScale;
 uniform vec3 uCamera;
 uniform int uIterations;
 uniform float uBailout;
+uniform float uProjection;
+uniform float uReliefHeight;
 out vec3 vPosition;
 out float vHeight;
 out float vOrbit;
@@ -313,7 +327,7 @@ void main() {
     float smoothN=max(0.0,n+1.0-log2(max(log2(max(length(z),1.0001)),0.0001)));
     h=min(0.9,log2(1.0+smoothN)*0.17);
   }
-  vec3 pos=vec3(aPosition.x,(h-0.48)*1.2,-aPosition.y);
+  vec3 pos=vec3(aPosition.x,(h-0.48)*1.2*uReliefHeight,-aPosition.y);
   vPosition=pos;
   vHeight=h;
   vOrbit=orbit;
@@ -326,8 +340,8 @@ void main() {
   vec3 relative=pos-eye;
   float depth=dot(relative,forward);
   float zNear=0.05, zFar=40.0;
-  gl_Position=vec4(dot(relative,right)/(uResolution.x/uResolution.y*0.54),
-    dot(relative,up)/0.54, (zFar+zNear)/(zFar-zNear)*depth-2.0*zFar*zNear/(zFar-zNear),depth);
+  gl_Position=vec4(dot(relative,right)/(uResolution.x/uResolution.y*0.54*uProjection/0.97),
+    dot(relative,up)/(0.54*uProjection/0.97), (zFar+zNear)/(zFar-zNear)*depth-2.0*zFar*zNear/(zFar-zNear),depth);
 }`;
 
 export const landscapeFragment = `#version 300 es
@@ -337,6 +351,10 @@ in vec3 vPosition;
 in float vHeight;
 in float vOrbit;
 in vec2 vUv;
+uniform vec3 uKeyLight;
+uniform float uLightIntensity;
+uniform float uAmbientIntensity;
+uniform float uContourDensity;
 uniform int uPalette;
 uniform float uExposure;
 uniform float uTrap;
@@ -345,11 +363,11 @@ ${palette}
 void main() {
   vec3 normal=normalize(cross(dFdx(vPosition),dFdy(vPosition)));
   if(normal.y<0.0) normal=-normal;
-  float light=0.22+0.9*max(dot(normal,normalize(vec3(-1,3,2))),0.0);
+  float light=0.22*uAmbientIntensity+0.9*uLightIntensity*max(dot(normal,normalize(uKeyLight)),0.0);
   vec3 color=palette(0.12+vHeight*0.85)*light;
   color=mix(color,palette(0.95)*light,exp(-vOrbit*4.0)*uTrap*0.25);
-  float contour=abs(fract(vHeight*20.0)-0.5)/max(fwidth(vHeight*20.0),0.02);
-  color*=0.78+0.22*clamp(contour,0.0,1.0);
+  float contour=abs(fract(vHeight*uContourDensity)-0.5)/max(fwidth(vHeight*uContourDensity),0.02);
+  if(uContourDensity>0.0) color*=0.78+0.22*clamp(contour,0.0,1.0);
   if(uGrid) {
     vec2 grid=abs(fract(vUv*6.0-0.5)-0.5)/max(fwidth(vUv*6.0),vec2(0.0001));
     color+=palette(0.9)*0.08*(1.0-min(min(grid.x,grid.y),1.0));
