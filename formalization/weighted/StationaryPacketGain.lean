@@ -210,7 +210,8 @@ theorem auxiliary_response_at_scale (W E D eta K : ℝ)
   have he : eta^2*W/K = 2*(eta^2*W/(2*K)) := by
     field_simp [ne_of_gt hK] <;> ring
   have hf : (1+eta^2/(2*K))*W = W+eta^2*W/(2*K) := by ring
-  rw [hf, he] at *
+  rw [he] at hresponse
+  rw [hf]
   linarith
 
 end LoopsStationaryPacketGain
