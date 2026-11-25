@@ -1666,6 +1666,19 @@
         "one_side_birth_excess",
         "one_side_birth_at_bound",
         "free_response_charge"
+      ],
+      "formalization/weighted/StationaryDeckSeparator.lean": [
+        "swapped_interval_fixed",
+        "unique_fixed_point_on_arc",
+        "fiber_hit_lifts",
+        "connected_image_separator",
+        "deck_anchors_separate",
+        "windows_power",
+        "energy_width_charge",
+        "weighted_gain_threshold",
+        "majority_double_gain",
+        "collision_after_escape",
+        "gap_energy_lower"
       ]
     },
     "checks": [
