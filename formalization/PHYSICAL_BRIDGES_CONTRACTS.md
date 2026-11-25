@@ -865,6 +865,32 @@ three new algebra declarations await kernel CI. The prior angular
 guard lemma's nonnegativity proof was corrected after its CI failure.
 No ledger promotion.
 
+The [local near-bank cap](../research/independent_audits/stationary_transport_attack_20261124/LOCAL_BANK_CAP.md)
+localizes remote-probe auxiliary gaps using the actual proper
+middle old-limit chart: both gap ends in the far corridor would
+both be original endpoint times, impossible for a parent with
+one near-bank end. A cap over a strictly interior remote probe
+must traverse one whole far-corridor boundary limb, giving a
+near-bank target crest. Split each such fixed chart packet into
+at most two actual Borel sublaminations, so its total width is
+<=2 M_(c^+). This supplies the local cap in the nonshort median
+proof, and the short outside saturation probe can be chosen in
+the near bank. The guard-free bounded program now yields
+M_(c^+)<=C_b(R+V+1+Delta_loc), Delta_loc=M_(c^+)-M_c, c=b+12,
+c^+=c+h+6. Each localized direction of a source input with a
+fixed ending atom admits the one-sided proper-middle angular
+comparison even for nonshort leaves, bounded by 3M_c+40(V+1)
+because its terminal padding limb is itself near-bank. Hence
+W(input)<=(6k+1)M_c+80k(V+1)+1/2 for the stated localized plus
+leafwise over-critical typing. No global remote supremum or
+terminal guard remains in this conditional source-width route;
+the finite local bank expansion gap is not bounded. Exact
+geometry, initial witness and downstream typing remain open.
+[Finite checker](../research/independent_audits/stationary_transport_attack_20261124/check_local_bank_cap.py); two algebra declarations await CI.
+All seven workflows passed at f1eabb4, including 622,077 exact
+guard-free jump checks and the corrected prior guard lemma.
+No ledger promotion.
+
 This checker establishes finite rational endpoint-cover and degree-budget
 certificates and rejects invalid accounting. It does not construct native
 exits. The stationary hypotheses still need to supply one eligible actual

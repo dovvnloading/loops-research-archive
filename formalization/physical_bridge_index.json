@@ -1719,7 +1719,9 @@
         "angular_guard_active_charge",
         "one_sided_ratio_envelope",
         "four_limb_padding",
-        "remote_square_root_absorption"
+        "remote_square_root_absorption",
+        "localized_input_bank_cap",
+        "remote_probe_local_cap"
       ]
     },
     "checks": [
@@ -1736,7 +1738,8 @@
       "research/independent_audits/stationary_transport_attack_20261124/check_anchored_phase_free.py",
       "research/independent_audits/stationary_transport_attack_20261124/check_anchored_short_jump.py",
       "research/independent_audits/stationary_transport_attack_20261124/check_angular_anchored_envelope.py",
-      "research/independent_audits/stationary_transport_attack_20261124/check_guard_free_angular_jump.py"
+      "research/independent_audits/stationary_transport_attack_20261124/check_guard_free_angular_jump.py",
+      "research/independent_audits/stationary_transport_attack_20261124/check_local_bank_cap.py"
     ],
     "obligations": [
       "KKL_STATIONARY_FINAL_FIXED_COMPONENT_EXIT",

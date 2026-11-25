@@ -510,4 +510,19 @@ theorem remote_square_root_absorption (M A E Q eps : ℝ)
   have h := mul_le_mul_of_nonneg_right hsmall hM
   linarith
 
+/-- A fixed-control source family is covered by two actual
+directional localized packets per module and one over-critical
+packet. The one-sided angular replacement supplies each cap. -/
+theorem localized_input_bank_cap (W k M V E : ℝ)
+    (h : W ≤ 2*k*(3*M+40*(V+1))+M+E) :
+    W ≤ (6*k+1)*M+80*k*(V+1)+E := by
+  nlinarith only [h]
+
+/-- A probe packet split into two near-bank crest subfamilies
+costs at most twice the local cap. Only their actual disjoint
+support decomposition licenses the width bound in hpart. -/
+theorem remote_probe_local_cap (Q Ql Qr M : ℝ)
+    (hpart : Q ≤ Ql+Qr) (hl : Ql ≤ M) (hr : Qr ≤ M) :
+    Q ≤ 2*M := by linarith
+
 end LoopsStationaryPacketGain
