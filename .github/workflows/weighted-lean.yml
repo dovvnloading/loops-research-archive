@@ -10,11 +10,29 @@ on:
       - main
       - 'research/**'
     paths:
+      - '**/*.lean'
+      - 'formalization/weighted/lean-toolchain'
+      - 'formalization/weighted/lake-manifest.json'
+      - 'code/verify_lean_coverage.py'
+      - 'code/verify_physical_bridge_contracts.py'
+      - 'lakefile.toml'
+      - 'lake-manifest.json'
+      - 'lean-toolchain'
+      - 'code/verify_lean_frontier_sync.py'
       - 'formalization/weighted/**'
       - '*.lean'
       - '.github/workflows/weighted-lean.yml'
   pull_request:
     paths:
+      - '**/*.lean'
+      - 'formalization/weighted/lean-toolchain'
+      - 'formalization/weighted/lake-manifest.json'
+      - 'code/verify_lean_coverage.py'
+      - 'code/verify_physical_bridge_contracts.py'
+      - 'lakefile.toml'
+      - 'lake-manifest.json'
+      - 'lean-toolchain'
+      - 'code/verify_lean_frontier_sync.py'
       - 'formalization/weighted/**'
       - '*.lean'
       - '.github/workflows/weighted-lean.yml'
@@ -28,31 +46,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Require each weighted Lean module in default Lake targets
-        run: |
-          python - <<'PY'
-          from pathlib import Path
-          import tomllib
-
-          d = tomllib.loads(Path("formalization/weighted/lakefile.toml").read_text())
-          sources = {p.stem for p in Path("formalization/weighted").glob("*.lean")}
-          declared = {entry["name"] for entry in d["lean_lib"]}
-          defaults = set(d["defaultTargets"])
-          missing_declared = sorted(sources - declared)
-          missing_default = sorted(sources - defaults)
-          if missing_declared or missing_default:
-              raise SystemExit(
-                  f"Unregistered Lean sources: {missing_declared}; "
-                  f"omitted from Lake default targets: {missing_default}"
-              )
-          print(f"Every one of {len(sources)} weighted Lean files is a Lake default target.")
-          PY
-      - name: Reject proof holes or added axioms
-        run: |
-          if grep -En '(^|[^A-Za-z_])(sorry|admit|axiom)([^A-Za-z_]|$)' formalization/weighted/*.lean; then
-            echo 'Proof placeholders and custom axioms are prohibited'
-            exit 1
-          fi
+      - name: Require complete Lean source coverage and reject proof trust escapes
+        run: python3 -B code/verify_lean_coverage.py
       - name: Build mathlib-backed return theorem
         uses: leanprover/lean-action@v1
         with:
@@ -63,3 +58,5 @@ jobs:
           lint: 'false'
           use-github-cache: 'true'
           use-mathlib-cache: 'true'
+      - name: Audit transitive axioms of every weighted Lean declaration
+        run: python3 -B code/verify_lean_coverage.py --audit weighted

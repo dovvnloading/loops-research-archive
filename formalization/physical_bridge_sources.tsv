@@ -5,6 +5,7 @@ FirstReturn.lean	CLONE EDGE
 ImmersionMarkFinite.lean	CONTOUR-ESCAPE MARK SELECTED-ESCAPE
 LoopsFormal.lean	CLONE EDGE
 MandelbrotSpectrum.lean	FOURIER UNIFORM-TAIL
+NativeMarkSaturation.lean	NATIVE-FINITE
 Paper2Phase.lean	CLOCK ENDS
 Period27Dyadic.lean	CENTER
 Period27IntervalSound.lean	CENTER
@@ -46,13 +47,16 @@ code/mlc_common.py	EXPLORATION
 formalization/weighted/AtomCutDefect.lean	CUTS CREST
 formalization/weighted/AttachmentDefectLedger.lean	DEFECT
 formalization/weighted/CloneBounds.lean	CLONE EDGE
+formalization/weighted/ClonePolynomialRoots.lean	CLONE EDGE
 formalization/weighted/CloneRoot.lean	CLONE EDGE
 formalization/weighted/CloneRootRate.lean	CLONE EDGE
 formalization/weighted/FiniteMarkovCorrelation.lean	FINITE-CORRELATION CLONE-OBSERVABLE RANDOM-CLOCK
 formalization/weighted/FiniteMarkovFibers.lean	REAL-FIBERS
+formalization/weighted/FullCloneCharpoly.lean	CLONE EDGE
 formalization/weighted/FullCloneCorrelation.lean	CLONE-OBSERVABLE
 formalization/weighted/FullCloneEigen.lean	CLONE EDGE
 formalization/weighted/FullCloneEigenline.lean	CLONE EDGE
+formalization/weighted/FullCloneGapCollapse.lean	CLONE EDGE
 formalization/weighted/FullCloneMatrix.lean	CLONE EDGE
 formalization/weighted/FullClonePolynomial.lean	CLONE EDGE
 formalization/weighted/FullCloneRenewal.lean	CLONE-MARKOV RENEWAL-GAP AFFINE-CORRELATION NATIVE-CORRELATION

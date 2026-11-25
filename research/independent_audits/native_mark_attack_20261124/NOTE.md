@@ -1,9 +1,10 @@
 # Two component conventions, simple leaves, and the native finite action
 
 **24 November 2026.** Investigation of main `9340778fa59029e1bfba88639b03dfb63115cab3`.
-Written with OpenAI GPT-6 Astra Pro assistance. These are mathematical
-arguments and an exact finite replay, not a Lean formalization or independent
-human review.
+Written with OpenAI GPT-6 Astra Pro assistance. The continuum arguments
+remain written proofs and the native application imports the specified KKL
+results. The finite action has the Lean companion recorded below; no
+independent human review is asserted.
 
 ## 1. Results and trust boundary
 
@@ -475,3 +476,43 @@ The remaining independent questions are now more precise:
 
 The full `MARK`, global H1–H4, UPTCR, and MLC gates are not promoted by
 this note. No canonical ledger entry is changed.
+
+## Finite Lean companion, 25 November 2026
+
+[`NativeMarkSaturation.lean`](../../../NativeMarkSaturation.lean) adds the
+complete source-eligible finite grammar to the earlier cut-derived
+`ImmersionMarkFinite` model. It contains proofs for 191 distinct encoded
+states: 100 open arcs, including the ten punctured circles, 90 proper
+closed arcs, and the complete circle. It checks that one-step images
+remain in this grammar, all inputs saturate by the fifth step, and the
+ten original open atoms have exact first saturation times
+`[2,4,4,5,4,3,4,5,4,4]`. The four cases in which an image spans exactly
+one turn are checked separately: their open images are punctured and
+their closed images are complete.
+
+The same module checks the finite `q=2,b=2` limb census after the supplied
+physical identification: `K0,K2` belong to the critical limb, `K1` to the
+other limb, and the three-cycle images remain in the rotation window.
+Its conditional chain obstruction isolates the induction in Corollary
+6.1. The propagation premise must come from the stated source theorem;
+the formal proof does not supply a native Wave or its descendants. When
+instantiating the abstract predicate, include source eligibility so that
+invalid raw interval encodings represent no Wave claim.
+
+Run the pinned Lean toolchain from the repository root:
+
+```sh
+lake build NativeMarkSaturation
+```
+
+Each public theorem prints its axiom dependencies. The exact proof revision
+passed the [root build and transitive axiom audit](https://github.com/dovvnloading/loops-research-archive/actions/runs/45707763753);
+the [verification report](../../../formalization/LEAN_VERIFICATION_20261125.md)
+records the revision and complete coverage. The formalized part is
+finite contour bookkeeping and conditional logical propagation. The
+physical cut order, proper-path and homotopy arguments, native action
+identification, KKL Propositions 6.5--6.6 and A.14, and all width or
+all-scale conclusions retain their separately stated trust boundaries.
+
+This companion was prepared with OpenAI GPT-6 Astra Pro assistance.
+No independent human specialist review is asserted.

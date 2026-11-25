@@ -26,8 +26,8 @@ DECLARATION = re.compile(
 )
 
 
-def declaration_names(text):
-    """Skip strings, line comments and nested Lean block comments before indexing."""
+def lean_code(text):
+    """Mask strings and comments while preserving line numbers for source checks."""
     pieces = []
     start = 0
     token = re.compile(r'/-|--[^\n]*|"(?:\\.|[^"\\])*"', re.DOTALL)
@@ -45,7 +45,12 @@ def declaration_names(text):
                 start = marker.end()
         pieces.append(" " + "\n" * text.count("\n", match.start(), start))
     pieces.append(text[start:])
-    return set(DECLARATION.findall("".join(pieces)))
+    return "".join(pieces)
+
+
+def declaration_names(text):
+    """Index public theorem names using the shared Lean comment/string masking."""
+    return set(DECLARATION.findall(lean_code(text)))
 
 
 def source_files():
@@ -248,3 +253,4 @@ if __name__ == "__main__":
         main()
     except (ValueError, KeyError, OSError) as error:
         raise SystemExit(str(error))
+

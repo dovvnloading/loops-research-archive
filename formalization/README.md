@@ -159,14 +159,16 @@ A second, easily overlooked quantifier is now formal:
 `(2n+4)*(t_n-1)≤1` and, for every `ε>0`, some primitive
 clone has `1<t_n<1+ε`. Individual primitivity and strict gaps do
 not supply a uniform positive **Perron expansion factor** across
-arbitrarily long delays. The exact characteristic-polynomial determinant identity and
-algebraic simplicity have a
-[separate written cycle-cover proof](../research/independent_audits/clone_strict_spectrum_and_no_uniform_expansion_20261107.md).
-Together with Vieta's product formula and the Lean root bound, this
-written argument **also** establishes the all-delay leading-gap
-collapse bound `0<t_n-r_n≤1/(n+2)` (and `r_n/t_n→1`).
-The determinant/product part is **not** yet a `Matrix.charpoly`
-kernel proof; it is an explicit next formalization obligation.
+arbitrarily long delays. The exact characteristic polynomial,
+algebraic simplicity, diagonalizability, and Vieta modulus product now have
+[Lean proofs](weighted/FullCloneCharpoly.lean), using the
+[separable scalar polynomial](weighted/ClonePolynomialRoots.lean) and the
+existing renewal eigenvectors. [FullCloneGapCollapse.lean](weighted/FullCloneGapCollapse.lean)
+produces an actual nonleading eigenvalue at every delay with
+`0<t_n-‖μ‖<1/(n+2)`, and proves nonuniformity for every positive absolute
+or relative tolerance. The [verification audit](LEAN_VERIFICATION_20261125.md)
+records the exact build evidence. The sharper cubic asymptotic and physical
+probability-law realizations remain separate written results.
 
 All of this is **finite graph mathematics**, not a source-defined
 KKL critical-Wave or analytic MLC result. The native prime-end,
@@ -263,9 +265,9 @@ Paper 2's \(K(f)=J(f)\) hypothesis.
 
 ## Remaining formal obligations
 
-**General weighted return operators:** Exact integer first-return multiplicities and the base adjacency blocks are now kernel-checked. The all-n weighted return operator, its Perron equation, and its comparison to the published conventions still require distinct theorems.
+**General weighted return operators:** The explicit graph's integer first-return multiplicities, adjacency blocks, all-delay weighted operator, and Perron equation are kernel-checked. The remaining algebraic generalization is a source-typed nilpotent-Q Schur/first-return theorem for arbitrary finite cross-sections; physical source conventions still require their independent realization.
 
-**General spectral theorem:** The explicit cloned graph's weighted eigenvalue and maximal-complex-eigenvalue characterization are kernel-checked. The remaining nontrivial generalization is a source-typed nilpotent-Q Schur/first-return theorem for arbitrary finite cross-sections, plus formal strict spectral dominance and direct use of mathlib's spectral-radius API.
+**General spectral theorem:** The explicit clone's strict dominance, characteristic polynomial, simple spectrum, diagonalizability, and absolute/relative nonuniformity are kernel-checked. Remaining work includes mathlib's named spectral-radius API, the explicit stationary probability law, and the analytic cubic asymptotic.
 
 **Longer-term topology:** Paper 1's abstract covering-space arguments and Paper 3's prime ends and compacta cohomology are separate substantial formalization tasks. No open MLC gate has been closed by the finite graph work.
 

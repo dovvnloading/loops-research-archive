@@ -7,6 +7,26 @@ a testbed for checking proposed return-matrix conventions. No conclusion
 about actual Kahn–Kapiamba–Lyubich edge-incidence realizations, canonical
 WADs, renormalization estimates, or Mandelbrot local connectivity follows.
 
+## Lean closure, 25 November 2026
+
+The previously open formalization steps in this dated note now have
+kernel-checked companions:
+[scalar separability and exact Vieta product](../../formalization/weighted/ClonePolynomialRoots.lean),
+[actual-matrix characteristic polynomial, determinant, and diagonalizability](../../formalization/weighted/FullCloneCharpoly.lean),
+and [absolute and relative gap nonuniformity](../../formalization/weighted/FullCloneGapCollapse.lean).
+The actual eigenvector converse is reused from the earlier
+[renewal module](../../formalization/weighted/FullCloneRenewal.lean).
+The characteristic-polynomial proof uses separability and equal monic
+degrees; the cycle-cover proof below remains an independent written argument.
+
+The exact Lean gap statement produces, for each delay, an actual nonleading
+eigenvalue with `0<t_n-‖μ‖<1/(n+2)`; the maximum-modulus formulation below
+follows immediately because that maximum is at least the exhibited modulus.
+The modules also prove the corresponding tolerance-quantified absolute
+and relative nonuniformity. They do not define a maximum-spectrum sequence
+or formalize the later cubic asymptotic.
+[Verification evidence and remaining scope](../../formalization/LEAN_VERIFICATION_20261125.md).
+
 ## The direct scalar reduction
 
 For each delay n≥0, the actual directed graph in
@@ -96,12 +116,12 @@ contradicting `|μ|^(d-1)=1/d<1`. So the monic
 characteristic polynomial is squarefree; its `d` complex roots
 are distinct, giving a full simple spectrum and diagonalizability.
 
-The determinant/derivative and full diagonalizability statements are
-*written combinatorial/algebraic proofs*, not yet Lean
-`Matrix.charpoly` or `Matrix.IsDiag` theorems. They are
-independently tested at finite inputs by the deterministic
-[finite-field determinant regression](./verify_clone_strict_gap.py).
-The leading-eigenline uniqueness is **separately Lean-proved** below.
+The determinant, derivative nonvanishing, and diagonalizability statements
+now have the Lean proofs linked in the November 25 update. Diagonalizability
+is stated as the complex eigenspaces spanning the full vector space.
+The deterministic [finite-field determinant regression](./verify_clone_strict_gap.py)
+remains an independent finite check. The leading-eigenline uniqueness is
+also separately Lean-proved below.
 
 For geometric simplicity Lean additionally proves, in
 [FullCloneEigenline.lean](../../formalization/weighted/FullCloneEigenline.lean),
@@ -172,14 +192,15 @@ absolute or relative spectral gap**. This proves nonuniformity of
 spectral separation in the specific full cloned-graph family, not just
 of the leading eigenvalue's expansion factor.
 
-**Trust split:** the leading spectral strictness, eigenvalue equation,
-eigenline uniqueness, and root bound are Lean-kernel-checked. The
-all-n product identity, algebraic multiplicity accounting, and
-deduced quantitative gap-collapse theorem above presently use the
-written (fully elementary) cycle-cover characteristic-polynomial
-proof, which is *not* yet Lean-kernel-checked. The independent
-determinant regression exercises this unformalized link for many
-finite delays. This is not a native KKL `T_F` spectral-gap estimate.
+**Trust split:** leading strictness, the eigenvalue equation, eigenline
+uniqueness, root bound, exact characteristic polynomial, algebraic
+multiplicities, and product identity are now Lean-kernel-checked.
+The new gap theorem uses an actual nonleading eigenvalue witness at each
+delay and gives both tolerance-quantified nonuniformity statements.
+The displayed maximum-based sequence limits are mathematical corollaries
+of the explicit bound; the new Lean files do not define that sequence.
+The independent determinant regression remains supplementary. This is
+not a native KKL `T_F` spectral-gap estimate.
 
 The regression separately computes the non-leading eigenvalue modulus
 for small n:
@@ -194,8 +215,9 @@ These observations are **finite numerical diagnostics** illustrating
 the independently proved all-n bound `0<t_n-r_n≤1/(n+2)` above.
 The displayed numerical decay appears much faster than that crude
 universal bound; no sharper rate is claimed. The exact bound is a
-written theorem conditional on the separately proved characteristic
-polynomial, not a Lean determinant proof.
+consequence of the characteristic polynomial and product calculation.
+The November 25 Lean proof additionally supplies a strict witness bound
+at every delay, as described above.
 
 **Subsequent result, 2026-11-23.** The [renewal-clock proof](clone_renewal_clock_20261123.md)
 now identifies the actual subleading conjugate pair and proves
@@ -214,21 +236,22 @@ distinct part of the archive's work.
 cd formalization/weighted
 lake exe cache get
 lake build FullClonePolynomial FullCloneStrictGap FullCloneEigenline CloneRootRate
+lake build ClonePolynomialRoots FullCloneCharpoly FullCloneGapCollapse
 lake build
 cd ../..
 python research/independent_audits/verify_clone_strict_gap.py
 ```
 
-The pinned mathlib CI runs all modules with proof-hole and custom-axiom
-checks and reports `#print axioms` on the key theorems. The root
-research workflow runs the independent finite-field determinant
-regression. The exact determinant identity is documented with a
-written cycle-cover proof but is **not** yet formalized using the
-mathlib determinant or characteristic-polynomial API.
+The pinned mathlib CI builds every module and enforces a transitive
+axiom allowlist for every declaration. The root workflow also checks
+all standalone Lean sources and the independent determinant regression.
+[Exact verification evidence](../../formalization/LEAN_VERIFICATION_20261125.md).
 
-**Next relevant open task:** formalize the determinant equality,
-squarefreeness, complete diagonalizability and algebraic multiplicity
-in Lean, and separately characterize any
-uniform spectral estimate under actual source-defined geometric
-hypotheses. This finite graph work does not supply the missing native
-prime-end immersion/Wave bridge of Issue #40, or any MLC gate.
+**Next relevant open tasks:** formalize the cubic renewal asymptotic,
+the explicit stationary probability and physical measure realization,
+and any uniform estimate under independently proved source-defined
+geometric hypotheses. The native prime-end immersion/Wave interface
+and the global MLC gates retain their separate statuses.
+
+The November 25 formalization used OpenAI GPT-6 Astra Pro assistance.
+No independent human specialist review is asserted.

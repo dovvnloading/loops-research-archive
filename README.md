@@ -31,7 +31,7 @@ Research direction, synthesis, authorship, and public stewardship
 [**Reproduce results**](#reproduce-the-central-results) ·
 [**Contribute / review**](./CONTRIBUTING.md)
 
-**README updated 2026-11-24** · **Manuscript and ledger source lock 2026-07-27**
+**README updated 2026-11-25** · **Manuscript and ledger source lock 2026-07-27**
 
 </div>
 
@@ -601,6 +601,8 @@ The separate [root-topology theorem](./research/independent_audits/tip_interval_
 
 ## Proof evidence, Lean and reproducibility
 
+**November 25 verification pass:** the [complete finite marking module](./NativeMarkSaturation.lean) covers all 191 original open/closed/circle inputs, including exact saturation times and endpoint distinctions. The [verification audit](./formalization/LEAN_VERIFICATION_20261125.md) records the new spectral proofs, remaining analytic work, and the all-source build and transitive axiom checks. The CI audit checks every declaration in both Lean packages and all five standalone modules against the explicit foundational-axiom allowlist.
+
 The archive deliberately separates **checked finite arithmetic**, **paper-level mathematical interpretation**, **imported theory**, and **genuinely open geometry**.
 
 | Evidence layer | What is checked | What is *not* checked |
@@ -631,11 +633,15 @@ proves all other eigenvalues have smaller modulus, and
 proves geometric simplicity. However
 [CloneRootRate](./formalization/weighted/CloneRootRate.lean)
 proves `(2n+4)*(t_n-1)≤1`: primitivity does **not** ensure a
-uniform positive expansion factor as delay grows. A separate
-**written exact determinant/Vieta proof** further gives
-`0<t_n-r_n≤1/(n+2)` for the leading spectral gap and shows
-`r_n/t_n→1`—so even the strict gap is nonuniform in this
-graph family. The determinant/product step is not yet Lean-checked.
+uniform positive expansion factor as delay grows. The
+[scalar root proofs](./formalization/weighted/ClonePolynomialRoots.lean) and
+[actual-matrix characteristic polynomial](./formalization/weighted/FullCloneCharpoly.lean)
+now verify the exact determinant, algebraic simplicity, diagonalizability,
+and Vieta modulus product for every delay. The
+[gap-collapse theorem](./formalization/weighted/FullCloneGapCollapse.lean)
+then gives, for every n, an actual nonleading eigenvalue μ with
+`0<t_n-‖μ‖<1/(n+2)`, and proves that no positive absolute or relative
+spectral gap is uniform across the family.
 [Source, cycle-cover proof and exact regression](./research/independent_audits/clone_strict_spectrum_and_no_uniform_expansion_20261107.md).
 This settles an **internal finite spectral gap**, not a KL
 edge-incidence/prime-end realization, uniform WAD coercivity, or MLC.
