@@ -429,6 +429,38 @@ The native occurrence assertion and a uniform bound on this
 single response by R+V+1 remain open. The [finite Lean module](weighted/StationaryPrefixCharge.lean)
 formalizes the orbit and quadratic-weight algebra and is subject
 to the weighted kernel check; the conformal analysis is written.
+The twelve prefix theorems passed the weighted mathlib workflow
+at commit 1b7ec3aa59aa1943f5c5e260b630aae3f9804b0b; all seven
+workflows triggered at the subsequent CI-wiring head
+9f9cffa6b21df47119a986f9b4266185ba950d57 succeeded.
+
+The [stage-endpoint census](../research/independent_audits/stationary_transport_attack_20261124/STAGE_ENDPOINT_CENSUS.md)
+uses actual retained sequential windows and properness of the
+terminal covering projection to recover a physical endpoint on
+the original parent at every inner-ended stage, modulo zero
+width. If more than b stages have a physical critical-limb
+little-Julia endpoint, the records meet distinct final pulled
+components; each component accounts for at most b stages.
+The union of all possible stage components has total final
+peripheral degree at most b(3·2^h−2) for h<P, by the exact
+prefix census and at most one critical suffix arrow. Two
+physical records at distinct components (including original
+endpoint times) suffice for a proper exit; all-sheet metric
+push gives the uniform R-charge without a selected deep
+encounter or its calibration. At h=b+2 the remaining parents
+have at least three non-Julia-critical stages. Independently,
+the full-hull singleton-cut hypothesis at all preperiodic
+preimages of the dividing point bounds total (not only
+consecutive) critical visits of every carrier point by b
+before q; thus a chain stationary through 2b<q must have
+an actual interior window birth. This is not necessarily
+a selected deep or little-Julia hit. The grounded deep
+condenser also splits into a free internal separation
+cost and at most the full exterior width W(F); internal
+calibration remains open. The [finite stage-counting module](weighted/StationaryEndpointVisits.lean)
+isolates the occupancy, birth and degree-sum algebra;
+kernel status is determined by weighted CI. No native
+stationary or global gate is promoted.
 
 This checker establishes finite rational endpoint-cover and degree-budget
 certificates and rejects invalid accounting. It does not construct native
