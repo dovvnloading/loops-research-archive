@@ -750,6 +750,32 @@ downstream integration remain open. [Finite checker](../research/independent_aud
 three new Lean accounting declarations await kernel CI. All seven
 workflows passed at f32378d. No canonical ledger promotion.
 
+The [critical phase localization and selection](../research/independent_audits/stationary_transport_attack_20261124/CRITICAL_PHASE_LOCALIZATION.md)
+uses the native parabolic critical-cycle image condition and the
+actual saturated minimal dendrite hull: images of old critical
+hull arcs stay in the bounded BL_(-b)..BL_b bank. Refine the
+target cut set by the bank atom boundaries. Every competing
+directed cell pair then has a common actual whole near-critical
+crest atom: either a critical old-proper anchor contributes,
+or two phases with noncritical anchors force the cap through
+the omitted BL_1. The phase deficit is bounded by the union
+of critical-anchor and BL_1-crested target parents, and each
+conflict phase packet is uniformly controllable. An away parent
+whose positive primary crests BL_1 gives a distinct negative
+raw window by the zero signed sum at a critical end-atom probe.
+Finite optimal phase configurations may use all eligible
+actual windows, preserving disjoint supports with one choice
+per parent. A local exchange compares uncovered mass to
+pivotal competing mass with no other admitted candidate;
+duplicate eligible deck lifts of a singleton are always
+covered. The exact remaining native target is a response
+to sizeable pivotal near-critical conflicts and uniform
+ambient control, not generic crossing images.
+[Finite checker](../research/independent_audits/stationary_transport_attack_20261124/check_critical_phase_localization.py); two new accounting lemmas
+await CI. All seven workflows passed at 9f2408f, including
+1,981,536 finite phase-assembly regressions and three
+new Lean declarations. No canonical ledger promotion.
+
 This checker establishes finite rational endpoint-cover and degree-budget
 certificates and rejects invalid accounting. It does not construct native
 exits. The stationary hypotheses still need to supply one eligible actual

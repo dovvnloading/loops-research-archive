@@ -603,7 +603,7 @@ quadrilateral, Borel, and native
 geometric arguments are written
 mathematics; finite tests do not
 establish those hypotheses.
-Two finite accounting lemmas are
+Three finite accounting lemmas are
 added to StationaryPacketGain.lean.
 No canonical ledger promotion,
 native stationary closure or MLC

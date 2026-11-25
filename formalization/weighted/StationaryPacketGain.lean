@@ -370,4 +370,18 @@ theorem ambient_phase_deficit (W E B Delta sigma delta : ℝ)
   · linarith
   · linarith
 
+/-- Exact mass accounting for changing one phase in an optimal
+configuration. The actual Borel gained/lost parent sets are supplied
+by CRITICAL_PHASE_LOCALIZATION. -/
+theorem phase_exchange_balance (covered gain loss after : ℝ)
+    (hchange : after = covered+gain-loss) (hopt : after ≤ covered) :
+    gain ≤ loss := by
+  linarith
+
+/-- A configuration covering a fixed candidate selection cannot
+have greater uncovered width if the covered width is optimized. -/
+theorem optimized_phase_deficit_le_fixed (W best fixed : ℝ)
+    (h : fixed ≤ best) : W-best ≤ W-fixed := by
+  linarith
+
 end LoopsStationaryPacketGain

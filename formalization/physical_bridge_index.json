@@ -1707,7 +1707,9 @@
         "ambient_defect_bookkeeping",
         "alternating_pair_small",
         "phase_deficit_le_outside",
-        "ambient_phase_deficit"
+        "ambient_phase_deficit",
+        "phase_exchange_balance",
+        "optimized_phase_deficit_le_fixed"
       ]
     },
     "checks": [
@@ -1719,7 +1721,8 @@
       "research/independent_audits/stationary_transport_attack_20261124/check_precritical_response.py",
       "research/independent_audits/stationary_transport_attack_20261124/check_positive_crest_continuation.py",
       "research/independent_audits/stationary_transport_attack_20261124/check_ambient_shared_crest.py",
-      "research/independent_audits/stationary_transport_attack_20261124/check_sector_phase_assembly.py"
+      "research/independent_audits/stationary_transport_attack_20261124/check_sector_phase_assembly.py",
+      "research/independent_audits/stationary_transport_attack_20261124/check_critical_phase_localization.py"
     ],
     "obligations": [
       "KKL_STATIONARY_FINAL_FIXED_COMPONENT_EXIT",
