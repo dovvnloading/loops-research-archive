@@ -1,16 +1,10 @@
 name: Public Pages smoke test
 
 on:
-  pull_request:
-    paths:
-      - 'code/verify_deployed_site.py'
-      - '.github/workflows/pages-live-smoke.yml'
-  push:
-    branches:
-      - main
-    paths:
-      - 'code/verify_deployed_site.py'
-      - '.github/workflows/pages-live-smoke.yml'
+  workflow_run:
+    workflows: ['Deploy fractal engine']
+    types: [completed]
+    branches: [main]
   schedule:
     - cron: '23 12 * * *'
   workflow_dispatch:
@@ -20,8 +14,9 @@ permissions:
 
 jobs:
   verify-deployed-website:
+    if: github.event_name != 'workflow_run' || github.event.workflow_run.conclusion == 'success'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Verify the live public Pages URL, figures, ledger, and papers
-        run: python code/verify_deployed_site.py
+      - name: Verify the deployed engine, exact-data boundary, and scholarly URLs
+        run: python3 code/verify_deployed_site.py

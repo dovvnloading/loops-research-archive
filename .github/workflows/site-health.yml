@@ -2,63 +2,56 @@ name: Site health
 
 on:
   push:
-    branches:
-      - main
-    paths:
-      - 'index.html'
-      - '404.html'
-      - 'classic.html'
-      - 'dossier.html'
-      - '.nojekyll'
-      - 'robots.txt'
-      - 'sitemap.xml'
-      - 'site-v2.css'
-      - 'site-v2.js'
-      - 'favicon.svg'
-      - 'ledger.json'
-      - 'figs/**'
-      - 'papers/**'
-      - 'marked_width_mlc_manuscript.pdf'
-      - 'docs/DEPLOYMENT.md'
-      - 'code/verify_site_integrity.py'
-      - '.github/workflows/site-health.yml'
+    branches: [main]
+    paths: ['src/**', 'public/**', 'scripts/**', 'tests/**', 'package*.json', 'vite.config.ts', 'tsconfig.json', 'index.html', 'ledger.json', 'results/**', 'docs/DEPLOYMENT.md', 'code/verify_site_integrity.py', '.github/workflows/site-health.yml']
   pull_request:
-    paths:
-      - 'index.html'
-      - '404.html'
-      - 'classic.html'
-      - 'dossier.html'
-      - '.nojekyll'
-      - 'robots.txt'
-      - 'sitemap.xml'
-      - 'site-v2.css'
-      - 'site-v2.js'
-      - 'favicon.svg'
-      - 'ledger.json'
-      - 'figs/**'
-      - 'papers/**'
-      - 'marked_width_mlc_manuscript.pdf'
-      - 'docs/DEPLOYMENT.md'
-      - 'code/verify_site_integrity.py'
-      - '.github/workflows/site-health.yml'
+    paths: ['src/**', 'public/**', 'scripts/**', 'tests/**', 'package*.json', 'vite.config.ts', 'tsconfig.json', 'index.html', 'ledger.json', 'results/**', 'docs/DEPLOYMENT.md', 'code/verify_site_integrity.py', '.github/workflows/site-health.yml']
   workflow_dispatch:
 
 permissions:
   contents: read
 
 jobs:
-  validate-static-site:
-    name: Verify site assets, content and HTTP responses
+  verify-application:
+    name: Build, exact arithmetic, provenance and archive integrity
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
       - uses: actions/setup-node@v4
         with:
-          node-version: '22'
-      - name: Check JavaScript syntax without external dependencies
-        run: node --check site-v2.js
-      - name: Verify static website and local HTTP serving
-        run: python code/verify_site_integrity.py
+          node-version: '24'
+          cache: npm
+      - run: npm ci
+      - run: npm run build
+      - run: npm test
+      - run: python3 code/verify_site_integrity.py
+
+  browser-rendering:
+    name: Actual WebGL2 and Float64 browser rendering
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+          cache: npm
+      - run: npm ci
+      - run: npm run build
+      - run: node scripts/smoke_webgl.mjs
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: fractal-browser-rendering
+          path: browser-smoke/
+          if-no-files-found: warn
