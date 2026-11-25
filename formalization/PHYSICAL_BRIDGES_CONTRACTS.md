@@ -392,6 +392,23 @@ width. Native dynamics or a separate quantitative residual bound
 is still required. This is written analysis, not a Lean formalization
 or a native stationary counterexample.
 
+The [double-crossing charge](../research/independent_audits/stationary_transport_attack_20261124/DOUBLE_CROSSING_CHARGE.md)
+bounds actual hits of any compact full continuum with an annular
+collar avoiding the inverse original carrier by one quarter of the
+reciprocal collar modulus. It uses two disjoint time crossings and
+an all-sheet square-sum density, without a selected proper final
+exit. A fractional cover of hit sets combines such collars even
+at different horizons. Under the earlier full-hull pruning
+hypotheses, the entire closed selected deep limb at b<n<q is
+disjoint from T and has a univalent intermediate-horizon collar;
+actual encounters with that limb can therefore be charged without
+a small-Julia predecessor hit. Uniform modulus calibration and
+native encounter/no-hit control remain open. A fixed-surface
+rectangle family with widths 1/(2δ) and uniformly bounded
+ambient vertical width disproves automatic calibration from the
+abstract planar hypotheses. These are written analytic estimates
+and a planar countermodel, not additional kernel theorems.
+
 This checker establishes finite rational endpoint-cover and degree-budget
 certificates and rejects invalid accounting. It does not construct native
 exits. The stationary hypotheses still need to supply one eligible actual
