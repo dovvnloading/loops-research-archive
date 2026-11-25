@@ -297,6 +297,69 @@ predecessor components are hit, or that the other endpoint
 of the extracted exit belongs to the bank. In particular
 no half-bank factor is asserted.
 
+### Sharper latest-stage bank
+
+In (1), it is enough to charge only the latest Julia-critical
+stage of each parent. Since there are at least b+1 different
+Julia-critical times in 0,...,h, its latest time is at least b.
+By §3A, some other record belongs to a different final component.
+Orient the parent from the latest record toward that other record
+(the time orientation may reverse). The extraction in §4 then
+starts at the latest record's component; its other end need not
+belong to the bank. Thus retain only the stage banks j=b,...,h.
+
+There is a second, independent saving. Fix a final target label k.
+At stage j the unique cycle predecessor with that final image is
+K_(k-h+j), with indices modulo P. If this is a critical-limb member,
+the corresponding candidate component set is the complete inverse
+of K_(k-h+j) at depth j, lifted to the final graph. For j<l
+with the same final target label, the physical inverse sets satisfy
+
+\[
+ F^{-j}(K_{k-h+j})\subset F^{-l}(K_{k-h+l}),
+\]
+
+by forward invariance of the primitive cycle. All their components
+are entire final components, as proved in §3B. Thus among the
+qualifying stages in [b,h] for a given final target, keep only the
+largest j. This is a union-of-components inclusion, not an
+assumption of injective covering images.
+
+For this latest qualifying stage j<h, its suffix degree is two
+only if the itinerary crosses K_0 at a stage l with j≤l<h.
+If l>j, that stage also qualifies for this same final target
+since K_0 is in the critical limb, contradicting maximality.
+Consequently a degree-two suffix at a latest stage is possible
+only for the one critical member K_0 itself at that stage.
+Every other latest-stage suffix has degree one. For each j<h
+there are at most b critical target predecessors, and only one
+of them can incur the extra factor. The degree census is thus
+at most (b+1)2^j at j<h and b2^h at j=h. The sharper uniform
+bank sum and width bound are
+
+\[
+ \boxed{
+ W(A_J)\le\left[b2^h+(b+1)(2^h-2^b)\right]R
+ \qquad (b\le h<P).
+ }
+ \tag{1'}
+\]
+
+At h=b+2 this coefficient is exactly (7b+3)2^b, replacing
+the earlier coarse coefficient b(3·2^(b+2)-2).
+This does not enlarge the class A_J or reduce the number of
+Julia-critical stages required. The same proof works if only
+some specified s≤h is known to be a lower bound on the latest
+Julia-critical time; replace b by s in the exponent of the
+subtracted term, retaining b as the occupancy bound.
+
+The finite checker independently enumerates all critical-phase
+subsets containing phase zero for periods 2 through 10, all
+h<P and every tail start 0≤s≤h. It verifies the latest-target
+suffix degree restriction and the exact degree budget. These
+are checks of the finite phase/degree accounting, not of the
+geometric hypotheses.
+
 ## 5. Bounded *total* critical visits of carrier points and window births
 
 The full-hull/singleton-cut hypotheses of
