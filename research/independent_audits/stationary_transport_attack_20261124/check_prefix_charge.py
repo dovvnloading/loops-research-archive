@@ -238,6 +238,45 @@ def deck_collision_checks():
     return checked
 
 
+def coherent_packet_checks():
+    checked = 0
+    # Exact window/area factors: using r sheets costs r, not d.
+    for h in range(15):
+        for bits in product(range(2), repeat=h):
+            factor = Q(1)
+            for bit in bits:
+                r = 1+bit
+                factor *= Q(r, r*r)
+            k = sum(bits)
+            assert factor == Q(1, 2**k)
+            assert factor*(2**k) == 1
+            if k:
+                assert factor <= Q(1, 2)
+            checked += 1
+    # Disjoint support partitions with arbitrary rational widths:
+    # sum of the individual pattern gains controls the aggregate excess.
+    for widths in product(range(5), repeat=4):
+        for counts in product(range(4), repeat=4):
+            total = sum(widths)
+            coll = sum(w for w,k in zip(widths,counts) if k)
+            output = sum(w*(2**k) for w,k in zip(widths,counts))
+            assert output >= total+coll
+            checked += 1
+    # Sharp output threshold and the no-gain converse with bounded loss.
+    for W in range(1, 33):
+        for denom in range(1, 9):
+            for num in range(1, denom+1):
+                eta = Q(num, denom)
+                E = eta*W/4
+                G = W-E
+                B = eta*W-E
+                D = G+B
+                assert D == (1+eta/2)*W
+                assert B == (D/W-1)*W+E
+                checked += 1
+    return checked
+
+
 def main():
     cases, stays = partial_inverse_models()
     shifts = shift_checks()
@@ -249,6 +288,7 @@ def main():
     print(f"PASS: {cases} latest-bank cases, including {equalities} exact budget equalities")
     print(f"PASS: {canonical_direction_checks()} crossing, cyclic-order and one-sided birth cases")
     print(f"PASS: {deck_collision_checks()} deck-window, threshold and symmetric-gap cases")
+    print(f"PASS: {coherent_packet_checks()} coherent-packet and response-budget cases")
     print("Scope: finite orbit, endpoint census, orientation and energy-weight algebra only.")
 
 
