@@ -72,7 +72,7 @@ try{
   await evaluate(`(()=>{const c=document.querySelector('.fractal-canvas'),r=c.getBoundingClientRect();c.dispatchEvent(new WheelEvent('wheel',{deltaY:-160,clientX:r.left+r.width*.55,clientY:r.top+r.height*.48,cancelable:true}));})()`);
   await until(()=>evaluate("document.querySelector('.flight-panel')?.innerText.includes('FLIGHT')"),'camera enters flight');
   image=await visibleImage('gpu',old);console.log('After real wheel flight:',image);await snap('02-flight');
-  for(const [label,name] of [['Mandelbox','03-mandelbox'],['Quaternion Julia','04-quaternion']]){
+  for(const [label,name] of [['Mandelbox','03-mandelbox'],['Quaternion Julia','04-quaternion'],['Mandelbrot plane','04b-complex-plane']]){
     const prior=image.hash;
     await evaluate(`[...document.querySelectorAll('.scene-item')].find(b=>b.querySelector('strong')?.textContent===${JSON.stringify(label)}).click()`);
     // Avoid comparing the previous image during the deferred React update.
@@ -82,13 +82,17 @@ try{
   }
   await evaluate("[...document.querySelectorAll('.scene-item')].find(b=>b.querySelector('strong')?.textContent==='Mandelbulb').click()");
   await until(()=>evaluate("document.querySelector('.precision-choice select')?.value==='auto'"),'Mandelbulb reset');
+  await cdp('Emulation.setDeviceMetricsOverride',{width:390,height:844,deviceScaleFactor:1,mobile:true});
+  await until(()=>evaluate("document.querySelector('.fractal-canvas')?.height>document.querySelector('.fractal-canvas')?.width"),'portrait canvas resize');
+  image=await visibleImage('gpu',image.hash);
+  console.log('Portrait GPU:',image);await snap('04c-portrait-gpu');
   await evaluate("(()=>{const s=document.querySelector('.precision-choice select');s.value='float64';s.dispatchEvent(new Event('change',{bubbles:true}));})()");
   await until(()=>evaluate("document.querySelector('.flight-panel')?.innerText.includes('Float64 settled')"),'binary64 worker full pass',180000);
   const cpu=await visibleImage('cpu');console.log('Float64 actual worker pixels:',cpu);await snap('05-float64');
   assert.equal(await evaluate("!!document.querySelector('.engine-error')"),false);
   assert.deepEqual(errors,[]);
   await writeFile(join(output,'results.json'),JSON.stringify({gpu:image,cpu,errors},null,2));
-  console.log('PASS: WebGL2 shaders, volume pixels, camera input, Float64 worker, and no runtime exceptions.');
+  console.log('PASS: WebGL2 volume and plane pixels, portrait projection, camera input, Float64 worker, and no runtime exceptions.');
 }catch(error){
   // Preserve evidence even when the first draw never produces usable pixels.
   const diagnostic={error:String(error),lastPixels,errors,browserMessages,chromeLog};

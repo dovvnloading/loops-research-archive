@@ -275,10 +275,16 @@ void main() {
   if(escaped) {
     float smoothN=max(0.0,count+1.0-log2(max(log2(max(sqrt(mag2),1.00001)),0.0001)));
     float bands=0.5+0.5*cos(smoothN*uBandFrequency+uBandPhase);
-    float light=0.22+0.78*bands;
-    color=palette(light);
-    color*=0.25+0.75*(1.0-exp(-smoothN*0.07));
-    color=mix(color,palette(0.95),exp(-orbit*4.0)*uTrap*0.16);
+    // Keep the broad exterior dark; concentrate color around slower escapes.
+    // This plane-specific map leaves the volume materials and tone controls intact.
+    float boundary=1.0-exp(-smoothN*0.055);
+    float light=0.08+0.92*pow(bands,1.7)*boundary;
+    vec3 dark=vec3(0.002,0.006,0.016), bright=vec3(0.025,0.20,0.23);
+    if(uPalette==1) {dark=vec3(0.012,0.003,0.002);bright=vec3(0.30,0.105,0.025);}
+    else if(uPalette==2) {dark=vec3(0.006,0.003,0.015);bright=vec3(0.16,0.07,0.28);}
+    else if(uPalette==3) {dark=vec3(0.004);bright=vec3(0.19);}
+    color=mix(dark,bright,light);
+    color+=bright*exp(-orbit*4.0)*uTrap*0.12*boundary;
   }
   if(uGrid && uScale>0.0001) {
     vec2 p=vec2(px.x,py.x);
