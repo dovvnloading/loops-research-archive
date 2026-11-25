@@ -1652,7 +1652,8 @@
         "no_full_window_at_double_bound",
         "degree_prefix_sum",
         "final_bank_degree_budget",
-        "at_least_one_birth"
+        "at_least_one_birth",
+        "latest_bank_degree_budget"
       ]
     },
     "checks": [
