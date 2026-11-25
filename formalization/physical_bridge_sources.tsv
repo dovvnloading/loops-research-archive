@@ -89,6 +89,7 @@ formalization/weighted/PhaseMemoryCardinality.lean	CLOCK ENDS
 formalization/weighted/PlanarFullification.lean	HULL
 formalization/weighted/ProtectedCarrierLogic.lean	HULL
 formalization/weighted/SpectralDominance.lean	CLONE EDGE
+formalization/weighted/StationaryEndpointCover.lean	VARIABLE-EXIT
 formalization/weighted/WeightedReturn.lean	CLONE EDGE
 research/independent_audits/airplane_inverse_problems_20261114/chords/verify.py	DIFFRACTION LANDING
 research/independent_audits/airplane_inverse_problems_20261114/diffraction/verify_airplane_phase_retrieval.py	DIFFRACTION LANDING
@@ -138,6 +139,7 @@ research/independent_audits/real_primitive_tip_family_unconditional_20261116/tes
 research/independent_audits/real_primitive_tip_family_unconditional_20261116/verify.py	SELECTED
 research/independent_audits/real_primitive_tip_family_uniform_20261116/test_verify.py	SELECTED
 research/independent_audits/real_primitive_tip_family_uniform_20261116/verify.py	SELECTED
+research/independent_audits/stationary_transport_attack_20261124/check_endpoint_cover_lean_model.py	VARIABLE-EXIT
 research/independent_audits/stationary_transport_attack_20261124/verify.py	VARIABLE-EXIT
 research/independent_audits/tip_family_all_depths_20261116/test_verify.py	DEPTH
 research/independent_audits/tip_family_all_depths_20261116/verify.py	DEPTH
