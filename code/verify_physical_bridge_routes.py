@@ -4,9 +4,10 @@
 from __future__ import annotations
 
 import csv
-import html
 import json
 import re
+import subprocess
+import sys
 import tomllib
 from pathlib import Path
 
@@ -131,7 +132,19 @@ def check_public_status(routes: dict[str, tuple[str, list[str]]]) -> None:
     js = (ROOT / "ledger.js").read_text().removeprefix("window.MLC_LEDGER=").strip().removesuffix(";")
     if data["research_updates"] != json.loads(js)["research_updates"]:
         fail("The November JSON and JavaScript registers disagree")
-    pages = {name: (ROOT / name).read_text() for name in ("README.md", "RESEARCH_MAP.md", "index.html")}
+    pages = {name: (ROOT / name).read_text() for name in ("README.md", "RESEARCH_MAP.md")}
+    # The Vite app displays the source-backed ledger, not a second handwritten
+    # HTML mirror. Regenerate and check the actual data consumed by Archive.tsx.
+    subprocess.run([sys.executable, str(ROOT / "scripts/prepare_data.py")], cwd=ROOT, check=True)
+    browser_ledger = json.loads((ROOT / "public/data/ledger.json").read_text())
+    browser_updates = {row["id"]: row for row in browser_ledger["research_updates"]}
+    if set(browser_updates) != {row["id"] for row in data["research_updates"]}:
+        fail("Browser research update IDs disagree with source register")
+    for row in data["research_updates"]:
+        mirror = browser_updates[row["id"]]
+        for field in ("statement", "classification", "status", "pr", "physical_bridges", "evidence", "deps"):
+            if mirror.get(field) != row.get(field):
+                fail(f"Browser ledger changed {field} for {row['id']}")
     updated = {87, 91, 92, 93, 94, 97, 100}
     matched = set()
     for row in data["research_updates"]:
@@ -149,8 +162,6 @@ def check_public_status(routes: dict[str, tuple[str, list[str]]]) -> None:
         classification = row["classification"]
         for name, page in pages.items():
             needle = f"**{classification}** — {scope}"
-            if name == "index.html":
-                needle = f"<strong>{html.escape(classification, quote=False)}</strong> — {html.escape(scope, quote=False)}"
             if needle not in page:
                 fail(f"{name} lacks the current scope of #{pr}")
     if matched != updated:
