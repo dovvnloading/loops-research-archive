@@ -558,6 +558,31 @@ land in the old annulus interior. Quantitative
 attachment distortion and qualification of the
 actual anchors remain separate native obligations.
 
+The [coherent packet gain telescope](../research/independent_audits/stationary_transport_attack_20261124/COHERENT_PACKET_GAIN.md)
+confines all proper simple crosscuts directed over one fixed
+source inner access to a single degree-d covering chart
+after an explicit width discard C_d=π log(16d)/(log 2)^2.
+A radial half-annulus metric detects every escaping primary
+leaf, with no transverse-measure subtraction. On complete
+canonical lifts a good primary gives coefficient-one
+transport for every subfamily. A second retained inner
+restriction is its deck translate and occupies a disjoint
+parent-time window, giving factor-two width gain. Covering
+injectivity on the fixed primary chart makes all distinct
+good parent images disjoint. Under the specified Borel
+atlas this yields a weighted sum over multiplicity patterns,
+W(D_good)≥Σ_k 2^k W(A_good,k), after total discard at most
+2^h V+h C_2. A positive fraction η with even one duplicate
+stage gives W(C)≥(1+η)W(A)−2E_h if the final good outputs
+are in a genuine uniformly controllable Wave C. No majority
+of duplicate stages or uniform angular calibration is needed.
+Failure of gain leaves a quantitative single-restriction,
+carrier-edge residual; the native directed occurrence and
+controllable output premises remain explicit. The [finite
+module](weighted/StationaryPacketGain.lean) checks the
+weighted excess and response algebra. Kernel status is
+determined by weighted CI.
+
 This checker establishes finite rational endpoint-cover and degree-budget
 certificates and rejects invalid accounting. It does not construct native
 exits. The stationary hypotheses still need to supply one eligible actual
