@@ -161,6 +161,7 @@ jobs:
         run: |
           python -B research/independent_audits/stationary_transport_attack_20261124/check_endpoint_cover_lean_model.py
           python -B research/independent_audits/stationary_transport_attack_20261124/check_prefix_charge.py
+          python -B research/independent_audits/stationary_transport_attack_20261124/check_near_critical_packet.py
       - name: Check corrected all-period Wave arithmetic
         run: |
           python -B -m unittest discover -s research/independent_audits/tip_family_wave_gain_correction_20261123 -p 'test_verify.py' -v

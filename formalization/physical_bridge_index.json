@@ -1702,7 +1702,8 @@
     "checks": [
       "research/independent_audits/stationary_transport_attack_20261124/verify.py",
       "research/independent_audits/stationary_transport_attack_20261124/check_endpoint_cover_lean_model.py",
-      "research/independent_audits/stationary_transport_attack_20261124/check_prefix_charge.py"
+      "research/independent_audits/stationary_transport_attack_20261124/check_prefix_charge.py",
+      "research/independent_audits/stationary_transport_attack_20261124/check_near_critical_packet.py"
     ],
     "obligations": [
       "KKL_STATIONARY_FINAL_FIXED_COMPONENT_EXIT",

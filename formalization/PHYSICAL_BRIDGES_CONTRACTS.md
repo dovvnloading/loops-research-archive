@@ -630,6 +630,18 @@ finite theorems in StationaryPacketGain check the contact
 transition and auxiliary response algebra. No native or
 global proof obligation is promoted.
 
+The [near-critical packet control note](../research/independent_audits/stationary_transport_attack_20261124/NEAR_CRITICAL_PACKET_CONTROL.md)
+conditionally supplies the previously missing auxiliary container bound:
+the two separator images lie in BL_1 and BL_2, and the common chart
+cut plus the near-critical bank gives one over-critical module and at
+most 18b+1 localized Waves per actual confined packet. The weaker
+end-fine-atom direction criterion still requires the actual proper
+old-side and corrected marking hypotheses. The accompanying [finite
+regression checker](../research/independent_audits/stationary_transport_attack_20261124/check_near_critical_packet.py) tests cyclic bank, chart cut and end-atom
+combinatorics, not analytic or native geometric realization. Selected
+deep contact, host/fine-side realization, directed retained occurrences
+and native terminality integration remain open. No ledger status changes.
+
 This checker establishes finite rational endpoint-cover and degree-budget
 certificates and rejects invalid accounting. It does not construct native
 exits. The stationary hypotheses still need to supply one eligible actual
