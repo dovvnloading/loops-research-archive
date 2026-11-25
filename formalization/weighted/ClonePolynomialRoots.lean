@@ -93,7 +93,7 @@ theorem unit_trinomial_derivative_ne_zero (d : ℕ) (hd : 2 ≤ d)
 /-- The clone polynomial is separable over the complex numbers for all n. -/
 theorem cloneCharPolynomial_separable (n : ℕ) : (cloneCharPolynomial n).Separable := by
   rw [Polynomial.separable_def,
-    Polynomial.isCoprime_iff_aeval_ne_zero_of_isAlgClosed ℂ]
+    Polynomial.isCoprime_iff_aeval_ne_zero_of_isAlgClosed (k := ℂ) (K := ℂ)]
   intro z
   by_cases hz : Polynomial.aeval z (cloneCharPolynomial n) = 0
   · right

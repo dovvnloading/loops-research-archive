@@ -153,6 +153,15 @@ theorem full_clone_complex_charpoly (n : ℕ) :
     (cloneCharPolynomial_monic n) (Matrix.charpoly_monic _) hdvd
   simp [Matrix.charpoly_natDegree_eq_dim, cloneCharPolynomial_natDegree, Vertex, size]
 
+/-- The determinant identity itself, evaluated at every complex parameter. -/
+theorem full_clone_complex_characteristic_det (n : ℕ) (μ : ℂ) :
+    (Matrix.scalar (Vertex n) μ - complexFullAdjacencyMatrix n).det =
+      μ ^ (2 * n + 5) - μ - 1 := by
+  rw [← Matrix.eval_charpoly, full_clone_complex_charpoly]
+  simp only [cloneCharPolynomial, Polynomial.eval_sub, Polynomial.eval_add,
+    Polynomial.eval_pow, Polynomial.eval_X, Polynomial.eval_one]
+  ring
+
 /-- Every actual characteristic root has algebraic multiplicity one. -/
 theorem full_clone_complex_charpoly_separable (n : ℕ) :
     (complexFullAdjacencyMatrix n).charpoly.Separable := by
@@ -191,6 +200,7 @@ theorem full_clone_complex_eigenspaces_span (n : ℕ) :
 #print axioms cloneComplexRootVector_eigen
 #print axioms clone_root_has_actual_eigenvalue
 #print axioms full_clone_complex_charpoly
+#print axioms full_clone_complex_characteristic_det
 #print axioms full_clone_complex_charpoly_separable
 #print axioms full_clone_complex_charpoly_roots
 #print axioms full_clone_complex_charpoly_norm_product

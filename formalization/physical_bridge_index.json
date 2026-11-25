@@ -182,11 +182,18 @@
         "clone_root_has_actual_eigenvalue",
         "clone_root_is_actual_charpoly_root",
         "full_clone_complex_charpoly",
+        "full_clone_complex_characteristic_det",
         "full_clone_complex_charpoly_separable",
         "full_clone_complex_charpoly_roots",
         "full_clone_complex_charpoly_norm_product",
         "full_clone_complex_semisimple",
         "full_clone_complex_eigenspaces_span"
+      ],
+      "formalization/weighted/FullCloneGapCollapse.lean": [
+        "clone_exists_nonleading_root_modulus_ge_inv",
+        "full_clone_nonleading_eigenvalue_close",
+        "full_clone_absolute_gap_can_approach_zero",
+        "full_clone_relative_gap_can_approach_zero"
       ]
     },
     "checks": [

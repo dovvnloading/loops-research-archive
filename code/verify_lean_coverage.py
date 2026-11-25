@@ -127,14 +127,14 @@ run_elab do
   let moduleNames := env.allImportedModuleNames
   let targets : Array Lean.Name := {module_names}
   let allowed : Array Lean.Name := #[`propext, `Classical.choice, `Quot.sound]
-  let mut total := 0
+  let mut total : Nat := 0
   for target in targets do
     let declarations : Array Lean.Name := env.constants.fold (init := #[]) fun acc declName _ =>
       let selected := {selection}
       if selected then acc.push declName else acc
     if declarations.isEmpty then
       throwError "AXIOM_AUDIT {label}: zero declarations for {{target}}"
-    let mut theorems := 0
+    let mut theorems : Nat := 0
     for declName in declarations do
       match env.find? declName with
       | some (.thmInfo _) => theorems := theorems + 1
