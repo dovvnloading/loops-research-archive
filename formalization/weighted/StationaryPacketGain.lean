@@ -466,9 +466,48 @@ theorem angular_guard_active_charge (M E B a z w : ℝ)
   have hs : (z-B)^2 ≤ (w-B)^2 := by
     have hp : 0 ≤ w+z-2*B := by linarith
     nlinarith [mul_nonneg (sub_nonneg.mpr hz) hp]
-  have hcoef : 0 ≤ a*a*M := by positivity
+  have hcoef : 0 ≤ a*a*M := mul_nonneg (mul_self_nonneg a) hM
   have hr := mul_le_mul_of_nonneg_left
     (show M-w+E ≤ M-z+E by linarith) hcoef
   exact hs.trans (hresp.trans hr)
+
+/-- A one-sided ratio of old cap margin to old crest length is
+bounded by the positive derivative comparison. Geometry supplies
+the lower/upper derivative bounds and scaled interval ratios. -/
+theorem one_sided_ratio_envelope (L ell g ds D T new : ℝ)
+    (hell : 0 < ell) (hds : 0 < ds) (hD : 1 ≤ D)
+    (hT : 1 ≤ T) (hnew : 0 < new) (hnew1 : new ≤ 1)
+    (hlow : ds ≤ 8*D*ell) (hhigh : L ≤ g*D*T^2+ell)
+    (hscale : g*new ≤ ds) :
+    L*new ≤ 9*D^2*T^2*ell := by
+  have hD0 : 0 ≤ D := by linarith
+  have hT0 : 0 ≤ T := by linarith
+  have hc : 0 ≤ D*T^2 := mul_nonneg hD0 (sq_nonneg T)
+  have h1 := mul_le_mul_of_nonneg_right hhigh (le_of_lt hnew)
+  have h2 := mul_le_mul_of_nonneg_right hscale hc
+  have h3 := mul_le_mul_of_nonneg_right hlow hc
+  have h4 := mul_le_mul_of_nonneg_left hnew1 (le_of_lt hell)
+  have hd : 1 ≤ D^2 := by nlinarith
+  have ht : 1 ≤ T^2 := by nlinarith
+  have hdt : 1 ≤ D^2*T^2 := by
+    nlinarith [mul_nonneg (sub_nonneg.mpr hd) (sub_nonneg.mpr ht)]
+  have h5 := mul_le_mul_of_nonneg_right hdt (le_of_lt hell)
+  nlinarith only [h1,h2,h3,h4,h5]
+
+/-- The largest chosen padding limb dominates a four-limb
+inner band once each individual limb is no larger. -/
+theorem four_limb_padding (a b c d p : ℝ)
+    (ha : a ≤ p) (hb : b ≤ p) (hc : c ≤ p) (hd : d ≤ p) :
+    a+b+c+d ≤ 4*p := by linarith
+
+/-- Absorb the bank-contact square-root term in the remote
+comparison using its elementary quadratic Young bound. -/
+theorem remote_square_root_absorption (M A E Q eps : ℝ)
+    (heps : 0 < eps) (hQ : 0 ≤ Q)
+    (hyoung : Q ≤ eps*M+A)
+    (hbound : M ≤ E+Q) (hsmall : eps ≤ 1/2) (hM : 0 ≤ M) :
+    M ≤ 2*(E+A) := by
+  have h := mul_le_mul_of_nonneg_right hsmall hM
+  linarith
 
 end LoopsStationaryPacketGain

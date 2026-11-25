@@ -843,6 +843,28 @@ finite real-number lemmas await CI. All seven workflows passed
 at 005f8a6 including 1,230,003 short-jump regressions and two
 Lean declarations. No ledger promotion.
 
+The [guard-free angular replacement](../research/independent_audits/stationary_transport_attack_20261124/GUARD_FREE_ANGULAR_JUMP.md)
+uses one-sided radial width and the positive Herglotz boundary
+derivative kernel on the actual old-proper full-tower strip chart.
+Its derivative ratio costs exp(3pi V) times the squared endpoint
+distance ratio, independently of degree. Choosing a largest
+padding limb among ten possible near-precritical terminal limbs
+makes the required one-sided padding comparable to the four
+inner limbs. Replacing short packets by actual radial laminations
+over the whole translated common crest costs <=40(V+1) rather
+than the old six-limb angular guard. This is width replacement,
+not a guard-free full-lift statement. The finite anchored program
+therefore removes G_T from its conditional estimate. For a remote
+explicit radial maximizer the same argument needs only its left
+endpoint in the proper band, even when its other end is outside;
+a reflected fixed-width target padding band supplies the remaining
+ratio G_rem, yielding the conditional M_*<=C_b(R+V+1+G_rem).
+G_rem is not bounded here. Exact native chart/marking, nonshort
+geometry and downstream hypotheses remain explicit. [Finite checker](../research/independent_audits/stationary_transport_attack_20261124/check_guard_free_angular_jump.py);
+three new algebra declarations await kernel CI. The prior angular
+guard lemma's nonnegativity proof was corrected after its CI failure.
+No ledger promotion.
+
 This checker establishes finite rational endpoint-cover and degree-budget
 certificates and rejects invalid accounting. It does not construct native
 exits. The stationary hypotheses still need to supply one eligible actual
