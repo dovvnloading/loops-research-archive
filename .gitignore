@@ -1,0 +1,8 @@
+node_modules/
+dist/
+.sites-runtime/
+*.tsbuildinfo
+*.log
+__pycache__/
+.DS_Store
+public/data/

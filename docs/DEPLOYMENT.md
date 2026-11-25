@@ -1,69 +1,67 @@
-# Website deployment and recovery
+# LOOPS web application — development and deployment
 
-**Public URL:** https://dovvnloading.github.io/loops-research-archive/
+The public repository site is [dovvnloading.github.io/loops-research-archive](https://dovvnloading.github.io/loops-research-archive/). The application is built with React, TypeScript and Vite and uses a custom WebGL2 renderer. It publishes the **`dist/` build output**, including the research archive, as a static site. No application server, database, account or API key is required.
 
-**Publishing model:** Root-level static files from branch **main**, folder **/(root)**. No server, build process, custom domain, Jekyll or third-party JavaScript framework is needed for the new homepage.
+## Develop and verify
 
-## Root cause of the outage
+Use Node.js 24 and Python 3.12 or later:
 
-On 2026-11-05, the public repository API reported **has_pages: false** even though it was public and already contained index.html, figures, released PDFs, a ledger and web assets. Its previous GitHub Actions workflows performed Lean/Python research checks but **did not deploy to GitHub Pages**. A green research CI run is not a website deployment.
+```sh
+npm ci
+python3 scripts/prepare_data.py
+npm run dev
+```
 
-The older homepage also relied on an external React UMD runtime; a failed CDN download could render a blank page. That older page has been preserved at [classic.html](../classic.html). The new index.html is fully static and works without JavaScript. Only ledger filtering is optional progressive enhancement provided by a small local script.
+To build exactly the artifact intended for publication:
 
-## One-time GitHub administrator action
+```sh
+npm run build
+npm test
+python3 code/verify_site_integrity.py
+npm run preview
+```
 
-**The connected GitHub tools in this session cannot edit the GitHub Pages repository setting.** To publish the site, a repository administrator must:
+The build first prepares lossless research datasets, type-checks the application, bundles the local JavaScript and CSS, then copies the scholarly archive. The integrity verifier checks the built artifact, data checksums, unchanged ledger fields, unavailable-source disclosures, lossless dyadic brackets, preserved file hashes and a local HTTP smoke test. Renderer interaction and GPU output still require browser testing; passing these checks is not a rendering or mathematical-proof claim.
 
-1. Open [Settings → Pages](https://github.com/dovvnloading/loops-research-archive/settings/pages).
-2. Under **Build and deployment**, choose **Deploy from a branch**.
-3. Select branch **main** and folder **/(root)**.
-4. Click **Save**.
-5. Check the deployment run in the Actions tab, then visit https://dovvnloading.github.io/loops-research-archive/ .
+Vite uses relative asset URLs (`base: './'`) so the same build works at the repository subpath or a standalone static origin. The application uses hash/session state rather than server routes. `classic.html`, `dossier.html` and `template.html` redirect to `./#archive`.
 
-No CNAME file, new domain, gh-pages branch or separate deploy token is required. The repository already contains .nojekyll and project-relative asset URLs. Subsequent updates to main will use the configured publishing source.
+## GitHub Pages
 
-**Do not attempt to enable Pages with the default GITHUB_TOKEN and an enablement flag on actions/configure-pages.** That action requires an independently privileged token for enablement, as stated in its [action metadata](https://github.com/actions/configure-pages/blob/main/action.yml). This repository does not need such a token when its administrator can select branch publishing once.
+The workflow [pages.yml](../.github/workflows/pages.yml) builds and verifies every `main` push, uploads `dist/`, then deploys it with the official Pages actions. Deployment uses the standard `github-pages` environment and `pages: write` / `id-token: write` permissions.
 
-## Files provided
+For this workflow to publish, the repository's **Settings → Pages → Build and deployment → Source** must be **GitHub Actions**. This replaces the former `main` / `root` branch-publishing configuration. The workflow deliberately does not attempt administrator-only Pages enablement. A successfully built pull request is reviewable code; it is not evidence of a successful public deployment.
 
-| Path | Purpose |
-| --- | --- |
-| index.html | Static accessible homepage and research overview |
-| site-v2.css | Responsive design; no external assets |
-| site-v2.js | Optional client-side filtering of the ledger |
-| ledger.json | 465-entry machine-readable source-locked proof ledger |
-| figs/ and figs/readme/ | Figures and two SVG diagrams |
-| papers/ | Released paper PDFs, source and QA artifacts |
-| marked_width_mlc_manuscript.pdf | Main 225-page manuscript |
-| dossier.html | Original visualization dossier |
-| classic.html | Preserved original interactive homepage |
-| 404.html | Friendly recovery page |
-| .nojekyll | Bypass automatic Jekyll processing |
-| favicon.svg, robots.txt, sitemap.xml | Site metadata |
+After deployment, [pages-live-smoke.yml](../.github/workflows/pages-live-smoke.yml) checks the real public URL. It also runs daily and can be dispatched manually. The same check can target another static deployment:
 
-## Validation
+```sh
+SITE_URL=https://example.com/loops/ python3 code/verify_deployed_site.py
+```
 
-Run in the repository root:
+References: [GitHub's custom-workflow documentation](https://docs.github.com/en/pages/getting-started-with-github-pages/using-custom-workflows-with-github-pages), [deploy-pages action](https://github.com/actions/deploy-pages).
 
-    python code/verify_site_integrity.py
-    node --check site-v2.js
-    python -m http.server 8000
+## Data and provenance
 
-Browse http://localhost:8000/ and use the proof-ledger filters. The Site health GitHub Actions workflow checks the complete static site and runs a local HTTP smoke test on relevant PRs and pushes.
+`scripts/prepare_data.py` reads the original `ledger.json` and selected `results/` JSON certificates with Python's arbitrary-size integers. Integers outside JavaScript's safe range are serialized as decimal strings. The original files are never rewritten. Browser calculations use `BigInt` for rational angles; shader and orbit drawing coordinates are numerical approximations.
 
-The [separate research validation workflow](../.github/workflows/lean-proofs.yml) still checks mathematical code and Lean but does not publish the website.
+`public/data/manifest.json` records original input hashes, generated dataset hashes, scopes, and the last first-parent commit that touched the ledger, results, research, papers or formalization sources. Application-only commits do not move this research revision. Evidence URLs are pinned to that revision. The source ledger's 465 obligations and 46 later updates retain their statements, dependencies, hypotheses and statuses. A `proved` label may refer to a written or conditional result; it does not automatically mean Lean kernel verification.
 
-## Troubleshooting
+At the initial application migration, **26 ledger entries referenced 7 Markdown files that were already absent from the repository**. These remain explicit unresolved evidence records in the manifest and interface. The build never manufactures replacement documents or silently substitutes a similarly named certificate. Evidence anchors are retained from the original ledger; path resolution is not an audit of the mathematical argument or every heading anchor.
 
-- **404 and has_pages: false:** GitHub Pages must be enabled in repository Settings → Pages. Research CI success cannot replace this.
-- **Pages enabled but still 404:** Verify that source is main / (root), not the docs folder; inspect the GitHub Pages deployment run.
-- **Images or PDFs missing:** Confirm the full root publishing source was deployed. All local links are relative to the project subpath.
-- **Ledger filtering not working:** The main HTML still loads. Check that ledger.json and site-v2.js were published; open or download the complete ledger directly.
-- **Classic homepage blank:** It uses external React/CDN dependencies. The new main homepage is a static-first replacement with no dependency on that runtime.
-- **Rollback:** The original page is preserved as classic.html and in Git history. No research papers, ledger statuses or proof certificates were deleted.
+`data/catalog.json` indexes the preserved scholarly files, their kinds, sizes and SHA-256 checksums. Repository links in the catalog point to the current `main` branch; packaged local files are checked against the catalog. Source certificates and ledger evidence have separate immutable revision links.
 
-## Mathematical status
+## Preserved and replaced
 
-This is a website publishing and presentation repair, not a mathematical theorem update. The source-locked ledger remains 34 imported, 316 internally proved, 115 open (2026-07-27), and the Mandelbrot Local Connectivity conjecture remains open.
+The new application replaces the old `site-v2.js`, `site-v2.css`, `support.js` and `site.css` presentation layer. These runtimes are excluded from the published artifact. `ledger.js` remains downloadable as an audit mirror required by existing research tooling; the app does not load it as a runtime. The previous frontend remains available in Git history.
 
-Further references: [GitHub Pages publishing configuration](https://docs.github.com/en/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site) and [404 troubleshooting](https://docs.github.com/en/pages/getting-started-with-github-pages/troubleshooting-404-errors-for-github-pages-sites).
+The build preserves root Lean files, research Markdown, the original ledger, manuscript PDFs, `papers/`, `docs/`, `research/`, `results/`, `code/`, `formalization/` and `figs/` at their existing relative paths. Existing research validation workflows are separate from the website build and deployment.
+
+## Recovery
+
+- **A raw source page appears:** Pages is probably still publishing the repository root. Select GitHub Actions as the source and run the deployment workflow.
+- **Blank application:** Check the module and CSS requests shown in the browser console; all assets should come from the same origin and project subpath. Run the integrity verifier on `dist/`.
+- **No WebGL2:** Use the accessible research workspaces and supported fallback shown by the application. A device-specific shader failure must not be mistaken for a failed certificate.
+- **A source link is unavailable:** Check its explicit evidence-resolution state and the source revision. Some unavailable references predate this application.
+- **Archive assets missing:** Upload the complete `dist/` directory produced by the build, including the copied archive and `data/`.
+- **Rollback:** Revert the frontend commits and publishing configuration together, or deploy a previously verified application commit. Mathematical source files do not need to be reverted for a presentation-only rollback.
+
+**Mathematical status:** MLC remains open. Visualizations, numerical orbits, rational-angle experiments and finite certificates do not establish the global conjecture.

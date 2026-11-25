@@ -1,5 +1,18 @@
 <div align="center">
 
+## Interactive fractal research engine
+
+The web interface is now a custom WebGL2 application: three volumetric fractal families, Mandelbrot and Julia planes, an escape-time landscape, an exact-angle atlas, a precision lab, and the complete source-linked research ledger. The mathematical archive below remains the authority for every research claim.
+
+```sh
+npm ci
+npm run dev       # prepare source-linked data and start the interactive app
+npm run check     # production build, arithmetic tests, archive integrity
+```
+
+See [the app guide](docs/WEBAPP.md), [renderer and precision notes](docs/ENGINE.md), and [deployment instructions](docs/DEPLOYMENT.md). `classic.html`, `dossier.html`, and `template.html` now redirect into the new archive. Original papers, certificates, Lean files, and verifier URLs remain available.
+
+
 # A Marked-Width Reduction of Mandelbrot Local Connectivity
 
 ### A research archive of exact dynamics, planar topology, and marked-width obstructions

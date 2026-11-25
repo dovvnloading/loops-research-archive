@@ -1,58 +1,76 @@
 #!/usr/bin/env python3
-"""Verify deployed GitHub Pages endpoints (not just local HTTP serving).
-
-No third-party packages, tokens, or GitHub Pages settings API required.
-Exit nonzero unless the actual public site serves the published artifacts.
-"""
+"""Check the actual public application and archive after a Pages deployment."""
 from __future__ import annotations
 
+from hashlib import sha256
+from html.parser import HTMLParser
+import json
+import os
 import time
 from urllib.error import HTTPError, URLError
-from urllib.parse import urljoin
+from urllib.parse import urljoin, urlsplit
 from urllib.request import Request, urlopen
 
-BASE = "https://dovvnloading.github.io/loops-research-archive/"
-# A sentinel string is checked only where an informative signature is stable.
+BASE = os.environ.get("SITE_URL", "https://dovvnloading.github.io/loops-research-archive/").rstrip("/") + "/"
 RESOURCES = {
-    "": b"<html",
-    "site-v2.css": None,
-    "site-v2.js": None,
+    "": b'<html',
+    "health.json": b'loops-fractal-research-engine',
+    "data/manifest.json": b'loops-research-data-v1',
+    "data/tip.json": b'EXACT_PERIOD9_MISIUREWICZ_TIP_CERTIFICATE_PASS',
+    "data/ledger.json": b'"obligations"',
     "ledger.json": b'"obligations"',
-    "dossier.html": b"<title",
-    "classic.html": b"<html",
-    "figs/readme/two-scale-return.svg": b"<svg",
-    "figs/readme/ledger-status.svg": b"<svg",
-    "figs/m_overview.png": b"\x89PNG\r\n\x1a\n",
-    "marked_width_mlc_manuscript.pdf": b"%PDF-",
-    "papers/paper2_rooted_end_compactification/"
-    "paper2_direct_decoration_rooted_end_compactification_v1.1_visual.pdf": b"%PDF-",
+    "classic.html": b'./#archive',
+    "dossier.html": b'./#archive',
+    "figs/readme/ledger-status.svg": b'<svg',
+    "marked_width_mlc_manuscript.pdf": b'%PDF-',
+    "Period27Dyadic.lean": None,
 }
 
 
-def check(path: str, expected: bytes | None) -> None:
+def check(path: str, expected: bytes | None = None) -> bytes:
     url = urljoin(BASE, path)
-    request = Request(url, headers={"User-Agent": "loops-research-archive-pages-smoke/1.0"})
-    last_error: Exception | None = None
+    request = Request(url, headers={"User-Agent": "loops-fractal-engine-smoke/1.0", "Cache-Control": "no-cache"})
+    last_error = None
     for attempt in range(4):
         try:
-            with urlopen(request, timeout=20) as response:
-                if response.status != 200:
-                    raise AssertionError(f"HTTP {response.status}: {url}")
-                beginning = response.read(32768)
-            if not beginning:
-                raise AssertionError(f"Empty response: {url}")
-            if expected is not None and expected.lower() not in beginning.lower():
-                raise AssertionError(f"Missing expected resource signature: {url}")
+            with urlopen(request, timeout=25) as response:
+                assert response.status == 200, f"HTTP {response.status}: {url}"
+                content = response.read(2_000_000)
+            assert content, f"Empty response: {url}"
+            assert expected is None or expected.lower() in content.lower(), f"Resource signature missing: {url}"
             print(f"PASS HTTP 200 {url}", flush=True)
-            return
+            return content
         except (HTTPError, URLError, TimeoutError, AssertionError) as exc:
             last_error = exc
-            if attempt != 3:
+            if attempt < 3:
                 time.sleep(5)
-    raise AssertionError(f"Public Pages check failed: {url}: {last_error}")
+    raise AssertionError(f"Public site check failed: {url}: {last_error}")
+
+
+class Assets(HTMLParser):
+    def __init__(self):
+        super().__init__()
+        self.paths = []
+
+    def handle_starttag(self, tag, attrs):
+        values = dict(attrs)
+        if tag in {"script", "link"}:
+            path = values.get("src") or values.get("href") or ""
+            if path and not urlsplit(path).netloc and not path.startswith(("data:", "#")):
+                self.paths.append(path)
 
 
 if __name__ == "__main__":
-    for resource, signature in RESOURCES.items():
-        check(resource, signature)
-    print(f"PASS: {len(RESOURCES)} public Pages endpoints are accessible")
+    responses = {path: check(path, signature) for path, signature in RESOURCES.items()}
+    parser = Assets()
+    parser.feed(responses[""].decode())
+    assert parser.paths, "No bundled application assets found."
+    for path in dict.fromkeys(parser.paths):
+        check(path)
+    health = json.loads(responses["health.json"])
+    assert health["entry_sha256"] == sha256(responses[""]).hexdigest(), "Deployment contains inconsistent app entry and health manifest."
+    manifest = json.loads(responses["data/manifest.json"])
+    assert health["data_sha256"] == manifest["input_sha256"]
+    tip = json.loads(responses["data/tip.json"])["parameter_bracket"]
+    assert isinstance(tip["lower_numerator"], str), "Exact bracket was rounded by a JSON-number conversion."
+    print(f"PASS: {len(RESOURCES) + len(set(parser.paths))} deployed endpoints; consistent app/data manifests; exact integer transport.")
