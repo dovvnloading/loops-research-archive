@@ -358,6 +358,16 @@ bank conditions, §5](../research/independent_audits/stationary_transport_attack
 python3 -B research/independent_audits/stationary_transport_attack_20261124/verify.py
 ```
 
+The proposed [finite Lean accounting module](weighted/StationaryEndpointCover.lean)
+isolates the real-valued double-counting identity, weak duality, one-end
+and two-end bank bounds, and the conditional degree budget.
+The input is the incidence-width bound at every positively charged end,
+not an assumption that all ideal widths are finite. Uncharged values are
+unused real placeholders; modulus and its extended-real infimum are
+outside this module. The native degree census and actual exit existence
+remain separate geometric inputs. See the [scope and reproduction note](../research/independent_audits/stationary_transport_attack_20261124/LEAN_ENDPOINT_ACCOUNTING.md).
+Kernel status is determined by the weighted Lean workflow.
+
 This checker establishes finite rational endpoint-cover and degree-budget
 certificates and rejects invalid accounting. It does not construct native
 exits. The stationary hypotheses still need to supply one eligible actual
