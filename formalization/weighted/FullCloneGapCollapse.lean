@@ -126,7 +126,9 @@ theorem full_clone_nonleading_eigenvalue_close (n : ℕ) (t : ℝ)
   have hinverse : t * (1 / t) = 1 := by field_simp [ne_of_gt ht0]
   have hsq : 0 < (t - 1) ^ 2 := sq_pos_of_pos (by linarith)
   have hinvgap : t - 1 / t < 2 * (t - 1) := by
-    apply (mul_lt_mul_left ht0).mp
+    by_contra hnot
+    have hle : 2 * (t - 1) ≤ t - 1 / t := le_of_not_gt hnot
+    have hm := mul_le_mul_of_nonneg_left hle ht0.le
     nlinarith
   have hexcess := clone_root_excess_bound n t ht hroot
   have hcoeff : ((2 * n + 4 : ℕ) : ℝ) = 2 * ((n : ℝ) + 2) := by
