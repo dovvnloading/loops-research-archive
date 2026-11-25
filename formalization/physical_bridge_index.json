@@ -1628,11 +1628,26 @@
         "bank_charge_le_degree",
         "one_end_degree_budget",
         "two_end_degree_budget"
+      ],
+      "formalization/weighted/StationaryPrefixCharge.lean": [
+        "recover_critical_stay",
+        "critical_exit",
+        "backward_mem",
+        "forward_prefix_deep",
+        "deep_prefix_first",
+        "prefix_degree_sum",
+        "common_prefix_energy",
+        "half_pair_cover",
+        "self_pair_forces_half",
+        "half_minimal",
+        "series_weight_optimal",
+        "series_weight_attained"
       ]
     },
     "checks": [
       "research/independent_audits/stationary_transport_attack_20261124/verify.py",
-      "research/independent_audits/stationary_transport_attack_20261124/check_endpoint_cover_lean_model.py"
+      "research/independent_audits/stationary_transport_attack_20261124/check_endpoint_cover_lean_model.py",
+      "research/independent_audits/stationary_transport_attack_20261124/check_prefix_charge.py"
     ],
     "obligations": [
       "KKL_STATIONARY_FINAL_FIXED_COMPONENT_EXIT",
