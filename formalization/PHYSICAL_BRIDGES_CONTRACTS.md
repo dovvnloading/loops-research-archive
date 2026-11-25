@@ -796,6 +796,30 @@ await CI. All seven workflows passed at 2bf9128, including
 226,670 critical phase/selection checks and two Lean additions.
 No ledger status is promoted.
 
+The [anchored short-crest and long-jump theorem](../research/independent_audits/stationary_transport_attack_20261124/ANCHORED_SHORT_JUMP.md)
+uses first/last signed probes to advance a proper whole common
+interval, and a common outside atom to force a series response
+when its pulled image saturates. Short common-crest packets at
+high q have this outside guard by cyclic order. A localized
+escape metric in one old-proper covering sector J (length <=1/d)
+charges only raw lifts meeting a low test rectangle and escaping
+the slab; opposite inside/outside old probes force a full good
+parent lift. The cost is 200(1+log(a/(2g)))+4V, independent of
+the covering degree d, with a actual sector length and g its
+probe margin. The actual proper-middle one-step chart and
+tower squares produce a full long chart; the guard depends
+only on the six fixed terminal limb lengths. Exact corrected
+interval nonreturn bounds critical visits; a finite macro-stage
+schedule and backward tolerances give the conditional estimate
+M_*<=C_b(R+V+1+G_T+D_remote), where G_T is the terminal angular
+guard and D_remote the global-minus-near anchored supremum gap.
+Neither is yet proved uniformly controlled. This is a route
+around singleton and phase-assembly hypotheses, not a native
+global theorem. [Finite checker](../research/independent_audits/stationary_transport_attack_20261124/check_anchored_short_jump.py); two new algebra
+lemmas await CI. All seven workflows passed at 07aa9c3,
+including 575,432 finite tests and three Lean declarations.
+No ledger promotion.
+
 This checker establishes finite rational endpoint-cover and degree-budget
 certificates and rejects invalid accounting. It does not construct native
 exits. The stationary hypotheses still need to supply one eligible actual

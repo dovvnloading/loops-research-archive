@@ -417,4 +417,33 @@ theorem anchored_nonshort_fraction_excluded (W s B Q sigma : ℝ)
     False := by
   nlinarith [mul_pos hsigma hW]
 
+/-- One backward tolerance step for the normalized deficit.
+Q is the actual nonnegative square-root allowance bounded by
+the squared budget; the chosen next tolerance is positive. -/
+theorem anchored_guard_scale_step (u eta Q next a s t : ℝ)
+    (ht : 0 < t) (hQ : 0 ≤ Q)
+    (hu : u ≤ s) (he : eta ≤ s)
+    (hsmall : 2*s ≤ t/2) (hbudget : a*a*(2*s) ≤ t*t/16)
+    (hQsq : Q^2 ≤ a*a*(u+eta))
+    (hstep : next ≤ u+eta+Q) :
+    next ≤ t := by
+  have hsum : u+eta ≤ 2*s := by linarith
+  have hmul : a*a*(u+eta) ≤ a*a*(2*s) :=
+    mul_le_mul_of_nonneg_left hsum (mul_self_nonneg a)
+  have hsq : Q^2 ≤ t*t/16 := hQsq.trans (hmul.trans hbudget)
+  have hq : Q ≤ t/4 := by
+    by_contra! hn
+    have hp : 0 < Q+t/4 := by linarith
+    nlinarith [mul_pos (sub_pos.mpr hn) hp]
+  linarith
+
+/-- Relative near-critical approximation with half the error
+budget spent on the actual remote-supremum gap and half on
+approximating the near-critical supremum. -/
+theorem near_bank_start_deficit (M near w t : ℝ)
+    (hgap : M-near ≤ t*M/2)
+    (happrox : near-w ≤ t*M/2) :
+    M-w ≤ t*M := by
+  linarith
+
 end LoopsStationaryPacketGain

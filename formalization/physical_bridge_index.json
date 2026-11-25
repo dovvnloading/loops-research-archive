@@ -1712,7 +1712,9 @@
         "optimized_phase_deficit_le_fixed",
         "median_reciprocal_loss",
         "anchored_defect_bookkeeping",
-        "anchored_nonshort_fraction_excluded"
+        "anchored_nonshort_fraction_excluded",
+        "anchored_guard_scale_step",
+        "near_bank_start_deficit"
       ]
     },
     "checks": [
@@ -1726,7 +1728,8 @@
       "research/independent_audits/stationary_transport_attack_20261124/check_ambient_shared_crest.py",
       "research/independent_audits/stationary_transport_attack_20261124/check_sector_phase_assembly.py",
       "research/independent_audits/stationary_transport_attack_20261124/check_critical_phase_localization.py",
-      "research/independent_audits/stationary_transport_attack_20261124/check_anchored_phase_free.py"
+      "research/independent_audits/stationary_transport_attack_20261124/check_anchored_phase_free.py",
+      "research/independent_audits/stationary_transport_attack_20261124/check_anchored_short_jump.py"
     ],
     "obligations": [
       "KKL_STATIONARY_FINAL_FIXED_COMPONENT_EXIT",
