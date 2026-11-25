@@ -116,4 +116,32 @@ theorem at_least_one_birth {b e : ℕ}
     0 < e := by
   exact no_full_window_at_double_bound (owner_phase_count owner phase hinj)
 
+/-- After retaining only the latest qualifying stage for each final
+target, at most one of the b prefix targets pays a degree-two suffix.
+Here s is the earliest charged stage and r is the remaining horizon. -/
+theorem latest_bank_degree_budget (s r : ℕ) (b : ℝ) (c : ℕ → ℝ)
+    (hp : ∀ j < r, c j ≤ (b+1)*(2 : ℝ)^(s+j))
+    (hlast : c r ≤ b*(2 : ℝ)^(s+r)) :
+    (∑ j ∈ Finset.range (r+1), c j) ≤
+      b*(2 : ℝ)^(s+r)+(b+1)*((2 : ℝ)^(s+r)-(2 : ℝ)^s) := by
+  have hs : (∑ j ∈ Finset.range r, c j) ≤
+      ∑ j ∈ Finset.range r, (b+1)*(2 : ℝ)^(s+j) := by
+    apply Finset.sum_le_sum
+    intro j hj
+    exact hp j (Finset.mem_range.mp hj)
+  have he : (∑ j ∈ Finset.range r, (b+1)*(2 : ℝ)^(s+j)) =
+      (b+1)*((2 : ℝ)^(s+r)-(2 : ℝ)^s) := by
+    calc
+      _ = ∑ j ∈ Finset.range r, ((b+1)*(2 : ℝ)^s)*(2 : ℝ)^j := by
+        apply Finset.sum_congr rfl
+        intro j _
+        rw [pow_add]
+        ring
+      _ = _ := by
+        rw [← Finset.mul_sum, degree_prefix_sum, pow_add]
+        ring
+  rw [he] at hs
+  rw [Finset.sum_range_succ]
+  linarith
+
 end LoopsStationaryEndpointVisits
