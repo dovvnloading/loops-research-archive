@@ -9,4 +9,4 @@ The Mandelbulb, Mandelbox, and quaternion Julia scenes raymarch a numerical iter
 - Camera position is optional in the existing version-one share/session format; old saved orbit views still load.
 - This is finite-precision exploration, not infinite zoom, interval arithmetic, or a proof of any dynamical claim. GPU Float32 geometry and numerical distance estimators eventually limit detail. The existing high-precision complex plane laboratory is separate. No WebGPU or perturbation rendering is claimed.
 
-Three curated close-flight entry points (Surface descent, Into the folds, Microstructure) are sampled by the same CPU distance-field navigation rather than hand-authored meshes. The inspector flags approaches near the Float32 floor.
+Four curated close-flight entry points (Surface descent, Into the folds, Beyond the slice, Microstructure) are sampled by the same CPU distance-field navigation rather than hand-authored meshes. The inspector flags approaches near the Float32 floor.
