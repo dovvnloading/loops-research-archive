@@ -304,4 +304,38 @@ theorem precritical_integrated_strict_response (W G w P B D E N : ℝ)
   have hp : 0 < W/(512*N) := by positivity
   linarith
 
+/-- A pair of opposite quadrilateral width bounds, each dominating
+half of the surviving source width, bounds that source width by two.
+The actual four-electrode construction is the written Shift argument. -/
+theorem reciprocal_half_width_bound (W x y : ℝ) (hW : 0 ≤ W)
+    (hx : W/2 ≤ x) (hy : W/2 ≤ y) (hxy : x*y ≤ 1) :
+    W ≤ 2 := by
+  have hhalf : 0 ≤ W/2 := by linarith
+  have hx0 : 0 ≤ x := hhalf.trans hx
+  have hp : (W/2)*(W/2) ≤ x*y :=
+    mul_le_mul hx hy hhalf hx0
+  by_contra! hn
+  have hpos : 0 < W+2 := by linarith
+  nlinarith [mul_pos (sub_pos.mpr hn) hpos]
+
+/-- A series response on a subfamily of the whole primary-good
+ambient lamination bounds its squared width in terms of the ambient
+allowance. The whole primary support addition is explicit. -/
+theorem ambient_auxiliary_mass_cap (W G w P B D E M : ℝ)
+    (hw : 0 ≤ w) (hP : 0 ≤ P) (hB : 0 < B)
+    (hgood : W ≤ G+E) (hadd : G-w+P ≤ D)
+    (hseries : w*(P+B) ≤ P*B) (hcap : D ≤ M) :
+    w^2 ≤ B*(M-W+E) := by
+  have hs := series_excess_bound w P B hw hP hB hseries
+  have hd : w^2/B ≤ M-W+E := by linarith
+  simpa [mul_comm] using (div_le_iff₀ hB).mp hd
+
+/-- Collect the two double/precritical charges and one over-critical
+charge without using width additivity between different outputs. -/
+theorem ambient_defect_bookkeeping (s E H C d K a Ea R Q2 QN : ℝ)
+    (hpart : s ≤ E+H*(2*C+d)+(4*C+d+Q2)+K*a+
+      (2*C+Q2)+(4*C+d+Q2)+Ea+4*R+QN) :
+    s ≤ E+(2*H+10)*C+K*a+Ea+4*R+(H+2)*d+3*Q2+QN := by
+  nlinarith only [hpart]
+
 end LoopsStationaryPacketGain

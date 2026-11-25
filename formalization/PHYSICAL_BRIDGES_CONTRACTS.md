@@ -692,6 +692,35 @@ passed 80,885 exact arithmetic cases. No new Lean theorem, actual
 native geometry certification, or mixed-direction/ambient
 terminality result is claimed.
 
+The [signed endpoint shift](../research/independent_audits/stationary_transport_attack_20261124/AWAY_ENDPOINT_SHIFT.md)
+supplies the previously separate away-Shift input on the same exact
+corrected geometric action. End-fine probes inside and outside the
+source cap trap the actual retained base and shift its endpoint limbs.
+A median split and four fixed alternating half-plane electrodes give
+the reciprocal width bound, with the canonical-completion and
+chart-discard cost: W(A)<=4V+2C_2+4, or 2V+C_2+2 in one direction.
+Simplicity of a surviving singleton is recovered by the actual
+confined retained gap, and essential equal-end inputs cost <=1/2.
+
+The [shared-crest ambient response](../research/independent_audits/stationary_transport_attack_20261124/AMBIENT_SHARED_CREST_RESPONSE.md)
+constructs a common raw primary for the entire ambient lamination
+(including short or breakable background), uses singleton identity
+only on the stationary subset, and charges the positive and negative
+stationary directions against the same whole primary widths.
+An extra raw comparison stage, not an extra singleton requirement,
+replaces the earlier relative precritical three-quarter cap by
+O(C_2+d+sqrt(Md)), with d=M-W+E. On a common actual BL_1-atom
+input with a stationary fraction sigma, this gives the explicit
+ambient O_(b,sigma)(R+V+1) threshold and uniform K=6b(h+4)+1
+response control. The corrected marking and exact saturated
+graph/host hypotheses remain; a general unrelated-crest ambient
+selection/replacement theorem and source-level downstream integration
+are still open. The [discrete regression](../research/independent_audits/stationary_transport_attack_20261124/check_ambient_shared_crest.py) checks
+the end-probe, endpoint-order and scale algebra, not the geometry.
+Three finite real-number lemmas are added to StationaryPacketGain
+pending kernel CI. All seven workflows passed at e967265.
+No ledger status is promoted.
+
 This checker establishes finite rational endpoint-cover and degree-budget
 certificates and rejects invalid accounting. It does not construct native
 exits. The stationary hypotheses still need to supply one eligible actual
