@@ -42,7 +42,7 @@ test('numerical exploration boundaries are preserved and excessive imports are l
   assert.equal(lower.camera.pitch, -1.4);
   const excessive = validateState({ scene: 'mandelbox', power: 99, iterations: 1e9, camera: { distance: 100, pitch: 7 } });
   assert.equal(excessive.power, 3);
-  assert.equal(excessive.iterations, 32);
+  assert.equal(excessive.iterations, 40);
   assert.equal(excessive.camera.distance, 14);
   assert.equal(excessive.camera.pitch, 1.4);
   const plane = validateState({ scene: 'julia', scale: 1e-30, iterations: 1e9, julia: [-4, 4] });

@@ -26,6 +26,7 @@ precision highp float;
 out vec4 outColor;
 uniform vec2 uResolution;
 uniform vec3 uCamera;
+uniform vec3 uEye;
 uniform int uScene;
 uniform int uIterations;
 uniform int uPalette;
@@ -43,7 +44,7 @@ vec2 bulb(vec3 p) {
   vec3 z=p;
   float dr=1.0, r=0.0, trap=10.0;
   float power=clamp(uPower,2.0,16.0);
-  for(int i=0;i<32;i++) {
+  for(int i=0;i<64;i++) {
     if(i>=uIterations) break;
     float component=max(max(abs(z.x),abs(z.y)),abs(z.z));
     r=component>0.0 ? length(z/component)*component : 0.0;
@@ -58,7 +59,9 @@ vec2 bulb(vec3 p) {
     theta*=power; phi*=power;
     z=zr*vec3(sin(theta)*cos(phi),sin(phi)*sin(theta),cos(theta))+p;
   }
-  return vec2(0.5*log(max(r,1.0000001))*r/max(dr,0.00001),trap);
+  float m=max(max(abs(z.x),abs(z.y)),abs(z.z));
+  r=m>0.0?length(z/m)*m:0.0;
+  return vec2(r>uBailout?0.5*log(r)*r/max(dr,0.00001):0.0,trap);
 }
 
 vec2 boxFractal(vec3 p) {
@@ -66,14 +69,14 @@ vec2 boxFractal(vec3 p) {
   vec3 z=p*2.0, c=z;
   float dr=1.0, trap=10.0;
   float scale=-clamp(uPower,1.2,3.0);
-  for(int i=0;i<24;i++) {
+  for(int i=0;i<40;i++) {
     if(i>=uIterations) break;
     z=clamp(z,-1.0,1.0)*2.0-z;
     float r2=dot(z,z);
     trap=min(trap,abs(z.y)*0.45+0.06*r2);
     float fold=clamp(1.0/max(r2,0.00001),1.0,4.0);
     z*=fold; dr*=fold;
-    z=scale*z+c; dr=dr*abs(scale)+1.0;
+    z=scale*z+c; dr=min(1e30,dr*abs(scale)+1.0);
   }
   return vec2(length(z)/abs(dr)*0.5,trap);
 }
@@ -81,17 +84,17 @@ vec2 boxFractal(vec3 p) {
 vec2 quaternion(vec3 p) {
   vec4 z=vec4(p,uSlice);
   vec4 c=vec4(uJuliaHi,0.18,0.0);
-  float r2=dot(z,z), dr2=1.0, trap=10.0;
-  for(int i=0;i<32;i++) {
+  float r2=dot(z,z), dr=1.0, trap=10.0;
+  for(int i=0;i<64;i++) {
     if(i>=uIterations) break;
     trap=min(trap,length(z.yz));
     if(r2>uBailout*uBailout) break;
-    dr2*=max(4.0*r2,0.000001);
+    dr=min(1e30,dr*max(2.0*sqrt(r2),0.000001));
     z=vec4(z.x*z.x-dot(z.yzw,z.yzw),2.0*z.x*z.yzw)+c;
     r2=dot(z,z);
   }
   float r=sqrt(r2);
-  return vec2(0.5*r*log(max(r,1.0000001))/sqrt(max(dr2,0.000001)),trap);
+  return vec2(r>uBailout?0.5*r*log(r)/max(dr,0.000000000001):0.0,trap);
 }
 
 vec2 mapScene(vec3 p) {
@@ -102,26 +105,27 @@ vec2 mapScene(vec3 p) {
 
 vec3 normalAt(vec3 p,float eps) {
   vec2 e=vec2(1.0,-1.0)*eps;
-  return normalize(e.xyy*mapScene(p+e.xyy).x + e.yyx*mapScene(p+e.yyx).x
-    +e.yxy*mapScene(p+e.yxy).x+e.xxx*mapScene(p+e.xxx).x);
+  vec3 g=e.xyy*mapScene(p+e.xyy).x + e.yyx*mapScene(p+e.yyx).x
+    +e.yxy*mapScene(p+e.yxy).x+e.xxx*mapScene(p+e.xxx).x;
+  return length(g)>1e-20?normalize(g):vec3(0,1,0);
 }
 
 float ambientOcclusion(vec3 p,vec3 n,float eps) {
   float occlusion=0.0, weight=1.0;
   for(int i=1;i<=4;i++) {
-    float h=eps*float(i)*8.0+0.018*float(i);
+    float h=eps*float(i*i)*6.0;
     occlusion+=(h-mapScene(p+n*h).x)*weight;
     weight*=0.55;
   }
-  return clamp(1.0-2.0*occlusion,0.15,1.0);
+  return clamp(1.0-0.28*occlusion/max(eps*8.0,0.000001),0.15,1.0);
 }
 
-float shadow(vec3 p,vec3 light) {
-  float result=1.0,t=0.015;
+float shadow(vec3 p,vec3 light,float eps) {
+  float result=1.0,t=eps*6.0;
   for(int i=0;i<18;i++) {
     float h=mapScene(p+light*t).x;
     result=min(result,10.0*h/t);
-    t+=clamp(h,0.025,0.18);
+    t+=clamp(h*0.7,eps,0.18);
     if(result<0.05 || t>2.8) break;
   }
   return clamp(result,0.08,1.0);
@@ -129,14 +133,14 @@ float shadow(vec3 p,vec3 light) {
 
 void main() {
   vec2 uv=(gl_FragCoord.xy-uResolution*0.5)/uResolution.y;
-  vec3 ro=uCamera.z*vec3(sin(uCamera.x)*cos(uCamera.y),sin(uCamera.y),cos(uCamera.x)*cos(uCamera.y));
-  vec3 forward=normalize(-ro);
+  vec3 ro=uEye;
+  vec3 forward=-vec3(sin(uCamera.x)*cos(uCamera.y),sin(uCamera.y),cos(uCamera.x)*cos(uCamera.y));
   vec3 right=normalize(cross(forward,vec3(0,1,0)));
   vec3 up=cross(right,forward);
   vec3 rd=normalize(forward+0.97*(uv.x*right+uv.y*up));
   vec3 color=vec3(0.008,0.014,0.017);
   color+=vec3(0.007,0.011,0.011)*exp(-3.0*dot(uv,uv));
-  float radius=uScene==1 ? 2.2 : max(1.55,pow(2.0,1.0/(max(uPower,2.0)-1.0))+0.05);
+  float radius=uScene==1 ? 6.0 : max(1.55,pow(2.0,1.0/(max(uPower,2.0)-1.0))+0.05);
   if(uScene==2) radius=max(1.55,0.5*(1.0+sqrt(1.0+4.0*length(vec4(uJuliaHi,0.18,0.0))))+0.05);
   float b=dot(ro,rd), disc=b*b-dot(ro,ro)+radius*radius;
   float travel=0.0, trap=0.0, epsilon=0.0003;
@@ -144,13 +148,14 @@ void main() {
   if(disc>0.0) {
     travel=max(0.0,-b-sqrt(disc));
     float exitT=-b+sqrt(disc);
-    for(int i=0;i<220;i++) {
-      if(i>=int(mix(85.0,210.0,uDetail))) break;
+    for(int i=0;i<420;i++) {
+      if(i>=int(mix(110.0,420.0,uDetail))) break;
       vec3 p=ro+rd*travel;
       vec2 sampleValue=mapScene(p);
-      epsilon=max(0.00008,travel/uResolution.y*mix(0.9,0.35,uDetail));
+      float worldFloor=2e-7*max(1.0,max(abs(p.x),max(abs(p.y),abs(p.z))));
+      epsilon=max(worldFloor,travel/uResolution.y*mix(0.85,0.26,uDetail));
       if(sampleValue.x<epsilon) { hit=true; trap=sampleValue.y; break; }
-      travel+=max(sampleValue.x*0.7,epsilon*0.5);
+      travel+=max(sampleValue.x*0.62,epsilon*0.5);
       if(travel>exitT) break;
     }
   }
@@ -161,14 +166,16 @@ void main() {
     vec3 rim=normalize(vec3(3.0,1.0,-2.0));
     float diffuse=max(dot(n,key),0.0);
     float ao=ambientOcclusion(p,n,epsilon);
-    float shade=shadow(p+n*epsilon*5.0,key);
+    float shade=shadow(p+n*epsilon*5.0,key,epsilon);
     float orbit=clamp(exp(-3.5*trap),0.0,1.0);
     float material=clamp(0.54+(0.06+0.32*uTrap)*sin(trap*8.0)+0.18*n.y,0.0,1.0);
     vec3 base=palette(material);
     if(uPalette==0) base=mix(base,vec3(0.72,0.51,0.27),orbit*uTrap*0.48);
     float specular=pow(max(dot(n,normalize(key-rd)),0.0),38.0);
     float edge=pow(1.0-max(dot(n,-rd),0.0),3.5);
-    color=base*(0.12*ao+diffuse*shade*1.35*ao);
+    float headlight=max(dot(n,-rd),0.0);
+    float nearLight=1.0-smoothstep(0.02,0.65,travel);
+    color=base*(0.16*ao+diffuse*shade*1.15*ao+headlight*nearLight*0.65);
     color+=vec3(0.78,0.9,0.94)*specular*shade*0.34;
     color+=palette(0.75)*pow(max(dot(n,rim),0.0),2.0)*0.22*ao;
     color+=vec3(0.20,0.32,0.30)*edge*0.30;

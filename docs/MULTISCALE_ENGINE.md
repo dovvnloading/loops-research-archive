@@ -1,0 +1,10 @@
+# Multiscale fractal flight
+
+The Mandelbulb, Mandelbox, and quaternion Julia scenes raymarch a numerical iterative distance field on a full-screen triangle. There is no surface mesh in those modes. The separate escape landscape is a deliberately sampled height field.
+
+- Scroll toward a point in the viewport to move the actual camera along its viewing ray, entering flight mode. Drag to look, WASD to translate, Q/E to descend/ascend. The inspector offers equivalent buttons and return to orbit; R resets the view.
+- Flight speed scales with a CPU evaluation of the same iterative distance field. Movement is subdivided and conservatively stopped near the numerical surface. Distance estimates are heuristic, not guaranteed collision distances.
+- The requested iteration count is a minimum, with additional iterations as estimated clearance decreases, capped at 64 (bulb and quaternion) or 40 (box). The inspector reports the active budget and estimated clearance.
+- The ray hit threshold scales with ray travel and pixel footprint, down to a Float32 coordinate floor; normals, occlusion and lighting adapt to the resolved scale. During interaction a reduced-resolution preview is rendered; after input stops intermediate and full quality passes recover spatial detail.
+- Camera position is optional in the existing version-one share/session format; old saved orbit views still load.
+- This is finite-precision exploration, not infinite zoom, interval arithmetic, or a proof of any dynamical claim. GPU Float32 geometry and numerical distance estimators eventually limit detail. The existing high-precision complex plane laboratory is separate. No WebGPU or perturbation rendering is claimed.

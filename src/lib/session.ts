@@ -12,14 +12,15 @@ export function validateState(value: unknown): EngineState {
   const scene = typeof x.scene==='string' && scenes.includes(x.scene) ? x.scene as EngineState['scene'] : DEFAULT_STATE.scene;
   const plane = scene==='mandelbrot'||scene==='julia';
   const landscape = scene==='landscape';
+  const position = !plane && !landscape && Array.isArray(c.position) && c.position.length===3 && c.position.every(v=>typeof v==='number'&&Number.isFinite(v)) && Math.hypot(...(c.position as number[]))<=14 ? [...c.position] as [number,number,number] : undefined;
   return {
     scene, power:num(x.power,scene==='mandelbox'?2:8,scene==='mandelbox'?1.2:2,scene==='mandelbox'?3:16),
-    iterations:Math.round(num(x.iterations,plane?384:landscape?160:12,plane||landscape?32:2,plane?4096:landscape?512:32)),
+    iterations:Math.round(num(x.iterations,plane?384:landscape?160:12,plane||landscape?32:2,plane?4096:landscape?512:scene==='mandelbox'?40:64)),
     bailout:num(x.bailout,8,2,64),detail:num(x.detail,.65,0,1),exposure:num(x.exposure,1.1,.2,3),
     palette:typeof x.palette==='string' && ['glacier','ember','violet','mono'].includes(x.palette) ? x.palette as EngineState['palette'] : 'glacier',
-    camera:{yaw:num(c.yaw,.35,-1e4,1e4),pitch:num(c.pitch,landscape?.75:.18,landscape?.3:-1.4,1.4),distance:num(c.distance,3.6,1.65,14)},
+    camera:{yaw:num(c.yaw,.35,-1e4,1e4),pitch:num(c.pitch,landscape?.75:.18,landscape?.3:-1.4,1.4),distance:num(c.distance,3.6,1.65,14),...(position?{position}:{})},
     center:pair(x.center,[-.5,0],-1e5,1e5),scale:num(x.scale,3.2,landscape?1e-4:1e-7,12),julia:pair(x.julia,[-.74543,.11301],-4,4),
-    slice:num(x.slice,0,-2,2),autoRotate:scene!=='mandelbrot'&&x.autoRotate===true,showGrid:x.showGrid!==false,
+    slice:num(x.slice,0,-2,2),autoRotate:!position&&scene!=='mandelbrot'&&x.autoRotate===true,showGrid:x.showGrid!==false,
     quality:typeof x.quality==='string' && ['auto','high','balanced','low'].includes(x.quality) ? x.quality as EngineState['quality'] : 'auto',orbitTrap:num(x.orbitTrap,.35,0,1),
   };
 }

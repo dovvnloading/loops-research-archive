@@ -11,7 +11,7 @@ export interface EngineState {
   detail: number;
   exposure: number;
   palette: Palette;
-  camera: { yaw: number; pitch: number; distance: number };
+  camera: { yaw: number; pitch: number; distance: number; position?: [number, number, number] };
   center: [number, number];
   scale: number;
   julia: [number, number];
@@ -27,6 +27,9 @@ export interface EngineStats {
   resolution: string;
   precision: string;
   renderer: string;
+  iterations?: number;
+  clearance?: number;
+  refinement?: string;
 }
 
 export interface EngineHooks {

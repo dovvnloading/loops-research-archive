@@ -1,4 +1,5 @@
 import type { EngineHooks, EngineState, Palette, SceneId } from '../types';
+import { clearanceAt, dolly, eye, flightStep, iterationBudget, volumeScene } from './navigation';
 import {
   complexFragment,
   fullscreenVertex,
@@ -16,7 +17,7 @@ const sceneIds: Record<SceneId, number> = {
 };
 const paletteIds: Record<Palette, number> = { glacier: 0, ember: 1, violet: 2, mono: 3 };
 const uniformNames = [
-  'uResolution', 'uCamera', 'uScene', 'uIterations', 'uPalette', 'uPower',
+  'uResolution', 'uCamera', 'uEye', 'uScene', 'uIterations', 'uPalette', 'uPower',
   'uBailout', 'uDetail', 'uExposure', 'uSlice', 'uTrap', 'uJuliaHi', 'uJuliaLo',
   'uCenterHi', 'uCenterLo', 'uScale', 'uGrid',
 ] as const;
@@ -25,7 +26,7 @@ interface Program { program: WebGLProgram; uniforms: Record<UniformName, WebGLUn
 type Point = { x: number; y: number };
 
 const clamp = (x: number, lo: number, hi: number) => Math.min(hi, Math.max(lo, Number.isFinite(x) ? x : lo));
-const clone = (s: EngineState): EngineState => ({ ...s, camera: { ...s.camera }, center: [...s.center], julia: [...s.julia] });
+const clone = (s: EngineState): EngineState => ({ ...s, camera: { ...s.camera, ...(s.camera.position ? {position:[...s.camera.position] as [number,number,number]} : {}) }, center: [...s.center], julia: [...s.julia] });
 const planar = (s: SceneId) => s === 'mandelbrot' || s === 'julia';
 
 /**
@@ -60,13 +61,17 @@ export class FractalEngine {
   private lastWasRendered = false;
   private cpuGeneration = 0;
   private lastStatsFps = 0;
+  private refinement = 0;
+  private lastInteraction = performance.now();
+  private effectiveIterations = 12;
+  private clearance = 1;
 
   constructor(canvas: HTMLCanvasElement, state: EngineState, hooks: EngineHooks = {}) {
     this.canvas = canvas;
     this.state = this.sanitize(state);
     this.hooks = hooks;
     canvas.style.touchAction = 'none';
-    canvas.setAttribute('aria-label', 'Interactive fractal viewport. Drag to navigate. Scroll to zoom. Shift-click the complex plane to choose a Julia parameter.');
+    canvas.setAttribute('aria-label', 'Interactive fractal viewport. Drag to orbit or look around. Scroll toward the cursor to fly. WASD/QE move in 3D. Shift-click the complex plane to choose a Julia parameter.');
     if (!canvas.hasAttribute('tabindex')) canvas.tabIndex = 0;
     this.gl = canvas.getContext('webgl2', {
       alpha: false, antialias: false, depth: true,
@@ -100,6 +105,7 @@ export class FractalEngine {
       this.state.autoRotate = false;
       this.hooks.onChange?.({ scene: this.state.scene, iterations: this.state.iterations, autoRotate: false });
     }
+    this.restartRefinement();
     if (previous.scene !== this.state.scene) {
       this.autoScale = 0.78;
       this.slowFrames = 0;
@@ -111,6 +117,21 @@ export class FractalEngine {
     this.schedule();
   }
 
+  private restartRefinement() {
+    this.lastInteraction=performance.now();
+    if (volumeScene(this.state.scene) && this.refinement!==0) {this.refinement=0;this.resize();}
+  }
+
+  /** Public controls use exactly the same navigation as pointer input. */
+  zoom(multiplier:number) {
+    const r=this.canvas.getBoundingClientRect();
+    this.zoomAt(r.left+r.width/2,r.top+r.height/2,multiplier);
+  }
+
+  fly(key:string) {
+    if(volumeScene(this.state.scene))this.change({autoRotate:false,camera:flightStep(this.state,key)});
+  }
+
   resize() {
     if (this.disposed) return;
     const bounds = this.canvas.getBoundingClientRect();
@@ -118,6 +139,8 @@ export class FractalEngine {
     const base = quality === 'high' ? 1 : quality === 'balanced' ? 0.8 : quality === 'low' ? 0.52 : this.autoScale;
     let ratio = Math.min(window.devicePixelRatio || 1, quality === 'high' ? 2 : 1.5) * base;
     const maxPixels = quality === 'high' ? 2_400_000 : quality === 'low' ? 350_000 : 1_000_000;
+    // Render interaction previews first; recover spatial detail after input stops.
+    if(volumeScene(this.state.scene)) ratio*=this.refinement===0?.55:this.refinement===1?.8:1;
     const pixels = bounds.width * bounds.height * ratio * ratio;
     if (pixels > maxPixels) ratio *= Math.sqrt(maxPixels / pixels);
     if (this.cpu) ratio = Math.min(ratio, 400 / Math.max(1, bounds.width));
@@ -134,7 +157,7 @@ export class FractalEngine {
 
   /** Returns the actual current GPU image, at the active rendering resolution. */
   capture(): string {
-    if (this.gl && !this.lost) this.renderGpu();
+    if (this.gl && !this.lost) {this.refinement=2;this.resize();this.renderGpu();}
     return this.canvas.toDataURL('image/png');
   }
 
@@ -153,8 +176,10 @@ export class FractalEngine {
     s.camera.yaw = Number.isFinite(s.camera.yaw) ? s.camera.yaw : 0.35;
     s.camera.pitch = clamp(s.camera.pitch, s.scene === 'landscape' ? 0.3 : -1.4, 1.4);
     s.camera.distance = clamp(s.camera.distance, 1.65, 14);
+    if(!volumeScene(s.scene)||!s.camera.position||!s.camera.position.every(Number.isFinite)||Math.hypot(...s.camera.position)>14)delete s.camera.position;
+    if(s.camera.position)s.autoRotate=false;
     s.power = clamp(s.power, s.scene === 'mandelbox' ? 1.2 : 2, s.scene === 'mandelbox' ? 3 : 16);
-    s.iterations = Math.round(clamp(s.iterations, planar(s.scene) || s.scene === 'landscape' ? 32 : 2, planar(s.scene) ? 4096 : s.scene === 'landscape' ? 512 : 32));
+    s.iterations = Math.round(clamp(s.iterations, planar(s.scene) || s.scene === 'landscape' ? 32 : 2, planar(s.scene) ? 4096 : s.scene === 'landscape' ? 512 : s.scene==='mandelbox'?40:64));
     s.bailout = clamp(s.bailout, 2, 64);
     s.detail = clamp(s.detail, 0, 1);
     s.exposure = clamp(s.exposure, 0.2, 3);
@@ -269,11 +294,17 @@ export class FractalEngine {
     gl.uniform2f(u.uResolution, this.canvas.width, this.canvas.height);
     gl.uniform3f(u.uCamera, s.camera.yaw, s.camera.pitch, s.camera.distance);
     gl.uniform1i(u.uScene, sceneIds[s.scene]);
-    gl.uniform1i(u.uIterations, s.iterations);
+    if(kind==='volume') {
+      const p=eye(s.camera);
+      this.clearance=clearanceAt(s,p);
+      this.effectiveIterations=iterationBudget(s,this.clearance);
+      gl.uniform3f(u.uEye,...p);
+    } else this.effectiveIterations=s.iterations;
+    gl.uniform1i(u.uIterations, this.effectiveIterations);
     gl.uniform1i(u.uPalette, paletteIds[s.palette] ?? 0);
     gl.uniform1f(u.uPower, s.power);
     gl.uniform1f(u.uBailout, s.bailout);
-    gl.uniform1f(u.uDetail, s.detail);
+    gl.uniform1f(u.uDetail,kind==='volume'&&this.refinement===0?Math.min(s.detail,.55):s.detail);
     gl.uniform1f(u.uExposure, s.exposure);
     gl.uniform1f(u.uSlice, s.slice);
     gl.uniform1f(u.uTrap, s.orbitTrap);
@@ -311,6 +342,11 @@ export class FractalEngine {
     const delta = this.lastFrame ? Math.min(150, time - this.lastFrame) : 16;
     this.lastFrame = time;
     const animated = this.state.autoRotate && this.state.scene !== 'mandelbrot' && !this.cpu && !this.lost;
+    if(volumeScene(this.state.scene)&&!animated){
+      const idle=time-this.lastInteraction;
+      const next=idle>650?2:idle>180?1:0;
+      if(next>this.refinement){this.refinement=next;this.resize();}
+    } else if(animated&&this.refinement!==0){this.refinement=0;this.resize();}
     if (animated) {
       if (this.state.scene === 'julia') {
         const angle = Math.min(delta, 80) * 0.000045;
@@ -325,7 +361,7 @@ export class FractalEngine {
     }
     // A slow preceding draw also triggers adjustment when the user has stopped
     // dragging. Static scenes should not stay at an unusable initial resolution.
-    if (this.state.quality === 'auto' && this.lastWasRendered && delta > 80 && this.autoScale > 0.34) {
+    if (this.state.quality === 'auto' && (!volumeScene(this.state.scene)||this.refinement===0) && this.lastWasRendered && delta > 80 && this.autoScale > 0.34) {
       this.autoScale = Math.max(0.34, this.autoScale * Math.sqrt(50 / delta));
       this.resize();
     }
@@ -337,7 +373,7 @@ export class FractalEngine {
       this.dirty = false;
       if (this.state.quality === 'auto' && this.lastWasRendered && delta > 42) this.slowFrames++;
       else this.slowFrames = Math.max(0, this.slowFrames - 0.25);
-      if (this.slowFrames >= 8 && this.autoScale > 0.34) {
+      if (this.slowFrames >= 8 && this.autoScale > 0.34 && (!volumeScene(this.state.scene)||this.refinement===0)) {
         this.autoScale = Math.max(0.34, this.autoScale * 0.82);
         this.slowFrames = 0;
         this.resize();
@@ -358,13 +394,15 @@ export class FractalEngine {
     this.hooks.onStats?.({
       fps,
       resolution: `${this.canvas.width} × ${this.canvas.height}`,
-      precision: this.cpu ? 'Float64 · CPU' : planar(this.state.scene) ? 'Double-single · finite precision' : this.state.scene === 'landscape' ? 'Float32 · height field' : 'Float32 · distance estimate',
+      precision: this.cpu ? 'Float64 · CPU' : planar(this.state.scene) ? 'Double-single · finite precision' : this.state.scene === 'landscape' ? 'Float32 · height field' : 'Float32 · adaptive distance estimate',
+      ...(volumeScene(this.state.scene)?{iterations:this.effectiveIterations,clearance:this.clearance,refinement:['Preview','Refining','Settled'][this.refinement]}:{}),
       renderer: this.cpu ? 'CPU · 2D fallback' : this.lost ? 'GPU unavailable' : 'WebGL2 · custom GLSL',
     });
   }
 
   private change(patch: Partial<EngineState>) {
     this.state = this.sanitize({ ...this.state, ...patch });
+    this.restartRefinement();
     this.dirty = true;
     this.cpuGeneration++;
     this.hooks.onChange?.(patch);
@@ -388,6 +426,9 @@ export class FractalEngine {
         before[0] + (this.state.center[0] - before[0]) * ratio,
         before[1] + (this.state.center[1] - before[1]) * ratio,
       ] });
+    } else if(volumeScene(this.state.scene)) {
+      const r=this.canvas.getBoundingClientRect();
+      this.change({autoRotate:false,camera:dolly(this.state,multiplier,(x-r.left-r.width/2)/Math.max(1,r.height),(r.top+r.height/2-y)/Math.max(1,r.height))});
     } else {
       this.change({ camera: { ...this.state.camera, distance: clamp(this.state.camera.distance * multiplier, 1.65, 14) } });
     }
@@ -451,6 +492,7 @@ export class FractalEngine {
     }, { signal, passive: false });
     c.addEventListener('keydown', e => {
       if (e.ctrlKey || e.metaKey || e.altKey) return;
+      if(volumeScene(this.state.scene)&&['w','a','s','d','q','e'].includes(e.key.toLowerCase())){e.preventDefault();e.stopPropagation();this.fly(e.key.toLowerCase());return;}
       if (['ArrowLeft', 'ArrowRight', 'ArrowUp', 'ArrowDown', '+', '=', '-'].includes(e.key)) {
         e.preventDefault();
         e.stopPropagation();
