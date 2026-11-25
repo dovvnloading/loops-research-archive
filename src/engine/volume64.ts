@@ -1,5 +1,6 @@
 /** IEEE binary64 raymarcher. No tessellation, texture assets, or Float32 world coordinates. */
 import type { EngineState } from '../types';
+import { lightDirection, paletteColor, projection, toneColor } from '../lib/controls.ts';
 import { add,basis,clearanceAt,estimate,eye,iterationBudget,mul,norm,precisionFloor,unit } from './navigation.ts';
 import type { Vec3 } from './navigation.ts';
 
@@ -29,21 +30,18 @@ function gradient(s:EngineState,p:Vec3,e:number,n:number,rd:Vec3):Vec3{
   const g:Vec3=[a-b-c+q,-a-b+c+q,-a+b-c+q];
   return norm(g)>1e-28?unit(g):mul(rd,-1);
 }
-function color(s:EngineState,t:number):Vec3{
-  const ranges:Record<EngineState['palette'],[Vec3,Vec3]>={glacier:[[.075,.2,.2],[.85,.93,.87]],ember:[[.18,.025,.018],[1,.73,.36]],violet:[[.12,.055,.22],[.81,.73,1]],mono:[[.12,.12,.12],[.94,.94,.94]]};
-  const [a,b]=ranges[s.palette];return add(mul(a,1-t),mul(b,t));
-}
 export function prepareVolume(frame:VolumeFrame){
   const s={...frame.state,volumePrecision:'float64' as const},ro=eye(s.camera),axes=basis(s.camera);
   const clearance=clearanceAt(s,ro),iterations=iterationBudget(s,clearance,'float64');
-  const key=unit([-2.5,3.5,4]),rim=unit([3,1,-2]);
-  const pixelAngle=.97/frame.height*(.85-.59*s.detail);
+  const key=lightDirection(s.controls),rim=unit([3,1,-2]);
+  const lens=projection(s.controls);
+  const pixelAngle=lens/frame.height*(.85-.59*s.detail);
   const maxSteps=frame.preview?180:520;
   const pixel=(x:number,y:number):[number,number,number,number]=>{
     const u=(x+.5-frame.width/2)/frame.height,v=(frame.height/2-y-.5)/frame.height;
-    const rd=unit(add(axes.forward,add(mul(axes.right,.97*u),mul(axes.up,.97*v))));
+    const rd=unit(add(axes.forward,add(mul(axes.right,lens*u),mul(axes.up,lens*v))));
     const hit=traceVolume(s,ro,rd,iterations,pixelAngle,maxSteps);
-    let rgb:Vec3=[.008,.014,.017];
+    let rgb:Vec3=[.008,.012,.022];
     if(hit.hit){
       const e=hit.epsilon,p=hit.point;
       const n=gradient(s,p,e*1.8,iterations,rd),head=clamp(-dot(n,rd));
@@ -53,11 +51,11 @@ export function prepareVolume(frame:VolumeFrame){
         const d=estimate(s,add(p,mul(n,h)),iterations,'float64');
         ao-=Math.max(0,h-d)/Math.max(h,e)*.16;
       }}
-      const light=.18+.75*clamp(dot(n,key))+.58*head/(1+hit.travel*4)+.15*clamp(dot(n,rim));
+      const light= .18*s.controls.ambientIntensity+.75*s.controls.lightIntensity*clamp(dot(n,key))+.58*head/(1+hit.travel*4)+.15*clamp(dot(n,rim));
       const material=clamp(.54+.24*n[1]+s.orbitTrap*.16*Math.cos(Math.log10(Math.max(hit.travel,e))*5));
-      rgb=mul(color(s,material),light*clamp(ao,.25,1));
+      rgb=mul(paletteColor(s.palette,material),light*clamp(ao,.25,1));
     }
-    return [...rgb.map(v=>Math.round(255*clamp((1-Math.exp(-Math.max(0,v)*s.exposure))**(1/2.2)))),255] as [number,number,number,number];
+    return [...toneColor(rgb,s.exposure,s.controls),255] as [number,number,number,number];
   };
   return {pixel,iterations,clearance};
 }

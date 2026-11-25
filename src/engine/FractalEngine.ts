@@ -1,5 +1,6 @@
 import type { EngineHooks, EngineState, Palette, SceneId } from '../types';
 import { clearanceAt, dolly, eye, flightStep, iterationBudget, volumeScene, volumeMode } from './navigation';
+import { lightDirection, normalizeControls, paletteColor, projection, toneColor } from '../lib/controls';
 import { DeepRenderer } from './DeepRenderer';
 import {
   complexFragment,
@@ -21,6 +22,8 @@ const uniformNames = [
   'uResolution', 'uCamera', 'uEye', 'uScene', 'uIterations', 'uPalette', 'uPower',
   'uBailout', 'uDetail', 'uExposure', 'uSlice', 'uTrap', 'uJuliaHi', 'uJuliaLo',
   'uCenterHi', 'uCenterLo', 'uScale', 'uGrid',
+  'uGamma','uContrast','uSaturation','uProjection','uKeyLight','uLightIntensity','uAmbientIntensity',
+  'uBandFrequency','uBandPhase','uPlaneBailout','uReliefHeight','uContourDensity',
 ] as const;
 type UniformName = typeof uniformNames[number];
 interface Program { program: WebGLProgram; uniforms: Record<UniformName, WebGLUniformLocation | null> }
@@ -183,6 +186,7 @@ export class FractalEngine {
 
   private sanitize(state: EngineState): EngineState {
     const s = clone(state);
+    s.controls = normalizeControls(s.controls);
     s.camera.yaw = Number.isFinite(s.camera.yaw) ? s.camera.yaw : 0.35;
     s.camera.pitch = clamp(s.camera.pitch, s.scene === 'landscape' ? 0.3 : -1.4, 1.4);
     s.camera.distance = clamp(s.camera.distance, 1.65, 14);
@@ -332,6 +336,19 @@ export class FractalEngine {
     gl.uniform1f(u.uBailout, s.bailout);
     gl.uniform1f(u.uDetail,kind==='volume'&&this.refinement===0?Math.min(s.detail,.55):s.detail);
     gl.uniform1f(u.uExposure, s.exposure);
+    const c = s.controls;
+    gl.uniform1f(u.uGamma,c.gamma);
+    gl.uniform1f(u.uContrast,c.contrast);
+    gl.uniform1f(u.uSaturation,c.saturation);
+    gl.uniform1f(u.uProjection,projection(c));
+    gl.uniform3f(u.uKeyLight,...lightDirection(c));
+    gl.uniform1f(u.uLightIntensity,c.lightIntensity);
+    gl.uniform1f(u.uAmbientIntensity,c.ambientIntensity);
+    gl.uniform1f(u.uBandFrequency,c.bandFrequency);
+    gl.uniform1f(u.uBandPhase,c.bandPhase);
+    gl.uniform1f(u.uPlaneBailout,c.planeBailout);
+    gl.uniform1f(u.uReliefHeight,c.reliefHeight);
+    gl.uniform1f(u.uContourDensity,c.contourDensity);
     gl.uniform1f(u.uSlice, s.slice);
     gl.uniform1f(u.uTrap, s.orbitTrap);
     const xHi = Math.fround(s.center[0]);
@@ -346,7 +363,7 @@ export class FractalEngine {
     gl.uniform1i(u.uGrid, s.showGrid ? 1 : 0);
     if (kind === 'landscape') {
       gl.enable(gl.DEPTH_TEST);
-      gl.clearColor(0.025, 0.04, 0.045, 1);
+      gl.clearColor(0.025, 0.035, 0.055, 1);
       gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT);
       gl.bindVertexArray(this.landscapeVao);
       gl.drawElements(gl.TRIANGLES, this.landscapeCount, gl.UNSIGNED_INT, 0);
@@ -375,10 +392,10 @@ export class FractalEngine {
     } else if(animated&&this.refinement!==0){this.refinement=0;this.resize();}
     if (animated) {
       if (this.state.scene === 'julia') {
-        const angle = Math.min(delta, 80) * 0.000045;
+        const angle = Math.min(delta, 80) * 0.000045 * this.state.controls.animationSpeed;
         const [x, y] = this.state.julia;
         this.state.julia = [x * Math.cos(angle) - y * Math.sin(angle), x * Math.sin(angle) + y * Math.cos(angle)];
-      } else this.state.camera.yaw += Math.min(delta, 80) * 0.00011;
+      } else this.state.camera.yaw += Math.min(delta, 80) * 0.00011 * this.state.controls.animationSpeed;
       this.dirty = true;
       if (time - this.rotationSync > 1000) {
         this.rotationSync = time;
@@ -581,19 +598,35 @@ export class FractalEngine {
         const y = s.center[1] + (height / 2 - row) / height * s.scale;
         let zx = isJulia ? x : 0, zy = isJulia ? y : 0;
         const cx = isJulia ? s.julia[0] : x, cy = isJulia ? s.julia[1] : y;
-        let n = 0;
+        let n = 0, orbit = 10;
         const limit = Math.max(128, Math.min(s.iterations, 768));
-        while (n < limit && zx * zx + zy * zy < 256) {
+        while (n < limit && zx * zx + zy * zy <= s.controls.planeBailout ** 2) {
           const xx = zx * zx - zy * zy + cx;
           zy = 2 * zx * zy + cy;
           zx = xx;
+          orbit = Math.min(orbit,Math.abs(zy)+.05*Math.abs(zx));
           n++;
         }
         const q = (row * width + col) * 4;
-        const v = n === limit ? 0.01 : 0.24 + 0.76 * (0.5 + 0.5 * Math.cos(n * 0.19));
-        image.data[q] = n === limit ? 5 : Math.round(30 + v * 160);
-        image.data[q + 1] = n === limit ? 12 : Math.round(60 + v * 160);
-        image.data[q + 2] = n === limit ? 14 : Math.round(64 + v * 148);
+        const escaped = zx*zx+zy*zy > s.controls.planeBailout**2;
+        const smooth = Math.max(0,n-Math.log2(Math.max(Math.log2(Math.max(Math.hypot(zx,zy),1.00001)),.0001)));
+        const v = .22+.78*(.5+.5*Math.cos(smooth*s.controls.bandFrequency+s.controls.bandPhase));
+        const rgb = escaped ? paletteColor(s.palette,v).map(x=>x*(.25+.75*(1-Math.exp(-smooth*.07)))) as [number,number,number] : [.008,.012,.022] as [number,number,number];
+        if (escaped) {
+          const tint = paletteColor(s.palette,.95), mix = Math.exp(-orbit*4)*s.orbitTrap*.16;
+          for(let k=0;k<3;k++) rgb[k]=rgb[k]*(1-mix)+tint[k]*mix;
+        }
+        if(s.showGrid&&s.scale>1e-4) {
+          const spacing=10**(Math.floor(Math.log10(s.scale))-.5),pixel=s.scale/height;
+          const dist=Math.min(Math.abs(x/spacing-Math.round(x/spacing)),Math.abs(y/spacing-Math.round(y/spacing)))*spacing;
+          const line=Math.max(0,1-dist/pixel),axis=Math.max(0,1-Math.min(Math.abs(x),Math.abs(y))/pixel);
+          const grid=[.018,.028,.049],axes=[.07,.10,.17];
+          for(let k=0;k<3;k++)rgb[k]+=grid[k]*line+axes[k]*axis;
+        }
+        const [r,g,b] = toneColor(rgb,s.exposure,s.controls);
+        image.data[q] = r;
+        image.data[q + 1] = g;
+        image.data[q + 2] = b;
         image.data[q + 3] = 255;
       }
       ctx.putImageData(image, 0, 0, 0, Math.max(0, row - 10), width, Math.min(10, row));

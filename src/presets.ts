@@ -1,6 +1,8 @@
 import type { EngineState, ScenePreset } from './types';
+import { DEFAULT_CONTROLS } from './lib/controls.ts';
 
 export const DEFAULT_STATE: EngineState = {
+  controls: {...DEFAULT_CONTROLS},
   scene: 'mandelbulb', power: 8, iterations: 12, bailout: 8, detail: .65,
   exposure: 1.1, palette: 'glacier', camera: { yaw: .35, pitch: .18, distance: 3.6 },
   center: [-.5, 0], scale: 3.2, julia: [-.74543, .11301], slice: 0,
@@ -32,5 +34,5 @@ export const CURATED: ScenePreset[] = [
 
 export const isPlane = (scene: EngineState['scene']) => scene === 'mandelbrot' || scene === 'julia';
 export function applyPreset(p: ScenePreset, previous = DEFAULT_STATE): EngineState {
-  return {...DEFAULT_STATE,quality:previous.quality,showGrid:previous.showGrid,...p.state};
+  return {...DEFAULT_STATE,quality:previous.quality,showGrid:previous.showGrid,...p.state,controls:{...DEFAULT_CONTROLS,...p.state.controls}};
 }

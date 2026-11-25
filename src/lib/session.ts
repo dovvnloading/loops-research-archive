@@ -1,5 +1,6 @@
 import type { EngineState, Workspace } from '../types';
 import { DEFAULT_STATE } from '../presets.ts';
+import { normalizeControls } from './controls.ts';
 
 const scenes = ['mandelbulb','mandelbox','quaternion','mandelbrot','julia','landscape'];
 const workspaces = ['explore','dynamics','atlas','lab','archive'];
@@ -14,6 +15,7 @@ export function validateState(value: unknown): EngineState {
   const landscape = scene==='landscape';
   const position = !plane && !landscape && Array.isArray(c.position) && c.position.length===3 && c.position.every(v=>typeof v==='number'&&Number.isFinite(v)) && Math.hypot(...(c.position as number[]))<=14 ? [...c.position] as [number,number,number] : undefined;
   return {
+    controls:normalizeControls(x.controls),
     scene, power:num(x.power,scene==='mandelbox'?2:8,scene==='mandelbox'?1.2:2,scene==='mandelbox'?3:16),
     iterations:Math.round(num(x.iterations,plane?384:landscape?160:12,plane||landscape?32:2,plane?4096:landscape?512:scene==='mandelbox'?40:64)),
     bailout:num(x.bailout,8,2,64),detail:num(x.detail,.65,0,1),exposure:num(x.exposure,1.1,.2,3),

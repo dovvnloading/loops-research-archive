@@ -95,3 +95,23 @@ test('validated state owns its coordinate arrays so edits do not mutate presets 
   assert.equal(input.camera.distance, 3.6);
   assert.deepEqual(DEFAULT_STATE.center, [-0.5, 0]);
 });
+
+test('legacy sessions inherit every instrument default and invalid advanced values are bounded', () => {
+  const defaults=DEFAULT_STATE.controls;
+  assert.deepEqual(validateState({}).controls,defaults);
+  const next=validateState({controls:{fov:999,gamma:NaN,contrast:-1,saturation:0,lightAzimuth:-999,planeBailout:99,flightSpeed:.01,reliefHeight:5}});
+  assert.equal(next.controls.fov,95);
+  assert.equal(next.controls.gamma,defaults.gamma);
+  assert.equal(next.controls.contrast,.5);
+  assert.equal(next.controls.saturation,0);
+  assert.equal(next.controls.lightAzimuth,-180);
+  assert.equal(next.controls.planeBailout,64);
+  assert.equal(next.controls.flightSpeed,.1);
+  assert.equal(next.controls.reliefHeight,3);
+  assert.notEqual(next.controls,defaults);
+});
+test('advanced parameters survive share-link round trips', () => {
+  const original=validateState({...DEFAULT_STATE,controls:{...DEFAULT_STATE.controls,fov:38,gamma:1.8,saturation:.4,bandFrequency:.75,lightAzimuth:83,reliefHeight:1.8}});
+  const shared=withLocation('https://example.test/loops/',()=>shareURL(original,'explore'));
+  assert.deepEqual(withLocation(shared,readSession).state.controls,original.controls);
+});

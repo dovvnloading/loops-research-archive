@@ -1,3 +1,5 @@
+import type { InstrumentControls } from './lib/controls';
+
 export type SceneId = 'mandelbulb' | 'mandelbox' | 'quaternion' | 'mandelbrot' | 'julia' | 'landscape';
 export type Palette = 'glacier' | 'ember' | 'violet' | 'mono';
 export type Quality = 'auto' | 'high' | 'balanced' | 'low';
@@ -5,6 +7,7 @@ export type Workspace = 'explore' | 'dynamics' | 'atlas' | 'lab' | 'archive';
 
 export interface EngineState {
   scene: SceneId;
+  controls: InstrumentControls;
   power: number;
   iterations: number;
   bailout: number;
