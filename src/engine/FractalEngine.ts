@@ -1,6 +1,6 @@
 import type { EngineHooks, EngineState, Palette, SceneId } from '../types';
 import { clearanceAt, dolly, eye, flightStep, iterationBudget, volumeScene, volumeMode } from './navigation';
-import { lightDirection, normalizeControls, paletteColor, projection, toneColor } from '../lib/controls';
+import { lightDirection, normalizeControls, projection, toneColor } from '../lib/controls';
 import { DeepRenderer } from './DeepRenderer';
 import {
   complexFragment,
@@ -296,8 +296,17 @@ export class FractalEngine {
     this.buffers = [];
   }
 
+  /** Fit portrait viewports optically, without moving the camera in world space. */
+  private portraitProjectionScale() {
+    const aspect=this.canvas.width/Math.max(1,this.canvas.height);
+    return volumeScene(this.state.scene)?Math.max(1,0.82/Math.max(0.1,aspect)):1;
+  }
+
   private renderVolume64() {
-    const s=this.state,p=eye(s.camera),aspect=this.canvas.width/Math.max(1,this.canvas.height);
+    const factor=this.portraitProjectionScale();
+    // The worker and GPU must use the same effective lens. Keep saved controls unchanged.
+    const s=factor===1?this.state:{...this.state,controls:{...this.state.controls,fov:360/Math.PI*Math.atan(projection(this.state.controls)*factor/2)}};
+    const p=eye(s.camera),aspect=this.canvas.width/Math.max(1,this.canvas.height);
     this.clearance=clearanceAt(s,p);this.effectiveIterations=iterationBudget(s,this.clearance,'float64');
     const revision=++this.deepRevision;clearTimeout(this.deepTimer);
     this.deep?.render(s,aspect,true);
@@ -340,7 +349,7 @@ export class FractalEngine {
     gl.uniform1f(u.uGamma,c.gamma);
     gl.uniform1f(u.uContrast,c.contrast);
     gl.uniform1f(u.uSaturation,c.saturation);
-    gl.uniform1f(u.uProjection,projection(c));
+    gl.uniform1f(u.uProjection,projection(c)*this.portraitProjectionScale());
     gl.uniform3f(u.uKeyLight,...lightDirection(c));
     gl.uniform1f(u.uLightIntensity,c.lightIntensity);
     gl.uniform1f(u.uAmbientIntensity,c.ambientIntensity);
@@ -474,7 +483,8 @@ export class FractalEngine {
       ] });
     } else if(volumeScene(this.state.scene)) {
       const r=this.canvas.getBoundingClientRect();
-      this.change({autoRotate:false,camera:dolly(this.state,multiplier,(x-r.left-r.width/2)/Math.max(1,r.height),(r.top+r.height/2-y)/Math.max(1,r.height))});
+      const factor=this.portraitProjectionScale();
+      this.change({autoRotate:false,camera:dolly(this.state,multiplier,factor*(x-r.left-r.width/2)/Math.max(1,r.height),factor*(r.top+r.height/2-y)/Math.max(1,r.height))});
     } else {
       this.change({ camera: { ...this.state.camera, distance: clamp(this.state.camera.distance * multiplier, 1.65, 14) } });
     }
@@ -589,6 +599,14 @@ export class FractalEngine {
     const width = this.canvas.width, height = this.canvas.height;
     const image = ctx.createImageData(width, height);
     const isJulia = s.scene === 'julia';
+    // Match the plane-only GPU palette; keep the existing escape-count semantics.
+    const planeColors: Record<Palette, [[number,number,number],[number,number,number]]> = {
+      glacier: [[.002,.006,.016],[.025,.20,.23]],
+      ember: [[.012,.003,.002],[.30,.105,.025]],
+      violet: [[.006,.003,.015],[.16,.07,.28]],
+      mono: [[.004,.004,.004],[.19,.19,.19]],
+    };
+    const [dark,bright] = planeColors[s.palette];
     let row = 0;
     const chunk = () => {
       if (generation !== this.cpuGeneration || this.disposed) return;
@@ -610,11 +628,13 @@ export class FractalEngine {
         const q = (row * width + col) * 4;
         const escaped = zx*zx+zy*zy > s.controls.planeBailout**2;
         const smooth = Math.max(0,n-Math.log2(Math.max(Math.log2(Math.max(Math.hypot(zx,zy),1.00001)),.0001)));
-        const v = .22+.78*(.5+.5*Math.cos(smooth*s.controls.bandFrequency+s.controls.bandPhase));
-        const rgb = escaped ? paletteColor(s.palette,v).map(x=>x*(.25+.75*(1-Math.exp(-smooth*.07)))) as [number,number,number] : [.008,.012,.022] as [number,number,number];
+        const rgb: [number,number,number] = [.008,.012,.022];
         if (escaped) {
-          const tint = paletteColor(s.palette,.95), mix = Math.exp(-orbit*4)*s.orbitTrap*.16;
-          for(let k=0;k<3;k++) rgb[k]=rgb[k]*(1-mix)+tint[k]*mix;
+          const bands = .5+.5*Math.cos(smooth*s.controls.bandFrequency+s.controls.bandPhase);
+          const boundary = 1-Math.exp(-smooth*.055);
+          const light = .08+.92*bands**1.7*boundary;
+          const orbitLight = Math.exp(-orbit*4)*s.orbitTrap*.12*boundary;
+          for(let k=0;k<3;k++) rgb[k]=dark[k]+(bright[k]-dark[k])*light+bright[k]*orbitLight;
         }
         if(s.showGrid&&s.scale>1e-4) {
           const spacing=10**(Math.floor(Math.log10(s.scale))-.5),pixel=s.scale/height;
