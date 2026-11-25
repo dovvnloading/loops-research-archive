@@ -1691,7 +1691,12 @@
         "collision_fraction_response",
         "response_at_scale",
         "no_gain_bounds_collision",
-        "residual_lower"
+        "residual_lower",
+        "some_contact_transition",
+        "series_excess_bound",
+        "auxiliary_fraction_response",
+        "no_gain_bounds_auxiliary_fraction",
+        "auxiliary_response_at_scale"
       ]
     },
     "checks": [
