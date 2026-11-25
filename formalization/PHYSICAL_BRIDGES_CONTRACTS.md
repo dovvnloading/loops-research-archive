@@ -721,6 +721,35 @@ Three finite real-number lemmas are added to StationaryPacketGain
 pending kernel CI. All seven workflows passed at e967265.
 No ledger status is promoted.
 
+The [sector and phase assembly theorem](../research/independent_audits/stationary_transport_attack_20261124/SECTOR_PHASE_ASSEMBLY.md)
+proves a degree-independent 4pi/log(2) discard for an anchored packet
+with actual endpoints in a covering sector, and the same bound for
+confinement between nested half-disks with fixed electrodes.
+A finite target anchor/antipode cell partition and a reciprocal-width
+order cut for shared endpoint cells assemble actual trajectories,
+with total width loss at most m C_d + Delta + 2T L_* +
+10 binomial(T,2) + 1, T<=4m^2. Delta is the explicit source-width
+deficit from selecting the largest phase per directed cell pair.
+It need not be a literal image collision; a two-deck-copy annular
+example shows that it cannot be uniformly removed from the specified
+images in general. In the corrected noncritical singleton corridor
+the signed endpoint trap places all selected bases in one injective
+sector, so Delta=0 and a simpler m(C_2+L_*)+2V transfer suffices.
+
+The [multi-packet ambient alternative](../research/independent_audits/stationary_transport_attack_20261124/MULTIPACKET_AMBIENT_DEFICIT.md)
+uses the assembled primary supports instead of a common ambient crest.
+With the stated finite per-stage anchor and output control certificates
+and the earlier exact native geometric hypotheses, the same stationary
+defect inequality holds with E=E_base+sum Delta_j. At large absolute
+scale and near-maximality a stationary fraction sigma forces a
+cumulative phase deficit >delta W/4, delta=sigma^2/(2048N), or a
+strict wider controllable output. This identifies two sizeable
+different phase groups of one directed cell pair. Uniform native
+control, critical-side phase response, actual source marking and
+downstream integration remain open. [Finite checker](../research/independent_audits/stationary_transport_attack_20261124/check_sector_phase_assembly.py);
+three new Lean accounting declarations await kernel CI. All seven
+workflows passed at f32378d. No canonical ledger promotion.
+
 This checker establishes finite rational endpoint-cover and degree-budget
 certificates and rejects invalid accounting. It does not construct native
 exits. The stationary hypotheses still need to supply one eligible actual

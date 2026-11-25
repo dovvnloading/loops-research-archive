@@ -338,4 +338,36 @@ theorem ambient_defect_bookkeeping (s E H C d K a Ea R Q2 QN : ℝ)
     s ≤ E+(2*H+10)*C+K*a+Ea+4*R+(H+2)*d+3*Q2+QN := by
   nlinarith only [hpart]
 
+/-- Alternating fixed electrodes give reciprocal quadrilateral
+width bounds. Their finite consequence: one packet is small. -/
+theorem alternating_pair_small (x y : ℝ) (h : x*y ≤ 1) :
+    x ≤ 1 ∨ y ≤ 1 := by
+  by_cases hx : x ≤ 1
+  · exact Or.inl hx
+  · right
+    by_contra! hy
+    have hx' : 1 < x := lt_of_not_ge hx
+    nlinarith [mul_pos (sub_pos.mpr hx') (sub_pos.mpr hy)]
+
+/-- Retaining the largest phase loses at most the width outside
+any specified compatible sector phase. Maximality of the chosen
+phase is an explicit premise, not a claim of image coincidence. -/
+theorem phase_deficit_le_outside (total best compatible outside : ℝ)
+    (hsum : total = compatible+outside) (hbest : compatible ≤ best) :
+    total-best ≤ outside := by
+  linarith
+
+/-- The two explicit absolute-scale tests in the ambient estimate
+force a positive phase deficit if the geometric response is absent.
+All widths and bounds in this algebra are supplied by the written
+packet assembly and series arguments. -/
+theorem ambient_phase_deficit (W E B Delta sigma delta : ℝ)
+    (hscale : E+B ≤ delta*W/4) (hB : 0 ≤ B)
+    (hs : 2*delta*W ≤ sigma*W)
+    (hbad : delta*W/2 < E+Delta ∨ sigma*W/4 < E+Delta+B) :
+    delta*W/4 < Delta := by
+  rcases hbad with h | h
+  · linarith
+  · linarith
+
 end LoopsStationaryPacketGain
