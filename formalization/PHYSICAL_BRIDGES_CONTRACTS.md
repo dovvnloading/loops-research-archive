@@ -358,6 +358,660 @@ bank conditions, §5](../research/independent_audits/stationary_transport_attack
 python3 -B research/independent_audits/stationary_transport_attack_20261124/verify.py
 ```
 
+The kernel-checked [finite Lean accounting module](weighted/StationaryEndpointCover.lean)
+isolates the real-valued double-counting identity, weak duality, one-end
+and two-end bank bounds, and the conditional degree budget.
+The input is the incidence-width bound at every positively charged end,
+not an assumption that all ideal widths are finite. Uncharged values are
+unused real placeholders; modulus and its extended-real infimum are
+outside this module. The native degree census and actual exit existence
+remain separate geometric inputs. See the [scope and reproduction note](../research/independent_audits/stationary_transport_attack_20261124/LEAN_ENDPOINT_ACCOUNTING.md).
+The [weighted Lean workflow successfully built this module](https://github.com/dovvnloading/loops-research-archive/actions/runs/45655448328/job/139352354071) at revision `100575d96dd12acce42db2e085aa56e4f69c5ca7`; subsequent documentation-only commits preserve the Lean source, Lake configuration and toolchain. This verifies the finite algebra only.
+
+A [one-hit landing reduction](../research/independent_audits/stationary_transport_attack_20261124/ONE_HIT_LANDING_REDUCTION.md)
+shows that a single actual bank hit together with a genuine physical
+landing on a different deleted continuum (or an ambient outer ideal
+limit) supplies an eligible exit. At the high-type horizon m<P the
+selected bank is disjoint from the original cycle, so a physical
+landing on an original small Julia set is sufficient. A mere
+carrier-edge endpoint or non-singleton impression is not sufficient;
+the note contains an explicit planar counterexample to one-hit
+properness in the carrier complement alone. This is a written
+conditional reduction, not proof of the actual stationary premise.
+
+The [simultaneous finite-length core](../research/independent_audits/stationary_transport_attack_20261124/EXCEPTIONAL_WIDTH_REDUCTION.md)
+constructs one finite-energy all-sheet density on the ambient target
+that removes nonlanding parents and controls every raw lift and all
+its final collar coordinates modulo a width-zero family. After a bank
+hit, failure of all eligible exits forces full unpunctured continuation,
+no different-component hit, and two physical carrier-only endpoints
+in the high-type application. Countable endpoint gates contribute
+zero width; a planar rectangular example with width exactly 1/4
+shows that unrestricted carrier-edge failures can have positive
+width. Native dynamics or a separate quantitative residual bound
+is still required. This is written analysis, not a Lean formalization
+or a native stationary counterexample.
+
+The [double-crossing charge](../research/independent_audits/stationary_transport_attack_20261124/DOUBLE_CROSSING_CHARGE.md)
+bounds actual hits of any compact full continuum with an annular
+collar avoiding the inverse original carrier by one quarter of the
+reciprocal collar modulus. It uses two disjoint time crossings and
+an all-sheet square-sum density, without a selected proper final
+exit. A fractional cover of hit sets combines such collars even
+at different horizons. Under the earlier full-hull pruning
+hypotheses, the entire closed selected deep limb at b<n<q is
+disjoint from T and has a univalent intermediate-horizon collar;
+actual encounters with that limb can therefore be charged without
+a small-Julia predecessor hit. Uniform modulus calibration and
+native encounter/no-hit control remain open. A fixed-surface
+rectangle family with widths 1/(2δ) and uniformly bounded
+ambient vertical width disproves automatic calibration from the
+abstract planar hypotheses. These are written analytic estimates
+and a planar countermodel, not additional kernel theorems.
+
+The [prefix-potential charge](../research/independent_audits/stationary_transport_attack_20261124/PREFIX_POTENTIAL_CHARGE.md)
+uses the stronger full-hull consequence that every physical
+carrier point exits the open critical limb by time b. A single
+base potential equal to one near the first closed inverse limb,
+and zero near the noncritical filled set and ambient boundary,
+is pulled back by the actual finite degree-2^j maps and pushed
+through all immersion sheets. Every proper parent with a deep
+encounter has two unit-length halves in this metric even if its
+two sides use different prefixes. Thus the width of the whole
+encounter union is at most (2^(b+1)−1)/4 times the infimum
+of this base Dirichlet energy; no separate collar calibration
+per depth or bank is required. A quadratic cover of actual
+endpoint indices gives a cheaper conditional outside-end
+estimate. One actual raw restriction ending at a physically
+localized selected deep contour suffices for a hit modulo zero;
+the saturated monotone model provides a separate locality check.
+The native occurrence assertion and a uniform bound on this
+single response by R+V+1 remain open. The [finite Lean module](weighted/StationaryPrefixCharge.lean)
+formalizes the orbit and quadratic-weight algebra and is subject
+to the weighted kernel check; the conformal analysis is written.
+The twelve prefix theorems passed the weighted mathlib workflow
+at commit 1b7ec3aa59aa1943f5c5e260b630aae3f9804b0b; all seven
+workflows triggered at the subsequent CI-wiring head
+9f9cffa6b21df47119a986f9b4266185ba950d57 succeeded.
+
+The [stage-endpoint census](../research/independent_audits/stationary_transport_attack_20261124/STAGE_ENDPOINT_CENSUS.md)
+uses actual retained sequential windows and properness of the
+terminal covering projection to recover a physical endpoint on
+the original parent at every inner-ended stage, modulo zero
+width. If more than b stages have a physical critical-limb
+little-Julia endpoint, the records meet distinct final pulled
+components; each component accounts for at most b stages.
+The union of all possible stage components has total final
+peripheral degree at most b(3·2^h−2) for h<P, by the exact
+prefix census and at most one critical suffix arrow. Keeping only
+the latest record per parent and the latest qualifying preimage
+bank per final target improves the charge to
+b·2^h+(b+1)(2^h−2^b), or (7b+3)·2^b at h=b+2. Two
+physical records at distinct components (including original
+endpoint times) suffice for a proper exit; all-sheet metric
+push gives the uniform R-charge without a selected deep
+encounter or its calibration. At h=b+2 the remaining parents
+have at least three non-Julia-critical stages. Independently,
+the full-hull singleton-cut hypothesis at all preperiodic
+preimages of the dividing point bounds total (not only
+consecutive) critical visits of every carrier point by b
+before q; thus a chain stationary through 2b<q must have
+an actual interior window birth. This is not necessarily
+a selected deep or little-Julia hit. The grounded deep
+condenser also splits into a free internal separation
+cost and at most the full exterior width W(F); internal
+calibration remains open. The [finite stage-counting module](weighted/StationaryEndpointVisits.lean)
+isolates the occupancy, birth and degree-sum algebra;
+kernel verification succeeded at c752905eb80e78614e8cc52d7d743b45f33a3c1d
+(weighted mathlib run 45666874695, all seven workflows passed).
+No native stationary or global gate is promoted.
+
+The [canonical lift and direction theorem](../research/independent_audits/stationary_transport_attack_20261124/CANONICAL_LIFT_AND_DIRECTION.md)
+charges incomplete canonical lifts of inner-ended parents by
+2^h V(F), automatically using the last departure from the
+actual full pulled carrier before outer escape. On the
+complete family every inner-ended maximal raw restriction
+is a gap of the nested physical contact sets, on a single
+canonical lift at each prefix. Those lifts and gap records
+have a Borel presentation. A compact connected set on which
+an immersion is injective has a univalent filled-hull
+neighborhood by the Jordan-boundary argument principle;
+this supplies univalent parent caps without arbitrary collar
+selection. Under the stated protected crest and geometric
+fine/coarse filters, a signed crossing count and singleton
+covering output give a unique positively oriented directed
+component. For the corrected contour action with precritical
+host locality, the positive critical source endpoint is
+forced into the selected first inverse limb, not the
+precritical limb. One-sided stationary endpoint births are
+then forced already at h=b<q under the total-visit hypotheses.
+These conditional direction results do not propagate a
+later interior birth through all preceding selected limbs.
+The free internal response between the first closed inverse
+limb and T outside the critical limb gives a further
+conditional width bound, with the entire outer-escape cost
+explicitly charged to V(F), rather than the full filled-set
+width. Uniform free-response calibration and native protected
+block realization remain open. The new [finite module](weighted/StationaryCanonicalLift.lean)
+checks ten crossing-indicator, saturation, birth and charge
+theorems; the conformal and topological arguments are written
+proofs, not kernel-formalized analysis.
+
+The [quadratic deck separator](../research/independent_audits/stationary_transport_attack_20261124/SYMMETRIC_SEPARATOR.md)
+uses the genuine model degree-two involution to exchange the
+two preimages of the dividing fixed point. The real interval
+fixed-point argument puts the model critical point on their
+unique dendrite arc. The saturated critical fiber lies in the
+small Julia set, so every connected physical filled-set route
+between the two sides meets the separator. Retraction of the
+full continuum to the selected closed limb propagates this
+separation to all selected depths without a competing filled
+route bypass. Under the finite saturated preimage-graph and
+preperiodic-contact hypotheses, the root and deep attachment
+hosts of the actual small Julia annulus are unique and deck
+opposed, hence antipodal. This is a side-existence result,
+not a retained Wave occurrence. An explicit symmetric planar
+tree with f=z², fixed separator [-1,1] and bounded vertical
+width has a free branch-response lower bound 1/(2δ), despite
+the antipodal hosts. Thus the separator alone does not
+calibrate that response in the native setting.
+
+The [multiplicative collision gain](../research/independent_audits/stationary_transport_attack_20261124/COLLISION_GAIN.md)
+proves an all-sheet metric estimate W(A)≤2^h W(D)/r²
+for r genuinely disjoint parent-time windows projecting
+to whole output paths. On a complete canonical lift family,
+each retained inner-ended restriction is a gap on the
+unique canonical lift. The actual one-step multiplicities
+(one or two) multiply under nested windows. Therefore k
+double stages in h give W(D)≥2^(2k−h) W(A), with at most
+2^h V(F) charged separately for incomplete lifts.
+Two protected deck-opposed crest anchors in one parent cap
+suffice to certify a double stage, but the two separator
+hosts alone need not satisfy the marking/filter conditions.
+Native duplication frequency, output Wave controllability,
+free-response calibration and the corrected marking
+interface remain open. The [finite/real module](weighted/StationaryDeckSeparator.lean)
+checks the interval fixed point, connected-image separation,
+deck injectivity exclusion, and gain and gap algebra.
+Its eleven public theorems compiled successfully at
+f6702318e9e35b1bb0ef11de1b2edaeae5ab1af7
+(weighted run 45671447375, log reports 8774 successful build
+jobs; the workflow was cancelled after compilation when a
+documentation revision advanced the branch).
+
+The [angular calibration note](../research/independent_audits/stationary_transport_attack_20261124/ANGULAR_CALIBRATION.md)
+gives a uniform flat-cylinder charge 1/(2ε) for a base of
+angular span at least ε, and improves it to
+π log(8/ε)/(log 2)^2 for families whose caps contain a
+common fixed crest access. Thus exponentially small
+qualified-anchor separations can suffice at linear
+width cost. On the small-span residual, separated
+qualified source anchors must occur in different
+retained caps, giving a double stage even without
+exact antipodality. Independently the positive strip
+Poisson kernel bounds the degree-one inner-circle
+distortion of I on the old-carrier annulus by
+exp(±π V(F)), using its modulus at least half the
+target modulus. This estimate does not apply to the
+full pulled carrier inclusion, whose added pieces
+land in the old annulus interior. Quantitative
+attachment distortion and qualification of the
+actual anchors remain separate native obligations.
+
+The [coherent packet gain telescope](../research/independent_audits/stationary_transport_attack_20261124/COHERENT_PACKET_GAIN.md)
+confines all proper simple crosscuts directed over one fixed
+source inner access to a single degree-d covering chart
+after an explicit width discard C_d=π log(16d)/(log 2)^2.
+A radial half-annulus metric detects every escaping primary
+leaf, with no transverse-measure subtraction. On complete
+canonical lifts a good primary gives coefficient-one
+transport for every subfamily. A second retained inner
+restriction is its deck translate and occupies a disjoint
+parent-time window, giving factor-two width gain. Covering
+injectivity on the fixed primary chart makes all distinct
+good parent images disjoint. Under the specified Borel
+atlas this yields a weighted sum over multiplicity patterns,
+W(D_good)≥Σ_k 2^k W(A_good,k), after total discard at most
+2^h V+h C_2. A positive fraction η with even one duplicate
+stage gives W(C)≥(1+η)W(A)−2E_h if the final good outputs
+are in a genuine uniformly controllable Wave C. No majority
+of duplicate stages or uniform angular calibration is needed.
+Failure of gain leaves a quantitative single-restriction,
+carrier-edge residual; the native directed occurrence and
+controllable output premises remain explicit. The [finite
+module](weighted/StationaryPacketGain.lean) checks the
+weighted excess and response algebra. The first eleven public
+theorems compiled in weighted run 45674655696 at revision
+5e9c41e38b4dd565368a1e1ffc007dbcec7ac343 (8776 build jobs);
+the workflow was cancelled after successful compilation by a
+subsequent note revision. The expanded module adds the auxiliary
+series-response theorems below and needs its own final kernel check.
+
+The [attachment screening example](../research/independent_audits/stationary_transport_attack_20261124/ATTACHMENT_SCREENING.md)
+uses an unchanged upper bank of a fixed slit, two attached
+trees enclosing a room and narrow open neck, and a genuine
+degree-two squaring cover. A harmonic cos-exponential
+barrier followed by reflection and a local gradient estimate
+bounds the new angle length by 16√2·M_0 exp(−π/(4δ)),
+although the old length is fixed and both vertical widths
+remain bounded. The neck has exact crossing width 1/δ.
+This rules out an abstract attachment-angle estimate based
+only on the listed nested-carrier and covering geometry;
+it is not a compatible forward-invariant native primitive
+dynamical model. The coherent-packet metric pruning avoids
+this distortion for actual common-anchor packets.
+
+The [auxiliary gap response](../research/independent_audits/stationary_transport_attack_20261124/AUXILIARY_GAP_RESPONSE.md)
+uses a complete canonical lift with a genuine selected deep
+pulled-carrier encounter. If it avoids one of the final bank
+separators, finitely many distinct host groups of the full
+saturated carrier give two raw gap windows across different
+host groups. At least one is disjoint from the final primary
+window. Under the explicit fine-side realization condition,
+each has a whole fine atom of the separator in its disk-cap
+base. Fixed-anchor confinement at the actual degree-2^h
+cover costs at most N_b C_(2^h), with N_b=12b·2^h, and
+gives genuine simple auxiliary output packets. Their uniform
+native Wave controllability is a separate required input.
+The auxiliary windows need not survive any intermediate
+coarse filters and need not have distinct terminal images.
+Square-sum metrics on the two disjoint parent windows give
+w≤PB/(P+B), P≥w+w²/B for primary width P and total auxiliary
+container width B. If the good primary output map is injective
+and the auxiliary mass is ≥ηW(A), near-maximal auxiliary
+containers give a primary response of order η²/N, after the
+explicit discard. If both bank components are physically hit,
+the earlier endpoint-cover R-charge applies. Thus the missing
+two-retained-occurrence noncollision step can be bypassed in
+the conditional actual-deep-contact branch; the deep-carrier
+encounter, fine-side realization, native output controllability
+and corrected geometric marking remain open. Five added
+finite theorems in StationaryPacketGain check the contact
+transition and auxiliary response algebra. No native or
+global proof obligation is promoted.
+
+The [near-critical packet control note](../research/independent_audits/stationary_transport_attack_20261124/NEAR_CRITICAL_PACKET_CONTROL.md)
+conditionally supplies the previously missing auxiliary container bound:
+the two separator images lie in BL_1 and BL_2, and the common chart
+cut plus the near-critical bank gives one over-critical module and at
+most 18b+1 localized Waves per actual confined packet. The weaker
+end-fine-atom direction criterion still requires the actual proper
+old-side and corrected marking hypotheses. The accompanying [finite
+regression checker](../research/independent_audits/stationary_transport_attack_20261124/check_near_critical_packet.py) tests cyclic bank, chart cut and end-atom
+combinatorics, not analytic or native geometric realization. Selected
+deep contact, host/fine-side realization, directed retained occurrences
+and native terminality integration remain open. No ledger status changes.
+
+The [suffix-anchor response](../research/independent_audits/stationary_transport_attack_20261124/SUFFIX_ANCHOR_RESPONSE.md)
+constructs full old-proper fine atoms by the commuting immersion/cover
+square, extends critical saturation by degree-matched contour squares,
+and applies signed raw-gap counts at every suffix. Either a distinct
+auxiliary physical window exists or backward critical origin exclusion
+forces the selected depth-h carrier contact on the positively oriented
+class. Combined with the two-bank response this gives a conditional
+O_b(R+V+1) bound at explicit terminal scale 1/(64N), with N=h+12b*2^h.
+Final orientation (or an extra singleton step), the corrected geometric
+marking and exact saturated graph/host realization, relative continuation
+and ambient terminality remain explicit requirements. The [finite
+checker](../research/independent_audits/stationary_transport_attack_20261124/check_suffix_anchor_response.py) passed 146,402 local cases; the new two Lean declarations
+check only the finite backward and strict-response algebra, pending CI.
+No native ledger promotion.
+
+The [precritical terminal response](../research/independent_audits/stationary_transport_attack_20261124/PRECRITICAL_TERMINAL_RESPONSE.md)
+uses the genuine deck-related old-proper atoms of the entire critical
+little vertex to obtain a two-window width cap M/2+2(V+C_2) for
+actual over-critical packets, without retained action. First/last
+precritical end atoms give a common primary and the mixed cap
+3M/4+3(V+C_2) with only one available singleton step. Combined with
+the suffix/ separator series response this removes the final
+orientation exception at scale 1/(512N) and treats small q by
+stopping at the first precritical crest, on the stated exact
+geometric directed-chain hypotheses. It is a relative cap, not
+an absolute precritical discard for N1. The [new finite checker](../research/independent_audits/stationary_transport_attack_20261124/check_precritical_response.py)
+passed 1,165,122 local cases; three added real-number Lean
+inequalities await kernel CI. All seven workflows passed at
+9fd71ee (including the two suffix theorems). Native relative
+continuation, exact source marking and ambient comparison remain
+open; no canonical ledger promotion.
+
+The [positive crest continuation](../research/independent_audits/stationary_transport_attack_20261124/POSITIVE_CREST_CONTINUATION.md)
+replaces the assumed intermediate central-ending/whole-limb crest
+sequence by a gain-or-discard telescope from a positive initial
+crest. At a noncritical step, first/last anchored gaps either
+advance the entire crest or force double gain in a common primary
+packet. Relative near-maximality gives the recurrence
+L_(j+1)=2L_j+4C_2+lambda W. The final over-critical fraction
+is controlled through a whole-packet extra primary and the two
+deck-related raw windows; the oriented central residue uses the
+suffix/ bank series response against the whole stage-h primary.
+This gives an explicit conditional O_b(R+V+1) bound with the
+uniform away-Shift input and all stated geometric realization,
+singleton and comparison hypotheses. Small q stops at the
+precritical crest. [The checker](../research/independent_audits/stationary_transport_attack_20261124/check_positive_crest_continuation.py)
+passed 80,885 exact arithmetic cases. No new Lean theorem, actual
+native geometry certification, or mixed-direction/ambient
+terminality result is claimed.
+
+The [signed endpoint shift](../research/independent_audits/stationary_transport_attack_20261124/AWAY_ENDPOINT_SHIFT.md)
+supplies the previously separate away-Shift input on the same exact
+corrected geometric action. End-fine probes inside and outside the
+source cap trap the actual retained base and shift its endpoint limbs.
+A median split and four fixed alternating half-plane electrodes give
+the reciprocal width bound, with the canonical-completion and
+chart-discard cost: W(A)<=4V+2C_2+4, or 2V+C_2+2 in one direction.
+Simplicity of a surviving singleton is recovered by the actual
+confined retained gap, and essential equal-end inputs cost <=1/2.
+
+The [shared-crest ambient response](../research/independent_audits/stationary_transport_attack_20261124/AMBIENT_SHARED_CREST_RESPONSE.md)
+constructs a common raw primary for the entire ambient lamination
+(including short or breakable background), uses singleton identity
+only on the stationary subset, and charges the positive and negative
+stationary directions against the same whole primary widths.
+An extra raw comparison stage, not an extra singleton requirement,
+replaces the earlier relative precritical three-quarter cap by
+O(C_2+d+sqrt(Md)), with d=M-W+E. On a common actual BL_1-atom
+input with a stationary fraction sigma, this gives the explicit
+ambient O_(b,sigma)(R+V+1) threshold and uniform K=6b(h+4)+1
+response control. The corrected marking and exact saturated
+graph/host hypotheses remain; a general unrelated-crest ambient
+selection/replacement theorem and source-level downstream integration
+are still open. The [discrete regression](../research/independent_audits/stationary_transport_attack_20261124/check_ambient_shared_crest.py) checks
+the end-probe, endpoint-order and scale algebra, not the geometry.
+Three finite real-number lemmas are added to StationaryPacketGain
+pending kernel CI. All seven workflows passed at e967265.
+No ledger status is promoted.
+
+The [sector and phase assembly theorem](../research/independent_audits/stationary_transport_attack_20261124/SECTOR_PHASE_ASSEMBLY.md)
+proves a degree-independent 4pi/log(2) discard for an anchored packet
+with actual endpoints in a covering sector, and the same bound for
+confinement between nested half-disks with fixed electrodes.
+A finite target anchor/antipode cell partition and a reciprocal-width
+order cut for shared endpoint cells assemble actual trajectories,
+with total width loss at most m C_d + Delta + 2T L_* +
+10 binomial(T,2) + 1, T<=4m^2. Delta is the explicit source-width
+deficit from selecting the largest phase per directed cell pair.
+It need not be a literal image collision; a two-deck-copy annular
+example shows that it cannot be uniformly removed from the specified
+images in general. In the corrected noncritical singleton corridor
+the signed endpoint trap places all selected bases in one injective
+sector, so Delta=0 and a simpler m(C_2+L_*)+2V transfer suffices.
+
+The [multi-packet ambient alternative](../research/independent_audits/stationary_transport_attack_20261124/MULTIPACKET_AMBIENT_DEFICIT.md)
+uses the assembled primary supports instead of a common ambient crest.
+With the stated finite per-stage anchor and output control certificates
+and the earlier exact native geometric hypotheses, the same stationary
+defect inequality holds with E=E_base+sum Delta_j. At large absolute
+scale and near-maximality a stationary fraction sigma forces a
+cumulative phase deficit >delta W/4, delta=sigma^2/(2048N), or a
+strict wider controllable output. This identifies two sizeable
+different phase groups of one directed cell pair. Uniform native
+control, critical-side phase response, actual source marking and
+downstream integration remain open. [Finite checker](../research/independent_audits/stationary_transport_attack_20261124/check_sector_phase_assembly.py);
+three new Lean accounting declarations await kernel CI. All seven
+workflows passed at f32378d. No canonical ledger promotion.
+
+The [critical phase localization and selection](../research/independent_audits/stationary_transport_attack_20261124/CRITICAL_PHASE_LOCALIZATION.md)
+uses the native parabolic critical-cycle image condition and the
+actual saturated minimal dendrite hull: images of old critical
+hull arcs stay in the bounded BL_(-b)..BL_b bank. Refine the
+target cut set by the bank atom boundaries. Every competing
+directed cell pair then has a common actual whole near-critical
+crest atom: either a critical old-proper anchor contributes,
+or two phases with noncritical anchors force the cap through
+the omitted BL_1. The phase deficit is bounded by the union
+of critical-anchor and BL_1-crested target parents, and each
+conflict phase packet is uniformly controllable. An away parent
+whose positive primary crests BL_1 gives a distinct negative
+raw window by the zero signed sum at a critical end-atom probe.
+Finite optimal phase configurations may use all eligible
+actual windows, preserving disjoint supports with one choice
+per parent. A local exchange compares uncovered mass to
+pivotal competing mass with no other admitted candidate;
+duplicate eligible deck lifts of a singleton are always
+covered. The exact remaining native target is a response
+to sizeable pivotal near-critical conflicts and uniform
+ambient control, not generic crossing images.
+[Finite checker](../research/independent_audits/stationary_transport_attack_20261124/check_critical_phase_localization.py); two new accounting lemmas
+await CI. All seven workflows passed at 9f2408f, including
+1,981,536 finite phase-assembly regressions and three
+new Lean declarations. No canonical ledger promotion.
+
+The [phase-free anchored comparison](../research/independent_audits/stationary_transport_attack_20261124/ANCHORED_PHASE_FREE_RESPONSE.md)
+takes a different maximality class: actual marked simple Borel
+laminations sharing one whole crest atom, anywhere on the circle.
+Fixed-map supremum finiteness follows by the cap-span band metric.
+With a near-critical common anchor and this class's width cap,
+a bounded-probe median Shift argument controls all away nonshort
+modules without singleton hypotheses. Signed probe disagreements
+give distinct actual raw windows, even when their terminal images
+differ. A whole selected common primary sequence and the earlier
+suffix/separator geometry give a quantitative mostly-short
+conclusion for near-maximal near-critical anchored packets
+without unbreakability or phase selection. The new class does
+not impose the original source-uniform controllability bound,
+and remote maximizing anchors, short-crest saturation and
+uniform long fast-forward in this class remain genuine gates.
+[Finite checker](../research/independent_audits/stationary_transport_attack_20261124/check_anchored_phase_free.py); three finite algebra lemmas
+await CI. All seven workflows passed at 2bf9128, including
+226,670 critical phase/selection checks and two Lean additions.
+No ledger status is promoted.
+
+The [anchored short-crest and long-jump theorem](../research/independent_audits/stationary_transport_attack_20261124/ANCHORED_SHORT_JUMP.md)
+uses first/last signed probes to advance a proper whole common
+interval, and a common outside atom to force a series response
+when its pulled image saturates. Short common-crest packets at
+high q have this outside guard by cyclic order. A localized
+escape metric in one old-proper covering sector J (length <=1/d)
+charges only raw lifts meeting a low test rectangle and escaping
+the slab; opposite inside/outside old probes force a full good
+parent lift. The cost is 200(1+log(a/(2g)))+4V, independent of
+the covering degree d, with a actual sector length and g its
+probe margin. The actual proper-middle one-step chart and
+tower squares produce a full long chart; the guard depends
+only on the six fixed terminal limb lengths. Exact corrected
+interval nonreturn bounds critical visits; a finite macro-stage
+schedule and backward tolerances give the conditional estimate
+M_*<=C_b(R+V+1+G_T+D_remote), where G_T is the terminal angular
+guard and D_remote the global-minus-near anchored supremum gap.
+Neither is yet proved uniformly controlled. This is a route
+around singleton and phase-assembly hypotheses, not a native
+global theorem. [Finite checker](../research/independent_audits/stationary_transport_attack_20261124/check_anchored_short_jump.py); two new algebra
+lemmas await CI. All seven workflows passed at 07aa9c3,
+including 575,432 finite tests and three Lean declarations.
+No ledger promotion.
+
+The [angular anchored envelope](../research/independent_audits/stationary_transport_attack_20261124/ANGULAR_ANCHORED_ENVELOPE.md)
+identifies the actual common-crest packet supremum for a marked
+interval of angular length ell, up to an absolute additive error,
+with log_+(2s/ell)/pi, s=min(1/4,M_X/2). The lower witness is a
+literal disjoint concentric semicircle family; uniform radial
+metrics give the upper bound even in a thin annulus. The global-
+minus-near supremum gap is thus the clipped angular minimum-atom
+ratio up to C_env. The near-critical nonshort charge extends to
+tracked nonshort leaves whose bases meet the bank even when the
+whole ambient common atom is remote. For the explicit smallest-
+atom maximizing packet this gives an almost-full-width concentric
+subpacket wholly inside the proper middle corridor, or a near-bank
+radial maximizer. The guard ratio also produces an actual whole-
+padding-limb radial packet and the squared guard response (6).
+It excludes extreme guards relative to M_*, not a uniform absolute
+guard bound. Relocating the explicit middle packet (including
+nonshort radii) and controlling the remaining guard are now the
+precise analytic tasks. Exact native geometry and downstream
+typing remain open. [Finite checker](../research/independent_audits/stationary_transport_attack_20261124/check_angular_anchored_envelope.py); two new
+finite real-number lemmas await CI. All seven workflows passed
+at 005f8a6 including 1,230,003 short-jump regressions and two
+Lean declarations. No ledger promotion.
+
+The [guard-free angular replacement](../research/independent_audits/stationary_transport_attack_20261124/GUARD_FREE_ANGULAR_JUMP.md)
+uses one-sided radial width and the positive Herglotz boundary
+derivative kernel on the actual old-proper full-tower strip chart.
+Its derivative ratio costs exp(3pi V) times the squared endpoint
+distance ratio, independently of degree. Choosing a largest
+padding limb among ten possible near-precritical terminal limbs
+makes the required one-sided padding comparable to the four
+inner limbs. Replacing short packets by actual radial laminations
+over the whole translated common crest costs <=40(V+1) rather
+than the old six-limb angular guard. This is width replacement,
+not a guard-free full-lift statement. The finite anchored program
+therefore removes G_T from its conditional estimate. For a remote
+explicit radial maximizer the same argument needs only its left
+endpoint in the proper band, even when its other end is outside;
+a reflected fixed-width target padding band supplies the remaining
+ratio G_rem, yielding the conditional M_*<=C_b(R+V+1+G_rem).
+G_rem is not bounded here. Exact native chart/marking, nonshort
+geometry and downstream hypotheses remain explicit. [Finite checker](../research/independent_audits/stationary_transport_attack_20261124/check_guard_free_angular_jump.py);
+three new algebra declarations await kernel CI. The prior angular
+guard lemma's nonnegativity proof was corrected after its CI failure.
+No ledger promotion.
+
+The [local near-bank cap](../research/independent_audits/stationary_transport_attack_20261124/LOCAL_BANK_CAP.md)
+localizes remote-probe auxiliary gaps using the actual proper
+middle old-limit chart: both gap ends in the far corridor would
+both be original endpoint times, impossible for a parent with
+one near-bank end. A cap over a strictly interior remote probe
+must traverse one whole far-corridor boundary limb, giving a
+near-bank target crest. Split each such fixed chart packet into
+at most two actual Borel sublaminations, so its total width is
+<=2 M_(c^+). This supplies the local cap in the nonshort median
+proof, and the short outside saturation probe can be chosen in
+the near bank. The guard-free bounded program now yields
+M_(c^+)<=C_b(R+V+1+Delta_loc), Delta_loc=M_(c^+)-M_c, c=b+12,
+c^+=c+h+6. Each localized direction of a source input with a
+fixed ending atom admits the one-sided proper-middle angular
+comparison even for nonshort leaves, bounded by 3M_c+40(V+1)
+because its terminal padding limb is itself near-bank. Hence
+W(input)<=(6k+1)M_c+80k(V+1)+1/2 for the stated localized plus
+leafwise over-critical typing. No global remote supremum or
+terminal guard remains in this conditional source-width route;
+the finite local bank expansion gap is not bounded. Exact
+geometry, initial witness and downstream typing remain open.
+[Finite checker](../research/independent_audits/stationary_transport_attack_20261124/check_local_bank_cap.py); two algebra declarations await CI.
+All seven workflows passed at f1eabb4, including 622,077 exact
+guard-free jump checks and the corrected prior guard lemma.
+No ledger promotion.
+
+The [asymmetric bank gap certificate](../research/independent_audits/stationary_transport_attack_20261124/ASYMMETRIC_BANK_GAP.md)
+observes that only the positive side of the local comparison
+bank needs expansion: primary anchors translate forward or
+reset inside B_b, and the two far-corridor boundary images
+in the median probe proof are BL_(c+2) and BL_(q-c).
+Use c=2b+20, t=H+2 and B^+=BL_[-c,c+t].
+The same conditional source-width bound now depends on
+Delta_+=M_(B^+)-M_B only. A new minimum outside B is in
+a bounded positive strip, with a bounded r<=t proper
+backward chart. Its actual whole original atom ancestor
+in BL_c may have a multi-atom image; retain the true
+angular subdivision S and terminal chart margin G.
+The positive derivative kernel and integration on the
+chart bound the old atom length by 16 exp(6pi V)L/G.
+Thus Delta_+<=C_env+log(16)/pi+6V+log(S/G)/pi.
+A sufficient remaining quantitative certificate is
+log(S/G)=O_b(R+V+1). The small-margin whole-limb witness
+only gives a relative constraint, not that absolute
+bound; atom-to-atom ancestry is not assumed.
+[Finite checker](../research/independent_audits/stationary_transport_attack_20261124/check_asymmetric_bank_gap.py); one algebra declaration
+awaits CI. All seven workflows passed at e990fbb,
+including 465,199 local-bank checks and two Lean additions.
+No ledger promotion.
+
+The [proper-middle atom ancestry certificate](../research/independent_audits/stationary_transport_attack_20261124/PROPER_MIDDLE_ATOM_ANCESTRY.md)
+proves S=1 conditional on an actual homeomorphism of the
+full limb hull, complete whole original/inverse little
+vertex correspondence, and exact access-complete graph-side
+marking (including backward matching of any extra subdivision).
+Under those hypotheses the vertex contacts and branch vertices
+and their actual accesses correspond in both directions, so
+fine and coarse cut sets coincide on the proper limb. This
+reduces the new bounded asymmetric expansion-gap certificate
+to log(1/G)=O_b(R+V+1), if these native hypotheses are
+verified. The extreme-margin whole-limb radial witness yields
+only a relative constraint. The live source mirror was
+unavailable; the proof uses the explicit source-locked
+archive graph hypotheses. No new Lean declaration or finite
+checker is added and no ledger promotion.
+
+The [directional boundary compression theorem](../research/independent_audits/stationary_transport_attack_20261124/DIRECTIONAL_COMPRESSION.md)
+splits the positive Herglotz boundary derivative into a left
+contribution comparable monotonically to the left (loss exp(pi V))
+and a right contribution monotonically increasing to the right.
+A large average old/new compression therefore forces simultaneous
+contraction on one entire side of the proper middle chart. The
+right case transports a new minimum atom to BL_(q-b-1), contradicting
+its being smaller than every original-bank atom, even with
+whole-atom subdivisions. Thus a new minimum with large ratio
+forces the left inequalities L_j/L_(j+1)>=exp(-pi V) A/2 for all
+b<=j<c. The bank gap is bounded by C_env+log(S)/pi+
+t(V+log(2)/pi)+(t/pi) log_+ min_j(L_j/L_(j+1)).
+Under exact atom-to-atom ancestry S=1, this replaces the previous
+angular-margin estimate by an absolute bound on any one of the
+early actual whole-limb ratios. Telescoping also gives relative
+coefficient t/(c-b) times the actual whole-BL_c radial nonshort
+width plus the stated errors. This coefficient does not by itself
+close the c-dependent deficit program. The remaining native
+compression estimate and actual chart/marking hypotheses remain
+explicit. [Finite checker](../research/independent_audits/stationary_transport_attack_20261124/check_directional_compression.py); two finite algebra
+declarations await kernel CI. All seven workflows passed at
+d2879cf. No canonical ledger promotion.
+
+The [no-fixed-point compression and plateau theorem](../research/independent_audits/stationary_transport_attack_20261124/NO_FIXED_POINT_COMPRESSION.md)
+removes the remaining quantitative angular gap under the standing
+actual proper-middle and corrected geometric hypotheses. The reverse
+boundary map H sends every terminal limb into the previous limb
+in the same normalized angular coordinate, so H(y)<y. A large left
+derivative contribution persists to the right for one left-margin
+length (factor exp(-2pi V)/4); if the chart continues that far,
+the integrated derivative forces H(y)>y. Otherwise the high
+derivative persists to the end. Together with right domination,
+any compression A>24 exp(3pi V) would therefore transport the new
+minimum to a smaller atom in the negative original bank. This
+bounds the bank gap by C_env+log(S)/pi+t(3V+log(24)/pi).
+Choose a constant-count window of t=b+6 transitions among 6b
+disjoint windows in the proper corridor: the nondecreasing
+positive atom count <=6b cannot strictly increase in every
+window. Exact nonempty whole-atom refinement then gives S=1
+through the selected window. Hence Delta_+=O_b(V+1).
+Combining the preceding local nonshort/guard-free short program
+and one-sided localized input estimate gives the conditional
+W(input)<=C_(b,k)(R+V+1) for q>=Q_b and the stated actual Borel
+localized plus leafwise-over-critical source input. For R>=1
+and W(input)>=C_(b,k)(L+2)R this yields V>=LR, hence the source
+amplification comparison if W(F)>=V. No angular margin, global
+remote maximum, phase-selection deficit or extra atom-to-atom
+hypothesis remains on this conditional route. The actual native
+corrected marking, proper middle and tower charts, saturated
+carrier/host/deep separator realization, exact orbit, initial
+source typing and downstream licensing are still explicit
+hypotheses, not established by this bound. The literal A.3.2
+problem is not silently repaired. [Finite checker](../research/independent_audits/stationary_transport_attack_20261124/check_no_fixed_point_compression.py);
+three finite algebra declarations await CI. No canonical ledger
+promotion or unconditional MLC claim.
+
+The [saturated graph geometric marking construction](../research/independent_audits/stationary_transport_attack_20261124/SATURATED_GRAPH_CHARTS.md)
+derives several analytic chart hypotheses from explicit actual model
+graph data. An open preimage edge is all-in or all-out of the old
+minimal hull, since every point outside original whole bodies is on
+an arc joining those bodies. Marked-cut extreme gates are fine cuts
+by forward marked landings and access completeness. The first/last
+fine atom of a coarse open pull must lie on an included edge or in
+a whole original preimage vertex, so the carriers agree locally
+around its entire physical impression by saturation. This gives
+the actual proper old limits and also the critical whole-body
+deck pair. The noncritical closed limb map is injective by the
+unique critical deck fixed point, onto by relative openness and
+compactness; parabolic critical-image placement forces all
+preimage little bodies in the proper middle to be original.
+Minimal hull equality then gives the actual proper middle
+chart, including dividing cuts. These deductions are conditional
+on the specified native saturated graph, model/physical contour
+and exact marked access data, not a verification of the literal
+A.3.2 operation. The live source was unavailable; use the
+source-locked hypotheses. The previous no-fixed-point regression
+passed 76,592 cases at 3d25a21; its weighted check exposed an
+algebra cancellation API error, corrected in this revision.
+No new numerical checker or declaration in the graph note.
+No canonical ledger promotion.
+
 This checker establishes finite rational endpoint-cover and degree-budget
 certificates and rejects invalid accounting. It does not construct native
 exits. The stationary hypotheses still need to supply one eligible actual
