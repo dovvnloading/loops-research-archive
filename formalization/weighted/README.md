@@ -49,26 +49,29 @@ Perron–Frobenius theorem.
 | [FullCloneEigenline.lean](FullCloneEigenline.lean) | Every complex eigenvector at `t_n` is its hub value times the existing explicit positive vector. Thus the leading complex eigenspace is one-dimensional (geometric simplicity). |
 | [CloneRootRate.lean](CloneRootRate.lean) | `(2n+4)*(t_n-1)≤1`, and for **every** `ε>0` some delay has `1<t_n<1+ε`. Primitive graphs therefore do not yield a stage-uniform positive expansion factor from primitivity alone. |
 
-A separate [cycle-cover argument](../../research/independent_audits/clone_strict_spectrum_and_no_uniform_expansion_20261107.md)
-derives the exact characteristic polynomial
-`det(λI-A_n)=λ^(2n+5)-λ-1`, and hence algebraic
-simplicity of `t_n`. This determinant identity is a **written**
-proof, not a kernel-checked `Matrix.charpoly` theorem. The
-[independent regression](../../research/independent_audits/verify_clone_strict_gap.py)
-checks 144 exact finite-field determinants plus small-n spectral gaps.
-The written cycle-cover/Vieta argument additionally proves the
-all-delay spectral-gap-collapse estimate
-`0 < t_n - r_n ≤ 1/(n+2)`, where `r_n` is the greatest modulus of
-the other full-matrix eigenvalues. Thus this family has **no uniform
-spectral separation** even though every individual graph is
-primitive; the Vieta step and the gap-collapse bound are not yet Lean
-`charpoly`-checked. Nothing here establishes a native KKL
-prime-end or edge-incidence realization.
+The [original cycle-cover argument](../../research/independent_audits/clone_strict_spectrum_and_no_uniform_expansion_20261107.md)
+now has a complete Lean algebraic companion:
 
-**Passing branch CI:** [mathlib build #42402605130](https://github.com/dovvnloading/loops-research-archive/actions/runs/42402605130)
-and [root research validation #42402714782](https://github.com/dovvnloading/loops-research-archive/actions/runs/42402714782).
-These verify the encoded all-n theorems and the regression without
-proof holes or custom axioms. New commits require their own CI.
+| Module | Exact kernel-checked result |
+|---|---|
+| [ClonePolynomialRoots.lean](ClonePolynomialRoots.lean) | The complex polynomial `X^(2n+5)-X-1` is separable and squarefree, has exactly `2n+5` distinct roots, and their moduli have product one. The derivative argument holds for every degree at least two. |
+| [FullCloneCharpoly.lean](FullCloneCharpoly.lean) | Reuses the existing actual eigenvectors from `FullCloneRenewal` to prove `Matrix.charpoly` equality and `det(μI-A)=μ^(2n+5)-μ-1`. Proves simple characteristic roots, semisimplicity, and that all complex eigenspaces span the full space. |
+| [FullCloneGapCollapse.lean](FullCloneGapCollapse.lean) | For every delay and its root `t>1`, produces an actual nonleading eigenvalue with `0<t-‖μ‖<1/(n+2)`; proves tolerance-quantified absolute and relative gap nonuniformity. |
+
+The new determinant proof uses separability, root inclusion, and equal monic
+degrees. The written cycle-cover expansion remains an independent argument.
+The gap module states an actual eigenvalue witness, so no maximum or spectral
+gap is assumed as an input. The sharper cubic renewal asymptotic remains
+written. The [verification report](../LEAN_VERIFICATION_20261125.md) records
+the exact CI evidence and remaining work. A native KKL prime-end or
+edge-incidence realization is still a separate obligation.
+
+**Verified proof revision `a9dcbb89f6a6105f36610de0be930002b01f25bb`:**
+[weighted build and axiom audit](https://github.com/dovvnloading/loops-research-archive/actions/runs/45707763695)
+and [root research validation](https://github.com/dovvnloading/loops-research-archive/actions/runs/45707763753)
+both pass. The transitive audit covers every declaration in all 56 weighted
+modules and permits only `propext`, `Classical.choice`, and `Quot.sound`.
+New commits require their own CI.
 
 ## Verified real period-27 quadratic center (mathlib)
 
@@ -127,15 +130,11 @@ preprint and not an unconditional proof of MLC.
 
 Outstanding obligations:
 
-1. Kernel-check the **exact characteristic polynomial**
-   `det(λI-A_n)=λ^(2n+5)-λ-1` and its **algebraic simplicity**
-   consequence using mathlib's determinant/charpoly API. The all-n
-   complex root equation, strict dominance and *geometric*
-   simplicity are already kernel-checked; the determinant formula
-   currently has a separate written cycle-cover proof.
-2. Connect the theorem to mathlib's named spectral-radius operator and
-   eigenvalue spectrum API (the current characterization uses exact
-   complex eigenpairs).
+1. Formalize the explicit positive stationary probability, affine invariant
+   measure, and complete cylinder law in the clone renewal/readout notes.
+   Then formalize the cubic spectral-gap asymptotic with controlled remainders.
+2. Connect the already-proved complex eigenvalue and characteristic-polynomial
+   statements to mathlib's named spectral-radius operator.
 3. Generalize beyond the explicit five-vertex cycle-with-shortcut graph
    to arbitrary finite nilpotent-Q cross sections, proving the
    Schur/first-return spectral reduction with precise typing and
