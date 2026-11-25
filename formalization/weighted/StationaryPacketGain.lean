@@ -446,4 +446,29 @@ theorem near_bank_start_deficit (M near w t : ℝ)
     M-w ≤ t*M := by
   linarith
 
+/-- Two additive width envelopes with the same absolute constant
+identify the difference of the corresponding suprema up to that
+constant, not twice that constant. -/
+theorem anchored_supremum_gap_envelope (M near X Y C : ℝ)
+    (hMlo : X ≤ M) (hMhi : M ≤ X+C)
+    (hnlo : Y ≤ near) (hnhi : near ≤ Y+C) :
+    |(M-near)-(X-Y)| ≤ C := by
+  rw [abs_le]
+  constructor <;> linarith
+
+/-- If an actual whole-limb packet of width w supplies the series
+deficit inequality, a lower width bound z inherited from the
+terminal angular guard satisfies the same active squared charge. -/
+theorem angular_guard_active_charge (M E B a z w : ℝ)
+    (hM : 0 ≤ M) (hzB : B ≤ z) (hz : z ≤ w)
+    (hresp : (w-B)^2 ≤ a*a*M*(M-w+E)) :
+    (z-B)^2 ≤ a*a*M*(M-z+E) := by
+  have hs : (z-B)^2 ≤ (w-B)^2 := by
+    have hp : 0 ≤ w+z-2*B := by linarith
+    nlinarith [mul_nonneg (sub_nonneg.mpr hz) hp]
+  have hcoef : 0 ≤ a*a*M := by positivity
+  have hr := mul_le_mul_of_nonneg_left
+    (show M-w+E ≤ M-z+E by linarith) hcoef
+  exact hs.trans (hresp.trans hr)
+
 end LoopsStationaryPacketGain

@@ -1714,7 +1714,9 @@
         "anchored_defect_bookkeeping",
         "anchored_nonshort_fraction_excluded",
         "anchored_guard_scale_step",
-        "near_bank_start_deficit"
+        "near_bank_start_deficit",
+        "anchored_supremum_gap_envelope",
+        "angular_guard_active_charge"
       ]
     },
     "checks": [
@@ -1729,7 +1731,8 @@
       "research/independent_audits/stationary_transport_attack_20261124/check_sector_phase_assembly.py",
       "research/independent_audits/stationary_transport_attack_20261124/check_critical_phase_localization.py",
       "research/independent_audits/stationary_transport_attack_20261124/check_anchored_phase_free.py",
-      "research/independent_audits/stationary_transport_attack_20261124/check_anchored_short_jump.py"
+      "research/independent_audits/stationary_transport_attack_20261124/check_anchored_short_jump.py",
+      "research/independent_audits/stationary_transport_attack_20261124/check_angular_anchored_envelope.py"
     ],
     "obligations": [
       "KKL_STATIONARY_FINAL_FIXED_COMPONENT_EXIT",

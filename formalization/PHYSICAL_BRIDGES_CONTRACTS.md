@@ -820,6 +820,29 @@ lemmas await CI. All seven workflows passed at 07aa9c3,
 including 575,432 finite tests and three Lean declarations.
 No ledger promotion.
 
+The [angular anchored envelope](../research/independent_audits/stationary_transport_attack_20261124/ANGULAR_ANCHORED_ENVELOPE.md)
+identifies the actual common-crest packet supremum for a marked
+interval of angular length ell, up to an absolute additive error,
+with log_+(2s/ell)/pi, s=min(1/4,M_X/2). The lower witness is a
+literal disjoint concentric semicircle family; uniform radial
+metrics give the upper bound even in a thin annulus. The global-
+minus-near supremum gap is thus the clipped angular minimum-atom
+ratio up to C_env. The near-critical nonshort charge extends to
+tracked nonshort leaves whose bases meet the bank even when the
+whole ambient common atom is remote. For the explicit smallest-
+atom maximizing packet this gives an almost-full-width concentric
+subpacket wholly inside the proper middle corridor, or a near-bank
+radial maximizer. The guard ratio also produces an actual whole-
+padding-limb radial packet and the squared guard response (6).
+It excludes extreme guards relative to M_*, not a uniform absolute
+guard bound. Relocating the explicit middle packet (including
+nonshort radii) and controlling the remaining guard are now the
+precise analytic tasks. Exact native geometry and downstream
+typing remain open. [Finite checker](../research/independent_audits/stationary_transport_attack_20261124/check_angular_anchored_envelope.py); two new
+finite real-number lemmas await CI. All seven workflows passed
+at 005f8a6 including 1,230,003 short-jump regressions and two
+Lean declarations. No ledger promotion.
+
 This checker establishes finite rational endpoint-cover and degree-budget
 certificates and rejects invalid accounting. It does not construct native
 exits. The stationary hypotheses still need to supply one eligible actual
