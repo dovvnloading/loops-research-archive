@@ -116,6 +116,38 @@ def endpoint_census_checks():
     return checked
 
 
+def latest_bank_checks():
+    # Each final target needs only its latest qualifying predecessor.
+    # Its suffix can contain the critical phase zero only at that time.
+    cases = equalities = 0
+    for P in range(2, 11):
+        for mask in range(1, 1 << P, 2):
+            critical = {k for k in range(P) if mask & (1 << k)}
+            b = len(critical)
+            for h in range(P):
+                for s in range(h + 1):
+                    total = 0
+                    for k in range(P):
+                        stages = [j for j in range(s, h + 1)
+                                  if (k - h + j) % P in critical]
+                        if not stages:
+                            continue
+                        j = max(stages)
+                        phase = (k - h + j) % P
+                        degree_two = any((phase + d) % P == 0
+                                         for d in range(h-j))
+                        if degree_two:
+                            assert phase == 0
+                        total += 2**j * (2 if degree_two else 1)
+                    bound = b*2**h + (b+1)*(2**h-2**s)
+                    assert total <= bound
+                    cases += 1
+                    equalities += total == bound
+    assert cases == 47102
+    assert equalities == 10170
+    return cases, equalities
+
+
 def main():
     cases, stays = partial_inverse_models()
     shifts = shift_checks()
@@ -123,6 +155,8 @@ def main():
     print(f"PASS: {cases} finite orbit cases, {stays} all-critical stays")
     print(f"PASS: {shifts} strict-nest prefix cases, {weights} rational weight cases")
     print(f"PASS: {endpoint_census_checks()} exact endpoint census and birth-budget cases")
+    cases, equalities = latest_bank_checks()
+    print(f"PASS: {cases} latest-bank cases, including {equalities} exact budget equalities")
     print("Scope: finite orbit, endpoint census and energy-weight algebra only.")
 
 
