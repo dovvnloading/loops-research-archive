@@ -1679,6 +1679,19 @@
         "majority_double_gain",
         "collision_after_escape",
         "gap_energy_lower"
+      ],
+      "formalization/weighted/StationaryPacketGain.lean": [
+        "chart_gain",
+        "single_double_gain",
+        "coherent_pattern_gain",
+        "double_excess",
+        "sum_pattern_gain",
+        "sum_collision_excess",
+        "bounded_discard_sum",
+        "collision_fraction_response",
+        "response_at_scale",
+        "no_gain_bounds_collision",
+        "residual_lower"
       ]
     },
     "checks": [
