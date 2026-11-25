@@ -497,6 +497,44 @@ checks ten crossing-indicator, saturation, birth and charge
 theorems; the conformal and topological arguments are written
 proofs, not kernel-formalized analysis.
 
+The [quadratic deck separator](../research/independent_audits/stationary_transport_attack_20261124/SYMMETRIC_SEPARATOR.md)
+uses the genuine model degree-two involution to exchange the
+two preimages of the dividing fixed point. The real interval
+fixed-point argument puts the model critical point on their
+unique dendrite arc. The saturated critical fiber lies in the
+small Julia set, so every connected physical filled-set route
+between the two sides meets the separator. Retraction of the
+full continuum to the selected closed limb propagates this
+separation to all selected depths without a competing filled
+route bypass. Under the finite saturated preimage-graph and
+preperiodic-contact hypotheses, the root and deep attachment
+hosts of the actual small Julia annulus are unique and deck
+opposed, hence antipodal. This is a side-existence result,
+not a retained Wave occurrence. An explicit symmetric planar
+tree with f=z², fixed separator [-1,1] and bounded vertical
+width has a free branch-response lower bound 1/(2δ), despite
+the antipodal hosts. Thus the separator alone does not
+calibrate that response in the native setting.
+
+The [multiplicative collision gain](../research/independent_audits/stationary_transport_attack_20261124/COLLISION_GAIN.md)
+proves an all-sheet metric estimate W(A)≤2^h W(D)/r²
+for r genuinely disjoint parent-time windows projecting
+to whole output paths. On a complete canonical lift family,
+each retained inner-ended restriction is a gap on the
+unique canonical lift. The actual one-step multiplicities
+(one or two) multiply under nested windows. Therefore k
+double stages in h give W(D)≥2^(2k−h) W(A), with at most
+2^h V(F) charged separately for incomplete lifts.
+Two protected deck-opposed crest anchors in one parent cap
+suffice to certify a double stage, but the two separator
+hosts alone need not satisfy the marking/filter conditions.
+Native duplication frequency, output Wave controllability,
+free-response calibration and the corrected marking
+interface remain open. The [finite/real module](weighted/StationaryDeckSeparator.lean)
+checks the interval fixed point, connected-image separation,
+deck injectivity exclusion, and gain and gap algebra.
+Its kernel status is determined by weighted CI.
+
 This checker establishes finite rational endpoint-cover and degree-budget
 certificates and rejects invalid accounting. It does not construct native
 exits. The stationary hypotheses still need to supply one eligible actual
