@@ -915,6 +915,22 @@ awaits CI. All seven workflows passed at e990fbb,
 including 465,199 local-bank checks and two Lean additions.
 No ledger promotion.
 
+The [proper-middle atom ancestry certificate](../research/independent_audits/stationary_transport_attack_20261124/PROPER_MIDDLE_ATOM_ANCESTRY.md)
+proves S=1 conditional on an actual homeomorphism of the
+full limb hull, complete whole original/inverse little
+vertex correspondence, and exact access-complete graph-side
+marking (including backward matching of any extra subdivision).
+Under those hypotheses the vertex contacts and branch vertices
+and their actual accesses correspond in both directions, so
+fine and coarse cut sets coincide on the proper limb. This
+reduces the new bounded asymmetric expansion-gap certificate
+to log(1/G)=O_b(R+V+1), if these native hypotheses are
+verified. The extreme-margin whole-limb radial witness yields
+only a relative constraint. The live source mirror was
+unavailable; the proof uses the explicit source-locked
+archive graph hypotheses. No new Lean declaration or finite
+checker is added and no ledger promotion.
+
 This checker establishes finite rational endpoint-cover and degree-budget
 certificates and rejects invalid accounting. It does not construct native
 exits. The stationary hypotheses still need to supply one eligible actual
