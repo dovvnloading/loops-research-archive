@@ -34,8 +34,13 @@ theorem incidentLoad_eq_split (u v : E → V) (x : E → ℝ)
   intro e _
   by_cases hu : j = u e
   · have hv : j ≠ v e := fun h => hne e (hu.symm.trans h)
-    simp [hu, hv]
-  · by_cases hv : j = v e <;> simp [hu, hv]
+    simp only [if_pos (show j = u e ∨ j = v e from Or.inl hu),
+      if_pos hu, if_neg hv, add_zero]
+  · by_cases hv : j = v e
+    · simp only [if_pos (show j = u e ∨ j = v e from Or.inr hv),
+        if_neg hu, if_pos hv, zero_add]
+    · have hn : ¬ (j = u e ∨ j = v e) := fun h => h.elim hu hv
+      simp only [if_neg hn, if_neg hu, if_neg hv, zero_add]
 
 /-- Exact finite double-counting identity, independent of signs. -/
 theorem weighted_load (u v : E → V) (x : E → ℝ) (a : V → ℝ)
