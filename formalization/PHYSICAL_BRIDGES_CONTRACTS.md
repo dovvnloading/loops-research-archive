@@ -443,7 +443,10 @@ little-Julia endpoint, the records meet distinct final pulled
 components; each component accounts for at most b stages.
 The union of all possible stage components has total final
 peripheral degree at most b(3·2^h−2) for h<P, by the exact
-prefix census and at most one critical suffix arrow. Two
+prefix census and at most one critical suffix arrow. Keeping only
+the latest record per parent and the latest qualifying preimage
+bank per final target improves the charge to
+b·2^h+(b+1)(2^h−2^b), or (7b+3)·2^b at h=b+2. Two
 physical records at distinct components (including original
 endpoint times) suffice for a proper exit; all-sheet metric
 push gives the uniform R-charge without a selected deep
