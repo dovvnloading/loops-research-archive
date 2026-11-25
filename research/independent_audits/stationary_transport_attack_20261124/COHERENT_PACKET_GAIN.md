@@ -322,7 +322,154 @@ stationary mass into chains with exactly one actual
 retained inner component per step, rather than merely
 chains with fewer than half their stages doubled.
 
-## 5. Relation to the native stationary frontier
+## 5. Relative continuation without a covering-degree descent loss
+
+There is also an independent improvement of the analytic
+common-crest step of the archive's
+[Gate N1 relative continuation](../../mlc_unified/kkl_stationary_relative_wave_continuation.md),
+Lemmas 2.3 and 4.1–4.3 and Proposition 7.1.
+Keep its actual geometric directed-restriction existence,
+fine refinement, native output typing and away-Shift
+bounds as explicit hypotheses. This is not a validation
+of the literal disputed unrestricted marking action.
+
+For this paragraph a simple proper singleton output and
+one actual directed retained restriction above a common
+fine-marked crest interval J suffice; the complete-lift
+premise is not needed for primary-only width transfer.
+Choose e in the interior of J and perform (1). Every
+surviving primary maps homeomorphically onto the entire
+simple output. Distinct good primaries map to disjoint
+output paths because they belong to the single injective
+covering chart. In particular for any subset D of the
+good output leaves its full good parent saturation S_D
+satisfies W(S_D)≤W(D).
+
+Moreover, if p(J) is a proper connected target
+multi-interval, it is contained in each surviving
+singleton output crest. Indeed the full source cap
+lifts the output disk cap homeomorphically. The entire
+J lies in the source singleton crest, so its covering
+image lies in the output base and avoids the output
+ends. Since the fine marking is pulled back from the
+target marking, a complete source fine atom of J maps
+onto the complete corresponding target atom. If an
+output endpoint were in that target atom, its inverse
+within this fine atom and its actual source endpoint
+would contradict the injectivity of the cap base.
+The image of the entire J therefore lies between the
+two marked ending intervals, including the indicated
+interior junctions where applicable. No aggregate-crest
+conclusion is inferred from merely one chosen endpoint.
+
+When the source theorem supplies J over BL_0 with
+p(J) the entire circle, no surviving proper disk-cap
+output can have that base. Thus the over-critical
+family has width at most C_2 in this directed simple
+output scope. The two-step precritical family first
+has discard at most C_2 and then has a good output
+over BL_0. The primary-only transfer, rather than
+a full degree-two pullback, bounds its remaining
+width by C_2. Hence one may use
+
+\[
+ c_{\rm crit}=C_2,\qquad c_{\rm pre}=2C_2
+ \tag{9}
+\]
+
+under these actual directed/simple-output hypotheses.
+The source-independent metric argument proves the
+pruning needed for this scoped use of the published
+annular toolkit. It does not prove directed existence
+when the source's ideal-subset operation is ill-typed.
+
+For a positive directed packet with a noncritical
+crest and the actual one-step central/noncentral
+output decomposition of N1, let e_b bound the
+discarded over-critical and away output width.
+After primary pruning their complete good saturation
+has width ≤e_b, so the one-step relative loss is
+at most C_2+e_b. Iterating on the successively retained
+good families, the coefficient-one primary transport
+at every earlier stage descends each new loss without
+a covering-degree factor. Thus after h such steps
+the total loss in original-parent width is at most
+
+\[
+ h(C_2+e_b). \tag{10}
+\]
+
+If an initial opposite-direction packet is disposed
+of by the precritical bound (9), add 2C_2 once.
+This is an explicitly constructed surviving
+subfamily, not an assertion about every arbitrary
+choice of inclusion-maximal A_n. It gives a
+conditional alternative relative continuation
+telescope with a linear number-of-steps loss.
+For the collision gain on this chain restore the
+complete-horizon lift restriction; that adds at
+most 2^h V(F) in original-parent width, once.
+The fixed common crest, actual retained paths,
+Borel marking predicates and controllable output
+containment remain essential.
+
+## 6. Quantitative residual audit
+
+In the setting of §3 take h=b+2<P and assume the
+output Wave containment required by §4. Let A be
+the actual stationary family entering that
+telescope and put
+
+\[
+ J_b=(7b+3)2^b R(F),\qquad
+ E_h=2^h V(F)+hC_2.
+\]
+
+By the latest-stage census of STAGE_ENDPOINT_CENSUS,
+the subfamily with at least b+1 Julia-critical
+stages has width at most J_b. It may overlap the
+collision class. Do not add their widths as if
+they were a disjoint partition; use subadditivity
+to remove their union.
+
+Let S denote the good parents with exactly one
+retained inner restriction at every stage and at
+most b Julia-critical stages. If the allowed
+output Wave has width at most (1+λ)W(A), with
+0≤λ<1, then (8) bounds the good collision class.
+Combining with the Julia-stage charge and the
+exceptional cost yields
+
+\[
+ \boxed{
+ W(S)\ge (1-\lambda)W(A)-2E_h-J_b .
+ } \tag{11}
+\]
+
+If the preliminary relative continuation losses
+of (10) are also included in A, they must be
+charged separately (or included in an enlarged
+E budget), not silently suppressed.
+
+Equation (11) is a precise residual necessity
+statement: a sufficiently wide stationary
+family that neither triggers the vertical
+alternative nor produces a gain must have
+large modulus in a physically characterized
+single-retained edge-end class. In particular
+every such parent has at least three
+non-Julia-critical stages. Conversely if one
+establishes W(S)≤B_b(R+V+1), the displayed
+inequality closes the corresponding conditional
+short-or-wider-Wave numerical branch at an
+explicit absolute scale. No such uniform
+bound is proved here. The exact
+[attachment-screening example](ATTACHMENT_SCREENING.md)
+shows why it cannot be inferred from general
+nested-carrier geometry and bounded vertical
+modulus alone.
+
+## 7. Relation to the native stationary frontier
 
 The finite-horizon directed source packet is the
 remaining geometric input of this theorem. On an
@@ -337,8 +484,8 @@ at every exceptional critical step, or validate the
 literal unrestricted maximal-subset restriction of
 KKL A.3.2.
 
-There are now two disjoint quantitative classes in
-the stationary problem:
+There are now two available quantitative classes in
+the stationary problem (they may overlap):
 
 1. Julia-critical endpoints: the census of
    STAGE_ENDPOINT_CENSUS charges parents with more
