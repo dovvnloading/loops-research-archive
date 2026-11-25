@@ -580,8 +580,55 @@ Failure of gain leaves a quantitative single-restriction,
 carrier-edge residual; the native directed occurrence and
 controllable output premises remain explicit. The [finite
 module](weighted/StationaryPacketGain.lean) checks the
-weighted excess and response algebra. Kernel status is
-determined by weighted CI.
+weighted excess and response algebra. The first eleven public
+theorems compiled in weighted run 45674655696 at revision
+5e9c41e38b4dd565368a1e1ffc007dbcec7ac343 (8776 build jobs);
+the workflow was cancelled after successful compilation by a
+subsequent note revision. The expanded module adds the auxiliary
+series-response theorems below and needs its own final kernel check.
+
+The [attachment screening example](../research/independent_audits/stationary_transport_attack_20261124/ATTACHMENT_SCREENING.md)
+uses an unchanged upper bank of a fixed slit, two attached
+trees enclosing a room and narrow open neck, and a genuine
+degree-two squaring cover. A harmonic cos-exponential
+barrier followed by reflection and a local gradient estimate
+bounds the new angle length by 16√2·M_0 exp(−π/(4δ)),
+although the old length is fixed and both vertical widths
+remain bounded. The neck has exact crossing width 1/δ.
+This rules out an abstract attachment-angle estimate based
+only on the listed nested-carrier and covering geometry;
+it is not a compatible forward-invariant native primitive
+dynamical model. The coherent-packet metric pruning avoids
+this distortion for actual common-anchor packets.
+
+The [auxiliary gap response](../research/independent_audits/stationary_transport_attack_20261124/AUXILIARY_GAP_RESPONSE.md)
+uses a complete canonical lift with a genuine selected deep
+pulled-carrier encounter. If it avoids one of the final bank
+separators, finitely many distinct host groups of the full
+saturated carrier give two raw gap windows across different
+host groups. At least one is disjoint from the final primary
+window. Under the explicit fine-side realization condition,
+each has a whole fine atom of the separator in its disk-cap
+base. Fixed-anchor confinement at the actual degree-2^h
+cover costs at most N_b C_(2^h), with N_b=12b·2^h, and
+gives genuine simple auxiliary output packets. Their uniform
+native Wave controllability is a separate required input.
+The auxiliary windows need not survive any intermediate
+coarse filters and need not have distinct terminal images.
+Square-sum metrics on the two disjoint parent windows give
+w≤PB/(P+B), P≥w+w²/B for primary width P and total auxiliary
+container width B. If the good primary output map is injective
+and the auxiliary mass is ≥ηW(A), near-maximal auxiliary
+containers give a primary response of order η²/N, after the
+explicit discard. If both bank components are physically hit,
+the earlier endpoint-cover R-charge applies. Thus the missing
+two-retained-occurrence noncollision step can be bypassed in
+the conditional actual-deep-contact branch; the deep-carrier
+encounter, fine-side realization, native output controllability
+and corrected geometric marking remain open. Five added
+finite theorems in StationaryPacketGain check the contact
+transition and auxiliary response algebra. No native or
+global proof obligation is promoted.
 
 This checker establishes finite rational endpoint-cover and degree-budget
 certificates and rejects invalid accounting. It does not construct native
