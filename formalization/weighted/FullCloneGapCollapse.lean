@@ -115,7 +115,7 @@ theorem clone_exists_nonleading_root_modulus_ge_inv (n : ℕ) (t : ℝ)
 absolute separation is strictly below the archived 1/(n+2) bound. -/
 theorem full_clone_nonleading_eigenvalue_close (n : ℕ) (t : ℝ)
     (ht : 1 < t) (hroot : t ^ (2 * n + 5) = t + 1) :
-    ∃ μ : ℂ, (complexFullAdjacencyMatrix n).mulVecLin.HasEigenvalue μ ∧
+    ∃ μ : ℂ, Module.End.HasEigenvalue (complexFullAdjacencyMatrix n).mulVecLin μ ∧
       μ ≠ (t : ℂ) ∧ 0 < t - ‖μ‖ ∧ t - ‖μ‖ < 1 / ((n : ℝ) + 2) := by
   obtain ⟨μ, hμroot, hμne, hμbound⟩ :=
     clone_exists_nonleading_root_modulus_ge_inv n t ht hroot
@@ -149,7 +149,7 @@ cloned graph family. This is a full tolerance-quantified theorem. -/
 theorem full_clone_absolute_gap_can_approach_zero (ε : ℝ) (hε : 0 < ε) :
     ∃ n : ℕ, ∃ t : ℝ, ∃ μ : ℂ,
       1 < t ∧ t ^ (2 * n + 5) = t + 1 ∧
-      (complexFullAdjacencyMatrix n).mulVecLin.HasEigenvalue μ ∧
+      Module.End.HasEigenvalue (complexFullAdjacencyMatrix n).mulVecLin μ ∧
       μ ≠ (t : ℂ) ∧ 0 < t - ‖μ‖ ∧ t - ‖μ‖ < ε := by
   obtain ⟨n, hn⟩ := exists_nat_gt (1 / ε)
   obtain ⟨t, ht, _, hroot⟩ := finite_clone_root_exists n
@@ -166,7 +166,7 @@ theorem full_clone_absolute_gap_can_approach_zero (ε : ℝ) (hε : 0 < ε) :
 theorem full_clone_relative_gap_can_approach_zero (ε : ℝ) (hε : 0 < ε) :
     ∃ n : ℕ, ∃ t : ℝ, ∃ μ : ℂ,
       1 < t ∧ t ^ (2 * n + 5) = t + 1 ∧
-      (complexFullAdjacencyMatrix n).mulVecLin.HasEigenvalue μ ∧
+      Module.End.HasEigenvalue (complexFullAdjacencyMatrix n).mulVecLin μ ∧
       μ ≠ (t : ℂ) ∧ 0 < 1 - ‖μ‖ / t ∧ 1 - ‖μ‖ / t < ε := by
   obtain ⟨n, t, μ, ht, hroot, heigen, hne, hpos, hgap⟩ :=
     full_clone_absolute_gap_can_approach_zero ε hε

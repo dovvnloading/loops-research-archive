@@ -31,7 +31,7 @@ def complexFullAdjacencyMatrix (n : ℕ) : Matrix (Vertex n) (Vertex n) ℂ :=
 of the actual matrix, expressed in mathlib's endomorphism API. -/
 theorem clone_root_has_actual_eigenvalue (n : ℕ) (μ : ℂ)
     (hroot : μ ^ (2 * n + 5) = μ + 1) :
-    (complexFullAdjacencyMatrix n).mulVecLin.HasEigenvalue μ := by
+    Module.End.HasEigenvalue (complexFullAdjacencyMatrix n).mulVecLin μ := by
   obtain ⟨z, hz, hAz⟩ := clone_polynomial_root_is_eigenvalue n μ hroot
   apply Module.End.hasEigenvalue_of_hasEigenvector (x := z)
   refine ⟨?_, ?_⟩
@@ -103,7 +103,7 @@ theorem full_clone_complex_charpoly_norm_product (n : ℕ) :
 /-- The actual adjacency endomorphism is semisimple, by its squarefree
 characteristic polynomial and Cayley--Hamilton. -/
 theorem full_clone_complex_semisimple (n : ℕ) :
-    (complexFullAdjacencyMatrix n).mulVecLin.IsSemisimple := by
+    Module.End.IsSemisimple (complexFullAdjacencyMatrix n).mulVecLin := by
   apply Module.End.isSemisimple_of_squarefree_aeval_eq_zero
     (p := (complexFullAdjacencyMatrix n).mulVecLin.charpoly)
   · simpa only [Matrix.charpoly_mulVecLin] using
@@ -112,8 +112,8 @@ theorem full_clone_complex_semisimple (n : ℕ) :
 
 /-- Diagonalizability stated as spanning by complex eigenspaces. -/
 theorem full_clone_complex_eigenspaces_span (n : ℕ) :
-    (⨆ μ : ℂ, (complexFullAdjacencyMatrix n).mulVecLin.eigenspace μ) = ⊤ :=
-  (full_clone_complex_semisimple n).iSup_eigenspace_eq_top
+    (⨆ μ : ℂ, Module.End.eigenspace (complexFullAdjacencyMatrix n).mulVecLin μ) = ⊤ :=
+  Module.End.IsSemisimple.iSup_eigenspace_eq_top (full_clone_complex_semisimple n)
 
 #print axioms clone_root_has_actual_eigenvalue
 #print axioms full_clone_complex_charpoly
