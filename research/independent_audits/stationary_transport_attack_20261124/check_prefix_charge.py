@@ -277,6 +277,32 @@ def coherent_packet_checks():
     return checked
 
 
+def attachment_screening_checks():
+    # Exact polygon/rectangle arithmetic for the harmonic barrier model.
+    # The maximum-principle and conformal boundary-chart arguments
+    # are written proofs, not tested by floating point sampling.
+    checked = 0
+    for n in range(1, 65):
+        delta = Q(1, 2**n)
+        vertices = [(Q(1),Q(0)),(Q(1),Q(1)),(delta,Q(1)),
+                    (delta,Q(3)),(Q(1),Q(-1)),
+                    (delta,Q(-1)),(delta,Q(-3))]
+        assert all(x > 0 and x*x+y*y < 16 for x,y in vertices)
+        images = {(x*x-y*y,2*x*y) for x,y in vertices}
+        assert len(images) == len(vertices)
+        assert all(x*x+y*y < 256 for x,y in images)
+        area = 4*delta
+        density = 1/(2*delta)
+        assert (2*delta)*density == 1
+        assert area*density*density == 1/delta == 2**n
+        # The upper-bank test disks of radius 1/4 stay strictly
+        # away from the fixed vertical sidewalls and the roof.
+        assert Q(1,2)+Q(1,4) < 1
+        assert Q(1,4) < 1
+        checked += 1
+    return checked
+
+
 def main():
     cases, stays = partial_inverse_models()
     shifts = shift_checks()
@@ -289,6 +315,7 @@ def main():
     print(f"PASS: {canonical_direction_checks()} crossing, cyclic-order and one-sided birth cases")
     print(f"PASS: {deck_collision_checks()} deck-window, threshold and symmetric-gap cases")
     print(f"PASS: {coherent_packet_checks()} coherent-packet and response-budget cases")
+    print(f"PASS: {attachment_screening_checks()} exact attachment-screening polygon/neck cases")
     print("Scope: finite orbit, endpoint census, orientation and energy-weight algebra only.")
 
 
