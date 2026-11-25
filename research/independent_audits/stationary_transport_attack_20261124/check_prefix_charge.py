@@ -87,13 +87,43 @@ def weight_checks():
     return checked
 
 
+def endpoint_census_checks():
+    from itertools import combinations
+    checked = 0
+    # Exhaust all subsets of the finite owner/phase grid for k,b<=3.
+    # Stage records use distinct pairs, so each owner contributes <= b.
+    for k, b in product(range(1, 4), repeat=2):
+        pairs = list(product(range(k), range(b)))
+        for n in range(len(pairs) + 1):
+            for records in combinations(pairs, n):
+                counts = [sum(q == a for q, _ in records) for a in range(k)]
+                assert max(counts) <= b
+                assert n <= k*b
+                if n > b:
+                    assert sum(c > 0 for c in counts) >= 2
+                checked += 1
+    for b in range(1, 65):
+        for h in range(65):
+            e = max(0, (h + b)//b - 2)
+            assert h + 1 <= (2+e)*b
+            assert h + 1 - 2*b <= e*b
+            if e:
+                assert h + 1 > (2+e-1)*b
+            assert sum(2*b*2**j for j in range(h)) + b*2**h == b*(3*2**h-2)
+            if h >= 2*b:
+                assert e >= 1
+            checked += 1
+    return checked
+
+
 def main():
     cases, stays = partial_inverse_models()
     shifts = shift_checks()
     weights = weight_checks()
     print(f"PASS: {cases} finite orbit cases, {stays} all-critical stays")
     print(f"PASS: {shifts} strict-nest prefix cases, {weights} rational weight cases")
-    print("Scope: finite orbit and energy-weight algebra only.")
+    print(f"PASS: {endpoint_census_checks()} exact endpoint census and birth-budget cases")
+    print("Scope: finite orbit, endpoint census and energy-weight algebra only.")
 
 
 if __name__ == "__main__":
