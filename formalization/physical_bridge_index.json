@@ -1724,7 +1724,10 @@
         "remote_probe_local_cap",
         "backward_marked_atom_ratio",
         "derivative_average_side",
-        "directional_compression_ratio"
+        "directional_compression_ratio",
+        "reverse_shift_persistence_contradiction",
+        "one_atom_on_plateau",
+        "gap_free_vertical_amplification"
       ]
     },
     "checks": [
@@ -1744,7 +1747,8 @@
       "research/independent_audits/stationary_transport_attack_20261124/check_guard_free_angular_jump.py",
       "research/independent_audits/stationary_transport_attack_20261124/check_local_bank_cap.py",
       "research/independent_audits/stationary_transport_attack_20261124/check_asymmetric_bank_gap.py",
-      "research/independent_audits/stationary_transport_attack_20261124/check_directional_compression.py"
+      "research/independent_audits/stationary_transport_attack_20261124/check_directional_compression.py",
+      "research/independent_audits/stationary_transport_attack_20261124/check_no_fixed_point_compression.py"
     ],
     "obligations": [
       "KKL_STATIONARY_FINAL_FIXED_COMPONENT_EXIT",

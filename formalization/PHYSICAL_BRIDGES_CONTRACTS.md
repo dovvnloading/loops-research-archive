@@ -954,6 +954,39 @@ explicit. [Finite checker](../research/independent_audits/stationary_transport_a
 declarations await kernel CI. All seven workflows passed at
 d2879cf. No canonical ledger promotion.
 
+The [no-fixed-point compression and plateau theorem](../research/independent_audits/stationary_transport_attack_20261124/NO_FIXED_POINT_COMPRESSION.md)
+removes the remaining quantitative angular gap under the standing
+actual proper-middle and corrected geometric hypotheses. The reverse
+boundary map H sends every terminal limb into the previous limb
+in the same normalized angular coordinate, so H(y)<y. A large left
+derivative contribution persists to the right for one left-margin
+length (factor exp(-2pi V)/4); if the chart continues that far,
+the integrated derivative forces H(y)>y. Otherwise the high
+derivative persists to the end. Together with right domination,
+any compression A>24 exp(3pi V) would therefore transport the new
+minimum to a smaller atom in the negative original bank. This
+bounds the bank gap by C_env+log(S)/pi+t(3V+log(24)/pi).
+Choose a constant-count window of t=b+6 transitions among 6b
+disjoint windows in the proper corridor: the nondecreasing
+positive atom count <=6b cannot strictly increase in every
+window. Exact nonempty whole-atom refinement then gives S=1
+through the selected window. Hence Delta_+=O_b(V+1).
+Combining the preceding local nonshort/guard-free short program
+and one-sided localized input estimate gives the conditional
+W(input)<=C_(b,k)(R+V+1) for q>=Q_b and the stated actual Borel
+localized plus leafwise-over-critical source input. For R>=1
+and W(input)>=C_(b,k)(L+2)R this yields V>=LR, hence the source
+amplification comparison if W(F)>=V. No angular margin, global
+remote maximum, phase-selection deficit or extra atom-to-atom
+hypothesis remains on this conditional route. The actual native
+corrected marking, proper middle and tower charts, saturated
+carrier/host/deep separator realization, exact orbit, initial
+source typing and downstream licensing are still explicit
+hypotheses, not established by this bound. The literal A.3.2
+problem is not silently repaired. [Finite checker](../research/independent_audits/stationary_transport_attack_20261124/check_no_fixed_point_compression.py);
+three finite algebra declarations await CI. No canonical ledger
+promotion or unconditional MLC claim.
+
 This checker establishes finite rational endpoint-cover and degree-budget
 certificates and rejects invalid accounting. It does not construct native
 exits. The stationary hypotheses still need to supply one eligible actual

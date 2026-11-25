@@ -564,4 +564,42 @@ theorem directional_compression_ratio (A D Q : ℝ)
   have hh := (div_le_iff₀ hd).mp h
   linarith [mul_comm Q (2*D)]
 
+/-- If the actual reverse shift is negative at the start by at
+most one left margin, maintaining derivative at least three on
+three quarters of that margin contradicts the strict shift.
+The integrated derivative bound is supplied by the analytic proof. -/
+theorem reverse_shift_persistence_contradiction (m loss delta : ℝ)
+    (hm : 0 < m) (hl : loss ≤ m)
+    (hderiv : delta ≥ -loss+3*m/2) (hshift : delta < 0) :
+    False := by linarith
+
+/-- Equality of the old and new atom counts, together with
+nonempty contributions, forces all contributions to be one.
+This is the finite kernel consequence of a proper marking plateau. -/
+theorem one_atom_on_plateau {n : ℕ} (a : Fin n → ℕ)
+    (hpos : ∀ i, 1 ≤ a i) (hsum : (∑ i, a i) = n) :
+    ∀ i, a i = 1 := by
+  intro i
+  by_contra! hn
+  have hle : 1 < a i := lt_of_le_of_ne (hpos i) (Ne.symm hn)
+  have hlt : (∑ j : Fin n, (1 : ℕ)) < ∑ j, a j := by
+    apply Finset.sum_lt_sum
+    · intro j hj
+      exact hpos j
+    · exact ⟨i, Finset.mem_univ i, hle⟩
+  simpa [hsum] using hlt
+
+/-- Conditional vertical-width implication after the absolute
+angular gap has been removed. The source witness and geometric
+width estimate are hypotheses. -/
+theorem gap_free_vertical_amplification (W C R V L : ℝ)
+    (hC : 0 < C) (hR : 1 ≤ R)
+    (hupper : W ≤ C*(R+V+1))
+    (hwide : C*(L+2)*R ≤ W) :
+    L*R ≤ V := by
+  have h : C*((L+2)*R) ≤ C*(R+V+1) := by
+    nlinarith only [hupper,hwide]
+  have hh := (mul_le_mul_left hC).mp h
+  nlinarith
+
 end LoopsStationaryPacketGain
