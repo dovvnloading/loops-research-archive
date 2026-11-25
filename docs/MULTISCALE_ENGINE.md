@@ -10,3 +10,7 @@ The Mandelbulb, Mandelbox, and quaternion Julia scenes raymarch a numerical iter
 - This is finite-precision exploration, not infinite zoom, interval arithmetic, or a proof of any dynamical claim. GPU Float32 geometry and numerical distance estimators eventually limit detail. The existing high-precision complex plane laboratory is separate. No WebGPU or perturbation rendering is claimed.
 
 Four curated close-flight entry points (Surface descent, Into the folds, Beyond the slice, Microstructure) are sampled by the same CPU distance-field navigation rather than hand-authored meshes. The inspector flags approaches near the Float32 floor.
+
+## Binary64 close flight
+
+The volume precision selector offers Auto, GPU and CPU Float64. Auto switches near the Float32 floor; GPU mode explicitly retains the original limit. The Float64 implementation runs the same recurrence in a cancellable worker, with its own raymarch, normals and shading, a coarse pass followed by a full pass. It preserves binary64 camera coordinates and uses a conservative 2e-12 world-coordinate floor (rather than 2e-6). This is a numerical budget, not a guaranteed six-decade increase in geometrically reliable detail. The higher iteration cap is 120; the output is capped at 448 pixels on the longest side by default (640 high quality). CPU shading is intentionally not pixel-identical to GPU output. PNG capture waits for a completed pass. Both renderers are finite precision. No arbitrary-precision 3D claim is made.

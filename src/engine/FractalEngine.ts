@@ -1,5 +1,6 @@
 import type { EngineHooks, EngineState, Palette, SceneId } from '../types';
-import { clearanceAt, dolly, eye, flightStep, iterationBudget, volumeScene } from './navigation';
+import { clearanceAt, dolly, eye, flightStep, iterationBudget, volumeScene, volumeMode } from './navigation';
+import { DeepRenderer } from './DeepRenderer';
 import {
   complexFragment,
   fullscreenVertex,
@@ -65,11 +66,17 @@ export class FractalEngine {
   private lastInteraction = performance.now();
   private effectiveIterations = 12;
   private clearance = 1;
+  private deep:DeepRenderer|null=null;
+  private deepActive=false;
+  private deepStatus='';
+  private deepTimer:ReturnType<typeof setTimeout>|undefined;
+  private deepRevision=0;
 
-  constructor(canvas: HTMLCanvasElement, state: EngineState, hooks: EngineHooks = {}) {
+  constructor(canvas: HTMLCanvasElement, state: EngineState, hooks: EngineHooks = {}, deepCanvas?:HTMLCanvasElement) {
     this.canvas = canvas;
     this.state = this.sanitize(state);
     this.hooks = hooks;
+    if(deepCanvas)this.deep=new DeepRenderer(deepCanvas,status=>{this.deepStatus=status;},message=>{this.deepStatus='failed';this.hooks.onError?.('Float64 renderer: '+message);});
     canvas.style.touchAction = 'none';
     canvas.setAttribute('aria-label', 'Interactive fractal viewport. Drag to orbit or look around. Scroll toward the cursor to fly. WASD/QE move in 3D. Shift-click the complex plane to choose a Julia parameter.');
     if (!canvas.hasAttribute('tabindex')) canvas.tabIndex = 0;
@@ -88,7 +95,7 @@ export class FractalEngine {
       this.hooks.onError?.('WebGL2 is unavailable. A CPU Mandelbrot view is available; 3D requires WebGL2.');
     }
     this.bindInput();
-    this.resizeObserver = new ResizeObserver(() => this.resize());
+    this.resizeObserver = new ResizeObserver(() => {this.restartRefinement();this.resize();});
     this.resizeObserver.observe(canvas);
     this.resize();
     this.emitStats(0);
@@ -118,6 +125,7 @@ export class FractalEngine {
   }
 
   private restartRefinement() {
+    this.deepRevision++;clearTimeout(this.deepTimer);this.deep?.hide();this.deepStatus='stale';
     this.lastInteraction=performance.now();
     if (volumeScene(this.state.scene) && this.refinement!==0) {this.refinement=0;this.resize();}
   }
@@ -157,6 +165,7 @@ export class FractalEngine {
 
   /** Returns the actual current GPU image, at the active rendering resolution. */
   capture(): string {
+    if(this.deepActive)return this.deep?.capture()??'';
     if (this.gl && !this.lost) {this.refinement=2;this.resize();this.renderGpu();}
     return this.canvas.toDataURL('image/png');
   }
@@ -168,6 +177,7 @@ export class FractalEngine {
     this.cpuGeneration++;
     this.abort.abort();
     this.resizeObserver.disconnect();
+    clearTimeout(this.deepTimer);this.deep?.destroy();
     this.releaseGpu();
   }
 
@@ -177,7 +187,8 @@ export class FractalEngine {
     s.camera.pitch = clamp(s.camera.pitch, s.scene === 'landscape' ? 0.3 : -1.4, 1.4);
     s.camera.distance = clamp(s.camera.distance, 1.65, 14);
     if(!volumeScene(s.scene)||!s.camera.position||!s.camera.position.every(Number.isFinite)||Math.hypot(...s.camera.position)>14)delete s.camera.position;
-    if(s.camera.position)s.autoRotate=false;
+    if(s.camera.position||s.volumePrecision==='float64')s.autoRotate=false;
+    if(s.volumePrecision!=='gpu'&&s.volumePrecision!=='float64')s.volumePrecision='auto';
     s.power = clamp(s.power, s.scene === 'mandelbox' ? 1.2 : 2, s.scene === 'mandelbox' ? 3 : 16);
     s.iterations = Math.round(clamp(s.iterations, planar(s.scene) || s.scene === 'landscape' ? 32 : 2, planar(s.scene) ? 4096 : s.scene === 'landscape' ? 512 : s.scene==='mandelbox'?40:64));
     s.bailout = clamp(s.bailout, 2, 64);
@@ -281,6 +292,21 @@ export class FractalEngine {
     this.buffers = [];
   }
 
+  private renderVolume64() {
+    const s=this.state,p=eye(s.camera),aspect=this.canvas.width/Math.max(1,this.canvas.height);
+    this.clearance=clearanceAt(s,p);this.effectiveIterations=iterationBudget(s,this.clearance,'float64');
+    const revision=++this.deepRevision;clearTimeout(this.deepTimer);
+    this.deep?.render(s,aspect,true);
+    // Let the coarse pass finish rather than cancelling it on a timer. Start
+    // the final pass once the preview has completed and the view is idle.
+    const refine=()=>{if(this.disposed||revision!==this.deepRevision||!this.deepActive)return;
+      if(this.deep?.ready){this.deep.render(s,aspect,false);return;}
+      if(this.deepStatus.includes('failed'))return;
+      this.deepTimer=setTimeout(refine,250);
+    };
+    this.deepTimer=setTimeout(refine,350);
+  }
+
   private renderGpu() {
     const gl = this.gl;
     if (!gl || this.lost) return;
@@ -342,7 +368,7 @@ export class FractalEngine {
     const delta = this.lastFrame ? Math.min(150, time - this.lastFrame) : 16;
     this.lastFrame = time;
     const animated = this.state.autoRotate && this.state.scene !== 'mandelbrot' && !this.cpu && !this.lost;
-    if(volumeScene(this.state.scene)&&!animated){
+    if(volumeScene(this.state.scene)&&!animated&&!this.deepActive){
       const idle=time-this.lastInteraction;
       const next=idle>650?2:idle>180?1:0;
       if(next>this.refinement){this.refinement=next;this.resize();}
@@ -361,19 +387,22 @@ export class FractalEngine {
     }
     // A slow preceding draw also triggers adjustment when the user has stopped
     // dragging. Static scenes should not stay at an unusable initial resolution.
-    if (this.state.quality === 'auto' && (!volumeScene(this.state.scene)||this.refinement===0) && this.lastWasRendered && delta > 80 && this.autoScale > 0.34) {
+    if (!this.deepActive && this.state.quality === 'auto' && (!volumeScene(this.state.scene)||this.refinement===0) && this.lastWasRendered && delta > 80 && this.autoScale > 0.34) {
       this.autoScale = Math.max(0.34, this.autoScale * Math.sqrt(50 / delta));
       this.resize();
     }
     const rendered = this.dirty && !this.lost;
     if (rendered) {
-      if (this.gl) this.renderGpu();
+      const nextDeep=!!this.deep&&volumeScene(this.state.scene)&&volumeMode(this.state)==='float64';
+      if(nextDeep!==this.deepActive){this.deepActive=nextDeep;clearTimeout(this.deepTimer);this.deep?.hide();}
+      if(nextDeep){if(!this.deepStatus||this.deepStatus==='stale')this.renderVolume64();}
+      else if (this.gl) this.renderGpu();
       else if (this.cpu) this.renderCpu();
       this.renderedFrames++;
       this.dirty = false;
       if (this.state.quality === 'auto' && this.lastWasRendered && delta > 42) this.slowFrames++;
       else this.slowFrames = Math.max(0, this.slowFrames - 0.25);
-      if (this.slowFrames >= 8 && this.autoScale > 0.34 && (!volumeScene(this.state.scene)||this.refinement===0)) {
+      if (!this.deepActive && this.slowFrames >= 8 && this.autoScale > 0.34 && (!volumeScene(this.state.scene)||this.refinement===0)) {
         this.autoScale = Math.max(0.34, this.autoScale * 0.82);
         this.slowFrames = 0;
         this.resize();
@@ -393,10 +422,10 @@ export class FractalEngine {
   private emitStats(fps: number) {
     this.hooks.onStats?.({
       fps,
-      resolution: `${this.canvas.width} × ${this.canvas.height}`,
-      precision: this.cpu ? 'Float64 · CPU' : planar(this.state.scene) ? 'Double-single · finite precision' : this.state.scene === 'landscape' ? 'Float32 · height field' : 'Float32 · adaptive distance estimate',
-      ...(volumeScene(this.state.scene)?{iterations:this.effectiveIterations,clearance:this.clearance,refinement:['Preview','Refining','Settled'][this.refinement]}:{}),
-      renderer: this.cpu ? 'CPU · 2D fallback' : this.lost ? 'GPU unavailable' : 'WebGL2 · custom GLSL',
+      resolution: this.deepActive&&this.deep?.ready?this.deep.size:`${this.canvas.width} × ${this.canvas.height}`,
+      precision: this.deepActive?'Float64 · numerical raymarch':this.cpu ? 'Float64 · CPU' : planar(this.state.scene) ? 'Double-single · finite precision' : this.state.scene === 'landscape' ? 'Float32 · height field' : 'Float32 · adaptive distance estimate',
+      ...(volumeScene(this.state.scene)?{iterations:this.effectiveIterations,clearance:this.clearance,refinement:this.deepActive?this.deepStatus:['Preview','Refining','Settled'][this.refinement]}:{}),
+      renderer: this.deepActive?'CPU worker · Float64':this.cpu ? 'CPU · 2D fallback' : this.lost ? 'GPU unavailable' : 'WebGL2 · custom GLSL',
     });
   }
 

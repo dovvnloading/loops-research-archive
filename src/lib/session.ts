@@ -21,7 +21,7 @@ export function validateState(value: unknown): EngineState {
     camera:{yaw:num(c.yaw,.35,-1e4,1e4),pitch:num(c.pitch,landscape?.75:.18,landscape?.3:-1.4,1.4),distance:num(c.distance,3.6,1.65,14),...(position?{position}:{})},
     center:pair(x.center,[-.5,0],-1e5,1e5),scale:num(x.scale,3.2,landscape?1e-4:1e-7,12),julia:pair(x.julia,[-.74543,.11301],-4,4),
     slice:num(x.slice,0,-2,2),autoRotate:!position&&scene!=='mandelbrot'&&x.autoRotate===true,showGrid:x.showGrid!==false,
-    quality:typeof x.quality==='string' && ['auto','high','balanced','low'].includes(x.quality) ? x.quality as EngineState['quality'] : 'auto',orbitTrap:num(x.orbitTrap,.35,0,1),
+    quality:typeof x.quality==='string' && ['auto','high','balanced','low'].includes(x.quality) ? x.quality as EngineState['quality'] : 'auto',orbitTrap:num(x.orbitTrap,.35,0,1),volumePrecision:x.volumePrecision==='float64'||x.volumePrecision==='gpu'?x.volumePrecision:'auto',
   };
 }
 

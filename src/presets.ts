@@ -4,7 +4,7 @@ export const DEFAULT_STATE: EngineState = {
   scene: 'mandelbulb', power: 8, iterations: 12, bailout: 8, detail: .65,
   exposure: 1.1, palette: 'glacier', camera: { yaw: .35, pitch: .18, distance: 3.6 },
   center: [-.5, 0], scale: 3.2, julia: [-.74543, .11301], slice: 0,
-  autoRotate: false, showGrid: true, quality: 'auto', orbitTrap: .35,
+  autoRotate: false, showGrid: true, quality: 'auto', orbitTrap: .35, volumePrecision: 'auto',
 };
 
 export const PRESETS: ScenePreset[] = [

@@ -12,3 +12,5 @@
 /* Multiscale flight inspector and readable viewport labels over bright planar images. */
 .flight-panel{display:grid;gap:9px;margin:12px 0;padding-top:12px;border-top:1px solid rgba(159,191,184,.18)}
 .flight-directions{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:4px}.flight-directions .outline-button{font-size:10px;justify-content:center;padding:7px 3px;min-width:0}.flight-panel .coordinate-readout code{overflow-wrap:anywhere;font-size:10px}.flight-scope{font-size:11px;line-height:1.5;color:#a1b2b0;margin:0}.viewport-area .view-badge,.viewport-area .scene-caption,.viewport-area .interaction-hint{background:rgba(7,15,17,.78);border-radius:4px;padding:7px 9px}.viewport-area .scene-caption{max-width:min(440px,82%)}
+
+.deep-volume-canvas{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;display:block;image-rendering:auto}.deep-volume-canvas[hidden]{display:none}.precision-choice{display:grid;gap:6px;color:#a5b8ab;font-size:10px}.flight-panel .coordinate-readout>span{display:flex;justify-content:space-between;gap:4px;overflow-wrap:anywhere}.flight-panel .coordinate-readout>span b{text-align:right}

@@ -20,6 +20,7 @@ export interface EngineState {
   showGrid: boolean;
   quality: Quality;
   orbitTrap: number;
+  volumePrecision: 'auto' | 'gpu' | 'float64';
 }
 
 export interface EngineStats {

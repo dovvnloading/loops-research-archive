@@ -17,7 +17,7 @@ test('distance estimates distinguish a bounded origin from exterior',()=>{
   assert.equal(iterationBudget({...DEFAULT_STATE,iterations:64},1e-9),64);
 });
 test('dolly enters free flight, approaches the actual field, and can retreat',()=>{
-  let s=validateState(DEFAULT_STATE);const start=clearanceAt(s,eye(s.camera));
+  let s=validateState({...DEFAULT_STATE,volumePrecision:'gpu'});const start=clearanceAt(s,eye(s.camera));
   for(let i=0;i<24;i++)s={...s,camera:dolly(s,.8)};
   assert.ok(s.camera.position);
   const near=clearanceAt(s,eye(s.camera));
@@ -37,7 +37,7 @@ test('cursor flight rays differ and flight position survives session validation'
 
 test('all three volume fields support close approach and retreat',()=>{
   for(const scene of ['mandelbox','quaternion'] as const){
-    let s=validateState({...DEFAULT_STATE,scene,power:scene==='mandelbox'?2:8,camera:scene==='mandelbox'?{yaw:.65,pitch:.35,distance:5.3}:{yaw:.7,pitch:.22,distance:3.8},julia:scene==='quaternion'?[-.3,.52]:DEFAULT_STATE.julia});
+    let s=validateState({...DEFAULT_STATE,scene,volumePrecision:'gpu',power:scene==='mandelbox'?2:8,camera:scene==='mandelbox'?{yaw:.65,pitch:.35,distance:5.3}:{yaw:.7,pitch:.22,distance:3.8},julia:scene==='quaternion'?[-.3,.52]:DEFAULT_STATE.julia});
     const start=clearanceAt(s,eye(s.camera));
     for(let i=0;i<24;i++)s={...s,camera:dolly(s,.8)};
     const near=clearanceAt(s,eye(s.camera));
