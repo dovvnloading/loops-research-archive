@@ -674,6 +674,24 @@ inequalities await kernel CI. All seven workflows passed at
 continuation, exact source marking and ambient comparison remain
 open; no canonical ledger promotion.
 
+The [positive crest continuation](../research/independent_audits/stationary_transport_attack_20261124/POSITIVE_CREST_CONTINUATION.md)
+replaces the assumed intermediate central-ending/whole-limb crest
+sequence by a gain-or-discard telescope from a positive initial
+crest. At a noncritical step, first/last anchored gaps either
+advance the entire crest or force double gain in a common primary
+packet. Relative near-maximality gives the recurrence
+L_(j+1)=2L_j+4C_2+lambda W. The final over-critical fraction
+is controlled through a whole-packet extra primary and the two
+deck-related raw windows; the oriented central residue uses the
+suffix/ bank series response against the whole stage-h primary.
+This gives an explicit conditional O_b(R+V+1) bound with the
+uniform away-Shift input and all stated geometric realization,
+singleton and comparison hypotheses. Small q stops at the
+precritical crest. [The checker](../research/independent_audits/stationary_transport_attack_20261124/check_positive_crest_continuation.py)
+passed 80,885 exact arithmetic cases. No new Lean theorem, actual
+native geometry certification, or mixed-direction/ambient
+terminality result is claimed.
+
 This checker establishes finite rational endpoint-cover and degree-budget
 certificates and rejects invalid accounting. It does not construct native
 exits. The stationary hypotheses still need to supply one eligible actual
