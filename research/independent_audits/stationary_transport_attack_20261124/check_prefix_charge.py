@@ -196,6 +196,48 @@ def canonical_direction_checks():
     return checked
 
 
+def deck_collision_checks():
+    checked = 0
+    # Actual finite window multiplication and majority-gain threshold.
+    for h in range(15):
+        for bits in product(range(2), repeat=h):
+            r = 1
+            for bit in bits:
+                r *= 1 + bit
+            k = sum(bits)
+            assert r == 2**k
+            if 2*k > h:
+                assert r*r >= 2*2**h
+            checked += 1
+    # Exact rational thresholds with a specified input fraction.
+    for h in range(13):
+        for k in range(h+1):
+            for denom in range(1, 17):
+                for numerator in range(1, denom+1):
+                    eta = Q(numerator, denom)
+                    r2 = 2**(2*k)
+                    gain = Q(r2, 2**h)*eta
+                    assert (gain >= 2) == (2*2**h <= eta*r2)
+                    assert (gain > 1) == (2**h < eta*r2)
+                    checked += 1
+    # Symmetric polygonal branch model: exact coordinates and areas.
+    for n in range(1, 65):
+        delta = Q(1, 2**n)
+        vertices = [(Q(1),Q(0)),(Q(2),Q(0)),(Q(2),Q(3)),
+                    (delta,Q(3)),(delta,Q(2)),(Q(2),Q(-3)),
+                    (delta,Q(-3)),(delta,Q(-2))]
+        assert all(x > 0 and x*x+y*y < 16 for x,y in vertices)
+        # Squaring identifies only opposite points; the positive
+        # real part prevents distinct A-vertices from colliding.
+        images = {(x*x-y*y,2*x*y) for x,y in vertices}
+        assert len(images) == len(vertices)
+        assert all(x*x+y*y < 256 for x,y in images)
+        assert Q(1,2*delta) == 2**(n-1)
+        assert 2*delta*Q(1,2*delta)**2 == Q(1,2*delta)
+        checked += 1
+    return checked
+
+
 def main():
     cases, stays = partial_inverse_models()
     shifts = shift_checks()
@@ -206,6 +248,7 @@ def main():
     cases, equalities = latest_bank_checks()
     print(f"PASS: {cases} latest-bank cases, including {equalities} exact budget equalities")
     print(f"PASS: {canonical_direction_checks()} crossing, cyclic-order and one-sided birth cases")
+    print(f"PASS: {deck_collision_checks()} deck-window, threshold and symmetric-gap cases")
     print("Scope: finite orbit, endpoint census, orientation and energy-weight algebra only.")
 
 
