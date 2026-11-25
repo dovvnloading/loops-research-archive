@@ -162,7 +162,7 @@ void main() {
       vec3 p=ro+rd*travel;
       vec2 sampleValue=mapScene(p);
       float worldFloor=2e-7*max(1.0,max(abs(p.x),max(abs(p.y),abs(p.z))));
-      epsilon=max(worldFloor,travel/uResolution.y*mix(0.85,0.26,uDetail));
+      epsilon=max(worldFloor,travel*uProjection/uResolution.y*mix(0.85,0.26,uDetail));
       if(sampleValue.x<epsilon) { hit=true; trap=sampleValue.y; break; }
       travel+=max(sampleValue.x*0.62,epsilon*0.5);
       if(travel>exitT) break;
@@ -273,7 +273,7 @@ void main() {
   }
   vec3 color=vec3(0.008,0.012,0.022);
   if(escaped) {
-    float smoothN=count+1.0-log2(max(log2(max(sqrt(mag2),1.00001)),0.0001));
+    float smoothN=max(0.0,count+1.0-log2(max(log2(max(sqrt(mag2),1.00001)),0.0001)));
     float bands=0.5+0.5*cos(smoothN*uBandFrequency+uBandPhase);
     float light=0.22+0.78*bands;
     color=palette(light);
@@ -340,8 +340,8 @@ void main() {
   vec3 relative=pos-eye;
   float depth=dot(relative,forward);
   float zNear=0.05, zFar=40.0;
-  gl_Position=vec4(dot(relative,right)/(uResolution.x/uResolution.y*0.54*uProjection/0.97),
-    dot(relative,up)/(0.54*uProjection/0.97), (zFar+zNear)/(zFar-zNear)*depth-2.0*zFar*zNear/(zFar-zNear),depth);
+  gl_Position=vec4(dot(relative,right)/(uResolution.x/uResolution.y*uProjection*0.5),
+    dot(relative,up)/(uProjection*0.5), (zFar+zNear)/(zFar-zNear)*depth-2.0*zFar*zNear/(zFar-zNear),depth);
 }`;
 
 export const landscapeFragment = `#version 300 es

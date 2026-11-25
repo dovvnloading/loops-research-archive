@@ -49,6 +49,25 @@ try{
   console.log('Application WebGL2 context:',context);
   let image=await visibleImage('gpu');
   console.log('Mandelbulb GPU:',image);await snap('01-mandelbulb');
+  // Check that the new inspector actually commits parameter values and changes rendered pixels.
+  await evaluate("document.querySelector('.segmented button:last-child').click()");
+  await until(()=>evaluate("!!document.querySelector('input[aria-label=\\\"Gamma exact value\\\"]')"),'Render inspector');
+  const setRange = (label,value)=>evaluate(`(()=>{const field=[...document.querySelectorAll('.control')].find(e=>e.querySelector('label')?.textContent===${JSON.stringify(label)});const range=field?.querySelector('input[type=range]');if(!range)throw Error('Missing slider: '+${JSON.stringify(label)});Object.getOwnPropertyDescriptor(HTMLInputElement.prototype,'value').set.call(range,String(${JSON.stringify(value)}));range.dispatchEvent(new Event('input',{bubbles:true}));range.dispatchEvent(new Event('change',{bubbles:true}));})()`);
+  await setRange('Gamma',3.1);
+  await until(()=>evaluate("Number(document.querySelector('input[aria-label=\\\"Gamma exact value\\\"]')?.value)===3.1"),'gamma state committed');
+  image=await visibleImage('gpu',image.hash);await snap('01b-render-inspector');
+  await evaluate("document.querySelector('.segmented button:nth-child(2)').click()");
+  await until(()=>evaluate("!!document.querySelector('input[aria-label=\\\"Field of view (degrees) exact value\\\"]')"),'View inspector');
+  await setRange('Field of view (degrees)',70);
+  await until(()=>evaluate("Number(document.querySelector('input[aria-label=\\\"Field of view (degrees) exact value\\\"]')?.value)===70"),'FOV state committed');
+  image=await visibleImage('gpu',image.hash);await snap('01c-view-inspector');
+  await evaluate("document.querySelector('.inspector-bottom .primary-button').click()");
+  const exported=await until(()=>evaluate("document.getElementById('view-link')?.value"),'share URL');
+  const payload=JSON.parse(Buffer.from(new URL(exported).searchParams.get('view'),'base64url').toString());
+  assert.equal(payload.state.controls.gamma,3.1);
+  assert.equal(payload.state.controls.fov,70);
+  await evaluate("document.querySelector('dialog .modal-head button').click()");
+  await evaluate("document.querySelector('.segmented button:first-child').click()");
   const old=image.hash;
   await evaluate(`(()=>{const c=document.querySelector('.fractal-canvas'),r=c.getBoundingClientRect();c.dispatchEvent(new WheelEvent('wheel',{deltaY:-160,clientX:r.left+r.width*.55,clientY:r.top+r.height*.48,cancelable:true}));})()`);
   await until(()=>evaluate("document.querySelector('.flight-panel')?.innerText.includes('FLIGHT')"),'camera enters flight');

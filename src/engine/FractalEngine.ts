@@ -598,12 +598,13 @@ export class FractalEngine {
         const y = s.center[1] + (height / 2 - row) / height * s.scale;
         let zx = isJulia ? x : 0, zy = isJulia ? y : 0;
         const cx = isJulia ? s.julia[0] : x, cy = isJulia ? s.julia[1] : y;
-        let n = 0;
+        let n = 0, orbit = 10;
         const limit = Math.max(128, Math.min(s.iterations, 768));
         while (n < limit && zx * zx + zy * zy <= s.controls.planeBailout ** 2) {
           const xx = zx * zx - zy * zy + cx;
           zy = 2 * zx * zy + cy;
           zx = xx;
+          orbit = Math.min(orbit,Math.abs(zy)+.05*Math.abs(zx));
           n++;
         }
         const q = (row * width + col) * 4;
@@ -611,6 +612,17 @@ export class FractalEngine {
         const smooth = Math.max(0,n-Math.log2(Math.max(Math.log2(Math.max(Math.hypot(zx,zy),1.00001)),.0001)));
         const v = .22+.78*(.5+.5*Math.cos(smooth*s.controls.bandFrequency+s.controls.bandPhase));
         const rgb = escaped ? paletteColor(s.palette,v).map(x=>x*(.25+.75*(1-Math.exp(-smooth*.07)))) as [number,number,number] : [.008,.012,.022] as [number,number,number];
+        if (escaped) {
+          const tint = paletteColor(s.palette,.95), mix = Math.exp(-orbit*4)*s.orbitTrap*.16;
+          for(let k=0;k<3;k++) rgb[k]=rgb[k]*(1-mix)+tint[k]*mix;
+        }
+        if(s.showGrid&&s.scale>1e-4) {
+          const spacing=10**(Math.floor(Math.log10(s.scale))-.5),pixel=s.scale/height;
+          const dist=Math.min(Math.abs(x/spacing-Math.round(x/spacing)),Math.abs(y/spacing-Math.round(y/spacing)))*spacing;
+          const line=Math.max(0,1-dist/pixel),axis=Math.max(0,1-Math.min(Math.abs(x),Math.abs(y))/pixel);
+          const grid=[.018,.028,.049],axes=[.07,.10,.17];
+          for(let k=0;k<3;k++)rgb[k]+=grid[k]*line+axes[k]*axis;
+        }
         const [r,g,b] = toneColor(rgb,s.exposure,s.controls);
         image.data[q] = r;
         image.data[q + 1] = g;

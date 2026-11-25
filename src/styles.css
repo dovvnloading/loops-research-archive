@@ -86,7 +86,7 @@ input[type=range]::-moz-range-thumb{height:13px;width:13px;background:#a9c2ff;bo
 .inspector select,.inspector .complex-inputs input{font-size:12px;min-height:36px;border-color:#3a4860;background:#0d131e}
 .microcopy,.control-note p,.flight-scope{color:#a8b7cd;font-size:11px;line-height:1.55}
 .palette-options{margin:10px 0 12px;gap:4px}
-.palette-options button{font:10px/1.35 inherit;color:#a9b8cf;gap:6px;flex:1;min-width:0}
+.palette-options button{font:inherit;font-size:10px;line-height:1.35;color:#a9b8cf;gap:6px;flex:1;min-width:0}
 .swatch{width:34px;height:34px;border-color:#11151d;box-shadow:0 0 0 1px #506080;color:#17243e}
 .swatch.glacier{background:linear-gradient(135deg,#c2d5ff,#344d85)}
 .swatch.mono{background:linear-gradient(135deg,#e5e7eb,#555b65)}
@@ -114,3 +114,5 @@ button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible{ou
 @media(max-width:1100px){.topbar{gap:16px;padding-inline:16px}.topbar nav button{padding:0 8px}.search-button span,.search-button kbd{display:none}.viewport-area .view-badge{font-size:9px}}
 @media(max-width:900px){.scene-library,.inspector{width:min(340px,90vw)}.mobile-controls{bottom:132px;background:#141e30;border-color:#425474}.mobile-controls button{font-size:11px;color:#e1e9f8;min-height:40px}.viewport-area .view-badge{display:none}.topbar{height:62px}.stage-heading h1{font-size:30px}.statusbar{font-size:9px}}
 @media(max-width:650px){.app{min-height:0}.topbar{height:auto;min-height:92px;padding:10px 12px 0;gap:7px}.brand small{font-size:8px}.topbar nav{gap:2px;height:36px}.topbar nav button{font-size:12px;padding:0 6px}.workspace-topline{height:25px;font-size:8px;padding-inline:12px}.stage-heading h1{font-size:24px}.stage-heading p{font-size:11px}.stage-heading .eyebrow{font-size:8px}.viewport-area .interaction-hint{font-size:8px;max-width:95%;white-space:nowrap}.viewport-area .scene-caption{display:none}.preset-strip{height:82px;padding:7px 10px}.preset-list{height:66px}.preset-card{min-width:160px}.mobile-controls{bottom:115px;right:10px}.statusbar{font-size:8px;padding:0 10px}.statusbar>button{font-size:9px}.scene-library,.inspector{width:min(340px,92vw)}.inspector{padding:13px}.comparing .stage-heading h1{font-size:20px}.comparing .interaction-hint{display:none}}
+
+.inspector .complex-inputs{display:grid;gap:8px}.inspector .complex-inputs .coordinate-field input{width:154px;max-width:60%}.inspector .range-caps span{font-variant-numeric:tabular-nums}.research-workspace input[type=range]{background:#354259;height:4px}
