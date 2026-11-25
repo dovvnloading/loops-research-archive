@@ -77,7 +77,6 @@ theorem no_full_window_at_double_bound {b e : ℕ}
   have hz : e = 0 := by omega
   subst e
   simp at hc
-  omega
 
 /-- Geometric prefix sum with an empty range allowed. -/
 theorem degree_prefix_sum (h : ℕ) :
