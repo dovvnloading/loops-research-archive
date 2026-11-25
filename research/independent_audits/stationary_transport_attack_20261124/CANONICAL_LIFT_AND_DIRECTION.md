@@ -571,4 +571,129 @@ potential accounting are isolated in
 StationaryCanonicalLift.lean. No source-ledger status
 or global MLC gate is changed.
 
+## 7. A single central-corridor step suffices for a conditional stationary charge
+
+One need not construct protected blocks at every early exceptional
+critical step. In the saturated full-hull setting and the corrected
+geometric coarse/fine marking, assume the physical middle-limb
+carrier equality used in KKL Proposition 6.7:
+
+\[
+ T_1\cap\Gamma_1(\Omega_k)
+ =\Gamma_1(T\cap\Omega_k),
+ \qquad b\le k\le q-b-2.
+ \tag{8}
+\]
+
+Here the \(\Omega_k\) in this equation are the rotational limbs,
+not the nested selected critical inverses. Assume that the
+original marked atom interiors of \(BL_k\) have their actual
+model-side impressions in the corresponding open limb, as
+in the saturated marking interpretation, and that the fine
+marking refines the geometric coarse marking.
+
+Then for a parent crested over the whole \(BL_k\), any one
+old atom of this block supplies a protected crest block for
+Theorem 3, modulo the finite marked-cut landing exceptions.
+Indeed every added component hosted at an interior access
+of this limb would have to be attached within the same open
+limb, by the model dendrite's unique-root property. Equation
+(8) excludes such a component. In the nested model contour
+collapse the inverse image of the open atom is thus one old
+side, with no attached-component intervals. Its impressions
+in the saturated physical carriers lie in the old carrier.
+At each interior access, those compact impressions are away
+from the dividing point, because their model landing point
+is in the open limb and the dividing-point fiber is singleton.
+The other finitely many closed limbs are disjoint from this
+compact set. By (8) the old and new carriers therefore agree
+near the impression, and the embedded filled-set collar gives
+the same local ideal chart. The source inverse of the atom is
+one whole coarse atom, containing a fine atom by refinement.
+The interior cannot contain an interior raw-component end:
+such an end would give a parent contact with the old carrier.
+The original parent ends are off the crest, and the two
+boundary cuts of the chosen coarse atom are fine cuts.
+Discard paths with a raw end at any such cut by the
+zero-width pushforward argument of §4. This proves conditions
+1–3 of that theorem, with the corrected geometric action
+and actual marking/refinement still explicit premises.
+In particular no quantitative collar thickness is assumed.
+
+There is a useful independent width transfer for any genuine
+retained chain. Let \(A\) be a family of parent paths with a
+retained output in a family \(D\) after \(j\) steps. At each
+step pull an admissible output metric back by the actual
+degree-two annular cover and push it through the actual
+immersion by the square-sum construction. Its area increases
+by at most two; the length of the parent dominates the
+length of the actual retained output on a literal subarc.
+The change-of-area proof works without selecting a preferred
+sheet, without coefficient-one immersion univalence, and
+without the one-shot filtered-action identity. Iterating
+this one-step metric transfer gives
+
+\[
+ W(A)\le 2^j W(D).
+ \tag{9}
+\]
+
+It applies to arbitrary output subfamilies with actual
+witnesses, including zero-width output exceptional families.
+
+For a precise application let \(b\ge1\), \(q\ge2b+2\), and
+\(h\ge b+2\). Suppose a stationary family has singleton
+simple inner-Wave outputs at all stages through \(h\),
+each critical-ending, with leafwise crest over \(BL_{1+j}\)
+at stages \(j=b-1,b\). Use the repaired geometric action,
+the actual full-hull and locality data of §5, equation
+(8), and fine refinement. Assume also that the
+leafwise precritical two-step-unbreakable bound
+\(W\le c_{\rm pre}\) has been independently established
+for these actual marked paths (compare Lemma 4.3 of
+[stationary relative Wave continuation](../../mlc_unified/kkl_stationary_relative_wave_continuation.md)).
+The latter import must be justified for the same corrected
+action; it is not being deduced from the stationary theorem
+under repair.
+
+Put \(j=b-1\). The crest at this stage contains \(BL_b\)
+in the central range. Both this stage and the next still
+have at least two available singleton steps. Charge the
+subfamilies whose output crests over the full precritical
+block at either stage \(j\) or \(j+1\), by the precritical
+bound followed by (9). These two costs are at most
+\(2^j c_{\rm pre}\) and \(2^{j+1}c_{\rm pre}\);
+overlap only improves the estimate. On the remainder,
+both outputs have exactly one physical critical end,
+initial in the positive cap orientation, modulo the
+width-zero landing and dividing-point exceptions, by
+the circle-order argument in §5. At stage \(j\), the
+protected middle block just constructed is available.
+Theorem 1 charges incomplete one-step canonical lifts
+at most \(2V\), and Theorem 3 plus precritical exclusion
+charges the complete stage-\(j\) family at most
+\(S_T^{free}(F)\) by (7). Applying (9) once more gives
+
+\[
+ \boxed{
+ W(A_h)\le
+ 2^{b-1}\bigl(2V(F)+S_T^{free}(F)+3c_{\rm pre}\bigr).
+ }
+ \tag{10}
+\]
+
+This is a conditional *whole stationary-family* reduction,
+not merely a charge for the already-realized Julia-ending
+subclass or for parents known to hit a deep selected inverse.
+Only one central-corridor step uses the protected chart.
+No one-sided birth propagation through all preceding
+exceptional limbs is needed in this route. It does not
+prove the native positive-crest continuation for all
+parents, the repaired geometric marking interface, the
+precritical bound on that repaired interface, or a
+uniform estimate for the free response. If those inputs
+are established, a bound on this single free internal
+condenser suffices for (10); the relative telescoping
+and downstream native/global arguments remain separate.
+
 Prepared with ChatGPT assistance; human specialist review pending.
