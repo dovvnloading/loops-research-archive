@@ -170,7 +170,7 @@ theorem globalFiber_card_exact (c y : ℂ) (n : ℕ) :
   | zero => simp [globalFiber_zero, criticalFiberDefect]
   | succ n ih =>
     have h := globalFiber_card_step c y n
-    simp only [criticalFiberDefect, pow_succ]
+    rw [criticalFiberDefect, pow_succ (2 : ℕ) n]
     omega
 
 /-- A fiber has maximal cardinality exactly when its target avoids
