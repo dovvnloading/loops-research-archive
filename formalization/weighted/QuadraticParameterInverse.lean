@@ -219,5 +219,71 @@ theorem quadratic_compact_parameter_inverse_family
     rw [hdy.deriv]
     exact inv_ne_zero hnonzero
 
+/-- A continuous inverse over a compact connected target fills the
+entire physical preimage component through its moving anchor. The proof
+uses compactness to rule out continuation through the boundary of U. -/
+theorem quadratic_inverse_compact_component
+    (c : ℂ) (n : ℕ) (U K : Set ℂ) (g : ℂ → ℂ)
+    (hU : IsOpen U) (hK : IsCompact K) (hKconn : IsPreconnected K)
+    (hg : ContinuousOn g K) (hmap : MapsTo g K U)
+    (hleft : LeftInvOn g (orbit c n) U)
+    (hright : RightInvOn g (orbit c n) K)
+    (y : ℂ) (hy : y ∈ K) :
+    g '' K = connectedComponentIn (orbit c n ⁻¹' K) (g y) := by
+  let T := connectedComponentIn (orbit c n ⁻¹' K) (g y)
+  have hanchor : g y ∈ T := mem_connectedComponentIn (by
+    change orbit c n (g y) ∈ K
+    rwa [hright hy])
+  have hpre : T ⊆ orbit c n ⁻¹' K := connectedComponentIn_subset _ _
+  have hclosed : IsClosed (g '' K) := (hK.image_of_continuousOn hg).isClosed
+  have himageU : g '' K ⊆ U := by
+    rintro z ⟨w, hw, rfl⟩
+    exact hmap hw
+  have hTU : T ⊆ U := by
+    intro z hz
+    by_contra hzU
+    have hcover : T ⊆ U ∪ (g '' K)ᶜ := by
+      intro w hw
+      by_cases hwU : w ∈ U
+      · exact Or.inl hwU
+      · exact Or.inr (fun hwi => hwU (himageU hwi))
+    obtain ⟨w, hwT, hwU, hwi⟩ :=
+      isPreconnected_connectedComponentIn U (g '' K)ᶜ hU hclosed.isOpen_compl
+        hcover ⟨g y, hanchor, hmap hy⟩
+        ⟨z, hz, fun hzi => hzU (himageU hzi)⟩
+    exact hwi ⟨orbit c n w, hpre hwT, hleft hwU⟩
+  apply Subset.antisymm
+  · apply (hKconn.image g hg).subset_connectedComponentIn
+    · exact ⟨y, hy, rfl⟩
+    · rintro z ⟨w, hw, rfl⟩
+      change orbit c n (g w) ∈ K
+      rwa [hright hw]
+  · intro z hz
+    exact ⟨orbit c n z, hpre hz, hleft (hTU hz)⟩
+
+/-- Every compact connected subtarget of a common analytic collar has
+an exact moving selected component. The anchor moves by the same
+inverse family; no fixed physical anchor is silently reused. -/
+theorem quadratic_inverse_family_compact_component
+    (n : ℕ) (P U V : Set ℂ) (g : ℂ → ℂ → ℂ)
+    (hU : IsOpen U)
+    (hana : AnalyticOnNhd ℂ (fun p : ℂ × ℂ => g p.1 p.2) (P ×ˢ V))
+    (hbranch : ∀ d ∈ P,
+      MapsTo (g d) V U ∧ LeftInvOn (g d) (orbit d n) U ∧
+      RightInvOn (g d) (orbit d n) V)
+    (d : ℂ) (hd : d ∈ P) (K : Set ℂ)
+    (hK : IsCompact K) (hKconn : IsPreconnected K) (hKV : K ⊆ V)
+    (y : ℂ) (hy : y ∈ K) :
+    g d '' K = connectedComponentIn (orbit d n ⁻¹' K) (g d y) := by
+  have hcont : ContinuousOn (g d) K := by
+    intro w hw
+    have hi : AnalyticAt ℂ (fun z : ℂ => (d, z)) w :=
+      analyticAt_const.prodMk analyticAt_id
+    have ha : AnalyticAt ℂ (g d) w := (hana (d, w) ⟨hd, hKV hw⟩).comp hi
+    exact ha.continuousAt.continuousWithinAt
+  exact quadratic_inverse_compact_component d n U K (g d) hU hK hKconn hcont
+    (fun w hw => (hbranch d hd).1 (hKV hw))
+    (hbranch d hd).2.1 (fun w hw => (hbranch d hd).2.2 (hKV hw)) y hy
+
 end
 end LoopsQuadraticParameterInverse
