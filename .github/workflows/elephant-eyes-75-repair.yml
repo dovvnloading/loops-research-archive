@@ -1,0 +1,28 @@
+name: Elephant Eyes 7.5 repair audit
+on:
+  push:
+    branches: [frontier/elephant-eyes-75-repair-20261126]
+  pull_request:
+    branches: [main]
+    paths:
+      - 'research/frontier/elephant_eyes_75_repair_20261126/**'
+      - '.github/workflows/elephant-eyes-75-repair.yml'
+      - 'formalization/physical_bridge_sources.tsv'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4.2.2
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          persist-credentials: false
+      - uses: actions/setup-python@v5.6.0
+        with:
+          python-version: '3.12'
+      - run: python -m pip install pypdf==5.4.0
+      - run: python -B research/frontier/elephant_eyes_75_repair_20261126/verify.py
+      - run: python -B code/verify_physical_bridges.py
