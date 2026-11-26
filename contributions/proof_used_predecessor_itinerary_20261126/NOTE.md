@@ -31,6 +31,10 @@ The new module [StationaryProofUsedItinerary.lean](../../formalization/weighted/
 
 Reproduction: from formalization/weighted, `lake build StationaryProofUsedItinerary`; from repository root, `python3 -B code/verify_lean_coverage.py` and `python3 -B code/verify_lean_coverage.py --audit weighted`. Lean is not locally installed and the shell cannot reach GitHub, so the repository workflows must verify this candidate. Registration follows the transformations in `code/contribute.py lean-add` via GitHub's Git API; the script itself was not run.
 
+### Instantiation checklist for Gate N2
+
+Take X=K(F) with its physical relative topology, a=alpha_F, and limb(a,l) equal to the selected critical limb. Take g to be the inverse of Lemma 2.1 on that limb (extend it arbitrarily outside its domain, which the theorem never evaluates). P(0)=T intersect limb, P(i)=L_0^i for positive i, Q=Q_0, and q(i) a backward orbit in the marked Q_i supplied by Lemma 2.2. The two inverse identities are exactly the section and uniqueness clauses on the limb. For a proof-used independently supplied depth-H restriction one still needs to show its deep endpoint D is a connected physical subset of K(F), that its actual forward images are the F iterates appearing here, that its final image is contained in P(0) and meets Q_0, and that some point in D witnesses the stated limb itinerary. None of these is inferred just from a word, a degree count, or a prime-end label. The address theorem applies only if each recorded address is a full connected pullback component.
+
 ## Dependencies
 
 KKL_STATIONARY_SELECTED_PREDECESSOR_CHAIN, KKL_STATIONARY_SELECTED_SMALL_JULIA_PREDECESSOR_CHAIN, KKL_STATIONARY_CRITICAL_LIMB_INVERSE_BRANCH. Uses Mathlib connected-component and continuous-image theorems. The inverse-branch equations and continuity are explicit hypotheses, as in Lemmas 2.1–2.2 of Gate N2.
