@@ -24,6 +24,6 @@ jobs:
         with:
           persist-credentials: false
       - name: Run exact rational regression
-        run: node research/frontier/cs_multiplier_julia_bound_20261126/verify.mjs
+        run: python3 -B research/frontier/cs_multiplier_julia_bound_20261126/verify.py
       - name: Check source registration
         run: python3 -B code/verify_physical_bridges.py
