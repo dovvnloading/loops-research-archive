@@ -18,6 +18,14 @@ SOURCES = {
 def arithmetic():
     # c = log(2)/(2*pi) > 1/16, from log(2)>1/2 and pi<4.
     # PLY bottom point has imaginary magnitude 2*c*S > S/8.
+    # For x=1/q, R>=0, r>0, compare the exact squared disk-radius
+    # criterion to the equivalent bound, using rational test cases.
+    for x in (F(1, 3), F(1, 10), F(1, 100)):
+        for radius in (F(0), F(1, 100), F(1, 16), F(1, 3), F(1)):
+            for r in (F(1, 100), F(1, 10), F(1, 3), F(2, 5)):
+                direct = r >= radius and (r-radius)**2 >= x*x+radius*radius
+                isolated = x <= r and 2*r*radius <= r*r-x*x
+                assert direct == isolated
     rows = {}
     for L in (3, 10, 100):
         for label, seq in (
@@ -43,6 +51,13 @@ def arithmetic():
                         assert F(prev_q**2,q) >= 2
                 if label == "cross_level_square":
                     assert s == F(1,L)
+                # gamma>1/16: the rational-radius disk is nested in PLY.
+                lower_radius = s/16
+                x = F(1,q)
+                # Center of lower disk lies inside every larger tangent disk.
+                # Its bottom point has imaginary magnitude 2*lower_radius.
+                if s >= 4:
+                    assert x*x + (2*lower_radius)**2 > F(1,2)**2
                 if s >= 4 and first is None:
                     # The bottom point of the full PLY disk exceeds every r<1/2.
                     first = i
@@ -50,7 +65,7 @@ def arithmetic():
                 # 1/q - i*P/(16*q). For P>=16 this lies outside the cone
                 # if P>16; c>1/16 gives strictly more vertical room.
                 if P > 16:
-                    assert F(P,16*q) > F(1,q)
+                    assert F(P,16*q) == lower_radius > x
                 prev_q, prev_s = q, s
                 P *= q
             if label in ("linear", "power_3_2", "i_log2_i_squared_proxy", "power_2"):
