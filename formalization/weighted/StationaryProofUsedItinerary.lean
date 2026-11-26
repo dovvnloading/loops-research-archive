@@ -186,4 +186,73 @@ theorem supplied_address_eq (F : X → X) (P R E : ℕ → Set X)
     rw [hR i hil, ih (by omega), hP i hil]
     exact (connectedComponentIn_eq hr').symm
 
+/-- A single actual deepest point witnesses the entire intermediate
+itinerary. No independent connected sets or forward inclusions are
+postulated: they are the genuine successive images of the deepest set. -/
+theorem deepest_endpoint_selection (F g : X → X) (a l : X)
+    (P : ℕ → Set X) (q : ℕ → X) (Q D : Set X) (z : X) (H : ℕ)
+    (hF : Continuous F) (hfix : F a = a)
+    (hg : ContinuousOn g (limb a l))
+    (hgm : MapsTo g (limb a l) (limb a l))
+    (hsection : ∀ y ∈ limb a l, F (g y) = y)
+    (hleft : ∀ w ∈ limb a l, F w ∈ limb a l → g (F w) = w)
+    (hP0 : P 0 ⊆ limb a l)
+    (hq : ∀ i ≤ H, q i ∈ P i)
+    (hqstep : ∀ i < H, q (i+1) = g (q i))
+    (hP : ∀ i < H, P (i+1) = connectedComponentIn (F ⁻¹' P i) (q (i+1)))
+    (hQ : IsPreconnected Q) (hq0 : q 0 ∈ Q) (hQsub : Q ⊆ P 0)
+    (hD : IsPreconnected D) (hz : z ∈ D)
+    (hroot : (F^[H]) '' D ⊆ P 0)
+    (hcontact : (((F^[H]) '' D) ∩ Q).Nonempty)
+    (hit : ∀ j < H, (F^[j]) z ∈ limb a l) :
+    ∀ i ≤ H, (F^[H-i]) '' D ⊆ P i := by
+  let E : ℕ → Set X := fun i => (F^[H-i]) '' D
+  have hE0 : E 0 ⊆ P 0 := by simpa [E] using hroot
+  have hEc : (E 0 ∩ Q).Nonempty := by simpa [E] using hcontact
+  have hE (i : ℕ) (_ : i ≤ H) : IsPreconnected (E i) :=
+    hD.image _ (hF.iterate _).continuousOn
+  have hroute (i : ℕ) (hi : i < H) : MapsTo F (E (i+1)) (E i) := by
+    intro y hy
+    obtain ⟨w, hw, rfl⟩ := hy
+    change F ((F^[H-(i+1)]) w) ∈ (F^[H-i]) '' D
+    refine ⟨w, hw, ?_⟩
+    rw [show H-i = H-(i+1)+1 by omega, Function.iterate_succ_apply']
+  have hhit (i : ℕ) (hi : i < H) : (E (i+1) ∩ limb a l).Nonempty :=
+    ⟨(F^[H-(i+1)]) z, ⟨z, hz, rfl⟩, hit _ (by omega)⟩
+  have hsel := endpoint_itinerary_selection F g a l P E q Q H hF hfix hg hgm
+    hsection hleft hP0 hq hqstep hP hQ hq0 hQsub hE hE0 hEc hroute hhit
+  intro i hi
+  exact (hsel i hi).2.trans (connectedComponentIn_subset (P i) (q i))
+
+/-- Actual complex quadratic counterexample to replacing intermediate
+geometric itinerary by equality of terminal images: the two preimages
+of 2 for z ↦ z² - 2 lie in distinct full pullback components. -/
+theorem chebyshev_terminal_collision_not_component :
+    (fun z : ℂ => z^2-2) (-2) = 2 ∧
+      (-2 : ℂ) ∉ connectedComponentIn ((fun z : ℂ => z^2-2) ⁻¹' {2}) 2 := by
+  constructor
+  · norm_num
+  · intro hn
+    let C : Set ℂ := connectedComponentIn ((fun z : ℂ => z^2-2) ⁻¹' {2}) 2
+    have hp : (2 : ℂ) ∈ C := mem_connectedComponentIn (show (2 : ℂ)^2-2 ∈ ({2} : Set ℂ) by
+      change (2 : ℂ)^2-2 = 2
+      norm_num)
+    have hcov : C ⊆ ({2} : Set ℂ) ∪ {-2} := by
+      intro t ht
+      have he : t^2-2 = 2 := connectedComponentIn_subset _ _ ht
+      have hprod : (t-2)*(t+2) = 0 := by linear_combination he
+      rcases mul_eq_zero.mp hprod with h | h
+      · exact Or.inl (show t ∈ ({2} : Set ℂ) from sub_eq_zero.mp h)
+      · exact Or.inr (show t ∈ ({-2} : Set ℂ) from by
+          change t = -2
+          linear_combination h)
+    have hc : IsPreconnected C := isPreconnected_connectedComponentIn
+    obtain ⟨w, _, hw1, hw2⟩ := (isPreconnected_closed_iff.mp hc)
+      ({2} : Set ℂ) {-2} isClosed_singleton isClosed_singleton hcov
+      ⟨2, hp, mem_singleton 2⟩ ⟨-2, hn, mem_singleton (-2)⟩
+    have h1 : w = 2 := hw1
+    have h2 : w = -2 := hw2
+    have he : (2 : ℂ) = -2 := h1.symm.trans h2
+    norm_num at he
+
 end LoopsStationaryProofUsedItinerary

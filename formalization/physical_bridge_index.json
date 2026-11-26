@@ -2096,7 +2096,9 @@
         "inverse_branch_component",
         "inverse_branch_component_image",
         "endpoint_itinerary_selection",
-        "supplied_address_eq"
+        "supplied_address_eq",
+        "deepest_endpoint_selection",
+        "chebyshev_terminal_collision_not_component"
       ]
     },
     "obligations": [
