@@ -103,6 +103,7 @@ formalization/weighted/StationaryEndpointVisits.lean	VARIABLE-EXIT
 formalization/weighted/StationaryMonotoneGeometry.lean	METADATA
 formalization/weighted/StationaryPacketGain.lean	VARIABLE-EXIT
 formalization/weighted/StationaryPrefixCharge.lean	VARIABLE-EXIT
+formalization/weighted/StationarySeparatorTransport.lean	METADATA
 formalization/weighted/WeightedReturn.lean	CLONE EDGE
 research/frontier/dudko_p44_molecule_20261125/source_lock.py	METADATA
 research/frontier/dudko_p44_molecule_20261125/verify.py	EXPLORATION

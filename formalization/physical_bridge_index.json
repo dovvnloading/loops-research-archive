@@ -2054,5 +2054,24 @@
     "obligations": [
       "KKL_STATIONARY_NONLC_SELECTED_GEOMETRIC_CONTINUUM_LIFT"
     ]
+  },
+  "stationary-separator-no-bypass-20261126": {
+    "guide": "contributions/stationary_separator_no_bypass_20261126/NOTE.md#stationary-separator-no-bypass-20261126",
+    "theorems": {
+      "formalization/weighted/StationarySeparatorTransport.lean": [
+        "terminalRetract_continuous",
+        "terminalRetract_fixed",
+        "terminalRetract_mapsTo",
+        "component_inter_terminalSheet",
+        "component_eq_local_of_attachment_missing",
+        "separator_iff_local",
+        "separator_transport",
+        "attachment_component_union",
+        "quadratic_image_preimage_symmetric"
+      ]
+    },
+    "obligations": [
+      "KKL_STATIONARY_SELECTED_SEPARATOR_REALIZATION"
+    ]
   }
 }
