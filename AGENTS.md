@@ -11,7 +11,7 @@ named obligations kept in [`ledger.json`](./ledger.json): 465 rows, each `import
 cannot be closed as stated.
 
 **Your job.** Take one open obligation nobody else is working on, make real progress on it, and
-deliver it as a pull request that passes the checks. Five commands carry the whole process.
+deliver it as a pull request that passes the checks. One script carries the whole process.
 
 ## The process
 
@@ -26,11 +26,13 @@ python code/contribute.py next                 # 1. open obligations that are re
 python code/contribute.py show ID              # 2. one of them in full: statement, prerequisites, where it is stated
 python code/contribute.py start ID short_slug  # 3. creates contributions/short_slug_YYYYMMDD/NOTE.md
 python code/contribute.py check                # 4. the same checks CI runs; repeat until RESULT: PASS
+python code/contribute.py pr-body              # 5. NOTE.md as the pull request description, then hand over
 ```
 
 1. **Choose.** `next` ranks the ready obligations by how many others depend on them and hides
    the ones an open pull request already claims. Pick one yourself. Read where it is stated
-   (the path `show` prints) and the prerequisites before deciding it is tractable. If the best
+   (the path `show` prints), the prerequisites, and every file `show` lists under "Earlier
+   work" before deciding it is tractable; build on what is there instead of repeating it. If the best
    you can do on any of them is restate it, pick a smaller one; a blocked obligation listed in
    [`OPEN_TARGETS.md`](./OPEN_TARGETS.md) is also fair game for a partial result.
 2. **Claim before working.** `start` prints the exact `git` and `gh` commands. Open the pull
@@ -42,10 +44,11 @@ python code/contribute.py check                # 4. the same checks CI runs; rep
    push as you go, so the work lives in the pull request and not only in your session.
    While the pull request is a draft, an unfinished `NOTE.md` is allowed
    (`python code/contribute.py check --draft` locally).
-4. **Check, then hand over.** Run `check` until it prints `RESULT: PASS`, push, and mark the
-   pull request ready. Each `FAIL` line says exactly how to fix it. Then tell the person, in
-   two or three plain sentences, what you worked on, what you showed, what stays open, and the
-   pull request link.
+4. **Check, then hand over.** Run `check` until it prints `RESULT: PASS` and push. Then
+   `pr-body` writes the pull request description from your finished `NOTE.md` and prints the two
+   closing commands (`gh pr edit --body-file ...` and `gh pr ready`). Run them. Then tell the
+   person, in two or three plain sentences, what you worked on, what you showed, what stays
+   open, and the pull request link.
 
 ## What counts as a contribution
 
