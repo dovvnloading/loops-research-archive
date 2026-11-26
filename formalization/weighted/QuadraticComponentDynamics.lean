@@ -58,7 +58,7 @@ theorem quadratic_component_has_exact_period (c : ℂ) (hc : 0 < escape c 0)
   obtain ⟨E,hE⟩ := filled_component_conjugacy c hc
   obtain ⟨a,ha⟩ := shift_has_exact_period n hn
   let q := E.symm a
-  have hqa : E q = a := E.apply_symm_apply a
+  have hqa : E.toEquiv q = a := E.apply_symm_apply a
   have hperiod : IsPeriodicPt shift n a := by
     rw [← ha]
     exact isPeriodicPt_minimalPeriod shift a

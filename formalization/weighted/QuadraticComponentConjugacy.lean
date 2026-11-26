@@ -35,7 +35,8 @@ theorem filledIntoCriticalSublevel_continuous (c : ℂ) :
 theorem filledIntoCriticalSublevel_injective (c : ℂ) :
     Injective (filledIntoCriticalSublevel c) := by
   intro x y h
-  exact Subtype.ext (congrArg Subtype.val h)
+  exact Subtype.ext
+    (congrArg (Subtype.val : sublevel c (escape c 0) → ℂ) h)
 
 /-- The same positive-height splitting gives all finite inverse sections
 and the zero-height coding. Their nested cylinder limits lie in the actual
@@ -57,8 +58,9 @@ theorem filled_coherent_branch_system (c : ℂ) (hc : 0 < escape c 0) :
   let E : sublevel c (a/2) ≃ₜ (Fin 2 × sublevel c a) :=
     E₀.trans ((Homeomorph.refl (Fin 2)).prodCongr top)
   have hE (z : sublevel c (a/2)) : ((E z).2 : ℂ) = (z : ℂ)^2+c := hE₀ z
+  have haa : a/2 ≤ a := by linarith
   let inc : sublevel c (a/2) → sublevel c a := fun z =>
-    ⟨z, le_trans z.property (by linarith)⟩
+    ⟨z, le_trans z.property haa⟩
   have hinc : Continuous inc := continuous_subtype_val.subtype_mk _
   let b : Fin 2 → sublevel c a → sublevel c a :=
     fun i z => inc (E.symm (i,z))
@@ -67,7 +69,7 @@ theorem filled_coherent_branch_system (c : ℂ) (hc : 0 < escape c 0) :
   have hbi : Injective (fun p : Fin 2 × sublevel c a => b p.1 p.2) := by
     intro p q hpq
     apply E.symm.injective
-    exact Subtype.ext (congrArg Subtype.val hpq)
+    exact Subtype.ext (congrArg (Subtype.val : sublevel c a → ℂ) hpq)
   have hbq (i : Fin 2) (z : sublevel c a) :
       (b i z : ℂ)^2+c = (z : ℂ) := by
     have h := hE (E.symm (i,z))
@@ -100,7 +102,8 @@ theorem filled_coherent_branch_system (c : ℂ) (hc : 0 < escape c 0) :
     have he : b p.1 (j p.2) = b q.1 (j q.2) := by
       rw [← hbf p, ← hbf q, hpq]
     have hpair : (p.1,j p.2) = (q.1,j q.2) := hbi he
-    exact Prod.ext (congrArg Prod.fst hpair) (hji (congrArg Prod.snd hpair))
+    exact Prod.ext (congrArg (Prod.fst : Fin 2 × sublevel c a → Fin 2) hpair)
+      (hji (congrArg (Prod.snd : Fin 2 × sublevel c a → sublevel c a) hpair))
   have hbfs : Surjective bf := by
     intro z
     let zs : sublevel c (a/2) := ⟨z, by
@@ -139,7 +142,8 @@ theorem filled_coherent_branch_system (c : ℂ) (hc : 0 < escape c 0) :
     induction n with
     | zero =>
       intro ω z hz
-      simpa using z.property
+      simpa only [pow_zero,one_mul] using
+        (show escape c (z : ℂ) ≤ a from z.property)
     | succ n ih =>
       intro ω z hz
       obtain ⟨w,hw,rfl⟩ := hz

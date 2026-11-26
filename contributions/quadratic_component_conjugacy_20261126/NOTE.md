@@ -37,7 +37,7 @@ quotient `pi_0(K_c)`, and let `sigma(omega)(k)=omega(k+1)`. The new conclusions 
 
 1. There is a continuous surjective itinerary `iota:K_c -> {0,1}^N` with
    `iota(f_c(z))=sigma(iota(z))` and
-   
+
    \[
    \iota^{-1}(\iota(z))=\operatorname{Component}_{K_c}(z).
    \]
@@ -45,7 +45,7 @@ quotient `pi_0(K_c)`, and let `sigma(omega)(k)=omega(k+1)`. The new conclusions 
    Connectedness of every full itinerary fiber is proved from the actual
    positive escape sublevels; it is not supplied as an assumption.
 2. There is a homeomorphism
-   
+
    \[
    E:\pi_0(K_c)\simeq\{0,1\}^{\mathbb N},\qquad E\circ F_c=\sigma\circ E.
    \]
@@ -57,7 +57,7 @@ quotient `pi_0(K_c)`, and let `sigma(omega)(k)=omega(k+1)`. The new conclusions 
    divisor of `n`. Separately, every positive `n` occurs as a minimal component
    period, and periodic components are dense in the quotient topology.
 4. For every nonempty open family `U` of components, there is `N` such that
-   
+
    \[
    F_c^n(U)=\pi_0(K_c)\quad\text{for all }n\ge N.
    \]
@@ -77,7 +77,7 @@ mathematical priority beyond this archive's formalization is claimed.
 | Module | Principal declarations |
 |---|---|
 | [ConnectedBinaryCoding.lean](../../formalization/weighted/ConnectedBinaryCoding.lean) | `cylinder_mem_iff`, `address_fiber_image`, `address_fiber_preconnected`, `address_fiber_connected`, `component_eq_address_fiber`, `component_conjugacy` |
-| [QuadraticComponentConjugacy.lean](../../formalization/weighted/QuadraticComponentConjugacy.lean) | `filled_coherent_branch_system`, `quadraticComponentMap_mk`, `filled_binary_component_model`, `filled_component_conjugacy` |
+| [QuadraticComponentConjugacy.lean](../../formalization/weighted/QuadraticComponentConjugacy.lean) | `filled_coherent_branch_system`, `quadraticComponentMap_mk`, `filled_component_image`, `filled_binary_component_model`, `filled_component_conjugacy` |
 | [BinaryShiftPeriodic.lean](../../formalization/weighted/BinaryShiftPeriodic.lean) | `shift_periodic_card`, `periodic_extension`, `shift_has_exact_period`, `shift_periodic_dense` |
 | [BinaryShiftExactness.lean](../../formalization/weighted/BinaryShiftExactness.lean) | `shift_open_eventually_onto`, `conjugate_open_eventually_onto`, `conjugate_eventual_intersection` |
 | [QuadraticComponentDynamics.lean](../../formalization/weighted/QuadraticComponentDynamics.lean) | `quadratic_component_periodic_card`, `quadratic_component_has_exact_period`, `quadratic_periodic_components_dense`, `quadratic_component_open_eventually_onto`, `quadratic_component_eventual_intersection` |
@@ -166,6 +166,9 @@ continuous bijection is a homeomorphism. The equality between its induced
 step and `quadraticComponentMap` is proved on every component representative;
 that map was defined directly from the genuine polynomial and contains no
 choice of symbolic labeling. This proves the component conjugacy.
+The separate `filled_component_image` theorem proves that the actual polynomial
+maps each entire component onto its parent component. Thus return of a component
+under the quotient action has its literal setwise meaning.
 
 **6. Derive the dynamical consequences.** Restriction to the first `n` symbols
 is an explicit equivalence between addresses fixed by `sigma^n` and binary
@@ -195,11 +198,15 @@ python -B code/verify_lean_coverage.py --audit weighted
 
 Development is in [PR #220](https://github.com/dovvnloading/loops-research-archive/pull/220),
 opened as a draft before implementation. The claim and subsequent proof
-checkpoints are committed in that PR. A local Lean/Mathlib runtime is available.
-The complete compiler and transitive-dependency results will be recorded here
-before the PR is marked ready; no incomplete checkpoint is presented as a
-validated theorem. The initial CI index mismatch was the missing registration
-of `address_fiber_connected`; registration has been repaired.
+checkpoints are committed in that PR. All five new modules compile locally
+with the pinned Lean/Mathlib project. The full dependency build for
+`QuadraticComponentDynamics` completed successfully with 8,679 jobs.
+The existing compiled audit, restricted locally to the five new modules,
+reported `AXIOM_AUDIT_PASS component_checkpoint: 5 modules, 71 declarations`.
+This includes private and generated declarations, not only the named public
+theorems. Local contribution, source-registration, and theorem-index checks
+also pass. The full repository CI build and audit remain the final acceptance
+gate and are recorded in the pull request before it is marked ready.
 
 The permitted logical dependencies are only `propext`, `Classical.choice`,
 and `Quot.sound`. The existing CI compiles the full project and audits the
