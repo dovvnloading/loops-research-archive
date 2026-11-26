@@ -695,6 +695,7 @@ theorem quadratic_filled_light_model_all_target_census {Y : Type*}
     intro w
     obtain ⟨x,rfl⟩ := hsurj w
     obtain ⟨z,hz⟩ := quadratic_surjective c (x : ℂ)
+    change z^2+c = (x : ℂ) at hz
     have hzK : z ∈ quadraticFilled c :=
       (quadratic_filled_complete_invariant c z).mp (by rw [hz]; exact x.property)
     have he : quadraticFilledMap c ⟨z,hzK⟩ = x := Subtype.ext hz
