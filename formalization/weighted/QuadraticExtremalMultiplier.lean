@@ -75,9 +75,16 @@ def multiplier (c z : ℂ) : ℕ → ℂ
 theorem orbit_hasDerivAt (c z : ℂ) (n : ℕ) :
     HasDerivAt (orbit c n) (multiplier c z n) z := by
   induction n with
-  | zero => simpa only [orbit, multiplier] using (hasDerivAt_id z)
+  | zero =>
+    change HasDerivAt (id : ℂ → ℂ) 1 z
+    exact hasDerivAt_id z
   | succ n ih =>
-    simpa [orbit, multiplier] using (ih.pow 2).add_const c
+    have hh := (ih.pow 2).add (hasDerivAt_const z c)
+    have heq : orbit c (n+1) = (orbit c n)^2 + fun _ => c := by
+      funext w
+      simp [orbit]
+    rw [heq]
+    simpa only [multiplier, Nat.cast_ofNat, Nat.reduceSub, pow_one, add_zero] using hh
 
 theorem multiplier_eq_deriv (c z : ℂ) (n : ℕ) :
     deriv (orbit c n) z = multiplier c z n :=
@@ -114,9 +121,13 @@ theorem successor_defect_sq (c z : ℂ) (hc : ‖c‖ ≤ 2)
   have heq : w-c = z^2 := by dsimp [w]; ring
   rw [heq, norm_pow] at hpar
   have hc2 : ‖c‖^2 ≤ 4 := by
-    simpa using pow_le_pow_left₀ (norm_nonneg c) hc 2
+    have h := pow_le_pow_left₀ (norm_nonneg c) hc 2
+    norm_num at h
+    exact h
   have hw2 : ‖w‖^2 ≤ 4 := by
-    simpa using pow_le_pow_left₀ (norm_nonneg w) hw 2
+    have h := pow_le_pow_left₀ (norm_nonneg w) hw 2
+    norm_num at h
+    exact h
   change ‖w+c‖^2 ≤ _
   nlinarith only [hpar,hc2,hw2,sq_nonneg (4-‖z‖^2)]
 
@@ -157,7 +168,7 @@ theorem parameter_defect_sq (c z : ℂ) (hc : ‖c‖ ≤ 2)
         _ = ‖w+c‖*‖c-w‖+‖u+c‖ := by rw [norm_mul, add_comm c w]
         _ ≤ 4*‖w+c‖+‖u+c‖ := by
           rw [mul_comm (4:ℝ)]
-          exact add_le_add_right (mul_le_mul_of_nonneg_left hcw (norm_nonneg _)) _
+          exact add_le_add_right (mul_le_mul_of_nonneg_left hcw (norm_nonneg (w+c))) ‖u+c‖
     have hl : ‖c+2‖ ≤ ‖c‖*‖c+2‖ := by
       simpa only [one_mul] using mul_le_mul_of_nonneg_right hC (norm_nonneg (c+2))
     have hs := pow_le_pow_left₀ (norm_nonneg (c+2)) (hl.trans hp) 2
@@ -168,7 +179,9 @@ theorem parameter_defect_sq (c z : ℂ) (hc : ‖c‖ ≤ 2)
         ‖c+2‖ ≤ ‖c‖+‖(2:ℂ)‖ := norm_add_le _ _
         _ ≤ 3 := by rw [Complex.norm_two]; linarith
     have hs : ‖c+2‖^2 ≤ 9 := by
-      simpa using pow_le_pow_left₀ (norm_nonneg (c+2)) hnorm 2
+      have h := pow_le_pow_left₀ (norm_nonneg (c+2)) hnorm 2
+      norm_num at h
+      exact h
     nlinarith only [hs,hstep,hw,hC']
 
 /-- The physical bounded-orbit locus obeys the three-point rigidity estimate. -/
@@ -202,7 +215,9 @@ theorem multiplier_sq_uniform_gap (c z : ℂ) (hc : ‖c‖ ≤ 2)
         ring
       _ ≤ (16-‖c+2‖^2/72)*(16-‖c+2‖^2/72)^n :=
         mul_le_mul hf ih (sq_nonneg _) hbase
-      _ = _ := by rw [pow_succ, mul_comm]
+      _ = (16-‖c+2‖^2/72)^(n+1) := by
+        rw [pow_succ (16-‖c+2‖^2/72) n]
+        exact mul_comm _ _
 
 theorem deriv_sq_uniform_gap (c z : ℂ) (hc : parameterEscape c = 0)
     (hz : escape c z = 0) (n : ℕ) :
@@ -225,8 +240,10 @@ theorem extremal_deriv_parameter (c z : ℂ) (hc : parameterEscape c = 0)
   rw [he] at hle
   have hpos : 0 < (4:ℝ)^n := by positivity
   have hf : 4 ≤ 2*‖orbit c n z‖ := by
-    apply (mul_le_mul_right₀ hpos).mp
-    simpa only [mul_comm (4:ℝ) ((4:ℝ)^n)] using hle
+    apply (mul_le_mul_iff_right₀ hpos).mp
+    calc
+      4 * (4:ℝ)^n = (4:ℝ)^n * 4 := mul_comm _ _
+      _ ≤ _ := hle
   have hr := bounded_orbit_norm_le_two c z hc2 hz n
   have hre : ‖orbit c n z‖ = 2 := by linarith
   have h := bounded_orbit_parameter_defect c z hc2 hz n
@@ -265,7 +282,7 @@ theorem chebyshev_fixed_multiplier (n : ℕ) :
 theorem chebyshev_fixed_deriv_norm (n : ℕ) :
     ‖deriv (orbit (-2) n) 2‖ = (4:ℝ)^n := by
   rw [multiplier_eq_deriv, chebyshev_fixed_multiplier, norm_pow]
-  simp [Complex.norm_ofNat]
+  simp
 
 
 end
