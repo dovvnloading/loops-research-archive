@@ -24,11 +24,12 @@ noncomputable section
 no critical encounter before the final time. -/
 theorem orbit_deriv_ne_zero_iff (c x : ℂ) (n : ℕ) :
     deriv (orbit c n) x ≠ 0 ↔ ∀ j < n, orbit c j x ≠ 0 := by
+  have htwo : (2 : ℂ) ≠ 0 := by norm_num
   rw [multiplier_eq_deriv]
   induction n with
   | zero => simp [multiplier]
   | succ n ih =>
-    simp only [multiplier, mul_ne_zero_iff, OfNat.ofNat_ne_zero, true_and, ih]
+    simp only [multiplier, mul_ne_zero_iff, htwo, true_and, ih]
     constructor
     · rintro ⟨hn, hbefore⟩ j hj
       rcases Nat.lt_or_eq_of_le (Nat.le_of_lt_succ hj) with h | h
@@ -70,8 +71,8 @@ theorem orbit_conformal_inverse (c : ℂ) (n : ℕ) (U V : Set ℂ)
   have hleft : LeftInvOn g f U := hinj.leftInvOn_invFunOn
   have hright : RightInvOn g f V := honto.rightInvOn_invFunOn
   have hlocal (x : ℂ) (hx : x ∈ U) :
-      ∀ᶠ z in 𝓝 x, g (f z) = z :=
-    (hU.mem_nhds hx).mono (fun _ hz => hleft hz)
+      (g ∘ f) =ᶠ[𝓝 x] id :=
+    Filter.Eventually.mono (hU.mem_nhds hx) (fun _ hz => hleft hz)
   have hnonzero (x : ℂ) (hx : x ∈ U) : deriv f x ≠ 0 :=
     (orbit_deriv_ne_zero_iff c x n).mpr
       (orbit_injOn_no_critical_visits c n U hU hinj x hx)
@@ -79,10 +80,11 @@ theorem orbit_conformal_inverse (c : ℂ) (n : ℕ) (U V : Set ℂ)
   · intro y hy
     have hx : g y ∈ U := hmap hy
     have hcomp : AnalyticAt ℂ (g ∘ f) (g y) :=
-      analyticAt_id.congr (hlocal (g y) hx).symm
+      analyticAt_id.congr (Filter.EventuallyEq.symm (hlocal (g y) hx))
     have hg := (analyticAt_comp_iff_of_deriv_ne_zero
       (orbit_analytic c n (g y)) (hnonzero (g y) hx)).mp hcomp
-    simpa only [hright hy] using hg
+    change AnalyticAt ℂ g (f (g y)) at hg
+    rwa [hright hy] at hg
   · intro y hy
     have hx : g y ∈ U := hmap hy
     have hd : HasDerivAt g (deriv f (g y))⁻¹ (f (g y)) :=
@@ -134,5 +136,7 @@ theorem orbit_inverse_concatenation (c : ℂ) (a b : ℕ)
       (Function.invFunOn (orbit c b) V (orbit c b (orbit c a x)))
   rw [hsinj.leftInvOn_invFunOn hv, hpinj.leftInvOn_invFunOn hx,
     ← quadratic_orbit_add, hreturn.leftInvOn_invFunOn hx]
+
+end
 
 end LoopsTelescopeConformalInverse

@@ -1,6 +1,7 @@
 import QuadraticUnivalentNeighborhood
 import TelescopeCollarRecognition
 import QuadraticCylinderRamification
+import TelescopeConformalInverse
 
 /-!
 # Open univalent selected collars from actual compact cores
@@ -17,6 +18,7 @@ open Set Function Metric
 open QuadraticEscape LoopsSaturatedTelescope LoopsTelescopeRamification
 open LoopsTelescopeCollar LoopsQuadraticUnivalentNeighborhood
 open LoopsQuadraticCylinderRamification
+open LoopsTelescopeConformalInverse
 
 /-- Exact criterion for extending compact injectivity to an open domain.
 The critical encounters are checked strictly before the terminal time. -/
@@ -63,7 +65,7 @@ theorem selected_univalent_collar_margin (c : ℂ) (n : ℕ)
   have hclpre : closure U ⊆ orbit c n ⁻¹' cthickening δ K := by
     apply closure_minimal _ (isClosed_cthickening.preimage hp.continuous)
     intro z hz
-    exact hnear (connectedComponentIn_subset _ _ hz)
+    exact hnear (connectedComponentIn_subset (orbit c n ⁻¹' V) x hz)
   have hclcomp : closure U ⊆
       connectedComponentIn (orbit c n ⁻¹' cthickening δ K) x :=
     isPreconnected_connectedComponentIn.closure.subset_connectedComponentIn
@@ -114,5 +116,64 @@ theorem selected_univalent_open_collar (c : ℂ) (n : ℕ)
     orbit_component_proper c n V x hV,
     open_restriction_homeomorph (orbit c n) _ V (quadratic_orbit_continuous c n)
       (orbit_open c n) hU honto (hUI.mono subset_closure)⟩
+
+/-- The analytic inverse takes the entire compact target onto the original
+selected compact component. This rules out replacing that core by a proper
+subset or an unrelated branch after the collar has been constructed. -/
+theorem selected_inverse_exact_core (c : ℂ) (n : ℕ) (K V : Set ℂ) (x : ℂ)
+    (hKconn : IsPreconnected K) (hKV : K ⊆ V) (hx : orbit c n x ∈ K)
+    (g : ℂ → ℂ) (hg : ContinuousOn g V)
+    (hleft : LeftInvOn g (orbit c n) (connectedComponentIn (orbit c n ⁻¹' V) x))
+    (hright : RightInvOn g (orbit c n) V) :
+    g '' K = connectedComponentIn (orbit c n ⁻¹' K) x ∧
+      orbit c n '' connectedComponentIn (orbit c n ⁻¹' K) x = K := by
+  let C := connectedComponentIn (orbit c n ⁻¹' K) x
+  have hCU : C ⊆ connectedComponentIn (orbit c n ⁻¹' V) x :=
+    connectedComponentIn_mono x (preimage_mono hKV)
+  have hxU := mem_connectedComponentIn (hKV hx)
+  have hcore : g '' K = C := by
+    apply Subset.antisymm
+    · have hconn := hKconn.image g (hg.mono hKV)
+      apply hconn.subset_connectedComponentIn
+      · exact ⟨orbit c n x, hx, hleft hxU⟩
+      · rintro z ⟨y, hy, rfl⟩
+        change orbit c n (g y) ∈ K
+        rwa [hright (hKV hy)]
+    · intro z hz
+      exact ⟨orbit c n z, connectedComponentIn_subset (orbit c n ⁻¹' K) x hz,
+        hleft (hCU hz)⟩
+  refine ⟨hcore, ?_⟩
+  apply Subset.antisymm
+  · rintro y ⟨z, hz, rfl⟩
+    exact connectedComponentIn_subset (orbit c n ⁻¹' K) x hz
+  · intro y hy
+    exact ⟨g y, hcore ▸ (show g y ∈ g '' K from ⟨y, hy, rfl⟩), hright (hKV hy)⟩
+
+/-- Compact-core hypotheses construct a conformal inverse on an actual
+open selected collar, preserve the original compact core exactly, and
+keep the whole source closure inside the prescribed ambient neighborhood. -/
+theorem selected_univalent_analytic_collar (c : ℂ) (n : ℕ)
+    (K W : Set ℂ) (x : ℂ) (hK : IsCompact K) (hKconn : IsPreconnected K)
+    (hx : orbit c n x ∈ K) (hW : IsOpen W)
+    (hCW : connectedComponentIn (orbit c n ⁻¹' K) x ⊆ W)
+    (hI : InjOn (orbit c n) (connectedComponentIn (orbit c n ⁻¹' K) x))
+    (hcrit : ∀ z ∈ connectedComponentIn (orbit c n ⁻¹' K) x,
+      ∀ j < n, orbit c j z ≠ 0) :
+    ∃ (V : Set ℂ) (g : ℂ → ℂ), IsOpen V ∧ IsPreconnected V ∧ K ⊆ V ∧
+      let U := connectedComponentIn (orbit c n ⁻¹' V) x
+      IsOpen U ∧ IsCompact (closure U) ∧ closure U ⊆ W ∧
+        InjOn (orbit c n) (closure U) ∧ orbit c n '' U = V ∧
+        MapsTo g V U ∧ LeftInvOn g (orbit c n) U ∧ RightInvOn g (orbit c n) V ∧
+        AnalyticOnNhd ℂ g V ∧
+        g '' K = connectedComponentIn (orbit c n ⁻¹' K) x ∧
+        ∀ y ∈ V, HasDerivAt g (deriv (orbit c n) (g y))⁻¹ y ∧ ConformalAt g y := by
+  obtain ⟨V, hV, hVconn, hKV, hU, _, hUc, hUW, hUI, honto, _, _⟩ :=
+    selected_univalent_open_collar c n K W x hK hKconn hx hW hCW hI hcrit
+  obtain ⟨g, hmap, hleft, hright, hana, hder⟩ :=
+    orbit_conformal_inverse c n _ V hU (hUI.mono subset_closure) honto
+  have hcont : ContinuousOn g V := fun y hy => (hana y hy).continuousAt.continuousWithinAt
+  have hcore := selected_inverse_exact_core c n K V x hKconn hKV hx g hcont hleft hright
+  exact ⟨V, g, hV, hVconn, hKV, hU, hUc, hUW, hUI, honto, hmap,
+    hleft, hright, hana, hcore.1, hder⟩
 
 end LoopsTelescopeUnivalentCollars
