@@ -1044,8 +1044,10 @@ theorem compact_pair_envelope_of_monotone_model
       q hq.isClosedMap hsurj hf hCconn.isPreconnected,?_,?_,?_⟩
   · intro z hz
     exact connectedComponentIn_subset Aᶜ (q x) (hCD hz)
-  · exact interior_subset (hMC (by simp [M]))
-  · exact interior_subset (hMC (by simp [M]))
+  · change q x ∈ C
+    exact interior_subset (hMC (show q x ∈ M from by simp [M]))
+  · change q y ∈ C
+    exact interior_subset (hMC (show q y ∈ M from by simp [M]))
 
 /-- Saturation of the deleted critical set in a locally connected
 monotone model removes the need for a finite-component exhaustion.
