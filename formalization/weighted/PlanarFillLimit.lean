@@ -194,7 +194,7 @@ private theorem outward_ray_exterior {S : Set ℂ}
     exact hz (by simpa using hmem)
   have hcont : Continuous (fun t : ℝ => t • z) := by fun_prop
   have hpre : IsPreconnected A := isPreconnected_Ici.image _ hcont.continuousOn
-  have hzA : z ∈ A := ⟨1, le_rfl, one_smul ℝ z⟩
+  have hzA : z ∈ A := ⟨1, by simp, one_smul ℝ z⟩
   change IsBounded (connectedComponentIn Sᶜ z) at hfill
   exact unbounded_radial_ray z (by linarith) 1
     (hfill.subset (hpre.subset_connectedComponentIn hzA hsub))
@@ -219,7 +219,7 @@ theorem planarFill_of_proper_subset_unitSphere (S : Set ℂ)
     exact hmiss (by simpa using hmem)
   have hcont : Continuous (fun t : ℝ => t • a) := by fun_prop
   have hpre : IsPreconnected A := isPreconnected_Ici.image _ hcont.continuousOn
-  have h0A : (0 : ℂ) ∈ A := ⟨0, le_rfl, zero_smul ℝ a⟩
+  have h0A : (0 : ℂ) ∈ A := ⟨0, by simp, zero_smul ℝ a⟩
   have h0unbounded : ¬ IsBounded (connectedComponentIn Sᶜ (0 : ℂ)) :=
     fun h => unbounded_radial_ray a (by linarith) 0
       (h.subset (hpre.subset_connectedComponentIn h0A hsub))
@@ -308,10 +308,10 @@ theorem full_connected_approx_nonfull_unitSphere (ε : ℝ) (hε : 0 < ε) :
   have hAconn : IsConnected A := (isConnected_Icc hab).image f hf.continuousOn
   have hmark₁ : Complex.I ∈ A := by
     refine ⟨Real.pi/2, ⟨by linarith, by linarith⟩, ?_⟩
-    simpa [f] using Complex.exp_pi_div_two_mul_I
+    simp [f]
   have hmark₂ : -Complex.I ∈ A := by
     refine ⟨-Real.pi/2, ⟨by linarith, by linarith⟩, ?_⟩
-    simpa [f] using Complex.exp_neg_pi_div_two_mul_I
+    simp [f]
   have hAsub : A ⊆ sphere (0 : ℂ) 1 := by
     rintro z ⟨t, _, rfl⟩
     exact mem_sphere_zero_iff_norm.mpr (Complex.norm_exp_ofReal_mul_I t)
@@ -328,7 +328,7 @@ theorem full_connected_approx_nonfull_unitSphere (ε : ℝ) (hε : 0 < ε) :
     linarith [ht.2]
   have hfull : planarFill A = A :=
     planarFill_of_proper_subset_unitSphere A hAsub (-1)
-      (by simp [mem_sphere_zero_iff_norm]) hmiss
+      (by simp) hmiss
   have hcover : sphere (0 : ℂ) 1 ⊆ thickening ε A := by
     intro z hz
     obtain ⟨t, ht, he⟩ := Complex.norm_eq_one_iff'.mp (mem_sphere_zero_iff_norm.mp hz)
