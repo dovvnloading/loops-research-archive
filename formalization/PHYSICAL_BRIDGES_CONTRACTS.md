@@ -200,6 +200,11 @@ For each sequence of realized checkpoints satisfying the calibrated bounds and n
 
 **Conformality of the chosen conjugacy under stronger support hypotheses.** For towers with equal full marked combinatorics, construct a global quasiconformal conjugacy conformal on the Fatou set and justify the absence of invariant line fields on the Julia set in that regime. Agreement with the normalized Böttcher conjugacy supplies the exterior condition; any bounded Fatou components require their own conformal condition. The invariant Beltrami coefficient is then supported on the Julia set and vanishes almost everywhere, giving a conformal conjugacy. A conformal map fixing infinity has the form $az+b$. Comparing the quadratic and linear coefficients forces $a=1,b=0$, and comparing constants yields $c=c'$. Also construct the nested compact connected **relative neighborhoods** of $c$ in $\mathcal M$ with intersection this marked parameter fiber. Equality of parameters by itself does not construct those neighborhoods. **General rigidity and parameter-neighborhood realization open.** [Normalization and relative-neighborhood argument, §§3–4](../research/mlc_unified/uptcr_cross_validation.md) · [Explicit exterior-gauge counterexample and corrected theorem](../research/independent_audits/maximal_global_closure_20261123/EXTERIOR_GAUGE_REPAIR.md)
 
+<a id="critical-transversality"></a>
+### All-index critical-relation transversality
+
+For the actual complex family $f_c(z)=z^2+c$, write $P_j(c)=f_c^j(0)$. The [Lean proof](weighted/QuadraticCriticalTransversality.lean) derives the parameter derivative from this recurrence, proves that every critical collision parameter is an algebraic integer, and excludes zero derivative at every positive critical return to zero and at every collision with distinct preceding critical orbit values. Its arithmetic refinement factors the collision derivative as four times the nonzero preceding orbit value times an algebraic integer invertible modulo two. The [proof note](../research/frontier/lean_quadratic_transversality_20261126/NOTE.md) gives the normalization and the classical literature context. This is a finite-orbit algebraic input to Misiurewicz analysis, not a proof of the holomorphic continuation, scaling limit, or general H4 rigidity.
+
 <a id="gate-universal"></a>
 ### What composes under the universal hypotheses
 

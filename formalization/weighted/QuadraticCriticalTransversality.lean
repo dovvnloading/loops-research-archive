@@ -208,5 +208,70 @@ theorem first_collision_deriv_ne_zero (c : ℂ) (a b : ℕ) (hab : a < b)
   rw [heq, ((orbit_hasDerivAt (b+2) c).sub (orbit_hasDerivAt (a+2) c)).deriv]
   exact first_collision_transverse c a b hab hcoll hprev
 
+/-- Half the tangent of a signed predecessor relation is a unit modulo
+two in the algebraic integers, with an explicit integral inverse witness. -/
+theorem signed_relation_unit_mod_two {c : ℂ} (hc : IsIntegral ℤ c) (a b : ℕ)
+    (hsign : orbit c (a+1) + orbit c (b+1) = 0) :
+    ∃ q r k : ℂ, IsIntegral ℤ q ∧ IsIntegral ℤ r ∧ IsIntegral ℤ k ∧
+      slope c (a+1) + slope c (b+1) = 2*q ∧ q*r = 1 + 2*k := by
+  obtain ⟨u, huI, hu⟩ := orbit_slope_parity hc a
+  obtain ⟨v, hvI, hv⟩ := orbit_slope_parity hc b
+  let t := u+v
+  let s := orbit c a * slope c a + orbit c b * slope c b
+  let z := orbit c a * orbit c b - c + 2*(orbit c a + orbit c b)*t + 2*t*t
+  have hA := orbit_integral hc a
+  have hB := orbit_integral hc b
+  have ht : IsIntegral ℤ t := huI.add hvI
+  have h2 : IsIntegral ℤ (2 : ℂ) := isIntegral_natCast 2
+  have h1 : IsIntegral ℤ (1 : ℂ) := isIntegral_one
+  have hsI : IsIntegral ℤ s :=
+    (hA.mul (slope_integral hc a)).add (hB.mul (slope_integral hc b))
+  have hzI : IsIntegral ℤ z :=
+    (((hA.mul hB).sub hc).add ((h2.mul (hA.add hB)).mul ht)).add
+      ((h2.mul ht).mul ht)
+  have hs : s = orbit c a + orbit c b + 2*t := by
+    dsimp [s, t]
+    linear_combination hu + hv
+  have hsq : (orbit c a + orbit c b)^2 =
+      2*(orbit c a * orbit c b - c) := by
+    simp only [orbit] at hsign
+    linear_combination hsign
+  have hzsq : s^2 = 2*z := by
+    rw [hs]
+    change (orbit c a + orbit c b + 2*t)^2 =
+      2*(orbit c a * orbit c b - c + 2*(orbit c a + orbit c b)*t + 2*t*t)
+    linear_combination hsq
+  refine ⟨1+s,1-s,-z,h1.add hsI,h1.sub hsI,hzI.neg,?_,?_⟩
+  · change (2*orbit c a*slope c a+1)+(2*orbit c b*slope c b+1) = 2*(1+s)
+    dsimp [s]
+    ring
+  · linear_combination -hzsq
+
+/-- Exact arithmetic content of the genuine complex collision derivative:
+after removing four times the nonzero predecessor, the remaining factor
+is an algebraic integer with an explicit inverse modulo two. -/
+theorem first_collision_deriv_factor_unit (c : ℂ) (a b : ℕ) (hab : a < b)
+    (hcoll : orbit c (a+2) = orbit c (b+2))
+    (hprev : orbit c (a+1) ≠ orbit c (b+1)) :
+    ∃ q r k : ℂ, IsIntegral ℤ q ∧ IsIntegral ℤ r ∧ IsIntegral ℤ k ∧
+      deriv (fun w : ℂ => orbit w (b+2) - orbit w (a+2)) c =
+        4*orbit c (b+1)*q ∧ q*r = 1+2*k := by
+  have hc := integral_of_collision c (a+2) (b+2) (by omega) hcoll
+  have hprod : (orbit c (a+1)-orbit c (b+1)) *
+      (orbit c (a+1)+orbit c (b+1)) = 0 := by
+    change orbit c (a+1)^2+c = orbit c (b+1)^2+c at hcoll
+    linear_combination hcoll
+  have hsign := (mul_eq_zero.mp hprod).resolve_left (sub_ne_zero.mpr hprev)
+  obtain ⟨q,r,k,hq,hr,hk,hsum,hunit⟩ := signed_relation_unit_mod_two hc a b hsign
+  have heq : (fun w : ℂ => orbit w (b+2) - orbit w (a+2)) =
+      (fun w : ℂ => orbit w (b+2)) - (fun w : ℂ => orbit w (a+2)) := by
+    funext w
+    rfl
+  refine ⟨q,r,k,hq,hr,hk,?_,hunit⟩
+  rw [heq, ((orbit_hasDerivAt (b+2) c).sub (orbit_hasDerivAt (a+2) c)).deriv]
+  change (2*orbit c (b+1)*slope c (b+1)+1) -
+      (2*orbit c (a+1)*slope c (a+1)+1) = 4*orbit c (b+1)*q
+  linear_combination 2*orbit c (b+1)*hsum - 2*slope c (a+1)*hsign
+
 end
 end LoopsQuadraticTransversality
