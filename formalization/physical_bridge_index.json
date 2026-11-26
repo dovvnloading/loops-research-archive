@@ -2795,7 +2795,9 @@
         "localMultiplicity_add",
         "quadratic_split_component",
         "quadratic_component_intermediate_weighted_degree",
-        "componentReflectionRank_add"
+        "componentReflectionRank_add",
+        "mergerCensus_weighted_partition",
+        "mergerCensus_complete_iff_weighted_degree"
       ],
       "formalization/weighted/QuadraticRamificationCensus.lean": [
         "mem_criticalPoints",

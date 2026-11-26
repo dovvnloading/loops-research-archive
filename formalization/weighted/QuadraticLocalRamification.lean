@@ -17,6 +17,7 @@ open Set Function Classical Polynomial
 open LoopsQuadraticTransversality QuadraticCriticalWindow
 open LoopsQuadraticCylinderCensus LoopsQuadraticCriticalFiberCensus
 open LoopsQuadraticCylinderRamification LoopsQuadraticComponentFiberDegree
+open LoopsQuadraticEnlargementDegree
 open LoopsStationarySeparatorTransport
 open scoped BigOperators
 
@@ -422,6 +423,91 @@ theorem componentReflectionRank_add (c : ℂ) (V : Set ℂ) (hVo : IsOpen V)
     rw [componentReflectionRank, componentReflectionRank, hc, ht,
       Function.iterate_succ_apply]
     omega
+
+/-- The actual old components partition the full weighted inverse
+fiber of the enlarged component. The anchor may itself be a critical
+value; each inverse point retains its exact local order. -/
+theorem mergerCensus_weighted_partition (c : ℂ) (n : ℕ) (U V : Set ℂ)
+    (hUV : U ⊆ V) (x y : ℂ) (hy : y ∈ U) :
+    (∑ D ∈ mergerCensus c n U V x y,
+      ∑ z ∈ localFiber c n D y, localMultiplicity c z n) =
+        ∑ z ∈ localFiber c n (connectedComponentIn ((quad c)^[n] ⁻¹' V) x) y,
+          localMultiplicity c z n := by
+  let f := (quad c)^[n]
+  let B := connectedComponentIn (f ⁻¹' V) x
+  let g := connectedComponentIn (f ⁻¹' U)
+  let F := localFiber c n B y
+  change (∑ D ∈ F.image g, ∑ z ∈ localFiber c n D y, localMultiplicity c z n) =
+    ∑ z ∈ F, localMultiplicity c z n
+  have hfilter (D : Set ℂ) (hD : D ∈ F.image g) :
+      F.filter (fun z => g z = D) = localFiber c n D y := by
+    obtain ⟨a, ha, rfl⟩ := Finset.mem_image.mp hD
+    have haB := ((mem_localFiber c n B y a).mp ha).1
+    have hsub : g a ⊆ B := by
+      change connectedComponentIn (f ⁻¹' U) a ⊆ connectedComponentIn (f ⁻¹' V) x
+      rw [connectedComponentIn_eq haB]
+      exact connectedComponentIn_mono a (preimage_mono hUV)
+    ext z
+    simp only [F, Finset.mem_filter, mem_localFiber]
+    constructor
+    · rintro ⟨⟨hzB, hzy⟩, hgz⟩
+      have hzU : f z ∈ U := by
+        change ((fun w : ℂ => w^2+c)^[n]) z ∈ U
+        rw [hzy]
+        exact hy
+      have hzC : z ∈ g z := mem_connectedComponentIn hzU
+      exact ⟨hgz ▸ hzC, hzy⟩
+    · rintro ⟨hz, hzy⟩
+      exact ⟨⟨hsub hz, hzy⟩, (connectedComponentIn_eq hz).symm⟩
+  calc
+    (∑ D ∈ F.image g, ∑ z ∈ localFiber c n D y, localMultiplicity c z n) =
+        ∑ D ∈ F.image g, ∑ z ∈ F.filter (fun z => g z = D),
+          localMultiplicity c z n := by
+      apply Finset.sum_congr rfl
+      intro D hD
+      rw [hfilter D hD]
+    _ = ∑ z ∈ F, localMultiplicity c z n :=
+      Finset.sum_fiberwise_of_maps_to (g := g)
+        (fun z hz => Finset.mem_image_of_mem g hz) (fun z => localMultiplicity c z n)
+
+/-- Exact exhaustion at any target, including a postcritical target.
+A declared subfamily of actual old components is complete precisely
+when its weighted inverse fibers reach the enlarged intrinsic degree.
+No regular-anchor premise or equal-degree premise is required. -/
+theorem mergerCensus_complete_iff_weighted_degree (c : ℂ) (n : ℕ) (U V : Set ℂ)
+    (hUV : U ⊆ V) (hUo : IsOpen U) (hUc : IsPreconnected U)
+    (hVo : IsOpen V) (hVc : IsPreconnected V)
+    (x y : ℂ) (hx : (quad c)^[n] x ∈ V) (hy : y ∈ U)
+    (T : Finset (Set ℂ)) (hT : T ⊆ mergerCensus c n U V x y) :
+    T = mergerCensus c n U V x y ↔
+      (∑ D ∈ T, ∑ z ∈ localFiber c n D y, localMultiplicity c z n) =
+        2 ^ componentReflectionRank c V n x := by
+  have hfull : (∑ D ∈ mergerCensus c n U V x y,
+      ∑ z ∈ localFiber c n D y, localMultiplicity c z n) =
+        2 ^ componentReflectionRank c V n x := by
+    rw [mergerCensus_weighted_partition c n U V hUV x y hy]
+    exact quadratic_component_weighted_fiber_degree c V hVo hVc y (hUV hy) n x hx
+  have hpos (D : Set ℂ) (hD : D ∈ mergerCensus c n U V x y) :
+      0 < ∑ z ∈ localFiber c n D y, localMultiplicity c z n := by
+    obtain ⟨a, _, haU, rfl⟩ :=
+      (mem_mergerCensus c n U V hUV hUo hUc x y hy D).mp hD
+    rw [quadratic_component_weighted_fiber_degree c U hUo hUc y hy n a haU]
+    positivity
+  constructor
+  · intro h
+    rw [h]
+    exact hfull
+  · intro h
+    ext D
+    constructor
+    · exact fun hd => hT hd
+    · intro hd
+      by_contra hn
+      have hlt := Finset.sum_lt_sum_of_subset
+        (f := fun E : Set ℂ => ∑ z ∈ localFiber c n E y, localMultiplicity c z n)
+        hT hd hn (hpos D hd) (fun _ _ _ => Nat.zero_le _)
+      rw [h, hfull] at hlt
+      exact (lt_irrefl _ hlt)
 
 end
 end LoopsQuadraticLocalRamification

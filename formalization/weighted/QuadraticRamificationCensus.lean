@@ -37,8 +37,17 @@ theorem mem_criticalPoints (c : ℂ) (n : ℕ) (C : Set ℂ) (z : ℂ) :
 theorem mem_criticalPoints_iff_multiplicity (c : ℂ) (n : ℕ)
     (C : Set ℂ) (z : ℂ) :
     z ∈ criticalPoints c n C ↔ z ∈ C ∧ localMultiplicity c z n ≠ 1 := by
-  rw [mem_criticalPoints, localMultiplicity_eq_one_iff]
-  simp only [not_forall, not_not, exists_prop]
+  rw [mem_criticalPoints]
+  constructor
+  · rintro ⟨hz, k, hk, he⟩
+    exact ⟨hz, fun h => ((localMultiplicity_eq_one_iff c z n).mp h k hk) he⟩
+  · rintro ⟨hz, hmult⟩
+    refine ⟨hz, ?_⟩
+    by_contra hn
+    apply hmult
+    apply (localMultiplicity_eq_one_iff c z n).mpr
+    intro k hk he
+    exact hn ⟨k, hk, he⟩
 
 /-- Nonvanishing of the actual complex derivative is equivalent to
 avoiding the quadratic critical point at every earlier orbit position. -/
@@ -49,7 +58,7 @@ theorem quadratic_iterate_deriv_ne_zero_iff (c z : ℂ) (n : ℕ) :
     induction n with
     | zero => simp [returnMultiplier]
     | succ n ih =>
-      rw [returnMultiplier, mul_ne_zero_iff, mul_ne_zero_iff,
+      simp only [returnMultiplier, mul_ne_zero_iff,
         show (2 : ℂ) ≠ 0 by norm_num, true_and, ih]
       constructor
       · rintro ⟨hlast, hprev⟩ k hk
@@ -67,9 +76,19 @@ theorem quadratic_iterate_deriv_ne_zero_iff (c z : ℂ) (n : ℕ) :
 complex derivative on the specified planar set. -/
 theorem mem_criticalPoints_iff_deriv (c : ℂ) (n : ℕ) (C : Set ℂ) (z : ℂ) :
     z ∈ criticalPoints c n C ↔ z ∈ C ∧ deriv ((quad c)^[n]) z = 0 := by
-  rw [mem_criticalPoints_iff_multiplicity, localMultiplicity_eq_one_iff,
-    ← quadratic_iterate_deriv_ne_zero_iff]
-  simp only [not_not]
+  rw [mem_criticalPoints]
+  constructor
+  · rintro ⟨hz, k, hk, he⟩
+    refine ⟨hz, ?_⟩
+    by_contra hne
+    exact ((quadratic_iterate_deriv_ne_zero_iff c z n).mp hne k hk) he
+  · rintro ⟨hz, hd⟩
+    refine ⟨hz, ?_⟩
+    by_contra hn
+    have hne : deriv ((quad c)^[n]) z ≠ 0 :=
+      (quadratic_iterate_deriv_ne_zero_iff c z n).mpr
+        (fun k hk he => hn ⟨k, hk, he⟩)
+    exact hne hd
 
 /-- Distinct postcritical target values retained by the open target. -/
 def postcriticalTargets (c : ℂ) (V : Set ℂ) (n : ℕ) : Finset ℂ :=
@@ -195,6 +214,8 @@ theorem quadratic_component_critical_count_bound (c : ℂ) (V : Set ℂ)
           exact pow_pos (by norm_num) _
         omega
   have he := quadratic_component_critical_budget c V hVo hVc n x hx
+  change (∑ z ∈ criticalPoints c n C, (localMultiplicity c z n - 1)) +
+    componentReflectionDebt c V n x + 1 = 2 ^ componentReflectionRank c V n x at he
   change (criticalPoints c n C).card + componentReflectionDebt c V n x + 1 ≤ _
   omega
 
