@@ -38,3 +38,9 @@ The result does not identify KKL's named natural quotient or actual physical car
 ## Attribution
 
 Builds on Kahn–Kapiamba–Lyubich's terminal Hubbard construction, Kiwi's rational-lamination model (see the archive's kkl_stationary_n2_kiwi_model_identification_audit_20260727.md), and the archive's earlier geometric quotient theorems.
+
+## Verified checkpoint and stronger follow-up
+
+Commit [2d243ab](https://github.com/dovvnloading/loops-research-archive/commit/2d243ab45ce3b4399cb63c32c3d730538c885f90) passed both push and [pull-request weighted Lean CI](https://github.com/dovvnloading/loops-research-archive/actions/runs/45875889290), including the full transitive axiom audit: 6 declarations, 6 theorems in TerminalFiberExclusion; 75 modules, 2046 declarations overall. Contribution intake passed as well.
+
+The follow-up adds a compact connected neighborhood lemma and an exact avoidance criterion for an arbitrary closed forbidden set: the compact marked image must lie entirely within one complementary component. This removes the path-connectivity requirement and any finiteness restriction on the compact marked subset in that criterion. The terminal-cycle and actual-quadratic corollaries then require only a locally connected Hausdorff model and connected least carrier. Follow-up Lean verification is pending; see this PR's head CI. The named KKL physical carrier still needs a proof of leastness and the precise source identification.

@@ -2320,7 +2320,12 @@
         "model_puncture_path_connected",
         "least_carrier_fiber_exclusion_iff",
         "terminal_cycle_least_carrier_proper",
-        "quadratic_terminal_least_carrier_proper"
+        "quadratic_terminal_least_carrier_proper",
+        "compact_connected_envelope",
+        "least_carrier_avoidance_iff_component",
+        "model_puncture_connected",
+        "terminal_cycle_least_carrier_proper_lc",
+        "quadratic_terminal_least_carrier_proper_lc"
       ]
     },
     "obligations": [
