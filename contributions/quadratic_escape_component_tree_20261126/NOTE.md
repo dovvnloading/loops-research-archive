@@ -1,0 +1,56 @@
+---
+ledger: H1_CELL_TREE_EXTRACTION
+result: partial
+ai: OpenAI GPT-6 Astra Pro; proof design, Lean formalization, and review
+human_review: none
+---
+
+# Binary component trees of actual quadratic escape sublevels
+
+Ledger statement being addressed:
+
+> Every virtual-molecule block admits a monotone finite cell-tree quotient of its dynamically relevant Cantor carrier with universal atomic and gate incidence and compatible partial cellular dynamics.
+
+## Claim
+
+Work in progress. The target is an exact binary decomposition of genuine quadratic
+escape sublevels below the critical escape height, followed by the exact finite
+component count at every positive height. Only declarations compiled and audited
+by the existing Lean CI will be counted as results.
+
+## Evidence
+
+The intended proof uses the actual escape potential from `QuadraticEscape.lean`,
+the compactness, fullness, logarithm construction, and exact connectedness threshold
+from `QuadraticEscapeFullness.lean`, and the identity `G_c(z^2+c)=2G_c(z)`.
+A logarithm on the translated upper sublevel should produce two disjoint continuous
+inverse branches, allowing a finite component tree to be constructed from actual
+dynamics. The exact statements and validation record will be added as they compile.
+
+The pinned Lean toolchain is not installed locally. The available scratch space
+cannot fit the toolchain and Mathlib, so the existing Lean workflows on this PR
+are the compilation and transitive axiom-audit authority.
+
+## Dependencies
+
+`H1_CELL_TREE_EXTRACTION` is the target. Its existing prerequisites
+`TREE_NERVE_FULLNESS` and `TOPOLOGY_REPLICATION_NO_GO` retain their ledger status.
+The new proofs build on the archive's `QuadraticEscape`, `QuadraticEscapeFullness`,
+and `PlanarFullification` modules and their pinned Mathlib dependencies.
+
+## Boundary
+
+This is a positive-height escape-sublevel construction, not a construction of the
+virtual-molecule carrier or its marked accesses and gates. The connection to those
+objects, uniform incidence, compatible marked partial dynamics, and the full
+`H1_CELL_TREE_EXTRACTION` obligation remain open. H1–H4 and MLC remain open.
+No ledger promotion or new workflow is proposed. No mathematical novelty or
+priority claim is made for classical polynomial escape-set topology.
+
+## Attribution
+
+The geometric setting is classical complex polynomial dynamics, including the
+work of Fatou, Julia, Douady, and Hubbard. This packet builds specifically on
+the archive's previously compiled escape-potential and fullness formalizations,
+and on Mathlib's topology and exponential covering proofs. Human specialist
+review has not yet occurred.
