@@ -227,7 +227,8 @@ theorem quadratic_component_fiber_card_exact (c : ℂ) (V : Set ℂ)
       · intro h
         subst z
         exact ⟨hmem, rfl⟩
-    simp [hf, componentFiberDefect, componentReflectionRank]
+    rw [hf]
+    simp [componentFiberDefect, componentReflectionRank]
   | succ n ih =>
     have hxD : (quad c)^[n] (quad c x) ∈ V := by
       simpa only [Function.iterate_succ_apply] using hx
@@ -254,8 +255,8 @@ theorem componentFiberDefect_zero_of_regular (c : ℂ) (V : Set ℂ) (y : ℂ)
       exact hreg n (by omega) ((mem_localFiber c n _ y c).mp h).2
     by_cases hs : ∀ z ∈ connectedComponentIn ((quad c)^[n+1] ⁻¹' V) x,
         -z ∈ connectedComponentIn ((quad c)^[n+1] ⁻¹' V) x
-    · simp [componentFiberDefect, hs, ht, hc]
-    · simp [componentFiberDefect, hs, ht]
+    · rw [componentFiberDefect, if_pos hs, ht, if_neg hc] <;> omega
+    · rw [componentFiberDefect, if_neg hs, ht]
 
 /-- All regular fibers in a given actual component have the same
 cardinality, a power of two with exponent bounded by the depth. -/
@@ -285,9 +286,10 @@ theorem quadratic_component_rank_zero_inj (c : ℂ) (V : Set ℂ) (hVo : IsOpen 
       simpa only [Function.iterate_succ_apply] using hx
     by_cases hs : ∀ z ∈ connectedComponentIn ((quad c)^[n+1] ⁻¹' V) x,
         -z ∈ connectedComponentIn ((quad c)^[n+1] ⁻¹' V) x
-    · simp [componentReflectionRank, hs] at hr
+    · simp only [componentReflectionRank, if_pos hs] at hr
+      omega
     · have ht : componentReflectionRank c V n (quad c x) = 0 := by
-        simpa [componentReflectionRank, hs] using hr
+        simpa only [componentReflectionRank, if_neg hs, Nat.add_zero] using hr
       have hi := ih (quad c x) hxD ht
       have hfirst : quad c '' connectedComponentIn ((quad c)^[n+1] ⁻¹' V) x =
           connectedComponentIn ((quad c)^[n] ⁻¹' V) (quad c x) := by
