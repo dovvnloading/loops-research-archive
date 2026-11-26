@@ -2483,6 +2483,41 @@
       "DIRECT_DECORATION_END_PRIME_END_COFINALITY"
     ]
   },
+  "telescope-ramification-order-20261126": {
+    "guide": "contributions/telescope_ramification_order_20261126/NOTE.md#telescope-ramification-order-20261126",
+    "theorems": {
+      "formalization/weighted/TelescopeRamification.lean": [
+        "orbit_eq_returnOrbit",
+        "orbit_map_eq_iterate",
+        "criticalVisits_succ",
+        "orbit_analytic",
+        "orbit_ramification_factor",
+        "orbit_analytic_order",
+        "criticalVisits_add",
+        "criticalVisits_zero_iff",
+        "orbit_injOn_no_critical_visits",
+        "orbit_unramified_order",
+        "return_order_one_step",
+        "selected_return_fiber_order",
+        "mem_localFiber_orbit",
+        "selected_return_weighted_degree"
+      ],
+      "formalization/weighted/TelescopeCollarRecognition.lean": [
+        "orbit_proper",
+        "orbit_open",
+        "orbit_component_image",
+        "orbit_component_compact_preimage",
+        "orbit_component_proper",
+        "selected_saturated_return_full_degree",
+        "proper_component_compact",
+        "proper_component_eventually_subset",
+        "proper_component_upper_semicontinuous"
+      ]
+    },
+    "obligations": [
+      "MAPPING_TELESCOPE"
+    ]
+  },
   "quadratic-component-fiber-degree-20261126": {
     "guide": "contributions/quadratic_component_fiber_degree_20261126/NOTE.md#quadratic-component-fiber-degree-20261126",
     "theorems": {
