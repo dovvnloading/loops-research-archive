@@ -786,18 +786,23 @@ Imported mathematics remains attributable to its original authors. New arguments
 
 ## Citation and reuse
 
-Citation metadata is available in [`CITATION.cff`](./CITATION.cff). Please cite Wesney for this archive and its manuscripts, and separately cite the original literature for every imported theorem used in derivative work.
+To cite the archive, use the entry below or GitHub's **Cite this repository** button, which reads [`CITATION.cff`](./CITATION.cff).
+
+> Wesney, M. R. (2026). *A Marked-Width Reduction of Mandelbrot Local Connectivity: Public Research Archive* (Version 2026.07.27). https://github.com/dovvnloading/loops-research-archive
 
 ```bibtex
 @misc{wesney2026markedwidth,
   author       = {Wesney, Matthew Robert},
-  title        = {A Marked-Width Reduction of Mandelbrot Local Connectivity},
+  title        = {A Marked-Width Reduction of {M}andelbrot Local Connectivity: Public Research Archive},
   year         = {2026},
-  howpublished = {Public research archive},
+  month        = jul,
+  howpublished = {GitHub repository},
   url          = {https://github.com/dovvnloading/loops-research-archive},
-  note         = {Source lock 2026-07-27; MLC remains open}
+  note         = {Version 2026.07.27}
 }
 ```
+
+When a result comes from one of the manuscripts, cite that manuscript by title. For material added after version 2026.07.27, give the commit hash consulted. Imported theorems are cited to their original authors, as listed under [Mathematical lineage and attribution](#mathematical-lineage-and-attribution).
 
 Original contributions are released under [CC0 1.0 Universal](./LICENSE). Citations and attribution remain essential scholarly practice even where the license does not require them; third-party materials remain subject to their original rights and terms.
 

@@ -46,6 +46,7 @@ code/exp5_figs.py	EXPLORATION
 code/mlc_common.py	EXPLORATION
 formalization/weighted/AtomCutDefect.lean	CUTS CREST
 formalization/weighted/AttachmentDefectLedger.lean	DEFECT
+formalization/weighted/ChebyshevQuotientRigidity.lean	METADATA
 formalization/weighted/CloneBounds.lean	CLONE EDGE
 formalization/weighted/ClonePolynomialRoots.lean	CLONE EDGE
 formalization/weighted/CloneRoot.lean	CLONE EDGE
@@ -100,6 +101,7 @@ formalization/weighted/PhaseMemoryCardinality.lean	CLOCK ENDS
 formalization/weighted/PlanarFillLimit.lean	HULL
 formalization/weighted/PlanarFullification.lean	HULL
 formalization/weighted/ProtectedCarrierLogic.lean	HULL
+formalization/weighted/QuadraticMultiplierArithmetic.lean	METADATA
 formalization/weighted/SaturatedTelescope.lean	METADATA
 formalization/weighted/SpectralDominance.lean	CLONE EDGE
 formalization/weighted/StationaryCanonicalLift.lean	VARIABLE-EXIT
@@ -112,6 +114,7 @@ formalization/weighted/StationaryMonotoneGeometry.lean	METADATA
 formalization/weighted/StationaryMultiInterface.lean	METADATA
 formalization/weighted/StationaryPacketGain.lean	VARIABLE-EXIT
 formalization/weighted/StationaryPrefixCharge.lean	VARIABLE-EXIT
+formalization/weighted/TerminalFiberExclusion.lean	METADATA
 formalization/weighted/WeightedReturn.lean	CLONE EDGE
 research/frontier/dudko_p44_molecule_20261125/source_lock.py	METADATA
 research/frontier/dudko_p44_molecule_20261125/verify.py	EXPLORATION
@@ -391,3 +394,4 @@ formalization/weighted/QuadraticCriticalWindow.lean	METADATA
 formalization/weighted/StationarySeparatorTransport.lean	METADATA
 formalization/weighted/QuadraticCylinderCensus.lean	METADATA
 formalization/weighted/DecorationCriticalCycle.lean	METADATA
+formalization/weighted/QuadraticCylinderRamification.lean	METADATA

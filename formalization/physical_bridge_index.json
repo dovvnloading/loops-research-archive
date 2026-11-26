@@ -2330,6 +2330,101 @@
       "DIRECT_DECORATION_END_PRIME_END_COFINALITY"
     ]
   },
+  "h4-arithmetic-multiplier-rigidity-20261126": {
+    "guide": "contributions/h4_arithmetic_multiplier_rigidity_20261126/NOTE.md#h4-arithmetic-multiplier-rigidity-20261126",
+    "theorems": {
+      "formalization/weighted/QuadraticMultiplierArithmetic.lean": [
+        "returnOrbit_integral",
+        "orbitProduct_integral",
+        "returnMultiplier_factor",
+        "returnMultiplier_normSq_factor",
+        "rational_normSq_integral",
+        "returnMultiplier_rational_normSq",
+        "returnMultiplier_rational_normSq_gap",
+        "returnMultiplier_not_neutral",
+        "collision_return_deriv_not_neutral",
+        "collision_return_deriv_rational_gap",
+        "spatialPoly_monic_degree",
+        "spatialPoly_eval₂",
+        "integral_of_spatial_collision",
+        "preperiodic_deriv_not_neutral",
+        "periodic_deriv_not_neutral",
+        "collision_parameter_all_cycles_nonneutral",
+        "preperiodic_deriv_rational_normSq",
+        "zero_parameter_fixed_one_sharp"
+      ]
+    },
+    "obligations": [
+      "H4_RIGIDITY"
+    ]
+  },
+  "h1-monotone-cut-rigidity-20261126": {
+    "guide": "contributions/h1_monotone_cut_rigidity_20261126/NOTE.md#h1-monotone-cut-rigidity-20261126",
+    "theorems": {
+      "formalization/weighted/ChebyshevQuotientRigidity.lean": [
+        "retimed_angular_interval_covers",
+        "retimed_connected_subset_covers",
+        "retimed_collapsed_fiber_forces_constant",
+        "bounded_orbit_monotone_factor_injective",
+        "angular_cover_threshold_sharp",
+        "finite_horizon_fiber_preservation_forces_constant",
+        "retimed_angular_fiber_collision"
+      ]
+    },
+    "obligations": [
+      "H1_CELL_TREE_EXTRACTION"
+    ]
+  },
+  "terminal-nonlc-fiber-exclusion-20261126": {
+    "guide": "contributions/terminal_nonlc_fiber_exclusion_20261126/NOTE.md#terminal-nonlc-fiber-exclusion-20261126",
+    "theorems": {
+      "formalization/weighted/TerminalFiberExclusion.lean": [
+        "fixed_fiber_avoids_cycle",
+        "finite_marks_compact_bridge",
+        "model_puncture_path_connected",
+        "least_carrier_fiber_exclusion_iff",
+        "terminal_cycle_least_carrier_proper",
+        "quadratic_terminal_least_carrier_proper",
+        "compact_connected_envelope",
+        "least_carrier_avoidance_iff_component",
+        "model_puncture_connected",
+        "terminal_cycle_least_carrier_proper_lc",
+        "quadratic_terminal_least_carrier_proper_lc",
+        "minimal_compact_carrier_is_least",
+        "quadratic_filled_neg_mem",
+        "quadratic_filled_map_surjective",
+        "quadratic_exists_proper_invariant_least_carrier"
+      ]
+    },
+    "obligations": [
+      "TERMINAL_NONLC_HUBBARD_CARRIER_PROPER"
+    ]
+  },
+  "quadratic-cylinder-ramification-20261126": {
+    "guide": "contributions/quadratic_cylinder_ramification_20261126/NOTE.md#quadratic-cylinder-ramification-20261126",
+    "theorems": {
+      "formalization/weighted/QuadraticCylinderRamification.lean": [
+        "quadratic_global_component_image",
+        "open_restriction_homeomorph",
+        "quadratic_iterate_univalent_component",
+        "quadratic_critical_hit_noninjective",
+        "quadratic_iterate_surjective",
+        "quadratic_postcritical_component_obstruction",
+        "quadratic_all_components_univalent_iff",
+        "quadratic_component_anchor_bound",
+        "quadratic_postcritical_target_merges_regular_fiber",
+        "quadratic_enlargement_component_surjective",
+        "quadratic_enlargement_merger_iff",
+        "quadratic_prefix_component_image",
+        "quadratic_component_univalent_from_regular_fiber",
+        "quadratic_component_single_regular_fiber_iff",
+        "quadratic_localized_single_regular_fiber_iff"
+      ]
+    },
+    "obligations": [
+      "VIRTUAL_REACHED_CYLINDER_COMPONENT_EXHAUSTION"
+    ]
+  },
   "prime-end-sector-rank-20261126": {
     "guide": "contributions/prime_end_sector_rank_20261126/NOTE.md#prime-end-sector-rank-20261126",
     "theorems": {
