@@ -100,6 +100,7 @@ formalization/weighted/StationaryEndpointVisits.lean	VARIABLE-EXIT
 formalization/weighted/StationaryPacketGain.lean	VARIABLE-EXIT
 formalization/weighted/StationaryPrefixCharge.lean	VARIABLE-EXIT
 formalization/weighted/WeightedReturn.lean	CLONE EDGE
+research/frontier/kkl_lemma_6_24_audit_20261125/verify.py	METADATA
 research/independent_audits/airplane_inverse_problems_20261114/chords/verify.py	DIFFRACTION LANDING
 research/independent_audits/airplane_inverse_problems_20261114/diffraction/verify_airplane_phase_retrieval.py	DIFFRACTION LANDING
 research/independent_audits/airplane_inverse_problems_20261114/markov/verify_markov.py	DIFFRACTION LANDING
