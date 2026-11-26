@@ -1,5 +1,6 @@
 import QuadraticEscape
 import Mathlib.Analysis.Calculus.Deriv.Pow
+import Mathlib.Analysis.Calculus.Deriv.Add
 
 /-! Actual quadratic bounded-orbit and derivative bounds.
 No symbolic realization or unproved complex-dynamical input is assumed. -/
