@@ -2321,7 +2321,11 @@
         "quadratic_critical_hit_noninjective",
         "quadratic_iterate_surjective",
         "quadratic_postcritical_component_obstruction",
-        "quadratic_all_components_univalent_iff"
+        "quadratic_all_components_univalent_iff",
+        "quadratic_component_anchor_bound",
+        "quadratic_postcritical_target_merges_regular_fiber",
+        "quadratic_enlargement_component_surjective",
+        "quadratic_enlargement_merger_iff"
       ]
     },
     "obligations": [

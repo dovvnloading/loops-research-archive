@@ -9,22 +9,34 @@ human_review: none
 
 # Actual quadratic pullback component ramification and enlargement
 
+Ledger statement: after a target base is typed, exhaust the reached open pullback components by the authorized equal-depth cylinders, with all required metadata and enlargement stability.
+
 ## Claim
 
-Draft research target: characterize the obstruction to univalent component exhaustion in terms of actual critical orbit encounters, and derive a finite-fiber test for mergers under varying connected target enlargement.
+For f(z)=z²+c, n arbitrary and V open and simply connected, all global components of f^{-n}(V) are univalent sheets exactly when V avoids the finite postcritical set {f^k(c): k<n}. In that case each component is simply connected and maps homeomorphically onto V. A critical orbit encounter obstructs local injectivity on every open neighborhood, without requiring a simply connected target.
+
+For nested open simply connected U⊆V with U postcritical-free, the canonical inclusion of components is onto, and a merger of distinct old components occurs exactly when V contains a postcritical value through the same horizon. A merger can be witnessed over any selected point y in U. The necessity of a merger from a new critical value already holds when V is merely open and connected. These are candidate Lean results pending the build and dependency audit.
 
 ## Evidence
 
-Work in progress. No proof or CI success claimed at this checkpoint.
+The registered [QuadraticCylinderRamification.lean](../../formalization/weighted/QuadraticCylinderRamification.lean) module imports the existing actual quadratic census.
+
+1. `quadratic_global_component_image` proves surjectivity of every global pullback component by openness, properness, and relative clopen image. `open_restriction_homeomorph` converts genuine open injective restrictions into homeomorphisms of subspaces.
+2. `quadratic_iterate_univalent_component` inducts through actual inverse components. The image of a connected component under the first quadratic step lies in a single component of the tail pullback. The tail is simply connected by induction and excludes c by the postcritical hypothesis. The earlier square-root branch theorem makes the first step injective; composing gives injectivity and the open restriction homeomorphism transports simple connectivity.
+3. `quadratic_critical_hit_noninjective` sends an open neighborhood forward to an open set containing zero; a small antipodal pair lifts to two distinct original points with the same final iterate. `quadratic_iterate_surjective` supplies a prefix preimage of zero. `quadratic_postcritical_component_obstruction` and `quadratic_all_components_univalent_iff` yield the converse and exact criterion.
+4. `quadratic_component_anchor_bound`: every distinct component consumes at least one distinct point of every target fiber. `quadratic_postcritical_target_merges_regular_fiber`: a regular fiber has cardinal 2^n, whereas any critical-value fiber has strictly smaller cardinal, by the previously proved exact inverse-fiber census. Therefore some pair of distinct regular inverse points lies in the same enlarged component.
+5. `quadratic_enlargement_component_surjective` proves that every new component contains a full old component (use the common target point). `quadratic_enlargement_merger_iff` combines the count obstruction with univalence to obtain the exact two-sided criterion for global component mergers.
+
+Local Lean/lake and networked git are unavailable; all validation must come from GitHub Actions. Reproduction: `cd formalization/weighted && lake build QuadraticCylinderRamification`, then from the repository root run `python3 -B code/verify_lean_coverage.py --audit weighted`. No green CI result is asserted at this checkpoint.
 
 ## Dependencies
 
-DIRECT_DECORATION_PULLBACK_COMPACTIFICATION, FIXED_BASE_CONNECTED_IMAGE_TARGET_UNIQUENESS, INTERIOR_PULLBACK_COMPONENT_FORCING; the existing QuadraticCylinderCensus and QuadraticCriticalFiberCensus modules.
+DIRECT_DECORATION_PULLBACK_COMPACTIFICATION, FIXED_BASE_CONNECTED_IMAGE_TARGET_UNIQUENESS, INTERIOR_PULLBACK_COMPONENT_FORCING; the existing QuadraticCylinderCensus, QuadraticCriticalFiberCensus and StationarySeparatorTransport modules; Mathlib's continuous root and homeomorphism theory. See [finite-cylinder commuting lift](../../research/mlc_unified/finite_cylinder_commuting_lift.md), sections 4–5; [single-fiber census](../cylinder_fiber_exhaustion_20261126/NOTE.md); [ramification-aware census](../critical_fiber_census_20261126/NOTE.md).
 
 ## Boundary
 
-No assertion of the source's universal marked geometry, H1–H4, UPTCR or MLC. Local Lean and networked git are unavailable; validation must use repository CI.
+These statements concern the actual global inverse components, not a declared symbolic family. An actual virtual stage must still supply the simply connected typed target, proper localization or global component identification, declared cylinders and their metadata, and a certificate that its enlargement satisfies the critical-value exclusion. No claim that every source stage is postcritical-free. A target with holes may have monodromy even without critical values; the converse in the merger criterion requires simple connectivity. No cross-base ownership, access or sheet metadata, boundary contact control, universal marked realization, H1–H4, UPTCR, or MLC is established. No literature priority is claimed.
 
 ## Attribution
 
-Builds on the archive's finite-cylinder commuting lift and earlier exact quadratic component and inverse-fiber censuses, and on Mathlib.
+Builds on Kahn–Lyubich's decoration construction (arXiv:math/0609046), the archive's finite-cylinder commuting lift and earlier exact quadratic component and inverse-fiber censuses, and Mathlib. The intended contribution is an explicit Lean formalization of the global component and critical-value enlargement criterion, not a claim that the underlying complex-dynamics principle is new.

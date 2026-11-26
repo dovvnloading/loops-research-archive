@@ -144,7 +144,7 @@ theorem quadratic_critical_hit_noninjective (c : ℂ) (n m : ℕ)
     exact (quadratic_positive_iterate_even c (n-m) (by omega) a).symm
   intro hi
   have huv := hi hu hv he
-  have hsign : a = -a := hue.symm.trans (huv ▸ hve)
+  have hsign : a = -a := hue.symm.trans ((congrArg (f^[m]) huv).trans hve)
   apply ha0
   linear_combination (1/2 : ℂ)*hsign
 
@@ -193,5 +193,142 @@ theorem quadratic_all_components_univalent_iff (c : ℂ) (n : ℕ)
     exact hbad (hi x hx)
   · intro hcrit x hx
     exact (quadratic_iterate_univalent_component c n V hVo hVc hcrit x hx).1
+
+
+/-- Distinct actual global components consume distinct inverse points
+over every target point. The estimate includes critical target fibers. -/
+theorem quadratic_component_anchor_bound (c : ℂ) (n : ℕ) (V : Set ℂ)
+    (hVo : IsOpen V) (hVc : IsPreconnected V) (y : ℂ) (hy : y ∈ V)
+    (A : Finset ℂ) (hA : ∀ a ∈ A, (quad c)^[n] a ∈ V)
+    (hdist : ∀ a ∈ A, ∀ b ∈ A,
+      connectedComponentIn ((quad c)^[n] ⁻¹' V) a =
+        connectedComponentIn ((quad c)^[n] ⁻¹' V) b → a = b) :
+    A.card ≤ (globalFiber c n y).card := by
+  classical
+  let f := (quad c)^[n]
+  let S := f ⁻¹' V
+  have hhit (a : A) : ∃ z ∈ connectedComponentIn S (a : ℂ), f z = y := by
+    have he := quadratic_global_component_image c n V hVo hVc (a : ℂ)
+      (hA a a.property)
+    have hh : y ∈ f '' connectedComponentIn S (a : ℂ) := he.symm ▸ hy
+    exact hh
+  choose g hg hgf using hhit
+  have hgi : Injective g := by
+    intro a b hab
+    apply Subtype.ext
+    apply hdist a a.property b b.property
+    calc
+      connectedComponentIn S (a : ℂ) = connectedComponentIn S (g a) :=
+        connectedComponentIn_eq (hg a)
+      _ = connectedComponentIn S (g b) := congrArg (connectedComponentIn S) hab
+      _ = connectedComponentIn S (b : ℂ) := (connectedComponentIn_eq (hg b)).symm
+  let B := Finset.univ.image g
+  have hBc : B.card = A.card := by
+    simp only [B, Finset.card_image_of_injective _ hgi, Finset.card_univ,
+      Fintype.card_coe]
+  have hsub : B ⊆ globalFiber c n y := by
+    intro z hz
+    obtain ⟨a, _, rfl⟩ := Finset.mem_image.mp hz
+    exact (mem_globalFiber c n y (g a)).2 (hgf a)
+  rw [← hBc]
+  exact Finset.card_le_card hsub
+
+/-- A connected target containing a postcritical value must merge
+at least two distinct points of any regular fiber it contains.
+No assumption about the topology of the target boundary is used. -/
+theorem quadratic_postcritical_target_merges_regular_fiber (c : ℂ) (n k : ℕ)
+    (V : Set ℂ) (hVo : IsOpen V) (hVc : IsPreconnected V)
+    (y : ℂ) (hy : y ∈ V)
+    (hreg : ∀ j < n, (quad c)^[j] c ≠ y)
+    (hk : k < n) (hcrit : (quad c)^[k] c ∈ V) :
+    ∃ a b : ℂ, a ≠ b ∧ (quad c)^[n] a = y ∧ (quad c)^[n] b = y ∧
+      connectedComponentIn ((quad c)^[n] ⁻¹' V) a =
+        connectedComponentIn ((quad c)^[n] ⁻¹' V) b := by
+  classical
+  by_contra h
+  let A := globalFiber c n y
+  have hA : ∀ a ∈ A, (quad c)^[n] a ∈ V := by
+    intro a ha
+    rw [(mem_globalFiber c n y a).1 ha]
+    exact hy
+  have hdist : ∀ a ∈ A, ∀ b ∈ A,
+      connectedComponentIn ((quad c)^[n] ⁻¹' V) a =
+        connectedComponentIn ((quad c)^[n] ⁻¹' V) b → a = b := by
+    intro a ha b hb hab
+    by_contra hne
+    exact h ⟨a, b, hne, (mem_globalFiber c n y a).1 ha,
+      (mem_globalFiber c n y b).1 hb, hab⟩
+  let z := (quad c)^[k] c
+  have hbound := quadratic_component_anchor_bound c n V hVo hVc z hcrit A hA hdist
+  have hAc : A.card = 2^n := (globalFiber_full_card_iff c y n).2 hreg
+  have hlt : (globalFiber c n z).card ≠ 2^n := by
+    intro he
+    exact ((globalFiber_full_card_iff c z n).1 he k hk) rfl
+  have he := globalFiber_card_exact c z n
+  omega
+
+/-- A varying connected target enlargement creates no component
+missing all earlier components: each new component hits the old base
+point and hence contains a full old component. -/
+theorem quadratic_enlargement_component_surjective (c : ℂ) (n : ℕ)
+    (U V : Set ℂ) (hUV : U ⊆ V) (hVo : IsOpen V) (hVc : IsPreconnected V)
+    (y : ℂ) (hy : y ∈ U) (x : ℂ) (hx : (quad c)^[n] x ∈ V) :
+    ∃ a : ℂ, (quad c)^[n] a = y ∧
+      connectedComponentIn ((quad c)^[n] ⁻¹' U) a ⊆
+        connectedComponentIn ((quad c)^[n] ⁻¹' V) x := by
+  let f := (quad c)^[n]
+  have he := quadratic_global_component_image c n V hVo hVc x hx
+  have hh : y ∈ f '' connectedComponentIn (f ⁻¹' V) x := he.symm ▸ hUV hy
+  obtain ⟨a, ha, haf⟩ := hh
+  have hsub : f ⁻¹' U ⊆ f ⁻¹' V := fun _ hz => hUV hz
+  refine ⟨a, haf, ?_⟩
+  rw [connectedComponentIn_eq ha]
+  exact connectedComponentIn_mono a hsub
+
+/-- For nested open simply connected targets, starting with a
+postcritical-free target, a merger of old components occurs exactly
+when the enlarged target includes a postcritical value. The merger
+can be witnessed over any chosen point of the old target. -/
+theorem quadratic_enlargement_merger_iff (c : ℂ) (n : ℕ)
+    (U V : Set ℂ) (hUV : U ⊆ V)
+    (hUo : IsOpen U) (hUc : IsSimplyConnected U)
+    (hVo : IsOpen V) (hVc : IsSimplyConnected V)
+    (hreg : ∀ k < n, (quad c)^[k] c ∉ U)
+    (y : ℂ) (hy : y ∈ U) :
+    (∃ a b : ℂ, (quad c)^[n] a = y ∧ (quad c)^[n] b = y ∧
+      connectedComponentIn ((quad c)^[n] ⁻¹' U) a ≠
+        connectedComponentIn ((quad c)^[n] ⁻¹' U) b ∧
+      connectedComponentIn ((quad c)^[n] ⁻¹' V) a =
+        connectedComponentIn ((quad c)^[n] ⁻¹' V) b) ↔
+      ∃ k < n, (quad c)^[k] c ∈ V := by
+  let f := (quad c)^[n]
+  constructor
+  · rintro ⟨a, b, ha, hb, hdist, hmerge⟩
+    by_contra h
+    have hcrit : ∀ k < n, (quad c)^[k] c ∉ V :=
+      fun k hk hz => h ⟨k, hk, hz⟩
+    have haV : f a ∈ V := ha.symm ▸ hUV hy
+    have hbV : f b ∈ V := hb.symm ▸ hUV hy
+    have hi := (quadratic_iterate_univalent_component c n V hVo hVc hcrit a haV).1
+    have hbc : b ∈ connectedComponentIn (f ⁻¹' V) a := by
+      rw [hmerge]
+      exact mem_connectedComponentIn hbV
+    have hab := hi (mem_connectedComponentIn haV) hbc (ha.trans hb.symm)
+    exact hdist (congrArg (connectedComponentIn (f ⁻¹' U)) hab)
+  · rintro ⟨k, hk, hcrit⟩
+    have hyreg : ∀ j < n, (quad c)^[j] c ≠ y :=
+      fun j hj he => hreg j hj (he.symm ▸ hy)
+    obtain ⟨a, b, hab, ha, hb, hmerge⟩ :=
+      quadratic_postcritical_target_merges_regular_fiber c n k V hVo
+        hVc.isPathConnected.isPreconnected y (hUV hy) hyreg hk hcrit
+    refine ⟨a, b, ha, hb, ?_, hmerge⟩
+    intro he
+    have haU : f a ∈ U := ha.symm ▸ hy
+    have hbU : f b ∈ U := hb.symm ▸ hy
+    have hbc : b ∈ connectedComponentIn (f ⁻¹' U) a := by
+      rw [he]
+      exact mem_connectedComponentIn hbU
+    have hi := (quadratic_iterate_univalent_component c n U hUo hUc hreg a haU).1
+    exact hab (hi (mem_connectedComponentIn haU) hbc (ha.trans hb.symm))
 
 end LoopsQuadraticCylinderRamification
