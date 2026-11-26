@@ -24,19 +24,22 @@ noncomputable section
 no critical encounter before the final time. -/
 theorem orbit_deriv_ne_zero_iff (c x : ℂ) (n : ℕ) :
     deriv (orbit c n) x ≠ 0 ↔ ∀ j < n, orbit c j x ≠ 0 := by
-  have htwo : (2 : ℂ) ≠ 0 := by norm_num
   rw [multiplier_eq_deriv]
   induction n with
   | zero => simp [multiplier]
   | succ n ih =>
-    simp only [multiplier, mul_ne_zero_iff, htwo, true_and, ih]
+    change 2 * orbit c n x * multiplier c x n ≠ 0 ↔ _
     constructor
-    · rintro ⟨hn, hbefore⟩ j hj
+    · intro h j hj
+      have hn : orbit c n x ≠ 0 := (mul_ne_zero_iff.mp (mul_ne_zero_iff.mp h).1).2
+      have hbefore := ih.mp (mul_ne_zero_iff.mp h).2
       rcases Nat.lt_or_eq_of_le (Nat.le_of_lt_succ hj) with h | h
       · exact hbefore j h
       · simpa [h] using hn
     · intro h
-      exact ⟨h n (Nat.lt_succ_self n), fun j hj => h j (Nat.lt_succ_of_lt hj)⟩
+      exact mul_ne_zero
+        (mul_ne_zero (by norm_num) (h n (Nat.lt_succ_self n)))
+        (ih.mpr (fun j hj => h j (Nat.lt_succ_of_lt hj)))
 
 /-- Open-domain injectivity supplies actual conformality; absence of
 critical points is derived from the physical restriction. -/

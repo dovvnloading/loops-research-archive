@@ -130,7 +130,8 @@ theorem selected_inverse_exact_core (c : ℂ) (n : ℕ) (K V : Set ℂ) (x : ℂ
   let C := connectedComponentIn (orbit c n ⁻¹' K) x
   have hCU : C ⊆ connectedComponentIn (orbit c n ⁻¹' V) x :=
     connectedComponentIn_mono x (preimage_mono hKV)
-  have hxU := mem_connectedComponentIn (hKV hx)
+  have hxU : x ∈ connectedComponentIn (orbit c n ⁻¹' V) x :=
+    mem_connectedComponentIn (hKV hx)
   have hcore : g '' K = C := by
     apply Subset.antisymm
     · have hconn := hKconn.image g (hg.mono hKV)
@@ -147,7 +148,10 @@ theorem selected_inverse_exact_core (c : ℂ) (n : ℕ) (K V : Set ℂ) (x : ℂ
   · rintro y ⟨z, hz, rfl⟩
     exact connectedComponentIn_subset (orbit c n ⁻¹' K) x hz
   · intro y hy
-    exact ⟨g y, hcore ▸ (show g y ∈ g '' K from ⟨y, hy, rfl⟩), hright (hKV hy)⟩
+    refine ⟨g y, ?_, hright (hKV hy)⟩
+    change g y ∈ C
+    rw [← hcore]
+    exact ⟨y, hy, rfl⟩
 
 /-- Compact-core hypotheses construct a conformal inverse on an actual
 open selected collar, preserve the original compact core exactly, and

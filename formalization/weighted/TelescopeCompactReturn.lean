@@ -108,14 +108,15 @@ theorem compact_one_critical_return_collar (c : ℂ) (a b : ℕ)
     apply (hpq.isCompact_preimage hDc).of_isClosed_subset isClosed_closure
     apply closure_minimal _ (isClosed_closure.preimage hpq.continuous)
     intro z hz
-    exact subset_closure (connectedComponentIn_subset _ _ hz)
+    exact subset_closure (connectedComponentIn_subset (q ⁻¹' D) 0 hz)
   obtain ⟨hsat, honto, hproper, hdegree⟩ :=
     selected_saturated_return_full_degree c a b A B D V x hx0 hV hVconn
       (hKV hv) rfl rfl rfl (hAI.mono subset_closure) (hDI.mono subset_closure)
   have hproperMap : ∃ hmap : MapsTo (orbit c (a+1+b)) A V,
       IsProperMap (MapsTo.restrict (orbit c (a+1+b)) A V hmap) := by
     rw [hsat]
-    refine ⟨fun z hz => connectedComponentIn_subset _ _ hz, ?_⟩
+    refine ⟨fun z hz =>
+      connectedComponentIn_subset (orbit c (a+1+b) ⁻¹' V) x hz, ?_⟩
     exact orbit_component_proper c (a+1+b) V x hV
   exact ⟨V, hV, hVconn, hKV, hAo, hBo, hDo, hA0A, hB0B, hD0D,
     hAc, hAsub, hBc, hDc, fun z hz => (hDsub hz).1,
