@@ -1,0 +1,78 @@
+{
+  "missing_anchors": [],
+  "page_numbering": "one-based physical PDF pages; candidate anchors, not verified printed labels",
+  "schema": 1,
+  "sources": {
+    "DL": {
+      "anchor_pages": {
+        "Lemma 3.1 / multiplier derivative": [
+          31
+        ],
+        "Proposition 5.41": [
+          73
+        ],
+        "Unstable eigenvalue identification": [
+          31
+        ]
+      },
+      "bytes": 3369779,
+      "pdf_pages": 124,
+      "sha256": "4a8f0f8c3ffd96c6a5a364340f2a7394fc75d0f355a7576040286c47365baec8",
+      "url": "https://arxiv.org/pdf/1808.10425v4",
+      "version": "1808.10425v4"
+    },
+    "DLS": {
+      "anchor_pages": {
+        "C.3 Molecule Conjecture": [
+          89
+        ],
+        "C.3 statement page range": [
+          89
+        ],
+        "C.4 following heading": [
+          90
+        ],
+        "Lemma 3.18": [
+          29
+        ],
+        "Remark 3.19": [
+          29,
+          63
+        ],
+        "Theorem 1.1": [
+          4
+        ],
+        "Theorem 3.16": [
+          28
+        ],
+        "Theorem 7.7": [
+          61
+        ],
+        "Theorem 7.7 multiplier coordinate": [
+          61,
+          66
+        ]
+      },
+      "bytes": 3256391,
+      "pdf_pages": 91,
+      "sha256": "d5d86b1166563221c4a6f57662bd7709c63de8a6ae3968da846304ede91454b5",
+      "url": "https://arxiv.org/pdf/1703.01206v3",
+      "version": "1703.01206v3"
+    },
+    "Dudko": {
+      "anchor_pages": {
+        "Problem 4.4": [
+          18
+        ],
+        "Section 4.5": [
+          18
+        ]
+      },
+      "bytes": 12764975,
+      "pdf_pages": 20,
+      "sha256": "8ede4bf8ccfe25a4f325cad41cb729f08f8b1d0d7103ed6dbc89015b1ff8d904",
+      "url": "https://arxiv.org/pdf/2512.24171v1",
+      "version": "2512.24171v1"
+    }
+  }
+}

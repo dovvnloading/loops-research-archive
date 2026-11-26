@@ -1,0 +1,67 @@
+{
+  "analytic_basis": "DLS v3 Theorem 7.7; DL v4 section 3.2.7 and Proposition 5.41; not checked by arithmetic",
+  "analytic_status": "imported",
+  "arithmetic_status": "proved",
+  "basis": "a+b*t, t^2+t-1=0, t>1/2",
+  "branch_derivative_coefficients": [
+    [
+      2,
+      1
+    ],
+    [
+      2,
+      1
+    ]
+  ],
+  "branch_order": [
+    "upper",
+    "lower"
+  ],
+  "certificate_type": "exact rational polynomial identities and strict rational bracket",
+  "claim_id": "P44-GM-1",
+  "clock_basis": "DL Proposition 5.41 for a suitably constructed operator, not every DLS normalization",
+  "dimension_basis": "imported DLS Theorem 7.7 and DL Proposition 5.41, not checked by arithmetic",
+  "global_molecule_hyperbolicity_established": false,
+  "imported_unstable_dimension_complex": 1,
+  "minimal_prime_period": 2,
+  "mlc_established": false,
+  "prime_cycle_coefficients": [
+    [
+      0,
+      1
+    ],
+    [
+      1,
+      -1
+    ],
+    [
+      0,
+      1
+    ]
+  ],
+  "return_mobius_matrix": [
+    [
+      2,
+      -1
+    ],
+    [
+      -1,
+      1
+    ]
+  ],
+  "rotation_bracket": [
+    "618033/1000000",
+    "309017/500000"
+  ],
+  "rotation_return_derivative_bracket": [
+    "6854099/1000000",
+    "3427051/500000"
+  ],
+  "rotation_return_derivative_coefficients": [
+    5,
+    3
+  ],
+  "rotation_return_derivative_exact": "(7+3*sqrt(5))/2",
+  "rotation_return_derivative_polynomial": "x^2-7*x+1",
+  "virtual_geometry_established": false
+}
