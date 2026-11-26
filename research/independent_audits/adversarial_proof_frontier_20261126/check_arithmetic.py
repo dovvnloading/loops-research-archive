@@ -37,9 +37,9 @@ def transit(k):
     n,j = hits[1],hits[2]
     p,q = pi_bounds()
     assert 0 <= j-n <= 4
-    # From the written error proof, |N-pi/h| <= 84 log(1/h)+31.
-    # Use log(2)<1 to keep this assertion entirely rational.
-    assert q*(1<<k)-84*k-31 <= n <= p*(1<<k)+84*k+31
+    # The signed telescoping correction gives absolute iteration bounds.
+    assert q*(1<<k)-120 <= n <= p*(1<<k)+120
+    assert q*(1<<k)-124 <= j <= p*(1<<k)+124
     return {'k':k,'N':n,'J':j,'J_times_h':str(F(j,1<<k))}
 
 
