@@ -2773,5 +2773,67 @@
     "obligations": [
       "H4_RIGIDITY"
     ]
+  },
+  "quadratic-escape-component-tree-20261126": {
+    "guide": "contributions/quadratic_escape_component_tree_20261126/NOTE.md#quadratic-escape-component-tree-20261126",
+    "theorems": {
+      "formalization/weighted/QuadraticEscapeBranches.lean": [
+        "sublevel_split"
+      ],
+      "formalization/weighted/FiniteComponentTree.lean": [
+        "component_eq_label_fiber",
+        "component_eq_range",
+        "component_isClopen",
+        "component_isCompact",
+        "componentEquiv_mk",
+        "component_count"
+      ],
+      "formalization/weighted/QuadraticEscapeComponents.lean": [
+        "sublevel_iterated_split",
+        "sublevel_component_census",
+        "sublevel_component_iterate_homeomorph",
+        "positive_sublevel_exact_components",
+        "critical_dyadic_component_count",
+        "sublevel_component_counts_unbounded",
+        "sublevel_component_parent_census",
+        "sublevel_component_parent_homeomorph",
+        "sublevel_nonempty",
+        "sublevel_zero_eq_filled",
+        "escaping_filled_components_infinite"
+      ],
+      "formalization/weighted/ComponentDoubling.lean": [
+        "product_component_eq_fiber",
+        "productComponentHomeomorph_apply",
+        "productComponentEquiv_mk",
+        "component_product_card",
+        "self_double_components_infinite"
+      ],
+      "formalization/weighted/CompactBinaryCoding.lean": [
+        "step_continuous",
+        "address_continuous",
+        "address_zero",
+        "address_succ",
+        "address_semiconj",
+        "prefixCylinder_closed",
+        "prefixCylinder_antitone",
+        "prefixCylinder_nonempty",
+        "address_surjective",
+        "componentAddress_continuous",
+        "componentAddress_mk",
+        "componentAddress_surjective",
+        "componentAddress_section",
+        "component_uncountable",
+        "componentAddress_semiconj"
+      ],
+      "formalization/weighted/QuadraticEscapeCoding.lean": [
+        "filled_two_sheet",
+        "filled_binary_coding",
+        "filled_component_cardinality",
+        "filled_component_uncountable"
+      ]
+    },
+    "obligations": [
+      "H1_CELL_TREE_EXTRACTION"
+    ]
   }
 }
