@@ -102,6 +102,26 @@ class Notes(unittest.TestCase):
         text = GOOD.replace("result: partial", "result: proves MLC")
         self.assertTrue(any("result" in problem for problem, _, _ in c.note_problems(text, self.ledger)))
 
+    def test_sub_headings_stay_inside_their_section(self):
+        text = GOOD.replace("## Evidence\nSteps.\n", "## Evidence\n\n## Step one\nDetail.\n")
+        self.assertEqual(c.note_problems(text, self.ledger), [])
+        self.assertIn("Detail.", c.parse_note(text)[1]["Evidence"])
+
+    def test_pull_request_body_drops_front_matter_and_keeps_the_claim(self):
+        body = c.pr_body(GOOD)
+        self.assertFalse(body.startswith("---"))
+        self.assertTrue(body.startswith("Ledger: MAPPING_TELESCOPE · Result: partial"))
+        self.assertIn("## Boundary", body)
+        claims = c.claimed_ids([{"number": 1, "title": "untitled", "body": body,
+                                 "updated_at": "2026-11-26T00:00:00Z"}],
+                               {"MAPPING_TELESCOPE"}, dt.date(2026, 11, 26))
+        self.assertEqual(list(claims), ["MAPPING_TELESCOPE"])
+
+    def test_show_can_find_earlier_work_on_a_row(self):
+        found = c.earlier_work(ROOT, "KKL_BOUNDED_VISITS_INTERVAL_GROWTH_REPAIR")
+        self.assertIn("research/independent_audits/interval_growth_repair_20261106.md", found)
+        self.assertNotIn("ledger.json", found)
+
     def test_packet_paths(self):
         self.assertEqual(c.packet_of("contributions/a_20261126/NOTE.md"), "contributions/a_20261126")
         self.assertIsNone(c.packet_of("contributions/README.md"))

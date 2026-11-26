@@ -100,6 +100,7 @@ formalization/weighted/StationaryCanonicalLift.lean	VARIABLE-EXIT
 formalization/weighted/StationaryDeckSeparator.lean	VARIABLE-EXIT
 formalization/weighted/StationaryEndpointCover.lean	VARIABLE-EXIT
 formalization/weighted/StationaryEndpointVisits.lean	VARIABLE-EXIT
+formalization/weighted/StationaryMonotoneGeometry.lean	METADATA
 formalization/weighted/StationaryPacketGain.lean	VARIABLE-EXIT
 formalization/weighted/StationaryPrefixCharge.lean	VARIABLE-EXIT
 formalization/weighted/WeightedReturn.lean	CLONE EDGE
@@ -377,3 +378,4 @@ research/frontier/quantitative_frontier_audit_20261126/check.py	METADATA
 research/frontier/quantitative_frontier_audit_20261126/check_scalar.py	METADATA
 formalization/weighted/ChebyshevFibers.lean	CHEBYSHEV-FIBERS
 formalization/weighted/QuadraticExtremalMultiplier.lean	QUADRATIC-EXTREMAL
+formalization/weighted/QuadraticCriticalWindow.lean	METADATA

@@ -1,0 +1,2 @@
+# Contributed packets are stored with LF endings on every platform.
+contributions/** text=auto eol=lf
