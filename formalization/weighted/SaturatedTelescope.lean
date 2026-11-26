@@ -154,4 +154,167 @@ theorem quadratic_segment_saturation (c : ℂ) (d : ℕ → ℕ) (H : ℕ → Se
   rw [routeMap_quadratic] at hc hi
   exact ⟨hc, hi⟩
 
+
+/-- Actual quadratic collisions are precisely the two signs. -/
+theorem quadratic_eq_iff (c z w : ℂ) :
+    z^2+c = w^2+c ↔ z=w ∨ z = -w := by
+  constructor
+  · intro h
+    have hz : (z-w)*(z+w) = 0 := by linear_combination h
+    rcases mul_eq_zero.mp hz with h₁ | h₂
+    · exact Or.inl (sub_eq_zero.mp h₁)
+    · right
+      linear_combination h₂
+  · rintro (rfl | h)
+    · rfl
+    · rw [h]
+      ring
+
+/-- A selected actual quadratic pullback component through the critical
+point contains both signs of every one of its points. No local connectivity,
+Jordan boundary, or fiber cardinality premise is needed. -/
+theorem quadratic_critical_component_symmetric (c : ℂ) (D : Set ℂ) (hc : c ∈ D)
+    (z : ℂ) (hz : z ∈ connectedComponentIn ((fun w : ℂ => w^2+c) ⁻¹' D) 0) :
+    -z ∈ connectedComponentIn ((fun w : ℂ => w^2+c) ⁻¹' D) 0 := by
+  let C := connectedComponentIn ((fun w : ℂ => w^2+c) ⁻¹' D) 0
+  have hzero : (0 : ℂ) ∈ C := mem_connectedComponentIn
+    (show (0 : ℂ)^2+c ∈ D by simpa using hc)
+  have hneg : Continuous (fun w : ℂ => -w) := continuous_id.neg
+  have hsub : (fun w : ℂ => -w) '' C ⊆ (fun w : ℂ => w^2+c) ⁻¹' D := by
+    rintro y ⟨w, hw, rfl⟩
+    have h : w^2+c ∈ D := connectedComponentIn_subset _ _ hw
+    change (-w)^2+c ∈ D
+    rw [show (-w)^2+c = w^2+c by ring]
+    exact h
+  have h0 : (0 : ℂ) ∈ (fun w : ℂ => -w) '' C := ⟨0, hzero, neg_zero⟩
+  have hpre : IsPreconnected C := isPreconnected_connectedComponentIn
+  exact (hpre.image _ hneg.continuousOn).subset_connectedComponentIn h0 hsub ⟨z, hz, rfl⟩
+
+/-- Exact return fibers across one actual critical step with injective
+prefix and suffix. The second lift is constructed, not postulated.
+It coincides with the first exactly at the critical point. -/
+theorem quadratic_return_fiber_pair (c : ℂ) (p r : ℂ → ℂ) (A B D : Set ℂ)
+    (hc : c ∈ D)
+    (hB : B = connectedComponentIn ((fun w : ℂ => w^2+c) ⁻¹' D) 0)
+    (hponto : p '' A = B) (hpinj : InjOn p A) (hrinj : InjOn r D)
+    (x : ℂ) (hx : x ∈ A) :
+    ∃ y ∈ A, p y = -(p x) ∧ (y=x ↔ p x=0) ∧
+      ∀ z ∈ A, r ((p z)^2+c) = r ((p x)^2+c) ↔ z=x ∨ z=y := by
+  have hpx : p x ∈ B := by
+    rw [← hponto]
+    exact ⟨x, hx, rfl⟩
+  have hneg : -(p x) ∈ B := by
+    rw [hB] at hpx ⊢
+    exact quadratic_critical_component_symmetric c D hc (p x) hpx
+  have him : -(p x) ∈ p '' A := by rwa [hponto]
+  obtain ⟨y, hy, hpy⟩ := him
+  have hq (z : ℂ) (hz : z ∈ A) : (p z)^2+c ∈ D := by
+    have hpz : p z ∈ B := by
+      rw [← hponto]
+      exact ⟨z, hz, rfl⟩
+    rw [hB] at hpz
+    exact connectedComponentIn_subset _ _ hpz
+  refine ⟨y, hy, hpy, ?_, ?_⟩
+  · constructor
+    · intro he
+      subst y
+      have hh : (2 : ℂ) * p x = 0 := by linear_combination hpy
+      exact (mul_eq_zero.mp hh).resolve_left (by norm_num)
+    · intro he
+      apply hpinj hy hx
+      rw [hpy, he, neg_zero]
+  · intro z hz
+    constructor
+    · intro he
+      have h := hrinj (hq z hz) (hq x hx) he
+      rcases (quadratic_eq_iff c (p z) (p x)).mp h with h₁ | h₂
+      · exact Or.inl (hpinj hz hx h₁)
+      · exact Or.inr (hpinj hz hy (h₂.trans hpy.symm))
+    · rintro (rfl | rfl)
+      · rfl
+      · exact congrArg r ((quadratic_eq_iff c (p y) (p x)).mpr (Or.inr hpy))
+
+/-- The previous fiber construction for the archive's actual orbit,
+with arbitrary physical durations before and after the critical step. -/
+theorem quadratic_segment_fiber_pair (c : ℂ) (a b : ℕ) (A B D : Set ℂ)
+    (hc : c ∈ D)
+    (hB : B = connectedComponentIn ((fun w : ℂ => w^2+c) ⁻¹' D) 0)
+    (hponto : QuadraticEscape.orbit c a '' A = B)
+    (hpinj : InjOn (QuadraticEscape.orbit c a) A)
+    (hrinj : InjOn (QuadraticEscape.orbit c b) D)
+    (x : ℂ) (hx : x ∈ A) :
+    ∃ y ∈ A, QuadraticEscape.orbit c a y = -(QuadraticEscape.orbit c a x) ∧
+      (y=x ↔ QuadraticEscape.orbit c a x=0) ∧
+      ∀ z ∈ A, QuadraticEscape.orbit c (a+1+b) z =
+        QuadraticEscape.orbit c (a+1+b) x ↔ z=x ∨ z=y := by
+  obtain ⟨y, hy, hpy, he, hfiber⟩ := quadratic_return_fiber_pair c
+    (QuadraticEscape.orbit c a) (QuadraticEscape.orbit c b) A B D
+    hc hB hponto hpinj hrinj x hx
+  refine ⟨y, hy, hpy, he, ?_⟩
+  intro z hz
+  rw [quadratic_orbit_add c (a+1) b z, quadratic_orbit_add c (a+1) b x]
+  exact hfiber z hz
+
+/-- The propagated critical value has exactly one preimage in the
+selected physical return carrier. This does not assert analytic degree
+or existence of the surrounding proper holomorphic domains. -/
+theorem quadratic_return_critical_value (c : ℂ) (a b : ℕ) (A B D : Set ℂ)
+    (hc : c ∈ D)
+    (hB : B = connectedComponentIn ((fun w : ℂ => w^2+c) ⁻¹' D) 0)
+    (hponto : QuadraticEscape.orbit c a '' A = B)
+    (hpinj : InjOn (QuadraticEscape.orbit c a) A)
+    (hrinj : InjOn (QuadraticEscape.orbit c b) D) :
+    ∃! x, x ∈ A ∧ QuadraticEscape.orbit c (a+1+b) x = QuadraticEscape.orbit c b c := by
+  have hz : (0 : ℂ) ∈ B := by
+    rw [hB]
+    exact mem_connectedComponentIn (show (0 : ℂ)^2+c ∈ D by simpa using hc)
+  rw [← hponto] at hz
+  obtain ⟨x, hx, hpx⟩ := hz
+  have hv : QuadraticEscape.orbit c (a+1+b) x = QuadraticEscape.orbit c b c := by
+    rw [quadratic_orbit_add c (a+1) b x]
+    change QuadraticEscape.orbit c b ((QuadraticEscape.orbit c a x)^2+c) = _
+    rw [hpx]
+    simp
+  obtain ⟨y, hy, _, hye, hfiber⟩ := quadratic_segment_fiber_pair c a b A B D
+    hc hB hponto hpinj hrinj x hx
+  refine ⟨x, ⟨hx, hv⟩, ?_⟩
+  intro z hz
+  rcases (hfiber z hz.1).mp (hz.2.trans hv.symm) with h | h
+  · exact h
+  · exact h.trans (hye.mpr hpx)
+
+/-- Every other attained return value has exactly two distinct preimages.
+The theorem gives the complete fiber as a set of actual complex points. -/
+theorem quadratic_return_noncritical_fiber (c : ℂ) (a b : ℕ) (A B D : Set ℂ)
+    (hc : c ∈ D)
+    (hB : B = connectedComponentIn ((fun w : ℂ => w^2+c) ⁻¹' D) 0)
+    (hponto : QuadraticEscape.orbit c a '' A = B)
+    (hpinj : InjOn (QuadraticEscape.orbit c a) A)
+    (hrinj : InjOn (QuadraticEscape.orbit c b) D)
+    (v : ℂ) (hv : v ∈ QuadraticEscape.orbit c (a+1+b) '' A)
+    (hn : v ≠ QuadraticEscape.orbit c b c) :
+    ∃ x y : ℂ, x ≠ y ∧ {z | z ∈ A ∧ QuadraticEscape.orbit c (a+1+b) z = v} = {x,y} := by
+  obtain ⟨x, hx, hval⟩ := hv
+  obtain ⟨y, hy, _, he, hfiber⟩ := quadratic_segment_fiber_pair c a b A B D
+    hc hB hponto hpinj hrinj x hx
+  have hpx : QuadraticEscape.orbit c a x ≠ 0 := by
+    intro h
+    apply hn
+    rw [← hval, quadratic_orbit_add c (a+1) b x]
+    change QuadraticEscape.orbit c b ((QuadraticEscape.orbit c a x)^2+c) = _
+    rw [h]
+    simp
+  have hxy : x ≠ y := fun h => hpx (he.mp h.symm)
+  have hyval : QuadraticEscape.orbit c (a+1+b) y = v :=
+    ((hfiber y hy).mpr (Or.inr rfl)).trans hval
+  refine ⟨x, y, hxy, ?_⟩
+  ext z
+  simp only [mem_setOf_eq, mem_insert_iff, mem_singleton_iff]
+  constructor
+  · intro hz
+    exact (hfiber z hz.1).mp (hz.2.trans hval.symm)
+  · rintro (rfl | rfl)
+    · exact ⟨hx, hval⟩
+    · exact ⟨hy, hyval⟩
+
 end LoopsSaturatedTelescope

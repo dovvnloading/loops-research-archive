@@ -1942,7 +1942,13 @@
         "quadratic_orbit_continuous",
         "quadratic_orbit_add",
         "routeMap_quadratic",
-        "quadratic_segment_saturation"
+        "quadratic_segment_saturation",
+        "quadratic_eq_iff",
+        "quadratic_critical_component_symmetric",
+        "quadratic_return_fiber_pair",
+        "quadratic_segment_fiber_pair",
+        "quadratic_return_critical_value",
+        "quadratic_return_noncritical_fiber"
       ]
     },
     "obligations": [
