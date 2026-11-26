@@ -462,7 +462,11 @@ theorem exterior_joukowski_bijOn :
 neighborhoods of the circle used for radial boundary traces. -/
 theorem joukowski_hasDerivAt {w : ℂ} (hw : w ≠ 0) :
     HasDerivAt J (1-(w^2)⁻¹) w := by
-  simpa only [J, sub_eq_add_neg] using (hasDerivAt_id w).add (hasDerivAt_inv hw)
+  rw [sub_eq_add_neg]
+  change HasDerivAt (fun y : ℂ => y + y⁻¹) (1 + -(w^2)⁻¹) w
+  have h₁ : HasDerivAt (fun y : ℂ => y) 1 w := hasDerivAt_id w
+  have h₂ : HasDerivAt (fun y : ℂ => y⁻¹) (-(w^2)⁻¹) w := hasDerivAt_inv hw
+  exact h₁.fun_add h₂
 
 theorem exterior_derivative_ne_zero {w : ℂ} (hw : 1 < ‖w‖) :
     1-(w^2)⁻¹ ≠ (0:ℂ) := by
@@ -489,7 +493,7 @@ theorem radial_address_continuous (w : ℂ) (hu : UnitAddress w) :
     (Complex.continuous_ofReal.mul continuous_const).continuousAt
   have hj : ContinuousAt J (((1:ℝ):ℂ)*w) := by
     simpa using (joukowski_hasDerivAt (unit_nonzero hu)).continuousAt
-  exact hj.comp hc
+  exact ContinuousAt.comp' (f := fun r : ℝ => (r:ℂ)*w) (g := J) (x := (1:ℝ)) hj hc
 
 theorem radial_address_value (w : ℂ) :
     J (((1:ℝ):ℂ)*w) = J w := by simp
