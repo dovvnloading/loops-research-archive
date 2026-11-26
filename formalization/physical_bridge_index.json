@@ -2982,6 +2982,37 @@
       "H1_CELL_TREE_EXTRACTION"
     ]
   },
+  "quadratic-periodic-motion-20261126": {
+    "guide": "contributions/quadratic_periodic_motion_20261126/NOTE.md#quadratic-periodic-motion-20261126",
+    "theorems": {
+      "formalization/weighted/QuadraticPeriodicMotion.lean": [
+        "returnOrbit_contDiff",
+        "periodic_point_motion",
+        "integral_parameter_periodic_point_motion",
+        "collision_parameter_periodic_point_motion"
+      ],
+      "formalization/weighted/QuadraticCriticalCoordinates.lean": [
+        "criticalOrbit_analyticAt",
+        "center_parameter_coordinate",
+        "first_collision_parameter_coordinate"
+      ],
+      "formalization/weighted/QuadraticPeriodicStability.lean": [
+        "returnMultiplier_contDiff",
+        "periodic_point_exact_period_stability",
+        "integral_parameter_periodic_point_stability"
+      ],
+      "formalization/weighted/QuadraticCollisionFactorization.lean": [
+        "returnOrbit_sub_secant",
+        "returnSecant_diagonal",
+        "returnSecant_contDiff",
+        "motion_collision_factorization",
+        "first_collision_analytic_factorization"
+      ]
+    },
+    "obligations": [
+      "H4_RIGIDITY"
+    ]
+  },
   "quadratic-quantitative-coding-20261126": {
     "guide": "contributions/quadratic_quantitative_coding_20261126/NOTE.md#quadratic-quantitative-coding-20261126",
     "theorems": {

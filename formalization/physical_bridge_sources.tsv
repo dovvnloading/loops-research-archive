@@ -430,6 +430,10 @@ formalization/weighted/QuadraticEscapeComponents.lean	METADATA
 formalization/weighted/QuadraticCriticalPortrait.lean	METADATA
 formalization/weighted/QuadraticLocalRamification.lean	METADATA
 formalization/weighted/QuadraticRamificationCensus.lean	METADATA
+formalization/weighted/QuadraticCollisionFactorization.lean	METADATA
+formalization/weighted/QuadraticCriticalCoordinates.lean	METADATA
+formalization/weighted/QuadraticPeriodicMotion.lean	METADATA
+formalization/weighted/QuadraticPeriodicStability.lean	METADATA
 formalization/weighted/BinaryShiftCensus.lean	METADATA
 formalization/weighted/ExpandingBinaryCoding.lean	METADATA
 formalization/weighted/QuadraticCantorBoundary.lean	METADATA
