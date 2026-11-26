@@ -2102,6 +2102,17 @@
         "connected_two_point_set",
         "quadratic_iterate_connected_fiber",
         "endpoint_impressions_singleton"
+      ],
+      "formalization/weighted/PrimeEndSectorImpressions.lean": [
+        "finite_sector_capacity",
+        "compact_address_uniform_shrinking",
+        "prefix_cylinder_open",
+        "finite_prefix_uniform_shrinking",
+        "right_endpoint_filter",
+        "image_closure_eq_compact",
+        "nested_impression_connected",
+        "quadratic_cofinal_impression_covariance",
+        "endpoint_impression_from_cofinal_wedges"
       ]
     },
     "obligations": [

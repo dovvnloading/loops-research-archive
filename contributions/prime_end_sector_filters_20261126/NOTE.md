@@ -28,6 +28,10 @@ cd ../..
 python code/verify_lean_coverage.py --audit weighted
 ```
 
+### Extension: finite sector capacity, uniform address shrinking and endpoint covariance
+
+Candidate module `formalization/weighted/PrimeEndSectorImpressions.lean` proves the finite-sector cardinal bound without any coherent labeling or disjointness assumption. It turns pointwise singleton physical cylinders into uniform shrinking over all infinite words by a compact directed cover of the product address space, using finite-prefix dependence rather than a normal-family convergence rate. It proves the exact right-sided cofinal filter of a nondegenerate endpoint track. The physical impression result proves both connectedness of compact nested wedge limits and exact covariance under the actual quadratic iterate whenever polynomial images of the source wedges and target wedges are mutually cofinal. This handles height rescaling without requiring matching indices. The singleton target conclusion then forces a singleton source side impression, with no assumed preimage inverse branch. The native wedge, chart, boundedness and landing hypotheses are still explicit. The extension must independently pass the existing weighted kernel and dependency audit before it counts as validated.
+
 ## Dependencies
 
 DIRECT_DECORATION_PULLBACK_COMPACTIFICATION; research/independent_audits/decoration_end_cofinality_20261126/NOTE.md, sections 3–4; research/mlc_unified/critical_chronology_and_retimed_telescope.md, section 15.2. Imports Mathlib and SaturatedTelescope (actual QuadraticEscape.orbit and its continuity). No ledger assertion is imported as a proof constant.
