@@ -5,6 +5,8 @@ ai: OpenAI ChatGPT, GPT-6 Astra Pro
 human_review: none
 ---
 
+<a id="univalent-telescope-collars-20261126"></a>
+
 # Univalent open collars of actual quadratic telescope cores
 
 ## Claim
@@ -19,11 +21,34 @@ passes the repository's transitive axiom audit.
 
 ## Evidence
 
-This initial checkpoint claims the obligation before proof development.
-Planned proof: compact local-to-global injectivity, actual noncritical quadratic
-orbit local injectivity, and selected-component collar recognition. All theorem
-names, hypotheses, reproduction commands, and CI evidence will be recorded as
-the proofs are completed.
+The first proof-development checkpoint contains registered Lean source for:
+
+1. `QuadraticUnivalentNeighborhood`: separate the compact intermediate images
+   from their negatives; inductively construct one open injective domain for the
+   actual quadratic iterate, inside a prescribed open ambient set.
+2. `TelescopeUnivalentCollars`: characterize exactly when compact injectivity
+   extends to an open neighborhood, then construct actual full selected
+   pullback collars with compact closure, injectivity on the closure,
+   prescribed ambient containment, properness and full target surjectivity.
+3. `TelescopeConformalInverse`: construct an analytic inverse on the whole
+   target, its reciprocal derivative, and compatible inverse restriction and
+   chronological concatenation identities.
+
+These are candidate proofs pending local and CI compilation at this checkpoint.
+The exact pinned Lean 4.32.0 toolchain and Mathlib revision are available locally;
+no toolchain, dependency or workflow changes are proposed. Reproduction:
+
+```sh
+cd formalization/weighted
+lake build QuadraticUnivalentNeighborhood TelescopeUnivalentCollars TelescopeConformalInverse
+cd ../..
+python code/verify_lean_coverage.py --audit weighted
+python code/contribute.py check
+```
+
+The final packet will include the successful full build, transitive axiom audit,
+and the exact remaining geometric boundary. Candidate declarations are not
+counted as proved results while that validation is pending.
 
 ## Dependencies
 
