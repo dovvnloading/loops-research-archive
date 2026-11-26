@@ -410,21 +410,21 @@ theorem orbit_covering_on_regular_values (c : ℂ) (n : ℕ) (S : Set ℂ)
     (hreg : ∀ z : ℂ, orbit c n z ∈ S → deriv (orbit c n) z ≠ 0) :
     IsCoveringMapOn (orbit c n) S := by
   have hl : IsLocalHomeomorphOn (orbit c n) (orbit c n ⁻¹' S) := by
-    refine IsLocalHomeomorphOn.mk _ _ ?_
     intro z hz
     have hn : multiplier c z n ≠ 0 := by
       rw [← multiplier_eq_deriv]
       exact hreg z hz
     have hd := (orbit_hasStrictDerivAt c z n).hasStrictFDerivAt_equiv hn
     exact ⟨hd.toOpenPartialHomeomorph (orbit c n),
-      hd.mem_toOpenPartialHomeomorph_source,hd.toOpenPartialHomeomorph_coe⟩
+      hd.mem_toOpenPartialHomeomorph_source,hd.toOpenPartialHomeomorph_coe.symm⟩
   refine (orbit_proper c n).isClosedMap.isCoveringMapOn_of_isLocalHomeomorphOn ?_ hl
   intro w hw
   refine (orbit_compact_preimage c n {w} isCompact_singleton).finite ?_
   apply IsDiscrete.of_openPartialHomeomorph (orbit c n) subset_rfl
   intro z hz
   have he : orbit c n z = w := hz
-  exact hl z (show orbit c n z ∈ S by rw [he]; exact hw)
+  obtain ⟨e,hm,heq⟩ := hl z (show orbit c n z ∈ S by rw [he]; exact hw)
+  exact ⟨e,hm,heq.symm⟩
 
 theorem orbit_covering_off_cycle (c : ℂ) (P : Set ℂ) (r n : ℕ)
     (hr : 0 < r) (hreturn : phase c P r = P) (hzero : 0 ∈ P) :
@@ -602,7 +602,8 @@ theorem bounded_holomorphic_ultrafilter_limit {ι : Type*} (l : Ultrafilter ι)
     (show dist y z < δ from hy).trans_le (min_le_right _ _)
   have hprod := (lt_div_iff₀ (by linarith : 0 < 4*(R/s+1))).mp hsmall
   have hquarter : (R/s)*dist y z < ε/4 := by
-    nlinarith [dist_nonneg (x := y) (y := z)]
+    have hdist : 0 ≤ dist y z := dist_nonneg
+    nlinarith
   have hleft := hlimLip.trans_lt hquarter
   have hright := (hLip i y hy').trans_lt hquarter
   calc
