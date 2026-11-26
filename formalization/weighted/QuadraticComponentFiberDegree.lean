@@ -171,5 +171,191 @@ theorem quadratic_component_symmetric_count (c : ℂ) (n : ℕ)
   · rw [if_neg hc, Finset.erase_eq_of_notMem hc]
     omega
 
+/-- Count the reflection-invariant steps along the actual forward
+component itinerary, independently of the choice of target fiber. -/
+def componentReflectionRank (c : ℂ) (V : Set ℂ) : ℕ → ℂ → ℕ
+  | 0, _ => 0
+  | n+1, x => componentReflectionRank c V n (quad c x) +
+      (if ∀ z ∈ connectedComponentIn ((quad c)^[n+1] ⁻¹' V) x,
+        -z ∈ connectedComponentIn ((quad c)^[n+1] ⁻¹' V) x then 1 else 0)
+
+/-- The local distinct-point deficit is accumulated only at invariant
+steps. The loss is propagated through exactly those earlier steps
+which double the fiber. -/
+def componentFiberDefect (c : ℂ) (V : Set ℂ) (y : ℂ) : ℕ → ℂ → ℕ
+  | 0, _ => 0
+  | n+1, x =>
+      if ∀ z ∈ connectedComponentIn ((quad c)^[n+1] ⁻¹' V) x,
+        -z ∈ connectedComponentIn ((quad c)^[n+1] ⁻¹' V) x then
+        2 * componentFiberDefect c V y n (quad c x) +
+          (if c ∈ localFiber c n (connectedComponentIn ((quad c)^[n] ⁻¹' V)
+            (quad c x)) y then 1 else 0)
+      else componentFiberDefect c V y n (quad c x)
+
+theorem componentReflectionRank_le (c : ℂ) (V : Set ℂ) (n : ℕ) (x : ℂ) :
+    componentReflectionRank c V n x ≤ n := by
+  induction n generalizing x with
+  | zero => simp [componentReflectionRank]
+  | succ n ih =>
+    have ht := ih (quad c x)
+    by_cases hs : ∀ z ∈ connectedComponentIn ((quad c)^[n+1] ⁻¹' V) x,
+        -z ∈ connectedComponentIn ((quad c)^[n+1] ⁻¹' V) x
+    · simp only [componentReflectionRank, if_pos hs]
+      omega
+    · simp only [componentReflectionRank, if_neg hs]
+      omega
+
+/-- The exact component census at every depth and every target point,
+including postcritical values and targets with holes. -/
+theorem quadratic_component_fiber_card_exact (c : ℂ) (V : Set ℂ)
+    (hVo : IsOpen V) (hVc : IsPreconnected V) (y : ℂ) (hy : y ∈ V)
+    (n : ℕ) (x : ℂ) (hx : (quad c)^[n] x ∈ V) :
+    (localFiber c n (connectedComponentIn ((quad c)^[n] ⁻¹' V) x) y).card +
+      componentFiberDefect c V y n x = 2 ^ componentReflectionRank c V n x := by
+  induction n generalizing x with
+  | zero =>
+    have hxV : x ∈ V := by simpa using hx
+    have hsub : V ⊆ connectedComponentIn V x :=
+      hVc.subset_connectedComponentIn hxV Subset.rfl
+    have hmem : y ∈ connectedComponentIn ((quad c)^[0] ⁻¹' V) x := by
+      simpa using hsub hy
+    have hf : localFiber c 0 (connectedComponentIn ((quad c)^[0] ⁻¹' V) x) y = {y} := by
+      ext z
+      simp only [mem_localFiber, Function.iterate_zero, id_eq, Finset.mem_singleton]
+      constructor
+      · exact fun h => h.2
+      · intro h
+        subst z
+        exact ⟨hmem, rfl⟩
+    simp [hf, componentFiberDefect, componentReflectionRank]
+  | succ n ih =>
+    have hxD : (quad c)^[n] (quad c x) ∈ V := by
+      simpa only [Function.iterate_succ_apply] using hx
+    have ht := ih (quad c x) hxD
+    by_cases hs : ∀ z ∈ connectedComponentIn ((quad c)^[n+1] ⁻¹' V) x,
+        -z ∈ connectedComponentIn ((quad c)^[n+1] ⁻¹' V) x
+    · have he := quadratic_component_symmetric_count c n V hVo x y hx hs
+      simp only [componentFiberDefect, componentReflectionRank, if_pos hs, pow_succ]
+      omega
+    · have he := quadratic_component_nonsymmetric_count c n V hVo x y hx hs
+      simp only [componentFiberDefect, componentReflectionRank, if_neg hs, Nat.add_zero]
+      omega
+
+theorem componentFiberDefect_zero_of_regular (c : ℂ) (V : Set ℂ) (y : ℂ)
+    (n : ℕ) (x : ℂ) (hreg : ∀ k < n, (quad c)^[k] c ≠ y) :
+    componentFiberDefect c V y n x = 0 := by
+  induction n generalizing x with
+  | zero => rfl
+  | succ n ih =>
+    have ht := ih (quad c x) (fun k hk => hreg k (by omega))
+    have hc : c ∉ localFiber c n (connectedComponentIn ((quad c)^[n] ⁻¹' V)
+        (quad c x)) y := by
+      intro h
+      exact hreg n (by omega) ((mem_localFiber c n _ y c).mp h).2
+    by_cases hs : ∀ z ∈ connectedComponentIn ((quad c)^[n+1] ⁻¹' V) x,
+        -z ∈ connectedComponentIn ((quad c)^[n+1] ⁻¹' V) x
+    · simp [componentFiberDefect, hs, ht, hc]
+    · simp [componentFiberDefect, hs, ht]
+
+/-- All regular fibers in a given actual component have the same
+cardinality, a power of two with exponent bounded by the depth. -/
+theorem quadratic_component_regular_degree (c : ℂ) (V : Set ℂ)
+    (hVo : IsOpen V) (hVc : IsPreconnected V) (n : ℕ) (x : ℂ)
+    (hx : (quad c)^[n] x ∈ V) :
+    ∀ y ∈ V, (∀ k < n, (quad c)^[k] c ≠ y) →
+      (localFiber c n (connectedComponentIn ((quad c)^[n] ⁻¹' V) x) y).card =
+        2 ^ componentReflectionRank c V n x := by
+  intro y hy hreg
+  have he := quadratic_component_fiber_card_exact c V hVo hVc y hy n x hx
+  rw [componentFiberDefect_zero_of_regular c V y n x hreg, Nat.add_zero] at he
+  exact he
+
+/-- Vanishing reflection rank forces univalence on the complete
+connected component, not merely on one regular fiber. -/
+theorem quadratic_component_rank_zero_inj (c : ℂ) (V : Set ℂ) (hVo : IsOpen V)
+    (n : ℕ) (x : ℂ) (hx : (quad c)^[n] x ∈ V)
+    (hr : componentReflectionRank c V n x = 0) :
+    InjOn ((quad c)^[n]) (connectedComponentIn ((quad c)^[n] ⁻¹' V) x) := by
+  induction n generalizing x with
+  | zero =>
+    intro a ha b hb hab
+    simpa using hab
+  | succ n ih =>
+    have hxD : (quad c)^[n] (quad c x) ∈ V := by
+      simpa only [Function.iterate_succ_apply] using hx
+    by_cases hs : ∀ z ∈ connectedComponentIn ((quad c)^[n+1] ⁻¹' V) x,
+        -z ∈ connectedComponentIn ((quad c)^[n+1] ⁻¹' V) x
+    · simp [componentReflectionRank, hs] at hr
+    · have ht : componentReflectionRank c V n (quad c x) = 0 := by
+        simpa [componentReflectionRank, hs] using hr
+      have hi := ih (quad c x) hxD ht
+      have hfirst : quad c '' connectedComponentIn ((quad c)^[n+1] ⁻¹' V) x =
+          connectedComponentIn ((quad c)^[n] ⁻¹' V) (quad c x) := by
+        simpa only [Function.iterate_one] using
+          quadratic_prefix_component_image c n 1 V hVo x hx
+      intro a ha b hb hab
+      apply quadratic_component_nonsymmetric_inj c n V x hs ha hb
+      apply hi
+      · rw [← hfirst]
+        exact ⟨a, ha, rfl⟩
+      · rw [← hfirst]
+        exact ⟨b, hb, rfl⟩
+      · simpa only [Function.iterate_succ_apply] using hab
+
+/-- One regular point suffices to test univalence, even for a
+connected open target with nontrivial fundamental group. -/
+theorem quadratic_component_univalent_iff_regular_card_one
+    (c : ℂ) (V : Set ℂ) (hVo : IsOpen V) (hVc : IsPreconnected V)
+    (n : ℕ) (x : ℂ) (hx : (quad c)^[n] x ∈ V)
+    (y : ℂ) (hy : y ∈ V) (hreg : ∀ k < n, (quad c)^[k] c ≠ y) :
+    InjOn ((quad c)^[n]) (connectedComponentIn ((quad c)^[n] ⁻¹' V) x) ↔
+      (localFiber c n (connectedComponentIn ((quad c)^[n] ⁻¹' V) x) y).card = 1 := by
+  let C := connectedComponentIn ((quad c)^[n] ⁻¹' V) x
+  constructor
+  · intro hi
+    have he := quadratic_global_component_image c n V hVo hVc x hx
+    have hh : y ∈ (quad c)^[n] '' C := he.symm ▸ hy
+    obtain ⟨a, ha, hay⟩ := hh
+    have hf : localFiber c n C y = {a} := by
+      ext z
+      simp only [mem_localFiber, Finset.mem_singleton]
+      constructor
+      · rintro ⟨hz, hzy⟩
+        exact hi hz ha (hzy.trans hay.symm)
+      · intro h
+        subst z
+        exact ⟨ha, hay⟩
+    change (localFiber c n C y).card = 1
+    rw [hf]
+    simp
+  · intro hc
+    have he := quadratic_component_regular_degree c V hVo hVc n x hx y hy hreg
+    have hp : 2 ^ componentReflectionRank c V n x = 1 := he.symm.trans hc
+    have hr : componentReflectionRank c V n x = 0 := by
+      by_contra hn
+      obtain ⟨k, hk⟩ := Nat.exists_eq_succ_of_ne_zero hn
+      rw [hk, pow_succ] at hp
+      have hpos : 0 < (2 : ℕ)^k := by positivity
+      omega
+    exact quadratic_component_rank_zero_inj c V hVo n x hx hr
+
+/-- Proper open localizations inherit the same regular-fiber test.
+The localization need not contain all global components. -/
+theorem quadratic_localized_univalent_iff_regular_card_one
+    (c : ℂ) (n : ℕ) (S V : Set ℂ)
+    (hS : IsOpen S) (hVo : IsOpen V) (hVc : IsPreconnected V)
+    (hm : MapsTo ((quad c)^[n]) S V)
+    (hp : IsProperMap (fun z : S => (⟨(quad c)^[n] z, hm z.property⟩ : V)))
+    (x : ℂ) (hx : x ∈ S) (y : ℂ) (hy : y ∈ V)
+    (hreg : ∀ k < n, (quad c)^[k] c ≠ y) :
+    InjOn ((quad c)^[n]) (connectedComponentIn S x) ↔
+      (localFiber c n (connectedComponentIn S x) y).card = 1 := by
+  have he := proper_localization_component_global ((quad c)^[n]) S V
+    (quadratic_iterate_proper c n).continuous hS hVo hm hp x hx
+  rw [he]
+  exact quadratic_component_univalent_iff_regular_card_one c V hVo hVc n x
+    (hm hx) y hy hreg
+
+
 end
 end LoopsQuadraticComponentFiberDegree

@@ -2471,7 +2471,14 @@
         "quadratic_component_nonsymmetric_inj",
         "quadratic_component_fiber_image",
         "quadratic_component_nonsymmetric_count",
-        "quadratic_component_symmetric_count"
+        "quadratic_component_symmetric_count",
+        "componentReflectionRank_le",
+        "quadratic_component_fiber_card_exact",
+        "componentFiberDefect_zero_of_regular",
+        "quadratic_component_regular_degree",
+        "quadratic_component_rank_zero_inj",
+        "quadratic_component_univalent_iff_regular_card_one",
+        "quadratic_localized_univalent_iff_regular_card_one"
       ]
     },
     "obligations": [
