@@ -1103,6 +1103,7 @@
       "research/independent_audits/issue62_octal_reconstruction_20261123/verify.py",
       "research/independent_audits/issue62_physical_connector_reconstruction_20261123/test_verify.py",
       "research/independent_audits/issue62_physical_connector_reconstruction_20261123/verify.py",
+      "research/independent_audits/kl_escape_return_ideal_boundary_20261126/verify.py",
       "research/mlc_unified/validate_canonical_kl_geometric_trace_proper_end_response.py",
       "research/mlc_unified/validate_canonical_kl_restricted_interface_classification.py",
       "research/mlc_unified/validate_canonical_resolution_kl_tile_correspondence_no_go.py",
