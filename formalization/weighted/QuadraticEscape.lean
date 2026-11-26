@@ -123,7 +123,7 @@ theorem approx_tail (c z : ℂ) {C : ℝ} (hc : ‖c‖ ≤ C) (n k : ℕ) :
     calc
       |approx c z (n+k+1) - approx c z n| =
           |(approx c z (n+k+1)-approx c z (n+k))+
-            (approx c z (n+k)-approx c z n)| := by congr 1 <;> ring
+            (approx c z (n+k)-approx c z n)| := by congr 1; ring
       _ ≤ _ := abs_add_le _ _
       _ ≤ weight (n+k+1)*Real.log (1+C) +
           (weight n-weight (n+k))*Real.log (1+C) :=
@@ -219,7 +219,7 @@ theorem escape_zero_orbit_bound (c z : ℂ) (hz : escape c z = 0) (n : ℕ) :
   have h := escape_error c z (le_refl ‖c‖) n
   rw [hz, sub_zero, abs_of_nonneg (approx_nonneg c z n)] at h
   unfold approx at h
-  have hl := (mul_le_mul_iff_left₀ (weight_pos n)).mp h
+  have hl := (mul_le_mul_iff_right₀ (weight_pos n)).mp h
   have hsize : size (orbit c n z) ≤ 1+‖c‖ :=
     (Real.log_le_log_iff (size_pos _) (by positivity)).mp hl
   exact (norm_le_size _).trans hsize
@@ -347,8 +347,12 @@ theorem escape_continuous :
 
 /-- The critical-value parameter potential is jointly defined, with no
 additional choice of Böttcher or dynamical coordinates. -/
+set_option maxHeartbeats 1000000 in
 theorem parameterEscape_continuous : Continuous parameterEscape := by
-  exact escape_continuous.comp (continuous_id.prodMk continuous_id)
+  have hd : Continuous (fun c : ℂ => (c,c)) :=
+    continuous_id.prodMk continuous_id
+  have h := escape_continuous.comp hd
+  simpa only [Function.comp_def, parameterEscape] using h
 
 /-- Exact physical clock normalization for m entrance iterates and n
 p-step returns. This identity is valid even away from any periodic orbit. -/
@@ -362,14 +366,20 @@ theorem parameter_rescaling (c : ℂ) (m p n : ℕ) :
 of the actual critical iterates (the separate linearization obligation),
 the correctly normalized rescaled parameter potentials converge. No
 uniform control of the number of iterates is assumed. -/
+set_option maxHeartbeats 1000000 in
 theorem parameter_rescaling_limit (cs : ℕ → ℂ) (cstar w : ℂ) (m p : ℕ)
     (hc : Tendsto cs atTop (𝓝 cstar))
     (hw : Tendsto (fun n => orbit (cs n) (m+p*n) 0) atTop (𝓝 w)) :
     Tendsto (fun n => ((2:ℝ)^p)^n * parameterEscape (cs n)) atTop
       (𝓝 ((2/(2:ℝ)^m) * escape cstar w)) := by
-  have h : Tendsto (fun n => escape (cs n) (orbit (cs n) (m+p*n) 0))
-      atTop (𝓝 (escape cstar w)) :=
-    escape_continuous.continuousAt.tendsto.comp (hc.prodMk_nhds hw)
+  have hp : Tendsto (fun n : ℕ => (cs n, orbit (cs n) (m+p*n) 0))
+      atTop (𝓝 (cstar,w)) := hc.prodMk_nhds hw
+  have hcont : ContinuousAt (fun x : ℂ × ℂ => escape x.1 x.2) (cstar,w) :=
+    escape_continuous.continuousAt
+  have h : Tendsto (fun n : ℕ => escape (cs n) (orbit (cs n) (m+p*n) 0))
+      atTop (𝓝 (escape cstar w)) := by
+    have hcomp := hcont.tendsto.comp hp
+    simpa only [Function.comp_def] using hcomp
   have heq : (fun n => ((2:ℝ)^p)^n * parameterEscape (cs n)) =
       (fun n => (2/(2:ℝ)^m) * escape (cs n) (orbit (cs n) (m+p*n) 0)) := by
     funext n
