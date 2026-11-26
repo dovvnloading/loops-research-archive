@@ -1,0 +1,82 @@
+{
+  "https://annals.math.princeton.edu/1997/146-1/p01": {
+    "status": "UNVERIFIED",
+    "sha256": null,
+    "reason": "pending CI"
+  },
+  "https://arxiv.org/pdf/0710.4406v4": {
+    "status": "UNVERIFIED",
+    "sha256": null,
+    "reason": "pending CI"
+  },
+  "https://arxiv.org/pdf/1808.10425v4": {
+    "status": "UNVERIFIED",
+    "sha256": null,
+    "reason": "pending CI"
+  },
+  "https://arxiv.org/pdf/2309.02107v3": {
+    "status": "UNVERIFIED",
+    "sha256": null,
+    "reason": "pending CI"
+  },
+  "https://arxiv.org/pdf/2512.24171v1": {
+    "status": "UNVERIFIED",
+    "sha256": null,
+    "reason": "pending CI"
+  },
+  "https://arxiv.org/pdf/2601.21905v1": {
+    "status": "UNVERIFIED",
+    "sha256": null,
+    "reason": "pending CI"
+  },
+  "https://arxiv.org/pdf/2606.27272v1": {
+    "status": "UNVERIFIED",
+    "sha256": null,
+    "reason": "pending CI"
+  },
+  "https://arxiv.org/pdf/math/0609045v3": {
+    "status": "UNVERIFIED",
+    "sha256": null,
+    "reason": "pending CI"
+  },
+  "https://arxiv.org/pdf/math/9504227v1": {
+    "status": "UNVERIFIED",
+    "sha256": null,
+    "reason": "pending CI"
+  },
+  "https://commack.math.stonybrook.edu/~mlyubich/papers/acta.pdf": {
+    "status": "UNVERIFIED",
+    "sha256": null,
+    "reason": "pending CI"
+  },
+  "https://pi.math.cornell.edu/~hubbard/hubbard.pdf": {
+    "status": "UNVERIFIED",
+    "sha256": null,
+    "reason": "pending CI"
+  },
+  "https://www.ma.imperial.ac.uk/~dcheragh/Research/2010-1.pdf": {
+    "status": "UNVERIFIED",
+    "sha256": null,
+    "reason": "pending CI"
+  },
+  "https://www.ma.imperial.ac.uk/~dcheragh/Research/2015-2.pdf": {
+    "status": "UNVERIFIED",
+    "sha256": null,
+    "reason": "pending CI"
+  },
+  "https://www.math.stonybrook.edu/preprints/ims07-04.pdf": {
+    "status": "UNVERIFIED",
+    "sha256": null,
+    "reason": "pending CI"
+  },
+  "https://www.numdam.org/item/10.24033/asens.2063.pdf": {
+    "status": "UNVERIFIED",
+    "sha256": null,
+    "reason": "pending CI"
+  },
+  "https://www.numdam.org/item/AIF_1997__47_4_1219_0.pdf": {
+    "status": "UNVERIFIED",
+    "sha256": null,
+    "reason": "pending CI"
+  }
+}

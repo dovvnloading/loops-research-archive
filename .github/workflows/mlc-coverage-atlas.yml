@@ -1,0 +1,38 @@
+name: MLC coverage atlas
+on:
+  push:
+    branches: [frontier/mlc-coverage-atlas-20261126]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  atlas:
+    runs-on: ubuntu-latest
+    container: python:3.12.12-bookworm
+    timeout-minutes: 12
+    defaults:
+      run:
+        working-directory: research/frontier/mlc_coverage_atlas_20261126
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+      - name: Check documentary grid
+        run: python -B verify.py
+      - name: Fingerprint source PDFs
+        if: github.ref == 'refs/heads/frontier/mlc-coverage-atlas-20261126' && github.event_name != 'pull_request'
+        run: python -B verify.py --lock
+      - name: Validate committed provenance on PR
+        if: github.event_name == 'pull_request'
+        run: python -B verify.py --check-lock
+      - name: Commit source fingerprints on audit branch only
+        if: github.ref == 'refs/heads/frontier/mlc-coverage-atlas-20261126' && github.event_name != 'pull_request'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add sources.json NOTE.md
+          if ! git diff --cached --quiet; then
+            git commit -m "Lock MLC atlas source PDF fingerprints"
+            git push origin HEAD:refs/heads/frontier/mlc-coverage-atlas-20261126
+          fi

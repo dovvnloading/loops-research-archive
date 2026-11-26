@@ -330,3 +330,4 @@ research/native_wave_transfer/test_satellite2_tip.py	SATELLITE DEPTH
 research/native_wave_transfer/test_satellite_v2.py	SATELLITE DEPTH
 research/tip_family_theorem/test_verify_chain.py	SELECTED PERIOD-TWO MARK ALL-PATHS GAIN
 research/tip_family_theorem/verify_chain.py	SELECTED PERIOD-TWO MARK ALL-PATHS GAIN
+research/frontier/mlc_coverage_atlas_20261126/verify.py	METADATA
