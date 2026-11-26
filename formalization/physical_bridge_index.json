@@ -2639,5 +2639,29 @@
     "obligations": [
       "KKL_STATIONARY_PROOF_USED_PREDECESSOR_SELECTION"
     ]
+  },
+  "quadratic-enlargement-degree-conservation-20261126": {
+    "guide": "contributions/quadratic_enlargement_degree_conservation_20261126/NOTE.md#quadratic-enlargement-degree-conservation-20261126",
+    "theorems": {
+      "formalization/weighted/QuadraticEnlargementDegree.lean": [
+        "mem_mergerCensus",
+        "mergerCensus_independent",
+        "mergerCensus_fiber_partition",
+        "mergerCensus_positive_mass",
+        "mergerCensus_complete_iff_mass",
+        "mergerCensus_degree_conservation",
+        "mergerCensus_uniform_rank_count",
+        "mergerCensus_complete_iff_degree",
+        "aggregate_defect_debt_eq_degree",
+        "component_actual_deficit_accounting",
+        "mergerCensus_defect_conservation",
+        "proper_piece_mem_mergerCensus",
+        "proper_piece_family_eq_census",
+        "mergerCensus_unique_connected_image"
+      ]
+    },
+    "obligations": [
+      "VIRTUAL_REACHED_CYLINDER_COMPONENT_EXHAUSTION"
+    ]
   }
 }
