@@ -2357,5 +2357,22 @@
     "obligations": [
       "H4_RIGIDITY"
     ]
+  },
+  "h1-monotone-cut-rigidity-20261126": {
+    "guide": "contributions/h1_monotone_cut_rigidity_20261126/NOTE.md#h1-monotone-cut-rigidity-20261126",
+    "theorems": {
+      "formalization/weighted/ChebyshevQuotientRigidity.lean": [
+        "retimed_angular_interval_covers",
+        "retimed_connected_subset_covers",
+        "retimed_collapsed_fiber_forces_constant",
+        "bounded_orbit_monotone_factor_injective",
+        "angular_cover_threshold_sharp",
+        "finite_horizon_fiber_preservation_forces_constant",
+        "retimed_angular_fiber_collision"
+      ]
+    },
+    "obligations": [
+      "H1_CELL_TREE_EXTRACTION"
+    ]
   }
 }
