@@ -5,6 +5,7 @@ import io
 import json
 import re
 import time
+import unicodedata
 import urllib.request
 from pathlib import Path
 from pypdf import PdfReader
@@ -12,10 +13,10 @@ from pypdf import PdfReader
 SOURCES = [
     ("Dudko survey", "arXiv:2512.24171v1",
      "https://arxiv.org/pdf/2512.24171v1", {
-         "Problem 4.3": r"Establish\s+pseudo[\s\-–]*Siegel\s+a\s+priori\s+bounds\s+in\s+the\s+remaining",
-         "Problem 4.4": r"Develop\s+a\s+Virtual\s+Molecule\s+version",
+         "Problem 4.3": r"Establish\s*pseudo[\s\-–]*Siegel\s*a\s*priori\s*bounds\s*in\s*the\s*remaining\s*unbounded\s*satellite\s*ql\s*cases",
+         "Problem 4.4": r"Develop\s*a\s*Virtual\s*Molecule\s*version\s*of\s*the\s*Near[\s\-–]*Degenerate\s*Regime",
          "section 4.5 start": r"4\s*\.\s*5\s*\.?\s*Virtual\s+near[\s\-–]*Molecule\s+Renormalization",
-         "section 4.5 end": r"develop\s+such\s+control\s+a\s+priori",
+         "section 4.5 end": r"develop\s*such\s*control\s*a\s*priori",
          "Theorem 4.2": r"Theorem\s*4\s*\.\s*2",
      }),
     ("Dudko–Lyubich", "arXiv:2210.09280v2",
@@ -55,7 +56,12 @@ def fetch(url):
 
 
 def normalized(s):
-    return re.sub(r"\s+", " ", s.replace("\u00ad", "").replace("ﬁ","fi").replace("ﬂ","fl")).strip()
+    # PDF extraction can join italic words (notably "control a priori")
+    # or insert layout hyphenation at a line break. Keep the same words;
+    # only normalize typography, never substitute a different marker.
+    s = unicodedata.normalize("NFKC", s).replace("\u00ad", "")
+    s = re.sub(r"(?<=\w)[\-\u2010][ \t]*\r?\n[ \t]*(?=\w)", "", s)
+    return re.sub(r"\s+", " ", s).strip()
 
 
 def audit():
@@ -78,6 +84,11 @@ def audit():
                     for i in range(len(pages)-1):
                         if re.search(pattern,pages[i][-600:]+" "+pages[i+1][:600],re.I):
                             rec["pages"][label].extend([i+1,i+2])
+            if name == "Dudko survey":
+                start = rec["pages"]["section 4.5 start"]
+                end = rec["pages"]["section 4.5 end"]
+                if start and end and not any(a <= b for a in start for b in end):
+                    raise ValueError("section 4.5 end precedes start")
             missing=[k for k,v in rec["pages"].items() if not v]
             rec["status"]="ok" if not missing else "marker_missing"
             if missing:
@@ -115,5 +126,5 @@ if __name__=="__main__":
     args.output.write_text(json.dumps(data,indent=2,sort_keys=True)+"\n",encoding="utf-8")
     if args.update_note:
         update_note(args.update_note,data)
-    print(json.dumps([{"name":r["name"],"status":r["status"]} for r in data["sources"]]))
+    print(json.dumps(data, indent=2, sort_keys=True))
     raise SystemExit(0 if data["all_verified"] else 1)
