@@ -436,3 +436,6 @@ formalization/weighted/QuadraticPeriodicMotion.lean	METADATA
 formalization/weighted/QuadraticPeriodicStability.lean	METADATA
 formalization/weighted/QuadraticLocalNormalForm.lean	METADATA
 formalization/weighted/LocalDegreeExhaustion.lean	METADATA
+formalization/weighted/QuadraticPowerNormalForm.lean	METADATA
+formalization/weighted/IteratedCarrierIsolation.lean	METADATA
+formalization/weighted/QuadraticCarrierSaturation.lean	METADATA

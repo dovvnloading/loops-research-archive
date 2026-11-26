@@ -32,8 +32,17 @@ audit will count as results. This implementation checkpoint is awaiting CI.
    intrinsic inverse points using complete invariance and openness. Their images
    exhaust the ambient local fiber, yielding an open isolating neighborhood,
    relative clopenness, and connected-component equality.
-3. In progress: derive the local critical compatibility from primitive phase
-   separation, then specialize the exhaustion theorem to actual quadratic returns.
+3. `QuadraticCarrierSaturation.lean` places every compact invariant return carrier
+   in the genuine ambient filled Julia set, derives local critical compatibility
+   from primitive phase separation, and constructs its exact pullback component.
+4. `IteratedCarrierIsolation.lean` propagates the constructed isolation through
+   every finite number of returns and gives one common neighborhood through each
+   prescribed finite horizon.
+5. `QuadraticPowerNormalForm.lean` constructs analytic power charts and analytic
+   inverse disk charts for arbitrary finite quadratic iterates, with exponent
+   exactly two to the number of critical encounters. Repeated visits are included.
+
+All new extensions above are implementation checkpoints pending CI compilation.
 
 Lean 4.32.0 and Mathlib v4.32.0 are pinned by the repository. The current local
 environment has no Lean executable and insufficient disk capacity to install it.

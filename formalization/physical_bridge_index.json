@@ -3027,6 +3027,28 @@
         "quadratic_conjugacy_local_exhaustion",
         "quadratic_conjugacy_preimage_clopen",
         "quadratic_conjugacy_component"
+      ],
+      "formalization/weighted/QuadraticPowerNormalForm.lean": [
+        "analytic_factor_power_chart",
+        "quadratic_power_normal_form",
+        "quadratic_power_disk_chart"
+      ],
+      "formalization/weighted/IteratedCarrierIsolation.lean": [
+        "isolationWindow_contains",
+        "isolationWindow_succ_subset",
+        "isolationWindow_antitone",
+        "isolationWindow_exact",
+        "isolationWindow_horizon_exact",
+        "isolationWindow_isOpen",
+        "finite_horizon_isolation",
+        "connectedComponent_eq_of_open_isolation",
+        "iterated_preimage_component"
+      ],
+      "formalization/weighted/QuadraticCarrierSaturation.lean": [
+        "quadratic_compact_return_invariant_subset_filled",
+        "quadratic_return_conjugacy_subset_filled",
+        "quadratic_return_conjugacy_isolation",
+        "quadratic_primitive_conjugacy_component"
       ]
     },
     "obligations": [
