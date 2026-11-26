@@ -5,6 +5,8 @@ ai: OpenAI GPT-6 Astra Pro; proof design, Lean formalization, and review
 human_review: none
 ---
 
+<a id="quadratic-escape-component-tree-20261126"></a>
+
 # Binary component trees of actual quadratic escape sublevels
 
 Ledger statement being addressed:
@@ -30,6 +32,17 @@ dynamics. The exact statements and validation record will be added as they compi
 The pinned Lean toolchain is not installed locally. The available scratch space
 cannot fit the toolchain and Mathlib, so the existing Lean workflows on this PR
 are the compilation and transitive axiom-audit authority.
+
+### Checkpoint 1: inverse sheets and component topology
+
+The first implementation adds `QuadraticEscapeBranches.lean` and
+`FiniteComponentTree.lean`. The former constructs both inverse sheets from
+a continuous logarithm on the translated full compact target, then proves
+that their disjoint union is homeomorphic to the actual lower sublevel, with
+the actual polynomial as the projection. The latter identifies components
+of a finite product decomposition with its label fibers and proves the exact
+component count, compactness, and a homeomorphism of each component to the
+common factor. These declarations await CI validation at this checkpoint.
 
 ## Dependencies
 

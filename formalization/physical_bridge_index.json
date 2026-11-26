@@ -2704,5 +2704,24 @@
     "obligations": [
       "KKL_STATIONARY_NONLC_SELECTED_GEOMETRIC_CONTINUUM_LIFT"
     ]
+  },
+  "quadratic-escape-component-tree-20261126": {
+    "guide": "contributions/quadratic_escape_component_tree_20261126/NOTE.md#quadratic-escape-component-tree-20261126",
+    "theorems": {
+      "formalization/weighted/QuadraticEscapeBranches.lean": [
+        "sublevel_split"
+      ],
+      "formalization/weighted/FiniteComponentTree.lean": [
+        "component_eq_label_fiber",
+        "component_eq_range",
+        "component_isClopen",
+        "component_isCompact",
+        "componentEquiv_mk",
+        "component_count"
+      ]
+    },
+    "obligations": [
+      "H1_CELL_TREE_EXTRACTION"
+    ]
   }
 }
