@@ -2399,5 +2399,21 @@
     "obligations": [
       "TERMINAL_NONLC_HUBBARD_CARRIER_PROPER"
     ]
+  },
+  "stationary-compact-contact-separator-20261126": {
+    "guide": "contributions/stationary_compact_contact_separator_20261126/NOTE.md#stationary-compact-contact-separator-20261126",
+    "theorems": {
+      "formalization/weighted/StationaryCompactContact.lean": [
+        "preconnected_union_of_closure_contact",
+        "quadratic_image_unbounded",
+        "quadratic_compact_contact_log",
+        "quadratic_compact_contact_injOn",
+        "quadratic_bypass_forces_critical_contact",
+        "quadratic_reflected_component_forces_critical_contact"
+      ]
+    },
+    "obligations": [
+      "KKL_STATIONARY_SELECTED_SEPARATOR_REALIZATION"
+    ]
   }
 }
