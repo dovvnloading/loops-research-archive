@@ -108,8 +108,10 @@ formalization/weighted/PhaseMemoryCardinality.lean	CLOCK ENDS
 formalization/weighted/PlanarFillLimit.lean	HULL
 formalization/weighted/PlanarFullification.lean	HULL
 formalization/weighted/ProtectedCarrierLogic.lean	HULL
+formalization/weighted/QuadraticCriticalTrapping.lean	CONSTRUCT
 formalization/weighted/QuadraticEscapeEndpoint.lean	QUADRATIC-ESCAPE
 formalization/weighted/QuadraticEscapeFullness.lean	METADATA
+formalization/weighted/QuadraticInverseOpen.lean	CONSTRUCT
 formalization/weighted/QuadraticMultiplierArithmetic.lean	METADATA
 formalization/weighted/QuadraticMultiplierCoordinate.lean	METADATA
 formalization/weighted/QuadraticMultiplierIteration.lean	METADATA
@@ -134,6 +136,8 @@ formalization/weighted/StationaryPrefixCharge.lean	VARIABLE-EXIT
 formalization/weighted/TelescopeCollarRecognition.lean	METADATA
 formalization/weighted/TelescopeCompactReturn.lean	CONSTRUCT
 formalization/weighted/TelescopeConformalInverse.lean	CONSTRUCT
+formalization/weighted/TelescopeDeckInvolution.lean	CONSTRUCT
+formalization/weighted/TelescopeParameterReturn.lean	CONSTRUCT
 formalization/weighted/TelescopeRamification.lean	METADATA
 formalization/weighted/TelescopeUnivalentCollars.lean	CONSTRUCT
 formalization/weighted/TerminalFiberExclusion.lean	METADATA
