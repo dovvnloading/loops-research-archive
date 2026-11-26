@@ -2180,5 +2180,34 @@
     "obligations": [
       "KKL_STATIONARY_NONLC_SELECTED_GEOMETRIC_CONTINUUM_LIFT"
     ]
+  },
+  "cylinder-fiber-exhaustion-20261126": {
+    "guide": "contributions/cylinder_fiber_exhaustion_20261126/NOTE.md#cylinder-fiber-exhaustion-20261126",
+    "theorems": {
+      "formalization/weighted/QuadraticCylinderCensus.lean": [
+        "open_component_relative_closed",
+        "localized_component_image",
+        "proper_localization_relative_closed",
+        "quadratic_open",
+        "quadratic_proper",
+        "quadratic_iterate_open",
+        "quadratic_iterate_proper",
+        "one_fiber_component_exhaustion",
+        "quadratic_localized_census",
+        "iteratePolynomial_eval",
+        "iteratePolynomial_degree",
+        "quadratic_fiber_card_bound",
+        "quadratic_full_degree_census",
+        "mem_localFiber",
+        "localFiber_card_bound",
+        "quadratic_localized_count_census",
+        "no_new_component_of_same_fiber",
+        "proper_localization_component_global",
+        "proper_localization_eq_of_same_fiber"
+      ]
+    },
+    "obligations": [
+      "VIRTUAL_REACHED_CYLINDER_COMPONENT_EXHAUSTION"
+    ]
   }
 }
