@@ -11,7 +11,7 @@ human_review: none
 
 ## Claim
 
-Candidate formalization (exact-head CI not yet verified): every escape-potential sublevel of an entire pair of parameter and initial-point functions is full. In particular this implies fullness of every dynamical quadratic escape sublevel and every quadratic parameter-potential sublevel, fullness and connected complement of the genuine bounded-orbit quadratic filled set, and fullness of its arbitrary compact subcarriers when the filled set has empty interior.
+Formalization (the CI checkpoints are documented in the pull request): every escape-potential sublevel of an entire pair of parameter and initial-point functions is full. In particular this implies fullness of every dynamical quadratic escape sublevel and every quadratic parameter-potential sublevel, fullness and connected complement of the genuine bounded-orbit quadratic filled set, and fullness of its arbitrary compact subcarriers when the filled set has empty interior.
 
 ## Evidence
 
@@ -26,13 +26,24 @@ Lean module: [QuadraticEscapeFullness.lean](../../formalization/weighted/Quadrat
 
 Reproduction: `cd formalization/weighted && lake build QuadraticEscapeFullness`. The module is registered as METADATA in the default targets, public theorem index and source inventory. The existing weighted Lean CI and transitive dependency audit are the compiler of record; local Lean and network git access are unavailable. No proof is counted before the exact head passes those checks.
 
+## Extension: explicit nested connected outer approximants
+
+For the actual fixed-parameter escape potential define the finite outer approximant by
+`approx c z n ≤ t + weight n * Real.log (1+‖c‖)`.
+The safe correction makes these compact sets decreasing, gives an exact pullback relation with doubled height, and makes their intersection exactly the true sublevel.
+When the height is at least the critical escape height, every pullback target contains the critical value. The proved critical-preimage connectedness theorem therefore inducts from a closed disk. The existing directed compact-intersection theorem transfers connectedness to the exact limiting set.
+
+This extends the result to compactness of all nonnegative dynamical sublevels and connectedness at or above the critical height, including connectedness of the actual filled set for bounded critical orbit. The new declarations must pass exact-head Lean CI before being counted.
+
+Additional declarations: `escape_outer_zero`, `escape_outer_succ`, `escape_outer_antitone`, `escape_outer_contains_sublevel`, `escape_outer_iInter`, `quadratic_critical_preimage_preconnected`, `escape_outer_compact`, `escape_outer_preconnected`, `quadratic_escape_sublevel_compact`, `quadratic_escape_sublevel_connected_of_critical`, `quadratic_filled_connected_of_critical`.
+
 ## Dependencies
 
-KKL_NATIVE_TERMINAL_HUBBARD_TREE, KKL_STATIONARY_MODEL_TERMINAL_SHEET_INCIDENCE, KKL_STATIONARY_SELECTED_PREDECESSOR_CHAIN. Existing StationaryFiberDynamics, StationaryMonotoneGeometry, PlanarFullification and QuadraticEscape. Mathlib's pinned `Complex.exists_mem_frontier_isMaxOn_norm` in `Mathlib/Analysis/Complex/AbsMax.lean` supplies the classical maximum modulus principle.
+KKL_NATIVE_TERMINAL_HUBBARD_TREE, KKL_STATIONARY_MODEL_TERMINAL_SHEET_INCIDENCE, KKL_STATIONARY_SELECTED_PREDECESSOR_CHAIN. Existing StationaryFiberDynamics, StationaryMonotoneGeometry, StationaryGeometricFibers, QuadraticCriticalFiberCensus, LeastSaturatedCarrier, PlanarFullification and QuadraticEscape. Mathlib's pinned `Complex.exists_mem_frontier_isMaxOn_norm` in `Mathlib/Analysis/Complex/AbsMax.lean` supplies the classical maximum modulus principle.
 
 ## Boundary
 
-The named KKL/Kiwi quotient, empty interior of the named physical set, hereditary unicoherence (in particular the Janiszewski step), singleton anchors, and exact geometric selected-continuum correspondence remain separate obligations. This result does not establish connectedness of the filled set itself, nor local connectivity of its boundary, H1–H4, or MLC. No ledger promotion or new workflow. No priority claim for the classical fullness theorem.
+The named KKL/Kiwi quotient, empty interior of the named physical set, hereditary unicoherence (in particular the Janiszewski step), singleton anchors, and exact geometric selected-continuum correspondence remain separate obligations. The connectedness extension is conditional on bounded critical orbit; the converse and the exact branch-locus theorem are not established here. Neither local connectivity of the boundary, H1–H4, nor MLC is established. No ledger promotion or new workflow. No priority claim for the classical fullness theorem.
 
 ## Attribution
 

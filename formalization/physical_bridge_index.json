@@ -2621,7 +2621,18 @@
         "quadratic_parameter_sublevel_full",
         "quadratic_filled_full",
         "quadratic_filled_connected_complement",
-        "quadratic_filled_compact_subcarrier_full"
+        "quadratic_filled_compact_subcarrier_full",
+        "escape_outer_zero",
+        "escape_outer_succ",
+        "escape_outer_antitone",
+        "escape_outer_contains_sublevel",
+        "escape_outer_iInter",
+        "quadratic_critical_preimage_preconnected",
+        "escape_outer_compact",
+        "escape_outer_preconnected",
+        "quadratic_escape_sublevel_compact",
+        "quadratic_escape_sublevel_connected_of_critical",
+        "quadratic_filled_connected_of_critical"
       ]
     },
     "obligations": [
