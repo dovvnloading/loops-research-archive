@@ -192,15 +192,31 @@ The browser smoke script starts the built-site preview on port 4173 and Chrome's
 
 ### Release verification status
 
-**Interactive acceptance remains pending for this release handoff.** The managed preview service was unavailable during preparation. Automated mathematical, storage, metadata, and TypeScript checks were exercised, but they do not establish that every interactive workflow or visual layout has passed in a browser. Update this section with the final deployment revision, CI results, browser versions, and hardware used after those checks run.
+**The application is deployed, and the GitHub browser-rendering and validation workflows passed.** Open the published application at [LOOPS Observatory](https://loops-fractal-research.lagging.chatgpt.site), subject to the site's existing access policy. The implementation is available for review in [pull request #126](https://github.com/dovvnloading/loops-research-archive/pull/126).
 
-Representative acceptance checklist:
+The verified GitHub review baseline is commit [`9f482ea4f3315c2c04c0b8e156086b16a65ec366`](https://github.com/dovvnloading/loops-research-archive/commit/9f482ea4f3315c2c04c0b8e156086b16a65ec366). This verification record does not imply that the pull request has been merged.
 
-- [ ] Each of the six families produces a live image; model, lighting, and camera controls visibly change the intended quantity.
+| Verification | Recorded result | Evidence |
+| --- | --- | --- |
+| Local application checks | Production build, TypeScript, archive integrity, and 75 automated tests passed | Repository test and build commands above; individual cases in `tests/` |
+| Site health | Build/integrity checks and the actual browser-rendering job completed successfully | [Run 45732608646](https://github.com/dovvnloading/loops-research-archive/actions/runs/45732608646) |
+| Coverage workflow | Completed successfully | [Run 45732608663](https://github.com/dovvnloading/loops-research-archive/actions/runs/45732608663) |
+| Research validation | Completed successfully | [Run 45732608724](https://github.com/dovvnloading/loops-research-archive/actions/runs/45732608724) |
+| Published application | Sites publication succeeded; a platform-generated screenshot of the deployed Explore page was reviewed | [Published application](https://loops-fractal-research.lagging.chatgpt.site) |
+
+The browser job exercised real application rendering in headless Chrome with software WebGL. It checked WebGL2 fractal pixels, gamma and projection changes, snapshot fidelity, wheel-driven flight, the Mandelbox/quaternion/landscape shaders, Float64 plane rendering, intentional Shift-click Julia linking, exact navigation below binary64 coordinate resolution, workspace lifecycle, portrait projection, Float64 volume refinement, missing-GPU fallback, worker-startup error recovery, and absence of uncaught exceptions. Its machine-readable result and failure diagnostics are produced by [`scripts/smoke_webgl.mjs`](../scripts/smoke_webgl.mjs).
+
+The 120-decimal-scale imaginary-gateway regression is part of the automated numerical tests. The browser smoke test separately exercised deep rendering and navigation below a `1e-60` span. Neither result is a hardware frame-rate benchmark or an exhaustive check of every deep parameter window.
+
+**Target-device and assistive-technology acceptance remains a separate check.** The managed local preview service was unavailable, and direct live-browser review requires the site's authorized sign-in context. CI browser verification completed independently. The browser workflow saves representative desktop/mobile screenshots of the workspaces and export/motion dialogs in its `fractal-browser-rendering` artifact. These support visual review alongside the deployed Explore screenshot; they do not establish hardware frame-rate, touch, screen-reader, or cross-browser acceptance. Keep the following checklist open until those specific checks have been performed and their browser/hardware details recorded.
+
+Remaining representative acceptance checklist:
+
+- [ ] Each family and its model, lighting, and camera controls have been reviewed interactively on the intended hardware and browser matrix.
 - [ ] Desktop, touch, keyboard, focus mode, dialogs, and narrow-screen linked views remain usable without losing access to navigation.
-- [ ] Shift-click selects the intended parameter; the linked Julia view uses the same exact `c`.
-- [ ] **The imaginary gateway** resolves at `1e-120`; changing the budget, panning, cancelling, and restoring the view produce current results without stale tiles.
-- [ ] Hardware WebGL2, software WebGL, unavailable WebGL2, and context loss follow their reported rendering/fallback paths.
+- [ ] Linked-view selection, exact parameter labels, and plane navigation have been reviewed visually across desktop and touch layouts.
+- [ ] **The imaginary gateway** has been reviewed interactively at `1e-120`, including budget changes, cancellation, and view restoration on representative devices.
+- [ ] Hardware WebGL2 and graphics-context loss/recovery have been checked on target devices in addition to the passing CI software-WebGL and missing-GPU cases.
 - [ ] A journal observation survives reload; JSON round trips preserve exact coordinates, notes, thumbnails, and branch relationships; blocked/full storage reports the failure.
 - [ ] An exported expedition/orbit/comparison reopens in the correct instrument and reruns from its saved settings; cancellation and import validation work.
 - [ ] PNG exports have the requested dimensions, parseable `LOOPS` metadata, and unchanged image data; cancelling or closing an export does not produce a later download.
@@ -227,4 +243,4 @@ The existing Sites project is identified by [`.openai/hosting.json`](../.openai/
 
 Data and archive preparation enumerate tracked files. **Stage newly added source/document files before the final release build** so the generated catalog and copied archive include them. Then rebuild, verify, and package the complete `dist` directory, including `index.html`, assets, workers, generated data, exhibits, and research documents.
 
-The repository also retains a GitHub Pages workflow. Its success and a Sites deployment are separate publication events. Use the actual deployment result and target URL when reporting a release; a passing local build alone does not establish that either publication is live.
+The repository also retains a GitHub Pages workflow. Its success and a Sites deployment are separate publication events. The Sites application linked in the verification record above has been published successfully. Preserve the recorded distinction between that publication, the passing GitHub checks, and the review/merge state of pull request #126 when reporting this release.

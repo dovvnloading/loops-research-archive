@@ -1,6 +1,6 @@
 // GitHub CI smoke test: real Chrome, actual rendered pixels, real application UI.
 // This script is for the CI runner. Managed Site previews are verified through CUA.
-// Set SMOKE_SCREENSHOTS=1 for optional success screenshots; failures always capture.
+// CI sets SMOKE_SCREENSHOTS=1 for permanent visual evidence; failures always capture.
 import assert from 'node:assert/strict';
 import { spawn, spawnSync } from 'node:child_process';
 import { mkdtemp, mkdir, rm, writeFile } from 'node:fs/promises';
@@ -26,7 +26,7 @@ async function until(fn, label, ms = 90000) {
   throw Error('Timed out: ' + label + (last ? ' (' + last + ')' : ''));
 }
 let ws, id = 0, lastPixels = null;
-const errors = [], browserMessages = [], pending = new Map(), results = {};
+const errors = [], browserMessages = [], pending = new Map(), results = {}, captures = [];
 function cdp(method, params = {}) {
   return new Promise((resolve, reject) => {
     const request = ++id;
@@ -44,6 +44,21 @@ async function snap(name, force = false) {
   if (!screenshots && !force) return;
   const result = await cdp('Page.captureScreenshot', { format: 'png', captureBeyondViewport: false });
   await writeFile(join(output, name + '.png'), Buffer.from(result.data, 'base64'));
+  const page = await evaluate("({width:innerWidth,height:innerHeight,route:location.hash||'#explore',dialog:document.querySelector('dialog[open] h2')?.textContent??null})").catch(() => ({}));
+  captures.push({ file: name + '.png', ...page });
+  await writeFile(join(output, 'capture-index.json'), JSON.stringify(captures, null, 2));
+}
+async function uiSnap(name) {
+  if (!screenshots) return;
+  await evaluate("document.querySelector('button[aria-label=\"Dismiss notification\"]')?.click()");
+  await evaluate(`(async()=>{
+    await Promise.race([document.fonts.ready,new Promise(resolve=>setTimeout(resolve,2000))]);
+    const visible=[...document.images].filter(image=>{const r=image.getBoundingClientRect();return r.bottom>0&&r.top<innerHeight&&r.right>0&&r.left<innerWidth;});
+    await Promise.all(visible.map(image=>Promise.race([image.decode().catch(()=>{}),new Promise(resolve=>setTimeout(resolve,1500))])));
+    await new Promise(resolve=>requestAnimationFrame(()=>requestAnimationFrame(resolve)));
+  })()`);
+  await cdp('Input.dispatchMouseEvent', { type: 'mouseMoved', x: 1, y: 1 });
+  await snap(name);
 }
 const canvasSelector = '.ob-main-viewport > .ob-fractal-canvas';
 const statusSelector = '.ob-statusbar';
@@ -60,15 +75,25 @@ async function clickText(selector, text) {
 async function clickLabel(label) {
   await evaluate(`(()=>{const element=[...document.querySelectorAll('button[aria-label]')].find(e=>e.getAttribute('aria-label')===${JSON.stringify(label)});if(!element)throw Error('Missing button: '+${JSON.stringify(label)});element.click();})()`);
 }
+async function workspace(label, selector) {
+  await evaluate(`(()=>{const button=[...document.querySelectorAll('.ob-header nav button')].find(e=>e.querySelector('span')?.textContent===${JSON.stringify(label)});if(!button)throw Error('Missing workspace');button.click();})()`);
+  await until(() => evaluate(`!!document.querySelector(${JSON.stringify(selector)})`), label + ' workspace');
+}
+async function fill(selector, value) {
+  await evaluate(`(()=>{const input=document.querySelector(${JSON.stringify(selector)});if(!input)throw Error('Missing form field');const prototype=input instanceof HTMLTextAreaElement?HTMLTextAreaElement.prototype:HTMLInputElement.prototype;Object.getOwnPropertyDescriptor(prototype,'value').set.call(input,${JSON.stringify(value)});input.dispatchEvent(new Event('input',{bubbles:true}));input.dispatchEvent(new Event('change',{bubbles:true}));})()`);
+}
+async function chooseField(scope, label, value) {
+  await evaluate(`(()=>{const select=[...document.querySelectorAll(${JSON.stringify(scope + ' label')})].find(e=>e.querySelector('span')?.textContent===${JSON.stringify(label)})?.querySelector('select');if(!select)throw Error('Missing select: '+${JSON.stringify(label)});Object.getOwnPropertyDescriptor(HTMLSelectElement.prototype,'value').set.call(select,String(${JSON.stringify(value)}));select.dispatchEvent(new Event('change',{bubbles:true}));})()`);
+}
 async function inspectorTab(text) {
   if (!await evaluate("!!document.querySelector('.ob-inspector')")) await clickLabel('Show inspector');
   await until(() => evaluate("!!document.querySelector('.ob-inspector')"), 'visible inspector');
   await clickText('.ob-inspector [role=tab]', text);
   await until(() => evaluate(`document.querySelector('.ob-inspector [role=tab][aria-selected=true]')?.textContent.trim()===${JSON.stringify(text)}`), text + ' inspector tab');
 }
-async function setRange(label, value) {
-  await evaluate(`(()=>{const field=[...document.querySelectorAll('.ob-inspector .ob-range')].find(e=>e.querySelector('label')?.textContent===${JSON.stringify(label)});const input=field?.querySelector('input[type=range]');if(!input)throw Error('Missing range: '+${JSON.stringify(label)});Object.getOwnPropertyDescriptor(HTMLInputElement.prototype,'value').set.call(input,String(${JSON.stringify(value)}));input.dispatchEvent(new Event('input',{bubbles:true}));input.dispatchEvent(new Event('change',{bubbles:true}));})()`);
-  await until(() => evaluate(`Number([...document.querySelectorAll('.ob-inspector .ob-range')].find(e=>e.querySelector('label')?.textContent===${JSON.stringify(label)})?.querySelector('input')?.value)===${JSON.stringify(value)}`), label + ' committed');
+async function setRange(label, value, scope = '.ob-inspector') {
+  await evaluate(`(()=>{const field=[...document.querySelectorAll(${JSON.stringify(scope + ' .ob-range')})].find(e=>e.querySelector('label')?.textContent===${JSON.stringify(label)});const input=field?.querySelector('input[type=range]');if(!input)throw Error('Missing range: '+${JSON.stringify(label)});Object.getOwnPropertyDescriptor(HTMLInputElement.prototype,'value').set.call(input,String(${JSON.stringify(value)}));input.dispatchEvent(new Event('input',{bubbles:true}));input.dispatchEvent(new Event('change',{bubbles:true}));})()`);
+  await until(() => evaluate(`Number([...document.querySelectorAll(${JSON.stringify(scope + ' .ob-range')})].find(e=>e.querySelector('label')?.textContent===${JSON.stringify(label)})?.querySelector('input')?.value)===${JSON.stringify(value)}`), label + ' committed');
 }
 async function setSelect(label, value) {
   await evaluate(`(()=>{const field=[...document.querySelectorAll('.ob-inspector label.ob-field')].find(e=>e.querySelector('span')?.textContent===${JSON.stringify(label)});const select=field?.querySelector('select');if(!select)throw Error('Missing select: '+${JSON.stringify(label)});Object.getOwnPropertyDescriptor(HTMLSelectElement.prototype,'value').set.call(select,${JSON.stringify(value)});select.dispatchEvent(new Event('change',{bubbles:true}));})()`);
@@ -125,6 +150,80 @@ async function chooseWorld(title) {
   await inspectorTab('View'); await setSelect('Rendering quality', 'low');
 }
 
+const observationTitle = 'Imaginary gateway field note';
+async function saveVisualObservation() {
+  await evaluate("document.querySelector('.ob-header .ob-save-button').click()");
+  await until(() => evaluate("!!document.querySelector('.ob-save-dialog[open]')"), 'save observation dialog');
+  await fill('.ob-save-dialog input[placeholder="A place worth remembering"]', observationTitle);
+  await fill('.ob-save-dialog textarea', 'Nearby escape contours remain distinct below a span of 1e-60. Compare this window with the exact c = i reference.');
+  await fill('.ob-save-dialog input[placeholder="spirals, boundary, curious"]', 'deep zoom, field note');
+  await clickText('.ob-save-dialog button[type=submit]', 'Save to journal');
+  await until(() => evaluate("!document.querySelector('.ob-save-dialog') && Number([...document.querySelectorAll('.ob-header nav button')].find(e=>e.querySelector('span')?.textContent==='Journal')?.querySelector('i')?.textContent)>=1"), 'observation saved through the UI');
+}
+async function captureDialogs(prefix, compose = false) {
+  await clickLabel('Export image or session');
+  await until(() => evaluate("!!document.querySelector('.ob-export-dialog[open] select')"), 'PNG export options visible');
+  await uiSnap(prefix + '-export');
+  await clickLabel('Close dialog');
+  await inspectorTab('View');
+  await clickText('.ob-inspector button', 'Open motion studio');
+  await until(() => evaluate("!!document.querySelector('.ob-motion[open] .ob-motion-view canvas')"), 'motion studio visible');
+  await visibleImage('precision', undefined, '.ob-motion-view canvas');
+  if (compose) {
+    await setRange('Yaw', 35, '.ob-motion');
+    await visibleImage('gpu');
+    await clickText('.ob-motion-frames-heading button', 'Capture current view');
+    await until(() => evaluate("document.querySelectorAll('.ob-motion-frames article').length>=2 && document.querySelectorAll('.ob-motion-frame-preview img').length>=2"), 'two captured motion keyframes');
+  }
+  await uiSnap(prefix + '-motion');
+  await clickLabel('Close dialog');
+}
+async function captureWorkspaces(prefix, populate) {
+  await workspace('Atlas', '.ob-atlas');
+  await until(() => evaluate("document.querySelectorAll('.ob-destination-card').length>=6"), 'atlas destinations');
+  await uiSnap(prefix + '-atlas');
+  await evaluate("document.querySelector('.ob-destination-grid').scrollIntoView({block:'start'})");
+  await uiSnap(prefix + '-atlas-places');
+  await workspace('Laboratory', '.laboratory-workspace');
+  if (populate) {
+    await chooseField('#lab-panel-discovery', 'Sampling grid', 48);
+    await chooseField('#lab-panel-discovery', 'Iteration budget', 512);
+    await chooseField('#lab-panel-discovery', 'Maximum period', 8);
+    await clickText('#lab-panel-discovery .lab-settings button', 'Start expedition');
+    await until(() => evaluate("document.querySelector('[aria-label=\"Expedition progress\"]')?.getAttribute('aria-valuenow')==='100' && [...document.querySelectorAll('#lab-panel-discovery button')].some(e=>e.textContent.trim()==='Run expedition again')"), 'short expedition completed', 30000);
+    results.visualExpedition = await evaluate("({progress:document.querySelector('[aria-label=\"Expedition progress\"]').getAttribute('aria-valuenow'),candidateRows:document.querySelectorAll('#lab-panel-discovery tbody tr').length})");
+    await uiSnap(prefix + '-laboratory-expedition');
+    await clickText('#lab-panel-discovery .lab-findings-footer button', 'Save experiment');
+    await until(() => evaluate("[...document.querySelectorAll('#lab-panel-discovery .lab-findings-footer button')].some(e=>e.textContent.trim()==='Saved to journal')"), 'completed expedition saved');
+  }
+  await clickText('.lab-tabs button', 'Orbit microscope');
+  await clickText('#lab-panel-orbit .lab-orbit-presets button', 'Airplane');
+  await until(() => evaluate("document.querySelector('#lab-panel-orbit .lab-orbit-conclusion h3')?.textContent.includes('Period 3')"), 'Airplane orbit analysis complete');
+  await uiSnap(prefix + '-laboratory-orbit');
+  if (!populate) {
+    await evaluate("document.querySelector('#lab-panel-orbit .lab-orbit-main').scrollIntoView({block:'start'})");
+    await uiSnap(prefix + '-laboratory-orbit-chart');
+  }
+  await workspace('Journal', '.journal-workspace');
+  await until(() => evaluate(`!![...document.querySelectorAll('.journal-card h2')].find(e=>e.textContent===${JSON.stringify(observationTitle)})`), 'populated journal');
+  if (populate) {
+    const previousDocument = await evaluate('performance.timeOrigin');
+    await cdp('Page.reload', { ignoreCache: false });
+    await until(() => evaluate(`performance.timeOrigin!==${JSON.stringify(previousDocument)} && document.readyState==='complete' && location.hash==='#journal' && document.querySelectorAll('.journal-card').length>=2 && [...document.querySelectorAll('.journal-card h2')].some(e=>e.textContent===${JSON.stringify(observationTitle)})`), 'journal observations retained after reload');
+    results.journalPersisted = true;
+  }
+  await uiSnap(prefix + '-journal');
+  if (populate) {
+    await clickLabel('View ' + observationTitle);
+    await until(() => evaluate("!!document.querySelector('.journal-detail')"), 'saved observation details');
+    await uiSnap(prefix + '-journal-detail');
+    await clickLabel('Close observation details');
+  }
+  await workspace('Research', '.ob-research');
+  await until(() => evaluate("!!document.querySelector('.ro-source-bar a code') && !document.querySelector('.ro-load-error')"), 'research inventory loaded');
+  await uiSnap(prefix + '-research');
+}
+
 try {
   await until(async () => (await fetch('http://127.0.0.1:4173/')).ok, 'Vite preview', 30000);
   const target = await until(async () => (await (await fetch('http://127.0.0.1:9222/json/list')).json()).find(tab => tab.type === 'page'), 'Chrome debugger', 30000);
@@ -158,6 +257,7 @@ try {
   await evaluate(`(()=>{const canvas=document.querySelector(${JSON.stringify(canvasSelector)}),r=canvas.getBoundingClientRect();canvas.dispatchEvent(new WheelEvent('wheel',{deltaY:-160,clientX:r.left+r.width*.55,clientY:r.top+r.height*.48,cancelable:true}));})()`);
   results.flight = await visibleImage('gpu', results.fov.hash);
   assert.ok(Array.isArray((await sharedPayload()).engine.camera.position), 'Real wheel input enters free flight.');
+  if (screenshots) await captureDialogs('desktop', true);
   let previousImage = results.flight;
   for (const [title, key] of [['Folded space', 'mandelbox'], ['Fourth dimension', 'quaternion'], ['Contours of escape', 'landscape']]) {
     await chooseWorld(title);
@@ -192,19 +292,24 @@ try {
   assert.equal(Number(moved.exact.center.im), 1, 'The serialized coordinate retains information below binary64 resolution.');
   results.deepNavigated = await visibleImage('precision', results.deep.hash);
 
-  // Route changes exercise worker teardown and lazy workspaces without long render captures.
-  for (const [label, selector] of [['Atlas', '.ob-atlas'], ['Laboratory', '.laboratory-workspace'], ['Journal', '.journal-workspace'], ['Research', '.ob-research']]) {
-    await clickText('.ob-header nav button', label);
-    await until(() => evaluate(`!!document.querySelector(${JSON.stringify(selector)})`), label + ' workspace');
+  // Keep visual evidence in the same real user flow and ephemeral CI browser profile.
+  if (screenshots) {
+    await saveVisualObservation();
+    await captureWorkspaces('desktop', true);
+  } else {
+    for (const [label, selector] of [['Atlas', '.ob-atlas'], ['Laboratory', '.laboratory-workspace'], ['Journal', '.journal-workspace'], ['Research', '.ob-research']]) await workspace(label, selector);
   }
 
   await cdp('Emulation.setDeviceMetricsOverride', { width: 390, height: 844, deviceScaleFactor: 1, mobile: true });
   await navigate({ scene: 'mandelbulb', volumePrecision: 'gpu', quality: 'low', detail: .5, autoRotate: false });
   results.portraitGpu = await visibleImage('gpu');
   assert.ok(results.portraitGpu.height > results.portraitGpu.width, 'Portrait projection produces a portrait framebuffer.');
+  if (screenshots) await captureDialogs('mobile');
   await inspectorTab('View'); await setSelect('Volume precision', 'float64');
   await settledVolume64(); results.float64 = await visibleImage('volume64');
+  if (screenshots) await clickLabel('Hide inspector');
   await snap('03-float64-portrait');
+  if (screenshots) await captureWorkspaces('mobile', false);
 
   // Fault injection is installed only in the CI page, before application startup.
   const blockedGpu = await cdp('Page.addScriptToEvaluateOnNewDocument', { source: `(()=>{const original=HTMLCanvasElement.prototype.getContext;HTMLCanvasElement.prototype.getContext=function(kind,...args){return kind==='webgl2'?null:original.call(this,kind,...args);};})()` });
@@ -220,7 +325,7 @@ try {
   await cdp('Page.removeScriptToEvaluateOnNewDocument', { identifier: blockedWorker.identifier });
 
   assert.deepEqual(errors, []);
-  await writeFile(join(output, 'results.json'), JSON.stringify({ results, checks: ['GPU fractal pixels', 'Gamma and projection controls', 'Version 2 snapshot fidelity', 'Wheel flight', 'Mandelbox, quaternion, and landscape shaders', 'Float64 Mandelbrot canvas', 'Intentional linked Julia selection', '60-digit exact navigation', 'Workspace lifecycle', 'Portrait projection', 'Float64 refinement', 'Missing GPU fallback', 'Worker startup error recovery'], errors }, null, 2));
+  await writeFile(join(output, 'results.json'), JSON.stringify({ results, captures, checks: ['GPU fractal pixels', 'Gamma and projection controls', 'Version 2 snapshot fidelity', 'Wheel flight', 'Mandelbox, quaternion, and landscape shaders', 'Float64 Mandelbrot canvas', 'Intentional linked Julia selection', '60-digit exact navigation', 'Workspace lifecycle', 'Portrait projection', 'Float64 refinement', 'Missing GPU fallback', 'Worker startup error recovery', ...(screenshots ? ['Desktop and mobile workspace screenshots', 'Completed short laboratory expedition', 'Journal persistence after reload', 'PNG export and populated motion dialogs'] : [])], errors }, null, 2));
   console.log('PASS: actual GPU, precision, and Float64 images; exact snapshots; linked dynamics; fallbacks; no uncaught exceptions.');
 } catch (error) {
   const diagnostic = { error: String(error), lastPixels, results, errors, browserMessages, chromeLog };
