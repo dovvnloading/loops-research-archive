@@ -355,6 +355,8 @@ research/frontier/elephant_eyes_75_repair_20261126/verify.py	METADATA
 research/frontier/lemma_t_near_parabolic_20261126/verify.py	METADATA
 research/frontier/preprint_audit_20261126/verify.py	METADATA
 research/frontier/open_cell_certification_20261126/verify.py	METADATA
+research/independent_audits/h1_cell_tree_extraction_20261126/check_arithmetic.py	METADATA
+research/independent_audits/h1_mapping_telescope_20261126/check_arithmetic.py	METADATA
 research/independent_audits/whole-boundary-response_20261126/check_response.py	RESPONSE
 research/independent_audits/kl_escape_return_ideal_boundary_20261126/verify.py	METADATA
 research/independent_audits/stationary_nonlc_predecessor_lift_20261126/check_physical_orbit.py	STATIONARY CALIBRATE
