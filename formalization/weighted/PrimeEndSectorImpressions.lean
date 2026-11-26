@@ -264,4 +264,83 @@ theorem endpoint_impression_from_cofinal_wedges (c : ℂ) (n : ℕ)
     rw [mem_singleton_iff.mp hw]
     exact hz
 
+open Filter Topology
+
+/-- The angular-height wedge is exactly a metric ball about the ideal
+coordinate, punctured by the positive-height half-space. -/
+theorem wedge_eq_punctured_ball (θ : X) (ε : ℝ) :
+    wedge θ ε = ball (θ, (0 : ℝ)) ε ∩ {p : X × ℝ | 0 < p.2} := by
+  ext p
+  change (dist p.1 θ < ε ∧ 0 < p.2 ∧ p.2 < ε) ↔
+    (dist p (θ, (0 : ℝ)) < ε ∧ 0 < p.2)
+  rw [Prod.dist_eq, max_lt_iff]
+  change (dist p.1 θ < ε ∧ 0 < p.2 ∧ p.2 < ε) ↔
+    ((dist p.1 θ < ε ∧ dist p.2 (0 : ℝ) < ε) ∧ 0 < p.2)
+  rw [Real.dist_eq, sub_zero]
+  constructor
+  · rintro ⟨ha, hp, hh⟩
+    exact ⟨⟨ha, by rwa [abs_of_pos hp]⟩, hp⟩
+  · rintro ⟨⟨ha, hh⟩, hp⟩
+    exact ⟨ha, hp, by simpa only [abs_of_pos hp] using hh⟩
+
+/-- The rectangle cofinality predicate is not a surrogate: it is equality
+of actual Mathlib filters in the positive-height angular compactification. -/
+theorem cofinal_iff_nhdsWithin (A : ℕ → Set X) (H : ℕ → ℝ) (θ : X)
+    (ha : Antitone A) (hh : Antitone H) :
+    Cofinal A H θ ↔
+      (⨅ n, 𝓟 (trace (A n) (H n))) = 𝓝[{p : X × ℝ | 0 < p.2}] (θ, 0) := by
+  have hd : Directed (· ≥ ·) (fun n => trace (A n) (H n)) := by
+    intro i j
+    refine ⟨max i j, ?_, ?_⟩
+    · intro p hp
+      exact ⟨ha (le_max_left i j) hp.1, hp.2.1,
+        hp.2.2.trans (hh (le_max_left i j))⟩
+    · intro p hp
+      exact ⟨ha (le_max_right i j) hp.1, hp.2.1,
+        hp.2.2.trans (hh (le_max_right i j))⟩
+  have hb (s : Set (X × ℝ)) :
+      s ∈ (⨅ n, 𝓟 (trace (A n) (H n))) ↔
+        ∃ n, trace (A n) (H n) ⊆ s := by
+    simpa only [true_and] using (Filter.hasBasis_iInf_principal hd).mem_iff (s := s)
+  have hn (s : Set (X × ℝ)) :
+      s ∈ 𝓝[{p : X × ℝ | 0 < p.2}] (θ, 0) ↔
+        ∃ ε > 0, wedge θ ε ⊆ s := by
+    rw [Metric.mem_nhdsWithin_iff]
+    simp only [wedge_eq_punctured_ball]
+  constructor
+  · intro h
+    apply Filter.ext
+    intro s
+    rw [hb, hn]
+    constructor
+    · rintro ⟨n, hs⟩
+      obtain ⟨ε, he, hw⟩ := h.2 n
+      exact ⟨ε, he, hw.trans hs⟩
+    · rintro ⟨ε, he, hw⟩
+      obtain ⟨n, hs⟩ := h.1 ε he
+      exact ⟨n, hs.trans hw⟩
+  · intro heq
+    constructor
+    · intro ε he
+      apply (hb (wedge θ ε)).mp
+      rw [heq]
+      exact (hn (wedge θ ε)).mpr ⟨ε, he, Subset.rfl⟩
+    · intro n
+      apply (hn (trace (A n) (H n))).mp
+      rw [← heq]
+      exact (hb (trace (A n) (H n))).mpr ⟨n, Subset.rfl⟩
+
+/-- Exact ordinary prime-end coordinate filter recognition in the actual
+product topology, not just a comparison of chosen rectangles. -/
+theorem whole_trace_nhdsWithin_iff (A : ℕ → Set X) (H : ℕ → ℝ) (θ : X)
+    (hc : ∀ n, IsCompact (A n)) (ha : Antitone A)
+    (hp : ∀ n, 0 < H n) (hh : Antitone H)
+    (hsmall : ∀ ε > 0, ∃ n, H n < ε)
+    (hθ : θ ∈ (⋂ n, A n)) :
+    ((⨅ n, 𝓟 (trace (A n) (H n))) =
+      𝓝[{p : X × ℝ | 0 < p.2}] (θ, 0)) ↔
+      (⋂ n, A n) = {θ} ∧ (∀ n, ∃ δ > 0, ball θ δ ⊆ A n) :=
+  (cofinal_iff_nhdsWithin A H θ ha hh).symm.trans
+    (whole_trace_cofinal_iff A H θ hc ha hp hh hsmall hθ)
+
 end PrimeEndSectorFilters

@@ -2112,7 +2112,10 @@
         "image_closure_eq_compact",
         "nested_impression_connected",
         "quadratic_cofinal_impression_covariance",
-        "endpoint_impression_from_cofinal_wedges"
+        "endpoint_impression_from_cofinal_wedges",
+        "wedge_eq_punctured_ball",
+        "cofinal_iff_nhdsWithin",
+        "whole_trace_nhdsWithin_iff"
       ]
     },
     "obligations": [
