@@ -641,6 +641,7 @@ theorem compact_emptyInterior_exterior_data (K : Set ℂ)
     refine ⟨(t:ℂ),?_,?_⟩
     · intro hz
       have hb := hM (t:ℂ) hz
+      change ‖(t:ℂ)‖ ≤ M at hb
       rw [hnorm] at hb
       exact (not_lt_of_ge hb) htM
     · rw [hnorm]
@@ -803,6 +804,7 @@ theorem compact_uniform_entire_locus_full (K : Set ℂ)
         have hzr : ‖z‖ = r := by
           simpa [Metric.mem_sphere,dist_zero_right] using hz
         have hh := hR z hzK
+        change ‖z‖ ≤ R at hh
         rw [hzr] at hh
         exact (not_lt_of_ge hh) hrR
       have hvS : v ∈ Metric.sphere (0:ℂ) r := by
