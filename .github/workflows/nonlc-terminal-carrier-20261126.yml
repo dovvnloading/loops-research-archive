@@ -1,0 +1,30 @@
+name: Canonical non-LC terminal carrier regression
+on:
+  push:
+    branches:
+      - agent/nonlc-terminal-carrier-20261126
+  pull_request:
+    paths:
+      - 'research/independent_audits/nonlc-terminal-carrier_20261126/**'
+      - '.github/workflows/nonlc-terminal-carrier-20261126.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  exact-physical-cut-regression:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          persist-credentials: false
+      - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065
+        with:
+          python-version: '3.12'
+      - name: Exact integer-interval physical regression (not a topology proof)
+        run: python -B research/independent_audits/nonlc-terminal-carrier_20261126/verify.py
+      - name: Read-only check
+        run: |
+          git diff --exit-code
+          test -z "$(git status --porcelain)"
