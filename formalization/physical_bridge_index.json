@@ -2338,7 +2338,14 @@
         "fiber_image_eq_of_light_model",
         "quadratic_filled_light_fiber_image",
         "quadratic_filled_model_fiber_pair",
-        "quadratic_filled_light_model_finite"
+        "quadratic_filled_light_model_finite",
+        "model_open_of_fiber_transport",
+        "three_predecessors_collide_of_dense_singleton_targets",
+        "finite_of_no_three_predecessors",
+        "quadratic_filled_no_three_predecessors",
+        "dense_singleton_targets_of_dense_backward_orbit",
+        "quadratic_filled_open_model_transport_of_anchor",
+        "quadratic_filled_light_iff_finite"
       ]
     },
     "obligations": [
