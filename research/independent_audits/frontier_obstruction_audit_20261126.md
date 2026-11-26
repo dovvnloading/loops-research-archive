@@ -48,3 +48,51 @@ This is a boundary budget, not simply an unweighted harmonic-measure bound.
 The same estimate holds for any measurable subarc of length comparable to 1/r in this window, with the corresponding length in the denominator. On the complement, the attachment log differs by less than epsilon/q from 2 pi i p/q. For p=1 and epsilon<pi, this implies the 45-degree cone for the normalized log: |Im(tau/(2 pi i))|<=epsilon/(2 pi q), Re(tau/(2 pi i))>=(1-epsilon/(2 pi))/q. The radial size is at most (1+epsilon/(2 pi))/q. This is a period-independent boundary estimate outside a quantitatively small set of angles of the actual component chart. It applies a.e. to radial boundary values, not to the full tuned limb and not automatically to the distinguished rational angle 2 pi/(q+1).
 
 **What this genuinely adds.** The preceding archive note proves a sharp interior Julia disk and a single scalar obstruction to a boundary extension. (1)–(5) quantify the possible angular concentration of large displacement, including unbounded boundary values. They show precisely how thin the exceptional set must be near the root, even when the absolute period is enormous. They cannot certify the next rational attachment: a set of measure zero can contain every prescribed rational. The next section will test that limitation within the full scalar interface and isolate the missing native modulus of continuity. No MLC claim.
+
+## 3. Sharp boundary budget, with a freely localized extremizer
+
+The coefficient 1 in (1) is not optimal. In precisely the same holomorphic half-plane class the best universal coefficient is 2/pi:
+
+    integral_{E_delta} dm(zeta)/|1-zeta|^2 <= 2a/(pi delta).     (6)
+
+Here sharpness means for the non-strict threshold |u*|>=delta. The supremum is the same for the strict threshold >delta, as explained below.
+
+**Proof.** For Re z>0 define the holomorphic function
+
+    F(z)=(1/(2i))*Log((1+i z)/(1-i z)),
+
+where Log has argument in (0,pi). The quotient has imaginary part 2 Re z/|1-i z|^2>0 and real part (1-|z|^2)/|1-i z|^2. Hence F is the arctangent branch analytic in the right half-plane and at zero, with F(z)=z+O(z^3) near zero. Its real part lies in (0,pi/2); in particular the bounded harmonic function
+
+    B(z)=(4/pi) Re F(z)
+
+is >=1 when |z|>=1, and is >=0 everywhere in the half-plane. Equivalently the unit semicircle maps to Re F=pi/4. At imaginary-axis boundary points other than +/-i, the one-sided boundary limits of B are 0 for |z|<1 and 2 for |z|>1; at infinity the limit is 2.
+
+Let b(lambda)=B(u(lambda)/delta). This is bounded harmonic, nonnegative, and b(t)/(1-t)->4a/(pi delta). Its radial boundary function b* exists a.e. by the bounded harmonic Poisson representation. If u* is finite and |u*|>delta, or lies on the semicircle with Re u*>0, or is infinity, then b*>=1. The two endpoint values u*=+/-i delta require care: if v=u/(delta+u), each such value corresponds to a single value of the bounded holomorphic v on the unit circle. The boundary uniqueness theorem for bounded holomorphic functions (Privalov uniqueness; or Jensen's formula applied to v minus that constant) shows each of these level sets has measure zero unless v is constant. The derivative a>0 excludes the constant case. For completeness, if a bounded nonzero analytic function g has radial value zero on a set of positive measure, factor off any zero at the origin, rescale so |g|<=1, and Jensen's inequality gives integral -log|g(r zeta)| dm<=-log|g(0)| for all r<1. Fatou's lemma contradicts the infinite limit on that set. Thus no endpoint convention affects the integral. The Poisson identity, Fatou and the same dominated convergence argument as in (4) give
+
+    integral b*(zeta)/|1-zeta|^2 dm = 2a/(pi delta).
+
+Since b*>=1 a.e. on E_delta, (6) follows. QED.
+
+The sharper versions of (2),(3),(5) are obtained by multiplication by 2/pi. In particular at h=A/r, delta=epsilon/q, the exceptional fraction in I_h is <=2A/(epsilon q r).
+
+**Extremizer.** Set X(lambda)=(1+lambda)/(1-lambda), choose any real x0, and C=4a/delta. For Re X>0 put
+
+    W(lambda)=C/(X(lambda)-i x0),
+    u_ext(lambda)=delta*tan(F(W(lambda))/2).
+
+The reciprocal sends the right half-plane into itself, and F maps it conformally onto 0<Re F<pi/2 (the displayed fractional-linear map takes the half-plane onto the upper half-plane, then the log maps to a horizontal strip and division by 2i gives the stated vertical strip). Division by 2 followed by tan maps that strip conformally onto the right half of the unit disk: tan is the inverse of F on 0<Re F<pi/2 and Re F<pi/4 is equivalent to |z|<1. Therefore u_ext is holomorphic with Re u_ext>0 and |u_ext|<delta. As lambda=t->1, X(t)=(1+t)/(1-t), W(t)/(1-t)->C/2, and u_ext(t)/(1-t)->delta*C/4=a.
+
+For zeta=exp(i theta) !=1, X(zeta)=i x with x=cot(theta/2). Away from x=x0 and x=x0+/-C, the boundary value W=i C/(x-x0) lies on the imaginary axis. If |x-x0|<C, the boundary real part of F(W) is pi/2, so |u_ext*|=delta on the right semicircle. If |x-x0|>C, the boundary real part is zero, so u_ext* lies on the imaginary diameter and has modulus <delta (since the finite imaginary value of F(W)/2 is mapped by tan to i*tanh). At the three excluded points the choice of boundary convention is irrelevant. The exact change of variables is
+
+    dm(zeta)/|1-zeta|^2 = |dx|/(4*pi).
+
+Indeed dx/dtheta=-1/(2 sin^2(theta/2)) and |1-zeta|^2=4 sin^2(theta/2). Consequently the weighted measure of E_delta is exactly 2C/(4*pi)=2a/(pi delta). Equivalently b*=1 on that arc and zero elsewhere. Replacing delta in this construction by delta'>delta, with the same a, gives strict-threshold mass at least 2a/(pi delta'); letting delta' decrease to delta proves the same optimal supremum for >delta.
+
+This extremizer can concentrate all the sharp weighted budget on the interval |x-x0|<C about an arbitrary boundary angle other than 1, and is not claimed to be a quadratic multiplier. It need not satisfy an additional finite PLY disk because its diameter boundary can have Re u=0 away from zero. Section 4 addresses that stronger scalar class.
+
+**Sharp native consequence as an integral upper bound:** every genuine satellite component satisfying the interface of §1 has
+
+    integral_{|tau*(zeta)-2*pi*i*p/q|>=delta}
+             dm(zeta)/|1-zeta|^2 <= 2/(pi delta q^2).
+
+The proof uses neither the physical absolute period k nor the recurrence q_(i+1)>=q_i^2. The estimate is exact in the unconstrained scalar class; optimality among genuine quadratic multiplier functions is unknown. This is not the whole-copy estimate needed by CS, and no ledger gate is promoted.
