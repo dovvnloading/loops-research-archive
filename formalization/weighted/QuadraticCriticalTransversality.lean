@@ -273,5 +273,168 @@ theorem first_collision_deriv_factor_unit (c : ℂ) (a b : ℕ) (hab : a < b)
       (2*orbit c (a+1)*slope c (a+1)+1) = 4*orbit c (b+1)*q
   linear_combination 2*orbit c (b+1)*hsum - 2*slope c (a+1)*hsign
 
+/-! The exact bridge from the collision tangent to the normalized
+entrance derivative of a given moving periodic point and chart. -/
+
+open Filter
+open scoped Topology
+
+/-- The actual return orbit, starting at any dynamical point. -/
+def returnOrbit (c z : ℂ) : ℕ → ℂ
+  | 0 => z
+  | n+1 => returnOrbit c z n ^ 2 + c
+
+/-- Parameter tangent of a return orbit starting with an arbitrary tangent. -/
+def returnTangent (c z d : ℂ) : ℕ → ℂ
+  | 0 => d
+  | n+1 => 2 * returnOrbit c z n * returnTangent c z d n + 1
+
+/-- Spatial multiplier of the actual return map. -/
+def returnMultiplier (c z : ℂ) : ℕ → ℂ
+  | 0 => 1
+  | n+1 => 2 * returnOrbit c z n * returnMultiplier c z n
+
+theorem returnOrbit_eq_iterate (c z : ℂ) (p : ℕ) :
+    returnOrbit c z p = (fun w : ℂ => w^2+c)^[p] z := by
+  induction p with
+  | zero => rfl
+  | succ p ih => simp only [returnOrbit, Function.iterate_succ_apply', ih]
+
+theorem returnOrbit_orbit (c : ℂ) (m p : ℕ) :
+    returnOrbit c (orbit c m) p = orbit c (m+p) := by
+  induction p with
+  | zero => rfl
+  | succ p ih => simp only [returnOrbit, Nat.add_succ, orbit, ih]
+
+theorem returnTangent_orbit (c : ℂ) (m p : ℕ) :
+    returnTangent c (orbit c m) (slope c m) p = slope c (m+p) := by
+  induction p with
+  | zero => rfl
+  | succ p ih =>
+    simp only [returnTangent, Nat.add_succ, slope, ih, returnOrbit_orbit]
+
+theorem returnMultiplier_hasDerivAt (c z : ℂ) (p : ℕ) :
+    HasDerivAt (fun w : ℂ => returnOrbit c w p) (returnMultiplier c z p) z := by
+  induction p with
+  | zero => simpa [returnOrbit, returnMultiplier] using hasDerivAt_id z
+  | succ p ih =>
+    have hh := (ih.pow 2).add (hasDerivAt_const z c)
+    have heq : (fun w : ℂ => returnOrbit c w (p+1)) =
+        (fun w : ℂ => returnOrbit c w p)^2 + fun _ => c := by
+      funext w
+      simp [returnOrbit]
+    rw [heq]
+    simpa only [returnMultiplier, Nat.cast_ofNat, Nat.reduceSub, pow_one, add_zero]
+      using hh
+
+theorem returnTangent_hasDerivAt (c : ℂ) (z : ℂ → ℂ) (d : ℂ)
+    (hz : HasDerivAt z d c) (p : ℕ) :
+    HasDerivAt (fun w : ℂ => returnOrbit w (z w) p)
+      (returnTangent c (z c) d p) c := by
+  induction p with
+  | zero => simpa [returnOrbit, returnTangent] using hz
+  | succ p ih =>
+    have hh := (ih.pow 2).add (hasDerivAt_id c)
+    have heq : (fun w : ℂ => returnOrbit w (z w) (p+1)) =
+        (fun w : ℂ => returnOrbit w (z w) p)^2 + id := by
+      funext w
+      simp [returnOrbit]
+    rw [heq]
+    simpa only [returnTangent, Nat.cast_ofNat, Nat.reduceSub, pow_one] using hh
+
+/-- The inhomogeneous parameter forcing cancels exactly in the difference
+of tangents on the same dynamical trajectory. -/
+theorem returnTangent_sub (c z u v : ℂ) (p : ℕ) :
+    returnTangent c z u p - returnTangent c z v p =
+      returnMultiplier c z p * (u-v) := by
+  induction p with
+  | zero => simp [returnTangent, returnMultiplier]
+  | succ p ih =>
+    simp only [returnTangent, returnMultiplier]
+    calc
+      2*returnOrbit c z p*returnTangent c z u p+1 -
+          (2*returnOrbit c z p*returnTangent c z v p+1) =
+        (2*returnOrbit c z p)*(returnTangent c z u p-returnTangent c z v p) := by ring
+      _ = _ := by rw [ih] <;> ring
+
+/-- At a differentiable moving periodic point the collision tangent is the
+entrance displacement tangent multiplied by the spatial multiplier minus one. -/
+theorem landing_motion_identity (c : ℂ) (m p : ℕ) (z : ℂ → ℂ) (dz : ℂ)
+    (hz : HasDerivAt z dz c) (hmatch : z c = orbit c m)
+    (hper : (fun w : ℂ => returnOrbit w (z w) p) =ᶠ[𝓝 c] z) :
+    slope c (m+p) - slope c m =
+      (returnMultiplier c (orbit c m) p - 1) * (slope c m - dz) := by
+  have hret := (returnTangent_hasDerivAt c z dz hz p).unique
+    (hz.congr_of_eventuallyEq hper)
+  rw [hmatch] at hret
+  have hdiff := returnTangent_sub c (orbit c m) (slope c m) dz p
+  rw [returnTangent_orbit, hret] at hdiff
+  linear_combination hdiff
+
+/-- Normalizing a jointly differentiable chart to vanish at the moving
+periodic point, with spatial derivative one, makes the entrance derivative
+exactly the critical-orbit tangent minus the periodic-point tangent. -/
+theorem normalized_chart_entrance_hasDerivAt (c : ℂ) (m : ℕ)
+    (z : ℂ → ℂ) (dz : ℂ) (hz : HasDerivAt z dz c)
+    (hmatch : z c = orbit c m) (chi : ℂ × ℂ → ℂ)
+    (L : (ℂ × ℂ) →L[ℂ] ℂ)
+    (hchi : HasFDerivAt chi L (c,z c)) (hnorm : L (0,1) = 1)
+    (hzero : (fun w : ℂ => chi (w,z w)) =ᶠ[𝓝 c] (fun _ => 0)) :
+    HasDerivAt (fun w : ℂ => chi (w,orbit w m)) (slope c m - dz) c := by
+  have hzpath : HasDerivAt (fun w : ℂ => (w,z w)) (1,dz) c :=
+    (hasDerivAt_id c).prodMk hz
+  have hppath : HasDerivAt (fun w : ℂ => (w,orbit w m)) (1,slope c m) c :=
+    (hasDerivAt_id c).prodMk (orbit_hasDerivAt m c)
+  have hzD : HasDerivAt (fun w : ℂ => chi (w,z w)) (L (1,dz)) c :=
+    hchi.comp_hasDerivAt c hzpath
+  have hpD : HasDerivAt (fun w : ℂ => chi (w,orbit w m)) (L (1,slope c m)) c :=
+    hchi.comp_hasDerivAt_of_eq c hppath (by rw [hmatch])
+  have hz0 : L (1,dz) = 0 :=
+    hzD.unique ((hasDerivAt_const c (0:ℂ)).congr_of_eventuallyEq hzero)
+  have hvec : ((1,slope c m):ℂ × ℂ) - (1,dz) =
+      (slope c m-dz) • ((0,1):ℂ × ℂ) := by
+    apply Prod.ext <;> simp
+  have hlin : L (1,slope c m) - L (1,dz) = slope c m-dz := by
+    rw [← map_sub, hvec, map_smul, hnorm, smul_eq_mul, mul_one]
+  rw [hz0, sub_zero] at hlin
+  exact hpD.congr_deriv hlin
+
+/-- Exact derivative identity for the normalized chart entrance of the
+given moving periodic point; no transversality premise is used. -/
+theorem normalized_entrance_collision_identity (c : ℂ) (a b : ℕ) (hab : a < b)
+    (z : ℂ → ℂ) (dz : ℂ) (hz : HasDerivAt z dz c)
+    (hmatch : z c = orbit c (a+2))
+    (hper : (fun w : ℂ => returnOrbit w (z w) (b-a)) =ᶠ[𝓝 c] z)
+    (chi : ℂ × ℂ → ℂ) (L : (ℂ × ℂ) →L[ℂ] ℂ)
+    (hchi : HasFDerivAt chi L (c,z c)) (hnorm : L (0,1) = 1)
+    (hzero : (fun w : ℂ => chi (w,z w)) =ᶠ[𝓝 c] (fun _ => 0)) :
+    slope c (b+2) - slope c (a+2) =
+      (returnMultiplier c (orbit c (a+2)) (b-a) - 1) *
+        deriv (fun w : ℂ => chi (w,orbit w (a+2))) c := by
+  rw [(normalized_chart_entrance_hasDerivAt c (a+2) z dz hz hmatch chi L
+    hchi hnorm hzero).deriv]
+  have hi := landing_motion_identity c (a+2) (b-a) z dz hz hmatch hper
+  have hind : a+2+(b-a)=b+2 := by omega
+  rwa [hind] at hi
+
+/-- The nontrivial entrance derivative in Misiurewicz linearization is
+nonzero, for every first collision and any given normalized moving chart
+and periodic point satisfying the stated differentiability conditions. -/
+theorem normalized_entrance_deriv_ne_zero (c : ℂ) (a b : ℕ) (hab : a < b)
+    (hcoll : orbit c (a+2) = orbit c (b+2))
+    (hprev : orbit c (a+1) ≠ orbit c (b+1))
+    (z : ℂ → ℂ) (dz : ℂ) (hz : HasDerivAt z dz c)
+    (hmatch : z c = orbit c (a+2))
+    (hper : (fun w : ℂ => returnOrbit w (z w) (b-a)) =ᶠ[𝓝 c] z)
+    (chi : ℂ × ℂ → ℂ) (L : (ℂ × ℂ) →L[ℂ] ℂ)
+    (hchi : HasFDerivAt chi L (c,z c)) (hnorm : L (0,1) = 1)
+    (hzero : (fun w : ℂ => chi (w,z w)) =ᶠ[𝓝 c] (fun _ => 0)) :
+    deriv (fun w : ℂ => chi (w,orbit w (a+2))) c ≠ 0 := by
+  have hi := normalized_entrance_collision_identity c a b hab z dz hz hmatch hper
+    chi L hchi hnorm hzero
+  intro ha
+  rw [ha, mul_zero] at hi
+  exact first_collision_transverse c a b hab hcoll hprev hi
+
 end
 end LoopsQuadraticTransversality

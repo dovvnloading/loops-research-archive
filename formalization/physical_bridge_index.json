@@ -1822,7 +1822,17 @@
         "first_collision_transverse",
         "first_collision_deriv_ne_zero",
         "signed_relation_unit_mod_two",
-        "first_collision_deriv_factor_unit"
+        "first_collision_deriv_factor_unit",
+        "returnOrbit_eq_iterate",
+        "returnOrbit_orbit",
+        "returnTangent_orbit",
+        "returnMultiplier_hasDerivAt",
+        "returnTangent_hasDerivAt",
+        "returnTangent_sub",
+        "landing_motion_identity",
+        "normalized_chart_entrance_hasDerivAt",
+        "normalized_entrance_collision_identity",
+        "normalized_entrance_deriv_ne_zero"
       ]
     }
   }
