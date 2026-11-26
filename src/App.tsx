@@ -1,195 +1,1602 @@
-import { useCallback, useEffect, useMemo, useRef, useState, useId, lazy, Suspense } from 'react';
-import { ArrowRight, ArrowUpRight, Bookmark, Box, Camera, Check, ChevronDown, ChevronLeft, ChevronRight, CircleHelp, Command, Download, ExternalLink, Focus, Grid2X2, Layers3, Link2, Maximize2, Menu, Minus, Orbit, PanelLeftClose, Pause, Play, Plus, RotateCcw, Search, Settings2, Shuffle, SlidersHorizontal, Sparkles, Trash2, Upload, Waypoints, X } from 'lucide-react';
-import type { EngineState, EngineStats, ScenePreset, Workspace } from './types';
-import { CONTROL_LIMITS, DEFAULT_CONTROLS } from './lib/controls';
-import type { ControlKey } from './lib/controls';
-import { eye, navigationFloor, volumeScene } from './engine/navigation';
-import { PRESETS, CURATED, DEFAULT_STATE, applyPreset, isPlane } from './presets';
-import { download, readBookmarks, readSession, shareURL, validateState, writeBookmarks } from './lib/session';
-import type { Bookmark as SavedView } from './lib/session';
+import { lazy, Suspense, useCallback, useEffect, useMemo, useRef, useState } from 'react';
+import {
+  ArrowDownToLine,
+  ArrowLeft,
+  ArrowRight,
+  ArrowUpRight,
+  Bookmark,
+  BookOpen,
+  Box,
+  Check,
+  ChevronDown,
+  ChevronLeft,
+  ChevronRight,
+  CircleHelp,
+  Compass,
+  Copy,
+  Crosshair,
+  Expand,
+  ExternalLink,
+  FlaskConical,
+  Focus,
+  GitBranch,
+  Globe2,
+  History,
+  Keyboard,
+  Layers3,
+  Link2,
+  Maximize2,
+  Minus,
+  MoreHorizontal,
+  Network,
+  PanelLeftClose,
+  PanelRightClose,
+  Pause,
+  Play,
+  Plus,
+  Redo2,
+  RotateCcw,
+  Route,
+  Search,
+  Settings2,
+  SlidersHorizontal,
+  Sparkles,
+  Undo2,
+  Upload,
+  Video,
+  X,
+} from 'lucide-react';
+import type { EngineState, EngineStats } from './types';
+import { isPlane } from './presets';
+import { validateState, readSession } from './lib/session';
 import { FractalViewport } from './components/FractalViewport';
 import type { ViewportHandle } from './components/FractalViewport';
-const ResearchWorkspace=lazy(()=>import('./research/ResearchWorkspace').then(m=>({default:m.ResearchWorkspace})));
+import { PrecisionViewport, exactViewFromEngine, validateExactView, viewDepth } from './precision';
+import type { ExactComplex, ExactView, PrecisionStats, PrecisionViewportHandle } from './precision';
+import {
+  JournalWorkspace,
+  createSnapshotURL,
+  readSharedSnapshot,
+  saveEntry,
+  useJournal,
+  validateJournalPayload,
+} from './journal';
+import type { JournalEntry, JournalPayload } from './journal';
+import { useData } from './research/common';
+import { DESTINATIONS, STARTING_DESTINATION, TOURS } from './studio/destinations';
+import type { Destination } from './studio/destinations';
+import { Dialog, IconButton, Loading, Logo } from './studio/UI';
+import { Inspector } from './studio/Inspector';
+import { AtlasWorkspace } from './studio/AtlasWorkspace';
+import { CommandPalette } from './studio/CommandPalette';
+import type { StudioWorkspace } from './studio/CommandPalette';
+import { FieldGuide } from './studio/FieldGuide';
+import { ExportDialog } from './studio/ExportDialog';
+import { useViewHistory } from './studio/useHistory';
+import './studio/studio.css';
+const Laboratory = lazy(() =>
+  import('./laboratory/Laboratory').then((m) => ({ default: m.Laboratory })),
+);
+const ResearchWorkspace = lazy(() =>
+  import('./research/ResearchWorkspace').then((m) => ({ default: m.ResearchWorkspace })),
+);
+const ResearchOverview = lazy(() =>
+  import('./research/ResearchOverview').then((m) => ({ default: m.ResearchOverview })),
+);
+const MotionStudio = lazy(() =>
+  import('./studio/MotionStudio').then((m) => ({ default: m.MotionStudio })),
+);
 
-type Modal = 'help' | 'export' | 'save' | 'command' | 'about' | 'tour' | null;
-const TABS: {id:Workspace;label:string}[]=[{id:'explore',label:'Explore'},{id:'dynamics',label:'Dynamics'},{id:'atlas',label:'Atlas'},{id:'lab',label:'Lab'},{id:'archive',label:'Archive'}];
-const TOUR=[
-  {title:'Begin with a single rule.',text:'Every structure here is computed as you explore. Drag to orbit this Mandelbulb; scroll toward a surface feature to enter free flight. WASD and Q/E move through space. The Model controls change the equation in real time.',preset:'eightfold'},
-  {title:'Fold space into itself.',text:'The Mandelbox alternates box and sphere folds. Change its scale to explore nested architecture, then try a different material in Render.',preset:'folded'},
-  {title:'One plane. A universe of dynamics.',text:'The Mandelbrot set maps parameters of z² + c. Shift-click a point to open its Julia set alongside the parameter plane.',preset:'seahorse'},
-  {title:'Follow the research.',text:'The Atlas connects the 3 → 9 → 27 tuning cascade to the repository’s exact rational data. Archive exposes every obligation, source, and open question. These visualizations do not settle MLC.',preset:'period27'},
+type NavigationIntent = {
+  instrument?: 'discovery' | 'orbit' | 'comparison';
+  atlas?: 'places' | 'mathematics';
+  replay?: unknown;
+};
+type Modal = 'save' | 'export' | 'command' | 'guide' | 'help' | 'about' | 'motion' | null;
+const NAV: { id: StudioWorkspace; label: string; Icon: typeof Compass }[] = [
+  { id: 'explore', label: 'Explore', Icon: Compass },
+  { id: 'atlas', label: 'Atlas', Icon: Globe2 },
+  { id: 'laboratory', label: 'Laboratory', Icon: FlaskConical },
+  { id: 'journal', label: 'Journal', Icon: Bookmark },
+  { id: 'research', label: 'Research', Icon: BookOpen },
 ];
+const SESSION_KEY = 'loops.observatory.session.v2';
+function destinationForView(
+  value: Pick<JournalPayload, 'engine' | 'exact'>,
+  title?: string,
+): Destination {
+  const known = DESTINATIONS.find(
+    (d) =>
+      JSON.stringify(d.engine) === JSON.stringify(value.engine) &&
+      JSON.stringify(d.exact) === JSON.stringify(value.exact),
+  );
+  if (known && !title) return known;
+  const related =
+    DESTINATIONS.find((d) => d.engine.scene === value.engine.scene) ?? STARTING_DESTINATION;
+  const names: Record<EngineState['scene'], string> = {
+    mandelbulb: 'Mandelbulb',
+    mandelbox: 'Mandelbox',
+    quaternion: 'Quaternion Julia',
+    mandelbrot: 'Mandelbrot set',
+    julia: 'Julia set',
+    landscape: 'Escape landscape',
+  };
+  return {
+    ...related,
+    id: `custom-${value.engine.scene}`,
+    title: title?.trim() || names[value.engine.scene],
+    subtitle: title
+      ? `${names[value.engine.scene]} · saved observation`
+      : isPlane(value.engine.scene)
+        ? 'Your exact exploration window'
+        : 'Your starting view',
+    description:
+      'This view has its own starting coordinates and rendering settings. Change one variable, save an observation, and compare what happens. Reset returns to this starting view.',
+    question: isPlane(value.engine.scene)
+      ? 'Which structures persist as you change the scale or iteration budget?'
+      : 'Which features change when you vary the model while keeping the camera fixed?',
+    engine: structuredClone(value.engine),
+    exact: structuredClone(value.exact),
+  };
+}
+const safeWorkspace = (): StudioWorkspace => {
+  const hash =
+    new URLSearchParams(location.search).get('workspace') || location.hash.slice(1).split('?')[0];
+  const aliases: Record<string, StudioWorkspace> = {
+    lab: 'laboratory',
+    dynamics: 'laboratory',
+    archive: 'research',
+    papers: 'research',
+    formal: 'research',
+    ledger: 'research',
+    problems: 'research',
+  };
+  return NAV.some((n) => n.id === hash) ? (hash as StudioWorkspace) : (aliases[hash] ?? 'explore');
+};
+function initialState(): { payload: JournalPayload; message: string } {
+  try {
+    const shared = readSharedSnapshot();
+    if (shared) return { payload: shared, message: 'Shared view restored with exact coordinates.' };
+  } catch (e) {
+    return {
+      payload: {
+        engine: structuredClone(STARTING_DESTINATION.engine),
+        exact: structuredClone(STARTING_DESTINATION.exact),
+      },
+      message: (e as Error).message,
+    };
+  }
+  try {
+    if (new URLSearchParams(location.search).has('view')) {
+      const legacy = readSession();
+      return {
+        payload: { engine: legacy.state, exact: exactViewFromEngine(legacy.state) },
+        message: 'Your previous LOOPS view has been restored.',
+      };
+    }
+    const previous = sessionStorage.getItem(SESSION_KEY);
+    if (previous) return { payload: validateJournalPayload(JSON.parse(previous)), message: '' };
+  } catch {}
+  return {
+    payload: {
+      engine: structuredClone(STARTING_DESTINATION.engine),
+      exact: structuredClone(STARTING_DESTINATION.exact),
+    },
+    message: '',
+  };
+}
+function snapshotThumbnail(src: string): Promise<string | undefined> {
+  return new Promise((resolve) => {
+    if (!src) {
+      resolve(undefined);
+      return;
+    }
+    const img = new Image();
+    img.onload = () => {
+      const canvas = document.createElement('canvas');
+      const ratio = Math.min(1, 480 / img.naturalWidth, 320 / img.naturalHeight);
+      canvas.width = Math.round(img.naturalWidth * ratio);
+      canvas.height = Math.round(img.naturalHeight * ratio);
+      canvas.getContext('2d')?.drawImage(img, 0, 0, canvas.width, canvas.height);
+      resolve(canvas.toDataURL('image/webp', 0.82));
+    };
+    img.onerror = () => resolve(undefined);
+    img.src = src;
+  });
+}
 
-function Logo(){return <svg viewBox="0 0 40 40" aria-hidden="true"><g fill="none" stroke="currentColor" strokeWidth="1.5"><ellipse cx="20" cy="20" rx="16" ry="8"/><ellipse cx="20" cy="20" rx="16" ry="8" transform="rotate(60 20 20)"/><ellipse cx="20" cy="20" rx="16" ry="8" transform="rotate(120 20 20)"/></g></svg>}
-function SceneGlyph({kind,className=''}:{kind:string;className?:string}){
-  const lines=useMemo(()=>Array.from({length:kind==='mandelbox'?7:11},(_,i)=>{
-    const r=7+i*2.3;const pts=Array.from({length:120},(_,j)=>{const t=j/119*Math.PI*2;const n=kind==='mandelbulb'?8:kind==='quaternion'?3:5;const rr=r*(1+.16*Math.sin(t*n+i*.35));return `${40+rr*Math.cos(t)},${40+rr*Math.sin(t)*.73}`;}).join(' ');return <polyline key={i} points={pts} transform={`rotate(${i*9} 40 40)`}/>;
-  }),[kind]);
-  return <svg className={`scene-glyph ${className}`} viewBox="0 0 80 80" aria-hidden="true"><g fill="none" stroke="currentColor" strokeWidth=".45" opacity=".8">{kind==='mandelbox'?Array.from({length:6},(_,i)=><rect key={i} x={13+i*4} y={13+i*4} width={54-i*8} height={54-i*8} transform={`rotate(${i*9} 40 40)`}/>):lines}</g></svg>;
-}
-function NumericField({label,value,min,max,onChange}:{label:string;value:number;min:number;max:number;onChange:(n:number)=>void}){
-  const [editing,setEditing]=useState(false),[draft,setDraft]=useState('');
-  const cancel=useRef(false);
-  return <input className="exact-value" aria-label={label} type="number" step="any" min={min} max={max}
-    value={editing?draft:value} onFocus={()=>{cancel.current=false;setDraft(String(value));setEditing(true);}}
-    onChange={e=>setDraft(e.target.value)} onBlur={()=>{const n=Number(draft);if(!cancel.current&&draft.trim()&&Number.isFinite(n))onChange(Math.max(min,Math.min(max,n)));setEditing(false);}}
-    onKeyDown={e=>{if(e.key==='Enter'){e.preventDefault();e.currentTarget.blur();}if(e.key==='Escape'){e.stopPropagation();cancel.current=true;e.currentTarget.blur();}}}/>;
-}
-function Slider({label,value,min,max,step=1,onChange,format}:{label:string;value:number;min:number;max:number;step?:number;onChange:(n:number)=>void;format?:(n:number)=>string}){
-  const id=useId();
-  return <div className="control"><div className="control-label"><label htmlFor={id}>{label}{format&&<small>{format(value)}</small>}</label><NumericField label={label+' exact value'} value={value} min={min} max={max} onChange={onChange}/></div><input id={id} type="range" min={min} max={max} step={step} value={value} onChange={e=>onChange(Number(e.target.value))} style={{'--range':`${(value-min)/(max-min)*100}%`} as React.CSSProperties}/><div className="range-caps"><span>{min}</span><span>{Number(max.toFixed(3))}</span></div></div>;
-}
-function Coordinate({label,value,min,max,onChange}:{label:string;value:number;min:number;max:number;onChange:(n:number)=>void}){
-  return <div className="coordinate-field"><span>{label}</span><NumericField label={label} value={value} min={min} max={max} onChange={onChange}/></div>;
-}
-function Toggle({label,checked,onChange,disabled=false}:{label:string;checked:boolean;onChange:()=>void;disabled?:boolean}){return <button className="toggle-row" disabled={disabled} role="switch" aria-checked={checked} onClick={onChange}><span>{label}</span><span className={`toggle ${checked?'on':''}`}><i/></span></button>}
-function ModalFrame({title,onClose,children,className=''}:{title:string;onClose:()=>void;children:React.ReactNode;className?:string}){
-  const ref=useRef<HTMLDialogElement>(null);
-  useEffect(()=>{ref.current?.showModal();return()=>ref.current?.close();},[]);
-  return <dialog className={`modal ${className}`} ref={ref} onCancel={onClose} onClick={e=>{if(e.target===ref.current)onClose();}}><div className="modal-head"><h2>{title}</h2><button className="icon-button" onClick={onClose} aria-label="Close dialog"><X size={18}/></button></div>{children}</dialog>;
-}
-
-export default function App(){
-  const initial=useMemo(readSession,[]);
-  const [state,setState]=useState<EngineState>(initial.state);
-  const [workspace,setWorkspace]=useState<Workspace>(initial.workspace);
-  const [activePreset,setActivePreset]=useState(initial.state===DEFAULT_STATE?'eightfold':'');
-  const [stats,setStats]=useState<EngineStats>({fps:0,resolution:'—',precision:'GPU',renderer:'Starting WebGL2'});
-  const [modal,setModal]=useState<Modal>(null);const [notice,setNotice]=useState('');const [error,setError]=useState('');
-  const [focus,setFocus]=useState(false);const [library,setLibrary]=useState(()=>innerWidth>900);const [inspector,setInspector]=useState(()=>innerWidth>1100);const [inspectorTab,setInspectorTab]=useState<'shape'|'render'|'view'>('shape');
-  const [saved,setSaved]=useState<SavedView[]>(readBookmarks);const [saveName,setSaveName]=useState('');const [query,setQuery]=useState('');
-  const [compare,setCompare]=useState(false);const [compareView,setCompareView]=useState({center:[0,0] as [number,number],scale:3.2});const [tour,setTour]=useState(0);
-  const viewport=useRef<ViewportHandle>(null);const fileInput=useRef<HTMLInputElement>(null);const toastTimer=useRef<ReturnType<typeof setTimeout>>(undefined);
-  const active=PRESETS.find(p=>p.state.scene===state.scene)||PRESETS[0];const plane=isPlane(state.scene);const volume=volumeScene(state.scene);
-  const notify=useCallback((message:string)=>{setNotice(message);clearTimeout(toastTimer.current);toastTimer.current=setTimeout(()=>setNotice(''),3600);},[]);
-  const change=useCallback((patch:Partial<EngineState>)=>setState(s=>validateState({...s,...patch})),[]);
-  const control=(key:ControlKey,label:string,step:number)=>{const [,min,max]=CONTROL_LIMITS[key];return <Slider key={key} label={label} value={state.controls[key]} min={min} max={max} step={step} onChange={value=>change({controls:{...state.controls,[key]:value}})}/>;};
-  const selectPreset=useCallback((p:ScenePreset)=>{setState(s=>applyPreset(p,s));setActivePreset(p.id);setWorkspace('explore');setCompare(false);setError('');},[]);
-  const navigate=useCallback((w:Workspace)=>{setWorkspace(w);setModal(null);setFocus(false);const u=new URL(location.href);u.searchParams.delete('workspace');u.hash=w==='explore'?'':w;history.replaceState(null,'',u);},[]);
-  const reset=useCallback(()=>{setState(s=>applyPreset(PRESETS.find(p=>p.state.scene===s.scene)||PRESETS[0],s));setActivePreset('');setCompareView({center:[0,0],scale:3.2});notify('View reset');},[notify]);
-  const pickParameter=useCallback((c:[number,number])=>{change({julia:c});setCompare(true);notify(`Julia parameter selected: ${c[0].toFixed(6)} ${c[1]<0?'−':'+'} ${Math.abs(c[1]).toFixed(6)}i`);},[change,notify]);
-  const fullscreen=useCallback(async()=>{try{if(document.fullscreenElement)await document.exitFullscreen();else await document.documentElement.requestFullscreen();}catch{setFocus(f=>!f);notify('Focus mode enabled');}},[notify]);
-  const copyLink=useCallback(async()=>{const url=shareURL(state,workspace);try{await navigator.clipboard.writeText(url);notify('Exact view link copied');}catch{setModal('export');notify('Copy the view link from the export dialog');}},[state,workspace,notify]);
-  const zoom=useCallback((factor:number)=>viewport.current?.zoom(factor),[]);
-  const exportImage=useCallback(()=>{const image=viewport.current?.capture();if(image){download(image,`loops-${state.scene}-${Date.now()}.png`,'image/png');notify('Fractal image exported');}else notify('Open Explore or wait for the active Float64 pass to finish before exporting');},[state.scene,notify]);
-  useEffect(()=>()=>clearTimeout(toastTimer.current),[]);
-  useEffect(()=>{const fn=()=>{const session=readSession();setWorkspace(session.workspace);};window.addEventListener('hashchange',fn);return()=>window.removeEventListener('hashchange',fn);},[]);
-  useEffect(()=>{
-    const listener=(event:KeyboardEvent)=>{
-      const typing=event.target instanceof HTMLElement && (['INPUT','TEXTAREA','SELECT'].includes(event.target.tagName)||event.target.isContentEditable);
-      if((event.metaKey||event.ctrlKey)&&event.key.toLowerCase()==='k'){event.preventDefault();setQuery('');setModal(m=>m==='command'?null:'command');return;}
-      if(typing||modal)return;
-      if(event.target instanceof HTMLElement && event.target.closest('button,a,[role=switch]') && [' ','Enter','ArrowLeft','ArrowRight','ArrowUp','ArrowDown'].includes(event.key))return;
-      if(workspace!=='explore'){if(event.key.toLowerCase()==='f')void fullscreen();if(event.key==='?')setModal('help');return;}
-      if(volumeScene(state.scene)&&['w','a','s','d','q','e'].includes(event.key.toLowerCase())&&!event.altKey&&!event.ctrlKey&&!event.metaKey){event.preventDefault();viewport.current?.fly(event.key.toLowerCase());return;}
-      if(event.key===' '){event.preventDefault();if(state.scene!=='mandelbrot'&&!state.camera.position&&state.volumePrecision!=='float64')change({autoRotate:!state.autoRotate});}
-      if(event.key.toLowerCase()==='r')reset();
-      if(event.key.toLowerCase()==='f')void fullscreen();
-      if(event.key.toLowerCase()==='h')setFocus(f=>!f);
-      if(event.key==='?')setModal('help');
-      if(event.key==='+'||event.key==='=')zoom(.8);
-      if(event.key==='-')zoom(1.25);
-      if(['ArrowLeft','ArrowRight','ArrowUp','ArrowDown'].includes(event.key)&&workspace==='explore'){
-        event.preventDefault();const dx=event.key==='ArrowLeft'?-1:event.key==='ArrowRight'?1:0;const dy=event.key==='ArrowUp'?1:event.key==='ArrowDown'?-1:0;
-        if(plane)change({center:[state.center[0]+dx*state.scale*.08,state.center[1]+dy*state.scale*.08]});
-        else change({camera:{...state.camera,yaw:state.camera.yaw+dx*.12,pitch:Math.max(-1.4,Math.min(1.4,state.camera.pitch+dy*.1))}});
+export default function App() {
+  const initial = useMemo(initialState, []);
+  const [engine, setEngine] = useState<EngineState>(initial.payload.engine),
+    [exact, setExact] = useState<ExactView>(initial.payload.exact),
+    [workspace, setWorkspace] = useState<StudioWorkspace>(safeWorkspace);
+  const [originDestination, setOriginDestination] = useState<Destination>(() =>
+      destinationForView(initial.payload),
+    ),
+    [modal, setModal] = useState<Modal>(null),
+    [libraryOpen, setLibraryOpen] = useState(() => innerWidth > 1150),
+    [inspectorOpen, setInspectorOpen] = useState(() => innerWidth > 960),
+    [focus, setFocus] = useState(false);
+  const [stats, setStats] = useState<EngineStats>({
+      fps: 0,
+      resolution: 'Preparing',
+      precision: 'Adaptive',
+      renderer: 'Initializing',
+    }),
+    [precisionStats, setPrecisionStats] = useState<PrecisionStats | null>(null),
+    [renderError, setRenderError] = useState(''),
+    [engineRevision, setEngineRevision] = useState(0);
+  const [linked, setLinked] = useState(false),
+    [linkedView, setLinkedView] = useState<ExactView>({
+      ...STARTING_DESTINATION.exact,
+      family: 'julia',
+      center: { re: '0', im: '0' },
+      span: '3.2',
+      iterations: 768,
+    });
+  const [notice, setNotice] = useState(initial.message),
+    [parentId, setParentId] = useState<string | null>(null),
+    [saving, setSaving] = useState(false),
+    [saveTitle, setSaveTitle] = useState(''),
+    [saveNotes, setSaveNotes] = useState(''),
+    [saveTags, setSaveTags] = useState(''),
+    [saveError, setSaveError] = useState('');
+  const [replay, setReplay] = useState<unknown>(undefined);
+  const [labInstrument, setLabInstrument] = useState<'discovery' | 'orbit' | 'comparison'>(
+    'discovery',
+  );
+  const [atlasMode, setAtlasMode] = useState<'places' | 'mathematics'>('places');
+  const [tour, setTour] = useState<{ id: string; step: number } | null>(null),
+    [researchTab, setResearchTab] = useState<'overview' | 'archive' | 'dynamics' | 'precision'>(
+      'overview',
+    ),
+    [learnOpen, setLearnOpen] = useState(false);
+  const viewport = useRef<ViewportHandle>(null),
+    precisionViewport = useRef<PrecisionViewportHandle>(null),
+    stage = useRef<HTMLDivElement>(null),
+    fileInput = useRef<HTMLInputElement>(null),
+    toastTimer = useRef<ReturnType<typeof setTimeout> | undefined>(undefined),
+    cachedCapture = useRef<{ image: string; key: string } | null>(null);
+  const journal = useJournal();
+  const manifest = useData<{ source_commit: string; archive_files: number }>('manifest.json');
+  const plane = isPlane(engine.scene),
+    volume = ['mandelbulb', 'mandelbox', 'quaternion'].includes(engine.scene);
+  const destination = useMemo(
+    () =>
+      originDestination.engine.scene === engine.scene
+        ? originDestination
+        : destinationForView({ engine, exact }),
+    [originDestination, engine, exact],
+  );
+  const payload = useMemo<JournalPayload>(
+    () => ({
+      engine,
+      exact,
+      sourceRevision: manifest.data?.source_commit ?? initial.payload.sourceRevision,
+    }),
+    [engine, exact, manifest.data, initial],
+  );
+  const notify = useCallback((message: string) => {
+    setNotice(message);
+    clearTimeout(toastTimer.current);
+    toastTimer.current = setTimeout(() => setNotice(''), 5500);
+  }, []);
+  const captureKey = useMemo(() => JSON.stringify({ engine, exact }), [engine, exact]);
+  const capture = useCallback(() => {
+    const image = plane ? precisionViewport.current?.capture() : viewport.current?.capture();
+    return image || (cachedCapture.current?.key === captureKey ? cachedCapture.current.image : '');
+  }, [plane, captureKey]);
+  const restore = useCallback((value: JournalPayload, entry?: JournalEntry) => {
+    const p = validateJournalPayload(value);
+    setEngine(p.engine);
+    setExact(p.exact);
+    setOriginDestination(destinationForView(p, entry?.title));
+    setLinkedView((v) => ({ ...v, julia: p.exact.julia }));
+    setRenderError('');
+    setPrecisionStats(null);
+    if (entry) setParentId(entry.id);
+  }, []);
+  const viewHistory = useViewHistory(payload, restore);
+  const navigate = useCallback(
+    (next: StudioWorkspace, intent?: NavigationIntent) => {
+      if (next === 'laboratory') {
+        setReplay(intent?.replay);
+        setLabInstrument(intent?.instrument ?? 'discovery');
       }
-    };window.addEventListener('keydown',listener);return()=>window.removeEventListener('keydown',listener);
-  },[state,modal,workspace,plane,change,reset,fullscreen,zoom]);
-  const saveView=()=>{const next=[{id:crypto.randomUUID(),name:saveName.trim()||`${active.name} study`,state:structuredClone(state),created:new Date().toISOString()},...saved].slice(0,24);if(writeBookmarks(next)){setSaved(next);setModal(null);notify('View saved to this browser');}else notify('Browser storage is unavailable; export a session instead.');};
-  const importSession=async(file:File)=>{try{if(file.size>100000)throw new Error();const data=JSON.parse(await file.text());if(data.version!==1||!data.state)throw new Error();setState(validateState(data.state));navigate('explore');setActivePreset('');notify('Session restored');}catch{notify('Invalid session. Choose a LOOPS version 1 JSON export.');}};
-  const startTour=()=>{setTour(0);selectPreset(CURATED[0]);setModal('tour');};
-  const randomize=()=>{change({power:state.scene==='mandelbox'?Math.round((1.2+Math.random()*1.8)*20)/20:3+Math.round(Math.random()*11),slice:(Math.random()-.5)*.6,julia:[-.8+Math.random()*.7,Math.random()*.7],palette:(['glacier','ember','violet','mono'] as const)[Math.floor(Math.random()*4)],camera:{...state.camera,yaw:Math.random()*Math.PI*2,pitch:.1+Math.random()*.5}});setActivePreset('');notify('Parameters randomized');};
-  const commands=[...PRESETS,...CURATED].filter(p=>`${p.name} ${p.subtitle}`.toLowerCase().includes(query.toLowerCase()));
-  return <div className={`app ${focus?'focus-mode':''} ${workspace!=='explore'?'research-mode':''}`}>
-    <a className="skip-link" href="#main-workspace">Skip to workspace</a>
-    <header className="topbar">
-      <button className="brand" onClick={()=>navigate('explore')} aria-label="LOOPS home"><Logo/><span>LOOPS<small>FRACTAL RESEARCH ENGINE</small></span></button>
-      <nav aria-label="Workspaces">{TABS.map(t=><button key={t.id} className={workspace===t.id?'active':''} onClick={()=>navigate(t.id)}>{t.label}{workspace===t.id&&<span className="nav-dot"/>}</button>)}</nav>
-      <div className="header-actions"><button className="search-button" onClick={()=>{setQuery('');setModal('command');}} aria-label="Search scenes and commands"><Search size={16}/><span>Find anything</span><kbd>⌘ K</kbd></button><a className="source-link" href="https://github.com/dovvnloading/loops-research-archive" target="_blank" rel="noreferrer" title="Open source repository"><span>Source</span><ArrowUpRight size={15}/></a></div>
-    </header>
-    <div className="workspace-topline"><div><span className="live-dot"/> FRACTAL COMPUTATION / RESEARCH WORKBENCH</div><span>LOCAL COMPUTATION <span className="muted">/</span> WORKBENCH</span></div>
-    {workspace==='explore'?<main className={`explorer ${library?'':'library-closed'} ${inspector?'':'inspector-closed'}`} id="main-workspace">
-      <aside className={`scene-library ${library?'':'closed'}`} aria-label="Scene library">
-        <div className="panel-heading"><span>SCENE LIBRARY</span><button className="icon-button" aria-label="Hide scene library" onClick={()=>setLibrary(false)}><PanelLeftClose size={15}/></button></div>
-        <div className="scene-group-label">01 <span>Three-dimensional</span><span className="count">03</span></div>
-        {PRESETS.slice(0,3).map((p,i)=><button key={p.id} className={`scene-item ${state.scene===p.state.scene?'selected':''}`} onClick={()=>selectPreset(p)}><div className={`scene-icon icon-${p.id}`}><SceneGlyph kind={p.id}/></div><span><strong>{p.name}</strong><small>{i===0?'Spherical power map':i===1?'Box & sphere folds':'4D → 3D slice'}</small></span>{state.scene===p.state.scene?<span className="selection-dot"/>:<ChevronRight size={13}/>}</button>)}
-        <div className="scene-group-label">02 <span>Complex dynamics</span><span className="count">03</span></div>
-        {PRESETS.slice(3).map((p,i)=><button key={p.id} className={`scene-item compact ${state.scene===p.state.scene?'selected':''}`} onClick={()=>selectPreset(p)}><div className="scene-mini-icon">{i===0?<Orbit size={18}/>:i===1?<Waypoints size={18}/>:<Layers3 size={18}/>}</div><span><strong>{p.name}</strong><small>{p.subtitle}</small></span>{state.scene===p.state.scene&&<span className="selection-dot"/>}</button>)}
-        <div className="library-bottom"><div className="saved-heading"><span>SAVED VIEWS <em>{saved.length.toString().padStart(2,'0')}</em></span><button className="icon-button" title="Save current view" onClick={()=>{setSaveName('');setModal('save');}}><Plus size={15}/></button></div>{saved.length?saved.slice(0,5).map(s=><div className="saved-item" key={s.id}><button onClick={()=>{setState(s.state);setActivePreset('');setCompare(false);}}><Bookmark size={12}/><span>{s.name}</span></button><button aria-label={`Delete ${s.name}`} onClick={()=>{const n=saved.filter(x=>x.id!==s.id);if(writeBookmarks(n))setSaved(n);}}><Trash2 size={12}/></button></div>):<p className="empty-saved">No saved views yet.</p>}
-          <button className="archive-callout" onClick={()=>navigate('atlas')}><span className="eyebrow">FROM THE RESEARCH</span><strong>3 → 9 → 27 <ArrowUpRight size={16}/></strong><span>The renormalization atlas</span><div className="callout-line"/></button>
-          <button className="tour-button" onClick={startTour}><Sparkles size={14}/> Take a guided tour <ArrowRight size={13}/></button>
+      if (next === 'atlas') setAtlasMode(intent?.atlas ?? 'places');
+      if (workspace === 'explore') cachedCapture.current = { image: capture(), key: captureKey };
+      setWorkspace(next);
+      setFocus(false);
+      setModal(null);
+      const url = new URL(location.href);
+      url.searchParams.delete('workspace');
+      url.hash = next === 'explore' ? '' : next;
+      if (url.href !== location.href) history.pushState(null, '', url);
+    },
+    [workspace, capture, captureKey],
+  );
+  const changeEngine = useCallback((patch: Partial<EngineState>) => {
+    setEngine((s) => validateState({ ...s, ...patch }));
+    if (patch.julia)
+      setExact((v) => ({
+        ...v,
+        julia: { re: String(patch.julia![0]), im: String(patch.julia![1]) },
+      }));
+  }, []);
+  const changeExact = useCallback(
+    (value: ExactView) => {
+      try {
+        const next = validateExactView(value);
+        setExact(next);
+        setEngine((s) => ({
+          ...s,
+          scene: next.family,
+          center: [Number(next.center.re), Number(next.center.im)],
+          scale: Math.max(1e-7, Number(next.span)),
+          julia: [Number(next.julia.re), Number(next.julia.im)],
+          iterations: Math.min(4096, next.iterations),
+          palette: next.palette === 'aurora' ? 'glacier' : next.palette,
+        }));
+        setRenderError('');
+      } catch (e) {
+        notify((e as Error).message);
+      }
+    },
+    [notify],
+  );
+  const researchChange = useCallback(
+    (patch: Partial<EngineState>) => {
+      const next = validateState({ ...engine, ...patch });
+      setEngine(next);
+      const nextExact = exactViewFromEngine(next);
+      setExact(nextExact);
+      setOriginDestination(destinationForView({ engine: next, exact: nextExact }));
+      setLinked(false);
+      setRenderError('');
+    },
+    [engine],
+  );
+  const choose = useCallback(
+    (d: Destination) => {
+      setEngine(structuredClone(d.engine));
+      setExact(structuredClone(d.exact));
+      setOriginDestination(d);
+      setLinkedView((v) => ({ ...v, julia: d.exact.julia }));
+      setLinked(false);
+      setPrecisionStats(null);
+      setRenderError('');
+      setParentId(null);
+      setTour(null);
+      navigate('explore');
+      if (innerWidth < 960) {
+        setLibraryOpen(false);
+        setInspectorOpen(false);
+      }
+    },
+    [navigate],
+  );
+  const reset = useCallback(() => {
+    setEngine(structuredClone(destination.engine));
+    setExact(structuredClone(destination.exact));
+    setRenderError('');
+    notify('Returned to the starting view.');
+  }, [destination, notify]);
+  const zoom = useCallback(
+    (amount: number) => {
+      if (plane) precisionViewport.current?.zoom(amount);
+      else viewport.current?.zoom(amount);
+    },
+    [plane],
+  );
+  const selectParameter = useCallback(
+    (point: ExactComplex) => {
+      setExact((v) => ({ ...v, julia: point }));
+      setEngine((s) => ({ ...s, julia: [Number(point.re), Number(point.im)] }));
+      setLinkedView((v) => ({ ...v, julia: point }));
+      setLinked(true);
+      notify('Julia view linked. Shift-click another parameter to compare.');
+    },
+    [notify],
+  );
+  const openLinked = useCallback(() => {
+    if (!plane) {
+      choose(DESTINATIONS.find((d) => d.id === 'mandelbrot')!);
+      setLinked(true);
+      return;
+    }
+    if (exact.family === 'julia') {
+      setLinkedView({ ...exact, family: 'julia' });
+      changeExact({ ...exact, family: 'mandelbrot', center: { re: '-0.5', im: '0' }, span: '3.2' });
+      setOriginDestination(DESTINATIONS.find((d) => d.id === 'mandelbrot')!);
+    } else setLinkedView((v) => ({ ...v, julia: exact.julia, palette: exact.palette }));
+    setLinked(true);
+  }, [plane, choose, exact, changeExact]);
+  const toggleLinked = useCallback(() => {
+    if (linked) setLinked(false);
+    else openLinked();
+  }, [linked, openLinked]);
+  const startTour = useCallback(
+    (id: string) => {
+      const journey = TOURS.find((t) => t.id === id);
+      if (!journey) return;
+      choose(DESTINATIONS.find((d) => d.id === journey.stops[0])!);
+      setTour({ id, step: 0 });
+    },
+    [choose],
+  );
+  const stepTour = (step: number) => {
+    if (!tour) return;
+    const journey = TOURS.find((t) => t.id === tour.id)!;
+    if (step < 0 || step >= journey.stops.length) {
+      setTour(null);
+      notify('Journey complete. Where will you go next?');
+      return;
+    }
+    choose(DESTINATIONS.find((d) => d.id === journey.stops[step])!);
+    setTour({ id: journey.id, step });
+  };
+  const openSave = useCallback(() => {
+    setSaveTitle(destination.title);
+    setSaveNotes('');
+    setSaveTags('');
+    setSaveError('');
+    setModal('save');
+  }, [destination]);
+  const save = async () => {
+    if (saving) return;
+    setSaving(true);
+    setSaveError('');
+    try {
+      const thumbnail = await snapshotThumbnail(capture());
+      const entry = await saveEntry({
+        title: saveTitle.trim() || destination.title,
+        notes: saveNotes,
+        tags: saveTags
+          .split(',')
+          .map((t) => t.trim())
+          .filter(Boolean),
+        parentId,
+        thumbnail,
+        payload,
+      });
+      setParentId(entry.id);
+      setModal(null);
+      notify(
+        journal.mode === 'memory'
+          ? 'View saved for this session. Export your journal to keep it.'
+          : 'View saved to your journal.',
+      );
+    } catch (e) {
+      setSaveError((e as Error).message);
+    } finally {
+      setSaving(false);
+    }
+  };
+  const copyLink = useCallback(async () => {
+    try {
+      await navigator.clipboard.writeText(createSnapshotURL(payload));
+      notify('Reproducible view link copied.');
+    } catch {
+      setModal('export');
+      notify('Open the Share link tab to copy your view.');
+    }
+  }, [payload, notify]);
+  const fullscreen = async () => {
+    try {
+      if (document.fullscreenElement) await document.exitFullscreen();
+      else await document.documentElement.requestFullscreen();
+    } catch {
+      setFocus((v) => !v);
+    }
+  };
+  const importSession = async (file: File) => {
+    try {
+      if (file.size > 24 * 1024 * 1024)
+        throw new Error('Choose a session file smaller than 24 MB.');
+      const data = JSON.parse(await file.text());
+      let p: JournalPayload;
+      if (data.format === 'loops-session' && data.version === 2)
+        p = validateJournalPayload(data.payload);
+      else if (data.v === 2 || data.exact) p = validateJournalPayload(data);
+      else if (data.v === 1 || data.state) {
+        const engine = validateState(data.state);
+        p = { engine, exact: exactViewFromEngine(engine) };
+      } else
+        throw new Error(
+          'This file is not a supported LOOPS session. Import journals from the Journal workspace.',
+        );
+      restore(p);
+      navigate('explore');
+      setParentId(null);
+      notify('Session imported with its exact coordinates.');
+    } catch (e) {
+      notify((e as Error).message);
+    } finally {
+      if (fileInput.current) fileInput.current.value = '';
+    }
+  };
+  const action = useCallback(
+    (id: string) => {
+      if (id === 'save') openSave();
+      else if (id === 'tour') startTour('first-light');
+      else if (id === 'inspector') {
+        navigate('explore');
+        setInspectorOpen((v) => !v);
+      } else if (['guide', 'help', 'export'].includes(id)) setModal(id as Modal);
+    },
+    [openSave, startTour, navigate],
+  );
+  const labNavigate = (target: {
+    re: string;
+    im: string;
+    span: string;
+    family?: 'mandelbrot' | 'julia';
+    iterations?: number;
+    title?: string;
+  }) => {
+    const nextExact: ExactView = {
+      ...exact,
+      family: target.family ?? 'mandelbrot',
+      center: { re: target.re, im: target.im },
+      span: target.span,
+      iterations: target.iterations ?? 1024,
+    };
+    changeExact(nextExact);
+    const nextEngine = validateState({
+      ...engine,
+      scene: nextExact.family,
+      center: [Number(target.re), Number(target.im)],
+      scale: Math.max(1e-7, Number(target.span)),
+      julia: [Number(nextExact.julia.re), Number(nextExact.julia.im)],
+      iterations: Math.min(4096, nextExact.iterations),
+      palette: nextExact.palette === 'aurora' ? 'glacier' : nextExact.palette,
+    });
+    setOriginDestination(destinationForView({ engine: nextEngine, exact: nextExact }));
+    setLinked(false);
+    navigate('explore');
+    if (target.title) notify(target.title);
+  };
+  const saveExperiment = async (experiment: { title: string; notes: string; data: unknown }) => {
+    try {
+      const entry = await saveEntry({
+        title: experiment.title,
+        notes: experiment.notes,
+        tags: ['experiment'],
+        parentId,
+        payload: { ...payload, experiment: experiment.data },
+      });
+      setParentId(entry.id);
+      notify('Experiment saved to your journal with its settings and results.');
+    } catch (e) {
+      notify((e as Error).message);
+      throw e;
+    }
+  };
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      try {
+        sessionStorage.setItem(SESSION_KEY, JSON.stringify(payload));
+      } catch {}
+    }, 750);
+    return () => clearTimeout(timer);
+  }, [payload]);
+  useEffect(() => {
+    const sync = () => setWorkspace(safeWorkspace());
+    window.addEventListener('popstate', sync);
+    window.addEventListener('hashchange', sync);
+    return () => {
+      window.removeEventListener('popstate', sync);
+      window.removeEventListener('hashchange', sync);
+    };
+  }, []);
+  useEffect(() => {
+    const handle = (e: KeyboardEvent) => {
+      const el = e.target as HTMLElement;
+      const typing = el?.closest('input,textarea,select,[contenteditable=true]');
+      if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === 'k') {
+        e.preventDefault();
+        setModal((m) => (m === 'command' ? null : 'command'));
+        return;
+      }
+      if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === 's') {
+        e.preventDefault();
+        if (modal === 'save')
+          document.querySelector<HTMLFormElement>('.ob-save-dialog form')?.requestSubmit();
+        else if (!modal) openSave();
+        return;
+      }
+      if (typing || modal) return;
+      if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === 'z') {
+        e.preventDefault();
+        e.shiftKey ? viewHistory.redo() : viewHistory.undo();
+        return;
+      }
+      if (e.key === '?') {
+        e.preventDefault();
+        setModal('help');
+        return;
+      }
+      if (e.key === 'Escape') {
+        setFocus(false);
+        setLibraryOpen(false);
+        setInspectorOpen(false);
+        return;
+      }
+      if (workspace !== 'explore') return;
+      if (e.altKey || e.metaKey || e.ctrlKey) return;
+      if (el?.closest('button,a,[role=switch]') && (e.key === ' ' || e.key === 'Enter')) return;
+      if (volume && ['w', 'a', 's', 'd', 'q', 'e'].includes(e.key.toLowerCase())) {
+        e.preventDefault();
+        viewport.current?.fly(e.key.toLowerCase());
+        return;
+      }
+      if (e.key === 'f') {
+        e.preventDefault();
+        setFocus((v) => !v);
+      }
+      if (e.key === 'r') {
+        reset();
+      }
+      if (e.key === 'b') {
+        openSave();
+      }
+      if (e.key === 'l') {
+        toggleLinked();
+      }
+      if (e.key === 'g') {
+        setModal('guide');
+      }
+      if (e.key === ' ' && volume) {
+        e.preventDefault();
+        changeEngine({
+          autoRotate: !engine.autoRotate,
+          camera: {
+            yaw: engine.camera.yaw,
+            pitch: engine.camera.pitch,
+            distance: engine.camera.distance,
+          },
+        });
+      }
+      if ((e.key === '+' || e.key === '=') && !plane) zoom(0.8);
+      if (e.key === '-' && !plane) zoom(1.25);
+    };
+    window.addEventListener('keydown', handle);
+    return () => window.removeEventListener('keydown', handle);
+  }, [
+    modal,
+    workspace,
+    volume,
+    plane,
+    engine,
+    reset,
+    openSave,
+    toggleLinked,
+    changeEngine,
+    zoom,
+    viewHistory,
+  ]);
+  useEffect(() => () => clearTimeout(toastTimer.current), []);
+  const displayStats = plane && precisionStats ? precisionStats : stats;
+  const activeTour = tour ? TOURS.find((t) => t.id === tour.id) : null;
+  const selectedPoint: [number, number] = [Number(exact.julia.re), Number(exact.julia.im)];
+  return (
+    <div
+      className={`observatory ${focus ? 'ob-focus' : ''} ${workspace !== 'explore' ? 'ob-reading' : ''}`}
+    >
+      <a
+        className="ob-skip-link"
+        href="#main-workspace"
+        onClick={(e) => {
+          e.preventDefault();
+          document.getElementById('main-workspace')?.focus();
+        }}
+      >
+        Skip to workspace
+      </a>
+      <header className="ob-header">
+        <button className="ob-brand" aria-label="LOOPS home" onClick={() => navigate('explore')}>
+          <Logo />
+          <span>
+            LOOPS<small>AN ATLAS OF INFINITY</small>
+          </span>
+        </button>
+        <nav aria-label="Main navigation">
+          {NAV.map(({ id, label, Icon }) => (
+            <button
+              key={id}
+              className={workspace === id ? 'active' : ''}
+              onClick={() => navigate(id)}
+              aria-current={workspace === id ? 'page' : undefined}
+            >
+              <Icon size={15} />
+              <span>{label}</span>
+              {id === 'journal' && journal.entries.length > 0 && <i>{journal.entries.length}</i>}
+            </button>
+          ))}
+        </nav>
+        <div className="ob-header-actions">
+          <button
+            className="ob-command-trigger"
+            onClick={() => setModal('command')}
+            aria-label="Search places and commands"
+          >
+            <Search size={16} />
+            <span>Search</span>
+            <kbd>⌘ K</kbd>
+          </button>
+          <span className="ob-header-divider" />
+          <IconButton label="Export image or session" onClick={() => setModal('export')}>
+            <ArrowDownToLine size={17} />
+          </IconButton>
+          <button className="ob-button ob-save-button" onClick={openSave}>
+            <Plus size={15} />
+            <span>Save view</span>
+          </button>
         </div>
-      </aside>
-      <section className={`stage ${compare&&plane?'comparing':''}`} aria-label="Fractal viewport">
-        <div className="viewport-area"><FractalViewport ref={viewport} state={state} hooks={{onChange:change,onStats:setStats,onSelectParameter:pickParameter,onError:setError}}/>
-          <div className="stage-heading"><div className="eyebrow"><span className="mint-square"/> {active.kind} <span className="muted">/</span> {String(PRESETS.indexOf(active)+1).padStart(2,'0')}</div><h1>{active.name}</h1><p>{active.subtitle}</p></div>
-          <div className="view-badge"><span className="live-dot"/>{plane?'PARAMETER SPACE':state.scene==='landscape'?'HEIGHT FIELD':'RAY MARCHING'}<span className="badge-divider"/>{state.quality==='auto'?'ADAPTIVE':state.quality.toUpperCase()}</div>
-          <div className="viewport-edge edge-tl"/><div className="viewport-edge edge-tr"/><div className="viewport-edge edge-bl"/><div className="viewport-edge edge-br"/>
-          {error&&<div className="engine-error" role="alert"><strong>Renderer notice</strong><p>{error}</p><button onClick={()=>navigate('atlas')}>Explore the research atlas <ArrowRight size={15}/></button></div>}
-          <div className="scene-caption"><span className="formula">{state.scene==='mandelbulb'?`z ↦ sphericalPower(z, ${state.power.toFixed(1).replace('.0','')}) + c`:active.formula}</span><p>{active.description}</p><span className="scope-label">{active.kind==='3D FRACTAL'?'NUMERICAL MODEL · NOT THE COMPLEX MANDELBROT SET':'NUMERICAL VISUALIZATION · NOT A PROOF CERTIFICATE'}</span></div>
-          <div className="orientation" aria-hidden="true"><svg viewBox="0 0 70 70"><path d="M35 39L35 12M35 39L13 51M35 39L59 50"/><circle cx="35" cy="39" r="3"/><text x="31" y="9">Y</text><text x="3" y="59">X</text><text x="61" y="57">Z</text></svg></div>
-          <div className="canvas-toolbar"><div className="tool-group"><button className="icon-button" title="Zoom in (+)" aria-label="Zoom in" onClick={()=>zoom(.8)}><Plus size={17}/></button><button className="icon-button" title="Zoom out (−)" aria-label="Zoom out" onClick={()=>zoom(1.25)}><Minus size={17}/></button><span/><button className="icon-button" title="Reset view (R)" aria-label="Reset view" onClick={reset}><RotateCcw size={15}/></button></div><div className="tool-group"><button disabled={state.scene==='mandelbrot'||!!state.camera.position||volume&&state.volumePrecision==='float64'} className={`icon-button ${state.autoRotate?'toggled':''}`} title={plane?'Animate parameter (Space)':'Auto orbit (Space)'} aria-label={state.autoRotate?'Pause animation':'Play animation'} onClick={()=>change({autoRotate:!state.autoRotate})}>{state.autoRotate?<Pause size={15}/>:<Play size={15}/>}</button><button className="icon-button" title="Focus mode (H)" aria-label="Toggle focus mode" onClick={()=>setFocus(f=>!f)}><Focus size={16}/></button><button className="icon-button" title="Fullscreen (F)" aria-label="Fullscreen" onClick={fullscreen}><Maximize2 size={15}/></button></div></div>
-          <div className="interaction-hint"><span>DRAG <i>{plane?'Pan':state.camera.position?'Look':'Orbit'}</i></span><b>·</b><span>SCROLL <i>{volume?'Fly toward cursor':'Zoom'}</i></span>{volume&&<><b>·</b><span>WASD / QE <i>Fly</i></span></>}{plane&&<><b>·</b><span>SHIFT + CLICK <i>Select c</i></span></>}</div>
+      </header>
+      <main id="main-workspace" className="ob-main" tabIndex={-1}>
+        {workspace === 'explore' ? (
+          <>
+            <div className="ob-contextbar">
+              <div>
+                <button
+                  onClick={() => setLibraryOpen((v) => !v)}
+                  aria-label={libraryOpen ? 'Hide world library' : 'Show world library'}
+                  aria-expanded={libraryOpen}
+                >
+                  <Layers3 size={14} />
+                </button>
+                <span>EXPLORER</span>
+                <ChevronRight size={12} />
+                <span className="ob-context-active">{destination.title}</span>
+                {parentId && (
+                  <span className="ob-branch-label">
+                    <GitBranch size={12} />
+                    Branch
+                  </span>
+                )}
+              </div>
+              <div>
+                <span className="ob-live-indicator">
+                  <i />
+                  LIVE MATHEMATICS
+                </span>
+                <button onClick={() => setModal('guide')}>
+                  <BookOpen size={13} />
+                  <span>Field guide</span>
+                </button>
+                <button
+                  onClick={() => setInspectorOpen((v) => !v)}
+                  aria-label={inspectorOpen ? 'Hide inspector' : 'Show inspector'}
+                  aria-expanded={inspectorOpen}
+                >
+                  <SlidersHorizontal size={14} />
+                  <span>Inspector</span>
+                </button>
+              </div>
+            </div>
+            <div
+              className={`ob-explorer ${libraryOpen ? 'has-library' : ''} ${inspectorOpen ? 'has-inspector' : ''}`}
+            >
+              {libraryOpen && (
+                <aside className="ob-world-library" aria-label="World library">
+                  <div className="ob-panel-top">
+                    <span className="ob-eyebrow">WORLDS TO EXPLORE</span>
+                    <IconButton label="Close world library" onClick={() => setLibraryOpen(false)}>
+                      <PanelLeftClose size={14} />
+                    </IconButton>
+                  </div>
+                  <div className="ob-world-list">
+                    {(['Volumes', 'Complex plane', 'Research'] as const).map((category) => (
+                      <section key={category}>
+                        <h2>{category}</h2>
+                        {DESTINATIONS.filter(
+                          (d) =>
+                            d.category === category &&
+                            !['coral', 'cathedral', 'deep-spiral', 'dendrite'].includes(d.id),
+                        ).map((d) => (
+                          <button
+                            key={d.id}
+                            className={destination.id === d.id ? 'selected' : ''}
+                            onClick={() => choose(d)}
+                            aria-pressed={destination.id === d.id}
+                          >
+                            <img src={d.image} alt="" loading="lazy" />
+                            <span>
+                              <strong>{d.title}</strong>
+                              <small>{d.subtitle.split(' · ')[0]}</small>
+                            </span>
+                            <ChevronRight size={12} />
+                          </button>
+                        ))}
+                      </section>
+                    ))}
+                  </div>
+                  <div className="ob-library-foot">
+                    <button className="ob-journey-entry" onClick={() => startTour('first-light')}>
+                      <Route size={17} />
+                      <span>
+                        <strong>A little guidance?</strong>
+                        <small>Take the first-light journey</small>
+                      </span>
+                      <ArrowUpRight size={15} />
+                    </button>
+                    <button className="ob-library-atlas" onClick={() => navigate('atlas')}>
+                      Discover the full atlas
+                      <ArrowRight size={14} />
+                    </button>
+                  </div>
+                </aside>
+              )}
+              <section
+                className={`ob-stage ${linked && plane ? 'ob-stage-linked' : ''}`}
+                ref={stage}
+                aria-label="Live fractal explorer"
+              >
+                <div className="ob-main-viewport">
+                  {plane ? (
+                    <PrecisionViewport
+                      key={`precision-${engineRevision}`}
+                      ref={precisionViewport}
+                      view={exact}
+                      onViewChange={changeExact}
+                      onStats={setPrecisionStats}
+                      onInspect={exact.family === 'mandelbrot' ? selectParameter : undefined}
+                      onError={setRenderError}
+                      className="ob-fractal-canvas"
+                      quality={engine.quality}
+                      exposure={engine.exposure}
+                    />
+                  ) : (
+                    <FractalViewport
+                      key={`volume-${engineRevision}`}
+                      ref={viewport}
+                      state={engine}
+                      hooks={{
+                        onChange: changeEngine,
+                        onStats: setStats,
+                        onError: (message) => {
+                          if (
+                            /Using the Float64|Float64 worker is rendering|CPU Mandelbrot view is available/i.test(
+                              message,
+                            )
+                          ) {
+                            setRenderError('');
+                            notify(message);
+                          } else setRenderError(message);
+                        },
+                        onSelectParameter: (c) =>
+                          selectParameter({ re: String(c[0]), im: String(c[1]) }),
+                      }}
+                      className="ob-fractal-canvas"
+                    />
+                  )}
+                  <div className="ob-stage-vignette" />
+                  <div className="ob-stage-title">
+                    <span className="ob-eyebrow">
+                      {plane
+                        ? exact.family === 'mandelbrot'
+                          ? 'THE PARAMETER PLANE'
+                          : 'THE DYNAMICAL PLANE'
+                        : engine.scene === 'landscape'
+                          ? 'ESCAPE-TIME TOPOGRAPHY'
+                          : 'MATHEMATICS IN THREE DIMENSIONS'}{' '}
+                      {DESTINATIONS.includes(destination) && (
+                        <span>
+                          / {String(DESTINATIONS.indexOf(destination) + 1).padStart(2, '0')}
+                        </span>
+                      )}
+                    </span>
+                    <h1>
+                      {destination.title}
+                      <span>.</span>
+                    </h1>
+                    <p>{destination.subtitle}</p>
+                  </div>
+                  <div className="ob-stage-badge">
+                    <span className="ob-status-dot" />
+                    <span>{plane ? exact.family : engine.scene}</span>
+                    <ChevronDown size={12} />
+                    <button
+                      aria-label="Choose another destination"
+                      onClick={() => setLibraryOpen((v) => !v)}
+                    />
+                  </div>
+                  <div className="ob-stage-equation">
+                    <code>
+                      {plane
+                        ? 'zₙ₊₁ = zₙ² + c'
+                        : engine.scene === 'mandelbulb'
+                          ? `zₙ₊₁ = sphericalPower${engine.power}(zₙ) + c`
+                          : engine.scene === 'mandelbox'
+                            ? `zₙ₊₁ = −${engine.power} · fold(zₙ) + c`
+                            : engine.scene === 'quaternion'
+                              ? 'qₙ₊₁ = qₙ² + c,  q ∈ ℍ'
+                              : 'h(c) = log-scaled escape time'}
+                    </code>
+                    <span>
+                      {plane
+                        ? `${exact.iterations.toLocaleString()} iterations · ${viewDepth(exact) > 0 ? `10⁻${viewDepth(exact)} window scale` : 'parameter space'}`
+                        : `${engine.iterations} iterations · ${engine.camera.position ? 'free flight' : 'orbital camera'}`}
+                    </span>
+                  </div>
+                  {plane &&
+                    precisionStats &&
+                    precisionStats.phase !== 'complete' &&
+                    precisionStats.phase !== 'error' && (
+                      <div className="ob-refinement" role="status">
+                        <span>
+                          {precisionStats.phase === 'preview'
+                            ? 'Resolving preview'
+                            : precisionStats.phase === 'repairing'
+                              ? 'Refining precision'
+                              : 'Resolving detail'}
+                        </span>
+                        <progress value={precisionStats.progress} max={1} />
+                        <small>{Math.round(precisionStats.progress * 100)}%</small>
+                      </div>
+                    )}
+                  <div className="ob-canvas-tools">
+                    <div>
+                      <IconButton label="Zoom in" onClick={() => zoom(0.65)}>
+                        <Plus size={18} />
+                      </IconButton>
+                      <IconButton label="Zoom out" onClick={() => zoom(1.5)}>
+                        <Minus size={18} />
+                      </IconButton>
+                      <span />
+                      <IconButton label="Reset view (R)" onClick={reset}>
+                        <RotateCcw size={16} />
+                      </IconButton>
+                    </div>
+                    <div>
+                      <IconButton
+                        label="Undo view change"
+                        onClick={viewHistory.undo}
+                        disabled={!viewHistory.canUndo}
+                      >
+                        <Undo2 size={16} />
+                      </IconButton>
+                      <IconButton
+                        label="Redo view change"
+                        onClick={viewHistory.redo}
+                        disabled={!viewHistory.canRedo}
+                      >
+                        <Redo2 size={16} />
+                      </IconButton>
+                      <span />
+                      {plane ? (
+                        <IconButton
+                          label={
+                            exact.family === 'julia'
+                              ? 'Link parameter plane (L)'
+                              : 'Link Julia view (L)'
+                          }
+                          onClick={toggleLinked}
+                          active={linked}
+                        >
+                          <GitBranch size={17} />
+                        </IconButton>
+                      ) : (
+                        <IconButton
+                          label={engine.autoRotate ? 'Pause orbit' : 'Animate orbit'}
+                          onClick={() =>
+                            changeEngine({
+                              autoRotate: !engine.autoRotate,
+                              camera: {
+                                yaw: engine.camera.yaw,
+                                pitch: engine.camera.pitch,
+                                distance: engine.camera.distance,
+                              },
+                            })
+                          }
+                          active={engine.autoRotate}
+                        >
+                          <Play size={16} />
+                        </IconButton>
+                      )}
+                      <IconButton label="Save view (B)" onClick={openSave}>
+                        <Bookmark size={16} />
+                      </IconButton>
+                      <IconButton label="Copy exact view link" onClick={() => void copyLink()}>
+                        <Link2 size={16} />
+                      </IconButton>
+                      <span />
+                      <IconButton
+                        label="Focus mode (F)"
+                        onClick={() => setFocus((v) => !v)}
+                        active={focus}
+                      >
+                        <Expand size={17} />
+                      </IconButton>
+                    </div>
+                  </div>
+                  <div className="ob-interaction-hint">
+                    <span>{plane ? 'Drag to pan' : 'Drag to orbit'}</span>
+                    <i />
+                    <span>Scroll to explore</span>
+                    <i />
+                    <span>
+                      {plane
+                        ? exact.family === 'mandelbrot'
+                          ? 'Shift-click to link a Julia set'
+                          : 'L · link the parameter plane'
+                        : 'W A S D · fly'}
+                    </span>
+                  </div>
+                  <div className="ob-axis" aria-hidden="true">
+                    <i />
+                    <span>y</span>
+                    <b>x</b>
+                    <em>z</em>
+                  </div>
+                  {renderError && (
+                    <div className="ob-render-error" role="alert">
+                      <h3>The renderer needs a moment.</h3>
+                      <p>{renderError}</p>
+                      <button
+                        className="ob-button"
+                        onClick={() => {
+                          setRenderError('');
+                          setEngineRevision((n) => n + 1);
+                        }}
+                      >
+                        Restart renderer
+                        <RotateCcw size={14} />
+                      </button>
+                      <button
+                        className="ob-button ob-subtle"
+                        onClick={() => choose(DESTINATIONS.find((d) => d.id === 'mandelbrot')!)}
+                      >
+                        Open the complex plane
+                      </button>
+                    </div>
+                  )}
+                </div>
+                {linked && plane && (
+                  <div className="ob-linked-viewport">
+                    <PrecisionViewport
+                      view={{ ...linkedView, julia: exact.julia, palette: exact.palette }}
+                      onViewChange={setLinkedView}
+                      quality="balanced"
+                      exposure={engine.exposure}
+                      onError={(message) => notify(message)}
+                      className="ob-fractal-canvas"
+                    />
+                    <div className="ob-linked-header">
+                      <div>
+                        <span className="ob-eyebrow">LINKED DYNAMICAL PLANE</span>
+                        <h2>Its Julia set.</h2>
+                      </div>
+                      <IconButton label="Close linked view" onClick={() => setLinked(false)}>
+                        <X size={17} />
+                      </IconButton>
+                    </div>
+                    <div className="ob-linked-parameter">
+                      <span>c =</span>
+                      <code>
+                        {Number(exact.julia.re).toPrecision(7)}{' '}
+                        {Number(exact.julia.im) < 0 ? '−' : '+'}{' '}
+                        {Math.abs(Number(exact.julia.im)).toPrecision(7)}i
+                      </code>
+                      <button
+                        onClick={() => {
+                          setLinkedView((v) => ({
+                            ...v,
+                            center: { re: '0', im: '0' },
+                            span: '3.2',
+                          }));
+                        }}
+                        aria-label="Reset linked Julia view"
+                      >
+                        <RotateCcw size={14} />
+                      </button>
+                    </div>
+                    <button
+                      className="ob-linked-lab"
+                      onClick={() => navigate('laboratory', { instrument: 'orbit' })}
+                    >
+                      Examine this orbit
+                      <ArrowUpRight size={13} />
+                    </button>
+                  </div>
+                )}
+                {tour && activeTour && (
+                  <div className="ob-tour-card">
+                    <div className="ob-tour-top">
+                      <span>
+                        {activeTour.title} / {tour.step + 1} OF {activeTour.stops.length}
+                      </span>
+                      <IconButton label="End journey" onClick={() => setTour(null)}>
+                        <X size={14} />
+                      </IconButton>
+                    </div>
+                    <h3>{destination.title}</h3>
+                    <p>{destination.description}</p>
+                    <div className="ob-tour-dots">
+                      {activeTour.stops.map((_, i) => (
+                        <button
+                          aria-label={`Jump to stop ${i + 1}`}
+                          key={i}
+                          className={i === tour.step ? 'active' : ''}
+                          onClick={() => stepTour(i)}
+                        />
+                      ))}
+                    </div>
+                    <div className="ob-tour-actions">
+                      <IconButton
+                        label="Previous stop"
+                        onClick={() => stepTour(tour.step - 1)}
+                        disabled={tour.step === 0}
+                      >
+                        <ArrowLeft size={16} />
+                      </IconButton>
+                      <button className="ob-button" onClick={() => stepTour(tour.step + 1)}>
+                        {tour.step === activeTour.stops.length - 1 ? 'Keep exploring' : 'Next stop'}
+                        <ArrowRight size={15} />
+                      </button>
+                    </div>
+                  </div>
+                )}
+              </section>
+              {inspectorOpen && (
+                <Inspector
+                  state={engine}
+                  exact={exact}
+                  destination={destination}
+                  onChange={changeEngine}
+                  onExact={(v) => {
+                    if (plane) changeExact(v);
+                    else setExact(v);
+                  }}
+                  onReset={reset}
+                  onFly={(key) => viewport.current?.fly(key)}
+                  onGuide={() => setModal('guide')}
+                  onMotion={() => setModal('motion')}
+                />
+              )}
+            </div>
+            <section className="ob-discovery-strip" aria-label="Curated starting points">
+              <div className="ob-discovery-label">
+                <span className="ob-eyebrow">CURIOSITY STARTS HERE</span>
+                <strong>Another way in.</strong>
+                <button onClick={() => navigate('atlas')}>
+                  All destinations
+                  <ArrowRight size={12} />
+                </button>
+              </div>
+              <div className="ob-discovery-cards">
+                {DESTINATIONS.filter((d) =>
+                  [
+                    'eightfold',
+                    'seahorse',
+                    'folded',
+                    'airplane',
+                    'quaternion',
+                    'imaginary-gateway',
+                    'deep-spiral',
+                    'coral',
+                  ].includes(d.id),
+                ).map((d) => (
+                  <button
+                    key={d.id}
+                    className={`ob-mini-destination ${destination.id === d.id ? 'selected' : ''}`}
+                    onClick={() => choose(d)}
+                  >
+                    <img src={d.image} alt="" loading="lazy" />
+                    <span>
+                      <strong>{d.title}</strong>
+                      <small>{d.subtitle}</small>
+                    </span>
+                    <ArrowUpRight size={13} />
+                  </button>
+                ))}
+              </div>
+            </section>
+            <footer className="ob-statusbar">
+              <div>
+                <span className="ob-status-dot" />
+                <strong>{displayStats.renderer}</strong>
+                <span>{displayStats.resolution}</span>
+                <span>{displayStats.precision}</span>
+              </div>
+              <div>
+                {plane ? (
+                  <span>
+                    Span <code title={exact.span}>{Number(exact.span).toExponential(3)}</code>
+                  </span>
+                ) : (
+                  <span>
+                    {stats.fps ? `${stats.fps} FPS` : 'Ready'}
+                    <i />
+                    Adaptive detail
+                  </span>
+                )}
+                <button onClick={() => setModal('help')}>
+                  <Keyboard size={13} />
+                  <span>Shortcuts</span>
+                </button>
+                <button onClick={() => setModal('about')} aria-label="About LOOPS">
+                  <CircleHelp size={13} />
+                </button>
+              </div>
+            </footer>
+          </>
+        ) : workspace === 'atlas' ? (
+          <AtlasWorkspace
+            initialMode={atlasMode}
+            onSelect={choose}
+            onTour={startTour}
+            state={engine}
+            onChange={researchChange}
+            onExplore={() => navigate('explore')}
+          />
+        ) : workspace === 'laboratory' ? (
+          <Suspense fallback={<Loading label="Preparing the laboratory…" />}>
+            <Laboratory
+              parameter={selectedPoint}
+              replay={replay}
+              initialInstrument={labInstrument}
+              onNavigate={labNavigate}
+              onSaveExperiment={saveExperiment}
+            />
+          </Suspense>
+        ) : workspace === 'journal' ? (
+          <JournalWorkspace
+            onRestore={(p, entry) => {
+              restore(p, entry);
+              if (p.experiment) {
+                navigate('laboratory', { replay: p.experiment });
+                notify('Experiment restored. Run its instrument to reproduce the observation.');
+              } else {
+                navigate('explore');
+                notify('Saved view restored. Continue exploring to create a new branch.');
+              }
+            }}
+            onNew={() => {
+              navigate('explore');
+              openSave();
+            }}
+            onBranch={(p, entry) => {
+              restore(p, entry);
+              if (p.experiment) {
+                navigate('laboratory', { replay: p.experiment });
+                notify('Experiment branch ready. Adjust its settings and save the next result.');
+              } else {
+                navigate('explore');
+                notify('Branch ready. Change the view, then save the next discovery.');
+              }
+            }}
+          />
+        ) : (
+          <div className="ob-research">
+            <div className="ob-workspace-subnav">
+              {(
+                [
+                  { id: 'overview', label: 'Research overview', Icon: Network },
+                  { id: 'archive', label: 'Ledger & source library', Icon: BookOpen },
+                  { id: 'dynamics', label: 'Dynamics workbench', Icon: GitBranch },
+                  { id: 'precision', label: 'Precision studies', Icon: Crosshair },
+                ] as const
+              ).map(({ id, label, Icon }) => (
+                <button
+                  key={id}
+                  className={researchTab === id ? 'active' : ''}
+                  onClick={() => setResearchTab(id)}
+                >
+                  <Icon size={14} />
+                  {label}
+                </button>
+              ))}
+            </div>
+            <Suspense fallback={<Loading label="Opening the research archive…" />}>
+              {researchTab === 'overview' ? (
+                <ResearchOverview
+                  onBrowse={() => setResearchTab('archive')}
+                  onAtlas={() => navigate('atlas', { atlas: 'mathematics' })}
+                  onLab={() => navigate('laboratory')}
+                />
+              ) : (
+                <ResearchWorkspace
+                  workspace={researchTab === 'precision' ? 'lab' : researchTab}
+                  state={engine}
+                  onChange={researchChange}
+                  onExplore={() => navigate('explore')}
+                />
+              )}
+            </Suspense>
+          </div>
+        )}
+      </main>
+      {focus && (
+        <button className="ob-exit-focus" onClick={() => setFocus(false)}>
+          <Focus size={16} />
+          Exit focus <kbd>F</kbd>
+        </button>
+      )}
+      {workspace === 'explore' && !focus && (
+        <div className="ob-mobile-actions">
+          <button
+            onClick={() => {
+              setLibraryOpen((v) => !v);
+              setInspectorOpen(false);
+            }}
+          >
+            <Layers3 size={17} />
+            <span>Worlds</span>
+          </button>
+          <button
+            onClick={() => {
+              setInspectorOpen((v) => !v);
+              setLibraryOpen(false);
+            }}
+          >
+            <SlidersHorizontal size={17} />
+            <span>Controls</span>
+          </button>
+          <button onClick={openSave}>
+            <Bookmark size={17} />
+            <span>Save</span>
+          </button>
         </div>
-        {compare&&plane&&<div className="comparison-pane"><div className="comparison-label"><span>LINKED JULIA SET</span><button className="icon-button" aria-label="Close Julia comparison" onClick={()=>setCompare(false)}><X size={15}/></button></div><FractalViewport state={{...state,scene:'julia',center:compareView.center,scale:compareView.scale,autoRotate:false,iterations:Math.max(256,state.iterations)}} hooks={{onChange:p=>setCompareView(v=>({...v,...p})),onError:setError}}/><span className="comparison-parameter">c = {state.julia[0].toFixed(7)} {state.julia[1]<0?'−':'+'} {Math.abs(state.julia[1]).toFixed(7)}i</span></div>}
-        {!library&&<button className="reopen-library icon-button" title="Show scenes" aria-label="Show scenes" onClick={()=>{setLibrary(true);if(innerWidth<=900)setInspector(false);}}><Menu size={18}/></button>}{!inspector&&<button className="reopen-inspector icon-button" title="Show controls" aria-label="Show controls" onClick={()=>{setInspector(true);if(innerWidth<=900)setLibrary(false);}}><SlidersHorizontal size={18}/></button>}
-      </section>
-      <aside className={`inspector ${inspector?'':'closed'}`} aria-label="Fractal controls">
-        <div className="panel-heading"><span>INSPECTOR</span><button className="icon-button" aria-label="Hide controls" onClick={()=>setInspector(false)}><SlidersHorizontal size={15}/></button></div>
-        <div className="segmented" role="group" aria-label="Inspector sections"><button aria-pressed={inspectorTab==='shape'} className={inspectorTab==='shape'?'active':''} onClick={()=>setInspectorTab('shape')}><Box size={15}/> Model</button><button aria-pressed={inspectorTab==='view'} className={inspectorTab==='view'?'active':''} onClick={()=>setInspectorTab('view')}><Camera size={15}/> View</button><button aria-pressed={inspectorTab==='render'} className={inspectorTab==='render'?'active':''} onClick={()=>setInspectorTab('render')}><Settings2 size={15}/> Render</button></div>
-        {inspectorTab==='shape'?<>
-          <div className="section-label">{plane?'COMPLEX PLANE':'FRACTAL PARAMETERS'}<span>ƒ</span></div>
-          {(state.scene==='mandelbulb'||state.scene==='mandelbox')&&<Slider label={state.scene==='mandelbulb'?'Power':'Fold magnitude'} value={state.power} min={state.scene==='mandelbulb'?2:1.2} max={state.scene==='mandelbulb'?16:3} step={state.scene==='mandelbulb'?.1:.05} onChange={power=>change({power})}/>} 
-          <Slider label="Iterations" value={state.iterations} min={plane?32:state.scene==='landscape'?32:2} max={plane?4096:state.scene==='landscape'?512:state.scene==='mandelbox'?40:64} step={plane?32:1} onChange={v=>change({iterations:v})}/>
-          {state.scene==='quaternion'&&<Slider label="4D slice" value={state.slice} min={-2} max={2} step={.01} onChange={v=>change({slice:v})}/>}
-          {(state.scene==='julia'||state.scene==='quaternion'||plane&&compare)&&<div className="complex-inputs"><span className="section-label">JULIA PARAMETER</span><Coordinate label="Re(c)" value={state.julia[0]} min={-4} max={4} onChange={v=>change({julia:[v,state.julia[1]]})}/><Coordinate label="Im(c)" value={state.julia[1]} min={-4} max={4} onChange={v=>change({julia:[state.julia[0],v]})}/></div>}
-          {plane?<>{control("planeBailout","Escape radius",.5)}<div className="coordinate-readout"><span>CENTER</span><code>{state.center[0].toPrecision(10)}<br/>{state.center[1].toPrecision(10)} i</code><span>VERTICAL SPAN <b>{state.scale.toExponential(3)}</b></span></div>{state.scene==='mandelbrot'&&<button className={`outline-button full ${compare?'mint':''}`} onClick={()=>setCompare(c=>!c)}><Grid2X2 size={14}/>{compare?'Close Julia comparison':'Compare Julia set'}</button>}<button className="text-link" onClick={()=>navigate('lab')}>Open precision lab <ArrowUpRight size={13}/></button></>:<><Slider label="Surface detail" value={state.detail} min={0} max={1} step={.05} format={v=>`${Math.round(v*100)}%`} onChange={v=>change({detail:v})}/>{state.scene!=='mandelbox'&&<Slider label="Bailout radius" value={state.bailout} min={2} max={64} step={1} onChange={v=>change({bailout:v})}/>}</>}
-          {state.scene==="landscape"&&control("reliefHeight","Relief height",.05)}
-          {volume&&<div className="flight-panel"><span className="section-label">MULTISCALE NAVIGATION</span><label className="precision-choice">Volume precision<select aria-label="Volume precision" value={state.volumePrecision} onChange={e=>change({volumePrecision:e.target.value as EngineState['volumePrecision'],autoRotate:false})}><option value="auto">Auto · switch at fine scales</option><option value="gpu">GPU · Float32 flight</option><option value="float64">CPU · Float64 deep flight</option></select></label><button className="outline-button full" onClick={()=>change({autoRotate:false,camera:state.camera.position?{yaw:state.camera.yaw,pitch:state.camera.pitch,distance:state.camera.distance}:{...state.camera,position:eye(state.camera)}})}>{state.camera.position?'Return to orbit':'Enter free flight'}</button><button className="outline-button full" onClick={()=>selectPreset(CURATED.find(p=>p.id=== (state.scene==='mandelbox'?'box-cavern':state.scene==='quaternion'?'quaternion-descent':'bulb-descent'))!)}>{state.scene==='mandelbox'?'Explore the folds':'Start a surface descent'}</button><div className="flight-directions">{[['q','Down'],['w','Forward'],['e','Up'],['a','Left'],['s','Back'],['d','Right']].map(([key,label])=><button key={key} className="outline-button" aria-label={'Fly '+label.toLowerCase()} onClick={()=>viewport.current?.fly(key)}>{label}</button>)}</div><div className="coordinate-readout"><span>CAMERA MODE <b>{state.camera.position?'FLIGHT':'ORBIT'}</b></span><code>{eye(state.camera).map(v=>v.toPrecision(state.volumePrecision==='gpu'?7:15)).join(' / ')}</code><span>EST. CLEARANCE <b>{stats.clearance?.toExponential(2)??'—'}</b></span><span>ACTIVE ITERATIONS <b>{stats.iterations??state.iterations}</b></span><span>PASS <b>{stats.refinement??'Preview'}</b></span>{stats.clearance!==undefined&&stats.clearance<navigationFloor(state,eye(state.camera))*12&&<span>LIMIT <b>NEAR PRECISION FLOOR</b></span>}</div><p className="flight-scope">Scroll toward a visible feature, drag to look, or use the flight controls. Detail refines after input stops. Auto switches to a cancellable Float64 worker near the GPU precision floor. CPU rendering refines more slowly. Distance estimates are numerical, not certified collision bounds.</p></div>}
-          <div className="control-note"><span className="small-cross">+</span><p>{plane?'Shift-click the plane to select a parameter. Use the Lab for decimal-coordinate, high-precision studies.':'Parameters are evaluated numerically. Higher iteration counts and detail increase computation time.'}</p></div>
-        </>:inspectorTab==='view'?<>
-          <div className="section-label">{plane?'COMPLEX COORDINATES':'CAMERA & PROJECTION'}</div>
-          {(plane||state.scene==='landscape')&&<div className="numeric-group">
-            <Coordinate label="Center real" value={state.center[0]} min={-1e5} max={1e5} onChange={x=>change({center:[x,state.center[1]]})}/>
-            <Coordinate label="Center imaginary" value={state.center[1]} min={-1e5} max={1e5} onChange={y=>change({center:[state.center[0],y]})}/>
-            <Coordinate label="Vertical span" value={state.scale} min={plane?1e-7:1e-4} max={12} onChange={scale=>change({scale})}/>
-          </div>}
-          {!plane&&<>
-            <Slider label="Yaw (degrees)" value={((state.camera.yaw*180/Math.PI+180)%360+360)%360-180} min={-180} max={180} step={1} onChange={yaw=>change({autoRotate:false,camera:{...state.camera,yaw:yaw*Math.PI/180}})}/>
-            <Slider label="Pitch (degrees)" value={state.camera.pitch*180/Math.PI} min={(state.scene==='landscape'?.3:-1.4)*180/Math.PI} max={1.4*180/Math.PI} step={1} onChange={pitch=>change({autoRotate:false,camera:{...state.camera,pitch:pitch*Math.PI/180}})}/>
-            {!state.camera.position&&<Slider label="Orbit distance" value={state.camera.distance} min={1.65} max={14} step={.05} onChange={distance=>change({camera:{...state.camera,distance}})}/>}
-            {control("fov","Field of view (degrees)",.25)}
-            {volume&&control("flightSpeed","Flight speed multiplier",.05)}
-          </>}
-          {state.scene!=='mandelbrot'&&control("animationSpeed","Animation speed multiplier",.05)}
-          <button className="outline-button full" onClick={()=>{const p=PRESETS.find(p=>p.state.scene===state.scene)||PRESETS[0];change({camera:p.state.camera||DEFAULT_STATE.camera,center:p.state.center||DEFAULT_STATE.center,scale:p.state.scale||DEFAULT_STATE.scale,autoRotate:false,controls:{...state.controls,fov:DEFAULT_CONTROLS.fov,flightSpeed:DEFAULT_CONTROLS.flightSpeed,animationSpeed:DEFAULT_CONTROLS.animationSpeed}});}}>Reset view parameters</button>
-          <p className="microcopy">Type precise values in the numeric fields; Enter commits, Escape cancels. For deeper decimal studies use the precision lab.</p>
-        </>:<>
-          <div className="section-label">COLOR & TONE</div><div className="palette-options">{(['glacier','ember','violet','mono'] as const).map(p=><button key={p} className={state.palette===p?'selected':''} onClick={()=>change({palette:p})} aria-label={`${p} palette`} aria-pressed={state.palette===p}><span className={`swatch ${p}`}>{state.palette===p&&<Check size={13}/>}</span><span>{p==='glacier'?'Steel blue':p==='mono'?'Grayscale':p}</span></button>)}</div>
-          <Slider label="Exposure" value={state.exposure} min={.2} max={3} step={.05} onChange={v=>change({exposure:v})}/><Slider label="Orbit color" value={state.orbitTrap} min={0} max={1} step={.05} format={v=>`${Math.round(v*100)}%`} onChange={v=>change({orbitTrap:v})}/>
-          {control("gamma","Gamma",.05)}
-          {control("contrast","Contrast",.05)}
-          {control("saturation","Saturation",.05)}
-          {plane&&<><div className="section-label subsection">ESCAPE-TIME COLOR</div>{control("bandFrequency","Band frequency",.01)}{control("bandPhase","Band phase (radians)",.05)}</>}
-          {!plane&&<><div className="section-label subsection">LIGHTING</div>{control("lightAzimuth","Key light azimuth",1)}{control("lightElevation","Key light elevation",1)}{control("lightIntensity","Key light intensity",.05)}{control("ambientIntensity","Ambient intensity",.05)}</>}
-          {state.scene==='landscape'&&control("contourDensity","Contour density",1)}
-          <div className="section-label subsection">PERFORMANCE</div>
-          <label className="quality-label" htmlFor="quality">Render quality</label><select id="quality" value={state.quality} onChange={e=>change({quality:e.target.value as EngineState['quality']})}><option value="auto">Adaptive · recommended</option><option value="high">High · more detail</option><option value="balanced">Balanced</option><option value="low">Low · save energy</option></select><p className="microcopy">Adaptive quality balances pixel density against render time. The numerical model is unchanged.</p><button className="outline-button full" onClick={()=>change({exposure:DEFAULT_STATE.exposure,orbitTrap:DEFAULT_STATE.orbitTrap,palette:DEFAULT_STATE.palette,quality:DEFAULT_STATE.quality,controls:{...state.controls,...Object.fromEntries((['gamma','contrast','saturation','bandFrequency','bandPhase','lightAzimuth','lightElevation','lightIntensity','ambientIntensity','contourDensity'] as const).map(key=>[key,DEFAULT_CONTROLS[key]]))}})}>Reset render parameters</button>
-        </>}
-        <div className="inspector-bottom"><Toggle disabled={state.scene==='mandelbrot'||!!state.camera.position||volume&&state.volumePrecision==='float64'} label={plane?'Animate Julia parameter':'Auto orbit'} checked={state.autoRotate} onChange={()=>change({autoRotate:!state.autoRotate})}/><Toggle label="Reference grid" checked={state.showGrid} onChange={()=>change({showGrid:!state.showGrid})}/><div className="action-pair"><button className="outline-button" onClick={randomize}><Shuffle size={14}/> Randomize</button><button className="icon-outline" aria-label="Save view" onClick={()=>{setSaveName('');setModal('save');}}><Bookmark size={15}/></button></div><button className="primary-button full" onClick={()=>setModal('export')}><Camera size={15}/> Export view <ArrowUpRight size={14}/></button></div>
-      </aside>
-    </main>:<main className="research-container" id="main-workspace"><Suspense fallback={<div className="loading-state"><Logo/><span>Opening research workspace…</span></div>}><ResearchWorkspace workspace={workspace} state={state} onChange={change} onExplore={()=>navigate('explore')}/></Suspense></main>}
-    {workspace==='explore'&&<section className="preset-strip" aria-label="Curated views"><div className="preset-label"><span>SCENE PRESETS</span><strong>Reference views <ArrowRight size={15}/></strong></div><div className="preset-list">{CURATED.map((p,i)=><button className={`preset-card palette-${p.state.palette} ${activePreset===p.id?'active':''}`} key={p.id} onClick={()=>selectPreset(p)}><SceneGlyph kind={p.state.scene||'mandelbulb'}/><span><strong>{p.name}</strong><small>{p.subtitle}</small></span><span className="preset-number">{String(i+1).padStart(2,'0')}</span></button>)}</div></section>}
-    <footer className="statusbar"><div><span className="live-dot"/><span>{workspace==='explore'?stats.renderer:'RESEARCH ARCHIVE'}</span><span className="status-divider"/><span>{workspace==='explore'?stats.precision:'EXACT DATA · EXPLICIT SCOPE'}</span></div><div className="status-center">{workspace==='explore'?<><span>{stats.resolution}</span><span className="status-divider"/><span>{stats.fps>0?`${stats.fps.toFixed(0)} FPS`:'ON DEMAND'}</span></>:<span>465 OBLIGATIONS <span className="muted">/</span> 46 RESEARCH UPDATES</span>}</div><button onClick={()=>setModal('help')}><CircleHelp size={13}/> Controls & shortcuts <kbd>?</kbd></button></footer>
-    <div className="mobile-controls"><button aria-expanded={library} onClick={()=>{setLibrary(!library);if(!library)setInspector(false);}}><Menu size={17}/> Scenes</button><button aria-expanded={inspector} onClick={()=>{setInspector(!inspector);if(!inspector)setLibrary(false);}}><SlidersHorizontal size={17}/> Controls</button></div>
-    {focus&&<button className="exit-focus" onClick={()=>setFocus(false)}><Focus size={15}/> Exit focus <kbd>H</kbd></button>}
-    {notice&&<div className="toast" role="status"><Check size={15}/>{notice}</div>}
-    <input ref={fileInput} type="file" accept="application/json,.json" hidden onChange={e=>{const f=e.target.files?.[0];if(f)void importSession(f);e.target.value='';}}/>
-    {modal==='help'&&<ModalFrame title="Controls & shortcuts" onClose={()=>setModal(null)}><p className="modal-intro">Keyboard and pointer controls for the active viewport.</p><div className="shortcut-list">{[['Drag','Orbit, look in flight, or pan the complex plane'],['Scroll / pinch','Fly toward the cursor in 3D / zoom in 2D'],['WASD / Q E','Fly forward, back, sideways, down and up'],['Shift + click','Select c and open the linked Julia set'],['Arrow keys','Move camera / pan by keyboard'],['Space','Play or pause animation'],['R','Reset the current scene'],['F','Fullscreen'],['H','Hide the interface'],['⌘ / Ctrl + K','Open the command palette'],['+ / −','Zoom by keyboard']].map(([k,v])=><div key={k}><kbd>{k}</kbd><span>{v}</span></div>)}</div><p className="modal-footnote">Animation starts paused. Reduced-motion preferences are respected. All research views remain usable without a GPU.</p><button className="primary-button" onClick={startTour}>Take the guided tour <ArrowRight size={15}/></button></ModalFrame>}
-    {modal==='save'&&<ModalFrame title="Save configuration" onClose={()=>setModal(null)}><p className="modal-intro">Save the equation, camera, and material in this browser. For a portable copy, export a session.</p><form onSubmit={e=>{e.preventDefault();saveView();}}><label className="form-label" htmlFor="view-name">View name</label><input id="view-name" autoFocus maxLength={60} value={saveName} onChange={e=>setSaveName(e.target.value)} placeholder={`${active.name} study`}/><button className="primary-button full" type="submit"><Bookmark size={15}/> Save view</button></form></ModalFrame>}
-    {modal==='export'&&<ModalFrame title="Export & share" onClose={()=>setModal(null)}><p className="modal-intro">Keep the image, reproduce the view, or share the exact parameters.</p><div className="export-options"><button onClick={exportImage} disabled={workspace!=='explore'}><Camera/><span><strong>Export PNG</strong><small>Current rendered viewport · {stats.resolution}</small></span><Download size={17}/></button><button onClick={()=>{download(JSON.stringify({version:1,application:'LOOPS',exported:new Date().toISOString(),state,workspace},null,2),`loops-${state.scene}-session.json`);notify('Reproducible session exported');}}><Download/><span><strong>Export session</strong><small>Equation, camera, material, and settings</small></span><ArrowUpRight size={17}/></button><button onClick={()=>fileInput.current?.click()}><Upload/><span><strong>Import session</strong><small>Continue from a saved LOOPS JSON file</small></span><ArrowUpRight size={17}/></button><button onClick={copyLink}><Link2/><span><strong>Copy view link</strong><small>Anyone with app access can reopen this view</small></span><ArrowUpRight size={17}/></button></div><label className="form-label" htmlFor="view-link">Shareable view URL</label><input id="view-link" readOnly value={shareURL(state,workspace)} onFocus={e=>e.target.select()}/><p className="modal-footnote">Shared views reproduce parameters. Pixel output may vary by GPU and adaptive quality. No account or server storage is needed.</p></ModalFrame>}
-    {modal==='command'&&<ModalFrame title="Search workbench" onClose={()=>setModal(null)} className="command-modal"><div className="command-search"><Search size={19}/><input autoFocus value={query} onChange={e=>setQuery(e.target.value)} placeholder="Find a scene, workspace, or action…" aria-label="Search scenes and actions"/></div><div className="command-results">{TABS.filter(t=>t.label.toLowerCase().includes(query.toLowerCase())).map(t=><button key={t.id} onClick={()=>navigate(t.id)}><Grid2X2 size={16}/><span>{t.label}<small>Workspace</small></span><ArrowRight size={14}/></button>)}{commands.map(p=><button key={p.id} onClick={()=>{selectPreset(p);setModal(null);}}><Orbit size={16}/><span>{p.name}<small>{p.subtitle}</small></span><ArrowRight size={14}/></button>)}{['export','save','help','tour'].filter(s=>s.includes(query.toLowerCase())).map(action=><button key={action} onClick={()=>action==='tour'?startTour():setModal(action as Modal)}><Command size={16}/><span>{action[0].toUpperCase()+action.slice(1)}<small>Action</small></span><ArrowRight size={14}/></button>)}{query&&commands.length===0&&<button onClick={()=>{navigate('archive');notify('Use the archive search to find claims, sources, and documents.');}}><Search size={16}/><span>Search the research archive<small>511 entries and all source documents</small></span><ArrowRight size={14}/></button>}</div><div className="command-footer"><span>SCENES / RESEARCH / ACTIONS</span><kbd>ESC TO CLOSE</kbd></div></ModalFrame>}
-    {modal==='tour'&&<ModalFrame title={TOUR[tour].title} onClose={()=>setModal(null)} className="tour-modal"><span className="eyebrow">FIELD GUIDE / 0{tour+1} OF 04</span><p className="modal-intro">{TOUR[tour].text}</p><div className="tour-progress">{TOUR.map((_,i)=><span key={i} className={i===tour?'active':''}/>)}</div><div className="tour-actions"><button className="outline-button" disabled={tour===0} onClick={()=>{const n=tour-1;setTour(n);selectPreset(CURATED.find(p=>p.id===TOUR[n].preset)!);}}><ChevronLeft size={15}/> Previous</button><button className="primary-button" onClick={()=>{if(tour===3){navigate('atlas');return;}const n=tour+1;setTour(n);selectPreset(CURATED.find(p=>p.id===TOUR[n].preset)!);}}>{tour===3?'Enter the atlas':'Continue'}<ArrowRight size={15}/></button></div></ModalFrame>}
-  </div>;
+      )}
+      <input
+        type="file"
+        accept="application/json,.json"
+        hidden
+        ref={fileInput}
+        onChange={(e) => {
+          const file = e.target.files?.[0];
+          if (file) void importSession(file);
+        }}
+      />
+      {modal === 'command' && (
+        <CommandPalette
+          onClose={() => setModal(null)}
+          onSelect={choose}
+          onNavigate={navigate}
+          onAction={action}
+        />
+      )}
+      {modal === 'guide' && (
+        <FieldGuide
+          destination={destination}
+          state={engine}
+          exact={exact}
+          onClose={() => setModal(null)}
+          onLab={() => navigate('laboratory', { instrument: 'orbit' })}
+          onAtlas={() => navigate('atlas', { atlas: 'mathematics' })}
+          onResearch={() => navigate('research')}
+          onLink={() => {
+            navigate('explore');
+            openLinked();
+          }}
+        />
+      )}
+      {modal === 'export' && (
+        <ExportDialog
+          payload={payload}
+          capture={capture}
+          aspect={(() => {
+            const box = stage.current?.querySelector('.ob-main-viewport')?.getBoundingClientRect();
+            return box && box.height > 0 ? box.width / box.height : 1.5;
+          })()}
+          onClose={() => setModal(null)}
+        />
+      )}
+      {modal === 'motion' && (
+        <Suspense fallback={<Loading />}>
+          <MotionStudio
+            state={engine}
+            onChange={changeEngine}
+            capture={capture}
+            getCanvas={() =>
+              stage.current?.querySelector<HTMLCanvasElement>(
+                '.ob-main-viewport > canvas.ob-fractal-canvas',
+              ) ?? null
+            }
+            onClose={() => setModal(null)}
+            notify={notify}
+          />
+        </Suspense>
+      )}
+      {modal === 'save' && (
+        <Dialog
+          title="Keep this discovery."
+          kicker="YOUR EXPLORATION JOURNAL"
+          onClose={() => {
+            if (!saving) setModal(null);
+          }}
+          className="ob-save-dialog"
+        >
+          <p className="ob-dialog-intro">
+            The full view is saved with exact coordinates, rendering settings, and a thumbnail. Add
+            a thought to return to.
+          </p>
+          <form
+            onSubmit={(e) => {
+              e.preventDefault();
+              void save();
+            }}
+          >
+            <label className="ob-field">
+              <span>Give it a name</span>
+              <input
+                autoFocus
+                required
+                maxLength={160}
+                value={saveTitle}
+                onChange={(e) => setSaveTitle(e.target.value)}
+                placeholder="A place worth remembering"
+              />
+            </label>
+            <label className="ob-field">
+              <span>
+                Field notes <small>optional</small>
+              </span>
+              <textarea
+                rows={4}
+                maxLength={20000}
+                value={saveNotes}
+                onChange={(e) => setSaveNotes(e.target.value)}
+                placeholder="What did you notice? What would you like to investigate?"
+              />
+            </label>
+            <label className="ob-field">
+              <span>
+                Tags <small>separate with commas</small>
+              </span>
+              <input
+                value={saveTags}
+                onChange={(e) => setSaveTags(e.target.value)}
+                placeholder="spirals, boundary, curious"
+              />
+            </label>
+            {parentId && (
+              <div className="ob-save-branch">
+                <GitBranch size={15} />
+                <span>Continues from a saved discovery</span>
+                <button type="button" onClick={() => setParentId(null)}>
+                  Start a new root
+                </button>
+              </div>
+            )}
+            {saveError && (
+              <p role="alert" className="ob-inline-error">
+                {saveError}
+              </p>
+            )}
+            <button type="submit" className="ob-button ob-primary ob-wide" disabled={saving}>
+              <Bookmark size={16} />
+              {saving ? 'Saving your discovery…' : 'Save to journal'}
+            </button>
+            <p className="ob-micro">
+              Stored in this browser. Export your journal for a portable backup.
+            </p>
+          </form>
+        </Dialog>
+      )}
+      {modal === 'help' && (
+        <Dialog
+          title="Make yourself at home."
+          kicker="NAVIGATION & SHORTCUTS"
+          onClose={() => setModal(null)}
+          className="ob-help-dialog"
+        >
+          <p className="ob-dialog-intro">
+            Start with a drag and a scroll. Everything else is a way to follow your curiosity.
+          </p>
+          <div className="ob-shortcuts">
+            {[
+              ['Drag', 'Orbit in 3D / pan in 2D'],
+              ['Scroll / pinch', 'Zoom toward your pointer'],
+              ['Shift + click', 'Choose a parameter for the linked Julia view'],
+              ['W A S D · Q E', 'Fly forward, sideways, up, and down'],
+              ['+ / −', 'Zoom in / out'],
+              ['Arrow keys', 'Pan a focused complex-plane canvas'],
+              ['Space', 'Play / pause a 3D orbit'],
+              ['F', 'Enter / leave focus mode'],
+              ['R', 'Reset this destination'],
+              ['B / ⌘ S', 'Save a discovery'],
+              ['L', 'Link / unlink a Julia view'],
+              ['G', 'Open the field guide'],
+              ['⌘ K / Ctrl K', 'Search destinations, tools, and sources'],
+              ['⌘ Z / Ctrl Z', 'Undo · add Shift to redo'],
+              ['?', 'Open this guide'],
+            ].map(([key, meaning]) => (
+              <div key={key}>
+                <kbd>{key}</kbd>
+                <span>{meaning}</span>
+              </div>
+            ))}
+          </div>
+          <div className="ob-help-actions">
+            <button
+              className="ob-button ob-subtle"
+              onClick={() => {
+                setModal(null);
+                fileInput.current?.click();
+              }}
+            >
+              <Upload size={15} />
+              Import a session
+            </button>
+            <button className="ob-button ob-subtle" onClick={() => void fullscreen()}>
+              <Maximize2 size={15} />
+              Full screen
+            </button>
+            <button className="ob-button" onClick={() => startTour('first-light')}>
+              <Route size={15} />
+              Take a guided journey
+            </button>
+          </div>
+        </Dialog>
+      )}
+      {modal === 'about' && (
+        <Dialog
+          title="A small window into infinity."
+          kicker="ABOUT LOOPS"
+          onClose={() => setModal(null)}
+          className="ob-about-dialog"
+        >
+          <Logo />
+          <p className="ob-dialog-intro">
+            An observatory for mathematical exploration. Move through fractal worlds, follow an
+            orbit, preserve a discovery, and connect it to the underlying research.
+          </p>
+          <div className="ob-about-grid">
+            <div>
+              <strong>Explore</strong>
+              <p>
+                Six mathematical families with interactive rendering and precision-aware navigation.
+              </p>
+            </div>
+            <div>
+              <strong>Investigate</strong>
+              <p>
+                Reproducible numerical experiments, exact symbolic data, and a source-linked
+                research archive.
+              </p>
+            </div>
+            <div>
+              <strong>Remember</strong>
+              <p>
+                A local journal of exact states, notes, and branches. Export and share what you
+                find.
+              </p>
+            </div>
+          </div>
+          <p className="ob-micro">
+            The renderer and laboratory make numerical observations. Finite certificates and formal
+            results retain their original scope. The Mandelbrot local connectivity conjecture
+            remains open.
+          </p>
+          <a
+            className="ob-button ob-subtle"
+            href="https://github.com/dovvnloading/loops-research-archive"
+            target="_blank"
+            rel="noreferrer"
+          >
+            Explore the source repository
+            <ArrowUpRight size={15} />
+          </a>
+          {manifest.data && (
+            <p className="ob-about-revision">
+              Research {manifest.data.source_commit.slice(0, 12)} ·{' '}
+              {manifest.data.archive_files.toLocaleString()} source files
+            </p>
+          )}
+        </Dialog>
+      )}
+      {notice && (
+        <div className="ob-toast" role="status">
+          <Check size={16} />
+          <span>{notice}</span>
+          <button aria-label="Dismiss notification" onClick={() => setNotice('')}>
+            <X size={14} />
+          </button>
+        </div>
+      )}
+    </div>
+  );
 }

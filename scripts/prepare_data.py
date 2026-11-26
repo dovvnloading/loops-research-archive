@@ -46,6 +46,20 @@ def tracked_files() -> list[str]:
 
 
 def source_commit() -> str:
+    # A Site has its own Git history. Never invent GitHub links to an application-
+    # only merge commit: retain the public upstream revision while its research
+    # inputs are unchanged. Later research changes fall back to their own history.
+    pin = ROOT / ".openai" / "research-source.json"
+    if pin.is_file():
+        revision = json.loads(pin.read_text()).get("commit", "")
+        if len(revision) == 40 and all(c in "0123456789abcdef" for c in revision):
+            try:
+                subprocess.check_call(["git", "cat-file", "-e", revision + "^{commit}"], cwd=ROOT, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+                unchanged = subprocess.run(["git", "diff", "--quiet", revision, "--", "ledger.json", "results", "research", "formalization", "*.lean", "papers"], cwd=ROOT).returncode == 0
+                if unchanged:
+                    return revision
+            except (subprocess.CalledProcessError, FileNotFoundError):
+                pass
     try:
         return subprocess.check_output(
             ["git", "log", "--first-parent", "-1", "--format=%H", "--", "ledger.json", "results", "research", "formalization", "*.lean", "papers"],
@@ -155,10 +169,15 @@ def main() -> None:
             "source_url": source_url(path, commit), "source_sha256": sha256(raw).hexdigest(),
             "sha256": sha256(payload).hexdigest(), "bytes": len(payload), "scope": scope,
         })
+    catalog_revision = commit
+    upstream_blobs = {}
     try:
-        catalog_revision = subprocess.check_output(["git", "rev-parse", "HEAD"], cwd=ROOT, text=True).strip()
+        for record in subprocess.check_output(["git", "ls-tree", "-rz", "--full-tree", catalog_revision], cwd=ROOT).decode().split("\0"):
+            if record:
+                metadata, filename = record.split("\t", 1)
+                upstream_blobs[filename] = metadata.split()[2]
     except (subprocess.CalledProcessError, FileNotFoundError):
-        catalog_revision = "main"
+        pass
     catalog = []
     for name in sorted(files):
         if is_archive_file(name) and (ROOT / name).is_file():
@@ -166,10 +185,19 @@ def main() -> None:
             kind = ("paper" if suffix == ".pdf" else "formalization" if suffix == ".lean" else
                     "certificate" if suffix == ".json" else "verifier" if suffix == ".py" else
                     "figure" if suffix in {".svg", ".png", ".jpg", ".jpeg"} else "document")
+            # Updated application documents remain available locally; an immutable
+            # upstream link is used only when its blob matches the packaged file.
+            from hashlib import sha1
+            raw_file = (ROOT / name).read_bytes()
+            blob_hash = sha1(b"blob " + str(len(raw_file)).encode() + b"\0" + raw_file).hexdigest()
+            pinned = upstream_blobs.get(name) == blob_hash
             catalog.append({"path": name, "title": Path(name).stem.replace("_", " "),
                             "kind": kind, "bytes": (ROOT / name).stat().st_size,
                             "sha256": sha256((ROOT / name).read_bytes()).hexdigest(),
-                            "url": source_url(name, catalog_revision), "local_url": name})
+                            "url": source_url(name, catalog_revision) if pinned else name,
+                            "source_revision": catalog_revision if pinned else None,
+                            "source_location": "upstream" if pinned else "packaged",
+                            "local_url": name})
     write_json(OUTPUT / "catalog.json", {"source_commit": commit, "catalog_revision": catalog_revision, "files": catalog})
     write_json(OUTPUT / "manifest.json", {
         "schema": "loops-research-data-v1", "source_repository": REPOSITORY,

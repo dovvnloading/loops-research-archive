@@ -1,8 +1,10 @@
 <div align="center">
 
-## Interactive fractal research engine
+## LOOPS Observatory — An Atlas of Infinity
 
-The web interface is now a custom WebGL2 application: three volumetric fractal families, Mandelbrot and Julia planes, an escape-time landscape, an exact-angle atlas, a precision lab, and the complete source-linked research ledger. The mathematical archive below remains the authority for every research claim.
+Explore six fractal families through five connected workspaces: **Explore, Atlas, Laboratory, Journal, and Research**. The observatory combines WebGL2 volumes, exact decimal plane navigation, linked Mandelbrot/Julia views, numerical experiments, a persistent exploration journal, image and motion exports, and the complete source-linked research archive. The mathematical archive below remains the authority for every research claim.
+
+[**Open the observatory**](https://loops-fractal-research.lagging.chatgpt.site) (existing access policy applies) · [**Observatory guide and implementation**](docs/OBSERVATORY.md)
 
 ```sh
 npm ci
@@ -10,7 +12,7 @@ npm run dev       # prepare source-linked data and start the interactive app
 npm run check     # production build, arithmetic tests, archive integrity
 ```
 
-See [the app guide](docs/WEBAPP.md), [renderer and precision notes](docs/ENGINE.md), and [deployment instructions](docs/DEPLOYMENT.md). `classic.html`, `dossier.html`, and `template.html` now redirect into the new archive. Original papers, certificates, Lean files, and verifier URLs remain available.
+Start with [the observatory guide](docs/OBSERVATORY.md) for navigation, exact precision limits, reproducible experiments, exports, verification, and maintenance. Earlier [app background](docs/WEBAPP.md), [renderer notes](docs/ENGINE.md), and [deployment instructions](docs/DEPLOYMENT.md) remain available. `classic.html`, `dossier.html`, and `template.html` redirect into the archive. Original papers, certificates, Lean files, and verifier URLs remain available.
 
 
 # A Marked-Width Reduction of Mandelbrot Local Connectivity
