@@ -52,3 +52,54 @@ The map qh:K_0→Y_Q is a continuous surjection from a compact space to a Hausdo
 * D. Schleicher, [On Fibers and Renormalization of Julia Sets and Multibrot Sets](https://arxiv.org/pdf/math/9902156v1), §4, especially Proposition 4.1 pp.9–11, Theorem 4.3 pp.12–15, Corollary 4.4 p.15. These discuss preservation of triviality under renormalization; do not claim novelty for that theorem. The present proof uses the later Kiwi theorem and gives an equality of possibly nontrivial restricted equivalence relations, not merely equivalence of triviality statements. The ray-domain description in Schleicher's proof of Corollary 4.4 motivates a separate saturation route; its exact domain identification for the KKL source is not assumed in (11).
 
 Status: written deduction from imported theorems and the predecessor note; no independent peer review or Lean check, no ledger edit.
+
+## 3. Full saturation of the actual primitive little Julia cycle
+
+**Theorem 3 (saturation, not merely restricted equivalence).** Under the hypotheses of Sections 1–2, for every phase i,
+
+    p^{-1}(A_i) = K_i,     A_i = p(K_i).                       (12)
+
+Every connected component of every finite inverse image of a K_i is likewise saturated for p. This theorem does not assert saturation of the least hull S of the union of the K_i.
+
+### 3.1. The model has precisely the requisite local degrees
+
+For a connected periodically repelling quadratic polynomial r, write v for its Kiwi plane quotient and R for the induced degree-two branched covering. The fiber C of v(r(0)) is a nonseparating continuum containing the critical value. Its full inverse image under r is connected. For example, take a decreasing sequence of closed Jordan disks with intersection C and critical value in their interiors. Each preimage is a single closed disk: over the Jordan interior the degree-two covering is connected because it has a branch point, and its boundary is the connected lift of the boundary circle. The intersection of these nested disks is r^{-1}(C). By the semiconjugacy, its image under v is exactly R^{-1}(v(r(0))). This is a finite connected set, hence a singleton containing v(0). Thus R has local degree two at v(0). There are no other finite critical points of R, by Riemann–Hurwitz on the sphere (the fiber of infinity is a singleton of degree two). This argument applies both to f and to the straightening Q of f^P on K_0.
+
+The point h(0) is the critical point of Q by the neighborhood conjugacy (we may normalize Q as monic centered). The homeomorphism H of Section 2 sends its quotient q(h(0)) to p(0). For y in A_0 and 1 <= j < P, g^j(y) belongs to A_j, disjoint from A_0. In particular none of these iterates equals p(0). Multiplicativity of local degrees now gives
+
+    deg_y(g^P) = 2 if y = p(0), and 1 otherwise.
+
+This is exactly deg_{H^{-1}(y)}(G), for G the induced degree-two map of the straightening Q. This step would not be justified from conjugacy of restrictions alone; it uses the disjoint primitive phases and the ambient critical-point computation.
+
+### 3.2. A local sheet-exhaustion lemma
+
+Let b and d be orientation-preserving finite branched coverings of planes, A and D nonempty compact connected sets, b(A)=A, d^{-1}(D)=D, and H:D→A a homeomorphism satisfying b H=H d on D. Suppose the local degrees satisfy deg_{H(u)} b=deg_u d at every u in D. Then A is a connected component of b^{-1}(A).
+
+Proof. Fix u in D and a=H(u), and write e for the common local degree. Take small local branched-covering charts at u and a, with local model z↦z^e. For target points v in A sufficiently close to b(a), all e preimages, counted with multiplicity, of H^{-1}(v) in the chart of u belong to D by complete backward invariance. They converge to u as v tends to b(a), so their images under H are in the chart of a. Conjugacy makes them preimages of v. For v different from b(a) these are e distinct points, exhausting the e local sheets of b; at v=b(a) the local inverse consists of the one point a. Consequently every point in a sufficiently small neighborhood of a whose b-image is in A is itself in A. Thus A is relatively open in b^{-1}(A), as well as closed. Connectedness makes it a connected component. QED.
+
+### 3.3. Recover the filled set from the full lift
+
+Apply the lemma with b=g^P, d=G, D=Y_Q and A=A_0. The set Y_Q=q(K(Q)) is completely invariant under G: q maps the complement of K(Q) bijectively onto the complement of Y_Q and Q^{-1}(K(Q))=K(Q). All other hypotheses follow from Section 2 and 3.1. Hence A_0 is a relatively open and closed connected component of (g^P)^{-1}(A_0).
+
+Set L=p^{-1}(A_0) (full plane preimage). The set L is compact and connected by monotonicity and properness of the plane quotient. It lies in X, contains K_0, and is full since X is full with empty interior: a bounded complementary component of L would be an open subset of X. From p f^P=g^P p we have that L is relatively open and closed in (f^P)^{-1}(L). Moreover f^P(L)⊂L. In fact f^P(L)=L: the restriction to L is relatively open onto L (for each point of L take an open neighborhood disjoint from the other preimages of L, then use openness of the polynomial), and its image is nonempty and compact, hence closed; L is connected.
+
+Write F=f^P. Every finite periodic orbit of F is repelling. Thus L is a full invariant continuum, a component of F^{-1}(F(L)), with no attracting or parabolic periodic point. **Theorem B** of Blokh–Oversteegen–Ptacek–Timorin, *Quadratic-like dynamics of cubic polynomials*, applies to an arbitrary polynomial P (not only cubics): the component condition and inclusion of immediate attracting/parabolic basins when present characterize filled Julia sets of polynomial-like restrictions. The basin condition here is vacuous. Hence L is the filled Julia set of a polynomial-like restriction F:U_L→V_L.
+
+This restriction has degree exactly two. The sole critical point of F in L is 0, and it has local degree two: for z in L, p(f^j(z)) lies in A_j, so f^j(z) cannot equal 0 for 1<=j<P. This also excludes a second critical encounter along the orbit of 0. Since L is connected, all critical points of the polynomial-like restriction belong to its filled set (the connectedness criterion for polynomial-like maps); Riemann–Hurwitz gives degree two. The original restriction on K_0 already has degree two and its filled set is contained in L. Each x in K_0 has exactly two preimages counted with multiplicity in K_0 under F. These exhaust the degree-two preimages in L. Thus F^{-1}(K_0) intersect L = K_0, and F(K_0)=K_0.
+
+Straighten F:U_L→V_L to a quadratic polynomial Q_L. The image of K_0 is a compact completely invariant subset of K(Q_L) containing more than one point. It contains J(Q_L) by the standard minimality of the Julia set among closed completely invariant sets with at least two points in the plane (equivalently, density of backward orbits of nonexceptional points). But K(Q_L) has empty interior, since L⊂X and the straightening is an ambient homeomorphism near L. Therefore J(Q_L)=K(Q_L), the image of K_0 is all of K(Q_L), and K_0=L. This proves (12) for i=0.
+
+### 3.4. The other phases and pullback components
+
+For a complete plane fiber C=p^{-1}(y), the semiconjugacy expresses f^{-1}(C) as the union of the finitely many complete fibers over g^{-1}(y). These are pairwise disjoint compact connected sets, hence exactly the connected components of f^{-1}(C). Each is relatively open there, and maps onto C by the same open-and-closed argument used above. Iteration proves that every complete fiber maps onto its corresponding complete fiber under f^i.
+
+For y in A_i choose u in A_0 with g^i(u)=y, possible because f^i(K_0)=K_i. The full fiber over u belongs to K_0 by (12) at i=0, so its f^i-image is the whole fiber over y and belongs to K_i. This proves (12) for all phases. Also, by the semiconjugacy, f^{-n}(K_i)=p^{-1}(g^{-n}(A_i)). Each fiber meeting one connected component of that set is contained in that component, because it is connected. Thus every such component is saturated.
+
+### 3.5. References and exact proof boundary
+
+* Jan Kiwi, *Real laminations and the topological dynamics of complex polynomials*, Adv. Math. 184 (2004), 207–267, Proposition 4.2, Corollary 4.6, Theorem 5.12: the quotient, induced branched cover and fiber characterization used in Sections 1–3.
+* A. Blokh, L. Oversteegen, R. Ptacek, V. Timorin, *Quadratic-like dynamics of cubic polynomials*, Theorem B, full proof §4, manuscript pp. 17–18: https://people.cas.uab.edu/~ablokh/QL-revised-short-v-11-30-15.pdf . The general-polynomial statement was checked in the source text, not inferred from the paper's title. The immediate-basin clause is vacuous here. This imported theorem is essential to the argument, not a new result of this PR.
+* A. Douady and J. H. Hubbard, *On the dynamics of polynomial-like mappings*, Ann. Sci. École Norm. Sup. 18 (1985), 287–343: straightening and the connected-filled-set critical-point criterion. Standard polynomial dynamics: J=boundary of K, and minimality among closed completely invariant sets with at least two finite points.
+* The earlier predecessor note proves disjointness of the geometric marks; it does not itself prove their full saturation. The new argument above upgrades the restricted equivalence of Section 2 to a full-plane identity. It does not rely on an unproved assertion that every dynamical renormalization domain is described by rational cuts.
+
+**Scope:** Actual primitive polynomial-like renormalization with pairwise disjoint phases, a periodically repelling ambient quadratic, and the canonical Kiwi plane quotient. Nothing in this proof assumes a priori local connectivity of X. It does not treat satellite phases meeting at a point, abstract combinatorial carriers, arbitrary maps with irrationally neutral cycles, saturation of S, or geometric/analytic control of the Wave collar. All imported statements and the argument require independent human review before any ledger promotion.
