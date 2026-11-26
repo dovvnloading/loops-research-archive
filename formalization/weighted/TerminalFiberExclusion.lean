@@ -448,6 +448,7 @@ theorem quadratic_filled_map_surjective (c : ℂ) :
     Surjective (quadraticFilledMap c) := by
   intro y
   obtain ⟨z, hz⟩ := LoopsQuadraticCriticalFiberCensus.quadratic_surjective c (y : ℂ)
+  change z^2+c = (y : ℂ) at hz
   have hzmem : z ∈ quadraticFilled c :=
     (quadratic_filled_complete_invariant c z).mp (by rw [hz]; exact y.property)
   exact ⟨⟨z, hzmem⟩, Subtype.ext hz⟩
