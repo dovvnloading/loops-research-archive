@@ -436,7 +436,10 @@ theorem quadratic_enlargement_no_merger_iff_fiber_eq (c : ℂ) (n : ℕ)
     · rintro ⟨hz, hzy⟩
       exact ⟨hAB hz, hzy⟩
     · rintro ⟨hz, hzy⟩
-      have hzU : f z ∈ U := hzy.symm ▸ hy
+      have hzU : f z ∈ U := by
+        change ((fun w : ℂ => w^2+c)^[n]) z ∈ U
+        rw [hzy]
+        exact hy
       have hz' : z ∈ B ∩ f ⁻¹' U := ⟨hz, hzU⟩
       exact ⟨h ▸ hz', hzy⟩
 
