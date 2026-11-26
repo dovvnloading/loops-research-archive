@@ -2158,6 +2158,58 @@
       "DIRECT_DECORATION_END_PRIME_END_COFINALITY"
     ]
   },
+  "stationary-geometric-fiber-saturation-20261126": {
+    "guide": "contributions/stationary_geometric_fiber_saturation_20261126/NOTE.md#stationary-geometric-fiber-saturation-20261126",
+    "theorems": {
+      "formalization/weighted/StationaryGeometricFibers.lean": [
+        "preconnected_finite_subsingleton",
+        "singleton_fiber_of_iterate",
+        "quadratic_fiber_finite",
+        "quadratic_restricted_fiber_finite",
+        "relative_preimage_preconnected",
+        "relative_component_lift",
+        "closed_carrier_saturated_of_frontier_singletons",
+        "marked_continuum_image_of_dense_anchors",
+        "selected_mark_from_single_overlap",
+        "critical_preimage_preconnected",
+        "quadratic_restricted_critical_preimage",
+        "quadratic_least_carrier_forward_invariant",
+        "selected_carrier_contact_image"
+      ]
+    },
+    "obligations": [
+      "KKL_STATIONARY_NONLC_SELECTED_GEOMETRIC_CONTINUUM_LIFT"
+    ]
+  },
+  "cylinder-fiber-exhaustion-20261126": {
+    "guide": "contributions/cylinder_fiber_exhaustion_20261126/NOTE.md#cylinder-fiber-exhaustion-20261126",
+    "theorems": {
+      "formalization/weighted/QuadraticCylinderCensus.lean": [
+        "open_component_relative_closed",
+        "localized_component_image",
+        "proper_localization_relative_closed",
+        "quadratic_open",
+        "quadratic_proper",
+        "quadratic_iterate_open",
+        "quadratic_iterate_proper",
+        "one_fiber_component_exhaustion",
+        "quadratic_localized_census",
+        "iteratePolynomial_eval",
+        "iteratePolynomial_degree",
+        "quadratic_fiber_card_bound",
+        "quadratic_full_degree_census",
+        "mem_localFiber",
+        "localFiber_card_bound",
+        "quadratic_localized_count_census",
+        "no_new_component_of_same_fiber",
+        "proper_localization_component_global",
+        "proper_localization_eq_of_same_fiber"
+      ]
+    },
+    "obligations": [
+      "VIRTUAL_REACHED_CYLINDER_COMPONENT_EXHAUSTION"
+    ]
+  },
   "decoration-critical-cycle-exclusion-20261126": {
     "guide": "contributions/decoration_critical_cycle_exclusion_20261126/NOTE.md#decoration-critical-cycle-exclusion-20261126",
     "theorems": {
