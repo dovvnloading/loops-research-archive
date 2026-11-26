@@ -54,14 +54,14 @@
   },
   "KL2": {
     "url": "https://www.numdam.org/item/10.24033/asens.2063.pdf",
-    "sha256": null,
-    "bytes": null,
+    "sha256": "a0c77541efe273aa180f31cbb67093b9931d7b73389e6bb8947452998b13bba5",
+    "bytes": 935066,
     "locators": []
   },
   "KL3": {
     "url": "https://www.math.stonybrook.edu/preprints/ims07-04.pdf",
-    "sha256": null,
-    "bytes": null,
+    "sha256": "0225b5e1416d62eadb3f9b1ae9d5d3c4c4287b0d572167c744e9bae900220e53",
+    "bytes": 293282,
     "locators": [
       [
         12,
@@ -71,8 +71,8 @@
   },
   "DL": {
     "url": "https://arxiv.org/pdf/2309.02107v3",
-    "sha256": null,
-    "bytes": null,
+    "sha256": "e88462e43b3c172cf309d5b3d38caa21ee8f43876bac1e07cce84b309dfb8c6b",
+    "bytes": 882537,
     "locators": [
       [
         31,

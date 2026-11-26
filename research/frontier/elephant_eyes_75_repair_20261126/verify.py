@@ -55,11 +55,10 @@ def provenance():
         data=fetch(rec["url"])
         sha=hashlib.sha256(data).hexdigest()
         print(f"SOURCE {name} sha256={sha} bytes={len(data)}",flush=True)
-        # First discovery round may have null digests, to be locked before final review.
-        if rec["sha256"] is not None:
-            assert sha==rec["sha256"], name
-        if rec["bytes"] is not None:
-            assert len(data)==rec["bytes"], name
+        assert isinstance(rec["sha256"], str) and len(rec["sha256"]) == 64, name
+        assert isinstance(rec["bytes"], int) and rec["bytes"] > 0, name
+        assert sha == rec["sha256"], name
+        assert len(data) == rec["bytes"], name
         pdf=PdfReader(io.BytesIO(data))
         for page, marker in rec["locators"]:
             s=re.sub(r"\s+","",unicodedata.normalize("NFKC",pdf.pages[page-1].extract_text()))
