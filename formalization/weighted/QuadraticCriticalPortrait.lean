@@ -128,7 +128,7 @@ theorem criticalPoints_card_succ (c : ℂ) (n : ℕ) :
   rw [criticalPoints_succ]
   by_cases hc : c ∈ criticalPoints c n univ
   · rw [Finset.insert_eq_of_mem (hz.mpr hc), if_pos hc, if_pos hc, Nat.add_zero]
-    simpa only [if_pos hc] using h
+    simpa only [if_pos hc, Nat.add_zero] using h
   · rw [Finset.card_insert_of_notMem (fun h0 => hc (hz.mp h0)),
       if_neg hc, if_neg hc]
     simp only [if_neg hc] at h
