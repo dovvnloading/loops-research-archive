@@ -2423,7 +2423,12 @@
         "compact_emptyInterior_exterior_data",
         "quadratic_full_emptyInterior_bypass_accumulates_zero",
         "quadratic_full_emptyInterior_separator_critical_clearance",
-        "quadratic_filled_separator_critical_clearance"
+        "quadratic_filled_separator_critical_clearance",
+        "compact_uniform_entire_locus_full",
+        "quadratic_orbit_entire",
+        "quadratic_filled_full",
+        "quadratic_filled_bypass_accumulates_zero",
+        "quadratic_filled_separator_of_emptyInterior_clearance"
       ]
     },
     "obligations": [

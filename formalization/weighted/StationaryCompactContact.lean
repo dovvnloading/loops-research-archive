@@ -732,4 +732,146 @@ theorem quadratic_filled_separator_critical_clearance
     (fun z hz => (LoopsTerminalFiberExclusion.quadratic_filled_neg_mem c z).mpr hz)
     hfull hKi hzero hclear' ha
 
+/-- A compact planar locus characterized by simultaneous uniform norm
+bounds on entire functions has preconnected complement. The maximum
+modulus principle excludes bounded complementary components, and a
+circle larger than the carrier joins any two remaining components. -/
+theorem compact_uniform_entire_locus_full (K : Set ℂ)
+    (hK : IsCompact K) (F : ℕ → ℂ → ℂ) (M : ℝ)
+    (hd : ∀ n, Differentiable ℂ (F n))
+    (hbound : ∀ z ∈ K, ∀ n, ‖F n z‖ ≤ M)
+    (hchar : ∀ z, (∀ n, ‖F n z‖ ≤ M) → z ∈ K) :
+    IsPreconnected Kᶜ := by
+  have hfront (x : ℂ) :
+      frontier (connectedComponentIn Kᶜ x) ⊆ K := by
+    intro z hz
+    by_contra hzk
+    have hzK : z ∈ Kᶜ := hzk
+    have hzo : IsOpen (connectedComponentIn Kᶜ z) :=
+      hK.isClosed.isOpen_compl.connectedComponentIn
+    have hxo : IsOpen (connectedComponentIn Kᶜ x) :=
+      hK.isClosed.isOpen_compl.connectedComponentIn
+    have hzin := mem_connectedComponentIn hzK
+    obtain ⟨u,huz,hux⟩ := (mem_closure_iff.mp hz.1) _ hzo hzin
+    have heq := (connectedComponentIn_eq hux).trans (connectedComponentIn_eq huz).symm
+    have hzCx : z ∈ connectedComponentIn Kᶜ x := heq.symm ▸ hzin
+    apply hz.2
+    rw [hxo.interior_eq]
+    exact hzCx
+  have hunb (x : ℂ) (hx : x ∈ Kᶜ) :
+      ¬ Bornology.IsBounded (connectedComponentIn Kᶜ x) := by
+    intro hb
+    apply hx
+    apply hchar x
+    intro n
+    exact Complex.norm_le_of_forall_mem_frontier_norm_le hb
+      (hd n).diffContOnCl (fun z hz => hbound z (hfront x hz) n)
+      (subset_closure (mem_connectedComponentIn hx))
+  have hcross (x : ℂ) (hx : x ∈ Kᶜ) (r : ℝ) (hr : ‖x‖ ≤ r) :
+      ∃ z ∈ connectedComponentIn Kᶜ x, ‖z‖ = r := by
+    have hlarge : ∃ z ∈ connectedComponentIn Kᶜ x, r < ‖z‖ := by
+      by_contra! hn
+      apply hunb x hx
+      apply (Metric.isBounded_iff_subset_closedBall (0:ℂ)).mpr
+      refine ⟨r,?_⟩
+      intro z hz
+      simpa [Metric.mem_closedBall,dist_zero_right] using hn z hz
+    obtain ⟨z,hz,hbig⟩ := hlarge
+    exact isPreconnected_connectedComponentIn.intermediate_value
+      (mem_connectedComponentIn hx) hz continuous_norm.continuousOn
+      ⟨hr,hbig.le⟩
+  obtain ⟨R,hR⟩ := hK.exists_bound_of_continuousOn continuous_id.continuousOn
+  by_cases hne : (Kᶜ : Set ℂ).Nonempty
+  · obtain ⟨x,hx⟩ := hne
+    have heq : connectedComponentIn Kᶜ x = Kᶜ := by
+      apply subset_antisymm (connectedComponentIn_subset _ _)
+      intro y hy
+      let r : ℝ := max R (max ‖x‖ ‖y‖) + 1
+      have hrR : R < r := by
+        dsimp [r]
+        linarith [le_max_left R (max ‖x‖ ‖y‖)]
+      have hrx : ‖x‖ ≤ r := by
+        dsimp [r]
+        linarith [le_max_left ‖x‖ ‖y‖,le_max_right R (max ‖x‖ ‖y‖)]
+      have hry : ‖y‖ ≤ r := by
+        dsimp [r]
+        linarith [le_max_right ‖x‖ ‖y‖,le_max_right R (max ‖x‖ ‖y‖)]
+      obtain ⟨v,hv,hvr⟩ := hcross x hx r hrx
+      obtain ⟨w,hw,hwr⟩ := hcross y hy r hry
+      have hsph : Metric.sphere (0:ℂ) r ⊆ Kᶜ := by
+        intro z hz hzK
+        have hzr : ‖z‖ = r := by
+          simpa [Metric.mem_sphere,dist_zero_right] using hz
+        have hh := hR z hzK
+        rw [hzr] at hh
+        exact (not_lt_of_ge hh) hrR
+      have hvS : v ∈ Metric.sphere (0:ℂ) r := by
+        simpa [Metric.mem_sphere,dist_zero_right] using hvr
+      have hwS : w ∈ Metric.sphere (0:ℂ) r := by
+        simpa [Metric.mem_sphere,dist_zero_right] using hwr
+      have hS : IsPreconnected (Metric.sphere (0:ℂ) r) :=
+        isPreconnected_sphere (by simp) (0:ℂ) r
+      have hvw := hS.subset_connectedComponentIn hvS hsph hwS
+      have hxy := (connectedComponentIn_eq hv).trans
+        ((connectedComponentIn_eq hvw).trans (connectedComponentIn_eq hw).symm)
+      exact hxy.symm ▸ mem_connectedComponentIn hy
+    rw [← heq]
+    exact isPreconnected_connectedComponentIn
+  · have he : Kᶜ = ∅ := Set.not_nonempty_iff_eq_empty.mp hne
+    rw [he]
+    exact isPreconnected_empty
+
+/-- Every actual quadratic iterate is entire, including the zeroth
+iterate. -/
+theorem quadratic_orbit_entire (c : ℂ) (n : ℕ) :
+    Differentiable ℂ (QuadraticEscape.orbit c n) := by
+  induction n with
+  | zero => exact differentiable_id
+  | succ n ih =>
+    change Differentiable ℂ (fun z : ℂ => (QuadraticEscape.orbit c n z)^2+c)
+    exact (ih.pow 2).add differentiable_const
+
+/-- The genuine bounded-orbit locus is full at every complex parameter.
+This does not assume connectedness of the filled Julia set itself. -/
+theorem quadratic_filled_full (c : ℂ) :
+    IsPreconnected (LoopsStationaryFiberDynamics.quadraticFilled c)ᶜ := by
+  apply compact_uniform_entire_locus_full
+    (LoopsStationaryFiberDynamics.quadraticFilled c)
+    (LoopsStationaryFiberDynamics.quadratic_filled_compact c)
+    (QuadraticEscape.orbit c) (1+‖c‖) (quadratic_orbit_entire c)
+  · intro z hz n
+    exact QuadraticEscape.escape_zero_orbit_bound c z hz n
+  · intro z hz
+    exact (LoopsStationaryFiberDynamics.quadratic_filled_iff_bounded c z).mpr
+      ⟨1+‖c‖,hz⟩
+
+/-- On the genuine filled Julia set, empty interior alone forces every
+connected noninjective witness avoiding zero to accumulate at zero. -/
+theorem quadratic_filled_bypass_accumulates_zero (c : ℂ) (E : Set ℂ)
+    (hKi : interior (LoopsStationaryFiberDynamics.quadraticFilled c) = ∅)
+    (hEc : IsPreconnected E)
+    (hEsub : E ⊆ LoopsStationaryFiberDynamics.quadraticFilled c)
+    (hEzero : (0 : ℂ) ∉ E)
+    (hbypass : ¬ InjOn (fun z : ℂ => z^2+c) E) :
+    (0 : ℂ) ∈ closure E := by
+  exact quadratic_full_emptyInterior_bypass_accumulates_zero c
+    (LoopsStationaryFiberDynamics.quadraticFilled c) E
+    (LoopsStationaryFiberDynamics.quadratic_filled_compact c)
+    (fun z hz => (LoopsTerminalFiberExclusion.quadratic_filled_neg_mem c z).mpr hz)
+    (quadratic_filled_full c) hKi hEc hEsub hEzero hbypass
+
+/-- Fullness is now discharged. Relative critical clearance and empty
+interior suffice for full separation on the actual filled Julia set. -/
+theorem quadratic_filled_separator_of_emptyInterior_clearance
+    (c : ℂ) (Q : Set ℂ) (a : ℂ)
+    (hKi : interior (LoopsStationaryFiberDynamics.quadraticFilled c) = ∅)
+    (hzero : (0 : ℂ) ∈ Q)
+    (hclear : ∃ ε : ℝ, 0 < ε ∧
+      ∀ z ∈ LoopsStationaryFiberDynamics.quadraticFilled c, ‖z‖ < ε → z ∈ Q)
+    (ha : a ∈ LoopsStationaryFiberDynamics.quadraticFilled c \ Q) :
+    -a ∉ connectedComponentIn
+      (LoopsStationaryFiberDynamics.quadraticFilled c \ Q) a :=
+  quadratic_filled_separator_critical_clearance c Q a
+    (quadratic_filled_full c) hKi hzero hclear ha
+
 end LoopsStationaryCompactContact
