@@ -126,8 +126,99 @@ For any strictly decreasing schedule t_0>...>t_N>0 with t_0<=1/8, the sum of the
 
 The supremum here is taken separately at each step; this is not a claim that one chosen nested tower has those losses, or that the lower bounds on a specific MLC tower's gains must dominate (13). It rules out any geometry-free universal penalty budget of smaller cumulative logarithmic order. For the actual diagonal at -2 the corresponding upper bound is 2 log(t_0/t_N)+log128, by the other half of (9).
 
-## 3. Attribution and proof boundary
+## 3. Neutral cusp: a genuinely different ground-loss scale
+
+The sharp worst-case coefficient in §2 should not be imposed at every boundary point. The actual cusp c_0=1/4 gives a contrasting, much slower diagonal divergence. Here we derive the physical escape profile directly; no parabolic transit or asymptotic-expansion theorem is assumed.
+
+**Theorem 3.** Define A=(log 2)^2/64 and B=1600(log 2)^2. For 0<u<=2^(-100),
+
+    A/[log(1/u)]^2 <= r_u(c_0) <= B/[log(1/u)]^2.        (14)
+
+Consequently, for 0<s<t<=2^(-100),
+
+    |K(c_0,c_0)+(t-s)-2 log(log(1/s)/log(1/t))|
+       <= log(102400).                                  (15)
+
+This is the actual point-localized optimal penalty in the limit of shrinking nonpolar cusp intervals, by Theorem 1's continuous-kernel comparison. In particular if t is fixed in the stated range and s tends to zero, the leading order is 2 log log(1/s), not 2 log(1/s).
+
+### 3.1. Uniform complex upper escape estimate
+
+For a real 0<a<=1/8 write c^+=1/4+a^2 and x_j=f_(c^+)^j(0). Set y_j=x_j-1/2. The exact recurrence and initial value are
+
+    y_(j+1)=y_j+y_j^2+a^2,    y_0=-1/2.                 (16)
+
+The sequence is strictly increasing, all y_j>=-1/2, and eventually positive since each increment is at least a^2. The update function y -> y+y^2+a^2 is increasing on [-1/2,infinity). Let k be the first j with y_j>-a. Since y_(k-1)<=-a, we have
+
+    -a < y_k <= -a+2a^2 <= -a/2.
+
+Let m be the first j with y_j>=0. Every update from j=k to m-1 has y_j in (-a,0), and its increment is at most 2a^2. Thus (m-k) 2a^2 >= a/2, i.e. m-k >= 1/(4a). Since k>=1, N=floor(1/(4a)) satisfies N<m, and x_N<1/2.
+
+For any complex parameter c with |c-c_0|<=a^2, one has |c|<=c^+ and, by induction from the critical point 0,
+
+    |f_c^j(0)| <= f_(c^+)^j(0)   for every j.
+
+The majorant orbit is nonnegative. In particular |f_c^N(0)|<1/2. As |c|<1/2, putting M_j=max(1,|f_c^j(0)|) gives M_(j+1)<=(3/2) M_j^2. Iterate the logarithmic inequality from M_N=1 and use the parameter Green normalization. Since N>=1,
+
+    G(c) <= 2^(-(N-1)) log(3/2)
+          <= 4 exp[-(log 2)/(4a)].                      (17)
+
+The estimate is uniform on the whole complex disk, not just on the positive real transit path. This uniformity is essential to the lower bound on the conformal radius. The estimate also includes all parameters in M (where G=0).
+
+### 3.2. Real lower escape estimate
+
+On the real majorant orbit (16), let n be the first j with y_j>=1/2. Each step from j<n starts at y in [-1/2,1/2), with d=y^2+a^2<=1/4+1/64<1. For all v between y and y+d,
+
+    v^2+a^2 <= (|y|+d)^2+a^2
+             = d(1+2|y|+d) <= 3d.
+
+Hence the integral of dv/(v^2+a^2) over this step is at least 1/3. The consecutive step intervals have disjoint interiors. Summing and bounding by the integral over the whole real line gives
+
+    n/3 <= integral_R dv/(v^2+a^2)=pi/a.
+
+Starting from y_n>=1/2, at most four further updates suffice to reach y>=3/2 (increments at least 1/4). Therefore there is an iterate x_J>=2 with
+
+    J <= 3pi/a+4 <= 10/a
+
+for a<=1/8, using pi<22/7. Thereafter x_(j+1)>=x_j^2 since c^+>0, and the normalization of G yields
+
+    G(c_0+a^2) >= 2^(-(J-1)) log 2
+                 >= (log 2) exp[-10(log 2)/a].          (18)
+
+This real parameter is outside M. Equations (17)–(18) are two-sided exponential-in-inverse-square-root escape bounds with explicit constants. They do not claim an exact parabolic transit asymptotic, which would require finer analysis.
+
+### 3.3. Inversion to conformal radius and physical local penalty
+
+For 0<u<=2^(-100) put
+
+    a_-=(log 2)/(4 log(4/u)),
+    a_+=10 log 2/log((log 2)/u).
+
+Both lie in (0,1/8]: log(4/u)>=2 log 2, and log((log 2)/u)>(99 log 2) since log 2>1/2. For every |c-c_0|<a_-^2, apply (17) with a slightly smaller radius parameter than a_- that still contains c; this gives G(c)<u. Thus B(c_0,a_-^2) subset D_u. By (18), G(c_0+a_+^2)>=u, so the distance to C minus D_u is at most a_+^2. Schwarz and Koebe quarter give
+
+    a_-^2 <= r_u(c_0) <= 4a_+^2.
+
+For the stated u, log(4/u)<=2 log(1/u) and log((log 2)/u)>=log(1/u)/2. Substitute to obtain (14). The ratio of constants B/A is 102400, and (1) gives (15). All logarithms are natural.
+
+For actual intervals F_epsilon=[1/4-epsilon,1/4], 0<epsilon<1/4, the entire interval lies in M: for c in [0,1/4], p=(1+sqrt(1-4c))/2 is a positive fixed point and f_c([-p,p])=[c,p] subset [-p,p]. The limit of e(F_epsilon) as epsilon tends to zero is exactly K(c_0,c_0), because all points of these continua approach c_0 and K is continuous. More quantitatively, apply (6) with R=a_-^2 for the smaller ground s and any epsilon<R; the resulting two-sided comparison is valid for each actual interval without presuming a limiting ground-independent equilibrium measure.
+
+There is no conflict with Theorem 2: it is a worst-case statement over all parameter continua, whereas (15) is a localized diagonal statement at the actual neutral cusp. Nor does the cusp example establish any new local connectivity case or control a nearby infinitely satellite-renormalizable parameter's escape profile.
+
+## 4. General physical escape-profile interface and H4 application
+
+Let x in M. If for each sufficiently small u one independently certifies positive radii d_-(u)<=d_+(u) with B(x,d_-(u)) subset D_u and at least one point of C minus D_u at distance <=d_+(u), then
+
+    d_-(u)<=r_u(x)<=4d_+(u).
+
+In particular, for uniform constants b>=a>0 and a specified scale function R(u)>0, estimates a R(u)<=d_-(u)<=d_+(u)<=b R(u) imply
+
+    |K(x,x)+L-log(R(t)/R(s))| <= log(4b/a).              (19)
+
+At -2, R(u)=u^2; at 1/4, R(u)=1/[log(1/u)]^2. An analogous uniform estimate for every x in a known compact F would, by (2), provide a physical, geometry-sensitive upper penalty for the previous H4 net-gain criterion. For a fixed x, (6) gives a local comparison whenever the set is actually contained in the stated fraction of an interior ground disk; do not assume such containment from a symbolic address. In particular, demanding that localization for all scales at a boundary point can itself be tantamount to diameter shrinking, so this alone is not a noncircular proof of rigidity.
+
+The exact diagonal characterization and two distinct physical regimes show why a universal scalar estimate without information about the chosen parameter compact can lose the relevant geometry. The repelling tip forces the coefficient two in the general bound, but the neutral cusp does not incur that scale of loss. Actual ground radii or a uniform escape-profile certificate on the target compacts are the inputs needed to exploit the improvement. The divergent gain schedule and connected relative-neighborhood requirement in the previous H4 route remain open.
+
+## 5. Attribution and proof boundary
 
 Classical inputs: Green energy, disk Green kernel, Dirichlet balayage, Cauchy–Schwarz for the Dirichlet energy, Harnack inequality, Schwarz lemma, Koebe quarter theorem, and the compact-space component/quasicomponent theorem. See E. B. Saff, *Logarithmic Potential Theory with Applications to Approximation Theory*, Surveys in Approximation Theory 5 (2010), 165–200, [PDF](https://pages.cs.wisc.edu/~deboor/sat/papers/14/14.pdf), §3, equations (3.8)–(3.17), printed pp.187–188 (both PDF page images independently reopened). The source supplies classical facts, not the claimed sharp coefficient. Quadratic parameter uniformization is inherited with precisely the normalization in the preceding two archive notes. See also their citations and credit Douady–Hubbard. No claim that these general Green kernel facts or the repelling-tip escape exponent are new in the wider literature.
 
-**Status:** written analytic proof of a sharp variational reduction and exact optimal leading logarithmic coefficient in the physical parameter plane. The earlier Fourier penalty upper bound is used as an imported archive argument, not silently reproved. The sharp lower coefficient is independent of that upper bound. No new source bytes were hashed; Saff's page images were read, not a full literature novelty audit. No physical sequence of connected relative neighborhoods, divergent net-gain schedule, or parameter rigidity is asserted. H4, H1–H3, UPTCR and MLC remain open. AI assistance: ChatGPT GPT-6.2; no independent human specialist review or Lean verification.
+**Status:** written analytic proof of a sharp variational reduction and exact optimal leading logarithmic coefficient in the physical parameter plane, with a contrasting double-logarithmic local loss at the genuine parabolic cusp. The earlier Fourier penalty upper bound is used as an imported archive argument, not silently reproved. The sharp lower coefficient is independent of that upper bound. No new source bytes were hashed; Saff's page images were read, not a full literature novelty audit. No physical sequence of connected relative neighborhoods, divergent net-gain schedule, or parameter rigidity is asserted. H4, H1–H3, UPTCR and MLC remain open. AI assistance: ChatGPT GPT-6.2; no independent human specialist review or Lean verification.
