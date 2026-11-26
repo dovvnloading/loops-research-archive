@@ -2555,7 +2555,13 @@
         "mergerCensus_complete_iff_mass",
         "mergerCensus_degree_conservation",
         "mergerCensus_uniform_rank_count",
-        "mergerCensus_complete_iff_degree"
+        "mergerCensus_complete_iff_degree",
+        "aggregate_defect_debt_eq_degree",
+        "component_actual_deficit_accounting",
+        "mergerCensus_defect_conservation",
+        "proper_piece_mem_mergerCensus",
+        "proper_piece_family_eq_census",
+        "mergerCensus_unique_connected_image"
       ]
     },
     "obligations": [
