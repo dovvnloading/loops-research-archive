@@ -104,6 +104,7 @@ formalization/weighted/StationaryCanonicalLift.lean	VARIABLE-EXIT
 formalization/weighted/StationaryDeckSeparator.lean	VARIABLE-EXIT
 formalization/weighted/StationaryEndpointCover.lean	VARIABLE-EXIT
 formalization/weighted/StationaryEndpointVisits.lean	VARIABLE-EXIT
+formalization/weighted/StationaryFiberDynamics.lean	METADATA
 formalization/weighted/StationaryGeometricFibers.lean	METADATA
 formalization/weighted/StationaryMonotoneGeometry.lean	METADATA
 formalization/weighted/StationaryMultiInterface.lean	METADATA
