@@ -15,7 +15,7 @@ Candidate Lean theorems for the actual quadratic filled Julia set: native critic
 
 ## Evidence
 
-The registered [StationaryPhysicalItinerary.lean](../../formalization/weighted/StationaryPhysicalItinerary.lean) contains 21 public theorem declarations (the first 14 passed the full kernel build and transitive axiom audit at [`f367e5a`](https://github.com/dovvnloading/loops-research-archive/commit/f367e5a8ff439c93ee827ff1169c8dfba4d8332c); see the [CI log](https://github.com/dovvnloading/loops-research-archive/actions/runs/45889927685/job/140149774513). The expanded module must pass CI):
+The registered [StationaryPhysicalItinerary.lean](../../formalization/weighted/StationaryPhysicalItinerary.lean) contains 21 public theorem declarations (the first 14 passed the full kernel build and transitive axiom audit at [`f367e5a`](https://github.com/dovvnloading/loops-research-archive/commit/f367e5a8ff439c93ee827ff1169c8dfba4d8332c); see the [CI log](https://github.com/dovvnloading/loops-research-archive/actions/runs/45889927685/job/140149774513). The first 18 then passed the full build and audit on the reconciled main at [`f1de072`](https://github.com/dovvnloading/loops-research-archive/commit/f1de0721092a74570b798fb4bd7beea60e8cd661), [CI log](https://github.com/dovvnloading/loops-research-archive/actions/runs/45890531886/job/140151800996). The final three must pass CI):
 
 - `quadratic_critical_limb_injective`
 - `limb_inverse_preconnected`
@@ -45,7 +45,7 @@ Four further declarations strengthen the test: exact forward images recover ever
 
 The source-facing generalization uses a native continuous open degree-two map (not a polynomial or a finite graph) with the stated disjoint inverse-limb geometry. It constructs a continuous canonical section on the entire limb. For any independently supplied continuous section of the same iterate on a preconnected target in that limb, a single selected anchor forces the section's whole image to equal the selected itinerary of its target and forces pointwise agreement with the canonical inverse. This removes the need to assume connectedness or a component address of the lifted restriction separately. The native restriction must still supply a continuous section on the indicated physical target and a correctly located anchor; no prime-end boundary extension or ambient occurrence is constructed.
 
-Local Lean is not available in this session; the weighted kernel and transitive axiom CI checks are the verification authority. The first 14 source declarations were fully verified at the pinned commit above: the audit accepted 27 module declarations including 21 theorem constants, using only the three allowed foundational axioms. The later declarations require a successful build and audit on their expanded revision before credit.
+Local Lean is not available in this session; the weighted kernel and transitive axiom CI checks are the verification authority. The first 14 source declarations were fully verified at the pinned commit above: the audit accepted 27 module declarations including 21 theorem constants, using only the three allowed foundational axioms. The reconciled revision also passed: `AXIOM_AUDIT weighted StationaryPhysicalItinerary: 31 declarations, 25 theorems; allowed axioms only`; the full weighted project reported 86 modules and 2368 declarations. The final three source declarations require successful build and audit on their expanded revision before credit.
 
 ## Dependencies
 
