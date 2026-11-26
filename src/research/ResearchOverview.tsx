@@ -1,7 +1,8 @@
-import { useMemo, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import type { ReactNode } from 'react';
 import { ArrowUpRight, Search } from 'lucide-react';
 import { REPO, useData } from './common';
+import { AGENT_LINE, openTargets } from './targets';
 import './research-overview.css';
 
 interface Dataset {
@@ -120,7 +121,8 @@ export function ResearchOverview({ onBrowse, onAtlas, onLab }: ResearchOverviewP
     catalog = useData<Catalog>('catalog.json');
   const [query, setQuery] = useState(''),
     [copied, setCopied] = useState(false),
-    [copyError, setCopyError] = useState('');
+    [copyError, setCopyError] = useState(''),
+    [lineCopy, setLineCopy] = useState<'idle' | 'copied' | 'failed'>('idle');
   const m = manifest.data,
     l = ledger.data,
     c = catalog.data;
@@ -149,6 +151,14 @@ export function ResearchOverview({ onBrowse, onAtlas, onLab }: ResearchOverviewP
     m?.unresolved_evidence.map((e) => e.evidence.split('#')[0]) ?? [],
   );
   const terminal = l?.obligations.find((o) => o.id === 'UPTCR_IMPLIES_MLC');
+  const targets = useMemo(() => (l ? openTargets(l.obligations) : null), [l]);
+  const living = (path: string) => `${REPO}/blob/main/${path}`;
+  const loaded = Boolean(l);
+  useEffect(() => {
+    // A link to #contribute opens this workspace; bring the section into view once it has its height.
+    if (loaded && location.hash.slice(1).split('?')[0] === 'contribute')
+      document.getElementById('contribute')?.scrollIntoView({ block: 'start' });
+  }, [loaded]);
   const error = manifest.error || ledger.error || catalog.error;
   const totals = m?.counts;
   return (
@@ -330,6 +340,67 @@ export function ResearchOverview({ onBrowse, onAtlas, onLab }: ResearchOverviewP
               Open the ledger
             </button>
           </p>
+        </div>
+      </section>
+      <section className="ro-section" id="contribute" aria-labelledby="ro-contribute">
+        <div className="ro-section-heading">
+          <h2 id="ro-contribute">Contribute with an agent</h2>
+          <p>One line briefs any coding agent. The repository tells it the rest.</p>
+        </div>
+        <div className="ro-contribute">
+          <div className="ro-agent-line">
+            <code>{AGENT_LINE}</code>
+            <button
+              className="ob-button ob-primary"
+              onClick={() => {
+                navigator.clipboard
+                  .writeText(AGENT_LINE)
+                  .then(() => {
+                    setLineCopy('copied');
+                    setTimeout(() => setLineCopy('idle'), 1800);
+                  })
+                  .catch(() => setLineCopy('failed'));
+              }}
+            >
+              {lineCopy === 'copied' ? 'Copied' : 'Copy line'}
+            </button>
+          </div>
+          {lineCopy === 'failed' && (
+            <p className="ro-notice" role="status">
+              Copy unavailable. Click the line to select it, then copy it.
+            </p>
+          )}
+          <p>
+            Paste it into Claude Code, Codex, Cursor, Gemini CLI, or another agent that can run
+            commands. The agent takes an open obligation nobody has claimed, works in its own
+            folder, and opens a pull request that the repository checks. You need a free GitHub
+            account. Closing an obligation advances the conditional reduction; MLC remains open.
+          </p>
+          <p className="ro-contribute-links">
+            <External href={living('AGENTS.md')}>Agent briefing</External>
+            <External href={living('OPEN_TARGETS.md')}>All open targets</External>
+            <External href={living('CONTRIBUTING.md')}>Contribution standard</External>
+            <External href={`${REPO}/pulls`}>Work in progress</External>
+          </p>
+          <h3>
+            {targets
+              ? `${targets.ready.length} of ${targets.open} open obligations can be started today`
+              : 'Loading the open obligations…'}
+          </h3>
+          <p className="ro-target-note">
+            Every prerequisite of these is already proved or imported. Most depended-on first.
+          </p>
+          <ol className="ro-target-list">
+            {targets?.ready.slice(0, 5).map((target) => (
+              <li key={target.id}>
+                <div>
+                  <code>{target.id}</code>
+                  <span>{target.downstream} obligations depend on it</span>
+                </div>
+                <p>{target.statement}</p>
+              </li>
+            ))}
+          </ol>
         </div>
       </section>
       <section className="ro-section" aria-labelledby="ro-evidence">

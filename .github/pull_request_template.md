@@ -1,3 +1,5 @@
+<!-- Contributing a packet under contributions/? Its NOTE.md already answers everything below: paste it here, title the pull request `[LEDGER_ID] what it shows`, and run `python code/contribute.py check`. See AGENTS.md. -->
+
 ## Target
 
 Paper, theorem, section, or ledger ID:

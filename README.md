@@ -31,7 +31,8 @@ Research direction, synthesis, authorship, and public stewardship
 [**Evidence map**](./RESEARCH_MAP.md) ·
 [**Model-to-physical proofs**](./formalization/PHYSICAL_BRIDGES.md) ·
 [**Reproduce results**](#reproduce-the-central-results) ·
-[**Contribute / review**](./CONTRIBUTING.md)
+[**Contribute / review**](./CONTRIBUTING.md) ·
+[**Help with an AI agent**](./AGENTS.md)
 
 **README updated 2026-11-25** · **Manuscript and ledger source lock 2026-07-27**
 
@@ -39,6 +40,15 @@ Research direction, synthesis, authorship, and public stewardship
 
 > [!IMPORTANT]
 > **The Mandelbrot Local Connectivity conjecture (MLC) remains open.** This repository contains finite and structural theorems, source audits, computational certificates, a conditional marked-width reduction, and open proof obligations. The November 2026 two-scale examples and Lean checks do **not** constitute a proof of MLC or a compatible all-scale Kahn–Lyubich marked construction.
+
+> [!TIP]
+> **Help with an AI agent.** Paste this one line into Claude Code, Codex, Cursor, Gemini CLI, or any agent that can run commands:
+>
+> ```text
+> Read https://raw.githubusercontent.com/dovvnloading/loops-research-archive/main/AGENTS.md and follow it.
+> ```
+>
+> The agent picks an open obligation nobody has claimed, works in its own folder, and opens a pull request that CI checks. You need a free GitHub account and nothing else. [Agent briefing](./AGENTS.md) · [Open targets](./OPEN_TARGETS.md) · [Contribution standard](./CONTRIBUTING.md)
 
 **On this page:** [November research](#november-1516-2026-research-integration-merged-prs-72100) · [Results and original figures](#research-results-you-can-inspect) · [Mathematical program](#the-mathematical-program) · [Companion papers](#three-companion-papers) · [3/9 testbed](#the-november-2026-two-scale-testbed) · [Reproduce](#reproduce-the-central-results) · [Evidence ledger](#source-locked-evidence-ledger) · [Open problems](#the-open-frontier)
 

@@ -502,6 +502,90 @@
   white-space: nowrap;
 }
 
+/* Contribute: the line to hand an agent, then what is ready to work on. */
+#contribute {
+  /* Clear the workspace tabs, which stay pinned above the scrolling column. */
+  scroll-margin-top: 52px;
+}
+.ro-contribute {
+  display: grid;
+  gap: 10px;
+}
+.ro-contribute > p {
+  max-width: var(--measure);
+  color: var(--paper-2);
+  line-height: 1.5;
+}
+.ro-agent-line {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: stretch;
+  gap: 8px;
+}
+.ro-agent-line code {
+  padding: 8px 10px;
+  border: 1px solid var(--rule-2);
+  border-radius: var(--r);
+  background: var(--ink-0);
+  color: var(--paper);
+  font-size: 14px;
+  line-height: 1.45;
+  overflow-wrap: anywhere;
+  user-select: all;
+}
+.ro-contribute-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 18px;
+}
+.ro-contribute h3 {
+  margin-top: 14px;
+  font: 500 var(--t-5) / 1.3 var(--f-math);
+}
+.ro-contribute > .ro-target-note {
+  margin-top: -6px;
+  color: var(--paper-3);
+  font-size: var(--t-2);
+}
+.ro-target-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  border-top: 1px solid var(--rule);
+}
+.ro-target-list li {
+  display: grid;
+  gap: 4px;
+  padding: 9px 0;
+  border-bottom: 1px solid var(--rule);
+}
+.ro-target-list li > div {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 2px 18px;
+}
+.ro-target-list code {
+  color: var(--paper);
+  font-size: var(--t-3);
+  overflow-wrap: anywhere;
+}
+.ro-target-list span {
+  color: var(--paper-3);
+  font-size: var(--t-2);
+}
+.ro-target-list p {
+  display: -webkit-box;
+  max-width: var(--measure);
+  overflow: hidden;
+  color: var(--paper-2);
+  line-height: 1.5;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  line-clamp: 3;
+}
+
 .ro-footer {
   display: flex;
   flex-wrap: wrap;
@@ -551,6 +635,13 @@
   .ro-next-grid > button {
     grid-template-columns: 1fr;
     gap: 3px;
+  }
+  .ro-agent-line {
+    grid-template-columns: 1fr;
+    gap: 6px;
+  }
+  .ro-agent-line .ob-button {
+    justify-self: start;
   }
   .ro-search-box > span {
     display: none;
