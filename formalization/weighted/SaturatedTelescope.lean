@@ -24,13 +24,13 @@ theorem component_pullback_comp (f : X → Y) (g : Y → Z) (S : Set Z)
   apply Subset.antisymm
   · apply connectedComponentIn_mono
     intro z hz
-    exact connectedComponentIn_subset _ _ hz
+    exact connectedComponentIn_subset (g ⁻¹' S) (f x) hz
   · let C := connectedComponentIn ((g ∘ f) ⁻¹' S) x
     have hxC : x ∈ C := mem_connectedComponentIn hx
     have hC : IsPreconnected C := isPreconnected_connectedComponentIn
     have hsub : f '' C ⊆ g ⁻¹' S := by
       rintro y ⟨z, hz, rfl⟩
-      exact connectedComponentIn_subset _ _ hz
+      exact connectedComponentIn_subset ((g ∘ f) ⁻¹' S) x hz
     have hfx : f x ∈ f '' C := ⟨x, hxC, rfl⟩
     have himage : f '' C ⊆ connectedComponentIn (g ⁻¹' S) (f x) :=
       (hC.image _ hf.continuousOn).subset_connectedComponentIn hfx hsub
@@ -98,8 +98,17 @@ theorem routeMap_image (F : ℕ → X → X) (H : ℕ → Set X) (N : ℕ)
   | zero => simp [routeMap]
   | succ n ih =>
     change (routeMap F (s+1) n ∘ F s) '' H s = H (s+(n+1))
-    rw [← Set.image_image, honto s (by omega), show s+(n+1) = s+1+n by omega]
-    exact ih (s+1) (by omega)
+    calc
+      (routeMap F (s+1) n ∘ F s) '' H s = routeMap F (s+1) n '' (F s '' H s) := by
+        ext y
+        constructor
+        · rintro ⟨z, hz, rfl⟩
+          exact ⟨F s z, ⟨z, hz, rfl⟩, rfl⟩
+        · rintro ⟨z, ⟨w, hw, rfl⟩, rfl⟩
+          exact ⟨w, hw, rfl⟩
+      _ = H (s+(n+1)) := by
+        rw [honto s (by omega), show s+(n+1) = s+1+n by omega]
+        exact ih (s+1) (by omega)
 
 theorem quadratic_orbit_continuous (c : ℂ) (n : ℕ) :
     Continuous (QuadraticEscape.orbit c n) := by
@@ -115,7 +124,9 @@ theorem quadratic_orbit_add (c : ℂ) (m n : ℕ) (z : ℂ) :
   induction n with
   | zero => rfl
   | succ n ih =>
-    simp only [Nat.add_succ, QuadraticEscape.orbit, ih]
+    change (QuadraticEscape.orbit c (m+n) z)^2+c =
+      (QuadraticEscape.orbit c n (QuadraticEscape.orbit c m z))^2+c
+    rw [ih]
 
 /-- Actual time of a consecutive segment, not its number of stages. -/
 def routeTime (d : ℕ → ℕ) : ℕ → ℕ → ℕ
@@ -182,7 +193,8 @@ theorem quadratic_critical_component_symmetric (c : ℂ) (D : Set ℂ) (hc : c �
   have hneg : Continuous (fun w : ℂ => -w) := continuous_id.neg
   have hsub : (fun w : ℂ => -w) '' C ⊆ (fun w : ℂ => w^2+c) ⁻¹' D := by
     rintro y ⟨w, hw, rfl⟩
-    have h : w^2+c ∈ D := connectedComponentIn_subset _ _ hw
+    have h : w^2+c ∈ D :=
+      connectedComponentIn_subset ((fun u : ℂ => u^2+c) ⁻¹' D) 0 hw
     change (-w)^2+c ∈ D
     rw [show (-w)^2+c = w^2+c by ring]
     exact h
@@ -213,7 +225,7 @@ theorem quadratic_return_fiber_pair (c : ℂ) (p r : ℂ → ℂ) (A B D : Set �
       rw [← hponto]
       exact ⟨z, hz, rfl⟩
     rw [hB] at hpz
-    exact connectedComponentIn_subset _ _ hpz
+    exact connectedComponentIn_subset ((fun w : ℂ => w^2+c) ⁻¹' D) 0 hpz
   refine ⟨y, hy, hpy, ?_, ?_⟩
   · constructor
     · intro he
