@@ -658,7 +658,8 @@ theorem quadratic_return_filled_symmetric (c : ℂ) (p : ℕ) (U V : Set ℂ)
   | zero =>
     exact hsym z (hz 0)
   | succ n =>
-    rw [Function.iterate_succ_apply, quadratic_positive_iterate_even c p hp]
+    have he : F (-z) = F z := quadratic_positive_iterate_even c p hp z
+    rw [Function.iterate_succ_apply, he]
     exact hz (n+1)
 
 /-- All points of a connected successor piece are separated if one is.
