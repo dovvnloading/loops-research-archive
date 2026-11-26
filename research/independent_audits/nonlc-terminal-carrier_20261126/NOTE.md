@@ -360,12 +360,13 @@ In particular (5) is intrinsic to the actual cycle and the
 actual dynamics even if the filled set is not locally connected.
 It identifies a specific physical continuum rather than an abstract
 tree vertex. It need not be the minimal connected subset of \(K\)
-in a different, nonsaturated convention. If \(K\) is locally
-connected the monotone finite-cut model is the actual dendrite
-(distinct points are separated by an arc interior periodic or
-preperiodic cut by (1) and singleton fibers, or the continuous
-landing equivalence realizes \(K\)), and (4) is the ordinary
-connected hull.
+in a different, nonsaturated convention. If \(K\) is locally connected, Carathéodory's theorem makes
+each external impression a singleton. Kiwi's Theorem 3 (Finiteness
+Theorem, p. 210, proof pp. 237–238) represents every fiber in this
+nondegenerate connected Julia set as a finite union of impressions.
+Since the fibers are connected, each is a singleton. Thus the
+finite-cut model is homeomorphic to the actual dendrite and (4)
+is the ordinary connected hull.
 
 **Corollary 5.1 (properness).** The actual nondividing fixed point
 \(\beta\) belongs to no \(K_i\): fixedness and the cycle permutation
@@ -430,6 +431,25 @@ For the canonical set-level model define
  L_n=F^{-n}(T)\cap\Omega_n,\qquad
  \overline L_n=Q^{-n}(H)\cap\overline\Omega_n.
 \]
+The restriction \(Q^n:\overline\Omega_n\to\overline\Omega_0\)
+is a homeomorphism. Here is the inverse-fiber check, which is
+needed to match the selected model branch rather than just its
+image. A fiber over \(\overline\Omega_0\) is contained in
+\(\Omega_0\) by singleton-root component correspondence. If it
+is nontrivial, it contains no physical finite-orbit point.
+Its inverse under the homeomorphism \(F^n|_{\Omega_n}\) is
+a connected compact set, also without finite-orbit points.
+By (1) such a continuum is contained in a single ambient fiber.
+For a singleton fiber the inverse is a single point.
+Thus the physical inverse branch descends to an inverse on the
+quotient. It is continuous since the restriction of \(h\) to
+the open saturated component \(\Omega_0\) is a quotient map
+onto \(\overline\Omega_0\) (components of a punctured dendrite
+are open). This proves the asserted homeomorphism. Therefore
+\(\overline L_n\) is the connected selected inverse of
+\(H\cap\overline\Omega_0\), not an arbitrary relabeling of a
+model component.
+
 Because \(T\cap\mathfrak L_0\) is connected, \(L_n\) is its
 connected inverse via the homeomorphism \(F^n\), i.e. the actual
 selected component in this construction. Semiconjugacy and the
@@ -438,7 +458,7 @@ singleton-root component correspondence give the exact equality
  h^{-1}(\overline L_n)=L_n,\qquad h(L_n)=\overline L_n.
 \tag{9}
 \]
-The geometric small Julia model continuua are exactly the \(C_i\)
+The geometric small Julia model continua are exactly the \(C_i\)
 of Theorem 4.1; \(h(K_i)=C_i\), not an abstract finite-tree vertex.
 Thus in this model the two clauses of the selected set lift are
 separate and both have a proof. Formula (8) immediately implies
@@ -469,7 +489,7 @@ gives a locally connected Julia dendrite, all cycles repelling.
 The actual connected primitive 3/9 proper degree-two domains are
 proved in
 [nonattracting_tip_complex_two_scale_20261106.md](../nonattracting_tip_complex_two_scale_20261106.md)
-(Theorems 1–2 and the cited Rouché/straightening inputs); in
+(the stated complex-domain theorem and its cited Rouché/Riemann–Hurwitz inputs); in
 particular the period-three critical return has \(V_3\subset
 U_3=B(0,1/4)\). See also
 [period27_misiurewicz_tip_ray_access_20261106.md](../period27_misiurewicz_tip_ray_access_20261106.md).
@@ -534,7 +554,7 @@ KKL_STATIONARY_SELECTED_PREDECESSOR_CHAIN and the actual
 inverse-sheet hypotheses in that endpoint note. No source claim is
 imported that already says that the ambient quotient restricts to
 the little-set internal quotient: (3) is the proof of that bridge.
-The February/July source-locked status counts are not modified.
+The July source-locked status counts are not modified.
 
 Proposed integration: add a **proved scoped statement** for the
 canonical ordinary same-filled geometric construction (3)–(6).
