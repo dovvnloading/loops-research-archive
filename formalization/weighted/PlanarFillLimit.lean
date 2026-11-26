@@ -39,7 +39,7 @@ theorem connectedComponentIn_iUnion_monotone_open (U : ℕ → Set ℂ)
       exact ⟨max i j, hm (le_max_left i j), hm (le_max_right i j)⟩
     obtain ⟨n, hn⟩ := (isCompact_range p.continuous).elim_directed_cover U ho hs hd
     have hpre : IsPreconnected (range (⇑p)) :=
-      (isPathConnected_range p.continuous).isPreconnected
+      isPreconnected_range p.continuous
     exact mem_iUnion.mpr ⟨n,
       hpre.subset_connectedComponentIn p.source_mem_range hn p.target_mem_range⟩
   · intro w hw
