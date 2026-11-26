@@ -286,5 +286,75 @@ theorem chebyshev_fixed_deriv_norm (n : ℕ) :
   simp
 
 
+/-- One-step shadowing for two actual quadratic orbits. The nonlinear
+error term is retained, rather than replacing the quadratic by a linear model. -/
+theorem orbit_difference_step (c d z w : ℂ) (n : ℕ) :
+    ‖orbit d (n+1) w - orbit c (n+1) z‖ ≤
+      (2 * ‖orbit c n z‖ + ‖orbit d n w - orbit c n z‖) *
+        ‖orbit d n w - orbit c n z‖ + ‖d-c‖ := by
+  let a := orbit d n w
+  let b := orbit c n z
+  change ‖(a^2+d)-(b^2+c)‖ ≤ (2*‖b‖+‖a-b‖)*‖a-b‖+‖d-c‖
+  have he : (a^2+d)-(b^2+c) = (a-b)*(a-b+2*b)+(d-c) := by ring
+  rw [he]
+  have h : ‖a-b+2*b‖ ≤ ‖a-b‖+2*‖b‖ := by
+    calc
+      ‖a-b+2*b‖ ≤ ‖a-b‖+‖(2:ℂ)*b‖ := norm_add_le _ _
+      _ = _ := by rw [norm_mul, Complex.norm_two]
+  calc
+    ‖(a-b)*(a-b+2*b)+(d-c)‖ ≤ ‖(a-b)*(a-b+2*b)‖+‖d-c‖ :=
+      norm_add_le _ _
+    _ = ‖a-b‖*‖a-b+2*b‖+‖d-c‖ := by rw [norm_mul]
+    _ ≤ ‖a-b‖*(‖a-b‖+2*‖b‖)+‖d-c‖ :=
+      add_le_add_right (mul_le_mul_of_nonneg_left h (norm_nonneg _)) _
+    _ = _ := by ring
+
+/-- Finite-scale shadowing with the exact linear growth base A, not A+epsilon.
+The forcing error is absorbed into the shadowing variable. The quadratic
+correction remains controlled up to the scale A^n * epsilon = 1. -/
+theorem orbit_perturbation_bound (c d z w : ℂ) {A ε : ℝ}
+    (hA : 3 ≤ A) (hbase : ∀ j : ℕ, 2*‖orbit c j z‖ ≤ A)
+    (hε : ‖w-z‖+‖d-c‖ ≤ ε) (n : ℕ) (hn : A^n * ε ≤ 1) :
+    ‖orbit d n w - orbit c n z‖+‖d-c‖ ≤ A^n*ε+(A^n*ε)^2 := by
+  have hA0 : 0 ≤ A := by linarith
+  have he0 : 0 ≤ ε := (add_nonneg (norm_nonneg _) (norm_nonneg _)).trans hε
+  induction n with
+  | zero =>
+    simp only [orbit, pow_zero, one_mul]
+    nlinarith only [hε, sq_nonneg ε]
+  | succ n ih =>
+    let x := A^n*ε
+    have hx0 : 0 ≤ x := mul_nonneg (pow_nonneg hA0 _) he0
+    have hnext : A^(n+1)*ε = A*x := by
+      dsimp [x]
+      rw [pow_succ]
+      ring
+    rw [hnext] at hn ⊢
+    have hxle : x ≤ A*x := by
+      nlinarith only [mul_nonneg (show 0 ≤ A-1 by linarith) hx0]
+    have hx : x ≤ 1 := hxle.trans hn
+    let a : ℝ := ‖orbit d n w - orbit c n z‖
+    let b : ℝ := ‖d-c‖
+    have ha0 : 0 ≤ a := norm_nonneg _
+    have hb0 : 0 ≤ b := norm_nonneg _
+    have hi : a+b ≤ x+x^2 := ih hx
+    have hs := orbit_difference_step c d z w n
+    change ‖orbit d (n+1) w - orbit c (n+1) z‖ ≤
+      (2*‖orbit c n z‖+a)*a+b at hs
+    have hp := mul_le_mul_of_nonneg_right (add_le_add_right (hbase n) a) ha0
+    have hstep : ‖orbit d (n+1) w - orbit c (n+1) z‖+b ≤
+        A*(a+b)+(a+b)^2 := by
+      nlinarith only [hs, hp, mul_nonneg ha0 hb0, sq_nonneg b,
+        mul_nonneg (show 0 ≤ A-2 by linarith) hb0]
+    have hsmall : a+b ≤ 2*x := by
+      nlinarith only [hi, mul_nonneg hx0 (sub_nonneg.mpr hx)]
+    have hsq := pow_le_pow_left₀ (add_nonneg ha0 hb0) hsmall 2
+    have hlin := mul_le_mul_of_nonneg_left hi hA0
+    have hc : 0 ≤ A^2-A-4 := by
+      nlinarith only [hA, sq_nonneg (A-3)]
+    have hcoef := mul_nonneg hc (sq_nonneg x)
+    change ‖orbit d (n+1) w - orbit c (n+1) z‖+b ≤ A*x+(A*x)^2
+    nlinarith only [hstep,hlin,hsq,hcoef]
+
 end
 end QuadraticEscape
