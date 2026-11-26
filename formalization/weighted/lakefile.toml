@@ -1,6 +1,6 @@
 name = "loops_weighted"
 version = "0.1.0"
-defaultTargets = ["WeightedReturn", "GraphWeightedBridge", "CloneBounds", "CloneRoot", "FullCloneEigen", "FullCloneMatrix", "SpectralDominance", "FullCloneSpectralMax", "Period27RealCenter", "Period27RealUniqueness", "Period27RealExactPeriod", "NativeWaveGate", "LimbInsertionHolonomy", "AtomCutDefect", "PhaseMemoryCardinality", "FullClonePolynomial", "FullCloneStrictGap", "FullCloneEigenline", "CloneRootRate", "LocalizationSheetKernel", "ProtectedCarrierLogic", "AttachmentDefectLedger", "MarkedWaveSuprema", "ParabolicArchiveBrackets", "ParabolicBranches", "ParabolicCenterBranch", "ParabolicChannel", "ParabolicComplexComponent", "ParabolicComplexPullback", "ParabolicDisjoint", "ParabolicPhaseBands", "ParabolicRealSheet", "ParabolicSegment", "ParabolicShooting", "ParabolicTipFamily", "ParabolicTipPeriod", "ParabolicTipRate", "ParabolicTipShooting", "ParabolicTipWindow", "PlanarFullification", "Period27RealKneading", "Period27RealMarkov", "FullCloneRenewal", "FiniteMarkovFibers", "Period27FiniteFibers", "FiniteMarkovCorrelation", "FullCloneCorrelation", "StationaryEndpointCover", "StationaryPrefixCharge", "StationaryEndpointVisits", "StationaryCanonicalLift", "StationaryDeckSeparator", "StationaryPacketGain", "ClonePolynomialRoots", "FullCloneCharpoly", "FullCloneGapCollapse", "QuadraticEscape", "QuadraticCriticalTransversality", "ChebyshevFibers", "QuadraticExtremalMultiplier", "QuadraticCriticalWindow"]
+defaultTargets = ["WeightedReturn", "GraphWeightedBridge", "CloneBounds", "CloneRoot", "FullCloneEigen", "FullCloneMatrix", "SpectralDominance", "FullCloneSpectralMax", "Period27RealCenter", "Period27RealUniqueness", "Period27RealExactPeriod", "NativeWaveGate", "LimbInsertionHolonomy", "AtomCutDefect", "PhaseMemoryCardinality", "FullClonePolynomial", "FullCloneStrictGap", "FullCloneEigenline", "CloneRootRate", "LocalizationSheetKernel", "ProtectedCarrierLogic", "AttachmentDefectLedger", "MarkedWaveSuprema", "ParabolicArchiveBrackets", "ParabolicBranches", "ParabolicCenterBranch", "ParabolicChannel", "ParabolicComplexComponent", "ParabolicComplexPullback", "ParabolicDisjoint", "ParabolicPhaseBands", "ParabolicRealSheet", "ParabolicSegment", "ParabolicShooting", "ParabolicTipFamily", "ParabolicTipPeriod", "ParabolicTipRate", "ParabolicTipShooting", "ParabolicTipWindow", "PlanarFullification", "Period27RealKneading", "Period27RealMarkov", "FullCloneRenewal", "FiniteMarkovFibers", "Period27FiniteFibers", "FiniteMarkovCorrelation", "FullCloneCorrelation", "StationaryEndpointCover", "StationaryPrefixCharge", "StationaryEndpointVisits", "StationaryCanonicalLift", "StationaryDeckSeparator", "StationaryPacketGain", "ClonePolynomialRoots", "FullCloneCharpoly", "FullCloneGapCollapse", "QuadraticEscape", "QuadraticCriticalTransversality", "ChebyshevFibers", "QuadraticExtremalMultiplier", "PlanarFillLimit", "SaturatedTelescope", "QuadraticCriticalWindow"]
 
 [[require]]
 name = "mathlib"
@@ -258,6 +258,12 @@ name = "ChebyshevFibers"
 
 [[lean_lib]]
 name = "QuadraticExtremalMultiplier"
+
+[[lean_lib]]
+name = "PlanarFillLimit"
+
+[[lean_lib]]
+name = "SaturatedTelescope"
 
 [[lean_lib]]
 name = "QuadraticCriticalWindow"
