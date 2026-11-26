@@ -48,7 +48,8 @@ theorem quadratic_compact_finite_time_motion
       (orbit_analytic c n p.2).comp analyticAt_snd
     have hpair : AnalyticAt ℂ (fun q : ℂ × ℂ => (q.1, orbit c n q.2)) p :=
       analyticAt_fst.prod horbit
-    exact (hga (p.1, orbit c n p.2) ⟨hrP hp.1, hterminal p.2 hp.2⟩).comp hpair
+    exact (hga (p.1, orbit c n p.2) ⟨hrP hp.1, hterminal p.2 hp.2⟩).comp
+      (f := fun q : ℂ × ℂ => (q.1, orbit c n q.2)) (x := p) hpair
   · intro z hz
     exact (hbranch c hcP).2.1 (hCU hz)
   · intro d hd
@@ -71,7 +72,8 @@ theorem quadratic_compact_finite_time_motion
   · intro d hd z hz
     have hpair : AnalyticAt ℂ (fun e : ℂ => (e, orbit c n z)) d :=
       analyticAt_id.prod analyticAt_const
-    exact (hga (d, orbit c n z) ⟨hrP hd, hterminal z hz⟩).comp hpair
+    exact (hga (d, orbit c n z) ⟨hrP hd, hterminal z hz⟩).comp
+      (f := fun e : ℂ => (e, orbit c n z)) (x := d) hpair
 
 /-- If the original compact core is connected and nonempty, its motion
 is the complete global pullback component of the fixed terminal compact,
@@ -99,6 +101,7 @@ theorem quadratic_compact_motion_component
     fun z hz => (hbranch c hcP).2.1 (hCU hz), ?_, ?_⟩
   · intro d hd z hz
     exact (hga (d, orbit c n z) ⟨hrP hd, hterminal z hz⟩).comp
+      (f := fun e : ℂ => (e, orbit c n z)) (x := d)
       (analyticAt_id.prod analyticAt_const)
   · intro d hd
     refine ⟨?_, ?_⟩
