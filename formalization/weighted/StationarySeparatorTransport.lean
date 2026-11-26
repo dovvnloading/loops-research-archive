@@ -123,7 +123,11 @@ theorem separator_iff_local (O S : Set X) (a x y : X)
     y ∉ connectedComponentIn S x ↔
       y ∉ connectedComponentIn (S ∩ (O ∪ {a})) x := by
   rw [← component_inter_terminalSheet O S a x hfront ha hx]
-  simp [hy]
+  constructor
+  · intro h hn
+    exact h hn.1
+  · intro h hn
+    exact h ⟨hn, hy⟩
 
 /-- A continuous inverse-coordinate map on the retained sheet carries
 any potential ambient bypass to a connected bypass in the base. -/
