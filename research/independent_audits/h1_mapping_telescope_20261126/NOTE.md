@@ -242,7 +242,8 @@ subgroups, so path lifting gives inverse sections on them.
 By Lemma 5.1 of finite_horizon_inflation.md, (3.1) gives the based
 holomorphic lift \(\widetilde i_j\) and the lift
 \(\widetilde P_j:\widetilde X'_j\to\widetilde X_{j+1}\).
-The latter is itself a degree-\(d_j\) cover: the composite
+The inclusion lift is holomorphic and locally biholomorphic, since both projections and the inclusion are local biholomorphisms.
+The latter polynomial lift is itself a degree-\(d_j\) cover: the composite
 \(P_jp'_j\) corresponds to the subgroup
 \(\langle t_{j+1}^{d_j}\rangle\), of index \(d_j\) in the subgroup
 of \(p_{j+1}\). This index is computed in the cyclic subgroup,
@@ -423,9 +424,10 @@ virtual hull or a specified incompatible phase is excluded.
 There is no asserted uniform modulus for the arbitrarily thin
 stage collars chosen here.
 
-Concrete physical nontrivial examples will be given below;
-they are ordinary return cycles, not an assertion that the
-source's virtual-Cantor block has already been identified.
+Sections 6–7 give concrete actual satellite and primitive cycles;
+§8 supplies a strict actual-polynomial first-failure record.
+These are not an assertion that the source's virtual-Cantor
+block has already been identified.
 
 **Exact ledger/interface accounting.**
 * STAGE_FORWARD_CLOSURE (proved): consumed, with its premise
@@ -494,3 +496,269 @@ peripheral-lift construction is the present deduction.
 source comparison, mathematical writing and checker
 generation. No independent human specialist verification
 or kernel formalization of the analytic proof is represented.
+
+## 6. Actual nonattracting satellite witness (two stages)
+
+This is a physical period-two satellite return, with contacting little
+Julia sets, not a model disk map or a primitive cycle mislabeled as
+satellite. The algebraic parameter is the unique real zero \(c\) of
+\[
+ p(c)=c^3+2c^2+2c+2=0.
+\]
+The existing
+[period-two satellite tip certificate](../../native_wave_transfer/RESULTS.md#real-period-two-satellite-misiurewicz-tip-exact-return-semantic-v1-refusal)
+and [satellite v2 specification](../../native_wave_transfer/SPECIFICATION_v2_satellite.md)
+identify this same polynomial. We only need the coarser exact isolator
+\(-31/20<c<-77/50\): the signs of \(p\) at the endpoints are opposite,
+and \(p'(c)=3(c+2/3)^2+2/3>0\). Write \(a=c^2+c\).
+Then \(2079/2500<a<341/400<9/10\), and
+\[
+ f(0)=c,\quad f(c)=a,\quad f(a)=f(-a)=-a,\quad
+ a^2=-a-c,\quad c^2=a-c .
+ \tag{6.1}
+\]
+Indeed \(a^2+a+c=c\,p(c)\). The four orbit values are distinct
+except for the final fixed value, and \(|f'(-a)|=2a>1\).
+This is strictly preperiodic critical dynamics, so there is no finite
+attracting/parabolic orbit (each such basin must attract the orbit of
+a finite critical point). In particular it is a Misiurewicz quadratic,
+with connected Julia set equal to its filled Julia set. For this
+classical fact see the same physical satellite tip certificate,
+and Douady–Hubbard, *On the dynamics of polynomial-like mappings*,
+Ch. I §1 Proposition 2 for the nonescaping-critical connectedness
+criterion; absence of attracting, parabolic or other bounded Fatou
+components in the strictly preperiodic repelling case is the standard
+subhyperbolic theorem.
+
+Define the actual full intervals
+\[
+ H_0=[-a,a],\qquad H_1=[c,-a],\qquad H_2=H_0 .
+\]
+These lie in the filled Julia set by the bounded forward itinerary
+(6.1), hence in the Julia set. They intersect at the repelling point
+\(-a\). Directly over the complex plane, the real interval
+\(H_1-c=[0,a^2]\) has full square-root preimage \(H_0\), whereas
+\(H_0-c=[a^2,c^2]\) has exactly two components
+\([c,-a]\) and \([a,-c]\) in its square-root preimage. In particular
+\(f(H_0)=H_1,\ f(H_1)=H_0\) with degrees 2 and 1 respectively.
+This verifies (S1) as an exact complex preimage identity, not just
+an interval map. (S2) follows from the repelling preperiodic orbit
+above. Take
+\[
+ E_0=\{c,\infty\},\qquad E_1=\{a,\infty\}.
+\]
+Both are separated from the selected stage continuum. Forward
+closure is exact as an inclusion:
+\(f(E_0)=\{a,\infty\}\subset E_1\) and
+\(f(E_1)=\{-a,\infty\}\subset H_0\cup E_0\).
+The two sphere critical values \(c,\infty\) are in each stage
+marking. Choose the peripheral covers of §3, with the actual
+interval component and physical collar as the specified phase.
+
+For this witness one can construct the cyclic Jordan cores by
+direct strict inequalities, independently of BOPT. Put
+\[
+ B_0=\mathbb D(0,1),\quad B_1=\mathbb D(c,7/8),\quad
+ A_0=\mathbb D(0,\sqrt{7/8}),\quad
+ A_1=\{-\sqrt{w-c}:w\in B_0\},
+ \tag{6.2}
+\]
+using the positive-real-part square root on the right half-plane.
+On the closed \(w\)-disk, \(\operatorname{Re}(w-c)>27/50\).
+If \(z=-\sqrt{w-c}\), then
+\(-\operatorname{Re}z\ge\sqrt{\operatorname{Re}(w-c)}>7/10\).
+Using \(z^2=w-c\) and \(a=c^2+c\),
+\[
+ |z-c|=\frac{|w-a|}{|z+c|}
+ < \frac{1+9/10}{77/50+7/10}
+ =\frac{95}{112}<\frac78 .
+\]
+Thus \(\overline A_1\Subset B_1\) and
+\(\overline A_0\Subset B_0\). Both are Jordan disks, and the two
+boundary restrictions are proper of degrees 2 and 1.
+The marking obstacles miss the respective closed target disks:
+\(|c|>1\) and \(a-c=c^2>7/8\). The root \(H_0\) is contained
+in \(A_0\) by \(a^2<(9/10)^2<7/8\), and \(H_1\Subset A_1\)
+by its exact inverse branch and \(H_0\Subset B_0\).
+The critical value of \(G_1=f|_{A_0}\) is \(c\in A_1\)
+because \(f(c)=a\in B_0\) and \(c<0\).
+Hence the selected base change \(D_1=f^{-1}(A_1)\cap A_0\)
+is connected and Jordan, with degree two by Theorem 9.1;
+\(f^2:D_1\to B_0\) is proper of degree two, with critical
+value \(a\in H_0\), and the route closes. §3 constructs the
+actual peripheral lifts and their closure embeddings, including
+the returning basepoint connector. This verifies every clause
+listed in §15.3 for these prescribed physical stages.
+
+For comparison, on this very parameter the common marking
+\(\Upsilon=H_0\cup H_1\cup\{\infty\}\) does *not* give
+independent peripheral meridians of the two touching intervals:
+the winding of a loop avoiding the union is constant on the
+connected union. The individual collar encircling one interval
+and missing the other cannot exist. This does not rule out a
+bouquet marking or a different source-defined virtual cover.
+It explains why the above choice is genuinely stage-dependent;
+it does not silently change a prescribed common marking.
+
+## 7. A primitive two-scale physical family of examples
+
+The archive's independently certified nonattracting
+period-3/period-9 Misiurewicz tip is defined by
+\(P_{18}(c)+P_9(c)=0,\ P_{k+1}=P_k^2+c\), with
+\(P_0=0\) and the adjacent dyadic bracket in
+[Two actual complex quadratic-like returns](../nonattracting_tip_complex_two_scale_20261106.md),
+sections "Exact parameter and real return data" and "The complex
+theorem with its imported analytic ingredients." Use that written
+analytic theorem and its exact Rouché and phase-gap certificates
+as inputs (not merely the samples): the actual return restrictions
+\(f^p,\ p=3,9\), have connected filled sets \(K_p\), contain
+\(0\), have exactly one quadratic encounter and have pairwise
+disjoint physical phase neighborhoods. The same source gives the
+repelling critical orbit and \(K(f)=J(f)\).
+These are separately source-identified ordinary terminal KL
+returns by
+[Both modified nests terminate at their first children](../tip_kl_terminal_first_child_20261106.md),
+§§2–6, using KL *Decorations* Lemma 2.3 and §2.2.
+
+For each \(p\) set \(H_j=f^j(K_p)\), \(0\le j<p\).
+The suffix-component argument gives saturation without
+assuming fullness of polynomial images: \(K_p\) is a component
+of \((f^p)^{-1}(K_p)\) by the proper filled-set identity and
+its compact isolation. For the component \(C\) of the suffix
+preimage \((f^{p-j})^{-1}(K_p)\) containing \(f^j(K_p)\),
+take the component of \((f^j)^{-1}(C)\) containing \(K_p\).
+It maps onto \(C\) and lies in the selected full-return
+component, so equals \(K_p\); hence \(C=f^j(K_p)\).
+Components of polynomial pullbacks of full continua are full
+by the nested Jordan-neighborhood argument of Lemma 2.2.
+The same argument with one step proves (S1) on all phases.
+Multiplicities are 2 on stage zero, 1 otherwise by the
+disjoint physical phases and the unique quadratic critical
+point of \(f\). With
+\[
+ E_j=\{\infty\}\cup\bigcup_{\ell\ne j} H_\ell
+\]
+one has separation, common forward-invariant marking, and
+the critical values in every target marking. Thus (S3)
+holds for these actual cycles. The peripheral cover choice
+(S4) then gives the result at each of the two physical scales.
+This does **not** give an interscale comparison between their
+different prescribed native KL coset/prime-end atlases or
+solve the virtual second-scale authorization of §16.1.
+
+The same proof works for any actual primitive quadratic-like
+return with connected Julia set and pairwise disjoint physical
+phases, including ordinary primitive levels to which the
+published Kahn/Kahn–Lyubich bounds apply. Neither primitive
+disjointness nor the ordinary quadratic-like hypothesis is
+needed in the general theorem of §§1–4.
+
+## 8. An exact actual-polynomial degree-loss certificate
+
+The critical retention conclusion is not a consequence of
+proper stage maps, cyclic target labels, and compact ordinary
+closure embeddings alone, even for a quadratic with \(K=J\).
+Let \(f(z)=z^2-2\), the Chebyshev quadratic. Its filled Julia
+set is \([-2,2]\), as follows also from
+\(f(u+u^{-1})=u^2+u^{-2}\); points off the interval have a
+representative \(|u|>1\) and escape. Use the two actual stages
+\[
+ \begin{split}
+ Y_0&=\mathbb D(0,3/2),&
+ A_0&=\mathbb D(0,7/5),\\
+ Y_1&=\mathbb D(-2,49/25),&
+ A_1&=\{-\sqrt{w+2}:w\in Y_0\},\qquad Y_2=Y_0.
+ \end{split}
+\]
+Both \(\iota_j\) are literal closure inclusions.
+Here \(\operatorname{Re}(w+2)\ge1/2\) for the closed target
+disk, so the negative square root is holomorphic across that
+disk and injective there. For \(z=-\sqrt{w+2}\),
+\[
+ |z+2|=\frac{|w-2|}{|z-2|}
+ \le\frac{7/2}{2}=\frac74<\frac{49}{25}.
+\]
+Thus \(\overline A_1\Subset Y_1\), and
+\(\overline A_0\Subset Y_0\). The stage \(g_0=f:A_0\to Y_1\)
+is quadratic, \(g_1=f:A_1\to Y_0\) conformal. The critical
+value of \(g_0\) is \(v=-2\notin\overline A_1\), since
+\(f(-2)=2\notin\overline Y_0\).
+The exact Failure certificate 10.3 is
+\[
+ (1,g_0,-2,A_1,D^+,D^-,D^+),\qquad
+ D^\pm=\{\pm\sqrt{w+2}: w\in A_1\}.
+\]
+In this expression the square root is the analytic branch on
+the simply connected \(A_1+2\) avoiding zero, positive over
+\(w=-\sqrt2\); its two choices are exchanged by negation.
+The compact separation of \(A_1\) from \(-2\) gives disjoint
+closed inverse disks. Each lies in \(A_0\) because
+\(|w+2|<49/25\), and each is mapped biholomorphically by \(g_0\)
+onto \(A_1\). No connected selected continuation has degree
+two; choosing the negative component instead does not help.
+
+This verifies Definition 10.1 and Theorem 10.2(1),(2),(4)
+on actual iterates with authorized local charts taken to be
+the indicated plane neighborhoods, but fails (3). It is
+**not** claimed as a counterexample to the ledger's
+source-facing universal quantifier: it is not a source-identified
+virtual stage cycle with saturated closed carriers. In fact
+the second critical iterate \(f^2(0)=2\) is outside the
+first target disk, so it cannot satisfy the saturated
+cyclic critical itinerary of §1. It is an actual-dynamics
+counterexample to dropping critical containment from the
+planar criterion.
+
+## 9. Exact peripheral-degree test for a prescribed cover
+
+For an actual stage collar as in §2, replace the two chosen
+based cyclic subgroups by arbitrary prescribed subgroups of
+the corresponding marked complement fundamental groups.
+Suppose the lift of inclusion exists (Lemma 5.1). The connected
+restriction of each cover to the physical annulus is classified
+by its intersection with the peripheral cyclic subgroup at
+the selected basepoint. If these intersections are
+\(\langle (t'_j)^{n'_j}\rangle\) and
+\(\langle t_j^{n_j}\rangle\) with positive integers \(n'_j,n_j\),
+then their annular covering degrees are precisely \(n'_j,n_j\).
+The inclusion lift on the selected annuli has degree
+\(n'_j/n_j\) (an integer by the lift condition), since projections
+and inclusion commute. Thus it is injective on these entire
+annuli iff \(n'_j=n_j\); to fill both by *one-sheeted physical
+core charts* as in §3 requires \(n'_j=n_j=1\).
+Likewise the polynomial lift to the selected next target
+annulus has degree \(d_j n'_j/n_{j+1}\) when it exists, and
+preserves the original physical annular degree iff
+\(n'_j=n_{j+1}\). These equalities are in the actual
+covering components, not in the abelianized ambient group.
+If the intersection is trivial, the lifted annulus is
+its infinite cyclic universal cover (a strip), and no
+one-sheeted inverse section of the whole physical collar
+exists. These tests are necessary for this specific whole-collar
+filling and provide explicit first rejection tests for
+externally prescribed phase choices. They do not imply
+that every possible different core construction is impossible.
+
+## 10. Reproduction and review boundary
+
+Run from the repository root with Python 3.12:
+\[
+\texttt{python -B research/independent\_audits/h1\_mapping\_telescope\_20261126/verify.py}
+\]
+The checker uses only the standard library, exact rational
+arithmetic and integer polynomial reduction. It reports the
+satellite root isolator, identity and strict containment checks,
+and the strict Chebyshev degree-loss margins as JSON.
+No tolerances, sampling, random seeds, or network are used;
+a failed assertion exits nonzero. It is registered as METADATA
+because it checks arithmetic inputs, not the analytic theorem
+or a model-to-physical implication. The analytic deductions
+and their hypotheses are in this note. The associated workflow
+only reads repository contents, runs the checker, and does
+not commit or alter generated files.
+
+The classification remains **partial**: a proved physical
+subclass and concrete ordinary (including satellite) cycles,
+plus an actual degree-loss diagnostic, but no verified
+source-authorized nonordinary virtual cycle, no counterexample
+to the original universal claim, and no ledger-status changes.
