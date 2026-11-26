@@ -1,4 +1,5 @@
 import QuadraticMultiplierCoordinate
+import QuadraticCenterParameterLocus
 
 /-!
 # An open disk of realized multipliers at every quadratic center
@@ -30,6 +31,7 @@ theorem center_multiplier_disk (c : ℂ) (n : ℕ)
       AnalyticOnNhd ℂ ξ (Metric.ball 0 r) ∧
       Set.InjOn ψ (Metric.ball 0 r) ∧
       ∀ t ∈ Metric.ball (0 : ℂ) r,
+        QuadraticEscape.parameterEscape (ψ t) = 0 ∧
         returnMultiplier (ψ t) (ξ t) (n+1) = t ∧
         returnOrbit (ψ t) (ξ t) (n+1) = ξ t ∧
         Function.minimalPeriod (fun z : ℂ => z^2+ψ t) (ξ t) = n+1 ∧
@@ -40,8 +42,9 @@ theorem center_multiplier_disk (c : ℂ) (n : ℕ)
     center_multiplier_parameter_coordinate c n hreturn hmin
   have hψlim : Tendsto ψ (𝓝 (0 : ℂ)) (𝓝 c) := by
     simpa only [hψzero] using hψan.continuousAt.tendsto
+  have hreal := hψlim.eventually (center_parameter_escape_zero c n hreturn)
   have hall := hψan.eventually_analyticAt.and
-    ((hψlim.eventually han.eventually_analyticAt).and hfinal)
+    ((hψlim.eventually han.eventually_analyticAt).and (hreal.and hfinal))
   obtain ⟨r, hr, hball⟩ := Metric.eventually_nhds_iff_ball.mp hall
   let ξ : ℂ → ℂ := fun t => ζ (ψ t)
   refine ⟨ψ, ξ, r, hr, hψzero, ?_, hψd, ?_, ?_, ?_, ?_⟩
@@ -52,8 +55,8 @@ theorem center_multiplier_disk (c : ℂ) (n : ℕ)
   · intro t ht
     exact (hball t ht).2.1.comp (hball t ht).1
   · intro s hs t ht heq
-    have hvs := (hball s hs).2.2.1
-    have hvt := (hball t ht).2.2.1
+    have hvs := (hball s hs).2.2.2.1
+    have hvt := (hball t ht).2.2.2.1
     rw [heq] at hvs
     exact hvs.symm.trans hvt
   · intro t ht

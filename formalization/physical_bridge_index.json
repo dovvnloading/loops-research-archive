@@ -3175,6 +3175,17 @@
       "formalization/weighted/QuadraticCenterTrapping.lean": [
         "returnOrbit_critical_secant",
         "center_uniform_return_trapping"
+      ],
+      "formalization/weighted/QuadraticTrappingEscape.lean": [
+        "escapeOrbit_eq_returnOrbit",
+        "escape_zero_of_bounded_return_subsequence",
+        "escape_zero_of_return_disk",
+        "parameterEscape_zero_of_return_disk"
+      ],
+      "formalization/weighted/QuadraticCenterParameterLocus.lean": [
+        "center_uniform_zero_escape_disk",
+        "center_parameter_escape_zero",
+        "center_mem_interior_zero_escape"
       ]
     },
     "obligations": [

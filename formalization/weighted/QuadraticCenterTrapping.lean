@@ -69,7 +69,7 @@ theorem center_uniform_return_trapping (c : ℂ) (n : ℕ)
     _ = ‖orbit d (n+1)‖ + ‖z‖ * ‖returnSecant d z 0 (n+1)‖ := by
       rw [norm_mul]
     _ ≤ ‖orbit d (n+1)‖ + r*((1 : ℝ)/2) :=
-      add_le_add_left (mul_le_mul hz hSd.le (norm_nonneg _) hr.le) _
+      add_le_add le_rfl (mul_le_mul hz hSd.le (norm_nonneg _) hr.le)
     _ < r := by linarith
 
 end

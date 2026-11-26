@@ -100,6 +100,7 @@ formalization/weighted/PrimeEndSectorFilters.lean	METADATA
 formalization/weighted/PrimeEndSectorImpressions.lean	METADATA
 formalization/weighted/PrimeEndSectorRank.lean	METADATA
 formalization/weighted/QuadraticCenterMultiplier.lean	METADATA
+formalization/weighted/QuadraticCenterParameterLocus.lean	METADATA
 formalization/weighted/QuadraticCenterTrapping.lean	METADATA
 formalization/weighted/QuadraticComponentConjugacy.lean	METADATA
 formalization/weighted/QuadraticComponentDynamics.lean	METADATA
@@ -121,6 +122,7 @@ formalization/weighted/QuadraticParameterDistortion.lean	CONSTRUCT
 formalization/weighted/QuadraticParameterInverse.lean	CONSTRUCT
 formalization/weighted/QuadraticParameterMotion.lean	CONSTRUCT
 formalization/weighted/QuadraticParameterUnivalence.lean	CONSTRUCT
+formalization/weighted/QuadraticTrappingEscape.lean	METADATA
 formalization/weighted/QuadraticUnivalentNeighborhood.lean	CONSTRUCT
 formalization/weighted/SaturatedTelescope.lean	METADATA
 formalization/weighted/SpectralDominance.lean	CLONE EDGE
