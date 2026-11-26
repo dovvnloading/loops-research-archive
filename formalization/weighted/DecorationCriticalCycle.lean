@@ -1,6 +1,11 @@
 import SaturatedTelescope
 import QuadraticExtremalMultiplier
 import StationarySeparatorTransport
+import Mathlib.Topology.Homotopy.Lifting
+import Mathlib.Topology.Maps.Proper.CompactlyGenerated
+import Mathlib.Analysis.Calculus.InverseFunctionTheorem.Deriv
+import Mathlib.Analysis.Complex.LocallyUniformLimit
+import Mathlib.Analysis.Complex.OpenMapping
 
 /-!
 # Critical-cycle avoidance for actual quadratic decoration cylinders
@@ -373,5 +378,284 @@ theorem orbit_compact_preimage (c : ℂ) (n : ℕ) (K : Set ℂ)
   have h := inverse_orbit_bound c z n R (le_max_right _ _)
     (hb.trans (le_max_left _ _))
   simpa [Metric.mem_closedBall, dist_eq_norm] using h
+
+open Filter Metric
+open scoped Topology
+
+/-- Actual polynomial iterates are proper maps. -/
+theorem orbit_proper (c : ℂ) (n : ℕ) : IsProperMap (orbit c n) := by
+  refine isProperMap_iff_isCompact_preimage.mpr
+    ⟨quadratic_orbit_continuous c n,?_⟩
+  intro K hK
+  exact orbit_compact_preimage c n K hK
+
+theorem orbit_hasStrictDerivAt (c z : ℂ) (n : ℕ) :
+    HasStrictDerivAt (orbit c n) (multiplier c z n) z := by
+  induction n with
+  | zero =>
+    change HasStrictDerivAt (id : ℂ → ℂ) 1 z
+    exact hasStrictDerivAt_id z
+  | succ n ih =>
+    have hh := HasStrictDerivAt.add (HasStrictDerivAt.pow ih 2)
+      (hasStrictDerivAt_const z c)
+    have heq : orbit c (n+1) = (orbit c n)^2 + fun _ => c := by
+      funext w
+      simp [orbit]
+    rw [heq]
+    simpa only [multiplier, Nat.cast_ofNat, Nat.reduceSub, pow_one, add_zero] using hh
+
+/-- Properness and regularity imply an actual finite covering on
+every set of regular values. No covering hypothesis is assumed. -/
+theorem orbit_covering_on_regular_values (c : ℂ) (n : ℕ) (S : Set ℂ)
+    (hreg : ∀ z : ℂ, orbit c n z ∈ S → deriv (orbit c n) z ≠ 0) :
+    IsCoveringMapOn (orbit c n) S := by
+  have hl : IsLocalHomeomorphOn (orbit c n) (orbit c n ⁻¹' S) := by
+    refine IsLocalHomeomorphOn.mk _ _ ?_
+    intro z hz
+    have hn : multiplier c z n ≠ 0 := by
+      rw [← multiplier_eq_deriv]
+      exact hreg z hz
+    have hd := (orbit_hasStrictDerivAt c z n).hasStrictFDerivAt_equiv hn
+    exact ⟨hd.toOpenPartialHomeomorph (orbit c n),
+      hd.mem_toOpenPartialHomeomorph_source,hd.toOpenPartialHomeomorph_coe⟩
+  refine (orbit_proper c n).isClosedMap.isCoveringMapOn_of_isLocalHomeomorphOn ?_ hl
+  intro w hw
+  refine (orbit_compact_preimage c n {w} isCompact_singleton).finite ?_
+  apply IsDiscrete.of_openPartialHomeomorph (orbit c n) subset_rfl
+  intro z hz
+  have he : orbit c n z = w := hz
+  exact hl z (show orbit c n z ∈ S by rw [he]; exact hw)
+
+theorem orbit_covering_off_cycle (c : ℂ) (P : Set ℂ) (r n : ℕ)
+    (hr : 0 < r) (hreturn : phase c P r = P) (hzero : 0 ∈ P) :
+    IsCoveringMapOn (orbit c n) (cycleSupport c P r)ᶜ := by
+  apply orbit_covering_on_regular_values
+  intro z hz
+  exact derivative_ne_zero_over_cycle_complement c P r n hr hreturn hzero z hz
+
+/-- A regular covering has a holomorphic inverse section through
+any specified preimage on a simply connected open target domain. -/
+theorem orbit_holomorphic_inverse_section (c : ℂ) (n : ℕ) (U : Set ℂ)
+    (hUo : IsOpen U) (hUc : IsSimplyConnected U)
+    (hreg : ∀ z : ℂ, orbit c n z ∈ U → deriv (orbit c n) z ≠ 0)
+    (a : ℂ) (ha : a ∈ U) (z : ℂ) (hz : orbit c n z = a) :
+    ∃ g : ℂ → ℂ, DifferentiableOn ℂ g U ∧ g a = z ∧
+      ∀ w ∈ U, orbit c n (g w) = w := by
+  classical
+  letI := hUc.simplyConnectedSpace
+  letI := hUo.locallyPathConnectedSpace
+  let f : C(U,ℂ) := ⟨Subtype.val,continuous_subtype_val⟩
+  have hc := orbit_covering_on_regular_values c n U hreg
+  obtain ⟨G,hG,_⟩ := hc.existsUnique_continuousMap_lifts f
+    (a₀ := ⟨a,ha⟩) (e₀ := z) hz (fun w => w.property)
+  let g : ℂ → ℂ := fun w => if hw : w ∈ U then G ⟨w,hw⟩ else 0
+  have hval (w : ℂ) (hw : w ∈ U) : g w = G ⟨w,hw⟩ := dif_pos hw
+  have hg : ContinuousOn g U := by
+    rw [continuousOn_iff_continuous_restrict]
+    have he : U.restrict g = (G : U → ℂ) := by
+      funext w
+      exact hval w w.property
+    rw [he]
+    exact G.continuous
+  have hr (w : ℂ) (hw : w ∈ U) : orbit c n (g w) = w := by
+    rw [hval w hw]
+    exact congrFun hG.2 ⟨w,hw⟩
+  refine ⟨g,?_,(hval a ha).trans hG.1,hr⟩
+  intro w hw
+  have hn : multiplier c (g w) n ≠ 0 := by
+    rw [← multiplier_eq_deriv]
+    exact hreg _ (by rw [hr w hw]; exact hw)
+  have he : ∀ᶠ v in 𝓝 w, orbit c n (g v) = v := by
+    filter_upwards [hUo.mem_nhds hw] with v hv
+    exact hr v hv
+  exact (HasDerivAt.of_local_left_inverse
+    (hg.continuousAt (hUo.mem_nhds hw)) (orbit_hasDerivAt c (g w) n)
+    hn he).differentiableAt.differentiableWithinAt
+
+/-- A limit of arbitrarily deep inverse sections lies in the
+bounded-orbit set. Bound every fixed forward iterate before passing
+to the limit; no image-stability theorem is needed. -/
+theorem inverse_limit_in_filled_set {ι : Type*} (l : Filter ι) [l.NeBot]
+    (c : ℂ) (N : ι → ℕ) (hN : Tendsto N l atTop)
+    (U : Set ℂ) (R : ℝ) (hR : 1+‖c‖ ≤ R)
+    (hUbound : ∀ w ∈ U, ‖w‖ ≤ R)
+    (g : ι → ℂ → ℂ) (h : ℂ → ℂ)
+    (hright : ∀ i w, w ∈ U → orbit c (N i) (g i w) = w)
+    (hlim : ∀ w ∈ U, Tendsto (fun i => g i w) l (𝓝 (h w))) :
+    ∀ w ∈ U, escape c (h w) = 0 := by
+  intro w hw
+  apply (escape_zero_iff_bounded c (h w)).mpr
+  refine ⟨R,?_⟩
+  intro m
+  have hev : ∀ᶠ i in l, m ≤ N i := (tendsto_atTop.mp hN) m
+  have hbound : ∀ᶠ i in l, ‖orbit c m (g i w)‖ ≤ R := by
+    filter_upwards [hev] with i hi
+    apply inverse_orbit_bound c (orbit c m (g i w)) (N i-m) R hR
+    rw [← quadratic_orbit_add, show m+(N i-m) = N i by omega, hright i w hw]
+    exact hUbound w hw
+  have ht : Tendsto (fun i => ‖orbit c m (g i w)‖) l
+      (𝓝 ‖orbit c m (h w)‖) :=
+    ((quadratic_orbit_continuous c m).continuousAt.tendsto.comp (hlim w hw)).norm
+  exact le_of_tendsto ht hbound
+
+/-- Empty interior of the actual filled set forces every locally
+uniform holomorphic inverse limit to be constant, by open mapping. -/
+theorem inverse_limit_constant {ι : Type*} (l : Filter ι) [l.NeBot]
+    (c : ℂ) (N : ι → ℕ) (hN : Tendsto N l atTop)
+    (U : Set ℂ) (R : ℝ) (hR : 1+‖c‖ ≤ R)
+    (hUo : IsOpen U) (hUc : IsPreconnected U)
+    (hUbound : ∀ w ∈ U, ‖w‖ ≤ R)
+    (hempty : interior {z : ℂ | escape c z = 0} = ∅)
+    (g : ι → ℂ → ℂ) (h : ℂ → ℂ)
+    (hright : ∀ i w, w ∈ U → orbit c (N i) (g i w) = w)
+    (hd : ∀ i, DifferentiableOn ℂ (g i) U)
+    (hlim : TendstoLocallyUniformlyOn g h l U) :
+    ∃ a : ℂ, ∀ w ∈ U, h w = a := by
+  have hfilled := inverse_limit_in_filled_set l c N hN U R hR hUbound g h hright
+    (fun w hw => hlim.tendsto_at hw)
+  have han := (hlim.differentiableOn (Eventually.of_forall hd) hUo).analyticOnNhd hUo
+  rcases han.is_constant_or_isOpen hUc with hconst | hopen
+  · exact hconst
+  · have him : h '' U ⊆ {z : ℂ | escape c z = 0} := by
+      rintro _ ⟨w,hw,rfl⟩
+      exact hfilled w hw
+    have hs : h '' U ⊆ interior {z : ℂ | escape c z = 0} :=
+      interior_maximal him (hopen U subset_rfl hUo)
+    rw [hempty] at hs
+    refine ⟨0,?_⟩
+    intro w hw
+    exact (hs ⟨w,hw,rfl⟩).elim
+
+/-- Cauchy's derivative estimate gives a common local Lipschitz
+constant for a bounded family of holomorphic functions. -/
+theorem bounded_holomorphic_local_lipschitz {ι : Type*}
+    (U : Set ℂ) (hU : IsOpen U) (R : ℝ) (g : ι → ℂ → ℂ)
+    (hd : ∀ i, DifferentiableOn ℂ (g i) U)
+    (hb : ∀ i w, w ∈ U → ‖g i w‖ ≤ R)
+    (z : ℂ) (hz : z ∈ U) :
+    ∃ s > 0, ball z s ⊆ U ∧
+      ∀ i y, y ∈ ball z s → dist (g i y) (g i z) ≤ (R/s) * dist y z := by
+  obtain ⟨ρ,hρ,hρU⟩ := Metric.isOpen_iff.mp hU z hz
+  let s := ρ/3
+  have hs : 0 < s := by dsimp [s]; positivity
+  have hball : ball z s ⊆ U := by
+    apply subset_trans _ hρU
+    exact ball_subset_ball (by dsimp [s]; linarith)
+  have hclosed (w : ℂ) (hw : w ∈ ball z s) : closedBall w s ⊆ U := by
+    intro x hx
+    apply hρU
+    rw [mem_ball] at hw ⊢
+    rw [mem_closedBall] at hx
+    have hh := dist_triangle x w z
+    dsimp [s] at *
+    linarith
+  refine ⟨s,hs,hball,?_⟩
+  intro i y hy
+  have hh := (convex_ball z s).norm_image_sub_le_of_norm_deriv_le
+    (fun w hw => (hd i).differentiableAt (hU.mem_nhds (hball hw)))
+    (fun w hw => by
+      rw [← Complex.cderiv_eq_deriv hU (hd i) hs (hclosed w hw)]
+      exact Complex.norm_cderiv_le hs (fun x hx => hb i x
+        (hclosed w hw (sphere_subset_closedBall hx))))
+    (mem_ball_self hs) hy
+  simpa only [dist_eq_norm] using hh
+
+/-- A bounded holomorphic family has a locally uniform limit along
+every ultrafilter. Pointwise compactness plus the Cauchy estimate
+establish normality. -/
+theorem bounded_holomorphic_ultrafilter_limit {ι : Type*} (l : Ultrafilter ι)
+    (U : Set ℂ) (hU : IsOpen U) (R : ℝ) (hR : 0 ≤ R)
+    (g : ι → ℂ → ℂ) (hd : ∀ i, DifferentiableOn ℂ (g i) U)
+    (hb : ∀ i w, w ∈ U → ‖g i w‖ ≤ R) :
+    ∃ h : ℂ → ℂ, TendstoLocallyUniformlyOn g h (l : Filter ι) U := by
+  classical
+  have hpoint (w : ℂ) : ∃ v : ℂ, w ∈ U →
+      Tendsto (fun i => g i w) (l : Filter ι) (𝓝 v) := by
+    by_cases hw : w ∈ U
+    · have hm : closedBall (0 : ℂ) R ∈ (l.map (fun i => g i w) : Filter ℂ) := by
+        change (fun i => g i w) ⁻¹' closedBall (0 : ℂ) R ∈ (l : Filter ι)
+        exact Eventually.of_forall (fun i => by
+          simpa [Metric.mem_closedBall,dist_eq_norm] using hb i w hw)
+      obtain ⟨v,_,hv⟩ := (isCompact_closedBall (0 : ℂ) R).ultrafilter_le_nhds
+        (l.map (fun i => g i w)) (le_principal_iff.mpr hm)
+      exact ⟨v,fun _ => hv⟩
+    · exact ⟨0,fun h => (hw h).elim⟩
+  choose h hlim using hpoint
+  refine ⟨h,?_⟩
+  intro E hE z hz
+  obtain ⟨ε,hε,hεE⟩ := Metric.mem_uniformity_dist.mp hE
+  obtain ⟨s,hs,hball,hLip⟩ := bounded_holomorphic_local_lipschitz U hU R g hd hb z hz
+  have hL : 0 ≤ R/s := div_nonneg hR hs.le
+  let δ := min s (ε/(4*(R/s+1)))
+  have hδ : 0 < δ := lt_min hs (div_pos hε (by linarith))
+  refine ⟨ball z δ,mem_nhdsWithin_of_mem_nhds (ball_mem_nhds z hδ),?_⟩
+  have he : ∀ᶠ i in (l : Filter ι), dist (g i z) (h z) < ε/4 :=
+    (Metric.tendsto_nhds.mp (hlim z hz)) _ (by positivity)
+  filter_upwards [he] with i hi y hy
+  apply hεE
+  change dist (h y) (g i y) < ε
+  have hy' : y ∈ ball z s := ball_subset_ball (min_le_left _ _) hy
+  have hlimLip : dist (h y) (h z) ≤ (R/s)*dist y z :=
+    le_of_tendsto ((hlim y (hball hy')).dist (hlim z hz))
+      (Eventually.of_forall (fun i => hLip i y hy'))
+  have hsmall : dist y z < ε/(4*(R/s+1)) :=
+    (show dist y z < δ from hy).trans_le (min_le_right _ _)
+  have hprod := (lt_div_iff₀ (by linarith : 0 < 4*(R/s+1))).mp hsmall
+  have hquarter : (R/s)*dist y z < ε/4 := by
+    nlinarith [dist_nonneg (x := y) (y := z)]
+  have hleft := hlimLip.trans_lt hquarter
+  have hright := (hLip i y hy').trans_lt hquarter
+  calc
+    dist (h y) (g i y) ≤ dist (h y) (h z) + dist (h z) (g i y) :=
+      dist_triangle _ _ _
+    _ ≤ dist (h y) (h z) + (dist (h z) (g i z) + dist (g i z) (g i y)) :=
+      add_le_add_left (dist_triangle _ _ _) _
+    _ < ε := by rw [dist_comm (h z) (g i z),dist_comm (g i z) (g i y)]; linarith
+
+/-- Uniform shrinking on every compact subtrace of a bounded
+connected open domain of holomorphic inverse sections. No
+local connectivity or prescribed choice of inverse sheet.
+The empty interior of the actual filled set is the dynamical
+limit hypothesis. -/
+theorem uniform_holomorphic_inverse_shrinking (c : ℂ) (U T : Set ℂ)
+    (hUo : IsOpen U) (hUc : IsPreconnected U) (hT : IsCompact T)
+    (hTU : T ⊆ U) (R : ℝ) (hR : 1+‖c‖ ≤ R)
+    (hUbound : ∀ w ∈ U, ‖w‖ ≤ R)
+    (hempty : interior {z : ℂ | escape c z = 0} = ∅) :
+    ∀ ε > 0, ∃ M : ℕ, ∀ n ≥ M, ∀ g : ℂ → ℂ,
+      DifferentiableOn ℂ g U →
+      (∀ w ∈ U, orbit c n (g w) = w) →
+      ∀ x ∈ T, ∀ y ∈ T, dist (g x) (g y) < ε := by
+  classical
+  intro ε hε
+  by_contra! h
+  choose n hn g hd hr x hx y hy hfar using h
+  let l := Ultrafilter.of (atTop : Filter ℕ)
+  have hco : (l : Filter ℕ) ≤ atTop := Ultrafilter.of_le _
+  have hNt : Tendsto n (l : Filter ℕ) atTop := by
+    apply tendsto_atTop.mpr
+    intro m
+    exact (eventually_atTop.mpr ⟨m,fun j hj => hj.trans (hn j)⟩).filter_mono hco
+  have hbound : ∀ i w, w ∈ U → ‖g i w‖ ≤ R := by
+    intro i w hw
+    apply inverse_orbit_bound c (g i w) (n i) R hR
+    rw [hr i w hw]
+    exact hUbound w hw
+  have hR0 : 0 ≤ R := by linarith [norm_nonneg c]
+  obtain ⟨k,hlim⟩ := bounded_holomorphic_ultrafilter_limit l U hUo R hR0 g hd hbound
+  obtain ⟨a,ha⟩ := inverse_limit_constant (l : Filter ℕ) c n hNt U R hR hUo hUc
+    hUbound hempty g k hr hd hlim
+  have hu := (tendstoLocallyUniformlyOn_iff_forall_isCompact hUo).mp hlim T hTU hT
+  have hev : ∀ᶠ i in (l : Filter ℕ), ∀ w ∈ T, dist (k w) (g i w) < ε/3 :=
+    hu _ (Metric.dist_mem_uniformity (by positivity : 0 < ε/3))
+  obtain ⟨i,hi⟩ := hev.exists
+  have h1 := hi (x i) (hx i)
+  have h2 := hi (y i) (hy i)
+  rw [ha _ (hTU (hx i))] at h1
+  rw [ha _ (hTU (hy i))] at h2
+  have htri := dist_triangle (g i (x i)) a (g i (y i))
+  rw [dist_comm (g i (x i)) a] at htri
+  linarith [hfar i]
+
 
 end LoopsDecorationCriticalCycle

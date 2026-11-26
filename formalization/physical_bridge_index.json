@@ -2183,7 +2183,17 @@
         "cycle_closed",
         "deep_cylinder_common_unramified_neighborhood",
         "inverse_orbit_bound",
-        "orbit_compact_preimage"
+        "orbit_compact_preimage",
+        "orbit_proper",
+        "orbit_hasStrictDerivAt",
+        "orbit_covering_on_regular_values",
+        "orbit_covering_off_cycle",
+        "orbit_holomorphic_inverse_section",
+        "inverse_limit_in_filled_set",
+        "inverse_limit_constant",
+        "bounded_holomorphic_local_lipschitz",
+        "bounded_holomorphic_ultrafilter_limit",
+        "uniform_holomorphic_inverse_shrinking"
       ]
     },
     "obligations": [
