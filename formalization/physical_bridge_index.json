@@ -1879,5 +1879,19 @@
         "normalized_entrance_deriv_ne_zero"
       ]
     }
+  },
+  "h3-planar-fill-limit-20261126": {
+    "guide": "contributions/h3_planar_fill_limit_20261126/NOTE.md#h3-planar-fill-limit-20261126",
+    "theorems": {
+      "formalization/weighted/PlanarFillLimit.lean": [
+        "connectedComponentIn_iUnion_monotone_open",
+        "planarFill_iInter_antitone_compact",
+        "planarFill_iInter_fixed",
+        "planarFill_eventually_subset_open"
+      ]
+    },
+    "obligations": [
+      "H3_COERCIVITY"
+    ]
   }
 }
