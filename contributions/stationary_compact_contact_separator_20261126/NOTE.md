@@ -1,0 +1,65 @@
+---
+ledger: KKL_STATIONARY_SELECTED_SEPARATOR_REALIZATION
+result: partial
+ai: OpenAI GPT-6.2
+human_review: none
+---
+
+<a id="stationary-compact-contact-separator-20261126"></a>
+
+# Quadratic exterior contact and physical separator reductions
+
+## Claim
+
+For the actual map f(z)=z²+c, let K be reflection invariant and Q be a reflection-invariant connected critical set containing zero. Suppose Q meets the closure of a preconnected unbounded exterior R disjoint from K. Then every compact subset of f(K minus Q) admits a continuous logarithm of w-c, and f is injective on every compact preconnected subset of K minus Q. If K is compact, any preconnected retained set on which f fails injectivity must have closure meeting Q. This applies in particular to an ambient component containing antipodal points. A further conditional closure proves full connected-component separation, including noncompact witnesses, if the actual retained image admits an increasing compact exhaustion by interiors with finitely many connected components at every stage. For a full compact carrier with empty interior, a different route forces every bypass avoiding zero to accumulate specifically at zero, and critical-point clearance suffices for full separation without the exhaustion hypothesis. The actual filled Julia set is full for every parameter: the maximum-modulus principle rules out bounded complementary components of the uniform bounded-orbit locus. Thus on that set the clearance route needs only empty interior and a relative critical neighborhood, not a fullness hypothesis. Repelling periodic contact is also automatic on the actual filled Julia set: Cauchy's derivative estimate excludes an interior disk around a repelling periodic point. Consequently a symmetric preconnected critical set containing zero and a repelling periodic point supplies the exterior cut for all compact witnesses, and for arbitrary connected witnesses under the finite-component exhaustion. A third full-separation route uses a saturated closed deletion in a locally connected compact monotone quotient: any connected bypass pair admits a compact connected physical envelope, so the compact contact theorem suffices. Singleton fibers on the relative frontier of the critical set are sufficient for that saturation.
+
+## Evidence
+
+Lean development: [StationaryCompactContact.lean](../../formalization/weighted/StationaryCompactContact.lean).
+
+1. `preconnected_union_of_closure_contact`: a putative closed separation of Q union R must assign each preconnected set to one side; closure contact rules out assigning them to opposite sides.
+2. `quadratic_image_unbounded`: the actual quadratic image of an unbounded set is unbounded, by the norm inequality.
+3. `quadratic_compact_contact_log`: the image of Q union R is preconnected, unbounded, contains c, and is disjoint from the retained image by exact quadratic reflection saturation. For a compact test set the existing logarithm lifting theorem needs no closedness of the cut.
+4. `quadratic_compact_contact_injOn`: exponentiate half the logarithm to construct a continuous inverse section, then apply actual quadratic injectivity on a preconnected set.
+5. `quadratic_bypass_forces_critical_contact` and `quadratic_reflected_component_forces_critical_contact`: if a putative bypass closure avoided Q, it would be compact, preconnected and retained, contradicting the preceding theorem.
+
+6. `quadratic_compact_contact_section` constructs a reference continuous inverse branch on every compact retained image target. `quadratic_equal_roots_sign` states the exact fiber alternative.
+7. `quadratic_branch_extension_iff` proves that prescribed closed positive and negative sign loci extend to a continuous quadratic inverse branch on a compact Hausdorff base if and only if no connected component meets both. Necessity uses the clopen sign locus of any extension; sufficiency uses the existing compact component separation theorem and a piecewise branch.
+8. `quadratic_section_restriction_extension_iff` gives the exact compatibility test for an independently selected inverse branch on a closed compact substage. This removes ambiguity between existence of a branch at every finite stage and preservation of a specified older branch.
+
+9. `quadratic_section_finite_of_finite_components` shows that any reference branch gives at most two choices per connected component, with the values at representatives determining the branch.
+10. `compatible_finite_system` proves coherence in a countable inverse system of nonempty finite levels by compactness of the product of discrete finite levels, without assuming surjectivity of any restriction. Every finite horizon is supplied by restriction from its last stage.
+11. `quadratic_global_section_of_finite_component_exhaustion` applies this to continuous quadratic branches; the compatible family glues continuously because stage interiors cover the target.
+12. `quadratic_global_contact_section`, `quadratic_no_bypass_of_finite_component_exhaustion`, and `quadratic_reflected_separator_finite_component_exhaustion` transfer the abstract gluing back to the actual quadratic map and exclude even connected noncompact or non-path-connected antipodal bypasses under the stated finite-component exhaustion hypothesis.
+
+13. `compact_emptyInterior_exterior_data` produces exterior density, disjointness and unboundedness from compactness and empty interior.
+14. `quadratic_full_emptyInterior_bypass_accumulates_zero` uses the singleton critical deletion to force accumulation at zero itself, independently of any larger deleted set.
+15. `quadratic_full_emptyInterior_separator_critical_clearance` excludes antipodal bypasses for arbitrary deletions with relative clearance at zero; `quadratic_filled_separator_critical_clearance` specializes to the genuine filled Julia set, discharging compactness and reflection from earlier Lean theorems.
+
+16. `compact_uniform_entire_locus_full` rules out bounded complementary components by the maximum-modulus principle, and connects unbounded components across a circle containing the carrier.
+17. `quadratic_orbit_entire` proves differentiability of every actual quadratic iterate; `quadratic_filled_full` applies the general lemma using the already proved exact bounded-orbit characterization and uniform orbit bound.
+18. `quadratic_filled_bypass_accumulates_zero` and `quadratic_filled_separator_of_emptyInterior_clearance` discharge fullness in the actual-carrier conclusions.
+
+19. `quadratic_repelling_point_exterior_contact` bounds all spatial derivatives on an interior disk by Cauchy's estimate, contradicting growth of the powers of the multiplier at successive periodic returns.
+20. `quadratic_filled_exterior_unbounded` proves actual exterior unboundedness without empty interior.
+21. `quadratic_filled_compact_injOn_of_repelling_contact` and `quadratic_filled_separator_of_repelling_contact_exhaustion` combine this contact with the proved fullness and reflection of the actual carrier; the latter uses the compact exhaustion to exclude all connected antipodal bypasses.
+
+22. `compact_pair_envelope_of_monotone_model` maps a connected witness into one connected open model component, encloses its two marked points in a compact connected model neighborhood, and takes its compact connected inverse image.
+23. `quadratic_filled_no_bypass_of_saturated_model` and `quadratic_filled_separator_of_saturated_model` combine the envelope with actual compact quadratic injectivity; no compactness or path-connectedness of the original witness and no finite-component exhaustion are needed.
+24. `quadratic_filled_separator_of_frontier_singletons` derives the saturation hypothesis from singleton fibers on the relative physical frontier via the existing geometric saturation theorem.
+
+First six theorems: the exact push-head weighted CI job at `dbb52a442e26e80bd7571da0f0121a23790b26c4` [passed](https://github.com/dovvnloading/loops-research-archive/actions/runs/45884095449/job/140130391553). Its log states `AXIOM_AUDIT weighted StationaryCompactContact: 6 declarations, 6 theorems; allowed axioms only`. The next four named theorems [passed](https://github.com/dovvnloading/loops-research-archive/actions/runs/45884581789/job/140131996192) at `20eaa8cbb51e44c9bd1ee27fcd7081aee371ad75` (10 declarations, 10 theorems, allowed axioms only). The six exhaustion theorems compiled at `a52fd537fd895713a7d2552ab736a4496d98e8b6` ([run](https://github.com/dovvnloading/loops-research-archive/actions/runs/45885010430)); the [dependency audit passed](https://github.com/dovvnloading/loops-research-archive/actions/runs/45885010430/job/140133424487) with 16 declarations and 16 theorems, allowed axioms only. All 33 explicitly registered theorem names compiled at `9303584552bada97645f8944ed1f81028c08131b`, and the [weighted kernel and transitive dependency audit](https://github.com/dovvnloading/loops-research-archive/actions/runs/45886662878/job/140138939850) passed. The log records `AXIOM_AUDIT weighted StationaryCompactContact: 37 declarations, 37 theorems; allowed axioms only` and `AXIOM_AUDIT_PASS weighted: 81 modules, 2220 declarations`. The module source blob is `0d571b57d127e792594c34179739c7e4e820ae7a`; the final registry synchronization preserves that exact source and all intervening upstream registrations. Intermediate compilation failures were corrected in the PR history.
+
+Build: `cd formalization/weighted && lake build StationaryCompactContact`. The source is registered in the Lake target list, theorem index and source inventory using the same edits as contribute.py lean-add. Local Lean and a network-accessible shell checkout are unavailable. Verification is tracked by exact-head CI results in PR #209; only successful kernel builds plus transitive dependency audits count.
+
+## Dependencies
+
+KKL_NATIVE_TERMINAL_HUBBARD_TREE, KKL_STATIONARY_SELECTED_SMALL_JULIA_PREDECESSOR_CHAIN, KKL_STATIONARY_SELECTED_ALPHA_PREDECESSOR_CHAIN, KKL_STATIONARY_TERMINAL_CRITICAL_LIMB_INVERSE_SHEETS. The imported archive module StationarySeparatorTransport supplies the logarithm construction, quadratic saturation, and section-based injectivity.
+
+## Boundary
+
+No accessible exterior ray, local connectivity, compactness of the removed-set complement, or native marked access is assumed by the compact-witness theorem. For the actual filled Julia carrier, exterior closure contact follows from a repelling periodic point in the critical set, and reflection saturation follows from the existing quadratic invariance theorems. Identification of the native selected critical set with such a symmetric preconnected set containing a repelling periodic point is not asserted. The punctured carrier can have noncompact connected components: without any of the three additional sufficient conditions, the compact-contact argument only forces any remaining reflected bypass to accumulate on the removed critical set. The exhaustion theorem excludes this residual failure when the increasing compact finite-component exhaustion of the actual retained image is supplied. The monotone-model route instead excludes it under saturation of the deleted set, or singleton fibers on its relative frontier, and local connectivity of the model. Neither the exhaustion hypothesis, the sign-extension condition, nor the saturation or frontier-singleton hypothesis is verified for the native KKL carrier. On the genuine filled Julia set, the critical-clearance route requires empty interior and a relative neighborhood of zero inside the deleted set; fullness is proved for all parameters. Empty interior, relative critical clearance, and the identification of the relevant native deleted set remain source-specific premises. The classical fullness and repelling-boundary facts are newly integrated in this Lean contribution, not claims of original classical mathematics. The work does not prove the native collar/access realization, close the ledger row, or prove MLC. No status record changes.
+
+## Attribution
+
+Builds on Kahn–Kapiamba–Lyubich and the archive's November 26 separator transport development; the new argument uses the existing compact logarithm construction and quadratic reflection identity without its closed-ray hypothesis.

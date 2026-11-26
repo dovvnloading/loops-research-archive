@@ -2544,6 +2544,49 @@
       "VIRTUAL_REACHED_CYLINDER_COMPONENT_EXHAUSTION"
     ]
   },
+  "stationary-compact-contact-separator-20261126": {
+    "guide": "contributions/stationary_compact_contact_separator_20261126/NOTE.md#stationary-compact-contact-separator-20261126",
+    "theorems": {
+      "formalization/weighted/StationaryCompactContact.lean": [
+        "preconnected_union_of_closure_contact",
+        "quadratic_image_unbounded",
+        "quadratic_compact_contact_log",
+        "quadratic_compact_contact_injOn",
+        "quadratic_bypass_forces_critical_contact",
+        "quadratic_reflected_component_forces_critical_contact",
+        "quadratic_compact_contact_section",
+        "quadratic_equal_roots_sign",
+        "quadratic_branch_extension_iff",
+        "quadratic_section_restriction_extension_iff",
+        "quadratic_section_finite_of_finite_components",
+        "compatible_finite_system",
+        "quadratic_global_section_of_finite_component_exhaustion",
+        "quadratic_global_contact_section",
+        "quadratic_no_bypass_of_finite_component_exhaustion",
+        "quadratic_reflected_separator_finite_component_exhaustion",
+        "compact_emptyInterior_exterior_data",
+        "quadratic_full_emptyInterior_bypass_accumulates_zero",
+        "quadratic_full_emptyInterior_separator_critical_clearance",
+        "quadratic_filled_separator_critical_clearance",
+        "compact_uniform_entire_locus_full",
+        "quadratic_orbit_entire",
+        "quadratic_filled_full",
+        "quadratic_filled_bypass_accumulates_zero",
+        "quadratic_filled_separator_of_emptyInterior_clearance",
+        "quadratic_repelling_point_exterior_contact",
+        "quadratic_filled_exterior_unbounded",
+        "quadratic_filled_compact_injOn_of_repelling_contact",
+        "quadratic_filled_separator_of_repelling_contact_exhaustion",
+        "compact_pair_envelope_of_monotone_model",
+        "quadratic_filled_no_bypass_of_saturated_model",
+        "quadratic_filled_separator_of_saturated_model",
+        "quadratic_filled_separator_of_frontier_singletons"
+      ]
+    },
+    "obligations": [
+      "KKL_STATIONARY_SELECTED_SEPARATOR_REALIZATION"
+    ]
+  },
   "stationary-physical-itinerary-20261126": {
     "guide": "contributions/stationary_physical_itinerary_20261126/NOTE.md#stationary-physical-itinerary-20261126",
     "theorems": {
