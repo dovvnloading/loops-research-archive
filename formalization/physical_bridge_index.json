@@ -2032,5 +2032,21 @@
     "obligations": [
       "VIRTUAL_REACHED_CYLINDER_COMPONENT_EXHAUSTION"
     ]
+  },
+  "h1-least-saturated-carrier-20261126": {
+    "guide": "contributions/h1_least_saturated_carrier_20261126/NOTE.md#h1-least-saturated-carrier-20261126",
+    "theorems": {
+      "formalization/weighted/LeastSaturatedCarrier.lean": [
+        "directed_carrier_preconnected",
+        "connected_obstacle_forced",
+        "least_admissible_carrier",
+        "directed_image_intersection",
+        "directed_component_intersection",
+        "quadratic_directed_stage_limit"
+      ]
+    },
+    "obligations": [
+      "H1_CELL_TREE_EXTRACTION"
+    ]
   }
 }
