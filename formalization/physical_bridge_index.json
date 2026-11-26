@@ -2062,5 +2062,29 @@
     "obligations": [
       "KKL_STATIONARY_NONLC_SELECTED_GEOMETRIC_CONTINUUM_LIFT"
     ]
+  },
+  "h1-least-saturated-carrier-20261126": {
+    "guide": "contributions/h1_least_saturated_carrier_20261126/NOTE.md#h1-least-saturated-carrier-20261126",
+    "theorems": {
+      "formalization/weighted/LeastSaturatedCarrier.lean": [
+        "directed_carrier_preconnected",
+        "connected_obstacle_forced",
+        "least_admissible_carrier",
+        "directed_image_intersection",
+        "directed_component_intersection",
+        "quadratic_directed_stage_limit",
+        "finite_obstacle_split_iff",
+        "least_carrier_obstruction_criterion",
+        "hereditary_carrier_intersection",
+        "quadratic_critical_arbitrary_intersection",
+        "quadratic_image_loss_iff_conflicting_signs",
+        "quadratic_image_intersection_iff_pairwise",
+        "quadratic_reflection_component",
+        "quadratic_nondirected_noncritical_counterexample"
+      ]
+    },
+    "obligations": [
+      "H1_CELL_TREE_EXTRACTION"
+    ]
   }
 }
