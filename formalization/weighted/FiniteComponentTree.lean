@@ -66,8 +66,7 @@ def componentHomeomorph (e : X ≃ₜ (Fin N × Y)) (x : X) :
     apply Subtype.ext
     apply e.injective
     rw [e.apply_symm_apply]
-    have hz := z.property
-    rw [component_eq_label_fiber e x] at hz
+    have hz := (Set.ext_iff.mp (component_eq_label_fiber e x) z.val).mp z.property
     exact Prod.ext hz.symm rfl
   right_inv y := by simp
   continuous_toFun := continuous_snd.comp (e.continuous.comp continuous_subtype_val)

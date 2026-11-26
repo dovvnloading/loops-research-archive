@@ -44,6 +44,23 @@ of a finite product decomposition with its label fibers and proves the exact
 component count, compactness, and a homeomorphism of each component to the
 common factor. These declarations await CI validation at this checkpoint.
 
+### Checkpoint 2: all finite horizons and the zero-height boundary
+
+`QuadraticEscapeComponents.lean` now iterates the constructed splitting,
+retaining the actual iterate as its final coordinate. At the first height
+`2^n*t >= G_c(0)`, the top factor is connected, so the exact component count
+is `2^n`. At the dyadic heights `G_c(0)/2^n`, this gives unbounded component
+complexity for each escaping-critical parameter. `ComponentDoubling.lean`
+provides the quotient census and homeomorphism from each child component
+onto its actual parent, including when the upper target is disconnected.
+At height zero, the same two-copy decomposition and a constructed fixed
+point rule out a finite component count of the genuine filled set.
+
+The first weighted CI run rejected several elaboration steps (sublevel
+unfolding, a dependent membership rewrite, and pointwise negation). This
+checkpoint repairs those steps. The new declarations still count only
+after successful compilation and the transitive axiom audit.
+
 ## Dependencies
 
 `H1_CELL_TREE_EXTRACTION` is the target. Its existing prerequisites

@@ -33,7 +33,7 @@ private theorem sublevel_square_root (c : ℂ) (t : ℝ)
       exact ⟨z+c, hz, by ring⟩
     · rintro ⟨w, hw, rfl⟩
       change escape c (w-c+c) ≤ 2*t
-      simpa only [sub_add_cancel] using hw
+      simpa only [sublevel, mem_setOf_eq, sub_add_cancel] using hw
   have hSc : IsCompact S := by
     rw [hSeq]
     exact hTc.image (continuous_id.sub continuous_const)
@@ -56,7 +56,7 @@ private theorem sublevel_square_root (c : ℂ) (t : ℝ)
   let shift : sublevel c (2*t) → S := fun w =>
     ⟨(w : ℂ)-c, by
       change escape c ((w : ℂ)-c+c) ≤ 2*t
-      simpa only [sub_add_cancel] using w.property⟩
+      simpa only [sublevel, mem_setOf_eq, sub_add_cancel] using w.property⟩
   have hshift : Continuous shift :=
     ((continuous_subtype_val : Continuous
       (Subtype.val : sublevel c (2*t) → ℂ)).sub continuous_const).subtype_mk _
@@ -108,7 +108,8 @@ theorem sublevel_split (c : ℂ) (t : ℝ)
     intro i
     by_cases hi : i = 0
     · simpa only [B, hi, if_true] using hrc
-    · simpa only [B, hi, if_false] using hrc.neg
+    · simpa only [B, hi, if_false] using
+        (continuous_neg.comp hrc : Continuous (fun w => -(r w)))
   have hbc : Continuous b := hBc.subtype_mk _
   have hbq (p : Fin 2 × sublevel c (2*t)) :
       (b p : ℂ)^2+c = (p.2 : ℂ) := hBq p
