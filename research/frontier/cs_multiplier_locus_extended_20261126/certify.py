@@ -86,6 +86,14 @@ def root(c,z,p,q):
     m.iv.dps=110; angle=m.iv.arg(A.iv())*q/(2*m.iv.pi)
     assert angle.a>m.iv.mpf('.9') and angle.b<m.iv.mpf('1.1')
     return dict(**cert,parameter=C.record(),point=Z.record(),period=p,gap_lower_1e12=gap*10**12//S,multiplier=A.record(),scaled_norm_1e12=scaled(A,q))
+def chart(c,z,p,target):
+    r=S>>150;C,Z=c.disk(r),z.disk(r)
+    # Each coordinate of the exact rational target is within one grid unit.
+    L=seed(target).disk(2)
+    f,a,b,h,d,_=jet(c,z,p,True);_,A,B,H,D,gap=jet(C,Z,p,True)
+    cert=contract(inverse([[b,a-1],[d,h]]),[f-z,a-L],[[B,A-1],[D,H]],[r,r]);assert gap>0
+    return C,dict(**cert,parameter=C.record(),point=Z.record(),period=p,gap_lower_1e12=gap*10**12//S,multiplier=A.record())
+
 def dividing(C,z,p,q):
     r=S>>110;Z=z.disk(r);f,a,_,_,_,_=jet(C,z,p);_,A,_,_,_,gap=jet(C,Z,p)
     # For the unique certified center c*, use the same contraction uniformly for c in C.
@@ -98,7 +106,11 @@ def run(inputs):
     for x in inputs:
         q,p,P=x['q'],x['p'],x['P'];c=seed(x['center']);r=seed(x['root'])
         C,ce=center(c,P);ro=root(r,seed(x['root_point']),p,q);di=dividing(C,seed(x['center_point']),p,q)
-        rows.append(dict(q=q,center=ce,root=ro,dividing_at_center=di));print('certified',q,di['scaled_norm_1e12'],flush=True)
+        charts=[]
+        for t in x.get('charts',[]):
+            E,ch=chart(seed(t['c']),seed(t['point']),P,t['target']);dc=dividing(E,seed(t['dividing_point']),p,q)
+            charts.append(dict(label=t['label'],chart=ch,dividing=dc))
+        rows.append(dict(q=q,center=ce,root=ro,dividing_at_center=di,charts=charts));print('certified',q,di['scaled_norm_1e12'],flush=True)
     return dict(bits=BITS,scale='2^320',levels=rows)
 
 def main():

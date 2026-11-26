@@ -1,4 +1,9 @@
-// GMP floating-point jet accelerator; numerical only. Mirrors #139's jet/first.
+"""Build the numerical GMP jet accelerator in a disposable directory.
+Embedded C++ is registered via this Python source (the repository index scans .py).
+"""
+import argparse, subprocess, tempfile
+from pathlib import Path
+SOURCE = r'''// GMP floating-point jet accelerator; numerical only. Mirrors #139's jet/first.
 #include <gmpxx.h>
 #include <sstream>
 #include <iomanip>
@@ -25,3 +30,11 @@ extern "C" const char* csjet(const char* cx,const char* cy,const char* zx,const 
  for(const auto& w:{z,a,b,h,d})os<<w.x<<' '<<w.y<<' ';
  result=os.str();return result.c_str();
 }
+'''
+
+def main():
+    a=argparse.ArgumentParser();a.add_argument('output',type=Path);v=a.parse_args()
+    with tempfile.TemporaryDirectory() as tmp:
+        src=Path(tmp)/'jet.cpp';src.write_text(SOURCE)
+        subprocess.run(['g++','-O3','-shared','-fPIC',str(src),'-lgmpxx','-lgmp','-o',str(v.output.resolve())],check=True)
+if __name__=='__main__': main()
