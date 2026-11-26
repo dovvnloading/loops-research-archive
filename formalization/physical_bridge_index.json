@@ -1880,6 +1880,89 @@
       ]
     }
   },
+  "chebyshev-fibers": {
+    "guide": "research/frontier/kernel_chebyshev_fibers_20261126/NOTE.md#chebyshev-fibers",
+    "theorems": {
+      "formalization/weighted/ChebyshevFibers.lean": [
+        "pair_step",
+        "pair_iterate",
+        "joukowski_step",
+        "joukowski_iterate",
+        "reciprocal_pair_exists",
+        "reciprocal_eq_inv",
+        "joukowski_surjective",
+        "joukowski_fiber",
+        "unit_nonzero",
+        "unit_inv",
+        "unit_square",
+        "exterior_lower_bound",
+        "exterior_unbounded",
+        "unit_bounded",
+        "bounded_iff_unit_image",
+        "unit_inv_eq_conj",
+        "unit_image_realSegment",
+        "realSegment_invariant",
+        "bounded_iff_realSegment",
+        "no_equivariant_unit_section",
+        "doubling_iterate",
+        "planar_return_iff",
+        "primitive_swap",
+        "every_period_swap",
+        "swapping_doubles_period",
+        "lift_period_dichotomy",
+        "every_period_doubling",
+        "no_retimed_equivariant_unit_section",
+        "exterior_image_iff",
+        "exterior_joukowski_injective",
+        "exterior_joukowski_bijOn",
+        "joukowski_hasDerivAt",
+        "exterior_derivative_ne_zero",
+        "joukowski_normalization_error",
+        "radial_address_continuous",
+        "radial_address_value",
+        "radial_address_exterior",
+        "inverse_fixed_iff_endpoint",
+        "interior_exact_fiber",
+        "every_return_forces_two_addresses"
+      ]
+    },
+    "obligations": [
+      "H1_MARKED_CONSTRUCTION",
+      "H4_RIGIDITY"
+    ]
+  },
+  "quadratic-extremal-multiplier": {
+    "guide": "research/frontier/kernel_extremal_multiplier_20261126/NOTE.md#quadratic-extremal-multiplier",
+    "theorems": {
+      "formalization/weighted/QuadraticExtremalMultiplier.lean": [
+        "norm_step_lower",
+        "escape_pos_of_large",
+        "parameter_norm_le_two",
+        "bounded_point_norm_le_two",
+        "bounded_orbit_norm_le_two",
+        "bounded_orbit_norm_sq",
+        "orbit_hasDerivAt",
+        "multiplier_eq_deriv",
+        "multiplier_norm_bound",
+        "deriv_norm_bound",
+        "successor_defect_sq",
+        "successor_radial_deficit",
+        "parameter_defect_sq",
+        "bounded_orbit_parameter_defect",
+        "multiplier_sq_uniform_gap",
+        "deriv_sq_uniform_gap",
+        "extremal_deriv_parameter",
+        "chebyshev_fixed_orbit",
+        "chebyshev_fixed_escape_zero",
+        "chebyshev_parameter_escape_zero",
+        "chebyshev_fixed_multiplier",
+        "chebyshev_fixed_deriv_norm"
+      ]
+    },
+    "obligations": [
+      "H4_RIGIDITY"
+    ]
+  },
   "h3-planar-fill-limit-20261126": {
     "guide": "contributions/h3_planar_fill_limit_20261126/NOTE.md#h3-planar-fill-limit-20261126",
     "theorems": {
