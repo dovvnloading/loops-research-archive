@@ -2329,5 +2329,20 @@
     "obligations": [
       "DIRECT_DECORATION_END_PRIME_END_COFINALITY"
     ]
+  },
+  "stationary-model-degree-20261126": {
+    "guide": "contributions/stationary_model_degree_20261126/NOTE.md#stationary-model-degree-20261126",
+    "theorems": {
+      "formalization/weighted/StationaryLightModel.lean": [
+        "component_image_univ",
+        "fiber_image_eq_of_light_model",
+        "quadratic_filled_light_fiber_image",
+        "quadratic_filled_model_fiber_pair",
+        "quadratic_filled_light_model_finite"
+      ]
+    },
+    "obligations": [
+      "KKL_STATIONARY_NONLC_SELECTED_GEOMETRIC_CONTINUUM_LIFT"
+    ]
   }
 }
