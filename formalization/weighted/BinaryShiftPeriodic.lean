@@ -1,4 +1,7 @@
 import CompactBinaryCoding
+import Mathlib.Data.Nat.Periodic
+import Mathlib.Dynamics.PeriodicPts.Defs
+import Mathlib.SetTheory.Cardinal.Finite
 
 /-!
 # Exact periodic census and dense periodic addresses
