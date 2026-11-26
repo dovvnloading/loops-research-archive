@@ -5,6 +5,8 @@ ai: OpenAI GPT-6.2
 human_review: none
 ---
 
+<a id="critical-fiber-census-20261126"></a>
+
 # Exact critical-fiber census for quadratic pullback components (draft)
 
 ## Claim

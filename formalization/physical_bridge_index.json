@@ -2209,5 +2209,28 @@
     "obligations": [
       "VIRTUAL_REACHED_CYLINDER_COMPONENT_EXHAUSTION"
     ]
+  },
+  "critical-fiber-census-20261126": {
+    "guide": "contributions/critical_fiber_census_20261126/NOTE.md#critical-fiber-census-20261126",
+    "theorems": {
+      "formalization/weighted/QuadraticCriticalFiberCensus.lean": [
+        "quadratic_surjective",
+        "fiberRoot_spec",
+        "fiberRoot_injective",
+        "mem_globalFiber",
+        "globalFiber_zero",
+        "globalFiber_succ",
+        "inverse_branches_disjoint",
+        "globalFiber_card_step",
+        "globalFiber_card_exact",
+        "criticalFiberDefect_zero_iff",
+        "globalFiber_full_card_iff",
+        "globalFiber_census",
+        "quadratic_critical_component_census"
+      ]
+    },
+    "obligations": [
+      "VIRTUAL_REACHED_CYLINDER_COMPONENT_EXHAUSTION"
+    ]
   }
 }
