@@ -377,8 +377,9 @@ relative endpoint is the actual restriction of \(f^S\);
 its physical time word is the concatenation of the stage
 words, and the nested domains retain every intervening
 selected component. For stage exponents greater than one the
-only critical encounter along the selected route is the one
-counted by the degree-two factor (local degrees multiply).
+unique critical point of the degree-two selected return has
+exactly one critical encounter in its physical itinerary (local
+degrees multiply); other points have none.
 This does not convert a physical-time word into a word of
 arbitrary virtual address deletions.
 
@@ -732,7 +733,7 @@ preserves the original physical annular degree iff
 \(n'_j=n_{j+1}\). These equalities are in the actual
 covering components, not in the abelianized ambient group.
 If the intersection is trivial, the lifted annulus is
-its infinite cyclic universal cover (a strip), and no
+its universal cover (a strip with infinite cyclic deck group), and no
 one-sheeted inverse section of the whole physical collar
 exists. These tests are necessary for this specific whole-collar
 filling and provide explicit first rejection tests for
@@ -743,7 +744,7 @@ that every possible different core construction is impossible.
 
 Run from the repository root with Python 3.12:
 \[
-\texttt{python -B research/independent\_audits/h1\_mapping\_telescope\_20261126/verify.py}
+\texttt{python -B research/independent\_audits/h1\_mapping\_telescope\_20261126/check_arithmetic.py}
 \]
 The checker uses only the standard library, exact rational
 arithmetic and integer polynomial reduction. It reports the
@@ -752,7 +753,10 @@ and the strict Chebyshev degree-loss margins as JSON.
 No tolerances, sampling, random seeds, or network are used;
 a failed assertion exits nonzero. It is registered as METADATA
 because it checks arithmetic inputs, not the analytic theorem
-or a model-to-physical implication. The analytic deductions
+or a model-to-physical implication. Its diagnostic filename
+check_arithmetic.py distinguishes it from theorem-level verify*.py
+certificates indexed by the repository's separate physical-bridge
+contract checker; no theorem-contract or ledger change is asserted. The analytic deductions
 and their hypotheses are in this note. The associated workflow
 only reads repository contents, runs the checker, and does
 not commit or alter generated files.

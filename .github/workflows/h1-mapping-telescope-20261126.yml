@@ -17,4 +17,4 @@ jobs:
         with:
           python-version: '3.12'
       - name: Exact rational and polynomial checks (stdlib only)
-        run: python -B research/independent_audits/h1_mapping_telescope_20261126/verify.py
+        run: python -B research/independent_audits/h1_mapping_telescope_20261126/check_arithmetic.py
