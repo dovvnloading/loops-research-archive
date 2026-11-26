@@ -1835,7 +1835,19 @@
         "swapping_doubles_period",
         "lift_period_dichotomy",
         "every_period_doubling",
-        "no_retimed_equivariant_unit_section"
+        "no_retimed_equivariant_unit_section",
+        "exterior_image_iff",
+        "exterior_joukowski_injective",
+        "exterior_joukowski_bijOn",
+        "joukowski_hasDerivAt",
+        "exterior_derivative_ne_zero",
+        "joukowski_normalization_error",
+        "radial_address_continuous",
+        "radial_address_value",
+        "radial_address_exterior",
+        "inverse_fixed_iff_endpoint",
+        "interior_exact_fiber",
+        "every_return_forces_two_addresses"
       ]
     },
     "obligations": [

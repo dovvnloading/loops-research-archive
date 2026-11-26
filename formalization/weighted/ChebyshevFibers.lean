@@ -3,6 +3,7 @@ import ParabolicSegment
 import Mathlib.Analysis.Complex.Polynomial.Basic
 import Mathlib.RingTheory.RootsOfUnity.Complex
 import Mathlib.Dynamics.PeriodicPts.Defs
+import Mathlib.Analysis.Calculus.Deriv.Inv
 import Mathlib.Tactic
 
 /-!
@@ -253,7 +254,7 @@ theorem primitive_swap {p : ℕ} (hp : 0 < p) {w : ℂ}
     UnitAddress w ∧ w ≠ w⁻¹ ∧ w^(2^p) = w⁻¹ ∧
       (cquad (-2))^[p] (J w) = J w ∧
       (∀ k : ℕ, 0 < k → k < p → (cquad (-2))^[k] (J w) ≠ J w) := by
-  have hu : UnitAddress w := hroot.norm'_eq_one (by omega)
+  have hu : UnitAddress w := hroot.norm'_eq_one (Nat.succ_ne_zero (2^p))
   have hw := unit_nonzero hu
   have hswap : w^(2^p) = w⁻¹ := by
     apply mul_left_cancel₀ hw
@@ -295,14 +296,14 @@ theorem every_period_swap (p : ℕ) (hp : 0 < p) :
       minimalPeriod (cquad (-2)) (J w) = p := by
   let w : ℂ := Complex.exp (2 * Real.pi * Complex.I / ((2^p+1 : ℕ) : ℂ))
   have hroot : IsPrimitiveRoot w (2^p+1) :=
-    Complex.isPrimitiveRoot_exp _ (by omega)
+    Complex.isPrimitiveRoot_exp (2^p+1) (Nat.succ_ne_zero (2^p))
   obtain ⟨hu,hne,hswap,hret,hmin⟩ := primitive_swap hp hroot
   have hper : IsPeriodicPt (cquad (-2)) p (J w) := hret
   have hle := hper.minimalPeriod_le hp
   have hpos := hper.minimalPeriod_pos hp
   have he : minimalPeriod (cquad (-2)) (J w) = p := by
     by_contra hne'
-    exact hmin _ hpos (lt_of_le_of_ne hle hne') (iterate_minimalPeriod _ _)
+    exact hmin _ hpos (lt_of_le_of_ne hle hne') (iterate_minimalPeriod)
   exact ⟨w,hu,hne,hswap,he⟩
 
 private theorem projected_period_dvd {w : ℂ} (hw : w ≠ 0) :
@@ -310,7 +311,7 @@ private theorem projected_period_dvd {w : ℂ} (hw : w ≠ 0) :
   apply IsPeriodicPt.minimalPeriod_dvd
   change (cquad (-2))^[minimalPeriod D w] (J w) = J w
   rw [joukowski_iterate hw, ← doubling_iterate]
-  exact congrArg J (iterate_minimalPeriod _ _)
+  exact congrArg J (iterate_minimalPeriod (f := D) (x := w))
 
 /-- If the return swaps distinct addresses, the least address period is
 exactly twice the least physical period; no shorter hidden clock exists. -/
@@ -332,7 +333,7 @@ theorem swapping_doubles_period {w : ℂ} (hw : w ≠ 0) (p : ℕ) (hp : 0 < p)
     intro he
     have hret : D^[p] w = w := by
       rw [← he]
-      exact iterate_minimalPeriod _ _
+      exact iterate_minimalPeriod
     rw [doubling_iterate, hswap] at hret
     exact hne hret.symm
   obtain ⟨k,hk⟩ := hd
@@ -360,7 +361,7 @@ theorem lift_period_dichotomy {w : ℂ} (hw : w ≠ 0)
     minimalPeriod D w = minimalPeriod (cquad (-2)) (J w) ∨
       minimalPeriod D w = 2 * minimalPeriod (cquad (-2)) (J w) := by
   let p := minimalPeriod (cquad (-2)) (J w)
-  have hret : (cquad (-2))^[p] (J w) = J w := iterate_minimalPeriod _ _
+  have hret : (cquad (-2))^[p] (J w) = J w := iterate_minimalPeriod
   have hsame (h : w^(2^p) = w) : minimalPeriod D w = p := by
     have hper : IsPeriodicPt D p w := by
       change D^[p] w = w
@@ -390,7 +391,7 @@ theorem no_retimed_equivariant_unit_section (p : ℕ) (hp : 0 < p) :
   have hm := unit_image_realSegment hu
   have hret : (cquad (-2))^[p] (J w) = J w := by
     rw [← hbase]
-    exact iterate_minimalPeriod _ _
+    exact iterate_minimalPeriod
   obtain ⟨hsu,hsj⟩ := hsec (J w) hm
   have h := heq (J w) hm
   rw [hret] at h
@@ -404,6 +405,187 @@ theorem no_retimed_equivariant_unit_section (p : ℕ) (hp : 0 < p) :
         _ = w := by rw [hswap, inv_inv]
     rw [hflip] at h
     exact hne h.symm
+
+private theorem exterior_nonzero {w : ℂ} (hw : 1 < ‖w‖) : w ≠ 0 := by
+  intro he
+  rw [he,norm_zero] at hw
+  norm_num at hw
+
+/-- The actual complementary domain, not just a formal range predicate,
+is the image of the exterior of the closed unit disk. -/
+theorem exterior_image_iff (z : ℂ) :
+    z ∉ realSegment 2 ↔ ∃ w : ℂ, 1 < ‖w‖ ∧ J w = z := by
+  constructor
+  · intro hz
+    obtain ⟨w,v,h,hz'⟩ := reciprocal_pair_exists z
+    have hwv : J w = z := by simpa only [J, ← reciprocal_eq_inv h] using hz'
+    by_cases hw : 1 < ‖w‖
+    · exact ⟨w,hw,hwv⟩
+    · by_cases hv : 1 < ‖v‖
+      · have h' : v*w=1 := by simpa [mul_comm] using h
+        refine ⟨v,hv,?_⟩
+        simpa only [J, ← reciprocal_eq_inv h', add_comm v w] using hz'
+      · have he : ‖w‖ = 1 := by
+          have hm := mul_le_mul_of_nonneg_left (le_of_not_gt hv) (norm_nonneg w)
+          have hp := pair_norm_product h
+          linarith [le_of_not_gt hw]
+        have hm : J w ∈ realSegment 2 := unit_image_realSegment he
+        rw [hwv] at hm
+        exact (hz hm).elim
+  · rintro ⟨w,hw,rfl⟩ hmem
+    have hn := exterior_unbounded (mul_inv_cancel₀ (exterior_nonzero hw)) hw
+    exact hn ((bounded_iff_realSegment (J w)).mpr hmem)
+
+/-- Exterior addresses are genuinely unique. Inversion sends an exterior
+address to the other side of the unit circle. -/
+theorem exterior_joukowski_injective {w v : ℂ}
+    (hw : 1 < ‖w‖) (hv : 1 < ‖v‖) (he : J w = J v) : w = v := by
+  rcases (joukowski_fiber (exterior_nonzero hw) (exterior_nonzero hv)).mp he with h | h
+  · exact h
+  · exfalso
+    have hp : v*w=1 := by rw [h,mul_inv_cancel₀ (exterior_nonzero hv)]
+    have hn := pair_norm_product hp
+    nlinarith [mul_nonneg (show 0 ≤ ‖v‖-1 by linarith) (norm_nonneg w)]
+
+theorem exterior_joukowski_bijOn :
+    BijOn J {w : ℂ | 1 < ‖w‖} (realSegment 2)ᶜ := by
+  refine ⟨?_,?_,?_⟩
+  · intro w hw
+    exact (exterior_image_iff (J w)).mpr ⟨w,hw,rfl⟩
+  · intro w hw v hv he
+    exact exterior_joukowski_injective hw hv he
+  · intro z hz
+    obtain ⟨w,hw,hz'⟩ := (exterior_image_iff z).mp hz
+    exact ⟨w,hw,hz'⟩
+
+/-- Holomorphicity on the actual nonzero complex domain, including
+neighborhoods of the circle used for radial boundary traces. -/
+theorem joukowski_hasDerivAt {w : ℂ} (hw : w ≠ 0) :
+    HasDerivAt J (1-(w^2)⁻¹) w := by
+  simpa only [J, sub_eq_add_neg] using (hasDerivAt_id w).add (hasDerivAt_inv hw)
+
+theorem exterior_derivative_ne_zero {w : ℂ} (hw : 1 < ‖w‖) :
+    1-(w^2)⁻¹ ≠ (0:ℂ) := by
+  intro he
+  have hp : w^2=1 := by
+    simpa using congrArg (fun z : ℂ => z⁻¹) (sub_eq_zero.mp he).symm
+  have hn : ‖w‖^2=1 := by
+    simpa only [norm_pow,norm_one] using congrArg (fun z : ℂ => ‖z‖) hp
+  nlinarith [sq_nonneg (‖w‖-1)]
+
+/-- Exact normalization error at infinity. -/
+theorem joukowski_normalization_error {w : ℂ} (hw : w ≠ 0) :
+    ‖J w / w - 1‖ = (‖w‖^2)⁻¹ := by
+  have he : J w / w - 1 = (w^2)⁻¹ := by
+    unfold J
+    field_simp [hw] <;> ring
+  rw [he,norm_inv,norm_pow]
+
+/-- The continuous radial trace is through the actual complementary
+domain, not an imposed symbolic boundary value. -/
+theorem radial_address_continuous (w : ℂ) (hu : UnitAddress w) :
+    ContinuousAt (fun r : ℝ => J ((r:ℂ)*w)) 1 := by
+  have hc : ContinuousAt (fun r : ℝ => (r:ℂ)*w) 1 :=
+    (Complex.continuous_ofReal.mul continuous_const).continuousAt
+  have hj : ContinuousAt J (((1:ℝ):ℂ)*w) := by
+    simpa using (joukowski_hasDerivAt (unit_nonzero hu)).continuousAt
+  exact hj.comp hc
+
+theorem radial_address_value (w : ℂ) :
+    J (((1:ℝ):ℂ)*w) = J w := by simp
+
+theorem radial_address_exterior {w : ℂ} (hu : UnitAddress w)
+    {r : ℝ} (hr : 1 < r) : J ((r:ℂ)*w) ∉ realSegment 2 := by
+  change ‖w‖ = 1 at hu
+  apply (exterior_image_iff _).mpr
+  refine ⟨(r:ℂ)*w, ?_, rfl⟩
+  rw [norm_mul,Complex.norm_real,Real.norm_eq_abs,abs_of_nonneg (by linarith : 0 ≤ r),hu,mul_one]
+  exact hr
+
+/-- The two possible addresses coalesce exactly at the two real endpoints. -/
+theorem inverse_fixed_iff_endpoint {w : ℂ} (hw : w ≠ 0) :
+    w = w⁻¹ ↔ J w = 2 ∨ J w = -2 := by
+  constructor
+  · intro he
+    have htwo : w^2=1 := calc
+      w^2 = w*w := pow_two w
+      _ = w*w⁻¹ := congrArg (fun x : ℂ => w*x) he
+      _ = 1 := mul_inv_cancel₀ hw
+    have hs : w^2=(1:ℂ)^2 := by simpa using htwo
+    rcases sq_eq_sq_iff_eq_or_eq_neg.mp hs with h | h
+    · left; rw [h]; norm_num [J]
+    · right; rw [h]; norm_num [J]
+  · rintro (h | h)
+    · have he : J w = J 1 := h.trans (by norm_num [J])
+      rcases (joukowski_fiber hw one_ne_zero).mp he with h' | h'
+      · rw [h']; norm_num
+      · have h'' : w=1 := by simpa using h'
+        rw [h'']; norm_num
+    · have he : J w = J (-1) := h.trans (by norm_num [J])
+      rcases (joukowski_fiber hw (by norm_num : (-1:ℂ) ≠ 0)).mp he with h' | h'
+      · rw [h']; norm_num
+      · have h'' : w=-1 := by simpa using h'
+        rw [h'']; norm_num
+
+/-- Exactly two distinct circle addresses at every non-endpoint point. -/
+theorem interior_exact_fiber {z : ℂ} (hz : z ∈ realSegment 2)
+    (hplus : z ≠ 2) (hminus : z ≠ -2) :
+    ∃ w : ℂ, UnitAddress w ∧ J w=z ∧ w ≠ w⁻¹ ∧ UnitAddress w⁻¹ ∧
+      (∀ v : ℂ, UnitAddress v → (J v=z ↔ v=w ∨ v=w⁻¹)) := by
+  obtain ⟨w,hu,he⟩ := (bounded_iff_unit_image z).mp ((bounded_iff_realSegment z).mpr hz)
+  have hne : w ≠ w⁻¹ := by
+    intro hs
+    rcases (inverse_fixed_iff_endpoint (unit_nonzero hu)).mp hs with h | h
+    · exact hplus (he.symm.trans h)
+    · exact hminus (he.symm.trans h)
+  refine ⟨w,hu,he,hne,unit_inv hu,?_⟩
+  intro v hv
+  rw [← he]
+  exact joukowski_fiber (unit_nonzero hv) (unit_nonzero hu)
+
+/-- A nonempty, sound, forward-compatible set-valued address assignment
+must retain both addresses on some orbit of every positive return time.
+It cannot hide the obstruction by picking a different singleton at each
+point of the physical filled set. -/
+theorem every_return_forces_two_addresses (p : ℕ) (hp : 0 < p)
+    (A : ℂ → Set ℂ)
+    (hex : ∀ z ∈ realSegment 2, (A z).Nonempty)
+    (hsound : ∀ z ∈ realSegment 2, ∀ u ∈ A z, UnitAddress u ∧ J u = z)
+    (hforward : ∀ z ∈ realSegment 2, ∀ u ∈ A z,
+      u^(2^p) ∈ A ((cquad (-2))^[p] z)) :
+    ∃ z ∈ realSegment 2, ∃ w : ℂ, UnitAddress w ∧ w ≠ w⁻¹ ∧
+      minimalPeriod (cquad (-2)) z = p ∧ A z = {w,w⁻¹} := by
+  obtain ⟨w,hu,hne,hswap,hbase⟩ := every_period_swap p hp
+  have hm := unit_image_realSegment hu
+  have hret : (cquad (-2))^[p] (J w) = J w := by
+    rw [← hbase]
+    exact iterate_minimalPeriod
+  have hflip : (w⁻¹)^(2^p) = w := by
+    calc
+      (w⁻¹)^(2^p) = (w^(2^p))⁻¹ := by rw [inv_pow]
+      _ = w := by rw [hswap,inv_inv]
+  obtain ⟨u,hum⟩ := hex (J w) hm
+  obtain ⟨huu,huj⟩ := hsound (J w) hm u hum
+  have hboth : w ∈ A (J w) ∧ w⁻¹ ∈ A (J w) := by
+    rcases (joukowski_fiber (unit_nonzero huu) (unit_nonzero hu)).mp huj with he | he
+    · rw [he] at hum
+      have hx := hforward (J w) hm w hum
+      rw [hret,hswap] at hx
+      exact ⟨hum,hx⟩
+    · rw [he] at hum
+      have hx := hforward (J w) hm w⁻¹ hum
+      rw [hret,hflip] at hx
+      exact ⟨hx,hum⟩
+  refine ⟨J w,hm,w,hu,hne,hbase,?_⟩
+  ext v
+  simp only [mem_insert_iff,mem_singleton_iff]
+  constructor
+  · intro hv
+    obtain ⟨hvu,hvj⟩ := hsound (J w) hm v hv
+    exact (joukowski_fiber (unit_nonzero hvu) (unit_nonzero hu)).mp hvj
+  · rintro (rfl | rfl)
+    · exact hboth.1
+    · exact hboth.2
 
 end
 end LoopsChebyshev
