@@ -2557,7 +2557,11 @@
         "limbItinerary_component",
         "quadratic_filled_continuous_open",
         "quadratic_selected_itinerary_component",
-        "quadratic_restriction_itinerary_contained"
+        "quadratic_restriction_itinerary_contained",
+        "limbItinerary_image",
+        "limbItinerary_injective",
+        "quadratic_critical_limb_unique_inverse",
+        "quadratic_mark_itinerary_component"
       ]
     },
     "obligations": [

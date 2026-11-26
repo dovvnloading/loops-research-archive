@@ -15,7 +15,7 @@ Candidate Lean theorems for the actual quadratic filled Julia set: native critic
 
 ## Evidence
 
-The registered [StationaryPhysicalItinerary.lean](../../formalization/weighted/StationaryPhysicalItinerary.lean) contains 10 public theorem candidates:
+The registered [StationaryPhysicalItinerary.lean](../../formalization/weighted/StationaryPhysicalItinerary.lean) contains 14 public theorem candidates:
 
 - `quadratic_critical_limb_injective`
 - `limb_inverse_preconnected`
@@ -27,8 +27,12 @@ The registered [StationaryPhysicalItinerary.lean](../../formalization/weighted/S
 - `quadratic_filled_continuous_open`
 - `quadratic_selected_itinerary_component`
 - `quadratic_restriction_itinerary_contained`
+- `limbItinerary_image`
+- `limbItinerary_injective`
+- `quadratic_critical_limb_unique_inverse`
+- `quadratic_mark_itinerary_component`
 
-The other limb consumes one of the at-most-two inverse roots. Openness and uniqueness on the selected limb preserve connectedness when pulling back the connected target. The fixed cutpoint separates the chosen component from other limbs; iteration gives whole-component recognition, including for a disconnected base by anchoring its terminal component. For an independently supplied physical restriction, connectedness and endpoint membership force inclusion in the same full component.
+The other limb consumes one of the at-most-two inverse roots. Openness and uniqueness on the selected limb preserve connectedness when pulling back the connected target. The fixed cutpoint separates the chosen component from other limbs; iteration gives whole-component recognition, including for a disconnected base by anchoring its terminal component. For an independently supplied physical restriction, connectedness and endpoint membership force inclusion in the same full component. The full-depth itinerary is bijective onto its base: exact image and injectivity are proved separately, so every terminal point of the critical limb has exactly one inverse point with the specified itinerary. A connected central mark containing the anchor discharges the terminal base-component test from actual mark contact alone.
 
 Local Lean is not available in this session; the weighted kernel and transitive axiom CI checks are the verification authority. Until CI succeeds, these are candidate statements only, not credited results.
 

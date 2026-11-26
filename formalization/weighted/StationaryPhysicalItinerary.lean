@@ -182,15 +182,17 @@ theorem limbItinerary_component (F : X → X) (D B : Set X)
     have hterminal : (F^[n]) (F x) ∈ B :=
       ((mem_limbItinerary F D B n (F x)).mp hx.2).2
     rw [hstep, ih.2 (F x) hx.2]
-    rw [LoopsSaturatedTelescope.component_pullback_comp F (F^[n]) B x hF hterminal]
-    rw [Function.iterate_succ]
+    exact LoopsSaturatedTelescope.component_pullback_comp F (F^[n]) B x hF hterminal
 
 /-- The genuine filled-set map is continuous and open. This uses
 the archive's proved complete invariance, including the critical point. -/
 theorem quadratic_filled_continuous_open (c : ℂ) :
     Continuous (quadraticFilledMap c) ∧ IsOpenMap (quadraticFilledMap c) := by
   constructor
-  · exact ((continuous_subtype_val.pow 2).add continuous_const).subtype_mk _
+  · have h : Continuous (fun z : quadraticFilled c => (z : ℂ)^2+c) :=
+      ((continuous_subtype_val : Continuous (Subtype.val : quadraticFilled c → ℂ)).pow 2).add
+        continuous_const
+    exact h.subtype_mk (fun z => (quadratic_filled_complete_invariant c z).mpr z.property)
   · exact quadratic_restriction_open c (quadraticFilled c) (quadraticFilledMap c)
       (fun _ => rfl) (fun z hz => (quadratic_filled_complete_invariant c z).mp hz)
 
@@ -259,5 +261,84 @@ theorem quadratic_restriction_itinerary_contained (c : ℂ)
   rw [quadratic_selected_itinerary_component c D E B a d q x hfix hDcomp hD
     hDE hcover hother hBD n hstay hterminal]
   exact hR.subset_connectedComponentIn hx hRsub
+
+/-- The selected inverse at every depth has the entire prescribed
+base as image. This also guarantees nonemptiness when the base is
+nonempty, without choosing an endpoint in advance. -/
+theorem limbItinerary_image (F : X → X) (D B : Set X)
+    (hcover : D ⊆ F '' D) (hBD : B ⊆ D) (n : ℕ) :
+    (F^[n]) '' limbItinerary F D B n = B := by
+  induction n with
+  | zero => simp [limbItinerary]
+  | succ n ih =>
+    change (F^[n+1]) '' (D ∩ F ⁻¹' limbItinerary F D B n) = B
+    rw [Function.iterate_succ, Set.image_comp,
+      limb_inverse_image F D _ hcover (limbItinerary_subset F D B hBD n), ih]
+
+/-- No two points of the same selected itinerary can have the same
+terminal point, at any depth, even for disconnected base sets. -/
+theorem limbItinerary_injective (F : X → X) (D B : Set X)
+    (hinj : InjOn F (D ∩ F ⁻¹' D)) (hBD : B ⊆ D) (n : ℕ) :
+    InjOn (F^[n]) (limbItinerary F D B n) := by
+  induction n with
+  | zero =>
+    intro x hx y hy hxy
+    exact hxy
+  | succ n ih =>
+    intro x hx y hy hxy
+    change x ∈ D ∩ F ⁻¹' limbItinerary F D B n at hx
+    change y ∈ D ∩ F ⁻¹' limbItinerary F D B n at hy
+    have hs := limbItinerary_subset F D B hBD n
+    have hxy' : (F^[n]) (F x) = (F^[n]) (F y) := hxy
+    exact hinj ⟨hx.1, hs hx.2⟩ ⟨hy.1, hs hy.2⟩ (ih hx.2 hy.2 hxy')
+
+/-- The physical itinerary has exactly one inverse point of every
+terminal point in the critical limb. This is an existence and
+uniqueness theorem on the genuine filled set; an endpoint need not
+be supplied to construct the inverse orbit. -/
+theorem quadratic_critical_limb_unique_inverse (c : ℂ)
+    (D E : Set (quadraticFilled c)) (hDE : Disjoint D E)
+    (hcover : D ⊆ quadraticFilledMap c '' D)
+    (hother : D ⊆ quadraticFilledMap c '' E)
+    (n : ℕ) (y : quadraticFilled c) (hy : y ∈ D) :
+    ∃! x : quadraticFilled c,
+      (∀ k < n, ((quadraticFilledMap c)^[k]) x ∈ D) ∧
+        ((quadraticFilledMap c)^[n]) x = y := by
+  let F := quadraticFilledMap c
+  have himage := limbItinerary_image F D D hcover Subset.rfl n
+  have hinj := limbItinerary_injective F D D
+    (quadratic_critical_limb_injective c D E hDE hother) Subset.rfl n
+  have hy' : y ∈ (F^[n]) '' limbItinerary F D D n := by
+    rw [himage]
+    exact hy
+  obtain ⟨x, hx, hxy⟩ := hy'
+  refine ⟨x, ⟨((mem_limbItinerary F D D n x).mp hx).1, hxy⟩, ?_⟩
+  intro z hz
+  have hzD : (F^[n]) z ∈ D := by
+    rw [hz.2]
+    exact hy
+  have hz' : z ∈ limbItinerary F D D n :=
+    (mem_limbItinerary F D D n z).mpr ⟨hz.1, hzD⟩
+  exact hinj hz' hx (hz.2.trans hxy.symm)
+
+/-- The terminal base-component test can be discharged by actual
+contact with a connected central mark, with no model vertex or
+assumed component label. -/
+theorem quadratic_mark_itinerary_component (c : ℂ)
+    (D E B Q : Set (quadraticFilled c)) (a d q x : quadraticFilled c)
+    (hfix : quadraticFilledMap c a = a)
+    (hDcomp : D = connectedComponentIn ({a} : Set (quadraticFilled c))ᶜ d)
+    (hD : IsOpen D) (hDE : Disjoint D E)
+    (hcover : D ⊆ quadraticFilledMap c '' D)
+    (hother : D ⊆ quadraticFilledMap c '' E)
+    (hBD : B ⊆ D) (hQ : IsPreconnected Q) (hQB : Q ⊆ B) (hq : q ∈ Q)
+    (n : ℕ)
+    (hstay : ∀ k < n, ((quadraticFilledMap c)^[k]) x ∈ D)
+    (hterminal : ((quadraticFilledMap c)^[n]) x ∈ Q) :
+    limbItinerary (quadraticFilledMap c) D (connectedComponentIn B q) n =
+      connectedComponentIn (((quadraticFilledMap c)^[n]) ⁻¹' B) x :=
+  quadratic_selected_itinerary_component c D E B a d q x hfix hDcomp hD
+    hDE hcover hother hBD n hstay
+    (hQ.subset_connectedComponentIn hq hQB hterminal)
 
 end LoopsStationaryPhysicalItinerary
