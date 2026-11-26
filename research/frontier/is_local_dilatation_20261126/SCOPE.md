@@ -1,0 +1,5 @@
+# Scope fixed before the final source audit
+
+Target: CS arXiv:1509.07843 eq. (32), Proposition 6.7(b), for S(1/3)S(1/4)... . Let q_n=n+2 and k_n=prod_{j<n}q_j. The observable is the multiplier of the original return f_c^{k_n} at the dividing point of its degree-two parent PL restriction, with the marked 1/q_n lift. Review #135, #136, #139 and #140 (including its independent long review) read before branch creation. See also #138 for the independent angular issue.
+
+Accept a positive verdict only if a theorem supplies a uniform K for dynamical conjugacies of the relevant neighborhoods with degree-two polynomials, preserving the access marking, for actual returns at all sufficiently large n, not merely a uniform QC extension of normalized coordinate charts. Distinguish a representative supplied by an existence theorem from the entire parameter class. A negative verdict is scoped to the audited route unless a genuine degeneration theorem for the optimal marked K is established. No ledger promotion or claim of rigidity/MLC.

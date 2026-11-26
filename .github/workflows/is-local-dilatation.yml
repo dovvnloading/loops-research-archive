@@ -1,0 +1,37 @@
+name: IS local dilatation audit
+on:
+  push:
+    branches: [frontier/is-local-dilatation-20261126]
+    paths:
+      - 'research/frontier/is_local_dilatation_20261126/**'
+      - 'formalization/physical_bridge_sources.tsv'
+  pull_request:
+    branches: [main]
+    paths:
+      - 'research/frontier/is_local_dilatation_20261126/**'
+      - '.github/workflows/is-local-dilatation.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    container: python:3.12.12-bookworm@sha256:c0abd0758831ad99b7a29e0c1a875da9c4abb9a2e3f21e2eeb585dbcadfb6cd0
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          persist-credentials: false
+      - name: Check reported multipliers and fingerprint primary sources
+        run: |
+          python -B research/frontier/is_local_dilatation_20261126/verify.py --manifest /tmp/is-local-dilatation-sources.json
+          python -B code/verify_physical_bridges.py
+      - name: Preserve input manifest
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: is-local-dilatation-sources
+          path: /tmp/is-local-dilatation-sources.json
+          if-no-files-found: warn
