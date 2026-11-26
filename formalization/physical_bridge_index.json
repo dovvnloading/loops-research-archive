@@ -1827,7 +1827,15 @@
         "unit_image_realSegment",
         "realSegment_invariant",
         "bounded_iff_realSegment",
-        "no_equivariant_unit_section"
+        "no_equivariant_unit_section",
+        "doubling_iterate",
+        "planar_return_iff",
+        "primitive_swap",
+        "every_period_swap",
+        "swapping_doubles_period",
+        "lift_period_dichotomy",
+        "every_period_doubling",
+        "no_retimed_equivariant_unit_section"
       ]
     },
     "obligations": [
