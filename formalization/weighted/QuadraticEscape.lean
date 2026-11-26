@@ -345,14 +345,15 @@ theorem escape_continuous :
   rw [heq] at htriangle₂
   linarith only [h1,h2,hdy,htriangle₁,htriangle₂]
 
+set_option maxHeartbeats 1000000 in
 /-- The critical-value parameter potential is jointly defined, with no
 additional choice of Böttcher or dynamical coordinates. -/
-set_option maxHeartbeats 1000000 in
 theorem parameterEscape_continuous : Continuous parameterEscape := by
   have hd : Continuous (fun c : ℂ => (c,c)) :=
     continuous_id.prodMk continuous_id
   have h := escape_continuous.comp hd
-  simpa only [Function.comp_def, parameterEscape] using h
+  unfold parameterEscape
+  simpa only [Function.comp_def] using h
 
 /-- Exact physical clock normalization for m entrance iterates and n
 p-step returns. This identity is valid even away from any periodic orbit. -/
@@ -362,11 +363,11 @@ theorem parameter_rescaling (c : ℂ) (m p n : ℕ) :
   rw [parameterEscape_critical, escape_iterate, pow_add, pow_mul]
   ring
 
+set_option maxHeartbeats 1000000 in
 /-- Analytic passage in the Misiurewicz scaling argument: given convergence
 of the actual critical iterates (the separate linearization obligation),
 the correctly normalized rescaled parameter potentials converge. No
 uniform control of the number of iterates is assumed. -/
-set_option maxHeartbeats 1000000 in
 theorem parameter_rescaling_limit (cs : ℕ → ℂ) (cstar w : ℂ) (m p : ℕ)
     (hc : Tendsto cs atTop (𝓝 cstar))
     (hw : Tendsto (fun n => orbit (cs n) (m+p*n) 0) atTop (𝓝 w)) :
