@@ -229,7 +229,7 @@ theorem least_carrier_terminal_incidence {ι : Type*}
   have hmarks : ∀ i, K i ⊆ r '' S := by
     intro i z hz
     refine ⟨z, hK i hz, ?_⟩
-    simp [r, Set.piecewise, hmiss i z hz]
+    simp [r, hmiss i z hz]
   have hsub := hleast (r '' S) (hSc.image hr) (hS.image r hr.continuousOn) hmarks
   obtain ⟨w, hwS, hwO⟩ := hSO
   obtain ⟨v, _, hv⟩ := hsub hwS
@@ -244,6 +244,7 @@ occupancy of a saturated terminal sheet is detected already on the
 least carrier. A connected mark avoiding the root is contained in the
 whole sheet; forward invariance of its carrier puts the entire mark
 in the selected predecessor, with no finite-tree incidence premise. -/
+omit [TopologicalSpace Y] in
 theorem selected_predecessor_contains_mark {ι : Type*}
     (p : X → Y) (F : X → X) (K : ι → Set X)
     (S T : Set X) (a x : X) (V : Set Y) (n : ℕ)

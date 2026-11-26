@@ -1981,6 +1981,30 @@
       "H3_COERCIVITY"
     ]
   },
+  "saturated-telescope-20261126": {
+    "guide": "contributions/saturated_telescope_20261126/NOTE.md#saturated-telescope-20261126",
+    "theorems": {
+      "formalization/weighted/SaturatedTelescope.lean": [
+        "component_pullback_comp",
+        "routeMap_anchor",
+        "saturated_route_component",
+        "routeMap_image",
+        "quadratic_orbit_continuous",
+        "quadratic_orbit_add",
+        "routeMap_quadratic",
+        "quadratic_segment_saturation",
+        "quadratic_eq_iff",
+        "quadratic_critical_component_symmetric",
+        "quadratic_return_fiber_pair",
+        "quadratic_segment_fiber_pair",
+        "quadratic_return_critical_value",
+        "quadratic_return_noncritical_fiber"
+      ]
+    },
+    "obligations": [
+      "MAPPING_TELESCOPE"
+    ]
+  },
   "monotone-geometric-predecessor-20261126": {
     "guide": "contributions/monotone_geometric_predecessor_20261126/NOTE.md#monotone-geometric-predecessor-20261126",
     "theorems": {

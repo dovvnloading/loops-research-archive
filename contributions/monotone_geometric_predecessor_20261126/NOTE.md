@@ -11,7 +11,7 @@ human_review: none
 
 ## Claim
 
-Draft, not yet verified. Target the actual topological inference in the November 26 stationary non-LC audit: connected fibers of a closed quotient, transport of connected components, and disjointness of geometric marks under wandering-fiber and hereditary-unicoherence hypotheses.
+Partial result; eight theorems verified at the checkpoint below, four additional candidates pending exact-head CI. Target the actual topological inference in the November 26 stationary non-LC audit: connected fibers of a closed quotient, transport of connected components, and disjointness of geometric marks under wandering-fiber and hereditary-unicoherence hypotheses.
 
 ## Evidence
 
@@ -28,9 +28,9 @@ Theorems: `preconnected_preimage_closed_fibers`, `component_preimage_closed_fibe
 7. Two points of a physical continuum over a path-connected model region are joined by a preconnected subset of the intersection: take the compact actual path image in the model, lift its entire inverse, and intersect with the physical continuum. This proves the physical intersection lemma without postulating paths in the physical Julia set.
 8. Actual planar foundation: every compact subset of a full empty-interior plane set is itself full with connected complement, using the archive's `planarFill` and its unique exterior theorem. The remaining planar unicoherence step (Janiszewski separation) is not claimed.
 
-Verified checkpoint: `36b0a29e7ee7d0763452a2c099e32ab130e7b9ce`, first eight theorems, [weighted build and transitive dependency audit passed](https://github.com/dovvnloading/loops-research-archive/actions/runs/45856259943). New extension awaits its own exact-head CI.
+Verified checkpoint: `36b0a29e7ee7d0763452a2c099e32ab130e7b9ce`, first eight theorems, [weighted build and transitive dependency audit passed](https://github.com/dovvnloading/loops-research-archive/actions/runs/45856259943). New extension awaits its own exact-head CI. Main advanced with the independent SaturatedTelescope contribution; the merge commit preserves its source, packet and registrations and retains this PR's full history.
 
-Build: `cd formalization/weighted && lake build StationaryMonotoneGeometry`. The source is registered as METADATA, not a completed physical bridge. Compilation and foundational-dependency audit are pending.
+Build: `cd formalization/weighted && lake build StationaryMonotoneGeometry`. The source is registered as METADATA, not a completed physical bridge. The first eight passed both compilation and the foundational-dependency audit. The final head must independently pass the same checks.
 
 ## Dependencies
 
