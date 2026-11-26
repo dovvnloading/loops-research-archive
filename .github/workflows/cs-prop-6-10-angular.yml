@@ -1,7 +1,7 @@
 name: CS Proposition 6.10 angular audit
 on:
   push:
-    branches: [frontier/cs-prop-6-10-angular-20261126]
+    branches: [main, frontier/cs-prop-6-10-angular-20261126]
     paths:
       - 'research/frontier/cs_prop_6_10_angular_20261126/**'
       - '.github/workflows/cs-prop-6-10-angular.yml'

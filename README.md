@@ -42,6 +42,8 @@ Research direction, synthesis, authorship, and public stewardship
 
 **On this page:** [November research](#november-1516-2026-research-integration-merged-prs-72100) · [Results and original figures](#research-results-you-can-inspect) · [Mathematical program](#the-mathematical-program) · [Companion papers](#three-companion-papers) · [3/9 testbed](#the-november-2026-two-scale-testbed) · [Reproduce](#reproduce-the-central-results) · [Evidence ledger](#source-locked-evidence-ledger) · [Open problems](#the-open-frontier)
 
+**November 25-26 frontier audits:** The [reviewed frontier index](./RESEARCH_MAP.md#november-25-26-frontier-audits) collects merged PRs #127–#136, including the verified gap in the printed justification of (6.25) in KKL Lemma 6.24, scoped covering-only obstructions, the conditional Elephant Eyes §8 audit limited to the #127 shared-base-point objection, the MLC coverage atlas and open-cells inventory, the scoped genuinely open satellite address, and the full PLY-disk estimate obstruction (not actual multiplier bounds). The native KKL question and MLC remain open; no new MLC case or status promotion is claimed.
+
 ## November 24: complete buffered support and sharper transport results
 
 The [new proof packet](./research/independent_audits/native_resolution_20261124.md)
