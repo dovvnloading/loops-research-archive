@@ -248,7 +248,7 @@ theorem aggregate_defect_debt_eq_degree (c : ℂ) (V : Set ℂ)
         by_cases hc : c ∈ D
         · have hcV : (quad c)^[n] c ∈ V :=
             connectedComponentIn_subset ((quad c)^[n] ⁻¹' V) (quad c x) hc
-          simp only [mem_localFiber, hc, true_and, if_pos hc]
+          simp only [mem_localFiber, hc, true_and]
           exact Finset.sum_ite_eq_of_mem A ((quad c)^[n] c) (fun _ => 1)
             (hA n (by omega) hcV)
         · simp [mem_localFiber, hc]
@@ -260,12 +260,21 @@ theorem aggregate_defect_debt_eq_degree (c : ℂ) (V : Set ℂ)
         rw [Finset.sum_add_distrib, ← Finset.mul_sum, hcharge]
       simp only [componentFiberDefect, componentReflectionDebt, componentReflectionRank,
         if_pos hs, pow_succ]
+      change (∑ y ∈ A, (2 * componentFiberDefect c V y n (quad c x) +
+          (if c ∈ localFiber c n D y then 1 else 0))) +
+        (2 * componentReflectionDebt c V n (quad c x) + (if c ∈ D then 0 else 1)) + 1 =
+          2 ^ componentReflectionRank c V n (quad c x) * 2
       rw [hsum]
-      by_cases hc : c ∈ D
-      · simp only [if_pos hc]
-        omega
-      · simp only [if_neg hc]
-        omega
+      calc
+        _ = 2 * ((∑ y ∈ A, componentFiberDefect c V y n (quad c x)) +
+              componentReflectionDebt c V n (quad c x) + 1) := by
+          by_cases hc : c ∈ D
+          · rw [if_pos hc, if_pos hc]
+            omega
+          · rw [if_neg hc, if_neg hc]
+            omega
+        _ = 2 ^ componentReflectionRank c V n (quad c x) * 2 := by
+          rw [ht, Nat.mul_comm]
     · simp only [componentFiberDefect, componentReflectionDebt, componentReflectionRank,
         if_neg hs, Nat.add_zero]
       exact ht
@@ -377,7 +386,10 @@ theorem mergerCensus_unique_connected_image (c : ℂ) (n : ℕ) (U V : Set ℂ)
   intro E hE
   obtain ⟨b, hbB, hbU, he⟩ :=
     (mem_mergerCensus c n U V hUV hUo hUc x y hy E).mp hE.1
-  have haE : a ∈ g b := he ▸ hE.2 ha
+  have haE : a ∈ g b := by
+    change a ∈ connectedComponentIn ((quad c)^[n] ⁻¹' U) b
+    rw [← he]
+    exact hE.2 ha
   exact he.trans (connectedComponentIn_eq haE)
 
 
