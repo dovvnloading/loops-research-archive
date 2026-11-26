@@ -1930,5 +1930,23 @@
       "H1_MARKED_CONSTRUCTION",
       "H4_RIGIDITY"
     ]
+  },
+  "saturated-telescope-20261126": {
+    "guide": "contributions/saturated_telescope_20261126/NOTE.md#saturated-telescope-20261126",
+    "theorems": {
+      "formalization/weighted/SaturatedTelescope.lean": [
+        "component_pullback_comp",
+        "routeMap_anchor",
+        "saturated_route_component",
+        "routeMap_image",
+        "quadratic_orbit_continuous",
+        "quadratic_orbit_add",
+        "routeMap_quadratic",
+        "quadratic_segment_saturation"
+      ]
+    },
+    "obligations": [
+      "MAPPING_TELESCOPE"
+    ]
   }
 }
