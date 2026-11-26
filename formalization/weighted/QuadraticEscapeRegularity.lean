@@ -1,4 +1,6 @@
 import QuadraticEscapeHolder
+import QuadraticEscapeSharpness
+import Mathlib.Analysis.Asymptotics.Lemmas
 
 /-!
 # Uniform strict improvement away from the Chebyshev parameter
@@ -18,20 +20,12 @@ private theorem separated_base_bounds (η : ℝ) (hη : 0 ≤ η) (hη4 : η ≤
   have hs := pow_le_pow_left₀ hη hη4 2
   constructor <;> nlinarith [sq_nonneg η]
 
-private theorem separated_exponent_gt_half (η : ℝ) (hη : 0 < η) (hη4 : η ≤ 4) :
+/-- Every positive uniform exclusion radius gives an exponent strictly
+greater than one half. -/
+theorem separated_exponent_gt_half (η : ℝ) (hη : 0 < η) (hη4 : η ≤ 4) :
     (1:ℝ)/2 < Real.log 2 / Real.log (4-η^2/576) := by
-  have hA := (separated_base_bounds η hη.le hη4).1
-  have hlt : 4-η^2/576 < 4 := by nlinarith [sq_pos_of_pos hη]
-  have hlogA : 0 < Real.log (4-η^2/576) := Real.log_pos (by linarith)
-  have hloglt : Real.log (4-η^2/576) < Real.log 4 :=
-    Real.log_lt_log (by linarith) hlt
-  have hlog4 : Real.log 4 = 2 * Real.log 2 := by
-    have hp := Real.log_pow (2:ℝ) 2
-    norm_num at hp
-    exact hp
-  apply (lt_div_iff₀ hlogA).mpr
-  rw [hlog4] at hloglt
-  linarith
+  exact growth_exponent_gt_half (separated_base_bounds η hη.le hη4).1
+    (by nlinarith [sq_pos_of_pos hη])
 
 /-- A single strictly improved exponent and the same explicit constant
 work at every zero-potential parameter at least η away from -2. -/
@@ -57,7 +51,6 @@ theorem parameter_escape_sqrt_ratio_bound (η : ℝ) (hη : 0 < η) (hη4 : η �
       (4 * Real.log 4 * (2:ℝ) ^ (Real.log 2 / Real.log (4-η^2/576))) *
         ‖d-c‖ ^ (Real.log 2 / Real.log (4-η^2/576) - 1/2) := by
   let α : ℝ := Real.log 2 / Real.log (4-η^2/576)
-  have hα : 1/2 < α := separated_exponent_gt_half η hη hη4
   by_cases hdc : d = c
   · subst d
     simp only [sub_self, norm_zero, Real.sqrt_zero, div_zero]
@@ -146,5 +139,49 @@ theorem parameter_escape_isLittleO_sqrt (c : ℂ)
   have hnorm : ‖d-c‖ = 0 := (Real.sqrt_eq_zero (norm_nonneg _)).mp hd
   have hdc : d = c := sub_eq_zero.mp (norm_eq_zero.mp hnorm)
   simpa only [hdc] using hc
+
+/-- The explicit real approach retains a uniformly positive normalized
+potential, so the square-root scale cannot be little-o at minus two. -/
+theorem parameter_escape_not_isLittleO_sqrt_tip :
+    ¬ parameterEscape =o[𝓝 (-2 : ℂ)]
+      (fun d : ℂ => Real.sqrt ‖d - (-2)‖) := by
+  intro h
+  have hp : Tendsto (fun n : ℕ => (1/4 : ℝ)^n) atTop (𝓝 0) :=
+    tendsto_pow_atTop_nhds_zero_of_lt_one (by norm_num) (by norm_num)
+  have hr : Tendsto (fun n : ℕ => (-2 : ℝ) - (1/4 : ℝ)^n)
+      atTop (𝓝 (-2 : ℝ)) := by
+    simpa using (tendsto_const_nhds.sub hp)
+  have hseq : Tendsto chebyshevApproach atTop (𝓝 (-2 : ℂ)) := by
+    change Tendsto (fun n : ℕ => ((-2 - (1/4 : ℝ)^n : ℝ) : ℂ))
+      atTop (𝓝 (-2 : ℂ))
+    simpa only [Function.comp_def, Complex.ofReal_neg, Complex.ofReal_ofNat]
+      using (Complex.continuous_ofReal.tendsto (-2 : ℝ)).comp hr
+  have hlim : Tendsto (fun n : ℕ => parameterEscape (chebyshevApproach n) /
+      Real.sqrt ‖chebyshevApproach n - (-2)‖) atTop (𝓝 0) :=
+    h.tendsto_div_nhds_zero.comp hseq
+  have hlower (n : ℕ) : Real.log 2 / 4 ≤
+      parameterEscape (chebyshevApproach n) / Real.sqrt ‖chebyshevApproach n - (-2)‖ := by
+    have hpow : ((1/2 : ℝ)^n)^2 = (1/4 : ℝ)^n := by
+      rw [pow_two, ← mul_pow]
+      norm_num
+    rw [sub_neg_eq_add, chebyshevApproach_distance, ← hpow,
+      Real.sqrt_sq (by positivity)]
+    exact (le_div_iff₀ (by positivity : 0 < (1/2 : ℝ)^n)).mpr
+      (chebyshevApproach_escape_lower n)
+  have hbad : Real.log 2 / 4 ≤ 0 :=
+    ge_of_tendsto hlim (Eventually.of_forall hlower)
+  have hpos : 0 < Real.log 2 / 4 :=
+    div_pos (Real.log_pos (by norm_num)) (by norm_num)
+  exact (not_le_of_gt hpos) hbad
+
+/-- Among all actual bounded-critical-orbit parameters, minus two is
+exactly the obstruction to a strict little-o square-root modulus. -/
+theorem parameter_escape_isLittleO_sqrt_iff (c : ℂ) (hc : parameterEscape c = 0) :
+    (parameterEscape =o[𝓝 c] (fun d : ℂ => Real.sqrt ‖d-c‖)) ↔ c ≠ -2 := by
+  constructor
+  · intro h heq
+    subst c
+    exact parameter_escape_not_isLittleO_sqrt_tip h
+  · exact parameter_escape_isLittleO_sqrt c hc
 
 end QuadraticEscape

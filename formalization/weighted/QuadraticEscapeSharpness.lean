@@ -20,7 +20,11 @@ private theorem realCritical_cast (ε : ℝ) (n : ℕ) :
       (realCritical ε n : ℂ) := by
   induction n with
   | zero => rfl
-  | succ n ih => simp [orbit, realCritical, ih]
+  | succ n ih =>
+    rw [orbit, ih]
+    simp only [realCritical, Complex.ofReal_sub, Complex.ofReal_pow,
+      Complex.ofReal_neg, Complex.ofReal_ofNat]
+    ring
 
 private theorem realCritical_growth (ε : ℝ) (hε : 0 ≤ ε) (n : ℕ) :
     2 + 2 * (4 : ℝ)^n * ε + ε ≤ realCritical ε (n + 1) := by
@@ -86,6 +90,75 @@ private theorem escape_lower_of_eight (c z : ℂ) (hc : ‖c‖ ≤ 3) (hz : 8 �
   norm_num only [show (1 : ℝ) + 3 = 4 by norm_num] at he
   linarith only [he, hl, hlogs]
 
+private theorem last_four_scale {ε : ℝ} (hε : 0 < ε) (hε1 : ε ≤ 1) :
+    ∃ n : ℕ, (4 : ℝ)^n * ε ≤ 1 ∧ 1 < (4 : ℝ)^(n + 1) * ε := by
+  have hg (n : ℕ) : (n : ℝ) + 1 ≤ (4 : ℝ)^n := by
+    induction n with
+    | zero => norm_num
+    | succ n ih =>
+      rw [Nat.cast_succ, pow_succ]
+      linarith only [ih, (Nat.cast_nonneg n : (0 : ℝ) ≤ n)]
+  have hex : ∃ k : ℕ, 1 < (4 : ℝ)^k * ε := by
+    obtain ⟨k, hk⟩ := exists_nat_gt (1 / ε)
+    refine ⟨k, (div_lt_iff₀ hε).mp ?_⟩
+    linarith only [hk, hg k]
+  have hmin := Nat.find_spec hex
+  cases h : Nat.find hex with
+  | zero =>
+    rw [h, pow_zero, one_mul] at hmin
+    exact (not_lt_of_ge hε1 hmin).elim
+  | succ n =>
+    refine ⟨n, ?_, ?_⟩
+    · by_contra hh
+      have hh' := Nat.find_min' hex (lt_of_not_ge hh)
+      omega
+    · simpa only [h] using hmin
+
+/-- A lower square-root estimate on the entire exterior real interval,
+not merely a chosen subsequence. -/
+theorem negative_real_escape_sq_lower (ε : ℝ) (hε : 0 < ε) (hε1 : ε ≤ 1) :
+    (Real.log 2)^2 / 64 * ε ≤ (parameterEscape ((-2 - ε : ℝ) : ℂ))^2 := by
+  obtain ⟨n, hlo, hhi⟩ := last_four_scale hε hε1
+  have hg := realCritical_growth ε hε.le (n + 2)
+  have hscale : 4 < (4 : ℝ)^(n + 2) * ε := by
+    rw [show n + 2 = (n + 1) + 1 by omega, pow_succ]
+    nlinarith only [hhi]
+  have hx : 8 ≤ realCritical ε (n + 3) := by
+    have hi : n + 2 + 1 = n + 3 := by omega
+    rw [hi] at hg
+    nlinarith only [hg, hscale, hε]
+  let c : ℂ := ((-2 - ε : ℝ) : ℂ)
+  have hc : ‖c‖ ≤ 3 := by
+    dsimp [c]
+    rw [Complex.norm_real, Real.norm_eq_abs, abs_of_nonpos (by linarith)]
+    linarith
+  have hz : 8 ≤ ‖orbit c (n + 3) c‖ := by
+    dsimp [c]
+    rw [realCritical_cast, Complex.norm_real, Real.norm_eq_abs,
+      abs_of_nonneg (by linarith : 0 ≤ realCritical ε (n + 3))]
+    exact hx
+  have he := escape_lower_of_eight c (orbit c (n + 3) c) hc hz
+  rw [escape_iterate] at he
+  have hp : (1 / 2 : ℝ)^n * (2 : ℝ)^(n + 3) = 8 := by
+    rw [pow_add, ← mul_assoc, ← mul_pow]
+    norm_num
+  have hm := mul_le_mul_of_nonneg_left he (by positivity : 0 ≤ (1 / 2 : ℝ)^n)
+  rw [← mul_assoc, hp] at hm
+  have hlower : (Real.log 2 / 8) * (1 / 2 : ℝ)^n ≤ parameterEscape c := by
+    change (Real.log 2 / 8) * (1 / 2 : ℝ)^n ≤ escape c c
+    linarith only [hm]
+  have hlog : 0 ≤ Real.log 2 := Real.log_nonneg (by norm_num)
+  have hs := pow_le_pow_left₀
+    (show 0 ≤ (Real.log 2 / 8) * (1 / 2 : ℝ)^n by positivity) hlower 2
+  have hprod : ((1 / 2 : ℝ)^n)^2 * (4 : ℝ)^n = 1 := by
+    rw [pow_two, ← mul_pow, ← mul_pow]
+    norm_num
+  have hw := mul_le_mul_of_nonneg_left hlo (sq_nonneg ((1 / 2 : ℝ)^n))
+  rw [← mul_assoc, hprod, one_mul] at hw
+  have hgain := mul_le_mul_of_nonneg_left hw (sq_nonneg (Real.log 2))
+  change (Real.log 2)^2 / 64 * ε ≤ (parameterEscape c)^2
+  nlinarith only [hs, hgain]
+
 /-- A quantitative lower estimate for the genuine critical-value potential
 along exterior parameters, with no uniformization or boundary regularity input. -/
 theorem chebyshevApproach_escape_lower (n : ℕ) :
@@ -123,10 +196,7 @@ private theorem chebyshevApproach_distance_tendsto :
   exact tendsto_pow_atTop_nhds_zero_of_lt_one (by norm_num) (by norm_num)
 
 private theorem half_rpow_quarter : (1 / 4 : ℝ) ^ (1 / 2 : ℝ) = 1 / 2 := by
-  have h := Real.pow_rpow_inv_natCast (by norm_num : (0 : ℝ) ≤ 1 / 2)
-    (by norm_num : (2 : ℕ) ≠ 0)
-  norm_num at h
-  exact h
+  norm_num
 
 /-- No exponent greater than one half bounds the parameter potential in
 any neighborhood of -2, regardless of the proposed multiplicative constant. -/
