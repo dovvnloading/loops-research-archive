@@ -2836,6 +2836,64 @@
       "H1_CELL_TREE_EXTRACTION"
     ]
   },
+  "quadratic-local-ramification-20261126": {
+    "guide": "contributions/quadratic_local_ramification_20261126/NOTE.md#quadratic-local-ramification-20261126",
+    "theorems": {
+      "formalization/weighted/QuadraticLocalRamification.lean": [
+        "localMultiplicity_pos",
+        "returnOrbit_shift",
+        "criticalCount_shift",
+        "localMultiplicity_step",
+        "localMultiplicity_exact_order",
+        "localMultiplicity_eq_one_iff",
+        "fiberRoot_eq_zero_iff",
+        "quadratic_nonsymmetric_component_omits_zero",
+        "quadratic_component_nonsymmetric_weighted",
+        "quadratic_component_symmetric_fiber",
+        "quadratic_component_symmetric_weighted",
+        "quadratic_component_weighted_fiber_degree",
+        "quadratic_component_defect_eq_ramification_sum",
+        "criticalCount_add",
+        "localMultiplicity_add",
+        "quadratic_split_component",
+        "quadratic_component_intermediate_weighted_degree",
+        "componentReflectionRank_add",
+        "mergerCensus_weighted_partition",
+        "mergerCensus_complete_iff_weighted_degree"
+      ],
+      "formalization/weighted/QuadraticRamificationCensus.lean": [
+        "mem_criticalPoints",
+        "mem_criticalPoints_iff_multiplicity",
+        "quadratic_iterate_deriv_ne_zero_iff",
+        "mem_criticalPoints_iff_deriv",
+        "mem_postcriticalTargets",
+        "iterate_after_critical",
+        "criticalPoints_eq_postcritical_filter",
+        "criticalPoints_ramification_sum",
+        "quadratic_component_critical_budget",
+        "quadratic_component_critical_count_bound",
+        "componentReflectionRank_univ",
+        "componentReflectionDebt_univ",
+        "quadratic_global_ramification_budget"
+      ],
+      "formalization/weighted/QuadraticCriticalPortrait.lean": [
+        "mem_signedPreimage",
+        "signedPreimage_card",
+        "criticalPoints_succ",
+        "critical_value_mem_criticalPoints_iff",
+        "criticalPoints_card_succ",
+        "criticalPoints_card_of_no_return",
+        "criticalPoints_card_after_first_return",
+        "criticalPoints_card_at_horizon",
+        "criticalPoints_zero_parameter_card",
+        "criticalPoints_neg_one_card",
+        "criticalPoints_neg_two_card"
+      ]
+    },
+    "obligations": [
+      "VIRTUAL_REACHED_CYLINDER_COMPONENT_EXHAUSTION"
+    ]
+  },
   "parameter-stable-telescope-20261126": {
     "guide": "contributions/parameter_stable_telescope_20261126/NOTE.md#parameter-stable-telescope-20261126",
     "theorems": {
