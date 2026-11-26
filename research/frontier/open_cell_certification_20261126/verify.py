@@ -23,6 +23,16 @@ RULE_SOURCES = {
     "B5": ["CS2015", "CS"], "B6": ["EE", "DL26"], "B7": ["KKL", "DL26"],
 }
 
+RULE_REASONS = {
+    "B1": "Bounded ratios of cofinal absolute primitive periods bound every intervening integer maximal relative period. This contradicts unbounded relative periods.",
+    "B2": "An eventually primitive sequence has only finitely many satellite levels; each reduced rational has finitely many signed CF digits, hence their finite union is bounded.",
+    "B3": "A real straightened satellite rotation equals its negative modulo one, hence is 1/2. An eventually satellite real sequence has relative period 2 on its tail and a finite prefix, contradicting unbounded periods.",
+    "B4": "Real straightening preserves conjugation; each satellite has rotation 1/2 and single signed digit 2, contrary to either unbounded-digit axis.",
+    "B5": "Within-level squares make the first digit minimal; the first digit is at most the reduced denominator q_i. Cross-level b_(i+1,1) >= q_i^2 >= b_(i,1)^2, with b_(i,1)>=2, forces minimum digits to infinity. Neither bounded digits nor minimum not tending to infinity is possible.",
+    "B6": "For a real straightened map E1 forces its nontrivial dividing rotation 1/q to equal its negative, so q=2. E3 uniformly bounds p=q+b. A finite prefix cannot restore unbounded relative periods.",
+    "B7": "Every member of a parabolic tail lies in the 1/(n+1) limb, n>=2; these nonreal limbs are disjoint from their conjugates on infinitely renormalizable parameters. Real types are confined to the finite isolated types, whose periods are bounded.",
+}
+
 
 def require(condition, message):
     if not condition:
@@ -91,6 +101,7 @@ def validate(atlas, old, sources, decisions, ranked):
             require(row["disposition"] == "EMPTY" and row["classification"] is None
                     and row["rule"] == b and row["sources"] == RULE_SOURCES[b],
                     f"{key}: empty row cannot become a mathematical classification")
+            require(row["reason"] == RULE_REASONS[b], f"{key}: contradictory rationale changed")
             rules[b] += 1
         elif prior["class"] == "A":
             require(prior["verification"] == "STATEMENT_ONLY" and
@@ -127,6 +138,8 @@ def hostile(atlas, old, sources, decisions, ranked):
         (b, "classification", "COVERED"),
         (b, "classification", "PREPRINT-ONLY"),
         (b, "rule", "B0"),
+        (b, "reason", "Unverified or invented rationale"),
+        (b, "sources", ["DL26"]),
         (b, "earlier_tests_false", ["fabricated"]),
         (u, "classification", "CERTIFIED-OPEN"),
         (u, "classification", "COVERED"),

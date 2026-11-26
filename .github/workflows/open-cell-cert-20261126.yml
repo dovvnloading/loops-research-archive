@@ -20,7 +20,9 @@ jobs:
           persist-credentials: false
       - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065
         with:
-          python-version: '3.12.10'
+          python-version: '3.12'
+      - name: Verify finite atlas certificate
+        run: python -B research/frontier/open_cell_certification_20261126/verify.py
       - name: Verify atlas decisions and historical PDF checksums
         run: python -B research/frontier/open_cell_certification_20261126/verify.py --check-downloads
       - name: Check bridge source registration
