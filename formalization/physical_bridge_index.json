@@ -2329,5 +2329,19 @@
     "obligations": [
       "DIRECT_DECORATION_END_PRIME_END_COFINALITY"
     ]
+  },
+  "h1-monotone-cut-rigidity-20261126": {
+    "guide": "contributions/h1_monotone_cut_rigidity_20261126/NOTE.md#h1-monotone-cut-rigidity-20261126",
+    "theorems": {
+      "formalization/weighted/ChebyshevQuotientRigidity.lean": [
+        "retimed_angular_interval_covers",
+        "retimed_connected_subset_covers",
+        "retimed_collapsed_fiber_forces_constant",
+        "bounded_orbit_monotone_factor_injective"
+      ]
+    },
+    "obligations": [
+      "H1_CELL_TREE_EXTRACTION"
+    ]
   }
 }
