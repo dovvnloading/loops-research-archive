@@ -84,7 +84,7 @@ theorem repeated_returnMultiplier_hasDerivAt_zero (c : ℂ) (ζ : ℂ → ℂ)
   have hkm1 : k-1 ≠ 0 := by omega
   have hd := hμ.differentiableAt.hasDerivAt.pow k
   have hd0 : HasDerivAt (fun w => returnMultiplier w (ζ w) p ^ k) 0 c := by
-    simpa only [hzero, zero_pow hkm1, mul_zero, zero_mul] using hd
+    simpa only [hzero, zero_pow hkm1, mul_zero, zero_mul] using! hd
   exact hd0.congr_of_eventuallyEq
     (periodic_motion_returnMultiplier_mul c ζ p k hper)
 

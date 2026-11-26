@@ -3067,6 +3067,10 @@
       ],
       "formalization/weighted/QuadraticMultiplierDisk.lean": [
         "center_multiplier_disk"
+      ],
+      "formalization/weighted/QuadraticCenterTrapping.lean": [
+        "returnOrbit_critical_secant",
+        "center_uniform_return_trapping"
       ]
     },
     "obligations": [
