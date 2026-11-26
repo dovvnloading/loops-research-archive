@@ -2301,7 +2301,15 @@
         "returnMultiplier_rational_normSq_gap",
         "returnMultiplier_not_neutral",
         "collision_return_deriv_not_neutral",
-        "collision_return_deriv_rational_gap"
+        "collision_return_deriv_rational_gap",
+        "spatialPoly_monic_degree",
+        "spatialPoly_eval₂",
+        "integral_of_spatial_collision",
+        "preperiodic_deriv_not_neutral",
+        "periodic_deriv_not_neutral",
+        "collision_parameter_all_cycles_nonneutral",
+        "preperiodic_deriv_rational_normSq",
+        "zero_parameter_fixed_one_sharp"
       ]
     },
     "obligations": [

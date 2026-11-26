@@ -137,4 +137,129 @@ theorem collision_return_deriv_rational_gap (c : ℂ) (a b m n : ℕ)
   rw [(returnMultiplier_hasDerivAt c (orbit c m) n).deriv] at hq hne
   exact returnMultiplier_rational_normSq_gap hc (orbit_integral hc m) n hq hne
 
+
+/-! The spatial collision polynomial removes the integral-starting-point
+hypothesis for every preperiodic point of an integral parameter. -/
+
+open Polynomial
+
+/-- Polynomial for the actual spatial iterate, over any coefficient ring. -/
+def spatialPoly {R : Type*} [CommRing R] (c : R) : ℕ → R[X]
+  | 0 => X
+  | n+1 => spatialPoly c n ^ 2 + C c
+
+theorem spatialPoly_monic_degree {R : Type*} [CommRing R] [Nontrivial R]
+    (c : R) (n : ℕ) :
+    (spatialPoly c n).Monic ∧ (spatialPoly c n).natDegree = 2^n := by
+  induction n with
+  | zero => simp [spatialPoly]
+  | succ n ih =>
+    have hp := ih.1.pow 2
+    have hd : (spatialPoly c n ^ 2).natDegree = 2^(n+1) := by
+      rw [ih.1.natDegree_pow, ih.2, pow_succ]
+      ring
+    have hlt : (C c : R[X]).natDegree < (spatialPoly c n ^ 2).natDegree := by
+      rw [natDegree_C, hd]
+      positivity
+    change (spatialPoly c n ^ 2 + C c).Monic ∧
+      (spatialPoly c n ^ 2 + C c).natDegree = 2^(n+1)
+    exact ⟨hp.add_of_left (degree_lt_degree hlt),
+      (natDegree_add_eq_left_of_natDegree_lt hlt).trans hd⟩
+
+theorem spatialPoly_eval₂ (c : integralClosure ℤ ℂ) (z : ℂ) (n : ℕ) :
+    eval₂ (integralClosure ℤ ℂ).val.toRingHom z (spatialPoly c n) =
+      returnOrbit (c:ℂ) z n := by
+  induction n with
+  | zero => simp [spatialPoly, returnOrbit]
+  | succ n ih =>
+    simp [spatialPoly, returnOrbit, ih]
+
+/-- Every eventual spatial collision at an algebraic-integer parameter starts
+at an algebraic integer. In particular no periodic orbit has to be assumed
+postcritical. This uses the actual monic iterate-difference polynomial. -/
+theorem integral_of_spatial_collision {c z : ℂ} (hc : IsIntegral ℤ c)
+    (a b : ℕ) (hab : a < b)
+    (hcoll : returnOrbit c z a = returnOrbit c z b) : IsIntegral ℤ z := by
+  letI := (integralClosure ℤ ℂ).algebra
+  let cc : integralClosure ℤ ℂ := ⟨c,hc⟩
+  have hdeg : StrictMono (fun n => (spatialPoly cc n).natDegree) := by
+    apply strictMono_nat_of_lt_succ
+    intro n
+    rw [(spatialPoly_monic_degree cc n).2,
+      (spatialPoly_monic_degree cc (n+1)).2, pow_succ]
+    have hpos : 0 < (2:ℕ)^n := pow_pos (by decide) _
+    omega
+  have hm := (spatialPoly_monic_degree cc b).1.sub_of_left
+    (degree_lt_degree (hdeg hab))
+  apply isIntegral_trans (A := integralClosure ℤ ℂ) z
+  refine ⟨spatialPoly cc b - spatialPoly cc a, hm, ?_⟩
+  change eval₂ (integralClosure ℤ ℂ).val.toRingHom z
+    (spatialPoly cc b - spatialPoly cc a) = 0
+  rw [eval₂_sub, spatialPoly_eval₂, spatialPoly_eval₂]
+  change returnOrbit c z b - returnOrbit c z a = 0
+  exact sub_eq_zero.mpr hcoll.symm
+
+/-- Every actual preperiodic point at an integral parameter has no neutral
+positive-length iterate derivative, including all genuine periodic points. -/
+theorem preperiodic_deriv_not_neutral {c z : ℂ} (hc : IsIntegral ℤ c)
+    (a b n : ℕ) (hab : a < b)
+    (hcoll : returnOrbit c z a = returnOrbit c z b) (hn : 0 < n) :
+    ‖deriv ((fun w : ℂ => w^2+c)^[n]) z‖ ≠ 1 := by
+  have hz := integral_of_spatial_collision hc a b hab hcoll
+  have hd := (returnMultiplier_hasDerivAt c z n).deriv
+  simp only [returnOrbit_eq_iterate] at hd
+  rw [hd]
+  exact returnMultiplier_not_neutral hc hz n hn
+
+/-- At every algebraic-integer parameter, all positive-period cycles are
+nonneutral; not just the periodic cycle reached by the critical point. -/
+theorem periodic_deriv_not_neutral {c z : ℂ} (hc : IsIntegral ℤ c)
+    (p : ℕ) (hp : 0 < p)
+    (hper : (fun w : ℂ => w^2+c)^[p] z = z) :
+    ‖deriv ((fun w : ℂ => w^2+c)^[p]) z‖ ≠ 1 := by
+  have hcoll : returnOrbit c z 0 = returnOrbit c z p := by
+    change z = returnOrbit c z p
+    rw [returnOrbit_eq_iterate]
+    exact hper.symm
+  exact preperiodic_deriv_not_neutral hc 0 p p hp hcoll hp
+
+/-- Arithmetic exclusion of neutral cycles anywhere in the actual dynamical
+plane of every quadratic critical-collision parameter. -/
+theorem collision_parameter_all_cycles_nonneutral (c : ℂ) (a b : ℕ)
+    (hab : a < b) (hcoll : orbit c a = orbit c b)
+    (z : ℂ) (p : ℕ) (hp : 0 < p)
+    (hper : (fun w : ℂ => w^2+c)^[p] z = z) :
+    ‖deriv ((fun w : ℂ => w^2+c)^[p]) z‖ ≠ 1 :=
+  periodic_deriv_not_neutral (integral_of_collision c a b hab hcoll) p hp hper
+
+/-- Full quantization of the squared norm of the derivative at every actual
+preperiodic point of an integral parameter. -/
+theorem preperiodic_deriv_rational_normSq {c z : ℂ} (hc : IsIntegral ℤ c)
+    (a b n : ℕ) (hab : a < b)
+    (hcoll : returnOrbit c z a = returnOrbit c z b) {q : ℚ}
+    (hq : ‖deriv ((fun w : ℂ => w^2+c)^[n]) z‖^2 = (q:ℝ)) :
+    ∃ k : ℤ, 0 ≤ k ∧ q = (4:ℚ)^n * (k:ℚ) := by
+  have hz := integral_of_spatial_collision hc a b hab hcoll
+  have hd := (returnMultiplier_hasDerivAt c z n).deriv
+  simp only [returnOrbit_eq_iterate] at hd
+  rw [hd] at hq
+  exact returnMultiplier_rational_normSq hc hz n hq
+
+/-- The arithmetic gap is sharp for the actual fixed point 1 of z ↦ z². -/
+theorem zero_parameter_fixed_one_sharp (n : ℕ) :
+    ‖deriv ((fun w : ℂ => w^2+(0:ℂ))^[n]) (1:ℂ)‖^2 = (4:ℝ)^n := by
+  have horb : ∀ k : ℕ, returnOrbit 0 1 k = 1 := by
+    intro k
+    induction k with
+    | zero => rfl
+    | succ k ih => simp [returnOrbit, ih]
+  have hprod : orbitProduct 0 1 n = 1 := by
+    induction n with
+    | zero => rfl
+    | succ k ih => simp [orbitProduct, horb, ih]
+  have hd := (returnMultiplier_hasDerivAt 0 1 n).deriv
+  simp only [returnOrbit_eq_iterate] at hd
+  rw [hd, returnMultiplier_normSq_factor, hprod]
+  simp
+
 end LoopsQuadraticTransversality
