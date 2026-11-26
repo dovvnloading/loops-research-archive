@@ -2399,5 +2399,30 @@
     "obligations": [
       "TERMINAL_NONLC_HUBBARD_CARRIER_PROPER"
     ]
+  },
+  "quadratic-cylinder-ramification-20261126": {
+    "guide": "contributions/quadratic_cylinder_ramification_20261126/NOTE.md#quadratic-cylinder-ramification-20261126",
+    "theorems": {
+      "formalization/weighted/QuadraticCylinderRamification.lean": [
+        "quadratic_global_component_image",
+        "open_restriction_homeomorph",
+        "quadratic_iterate_univalent_component",
+        "quadratic_critical_hit_noninjective",
+        "quadratic_iterate_surjective",
+        "quadratic_postcritical_component_obstruction",
+        "quadratic_all_components_univalent_iff",
+        "quadratic_component_anchor_bound",
+        "quadratic_postcritical_target_merges_regular_fiber",
+        "quadratic_enlargement_component_surjective",
+        "quadratic_enlargement_merger_iff",
+        "quadratic_prefix_component_image",
+        "quadratic_component_univalent_from_regular_fiber",
+        "quadratic_component_single_regular_fiber_iff",
+        "quadratic_localized_single_regular_fiber_iff"
+      ]
+    },
+    "obligations": [
+      "VIRTUAL_REACHED_CYLINDER_COMPONENT_EXHAUSTION"
+    ]
   }
 }
