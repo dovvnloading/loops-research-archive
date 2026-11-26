@@ -2640,6 +2640,38 @@
       "KKL_STATIONARY_PROOF_USED_PREDECESSOR_SELECTION"
     ]
   },
+  "univalent-telescope-collars-20261126": {
+    "guide": "contributions/univalent_telescope_collars_20261126/NOTE.md#univalent-telescope-collars-20261126",
+    "theorems": {
+      "formalization/weighted/QuadraticUnivalentNeighborhood.lean": [
+        "quadratic_step_univalent_neighborhood",
+        "quadratic_compact_univalent_neighborhood",
+        "quadratic_compact_univalent_neighborhood_within"
+      ],
+      "formalization/weighted/TelescopeUnivalentCollars.lean": [
+        "compact_univalent_neighborhood_iff",
+        "selected_univalent_collar_margin",
+        "connected_open_target_neighborhood",
+        "selected_univalent_open_collar",
+        "selected_inverse_exact_core",
+        "selected_univalent_analytic_collar"
+      ],
+      "formalization/weighted/TelescopeConformalInverse.lean": [
+        "orbit_deriv_ne_zero_iff",
+        "orbit_conformal_of_open_injective",
+        "orbit_conformal_inverse",
+        "orbit_inverse_restriction_agreement",
+        "orbit_inverse_concatenation"
+      ],
+      "formalization/weighted/TelescopeCompactReturn.lean": [
+        "compact_one_critical_return_collar",
+        "compactly_contained_one_critical_return"
+      ]
+    },
+    "obligations": [
+      "MAPPING_TELESCOPE"
+    ]
+  },
   "quadratic-enlargement-degree-conservation-20261126": {
     "guide": "contributions/quadratic_enlargement_degree_conservation_20261126/NOTE.md#quadratic-enlargement-degree-conservation-20261126",
     "theorems": {

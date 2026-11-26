@@ -103,9 +103,8 @@ formalization/weighted/PlanarFillLimit.lean	HULL
 formalization/weighted/PlanarFullification.lean	HULL
 formalization/weighted/ProtectedCarrierLogic.lean	HULL
 formalization/weighted/QuadraticEscapeFullness.lean	METADATA
-formalization/weighted/QuadraticLocalRamification.lean	METADATA
 formalization/weighted/QuadraticMultiplierArithmetic.lean	METADATA
-formalization/weighted/QuadraticRamificationCensus.lean	METADATA
+formalization/weighted/QuadraticUnivalentNeighborhood.lean	CONSTRUCT
 formalization/weighted/SaturatedTelescope.lean	METADATA
 formalization/weighted/SpectralDominance.lean	CLONE EDGE
 formalization/weighted/StationaryCanonicalLift.lean	VARIABLE-EXIT
@@ -120,7 +119,10 @@ formalization/weighted/StationaryMultiInterface.lean	METADATA
 formalization/weighted/StationaryPacketGain.lean	VARIABLE-EXIT
 formalization/weighted/StationaryPrefixCharge.lean	VARIABLE-EXIT
 formalization/weighted/TelescopeCollarRecognition.lean	METADATA
+formalization/weighted/TelescopeCompactReturn.lean	CONSTRUCT
+formalization/weighted/TelescopeConformalInverse.lean	CONSTRUCT
 formalization/weighted/TelescopeRamification.lean	METADATA
+formalization/weighted/TelescopeUnivalentCollars.lean	CONSTRUCT
 formalization/weighted/TerminalFiberExclusion.lean	METADATA
 formalization/weighted/WeightedReturn.lean	CLONE EDGE
 research/frontier/dudko_p44_molecule_20261125/source_lock.py	METADATA
@@ -406,3 +408,5 @@ formalization/weighted/QuadraticCylinderRamification.lean	METADATA
 formalization/weighted/StationaryLightModel.lean	METADATA
 formalization/weighted/StationaryPhysicalItinerary.lean	METADATA
 formalization/weighted/QuadraticEnlargementDegree.lean	METADATA
+formalization/weighted/QuadraticLocalRamification.lean	METADATA
+formalization/weighted/QuadraticRamificationCensus.lean	METADATA
