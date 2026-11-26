@@ -98,6 +98,7 @@ formalization/weighted/PrimeEndImpressionDecomposition.lean	METADATA
 formalization/weighted/PrimeEndSectorFilters.lean	METADATA
 formalization/weighted/PrimeEndSectorImpressions.lean	METADATA
 formalization/weighted/PrimeEndSectorRank.lean	METADATA
+formalization/weighted/QuadraticCantorBoundary.lean	METADATA
 formalization/weighted/QuadraticCantorCoding.lean	METADATA
 formalization/weighted/QuadraticCantorExpansion.lean	METADATA
 formalization/weighted/QuadraticCantorGeometry.lean	METADATA

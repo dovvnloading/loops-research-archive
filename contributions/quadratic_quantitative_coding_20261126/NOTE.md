@@ -24,7 +24,9 @@ with `h(f_c(z)) = shift(h(z))`. For every pair of points whose first
 
 Thus every infinite address has exactly one physical point, every nested
 filled-set prefix cylinder has singleton intersection, and `K_c` is
-totally disconnected. The cylinder estimate is proved from the actual
+totally disconnected. In the ambient complex plane it is perfect, has empty
+interior, and equals its own frontier; the positive-escape locus is dense.
+The cylinder estimate is proved from the actual
 quadratic formula; neither contraction nor singleton fibers are supplied
 as hypotheses of the physical theorem.
 
@@ -61,8 +63,9 @@ under Boundary.
 | `BinaryShiftCensus.lean` | `fixed_point_card`, `periodic_extension`, `periodic_points_dense`, `exact_period_exists` |
 | `QuadraticCantorExpansion.lean` | `orbit_hasDerivAt`, `deriv_norm_sq_lower_double_parameter`, `deriv_norm_lower_four`, `periodic_mem_filled`, `periodic_repelling` |
 | `QuadraticCantorCoding.lean` | `filled_conjugacy_exists`, `physical_cylinder_intersection`, `filled_totally_disconnected`, `complex_periodic_point_count`, `complex_exact_period_repelling`, `periodic_approximation`, `filled_periodic_points_dense` |
+| `QuadraticCantorBoundary.lean` | `filled_no_isolated`, `filled_perfect`, `filled_interior_empty`, `filled_frontier`, `positive_escape_dense` |
 
-All six files are in `formalization/weighted/`, are default Lake targets,
+All seven files are in `formalization/weighted/`, are default Lake targets,
 and are registered in the theorem and source indexes. The existing
 `CompactBinaryCoding.lean` now uses four precise imports instead of the
 whole Mathlib umbrella; its definitions, statements and proof bodies are
@@ -119,9 +122,19 @@ unchanged.
    Each squared factor has size at least `2‖c‖`, yielding the stated
    all-horizon inequalities and repelling periodic orbits.
 
+6. **Physical boundary and exterior density.** Flip a sufficiently late
+   address entry and use the prefix estimate to construct a distinct
+   bounded-orbit point at any prescribed positive Euclidean accuracy.
+   This proves perfectness in the actual plane. A connected open complex
+   ball cannot lie in a totally disconnected set, so the filled set has
+   empty interior. Closedness then identifies it with its frontier, and
+   nonnegativity of the escape potential identifies the dense complement
+   with the positive-escape locus. No Julia-set or prime-end identification
+   is inserted as an assumption.
+
 ### Validation and reproducibility
 
-Local Lean 4.32.0 compilation succeeds for all six new modules and the
+Local Lean 4.32.0 compilation succeeds for all seven new modules and the
 existing coding dependency using the repository's pinned Mathlib revision.
 The unchanged CI performs the full weighted Lake build and audits the
 transitive axioms of **every declaration**, not just a selected theorem.
@@ -133,7 +146,7 @@ From `formalization/weighted/`:
 ```sh
 lake build QuadraticCantorGeometry QuadraticCantorSplitting \
   ExpandingBinaryCoding BinaryShiftCensus \
-  QuadraticCantorExpansion QuadraticCantorCoding
+  QuadraticCantorExpansion QuadraticCantorCoding QuadraticCantorBoundary
 ```
 
 From the repository root:

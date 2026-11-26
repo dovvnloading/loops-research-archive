@@ -2985,6 +2985,13 @@
         "complex_exact_period_repelling",
         "periodic_approximation",
         "filled_periodic_points_dense"
+      ],
+      "formalization/weighted/QuadraticCantorBoundary.lean": [
+        "filled_no_isolated",
+        "filled_perfect",
+        "filled_interior_empty",
+        "filled_frontier",
+        "positive_escape_dense"
       ]
     },
     "obligations": [
