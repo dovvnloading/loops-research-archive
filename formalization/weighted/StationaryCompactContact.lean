@@ -911,7 +911,8 @@ theorem quadratic_repelling_point_exterior_contact
       HasDerivAt (QuadraticEscape.orbit c (p*k)) (μ^k) a := by
     induction k with
     | zero =>
-      simpa [QuadraticEscape.orbit] using hasDerivAt_id a
+      change HasDerivAt (id : ℂ → ℂ) 1 a
+      exact hasDerivAt_id a
     | succ k ih =>
       have houter : HasDerivAt (QuadraticEscape.orbit c (p*k)) (μ^k) (f a) := by
         rw [show f a = a from hper]
