@@ -126,7 +126,7 @@ def main():
               "Anchor matches are locators, not independent theorem verification.",""]
         for name,entry in out["sources"].items():
             if "sha256" not in entry:
-                rows.append(f"- **{name} {entry[\'version\']}**: download failed; SHA-256 unavailable. {entry.get(\'error\',\'\')}")
+                rows.append(f"- **{name} {entry['version']}**: download failed; SHA-256 unavailable. {entry.get('error','')}")
                 continue
             rows.append(f"- **{name} {entry['version']}**: SHA-256 `{entry['sha256']}` ({entry['bytes']} bytes); "
                         f"[PDF]({entry['url']}).")

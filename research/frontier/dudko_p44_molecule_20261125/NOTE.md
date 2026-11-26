@@ -46,7 +46,7 @@ The exact versioned PDF bytes are not accessible from the local sandbox (network
 - DL v4 [p. 31](https://arxiv.org/pdf/1808.10425#page=31), §§3.2.6–3.2.7, Lemma 3.1 and subsequent derivative identification; [pp. 73–74](https://arxiv.org/pdf/1808.10425#page=73), Proposition 5.41 and proof including the new hyperbolic operator. Note that Lemma 3.1 cites DLS Lemma 3.17, but the rotation map is Lemma 3.18 in the v3 PDF, as DL §3.2.6 correctly cites.
 
 <!-- SOURCE LOCK BEGIN -->
-Pending CI source lock; no PDF hash or page numbers verified yet.
+PDF byte hashes are not yet verified. Manually checked primary PDF page locators are listed immediately above. A source-lock run is necessary to obtain the exact PDF fingerprints; the final static correction is committed with [skip ci] to honor the six-run limit. See sources.json for the incomplete provenance record.
 <!-- SOURCE LOCK END -->
 
 ## Proof
@@ -95,6 +95,6 @@ For an offline replay, supply the exact PDF files named 2512.24171v1.pdf, 1703.0
 
 Machine-readable: results.json records the exact arithmetic result and its mathematical scope; sources.json records input versions, hashes, page anchors and missing anchors. CI failure to download or find any anchor is a provenance failure, not a falsification of the algebraic identity. The workflow is limited to this branch, this directory/PR, or explicit dispatch. No existing archive files or ledger entries are changed; no new physical bridge is asserted.
 
-CI history: initial setup-python 3.12.12 was unavailable for ubuntu-latest (26.04); switched to a pinned Python 3.12.12 container. The second PR run (45740722534, verify job 139644762806) executed the exact verifier successfully, printing the expected certificate; the subsequent git diff check failed inside the container. The final batch uses bytewise cmp and explicitly trusts only the checked-out workspace for branch writeback. This records the actual check result, not a green CI claim.
+CI history: initial setup-python 3.12.12 was unavailable for ubuntu-latest (26.04); switched to a pinned Python 3.12.12 container. The second PR run (45740722534, verify job 139644762806) executed the exact verifier successfully, printing the expected certificate; the subsequent git diff check failed inside the container. The final batch uses bytewise cmp and explicitly trusts only the checked-out workspace for branch writeback. This records the actual check result, not a green CI claim. The third push/PR pair exhausted the allocated six runs. Static inspection found an escaped-quote syntax defect in source_lock.py in that batch. The final correction removes that defect without triggering another run; the corrected downloader is untested in CI, and the exact PDF-byte hashes remain unverified.
 
 AI disclosure: ChatGPT (GPT-6.2) performed source comparison, proof specialization, exact verifier and workflow construction. Human specialist verification: none yet. The primary-source theorems are attributed to their authors, not to AI.

@@ -1,0 +1,67 @@
+{
+  "schema": 1,
+  "status": "incomplete: PDF bytes not available locally; final source-lock run not verified",
+  "sources": {
+    "Dudko": {
+      "version": "2512.24171v1",
+      "url": "https://arxiv.org/pdf/2512.24171v1",
+      "sha256": null,
+      "anchor_pages": null,
+      "published_locator": {
+        "url": "https://epubs.siam.org/doi/pdf/10.1137/25M1807101#page=18",
+        "physical_page": 18,
+        "printed_page": 133,
+        "statement": "Interpolation Problem 4.4"
+      }
+    },
+    "DLS": {
+      "version": "1703.01206v3",
+      "url": "https://arxiv.org/pdf/1703.01206",
+      "sha256": null,
+      "anchor_pages": {
+        "Theorem 1.1 / (1.1)": [
+          4
+        ],
+        "Theorem 3.16": [
+          28
+        ],
+        "Lemma 3.18": [
+          29
+        ],
+        "Remark 3.19": [
+          29
+        ],
+        "Theorem 7.7 and proof": [
+          61,
+          62
+        ],
+        "C.3 Molecule Conjecture": [
+          89
+        ],
+        "C.4 following heading": [
+          90
+        ]
+      }
+    },
+    "DL": {
+      "version": "1808.10425v4",
+      "url": "https://arxiv.org/pdf/1808.10425",
+      "sha256": null,
+      "anchor_pages": {
+        "Lemma 3.1 / multiplier derivative": [
+          31
+        ],
+        "Proposition 5.41 and proof": [
+          73,
+          74
+        ]
+      }
+    }
+  },
+  "missing_anchors": [
+    "Dudko arXiv v1 physical page",
+    "Dudko SHA-256",
+    "DLS SHA-256",
+    "DL SHA-256"
+  ]
+}
