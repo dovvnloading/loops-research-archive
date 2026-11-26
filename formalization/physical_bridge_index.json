@@ -2517,5 +2517,21 @@
     "obligations": [
       "MAPPING_TELESCOPE"
     ]
+  },
+  "prime-end-impression-decomposition-20261126": {
+    "guide": "contributions/prime_end_impression_decomposition_20261126/NOTE.md#prime-end-impression-decomposition-20261126",
+    "theorems": {
+      "formalization/weighted/PrimeEndImpressionDecomposition.lean": [
+        "exterior_impression_decomposition",
+        "restricted_impression_subset_full",
+        "restricted_impression_eq_full_of_interior",
+        "restricted_impression_nonempty",
+        "finite_landing_footprint_subsingleton",
+        "physical_end_common_impression"
+      ]
+    },
+    "obligations": [
+      "DIRECT_DECORATION_END_PRIME_END_COFINALITY"
+    ]
   }
 }
