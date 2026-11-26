@@ -11,11 +11,11 @@ human_review: none
 
 ## Claim
 
-Partial result; eight theorems verified at the checkpoint below, four additional candidates pending exact-head CI. Target the actual topological inference in the November 26 stationary non-LC audit: connected fibers of a closed quotient, transport of connected components, and disjointness of geometric marks under wandering-fiber and hereditary-unicoherence hypotheses.
+This partial contribution formalizes the topological inference in the November 26 stationary non-LC audit: closed monotone quotient transport for all connected subsets, disjointness of invariant geometric marks under nonfixed-fiber and hereditary-unicoherence hypotheses, construction and projection of least continua, terminal-sheet marked incidence, and the full empty-interior planar subset lemma. The precise hypotheses are those in the Lean statements; only an exact-head successful kernel build and transitive dependency audit count as proof validation.
 
 ## Evidence
 
-Candidate file: `formalization/weighted/StationaryMonotoneGeometry.lean`.
+Lean file: `formalization/weighted/StationaryMonotoneGeometry.lean`.
 
 Theorems: `preconnected_preimage_closed_fibers`, `component_preimage_closed_fibers`, `punctured_component_full_lift`, `disjoint_bridges_impossible`, `invariant_marks_disjoint_image`, `selected_predecessor_full_lift`, `least_carrier_terminal_incidence`, `selected_predecessor_contains_mark`, `least_compact_connected_carrier_exists`, `least_carrier_image_eq`, `preconnected_inter_preimage_path_connected`, `compact_subset_full_of_full_empty_interior`.
 
@@ -28,13 +28,13 @@ Theorems: `preconnected_preimage_closed_fibers`, `component_preimage_closed_fibe
 7. Two points of a physical continuum over a path-connected model region are joined by a preconnected subset of the intersection: take the compact actual path image in the model, lift its entire inverse, and intersect with the physical continuum. This proves the physical intersection lemma without postulating paths in the physical Julia set.
 8. Actual planar foundation: every compact subset of a full empty-interior plane set is itself full with connected complement, using the archive's `planarFill` and its unique exterior theorem. The remaining planar unicoherence step (Janiszewski separation) is not claimed.
 
-Verified checkpoint: `36b0a29e7ee7d0763452a2c099e32ab130e7b9ce`, first eight theorems, [weighted build and transitive dependency audit passed](https://github.com/dovvnloading/loops-research-archive/actions/runs/45856259943). New extension awaits its own exact-head CI. Main advanced with the independent SaturatedTelescope contribution; the merge commit preserves its source, packet and registrations and retains this PR's full history.
+Verified checkpoint: `36b0a29e7ee7d0763452a2c099e32ab130e7b9ce`, first eight theorems, [weighted build and transitive dependency audit passed](https://github.com/dovvnloading/loops-research-archive/actions/runs/45856259943). The extension must pass the same exact-head CI, whose run and conclusion are recorded in the PR conversation. Main advanced with the independent SaturatedTelescope contribution; the merge commit preserves its source, packet and registrations and retains this PR's full history.
 
-Build: `cd formalization/weighted && lake build StationaryMonotoneGeometry`. The source is registered as METADATA, not a completed physical bridge. The first eight passed both compilation and the foundational-dependency audit. The final head must independently pass the same checks.
+Build: `cd formalization/weighted && lake build StationaryMonotoneGeometry`. The source is registered as METADATA, not a completed physical bridge. The preceding checkpoint passed both compilation and the foundational-dependency audit; validation of any later revision is governed by that revision's CI, not by the checkpoint.
 
 ## Dependencies
 
-KKL_NATIVE_TERMINAL_HUBBARD_TREE, KKL_STATIONARY_MODEL_TERMINAL_SHEET_INCIDENCE, KKL_STATIONARY_SELECTED_PREDECESSOR_CHAIN; research/independent_audits/stationary_nonlc_predecessor_lift_20261126/NOTE.md, sections 2–5.
+KKL_NATIVE_TERMINAL_HUBBARD_TREE, KKL_STATIONARY_MODEL_TERMINAL_SHEET_INCIDENCE, KKL_STATIONARY_SELECTED_PREDECESSOR_CHAIN; research/independent_audits/stationary_nonlc_predecessor_lift_20261126/NOTE.md, sections 2–5. The actual planar filled-hull theorem uses `formalization/weighted/PlanarFullification.lean` (monotonicity, extensivity and unique unbounded complement). The other topological ingredients are Lean Mathlib's connected-set calculus, compactness, separation and piecewise continuity. Kiwi's quotient and Janiszewski's theorem are not imported as proof constants.
 
 ## Boundary
 
