@@ -1803,5 +1803,36 @@
       "KKL_STATIONARY_FINAL_FIXED_COMPONENT_EXIT",
       "KKL_STATIONARY_FINAL_PASS_THROUGH_PATH_EXTRACTION"
     ]
+  },
+  "chebyshev-fibers": {
+    "guide": "research/frontier/kernel_chebyshev_fibers_20261126/NOTE.md#chebyshev-fibers",
+    "theorems": {
+      "formalization/weighted/ChebyshevFibers.lean": [
+        "pair_step",
+        "pair_iterate",
+        "joukowski_step",
+        "joukowski_iterate",
+        "reciprocal_pair_exists",
+        "reciprocal_eq_inv",
+        "joukowski_surjective",
+        "joukowski_fiber",
+        "unit_nonzero",
+        "unit_inv",
+        "unit_square",
+        "exterior_lower_bound",
+        "exterior_unbounded",
+        "unit_bounded",
+        "bounded_iff_unit_image",
+        "unit_inv_eq_conj",
+        "unit_image_realSegment",
+        "realSegment_invariant",
+        "bounded_iff_realSegment",
+        "no_equivariant_unit_section"
+      ]
+    },
+    "obligations": [
+      "H1_MARKED_CONSTRUCTION",
+      "H4_RIGIDITY"
+    ]
   }
 }

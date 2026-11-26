@@ -91,9 +91,11 @@ theorem unit_nonzero {w : ℂ} (h : UnitAddress w) : w ≠ 0 := by
   simp [UnitAddress, he] at h
 
 theorem unit_inv {w : ℂ} (h : UnitAddress w) : UnitAddress w⁻¹ := by
+  change ‖w‖ = 1 at h
   simp [UnitAddress, norm_inv, h]
 
 theorem unit_square {w : ℂ} (h : UnitAddress w) : UnitAddress (w^2) := by
+  change ‖w‖ = 1 at h
   simp [UnitAddress, norm_pow, h]
 
 private theorem pair_norm_product {w v : ℂ} (h : w*v = 1) :
@@ -136,6 +138,7 @@ theorem unit_bounded {w : ℂ} (hw : UnitAddress w) :
     ∀ n : ℕ, ‖(cquad (-2))^[n] (J w)‖ ≤ 2 := by
   intro n
   rw [joukowski_iterate (unit_nonzero hw)]
+  change ‖w‖ = 1 at hw
   have hp : ‖w^(2^n)‖ = 1 := by simp [norm_pow, hw]
   calc
     ‖J (w^(2^n))‖ ≤ ‖w^(2^n)‖ + ‖(w^(2^n))⁻¹‖ := norm_add_le _ _
@@ -181,7 +184,7 @@ theorem realSegment_invariant {z : ℂ} (hz : z ∈ realSegment 2) :
   obtain ⟨x,hx,rfl⟩ := hz
   refine ⟨x^2-2, ?_, ?_⟩
   · exact ⟨by nlinarith [sq_nonneg x], by nlinarith [sq_le_sq' hx.1 hx.2]⟩
-  · norm_num [cquad]
+  · norm_num [cquad, sub_eq_add_neg]
 
 /-- The filled bounded-orbit set of the actual polynomial is exactly [-2,2]. -/
 theorem bounded_iff_realSegment (z : ℂ) :

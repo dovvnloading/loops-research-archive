@@ -371,3 +371,4 @@ research/independent_audits/variational_frontier_20261126/check_bounds.py	METADA
 research/independent_audits/variational_frontier_20261126/check_multipole.py	METADATA
 research/frontier/quantitative_frontier_audit_20261126/check.py	METADATA
 research/frontier/quantitative_frontier_audit_20261126/check_scalar.py	METADATA
+formalization/weighted/ChebyshevFibers.lean	CHEBYSHEV-FIBERS
