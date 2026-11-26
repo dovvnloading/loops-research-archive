@@ -1,0 +1,40 @@
+name: Residual satellite source status
+on:
+  push:
+    branches: [frontier/residual-satellite-status-20261126]
+  pull_request:
+    paths:
+      - 'research/frontier/residual_satellite_status_20261126/**'
+      - '.github/workflows/residual-satellite-status.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  verify:
+    if: github.event_name != 'pull_request' || github.head_ref == 'frontier/residual-satellite-status-20261126'
+    runs-on: ubuntu-latest
+    container: python:3.12.12-bookworm@sha256:c0abd0758831ad99b7a29e0c1a875da9c4abb9a2e3f21e2eeb585dbcadfb6cd0
+    timeout-minutes: 6
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+      - name: Verify arithmetic
+        run: python3 -B research/frontier/residual_satellite_status_20261126/verify.py
+      - name: Retrieve and commit source fingerprints on audit branch only
+        if: github.event_name != 'pull_request' && github.ref == 'refs/heads/frontier/residual-satellite-status-20261126'
+        shell: bash
+        run: |
+          set -euo pipefail
+          d=research/frontier/residual_satellite_status_20261126
+          if [ ! -f "$d/sources.lock.json" ]; then
+            python3 -B "$d/verify.py" --lock
+            git config --global --add safe.directory "$GITHUB_WORKSPACE"
+            git config user.name 'github-actions[bot]'
+            git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+            git add -- "$d/NOTE.md" "$d/sources.lock.json"
+            if ! git diff --cached --quiet; then
+              git commit -m 'Record residual satellite source fingerprints'
+              git push origin HEAD:refs/heads/frontier/residual-satellite-status-20261126
+            fi
+          fi
+      - name: Check committed provenance
+        run: python3 -B research/frontier/residual_satellite_status_20261126/verify.py --check-lock
