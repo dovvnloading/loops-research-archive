@@ -2375,6 +2375,31 @@
       "H1_CELL_TREE_EXTRACTION"
     ]
   },
+  "terminal-nonlc-fiber-exclusion-20261126": {
+    "guide": "contributions/terminal_nonlc_fiber_exclusion_20261126/NOTE.md#terminal-nonlc-fiber-exclusion-20261126",
+    "theorems": {
+      "formalization/weighted/TerminalFiberExclusion.lean": [
+        "fixed_fiber_avoids_cycle",
+        "finite_marks_compact_bridge",
+        "model_puncture_path_connected",
+        "least_carrier_fiber_exclusion_iff",
+        "terminal_cycle_least_carrier_proper",
+        "quadratic_terminal_least_carrier_proper",
+        "compact_connected_envelope",
+        "least_carrier_avoidance_iff_component",
+        "model_puncture_connected",
+        "terminal_cycle_least_carrier_proper_lc",
+        "quadratic_terminal_least_carrier_proper_lc",
+        "minimal_compact_carrier_is_least",
+        "quadratic_filled_neg_mem",
+        "quadratic_filled_map_surjective",
+        "quadratic_exists_proper_invariant_least_carrier"
+      ]
+    },
+    "obligations": [
+      "TERMINAL_NONLC_HUBBARD_CARRIER_PROPER"
+    ]
+  },
   "quadratic-cylinder-ramification-20261126": {
     "guide": "contributions/quadratic_cylinder_ramification_20261126/NOTE.md#quadratic-cylinder-ramification-20261126",
     "theorems": {
