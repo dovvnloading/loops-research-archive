@@ -2518,6 +2518,32 @@
       "MAPPING_TELESCOPE"
     ]
   },
+  "quadratic-component-fiber-degree-20261126": {
+    "guide": "contributions/quadratic_component_fiber_degree_20261126/NOTE.md#quadratic-component-fiber-degree-20261126",
+    "theorems": {
+      "formalization/weighted/QuadraticComponentFiberDegree.lean": [
+        "even_component_reflection_of_pair",
+        "quadratic_eq_or_neg",
+        "quadratic_component_nonsymmetric_inj",
+        "quadratic_component_fiber_image",
+        "quadratic_component_nonsymmetric_count",
+        "quadratic_component_symmetric_count",
+        "componentReflectionRank_le",
+        "quadratic_component_fiber_card_exact",
+        "componentFiberDefect_zero_of_regular",
+        "quadratic_component_regular_degree",
+        "quadratic_component_rank_zero_inj",
+        "quadratic_component_univalent_iff_regular_card_one",
+        "quadratic_localized_univalent_iff_regular_card_one",
+        "componentReflectionRank_mono",
+        "quadratic_enlargement_no_merger_iff_fiber_eq",
+        "quadratic_enlargement_rank_eq_iff_no_merger"
+      ]
+    },
+    "obligations": [
+      "VIRTUAL_REACHED_CYLINDER_COMPONENT_EXHAUSTION"
+    ]
+  },
   "stationary-compact-contact-separator-20261126": {
     "guide": "contributions/stationary_compact_contact_separator_20261126/NOTE.md#stationary-compact-contact-separator-20261126",
     "theorems": {
