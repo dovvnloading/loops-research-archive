@@ -155,7 +155,7 @@ async function saveVisualObservation() {
   await evaluate("document.querySelector('.ob-header .ob-save-button').click()");
   await until(() => evaluate("!!document.querySelector('.ob-save-dialog[open]')"), 'save observation dialog');
   await fill('.ob-save-dialog input[placeholder="A place worth remembering"]', observationTitle);
-  await fill('.ob-save-dialog textarea', 'Nearby escape contours remain distinct below a span of 1e-60. Compare this window with the exact c = i reference.');
+  await fill('.ob-save-dialog textarea', 'Nearby escape contours remain distinct at extremely small scales. Compare this window with the exact c = i reference.');
   await fill('.ob-save-dialog input[placeholder="spirals, boundary, curious"]', 'deep zoom, field note');
   await clickText('.ob-save-dialog button[type=submit]', 'Save to journal');
   await until(() => evaluate("!document.querySelector('.ob-save-dialog') && Number([...document.querySelectorAll('.ob-header nav button')].find(e=>e.querySelector('span')?.textContent==='Journal')?.querySelector('i')?.textContent)>=1"), 'observation saved through the UI');
@@ -279,6 +279,7 @@ try {
 
   const deep = { family: 'mandelbrot', center: { re: '0', im: '1' }, span: '1e-60', julia: { re: '0', im: '1' }, iterations: 1024, palette: 'aurora' };
   await navigate({ scene: 'mandelbrot', center: [0, 1], scale: 1e-7, quality: 'low', iterations: 1024, autoRotate: false }, deep);
+  assert.equal(await evaluate("document.querySelector('.ob-context-active')?.textContent"), 'Mandelbrot set', 'A custom shared view must use its own family title.');
   await settledPlane(); results.deep = await visibleImage('precision');
   assert.ok(await evaluate("document.querySelector('.ob-statusbar').innerText.includes('Perturbation')"));
   await snap('02-deep-precision');
@@ -291,6 +292,11 @@ try {
   assert.notEqual(moved.exact.center.im, '1');
   assert.equal(Number(moved.exact.center.im), 1, 'The serialized coordinate retains information below binary64 resolution.');
   results.deepNavigated = await visibleImage('precision', results.deep.hash);
+  await clickLabel('Reset view (R)');
+  await settledPlane();
+  const resetSnapshot = await sharedPayload();
+  assert.deepEqual(resetSnapshot.exact.center, deep.center, 'Reset returns to the shared starting coordinates.');
+  assert.equal(resetSnapshot.exact.span, deep.span, 'Reset preserves the shared starting scale.');
 
   // Keep visual evidence in the same real user flow and ephemeral CI browser profile.
   if (screenshots) {

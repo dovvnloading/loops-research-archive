@@ -1133,14 +1133,15 @@
 }
 @media (max-width: 760px) {
   .journal-workspace {
-    padding: 30px 20px 90px;
+    padding: 22px 20px 90px;
   }
   .journal-workspace .journal-header h1 {
     font-size: 33px;
+    margin: 10px 0 8px;
   }
   .journal-workspace .journal-header {
-    gap: 20px;
-    margin-bottom: 25px;
+    gap: 14px;
+    margin-bottom: 18px;
   }
   .journal-workspace .journal-header p {
     font-size: 12px;
@@ -1158,9 +1159,9 @@
   .journal-workspace .journal-summary {
     flex-wrap: wrap;
     column-gap: 24px;
-    row-gap: 18px;
-    padding: 18px 0;
-    margin-bottom: 22px;
+    row-gap: 12px;
+    padding: 14px 0;
+    margin-bottom: 18px;
   }
   .journal-workspace .journal-summary > div {
     gap: 7px;
@@ -1176,6 +1177,7 @@
   .journal-workspace .journal-toolbar {
     flex-wrap: wrap;
     gap: 9px;
+    margin-bottom: 20px;
   }
   .journal-workspace .journal-search {
     flex-basis: 100%;
@@ -1346,7 +1348,7 @@
     padding-right: 14px;
   }
   .journal-workspace .journal-summary {
-    gap: 16px;
+    column-gap: 16px;
   }
   .journal-workspace .journal-summary > div > span {
     font-size: 8px;

@@ -101,6 +101,44 @@ const NAV: { id: StudioWorkspace; label: string; Icon: typeof Compass }[] = [
   { id: 'research', label: 'Research', Icon: BookOpen },
 ];
 const SESSION_KEY = 'loops.observatory.session.v2';
+function destinationForView(
+  value: Pick<JournalPayload, 'engine' | 'exact'>,
+  title?: string,
+): Destination {
+  const known = DESTINATIONS.find(
+    (d) =>
+      JSON.stringify(d.engine) === JSON.stringify(value.engine) &&
+      JSON.stringify(d.exact) === JSON.stringify(value.exact),
+  );
+  if (known && !title) return known;
+  const related =
+    DESTINATIONS.find((d) => d.engine.scene === value.engine.scene) ?? STARTING_DESTINATION;
+  const names: Record<EngineState['scene'], string> = {
+    mandelbulb: 'Mandelbulb',
+    mandelbox: 'Mandelbox',
+    quaternion: 'Quaternion Julia',
+    mandelbrot: 'Mandelbrot set',
+    julia: 'Julia set',
+    landscape: 'Escape landscape',
+  };
+  return {
+    ...related,
+    id: `custom-${value.engine.scene}`,
+    title: title?.trim() || names[value.engine.scene],
+    subtitle: title
+      ? `${names[value.engine.scene]} · saved observation`
+      : isPlane(value.engine.scene)
+        ? 'Your exact exploration window'
+        : 'Your starting view',
+    description:
+      'This view has its own starting coordinates and rendering settings. Change one variable, save an observation, and compare what happens. Reset returns to this starting view.',
+    question: isPlane(value.engine.scene)
+      ? 'Which structures persist as you change the scale or iteration budget?'
+      : 'Which features change when you vary the model while keeping the camera fixed?',
+    engine: structuredClone(value.engine),
+    exact: structuredClone(value.exact),
+  };
+}
 const safeWorkspace = (): StudioWorkspace => {
   const hash =
     new URLSearchParams(location.search).get('workspace') || location.hash.slice(1).split('?')[0];
@@ -172,10 +210,8 @@ export default function App() {
   const [engine, setEngine] = useState<EngineState>(initial.payload.engine),
     [exact, setExact] = useState<ExactView>(initial.payload.exact),
     [workspace, setWorkspace] = useState<StudioWorkspace>(safeWorkspace);
-  const [destinationId, setDestinationId] = useState(
-      () =>
-        DESTINATIONS.find((d) => d.engine.scene === initial.payload.engine.scene)?.id ??
-        'eightfold',
+  const [originDestination, setOriginDestination] = useState<Destination>(() =>
+      destinationForView(initial.payload),
     ),
     [modal, setModal] = useState<Modal>(null),
     [libraryOpen, setLibraryOpen] = useState(() => innerWidth > 1150),
@@ -225,10 +261,13 @@ export default function App() {
   const manifest = useData<{ source_commit: string; archive_files: number }>('manifest.json');
   const plane = isPlane(engine.scene),
     volume = ['mandelbulb', 'mandelbox', 'quaternion'].includes(engine.scene);
-  const destination =
-    DESTINATIONS.find((d) => d.id === destinationId && d.engine.scene === engine.scene) ??
-    DESTINATIONS.find((d) => d.engine.scene === engine.scene) ??
-    STARTING_DESTINATION;
+  const destination = useMemo(
+    () =>
+      originDestination.engine.scene === engine.scene
+        ? originDestination
+        : destinationForView({ engine, exact }),
+    [originDestination, engine, exact],
+  );
   const payload = useMemo<JournalPayload>(
     () => ({
       engine,
@@ -251,6 +290,7 @@ export default function App() {
     const p = validateJournalPayload(value);
     setEngine(p.engine);
     setExact(p.exact);
+    setOriginDestination(destinationForView(p, entry?.title));
     setLinkedView((v) => ({ ...v, julia: p.exact.julia }));
     setRenderError('');
     setPrecisionStats(null);
@@ -308,7 +348,9 @@ export default function App() {
     (patch: Partial<EngineState>) => {
       const next = validateState({ ...engine, ...patch });
       setEngine(next);
-      setExact(exactViewFromEngine(next));
+      const nextExact = exactViewFromEngine(next);
+      setExact(nextExact);
+      setOriginDestination(destinationForView({ engine: next, exact: nextExact }));
       setLinked(false);
       setRenderError('');
     },
@@ -318,7 +360,7 @@ export default function App() {
     (d: Destination) => {
       setEngine(structuredClone(d.engine));
       setExact(structuredClone(d.exact));
-      setDestinationId(d.id);
+      setOriginDestination(d);
       setLinkedView((v) => ({ ...v, julia: d.exact.julia }));
       setLinked(false);
       setPrecisionStats(null);
@@ -365,7 +407,7 @@ export default function App() {
     if (exact.family === 'julia') {
       setLinkedView({ ...exact, family: 'julia' });
       changeExact({ ...exact, family: 'mandelbrot', center: { re: '-0.5', im: '0' }, span: '3.2' });
-      setDestinationId('mandelbrot');
+      setOriginDestination(DESTINATIONS.find((d) => d.id === 'mandelbrot')!);
     } else setLinkedView((v) => ({ ...v, julia: exact.julia, palette: exact.palette }));
     setLinked(true);
   }, [plane, choose, exact, changeExact]);
@@ -492,14 +534,24 @@ export default function App() {
     iterations?: number;
     title?: string;
   }) => {
-    changeExact({
+    const nextExact: ExactView = {
       ...exact,
       family: target.family ?? 'mandelbrot',
       center: { re: target.re, im: target.im },
       span: target.span,
       iterations: target.iterations ?? 1024,
+    };
+    changeExact(nextExact);
+    const nextEngine = validateState({
+      ...engine,
+      scene: nextExact.family,
+      center: [Number(target.re), Number(target.im)],
+      scale: Math.max(1e-7, Number(target.span)),
+      julia: [Number(nextExact.julia.re), Number(nextExact.julia.im)],
+      iterations: Math.min(4096, nextExact.iterations),
+      palette: nextExact.palette === 'aurora' ? 'glacier' : nextExact.palette,
     });
-    setDestinationId('mandelbrot');
+    setOriginDestination(destinationForView({ engine: nextEngine, exact: nextExact }));
     setLinked(false);
     navigate('explore');
     if (target.title) notify(target.title);
@@ -829,9 +881,11 @@ export default function App() {
                         : engine.scene === 'landscape'
                           ? 'ESCAPE-TIME TOPOGRAPHY'
                           : 'MATHEMATICS IN THREE DIMENSIONS'}{' '}
-                      <span>
-                        / {String(DESTINATIONS.indexOf(destination) + 1).padStart(2, '0')}
-                      </span>
+                      {DESTINATIONS.includes(destination) && (
+                        <span>
+                          / {String(DESTINATIONS.indexOf(destination) + 1).padStart(2, '0')}
+                        </span>
+                      )}
                     </span>
                     <h1>
                       {destination.title}

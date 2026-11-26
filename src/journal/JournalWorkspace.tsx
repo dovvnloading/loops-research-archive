@@ -669,15 +669,15 @@ export function JournalWorkspace({ onRestore, onNew, onBranch }: JournalWorkspac
       <div className="journal-summary">
         <div>
           <strong>{entries.length.toString().padStart(2, '0')}</strong>
-          <span>observations</span>
+          <span>{entries.length === 1 ? 'observation' : 'observations'}</span>
         </div>
         <div>
           <strong>{families.toString().padStart(2, '0')}</strong>
-          <span>fractal families</span>
+          <span>{families === 1 ? 'fractal family' : 'fractal families'}</span>
         </div>
         <div>
           <strong>{branchCount.toString().padStart(2, '0')}</strong>
-          <span>branches explored</span>
+          <span>{branchCount === 1 ? 'branch explored' : 'branches explored'}</span>
         </div>
         <span className={`journal-storage journal-storage-${mode}`}>
           <span />{' '}

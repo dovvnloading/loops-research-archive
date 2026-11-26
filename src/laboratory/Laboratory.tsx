@@ -956,13 +956,26 @@ function OrbitPlot({ analysis }: { analysis: OrbitAnalysis }) {
           <circle cx={cx + p.re * scale} cy={cy - p.im * scale} r={3} fill="#8cdfca" />
         </g>
       ))}
-      <text x={width - 38} y={cy - 8} fill="#8594a8" fontSize={11}>
+      <text
+        className="lab-orbit-axis-name"
+        x={width - 18}
+        y={cy - 8}
+        textAnchor="end"
+        fill="#8594a8"
+        fontSize={11}
+      >
         Re(z)
       </text>
-      <text x={cx + 8} y={28} fill="#8594a8" fontSize={11}>
+      <text className="lab-orbit-axis-name" x={cx + 8} y={28} fill="#8594a8" fontSize={11}>
         Im(z)
       </text>
-      <text x={cx + 2 * scale - 12} y={cy + 24} fill="#5e6f85" fontSize={10}>
+      <text
+        className="lab-orbit-radius-label"
+        x={cx + 2 * scale - 12}
+        y={cy + 24}
+        fill="#5e6f85"
+        fontSize={10}
+      >
         |z| = 2
       </text>
     </svg>
@@ -1159,7 +1172,7 @@ function OrbitMicroscope({
               <span>First and final 128 samples</span>
             </div>
           </div>
-          <div className="lab-stat-grid">
+          <div className="lab-stat-grid lab-orbit-stats">
             <Stat
               label="RETURN PERIOD"
               value={analysis.period ?? (analysis.escapeIteration ? 'Escaped' : 'Unresolved')}
