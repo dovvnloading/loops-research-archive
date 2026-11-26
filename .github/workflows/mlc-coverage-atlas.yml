@@ -1,12 +1,12 @@
 name: MLC coverage atlas
 on:
   push:
-    branches: [frontier/mlc-coverage-atlas-20261126]
+    branches: [main, frontier/mlc-coverage-atlas-20261126]
   pull_request:
   workflow_dispatch:
 
 permissions:
-  contents: write
+  contents: read
 
 jobs:
   atlas:
@@ -20,21 +20,11 @@ jobs:
       - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
       - name: Check documentary grid
         run: python -B verify.py
-      - name: Fingerprint source PDFs
-        if: github.ref == 'refs/heads/frontier/mlc-coverage-atlas-20261126' && github.event_name != 'pull_request'
-        run: python -B verify.py --lock
-      - name: Validate committed provenance on PR
-        if: github.event_name == 'pull_request'
+      - name: Validate committed provenance
         run: python -B verify.py --check-lock
-      - name: Commit source fingerprints on audit branch only
+      - name: Re-fetch and verify exact source lock on audit branch
         if: github.ref == 'refs/heads/frontier/mlc-coverage-atlas-20261126' && github.event_name != 'pull_request'
         run: |
+          python -B verify.py --lock
           git config --global --add safe.directory "$GITHUB_WORKSPACE"
-          cd "$GITHUB_WORKSPACE"
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add research/frontier/mlc_coverage_atlas_20261126/sources.json research/frontier/mlc_coverage_atlas_20261126/NOTE.md
-          if ! git diff --cached --quiet; then
-            git commit -m "Lock MLC atlas source PDF fingerprints"
-            git push origin HEAD:refs/heads/frontier/mlc-coverage-atlas-20261126
-          fi
+          git diff --exit-code -- sources.json NOTE.md

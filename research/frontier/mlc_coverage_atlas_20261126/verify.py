@@ -48,7 +48,9 @@ def expected_cells():
         if regime not in ("S", "mixed_eventually_S"):
             tests += ["k"]
         if regime in ("P", "mixed_eventually_P"):
-            tests += ["dec", "mol"]
+            tests += ["dec"]
+        if regime in ("P", "mixed_eventually_P", "mixed_recurrent"):
+            tests += ["mol"]
         if regime not in ("S", "mixed_eventually_S"):
             tests += ["real_essential"]
         if regime in ("S", "mixed_eventually_S"):
@@ -60,7 +62,7 @@ def expected_cells():
             prefix = (regime, period, locus, rotation)
             for i, test in enumerate(tests):
                 theorem = PREDICATES[test]
-                reported = test in ("ee", "kkl")
+                reported = test in ("k", "qg", "ee", "kkl")
                 yield prefix + (test,), tests[:i], [] if reported else [theorem, "TUN"], \
                     [theorem] if reported else []
             yield prefix + ("residual",), tests, [], ["DKL"] if locus == "real" else []
@@ -70,6 +72,7 @@ def validate(a):
     t, cells = a["theorems"], a["classes"]
     assert set(t) == CATALOG
     assert {k: v["theorem"] for k, v in a["grid"]["predicates"].items()} == PREDICATES
+    assert tuple(a["grid"]["priority"]) == tuple(PREDICATES) + ("residual",)
     assert tuple(a["grid"]["regimes"]) == REGIMES
     assert tuple(a["grid"]["periods"]) == PERIODS
     assert tuple(a["grid"]["loci"]) == LOCI
@@ -93,6 +96,10 @@ def validate(a):
             assert t[k]["source_status"] == "statement_verified"
         for k in rep:
             assert t[k]["kind"] == "reported_mlc"
+    assert {k for k, x in t.items() if x["source_status"] == "UNVERIFIED"} == {"GS", "DKL"}
+    assert {k for k, x in t.items() if x["kind"] == "reported_mlc"} == {"K", "CS", "EE", "KKL", "DKL"}
+    assert t["survey"]["source_status"] == "statement_verified_html"
+    assert all(x["audit_verdict"].strip() for x in t.values())
     for source in t.values():
         assert all(source[k] for k in ("author", "title", "venue", "locator",
                                       "hypotheses", "conclusion", "kind", "source_status"))
@@ -110,7 +117,33 @@ def validate(a):
         if q >= 6:
             assert P > q and P*P > q
         P *= q
-    return len(cells), sum(x["status"] == "covered" for x in cells.values())
+    n, c = len(cells), sum(x["status"] == "covered" for x in cells.values())
+    check_note(a, n, c)
+    return n, c
+
+def check_note(a, n, c):
+    note = (ROOT / "NOTE.md").read_text(encoding="utf-8")
+    start, end = "<!-- audit:start -->", "<!-- audit:end -->"
+    assert note.count(start) == note.count(end) == 1
+    e = a["example"]
+    lines = [
+        f"**Audit grid:** {n} cells: {c} covered; {n-c} open.",
+        "**Audit label:** " + a["status"]["atlas"] + " / " + a["status"]["residual"] + ".",
+        f"**Candidate cell:** {e['class_id']}.",
+        f"**Candidate formula:** {e['formula']}.",
+        f"**Candidate order:** {e['order']}",
+        "",
+        "| ID | Statement status | Coverage kind | Locator | Independent verdict |",
+        "|---|---|---|---|---|",
+    ]
+    for k, x in sorted(a["theorems"].items()):
+        lines.append(f"| {k} | {x['source_status']} | {x['kind']} | {x['locator']} | {x['audit_verdict']} |")
+    assert note.split(start)[1].split(end)[0] == "\n" + "\n".join(lines) + "\n"
+    assert "`S(1/3) S(1/4) S(1/5) ...`" in note
+    assert "q_i=a+b(i-1)" in note and "by (b,a)" in note
+    assert "Problem 4.3" in note and "Problem 4.4" in note
+    assert "**Status:** imported" in note and "open (residual relative to audit)" in note
+
 
 def source_urls(a):
     return sorted(set(t["url"] for t in a["theorems"].values() if t["url"]))
@@ -157,6 +190,12 @@ def verify_lock(a):
         else:
             assert v["status"] == "UNVERIFIED" and v["sha256"] is None and v["reason"]
             assert u in note and "UNVERIFIED" in note
+    start, end = "<!-- hashes:start -->", "<!-- hashes:end -->"
+    assert note.count(start) == note.count(end) == 1
+    rows = ["", "| PDF input | SHA-256 / retrieval status |", "|---|---|"]
+    for u, v in sorted(m.items()):
+        rows.append(f"| {u} | {v['sha256'] or 'UNVERIFIED ('+v['reason']+')'} |")
+    assert note.split(start)[1].split(end)[0] == "\n" + "\n".join(rows) + "\n\n"
     return sum(v["status"] == "downloaded" for v in m.values()), len(m)
 
 def main():

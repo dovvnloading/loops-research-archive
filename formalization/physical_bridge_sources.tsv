@@ -102,9 +102,11 @@ formalization/weighted/StationaryPrefixCharge.lean	VARIABLE-EXIT
 formalization/weighted/WeightedReturn.lean	CLONE EDGE
 research/frontier/dudko_p44_molecule_20261125/source_lock.py	METADATA
 research/frontier/dudko_p44_molecule_20261125/verify.py	EXPLORATION
+research/frontier/kkl_6_25_literal_20261126/verify.py	METADATA
 research/frontier/kkl_lemma_6_24_audit_20261125/verify.py	METADATA
 research/frontier/dudko_p43_satellite_moduli_20261125/source_audit.py	METADATA
 research/frontier/dudko_p43_satellite_moduli_20261125/verify.py	EXPLORATION
+research/frontier/elephant_eyes_s8_20261126/verify.py	METADATA
 research/independent_audits/airplane_inverse_problems_20261114/chords/verify.py	DIFFRACTION LANDING
 research/independent_audits/airplane_inverse_problems_20261114/diffraction/verify_airplane_phase_retrieval.py	DIFFRACTION LANDING
 research/independent_audits/airplane_inverse_problems_20261114/markov/verify_markov.py	DIFFRACTION LANDING
