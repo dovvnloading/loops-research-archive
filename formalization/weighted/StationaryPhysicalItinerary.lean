@@ -46,7 +46,8 @@ theorem limb_inverse_preconnected (F : X → X) (D B : Set X)
   have hcov : B ⊆ F '' (D ∩ U) ∪ F '' (D ∩ V) := by
     intro w hw
     obtain ⟨z, hz, hzw⟩ := hcover (hBD hw)
-    have hzB : z ∈ D ∩ F ⁻¹' B := ⟨hz, hzw.symm ▸ hw⟩
+    have hpre : F z ∈ B := by rwa [hzw]
+    have hzB : z ∈ D ∩ F ⁻¹' B := ⟨hz, hpre⟩
     rcases hUV hzB with hu | hv
     · exact Or.inl ⟨z, ⟨hz, hu⟩, hzw⟩
     · exact Or.inr ⟨z, ⟨hz, hv⟩, hzw⟩
@@ -74,7 +75,8 @@ theorem limb_inverse_image (F : X → X) (D B : Set X)
     exact hx.2
   · intro w hw
     obtain ⟨z, hz, hzw⟩ := hcover (hBD hw)
-    exact ⟨z, ⟨hz, hzw.symm ▸ hw⟩, hzw⟩
+    have hpre : F z ∈ B := by rwa [hzw]
+    exact ⟨z, ⟨hz, hpre⟩, hzw⟩
 
 /-- The selected inverse is a whole component of the full inverse,
 not merely a connected piece inside the chosen sheet. The fixed
@@ -234,7 +236,8 @@ theorem quadratic_selected_itinerary_component (c : ℂ)
       hC.image _ (hcont.iterate n).continuousOn
     have hImgSub : (F^[n]) '' C ⊆ B := by
       rintro _ ⟨z, hz, rfl⟩
-      exact connectedComponentIn_subset _ _ hz
+      change z ∈ (F^[n]) ⁻¹' B
+      exact connectedComponentIn_subset ((F^[n]) ⁻¹' B) x hz
     have hImgMem : (F^[n]) x ∈ (F^[n]) '' C := ⟨x, hxC, rfl⟩
     have hImgComp := hImg.subset_connectedComponentIn hImgMem hImgSub
     have heq : connectedComponentIn B ((F^[n]) x) = connectedComponentIn B q :=
