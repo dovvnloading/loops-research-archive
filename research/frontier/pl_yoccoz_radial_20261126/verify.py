@@ -84,7 +84,8 @@ def main():
     period = 1
     for q, row, ql in zip(range(3, 8), rows, expected_qL, strict=True):
         period *= q
-        assert row["q"] == q and row["P"] == period and row["p"] == 1
+        # The summary p column is the parent period, not the rotation numerator.
+        assert row["q"] == q and row["P"] == period and row["p"] == period // q
         assert abs(float(row["qL"]) - ql) < 1e-10
         x, y = map(float, row["max_z"])
         assert abs(q * math.hypot(x, y) - ql) < 2e-10 and y < 0
