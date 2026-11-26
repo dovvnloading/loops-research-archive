@@ -2046,7 +2046,11 @@
         "finite_obstacle_split_iff",
         "least_carrier_obstruction_criterion",
         "hereditary_carrier_intersection",
-        "quadratic_critical_arbitrary_intersection"
+        "quadratic_critical_arbitrary_intersection",
+        "quadratic_image_loss_iff_conflicting_signs",
+        "quadratic_image_intersection_iff_pairwise",
+        "quadratic_reflection_component",
+        "quadratic_nondirected_noncritical_counterexample"
       ]
     },
     "obligations": [

@@ -396,4 +396,197 @@ theorem quadratic_critical_arbitrary_intersection {ι : Type*} [Nonempty ι]
         exact LoopsSaturatedTelescope.quadratic_critical_component_symmetric c (D i)
           hci w hw
 
+
+/-- For a quadratic map, loss of a common inverse point at an arbitrary
+intersection is exactly a pair of incompatible sign choices. The
+obstruction is witnessed by two actual carriers, not by an abstract graph. -/
+theorem quadratic_image_loss_iff_conflicting_signs {ι : Type*} [Nonempty ι]
+    (c y : ℂ) (K : ι → Set ℂ)
+    (hy : y ∈ ⋂ i, (fun z : ℂ => z^2+c) '' K i) :
+    y ∉ (fun z : ℂ => z^2+c) '' (⋂ i, K i) ↔
+      ∃ i j z, z^2+c=y ∧ z ∈ K i ∧ -z ∉ K i ∧ -z ∈ K j ∧ z ∉ K j ∧ z ≠ -z := by
+  classical
+  constructor
+  · intro hbad
+    let i₀ : ι := Classical.choice (inferInstance : Nonempty ι)
+    obtain ⟨z, hz, hzy⟩ := mem_iInter.mp hy i₀
+    have hznot : ¬ ∀ i, z ∈ K i := fun h => hbad ⟨z, mem_iInter.mpr h, hzy⟩
+    push_neg at hznot
+    obtain ⟨j, hj⟩ := hznot
+    obtain ⟨w, hw, hwy⟩ := mem_iInter.mp hy j
+    have hnegj : -z ∈ K j := by
+      rcases (LoopsSaturatedTelescope.quadratic_eq_iff c w z).mp (hwy.trans hzy.symm)
+        with heq | heq
+      · rw [heq] at hw
+        exact False.elim (hj hw)
+      · rw [heq] at hw
+        exact hw
+    have hnzy : (-z)^2+c=y := by
+      calc
+        (-z)^2+c = z^2+c := by ring
+        _ = y := hzy
+    have hnegnot : ¬ ∀ i, -z ∈ K i :=
+      fun h => hbad ⟨-z, mem_iInter.mpr h, hnzy⟩
+    push_neg at hnegnot
+    obtain ⟨i, hi⟩ := hnegnot
+    obtain ⟨v, hv, hvy⟩ := mem_iInter.mp hy i
+    have hzi : z ∈ K i := by
+      rcases (LoopsSaturatedTelescope.quadratic_eq_iff c v z).mp (hvy.trans hzy.symm)
+        with heq | heq
+      · rw [heq] at hv
+        exact hv
+      · rw [heq] at hv
+        exact False.elim (hi hv)
+    refine ⟨i, j, z, hzy, hzi, hi, hnegj, hj, ?_⟩
+    intro heq
+    rw [← heq] at hnegj
+    exact hj hnegj
+  · rintro ⟨i, j, z, hzy, _, hni, _, hnj, _⟩ ⟨w, hw, hwy⟩
+    rcases (LoopsSaturatedTelescope.quadratic_eq_iff c w z).mp (hwy.trans hzy.symm)
+      with heq | heq
+    · have hwj := mem_iInter.mp hw j
+      rw [heq] at hwj
+      exact hnj hwj
+    · have hwi := mem_iInter.mp hw i
+      rw [heq] at hwi
+      exact hni hwi
+
+/-- Pairwise inverse compatibility is necessary and sufficient for
+image/intersection commutation for the actual quadratic map, even for
+an arbitrary infinite family with no directedness or compactness. -/
+theorem quadratic_image_intersection_iff_pairwise {ι : Type*} [Nonempty ι]
+    (c : ℂ) (K : ι → Set ℂ) :
+    (fun z : ℂ => z^2+c) '' (⋂ i, K i) = (⋂ i, (fun z : ℂ => z^2+c) '' K i) ↔
+      ∀ y ∈ (⋂ i, (fun z : ℂ => z^2+c) '' K i), ∀ i j,
+        y ∈ (fun z : ℂ => z^2+c) '' (K i ∩ K j) := by
+  constructor
+  · intro h y hy i j
+    rw [← h] at hy
+    obtain ⟨z, hz, hzy⟩ := hy
+    exact ⟨z, ⟨mem_iInter.mp hz i, mem_iInter.mp hz j⟩, hzy⟩
+  · intro hp
+    apply Subset.antisymm
+    · rintro y ⟨z, hz, rfl⟩
+      exact mem_iInter.mpr fun i => ⟨z, mem_iInter.mp hz i, rfl⟩
+    · intro y hy
+      by_contra hbad
+      obtain ⟨i, j, z, hzy, _, hni, _, hnj, _⟩ :=
+        (quadratic_image_loss_iff_conflicting_signs c y K hy).mp hbad
+      obtain ⟨w, hw, hwy⟩ := hp y hy i j
+      rcases (LoopsSaturatedTelescope.quadratic_eq_iff c w z).mp (hwy.trans hzy.symm)
+        with heq | heq
+      · have hwj := hw.2
+        rw [heq] at hwj
+        exact hnj hwj
+      · have hwi := hw.1
+        rw [heq] at hwi
+        exact hni hwi
+
+/-- A compact connected carrier disjoint from its reflected copy is
+the entire selected quadratic pullback component over its own image. -/
+theorem quadratic_reflection_component (c x : ℂ) (K : Set ℂ)
+    (hc : IsCompact K) (hp : IsPreconnected K) (hx : x ∈ K)
+    (hd : Disjoint K ((fun z : ℂ => -z) '' K)) :
+    connectedComponentIn ((fun z : ℂ => z^2+c) ⁻¹'
+      ((fun z : ℂ => z^2+c) '' K)) x = K := by
+  let C := connectedComponentIn ((fun z : ℂ => z^2+c) ⁻¹'
+    ((fun z : ℂ => z^2+c) '' K)) x
+  have hxc : x ∈ C := mem_connectedComponentIn
+    (show x ∈ (fun z : ℂ => z^2+c) ⁻¹' ((fun z : ℂ => z^2+c) '' K)
+      from ⟨x, hx, rfl⟩)
+  change C = K
+  apply Subset.antisymm
+  · refine connected_obstacle_forced K ((fun z : ℂ => -z) '' K) C hc.isClosed
+      (hc.image continuous_id.neg).isClosed hd isPreconnected_connectedComponentIn
+      ?_ ⟨x, hx, hxc⟩
+    intro z hz
+    obtain ⟨w, hw, h⟩ := connectedComponentIn_subset
+      ((fun z : ℂ => z^2+c) ⁻¹' ((fun z : ℂ => z^2+c) '' K)) x hz
+    rcases (LoopsSaturatedTelescope.quadratic_eq_iff c z w).mp h.symm with heq | heq
+    · exact Or.inl (heq.symm ▸ hw)
+    · exact Or.inr ⟨w, hw, heq.symm⟩
+  · apply hp.subset_connectedComponentIn hx
+    intro z hz
+    exact ⟨z, hz, rfl⟩
+
+/-- Actual noncritical obstruction: the two compact diagonal line
+segments from 1 to I and -I have a common anchor and singleton
+intersection. Each is an entire selected square-map pullback component
+over its own image, yet the common target -1 has no common lift. -/
+theorem quadratic_nondirected_noncritical_counterexample :
+    ∃ A B : Set ℂ, IsCompact A ∧ IsCompact B ∧ IsPreconnected A ∧ IsPreconnected B ∧
+      (1 : ℂ) ∈ A ∩ B ∧
+      A = connectedComponentIn ((fun z : ℂ => z^2) ⁻¹' ((fun z : ℂ => z^2) '' A)) 1 ∧
+      B = connectedComponentIn ((fun z : ℂ => z^2) ⁻¹' ((fun z : ℂ => z^2) '' B)) 1 ∧
+      A ∩ B = ({1} : Set ℂ) ∧
+      (-1 : ℂ) ∈ ((fun z : ℂ => z^2) '' A) ∩ ((fun z : ℂ => z^2) '' B) ∧
+      (-1 : ℂ) ∉ (fun z : ℂ => z^2) '' (A ∩ B) := by
+  let g (s : ℂ) (t : ℝ) : ℂ := 1 - (t : ℂ) + (t : ℂ)*s
+  let A := g Complex.I '' Icc (0 : ℝ) 1
+  let B := g (-Complex.I) '' Icc (0 : ℝ) 1
+  have hg (s : ℂ) : Continuous (g s) :=
+    (continuous_const.sub Complex.continuous_ofReal).add
+      (Complex.continuous_ofReal.mul continuous_const)
+  have hAc : IsCompact A := isCompact_Icc.image (hg Complex.I)
+  have hBc : IsCompact B := isCompact_Icc.image (hg (-Complex.I))
+  have hAp : IsPreconnected A := (isConnected_Icc (by norm_num : (0 : ℝ) ≤ 1)).isPreconnected.image
+    _ (hg Complex.I).continuousOn
+  have hBp : IsPreconnected B := (isConnected_Icc (by norm_num : (0 : ℝ) ≤ 1)).isPreconnected.image
+    _ (hg (-Complex.I)).continuousOn
+  have hA1 : (1 : ℂ) ∈ A := ⟨0, by simp, by simp [g]⟩
+  have hB1 : (1 : ℂ) ∈ B := ⟨0, by simp, by simp [g]⟩
+  have hAI : Complex.I ∈ A := ⟨1, by simp, by simp [g]⟩
+  have hBI : -Complex.I ∈ B := ⟨1, by simp, by simp [g]⟩
+  have hAcoord {z : ℂ} (hz : z ∈ A) : z.re+z.im=1 := by
+    obtain ⟨t, _, rfl⟩ := hz
+    simp [g, Complex.add_re, Complex.sub_re, Complex.mul_re, Complex.add_im,
+      Complex.sub_im, Complex.mul_im] <;> ring
+  have hBcoord {z : ℂ} (hz : z ∈ B) : z.re-z.im=1 := by
+    obtain ⟨t, _, rfl⟩ := hz
+    simp [g, Complex.add_re, Complex.sub_re, Complex.mul_re, Complex.add_im,
+      Complex.sub_im, Complex.mul_im, Complex.neg_re, Complex.neg_im] <;> ring
+  have hdA : Disjoint A ((fun z : ℂ => -z) '' A) := by
+    apply Set.disjoint_left.mpr
+    rintro z hz ⟨w, hw, rfl⟩
+    have h1 := hAcoord hz
+    have h2 := hAcoord hw
+    simp only [Complex.neg_re, Complex.neg_im] at h1
+    linarith
+  have hdB : Disjoint B ((fun z : ℂ => -z) '' B) := by
+    apply Set.disjoint_left.mpr
+    rintro z hz ⟨w, hw, rfl⟩
+    have h1 := hBcoord hz
+    have h2 := hBcoord hw
+    simp only [Complex.neg_re, Complex.neg_im] at h1
+    linarith
+  have hAB : A ∩ B = ({1} : Set ℂ) := by
+    apply Subset.antisymm
+    · intro z hz
+      have h1 := hAcoord hz.1
+      have h2 := hBcoord hz.2
+      apply mem_singleton_iff.mpr
+      apply Complex.ext
+      · simp only [Complex.one_re]
+        linarith
+      · simp only [Complex.one_im]
+        linarith
+    · intro z hz
+      rw [mem_singleton_iff.mp hz]
+      exact ⟨hA1, hB1⟩
+  have hsA : A = connectedComponentIn ((fun z : ℂ => z^2) ⁻¹'
+      ((fun z : ℂ => z^2) '' A)) 1 := by
+    simpa only [add_zero] using (quadratic_reflection_component 0 1 A hAc hAp hA1 hdA).symm
+  have hsB : B = connectedComponentIn ((fun z : ℂ => z^2) ⁻¹'
+      ((fun z : ℂ => z^2) '' B)) 1 := by
+    simpa only [add_zero] using (quadratic_reflection_component 0 1 B hBc hBp hB1 hdB).symm
+  refine ⟨A, B, hAc, hBc, hAp, hBp, ⟨hA1, hB1⟩, hsA, hsB, hAB, ?_, ?_⟩
+  · refine ⟨⟨Complex.I, hAI, Complex.I_sq⟩, ⟨-Complex.I, hBI, ?_⟩⟩
+    calc
+      (-Complex.I)^2 = Complex.I^2 := by ring
+      _ = -1 := Complex.I_sq
+  · rintro ⟨z, hz, hzsq⟩
+    rw [hAB] at hz
+    rw [mem_singleton_iff.mp hz] at hzsq
+    norm_num at hzsq
+
 end LoopsLeastCarrier
