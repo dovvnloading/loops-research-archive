@@ -42,9 +42,31 @@ def compact(raw):
     return out
 
 
+
+def audit_raw(raw):
+    """Independent-review checks of the preregistered levels and raw diagnostics."""
+    m.mp.dps = 80
+    for name, qs in (("linear",[3,4,5,6,7]),("bounded",[3]*5),("square",[3,9,81])):
+        a = raw[name]
+        for tag, rows in (("low",a["low_levels"]),("high",a["levels"])):
+            assert [r["q"] for r in rows] == qs
+            samples = [s for r in rows for s in r["samples"]]
+            assert len(samples) == 3*len(qs)*(len(qs)+1)
+            assert all(s["ply_integer_shifts"] == [0] for s in samples)
+            assert all(r["seed_factor"] == "1" for r in rows)
+            assert all(r["max_sample"] == f'minusI-{r["i"]}' for r in rows)
+            assert all(m.mpf(r["root_gap"]) > 0 and m.mpf(r["center_gap"]) > 0 for r in rows)
+            assert all(m.mpf(r["attachment_ratios"][1]) < m.mpf("0.0002") and m.mpf(r["attachment_ratios"][1])/m.mpf(r["attachment_ratios"][0]) < m.mpf("0.02") for r in rows)
+            print(name, tag, "min dividing gap", min(m.mpf(s["primitive_gap"]) for s in samples),
+                  "max disk excess", max(m.mpf(s["disk_excess"]) for s in samples),
+                  "max final attachment ratio", max(m.mpf(r["attachment_ratios"][1]) for r in rows))
+        print(name, "stored L precision equality", [r["L"] for r in a["levels"]] == [r["L"] for r in a["low_levels"]],
+              "fit precision equality", a["fit_S"] == a["low_fit_S"] and a["fit_q"] == a["low_fit_q"])
+
+
 def main():
     p=argparse.ArgumentParser(); p.add_argument('raw',type=Path); p.add_argument('output',type=Path)
-    a=p.parse_args(); d=compact(json.loads(a.raw.read_text()))
+    a=p.parse_args(); raw=json.loads(a.raw.read_text()); audit_raw(raw); d=compact(raw)
     # Keep each measurement row on one line, preserving the JSON schema.
     lines=['{','  "columns": '+json.dumps(d['columns'])+',','  "addresses": {']
     for j,(name,v) in enumerate(d['addresses'].items()):
