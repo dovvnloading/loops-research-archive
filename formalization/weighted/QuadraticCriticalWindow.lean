@@ -169,7 +169,7 @@ theorem positive_iterate_even (c z : ℂ) (j : ℕ) (hj : 0 < j) :
   | zero => omega
   | succ j =>
     rw [orbit_add c z j 1, orbit_add c (-z) j 1]
-    simp [returnOrbit, neg_sq]
+    simp [returnOrbit]
 
 /-- Every open complex domain containing the critical point contains a
 nontrivial reflected pair. -/
@@ -201,6 +201,8 @@ theorem reached_projection_collision (c : ℂ) (N j : ℕ) (U A : Set ℂ)
   obtain ⟨t, ht, hnt, hne⟩ := open_contains_reflected_pair A hA h0
   obtain ⟨u, hu, hut⟩ := hsurj ht
   obtain ⟨v, hv, hvt⟩ := hsurj hnt
+  change returnOrbit c u (N-j) = t at hut
+  change returnOrbit c v (N-j) = -t at hvt
   have hclock (z : ℂ) : returnOrbit c z N =
       returnOrbit c (returnOrbit c z (N-j)) j :=
     (congrArg (returnOrbit c z) (show N = j + (N-j) by omega)).trans
@@ -212,6 +214,67 @@ theorem reached_projection_collision (c : ℂ) (N j : ℕ) (U A : Set ℂ)
       ((congrArg (fun z => returnOrbit c z (N-j)) he).trans hvt)
   · rw [hclock u, hclock v, hut, hvt]
     exact positive_iterate_even c t j hj
+
+/-- The residual clock is a literal left inverse to the reached address.
+It recovers the source even in a window where the equal-clock projection
+is ramified. -/
+theorem reached_residual_identity (c : ℂ) (N j : ℕ)
+    (phi : ℂ → ℂ) (A : Set ℂ) (hjN : j ≤ N)
+    (hsection : ∀ x ∈ A, returnOrbit c (phi x) N = x)
+    (x : ℂ) (hx : x ∈ A) :
+    returnOrbit c (returnOrbit c (phi x) j) (N-j) = x := by
+  rw [← orbit_add c (phi x) (N-j) j, show N-j+j = N by omega]
+  exact hsection x hx
+
+/-- The reached addresses themselves remain injective throughout the
+inverse section, even though the equal-clock projection need not be. -/
+theorem reached_address_injective (c : ℂ) (N j : ℕ)
+    (phi : ℂ → ℂ) (A : Set ℂ) (hjN : j ≤ N)
+    (hsection : ∀ x ∈ A, returnOrbit c (phi x) N = x) :
+    InjOn (fun x => returnOrbit c (phi x) j) A := by
+  intro x hx y hy hxy
+  exact (reached_residual_identity c N j phi A hjN hsection x hx).symm.trans
+    ((congrArg (fun z => returnOrbit c z (N-j)) hxy).trans
+      (reached_residual_identity c N j phi A hjN hsection y hy))
+
+/-- The equal-clock projection on a reached address is exactly the root
+iterate on its original source point. No degree premise is used. -/
+theorem reached_projection_identity (c : ℂ) (N j : ℕ)
+    (phi : ℂ → ℂ) (A : Set ℂ)
+    (hsection : ∀ x ∈ A, returnOrbit c (phi x) N = x)
+    (x : ℂ) (hx : x ∈ A) :
+    returnOrbit c (returnOrbit c (phi x) j) N = returnOrbit c x j := by
+  calc
+    returnOrbit c (returnOrbit c (phi x) j) N =
+        returnOrbit c (phi x) (N+j) := (orbit_add c (phi x) N j).symm
+    _ = returnOrbit c (phi x) (j+N) := by rw [Nat.add_comm N j]
+    _ = returnOrbit c (returnOrbit c (phi x) N) j := orbit_add c (phi x) j N
+    _ = returnOrbit c x j := by rw [hsection x hx]
+
+/-- Full fiber transport: the source fiber of the root iterate is in
+bijection with the reached fiber of the equal-clock projection. This
+keeps distinct source addresses and transports the actual collisions,
+not just a numerical degree word. -/
+theorem reached_fiber_bijOn (c : ℂ) (N j : ℕ)
+    (phi : ℂ → ℂ) (A : Set ℂ) (w : ℂ) (hjN : j ≤ N)
+    (hsection : ∀ x ∈ A, returnOrbit c (phi x) N = x) :
+    BijOn (fun x => returnOrbit c (phi x) j)
+      {x ∈ A | returnOrbit c x j = w}
+      {y ∈ (fun x => returnOrbit c (phi x) j) '' A | returnOrbit c y N = w} := by
+  refine ⟨?_, ?_, ?_⟩
+  · intro x hx
+    exact ⟨⟨x, hx.1, rfl⟩,
+      (reached_projection_identity c N j phi A hsection x hx.1).trans hx.2⟩
+  · intro x hx y hy he
+    exact reached_address_injective c N j phi A hjN hsection hx.1 hy.1 he
+  · intro y hy
+    obtain ⟨x, hx, hxy⟩ := hy.1
+    refine ⟨x, ⟨hx, ?_⟩, hxy⟩
+    calc
+      returnOrbit c x j = returnOrbit c (returnOrbit c (phi x) j) N :=
+        (reached_projection_identity c N j phi A hsection x hx).symm
+      _ = returnOrbit c y N := congrArg (fun z => returnOrbit c z N) hxy
+      _ = w := hy.2
 
 /-- Direct native formulation. Any N-step inverse section on the open
 critical root, at every intermediate positive time j ≤ N, forces a

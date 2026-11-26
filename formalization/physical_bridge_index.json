@@ -1979,6 +1979,10 @@
         "positive_iterate_even",
         "open_contains_reflected_pair",
         "reached_projection_collision",
+        "reached_residual_identity",
+        "reached_address_injective",
+        "reached_projection_identity",
+        "reached_fiber_bijOn",
         "central_window_no_univalent_cylinder",
         "central_window_reached_critical_point"
       ]
