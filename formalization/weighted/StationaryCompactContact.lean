@@ -1,6 +1,7 @@
 import StationarySeparatorTransport
 import StationaryMultiInterface
 import TerminalFiberExclusion
+import SaturatedTelescope
 
 /-!
 # Quadratic compact bypass exclusion from exterior closure contact
@@ -875,5 +876,129 @@ theorem quadratic_filled_separator_of_emptyInterior_clearance
       (LoopsStationaryFiberDynamics.quadraticFilled c \ Q) a :=
   quadratic_filled_separator_critical_clearance c Q a
     (quadratic_filled_full c) hKi hzero hclear ha
+
+/-- Every repelling periodic point belongs to the closure of the
+exterior of the actual filled Julia set. A hypothetical interior disk
+would bound the derivatives of every iterate by Cauchy's estimate;
+the derivatives of successive periodic returns grow geometrically. -/
+theorem quadratic_repelling_point_exterior_contact
+    (c a : ℂ) (p : ℕ) (hper : QuadraticEscape.orbit c p a = a)
+    (hmul : 1 < ‖deriv (QuadraticEscape.orbit c p) a‖) :
+    a ∈ closure (LoopsStationaryFiberDynamics.quadraticFilled c)ᶜ := by
+  by_contra hn
+  rw [closure_compl] at hn
+  have ha : a ∈ interior (LoopsStationaryFiberDynamics.quadraticFilled c) :=
+    not_not.mp hn
+  obtain ⟨r,hr,hball⟩ := Metric.isOpen_iff.mp isOpen_interior a ha
+  have hs : 0 < r/2 := by positivity
+  have hsphere : Metric.sphere a (r/2) ⊆
+      LoopsStationaryFiberDynamics.quadraticFilled c := by
+    intro z hz
+    apply interior_subset
+    apply hball
+    rw [Metric.mem_sphere] at hz
+    rw [Metric.mem_ball,hz]
+    linarith
+  have hbound (n : ℕ) : ‖deriv (QuadraticEscape.orbit c n) a‖ ≤
+      (1+‖c‖)/(r/2) := by
+    exact Complex.norm_deriv_le_of_forall_mem_sphere_norm_le hs
+      (quadratic_orbit_entire c n).diffContOnCl
+      (fun z hz => QuadraticEscape.escape_zero_orbit_bound c z (hsphere hz) n)
+  let f := QuadraticEscape.orbit c p
+  let μ := deriv f a
+  have hf : HasDerivAt f μ a := (quadratic_orbit_entire c p a).hasDerivAt
+  have hderiv (k : ℕ) :
+      HasDerivAt (QuadraticEscape.orbit c (p*k)) (μ^k) a := by
+    induction k with
+    | zero =>
+      simpa [QuadraticEscape.orbit] using hasDerivAt_id a
+    | succ k ih =>
+      have houter : HasDerivAt (QuadraticEscape.orbit c (p*k)) (μ^k) (f a) := by
+        rw [show f a = a from hper]
+        exact ih
+      have heq : QuadraticEscape.orbit c (p*(k+1)) =
+          QuadraticEscape.orbit c (p*k) ∘ f := by
+        funext z
+        rw [Nat.mul_succ, Nat.add_comm (p*k) p,
+          LoopsSaturatedTelescope.quadratic_orbit_add]
+        rfl
+      rw [heq,pow_succ]
+      exact houter.comp a hf
+  obtain ⟨k,hk⟩ := pow_unbounded_of_one_lt ((1+‖c‖)/(r/2))
+    (show 1 < ‖μ‖ from hmul)
+  have hb := hbound (p*k)
+  rw [(hderiv k).deriv,norm_pow] at hb
+  exact (not_lt_of_ge hb) hk
+
+/-- The genuine filled Julia exterior is unbounded, independently of
+whether the filled Julia set has interior. -/
+theorem quadratic_filled_exterior_unbounded (c : ℂ) :
+    ∀ B : ℝ, ∃ z ∈ (LoopsStationaryFiberDynamics.quadraticFilled c)ᶜ,
+      B < ‖z‖ := by
+  intro B
+  let t : ℝ := max (1+‖c‖) B + 1
+  have htM : 1+‖c‖ < t := by
+    dsimp [t]
+    linarith [le_max_left (1+‖c‖) B]
+  have htB : B < t := by
+    dsimp [t]
+    linarith [le_max_right (1+‖c‖) B]
+  have ht0 : 0 ≤ t := by linarith [norm_nonneg c]
+  have hn : ‖(t:ℂ)‖ = t := by
+    rw [Complex.norm_real,Real.norm_eq_abs,abs_of_nonneg ht0]
+  refine ⟨(t:ℂ),?_,?_⟩
+  · intro hz
+    have hb := QuadraticEscape.escape_zero_orbit_bound c (t:ℂ) hz 0
+    change ‖(t:ℂ)‖ ≤ 1+‖c‖ at hb
+    rw [hn] at hb
+    exact (not_lt_of_ge hb) htM
+  · rw [hn]
+    exact htB
+
+/-- For the actual filled carrier, a single repelling periodic point
+in the symmetric connected critical set suffices to discharge all
+exterior-contact hypotheses of the compact bypass theorem. -/
+theorem quadratic_filled_compact_injOn_of_repelling_contact
+    (c b : ℂ) (p : ℕ) (Q E : Set ℂ)
+    (hQsym : ∀ z ∈ Q, -z ∈ Q) (hzero : 0 ∈ Q)
+    (hQ : IsPreconnected Q) (hbQ : b ∈ Q)
+    (hper : QuadraticEscape.orbit c p b = b)
+    (hmul : 1 < ‖deriv (QuadraticEscape.orbit c p) b‖)
+    (hE : IsCompact E) (hEc : IsPreconnected E)
+    (hEsub : E ⊆ LoopsStationaryFiberDynamics.quadraticFilled c \ Q) :
+    InjOn (fun z : ℂ => z^2+c) E := by
+  let K := LoopsStationaryFiberDynamics.quadraticFilled c
+  exact quadratic_compact_contact_injOn c K Q Kᶜ E
+    (fun z hz => (LoopsTerminalFiberExclusion.quadratic_filled_neg_mem c z).mpr hz)
+    hQsym hzero hQ (quadratic_filled_full c)
+    ⟨b,hbQ,quadratic_repelling_point_exterior_contact c b p hper hmul⟩
+    (Set.disjoint_left.mpr (fun z hz hzK => hz hzK))
+    (quadratic_filled_exterior_unbounded c) hE hEc hEsub
+
+/-- For the actual filled carrier, repelling periodic contact and
+the compact finite-component exhaustion alone discharge full
+connected-set separation. No global empty-interior hypothesis or
+accessible ray is required for this route. -/
+theorem quadratic_filled_separator_of_repelling_contact_exhaustion
+    (c a b : ℂ) (p : ℕ) (Q : Set ℂ)
+    (hQsym : ∀ z ∈ Q, -z ∈ Q) (hzero : 0 ∈ Q)
+    (hQ : IsPreconnected Q) (hbQ : b ∈ Q)
+    (hper : QuadraticEscape.orbit c p b = b)
+    (hmul : 1 < ‖deriv (QuadraticEscape.orbit c p) b‖)
+    (T : ℕ → Set ((fun z : ℂ => z^2+c) ''
+      (LoopsStationaryFiberDynamics.quadraticFilled c \ Q)))
+    (hmono : Monotone T) (hcompact : ∀ n, IsCompact (T n))
+    (hcover : ∀ x, ∃ n, x ∈ interior (T n))
+    [∀ n, Finite (ConnectedComponents (T n))]
+    (ha : a ∈ LoopsStationaryFiberDynamics.quadraticFilled c \ Q) :
+    -a ∉ connectedComponentIn
+      (LoopsStationaryFiberDynamics.quadraticFilled c \ Q) a := by
+  let K := LoopsStationaryFiberDynamics.quadraticFilled c
+  exact quadratic_reflected_separator_finite_component_exhaustion c K Q Kᶜ a
+    (fun z hz => (LoopsTerminalFiberExclusion.quadratic_filled_neg_mem c z).mpr hz)
+    hQsym hzero hQ (quadratic_filled_full c)
+    ⟨b,hbQ,quadratic_repelling_point_exterior_contact c b p hper hmul⟩
+    (Set.disjoint_left.mpr (fun z hz hzK => hz hzK))
+    (quadratic_filled_exterior_unbounded c) T hmono hcompact hcover ha
 
 end LoopsStationaryCompactContact

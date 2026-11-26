@@ -2428,7 +2428,11 @@
         "quadratic_orbit_entire",
         "quadratic_filled_full",
         "quadratic_filled_bypass_accumulates_zero",
-        "quadratic_filled_separator_of_emptyInterior_clearance"
+        "quadratic_filled_separator_of_emptyInterior_clearance",
+        "quadratic_repelling_point_exterior_contact",
+        "quadratic_filled_exterior_unbounded",
+        "quadratic_filled_compact_injOn_of_repelling_contact",
+        "quadratic_filled_separator_of_repelling_contact_exhaustion"
       ]
     },
     "obligations": [
