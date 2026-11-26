@@ -32,7 +32,7 @@ theorem fiber_image_eq_of_finite_model_fibers [T1Space Y]
   let B : Set X := p ⁻¹' {G y}
   let D : Set Y := G ⁻¹' {G y} \ {y}
   let O : Set X := p ⁻¹' Dᶜ
-  have hD : IsClosed D := ((hfinite (G y)).subset diff_subset).isClosed
+  have hD : IsClosed D := ((hfinite (G y)).subset sdiff_subset).isClosed
   have hO : IsOpen O := hD.isOpen_compl.preimage hp
   have heq : F '' A = B ∩ F '' O := by
     ext w
@@ -129,6 +129,7 @@ theorem quadratic_restriction_open (c : ℂ) (K : Set ℂ)
     · intro hw
       change (w : ℂ) ∈ (fun z : ℂ => z^2+c) '' V at hw
       obtain ⟨z, hz, hzw⟩ := hw
+      change z^2+c = (w : ℂ) at hzw
       have hzK : z^2+c ∈ K := by
         rw [hzw]
         exact w.property
@@ -315,5 +316,119 @@ theorem invariant_trapping_mark_saturated
       ⟨(F^[n]) x, hxM, he.symm⟩
   · intro z hz
     exact ⟨z, hz, rfl⟩
+
+/-- Exact obstruction criterion: for a maximal invariant mark
+inside an open return region, saturation is equivalent to absence
+of contact between its model image and the trapping frontier image. -/
+theorem invariant_trapping_mark_saturation_iff
+    (p : X → Y) (F : X → X) (G : Y → Y) (hs : Semiconj p F G)
+    (hf : ∀ y : Y, IsPreconnected (p ⁻¹' {y}))
+    (M U : Set X) (hU : IsOpen U) (hMU : M ⊆ U)
+    (hFM : MapsTo F M M)
+    (hmax : ∀ x : X, (∀ n : ℕ, (F^[n]) x ∈ U) → x ∈ M) :
+    p ⁻¹' (p '' M) = M ↔ Disjoint (p '' frontier U) (p '' M) := by
+  constructor
+  · intro hsat
+    apply Set.disjoint_left.mpr
+    intro y hy₁ hy₂
+    obtain ⟨a, ha, rfl⟩ := hy₁
+    have haM : a ∈ p ⁻¹' (p '' M) := hy₂
+    rw [hsat] at haM
+    change a ∈ closure U ∧ a ∉ interior U at ha
+    rw [hU.interior_eq] at ha
+    exact ha.2 (hMU haM)
+  · exact invariant_trapping_mark_saturated p F G hs hf M U hU hMU hFM hmax
+
+/-- Preperiodic frontier anchors with singleton eventual fibers
+saturate the entire open return region. Every maximal survivor of
+every return iterate is then exactly the full lift of the
+corresponding model survivor, with equality of its model image.
+No finite-to-one assumption on the model map is used. -/
+theorem preperiodic_frontier_trapping_correspondence [T1Space X]
+    (p : X → Y) (F : X → X) (G : Y → Y)
+    (hsurj : Surjective p) (hs : Semiconj p F G)
+    (hf : ∀ y : Y, IsPreconnected (p ⁻¹' {y}))
+    (hfinite : ∀ x : X, (F ⁻¹' {x}).Finite)
+    (U : Set X) (hU : IsOpen U)
+    (hfront : ∀ z ∈ frontier U, ∃ a : X, ∃ k : ℕ,
+      p ⁻¹' ({p a} : Set Y) = {a} ∧ (F^[k]) z = a) :
+    p ⁻¹' (p '' U) = U ∧
+      ∀ P : ℕ,
+        p ⁻¹' {y : Y | ∀ n : ℕ, ((G^[P])^[n]) y ∈ p '' U} =
+          {x : X | ∀ n : ℕ, ((F^[P])^[n]) x ∈ U} ∧
+        p '' {x : X | ∀ n : ℕ, ((F^[P])^[n]) x ∈ U} =
+          {y : Y | ∀ n : ℕ, ((G^[P])^[n]) y ∈ p '' U} := by
+  have hsingle (z : X) (hz : z ∈ frontier U) :
+      p ⁻¹' ({p z} : Set Y) = {z} := by
+    obtain ⟨a, k, ha, hk⟩ := hfront z hz
+    exact singleton_fiber_of_iterate p F G hf hs hfinite a z ha k hk
+  have hsep : Disjoint (p '' frontier U) (p '' U) := by
+    apply Set.disjoint_left.mpr
+    intro y hy₁ hy₂
+    obtain ⟨a, ha, rfl⟩ := hy₁
+    obtain ⟨b, hb, hba⟩ := hy₂
+    have hbf : b ∈ p ⁻¹' ({p a} : Set Y) := hba
+    rw [hsingle a ha] at hbf
+    have he : b = a := hbf
+    change a ∈ closure U ∧ a ∉ interior U at ha
+    rw [hU.interior_eq] at ha
+    exact ha.2 (he ▸ hb)
+  have hsat : p ⁻¹' (p '' U) = U :=
+    invariant_trapping_mark_saturated p id id (fun _ => rfl) hf U U hU
+      Subset.rfl (fun _ hx => hx) (fun x hx => by simpa using hx 0) hsep
+  refine ⟨hsat, ?_⟩
+  intro P
+  let A : Set X := {x | ∀ n : ℕ, ((F^[P])^[n]) x ∈ U}
+  let B : Set Y := {y | ∀ n : ℕ, ((G^[P])^[n]) y ∈ p '' U}
+  have hsp : Semiconj p (F^[P]) (G^[P]) := hs.iterate_right P
+  have hpre : p ⁻¹' B = A := by
+    ext x
+    constructor
+    · intro hx
+      change ∀ n : ℕ, ((G^[P])^[n]) (p x) ∈ p '' U at hx
+      change ∀ n : ℕ, ((F^[P])^[n]) x ∈ U
+      intro n
+      have hh : p (((F^[P])^[n]) x) ∈ p '' U := by
+        rw [hsp.iterate_right n x]
+        exact hx n
+      have he : ((F^[P])^[n]) x ∈ p ⁻¹' (p '' U) := hh
+      rwa [hsat] at he
+    · intro hx
+      change ∀ n : ℕ, ((F^[P])^[n]) x ∈ U at hx
+      change ∀ n : ℕ, ((G^[P])^[n]) (p x) ∈ p '' U
+      intro n
+      rw [← hsp.iterate_right n x]
+      exact ⟨((F^[P])^[n]) x, hx n, rfl⟩
+  refine ⟨hpre, ?_⟩
+  change p '' A = B
+  rw [← hpre]
+  apply Subset.antisymm
+  · rintro _ ⟨x, hx, rfl⟩
+    exact hx
+  · intro y hy
+    obtain ⟨x, hxy⟩ := hsurj y
+    refine ⟨x, ?_, hxy⟩
+    change p x ∈ B
+    rwa [hxy]
+
+/-- Specialization to the actual quadratic: the finite physical
+point-fiber condition follows from its polynomial equation. -/
+theorem quadratic_return_preperiodic_frontier
+    (c : ℂ) (K : Set ℂ) (F : K → K)
+    (hF : ∀ z : K, (F z : ℂ) = (z : ℂ)^2+c)
+    (p : K → Y) (G : Y → Y) (hsurj : Surjective p)
+    (hs : Semiconj p F G)
+    (hf : ∀ y : Y, IsPreconnected (p ⁻¹' {y}))
+    (U : Set K) (hU : IsOpen U)
+    (hfront : ∀ z ∈ frontier U, ∃ a : K, ∃ k : ℕ,
+      p ⁻¹' ({p a} : Set Y) = {a} ∧ (F^[k]) z = a) :
+    p ⁻¹' (p '' U) = U ∧
+      ∀ P : ℕ,
+        p ⁻¹' {y : Y | ∀ n : ℕ, ((G^[P])^[n]) y ∈ p '' U} =
+          {x : K | ∀ n : ℕ, ((F^[P])^[n]) x ∈ U} ∧
+        p '' {x : K | ∀ n : ℕ, ((F^[P])^[n]) x ∈ U} =
+          {y : Y | ∀ n : ℕ, ((G^[P])^[n]) y ∈ p '' U} := by
+  exact preperiodic_frontier_trapping_correspondence p F G hsurj hs hf
+    (quadratic_restricted_fiber_finite c K F hF) U hU hfront
 
 end LoopsStationaryFiberDynamics
