@@ -2400,6 +2400,68 @@
       "TERMINAL_NONLC_HUBBARD_CARRIER_PROPER"
     ]
   },
+  "quadratic-cylinder-ramification-20261126": {
+    "guide": "contributions/quadratic_cylinder_ramification_20261126/NOTE.md#quadratic-cylinder-ramification-20261126",
+    "theorems": {
+      "formalization/weighted/QuadraticCylinderRamification.lean": [
+        "quadratic_global_component_image",
+        "open_restriction_homeomorph",
+        "quadratic_iterate_univalent_component",
+        "quadratic_critical_hit_noninjective",
+        "quadratic_iterate_surjective",
+        "quadratic_postcritical_component_obstruction",
+        "quadratic_all_components_univalent_iff",
+        "quadratic_component_anchor_bound",
+        "quadratic_postcritical_target_merges_regular_fiber",
+        "quadratic_enlargement_component_surjective",
+        "quadratic_enlargement_merger_iff",
+        "quadratic_prefix_component_image",
+        "quadratic_component_univalent_from_regular_fiber",
+        "quadratic_component_single_regular_fiber_iff",
+        "quadratic_localized_single_regular_fiber_iff"
+      ]
+    },
+    "obligations": [
+      "VIRTUAL_REACHED_CYLINDER_COMPONENT_EXHAUSTION"
+    ]
+  },
+  "stationary-model-degree-20261126": {
+    "guide": "contributions/stationary_model_degree_20261126/NOTE.md#stationary-model-degree-20261126",
+    "theorems": {
+      "formalization/weighted/StationaryLightModel.lean": [
+        "component_image_univ",
+        "fiber_image_eq_of_light_model",
+        "quadratic_filled_light_fiber_image",
+        "quadratic_filled_model_fiber_pair",
+        "quadratic_filled_light_model_finite",
+        "model_open_of_fiber_transport",
+        "three_predecessors_collide_of_dense_singleton_targets",
+        "finite_of_no_three_predecessors",
+        "quadratic_filled_no_three_predecessors",
+        "dense_singleton_targets_of_dense_backward_orbit",
+        "quadratic_filled_open_model_transport_of_anchor",
+        "quadratic_filled_light_iff_finite",
+        "model_iterate_preimage_projection",
+        "model_anchor_iterate_preimage_projection",
+        "model_anchor_iterate_preimage_injective",
+        "quadratic_filled_iterate_mem_iff",
+        "quadratic_filled_model_census_of_projection",
+        "quadratic_filled_light_model_ramification_bound",
+        "quadratic_filled_singleton_anchor_ramification_exact",
+        "quadratic_filled_singleton_anchor_full_degree",
+        "model_involution_of_fiber_transport",
+        "involution_local_two_sheets",
+        "quadratic_filled_light_model_involution",
+        "involution_singleton_fiber_iff",
+        "image_preimage_eq_of_fiber_transport",
+        "physical_two_sheet_bijOn",
+        "quadratic_filled_light_lifted_two_sheets"
+      ]
+    },
+    "obligations": [
+      "KKL_STATIONARY_NONLC_SELECTED_GEOMETRIC_CONTINUUM_LIFT"
+    ]
+  },
   "telescope-ramification-order-20261126": {
     "guide": "contributions/telescope_ramification_order_20261126/NOTE.md#telescope-ramification-order-20261126",
     "theorems": {
