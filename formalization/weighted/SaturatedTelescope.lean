@@ -242,9 +242,12 @@ theorem quadratic_return_fiber_pair (c : ℂ) (p r : ℂ → ℂ) (A B D : Set �
       rcases (quadratic_eq_iff c (p z) (p x)).mp h with h₁ | h₂
       · exact Or.inl (hpinj hz hx h₁)
       · exact Or.inr (hpinj hz hy (h₂.trans hpy.symm))
-    · rintro (rfl | rfl)
-      · rfl
-      · exact congrArg r ((quadratic_eq_iff c (p y) (p x)).mpr (Or.inr hpy))
+    · intro h
+      rcases h with h | h
+      · subst z
+        rfl
+      · subst z
+        exact congrArg r ((quadratic_eq_iff c (p y) (p x)).mpr (Or.inr hpy))
 
 /-- The previous fiber construction for the archive's actual orbit,
 with arbitrary physical durations before and after the critical step. -/
