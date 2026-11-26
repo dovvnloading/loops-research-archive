@@ -206,7 +206,7 @@ theorem quadratic_compact_parameter_inverse_family
   refine ⟨P, U, V, g, hP₀.inter hP₁, hcP, hU, hCU, hUc, hUW,
     hV, hKV, ?_, hbranch, hcore, ?_⟩
   · intro p hp
-    exact (hGanalytic p (htarget p.1 p.2 hp.1 hp.2)).snd
+    exact analyticAt_snd.comp (hGanalytic p (htarget p.1 p.2 hp.1 hp.2))
   · intro d hd y hy
     have hx : g d y ∈ U := (hbranch d hd).1 hy
     have hnonzero : deriv (orbit d n) (g d y) ≠ 0 :=
