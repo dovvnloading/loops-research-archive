@@ -378,3 +378,4 @@ research/frontier/quantitative_frontier_audit_20261126/check.py	METADATA
 research/frontier/quantitative_frontier_audit_20261126/check_scalar.py	METADATA
 formalization/weighted/ChebyshevFibers.lean	CHEBYSHEV-FIBERS
 formalization/weighted/QuadraticExtremalMultiplier.lean	QUADRATIC-EXTREMAL
+formalization/weighted/QuadraticCriticalWindow.lean	METADATA
