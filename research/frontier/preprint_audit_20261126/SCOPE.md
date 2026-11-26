@@ -1,0 +1,7 @@
+# Scope and preregistration (2026-11-26)
+
+Base main: 69db52b89389430572910d36600fb5efa7fe41b3. Read CONTRIBUTING.md and the November 25–26 frontier section and retrieved its linked notes. This is an isolated METADATA source audit, not a ledger/coverage promotion.
+
+Candidate: Dudko–Lyubich, *MLC at Feigenbaum points*, arXiv:2309.02107v3 (29 Dec 2025; original 2023), published Publ. Math. IHÉS 143 (2026), 97–141, DOI 10.5802/pmihes.2. Its Theorems A/B cover the ten bounded-relative-period atlas rows, already credited in the atlas. No new coverage is asserted. Prior archive checks of theorem statements and DL Lemma 5.2 as a KKL dependency do not certify the distinct selected interface.
+
+Target: equation (7.2), p. 39, and its proof in §7.0.1 pp. 39–40 of the 41-page v3 PDF, the quantitative conversion from bounded bush widths to an ordinary quadratic-like collar in Theorem 7.2, hence Theorem A. Check the printed argument and all invoked internal source interfaces, in particular (7.1), (7.3), Lemmas 2.5/2.6/3.7, Remark 3.8, §3.4.5, Theorem 4.1, §4.1/4.3, Definition 3.12, Theorem 6.1 and Remark 6.3. Verdict rule: VERIFIED only if hypotheses and inference checked; GAP only for a demonstrable missing/invalid inference at the exact locator; otherwise OPEN. Do not presume a gap because other papers had gaps. No external citations, source hashes or proof claims are certified by this preregistration. AI-assisted audit, no human specialist review yet.
