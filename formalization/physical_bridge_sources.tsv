@@ -51,10 +51,7 @@ formalization/weighted/CloneBounds.lean	CLONE EDGE
 formalization/weighted/ClonePolynomialRoots.lean	CLONE EDGE
 formalization/weighted/CloneRoot.lean	CLONE EDGE
 formalization/weighted/CloneRootRate.lean	CLONE EDGE
-formalization/weighted/CompactBinaryCoding.lean	METADATA
 formalization/weighted/CompactObstacleRemainder.lean	METADATA
-formalization/weighted/ComponentDoubling.lean	METADATA
-formalization/weighted/FiniteComponentTree.lean	METADATA
 formalization/weighted/FiniteMarkovCorrelation.lean	FINITE-CORRELATION CLONE-OBSERVABLE RANDOM-CLOCK
 formalization/weighted/FiniteMarkovFibers.lean	REAL-FIBERS
 formalization/weighted/FullCloneCharpoly.lean	CLONE EDGE
@@ -105,9 +102,7 @@ formalization/weighted/PhaseMemoryCardinality.lean	CLOCK ENDS
 formalization/weighted/PlanarFillLimit.lean	HULL
 formalization/weighted/PlanarFullification.lean	HULL
 formalization/weighted/ProtectedCarrierLogic.lean	HULL
-formalization/weighted/QuadraticEscapeBranches.lean	METADATA
-formalization/weighted/QuadraticEscapeCoding.lean	METADATA
-formalization/weighted/QuadraticEscapeComponents.lean	METADATA
+formalization/weighted/QuadraticEscapeEndpoint.lean	QUADRATIC-ESCAPE
 formalization/weighted/QuadraticEscapeFullness.lean	METADATA
 formalization/weighted/QuadraticMultiplierArithmetic.lean	METADATA
 formalization/weighted/QuadraticUnivalentNeighborhood.lean	CONSTRUCT
@@ -414,3 +409,12 @@ formalization/weighted/QuadraticCylinderRamification.lean	METADATA
 formalization/weighted/StationaryLightModel.lean	METADATA
 formalization/weighted/StationaryPhysicalItinerary.lean	METADATA
 formalization/weighted/QuadraticEnlargementDegree.lean	METADATA
+formalization/weighted/QuadraticEscapeHolder.lean	QUADRATIC-ESCAPE
+formalization/weighted/QuadraticEscapeRegularity.lean	QUADRATIC-ESCAPE
+formalization/weighted/QuadraticEscapeSharpness.lean	QUADRATIC-ESCAPE
+formalization/weighted/CompactBinaryCoding.lean	METADATA
+formalization/weighted/ComponentDoubling.lean	METADATA
+formalization/weighted/FiniteComponentTree.lean	METADATA
+formalization/weighted/QuadraticEscapeBranches.lean	METADATA
+formalization/weighted/QuadraticEscapeCoding.lean	METADATA
+formalization/weighted/QuadraticEscapeComponents.lean	METADATA
