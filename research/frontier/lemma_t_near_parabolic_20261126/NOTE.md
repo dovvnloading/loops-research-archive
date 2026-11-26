@@ -111,3 +111,5 @@ Run from repository root with Python 3.12 (standard library only, no third-party
     python3.12 -B code/verify_physical_bridges.py
 
 The verifier checks exact input bytes (via git show at locked commit, checkout fetch-depth 0), exact rational lattice and labeling identities and ratio inequalities on a fixed finite grid, plus a floating-point sanity check of the displayed P nonzero fixed-point multiplier and the input cones (not a numerical proof of IS admission or of any physical marking). The all-q algebra and large-q asymptotic reasoning are in §§1–2; finite checks are diagnostics, not a proof of T. The source check is strict and separate. CI pinned actions, read-only token, no CI commit. The only existing file edit is one METADATA registration row; no new theorem bridge. No other thread altered.
+
+CI round 2 initially failed at setup-python: Ubuntu 26.04 lacks the 3.12.10 build; the successful Atlas citation resolution run 45806056852 confirmed CPython 3.12.16 on the same runner image. Round 3 pins that patch instead. The original failure did not run the verifier. No mathematical change.
