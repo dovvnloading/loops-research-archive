@@ -5,6 +5,8 @@ ai: OpenAI ChatGPT, GPT-6 Astra Pro
 human_review: none
 ---
 
+<a id="quadratic-component-conjugacy-20261126"></a>
+
 # Exact binary dynamics on escaping quadratic components
 
 Ledger statement being addressed:
