@@ -57,6 +57,8 @@ jobs:
           python -B "$d/certify.py" /tmp/cs-inputs.json /tmp/cs-certs.json
           python -B "$d/summarize.py" /tmp/cs-low.json /tmp/cs-high.json /tmp/cs-dense7.json /tmp/cs-dense8.json /tmp/cs-inputs.json /tmp/cs-certs.json /tmp/cs-summary.json
           python -c 'import json,sys; assert json.load(open(sys.argv[1])) == json.load(open(sys.argv[2]))' "$d/results.json" /tmp/cs-summary.json
+          # Use the checked-out repository for tracked-source validation in the container.
+          git config --global --add safe.directory "$GITHUB_WORKSPACE"
           python -B code/verify_physical_bridges.py
       - name: Preserve full observations and integer disk certificates
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
