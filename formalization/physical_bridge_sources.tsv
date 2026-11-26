@@ -368,3 +368,4 @@ research/frontier/satellite_component_julia_bound_20261126/verify.py	METADATA
 research/independent_audits/frontier_adversarial_20261126/check_clock_arithmetic.py	METADATA
 research/independent_audits/variational_frontier_20261126/check_bounds.py	METADATA
 research/independent_audits/variational_frontier_20261126/check_multipole.py	METADATA
+formalization/weighted/QuadraticEscape.lean	QUADRATIC-ESCAPE

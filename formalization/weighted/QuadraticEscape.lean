@@ -1,4 +1,7 @@
-import Mathlib
+import Mathlib.Analysis.Complex.Basic
+import Mathlib.Analysis.SpecialFunctions.Log.Basic
+import Mathlib.Analysis.SpecificLimits.Basic
+import Mathlib.Tactic
 
 /-! Uniform escape-profile estimates for the actual quadratic map.
 The two-sided one-step constant is sharp on every parameter ball. -/
@@ -166,7 +169,7 @@ theorem escape_error (c z : ℂ) {C : ℝ} (hc : ‖c‖ ≤ C) (n : ℕ) :
     obtain ⟨k,rfl⟩ := Nat.exists_eq_add_of_le hm
     exact (approx_tail c z hc n k).trans (by
       have hh := mul_nonneg (weight_pos (n+k)).le hL
-      linarith only [hh])
+      nlinarith only [hh])
   rw [abs_sub_comm]
   exact le_of_tendsto hlim hb
 
@@ -215,7 +218,7 @@ theorem escape_zero_orbit_bound (c z : ℂ) (hz : escape c z = 0) (n : ℕ) :
   have h := escape_error c z (le_refl ‖c‖) n
   rw [hz, sub_zero, abs_of_nonneg (approx_nonneg c z n)] at h
   unfold approx at h
-  have hl := (mul_le_mul_left₀ (weight_pos n)).mp h
+  have hl := (mul_le_mul_iff_left₀ (weight_pos n)).mp h
   have hsize : size (orbit c n z) ≤ 1+‖c‖ :=
     (Real.log_le_log_iff (size_pos _) (by positivity)).mp hl
   exact (norm_le_size _).trans hsize
@@ -280,6 +283,99 @@ theorem parameterEscape_zero_iff (c : ℂ) :
     exact (escape_zero_iff_bounded c 0).mp (by linarith)
   · intro h
     rw [(escape_zero_iff_bounded c 0).mpr h, mul_zero]
+
+
+/-- Finite orbit polynomials vary continuously with both the parameter and
+the starting point. -/
+theorem orbit_continuous (n : ℕ) :
+    Continuous (fun x : ℂ × ℂ => orbit x.1 n x.2) := by
+  induction n with
+  | zero => exact continuous_snd
+  | succ n ih =>
+    change Continuous (fun x : ℂ × ℂ => (orbit x.1 n x.2)^2+x.1)
+    exact (ih.pow 2).add continuous_fst
+
+theorem approx_continuous (n : ℕ) :
+    Continuous (fun x : ℂ × ℂ => approx x.1 x.2 n) := by
+  have hs : Continuous (fun x : ℂ × ℂ => size (orbit x.1 n x.2)) :=
+    continuous_const.max (orbit_continuous n).norm
+  have hl : Continuous (fun x : ℂ × ℂ => logSize (orbit x.1 n x.2)) :=
+    hs.log (fun x => (size_pos (orbit x.1 n x.2)).ne')
+  exact continuous_const.mul hl
+
+/-- Joint continuity follows from the uniform all-starting-points bound.
+Only the parameter needs to be confined to a bounded neighborhood. -/
+theorem escape_continuous :
+    Continuous (fun x : ℂ × ℂ => escape x.1 x.2) := by
+  rw [continuous_iff_continuousAt]
+  intro x
+  let C := ‖x.1‖+1
+  let s : Set (ℂ × ℂ) := {y | ‖y.1‖ < C}
+  have hs : IsOpen s := isOpen_lt (continuous_norm.comp continuous_fst) continuous_const
+  have hx : x ∈ s := by
+    change ‖x.1‖ < ‖x.1‖+1
+    linarith
+  apply Metric.continuousAt_iff'.mpr
+  intro ε hε
+  have he : 0 < ε/3 := by linarith
+  obtain ⟨N,hN⟩ := escape_uniform C (ε/3) he
+  have hc : ∀ᶠ y in 𝓝 x, y ∈ s := hs.mem_nhds hx
+  have happrox := (Metric.continuousAt_iff'.mp (approx_continuous N).continuousAt) (ε/3) he
+  filter_upwards [hc, happrox] with y hy hdy
+  have h1 := hN N le_rfl y.1 y.2 (le_of_lt (show ‖y.1‖ < C from hy))
+  have h2 := hN N le_rfl x.1 x.2 (le_of_lt (show ‖x.1‖ < C from hx))
+  change dist (approx y.1 y.2 N) (approx x.1 x.2 N) < ε/3 at hdy
+  rw [Real.dist_eq] at hdy
+  change dist (escape y.1 y.2) (escape x.1 x.2) < ε
+  rw [Real.dist_eq]
+  have htriangle₁ := abs_add_le (escape y.1 y.2 - approx y.1 y.2 N)
+    (approx y.1 y.2 N - approx x.1 x.2 N)
+  have htriangle₂ := abs_add_le
+    ((escape y.1 y.2 - approx y.1 y.2 N) +
+      (approx y.1 y.2 N - approx x.1 x.2 N))
+    (approx x.1 x.2 N - escape x.1 x.2)
+  rw [abs_sub_comm (escape y.1 y.2) (approx y.1 y.2 N)] at htriangle₁
+  have heq : (escape y.1 y.2 - approx y.1 y.2 N) +
+      (approx y.1 y.2 N - approx x.1 x.2 N) +
+      (approx x.1 x.2 N - escape x.1 x.2) =
+      escape y.1 y.2 - escape x.1 x.2 := by ring
+  rw [heq] at htriangle₂
+  linarith only [h1,h2,hdy,htriangle₁,htriangle₂]
+
+/-- The critical-value parameter potential is jointly defined, with no
+additional choice of Böttcher or dynamical coordinates. -/
+theorem parameterEscape_continuous : Continuous parameterEscape := by
+  exact escape_continuous.comp (continuous_id.prodMk continuous_id)
+
+/-- Exact physical clock normalization for m entrance iterates and n
+p-step returns. This identity is valid even away from any periodic orbit. -/
+theorem parameter_rescaling (c : ℂ) (m p n : ℕ) :
+    (2:ℝ)^m * ((2:ℝ)^p)^n * parameterEscape c =
+      2 * escape c (orbit c (m+p*n) 0) := by
+  rw [parameterEscape_critical, escape_iterate, pow_add, pow_mul]
+  ring
+
+/-- Analytic passage in the Misiurewicz scaling argument: given convergence
+of the actual critical iterates (the separate linearization obligation),
+the correctly normalized rescaled parameter potentials converge. No
+uniform control of the number of iterates is assumed. -/
+theorem parameter_rescaling_limit (cs : ℕ → ℂ) (cstar w : ℂ) (m p : ℕ)
+    (hc : Tendsto cs atTop (𝓝 cstar))
+    (hw : Tendsto (fun n => orbit (cs n) (m+p*n) 0) atTop (𝓝 w)) :
+    Tendsto (fun n => ((2:ℝ)^p)^n * parameterEscape (cs n)) atTop
+      (𝓝 ((2/(2:ℝ)^m) * escape cstar w)) := by
+  have h : Tendsto (fun n => escape (cs n) (orbit (cs n) (m+p*n) 0))
+      atTop (𝓝 (escape cstar w)) :=
+    escape_continuous.continuousAt.tendsto.comp (hc.prodMk_nhds hw)
+  have heq : (fun n => ((2:ℝ)^p)^n * parameterEscape (cs n)) =
+      (fun n => (2/(2:ℝ)^m) * escape (cs n) (orbit (cs n) (m+p*n) 0)) := by
+    funext n
+    have hres := parameter_rescaling (cs n) m p n
+    have hn : (2:ℝ)^m ≠ 0 := by positivity
+    field_simp [hn]
+    nlinarith only [hres]
+  rw [heq]
+  exact tendsto_const_nhds.mul h
 
 
 end
