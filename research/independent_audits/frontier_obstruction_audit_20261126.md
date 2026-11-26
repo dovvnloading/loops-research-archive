@@ -291,3 +291,32 @@ The spike family of §4 has
 and all added terms vanish at X=infinity. Consequently every spike and its compact-open limit has *exactly the same* u'(1) and u''(1), hence exactly the same formal value of the index expression (15). More generally one may start with a complex constant D1 with Re D1>d, replace d in H_e by D1, choose s_j=sign(A x_j+Im D1), and solve M v=A x_j+Im D1 for targets with nonzero right side (omit the zero targets, where the terms vanish in the limit). The same proof gives G_e(1)=D1 and u_e(zeta_j)->1/Re D1 simultaneously, preserving a strict margin in the PLY disk and any chosen such formal second-order datum. This shows why even knowing the local parabolic index, with no further analytic control, does not generally prevent scalar boundary spikes. For genuine dynamics the index and the entire function G are of course not freely assignable; neither the spike model nor (15) asserts otherwise.
 
 The combination (12)–(15) strengthens the analytic interface and pinpoints how a genuine dynamical estimate on the reciprocal residual might constrain it. The remaining quantitative continuation hypothesis from §5 is not thereby proved.
+
+## 7. Reproduction, hostile proof review, and remaining task
+
+Run from repository root:
+
+    python -B code/verify_frontier_obstruction_20261126.py
+
+Local run with Python 3.13.5, standard library only, deterministic rational arithmetic:
+
+    30 simultaneous spike targets; 240 lens equivalences; 48 continuation inequalities; exact rational checks passed
+
+The tested file's Git blob is a21f8438dcd18c7642c1d621f8e0ca03af4024cb (confirmed against the branch's fetched blob), SHA256 f887c6ae76739c27781351b61349332e5ec5e7234a707c3f054c3b24d62169b9. The verifier uses rational x-coordinates, not a computation of rational external or internal ray angles or genuine multiplier values. It checks exact positive solutions of the spike interpolation systems, their target and compact-interior values, the combined disk, the two-jet algebra, the threshold-circle equivalences and the continuation arithmetic. The continuum proofs, Fatou/Poisson boundary reasoning, sharp extremizers, limiting quantifiers, and dynamical identifications are mathematical arguments in this note, not Python certificates. A separate read-only [CI workflow](../../.github/workflows/frontier-obstruction-audit-20261126.yml) runs the same arithmetic. No full archive test or Lean formalization is claimed. The executable is a standalone code-directory diagnostic, not a new physical bridge certificate or an amendment to the source-indexed proof register.
+
+Adversarial checks retained:
+
+| Possible false inference | Resolution |
+|---|---|
+| Poisson limit at the singular attachment could hide a boundary atom | Use bounded harmonic test functions and Fatou, then domination via the exact distance identity; the finite budget is established before dominated convergence. |
+| Threshold equality or singular imaginary endpoints could invalidate the sharp constant | Boundary uniqueness removes the two ambiguous endpoint levels; the explicit lens extremizer attains equality on a nontrivial arc. Strict thresholds have the same supremum by a limiting construction. |
+| Sharp half-plane result might contradict a finite PLY disk | The exact finite-disk bound is (14), with a different lens extremizer; all scalar estimates on the native disk require the same log lift. |
+| Compact-open convergence plus holomorphic extension might imply boundary control | Section 4 is an explicit counterexample with positive real part even on the nonroot boundary, and §6.3 preserves the formal second-order datum exactly. |
+| The rational chart value at the next root might be a straightened multiplier or a point of the next whole copy | The theorem is about the native parent branch in the genuine child chart. Pointwise continuation is conditional; covering a whole tuned copy requires a separate chart-containment proof. |
+| A good sequence of attachment roots implies MLC | No: no shrinking diameters, rigidity, all-copy domain entrance or singleton parameter fiber is obtained. |
+| The size of the exceptional set should bound how many specified rational roots fail | No: a finite set has zero angular measure; §4 places spikes at any finite collection of targets. |
+| Literature novelty follows from novelty relative to the archived note | No: the half-plane tools are classical, and no exhaustive literature-priority or independent human referee claim is made. |
+
+**Strongest surviving open task.** Let r=q+1 and define s_q to be the supremum of radii at most 1 on which the genuine continued child multiplier chart and the attachment-continued parent cycle yield a holomorphic positive-real-part displacement function about exp(2 pi i/r), compatible with the interior chart. Prove a lower bound s_q >= C/(q*r^2) with sufficient C, or preferably q*r^2*s_q -> infinity, uniformly across the required native sequence. For a whole-copy statement also establish chart containment in the half-radius patch (or another genuine parameter transport with the same quantitative implication). The first estimate would imply the next-root cone/radial budget via (9); the second would give scaled convergence at the next roots. A proof of either native condition is not present here; neither follows from qualitative analytic continuation, the full PLY disk, the root derivative, or the local index alone. The proposed scale is sharp in the scalar class, not proved necessary for actual quadratic dynamics or for alternative routes. It is a sufficient research target, not a redefinition of CS's hypotheses.
+
+Final scope: proposed written analytic results (§§2–3, 6.1–6.2) on the declared native multiplier-coordinate interface, scalar counterexamples (§4 and §6.3), conditional pointwise criterion (§5), elementary native index identity conditional on the local splitting/analytic input (§6.3), exact finite regression only. The relevant front is the residual unbounded satellite address, not a newly closed H1–H4 or UPTCR gate. The literature statements and archive base were scoped to this front; an exhaustive archive and primary-source proof audit was not performed. AI-assisted proof search, derivation, adversarial self-review and coding: OpenAI GPT-6.2. Human specialist review pending. Main, ledger, and all previously assigned theorem statuses remain unchanged.
