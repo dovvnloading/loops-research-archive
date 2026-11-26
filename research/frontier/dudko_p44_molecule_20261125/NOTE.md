@@ -39,7 +39,11 @@ Dudko–Lyubich (DL), *Local connectivity of the Mandelbrot set at some satellit
 
 ### Version and page lock
 
-The exact versioned PDF bytes are not accessible from the local sandbox (network unavailable). HTML versions were consulted directly. The workflow downloads the PDFs, records their SHA-256 and physical page numbers here, and commits the source lock and exact verifier output to this branch. No checksum or page is guessed; if the run or locator fails, the source lock is incomplete and this is a review blocker. Physical PDF page numbers are not assumed to equal journal pagination.
+The exact versioned PDF bytes are not accessible from the local sandbox (network unavailable). HTML versions were consulted directly, and the following page locators were independently checked in the PDFs served by arXiv (first-page version stamps verified) or SIAM. These are printed page numbers; the arXiv pages also equal one-based physical PDF page numbers. The workflow downloads exact versioned PDFs and records their SHA-256 and extracted page anchors here. No checksum is guessed; failure of the download or locator leaves an explicit review blocker.
+
+- Dudko, ICM 2026 published [PDF, p. 133 (physical page 18)](https://epubs.siam.org/doi/pdf/10.1137/25M1807101#page=18), Problem 4.4 and §4.5. The published sentence has lowercase typography; the arXiv v1 wording above is retained. The arXiv v1 PDF page remains to be locked by CI (web PDF size limit).
+- DLS v3 [p. 4](https://arxiv.org/pdf/1703.01206#page=4), equation (1.1) and Theorem 1.1; [p. 28](https://arxiv.org/pdf/1703.01206#page=28), Theorem 3.16; [p. 29](https://arxiv.org/pdf/1703.01206#page=29), Lemma 3.18 and Remark 3.19; [pp. 61–62](https://arxiv.org/pdf/1703.01206#page=61), Theorem 7.7 and proof; **[p. 89](https://arxiv.org/pdf/1703.01206#page=89), entire §C.3 Molecule Conjecture** (visually checked; §C.4 begins on p. 90).
+- DL v4 [p. 31](https://arxiv.org/pdf/1808.10425#page=31), §§3.2.6–3.2.7, Lemma 3.1 and subsequent derivative identification; [pp. 73–74](https://arxiv.org/pdf/1808.10425#page=73), Proposition 5.41 and proof including the new hyperbolic operator. Note that Lemma 3.1 cites DLS Lemma 3.17, but the rotation map is Lemma 3.18 in the v3 PDF, as DL §3.2.6 correctly cites.
 
 <!-- SOURCE LOCK BEGIN -->
 Pending CI source lock; no PDF hash or page numbers verified yet.
@@ -90,5 +94,7 @@ python -B source_lock.py --show-statements
 For an offline replay, supply the exact PDF files named 2512.24171v1.pdf, 1703.01206v3.pdf, 1808.10425v4.pdf via `--pdf-dir /path/to/pdfs`. Check their SHA-256 against sources.json. The show-statements command prints the original statement pages including any adjacent text; view the actual PDF to recover typography and the diagram. No full PDF is committed.
 
 Machine-readable: results.json records the exact arithmetic result and its mathematical scope; sources.json records input versions, hashes, page anchors and missing anchors. CI failure to download or find any anchor is a provenance failure, not a falsification of the algebraic identity. The workflow is limited to this branch, this directory/PR, or explicit dispatch. No existing archive files or ledger entries are changed; no new physical bridge is asserted.
+
+CI history: initial setup-python 3.12.12 was unavailable for ubuntu-latest (26.04); switched to a pinned Python 3.12.12 container. The second PR run (45740722534, verify job 139644762806) executed the exact verifier successfully, printing the expected certificate; the subsequent git diff check failed inside the container. The final batch uses bytewise cmp and explicitly trusts only the checked-out workspace for branch writeback. This records the actual check result, not a green CI claim.
 
 AI disclosure: ChatGPT (GPT-6.2) performed source comparison, proof specialization, exact verifier and workflow construction. Human specialist verification: none yet. The primary-source theorems are attributed to their authors, not to AI.
