@@ -394,6 +394,7 @@ formalization/weighted/ChebyshevFibers.lean	CHEBYSHEV-FIBERS
 formalization/weighted/QuadraticExtremalMultiplier.lean	QUADRATIC-EXTREMAL
 formalization/weighted/QuadraticCriticalWindow.lean	METADATA
 formalization/weighted/StationarySeparatorTransport.lean	METADATA
+formalization/weighted/QuadraticComponentFiberDegree.lean	METADATA
 formalization/weighted/QuadraticCylinderCensus.lean	METADATA
 formalization/weighted/DecorationCriticalCycle.lean	METADATA
 formalization/weighted/QuadraticCylinderRamification.lean	METADATA
