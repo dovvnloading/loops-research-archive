@@ -5,6 +5,8 @@ ai: OpenAI GPT-6.2
 human_review: none
 ---
 
+<a id="h1-compact-remainder-20261126"></a>
+
 # Compact ambient remainder: exact separation and limit obstruction
 
 ## Claim
@@ -13,7 +15,7 @@ Draft target: sharpen the compact obstacle-remainder clause of VSC4 / virtual_hu
 
 ## Evidence
 
-Work in progress; no theorem is claimed validated yet.
+Candidate Lean module `formalization/weighted/CompactObstacleRemainder.lean` is registered in the weighted build, theorem index and source table. Initial theorems: exact closure criterion, canonical compact difference, connected-obstacle absorption, forward compatibility (including the actual quadratic map), and exact directed-limit stabilization. CI validation pending; no theorem counted yet. No local Lean executable or network checkout is available.
 
 ## Dependencies
 

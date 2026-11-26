@@ -2229,5 +2229,21 @@
     "obligations": [
       "KKL_STATIONARY_SELECTED_SEPARATOR_REALIZATION"
     ]
+  },
+  "h1-compact-remainder-20261126": {
+    "guide": "contributions/h1_compact_remainder_20261126/NOTE.md#h1-compact-remainder-20261126",
+    "theorems": {
+      "formalization/weighted/CompactObstacleRemainder.lean": [
+        "remainder_iff_closure_disjoint",
+        "remainder_iff_compact_difference",
+        "connected_inventory_obstacle_absorbed",
+        "canonical_remainder_forward",
+        "directed_remainder_iff_stabilizes",
+        "quadratic_canonical_remainder_forward"
+      ]
+    },
+    "obligations": [
+      "H1_CELL_TREE_EXTRACTION"
+    ]
   }
 }
