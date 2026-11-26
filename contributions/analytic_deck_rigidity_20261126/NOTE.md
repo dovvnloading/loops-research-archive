@@ -5,6 +5,8 @@ ai: OpenAI ChatGPT, GPT-6 Astra Pro
 human_review: none
 ---
 
+<a id="analytic-deck-rigidity-20261126"></a>
+
 # Analytic deck rigidity for actual one-critical quadratic returns
 
 ## Claim
