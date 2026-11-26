@@ -50,7 +50,7 @@ formalization/weighted/CloneBounds.lean	CLONE EDGE
 formalization/weighted/ClonePolynomialRoots.lean	CLONE EDGE
 formalization/weighted/CloneRoot.lean	CLONE EDGE
 formalization/weighted/CloneRootRate.lean	CLONE EDGE
-formalization/weighted/DecorationCriticalCycle.lean	METADATA
+formalization/weighted/CompactObstacleRemainder.lean	METADATA
 formalization/weighted/FiniteMarkovCorrelation.lean	FINITE-CORRELATION CLONE-OBSERVABLE RANDOM-CLOCK
 formalization/weighted/FiniteMarkovFibers.lean	REAL-FIBERS
 formalization/weighted/FullCloneCharpoly.lean	CLONE EDGE
@@ -389,3 +389,4 @@ formalization/weighted/QuadraticExtremalMultiplier.lean	QUADRATIC-EXTREMAL
 formalization/weighted/QuadraticCriticalWindow.lean	METADATA
 formalization/weighted/StationarySeparatorTransport.lean	METADATA
 formalization/weighted/QuadraticCylinderCensus.lean	METADATA
+formalization/weighted/DecorationCriticalCycle.lean	METADATA

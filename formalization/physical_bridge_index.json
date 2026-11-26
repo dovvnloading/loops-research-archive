@@ -2288,6 +2288,29 @@
       "KKL_STATIONARY_NONLC_SELECTED_GEOMETRIC_CONTINUUM_LIFT"
     ]
   },
+  "h1-compact-remainder-20261126": {
+    "guide": "contributions/h1_compact_remainder_20261126/NOTE.md#h1-compact-remainder-20261126",
+    "theorems": {
+      "formalization/weighted/CompactObstacleRemainder.lean": [
+        "remainder_iff_closure_disjoint",
+        "remainder_iff_compact_difference",
+        "connected_inventory_obstacle_absorbed",
+        "canonical_remainder_forward",
+        "directed_remainder_iff_stabilizes",
+        "quadratic_canonical_remainder_forward",
+        "closure_remainder_forward",
+        "least_compact_remainder",
+        "chebyshev_inventory_compact",
+        "chebyshev_stage_admissible",
+        "chebyshev_carrier_intersection",
+        "chebyshev_limit_remainder_failure",
+        "chebyshev_no_least_separated_carrier"
+      ]
+    },
+    "obligations": [
+      "H1_CELL_TREE_EXTRACTION"
+    ]
+  },
   "decoration-critical-cycle-exclusion-20261126": {
     "guide": "contributions/decoration_critical_cycle_exclusion_20261126/NOTE.md#decoration-critical-cycle-exclusion-20261126",
     "theorems": {
