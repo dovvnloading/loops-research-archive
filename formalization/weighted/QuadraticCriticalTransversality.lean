@@ -304,19 +304,25 @@ theorem returnOrbit_orbit (c : ℂ) (m p : ℕ) :
     returnOrbit c (orbit c m) p = orbit c (m+p) := by
   induction p with
   | zero => rfl
-  | succ p ih => simp only [returnOrbit, Nat.add_succ, orbit, ih]
+  | succ p ih =>
+    change returnOrbit c (orbit c m) p ^ 2 + c = orbit c (m+p) ^ 2 + c
+    rw [ih]
 
 theorem returnTangent_orbit (c : ℂ) (m p : ℕ) :
     returnTangent c (orbit c m) (slope c m) p = slope c (m+p) := by
   induction p with
   | zero => rfl
   | succ p ih =>
-    simp only [returnTangent, Nat.add_succ, slope, ih, returnOrbit_orbit]
+    change 2*returnOrbit c (orbit c m) p*returnTangent c (orbit c m) (slope c m) p+1 =
+      2*orbit c (m+p)*slope c (m+p)+1
+    rw [returnOrbit_orbit, ih]
 
 theorem returnMultiplier_hasDerivAt (c z : ℂ) (p : ℕ) :
     HasDerivAt (fun w : ℂ => returnOrbit c w p) (returnMultiplier c z p) z := by
   induction p with
-  | zero => simpa [returnOrbit, returnMultiplier] using hasDerivAt_id z
+  | zero =>
+    change HasDerivAt (id : ℂ → ℂ) 1 z
+    exact hasDerivAt_id z
   | succ p ih =>
     have hh := (ih.pow 2).add (hasDerivAt_const z c)
     have heq : (fun w : ℂ => returnOrbit c w (p+1)) =
@@ -355,7 +361,7 @@ theorem returnTangent_sub (c z u v : ℂ) (p : ℕ) :
       2*returnOrbit c z p*returnTangent c z u p+1 -
           (2*returnOrbit c z p*returnTangent c z v p+1) =
         (2*returnOrbit c z p)*(returnTangent c z u p-returnTangent c z v p) := by ring
-      _ = _ := by rw [ih] <;> ring
+      _ = _ := by rw [ih]; ring
 
 /-- At a differentiable moving periodic point the collision tangent is the
 entrance displacement tangent multiplied by the spatial multiplier minus one. -/
