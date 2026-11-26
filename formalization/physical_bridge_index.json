@@ -3073,7 +3073,14 @@
         "quadratic_compact_return_invariant_subset_filled",
         "quadratic_return_conjugacy_subset_filled",
         "quadratic_return_conjugacy_isolation",
-        "quadratic_primitive_conjugacy_component"
+        "quadratic_primitive_conjugacy_component",
+        "quadratic_primitive_conjugacy_all_returns"
+      ],
+      "formalization/weighted/QuadraticLocalFiberCensus.lean": [
+        "complex_nthRootsFinset_card",
+        "power_root_mem_ball",
+        "quadratic_chart_localFiber",
+        "quadratic_local_fiber_census"
       ]
     },
     "obligations": [

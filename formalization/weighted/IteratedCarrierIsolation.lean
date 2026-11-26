@@ -71,8 +71,10 @@ theorem isolationWindow_exact (F : X → X) (V A : Set X)
     · intro hx
       have hx' : x ∈ V ∩ F ⁻¹' A := by
         simpa only [hiso] using hx
+      have hFxA : F x ∈ A := hx'.2
       have hFx : F x ∈ isolationWindow F V n ∩ (F^[n]) ⁻¹' A := by
-        simpa only [ih] using hx'.2
+        rw [ih]
+        exact hFxA
       exact ⟨⟨hx'.1, hFx.1⟩, hFx.2⟩
 
 /-- The window for a fixed horizon isolates every earlier pullback as well. -/

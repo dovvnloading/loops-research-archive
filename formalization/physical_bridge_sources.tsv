@@ -443,3 +443,4 @@ formalization/weighted/LocalDegreeExhaustion.lean	METADATA
 formalization/weighted/QuadraticPowerNormalForm.lean	METADATA
 formalization/weighted/IteratedCarrierIsolation.lean	METADATA
 formalization/weighted/QuadraticCarrierSaturation.lean	METADATA
+formalization/weighted/QuadraticLocalFiberCensus.lean	METADATA

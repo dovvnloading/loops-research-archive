@@ -1,6 +1,7 @@
 import LocalDegreeExhaustion
 import QuadraticLocalNormalForm
 import QuadraticEscapeFullness
+import IteratedCarrierIsolation
 
 /-!
 # Actual primitive quadratic carriers are saturated pullback components
@@ -17,7 +18,9 @@ namespace LoopsQuadraticCarrierSaturation
 open Set Function
 open QuadraticEscape LoopsStationaryFiberDynamics LoopsSaturatedTelescope
 open LoopsQuadraticLocalNormalForm LoopsLocalDegreeExhaustion
-open LoopsQuadraticEscapeFullness
+open LoopsQuadraticEscapeFullness LoopsIteratedCarrierIsolation LoopsTelescopeRamification
+
+set_option maxHeartbeats 1000000
 
 /-- Every compact set invariant under a positive quadratic return lies
 in the actual filled Julia set.  The maximum of the escape potential on
@@ -26,8 +29,12 @@ theorem quadratic_compact_return_invariant_subset_filled
     (c : ℂ) (n : ℕ) (hn : 0 < n) (A : Set ℂ) (hA : IsCompact A)
     (hforward : MapsTo (orbit c n) A A) :
     A ⊆ quadraticFilled c := by
+  have hpair : Continuous (fun z : ℂ => (c, z)) :=
+    continuous_const.prodMk continuous_id
   have hcont : Continuous (fun z : ℂ => escape c z) := by
-    exact escape_continuous.comp (continuous_const.prodMk continuous_id)
+    change Continuous ((fun p : ℂ × ℂ => escape p.1 p.2) ∘
+      (fun z : ℂ => (c, z)))
+    exact escape_continuous.comp hpair
   have hp : ∀ k : ℕ, (1 : ℝ) ≤ 2^k := by
     intro k
     induction k with
@@ -148,5 +155,48 @@ theorem quadratic_primitive_conjugacy_component
   have he := quadratic_conjugacy_component q (orbit c n) h
     (quadratic_orbit_continuous c n) hh hi hc hreg_local hcrit_local hconn ⟨0, h0⟩
   rwa [hcenter] at he
+
+
+/-- The same actual primitive carrier is the exact selected component
+after every finite number of returns. For each fixed horizon a single
+constructed open window isolates all of its earlier pullbacks. No
+neighborhood uniform over every horizon is assumed or concluded. -/
+theorem quadratic_primitive_conjugacy_all_returns
+    (q c : ℂ) (n : ℕ) (hn : 0 < n)
+    (h0 : (0 : ℂ) ∈ quadraticFilled q)
+    (h : quadraticFilled q → ℂ) (hh : Continuous h) (hi : Injective h)
+    (hc : ∀ x, orbit c n (h x) = h (quadraticFilledMap q x))
+    (hcenter : h ⟨0, h0⟩ = 0)
+    (hphase : ∀ j, 0 < j → j < n →
+      Disjoint (range h) (orbit c j '' range h)) :
+    (∀ k : ℕ, range h =
+      connectedComponentIn (orbit c (n*k) ⁻¹' range h) 0) ∧
+    (∀ H : ℕ, ∃ W : Set ℂ, IsOpen W ∧ range h ⊆ W ∧
+      ∀ k ≤ H, W ∩ orbit c (n*k) ⁻¹' range h = range h) := by
+  letI : CompactSpace (quadraticFilled q) :=
+    isCompact_iff_compactSpace.mp (quadratic_filled_compact q)
+  have hconn : IsPreconnected (range h) := by
+    letI : PreconnectedSpace (quadraticFilled q) :=
+      isPreconnected_iff_preconnectedSpace.mp
+        (quadratic_filled_connected_of_critical q h0).isPreconnected
+    exact isPreconnected_range hh
+  obtain ⟨_, V, hV, _, hiso, _⟩ :=
+    quadratic_primitive_conjugacy_component q c n hn h0 h hh hi hc hcenter hphase
+  have hclock (k : ℕ) : (orbit c n)^[k] = orbit c (n*k) := by
+    rw [orbit_map_eq_iterate, orbit_map_eq_iterate, Function.iterate_mul]
+  have hz : (0 : ℂ) ∈ range h := ⟨⟨0, h0⟩, hcenter⟩
+  constructor
+  · intro k
+    have he := iterated_preimage_component (orbit c n) V (range h)
+      (quadratic_orbit_continuous c n) (isCompact_range hh).isClosed
+      hconn hV hiso 0 hz k
+    rw [hclock k] at he
+    exact he.symm
+  · intro H
+    obtain ⟨W, hW, hAW, hwin⟩ := finite_horizon_isolation (orbit c n) V (range h)
+      (quadratic_orbit_continuous c n) hV hiso H
+    refine ⟨W, hW, hAW, ?_⟩
+    intro k hk
+    simpa only [hclock k] using hwin k hk
 
 end LoopsQuadraticCarrierSaturation

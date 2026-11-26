@@ -62,7 +62,7 @@ theorem analytic_factor_power_chart (f g : ℂ → ℂ) (x : ℂ) (m : ℕ)
   have hφd : HasDerivAt φ 1 x := by
     have h := ((hasDerivAt_id x).sub_const x).mul
       ((hRa x hxS).differentiableAt.hasDerivAt)
-    simpa only [φ, id_eq, hRx, one_mul, sub_self, zero_mul, add_zero] using h
+    convert h using 1 <;> simp [φ, hRx]
   have hφax : AnalyticAt ℂ φ x := hφa x hxS
   have hdne : deriv φ x ≠ 0 := by rw [hφd.deriv]; norm_num
   let E : OpenPartialHomeomorph ℂ ℂ :=
@@ -138,7 +138,10 @@ theorem quadratic_power_disk_chart (c x : ℂ) (n : ℕ) :
   let S := U ∩ φ ⁻¹' Metric.ball (0 : ℂ) r
   have hφcont : ContinuousOn φ U := fun z hz => (hφa z hz).continuousAt.continuousWithinAt
   have hS : IsOpen S := hφcont.isOpen_inter_preimage hU Metric.isOpen_ball
-  have hxS : x ∈ S := ⟨hxU, by simpa only [hφ0] using Metric.mem_ball_self hr⟩
+  have hxS : x ∈ S := ⟨hxU, by
+    change φ x ∈ Metric.ball (0 : ℂ) r
+    rw [hφ0]
+    exact Metric.mem_ball_self hr⟩
   have hχmap : MapsTo χ (Metric.ball (0 : ℂ) r) S := by
     intro w hw
     exact ⟨hmapχ (hrV hw), by
