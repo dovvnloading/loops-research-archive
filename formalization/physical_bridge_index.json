@@ -2532,7 +2532,8 @@
         "quadratic_end_exact_decomposition",
         "quadratic_end_common_impression_of_sector_cover",
         "restricted_impression_closed",
-        "finite_footprint_partition_contact"
+        "finite_footprint_partition_contact",
+        "finite_footprint_overlap_chain"
       ]
     },
     "obligations": [

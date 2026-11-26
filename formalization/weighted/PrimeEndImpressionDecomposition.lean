@@ -413,4 +413,36 @@ theorem finite_footprint_partition_contact (ψ : X × ℝ → Y)
   obtain ⟨hηP, hzη⟩ := mem_iUnion.mp hη
   exact ⟨θ, hθP, η, hηP, z, hzθ, hzη⟩
 
+
+/-- All surviving angles are connected by a finite chain of genuine
+physical contacts of localized impressions. The relation keeps the
+angle labels distinct, even when their impressions coincide. -/
+theorem finite_footprint_overlap_chain (ψ : X × ℝ → Y)
+    (A : ℕ → Set X) (H : ℕ → ℝ)
+    (hc : ∀ n, IsCompact (A n)) (ha : Antitone A)
+    (hp : ∀ n, 0 < H n) (hh : Antitone H)
+    (hsmall : ∀ ε > 0, ∃ n, H n < ε)
+    (hcompact : IsCompact (closure (ψ '' trace (A 0) (H 0))))
+    (hfinite : (⋂ n, A n).Finite)
+    (hconn : IsPreconnected (⋂ n, closure (ψ '' trace (A n) (H n))))
+    (a b : X) (haL : a ∈ ⋂ n, A n) (hbL : b ∈ ⋂ n, A n) :
+    Relation.ReflTransGen
+      (fun x y => x ∈ (⋂ n, A n) ∧ y ∈ (⋂ n, A n) ∧
+        (restrictedImpression ψ A H x ∩ restrictedImpression ψ A H y).Nonempty)
+      a b := by
+  let L := ⋂ n, A n
+  let R : X → X → Prop := fun x y => x ∈ L ∧ y ∈ L ∧
+    (restrictedImpression ψ A H x ∩ restrictedImpression ψ A H y).Nonempty
+  change Relation.ReflTransGen R a b
+  by_contra hn
+  let P : Set X := {x | x ∈ L ∧ Relation.ReflTransGen R a x}
+  have hP : P ⊆ L := fun _ hx => hx.1
+  have hpne : P.Nonempty := ⟨a, haL, Relation.ReflTransGen.refl⟩
+  have hqne : (L \ P).Nonempty := ⟨b, hbL, fun hb => hn hb.2⟩
+  obtain ⟨θ, hθ, η, hη, hcontact⟩ := finite_footprint_partition_contact
+    ψ A H hc ha hp hh hsmall hcompact hfinite hconn P hP hpne hqne
+  have hreach : Relation.ReflTransGen R a θ := hθ.2
+  have hstep : R θ η := ⟨hθ.1, hη.1, hcontact⟩
+  exact hη.2 ⟨hη.1, hreach.tail hstep⟩
+
 end PrimeEndImpressionDecomposition
