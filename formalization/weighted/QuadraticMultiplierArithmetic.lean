@@ -172,7 +172,8 @@ theorem spatialPoly_eval₂ (c : integralClosure ℤ ℂ) (z : ℂ) (n : ℕ) :
   induction n with
   | zero => simp [spatialPoly, returnOrbit]
   | succ n ih =>
-    simp [spatialPoly, returnOrbit, eval₂_pow, ih]
+    simp [spatialPoly, returnOrbit, eval₂_pow]
+    exact congrArg (fun w : ℂ => w ^ 2) ih
 
 /-- Every eventual spatial collision at an algebraic-integer parameter starts
 at an algebraic integer. In particular no periodic orbit has to be assumed
