@@ -11,9 +11,11 @@ human_review: none
 
 ## Claim
 
-This partial contribution proposes thirteen Lean theorems sharpening the non-locally-connected geometric predecessor lift: singleton predecessor fibers under finite-to-one dynamics (including actual complex quadratic restrictions), exact component transport relative to nonsaturated physical continua in a hereditarily unicoherent compact space, a frontier-based sufficient criterion for full saturation, exact matching of geometric marks via dense anchors, and a one-contact criterion for physical marked incidence. These are candidate formal statements pending exact-head CI.
+This partial contribution establishes thirteen public Lean theorems at the verified checkpoint below sharpening the non-locally-connected geometric predecessor lift: singleton predecessor fibers under finite-to-one dynamics (including actual complex quadratic restrictions), exact component transport relative to nonsaturated physical continua in a hereditarily unicoherent compact space, a frontier-based sufficient criterion for full saturation, exact matching of geometric marks via dense anchors, and a one-contact criterion for physical marked incidence. The thirteen public declarations and two private helper proofs passed the full weighted build and transitive dependency audit at the verified checkpoint; the integrated merge head requires its own verification.
 
 ## Evidence
+
+**Verified checkpoint** `9ed70ee320131023efe491ca427f266c9aba45db`: [weighted Lean CI](https://github.com/dovvnloading/loops-research-archive/actions/runs/45862767824) passed the full Mathlib build, trust-token/source-coverage check, and compiled dependency audit (`StationaryGeometricFibers: 15 declarations, 15 theorems; allowed axioms only`—13 public and 2 private). The earlier nine-theorem checkpoint `70f3798f9546138ed83e59011c7e733cdb7ccd29` passed [weighted CI](https://github.com/dovvnloading/loops-research-archive/actions/runs/45862047805) and [contribution intake](https://github.com/dovvnloading/loops-research-archive/actions/runs/45862057160). The merge into this branch preserves the new H1 LeastSaturatedCarrier module and all registrations from main; no Lean source changes were made in the integration commit. Its own CI is the final integration check.
 
 Registered Lean module: [StationaryGeometricFibers.lean](../../formalization/weighted/StationaryGeometricFibers.lean).
 
@@ -30,7 +32,7 @@ Registered Lean module: [StationaryGeometricFibers.lean](../../formalization/wei
 
 Public theorem declarations: `preconnected_finite_subsingleton`, `singleton_fiber_of_iterate`, `quadratic_fiber_finite`, `quadratic_restricted_fiber_finite`, `relative_preimage_preconnected`, `relative_component_lift`, `closed_carrier_saturated_of_frontier_singletons`, `marked_continuum_image_of_dense_anchors`, `selected_mark_from_single_overlap`, `critical_preimage_preconnected`, `quadratic_restricted_critical_preimage`, `quadratic_least_carrier_forward_invariant`, `selected_carrier_contact_image`.
 
-Reproduction: `cd formalization/weighted && lake build StationaryGeometricFibers`; from repository root, `python3 -B code/verify_lean_coverage.py` and `python3 -B code/verify_lean_coverage.py --audit weighted`. The module is registered in the existing default targets, theorem index and source inventory (METADATA). Local Lean and network git access are unavailable; exact-head repository CI is the compiler of record. No certified result is claimed before the build and transitive dependency audit pass.
+Reproduction: `cd formalization/weighted && lake build StationaryGeometricFibers`; from repository root, `python3 -B code/verify_lean_coverage.py` and `python3 -B code/verify_lean_coverage.py --audit weighted`. The module is registered in the existing default targets, theorem index and source inventory (METADATA). Local Lean and network git access are unavailable; exact-head repository CI is the compiler of record. The verified checkpoint above passed both checks; any different head requires its own verification.
 
 ## Dependencies
 

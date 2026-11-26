@@ -63,6 +63,7 @@ formalization/weighted/FullCloneRenewal.lean	CLONE-MARKOV RENEWAL-GAP AFFINE-COR
 formalization/weighted/FullCloneSpectralMax.lean	CLONE EDGE
 formalization/weighted/FullCloneStrictGap.lean	CLONE EDGE
 formalization/weighted/GraphWeightedBridge.lean	CLONE EDGE
+formalization/weighted/LeastSaturatedCarrier.lean	METADATA
 formalization/weighted/LimbInsertionHolonomy.lean	CUTS CREST
 formalization/weighted/LocalizationSheetKernel.lean	COVER-FIBER SHEETS CONNECTOR
 formalization/weighted/MarkedWaveSuprema.lean	GAIN
