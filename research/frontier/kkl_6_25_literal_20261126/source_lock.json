@@ -38,9 +38,13 @@
         "Lemma A.11": 62,
         "Lemma A.13": 64,
         "Lemma A.15": 65,
+        "MLC at Feigenbaum points": 72,
         "Proposition 6.23": 49,
         "Proposition A.12": 63,
-        "Proposition A.14": 65
+        "Proposition A.14": 65,
+        "[DL23b]": 72,
+        "the maximal subwave": 49,
+        "wave subordinate to": 57
       },
       "pages": 73,
       "sha256": "4c08805384b473dc0e55d76491c52c9fbe7c027e6da301f2c365a170ed7d9140",

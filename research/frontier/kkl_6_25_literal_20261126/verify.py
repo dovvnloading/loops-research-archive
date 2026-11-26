@@ -13,11 +13,12 @@ HERE = Path(__file__).resolve().parent
 SOURCES = {
     "KKL": ("2606.27272v1", 73,
             "4c08805384b473dc0e55d76491c52c9fbe7c027e6da301f2c365a170ed7d9140",
-            {49: ["Proposition 6.23", "Lemma 6.24", "(6.25)", "(6.26)"],
+            {49: ["Proposition 6.23", "Lemma 6.24", "(6.25)", "(6.26)", "the maximal subwave"],
              50: ["(6.27)", "(6.28)", "(6.29)", "(6.30)", "Lemma 6.31"],
-             51: ["(6.34)"], 56: ["Ideal markings"],
+             51: ["(6.34)"], 56: ["Ideal markings"], 57: ["wave subordinate to"],
              62: ["Lemma A.10", "Lemma A.11"], 63: ["Proposition A.12"],
-             64: ["Lemma A.13"], 65: ["Proposition A.14", "Lemma A.15"]}),
+             64: ["Lemma A.13"], 65: ["Proposition A.14", "Lemma A.15"],
+             72: ["MLC at Feigenbaum points", "[DL23b]"]}),
     "DL": ("2309.02107v3", 41,
            "e88462e43b3c172cf309d5b3d38caa21ee8f43876bac1e07cce84b309dfb8c6b",
            {34: ["Lemma 5.2"], 35: ["outermost curves"]}),
@@ -50,6 +51,15 @@ def model():
         require(L_left < d-1-t-delta <= d-1-t+delta < L_right
                 and F(4, 5) < d-1+t-delta <= d-1+t+delta < F(9, 10),
                 "Q marked endpoints")
+        # Source base and source ending block, using the pulled-back cuts.
+        source_end_lo, source_end_hi = L_right, 1 + J_right
+        require(F(1, 4) < p_left and q_right < F(19, 10), "source base")
+        require(c-e < source_end_lo < c+e <= p_right < source_end_hi,
+                "source P ending: right endpoint only")
+        require(source_end_lo < q_left <= d-t+delta < source_end_hi < d+t-delta,
+                "source Q ending: left endpoint only")
+        require(source_end_hi-source_end_lo > 1 and source_end_hi < 2,
+                "source ending block covers target circle")
         require(R/e == 2**k and 1 < (t+delta)/(t-delta) <= F(15, 13),
                 "width ratio")
     return {"k_min": 2, "k_max": 128, "exact_parameter_cases": 127,
