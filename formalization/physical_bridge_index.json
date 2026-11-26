@@ -2257,5 +2257,22 @@
     "obligations": [
       "VIRTUAL_REACHED_CYLINDER_COMPONENT_EXHAUSTION"
     ]
+  },
+  "decoration-critical-cycle-exclusion-20261126": {
+    "guide": "contributions/decoration_critical_cycle_exclusion_20261126/NOTE.md#decoration-critical-cycle-exclusion-20261126",
+    "theorems": {
+      "formalization/weighted/DecorationCriticalCycle.lean": [
+        "quadratic_phase_return_noninjective",
+        "quadratic_noninjective_persists",
+        "preconnected_avoids_frontier",
+        "quadratic_cycle_phase_exclusion",
+        "quadratic_exterior_image",
+        "nested_angular_bijOn",
+        "nested_angular_obstruction_transfer"
+      ]
+    },
+    "obligations": [
+      "DIRECT_DECORATION_END_PRIME_END_COFINALITY"
+    ]
   }
 }
