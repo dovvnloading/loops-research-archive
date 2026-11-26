@@ -341,4 +341,276 @@ theorem quadratic_section_restriction_extension_iff
     · exact (htp (x : X) ⟨x,hx,rfl⟩).trans hx.symm
     · exact (htn (x : X) ⟨x,hx,rfl⟩).trans hx.symm
 
+
+/-- A finite-component compact stage admits only finitely many inverse
+branches. Values at one representative of each component determine a
+branch, since the relative sign cannot change within a component. -/
+theorem quadratic_section_finite_of_finite_components
+    {X : Type*} [TopologicalSpace X] [CompactSpace X] [T2Space X]
+    [Finite (ConnectedComponents X)]
+    (c : ℂ) (w s : C(X, ℂ))
+    (hroot : ∀ x, (s x)^2+c = w x)
+    (hne : ∀ x, w x ≠ c) :
+    Finite {r : C(X, ℂ) // ∀ x, (r x)^2+c = w x} := by
+  classical
+  let rep : ConnectedComponents X → X := fun q =>
+    Classical.choose (ConnectedComponents.surjective_coe q)
+  have hrep (q : ConnectedComponents X) : ConnectedComponents.mk (rep q) = q :=
+    Classical.choose_spec (ConnectedComponents.surjective_coe q)
+  let encode : {r : C(X, ℂ) // ∀ x, (r x)^2+c = w x} →
+      (ConnectedComponents X → Bool) :=
+    fun r q => decide (r.val (rep q) = s (rep q))
+  apply Finite.of_injective encode
+  intro r t h
+  apply Subtype.ext
+  apply ContinuousMap.ext
+  intro x
+  let q := ConnectedComponents.mk x
+  let z := rep q
+  have hzq : ConnectedComponents.mk z = ConnectedComponents.mk x := hrep q
+  have hxz : x ∈ connectedComponent z := ConnectedComponents.coe_eq_coe'.mp hzq.symm
+  have he : decide (r.val z = s z) = decide (t.val z = s z) := congrFun h q
+  have hrt : r.val z = t.val z := by
+    by_cases hr : r.val z = s z
+    · have ht : t.val z = s z :=
+        of_decide_eq_true (he.symm.trans (decide_eq_true hr))
+      exact hr.trans ht.symm
+    · have ht : t.val z ≠ s z := by
+        intro ht
+        exact hr (of_decide_eq_true (he.trans (decide_eq_true ht)))
+      have hr' := (quadratic_equal_roots_sign c (r.val z) (s z)
+        ((r.property z).trans (hroot z).symm)).resolve_left hr
+      have ht' := (quadratic_equal_roots_sign c (t.val z) (s z)
+        ((t.property z).trans (hroot z).symm)).resolve_left ht
+      exact hr'.trans ht'.symm
+  by_contra hnot
+  have hneg : r.val x = -t.val x :=
+    (quadratic_equal_roots_sign c (r.val x) (t.val x)
+      ((r.property x).trans (t.property x).symm)).resolve_left hnot
+  have hP : ∀ u ∈ ({z} : Set X), r.val u = t.val u := by
+    intro u hu
+    rw [mem_singleton_iff.mp hu]
+    exact hrt
+  have hN : ∀ u ∈ ({x} : Set X), r.val u = -t.val u := by
+    intro u hu
+    rw [mem_singleton_iff.mp hu]
+    exact hneg
+  exact ((quadratic_branch_extension_iff c w t.val t.property hne
+    ({z} : Set X) ({x} : Set X) isClosed_singleton isClosed_singleton).mp
+      ⟨r.val,r.property,hP,hN⟩) z (by simp) x (by simp) hxz
+
+/-- A countable inverse system of nonempty finite levels has a
+compatible choice, even when restriction maps are not surjective.
+Use compactness of the product of the finite discrete levels and
+closed finite-horizon compatibility constraints. -/
+theorem compatible_finite_system
+    (A : ℕ → Type*) [∀ n, Finite (A n)]
+    (hA : ∀ n, Nonempty (A n))
+    (r : ∀ i j : ℕ, i ≤ j → A j → A i)
+    (hcomp : ∀ (i j k : ℕ) (hij : i ≤ j) (hjk : j ≤ k) (a : A k),
+      r i j hij (r j k hjk a) = r i k (hij.trans hjk) a) :
+    ∃ a : ∀ n, A n, ∀ (i j : ℕ) (hij : i ≤ j), r i j hij (a j) = a i := by
+  classical
+  letI : ∀ n, TopologicalSpace (A n) := fun _ => ⊥
+  letI : ∀ n, DiscreteTopology (A n) := fun _ => ⟨rfl⟩
+  letI : ∀ n, CompactSpace (A n) := fun _ => inferInstance
+  letI : CompactSpace (∀ n, A n) := Pi.compactSpace
+  let F (n : ℕ) : Set (∀ n, A n) :=
+    {a | ∀ (i j : ℕ) (hij : i ≤ j), j ≤ n → r i j hij (a j) = a i}
+  have hc (n : ℕ) : IsClosed (F n) := by
+    have he : F n = ⋂ i : ℕ, ⋂ j : ℕ, ⋂ hij : i ≤ j, ⋂ _hjn : j ≤ n,
+        {a : ∀ n, A n | r i j hij (a j) = a i} := by
+      ext a
+      simp [F]
+    rw [he]
+    refine isClosed_iInter fun i => isClosed_iInter fun j =>
+      isClosed_iInter fun hij => isClosed_iInter fun _hjn => ?_
+    have hr : Continuous (r i j hij) := continuous_of_discreteTopology
+    exact isClosed_eq (hr.comp (continuous_apply j)) (continuous_apply i)
+  have hn (n : ℕ) : (F n).Nonempty := by
+    let a_n : A n := Classical.choice (hA n)
+    let a (i : ℕ) : A i :=
+      if h : i ≤ n then r i n h a_n else Classical.choice (hA i)
+    refine ⟨a,?_⟩
+    intro i j hij hjn
+    have hin : i ≤ n := hij.trans hjn
+    simp only [a, dif_pos hjn, dif_pos hin]
+    exact hcomp i j n hij hjn a_n
+  have hd : Directed (· ⊇ ·) F := by
+    intro i j
+    refine ⟨max i j,?_,?_⟩
+    · intro a ha u v huv hvi
+      exact ha u v huv (hvi.trans (le_max_left i j))
+    · intro a ha u v huv hvj
+      exact ha u v huv (hvj.trans (le_max_right i j))
+  obtain ⟨a,ha⟩ := IsCompact.nonempty_iInter_of_directed_nonempty_isCompact_isClosed
+    F hd hn (fun n => (hc n).isCompact) hc
+  refine ⟨a,?_⟩
+  intro i j hij
+  exact (mem_iInter.mp ha j) i j hij le_rfl
+
+/-- Compact-stage existence becomes a global continuous branch if
+the stages exhaust by interiors and have finitely many components.
+No surjectivity of the restriction maps is assumed. -/
+theorem quadratic_global_section_of_finite_component_exhaustion
+    {X : Type*} [TopologicalSpace X] [T2Space X]
+    (c : ℂ) (w : C(X, ℂ)) (hne : ∀ x, w x ≠ c)
+    (T : ℕ → Set X) (hmono : Monotone T)
+    (hcompact : ∀ n, IsCompact (T n))
+    (hcover : ∀ x, ∃ n, x ∈ interior (T n))
+    [∀ n, Finite (ConnectedComponents (T n))]
+    (hbranch : ∀ n, ∃ s : C(T n, ℂ), ∀ x : T n, (s x)^2+c = w (x : X)) :
+    ∃ s : C(X, ℂ), ∀ x, (s x)^2+c = w x := by
+  classical
+  let A (n : ℕ) := {s : C(T n, ℂ) // ∀ x : T n, (s x)^2+c = w (x : X)}
+  have hA (n : ℕ) : Nonempty (A n) := by
+    obtain ⟨s,hs⟩ := hbranch n
+    exact ⟨⟨s,hs⟩⟩
+  letI : ∀ n, CompactSpace (T n) := fun n => isCompact_iff_compactSpace.mp (hcompact n)
+  letI : ∀ n, Finite (A n) := by
+    intro n
+    obtain ⟨s,hs⟩ := hbranch n
+    let wt : C(T n, ℂ) := ⟨fun x => w (x : X), w.continuous.comp continuous_subtype_val⟩
+    exact quadratic_section_finite_of_finite_components c wt s hs (fun x => hne (x : X))
+  let r (i j : ℕ) (hij : i ≤ j) (a : A j) : A i :=
+    ⟨⟨fun x => a.val (Set.inclusion (hmono hij) x),
+       a.val.continuous.comp (continuous_inclusion (hmono hij))⟩,
+     fun x => a.property (Set.inclusion (hmono hij) x)⟩
+  have hcomp (i j k : ℕ) (hij : i ≤ j) (hjk : j ≤ k) (a : A k) :
+      r i j hij (r j k hjk a) = r i k (hij.trans hjk) a := by
+    apply Subtype.ext
+    apply ContinuousMap.ext
+    intro x
+    rfl
+  obtain ⟨a,ha⟩ := compatible_finite_system A hA r hcomp
+  let idx (x : X) : ℕ := Classical.choose (hcover x)
+  have hi (x : X) : x ∈ T (idx x) := interior_subset (Classical.choose_spec (hcover x))
+  let t (x : X) : ℂ := (a (idx x)).val ⟨x,hi x⟩
+  have ht_eq (n : ℕ) (x : T n) : t (x : X) = (a n).val x := by
+    let m := max (idx (x : X)) n
+    have h1 := congrArg (fun b : A (idx (x : X)) => b.val ⟨(x : X),hi (x : X)⟩)
+      (ha (idx (x : X)) m (le_max_left _ _))
+    have h2 := congrArg (fun b : A n => b.val x)
+      (ha n m (le_max_right _ _))
+    change (a m).val ⟨(x : X),hmono (le_max_left _ _) (hi (x : X))⟩ = t (x : X) at h1
+    change (a m).val ⟨(x : X),hmono (le_max_right _ _) x.property⟩ = (a n).val x at h2
+    exact h1.symm.trans h2
+  have ht_on (n : ℕ) : ContinuousOn t (T n) := by
+    rw [continuousOn_iff_continuous_restrict]
+    have he : (T n).restrict t = fun x : T n => (a n).val x := funext (ht_eq n)
+    rw [he]
+    exact (a n).val.continuous
+  have hct : Continuous t := by
+    rw [continuous_iff_continuousAt]
+    intro x
+    obtain ⟨n,hn⟩ := hcover x
+    exact (ht_on n x (interior_subset hn)).continuousAt (mem_interior_iff_mem_nhds.mp hn)
+  refine ⟨⟨t,hct⟩,?_⟩
+  intro x
+  exact (a (idx x)).property ⟨x,hi x⟩
+
+/-- In the actual quadratic target, exterior contact supplies the
+compact branches; a finite-component exhaustion supplies a single
+coherent branch on the whole retained image, not merely on each
+compact substage. -/
+theorem quadratic_global_contact_section
+    (c : ℂ) (K Q R : Set ℂ)
+    (hKsym : ∀ z ∈ K, -z ∈ K)
+    (hQsym : ∀ z ∈ Q, -z ∈ Q) (hzero : 0 ∈ Q)
+    (hQ : IsPreconnected Q) (hR : IsPreconnected R)
+    (hcontact : (Q ∩ closure R).Nonempty)
+    (hdis : Disjoint R K) (hunb : ∀ B : ℝ, ∃ z ∈ R, B < ‖z‖)
+    (T : ℕ → Set ((fun z : ℂ => z^2+c) '' (K \ Q)))
+    (hmono : Monotone T) (hcompact : ∀ n, IsCompact (T n))
+    (hcover : ∀ x, ∃ n, x ∈ interior (T n))
+    [∀ n, Finite (ConnectedComponents (T n))] :
+    ∃ s : C((fun z : ℂ => z^2+c) '' (K \ Q), ℂ),
+      ∀ w : ((fun z : ℂ => z^2+c) '' (K \ Q)), (s w)^2+c = (w : ℂ) := by
+  let V : Set ℂ := (fun z : ℂ => z^2+c) '' (K \ Q)
+  let w : C(V, ℂ) := ⟨Subtype.val,continuous_subtype_val⟩
+  have hne (x : V) : w x ≠ c := by
+    intro hx
+    change (x : ℂ) = c at hx
+    obtain ⟨z,hz,he⟩ := x.property
+    have he' : z^2+c = c := he.trans hx
+    have hmul : z*z = 0 := by linear_combination he'
+    have hz0 : z = 0 := by
+      rcases mul_eq_zero.mp hmul with hh | hh <;> exact hh
+    exact hz.2 (hz0.symm ▸ hzero)
+  have hbranch (n : ℕ) : ∃ s : C(T n, ℂ), ∀ x : T n, (s x)^2+c = w (x : V) := by
+    let U : Set ℂ := ((↑) : V → ℂ) '' T n
+    have hU : IsCompact U := (hcompact n).image continuous_subtype_val
+    have hUV : U ⊆ V := by
+      rintro _ ⟨x,hx,rfl⟩
+      exact x.property
+    obtain ⟨s,hs⟩ := quadratic_compact_contact_section c K Q R U
+      hKsym hQsym hzero hQ hR hcontact hdis hunb hU hUV
+    let inc : T n → U := fun x =>
+      ⟨((x : V) : ℂ),⟨(x : V),x.property,rfl⟩⟩
+    have hval : Continuous (fun x : T n => ((x : V) : ℂ)) :=
+      continuous_subtype_val.comp continuous_subtype_val
+    have hinc : Continuous inc := hval.subtype_mk (fun x => ⟨(x : V),x.property,rfl⟩)
+    refine ⟨⟨fun x => s (inc x),s.continuous.comp hinc⟩,?_⟩
+    intro x
+    exact hs (inc x)
+  exact quadratic_global_section_of_finite_component_exhaustion
+    c w hne T hmono hcompact hcover hbranch
+
+/-- Full connected-set injectivity, including noncompact and non-path
+connected witnesses, under the actual target's finite-component
+exhaustion condition. This excludes accumulation bypasses too. -/
+theorem quadratic_no_bypass_of_finite_component_exhaustion
+    (c : ℂ) (K Q R E : Set ℂ)
+    (hKsym : ∀ z ∈ K, -z ∈ K)
+    (hQsym : ∀ z ∈ Q, -z ∈ Q) (hzero : 0 ∈ Q)
+    (hQ : IsPreconnected Q) (hR : IsPreconnected R)
+    (hcontact : (Q ∩ closure R).Nonempty)
+    (hdis : Disjoint R K) (hunb : ∀ B : ℝ, ∃ z ∈ R, B < ‖z‖)
+    (T : ℕ → Set ((fun z : ℂ => z^2+c) '' (K \ Q)))
+    (hmono : Monotone T) (hcompact : ∀ n, IsCompact (T n))
+    (hcover : ∀ x, ∃ n, x ∈ interior (T n))
+    [∀ n, Finite (ConnectedComponents (T n))]
+    (hEc : IsPreconnected E) (hEsub : E ⊆ K \ Q) :
+    InjOn (fun z : ℂ => z^2+c) E := by
+  classical
+  let V : Set ℂ := (fun z : ℂ => z^2+c) '' (K \ Q)
+  obtain ⟨s,hs⟩ := quadratic_global_contact_section c K Q R
+    hKsym hQsym hzero hQ hR hcontact hdis hunb T hmono hcompact hcover
+  let S : ℂ → ℂ := fun w => if h : w ∈ V then s ⟨w,h⟩ else 0
+  have hS : ContinuousOn S V := by
+    rw [continuousOn_iff_continuous_restrict]
+    have he : V.restrict S = fun w : V => s w := by
+      funext w
+      simp [S,Set.restrict,w.property]
+    rw [he]
+    exact s.continuous
+  have hsec (w : ℂ) (hw : w ∈ V) : (S w)^2+c = w := by
+    rw [show S w = s ⟨w,hw⟩ by simp [S,hw]]
+    exact hs ⟨w,hw⟩
+  exact quadratic_injOn_of_continuous_section c E V S hEc
+    (fun hz => (hEsub hz).2 hzero) (fun z hz => ⟨z,hEsub hz,rfl⟩) hS hsec
+
+/-- Conditional full base separation with no accessible-ray
+hypothesis, no local connectivity and no compact-witness limitation. -/
+theorem quadratic_reflected_separator_finite_component_exhaustion
+    (c : ℂ) (K Q R : Set ℂ) (a : ℂ)
+    (hKsym : ∀ z ∈ K, -z ∈ K)
+    (hQsym : ∀ z ∈ Q, -z ∈ Q) (hzero : 0 ∈ Q)
+    (hQ : IsPreconnected Q) (hR : IsPreconnected R)
+    (hcontact : (Q ∩ closure R).Nonempty)
+    (hdis : Disjoint R K) (hunb : ∀ B : ℝ, ∃ z ∈ R, B < ‖z‖)
+    (T : ℕ → Set ((fun z : ℂ => z^2+c) '' (K \ Q)))
+    (hmono : Monotone T) (hcompact : ∀ n, IsCompact (T n))
+    (hcover : ∀ x, ∃ n, x ∈ interior (T n))
+    [∀ n, Finite (ConnectedComponents (T n))]
+    (ha : a ∈ K \ Q) :
+    -a ∉ connectedComponentIn (K \ Q) a := by
+  intro hb
+  have hi := quadratic_no_bypass_of_finite_component_exhaustion c K Q R
+    (connectedComponentIn (K \ Q) a) hKsym hQsym hzero hQ hR hcontact hdis hunb
+    T hmono hcompact hcover isPreconnected_connectedComponentIn (connectedComponentIn_subset _ _)
+  have he : a = -a := hi (mem_connectedComponentIn ha) hb (by ring)
+  have haz : a = 0 := by linear_combination (1/2 : ℂ) * he
+  exact ha.2 (haz.symm ▸ hzero)
+
 end LoopsStationaryCompactContact

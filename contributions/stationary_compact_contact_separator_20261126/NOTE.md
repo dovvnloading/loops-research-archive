@@ -11,7 +11,7 @@ human_review: none
 
 ## Claim
 
-For the actual map f(z)=z²+c, let K be reflection invariant and Q be a reflection-invariant connected critical set containing zero. Suppose Q meets the closure of a preconnected unbounded exterior R disjoint from K. Then every compact subset of f(K minus Q) admits a continuous logarithm of w-c, and f is injective on every compact preconnected subset of K minus Q. If K is compact, any preconnected retained set on which f fails injectivity must have closure meeting Q. This applies in particular to an ambient component containing antipodal points.
+For the actual map f(z)=z²+c, let K be reflection invariant and Q be a reflection-invariant connected critical set containing zero. Suppose Q meets the closure of a preconnected unbounded exterior R disjoint from K. Then every compact subset of f(K minus Q) admits a continuous logarithm of w-c, and f is injective on every compact preconnected subset of K minus Q. If K is compact, any preconnected retained set on which f fails injectivity must have closure meeting Q. This applies in particular to an ambient component containing antipodal points. A further conditional closure proves full connected-component separation, including noncompact witnesses, if the actual retained image admits an increasing compact exhaustion by interiors with finitely many connected components at every stage.
 
 ## Evidence
 
@@ -27,7 +27,12 @@ Candidate Lean development (CI pending): [StationaryCompactContact.lean](../../f
 7. `quadratic_branch_extension_iff` proves that prescribed closed positive and negative sign loci extend to a continuous quadratic inverse branch on a compact Hausdorff base if and only if no connected component meets both. Necessity uses the clopen sign locus of any extension; sufficiency uses the existing compact component separation theorem and a piecewise branch.
 8. `quadratic_section_restriction_extension_iff` gives the exact compatibility test for an independently selected inverse branch on a closed compact substage. This removes ambiguity between existence of a branch at every finite stage and preservation of a specified older branch.
 
-First six theorems: the weighted build step passed at commit `dbb52a442e26e80bd7571da0f0121a23790b26c4` ([run](https://github.com/dovvnloading/loops-research-archive/actions/runs/45884095449)); at the time of writing its dependency audit was still running. The additional four named theorems require their own full CI run.
+9. `quadratic_section_finite_of_finite_components` shows that any reference branch gives at most two choices per connected component, with the values at representatives determining the branch.
+10. `compatible_finite_system` proves coherence in a countable inverse system of nonempty finite levels by compactness of the product of discrete finite levels, without assuming surjectivity of any restriction. Every finite horizon is supplied by restriction from its last stage.
+11. `quadratic_global_section_of_finite_component_exhaustion` applies this to continuous quadratic branches; the compatible family glues continuously because stage interiors cover the target.
+12. `quadratic_global_contact_section`, `quadratic_no_bypass_of_finite_component_exhaustion`, and `quadratic_reflected_separator_finite_component_exhaustion` transfer the abstract gluing back to the actual quadratic map and exclude even connected noncompact or non-path-connected antipodal bypasses under the stated finite-component exhaustion hypothesis.
+
+First six theorems: the exact push-head weighted CI job at `dbb52a442e26e80bd7571da0f0121a23790b26c4` [passed](https://github.com/dovvnloading/loops-research-archive/actions/runs/45884095449/job/140130391553). Its log states `AXIOM_AUDIT weighted StationaryCompactContact: 6 declarations, 6 theorems; allowed axioms only`. The next four named theorems built at `20eaa8cbb51e44c9bd1ee27fcd7081aee371ad75` ([run](https://github.com/dovvnloading/loops-research-archive/actions/runs/45884581789)); dependency audit was pending at the time of writing. The six exhaustion theorems require their own CI verification.
 
 Build: `cd formalization/weighted && lake build StationaryCompactContact`. The source is registered in the Lake target list, theorem index and source inventory using the same edits as contribute.py lean-add. Local Lean and a network-accessible shell checkout are unavailable. Validation is pending the repository CI; no theorem is counted as verified yet.
 
@@ -37,7 +42,7 @@ KKL_NATIVE_TERMINAL_HUBBARD_TREE, KKL_STATIONARY_SELECTED_SMALL_JULIA_PREDECESSO
 
 ## Boundary
 
-No accessible exterior ray, local connectivity, compactness of the removed-set complement, or native marked access is assumed by the compact-witness theorem. The actual source-specific exterior closure contact and reflection saturation of the physical carrier must still be established. The punctured carrier can have noncompact connected components: the result only forces any remaining reflected bypass to accumulate on the removed critical set. It does not exclude such accumulation, establish that the sign-extension test succeeds at every stage of the native construction, prove the native collar/access realization, close the ledger row, or prove MLC. No status record changes.
+No accessible exterior ray, local connectivity, compactness of the removed-set complement, or native marked access is assumed by the compact-witness theorem. The actual source-specific exterior closure contact and reflection saturation of the physical carrier must still be established. The punctured carrier can have noncompact connected components: without the additional exhaustion hypothesis the result only forces any remaining reflected bypass to accumulate on the removed critical set. The exhaustion theorem excludes this residual failure only when the increasing compact finite-component exhaustion of the actual retained image is supplied. Neither the exhaustion nor the sign-extension criterion is verified for the native KKL carrier. The work does not prove the native collar/access realization, close the ledger row, or prove MLC. No status record changes.
 
 ## Attribution
 

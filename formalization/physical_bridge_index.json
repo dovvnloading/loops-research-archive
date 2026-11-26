@@ -2413,7 +2413,13 @@
         "quadratic_compact_contact_section",
         "quadratic_equal_roots_sign",
         "quadratic_branch_extension_iff",
-        "quadratic_section_restriction_extension_iff"
+        "quadratic_section_restriction_extension_iff",
+        "quadratic_section_finite_of_finite_components",
+        "compatible_finite_system",
+        "quadratic_global_section_of_finite_component_exhaustion",
+        "quadratic_global_contact_section",
+        "quadratic_no_bypass_of_finite_component_exhaustion",
+        "quadratic_reflected_separator_finite_component_exhaustion"
       ]
     },
     "obligations": [
