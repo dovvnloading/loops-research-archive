@@ -15,7 +15,7 @@ Candidate Lean theorems for the actual quadratic filled Julia set: native critic
 
 ## Evidence
 
-The registered [StationaryPhysicalItinerary.lean](../../formalization/weighted/StationaryPhysicalItinerary.lean) contains 14 public theorem candidates:
+The registered [StationaryPhysicalItinerary.lean](../../formalization/weighted/StationaryPhysicalItinerary.lean) contains 18 public theorem declarations (the first 14 compiled at `f367e5a`; the expanded module must pass CI):
 
 - `quadratic_critical_limb_injective`
 - `limb_inverse_preconnected`
@@ -31,8 +31,14 @@ The registered [StationaryPhysicalItinerary.lean](../../formalization/weighted/S
 - `limbItinerary_injective`
 - `quadratic_critical_limb_unique_inverse`
 - `quadratic_mark_itinerary_component`
+- `limbItinerary_add`
+- `limbItinerary_prefix_image`
+- `quadratic_marked_restriction_selection`
+- `quadratic_model_carrier_itinerary_component`
 
 The other limb consumes one of the at-most-two inverse roots. Openness and uniqueness on the selected limb preserve connectedness when pulling back the connected target. The fixed cutpoint separates the chosen component from other limbs; iteration gives whole-component recognition, including for a disconnected base by anchoring its terminal component. For an independently supplied physical restriction, connectedness and endpoint membership force inclusion in the same full component. The full-depth itinerary is bijective onto its base: exact image and injectivity are proved separately, so every terminal point of the critical limb has exactly one inverse point with the specified itinerary. A connected central mark containing the anchor discharges the terminal base-component test from actual mark contact alone.
+
+The final four declarations strengthen the test: exact forward images recover every parent of the selected address; actual contact with the pulled-back central mark forces any preconnected supplied restriction into the selected full component, with equality exactly when its image is the entire anchored base. A separate monotone-model theorem obtains connectedness of the physical base from the singleton cut fiber, hereditary unicoherence and a path-connected model limb. It then recognizes the full physical selected component from the model orbit and terminal carrier membership, without assuming the carrier is saturated for the quotient. The needed model and geometric hypotheses remain explicit.
 
 Local Lean is not available in this session; the weighted kernel and transitive axiom CI checks are the verification authority. Until CI succeeds, these are candidate statements only, not credited results.
 

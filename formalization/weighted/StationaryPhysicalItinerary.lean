@@ -344,4 +344,135 @@ theorem quadratic_mark_itinerary_component (c : ℂ)
     hDE hcover hother hBD n hstay
     (hQ.subset_connectedComponentIn hq hQB hterminal)
 
+
+/-- The actual inverse itinerary composes, with no relabeling of
+intermediate components. -/
+theorem limbItinerary_add (F : X → X) (D B : Set X) (m k : ℕ) :
+    limbItinerary F D (limbItinerary F D B m) k =
+      limbItinerary F D B (m+k) := by
+  induction k with
+  | zero => rfl
+  | succ k ih =>
+    change D ∩ F ⁻¹' limbItinerary F D (limbItinerary F D B m) k =
+      D ∩ F ⁻¹' limbItinerary F D B (m+k)
+    rw [ih]
+
+/-- Every parent of a full selected address is recovered as its exact
+forward image. This holds also for disconnected bases. -/
+theorem limbItinerary_prefix_image (F : X → X) (D B : Set X)
+    (hcover : D ⊆ F '' D) (hBD : B ⊆ D) (m k : ℕ) :
+    (F^[k]) '' limbItinerary F D B (m+k) = limbItinerary F D B m := by
+  rw [← limbItinerary_add F D B m k]
+  exact limbItinerary_image F D _ hcover (limbItinerary_subset F D B hBD m) k
+
+/-- Recognition from actual intersection with the pulled-back central
+mark, without an assumed address for any endpoint of the supplied
+restriction. If the restriction covers the entire anchored base,
+uniqueness of the inverse point forces equality, not only inclusion. -/
+theorem quadratic_marked_restriction_selection (c : ℂ)
+    (D E B Q R : Set (quadraticFilled c)) (a d q : quadraticFilled c)
+    (hfix : quadraticFilledMap c a = a)
+    (hDcomp : D = connectedComponentIn ({a} : Set (quadraticFilled c))ᶜ d)
+    (hD : IsOpen D) (hDE : Disjoint D E)
+    (hcover : D ⊆ quadraticFilledMap c '' D)
+    (hother : D ⊆ quadraticFilledMap c '' E)
+    (hBD : B ⊆ D) (hQ : IsPreconnected Q) (hQB : Q ⊆ B) (hq : q ∈ Q)
+    (n : ℕ) (hR : IsPreconnected R)
+    (hRpre : R ⊆ ((quadraticFilledMap c)^[n]) ⁻¹' B)
+    (hcontact : (R ∩ limbItinerary (quadraticFilledMap c) D Q n).Nonempty) :
+    R ⊆ limbItinerary (quadraticFilledMap c) D (connectedComponentIn B q) n ∧
+      (R = limbItinerary (quadraticFilledMap c) D (connectedComponentIn B q) n ↔
+        ((quadraticFilledMap c)^[n]) '' R = connectedComponentIn B q) := by
+  let F := quadraticFilledMap c
+  let L := limbItinerary F D (connectedComponentIn B q) n
+  change R ⊆ L ∧ (R = L ↔ (F^[n]) '' R = connectedComponentIn B q)
+  obtain ⟨x, hxR, hxQ⟩ := hcontact
+  have hroute := (mem_limbItinerary F D Q n x).mp hxQ
+  have hselect : L = connectedComponentIn ((F^[n]) ⁻¹' B) x :=
+    quadratic_mark_itinerary_component c D E B Q a d q x hfix hDcomp hD
+      hDE hcover hother hBD hQ hQB hq n hroute.1 hroute.2
+  have hsub : R ⊆ L := by
+    rw [hselect]
+    exact hR.subset_connectedComponentIn hxR hRpre
+  refine ⟨hsub, ?_⟩
+  have hBsub : connectedComponentIn B q ⊆ D :=
+    (connectedComponentIn_subset B q).trans hBD
+  have hImg : (F^[n]) '' L = connectedComponentIn B q :=
+    limbItinerary_image F D _ hcover hBsub n
+  constructor
+  · intro heq
+    rw [heq, hImg]
+  · intro himage
+    apply Subset.antisymm hsub
+    intro z hz
+    have hzimg : (F^[n]) z ∈ connectedComponentIn B q :=
+      ((mem_limbItinerary F D (connectedComponentIn B q) n z).mp hz).2
+    rw [← himage] at hzimg
+    obtain ⟨w, hw, hweq⟩ := hzimg
+    have hwz : w = z := limbItinerary_injective F D _
+      (quadratic_critical_limb_injective c D E hDE hother) hBsub n
+      (hsub hw) hz hweq
+    exact hwz ▸ hw
+
+/-- Monotone-model orbit data recognize the actual selected component
+even when the closed connected physical carrier is not saturated for
+the quotient. Singleton cut fiber, hereditary unicoherence, and a
+path-connected model limb are explicit hypotheses. The full base
+becomes preconnected; no terminal anchored-component hypothesis is
+needed, only membership in the physical carrier at the terminal time. -/
+theorem quadratic_model_carrier_itinerary_component
+    {Y : Type*} [TopologicalSpace Y] [T2Space Y] [LocallyConnectedSpace Y]
+    (c : ℂ) (p : quadraticFilled c → Y) (G : Y → Y)
+    (hp : Continuous p) (hsurj : Surjective p)
+    (hf : ∀ y : Y, IsPreconnected (p ⁻¹' {y}))
+    (hs : Semiconj p (quadraticFilledMap c) G)
+    (D E T : Set (quadraticFilled c)) (a d x : quadraticFilled c)
+    (hfix : quadraticFilledMap c a = a) (hda : d ≠ a)
+    (hsingleton : p ⁻¹' ({p a} : Set Y) = {a})
+    (hDcomp : D = connectedComponentIn ({a} : Set (quadraticFilled c))ᶜ d)
+    (hpath : IsPathConnected (connectedComponentIn ({p a} : Set Y)ᶜ (p d)))
+    (hu : ∀ U V : Set (quadraticFilled c), IsClosed U → IsClosed V →
+      IsConnected U → IsConnected V → IsPreconnected (U ∩ V))
+    (hTc : IsClosed T) (hT : IsConnected T)
+    (hDE : Disjoint D E)
+    (hcover : D ⊆ quadraticFilledMap c '' D)
+    (hother : D ⊆ quadraticFilledMap c '' E)
+    (n : ℕ)
+    (hmodel : ∀ k ≤ n, (G^[k]) (p x) ∈
+      connectedComponentIn ({p a} : Set Y)ᶜ (p d))
+    (hterminal : ((quadraticFilledMap c)^[n]) x ∈ T) :
+    IsPreconnected (T ∩ D) ∧
+      limbItinerary (quadraticFilledMap c) D (T ∩ D) n =
+        connectedComponentIn (((quadraticFilledMap c)^[n]) ⁻¹' (T ∩ D)) x := by
+  letI : CompactSpace (quadraticFilled c) :=
+    isCompact_iff_compactSpace.mp (quadratic_filled_compact c)
+  let F := quadraticFilledMap c
+  let V := connectedComponentIn ({p a} : Set Y)ᶜ (p d)
+  have hlift : D = p ⁻¹' V :=
+    hDcomp.trans (LoopsStationaryMonotoneGeometry.punctured_component_full_lift
+      p hp hsurj hf a d hsingleton hda)
+  have hVopen : IsOpen V := by
+    dsimp [V]
+    exact isClosed_singleton.isOpen_compl.connectedComponentIn
+  have hDopen : IsOpen D := by
+    rw [hlift]
+    exact hVopen.preimage hp
+  have hbase : IsPreconnected (T ∩ D) := by
+    rw [hlift]
+    exact LoopsStationaryMonotoneGeometry.preconnected_inter_preimage_path_connected
+      p hp hsurj hf hu T V hTc hT hpath
+  have hstay : ∀ k ≤ n, (F^[k]) x ∈ D := by
+    intro k hk
+    rw [hlift]
+    change p ((F^[k]) x) ∈ V
+    rw [hs.iterate_right k x]
+    exact hmodel k hk
+  have hx : x ∈ limbItinerary F D (T ∩ D) n :=
+    (mem_limbItinerary F D _ n x).mpr
+      ⟨fun k hk => hstay k (Nat.le_of_lt hk), hterminal, hstay n le_rfl⟩
+  exact ⟨hbase, (limbItinerary_component F D (T ∩ D) a d hfix hDcomp
+    (quadratic_filled_continuous_open c).1 (quadratic_filled_continuous_open c).2
+    hDopen hcover (quadratic_critical_limb_injective c D E hDE hother)
+    inter_subset_right hbase n).2 x hx⟩
+
 end LoopsStationaryPhysicalItinerary

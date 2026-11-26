@@ -2561,7 +2561,11 @@
         "limbItinerary_image",
         "limbItinerary_injective",
         "quadratic_critical_limb_unique_inverse",
-        "quadratic_mark_itinerary_component"
+        "quadratic_mark_itinerary_component",
+        "limbItinerary_add",
+        "limbItinerary_prefix_image",
+        "quadratic_marked_restriction_selection",
+        "quadratic_model_carrier_itinerary_component"
       ]
     },
     "obligations": [
