@@ -1,0 +1,63 @@
+{
+  "model": {
+    "discard_lower_bound_units": "k",
+    "distinct_scale_pair_comparisons": 32512,
+    "enumerated_masks": 87380,
+    "k_max": 128,
+    "k_min": 1,
+    "marking_packet_cases": 8256,
+    "mask_horizon_max": 8,
+    "maximum_width_units": "k",
+    "radius_ratio": "5/4",
+    "same_scale_cases": 128,
+    "scale_ratio": "1/4",
+    "scope": "rational extrema and finite conflict graph only; not a native realization",
+    "source_width_units": "2*k",
+    "units": "log(5/4)/pi"
+  },
+  "schema": 1,
+  "scope": "source identity and elementary model arithmetic only",
+  "sources": {
+    "DL": {
+      "bytes": 882537,
+      "locators": {
+        "Lemma 5.2": 34,
+        "outermost curves": 35
+      },
+      "pages": 41,
+      "sha256": "e88462e43b3c172cf309d5b3d38caa21ee8f43876bac1e07cce84b309dfb8c6b",
+      "url": "https://arxiv.org/pdf/2309.02107v3",
+      "version": "2309.02107v3"
+    },
+    "KKL": {
+      "bytes": 3992307,
+      "locators": {
+        "(6.25)": 49,
+        "(6.26)": 49,
+        "(6.27)": 50,
+        "(6.28)": 50,
+        "(6.29)": 50,
+        "(6.30)": 50,
+        "(6.34)": 51,
+        "Ideal markings": 56,
+        "Lemma 6.24": 49,
+        "Lemma 6.31": 50,
+        "Lemma A.10": 62,
+        "Lemma A.11": 62,
+        "Lemma A.13": 64,
+        "Lemma A.15": 65,
+        "MLC at Feigenbaum points": 72,
+        "Proposition 6.23": 49,
+        "Proposition A.12": 63,
+        "Proposition A.14": 65,
+        "[DL23b]": 72,
+        "the maximal subwave": 49,
+        "wave subordinate to": 57
+      },
+      "pages": 73,
+      "sha256": "4c08805384b473dc0e55d76491c52c9fbe7c027e6da301f2c365a170ed7d9140",
+      "url": "https://arxiv.org/pdf/2606.27272v1",
+      "version": "2606.27272v1"
+    }
+  }
+}
