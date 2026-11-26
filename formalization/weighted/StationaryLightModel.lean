@@ -863,4 +863,133 @@ theorem involution_singleton_fiber_iff (G S : Y → Y)
     ext z
     simp
 
+
+/-- Whole-fiber transport is equivalent to the setwise lift of
+forward images: every model image is lifted exactly, not just pointwise. -/
+theorem image_preimage_eq_of_fiber_transport
+    (p : X → Y) (F : X → X) (G : Y → Y) (hs : Semiconj p F G)
+    (himage : ∀ y : Y, F '' (p ⁻¹' {y}) = p ⁻¹' {G y})
+    (U : Set Y) :
+    F '' (p ⁻¹' U) = p ⁻¹' (G '' U) := by
+  ext z
+  constructor
+  · rintro ⟨x, hx, rfl⟩
+    exact ⟨p x, hx, (hs x).symm⟩
+  · intro hz
+    obtain ⟨y, hy, hyz⟩ := hz
+    have hz' : z ∈ p ⁻¹' {G y} := hyz.symm
+    rw [← himage y] at hz'
+    obtain ⟨x, hx, hxz⟩ := hz'
+    change p x = y at hx
+    refine ⟨x, ?_, hxz⟩
+    change p x ∈ U
+    rwa [hx]
+
+/-- Any two disjoint model sheets surjecting onto the same target
+force the physical map to be injective and surjective on both full
+lifts. A third physical inverse point would contradict degree two.
+No injectivity on the model sheets is needed for this argument. -/
+theorem physical_two_sheet_bijOn
+    (p : X → Y) (F : X → X) (G : Y → Y) (hs : Semiconj p F G)
+    (himage : ∀ y : Y, F '' (p ⁻¹' {y}) = p ⁻¹' {G y})
+    (hdegree : ∀ x u v : X, F x = F u → F x = F v →
+      x = u ∨ x = v ∨ u = v)
+    (U V W : Set Y) (hUV : Disjoint U V)
+    (hUW : G '' U = W) (hVW : G '' V = W) :
+    BijOn F (p ⁻¹' U) (p ⁻¹' W) ∧ BijOn F (p ⁻¹' V) (p ⁻¹' W) := by
+  have aux (A B : Set Y) (hAB : Disjoint A B)
+      (hA : G '' A = W) (hB : G '' B = W) :
+      BijOn F (p ⁻¹' A) (p ⁻¹' W) := by
+    have him : F '' (p ⁻¹' A) = p ⁻¹' W := by
+      rw [image_preimage_eq_of_fiber_transport p F G hs himage A, hA]
+    refine ⟨?_, ?_, ?_⟩
+    · intro x hx
+      rw [← him]
+      exact ⟨x, hx, rfl⟩
+    · intro x hx z hz hxz
+      have hv : G (p x) ∈ W := by
+        rw [← hA]
+        exact ⟨p x, hx, rfl⟩
+      rw [← hB] at hv
+      obtain ⟨v, hvB, hve⟩ := hv
+      have hFx : F x ∈ p ⁻¹' {G v} := by
+        change p (F x) = G v
+        rw [hs x, hve]
+      rw [← himage v] at hFx
+      obtain ⟨w, hw, hwx⟩ := hFx
+      change p w = v at hw
+      have hwB : p w ∈ B := by rwa [hw]
+      rcases hdegree x z w hxz hwx.symm with he | he | he
+      · exact he
+      · have hxB : p x ∈ B := he.symm ▸ hwB
+        exact False.elim ((Set.disjoint_left.mp hAB) hx hxB)
+      · have hzB : p z ∈ B := he.symm ▸ hwB
+        exact False.elim ((Set.disjoint_left.mp hAB) hz hzB)
+    · intro w hw
+      rw [← him] at hw
+      exact hw
+  exact ⟨aux U V hUV hUW hVW, aux V U hUV.symm hVW hUW⟩
+
+/-- At a model point that distinguishes opposite physical roots,
+there are two open model sheets with exact disjoint full physical
+lifts. Both the model map and the genuine filled quadratic restrict
+to bijections on the corresponding sheets over their targets.
+In particular these are not merely two abstract combinatorial labels. -/
+theorem quadratic_filled_light_lifted_two_sheets [T2Space Y]
+    (c : ℂ) (p : quadraticFilled c → Y) (G : Y → Y)
+    (hp : Continuous p) (hsurj : Surjective p)
+    (hs : Semiconj p (quadraticFilledMap c) G)
+    (hf : ∀ y : Y, IsPreconnected (p ⁻¹' {y}))
+    (hlight : ∀ y : Y, IsTotallyDisconnected (G ⁻¹' {y}))
+    (x z : quadraticFilled c) (hz : (z : ℂ) = -(x : ℂ))
+    (hne : p z ≠ p x) :
+    ∃ U V W : Set Y, IsOpen U ∧ IsOpen V ∧ IsOpen W ∧
+      p x ∈ U ∧ p z ∈ V ∧ G (p x) ∈ W ∧ Disjoint U V ∧
+      G ⁻¹' W = U ∪ V ∧ BijOn G U W ∧ BijOn G V W ∧
+      Disjoint (p ⁻¹' U) (p ⁻¹' V) ∧
+      quadraticFilledMap c ⁻¹' (p ⁻¹' W) = p ⁻¹' U ∪ p ⁻¹' V ∧
+      BijOn (quadraticFilledMap c) (p ⁻¹' U) (p ⁻¹' W) ∧
+      BijOn (quadraticFilledMap c) (p ⁻¹' V) (p ⁻¹' W) := by
+  obtain ⟨S, hSc, hSi, ho, hS, hpair⟩ :=
+    quadratic_filled_light_model_involution c p G hp hsurj hs hf hlight
+  have hne' : S (p x) ≠ p x := by
+    rw [hS x z hz]
+    exact hne
+  obtain ⟨U, V, W, hU, hV, hW, hxU, hzV, hyW, hUV, hpre, hUW, hVW,
+    hUi, hVi⟩ := involution_local_two_sheets G S hSc hSi ho hpair (p x) hne'
+  have hmodelU : BijOn G U W := by
+    refine ⟨?_, hUi, ?_⟩
+    · intro u hu
+      rw [← hUW]
+      exact ⟨u, hu, rfl⟩
+    · intro w hw
+      rw [← hUW] at hw
+      exact hw
+  have hmodelV : BijOn G V W := by
+    refine ⟨?_, hVi, ?_⟩
+    · intro v hv
+      rw [← hVW]
+      exact ⟨v, hv, rfl⟩
+    · intro w hw
+      rw [← hVW] at hw
+      exact hw
+  have hprephys : quadraticFilledMap c ⁻¹' (p ⁻¹' W) =
+      p ⁻¹' U ∪ p ⁻¹' V := by
+    ext w
+    change p (quadraticFilledMap c w) ∈ W ↔ p w ∈ U ∪ V
+    rw [hs w]
+    change p w ∈ G ⁻¹' W ↔ p w ∈ U ∪ V
+    rw [hpre]
+  have hphysdisj : Disjoint (p ⁻¹' U) (p ⁻¹' V) := by
+    apply Set.disjoint_left.mpr
+    intro w hwU hwV
+    exact (Set.disjoint_left.mp hUV) hwU hwV
+  have himage := quadratic_filled_light_fiber_image c p G hp hsurj hs hf hlight
+  obtain ⟨hphysU, hphysV⟩ := physical_two_sheet_bijOn
+    p (quadraticFilledMap c) G hs himage
+    (quadratic_filled_no_three_predecessors c) U V W hUV hUW hVW
+  rw [hS x z hz] at hzV
+  exact ⟨U, V, W, hU, hV, hW, hxU, hzV, hyW, hUV, hpre, hmodelU, hmodelV,
+    hphysdisj, hprephys, hphysU, hphysV⟩
+
 end LoopsStationaryLightModel

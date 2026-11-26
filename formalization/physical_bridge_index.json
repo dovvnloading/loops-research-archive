@@ -2357,7 +2357,10 @@
         "model_involution_of_fiber_transport",
         "involution_local_two_sheets",
         "quadratic_filled_light_model_involution",
-        "involution_singleton_fiber_iff"
+        "involution_singleton_fiber_iff",
+        "image_preimage_eq_of_fiber_transport",
+        "physical_two_sheet_bijOn",
+        "quadratic_filled_light_lifted_two_sheets"
       ]
     },
     "obligations": [
