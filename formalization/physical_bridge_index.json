@@ -2340,7 +2340,11 @@
         "sectors_eventually_separate",
         "live_sector_equiv",
         "exact_finite_lookahead_rank",
-        "two_surviving_sectors_obstruct"
+        "two_surviving_sectors_obstruct",
+        "ancestor_sector_subset",
+        "contact_iff_ancestor_range",
+        "live_eq_ancestor_survivors",
+        "exact_ancestor_rank"
       ]
     },
     "obligations": [
