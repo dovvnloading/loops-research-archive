@@ -620,4 +620,247 @@ theorem quadratic_filled_singleton_anchor_full_degree
   refine ⟨M, hM, ?_⟩
   omega
 
+
+/-- A two-point physical symmetry descends through whole-fiber transport,
+not merely through the numerical degree bound. The resulting model
+symmetry is continuous, involutive, and exhausts every predecessor fiber. -/
+theorem model_involution_of_fiber_transport [CompactSpace X] [T2Space Y]
+    (p : X → Y) (F : X → X) (G : Y → Y) (s : X → X)
+    (hp : Continuous p) (hc : Continuous s) (hsurj : Surjective p)
+    (hs : Semiconj p F G) (hinv : Involutive s)
+    (hsym : ∀ x, F (s x) = F x)
+    (hpair : ∀ x z : X, F z = F x → z = x ∨ z = s x)
+    (himage : ∀ y : Y, F '' (p ⁻¹' {y}) = p ⁻¹' {G y}) :
+    ∃ S : Y → Y, Continuous S ∧ Involutive S ∧
+      (∀ x : X, S (p x) = p (s x)) ∧
+      (∀ y : Y, G ⁻¹' {G y} = {y, S y}) := by
+  classical
+  have aux (u v : X) (he : p u = p v) (hne : p (s u) ≠ p u) :
+      p (s u) = p (s v) := by
+    have hw : F v ∈ p ⁻¹' {G (p (s u))} := by
+      change p (F v) = G (p (s u))
+      calc
+        p (F v) = G (p v) := hs v
+        _ = G (p u) := congrArg G he.symm
+        _ = p (F u) := (hs u).symm
+        _ = p (F (s u)) := congrArg p (hsym u).symm
+        _ = G (p (s u)) := hs (s u)
+    rw [← himage (p (s u))] at hw
+    obtain ⟨w, hw, hwv⟩ := hw
+    change p w = p (s u) at hw
+    rcases hpair v w hwv with h | h
+    · exact False.elim (hne (hw.symm.trans ((congrArg p h).trans he.symm)))
+    · exact hw.symm.trans (congrArg p h)
+  have hconst : ∀ x z : X, p x = p z → p (s x) = p (s z) := by
+    intro x z h
+    by_cases he : p (s x) = p x
+    · by_contra hn
+      have hnz : p (s z) ≠ p z := by
+        intro hz
+        exact hn (he.trans (h.trans hz.symm))
+      exact hn (aux z x h.symm hnz).symm
+    · exact aux x z h he
+  let S : Y → Y := fun y => p (s (Classical.choose (hsurj y)))
+  have hS (x : X) : S (p x) = p (s x) :=
+    hconst _ _ (Classical.choose_spec (hsurj (p x)))
+  have hSc : Continuous S := by
+    apply continuous_iff_isClosed.mpr
+    intro A hA
+    have hpre : S ⁻¹' A = p '' ((p ∘ s) ⁻¹' A) := by
+      ext y
+      constructor
+      · intro hy
+        obtain ⟨x, rfl⟩ := hsurj y
+        change S (p x) ∈ A at hy
+        rw [hS] at hy
+        exact ⟨x, hy, rfl⟩
+      · rintro ⟨x, hx, rfl⟩
+        change S (p x) ∈ A
+        rw [hS]
+        exact hx
+    rw [hpre]
+    exact hp.isClosedMap _ (hA.preimage (hp.comp hc))
+  refine ⟨S, hSc, ?_, hS, ?_⟩
+  · intro y
+    obtain ⟨x, rfl⟩ := hsurj y
+    rw [hS x, hS (s x), hinv x]
+  · intro y
+    obtain ⟨x, rfl⟩ := hsurj y
+    rw [hS x]
+    ext z
+    constructor
+    · intro hz
+      change G z = G (p x) at hz
+      have hw : F x ∈ p ⁻¹' {G z} := by
+        change p (F x) = G z
+        rw [hs x, hz]
+      rw [← himage z] at hw
+      obtain ⟨w, hw, hwx⟩ := hw
+      change p w = z at hw
+      rw [mem_insert_iff, mem_singleton_iff]
+      rcases hpair x w hwx with he | he
+      · exact Or.inl (hw.symm.trans (congrArg p he))
+      · exact Or.inr (hw.symm.trans (congrArg p he))
+    · intro hz
+      rw [mem_insert_iff, mem_singleton_iff] at hz
+      change G z = G (p x)
+      rcases hz with rfl | rfl
+      · rfl
+      · rw [← hs (s x), hsym x, hs x]
+
+/-- A continuous two-sheet symmetry gives actual local inverse sheets:
+away from its fixed locus there is an open target neighborhood whose
+full inverse image is the disjoint union of two open sheets, with the
+map injective on each. Both sheets map onto the entire neighborhood. -/
+theorem involution_local_two_sheets [T2Space Y]
+    (G S : Y → Y) (hc : Continuous S) (hinv : Involutive S)
+    (ho : IsOpenMap G)
+    (hpair : ∀ y : Y, G ⁻¹' {G y} = {y, S y})
+    (y : Y) (hne : S y ≠ y) :
+    ∃ U V W : Set Y, IsOpen U ∧ IsOpen V ∧ IsOpen W ∧
+      y ∈ U ∧ S y ∈ V ∧ G y ∈ W ∧ Disjoint U V ∧
+      G ⁻¹' W = U ∪ V ∧ G '' U = W ∧ G '' V = W ∧
+      InjOn G U ∧ InjOn G V := by
+  obtain ⟨A, B, hA, hB, hy, hSy, hab⟩ := t2_separation hne.symm
+  let U : Set Y := A ∩ S ⁻¹' B
+  let V : Set Y := S '' U
+  let W : Set Y := G '' U
+  have hU : IsOpen U := hA.inter (hB.preimage hc)
+  have hyU : y ∈ U := ⟨hy, hSy⟩
+  have hVU : V = S ⁻¹' U := by
+    ext z
+    constructor
+    · rintro ⟨x, hx, rfl⟩
+      change S (S x) ∈ U
+      rw [hinv x]
+      exact hx
+    · intro hz
+      exact ⟨S z, hz, hinv z⟩
+  have hV : IsOpen V := hVU.symm ▸ hU.preimage hc
+  have hUV : Disjoint U V := by
+    apply Set.disjoint_left.mpr
+    intro z hz hZv
+    obtain ⟨w, hw, rfl⟩ := hZv
+    exact (Set.disjoint_left.mp hab) hz.1 hw.2
+  have hEq (z : Y) : G (S z) = G z := by
+    have h : S z ∈ G ⁻¹' {G z} := by
+      rw [hpair z]
+      exact Or.inr rfl
+    exact h
+  have hpre : G ⁻¹' W = U ∪ V := by
+    ext z
+    constructor
+    · intro hz
+      obtain ⟨w, hw, hwz⟩ := hz
+      have hz' : z ∈ G ⁻¹' {G w} := hwz.symm
+      rw [hpair w, mem_insert_iff, mem_singleton_iff] at hz'
+      rcases hz' with rfl | rfl
+      · exact Or.inl hw
+      · exact Or.inr ⟨w, hw, rfl⟩
+    · intro hz
+      rcases hz with hz | hz
+      · exact ⟨z, hz, rfl⟩
+      · obtain ⟨w, hw, rfl⟩ := hz
+        exact ⟨w, hw, (hEq w).symm⟩
+  have hVW : G '' V = W := by
+    ext z
+    constructor
+    · rintro ⟨_, ⟨w, hw, rfl⟩, rfl⟩
+      exact ⟨w, hw, (hEq w).symm⟩
+    · rintro ⟨w, hw, rfl⟩
+      exact ⟨S w, ⟨w, hw, rfl⟩, hEq w⟩
+  have hUi : InjOn G U := by
+    intro x hx z hz h
+    have hz' : z ∈ G ⁻¹' {G x} := h.symm
+    rw [hpair x, mem_insert_iff, mem_singleton_iff] at hz'
+    rcases hz' with rfl | he
+    · rfl
+    · exact False.elim ((Set.disjoint_left.mp hUV) hz ⟨x, hx, he.symm⟩)
+  have hVi : InjOn G V := by
+    intro x hx z hz h
+    obtain ⟨u, hu, rfl⟩ := hx
+    obtain ⟨v, hv, rfl⟩ := hz
+    have he : G u = G v := (hEq u).symm.trans (h.trans (hEq v))
+    exact congrArg S (hUi hu hv he)
+  exact ⟨U, V, W, hU, hV, ho U hU, hyU, ⟨y, hyU, rfl⟩,
+    ⟨y, hyU, rfl⟩, hUV, hpre, rfl, hVW, hUi, hVi⟩
+
+/-- The continuous sign symmetry of the actual quadratic descends to
+the light monotone geometric model. This supplies a global geometric
+two-sheet structure, not just a bound on fiber cardinalities. -/
+theorem quadratic_filled_light_model_involution [T2Space Y]
+    (c : ℂ) (p : quadraticFilled c → Y) (G : Y → Y)
+    (hp : Continuous p) (hsurj : Surjective p)
+    (hs : Semiconj p (quadraticFilledMap c) G)
+    (hf : ∀ y : Y, IsPreconnected (p ⁻¹' {y}))
+    (hlight : ∀ y : Y, IsTotallyDisconnected (G ⁻¹' {y})) :
+    ∃ S : Y → Y, Continuous S ∧ Involutive S ∧ IsOpenMap G ∧
+      (∀ x z : quadraticFilled c, (z : ℂ) = -(x : ℂ) → S (p x) = p z) ∧
+      (∀ y : Y, G ⁻¹' {G y} = {y, S y}) := by
+  letI : CompactSpace (quadraticFilled c) :=
+    isCompact_iff_compactSpace.mp (quadratic_filled_compact c)
+  have hneg (x : quadraticFilled c) : -(x : ℂ) ∈ quadraticFilled c := by
+    apply (quadratic_filled_complete_invariant c (-(x : ℂ))).mp
+    have he : (-(x : ℂ))^2+c = (x : ℂ)^2+c := by ring
+    rw [he]
+    exact (quadraticFilledMap c x).property
+  let s : quadraticFilled c → quadraticFilled c := fun x => ⟨-(x : ℂ), hneg x⟩
+  have hsc : Continuous s := by
+    apply Continuous.subtype_mk
+    exact (continuous_subtype_val : Continuous
+      (Subtype.val : quadraticFilled c → ℂ)).neg
+  have hsinv : Involutive s := by
+    intro x
+    apply Subtype.ext
+    change -(-(x : ℂ)) = (x : ℂ)
+    exact neg_neg _
+  have hsym (x : quadraticFilled c) :
+      quadraticFilledMap c (s x) = quadraticFilledMap c x := by
+    apply Subtype.ext
+    change (-(x : ℂ))^2+c = (x : ℂ)^2+c
+    ring
+  have hpair (x z : quadraticFilled c)
+      (hz : quadraticFilledMap c z = quadraticFilledMap c x) :
+      z = x ∨ z = s x := by
+    have he := congrArg (fun w : quadraticFilled c => (w : ℂ)) hz
+    change (z : ℂ)^2+c = (x : ℂ)^2+c at he
+    have hm : ((z : ℂ)-(x : ℂ))*((z : ℂ)+(x : ℂ)) = 0 := by
+      calc
+        _ = ((z : ℂ)^2+c)-((x : ℂ)^2+c) := by ring
+        _ = 0 := by rw [he, sub_self]
+    rcases mul_eq_zero.mp hm with h | h
+    · exact Or.inl (Subtype.ext (sub_eq_zero.mp h))
+    · right
+      apply Subtype.ext
+      change (z : ℂ) = -(x : ℂ)
+      linear_combination h
+  have himage := quadratic_filled_light_fiber_image c p G hp hsurj hs hf hlight
+  obtain ⟨S, hS, hSi, hSp, hSF⟩ := model_involution_of_fiber_transport
+    p (quadraticFilledMap c) G s hp hsc hsurj hs hsinv hsym hpair himage
+  have ho := quadratic_restriction_open c (quadraticFilled c)
+    (quadraticFilledMap c) (fun _ => rfl)
+    (fun z hz => (quadratic_filled_complete_invariant c z).mp hz)
+  refine ⟨S, hS, hSi, model_open_of_fiber_transport p (quadraticFilledMap c)
+    G hp hsurj hs ho himage, ?_, hSF⟩
+  intro x z hz
+  rw [hSp]
+  exact congrArg p (Subtype.ext hz.symm)
+
+/-- A one-point model predecessor fiber is exactly a fixed point of
+the descended involution. No identification of that fixed locus with
+the physical critical point is silently imposed. -/
+theorem involution_singleton_fiber_iff (G S : Y → Y)
+    (hpair : ∀ y : Y, G ⁻¹' {G y} = {y, S y}) (y : Y) :
+    G ⁻¹' {G y} = {y} ↔ S y = y := by
+  rw [hpair y]
+  constructor
+  · intro h
+    have hy : S y ∈ ({y, S y} : Set Y) := Or.inr rfl
+    rw [h] at hy
+    exact hy
+  · intro h
+    rw [h]
+    ext z
+    simp
+
 end LoopsStationaryLightModel
