@@ -11,7 +11,7 @@ human_review: none
 
 ## Claim
 
-Candidate Lean extension: if two closed ambient sheets cover the retained carrier and all their retained interface points lie in a single connected component of the selected sheet, restriction of every ambient connected component to that sheet equals its local component. Neither compactness nor local connectivity is required; the interface need not be connected or a singleton. If the retained exterior is preconnected and the interface is nonempty, the criterion is necessary as well. For a finite closed cover by preconnected retained exterior patches each anchored to the selected sheet, there is an exact no-bypass equivalence even when patches overlap outside that sheet.
+Lean-verified extension (first eight named results): if two closed ambient sheets cover the retained carrier and all their retained interface points lie in a single connected component of the selected sheet, restriction of every ambient connected component to that sheet equals its local component. Neither compactness nor local connectivity is required; the interface need not be connected or a singleton. If the retained exterior is preconnected and the interface is nonempty, the criterion is necessary as well. For a finite closed cover by preconnected retained exterior patches each anchored to the selected sheet, there is an exact no-bypass equivalence even when patches overlap outside that sheet.
 
 ## Evidence
 
@@ -26,7 +26,11 @@ Registered module: [StationaryMultiInterface.lean](../../formalization/weighted/
 - `component_inter_finite_patches`: attach patches one at a time. A new patch contacts the growing carrier either in the original selected sheet or in a previously attached patch. In the latter case preconnectedness and compatible anchor components force the contact into the same growing component. The first theorem therefore applies at each insertion, without assuming disjointness of exterior patches.
 - `finite_patches_no_bypass_iff`: necessity of the two conditions follows by following a connected patch, or two patches with an actual retained overlap, to their anchors. Thus individual contact absorption plus anchor compatibility at every overlap is exactly equivalent to no new component mergers on the selected sheet. This gives a finite incidence criterion, not an assertion that the native carrier already has the required finite closed patch cover.
 
-Build: `cd formalization/weighted && lake build StationaryMultiInterface`. Local Lean and network access for a git checkout are unavailable. The module is registered in the existing Lake target, theorem index and source inventory. **Candidate only pending successful CI compilation and transitive dependency audit.** No check is weakened.
+- `compact_clopen_separator_of_component_disjoint`, `compact_closed_cover_no_bypass_iff`: further candidate compact-carrier extension. On a compact Hausdorff retained carrier, pairwise compatibility of interface points in each exterior component is necessary and sufficient, even for infinitely many exterior components. The proof uses the compact Hausdorff component quotient to separate closed sets by a clopen set, then glues compatible clopen partitions across the closed cover. This removes the finite cover and anchor hypotheses but adds compactness of the retained carrier. **These two additions are pending CI.**
+
+Build: `cd formalization/weighted && lake build StationaryMultiInterface`. Local Lean and network access for a git checkout are unavailable. The module is registered in the existing Lake target, theorem index and source inventory. No check is weakened.
+
+Verification checkpoint for the first eight theorems: [commit c3955b9](https://github.com/dovvnloading/loops-research-archive/commit/c3955b9094892a2f92d5de9ce0cf7383a3baf0aa), [weighted CI job](https://github.com/dovvnloading/loops-research-archive/actions/runs/45870097425/job/140082993420). The build completed successfully, the log reports `Built StationaryMultiInterface (4.2s)`, `AXIOM_AUDIT weighted StationaryMultiInterface: 14 declarations, 13 theorems; allowed axioms only` and `AXIOM_AUDIT_PASS weighted: 70 modules, 1897 declarations`. Upstream synchronization cancelled the workflow after those lines; the original job's final conclusion is cancelled, not green.
 
 ## Dependencies
 

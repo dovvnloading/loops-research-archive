@@ -2221,7 +2221,9 @@
         "patchedCarrier_insert",
         "patchedCarrier_closed",
         "component_inter_finite_patches",
-        "finite_patches_no_bypass_iff"
+        "finite_patches_no_bypass_iff",
+        "compact_clopen_separator_of_component_disjoint",
+        "compact_closed_cover_no_bypass_iff"
       ]
     },
     "obligations": [

@@ -296,4 +296,156 @@ theorem finite_patches_no_bypass_iff {ι : Type*}
       hA hB hBconn hanchor hattach hoverlap hx
     rwa [he] at hh
 
+/-- In a compact Hausdorff space, two closed sets with no connected
+component meeting both can be separated by a clopen set. The component
+quotient is compact Hausdorff and totally disconnected. -/
+theorem compact_clopen_separator_of_component_disjoint
+    {Y : Type*} [TopologicalSpace Y] [CompactSpace Y] [T2Space Y]
+    (L R : Set Y) (hL : IsClosed L) (hR : IsClosed R)
+    (hsep : ∀ x ∈ L, ∀ y ∈ R, y ∉ connectedComponent x) :
+    ∃ U : Set Y, IsClopen U ∧ L ⊆ U ∧ Disjoint U R := by
+  let p : Y → ConnectedComponents Y := ConnectedComponents.mk
+  have hp : Continuous p := ConnectedComponents.continuous_coe
+  have hLc : IsClosed (p '' L) := (hL.isCompact.image hp).isClosed
+  have hRc : IsClosed (p '' R) := (hR.isCompact.image hp).isClosed
+  have hsub : p '' L ⊆ (p '' R)ᶜ := by
+    rintro _ ⟨x, hx, rfl⟩ ⟨y, hy, he⟩
+    have hcomp : y ∈ connectedComponent x :=
+      ConnectedComponents.coe_eq_coe'.mp he
+    exact hsep x hx y hy hcomp
+  obtain ⟨V, hV, hLV, hVR⟩ :=
+    exists_clopen_of_closed_subset_open hLc hRc.isOpen_compl hsub
+  refine ⟨p ⁻¹' V, ⟨hV.1.preimage hp, hV.2.preimage hp⟩, ?_, ?_⟩
+  · intro x hx
+    exact hLV ⟨x, hx, rfl⟩
+  · rw [Set.disjoint_left]
+    intro x hx hxR
+    exact (hVR hx) ⟨x, hxR, rfl⟩
+
+/-- Compact-carrier no-bypass criterion without a finite patch cover.
+It is necessary and sufficient that any two retained interface points
+in the same exterior component already lie in the same selected-sheet
+component. There may be infinitely many exterior components, and
+components with no interface points require no anchor. -/
+theorem compact_closed_cover_no_bypass_iff [T2Space X]
+    (S A B : Set X) (hS : IsCompact S)
+    (hA : IsClosed A) (hB : IsClosed B) (hcover : S ⊆ A ∪ B) :
+    (∀ x ∈ S ∩ A, connectedComponentIn S x ∩ A =
+      connectedComponentIn (S ∩ A) x) ↔
+    (∀ u v, u ∈ S ∩ A ∩ B → v ∈ S ∩ A ∩ B →
+      v ∈ connectedComponentIn (S ∩ B) u →
+      v ∈ connectedComponentIn (S ∩ A) u) := by
+  constructor
+  · intro h u v hu hv hvB
+    rw [← h u hu.1]
+    exact ⟨connectedComponentIn_mono u inter_subset_left hvB, hv.1.2⟩
+  · intro h x hx
+    classical
+    let T := S ∩ A
+    let E := S ∩ B
+    letI : CompactSpace T := isCompact_iff_compactSpace.mp (hS.inter_right hA)
+    letI : CompactSpace E := isCompact_iff_compactSpace.mp (hS.inter_right hB)
+    have partition (D : Set X) (U : Set D) :
+        D ⊆ ((↑) : D → X) '' U ∪ ((↑) : D → X) '' Uᶜ ∧
+        Disjoint (((↑) : D → X) '' U) (((↑) : D → X) '' Uᶜ) := by
+      constructor
+      · intro z hz
+        let w : D := ⟨z, hz⟩
+        by_cases hw : w ∈ U
+        · exact Or.inl ⟨w, hw, rfl⟩
+        · exact Or.inr ⟨w, hw, rfl⟩
+      · rw [Set.disjoint_left]
+        rintro _ ⟨u, hu, rfl⟩ ⟨v, hv, he⟩
+        have he' : v = u := Subtype.ext he
+        exact hv (he'.symm ▸ hu)
+    apply Subset.antisymm
+    · intro y hy
+      by_contra hnot
+      let x' : T := ⟨x, hx⟩
+      let y' : T := ⟨y, ⟨connectedComponentIn_subset S x hy.1, hy.2⟩⟩
+      have hyn : y' ∉ connectedComponent x' := by
+        intro hm
+        apply hnot
+        rw [connectedComponentIn_eq_image hx]
+        exact ⟨y', hm, rfl⟩
+      rw [connectedComponent_eq_iInter_isClopen x'] at hyn
+      have hs : ∃ U : {U : Set T // IsClopen U ∧ x' ∈ U},
+          y' ∉ U.val := by
+        by_contra hn
+        apply hyn
+        exact mem_iInter.mpr (fun U => by
+          by_contra hu
+          exact hn ⟨U, hu⟩)
+      obtain ⟨U, hyU⟩ := hs
+      have hU : IsClopen U.val := U.property.1
+      let L := ((↑) : T → X) '' U.val
+      let R := ((↑) : T → X) '' U.valᶜ
+      have hL : IsClosed L := (hU.1.isCompact.image continuous_subtype_val).isClosed
+      have hR : IsClosed R := (hU.compl.1.isCompact.image continuous_subtype_val).isClosed
+      have hxL : x ∈ L := ⟨x', U.property.2, rfl⟩
+      have hyR : y ∈ R := ⟨y', hyU, rfl⟩
+      let LB : Set E := ((↑) : E → X) ⁻¹' L
+      let RB : Set E := ((↑) : E → X) ⁻¹' R
+      have hLB : IsClosed LB := hL.preimage continuous_subtype_val
+      have hRB : IsClosed RB := hR.preimage continuous_subtype_val
+      have hsep : ∀ u ∈ LB, ∀ v ∈ RB, v ∉ connectedComponent u := by
+        intro u hu v hv huv
+        obtain ⟨u', hu', heu⟩ := hu
+        obtain ⟨v', hv', hev⟩ := hv
+        have huT : (u : X) ∈ T := heu ▸ u'.property
+        have hvT : (v : X) ∈ T := hev ▸ v'.property
+        have huvB : (v : X) ∈ connectedComponentIn E (u : X) := by
+          rw [connectedComponentIn_eq_image u.property]
+          exact ⟨v, huv, rfl⟩
+        have huvA := h (u : X) (v : X) ⟨huT, u.property.2⟩
+          ⟨hvT, v.property.2⟩ huvB
+        have hAcomp : (v' : X) ∈ connectedComponentIn T (u' : X) := by
+          rw [heu, hev]
+          exact huvA
+        rw [connectedComponentIn_eq_image u'.property] at hAcomp
+        obtain ⟨w, hw, he⟩ := hAcomp
+        have he' : w = v' := Subtype.ext he
+        exact hv' (hU.connectedComponent_subset hu' (he' ▸ hw))
+      obtain ⟨W, hW, hLBW, hWRB⟩ :=
+        compact_clopen_separator_of_component_disjoint LB RB hLB hRB hsep
+      let M := ((↑) : E → X) '' W
+      let N := ((↑) : E → X) '' Wᶜ
+      have hM : IsClosed M := (hW.1.isCompact.image continuous_subtype_val).isClosed
+      have hN : IsClosed N := (hW.compl.1.isCompact.image continuous_subtype_val).isClosed
+      have hcoverC : connectedComponentIn S x ⊆ (L ∪ M) ∪ (R ∪ N) := by
+        intro z hz
+        have hzS := connectedComponentIn_subset S x hz
+        rcases hcover hzS with hzA | hzB
+        · rcases (partition T U.val).1 ⟨hzS, hzA⟩ with hzL | hzR
+          · exact Or.inl (Or.inl hzL)
+          · exact Or.inr (Or.inl hzR)
+        · rcases (partition E W).1 ⟨hzS, hzB⟩ with hzM | hzN
+          · exact Or.inl (Or.inr hzM)
+          · exact Or.inr (Or.inr hzN)
+      have hdis : Disjoint (L ∪ M) (R ∪ N) := by
+        rw [Set.disjoint_left]
+        intro z hz hz'
+        rcases hz with hzL | hzM <;> rcases hz' with hzR | hzN
+        · exact Set.disjoint_left.mp (partition T U.val).2 hzL hzR
+        · obtain ⟨w, hw, he⟩ := hzN
+          have hwL : w ∈ LB := by
+            change (w : X) ∈ L
+            rwa [he]
+          exact hw (hLBW hwL)
+        · obtain ⟨w, hw, he⟩ := hzM
+          have hwR : w ∈ RB := by
+            change (w : X) ∈ R
+            rwa [he]
+          exact Set.disjoint_left.mp hWRB hw hwR
+        · exact Set.disjoint_left.mp (partition E W).2 hzM hzN
+      obtain ⟨z, _, hz, hz'⟩ := (isPreconnected_closed_iff.mp
+        (isPreconnected_connectedComponentIn (F := S) (x := x)))
+        (L ∪ M) (R ∪ N) (hL.union hM) (hR.union hN) hcoverC
+        ⟨x, mem_connectedComponentIn hx.1, Or.inl hxL⟩
+        ⟨y, hy.1, Or.inl hyR⟩
+      exact Set.disjoint_left.mp hdis hz hz'
+    · intro y hy
+      exact ⟨connectedComponentIn_mono x inter_subset_left hy,
+        (connectedComponentIn_subset (S ∩ A) x hy).2⟩
+
 end LoopsStationaryMultiInterface
