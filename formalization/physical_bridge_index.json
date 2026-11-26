@@ -2175,7 +2175,15 @@
         "phase_contained_of_frontier_avoidance",
         "deep_cylinder_avoids_cycle",
         "deep_cylinder_avoids_cycle_of_preperiodic_frontier",
-        "critical_orbit_mem_cycle"
+        "critical_orbit_mem_cycle",
+        "orbit_surjective",
+        "multiplier_zero_iff_visit",
+        "critical_values_eq_postcritical_prefix",
+        "derivative_ne_zero_over_cycle_complement",
+        "cycle_closed",
+        "deep_cylinder_common_unramified_neighborhood",
+        "inverse_orbit_bound",
+        "orbit_compact_preimage"
       ]
     },
     "obligations": [
