@@ -50,7 +50,34 @@ CI is to record the numerical results, versioned source download SHA-256 and PDF
 
 ## Results
 
-Pending calculation in the follow-up commit.
+**No** for ordinary PL a priori bounds on realized unbounded-relative-period satellite chains. This is an imported theorem implication, with a finite exact-arithmetic certificate of its envelope. For pseudo-Siegel a priori bounds themselves the outcome is **not a well-posed test**; no yes/no about Problem 4.3 follows. All 135 registered rows were evaluated locally using exact Python Fraction arithmetic after the pre-registration commit `58d58db061a8c1bf005fdf7b024b8c93e4749b2b`; the frozen summary is `results_summary.json`, checked by the verifier on regeneration. Full rows are written to `results.json` by the verifier. Local run took about 1.3 seconds (Python 3.11-compatible standard library); CI pins Python 3.12.
+
+| Chain | k | Lower endpoint of B | Upper endpoint of B |
+|---|---:|---:|---:|
+| linear | 32 | 1.2867991384445606775555345959616481419190 | 1.2867991384445606775555345959616481419191 |
+| linear | 1048576 | 0.4120327143979468283239485289863640028970 | 0.4120327143979468283239485289863640028971 |
+| exponential | 32 | 0.2666094201048480162137785664782561290879 | 0.2666094201048480162137785664782561290880 |
+| exponential | 128 | 0.0697286175665722124558105068571794893872 | 0.0697286175665722124558105068571794893873 |
+| golden convergents | 32 | 0.3816881905037018274963516707403589868719 | 0.3816881905037018274963516707403589868720 |
+| constant | 2 (all) | 2.5285397774261001415531885020520887202836 | 2.5285397774261001415531885020520887202837 |
+
+All displayed B intervals have width 10^-40. Actual m is enclosed only by 0<m<B_upper. First sampled rejection of δ=1/2: linear k=1048576, exponential k=17, golden k=24; constant inconclusive. The preregistered rejection checks at k=32 for exponential and golden both passed. These are not claims that m is close to B or has a matching lower rate.
+
+### Soundness of arithmetic and hostile post-check
+
+For integer x≥2 put e=floor(log2 x) by bit length and y=x/2^e. Then ln x=e ln 2+ln y. For 1≤y≤2, t=(y−1)/(y+1)∈[0,1/3]; the first N=80 terms of 2 sum_{j≥0} t^(2j+1)/(2j+1) are a lower bound, and the omitted positive tail is at most 2t^(2N+1)/((2N+1)(1−t²)). This also bounds ln 2. The alternating series for atan(1/5), atan(1/239) is enclosed by consecutive partial sums; π=16 atan(1/5)−4 atan(1/239). Positive division gives [2π_lower/ln_upper, 2π_upper/ln_lower]. Integer floor/ceiling provide outward endpoints. Each width and the comparisons are asserted exactly; the verifier also checks coprimality, monotonic disjointness of successive nonconstant B intervals, constant equality, and independent coarse π, ln 2 and B(2) bounds. No numerical linearization, finite orbit truncation or floating-point estimates enter.
+
+A priori bounds normally quantify existence of *some* good domains at each scale, not that every arbitrarily chosen restriction has a good collar. The literal frozen H above is stronger than the usual existence hypothesis. This matters for the control: a thin collar may defeat H even when good collars exist. Crucially, BLOT bounds **every** admissible ordinary restriction, so a certified B<δ rejects even the weaker, meaningful existence hypothesis (there exists a collar of modulus ≥δ at each registered level). No post hoc threshold change is used.
+
+For an actual infinite satellite chain, P_k/P_(k−1)=s_k by the definition of relative period; the BLOT hypothesis requires the connected PL sets meet only at the single base point as specified in their Main Theorem. Under that hypothesis the bound holds at every k, so the supremum of the ordinary fundamental annulus moduli over all admissible restrictions is at most B(s_k). If s_k→∞ this supremum tends to zero. For linear s=k, B∼2π/ln k; exponential s=2^k gives B∼(2π/ln 2)/k; Fibonacci denominators yield B∼(2π/ln φ)/k with φ=(1+√5)/2. These are asymptotics of the envelope; the actual moduli may vanish much faster. For unbounded but not divergent s_k, a subsequence suffices to rule out a positive uniform bound. No unique parameter or infinite tuning-limit realization is required for this conditional application. We do not claim existence of the infinite cascades with a unique limiting parameter, which would beg a rigidity question.
+
+### Why this fails as a direct P4.3 experiment; next admissible observable
+
+A pseudo-Siegel disk is almost invariant, and its fjord filling can remove an exterior bottleneck that a genuine small Julia-set PL cycle cannot ignore. A genuine fundamental annulus must separate a compact inner domain from its outer boundary in the original plane; a sector renormalization or filled-fjord regularization may have different boundaries, quotient identifications and admissible paths. No conformal equivalence, monotonic comparison in the needed direction, or uniform distortion constant is provided. The theorem-based degeneration is therefore compatible with the survey's proposed bounded *regularized* geometry. It is not contrary evidence about it. To make a follow-up falsifiable, first specify the source-defined pseudo-Siegel disks/sector charts, dams, first-return horizon and curve family at each actual complex satellite level, then certify either their normalized external interval extremal widths (uniform upper test) or a source-defined collar modulus (uniform lower test); certify the physical identification and any transport before numerical comparison. Denominator-only tuning codes cannot select these domains. The constant control is not a measurement, and the golden convergent comparison is not a bounded-relative-period control.
+
+**Not established:** actual annulus measurements or exact modulus values; a sharp decay rate for m; any pseudo-Siegel bound or counterexample; existence/uniqueness of a limit of the prescribed tuning chains; actual copy diameters or their ratios; domain construction or a regularized-to-ordinary modulus bridge; Problem 4.4, full MLC, any ledger gate or a new imported theorem. The sole positive mathematical input is the published Main Theorem, applied with its stated hypotheses. The numerical component is a finite certificate of its bound, not independent empirical evidence of new dynamics.
+
+Source audit below is separately generated in CI. Reproduce source audit and note insertion with `python3 -B source_audit.py --output sources.json --update-note NOTE.md`. The source survey HTML verified the two short problem statements and the section synopsis; the full section is linked rather than reproduced. The PDF byte hashes and page locations are not claimed until downloaded and checked.
 
 <!-- SOURCE_AUDIT_BEGIN -->
 Source audit pending.
