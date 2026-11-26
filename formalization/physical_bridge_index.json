@@ -3038,6 +3038,110 @@
       "MAPPING_TELESCOPE"
     ]
   },
+  "quadratic-quantitative-coding-20261126": {
+    "guide": "contributions/quadratic_quantitative_coding_20261126/NOTE.md#quadratic-quantitative-coding-20261126",
+    "theorems": {
+      "formalization/weighted/QuadraticCantorGeometry.lean": [
+        "filled_forward",
+        "filled_backward",
+        "filled_step_iff",
+        "escape_reflection",
+        "filled_reflection",
+        "exists_square_root",
+        "exists_center",
+        "norm_step_lower",
+        "norm_bound_sub_one",
+        "norm_bound",
+        "center_norm_sq",
+        "center_ne_zero",
+        "center_norm_ge_two",
+        "branch_distance_product",
+        "filled_disk_cover",
+        "branchDisk_reflection",
+        "branchDisks_disjoint",
+        "quadratic_fiber_iff",
+        "same_disk_expansion"
+      ],
+      "formalization/weighted/ExpandingBinaryCoding.lean": [
+        "prefix_expansion",
+        "prefix_dist_bound",
+        "expanding_address_injective",
+        "expanding_binary_conjugacy",
+        "prefix_intersection_singleton"
+      ],
+      "formalization/weighted/QuadraticCantorSplitting.lean": [
+        "filled_closed",
+        "filled_compact",
+        "filled_nonempty",
+        "filledMap_continuous",
+        "diskLabel_continuous",
+        "diskLabel_expansion",
+        "positive_disk_preimage",
+        "expanding_two_sheet"
+      ],
+      "formalization/weighted/BinaryShiftCensus.lean": [
+        "shift_iterate_apply",
+        "repeatWord_fixed",
+        "repeatWord_prefix",
+        "fixed_point_card",
+        "periodic_extension",
+        "periodic_approximants_tendsto",
+        "periodic_points_dense",
+        "exact_period_exists"
+      ],
+      "formalization/weighted/QuadraticCantorExpansion.lean": [
+        "filled_iterate",
+        "branchDisk_norm_lower",
+        "filled_norm_lower",
+        "filled_norm_ge_one",
+        "filled_norm_sq_lower",
+        "filled_norm_ge_two",
+        "orbit_hasDerivAt",
+        "orbit_deriv_eq",
+        "orbitMultiplier_norm_lower",
+        "deriv_norm_lower_center",
+        "deriv_norm_sq_lower",
+        "deriv_norm_lower",
+        "orbitMultiplier_norm_sq_lower",
+        "deriv_norm_sq_lower_double_parameter",
+        "deriv_norm_lower_four",
+        "deriv_norm_gt_one",
+        "periodic_mem_filled",
+        "periodic_repelling",
+        "critical_escape_pos",
+        "parameter_escape_pos"
+      ],
+      "formalization/weighted/QuadraticCantorCoding.lean": [
+        "filled_iff_bounded_orbit",
+        "filledMap_iterate",
+        "filledMap_periodic_iff",
+        "filled_dist_bound",
+        "filled_conjugacy_exists",
+        "coding_semiconj",
+        "coding_prefix_bound",
+        "unique_point_of_address",
+        "physical_cylinder_intersection",
+        "filled_totally_disconnected",
+        "coding_fixed_iff",
+        "filled_periodic_point_count",
+        "complex_periodic_point_count",
+        "filled_exact_period_exists",
+        "complex_exact_period_repelling",
+        "periodic_approximation",
+        "filled_periodic_points_dense"
+      ],
+      "formalization/weighted/QuadraticCantorBoundary.lean": [
+        "filled_no_isolated",
+        "filled_perfect",
+        "filled_interior_empty",
+        "filled_frontier",
+        "positive_escape_dense"
+      ]
+    },
+    "obligations": [
+      "DIRECT_DECORATION_END_PRIME_END_COFINALITY"
+    ]
+  },
   "local-degree-saturation-20261126": {
     "guide": "contributions/local_degree_saturation_20261126/NOTE.md#local-degree-saturation-20261126",
     "theorems": {
