@@ -58,15 +58,14 @@ theorem quadratic_iterate_deriv_ne_zero_iff (c z : ℂ) (n : ℕ) :
     induction n with
     | zero => simp [returnMultiplier]
     | succ n ih =>
-      simp only [returnMultiplier, mul_ne_zero_iff,
-        show (2 : ℂ) ≠ 0 by norm_num, true_and, ih]
+      rw [returnMultiplier, mul_ne_zero_iff, mul_ne_zero_iff, ih]
       constructor
-      · rintro ⟨hlast, hprev⟩ k hk
+      · rintro ⟨⟨_, hlast⟩, hprev⟩ k hk
         by_cases he : k = n
         · simpa only [he] using hlast
         · exact hprev k (by omega)
       · intro h
-        exact ⟨h n (by omega), fun k hk => h k (by omega)⟩
+        exact ⟨⟨by norm_num, h n (by omega)⟩, fun k hk => h k (by omega)⟩
   have hd : deriv ((quad c)^[n]) z = returnMultiplier c z n := by
     simpa only [returnOrbit_eq_iterate] using (returnMultiplier_hasDerivAt c z n).deriv
   rw [hd, hm]
