@@ -15,7 +15,7 @@ Draft target: sharpen the compact obstacle-remainder clause of VSC4 / virtual_hu
 
 ## Evidence
 
-Candidate Lean module `formalization/weighted/CompactObstacleRemainder.lean` is registered in the weighted build, theorem index and source table. Initial theorems: exact closure criterion, canonical compact difference, connected-obstacle absorption, forward compatibility (including the actual quadratic map), and exact directed-limit stabilization. CI validation pending; no theorem counted yet. No local Lean executable or network checkout is available.
+Candidate Lean module `formalization/weighted/CompactObstacleRemainder.lean` is registered in the weighted build, theorem index and source table. Initial theorems: exact closure criterion, canonical compact difference, connected-obstacle absorption, forward compatibility (including the actual quadratic map), and exact directed-limit stabilization. CI validation pending; no theorem counted yet. The second proof commit adds the least closed remainder and its forward propagation, and constructs an explicit nonstabilizing compact inventory inside the actual Chebyshev bounded-orbit set at c = -2. Every stage is a compact connected carrier admitting a finite separated remainder, but its intersection {0} fails compact separation, and there is no least separated carrier. This is a counterexample to the unrestricted least-carrier extension, not a counterexample to native H1. No local Lean executable or network checkout is available.
 
 ## Dependencies
 

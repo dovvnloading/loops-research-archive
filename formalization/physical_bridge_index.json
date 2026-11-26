@@ -2239,7 +2239,14 @@
         "connected_inventory_obstacle_absorbed",
         "canonical_remainder_forward",
         "directed_remainder_iff_stabilizes",
-        "quadratic_canonical_remainder_forward"
+        "quadratic_canonical_remainder_forward",
+        "closure_remainder_forward",
+        "least_compact_remainder",
+        "chebyshev_inventory_compact",
+        "chebyshev_stage_admissible",
+        "chebyshev_carrier_intersection",
+        "chebyshev_limit_remainder_failure",
+        "chebyshev_no_least_separated_carrier"
       ]
     },
     "obligations": [
