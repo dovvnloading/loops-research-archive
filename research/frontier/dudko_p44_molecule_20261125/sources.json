@@ -1,67 +1,78 @@
 {
+  "missing_anchors": [],
+  "page_numbering": "one-based physical PDF pages; candidate anchors, not verified printed labels",
   "schema": 1,
-  "status": "incomplete: PDF bytes not available locally; final source-lock run not verified",
   "sources": {
-    "Dudko": {
-      "version": "2512.24171v1",
-      "url": "https://arxiv.org/pdf/2512.24171v1",
-      "sha256": null,
-      "anchor_pages": null,
-      "published_locator": {
-        "url": "https://epubs.siam.org/doi/pdf/10.1137/25M1807101#page=18",
-        "physical_page": 18,
-        "printed_page": 133,
-        "statement": "Interpolation Problem 4.4"
-      }
+    "DL": {
+      "anchor_pages": {
+        "Lemma 3.1 / multiplier derivative": [
+          31
+        ],
+        "Proposition 5.41": [
+          73
+        ],
+        "Unstable eigenvalue identification": [
+          31
+        ]
+      },
+      "bytes": 3369779,
+      "pdf_pages": 124,
+      "sha256": "4a8f0f8c3ffd96c6a5a364340f2a7394fc75d0f355a7576040286c47365baec8",
+      "url": "https://arxiv.org/pdf/1808.10425v4",
+      "version": "1808.10425v4"
     },
     "DLS": {
-      "version": "1703.01206v3",
-      "url": "https://arxiv.org/pdf/1703.01206",
-      "sha256": null,
       "anchor_pages": {
-        "Theorem 1.1 / (1.1)": [
-          4
+        "C.3 Molecule Conjecture": [
+          89
         ],
-        "Theorem 3.16": [
-          28
+        "C.3 statement page range": [
+          89
+        ],
+        "C.4 following heading": [
+          90
         ],
         "Lemma 3.18": [
           29
         ],
         "Remark 3.19": [
-          29
+          29,
+          63
         ],
-        "Theorem 7.7 and proof": [
+        "Theorem 1.1": [
+          4
+        ],
+        "Theorem 3.16": [
+          28
+        ],
+        "Theorem 7.7": [
+          61
+        ],
+        "Theorem 7.7 multiplier coordinate": [
           61,
-          62
-        ],
-        "C.3 Molecule Conjecture": [
-          89
-        ],
-        "C.4 following heading": [
-          90
+          66
         ]
-      }
+      },
+      "bytes": 3256391,
+      "pdf_pages": 91,
+      "sha256": "d5d86b1166563221c4a6f57662bd7709c63de8a6ae3968da846304ede91454b5",
+      "url": "https://arxiv.org/pdf/1703.01206v3",
+      "version": "1703.01206v3"
     },
-    "DL": {
-      "version": "1808.10425v4",
-      "url": "https://arxiv.org/pdf/1808.10425",
-      "sha256": null,
+    "Dudko": {
       "anchor_pages": {
-        "Lemma 3.1 / multiplier derivative": [
-          31
+        "Problem 4.4": [
+          18
         ],
-        "Proposition 5.41 and proof": [
-          73,
-          74
+        "Section 4.5": [
+          18
         ]
-      }
+      },
+      "bytes": 12764975,
+      "pdf_pages": 20,
+      "sha256": "8ede4bf8ccfe25a4f325cad41cb729f08f8b1d0d7103ed6dbc89015b1ff8d904",
+      "url": "https://arxiv.org/pdf/2512.24171v1",
+      "version": "2512.24171v1"
     }
-  },
-  "missing_anchors": [
-    "Dudko arXiv v1 physical page",
-    "Dudko SHA-256",
-    "DLS SHA-256",
-    "DL SHA-256"
-  ]
+  }
 }
