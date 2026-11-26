@@ -1,0 +1,22 @@
+{
+  "EE": {
+    "url": "https://arxiv.org/pdf/2601.21905v1",
+    "sha256": "5eb36430a51a3fb6a1c04db15713aebc86068118450893ba2042021e4a8db725",
+    "bytes": 398123
+  },
+  "K": {
+    "url": "https://arxiv.org/pdf/math/0609045v3",
+    "sha256": "46e7ff4d5cc8ea190e439f45b2e4ed7308c1cf588a666daa5150eeb0b435c9c0",
+    "bytes": 888490
+  },
+  "KL1": {
+    "url": "https://arxiv.org/pdf/math/0505191v2",
+    "sha256": null,
+    "bytes": null
+  },
+  "L1": {
+    "url": "https://commack.math.stonybrook.edu/~mlyubich/papers/acta.pdf",
+    "sha256": "a286b6d3c874c803c1d56a669b5850e79c903190534aeab4840664b8e631bf16",
+    "bytes": 6177728
+  }
+}
