@@ -57,7 +57,7 @@ private theorem skewStep_hasStrictFDerivAt (p : ℂ × ℂ) (hp : p.2 ≠ 0) :
       (ContinuousLinearMap.snd ℂ ℂ ℂ) p := hasStrictFDerivAt_snd
   convert! hfst.prodMk ((hsnd.mul hsnd).add hfst) using 1
   · funext q
-    simp only [skewStep, pow_two]
+    simp only [skewStep, pow_two, Pi.add_apply, Pi.mul_apply]
   · ext q <;> simp [stepLinearEquiv] <;> ring
 
 /-- Joint complex analyticity of the parameter-retaining iterate. -/
@@ -87,7 +87,7 @@ theorem quadratic_skew_locally_invertible (n : ℕ) (p : ℂ × ℂ)
     let e' := stepLinearEquiv q.2 hq
     refine ⟨e.trans e', ?_⟩
     have hh := (skewStep_hasStrictFDerivAt q hq).comp p he
-    simpa only [skewStep, skewOrbit, orbit, Function.comp_def] using hh
+    convert! hh using 1 <;> rfl
 
 /-- On an open injective branch, the actual skew iterate has an open
 image and one inverse analytic in both coordinates on that entire image. -/
