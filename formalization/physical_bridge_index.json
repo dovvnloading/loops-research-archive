@@ -2337,7 +2337,10 @@
         "retimed_angular_interval_covers",
         "retimed_connected_subset_covers",
         "retimed_collapsed_fiber_forces_constant",
-        "bounded_orbit_monotone_factor_injective"
+        "bounded_orbit_monotone_factor_injective",
+        "angular_cover_threshold_sharp",
+        "finite_horizon_fiber_preservation_forces_constant",
+        "retimed_angular_fiber_collision"
       ]
     },
     "obligations": [

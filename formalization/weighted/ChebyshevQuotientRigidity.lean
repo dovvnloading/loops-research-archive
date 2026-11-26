@@ -16,7 +16,7 @@ open Set Function LoopsParabolic LoopsChebyshev
 
 noncomputable section
 
-private def anglePoint (t : ℝ) : ℂ := ((2 * Real.cos t : ℝ) : ℂ)
+def anglePoint (t : ℝ) : ℂ := ((2 * Real.cos t : ℝ) : ℂ)
 
 private theorem angle_mem (t : ℝ) : anglePoint t ∈ realSegment 2 := by
   refine ⟨2 * Real.cos t, ?_, rfl⟩
@@ -94,34 +94,34 @@ private theorem angle_interval_subset {S : Set ℂ}
   exact heq ▸ hz
 
 /-- A quantitative full-cover criterion in the actual angular coordinate.
-The constant 3π is sufficient, not claimed optimal. -/
+The uniform angular length 2π is optimal, as proved below. -/
 theorem retimed_angular_interval_covers (p n : ℕ) (a b : ℝ)
-    (hgap : 3 * Real.pi ≤ ((2 : ℝ)^p)^n * (b - a)) :
+    (hgap : 2 * Real.pi ≤ ((2 : ℝ)^p)^n * (b - a)) :
     ((cquad (-2))^[p])^[n] '' (anglePoint '' Icc a b) = realSegment 2 := by
   apply Subset.antisymm
   · rintro _ ⟨z, ⟨t, _, rfl⟩, rfl⟩
     exact retimed_mem p n (angle_mem t)
   · intro z hz
-    obtain ⟨θ, hθ, rfl⟩ := angle_surj hz
+    obtain ⟨θ, _, rfl⟩ := angle_surj hz
     let B : ℝ := ((2 : ℝ)^p)^n
     have hB : 0 < B := by dsimp [B]; positivity
     have hP : 0 < 2 * Real.pi := by linarith [Real.pi_pos]
-    let k : ℤ := ⌈(B * a) / (2 * Real.pi)⌉
-    have hklo : B * a ≤ (k : ℝ) * (2 * Real.pi) :=
+    let k : ℤ := ⌈(B * a - θ) / (2 * Real.pi)⌉
+    have hklo : B * a - θ ≤ (k : ℝ) * (2 * Real.pi) :=
       (div_le_iff₀ hP).mp (Int.le_ceil _)
-    have hkhi : (k : ℝ) * (2 * Real.pi) < B * a + 2 * Real.pi := by
+    have hkhi : (k : ℝ) * (2 * Real.pi) < B * a - θ + 2 * Real.pi := by
       calc
         (k : ℝ) * (2 * Real.pi) <
-            ((B * a) / (2 * Real.pi) + 1) * (2 * Real.pi) :=
+            ((B * a - θ) / (2 * Real.pi) + 1) * (2 * Real.pi) :=
           mul_lt_mul_of_pos_right (Int.ceil_lt_add_one _) hP
-        _ = B * a + 2 * Real.pi := by
+        _ = B * a - θ + 2 * Real.pi := by
           rw [add_mul, div_mul_cancel₀ _ (ne_of_gt hP), one_mul]
-    change 3 * Real.pi ≤ B * (b - a) at hgap
+    change 2 * Real.pi ≤ B * (b - a) at hgap
     let t := (θ + (k : ℝ) * (2 * Real.pi)) / B
     have ht : t ∈ Icc a b := by
       constructor
-      · exact (le_div_iff₀ hB).mpr (by linarith [hθ.1])
-      · exact (div_le_iff₀ hB).mpr (by nlinarith [hθ.2])
+      · exact (le_div_iff₀ hB).mpr (by linarith)
+      · exact (div_le_iff₀ hB).mpr (by nlinarith)
     refine ⟨anglePoint t, ⟨t, ht, rfl⟩, ?_⟩
     rw [angle_retimed]
     change anglePoint (B * t) = anglePoint θ
@@ -160,8 +160,8 @@ theorem retimed_connected_subset_covers (p : ℕ) (hp : 0 < p)
     cases p with
     | zero => omega
     | succ k => rw [pow_succ]; linarith [hpow k]
-  obtain ⟨n, hn⟩ := pow_unbounded_of_one_lt (3 * Real.pi / (v-u)) hbase
-  have hgap : 3 * Real.pi ≤ ((2 : ℝ)^p)^n * (v-u) :=
+  obtain ⟨n, hn⟩ := pow_unbounded_of_one_lt (2 * Real.pi / (v-u)) hbase
+  have hgap : 2 * Real.pi ≤ ((2 : ℝ)^p)^n * (v-u) :=
     ((div_lt_iff₀ (sub_pos.mpr huv)).mp hn).le
   refine ⟨n, Subset.antisymm ?_ ?_⟩
   · rintro _ ⟨w, hw, rfl⟩
@@ -224,6 +224,95 @@ theorem bounded_orbit_monotone_factor_injective {Y : Type*}
     x y hx hy hne heq u ((bounded_iff_realSegment u).mp hu)
     v ((bounded_iff_realSegment v).mp hv)
 
+/-- No smaller uniform angular length suffices for a full cover.
+For every nonnegative δ below 2π the interval centered at π of
+length δ misses the physical endpoint 2. -/
+theorem angular_cover_threshold_sharp (δ : ℝ) (hδ0 : 0 ≤ δ)
+    (hδ : δ < 2 * Real.pi) :
+    ∃ a b : ℝ, a ≤ b ∧ b-a = δ ∧ anglePoint '' Icc a b ≠ realSegment 2 := by
+  let a := Real.pi - δ / 2
+  let b := Real.pi + δ / 2
+  refine ⟨a, b, by dsimp [a, b]; linarith, by dsimp [a, b]; ring, ?_⟩
+  intro he
+  have ht : (2 : ℂ) ∈ realSegment 2 := ⟨2, ⟨by norm_num, le_rfl⟩, by norm_num⟩
+  rw [← he] at ht
+  obtain ⟨t, ht, htwo⟩ := ht
+  have htpos : 0 < t := by
+    have h := ht.1
+    dsimp [a] at h
+    linarith
+  have htlt : t < 2 * Real.pi := by
+    have h := ht.2
+    dsimp [b] at h
+    linarith
+  have hc : Real.cos t = 1 := by
+    have hh := congrArg Complex.re htwo
+    change 2 * Real.cos t = 2 at hh
+    linarith
+  have hz : t = 0 :=
+    (Real.cos_eq_one_iff_of_lt_of_lt (by linarith [Real.pi_pos]) htlt).mp hc
+  exact (ne_of_gt htpos) hz
+
+/-- Only the actual forward images of the initial collapsed set are
+needed to force global collapse at a full-cover horizon. In particular
+a global semiconjugacy is not an assumption of this finite statement. -/
+theorem finite_horizon_fiber_preservation_forces_constant {Y : Type*}
+    (p n : ℕ) (S : Set ℂ) (q : ℂ → Y)
+    (hcover : ((cquad (-2))^[p])^[n] '' S = realSegment 2)
+    (hstart : ∀ u ∈ S, ∀ v ∈ S, q u = q v)
+    (hstep : ∀ m < n, ∀ u ∈ ((cquad (-2))^[p])^[m] '' S,
+      ∀ v ∈ ((cquad (-2))^[p])^[m] '' S,
+        q u = q v → q ((cquad (-2))^[p] u) = q ((cquad (-2))^[p] v)) :
+    ∀ u ∈ realSegment 2, ∀ v ∈ realSegment 2, q u = q v := by
+  let F := (cquad (-2))^[p]
+  have haux : ∀ m ≤ n, ∀ u ∈ F^[m] '' S, ∀ v ∈ F^[m] '' S, q u = q v := by
+    intro m
+    induction m with
+    | zero =>
+      intro hm u hu v hv
+      exact hstart u (by simpa using hu) v (by simpa using hv)
+    | succ m ih =>
+      intro hm u hu v hv
+      obtain ⟨a, ha, rfl⟩ := hu
+      obtain ⟨b, hb, rfl⟩ := hv
+      have ha' : F^[m] a ∈ F^[m] '' S := ⟨a, ha, rfl⟩
+      have hb' : F^[m] b ∈ F^[m] '' S := ⟨b, hb, rfl⟩
+      rw [iterate_succ_apply', iterate_succ_apply']
+      exact hstep m (by omega) (F^[m] a) ha' (F^[m] b) hb'
+        (ih (by omega) _ ha' _ hb')
+  have h := haux n le_rfl
+  change F^[n] '' S = realSegment 2 at hcover
+  rw [hcover] at h
+  exact h
+
+/-- Quantitative obstruction for partially defined cellular dynamics.
+If a nonconstant quotient collapses an angular interval, then by the
+explicit full-cover horizon some pair in an actual forward image has
+equal quotient values but different next-return quotient values.
+There is no global semiconjugacy premise. -/
+theorem retimed_angular_fiber_collision {Y : Type*}
+    (p n : ℕ) (a b : ℝ) (q : ℂ → Y)
+    (hgap : 2 * Real.pi ≤ ((2 : ℝ)^p)^n * (b-a))
+    (hstart : ∀ u ∈ anglePoint '' Icc a b, ∀ v ∈ anglePoint '' Icc a b, q u = q v)
+    (hnonconstant : ∃ u ∈ realSegment 2, ∃ v ∈ realSegment 2, q u ≠ q v) :
+    ∃ m < n, ∃ u ∈ ((cquad (-2))^[p])^[m] '' (anglePoint '' Icc a b),
+      ∃ v ∈ ((cquad (-2))^[p])^[m] '' (anglePoint '' Icc a b),
+        q u = q v ∧ q ((cquad (-2))^[p] u) ≠ q ((cquad (-2))^[p] v) := by
+  classical
+  by_contra hbad
+  obtain ⟨u, hu, v, hv, hne⟩ := hnonconstant
+  apply hne
+  apply finite_horizon_fiber_preservation_forces_constant p n
+    (anglePoint '' Icc a b) q (retimed_angular_interval_covers p n a b hgap) hstart
+  · intro m hm x hx y hy he
+    by_contra hne'
+    exact hbad ⟨m, hm, x, hx, y, hy, he, hne'⟩
+  · exact hu
+  · exact hv
+
+#print axioms angular_cover_threshold_sharp
+#print axioms finite_horizon_fiber_preservation_forces_constant
+#print axioms retimed_angular_fiber_collision
 #print axioms retimed_angular_interval_covers
 #print axioms retimed_connected_subset_covers
 #print axioms retimed_collapsed_fiber_forces_constant
