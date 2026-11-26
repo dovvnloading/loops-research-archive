@@ -2287,5 +2287,25 @@
     "obligations": [
       "KKL_STATIONARY_NONLC_SELECTED_GEOMETRIC_CONTINUUM_LIFT"
     ]
+  },
+  "h4-arithmetic-multiplier-rigidity-20261126": {
+    "guide": "contributions/h4_arithmetic_multiplier_rigidity_20261126/NOTE.md#h4-arithmetic-multiplier-rigidity-20261126",
+    "theorems": {
+      "formalization/weighted/QuadraticMultiplierArithmetic.lean": [
+        "returnOrbit_integral",
+        "orbitProduct_integral",
+        "returnMultiplier_factor",
+        "returnMultiplier_normSq_factor",
+        "rational_normSq_integral",
+        "returnMultiplier_rational_normSq",
+        "returnMultiplier_rational_normSq_gap",
+        "returnMultiplier_not_neutral",
+        "collision_return_deriv_not_neutral",
+        "collision_return_deriv_rational_gap"
+      ]
+    },
+    "obligations": [
+      "H4_RIGIDITY"
+    ]
   }
 }
