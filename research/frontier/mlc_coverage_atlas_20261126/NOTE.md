@@ -41,7 +41,27 @@ Dudko arXiv:2512.24171v1 (30 Dec 2025), [HTML §4](https://arxiv.org/html/2512.2
 A versioned PDF is preferred where accessible; older published/author PDFs use the cited stable URL. The recorded hash covers the bytes retrieved by CI, not a claimed match to a PDF the web reader rendered earlier. UNVERIFIED means no byte lock / no available primary statement as distinguished in the atlas. No third-party full PDFs committed.
 
 <!-- hashes:start -->
-UNVERIFIED — fingerprinting pending CI.
+
+| PDF input | SHA-256 / retrieval status |
+|---|---|
+| https://annals.math.princeton.edu/articles/12963 | UNVERIFIED (no primary PDF locator) |
+| https://arxiv.org/pdf/0710.4406v4 | 8e5a59b111c0d841d5deb3ab7adb12b556896a2916c1e4cc8418fe41789335cd |
+| https://arxiv.org/pdf/1808.10425v4 | 4a8f0f8c3ffd96c6a5a364340f2a7394fc75d0f355a7576040286c47365baec8 |
+| https://arxiv.org/pdf/2309.02107v3 | e88462e43b3c172cf309d5b3d38caa21ee8f43876bac1e07cce84b309dfb8c6b |
+| https://arxiv.org/pdf/2512.24171v1 | 8ede4bf8ccfe25a4f325cad41cb729f08f8b1d0d7103ed6dbc89015b1ff8d904 |
+| https://arxiv.org/pdf/2601.21905v1 | 5eb36430a51a3fb6a1c04db15713aebc86068118450893ba2042021e4a8db725 |
+| https://arxiv.org/pdf/2606.27272v1 | 4c08805384b473dc0e55d76491c52c9fbe7c027e6da301f2c365a170ed7d9140 |
+| https://arxiv.org/pdf/math/0609045v3 | 46e7ff4d5cc8ea190e439f45b2e4ed7308c1cf588a666daa5150eeb0b435c9c0 |
+| https://arxiv.org/pdf/math/9504227v1 | b623bd34992cc3e821cef350c824df4b38478e6ac05436283902f5a5a17ecce7 |
+| https://commack.math.stonybrook.edu/~mlyubich/papers/acta.pdf | a286b6d3c874c803c1d56a669b5850e79c903190534aeab4840664b8e631bf16 |
+| https://pi.math.cornell.edu/~hubbard/hubbard.pdf | 53c3ff3e06fc512cc6af809fc55cb374941d6eaada64bf8c98a291dc8179c2e9 |
+| https://www.ma.imperial.ac.uk/~dcheragh/Research/2010-1.pdf | c62ea484883ccb860286aab19a21d31bfdb22d102a792594d5b8986f6769c72d |
+| https://www.ma.imperial.ac.uk/~dcheragh/Research/2015-2.pdf | b1d6b0952247efc3cd7a6e0602dbb8246b43b9edf7b3c5d0da942cc822246c25 |
+| https://www.math.stonybrook.edu/preprints/ims07-04.pdf | 0225b5e1416d62eadb3f9b1ae9d5d3c4c4287b0d572167c744e9bae900220e53 |
+| https://www.math.stonybrook.edu/preprints/ims98-13b.pdf | 1095be3a23d83cbc8acafe1c8ff7e24d787ffe791cdf8ea90b4f2b9686af8195 |
+| https://www.numdam.org/item/10.24033/asens.2063.pdf | a0c77541efe273aa180f31cbb67093b9931d7b73389e6bb8947452998b13bba5 |
+| https://www.numdam.org/item/AIF_1997__47_4_1219_0.pdf | 52c67b9960e4dd632db2aa56a0763312eb0bf6a3b43b33ce98698962e2fdc429 |
+
 <!-- hashes:end -->
 
 ## Reproduce
