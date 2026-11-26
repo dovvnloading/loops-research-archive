@@ -2942,6 +2942,13 @@
         "quadratic_critical_component_eq_preimage",
         "quadratic_full_preimage_parameter_neighborhood",
         "quadratic_full_preimage_parameter_collar"
+      ],
+      "formalization/weighted/TelescopeParameterReturn.lean": [
+        "quadratic_parameter_one_critical_return",
+        "quadratic_parameter_compactly_contained_return"
+      ],
+      "formalization/weighted/TelescopeDeckInvolution.lean": [
+        "quadratic_return_analytic_involution"
       ]
     },
     "obligations": [

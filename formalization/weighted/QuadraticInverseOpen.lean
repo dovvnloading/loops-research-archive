@@ -96,7 +96,9 @@ theorem quadratic_inverse_open_component (c : ℂ) (n : ℕ)
       change orbit c n (g w) ∈ V
       rwa [hright (hVT hw)]
     · intro z hz
-      exact ⟨orbit c n z, connectedComponentIn_subset _ _ hz, hleft (hcomponentU hz)⟩
+      exact ⟨orbit c n z,
+        connectedComponentIn_subset (orbit c n ⁻¹' V) (g y) hz,
+        hleft (hcomponentU hz)⟩
   refine ⟨heq, ?_, hconn,
     hgc.of_isClosed_subset isClosed_closure hcl, hclU, ?_, ?_⟩
   · rw [heq]

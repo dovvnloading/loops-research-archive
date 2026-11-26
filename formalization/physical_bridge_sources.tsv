@@ -128,6 +128,8 @@ formalization/weighted/StationaryPrefixCharge.lean	VARIABLE-EXIT
 formalization/weighted/TelescopeCollarRecognition.lean	METADATA
 formalization/weighted/TelescopeCompactReturn.lean	CONSTRUCT
 formalization/weighted/TelescopeConformalInverse.lean	CONSTRUCT
+formalization/weighted/TelescopeDeckInvolution.lean	CONSTRUCT
+formalization/weighted/TelescopeParameterReturn.lean	CONSTRUCT
 formalization/weighted/TelescopeRamification.lean	METADATA
 formalization/weighted/TelescopeUnivalentCollars.lean	CONSTRUCT
 formalization/weighted/TerminalFiberExclusion.lean	METADATA
