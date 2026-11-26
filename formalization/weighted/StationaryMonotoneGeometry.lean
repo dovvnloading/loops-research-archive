@@ -1,4 +1,5 @@
 import Mathlib
+import PlanarFullification
 
 /-!
 # Closed monotone quotients and geometric marked continua
@@ -11,6 +12,7 @@ and their topologies, not a finite tree of incidence labels.
 namespace LoopsStationaryMonotoneGeometry
 
 open Set
+open LoopsFormal.ProtectedCarriers
 
 variable {X Y : Type*} [TopologicalSpace X] [TopologicalSpace Y]
 
@@ -284,5 +286,151 @@ theorem selected_predecessor_contains_mark {ι : Type*}
     exact h'
   have hFn : MapsTo (F^[n]) T T := hF.iterate n
   exact ⟨i, fun z hz => ⟨hFn (hST (hK i hz)), hsub hz⟩⟩
+
+
+/-- The actual least continuum exists for every nonempty marked subset
+of a compact Hausdorff connected space satisfying hereditary
+unicoherence. Compactness and directed intersection are proved here;
+leastness is not an additional premise. -/
+theorem least_compact_connected_carrier_exists [CompactSpace X] [T2Space X]
+    (M : Set X) (hM : M.Nonempty) (hX : IsConnected (univ : Set X))
+    (hu : ∀ U V : Set X, IsClosed U → IsClosed V →
+      IsConnected U → IsConnected V → IsPreconnected (U ∩ V)) :
+    ∃ S : Set X, IsCompact S ∧ IsConnected S ∧ M ⊆ S ∧
+      ∀ U : Set X, IsCompact U → IsConnected U → M ⊆ U → S ⊆ U := by
+  classical
+  let I := {U : Set X // IsClosed U ∧ IsConnected U ∧ M ⊆ U}
+  letI : Nonempty I := ⟨⟨univ, isClosed_univ, hX, subset_univ M⟩⟩
+  let S : Set X := ⋂ i : I, i.val
+  have hSclosed : IsClosed S := isClosed_iInter fun i : I => i.property.1
+  have hMS : M ⊆ S := by
+    intro z hz
+    exact mem_iInter.mpr fun i : I => i.property.2.2 hz
+  refine ⟨S, hSclosed.isCompact, ⟨hM.mono hMS, ?_⟩, hMS, ?_⟩
+  · apply (isPreconnected_iff_subset_of_fully_disjoint_closed hSclosed).mpr
+    intro A B hAc hBc hcov hAB
+    obtain ⟨U, V, hU, hV, hAU, hBV, hUV⟩ := normal_separation hAc hBc hAB
+    have hcovUV : S ⊆ U ∪ V := hcov.trans (union_subset_union hAU hBV)
+    have hd : Directed (· ⊇ ·) (fun i : I => i.val) := by
+      intro i j
+      have hMij : M ⊆ i.val ∩ j.val := fun _ hz =>
+        ⟨i.property.2.2 hz, j.property.2.2 hz⟩
+      have hcij : IsConnected (i.val ∩ j.val) :=
+        ⟨hM.mono hMij, hu i.val j.val i.property.1 j.property.1
+          i.property.2.1 j.property.2.1⟩
+      exact ⟨⟨i.val ∩ j.val, i.property.1.inter j.property.1, hcij, hMij⟩,
+        inter_subset_left, inter_subset_right⟩
+    have hdis : (U ∪ V)ᶜ ∩ (⋂ i : I, i.val) = ∅ := by
+      apply Set.eq_empty_iff_forall_notMem.mpr
+      intro z hz
+      exact hz.1 (hcovUV hz.2)
+    obtain ⟨i, hi⟩ := (hU.union hV).isClosed_compl.isCompact.elim_directed_family_closed
+      (fun i : I => i.val) (fun i => i.property.1) hdis hd
+    have hiUV : i.val ⊆ U ∪ V := by
+      intro z hz
+      by_contra hn
+      have hh : z ∈ (U ∪ V)ᶜ ∩ i.val := ⟨hn, hz⟩
+      rw [hi] at hh
+      exact hh
+    have hSi : S ⊆ i.val := iInter_subset (fun i : I => i.val) i
+    rcases IsPreconnected.subset_or_subset hU hV hUV hiUV i.property.2.1.isPreconnected with h | h
+    · left
+      intro z hz
+      rcases hcov hz with hzA | hzB
+      · exact hzA
+      · exact False.elim (Set.disjoint_left.mp hUV (h (hSi hz)) (hBV hzB))
+    · right
+      intro z hz
+      rcases hcov hz with hzA | hzB
+      · exact False.elim (Set.disjoint_left.mp hUV (hAU hzA) (h (hSi hz)))
+      · exact hzB
+  · intro U hUc hUconn hMU
+    exact iInter_subset (fun i : I => i.val) ⟨U, hUc.isClosed, hUconn, hMU⟩
+
+/-- A least physical continuum projects onto the least model continuum.
+The full inverse of the model hull is connected by the proved
+closed-fiber theorem, so no independent saturation assumption on the
+least physical continuum is used. -/
+theorem least_carrier_image_eq [CompactSpace X] [T2Space Y]
+    (p : X → Y) (hp : Continuous p) (hsurj : Function.Surjective p)
+    (hf : ∀ y : Y, IsPreconnected (p ⁻¹' {y}))
+    (M S : Set X) (B : Set Y)
+    (hSc : IsCompact S) (hS : IsConnected S) (hMS : M ⊆ S)
+    (hleastS : ∀ U : Set X, IsCompact U → IsConnected U → M ⊆ U → S ⊆ U)
+    (hBc : IsCompact B) (hB : IsConnected B) (hMB : p '' M ⊆ B)
+    (hleastB : ∀ V : Set Y, IsCompact V → IsConnected V → p '' M ⊆ V → B ⊆ V) :
+    p '' S = B := by
+  have hpreconn : IsConnected (p ⁻¹' B) := by
+    refine ⟨?_, preconnected_preimage_closed_fibers p hp.isClosedMap hsurj hf hB.isPreconnected⟩
+    obtain ⟨y, hy⟩ := hB.nonempty
+    obtain ⟨z, rfl⟩ := hsurj y
+    exact ⟨z, hy⟩
+  have hSsub : S ⊆ p ⁻¹' B :=
+    hleastS _ (hBc.isClosed.preimage hp).isCompact hpreconn
+      (fun z hz => hMB ⟨z, hz, rfl⟩)
+  apply Subset.antisymm
+  · rintro _ ⟨z, hz, rfl⟩
+    exact hSsub hz
+  · exact hleastB _ (hSc.image hp) (hS.image p hp.continuousOn) (image_mono hMS)
+
+/-- The intersection of a physical continuum and the full inverse of a
+path-connected model region is preconnected. Every pair of physical
+points has a compact connected bridge, obtained by lifting the
+actual path image and intersecting via hereditary unicoherence. -/
+theorem preconnected_inter_preimage_path_connected [CompactSpace X] [T2Space Y]
+    (p : X → Y) (hp : Continuous p) (hsurj : Function.Surjective p)
+    (hf : ∀ y : Y, IsPreconnected (p ⁻¹' {y}))
+    (hu : ∀ U V : Set X, IsClosed U → IsClosed V →
+      IsConnected U → IsConnected V → IsPreconnected (U ∩ V))
+    (U : Set X) (V : Set Y) (hUc : IsClosed U) (hU : IsConnected U)
+    (hV : IsPathConnected V) :
+    IsPreconnected (U ∩ p ⁻¹' V) := by
+  apply isPreconnected_of_forall_pair
+  intro a ha b hb
+  obtain ⟨g, hg⟩ := hV.joinedIn (p a) ha.2 (p b) hb.2
+  let C : Set Y := range (⇑g)
+  have hCc : IsCompact C := isCompact_range g.continuous
+  have hCV : C ⊆ V := range_subset_iff.mpr hg
+  have hCpre : IsConnected (p ⁻¹' C) :=
+    ⟨⟨a, g.source_mem_range⟩,
+      preconnected_preimage_closed_fibers p hp.isClosedMap hsurj hf
+        (isPreconnected_range g.continuous)⟩
+  refine ⟨U ∩ p ⁻¹' C, ?_, ⟨ha.1, g.source_mem_range⟩,
+    ⟨hb.1, g.target_mem_range⟩, hu U (p ⁻¹' C) hUc (hCc.isClosed.preimage hp) hU hCpre⟩
+  exact fun _ hz => ⟨hz.1, hCV hz.2⟩
+
+/-- Every compact subset of an actual full empty-interior plane set
+has connected complement and is itself full. Any bounded complementary
+component would be an open subset of the ambient set, impossible.
+This is the planar half of the hereditary-unicoherence argument. -/
+theorem compact_subset_full_of_full_empty_interior
+    (K A : Set ℂ) (hA : IsCompact A) (hAK : A ⊆ K)
+    (hKfull : LoopsFormal.ProtectedCarriers.planarFill K = K)
+    (hKempty : interior K = ∅) :
+    LoopsFormal.ProtectedCarriers.planarFill A = A ∧ IsConnected Aᶜ := by
+  have hfull : planarFill A = A := by
+    apply Subset.antisymm _ (planarFill_extensive A)
+    intro z hz
+    by_contra hza
+    have hcomp : IsOpen (connectedComponentIn Aᶜ z) :=
+      hA.isClosed.isOpen_compl.connectedComponentIn
+    have hsub : connectedComponentIn Aᶜ z ⊆ K := by
+      intro w hw
+      have hwfill : w ∈ planarFill A := by
+        change Bornology.IsBounded (connectedComponentIn Aᶜ w)
+        rw [← connectedComponentIn_eq hw]
+        exact hz
+      have hwK := planarFill_mono hAK hwfill
+      rwa [hKfull] at hwK
+    have hzz : z ∈ connectedComponentIn Aᶜ z :=
+      mem_connectedComponentIn (show z ∈ Aᶜ from hza)
+    have hzi := interior_maximal hsub hcomp hzz
+    rw [hKempty] at hzi
+    exact hzi
+  refine ⟨hfull, ?_⟩
+  obtain ⟨z, hz, _, he, _⟩ := LoopsFormal.ProtectedCarriers.planarFill_exterior hA.isBounded
+  rw [hfull] at he
+  rw [he]
+  exact isConnected_connectedComponentIn_iff.mpr hz
 
 end LoopsStationaryMonotoneGeometry

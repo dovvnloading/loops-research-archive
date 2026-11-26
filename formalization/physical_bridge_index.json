@@ -1992,7 +1992,11 @@
         "invariant_marks_disjoint_image",
         "selected_predecessor_full_lift",
         "least_carrier_terminal_incidence",
-        "selected_predecessor_contains_mark"
+        "selected_predecessor_contains_mark",
+        "least_compact_connected_carrier_exists",
+        "least_carrier_image_eq",
+        "preconnected_inter_preimage_path_connected",
+        "compact_subset_full_of_full_empty_interior"
       ]
     },
     "obligations": [
