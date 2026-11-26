@@ -1,0 +1,28 @@
+name: Preprint audit 2026-11-26
+on:
+  push:
+    branches: [frontier/preprint-audit-20261126]
+  pull_request:
+    branches: [main]
+    paths:
+      - 'research/frontier/preprint_audit_20261126/**'
+      - '.github/workflows/preprint-audit-20261126.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4.2.2
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - uses: actions/setup-python@v5.6.0
+        with:
+          python-version: '3.12'
+      - name: Install pinned verifier dependency
+        run: python -m pip install --disable-pip-version-check pypdf==5.4.0
+      - name: Verify source locks, atlas, and finite diagnostics
+        run: python -B research/frontier/preprint_audit_20261126/verify.py
