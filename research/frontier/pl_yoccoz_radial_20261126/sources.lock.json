@@ -1,0 +1,46 @@
+{
+  "CS v1": {
+    "url": "https://arxiv.org/pdf/1509.07843v1",
+    "bytes": 831082,
+    "pages": 71,
+    "sha256": "71c03718203b91ae81f5b7e138620a086cdf038b345cf689a24ed2932d72384f"
+  },
+  "BLOT": {
+    "url": "https://publications.hse.ru/pubs/share/direct/1052158150.pdf",
+    "bytes": 1056824,
+    "pages": 15,
+    "sha256": "9d0aa40f94afbfb918fd26dbc96b14727b2a59b84b02da8ad93b6b528061adb0"
+  },
+  "Hubbard": {
+    "url": "https://pi.math.cornell.edu/~hubbard/Yoccoz.pdf",
+    "bytes": 360140,
+    "pages": 45,
+    "sha256": "eb28f6376e63683007fee394dee1b4e217d1b8d4fbd43118c2fa7e7f1754bf5d"
+  },
+  "Lyubich": {
+    "url": "https://commack.math.stonybrook.edu/~mlyubich/papers/acta.pdf",
+    "bytes": 6177728,
+    "pages": 113,
+    "sha256": "a286b6d3c874c803c1d56a669b5850e79c903190534aeab4840664b8e631bf16"
+  },
+  "Douady-Hubbard": {
+    "url": "https://pi.math.cornell.edu/~hubbard/PolyLikeMaps.pdf",
+    "bytes": 7540070,
+    "pages": 58,
+    "sha256": "588fcd2b40dafb4363ef029dfe944ad1956135785c1b5edb3fbd8fdeb3065321"
+  },
+  "Dudko-Lyubich v3": {
+    "url": "https://arxiv.org/pdf/2309.02107v3",
+    "bytes": 882537,
+    "pages": 41,
+    "sha256": "e88462e43b3c172cf309d5b3d38caa21ee8f43876bac1e07cce84b309dfb8c6b"
+  },
+  "Levin 1990": {
+    "url": "https://www.ma.huji.ac.il/~levin/Levin1990_Article_BoundariesForMultipliersOfPeri",
+    "bytes": null,
+    "pages": null,
+    "sha256": null,
+    "status": "UNVERIFIED byte hash (primary text read)",
+    "reason": "SSL certificate hostname mismatch; page screenshot unavailable"
+  }
+}
