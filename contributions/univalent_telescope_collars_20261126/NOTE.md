@@ -11,9 +11,10 @@ human_review: none
 
 ## Claim
 
-**Proof-development checkpoint: local and CI validation pending.** All claims
-below are candidate Lean theorems until the complete kernel build and transitive
-axiom audit succeed. The research contribution is partial for MAPPING_TELESCOPE.
+**Verified result: 16 public Lean theorems in four new modules.** The complete
+weighted kernel build and transitive axiom audit passed at proof checkpoint
+[`45f1f0a`](https://github.com/dovvnloading/loops-research-archive/commit/45f1f0a8815f1975feb80724d564866be1a46c74).
+The research contribution is partial for MAPPING_TELESCOPE.
 
 Write `f(z) = z^2+c` and `F_n = f^n`, using the archive's actual complex orbit
 `QuadraticEscape.orbit`. For every compact set C, an open neighborhood on which
@@ -41,8 +42,8 @@ Assume K is compact and connected, F_b(c) belongs to K, and the **compact**
 prefix A0 and suffix D0 satisfy injectivity and preterminal critical avoidance
 for F_a and F_b respectively. Open injective domains are not hypotheses.
 The theorem constructs an open connected target V and its actual selected
-stages D, B, A, proves compact closure and prescribed ambient control, and
-proves that A is the entire selected component of F_{a+1+b}^{-1}(V). The return
+stages D, B, A, proves compact closures for all three stages and prescribed
+ambient control for A and D, and proves that A is the entire selected component of F_{a+1+b}^{-1}(V). The return
 is onto V and proper, and for **every** v in V the sum of Mathlib analytic
 multiplicities over its complete A-fiber is exactly two. This includes the
 propagated critical value, where cardinality alone would give the wrong count.
@@ -152,8 +153,39 @@ The existing CI workflow performs the full weighted build and audits the
 transitive dependencies of every declaration. Only the repository's standard
 foundational allowlist (`propext`, `Classical.choice`, `Quot.sound`) is accepted.
 No `sorry`, `admit`, new axioms, native evaluation, unsafe declarations, or
-implementation overrides are introduced. Successful CI links will be recorded
-before this draft is marked ready.
+implementation overrides are introduced.
+
+
+### Verified CI evidence
+
+At proof checkpoint `45f1f0a8815f1975feb80724d564866be1a46c74`:
+
+- [Weighted full build and transitive axiom audit](https://github.com/dovvnloading/loops-research-archive/actions/runs/45894853673/job/140166129251): all 8,854 build jobs completed; all 92 weighted modules and 2,442 declarations passed the audit.
+- [Root build and root/standalone axiom audits](https://github.com/dovvnloading/loops-research-archive/actions/runs/45894853671/job/140166128887): 38 root modules and 1,625 declarations passed, as did all five standalone modules.
+- [Contribution intake](https://github.com/dovvnloading/loops-research-archive/actions/runs/45894854109) and [model-to-geometry coverage](https://github.com/dovvnloading/loops-research-archive/actions/runs/45894854068) passed.
+
+The weighted log records:
+
+```text
+Built QuadraticUnivalentNeighborhood (4.6s)
+Built TelescopeConformalInverse (5.5s)
+Built TelescopeUnivalentCollars (3.8s)
+Built TelescopeCompactReturn (3.2s)
+Build completed successfully (8854 jobs).
+AXIOM_AUDIT weighted QuadraticUnivalentNeighborhood: 5 declarations, 5 theorems; allowed axioms only
+AXIOM_AUDIT weighted TelescopeCompactReturn: 2 declarations, 2 theorems; allowed axioms only
+AXIOM_AUDIT weighted TelescopeConformalInverse: 5 declarations, 5 theorems; allowed axioms only
+AXIOM_AUDIT weighted TelescopeUnivalentCollars: 6 declarations, 6 theorems; allowed axioms only
+AXIOM_AUDIT_PASS weighted: 92 modules, 2442 declarations
+```
+
+There are 16 named public theorems and two additional theorem constants generated
+by Lean in the first module; the audit checks all 18. The four proof source files
+are unchanged by this final documentation/registration-order checkpoint. Final
+integration checks and links are also recorded on [PR #215](https://github.com/dovvnloading/loops-research-archive/pull/215).
+The local four-module build and targeted transitive audit also passed, with no
+new-module warnings. Initial proof-development checkpoints and their subsequent
+elaboration repairs remain in the PR's commit history.
 
 ## Dependencies
 
