@@ -95,7 +95,7 @@ theorem component_inter_of_single_interface_component
       have hKS : K ⊆ S ∩ A := connectedComponentIn_subset (S ∩ A) a
       have hKC : K ⊆ C := by
         have hh := hK.subset_connectedComponentIn hzK (fun w hw => (hKS hw).1)
-        have he : connectedComponentIn S z = C := connectedComponentIn_eq hzCA.1
+        have he : connectedComponentIn S z = C := (connectedComponentIn_eq hzCA.1).symm
         rw [he] at hh
         exact hh
       exact preconnected_inter_of_absorbed_interface C A B K hC hA hB hCsub
@@ -237,7 +237,7 @@ theorem component_inter_finite_patches {ι : Type*}
           exact mem_iUnion.mpr ⟨j, mem_iUnion.mpr ⟨hjt, hw.2⟩⟩
         have hjconn : S ∩ B j ⊆ connectedComponentIn (S ∩ P) (anchor j) :=
           (hBconn j).subset_connectedComponentIn ⟨(hanchor j).1.1, (hanchor j).2⟩ hjsub
-        rw [connectedComponentIn_eq hanchors] at hjconn
+        rw [← connectedComponentIn_eq hanchors] at hjconn
         exact hjconn ⟨hz.1.1, hzj⟩
     have hxx : x ∈ (S ∩ (P ∪ B i)) ∩ P := by
       rw [hlocal]
@@ -287,7 +287,7 @@ theorem finite_patches_no_bypass_iff {ι : Type*}
       have hzC := hext i ⟨hz.1.1, hz.2⟩
       have hj : S ∩ B j ⊆ connectedComponentIn S z :=
         (hBconn j).subset_connectedComponentIn ⟨hz.1.1, hz.1.2⟩ (fun w hw => hw.1)
-      rw [connectedComponentIn_eq hzC] at hj
+      rw [← connectedComponentIn_eq hzC] at hj
       rw [← h (anchor i) (hanchor i).1]
       exact ⟨hj ⟨(hanchor j).1.1, (hanchor j).2⟩, (hanchor j).1.2⟩
   · rintro ⟨hattach, hoverlap⟩ x hx
