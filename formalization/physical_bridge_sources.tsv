@@ -335,3 +335,5 @@ research/tip_family_theorem/test_verify_chain.py	SELECTED PERIOD-TWO MARK ALL-PA
 research/tip_family_theorem/verify_chain.py	SELECTED PERIOD-TWO MARK ALL-PATHS GAIN
 research/frontier/mlc_coverage_atlas_20261126/verify.py	METADATA
 research/frontier/residual_satellite_status_20261126/verify.py	METADATA
+research/frontier/mlc_open_cells_20261126/verify.py	METADATA
+research/frontier/mlc_open_cells_20261126/hash_inputs.py	METADATA
