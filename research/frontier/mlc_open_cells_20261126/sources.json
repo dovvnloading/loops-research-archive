@@ -1,0 +1,253 @@
+{
+  "Y": {
+    "title": "Local connectivity of Julia sets and bifurcation loci: three theorems of J.-C. Yoccoz",
+    "author": "J. H. Hubbard (exposition of J.-C. Yoccoz's theorem)",
+    "version_or_venue": "Topological Methods in Modern Mathematics (1993), 467–511",
+    "url": "https://pi.math.cornell.edu/~hubbard/hubbard.pdf",
+    "locator": "Theorem III, p. 469 (printed; PDF page 3)",
+    "verification": "VERIFIED",
+    "quote": "If c ∈ M is not infinitely renormalizable",
+    "prior_atlas_sha256": "53c3ff3e06fc512cc6af809fc55cb374941d6eaada64bf8c98a291dc8179c2e9"
+  },
+  "L": {
+    "title": "Dynamics of quadratic polynomials, I–II",
+    "author": "M. Lyubich",
+    "version_or_venue": "Acta Math. 178 (1997), 185–297",
+    "url": "https://commack.math.stonybrook.edu/~mlyubich/papers/acta.pdf",
+    "locator": "Rigidity Theorem and Cor. 1.1 p. 187; §2.5 pp. 198–199; Thm IV' p. 239",
+    "verification": "VERIFIED",
+    "quote": "Any combinatorial class contains at most one quadratic polynomial satisfying the secondary limbs condition with a priori bounds.",
+    "prior_atlas_sha256": "a286b6d3c874c803c1d56a669b5850e79c903190534aeab4840664b8e631bf16"
+  },
+  "Lreal": {
+    "title": "Dynamics of quadratic polynomials, I–II",
+    "author": "M. Lyubich",
+    "version_or_venue": "Acta Math. 178 (1997), 185–297",
+    "url": "https://commack.math.stonybrook.edu/~mlyubich/papers/acta.pdf",
+    "locator": "Theorem VIII, §12.1, p. 281",
+    "verification": "VERIFIED",
+    "quote": "then MLC holds at c.",
+    "prior_atlas_sha256": "a286b6d3c874c803c1d56a669b5850e79c903190534aeab4840664b8e631bf16"
+  },
+  "Ldensity": {
+    "title": "Dynamics of quadratic polynomials, I–II",
+    "author": "M. Lyubich",
+    "version_or_venue": "Acta Math. 178 (1997), 185–297",
+    "url": "https://commack.math.stonybrook.edu/~mlyubich/papers/acta.pdf",
+    "locator": "Density Theorem, p. 188; theorem statement not independently re-quoted in this follow-up",
+    "verification": "UNVERIFIED",
+    "quote": null,
+    "prior_atlas_sha256": "a286b6d3c874c803c1d56a669b5850e79c903190534aeab4840664b8e631bf16"
+  },
+  "K": {
+    "title": "A priori bounds for some infinitely renormalizable quadratics: I. Bounded primitive combinatorics",
+    "author": "J. Kahn",
+    "version_or_venue": "arXiv:math/0609045v3 (28 Dec 2023); author lists as not formally published: https://www.math.brown.edu/jk17/papers.html",
+    "url": "https://arxiv.org/pdf/math/0609045v3",
+    "locator": "Main Theorem §1.2 and application §1.3, p. 4",
+    "verification": "VERIFIED",
+    "quote": "of bounded primitive type. Then f has a priori bounds.",
+    "prior_atlas_sha256": "46e7ff4d5cc8ea190e439f45b2e4ed7308c1cf588a666daa5150eeb0b435c9c0",
+    "opened_url": "https://arxiv.org/pdf/math/0609045"
+  },
+  "KLdec": {
+    "title": "A priori bounds for some infinitely renormalizable quadratics: II. Decorations",
+    "author": "J. Kahn and M. Lyubich",
+    "version_or_venue": "Ann. Sci. Éc. Norm. Supér. (4) 41 (2008), 57–84",
+    "url": "https://www.numdam.org/item/10.24033/asens.2063.pdf",
+    "locator": "Main Theorem and Cor. 1.1, p. 58; Thm 1.2 and Remark 1.2 p. 59; §§2.1–2.2, pp. 61–64",
+    "verification": "VERIFIED",
+    "quote": "the parameters q_n and n_n are bounded",
+    "prior_atlas_sha256": "a0c77541efe273aa180f31cbb67093b9931d7b73389e6bb8947452998b13bba5"
+  },
+  "KLmol": {
+    "title": "A priori bounds for some infinitely renormalizable quadratics, III: Molecules",
+    "author": "J. Kahn and M. Lyubich",
+    "version_or_venue": "Complex Dynamics: Families and Friends (2009), 229–256; author preprint IMS07-04",
+    "url": "https://www.math.stonybrook.edu/preprints/ims07-04.pdf",
+    "locator": "Main Theorem p. 1; Cor. 1.1 p. 2; §2.3 and Lemma 2.5 pp. 6–7 (IMS preprint)",
+    "verification": "VERIFIED",
+    "quote": "we will record only the primitive renormalizations",
+    "prior_atlas_sha256": "0225b5e1416d62eadb3f9b1ae9d5d3c4c4287b0d572167c744e9bae900220e53"
+  },
+  "DL23": {
+    "title": "Local connectivity of the Mandelbrot set at some satellite parameters of bounded type",
+    "author": "D. Dudko and M. Lyubich",
+    "version_or_venue": "Geom. Funct. Anal. 33 (2023), 912–1047; arXiv:1808.10425v4",
+    "url": "https://arxiv.org/pdf/1808.10425v4",
+    "locator": "Theorem 1.1, pp. 3–4 (arXiv)",
+    "verification": "VERIFIED",
+    "quote": "There is a small copy",
+    "prior_atlas_sha256": "4a8f0f8c3ffd96c6a5a364340f2a7394fc75d0f355a7576040286c47365baec8"
+  },
+  "DL26": {
+    "title": "MLC at Feigenbaum points",
+    "author": "D. Dudko and M. Lyubich",
+    "version_or_venue": "Publ. Math. IHÉS 143 (2026), 97–141; published 2 June 2026, DOI 10.5802/pmihes.2; arXiv:2309.02107v3 (29 Dec 2025)",
+    "url": "https://arxiv.org/pdf/2309.02107v3",
+    "locator": "Theorems A and B p. 3; definitions §2.2.5 pp. 10–11 (arXiv v3)",
+    "verification": "VERIFIED",
+    "quote": "The Mandelbrot set is locally connected at any Feigenbaum parameter.",
+    "prior_atlas_sha256": "e88462e43b3c172cf309d5b3d38caa21ee8f43876bac1e07cce84b309dfb8c6b"
+  },
+  "CS": {
+    "title": "Satellite renormalization of quadratic polynomials",
+    "author": "D. Cheraghi and M. Shishikura",
+    "version_or_venue": "Author PDF dated September 9, 2022 (not arXiv v1); journal publication UNVERIFIED",
+    "url": "https://www.ma.imperial.ac.uk/~dcheragh/Research/2015-2.pdf",
+    "locator": "Theorem D p. 6; QG_N equation (6.8) p. 62; signed CF pp. 5–6",
+    "verification": "VERIFIED",
+    "quote": "it is combinatorially rigid, and the Mandelbrot set is locally connected at c.",
+    "prior_atlas_sha256": "b1d6b0952247efc3cd7a6e0602dbb8246b43b9edf7b3c5d0da942cc822246c25"
+  },
+  "C": {
+    "title": "Combinatorial rigidity for some infinitely renormalizable unicritical polynomials",
+    "author": "D. Cheraghi",
+    "version_or_venue": "Conform. Geom. Dyn. 14 (2010), 219–255",
+    "url": "https://www.ma.imperial.ac.uk/~dcheragh/Research/2010-1.pdf",
+    "locator": "Rigidity Theorem, pp. 1–2 (author PDF)",
+    "verification": "VERIFIED",
+    "quote": "satisfying the SL and a priori bounds conditions",
+    "prior_atlas_sha256": "c62ea484883ccb860286aab19a21d31bfdb22d102a792594d5b8986f6769c72d"
+  },
+  "Lev1": {
+    "title": "Rigidity and non-local connectivity of Julia sets of some quadratic polynomials",
+    "author": "G. Levin",
+    "version_or_venue": "Commun. Math. Phys. 304 (2011), 295–328; arXiv:0710.4406v4",
+    "url": "https://arxiv.org/pdf/0710.4406v4",
+    "locator": "Theorem 1 p. 1 (arXiv)",
+    "verification": "VERIFIED",
+    "quote": "such that f^{n_m} is simply renormalizable",
+    "prior_atlas_sha256": "8e5a59b111c0d841d5deb3ab7adb12b556896a2916c1e4cc8418fe41789335cd",
+    "opened_url": "https://arxiv.org/pdf/0710.4406"
+  },
+  "Lev2": {
+    "title": "Rigidity and non-local connectivity of Julia sets of some quadratic polynomials",
+    "author": "G. Levin",
+    "version_or_venue": "Commun. Math. Phys. 304 (2011), 295–328; arXiv:0710.4406v4",
+    "url": "https://arxiv.org/pdf/0710.4406v4",
+    "locator": "Theorem 2 pp. 3–4 (arXiv)",
+    "verification": "VERIFIED",
+    "quote": "provided that all the renormalizations are non-primitive (satellite)",
+    "prior_atlas_sha256": "8e5a59b111c0d841d5deb3ab7adb12b556896a2916c1e4cc8418fe41789335cd",
+    "opened_url": "https://arxiv.org/pdf/0710.4406"
+  },
+  "Levadd": {
+    "title": "Addendum to Rigidity and non-local connectivity of Julia sets of some quadratic polynomials",
+    "author": "G. Levin",
+    "version_or_venue": "Commun. Math. Phys. 325 (2014), 1171–1178, DOI 10.1007/s00220-013-1873-0; included in arXiv:0710.4406v4",
+    "url": "https://arxiv.org/pdf/0710.4406v4",
+    "locator": "Addendum Theorem 1(1), separate p. 1 (PDF page 42)",
+    "verification": "VERIFIED",
+    "quote": "then M is locally-connected at c_*.",
+    "prior_atlas_sha256": "8e5a59b111c0d841d5deb3ab7adb12b556896a2916c1e4cc8418fe41789335cd",
+    "opened_url": "https://arxiv.org/pdf/0710.4406"
+  },
+  "EE": {
+    "title": "A priori bounds for some infinitely renormalizable quadratics: IV. Elephant Eyes (PDF title; arXiv catalogue has singular quadratic)",
+    "author": "J. Kahn and M. Lyubich",
+    "version_or_venue": "arXiv:2601.21905v1 (29 Jan 2026)",
+    "url": "https://arxiv.org/pdf/2601.21905v1",
+    "locator": "§4.0.1 E1–E3 p. 9; MLC statement §8 p. 18 (unnumbered; proof not audited)",
+    "verification": "VERIFIED",
+    "quote": "MLC at the corresponding parameter values follows from the machinery developed in [L1]",
+    "prior_atlas_sha256": "5eb36430a51a3fb6a1c04db15713aebc86068118450893ba2042021e4a8db725"
+  },
+  "KKL": {
+    "title": "MLC for parabolically bounded primitive renormalization",
+    "author": "J. Kahn, A. Kapiamba and M. Lyubich",
+    "version_or_venue": "arXiv:2606.27272v1 (25 Jun 2026)",
+    "url": "https://arxiv.org/pdf/2606.27272v1",
+    "locator": "Theorems A,B p. 3; C p. 4; reference DKLP p. 71",
+    "verification": "VERIFIED",
+    "quote": "Any parabolically bounded family of prime primitive types is rigid.",
+    "prior_atlas_sha256": "4c08805384b473dc0e55d76491c52c9fbe7c027e6da301f2c365a170ed7d9140"
+  },
+  "LY": {
+    "title": "Dynamics of quadratic polynomials: complex bounds for real maps",
+    "author": "M. Lyubich and M. Yampolsky",
+    "version_or_venue": "Ann. Inst. Fourier 47 (1997), 1219–1255",
+    "url": "https://www.numdam.org/item/AIF_1997__47_4_1219_0.pdf",
+    "locator": "Theorem 1.1, Complex Bounds Theorem and Local Connectivity Theorem p. 1220",
+    "verification": "VERIFIED",
+    "quote": "infinitely renormalizable real quadratics have universal complex a priori bounds.",
+    "prior_atlas_sha256": "52c67b9960e4dd632db2aa56a0763312eb0bf6a3b43b33ce98698962e2fdc429"
+  },
+  "LvS": {
+    "title": "Local connectivity of the Julia set of real polynomials",
+    "author": "G. Levin and S. van Strien",
+    "version_or_venue": "Ann. of Math. 147 (1998), 471–541; arXiv:math/9504227v1",
+    "url": "https://arxiv.org/pdf/math/9504227v1",
+    "locator": "Main theorem p. 1 (preprint)",
+    "verification": "VERIFIED",
+    "quote": "The Julia set of f is either totally disconnected or locally connected.",
+    "prior_atlas_sha256": "b623bd34992cc3e821cef350c824df4b38478e6ac05436283902f5a5a17ecce7",
+    "opened_url": "https://arxiv.org/pdf/math/9504227"
+  },
+  "GS": {
+    "title": "Generic hyperbolicity in the logistic family",
+    "author": "J. Graczyk and G. Świątek",
+    "version_or_venue": "Ann. of Math. 146 (1997), 1–52",
+    "url": "https://annals.math.princeton.edu/articles/12963",
+    "locator": "journal theorem/page UNVERIFIED",
+    "verification": "UNVERIFIED",
+    "quote": null,
+    "prior_atlas_sha256": "UNVERIFIED"
+  },
+  "DKL": {
+    "title": "Local connectivity of the Mandelbrot set along the real line",
+    "author": "D. Dudko, J. Kahn and M. Lyubich",
+    "version_or_venue": "Manuscript (2022), cited as [14] by Dudko survey",
+    "url": null,
+    "locator": "UNVERIFIED primary manuscript; survey §4.3 after Theorem 4.1 and ref. [14]",
+    "verification": "UNVERIFIED",
+    "quote": null,
+    "prior_atlas_sha256": "8e5a59b111c0d841d5deb3ab7adb12b556896a2916c1e4cc8418fe41789335cd"
+  },
+  "survey": {
+    "title": "On the MLC Conjecture and the Renormalization Theory in Complex Dynamics",
+    "author": "D. Dudko",
+    "version_or_venue": "arXiv:2512.24171v1 (30 Dec 2025)",
+    "url": "https://arxiv.org/pdf/2512.24171v1",
+    "locator": "HTML v1 §4.3 after Thm 4.1; §4.4 Problem 4.3; §4.5 Problem 4.4; ref. [14]; PDF pagination UNVERIFIED",
+    "verification": "VERIFIED",
+    "quote": "remaining unbounded satellite ql cases",
+    "prior_atlas_sha256": "8ede4bf8ccfe25a4f325cad41cb729f08f8b1d0d7103ed6dbc89015b1ff8d904",
+    "opened_url": "https://arxiv.org/html/2512.24171v1",
+    "extra_quotes": [
+      "along any vein of the Mandelbrot set",
+      "Develop a Virtual Molecule version of the Near-Degenerate Regime."
+    ]
+  },
+  "TUN": {
+    "title": "On Fibers and Renormalization of Julia Sets and Multibrot Sets",
+    "author": "D. Schleicher",
+    "version_or_venue": "Stony Brook IMS 1998/13b; arXiv:math/9902156v1 (1999); statement-verified transfer, not a claim of journal publication",
+    "url": "https://www.math.stonybrook.edu/preprints/ims98-13b.pdf",
+    "locator": "Theorem 3.1 and Corollary 3.2, p. 6 (IMS PDF); Introduction p. 2",
+    "verification": "VERIFIED",
+    "quote": "The fiber of any point in the Multibrot set is trivial if and only if the fiber of the image",
+    "prior_atlas_sha256": "1095be3a23d83cbc8acafe1c8ff7e24d787ffe791cdf8ea90b4f2b9686af8195"
+  },
+  "CS2015": {
+    "title": "Satellite renormalization of quadratic polynomials",
+    "author": "D. Cheraghi and M. Shishikura",
+    "version_or_venue": "arXiv:1509.07843v1, September 2015",
+    "url": "https://arxiv.org/pdf/1509.07843v1",
+    "locator": "Theorem D p. 6; QG_N equation (44), p. 62; signed CF pp. 5–6",
+    "verification": "VERIFIED",
+    "quote": "it is combinatorially rigid, and the Mandelbrot set is locally connected at c.",
+    "prior_atlas_sha256": "UNVERIFIED",
+    "opened_url": "https://arxiv.org/pdf/1509.07843"
+  },
+  "DKLP": {
+    "title": "Elephant puzzles",
+    "author": "Dudko, Kahn, Lyubich, and collaborators (see bibliography)",
+    "version_or_venue": "in preparation, cited by KKL",
+    "url": null,
+    "locator": "UNVERIFIED primary; KKL v1 p. 71 bibliography",
+    "verification": "UNVERIFIED",
+    "quote": null,
+    "prior_atlas_sha256": "UNVERIFIED"
+  }
+}

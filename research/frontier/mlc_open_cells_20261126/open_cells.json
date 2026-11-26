@@ -1,0 +1,837 @@
+{
+  "P/unbounded/real/none/k": {
+    "class": "B",
+    "verification": "PROVED",
+    "rule": "B1",
+    "hypothesis": "Cofinal absolute primitive periods with bounded successive ratios bound each intervening maximal relative period: each is an integer factor of such a ratio. Finite prefix cannot create unboundedness.",
+    "sources": [
+      "K",
+      "DL26"
+    ]
+  },
+  "P/unbounded/real/none/ee": {
+    "class": "B",
+    "verification": "PROVED",
+    "rule": "B6",
+    "hypothesis": "Real straightened primitive types have separating rotation 1/2, hence E1 gives q=2, and E3 gives bounded period q+b. Even a finite prefix leaves relative periods bounded.",
+    "sources": [
+      "EE",
+      "DL26"
+    ]
+  },
+  "P/unbounded/real/none/kkl": {
+    "class": "B",
+    "verification": "PROVED",
+    "rule": "B7",
+    "hypothesis": "A parabolically bounded family is a finite union of individual prime types and tails Phi_q of fixed primitive types. A real type lies in a conjugation-invariant limb, hence q=2 for the 1/q-limb tails. Only finitely many real types remain, bounding periods.",
+    "sources": [
+      "KKL",
+      "DL26"
+    ]
+  },
+  "P/unbounded/real/none/residual": {
+    "class": null,
+    "verification": "UNVERIFIED",
+    "candidate_class": null,
+    "candidate_front": "real/vein documentary gap",
+    "hypothesis": "Lreal VIII: uniform large essential periods is false by atlas predicate; LY only gives complex bounds/JLC, not parameter-fiber rigidity. DKL real/vein coverage is explicitly reported but primary theorem, version and page UNVERIFIED.",
+    "sources": [
+      "Lreal",
+      "LY",
+      "DKL",
+      "survey",
+      "DL26"
+    ],
+    "atlas_negated_predicates": [
+      "levin1",
+      "k",
+      "dec",
+      "mol",
+      "real_essential",
+      "sl_bounds",
+      "ee",
+      "kkl"
+    ],
+    "limit": "No theorem found that covers the whole cell in audited catalogue; absence of all published/preprint theorems and nonemptiness not established."
+  },
+  "P/unbounded/nonreal/none/k": {
+    "class": "B",
+    "verification": "PROVED",
+    "rule": "B1",
+    "hypothesis": "Cofinal absolute primitive periods with bounded successive ratios bound each intervening maximal relative period: each is an integer factor of such a ratio. Finite prefix cannot create unboundedness.",
+    "sources": [
+      "K",
+      "DL26"
+    ]
+  },
+  "P/unbounded/nonreal/none/ee": {
+    "class": "A",
+    "verification": "STATEMENT_ONLY",
+    "theorem": "EE §8 unnumbered MLC statement",
+    "hypothesis": "Exactly E1 dividing rotation 1/q, E2 central piece contains only central little filled Julia set, E3 relative period q+b with b uniformly bounded (source b<q simplification). For eventual primitive tail use TUN only after establishing trivial fiber; §8 imports rigidity machinery, not re-proved.",
+    "sources": [
+      "EE",
+      "L",
+      "C",
+      "TUN"
+    ],
+    "limit": "Full cell predicate is a sufficient statement in the cited preprint, not a proof audit or pointwise exclusion of all published results. Publication status checked only to available records."
+  },
+  "P/unbounded/nonreal/none/kkl": {
+    "class": "A",
+    "verification": "STATEMENT_ONLY",
+    "theorem": "KKL Theorem C",
+    "hypothesis": "All renormalization types on relevant tail prime primitive and in a parabolically bounded family (finite individual types and finite union of parabolic tails of fixed templates). Theorem C states rigidity; Theorem B requires beau bounds and uniformly bounded puzzle Teichmüller diameter; DKLP input not independently available. For a finite prefix apply TUN after tail rigidity.",
+    "sources": [
+      "KKL",
+      "DKLP",
+      "TUN"
+    ],
+    "limit": "Full cell predicate is a sufficient statement in the cited preprint, not a proof audit or pointwise exclusion of all published results. Publication status checked only to available records."
+  },
+  "P/unbounded/nonreal/none/residual": {
+    "class": null,
+    "verification": "UNVERIFIED",
+    "candidate_class": "C",
+    "candidate_front": "eventually primitive",
+    "hypothesis": "DL26 uniform relative periods, KLdec finite decoration family, KLmol uniform anti-molecule condition, EE E1–E3 jointly, KKL C parabolically bounded family and L/SL+bounds predicate all fail on eligible tails. Which individual geometric hypothesis of KKL B fails is UNVERIFIED; no implication from C's failure.",
+    "sources": [
+      "DL26",
+      "KLdec",
+      "KLmol",
+      "EE",
+      "KKL",
+      "L",
+      "C",
+      "DKL",
+      "survey"
+    ],
+    "atlas_negated_predicates": [
+      "levin1",
+      "k",
+      "dec",
+      "mol",
+      "real_essential",
+      "sl_bounds",
+      "ee",
+      "kkl"
+    ],
+    "limit": "No theorem found that covers the whole cell in audited catalogue; absence of all published/preprint theorems and nonemptiness not established."
+  },
+  "S/unbounded/nonreal/bounded_digits/qg": {
+    "class": "B",
+    "verification": "PROVED",
+    "rule": "B5",
+    "hypothesis": "For QG_N the first digit of each level is its minimum; b_(i+1,1) >= q_i^2 >= b_(i,1)^2, with b_(i,1)>=2. Thus minimum digits tend to infinity even after removing or restoring a finite prefix.",
+    "sources": [
+      "CS2015",
+      "CS"
+    ]
+  },
+  "S/unbounded/nonreal/bounded_digits/residual": {
+    "class": null,
+    "verification": "UNVERIFIED",
+    "candidate_class": "C",
+    "candidate_front": "eventually satellite",
+    "hypothesis": "DL26 uniform relative-period bound; CS signed quadratic growth QG_N; Levin exponential growth, next-rotation and addendum product predicates are false by atlas residual definition, as is L/SL+bounds. A conjunction failing does not specify its failing conjunct; real/vein coverage and additional results UNVERIFIED.",
+    "sources": [
+      "DL26",
+      "CS2015",
+      "Lev1",
+      "Lev2",
+      "Levadd",
+      "L",
+      "C",
+      "DKL",
+      "survey"
+    ],
+    "atlas_negated_predicates": [
+      "levin1",
+      "qg",
+      "levin2",
+      "levinadd",
+      "sl_bounds"
+    ],
+    "limit": "No theorem found that covers the whole cell in audited catalogue; absence of all published/preprint theorems and nonemptiness not established."
+  },
+  "S/unbounded/nonreal/unbounded_digits_min_tends_infty/qg": {
+    "class": "A",
+    "verification": "STATEMENT_ONLY",
+    "theorem": "CS2015 Theorem D; author revision same theorem",
+    "hypothesis": "Exactly the all-satellite QG_N predicate: signed b_(1,1)>=N, b_(i,j+1)>=b_(i,j)^2, b_(i+1,1)>=q_i^2. The theorem gives shrinking copies, hence singleton fiber; if eventual, TUN restores finite prefix.",
+    "sources": [
+      "CS2015",
+      "CS",
+      "TUN"
+    ],
+    "limit": "Full cell predicate is a sufficient statement in the cited preprint, not a proof audit or pointwise exclusion of all published results. Publication status checked only to available records."
+  },
+  "S/unbounded/nonreal/unbounded_digits_min_tends_infty/residual": {
+    "class": null,
+    "verification": "UNVERIFIED",
+    "hypothesis": "see residual thread",
+    "sources": [
+      "survey"
+    ],
+    "owner_path": "research/frontier/residual_satellite_status_20261126/"
+  },
+  "S/unbounded/nonreal/unbounded_digits_min_not_tends_infty/qg": {
+    "class": "B",
+    "verification": "PROVED",
+    "rule": "B5",
+    "hypothesis": "For QG_N the first digit of each level is its minimum; b_(i+1,1) >= q_i^2 >= b_(i,1)^2, with b_(i,1)>=2. Thus minimum digits tend to infinity even after removing or restoring a finite prefix.",
+    "sources": [
+      "CS2015",
+      "CS"
+    ]
+  },
+  "S/unbounded/nonreal/unbounded_digits_min_not_tends_infty/residual": {
+    "class": null,
+    "verification": "UNVERIFIED",
+    "candidate_class": "C",
+    "candidate_front": "eventually satellite",
+    "hypothesis": "DL26 uniform relative-period bound; CS signed quadratic growth QG_N; Levin exponential growth, next-rotation and addendum product predicates are false by atlas residual definition, as is L/SL+bounds. A conjunction failing does not specify its failing conjunct; real/vein coverage and additional results UNVERIFIED.",
+    "sources": [
+      "DL26",
+      "CS2015",
+      "Lev1",
+      "Lev2",
+      "Levadd",
+      "L",
+      "C",
+      "DKL",
+      "survey"
+    ],
+    "atlas_negated_predicates": [
+      "levin1",
+      "qg",
+      "levin2",
+      "levinadd",
+      "sl_bounds"
+    ],
+    "limit": "No theorem found that covers the whole cell in audited catalogue; absence of all published/preprint theorems and nonemptiness not established."
+  },
+  "mixed_eventually_P/unbounded/real/bounded_digits/k": {
+    "class": "B",
+    "verification": "PROVED",
+    "rule": "B1",
+    "hypothesis": "Cofinal absolute primitive periods with bounded successive ratios bound each intervening maximal relative period: each is an integer factor of such a ratio. Finite prefix cannot create unboundedness.",
+    "sources": [
+      "K",
+      "DL26"
+    ]
+  },
+  "mixed_eventually_P/unbounded/real/bounded_digits/ee": {
+    "class": "B",
+    "verification": "PROVED",
+    "rule": "B6",
+    "hypothesis": "Real straightened primitive types have separating rotation 1/2, hence E1 gives q=2, and E3 gives bounded period q+b. Even a finite prefix leaves relative periods bounded.",
+    "sources": [
+      "EE",
+      "DL26"
+    ]
+  },
+  "mixed_eventually_P/unbounded/real/bounded_digits/kkl": {
+    "class": "B",
+    "verification": "PROVED",
+    "rule": "B7",
+    "hypothesis": "A parabolically bounded family is a finite union of individual prime types and tails Phi_q of fixed primitive types. A real type lies in a conjugation-invariant limb, hence q=2 for the 1/q-limb tails. Only finitely many real types remain, bounding periods.",
+    "sources": [
+      "KKL",
+      "DL26"
+    ]
+  },
+  "mixed_eventually_P/unbounded/real/bounded_digits/residual": {
+    "class": null,
+    "verification": "UNVERIFIED",
+    "candidate_class": null,
+    "candidate_front": "real/vein documentary gap",
+    "hypothesis": "Lreal VIII: uniform large essential periods is false by atlas predicate; LY only gives complex bounds/JLC, not parameter-fiber rigidity. DKL real/vein coverage is explicitly reported but primary theorem, version and page UNVERIFIED.",
+    "sources": [
+      "Lreal",
+      "LY",
+      "DKL",
+      "survey",
+      "DL26"
+    ],
+    "atlas_negated_predicates": [
+      "levin1",
+      "k",
+      "dec",
+      "mol",
+      "real_essential",
+      "sl_bounds",
+      "ee",
+      "kkl"
+    ],
+    "limit": "No theorem found that covers the whole cell in audited catalogue; absence of all published/preprint theorems and nonemptiness not established."
+  },
+  "mixed_eventually_P/unbounded/real/unbounded_digits_min_tends_infty/k": {
+    "class": "B",
+    "verification": "PROVED",
+    "rule": "B1",
+    "hypothesis": "Cofinal absolute primitive periods with bounded successive ratios bound each intervening maximal relative period: each is an integer factor of such a ratio. Finite prefix cannot create unboundedness.",
+    "sources": [
+      "K",
+      "DL26"
+    ]
+  },
+  "mixed_eventually_P/unbounded/real/unbounded_digits_min_tends_infty/ee": {
+    "class": "B",
+    "verification": "PROVED",
+    "rule": "B2",
+    "hypothesis": "Eventually primitive means only finitely many satellite rotations, each rational with finite signed CF; the maximum over their finitely many digits is finite.",
+    "sources": [
+      "CS2015",
+      "DL26"
+    ]
+  },
+  "mixed_eventually_P/unbounded/real/unbounded_digits_min_tends_infty/kkl": {
+    "class": "B",
+    "verification": "PROVED",
+    "rule": "B2",
+    "hypothesis": "Eventually primitive means only finitely many satellite rotations, each rational with finite signed CF; the maximum over their finitely many digits is finite.",
+    "sources": [
+      "CS2015",
+      "DL26"
+    ]
+  },
+  "mixed_eventually_P/unbounded/real/unbounded_digits_min_tends_infty/residual": {
+    "class": "B",
+    "verification": "PROVED",
+    "rule": "B2",
+    "hypothesis": "Eventually primitive means only finitely many satellite rotations, each rational with finite signed CF; the maximum over their finitely many digits is finite.",
+    "sources": [
+      "CS2015",
+      "DL26"
+    ]
+  },
+  "mixed_eventually_P/unbounded/real/unbounded_digits_min_not_tends_infty/k": {
+    "class": "B",
+    "verification": "PROVED",
+    "rule": "B1",
+    "hypothesis": "Cofinal absolute primitive periods with bounded successive ratios bound each intervening maximal relative period: each is an integer factor of such a ratio. Finite prefix cannot create unboundedness.",
+    "sources": [
+      "K",
+      "DL26"
+    ]
+  },
+  "mixed_eventually_P/unbounded/real/unbounded_digits_min_not_tends_infty/ee": {
+    "class": "B",
+    "verification": "PROVED",
+    "rule": "B2",
+    "hypothesis": "Eventually primitive means only finitely many satellite rotations, each rational with finite signed CF; the maximum over their finitely many digits is finite.",
+    "sources": [
+      "CS2015",
+      "DL26"
+    ]
+  },
+  "mixed_eventually_P/unbounded/real/unbounded_digits_min_not_tends_infty/kkl": {
+    "class": "B",
+    "verification": "PROVED",
+    "rule": "B2",
+    "hypothesis": "Eventually primitive means only finitely many satellite rotations, each rational with finite signed CF; the maximum over their finitely many digits is finite.",
+    "sources": [
+      "CS2015",
+      "DL26"
+    ]
+  },
+  "mixed_eventually_P/unbounded/real/unbounded_digits_min_not_tends_infty/residual": {
+    "class": "B",
+    "verification": "PROVED",
+    "rule": "B2",
+    "hypothesis": "Eventually primitive means only finitely many satellite rotations, each rational with finite signed CF; the maximum over their finitely many digits is finite.",
+    "sources": [
+      "CS2015",
+      "DL26"
+    ]
+  },
+  "mixed_eventually_P/unbounded/nonreal/bounded_digits/k": {
+    "class": "B",
+    "verification": "PROVED",
+    "rule": "B1",
+    "hypothesis": "Cofinal absolute primitive periods with bounded successive ratios bound each intervening maximal relative period: each is an integer factor of such a ratio. Finite prefix cannot create unboundedness.",
+    "sources": [
+      "K",
+      "DL26"
+    ]
+  },
+  "mixed_eventually_P/unbounded/nonreal/bounded_digits/ee": {
+    "class": "A",
+    "verification": "STATEMENT_ONLY",
+    "theorem": "EE §8 unnumbered MLC statement",
+    "hypothesis": "Exactly E1 dividing rotation 1/q, E2 central piece contains only central little filled Julia set, E3 relative period q+b with b uniformly bounded (source b<q simplification). For eventual primitive tail use TUN only after establishing trivial fiber; §8 imports rigidity machinery, not re-proved.",
+    "sources": [
+      "EE",
+      "L",
+      "C",
+      "TUN"
+    ],
+    "limit": "Full cell predicate is a sufficient statement in the cited preprint, not a proof audit or pointwise exclusion of all published results. Publication status checked only to available records."
+  },
+  "mixed_eventually_P/unbounded/nonreal/bounded_digits/kkl": {
+    "class": "A",
+    "verification": "STATEMENT_ONLY",
+    "theorem": "KKL Theorem C",
+    "hypothesis": "All renormalization types on relevant tail prime primitive and in a parabolically bounded family (finite individual types and finite union of parabolic tails of fixed templates). Theorem C states rigidity; Theorem B requires beau bounds and uniformly bounded puzzle Teichmüller diameter; DKLP input not independently available. For a finite prefix apply TUN after tail rigidity.",
+    "sources": [
+      "KKL",
+      "DKLP",
+      "TUN"
+    ],
+    "limit": "Full cell predicate is a sufficient statement in the cited preprint, not a proof audit or pointwise exclusion of all published results. Publication status checked only to available records."
+  },
+  "mixed_eventually_P/unbounded/nonreal/bounded_digits/residual": {
+    "class": null,
+    "verification": "UNVERIFIED",
+    "candidate_class": "C",
+    "candidate_front": "eventually primitive",
+    "hypothesis": "DL26 uniform relative periods, KLdec finite decoration family, KLmol uniform anti-molecule condition, EE E1–E3 jointly, KKL C parabolically bounded family and L/SL+bounds predicate all fail on eligible tails. Which individual geometric hypothesis of KKL B fails is UNVERIFIED; no implication from C's failure.",
+    "sources": [
+      "DL26",
+      "KLdec",
+      "KLmol",
+      "EE",
+      "KKL",
+      "L",
+      "C",
+      "DKL",
+      "survey"
+    ],
+    "atlas_negated_predicates": [
+      "levin1",
+      "k",
+      "dec",
+      "mol",
+      "real_essential",
+      "sl_bounds",
+      "ee",
+      "kkl"
+    ],
+    "limit": "No theorem found that covers the whole cell in audited catalogue; absence of all published/preprint theorems and nonemptiness not established."
+  },
+  "mixed_eventually_P/unbounded/nonreal/unbounded_digits_min_tends_infty/k": {
+    "class": "B",
+    "verification": "PROVED",
+    "rule": "B1",
+    "hypothesis": "Cofinal absolute primitive periods with bounded successive ratios bound each intervening maximal relative period: each is an integer factor of such a ratio. Finite prefix cannot create unboundedness.",
+    "sources": [
+      "K",
+      "DL26"
+    ]
+  },
+  "mixed_eventually_P/unbounded/nonreal/unbounded_digits_min_tends_infty/ee": {
+    "class": "B",
+    "verification": "PROVED",
+    "rule": "B2",
+    "hypothesis": "Eventually primitive means only finitely many satellite rotations, each rational with finite signed CF; the maximum over their finitely many digits is finite.",
+    "sources": [
+      "CS2015",
+      "DL26"
+    ]
+  },
+  "mixed_eventually_P/unbounded/nonreal/unbounded_digits_min_tends_infty/kkl": {
+    "class": "B",
+    "verification": "PROVED",
+    "rule": "B2",
+    "hypothesis": "Eventually primitive means only finitely many satellite rotations, each rational with finite signed CF; the maximum over their finitely many digits is finite.",
+    "sources": [
+      "CS2015",
+      "DL26"
+    ]
+  },
+  "mixed_eventually_P/unbounded/nonreal/unbounded_digits_min_tends_infty/residual": {
+    "class": "B",
+    "verification": "PROVED",
+    "rule": "B2",
+    "hypothesis": "Eventually primitive means only finitely many satellite rotations, each rational with finite signed CF; the maximum over their finitely many digits is finite.",
+    "sources": [
+      "CS2015",
+      "DL26"
+    ]
+  },
+  "mixed_eventually_P/unbounded/nonreal/unbounded_digits_min_not_tends_infty/k": {
+    "class": "B",
+    "verification": "PROVED",
+    "rule": "B1",
+    "hypothesis": "Cofinal absolute primitive periods with bounded successive ratios bound each intervening maximal relative period: each is an integer factor of such a ratio. Finite prefix cannot create unboundedness.",
+    "sources": [
+      "K",
+      "DL26"
+    ]
+  },
+  "mixed_eventually_P/unbounded/nonreal/unbounded_digits_min_not_tends_infty/ee": {
+    "class": "B",
+    "verification": "PROVED",
+    "rule": "B2",
+    "hypothesis": "Eventually primitive means only finitely many satellite rotations, each rational with finite signed CF; the maximum over their finitely many digits is finite.",
+    "sources": [
+      "CS2015",
+      "DL26"
+    ]
+  },
+  "mixed_eventually_P/unbounded/nonreal/unbounded_digits_min_not_tends_infty/kkl": {
+    "class": "B",
+    "verification": "PROVED",
+    "rule": "B2",
+    "hypothesis": "Eventually primitive means only finitely many satellite rotations, each rational with finite signed CF; the maximum over their finitely many digits is finite.",
+    "sources": [
+      "CS2015",
+      "DL26"
+    ]
+  },
+  "mixed_eventually_P/unbounded/nonreal/unbounded_digits_min_not_tends_infty/residual": {
+    "class": "B",
+    "verification": "PROVED",
+    "rule": "B2",
+    "hypothesis": "Eventually primitive means only finitely many satellite rotations, each rational with finite signed CF; the maximum over their finitely many digits is finite.",
+    "sources": [
+      "CS2015",
+      "DL26"
+    ]
+  },
+  "mixed_eventually_S/unbounded/real/bounded_digits/qg": {
+    "class": "B",
+    "verification": "PROVED",
+    "rule": "B3",
+    "hypothesis": "Each real satellite step has rotation 1/2 by conjugation symmetry of the real straightening; relative period 2. An eventually satellite real address has bounded relative periods, since its primitive prefix is finite.",
+    "sources": [
+      "DL26",
+      "CS2015"
+    ]
+  },
+  "mixed_eventually_S/unbounded/real/bounded_digits/residual": {
+    "class": "B",
+    "verification": "PROVED",
+    "rule": "B3",
+    "hypothesis": "Each real satellite step has rotation 1/2 by conjugation symmetry of the real straightening; relative period 2. An eventually satellite real address has bounded relative periods, since its primitive prefix is finite.",
+    "sources": [
+      "DL26",
+      "CS2015"
+    ]
+  },
+  "mixed_eventually_S/unbounded/real/unbounded_digits_min_tends_infty/qg": {
+    "class": "B",
+    "verification": "PROVED",
+    "rule": "B3",
+    "hypothesis": "Each real satellite step has rotation 1/2 by conjugation symmetry of the real straightening; relative period 2. An eventually satellite real address has bounded relative periods, since its primitive prefix is finite.",
+    "sources": [
+      "DL26",
+      "CS2015"
+    ]
+  },
+  "mixed_eventually_S/unbounded/real/unbounded_digits_min_tends_infty/residual": {
+    "class": "B",
+    "verification": "PROVED",
+    "rule": "B3",
+    "hypothesis": "Each real satellite step has rotation 1/2 by conjugation symmetry of the real straightening; relative period 2. An eventually satellite real address has bounded relative periods, since its primitive prefix is finite.",
+    "sources": [
+      "DL26",
+      "CS2015"
+    ]
+  },
+  "mixed_eventually_S/unbounded/real/unbounded_digits_min_not_tends_infty/qg": {
+    "class": "B",
+    "verification": "PROVED",
+    "rule": "B3",
+    "hypothesis": "Each real satellite step has rotation 1/2 by conjugation symmetry of the real straightening; relative period 2. An eventually satellite real address has bounded relative periods, since its primitive prefix is finite.",
+    "sources": [
+      "DL26",
+      "CS2015"
+    ]
+  },
+  "mixed_eventually_S/unbounded/real/unbounded_digits_min_not_tends_infty/residual": {
+    "class": "B",
+    "verification": "PROVED",
+    "rule": "B3",
+    "hypothesis": "Each real satellite step has rotation 1/2 by conjugation symmetry of the real straightening; relative period 2. An eventually satellite real address has bounded relative periods, since its primitive prefix is finite.",
+    "sources": [
+      "DL26",
+      "CS2015"
+    ]
+  },
+  "mixed_eventually_S/unbounded/nonreal/bounded_digits/qg": {
+    "class": "B",
+    "verification": "PROVED",
+    "rule": "B5",
+    "hypothesis": "For QG_N the first digit of each level is its minimum; b_(i+1,1) >= q_i^2 >= b_(i,1)^2, with b_(i,1)>=2. Thus minimum digits tend to infinity even after removing or restoring a finite prefix.",
+    "sources": [
+      "CS2015",
+      "CS"
+    ]
+  },
+  "mixed_eventually_S/unbounded/nonreal/bounded_digits/residual": {
+    "class": null,
+    "verification": "UNVERIFIED",
+    "candidate_class": "C",
+    "candidate_front": "eventually satellite",
+    "hypothesis": "DL26 uniform relative-period bound; CS signed quadratic growth QG_N; Levin exponential growth, next-rotation and addendum product predicates are false by atlas residual definition, as is L/SL+bounds. A conjunction failing does not specify its failing conjunct; real/vein coverage and additional results UNVERIFIED.",
+    "sources": [
+      "DL26",
+      "CS2015",
+      "Lev1",
+      "Lev2",
+      "Levadd",
+      "L",
+      "C",
+      "DKL",
+      "survey"
+    ],
+    "atlas_negated_predicates": [
+      "levin1",
+      "qg",
+      "levin2",
+      "levinadd",
+      "sl_bounds"
+    ],
+    "limit": "No theorem found that covers the whole cell in audited catalogue; absence of all published/preprint theorems and nonemptiness not established."
+  },
+  "mixed_eventually_S/unbounded/nonreal/unbounded_digits_min_tends_infty/qg": {
+    "class": "A",
+    "verification": "STATEMENT_ONLY",
+    "theorem": "CS2015 Theorem D; author revision same theorem",
+    "hypothesis": "Exactly the all-satellite QG_N predicate: signed b_(1,1)>=N, b_(i,j+1)>=b_(i,j)^2, b_(i+1,1)>=q_i^2. The theorem gives shrinking copies, hence singleton fiber; if eventual, TUN restores finite prefix.",
+    "sources": [
+      "CS2015",
+      "CS",
+      "TUN"
+    ],
+    "limit": "Full cell predicate is a sufficient statement in the cited preprint, not a proof audit or pointwise exclusion of all published results. Publication status checked only to available records."
+  },
+  "mixed_eventually_S/unbounded/nonreal/unbounded_digits_min_tends_infty/residual": {
+    "class": null,
+    "verification": "UNVERIFIED",
+    "candidate_class": "C",
+    "candidate_front": "eventually satellite",
+    "hypothesis": "DL26 uniform relative-period bound; CS signed quadratic growth QG_N; Levin exponential growth, next-rotation and addendum product predicates are false by atlas residual definition, as is L/SL+bounds. A conjunction failing does not specify its failing conjunct; real/vein coverage and additional results UNVERIFIED.",
+    "sources": [
+      "DL26",
+      "CS2015",
+      "Lev1",
+      "Lev2",
+      "Levadd",
+      "L",
+      "C",
+      "DKL",
+      "survey"
+    ],
+    "atlas_negated_predicates": [
+      "levin1",
+      "qg",
+      "levin2",
+      "levinadd",
+      "sl_bounds"
+    ],
+    "limit": "No theorem found that covers the whole cell in audited catalogue; absence of all published/preprint theorems and nonemptiness not established."
+  },
+  "mixed_eventually_S/unbounded/nonreal/unbounded_digits_min_not_tends_infty/qg": {
+    "class": "B",
+    "verification": "PROVED",
+    "rule": "B5",
+    "hypothesis": "For QG_N the first digit of each level is its minimum; b_(i+1,1) >= q_i^2 >= b_(i,1)^2, with b_(i,1)>=2. Thus minimum digits tend to infinity even after removing or restoring a finite prefix.",
+    "sources": [
+      "CS2015",
+      "CS"
+    ]
+  },
+  "mixed_eventually_S/unbounded/nonreal/unbounded_digits_min_not_tends_infty/residual": {
+    "class": null,
+    "verification": "UNVERIFIED",
+    "candidate_class": "C",
+    "candidate_front": "eventually satellite",
+    "hypothesis": "DL26 uniform relative-period bound; CS signed quadratic growth QG_N; Levin exponential growth, next-rotation and addendum product predicates are false by atlas residual definition, as is L/SL+bounds. A conjunction failing does not specify its failing conjunct; real/vein coverage and additional results UNVERIFIED.",
+    "sources": [
+      "DL26",
+      "CS2015",
+      "Lev1",
+      "Lev2",
+      "Levadd",
+      "L",
+      "C",
+      "DKL",
+      "survey"
+    ],
+    "atlas_negated_predicates": [
+      "levin1",
+      "qg",
+      "levin2",
+      "levinadd",
+      "sl_bounds"
+    ],
+    "limit": "No theorem found that covers the whole cell in audited catalogue; absence of all published/preprint theorems and nonemptiness not established."
+  },
+  "mixed_recurrent/unbounded/real/bounded_digits/k": {
+    "class": "B",
+    "verification": "PROVED",
+    "rule": "B1",
+    "hypothesis": "Cofinal absolute primitive periods with bounded successive ratios bound each intervening maximal relative period: each is an integer factor of such a ratio. Finite prefix cannot create unboundedness.",
+    "sources": [
+      "K",
+      "DL26"
+    ]
+  },
+  "mixed_recurrent/unbounded/real/bounded_digits/residual": {
+    "class": null,
+    "verification": "UNVERIFIED",
+    "candidate_class": null,
+    "candidate_front": "real/vein documentary gap",
+    "hypothesis": "Lreal VIII: uniform large essential periods is false by atlas predicate; LY only gives complex bounds/JLC, not parameter-fiber rigidity. DKL real/vein coverage is explicitly reported but primary theorem, version and page UNVERIFIED.",
+    "sources": [
+      "Lreal",
+      "LY",
+      "DKL",
+      "survey",
+      "DL26"
+    ],
+    "atlas_negated_predicates": [
+      "levin1",
+      "k",
+      "mol",
+      "real_essential",
+      "sl_bounds"
+    ],
+    "limit": "No theorem found that covers the whole cell in audited catalogue; absence of all published/preprint theorems and nonemptiness not established."
+  },
+  "mixed_recurrent/unbounded/real/unbounded_digits_min_tends_infty/k": {
+    "class": "B",
+    "verification": "PROVED",
+    "rule": "B1",
+    "hypothesis": "Cofinal absolute primitive periods with bounded successive ratios bound each intervening maximal relative period: each is an integer factor of such a ratio. Finite prefix cannot create unboundedness.",
+    "sources": [
+      "K",
+      "DL26"
+    ]
+  },
+  "mixed_recurrent/unbounded/real/unbounded_digits_min_tends_infty/residual": {
+    "class": "B",
+    "verification": "PROVED",
+    "rule": "B4",
+    "hypothesis": "Real satellite rotations are all 1/2 by conjugation symmetry, so their signed CF digits are all 2.",
+    "sources": [
+      "DL26",
+      "CS2015"
+    ]
+  },
+  "mixed_recurrent/unbounded/real/unbounded_digits_min_not_tends_infty/k": {
+    "class": "B",
+    "verification": "PROVED",
+    "rule": "B1",
+    "hypothesis": "Cofinal absolute primitive periods with bounded successive ratios bound each intervening maximal relative period: each is an integer factor of such a ratio. Finite prefix cannot create unboundedness.",
+    "sources": [
+      "K",
+      "DL26"
+    ]
+  },
+  "mixed_recurrent/unbounded/real/unbounded_digits_min_not_tends_infty/residual": {
+    "class": "B",
+    "verification": "PROVED",
+    "rule": "B4",
+    "hypothesis": "Real satellite rotations are all 1/2 by conjugation symmetry, so their signed CF digits are all 2.",
+    "sources": [
+      "DL26",
+      "CS2015"
+    ]
+  },
+  "mixed_recurrent/unbounded/nonreal/bounded_digits/k": {
+    "class": "B",
+    "verification": "PROVED",
+    "rule": "B1",
+    "hypothesis": "Cofinal absolute primitive periods with bounded successive ratios bound each intervening maximal relative period: each is an integer factor of such a ratio. Finite prefix cannot create unboundedness.",
+    "sources": [
+      "K",
+      "DL26"
+    ]
+  },
+  "mixed_recurrent/unbounded/nonreal/bounded_digits/residual": {
+    "class": null,
+    "verification": "UNVERIFIED",
+    "candidate_class": "C",
+    "candidate_front": "recurrent mixed",
+    "hypothesis": "DL26 fails uniform relative-period bound; KLmol uniform anti-molecule separation on cofinal primitive subsequence is false by residual predicate. KKL C requires an all-prime-primitive tail, CS D an all-satellite tail, both excluded by recurrence. KKL B's general bounds and puzzle-diameter hypotheses are not settled by the cell.",
+    "sources": [
+      "DL26",
+      "KLmol",
+      "KKL",
+      "CS2015",
+      "L",
+      "DKL",
+      "survey"
+    ],
+    "atlas_negated_predicates": [
+      "levin1",
+      "k",
+      "mol",
+      "real_essential",
+      "sl_bounds"
+    ],
+    "limit": "No theorem found that covers the whole cell in audited catalogue; absence of all published/preprint theorems and nonemptiness not established."
+  },
+  "mixed_recurrent/unbounded/nonreal/unbounded_digits_min_tends_infty/k": {
+    "class": "B",
+    "verification": "PROVED",
+    "rule": "B1",
+    "hypothesis": "Cofinal absolute primitive periods with bounded successive ratios bound each intervening maximal relative period: each is an integer factor of such a ratio. Finite prefix cannot create unboundedness.",
+    "sources": [
+      "K",
+      "DL26"
+    ]
+  },
+  "mixed_recurrent/unbounded/nonreal/unbounded_digits_min_tends_infty/residual": {
+    "class": null,
+    "verification": "UNVERIFIED",
+    "candidate_class": "C",
+    "candidate_front": "recurrent mixed",
+    "hypothesis": "DL26 fails uniform relative-period bound; KLmol uniform anti-molecule separation on cofinal primitive subsequence is false by residual predicate. KKL C requires an all-prime-primitive tail, CS D an all-satellite tail, both excluded by recurrence. KKL B's general bounds and puzzle-diameter hypotheses are not settled by the cell.",
+    "sources": [
+      "DL26",
+      "KLmol",
+      "KKL",
+      "CS2015",
+      "L",
+      "DKL",
+      "survey"
+    ],
+    "atlas_negated_predicates": [
+      "levin1",
+      "k",
+      "mol",
+      "real_essential",
+      "sl_bounds"
+    ],
+    "limit": "No theorem found that covers the whole cell in audited catalogue; absence of all published/preprint theorems and nonemptiness not established."
+  },
+  "mixed_recurrent/unbounded/nonreal/unbounded_digits_min_not_tends_infty/k": {
+    "class": "B",
+    "verification": "PROVED",
+    "rule": "B1",
+    "hypothesis": "Cofinal absolute primitive periods with bounded successive ratios bound each intervening maximal relative period: each is an integer factor of such a ratio. Finite prefix cannot create unboundedness.",
+    "sources": [
+      "K",
+      "DL26"
+    ]
+  },
+  "mixed_recurrent/unbounded/nonreal/unbounded_digits_min_not_tends_infty/residual": {
+    "class": null,
+    "verification": "UNVERIFIED",
+    "candidate_class": "C",
+    "candidate_front": "recurrent mixed",
+    "hypothesis": "DL26 fails uniform relative-period bound; KLmol uniform anti-molecule separation on cofinal primitive subsequence is false by residual predicate. KKL C requires an all-prime-primitive tail, CS D an all-satellite tail, both excluded by recurrence. KKL B's general bounds and puzzle-diameter hypotheses are not settled by the cell.",
+    "sources": [
+      "DL26",
+      "KLmol",
+      "KKL",
+      "CS2015",
+      "L",
+      "DKL",
+      "survey"
+    ],
+    "atlas_negated_predicates": [
+      "levin1",
+      "k",
+      "mol",
+      "real_essential",
+      "sl_bounds"
+    ],
+    "limit": "No theorem found that covers the whole cell in audited catalogue; absence of all published/preprint theorems and nonemptiness not established."
+  }
+}
