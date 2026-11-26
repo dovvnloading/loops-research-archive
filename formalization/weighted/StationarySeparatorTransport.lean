@@ -200,4 +200,145 @@ theorem quadratic_image_preimage_symmetric (c : ℂ) (Q : Set ℂ)
   · intro hz
     exact ⟨z, hz, rfl⟩
 
+
+/-- On any retained connected set avoiding the critical point, a
+continuous quadratic inverse section trivializes the two sheets.
+The sign cannot change even along a connected set that has no paths. -/
+theorem quadratic_injOn_of_continuous_section (c : ℂ) (E U : Set ℂ)
+    (s : ℂ → ℂ) (hE : IsPreconnected E) (hzero : (0 : ℂ) ∉ E)
+    (hmap : MapsTo (fun z : ℂ => z^2+c) E U)
+    (hs : ContinuousOn s U) (hsection : ∀ w ∈ U, (s w)^2+c = w) :
+    InjOn (fun z : ℂ => z^2+c) E := by
+  let f : ℂ → ℂ := fun z => z^2+c
+  let u : ℂ → ℂ := fun z => z / s (f z)
+  have hf : Continuous f := (continuous_id.pow 2).add continuous_const
+  have hcomp : ContinuousOn (fun z => s (f z)) E :=
+    hs.comp hf.continuousOn hmap
+  have hrel (z : ℂ) (hz : z ∈ E) : (s (f z))^2 = z^2 := by
+    have h := hsection (f z) (hmap hz)
+    change (s (f z))^2+c = z^2+c at h
+    linear_combination h
+  have hsne (z : ℂ) (hz : z ∈ E) : s (f z) ≠ 0 := by
+    intro h
+    have hh := hrel z hz
+    rw [h] at hh
+    have hzsq : z*z = 0 := by linear_combination -hh
+    rcases mul_eq_zero.mp hzsq with he | he <;> exact hzero (he ▸ hz)
+  have hu : ContinuousOn u E := continuous_id.continuousOn.div hcomp hsne
+  have hsign (z : ℂ) (hz : z ∈ E) : u z = 1 ∨ u z = -1 := by
+    have hh := hrel z hz
+    have hp : (z-s (f z))*(z+s (f z)) = 0 := by linear_combination -hh
+    rcases mul_eq_zero.mp hp with hp | hp
+    · left
+      change z / s (f z) = 1
+      apply (div_eq_iff (hsne z hz)).2
+      simpa using sub_eq_zero.mp hp
+    · right
+      change z / s (f z) = -1
+      apply (div_eq_iff (hsne z hz)).2
+      have he : z = -s (f z) := by linear_combination hp
+      simpa using he
+  have himage : IsPreconnected (u '' E) := hE.image u hu
+  have hcover : u '' E ⊆ ({1} : Set ℂ) ∪ {-1} := by
+    rintro _ ⟨z, hz, rfl⟩
+    exact hsign z hz
+  have hnot : ¬ ((1 : ℂ) ∈ u '' E ∧ (-1 : ℂ) ∈ u '' E) := by
+    rintro ⟨hp, hm⟩
+    obtain ⟨w, _, hw1, hw2⟩ := (isPreconnected_closed_iff.mp himage)
+      {1} {-1} isClosed_singleton isClosed_singleton hcover
+      ⟨1, hp, mem_singleton _⟩ ⟨-1, hm, mem_singleton _⟩
+    have h1 : w = 1 := hw1
+    have h2 : w = -1 := hw2
+    rw [h1] at h2
+    norm_num at h2
+  intro x hx y hy hxy
+  have hr : u x = u y := by
+    rcases hsign x hx with hxp | hxm <;> rcases hsign y hy with hyp | hym
+    · exact hxp.trans hyp.symm
+    · exact False.elim (hnot ⟨⟨x,hx,hxp⟩, ⟨y,hy,hym⟩⟩)
+    · exact False.elim (hnot ⟨⟨y,hy,hyp⟩, ⟨x,hx,hxm⟩⟩)
+    · exact hxm.trans hym.symm
+  change f x = f y at hxy
+  change x / s (f x) = y / s (f y) at hr
+  rw [← hxy] at hr
+  calc
+    x = (x / s (f x)) * s (f x) := (div_mul_cancel₀ x (hsne x hx)).symm
+    _ = (y / s (f x)) * s (f x) := by rw [hr]
+    _ = y := div_mul_cancel₀ y (hsne x hx)
+
+/-- The analytic section is constructed using Mathlib's covering-space
+root theorem, not postulated. Any connected set mapping into an open
+simply connected domain avoiding the critical value lies in one sheet. -/
+theorem quadratic_injOn_over_simplyConnected (c : ℂ) (E U : Set ℂ)
+    (hE : IsPreconnected E) (hUc : IsSimplyConnected U) (hUo : IsOpen U)
+    (hc : c ∉ U) (hmap : MapsTo (fun z : ℂ => z^2+c) E U) :
+    InjOn (fun z : ℂ => z^2+c) E := by
+  have hzero : (0 : ℂ) ∉ E := by
+    intro hz
+    apply hc
+    simpa using hmap hz
+  have hg : ContinuousOn (fun w : ℂ => w-c) U :=
+    (continuous_id.sub continuous_const).continuousOn
+  have h0 : (0 : ℂ) ∉ (fun w : ℂ => w-c) '' U := by
+    rintro ⟨w, hw, he⟩
+    change w-c = 0 at he
+    exact hc ((sub_eq_zero.mp he) ▸ hw)
+  obtain ⟨s, hs, hpow⟩ := Complex.exists_continuousOn_pow_eq
+    hUc hUo hg h0 (n := 2) (by norm_num)
+  apply quadratic_injOn_of_continuous_section c E U s hE hzero hmap hs
+  intro w hw
+  rw [hpow]
+  ring
+
+/-- A branch domain supplies a full connected-component separator,
+not merely the absence of a continuous path between reflected points. -/
+theorem reflected_points_separated (c : ℂ) (S U : Set ℂ) (a : ℂ)
+    (ha : a ∈ S) (hne : a ≠ 0) (hUc : IsSimplyConnected U)
+    (hUo : IsOpen U) (hc : c ∉ U)
+    (hmap : MapsTo (fun z : ℂ => z^2+c) S U) :
+    -a ∉ connectedComponentIn S a := by
+  intro hb
+  have hsub := connectedComponentIn_subset S a
+  have hinj := quadratic_injOn_over_simplyConnected c
+    (connectedComponentIn S a) U isPreconnected_connectedComponentIn
+    hUc hUo hc (fun z hz => hmap (hsub hz))
+  have he : a = -a :=
+    hinj (mem_connectedComponentIn ha) hb (by ring)
+  exact hne (by linear_combination (1/2 : ℂ) * he)
+
+/-- Symmetric deletion commutes exactly with the actual quadratic
+image; the critical-value cut is in the target, not a chosen deck label. -/
+theorem quadratic_image_diff_symmetric (c : ℂ) (K Q : Set ℂ)
+    (hsym : ∀ z ∈ Q, -z ∈ Q) :
+    (fun z : ℂ => z^2+c) '' (K \ Q) =
+      (fun z : ℂ => z^2+c) '' K \ (fun z : ℂ => z^2+c) '' Q := by
+  let f : ℂ → ℂ := fun z => z^2+c
+  have hsat : f ⁻¹' (f '' Q) = Q := quadratic_image_preimage_symmetric c Q hsym
+  change f '' (K \ Q) = f '' K \ f '' Q
+  ext w
+  constructor
+  · rintro ⟨z, hz, rfl⟩
+    refine ⟨⟨z, hz.1, rfl⟩, ?_⟩
+    intro h
+    have hzq : z ∈ f ⁻¹' (f '' Q) := h
+    rw [hsat] at hzq
+    exact hz.2 hzq
+  · rintro ⟨⟨z, hzK, rfl⟩, hw⟩
+    exact ⟨z, ⟨hzK, fun hzQ => hw ⟨z, hzQ, rfl⟩⟩, rfl⟩
+
+/-- Actual base-separator criterion for the symmetric critical little
+filled set. The remaining analytic input is a single simply connected
+target domain containing the displayed actual image difference. -/
+theorem quadratic_reflected_base_separator (c : ℂ) (K Q U : Set ℂ)
+    (a : ℂ) (ha : a ∈ K \ Q) (hne : a ≠ 0)
+    (hsym : ∀ z ∈ Q, -z ∈ Q) (hUc : IsSimplyConnected U)
+    (hUo : IsOpen U) (hc : c ∉ U)
+    (hU : ((fun z : ℂ => z^2+c) '' K \ (fun z : ℂ => z^2+c) '' Q) ⊆ U) :
+    -a ∉ connectedComponentIn (K \ Q) a := by
+  apply reflected_points_separated c (K \ Q) U a ha hne hUc hUo hc
+  intro z hz
+  apply hU
+  rw [← quadratic_image_diff_symmetric c K Q hsym]
+  exact ⟨z, hz, rfl⟩
+
 end LoopsStationarySeparatorTransport

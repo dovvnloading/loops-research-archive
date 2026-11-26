@@ -2067,7 +2067,12 @@
         "separator_iff_local",
         "separator_transport",
         "attachment_component_union",
-        "quadratic_image_preimage_symmetric"
+        "quadratic_image_preimage_symmetric",
+        "quadratic_injOn_of_continuous_section",
+        "quadratic_injOn_over_simplyConnected",
+        "reflected_points_separated",
+        "quadratic_image_diff_symmetric",
+        "quadratic_reflected_base_separator"
       ]
     },
     "obligations": [
