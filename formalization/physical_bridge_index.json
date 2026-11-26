@@ -2042,7 +2042,11 @@
         "least_admissible_carrier",
         "directed_image_intersection",
         "directed_component_intersection",
-        "quadratic_directed_stage_limit"
+        "quadratic_directed_stage_limit",
+        "finite_obstacle_split_iff",
+        "least_carrier_obstruction_criterion",
+        "hereditary_carrier_intersection",
+        "quadratic_critical_arbitrary_intersection"
       ]
     },
     "obligations": [

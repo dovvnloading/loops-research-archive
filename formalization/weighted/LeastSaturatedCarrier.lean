@@ -1,4 +1,5 @@
 import Mathlib
+import SaturatedTelescope
 
 /-!
 # Least connected carriers, forced absorption, and directed saturation
@@ -199,7 +200,7 @@ theorem directed_component_intersection {Y : Type*} {ι : Type*} [Nonempty ι]
     apply mem_iInter.mpr
     intro i
     rw [hsat i]
-    exact connectedComponentIn_mono
+    exact connectedComponentIn_mono x
       (show f ⁻¹' (⋂ j, D j) ⊆ f ⁻¹' D i from fun _ hw => mem_iInter.mp hw i) hz
 
 /-- Actual quadratic stages retain both exact geometric saturation and
@@ -218,5 +219,181 @@ theorem quadratic_directed_stage_limit {ι : Type*} [Nonempty ι]
     (continuous_id.pow 2).add continuous_const
   rw [directed_image_intersection _ hf K hc hd]
   simp only [honto]
+
+
+/-- A finite family of compact connected obstacle objects admits an exact
+separated compact complement iff every obstacle meeting the carrier is
+absorbed. No arbitrary choice of obstacle split is required. -/
+theorem finite_obstacle_split_iff (K : Set X) (O : Set (Set X))
+    (hK : IsCompact K) (hfin : O.Finite)
+    (hc : ∀ A ∈ O, IsCompact A) (hp : ∀ A ∈ O, IsPreconnected A) :
+    (∃ E : Set X, IsCompact E ∧ Disjoint K E ∧ ∀ A ∈ O, A ⊆ K ∪ E) ↔
+      ∀ A ∈ O, (K ∩ A).Nonempty → A ⊆ K := by
+  constructor
+  · rintro ⟨E, hE, hd, hcover⟩ A hA hmeet
+    exact connected_obstacle_forced K E A hK.isClosed hE.isClosed hd
+      (hp A hA) (hcover A hA) hmeet
+  · intro habs
+    let B : Set (Set X) := {A ∈ O | Disjoint K A}
+    let E : Set X := ⋃₀ B
+    have hB : B ⊆ O := fun _ h => h.1
+    have hE : IsCompact E := (hfin.subset hB).isCompact_sUnion
+      (fun A hA => hc A (hB hA))
+    refine ⟨E, hE, ?_, ?_⟩
+    · apply Set.disjoint_left.mpr
+      intro x hx hxE
+      obtain ⟨A, hA, hxA⟩ := mem_sUnion.mp hxE
+      exact (Set.disjoint_left.mp hA.2) hx hxA
+    · intro A hA x hx
+      by_cases hd : Disjoint K A
+      · exact Or.inr (mem_sUnion.mpr ⟨A, ⟨hA, hd⟩, hx⟩)
+      · have hm : (K ∩ A).Nonempty := by
+          by_contra hn
+          apply hd
+          apply Set.disjoint_left.mpr
+          intro z hzK hzA
+          exact hn ⟨z, hzK, hzA⟩
+        exact Or.inl (habs A hA hm hx)
+
+/-- Exact existence test: close all internal obstacles first, then reject
+only if the least core leaves the authorized region or meets an obstacle
+which cannot lie wholly in the ambient carrier. The ambient carrier itself
+witnesses existence for the internal constraints. -/
+theorem least_carrier_obstruction_criterion (J S : Set X) (O : Set (Set X))
+    (hJ : IsCompact J) (hpJ : IsPreconnected J) (hSJ : S ⊆ J)
+    (hS : S.Nonempty)
+    (hhered : ∀ A B : Set X, IsCompact A → IsCompact B →
+      IsPreconnected A → IsPreconnected B → A ⊆ J → B ⊆ J →
+      (A ∩ B).Nonempty → IsPreconnected (A ∩ B)) :
+    ∃ K, Admissible J S {A ∈ O | A ⊆ J} K ∧
+      (∀ L, Admissible J S {A ∈ O | A ⊆ J} L → K ⊆ L) ∧
+      ∀ U : Set X, (∃ L, Admissible J S O L ∧ L ⊆ U) ↔
+        K ⊆ U ∧ ∀ A ∈ O, (K ∩ A).Nonempty → A ⊆ J := by
+  let B : Set (Set X) := {A ∈ O | A ⊆ J}
+  have hbase : Admissible J S B J := {
+    compact := hJ
+    preconnected := hpJ
+    package := hSJ
+    inside := Subset.rfl
+    absorb := fun _ hA _ => hA.2 }
+  obtain ⟨K, hK, hleast⟩ := least_admissible_carrier J S B hJ hS hhered ⟨J, hbase⟩
+  refine ⟨K, hK, hleast, ?_⟩
+  intro U
+  constructor
+  · rintro ⟨L, hL, hLU⟩
+    have hLB : Admissible J S B L := {
+      compact := hL.compact
+      preconnected := hL.preconnected
+      package := hL.package
+      inside := hL.inside
+      absorb := fun A hA hm => hL.absorb A hA.1 hm }
+    have hKL := hleast L hLB
+    refine ⟨hKL.trans hLU, ?_⟩
+    intro A hA hm
+    obtain ⟨z, hzK, hzA⟩ := hm
+    exact (hL.absorb A hA ⟨z, hKL hzK, hzA⟩).trans hL.inside
+  · rintro ⟨hKU, htest⟩
+    refine ⟨K, ?_, hKU⟩
+    exact {
+      compact := hK.compact
+      preconnected := hK.preconnected
+      package := hK.package
+      inside := hK.inside
+      absorb := fun A hA hm => hK.absorb A ⟨hA, htest A hA hm⟩ hm }
+
+/-- Hereditary pairwise intersection extends to arbitrary compact carriers
+with a common anchor, without any directedness assumption on the family. -/
+theorem hereditary_carrier_intersection {ι : Type*} [Nonempty ι]
+    (J : Set X) (hJ : IsCompact J) (K : ι → Set X) (x : X)
+    (hc : ∀ i, IsCompact (K i)) (hp : ∀ i, IsPreconnected (K i))
+    (hsub : ∀ i, K i ⊆ J) (hx : ∀ i, x ∈ K i)
+    (hhered : ∀ A B : Set X, IsCompact A → IsCompact B →
+      IsPreconnected A → IsPreconnected B → A ⊆ J → B ⊆ J →
+      (A ∩ B).Nonempty → IsPreconnected (A ∩ B)) :
+    IsPreconnected (⋂ i, K i) := by
+  classical
+  let S : Set X := ⋂ i, K i
+  have hS : S.Nonempty := ⟨x, mem_iInter.mpr hx⟩
+  have hA (i : ι) : Admissible J S ∅ (K i) := {
+    compact := hc i
+    preconnected := hp i
+    package := iInter_subset K i
+    inside := hsub i
+    absorb := by simp }
+  obtain ⟨L, hL, hleast⟩ := least_admissible_carrier J S ∅ hJ hS hhered
+    ⟨K (Classical.choice (inferInstance : Nonempty ι)), hA _⟩
+  have heq : L = S := Subset.antisymm
+    (fun _ hz => mem_iInter.mpr fun i => hleast _ (hA i) hz) hL.package
+  change IsPreconnected S
+  rw [← heq]
+  exact hL.preconnected
+
+/-- At the actual quadratic critical point even nondirected intersections
+preserve component saturation and image equality. The sign involution
+removes the otherwise real ambiguity between incompatible inverse fibers. -/
+theorem quadratic_critical_arbitrary_intersection {ι : Type*} [Nonempty ι]
+    (c : ℂ) (J : Set ℂ) (hJ : IsCompact J) (K D : ι → Set ℂ)
+    (hc : ∀ i, IsCompact (K i)) (hsub : ∀ i, K i ⊆ J)
+    (hx : ∀ i, (0 : ℂ) ∈ K i)
+    (hhered : ∀ A B : Set ℂ, IsCompact A → IsCompact B →
+      IsPreconnected A → IsPreconnected B → A ⊆ J → B ⊆ J →
+      (A ∩ B).Nonempty → IsPreconnected (A ∩ B))
+    (hsat : ∀ i, K i = connectedComponentIn ((fun z : ℂ => z^2+c) ⁻¹' D i) 0)
+    (honto : ∀ i, (fun z : ℂ => z^2+c) '' K i = D i) :
+    (⋂ i, K i) = connectedComponentIn ((fun z : ℂ => z^2+c) ⁻¹' (⋂ i, D i)) 0 ∧
+      (fun z : ℂ => z^2+c) '' (⋂ i, K i) = ⋂ i, D i := by
+  have hp (i : ι) : IsPreconnected (K i) := by
+    rw [hsat i]
+    exact isPreconnected_connectedComponentIn
+  have hpre := hereditary_carrier_intersection J hJ K 0 hc hp hsub hx hhered
+  refine ⟨?_, ?_⟩
+  · apply Subset.antisymm
+    · apply hpre.subset_connectedComponentIn (mem_iInter.mpr hx)
+      intro z hz
+      change z^2+c ∈ ⋂ i, D i
+      apply mem_iInter.mpr
+      intro i
+      have hzi : z ∈ K i := mem_iInter.mp hz i
+      rw [hsat i] at hzi
+      exact connectedComponentIn_subset ((fun w : ℂ => w^2+c) ⁻¹' D i) 0 hzi
+    · intro z hz
+      apply mem_iInter.mpr
+      intro i
+      rw [hsat i]
+      exact connectedComponentIn_mono 0
+        (show (fun w : ℂ => w^2+c) ⁻¹' (⋂ j, D j) ⊆
+          (fun w : ℂ => w^2+c) ⁻¹' D i from fun _ hw => mem_iInter.mp hw i) hz
+  · apply Subset.antisymm
+    · rintro y ⟨z, hz, rfl⟩
+      apply mem_iInter.mpr
+      intro i
+      rw [← honto i]
+      exact ⟨z, mem_iInter.mp hz i, rfl⟩
+    · intro y hy
+      let i₀ : ι := Classical.choice (inferInstance : Nonempty ι)
+      have hy₀ : y ∈ (fun z : ℂ => z^2+c) '' K i₀ := by
+        rw [honto i₀]
+        exact mem_iInter.mp hy i₀
+      obtain ⟨z, hz, hzy⟩ := hy₀
+      refine ⟨z, mem_iInter.mpr ?_, hzy⟩
+      intro i
+      have hyi : y ∈ (fun z : ℂ => z^2+c) '' K i := by
+        rw [honto i]
+        exact mem_iInter.mp hy i
+      obtain ⟨w, hw, hwy⟩ := hyi
+      rcases (LoopsSaturatedTelescope.quadratic_eq_iff c z w).mp (hzy.trans hwy.symm)
+        with heq | heq
+      · rw [heq]
+        exact hw
+      · rw [heq, hsat i]
+        have hzero := hx i
+        rw [hsat i] at hzero
+        have hci : c ∈ D i := by
+          have h := connectedComponentIn_subset ((fun u : ℂ => u^2+c) ⁻¹' D i) 0 hzero
+          change (0 : ℂ)^2+c ∈ D i at h
+          simpa using h
+        rw [hsat i] at hw
+        exact LoopsSaturatedTelescope.quadratic_critical_component_symmetric c (D i)
+          hci w hw
 
 end LoopsLeastCarrier
