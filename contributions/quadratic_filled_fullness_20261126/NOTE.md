@@ -37,13 +37,21 @@ This extends the result to compactness of all nonnegative dynamical sublevels an
 
 Additional declarations: `escape_outer_zero`, `escape_outer_succ`, `escape_outer_antitone`, `escape_outer_contains_sublevel`, `escape_outer_iInter`, `quadratic_critical_preimage_preconnected`, `escape_outer_compact`, `escape_outer_preconnected`, `quadratic_escape_sublevel_compact`, `quadratic_escape_sublevel_connected_of_critical`, `quadratic_filled_connected_of_critical`.
 
+## Extension: exact connectivity threshold and light-model branch locus
+
+The complement path and exponential covering argument constructs a continuous logarithm of the coordinate on any compact plane set avoiding zero with connected complement. A symmetric compact connected set with connected complement must contain zero: if a logarithm existed, the exponential of half the difference of its reflected and original values would have square -1 and would therefore be constant by connectedness. But the values at opposite points multiply to 1, a contradiction.
+
+Apply this to the full compact symmetric dynamical sublevels to get the reverse direction of the exact critical connectivity threshold. Apply it also to the compact physical fibers of a monotone light quadratic model when the physical filled set has empty interior: their fullness is already proved above, so the descended reflection is fixed precisely at fibers containing the actual critical point. The archive's light-model involution then identifies one-point predecessor fibers exactly. This does not postulate a singleton physical critical fiber.
+
+Additional declarations: `compact_connected_complement_log`, `symmetric_full_continuum_contains_zero`, `quadratic_escape_reflection`, `quadratic_escape_sublevel_connected_iff`, `quadratic_filled_connected_iff`, `quadratic_model_reflection_fixed_iff`, `quadratic_filled_light_model_exact_critical_branch`. The new declarations count only after exact-head compilation and audit.
+
 ## Dependencies
 
-KKL_NATIVE_TERMINAL_HUBBARD_TREE, KKL_STATIONARY_MODEL_TERMINAL_SHEET_INCIDENCE, KKL_STATIONARY_SELECTED_PREDECESSOR_CHAIN. Existing StationaryFiberDynamics, StationaryMonotoneGeometry, StationaryGeometricFibers, QuadraticCriticalFiberCensus, LeastSaturatedCarrier, PlanarFullification and QuadraticEscape. Mathlib's pinned `Complex.exists_mem_frontier_isMaxOn_norm` in `Mathlib/Analysis/Complex/AbsMax.lean` supplies the classical maximum modulus principle.
+KKL_NATIVE_TERMINAL_HUBBARD_TREE, KKL_STATIONARY_MODEL_TERMINAL_SHEET_INCIDENCE, KKL_STATIONARY_SELECTED_PREDECESSOR_CHAIN. Existing StationaryFiberDynamics, StationaryMonotoneGeometry, StationaryGeometricFibers, StationaryLightModel, QuadraticCriticalFiberCensus, LeastSaturatedCarrier, PlanarFullification and QuadraticEscape. Mathlib's pinned `Complex.exists_mem_frontier_isMaxOn_norm` in `Mathlib/Analysis/Complex/AbsMax.lean` supplies the classical maximum modulus principle.
 
 ## Boundary
 
-The named KKL/Kiwi quotient, empty interior of the named physical set, hereditary unicoherence (in particular the Janiszewski step), singleton anchors, and exact geometric selected-continuum correspondence remain separate obligations. The connectedness extension is conditional on bounded critical orbit; the converse and the exact branch-locus theorem are not established here. Neither local connectivity of the boundary, H1–H4, nor MLC is established. No ledger promotion or new workflow. No priority claim for the classical fullness theorem.
+The named KKL/Kiwi quotient, empty interior of the named physical set, hereditary unicoherence (in particular the Janiszewski step), singleton anchors, and exact geometric selected-continuum correspondence remain separate obligations. The exact branch-locus conclusion is conditional on an actual continuous surjective monotone semiconjugacy with light model map and empty interior; no existence or identification of the named KKL/Kiwi model is established. Neither local connectivity of the boundary, H1–H4, nor MLC is established. No ledger promotion or new workflow. No priority claim for the classical fullness theorem.
 
 ## Attribution
 

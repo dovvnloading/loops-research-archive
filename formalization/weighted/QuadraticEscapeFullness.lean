@@ -1,6 +1,9 @@
 import StationaryFiberDynamics
 import QuadraticCriticalFiberCensus
 import LeastSaturatedCarrier
+import StationaryLightModel
+import Mathlib.Analysis.Complex.CoveringMap
+import Mathlib.Topology.Homotopy.Lifting
 import Mathlib.Analysis.Complex.AbsMax
 
 /-!
@@ -15,7 +18,7 @@ namespace LoopsQuadraticEscapeFullness
 
 set_option maxHeartbeats 1000000
 
-open Set Bornology Filter Topology
+open Set Bornology Filter Topology unitInterval
 open LoopsStationaryGeometricFibers LoopsQuadraticCylinderCensus LoopsQuadraticCriticalFiberCensus
 open QuadraticEscape LoopsStationaryFiberDynamics
 open LoopsFormal.ProtectedCarriers LoopsStationaryMonotoneGeometry
@@ -298,5 +301,224 @@ theorem quadratic_filled_connected_of_critical (c : ℂ) (h0 : (0 : ℂ) ∈ qua
   rw [← he]
   change escape c 0 = 0 at h0
   exact quadratic_escape_sublevel_connected_of_critical c 0 h0.le
+
+
+/-- The coordinate function of a compact planar set avoiding zero has
+a continuous logarithm whenever its complement is connected. Move the
+omitted point along a complementary path from a far-left point to
+zero and lift that homotopy through the exponential covering. No local
+connectedness or simple connectedness of the compact set is used. -/
+theorem compact_connected_complement_log (S : Set ℂ)
+    (hK : IsCompact S) (hC : IsConnected Sᶜ) (h0 : (0 : ℂ) ∉ S) :
+    ∃ L : S → ℂ, Continuous L ∧ ∀ z : S, Complex.exp (L z) = (z : ℂ) := by
+  obtain ⟨R, hR, hB⟩ := hK.isBounded.subset_closedBall_lt (0 : ℂ) 0
+  let a : ℂ := ((-(R+1) : ℝ) : ℂ)
+  have hnorm (z : S) : ‖(z : ℂ)‖ ≤ R := by
+    have hz := hB z.property
+    rwa [Metric.mem_closedBall, dist_zero_right] at hz
+  have ha : a ∉ S := by
+    intro ha
+    have hn := hnorm ⟨a, ha⟩
+    change ‖a‖ ≤ R at hn
+    have he : ‖a‖ = R+1 := by
+      change ‖((-(R+1) : ℝ) : ℂ)‖ = R+1
+      rw [Complex.norm_real, Real.norm_eq_abs, abs_neg, abs_of_nonneg (by linarith)]
+    rw [he] at hn
+    linarith
+  have hs (z : S) : (z : ℂ)-a ∈ Complex.slitPlane := by
+    apply Complex.mem_slitPlane_iff.mpr
+    left
+    have hl := (abs_le.mp (Complex.abs_re_le_norm (z : ℂ))).1
+    have hn := hnorm z
+    rw [Complex.sub_re]
+    change 0 < (z : ℂ).re - (-(R+1))
+    linarith
+  have hP := (hK.isClosed.isOpen_compl.isConnected_iff_isPathConnected).mp hC
+  obtain ⟨g, hg⟩ := hP.joinedIn a ha 0 h0
+  have hne (q : I × S) : (q.2 : ℂ) - g q.1 ≠ 0 := by
+    apply sub_ne_zero.mpr
+    intro e
+    apply hg q.1
+    rw [← e]
+    exact q.2.property
+  have hcont : Continuous (fun q : I × S => (q.2 : ℂ)-g q.1) :=
+    (continuous_subtype_val.comp continuous_snd).sub (g.continuous.comp continuous_fst)
+  let H : C(I × S, {z : ℂ // z ≠ 0}) :=
+    ⟨fun q => ⟨(q.2 : ℂ)-g q.1, hne q⟩, hcont.subtype_mk _⟩
+  let L₀ : C(S, ℂ) := ⟨fun z => Complex.log ((z : ℂ)-a), by
+    apply continuous_iff_continuousAt.mpr
+    intro z
+    exact (Complex.continuousAt_clog (hs z)).comp
+      (continuous_subtype_val.sub continuous_const).continuousAt⟩
+  have H₀ (z : S) : H (0,z) =
+      (⟨Complex.exp (L₀ z), Complex.exp_ne_zero _⟩ : {w : ℂ // w ≠ 0}) := by
+    apply Subtype.ext
+    change (z : ℂ)-g 0 = Complex.exp (Complex.log ((z : ℂ)-a))
+    rw [g.source, Complex.exp_log (Complex.slitPlane_ne_zero (hs z))]
+  let L := Complex.isCoveringMap_exp.liftHomotopy H L₀ H₀
+  refine ⟨fun z => L (1,z), L.continuous.comp (continuous_const.prodMk continuous_id), ?_⟩
+  intro z
+  have hh := congr_fun (Complex.isCoveringMap_exp.liftHomotopy_lifts H L₀ H₀) (1,z)
+  have hh' := congrArg Subtype.val hh
+  change Complex.exp (L (1,z)) = (z : ℂ)-g 1 at hh'
+  rw [g.target, sub_zero] at hh'
+  exact hh'
+
+/-- A nonempty compact connected planar set invariant under reflection
+and having connected complement must contain the reflection center.
+This avoids assuming hereditary unicoherence of the ambient set. -/
+theorem symmetric_full_continuum_contains_zero (S : Set ℂ)
+    (hK : IsCompact S) (hS : IsConnected S) (hC : IsConnected Sᶜ)
+    (hsym : ∀ z ∈ S, -z ∈ S) : (0 : ℂ) ∈ S := by
+  by_contra h0
+  obtain ⟨L, hLc, hL⟩ := compact_connected_complement_log S hK hC h0
+  let s : S → S := fun z => ⟨-(z : ℂ), hsym z z.property⟩
+  have hsc : Continuous s := continuous_subtype_val.neg.subtype_mk _
+  have hsi (z : S) : s (s z) = z := by
+    apply Subtype.ext
+    exact neg_neg _
+  let F : S → ℂ := fun z => Complex.exp ((L (s z)-L z)/2)
+  have hFc : Continuous F := Complex.continuous_exp.comp
+    (((hLc.comp hsc).sub hLc).div_const 2)
+  have hsq (z : S) : F z ^ 2 = -1 := by
+    have hz : (z : ℂ) ≠ 0 := fun h => h0 (h ▸ z.property)
+    calc
+      F z ^ 2 = Complex.exp (L (s z)-L z) := by
+        dsimp [F]
+        rw [pow_two, ← Complex.exp_add]
+        congr 1
+        ring
+      _ = -1 := by
+        rw [Complex.exp_sub, hL, hL]
+        change -(z : ℂ) / (z : ℂ) = -1
+        rw [neg_div, div_self hz]
+  have hfin : (range F).Finite := by
+    apply ((Set.finite_singleton (-Complex.I)).insert Complex.I).subset
+    rintro w ⟨z,rfl⟩
+    have he : (F z-Complex.I)*(F z+Complex.I) = 0 := by
+      calc
+        _ = F z^2-Complex.I^2 := by ring
+        _ = 0 := by rw [hsq, Complex.I_sq, sub_self]
+    rcases mul_eq_zero.mp he with h | h
+    · exact Or.inl (sub_eq_zero.mp h)
+    · exact Or.inr (by linear_combination h)
+  letI : PreconnectedSpace S := isPreconnected_iff_preconnectedSpace.mp hS.isPreconnected
+  have hconst := preconnected_finite_subsingleton (isPreconnected_range hFc) hfin
+  obtain ⟨z,hz⟩ := hS.nonempty
+  let x : S := ⟨z,hz⟩
+  have he := hconst (mem_range_self x) (mem_range_self (s x))
+  have hmul : F x * F (s x) = 1 := by
+    dsimp [F]
+    rw [← Complex.exp_add, hsi]
+    have hzero : (L (s x)-L x)/2 + (L x-L (s x))/2 = 0 := by ring
+    rw [hzero, Complex.exp_zero]
+  rw [← he, ← pow_two, hsq] at hmul
+  norm_num at hmul
+
+theorem quadratic_escape_reflection (c z : ℂ) :
+    escape c (-z) = escape c z := by
+  have h := escape_step c (-z)
+  have he : (-z)^2+c = z^2+c := by ring
+  rw [he, escape_step] at h
+  linarith
+
+/-- Exact connectedness threshold for every real escape height. The
+reverse direction uses fullness and reflection rather than a presumed
+Böttcher coordinate or regularity of an equipotential. -/
+theorem quadratic_escape_sublevel_connected_iff (c : ℂ) (t : ℝ) :
+    IsConnected {z : ℂ | escape c z ≤ t} ↔ escape c 0 ≤ t := by
+  constructor
+  · intro h
+    obtain ⟨z,hz⟩ := h.nonempty
+    have ht : 0 ≤ t := (escape_nonneg c z).trans hz
+    have hc := quadratic_escape_sublevel_compact c t ht
+    obtain ⟨a,ha,_,he,_⟩ := planarFill_exterior hc.isBounded
+    rw [quadratic_escape_sublevel_full] at he
+    have hC : IsConnected ({z : ℂ | escape c z ≤ t} : Set ℂ)ᶜ := by
+      rw [he]
+      exact isConnected_connectedComponentIn_iff.mpr ha
+    exact symmetric_full_continuum_contains_zero _ hc h hC
+      (fun w hw => by change escape c (-w) ≤ t; rwa [quadratic_escape_reflection])
+  · exact quadratic_escape_sublevel_connected_of_critical c t
+
+/-- The filled Julia set is connected exactly when its critical orbit
+is bounded, with the actual escape-zero definition on both sides. -/
+theorem quadratic_filled_connected_iff (c : ℂ) :
+    IsConnected (quadraticFilled c) ↔ (0 : ℂ) ∈ quadraticFilled c := by
+  have he : {z : ℂ | escape c z ≤ 0} = quadraticFilled c := by
+    ext z
+    change escape c z ≤ 0 ↔ escape c z = 0
+    exact ⟨fun h => le_antisymm h (escape_nonneg c z), fun h => h.le⟩
+  rw [← he]
+  exact quadratic_escape_sublevel_connected_iff c 0
+
+/-- The fixed locus of a descended reflection consists exactly of
+model points whose actual geometric fibers contain the physical
+critical point. Empty interior of the filled set, rather than a
+separate branch-locus assumption, ensures fullness of those fibers. -/
+theorem quadratic_model_reflection_fixed_iff {Y : Type*} [TopologicalSpace Y] [T2Space Y]
+    (c : ℂ) (p : quadraticFilled c → Y) (S : Y → Y)
+    (hp : Continuous p) (hsurj : Function.Surjective p)
+    (hf : ∀ y : Y, IsPreconnected (p ⁻¹' {y}))
+    (hE : interior (quadraticFilled c) = ∅)
+    (hS : ∀ x z : quadraticFilled c, (z : ℂ) = -(x : ℂ) → S (p x) = p z)
+    (y : Y) :
+    S y = y ↔ ∃ x : quadraticFilled c, (x : ℂ) = 0 ∧ p x = y := by
+  constructor
+  · intro hy
+    letI : CompactSpace (quadraticFilled c) :=
+      isCompact_iff_compactSpace.mp (quadratic_filled_compact c)
+    let K : Set ℂ := Subtype.val '' (p ⁻¹' {y})
+    have hclosed : IsClosed (p ⁻¹' ({y} : Set Y)) := isClosed_singleton.preimage hp
+    have hK : IsCompact K := hclosed.isCompact.image continuous_subtype_val
+    have hnon : (p ⁻¹' ({y} : Set Y)).Nonempty := by
+      obtain ⟨x,hx⟩ := hsurj y
+      exact ⟨x,hx⟩
+    have hconn : IsConnected K :=
+      (show IsConnected (p ⁻¹' ({y} : Set Y)) from ⟨hnon,hf y⟩).image
+        Subtype.val continuous_subtype_val.continuousOn
+    have hsub : K ⊆ quadraticFilled c := by
+      rintro _ ⟨x,_,rfl⟩
+      exact x.property
+    have hC := (quadratic_filled_compact_subcarrier_full c K hK hsub hE).2
+    have hsym : ∀ w ∈ K, -w ∈ K := by
+      rintro _ ⟨x,hx,rfl⟩
+      have hn : -(x : ℂ) ∈ quadraticFilled c := by
+        apply (quadratic_filled_complete_invariant c (-(x : ℂ))).mp
+        have he : (-(x : ℂ))^2+c = (x : ℂ)^2+c := by ring
+        rw [he]
+        exact (quadraticFilledMap c x).property
+      let x' : quadraticFilled c := ⟨-(x : ℂ),hn⟩
+      refine ⟨x',?_,rfl⟩
+      change p x' = y
+      rw [← hS x x' rfl]
+      change p x = y at hx
+      rw [hx,hy]
+    obtain ⟨x,hx,hx0⟩ := symmetric_full_continuum_contains_zero K hK hconn hC hsym
+    exact ⟨x,hx0,hx⟩
+  · rintro ⟨x,hx,rfl⟩
+    apply hS x x
+    rw [hx, neg_zero]
+
+/-- Exact critical-branch identification for the existing light
+quadratic model. No singleton critical fiber is assumed. -/
+theorem quadratic_filled_light_model_exact_critical_branch {Y : Type*}
+    [TopologicalSpace Y] [T2Space Y] (c : ℂ)
+    (p : quadraticFilled c → Y) (G : Y → Y)
+    (hp : Continuous p) (hsurj : Function.Surjective p)
+    (hs : Function.Semiconj p (quadraticFilledMap c) G)
+    (hf : ∀ y : Y, IsPreconnected (p ⁻¹' {y}))
+    (hlight : ∀ y : Y, IsTotallyDisconnected (G ⁻¹' {y}))
+    (hE : interior (quadraticFilled c) = ∅) :
+    ∃ S : Y → Y, Continuous S ∧ Function.Involutive S ∧ IsOpenMap G ∧
+      (∀ y : Y, G ⁻¹' {G y} = {y,S y}) ∧
+      (∀ y : Y, G ⁻¹' {G y} = {y} ↔
+        ∃ x : quadraticFilled c, (x : ℂ) = 0 ∧ p x = y) := by
+  obtain ⟨S,hSc,hSi,ho,hSp,hSF⟩ :=
+    LoopsStationaryLightModel.quadratic_filled_light_model_involution c p G hp hsurj hs hf hlight
+  refine ⟨S,hSc,hSi,ho,hSF,?_⟩
+  intro y
+  exact (LoopsStationaryLightModel.involution_singleton_fiber_iff G S hSF y).trans
+    (quadratic_model_reflection_fixed_iff c p S hp hsurj hf hE hSp y)
 
 end LoopsQuadraticEscapeFullness
