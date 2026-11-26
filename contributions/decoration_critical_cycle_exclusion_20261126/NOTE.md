@@ -5,6 +5,8 @@ ai: OpenAI GPT-6.2
 human_review: none
 ---
 
+<a id="decoration-critical-cycle-exclusion-20261126"></a>
+
 # Critical-cycle exclusion for actual quadratic decoration cylinders
 
 ## Claim
