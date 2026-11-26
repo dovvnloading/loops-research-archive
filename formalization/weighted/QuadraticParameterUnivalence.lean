@@ -15,7 +15,7 @@ open Set QuadraticEscape LoopsTelescopeRamification
 open scoped Topology
 
 /-- The polynomial divided difference, including its values on the diagonal. -/
-def orbitDividedDifference (c x y : ℂ) : ℕ → ℂ
+noncomputable def orbitDividedDifference (c x y : ℂ) : ℕ → ℂ
   | 0 => 1
   | n+1 => (orbit c n x + orbit c n y) * orbitDividedDifference c x y n
 
