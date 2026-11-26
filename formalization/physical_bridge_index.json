@@ -2258,6 +2258,36 @@
       "VIRTUAL_REACHED_CYLINDER_COMPONENT_EXHAUSTION"
     ]
   },
+  "stationary-fiber-dynamics-20261126": {
+    "guide": "contributions/stationary_fiber_dynamics_20261126/NOTE.md#stationary-fiber-dynamics-20261126",
+    "theorems": {
+      "formalization/weighted/StationaryFiberDynamics.lean": [
+        "fiber_image_eq_of_finite_model_fibers",
+        "iterate_fiber_image_eq",
+        "singleton_fiber_forward",
+        "quadratic_restriction_open",
+        "quadratic_restriction_fiber_image",
+        "quadratic_model_critical_preimage",
+        "quadratic_two_model_predecessors_injective",
+        "selected_pullback_chain_full_lift",
+        "invariant_trapping_mark_saturated",
+        "invariant_trapping_mark_saturation_iff",
+        "preperiodic_frontier_trapping_correspondence",
+        "quadratic_return_preperiodic_frontier",
+        "singleton_cut_set_full_lift",
+        "quotient_fiber_refinement_of_cut_separation",
+        "quotient_dynamical_homeomorphism_of_equal_fibers",
+        "quotient_dynamical_homeomorphism_of_common_cuts",
+        "quadratic_filled_iff_bounded",
+        "quadratic_filled_compact",
+        "quadratic_filled_complete_invariant",
+        "quadratic_filled_fiber_image"
+      ]
+    },
+    "obligations": [
+      "KKL_STATIONARY_NONLC_SELECTED_GEOMETRIC_CONTINUUM_LIFT"
+    ]
+  },
   "h1-compact-remainder-20261126": {
     "guide": "contributions/h1_compact_remainder_20261126/NOTE.md#h1-compact-remainder-20261126",
     "theorems": {
