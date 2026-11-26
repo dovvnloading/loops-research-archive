@@ -19,7 +19,7 @@ Work in progress. The target is a Lean theorem for every exact-period center of 
 
 ## Evidence
 
-This initial checkpoint claims the unclaimed H4_RIGIDITY obligation before proof work. It does not yet claim a new proved theorem.
+The initial checkpoint claimed the unclaimed H4_RIGIDITY obligation before proof work. The first proof milestone adds QuadraticCenterMultiplier.lean, with the exact initial-factor decomposition, the derivative formula along a moving critical point, the periodic-motion tangent identity, and the all-period nonvanishing argument. These proof candidates are pending the repository's CI compilation; no result is counted before that succeeds.
 
 For period p=n+1, the intended exact derivative formula is
 

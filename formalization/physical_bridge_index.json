@@ -3012,5 +3012,23 @@
     "obligations": [
       "H4_RIGIDITY"
     ]
+  },
+  "center-multiplier-coordinate-20261126": {
+    "guide": "contributions/center_multiplier_coordinate_20261126/NOTE.md#center-multiplier-coordinate-20261126",
+    "theorems": {
+      "formalization/weighted/QuadraticCenterMultiplier.lean": [
+        "returnOrbit_step_start",
+        "returnMultiplier_initial_factor",
+        "returnMultiplier_zero_start",
+        "returnMultiplier_ne_zero_of_orbit_ne_zero",
+        "center_tail_multiplier_ne_zero",
+        "moving_center_multiplier_hasDerivAt",
+        "moving_center_hasDerivAt",
+        "center_multiplier_derivative_ne_zero"
+      ]
+    },
+    "obligations": [
+      "H4_RIGIDITY"
+    ]
   }
 }

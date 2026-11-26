@@ -99,6 +99,7 @@ formalization/weighted/PrimeEndImpressionDecomposition.lean	METADATA
 formalization/weighted/PrimeEndSectorFilters.lean	METADATA
 formalization/weighted/PrimeEndSectorImpressions.lean	METADATA
 formalization/weighted/PrimeEndSectorRank.lean	METADATA
+formalization/weighted/QuadraticCenterMultiplier.lean	METADATA
 formalization/weighted/QuadraticComponentConjugacy.lean	METADATA
 formalization/weighted/QuadraticComponentDynamics.lean	METADATA
 formalization/weighted/QuadraticCriticalFiberCensus.lean	METADATA
