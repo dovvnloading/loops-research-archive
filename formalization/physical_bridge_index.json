@@ -2663,5 +2663,46 @@
     "obligations": [
       "VIRTUAL_REACHED_CYLINDER_COMPONENT_EXHAUSTION"
     ]
+  },
+  "quadratic-filled-fullness-20261126": {
+    "guide": "contributions/quadratic_filled_fullness_20261126/NOTE.md#quadratic-filled-fullness-20261126",
+    "theorems": {
+      "formalization/weighted/QuadraticEscapeFullness.lean": [
+        "orbit_pair_differentiable",
+        "escape_pair_frontier_bound",
+        "frontier_complement_component_subset",
+        "escape_pair_sublevel_full",
+        "quadratic_escape_sublevel_full",
+        "quadratic_parameter_sublevel_full",
+        "quadratic_filled_full",
+        "quadratic_filled_connected_complement",
+        "quadratic_filled_compact_subcarrier_full",
+        "escape_outer_zero",
+        "escape_outer_succ",
+        "escape_outer_antitone",
+        "escape_outer_contains_sublevel",
+        "escape_outer_iInter",
+        "quadratic_critical_preimage_preconnected",
+        "escape_outer_compact",
+        "escape_outer_preconnected",
+        "quadratic_escape_sublevel_compact",
+        "quadratic_escape_sublevel_connected_of_critical",
+        "quadratic_filled_connected_of_critical",
+        "compact_connected_complement_log",
+        "symmetric_full_continuum_contains_zero",
+        "quadratic_escape_reflection",
+        "quadratic_escape_sublevel_connected_iff",
+        "quadratic_filled_connected_iff",
+        "quadratic_model_reflection_fixed_iff",
+        "quadratic_filled_light_model_exact_critical_branch",
+        "model_pair_inverse_step",
+        "model_critical_defect_zero_iff",
+        "model_pair_iterate_census",
+        "quadratic_filled_light_model_all_target_census"
+      ]
+    },
+    "obligations": [
+      "KKL_STATIONARY_NONLC_SELECTED_GEOMETRIC_CONTINUUM_LIFT"
+    ]
   }
 }
