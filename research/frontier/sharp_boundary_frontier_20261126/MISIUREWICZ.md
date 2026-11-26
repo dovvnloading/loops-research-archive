@@ -152,10 +152,43 @@ This proves (2) and (4) without fixing the phase of u. Formula (5) follows direc
 * c_*=-2: 0 -> -2 -> 2 -> 2. Thus m=2, p=1, lambda=4. Gamma=2 and the exact single-clock loss K_(u,2u)(-2,-2) tends to log 4. This strengthens the elementary two-sided radius comparison of NOTE.md by an exact ratio limit.
 * c_*=i: 0 -> i -> -1+i -> -i -> -1+i. The exact landing period p=2 and m=2. The multiplier is 4(-1+i)(-i)=4(1+i), modulus 4 sqrt 2, so gamma=5/4. Thus K_(u,4u)(i,i) tends to log(4 sqrt 2). This is a distinct exact exponent, not a synthetic choice of multiplier. For an independent transversality check in this example, the period-two orbit point z(c) near -1+i satisfies z^2+z+c+1=0 and z'(i)=(1+2i)/5. The derivative of f_c^2(0)=c^2+c at i is 1+2i, so the entrance derivative is (4/5)(1+2i)!=0.
 
-For every Misiurewicz point gamma<=2: on taking t small fixed and s->0 in (3), NOTE.md's global upper bound forces that inequality. Alternatively use the actual orbit multiplier bound |f_c'(z)|<=4 at every point of the bounded orbit for |c|<=2. This last argument gives strict gamma<2 unless every point of the orbit has modulus 2. The equality classification is not needed for (1)–(5).
+For every Misiurewicz point gamma<=2: on taking t small fixed and s->0 in (3), NOTE.md's global upper bound forces that inequality. Alternatively use the actual orbit multiplier bound |f_c'(z)|<=4 at every point of the bounded orbit for |c|<=2. In fact equality holds only for c_*=-2. If gamma=2, every point of the repelling orbit has modulus 2. For each point z on that orbit, |z^2+c_*|=2 and |c_*|<=2. Equality in the reverse triangle inequality forces |c_*|=2 and z^2=-2c_*; hence the next point is -c_*. Every point of the cycle is therefore -c_*, a fixed point, so c_*^2+c_*=-c_* and c_*=-2. Conversely the displayed real example gives gamma=2.
+
+### 7.1 Exact continuous-scale tip constant, not just a discrete ratio
+
+At c_*=-2, the landing point is 2, and the fixed-point continuation b(c) satisfies b(c)^2+c=b(c), b'(-2)=-1/3. Because m=2 and the chart derivative is normalized to 1, the entrance derivative is
+
+    a=(c^2+c)'|_(c=-2) - b'(-2)=-8/3.
+
+The entire Poincare function is P(v)=2 cosh(sqrt(v)), interpreted via its entire power series. Its value and derivative at zero are 2 and 1; the identity P(4v)=P(v)^2-2 follows from cosh doubling, so uniqueness of the normalized local linearization identifies it with the function in Section 3. For f(z)=z^2-2 the Joukowski parametrization gives
+
+    f(w+w^(-1))=w^2+w^(-2),
+    g_(-2)(2 cosh(zeta))=|Re zeta|.
+
+The second identity follows directly by iteration when Re zeta is nonzero, and by boundedness when it is zero. Thus (8) gives
+
+    H(w)=(1/2)|Re sqrt(a w)|.
+
+The absolute value makes this independent of either square-root choice. The entire strict sublevel set {H<v} is the image of the vertical strip |Re zeta|<2v under w=zeta^2/a; it is connected, hence is Omega_v. On that strip the odd conformal bijection T(zeta)=tan(pi zeta/(8v)) maps onto the unit disk. For example |tan(x+iy)|<1 exactly when cos(2x)>0, and the principal analytic arctangent on the disk is its inverse on |Re z|<pi/4. The quotient by zeta -> -zeta yields a conformal bijection
+
+    Phi_v(w)=tan^2(pi sqrt(a w)/(8v))
+
+from Omega_v onto the unit disk. It is single-valued by evenness, holomorphic at zero by the even Taylor series, injective because equality of squares of T forces the two strip coordinates to be equal or opposite, and onto because every disk point has a square root in the disk. Its derivative at zero is a(pi/(8v))^2. Consequently
+
+    R(v)=24 v^2/pi^2.
+
+The locally uniform phase theorem now eliminates the discrete phase entirely at this particular parameter:
+
+    lim_(u->0) r_u(-2)/u^2 = 24/pi^2.                (10)
+
+This is in the parameter Green normalization stated in Section 1. In particular, uniformly as 0<s<t->0,
+
+    K_(s,t)(-2,-2)=2 log(t/s)-(t-s)+o(1).
+
+Indeed the difference of the two log-radius errors tends to zero regardless of the relative sizes of s and t. Equation (10) is an exact asymptotic constant for the actual equipotential ground, derived without a boundary derivative or approximation by a model domain at a fixed finite level.
 
 ## 8. Scope and next obstruction
 
-This theorem is a written deduction from classical parameter transversality/linearization and the previous exact physical penalty identity; it does not claim priority over Tan Lei or an exhaustive literature search for equipotential-profile refinements. All constants and profiles are parameter-specific. No uniform comparison as Misiurewicz parameters approach an infinitely renormalizable parameter has been proved. The limiting function can have a phase-dependent radius; no assertion of a pure continuous power-law constant is made. The actual nested parameter compacts used in H4 are not constructed, and their gains, transfer penalties at non-Misiurewicz anchors, and relative-neighborhood property are not supplied. No H1–H4/UPTCR/MLC status changes; no claim that the classical Misiurewicz local-connectivity theorem is new.
+This theorem is a written deduction from classical parameter transversality/linearization and the previous exact physical penalty identity; it does not claim priority over Tan Lei or an exhaustive literature search for equipotential-profile refinements. All constants and profiles are parameter-specific. No uniform comparison as Misiurewicz parameters approach an infinitely renormalizable parameter has been proved. In general the limiting function may have a phase-dependent radius; the pure continuous power-law constant is proved here specifically at -2 by the explicit strip quotient in Section 7.1. The actual nested parameter compacts used in H4 are not constructed, and their gains, transfer penalties at non-Misiurewicz anchors, and relative-neighborhood property are not supplied. No H1–H4/UPTCR/MLC status changes; no claim that the classical Misiurewicz local-connectivity theorem is new.
 
 AI disclosure: ChatGPT GPT-6.2 assisted source reading, proof search, derivation, adversarial checking and writing. No independent human specialist review, Lean verification or proof of exhaustive novelty. The analytic proof is intended for review against the exact source interface in §2.
