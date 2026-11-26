@@ -48,7 +48,7 @@ theorem rational_normSq_integral {u : ℂ} (hu : IsIntegral ℤ u)
   have hconj : IsIntegral ℤ ((starRingEnd ℂ) u) :=
     map_isIntegral_int (starRingEnd ℂ) hu
   have hI : IsIntegral ℤ ((‖u‖^2 : ℝ):ℂ) := by
-    rw [← Complex.mul_conj']
+    rw [← Complex.normSq_eq_norm_sq, ← Complex.mul_conj]
     exact hu.mul hconj
   let f : ℚ →ₐ[ℤ] ℂ := IsScalarTower.toAlgHom ℤ ℚ ℂ
   have hf : f q = ((q:ℝ):ℂ) := by simp [f]
@@ -77,7 +77,7 @@ theorem returnMultiplier_rational_normSq {c z : ℂ} (hc : IsIntegral ℤ c)
   obtain ⟨k,hk⟩ := rational_normSq_integral (orbitProduct_integral hc hz n) hq'
   have he : ‖orbitProduct c z n‖^2 = (k:ℝ) := by
     rw [hq', hk]
-    push_cast
+    push_cast <;> rfl
   have hkn : (0:ℝ) ≤ (k:ℝ) := by
     rw [← he]
     positivity
@@ -261,5 +261,7 @@ theorem zero_parameter_fixed_one_sharp (n : ℕ) :
   simp only [returnOrbit_eq_iterate] at hd
   rw [hd, returnMultiplier_normSq_factor, hprod]
   simp
+
+end
 
 end LoopsQuadraticTransversality
