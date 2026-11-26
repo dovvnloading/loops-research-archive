@@ -99,6 +99,7 @@ formalization/weighted/PhaseMemoryCardinality.lean	CLOCK ENDS
 formalization/weighted/PlanarFillLimit.lean	HULL
 formalization/weighted/PlanarFullification.lean	HULL
 formalization/weighted/ProtectedCarrierLogic.lean	HULL
+formalization/weighted/QuadraticMultiplierArithmetic.lean	METADATA
 formalization/weighted/SaturatedTelescope.lean	METADATA
 formalization/weighted/SpectralDominance.lean	CLONE EDGE
 formalization/weighted/StationaryCanonicalLift.lean	VARIABLE-EXIT
@@ -107,7 +108,6 @@ formalization/weighted/StationaryEndpointCover.lean	VARIABLE-EXIT
 formalization/weighted/StationaryEndpointVisits.lean	VARIABLE-EXIT
 formalization/weighted/StationaryFiberDynamics.lean	METADATA
 formalization/weighted/StationaryGeometricFibers.lean	METADATA
-formalization/weighted/StationaryLightModel.lean	METADATA
 formalization/weighted/StationaryMonotoneGeometry.lean	METADATA
 formalization/weighted/StationaryMultiInterface.lean	METADATA
 formalization/weighted/StationaryPacketGain.lean	VARIABLE-EXIT
@@ -391,3 +391,4 @@ formalization/weighted/QuadraticCriticalWindow.lean	METADATA
 formalization/weighted/StationarySeparatorTransport.lean	METADATA
 formalization/weighted/QuadraticCylinderCensus.lean	METADATA
 formalization/weighted/DecorationCriticalCycle.lean	METADATA
+formalization/weighted/StationaryLightModel.lean	METADATA
