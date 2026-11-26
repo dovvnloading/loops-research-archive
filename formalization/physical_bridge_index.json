@@ -1887,7 +1887,11 @@
         "connectedComponentIn_iUnion_monotone_open",
         "planarFill_iInter_antitone_compact",
         "planarFill_iInter_fixed",
-        "planarFill_eventually_subset_open"
+        "planarFill_eventually_subset_open",
+        "planarFill_upper_semicontinuous",
+        "planarFill_of_proper_subset_unitSphere",
+        "planarFill_unitSphere",
+        "full_connected_approx_nonfull_unitSphere"
       ]
     },
     "obligations": [
