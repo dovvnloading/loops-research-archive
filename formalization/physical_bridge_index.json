@@ -2180,5 +2180,19 @@
     "obligations": [
       "KKL_STATIONARY_NONLC_SELECTED_GEOMETRIC_CONTINUUM_LIFT"
     ]
+  },
+  "stationary-multi-interface-separator-20261126": {
+    "guide": "contributions/stationary_multi_interface_separator_20261126/NOTE.md#stationary-multi-interface-separator-20261126",
+    "theorems": {
+      "formalization/weighted/StationaryMultiInterface.lean": [
+        "preconnected_inter_of_absorbed_interface",
+        "component_inter_of_single_interface_component",
+        "no_bypass_iff_single_interface_component",
+        "exterior_bridge_obstructs_separator"
+      ]
+    },
+    "obligations": [
+      "KKL_STATIONARY_SELECTED_SEPARATOR_REALIZATION"
+    ]
   }
 }
