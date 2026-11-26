@@ -113,6 +113,7 @@ formalization/weighted/StationaryGeometricFibers.lean	METADATA
 formalization/weighted/StationaryMonotoneGeometry.lean	METADATA
 formalization/weighted/StationaryMultiInterface.lean	METADATA
 formalization/weighted/StationaryPacketGain.lean	VARIABLE-EXIT
+formalization/weighted/StationaryPhysicalItinerary.lean	METADATA
 formalization/weighted/StationaryPrefixCharge.lean	VARIABLE-EXIT
 formalization/weighted/TelescopeCollarRecognition.lean	METADATA
 formalization/weighted/TelescopeRamification.lean	METADATA
