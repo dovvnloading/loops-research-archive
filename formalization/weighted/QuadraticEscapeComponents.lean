@@ -155,7 +155,7 @@ theorem sublevel_component_counts_unbounded (c : ℂ) (hc : 0 < escape c 0)
     ∃ t > 0, N < Nat.card (ConnectedComponents (sublevel c t)) := by
   refine ⟨escape c 0 / (2 : ℝ)^N, div_pos hc (pow_pos (by norm_num) N), ?_⟩
   rw [critical_dyadic_component_count c hc N]
-  exact Nat.lt_two_pow_self
+  exact Nat.lt_two_pow_self N
 
 /-- The actual polynomial sends a sublevel to its doubled-height target. -/
 def sublevelMap (c : ℂ) (t : ℝ) : sublevel c t → sublevel c (2*t) :=

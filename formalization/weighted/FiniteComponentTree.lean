@@ -57,21 +57,34 @@ theorem component_eq_range (e : X ≃ₜ (Fin N × Y)) (x : X) :
 /-- The second coordinate restricts to a homeomorphism on each actual
 connected component. -/
 def componentHomeomorph (e : X ≃ₜ (Fin N × Y)) (x : X) :
-    connectedComponent x ≃ₜ Y where
-  toFun z := (e z.val).2
-  invFun y := ⟨e.symm ((e x).1, y), by
-    rw [component_eq_label_fiber e x]
-    simp⟩
-  left_inv z := by
+    connectedComponent x ≃ₜ Y := by
+  let forward : connectedComponent x → Y := fun z => (e z.val).2
+  have inverse_mem (y : Y) : e.symm ((e x).1, y) ∈ connectedComponent x := by
+    apply (Set.ext_iff.mp (component_eq_label_fiber e x) _).mpr
+    simp
+  let inverse : Y → connectedComponent x :=
+    fun y => ⟨e.symm ((e x).1, y), inverse_mem y⟩
+  have hforward : Continuous forward :=
+    continuous_snd.comp (e.continuous.comp continuous_subtype_val)
+  have hinverse : Continuous inverse :=
+    (e.symm.continuous.comp (continuous_const.prodMk continuous_id)).subtype_mk inverse_mem
+  refine
+    { toFun := forward
+      invFun := inverse
+      left_inv := ?_
+      right_inv := ?_
+      continuous_toFun := hforward
+      continuous_invFun := hinverse }
+  · intro z
     apply Subtype.ext
     apply e.injective
+    change e (e.symm ((e x).1, (e z.val).2)) = e z.val
     rw [e.apply_symm_apply]
     have hz := (Set.ext_iff.mp (component_eq_label_fiber e x) z.val).mp z.property
     exact Prod.ext hz.symm rfl
-  right_inv y := by simp
-  continuous_toFun := continuous_snd.comp (e.continuous.comp continuous_subtype_val)
-  continuous_invFun :=
-    (e.symm.continuous.comp (continuous_const.prodMk continuous_id)).subtype_mk _
+  · intro y
+    change (e (e.symm ((e x).1, y))).2 = y
+    simp
 
 /-- Finitely many labels make each actual connected component open as
 well as closed. -/

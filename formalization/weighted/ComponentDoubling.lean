@@ -36,26 +36,45 @@ theorem product_component_eq_fiber (e : X ≃ₜ (Fin N × Y)) (x : X) :
 /-- The second coordinate is a homeomorphism from each component onto
 its actual parent component, even when the parent space is disconnected. -/
 def productComponentHomeomorph (e : X ≃ₜ (Fin N × Y)) (x : X) :
-    connectedComponent x ≃ₜ connectedComponent (e x).2 where
-  toFun z := ⟨(e z.val).2,
-    (continuous_snd.comp e.continuous).mapsTo_connectedComponent x z.property⟩
-  invFun y := ⟨e.symm ((e x).1, y.val), by
-    rw [product_component_eq_fiber e x]
-    simp only [e.apply_symm_apply]
-    exact ⟨rfl, y.property⟩⟩
-  left_inv z := by
+    connectedComponent x ≃ₜ connectedComponent (e x).2 := by
+  have forward_mem (z : connectedComponent x) :
+      (e z.val).2 ∈ connectedComponent (e x).2 :=
+    (continuous_snd.comp e.continuous).mapsTo_connectedComponent x z.property
+  have inverse_mem (y : connectedComponent (e x).2) :
+      e.symm ((e x).1, y.val) ∈ connectedComponent x := by
+    apply (Set.ext_iff.mp (product_component_eq_fiber e x) _).mpr
+    change (e (e.symm ((e x).1, y.val))).1 = (e x).1 ∧
+      (e (e.symm ((e x).1, y.val))).2 ∈ connectedComponent (e x).2
+    simpa only [e.apply_symm_apply] using
+      (show (e x).1 = (e x).1 ∧ y.val ∈ connectedComponent (e x).2 from
+        ⟨rfl, y.property⟩)
+  let forward : connectedComponent x → connectedComponent (e x).2 :=
+    fun z => ⟨(e z.val).2, forward_mem z⟩
+  let inverse : connectedComponent (e x).2 → connectedComponent x :=
+    fun y => ⟨e.symm ((e x).1, y.val), inverse_mem y⟩
+  have hforward : Continuous forward :=
+    (continuous_snd.comp (e.continuous.comp continuous_subtype_val)).subtype_mk forward_mem
+  have hinverse : Continuous inverse :=
+    (e.symm.continuous.comp (continuous_const.prodMk continuous_subtype_val)).subtype_mk
+      inverse_mem
+  refine
+    { toFun := forward
+      invFun := inverse
+      left_inv := ?_
+      right_inv := ?_
+      continuous_toFun := hforward
+      continuous_invFun := hinverse }
+  · intro z
     apply Subtype.ext
     apply e.injective
+    change e (e.symm ((e x).1, (e z.val).2)) = e z.val
     rw [e.apply_symm_apply]
     have hz := (Set.ext_iff.mp (product_component_eq_fiber e x) z.val).mp z.property
     exact Prod.ext hz.1.symm rfl
-  right_inv y := by
+  · intro y
     apply Subtype.ext
+    change (e (e.symm ((e x).1, y.val))).2 = y.val
     simp
-  continuous_toFun :=
-    (continuous_snd.comp (e.continuous.comp continuous_subtype_val)).subtype_mk _
-  continuous_invFun :=
-    (e.symm.continuous.comp (continuous_const.prodMk continuous_subtype_val)).subtype_mk _
 
 /-- The component homeomorphism uses the original second-coordinate map. -/
 theorem productComponentHomeomorph_apply (e : X ≃ₜ (Fin N × Y)) (x : X)

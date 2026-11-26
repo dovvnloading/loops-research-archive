@@ -107,9 +107,17 @@ theorem sublevel_split (c : ℂ) (t : ℝ)
     apply continuous_prod_of_discrete_left.mpr
     intro i
     by_cases hi : i = 0
-    · simpa only [B, hi, if_true] using hrc
-    · simpa only [B, hi, if_false] using
-        (continuous_neg.comp hrc : Continuous (fun w => -(r w)))
+    · have hf : (fun w : sublevel c (2*t) => B (i,w)) = r := by
+        funext w
+        exact if_pos hi
+      rw [hf]
+      exact hrc
+    · have hf : (fun w : sublevel c (2*t) => B (i,w)) =
+          (fun w => -(r w)) := by
+        funext w
+        exact if_neg hi
+      rw [hf]
+      fun_prop
   have hbc : Continuous b := hBc.subtype_mk _
   have hbq (p : Fin 2 × sublevel c (2*t)) :
       (b p : ℂ)^2+c = (p.2 : ℂ) := hBq p
