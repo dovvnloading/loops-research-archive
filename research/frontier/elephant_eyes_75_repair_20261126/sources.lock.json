@@ -1,0 +1,87 @@
+{
+  "EE": {
+    "url": "https://arxiv.org/pdf/2601.21905v1",
+    "sha256": "5eb36430a51a3fb6a1c04db15713aebc86068118450893ba2042021e4a8db725",
+    "bytes": 398123,
+    "locators": [
+      [
+        10,
+        "Lemma4.3"
+      ],
+      [
+        16,
+        "Theorem7.1"
+      ],
+      [
+        17,
+        "Lemma7.3"
+      ],
+      [
+        18,
+        "(7.5)"
+      ]
+    ]
+  },
+  "K": {
+    "url": "https://arxiv.org/pdf/math/0609045v3",
+    "sha256": "46e7ff4d5cc8ea190e439f45b2e4ed7308c1cf588a666daa5150eeb0b435c9c0",
+    "bytes": 888490,
+    "locators": [
+      [
+        14,
+        "Lemma2.5"
+      ],
+      [
+        25,
+        "Lemma4.7"
+      ]
+    ]
+  },
+  "KL1": {
+    "url": "https://arxiv.org/pdf/math/0505191v2",
+    "sha256": "e9339d5461c25226acd46043783f508f672853c277e7e75b06a9583ef7b58c37",
+    "bytes": 359892,
+    "locators": [
+      [
+        31,
+        "CoveringLemma"
+      ],
+      [
+        32,
+        "CoveringLemma"
+      ]
+    ]
+  },
+  "KL2": {
+    "url": "https://www.numdam.org/item/10.24033/asens.2063.pdf",
+    "sha256": null,
+    "bytes": null,
+    "locators": []
+  },
+  "KL3": {
+    "url": "https://www.math.stonybrook.edu/preprints/ims07-04.pdf",
+    "sha256": null,
+    "bytes": null,
+    "locators": [
+      [
+        12,
+        "TransferPrinciple"
+      ]
+    ]
+  },
+  "DL": {
+    "url": "https://arxiv.org/pdf/2309.02107v3",
+    "sha256": null,
+    "bytes": null,
+    "locators": [
+      [
+        31,
+        "Theorem4.1"
+      ],
+      [
+        38,
+        "Theorem7.1"
+      ]
+    ]
+  }
+}
