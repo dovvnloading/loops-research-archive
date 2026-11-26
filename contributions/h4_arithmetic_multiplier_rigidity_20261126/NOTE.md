@@ -33,4 +33,4 @@ No claim of a modulus lower bound for irrational squared modulus, exclusion of n
 
 ## Attribution
 
-Builds on the archive's quadratic critical-relation transversality development and classical Misiurewicz theory; this is an arithmetic formalization contribution, not a priority claim.
+Builds on the archive's quadratic critical-relation transversality development and classical Misiurewicz theory. John Milnor, [Arithmetic of Unicritical Polynomial Maps](https://www.math.stonybrook.edu/preprints/ims12-03.pdf), Stony Brook IMS preprint #2012/3, March 2012, Lemma 3.1 (p. 5) and Remark 3.3 (p. 7), gives the periodic-point integrality and multiplier divisibility statement. Our independent Lean argument treats preperiodic points and derives squared-modulus quantization and its sharp gap. This is an arithmetic formalization contribution, not a mathematical priority claim.
