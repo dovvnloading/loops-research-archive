@@ -5,6 +5,8 @@ ai: OpenAI GPT-6.2
 human_review: none
 ---
 
+<a id="quadratic-component-fiber-degree-20261126"></a>
+
 # Actual quadratic component fiber degree and signed inverse census
 
 ## Claim
@@ -13,7 +15,7 @@ Candidate: for an actual connected component of a finite quadratic pullback of a
 
 ## Evidence
 
-Draft claim only; no new Lean proof is asserted yet. The planned proof uses actual connected components, quadratic reflection, and the existing ramification-aware fiber census. Local Lean and networked git are unavailable in this environment; exact-head CI must validate the Lean statements.
+The registered [QuadraticComponentFiberDegree.lean](../../formalization/weighted/QuadraticComponentFiberDegree.lean) contains six candidate theorems. One reflected pair forces invariance of the entire component; otherwise the first step is injective. The first step maps the localized fiber onto the tail fiber. The exact nonsymmetric count is the tail count; the symmetric count is twice the tail count minus one precisely when the tail fiber contains the critical value. All six statements are pending CI. Local Lean and networked git are unavailable in this environment; exact-head CI must validate the Lean statements.
 
 ## Dependencies
 
