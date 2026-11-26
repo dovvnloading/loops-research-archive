@@ -96,6 +96,7 @@ formalization/weighted/PrimeEndImpressionDecomposition.lean	METADATA
 formalization/weighted/PrimeEndSectorFilters.lean	METADATA
 formalization/weighted/PrimeEndSectorImpressions.lean	METADATA
 formalization/weighted/PrimeEndSectorRank.lean	METADATA
+formalization/weighted/QuadraticCriticalCoordinates.lean	METADATA
 formalization/weighted/QuadraticCriticalFiberCensus.lean	METADATA
 formalization/weighted/QuadraticCriticalTransversality.lean	CRITICAL-TRANSVERSALITY
 formalization/weighted/PhaseMemoryCardinality.lean	CLOCK ENDS
@@ -105,6 +106,8 @@ formalization/weighted/ProtectedCarrierLogic.lean	HULL
 formalization/weighted/QuadraticEscapeEndpoint.lean	QUADRATIC-ESCAPE
 formalization/weighted/QuadraticEscapeFullness.lean	METADATA
 formalization/weighted/QuadraticMultiplierArithmetic.lean	METADATA
+formalization/weighted/QuadraticPeriodicMotion.lean	METADATA
+formalization/weighted/QuadraticPeriodicStability.lean	METADATA
 formalization/weighted/QuadraticUnivalentNeighborhood.lean	CONSTRUCT
 formalization/weighted/SaturatedTelescope.lean	METADATA
 formalization/weighted/SpectralDominance.lean	CLONE EDGE
