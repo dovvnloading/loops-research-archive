@@ -79,7 +79,7 @@ theorem orbit_hasDerivAt (c z : ℂ) (n : ℕ) :
     change HasDerivAt (id : ℂ → ℂ) 1 z
     exact hasDerivAt_id z
   | succ n ih =>
-    have hh := (ih.pow 2).add (hasDerivAt_const z c)
+    have hh := HasDerivAt.add (HasDerivAt.pow ih 2) (hasDerivAt_const z c)
     have heq : orbit c (n+1) = (orbit c n)^2 + fun _ => c := by
       funext w
       simp [orbit]
@@ -167,8 +167,8 @@ theorem parameter_defect_sq (c z : ℂ) (hc : ‖c‖ ≤ 2)
         _ ≤ ‖(c+w)*(c-w)‖+‖u+c‖ := norm_add_le _ _
         _ = ‖w+c‖*‖c-w‖+‖u+c‖ := by rw [norm_mul, add_comm c w]
         _ ≤ 4*‖w+c‖+‖u+c‖ := by
-          rw [mul_comm (4:ℝ)]
-          exact add_le_add_right (mul_le_mul_of_nonneg_left hcw (norm_nonneg (w+c))) ‖u+c‖
+          have hh := mul_le_mul_of_nonneg_left hcw (norm_nonneg (w+c))
+          linarith only [hh]
     have hl : ‖c+2‖ ≤ ‖c‖*‖c+2‖ := by
       simpa only [one_mul] using mul_le_mul_of_nonneg_right hC (norm_nonneg (c+2))
     have hs := pow_le_pow_left₀ (norm_nonneg (c+2)) (hl.trans hp) 2
@@ -242,8 +242,8 @@ theorem extremal_deriv_parameter (c z : ℂ) (hc : parameterEscape c = 0)
   have hf : 4 ≤ 2*‖orbit c n z‖ := by
     apply (mul_le_mul_iff_right₀ hpos).mp
     calc
-      4 * (4:ℝ)^n = (4:ℝ)^n * 4 := mul_comm _ _
-      _ ≤ _ := hle
+      (4:ℝ)^n * 4 ≤ (2*‖orbit c n z‖)*(4:ℝ)^n := hle
+      _ = (4:ℝ)^n*(2*‖orbit c n z‖) := mul_comm _ _
   have hr := bounded_orbit_norm_le_two c z hc2 hz n
   have hre : ‖orbit c n z‖ = 2 := by linarith
   have h := bounded_orbit_parameter_defect c z hc2 hz n
