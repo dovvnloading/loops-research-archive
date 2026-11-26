@@ -5,6 +5,8 @@ ai: OpenAI GPT-6.2
 human_review: none
 ---
 
+<a id="monotone-geometric-predecessor-20261126"></a>
+
 # Geometric predecessor lift: monotone quotient and marked continua
 
 ## Claim
@@ -13,7 +15,15 @@ Draft, not yet verified. Target the actual topological inference in the November
 
 ## Evidence
 
-Proof development in the weighted Lean project. No result is claimed until the exact head passes Lean CI.
+Candidate file: `formalization/weighted/StationaryMonotoneGeometry.lean`.
+
+Theorems: `preconnected_preimage_closed_fibers`, `component_preimage_closed_fibers`, `punctured_component_full_lift`, `disjoint_bridges_impossible`, `invariant_marks_disjoint_image`.
+
+1. For a closed surjection with preconnected fibers, a closed cover of the preimage gives a closed cover of the target. A common target point has a fiber meeting both covering sets, hence a point in their intersection. This removes the audit's use of arc-convexity for the noncompact case.
+2. Apply the lemma to a connected component and use maximality in both directions; a singleton root fiber gives exact punctured-component transport.
+3. If disjoint invariant continua share a quotient point, its fiber meets both. The return image lies in a different fiber by the nonfixed-fiber hypothesis. Both fibers bridge the same marks. The intersection of the two connected closed unions is exactly the disconnected union of the marks, contrary to hereditary unicoherence.
+
+Build: `cd formalization/weighted && lake build StationaryMonotoneGeometry`. The source is registered as METADATA, not a completed physical bridge. Compilation and foundational-dependency audit are pending.
 
 ## Dependencies
 

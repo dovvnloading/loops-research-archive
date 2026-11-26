@@ -1980,5 +1980,20 @@
     "obligations": [
       "H3_COERCIVITY"
     ]
+  },
+  "monotone-geometric-predecessor-20261126": {
+    "guide": "contributions/monotone_geometric_predecessor_20261126/NOTE.md#monotone-geometric-predecessor-20261126",
+    "theorems": {
+      "formalization/weighted/StationaryMonotoneGeometry.lean": [
+        "preconnected_preimage_closed_fibers",
+        "component_preimage_closed_fibers",
+        "punctured_component_full_lift",
+        "disjoint_bridges_impossible",
+        "invariant_marks_disjoint_image"
+      ]
+    },
+    "obligations": [
+      "KKL_STATIONARY_NONLC_SELECTED_GEOMETRIC_CONTINUUM_LIFT"
+    ]
   }
 }

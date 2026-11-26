@@ -99,6 +99,7 @@ formalization/weighted/StationaryCanonicalLift.lean	VARIABLE-EXIT
 formalization/weighted/StationaryDeckSeparator.lean	VARIABLE-EXIT
 formalization/weighted/StationaryEndpointCover.lean	VARIABLE-EXIT
 formalization/weighted/StationaryEndpointVisits.lean	VARIABLE-EXIT
+formalization/weighted/StationaryMonotoneGeometry.lean	METADATA
 formalization/weighted/StationaryPacketGain.lean	VARIABLE-EXIT
 formalization/weighted/StationaryPrefixCharge.lean	VARIABLE-EXIT
 formalization/weighted/WeightedReturn.lean	CLONE EDGE
