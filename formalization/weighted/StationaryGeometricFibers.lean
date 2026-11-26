@@ -281,4 +281,190 @@ theorem selected_mark_from_single_overlap [CompactSpace X] [T2Space Y]
   rw [← connectedComponentIn_eq hzO] at hsub
   exact fun w hw => ⟨(hFT.iterate n) (hKT hw), hsub hw⟩
 
+
+/-- A closed two-sheet orbit map pulls back any preconnected set
+containing the image of a fixed point to a preconnected set. This
+uses the involutive fiber structure, not path lifting, local
+connectivity, or connectedness of individual point fibers. -/
+theorem critical_preimage_preconnected
+    (f : X → Y) (σ : X → X) (hf : IsClosedMap f)
+    (hσc : Continuous σ) (hsurj : Function.Surjective f)
+    (hσ : ∀ z, f (σ z) = f z)
+    (hfib : ∀ x z, f x = f z → z = x ∨ z = σ x)
+    (S : Set Y) (hS : IsPreconnected S)
+    (a : X) (hfix : σ a = a) (haS : f a ∈ S) :
+    IsPreconnected (f ⁻¹' S) := by
+  apply isPreconnected_closed_iff.mpr
+  intro U V hU hV hcover hleft hright
+  have solve (A B : Set X) (hA : IsClosed A) (hB : IsClosed B)
+      (hAB : f ⁻¹' S ⊆ A ∪ B) (haA : a ∈ A)
+      (hBhit : (f ⁻¹' S ∩ B).Nonempty) :
+      ∃ z ∈ f ⁻¹' S, z ∈ A ∧ z ∈ B := by
+    let A' : Set Y := f '' (A ∩ σ ⁻¹' A)
+    let B' : Set Y := f '' B
+    have hcov : S ⊆ A' ∪ B' := by
+      intro y hy
+      obtain ⟨x, rfl⟩ := hsurj y
+      have hxσ : σ x ∈ f ⁻¹' S := by
+        change f (σ x) ∈ S
+        rwa [hσ x]
+      rcases hAB (show x ∈ f ⁻¹' S from hy) with hxA | hxB
+      · rcases hAB hxσ with hsA | hsB
+        · exact Or.inl ⟨x, ⟨hxA, hsA⟩, rfl⟩
+        · exact Or.inr ⟨σ x, hsB, hσ x⟩
+      · exact Or.inr ⟨x, hxB, rfl⟩
+    have hAhit : (S ∩ A').Nonempty := by
+      refine ⟨f a, haS, a, ⟨haA, ?_⟩, rfl⟩
+      change σ a ∈ A
+      rwa [hfix]
+    have hBhit' : (S ∩ B').Nonempty := by
+      obtain ⟨z, hzS, hzB⟩ := hBhit
+      exact ⟨f z, hzS, ⟨z, hzB, rfl⟩⟩
+    obtain ⟨y, hyS, hyA, hyB⟩ := (isPreconnected_closed_iff.mp hS)
+      A' B' (hf _ (hA.inter (hA.preimage hσc))) (hf _ hB) hcov hAhit hBhit'
+    obtain ⟨x, hxA, hxy⟩ := hyA
+    obtain ⟨z, hzB, hzy⟩ := hyB
+    refine ⟨z, ?_, ?_, hzB⟩
+    · change f z ∈ S
+      rwa [hzy]
+    · rcases hfib x z (hxy.trans hzy.symm) with he | he
+      · rw [he]
+        exact hxA.1
+      · rw [he]
+        exact hxA.2
+  rcases hcover (show a ∈ f ⁻¹' S from haS) with haU | haV
+  · exact solve U V hU hV hcover haU hright
+  · have hcov : f ⁻¹' S ⊆ V ∪ U := by
+      intro z hz
+      rcases hcover hz with h | h
+      · exact Or.inr h
+      · exact Or.inl h
+    obtain ⟨z, hz, hzV, hzU⟩ := solve V U hV hU hcov haV hleft
+    exact ⟨z, hz, hzU, hzV⟩
+
+private theorem restricted_quadratic_continuous (c : ℂ) (K : Set ℂ)
+    (F : K → K) (hF : ∀ z : K, (F z : ℂ) = (z : ℂ)^2 + c) :
+    Continuous F := by
+  have hc : Continuous (fun z : K => (z : ℂ)^2+c) :=
+    ((continuous_subtype_val : Continuous (Subtype.val : K → ℂ)).pow 2).add continuous_const
+  have hm : ∀ z : K, (z : ℂ)^2+c ∈ K := by
+    intro z
+    rw [← hF z]
+    exact (F z).property
+  have he : F = (fun z : K => (⟨(z : ℂ)^2+c, hm z⟩ : K)) := by
+    funext z
+    exact Subtype.ext (hF z)
+  rw [he]
+  exact hc.subtype_mk hm
+
+private theorem restricted_reflection_continuous (K : Set ℂ)
+    (σ : K → K) (hσ : ∀ z : K, (σ z : ℂ) = -(z : ℂ)) :
+    Continuous σ := by
+  have hc : Continuous (fun z : K => -(z : ℂ)) :=
+    (continuous_subtype_val : Continuous (Subtype.val : K → ℂ)).neg
+  have hm : ∀ z : K, -(z : ℂ) ∈ K := by
+    intro z
+    rw [← hσ z]
+    exact (σ z).property
+  have he : σ = (fun z : K => (⟨-(z : ℂ), hm z⟩ : K)) := by
+    funext z
+    exact Subtype.ext (hσ z)
+  rw [he]
+  exact hc.subtype_mk hm
+
+/-- Actual quadratic pullback of a connected critical-value region
+inside any compact reflection-invariant completely invariant set.
+No Jordan neighborhoods, conformal coordinates or local
+connectivity are needed, even for nonclosed regions. -/
+theorem quadratic_restricted_critical_preimage (c : ℂ) (K : Set ℂ)
+    [CompactSpace K] (F σ : K → K)
+    (hF : ∀ z : K, (F z : ℂ) = (z : ℂ)^2+c)
+    (hσ : ∀ z : K, (σ z : ℂ) = -(z : ℂ))
+    (hsurj : Function.Surjective F)
+    (a : K) (ha : (a : ℂ) = 0)
+    (S : Set K) (hS : IsPreconnected S) (haS : F a ∈ S) :
+    IsPreconnected (F ⁻¹' S) := by
+  refine critical_preimage_preconnected F σ
+    (restricted_quadratic_continuous c K F hF).isClosedMap
+    (restricted_reflection_continuous K σ hσ) hsurj ?_ ?_ S hS a ?_ haS
+  · intro z
+    apply Subtype.ext
+    rw [hF (σ z), hσ z, hF z]
+    ring
+  · intro x z hxz
+    have he : (F x : ℂ) = (F z : ℂ) :=
+      congrArg (fun w : K => (w : ℂ)) hxz
+    rw [hF x, hF z] at he
+    have hmul : ((z : ℂ)-(x : ℂ))*((z : ℂ)+(x : ℂ)) = 0 := by
+      calc
+        _ = ((z : ℂ)^2+c)-((x : ℂ)^2+c) := by ring
+        _ = 0 := by rw [he, sub_self]
+    rcases mul_eq_zero.mp hmul with h | h
+    · left
+      exact Subtype.ext (sub_eq_zero.mp h)
+    · right
+      apply Subtype.ext
+      rw [hσ x]
+      linear_combination h
+  · apply Subtype.ext
+    rw [hσ a, ha, neg_zero]
+
+/-- Forward invariance of the actual least marked continuum follows
+from the elementary critical-preimage theorem, provided the marks
+are forward invariant and contain the critical value. -/
+theorem quadratic_least_carrier_forward_invariant (c : ℂ) (K : Set ℂ)
+    [CompactSpace K] (F σ : K → K)
+    (hF : ∀ z : K, (F z : ℂ) = (z : ℂ)^2+c)
+    (hσ : ∀ z : K, (σ z : ℂ) = -(z : ℂ))
+    (hsurj : Function.Surjective F)
+    (a : K) (ha : (a : ℂ) = 0)
+    (M T : Set K) (hTc : IsCompact T) (hT : IsConnected T)
+    (hMT : M ⊆ T) (hFM : MapsTo F M M) (hcrit : F a ∈ M)
+    (hleast : ∀ U : Set K, IsCompact U → IsConnected U → M ⊆ U → T ⊆ U) :
+    MapsTo F T T := by
+  have hpre := quadratic_restricted_critical_preimage c K F σ hF hσ hsurj
+    a ha T hT.isPreconnected (hMT hcrit)
+  have hconn : IsConnected (F ⁻¹' T) := ⟨⟨a, hMT hcrit⟩, hpre⟩
+  have hc : IsCompact (F ⁻¹' T) :=
+    (hTc.isClosed.preimage (restricted_quadratic_continuous c K F hF)).isCompact
+  exact hleast _ hc hconn (fun z hz => hMT (hFM hz))
+
+/-- For a forward invariant physical carrier, the *contact* of the
+carrier with a selected predecessor has exactly the model contact
+image, even when the physical carrier itself is not saturated.
+Consequently model exclusion at any depth transfers directly to
+physical exclusion, with no marked-continuum matching premise. -/
+theorem selected_carrier_contact_image [CompactSpace X] [T2Space Y]
+    (p : X → Y) (hp : Continuous p) (hsurj : Function.Surjective p)
+    (hf : ∀ y : Y, IsPreconnected (p ⁻¹' {y}))
+    (F : X → X) (G : Y → Y) (hs : Function.Semiconj p F G)
+    (T : Set X) (B : Set Y) (himg : p '' T = B) (hFT : MapsTo F T T)
+    (a x : X) (ha : p ⁻¹' ({p a} : Set Y) = {a}) (hx : x ≠ a)
+    (n : ℕ) :
+    p '' (T ∩ ((F^[n]) ⁻¹' T ∩ connectedComponentIn ({a} : Set X)ᶜ x)) =
+      B ∩ ((G^[n]) ⁻¹' B ∩ connectedComponentIn ({p a} : Set Y)ᶜ (p x)) := by
+  rw [punctured_component_full_lift p hp hsurj hf a x ha hx]
+  apply Subset.antisymm
+  · rintro _ ⟨z, hz, rfl⟩
+    have hzB : p z ∈ B := by
+      rw [← himg]
+      exact ⟨z, hz.1, rfl⟩
+    have hFzB : p ((F^[n]) z) ∈ B := by
+      rw [← himg]
+      exact ⟨(F^[n]) z, hz.2.1, rfl⟩
+    have hGzB : (G^[n]) (p z) ∈ B := by
+      rw [← hs.iterate_right n z]
+      exact hFzB
+    exact ⟨hzB, hGzB, hz.2.2⟩
+  · intro y hy
+    have hyB : y ∈ p '' T := by
+      rw [himg]
+      exact hy.1
+    obtain ⟨z, hz, hzy⟩ := hyB
+    refine ⟨z, ⟨hz, ?_, ?_⟩, hzy⟩
+    · exact (hFT.iterate n) hz
+    · change p z ∈ connectedComponentIn ({p a} : Set Y)ᶜ (p x)
+      rw [hzy]
+      exact hy.2.2
+
 end LoopsStationaryGeometricFibers

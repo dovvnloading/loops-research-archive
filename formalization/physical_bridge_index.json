@@ -2075,7 +2075,11 @@
         "relative_component_lift",
         "closed_carrier_saturated_of_frontier_singletons",
         "marked_continuum_image_of_dense_anchors",
-        "selected_mark_from_single_overlap"
+        "selected_mark_from_single_overlap",
+        "critical_preimage_preconnected",
+        "quadratic_restricted_critical_preimage",
+        "quadratic_least_carrier_forward_invariant",
+        "selected_carrier_contact_image"
       ]
     },
     "obligations": [
