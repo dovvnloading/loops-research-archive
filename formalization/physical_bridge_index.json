@@ -2086,5 +2086,21 @@
     "obligations": [
       "H1_CELL_TREE_EXTRACTION"
     ]
+  },
+  "proof-used-predecessor-itinerary-20261126": {
+    "guide": "contributions/proof_used_predecessor_itinerary_20261126/NOTE.md#proof-used-predecessor-itinerary-20261126",
+    "theorems": {
+      "formalization/weighted/StationaryProofUsedItinerary.lean": [
+        "limb_avoids_root",
+        "connected_in_limb_of_hit",
+        "inverse_branch_component",
+        "inverse_branch_component_image",
+        "endpoint_itinerary_selection",
+        "supplied_address_eq"
+      ]
+    },
+    "obligations": [
+      "KKL_STATIONARY_PROOF_USED_PREDECESSOR_SELECTION"
+    ]
   }
 }
