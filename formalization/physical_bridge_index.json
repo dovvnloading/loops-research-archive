@@ -2086,5 +2086,26 @@
     "obligations": [
       "H1_CELL_TREE_EXTRACTION"
     ]
+  },
+  "prime-end-sector-filters-20261126": {
+    "guide": "contributions/prime_end_sector_filters_20261126/NOTE.md#prime-end-sector-filters-20261126",
+    "theorems": {
+      "formalization/weighted/PrimeEndSectorFilters.lean": [
+        "compact_footprint_eventually_inside",
+        "angular_cluster_iff",
+        "forward_forces_unique_angle",
+        "reverse_stage_iff",
+        "whole_trace_cofinal_iff",
+        "two_angles_obstruct",
+        "interval_interior_iff",
+        "interval_endpoint_obstruct",
+        "connected_two_point_set",
+        "quadratic_iterate_connected_fiber",
+        "endpoint_impressions_singleton"
+      ]
+    },
+    "obligations": [
+      "DIRECT_DECORATION_END_PRIME_END_COFINALITY"
+    ]
   }
 }

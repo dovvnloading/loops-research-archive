@@ -90,6 +90,7 @@ formalization/weighted/Period27RealExactPeriod.lean	CENTER
 formalization/weighted/Period27RealKneading.lean	CENTER DIFFRACTION
 formalization/weighted/Period27RealMarkov.lean	REAL-MARKOV MARKOV-SPECTRUM
 formalization/weighted/Period27RealUniqueness.lean	CENTER
+formalization/weighted/PrimeEndSectorFilters.lean	METADATA
 formalization/weighted/QuadraticCriticalTransversality.lean	CRITICAL-TRANSVERSALITY
 formalization/weighted/PhaseMemoryCardinality.lean	CLOCK ENDS
 formalization/weighted/PlanarFillLimit.lean	HULL
