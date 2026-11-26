@@ -23,6 +23,12 @@ Candidate Lean development (CI pending): [StationaryCompactContact.lean](../../f
 4. `quadratic_compact_contact_injOn`: exponentiate half the logarithm to construct a continuous inverse section, then apply actual quadratic injectivity on a preconnected set.
 5. `quadratic_bypass_forces_critical_contact` and `quadratic_reflected_component_forces_critical_contact`: if a putative bypass closure avoided Q, it would be compact, preconnected and retained, contradicting the preceding theorem.
 
+6. `quadratic_compact_contact_section` constructs a reference continuous inverse branch on every compact retained image target. `quadratic_equal_roots_sign` states the exact fiber alternative.
+7. `quadratic_branch_extension_iff` proves that prescribed closed positive and negative sign loci extend to a continuous quadratic inverse branch on a compact Hausdorff base if and only if no connected component meets both. Necessity uses the clopen sign locus of any extension; sufficiency uses the existing compact component separation theorem and a piecewise branch.
+8. `quadratic_section_restriction_extension_iff` gives the exact compatibility test for an independently selected inverse branch on a closed compact substage. This removes ambiguity between existence of a branch at every finite stage and preservation of a specified older branch.
+
+First six theorems: the weighted build step passed at commit `dbb52a442e26e80bd7571da0f0121a23790b26c4` ([run](https://github.com/dovvnloading/loops-research-archive/actions/runs/45884095449)); at the time of writing its dependency audit was still running. The additional four named theorems require their own full CI run.
+
 Build: `cd formalization/weighted && lake build StationaryCompactContact`. The source is registered in the Lake target list, theorem index and source inventory using the same edits as contribute.py lean-add. Local Lean and a network-accessible shell checkout are unavailable. Validation is pending the repository CI; no theorem is counted as verified yet.
 
 ## Dependencies
@@ -31,7 +37,7 @@ KKL_NATIVE_TERMINAL_HUBBARD_TREE, KKL_STATIONARY_SELECTED_SMALL_JULIA_PREDECESSO
 
 ## Boundary
 
-No accessible exterior ray, local connectivity, compactness of the removed-set complement, or native marked access is assumed by the compact-witness theorem. The actual source-specific exterior closure contact and reflection saturation of the physical carrier must still be established. The punctured carrier can have noncompact connected components: the result only forces any remaining reflected bypass to accumulate on the removed critical set. It does not exclude such accumulation, prove the native collar/access realization, close the ledger row, or prove MLC. No status record changes.
+No accessible exterior ray, local connectivity, compactness of the removed-set complement, or native marked access is assumed by the compact-witness theorem. The actual source-specific exterior closure contact and reflection saturation of the physical carrier must still be established. The punctured carrier can have noncompact connected components: the result only forces any remaining reflected bypass to accumulate on the removed critical set. It does not exclude such accumulation, establish that the sign-extension test succeeds at every stage of the native construction, prove the native collar/access realization, close the ledger row, or prove MLC. No status record changes.
 
 ## Attribution
 

@@ -1,4 +1,5 @@
 import StationarySeparatorTransport
+import StationaryMultiInterface
 
 /-!
 # Quadratic compact bypass exclusion from exterior closure contact
@@ -183,5 +184,161 @@ theorem quadratic_reflected_component_forces_critical_contact
   have he : a = -a := hi (mem_connectedComponentIn ha) hb (by ring)
   have haz : a = 0 := by linear_combination (1/2 : ℂ) * he
   exact ha.2 (haz.symm ▸ hzero)
+
+
+/-- A compact target retained away from the critical continuum has an
+actual continuous quadratic inverse branch. The branch is a continuous
+map on the subtype, with the full algebraic identity. -/
+theorem quadratic_compact_contact_section (c : ℂ) (K Q R T : Set ℂ)
+    (hKsym : ∀ z ∈ K, -z ∈ K)
+    (hQsym : ∀ z ∈ Q, -z ∈ Q) (hzero : 0 ∈ Q)
+    (hQ : IsPreconnected Q) (hR : IsPreconnected R)
+    (hcontact : (Q ∩ closure R).Nonempty)
+    (hdis : Disjoint R K) (hunb : ∀ B : ℝ, ∃ z ∈ R, B < ‖z‖)
+    (hT : IsCompact T) (hTsub : T ⊆ (fun z : ℂ => z^2+c) '' (K \ Q)) :
+    ∃ s : C(T, ℂ), ∀ w : T, (s w)^2+c = (w : ℂ) := by
+  obtain ⟨g,hg⟩ := quadratic_compact_contact_log c K Q R T hKsym hQsym
+    hzero hQ hR hcontact hdis hunb hT hTsub
+  let s : C(T, ℂ) :=
+    ⟨fun w => Complex.exp (g w / 2),
+      Complex.continuous_exp.comp (g.continuous.div_const 2)⟩
+  refine ⟨s,?_⟩
+  intro w
+  change (Complex.exp (g w / 2))^2+c = (w : ℂ)
+  rw [pow_two,← Complex.exp_add,
+    show g w / 2 + g w / 2 = g w by ring, hg]
+  simp
+
+/-- Exactly the two possible roots in a quadratic fiber, including
+the degenerate critical fiber. -/
+theorem quadratic_equal_roots_sign (c z w : ℂ) (h : z^2+c = w^2+c) :
+    z = w ∨ z = -w := by
+  have hp : (z-w)*(z+w) = 0 := by linear_combination h
+  rcases mul_eq_zero.mp hp with hsub | hadd
+  · exact Or.inl (sub_eq_zero.mp hsub)
+  · right
+    linear_combination hadd
+
+/-- A reference inverse branch on a compact Hausdorff base can be
+modified to obey two closed, prescribed sign sets exactly when no
+component of the base meets both. In particular no local connectivity
+or finiteness of the component space is needed. -/
+theorem quadratic_branch_extension_iff
+    {X : Type*} [TopologicalSpace X] [CompactSpace X] [T2Space X]
+    (c : ℂ) (w s : C(X, ℂ))
+    (hroot : ∀ x, (s x)^2+c = w x)
+    (hne : ∀ x, w x ≠ c)
+    (P N : Set X) (hP : IsClosed P) (hN : IsClosed N) :
+    (∃ t : C(X, ℂ), (∀ x, (t x)^2+c = w x) ∧
+      (∀ x ∈ P, t x = s x) ∧ (∀ x ∈ N, t x = -s x)) ↔
+    (∀ x ∈ P, ∀ y ∈ N, y ∉ connectedComponent x) := by
+  classical
+  have hsne (x : X) : s x ≠ 0 := by
+    intro hz
+    apply hne x
+    have h := hroot x
+    rw [hz] at h
+    simpa using h.symm
+  constructor
+  · rintro ⟨t,ht,hp,hn⟩
+    let A : Set X := {x | t x = s x}
+    let B : Set X := {x | t x = -s x}
+    have hA : IsClosed A := isClosed_eq t.continuous s.continuous
+    have hB : IsClosed B := isClosed_eq t.continuous s.continuous.neg
+    have hAB (x : X) : x ∈ A ∨ x ∈ B :=
+      quadratic_equal_roots_sign c (t x) (s x) ((ht x).trans (hroot x).symm)
+    have hd (x : X) (hx : x ∈ A) (hy : x ∈ B) : False := by
+      change t x = s x at hx
+      change t x = -s x at hy
+      have he : s x = -s x := hx.symm.trans hy
+      exact hsne x (by linear_combination (1/2 : ℂ) * he)
+    have heq : Aᶜ = B := by
+      ext x
+      constructor
+      · intro hx
+        exact (hAB x).resolve_left hx
+      · intro hy hx
+        exact hd x hx hy
+    have hAo : IsOpen A := by
+      have hc : IsClosed Aᶜ := heq.symm ▸ hB
+      simpa only [compl_compl] using hc.isOpen_compl
+    have hAcl : IsClopen A := ⟨hA,hAo⟩
+    intro x hx y hy hxy
+    exact hd y (hAcl.connectedComponent_subset (show x ∈ A from hp x hx) hxy)
+      (show y ∈ B from hn y hy)
+  · intro h
+    obtain ⟨U,hU,hPU,hUN⟩ :=
+      LoopsStationaryMultiInterface.compact_clopen_separator_of_component_disjoint
+        P N hP hN h
+    have hfront : frontier U = ∅ := by
+      rw [frontier, hU.1.closure_eq, hU.2.interior_eq, diff_self]
+    let t : C(X, ℂ) :=
+      ⟨U.piecewise s (fun x => -s x), by
+        apply Continuous.piecewise
+        · intro x hx
+          have hf : False := by simpa [hfront] using hx
+          exact hf.elim
+        · exact s.continuous
+        · exact s.continuous.neg⟩
+    have hpos (x : X) (hx : x ∈ U) : t x = s x := by
+      simp [t, Set.piecewise, hx]
+    have hneg (x : X) (hx : x ∉ U) : t x = -s x := by
+      simp [t, Set.piecewise, hx]
+    refine ⟨t,?_,?_,?_⟩
+    · intro x
+      by_cases hx : x ∈ U
+      · rw [hpos x hx, hroot x]
+      · calc
+          (t x)^2+c = (s x)^2+c := by rw [hneg x hx]; ring
+          _ = w x := hroot x
+    · exact fun x hx => hpos x (hPU hx)
+    · exact fun x hx => hneg x (fun hu => Set.disjoint_left.mp hUN hu hx)
+
+/-- Exact extension test for an already selected inverse branch on a
+closed substage. Relative to any reference branch on the larger stage,
+the old positive and negative sign loci must not merge in a component.
+This condition is necessary and sufficient, not just a sufficient
+finite approximation. -/
+theorem quadratic_section_restriction_extension_iff
+    {X : Type*} [TopologicalSpace X] [CompactSpace X] [T2Space X]
+    (c : ℂ) (w s : C(X, ℂ))
+    (hroot : ∀ x, (s x)^2+c = w x)
+    (hne : ∀ x, w x ≠ c)
+    (S : Set X) (hS : IsClosed S) (r : C(S, ℂ))
+    (hr : ∀ x : S, (r x)^2+c = w (x : X)) :
+    (∃ t : C(X, ℂ), (∀ x, (t x)^2+c = w x) ∧
+      ∀ x : S, t (x : X) = r x) ↔
+    (∀ x y : S, r x = s (x : X) → r y = -s (y : X) →
+      (y : X) ∉ connectedComponent (x : X)) := by
+  letI : CompactSpace S := isCompact_iff_compactSpace.mp hS.isCompact
+  let P : Set X := ((↑) : S → X) '' {x : S | r x = s (x : X)}
+  let N : Set X := ((↑) : S → X) '' {x : S | r x = -s (x : X)}
+  have hPc : IsClosed {x : S | r x = s (x : X)} :=
+    isClosed_eq r.continuous (s.continuous.comp continuous_subtype_val)
+  have hNc : IsClosed {x : S | r x = -s (x : X)} :=
+    isClosed_eq r.continuous (s.continuous.comp continuous_subtype_val).neg
+  have hP : IsClosed P := (hPc.isCompact.image continuous_subtype_val).isClosed
+  have hN : IsClosed N := (hNc.isCompact.image continuous_subtype_val).isClosed
+  have hext := quadratic_branch_extension_iff c w s hroot hne P N hP hN
+  constructor
+  · rintro ⟨t,ht,htr⟩ x y hx hy
+    have htp : ∀ z ∈ P, t z = s z := by
+      rintro z ⟨u,hu,rfl⟩
+      exact (htr u).trans hu
+    have htn : ∀ z ∈ N, t z = -s z := by
+      rintro z ⟨u,hu,rfl⟩
+      exact (htr u).trans hu
+    exact (hext.mp ⟨t,ht,htp,htn⟩) (x : X) ⟨x,hx,rfl⟩ (y : X) ⟨y,hy,rfl⟩
+  · intro h
+    have hPN : ∀ x ∈ P, ∀ y ∈ N, y ∉ connectedComponent x := by
+      rintro x ⟨u,hu,rfl⟩ y ⟨v,hv,rfl⟩
+      exact h u v hu hv
+    obtain ⟨t,ht,htp,htn⟩ := hext.mpr hPN
+    refine ⟨t,ht,?_⟩
+    intro x
+    rcases quadratic_equal_roots_sign c (r x) (s (x : X))
+      ((hr x).trans (hroot (x : X)).symm) with hx | hx
+    · exact (htp (x : X) ⟨x,hx,rfl⟩).trans hx.symm
+    · exact (htn (x : X) ⟨x,hx,rfl⟩).trans hx.symm
 
 end LoopsStationaryCompactContact

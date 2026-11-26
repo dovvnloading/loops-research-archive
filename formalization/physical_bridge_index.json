@@ -2409,7 +2409,11 @@
         "quadratic_compact_contact_log",
         "quadratic_compact_contact_injOn",
         "quadratic_bypass_forces_critical_contact",
-        "quadratic_reflected_component_forces_critical_contact"
+        "quadratic_reflected_component_forces_critical_contact",
+        "quadratic_compact_contact_section",
+        "quadratic_equal_roots_sign",
+        "quadratic_branch_extension_iff",
+        "quadratic_section_restriction_extension_iff"
       ]
     },
     "obligations": [
