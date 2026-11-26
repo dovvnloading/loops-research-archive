@@ -11,7 +11,7 @@ human_review: none
 
 ## Claim
 
-Candidate Lean extension: if two closed ambient sheets cover the retained carrier and all their retained interface points lie in a single connected component of the selected sheet, restriction of every ambient connected component to that sheet equals its local component. Neither compactness nor local connectivity is required; the interface need not be connected or a singleton. If the retained exterior is preconnected and the interface is nonempty, the criterion is necessary as well.
+Candidate Lean extension: if two closed ambient sheets cover the retained carrier and all their retained interface points lie in a single connected component of the selected sheet, restriction of every ambient connected component to that sheet equals its local component. Neither compactness nor local connectivity is required; the interface need not be connected or a singleton. If the retained exterior is preconnected and the interface is nonempty, the criterion is necessary as well. For a finite closed cover by preconnected retained exterior patches each anchored to the selected sheet, there is an exact no-bypass equivalence even when patches overlap outside that sheet.
 
 ## Evidence
 
@@ -21,6 +21,10 @@ Registered module: [StationaryMultiInterface.lean](../../formalization/weighted/
 - `component_inter_of_single_interface_component`: if an ambient component meets the interface, it contains the entire absorbing local component. If it misses the interface, the absorbing subset is empty. Apply the preceding theorem and component maximality in both directions.
 - `no_bypass_iff_single_interface_component`: necessity follows because every point of a connected retained exterior belongs to the same ambient component.
 - `exterior_bridge_obstructs_separator`: a preconnected exterior bridge joining locally separated points certifies failure of the local-to-global implication.
+
+- `patchedCarrier_insert`, `patchedCarrier_closed`: finite unions of closed exterior patches are closed, with the insertion identity.
+- `component_inter_finite_patches`: attach patches one at a time. A new patch contacts the growing carrier either in the original selected sheet or in a previously attached patch. In the latter case preconnectedness and compatible anchor components force the contact into the same growing component. The first theorem therefore applies at each insertion, without assuming disjointness of exterior patches.
+- `finite_patches_no_bypass_iff`: necessity of the two conditions follows by following a connected patch, or two patches with an actual retained overlap, to their anchors. Thus individual contact absorption plus anchor compatibility at every overlap is exactly equivalent to no new component mergers on the selected sheet. This gives a finite incidence criterion, not an assertion that the native carrier already has the required finite closed patch cover.
 
 Build: `cd formalization/weighted && lake build StationaryMultiInterface`. Local Lean and network access for a git checkout are unavailable. The module is registered in the existing Lake target, theorem index and source inventory. **Candidate only pending successful CI compilation and transitive dependency audit.** No check is weakened.
 
