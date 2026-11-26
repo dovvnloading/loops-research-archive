@@ -115,11 +115,11 @@ theorem compact_address_uniform_shrinking
   exact hm hn (hN (mem_univ ω))
 
 /-- An actual finite prefix cylinder is open in the product topology. -/
-theorem prefix_cylinder_open {Σ : Type*} [TopologicalSpace Σ] [DiscreteTopology Σ]
-    (ω : ℕ → Σ) (n : ℕ) :
-    IsOpen {τ : ℕ → Σ | ∀ k < n, τ k = ω k} := by
-  have he : {τ : ℕ → Σ | ∀ k < n, τ k = ω k} =
-      ⋂ k : Fin n, (fun τ : ℕ → Σ => τ k.val) ⁻¹' ({ω k.val} : Set Σ) := by
+theorem prefix_cylinder_open {Alphabet : Type*} [TopologicalSpace Alphabet] [DiscreteTopology Alphabet]
+    (ω : ℕ → Alphabet) (n : ℕ) :
+    IsOpen {τ : ℕ → Alphabet | ∀ k < n, τ k = ω k} := by
+  have he : {τ : ℕ → Alphabet | ∀ k < n, τ k = ω k} =
+      ⋂ k : Fin n, (fun τ : ℕ → Alphabet => τ k.val) ⁻¹' ({ω k.val} : Set Alphabet) := by
     ext τ
     simp only [mem_setOf_eq, mem_iInter, mem_preimage, mem_singleton_iff]
     constructor
@@ -134,8 +134,8 @@ theorem prefix_cylinder_open {Σ : Type*} [TopologicalSpace Σ] [DiscreteTopolog
 /-- Uniform physical shrinking for all infinite words over a compact
 discrete alphabet (in particular the binary decoration alphabet). -/
 theorem finite_prefix_uniform_shrinking
-    {Σ : Type*} [TopologicalSpace Σ] [DiscreteTopology Σ] [CompactSpace Σ]
-    (Q : (ℕ → Σ) → ℕ → Set X) (hc : ∀ ω n, IsCompact (Q ω n))
+    {Alphabet : Type*} [TopologicalSpace Alphabet] [DiscreteTopology Alphabet] [CompactSpace Alphabet]
+    (Q : (ℕ → Alphabet) → ℕ → Set X) (hc : ∀ ω n, IsCompact (Q ω n))
     (hnest : ∀ ω, Antitone (Q ω))
     (hsing : ∀ ω, ∃ z, (⋂ n, Q ω n) = {z})
     (hprefix : ∀ n ω τ, (∀ k < n, τ k = ω k) → Q τ n = Q ω n)
@@ -301,7 +301,7 @@ theorem cofinal_iff_nhdsWithin (A : ℕ → Set X) (H : ℕ → ℝ) (θ : X)
   have hb (s : Set (X × ℝ)) :
       s ∈ (⨅ n, 𝓟 (trace (A n) (H n))) ↔
         ∃ n, trace (A n) (H n) ⊆ s := by
-    simpa only [true_and] using (Filter.hasBasis_iInf_principal hd).mem_iff (s := s)
+    simpa only [true_and] using (Filter.hasBasis_iInf_principal hd).mem_iff (t := s)
   have hn (s : Set (X × ℝ)) :
       s ∈ 𝓝[{p : X × ℝ | 0 < p.2}] (θ, 0) ↔
         ∃ ε > 0, wedge θ ε ⊆ s := by
