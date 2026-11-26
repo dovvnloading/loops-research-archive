@@ -24,6 +24,9 @@ Candidate Lean development: for an actual complex quadratic iterate restricted p
 5. `one_fiber_component_exhaustion` and `quadratic_localized_census` reduce coverage to a single target fiber and return equality of actual connected subsets, with unique declared index under distinctness.
 6. `iteratePolynomial_eval`, `iteratePolynomial_degree`, `quadratic_fiber_card_bound`, and `quadratic_full_degree_census` identify the actual iterate polynomial of degree 2^n and prove the sharp global census criterion by root counting.
 
+7. `mem_localFiber`, `localFiber_card_bound`, and `quadratic_localized_count_census` turn the localized census into an exact finite root-set test; a finite index family with distinct components and common-fiber anchors exhausts the localization as soon as its cardinality reaches the actual filtered fiber size. This handles q-return localizations without using the incorrect global degree as a local count.
+8. `no_new_component_of_same_fiber` proves that an open proper enlargement with unchanged filtered fiber has no new component missing every old declared component. It allows mergers; the no-merger condition and full metadata compatibility remain separate.
+
 Validation: pending exact-head weighted CI and its transitive proof dependency audit. Local Lean and networked git are unavailable in this execution environment. No candidate is counted as a validated result until CI confirms it. Reproduction: from the repository root, `cd formalization/weighted && lake build QuadraticCylinderCensus`, then run the existing weighted audit.
 
 ## Dependencies

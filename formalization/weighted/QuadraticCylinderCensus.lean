@@ -175,7 +175,7 @@ theorem quadratic_localized_census {ι : Type*} (c : ℂ) (n : ℕ)
 
 /-- Polynomial representing the actual spatial iterate. -/
 noncomputable def iteratePolynomial (c : ℂ) : ℕ → Polynomial ℂ
-  | 0 => X
+  | 0 => Polynomial.X
   | n+1 => (iteratePolynomial c n)^2 + C c
 
 theorem iteratePolynomial_eval (c z : ℂ) (n : ℕ) :
@@ -189,7 +189,9 @@ theorem iteratePolynomial_degree (c : ℂ) (n : ℕ) :
   induction n with
   | zero => simp [iteratePolynomial]
   | succ n ih =>
-    simp [iteratePolynomial, Polynomial.natDegree_pow, ih, pow_succ, Nat.mul_comm]
+    change ((iteratePolynomial c n)^2 + Polynomial.C c).natDegree = 2^(n+1)
+    rw [Polynomial.natDegree_add_C, Polynomial.natDegree_pow, ih, pow_succ]
+    omega
 
 /-- A finite census of distinct points in one actual iterate fiber
 never exceeds the degree. Critical values are allowed. -/
@@ -200,7 +202,7 @@ theorem quadratic_fiber_card_bound (c y : ℂ) (n : ℕ) (A : Finset ℂ)
   let p := iteratePolynomial c n - C y
   have hd : p.natDegree = 2^n := by
     simp [p, Polynomial.natDegree_sub_C, iteratePolynomial_degree]
-  have hp : p ≠ 0 := Polynomial.ne_zero_of_natDegree_gt (by rw [hd]; positivity)
+  have hp : p ≠ 0 := Polynomial.ne_zero_of_natDegree_gt (n := 0) (by rw [hd]; positivity)
   have hsub : A.val ⊆ p.roots := by
     intro z hz
     apply (Polynomial.mem_roots hp).2
@@ -219,11 +221,11 @@ theorem quadratic_full_degree_census (c y : ℂ) (n : ℕ) (A : Finset ℂ)
   let p := iteratePolynomial c n - C y
   have hd : p.natDegree = 2^n := by
     simp [p, Polynomial.natDegree_sub_C, iteratePolynomial_degree]
-  have hp : p ≠ 0 := Polynomial.ne_zero_of_natDegree_gt (by rw [hd]; positivity)
+  have hp : p ≠ 0 := Polynomial.ne_zero_of_natDegree_gt (n := 0) (by rw [hd]; positivity)
   have hroot : p.roots = A.val :=
     Polynomial.roots_eq_of_natDegree_le_card_of_ne_zero
       (fun w hw => by simp [p, iteratePolynomial_eval, hA w hw])
-      (hd.symm ▸ hcard) hp
+      (by rw [hd]; exact hcard) hp
   constructor
   · intro hz
     have h : z ∈ p.roots := (Polynomial.mem_roots hp).2 (by
@@ -232,5 +234,103 @@ theorem quadratic_full_degree_census (c y : ℂ) (n : ℕ) (A : Finset ℂ)
     rw [hroot] at h
     simpa using h
   · exact hA z
+
+
+/-- Exact finite set of distinct inverse points in an arbitrary
+localized domain. Repeated polynomial roots are counted only once. -/
+noncomputable def localFiber (c : ℂ) (n : ℕ) (S : Set ℂ) (y : ℂ) : Finset ℂ := by
+  classical
+  exact (iteratePolynomial c n - Polynomial.C y).roots.toFinset.filter (fun z => z ∈ S)
+
+theorem mem_localFiber (c : ℂ) (n : ℕ) (S : Set ℂ) (y z : ℂ) :
+    z ∈ localFiber c n S y ↔
+      z ∈ S ∧ ((fun w : ℂ => w^2+c)^[n]) z = y := by
+  classical
+  let p := iteratePolynomial c n - Polynomial.C y
+  have hd : p.natDegree = 2^n := by
+    simp [p, Polynomial.natDegree_sub_C, iteratePolynomial_degree]
+  have hp : p ≠ 0 := Polynomial.ne_zero_of_natDegree_gt (n := 0) (by rw [hd]; positivity)
+  change z ∈ p.roots.toFinset.filter (fun w => w ∈ S) ↔ _
+  simp only [Finset.mem_filter, Multiset.mem_toFinset, Polynomial.mem_roots hp]
+  have hroot : p.IsRoot z ↔ ((fun w : ℂ => w^2+c)^[n]) z = y := by
+    change p.eval z = 0 ↔ _
+    simp [p, iteratePolynomial_eval, sub_eq_zero]
+  rw [hroot, and_comm]
+
+/-- Every localized inverse fiber has at most the actual global
+polynomial degree, with no critical-value exclusion. -/
+theorem localFiber_card_bound (c : ℂ) (n : ℕ) (S : Set ℂ) (y : ℂ) :
+    (localFiber c n S y).card ≤ 2^n := by
+  apply quadratic_fiber_card_bound c y n
+  intro z hz
+  exact ((mem_localFiber c n S y z).1 hz).2
+
+/-- Count the actual inverse points in the localization, rather than
+the global degree. One distinct declared component anchor for each
+inverse point certifies the entire localized component family. -/
+theorem quadratic_localized_count_census {ι : Type*} [Fintype ι]
+    (c : ℂ) (n : ℕ) (S V : Set ℂ)
+    (hS : IsOpen S) (hVo : IsOpen V) (hVc : IsPreconnected V)
+    (hm : MapsTo ((fun z : ℂ => z^2+c)^[n]) S V)
+    (hp : IsProperMap (fun z : S =>
+      (⟨((fun w : ℂ => w^2+c)^[n]) z, hm z.property⟩ : V)))
+    (y : ℂ) (hy : y ∈ V) (a : ι → ℂ) (ha : ∀ i, a i ∈ S)
+    (haf : ∀ i, ((fun w : ℂ => w^2+c)^[n]) (a i) = y)
+    (hdist : Injective (fun i => connectedComponentIn S (a i)))
+    (hcard : (localFiber c n S y).card ≤ Fintype.card ι)
+    (x : ℂ) (hx : x ∈ S) :
+    ∃! i, connectedComponentIn S x = connectedComponentIn S (a i) := by
+  classical
+  let A := Finset.univ.image a
+  have hai : Injective a := by
+    intro i j h
+    exact hdist (congrArg (connectedComponentIn S) h)
+  have hA : A ⊆ localFiber c n S y := by
+    intro z hz
+    obtain ⟨i, _, rfl⟩ := Finset.mem_image.mp hz
+    exact (mem_localFiber c n S y (a i)).2 ⟨ha i, haf i⟩
+  have hAc : A.card = Fintype.card ι := by
+    change (Finset.univ.image a).card = Fintype.card ι
+    rw [Finset.card_image_of_injective _ hai, Finset.card_univ]
+  have heq : A = localFiber c n S y :=
+    Finset.eq_of_subset_of_card_le hA (by rw [hAc]; exact hcard)
+  apply quadratic_localized_census c n S V hS hVo hVc hm hp y hy a ha hdist _ x hx
+  intro z hz hzy
+  have hzA : z ∈ A := heq.symm ▸ (mem_localFiber c n S y z).2 ⟨hz, hzy⟩
+  obtain ⟨i, _, rfl⟩ := Finset.mem_image.mp hzA
+  exact ⟨i, mem_connectedComponentIn (ha i)⟩
+
+/-- If a proper open enlargement adds no point in a single target
+fiber, every enlarged component contains a previously declared
+component. No new component can be hidden by the enlargement. -/
+theorem no_new_component_of_same_fiber {ι : Type*}
+    (c : ℂ) (n : ℕ) (S T V : Set ℂ) (hST : S ⊆ T)
+    (hT : IsOpen T) (hVo : IsOpen V) (hVc : IsPreconnected V)
+    (hm : MapsTo ((fun z : ℂ => z^2+c)^[n]) T V)
+    (hp : IsProperMap (fun z : T =>
+      (⟨((fun w : ℂ => w^2+c)^[n]) z, hm z.property⟩ : V)))
+    (y : ℂ) (hy : y ∈ V) (a : ι → ℂ) (ha : ∀ i, a i ∈ S)
+    (hcensus : ∀ z ∈ S, ((fun w : ℂ => w^2+c)^[n]) z = y →
+      ∃ i, z ∈ connectedComponentIn S (a i))
+    (hno : localFiber c n T y = localFiber c n S y)
+    (x : ℂ) (hx : x ∈ T) :
+    ∃ i, connectedComponentIn T x = connectedComponentIn T (a i) ∧
+      connectedComponentIn S (a i) ⊆ connectedComponentIn T x := by
+  let f := (fun z : ℂ => z^2+c)^[n]
+  have hf := quadratic_iterate_proper c n
+  have hr := proper_localization_relative_closed f T V hf.continuous hVo hm hp
+  have he := localized_component_image f T V (quadratic_iterate_open c n)
+    hf.isClosedMap hT hVc hm hr x hx
+  have hh : y ∈ f '' connectedComponentIn T x := he.symm ▸ hy
+  obtain ⟨z, hz, hzy⟩ := hh
+  have hzT := connectedComponentIn_subset T x hz
+  have hzF := (mem_localFiber c n T y z).2 ⟨hzT, hzy⟩
+  rw [hno] at hzF
+  have hzS := ((mem_localFiber c n S y z).1 hzF).1
+  obtain ⟨i, hzi⟩ := hcensus z hzS hzy
+  have hsub := connectedComponentIn_mono (a i) hST
+  have hEq : connectedComponentIn T x = connectedComponentIn T (a i) :=
+    (connectedComponentIn_eq hz).trans (connectedComponentIn_eq (hsub hzi)).symm
+  exact ⟨i, hEq, hEq.symm ▸ hsub⟩
 
 end LoopsQuadraticCylinderCensus

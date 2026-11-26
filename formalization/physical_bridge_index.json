@@ -2139,7 +2139,11 @@
         "iteratePolynomial_eval",
         "iteratePolynomial_degree",
         "quadratic_fiber_card_bound",
-        "quadratic_full_degree_census"
+        "quadratic_full_degree_census",
+        "mem_localFiber",
+        "localFiber_card_bound",
+        "quadratic_localized_count_census",
+        "no_new_component_of_same_fiber"
       ]
     },
     "obligations": [
