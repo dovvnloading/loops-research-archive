@@ -106,6 +106,7 @@ formalization/weighted/QuadraticMultiplierArithmetic.lean	METADATA
 formalization/weighted/SaturatedTelescope.lean	METADATA
 formalization/weighted/SpectralDominance.lean	CLONE EDGE
 formalization/weighted/StationaryCanonicalLift.lean	VARIABLE-EXIT
+formalization/weighted/StationaryCompactContact.lean	METADATA
 formalization/weighted/StationaryDeckSeparator.lean	VARIABLE-EXIT
 formalization/weighted/StationaryEndpointCover.lean	VARIABLE-EXIT
 formalization/weighted/StationaryEndpointVisits.lean	VARIABLE-EXIT
