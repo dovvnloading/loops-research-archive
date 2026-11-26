@@ -311,7 +311,7 @@ connectedness or simple connectedness of the compact set is used. -/
 theorem compact_connected_complement_log (S : Set ℂ)
     (hK : IsCompact S) (hC : IsConnected Sᶜ) (h0 : (0 : ℂ) ∉ S) :
     ∃ L : S → ℂ, Continuous L ∧ ∀ z : S, Complex.exp (L z) = (z : ℂ) := by
-  obtain ⟨R, hR, hB⟩ := hK.isBounded.subset_closedBall_lt (0 : ℂ) 0
+  obtain ⟨R, hR, hB⟩ := hK.isBounded.subset_closedBall_lt 0 (0 : ℂ)
   let a : ℂ := ((-(R+1) : ℝ) : ℂ)
   have hnorm (z : S) : ‖(z : ℂ)‖ ≤ R := by
     have hz := hB z.property
@@ -348,7 +348,7 @@ theorem compact_connected_complement_log (S : Set ℂ)
   let L₀ : C(S, ℂ) := ⟨fun z => Complex.log ((z : ℂ)-a), by
     apply continuous_iff_continuousAt.mpr
     intro z
-    exact (Complex.continuousAt_clog (hs z)).comp
+    exact (continuousAt_clog (hs z)).comp
       (continuous_subtype_val.sub continuous_const).continuousAt⟩
   have H₀ (z : S) : H (0,z) =
       (⟨Complex.exp (L₀ z), Complex.exp_ne_zero _⟩ : {w : ℂ // w ≠ 0}) := by
@@ -401,7 +401,9 @@ theorem symmetric_full_continuum_contains_zero (S : Set ℂ)
         _ = 0 := by rw [hsq, Complex.I_sq, sub_self]
     rcases mul_eq_zero.mp he with h | h
     · exact Or.inl (sub_eq_zero.mp h)
-    · exact Or.inr (by linear_combination h)
+    · apply Or.inr
+      apply Set.mem_singleton_iff.mpr
+      linear_combination h
   letI : PreconnectedSpace S := isPreconnected_iff_preconnectedSpace.mp hS.isPreconnected
   have hconst := preconnected_finite_subsingleton (isPreconnected_range hFc) hfin
   obtain ⟨z,hz⟩ := hS.nonempty
