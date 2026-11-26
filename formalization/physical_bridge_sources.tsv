@@ -93,6 +93,7 @@ formalization/weighted/Period27RealMarkov.lean	REAL-MARKOV MARKOV-SPECTRUM
 formalization/weighted/Period27RealUniqueness.lean	CENTER
 formalization/weighted/PrimeEndSectorFilters.lean	METADATA
 formalization/weighted/PrimeEndSectorImpressions.lean	METADATA
+formalization/weighted/PrimeEndSectorRank.lean	METADATA
 formalization/weighted/QuadraticCriticalFiberCensus.lean	METADATA
 formalization/weighted/QuadraticCriticalTransversality.lean	CRITICAL-TRANSVERSALITY
 formalization/weighted/PhaseMemoryCardinality.lean	CLOCK ENDS

@@ -2329,5 +2329,22 @@
     "obligations": [
       "DIRECT_DECORATION_END_PRIME_END_COFINALITY"
     ]
+  },
+  "prime-end-sector-rank-20261126": {
+    "guide": "contributions/prime_end_sector_rank_20261126/NOTE.md#prime-end-sector-rank-20261126",
+    "theorems": {
+      "formalization/weighted/PrimeEndSectorRank.lean": [
+        "live_iff_all_contacts",
+        "live_census_stabilizes",
+        "limiting_footprint_finite",
+        "sectors_eventually_separate",
+        "live_sector_equiv",
+        "exact_finite_lookahead_rank",
+        "two_surviving_sectors_obstruct"
+      ]
+    },
+    "obligations": [
+      "DIRECT_DECORATION_END_PRIME_END_COFINALITY"
+    ]
   }
 }
