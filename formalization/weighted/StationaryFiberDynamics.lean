@@ -642,9 +642,12 @@ theorem quadratic_filled_iff_bounded (c z : ℂ) :
 /-- Compactness is a proved property of the actual bounded-orbit set,
 not an additional hypothesis on an arbitrary physical carrier. -/
 theorem quadratic_filled_compact (c : ℂ) : IsCompact (quadraticFilled c) := by
-  have hc : Continuous (fun z : ℂ => QuadraticEscape.escape c z) :=
-    QuadraticEscape.escape_continuous.comp
-      (continuous_const.prodMk continuous_id)
+  have hpair : Continuous (fun z : ℂ => (c, z)) :=
+    continuous_const.prodMk continuous_id
+  have hc : Continuous (fun z : ℂ => QuadraticEscape.escape c z) := by
+    change Continuous ((fun x : ℂ × ℂ => QuadraticEscape.escape x.1 x.2) ∘
+      (fun z : ℂ => (c, z)))
+    exact QuadraticEscape.escape_continuous.comp hpair
   have hclosed : IsClosed (quadraticFilled c) :=
     isClosed_singleton.preimage hc
   apply (isCompact_closedBall (0 : ℂ) (1+‖c‖)).of_isClosed_subset hclosed
