@@ -10,7 +10,7 @@ Base input: merged #132 (squash commit b25d26d9151fbaf5c8acf4bf00c6b56e42cd3a4c)
 
 The [source table](sources.json) records version, primary URL, theorem/page, short literal excerpts (math notation transcribed), and prior atlas SHA-256 where available. VERIFIED means the relevant statement was opened, not the proof or publication chain certified. The arXiv v1 Cheraghi–Shishikura PDF and the later author PDF are distinct: QG_N is (44) in v1 and (6.8) in the 2022 revision, both p. 62; D p. 6. EE §4.0.1 p. 9, §8 p. 18; KKL A/B p. 3, C p. 4, DKLP p. 71. TUN Cor. 3.2 p. 6. DKL [14] is an unavailable manuscript; GS primary text and Ldensity independent quotation not verified. Survey §4 read in HTML v1; PDF page UNVERIFIED.
 
-The previous atlas byte locks below are inherited provenance, not new independent downloads. `input_hashes.json` is the CI-generated SHA-256 manifest for local inputs and newly downloaded source bytes (UNVERIFIED when unreachable; hashes do not certify hypotheses). Network unavailable in the worker sandbox. CI fetches without storing third-party PDFs in git.
+CI committed the local input SHA-256 values: atlas.json `0f9bc28a8f5392e50f7b9e30a5b2c5ba8fc5f73b9c6d9400545cac0c883df284`; NOTE.md `1fc12e81238178eecea08757d7f8669ad1715d078e27f47e1fbda1395f80fde0`. The exact v1 CS PDF SHA-256 is `71c03718203b91ae81f5b7e138620a086cdf038b345cf689a24ed2932d72384f`; the survey HTML v1 SHA-256 is `95bce68c6fa2fce3b258c970f894765f7a60436006d496ee5d11fc40e9ff6f04`. All 16 prior primary PDF locks with URLs matched newly downloaded bytes. DKL and DKLP primary text remain UNVERIFIED, with no assigned digest. The previous atlas byte locks below are inherited provenance. `input_hashes.json` is the CI-generated SHA-256 manifest for local inputs and newly downloaded source bytes (UNVERIFIED when unreachable; hashes do not certify hypotheses). Network unavailable in the worker sandbox. CI fetches without storing third-party PDFs in git.
 
 - Y: SHA-256 `53c3ff3e06fc512cc6af809fc55cb374941d6eaada64bf8c98a291dc8179c2e9` — Theorem III, p. 469 (printed; PDF page 3)
 - L: SHA-256 `a286b6d3c874c803c1d56a669b5850e79c903190534aeab4840664b8e631bf16` — Rigidity Theorem and Cor. 1.1 p. 187; §2.5 pp. 198–199; Thm IV' p. 239
@@ -30,7 +30,6 @@ The previous atlas byte locks below are inherited provenance, not new independen
 - KKL: SHA-256 `4c08805384b473dc0e55d76491c52c9fbe7c027e6da301f2c365a170ed7d9140` — Theorems A,B p. 3; C p. 4; reference DKLP p. 71
 - LY: SHA-256 `52c67b9960e4dd632db2aa56a0763312eb0bf6a3b43b33ce98698962e2fdc429` — Theorem 1.1, Complex Bounds Theorem and Local Connectivity Theorem p. 1220
 - LvS: SHA-256 `b623bd34992cc3e821cef350c824df4b38478e6ac05436283902f5a5a17ecce7` — Main theorem p. 1 (preprint)
-- DKL: SHA-256 `8e5a59b111c0d841d5deb3ab7adb12b556896a2916c1e4cc8418fe41789335cd` — UNVERIFIED primary manuscript; survey §4.3 after Theorem 4.1 and ref. [14]
 - survey: SHA-256 `8ede4bf8ccfe25a4f325cad41cb729f08f8b1d0d7103ed6dbc89015b1ff8d904` — HTML v1 §4.3 after Thm 4.1; §4.4 Problem 4.3; §4.5 Problem 4.4; ref. [14]; PDF pagination UNVERIFIED
 - TUN: SHA-256 `1095be3a23d83cbc8acafe1c8ff7e24d787ffe791cdf8ea90b4f2b9686af8195` — Theorem 3.1 and Corollary 3.2, p. 6 (IMS PDF); Introduction p. 2
 
@@ -43,7 +42,7 @@ Let P_j be the absolute periods of successive maximal renormalizations and r_j=P
 - **B3/B4 (real):** conjugation fixes the real parameter and its canonical maximal renormalization; the straightening is real by uniqueness and conjugation equivariance. Induct on levels. At a real satellite step the dividing rotation is taken to its negative by conjugation; it is nonzero mod 1, so equals 1/2. Equivalently the only conjugation-invariant nontrivial primary limb is the 1/2 limb. Relative satellite period is 2 and digit is 2. Eventual S with finite primitive prefix is bounded (B3); recurrent real cannot have unbounded satellite digits (B4).
 - **B5 (QG_N):** use source signed CF, nearest integer digits at least 2. In the reduced t=a/q, |1/t|=q/|a| <= q and nearest integer b_1 <= q+1/2; hence b_1 <= q. The within-level inequalities make b_1 minimal, and the cross-level inequality makes the next first digit at least q² >= b_1². Thus min digit tends to infinity. A finite prefix cannot fix either contrary alternative. 
 - **B6 (real EE):** the dividing fixed point for a real infinitely renormalizable straightened quadratic is real; conjugation reverses the nontrivial dividing rotation so it is 1/2. E1 forces q=2; E3 forces p=q+b uniformly bounded. 
-- **B7 (real KKL):** in the source definition of parabolically bounded family, a finite collection of fixed templates generates 1/q-limb parabolic tails, in addition to finitely many isolated types. Distinct conjugate primary limbs cannot contain a common real infinitely renormalizable point (their wakes are disjoint); the only nontrivial invariant limb is 1/2. Thus for each fixed template only q=2 remains in the real family; finitely many types, bounded periods. B6/B7 use source-defined types, not arbitrary real near-parabolic geometry.
+- **B7 (real KKL):** in the source definition of parabolically bounded family, a finite collection of fixed templates generates 1/q-limb parabolic tails, in addition to finitely many isolated types. Distinct conjugate primary limbs cannot contain a common real infinitely renormalizable point (their wakes are disjoint); the only nontrivial invariant limb is 1/2. Indeed the actual tail images lie in the 1/(n+1) limbs, n>=q>=2 (KKL §3.1 p. 19), so none is real; at most the finite individual types can be real. Thus periods are bounded. B6/B7 use source-defined types, not arbitrary real near-parabolic geometry.
 
 The rule order in the JSON counts each row once even when multiple contradictions apply. These proofs address syntactic emptiness, not existence in the remaining rows.
 
@@ -78,7 +77,7 @@ python3 -B research/frontier/mlc_open_cells_20261126/verify.py --strict  # expec
 python3 -B research/frontier/mlc_open_cells_20261126/hash_inputs.py  # network; writes input_hashes.json
 ```
 
-Structural validation checks exact 62 IDs, duplicate keys, class/evidence tags and source locators; it cannot prove mathematical coverage or noncoverage. Strict mode deliberately does not pass on unresolved rows. 
+Structural validation checks exact 62 IDs, duplicate keys, class/evidence tags, source locators, and provenance manifest consistency; it cannot prove mathematical coverage or noncoverage. Strict mode deliberately does not pass on unresolved rows. 
 
 **Not established:** exhaustive literature coverage; nonemptiness of A or residual cells; a global C classification; minimal C classes; C witnesses for all fronts; proof validity of recent preprints; real/vein primary hypotheses; any new MLC case.
 
