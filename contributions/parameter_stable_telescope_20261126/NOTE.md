@@ -5,6 +5,8 @@ ai: OpenAI ChatGPT, GPT-6 Astra Pro
 human_review: none
 ---
 
+<a id="parameter-stable-telescope-20261126"></a>
+
 # Parameter stability of actual quadratic telescope collars
 
 Ledger statement being addressed:
@@ -17,7 +19,9 @@ Work in progress. This draft claims the parameter-stability subproblem: strength
 
 ## Evidence
 
-The proof development will be placed in the existing Mathlib Lean project under formalization/weighted/ and registered with code/contribute.py lean-add. Checkpoints will be committed to this pull request. The existing QuadraticUnivalentNeighborhood, TelescopeUnivalentCollars, and TelescopeConformalInverse modules provide the starting point.
+The first proof source is committed in QuadraticParameterUnivalence.lean. It gives the exact divided-difference factorization, derives nonvanishing from compact injectivity and critical avoidance, and uses compactness to construct common parameter and phase neighborhoods with a positive inverse-distance bound. Compilation and audit are pending.
+
+The proof development is placed in the existing Mathlib Lean project under formalization/weighted/ and registered with code/contribute.py lean-add. Checkpoints will be committed to this pull request. The existing QuadraticUnivalentNeighborhood, TelescopeUnivalentCollars, and TelescopeConformalInverse modules provide the starting point.
 
 ## Dependencies
 

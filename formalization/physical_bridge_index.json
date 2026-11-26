@@ -2773,5 +2773,21 @@
     "obligations": [
       "H4_RIGIDITY"
     ]
+  },
+  "parameter-stable-telescope-20261126": {
+    "guide": "contributions/parameter_stable_telescope_20261126/NOTE.md#parameter-stable-telescope-20261126",
+    "theorems": {
+      "formalization/weighted/QuadraticParameterUnivalence.lean": [
+        "orbit_sub_eq_mul_dividedDifference",
+        "orbitDividedDifference_diagonal_ne_zero",
+        "orbitDividedDifference_ne_zero",
+        "orbitDividedDifference_continuous",
+        "quadratic_parameter_univalent_neighborhood",
+        "quadratic_parameter_univalent_neighborhood_within"
+      ]
+    },
+    "obligations": [
+      "MAPPING_TELESCOPE"
+    ]
   }
 }

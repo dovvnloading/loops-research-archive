@@ -105,6 +105,7 @@ formalization/weighted/ProtectedCarrierLogic.lean	HULL
 formalization/weighted/QuadraticEscapeEndpoint.lean	QUADRATIC-ESCAPE
 formalization/weighted/QuadraticEscapeFullness.lean	METADATA
 formalization/weighted/QuadraticMultiplierArithmetic.lean	METADATA
+formalization/weighted/QuadraticParameterUnivalence.lean	CONSTRUCT
 formalization/weighted/QuadraticUnivalentNeighborhood.lean	CONSTRUCT
 formalization/weighted/SaturatedTelescope.lean	METADATA
 formalization/weighted/SpectralDominance.lean	CLONE EDGE
