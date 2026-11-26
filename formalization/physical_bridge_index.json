@@ -2587,6 +2587,28 @@
       "KKL_STATIONARY_SELECTED_SEPARATOR_REALIZATION"
     ]
   },
+  "prime-end-impression-decomposition-20261126": {
+    "guide": "contributions/prime_end_impression_decomposition_20261126/NOTE.md#prime-end-impression-decomposition-20261126",
+    "theorems": {
+      "formalization/weighted/PrimeEndImpressionDecomposition.lean": [
+        "exterior_impression_decomposition",
+        "restricted_impression_subset_full",
+        "restricted_impression_eq_full_of_interior",
+        "restricted_impression_nonempty",
+        "finite_landing_footprint_subsingleton",
+        "physical_end_common_impression",
+        "quadratic_exterior_closure_of_regular_closed",
+        "quadratic_end_exact_decomposition",
+        "quadratic_end_common_impression_of_sector_cover",
+        "restricted_impression_closed",
+        "finite_footprint_partition_contact",
+        "finite_footprint_overlap_chain"
+      ]
+    },
+    "obligations": [
+      "DIRECT_DECORATION_END_PRIME_END_COFINALITY"
+    ]
+  },
   "stationary-physical-itinerary-20261126": {
     "guide": "contributions/stationary_physical_itinerary_20261126/NOTE.md#stationary-physical-itinerary-20261126",
     "theorems": {
