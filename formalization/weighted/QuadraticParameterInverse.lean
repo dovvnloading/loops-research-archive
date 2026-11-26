@@ -1,6 +1,8 @@
 import QuadraticParameterUnivalence
 import Mathlib.Analysis.Calculus.InverseFunctionTheorem.Analytic
 
+set_option backward.isDefEq.respectTransparency false
+
 /-!
 # Joint analytic inverse families on a common parameter-target collar
 
@@ -53,7 +55,7 @@ private theorem skewStep_hasStrictFDerivAt (p : ℂ × ℂ) (hp : p.2 ≠ 0) :
       (ContinuousLinearMap.fst ℂ ℂ ℂ) p := hasStrictFDerivAt_fst
   have hsnd : HasStrictFDerivAt (fun q : ℂ × ℂ => q.2)
       (ContinuousLinearMap.snd ℂ ℂ ℂ) p := hasStrictFDerivAt_snd
-  convert hfst.prodMk ((hsnd.mul hsnd).add hfst) using 1
+  convert! hfst.prodMk ((hsnd.mul hsnd).add hfst) using 1
   · funext q
     simp only [skewStep, pow_two]
   · ext q <;> simp [stepLinearEquiv] <;> ring
@@ -67,7 +69,7 @@ theorem quadratic_skew_analytic (n : ℕ) (p : ℂ × ℂ) :
     induction k with
     | zero => exact analyticAt_snd
     | succ k ih => exact (ih.pow 2).add analyticAt_fst
-  exact analyticAt_fst.prodMk (horbit n)
+  exact analyticAt_fst.prod (horbit n)
 
 /-- Every critical-free physical orbit segment has an invertible
 joint derivative, including parameter variation. -/
@@ -125,7 +127,7 @@ theorem quadratic_skew_univalent_inverse (n : ℕ) (S : Set (ℂ × ℂ))
       he.mem_toOpenPartialHomeomorph_source (quadratic_skew_analytic n (G y))
       he.hasFDerivAt.fderiv
   have hag : AnalyticAt ℂ G (skewOrbit n (G y)) :=
-    hlinverse.congr (he.localInverse_unique hlocal).symm
+    hlinverse.congr (Filter.EventuallyEq.symm (he.localInverse_unique hlocal))
   rwa [hright hy] at hag
 
 /-- Compact-core data construct a common open target collar and a
@@ -155,7 +157,8 @@ theorem quadratic_compact_parameter_inverse_family
   let S := P₀ ×ˢ U
   have hSinj : InjOn (skewOrbit n) S := by
     intro p hp q hq he
-    have hec : p.1 = q.1 := congrArg Prod.fst he
+    have hec : p.1 = q.1 := by
+      simpa only [skewOrbit] using congrArg (fun r : ℂ × ℂ => r.1) he
     apply Prod.ext hec
     apply (hfamily q.1 hq.1).1 (subset_closure hp.2) (subset_closure hq.2)
     have hes := congrArg Prod.snd he
@@ -203,7 +206,7 @@ theorem quadratic_compact_parameter_inverse_family
   refine ⟨P, U, V, g, hP₀.inter hP₁, hcP, hU, hCU, hUc, hUW,
     hV, hKV, ?_, hbranch, hcore, ?_⟩
   · intro p hp
-    exact (hGanalytic (htarget p.1 p.2 hp.1 hp.2)).snd
+    exact (hGanalytic p (htarget p.1 p.2 hp.1 hp.2)).snd
   · intro d hd y hy
     have hx : g d y ∈ U := (hbranch d hd).1 hy
     have hnonzero : deriv (orbit d n) (g d y) ≠ 0 :=
@@ -278,7 +281,7 @@ theorem quadratic_inverse_family_compact_component
   have hcont : ContinuousOn (g d) K := by
     intro w hw
     have hi : AnalyticAt ℂ (fun z : ℂ => (d, z)) w :=
-      analyticAt_const.prodMk analyticAt_id
+      analyticAt_const.prod analyticAt_id
     have ha : AnalyticAt ℂ (g d) w := (hana (d, w) ⟨hd, hKV hw⟩).comp hi
     exact ha.continuousAt.continuousWithinAt
   exact quadratic_inverse_compact_component d n U K (g d) hU hK hKconn hcont
