@@ -17,6 +17,16 @@ SOURCES = "research/frontier/mlc_open_cells_20261126/sources.json"
 HASHES = "research/frontier/mlc_open_cells_20261126/input_hashes.json"
 AXES = ("regime", "period", "locus", "rotation", "refinement")
 EXPECTED_RULES = Counter(B1=14, B2=12, B3=6, B4=2, B5=4, B6=2, B7=2)
+ROW_FIELDS = {"atlas_class", "earlier_tests_false", "disposition",
+              "classification", "rule", "sources", "reason"}
+A_LIMIT = "Inherited provisional statement match only; no proof audit or new coverage promotion."
+U_LIMIT = ("No independently established whole-cell conclusion beyond the cited atlas predicate. "
+           "No nonemptiness, exhaustive publication search, proof audit or pointwise exclusion "
+           "of other results is inferred.")
+DOWNGRADED = {
+    "mixed_eventually_P/unbounded/nonreal/bounded_digits/ee",
+    "mixed_eventually_P/unbounded/nonreal/bounded_digits/kkl",
+}
 RULE_SOURCES = {
     "B1": ["K", "DL26"], "B2": ["CS2015", "DL26"],
     "B3": ["DL26", "CS2015"], "B4": ["DL26", "CS2015"],
@@ -86,6 +96,7 @@ def validate(atlas, old, sources, decisions, ranked):
     require(atlas["grid"]["semantics"].startswith("First true applicable predicate"),
             "predicate semantics")
     counts, rules = Counter(), Counter()
+    residuals, downgraded = set(), set()
     for key, cell in targets.items():
         row, prior = decisions[key], old[key]
         require(key == "/".join(cell[k] for k in AXES), f"{key}: malformed ID")
@@ -95,6 +106,8 @@ def validate(atlas, old, sources, decisions, ranked):
         require(bool(row["reason"]) and bool(row["sources"]) and
                 set(row["sources"]) <= set(sources), f"{key}: rationale/source")
         b = exclusion(cell)
+        require(set(row) == ROW_FIELDS | (set() if b else {"limit"}),
+                f"{key}: unexpected decision fields")
         if b:
             require(prior["class"] == "B" and prior["verification"] == "PROVED"
                     and prior["rule"] == b, f"{key}: independent exclusion disagrees")
@@ -109,20 +122,23 @@ def validate(atlas, old, sources, decisions, ranked):
                     row["classification"] == "PREPRINT-ONLY" and row["rule"] is None,
                     f"{key}: preprint match scope")
             require(row["sources"] == prior["sources"] and
-                    row["reason"] == prior["hypothesis"] and bool(row["limit"]),
-                    f"{key}: inherited evidence changed")
+                    row["reason"] == prior["hypothesis"] and row["limit"] == A_LIMIT,
+                    f"{key}: inherited evidence/limit changed")
         else:
             require(prior["class"] is None and prior["verification"] == "UNVERIFIED"
                     and row["disposition"] == "UNVERIFIED"
                     and row["classification"] is None and row["rule"] is None,
                     f"{key}: unsupported promotion")
             require(row["sources"] == prior["sources"] and
-                    row["reason"] == prior["hypothesis"] and bool(row["limit"]),
-                    f"{key}: inherited blocker changed")
+                    row["reason"] == prior["hypothesis"] and row["limit"] == U_LIMIT,
+                    f"{key}: inherited blocker/limit changed")
+            (residuals if cell["refinement"] == "residual" else downgraded).add(key)
         counts[row["disposition"]] += 1
     require(rules == EXPECTED_RULES, f"wrong exclusion counts {rules}")
     require(counts == Counter(EMPTY=42, STATEMENT_ONLY=4, UNVERIFIED=16),
             f"wrong dispositions {counts}")
+    require(len(residuals) == 14 and downgraded == DOWNGRADED,
+            "UNVERIFIED must split into 14 residuals and two specified finite-prefix downgrades")
     eligible = [k for k, v in decisions.items() if v["classification"] == "CERTIFIED-OPEN"]
     require(eligible == [] and ranked == [], "no rankable certified whole cells")
     return counts, rules
@@ -144,6 +160,9 @@ def hostile(atlas, old, sources, decisions, ranked):
         (u, "classification", "CERTIFIED-OPEN"),
         (u, "classification", "COVERED"),
         (a, "classification", "COVERED"),
+        (u, "limit", "This row is certified open."),
+        (a, "limit", "Proof verified."),
+        (b, "extra_status", "COVERED"),
     ]
     cases = []
     for key, field, value in mutations:
@@ -226,6 +245,7 @@ def main():
     hostile(atlas, old, sources, decisions, ranked)
     print("Dispositions:", dict(sorted(counts.items())))
     print("Exclusions:", dict(sorted(rules.items())))
+    print("UNVERIFIED split: 14 residuals + 2 finite-prefix downgrades")
     print("CERTIFIED-OPEN whole cells: 0; ranked list: []")
     if args.check_downloads:
         verify_downloads(lock, sources, manifest)
