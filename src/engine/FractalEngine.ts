@@ -1,14 +1,14 @@
 import type { EngineHooks, EngineState, Palette, SceneId } from '../types';
-import { clearanceAt, dolly, eye, flightStep, iterationBudget, volumeScene, volumeMode } from './navigation';
-import { lightDirection, normalizeControls, projection, toneColor } from '../lib/controls';
-import { DeepRenderer } from './DeepRenderer';
+import { clearanceAt, dolly, eye, flightStep, iterationBudget, volumeScene, volumeMode } from './navigation.ts';
+import { lightDirection, normalizeControls, projection, toneColor } from '../lib/controls.ts';
+import { DeepRenderer } from './DeepRenderer.ts';
 import {
   complexFragment,
   fullscreenVertex,
   landscapeFragment,
   landscapeVertex,
   volumeFragment,
-} from './shaders';
+} from './shaders.ts';
 
 /** A deliberate floor: double-single rendering is not arbitrary precision. */
 export const MIN_COMPLEX_SCALE = 1e-7;
@@ -49,10 +49,14 @@ export class FractalEngine {
   private buffers: WebGLBuffer[] = [];
   private landscapeCount = 0;
   private resizeObserver: ResizeObserver;
+  private intersectionObserver: IntersectionObserver | null = null;
+  private inViewport = true;
   private abort = new AbortController();
   private pointers = new Map<number, Point>();
   private pointerTravel = 0;
   private raf = 0;
+  private cpuRaf = 0;
+  private refinementTimer: ReturnType<typeof setTimeout> | undefined;
   private disposed = false;
   private lost = false;
   private dirty = true;
@@ -74,32 +78,55 @@ export class FractalEngine {
   private deepStatus='';
   private deepTimer:ReturnType<typeof setTimeout>|undefined;
   private deepRevision=0;
+  private lastDeepStats=0;
+  private softwareGpu=false;
 
   constructor(canvas: HTMLCanvasElement, state: EngineState, hooks: EngineHooks = {}, deepCanvas?:HTMLCanvasElement) {
     this.canvas = canvas;
     this.state = this.sanitize(state);
     this.hooks = hooks;
-    if(deepCanvas)this.deep=new DeepRenderer(deepCanvas,status=>{this.deepStatus=status;},message=>{this.deepStatus='failed';this.hooks.onError?.('Float64 renderer: '+message);});
+    if(deepCanvas)this.deep=new DeepRenderer(deepCanvas,status=>{
+      this.deepStatus=status;
+      if(performance.now()-this.lastDeepStats>120||/ready|settled/.test(status)){this.lastDeepStats=performance.now();this.emitStats(0);}
+    },message=>{this.deepStatus='failed';this.emitStats(0);this.hooks.onError?.('Float64 renderer: '+message);});
     canvas.style.touchAction = 'none';
     canvas.setAttribute('aria-label', 'Interactive fractal viewport. Drag to orbit or look around. Scroll toward the cursor to fly. WASD/QE move in 3D. Shift-click the complex plane to choose a Julia parameter.');
     if (!canvas.hasAttribute('tabindex')) canvas.tabIndex = 0;
-    this.gl = canvas.getContext('webgl2', {
-      alpha: false, antialias: false, depth: true,
-      powerPreference: 'high-performance', preserveDrawingBuffer: true,
-    });
+    try {
+      this.gl = canvas.getContext('webgl2', {
+        alpha: false, antialias: false, depth: true,
+        powerPreference: 'high-performance', preserveDrawingBuffer: true,
+      });
+    } catch { this.gl = null; }
     if (this.gl) {
       try { this.initializeGpu(); }
-      catch (error) { this.lost = true; this.hooks.onError?.(`The GPU renderer could not start: ${String(error)}`); }
+      catch (error) { this.releaseGpu(); this.lost = true; this.hooks.onError?.(`The GPU renderer could not start. ${this.deep && volumeScene(this.state.scene) ? 'Using the Float64 volume renderer. ' : ''}${String(error)}`); }
     } else {
-      this.cpu = canvas.getContext('2d');
-      this.state.scene = 'mandelbrot';
-      this.state.iterations = Math.max(128, this.state.iterations);
-      this.hooks.onChange?.({ scene: 'mandelbrot', iterations: this.state.iterations, autoRotate: false });
-      this.hooks.onError?.('WebGL2 is unavailable. A CPU Mandelbrot view is available; 3D requires WebGL2.');
+      try { this.cpu = canvas.getContext('2d'); } catch { this.cpu = null; }
+      this.state.autoRotate=false;
+      if(this.deep&&volumeScene(this.state.scene)) {
+        this.hooks.onChange?.({autoRotate:false});
+        this.hooks.onError?.('WebGL2 is unavailable. The Float64 worker is rendering this 3D scene; refinement may take longer.');
+      } else {
+        this.state.scene = planar(this.state.scene) ? this.state.scene : 'mandelbrot';
+        this.state.iterations = Math.max(128, this.state.iterations);
+        this.hooks.onChange?.({ scene: this.state.scene, iterations: this.state.iterations, autoRotate: false });
+        this.hooks.onError?.(this.cpu ? 'WebGL2 is unavailable. A CPU Mandelbrot view is available.' : 'This browser could not create a drawing canvas. Try another browser or enable graphics rendering.');
+      }
     }
     this.bindInput();
     this.resizeObserver = new ResizeObserver(() => {this.restartRefinement();this.resize();});
     this.resizeObserver.observe(canvas);
+    if(typeof IntersectionObserver!=='undefined') {
+      this.intersectionObserver=new IntersectionObserver(entries=>{
+        const visible=entries.some(entry=>entry.isIntersecting);
+        if(visible===this.inViewport)return;
+        this.inViewport=visible;
+        if(!visible)this.pauseRendering();
+        else {this.lastFrame=0;this.dirty=true;this.schedule();}
+      });
+      this.intersectionObserver.observe(canvas);
+    }
     this.resize();
     this.emitStats(0);
     this.schedule();
@@ -109,15 +136,15 @@ export class FractalEngine {
     if (this.disposed) return;
     const previous = this.state;
     this.state = this.sanitize(state);
-    if (this.cpu && (!planar(this.state.scene) || this.state.autoRotate)) {
-      this.state.scene = planar(this.state.scene) ? this.state.scene : 'mandelbrot';
-      this.state.iterations = Math.max(128, this.state.iterations);
+    if ((!this.gl || this.cpu) && ((!planar(this.state.scene) && !(this.deep && volumeScene(this.state.scene))) || this.state.autoRotate)) {
+      this.state.scene = planar(this.state.scene) || (this.deep && volumeScene(this.state.scene)) ? this.state.scene : 'mandelbrot';
+      if(planar(this.state.scene))this.state.iterations = Math.max(128, this.state.iterations);
       this.state.autoRotate = false;
       this.hooks.onChange?.({ scene: this.state.scene, iterations: this.state.iterations, autoRotate: false });
     }
     this.restartRefinement();
     if (previous.scene !== this.state.scene) {
-      this.autoScale = 0.78;
+      this.autoScale = this.softwareGpu ? 0.5 : 0.78;
       this.slowFrames = 0;
       this.resize();
     } else if (previous.quality !== this.state.quality) this.resize();
@@ -128,6 +155,7 @@ export class FractalEngine {
   }
 
   private restartRefinement() {
+    clearTimeout(this.refinementTimer);
     this.deepRevision++;clearTimeout(this.deepTimer);this.deep?.hide();this.deepStatus='stale';
     this.lastInteraction=performance.now();
     if (volumeScene(this.state.scene) && this.refinement!==0) {this.refinement=0;this.resize();}
@@ -147,9 +175,9 @@ export class FractalEngine {
     if (this.disposed) return;
     const bounds = this.canvas.getBoundingClientRect();
     const quality = this.state.quality;
-    const base = quality === 'high' ? 1 : quality === 'balanced' ? 0.8 : quality === 'low' ? 0.52 : volumeScene(this.state.scene)&&this.refinement===2 ? Math.max(.78,this.autoScale) : this.autoScale;
+    const base = quality === 'high' ? 1 : quality === 'balanced' ? 0.8 : quality === 'low' ? 0.52 : volumeScene(this.state.scene)&&this.refinement===2 ? Math.min(1,this.autoScale*1.22) : this.autoScale;
     let ratio = Math.min(window.devicePixelRatio || 1, quality === 'high' ? 2 : 1.5) * base;
-    const maxPixels = quality === 'high' ? 2_400_000 : quality === 'low' ? 350_000 : 1_000_000;
+    const maxPixels = quality === 'high' ? 2_400_000 : quality === 'low' || (quality==='auto'&&this.softwareGpu) ? 350_000 : 1_000_000;
     // Render interaction previews first; recover spatial detail after input stops.
     if(volumeScene(this.state.scene)) ratio*=this.refinement===0?.55:this.refinement===1?.8:1;
     const pixels = bounds.width * bounds.height * ratio * ratio;
@@ -177,11 +205,22 @@ export class FractalEngine {
     this.disposed = true;
     cancelAnimationFrame(this.raf);
     this.raf = 0;
+    cancelAnimationFrame(this.cpuRaf);this.cpuRaf=0;
+    clearTimeout(this.refinementTimer);
     this.cpuGeneration++;
     this.abort.abort();
     this.resizeObserver.disconnect();
+    this.intersectionObserver?.disconnect();
     clearTimeout(this.deepTimer);this.deep?.destroy();
     this.releaseGpu();
+    this.gl?.getExtension('WEBGL_lose_context')?.loseContext();
+  }
+
+  private pauseRendering() {
+    cancelAnimationFrame(this.raf);this.raf=0;
+    cancelAnimationFrame(this.cpuRaf);this.cpuRaf=0;this.cpuGeneration++;
+    clearTimeout(this.refinementTimer);clearTimeout(this.deepTimer);this.deepRevision++;
+    this.deep?.cancel();this.deepStatus='stale';
   }
 
   private sanitize(state: EngineState): EngineState {
@@ -208,17 +247,23 @@ export class FractalEngine {
 
   private initializeGpu() {
     const gl = this.gl!;
-    this.programs = {
-      volume: this.createProgram(fullscreenVertex, volumeFragment),
-      complex: this.createProgram(fullscreenVertex, complexFragment),
-      landscape: this.createProgram(landscapeVertex, landscapeFragment),
-    };
+    const rendererInfo=gl.getExtension('WEBGL_debug_renderer_info');
+    this.softwareGpu=!!rendererInfo&&/swiftshader|llvmpipe|software/i.test(String(gl.getParameter(rendererInfo.UNMASKED_RENDERER_WEBGL)));
+    if(this.softwareGpu)this.autoScale=Math.min(this.autoScale,.5);
+    this.programs = {};
     this.fullscreenVao = gl.createVertexArray();
     this.landscapeVao = gl.createVertexArray();
     this.buffers = [];
-    this.createLandscapeMesh();
+    if(this.state.scene==='landscape')this.createLandscapeMesh();
     gl.disable(gl.CULL_FACE);
     this.lost = false;
+  }
+
+  private ensureProgram(kind:'volume'|'complex'|'landscape'):Program {
+    const existing=this.programs[kind];if(existing)return existing;
+    const program=kind==='landscape'?this.createProgram(landscapeVertex,landscapeFragment):this.createProgram(fullscreenVertex,kind==='complex'?complexFragment:volumeFragment);
+    this.programs[kind]=program;
+    return program;
   }
 
   private createLandscapeMesh() {
@@ -268,14 +313,15 @@ export class FractalEngine {
       return shader;
     };
     const vertex = compile(gl.VERTEX_SHADER, vertexSource);
-    const fragment = compile(gl.FRAGMENT_SHADER, fragmentSource);
-    const program = gl.createProgram();
-    if (!program) throw new Error('Unable to allocate a GPU program.');
-    gl.attachShader(program, vertex);
-    gl.attachShader(program, fragment);
-    gl.linkProgram(program);
-    gl.deleteShader(vertex);
-    gl.deleteShader(fragment);
+    let fragment:WebGLShader|null=null;
+    let program:WebGLProgram|null=null;
+    try {
+      fragment=compile(gl.FRAGMENT_SHADER, fragmentSource);
+      program=gl.createProgram();
+      if(!program)throw new Error('Unable to allocate a GPU program.');
+      gl.attachShader(program, vertex);gl.attachShader(program, fragment);gl.linkProgram(program);
+    } catch(error) {if(program)gl.deleteProgram(program);throw error;}
+    finally {gl.deleteShader(vertex);if(fragment)gl.deleteShader(fragment);}
     if (!gl.getProgramParameter(program, gl.LINK_STATUS)) {
       const log = gl.getProgramInfoLog(program);
       gl.deleteProgram(program);
@@ -294,6 +340,7 @@ export class FractalEngine {
     gl.deleteVertexArray(this.landscapeVao);
     this.programs = {};
     this.buffers = [];
+    this.fullscreenVao=null;this.landscapeVao=null;
   }
 
   /** Fit portrait viewports optically, without moving the camera in world space. */
@@ -312,7 +359,7 @@ export class FractalEngine {
     this.deep?.render(s,aspect,true);
     // Let the coarse pass finish rather than cancelling it on a timer. Start
     // the final pass once the preview has completed and the view is idle.
-    const refine=()=>{if(this.disposed||revision!==this.deepRevision||!this.deepActive)return;
+    const refine=()=>{if(this.disposed||document.hidden||!this.inViewport||revision!==this.deepRevision||!this.deepActive)return;
       if(this.deep?.ready){this.deep.render(s,aspect,false);return;}
       if(this.deepStatus.includes('failed'))return;
       this.deepTimer=setTimeout(refine,250);
@@ -325,8 +372,7 @@ export class FractalEngine {
     if (!gl || this.lost) return;
     const s = this.state;
     const kind = planar(s.scene) ? 'complex' : s.scene === 'landscape' ? 'landscape' : 'volume';
-    const target = this.programs[kind];
-    if (!target) return;
+    const target = this.ensureProgram(kind);
     const u = target.uniforms;
     gl.viewport(0, 0, this.canvas.width, this.canvas.height);
     gl.useProgram(target.program);
@@ -385,15 +431,16 @@ export class FractalEngine {
   }
 
   private schedule = () => {
-    if (!this.raf && !this.disposed && !document.hidden) this.raf = requestAnimationFrame(this.frame);
+    if (!this.raf && !this.disposed && !document.hidden && this.inViewport) this.raf = requestAnimationFrame(this.frame);
   };
 
   private frame = (time: number) => {
     this.raf = 0;
-    if (this.disposed || document.hidden) return;
+    if (this.disposed || document.hidden || !this.inViewport) return;
     const delta = this.lastFrame ? Math.min(150, time - this.lastFrame) : 16;
     this.lastFrame = time;
-    const animated = this.state.autoRotate && this.state.scene !== 'mandelbrot' && !this.cpu && !this.lost;
+    const animated = this.state.autoRotate && this.state.scene !== 'mandelbrot' && !!this.gl && !this.cpu && !this.lost;
+    const previousRefinement=this.refinement;
     if(volumeScene(this.state.scene)&&!animated&&!this.deepActive){
       const idle=time-this.lastInteraction;
       const next=idle>650?2:idle>180?1:0;
@@ -413,16 +460,23 @@ export class FractalEngine {
     }
     // A slow preceding draw also triggers adjustment when the user has stopped
     // dragging. Static scenes should not stay at an unusable initial resolution.
-    if (!this.deepActive && this.state.quality === 'auto' && (!volumeScene(this.state.scene)||this.refinement===0) && this.lastWasRendered && delta > 80 && this.autoScale > 0.34) {
+    if (!this.deepActive && this.state.quality === 'auto' && (!volumeScene(this.state.scene)||previousRefinement===0) && this.lastWasRendered && delta > 80 && this.autoScale > 0.34) {
       this.autoScale = Math.max(0.34, this.autoScale * Math.sqrt(50 / delta));
       this.resize();
     }
-    const rendered = this.dirty && !this.lost;
+    const nextDeep=!!this.deep&&volumeScene(this.state.scene)&&(volumeMode(this.state)==='float64'||!this.gl||this.lost);
+    const rendered = this.dirty && (!this.lost || nextDeep);
     if (rendered) {
-      const nextDeep=!!this.deep&&volumeScene(this.state.scene)&&volumeMode(this.state)==='float64';
       if(nextDeep!==this.deepActive){this.deepActive=nextDeep;clearTimeout(this.deepTimer);this.deep?.hide();}
       if(nextDeep){if(!this.deepStatus||this.deepStatus==='stale')this.renderVolume64();}
-      else if (this.gl) this.renderGpu();
+      else if (this.gl) {
+        try {this.renderGpu();}
+        catch(error){
+          this.lost=true;this.releaseGpu();
+          this.hooks.onError?.(`The GPU renderer stopped. ${this.deep&&volumeScene(this.state.scene)?'Using the Float64 volume renderer. ':''}${String(error)}`);
+          this.deepStatus='stale';this.dirty=true;this.schedule();return;
+        }
+      }
       else if (this.cpu) this.renderCpu();
       this.renderedFrames++;
       this.dirty = false;
@@ -436,13 +490,20 @@ export class FractalEngine {
     }
     this.lastWasRendered = rendered;
     const elapsed = time - this.statsStart;
-    if (elapsed > 1100) {
+    if (elapsed > 1100 || (rendered && !animated && this.refinement === 2)) {
       this.lastStatsFps = Math.round(this.renderedFrames * 1000 / elapsed);
       this.emitStats(this.lastStatsFps);
       this.statsStart = time;
       this.renderedFrames = 0;
     }
-    this.schedule();
+    // A settled scene should use no animation loop. One following frame measures
+    // interaction cost; timed wake-ups handle the two refinement stages.
+    if(animated || this.dirty || (rendered && this.state.quality==='auto' && !this.deepActive)) this.schedule();
+    if(volumeScene(this.state.scene)&&!animated&&!this.deepActive&&this.refinement<2&&!this.lost) {
+      clearTimeout(this.refinementTimer);
+      const delay=(this.refinement===0?181:651)-(time-this.lastInteraction);
+      this.refinementTimer=setTimeout(this.schedule,Math.max(1,delay));
+    }
   };
 
   private emitStats(fps: number) {
@@ -451,7 +512,7 @@ export class FractalEngine {
       resolution: this.deepActive&&this.deep?this.deep.size:`${this.canvas.width} × ${this.canvas.height}`,
       precision: this.deepActive?'Float64 · numerical raymarch':this.cpu ? 'Float64 · CPU' : planar(this.state.scene) ? 'Double-single · finite precision' : this.state.scene === 'landscape' ? 'Float32 · height field' : 'Float32 · adaptive distance estimate',
       ...(volumeScene(this.state.scene)?{iterations:this.effectiveIterations,clearance:this.clearance,refinement:this.deepActive?this.deepStatus:['Preview','Refining','Settled'][this.refinement]}:{}),
-      renderer: this.deepActive?'CPU worker · Float64':this.cpu ? 'CPU · 2D fallback' : this.lost ? 'GPU unavailable' : 'WebGL2 · custom GLSL',
+      renderer: this.deepActive?'CPU worker · Float64':this.cpu ? 'CPU · 2D fallback' : this.lost ? 'GPU unavailable' : this.softwareGpu?'WebGL2 · software':'WebGL2 · custom GLSL',
     });
   }
 
@@ -573,8 +634,11 @@ export class FractalEngine {
     c.addEventListener('webglcontextlost', e => {
       e.preventDefault();
       this.lost = true;
-      this.hooks.onError?.('The graphics context was interrupted. Waiting for the browser to restore it. Your scene is preserved.');
+      this.dirty=true;
+      this.deepStatus='stale';
+      this.hooks.onError?.(this.deep&&volumeScene(this.state.scene)?'The graphics context was interrupted. The Float64 worker is rendering the preserved 3D scene.':'The graphics context was interrupted. Waiting for the browser to restore it. Your scene is preserved.');
       this.emitStats(0);
+      this.schedule();
     }, { signal });
     c.addEventListener('webglcontextrestored', () => {
       try {
@@ -585,7 +649,7 @@ export class FractalEngine {
       } catch (error) { this.hooks.onError?.(`Could not restore the graphics context: ${String(error)}`); }
     }, { signal });
     document.addEventListener('visibilitychange', () => {
-      if (document.hidden) { cancelAnimationFrame(this.raf); this.raf = 0; }
+      if (document.hidden) this.pauseRendering();
       else { this.lastFrame = 0; this.statsStart = performance.now(); this.renderedFrames = 0; this.dirty = true; this.schedule(); }
     }, { signal });
   }
@@ -609,7 +673,8 @@ export class FractalEngine {
     const [dark,bright] = planeColors[s.palette];
     let row = 0;
     const chunk = () => {
-      if (generation !== this.cpuGeneration || this.disposed) return;
+      this.cpuRaf=0;
+      if (generation !== this.cpuGeneration || this.disposed || document.hidden || !this.inViewport) return;
       const end = Math.min(height, row + 10);
       for (; row < end; row++) for (let col = 0; col < width; col++) {
         const x = s.center[0] + (col - width / 2) / height * s.scale;
@@ -650,8 +715,10 @@ export class FractalEngine {
         image.data[q + 3] = 255;
       }
       ctx.putImageData(image, 0, 0, 0, Math.max(0, row - 10), width, Math.min(10, row));
-      if (row < height) requestAnimationFrame(chunk);
+      if (row < height) this.cpuRaf=requestAnimationFrame(chunk);
+      else this.emitStats(0);
     };
-    requestAnimationFrame(chunk);
+    cancelAnimationFrame(this.cpuRaf);
+    this.cpuRaf=requestAnimationFrame(chunk);
   }
 }

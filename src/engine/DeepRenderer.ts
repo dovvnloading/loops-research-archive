@@ -6,15 +6,19 @@ export class DeepRenderer {
   private worker:Worker|null=null;
   private generation=0;
   private complete=false;
+  private hasImage=false;
   private stage=document.createElement('canvas');
   private disposed=false;
-  constructor(private canvas:HTMLCanvasElement,private onUpdate:(status:string)=>void,private onError:(message:string)=>void){}
+  private canvas:HTMLCanvasElement;
+  private onUpdate:(status:string)=>void;
+  private onError:(message:string)=>void;
+  constructor(canvas:HTMLCanvasElement,onUpdate:(status:string)=>void,onError:(message:string)=>void){this.canvas=canvas;this.onUpdate=onUpdate;this.onError=onError;}
   get ready(){return this.complete;}
   get size(){return this.canvas.width+' × '+this.canvas.height;}
   hide(){this.cancel();this.canvas.hidden=true;this.complete=false;}
   cancel(){this.generation++;this.worker?.terminate();this.worker=null;}
   destroy(){this.disposed=true;this.hide();}
-  capture(){return this.complete?this.canvas.toDataURL('image/png'):'';}
+  capture(){return this.hasImage&&!this.canvas.hidden?this.canvas.toDataURL('image/png'):'';}
   render(state:EngineState,aspect:number,preview:boolean){
     if(this.disposed)return;
     this.cancel();const generation=this.generation;this.complete=false;
@@ -23,7 +27,15 @@ export class DeepRenderer {
     this.stage.width=width;this.stage.height=height;
     const ctx=this.stage.getContext('2d');if(!ctx){this.onError('Float64 canvas unavailable');return;}
     const display=preview?this.canvas.getContext('2d'):null;
-    if(preview){this.canvas.width=width;this.canvas.height=height;if(display){display.fillStyle='#10181a';display.fillRect(0,0,width,height);}this.canvas.hidden=false;}
+    if(preview){
+      if(this.canvas.width!==width||this.canvas.height!==height){
+        const previous=this.hasImage?document.createElement('canvas'):null;
+        if(previous){previous.width=this.canvas.width;previous.height=this.canvas.height;previous.getContext('2d')?.drawImage(this.canvas,0,0);}
+        this.canvas.width=width;this.canvas.height=height;
+        if(display){display.fillStyle='#080c12';display.fillRect(0,0,width,height);if(previous)display.drawImage(previous,0,0,width,height);}
+      }else if(!this.hasImage&&display){display.fillStyle='#080c12';display.fillRect(0,0,width,height);}
+      this.canvas.hidden=false;
+    }
     const frame:VolumeFrame={state,width,height,preview};
     let worker:Worker;
     try{worker=new Worker(new URL('../workers/volume64.worker.ts',import.meta.url),{type:'module'});}
@@ -34,17 +46,17 @@ export class DeepRenderer {
       const m=event.data;
       if(m.type==='strip'){
         const image=new ImageData(new Uint8ClampedArray(m.buffer),m.width,m.rows);
-        ctx.putImageData(image,0,m.y);display?.putImageData(image,0,m.y);
+        ctx.putImageData(image,0,m.y);display?.putImageData(image,0,m.y);if(display)this.hasImage=true;
         this.onUpdate((preview?'Preview ':'Refining ')+Math.round(100*m.completedRows/height)+'%');
       }else if(m.type==='complete'){
         this.canvas.width=width;this.canvas.height=height;
         this.canvas.getContext('2d')?.drawImage(this.stage,0,0);
-        this.canvas.hidden=false;this.complete=true;
+        this.canvas.hidden=false;this.complete=true;this.hasImage=true;
         this.onUpdate(preview?'Float64 preview ready':'Float64 settled');
         worker.terminate();if(this.worker===worker)this.worker=null;
-      }else if(m.type==='error'){worker.terminate();this.onError(m.message);}
+      }else if(m.type==='error'){worker.terminate();if(this.worker===worker)this.worker=null;this.onError(m.message);}
     };
-    worker.onerror=event=>{if(generation===this.generation)this.onError(event.message||'Float64 worker failed');worker.terminate();};
+    worker.onerror=event=>{if(generation===this.generation)this.onError(event.message||'Float64 worker failed');worker.terminate();if(this.worker===worker)this.worker=null;};
     worker.postMessage(frame);
   }
 }
