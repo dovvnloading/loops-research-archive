@@ -1,0 +1,28 @@
+name: Stationary non-LC predecessor lift
+on:
+  push:
+    branches: ['agent/stationary-nonlc-predecessor-lift-20261126']
+  pull_request:
+    paths:
+      - 'research/independent_audits/stationary_nonlc_predecessor_lift_20261126/**'
+      - '.github/workflows/stationary-nonlc-predecessor-lift-20261126.yml'
+      - 'formalization/physical_bridge_sources.tsv'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  exact-physical-regression:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065
+        with:
+          python-version: '3.12'
+      - name: Exact physical orbit, interval and complex disk certificate
+        run: python -B research/independent_audits/stationary_nonlc_predecessor_lift_20261126/check_physical_orbit.py
+      - name: Check source registration
+        run: python -B code/verify_physical_bridges.py
+      - name: Verify no tracked modifications
+        run: git diff --exit-code
