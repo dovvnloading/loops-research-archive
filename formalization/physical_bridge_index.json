@@ -1847,5 +1847,37 @@
     "obligations": [
       "H4_RIGIDITY"
     ]
+  },
+  "critical-transversality": {
+    "guide": "formalization/PHYSICAL_BRIDGES_CONTRACTS.md#critical-transversality",
+    "theorems": {
+      "formalization/weighted/QuadraticCriticalTransversality.lean": [
+        "orbit_hasDerivAt",
+        "orbitPoly_aeval",
+        "orbitPoly_monic_degree",
+        "orbitPoly_degree_strictMono",
+        "integral_of_collision",
+        "orbit_integral",
+        "slope_integral",
+        "integral_not_half",
+        "orbit_slope_parity",
+        "signed_relation_transverse",
+        "center_transverse",
+        "first_collision_transverse",
+        "first_collision_deriv_ne_zero",
+        "signed_relation_unit_mod_two",
+        "first_collision_deriv_factor_unit",
+        "returnOrbit_eq_iterate",
+        "returnOrbit_orbit",
+        "returnTangent_orbit",
+        "returnMultiplier_hasDerivAt",
+        "returnTangent_hasDerivAt",
+        "returnTangent_sub",
+        "landing_motion_identity",
+        "normalized_chart_entrance_hasDerivAt",
+        "normalized_entrance_collision_identity",
+        "normalized_entrance_deriv_ne_zero"
+      ]
+    }
   }
 }
