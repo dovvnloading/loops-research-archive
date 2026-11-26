@@ -416,3 +416,9 @@ formalization/weighted/QuadraticEnlargementDegree.lean	METADATA
 formalization/weighted/QuadraticEscapeHolder.lean	QUADRATIC-ESCAPE
 formalization/weighted/QuadraticEscapeRegularity.lean	QUADRATIC-ESCAPE
 formalization/weighted/QuadraticEscapeSharpness.lean	QUADRATIC-ESCAPE
+formalization/weighted/CompactBinaryCoding.lean	METADATA
+formalization/weighted/ComponentDoubling.lean	METADATA
+formalization/weighted/FiniteComponentTree.lean	METADATA
+formalization/weighted/QuadraticEscapeBranches.lean	METADATA
+formalization/weighted/QuadraticEscapeCoding.lean	METADATA
+formalization/weighted/QuadraticEscapeComponents.lean	METADATA
