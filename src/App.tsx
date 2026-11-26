@@ -128,6 +128,7 @@ const safeWorkspace = (): StudioWorkspace => {
     formal: 'research',
     ledger: 'research',
     problems: 'research',
+    contribute: 'research',
   };
   return NAV.some((n) => n.id === hash) ? (hash as StudioWorkspace) : (aliases[hash] ?? 'explore');
 };

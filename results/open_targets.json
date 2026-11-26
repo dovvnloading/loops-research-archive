@@ -1,0 +1,2108 @@
+{
+  "schema": "loops-open-targets-v1",
+  "generated_by": "python code/contribute.py targets",
+  "note": "Derived from ledger.json. Ready means every prerequisite is proved or imported. Downstream counts obligations that depend on the row through deps or hypotheses.",
+  "counts": {
+    "open": 115,
+    "ready": 20
+  },
+  "ready": [
+    {
+      "id": "KKL_STATIONARY_NONLC_SELECTED_GEOMETRIC_CONTINUUM_LIFT",
+      "downstream": 56,
+      "statement": "For KKL’s exact non-locally-connected natural projection, prove the geometric two-level lift through the required horizon: pi^(-1)(L_(0,com)^n)=L_0^n for the selected predecessors, and pi(K_i) is contained in the corresponding geometric model small-Julia continuum bar K_i. Since model incidence gives bar K_i subset L_(0,com)^n, these clauses force K_i subset L_0^n. Record separately failure of the selected full-preimage equality and failure of physical/model continuum correspondence; an abstract finite-tree vertex is not a point of the geometric model.",
+      "prerequisites": [
+        "KKL_NATIVE_TERMINAL_HUBBARD_TREE",
+        "KKL_STATIONARY_MODEL_TERMINAL_SHEET_INCIDENCE",
+        "KKL_STATIONARY_SELECTED_PREDECESSOR_CHAIN"
+      ],
+      "open_prerequisites": [],
+      "evidence": "kkl_stationary_n2_selected_predecessor_endpoint.md#corollary-44-model-incidence-and-exact-non-lc-residue",
+      "evidence_path": "research/mlc_unified/kkl_stationary_n2_selected_predecessor_endpoint.md"
+    },
+    {
+      "id": "KKL_STATIONARY_PROOF_USED_PREDECESSOR_SELECTION",
+      "downstream": 53,
+      "statement": "Prove conditional proof-used compatibility through H=b+2: every independently supplied depth-n proper restriction whose deep endpoint follows the declared central small-Julia parent itinerary lands in the canonical Q_0-selected component L_0^n and carries its actual-component address w_n. This is a universal compatibility assertion only; it does not construct the restriction, its endpoint occurrence, or its host. Those existential clauses remain in the incoming-window anchor, so no occurrence is assumed circularly.",
+      "prerequisites": [
+        "KKL_STATIONARY_SELECTED_PREDECESSOR_CHAIN",
+        "KKL_STATIONARY_SELECTED_SMALL_JULIA_PREDECESSOR_CHAIN"
+      ],
+      "open_prerequisites": [],
+      "evidence": "kkl_stationary_n2_selected_predecessor_endpoint.md#7-minimal-gate-sufficient-certificate-and-endpoint-coherence",
+      "evidence_path": "research/mlc_unified/kkl_stationary_n2_selected_predecessor_endpoint.md"
+    },
+    {
+      "id": "KKL_STATIONARY_SELECTED_SEPARATOR_REALIZATION",
+      "downstream": 50,
+      "statement": "For the canonical Q_0-selected chain through H=b+2, prove in the full physical carrier that Q_0 separates alpha^0 from L_0^1 and, for every 1<=n<H, Q_n separates alpha^n from L_0^(n+1). Construct the proof-used collars and marked accesses and prove that competing carrier routes outside the selected inverse sheet do not bypass Q_n. Applying phi_0 inside one sheet is insufficient because a separating path in the full carrier may leave that sheet.",
+      "prerequisites": [
+        "KKL_NATIVE_TERMINAL_HUBBARD_TREE",
+        "KKL_STATIONARY_SELECTED_SMALL_JULIA_PREDECESSOR_CHAIN",
+        "KKL_STATIONARY_SELECTED_ALPHA_PREDECESSOR_CHAIN",
+        "KKL_STATIONARY_TERMINAL_CRITICAL_LIMB_INVERSE_SHEETS"
+      ],
+      "open_prerequisites": [],
+      "evidence": "kkl_stationary_n2_selected_predecessor_endpoint.md#lemma-22-canonical-small-julia-predecessor-selection",
+      "evidence_path": "research/mlc_unified/kkl_stationary_n2_selected_predecessor_endpoint.md"
+    },
+    {
+      "id": "KKL_NATIVE_WAVE_WANDERERS_QUERY_SCHEMA_BOUNDARY_MAP",
+      "downstream": 44,
+      "statement": "Complete the target-first source boundary map for the active KKL Wave, Value, WAD, translation-marking, and Wanderers program by binding every symbol and universal geometric restriction, assigning every atomic source occurrence and prose invocation to its exact typed demand, and filling the total theorem-hypothesis/formal-to-actual substitution table. Parameterized lifts remain separately typed from the entire geometric restriction. The generated lexical occurrence manifest and overlapping D/W/T display buckets are inputs, not a completed source package.",
+      "prerequisites": [
+        "FINITE_BINDER_PROOF_USE_LEDGER_COMPILER",
+        "KKL_WAVE_ATOMIC_SOURCE_OCCURRENCE_MANIFEST",
+        "KKL_IDEAL_PULLBACK_NATIVE",
+        "PARAMETRIZED_PULLBACK_KKL_EXHAUSTION_NO_GO"
+      ],
+      "open_prerequisites": [],
+      "evidence": "direct_decoration_wave_proof_use_ledger.md#11-promotion-decision-and-next-theorem",
+      "evidence_path": "research/mlc_unified/direct_decoration_wave_proof_use_ledger.md"
+    },
+    {
+      "id": "H1_CELL_TREE_EXTRACTION",
+      "downstream": 37,
+      "statement": "Every virtual-molecule block admits a monotone finite cell-tree quotient of its dynamically relevant Cantor carrier with universal atomic and gate incidence and compatible partial cellular dynamics.",
+      "prerequisites": [
+        "TREE_NERVE_FULLNESS",
+        "TOPOLOGY_REPLICATION_NO_GO"
+      ],
+      "open_prerequisites": [],
+      "evidence": "virtual_hull_realization.md#61-finite-cell-tree-extraction-open",
+      "evidence_path": "research/mlc_unified/virtual_hull_realization.md"
+    },
+    {
+      "id": "MAPPING_TELESCOPE",
+      "downstream": 36,
+      "statement": "Every actual finite virtual stage cycle admits compatible selected relative-cover lifts that are embedded on relatively compact Jordan cores, preserve the full component and deck-phase route, and retain the propagated critical value after the unique quadratic stage, so that the planar critical-spine compiler produces a closed degree-two selected return.",
+      "prerequisites": [
+        "PLANAR_CRITICAL_SPINE_TELESCOPE_COMPILER",
+        "RELATIVE_COVER_LIFT",
+        "STAGE_FORWARD_CLOSURE"
+      ],
+      "open_prerequisites": [],
+      "evidence": "critical_chronology_and_retimed_telescope.md#153-relative-cover-and-marked-telescope",
+      "evidence_path": "research/mlc_unified/critical_chronology_and_retimed_telescope.md"
+    },
+    {
+      "id": "VIRTUAL_REACHED_CYLINDER_COMPONENT_EXHAUSTION",
+      "downstream": 33,
+      "statement": "After an actual target base is typed or uniquely selected, every demanded finite-cylinder branch image has the open pullback component forced by INTERIOR_PULLBACK_COMPONENT_FORCING, and that reached localized component, or the globally identical component justified by the Jordan-disk component lemma, is one of the declared equal-depth target cylinders at every proof-used intermediate iterate with complete metadata and enlargement stability.",
+      "prerequisites": [
+        "DIRECT_DECORATION_PULLBACK_COMPACTIFICATION",
+        "FIXED_BASE_CONNECTED_IMAGE_TARGET_UNIQUENESS",
+        "INTERIOR_PULLBACK_COMPONENT_FORCING"
+      ],
+      "open_prerequisites": [],
+      "evidence": "finite_cylinder_commuting_lift.md#5-the-exact-remaining-address-selector",
+      "evidence_path": "research/mlc_unified/finite_cylinder_commuting_lift.md"
+    },
+    {
+      "id": "VIRTUAL_WAVE_DEMAND_SCHEMA",
+      "downstream": 32,
+      "statement": "Before any stopping execution, every actual virtual-Molecule block has a source-faithful syntactic continuation relation that is sound for actual branch-component extensions, complete for every Wave, Wanderers, covering, quasi-additivity, and width theorem call, stable under certified root enlargement, and independent of the desired bounds, compactness, rigidity, and MLC conclusions.",
+      "prerequisites": [
+        "HORIZON_FIRST_INVENTORY_AUDIT",
+        "RESOLVED_FINITE_WAVE_HORIZON_COMPILER"
+      ],
+      "open_prerequisites": [],
+      "evidence": "virtual_return_branch_language.md#virtual_wave_demand_schema-open",
+      "evidence_path": null
+    },
+    {
+      "id": "DIRECT_DECORATION_END_PRIME_END_COFINALITY",
+      "downstream": 31,
+      "statement": "For every direct-decoration infinite address, construct the actual multisector Bottcher angular footprint with compatible inverse lifts and prove that the exterior traces of the nested puzzle cylinders form a fundamental chain cofinal at one external prime end, including endpoint addresses, so that its impression is exactly the nested end fiber. Protection against collars, obstacles, and enlargement is separate.",
+      "prerequisites": [
+        "DIRECT_DECORATION_PULLBACK_COMPACTIFICATION"
+      ],
+      "open_prerequisites": [],
+      "evidence": "critical_chronology_and_retimed_telescope.md#152-prime-end-impression-equality",
+      "evidence_path": "research/mlc_unified/critical_chronology_and_retimed_telescope.md"
+    },
+    {
+      "id": "KKL_BOUNDED_VISITS_INTERVAL_GROWTH_REPAIR",
+      "downstream": 15,
+      "statement": "Prove the marked-interval combinatorial-growth implication used by KKL’s bounded-visits lemma: establish the exact at-most 6b+k-1 count for length-k multi-intervals meeting the critical limb, obtain correctly indexed repetition only from a strict pigeonhole excess, and prove an interval-level no-periodicity or strict-growth statement. Global Perron-Frobenius expansion lambda_F>1 alone may not be cited as excluding a periodic marked interval.",
+      "prerequisites": [
+        "KKL_WAVE_ATOMIC_SOURCE_OCCURRENCE_MANIFEST"
+      ],
+      "open_prerequisites": [],
+      "evidence": "direct_decoration_wave_proof_use_ledger.md#32-conditional-arithmetic-after-a-growth-lemma",
+      "evidence_path": "research/mlc_unified/direct_decoration_wave_proof_use_ledger.md"
+    },
+    {
+      "id": "KKL_WAVE_PUSHFORWARD_UNIFORM_PACKET_CONSTANT",
+      "downstream": 3,
+      "statement": "Construct a valid coefficient-one Wave pushforward theorem for the actual proof-used stationary source class. Either prove that every such source is one coherent single-crest or single-WAD-coordinate packet to which a complete DL-style logarithmic pruning proof applies, or replace coefficient one by a multiplicity-aware estimate with all repeated source conductance coordinates charged. The theorem must define boundary degree and document constants independent of period, horizon, access count, selector history, and leaf.",
+      "prerequisites": [
+        "DL23_ANNULAR_WAVE_BUFFER_EXTRACTION",
+        "KKL_BROAD_WAVE_PUSHFORWARD_COUNTEREXAMPLE"
+      ],
+      "open_prerequisites": [],
+      "evidence": "qa_extremal_wave_2026-07-26.md#12-minimal-next-analytic-gate",
+      "evidence_path": "research/mlc_unified/qa_extremal_wave_2026-07-26.md"
+    },
+    {
+      "id": "KKL_STATIONARY_TYPED_PAIRED_WAVE_REALIZATION",
+      "downstream": 2,
+      "statement": "On the entire nonshort ambient-singleton BL_0-ending stationary survivor, make a Borel first-horizon partition with no duplicated transverse mass and construct two full-width leafwise-paired genuine source Waves with disjoint untrimmed target occurrence images at the same actual L_0^h occurrence. The typed start must be DIRECT_WAVE, an actually eligible FREUDENTHAL end on an access-splitting localization, or an ACCESS_LOCAL RLS-A+ product seed; an ideal access is never relabeled as a topological end. Prove exact complete image identities, seed-side properness when needed, source-lamination validity, fine/coarse filter survival, whole-ending-multi-interval degrees, omitted-family zero-width or explicit V(F)/R(F) charge, and first-horizon/no-duplication accounting. The first failed typed-start, exit, pairing, marking, degree, or accounting predicate is the obstruction certificate. Ledger role: optional alternative",
+      "prerequisites": [
+        "KKL_STATIONARY_SURVIVOR_PARTITION_AND_POINTWISE_SWITCH",
+        "PQL_SEGMENTED_OCCURRENCE_RECONSTRUCTION",
+        "KKL_ACCESS_SEEDED_MAXIMAL_LIFT_MEASURABILITY",
+        "KKL_FIXED_END_ACCESS_TYPE_OBSTRUCTION"
+      ],
+      "open_prerequisites": [],
+      "evidence": "kkl_stationary_bl0_survivor_analysis.md#12-historical-pre-qa-next-theorem-superseded",
+      "evidence_path": "research/mlc_unified/kkl_stationary_bl0_survivor_analysis.md"
+    },
+    {
+      "id": "KKL_STATIONARY_MONOTONE_FULL_LIFT_IDENTIFICATION",
+      "downstream": 1,
+      "statement": "For the exact projection and lift meant by KKL lines 542-543, prove through H=b+2 that the model is a dendrite, pi is a continuous monotone surjective semiconjugacy, pi(alpha^n)=alpha_(n,com) for every selected predecessor, the fixed alpha fiber is a singleton, T=pi^(-1)(T_com), pi maps the physical critical point to the model critical point, pi(Q_n) lies in the selected model inverse sheet Omega_(n,com), and each marked physical small-Julia continuum K_i maps into its corresponding geometric model continuum bar K_i. Monotonicity, semiconjugacy, and the singleton fixed fiber then force every selected predecessor fiber to be a singleton. The geometric continua bar K_i are not the abstract vertices obtained by a later finite-tree quotient; collapsing K_i to such a point would conflict with finite-orbit injectivity of the canonical monotone model. The locked KKL and Dudko-Lyubich passages state a natural semiconjugating projection and an unspecified lift, but do not state all these identifications. Ledger role: optional alternative",
+      "prerequisites": [
+        "KKL_NATIVE_TERMINAL_HUBBARD_TREE",
+        "KKL_STATIONARY_SELECTED_ALPHA_PREDECESSOR_CHAIN",
+        "KKL_STATIONARY_SELECTED_SMALL_JULIA_PREDECESSOR_CHAIN"
+      ],
+      "open_prerequisites": [],
+      "evidence": "kkl_stationary_n2_selected_predecessor_endpoint.md#proposition-45-monotone-full-lift-criterion",
+      "evidence_path": "research/mlc_unified/kkl_stationary_n2_selected_predecessor_endpoint.md"
+    },
+    {
+      "id": "KKL_STATIONARY_QUANTITATIVE_DEFECT_BOUND",
+      "downstream": 1,
+      "statement": "At the final stationary subwave Y_(N-1), construct a partition Y_(N-1)=G disjoint-union D modulo zero width in KKL’s native transverse width measure, with the restrictions of that measure agreeing with the proof-used lamination widths. Every leaf of G must have the actual segmented final incidence and measurable route realization needed for the corrected degree-two estimate, while all untyped encounters, continuation exits, nonlanding, marking/filter loss, window incompatibility, terminal-family failures, deck collisions, and measurable-incidence failures in D satisfy W(D)<=a_b W(U minus T)+c_b W(RF)+c_b. Constants depend only on b, and use in the source-wide induction requires the native HTND absolute scale or an explicit W(A)>=C(R(F)+1) hypothesis.",
+      "prerequisites": [
+        "PQL_SEGMENTED_OCCURRENCE_RECONSTRUCTION",
+        "KKL_STATIONARY_COLLAR_EXIT_OVERFLOW",
+        "KKL_STATIONARY_DEGREE_TWO_CORRECTION"
+      ],
+      "open_prerequisites": [],
+      "evidence": "kkl_stationary_quantitative_defect_repair.md#3-quantitative-stationary-defect-bound",
+      "evidence_path": "research/mlc_unified/kkl_stationary_quantitative_defect_repair.md"
+    },
+    {
+      "id": "DIRECT_DECORATION_DEGREE_ONE_PSEUDO_EMBEDDING",
+      "downstream": 0,
+      "statement": "Classify the restricted psi-ql direct-decoration stages, if any, on which the full bold ambient annulus immersion and full glued pseudo-piece inclusion are globally univalent. The former universal route is unavailable: KL_CANONICAL_LOCALIZATION_FORCED_COLLISION proves a nontrivial subgroup-kernel collision at every ordinary primitive canonical-localization seed, and propagates it to the exact direct-decoration depths whenever the same seed carries the KL decoration data. This is now a non-gating restricted-class question; it may not be used by the universal footprint, contact-closure, VAAPC-I, UPTCR, or MLC chains.",
+      "prerequisites": [
+        "KL_DECORATION_ESCAPE_PUZZLE",
+        "KL_TILE_INJECTIVITY_BASE_ANNULUS_REDUCTION",
+        "TILE_INJECTIVITY_GLUE_EMBEDDING_CRITERION",
+        "KL_CANONICAL_LOCALIZATION_FORCED_COLLISION"
+      ],
+      "open_prerequisites": [],
+      "evidence": "kl_canonical_localization_forced_collision.md#8-alignment-and-realization-quantifiers",
+      "evidence_path": "research/mlc_unified/kl_canonical_localization_forced_collision.md"
+    },
+    {
+      "id": "DIRECT_DECORATION_TILE_CENTRAL_OVERLAP_REFLECTION",
+      "downstream": 0,
+      "statement": "For every actual fixed Kahn–Lyubich direct-decoration inclusion tile L_i, determine the stronger central-image saturation equality L_i^(-1)(tilde e_j(P_j))=e_i(Q_i), or the corresponding equality on any retained proof-used collar whose theorem explicitly needs it. This full equality is not required for injectivity of the full glued pseudo-piece: the collision-relevant equality over tilde e_j(Q_i) follows automatically from full tile injectivity and component bijectivity. A failure over p in P_j minus Q is a saturation, footprint, or collar-exhaustion defect rather than an interior quotient collision; record its component, sheet, access, itinerary, and target-central location. This is a non-gating open question for the full interior embedding but may remain a hypothesis of stronger carrier or footprint statements.",
+      "prerequisites": [
+        "KL_DECORATION_ESCAPE_PUZZLE"
+      ],
+      "open_prerequisites": [],
+      "evidence": "kl_relative_overlap_cartesianity.md#10-ledger-consequence",
+      "evidence_path": "research/mlc_unified/kl_relative_overlap_cartesianity.md"
+    },
+    {
+      "id": "ESCAPE_RETURN_KL_PSEUDOPIECE_CONFORMAL_IDEAL_BOUNDARY",
+      "downstream": 0,
+      "statement": "Extend the conformal-disk/ideal-circle theorem to V_esc and every proof-used first-return phase P_{i,k}. For each piece verify the finite open-star cover and prove two omitted values or ambient hyperbolicity; then identify Kahn’s trivial-deck ideal boundary with the conformal circle and scope continuous extension to actual puzzle-inclusion immersions. A closed gluing plus an assumed ambient Riemann map is insufficient.",
+      "prerequisites": [
+        "FINITE_GRID_AND_TERMINAL_KL_PSEUDOPIECE_CONFORMAL_IDEAL_BOUNDARY",
+        "FIRST_DECORATION_SCALE_ESCAPE_ATLAS"
+      ],
+      "open_prerequisites": [],
+      "evidence": "direct_decoration_bigraded_kl_stage_grid.md#proposition-53-audited-root-pseudo-piece-ideal-circles",
+      "evidence_path": null
+    },
+    {
+      "id": "KKL_STATIONARY_MARKED_FIXED_END_PAIR_CERTIFICATE",
+      "downstream": 0,
+      "statement": "For the optional Freudenthal fixed-end route and every proof-used stationary horizon h<=b+2, first construct an access-splitting localization and actual eligible Freudenthal source ends; a marked BL_0 or L_0^h access may not be relabeled as such an end. Then prove the six route-specific certificates C_h^-,X_h^-,C_h^+,X_h^+,P_h,M_h: proper degree-one oriented starting ends, same-occurrence exits, full common-leaf/window/sheet/access coupling, and native filter/Wave-image survival. Under TWO_h and INC_h the unsplit physical inner end is nonproper, but those hypotheses are not promoted unconditionally. This fixed-end route is sufficient neither for family-level full-width pairing nor for transverse accounting, and it is not logically necessary if actual paired source Waves are constructed by an access-local or direct method.",
+      "prerequisites": [
+        "KKL_FIXED_END_WAD_SPLIT_FINITE_SELECTOR",
+        "KKL_STATIONARY_SURVIVOR_PARTITION_AND_POINTWISE_SWITCH",
+        "KKL_FIXED_END_ACCESS_TYPE_OBSTRUCTION"
+      ],
+      "open_prerequisites": [],
+      "evidence": "kkl_stationary_fixed_end_topological_obstruction.md#9-exact-next-task",
+      "evidence_path": "research/mlc_unified/kkl_stationary_fixed_end_topological_obstruction.md"
+    },
+    {
+      "id": "KKL_STATIONARY_UNIFORM_COLLAR_EXIT_CHARGE",
+      "downstream": 0,
+      "statement": "For every proof-used horizon h<=b+2, prove either that the optimized prefix-compatible collar conductance is at most C_b(W(U minus T)+1), together with measurable source first-exit selection, or directly that the sum of marked route-exit conductances is at most that quantity. C_b must be independent of satellite period, rotation denominator, route depth within the fixed horizon, and the individual block. Qualitative collar existence and Kahn’s response in the larger full width W(F) are insufficient.",
+      "prerequisites": [
+        "KKL_STATIONARY_COLLAR_EXIT_OVERFLOW",
+        "KAHN_QUALITATIVE_COLLAR_VERTICAL_CHARGE_NO_GO"
+      ],
+      "open_prerequisites": [],
+      "evidence": "kkl_stationary_uniform_collar_charge_attack.md#10-final-conclusion-and-exact-next-hypothesis",
+      "evidence_path": "research/mlc_unified/kkl_stationary_uniform_collar_charge_attack.md"
+    },
+    {
+      "id": "TERMINAL_NONLC_HUBBARD_CARRIER_PROPER",
+      "downstream": 0,
+      "statement": "For KKL’s non-locally-connected rational-lamination lift, identify the physical lifted carrier and the nondividing fixed-point fiber precisely enough to prove that the physical carrier omits that fiber and is a proper subcontinuum of K. The locked one-line instruction to lift the combinatorial objects does not by itself establish the needed inverse-image equality or fiber exclusion.",
+      "prerequisites": [
+        "KKL_NATIVE_TERMINAL_HUBBARD_TREE",
+        "TERMINAL_LC_NATIVE_HUBBARD_CARRIER_PROPER"
+      ],
+      "open_prerequisites": [],
+      "evidence": "terminal_dense_obstacle_and_submulticurve_replacement.md#proposition-21",
+      "evidence_path": "research/mlc_unified/terminal_dense_obstacle_and_submulticurve_replacement.md"
+    }
+  ],
+  "blocked": [
+    {
+      "id": "KKL_STATIONARY_SELECTED_PREDECESSOR_MARKED_COMPONENT_INCIDENCE",
+      "downstream": 54,
+      "statement": "Global physical line-1598 marked-core incidence MCI_b says that if the canonical selected L_0^b intersects the original physical Hubbard carrier T, then it contacts an actual component K of the primitive small-Julia cycle. The theorem is proved for locally connected physical K(F), and whole-continuum incidence is proved in the locally connected combinatorial model. The exact remaining model-lift route is the non-locally-connected selected full-preimage and geometric small-Julia-continuum correspondence theorem; an abstract vertex of the later finite-tree quotient is not a point of the geometric model.",
+      "prerequisites": [
+        "KKL_STATIONARY_SELECTED_PREDECESSOR_CHAIN",
+        "KKL_NATIVE_TERMINAL_HUBBARD_TREE",
+        "KKL_STATIONARY_LC_TERMINAL_SHEET_MCI",
+        "KKL_STATIONARY_MODEL_TERMINAL_SHEET_INCIDENCE",
+        "KKL_STATIONARY_NONLC_SELECTED_GEOMETRIC_CONTINUUM_LIFT"
+      ],
+      "open_prerequisites": [
+        "KKL_STATIONARY_NONLC_SELECTED_GEOMETRIC_CONTINUUM_LIFT"
+      ],
+      "evidence": "kkl_stationary_n2_selected_predecessor_endpoint.md#corollary-44-model-incidence-and-exact-non-lc-residue",
+      "evidence_path": "research/mlc_unified/kkl_stationary_n2_selected_predecessor_endpoint.md"
+    },
+    {
+      "id": "KKL_STATIONARY_INCOMING_WINDOW_ANCHOR",
+      "downstream": 51,
+      "statement": "Within a stationary block with parabolically b-bounded primitive renormalization, rotation 1/q, and explicit high-type inequality q>b, bind the complete-horizon selected chain to the proof-used Wave components and, for every n in {b,b+1}, h=n+1, and actual alpha in A_h to which KKL line 1603 is applied, construct a specified incoming-side germ at one marked L_0^h contact and its connected host C. Prove that C is an embedded component-maximal proper restriction, the deep access is the upper endpoint c<1 of its canonical window (a,c), the other end is alpha’s actual lifted BL_0 endpoint access, and a=0. The marked access may be obtained through EGC_H or by a separate direct theorem; EGC_H is not a logically necessary factorization. Multiple components at the same coarse locus must be exhausted or canonically selected. On failure distinguish: no typed incoming germ/component; wrong one-sided incidence; retracing or nonmaximal representative; nonlanding or noninterior deep end; a>0; or a=0 with the wrong BL_0 lift.",
+      "prerequisites": [
+        "KKL_STATIONARY_MAXIMAL_ONE_SIDED_WINDOW_REDUCTION",
+        "KKL_STATIONARY_SELECTED_PREDECESSOR_CHAIN",
+        "KKL_STATIONARY_PROOF_USED_PREDECESSOR_SELECTION",
+        "KKL_STATIONARY_SELECTED_PREDECESSOR_MARKED_COMPONENT_INCIDENCE",
+        "KKL_STATIONARY_LINE1598_TREE_DISJOINTNESS_REDUCTION"
+      ],
+      "open_prerequisites": [
+        "KKL_STATIONARY_PROOF_USED_PREDECESSOR_SELECTION",
+        "KKL_STATIONARY_SELECTED_PREDECESSOR_MARKED_COMPONENT_INCIDENCE"
+      ],
+      "evidence": "kkl_stationary_n2_incoming_window_anchor.md#7-exact-anchor-and-failure-records",
+      "evidence_path": "research/mlc_unified/kkl_stationary_n2_incoming_window_anchor.md"
+    },
+    {
+      "id": "KKL_STATIONARY_TWO_OCCURRENCE_BINDER",
+      "downstream": 50,
+      "statement": "Within the same parabolically b-bounded stationary high-type context with rotation 1/q and q>b, for every proof-used b<=n<N-1, if an actual alpha in A_(n+1) fails the source pass-through predicate at the corrected Q_n continuum, construct two segmented retained extension towers realizing exactly the two topological portions named at KKL line 1603. The incoming tower must be anchored at alpha’s BL_0 end and terminate at one specified L_0^(n+1) contact; the outgoing tower must start at that same contact occurrence and terminate at alpha’s non-BL_0 end. At every stage record the full proper restriction path, its actual occurrence window in the preceding full output, endpoint intervals and accesses, sheet, parent and attachment provenance, filter witness, and covering image; prove complete prefix compatibility and terminal Wave membership.",
+      "prerequisites": [
+        "KKL_STATIONARY_INCOMING_WINDOW_ANCHOR",
+        "KKL_STATIONARY_ONE_RETAINED_CHAIN",
+        "PQL_SEGMENTED_OCCURRENCE_RECONSTRUCTION",
+        "KKL_STATIONARY_FINITE_EMBEDDED_COLLAR_NATURALITY"
+      ],
+      "open_prerequisites": [
+        "KKL_STATIONARY_INCOMING_WINDOW_ANCHOR"
+      ],
+      "evidence": "kkl_stationary_segmented_occurrence_binder.md#9-what-remains-for-the-actual-two-occurrence-binder",
+      "evidence_path": "research/mlc_unified/kkl_stationary_segmented_occurrence_binder.md"
+    },
+    {
+      "id": "KKL_STATIONARY_MARKED_ACCESS_ITINERARY",
+      "downstream": 49,
+      "statement": "For every proof-used selected Q_s pull in KKL’s stationary horizon, first realize the full-carrier Q-separator predicate, then prove that the root and deep parent routes determine nonempty disjoint marked prime-end sets, retain their complete side, cyclic-order, sheet, parent, and endpoint-interval data through every selected conformal pull and immersion filter, and yield the ordered access records required at the central quadratic collar. Continuum separation in one inverse sheet or a coarse component label alone is insufficient.",
+      "prerequisites": [
+        "PQL_ITERATE_FILLED_GRAPH_NATURALITY",
+        "KKL_STATIONARY_SELECTED_SMALL_JULIA_PREDECESSOR_CHAIN",
+        "KKL_STATIONARY_SELECTED_SEPARATOR_REALIZATION"
+      ],
+      "open_prerequisites": [
+        "KKL_STATIONARY_SELECTED_SEPARATOR_REALIZATION"
+      ],
+      "evidence": "kkl_stationary_tsnc_source_reduction.md#3-notation-and-the-two-separator-sides",
+      "evidence_path": "research/mlc_unified/kkl_stationary_tsnc_source_reduction.md"
+    },
+    {
+      "id": "KKL_STATIONARY_RETAINED_PORTION_REALIZATION",
+      "downstream": 49,
+      "statement": "Within the same parabolically b-bounded stationary high-type context with rotation 1/q and q>b, for every proof-used b<=n<N-1 and every actual occurrence alpha in KKL’s A_(n+1) that avoids the corrected Q_n continuum, prove that each line-1603 route has a complete segmented extension tower: every full one-step restriction is proper, belongs to the applicable fine marking, survives the coarse single-interval filter, and is connected to the next full output by its actual nested occurrence window; the final full output must be a Wave in the declared marking. Record the first failed continuation, remote ideal end, window, filter, or terminal membership.",
+      "prerequisites": [
+        "KKL_STATIONARY_TWO_OCCURRENCE_BINDER"
+      ],
+      "open_prerequisites": [
+        "KKL_STATIONARY_TWO_OCCURRENCE_BINDER"
+      ],
+      "evidence": "kkl_stationary_two_occurrence_source_attack.md#121-the-segmented-retained-extension-tower",
+      "evidence_path": "research/mlc_unified/kkl_stationary_two_occurrence_source_attack.md"
+    },
+    {
+      "id": "KKL_STATIONARY_SELECTED_CORRIDOR_CONFINEMENT",
+      "downstream": 48,
+      "statement": "Within the same parabolically b-bounded stationary high-type context with rotation 1/q and q>b, for each retained line-1603 portion construct one connected crosscut in the selected corrected Q_n collar and prove that its complete target-collar occurrence under the full fiber-product projection equals the image under the selected degree-two map G_n, with no additional entry, exit, re-entry, ambient sheet change, or late enlargement. Local germ containment is insufficient.",
+      "prerequisites": [
+        "KKL_STATIONARY_RETAINED_PORTION_REALIZATION",
+        "KKL_STATIONARY_MARKED_ACCESS_ITINERARY",
+        "KKL_STATIONARY_DEGREE_TWO_CORRECTION"
+      ],
+      "open_prerequisites": [
+        "KKL_STATIONARY_RETAINED_PORTION_REALIZATION",
+        "KKL_STATIONARY_MARKED_ACCESS_ITINERARY"
+      ],
+      "evidence": "kkl_stationary_tsnc_source_reduction.md#7-the-two-actual-portions-and-the-earlier-realization-gap",
+      "evidence_path": "research/mlc_unified/kkl_stationary_tsnc_source_reduction.md"
+    },
+    {
+      "id": "KKL_STATIONARY_SELECTED_COLLAR_DECK_NONCOLLISION",
+      "downstream": 47,
+      "statement": "For the two actual retained and corridor-confined portions at every proof-used stationary index, prove the exact geometric predicate that their selected collar crosscuts are not related by the nontrivial deck involution of the unique central degree-two collar. It is sufficient, but not necessary, to prove that their complete unordered prime-end access pairs are not deck-related; with independently proved endpoint roles and orientations one may use the sharper ordered non-transposition certificate. Equality of the deck-related crosscut paths is the exact obstruction and requires an occurrence/deck-phase replacement state.",
+      "prerequisites": [
+        "KKL_STATIONARY_MARKED_ACCESS_ITINERARY",
+        "KKL_STATIONARY_SELECTED_CORRIDOR_CONFINEMENT",
+        "KKL_STATIONARY_DEGREE_TWO_CORRECTION"
+      ],
+      "open_prerequisites": [
+        "KKL_STATIONARY_MARKED_ACCESS_ITINERARY",
+        "KKL_STATIONARY_SELECTED_CORRIDOR_CONFINEMENT"
+      ],
+      "evidence": "kkl_stationary_tsnc_source_reduction.md#8-the-exact-deck-obstruction-and-an-endpoint-certificate",
+      "evidence_path": "research/mlc_unified/kkl_stationary_tsnc_source_reduction.md"
+    },
+    {
+      "id": "KKL_STATIONARY_TWO_SIDED_WAVE_NONCOLLISION",
+      "downstream": 46,
+      "statement": "Under KKL’s complete stationary-Wave and ideal-marking hypotheses in the parabolically b-bounded high-type context with rotation 1/q and q>b, for every proof-used b<=n<N-1, if a leaf occurrence in A_(n+1) avoids the corrected Q_n continuum, combine retained portion realization, complete marked-access itineraries, selected-corridor confinement, and the exact selected-collar path predicate [lambda^+] != [tau_n(lambda^-)] to prove that the two terminal Wave occurrences have distinct proper images under the full f^(n+1) projection. Inequality of unordered endpoint pairs is only a sufficient certificate; equality of the untagged geometric images is the exact failure certificate and forces an occurrence/deck-phase replacement state.",
+      "prerequisites": [
+        "KKL_STATIONARY_RETAINED_PORTION_REALIZATION",
+        "KKL_STATIONARY_MARKED_ACCESS_ITINERARY",
+        "KKL_STATIONARY_SELECTED_CORRIDOR_CONFINEMENT",
+        "KKL_STATIONARY_SELECTED_COLLAR_DECK_NONCOLLISION",
+        "KKL_STATIONARY_DEGREE_TWO_CORRECTION"
+      ],
+      "open_prerequisites": [
+        "KKL_STATIONARY_RETAINED_PORTION_REALIZATION",
+        "KKL_STATIONARY_MARKED_ACCESS_ITINERARY",
+        "KKL_STATIONARY_SELECTED_CORRIDOR_CONFINEMENT",
+        "KKL_STATIONARY_SELECTED_COLLAR_DECK_NONCOLLISION"
+      ],
+      "evidence": "kkl_stationary_tsnc_source_reduction.md#12-exact-next-theorem",
+      "evidence_path": "research/mlc_unified/kkl_stationary_tsnc_source_reduction.md"
+    },
+    {
+      "id": "KKL_STATIONARY_POINTWISE_TWO_PATH_BREAK",
+      "downstream": 45,
+      "statement": "Within KKL’s parabolically b-bounded stationary high-type context with rotation 1/q and q>b, for n=b and n=b+1 and every actual occurrence alpha in A_(n+1) avoiding the corrected Q_n continuum, construct the two line-1603 portions as retained proper depth-(n+1) components tied to the same leaf and stopping horizon; prove complete fine-marking and coarse-subordination survival and prove that their f^(n+1)-images are distinct unparametrized terminal marked paths. Record the stage, sheet, parent component, entry and exit accesses, fine and coarse ends, and terminal images. This is a pointwise break certificate and asserts no doubled-width paired-Wave response.",
+      "prerequisites": [
+        "KKL_STATIONARY_TWO_SIDED_WAVE_NONCOLLISION"
+      ],
+      "open_prerequisites": [
+        "KKL_STATIONARY_TWO_SIDED_WAVE_NONCOLLISION"
+      ],
+      "evidence": "qa_native_kkl_stationary_2026-07-26.md#gate-n2-pointwise-two-path-break",
+      "evidence_path": "research/mlc_unified/qa_native_kkl_stationary_2026-07-26.md"
+    },
+    {
+      "id": "DIRECT_DECORATION_WAVE_PROOF_USE_LEDGER",
+      "downstream": 40,
+      "statement": "Freeze an actual finite, target-first ledger of every theorem call, target curve-family schema, ideal interval, and universal KKL subordination query used by Wave, Wanderers, domination, quasi-additivity, covering, or width comparison on the complete direct-decoration horizon. The ledger must distinguish parameterized lifts from all geometric inverse-trace paths and may not define proof use by the desired properness or response conclusion. The first omitted theorem call, family, interval, or query is the failure certificate.",
+      "prerequisites": [
+        "HORIZON_FIRST_INVENTORY_AUDIT",
+        "INTERFACE_PROOF_USE_INVENTORY",
+        "PARAMETRIZED_PULLBACK_KKL_EXHAUSTION_NO_GO",
+        "FINITE_BINDER_PROOF_USE_LEDGER_COMPILER",
+        "KKL_NATIVE_WAVE_WANDERERS_QUERY_SCHEMA_BOUNDARY_MAP"
+      ],
+      "open_prerequisites": [
+        "KKL_NATIVE_WAVE_WANDERERS_QUERY_SCHEMA_BOUNDARY_MAP"
+      ],
+      "evidence": "direct_decoration_wave_proof_use_ledger.md#11-promotion-decision-and-next-theorem",
+      "evidence_path": "research/mlc_unified/direct_decoration_wave_proof_use_ledger.md"
+    },
+    {
+      "id": "KKL_STATIONARY_TWO_PULLBACK_PASS_THROUGH",
+      "downstream": 37,
+      "statement": "In KKL’s actual stationary Wave branch, with parabolic bound b and N=b+3, prove that every occurrence in the defined A_(N-1)=A_(b+2) passes through both corrected source continua Q_b and Q_(b+1) in the successive-pullback sense. This requires the full-carrier separator/access theorem and the two-sided Wave noncollision theorem validating line 1603; it asserts no final component incidence, order, proper restriction, or width.",
+      "prerequisites": [
+        "KKL_STATIONARY_TWO_SIDED_WAVE_NONCOLLISION",
+        "KKL_STATIONARY_OFF_BY_ONE_PASS_THROUGH_REDUCTION",
+        "KKL_STATIONARY_SELECTED_SEPARATOR_REALIZATION"
+      ],
+      "open_prerequisites": [
+        "KKL_STATIONARY_TWO_SIDED_WAVE_NONCOLLISION",
+        "KKL_STATIONARY_SELECTED_SEPARATOR_REALIZATION"
+      ],
+      "evidence": "kkl_stationary_wave_component_incidence.md#theorem-31-conditional-off-by-one-reduction",
+      "evidence_path": "research/mlc_unified/kkl_stationary_wave_component_incidence.md"
+    },
+    {
+      "id": "KKL_STATIONARY_FINAL_PASS_THROUGH_PATH_EXTRACTION",
+      "downstream": 36,
+      "statement": "Legacy composite formulation: for m=b+2 and the actual final component over K_0^(m-1), prove that KKL’s depth-m pass-through predicate produces a retained proper path in U^m minus Kcal^m from that component to Kcal^m minus it, including connected occurrence transport, restriction-filter survival, prime-end landing, the non-locally-connected rational-lamination model, measurable lamination assembly, and W(A_m)<=W(B). This does not certify degree on the whole marked end or a pushforward-width estimate; the active native route separates those clauses.",
+      "prerequisites": [
+        "KKL_STATIONARY_TWO_SIDED_WAVE_NONCOLLISION",
+        "KKL_STATIONARY_TWO_PULLBACK_PASS_THROUGH",
+        "KKL_STATIONARY_FINAL_COMPONENT_REALIZATION"
+      ],
+      "open_prerequisites": [
+        "KKL_STATIONARY_TWO_SIDED_WAVE_NONCOLLISION",
+        "KKL_STATIONARY_TWO_PULLBACK_PASS_THROUGH"
+      ],
+      "evidence": "qa_native_kkl_stationary_2026-07-26.md#6-from-pass-through-to-a-component-to-component-lamination",
+      "evidence_path": "research/mlc_unified/qa_native_kkl_stationary_2026-07-26.md"
+    },
+    {
+      "id": "FINITE_HORIZON_ASSEMBLY",
+      "downstream": 35,
+      "statement": "Every actual finite virtual horizon supplies the open mapping telescope together with exact depth-q core identities, iterated covering embeddings, protected carrier-complement prime-end action, compatible relative covers, proper or end-proper proof-used intervals, and exact enlargement squares, so that the planar telescope identity promotes to a closed depth-q psi-ql correspondence.",
+      "prerequisites": [
+        "MAPPING_TELESCOPE",
+        "FINITE_PLANAR_TELESCOPE_IDENTITY",
+        "PRIME_END_MARKING_ACTION_CRITERION",
+        "MARKED_PAIR_ENLARGEMENT_NATURALITY"
+      ],
+      "open_prerequisites": [
+        "MAPPING_TELESCOPE"
+      ],
+      "evidence": "critical_chronology_and_retimed_telescope.md#153-relative-cover-and-marked-telescope",
+      "evidence_path": "research/mlc_unified/critical_chronology_and_retimed_telescope.md"
+    },
+    {
+      "id": "KKL_STATIONARY_FINAL_INCIDENCE_REFINEMENT",
+      "downstream": 35,
+      "statement": "For every retained occurrence in KKL’s stationary A_(N-1), prove that the two separately established shallower pass-through predicates refine to incidences with C_b and C_(b+1) in one actual component, or one source-faithful finite ordered component chain, of the final restriction in U^(N-1) minus Kcal^(N-1). Retain every intervening component and record the first split, missing end lift, or occurrence mismatch.",
+      "prerequisites": [
+        "KKL_STATIONARY_TWO_SIDED_WAVE_NONCOLLISION",
+        "KKL_STATIONARY_TWO_PULLBACK_PASS_THROUGH",
+        "KKL_STATIONARY_FINAL_COMPONENT_REALIZATION",
+        "KKL_STATIONARY_DEGREE_TWO_CORRECTION",
+        "KKL_STATIONARY_FINAL_PASS_THROUGH_PATH_EXTRACTION",
+        "DIRECT_DECORATION_WAVE_PROOF_USE_LEDGER"
+      ],
+      "open_prerequisites": [
+        "KKL_STATIONARY_TWO_SIDED_WAVE_NONCOLLISION",
+        "KKL_STATIONARY_TWO_PULLBACK_PASS_THROUGH",
+        "KKL_STATIONARY_FINAL_PASS_THROUGH_PATH_EXTRACTION",
+        "DIRECT_DECORATION_WAVE_PROOF_USE_LEDGER"
+      ],
+      "evidence": "pql_iterate_filled_graph_naturality.md#6-exact-residual-incidence-gate",
+      "evidence_path": "research/mlc_unified/pql_iterate_filled_graph_naturality.md"
+    },
+    {
+      "id": "H1_FINITE_HORIZON_INFLATION",
+      "downstream": 34,
+      "statement": "Finite virtual postcritical data inflate to locally saturated depth-q psi-ql stages whose selected return is degree two, whose required pullbacks are admissible through the stopping time, and whose localization loss is uniformly relative or amortized.",
+      "prerequisites": [
+        "PRIME_END_RETURN",
+        "CRITICAL_VALUE_PULLBACK",
+        "FULLIFICATION",
+        "GLOBAL_DEGREE_NO_GO",
+        "DEGREE_TWO_FACTORIZATION",
+        "STAGEWISE_FACTORIZATION",
+        "MAPPING_TELESCOPE",
+        "QL_RETURN_FACTORIZATION",
+        "FINITE_HORIZON_TRUNCATION",
+        "STAGE_FORWARD_CLOSURE",
+        "RELATIVE_COVER_LIFT",
+        "FINITE_HORIZON_ASSEMBLY",
+        "TOPOLOGY_WIDTH_NO_GO",
+        "INFLATION_MODULUS_MONOTONICITY",
+        "FINITE_LOCAL_SATURATION"
+      ],
+      "open_prerequisites": [
+        "MAPPING_TELESCOPE",
+        "FINITE_HORIZON_ASSEMBLY"
+      ],
+      "evidence": "finite_horizon_inflation.md#9-revised-open-theorem",
+      "evidence_path": "research/mlc_unified/finite_horizon_inflation.md"
+    },
+    {
+      "id": "KKL_STATIONARY_NESTED_INCIDENCE_ORDER",
+      "downstream": 34,
+      "statement": "After final graph-lift realization, prove a nested-domain and unique-or-controlled-crossing theorem in U^(N-1) that orders the two final component incidences for every retained oriented restriction, including repeated incidences. Separate-level separation statements do not by themselves determine the final order.",
+      "prerequisites": [
+        "KKL_STATIONARY_FINAL_INCIDENCE_REFINEMENT"
+      ],
+      "open_prerequisites": [
+        "KKL_STATIONARY_FINAL_INCIDENCE_REFINEMENT"
+      ],
+      "evidence": "kkl_stationary_wave_component_incidence.md#obligation-52",
+      "evidence_path": "research/mlc_unified/kkl_stationary_wave_component_incidence.md"
+    },
+    {
+      "id": "H1_ANALYTIC_ACCESS_REALIZATION",
+      "downstream": 33,
+      "statement": "Every extracted cell tree lifts to an access-complete prime-end marked analytic correspondence satisfying finite-horizon psi-ql axioms, exact KKL translation rules, bounded incidence, standard-width charge, and controlled parallel replication.",
+      "prerequisites": [
+        "H1_CELL_TREE_EXTRACTION",
+        "H1_FINITE_HORIZON_INFLATION",
+        "KKL_TRANSLATION",
+        "TREE_HULL_COMPLEXITY",
+        "PARALLEL_REPLICATION_CRITERION",
+        "CONGESTION_AMORTIZATION"
+      ],
+      "open_prerequisites": [
+        "H1_CELL_TREE_EXTRACTION",
+        "H1_FINITE_HORIZON_INFLATION"
+      ],
+      "evidence": "virtual_hull_realization.md#62-analytic-access-realization-open",
+      "evidence_path": "research/mlc_unified/virtual_hull_realization.md"
+    },
+    {
+      "id": "KKL_STATIONARY_FIXED_PAIR_PROPER_RESTRICTION",
+      "downstream": 33,
+      "statement": "For every bound occurrence in KKL’s stationary A_(N-1), construct either one connected proper restriction with endpoints on the realized fixed pair C_b,C_(b+1), or a source-faithful finite ordered restriction multicurve carrying every intervening component. Retain every sheet, deck phase, obstacle, order, and occurrence multiplicity, prove the literal-subarc overflow relation, and prove W(H_stat)>=theta W(A_(N-1))-E uniformly.",
+      "prerequisites": [
+        "KKL_STATIONARY_FINAL_INCIDENCE_REFINEMENT",
+        "KKL_STATIONARY_NESTED_INCIDENCE_ORDER",
+        "DIRECT_DECORATION_WAVE_PROOF_USE_LEDGER",
+        "PARAMETRIZED_PULLBACK_KKL_EXHAUSTION_NO_GO"
+      ],
+      "open_prerequisites": [
+        "KKL_STATIONARY_FINAL_INCIDENCE_REFINEMENT",
+        "KKL_STATIONARY_NESTED_INCIDENCE_ORDER",
+        "DIRECT_DECORATION_WAVE_PROOF_USE_LEDGER"
+      ],
+      "evidence": "kkl_stationary_wave_component_incidence.md#obligation-71",
+      "evidence_path": "research/mlc_unified/kkl_stationary_wave_component_incidence.md"
+    },
+    {
+      "id": "TERMINAL_STATIONARY_RESTRICTION_KL_PUZZLE_SELECTOR",
+      "downstream": 32,
+      "statement": "For the complete retained stationary proper-restriction family, construct one authorized common KL puzzle certificate (Y,v,w), v!=w, or a uniformly controlled tagged atlas, whose physical endpoints lie in S_Y^v and S_Y^w. Preserve localization, obstacle, tile, deck, cyclic-order, occurrence, and final-root data; component incidence labels alone are insufficient.",
+      "prerequisites": [
+        "KKL_STATIONARY_FIXED_PAIR_PROPER_RESTRICTION",
+        "TERMINAL_K1_UNIQUE_PUZZLE_VERTEX_ANCHOR",
+        "TERMINAL_RELATIVE_COVER_SUBGROUP_ALIGNMENT",
+        "TERMINAL_SEAM_NORMALIZED_PATH_LIFT"
+      ],
+      "open_prerequisites": [
+        "KKL_STATIONARY_FIXED_PAIR_PROPER_RESTRICTION"
+      ],
+      "evidence": "kkl_stationary_wave_component_incidence.md#obligation-72",
+      "evidence_path": "research/mlc_unified/kkl_stationary_wave_component_incidence.md"
+    },
+    {
+      "id": "VIRTUAL_CYLINDER_TARGET_ADDRESS_SELECTOR",
+      "downstream": 32,
+      "statement": "For every realized finite virtual copy-chain prefix, equal-depth source cylinder, and source-defined return branch, there is a unique actual target base and cylinder containing the image component, compatibly with geometric parents, the partial pre-root shift, the separate root transition, complete marked metadata, presentation, and authorized root enlargement.",
+      "prerequisites": [
+        "DIRECT_DECORATION_PULLBACK_COMPACTIFICATION",
+        "PULLBACK_GAP_ENLARGEMENT_NATURALITY",
+        "FIXED_BASE_CONNECTED_IMAGE_TARGET_UNIQUENESS",
+        "VIRTUAL_REACHED_CYLINDER_COMPONENT_EXHAUSTION"
+      ],
+      "open_prerequisites": [
+        "VIRTUAL_REACHED_CYLINDER_COMPONENT_EXHAUSTION"
+      ],
+      "evidence": "finite_cylinder_commuting_lift.md#open-problem-51-virtual_cylinder_target_address_selector",
+      "evidence_path": "research/mlc_unified/finite_cylinder_commuting_lift.md"
+    },
+    {
+      "id": "TERMINAL_WAVE_KL_CONNECTING_SUBFAMILY",
+      "downstream": 31,
+      "statement": "For every actual terminal proof-use Wave binder, retain a sublamination S_0 with W(S_0)>=theta W(S)-E and construct a complete admissible proper-restriction lamination whose leaves are physical curves connecting one fixed pair S_Y^(v_*),S_Y^(w_*), with all occurrence multiplicities, ordered subintervals, obstacle/localization filters, and endpoint-component records. Prove that I_(1->0) is a proof-used end or supply contained physical subcurves; a crest designation alone is insufficient and appended connectors are forbidden.",
+      "prerequisites": [
+        "DIRECT_DECORATION_WAVE_PROOF_USE_LEDGER",
+        "TERMINAL_K1_UNIQUE_PUZZLE_VERTEX_ANCHOR",
+        "TERMINAL_KL_SUBMULTICURVE_OVERFLOW_TRANSFER",
+        "KKL_STATIONARY_FIXED_PAIR_PROPER_RESTRICTION",
+        "TERMINAL_STATIONARY_RESTRICTION_KL_PUZZLE_SELECTOR"
+      ],
+      "open_prerequisites": [
+        "DIRECT_DECORATION_WAVE_PROOF_USE_LEDGER",
+        "KKL_STATIONARY_FIXED_PAIR_PROPER_RESTRICTION",
+        "TERMINAL_STATIONARY_RESTRICTION_KL_PUZZLE_SELECTOR"
+      ],
+      "evidence": "terminal_dense_obstacle_and_submulticurve_replacement.md#6-exact-replacement-obligations",
+      "evidence_path": "research/mlc_unified/terminal_dense_obstacle_and_submulticurve_replacement.md"
+    },
+    {
+      "id": "VIRTUAL_FINITE_WORD_ROOT_PORTRAIT_AUTHORIZATION",
+      "downstream": 31,
+      "statement": "For every actual two-step virtual satellite-copy chain, construct and source-identify the required second-scale root portrait in a Jordan neighborhood compactly contained in the direct-decoration safe gap, realize its proof-complete carrier and certified covering-versus-immersion marking, authorize all simultaneous finite-word and forced off-critical component ownership, and prove exact final-root and complete-Wave-demand naturality.",
+      "prerequisites": [
+        "RETIMED_FINITE_CYLINDER_PAIR",
+        "DIRECT_DECORATION_FINITE_PROTECTED_CARRIER",
+        "PRIME_END_MARKING_ACTION_CRITERION",
+        "PULLBACK_GAP_ENLARGEMENT_NATURALITY",
+        "VIRTUAL_CYLINDER_TARGET_ADDRESS_SELECTOR",
+        "VIRTUAL_WAVE_DEMAND_SCHEMA"
+      ],
+      "open_prerequisites": [
+        "VIRTUAL_CYLINDER_TARGET_ADDRESS_SELECTOR",
+        "VIRTUAL_WAVE_DEMAND_SCHEMA"
+      ],
+      "evidence": "critical_chronology_and_retimed_telescope.md#16-exact-source-facing-residual",
+      "evidence_path": "research/mlc_unified/critical_chronology_and_retimed_telescope.md"
+    },
+    {
+      "id": "TERMINAL_WAVE_CREST_TO_KL_SKIPPING_BINDER",
+      "downstream": 30,
+      "statement": "For every retained terminal Wave occurrence whose terminal side lies in the crest, construct a literal ordered proper restriction, never an appended connector, with fixed distinct endpoint continua S_Y^v,S_Y^w, one fixed separating piece Z, a lifted horizontal KL multicurve, and a named componentwise skip witness. Retain the adjacent tagged terminal half-access occurrences, tile, deck, order, multiplicity, localization, obstacle, and final-root data, and prove a uniform response-class/depth charge or record the first B1–B10 failure.",
+      "prerequisites": [
+        "TERMINAL_WAVE_KL_CONNECTING_SUBFAMILY",
+        "TERMINAL_K1_UNIQUE_PUZZLE_VERTEX_ANCHOR",
+        "TERMINAL_RELATIVE_COVER_SUBGROUP_ALIGNMENT",
+        "TERMINAL_SEAM_NORMALIZED_PATH_LIFT",
+        "TERMINAL_CERTIFIED_CHANNEL_FINAL_ROOT_STABILITY",
+        "TERMINAL_WAVE_CREST_TO_KL_WIDTH_CONDITIONAL"
+      ],
+      "open_prerequisites": [
+        "TERMINAL_WAVE_KL_CONNECTING_SUBFAMILY"
+      ],
+      "evidence": "terminal_wave_crest_to_kl_skipping_bridge.md#10-exact-open-binder-certificate",
+      "evidence_path": "research/mlc_unified/terminal_wave_crest_to_kl_skipping_bridge.md"
+    },
+    {
+      "id": "VIRTUAL_END_BLOWUP_REALIZATION",
+      "downstream": 30,
+      "statement": "For every proof-used infinite address, construct an analytic rescaled or nontrivial-projection-fiber end space carrying the authorized normalized root pair over the identified prime-end impression, with protected accesses, obstacles, sheets, critical chronology, shift and fixed-iterate actions, compatible relative covers, proper or end-proper intervals, and exact complete-horizon final-root naturality.",
+      "prerequisites": [
+        "VIRTUAL_FINITE_WORD_ROOT_PORTRAIT_AUTHORIZATION",
+        "DIRECT_DECORATION_END_PRIME_END_COFINALITY",
+        "END_BLOWUP_PROJECTION_NO_GO",
+        "NORMALIZED_RETIMED_GERM_CONSTANCY",
+        "FIXED_ITERATE_END_FIBER_EXTENSION"
+      ],
+      "open_prerequisites": [
+        "VIRTUAL_FINITE_WORD_ROOT_PORTRAIT_AUTHORIZATION",
+        "DIRECT_DECORATION_END_PRIME_END_COFINALITY"
+      ],
+      "evidence": "critical_chronology_and_retimed_telescope.md#16-exact-source-facing-residual",
+      "evidence_path": "research/mlc_unified/critical_chronology_and_retimed_telescope.md"
+    },
+    {
+      "id": "TERMINAL_KL_SUBMULTICURVE_BINDER_SELECTOR",
+      "downstream": 29,
+      "statement": "Using the physical connecting subfamily and the crest-to-skipping binder, instantiate the provenance relation for every retained binder occurrence and propagate its ordered KL horizontal submulticurves, full pregluing eta/xi incidence tags, skip witness, width charge, and final-root restriction behavior through the complete terminal stage. This is a width selector, not an equality between original KKL and KL prime ends.",
+      "prerequisites": [
+        "TERMINAL_WAVE_KL_CONNECTING_SUBFAMILY",
+        "TERMINAL_WAVE_CREST_TO_KL_SKIPPING_BINDER",
+        "TERMINAL_KL_SUBMULTICURVE_OVERFLOW_TRANSFER",
+        "DIRECT_DECORATION_WAVE_PROOF_USE_LEDGER"
+      ],
+      "open_prerequisites": [
+        "TERMINAL_WAVE_KL_CONNECTING_SUBFAMILY",
+        "TERMINAL_WAVE_CREST_TO_KL_SKIPPING_BINDER",
+        "DIRECT_DECORATION_WAVE_PROOF_USE_LEDGER"
+      ],
+      "evidence": "terminal_dense_obstacle_and_submulticurve_replacement.md#6-exact-replacement-obligations",
+      "evidence_path": "research/mlc_unified/terminal_dense_obstacle_and_submulticurve_replacement.md"
+    },
+    {
+      "id": "TERMINAL_TAGGED_ENDPOINT_ACCESS_MATCH",
+      "downstream": 29,
+      "statement": "For every proof-used terminal restriction retained by the full physical response, compute the exact five-way endpoint records and prove the protected endpoint occurrences avoid the outer and central cases and lie on the correctly tile-tagged eta_{i_*} or xi_{i_*+1} occurrence attached to v_*. Preserve multiple ideal incidences and record the first wrong tag, central endpoint, or competing occurrence; physical vertex incidence alone is insufficient.",
+      "prerequisites": [
+        "TERMINAL_K1_UNIQUE_PUZZLE_VERTEX_ANCHOR",
+        "TERMINAL_SEAM_NORMALIZED_PATH_LIFT",
+        "TERMINAL_KL_FINITE_ENDPOINT_FIVE_WAY_CLASSIFICATION",
+        "DIRECT_DECORATION_WAVE_PROOF_USE_LEDGER"
+      ],
+      "open_prerequisites": [
+        "DIRECT_DECORATION_WAVE_PROOF_USE_LEDGER"
+      ],
+      "evidence": "terminal_protected_access_reduction.md#obligation-52",
+      "evidence_path": "research/mlc_unified/terminal_protected_access_reduction.md"
+    },
+    {
+      "id": "VIRTUAL_DISCONNECTED_MARKING_TRANSFER",
+      "downstream": 29,
+      "statement": "For every two-step virtual satellite-copy chain, the next satellite portrait canonically realizes actual second-scale puzzle or generalized polynomial-like bases and polynomial iterates on the direct-decoration pullback cylinders and end fibers, equivariantly under the univalent shift and naturally under authorized root enlargement, with complete critical, sheet, access, obstacle, terminal-return, and presentation data.",
+      "prerequisites": [
+        "DIRECT_DECORATION_PULLBACK_COMPACTIFICATION",
+        "PULLBACK_GAP_ENLARGEMENT_NATURALITY",
+        "FINITE_CYLINDER_COMMUTING_ITERATE_LIFT",
+        "VIRTUAL_CYLINDER_TARGET_ADDRESS_SELECTOR",
+        "VIRTUAL_FINITE_WORD_ROOT_PORTRAIT_AUTHORIZATION",
+        "DIRECT_DECORATION_END_PRIME_END_COFINALITY",
+        "VIRTUAL_END_BLOWUP_REALIZATION"
+      ],
+      "open_prerequisites": [
+        "VIRTUAL_CYLINDER_TARGET_ADDRESS_SELECTOR",
+        "VIRTUAL_FINITE_WORD_ROOT_PORTRAIT_AUTHORIZATION",
+        "DIRECT_DECORATION_END_PRIME_END_COFINALITY",
+        "VIRTUAL_END_BLOWUP_REALIZATION"
+      ],
+      "evidence": "virtual_cantor_pullback_compactification.md#10-attempted-scale-two-marking",
+      "evidence_path": "research/mlc_unified/virtual_cantor_pullback_compactification.md"
+    },
+    {
+      "id": "VIRTUAL_CANTOR_PACKAGE_REALIZATION",
+      "downstream": 28,
+      "statement": "Every actual intermediate virtual-Molecule scale has an analytically realized compact address space of actual small-Julia components with exact polynomial branch, return, parent, sheet, critical-address, escape, localization, presentation, terminal-compatibility, and final-root-enlargement data, constructed without downstream width, compactness, or rigidity conclusions.",
+      "prerequisites": [
+        "DIRECT_DECORATION_PULLBACK_COMPACTIFICATION",
+        "PULLBACK_GAP_ENLARGEMENT_NATURALITY",
+        "VIRTUAL_DISCONNECTED_MARKING_TRANSFER"
+      ],
+      "open_prerequisites": [
+        "VIRTUAL_DISCONNECTED_MARKING_TRANSFER"
+      ],
+      "evidence": "virtual_cantor_pullback_compactification.md#10-attempted-scale-two-marking",
+      "evidence_path": "research/mlc_unified/virtual_cantor_pullback_compactification.md"
+    },
+    {
+      "id": "WAVE_TO_KL_ADDRESS_ACCESS_SELECTOR",
+      "downstream": 28,
+      "statement": "For every bound proof-use geometric trace, construct a compatible atlas of actual finite puzzle pseudo-pieces and carrier-relative complements. Cut the trace at every central/tile seam, chart only central segments centrally, retain tile segments as actual path classes with multiplicity, and preserve covering-versus-inclusion typing, localization subgroups, cyclic order, both grid directions, the separate root transition, and final-root behavior. The strong obstacle-free native collar is ruled out for proper forward-invariant carriers. The width branch must instead instantiate the provenance-preserving KL submulticurve selector on a binder-complete connecting subfamily; exact carrier-pair prime-end naturality separately requires the original endpoint’s full tagged strip address.",
+      "prerequisites": [
+        "DIRECT_DECORATION_COMPONENT_ADDRESS_FINITE_PHASE_SKELETON",
+        "CARRIER_ACCESS_TO_KL_MULTICURVE_BRIDGE",
+        "FINITE_GRID_AND_TERMINAL_KL_PSEUDOPIECE_CONFORMAL_IDEAL_BOUNDARY",
+        "TERMINAL_LOCAL_KL_KKL_ALIGNMENT_RECORD",
+        "TERMINAL_LOCAL_CHANNEL_TO_KL_WELDING",
+        "TERMINAL_CERTIFIED_CHANNEL_FINAL_ROOT_STABILITY",
+        "TERMINAL_FORWARD_INVARIANT_CARRIER_DENSE_OBSTACLE_NO_GO",
+        "TERMINAL_WAVE_KL_CONNECTING_SUBFAMILY",
+        "TERMINAL_KL_SUBMULTICURVE_BINDER_SELECTOR",
+        "TERMINAL_TAGGED_ENDPOINT_ACCESS_MATCH",
+        "TERMINAL_ANCHOR_COLLAR_OR_RESTRICTION_OBSTRUCTION",
+        "DIRECT_DECORATION_WAVE_PROOF_USE_LEDGER"
+      ],
+      "open_prerequisites": [
+        "TERMINAL_WAVE_KL_CONNECTING_SUBFAMILY",
+        "TERMINAL_KL_SUBMULTICURVE_BINDER_SELECTOR",
+        "TERMINAL_TAGGED_ENDPOINT_ACCESS_MATCH",
+        "DIRECT_DECORATION_WAVE_PROOF_USE_LEDGER"
+      ],
+      "evidence": "wave_to_kl_address_access_selector.md#6-terminal-anchor-attempt-and-exact-first-obstruction",
+      "evidence_path": "research/mlc_unified/wave_to_kl_address_access_selector.md"
+    },
+    {
+      "id": "DIRECT_DECORATION_CANONICAL_KL_STAGE_ALIGNMENT",
+      "downstream": 27,
+      "statement": "For every stage named by DIRECT_DECORATION_WAVE_PROOF_USE_LEDGER, construct rather than assume the actual same-source canonical/KL seed, source and target labels, lifted basepoints, localization subgroups, separately typed dynamical covering and inclusion immersion, central chart, tile charts, and exact central/tile seam equalizers, and instantiate the proved relation spans on that glued datum. The first map, seed, basepoint, label, subgroup, or seam mismatch is the obstruction certificate.",
+      "prerequisites": [
+        "DIRECT_DECORATION_WAVE_PROOF_USE_LEDGER",
+        "DIRECT_DECORATION_BIGRADED_KL_STAGE_GRID",
+        "ONE_DIMENSIONAL_CYLINDER_STAGE_COLLAPSE_NO_GO",
+        "WAVE_TO_KL_ADDRESS_ACCESS_SELECTOR",
+        "CANONICAL_KL_RESTRICTED_INTERFACE_CLASSIFICATION",
+        "DIRECT_DECORATION_PULLBACK_COMPACTIFICATION",
+        "KL_PSEUDOPIECE_CONFORMAL_IDEAL_BOUNDARY"
+      ],
+      "open_prerequisites": [
+        "DIRECT_DECORATION_WAVE_PROOF_USE_LEDGER",
+        "WAVE_TO_KL_ADDRESS_ACCESS_SELECTOR"
+      ],
+      "evidence": "canonical_kl_geometric_trace_proper_end_response.md#pe-2-canonicalkl-stage-alignment",
+      "evidence_path": "research/mlc_unified/canonical_kl_geometric_trace_proper_end_response.md"
+    },
+    {
+      "id": "VIRTUAL_PREFIX_LOCAL_SCALE_SELECTOR",
+      "downstream": 27,
+      "statement": "For every finite actual virtual-Molecule copy-chain prefix, the realized component package canonically selects an embedded nice puzzle or principal-nest base, actual component branches, sheets, critical chronology, and presentation/enlargement maps using only prefix-local dynamics, compatibly under prefix extension and without reading a completed Wave horizon, final proof-use trace, downstream bound, compactness, rigidity, or MLC conclusion.",
+      "prerequisites": [
+        "NATIVE_PRINCIPAL_NEST_RETURN_ATLAS",
+        "ISOTOPY_CLASS_RETURN_UNDERDETERMINATION",
+        "RETURN_ATLAS_ENLARGEMENT_NATURALITY",
+        "FIRST_DECORATION_SCALE_ESCAPE_ATLAS",
+        "CRITICAL_BASE_CYCLE_EXCLUSION",
+        "DECORATION_FAN_GROWTH",
+        "TERMINAL_CYCLE_HUBBARD_ANCHOR",
+        "VIRTUAL_CANTOR_PACKAGE_REALIZATION"
+      ],
+      "open_prerequisites": [
+        "VIRTUAL_CANTOR_PACKAGE_REALIZATION"
+      ],
+      "evidence": "virtual_scale_to_puzzle_selector.md#13-prefix-local-selector-and-downstream-trace-split",
+      "evidence_path": "research/mlc_unified/virtual_scale_to_puzzle_selector.md"
+    },
+    {
+      "id": "DIRECT_DECORATION_RELATION_PROPER_PATH_END_INTERVAL_CLASSIFICATION",
+      "downstream": 26,
+      "statement": "On every aligned stage, construct the tagged end-compactified geometric inverse-trace path space for every proof-use family, classify proper source paths and their actual KL, canonical relative-or-limit-defect, and target ideal-or-interior endpoint frames, retain all 0/1/>=2/infinite restriction multiplicities and subordination predicates, construct every iota^*I, prove pulled partial-marking disjointness and refinement by g^*I, and only then prove immersion properness on every whole proof-used interval and every complete end-interval required for KKL end-properness. A path is never labelled end-proper. The first competing or missing proper path, endpoint defect, access mismatch, overlapping pullback, refinement failure, or nonproper complete end-interval is the obstruction certificate.",
+      "prerequisites": [
+        "DIRECT_DECORATION_CANONICAL_KL_STAGE_ALIGNMENT",
+        "FULL_KL_PSEUDOPIECE_MAXIMAL_LIFT_PROPERNESS",
+        "PARAMETRIZED_PULLBACK_KKL_EXHAUSTION_NO_GO",
+        "KKL_IDEAL_PULLBACK_NATIVE",
+        "RESOLVED_INTERMEDIATE_RELATIVE_IDEAL_BOUNDARY",
+        "KL_PSEUDOPIECE_CONFORMAL_IDEAL_BOUNDARY",
+        "NONPROPER_LABEL_HULL_PULLBACK_NO_GO",
+        "PRIME_END_MARKING_ACTION_CRITERION"
+      ],
+      "open_prerequisites": [
+        "DIRECT_DECORATION_CANONICAL_KL_STAGE_ALIGNMENT"
+      ],
+      "evidence": "canonical_kl_geometric_trace_proper_end_response.md#pe-3-proper-path-and-end-interval-classification",
+      "evidence_path": "research/mlc_unified/canonical_kl_geometric_trace_proper_end_response.md"
+    },
+    {
+      "id": "VIRTUAL_RETURN_BASE_ATLAS",
+      "downstream": 26,
+      "statement": "Every actual virtual-Molecule block and finite provisional root package has source-defined open nice return localizations and actual atomic branch components with integer iterates, complete critical and degree words, exact component, parent, obstacle, localization, sheet, and protected-access phase data, together with exact enlargement morphisms and demand-bijective no-birth maps wherever complete language stability is claimed.",
+      "prerequisites": [
+        "RETURN_BASE_UNDERDETERMINATION",
+        "NATIVE_PRINCIPAL_NEST_RETURN_ATLAS",
+        "ISOTOPY_CLASS_RETURN_UNDERDETERMINATION",
+        "VIRTUAL_PREFIX_LOCAL_SCALE_SELECTOR",
+        "CONNECTED_CARRIER_NO_MINIMUM",
+        "PROTECTED_REGULATED_CONNECTOR_REALIZATION",
+        "CRITICAL_VALUE_CORRIDOR_CRITERION"
+      ],
+      "open_prerequisites": [
+        "VIRTUAL_PREFIX_LOCAL_SCALE_SELECTOR"
+      ],
+      "evidence": "virtual_return_base_atlas.md#11-promotion-decision",
+      "evidence_path": "research/mlc_unified/virtual_return_base_atlas.md"
+    },
+    {
+      "id": "VIRTUAL_RETURN_BRANCH_LANGUAGE",
+      "downstream": 25,
+      "statement": "Every actual virtual-Molecule block has, before any Wave stopping execution, an actual typed analytic branch graph whose prefix-closed language contains every branch-component extension that an admissible Wave continuation can request, whose words compose on nonempty actual domains with complete iterate, component, critical, degree, obstacle, localization, sheet, and protected-access data, and whose certified words persist naturally under final-root enlargement with no new demand when complete stability is asserted.",
+      "prerequisites": [
+        "RETURN_PATH_LANGUAGE",
+        "DEMAND_CLOSED_RETURN_ATLAS_COMPILER",
+        "RETURN_ATLAS_ENLARGEMENT_NATURALITY",
+        "VIRTUAL_RETURN_BASE_ATLAS",
+        "VIRTUAL_WAVE_DEMAND_SCHEMA"
+      ],
+      "open_prerequisites": [
+        "VIRTUAL_RETURN_BASE_ATLAS",
+        "VIRTUAL_WAVE_DEMAND_SCHEMA"
+      ],
+      "evidence": "virtual_return_branch_language.md#10-promotion-decision-and-next-analytic-task",
+      "evidence_path": null
+    },
+    {
+      "id": "DIRECT_DECORATION_CANONICAL_KL_RELATION_PROPER_END_RESPONSE",
+      "downstream": 24,
+      "statement": "For every classified proof-use geometric restriction family, retain every component and limit contact with zero omission or construct an explicit nonnegative omitted-family WAD/Value response, prove row-space and Value observability, and bound the complete transition charge by universal constants independent of satellite period, rotation number, and horizon length. PARAMETRIZED_PULLBACK_KKL_EXHAUSTION_NO_GO forbids a bounded-sheet or raw-width shortcut. This node contains no final-root enlargement claim.",
+      "prerequisites": [
+        "DIRECT_DECORATION_RELATION_PROPER_PATH_END_INTERVAL_CLASSIFICATION",
+        "KKL_TYPED_VALUE_INCIDENCE",
+        "VALUE_RESPONSE_NO_GO",
+        "VALUE_FEATURE_ROWSPACE",
+        "WAD_DOMINATION_RESPONSE",
+        "PORT_FUTURE_CLOSURE_NO_GO",
+        "HILBERT_TRACE_GLUE_CALCULUS"
+      ],
+      "open_prerequisites": [
+        "DIRECT_DECORATION_RELATION_PROPER_PATH_END_INTERVAL_CLASSIFICATION"
+      ],
+      "evidence": "canonical_kl_geometric_trace_proper_end_response.md#pe-4-relation-response",
+      "evidence_path": "research/mlc_unified/canonical_kl_geometric_trace_proper_end_response.md"
+    },
+    {
+      "id": "VIRTUAL_PROVISIONAL_COMPLEMENT_PAIR",
+      "downstream": 24,
+      "statement": "For every actual virtual-Molecule block, finite provisional root package, and compatible finite return path, there is a nondegenerate full forward-coherent carrier containing all critical values of the return, with an actual covering/inclusion complement pair, compatible cusp-free localizations, exact selected-component routing, and a complete absorb-or-separate obstacle ledger.",
+      "prerequisites": [
+        "VIRTUAL_RETURN_BRANCH_LANGUAGE",
+        "FORWARD_COHERENT_COMPLEMENT_PAIR",
+        "ROOT_PULLBACK_FOREST_EQUIVALENCE",
+        "FINITE_LOCAL_SATURATION",
+        "PROTECTED_REGULATED_CONNECTOR_REALIZATION",
+        "CRITICAL_VALUE_CORRIDOR_CRITERION"
+      ],
+      "open_prerequisites": [
+        "VIRTUAL_RETURN_BRANCH_LANGUAGE"
+      ],
+      "evidence": "virtual_wave_marked_correspondence.md#virtual_provisional_complement_pair-open",
+      "evidence_path": "research/mlc_unified/virtual_wave_marked_correspondence.md"
+    },
+    {
+      "id": "DIRECT_DECORATION_FINAL_ROOT_RELATION_NO_BIRTH",
+      "downstream": 23,
+      "statement": "Under every certified final-root enlargement, prove the required subgroup reflection and exhaustion equalities and a Cartesian bijection of compactified geometric trace components, proper-path multiplicities, source and target endpoint frames, accesses, obstacles, nonproper bridges, and cyclic order. The first born, lost, or merged sheet, component, proper path, endpoint, access, obstacle, or bridge is the obstruction certificate. This geometric theorem is independent of the relation width-response estimate.",
+      "prerequisites": [
+        "DIRECT_DECORATION_RELATION_PROPER_PATH_END_INTERVAL_CLASSIFICATION",
+        "KL_LOCALIZATION_SHEET_RESOLUTION_FACTORIZATION",
+        "PULLBACK_GAP_ENLARGEMENT_NATURALITY",
+        "MARKED_PAIR_ENLARGEMENT_NATURALITY",
+        "RETURN_ATLAS_ENLARGEMENT_NATURALITY"
+      ],
+      "open_prerequisites": [
+        "DIRECT_DECORATION_RELATION_PROPER_PATH_END_INTERVAL_CLASSIFICATION"
+      ],
+      "evidence": "canonical_kl_geometric_trace_proper_end_response.md#pe-5-final-root-relation-no-birth",
+      "evidence_path": "research/mlc_unified/canonical_kl_geometric_trace_proper_end_response.md"
+    },
+    {
+      "id": "DIRECT_DECORATION_OUTER_CAP_FOOTPRINT",
+      "downstream": 23,
+      "statement": "After the complete proof-use ledger, actual canonical/KL stage alignment, tagged geometric inverse-trace proper-path and whole-end-interval classification, and uniform relation response are constructed, determine the physical complement-access footprint of every retained lambda, xi, and eta source end on every source label, sheet, coset, and deck phase. Prove endpoint subordination, preserve distinct accesses and cyclic order, merge exactly the target ideal intervals met by one physical footprint, and give an explicit exclusion crosscut for every omitted source arc. The canonical infinite q/e cover is not the whole actual KL tile, and the two certified wrapping clusters do not supply the complete physical footprint. The first uncertified landing component, target-interior access, missing end, access merger, omitted window, or competing lift is the obstruction certificate. Final-root no-birth remains a separate obligation.",
+      "prerequisites": [
+        "KL_CANONICAL_LOCALIZATION_FORCED_COLLISION",
+        "KL_LOCALIZATION_SHEET_RESOLUTION_FACTORIZATION",
+        "KAHN_ITERATE_COMPLEMENTARY_COMPONENT_ALIGNMENT",
+        "RESOLVED_INTERMEDIATE_RELATIVE_IDEAL_BOUNDARY",
+        "CANONICAL_KL_WHOLE_TILE_CORRESPONDENCE_NO_GO",
+        "CANONICAL_KL_RESTRICTED_INTERFACE_CLASSIFICATION",
+        "KL_PSEUDOPIECE_CONFORMAL_IDEAL_BOUNDARY",
+        "GENERAL_ANNULUS_IMMERSION_LOWER_STRIP_NO_GO",
+        "DIRECT_DECORATION_CANONICAL_KL_RELATION_PROPER_END_RESPONSE"
+      ],
+      "open_prerequisites": [
+        "DIRECT_DECORATION_CANONICAL_KL_RELATION_PROPER_END_RESPONSE"
+      ],
+      "evidence": "direct_decoration_outer_port_footprint.md#10-remaining-actual-immersion-footprint-record",
+      "evidence_path": "research/mlc_unified/direct_decoration_outer_port_footprint.md"
+    },
+    {
+      "id": "H2_VIRTUAL_CORE_COCYCLE_REALIZATION",
+      "downstream": 23,
+      "statement": "Every virtual-Molecule block has an access-complete selected finite-horizon correspondence whose resolved tokens carry the exact typed source-column incidence B=N^T, KKL left/right Value weights, endpoint frames, raw WAD transport, and WAD-to-core incidence through every proof-used stopping time.",
+      "prerequisites": [
+        "H1_CELL_TREE_EXTRACTION",
+        "H1_ANALYTIC_ACCESS_REALIZATION",
+        "H1_FINITE_HORIZON_INFLATION",
+        "FRAMED_RETURN_SPECTRAL_INVARIANCE",
+        "KKL_TYPED_VALUE_INCIDENCE"
+      ],
+      "open_prerequisites": [
+        "H1_CELL_TREE_EXTRACTION",
+        "H1_ANALYTIC_ACCESS_REALIZATION",
+        "H1_FINITE_HORIZON_INFLATION"
+      ],
+      "evidence": "virtual_core_cocycle_program.md#3-the-raw-realization-theorem",
+      "evidence_path": "research/mlc_unified/virtual_core_cocycle_program.md"
+    },
+    {
+      "id": "VIRTUAL_ACCESS_ACTION_CERTIFICATE",
+      "downstream": 23,
+      "statement": "Every virtual provisional complement pair has a normalized relative-cover phase, complete prime-end endpoint and interval data, exact covering-versus-immersion endpoint containment, all required proper/end-proper flags, and commuting analytic and prime-end squares under every certified collision-free package enlargement.",
+      "prerequisites": [
+        "VIRTUAL_PROVISIONAL_COMPLEMENT_PAIR",
+        "PRIME_END_MARKING_ACTION_CRITERION",
+        "RELATIVE_COVER_LIFT",
+        "PRIME_END_RETURN",
+        "PROTECTED_REGULATED_CONNECTOR_REALIZATION"
+      ],
+      "open_prerequisites": [
+        "VIRTUAL_PROVISIONAL_COMPLEMENT_PAIR"
+      ],
+      "evidence": "virtual_wave_marked_correspondence.md#virtual_access_action_certificate-open",
+      "evidence_path": "research/mlc_unified/virtual_wave_marked_correspondence.md"
+    },
+    {
+      "id": "DIRECT_DECORATION_PSEUDO_PIECE_PATH_LIFT_EXHAUSTION",
+      "downstream": 22,
+      "statement": "For every nontrivial proof-used direct-decoration marking, combine the proved geometric inverse-trace proper-path and whole-end-interval classification, the uniform relation response, the complete physical lambda/xi/eta footprint, and the independent Cartesian final-root no-birth theorem. Then prove the KKL universal pullback predicates, maximal safe-set components, pairwise disjoint pulled partial marking, refinement by the dynamical covering marking, and properness or end-properness on every complete proof-used interval. Every competing proper path, nonproper bridge, target-interior endpoint, source label, sheet, coset, deck phase, and response contribution must be retained or explicitly excluded. Parameterized maximal lifts alone do not exhaust the KKL geometric restriction.",
+      "prerequisites": [
+        "KL_CANONICAL_LOCALIZATION_FORCED_COLLISION",
+        "KL_LOCALIZATION_SHEET_RESOLUTION_FACTORIZATION",
+        "KAHN_ITERATE_COMPLEMENTARY_COMPONENT_ALIGNMENT",
+        "NONPROPER_LABEL_HULL_PULLBACK_NO_GO",
+        "KL_PSEUDOPIECE_CONFORMAL_IDEAL_BOUNDARY",
+        "CANONICAL_KL_WHOLE_TILE_CORRESPONDENCE_NO_GO",
+        "CANONICAL_KL_RESTRICTED_INTERFACE_CLASSIFICATION",
+        "DIRECT_DECORATION_OUTER_CAP_FOOTPRINT",
+        "DIRECT_DECORATION_FINAL_ROOT_RELATION_NO_BIRTH"
+      ],
+      "open_prerequisites": [
+        "DIRECT_DECORATION_OUTER_CAP_FOOTPRINT",
+        "DIRECT_DECORATION_FINAL_ROOT_RELATION_NO_BIRTH"
+      ],
+      "evidence": "direct_decoration_outer_port_footprint.md#10-remaining-actual-immersion-footprint-record",
+      "evidence_path": "research/mlc_unified/direct_decoration_outer_port_footprint.md"
+    },
+    {
+      "id": "VIRTUAL_WAVE_MARKED_CORRESPONDENCE",
+      "downstream": 22,
+      "statement": "Every actual virtual-Molecule block has a horizon-independent prefix-closed language of admissible finite return words and, for every finite provisional root package and compatible word, an actual marked hyperbolic carrier complement and covering/immersion pair whose pulled marking refines the immersed marking, whose marked action is exact, whose used intervals are proper or end-proper, and whose component, access, obstacle, degree, and localization data commute with every certified collision-free package enlargement.",
+      "prerequisites": [
+        "VIRTUAL_RETURN_BRANCH_LANGUAGE",
+        "VIRTUAL_PROVISIONAL_COMPLEMENT_PAIR",
+        "VIRTUAL_ACCESS_ACTION_CERTIFICATE",
+        "MARKED_PAIR_ENLARGEMENT_NATURALITY"
+      ],
+      "open_prerequisites": [
+        "VIRTUAL_RETURN_BRANCH_LANGUAGE",
+        "VIRTUAL_PROVISIONAL_COMPLEMENT_PAIR",
+        "VIRTUAL_ACCESS_ACTION_CERTIFICATE"
+      ],
+      "evidence": "virtual_wave_marked_correspondence.md#9-dependency-correction",
+      "evidence_path": "research/mlc_unified/virtual_wave_marked_correspondence.md"
+    },
+    {
+      "id": "DIRECT_DECORATION_ALL_DEPTH_CONTACT_CLOSURE",
+      "downstream": 21,
+      "statement": "For every proof-used direct-decoration end and complete horizon, choose one exact source branch granularity and realize the complete current-separator interface state on the restricted canonical-to-KL comparison certified by DIRECT_DECORATION_PSEUDO_PIECE_PATH_LIFT_EXHAUSTION, including sibling or multi-branch incidence, active sides, phase, orientation, endpoint and prime-end markings, protected accesses, obstacles, branch itineraries, localization subgroups, and every live coset in a_*^(-1)(H_t)/H_s. Construct an exact incidence- or restriction-valued transport closed on a finite or future-faithfully compact sheet-sensitive state, and prove completeness on that asserted domain, Sobolev trace admissibility, pulled-versus-immersed compatibility, protected-data compatibility, and stability under authorized root enlargement. Neither KL_CANONICAL_LOCALIZATION_FORCED_COLLISION nor the whole-tile correspondence no-go permits silently replacing this restricted state by an embedded or factorwise-completed whole pseudo-piece. The first untracked omitted window, coset merger, missing footprint, exclusion crosscut, complete end-interval, marked interface atom, trace map, or enlargement transport is the failure certificate.",
+      "prerequisites": [
+        "DIRECT_DECORATION_PULLBACK_COMPACTIFICATION",
+        "ACTIVE_INACTIVE_PHYSICAL_CELL",
+        "ATTACHMENT_ARC_OPEN_ATOM_REFINEMENT",
+        "BINARY_DIRECT_DECORATION_NESTED_SEPARATOR_CALCULUS",
+        "FIXED_BLOCK_BINARY_CONTACT_AUTOMATON",
+        "FINITE_LINEAR_LABEL_MARKING_ENUMERATOR",
+        "KL_CANONICAL_LOCALIZATION_FORCED_COLLISION",
+        "KL_LOCALIZATION_SHEET_RESOLUTION_FACTORIZATION",
+        "DIRECT_DECORATION_PSEUDO_PIECE_PATH_LIFT_EXHAUSTION"
+      ],
+      "open_prerequisites": [
+        "DIRECT_DECORATION_PSEUDO_PIECE_PATH_LIFT_EXHAUSTION"
+      ],
+      "evidence": "direct_decoration_path_lifted_collar_certificate.md#10-the-conditional-path-lift-exhaustion-gate",
+      "evidence_path": "research/mlc_unified/direct_decoration_path_lifted_collar_certificate.md"
+    },
+    {
+      "id": "VIRTUAL_WAVE_HORIZON_CERTIFICATE",
+      "downstream": 21,
+      "statement": "Every actual virtual-Molecule block admits an explicitly stopped finite Wave horizon, with authorized stage localizations and branches, a complete finite proof-use ledger, a finite resolved component/dependency universe or proved future-faithful summary, actual component metadata, and a final-root-enlargement certificate excluding every later dependency path to an omitted earlier record.",
+      "prerequisites": [
+        "HORIZON_FIRST_INVENTORY_AUDIT",
+        "RESOLVED_FINITE_WAVE_HORIZON_COMPILER",
+        "VIRTUAL_WAVE_MARKED_CORRESPONDENCE"
+      ],
+      "open_prerequisites": [
+        "VIRTUAL_WAVE_MARKED_CORRESPONDENCE"
+      ],
+      "evidence": "virtual_wave_horizon_certificate.md#9-virtual-instantiation-audit",
+      "evidence_path": null
+    },
+    {
+      "id": "H2_UNIFORM_CORE_WAD_DIMENSION",
+      "downstream": 20,
+      "statement": "Every virtual-Molecule block admits source-faithful core and compositional WAD modules of universal dimensions d<=d0 and w<=w0, with every enabled WAD branch descending through its quotient and the complete fixed family of future observations remaining exact.",
+      "prerequisites": [
+        "H2_VIRTUAL_CORE_COCYCLE_REALIZATION",
+        "WAD_TRANSPORT_QUOTIENT_CRITERION",
+        "WAD_FUTURE_OBSERVABILITY",
+        "UNBOUNDED_DIMENSION_ENTROPY_NO_GO"
+      ],
+      "open_prerequisites": [
+        "H2_VIRTUAL_CORE_COCYCLE_REALIZATION"
+      ],
+      "evidence": "virtual_core_cocycle_program.md#5-the-uniform-compression-package",
+      "evidence_path": "research/mlc_unified/virtual_core_cocycle_program.md"
+    },
+    {
+      "id": "DIRECT_DECORATION_TRACE_WELDING_COMPACTNESS",
+      "downstream": 19,
+      "statement": "For every contact-closed proof-used physical end, the entrance and exit prime-end trace identifications induced by whole-tail uniformization act boundedly and precompactly in the fixed response and Value trace norm, with uniform inverse, phase, orientation, and protected-marking control; alternatively retain the full welding cocycle in a proved compact state. The state must retain the separately typed immersion-restriction and covering-transport factors, together with the fiber-product or Beck-Chevalley interchange data needed for word composition; multiplying one-step endomorphisms is not a substitute.",
+      "prerequisites": [
+        "DIRECT_DECORATION_PULLBACK_COMPACTIFICATION",
+        "DIRECT_DECORATION_ALL_DEPTH_CONTACT_CLOSURE",
+        "REGULAR_INTERFACE_FIBER_PRODUCT_RESPONSE",
+        "FIXED_STANDARD_NECK_MULTIPORT_COMPACTIFICATION",
+        "WOT_WELDING_ALGEBRA_NO_GO",
+        "DYADIC_BOTTCHER_EXTERNAL_TRACE_ISOMETRY",
+        "PULL_PUSH_WELDING_WORD_COMPOSITION_NO_GO"
+      ],
+      "open_prerequisites": [
+        "DIRECT_DECORATION_ALL_DEPTH_CONTACT_CLOSURE"
+      ],
+      "evidence": "research_push_8_assessment_and_integration.md#12-exact-failure-of-word-functoriality",
+      "evidence_path": "research/mlc_unified/research_push_8_assessment_and_integration.md"
+    },
+    {
+      "id": "FINITE_LIVE_COMMON_REFINEMENT_FRONTIER",
+      "downstream": 19,
+      "statement": "After the complete source-faithful horizon and marked current-separator incidence state are frozen, every proof-used unequal-footprint, access, obstacle, response, ideal, enlargement, and transported-contact trace atom has a proved finite last-live stage, or admits a future-faithful compact quotient preserving every response and Value observable. Raw contact localization for one nested chain does not supply this marked analytic frontier.",
+      "prerequisites": [
+        "DIRECT_DECORATION_ALL_DEPTH_CONTACT_CLOSURE",
+        "CLOSED_FORM_PUSHFORWARD_NO_GO"
+      ],
+      "open_prerequisites": [
+        "DIRECT_DECORATION_ALL_DEPTH_CONTACT_CLOSURE"
+      ],
+      "evidence": "research_push_5_assessment_and_integration.md#13-replacement-invariant-and-next-theorem",
+      "evidence_path": null
+    },
+    {
+      "id": "DIRECT_DECORATION_TRACE_COLLAR_REALIZATION",
+      "downstream": 18,
+      "statement": "For every proof-used direct-decoration end, choose and source-lock the actual branch package and the restricted canonical-to-KL interface certified upstream; construct its physical cells and complete marked current-separator trace interfaces on that asserted domain; retain the least compatible multi-port response state, incidence-valued boundary transport, stage-normalized protected overlay, phase, orientation, and separately typed pulled-versus-immersed trace factors; prove safe closed elimination or compact retention, no-bypass resistance or full-response coercivity, fiber-product word composition, final-root no-new-sheet naturality, and sufficient uniform control for every claimed transition margin. A homogeneous Hilbert trace quotient is now proved only on a compact subarc in the relative interior of one intrinsic KL universal-cover tile collar. The proof-used physical interval identification, complete-interval immersion transport within the restricted interface, connected compatible collar core, uniform norm, Beck–Chevalley square, omitted-window charge, and enlargement component bijection remain open; no full factorwise or whole-tile completion is an admissible substitute.",
+      "prerequisites": [
+        "DIRECT_DECORATION_PULLBACK_COMPACTIFICATION",
+        "KL_TILE_INTERIOR_HOMOGENEOUS_TRACE",
+        "PULLBACK_GAP_ENLARGEMENT_NATURALITY",
+        "SERIAL_EXHAUSTION_RESISTANCE_BOUND",
+        "FULL_TRACE_RECTANGLE_DTN",
+        "PULLED_EQUIPOTENTIAL_SERIAL_RECTANGLE_NO_GO",
+        "ACTIVE_INACTIVE_PHYSICAL_CELL",
+        "ATTACHMENT_ARC_OPEN_ATOM_REFINEMENT",
+        "REGULAR_INTERFACE_FIBER_PRODUCT_RESPONSE",
+        "FIXED_MODULUS_AMBIENT_END_NO_GO",
+        "SERIAL_ANNULUS_SINGLETON_BRIDGE",
+        "MULTIPORT_TRACE_GAUGE_AND_STRICTNESS_NO_GO",
+        "DIRECT_DECORATION_ALL_DEPTH_CONTACT_CLOSURE",
+        "FINITE_LIVE_COMMON_REFINEMENT_FRONTIER",
+        "DIRECT_DECORATION_TRACE_WELDING_COMPACTNESS",
+        "FINITE_LINEAR_LABEL_MARKING_ENUMERATOR",
+        "PULL_PUSH_WELDING_WORD_COMPOSITION_NO_GO"
+      ],
+      "open_prerequisites": [
+        "DIRECT_DECORATION_ALL_DEPTH_CONTACT_CLOSURE",
+        "FINITE_LIVE_COMMON_REFINEMENT_FRONTIER",
+        "DIRECT_DECORATION_TRACE_WELDING_COMPACTNESS"
+      ],
+      "evidence": "direct_decoration_path_lifted_collar_certificate.md#15-dependency-and-promotion-audit",
+      "evidence_path": "research/mlc_unified/direct_decoration_path_lifted_collar_certificate.md"
+    },
+    {
+      "id": "H2_UNIFORM_COUNTER_FOLLOWER",
+      "downstream": 18,
+      "statement": "Every virtual-Molecule block has a universal restricted counter/stack follower: finite decorated control and suffix memory, universally many bounded-increment geometric counters with a fixed guard catalog, a finite top-only stack alphabet, no hidden epsilon computation, fixed trace resolution, read-only macro parameters, and all emitted observables retained.",
+      "prerequisites": [
+        "H1_CELL_TREE_EXTRACTION",
+        "H1_ANALYTIC_ACCESS_REALIZATION",
+        "H1_FINITE_HORIZON_INFLATION",
+        "H2_VIRTUAL_CORE_COCYCLE_REALIZATION",
+        "FUTURE_EQUIVALENCE_AUTOMATON",
+        "FINITE_HORIZON_LANGUAGE_NO_GO",
+        "BOUNDED_MEMORY_AUTOMATON",
+        "COUNTER_SAFE_PUMPING",
+        "MEMORY_PROJECTION_PUMPING_NO_GO",
+        "ADDITIVE_COUNTER_MEMORY_NO_GO",
+        "REVERSE_WORD_STACK_MODEL",
+        "COUNTER_STACK_SAFE_LOOP"
+      ],
+      "open_prerequisites": [
+        "H1_CELL_TREE_EXTRACTION",
+        "H1_ANALYTIC_ACCESS_REALIZATION",
+        "H1_FINITE_HORIZON_INFLATION",
+        "H2_VIRTUAL_CORE_COCYCLE_REALIZATION"
+      ],
+      "evidence": "virtual_core_cocycle_program.md#5-the-uniform-compression-package",
+      "evidence_path": "research/mlc_unified/virtual_core_cocycle_program.md"
+    },
+    {
+      "id": "H2_VIRTUAL_CORRIDOR_GRAPH_REALIZATION",
+      "downstream": 18,
+      "statement": "Every virtual block assigned to the translation-clone branch has an actual finite-horizon core/Hubbard transition multigraph satisfying the exact corridor-to-clone criterion with universal reduced cross-section dimension, endpoint-window size, parallel-corridor count, label depth, and primitivity, together with complete critical and WAD-to-core itinerary incidence.",
+      "prerequisites": [
+        "H1_ANALYTIC_ACCESS_REALIZATION",
+        "H2_VIRTUAL_CORE_COCYCLE_REALIZATION",
+        "H2_UNIFORM_CORE_WAD_DIMENSION",
+        "KKL_TYPED_VALUE_INCIDENCE",
+        "KKL_TRANSLATION",
+        "EXACT_CORRIDOR_CLONE_CRITERION",
+        "ENDPOINT_DEFECT_ABSORPTION",
+        "FINITE_CORRIDOR_CLONE_UNION",
+        "CROSS_SECTION_DAG_EQUIVALENCE",
+        "ROBUST_CLONE_PRIMITIVITY",
+        "PRIMITIVE_BASE_CLONE_NO_GO",
+        "FINITE_STATE_CORRIDOR_CERTIFICATE",
+        "UNBOUNDED_DIMENSION_ENTROPY_NO_GO"
+      ],
+      "open_prerequisites": [
+        "H1_ANALYTIC_ACCESS_REALIZATION",
+        "H2_VIRTUAL_CORE_COCYCLE_REALIZATION",
+        "H2_UNIFORM_CORE_WAD_DIMENSION"
+      ],
+      "evidence": "dynamical_corridor_certificate.md#6-refined-realization-theorem",
+      "evidence_path": "research/mlc_unified/dynamical_corridor_certificate.md"
+    },
+    {
+      "id": "VIRTUAL_UNPROTECTED_ATOM_EXPOSURE",
+      "downstream": 18,
+      "statement": "For every actual virtual-Molecule Wave block after its complete horizon inventory and final root enlargement, each original root-shadow atom has an actual unprotected singleton access in the complement of its completed packet, witnessed by an access arc or the proved metric-collar criterion, with no port landing only on an added attachment and no protected impression relabeled free.",
+      "prerequisites": [
+        "INTERFACE_PROOF_USE_INVENTORY",
+        "VIRTUAL_WAVE_HORIZON_CERTIFICATE",
+        "AUGMENTED_PACKET_CLOSURE_AUDIT"
+      ],
+      "open_prerequisites": [
+        "VIRTUAL_WAVE_HORIZON_CERTIFICATE"
+      ],
+      "evidence": "augmented_packet_closure_audit.md#vaapc-p-unprotected-exposure",
+      "evidence_path": "research/mlc_unified/augmented_packet_closure_audit.md"
+    },
+    {
+      "id": "END_PLUMBING_TRACE_RESPONSE_CONTROL",
+      "downstream": 17,
+      "statement": "For every proof-used materialized end neck, realize the all-depth contact-closed physical trace interfaces and either prove exact constant-trace shorting or control the full multi-port Dirichlet-to-Neumann response and its endpoint welding cocycle by a compact summable state, compatibly with protected carriers, genuinely last-live ports, Value features, and the transition norm; prove uniform no-bypass resistance or an equivalent coercive full-response estimate before invoking a finite-depth strictness margin.",
+      "prerequisites": [
+        "FINITE_ELECTRODE_RESPONSE",
+        "SERIAL_EXHAUSTION_RESISTANCE_BOUND",
+        "SCALAR_NECK_TRACE_MODE_NO_GO",
+        "FULL_TRACE_RECTANGLE_DTN",
+        "TRACE_RESPONSE_SEMIGROUP",
+        "EQUIPOTENTIAL_COLLAPSE_CRITERION",
+        "TRACE_RENORMALIZED_NECK_ESTIMATE",
+        "END_TRACE_RESPONSE_COMPACTIFICATION",
+        "HILBERT_TRACE_GLUE_CALCULUS",
+        "TRACE_STABLE_STRICT_TRANSITION_TRANSFER",
+        "FIXED_STANDARD_NECK_MULTIPORT_COMPACTIFICATION",
+        "SERIAL_ANNULUS_SINGLETON_BRIDGE",
+        "MULTIPORT_TRACE_GAUGE_AND_STRICTNESS_NO_GO",
+        "WOT_WELDING_ALGEBRA_NO_GO",
+        "DIRECT_DECORATION_TRACE_COLLAR_REALIZATION",
+        "DIRECT_DECORATION_ALL_DEPTH_CONTACT_CLOSURE",
+        "FINITE_LIVE_COMMON_REFINEMENT_FRONTIER",
+        "DIRECT_DECORATION_TRACE_WELDING_COMPACTNESS"
+      ],
+      "open_prerequisites": [
+        "DIRECT_DECORATION_TRACE_COLLAR_REALIZATION",
+        "DIRECT_DECORATION_ALL_DEPTH_CONTACT_CLOSURE",
+        "FINITE_LIVE_COMMON_REFINEMENT_FRONTIER",
+        "DIRECT_DECORATION_TRACE_WELDING_COMPACTNESS"
+      ],
+      "evidence": "research_push_5_assessment_and_integration.md#7-exact-all-depth-bypass",
+      "evidence_path": null
+    },
+    {
+      "id": "H2_MEMORY_SAFE_PUMPING_COMPILATION",
+      "downstream": 17,
+      "statement": "Before support pumping, every memory-changing run is compiled into an exact typed checkpoint macro or the pumping summary is enlarged by a finite memory congruence whose repeated classes act identically on every relevant reachable counter/stack fiber, with endpoint guards, frames, terminal colors, and emitted observables preserved.",
+      "prerequisites": [
+        "H2_UNIFORM_COUNTER_FOLLOWER",
+        "MEMORY_PROJECTION_PUMPING_NO_GO",
+        "PURE_CORRIDOR_MACRO",
+        "COUNTER_STACK_SAFE_LOOP"
+      ],
+      "open_prerequisites": [
+        "H2_UNIFORM_COUNTER_FOLLOWER"
+      ],
+      "evidence": "virtual_core_cocycle_program.md#5-the-uniform-compression-package",
+      "evidence_path": "research/mlc_unified/virtual_core_cocycle_program.md"
+    },
+    {
+      "id": "H2_VIRTUAL_CLONE_REALIZATION",
+      "downstream": 17,
+      "statement": "Every virtual corridor routed to the translation-clone branch admits a source-licensed core whose irreducible non-permutation gate dimension and actual first-return depth K are universally bounded, whose common delay satisfies n>K, and whose complete typed incidence obeys the corrected negative-weight clone equation or a weighted perturbation below the explicit entropy gap at its own root. Its outgoing retained WAD satisfies Y<=(f^r)^*X+E for an actual pullback exponent r>=n, and every required finite-horizon WAD itinerary is realized.",
+      "prerequisites": [
+        "H2_VIRTUAL_CORRIDOR_GRAPH_REALIZATION",
+        "KKL_TYPED_VALUE_INCIDENCE",
+        "KKL_PRINTED_CLONE_EQUATION_NO_GO",
+        "KKL_CLONE_EIGEN",
+        "PRIMITIVE_INTEGER_ENTROPY_GAP",
+        "VARIABLE_CLONE_BLOCK_CONTRACTION",
+        "PERTURBED_CLONE_CONTRACTION",
+        "BOUNDED_ENTROPY_EIGENCONE",
+        "UNBOUNDED_DIMENSION_ENTROPY_NO_GO",
+        "WAD_DOMINATION_RESPONSE"
+      ],
+      "open_prerequisites": [
+        "H2_VIRTUAL_CORRIDOR_GRAPH_REALIZATION"
+      ],
+      "evidence": "virtual_clone_entropy.md#7-virtual-clone-realization-theorem",
+      "evidence_path": "research/mlc_unified/virtual_clone_entropy.md"
+    },
+    {
+      "id": "VIRTUAL_AUGMENTED_ATOM_PORT_CERTIFICATE",
+      "downstream": 17,
+      "statement": "Every actual virtual-Molecule Wave block, after the complete finite future inventory and final root enlargement, admits a source-faithful assignment whose connected fullifications cover all forbidden data, remain pairwise disjoint inside the authorized localization, retain pairwise disjoint explicit unprotected singleton ports to every original root-shadow atom through the complete horizon, transport equivariantly, and have uniformly bounded or future-faithfully compressed incidence.",
+      "prerequisites": [
+        "INTERFACE_PROOF_USE_INVENTORY",
+        "VIRTUAL_WAVE_HORIZON_CERTIFICATE",
+        "VIRTUAL_UNPROTECTED_ATOM_EXPOSURE",
+        "AUGMENTED_PACKET_CLOSURE_AUDIT",
+        "AUGMENTED_ATOM_COMMON_DOMAIN"
+      ],
+      "open_prerequisites": [
+        "VIRTUAL_WAVE_HORIZON_CERTIFICATE",
+        "VIRTUAL_UNPROTECTED_ATOM_EXPOSURE"
+      ],
+      "evidence": "augmented_packet_closure_audit.md#8-reduction-of-the-live-dynamical-gate",
+      "evidence_path": "research/mlc_unified/augmented_packet_closure_audit.md"
+    },
+    {
+      "id": "H2_RESPONSE_REALIZATION",
+      "downstream": 16,
+      "statement": "The KKL, DL25, and virtual marked surfaces admit a common bounded-terminal response form with universal extremal-energy comparison, distortion, lift multiplicity, congestion, and electrical-orientation control.",
+      "prerequisites": [
+        "H1_ANALYTIC_ACCESS_REALIZATION",
+        "RESPONSE_GLUE_CALCULUS",
+        "FINITE_ELECTRODE_RESPONSE",
+        "PORT_FUTURE_CLOSURE_NO_GO",
+        "WAD_DOMINATION_RESPONSE",
+        "FIXED_BLOCK_SPECTRAL_COMPARISON",
+        "COMMON_WIDTH_BRIDGE",
+        "DL_TILE_SCALING",
+        "WAD_CORRIDOR_SANDWICH",
+        "END_PLUMBING_TRACE_RESPONSE_CONTROL"
+      ],
+      "open_prerequisites": [
+        "H1_ANALYTIC_ACCESS_REALIZATION",
+        "END_PLUMBING_TRACE_RESPONSE_CONTROL"
+      ],
+      "evidence": "network_response_state.md#6-analytic-response-realization-theorem",
+      "evidence_path": "research/mlc_unified/network_response_state.md"
+    },
+    {
+      "id": "H2_VIRTUAL_SUPPORT_AUTOMATON",
+      "downstream": 16,
+      "statement": "After exact memory-safe compilation, every virtual-Molecule corridor has a universally finite source-faithful core-transfer automaton at a fixed trace resolution, with universal core/WAD dimensions, exact decorated language, typed source-column endpoint frames, compositional future-observable WAD incidence, retained loop emissions, and contextual returns routed to closed source-licensed entropy, transient extinction, or a calibrated common Frobenius/shear flag.",
+      "prerequisites": [
+        "H1_CELL_TREE_EXTRACTION",
+        "H1_ANALYTIC_ACCESS_REALIZATION",
+        "H1_FINITE_HORIZON_INFLATION",
+        "H2_UNIFORM_COUNTER_FOLLOWER",
+        "H2_UNIFORM_CORE_WAD_DIMENSION",
+        "H2_MEMORY_SAFE_PUMPING_COMPILATION",
+        "SOURCE_FUTURE_QUOTIENT",
+        "MARKOV_SIGNATURE_AUTOMATON",
+        "WAD_TRANSPORT_QUOTIENT_CRITERION",
+        "WAD_FUTURE_OBSERVABILITY",
+        "PURE_CORRIDOR_MACRO",
+        "COUNTER_STACK_SAFE_LOOP",
+        "FRAMED_RETURN_SPECTRAL_INVARIANCE",
+        "BOOLEAN_SUPPORT_FUNCTOR",
+        "SUPPORT_AUTOMATON_PUMPING",
+        "BOUNDED_BRANCH_SUPPORT_WITNESS",
+        "ZERO_ENTROPY_SHEAR_NORMAL_FORM",
+        "ZERO_ENTROPY_SHEAR_NO_GO",
+        "KKL_TYPED_VALUE_INCIDENCE",
+        "H2_VIRTUAL_CORE_COCYCLE_REALIZATION"
+      ],
+      "open_prerequisites": [
+        "H1_CELL_TREE_EXTRACTION",
+        "H1_ANALYTIC_ACCESS_REALIZATION",
+        "H1_FINITE_HORIZON_INFLATION",
+        "H2_UNIFORM_COUNTER_FOLLOWER",
+        "H2_UNIFORM_CORE_WAD_DIMENSION",
+        "H2_MEMORY_SAFE_PUMPING_COMPILATION",
+        "H2_VIRTUAL_CORE_COCYCLE_REALIZATION"
+      ],
+      "evidence": "virtual_support_automaton_construction.md#8-virtual-analytic-realization-theorem",
+      "evidence_path": "research/mlc_unified/virtual_support_automaton_construction.md"
+    },
+    {
+      "id": "VIRTUAL_COMMON_FREE_COMPONENT",
+      "downstream": 16,
+      "statement": "For every actual virtual-Molecule Wave block, after the complete root-shadow, protected-collar, obstacle, critical-value, and localization inventory is frozen through the full horizon, one free-domain component has simultaneous singleton ports to all required root-shadow clusters and remains valid after the final root enlargement.",
+      "prerequisites": [
+        "INTERFACE_PROOF_USE_INVENTORY",
+        "PROTECTED_FREE_COMPONENT_CRITERION",
+        "AUGMENTED_ATOM_COMMON_DOMAIN",
+        "VIRTUAL_AUGMENTED_ATOM_PORT_CERTIFICATE"
+      ],
+      "open_prerequisites": [
+        "VIRTUAL_AUGMENTED_ATOM_PORT_CERTIFICATE"
+      ],
+      "evidence": "virtual_common_free_component.md#8-exact-remaining-dynamical-proposition",
+      "evidence_path": "research/mlc_unified/virtual_common_free_component.md"
+    },
+    {
+      "id": "VIRTUAL_ROOT_CARRIER_SEPARATION",
+      "downstream": 16,
+      "statement": "Every virtual-Molecule block through the complete Wave horizon has one full root carrier containing all required forward shadows whose iterated pullback component partition contains each whole required package, realizes the prescribed parent routing and selected-sheet separation after all future data are included, matches the declared critical word, and stays in the admissible localization with an absorb-or-separate remainder.",
+      "prerequisites": [
+        "H1_CELL_TREE_EXTRACTION",
+        "ROOT_PULLBACK_FOREST_EQUIVALENCE",
+        "CRITICAL_VALUE_CORRIDOR_CRITERION",
+        "FINITE_OBSTACLE_FORWARD_CLOSURE"
+      ],
+      "open_prerequisites": [
+        "H1_CELL_TREE_EXTRACTION"
+      ],
+      "evidence": "root_pullback_virtual_carrier.md#7-refined-virtual-root-carrier-target",
+      "evidence_path": "research/mlc_unified/root_pullback_virtual_carrier.md"
+    },
+    {
+      "id": "H2_VIRTUAL_TRANSFER_TRICHOTOMY",
+      "downstream": 15,
+      "statement": "Every virtual-Molecule corridor has a universally bounded-dimensional source-faithful counter/stack-follower layered core model whose fiber-safe stack-neutral complete framed returns are exact clone translations, uniformly positive-entropy primitive windows, or nonexpanding transfers routed to transient extinction, pseudo-Siegel regularization, or a calibrated finite shear state, with nonstationary frame and flag changes controlled.",
+      "prerequisites": [
+        "H1_ANALYTIC_ACCESS_REALIZATION",
+        "H2_VIRTUAL_SUPPORT_AUTOMATON",
+        "H2_VIRTUAL_CLONE_REALIZATION",
+        "PERMUTATION_COCYCLE_GAUGE",
+        "IRREDUCIBLE_TRANSFER_ENTROPY_DICHOTOMY",
+        "ZERO_ENTROPY_SHEAR_NORMAL_FORM",
+        "DEFECT_RUN_DECOMPOSITION",
+        "ZERO_ENTROPY_SHEAR_NO_GO",
+        "PRIMITIVE_VALUE_AFFINE_CONTRACTION",
+        "CONDITIONAL_NEUTRAL_CORRIDOR_ABSORPTION"
+      ],
+      "open_prerequisites": [
+        "H1_ANALYTIC_ACCESS_REALIZATION",
+        "H2_VIRTUAL_SUPPORT_AUTOMATON",
+        "H2_VIRTUAL_CLONE_REALIZATION"
+      ],
+      "evidence": "corridor_entropy_shear_dichotomy.md#6-refined-virtual-transfer-trichotomy",
+      "evidence_path": "research/mlc_unified/corridor_entropy_shear_dichotomy.md"
+    },
+    {
+      "id": "VIRTUAL_PROTECTED_ROUTING_CERTIFICATE",
+      "downstream": 15,
+      "statement": "Every actual virtual-Molecule Wave block admits a source-faithful lamination-lifted or puzzle-cell regulated root tree whose fibers, edges, and fullification avoid all protected collar tails, whose iterated pullback components realize the complete routing and critical words, and whose obstacle, localization, future-access, and uniform-complexity clauses hold through the complete Wave horizon.",
+      "prerequisites": [
+        "INTERFACE_PROOF_USE_INVENTORY",
+        "VIRTUAL_ROOT_CARRIER_SEPARATION",
+        "PROTECTED_REGULATED_CONNECTOR_REALIZATION",
+        "PROTECTED_FREE_COMPONENT_CRITERION",
+        "VIRTUAL_COMMON_FREE_COMPONENT"
+      ],
+      "open_prerequisites": [
+        "VIRTUAL_ROOT_CARRIER_SEPARATION",
+        "VIRTUAL_COMMON_FREE_COMPONENT"
+      ],
+      "evidence": "protected_regulated_connector.md#8-exact-next-virtual-theorem",
+      "evidence_path": "research/mlc_unified/protected_regulated_connector.md"
+    },
+    {
+      "id": "H2_VALUE_FEATURE_REALIZATION",
+      "downstream": 14,
+      "statement": "Every positive-entropy block uses Value-faithful future-closed ports, proves uniform coefficient comparability inside each merged class, or retains a uniformly finite homogeneous vector of all outgoing KKL Value moments and transports it across the complete block.",
+      "prerequisites": [
+        "KKL_VALUE_CONTRACTION",
+        "WAD_DOMINATION_RESPONSE",
+        "VALUE_RESPONSE_NO_GO",
+        "VALUE_FEATURE_ROWSPACE",
+        "PRIMITIVE_VALUE_AFFINE_CONTRACTION",
+        "CLONED_VALUE_BLOCK_CONTRACTION",
+        "VARIABLE_CLONE_BLOCK_CONTRACTION",
+        "H2_VIRTUAL_CLONE_REALIZATION",
+        "H2_VIRTUAL_TRANSFER_TRICHOTOMY",
+        "H2_RESPONSE_REALIZATION"
+      ],
+      "open_prerequisites": [
+        "H2_VIRTUAL_CLONE_REALIZATION",
+        "H2_VIRTUAL_TRANSFER_TRICHOTOMY",
+        "H2_RESPONSE_REALIZATION"
+      ],
+      "evidence": "bc1_finite_port_response.md#8-exact-remaining-uniform-theorem",
+      "evidence_path": "research/mlc_unified/bc1_finite_port_response.md"
+    },
+    {
+      "id": "KKL_STATIONARY_FINAL_FIXED_COMPONENT_EXIT",
+      "downstream": 14,
+      "statement": "For m=b+2, choose one actual canonical graph component Q of Kcal^m and construct a measurable retained lamination B such that every alpha in A_m has a selected proper component beta_alpha in iota_m^*(alpha) joining Q to Kcal^m minus Q, with proper prime-end landing, fine/coarse filter survival, a repeated-incidence convention, and no duplicated transverse mass. Prove that every iota_m^*(alpha) contains its selected beta_alpha and hence W(A_m)<=W(B).",
+      "prerequisites": [
+        "KKL_STATIONARY_FINAL_COMPONENT_REALIZATION",
+        "KKL_STATIONARY_MARKED_ACCESS_ITINERARY",
+        "KKL_STATIONARY_POINTWISE_TWO_PATH_BREAK"
+      ],
+      "open_prerequisites": [
+        "KKL_STATIONARY_MARKED_ACCESS_ITINERARY",
+        "KKL_STATIONARY_POINTWISE_TWO_PATH_BREAK"
+      ],
+      "evidence": "qa_native_kkl_stationary_2026-07-26.md#gate-n3-final-retained-fixed-component-exit",
+      "evidence_path": "research/mlc_unified/qa_native_kkl_stationary_2026-07-26.md"
+    },
+    {
+      "id": "VIRTUAL_CANONICAL_INTERFACE_CARRIER",
+      "downstream": 14,
+      "statement": "Every actual virtual-Molecule Wave block admits a regulated forward-coherent carrier selected from the simultaneous root pullback, with complete proof-use inventory, full attachment traces, injective cyclic-order-preserving protected-access survival through the complete horizon, and KKL-style component exhaustion on the degree-one central corridor.",
+      "prerequisites": [
+        "H1_CELL_TREE_EXTRACTION",
+        "VIRTUAL_ROOT_CARRIER_SEPARATION",
+        "INTERFACE_PROOF_USE_INVENTORY",
+        "FINITE_GEOMETRIC_SATURATION",
+        "CONNECTED_CARRIER_NO_MINIMUM",
+        "QUADRATIC_PROTECTED_ACCESS_COLLISION",
+        "PROTECTED_REGULATED_CONNECTOR_REALIZATION",
+        "VIRTUAL_PROTECTED_ROUTING_CERTIFICATE"
+      ],
+      "open_prerequisites": [
+        "H1_CELL_TREE_EXTRACTION",
+        "VIRTUAL_ROOT_CARRIER_SEPARATION",
+        "VIRTUAL_PROTECTED_ROUTING_CERTIFICATE"
+      ],
+      "evidence": "canonical_virtual_interface_carrier.md#11-promotion-decision-and-next-theorem",
+      "evidence_path": "research/mlc_unified/canonical_virtual_interface_carrier.md"
+    },
+    {
+      "id": "H1_MARKED_CONSTRUCTION",
+      "downstream": 13,
+      "statement": "Every tower has canonical entropy-clock checkpoints, access-faithful finite virtual skeletons, selected pullback factorizations with one quadratic step, and marked complements split into bounded active cores and resolved raw corridor/transfer carriers containing every proof-used cell, access, critical return, and stopping time. Uniform finite-control, counter, and stack realization belongs to H2.",
+      "prerequisites": [
+        "REGIME_PARTITION",
+        "MARKING_QUOTIENT_NO_GO",
+        "TRANSLATION_ORBIT_TYPES",
+        "RELATIVE_TAIL_CONTROL",
+        "H1_FINITE_HORIZON_INFLATION",
+        "ORBIT_PACKING",
+        "TREE_HULL_COMPLEXITY",
+        "PARALLEL_REPLICATION_CRITERION",
+        "TOPOLOGY_REPLICATION_NO_GO",
+        "CONDITIONAL_TREE_REPLICATION_CALIBRATION",
+        "H1_CELL_TREE_EXTRACTION",
+        "H1_ANALYTIC_ACCESS_REALIZATION"
+      ],
+      "open_prerequisites": [
+        "H1_FINITE_HORIZON_INFLATION",
+        "H1_CELL_TREE_EXTRACTION",
+        "H1_ANALYTIC_ACCESS_REALIZATION"
+      ],
+      "evidence": "virtual_hull_realization.md#6-finite-virtual-wad-realization-theorem",
+      "evidence_path": "research/mlc_unified/virtual_hull_realization.md"
+    },
+    {
+      "id": "KKL_STATIONARY_TYPED_BOUNDED_DEGREE_PUSHFORWARD",
+      "downstream": 13,
+      "statement": "For the actual lamination B and whole marked ending multi-interval supplied by the final fixed-component exit theorem, apply the covering pushforward lemma to f^m, not F^m. Prove the degree on that whole end, using d=2 only when the ideal-boundary degree is certified and otherwise the safe bound d<=2^(b+2). Deduce W(B)<=d*W(C)+2d, combine it with the correctly typed native comparison W(C)<=2W(RF), and conclude W(A_m)=O_b(1+W(RF)); replace this by O_b(W(RF)) only under an explicit lower-width hypothesis.",
+      "prerequisites": [
+        "KKL_STATIONARY_FINAL_FIXED_COMPONENT_EXIT",
+        "KKL_STATIONARY_DEGREE_TWO_CORRECTION",
+        "KKL_LAMINATION_PUSHFORWARD_DEGREE_BOUND"
+      ],
+      "open_prerequisites": [
+        "KKL_STATIONARY_FINAL_FIXED_COMPONENT_EXIT"
+      ],
+      "evidence": "qa_native_kkl_stationary_2026-07-26.md#gate-n4-correctly-typed-bounded-degree-pushforward",
+      "evidence_path": "research/mlc_unified/qa_native_kkl_stationary_2026-07-26.md"
+    },
+    {
+      "id": "H2_CALIBRATION",
+      "downstream": 12,
+      "statement": "QL, WAD, sectorial, and virtual marked coordinates are calibrated on declared interfaces with universal parameters and explicit additive, relative, density-normalized, or discounted error budgets.",
+      "prerequisites": [
+        "H1_MARKED_CONSTRUCTION",
+        "CONNECTED_EXTERIOR_CALIBRATION",
+        "WAD_CORRIDOR_SANDWICH",
+        "DL_TILE_SCALING",
+        "COMMON_WIDTH_BRIDGE",
+        "H2_RESPONSE_REALIZATION",
+        "H2_VALUE_FEATURE_REALIZATION",
+        "COMPLEXITY_COORDINATE_NO_GO",
+        "HARMONIC_LINEAR_NO_GO",
+        "BOUNDED_FANOUT_BOTTLENECK"
+      ],
+      "open_prerequisites": [
+        "H1_MARKED_CONSTRUCTION",
+        "H2_RESPONSE_REALIZATION",
+        "H2_VALUE_FEATURE_REALIZATION"
+      ],
+      "evidence": "corridor_network_calibration.md#8-remaining-virtual-realization-theorem",
+      "evidence_path": "research/mlc_unified/corridor_network_calibration.md"
+    },
+    {
+      "id": "KKL_PARABOLIC_WAVE_STATIONARY_PROOF_REPAIR",
+      "downstream": 12,
+      "statement": "Repair KKL’s native stationary proposition by using relative Wave continuation for the preliminary telescope, the pointwise retained two-path contradiction at exactly n=b and n=b+1, a measurable final fixed-component exit lamination, and a correctly typed bounded-degree pushforward. Correct A_N to A_(N-1), Kcal^n to Kcal^(N-1), F^(N-1) to f^(N-1), and the false degree-one assertion. Prove the resulting O_b(1+W(RF)) stationary estimate and invoke O_b(W(RF)) only in an explicitly stated large-width regime; then recheck the downstream mostly-short, terminal-Wave, and amplification deductions.",
+      "prerequisites": [
+        "KKL_STATIONARY_RELATIVE_WAVE_CONTINUATION",
+        "KKL_STATIONARY_POINTWISE_TWO_PATH_BREAK",
+        "KKL_STATIONARY_FINAL_FIXED_COMPONENT_EXIT",
+        "KKL_STATIONARY_TYPED_BOUNDED_DEGREE_PUSHFORWARD"
+      ],
+      "open_prerequisites": [
+        "KKL_STATIONARY_POINTWISE_TWO_PATH_BREAK",
+        "KKL_STATIONARY_FINAL_FIXED_COMPONENT_EXIT",
+        "KKL_STATIONARY_TYPED_BOUNDED_DEGREE_PUSHFORWARD"
+      ],
+      "evidence": "qa_native_kkl_stationary_2026-07-26.md#13-final-qa-determination",
+      "evidence_path": "research/mlc_unified/qa_native_kkl_stationary_2026-07-26.md"
+    },
+    {
+      "id": "H2_VIRTUAL_SECTION4_INTERFACE",
+      "downstream": 11,
+      "statement": "Every sufficiently degenerate virtual-Molecule block has access-complete small-set and tree marked complements, a complete per-limb ideal multi-interval bound, virtual WAD/return-width comparison, restriction multiplicity, and faithful flux/wave decomposition sufficient to reproduce KKL Proposition 3.7’s static amplification/tame/controllable-wave split with constants independent of period and virtual depth.",
+      "prerequisites": [
+        "H1_ANALYTIC_ACCESS_REALIZATION",
+        "KKL_OCCUPANCY_TRICHOTOMY",
+        "TREE_HULL_COMPLEXITY",
+        "VIRTUAL_LIMB_TREE_BOUND",
+        "KKL_THICK_THIN",
+        "ABSTRACT_SECTION4_STATIC_TRICHOTOMY"
+      ],
+      "open_prerequisites": [
+        "H1_ANALYTIC_ACCESS_REALIZATION"
+      ],
+      "evidence": "virtual_section4_interface.md#10-exact-unresolved-realization-obligations",
+      "evidence_path": "research/mlc_unified/virtual_section4_interface.md"
+    },
+    {
+      "id": "KKL_PARABOLIC_WAVE_AMPLIFICATION",
+      "downstream": 11,
+      "statement": "Open source-stated KKL theorem: in the full parabolically B-bounded, prime primitively renormalizable psi-ql category, sufficiently wide controllable waves and sufficiently high type are claimed to imply any requested amplification factor, with thresholds depending on B and the requested factor but not on the satellite period. The project does not certify the v1 proof until the bounded-visits interval-growth step and the stationary proper-path/measurable-lamination step are repaired, with the proved degree-two correction propagated downstream.",
+      "prerequisites": [
+        "KKL_BOUNDED_VISITS_INTERVAL_GROWTH_REPAIR",
+        "KKL_PARABOLIC_WAVE_STATIONARY_PROOF_REPAIR"
+      ],
+      "open_prerequisites": [
+        "KKL_BOUNDED_VISITS_INTERVAL_GROWTH_REPAIR",
+        "KKL_PARABOLIC_WAVE_STATIONARY_PROOF_REPAIR"
+      ],
+      "evidence": "virtual_long_iterate_wave.md#3-exact-source-statement-and-certification-status",
+      "evidence_path": "research/mlc_unified/virtual_long_iterate_wave.md"
+    },
+    {
+      "id": "VIRTUAL_ATTACHMENT_RESOLUTION",
+      "downstream": 11,
+      "statement": "For every central virtual Wave corridor, either an actual attachment-free anchor exists, or the least attachment-orbit closure has zero sheet, critical, obstacle, access, and localization collision, admits an access-complete analytic realization, and has empty attachment support on every proof-used central interval. The two alternatives are sufficient routes and are not asserted to be logically equivalent.",
+      "prerequisites": [
+        "VIRTUAL_CANONICAL_INTERFACE_CARRIER",
+        "H1_CELL_TREE_EXTRACTION",
+        "H1_ANALYTIC_ACCESS_REALIZATION",
+        "VIRTUAL_ROOT_CARRIER_SEPARATION",
+        "ATTACHMENT_FREE_ANCHOR_UNDERDETERMINATION",
+        "FINITE_ATTACHMENT_ORBIT_CLOSURE",
+        "CORRIDOR_ATTACHMENT_TRANSPORT",
+        "UNIVALENT_CARRIER_PAIR_TRANSPORT"
+      ],
+      "open_prerequisites": [
+        "VIRTUAL_CANONICAL_INTERFACE_CARRIER",
+        "H1_CELL_TREE_EXTRACTION",
+        "H1_ANALYTIC_ACCESS_REALIZATION",
+        "VIRTUAL_ROOT_CARRIER_SEPARATION"
+      ],
+      "evidence": "virtual_corridor_pair_naturality.md#virtual-attachment-resolution-gate",
+      "evidence_path": "research/mlc_unified/virtual_corridor_pair_naturality.md"
+    },
+    {
+      "id": "VIRTUAL_CORRIDOR_PAIR_NATURALITY",
+      "downstream": 11,
+      "statement": "Every degree-one central virtual Wave corridor admits commuting orientation-preserving homeomorphisms of the actual pulled and immersed carrier pairs, extending to access-complete prime-end compactifications and preserving every proof-used ideal interval, attachment incidence, and cyclic access order.",
+      "prerequisites": [
+        "VIRTUAL_CANONICAL_INTERFACE_CARRIER",
+        "VIRTUAL_ROOT_CARRIER_SEPARATION",
+        "H1_ANALYTIC_ACCESS_REALIZATION",
+        "CORRIDOR_ATTACHMENT_TRANSPORT",
+        "UNIVALENT_CARRIER_PAIR_TRANSPORT"
+      ],
+      "open_prerequisites": [
+        "VIRTUAL_CANONICAL_INTERFACE_CARRIER",
+        "VIRTUAL_ROOT_CARRIER_SEPARATION",
+        "H1_ANALYTIC_ACCESS_REALIZATION"
+      ],
+      "evidence": "virtual_corridor_pair_naturality.md#7-application-to-the-planned-virtual-construction",
+      "evidence_path": "research/mlc_unified/virtual_corridor_pair_naturality.md"
+    },
+    {
+      "id": "H2_CHART_CYCLE_EXPANSION",
+      "downstream": 10,
+      "statement": "Every admissible directed cycle of primitive, neutral, and virtual chart transitions passes the applicable backward-expansion or forward-contraction gauge test, or the block decomposition removes that residual cycle.",
+      "prerequisites": [
+        "H2_RESPONSE_REALIZATION",
+        "CHART_CYCLE_OBSTRUCTION"
+      ],
+      "open_prerequisites": [
+        "H2_RESPONSE_REALIZATION"
+      ],
+      "evidence": "entropy_and_cycle_bookkeeping.md#7-open-analytic-theorem",
+      "evidence_path": "research/mlc_unified/entropy_and_cycle_bookkeeping.md"
+    },
+    {
+      "id": "H2_DISCOUNTED_ERROR_CHARGE",
+      "downstream": 10,
+      "statement": "Every entropy-clock block converts all localization and chart errors into calibrated Value units and satisfies the universal discounted or telescoping error budget.",
+      "prerequisites": [
+        "H2_RESPONSE_REALIZATION",
+        "H2_VALUE_FEATURE_REALIZATION",
+        "DISCOUNTED_ENTROPY_ABSORPTION",
+        "ENTROPY_THRESHOLD_NO_GO",
+        "CONGESTION_AMORTIZATION"
+      ],
+      "open_prerequisites": [
+        "H2_RESPONSE_REALIZATION",
+        "H2_VALUE_FEATURE_REALIZATION"
+      ],
+      "evidence": "entropy_and_cycle_bookkeeping.md#7-open-analytic-theorem",
+      "evidence_path": "research/mlc_unified/entropy_and_cycle_bookkeeping.md"
+    },
+    {
+      "id": "VIRTUAL_BOUNDED_ATTACHMENT_SUPPORT",
+      "downstream": 10,
+      "statement": "Every virtual block routed to the Wave branch has an exact ideal-interval pullback description whose pulled-carrier excess has empty attachment support throughout the degree-one central corridor and uniformly bounded endpoint contribution in fixed entry, exit, and terminal windows, with access and cyclic order preserved and all proof-used intervals carrying proper or end-proper relative-cover lifts.",
+      "prerequisites": [
+        "H1_ANALYTIC_ACCESS_REALIZATION",
+        "RELATIVE_COVER_LIFT",
+        "SATURATED_SEED_FOREST",
+        "FINITE_OBSTACLE_FORWARD_CLOSURE",
+        "KKL_IDEAL_PULLBACK_NATIVE",
+        "ATTACHMENT_SUPPORT_REDUCTION",
+        "CORRIDOR_ATTACHMENT_TRANSPORT",
+        "UNIVALENT_CARRIER_PAIR_TRANSPORT",
+        "FINITE_ATTACHMENT_ORBIT_CLOSURE",
+        "VIRTUAL_CORRIDOR_PAIR_NATURALITY",
+        "VIRTUAL_ATTACHMENT_RESOLUTION"
+      ],
+      "open_prerequisites": [
+        "H1_ANALYTIC_ACCESS_REALIZATION",
+        "VIRTUAL_CORRIDOR_PAIR_NATURALITY",
+        "VIRTUAL_ATTACHMENT_RESOLUTION"
+      ],
+      "evidence": "kkl_translation_no_birth_source_audit.md#5-the-corrected-virtual-target",
+      "evidence_path": "research/mlc_unified/kkl_translation_no_birth_source_audit.md"
+    },
+    {
+      "id": "H2_FORWARD_CONTRACTION_CALIBRATION",
+      "downstream": 9,
+      "statement": "After identity localization/chart steps are grouped with the dynamical step, every complete forward upper entropy-clock block has endpoint gauges homogeneous in geometric state, uniformly strict and error-stable over admissible side records, or is replaced by an independently proved backward lower transition.",
+      "prerequisites": [
+        "FORWARD_CONTRACTION_REDUCTION",
+        "GROUPED_BLOCK_CONTRACTION_REDUCTION",
+        "H2_CALIBRATION",
+        "CHART_CYCLE_OBSTRUCTION",
+        "H2_CHART_CYCLE_EXPANSION"
+      ],
+      "open_prerequisites": [
+        "H2_CALIBRATION",
+        "H2_CHART_CYCLE_EXPANSION"
+      ],
+      "evidence": "block_contraction_program.md#3-open-analytic-theorem",
+      "evidence_path": "research/mlc_unified/block_contraction_program.md"
+    },
+    {
+      "id": "H2_SUMMABILITY",
+      "downstream": 9,
+      "statement": "The aggregated antirenormalization and chart-change error of every complete block is absolutely bounded, below the required relative contraction margin, or controlled by the exact future-entropy-discounted/telescoping budget in the calibrated gauge.",
+      "prerequisites": [
+        "H1_MARKED_CONSTRUCTION",
+        "H2_CALIBRATION",
+        "DL_TRANSITIONAL_PERIPHERAL",
+        "CONDITIONAL_NEUTRAL_CORRIDOR_ABSORPTION",
+        "CONGESTION_AMORTIZATION",
+        "DISCOUNTED_ENTROPY_ABSORPTION",
+        "ENTROPY_THRESHOLD_NO_GO",
+        "H2_DISCOUNTED_ERROR_CHARGE"
+      ],
+      "open_prerequisites": [
+        "H1_MARKED_CONSTRUCTION",
+        "H2_CALIBRATION",
+        "H2_DISCOUNTED_ERROR_CHARGE"
+      ],
+      "evidence": "entropy_and_cycle_bookkeeping.md#7-open-analytic-theorem",
+      "evidence_path": "research/mlc_unified/entropy_and_cycle_bookkeeping.md"
+    },
+    {
+      "id": "H2_VIRTUAL_LONG_ITERATE_WAVE",
+      "downstream": 9,
+      "statement": "Every virtual block routed to the wave branch realizes the marked interval action, critical-limb alignment, and complete stagewise carrier through H_B(q)=(216B^2+1)(q+B+4), with proper/end-proper dynamics, exhaustive leaf itineraries, a degree-one central fast-forward corridor, and a bounded marked auxiliary fan with the required degree profile, yielding the virtual Wave amplification alternative in the unified chart.",
+      "prerequisites": [
+        "H2_VIRTUAL_SECTION4_INTERFACE",
+        "H1_ANALYTIC_ACCESS_REALIZATION",
+        "H1_FINITE_HORIZON_INFLATION",
+        "KKL_PARABOLIC_WAVE_AMPLIFICATION",
+        "KKL_PARABOLIC_WAVE_STATIONARY_PROOF_REPAIR",
+        "FINITE_HORIZON_TRUNCATION",
+        "RELATIVE_COVER_LIFT",
+        "FINITE_HORIZON_WAVE_BOUND",
+        "DEGREE_TWO_FAST_FORWARD_NO_GO",
+        "FINITE_INVERSE_TREE_FAN_SATURATION",
+        "FORWARD_HULL_COMPONENT_NO_GO",
+        "SATURATED_SEED_FOREST",
+        "ROOT_PULLBACK_FOREST_EQUIVALENCE",
+        "CRITICAL_VALUE_CORRIDOR_CRITERION",
+        "VIRTUAL_ROOT_CARRIER_SEPARATION",
+        "FINITE_OBSTACLE_FORWARD_CLOSURE",
+        "FINITE_FAN_RIBBON_PULLBACK",
+        "ENDPOINT_BIRTH_ACCOUNTING",
+        "LOCAL_CARRIER_EQUALITY_NO_BIRTH",
+        "ATTACHMENT_SUPPORT_REDUCTION",
+        "VIRTUAL_BOUNDED_ATTACHMENT_SUPPORT",
+        "FINITE_HORIZON_KKL_WAVE_REDUCTION"
+      ],
+      "open_prerequisites": [
+        "H2_VIRTUAL_SECTION4_INTERFACE",
+        "H1_ANALYTIC_ACCESS_REALIZATION",
+        "H1_FINITE_HORIZON_INFLATION",
+        "KKL_PARABOLIC_WAVE_AMPLIFICATION",
+        "KKL_PARABOLIC_WAVE_STATIONARY_PROOF_REPAIR",
+        "VIRTUAL_ROOT_CARRIER_SEPARATION",
+        "VIRTUAL_BOUNDED_ATTACHMENT_SUPPORT"
+      ],
+      "evidence": "virtual_long_iterate_wave.md#9-three-irreducible-construction-targets",
+      "evidence_path": "research/mlc_unified/virtual_long_iterate_wave.md"
+    },
+    {
+      "id": "H2_VIRTUAL_TAME_FULL_RETURN",
+      "downstream": 9,
+      "statement": "Every virtual block routed to the tame branch realizes the complete full-cycle carrier and local complexity vector (m_I,|chi(V_I)|,|B_I|,d_I), a geometric rotation corridor or accelerated replacement, localized full-return cover with critical-encounter control, ordered canonical-WAD domination, Wanderers estimates, typed Value contraction, and unified-chart closure, with the actual pullback exponent at least the graph delay.",
+      "prerequisites": [
+        "H2_VIRTUAL_SECTION4_INTERFACE",
+        "H1_FINITE_HORIZON_INFLATION",
+        "H2_VIRTUAL_CLONE_REALIZATION",
+        "KKL_PARABOLIC_TAME_AMPLIFICATION",
+        "KKL_VALUE_CONTRACTION",
+        "WAD_DOMINATION_RESPONSE",
+        "LOCALIZED_CRITICAL_ENCOUNTER_DEGREE",
+        "LINEAR_MARKING_DENSITY_ABSORPTION",
+        "TAME_VALUE_OBSTRUCTION",
+        "CONDITIONAL_VIRTUAL_TAME_TRANSFER",
+        "ROTATION_RELABEL_NO_GO"
+      ],
+      "open_prerequisites": [
+        "H2_VIRTUAL_SECTION4_INTERFACE",
+        "H1_FINITE_HORIZON_INFLATION",
+        "H2_VIRTUAL_CLONE_REALIZATION"
+      ],
+      "evidence": "virtual_tame_full_return.md#8-exact-unresolved-lemmas",
+      "evidence_path": "research/mlc_unified/virtual_tame_full_return.md"
+    },
+    {
+      "id": "H2_CONE_CALIBRATION",
+      "downstream": 8,
+      "statement": "The mixed-chart transitions admit either a common backward-expanding Lyapunov calibration or a common forward-contracting calibration that inverts to backward amplification.",
+      "prerequisites": [
+        "CONE_REDUCTION",
+        "HOMOGENEOUS_LYAPUNOV_REDUCTION",
+        "ERROR_STABLE_LYAPUNOV_REDUCTION",
+        "FORWARD_CONTRACTION_REDUCTION",
+        "H2_CALIBRATION",
+        "H2_FORWARD_CONTRACTION_CALIBRATION",
+        "HARMONIC_LINEAR_NO_GO",
+        "BOUNDED_FANOUT_BOTTLENECK",
+        "CHART_CYCLE_OBSTRUCTION",
+        "RESPONSE_GLUE_CALCULUS",
+        "H2_CHART_CYCLE_EXPANSION"
+      ],
+      "open_prerequisites": [
+        "H2_CALIBRATION",
+        "H2_FORWARD_CONTRACTION_CALIBRATION",
+        "H2_CHART_CYCLE_EXPANSION"
+      ],
+      "evidence": "corridor_network_calibration.md#7-forward-calibration-and-the-missing-contraction",
+      "evidence_path": "research/mlc_unified/corridor_network_calibration.md"
+    },
+    {
+      "id": "H2_ENTROPY_DICHOTOMY",
+      "downstream": 8,
+      "statement": "Every block is routed so that any entropy-driven contraction occurs on a closed source-framed return, while every nonexpanding residual is routed to transient extinction, sectorial regularization, or a calibrated finite shear state that itself lies in a proved strictly contracting augmented complete block.",
+      "prerequisites": [
+        "H1_MARKED_CONSTRUCTION",
+        "H2_SUMMABILITY",
+        "H2_VIRTUAL_SECTION4_INTERFACE",
+        "H2_VIRTUAL_TAME_FULL_RETURN",
+        "H2_VIRTUAL_LONG_ITERATE_WAVE",
+        "VIRTUAL_BRANCH_QUANTIFIER_ASSEMBLY",
+        "H2_VIRTUAL_CLONE_REALIZATION",
+        "H2_VIRTUAL_TRANSFER_TRICHOTOMY",
+        "TRANSLATION_DENSITY_IDENTITY"
+      ],
+      "open_prerequisites": [
+        "H1_MARKED_CONSTRUCTION",
+        "H2_SUMMABILITY",
+        "H2_VIRTUAL_SECTION4_INTERFACE",
+        "H2_VIRTUAL_TAME_FULL_RETURN",
+        "H2_VIRTUAL_LONG_ITERATE_WAVE",
+        "H2_VIRTUAL_CLONE_REALIZATION",
+        "H2_VIRTUAL_TRANSFER_TRICHOTOMY"
+      ],
+      "evidence": "corridor_network_calibration.md#10-arithmetic-density-gate",
+      "evidence_path": "research/mlc_unified/corridor_network_calibration.md"
+    },
+    {
+      "id": "MBTT",
+      "downstream": 7,
+      "statement": "A high calibrated potential of the augmented geometric response-density/Value/shear state amplifies to a preceding entropy-clock checkpoint, uniformly over admissible side data including exact counter values, finite-alphabet stack words, endpoint frames, and the Frobenius flag.",
+      "prerequisites": [
+        "H1_MARKED_CONSTRUCTION",
+        "H2_CALIBRATION",
+        "H2_FORWARD_CONTRACTION_CALIBRATION",
+        "H2_CONE_CALIBRATION",
+        "H2_SUMMABILITY",
+        "H2_ENTROPY_DICHOTOMY"
+      ],
+      "open_prerequisites": [
+        "H1_MARKED_CONSTRUCTION",
+        "H2_CALIBRATION",
+        "H2_FORWARD_CONTRACTION_CALIBRATION",
+        "H2_CONE_CALIBRATION",
+        "H2_SUMMABILITY",
+        "H2_ENTROPY_DICHOTOMY"
+      ],
+      "evidence": "master_transition.md#6-corrected-master-transition-theorem",
+      "evidence_path": "research/mlc_unified/master_transition.md"
+    },
+    {
+      "id": "H3_COERCIVITY",
+      "downstream": 6,
+      "statement": "Bounded calibrated potentials and the uniform normalized incidence and congestion hypotheses prevent degeneration of the analytic carriers, branch graphs, relative-cover structures, protected prime ends, response forms, and Value features, so every sequence has a subsequence converging to an admissible nondegenerate marked renormalization. Exact side memory is handled topologically by H3_SYMBOLIC_SIDE_COMPACTNESS, but compact encodings alone do not establish analytic admissibility.",
+      "prerequisites": [
+        "H1_MARKED_CONSTRUCTION",
+        "MBTT",
+        "BACKWARD_RECORD",
+        "H3_SYMBOLIC_SIDE_COMPACTNESS"
+      ],
+      "open_prerequisites": [
+        "H1_MARKED_CONSTRUCTION",
+        "MBTT"
+      ],
+      "evidence": "master_transition.md#m6-coercivity",
+      "evidence_path": "research/mlc_unified/master_transition.md"
+    },
+    {
+      "id": "H4_RIGIDITY",
+      "downstream": 5,
+      "statement": "Controlled marked towers yield connected relative parameter neighborhoods forming a basis at the parameter with diameters tending to zero, either directly or through a precisely applicable trivial-fiber theorem.",
+      "prerequisites": [
+        "H3_COERCIVITY"
+      ],
+      "open_prerequisites": [
+        "H3_COERCIVITY"
+      ],
+      "evidence": "master_transition.md#m7-parameter-rigidity",
+      "evidence_path": "research/mlc_unified/master_transition.md"
+    },
+    {
+      "id": "UNIVERSAL_PROTECTED_TOWER_CLOSURE",
+      "downstream": 2,
+      "statement": "Every infinitely renormalizable quadratic polynomial admits the six-clause Universal Protected-Tower Compactness and Rigidity package: canonical protected carriers, exact analytic realization, a uniformly finite Value-observable response state, a universal backward transition, coercive marked compactness, and tower rigidity with singleton parameter fiber and connected relative neighborhoods.",
+      "prerequisites": [
+        "H1_MARKED_CONSTRUCTION",
+        "MBTT",
+        "H3_COERCIVITY",
+        "H4_RIGIDITY"
+      ],
+      "open_prerequisites": [
+        "H1_MARKED_CONSTRUCTION",
+        "MBTT",
+        "H3_COERCIVITY",
+        "H4_RIGIDITY"
+      ],
+      "evidence": "mlc_closure_proposition.md#5-universal-protected-tower-compactness-and-rigidity-proposition",
+      "evidence_path": "research/mlc_unified/mlc_closure_proposition.md"
+    },
+    {
+      "id": "KKL_LOCALIZED_WANDERERS_ROUTE_REALIZATION_CERTIFICATE",
+      "downstream": 1,
+      "statement": "For the localized typical-interval stage, construct the proper filled map with no fullification-created critical values outside the selected compact package; prove one selected source component over each represented target and degree at most two on the whole selected union; realize the residual-subtracted domination by one simultaneous complete-itinerary foliation; and prove route exhaustion, internal-joint, terminal-component, no-return, and stratum-recurrence certificates for the same realized foliation.",
+      "prerequisites": [
+        "KKL_NATIVE_WAVE_WANDERERS_QUERY_SCHEMA_BOUNDARY_MAP"
+      ],
+      "open_prerequisites": [
+        "KKL_NATIVE_WAVE_WANDERERS_QUERY_SCHEMA_BOUNDARY_MAP"
+      ],
+      "evidence": "direct_decoration_wave_proof_use_ledger.md#definition-73-localized-route-realization-certificate",
+      "evidence_path": "research/mlc_unified/direct_decoration_wave_proof_use_ledger.md"
+    },
+    {
+      "id": "KKL_STATIONARY_BL0_UNIFORM_SURVIVOR_RESPONSE",
+      "downstream": 1,
+      "statement": "Cover the entire nonshort ambient-singleton BL_0-ending residual, without duplicate extremal width, by typed paired-Wave packets or explicit valid V(F)/R(F)/zero-width charges. On every response packet prove the uniform Wave constant, common-output containment or a certified maximizing output, output controllability depending only on b, the necessary ambient-width fraction, and the absolute threshold needed to turn the packet-local factor-two estimate into KKL terminality. No use of the line-1603-dependent critical-limb proposition is allowed. Ledger role: optional alternative",
+      "prerequisites": [
+        "KKL_STATIONARY_CONDITIONAL_PAIRED_WAVE_RESPONSE_ALGEBRA",
+        "KKL_STATIONARY_TYPED_PAIRED_WAVE_REALIZATION",
+        "KKL_WAVE_PUSHFORWARD_UNIFORM_PACKET_CONSTANT"
+      ],
+      "open_prerequisites": [
+        "KKL_STATIONARY_TYPED_PAIRED_WAVE_REALIZATION",
+        "KKL_WAVE_PUSHFORWARD_UNIFORM_PACKET_CONSTANT"
+      ],
+      "evidence": "kkl_stationary_bl0_survivor_analysis.md#12-historical-pre-qa-next-theorem-superseded",
+      "evidence_path": "research/mlc_unified/kkl_stationary_bl0_survivor_analysis.md"
+    },
+    {
+      "id": "KKL_WANDERERS_THEOREM_COMPLETE_REPAIR",
+      "downstream": 1,
+      "statement": "Supply a complete source-checkable proof of KKL’s stated Wanderers theorem, including the work-backwards lemma left to the reader, every imported good-path, route, Q_k, and delta_k definition and hypothesis, the length-area step, the non-Galois reduction, and the exact additive topology/degree constant. The first missing route implication, buffer estimate, multiplicity bound, or cover-reduction identity is the failure certificate.",
+      "prerequisites": [
+        "KKL_NATIVE_WAVE_WANDERERS_QUERY_SCHEMA_BOUNDARY_MAP"
+      ],
+      "open_prerequisites": [
+        "KKL_NATIVE_WAVE_WANDERERS_QUERY_SCHEMA_BOUNDARY_MAP"
+      ],
+      "evidence": "direct_decoration_wave_proof_use_ledger.md#7-conditional-wanderers-repair-interface",
+      "evidence_path": "research/mlc_unified/direct_decoration_wave_proof_use_ledger.md"
+    },
+    {
+      "id": "VIRTUAL_VERTEX_PACKAGE_SELECTOR",
+      "downstream": 1,
+      "statement": "Every actual intermediate virtual-Molecule scale has a realized virtual Cantor component package and, after its complete proof-use horizon is frozen, a finite actual-component trace or future-faithful quotient together with a compatible partial factor to the native terminal Hubbard tree, preserving exact analytic corridor transport, protected accesses, obstacles, final-root enlargement traces, presentation invariance, and every claimed observable.",
+      "prerequisites": [
+        "NATIVE_HUBBARD_SUBTREE_FUNCTORIALITY",
+        "TERMINAL_CYCLE_HUBBARD_ANCHOR",
+        "DECORATION_FAN_GROWTH",
+        "VIRTUAL_CANTOR_PACKAGE_REALIZATION",
+        "VIRTUAL_WAVE_HORIZON_CERTIFICATE",
+        "VIRTUAL_PROOF_USE_TRACE_SELECTOR"
+      ],
+      "open_prerequisites": [
+        "VIRTUAL_CANTOR_PACKAGE_REALIZATION",
+        "VIRTUAL_WAVE_HORIZON_CERTIFICATE"
+      ],
+      "evidence": "virtual_cantor_package_interface.md#7-revised-proof-obligations",
+      "evidence_path": null
+    },
+    {
+      "id": "KKL_STATIONARY_PREDECESSOR_ENDPOINT_GATE_COHERENCE",
+      "downstream": 0,
+      "statement": "As one sufficient access architecture, for every 0<=n<=H=b+2 construct the selected pulled carrier T_hat_n and full attachment set Att_n=closure(L_0^n) intersect closure(T_hat_n minus L_0^n), all in T_hat_n. For 1<=n<=H construct eta_n as the actual branch-induced carrier homeomorphism extending to a declared collar and its prime-end boundary. Prove alpha^n lies in closure(L_0^n), Att_n={x_n}, x_n=alpha^n, and eta_n transports the declared one-sided access at x_n to that at x_(n-1). Endpoint cycle avoidance constrains a coherent gate but does not establish this identity. A direct marked-access theorem could replace this sufficient architecture. Ledger role: optional alternative",
+      "prerequisites": [
+        "KKL_STATIONARY_SELECTED_PREDECESSOR_CHAIN",
+        "KKL_STATIONARY_SELECTED_ALPHA_PREDECESSOR_CHAIN",
+        "KKL_STATIONARY_SELECTED_ENDPOINT_CYCLE_AVOIDANCE",
+        "KKL_STATIONARY_PROOF_USED_PREDECESSOR_SELECTION"
+      ],
+      "open_prerequisites": [
+        "KKL_STATIONARY_PROOF_USED_PREDECESSOR_SELECTION"
+      ],
+      "evidence": "kkl_stationary_n2_selected_predecessor_endpoint.md#7-minimal-gate-sufficient-certificate-and-endpoint-coherence",
+      "evidence_path": "research/mlc_unified/kkl_stationary_n2_selected_predecessor_endpoint.md"
+    },
+    {
+      "id": "KKL_STATIONARY_SELECTED_PREDECESSOR_TERMINAL_VERTEX_SATURATION",
+      "downstream": 0,
+      "statement": "For the canonical selected predecessor chain, prove the stronger optional certificate TMC_b: whenever L_0^b intersects T, choose one component C_b of |G| minus the recorded point x_b with C_b contained in pi_T(L_0^b intersect T); pruning supplies v_K in C_b intersect M, and the geometric model small-Julia continuum represented by v_K must lift to actual contact K intersect L_0^b. The locally connected physical theorem realizes this certificate. In a non-locally-connected lift the remaining issue is the exact selected full-preimage and geometric continuum correspondence, not collapse to the abstract vertex. TMC_b implies MCI_b but is not necessary. Record the first failed depth, inverse component, complete attachment set, actual-component address, missing terminal side, and model continuum not realized by K-contact. Ledger role: optional alternative",
+      "prerequisites": [
+        "FINITE_MARKED_TREE_TERMINAL_PRUNING",
+        "KKL_NATIVE_TERMINAL_HUBBARD_TREE",
+        "KKL_STATIONARY_SELECTED_PREDECESSOR_CHAIN",
+        "KKL_STATIONARY_LC_TERMINAL_SHEET_MCI",
+        "KKL_STATIONARY_NONLC_SELECTED_GEOMETRIC_CONTINUUM_LIFT"
+      ],
+      "open_prerequisites": [
+        "KKL_STATIONARY_NONLC_SELECTED_GEOMETRIC_CONTINUUM_LIFT"
+      ],
+      "evidence": "kkl_stationary_n2_selected_predecessor_endpoint.md#7-minimal-gate-sufficient-certificate-and-endpoint-coherence",
+      "evidence_path": "research/mlc_unified/kkl_stationary_n2_selected_predecessor_endpoint.md"
+    },
+    {
+      "id": "KKL_STATIONARY_SURVIVOR_EXCLUSION_OR_CHARGE",
+      "downstream": 0,
+      "statement": "On the actual native stationary critical-end Wave, construct a width-faithful survivor partition and a Borel retained-predecessor selector with multiplicity bounded in terms of b or charged summably. Prove that every strict-path or marked-state survivor switch is excluded by marked witness completeness or belongs measurably to a proper vertical packet, an exact small-Julia-incidence packet with its R(F) charge retained, or a full-width paired-Wave response packet. The paired packet may use a direct, eligible Freudenthal, or access-local typed start, but must satisfy exact untrimmed image, no-duplication, marking, degree, uniform Wave-error, output-controllability, and ambient-mass hypotheses. Critical-end, stage-output-short, marking, nonlanding, and omitted residuals must have zero width or enter a charged/response class without citing the line-1603-dependent critical-limb proposition. All packet counts and constants must depend only on b. Ledger role: optional alternative",
+      "prerequisites": [
+        "KKL_STATIONARY_ABSTRACT_FINITE_ROUTE_EXIT_SCHEMA",
+        "KKL_STATIONARY_CONDITIONAL_VERTICAL_PACKET_CHARGE",
+        "KKL_STATIONARY_BL0_UNIFORM_SURVIVOR_RESPONSE"
+      ],
+      "open_prerequisites": [
+        "KKL_STATIONARY_BL0_UNIFORM_SURVIVOR_RESPONSE"
+      ],
+      "evidence": "kkl_stationary_bl0_survivor_analysis.md#12-historical-pre-qa-next-theorem-superseded",
+      "evidence_path": "research/mlc_unified/kkl_stationary_bl0_survivor_analysis.md"
+    },
+    {
+      "id": "MLC",
+      "downstream": 0,
+      "statement": "The Mandelbrot set is locally connected.",
+      "prerequisites": [
+        "YOCCOZ",
+        "H1_MARKED_CONSTRUCTION",
+        "MBTT",
+        "H3_COERCIVITY",
+        "H4_RIGIDITY",
+        "CONDITIONAL_REDUCTION"
+      ],
+      "open_prerequisites": [
+        "H1_MARKED_CONSTRUCTION",
+        "MBTT",
+        "H3_COERCIVITY",
+        "H4_RIGIDITY"
+      ],
+      "evidence": "dependency_audit.md#1-final-statement",
+      "evidence_path": "research/mlc_unified/dependency_audit.md"
+    },
+    {
+      "id": "VIRTUAL_ATTACHMENT_FREE_ANCHOR",
+      "downstream": 0,
+      "statement": "Each central virtual Wave corridor contains one stage whose actual pulled carrier has no excess component attached to any proof-used central ideal interval, after all required Cantor components, first-return orbit data, dams, fjords, and future endpoint accesses are included.",
+      "prerequisites": [
+        "VIRTUAL_CANONICAL_INTERFACE_CARRIER",
+        "H1_CELL_TREE_EXTRACTION",
+        "H1_ANALYTIC_ACCESS_REALIZATION",
+        "VIRTUAL_ROOT_CARRIER_SEPARATION",
+        "ATTACHMENT_FREE_ANCHOR_UNDERDETERMINATION",
+        "FINITE_ATTACHMENT_ORBIT_CLOSURE"
+      ],
+      "open_prerequisites": [
+        "VIRTUAL_CANONICAL_INTERFACE_CARRIER",
+        "H1_CELL_TREE_EXTRACTION",
+        "H1_ANALYTIC_ACCESS_REALIZATION",
+        "VIRTUAL_ROOT_CARRIER_SEPARATION"
+      ],
+      "evidence": "virtual_corridor_pair_naturality.md#7-application-to-the-planned-virtual-construction",
+      "evidence_path": "research/mlc_unified/virtual_corridor_pair_naturality.md"
+    },
+    {
+      "id": "VIRTUAL_SCALE_TO_PUZZLE_SELECTOR",
+      "downstream": 0,
+      "statement": "After the prefix-local selector, marked correspondence, complete Wave horizon, and proof-use trace have been constructed, every actual intermediate virtual-Molecule scale has a final proof-use-complete embedded base, virtual carrier placement, return and access inventory, obstacle and sheet data, and exact presentation/enlargement maps, uniformly in satellite period and chain length and without using any downstream bound or rigidity conclusion.",
+      "prerequisites": [
+        "VIRTUAL_PREFIX_LOCAL_SCALE_SELECTOR",
+        "VIRTUAL_WAVE_HORIZON_CERTIFICATE",
+        "VIRTUAL_PROOF_USE_TRACE_SELECTOR",
+        "VIRTUAL_VERTEX_PACKAGE_SELECTOR"
+      ],
+      "open_prerequisites": [
+        "VIRTUAL_PREFIX_LOCAL_SCALE_SELECTOR",
+        "VIRTUAL_WAVE_HORIZON_CERTIFICATE",
+        "VIRTUAL_VERTEX_PACKAGE_SELECTOR"
+      ],
+      "evidence": "virtual_cantor_package_interface.md#7-revised-proof-obligations",
+      "evidence_path": null
+    }
+  ]
+}

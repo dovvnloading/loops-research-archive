@@ -2,6 +2,18 @@
 
 Contributions are welcome when they sharpen a theorem, close an explicit obligation, produce a counterexample, correct a source dependency, improve reproducibility, or make the mathematical architecture easier to verify.
 
+## Fastest route: point an AI agent at the repository
+
+Paste this one line into Claude Code, Codex, Cursor, Gemini CLI, or any agent that can run commands:
+
+```text
+Read https://raw.githubusercontent.com/dovvnloading/loops-research-archive/main/AGENTS.md and follow it.
+```
+
+[AGENTS.md](./AGENTS.md) briefs the agent completely: it picks an unclaimed row from [the open targets](./OPEN_TARGETS.md), claims it with a draft pull request, works in its own folder under [`contributions/`](./contributions/README.md), and runs `python code/contribute.py check`, the same check CI runs. The rest of this page is the scholarly standard that briefing condenses, and it applies to people and agents alike.
+
+## Working by hand
+
 Begin with the [research map](./RESEARCH_MAP.md), then locate the relevant statement in the manuscript or companion paper and its identifier in [`ledger.json`](./ledger.json). A useful contribution names the exact interface it changes.
 
 ## Contribution tracks
