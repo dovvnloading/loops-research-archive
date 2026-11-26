@@ -180,7 +180,7 @@ the unique root of \(x_6+x_3=0\) in
 \[
  (-179033/100000,\ -179032/100000).
 \]
-The accompanying verify.py proves the endpoint signs \(-,+\) and
+The accompanying check_clock_arithmetic.py proves the endpoint signs \(-,+\) and
 \(11<(x_6+x_3)'<13\) throughout the closed bracket by rational
 interval arithmetic: \(x_0=d_0'=0\),
 \(x_{i+1}=x_i^2+c\), \(d_{i+1}'=2x_id_i'+1\).
@@ -337,7 +337,7 @@ larger target when the root image meets that target boundary.
 
 From the repository root run
 
-    python -B research/independent_audits/virtual-reached-clock_20261126/verify.py
+    python -B research/independent_audits/virtual-reached-clock_20261126/check_clock_arithmetic.py
     python -B code/verify_physical_bridges.py
 
 The first command uses only Python's standard library (CI Python
@@ -351,7 +351,12 @@ the written proof of (1)–(2), not an inference from the table.
 The second command validates existing source and route wiring.
 The executable is indexed under CLOCK and ENDS as a direct-decoration
 phase-clock certificate; it does not alter their status or the
-bridge register. No model theorem is invoked to prove a new
+bridge register. The check_*.py name follows the archive's standalone
+arithmetic-diagnostic convention: this is not a theorem-level model
+certificate requiring a new contract-index claim (which is outside
+this submission's allowed edits). The route checker continues to
+require the explicit TSV row, and CI runs both existing checks.
+No model theorem is invoked to prove a new
 physical implication: the maps in (1)–(2) are restrictions of \(f\)
 and the parameter bounds concern its literal critical orbit.
 
