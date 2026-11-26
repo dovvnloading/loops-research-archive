@@ -1,13 +1,10 @@
 {
-  "all_verified": false,
+  "all_verified": true,
   "page_convention": "1-based PDF physical pages; marker occurrences, not inferred printed numbers",
   "schema": 1,
   "sources": [
     {
       "bytes": 12764975,
-      "missing_markers": [
-        "section 4.5 end"
-      ],
       "name": "Dudko survey",
       "pages": {
         "Problem 4.3": [
@@ -23,14 +20,16 @@
           13,
           17
         ],
-        "section 4.5 end": [],
+        "section 4.5 end": [
+          18
+        ],
         "section 4.5 start": [
           18
         ]
       },
       "pdf_page_count": 20,
       "sha256": "8ede4bf8ccfe25a4f325cad41cb729f08f8b1d0d7103ed6dbc89015b1ff8d904",
-      "status": "marker_missing",
+      "status": "ok",
       "url": "https://arxiv.org/pdf/2512.24171v1",
       "version": "arXiv:2512.24171v1"
     },

@@ -37,23 +37,5 @@ jobs:
         run: python -m pip install --disable-pip-version-check -r requirements.txt
       - name: Require complete source audit (including full problem statements and section end)
         run: python -B source_audit.py --output "$RUNNER_TEMP/p43-sources.json"
-      - name: Check recorded byte hashes and existing page markers against fresh download
-        run: |
-          python -B - <<'PY'
-          import json
-          import os
-          from pathlib import Path
-          old = json.loads(Path("sources.json").read_text())
-          new = json.loads((Path(os.environ["RUNNER_TEMP"]) / "p43-sources.json").read_text())
-          assert new["all_verified"], "Incomplete source audit"
-          assert len(old["sources"]) == len(new["sources"])
-          for prior, fresh in zip(old["sources"], new["sources"]):
-              for key in ("name", "version", "url", "sha256", "bytes", "pdf_page_count"):
-                  assert prior[key] == fresh[key], f"{key} differs: {fresh['name']}"
-              assert set(prior["pages"]) == set(fresh["pages"])
-              for marker, pages in prior["pages"].items():
-                  if pages:
-                      assert pages == fresh["pages"][marker], (fresh["name"], marker, pages, fresh["pages"][marker])
-                  else:
-                      assert fresh["pages"][marker], (fresh["name"], marker)
-          PY
+      - name: Require exact reproduction of the successful source manifest
+        run: cmp "$RUNNER_TEMP/p43-sources.json" sources.json
