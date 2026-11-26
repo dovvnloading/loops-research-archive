@@ -82,7 +82,7 @@ The sharper versions of (2),(3),(5) are obtained by multiplication by 2/pi. In p
 
 The reciprocal sends the right half-plane into itself, and F maps it conformally onto 0<Re F<pi/2 (the displayed fractional-linear map takes the half-plane onto the upper half-plane, then the log maps to a horizontal strip and division by 2i gives the stated vertical strip). Division by 2 followed by tan maps that strip conformally onto the right half of the unit disk: tan is the inverse of F on 0<Re F<pi/2 and Re F<pi/4 is equivalent to |z|<1. Therefore u_ext is holomorphic with Re u_ext>0 and |u_ext|<delta. As lambda=t->1, X(t)=(1+t)/(1-t), W(t)/(1-t)->C/2, and u_ext(t)/(1-t)->delta*C/4=a.
 
-For zeta=exp(i theta) !=1, X(zeta)=i x with x=cot(theta/2). Away from x=x0 and x=x0+/-C, the boundary value W=i C/(x-x0) lies on the imaginary axis. If |x-x0|<C, the boundary real part of F(W) is pi/2, so |u_ext*|=delta on the right semicircle. If |x-x0|>C, the boundary real part is zero, so u_ext* lies on the imaginary diameter and has modulus <delta (since the finite imaginary value of F(W)/2 is mapped by tan to i*tanh). At the three excluded points the choice of boundary convention is irrelevant. The exact change of variables is
+For zeta=exp(i theta) !=1, X(zeta)=i x with x=cot(theta/2). Away from x=x0 and x=x0+/-C, the boundary value W=-i C/(x-x0) lies on the imaginary axis. If |x-x0|<C, the boundary real part of F(W) is pi/2, so |u_ext*|=delta on the right semicircle. If |x-x0|>C, the boundary real part is zero, so u_ext* lies on the imaginary diameter and has modulus <delta (since the finite imaginary value of F(W)/2 is mapped by tan to i*tanh). At the three excluded points the choice of boundary convention is irrelevant. The exact change of variables is
 
     dm(zeta)/|1-zeta|^2 = |dx|/(4*pi).
 
@@ -96,3 +96,54 @@ This extremizer can concentrate all the sharp weighted budget on the interval |x
              dm(zeta)/|1-zeta|^2 <= 2/(pi delta q^2).
 
 The proof uses neither the physical absolute period k nor the recurrence q_(i+1)>=q_i^2. The estimate is exact in the unconstrained scalar class; optimality among genuine quadratic multiplier functions is unknown. This is not the whole-copy estimate needed by CS, and no ledger gate is promoted.
+
+## 4. Simultaneous, compact-invisible boundary spikes even with the PLY disk
+
+The prior archive counterexample concerns one boundary target. The following stronger obstruction preserves a finite tangent disk, the attachment derivative, **strict boundary half-plane positivity away from the root**, holomorphic extension through the whole circle, and arbitrary compact-open proximity to a benign fixed reference function, while putting large displacement at ANY finite collection of prescribed boundary angles. Thus a finite grid of rational attachments cannot be certified by improving only the scalar interior data and adding qualitative analyticity at the boundary.
+
+**Proposed theorem (scalar obstruction, not a family of quadratic polynomials).** Fix a>0, R>0, finitely many distinct zeta_j on the unit circle different from 1. There are rational holomorphic functions u_eta on a neighborhood of the closed disk, with
+- u_eta(1)=0, u_eta'(1)=-a;
+- |u_eta-R|<R on the closed disk minus {1} (in particular Re u_eta>0 there);
+- u_eta -> u_0 compact-open in D, where u_0(lambda)=1/[d+A X(lambda)], d=1/(2R), A=1/(2a), X=(1+lambda)/(1-lambda);
+- u_eta(zeta_j) -> 2R simultaneously for every j.
+
+The limiting u_0 is the benign unshifted rational function with the same derivative and disk. At the next root of rotation 1/r, |u_0| <= 1/(A |cot(pi/r)|) for r>2. At a=1/q^2 and r=q+1 this is O(q^-3), whereas each approximating rational function can be arbitrarily close to the tangent-disk diameter 2R at that same root. The approximation is on any fixed compact subdisk, not uniformly on the closed disk, and not exact interpolation at arbitrary interior points.
+
+**Proof.** Write x_j=cot(theta_j/2), so X(zeta_j)=i x_j. First take only the nonzero x_j; if the list is empty, u_0 suffices. Let s_j=sign(x_j), and for a small positive epsilon choose y_j=x_j-s_j epsilon and eta=epsilon^2. Seek
+
+    H_e(X)=d+A X+sum_l epsilon v_l/(X+eta-i y_l),
+    u_e(lambda)=1/H_e(X(lambda)).
+
+At each nonzero target, the imaginary part of H_e(i x_j) vanishes exactly if
+
+    sum_l M_jl(epsilon) v_l=A x_j,
+    M_jl(epsilon)=epsilon*(x_j-y_l)/(eta^2+(x_j-y_l)^2).
+
+The diagonal is s_j/(1+epsilon^2), and every off-diagonal tends to zero because x_j are distinct. Thus M tends to the invertible diagonal matrix diag(s_j). For sufficiently small epsilon it is invertible and its unique real solution satisfies v_j -> A |x_j|>0. This also proves all v_j are strictly positive eventually, with no numerical inversion assumption.
+
+For Re X>=0 and finite X,
+
+    Re H_e(X)=d+A Re X+
+        sum_l epsilon v_l*(Re X+eta)/|X+eta-i y_l|^2>d.
+
+There are no finite poles of H_e on that closed half-plane. Therefore its reciprocal is holomorphic there and |u_e-R|<R is equivalent to Re H_e>d. The Möbius coordinate X has a simple pole at lambda=1, at which H_e=A X+d+O(1/X). Hence u_e extends across 1 with u_e(1)=0 and u_e'(1)=-1/(2A)=-a. It is a rational function and has no poles anywhere on the closed disk, so it is holomorphic on a neighborhood of the closed disk (the radius of that neighborhood is not asserted uniform).
+
+For compact subsets of D, Re X is bounded below by a positive number; all the added terms tend uniformly to zero. This proves the compact-open limit. At nonzero target j, Im H_e=0 by construction. Its real part is
+
+    d + sum_l epsilon v_l eta/(eta^2+(x_j-y_l)^2).
+
+The l=j term equals epsilon v_j/(1+epsilon^2); all others tend to zero. Thus H_e(i x_j)->d and u_e(zeta_j)->2R. If x_j=0, not included in the linear system, every denominator at X=0 stays bounded away from zero for sufficiently small epsilon (all nonzero x_l are fixed), and H_e(0)->d as well. This proves simultaneous convergence at every target, including -1 if specified. QED.
+
+In particular all approximants obey the attachment Julia inequality: this follows from Schwarz–Pick and the derivative, or directly from Re H_e(X)>=A Re X, which gives |u_e|^2 <= (1/A)*(|1-lambda|^2/(1-|lambda|^2))*Re u_e. The finite tangent disk can be the actual PLY disk expressed in the tau-displacement variable (radius R=k log 2/q). No restriction from that disk or from the exact root derivative prevents the described concentration. These are rational functions of the scalar chart, not actual quadratic multiplier functions; their algebraicity alone does not supply the polynomial dynamical relations. The strict inequalities also show that the counterexample does not rely on a second neutral parent multiplier at a nonroot boundary point.
+
+### Sharp order with the additional disk
+
+For a single prescribed angle with coordinate x0, the simpler model u=1/[d+A(X-i x0)] is strictly in the disk for interior lambda and extends analytically through the entire circle (nonroot boundary values are on the tangent circle; choosing d slightly larger than 1/(2R) makes all those values strictly inside the disk). Its exact threshold event at 0<delta<1/d is
+
+    |x-x0| <= sqrt(delta^(-2)-d^2)/A,
+
+so its weighted angular mass is
+
+    (a/pi)*sqrt(delta^(-2)-d^2).
+
+For example d=1/R and delta<=R/2, this is >=sqrt(3)*a/(2*pi*delta), with strict disk inclusion even at the boundary. This has the same a/delta order as the optimal bound (6). When a=1/q^2, delta=epsilon/q, x0=cot(pi/r), r=q+1, and R>=2delta, the interval has x-length comparable to 1/q. In that interval dx/dtheta=-(1+x^2)/2 has magnitude comparable to r^2 for large r. Therefore its angular length is comparable to 1/(q*r^2), and its fraction of a window of angular length comparable to 1/r is comparable to 1/(q*r). The order in (5) cannot be improved in this scalar disk class, even for an exceptional interval centered at the specific next rational attachment. Constants depend on epsilon, not the absolute parent period. The coefficient 2/pi itself was proved optimal only for the full half-plane class, not for a fixed finite tangent disk.
