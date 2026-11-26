@@ -2158,6 +2158,29 @@
       "DIRECT_DECORATION_END_PRIME_END_COFINALITY"
     ]
   },
+  "stationary-geometric-fiber-saturation-20261126": {
+    "guide": "contributions/stationary_geometric_fiber_saturation_20261126/NOTE.md#stationary-geometric-fiber-saturation-20261126",
+    "theorems": {
+      "formalization/weighted/StationaryGeometricFibers.lean": [
+        "preconnected_finite_subsingleton",
+        "singleton_fiber_of_iterate",
+        "quadratic_fiber_finite",
+        "quadratic_restricted_fiber_finite",
+        "relative_preimage_preconnected",
+        "relative_component_lift",
+        "closed_carrier_saturated_of_frontier_singletons",
+        "marked_continuum_image_of_dense_anchors",
+        "selected_mark_from_single_overlap",
+        "critical_preimage_preconnected",
+        "quadratic_restricted_critical_preimage",
+        "quadratic_least_carrier_forward_invariant",
+        "selected_carrier_contact_image"
+      ]
+    },
+    "obligations": [
+      "KKL_STATIONARY_NONLC_SELECTED_GEOMETRIC_CONTINUUM_LIFT"
+    ]
+  },
   "cylinder-fiber-exhaustion-20261126": {
     "guide": "contributions/cylinder_fiber_exhaustion_20261126/NOTE.md#cylinder-fiber-exhaustion-20261126",
     "theorems": {
