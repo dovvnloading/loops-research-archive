@@ -1,22 +1,6 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import type { ReactNode } from 'react';
-import {
-  ArrowUpRight,
-  BookmarkPlus,
-  Check,
-  ChevronRight,
-  Columns2,
-  Crosshair,
-  Download,
-  FlaskConical,
-  Orbit,
-  Pause,
-  Play,
-  Radar,
-  RotateCcw,
-  Square,
-  Upload,
-} from 'lucide-react';
+import { ArrowUpRight } from 'lucide-react';
 import {
   alignedIndex,
   analyzeOrbit,
@@ -173,7 +157,7 @@ function Stat({ label, value, detail }: { label: string; value: ReactNode; detai
 function Scope({ children }: { children: ReactNode }) {
   return (
     <div className="lab-scope">
-      <span className="lab-scope-dot" />
+      <span>Scope</span>
       <p>{children}</p>
     </div>
   );
@@ -333,7 +317,7 @@ function Discovery({
     const n = preview?.settings.resolution ?? settings.resolution;
     element.width = n;
     element.height = n;
-    ctx.fillStyle = '#0b111b';
+    ctx.fillStyle = '#0a0a09';
     ctx.fillRect(0, 0, n, n);
     if (preview) ctx.putImageData(new ImageData(new Uint8ClampedArray(preview.pixels), n, n), 0, 0);
   }, [preview, settings.resolution]);
@@ -403,17 +387,18 @@ function Discovery({
     <div className="lab-instrument">
       <div className="lab-instrument-intro">
         <div>
-          <span className="lab-kicker">01 / PARAMETER EXPEDITIONS</span>
-          <h2>Find a place worth a closer look.</h2>
-          <p>Survey a region. Identify attracting cycles. Refine the most promising parameters.</p>
+          <h2>Parameter expedition</h2>
+          <p>
+            Samples a rectangle of the parameter plane, classifies each sample by its critical
+            orbit, and refines candidate centers of attracting components.
+          </p>
         </div>
-        <span className="lab-method-tag">NUMERICAL DISCOVERY</span>
+        <span className="lab-method-tag">Float64, numerical</span>
       </div>
       <div className="lab-discovery-layout">
         <aside className="lab-panel lab-settings">
           <div className="lab-panel-label">
-            <Radar size={15} />
-            <span>Expedition settings</span>
+            <span>Settings</span>
           </div>
           <Field label="Region">
             <select
@@ -523,11 +508,6 @@ function Discovery({
           </div>
           {!busy ? (
             <button className="lab-button lab-primary lab-full" onClick={begin}>
-              {status === 'complete' ? (
-                <RotateCcw size={15} />
-              ) : (
-                <Play size={15} fill="currentColor" />
-              )}{' '}
               {status === 'complete' ? 'Run expedition again' : 'Start expedition'}
             </button>
           ) : (
@@ -539,7 +519,6 @@ function Discovery({
                   setStatus(status === 'paused' ? 'running' : 'paused');
                 }}
               >
-                {status === 'paused' ? <Play size={15} /> : <Pause size={15} />}
                 {status === 'paused' ? 'Resume' : 'Pause'}
               </button>
               <button
@@ -549,14 +528,12 @@ function Discovery({
                   setStatus('cancelled');
                 }}
               >
-                {' '}
-                <Square size={13} />
                 Stop
               </button>
             </div>
           )}
           <p className="lab-small">
-            Runs on your device. Stopping retains the parameters already sampled.
+            Runs in this browser. Stopping keeps the samples already taken.
           </p>
         </aside>
         <div className="lab-survey">
@@ -565,10 +542,10 @@ function Discovery({
               <span>
                 <span className={`lab-live-dot ${status === 'running' ? 'is-live' : ''}`} />
                 {restoredRecord
-                  ? 'SAVED RECORD · READY TO REPLAY'
+                  ? 'Saved record, ready to replay'
                   : status === 'idle'
-                    ? 'READY TO EXPLORE'
-                    : status.toUpperCase()}
+                    ? 'Not started'
+                    : status[0].toUpperCase() + status.slice(1)}
               </span>
               <span>
                 {result
@@ -605,24 +582,11 @@ function Discovery({
               />
               {!preview && (
                 <div className="lab-map-empty">
-                  <div className="lab-map-reticle">
-                    <Crosshair size={38} strokeWidth={1} />
-                  </div>
-                  <h3>
-                    {restoredRecord
-                      ? 'Saved catalog restored.'
-                      : 'A question begins with a region.'}
-                  </h3>
+                  <h3>{restoredRecord ? 'Saved catalog restored' : 'No survey yet'}</h3>
                   <p>
-                    {restoredRecord ? (
-                      'Run the expedition to reconstruct its survey image.'
-                    ) : (
-                      <>
-                        Choose your window and start a survey.
-                        <br />
-                        Every pixel is an experiment.
-                      </>
-                    )}
+                    {restoredRecord
+                      ? 'Run the expedition to reconstruct its survey image.'
+                      : 'Set the region and start the expedition. Each cell of the grid is one sampled parameter.'}
                   </p>
                 </div>
               )}
@@ -653,15 +617,15 @@ function Discovery({
             </div>
             <div className="lab-map-legend">
               <span>
-                <i style={{ background: '#75c7b7' }} />
+                <i className="is-attracting" />
                 Attracting return
               </span>
               <span>
-                <i style={{ background: '#34435a' }} />
+                <i className="is-escaped" />
                 Escaped
               </span>
               <span>
-                <i style={{ background: '#4a4b70' }} />
+                <i className="is-unresolved" />
                 Unresolved
               </span>
               <span>
@@ -677,17 +641,17 @@ function Discovery({
           </div>
           <div className="lab-stat-grid">
             <Stat
-              label="COMPONENT CANDIDATES"
+              label="Component candidates"
               value={result?.candidates.length ?? '—'}
               detail="Distinct refined centers"
             />
             <Stat
-              label="PERIODS OBSERVED"
+              label="Periods observed"
               value={result ? Object.keys(result.periods).length : '—'}
               detail={`Searches periods 1–${activeSettings.maxPeriod}`}
             />
             <Stat
-              label="UNRESOLVED"
+              label="Unresolved"
               value={result ? `${((result.unresolved / result.processed) * 100).toFixed(1)}%` : '—'}
               detail="At the current finite budget"
             />
@@ -702,9 +666,8 @@ function Discovery({
       <div className="lab-panel lab-findings">
         <div className="lab-panel-title">
           <div>
-            <span className="lab-kicker">FIELD NOTES</span>
             <h3>
-              Places to investigate <span>{result?.candidates.length ?? 0}</span>
+              Candidate centers <span>{result?.candidates.length ?? 0}</span>
             </h3>
           </div>
           <div className="lab-toolbar">
@@ -721,12 +684,12 @@ function Discovery({
               ))}
             </select>
             <button
-              className="lab-icon-button"
+              className="lab-button"
               aria-label="Export expedition JSON"
               title="Export reproducible JSON"
               onClick={() => exportManifest(payload())}
             >
-              <Download size={16} />
+              Export JSON
             </button>
           </div>
         </div>
@@ -786,17 +749,16 @@ function Discovery({
           </div>
         ) : (
           <div className="lab-empty-findings">
-            <Orbit size={25} strokeWidth={1.2} />
             <p>
               {status === 'idle'
-                ? 'Your expedition will leave a trail here.'
+                ? 'Refined centers are listed here once an expedition has run.'
                 : status === 'running' || status === 'paused'
                   ? 'Looking for converged attracting cycles…'
                   : 'No refined centers found in the sampled window.'}
             </p>
             <small>
               {status === 'idle'
-                ? 'Refined centers, observed periods, and exact settings travel together.'
+                ? 'Each row keeps its period, coordinates and residual; the export includes the settings.'
                 : 'A finer grid or larger iteration budget can reveal additional candidates.'}
             </small>
           </div>
@@ -831,8 +793,7 @@ function Discovery({
                   )
                 }
               >
-                <Download size={13} />
-                CSV
+                Export CSV
               </button>
               {onSaveExperiment && (
                 <button
@@ -846,7 +807,6 @@ function Discovery({
                     });
                   }}
                 >
-                  {saved ? <Check size={13} /> : <BookmarkPlus size={13} />}
                   {saving ? 'Saving…' : saved ? 'Saved to journal' : 'Save experiment'}
                 </button>
               )}
@@ -891,14 +851,7 @@ function OrbitPlot({ analysis }: { analysis: OrbitAnalysis }) {
       role="img"
       aria-label={`Critical orbit of c equals ${complex(analysis.parameter.re, analysis.parameter.im)}. ${analysis.disposition}.`}
     >
-      <defs>
-        <radialGradient id="lab-orbit-glow">
-          <stop stopColor="#14263a" stopOpacity=".7" />
-          <stop offset="1" stopColor="#0b1018" stopOpacity="0" />
-        </radialGradient>
-      </defs>
-      <rect width={width} height={height} fill="#0b1018" />
-      <circle cx={cx} cy={cy} r={200} fill="url(#lab-orbit-glow)" />
+      <rect width={width} height={height} fill="#0a0a09" />
       {[-2, -1, 0, 1, 2].map((n) => (
         <g key={n}>
           <line
@@ -906,7 +859,7 @@ function OrbitPlot({ analysis }: { analysis: OrbitAnalysis }) {
             y1={24}
             x2={cx + n * scale}
             y2={height - 24}
-            stroke={n === 0 ? '#374455' : '#1b2431'}
+            stroke={n === 0 ? '#45453d' : '#1f1f1c'}
             strokeWidth={n === 0 ? 1 : 0.6}
           />
           <line
@@ -914,10 +867,10 @@ function OrbitPlot({ analysis }: { analysis: OrbitAnalysis }) {
             y1={cy + n * scale}
             x2={width - 24}
             y2={cy + n * scale}
-            stroke={n === 0 ? '#374455' : '#1b2431'}
+            stroke={n === 0 ? '#45453d' : '#1f1f1c'}
             strokeWidth={n === 0 ? 1 : 0.6}
           />
-          <text x={cx + n * scale + 5} y={cy + 15} fill="#617187" fontSize={10}>
+          <text x={cx + n * scale + 5} y={cy + 15} fill="#8a877c" fontSize={11}>
             {n}
           </text>
         </g>
@@ -927,12 +880,12 @@ function OrbitPlot({ analysis }: { analysis: OrbitAnalysis }) {
         cy={cy}
         r={2 * scale}
         fill="none"
-        stroke="#344255"
+        stroke="#8a877c"
         strokeWidth=".8"
         strokeDasharray="3 5"
       />
       {segments.map((d, i) => (
-        <path key={i} d={d} fill="none" stroke="#82b5ee" strokeWidth="1.1" opacity=".52" />
+        <path key={i} d={d} fill="none" stroke="#b6b2a6" strokeWidth="1" opacity=".5" />
       ))}
       {points.slice(0, 128).map((p) => (
         <circle
@@ -940,7 +893,7 @@ function OrbitPlot({ analysis }: { analysis: OrbitAnalysis }) {
           cx={cx + p.re * scale}
           cy={cy - p.im * scale}
           r={p.index === 0 ? 4 : 2.1}
-          fill={p.index === 0 ? '#e8d4b0' : '#9bc3f0'}
+          fill={p.index === 0 ? '#ffffff' : '#b6b2a6'}
           opacity={Math.max(0.2, 1 - p.index / 150)}
         />
       ))}
@@ -950,10 +903,10 @@ function OrbitPlot({ analysis }: { analysis: OrbitAnalysis }) {
             cx={cx + p.re * scale}
             cy={cy - p.im * scale}
             r={7}
-            fill="#83dbc4"
-            opacity=".13"
+            fill="none"
+            stroke="#e3b75f"
           />
-          <circle cx={cx + p.re * scale} cy={cy - p.im * scale} r={3} fill="#8cdfca" />
+          <circle cx={cx + p.re * scale} cy={cy - p.im * scale} r={3} fill="#e3b75f" />
         </g>
       ))}
       <text
@@ -961,20 +914,20 @@ function OrbitPlot({ analysis }: { analysis: OrbitAnalysis }) {
         x={width - 18}
         y={cy - 8}
         textAnchor="end"
-        fill="#8594a8"
-        fontSize={11}
+        fill="#8a877c"
+        fontSize={12}
       >
         Re(z)
       </text>
-      <text className="lab-orbit-axis-name" x={cx + 8} y={28} fill="#8594a8" fontSize={11}>
+      <text className="lab-orbit-axis-name" x={cx + 8} y={28} fill="#8a877c" fontSize={12}>
         Im(z)
       </text>
       <text
         className="lab-orbit-radius-label"
-        x={cx + 2 * scale - 12}
-        y={cy + 24}
-        fill="#5e6f85"
-        fontSize={10}
+        x={cx + 1.4142 * scale + 8}
+        y={cy - 1.4142 * scale - 4}
+        fill="#8a877c"
+        fontSize={11}
       >
         |z| = 2
       </text>
@@ -1080,19 +1033,21 @@ function OrbitMicroscope({
     <div className="lab-instrument">
       <div className="lab-instrument-intro">
         <div>
-          <span className="lab-kicker">02 / ORBIT MICROSCOPE</span>
-          <h2>One parameter. A sequence of consequences.</h2>
+          <h2>Orbit microscope</h2>
           <p>
-            Follow the critical point through repeated squaring and watch its long-term behavior.
+            Iterates the critical point for one parameter and reports whether the orbit escapes,
+            returns to an attracting cycle, or stays unresolved at the budget.
           </p>
         </div>
-        <span className="lab-formula">z₀ = 0&nbsp;&nbsp; zₙ₊₁ = zₙ² + c</span>
+        <span className="lab-formula math">
+          <i>z</i>
+          <sub>0</sub> = 0, <i>z</i> ↦ <i>z</i>² + <i>c</i>
+        </span>
       </div>
       <div className="lab-orbit-layout">
         <aside className="lab-panel lab-settings">
           <div className="lab-panel-label">
-            <Orbit size={15} />
-            <span>Critical orbit</span>
+            <span>Parameter</span>
           </div>
           <Field label="Real part of c">
             <input
@@ -1126,14 +1081,13 @@ function OrbitMicroscope({
             </select>
           </Field>
           <button className="lab-button lab-primary lab-full" onClick={() => analyze()}>
-            <Play size={14} fill="currentColor" />
             Analyze parameter
           </button>
           <div className="lab-setting-divider" />
-          <span className="lab-kicker">FAMILIAR PLACES</span>
+          <span className="lab-kicker">Presets</span>
           <div className="lab-orbit-presets">
             {[
-              { label: 'The main cardioid', re: '0', im: '0' },
+              { label: 'Center of the main cardioid', re: '0', im: '0' },
               { label: 'Basilica', re: '-1', im: '0' },
               { label: 'Airplane', re: '-1.7548776662466927', im: '0' },
               { label: 'A slowly escaping orbit', re: '-0.75', im: '0.1' },
@@ -1148,7 +1102,6 @@ function OrbitMicroscope({
                 }}
               >
                 {p.label}
-                <ChevronRight size={13} />
               </button>
             ))}
           </div>
@@ -1156,7 +1109,7 @@ function OrbitMicroscope({
         <div>
           <div className="lab-panel lab-orbit-main">
             <div className="lab-chart-header">
-              <span>{label.toUpperCase()}</span>
+              <span>{label}</span>
               <span>{analysis.iterations.toLocaleString()} iterations observed</span>
             </div>
             <OrbitPlot analysis={analysis} />
@@ -1174,7 +1127,7 @@ function OrbitMicroscope({
           </div>
           <div className="lab-stat-grid lab-orbit-stats">
             <Stat
-              label="RETURN PERIOD"
+              label="Return period"
               value={analysis.period ?? (analysis.escapeIteration ? 'Escaped' : 'Unresolved')}
               detail={
                 analysis.escapeIteration
@@ -1183,12 +1136,12 @@ function OrbitMicroscope({
               }
             />
             <Stat
-              label="CYCLE MULTIPLIER |λ|"
+              label="Cycle multiplier |λ|"
               value={scientific(analysis.multiplierModulus, 4)}
               detail="Numerical stability diagnostic"
             />
             <Stat
-              label="RETURN RESIDUAL"
+              label="Return residual"
               value={scientific(analysis.residual)}
               detail="Maximum error across 3 returns"
             />
@@ -1201,11 +1154,7 @@ function OrbitMicroscope({
         </div>
       )}
       <div className="lab-panel lab-orbit-conclusion">
-        <div className="lab-conclusion-symbol">
-          <Orbit size={25} strokeWidth={1.4} />
-        </div>
         <div>
-          <span className="lab-kicker">READING THE EXPERIMENT</span>
           <h3>{label}</h3>
           <p>
             {analysis.escapeIteration
@@ -1227,13 +1176,12 @@ function OrbitMicroscope({
             })
           }
         >
-          Explore parameter
-          <ArrowUpRight size={15} />
+          Open this parameter in Explore
         </button>
       </div>
       <details className="lab-panel lab-orbit-details">
         <summary>
-          <span>Inspect the numerical record</span>
+          <span>Numerical record</span>
           <span className="lab-mono">
             {complex(analysis.parameter.re, analysis.parameter.im, 10)}
           </span>
@@ -1271,7 +1219,6 @@ function OrbitMicroscope({
       </details>
       <div className="lab-export-row">
         <button className="lab-button" onClick={() => exportManifest(payload())}>
-          <Download size={14} />
           Export experiment
         </button>
         {onSaveExperiment && (
@@ -1286,7 +1233,6 @@ function OrbitMicroscope({
               });
             }}
           >
-            {saved ? <Check size={14} /> : <BookmarkPlus size={14} />}
             {saving ? 'Saving…' : saved ? 'Saved to journal' : 'Save to journal'}
           </button>
         )}
@@ -1321,7 +1267,7 @@ function FieldCanvas({
     if (!canvas || !ctx) return;
     canvas.width = resolution;
     canvas.height = resolution;
-    ctx.fillStyle = '#0b1018';
+    ctx.fillStyle = '#0a0a09';
     ctx.fillRect(0, 0, resolution, resolution);
     if (!field) return;
     const pixels = ctx.createImageData(resolution, resolution);
@@ -1437,11 +1383,13 @@ function Comparison({
     <div className="lab-instrument">
       <div className="lab-instrument-intro">
         <div>
-          <span className="lab-kicker">03 / STRUCTURAL COMPARISON</span>
-          <h2>Resemblance is a question you can measure.</h2>
-          <p>Compare two parameter windows under the same sampling and iteration conditions.</p>
+          <h2>Window comparison</h2>
+          <p>
+            Samples two parameter windows under the same grid and iteration budget and measures how
+            far the two escape fields differ.
+          </p>
         </div>
-        <span className="lab-method-tag">SHARED NUMERICAL CONDITIONS</span>
+        <span className="lab-method-tag">Float64, shared settings</span>
       </div>
       <div className="lab-comparison-settings">
         {(['a', 'b'] as const).map((key, index) => (
@@ -1502,7 +1450,7 @@ function Comparison({
       </div>
       <div className="lab-comparison-options">
         <div className="lab-comparison-presets">
-          <span>TRY</span>
+          <span>Presets</span>
           <button
             disabled={busy}
             onClick={() => {
@@ -1586,12 +1534,10 @@ function Comparison({
               setStatus('cancelled');
             }}
           >
-            <Square size={13} />
             Cancel comparison
           </button>
         ) : (
           <button className="lab-button lab-primary" onClick={begin}>
-            <Columns2 size={15} />
             Compare windows
           </button>
         )}
@@ -1623,7 +1569,7 @@ function Comparison({
       <div className="lab-comparison-images">
         <div className="lab-panel lab-comparison-image">
           <div className="lab-chart-header">
-            <span>A / REFERENCE</span>
+            <span>A, reference</span>
             <span>{active.a.span} span</span>
           </div>
           <FieldCanvas
@@ -1640,7 +1586,7 @@ function Comparison({
         </div>
         <div className="lab-panel lab-comparison-image">
           <div className="lab-chart-header">
-            <span>B / ALIGNED</span>
+            <span>B, aligned</span>
             <span>{result ? alignmentLabel : 'Awaiting comparison'}</span>
           </div>
           <FieldCanvas
@@ -1658,7 +1604,7 @@ function Comparison({
         </div>
         <div className="lab-panel lab-comparison-image">
           <div className="lab-chart-header">
-            <span>ABSOLUTE DIFFERENCE</span>
+            <span>Absolute difference</span>
             <span>0 → 1</span>
           </div>
           <FieldCanvas
@@ -1671,24 +1617,24 @@ function Comparison({
           {!result && (
             <div className="lab-comparison-empty">
               <span>Δ</span>
-              <p>Where the fields diverge</p>
+              <p>Difference field</p>
             </div>
           )}
         </div>
       </div>
       <div className="lab-stat-grid lab-comparison-stats">
         <Stat
-          label="MEAN FIELD DIFFERENCE"
+          label="Mean field difference"
           value={result ? result.metrics.meanAbsoluteDifference.toFixed(5) : '—'}
           detail="0 = identical sampled fields"
         />
         <Stat
-          label="FIELD CORRELATION"
+          label="Field correlation"
           value={result?.metrics.correlation != null ? result.metrics.correlation.toFixed(5) : '—'}
           detail="Unavailable for constant fields"
         />
         <Stat
-          label="FINITE NON-ESCAPE OVERLAP"
+          label="Finite non-escape overlap"
           value={
             result?.metrics.finiteNonescapeJaccard != null
               ? `${(result.metrics.finiteNonescapeJaccard * 100).toFixed(2)}%`
@@ -1700,13 +1646,12 @@ function Comparison({
       {result && (
         <div className="lab-panel lab-comparison-reading">
           <div>
-            <span className="lab-kicker">INTERPRETATION</span>
             <h3>
               {result.metrics.meanAbsoluteDifference < 1e-7
-                ? 'The sampled fields coincide.'
+                ? 'The sampled fields coincide'
                 : result.metrics.meanAbsoluteDifference < 0.05
-                  ? 'A strong numerical resemblance.'
-                  : 'There is measurable structure in the difference.'}
+                  ? 'The sampled fields are close'
+                  : 'The sampled fields differ measurably'}
             </h3>
             <p>
               Best tested alignment: <strong>{alignmentLabel}</strong>. Compared{' '}
@@ -1718,7 +1663,6 @@ function Comparison({
           </div>
           <div className="lab-export-row">
             <button className="lab-button" onClick={() => exportManifest(payload())}>
-              <Download size={14} />
               Export comparison
             </button>
             {onSaveExperiment && (
@@ -1733,7 +1677,6 @@ function Comparison({
                   });
                 }}
               >
-                {saved ? <Check size={14} /> : <BookmarkPlus size={14} />}
                 {saving ? 'Saving…' : saved ? 'Saved' : 'Save to journal'}
               </button>
             )}
@@ -1807,15 +1750,13 @@ export function Laboratory(props: LaboratoryProps) {
     <div className="laboratory-workspace">
       <header className="lab-workspace-header">
         <div>
-          <span className="lab-kicker">
-            <FlaskConical size={13} />
-            THE LABORATORY
-          </span>
-          <h1>Follow a question.</h1>
-          <p>Turn a moment of wonder into an experiment you can reproduce.</p>
+          <h1>Laboratory</h1>
+          <p>
+            Three numerical instruments. Each result records its settings, precision and budget, and
+            can be exported, saved to the journal and run again.
+          </p>
         </div>
         <button className="lab-button" onClick={() => upload.current?.click()}>
-          <Upload size={14} />
           Import experiment
         </button>
         <input
@@ -1829,10 +1770,10 @@ export function Laboratory(props: LaboratoryProps) {
       </header>
       <nav className="lab-tabs" aria-label="Laboratory instruments" role="tablist">
         {[
-          { id: 'discovery' as const, label: 'Expeditions', icon: Radar },
-          { id: 'orbit' as const, label: 'Orbit microscope', icon: Orbit },
-          { id: 'comparison' as const, label: 'Compare structures', icon: Columns2 },
-        ].map(({ id, label, icon: Icon }) => (
+          { id: 'discovery' as const, label: 'Expeditions' },
+          { id: 'orbit' as const, label: 'Orbit microscope' },
+          { id: 'comparison' as const, label: 'Compare structures' },
+        ].map(({ id, label }) => (
           <button
             id={`lab-tab-${id}`}
             role="tab"
@@ -1842,7 +1783,6 @@ export function Laboratory(props: LaboratoryProps) {
             key={id}
             onClick={() => setTab(id)}
           >
-            <Icon size={16} />
             {label}
           </button>
         ))}

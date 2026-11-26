@@ -144,7 +144,7 @@ async function settledVolume64() {
   await until(() => evaluate("(()=>{const canvas=document.querySelector('.ob-main-viewport>.deep-volume-canvas');return canvas&&!canvas.hidden&&Math.max(canvas.width,canvas.height)>=256&&document.querySelector('.ob-statusbar')?.innerText.includes('CPU worker · Float64');})()"), 'Float64 volume full pass', 180000);
 }
 async function chooseWorld(title) {
-  if (!await evaluate("!!document.querySelector('.ob-world-library')")) await clickLabel('Show world library');
+  if (!await evaluate("!!document.querySelector('.ob-world-library')")) await clickLabel('Show index');
   await evaluate(`(()=>{const title=[...document.querySelectorAll('.ob-world-list strong')].find(e=>e.textContent===${JSON.stringify(title)});if(!title)throw Error('Missing world');title.closest('button').click();})()`);
   await until(() => evaluate(`document.querySelector('.ob-context-active')?.textContent===${JSON.stringify(title)}`), title + ' selected');
   await inspectorTab('View'); await setSelect('Rendering quality', 'low');
@@ -154,9 +154,9 @@ const observationTitle = 'Imaginary gateway field note';
 async function saveVisualObservation() {
   await evaluate("document.querySelector('.ob-header .ob-save-button').click()");
   await until(() => evaluate("!!document.querySelector('.ob-save-dialog[open]')"), 'save observation dialog');
-  await fill('.ob-save-dialog input[placeholder="A place worth remembering"]', observationTitle);
+  await fill('.ob-save-dialog input[name="title"]', observationTitle);
   await fill('.ob-save-dialog textarea', 'Nearby escape contours remain distinct at extremely small scales. Compare this window with the exact c = i reference.');
-  await fill('.ob-save-dialog input[placeholder="spirals, boundary, curious"]', 'deep zoom, field note');
+  await fill('.ob-save-dialog input[name="tags"]', 'deep zoom, field note');
   await clickText('.ob-save-dialog button[type=submit]', 'Save to journal');
   await until(() => evaluate("!document.querySelector('.ob-save-dialog') && Number([...document.querySelectorAll('.ob-header nav button')].find(e=>e.querySelector('span')?.textContent==='Journal')?.querySelector('i')?.textContent)>=1"), 'observation saved through the UI');
 }

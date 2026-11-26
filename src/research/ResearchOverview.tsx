@@ -1,22 +1,6 @@
 import { useMemo, useState } from 'react';
 import type { ReactNode } from 'react';
-import {
-  ArrowRight,
-  ArrowUpRight,
-  BookOpen,
-  Braces,
-  Check,
-  ChevronDown,
-  Copy,
-  Database,
-  FileCheck2,
-  FlaskConical,
-  GitBranch,
-  Microscope,
-  Network,
-  Search,
-  ShieldCheck,
-} from 'lucide-react';
+import { ArrowUpRight, Search } from 'lucide-react';
 import { REPO, useData } from './common';
 import './research-overview.css';
 
@@ -125,7 +109,7 @@ function External({
   return (
     <a href={href} target="_blank" rel="noreferrer" className={`ro-source ${className}`}>
       {children}
-      <ArrowUpRight size={13} />
+      <ArrowUpRight size={12} />
     </a>
   );
 }
@@ -170,75 +154,64 @@ export function ResearchOverview({ onBrowse, onAtlas, onLab }: ResearchOverviewP
   return (
     <div className="research-overview">
       <header className="ro-header">
-        <div>
-          <span className="ro-eyebrow">
-            <GitBranch size={13} />
-            THE RESEARCH RECORD
-          </span>
-          <h1>
-            Beautiful questions.
-            <br />
-            <em>Traceable answers.</em>
-          </h1>
-          <p>
-            Follow a claim from the picture that suggested it to the evidence that supports it—and
-            the assumptions still waiting to be established.
-          </p>
-        </div>
-        <div className="ro-status-card">
-          <span className="ro-status-heading">
-            <span />
-            CURRENT GLOBAL STATUS
-          </span>
-          <strong>{m?.mlc_status ?? 'MLC remains open'}</strong>
-          <p>
-            Finite experiments and formal statements retain their stated scope. The universal
-            physical bridge remains an open research program.
-          </p>
-          <External href={source('RESEARCH_MAP.md')}>Read the research map</External>
-        </div>
+        <h1>Research record</h1>
+        <p>
+          Each claim is listed with the evidence that supports it and the hypotheses it still
+          depends on.
+        </p>
       </header>
-      <div className="ro-source-bar">
-        <div>
-          <Database size={14} />
-          <span>SOURCE REVISION</span>
-          {revision ? (
-            <a href={`${REPO}/commit/${revision}`} target="_blank" rel="noreferrer">
-              <code>{revision.slice(0, 12)}</code>
-              <ArrowUpRight size={11} />
-            </a>
-          ) : (
-            <code>Loading…</code>
-          )}
+      <dl className="ro-front">
+        <div className="ro-status-card">
+          <dt>Status</dt>
+          <dd>
+            <strong>{m?.mlc_status ?? 'MLC remains open'}</strong>
+            <p>
+              Finite experiments and formal statements retain their stated scope. The universal
+              physical bridge remains an open research program.
+            </p>
+            <External href={source('RESEARCH_MAP.md')}>Research map</External>
+          </dd>
         </div>
-        <span>
-          {m
-            ? `${m.datasets.length} instrument datasets · ${m.archive_files.toLocaleString()} indexed source files`
-            : 'Loading the evidence inventory…'}
-        </span>
-        {revision && (
-          <button
-            aria-label="Copy full research source revision"
-            onClick={() => {
-              navigator.clipboard
-                .writeText(revision)
-                .then(() => {
-                  setCopied(true);
-                  setCopyError('');
-                  setTimeout(() => setCopied(false), 1800);
-                })
-                .catch(() =>
-                  setCopyError(
-                    'Copy unavailable. Select the revision link to inspect its complete value.',
-                  ),
-                );
-            }}
-          >
-            {copied ? <Check size={13} /> : <Copy size={13} />}
-            {copied ? 'Copied' : 'Copy revision'}
-          </button>
-        )}
-      </div>
+        <div className="ro-source-bar">
+          <dt>Source revision</dt>
+          <dd>
+            {revision ? (
+              <a href={`${REPO}/commit/${revision}`} target="_blank" rel="noreferrer">
+                <code>{revision.slice(0, 12)}</code>
+              </a>
+            ) : (
+              <code>Loading…</code>
+            )}
+            <span>
+              {m
+                ? `${m.datasets.length} instrument datasets · ${m.archive_files.toLocaleString()} indexed source files`
+                : 'Loading the evidence inventory…'}
+            </span>
+            {revision && (
+              <button
+                className="ob-link"
+                aria-label="Copy full research source revision"
+                onClick={() => {
+                  navigator.clipboard
+                    .writeText(revision)
+                    .then(() => {
+                      setCopied(true);
+                      setCopyError('');
+                      setTimeout(() => setCopied(false), 1800);
+                    })
+                    .catch(() =>
+                      setCopyError(
+                        'Copy unavailable. Select the revision link to inspect its complete value.',
+                      ),
+                    );
+                }}
+              >
+                {copied ? 'Copied' : 'Copy full revision'}
+              </button>
+            )}
+          </dd>
+        </div>
+      </dl>
       {copyError && (
         <div className="ro-notice" role="status">
           {copyError}
@@ -248,6 +221,7 @@ export function ResearchOverview({ onBrowse, onAtlas, onLab }: ResearchOverviewP
         <div className="ro-load-error" role="alert">
           <span>{error}</span>
           <button
+            className="ob-button"
             onClick={() => {
               manifest.retry();
               ledger.retry();
@@ -259,31 +233,34 @@ export function ResearchOverview({ onBrowse, onAtlas, onLab }: ResearchOverviewP
         </div>
       )}
       <section className="ro-search-section" aria-label="Search research evidence">
-        <div className="ro-search-box">
-          <Search size={18} />
+        <label className="ro-search-box">
+          <Search size={15} />
           <input
+            type="search"
             aria-label="Search the research record"
             value={query}
             onChange={(e) => setQuery(e.target.value)}
-            placeholder="Search a theorem, obligation, source, or question…"
+            placeholder="Search obligations and source files, for example rigidity, period27, H1"
           />
-          <span>{query.trim().length >= 2 ? `${search.total} results` : 'SOURCE + LEDGER'}</span>
-        </div>
+          <span>{query.trim().length >= 2 ? `${search.total} results` : 'Ledger and sources'}</span>
+        </label>
         {query.trim().length >= 2 && (
           <div className="ro-search-results">
             {search.total === 0 ? (
-              <p>No matching record. Try “rigidity”, “period27”, “renewal”, or “H1”.</p>
+              <p>No obligation or source file matches “{query.trim()}”.</p>
             ) : (
               <>
                 {search.obligations.map((o) => (
                   <div className="ro-search-result" key={o.id}>
                     <div>
-                      <span className={`ro-label ro-label-${o.status}`}>
-                        {o.status === 'proved' && o.hyp !== 'none'
-                          ? 'CONDITIONAL SOURCE CLAIM'
-                          : o.status.toUpperCase()}
-                      </span>
-                      <h3>{o.id.replaceAll('_', ' ')}</h3>
+                      <h3>
+                        <code>{o.id}</code>
+                        <span className={`ro-label ro-label-${o.status}`}>
+                          {o.status === 'proved' && o.hyp !== 'none'
+                            ? 'conditional source claim'
+                            : o.status}
+                        </span>
+                      </h3>
                       <p>{o.statement}</p>
                       {o.hyp !== 'none' && <small>Explicit hypothesis: {o.hyp}</small>}
                     </div>
@@ -302,271 +279,240 @@ export function ResearchOverview({ onBrowse, onAtlas, onLab }: ResearchOverviewP
                     target="_blank"
                     rel="noreferrer"
                   >
-                    <BookOpen size={15} />
                     <div>
                       <span>{f.title}</span>
                       <code>{f.path}</code>
                     </div>
                     <span>{f.kind}</span>
-                    <ArrowUpRight size={13} />
                   </a>
                 ))}
-                <button className="ro-search-browse" onClick={onBrowse}>
-                  Open the full research archive
-                  <ArrowRight size={14} />
+                <button className="ob-link ro-search-browse" onClick={onBrowse}>
+                  All results in the ledger and source library
                 </button>
               </>
             )}
           </div>
         )}
       </section>
-      <section className="ro-inventory" aria-label="Original obligation inventory">
-        <div className="ro-inventory-heading">
-          <span className="ro-eyebrow">ORIGINAL SOURCE LEDGER</span>
-          <h2>A record of claims and their status.</h2>
-          <p>These are inventory labels, with later updates recorded separately.</p>
+      <section className="ro-section ro-inventory" aria-labelledby="ro-ledger">
+        <div className="ro-section-heading">
+          <h2 id="ro-ledger">Obligation ledger</h2>
+          <p>Inventory labels at the source lock. Later updates are recorded separately.</p>
         </div>
-        <div className="ro-inventory-numbers">
-          <div>
-            <strong>{totals?.imported.toLocaleString() ?? '—'}</strong>
-            <span>Imported results</span>
-            <small>External source inputs</small>
-          </div>
-          <div>
-            <strong>{totals?.proved.toLocaleString() ?? '—'}</strong>
-            <span>Archive-internal “proved”</span>
-            <small>Written or conditional claims</small>
-          </div>
-          <div>
-            <strong>{totals?.open.toLocaleString() ?? '—'}</strong>
-            <span>Open obligations</span>
-            <small>Explicit unfinished interfaces</small>
-          </div>
-        </div>
-        <div className="ro-inventory-footer">
-          <span>
+        <div>
+          <table className="ro-inventory-numbers">
+            <tbody>
+              <tr>
+                <td>{totals?.imported.toLocaleString() ?? '—'}</td>
+                <th scope="row">Imported results</th>
+                <td>External source inputs</td>
+              </tr>
+              <tr>
+                <td>{totals?.proved.toLocaleString() ?? '—'}</td>
+                <th scope="row">Archive-internal “proved”</th>
+                <td>Written or conditional claims</td>
+              </tr>
+              <tr>
+                <td>{totals?.open.toLocaleString() ?? '—'}</td>
+                <th scope="row">Open obligations</th>
+                <td>Explicit unfinished interfaces</td>
+              </tr>
+            </tbody>
+          </table>
+          <p className="ro-inventory-footer">
             {totals
               ? `${totals.obligations} canonical obligations · ${totals.research_updates} later research records`
               : 'Loading source counts…'}
-          </span>
-          <External href={source('formalization/LEDGER_EVIDENCE_CROSSWALK.md')}>
-            How to read these labels
-          </External>
+            <External href={source('formalization/LEDGER_EVIDENCE_CROSSWALK.md')}>
+              How to read these labels
+            </External>
+            <button className="ob-link" onClick={onBrowse}>
+              Open the ledger
+            </button>
+          </p>
         </div>
       </section>
-      <section className="ro-evidence-section">
+      <section className="ro-section" aria-labelledby="ro-evidence">
         <div className="ro-section-heading">
-          <div>
-            <span className="ro-eyebrow">FROM EXPLORATION TO EVIDENCE</span>
-            <h2>Every transition needs its own argument.</h2>
-          </div>
-          <span className="ro-section-note">THREE DISTINCT KINDS OF EVIDENCE</span>
+          <h2 id="ro-evidence">Three kinds of evidence</h2>
+          <p>
+            A picture, a finite certificate and a formal theorem establish different things. Each
+            step from one to the next needs its own argument.
+          </p>
         </div>
-        <div className="ro-evidence-grid">
-          <article className="ro-evidence-card">
-            <div className="ro-evidence-icon">
-              <Microscope size={22} strokeWidth={1.4} />
-            </div>
-            <span className="ro-label ro-label-numerical">NUMERICAL OBSERVATION</span>
-            <h3>Notice a pattern.</h3>
-            <p>
-              An orbit approaches a cycle. A miniature resembles a larger structure. An experiment
-              isolates a parameter worth investigating.
-            </p>
-            <div className="ro-example">
-              <span>TRY AN EXPERIMENT</span>
-              <strong>A period candidate near the airplane</strong>
+        <div>
+          <div className="ro-evidence-grid">
+            <article className="ro-evidence-card">
+              <h3>Numerical observation</h3>
               <p>
-                Retain its coordinates, iteration budget, return tolerance, and numerical residual.
+                An orbit approaches a cycle. A miniature resembles a larger structure. An experiment
+                isolates a parameter worth investigating.
               </p>
-            </div>
-            <button onClick={onLab}>
-              Open the Laboratory
-              <ArrowRight size={14} />
-            </button>
-          </article>
-          <article className="ro-evidence-card">
-            <div className="ro-evidence-icon">
-              <Braces size={22} strokeWidth={1.4} />
-            </div>
-            <span className="ro-label ro-label-finite">EXACT FINITE CERTIFICATE</span>
-            <h3>Check the finite relation.</h3>
-            <p>
-              Integer and rational arithmetic can verify a precise symbolic statement while
-              preserving every digit and assumption.
-            </p>
-            <div className="ro-example">
-              <span>INSPECT A REAL CERTIFICATE</span>
-              <strong>Period-27 symbolic marking</strong>
+              <div className="ro-example">
+                <span>Example</span>
+                <strong>A period candidate near the airplane</strong>
+                <p>
+                  Retain its coordinates, iteration budget, return tolerance, and numerical
+                  residual.
+                </p>
+              </div>
+              <button className="ob-link" onClick={onLab}>
+                Open the laboratory
+              </button>
+            </article>
+            <article className="ro-evidence-card">
+              <h3>Exact finite certificate</h3>
               <p>
-                The exact angular and finite symbolic relations have a stated scope. Physical
-                parameter-ray landing needs additional input.
+                Integer and rational arithmetic can verify a precise symbolic statement while
+                preserving every digit and assumption.
               </p>
-            </div>
-            <button onClick={onAtlas}>
-              Explore the exact Atlas
-              <ArrowRight size={14} />
-            </button>
-            <External href={source('results/period27_symbolic_marking.json')}>
-              Original certificate
-            </External>
-          </article>
-          <article className="ro-evidence-card">
-            <div className="ro-evidence-icon">
-              <ShieldCheck size={22} strokeWidth={1.4} />
-            </div>
-            <span className="ro-label ro-label-formal">FORMAL STATEMENT</span>
-            <h3>State what the proof uses.</h3>
-            <p>
-              A kernel checks a formal theorem in its declared model. Applying it to a physical
-              dynamical system requires the named realization bridges.
-            </p>
-            <div className="ro-example">
-              <span>READ THE HYPOTHESES</span>
-              <strong>Same-carrier gate composition</strong>
+              <div className="ro-example">
+                <span>Example</span>
+                <strong>Period-27 symbolic marking</strong>
+                <p>
+                  The exact angular and finite symbolic relations have a stated scope. Physical
+                  parameter-ray landing needs additional input.
+                </p>
+              </div>
+              <button className="ob-link" onClick={onAtlas}>
+                Open the mathematical atlas
+              </button>
+              <External href={source('results/period27_symbolic_marking.json')}>
+                Original certificate
+              </External>
+            </article>
+            <article className="ro-evidence-card">
+              <h3>Formal statement</h3>
               <p>
-                ResearchGates composes supplied inputs on one carrier. Its conditional conclusion
-                keeps those inputs visible.
+                A kernel checks a formal theorem in its declared model. Applying it to a physical
+                dynamical system requires the named realization bridges.
               </p>
-            </div>
-            <External href={source('ResearchGates.lean')}>Inspect the Lean statement</External>
-            <External href={source('formalization/PHYSICAL_BRIDGES_CONTRACTS.md')}>
-              Read the physical contracts
-            </External>
-          </article>
-        </div>
-        <div className="ro-evidence-connector">
-          <span />
-          <div>
-            <GitBranch size={14} />
-            PHYSICAL REALIZATION · THE SAME PARAMETER, CARRIER, MAPS, AND SCOPE
+              <div className="ro-example">
+                <span>Example</span>
+                <strong>Same-carrier gate composition</strong>
+                <p>
+                  ResearchGates composes supplied inputs on one carrier. Its conditional conclusion
+                  keeps those inputs visible.
+                </p>
+              </div>
+              <External href={source('ResearchGates.lean')}>Lean statement</External>
+              <External href={source('formalization/PHYSICAL_BRIDGES_CONTRACTS.md')}>
+                Physical contracts
+              </External>
+            </article>
           </div>
-          <span />
+          <p className="ro-evidence-connector">
+            Physical realization requires the same parameter, carrier, maps and scope at every step.
+          </p>
         </div>
       </section>
-      <section className="ro-gates-section">
+      <section className="ro-section" aria-labelledby="ro-gates">
         <div className="ro-section-heading">
-          <div>
-            <span className="ro-eyebrow">THE UNIVERSAL BRIDGE</span>
-            <h2>Four questions that remain open.</h2>
-            <p>
-              Each gate must hold on the same physical tower, with the required quantifiers and
-              uniform constants.
-            </p>
-          </div>
+          <h2 id="ro-gates">Four open gates</h2>
+          <p>
+            Each gate must hold on the same physical tower, with the required quantifiers and
+            uniform constants.
+          </p>
           <External
             href={source(
               'formalization/PHYSICAL_BRIDGES_CONTRACTS.md#the-same-parameter-and-carrier-through-the-reduction',
             )}
           >
-            Read the bridge register
+            Bridge register
           </External>
         </div>
-        <div className="ro-gates-grid">
-          {GATES.map((g) => {
-            const obligation = l?.obligations.find((o) => o.id === g.key);
-            return (
-              <article className="ro-gate" key={g.key}>
-                <div className="ro-gate-top">
-                  <span>{g.short}</span>
-                  <span className="ro-label ro-label-open">
-                    {obligation?.status.toUpperCase() ?? 'OPEN'}
-                  </span>
-                </div>
-                <h3>{g.title}</h3>
-                <h4>{g.question}</h4>
-                <p>{g.description}</p>
-                <details>
-                  <summary>
-                    Inspect the source obligation
-                    <ChevronDown size={13} />
-                  </summary>
-                  <p>{obligation?.statement ?? 'Loading the original ledger statement…'}</p>
-                  {obligation && (
-                    <span className="ro-gate-deps">
-                      {obligation.deps.length} recorded dependencies
-                    </span>
-                  )}
-                  {obligation?.evidence_url && (
-                    <External href={obligation.evidence_url}>Ledger evidence</External>
-                  )}
-                </details>
-                <External href={source(`formalization/PHYSICAL_BRIDGES_CONTRACTS.md#${g.anchor}`)}>
-                  Physical contract
-                </External>
-              </article>
-            );
-          })}
-        </div>
-        <div className="ro-terminal">
-          <div className="ro-terminal-formula">
-            <span>H1–H4</span>
-            <ArrowRight size={17} />
-            <span>Universal package</span>
-            <ArrowRight size={17} />
-            <span>MLC</span>
+        <div>
+          <div className="ro-gates-grid">
+            {GATES.map((g) => {
+              const obligation = l?.obligations.find((o) => o.id === g.key);
+              return (
+                <article className="ro-gate" key={g.key}>
+                  <div className="ro-gate-top">
+                    <span>{g.short}</span>
+                    <span className="ro-label ro-label-open">{obligation?.status ?? 'open'}</span>
+                  </div>
+                  <div>
+                    <h3>{g.title}</h3>
+                    <h4>{g.question}</h4>
+                    <p>{g.description}</p>
+                    <details>
+                      <summary>Source obligation</summary>
+                      <p>{obligation?.statement ?? 'Loading the original ledger statement…'}</p>
+                      {obligation && (
+                        <span className="ro-gate-deps">
+                          {obligation.deps.length} recorded dependencies
+                        </span>
+                      )}
+                      {obligation?.evidence_url && (
+                        <External href={obligation.evidence_url}>Ledger evidence</External>
+                      )}
+                    </details>
+                    <External
+                      href={source(`formalization/PHYSICAL_BRIDGES_CONTRACTS.md#${g.anchor}`)}
+                    >
+                      Physical contract
+                    </External>
+                  </div>
+                </article>
+              );
+            })}
           </div>
-          <div>
-            <span className="ro-label ro-label-conditional">CONDITIONAL COMPOSITION</span>
-            <p>
-              The archive records an implication from the Universal Protected-Tower Compactness and
-              Rigidity package, together with the complementary theorem. Its universal hypothesis
-              remains open.
-            </p>
-            <code>
-              {terminal?.id ?? 'UPTCR_IMPLIES_MLC'} · hypothesis:{' '}
-              {terminal?.hyp ?? 'UNIVERSAL_PROTECTED_TOWER_CLOSURE'}
-            </code>
+          <div className="ro-terminal">
+            <p className="ro-terminal-formula math">H1–H4 ⟹ universal package ⟹ MLC</p>
+            <div>
+              <span className="ro-label ro-label-conditional">conditional composition</span>
+              <p>
+                The archive records an implication from the Universal Protected-Tower Compactness
+                and Rigidity package, together with the complementary theorem. Its universal
+                hypothesis remains open.
+              </p>
+              <code>
+                {terminal?.id ?? 'UPTCR_IMPLIES_MLC'} · hypothesis:{' '}
+                {terminal?.hyp ?? 'UNIVERSAL_PROTECTED_TOWER_CLOSURE'}
+              </code>
+              <External
+                href={
+                  terminal?.evidence_url ?? source('research/mlc_unified/uptcr_cross_validation.md')
+                }
+              >
+                The exact implication
+              </External>
+            </div>
           </div>
-          <External
-            href={
-              terminal?.evidence_url ?? source('research/mlc_unified/uptcr_cross_validation.md')
-            }
-          >
-            Read the exact implication
-          </External>
         </div>
       </section>
-      <section className="ro-audit-section">
-        <div className="ro-audit-summary">
-          <span className="ro-eyebrow">
-            <FileCheck2 size={13} />
-            RECORDED VERIFICATION AUDIT · 25 NOV 2026
-          </span>
-          <h2>
-            Formal evidence,
-            <br />
-            with its boundary intact.
-          </h2>
-          <p>
-            The audit records complete source coverage and successful builds at its stated proof
-            revision. The final recorded inventory contains 99 Lean files and 880 named public
-            theorems and lemmas. Its compiled axiom audit checks 3,112 declarations, including
-            private and generated declarations.
-          </p>
-          <p>
-            Those counts describe different inventories. They do not count independent physical
-            theorems or measure progress toward MLC.
-          </p>
-          <External href={source('formalization/LEAN_VERIFICATION_20261125.md')}>
-            Read the complete verification audit
-          </External>
-          <div className="ro-audit-revision">
-            <span>VERIFIED PROOF REVISION</span>
+      <section className="ro-section ro-audit-section" aria-labelledby="ro-audit">
+        <div className="ro-section-heading">
+          <h2 id="ro-audit">Verification audit, 25 November 2026</h2>
+          <p className="ro-audit-revision">
+            Verified proof revision{' '}
             <a
               href={`${REPO}/commit/a9dcbb89f6a6105f36610de0be930002b01f25bb`}
               target="_blank"
               rel="noreferrer"
             >
-              a9dcbb89f6a6
-              <ArrowUpRight size={11} />
+              <code>a9dcbb89f6a6</code>
             </a>
-          </div>
+          </p>
         </div>
-        <div className="ro-audit-items">
-          <article>
-            <span className="ro-audit-number">01</span>
-            <div>
+        <div>
+          <div className="ro-audit-summary">
+            <p>
+              The audit records complete source coverage and successful builds at its stated proof
+              revision. The final recorded inventory contains 99 Lean files and 880 named public
+              theorems and lemmas. Its compiled axiom audit checks 3,112 declarations, including
+              private and generated declarations.
+            </p>
+            <p>
+              Those counts describe different inventories. They do not count independent physical
+              theorems or measure progress toward MLC.
+            </p>
+            <External href={source('formalization/LEAN_VERIFICATION_20261125.md')}>
+              The complete verification audit
+            </External>
+          </div>
+          <ol className="ro-audit-items">
+            <li>
               <h3>Finite native-mark grammar</h3>
               <p>
                 The complete 191-state grammar reaches the full circle within five pushes. Physical
@@ -575,11 +521,8 @@ export function ResearchOverview({ onBrowse, onAtlas, onLab }: ResearchOverviewP
               <External href={source('NativeMarkSaturation.lean')}>
                 NativeMarkSaturation.lean
               </External>
-            </div>
-          </article>
-          <article>
-            <span className="ro-audit-number">02</span>
-            <div>
+            </li>
+            <li>
               <h3>Actual clone characteristic polynomial</h3>
               <p>
                 The formalization identifies the actual adjacency matrix’s polynomial, proves root
@@ -589,34 +532,29 @@ export function ResearchOverview({ onBrowse, onAtlas, onLab }: ResearchOverviewP
               <External href={source('formalization/weighted/FullCloneCharpoly.lean')}>
                 FullCloneCharpoly.lean
               </External>
-            </div>
-          </article>
-          <article>
-            <span className="ro-audit-number">03</span>
-            <div>
+            </li>
+            <li>
               <h3>Declared axiom dependencies</h3>
               <p>
                 The recorded compiled audit admits only propext, Classical.choice, and Quot.sound.
                 Coverage checks and kernel evidence have separate roles.
               </p>
-              <div className="ro-ci-links">
+              <span className="ro-ci-links">
                 <External href={`${REPO}/actions/runs/45707763753`}>
-                  Root + standalone evidence
+                  Root and standalone evidence
                 </External>
                 <External href={`${REPO}/actions/runs/45707763695`}>
                   Weighted audit evidence
                 </External>
-              </div>
-            </div>
-          </article>
+              </span>
+            </li>
+          </ol>
         </div>
       </section>
-      <section className="ro-next-section">
+      <section className="ro-section" aria-labelledby="ro-next">
         <div className="ro-section-heading">
-          <div>
-            <span className="ro-eyebrow">USEFUL NEXT QUESTIONS</span>
-            <h2>Work at a boundary you can name.</h2>
-          </div>
+          <h2 id="ro-next">Open work</h2>
+          <p>Three places where the next step is already named.</p>
         </div>
         <div className="ro-next-grid">
           <a
@@ -624,60 +562,43 @@ export function ResearchOverview({ onBrowse, onAtlas, onLab }: ResearchOverviewP
             target="_blank"
             rel="noreferrer"
           >
-            <Network size={20} />
             <h3>Extend the exact formal model</h3>
             <p>
               The audit prioritizes the actual 26-edge real Markov spectrum, return counts, and the
               clone stationary law.
             </p>
-            <span>
-              Ranked formalization tasks
-              <ArrowUpRight size={13} />
-            </span>
+            <span>Ranked formalization tasks</span>
           </a>
           <a href={source('formalization/PHYSICAL_BRIDGES.md')} target="_blank" rel="noreferrer">
-            <GitBranch size={20} />
             <h3>Inspect a realization bridge</h3>
             <p>
               Trace the passage from finite geometry and symbolic data to the actual maps, widths,
               and marked paths.
             </p>
-            <span>
-              Physical bridge register
-              <ArrowUpRight size={13} />
-            </span>
+            <span>Physical bridge register</span>
           </a>
           <button onClick={onLab}>
-            <FlaskConical size={20} />
             <h3>Make a reproducible observation</h3>
             <p>
               Save a precise parameter, test its orbit, and carry the numerical record into the next
               question.
             </p>
-            <span>
-              Start an experiment
-              <ArrowRight size={13} />
-            </span>
+            <span>Laboratory</span>
           </button>
         </div>
       </section>
       <footer className="ro-footer">
-        <div>
-          <span className="ro-eyebrow">PROVENANCE STAYS VISIBLE</span>
-          <p>
-            {m
-              ? `${m.unresolved_evidence.length} ledger evidence pointers refer to ${unresolvedFiles.size} absent Markdown files in the source inventory.`
-              : 'The source manifest records unresolved evidence pointers explicitly.'}{' '}
-            The evidence crosswalk records alternative arguments and remaining gaps.
-          </p>
+        <p>
+          {m
+            ? `${m.unresolved_evidence.length} ledger evidence pointers refer to ${unresolvedFiles.size} absent Markdown files in the source inventory.`
+            : 'The source manifest records unresolved evidence pointers explicitly.'}{' '}
+          The evidence crosswalk records alternative arguments and remaining gaps.{' '}
           <External href={source('formalization/LEDGER_EVIDENCE_CROSSWALK.md#ledger-evidence')}>
-            Inspect the evidence crosswalk
+            Evidence crosswalk
           </External>
-        </div>
-        <button className="ro-browse-button" onClick={onBrowse}>
-          <BookOpen size={16} />
-          Browse the complete archive
-          <ArrowRight size={15} />
+        </p>
+        <button className="ob-button ro-browse-button" onClick={onBrowse}>
+          Browse the ledger and source library
         </button>
       </footer>
     </div>

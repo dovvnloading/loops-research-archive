@@ -1,15 +1,4 @@
 import { useEffect, useRef, useState } from 'react';
-import {
-  ArrowUpRight,
-  Check,
-  Copy,
-  Download,
-  Image,
-  Link,
-  FileJson,
-  X,
-  Loader2,
-} from 'lucide-react';
 import { createSnapshotURL } from '../journal/codec';
 import type { JournalPayload } from '../journal/types';
 import { pngWithMetadata, saveBlob } from './png';
@@ -104,7 +93,7 @@ export function ExportDialog({
       canvas.height = height;
       output.current = canvas;
       const context = canvas.getContext('2d', { alpha: false })!;
-      context.fillStyle = '#070b12';
+      context.fillStyle = '#0a0a09';
       context.fillRect(0, 0, width, height);
       setProgress(0);
       worker.current?.terminate();
@@ -150,22 +139,16 @@ export function ExportDialog({
     }
   };
   return (
-    <Dialog
-      title="Take a little infinity with you."
-      kicker="EXPORT & SHARE"
-      onClose={onClose}
-      className="ob-export-dialog"
-    >
+    <Dialog title="Export" onClose={onClose} className="ob-export-dialog">
       <div className="ob-segments">
         {(
           [
-            { id: 'image', label: 'Image', Icon: Image },
-            { id: 'session', label: 'Session', Icon: FileJson },
-            { id: 'share', label: 'Share link', Icon: Link },
+            { id: 'image', label: 'Image' },
+            { id: 'session', label: 'Session' },
+            { id: 'share', label: 'Share link' },
           ] as const
-        ).map(({ id, label, Icon }) => (
+        ).map(({ id, label }) => (
           <button key={id} className={tab === id ? 'active' : ''} onClick={() => setTab(id)}>
-            <Icon size={15} />
             {label}
           </button>
         ))}
@@ -173,43 +156,41 @@ export function ExportDialog({
       {tab === 'image' && (
         <>
           <p className="ob-dialog-intro">
-            Render the current mathematical view as a PNG. Exact parameters and research provenance
-            are embedded in the file.
+            Renders the current view to a PNG. The exact parameters and the research revision are
+            embedded in the file.
           </p>
           <label className="ob-field">
-            <span>Image size · longest edge</span>
+            <span>Longest edge</span>
             <select
               value={landscape ? 'current' : size}
               disabled={progress !== null || landscape}
               onChange={(e) => setSize(e.target.value)}
             >
               <option value="current">Current viewport</option>
-              <option value="1200">1,200 px · quick export</option>
-              <option value="1920">1,920 px · full HD</option>
-              <option value="3840">3,840 px · 4K</option>
+              <option value="1200">1,200 px</option>
+              <option value="1920">1,920 px</option>
+              <option value="3840">3,840 px</option>
             </select>
           </label>
           <p className="ob-micro">
             {landscape
               ? 'The escape landscape exports its current rendered viewport.'
-              : 'A separate worker renders the image while the explorer stays responsive. Detailed or deep views can take longer. You can cancel at any time.'}
+              : 'A separate worker renders the image, so the explorer stays usable and the render can be cancelled. Deep or detailed views take longer.'}
           </p>
           {progress !== null ? (
             <div className="ob-export-progress">
               <div>
-                <span>Rendering your image</span>
+                <span>Rendering</span>
                 <strong>{Math.round(progress * 100)}%</strong>
               </div>
               <progress value={progress} max={1} />
-              <button className="ob-button ob-subtle" onClick={stop}>
-                <X size={14} />
+              <button className="ob-button" onClick={stop}>
                 Cancel render
               </button>
             </div>
           ) : (
             <button className="ob-button ob-primary ob-wide" onClick={() => void render()}>
-              {done ? <Check size={16} /> : <Download size={16} />}{' '}
-              {done ? 'Render another image' : 'Render & download PNG'}
+              {done ? 'Render another image' : 'Render and download PNG'}
             </button>
           )}
         </>
@@ -217,15 +198,12 @@ export function ExportDialog({
       {tab === 'session' && (
         <>
           <p className="ob-dialog-intro">
-            A portable record of the full engine state, exact coordinates, iteration budget,
-            palette, and source revision. Reopen it with the import command in Explore.
+            A JSON record of the engine state, exact coordinates, iteration budget, palette and
+            source revision. Reopen it with Import a session, under Shortcuts.
           </p>
           <div className="ob-export-file">
-            <FileJson size={32} />
-            <div>
-              <strong>LOOPS session · version 2</strong>
-              <small>{payload.engine.scene} · lossless decimal coordinates</small>
-            </div>
+            <strong>loops-session.json</strong>
+            <small>{payload.engine.scene} · format version 2 · lossless decimal coordinates</small>
           </div>
           <button
             className="ob-button ob-primary ob-wide"
@@ -239,7 +217,6 @@ export function ExportDialog({
               )
             }
           >
-            <Download size={16} />
             Download session
           </button>
         </>
@@ -247,16 +224,15 @@ export function ExportDialog({
       {tab === 'share' && (
         <>
           <p className="ob-dialog-intro">
-            The link stores the mathematical view, including exact coordinates. Anyone who can
-            access this site can reopen it. Journal notes stay in your browser.
+            The link encodes the view, including its exact coordinates. Anyone who can reach this
+            site can open it. Journal notes are not included.
           </p>
           <label className="ob-field">
-            <span>Reproducible view link</span>
+            <span>View link</span>
             <textarea rows={4} readOnly value={link} onFocus={(e) => e.target.select()} />
           </label>
           <button className="ob-button ob-primary ob-wide" onClick={() => void copy()}>
-            {copied ? <Check size={16} /> : <Copy size={16} />}{' '}
-            {copied ? 'Link copied' : 'Copy view link'}
+            {copied ? 'Link copied' : 'Copy link'}
           </button>
         </>
       )}
@@ -268,8 +244,7 @@ export function ExportDialog({
       <p className="ob-export-foot">
         {payload.sourceRevision
           ? `Research revision ${payload.sourceRevision.slice(0, 8)}`
-          : 'Local numerical exploration'}
-        <span>LOOPS / An atlas of infinity</span>
+          : 'Local numerical exploration; no research revision attached'}
       </p>
     </Dialog>
   );

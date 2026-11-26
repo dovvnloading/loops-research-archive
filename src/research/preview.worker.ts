@@ -15,14 +15,14 @@ self.onmessage = ({ data }: MessageEvent<{ id: number; mode: 'julia' | 'paramete
       const next = zr * zr - zi * zi + cr; zi = 2 * zr * zi + ci; zr = next;
     }
     const index = (y * width + x) * 4;
-    if (iteration >= limit) { pixels[index] = 13; pixels[index + 1] = 24; pixels[index + 2] = 24; }
+    if (iteration >= limit) { pixels[index] = 10; pixels[index + 1] = 10; pixels[index + 2] = 9; }
     else {
       const smooth = iteration + 1 - Math.log2(Math.max(1, Math.log2(zr * zr + zi * zi) / 2));
       const t = Math.min(1, Math.max(0, smooth / 50));
       const v = 0.15 + 0.85 * (0.5 + 0.5 * Math.cos(4.4 + t * 13));
-      pixels[index] = 8 + v * 46;
-      pixels[index + 1] = 13 + v * 85;
-      pixels[index + 2] = 16 + v * 80;
+      pixels[index] = 12 + v * 112;
+      pixels[index + 1] = 12 + v * 108;
+      pixels[index + 2] = 11 + v * 98;
     }
     pixels[index + 3] = 255;
   }

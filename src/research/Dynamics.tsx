@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
-import { ArrowRight, ChevronLeft, ChevronRight, Crosshair, Pause, Play, RotateCcw } from 'lucide-react';
+import { ChevronLeft, ChevronRight, Crosshair, Pause, Play, RotateCcw } from 'lucide-react';
 import type { EngineState } from '../types';
 import { criticalOrbit } from '../lib/math';
 import { DownloadButton, formatComplex, Metric, ResearchHeading, ScopeNote, SourceLink } from './common';
@@ -54,7 +54,7 @@ function Preview({ c, mode = 'julia', children, onPick }: { c: [number, number];
     }} />
     {mode === 'parameter' && selectedX >= 0 && selectedX <= 100 && selectedY >= 0 && selectedY <= 100 && <span className="parameter-crosshair" style={{ left: `${selectedX}%`, top: `${selectedY}%` }}><Crosshair size={18} /></span>}
     {children}
-    {loading && <span className="preview-status">COMPUTING PREVIEW</span>}
+    {loading && <span className="preview-status">Computing preview…</span>}
     {error && <span className="preview-status preview-error" role="status">{error}</span>}
   </div>;
 }
@@ -83,36 +83,36 @@ export function Dynamics({ state, onChange, onExplore }: { state: EngineState; o
   const [sx, sy] = project(selected);
   const setC = (value: [number, number]) => onChange({ julia: value.map(n => Math.max(-2.5, Math.min(2.5, n))) as [number, number] });
   return <div className="research-content dynamics-workspace">
-    <ResearchHeading index="01 / COMPLEX DYNAMICS" title="Follow the critical orbit." description="One parameter. An entire dynamical world. Move through z ↦ z² + c, one iteration at a time.">
-      <button className="research-button" onClick={() => { onChange({ scene: 'julia', iterations: 256, center: [0, 0], scale: 3.2, autoRotate: false }); onExplore(); }}>Explore Julia set <ArrowRight size={15} /></button>
+    <ResearchHeading title="Dynamics workbench" description="The critical orbit of z ↦ z² + c for one parameter, stepped one iteration at a time.">
+      <button className="research-button" onClick={() => { onChange({ scene: 'julia', iterations: 256, center: [0, 0], scale: 3.2, autoRotate: false }); onExplore(); }}>Open this Julia set in Explore</button>
     </ResearchHeading>
     <div className="dynamics-layout">
       <section className="research-panel orbit-panel">
-        <div className="panel-heading"><div><span className="research-eyebrow">DYNAMICAL PLANE</span><h2>The orbit of 0</h2></div><label className="research-toggle"><input type="checkbox" checked={showTrail} onChange={event => setShowTrail(event.target.checked)} /> Orbit trail</label></div>
+        <div className="panel-heading"><h2>Orbit of 0 in the dynamical plane</h2><label className="research-toggle"><input type="checkbox" checked={showTrail} onChange={event => setShowTrail(event.target.checked)} /> Orbit trail</label></div>
         <Preview c={c}>
           <svg className="orbit-overlay" viewBox="0 0 680 520" aria-label={`Critical orbit through iteration ${active}`}>
             <defs><clipPath id="orbit-clip"><rect width="680" height="520" /></clipPath></defs>
             <g clipPath="url(#orbit-clip)">
               <path d="M0 260H680M340 0V520" className="plot-axis" />
               {[1, -1].map(n => <g key={n}><path d={`M${340 + n * 680 / 3.7} 255v10M335 ${260 + n * 680 / 3.7}h10`} className="plot-axis" /><text x={340 + n * 680 / 3.7} y={279} className="plot-label" textAnchor="middle">{n}</text></g>)}
-              {showTrail && <polyline points={path} fill="none" stroke="#e5ba7c" strokeWidth="1.1" strokeOpacity=".55" />}
-              {points.slice(0, active + 1).map((point, index) => { const [x, y] = project(point); return <circle key={index} cx={x} cy={y} r={index === active ? 4.5 : 2} fill={index === active ? '#f4cd92' : '#a5c9ba'} opacity={index === active ? 1 : 0.65} onClick={() => setIteration(index)}><title>{`z${index} = ${formatComplex(point.re, point.im)}`}</title></circle>; })}
-              <circle cx={sx} cy={sy} r="11" fill="none" stroke="#f4cd92" strokeOpacity=".55" />
-              <circle cx="340" cy="260" r="4" fill="#a9e6c7" />
+              {showTrail && <polyline points={path} fill="none" stroke="#e3b75f" strokeWidth="1.1" strokeOpacity=".8" />}
+              {points.slice(0, active + 1).map((point, index) => { const [x, y] = project(point); return <circle key={index} cx={x} cy={y} r={index === active ? 4.5 : 2} fill={index === active ? '#ffffff' : '#e3b75f'} opacity={index === active ? 1 : 0.85} onClick={() => setIteration(index)}><title>{`z${index} = ${formatComplex(point.re, point.im)}`}</title></circle>; })}
+              <circle cx={sx} cy={sy} r="10" fill="none" stroke="#ffffff" />
+              <circle cx="340" cy="260" r="3" fill="none" stroke="#ebe7dc" />
             </g>
             <text x="20" y="32" className="plot-label">Im(z)</text><text x="625" y="285" className="plot-label">Re(z)</text>
           </svg>
           <div className="orbit-coordinate"><span>z<sub>{active}</sub></span><code>{formatComplex(selected.re, selected.im)}</code></div>
         </Preview>
         <div className="orbit-transport"><button aria-label="Previous iteration" className="icon-action" onClick={() => { setPlaying(false); setIteration(n => Math.max(0, n - 1)); }}><ChevronLeft size={17} /></button><button aria-label={playing ? 'Pause orbit' : 'Animate orbit'} className="icon-action play-action" onClick={() => setPlaying(!playing)}>{playing ? <Pause size={15} /> : <Play size={15} />}</button><button aria-label="Next iteration" className="icon-action" onClick={() => { setPlaying(false); setIteration(n => Math.min(limit, n + 1)); }}><ChevronRight size={17} /></button><input aria-label="Orbit iteration" type="range" min="0" max={limit} value={active} onChange={event => { setPlaying(false); setIteration(Number(event.target.value)); }} /><span className="transport-count">{String(active).padStart(2, '0')} / {limit}</span></div>
-        <div className="metric-row"><Metric label="PARAMETER" value={formatComplex(...c, 5)} /><Metric label="ORBIT" value={escape ? `Escapes at ${limit}` : `Bounded through ${count}`} /><Metric label="MAGNITUDE" value={selected.magnitude.toFixed(6)} /></div>
+        <div className="metric-row"><Metric label="Parameter" value={formatComplex(...c, 5)} /><Metric label="Orbit" value={escape ? `Escapes at ${limit}` : `Bounded through ${count}`} /><Metric label="Magnitude" value={selected.magnitude.toFixed(6)} /></div>
       </section>
       <aside className="research-panel parameter-panel">
-        <div className="panel-heading"><div><span className="research-eyebrow">PARAMETER PLANE</span><h2>Choose c</h2></div><button aria-label="Reset parameter" className="icon-action" onClick={() => setC([-0.74543, 0.11301])}><RotateCcw size={15} /></button></div>
+        <div className="panel-heading"><h2>Parameter c</h2><button aria-label="Reset parameter" className="icon-action" onClick={() => setC([-0.74543, 0.11301])}><RotateCcw size={15} /></button></div>
         <Preview c={c} mode="parameter" onPick={setC} />
         <p className="muted micro">Click the plane or enter a value below.</p>
         <div className="number-fields"><label>Real component<input aria-label="Real component of c" type="number" min="-2.5" max="2.5" step="0.0001" value={c[0]} onChange={event => { const value = event.target.valueAsNumber; if (Number.isFinite(value)) setC([value, c[1]]); }} /></label><label>Imaginary component<input aria-label="Imaginary component of c" type="number" min="-2.5" max="2.5" step="0.0001" value={c[1]} onChange={event => { const value = event.target.valueAsNumber; if (Number.isFinite(value)) setC([c[0], value]); }} /></label></div>
-        <div className="parameter-presets">{parameters.map(preset => <button key={preset.name} title={preset.note} className={Math.abs(c[0] - preset.c[0]) < 1e-12 && Math.abs(c[1] - preset.c[1]) < 1e-12 ? 'selected' : ''} onClick={() => setC(preset.c)}><span>{preset.name}</span><ChevronRight size={13} /></button>)}</div>
+        <div className="parameter-presets">{parameters.map(preset => <button key={preset.name} title={preset.note} className={Math.abs(c[0] - preset.c[0]) < 1e-12 && Math.abs(c[1] - preset.c[1]) < 1e-12 ? 'selected' : ''} onClick={() => setC(preset.c)}><span>{preset.name}</span><small>{preset.note}</small></button>)}</div>
         <label className="research-select">Maximum iterations<select value={count} onChange={event => setCount(Number(event.target.value))}><option value="32">32 iterations</option><option value="64">64 iterations</option><option value="128">128 iterations</option><option value="256">256 iterations</option></select></label>
         <DownloadButton data={{ schema: 'loops-numerical-critical-orbit-v1', parameter: c, precision: 'IEEE-754 float64', maximumIterations: count, escapeDetected: escape, points }} name="loops-critical-orbit.json" label="Export orbit" />
       </aside>

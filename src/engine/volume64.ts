@@ -41,7 +41,7 @@ export function prepareVolume(frame:VolumeFrame){
     const u=(x+.5-frame.width/2)/frame.height,v=(frame.height/2-y-.5)/frame.height;
     const rd=unit(add(axes.forward,add(mul(axes.right,lens*u),mul(axes.up,lens*v))));
     const hit=traceVolume(s,ro,rd,iterations,pixelAngle,maxSteps);
-    let rgb:Vec3=[.008,.012,.022];
+    let rgb:Vec3=[.0115,.0115,.0115];
     if(hit.hit){
       const e=hit.epsilon,p=hit.point;
       const n=gradient(s,p,e*1.8,iterations,rd),head=clamp(-dot(n,rd));

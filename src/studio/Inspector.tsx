@@ -1,25 +1,12 @@
 import { useEffect, useState } from 'react';
-import {
-  ArrowDown,
-  ArrowLeft,
-  ArrowRight,
-  ArrowUp,
-  Check,
-  Crosshair,
-  SlidersHorizontal,
-  Sun,
-  Video,
-  RotateCcw,
-  Move3D,
-  BookOpen,
-} from 'lucide-react';
+import { ArrowDown, ArrowLeft, ArrowRight, ArrowUp, X } from 'lucide-react';
 import type { EngineState } from '../types';
 import type { ExactView } from '../precision/types';
 import { validateExactView } from '../precision/coordinates';
 import { CONTROL_LIMITS } from '../lib/controls';
 import type { ControlKey } from '../lib/controls';
 import type { Destination } from './destinations';
-import { Range, Switch, NumberInput, Disclosure } from './UI';
+import { Disclosure, Formula, IconButton, NumberInput, Range, Switch } from './UI';
 
 type Props = {
   state: EngineState;
@@ -31,6 +18,20 @@ type Props = {
   onFly: (key: string) => void;
   onGuide: () => void;
   onMotion: () => void;
+  onClose: () => void;
+};
+const TABS = [
+  { id: 'model', label: 'Model' },
+  { id: 'material', label: 'Material' },
+  { id: 'camera', label: 'View' },
+] as const;
+const MAP_NAME: Record<EngineState['scene'], string> = {
+  mandelbulb: 'Triplex power map, iterated from 0',
+  mandelbox: 'Box fold, sphere fold, scale',
+  quaternion: 'Quaternion Julia set, three-dimensional slice',
+  mandelbrot: 'Mandelbrot set: orbit of 0 for each c',
+  julia: 'Julia set: orbit of each z for one c',
+  landscape: 'Escape time over the parameter plane',
 };
 export function Inspector({
   state,
@@ -42,8 +43,9 @@ export function Inspector({
   onFly,
   onGuide,
   onMotion,
+  onClose,
 }: Props) {
-  const [tab, setTab] = useState<'model' | 'material' | 'camera'>('model');
+  const [tab, setTab] = useState<(typeof TABS)[number]['id']>('model');
   const [coordinateError, setCoordinateError] = useState('');
   const [draft, setDraft] = useState({
     re: exact.center.re,
@@ -98,69 +100,46 @@ export function Inspector({
     onChange({ palette: palette === 'aurora' ? 'glacier' : palette });
     onExact({ ...exact, palette });
   };
+  const palette = plane ? exact.palette : state.palette;
   return (
     <aside className="ob-inspector" aria-label="Fractal inspector">
       <div className="ob-panel-top">
-        <span className="ob-eyebrow">INSPECTOR</span>
-        <span className="ob-small-label">
-          {plane ? 'Complex plane' : state.scene === 'landscape' ? 'Height field' : '3D volume'}
-        </span>
-      </div>
-      <div className="ob-segments" role="tablist" aria-label="Inspector sections">
-        {(
-          [
-            { id: 'model', label: 'Model', Icon: SlidersHorizontal },
-            { id: 'material', label: 'Material', Icon: Sun },
-            { id: 'camera', label: 'View', Icon: Video },
-          ] as const
-        ).map(({ id, label, Icon }) => (
-          <button
-            key={id}
-            role="tab"
-            aria-selected={tab === id}
-            onClick={() => setTab(id)}
-            className={tab === id ? 'active' : ''}
-          >
-            <Icon size={14} />
-            {label}
-          </button>
-        ))}
+        <div className="ob-tabs" role="tablist" aria-label="Inspector sections">
+          {TABS.map(({ id, label }) => (
+            <button
+              key={id}
+              role="tab"
+              aria-selected={tab === id}
+              onClick={() => setTab(id)}
+              className={tab === id ? 'active' : ''}
+            >
+              {label}
+            </button>
+          ))}
+        </div>
+        <IconButton label="Hide inspector" onClick={onClose}>
+          <X size={15} />
+        </IconButton>
       </div>
       <div className="ob-inspector-scroll">
         {tab === 'model' && (
           <>
             <div className="ob-equation">
-              <span>THE REPEATED RULE</span>
-              <code>
-                {state.scene === 'mandelbulb'
-                  ? `zₙ₊₁ = sphericalPower${state.power}(zₙ) + c`
-                  : state.scene === 'mandelbox'
-                    ? `zₙ₊₁ = −${state.power} · fold(zₙ) + c`
-                    : state.scene === 'quaternion'
-                      ? 'qₙ₊₁ = qₙ² + c'
-                      : state.scene === 'julia'
-                        ? 'zₙ₊₁ = zₙ² + c,  c fixed'
-                        : 'z₀ = 0,  zₙ₊₁ = zₙ² + c'}
-              </code>
+              <Formula scene={state.scene} power={state.power} />
+              <span>{MAP_NAME[state.scene]}</span>
             </div>
             {(state.scene === 'mandelbulb' || state.scene === 'mandelbox') && (
-              <div className="ob-primary-control">
-                <div>
-                  <span>{state.scene === 'mandelbox' ? 'Fold scale' : 'Power'}</span>
-                  <strong>
-                    {state.scene === 'mandelbox' ? '−' : ''}
-                    {state.power.toFixed(state.power % 1 === 0 ? 0 : 2)}
-                  </strong>
-                </div>
-                <Range
-                  label={state.scene === 'mandelbox' ? 'Magnitude' : 'Spherical exponent'}
-                  value={state.power}
-                  min={state.scene === 'mandelbox' ? 1.2 : 2}
-                  max={state.scene === 'mandelbox' ? 3 : 16}
-                  step={0.05}
-                  onChange={(power) => onChange({ power })}
-                />
-              </div>
+              <Range
+                label={state.scene === 'mandelbox' ? 'Fold scale' : 'Power'}
+                value={state.power}
+                min={state.scene === 'mandelbox' ? 1.2 : 2}
+                max={state.scene === 'mandelbox' ? 3 : 16}
+                step={0.05}
+                onChange={(power) => onChange({ power })}
+                format={(n) =>
+                  `${state.scene === 'mandelbox' ? '−' : ''}${n.toFixed(n % 1 === 0 ? 0 : 2)}`
+                }
+              />
             )}
             <Range
               label="Iterations"
@@ -181,13 +160,13 @@ export function Inspector({
               }
               description={
                 plane
-                  ? 'A finite observation budget. Increase it to resolve slow-escaping boundary points.'
-                  : 'How many times the equation is repeated.'
+                  ? 'The budget per pixel. Raise it to resolve points that escape slowly.'
+                  : undefined
               }
             />
             {plane && (
               <NumberInput
-                label="Exact iteration budget"
+                label="Iterations, exact"
                 value={exact.iterations}
                 min={64}
                 max={20000}
@@ -219,7 +198,7 @@ export function Inspector({
             {state.scene === 'quaternion' && (
               <>
                 <Range
-                  label="Fourth-dimensional slice"
+                  label="Slice, fourth coordinate"
                   value={state.slice}
                   min={-2}
                   max={2}
@@ -228,14 +207,14 @@ export function Inspector({
                 />
                 <div className="ob-field-pair">
                   <NumberInput
-                    label="c · real"
+                    label="c, real"
                     value={state.julia[0]}
                     min={-4}
                     max={4}
                     onChange={(n) => onChange({ julia: [n, state.julia[1]] })}
                   />
                   <NumberInput
-                    label="c · imaginary"
+                    label="c, imaginary"
                     value={state.julia[1]}
                     min={-4}
                     max={4}
@@ -252,19 +231,16 @@ export function Inspector({
                   applyCoordinates();
                 }}
               >
-                <div className="ob-section-title">
-                  <Crosshair size={13} />
-                  <span>Exact coordinates</span>
-                </div>
+                <h3 className="ob-section-title">Exact coordinates</h3>
                 {(
                   [
-                    { id: 're', label: 'Center · real' },
-                    { id: 'im', label: 'Center · imaginary' },
+                    { id: 're', label: 'Center, real' },
+                    { id: 'im', label: 'Center, imaginary' },
                     { id: 'span', label: 'Vertical span' },
                     ...(state.scene === 'julia'
                       ? [
-                          { id: 'jre', label: 'Parameter c · real' },
-                          { id: 'jim', label: 'Parameter c · imaginary' },
+                          { id: 'jre', label: 'c, real' },
+                          { id: 'jim', label: 'c, imaginary' },
                         ]
                       : []),
                   ] as { id: keyof typeof draft; label: string }[]
@@ -284,13 +260,12 @@ export function Inspector({
                     {coordinateError}
                   </p>
                 )}
-                <button type="submit" className="ob-button ob-subtle">
-                  <Check size={14} />
+                <button type="submit" className="ob-button">
                   Apply coordinates
                 </button>
                 <p className="ob-micro">
-                  Decimal coordinates stay exact. Rendering uses rounded arithmetic and a finite
-                  budget. Supported span: 32 to 10⁻²⁰⁰.
+                  Decimal strings are kept exactly. Rendering rounds them and stops at the iteration
+                  budget. Span may run from 32 down to 10⁻²⁰⁰.
                 </p>
               </form>
             )}
@@ -300,14 +275,14 @@ export function Inspector({
                 {control('contourDensity', 'Contour density', 1)}
                 <div className="ob-field-pair">
                   <NumberInput
-                    label="Center · real"
+                    label="Center, real"
                     value={state.center[0]}
                     min={-4}
                     max={4}
                     onChange={(n) => onChange({ center: [n, state.center[1]] })}
                   />
                   <NumberInput
-                    label="Center · imaginary"
+                    label="Center, imaginary"
                     value={state.center[1]}
                     min={-4}
                     max={4}
@@ -327,8 +302,7 @@ export function Inspector({
         )}
         {tab === 'material' && (
           <>
-            <div className="ob-section-title">COLOR PALETTE</div>
-            <div className="ob-palettes">
+            <div className="ob-palettes" role="group" aria-label="Palette">
               {(
                 [
                   'glacier',
@@ -340,14 +314,12 @@ export function Inspector({
               ).map((p) => (
                 <button
                   key={p}
-                  className={(plane ? exact.palette : state.palette) === p ? 'selected' : ''}
+                  className={palette === p ? 'selected' : ''}
                   onClick={() => changePalette(p)}
                   aria-label={`${p} palette`}
-                  aria-pressed={(plane ? exact.palette : state.palette) === p}
+                  aria-pressed={palette === p}
                 >
-                  <i className={`ob-swatch ${p}`}>
-                    {(plane ? exact.palette : state.palette) === p && <Check size={14} />}
-                  </i>
+                  <i className={`ob-swatch ${p}`} />
                   <span>{p}</span>
                 </button>
               ))}
@@ -384,8 +356,7 @@ export function Inspector({
               </Disclosure>
             )}
             <p className="ob-micro">
-              Color reveals numerical structure. A palette change does not change the underlying
-              equation.
+              Colour is a display choice. It does not change the iteration.
             </p>
           </>
         )}
@@ -437,33 +408,29 @@ export function Inspector({
                 {control('animationSpeed', 'Orbit speed', 0.1)}
                 {control('fov', 'Field of view', 0.5)}
                 {control('flightSpeed', 'Flight speed', 0.1)}
-                <div className="ob-section-title">
-                  <Move3D size={14} />
-                  FREE FLIGHT
-                </div>
+                <h3 className="ob-section-title">Free flight</h3>
                 <div className="ob-flight">
-                  <button onClick={() => onFly('q')}>Q · Down</button>
+                  <button onClick={() => onFly('q')}>Q down</button>
                   <button onClick={() => onFly('w')} aria-label="Fly forward">
-                    <ArrowUp size={16} />
+                    <ArrowUp size={15} />
                   </button>
-                  <button onClick={() => onFly('e')}>E · Up</button>
+                  <button onClick={() => onFly('e')}>E up</button>
                   <button onClick={() => onFly('a')} aria-label="Fly left">
-                    <ArrowLeft size={16} />
+                    <ArrowLeft size={15} />
                   </button>
                   <button onClick={() => onFly('s')} aria-label="Fly backward">
-                    <ArrowDown size={16} />
+                    <ArrowDown size={15} />
                   </button>
                   <button onClick={() => onFly('d')} aria-label="Fly right">
-                    <ArrowRight size={16} />
+                    <ArrowRight size={15} />
                   </button>
                 </div>
-                <button className="ob-button ob-subtle" onClick={onMotion}>
-                  <Video size={15} />
+                <button className="ob-button" onClick={onMotion}>
                   Open motion studio
                 </button>
                 <p className="ob-micro">
-                  Scroll toward a feature to approach it. Movement slows near the surface. Distance
-                  estimates guide navigation; they are numerical approximations.
+                  Scrolling approaches the point under the cursor and slows near the surface.
+                  Distance estimates are numerical approximations.
                 </p>
               </>
             )}
@@ -474,28 +441,24 @@ export function Inspector({
                 onChange={() => onChange({ showGrid: !state.showGrid })}
               />
             )}
-            <button className="ob-button ob-subtle" onClick={onReset}>
-              <RotateCcw size={14} />
+            <button className="ob-button" onClick={onReset}>
               Reset this view
             </button>
             {plane && (
               <p className="ob-micro">
-                Drag to pan. Scroll or pinch to zoom around the pointer. In Mandelbrot, shift-click
-                selects a Julia parameter. Arrow keys pan; + / − zoom.
+                Drag pans. Scroll or pinch zooms about the pointer. Arrow keys pan, + and − zoom,
+                Home resets. On the Mandelbrot set, shift-click picks the parameter for a Julia set.
               </p>
             )}
           </>
         )}
-        <button className="ob-question-card" onClick={onGuide}>
-          <BookOpen size={16} />
-          <span>
-            <small>A QUESTION TO FOLLOW</small>
-            <strong>{destination.question}</strong>
-            <em>
-              Open the field guide <ArrowRight size={12} />
-            </em>
-          </span>
-        </button>
+        <div className="ob-question-card">
+          <h3>Question</h3>
+          <p>{destination.question}</p>
+          <button className="ob-link" onClick={onGuide}>
+            Field guide
+          </button>
+        </div>
       </div>
     </aside>
   );

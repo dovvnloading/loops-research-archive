@@ -238,6 +238,16 @@ export const DESTINATIONS: Destination[] = [
     { ...PRESETS[5].state, palette: 'glacier', showGrid: true },
   ),
 ];
+const CATEGORY_ORDER: DestinationCategory[] = ['Volumes', 'Complex plane', 'Research'];
+/** Destinations in index order: by category, then as listed above. */
+export const CATALOG: Destination[] = CATEGORY_ORDER.flatMap((category) =>
+  DESTINATIONS.filter((d) => d.category === category),
+);
+/** Two-digit catalogue number, or an empty string for a view that is not a listed destination. */
+export const catalogNumber = (d: Destination) => {
+  const index = CATALOG.indexOf(d);
+  return index < 0 ? '' : String(index + 1).padStart(2, '0');
+};
 export const STARTING_DESTINATION = DESTINATIONS[0];
 export const INITIAL_ENGINE = { ...DEFAULT_STATE, ...STARTING_DESTINATION.engine };
 export const TOURS = [

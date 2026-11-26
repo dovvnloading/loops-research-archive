@@ -1,0 +1,645 @@
+/* Element defaults and the controls every workspace shares. See tokens.css. */
+html,
+body,
+#root {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+}
+body {
+  background: var(--ink-0);
+  color: var(--paper);
+  font: 400 var(--t-3) / 1.45 var(--f-ui);
+  font-synthesis: none;
+  font-optical-sizing: auto;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  overflow: hidden;
+}
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+h1,
+h2,
+h3,
+h4,
+p,
+figure,
+dl,
+dd,
+ol,
+ul {
+  margin: 0;
+}
+ol,
+ul {
+  padding: 0;
+  list-style: none;
+}
+button,
+input,
+select,
+textarea {
+  font: inherit;
+  color: inherit;
+  letter-spacing: inherit;
+}
+button {
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+button:disabled {
+  cursor: not-allowed;
+  opacity: 0.38;
+}
+a {
+  color: inherit;
+  text-decoration-line: underline;
+  text-decoration-color: var(--paper-3);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.2em;
+}
+a:hover {
+  text-decoration-color: currentColor;
+}
+img,
+canvas,
+svg {
+  display: block;
+}
+code,
+kbd,
+samp,
+output {
+  font-family: var(--f-num);
+  font-size: 1.06em;
+}
+kbd {
+  display: inline-block;
+  min-width: 1.6em;
+  padding: 0 0.35em;
+  border: 1px solid var(--rule-2);
+  border-radius: var(--r);
+  color: var(--paper-2);
+  font-size: var(--t-2);
+  line-height: 1.5;
+  text-align: center;
+  white-space: nowrap;
+}
+i,
+em,
+var {
+  font-style: italic;
+}
+::selection {
+  background: var(--paper);
+  color: var(--ink-0);
+}
+:focus-visible {
+  outline: 2px solid var(--paper);
+  outline-offset: 2px;
+}
+:focus:not(:focus-visible) {
+  outline: none;
+}
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--rule-2) transparent;
+}
+[hidden] {
+  display: none !important;
+}
+
+/* Mathematics, wherever it appears. */
+.math {
+  font-family: var(--f-math);
+  font-size: 1.12em;
+  font-style: normal;
+  white-space: nowrap;
+}
+.math i {
+  font-style: italic;
+}
+.math sup,
+.math sub {
+  font-size: 0.72em;
+  line-height: 0;
+}
+.num {
+  font-family: var(--f-num);
+  font-size: 1.06em;
+  font-variant-numeric: tabular-nums;
+}
+
+/* Buttons. Outline by default; solid paper for the main action of a view;
+   vermilion only for what writes to the journal or records. */
+.ob-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 30px;
+  padding: 5px 12px;
+  border: 1px solid var(--rule-2);
+  border-radius: var(--r);
+  background: transparent;
+  color: var(--paper);
+  font-size: var(--t-3);
+  font-weight: 500;
+  line-height: 1.3;
+  text-decoration: none;
+  white-space: nowrap;
+}
+.ob-button:hover {
+  border-color: var(--paper-2);
+  background: var(--ink-2);
+}
+.ob-button:active {
+  background: var(--ink-3);
+}
+.ob-button.ob-primary {
+  border-color: var(--paper);
+  background: var(--paper);
+  color: var(--ink-0);
+  font-weight: 600;
+}
+.ob-button.ob-primary:hover {
+  border-color: #fff;
+  background: #fff;
+}
+.ob-button.ob-record {
+  border-color: var(--red);
+  background: var(--red);
+  color: var(--on-red);
+  font-weight: 600;
+}
+.ob-button.ob-record:hover,
+.ob-button.ob-record:active {
+  border-color: var(--red-down);
+  background: var(--red-down);
+}
+.ob-button.ob-wide {
+  width: 100%;
+  min-height: 36px;
+}
+.ob-button > svg {
+  flex: none;
+}
+
+/* A button that is only an icon. Toggled state is inverse video. */
+.ob-icon {
+  display: inline-flex;
+  flex: none;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  padding: 0;
+  border: 0;
+  border-radius: var(--r);
+  background: transparent;
+  color: var(--paper-2);
+}
+.ob-icon:hover {
+  background: var(--ink-3);
+  color: var(--paper);
+}
+.ob-icon.is-active,
+.ob-icon[aria-pressed='true'] {
+  background: var(--paper);
+  color: var(--ink-0);
+}
+
+/* A plain text action inside prose or a bar. */
+.ob-link {
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--paper);
+  font-weight: 500;
+  text-decoration: underline;
+  text-decoration-color: var(--paper-3);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.2em;
+}
+.ob-link:hover {
+  text-decoration-color: currentColor;
+}
+
+/* Form fields. */
+.ob-field {
+  display: grid;
+  gap: 5px;
+  min-width: 0;
+  color: var(--paper-2);
+  font-size: var(--t-2);
+}
+.ob-field > span {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 8px;
+}
+.ob-field > span > small {
+  color: var(--paper-3);
+  font-size: var(--t-1);
+}
+input[type='text'],
+input[type='number'],
+input[type='search'],
+input:not([type]),
+select,
+textarea {
+  width: 100%;
+  min-height: 30px;
+  padding: 4px 8px;
+  border: 1px solid var(--rule-2);
+  border-radius: var(--r);
+  background: var(--ink-0);
+  color: var(--paper);
+  font-size: var(--t-3);
+  line-height: 1.4;
+}
+input[type='text'],
+input[type='number'] {
+  font-family: var(--f-num);
+  font-size: 14px;
+}
+textarea {
+  display: block;
+  padding: 7px 8px;
+  resize: vertical;
+}
+select {
+  appearance: none;
+  padding-right: 26px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='9' height='6'%3E%3Cpath d='M.5.5l4 4 4-4' fill='none' stroke='%23b6b2a6' stroke-width='1.2'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 9px center;
+  cursor: pointer;
+}
+select option {
+  background: var(--ink-1);
+  color: var(--paper);
+}
+input::placeholder,
+textarea::placeholder {
+  color: var(--paper-3);
+  opacity: 1;
+}
+input:hover,
+select:hover,
+textarea:hover {
+  border-color: var(--paper-3);
+}
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+  border-color: var(--paper);
+  outline-offset: 0;
+}
+input[type='number'] {
+  appearance: textfield;
+}
+input[type='number']::-webkit-inner-spin-button,
+input[type='number']::-webkit-outer-spin-button {
+  appearance: none;
+  margin: 0;
+}
+input[type='search']::-webkit-search-cancel-button {
+  appearance: none;
+}
+
+/* Slider: a hairline scale with a cursor line, read like a slide rule. */
+input[type='range'] {
+  appearance: none;
+  width: 100%;
+  height: 20px;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  cursor: ew-resize;
+}
+input[type='range']::-webkit-slider-runnable-track {
+  height: 2px;
+  background: linear-gradient(
+    to right,
+    var(--paper) 0 var(--value, 0%),
+    var(--rule-2) var(--value, 0%) 100%
+  );
+}
+input[type='range']::-webkit-slider-thumb {
+  appearance: none;
+  width: 3px;
+  height: 14px;
+  margin-top: -6px;
+  border: 0;
+  border-radius: 0;
+  background: var(--paper);
+}
+input[type='range']::-moz-range-track {
+  height: 2px;
+  background: var(--rule-2);
+}
+input[type='range']::-moz-range-progress {
+  height: 2px;
+  background: var(--paper);
+}
+input[type='range']::-moz-range-thumb {
+  width: 3px;
+  height: 14px;
+  border: 0;
+  border-radius: 0;
+  background: var(--paper);
+}
+input[type='range']:hover::-webkit-slider-thumb,
+input[type='range']:active::-webkit-slider-thumb {
+  background: var(--red);
+}
+input[type='range']:hover::-moz-range-thumb,
+input[type='range']:active::-moz-range-thumb {
+  background: var(--red);
+}
+@media (pointer: coarse) {
+  input[type='range'] {
+    height: 32px;
+  }
+  input[type='range']::-webkit-slider-thumb {
+    width: 5px;
+    height: 22px;
+    margin-top: -10px;
+  }
+  input[type='range']::-moz-range-thumb {
+    width: 5px;
+    height: 22px;
+  }
+}
+.ob-range {
+  display: grid;
+  gap: 1px;
+}
+.ob-range > div {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+}
+.ob-range label {
+  color: var(--paper-2);
+  font-size: var(--t-2);
+}
+.ob-range output {
+  color: var(--paper);
+  font-size: 14px;
+  font-variant-numeric: tabular-nums;
+}
+.ob-range > small {
+  color: var(--paper-3);
+  font-size: var(--t-1);
+  line-height: 1.4;
+}
+
+/* Progress: one ruled line, filled in paper. */
+progress {
+  appearance: none;
+  display: block;
+  width: 100%;
+  height: 2px;
+  border: 0;
+  background: var(--rule-2);
+}
+progress::-webkit-progress-bar {
+  background: var(--rule-2);
+}
+progress::-webkit-progress-value {
+  background: var(--paper);
+}
+progress::-moz-progress-bar {
+  background: var(--paper);
+}
+
+/* On/off. */
+.ob-switch-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  width: 100%;
+  padding: 3px 0;
+  border: 0;
+  background: none;
+  color: var(--paper-2);
+  font-size: var(--t-2);
+  text-align: left;
+}
+.ob-switch-row small {
+  display: block;
+  color: var(--paper-3);
+  font-size: var(--t-1);
+}
+.ob-switch {
+  position: relative;
+  flex: none;
+  width: 28px;
+  height: 14px;
+  border: 1px solid var(--rule-2);
+  border-radius: var(--r);
+}
+.ob-switch > i {
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 8px;
+  height: 8px;
+  background: var(--paper-3);
+}
+.ob-switch.on {
+  border-color: var(--paper);
+  background: var(--paper);
+}
+.ob-switch.on > i {
+  left: 16px;
+  background: var(--ink-0);
+}
+
+/* Tabs are words on a rule; the current one is underscored. */
+.ob-tabs,
+.ob-segments {
+  display: flex;
+  gap: 18px;
+  min-width: 0;
+}
+.ob-tabs > button,
+.ob-segments > button {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--paper-3);
+  font-size: var(--t-3);
+  font-weight: 500;
+  white-space: nowrap;
+}
+.ob-tabs > button:hover,
+.ob-segments > button:hover {
+  color: var(--paper);
+}
+.ob-tabs > button.active,
+.ob-segments > button.active,
+.ob-tabs > button[aria-selected='true'] {
+  color: var(--paper);
+}
+.ob-tabs > button.active::after,
+.ob-segments > button.active::after,
+.ob-tabs > button[aria-selected='true']::after {
+  content: '';
+  position: absolute;
+  right: 0;
+  bottom: -1px;
+  left: 0;
+  height: 2px;
+  background: var(--paper);
+}
+
+/* Collapsible group inside a panel. */
+.ob-disclosure {
+  border-top: 1px solid var(--rule);
+}
+.ob-disclosure > summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 9px 0;
+  color: var(--paper);
+  font-size: var(--t-2);
+  font-weight: 600;
+  list-style: none;
+  cursor: pointer;
+}
+.ob-disclosure > summary::-webkit-details-marker {
+  display: none;
+}
+.ob-disclosure > summary > svg {
+  color: var(--paper-3);
+  transition: transform 0.12s;
+}
+.ob-disclosure[open] > summary > svg {
+  transform: rotate(180deg);
+}
+.ob-disclosure > div {
+  display: grid;
+  gap: 12px;
+  padding-bottom: 12px;
+}
+
+/* Small print and inline problems. */
+.ob-micro {
+  color: var(--paper-3);
+  font-size: var(--t-1);
+  line-height: 1.5;
+}
+.ob-inline-error {
+  padding-left: 9px;
+  border-left: 2px solid var(--red);
+  color: var(--paper);
+  font-size: var(--t-2);
+}
+
+/* Modal. A ruled sheet over a flat dimmer; no blur, no glow. */
+.ob-dialog {
+  width: min(520px, calc(100vw - 32px));
+  max-height: min(760px, calc(100dvh - 48px));
+  padding: 0;
+  border: 1px solid var(--rule-2);
+  border-radius: 0;
+  background: var(--ink-1);
+  color: var(--paper);
+  box-shadow: 0 30px 90px #000000b3;
+  overflow: auto;
+}
+.ob-dialog::backdrop {
+  background: #050504c2;
+}
+.ob-dialog > header {
+  position: sticky;
+  top: 0;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  height: var(--bar);
+  padding: 0 8px 0 var(--gutter);
+  border-bottom: 1px solid var(--rule);
+  background: var(--ink-1);
+}
+.ob-dialog > header h2 {
+  font-size: var(--t-3);
+  font-weight: 600;
+}
+.ob-dialog > :not(header) {
+  margin: 12px var(--gutter) 0;
+}
+.ob-dialog > header + * {
+  margin-top: var(--gutter);
+}
+.ob-dialog > :last-child {
+  margin-bottom: var(--gutter);
+}
+.ob-dialog-intro {
+  color: var(--paper-2);
+  line-height: 1.5;
+}
+.ob-dialog form {
+  display: grid;
+  gap: 12px;
+}
+
+/* Waiting and failing. */
+.ob-loading {
+  display: flex;
+  flex: 1;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  min-height: 160px;
+  color: var(--paper-3);
+  font-size: var(--t-3);
+}
+.ob-loading > svg {
+  width: 30px;
+  height: 14px;
+  color: var(--paper-3);
+}
+.ob-empty {
+  display: grid;
+  justify-items: start;
+  gap: 8px;
+  padding: 28px 0;
+  border-top: 1px solid var(--rule);
+  color: var(--paper-2);
+}
+.ob-empty > svg {
+  display: none;
+}
+.ob-empty h2 {
+  color: var(--paper);
+  font: 500 var(--t-5) / 1.3 var(--f-math);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+  }
+}
