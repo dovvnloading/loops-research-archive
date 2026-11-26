@@ -59,8 +59,75 @@ For any x in M and sufficiently small epsilon>0, take the component of M interse
 
 Combine with (2) and zero if stronger. If H vanishes identically in one variable the corresponding Harnack inequality is still valid by nonnegativity. Formula (6) is particularly useful for comparing physical tip intervals to the point limit, without taking an unspecified sequence of capacities. It is not a claim that the equilibrium measure is supported at x.
 
-## 2. Attribution, status, and next proof obligation
+## 2. Sharp logarithmic coefficient on the actual Mandelbrot set
 
-Classical inputs: Green energy, disk Green kernel, Dirichlet balayage, Cauchy–Schwarz for the Dirichlet energy, Harnack inequality, and the compact-space component/quasicomponent theorem. See E. B. Saff, *Logarithmic Potential Theory with Applications to Approximation Theory*, Surveys in Approximation Theory 5 (2010), 165–200, [PDF](https://pages.cs.wisc.edu/~deboor/sat/papers/14/14.pdf), §3, equations (3.8)–(3.17), and §1. The prior note supplies the explicit physical uniform-angle potential and the transfer identity; this new argument independently addresses the diagonal, positivity and optimal continuum reduction. No claim that these general Green kernel facts are new in potential theory.
+**Theorem 2 (physical sharpness).** For every 0<s<t<=1/8,
 
-**Status:** written analytic proof of a sharp variational reduction for the actual domains. No physical sequence of connected relative neighborhoods, divergent net-gain schedule, or parameter rigidity is asserted. The next proof obligation in this PR is to establish the precise logarithmic coefficient on actual quadratic parameters, using direct critical-orbit estimates at -2. AI assistance: ChatGPT GPT-6.2; no independent human specialist review.
+    2 log(t/s)-log(128)-(t-s)
+       <= sup_{F} e(F) <= 4+2 log(t/s),                  (7)
+
+where F ranges over nondegenerate subcontinua of the actual Mandelbrot set. In particular
+
+    lim_{t/s -> infinity, 0<s<t<=1/8}
+          sup_F e(F)/log(t/s) = 2.                       (8)
+
+The coefficient two in the earlier universal large-ratio estimate cannot be reduced even for the actual quadratic parameter plane. This is stronger than a round-model order obstruction or the earlier qualitative divergence at -2. It gives actual compact witnesses, not just a boundary singularity of a hypothetical conformal map.
+
+### 2.1. Physical conformal radius at the repelling tip
+
+Write x_*=-2. We prove for 0<u<=1/8
+
+    u^2/2 <= r_u(x_*) <= 64 u^2.                        (9)
+
+Lower bound. The segment I=[-2,0] belongs to M: for c in [-2,0], p=(1+sqrt(1-4c))/2 belongs to [1,2], c=p-p^2>=-p, and f_c([-p,p])=[c,p] subset [-p,p]. The exterior Green function of I, extended by zero on I, is no smaller than G_M by monotonicity (also directly by the minimum principle on the complement of M, with nonnegative boundary values and positive difference log 2 at infinity). The exterior coordinate z=-1+(w+w^(-1))/2 maps |w|=exp(u) to the ellipse centered at -1 with semiaxes cosh u and sinh u; it is the actual level-u curve for I. Its closest point to -2 is its left real vertex: the squared distance from -2 along the ellipse equals X^2+2 cosh(u) X+1+sinh^2(u), X=cos(theta) in [-1,1], an increasing function of X. Thus the open disk B(-2,cosh u-1) is contained in D_u(I) subset D_u(M). Conformal radius monotonicity (Schwarz lemma) and cosh u-1>=u^2/2 prove the lower bound. This does not presume a boundary extension or local connectivity of M.
+
+Upper bound. For 0<d<=1/4 put c=-2-d, a=2+d, and use the actual critical orbit x_j=f_c^j(0). The positive fixed point b=(1+sqrt(9+4d))/2 lies between 2 and 2+d/3, by squaring the latter inequality. The second iterate is x_2=a^2-a=2+3d+d^2. With v_j=x_j-b we have
+
+    (8/3)d <= v_2 <= 3d+d^2 <= 13/16 < 1,
+    v_{j+1}=2b v_j+v_j^2 >= 4v_j   (j>=2).
+
+Let m be the first j>=2 with v_j>=1. It exists, m<=2+ceil(log_4(1/v_2)), and x_m>=3. For all subsequent iterates x_{j+1}=x_j^2-a >= (3/4)x_j^2 whenever x_j>=3, because a<=9/4. This also keeps x_j>=3. Therefore for k>=0,
+
+    log x_(m+k) >= 2^k log((3/4)x_m)-log(3/4).
+
+The quadratic parameter normalization is G(c)=lim 2^(-(j-1)) log^+|x_j|, NOT 2^(-j) log^+|x_j|. Taking the limit gives
+
+    G(-2-d) >= 2^(-(m-1)) log(9/4)
+             >= sqrt(v_2) log(9/4)/4
+             >= sqrt(d)/4.                             (10)
+
+For the last inequality, log(9/4)>=10/13 follows from log x>=2(x-1)/(x+1) for x>=1 (differentiate the difference); (8/3)*(10/13)^2>1. The ceil bound gives the middle inequality, with no floating point iteration. In particular -2-d is outside M.
+
+For 0<u<=1/8 choose d=16u^2<=1/4. Then G(-2-d)>=u, so dist(x_*,C minus D_u)<=16u^2. Koebe's quarter theorem gives r_u(x_*)<=4 dist(x_*,C minus D_u)<=64u^2. This proves (9), including the exponent two, from the physical escape recurrence and elementary segment comparison. It uses neither the inverse parameter boundary derivative nor parabolic asymptotics.
+
+### 2.2. Sharpness and explicit nonpolar witnesses
+
+By (1) and (9),
+
+    K(x_*,x_*) >= 2 log(t/s)-log128-L.                  (11)
+
+This is a lower bound on the true continuum supremum by Theorem 1. The upper bound in (7) is inherited from the earlier ground-transfer theorem: for L>=s it is at most 4+2 log(L/s)<=4+2 log(t/s), and for L<s it is at most pi^2 L/(3s)<4. Division by log(t/s) proves (8), uniformly in the stated range of t.
+
+For an explicit witness rather than a limiting supremum, put ell=log(t/s)>0 and
+
+    epsilon=s^2/[32(1+ell)],   F=[-2,-2+epsilon].
+
+This nondegenerate real interval lies in I subset M. The disk of radius R=s^2/2 around -2 is in D_s by (9)'s disk inclusion proof (conformal radius alone would not imply this). Thus delta=epsilon/R=1/[16(1+ell)] works in (6), and 1-a^2=4delta/(1+delta)^2<=4delta. Since H(x_*,x_*)>=2ell-log128, (6) implies
+
+    e(F) >= 2ell-log128-1/2-L.                          (12)
+
+Indeed a^2(2ell-log128)>=(2ell-log128)-8delta ell >= (2ell-log128)-1/2, even when the lower bound 2ell-log128 is negative. These are actual parameter intervals, with their own minimizing probabilities in each ground. They show sharpness without exchanging any equilibrium limit and infinite ground ratio.
+
+For any strictly decreasing schedule t_0>...>t_N>0 with t_0<=1/8, the sum of the worst-case per-step penalties is at least the telescoping diagonal sum at -2:
+
+    sum_{j<N} sup_F e_{t_(j+1),t_j}(F)
+       >= log(r_(t_0)(-2)/r_(t_N)(-2))-(t_0-t_N)
+       >= 2 log(t_0/t_N)-log128-(t_0-t_N).              (13)
+
+The supremum here is taken separately at each step; this is not a claim that one chosen nested tower has those losses, or that the lower bounds on a specific MLC tower's gains must dominate (13). It rules out any geometry-free universal penalty budget of smaller cumulative logarithmic order. For the actual diagonal at -2 the corresponding upper bound is 2 log(t_0/t_N)+log128, by the other half of (9).
+
+## 3. Attribution and proof boundary
+
+Classical inputs: Green energy, disk Green kernel, Dirichlet balayage, Cauchy–Schwarz for the Dirichlet energy, Harnack inequality, Schwarz lemma, Koebe quarter theorem, and the compact-space component/quasicomponent theorem. See E. B. Saff, *Logarithmic Potential Theory with Applications to Approximation Theory*, Surveys in Approximation Theory 5 (2010), 165–200, [PDF](https://pages.cs.wisc.edu/~deboor/sat/papers/14/14.pdf), §3, equations (3.8)–(3.17), printed pp.187–188 (both PDF page images independently reopened). The source supplies classical facts, not the claimed sharp coefficient. Quadratic parameter uniformization is inherited with precisely the normalization in the preceding two archive notes. See also their citations and credit Douady–Hubbard. No claim that these general Green kernel facts or the repelling-tip escape exponent are new in the wider literature.
+
+**Status:** written analytic proof of a sharp variational reduction and exact optimal leading logarithmic coefficient in the physical parameter plane. The earlier Fourier penalty upper bound is used as an imported archive argument, not silently reproved. The sharp lower coefficient is independent of that upper bound. No new source bytes were hashed; Saff's page images were read, not a full literature novelty audit. No physical sequence of connected relative neighborhoods, divergent net-gain schedule, or parameter rigidity is asserted. H4, H1–H3, UPTCR and MLC remain open. AI assistance: ChatGPT GPT-6.2; no independent human specialist review or Lean verification.
