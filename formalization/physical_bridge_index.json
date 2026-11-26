@@ -1861,7 +1861,19 @@
         "orbit_hasDerivAt",
         "multiplier_eq_deriv",
         "multiplier_norm_bound",
-        "deriv_norm_bound"
+        "deriv_norm_bound",
+        "successor_defect_sq",
+        "successor_radial_deficit",
+        "parameter_defect_sq",
+        "bounded_orbit_parameter_defect",
+        "multiplier_sq_uniform_gap",
+        "deriv_sq_uniform_gap",
+        "extremal_deriv_parameter",
+        "chebyshev_fixed_orbit",
+        "chebyshev_fixed_escape_zero",
+        "chebyshev_parameter_escape_zero",
+        "chebyshev_fixed_multiplier",
+        "chebyshev_fixed_deriv_norm"
       ]
     },
     "obligations": [
