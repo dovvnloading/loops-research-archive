@@ -1956,7 +1956,15 @@
         "chebyshev_fixed_escape_zero",
         "chebyshev_parameter_escape_zero",
         "chebyshev_fixed_multiplier",
-        "chebyshev_fixed_deriv_norm"
+        "chebyshev_fixed_deriv_norm",
+        "orbit_difference_step",
+        "orbit_perturbation_bound",
+        "escape_perturbation_scale",
+        "parameter_gap_base",
+        "parameter_escape_at_growth_scale",
+        "parameter_escape_improved_scale",
+        "parameter_escape_base_four",
+        "parameter_escape_half_holder_sq"
       ]
     },
     "obligations": [
