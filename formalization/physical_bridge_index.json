@@ -2077,7 +2077,14 @@
         "log_on_compact_avoiding_unbounded_cut",
         "quadratic_injOn_avoiding_unbounded_cut",
         "quadratic_reflected_separator_of_unbounded_cut",
-        "quadratic_base_separator_of_exterior_ray"
+        "quadratic_base_separator_of_exterior_ray",
+        "proper_restriction_compact_preimage",
+        "proper_restriction_is_component",
+        "quadratic_positive_iterate_even",
+        "even_preimage_component_symmetric",
+        "quadratic_return_filled_symmetric",
+        "connected_successor_avoids_component",
+        "terminal_successor_component_confined"
       ]
     },
     "obligations": [

@@ -533,4 +533,188 @@ theorem quadratic_base_separator_of_exterior_ray (c : ℂ) (K Q R : Set ℂ)
   exact quadratic_reflected_separator_of_unbounded_cut c (K \ Q) D a ha hne
     hDc.isPreconnected hDcl hc hDu hDd
 
+/-- Properness of the actual restricted map gives compact inverse
+images in the ambient plane, not just compactness in an abstract domain. -/
+theorem proper_restriction_compact_preimage (f : ℂ → ℂ) (U V : Set ℂ)
+    (hm : MapsTo f U V)
+    (hp : IsProperMap (fun z : U => (⟨f z,hm z.property⟩ : V)))
+    (B : Set ℂ) (hB : IsCompact B) (hBV : B ⊆ V) :
+    IsCompact (U ∩ f ⁻¹' B) := by
+  have hb : IsCompact (((↑) : V → ℂ) ⁻¹' B) :=
+    IsInducing.subtypeVal.isCompact_preimage' hB (by
+      rw [Subtype.range_coe]
+      exact hBV)
+  have hpre := hp.isCompact_preimage hb
+  have him := hpre.image (continuous_subtype_val : Continuous ((↑) : U → ℂ))
+  convert him using 1
+  ext z
+  constructor
+  · rintro ⟨hz,hzf⟩
+    exact ⟨⟨z,hz⟩,hzf,rfl⟩
+  · rintro ⟨w,hw,rfl⟩
+    exact ⟨w.property,hw⟩
+
+/-- A connected open proper restriction of an ambient continuous map
+is a component of the entire inverse target. No assumption that the
+selected restriction exhausts that component is needed. -/
+theorem proper_restriction_is_component (f : ℂ → ℂ) (U V : Set ℂ) (a : ℂ)
+    (hf : Continuous f) (hUo : IsOpen U) (hVo : IsOpen V)
+    (hUc : IsPreconnected U) (ha : a ∈ U) (hm : MapsTo f U V)
+    (hp : IsProperMap (fun z : U => (⟨f z,hm z.property⟩ : V))) :
+    U = connectedComponentIn (f ⁻¹' V) a := by
+  have hrel : closure U ∩ f ⁻¹' V ⊆ U := by
+    intro x hx
+    obtain ⟨ε,hε,hball⟩ := Metric.isOpen_iff.mp hVo (f x) hx.2
+    let B := Metric.closedBall (f x) (ε/2)
+    have hBV : B ⊆ V :=
+      (Metric.closedBall_subset_ball (by linarith : ε/2 < ε)).trans hball
+    have hclosed : IsClosed (U ∩ f ⁻¹' B) :=
+      (proper_restriction_compact_preimage f U V hm hp B
+        (isCompact_closedBall _ _) hBV).isClosed
+    have hxb : x ∈ closure (U ∩ f ⁻¹' B) := by
+      apply mem_closure_iff.mpr
+      intro W hW hxW
+      let N := W ∩ f ⁻¹' Metric.ball (f x) (ε/2)
+      have hN : IsOpen N := hW.inter (Metric.isOpen_ball.preimage hf)
+      have hxN : x ∈ N := ⟨hxW,by simpa using (half_pos hε)⟩
+      obtain ⟨z,hzN,hzU⟩ := mem_closure_iff.mp hx.1 N hN hxN
+      exact ⟨z,hzN.1,hzU,Metric.ball_subset_closedBall hzN.2⟩
+    rw [hclosed.closure_eq] at hxb
+    exact hxb.1
+  have hu : U ⊆ f ⁻¹' V := hm
+  have h1 := hUc.subset_connectedComponentIn ha hu
+  apply Subset.antisymm h1
+  intro z hz
+  by_contra hzu
+  have hcover : connectedComponentIn (f ⁻¹' V) a ⊆ closure U ∪ Uᶜ := by
+    intro w hw
+    by_cases h : w ∈ U
+    · exact Or.inl (subset_closure h)
+    · exact Or.inr h
+  obtain ⟨w,hw,hwU,hwUc⟩ :=
+    (isPreconnected_closed_iff.mp
+      (isPreconnected_connectedComponentIn (F := f ⁻¹' V) (x := a)))
+      (closure U) Uᶜ isClosed_closure hUo.isClosed_compl hcover
+      ⟨a,h1 ha,subset_closure ha⟩ ⟨z,hz,hzu⟩
+  exact hwUc (hrel ⟨hwU,connectedComponentIn_subset (f ⁻¹' V) a hw⟩)
+
+/-- Every positive iterate of the actual quadratic polynomial is even. -/
+theorem quadratic_positive_iterate_even (c : ℂ) (p : ℕ) (hp : 0 < p) (z : ℂ) :
+    (fun w : ℂ => w^2+c)^[p] (-z) = (fun w : ℂ => w^2+c)^[p] z := by
+  cases p with
+  | zero => omega
+  | succ p =>
+    simp only [Function.iterate_succ_apply]
+    congr 1
+    ring
+
+/-- The component of an even map's inverse target containing the fixed
+point of reflection is itself invariant under reflection. -/
+theorem even_preimage_component_symmetric (F : ℂ → ℂ) (V : Set ℂ)
+    (heven : ∀ z, F (-z) = F z) :
+    ∀ z ∈ connectedComponentIn (F ⁻¹' V) 0,
+      -z ∈ connectedComponentIn (F ⁻¹' V) 0 := by
+  intro z hz
+  let A := connectedComponentIn (F ⁻¹' V) 0
+  have h0 : (0 : ℂ) ∈ F ⁻¹' V :=
+    connectedComponentIn_nonempty_iff.mp ⟨z,hz⟩
+  have hconn : IsPreconnected ((fun w : ℂ => -w) '' A) :=
+    isPreconnected_connectedComponentIn.image _ continuous_neg.continuousOn
+  have h0' : (0 : ℂ) ∈ (fun w : ℂ => -w) '' A :=
+    ⟨0,mem_connectedComponentIn h0,neg_zero⟩
+  have hsub : (fun w : ℂ => -w) '' A ⊆ F ⁻¹' V := by
+    rintro _ ⟨w,hw,rfl⟩
+    change F (-w) ∈ V
+    rw [heven]
+    exact connectedComponentIn_subset (F ⁻¹' V) 0 hw
+  exact hconn.subset_connectedComponentIn h0' hsub ⟨z,hz,rfl⟩
+
+/-- The filled set is defined by all return iterates staying in the
+actual restriction domain, including the zeroth iterate. -/
+def quadraticReturnFilled (c : ℂ) (p : ℕ) (U : Set ℂ) : Set ℂ :=
+  {z | ∀ n : ℕ, ((fun w : ℂ => w^2+c)^[p])^[n] z ∈ U}
+
+/-- Symmetry of the little filled set is derived from actual properness
+and connectedness of the return restriction containing zero. -/
+theorem quadratic_return_filled_symmetric (c : ℂ) (p : ℕ) (U V : Set ℂ)
+    (hp : 0 < p) (hUo : IsOpen U) (hVo : IsOpen V)
+    (hUc : IsPreconnected U) (h0 : 0 ∈ U)
+    (hm : MapsTo ((fun w : ℂ => w^2+c)^[p]) U V)
+    (hproper : IsProperMap (fun z : U =>
+      (⟨(fun w : ℂ => w^2+c)^[p] z,hm z.property⟩ : V))) :
+    ∀ z ∈ quadraticReturnFilled c p U, -z ∈ quadraticReturnFilled c p U := by
+  let F := (fun w : ℂ => w^2+c)^[p]
+  have hf : Continuous (fun w : ℂ => w^2+c) := (continuous_id.pow 2).add continuous_const
+  have hF : Continuous F := hf.iterate p
+  have hU := proper_restriction_is_component F U V 0 hF hUo hVo hUc h0 hm hproper
+  have hsym (z : ℂ) (hz : z ∈ U) : -z ∈ U := by
+    rw [hU] at hz ⊢
+    exact even_preimage_component_symmetric F V (quadratic_positive_iterate_even c p hp) z hz
+  intro z hz
+  change ∀ n : ℕ, F^[n] z ∈ U at hz
+  change ∀ n : ℕ, F^[n] (-z) ∈ U
+  intro n
+  cases n with
+  | zero =>
+    exact hsym z (hz 0)
+  | succ n =>
+    rw [Function.iterate_succ_apply, quadratic_positive_iterate_even c p hp]
+    exact hz (n+1)
+
+/-- All points of a connected successor piece are separated if one is.
+This conclusion concerns connected components, not accessibility paths. -/
+theorem connected_successor_avoids_component (S B : Set ℂ) (a b : ℂ)
+    (hB : IsPreconnected B) (hsub : B ⊆ S) (hb : b ∈ B)
+    (hsep : b ∉ connectedComponentIn S a) :
+    Disjoint B (connectedComponentIn S a) := by
+  rw [Set.disjoint_left]
+  intro y hyB hyC
+  have hb' := hB.subset_connectedComponentIn hyB hsub hb
+  rw [← connectedComponentIn_eq hyC] at hb'
+  exact hsep hb'
+
+/-- Combining the actual quadratic exterior-cut theorem with terminal
+sheet transport confines the entire ambient successor component to
+its sheet. In particular no point outside that sheet can bypass the
+separator, even when the retained physical set is not locally connected. -/
+theorem terminal_successor_component_confined (O S : Set X) (a y : X)
+    (K Q R B : Set ℂ) (c α : ℂ) (g : X → ℂ)
+    (hfront : frontier O ⊆ {a}) (ha : a ∈ S) (hy : y ∈ S ∩ O)
+    (hg : ContinuousOn g (S ∩ (O ∪ {a})))
+    (hmap : MapsTo g (S ∩ (O ∪ {a})) (K \ Q))
+    (hga : g a = α) (hgy : g y ∈ B)
+    (hB : IsPreconnected B) (hBsub : B ⊆ K \ Q) (hb : -α ∈ B)
+    (hne : α ≠ 0)
+    (hsym : ∀ z ∈ Q, -z ∈ Q) (h0 : 0 ∈ Q)
+    (hQ : IsCompact Q) (hQc : IsConnected Q)
+    (hR : IsClosed R) (hRc : IsConnected R)
+    (hmeet : (((fun z : ℂ => z^2+c) '' Q) ∩ R).Nonempty)
+    (hunb : ∀ M : ℝ, ∃ z ∈ R, M < ‖z‖)
+    (hdis : Disjoint R ((fun z : ℂ => z^2+c) '' (K \ Q))) :
+    y ∉ connectedComponentIn S a ∧ connectedComponentIn S y ⊆ O := by
+  have hα : α ∈ K \ Q := hga ▸ hmap ⟨ha,Or.inr (mem_singleton a)⟩
+  have hsep := quadratic_base_separator_of_exterior_ray c K Q R α hα hne
+    hsym h0 hQ hQc hR hRc hmeet hunb hdis
+  have hBdis := connected_successor_avoids_component (K \ Q) B α (-α)
+    hB hBsub hb hsep
+  have hgysep : g y ∉ connectedComponentIn (K \ Q) (g a) := by
+    rw [hga]
+    exact fun h => Set.disjoint_left.mp hBdis hgy h
+  have hglobal := separator_transport O S (K \ Q) a y g hfront ha
+    (Or.inl hy.2) hg hmap hgysep
+  have hylocal : y ∈ S ∩ (O ∪ {a}) := ⟨hy.1,Or.inl hy.2⟩
+  have hmiss : a ∉ connectedComponentIn (S ∩ (O ∪ {a})) y := by
+    intro h
+    have heq := connectedComponentIn_eq h
+    have hy' : y ∈ connectedComponentIn (S ∩ (O ∪ {a})) a :=
+      heq ▸ mem_connectedComponentIn hylocal
+    exact hglobal (connectedComponentIn_mono a inter_subset_left hy')
+  refine ⟨hglobal, ?_⟩
+  rw [component_eq_local_of_attachment_missing O S a y hfront ha hylocal hmiss]
+  intro z hz
+  rcases (connectedComponentIn_subset _ _ hz).2 with h | h
+  · exact h
+  · have he : z = a := h
+    exact False.elim (hmiss (he ▸ hz))
+
 end LoopsStationarySeparatorTransport
