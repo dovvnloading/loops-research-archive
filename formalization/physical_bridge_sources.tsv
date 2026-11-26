@@ -341,4 +341,9 @@ research/frontier/cs_growth_hypothesis_20261126/verify.py	METADATA
 research/frontier/cs_prop_6_10_angular_20261126/verify.py	METADATA
 research/frontier/cs_multiplier_locus_numerics_20261126/measure.py	METADATA
 research/frontier/cs_multiplier_locus_numerics_20261126/summarize.py	METADATA
+research/frontier/cs_multiplier_locus_extended_20261126/fast_source.py	METADATA
+research/frontier/cs_multiplier_locus_extended_20261126/extend.py	METADATA
+research/frontier/cs_multiplier_locus_extended_20261126/certify.py	METADATA
+research/frontier/cs_multiplier_locus_extended_20261126/chart_inputs.py	METADATA
+research/frontier/cs_multiplier_locus_extended_20261126/summarize.py	METADATA
 research/frontier/is_local_dilatation_20261126/verify.py	METADATA
