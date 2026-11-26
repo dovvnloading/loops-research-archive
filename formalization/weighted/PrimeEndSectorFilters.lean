@@ -61,7 +61,7 @@ theorem angular_cluster_iff (A : ℕ → Set X) (H : ℕ → ℝ) (θ : X)
   constructor
   · intro h n ε he
     let t := min (H n) ε / 2
-    have ht : 0 < t := by dsimp [t]; positivity
+    have ht : 0 < t := div_pos (lt_min (hp n) he) (by norm_num)
     have htH : t ≤ H n := by
       have hh := min_le_left (H n) ε
       dsimp [t] at *
@@ -110,7 +110,7 @@ theorem reverse_stage_iff (A : Set X) (H : ℝ) (θ : X) (hp : 0 < H) :
     refine ⟨min δ H, lt_min hd hp, ?_⟩
     intro p h
     refine ⟨hs ?_, h.2.1, ?_⟩
-    · exact lt_of_lt_of_le h.1 (min_le_left _ _)
+    · exact Metric.mem_ball.mpr (lt_of_lt_of_le (Metric.mem_ball.mp h.1) (min_le_left _ _))
     · exact (lt_of_lt_of_le h.2.2 (min_le_right _ _)).le
 
 /-- The exact criterion for the entire exterior trace to be cofinal at
