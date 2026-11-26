@@ -119,7 +119,9 @@ theorem quadratic_parameter_univalent_neighborhood (c : ℂ) (n : ℕ) (C : Set 
   have hdifference : ∀ z ∈ U, ∀ w ∈ U,
       m/2 < ‖orbitDividedDifference d z w n‖ := by
     intro z hz w hw
-    exact hPQ ⟨hd, hAB ⟨hz.1, hw.2⟩⟩
+    have hpair : (z,w) ∈ Q :=
+      hAB (show (z,w) ∈ A ×ˢ B from ⟨hz.1, hw.2⟩)
+    exact hPQ (show (d,(z,w)) ∈ P ×ˢ Q from ⟨hd, hpair⟩)
   refine ⟨?_, ?_⟩
   · intro z hz w hw heq
     have hnonzero : orbitDividedDifference d z w n ≠ 0 :=
