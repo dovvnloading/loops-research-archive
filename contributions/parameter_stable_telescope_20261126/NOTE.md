@@ -20,7 +20,7 @@ to a neighborhood of the actual quadratic parameter. All mathematical results
 listed below are stated as Lean theorems in the existing Mathlib project.
 The final validation section records the checked proof checkpoint.
 
-Write `F_c^n(z) = (z ↦ z²+c)^[n](z)`, using
+Write `F_c^n(z)` for the n-fold iterate of `z ↦ z²+c`, using
 `QuadraticEscape.orbit`. Fix a finite time n, a compact set C in the complex
 plane, and an open ambient set W containing C. Assume only:
 
@@ -221,7 +221,7 @@ The audit counts include private and compiler-generated declarations; the
 source/theorem registry lists all 20 explicitly named public theorems.
 The inverse module uses an elaboration-only transparency setting to reconcile
 product-space instance paths. It does not alter kernel checking or the
-allowed axiom set. The final documentation commit changes no Lean source
+allowed axiom set. The final documentation changes affect no Lean source
 or registration from the verified proof checkpoint.
 
 Reproduction in a workspace with the pinned dependencies:
