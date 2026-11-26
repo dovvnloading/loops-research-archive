@@ -180,4 +180,109 @@ theorem invariant_marks_disjoint_image [T1Space Y]
     (hA) (hB) (hf y) (hf (G y)) hAB hCD
     ⟨a, ha, haC⟩ ⟨b, hb, hbC⟩ ⟨F a, hFA ha, haD⟩ ⟨F b, hFB hb, hbD⟩
 
+
+/-- Exact full-preimage selected predecessor identity at arbitrary depth
+for a semiconjugacy with closed connected fibers. The selected component
+is an actual connected component of the complement of a root. -/
+theorem selected_predecessor_full_lift [CompactSpace X] [T2Space Y]
+    (p : X → Y) (F : X → X) (G : Y → Y)
+    (hp : Continuous p) (hsurj : Function.Surjective p)
+    (hf : ∀ y : Y, IsPreconnected (p ⁻¹' {y}))
+    (hsemi : Function.Semiconj p F G)
+    (B : Set Y) (a x : X) (ha : p ⁻¹' ({p a} : Set Y) = {a})
+    (hx : x ≠ a) (n : ℕ) :
+    p ⁻¹' ((G^[n]) ⁻¹' B ∩ connectedComponentIn ({p a} : Set Y)ᶜ (p x)) =
+      (F^[n]) ⁻¹' (p ⁻¹' B) ∩ connectedComponentIn ({a} : Set X)ᶜ x := by
+  rw [preimage_inter, ← punctured_component_full_lift p hp hsurj hf a x ha hx]
+  ext z
+  have hz : p ((F^[n]) z) = (G^[n]) (p z) := hsemi.iterate_right n z
+  simp only [mem_inter_iff, mem_preimage, hz]
+
+/-- A least compact connected carrier cannot enter a terminal open
+region that contains no marked point, if its entire frontier is one
+point outside the region. The proof constructs the continuous pruning
+map, rather than assuming local connectivity or a graph model. -/
+theorem least_carrier_terminal_incidence {ι : Type*}
+    (K : ι → Set X) (S O : Set X) (a : X)
+    (hSc : IsCompact S) (hS : IsConnected S)
+    (hK : ∀ i, K i ⊆ S)
+    (hleast : ∀ U : Set X, IsCompact U → IsConnected U →
+      (∀ i, K i ⊆ U) → S ⊆ U)
+    (hfront : frontier O ⊆ {a}) (ha : a ∉ O)
+    (hSO : (S ∩ O).Nonempty) :
+    ∃ i, (K i ∩ O).Nonempty := by
+  classical
+  by_contra hnot
+  have hmiss : ∀ i, ∀ z ∈ K i, z ∉ O := by
+    intro i z hz hO
+    exact hnot ⟨i, z, hz, hO⟩
+  let r : X → X := O.piecewise (fun _ => a) id
+  have hr : Continuous r := by
+    dsimp [r]
+    apply Continuous.piecewise
+    · intro z hz
+      exact (show z = a from hfront hz).symm
+    · exact continuous_const
+    · exact continuous_id
+  have hmarks : ∀ i, K i ⊆ r '' S := by
+    intro i z hz
+    refine ⟨z, hK i hz, ?_⟩
+    simp [r, Set.piecewise, hmiss i z hz]
+  have hsub := hleast (r '' S) (hSc.image hr) (hS.image r hr.continuousOn) hmarks
+  obtain ⟨w, hwS, hwO⟩ := hSO
+  obtain ⟨v, _, hv⟩ := hsub hwS
+  by_cases hvO : v ∈ O
+  · have he : a = w := by simpa [r, Set.piecewise, hvO] using hv
+    exact ha (he.symm ▸ hwO)
+  · have he : v = w := by simpa [r, Set.piecewise, hvO] using hv
+    exact hvO (he.symm ▸ hwO)
+
+/-- If an intermediate carrier has no extra quotient points, then
+occupancy of a saturated terminal sheet is detected already on the
+least carrier. A connected mark avoiding the root is contained in the
+whole sheet; forward invariance of its carrier puts the entire mark
+in the selected predecessor, with no finite-tree incidence premise. -/
+theorem selected_predecessor_contains_mark {ι : Type*}
+    (p : X → Y) (F : X → X) (K : ι → Set X)
+    (S T : Set X) (a x : X) (V : Set Y) (n : ℕ)
+    (hSc : IsCompact S) (hS : IsConnected S)
+    (hK : ∀ i, K i ⊆ S)
+    (hleast : ∀ U : Set X, IsCompact U → IsConnected U →
+      (∀ i, K i ⊆ U) → S ⊆ U)
+    (hST : S ⊆ T) (himg : p '' T ⊆ p '' S)
+    (hconn : ∀ i, IsPreconnected (K i)) (havoid : ∀ i, a ∉ K i)
+    (hF : MapsTo F T T)
+    (hsat : connectedComponentIn ({a} : Set X)ᶜ x = p ⁻¹' V)
+    (hfront : frontier (connectedComponentIn ({a} : Set X)ᶜ x) ⊆ {a})
+    (hhit : (T ∩ connectedComponentIn ({a} : Set X)ᶜ x).Nonempty) :
+    ∃ i, K i ⊆ (F^[n]) ⁻¹' T ∩ connectedComponentIn ({a} : Set X)ᶜ x := by
+  let O := connectedComponentIn ({a} : Set X)ᶜ x
+  have hO : O ⊆ ({a} : Set X)ᶜ := connectedComponentIn_subset _ _
+  have ha : a ∉ O := by
+    intro haO
+    exact hO haO (mem_singleton a)
+  have hSO : (S ∩ O).Nonempty := by
+    obtain ⟨w, hwT, hwO⟩ := hhit
+    obtain ⟨z, hzS, hzw⟩ := himg ⟨w, hwT, rfl⟩
+    have hwV : p w ∈ V := by
+      change w ∈ O at hwO
+      rw [show O = p ⁻¹' V from hsat] at hwO
+      exact hwO
+    refine ⟨z, hzS, ?_⟩
+    rw [show O = p ⁻¹' V from hsat]
+    change p z ∈ V
+    rwa [hzw]
+  obtain ⟨i, w, hwK, hwO⟩ :=
+    least_carrier_terminal_incidence K S O a hSc hS hK hleast hfront ha hSO
+  have hKW : K i ⊆ ({a} : Set X)ᶜ := by
+    intro z hz hz'
+    have he : z = a := hz'
+    exact havoid i (he ▸ hz)
+  have hsub : K i ⊆ O := by
+    have h' := (hconn i).subset_connectedComponentIn hwK hKW
+    rw [← connectedComponentIn_eq hwO] at h'
+    exact h'
+  have hFn : MapsTo (F^[n]) T T := hF.iterate n
+  exact ⟨i, fun z hz => ⟨hFn (hST (hK i hz)), hsub hz⟩⟩
+
 end LoopsStationaryMonotoneGeometry

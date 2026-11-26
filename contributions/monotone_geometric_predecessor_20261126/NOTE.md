@@ -17,11 +17,13 @@ Draft, not yet verified. Target the actual topological inference in the November
 
 Candidate file: `formalization/weighted/StationaryMonotoneGeometry.lean`.
 
-Theorems: `preconnected_preimage_closed_fibers`, `component_preimage_closed_fibers`, `punctured_component_full_lift`, `disjoint_bridges_impossible`, `invariant_marks_disjoint_image`.
+Theorems: `preconnected_preimage_closed_fibers`, `component_preimage_closed_fibers`, `punctured_component_full_lift`, `disjoint_bridges_impossible`, `invariant_marks_disjoint_image`, `selected_predecessor_full_lift`, `least_carrier_terminal_incidence`, `selected_predecessor_contains_mark`.
 
 1. For a closed surjection with preconnected fibers, a closed cover of the preimage gives a closed cover of the target. A common target point has a fiber meeting both covering sets, hence a point in their intersection. This removes the audit's use of arc-convexity for the noncompact case.
 2. Apply the lemma to a connected component and use maximality in both directions; a singleton root fiber gives exact punctured-component transport.
 3. If disjoint invariant continua share a quotient point, its fiber meets both. The return image lies in a different fiber by the nonfixed-fiber hypothesis. Both fibers bridge the same marks. The intersection of the two connected closed unions is exactly the disconnected union of the marks, contrary to hereditary unicoherence.
+4. At every depth n, semiconjugacy of iterates and the punctured-component identity give the exact inverse-image formula for the full carrier. This is equation (7) of the audit with all topological hypotheses explicit.
+5. Construct the terminal pruning map directly by piecewise continuity across its singleton frontier. A least compact connected carrier that visits the terminal region must contain a mark there, or the image under pruning would be a smaller admissible carrier. This requires no local connectivity. Saturation and equality/inclusion of carrier images transfer a hit to the least carrier; a connected mark avoids the root and therefore lies wholly in the selected sheet. Forward invariance then gives its inclusion in the entire selected predecessor. This is the set-level incidence mechanism in equation (8).
 
 Build: `cd formalization/weighted && lake build StationaryMonotoneGeometry`. The source is registered as METADATA, not a completed physical bridge. Compilation and foundational-dependency audit are pending.
 

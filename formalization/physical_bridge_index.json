@@ -1989,7 +1989,10 @@
         "component_preimage_closed_fibers",
         "punctured_component_full_lift",
         "disjoint_bridges_impossible",
-        "invariant_marks_disjoint_image"
+        "invariant_marks_disjoint_image",
+        "selected_predecessor_full_lift",
+        "least_carrier_terminal_incidence",
+        "selected_predecessor_contains_mark"
       ]
     },
     "obligations": [
