@@ -1,0 +1,24 @@
+name: Virtual reached-cylinder residual clock
+on:
+  push:
+    branches: ['agent/virtual-reached-clock-20261126']
+  pull_request:
+    paths:
+      - 'research/independent_audits/virtual-reached-clock_20261126/**'
+      - '.github/workflows/virtual-reached-clock-20261126.yml'
+      - 'formalization/physical_bridge_sources.tsv'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  reached-component-certificate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+      - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065b
+        with:
+          python-version: '3.12.16'
+      - name: Verify exact arithmetic and reached clock regression
+        run: python -B research/independent_audits/virtual-reached-clock_20261126/check_clock_arithmetic.py
+      - name: Verify physical bridge source coverage and routes
+        run: python -B code/verify_physical_bridges.py
