@@ -2087,6 +2087,42 @@
       "H1_CELL_TREE_EXTRACTION"
     ]
   },
+  "stationary-separator-no-bypass-20261126": {
+    "guide": "contributions/stationary_separator_no_bypass_20261126/NOTE.md#stationary-separator-no-bypass-20261126",
+    "theorems": {
+      "formalization/weighted/StationarySeparatorTransport.lean": [
+        "terminalRetract_continuous",
+        "terminalRetract_fixed",
+        "terminalRetract_mapsTo",
+        "component_inter_terminalSheet",
+        "component_eq_local_of_attachment_missing",
+        "separator_iff_local",
+        "separator_transport",
+        "attachment_component_union",
+        "quadratic_image_preimage_symmetric",
+        "quadratic_injOn_of_continuous_section",
+        "quadratic_injOn_over_simplyConnected",
+        "reflected_points_separated",
+        "quadratic_image_diff_symmetric",
+        "quadratic_reflected_base_separator",
+        "log_lift_homotopy",
+        "log_on_compact_avoiding_unbounded_cut",
+        "quadratic_injOn_avoiding_unbounded_cut",
+        "quadratic_reflected_separator_of_unbounded_cut",
+        "quadratic_base_separator_of_exterior_ray",
+        "proper_restriction_compact_preimage",
+        "proper_restriction_is_component",
+        "quadratic_positive_iterate_even",
+        "even_preimage_component_symmetric",
+        "quadratic_return_filled_symmetric",
+        "connected_successor_avoids_component",
+        "terminal_successor_component_confined"
+      ]
+    },
+    "obligations": [
+      "KKL_STATIONARY_SELECTED_SEPARATOR_REALIZATION"
+    ]
+  },
   "prime-end-sector-filters-20261126": {
     "guide": "contributions/prime_end_sector_filters_20261126/NOTE.md#prime-end-sector-filters-20261126",
     "theorems": {
