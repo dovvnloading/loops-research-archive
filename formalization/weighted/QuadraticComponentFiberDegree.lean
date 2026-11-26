@@ -359,5 +359,119 @@ theorem quadratic_localized_univalent_iff_regular_card_one
     (hm hx) y hy hreg
 
 
+/-- Enlarging the target cannot destroy an invariant step in the
+actual component itinerary. This needs neither openness nor regularity. -/
+theorem componentReflectionRank_mono (c : ℂ) (U V : Set ℂ)
+    (hUV : U ⊆ V) (n : ℕ) (x : ℂ) (hx : (quad c)^[n] x ∈ U) :
+    componentReflectionRank c U n x ≤ componentReflectionRank c V n x := by
+  induction n generalizing x with
+  | zero => simp [componentReflectionRank]
+  | succ n ih =>
+    have hxD : (quad c)^[n] (quad c x) ∈ U := by
+      simpa only [Function.iterate_succ_apply] using hx
+    have ht := ih (quad c x) hxD
+    by_cases hsU : ∀ z ∈ connectedComponentIn ((quad c)^[n+1] ⁻¹' U) x,
+        -z ∈ connectedComponentIn ((quad c)^[n+1] ⁻¹' U) x
+    · have hsub : connectedComponentIn ((quad c)^[n+1] ⁻¹' U) x ⊆
+          connectedComponentIn ((quad c)^[n+1] ⁻¹' V) x :=
+        connectedComponentIn_mono x (preimage_mono hUV)
+      have hxC : x ∈ connectedComponentIn ((quad c)^[n+1] ⁻¹' U) x :=
+        mem_connectedComponentIn hx
+      have hsV := even_component_reflection_of_pair ((quad c)^[n+1]) V
+        (quadratic_positive_iterate_even c (n+1) (by omega)) x x
+        (hsub hxC) (hsub (hsU x hxC))
+      simp only [componentReflectionRank, if_pos hsU, if_pos hsV]
+      omega
+    · by_cases hsV : ∀ z ∈ connectedComponentIn ((quad c)^[n+1] ⁻¹' V) x,
+          -z ∈ connectedComponentIn ((quad c)^[n+1] ⁻¹' V) x
+      · simp only [componentReflectionRank, if_neg hsU, if_pos hsV]
+        omega
+      · simp only [componentReflectionRank, if_neg hsU, if_neg hsV]
+        omega
+
+/-- Exact selected-component enlargement test over any single target
+point, including critical values. Equality of local inverse fibers
+means that the enlarged component contains no other old component. -/
+theorem quadratic_enlargement_no_merger_iff_fiber_eq (c : ℂ) (n : ℕ)
+    (U V : Set ℂ) (hUV : U ⊆ V) (hUo : IsOpen U) (hUc : IsPreconnected U)
+    (x : ℂ) (hx : (quad c)^[n] x ∈ U) (y : ℂ) (hy : y ∈ U) :
+    localFiber c n (connectedComponentIn ((quad c)^[n] ⁻¹' U) x) y =
+      localFiber c n (connectedComponentIn ((quad c)^[n] ⁻¹' V) x) y ↔
+    connectedComponentIn ((quad c)^[n] ⁻¹' V) x ∩ ((quad c)^[n] ⁻¹' U) =
+      connectedComponentIn ((quad c)^[n] ⁻¹' U) x := by
+  let f := (quad c)^[n]
+  let A := connectedComponentIn (f ⁻¹' U) x
+  let B := connectedComponentIn (f ⁻¹' V) x
+  have hAB : A ⊆ B := connectedComponentIn_mono x (preimage_mono hUV)
+  change localFiber c n A y = localFiber c n B y ↔ B ∩ f ⁻¹' U = A
+  constructor
+  · intro hF
+    apply Subset.antisymm
+    · intro z hz
+      have hzU : f z ∈ U := hz.2
+      let D := connectedComponentIn (f ⁻¹' U) z
+      have him := quadratic_global_component_image c n U hUo hUc z hzU
+      have hyD : y ∈ f '' D := him.symm ▸ hy
+      obtain ⟨w, hw, hwy⟩ := hyD
+      have hwB : w ∈ B := by
+        have hm : D ⊆ connectedComponentIn (f ⁻¹' V) z :=
+          connectedComponentIn_mono z (preimage_mono hUV)
+        have he : B = connectedComponentIn (f ⁻¹' V) z := connectedComponentIn_eq hz.1
+        exact he.symm ▸ hm hw
+      have hwF : w ∈ localFiber c n B y :=
+        (mem_localFiber c n B y w).mpr ⟨hwB, hwy⟩
+      have hwF' : w ∈ localFiber c n A y := hF.symm ▸ hwF
+      have hwA : w ∈ A := ((mem_localFiber c n A y w).mp hwF').1
+      have hAw : A = connectedComponentIn (f ⁻¹' U) w := connectedComponentIn_eq hwA
+      have hDw : D = connectedComponentIn (f ⁻¹' U) w := connectedComponentIn_eq hw
+      change z ∈ A
+      rw [hAw, ← hDw]
+      exact mem_connectedComponentIn hzU
+    · intro z hz
+      exact ⟨hAB hz, connectedComponentIn_subset (f ⁻¹' U) x hz⟩
+  · intro h
+    ext z
+    simp only [mem_localFiber]
+    constructor
+    · rintro ⟨hz, hzy⟩
+      exact ⟨hAB hz, hzy⟩
+    · rintro ⟨hz, hzy⟩
+      have hzU : f z ∈ U := hzy.symm ▸ hy
+      have hz' : z ∈ B ∩ f ⁻¹' U := ⟨hz, hzU⟩
+      exact ⟨h ▸ hz', hzy⟩
+
+/-- At a regular target the no-merger test becomes a single numerical
+equality of intrinsic reflection ranks. This works even when neither
+target is simply connected and both contain other critical values. -/
+theorem quadratic_enlargement_rank_eq_iff_no_merger (c : ℂ) (n : ℕ)
+    (U V : Set ℂ) (hUV : U ⊆ V)
+    (hUo : IsOpen U) (hUc : IsPreconnected U)
+    (hVo : IsOpen V) (hVc : IsPreconnected V)
+    (x : ℂ) (hx : (quad c)^[n] x ∈ U) (y : ℂ) (hy : y ∈ U)
+    (hreg : ∀ k < n, (quad c)^[k] c ≠ y) :
+    componentReflectionRank c U n x = componentReflectionRank c V n x ↔
+    connectedComponentIn ((quad c)^[n] ⁻¹' V) x ∩ ((quad c)^[n] ⁻¹' U) =
+      connectedComponentIn ((quad c)^[n] ⁻¹' U) x := by
+  have heU := quadratic_component_regular_degree c U hUo hUc n x hx y hy hreg
+  have heV := quadratic_component_regular_degree c V hVo hVc n x (hUV hx) y (hUV hy) hreg
+  have hAB : connectedComponentIn ((quad c)^[n] ⁻¹' U) x ⊆
+      connectedComponentIn ((quad c)^[n] ⁻¹' V) x :=
+    connectedComponentIn_mono x (preimage_mono hUV)
+  have hsub : localFiber c n (connectedComponentIn ((quad c)^[n] ⁻¹' U) x) y ⊆
+      localFiber c n (connectedComponentIn ((quad c)^[n] ⁻¹' V) x) y := by
+    intro z hz
+    obtain ⟨hzU, hzy⟩ := (mem_localFiber c n _ y z).mp hz
+    exact (mem_localFiber c n _ y z).mpr ⟨hAB hzU, hzy⟩
+  rw [← quadratic_enlargement_no_merger_iff_fiber_eq c n U V hUV hUo hUc x hx y hy]
+  constructor
+  · intro hr
+    apply Finset.eq_of_subset_of_card_le hsub
+    rw [heU, heV, hr]
+  · intro hF
+    have hcard := congrArg Finset.card hF
+    rw [heU, heV] at hcard
+    exact Nat.pow_right_injective (by norm_num : 2 ≤ (2 : ℕ)) hcard
+
+
 end
 end LoopsQuadraticComponentFiberDegree

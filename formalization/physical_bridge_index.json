@@ -2478,7 +2478,10 @@
         "quadratic_component_regular_degree",
         "quadratic_component_rank_zero_inj",
         "quadratic_component_univalent_iff_regular_card_one",
-        "quadratic_localized_univalent_iff_regular_card_one"
+        "quadratic_localized_univalent_iff_regular_card_one",
+        "componentReflectionRank_mono",
+        "quadratic_enlargement_no_merger_iff_fiber_eq",
+        "quadratic_enlargement_rank_eq_iff_no_merger"
       ]
     },
     "obligations": [
