@@ -42,6 +42,17 @@ def arithmetic():
             assert nu/2-eta/4 == m*((1-eps)*w0-w1)/4
             cases += 1
     print(f"PASS: {cases} exact rational incidence/accounting cases (not EE maps)")
+    # Candidate index-only route: eroded intervals on a line, no geometry.
+    windows = 0
+    for n in range(2, 65):
+        for b in range(min(n, 4)+1):
+            for gap in range(2*n+2):
+                r, s = 0, gap
+                centers = [t for t in range(-n, gap+n+1)
+                           if t-n+b <= r <= s <= t+n-b]
+                assert len(centers) == max(0, 2*n+1-2*b-gap)
+                windows += 1
+    print(f"PASS: {windows} sliding interval counts (endpoint incidence only)")
 
 def fetch(url):
     for attempt in range(3):
@@ -66,11 +77,9 @@ def provenance():
         data = fetch(record["url"])
         digest = hashlib.sha256(data).hexdigest()
         print(f"SOURCE {name} sha256={digest} bytes={len(data)}", flush=True)
-        if record["sha256"] is not None:
-            assert digest == record["sha256"], name
-            assert len(data) == record["bytes"], name
-        else:
-            print(f"PROVISIONAL {name}: digest measured, not yet locked")
+        assert record["sha256"] is not None and record["bytes"] is not None, name
+        assert digest == record["sha256"], name
+        assert len(data) == record["bytes"], name
         if name == "EE":
             reader = PdfReader(io.BytesIO(data))
             assert len(reader.pages) == 20
