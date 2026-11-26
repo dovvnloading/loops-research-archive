@@ -84,7 +84,7 @@ theorem orbit_parameter_distortion (C R : ℝ) (d e z : ℂ)
             + ‖d-e‖ := by rw [norm_mul]
       _ ≤ (2 * orbitRadius C R n) *
             (parameterSensitivity C R n * ‖d-e‖) + ‖d-e‖ :=
-        add_le_add_right (mul_le_mul hsum ih (norm_nonneg _) (by positivity)) _
+        add_le_add (mul_le_mul hsum ih (norm_nonneg _) (by positivity)) le_rfl
       _ = parameterSensitivity C R (n+1) * ‖d-e‖ := by
         simp only [parameterSensitivity]
         ring
@@ -116,7 +116,7 @@ theorem orbit_inverse_joint_bound (C R δ : ℝ) (n : ℕ) (U : Set ℂ)
     _ ≤ ‖y-v‖ + ‖v-orbit d n w‖ := norm_add_le _ _
     _ = ‖y-v‖ + ‖orbit e n w-orbit d n w‖ := by rw [hwe]
     _ ≤ ‖y-v‖ + parameterSensitivity C R n * ‖e-d‖ :=
-      add_le_add_left (orbit_parameter_distortion C R e d w hC hR he hd (hU w hw) n) _
+      add_le_add le_rfl (orbit_parameter_distortion C R e d w hC hR he hd (hU w hw) n)
     _ = ‖y-v‖ + parameterSensitivity C R n * ‖d-e‖ := by rw [norm_sub_rev e d]
 
 /-- Compact actual univalent data produce one common positive spatial
