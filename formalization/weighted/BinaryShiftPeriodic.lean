@@ -106,7 +106,7 @@ theorem shift_periodic_dense : Dense (periodicPts shift) := by
   refine ⟨b, hsub ?_, mk_mem_periodicPts hn hb⟩
   intro k hk
   have hkn : k < n := by
-    have := Finset.le_sup (f := id) hk
+    have hki : k ≤ I.sup id := Finset.le_sup (f := id) hk
     dsimp [n]
     omega
   rw [hprefix k hkn]

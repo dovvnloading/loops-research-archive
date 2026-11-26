@@ -2857,6 +2857,7 @@
         "cylinder_mem_iff",
         "address_fiber_image",
         "address_fiber_preconnected",
+        "address_fiber_connected",
         "component_eq_address_fiber",
         "component_conjugacy"
       ],
@@ -2866,13 +2867,21 @@
         "filled_coherent_branch_system",
         "quadraticFilledMap_continuous",
         "quadraticComponentMap_mk",
+        "filled_component_image",
         "filled_binary_component_model",
         "filled_component_conjugacy"
       ],
       "formalization/weighted/QuadraticComponentDynamics.lean": [
         "quadratic_component_periodic_card",
         "quadratic_component_has_exact_period",
-        "quadratic_periodic_components_dense"
+        "quadratic_periodic_components_dense",
+        "quadratic_component_open_eventually_onto",
+        "quadratic_component_eventual_intersection"
+      ],
+      "formalization/weighted/BinaryShiftExactness.lean": [
+        "shift_open_eventually_onto",
+        "conjugate_open_eventually_onto",
+        "conjugate_eventual_intersection"
       ]
     },
     "obligations": [

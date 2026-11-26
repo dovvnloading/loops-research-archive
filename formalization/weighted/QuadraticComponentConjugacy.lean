@@ -99,7 +99,7 @@ theorem filled_coherent_branch_system (c : ℂ) (hc : 0 < escape c 0) :
     intro p q hpq
     have he : b p.1 (j p.2) = b q.1 (j q.2) := by
       rw [← hbf p, ← hbf q, hpq]
-    have hpair := hbi he
+    have hpair : (p.1,j p.2) = (q.1,j q.2) := hbi he
     exact Prod.ext (congrArg Prod.fst hpair) (hji (congrArg Prod.snd hpair))
   have hbfs : Surjective bf := by
     intro z
@@ -179,6 +179,25 @@ def quadraticComponentMap (c : ℂ) :
 theorem quadraticComponentMap_mk (c : ℂ) (z : quadraticFilled c) :
     quadraticComponentMap c (ConnectedComponents.mk z) =
       ConnectedComponents.mk (quadraticFilledMap c z) := rfl
+
+/-- The polynomial maps each entire actual component onto its parent.
+Thus a fixed component of the quotient action is setwise invariant,
+rather than merely mapped into a larger component. -/
+theorem filled_component_image (c : ℂ) (hc : 0 < escape c 0)
+    (z : quadraticFilled c) :
+    quadraticFilledMap c '' connectedComponent z =
+      connectedComponent (quadraticFilledMap c z) := by
+  obtain ⟨e,he⟩ := filled_two_sheet c hc
+  let H := LoopsComponentDoubling.productComponentHomeomorph e z
+  apply Subset.antisymm
+  · rintro _ ⟨w,hw,rfl⟩
+    exact (quadraticFilledMap_continuous c).mapsTo_connectedComponent z hw
+  · intro w hw
+    have hw' : w ∈ connectedComponent (e z).2 := by rwa [he z]
+    obtain ⟨v,hv⟩ := H.surjective ⟨w,hw'⟩
+    refine ⟨v.val,v.property,?_⟩
+    have hh : (e v.val).2 = w := congrArg Subtype.val hv
+    rwa [he v.val] at hh
 
 /-- A coherent binary coding has exactly the genuine connected components
 as fibers, and its quotient is a homeomorphism conjugating the actual

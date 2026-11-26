@@ -1,5 +1,6 @@
 import QuadraticComponentConjugacy
 import BinaryShiftPeriodic
+import BinaryShiftExactness
 
 /-!
 # Periodic dynamics of actual escaping quadratic components
@@ -13,6 +14,7 @@ namespace LoopsQuadraticEscapeTree
 
 open Set Function QuadraticEscape LoopsStationaryFiberDynamics
 open LoopsCompactBinaryCoding LoopsBinaryShiftPeriodic
+open LoopsBinaryShiftExactness
 
 private theorem periodic_iff_of_equiv {X : Type*} (f : X → X)
     (E : X ≃ (ℕ → Fin 2)) (hE : Semiconj E f shift) (x : X) (n : ℕ) :
@@ -80,11 +82,30 @@ theorem quadratic_periodic_components_dense (c : ℂ) (hc : 0 < escape c 0) :
   apply dense_iff_inter_open.mpr
   intro U hU hne
   have hEU : IsOpen (E '' U) := E.isOpenMap U hU
-  obtain ⟨a,ha,hap⟩ := shift_periodic_dense.inter_open_nonempty hEU
+  obtain ⟨a,ha,hap⟩ := shift_periodic_dense.inter_open_nonempty (E '' U) hEU
     (hne.image E)
   obtain ⟨q,hq,rfl⟩ := ha
   obtain ⟨n,hn,hpn⟩ := mem_periodicPts.mp hap
   refine ⟨q,hq,mk_mem_periodicPts hn ?_⟩
   exact (periodic_iff_of_equiv _ E.toEquiv hE q n).mpr hpn
+
+/-- Every nonempty open family of actual components eventually maps onto
+the entire component space under every later iterate. -/
+theorem quadratic_component_open_eventually_onto (c : ℂ) (hc : 0 < escape c 0)
+    (U : Set (ConnectedComponents (quadraticFilled c)))
+    (hU : IsOpen U) (hne : U.Nonempty) :
+    ∃ N : ℕ, ∀ n ≥ N, ((quadraticComponentMap c)^[n]) '' U = univ := by
+  obtain ⟨E,hE⟩ := filled_component_conjugacy c hc
+  exact conjugate_open_eventually_onto (quadraticComponentMap c) E hE U hU hne
+
+/-- The actual component action has the mixing conclusion, even when
+only the source family is open and the target family is merely nonempty. -/
+theorem quadratic_component_eventual_intersection (c : ℂ) (hc : 0 < escape c 0)
+    (U V : Set (ConnectedComponents (quadraticFilled c)))
+    (hU : IsOpen U) (hneU : U.Nonempty) (hneV : V.Nonempty) :
+    ∃ N : ℕ, ∀ n ≥ N, (((quadraticComponentMap c)^[n]) '' U ∩ V).Nonempty := by
+  obtain ⟨E,hE⟩ := filled_component_conjugacy c hc
+  exact conjugate_eventual_intersection (quadraticComponentMap c) E hE
+    U V hU hneU hneV
 
 end LoopsQuadraticEscapeTree

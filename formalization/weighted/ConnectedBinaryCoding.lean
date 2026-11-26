@@ -22,6 +22,7 @@ def cylinder (b : Fin 2 → X → X) (a : ℕ → Fin 2) : ℕ → Set X
   | 0 => univ
   | n + 1 => b (a 0) '' cylinder b (shift a) n
 
+omit [TopologicalSpace X] in
 theorem cylinder_antitone (b : Fin 2 → X → X) (a : ℕ → Fin 2) :
     Antitone (cylinder b a) := by
   apply antitone_nat_of_succ_le
@@ -55,6 +56,7 @@ theorem cylinder_limit_preconnected [CompactSpace X] [PreconnectedSpace X]
   exact ⟨max m n, cylinder_antitone b a (le_max_left m n),
     cylinder_antitone b a (le_max_right m n)⟩
 
+omit [TopologicalSpace X] in
 /-- Coherence and disjoint inverse branches make ambient cylinder membership
 equivalent to the prescribed finite itinerary on the invariant compact set. -/
 theorem cylinder_mem_iff (j : Y → X) (e : Y ≃ₜ (Fin 2 × Y))
@@ -92,6 +94,7 @@ theorem cylinder_mem_iff (j : Y → X) (e : Y ≃ₜ (Fin 2 × Y))
         rw [← hzero]
         exact (hrep y).symm
 
+omit [TopologicalSpace X] in
 /-- The geometric nested limit is exactly the image of the entire address
 fiber, including all its points rather than a selected representative. -/
 theorem address_fiber_image (j : Y → X) (e : Y ≃ₜ (Fin 2 × Y))
@@ -150,8 +153,10 @@ theorem component_eq_address_fiber [CompactSpace X] [PreconnectedSpace X]
     connectedComponent y = {z | address e z = address e y} := by
   apply Subset.antisymm
   · intro z hz
-    exact isPreconnected_connectedComponent.constant
-      (address_continuous e).continuousOn hz mem_connectedComponent
+    have hh : IsPreconnected ((address e) '' connectedComponent y) :=
+      isPreconnected_connectedComponent.image _ (address_continuous e).continuousOn
+    exact hh.subsingleton (mem_image_of_mem _ hz)
+      (mem_image_of_mem _ mem_connectedComponent)
   · exact (address_fiber_preconnected j hj hji e b hb hbi hjb hlim
       (address e y)).subset_connectedComponent rfl
 
