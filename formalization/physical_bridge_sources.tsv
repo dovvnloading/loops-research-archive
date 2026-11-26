@@ -97,6 +97,7 @@ formalization/weighted/PrimeEndSectorFilters.lean	METADATA
 formalization/weighted/PrimeEndSectorImpressions.lean	METADATA
 formalization/weighted/PrimeEndSectorRank.lean	METADATA
 formalization/weighted/QuadraticCriticalFiberCensus.lean	METADATA
+formalization/weighted/QuadraticCriticalPortrait.lean	METADATA
 formalization/weighted/QuadraticCriticalTransversality.lean	CRITICAL-TRANSVERSALITY
 formalization/weighted/PhaseMemoryCardinality.lean	CLOCK ENDS
 formalization/weighted/PlanarFillLimit.lean	HULL

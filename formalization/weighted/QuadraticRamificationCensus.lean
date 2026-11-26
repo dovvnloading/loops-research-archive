@@ -15,6 +15,7 @@ open Set Function Classical
 open LoopsQuadraticCylinderCensus LoopsQuadraticCriticalFiberCensus
 open LoopsQuadraticCylinderRamification LoopsQuadraticComponentFiberDegree
 open LoopsQuadraticEnlargementDegree LoopsQuadraticLocalRamification
+open LoopsQuadraticTransversality
 open scoped BigOperators
 
 noncomputable section
@@ -38,6 +39,37 @@ theorem mem_criticalPoints_iff_multiplicity (c : ℂ) (n : ℕ)
     z ∈ criticalPoints c n C ↔ z ∈ C ∧ localMultiplicity c z n ≠ 1 := by
   rw [mem_criticalPoints, localMultiplicity_eq_one_iff]
   simp only [not_forall, not_not, exists_prop]
+
+/-- Nonvanishing of the actual complex derivative is equivalent to
+avoiding the quadratic critical point at every earlier orbit position. -/
+theorem quadratic_iterate_deriv_ne_zero_iff (c z : ℂ) (n : ℕ) :
+    deriv ((quad c)^[n]) z ≠ 0 ↔ ∀ k < n, (quad c)^[k] z ≠ 0 := by
+  have hm : returnMultiplier c z n ≠ 0 ↔
+      ∀ k < n, returnOrbit c z k ≠ 0 := by
+    induction n with
+    | zero => simp [returnMultiplier]
+    | succ n ih =>
+      rw [returnMultiplier, mul_ne_zero_iff, mul_ne_zero_iff,
+        show (2 : ℂ) ≠ 0 by norm_num, true_and, ih]
+      constructor
+      · rintro ⟨hlast, hprev⟩ k hk
+        by_cases he : k = n
+        · simpa only [he] using hlast
+        · exact hprev k (by omega)
+      · intro h
+        exact ⟨h n (by omega), fun k hk => h k (by omega)⟩
+  have hd : deriv ((quad c)^[n]) z = returnMultiplier c z n := by
+    simpa only [returnOrbit_eq_iterate] using (returnMultiplier_hasDerivAt c z n).deriv
+  rw [hd, hm]
+  simp only [returnOrbit_eq_iterate]
+
+/-- The finite orbital census is literally the zero set of the actual
+complex derivative on the specified planar set. -/
+theorem mem_criticalPoints_iff_deriv (c : ℂ) (n : ℕ) (C : Set ℂ) (z : ℂ) :
+    z ∈ criticalPoints c n C ↔ z ∈ C ∧ deriv ((quad c)^[n]) z = 0 := by
+  rw [mem_criticalPoints_iff_multiplicity, localMultiplicity_eq_one_iff,
+    ← quadratic_iterate_deriv_ne_zero_iff]
+  simp only [not_not]
 
 /-- Distinct postcritical target values retained by the open target. -/
 def postcriticalTargets (c : ℂ) (V : Set ℂ) (n : ℕ) : Finset ℂ :=
@@ -165,6 +197,35 @@ theorem quadratic_component_critical_count_bound (c : ℂ) (V : Set ℂ)
   have he := quadratic_component_critical_budget c V hVo hVc n x hx
   change (criticalPoints c n C).card + componentReflectionDebt c V n x + 1 ≤ _
   omega
+
+/-- The whole plane has both inverse sheets at every finite stage. -/
+theorem componentReflectionRank_univ (c : ℂ) (n : ℕ) (x : ℂ) :
+    componentReflectionRank c univ n x = n := by
+  induction n generalizing x with
+  | zero => rfl
+  | succ n ih =>
+    simp [componentReflectionRank, ih, connectedComponentIn_univ,
+      PreconnectedSpace.connectedComponent_eq_univ]
+
+/-- Every critical value is retained when the target is the whole plane,
+so there is no missing critical charge in the global formula. -/
+theorem componentReflectionDebt_univ (c : ℂ) (n : ℕ) (x : ℂ) :
+    componentReflectionDebt c univ n x = 0 := by
+  induction n generalizing x with
+  | zero => rfl
+  | succ n ih =>
+    simp [componentReflectionDebt, ih, connectedComponentIn_univ,
+      PreconnectedSpace.connectedComponent_eq_univ]
+
+/-- Global ramification of the actual quadratic iterate is exactly
+degree minus one, for every parameter and horizon, including repeated
+critical returns. The finite set has no duplicate critical points. -/
+theorem quadratic_global_ramification_budget (c : ℂ) (n : ℕ) :
+    (∑ z ∈ criticalPoints c n univ, (localMultiplicity c z n - 1)) + 1 = 2^n := by
+  have h := quadratic_component_critical_budget c univ isOpen_univ
+    isPreconnected_univ n 0 (mem_univ _)
+  simpa [componentReflectionRank_univ, componentReflectionDebt_univ,
+    connectedComponentIn_univ, PreconnectedSpace.connectedComponent_eq_univ] using h
 
 end
 end LoopsQuadraticRamificationCensus

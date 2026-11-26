@@ -137,7 +137,7 @@ theorem quadratic_component_nonsymmetric_weighted (c : ℂ) (n : ℕ)
         exact ((mem_localFiber c (n+1) C y z).mp hz).1
       rw [localMultiplicity_step, if_neg hne, one_mul]
     _ = ∑ w ∈ A.image (quad c), localMultiplicity c w n :=
-      (Finset.sum_image hAi).symm
+      (Finset.sum_image (f := fun w => localMultiplicity c w n) hAi).symm
     _ = ∑ w ∈ localFiber c n
         (connectedComponentIn ((quad c)^[n] ⁻¹' V) (quad c x)) y,
         localMultiplicity c w n := by
@@ -325,6 +325,103 @@ theorem quadratic_component_defect_eq_ramification_sum (c : ℂ) (V : Set ℂ)
   change F.card + componentFiberDefect c V y n x = _ at hd
   change componentFiberDefect c V y n x = ∑ z ∈ F, (localMultiplicity c z n - 1)
   omega
+
+/-- Critical encounters concatenate along the actual orbit, including
+repeated visits to zero on both sides of the chosen intermediate time. -/
+theorem criticalCount_add (c z : ℂ) (m n : ℕ) :
+    criticalCount c z (m+n) =
+      criticalCount c z m + criticalCount c ((quad c)^[m] z) n := by
+  induction m generalizing z with
+  | zero => simp [criticalCount]
+  | succ m ih =>
+    rw [Nat.succ_add, criticalCount_shift, ih, criticalCount_shift,
+      Function.iterate_succ_apply]
+    omega
+
+/-- The exact local order satisfies the composition law at every
+intermediate time, not only when the intermediate point is regular. -/
+theorem localMultiplicity_add (c z : ℂ) (m n : ℕ) :
+    localMultiplicity c z (m+n) =
+      localMultiplicity c z m * localMultiplicity c ((quad c)^[m] z) n := by
+  unfold localMultiplicity
+  rw [criticalCount_add, pow_add]
+
+/-- The original component is precisely the pullback component of
+the actual intermediate component. There is no replacement by a
+symbolic address or a larger global preimage. -/
+theorem quadratic_split_component (c : ℂ) (n m : ℕ)
+    (V : Set ℂ) (hVo : IsOpen V) (x : ℂ) (hx : (quad c)^[n+m] x ∈ V) :
+    connectedComponentIn ((quad c)^[n+m] ⁻¹' V) x =
+      connectedComponentIn ((quad c)^[m] ⁻¹'
+        connectedComponentIn ((quad c)^[n] ⁻¹' V) ((quad c)^[m] x)) x := by
+  let f := quad c
+  let C := connectedComponentIn (f^[n+m] ⁻¹' V) x
+  let D := connectedComponentIn (f^[n] ⁻¹' V) (f^[m] x)
+  have hi : f^[m] '' C = D := quadratic_prefix_component_image c n m V hVo x hx
+  have hCx : x ∈ C := mem_connectedComponentIn hx
+  have hsub : C ⊆ f^[m] ⁻¹' D := by
+    intro z hz
+    have he : f^[m] z ∈ f^[m] '' C := ⟨z, hz, rfl⟩
+    exact hi ▸ he
+  have htarget : f^[m] ⁻¹' D ⊆ f^[n+m] ⁻¹' V := by
+    intro z hz
+    have he := connectedComponentIn_subset (f^[n] ⁻¹' V) (f^[m] x) hz
+    simpa only [mem_preimage, Function.iterate_add_apply] using he
+  change C = connectedComponentIn (f^[m] ⁻¹' D) x
+  exact Subset.antisymm
+    (isPreconnected_connectedComponentIn.subset_connectedComponentIn hCx hsub)
+    (connectedComponentIn_mono x htarget)
+
+/-- Every intermediate fiber in the selected original component has
+the same weighted prefix degree, including intermediate critical values. -/
+theorem quadratic_component_intermediate_weighted_degree (c : ℂ) (n m : ℕ)
+    (V : Set ℂ) (hVo : IsOpen V) (x : ℂ) (hx : (quad c)^[n+m] x ∈ V)
+    (w : ℂ)
+    (hw : w ∈ connectedComponentIn ((quad c)^[n] ⁻¹' V) ((quad c)^[m] x)) :
+    (∑ z ∈ localFiber c m (connectedComponentIn ((quad c)^[n+m] ⁻¹' V) x) w,
+      localMultiplicity c z m) =
+        2 ^ componentReflectionRank c
+          (connectedComponentIn ((quad c)^[n] ⁻¹' V) ((quad c)^[m] x)) m x := by
+  let D := connectedComponentIn ((quad c)^[n] ⁻¹' V) ((quad c)^[m] x)
+  have hDo : IsOpen D :=
+    (hVo.preimage (quadratic_iterate_proper c n).continuous).connectedComponentIn
+  have hxD : (quad c)^[m] x ∈ D := by
+    apply mem_connectedComponentIn
+    simpa only [mem_preimage, Function.iterate_add_apply] using hx
+  rw [quadratic_split_component c n m V hVo x hx]
+  exact quadratic_component_weighted_fiber_degree c D hDo
+    isPreconnected_connectedComponentIn w hw m x hxD
+
+/-- The intrinsic component degree is multiplicative under every
+finite-time split: its base-two exponent is exactly additive along
+the actual intermediate component, with no univalence assumption. -/
+theorem componentReflectionRank_add (c : ℂ) (V : Set ℂ) (hVo : IsOpen V)
+    (n m : ℕ) (x : ℂ) (hx : (quad c)^[n+m] x ∈ V) :
+    componentReflectionRank c V (n+m) x =
+      componentReflectionRank c
+          (connectedComponentIn ((quad c)^[n] ⁻¹' V) ((quad c)^[m] x)) m x +
+        componentReflectionRank c V n ((quad c)^[m] x) := by
+  induction m generalizing x with
+  | zero => simp [componentReflectionRank]
+  | succ m ih =>
+    have hx' : (quad c)^[n+m] (quad c x) ∈ V := by
+      simpa only [Nat.add_succ, Function.iterate_succ_apply] using hx
+    have ht := ih (quad c x) hx'
+    let D := connectedComponentIn ((quad c)^[n] ⁻¹' V) ((quad c)^[m+1] x)
+    have hD : connectedComponentIn ((quad c)^[n] ⁻¹' V)
+        ((quad c)^[m] (quad c x)) = D := by
+      simp only [D, Function.iterate_succ_apply]
+    rw [hD] at ht
+    have hc : connectedComponentIn ((quad c)^[(n+m)+1] ⁻¹' V) x =
+        connectedComponentIn ((quad c)^[m+1] ⁻¹' D) x := by
+      simpa only [Nat.add_succ, D] using
+        quadratic_split_component c n (m+1) V hVo x hx
+    change componentReflectionRank c V ((n+m)+1) x =
+      componentReflectionRank c D (m+1) x +
+        componentReflectionRank c V n ((quad c)^[m+1] x)
+    rw [componentReflectionRank, componentReflectionRank, hc, ht,
+      Function.iterate_succ_apply]
+    omega
 
 end
 end LoopsQuadraticLocalRamification

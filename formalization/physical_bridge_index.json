@@ -2753,17 +2753,40 @@
         "quadratic_component_symmetric_fiber",
         "quadratic_component_symmetric_weighted",
         "quadratic_component_weighted_fiber_degree",
-        "quadratic_component_defect_eq_ramification_sum"
+        "quadratic_component_defect_eq_ramification_sum",
+        "criticalCount_add",
+        "localMultiplicity_add",
+        "quadratic_split_component",
+        "quadratic_component_intermediate_weighted_degree",
+        "componentReflectionRank_add"
       ],
       "formalization/weighted/QuadraticRamificationCensus.lean": [
         "mem_criticalPoints",
         "mem_criticalPoints_iff_multiplicity",
+        "quadratic_iterate_deriv_ne_zero_iff",
+        "mem_criticalPoints_iff_deriv",
         "mem_postcriticalTargets",
         "iterate_after_critical",
         "criticalPoints_eq_postcritical_filter",
         "criticalPoints_ramification_sum",
         "quadratic_component_critical_budget",
-        "quadratic_component_critical_count_bound"
+        "quadratic_component_critical_count_bound",
+        "componentReflectionRank_univ",
+        "componentReflectionDebt_univ",
+        "quadratic_global_ramification_budget"
+      ],
+      "formalization/weighted/QuadraticCriticalPortrait.lean": [
+        "mem_signedPreimage",
+        "signedPreimage_card",
+        "criticalPoints_succ",
+        "critical_value_mem_criticalPoints_iff",
+        "criticalPoints_card_succ",
+        "criticalPoints_card_of_no_return",
+        "criticalPoints_card_after_first_return",
+        "criticalPoints_card_at_horizon",
+        "criticalPoints_zero_parameter_card",
+        "criticalPoints_neg_one_card",
+        "criticalPoints_neg_two_card"
       ]
     },
     "obligations": [
