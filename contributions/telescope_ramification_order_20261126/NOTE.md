@@ -13,7 +13,7 @@ Ledger target: construct the actual selected relative-cover telescope, with comp
 
 ## Claim
 
-Candidate Lean development: the actual quadratic spatial orbit has local analytic order exactly 2 raised to the number of visits to zero strictly before the terminal iterate. For the selected return of the existing saturated telescope theorem, injectivity on open prefix and suffix domains excludes all additional critical visits. The full attained fiber has total analytic multiplicity exactly two, including over the propagated critical value (one point of order two) and every other attained value (two points of order one).
+Verified checkpoint: the actual quadratic spatial orbit has local analytic order exactly 2 raised to the number of visits to zero strictly before the terminal iterate. For the selected return of the existing saturated telescope theorem, injectivity on open prefix and suffix domains excludes all additional critical visits. The full attained fiber has total analytic multiplicity exactly two, including over the propagated critical value (one point of order two) and every other attained value (two points of order one).
 
 ## Evidence
 
@@ -27,14 +27,24 @@ Module: [TelescopeRamification.lean](../../formalization/weighted/TelescopeRamif
 
 Build: `cd formalization/weighted && lake build TelescopeRamification`. Also run the existing weighted full build and transitive foundational-dependency audit. No local Lean toolchain or network-accessible git checkout is available in this environment; GitHub Actions on the exact PR head is the validation authority. No proof is counted as verified while CI is pending.
 
+## Second extension (pending exact-head validation)
+
+[TelescopeCollarRecognition.lean](../../formalization/weighted/TelescopeCollarRecognition.lean) addresses two remaining interface gaps.
+
+- `orbit_component_image`, `orbit_component_compact_preimage`, `orbit_component_proper`: every anchored component of an open pullback by an actual finite quadratic iterate is a proper restriction in the subspace topologies; if the target is preconnected, it covers the whole target.
+- `selected_saturated_return_full_degree`: under actual saturated component identifications and injective prefix/suffix, derive the exact full-return component, full target surjectivity, compact preimages, and the analytic multiplicity sum two over **every** target point. No prefix surjectivity premise is required.
+- `proper_component_compact`, `proper_component_eventually_subset`, `proper_component_upper_semicontinuous`: compact selected pullback components obey a uniform target-perturbation margin for every prescribed open neighborhood. No local connectivity or finite-component hypothesis is imposed on the compact targets. This supplies a collar-shrinking mechanism, not a construction of cyclic Jordan cores.
+
+The second module is provisional until its own build and transitive audit complete. The verified first checkpoint is preserved in history.
+
 ## Dependencies
 
 MAPPING_TELESCOPE, PLANAR_CRITICAL_SPINE_TELESCOPE_COMPILER, RELATIVE_COVER_LIFT, STAGE_FORWARD_CLOSURE (research context only). Formal imports are QuadraticCriticalWindow, QuadraticCylinderCensus, SaturatedTelescope and Mathlib, including the pinned analytic order characterization, polynomial analyticity, open quadratic map and exact finite root census.
 
 ## Boundary
 
-The weighted fiber conclusion concerns attained target values under actual selected-component and injective open-domain hypotheses. It does not construct the domains, show the entire target is attained, establish properness of the return collar, realize native markings or relative-cover lifts, or prove the general mapping telescope. No ledger status change is requested; MLC remains open. No priority claim over classical complex analysis.
+The weighted fiber conclusion concerns attained target values under actual selected-component and injective open-domain hypotheses. The second extension seeks to establish full target attainment and properness from actual component identities, but does not construct the required cyclic Jordan domains, realize native markings or relative-cover lifts, or prove the general mapping telescope. No ledger status change is requested; MLC remains open. No priority claim over classical complex analysis.
 
 ## Attribution
 
-Builds on the archive's QuadraticCriticalWindow exact local factor, the saturated telescope, the quadratic cylinder census, and the November 26 cyclic pullback audit. All new mathematical claims remain pending exact-head Lean validation.
+Builds on the archive's QuadraticCriticalWindow exact local factor, the saturated telescope, the quadratic cylinder census, and the November 26 cyclic pullback audit. The first 14 registered declarations were verified at commit `cd14ca55e85af9b292ca60682d3d3b4f813b1d47`: [weighted build and complete axiom audit](https://github.com/dovvnloading/loops-research-archive/actions/runs/45881684623/job/140122324403), including the explicit module report `23 declarations, 22 theorems; allowed axioms only`.

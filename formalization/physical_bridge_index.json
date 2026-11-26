@@ -2376,6 +2376,17 @@
         "selected_return_fiber_order",
         "mem_localFiber_orbit",
         "selected_return_weighted_degree"
+      ],
+      "formalization/weighted/TelescopeCollarRecognition.lean": [
+        "orbit_proper",
+        "orbit_open",
+        "orbit_component_image",
+        "orbit_component_compact_preimage",
+        "orbit_component_proper",
+        "selected_saturated_return_full_degree",
+        "proper_component_compact",
+        "proper_component_eventually_subset",
+        "proper_component_upper_semicontinuous"
       ]
     },
     "obligations": [
