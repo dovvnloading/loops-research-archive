@@ -198,8 +198,8 @@ def ledger_ids(meta: dict) -> list[str]:
     return [item for item in re.split(r"[,\s]+", meta.get("ledger", "")) if item]
 
 
-def note_problems(text: str, ledger: Ledger) -> list[tuple[str, str]]:
-    """(problem, fix) pairs for one NOTE.md."""
+def note_problems(text: str, ledger: Ledger) -> list[tuple[str, str, bool]]:
+    """(problem, fix, may wait while the pull request is a draft) for one NOTE.md."""
     problems = []
     meta, sections = parse_note(text)
     ids = ledger_ids(meta)
@@ -208,35 +208,35 @@ def note_problems(text: str, ledger: Ledger) -> list[tuple[str, str]]:
         problems.append((
             "front matter has no `ledger:` line",
             "name the obligation this work addresses, for example `ledger: MAPPING_TELESCOPE`; "
-            "`python code/contribute.py next` lists them",
+            "`python code/contribute.py next` lists them", False,
         ))
     for key in ids:
         if key not in known:
             problems.append((
                 f"`{key}` is not an ID in ledger.json",
-                "copy the ID exactly from `python code/contribute.py next` or ledger.json",
+                "copy the ID exactly from `python code/contribute.py next` or ledger.json", False,
             ))
     result = meta.get("result", "")
     if result not in RESULTS:
         problems.append((
             f"front matter `result:` is {result!r}",
-            "use one of: " + ", ".join(RESULTS),
+            "use one of: " + ", ".join(RESULTS), True,
         ))
     for key in ("ai", "human_review"):
         if not meta.get(key) or PLACEHOLDER in meta[key]:
             problems.append((
                 f"front matter `{key}:` is empty",
                 "name the AI system and model used (or `none`)" if key == "ai" else
-                "say what a person checked, or `none`",
+                "say what a person checked, or `none`", True,
             ))
     for title in SECTIONS:
         content = sections.get(title)
         if content is None:
-            problems.append((f"section `## {title}` is missing", "keep every heading of the template"))
+            problems.append((f"section `## {title}` is missing", "keep every heading of the template", True))
         elif not content.strip() or PLACEHOLDER in content:
             problems.append((
                 f"section `## {title}` is empty or still has template text",
-                "write the section; a short honest answer is fine",
+                "write the section; a short honest answer is fine", True,
             ))
     return problems
 
@@ -430,7 +430,8 @@ def run_tool(root: Path, command: list[str], timeout: int) -> tuple[bool, str]:
     return done.returncode == 0, tail
 
 
-def check(root: Path, base: str | None, pr_title: str | None, run_scripts: bool) -> Report:
+def check(root: Path, base: str | None, pr_title: str | None, run_scripts: bool,
+          draft: bool = False) -> Report:
     report = Report()
     ledger = Ledger(root)
     present, deleted, used = changed_files(root, base)
@@ -461,12 +462,18 @@ def check(root: Path, base: str | None, pr_title: str | None, run_scripts: bool)
             continue
         text = note.read_text(encoding="utf-8")
         problems = note_problems(text, ledger)
-        for problem, fix in problems:
-            report.fail(f"{packet}/NOTE.md: {problem}", fix)
-        if not problems:
-            meta, _ = parse_note(text)
+        waiting = [problem for problem, _, may_wait in problems if draft and may_wait]
+        for problem, fix, may_wait in problems:
+            if not (draft and may_wait):
+                report.fail(f"{packet}/NOTE.md: {problem}", fix)
+        meta, _ = parse_note(text)
+        if len(waiting) == len(problems):
             primary.append(ledger_ids(meta)[0])
-            report.ok(f"{packet}/NOTE.md names {', '.join(ledger_ids(meta))} (result: {meta['result']})")
+            report.ok(f"{packet}/NOTE.md names {', '.join(ledger_ids(meta))}"
+                      + (f" (result: {meta['result']})" if not waiting else ""))
+        if waiting:
+            report.warn(f"{packet}/NOTE.md is a draft: {len(waiting)} parts of the template are "
+                        "still to be written. They are required once the pull request is ready.")
         if not re.fullmatch(r"[a-z0-9_]+_\d{8}", packet.split("/")[1]):
             report.fail(f"{packet}: folder name must be lowercase_words_YYYYMMDD",
                         "rename it, for example telescope_degree_count_20261126")
@@ -550,9 +557,10 @@ def indent(text: str) -> str:
 
 def cmd_check(args, root: Path) -> int:
     title = args.pr_title if args.pr_title is not None else os.environ.get("CONTRIBUTE_PR_TITLE")
-    report = check(root, args.base, title, not args.no_run)
+    report = check(root, args.base, title, not args.no_run, args.draft)
     text = "\n".join(report.lines)
-    verdict = ("\nRESULT: PASS. Push, and mark the pull request ready for review."
+    verdict = (("\nRESULT: PASS for a draft. Finish NOTE.md, then run this again without --draft."
+                if args.draft else "\nRESULT: PASS. Push, and mark the pull request ready for review.")
                if not report.failures else
                f"\nRESULT: {report.failures} to fix. Each FAIL line above says how; then run this again.")
     out(text + verdict)
@@ -761,6 +769,8 @@ def main(argv: list[str] | None = None) -> int:
     chk.add_argument("--base", help="branch or commit to compare against (default: upstream/main, origin/main)")
     chk.add_argument("--pr-title", help=argparse.SUPPRESS)
     chk.add_argument("--no-run", action="store_true", help="do not execute the packet's check scripts")
+    chk.add_argument("--draft", action="store_true",
+                     help="work in progress: unfinished parts of NOTE.md are reported, not failed")
     lean = commands.add_parser("lean-add", help="register a Lean file in the build and the theorem index")
     lean.add_argument("file")
     lean.add_argument("--packet", required=True)

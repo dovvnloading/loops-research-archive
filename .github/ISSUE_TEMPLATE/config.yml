@@ -1,5 +1,11 @@
 blank_issues_enabled: false
 contact_links:
+  - name: Contribute with an AI agent
+    url: https://github.com/dovvnloading/loops-research-archive/blob/main/AGENTS.md
+    about: Point Claude Code, Codex, Cursor or another agent at this briefing. It picks an open obligation and opens a checked pull request.
+  - name: See what is open
+    url: https://github.com/dovvnloading/loops-research-archive/blob/main/OPEN_TARGETS.md
+    about: Every open obligation, with the ones ready to work on listed in full.
   - name: Read the research map
     url: https://github.com/dovvnloading/loops-research-archive/blob/main/RESEARCH_MAP.md
     about: Locate the paper, interface, and ledger identifier before opening an issue.

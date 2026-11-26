@@ -40,6 +40,8 @@ python code/contribute.py check                # 4. the same checks CI runs; rep
 3. **Work in your folder.** Everything goes in `contributions/<your folder>/`: `NOTE.md` (the
    argument) and any `check_*.py` or `verify_*.py` that certifies a computation. Commit and
    push as you go, so the work lives in the pull request and not only in your session.
+   While the pull request is a draft, an unfinished `NOTE.md` is allowed
+   (`python code/contribute.py check --draft` locally).
 4. **Check, then hand over.** Run `check` until it prints `RESULT: PASS`, push, and mark the
    pull request ready. Each `FAIL` line says exactly how to fix it. Then tell the person, in
    two or three plain sentences, what you worked on, what you showed, what stays open, and the

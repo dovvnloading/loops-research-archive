@@ -30,7 +30,7 @@ DATASETS = {
     "root-geometry": ("results/tip_root_interval_geometry.json", "Finite certified root-interval geometry within the source's stated scope."),
     "readout": ("results/clone_resonant_readout_20261123.json", "Finite resonant readout experiment within the source's stated scope."),
 }
-ARCHIVE_DIRS = {"code", "docs", "figs", "formalization", "papers", "research", "results"}
+ARCHIVE_DIRS = {"code", "contributions", "docs","figs", "formalization", "papers", "research", "results"}
 ROOT_ARCHIVE_SUFFIXES = {".md", ".lean", ".pdf", ".cff", ".toml"}
 ROOT_ARCHIVE_NAMES = {"LICENSE", "lean-toolchain", "lake-manifest.json", "requirements.txt", "ledger.json", "ledger.js"}
 
