@@ -306,7 +306,7 @@ theorem orbit_difference_step (c d z w : ℂ) (n : ℕ) :
       norm_add_le _ _
     _ = ‖a-b‖*‖a-b+2*b‖+‖d-c‖ := by rw [norm_mul]
     _ ≤ ‖a-b‖*(‖a-b‖+2*‖b‖)+‖d-c‖ :=
-      add_le_add_right (mul_le_mul_of_nonneg_left h (norm_nonneg _)) _
+      add_le_add (mul_le_mul_of_nonneg_left h (norm_nonneg (a-b))) le_rfl
     _ = _ := by ring
 
 /-- Finite-scale shadowing with the exact linear growth base A, not A+epsilon.
@@ -461,7 +461,7 @@ private theorem four_pow_ge_nat (n : ℕ) : (n:ℝ)+1 ≤ (4:ℝ)^n := by
   | zero => norm_num
   | succ n ih =>
     rw [Nat.cast_succ,pow_succ]
-    linarith only [ih, Nat.cast_nonneg (R := ℝ) n]
+    linarith only [ih, (Nat.cast_nonneg n : (0:ℝ) ≤ (n:ℝ))]
 
 private theorem four_scale_crossing {ε : ℝ} (he : 0 < ε) (he1 : ε ≤ 1) :
     ∃ n : ℕ, (4:ℝ)^n*ε ≤ 1 ∧ 1 < (4:ℝ)^(n+1)*ε := by
@@ -498,7 +498,7 @@ theorem parameter_escape_half_holder_sq (c d : ℂ) (hc : parameterEscape c = 0)
     have hsq := pow_le_pow_left₀ hg0 hg 2
     have hw := weight_sq_four_pow n
     have hweight : weight n^2 < 8*‖d-c‖ := by
-      have hm := mul_lt_mul_of_pos_left hhi (by positivity : 0 < weight n^2)
+      have hm := mul_lt_mul_of_pos_left hhi (pow_pos (weight_pos n) 2)
       rw [pow_succ] at hm
       calc
         weight n^2 = weight n^2*1 := by ring
