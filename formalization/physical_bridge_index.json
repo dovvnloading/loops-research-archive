@@ -1847,5 +1847,25 @@
     "obligations": [
       "H4_RIGIDITY"
     ]
+  },
+  "quadratic-extremal-multiplier": {
+    "guide": "research/frontier/kernel_extremal_multiplier_20261126/NOTE.md#quadratic-extremal-multiplier",
+    "theorems": {
+      "formalization/weighted/QuadraticExtremalMultiplier.lean": [
+        "norm_step_lower",
+        "escape_pos_of_large",
+        "parameter_norm_le_two",
+        "bounded_point_norm_le_two",
+        "bounded_orbit_norm_le_two",
+        "bounded_orbit_norm_sq",
+        "orbit_hasDerivAt",
+        "multiplier_eq_deriv",
+        "multiplier_norm_bound",
+        "deriv_norm_bound"
+      ]
+    },
+    "obligations": [
+      "H4_RIGIDITY"
+    ]
   }
 }
