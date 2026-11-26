@@ -236,4 +236,105 @@ theorem physical_end_common_impression (ψ : X × ℝ → ℂ)
       exact mem_singleton_iff.mp hmem
     rw [hv, ← hwv, hs hw' hz']
 
+
+/-- Regular closed puzzle pieces are closures of their actual exterior
+parts when the quadratic filled locus has empty interior. This discharges
+the closure hypothesis of the abstract impression decomposition without
+postulating density of exterior approaches as a separate axiom. -/
+theorem quadratic_exterior_closure_of_regular_closed (c : ℂ) (Q : Set ℂ)
+    (hQ : IsClosed Q) (hreg : Q ⊆ closure (interior Q))
+    (hK : interior (LoopsDecorationCriticalCycle.filledLocus c) = ∅) :
+    closure (Q \ LoopsDecorationCriticalCycle.filledLocus c) = Q := by
+  apply Subset.antisymm (closure_minimal diff_subset hQ)
+  apply hreg.trans
+  apply closure_minimal _ isClosed_closure
+  intro z hz
+  apply Metric.mem_closure_iff.mpr
+  intro ε he
+  obtain ⟨δ, hd, hb⟩ := Metric.isOpen_iff.mp isOpen_interior z hz
+  let r := min ε δ
+  have hr : 0 < r := lt_min he hd
+  have hex : ∃ w ∈ ball z r, w ∉ LoopsDecorationCriticalCycle.filledLocus c := by
+    by_contra hn
+    have hs : ball z r ⊆ LoopsDecorationCriticalCycle.filledLocus c := by
+      intro w hw
+      by_contra hwK
+      exact hn ⟨w, hw, hwK⟩
+    have hzK : z ∈ interior (LoopsDecorationCriticalCycle.filledLocus c) :=
+      interior_maximal hs isOpen_ball (mem_ball_self hr)
+    rw [hK] at hzK
+    exact hzK
+  obtain ⟨w, hw, hwK⟩ := hex
+  have hdist : dist w z < r := Metric.mem_ball.mp hw
+  have hwQ : w ∈ Q :=
+    interior_subset (hb (Metric.mem_ball.mpr (hdist.trans_le (min_le_right _ _))))
+  refine ⟨w, ⟨hwQ, hwK⟩, ?_⟩
+  rw [dist_comm]
+  exact hdist.trans_le (min_le_left _ _)
+
+/-- The whole physical end is exactly the union of localized impressions
+for regular closed quadratic puzzle pieces with the actual exterior
+trace formula. The Julia empty-interior input and chart representation
+remain explicit. -/
+theorem quadratic_end_exact_decomposition (c : ℂ) (ψ : X × ℝ → ℂ)
+    (Q : ℕ → Set ℂ) (A : ℕ → Set X) (H : ℕ → ℝ)
+    (hclosed : ∀ n, IsClosed (Q n))
+    (hreg : ∀ n, Q n ⊆ closure (interior (Q n)))
+    (hK : interior (LoopsDecorationCriticalCycle.filledLocus c) = ∅)
+    (htrace : ∀ n, ψ '' trace (A n) (H n) =
+      Q n \ LoopsDecorationCriticalCycle.filledLocus c)
+    (hc : ∀ n, IsCompact (A n)) (ha : Antitone A)
+    (hp : ∀ n, 0 < H n) (hh : Antitone H)
+    (hsmall : ∀ ε > 0, ∃ n, H n < ε) :
+    (⋂ n, Q n) = ⋃ θ ∈ (⋂ n, A n), restrictedImpression ψ A H θ := by
+  have hQ (n : ℕ) : Q n = closure (ψ '' trace (A n) (H n)) := by
+    rw [htrace n, quadratic_exterior_closure_of_regular_closed c (Q n)
+      (hclosed n) (hreg n) hK]
+  simp only [hQ]
+  exact exterior_impression_decomposition ψ A H hc ha hp hh hsmall
+
+/-- A finite sector cover and point impressions at its surviving angles
+suffice for pointness of the actual nested physical end, with every
+surviving angle having that common full impression. Connectedness and
+nonemptiness of the limit are derived from the closed puzzle pieces. -/
+theorem quadratic_end_common_impression_of_sector_cover (c : ℂ)
+    (ψ : X × ℝ → ℂ) (Q : ℕ → Set ℂ) (A : ℕ → Set X) (H : ℕ → ℝ)
+    (hcompact : ∀ n, IsCompact (Q n))
+    (hreg : ∀ n, Q n ⊆ closure (interior (Q n)))
+    (hK : interior (LoopsDecorationCriticalCycle.filledLocus c) = ∅)
+    (htrace : ∀ n, ψ '' trace (A n) (H n) =
+      Q n \ LoopsDecorationCriticalCycle.filledLocus c)
+    (hc : ∀ n, IsCompact (A n)) (ha : Antitone A)
+    (hp : ∀ n, 0 < H n) (hh : Antitone H)
+    (hsmall : ∀ ε > 0, ∃ n, H n < ε)
+    (hconnected : ∀ n, IsPreconnected (Q n))
+    (hnonempty : ∀ n, (Q n).Nonempty)
+    (s : ℕ) (B : ℕ → Fin s → Set X)
+    (hcover : ∀ n, A n ⊆ ⋃ j, B n j)
+    (hsector : ∀ ε > 0, ∃ n, ∀ j x y,
+      x ∈ B n j → y ∈ B n j → dist x y < ε)
+    (hpoint : ∀ θ ∈ ⋂ n, A n, ∃ z, fullImpression ψ θ = {z}) :
+    ∃ z, (⋂ n, Q n) = {z} ∧
+      ∀ θ ∈ ⋂ n, A n, fullImpression ψ θ = {z} := by
+  have hQ (n : ℕ) : Q n = closure (ψ '' trace (A n) (H n)) := by
+    rw [htrace n, quadratic_exterior_closure_of_regular_closed c (Q n)
+      (hcompact n).isClosed (hreg n) hK]
+  have hm : Antitone Q := by
+    intro i j hij
+    rw [hQ i, hQ j]
+    apply closure_mono
+    apply image_mono
+    intro p h
+    exact ⟨ha hij h.1, h.2.1, h.2.2.trans (hh hij)⟩
+  have hd : Directed (· ⊇ ·) Q := by
+    intro i j
+    exact ⟨max i j, hm (le_max_left i j), hm (le_max_right i j)⟩
+  have hconn := LoopsLeastCarrier.directed_carrier_preconnected
+    (Q 0) (hcompact 0) Q hcompact hconnected (fun n => hm (Nat.zero_le n)) hd
+  have hne := IsCompact.nonempty_iInter_of_directed_nonempty_isCompact_isClosed
+    Q hd hnonempty hcompact (fun n => (hcompact n).isClosed)
+  exact physical_end_common_impression ψ Q A H hQ hc ha hp hh hsmall
+    (hcompact 0) (PrimeEndSectorRank.limiting_footprint_finite A s B hcover hsector)
+    hpoint hconn hne
+
 end PrimeEndImpressionDecomposition

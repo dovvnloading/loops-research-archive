@@ -2527,7 +2527,10 @@
         "restricted_impression_eq_full_of_interior",
         "restricted_impression_nonempty",
         "finite_landing_footprint_subsingleton",
-        "physical_end_common_impression"
+        "physical_end_common_impression",
+        "quadratic_exterior_closure_of_regular_closed",
+        "quadratic_end_exact_decomposition",
+        "quadratic_end_common_impression_of_sector_cover"
       ]
     },
     "obligations": [
