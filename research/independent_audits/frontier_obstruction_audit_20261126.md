@@ -147,3 +147,69 @@ so its weighted angular mass is
     (a/pi)*sqrt(delta^(-2)-d^2).
 
 For example d=1/R and delta<=R/2, this is >=sqrt(3)*a/(2*pi*delta), with strict disk inclusion even at the boundary. This has the same a/delta order as the optimal bound (6). When a=1/q^2, delta=epsilon/q, x0=cot(pi/r), r=q+1, and R>=2delta, the interval has x-length comparable to 1/q. In that interval dx/dtheta=-(1+x^2)/2 has magnitude comparable to r^2 for large r. Therefore its angular length is comparable to 1/(q*r^2), and its fraction of a window of angular length comparable to 1/r is comparable to 1/(q*r). The order in (5) cannot be improved in this scalar disk class, even for an exceptional interval centered at the specific next rational attachment. Constants depend on epsilon, not the absolute parent period. The coefficient 2/pi itself was proved optimal only for the full half-plane class, not for a fixed finite tangent disk.
+
+## 5. Pointwise rescue criterion: a repelling continuation disk at scale q^-3
+
+The previous sections distinguish measure control from the actual rational target. Here is a quantitative analytic criterion that *does* yield the missing pointwise estimate without any ordinary PL collar or bound on the magnitude of u on the exterior patch.
+
+**Theorem.** Keep the half-plane interface of §2 and fix zeta on the unit circle other than 1. Assume u extends holomorphically to B(zeta,s) with Re u>0 throughout that open disk, agreeing with the interior u on the overlap; 0<s<=1. Write D0=|1-zeta|. Then
+
+    |u(zeta)| <= 2a s + 8a D0^2/s.                             (7)
+
+Moreover for all w in B(zeta,s/2),
+
+    |u(w)| <= 6a s + 24a D0^2/s.                              (8)
+
+No assumption of univalence of u is needed.
+
+**Proof.** The standard Julia inequality on D for a half-plane map with boundary slope a is
+
+    |u(lambda)|^2 <= 2a*T(lambda)*Re u(lambda),
+    T(lambda)=|1-lambda|^2/(1-|lambda|^2).
+
+For clarity this follows by applying the disk-to-half-plane Schwarz–Pick inequality at lambda and real t, subtracting its squared form from 1, dividing by 1-t, and taking t->1 using u(t)/(1-t)->a. Thus |u(lambda)|<=2a T(lambda). Choose lambda_0=(1-s/2)zeta. In B(zeta,s) its disk distance from the center is pseudohyperbolically 1/2. Half-plane Schwarz–Pick gives
+
+    |u(zeta)-u(lambda_0)| <= (1/2)|u(zeta)+conj(u(lambda_0))|.
+
+The triangle inequalities imply |u(zeta)|<=3|u(lambda_0)|. Likewise |u(w)|<=3|u(zeta)| for w in B(zeta,s/2). Since
+
+    T(lambda_0) = [(s/2)^2+(1-s/2)D0^2]/[s-s^2/4]
+                <= s/3 + 4D0^2/(3s),
+
+(7) and (8) follow. QED.
+
+**Native criterion on the linear satellite address.** For the genuine child H, let zeta_r=exp(2*pi*i/r), r=q+1, be the next root in H's child multiplier coordinate. Suppose the inverse child multiplier chart and the same parent cycle have a common holomorphic continuation on B(zeta_r,s_q), remaining repelling there. Then the attachment-normalized log extends to this simply connected disk, agreeing with u on the overlap, since the multiplier is nonzero there. The hypothesis is a *repelling multiplier-coordinate neighborhood*, not just analytic continuation of the inverse child parameter chart, and it does not require that the extended points lie in the Mandelbrot set. The native branch identification must be retained.
+
+With a=1/q^2 and D0<=2*pi/r, (7) gives
+
+    q |u(zeta_r)| <= 2s_q/q + 32*pi^2/(q*r^2*s_q).             (9)
+
+Thus if q*r^2*s_q -> infinity, the scaled log q*tau/(2*pi*i) -> 1 for p=1 along these next attachment roots. If s_q>=C/(q*r^2) for a sufficiently large absolute C, (9) also supplies a prescribed fixed cone/radial budget for sufficiently large q. For instance, with C=128*pi^2 and q>=8, q|u|<=1/4+1/4=1/2, which is stronger than needed for the 45-degree cone. This is an eventual scale requirement; for finite small q where the hypothesized lower bound exceeds 1 no such disk is asserted. The critical order of the needed radius is q^-3 for r=q+1. It is independent of absolute period k. In contrast, a qualitative statement that a continuation disk exists for each individual q gives no lower bound of this order.
+
+For a proposed all-copy version, (8) would give the same order of bound at every parameter in a target copy *if* a single inverse native multiplier chart were verified to cover that copy with coordinates in B(zeta_r,s_q/2), and with the same repelling parent branch on the larger disk. This is an additional independent geometric containment and identification hypothesis. No such containment, quantitative native disk, uniform NP entry, or whole-copy estimate is proved here. A sequence of good roots alone is not a singleton intersection argument.
+
+### Scalar scale optimality, including strict boundary positivity
+
+The q^-3 order is not merely an artifact of the two Schwarz–Pick constants. For arbitrary a, delta>0 and zeta!=1 let X(zeta)=i x0, A=1/(2a), d=1/delta and u=1/[d+A(X-i x0)]. Then u(zeta)=delta, u has boundary slope -a at 1 and is holomorphic on the closed disk; it is strictly in the tangent disk of any radius R>delta/2 away from 1. The maximal radius of a repelling half-plane extension is at least
+
+    s0=min(1,D0/2,d*D0^2/(24*A)).
+
+Indeed for |lambda-zeta|<s0, |1-lambda|>=D0/2, |lambda|<=1+s0 and hence Re X> -12s0/D0^2. This gives Re(d+A(X-i x0))>=d/2>0, so the displayed reciprocal is holomorphic with positive real part on the patch. Conversely, for any such extension with s<=1, (7) implies, when delta>2a,
+
+    s <= 8a D0^2/(delta-2a).
+
+Therefore at delta=epsilon/q, a=1/q^2, r=q+1, zeta=zeta_r, these lower and upper bounds are both of order 1/(q*r^2) for large q (use D0=2 sin(pi/r) comparable to 1/r). In the scalar class a nonvanishing scaled displacement q|u|=epsilon is compatible with an extension radius of precisely that order. A bound on a much larger scale forces it to disappear; an arbitrary microscopic analytic neighborhood does not. This does not prove that physical multipliers can realize the extremal scale.
+
+### Independent derivative diagnostic in the boundary coordinate
+
+For an alternative measurable-to-pointwise route set U(x)=u*(zeta(x)), x=cot(theta/2). By (6),
+
+    Lebesgue measure {x: |U(x)|>=delta} <= 8a/delta.           (10)
+
+This is exact because dm/|1-zeta|^2=|dx|/(4*pi). If U is L-Lipschitz on [x0-l,x0+l] and |U(x0)|>=delta, then |U(x)|>=delta/2 whenever |x-x0|<=min(l,delta/(2L)); for L=0 take delta/(2L)=infinity. At threshold delta/2, (10) gives
+
+    min(l,delta/(2L)) <= 8a/delta.                             (11)
+
+In particular l>8a/delta forces L>=delta^2/(16a). At the linear satellite scale delta=epsilon/q this forces L>=epsilon^2/16 on a window of x-radius greater than 8/(epsilon q). On such windows centered at x0=cot(pi/r), the change of angular coordinate has derivative magnitude (1+x^2)/2 comparable to r^2. Uniformly vanishing Lipschitz constants in x on these windows (with sufficiently large radius) would rule out the bad root; a bound on angular derivatives of order o(r^2) suffices. This is a diagnostic, not a proof of such derivative bounds on actual multipliers.
+
+**Research status after §5.** The specific missing native estimate is now localized to a positive-real-part continuation patch on the next child multiplier circle (or an equivalent pointwise mechanism). The weighted sharp theorem is proved on the stated analytic interface and extends the archived interior Julia estimate. The compact-invisible counterexamples prove a limitation of scalar methods, not a counterexample to any genuine satellite rigidity theorem. The continuation threshold is sharp in order within that scalar class. The actual native continuation radius, whole-copy transport and parameter rigidity remain OPEN. No changes to H1–H4, UPTCR, or the source-locked ledger.
