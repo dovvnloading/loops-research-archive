@@ -80,5 +80,14 @@ A pseudo-Siegel disk is almost invariant, and its fjord filling can remove an ex
 Source audit below is separately generated in CI. Reproduce source audit and note insertion with `python3 -B source_audit.py --output sources.json --update-note NOTE.md`. The source survey HTML verified the two short problem statements and the section synopsis; the full section is linked rather than reproduced. The PDF byte hashes and page locations are not claimed until downloaded and checked.
 
 <!-- SOURCE_AUDIT_BEGIN -->
-Source audit pending.
+Source audit (downloaded bytes; page numbers are 1-based PDF pages).
+
+| Input/version | SHA-256 | Page markers (all matches) | Status |
+|---|---|---|---|
+| [Dudko survey arXiv:2512.24171v1](https://arxiv.org/pdf/2512.24171v1) | 8ede4bf8ccfe25a4f325cad41cb729f08f8b1d0d7103ed6dbc89015b1ff8d904 | Problem 4.3: 18; Problem 4.4: 18; section 4.5 start: 18; section 4.5 end: not found; Theorem 4.2: 1, 6, 12, 13, 17 | marker_missing |
+| [Dudko–Lyubich arXiv:2210.09280v2](https://arxiv.org/pdf/2210.09280v2) | 05ee1c1ca66bfd4f7c4e6f4b97875e34e629f0ed52344a5ffae24704e6247acf | Uniform Bounds Theorem 1.1: 3; Mother Hedgehog Theorem 1.2: 4; Quasidisk Approximation Theorem 1.3: 4 | ok |
+| [BLOT CMP 406:141 (2025), version of record](https://publications.hse.ru/pubs/share/direct/1052158150.pdf) | 9d0aa40f94afbfb918fd26dbc96b14727b2a59b84b02da8ad93b6b528061adb0 | Main Theorem: 2, 8; Definition 2.3: 6; Definition 2.4: 6 | ok |
+| [Kahn–Lyubich arXiv:2601.21905v1](https://arxiv.org/pdf/2601.21905v1) | 5eb36430a51a3fb6a1c04db15713aebc86068118450893ba2042021e4a8db725 | section 4.0.1: 9; Theorem 7.1: 16; section 8: 1, 18 | ok |
+
+See sources.json for byte counts, extraction errors, and all marker locations. Multiple page matches may include cross-references; review the source itself. SHA-256 records the fetched bytes, not an independent author signature.
 <!-- SOURCE_AUDIT_END -->

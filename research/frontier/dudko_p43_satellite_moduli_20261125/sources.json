@@ -1,0 +1,100 @@
+{
+  "all_verified": false,
+  "page_convention": "1-based PDF physical pages; marker occurrences, not inferred printed numbers",
+  "schema": 1,
+  "sources": [
+    {
+      "bytes": 12764975,
+      "missing_markers": [
+        "section 4.5 end"
+      ],
+      "name": "Dudko survey",
+      "pages": {
+        "Problem 4.3": [
+          18
+        ],
+        "Problem 4.4": [
+          18
+        ],
+        "Theorem 4.2": [
+          1,
+          6,
+          12,
+          13,
+          17
+        ],
+        "section 4.5 end": [],
+        "section 4.5 start": [
+          18
+        ]
+      },
+      "pdf_page_count": 20,
+      "sha256": "8ede4bf8ccfe25a4f325cad41cb729f08f8b1d0d7103ed6dbc89015b1ff8d904",
+      "status": "marker_missing",
+      "url": "https://arxiv.org/pdf/2512.24171v1",
+      "version": "arXiv:2512.24171v1"
+    },
+    {
+      "bytes": 2584926,
+      "name": "Dudko\u2013Lyubich",
+      "pages": {
+        "Mother Hedgehog Theorem 1.2": [
+          4
+        ],
+        "Quasidisk Approximation Theorem 1.3": [
+          4
+        ],
+        "Uniform Bounds Theorem 1.1": [
+          3
+        ]
+      },
+      "pdf_page_count": 107,
+      "sha256": "05ee1c1ca66bfd4f7c4e6f4b97875e34e629f0ed52344a5ffae24704e6247acf",
+      "status": "ok",
+      "url": "https://arxiv.org/pdf/2210.09280v2",
+      "version": "arXiv:2210.09280v2"
+    },
+    {
+      "bytes": 1056824,
+      "name": "BLOT",
+      "pages": {
+        "Definition 2.3": [
+          6
+        ],
+        "Definition 2.4": [
+          6
+        ],
+        "Main Theorem": [
+          2,
+          8
+        ]
+      },
+      "pdf_page_count": 15,
+      "sha256": "9d0aa40f94afbfb918fd26dbc96b14727b2a59b84b02da8ad93b6b528061adb0",
+      "status": "ok",
+      "url": "https://publications.hse.ru/pubs/share/direct/1052158150.pdf",
+      "version": "CMP 406:141 (2025), version of record"
+    },
+    {
+      "bytes": 398123,
+      "name": "Kahn\u2013Lyubich",
+      "pages": {
+        "Theorem 7.1": [
+          16
+        ],
+        "section 4.0.1": [
+          9
+        ],
+        "section 8": [
+          1,
+          18
+        ]
+      },
+      "pdf_page_count": 20,
+      "sha256": "5eb36430a51a3fb6a1c04db15713aebc86068118450893ba2042021e4a8db725",
+      "status": "ok",
+      "url": "https://arxiv.org/pdf/2601.21905v1",
+      "version": "arXiv:2601.21905v1"
+    }
+  ]
+}
