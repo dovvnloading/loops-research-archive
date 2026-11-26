@@ -11,9 +11,9 @@ human_review: none
 
 ## Claim
 
-Candidate Lean theorems: for any complex algebraic integers c,z, the actual spatial derivative lambda of the n-fold quadratic iterate at z has the form 2^n U with U integral. If its squared complex modulus is rational, it is an integer multiple of 4^n; if nonzero, that rational squared modulus is at least 4^n. In particular it cannot be neutral at positive iteration length. Every critical collision parameter and every point of its postcritical orbit meet the integral hypotheses without a periodicity or repellingness assumption.
+Kernel-verified Lean theorems: for any complex algebraic integers c,z, the actual spatial derivative lambda of the n-fold quadratic iterate at z has the form 2^n U with U integral. If its squared complex modulus is rational, it is an integer multiple of 4^n; if nonzero, that rational squared modulus is at least 4^n. In particular it cannot be neutral at positive iteration length. Every critical collision parameter and every point of its postcritical orbit meet the integral hypotheses without a periodicity or repellingness assumption.
 
-The second proof milestone extends the conclusion to every preperiodic point of every algebraic-integer parameter, not merely its critical orbit. For arbitrary integral c, the spatial iterate polynomial over the integral closure of the integers is monic of degree 2^n; its difference at two distinct times is monic and vanishes at the preperiodic point. Transitivity of integrality removes the integral-starting-point assumption. Therefore all periodic cycles, anywhere in the dynamical plane of a critical-collision parameter, are nonneutral. The squared-modulus quantization extends to every preperiodic point, and the fixed point 1 at c=0 attains the exact gap. These are further candidate declarations, subject to the same CI gate.
+The second proof milestone extends the conclusion to every preperiodic point of every algebraic-integer parameter, not merely its critical orbit. For arbitrary integral c, the spatial iterate polynomial over the integral closure of the integers is monic of degree 2^n; its difference at two distinct times is monic and vanishes at the preperiodic point. Transitivity of integrality removes the integral-starting-point assumption. Therefore all periodic cycles, anywhere in the dynamical plane of a critical-collision parameter, are nonneutral. The squared-modulus quantization extends to every preperiodic point, and the fixed point 1 at c=0 attains the exact gap. All 18 explicitly named declarations passed Lean CI and its transitive axiom audit on commit `ed45122632b007f1ff5a9d2531e5ab2370b60469`.
 
 ## Evidence
 
@@ -21,7 +21,7 @@ The second proof milestone extends the conclusion to every preperiodic point of 
 
 The new module is a default target in the pinned mathlib-backed Lake project and all public theorem names are registered. Reproduce with `cd formalization/weighted && lake build QuadraticMultiplierArithmetic`; the existing full CI also audits every declaration's transitive axioms.
 
-Validation: local Lean and network clone are unavailable. This is candidate source pending exact-head CI, not yet counted as a verified theorem.
+Validation: the unchanged Lean source passed [weighted CI and its transitive axiom audit](https://github.com/dovvnloading/loops-research-archive/actions/runs/45875932231/job/140102876756) on commit `ed45122632b007f1ff5a9d2531e5ab2370b60469`: 38 declarations, 28 theorems including generated declarations; allowed axioms only. The merge onto newer main requires its own CI run. No workflow or trust policy is modified.
 
 ## Dependencies
 
