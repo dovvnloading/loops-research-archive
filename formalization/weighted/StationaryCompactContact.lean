@@ -832,7 +832,7 @@ theorem quadratic_orbit_entire (c : ℂ) (n : ℕ) :
   | zero => exact differentiable_id
   | succ n ih =>
     change Differentiable ℂ (fun z : ℂ => (QuadraticEscape.orbit c n z)^2+c)
-    exact (ih.pow 2).add differentiable_const
+    exact (ih.pow 2).add (differentiable_const c)
 
 /-- The genuine bounded-orbit locus is full at every complex parameter.
 This does not assume connectedness of the filled Julia set itself. -/
@@ -920,8 +920,7 @@ theorem quadratic_repelling_point_exterior_contact
           QuadraticEscape.orbit c (p*k) ∘ f := by
         funext z
         rw [Nat.mul_succ, Nat.add_comm (p*k) p,
-          LoopsSaturatedTelescope.quadratic_orbit_add]
-        rfl
+          LoopsSaturatedTelescope.quadratic_orbit_add] <;> rfl
       rw [heq,pow_succ]
       exact houter.comp a hf
   obtain ⟨k,hk⟩ := pow_unbounded_of_one_lt ((1+‖c‖)/(r/2))
