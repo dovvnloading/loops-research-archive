@@ -58,6 +58,26 @@ theorem criticalCount_eq_zero_iff (c z : ℂ) (n : ℕ) :
       · intro hh i hi
         exact hh i (by omega)
 
+/-- A unique critical encounter contributes exactly one to the count. -/
+theorem criticalCount_eq_one_of_unique (c z : ℂ) (n i : ℕ)
+    (hi : i < n) (hz : returnOrbit c z i = 0)
+    (hother : ∀ k < n, k ≠ i → returnOrbit c z k ≠ 0) :
+    criticalCount c z n = 1 := by
+  induction n with
+  | zero => omega
+  | succ n ih =>
+    by_cases h : i = n
+    · subst i
+      have hc : criticalCount c z n = 0 :=
+        (criticalCount_eq_zero_iff c z n).2
+          (fun k hk => hother k (by omega) (by omega))
+      simp [criticalCount, hz, hc]
+    · have hlast : returnOrbit c z n ≠ 0 :=
+        hother n (Nat.lt_succ_self n) (Ne.symm h)
+      have hc : criticalCount c z n = 1 :=
+        ih (by omega) (fun k hk hki => hother k (by omega) hki)
+      simp [criticalCount, hlast, hc]
+
 /-- No cancellations can increase the order of the residual polynomial. -/
 theorem localUnit_eval_zero_ne (c z : ℂ) (n : ℕ) :
     (localUnit c z n).eval 0 ≠ 0 := by
@@ -121,6 +141,16 @@ theorem shiftedOrbit_exact_order (c z : ℂ) (n : ℕ) :
     have he := congrArg (fun p : ℂ[X] => p.eval 0) hc
     exact localUnit_eval_zero_ne c z n (by simpa using he)
 
+/-- Exactly one critical encounter gives order two, with no additional
+vanishing hidden in the cofactor. -/
+theorem shiftedOrbit_exact_quadratic_order (c z : ℂ) (n i : ℕ)
+    (hi : i < n) (hz : returnOrbit c z i = 0)
+    (hother : ∀ k < n, k ≠ i → returnOrbit c z k ≠ 0) :
+    (X : ℂ[X]) ^ 2 ∣ shiftedOrbit c z n - C (returnOrbit c z n) ∧
+    ¬ (X : ℂ[X]) ^ 3 ∣ shiftedOrbit c z n - C (returnOrbit c z n) := by
+  have hc := criticalCount_eq_one_of_unique c z n i hi hz hother
+  simpa [hc] using shiftedOrbit_exact_order c z n
+
 /-- Pointwise form, with the actual iterated quadratic map on both sides. -/
 theorem local_factorization (c z t : ℂ) (n : ℕ) :
     returnOrbit c (z+t) n - returnOrbit c z n =
@@ -178,7 +208,8 @@ theorem reached_projection_collision (c : ℂ) (N j : ℕ) (U A : Set ℂ)
   refine ⟨u, hu, v, hv, ?_, ?_⟩
   · intro he
     apply hne
-    rw [← hut, ← hvt, he]
+    exact hut.symm.trans
+      ((congrArg (fun z => returnOrbit c z (N-j)) he).trans hvt)
   · rw [hclock u, hclock v, hut, hvt]
     exact positive_iterate_even c t j hj
 
@@ -205,6 +236,16 @@ theorem central_window_no_univalent_cylinder (c : ℂ) (N j : ℕ)
     exact hcontain x hx
   intro hinj
   exact hne (hinj (hUT hu) (hUT hv) he)
+
+/-- The reached image of the inverse of the critical point is itself
+precritical at exactly the residual clock time (not necessarily its first
+critical encounter). -/
+theorem central_window_reached_critical_point (c : ℂ) (N j : ℕ)
+    (phi : ℂ → ℂ) (hjN : j ≤ N)
+    (hsection : returnOrbit c (phi 0) N = 0) :
+    returnOrbit c (returnOrbit c (phi 0) j) (N-j) = 0 := by
+  rw [← orbit_add c (phi 0) (N-j) j, show N-j+j = N by omega]
+  exact hsection
 
 end
 end QuadraticCriticalWindow
