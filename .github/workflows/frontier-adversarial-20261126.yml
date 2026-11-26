@@ -1,0 +1,23 @@
+name: Frontier adversarial exact arithmetic
+on:
+  pull_request:
+    paths:
+      - 'research/independent_audits/frontier_adversarial_20261126/**'
+      - 'formalization/physical_bridge_sources.tsv'
+      - '.github/workflows/frontier-adversarial-20261126.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  exact-arithmetic:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -B research/independent_audits/frontier_adversarial_20261126/check_clock_arithmetic.py
+      - run: python -B code/verify_physical_bridges.py
