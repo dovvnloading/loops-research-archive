@@ -1,0 +1,52 @@
+{
+  "context_only": {
+    "path": "research/frontier/dudko_p43_satellite_moduli_20261125/NOTE.md",
+    "sha256": "b3479920d93525438d9a08838a76f8e14449e362b706c3275819f7d0d79b3663"
+  },
+  "scope": "source bytes and page markers only; no dynamical verification",
+  "source": {
+    "bytes": 398123,
+    "page_markers": {
+      "9": [
+        "Description of the combinatorics",
+        "E1.",
+        "E2.",
+        "is the only little Julia set contained in",
+        "E3.",
+        "Hubbard tree"
+      ],
+      "10": [
+        "Translation domains",
+        "Lemma 4.2",
+        "Lemma 4.3",
+        "Local weights"
+      ],
+      "15": [
+        "Setting",
+        "Translation Property",
+        "pairwise disjoint translation domains"
+      ],
+      "16": [
+        "Amplification Theorem",
+        "Theorem 7.1",
+        "Lemma 7.2",
+        "maximal immersed annulus"
+      ],
+      "18": [
+        "Local connectivity",
+        "fundamental annuli",
+        "non-central little Julia sets"
+      ],
+      "19": [
+        "Step 0.",
+        "Step 1.",
+        "Step 2.",
+        "Step 3."
+      ]
+    },
+    "pages": 20,
+    "sha256": "5eb36430a51a3fb6a1c04db15713aebc86068118450893ba2042021e4a8db725",
+    "url": "https://arxiv.org/pdf/2601.21905v1",
+    "version": "2601.21905v1"
+  }
+}
