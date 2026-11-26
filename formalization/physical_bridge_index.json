@@ -1962,5 +1962,23 @@
     "obligations": [
       "H4_RIGIDITY"
     ]
+  },
+  "h3-planar-fill-limit-20261126": {
+    "guide": "contributions/h3_planar_fill_limit_20261126/NOTE.md#h3-planar-fill-limit-20261126",
+    "theorems": {
+      "formalization/weighted/PlanarFillLimit.lean": [
+        "connectedComponentIn_iUnion_monotone_open",
+        "planarFill_iInter_antitone_compact",
+        "planarFill_iInter_fixed",
+        "planarFill_eventually_subset_open",
+        "planarFill_upper_semicontinuous",
+        "planarFill_of_proper_subset_unitSphere",
+        "planarFill_unitSphere",
+        "full_connected_approx_nonfull_unitSphere"
+      ]
+    },
+    "obligations": [
+      "H3_COERCIVITY"
+    ]
   }
 }
