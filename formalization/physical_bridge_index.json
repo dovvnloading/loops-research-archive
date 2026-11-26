@@ -2704,5 +2704,38 @@
     "obligations": [
       "KKL_STATIONARY_NONLC_SELECTED_GEOMETRIC_CONTINUUM_LIFT"
     ]
+  },
+  "quadratic-local-ramification-20261126": {
+    "guide": "contributions/quadratic_local_ramification_20261126/NOTE.md#quadratic-local-ramification-20261126",
+    "theorems": {
+      "formalization/weighted/QuadraticLocalRamification.lean": [
+        "localMultiplicity_pos",
+        "returnOrbit_shift",
+        "criticalCount_shift",
+        "localMultiplicity_step",
+        "localMultiplicity_exact_order",
+        "localMultiplicity_eq_one_iff",
+        "fiberRoot_eq_zero_iff",
+        "quadratic_nonsymmetric_component_omits_zero",
+        "quadratic_component_nonsymmetric_weighted",
+        "quadratic_component_symmetric_fiber",
+        "quadratic_component_symmetric_weighted",
+        "quadratic_component_weighted_fiber_degree",
+        "quadratic_component_defect_eq_ramification_sum"
+      ],
+      "formalization/weighted/QuadraticRamificationCensus.lean": [
+        "mem_criticalPoints",
+        "mem_criticalPoints_iff_multiplicity",
+        "mem_postcriticalTargets",
+        "iterate_after_critical",
+        "criticalPoints_eq_postcritical_filter",
+        "criticalPoints_ramification_sum",
+        "quadratic_component_critical_budget",
+        "quadratic_component_critical_count_bound"
+      ]
+    },
+    "obligations": [
+      "VIRTUAL_REACHED_CYLINDER_COMPONENT_EXHAUSTION"
+    ]
   }
 }
