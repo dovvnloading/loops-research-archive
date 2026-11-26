@@ -431,4 +431,199 @@ theorem quadratic_return_preperiodic_frontier
   exact preperiodic_frontier_trapping_correspondence p F G hsurj hs hf
     (quadratic_restricted_fiber_finite c K F hF) U hU hfront
 
+
+/-- Removing any set of singleton-fiber anchors is compatible with
+the exact geometric component lift. Neither the anchor set nor the
+component needs to be open, finite, or closed. -/
+theorem singleton_cut_set_full_lift [CompactSpace X] [T2Space Y]
+    (p : X → Y) (hp : Continuous p) (hsurj : Surjective p)
+    (hf : ∀ y : Y, IsPreconnected (p ⁻¹' {y}))
+    (A : Set X) (hA : ∀ a ∈ A, p ⁻¹' ({p a} : Set Y) = {a})
+    (x : X) (hx : x ∉ A) :
+    connectedComponentIn Aᶜ x =
+      p ⁻¹' connectedComponentIn (p '' A)ᶜ (p x) := by
+  have hsat : p ⁻¹' (p '' A) = A := by
+    apply Subset.antisymm
+    · intro z hz
+      obtain ⟨a, ha, haz⟩ := hz
+      have hm : z ∈ p ⁻¹' ({p a} : Set Y) := haz.symm
+      rw [hA a ha] at hm
+      have he : z = a := hm
+      exact he.symm ▸ ha
+    · intro z hz
+      exact ⟨z, hz, rfl⟩
+  have he : p ⁻¹' (p '' A)ᶜ = Aᶜ := by rw [preimage_compl, hsat]
+  have hx' : p x ∈ (p '' A)ᶜ := by
+    change x ∈ p ⁻¹' (p '' A)ᶜ
+    rw [he]
+    exact hx
+  rw [← he]
+  exact component_preimage_closed_fibers p hp.isClosedMap hp hsurj hf
+    (p '' A)ᶜ x hx'
+
+section ModelComparison
+
+variable {Z : Type*} [TopologicalSpace Z]
+
+private theorem singleton_anchor_eq (p : X → Y) (a x : X)
+    (ha : p ⁻¹' ({p a} : Set Y) = {a}) :
+    p x = p a ↔ x = a := by
+  constructor
+  · intro h
+    have hm : x ∈ p ⁻¹' ({p a} : Set Y) := h
+    rw [ha] at hm
+    exact hm
+  · intro h
+    rw [h]
+
+/-- The first quotient refines the second if shared singleton-fiber
+anchors separate points of the second by their punctured components.
+This is a one-sided test on only the target of the second quotient,
+not an assumption that the two fiber equivalences coincide. -/
+theorem quotient_fiber_refinement_of_cut_separation
+    (p : X → Y) (q : X → Z) (hq : Continuous q)
+    (hf : ∀ y : Y, IsPreconnected (p ⁻¹' {y}))
+    (A : Set X)
+    (hpa : ∀ a ∈ A, p ⁻¹' ({p a} : Set Y) = {a})
+    (hqa : ∀ a ∈ A, q ⁻¹' ({q a} : Set Z) = {a})
+    (hsep : ∀ y z : Z, (∀ a ∈ A,
+      (y = q a ↔ z = q a) ∧
+      (y ≠ q a → z ∈ connectedComponentIn ({q a} : Set Z)ᶜ y)) → y = z) :
+    ∀ x z : X, p x = p z → q x = q z := by
+  intro x z h
+  apply hsep
+  intro a ha
+  have hpxa := singleton_anchor_eq p a x (hpa a ha)
+  have hpza := singleton_anchor_eq p a z (hpa a ha)
+  have hqxa := singleton_anchor_eq q a x (hqa a ha)
+  have hqza := singleton_anchor_eq q a z (hqa a ha)
+  have hxa : x = a ↔ z = a := by
+    constructor
+    · intro hx
+      exact hpza.mp (h.symm.trans (hpxa.mpr hx))
+    · intro hz
+      exact hpxa.mp (h.trans (hpza.mpr hz))
+  constructor
+  · exact hqxa.trans (hxa.trans hqza.symm)
+  · intro hxq
+    have hxne : x ≠ a := fun he => hxq (hqxa.mpr he)
+    let C : Set X := p ⁻¹' {p x}
+    have hC : IsPreconnected (q '' C) := (hf (p x)).image q hq.continuousOn
+    have hsub : q '' C ⊆ ({q a} : Set Z)ᶜ := by
+      rintro _ ⟨u, hu, rfl⟩ huq
+      have hua : u = a := (singleton_anchor_eq q a u (hqa a ha)).mp huq
+      change p u = p x at hu
+      rw [hua] at hu
+      exact hxne (hpxa.mp hu.symm)
+    exact hC.subset_connectedComponentIn
+      ⟨x, rfl, rfl⟩ hsub ⟨z, h.symm, rfl⟩
+
+/-- Equal full fiber equivalences on a compact physical space
+construct a dynamical homeomorphism of the Hausdorff targets.
+Every geometric mark that is the image of a physical set is
+carried to its corresponding image, without a separate marking axiom. -/
+theorem quotient_dynamical_homeomorphism_of_equal_fibers
+    [CompactSpace X] [T2Space Y] [T2Space Z]
+    (p : X → Y) (q : X → Z) (hp : Continuous p) (hq : Continuous q)
+    (hps : Surjective p) (hqs : Surjective q)
+    (heq : ∀ x z : X, p x = p z ↔ q x = q z)
+    (F : X → X) (G : Y → Y) (H : Z → Z)
+    (hP : Semiconj p F G) (hQ : Semiconj q F H) :
+    ∃ e : Y ≃ₜ Z, (∀ x : X, e (p x) = q x) ∧
+      (∀ y : Y, e (G y) = H (e y)) ∧
+      ∀ S : Set X, e '' (p '' S) = q '' S := by
+  classical
+  let j : Y → Z := fun y => q (Classical.choose (hps y))
+  let k : Z → Y := fun z => p (Classical.choose (hqs z))
+  have hj (x : X) : j (p x) = q x :=
+    (heq _ _).mp (Classical.choose_spec (hps (p x)))
+  have hk (x : X) : k (q x) = p x :=
+    (heq _ _).mpr (Classical.choose_spec (hqs (q x)))
+  have hleft : LeftInverse k j := by
+    intro y
+    obtain ⟨x, rfl⟩ := hps y
+    rw [hj, hk]
+  have hright : RightInverse k j := by
+    intro z
+    obtain ⟨x, rfl⟩ := hqs z
+    rw [hk, hj]
+  have hjc : Continuous j := by
+    apply continuous_iff_isClosed.mpr
+    intro S hS
+    have hset : j ⁻¹' S = p '' (q ⁻¹' S) := by
+      ext y
+      constructor
+      · intro hy
+        obtain ⟨x, rfl⟩ := hps y
+        change j (p x) ∈ S at hy
+        rw [hj] at hy
+        exact ⟨x, hy, rfl⟩
+      · rintro ⟨x, hx, rfl⟩
+        change j (p x) ∈ S
+        rw [hj]
+        exact hx
+    rw [hset]
+    exact hp.isClosedMap _ (hS.preimage hq)
+  have hkc : Continuous k := by
+    apply continuous_iff_isClosed.mpr
+    intro S hS
+    have hset : k ⁻¹' S = q '' (p ⁻¹' S) := by
+      ext z
+      constructor
+      · intro hz
+        obtain ⟨x, rfl⟩ := hqs z
+        change k (q x) ∈ S at hz
+        rw [hk] at hz
+        exact ⟨x, hz, rfl⟩
+      · rintro ⟨x, hx, rfl⟩
+        change k (q x) ∈ S
+        rw [hk]
+        exact hx
+    rw [hset]
+    exact hq.isClosedMap _ (hS.preimage hp)
+  let e : Y ≃ₜ Z := ⟨⟨j, k, hleft, hright⟩, hjc, hkc⟩
+  refine ⟨e, hj, ?_, ?_⟩
+  · intro y
+    obtain ⟨x, rfl⟩ := hps y
+    change j (G (p x)) = H (j (p x))
+    rw [← hP x, hj (F x), hQ x, hj x]
+  · intro S
+    apply Subset.antisymm
+    · rintro _ ⟨y, ⟨x, hx, rfl⟩, rfl⟩
+      exact ⟨x, hx, (hj x).symm⟩
+    · rintro _ ⟨x, hx, rfl⟩
+      exact ⟨p x, ⟨x, hx, rfl⟩, hj x⟩
+
+/-- Two monotone geometric models admitting a common family of
+singleton anchors that separates points in both punctured-component
+systems are canonically dynamically homeomorphic. This turns
+model identification into two explicit geometric separation tests. -/
+theorem quotient_dynamical_homeomorphism_of_common_cuts
+    [CompactSpace X] [T2Space Y] [T2Space Z]
+    (p : X → Y) (q : X → Z) (hp : Continuous p) (hq : Continuous q)
+    (hps : Surjective p) (hqs : Surjective q)
+    (hpf : ∀ y : Y, IsPreconnected (p ⁻¹' {y}))
+    (hqf : ∀ z : Z, IsPreconnected (q ⁻¹' {z}))
+    (A : Set X)
+    (hpa : ∀ a ∈ A, p ⁻¹' ({p a} : Set Y) = {a})
+    (hqa : ∀ a ∈ A, q ⁻¹' ({q a} : Set Z) = {a})
+    (hsepP : ∀ y z : Y, (∀ a ∈ A,
+      (y = p a ↔ z = p a) ∧
+      (y ≠ p a → z ∈ connectedComponentIn ({p a} : Set Y)ᶜ y)) → y = z)
+    (hsepQ : ∀ y z : Z, (∀ a ∈ A,
+      (y = q a ↔ z = q a) ∧
+      (y ≠ q a → z ∈ connectedComponentIn ({q a} : Set Z)ᶜ y)) → y = z)
+    (F : X → X) (G : Y → Y) (H : Z → Z)
+    (hP : Semiconj p F G) (hQ : Semiconj q F H) :
+    ∃ e : Y ≃ₜ Z, (∀ x : X, e (p x) = q x) ∧
+      (∀ y : Y, e (G y) = H (e y)) ∧
+      ∀ S : Set X, e '' (p '' S) = q '' S := by
+  apply quotient_dynamical_homeomorphism_of_equal_fibers p q hp hq hps hqs
+    _ F G H hP hQ
+  intro x z
+  exact ⟨quotient_fiber_refinement_of_cut_separation p q hq hpf A hpa hqa hsepQ x z,
+    quotient_fiber_refinement_of_cut_separation q p hp hqf A hqa hpa hsepP x z⟩
+
+end ModelComparison
+
 end LoopsStationaryFiberDynamics

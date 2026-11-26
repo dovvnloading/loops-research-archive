@@ -2225,7 +2225,11 @@
         "invariant_trapping_mark_saturated",
         "invariant_trapping_mark_saturation_iff",
         "preperiodic_frontier_trapping_correspondence",
-        "quadratic_return_preperiodic_frontier"
+        "quadratic_return_preperiodic_frontier",
+        "singleton_cut_set_full_lift",
+        "quotient_fiber_refinement_of_cut_separation",
+        "quotient_dynamical_homeomorphism_of_equal_fibers",
+        "quotient_dynamical_homeomorphism_of_common_cuts"
       ]
     },
     "obligations": [
