@@ -73,13 +73,13 @@ theorem component_preimage_closed_fibers (p : X → Y)
       ⟨x, mem_connectedComponentIn hx, rfl⟩
     have hsub : p '' connectedComponentIn (p ⁻¹' S) x ⊆ S := by
       rintro _ ⟨z, hz, rfl⟩
-      exact connectedComponentIn_subset _ _ hz
+      exact connectedComponentIn_subset (p ⁻¹' S) x hz
     intro z hz
     exact hconn.subset_connectedComponentIn hmem hsub ⟨z, hz, rfl⟩
   · have hconn : IsPreconnected (p ⁻¹' connectedComponentIn S (p x)) :=
       preconnected_preimage_closed_fibers p hp hsurj hf isPreconnected_connectedComponentIn
     exact hconn.subset_connectedComponentIn (mem_connectedComponentIn hx)
-      (fun _ hz => connectedComponentIn_subset _ _ hz)
+      (fun z hz => show p z ∈ S from connectedComponentIn_subset S (p x) hz)
 
 /-- In the compact Hausdorff quotient setting, a singleton fiber at a
 root is sufficient for exact transport of the entire punctured
