@@ -1,0 +1,61 @@
+{
+  "schema": 1,
+  "observable": "universal upper envelope, not measured modulus",
+  "actual_moduli_measured": 0,
+  "decisions": {
+    "linear": {
+      "decision": "reject",
+      "first_sampled_rejection": 1048576
+    },
+    "exponential": {
+      "decision": "reject",
+      "first_sampled_rejection": 17
+    },
+    "golden": {
+      "decision": "reject",
+      "first_sampled_rejection": 24
+    },
+    "constant": {
+      "decision": "inconclusive",
+      "first_sampled_rejection": null
+    }
+  },
+  "rows": [
+    {
+      "chain": "linear",
+      "k": 32,
+      "B_lo": "1.2867991384445606775555345959616481419190",
+      "B_hi": "1.2867991384445606775555345959616481419191"
+    },
+    {
+      "chain": "linear",
+      "k": 1048576,
+      "B_lo": "0.4120327143979468283239485289863640028970",
+      "B_hi": "0.4120327143979468283239485289863640028971"
+    },
+    {
+      "chain": "exponential",
+      "k": 32,
+      "B_lo": "0.2666094201048480162137785664782561290879",
+      "B_hi": "0.2666094201048480162137785664782561290880"
+    },
+    {
+      "chain": "exponential",
+      "k": 128,
+      "B_lo": "0.0697286175665722124558105068571794893872",
+      "B_hi": "0.0697286175665722124558105068571794893873"
+    },
+    {
+      "chain": "golden",
+      "k": 32,
+      "B_lo": "0.3816881905037018274963516707403589868719",
+      "B_hi": "0.3816881905037018274963516707403589868720"
+    },
+    {
+      "chain": "constant",
+      "k": 2,
+      "B_lo": "2.5285397774261001415531885020520887202836",
+      "B_hi": "2.5285397774261001415531885020520887202837"
+    }
+  ]
+}
