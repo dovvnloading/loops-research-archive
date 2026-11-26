@@ -435,3 +435,4 @@ formalization/weighted/QuadraticCriticalCoordinates.lean	METADATA
 formalization/weighted/QuadraticPeriodicMotion.lean	METADATA
 formalization/weighted/QuadraticPeriodicStability.lean	METADATA
 formalization/weighted/QuadraticLocalNormalForm.lean	METADATA
+formalization/weighted/LocalDegreeExhaustion.lean	METADATA

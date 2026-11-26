@@ -3020,6 +3020,13 @@
         "quadratic_regular_local_injective",
         "quadratic_simple_critical_local_normal_form",
         "quadratic_simple_critical_local_pair"
+      ],
+      "formalization/weighted/LocalDegreeExhaustion.lean": [
+        "quadratic_conjugacy_regular_local_containment",
+        "quadratic_conjugacy_critical_local_containment",
+        "quadratic_conjugacy_local_exhaustion",
+        "quadratic_conjugacy_preimage_clopen",
+        "quadratic_conjugacy_component"
       ]
     },
     "obligations": [

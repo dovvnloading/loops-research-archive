@@ -28,8 +28,10 @@ audit will count as results. This implementation checkpoint is awaiting CI.
    one critical encounter it constructs analytic injective source and target
    coordinates making the actual finite return exactly the square map. It derives
    at most two distinct local inverse points, and a singleton at the critical target.
-2. In progress: construct all nearby intrinsic inverse points using complete
-   invariance and openness. Their images must exhaust the ambient local fiber.
+2. `formalization/weighted/LocalDegreeExhaustion.lean` constructs all nearby
+   intrinsic inverse points using complete invariance and openness. Their images
+   exhaust the ambient local fiber, yielding an open isolating neighborhood,
+   relative clopenness, and connected-component equality.
 3. In progress: derive the local critical compatibility from primitive phase
    separation, then specialize the exhaustion theorem to actual quadratic returns.
 
