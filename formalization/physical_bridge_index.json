@@ -1804,6 +1804,50 @@
       "KKL_STATIONARY_FINAL_PASS_THROUGH_PATH_EXTRACTION"
     ]
   },
+  "quadratic-escape-profile": {
+    "guide": "research/frontier/kernel_quadratic_escape_profile_20261126/NOTE.md#quadratic-escape-profile",
+    "theorems": {
+      "formalization/weighted/QuadraticEscape.lean": [
+        "one_le_size",
+        "norm_le_size",
+        "size_pos",
+        "logSize_nonneg",
+        "weight_pos",
+        "weight_succ",
+        "size_step",
+        "log_step",
+        "log_step_sharp",
+        "approx_step",
+        "approx_tail",
+        "weight_tendsto",
+        "approx_cauchy",
+        "exists_escape",
+        "escape_tendsto",
+        "escape_error",
+        "approx_nonneg",
+        "escape_nonneg",
+        "orbit_shift",
+        "approx_shift",
+        "escape_step",
+        "escape_iterate",
+        "escape_zero_orbit_bound",
+        "escape_zero_iff_bounded",
+        "escape_pos_iff_crossing",
+        "escape_uniform",
+        "parameterEscape_critical",
+        "parameterEscape_zero_iff",
+        "orbit_continuous",
+        "approx_continuous",
+        "escape_continuous",
+        "parameterEscape_continuous",
+        "parameter_rescaling",
+        "parameter_rescaling_limit"
+      ]
+    },
+    "obligations": [
+      "H4_RIGIDITY"
+    ]
+  },
   "critical-transversality": {
     "guide": "formalization/PHYSICAL_BRIDGES_CONTRACTS.md#critical-transversality",
     "theorems": {

@@ -1,0 +1,20 @@
+name: Adversarial cusp frontier arithmetic
+on:
+  pull_request:
+    paths:
+      - 'research/independent_audits/adversarial_proof_frontier_20261126/**'
+      - '.github/workflows/adversarial-cusp-frontier-20261126.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  exact-arithmetic:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Check exact finite arithmetic
+        run: python -B research/independent_audits/adversarial_proof_frontier_20261126/check_arithmetic.py
