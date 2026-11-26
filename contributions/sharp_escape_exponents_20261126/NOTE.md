@@ -5,6 +5,8 @@ ai: ChatGPT GPT-6 Astra Pro
 human_review: none
 ---
 
+<a id="sharp-escape-exponents-20261126"></a>
+
 # Sharp boundary escape exponents for the actual quadratic family
 
 Ledger statement being addressed:

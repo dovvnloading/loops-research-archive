@@ -2663,5 +2663,34 @@
     "obligations": [
       "VIRTUAL_REACHED_CYLINDER_COMPONENT_EXHAUSTION"
     ]
+  },
+  "sharp-escape-exponents-20261126": {
+    "guide": "contributions/sharp_escape_exponents_20261126/NOTE.md#sharp-escape-exponents-20261126",
+    "theorems": {
+      "formalization/weighted/QuadraticEscapeHolder.lean": [
+        "growth_exponent_pos",
+        "growth_exponent_gt_half",
+        "growth_exponent_le_one",
+        "parameter_escape_holder_of_growth",
+        "parameter_escape_holder",
+        "parameter_escape_exponent_gt_half"
+      ],
+      "formalization/weighted/QuadraticEscapeSharpness.lean": [
+        "chebyshevApproach_distance",
+        "chebyshevApproach_escape_lower",
+        "chebyshevApproach_escape_sq_lower",
+        "parameter_escape_no_holder_above_half"
+      ],
+      "formalization/weighted/QuadraticEscapeRegularity.lean": [
+        "parameter_escape_holder_uniform",
+        "parameter_escape_sqrt_ratio_bound",
+        "parameter_escape_uniform_sqrt_decay",
+        "parameter_escape_sqrt_ratio_tendsto_zero",
+        "parameter_escape_isLittleO_sqrt"
+      ]
+    },
+    "obligations": [
+      "H4_RIGIDITY"
+    ]
   }
 }
