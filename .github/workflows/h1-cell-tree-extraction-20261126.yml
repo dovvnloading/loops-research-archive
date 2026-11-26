@@ -1,0 +1,34 @@
+name: H1 cell tree extraction 2026-11-26
+
+on:
+  push:
+    branches:
+      - h1/cell-tree-extraction-20261126
+    paths:
+      - 'research/independent_audits/h1_cell_tree_extraction_20261126/**'
+      - '.github/workflows/h1-cell-tree-extraction-20261126.yml'
+      - 'formalization/physical_bridge_sources.tsv'
+  pull_request:
+    paths:
+      - 'research/independent_audits/h1_cell_tree_extraction_20261126/**'
+      - '.github/workflows/h1-cell-tree-extraction-20261126.yml'
+      - 'formalization/physical_bridge_sources.tsv'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  exact-arithmetic:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      # No external Python dependencies: standard library only.
+      - name: Verify exact physical tip arithmetic and component census
+        run: python -B research/independent_audits/h1_cell_tree_extraction_20261126/verify.py
