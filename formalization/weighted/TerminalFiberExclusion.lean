@@ -1,4 +1,5 @@
 import StationaryFiberDynamics
+import QuadraticCriticalFiberCensus
 import Mathlib.Topology.Connected.LocallyPathConnected
 
 /-!
@@ -308,7 +309,7 @@ theorem least_carrier_avoidance_iff_component [CompactSpace X]
       obtain ⟨z, rfl⟩ := hsurj w
       exact ⟨z, hw⟩
     have hTsub : T ⊆ q ⁻¹' B := hleast _ (hBc.isClosed.preimage hq).isCompact hpre
-      (fun z hz => interior_subset (hMB ⟨z, hz, rfl⟩))
+      (fun z hz => show q z ∈ B from interior_subset (hMB ⟨z, hz, rfl⟩))
     apply Set.disjoint_left.mpr
     intro z hz hza
     exact (connectedComponentIn_subset Aᶜ y (hBV (hTsub hz))) hza
@@ -384,7 +385,7 @@ theorem terminal_cycle_least_carrier_proper_lc [CompactSpace X]
   have hex : ∃ y ∈ q '' M, q '' M ⊆ connectedComponentIn ({q a} : Set Y)ᶜ y :=
     ⟨q x, hximg, hmark.trans (hconn.isPreconnected.subset_connectedComponentIn (hmark hximg) Subset.rfl)⟩
   have hd := (least_carrier_avoidance_iff_component q hq hsurj hf {q a} isClosed_singleton
-    M T hMc hMn hT hMT hleastM).mpr hex
+    M T hMc ⟨x, hx⟩ hT hMT hleastM).mpr hex
   have hna : a ∉ T := fun hz => Set.disjoint_left.mp hd hz rfl
   exact ⟨hd, hna, fun he => hna (he.symm ▸ mem_univ a)⟩
 
@@ -411,5 +412,105 @@ theorem quadratic_terminal_least_carrier_proper_lc
     isCompact_iff_compactSpace.mp (quadratic_filled_compact c)
   exact terminal_cycle_least_carrier_proper_lc q (quadraticFilledMap c) G hq hsurj hs hf
     a ha hfix hnoncut K next hc hk hmap hdis T hT hKT hleast
+
+
+/-- In a hereditarily unicoherent compact Hausdorff space, inclusion
+minimality among compact connected carriers implies absolute leastness.
+This isolates the difference between the two meanings of minimal carrier. -/
+theorem minimal_compact_carrier_is_least [CompactSpace X] [T2Space X]
+    (M T : Set X) (hMn : M.Nonempty) (hTc : IsCompact T)
+    (hTk : IsConnected T) (hMT : M ⊆ T)
+    (hu : ∀ U V : Set X, IsClosed U → IsClosed V →
+      IsConnected U → IsConnected V → IsPreconnected (U ∩ V))
+    (hmin : ∀ U : Set X, IsCompact U → IsConnected U →
+      M ⊆ U → U ⊆ T → T ⊆ U) :
+    ∀ U : Set X, IsCompact U → IsConnected U → M ⊆ U → T ⊆ U := by
+  intro U hUc hUk hMU
+  have hMI : M ⊆ T ∩ U := fun z hz => ⟨hMT hz, hMU hz⟩
+  have hI : IsConnected (T ∩ U) :=
+    ⟨hMn.mono hMI, hu T U hTc.isClosed hUc.isClosed hTk hUk⟩
+  have hIc : IsCompact (T ∩ U) := (hTc.isClosed.inter hUc.isClosed).isCompact
+  exact (hmin _ hIc hI hMI inter_subset_left).trans inter_subset_right
+
+/-- Reflection preserves the actual quadratic filled Julia set. -/
+theorem quadratic_filled_neg_mem (c z : ℂ) :
+    -z ∈ quadraticFilled c ↔ z ∈ quadraticFilled c := by
+  calc
+    -z ∈ quadraticFilled c ↔ (-z)^2+c ∈ quadraticFilled c :=
+      (quadratic_filled_complete_invariant c (-z)).symm
+    _ ↔ z^2+c ∈ quadraticFilled c := by rw [neg_sq]
+    _ ↔ z ∈ quadraticFilled c := quadratic_filled_complete_invariant c z
+
+/-- Surjectivity on the actual filled Julia set follows from ambient
+quadratic surjectivity and complete invariance; no extra inverse
+branch or surjectivity premise on the filled set is needed. -/
+theorem quadratic_filled_map_surjective (c : ℂ) :
+    Surjective (quadraticFilledMap c) := by
+  intro y
+  obtain ⟨z, hz⟩ := LoopsQuadraticCriticalFiberCensus.quadratic_surjective c (y : ℂ)
+  have hzmem : z ∈ quadraticFilled c :=
+    (quadratic_filled_complete_invariant c z).mp (by rw [hz]; exact y.property)
+  exact ⟨⟨z, hzmem⟩, Subtype.ext hz⟩
+
+/-- Existence of a proper forward-invariant least carrier in the
+actual quadratic filled Julia set, independent of the identity
+of any named source carrier. The critical point belongs to one
+marked phase; hereditary unicoherence and the monotone locally
+connected model are explicit hypotheses. -/
+theorem quadratic_exists_proper_invariant_least_carrier
+    [T2Space Y] [LocallyConnectedSpace Y]
+    {ι : Type*} [Fintype ι] [Nonempty ι]
+    (c : ℂ) (q : quadraticFilled c → Y) (G : Y → Y)
+    (hq : Continuous q) (hsurj : Surjective q)
+    (hs : Semiconj q (quadraticFilledMap c) G)
+    (hf : ∀ y : Y, IsPreconnected (q ⁻¹' {y}))
+    (a : quadraticFilled c) (ha : q ⁻¹' ({q a} : Set Y) = {a})
+    (hfix : quadraticFilledMap c a = a)
+    (hnoncut : IsConnected ({a} : Set (quadraticFilled c))ᶜ)
+    (hKconn : IsConnected (univ : Set (quadraticFilled c)))
+    (hu : ∀ U V : Set (quadraticFilled c), IsClosed U → IsClosed V →
+      IsConnected U → IsConnected V → IsPreconnected (U ∩ V))
+    (K : ι → Set (quadraticFilled c)) (next : ι → ι)
+    (hc : ∀ i, IsCompact (K i)) (hk : ∀ i, IsConnected (K i))
+    (hmap : ∀ i, MapsTo (quadraticFilledMap c) (K i) (K (next i)))
+    (hdis : ∀ i, Disjoint (K i) (K (next i)))
+    (crit : quadraticFilled c) (hcrit : (crit : ℂ) = 0)
+    (hcritMark : ∃ i, crit ∈ K i) :
+    ∃ T : Set (quadraticFilled c), IsCompact T ∧ IsConnected T ∧
+      (∀ i, K i ⊆ T) ∧
+      (∀ U : Set (quadraticFilled c), IsCompact U → IsConnected U →
+        (∀ i, K i ⊆ U) → T ⊆ U) ∧
+      MapsTo (quadraticFilledMap c) T T ∧
+      Disjoint T (q ⁻¹' ({q a} : Set Y)) ∧ T ≠ univ := by
+  letI : CompactSpace (quadraticFilled c) :=
+    isCompact_iff_compactSpace.mp (quadratic_filled_compact c)
+  let M : Set (quadraticFilled c) := ⋃ i, K i
+  have hcritM : crit ∈ M := mem_iUnion.mpr hcritMark
+  have hMn : M.Nonempty := ⟨crit, hcritM⟩
+  obtain ⟨T, hTc, hTk, hMT, hleast⟩ :=
+    least_compact_connected_carrier_exists M hMn hKconn hu
+  have hKT : ∀ i, K i ⊆ T :=
+    fun i z hz => hMT (mem_iUnion.mpr ⟨i, hz⟩)
+  have hleastK : ∀ U : Set (quadraticFilled c), IsCompact U → IsConnected U →
+      (∀ i, K i ⊆ U) → T ⊆ U := by
+    intro U hUc hUk hKU
+    apply hleast U hUc hUk
+    intro z hz
+    obtain ⟨i, hi⟩ := mem_iUnion.mp hz
+    exact hKU i hi
+  have hFM : MapsTo (quadraticFilledMap c) M M := by
+    intro z hz
+    obtain ⟨i, hi⟩ := mem_iUnion.mp hz
+    exact mem_iUnion.mpr ⟨next i, hmap i hi⟩
+  let σ : quadraticFilled c → quadraticFilled c :=
+    fun z => ⟨-(z : ℂ), (quadratic_filled_neg_mem c (z : ℂ)).mpr z.property⟩
+  have hFT : MapsTo (quadraticFilledMap c) T T :=
+    LoopsStationaryGeometricFibers.quadratic_least_carrier_forward_invariant
+      c (quadraticFilled c) (quadraticFilledMap c) σ (fun _ => rfl)
+      (fun _ => rfl) (quadratic_filled_map_surjective c) crit hcrit
+      M T hTc hTk hMT hFM (hFM hcritM) hleast
+  obtain ⟨hd, _, hn⟩ := quadratic_terminal_least_carrier_proper_lc
+    c q G hq hsurj hs hf a ha hfix hnoncut K next hc hk hmap hdis T hTk hKT hleastK
+  exact ⟨T, hTc, hTk, hKT, hleastK, hFT, hd, hn⟩
 
 end LoopsTerminalFiberExclusion
