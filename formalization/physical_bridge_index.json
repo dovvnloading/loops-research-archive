@@ -2608,5 +2608,24 @@
     "obligations": [
       "DIRECT_DECORATION_END_PRIME_END_COFINALITY"
     ]
+  },
+  "quadratic-filled-fullness-20261126": {
+    "guide": "contributions/quadratic_filled_fullness_20261126/NOTE.md#quadratic-filled-fullness-20261126",
+    "theorems": {
+      "formalization/weighted/QuadraticEscapeFullness.lean": [
+        "orbit_pair_differentiable",
+        "escape_pair_frontier_bound",
+        "frontier_complement_component_subset",
+        "escape_pair_sublevel_full",
+        "quadratic_escape_sublevel_full",
+        "quadratic_parameter_sublevel_full",
+        "quadratic_filled_full",
+        "quadratic_filled_connected_complement",
+        "quadratic_filled_compact_subcarrier_full"
+      ]
+    },
+    "obligations": [
+      "KKL_STATIONARY_NONLC_SELECTED_GEOMETRIC_CONTINUUM_LIFT"
+    ]
   }
 }
