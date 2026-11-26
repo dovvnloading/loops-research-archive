@@ -1,0 +1,54 @@
+name: Dudko P4.3 satellite moduli
+on:
+  push:
+    branches: [frontier/dudko-p43-satellite-moduli-20261125]
+  pull_request:
+    branches: [main]
+    paths:
+      - 'research/frontier/dudko_p43_satellite_moduli_20261125/**'
+      - '.github/workflows/dudko-p43-satellite-moduli.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    if: github.ref == 'refs/heads/frontier/dudko-p43-satellite-moduli-20261125' || (github.event_name == 'pull_request' && github.head_ref == 'frontier/dudko-p43-satellite-moduli-20261125')
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    permissions:
+      contents: write
+    defaults:
+      run:
+        working-directory: research/frontier/dudko_p43_satellite_moduli_20261125
+    steps:
+      - uses: actions/checkout@v4.2.2
+        with:
+          persist-credentials: ${{ github.event_name != 'pull_request' }}
+      - uses: actions/setup-python@v5.6.0
+        with:
+          python-version: '3.12'
+      - name: Verify exact arithmetic
+        run: python -B verify.py --output results.json
+      - name: Install pinned PDF reader
+        run: python -m pip install --disable-pip-version-check -r requirements.txt
+      - name: Source hashes and PDF pages
+        id: sources
+        continue-on-error: true
+        run: python -B source_audit.py --output sources.json --update-note NOTE.md
+      - name: Commit generated records to isolated branch
+        if: always() && github.event_name != 'pull_request' && github.ref == 'refs/heads/frontier/dudko-p43-satellite-moduli-20261125'
+        run: |
+          test -s results.json
+          test -s sources.json
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -- NOTE.md results.json sources.json
+          if ! git diff --cached --quiet; then
+            git commit -m 'Record P4.3 certificate and source audit [skip ci]'
+            git push origin HEAD:refs/heads/frontier/dudko-p43-satellite-moduli-20261125
+          fi
+      - name: Require complete source audit
+        if: always()
+        run: test "${{ steps.sources.outcome }}" = success
