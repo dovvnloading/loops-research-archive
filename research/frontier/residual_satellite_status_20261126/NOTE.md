@@ -60,7 +60,22 @@ The SHA256 values below fingerprint the bytes downloaded by CI, not a claim that
 
 <!-- BEGIN SOURCE LOCK -->
 
-UNVERIFIED pending network lock.
+| Source | Input URL | SHA256 |
+|---|---|---|
+| CS-arxiv | <https://arxiv.org/pdf/1509.07843v1> | 71c03718203b91ae81f5b7e138620a086cdf038b345cf689a24ed2932d72384f |
+| CS-author | <https://www.ma.imperial.ac.uk/~dcheragh/Research/2015-2.pdf> | b1d6b0952247efc3cd7a6e0602dbb8246b43b9edf7b3c5d0da942cc822246c25 |
+| CS-version | <https://arxiv.org/abs/1509.07843> | 6426203313859c50b91a7885ff575093d34b7fdcfb6eab77f9750c70445157f6 |
+| TUN | <https://www.math.stonybrook.edu/preprints/ims98-13b.pdf> | 1095be3a23d83cbc8acafe1c8ff7e24d787ffe791cdf8ea90b4f2b9686af8195 |
+| DL26 | <https://arxiv.org/pdf/2309.02107v3> | e88462e43b3c172cf309d5b3d38caa21ee8f43876bac1e07cce84b309dfb8c6b |
+| DL-neutral | <https://arxiv.org/pdf/2210.09280> | 05ee1c1ca66bfd4f7c4e6f4b97875e34e629f0ed52344a5ffae24704e6247acf |
+| DL-neutral-II | <https://arxiv.org/pdf/2509.23031v2> | 3432ae7667313cf04cb3c9368f2b816679fbbca0fb0f40105fac0bcfba900cea |
+| EE | <https://arxiv.org/pdf/2601.21905v1> | 5eb36430a51a3fb6a1c04db15713aebc86068118450893ba2042021e4a8db725 |
+| KKL | <https://arxiv.org/pdf/2606.27272v1> | 4c08805384b473dc0e55d76491c52c9fbe7c027e6da301f2c365a170ed7d9140 |
+| C2010 | <https://www.ma.imperial.ac.uk/~dcheragh/Research/2010-1.pdf> | c62ea484883ccb860286aab19a21d31bfdb22d102a792594d5b8986f6769c72d |
+| Levin | <https://arxiv.org/pdf/0710.4406v4> | 8e5a59b111c0d841d5deb3ab7adb12b556896a2916c1e4cc8418fe41789335cd |
+| survey | <https://arxiv.org/html/2512.24171v1> | 88339ff2d95cef8a6255bad70d15839807e97342e5dde33a5f1698d0baa1ccd9 |
+| C-list | <https://www.ma.imperial.ac.uk/~dcheragh/research.html> | 4573027037a153c06cf6306b2d66ca614fb5ff320ef9c7178469b8366fca35d3 |
+| DL-publisher | <https://pmihes.centre-mersenne.org/articles/10.5802/pmihes.2/> | 5fd9f5ab502db366d67f2012b59f2b37a313d0448956e12abd6216af970f3456 |
 
 <!-- END SOURCE LOCK -->
 
