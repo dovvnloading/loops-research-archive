@@ -2032,5 +2032,27 @@
     "obligations": [
       "VIRTUAL_REACHED_CYLINDER_COMPONENT_EXHAUSTION"
     ]
+  },
+  "monotone-geometric-predecessor-20261126": {
+    "guide": "contributions/monotone_geometric_predecessor_20261126/NOTE.md#monotone-geometric-predecessor-20261126",
+    "theorems": {
+      "formalization/weighted/StationaryMonotoneGeometry.lean": [
+        "preconnected_preimage_closed_fibers",
+        "component_preimage_closed_fibers",
+        "punctured_component_full_lift",
+        "disjoint_bridges_impossible",
+        "invariant_marks_disjoint_image",
+        "selected_predecessor_full_lift",
+        "least_carrier_terminal_incidence",
+        "selected_predecessor_contains_mark",
+        "least_compact_connected_carrier_exists",
+        "least_carrier_image_eq",
+        "preconnected_inter_preimage_path_connected",
+        "compact_subset_full_of_full_empty_interior"
+      ]
+    },
+    "obligations": [
+      "KKL_STATIONARY_NONLC_SELECTED_GEOMETRIC_CONTINUUM_LIFT"
+    ]
   }
 }
