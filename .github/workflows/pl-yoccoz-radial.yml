@@ -1,0 +1,36 @@
+name: PL Yoccoz radial audit
+on:
+  push:
+    branches: [frontier/pl-yoccoz-radial-20261126]
+    paths:
+      - 'research/frontier/pl_yoccoz_radial_20261126/**'
+  pull_request:
+    branches: [main]
+    paths:
+      - 'research/frontier/pl_yoccoz_radial_20261126/**'
+      - '.github/workflows/pl-yoccoz-radial.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4.2.2
+      - uses: actions/setup-python@v5.6.0
+        with:
+          python-version: '3.12'
+      - name: Install pinned source PDF parser
+        run: python -m pip install --disable-pip-version-check -r research/frontier/pl_yoccoz_radial_20261126/requirements.txt
+      - name: Verify comparison and fingerprint inputs
+        run: |
+          python -B research/frontier/pl_yoccoz_radial_20261126/verify.py --sources "$RUNNER_TEMP/pl-yoccoz-sources.json"
+      - name: Verify physical bridge registry
+        run: python -B code/verify_physical_bridges.py
+      - uses: actions/upload-artifact@v4.6.2
+        if: always()
+        with:
+          name: pl-yoccoz-sources
+          path: ${{ runner.temp }}/pl-yoccoz-sources.json
+          if-no-files-found: warn
