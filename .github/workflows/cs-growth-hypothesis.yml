@@ -1,0 +1,39 @@
+name: CS growth hypothesis audit
+on:
+  push:
+    branches: [main, frontier/cs-growth-hypothesis-20261126]
+    paths:
+      - 'research/frontier/cs_growth_hypothesis_20261126/**'
+      - '.github/workflows/cs-growth-hypothesis.yml'
+  pull_request:
+    paths:
+      - 'research/frontier/cs_growth_hypothesis_20261126/**'
+      - '.github/workflows/cs-growth-hypothesis.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  verify:
+    if: github.event_name != 'pull_request' || github.head_ref == 'frontier/cs-growth-hypothesis-20261126'
+    runs-on: ubuntu-latest
+    container: python:3.12.12-bookworm@sha256:c0abd0758831ad99b7a29e0c1a875da9c4abb9a2e3f21e2eeb585dbcadfb6cd0
+    timeout-minutes: 6
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+        with:
+          persist-credentials: false
+      - name: Verify exact arithmetic
+        run: python3 -B research/frontier/cs_growth_hypothesis_20261126/verify.py
+      - name: Check committed provenance and arithmetic
+        run: python3 -B research/frontier/cs_growth_hypothesis_20261126/verify.py --check-lock
+      - name: Independently regenerate and compare both committed records
+        shell: bash
+        run: |
+          set -euo pipefail
+          d=research/frontier/cs_growth_hypothesis_20261126
+          tmp=$(mktemp -d)
+          trap 'rm -rf "$tmp"' EXIT
+          cp "$d/sources.lock.json" "$d/arithmetic.json" "$tmp/"
+          python3 -B "$d/verify.py" --lock
+          cmp "$tmp/sources.lock.json" "$d/sources.lock.json"
+          cmp "$tmp/arithmetic.json" "$d/arithmetic.json"
