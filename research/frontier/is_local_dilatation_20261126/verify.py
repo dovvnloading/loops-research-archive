@@ -19,8 +19,8 @@ SOURCES = {
     "Levin": ("https://www.ma.huji.ac.il/~levin/Levin1990_Article_BoundariesForMultipliersOfPeri", None),
     "CS_v1": ("https://arxiv.org/pdf/1509.07843v1", "71c03718203b91ae81f5b7e138620a086cdf038b345cf689a24ed2932d72384f"),
     "Hubbard": ("https://pi.math.cornell.edu/~hubbard/Yoccoz.pdf", "eb28f6376e63683007fee394dee1b4e217d1b8d4fbd43118c2fa7e7f1754bf5d"),
-    "BLOT": ("https://arxiv.org/pdf/2205.03157", "9d0aa40f94afbfb918fd26dbc96b14727b2a59b84b02da8ad93b6b528061adb0"),
-    "Lyubich": ("https://www.math.stonybrook.edu/~mlyubich/acta.pdf", "a286b6d3c874c803c1d56a669b5850e79c903190534aeab4840664b8e631bf16"),
+    "BLOT": ("https://publications.hse.ru/pubs/share/direct/1052158150.pdf", "9d0aa40f94afbfb918fd26dbc96b14727b2a59b84b02da8ad93b6b528061adb0"),
+    "Lyubich": ("https://commack.math.stonybrook.edu/~mlyubich/papers/acta.pdf", "a286b6d3c874c803c1d56a669b5850e79c903190534aeab4840664b8e631bf16"),
     "DL_v3": ("https://arxiv.org/pdf/2309.02107v3", "e88462e43b3c172cf309d5b3d38caa21ee8f43876bac1e07cce84b309dfb8c6b"),
 }
 
@@ -34,7 +34,7 @@ def check():
     assert sha(raw) == SUMMARY_HASH, "Unexpected #139 summary bytes"
     doc = json.loads(raw)
     columns = doc["columns"]
-    rows = doc["addresses"]["linear"]
+    rows = doc["addresses"]["linear"]["rows"]
     # Support the summary's documented column schema, not an inferred numerator.
     assert len(rows) == 5
     ql_expected = [1.04327547788, 1.03475584798, 1.02825339612,
