@@ -2419,7 +2419,11 @@
         "quadratic_global_section_of_finite_component_exhaustion",
         "quadratic_global_contact_section",
         "quadratic_no_bypass_of_finite_component_exhaustion",
-        "quadratic_reflected_separator_finite_component_exhaustion"
+        "quadratic_reflected_separator_finite_component_exhaustion",
+        "compact_emptyInterior_exterior_data",
+        "quadratic_full_emptyInterior_bypass_accumulates_zero",
+        "quadratic_full_emptyInterior_separator_critical_clearance",
+        "quadratic_filled_separator_critical_clearance"
       ]
     },
     "obligations": [

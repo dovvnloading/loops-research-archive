@@ -1,5 +1,6 @@
 import StationarySeparatorTransport
 import StationaryMultiInterface
+import TerminalFiberExclusion
 
 /-!
 # Quadratic compact bypass exclusion from exterior closure contact
@@ -612,5 +613,123 @@ theorem quadratic_reflected_separator_finite_component_exhaustion
   have he : a = -a := hi (mem_connectedComponentIn ha) hb (by ring)
   have haz : a = 0 := by linear_combination (1/2 : ℂ) * he
   exact ha.2 (haz.symm ▸ hzero)
+
+/-- For a compact planar set with empty interior, its exterior is
+dense and unbounded. Connectedness of the exterior is a separate
+fullness hypothesis. -/
+theorem compact_emptyInterior_exterior_data (K : Set ℂ)
+    (hK : IsCompact K) (hKi : interior K = ∅) :
+    closure Kᶜ = univ ∧ Disjoint Kᶜ K ∧
+      (∀ B : ℝ, ∃ z ∈ Kᶜ, B < ‖z‖) := by
+  refine ⟨?_,?_,?_⟩
+  · rw [closure_compl, hKi, compl_empty]
+  · exact Set.disjoint_left.mpr (fun z hz hzK => hz hzK)
+  · intro B
+    obtain ⟨M,hM⟩ := hK.exists_bound_of_continuousOn continuous_id.continuousOn
+    let t : ℝ := max 0 (max M B) + 1
+    have ht0 : 0 ≤ t := by
+      dsimp [t]
+      linarith [le_max_left (0:ℝ) (max M B)]
+    have htM : M < t := by
+      dsimp [t]
+      linarith [le_max_left M B,le_max_right (0:ℝ) (max M B)]
+    have htB : B < t := by
+      dsimp [t]
+      linarith [le_max_right M B,le_max_right (0:ℝ) (max M B)]
+    have hnorm : ‖(t:ℂ)‖ = t := by
+      rw [Complex.norm_real,Real.norm_eq_abs,abs_of_nonneg ht0]
+    refine ⟨(t:ℂ),?_,?_⟩
+    · intro hz
+      have hb := hM (t:ℂ) hz
+      rw [hnorm] at hb
+      exact (not_lt_of_ge hb) htM
+    · rw [hnorm]
+      exact htB
+
+/-- For a full reflection-invariant compact carrier with empty interior,
+a connected quadratic bypass avoiding zero must accumulate at zero
+itself, rather than merely at some point of a deleted critical set.
+There is no connectedness or reflection requirement on the deletion. -/
+theorem quadratic_full_emptyInterior_bypass_accumulates_zero
+    (c : ℂ) (K E : Set ℂ)
+    (hK : IsCompact K) (hKsym : ∀ z ∈ K, -z ∈ K)
+    (hfull : IsPreconnected Kᶜ) (hKi : interior K = ∅)
+    (hEc : IsPreconnected E) (hEsub : E ⊆ K) (hEzero : (0 : ℂ) ∉ E)
+    (hbypass : ¬ InjOn (fun z : ℂ => z^2+c) E) :
+    (0 : ℂ) ∈ closure E := by
+  obtain ⟨hcl,hdis,hunb⟩ := compact_emptyInterior_exterior_data K hK hKi
+  have hcontact : (({0} : Set ℂ) ∩ closure Kᶜ).Nonempty := by
+    rw [hcl]
+    exact ⟨0,by simp⟩
+  have hsym : ∀ z ∈ ({0}:Set ℂ), -z ∈ ({0}:Set ℂ) := by
+    intro z hz
+    rw [mem_singleton_iff.mp hz]
+    simp
+  have hsub : E ⊆ K \ ({0}:Set ℂ) := by
+    intro z hz
+    refine ⟨hEsub hz,?_⟩
+    intro hz0
+    exact hEzero ((mem_singleton_iff.mp hz0) ▸ hz)
+  obtain ⟨z,hzcl,hz0⟩ := quadratic_bypass_forces_critical_contact c K {0} Kᶜ E
+    hK hKsym hsym (by simp) isPreconnected_singleton hfull hcontact hdis hunb
+    hEc hsub hbypass
+  rwa [mem_singleton_iff.mp hz0] at hzcl
+
+/-- Under the preceding carrier hypotheses, critical-point clearance
+alone rules out every connected antipodal bypass after an arbitrary
+deletion. Neither compactness of a bypass nor finite-component
+exhaustion of the retained image is needed. -/
+theorem quadratic_full_emptyInterior_separator_critical_clearance
+    (c : ℂ) (K Q : Set ℂ) (a : ℂ)
+    (hK : IsCompact K) (hKsym : ∀ z ∈ K, -z ∈ K)
+    (hfull : IsPreconnected Kᶜ) (hKi : interior K = ∅)
+    (hzero : (0 : ℂ) ∈ Q)
+    (hclear : (0 : ℂ) ∉ closure (K \ Q))
+    (ha : a ∈ K \ Q) :
+    -a ∉ connectedComponentIn (K \ Q) a := by
+  intro hb
+  let E := connectedComponentIn (K \ Q) a
+  have hsub : E ⊆ K \ Q := connectedComponentIn_subset _ _
+  have hEzero : (0 : ℂ) ∉ E := fun hz => (hsub hz).2 hzero
+  have hbad : ¬ InjOn (fun z : ℂ => z^2+c) E := by
+    intro hi
+    have he : a = -a := hi (mem_connectedComponentIn ha) hb (by ring)
+    have haz : a = 0 := by linear_combination (1/2 : ℂ) * he
+    exact ha.2 (haz.symm ▸ hzero)
+  have hcl := quadratic_full_emptyInterior_bypass_accumulates_zero c K E
+    hK hKsym hfull hKi isPreconnected_connectedComponentIn
+    (fun z hz => (hsub hz).1) hEzero hbad
+  exact hclear (closure_mono hsub hcl)
+
+/-- On the genuine filled Julia carrier, compactness and reflection
+are supplied by the established quadratic theorems, not assumed.
+Fullness, empty interior, and a relative critical neighborhood in
+the deleted set are the remaining explicit geometric premises. -/
+theorem quadratic_filled_separator_critical_clearance
+    (c : ℂ) (Q : Set ℂ) (a : ℂ)
+    (hfull : IsPreconnected (LoopsStationaryFiberDynamics.quadraticFilled c)ᶜ)
+    (hKi : interior (LoopsStationaryFiberDynamics.quadraticFilled c) = ∅)
+    (hzero : (0 : ℂ) ∈ Q)
+    (hclear : ∃ ε : ℝ, 0 < ε ∧
+      ∀ z ∈ LoopsStationaryFiberDynamics.quadraticFilled c, ‖z‖ < ε → z ∈ Q)
+    (ha : a ∈ LoopsStationaryFiberDynamics.quadraticFilled c \ Q) :
+    -a ∉ connectedComponentIn
+      (LoopsStationaryFiberDynamics.quadraticFilled c \ Q) a := by
+  let K := LoopsStationaryFiberDynamics.quadraticFilled c
+  obtain ⟨ε,hε,hb⟩ := hclear
+  have hsub : K \ Q ⊆ {z : ℂ | ε ≤ ‖z‖} := by
+    intro z hz
+    exact le_of_not_gt (fun h => hz.2 (hb z hz.1 h))
+  have hclosed : IsClosed {z : ℂ | ε ≤ ‖z‖} := isClosed_le continuous_const continuous_norm
+  have hclear' : (0 : ℂ) ∉ closure (K \ Q) := by
+    intro hz
+    have hh := closure_minimal hsub hclosed hz
+    change ε ≤ ‖(0 : ℂ)‖ at hh
+    rw [norm_zero] at hh
+    exact (not_lt_of_ge hh) hε
+  exact quadratic_full_emptyInterior_separator_critical_clearance c K Q a
+    (LoopsStationaryFiberDynamics.quadratic_filled_compact c)
+    (fun z hz => (LoopsTerminalFiberExclusion.quadratic_filled_neg_mem c z).mpr hz)
+    hfull hKi hzero hclear' ha
 
 end LoopsStationaryCompactContact
