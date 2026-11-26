@@ -364,3 +364,4 @@ research/independent_audits/kl_escape_return_ideal_boundary_20261126/verify.py	M
 research/independent_audits/stationary_nonlc_predecessor_lift_20261126/check_physical_orbit.py	STATIONARY CALIBRATE
 research/independent_audits/decoration_end_cofinality_20261126/check_arithmetic.py	METADATA
 research/frontier/cs_multiplier_julia_bound_20261126/verify.py	METADATA
+research/frontier/satellite_component_julia_bound_20261126/verify.py	METADATA
