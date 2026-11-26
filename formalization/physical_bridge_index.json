@@ -2608,7 +2608,10 @@
         "limbItinerary_add",
         "limbItinerary_prefix_image",
         "quadratic_marked_restriction_selection",
-        "quadratic_model_carrier_itinerary_component"
+        "quadratic_model_carrier_itinerary_component",
+        "degree_two_limb_injective",
+        "limbItinerary_continuous_inverse",
+        "degree_two_independent_inverse_agreement"
       ]
     },
     "obligations": [

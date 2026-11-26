@@ -475,4 +475,139 @@ theorem quadratic_model_carrier_itinerary_component
     hDopen hcover (quadratic_critical_limb_injective c D E hDE hother)
     inter_subset_right hbase n).2 x hx⟩
 
+
+/-- The selected-limb inverse is unique for any genuine degree-two
+map, not only a polynomial representative. The disjoint second limb
+uses the other available inverse point. -/
+theorem degree_two_limb_injective (F : X → X) (D E : Set X)
+    (hdegree : ∀ x y z : X, F x = F y → F x = F z →
+      x = y ∨ x = z ∨ y = z)
+    (hDE : Disjoint D E) (hother : D ⊆ F '' E) :
+    InjOn F (D ∩ F ⁻¹' D) := by
+  intro x hx y hy hxy
+  obtain ⟨z, hz, hzx⟩ := hother hx.2
+  have hxz : x ≠ z := by
+    intro h
+    exact Set.disjoint_left.mp hDE hx.1 (by simpa only [h] using hz)
+  have hyz : y ≠ z := by
+    intro h
+    exact Set.disjoint_left.mp hDE hy.1 (by simpa only [h] using hz)
+  rcases hdegree x y z hxy hzx.symm with h | h | h
+  · exact h
+  · exact (hxz h).elim
+  · exact (hyz h).elim
+
+/-- The inverse itinerary is not merely a pointwise relation: it
+admits a genuine continuous inverse section on the entire limb.
+No connectedness or local connectivity of the ambient space is used. -/
+theorem limbItinerary_continuous_inverse (F : X → X) (D : Set X)
+    (hF : Continuous F) (hopen : IsOpenMap F) (hD : IsOpen D)
+    (hcover : D ⊆ F '' D) (hinj : InjOn F (D ∩ F ⁻¹' D))
+    (n : ℕ) :
+    ∃ g : D → X, Continuous g ∧
+      ∀ y : D, g y ∈ limbItinerary F D D n ∧ (F^[n]) (g y) = (y : X) := by
+  have hLopen : IsOpen (limbItinerary F D D n) := by
+    induction n with
+    | zero => exact hD
+    | succ k ih =>
+      change IsOpen (D ∩ F ⁻¹' limbItinerary F D D k)
+      exact hD.inter (ih.preimage hF)
+  have hOpenIter : IsOpenMap (F^[n]) := by
+    induction n with
+    | zero =>
+      intro U hU
+      simpa using hU
+    | succ k ih =>
+      rw [Function.iterate_succ]
+      exact ih.comp hopen
+  let L := limbItinerary F D D n
+  have hImage : (F^[n]) '' L = D :=
+    limbItinerary_image F D D hcover Subset.rfl n
+  have hInj : InjOn (F^[n]) L :=
+    limbItinerary_injective F D D hinj Subset.rfl n
+  have hex : ∀ y : D, ∃ x : X, x ∈ L ∧ (F^[n]) x = (y : X) := by
+    intro y
+    have hy : (y : X) ∈ (F^[n]) '' L := by
+      rw [hImage]
+      exact y.property
+    exact hy
+  choose g hg using hex
+  refine ⟨g, ?_, hg⟩
+  apply continuous_def.mpr
+  intro U hU
+  have heq : g ⁻¹' U = (Subtype.val : D → X) ⁻¹' ((F^[n]) '' (L ∩ U)) := by
+    ext y
+    constructor
+    · intro hy
+      exact ⟨g y, ⟨(hg y).1, hy⟩, (hg y).2⟩
+    · intro hy
+      obtain ⟨x, hx, hxy⟩ := hy
+      have he : x = g y := hInj hx.1 (hg y).1 (hxy.trans (hg y).2.symm)
+      exact he ▸ hx.2
+  rw [heq]
+  exact (hOpenIter _ (hLopen.inter hU)).preimage continuous_subtype_val
+
+/-- Source-facing universal compatibility for independently supplied
+continuous inverse restrictions of a native degree-two map. One
+physical anchor with the selected orbit itinerary determines the
+entire inverse section on any preconnected target in the limb.
+The target need not be open or compact, and no global local
+connectivity or polynomial conjugacy is required. The inverse image
+is the entire selected itinerary of that target, not just a subset;
+its values agree pointwise with the constructed canonical section. -/
+theorem degree_two_independent_inverse_agreement (F : X → X)
+    (D E : Set X) (a d : X) (hfix : F a = a)
+    (hDcomp : D = connectedComponentIn ({a} : Set X)ᶜ d)
+    (hF : Continuous F) (hopen : IsOpenMap F) (hD : IsOpen D)
+    (hdegree : ∀ x y z : X, F x = F y → F x = F z →
+      x = y ∨ x = z ∨ y = z)
+    (hDE : Disjoint D E) (hcover : D ⊆ F '' D) (hother : D ⊆ F '' E)
+    (n : ℕ) :
+    ∃ φ : D → X, Continuous φ ∧
+      (∀ y : D, φ y ∈ limbItinerary F D D n ∧ (F^[n]) (φ y) = (y : X)) ∧
+      ∀ (S : Set X) (hSD : S ⊆ D) (q : X), q ∈ S →
+        IsPreconnected S → ∀ g : X → X, ContinuousOn g S →
+        (∀ y ∈ S, (F^[n]) (g y) = y) →
+        (∀ k < n, (F^[k]) (g q) ∈ D) →
+        g '' S = limbItinerary F D S n ∧
+          ∀ (y : X) (hy : y ∈ S), g y = φ ⟨y, hSD hy⟩ := by
+  have hinj := degree_two_limb_injective F D E hdegree hDE hother
+  obtain ⟨φ, hφc, hφ⟩ :=
+    limbItinerary_continuous_inverse F D hF hopen hD hcover hinj n
+  refine ⟨φ, hφc, hφ, ?_⟩
+  intro S hSD q hq hS g hg hsection hstay
+  have hterminal : (F^[n]) (g q) ∈ S := by
+    rw [hsection q hq]
+    exact hq
+  have hroute : g q ∈ limbItinerary F D S n :=
+    (mem_limbItinerary F D S n (g q)).mpr ⟨hstay, hterminal⟩
+  have hcomp := (limbItinerary_component F D S a d hfix hDcomp
+    hF hopen hD hcover hinj hSD hS n).2 (g q) hroute
+  have hR : IsPreconnected (g '' S) := hS.image _ hg
+  have hpre : g '' S ⊆ (F^[n]) ⁻¹' S := by
+    rintro _ ⟨y, hy, rfl⟩
+    change (F^[n]) (g y) ∈ S
+    rw [hsection y hy]
+    exact hy
+  have hsub : g '' S ⊆ limbItinerary F D S n := by
+    rw [hcomp]
+    exact hR.subset_connectedComponentIn ⟨q, hq, rfl⟩ hpre
+  have hinjS := limbItinerary_injective F D S hinj hSD n
+  have hEq : g '' S = limbItinerary F D S n := by
+    apply Subset.antisymm hsub
+    intro z hz
+    have hterm := ((mem_limbItinerary F D S n z).mp hz).2
+    have hgz : g ((F^[n]) z) ∈ limbItinerary F D S n :=
+      hsub ⟨(F^[n]) z, hterm, rfl⟩
+    have heq : g ((F^[n]) z) = z := hinjS hgz hz (hsection _ hterm)
+    exact ⟨(F^[n]) z, hterm, heq⟩
+  refine ⟨hEq, ?_⟩
+  intro y hy
+  have hgy : g y ∈ limbItinerary F D S n := hsub ⟨y, hy, rfl⟩
+  have horbit := (mem_limbItinerary F D S n (g y)).mp hgy
+  have hgyD : g y ∈ limbItinerary F D D n :=
+    (mem_limbItinerary F D D n (g y)).mpr ⟨horbit.1, hSD horbit.2⟩
+  exact (limbItinerary_injective F D D hinj Subset.rfl n) hgyD
+    (hφ ⟨y, hSD hy⟩).1 ((hsection y hy).trans (hφ ⟨y, hSD hy⟩).2.symm)
+
 end LoopsStationaryPhysicalItinerary

@@ -15,7 +15,7 @@ Candidate Lean theorems for the actual quadratic filled Julia set: native critic
 
 ## Evidence
 
-The registered [StationaryPhysicalItinerary.lean](../../formalization/weighted/StationaryPhysicalItinerary.lean) contains 18 public theorem declarations (the first 14 passed the full kernel build and transitive axiom audit at [`f367e5a`](https://github.com/dovvnloading/loops-research-archive/commit/f367e5a8ff439c93ee827ff1169c8dfba4d8332c); see the [CI log](https://github.com/dovvnloading/loops-research-archive/actions/runs/45889927685/job/140149774513). The expanded module must pass CI):
+The registered [StationaryPhysicalItinerary.lean](../../formalization/weighted/StationaryPhysicalItinerary.lean) contains 21 public theorem declarations (the first 14 passed the full kernel build and transitive axiom audit at [`f367e5a`](https://github.com/dovvnloading/loops-research-archive/commit/f367e5a8ff439c93ee827ff1169c8dfba4d8332c); see the [CI log](https://github.com/dovvnloading/loops-research-archive/actions/runs/45889927685/job/140149774513). The expanded module must pass CI):
 
 - `quadratic_critical_limb_injective`
 - `limb_inverse_preconnected`
@@ -35,12 +35,17 @@ The registered [StationaryPhysicalItinerary.lean](../../formalization/weighted/S
 - `limbItinerary_prefix_image`
 - `quadratic_marked_restriction_selection`
 - `quadratic_model_carrier_itinerary_component`
+- `degree_two_limb_injective`
+- `limbItinerary_continuous_inverse`
+- `degree_two_independent_inverse_agreement`
 
 The other limb consumes one of the at-most-two inverse roots. Openness and uniqueness on the selected limb preserve connectedness when pulling back the connected target. The fixed cutpoint separates the chosen component from other limbs; iteration gives whole-component recognition, including for a disconnected base by anchoring its terminal component. For an independently supplied physical restriction, connectedness and endpoint membership force inclusion in the same full component. The full-depth itinerary is bijective onto its base: exact image and injectivity are proved separately, so every terminal point of the critical limb has exactly one inverse point with the specified itinerary. A connected central mark containing the anchor discharges the terminal base-component test from actual mark contact alone.
 
-The final four declarations strengthen the test: exact forward images recover every parent of the selected address; actual contact with the pulled-back central mark forces any preconnected supplied restriction into the selected full component, with equality exactly when its image is the entire anchored base. A separate monotone-model theorem obtains connectedness of the physical base from the singleton cut fiber, hereditary unicoherence and a path-connected model limb. It then recognizes the full physical selected component from the model orbit and terminal carrier membership, without assuming the carrier is saturated for the quotient. The needed model and geometric hypotheses remain explicit.
+Four further declarations strengthen the test: exact forward images recover every parent of the selected address; actual contact with the pulled-back central mark forces any preconnected supplied restriction into the selected full component, with equality exactly when its image is the entire anchored base. A separate monotone-model theorem obtains connectedness of the physical base from the singleton cut fiber, hereditary unicoherence and a path-connected model limb. It then recognizes the full physical selected component from the model orbit and terminal carrier membership, without assuming the carrier is saturated for the quotient. The needed model and geometric hypotheses remain explicit.
 
-Local Lean is not available in this session; the weighted kernel and transitive axiom CI checks are the verification authority. The first 14 source declarations were fully verified at the pinned commit above: the audit accepted 27 module declarations including 21 theorem constants, using only the three allowed foundational axioms. The last four require a successful build and audit on the expanded revision before credit.
+The source-facing generalization uses a native continuous open degree-two map (not a polynomial or a finite graph) with the stated disjoint inverse-limb geometry. It constructs a continuous canonical section on the entire limb. For any independently supplied continuous section of the same iterate on a preconnected target in that limb, a single selected anchor forces the section's whole image to equal the selected itinerary of its target and forces pointwise agreement with the canonical inverse. This removes the need to assume connectedness or a component address of the lifted restriction separately. The native restriction must still supply a continuous section on the indicated physical target and a correctly located anchor; no prime-end boundary extension or ambient occurrence is constructed.
+
+Local Lean is not available in this session; the weighted kernel and transitive axiom CI checks are the verification authority. The first 14 source declarations were fully verified at the pinned commit above: the audit accepted 27 module declarations including 21 theorem constants, using only the three allowed foundational axioms. The later declarations require a successful build and audit on their expanded revision before credit.
 
 ## Dependencies
 
