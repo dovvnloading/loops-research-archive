@@ -31,4 +31,4 @@ jobs:
           python-version: '3.12'
       # No external Python dependencies: standard library only.
       - name: Verify exact physical tip arithmetic and component census
-        run: python -B research/independent_audits/h1_cell_tree_extraction_20261126/verify.py
+        run: python -B research/independent_audits/h1_cell_tree_extraction_20261126/check_arithmetic.py
