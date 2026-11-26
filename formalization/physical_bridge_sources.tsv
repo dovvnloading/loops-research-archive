@@ -46,12 +46,15 @@ code/exp5_figs.py	EXPLORATION
 code/mlc_common.py	EXPLORATION
 formalization/weighted/AtomCutDefect.lean	CUTS CREST
 formalization/weighted/AttachmentDefectLedger.lean	DEFECT
+formalization/weighted/BinaryShiftExactness.lean	METADATA
+formalization/weighted/BinaryShiftPeriodic.lean	METADATA
 formalization/weighted/ChebyshevQuotientRigidity.lean	METADATA
 formalization/weighted/CloneBounds.lean	CLONE EDGE
 formalization/weighted/ClonePolynomialRoots.lean	CLONE EDGE
 formalization/weighted/CloneRoot.lean	CLONE EDGE
 formalization/weighted/CloneRootRate.lean	CLONE EDGE
 formalization/weighted/CompactObstacleRemainder.lean	METADATA
+formalization/weighted/ConnectedBinaryCoding.lean	METADATA
 formalization/weighted/FiniteMarkovCorrelation.lean	FINITE-CORRELATION CLONE-OBSERVABLE RANDOM-CLOCK
 formalization/weighted/FiniteMarkovFibers.lean	REAL-FIBERS
 formalization/weighted/FullCloneCharpoly.lean	CLONE EDGE
@@ -96,8 +99,8 @@ formalization/weighted/PrimeEndImpressionDecomposition.lean	METADATA
 formalization/weighted/PrimeEndSectorFilters.lean	METADATA
 formalization/weighted/PrimeEndSectorImpressions.lean	METADATA
 formalization/weighted/PrimeEndSectorRank.lean	METADATA
-formalization/weighted/QuadraticCollisionFactorization.lean	METADATA
-formalization/weighted/QuadraticCriticalCoordinates.lean	METADATA
+formalization/weighted/QuadraticComponentConjugacy.lean	METADATA
+formalization/weighted/QuadraticComponentDynamics.lean	METADATA
 formalization/weighted/QuadraticCriticalFiberCensus.lean	METADATA
 formalization/weighted/QuadraticCriticalTransversality.lean	CRITICAL-TRANSVERSALITY
 formalization/weighted/PhaseMemoryCardinality.lean	CLOCK ENDS
@@ -111,8 +114,6 @@ formalization/weighted/QuadraticParameterDistortion.lean	CONSTRUCT
 formalization/weighted/QuadraticParameterInverse.lean	CONSTRUCT
 formalization/weighted/QuadraticParameterMotion.lean	CONSTRUCT
 formalization/weighted/QuadraticParameterUnivalence.lean	CONSTRUCT
-formalization/weighted/QuadraticPeriodicMotion.lean	METADATA
-formalization/weighted/QuadraticPeriodicStability.lean	METADATA
 formalization/weighted/QuadraticUnivalentNeighborhood.lean	CONSTRUCT
 formalization/weighted/SaturatedTelescope.lean	METADATA
 formalization/weighted/SpectralDominance.lean	CLONE EDGE
@@ -429,3 +430,7 @@ formalization/weighted/QuadraticEscapeComponents.lean	METADATA
 formalization/weighted/QuadraticCriticalPortrait.lean	METADATA
 formalization/weighted/QuadraticLocalRamification.lean	METADATA
 formalization/weighted/QuadraticRamificationCensus.lean	METADATA
+formalization/weighted/QuadraticCollisionFactorization.lean	METADATA
+formalization/weighted/QuadraticCriticalCoordinates.lean	METADATA
+formalization/weighted/QuadraticPeriodicMotion.lean	METADATA
+formalization/weighted/QuadraticPeriodicStability.lean	METADATA

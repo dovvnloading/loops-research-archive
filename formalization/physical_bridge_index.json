@@ -2930,6 +2930,58 @@
       "MAPPING_TELESCOPE"
     ]
   },
+  "quadratic-component-conjugacy-20261126": {
+    "guide": "contributions/quadratic_component_conjugacy_20261126/NOTE.md#quadratic-component-conjugacy-20261126",
+    "theorems": {
+      "formalization/weighted/BinaryShiftPeriodic.lean": [
+        "shift_iterate_apply",
+        "shift_periodic_iff",
+        "repeatWord_periodic",
+        "repeatWord_prefix",
+        "shift_periodic_card",
+        "periodic_extension",
+        "shift_has_exact_period",
+        "shift_periodic_dense"
+      ],
+      "formalization/weighted/ConnectedBinaryCoding.lean": [
+        "cylinder_antitone",
+        "cylinder_compact",
+        "cylinder_preconnected",
+        "cylinder_limit_preconnected",
+        "cylinder_mem_iff",
+        "address_fiber_image",
+        "address_fiber_preconnected",
+        "address_fiber_connected",
+        "component_eq_address_fiber",
+        "component_conjugacy"
+      ],
+      "formalization/weighted/QuadraticComponentConjugacy.lean": [
+        "filledIntoCriticalSublevel_continuous",
+        "filledIntoCriticalSublevel_injective",
+        "filled_coherent_branch_system",
+        "quadraticFilledMap_continuous",
+        "quadraticComponentMap_mk",
+        "filled_component_image",
+        "filled_binary_component_model",
+        "filled_component_conjugacy"
+      ],
+      "formalization/weighted/QuadraticComponentDynamics.lean": [
+        "quadratic_component_periodic_card",
+        "quadratic_component_has_exact_period",
+        "quadratic_periodic_components_dense",
+        "quadratic_component_open_eventually_onto",
+        "quadratic_component_eventual_intersection"
+      ],
+      "formalization/weighted/BinaryShiftExactness.lean": [
+        "shift_open_eventually_onto",
+        "conjugate_open_eventually_onto",
+        "conjugate_eventual_intersection"
+      ]
+    },
+    "obligations": [
+      "H1_CELL_TREE_EXTRACTION"
+    ]
+  },
   "quadratic-periodic-motion-20261126": {
     "guide": "contributions/quadratic_periodic_motion_20261126/NOTE.md#quadratic-periodic-motion-20261126",
     "theorems": {
