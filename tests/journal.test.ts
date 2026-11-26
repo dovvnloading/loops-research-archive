@@ -119,6 +119,25 @@ test('CSV quotes embedded delimiters, line breaks and coordinates without numeri
   assert.ok(csv.includes('"1.2500e-80"'));
 });
 
+test('CSV neutralizes formula-like imported text while JSON and exact numeric fields stay intact', () => {
+  const original = entry('-identifier');
+  original.title = '=1+1';
+  original.tags = ['@SUM(A1:A2)'];
+  original.notes = '\t +1+2';
+  const restored = parseJournalArchive(serializeJournal([original])).entries[0];
+  const csv = journalCSV([restored]);
+  for (const value of ['-identifier', '=1+1', '@sum(a1:a2)', '\t +1+2']) {
+    assert.ok(csv.includes('"' + "'" + value + '"'), value);
+  }
+  assert.ok(csv.includes('"' + restored.payload.exact.center.re + '"'));
+  assert.ok(csv.includes('"1.2500e-80"'));
+  assert.equal(restored.title, original.title);
+  assert.equal(restored.notes, original.notes);
+  for (const value of ['+1+2', '-1+2', '@A1', '\r=1+1', '  =1+1', '＝1+1']) {
+    assert.ok(journalCSV([{ ...restored, notes: value }]).includes('"' + "'" + value + '"'));
+  }
+});
+
 test('validated payloads own their nested settings and cannot mutate saved input', () => {
   const original = payload();
   const checked = validateJournalPayload(original);

@@ -297,7 +297,15 @@ export function readSharedSnapshot(base = location.href): JournalPayload | null 
 }
 
 export function journalCSV(entries: JournalEntry[]): string {
-  const cell = (value: unknown) => `"${String(value ?? '').replace(/"/g, '""')}"`;
+  // Imported notes and labels are untrusted spreadsheet text. CSV quoting alone
+  // does not prevent formula evaluation. Keep validated numeric columns intact.
+  const cell = (value: unknown, index: number) => {
+    const raw = String(value ?? '');
+    const numericColumn = index >= 5 && index <= 8;
+    const formulaLike = /^[\s\uFEFF]*[=+\-@\uFF1D\uFF0B\uFF0D\uFF20]|^[\t\r\n]/.test(raw);
+    const safe = !numericColumn && formulaLike ? "'" + raw : raw;
+    return `"${safe.replace(/"/g, '""')}"`;
+  };
   const rows = entries.map((entry) => [
     entry.id,
     entry.parentId,
