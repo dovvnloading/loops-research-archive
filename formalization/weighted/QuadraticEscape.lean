@@ -99,7 +99,8 @@ theorem log_step_sharp (C : ℝ) (hC : 0 ≤ C) :
     rw [Complex.norm_real, Real.norm_eq_abs, abs_of_nonneg (by linarith : 0 ≤ 1+C)]
     exact max_eq_right (by linarith)
   have ho : size (1 : ℂ) = 1 := by simp [size]
-  simp [logSize, hs, ho]
+  unfold logSize
+  rw [hs, ho, Real.log_one, mul_zero, sub_zero]
 
 theorem approx_step (c z : ℂ) {C : ℝ} (hc : ‖c‖ ≤ C) (n : ℕ) :
     |approx c z (n+1) - approx c z n| ≤ weight (n+1)*Real.log (1+C) := by
@@ -249,7 +250,7 @@ theorem escape_pos_iff_crossing (c z : ℂ) :
   constructor
   · intro hp
     by_contra h
-    push_neg at h
+    push Not at h
     have hz := (escape_zero_iff_bounded c z).mpr ⟨1+‖c‖, h⟩
     linarith
   · rintro ⟨n, hn⟩
@@ -320,7 +321,9 @@ theorem escape_continuous :
   have he : 0 < ε/3 := by linarith
   obtain ⟨N,hN⟩ := escape_uniform C (ε/3) he
   have hc : ∀ᶠ y in 𝓝 x, y ∈ s := hs.mem_nhds hx
-  have happrox := (Metric.continuousAt_iff'.mp (approx_continuous N).continuousAt) (ε/3) he
+  have ha : ContinuousAt (fun y : ℂ × ℂ => approx y.1 y.2 N) x :=
+    (approx_continuous N).continuousAt
+  have happrox := (Metric.continuousAt_iff'.mp ha) (ε/3) he
   filter_upwards [hc, happrox] with y hy hdy
   have h1 := hN N le_rfl y.1 y.2 (le_of_lt (show ‖y.1‖ < C from hy))
   have h2 := hN N le_rfl x.1 x.2 (le_of_lt (show ‖x.1‖ < C from hx))
