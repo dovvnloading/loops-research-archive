@@ -1,0 +1,585 @@
+{
+  "finite_saturation": {
+    "finite_maps_and_packets_checked": 960,
+    "horizon_b_range": [
+      1,
+      256
+    ],
+    "scope": "set saturation and index arithmetic only"
+  },
+  "proof_inputs": {
+    "base": "9f39af35723e1ebe8f94963f1dbd71d54d4309a9",
+    "checked_status": {
+      "BOREL_WIDTH_ENVELOPE_PRUNING": "proved",
+      "DL_NATIVE_RECTIFIABLE_RELATIVE_DISCARD_BOUND": "imported",
+      "DL_RELATIVE_DISCARD_FAMILY_BOUND": "proved",
+      "KKL_PARABOLIC_WAVE_STATIONARY_PROOF_REPAIR": "open",
+      "KKL_STATIONARY_ONE_RETAINED_CHAIN": "proved",
+      "KKL_STATIONARY_RELATIVE_WAVE_CONTINUATION": "proved",
+      "KKL_STATIONARY_RELATIVE_WAVE_CONTINUATION_ANALYTIC": "proved",
+      "N1_BOREL_RECTIFIABLE_CORE_REDUCTION": "proved",
+      "N1_PREPRUNING_BOREL_WAVE_ATLAS": "proved",
+      "STANDARD_BOREL_ORDERED_WAVE_REALIZATION": "proved"
+    },
+    "ledger_sha256": "b858a15f378c78bc1eb2403575086813831f69301662510ca7a7a6748cbaf43c",
+    "n1_dependency_closure": [
+      "BOREL_WIDTH_ENVELOPE_PRUNING",
+      "DL_NATIVE_RECTIFIABLE_RELATIVE_DISCARD_BOUND",
+      "DL_RELATIVE_DISCARD_FAMILY_BOUND",
+      "KKL_STATIONARY_ONE_RETAINED_CHAIN",
+      "KKL_STATIONARY_RELATIVE_WAVE_CONTINUATION",
+      "KKL_STATIONARY_RELATIVE_WAVE_CONTINUATION_ANALYTIC",
+      "N1_BOREL_RECTIFIABLE_CORE_REDUCTION",
+      "N1_PREPRUNING_BOREL_WAVE_ATLAS",
+      "STANDARD_BOREL_ORDERED_WAVE_REALIZATION"
+    ],
+    "proof_objects": {
+      "research/mlc_unified/kkl_stationary_n1_borel_ordered_wave_realization_20260726.md": {
+        "git_blob": "8096df508def24afb61a5b295405069768ba58ba",
+        "sha256": "6f9b4085c914bd74dd5030c67f311334a4b4882594e111ff552429e4fcc9d118"
+      },
+      "research/mlc_unified/kkl_stationary_n1_borel_width_envelope_20260726.md": {
+        "git_blob": "7e7afddfe849b17eb224728d80e3eb7a37040eb8",
+        "sha256": "9f2abd1e8ddd0e0e1b4ffc3b55b8daf3ba64b4bcbe4e9562454a850e5e8422be"
+      },
+      "research/mlc_unified/kkl_stationary_n1_bowr_frozen_backward_audit_20260726.md": {
+        "git_blob": "40725193c96b2c23bbbd03b06c12a61ab4fe83de",
+        "sha256": "f9a6ba1c1c9875cdcf1de1506d3540db21400fdcac42b7edcc3cad9a574ff0f3"
+      },
+      "research/mlc_unified/kkl_stationary_n1_degree_two_directionalization_audit_20260726.md": {
+        "git_blob": "e440e1c6a947b12c9186e6d9d4987e721e1853ec",
+        "sha256": "b57b7ce69a5d3d64bd1929383283e0ab5ca6bc9bd1da0bd20c54b7cd0b0367a1"
+      },
+      "research/mlc_unified/kkl_stationary_n1_dl_relative_discard_bound_20260726.md": {
+        "git_blob": "5bb4f27820b2a96f594d04a0442336c6d6246073",
+        "sha256": "80abc64278889469f1b95508a378d30f7de003b5d6cecf05d64a6c84f6f419e9"
+      },
+      "research/mlc_unified/kkl_stationary_n1_frozen_backward_audit_20260726.md": {
+        "git_blob": "640aaa4b31142749f7a25d652e91ba4a51aefe81",
+        "sha256": "0e44712dc835004b12a72d4856eeb1ab996ace2d492e0fdd664523668f1a057e"
+      },
+      "research/mlc_unified/kkl_stationary_n1_integration_audit_20260726.md": {
+        "git_blob": "3c35f778affc85061a453a9023091aa993a5cd08",
+        "sha256": "cc6fa48283654801124e8a0d29de120386fbb7b5dd37a59d2411d32594ef14b3"
+      },
+      "research/mlc_unified/kkl_stationary_relative_wave_continuation.md": {
+        "git_blob": "aa9f13d13c4f9fdac4550e32c22e947e9d7831d3",
+        "sha256": "adfc7bcd5a73ce7e7abe12c11c3e2c4d778826b995bf9114c6f8b431ef38094f"
+      },
+      "research/mlc_unified/kkl_stationary_retained_realization_source_audit.md": {
+        "git_blob": "17d09499a8bbebdeab4f8ecac0d7e0a5c995087f",
+        "sha256": "13e2fd23db34f1e227fa6e8ccaa94450560d7a7a903b9ad32481b458e9a24a63"
+      },
+      "research/mlc_unified/qa_extremal_wave_2026-07-26.md": {
+        "git_blob": "1260e3612251db8f164cce7f8bec0e7d8b026160",
+        "sha256": "a7fad5f48b54b5af73a3f8efbbe21d11d5ac503aee6710c6818b210e24c0ae9f"
+      },
+      "research/mlc_unified/qa_native_kkl_stationary_2026-07-26.md": {
+        "git_blob": "408fab92bf866f6f7bcedfacd1a13f1ef684b78e",
+        "sha256": "de82738a8a8494edc0d9a7a77b4c089ffb968304eadb60e17c0a14e220fc9044"
+      }
+    }
+  },
+  "schema": 1,
+  "scope": "source identity and extraction only; not proof of Lemma 6.24",
+  "sources": {
+    "DL": {
+      "bytes": 882537,
+      "locations": {
+        "Lemma 5.1": [
+          {
+            "extracted_line": 33,
+            "pdf_page": 34
+          },
+          {
+            "extracted_line": 25,
+            "pdf_page": 38
+          },
+          {
+            "extracted_line": 34,
+            "pdf_page": 38
+          }
+        ],
+        "Lemma 5.2": [
+          {
+            "extracted_line": 35,
+            "pdf_page": 34
+          },
+          {
+            "extracted_line": 45,
+            "pdf_page": 35
+          },
+          {
+            "extracted_line": 49,
+            "pdf_page": 35
+          }
+        ]
+      },
+      "pdf_pages": 41,
+      "pdf_url": "https://arxiv.org/pdf/2309.02107v3",
+      "sha256": "e88462e43b3c172cf309d5b3d38caa21ee8f43876bac1e07cce84b309dfb8c6b",
+      "version": "2309.02107v3"
+    },
+    "KKL": {
+      "bytes": 3992307,
+      "locations": {
+        "(6.25)": [
+          {
+            "extracted_line": 30,
+            "pdf_page": 49
+          },
+          {
+            "extracted_line": 14,
+            "pdf_page": 50
+          },
+          {
+            "extracted_line": 15,
+            "pdf_page": 50
+          }
+        ],
+        "(6.26)": [
+          {
+            "extracted_line": 37,
+            "pdf_page": 49
+          },
+          {
+            "extracted_line": 11,
+            "pdf_page": 50
+          }
+        ],
+        "(6.27)": [
+          {
+            "extracted_line": 5,
+            "pdf_page": 50
+          },
+          {
+            "extracted_line": 14,
+            "pdf_page": 50
+          }
+        ],
+        "(6.28)": [
+          {
+            "extracted_line": 9,
+            "pdf_page": 50
+          },
+          {
+            "extracted_line": 14,
+            "pdf_page": 50
+          }
+        ],
+        "(6.29)": [
+          {
+            "extracted_line": 12,
+            "pdf_page": 50
+          },
+          {
+            "extracted_line": 14,
+            "pdf_page": 50
+          }
+        ],
+        "(6.30)": [
+          {
+            "extracted_line": 16,
+            "pdf_page": 50
+          },
+          {
+            "extracted_line": 7,
+            "pdf_page": 51
+          }
+        ],
+        "(6.34)": [
+          {
+            "extracted_line": 6,
+            "pdf_page": 51
+          },
+          {
+            "extracted_line": 7,
+            "pdf_page": 51
+          }
+        ],
+        "A.1. Ideal markings": [
+          {
+            "extracted_line": 23,
+            "pdf_page": 56
+          }
+        ],
+        "Lemma 6.1": [
+          {
+            "extracted_line": 50,
+            "pdf_page": 39
+          },
+          {
+            "extracted_line": 52,
+            "pdf_page": 39
+          },
+          {
+            "extracted_line": 2,
+            "pdf_page": 40
+          },
+          {
+            "extracted_line": 7,
+            "pdf_page": 40
+          },
+          {
+            "extracted_line": 11,
+            "pdf_page": 40
+          },
+          {
+            "extracted_line": 18,
+            "pdf_page": 40
+          },
+          {
+            "extracted_line": 27,
+            "pdf_page": 40
+          },
+          {
+            "extracted_line": 37,
+            "pdf_page": 40
+          },
+          {
+            "extracted_line": 38,
+            "pdf_page": 40
+          },
+          {
+            "extracted_line": 34,
+            "pdf_page": 45
+          },
+          {
+            "extracted_line": 31,
+            "pdf_page": 46
+          },
+          {
+            "extracted_line": 34,
+            "pdf_page": 46
+          },
+          {
+            "extracted_line": 22,
+            "pdf_page": 53
+          }
+        ],
+        "Lemma 6.14": [
+          {
+            "extracted_line": 34,
+            "pdf_page": 45
+          },
+          {
+            "extracted_line": 31,
+            "pdf_page": 46
+          },
+          {
+            "extracted_line": 34,
+            "pdf_page": 46
+          },
+          {
+            "extracted_line": 22,
+            "pdf_page": 53
+          }
+        ],
+        "Lemma 6.24": [
+          {
+            "extracted_line": 29,
+            "pdf_page": 49
+          }
+        ],
+        "Lemma 6.31": [
+          {
+            "extracted_line": 18,
+            "pdf_page": 50
+          },
+          {
+            "extracted_line": 65,
+            "pdf_page": 50
+          }
+        ],
+        "Lemma A.10": [
+          {
+            "extracted_line": 2,
+            "pdf_page": 51
+          },
+          {
+            "extracted_line": 13,
+            "pdf_page": 54
+          },
+          {
+            "extracted_line": 18,
+            "pdf_page": 62
+          },
+          {
+            "extracted_line": 21,
+            "pdf_page": 64
+          }
+        ],
+        "Lemma A.11": [
+          {
+            "extracted_line": 28,
+            "pdf_page": 62
+          },
+          {
+            "extracted_line": 28,
+            "pdf_page": 63
+          },
+          {
+            "extracted_line": 49,
+            "pdf_page": 63
+          },
+          {
+            "extracted_line": 54,
+            "pdf_page": 63
+          }
+        ],
+        "Lemma A.13": [
+          {
+            "extracted_line": 2,
+            "pdf_page": 49
+          },
+          {
+            "extracted_line": 35,
+            "pdf_page": 49
+          },
+          {
+            "extracted_line": 32,
+            "pdf_page": 54
+          },
+          {
+            "extracted_line": 24,
+            "pdf_page": 64
+          }
+        ],
+        "Lemma A.15": [
+          {
+            "extracted_line": 11,
+            "pdf_page": 49
+          },
+          {
+            "extracted_line": 10,
+            "pdf_page": 65
+          }
+        ],
+        "Proposition 3.9": [
+          {
+            "extracted_line": 6,
+            "pdf_page": 21
+          },
+          {
+            "extracted_line": 10,
+            "pdf_page": 21
+          },
+          {
+            "extracted_line": 31,
+            "pdf_page": 39
+          },
+          {
+            "extracted_line": 52,
+            "pdf_page": 39
+          },
+          {
+            "extracted_line": 2,
+            "pdf_page": 40
+          }
+        ],
+        "Proposition 6.20": [
+          {
+            "extracted_line": 36,
+            "pdf_page": 48
+          },
+          {
+            "extracted_line": 41,
+            "pdf_page": 48
+          },
+          {
+            "extracted_line": 44,
+            "pdf_page": 48
+          },
+          {
+            "extracted_line": 8,
+            "pdf_page": 51
+          }
+        ],
+        "Proposition 6.21": [
+          {
+            "extracted_line": 47,
+            "pdf_page": 48
+          }
+        ],
+        "Proposition 6.22": [
+          {
+            "extracted_line": 7,
+            "pdf_page": 49
+          }
+        ],
+        "Proposition 6.23": [
+          {
+            "extracted_line": 14,
+            "pdf_page": 49
+          },
+          {
+            "extracted_line": 8,
+            "pdf_page": 51
+          }
+        ],
+        "Proposition 6.6": [
+          {
+            "extracted_line": 2,
+            "pdf_page": 43
+          },
+          {
+            "extracted_line": 20,
+            "pdf_page": 53
+          }
+        ],
+        "Proposition A.12": [
+          {
+            "extracted_line": 5,
+            "pdf_page": 55
+          },
+          {
+            "extracted_line": 9,
+            "pdf_page": 63
+          },
+          {
+            "extracted_line": 17,
+            "pdf_page": 64
+          },
+          {
+            "extracted_line": 36,
+            "pdf_page": 64
+          },
+          {
+            "extracted_line": 8,
+            "pdf_page": 66
+          },
+          {
+            "extracted_line": 12,
+            "pdf_page": 66
+          }
+        ],
+        "Proposition A.14": [
+          {
+            "extracted_line": 2,
+            "pdf_page": 49
+          },
+          {
+            "extracted_line": 2,
+            "pdf_page": 65
+          }
+        ],
+        "Theorem 3.6": [
+          {
+            "extracted_line": 21,
+            "pdf_page": 20
+          },
+          {
+            "extracted_line": 23,
+            "pdf_page": 20
+          },
+          {
+            "extracted_line": 28,
+            "pdf_page": 20
+          },
+          {
+            "extracted_line": 33,
+            "pdf_page": 20
+          },
+          {
+            "extracted_line": 38,
+            "pdf_page": 20
+          },
+          {
+            "extracted_line": 2,
+            "pdf_page": 21
+          },
+          {
+            "extracted_line": 8,
+            "pdf_page": 21
+          },
+          {
+            "extracted_line": 9,
+            "pdf_page": 21
+          }
+        ],
+        "Theorem A": [
+          {
+            "extracted_line": 21,
+            "pdf_page": 3
+          },
+          {
+            "extracted_line": 23,
+            "pdf_page": 3
+          },
+          {
+            "extracted_line": 23,
+            "pdf_page": 5
+          },
+          {
+            "extracted_line": 27,
+            "pdf_page": 22
+          },
+          {
+            "extracted_line": 32,
+            "pdf_page": 29
+          },
+          {
+            "extracted_line": 7,
+            "pdf_page": 60
+          }
+        ],
+        "Theorem C": [
+          {
+            "extracted_line": 6,
+            "pdf_page": 4
+          },
+          {
+            "extracted_line": 36,
+            "pdf_page": 32
+          },
+          {
+            "extracted_line": 24,
+            "pdf_page": 67
+          }
+        ],
+        "Theorem D": [
+          {
+            "extracted_line": 24,
+            "pdf_page": 5
+          },
+          {
+            "extracted_line": 26,
+            "pdf_page": 5
+          },
+          {
+            "extracted_line": 16,
+            "pdf_page": 7
+          },
+          {
+            "extracted_line": 11,
+            "pdf_page": 20
+          },
+          {
+            "extracted_line": 13,
+            "pdf_page": 20
+          },
+          {
+            "extracted_line": 19,
+            "pdf_page": 20
+          },
+          {
+            "extracted_line": 23,
+            "pdf_page": 20
+          },
+          {
+            "extracted_line": 24,
+            "pdf_page": 20
+          },
+          {
+            "extracted_line": 16,
+            "pdf_page": 68
+          }
+        ]
+      },
+      "pdf_pages": 73,
+      "pdf_url": "https://arxiv.org/pdf/2606.27272v1",
+      "sha256": "4c08805384b473dc0e55d76491c52c9fbe7c027e6da301f2c365a170ed7d9140",
+      "version": "2606.27272v1"
+    }
+  }
+}
