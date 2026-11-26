@@ -2608,5 +2608,36 @@
     "obligations": [
       "DIRECT_DECORATION_END_PRIME_END_COFINALITY"
     ]
+  },
+  "stationary-physical-itinerary-20261126": {
+    "guide": "contributions/stationary_physical_itinerary_20261126/NOTE.md#stationary-physical-itinerary-20261126",
+    "theorems": {
+      "formalization/weighted/StationaryPhysicalItinerary.lean": [
+        "quadratic_critical_limb_injective",
+        "limb_inverse_preconnected",
+        "limb_inverse_image",
+        "limb_inverse_component",
+        "mem_limbItinerary",
+        "limbItinerary_subset",
+        "limbItinerary_component",
+        "quadratic_filled_continuous_open",
+        "quadratic_selected_itinerary_component",
+        "quadratic_restriction_itinerary_contained",
+        "limbItinerary_image",
+        "limbItinerary_injective",
+        "quadratic_critical_limb_unique_inverse",
+        "quadratic_mark_itinerary_component",
+        "limbItinerary_add",
+        "limbItinerary_prefix_image",
+        "quadratic_marked_restriction_selection",
+        "quadratic_model_carrier_itinerary_component",
+        "degree_two_limb_injective",
+        "limbItinerary_continuous_inverse",
+        "degree_two_independent_inverse_agreement"
+      ]
+    },
+    "obligations": [
+      "KKL_STATIONARY_PROOF_USED_PREDECESSOR_SELECTION"
+    ]
   }
 }
