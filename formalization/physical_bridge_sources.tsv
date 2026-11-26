@@ -401,4 +401,5 @@ formalization/weighted/QuadraticCylinderCensus.lean	METADATA
 formalization/weighted/DecorationCriticalCycle.lean	METADATA
 formalization/weighted/QuadraticCylinderRamification.lean	METADATA
 formalization/weighted/StationaryLightModel.lean	METADATA
+formalization/weighted/StationaryPhysicalItinerary.lean	METADATA
 formalization/weighted/QuadraticEnlargementDegree.lean	METADATA
