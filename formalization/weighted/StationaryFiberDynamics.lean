@@ -1,5 +1,6 @@
 import StationaryGeometricFibers
 import QuadraticCylinderCensus
+import QuadraticEscape
 
 /-!
 # Exact dynamics of geometric quotient fibers
@@ -625,5 +626,60 @@ theorem quotient_dynamical_homeomorphism_of_common_cuts
     quotient_fiber_refinement_of_cut_separation q p hp hqf A hqa hpa hsepP x z⟩
 
 end ModelComparison
+
+
+/-- The genuine filled Julia set of the quadratic polynomial, defined
+through the already constructed escape potential. The next theorem
+identifies this set with the bounded-orbit locus for every parameter. -/
+noncomputable def quadraticFilled (c : ℂ) : Set ℂ :=
+  {z | QuadraticEscape.escape c z = 0}
+
+theorem quadratic_filled_iff_bounded (c z : ℂ) :
+    z ∈ quadraticFilled c ↔
+      ∃ B : ℝ, ∀ n : ℕ, ‖QuadraticEscape.orbit c n z‖ ≤ B :=
+  QuadraticEscape.escape_zero_iff_bounded c z
+
+/-- Compactness is a proved property of the actual bounded-orbit set,
+not an additional hypothesis on an arbitrary physical carrier. -/
+theorem quadratic_filled_compact (c : ℂ) : IsCompact (quadraticFilled c) := by
+  have hc : Continuous (fun z : ℂ => QuadraticEscape.escape c z) :=
+    QuadraticEscape.escape_continuous.comp
+      (continuous_const.prodMk continuous_id)
+  have hclosed : IsClosed (quadraticFilled c) :=
+    isClosed_singleton.preimage hc
+  apply (isCompact_closedBall (0 : ℂ) (1+‖c‖)).of_isClosed_subset hclosed
+  intro z hz
+  rw [Metric.mem_closedBall, dist_zero_right]
+  exact QuadraticEscape.escape_zero_orbit_bound c z hz 0
+
+/-- Both directions of complete invariance of the genuine filled set
+follow from the proved quadratic escape functional equation. -/
+theorem quadratic_filled_complete_invariant (c z : ℂ) :
+    z^2+c ∈ quadraticFilled c ↔ z ∈ quadraticFilled c := by
+  change QuadraticEscape.escape c (z^2+c) = 0 ↔ QuadraticEscape.escape c z = 0
+  rw [QuadraticEscape.escape_step]
+  constructor <;> intro h <;> linarith
+
+/-- The actual self-map on the filled Julia set. -/
+noncomputable def quadraticFilledMap (c : ℂ) : quadraticFilled c → quadraticFilled c :=
+  fun z => ⟨(z : ℂ)^2+c, (quadratic_filled_complete_invariant c z).mpr z.property⟩
+
+/-- The full geometric fiber transport theorem on the genuine
+filled Julia set at every parameter. No compactness, complete
+invariance or restriction equation for an unspecified physical
+carrier is a premise. The finite-to-one monotone model still is. -/
+theorem quadratic_filled_fiber_image [T1Space Y]
+    (c : ℂ) (p : quadraticFilled c → Y) (G : Y → Y)
+    (hp : Continuous p) (hsurj : Surjective p)
+    (hs : Semiconj p (quadraticFilledMap c) G)
+    (hf : ∀ y : Y, IsPreconnected (p ⁻¹' {y}))
+    (hfinite : ∀ y : Y, (G ⁻¹' {y}).Finite) (y : Y) :
+    quadraticFilledMap c '' (p ⁻¹' {y}) = p ⁻¹' {G y} := by
+  letI : CompactSpace (quadraticFilled c) :=
+    isCompact_iff_compactSpace.mp (quadratic_filled_compact c)
+  exact quadratic_restriction_fiber_image c (quadraticFilled c)
+    (quadraticFilledMap c) (fun _ => rfl)
+    (fun z hz => (quadratic_filled_complete_invariant c z).mp hz)
+    p G hp hsurj hs hf hfinite y
 
 end LoopsStationaryFiberDynamics
