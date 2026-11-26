@@ -203,3 +203,39 @@ Relevant repository gates remain:
 - Global local connectivity of the Mandelbrot set: not claimed.
 
 No proof-status JSON, generated ledger or source-locked text is modified. A human reviewer should verify the mathematical dependencies above before promotion. This packet was developed with OpenAI GPT-6.2; the argument and source audit have not been independently peer-reviewed or formalized in Lean.
+
+## 8. All finite pullback components, including critical branches
+
+The circle-transfer theorem actually propagates to the whole finite inverse tower of the little cycle, not only its univalent copies.
+
+**Theorem 8.** For any n>=0, any i, and any connected component D of f^{-n}(K_i), put E=p(D). Then D=p^{-1}(E), E is a nondegenerate subdendrite of Y, and the complementary plane quotient induces an orientation-preserving prime-end homeomorphism
+
+    m_D : C_D → C_E.
+
+The physical and model finite pullback circle coverings to K_i and A_i are conjugate by m_D and m_i, with their actual common covering degree, even if the pullback contains critical points. The transfers commute under composition along the entire finite inverse tower.
+
+### 8.1. Actual finite pullback germs
+
+The case n=0 is Section 4. For n>0 let F=f^n. The pullback set F^{-1}(K_i) lies in X and is full. Every connected component D is compact and full (as is every subcontinuum of X). Here we also need the separated-component property and an actual collar covering; we verify both rather than assume that the inverse tree is univalent.
+
+Choose nested closed equipotential Jordan disks V_j around K_i, with intersection K_i, boundaries avoiding the finite set of critical values of F. Start sufficiently close that each V_j contains no critical value of F outside K_i. The inverse image of each V_j has finitely many Jordan disk components. Indeed F is proper and open, so each component of the open inverse of the disk interior maps onto the interior; the number of such components is at most deg F. The inverse image of the open exterior disk on the sphere is connected: every component of its preimage maps onto that connected exterior by properness and openness and must contain a preimage of infinity, of which F has only one. The inverse image of the smooth Jordan boundary has no branch points, so consists of disjoint Jordan circles. Connectedness of the exterior inverse rules out holes in the disk components. Their closures are disjoint.
+
+Each disk component at stage j contains at least one disk component at stage j+1 since it maps onto V_j, so the nondecreasing number of components stabilizes (bounded by deg F). From a stabilized stage each component has a unique nested successor. Intersecting the nested closed disks in each chain gives a nonempty connected compact set. Distinct chains are disjoint and separated at that stage, and the union of the intersections is exactly F^{-1}(K_i). Thus these intersections are precisely its connected components, finitely many; each maps onto K_i, by compactness and surjectivity at every stage. In particular D is nondegenerate.
+
+For a sufficiently late stage, take U to be the interior of the disk component whose intersection is D, and V the interior of the corresponding V_j. Then F:U→V is proper of its actual degree d, and F^{-1}(K_i)∩U=D. Any critical point in U maps into K_i by the choice of V; hence every critical point in U lies in D. Consequently F:U minus D→V minus K_i is an unbranched proper covering of degree d between annular collars. The inner prime-end circle map s_D:C_D→C_i is an orientation-preserving degree-d covering. One standard way to see the extension is to use conformal exterior coordinates for the two full continua: the germ is holomorphic and the modulus of the target exterior coordinate tends uniformly to one on approach to the inner unit circle. Reflection across that circle (or reflection of its harmonic log modulus and local conjugate) gives the boundary covering. No assumption on local connectivity or on the sizes of the critical fibers is used.
+
+### 8.2. Exhaustion of boundary fibers through a branched pullback
+
+By Section 3.4, D is saturated. A proper monotone map has connected preimages of connected sets; hence E is a connected component of g^{-n}(A_i), and D=p^{-1}(E). In particular E is a nondegenerate subdendrite, because g^n(E)=A_i. Apply the monotone boundary extension theorem to D and E. It gives a monotone circle surjection m_D and the impression/landing formula as in (13).
+
+Fix b∈C_E and let L=m_D^{-1}(b), a nonempty connected set in C_D. For any a∈L choose points outside D tending to a in prime-end coordinates and sufficiently close to D to be in the germ U minus D. Their images under F tend to s_D(a) in the exterior prime-end disk of K_i. The corresponding p-images approach the model prime end b, hence their physical model-plane limit is the landing point y of b (E is locally connected). By p F=g^n p and continuity, the p F-images converge in the model plane to g^n(y). But the target boundary-transfer map m_i also takes those sequences to the prime end m_i(s_D(a)). Consequently
+
+    landing_{A_i}(m_i(s_D(a))) = g^n(y)       for every a∈L.
+
+Thus m_i(s_D(L)) is a connected subset of one model landing fiber. That landing fiber is totally disconnected by the analytic boundary-uniqueness argument used in Section 4.1. Hence m_i(s_D(L)) is a singleton. The already proved injectivity of m_i implies s_D(L) is a singleton. The circle covering s_D is finite-to-one, so the connected set L itself is a singleton. This proves that m_D is a homeomorphism. The argument works unchanged when d>1: the connectedness of L, not injectivity of the physical germ, is the essential fact.
+
+The model circle map is exactly t_D=m_i s_D m_D^{-1}, by the same approaching-sequence proof of Section 4.2. It is a degree-d covering. The finite preimage-component correspondence ensures the model has the complementary germ on which to take these limits. For a compatible intermediate component D' and iterate f^r:D→D' with f^r(D)=D', D is a component of (f^r)^{-1}(D'): any connected subset of that inverse belongs to the original full inverse and hence to D. Repeat the collar construction with D' as target. Its own transfer m_{D'} is already a homeomorphism by the present theorem applied at its depth. Continuity and the plane semiconjugacy give the commutative boundary square exactly as above. Since each transfer extends the same plane map, the squares commute under every finite composition.
+
+**Scope:** This removes a critical-branch restriction from the prime-end result of Section 4. It gives canonical boundary conjugacy at arbitrary finite depth for the inverse components of actual little Julia sets. It does not prove a limiting collar estimate, compatible markings on an independently specified pseudo-ql Wave surface, or a corresponding homeomorphism of the whole inverse hull T*. No analytic distortion conclusion follows.
+
+Additional adversarial checks: the inverse-component count is bounded by the actual polynomial degree and is eventually constant; no count of components is inferred merely from the abstract model. Critical values in the target are allowed, but all critical points of the chosen restriction then lie in the deleted inner continuum, making the annular germ unbranched. A finite-to-one circle covering may have many inverse accesses, but it cannot contain a nontrivial connected subset of one fiber. This is why the proof preserves relative accesses even on critical pullbacks.
