@@ -7,7 +7,8 @@
     "locator": "Theorem III, p. 469 (printed; PDF page 3)",
     "verification": "VERIFIED",
     "quote": "If c ∈ M is not infinitely renormalizable",
-    "prior_atlas_sha256": "53c3ff3e06fc512cc6af809fc55cb374941d6eaada64bf8c98a291dc8179c2e9"
+    "prior_atlas_sha256": "53c3ff3e06fc512cc6af809fc55cb374941d6eaada64bf8c98a291dc8179c2e9",
+    "independent_review_scope": "Inherited #132/source ledger locator; not independently rechecked here; no new coverage claim."
   },
   "L": {
     "title": "Dynamics of quadratic polynomials, I–II",
@@ -17,7 +18,8 @@
     "locator": "Rigidity Theorem and Cor. 1.1 p. 187; §2.5 pp. 198–199; Thm IV' p. 239",
     "verification": "VERIFIED",
     "quote": "Any combinatorial class contains at most one quadratic polynomial satisfying the secondary limbs condition with a priori bounds.",
-    "prior_atlas_sha256": "a286b6d3c874c803c1d56a669b5850e79c903190534aeab4840664b8e631bf16"
+    "prior_atlas_sha256": "a286b6d3c874c803c1d56a669b5850e79c903190534aeab4840664b8e631bf16",
+    "independent_review_scope": "Relevant source pages opened during #134 review; statement/definition scope only, not full proof or byte comparison."
   },
   "Lreal": {
     "title": "Dynamics of quadratic polynomials, I–II",
@@ -27,7 +29,8 @@
     "locator": "Theorem VIII, §12.1, p. 281",
     "verification": "VERIFIED",
     "quote": "then MLC holds at c.",
-    "prior_atlas_sha256": "a286b6d3c874c803c1d56a669b5850e79c903190534aeab4840664b8e631bf16"
+    "prior_atlas_sha256": "a286b6d3c874c803c1d56a669b5850e79c903190534aeab4840664b8e631bf16",
+    "independent_review_scope": "Inherited #132/source ledger locator; not independently rechecked here; no new coverage claim."
   },
   "Ldensity": {
     "title": "Dynamics of quadratic polynomials, I–II",
@@ -37,7 +40,8 @@
     "locator": "Density Theorem, p. 188; theorem statement not independently re-quoted in this follow-up",
     "verification": "UNVERIFIED",
     "quote": null,
-    "prior_atlas_sha256": "a286b6d3c874c803c1d56a669b5850e79c903190534aeab4840664b8e631bf16"
+    "prior_atlas_sha256": "a286b6d3c874c803c1d56a669b5850e79c903190534aeab4840664b8e631bf16",
+    "independent_review_scope": "UNVERIFIED; not upgraded."
   },
   "K": {
     "title": "A priori bounds for some infinitely renormalizable quadratics: I. Bounded primitive combinatorics",
@@ -48,7 +52,8 @@
     "verification": "VERIFIED",
     "quote": "of bounded primitive type. Then f has a priori bounds.",
     "prior_atlas_sha256": "46e7ff4d5cc8ea190e439f45b2e4ed7308c1cf588a666daa5150eeb0b435c9c0",
-    "opened_url": "https://arxiv.org/pdf/math/0609045"
+    "opened_url": "https://arxiv.org/pdf/math/0609045",
+    "independent_review_scope": "Relevant source pages opened during #134 review; statement/definition scope only, not full proof or byte comparison."
   },
   "KLdec": {
     "title": "A priori bounds for some infinitely renormalizable quadratics: II. Decorations",
@@ -58,7 +63,8 @@
     "locator": "Main Theorem and Cor. 1.1, p. 58; Thm 1.2 and Remark 1.2 p. 59; §§2.1–2.2, pp. 61–64",
     "verification": "VERIFIED",
     "quote": "the parameters q_n and n_n are bounded",
-    "prior_atlas_sha256": "a0c77541efe273aa180f31cbb67093b9931d7b73389e6bb8947452998b13bba5"
+    "prior_atlas_sha256": "a0c77541efe273aa180f31cbb67093b9931d7b73389e6bb8947452998b13bba5",
+    "independent_review_scope": "Inherited #132/source ledger locator; not independently rechecked here; no new coverage claim."
   },
   "KLmol": {
     "title": "A priori bounds for some infinitely renormalizable quadratics, III: Molecules",
@@ -68,7 +74,8 @@
     "locator": "Main Theorem p. 1; Cor. 1.1 p. 2; §2.3 and Lemma 2.5 pp. 6–7 (IMS preprint)",
     "verification": "VERIFIED",
     "quote": "we will record only the primitive renormalizations",
-    "prior_atlas_sha256": "0225b5e1416d62eadb3f9b1ae9d5d3c4c4287b0d572167c744e9bae900220e53"
+    "prior_atlas_sha256": "0225b5e1416d62eadb3f9b1ae9d5d3c4c4287b0d572167c744e9bae900220e53",
+    "independent_review_scope": "Relevant source pages opened during #134 review; statement/definition scope only, not full proof or byte comparison."
   },
   "DL23": {
     "title": "Local connectivity of the Mandelbrot set at some satellite parameters of bounded type",
@@ -78,7 +85,8 @@
     "locator": "Theorem 1.1, pp. 3–4 (arXiv)",
     "verification": "VERIFIED",
     "quote": "There is a small copy",
-    "prior_atlas_sha256": "4a8f0f8c3ffd96c6a5a364340f2a7394fc75d0f355a7576040286c47365baec8"
+    "prior_atlas_sha256": "4a8f0f8c3ffd96c6a5a364340f2a7394fc75d0f355a7576040286c47365baec8",
+    "independent_review_scope": "Inherited #132/source ledger locator; not independently rechecked here; no new coverage claim."
   },
   "DL26": {
     "title": "MLC at Feigenbaum points",
@@ -88,7 +96,8 @@
     "locator": "Theorems A and B p. 3; definitions §2.2.5 pp. 10–11 (arXiv v3)",
     "verification": "VERIFIED",
     "quote": "The Mandelbrot set is locally connected at any Feigenbaum parameter.",
-    "prior_atlas_sha256": "e88462e43b3c172cf309d5b3d38caa21ee8f43876bac1e07cce84b309dfb8c6b"
+    "prior_atlas_sha256": "e88462e43b3c172cf309d5b3d38caa21ee8f43876bac1e07cce84b309dfb8c6b",
+    "independent_review_scope": "Relevant source pages opened during #134 review; statement/definition scope only, not full proof or byte comparison."
   },
   "CS": {
     "title": "Satellite renormalization of quadratic polynomials",
@@ -98,7 +107,8 @@
     "locator": "Theorem D p. 6; QG_N equation (6.8) p. 62; signed CF pp. 5–6",
     "verification": "VERIFIED",
     "quote": "it is combinatorially rigid, and the Mandelbrot set is locally connected at c.",
-    "prior_atlas_sha256": "b1d6b0952247efc3cd7a6e0602dbb8246b43b9edf7b3c5d0da942cc822246c25"
+    "prior_atlas_sha256": "b1d6b0952247efc3cd7a6e0602dbb8246b43b9edf7b3c5d0da942cc822246c25",
+    "independent_review_scope": "Relevant source pages opened during #134 review; statement/definition scope only, not full proof or byte comparison."
   },
   "C": {
     "title": "Combinatorial rigidity for some infinitely renormalizable unicritical polynomials",
@@ -108,7 +118,8 @@
     "locator": "Rigidity Theorem, pp. 1–2 (author PDF)",
     "verification": "VERIFIED",
     "quote": "satisfying the SL and a priori bounds conditions",
-    "prior_atlas_sha256": "c62ea484883ccb860286aab19a21d31bfdb22d102a792594d5b8986f6769c72d"
+    "prior_atlas_sha256": "c62ea484883ccb860286aab19a21d31bfdb22d102a792594d5b8986f6769c72d",
+    "independent_review_scope": "Relevant source pages opened during #134 review; statement/definition scope only, not full proof or byte comparison."
   },
   "Lev1": {
     "title": "Rigidity and non-local connectivity of Julia sets of some quadratic polynomials",
@@ -119,7 +130,8 @@
     "verification": "VERIFIED",
     "quote": "such that f^{n_m} is simply renormalizable",
     "prior_atlas_sha256": "8e5a59b111c0d841d5deb3ab7adb12b556896a2916c1e4cc8418fe41789335cd",
-    "opened_url": "https://arxiv.org/pdf/0710.4406"
+    "opened_url": "https://arxiv.org/pdf/0710.4406",
+    "independent_review_scope": "Relevant source pages opened during #134 review; statement/definition scope only, not full proof or byte comparison."
   },
   "Lev2": {
     "title": "Rigidity and non-local connectivity of Julia sets of some quadratic polynomials",
@@ -130,7 +142,8 @@
     "verification": "VERIFIED",
     "quote": "provided that all the renormalizations are non-primitive (satellite)",
     "prior_atlas_sha256": "8e5a59b111c0d841d5deb3ab7adb12b556896a2916c1e4cc8418fe41789335cd",
-    "opened_url": "https://arxiv.org/pdf/0710.4406"
+    "opened_url": "https://arxiv.org/pdf/0710.4406",
+    "independent_review_scope": "Relevant source pages opened during #134 review; statement/definition scope only, not full proof or byte comparison."
   },
   "Levadd": {
     "title": "Addendum to Rigidity and non-local connectivity of Julia sets of some quadratic polynomials",
@@ -141,7 +154,8 @@
     "verification": "VERIFIED",
     "quote": "then M is locally-connected at c_*.",
     "prior_atlas_sha256": "8e5a59b111c0d841d5deb3ab7adb12b556896a2916c1e4cc8418fe41789335cd",
-    "opened_url": "https://arxiv.org/pdf/0710.4406"
+    "opened_url": "https://arxiv.org/pdf/0710.4406",
+    "independent_review_scope": "Relevant source pages opened during #134 review; statement/definition scope only, not full proof or byte comparison."
   },
   "EE": {
     "title": "A priori bounds for some infinitely renormalizable quadratics: IV. Elephant Eyes (PDF title; arXiv catalogue has singular quadratic)",
@@ -151,7 +165,9 @@
     "locator": "§4.0.1 E1–E3 p. 9; MLC statement §8 p. 18 (unnumbered; proof not audited)",
     "verification": "VERIFIED",
     "quote": "MLC at the corresponding parameter values follows from the machinery developed in [L1]",
-    "prior_atlas_sha256": "5eb36430a51a3fb6a1c04db15713aebc86068118450893ba2042021e4a8db725"
+    "prior_atlas_sha256": "5eb36430a51a3fb6a1c04db15713aebc86068118450893ba2042021e4a8db725",
+    "independent_review_scope": "Relevant source pages opened during #134 review; statement/definition scope only, not full proof or byte comparison.",
+    "hypothesis_detail": "§4.0.1 p.9 E1–E3; source simplification b<q; §8 pp.18–19 MLC outline depends on [DLP] and Jan 2026 footnote 5 notes development with Kapiamba. No independent proof audit."
   },
   "KKL": {
     "title": "MLC for parabolically bounded primitive renormalization",
@@ -162,7 +178,8 @@
     "verification": "VERIFIED",
     "quote": "Any parabolically bounded family of prime primitive types is rigid.",
     "prior_atlas_sha256": "4c08805384b473dc0e55d76491c52c9fbe7c027e6da301f2c365a170ed7d9140",
-    "hypothesis_detail": "For q>=2, balanced insertions Phi_q map the 1/q limb to 1/(q+1); tails are compositions Phi_n ... Phi_q(M), n>=q. Hence all tail images lie in nonreal primary limbs."
+    "hypothesis_detail": "p.3 defines rigid as MLC; §3.1 p.19 defines balanced limb insertion and parabolic tails; Theorem C p.4; Thm B p.56; DKLP prerequisite unavailable. No independent proof audit.",
+    "independent_review_scope": "Relevant source pages opened during #134 review; statement/definition scope only, not full proof or byte comparison."
   },
   "LY": {
     "title": "Dynamics of quadratic polynomials: complex bounds for real maps",
@@ -172,7 +189,8 @@
     "locator": "Theorem 1.1, Complex Bounds Theorem and Local Connectivity Theorem p. 1220",
     "verification": "VERIFIED",
     "quote": "infinitely renormalizable real quadratics have universal complex a priori bounds.",
-    "prior_atlas_sha256": "52c67b9960e4dd632db2aa56a0763312eb0bf6a3b43b33ce98698962e2fdc429"
+    "prior_atlas_sha256": "52c67b9960e4dd632db2aa56a0763312eb0bf6a3b43b33ce98698962e2fdc429",
+    "independent_review_scope": "Inherited #132/source ledger locator; not independently rechecked here; no new coverage claim."
   },
   "LvS": {
     "title": "Local connectivity of the Julia set of real polynomials",
@@ -183,7 +201,8 @@
     "verification": "VERIFIED",
     "quote": "The Julia set of f is either totally disconnected or locally connected.",
     "prior_atlas_sha256": "b623bd34992cc3e821cef350c824df4b38478e6ac05436283902f5a5a17ecce7",
-    "opened_url": "https://arxiv.org/pdf/math/9504227"
+    "opened_url": "https://arxiv.org/pdf/math/9504227",
+    "independent_review_scope": "Inherited #132/source ledger locator; not independently rechecked here; no new coverage claim."
   },
   "GS": {
     "title": "Generic hyperbolicity in the logistic family",
@@ -193,7 +212,8 @@
     "locator": "journal theorem/page UNVERIFIED",
     "verification": "UNVERIFIED",
     "quote": null,
-    "prior_atlas_sha256": "UNVERIFIED"
+    "prior_atlas_sha256": "UNVERIFIED",
+    "independent_review_scope": "UNVERIFIED; not upgraded."
   },
   "DKL": {
     "title": "Local connectivity of the Mandelbrot set along the real line",
@@ -203,7 +223,8 @@
     "locator": "UNVERIFIED primary manuscript; survey §4.3 after Theorem 4.1 and ref. [14]",
     "verification": "UNVERIFIED",
     "quote": null,
-    "prior_atlas_sha256": "UNVERIFIED"
+    "prior_atlas_sha256": "UNVERIFIED",
+    "independent_review_scope": "UNVERIFIED; not upgraded."
   },
   "survey": {
     "title": "On the MLC Conjecture and the Renormalization Theory in Complex Dynamics",
@@ -218,7 +239,8 @@
     "extra_quotes": [
       "along any vein of the Mandelbrot set",
       "Develop a Virtual Molecule version of the Near-Degenerate Regime."
-    ]
+    ],
+    "independent_review_scope": "Relevant source pages opened during #134 review; statement/definition scope only, not full proof or byte comparison."
   },
   "TUN": {
     "title": "On Fibers and Renormalization of Julia Sets and Multibrot Sets",
@@ -228,7 +250,8 @@
     "locator": "Theorem 3.1 and Corollary 3.2, p. 6 (IMS PDF); Introduction p. 2",
     "verification": "VERIFIED",
     "quote": "The fiber of any point in the Multibrot set is trivial if and only if the fiber of the image",
-    "prior_atlas_sha256": "1095be3a23d83cbc8acafe1c8ff7e24d787ffe791cdf8ea90b4f2b9686af8195"
+    "prior_atlas_sha256": "1095be3a23d83cbc8acafe1c8ff7e24d787ffe791cdf8ea90b4f2b9686af8195",
+    "independent_review_scope": "Relevant source pages opened during #134 review; statement/definition scope only, not full proof or byte comparison."
   },
   "CS2015": {
     "title": "Satellite renormalization of quadratic polynomials",
@@ -239,7 +262,8 @@
     "verification": "VERIFIED",
     "quote": "it is combinatorially rigid, and the Mandelbrot set is locally connected at c.",
     "prior_atlas_sha256": "UNVERIFIED",
-    "opened_url": "https://arxiv.org/pdf/1509.07843"
+    "opened_url": "https://arxiv.org/pdf/1509.07843",
+    "independent_review_scope": "Relevant source pages opened during #134 review; statement/definition scope only, not full proof or byte comparison."
   },
   "DKLP": {
     "title": "Elephant puzzles",
@@ -249,6 +273,7 @@
     "locator": "UNVERIFIED primary; KKL v1 p. 71 bibliography",
     "verification": "UNVERIFIED",
     "quote": null,
-    "prior_atlas_sha256": "UNVERIFIED"
+    "prior_atlas_sha256": "UNVERIFIED",
+    "independent_review_scope": "UNVERIFIED; not upgraded."
   }
 }

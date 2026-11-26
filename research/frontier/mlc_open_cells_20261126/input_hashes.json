@@ -119,5 +119,6 @@
   "local": {
     "NOTE.md": "1fc12e81238178eecea08757d7f8669ad1715d078e27f47e1fbda1395f80fde0",
     "atlas.json": "0f9bc28a8f5392e50f7b9e30a5b2c5ba8fc5f73b9c6d9400545cac0c883df284"
-  }
+  },
+  "provenance": "Inherited download record from bot commit cefd4ff (cefd4ffaadf7668d3f1bcf8edb4562169e97743b), committed in the reviewer update; independent statement reads were not byte-compared to these hashes."
 }

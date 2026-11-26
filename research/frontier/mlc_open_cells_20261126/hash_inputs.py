@@ -29,5 +29,5 @@ def fetch(url):
 with ThreadPoolExecutor(max_workers=8) as pool:
     downloads = dict(pool.map(fetch, urls))
 out = {"local": {p.name: digest(p) for p in (ATLAS/"atlas.json", ATLAS/"NOTE.md")},
-       "downloads": downloads}
+       "downloads": downloads, "provenance": "Manually regenerated source retrieval record; hashes are not theorem verification."}
 (HERE/"input_hashes.json").write_text(json.dumps(out, indent=2, sort_keys=True)+"\n")

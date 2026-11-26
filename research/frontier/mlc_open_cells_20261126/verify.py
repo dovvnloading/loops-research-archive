@@ -45,8 +45,11 @@ def main():
         if source.get("verification") == "VERIFIED":
             require(bool(source.get("url")) and bool(source.get("quote")), f"{source_id}: missing evidence")
     manifest_path = HERE / "input_hashes.json"
+    require(manifest_path.is_file(), "committed provenance manifest required")
     if manifest_path.exists():
         manifest = load(manifest_path)
+        require(bool(manifest.get("provenance")), "missing retrieval provenance")
+        require(set(manifest["local"]) == {"atlas.json", "NOTE.md"}, "local input census mismatch")
         for name in ("atlas.json", "NOTE.md"):
             actual = hashlib.sha256((ATLAS.parent / name).read_bytes()).hexdigest()
             require(manifest["local"][name] == actual, f"input hash mismatch: {name}")
@@ -64,6 +67,7 @@ def main():
     for cell_id, row in cells.items():
         old = expected[cell_id]
         require(cell_id == "/".join(old[k] for k in ("regime", "period", "locus", "rotation", "refinement")), f"{cell_id}: bad atlas key")
+        require(row["atlas_negated_predicates"] == old["earlier_tests_false"], f"{cell_id}: wrong predicate precedence")
         require(row["class"] in ("A", "B", "C", None), f"{cell_id}: bad classification")
         require(bool(row["hypothesis"]) and bool(row["sources"]), f"{cell_id}: missing rationale")
         require(set(row["sources"]) <= sources.keys(), f"{cell_id}: unknown source")
@@ -75,12 +79,33 @@ def main():
             require(row["verification"] == "STATEMENT_ONLY" and row.get("theorem"), f"{cell_id}: label preprint scope")
         if row["class"] == "B":
             require(row["verification"] == "PROVED" and row.get("rule") in {"B1","B2","B3","B4","B5","B6","B7"}, f"{cell_id}: proof required")
-    require(cells[RESIDUAL]["class"] is None and cells[RESIDUAL]["hypothesis"] == "see residual thread", "reserved cell")
+        if row["class"] == "B":
+            regime, period, locus, rotation, refinement = cell_id.split("/")
+            unbounded_digits = rotation in {"unbounded_digits_min_tends_infty", "unbounded_digits_min_not_tends_infty"}
+            applicable = {
+                "B1": period == "unbounded" and refinement == "k",
+                "B2": regime == "mixed_eventually_P" and unbounded_digits,
+                "B3": regime == "mixed_eventually_S" and period == "unbounded" and locus == "real",
+                "B4": locus == "real" and unbounded_digits,
+                "B5": refinement == "qg" and rotation in {"bounded_digits", "unbounded_digits_min_not_tends_infty"},
+                "B6": locus == "real" and period == "unbounded" and refinement == "ee",
+                "B7": locus == "real" and period == "unbounded" and refinement == "kkl",
+            }
+            require(applicable[row["rule"]], f"{cell_id}: proof rule does not apply")
+        if row["class"] == "A":
+            require(old["refinement"] in {"qg", "ee", "kkl"} and old["locus"] == "nonreal", f"{cell_id}: wrong A predicate")
+            required = {"qg": "CS2015", "ee": "EE", "kkl": "KKL"}[old["refinement"]]
+            require(required in row["sources"] and sources[required]["verification"] == "VERIFIED", f"{cell_id}: missing primary statement")
+    witness = cells[RESIDUAL].get("witness", {})
+    require(cells[RESIDUAL]["class"] is None and cells[RESIDUAL]["verification"] == "UNVERIFIED", "reserved whole-cell status")
+    require(witness.get("address") == "S(1/3) S(1/4) S(1/5) ..." and witness.get("commit") == "e3a58c073981fa9972e6f78f5b4caf5c69e50503" and witness.get("reference") == "https://github.com/dovvnloading/loops-research-archive/blob/e3a58c073981fa9972e6f78f5b4caf5c69e50503/research/frontier/residual_satellite_status_20261126/NOTE.md" and witness.get("status") == "GENUINELY OPEN (scoped audited literature; inherited from #135)", "merged #135 witness reference")
+    owner_note = HERE.parent / "residual_satellite_status_20261126" / "NOTE.md"
+    require("GENUINELY OPEN" in owner_note.read_text() and "b_(i+1,1)" in owner_note.read_text(), "missing merged witness evidence")
     counts = Counter(row["class"] for row in cells.values())
-    require(counts == Counter({"A": 6, "B": 42, None: 14}), "unexpected documentary census")
+    require(counts == Counter({"A": 4, "B": 42, None: 16}), "unexpected documentary census")
     print("62 exact atlas IDs:", dict(counts))
     if args.strict:
-        require(counts[None] == 1, "mathematical classifications outstanding (other than reserved cell)")
+        require(counts[None] == 0, "mathematical classifications outstanding (including reserved whole cell)")
 
 
 if __name__ == "__main__":
