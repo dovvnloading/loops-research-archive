@@ -2004,5 +2004,33 @@
     "obligations": [
       "MAPPING_TELESCOPE"
     ]
+  },
+  "quadratic-critical-window-20261126": {
+    "guide": "contributions/quadratic_critical_window_20261126/NOTE.md#quadratic-critical-window-20261126",
+    "theorems": {
+      "formalization/weighted/QuadraticCriticalWindow.lean": [
+        "shiftedOrbit_eval",
+        "criticalCount_eq_zero_iff",
+        "criticalCount_eq_one_of_unique",
+        "localUnit_eval_zero_ne",
+        "shiftedOrbit_factor",
+        "shiftedOrbit_exact_order",
+        "shiftedOrbit_exact_quadratic_order",
+        "local_factorization",
+        "orbit_add",
+        "positive_iterate_even",
+        "open_contains_reflected_pair",
+        "reached_projection_collision",
+        "reached_residual_identity",
+        "reached_address_injective",
+        "reached_projection_identity",
+        "reached_fiber_bijOn",
+        "central_window_no_univalent_cylinder",
+        "central_window_reached_critical_point"
+      ]
+    },
+    "obligations": [
+      "VIRTUAL_REACHED_CYLINDER_COMPONENT_EXHAUSTION"
+    ]
   }
 }
