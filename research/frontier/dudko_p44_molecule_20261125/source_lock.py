@@ -25,11 +25,13 @@ SOURCES = {
         "Lemma 3.18": ["lemma318let"],
         "Remark 3.19": ["remark319"],
         "Theorem 7.7": ["theorem77hyperbolicity", "theorem77therenormalization"],
+        "Theorem 7.7 multiplier coordinate": ["isparametrizedbythemultipliers"],
         "C.3 Molecule Conjecture": ["c3themoleculeconjecture"],
         "C.4 following heading": ["c4conjectureontheuppersemicontinuity"],
     }),
     "DL": ("1808.10425v4", {
-        "Lemma 3.1 / multiplier derivative": ["lemma31"],
+        "Lemma 3.1 / multiplier derivative": ["lemma31dlslemma317"],
+        "Unstable eigenvalue identification": ["sincetheunstablemanifold"],
         "Proposition 5.41": ["proposition541thepacmanrenormalizationoperator"],
     }),
 }
@@ -79,7 +81,7 @@ def main():
             missing.append(name+": PDF download")
             out["sources"][name]={"version":version,"url":url,"error":type(exc).__name__+": "+str(exc)}
             continue
-        fingerprint={"version":version,"url":url,"download_url":download_url,"sha256":hashlib.sha256(data).hexdigest(),"bytes":len(data)}
+        fingerprint={"version":version,"url":url,"sha256":hashlib.sha256(data).hexdigest(),"bytes":len(data)}
         try:
             reader=PdfReader(io.BytesIO(data))
             raw=[page.extract_text() or "" for page in reader.pages]
@@ -88,6 +90,8 @@ def main():
             out["sources"][name]={**fingerprint,"error":type(exc).__name__+": "+str(exc)}
             continue
         pages=[norm(x) for x in raw]
+        if norm("arXiv:"+version) not in "".join(pages[:2]):
+            missing.append(name+": version stamp "+version)
         refs={label:locate(pages,alts) for label,alts in anchors.items()}
         # Resolve TOC headings by requiring statement text on same or next page.
         if name=="DLS":
@@ -108,6 +112,19 @@ def main():
             filtered=[i for i in candidates if "unstableeigenvalue" in "".join(pages[i-1:i+1])]
             if filtered:
                 refs["Lemma 3.1 / multiplier derivative"]=filtered
+        # Check the independently inspected pages, not merely a TOC hit.
+        expected = {
+            "DLS": {"Theorem 1.1": 4, "Theorem 3.16": 28, "Lemma 3.18": 29,
+                    "Remark 3.19": 29, "Theorem 7.7": 61,
+                    "Theorem 7.7 multiplier coordinate": 61,
+                    "C.3 Molecule Conjecture": 89, "C.4 following heading": 90,
+                    "C.3 statement page range": 89},
+            "DL": {"Lemma 3.1 / multiplier derivative": 31,
+                   "Unstable eigenvalue identification": 31, "Proposition 5.41": 73},
+        }
+        for label, page in expected.get(name, {}).items():
+            if page not in refs.get(label, []):
+                missing.append(f"{name}: {label} not on reviewed PDF page {page}")
         if args.show_statements:
             labels={"Dudko":"Problem 4.4","DLS":"C.3 statement page range"}
             if name in labels:
@@ -144,6 +161,8 @@ def main():
             raise ValueError("NOTE must contain exactly one source-lock block")
         note.write_text(after,encoding="utf-8")
     print(json.dumps(out,indent=2,sort_keys=True))
+    if args.update_note:
+        print("\n".join(rows))
     if missing:
         raise SystemExit("Source locator incomplete: "+", ".join(missing))
 

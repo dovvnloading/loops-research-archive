@@ -65,8 +65,8 @@ def check():
     assert inv(mul(den,den))==eigen
     lam_lo,lam_hi=5+3*lo,5+3*hi
     assert 1<lam_lo<lam_hi
-    # Hostile test: a one-step eigenvalue is not the two-step eigenvalue,
-    # and a four-step clock cannot have the claimed two-step eigenvalue.
+    # Hostile test: a one-step scalar derivative is not the two-step derivative,
+    # and a four-step return has a different derivative.
     assert du!=eigen and mul(eigen,eigen)!=eigen
     return {
         "claim_id":"P44-GM-1",
@@ -79,11 +79,13 @@ def check():
         "branch_order":["upper","lower"],
         "branch_derivative_coefficients":[[2,1],[2,1]],
         "return_mobius_matrix":[list(row) for row in M],
-        "unstable_eigenvalue_coefficients":[5,3],
-        "unstable_eigenvalue_exact":"(7+3*sqrt(5))/2",
-        "unstable_eigenvalue_polynomial":"x^2-7*x+1",
-        "unstable_eigenvalue_bracket":[str(lam_lo),str(lam_hi)],
-        "unstable_dimension_complex":1,
+        "rotation_return_derivative_coefficients":[5,3],
+        "rotation_return_derivative_exact":"(7+3*sqrt(5))/2",
+        "rotation_return_derivative_polynomial":"x^2-7*x+1",
+        "rotation_return_derivative_bracket":[str(lam_lo),str(lam_hi)],
+        "imported_unstable_dimension_complex":1,
+        "analytic_status":"imported",
+        "analytic_basis":"DLS v3 Theorem 7.7; DL v4 section 3.2.7 and Proposition 5.41; not checked by arithmetic",
         "dimension_basis":"imported DLS Theorem 7.7 and DL Proposition 5.41, not checked by arithmetic",
         "clock_basis":"DL Proposition 5.41 for a suitably constructed operator, not every DLS normalization",
         "virtual_geometry_established":False,
