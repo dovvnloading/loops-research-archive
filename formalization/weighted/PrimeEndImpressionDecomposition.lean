@@ -240,7 +240,7 @@ theorem physical_end_common_impression (ψ : X × ℝ → ℂ)
 /-- Regular closed puzzle pieces are closures of their actual exterior
 parts when the quadratic filled locus has empty interior. This discharges
 the closure hypothesis of the abstract impression decomposition without
-postulating density of exterior approaches as a separate axiom. -/
+postulating density of exterior approaches as a separate hypothesis. -/
 theorem quadratic_exterior_closure_of_regular_closed (c : ℂ) (Q : Set ℂ)
     (hQ : IsClosed Q) (hreg : Q ⊆ closure (interior Q))
     (hK : interior (LoopsDecorationCriticalCycle.filledLocus c) = ∅) :
@@ -336,5 +336,81 @@ theorem quadratic_end_common_impression_of_sector_cover (c : ℂ)
   exact physical_end_common_impression ψ Q A H hQ hc ha hp hh hsmall
     (hcompact 0) (PrimeEndSectorRank.limiting_footprint_finite A s B hcover hsector)
     hpoint hconn hne
+
+
+/-- Localized impressions are closed even without a continuous extension
+of the coordinate map to height zero. -/
+theorem restricted_impression_closed (ψ : X × ℝ → Y)
+    (A : ℕ → Set X) (H : ℕ → ℝ) (θ : X) :
+    IsClosed (restrictedImpression ψ A H θ) := by
+  have heq : restrictedImpression ψ A H θ =
+      ⋂ n : ℕ, ⋂ ε : ℝ, ⋂ (_ : 0 < ε),
+        closure (ψ '' (trace (A n) (H n) ∩ wedge θ ε)) := by
+    ext z
+    simp only [restrictedImpression, mem_setOf_eq, mem_iInter]
+  rw [heq]
+  exact isClosed_iInter (fun _ => isClosed_iInter (fun _ =>
+    isClosed_iInter (fun _ => isClosed_closure)))
+
+/-- Every nontrivial partition of a finite surviving angular footprint
+has a physical impression contact across the partition, provided the
+physical end is preconnected. In particular disjoint angular tracks
+cannot be treated as independent physical components. No point landing
+or interiority assumption is made. -/
+theorem finite_footprint_partition_contact (ψ : X × ℝ → Y)
+    (A : ℕ → Set X) (H : ℕ → ℝ)
+    (hc : ∀ n, IsCompact (A n)) (ha : Antitone A)
+    (hp : ∀ n, 0 < H n) (hh : Antitone H)
+    (hsmall : ∀ ε > 0, ∃ n, H n < ε)
+    (hcompact : IsCompact (closure (ψ '' trace (A 0) (H 0))))
+    (hfinite : (⋂ n, A n).Finite)
+    (hconn : IsPreconnected (⋂ n, closure (ψ '' trace (A n) (H n))))
+    (P : Set X) (hP : P ⊆ ⋂ n, A n) (hpn : P.Nonempty)
+    (hqn : ((⋂ n, A n) \ P).Nonempty) :
+    ∃ θ ∈ P, ∃ η ∈ ((⋂ n, A n) \ P),
+      (restrictedImpression ψ A H θ ∩ restrictedImpression ψ A H η).Nonempty := by
+  classical
+  let L := ⋂ n, A n
+  let E := ⋂ n, closure (ψ '' trace (A n) (H n))
+  let U := ⋃ θ ∈ P, restrictedImpression ψ A H θ
+  let V := ⋃ θ ∈ L \ P, restrictedImpression ψ A H θ
+  have hEq : E = ⋃ θ ∈ L, restrictedImpression ψ A H θ :=
+    exterior_impression_decomposition ψ A H hc ha hp hh hsmall
+  have hu : IsClosed U :=
+    (hfinite.subset hP).isClosed_biUnion (fun θ _ =>
+      restricted_impression_closed ψ A H θ)
+  have hv : IsClosed V :=
+    (hfinite.subset (show L \ P ⊆ L from diff_subset)).isClosed_biUnion
+      (fun θ _ => restricted_impression_closed ψ A H θ)
+  have hcover : E ⊆ U ∪ V := by
+    intro z hz
+    rw [hEq] at hz
+    obtain ⟨θ, hθ⟩ := mem_iUnion.mp hz
+    obtain ⟨hθL, hzθ⟩ := mem_iUnion.mp hθ
+    by_cases hθP : θ ∈ P
+    · exact Or.inl (mem_iUnion.mpr ⟨θ, mem_iUnion.mpr ⟨hθP, hzθ⟩⟩)
+    · exact Or.inr (mem_iUnion.mpr ⟨θ, mem_iUnion.mpr ⟨⟨hθL, hθP⟩, hzθ⟩⟩)
+  have hmeetU : (E ∩ U).Nonempty := by
+    obtain ⟨θ, hθ⟩ := hpn
+    obtain ⟨z, hz⟩ := restricted_impression_nonempty ψ A H θ ha hp hh hsmall
+      (hP hθ) hcompact
+    refine ⟨z, ?_, mem_iUnion.mpr ⟨θ, mem_iUnion.mpr ⟨hθ, hz⟩⟩⟩
+    rw [hEq]
+    exact mem_iUnion.mpr ⟨θ, mem_iUnion.mpr ⟨hP hθ, hz⟩⟩
+  have hmeetV : (E ∩ V).Nonempty := by
+    obtain ⟨η, hη⟩ := hqn
+    obtain ⟨z, hz⟩ := restricted_impression_nonempty ψ A H η ha hp hh hsmall
+      hη.1 hcompact
+    refine ⟨z, ?_, mem_iUnion.mpr ⟨η, mem_iUnion.mpr ⟨hη, hz⟩⟩⟩
+    rw [hEq]
+    exact mem_iUnion.mpr ⟨η, mem_iUnion.mpr ⟨hη.1, hz⟩⟩
+  have hconnE : IsPreconnected E := hconn
+  obtain ⟨z, _, hzU, hzV⟩ := (isPreconnected_closed_iff.mp hconnE)
+    U V hu hv hcover hmeetU hmeetV
+  obtain ⟨θ, hθ⟩ := mem_iUnion.mp hzU
+  obtain ⟨hθP, hzθ⟩ := mem_iUnion.mp hθ
+  obtain ⟨η, hη⟩ := mem_iUnion.mp hzV
+  obtain ⟨hηP, hzη⟩ := mem_iUnion.mp hη
+  exact ⟨θ, hθP, η, hηP, z, hzθ, hzη⟩
 
 end PrimeEndImpressionDecomposition

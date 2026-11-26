@@ -2530,7 +2530,9 @@
         "physical_end_common_impression",
         "quadratic_exterior_closure_of_regular_closed",
         "quadratic_end_exact_decomposition",
-        "quadratic_end_common_impression_of_sector_cover"
+        "quadratic_end_common_impression_of_sector_cover",
+        "restricted_impression_closed",
+        "finite_footprint_partition_contact"
       ]
     },
     "obligations": [
