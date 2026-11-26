@@ -2797,7 +2797,13 @@
         "quadratic_skew_analytic",
         "quadratic_skew_locally_invertible",
         "quadratic_skew_univalent_inverse",
-        "quadratic_compact_parameter_inverse_family"
+        "quadratic_compact_parameter_inverse_family",
+        "quadratic_inverse_compact_component",
+        "quadratic_inverse_family_compact_component"
+      ],
+      "formalization/weighted/QuadraticParameterMotion.lean": [
+        "quadratic_compact_finite_time_motion",
+        "quadratic_compact_motion_component"
       ]
     },
     "obligations": [

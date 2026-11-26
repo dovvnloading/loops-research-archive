@@ -45,10 +45,10 @@ theorem quadratic_compact_finite_time_motion
   refine ⟨r, U, h, hr, hU, hCU, hUc, hUW, ?_, ?_, ?_, hlift, ?_, ?_⟩
   · intro p hp
     have horbit : AnalyticAt ℂ (fun q : ℂ × ℂ => orbit c n q.2) p :=
-      (orbit_analytic c n p.2).comp p analyticAt_snd
+      (orbit_analytic c n p.2).comp analyticAt_snd
     have hpair : AnalyticAt ℂ (fun q : ℂ × ℂ => (q.1, orbit c n q.2)) p :=
       analyticAt_fst.prodMk horbit
-    exact (hga (p.1, orbit c n p.2) ⟨hrP hp.1, hterminal p.2 hp.2⟩).comp p hpair
+    exact (hga (p.1, orbit c n p.2) ⟨hrP hp.1, hterminal p.2 hp.2⟩).comp hpair
   · intro z hz
     exact (hbranch c hcP).2.1 (hCU hz)
   · intro d hd
@@ -71,7 +71,7 @@ theorem quadratic_compact_finite_time_motion
   · intro d hd z hz
     have hpair : AnalyticAt ℂ (fun e : ℂ => (e, orbit c n z)) d :=
       analyticAt_id.prodMk analyticAt_const
-    exact (hga (d, orbit c n z) ⟨hrP hd, hterminal z hz⟩).comp d hpair
+    exact (hga (d, orbit c n z) ⟨hrP hd, hterminal z hz⟩).comp hpair
 
 /-- If the original compact core is connected and nonempty, its motion
 is the complete global pullback component of the fixed terminal compact,
@@ -107,20 +107,12 @@ theorem quadratic_compact_motion_component
       have hz' := (hbranch d (hrP hd)).2.2 (hterminal z hz)
       have hw' := (hbranch d (hrP hd)).2.2 (hterminal w hw)
       exact hz'.symm.trans ((congrArg (orbit d n) heq).trans hw')
-    · have hgcont : ContinuousOn (g d) (orbit c n '' C) := by
-        intro y hy
-        have hyV : y ∈ V := hCV hy
-        exact ((hga (d, y) ⟨hrP hd, hyV⟩).comp y
-          (analyticAt_const.prodMk analyticAt_id)).continuousAt.continuousWithinAt
-      have hcomponent := quadratic_inverse_compact_component d n U
-        (orbit c n '' C) (orbit c n x) (g d) hU
+    · have hcomponent := quadratic_inverse_family_compact_component n P U V g hU hga
+        hbranch d (hrP hd) (orbit c n '' C)
         (hC.image (LoopsSaturatedTelescope.quadratic_orbit_continuous c n))
         (hconn.image (orbit c n)
           (LoopsSaturatedTelescope.quadratic_orbit_continuous c n).continuousOn)
-        ⟨x, hx, rfl⟩ hgcont
-        ((hbranch d (hrP hd)).1.mono_left hCV)
-        (hbranch d (hrP hd)).2.1
-        ((hbranch d (hrP hd)).2.2.mono hCV)
+        hCV (orbit c n x) ⟨x, hx, rfl⟩
       simpa only [h, Set.image_image, Function.comp_def] using hcomponent
 
 end
