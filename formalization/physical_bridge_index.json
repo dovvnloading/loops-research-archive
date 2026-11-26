@@ -2210,6 +2210,26 @@
       "VIRTUAL_REACHED_CYLINDER_COMPONENT_EXHAUSTION"
     ]
   },
+  "stationary-multi-interface-separator-20261126": {
+    "guide": "contributions/stationary_multi_interface_separator_20261126/NOTE.md#stationary-multi-interface-separator-20261126",
+    "theorems": {
+      "formalization/weighted/StationaryMultiInterface.lean": [
+        "preconnected_inter_of_absorbed_interface",
+        "component_inter_of_single_interface_component",
+        "no_bypass_iff_single_interface_component",
+        "exterior_bridge_obstructs_separator",
+        "patchedCarrier_insert",
+        "patchedCarrier_closed",
+        "component_inter_finite_patches",
+        "finite_patches_no_bypass_iff",
+        "compact_clopen_separator_of_component_disjoint",
+        "compact_closed_cover_no_bypass_iff"
+      ]
+    },
+    "obligations": [
+      "KKL_STATIONARY_SELECTED_SEPARATOR_REALIZATION"
+    ]
+  },
   "critical-fiber-census-20261126": {
     "guide": "contributions/critical_fiber_census_20261126/NOTE.md#critical-fiber-census-20261126",
     "theorems": {

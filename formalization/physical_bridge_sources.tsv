@@ -106,6 +106,7 @@ formalization/weighted/StationaryEndpointCover.lean	VARIABLE-EXIT
 formalization/weighted/StationaryEndpointVisits.lean	VARIABLE-EXIT
 formalization/weighted/StationaryGeometricFibers.lean	METADATA
 formalization/weighted/StationaryMonotoneGeometry.lean	METADATA
+formalization/weighted/StationaryMultiInterface.lean	METADATA
 formalization/weighted/StationaryPacketGain.lean	VARIABLE-EXIT
 formalization/weighted/StationaryPrefixCharge.lean	VARIABLE-EXIT
 formalization/weighted/WeightedReturn.lean	CLONE EDGE
