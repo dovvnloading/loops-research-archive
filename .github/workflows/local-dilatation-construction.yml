@@ -1,0 +1,32 @@
+name: Local dilatation construction
+on:
+  push:
+    branches: [frontier/local-dilatation-construction-20261126]
+  pull_request:
+    branches: [main]
+    paths:
+      - 'research/frontier/local_dilatation_construction_20261126/**'
+      - '.github/workflows/local-dilatation-construction.yml'
+      - 'formalization/physical_bridge_sources.tsv'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    container: python:3.12.12-bookworm@sha256:c0abd0758831ad99b7a29e0c1a875da9c4abb9a2e3f21e2eeb585dbcadfb6cd0
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          persist-credentials: false
+      - name: Verify locked inputs, finite certificates and seam model
+        run: |
+          python -B research/frontier/local_dilatation_construction_20261126/verify.py --sources /tmp/local-dilatation-sources.json
+          python -B code/verify_physical_bridges.py
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        if: always()
+        with:
+          name: local-dilatation-sources
+          path: /tmp/local-dilatation-sources.json
+          if-no-files-found: warn
