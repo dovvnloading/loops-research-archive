@@ -1,0 +1,1063 @@
+{
+  "schema_version": 1,
+  "status": "imported",
+  "as_of": "2026-11-26",
+  "base_commit": "f15d77d4e43373a32bab90624c4c60f023f7a1b2",
+  "inputs": {
+    "research/frontier/mlc_coverage_atlas_20261126/atlas.json": {
+      "sha256": "0f9bc28a8f5392e50f7b9e30a5b2c5ba8fc5f73b9c6d9400545cac0c883df284",
+      "git_blob": "4bacf79fa2e5749e4364086221348cac63cc78fb"
+    },
+    "research/frontier/mlc_open_cells_20261126/open_cells.json": {
+      "sha256": "a5b0c6c101abf935bc556ed95ea07176b6fd43d57d0a0b3f6f8de292390ad92a",
+      "git_blob": "8bb55ddd1366921424c10a9b41881ff25e49d36c"
+    },
+    "research/frontier/mlc_open_cells_20261126/sources.json": {
+      "sha256": "a81bdc095c6e566bbfd63c272928e9faacb854366f3730a8ce421692193e558a",
+      "git_blob": "f000c2c94ffd2a232b6036265800f93b23fff958"
+    },
+    "research/frontier/mlc_open_cells_20261126/input_hashes.json": {
+      "sha256": "c767d5fe8bea49d1904c412537fdcc5a41f6978fb498976f0096d7bdae067f71",
+      "git_blob": "14fc641c4027d579e98eeb65a285832254a2b7fd"
+    }
+  },
+  "scope": "20 grid rows (16 UNVERIFIED, 4 A) plus four separate UNVERIFIED source records; one ancillary survey bibliographic correction. Statement-level only.",
+  "source_evidence": {
+    "Ldensity": {
+      "authors": "Mikhail Lyubich (published as M. Lyubich)",
+      "title": "Dynamics of quadratic polynomials, I–II",
+      "publication": "journal",
+      "venue": "Acta Mathematica 178 (1997), 185–297",
+      "version": "journal PDF",
+      "url": "https://commack.math.stonybrook.edu/~mlyubich/papers/acta.pdf",
+      "locator": "Density Theorem, printed p. 188 (PDF page 4)",
+      "quote": "Any real quadratic polynomial P_c without attracting cycles is rigid on the real line. Thus hyperbolic quadratics are dense on the real line.",
+      "hypotheses": "Real quadratic polynomial P_c(z)=z²+c, c real, without attracting cycles; real rigidity is defined immediately above as Com(c)∩R={c}.",
+      "statement": "Real rigidity under these hypotheses and density of real hyperbolic quadratics. Not complex combinatorial rigidity.",
+      "opened": true,
+      "historical_sha256": "a286b6d3c874c803c1d56a669b5850e79c903190534aeab4840664b8e631bf16",
+      "hash_provenance": "Inherited byte digest from #134 sources.json; not re-downloaded or compared with the opened rendering."
+    },
+    "L": {
+      "authors": "Mikhail Lyubich (published as M. Lyubich)",
+      "title": "Dynamics of quadratic polynomials, I–II",
+      "publication": "journal",
+      "venue": "Acta Mathematica 178 (1997), 185–297",
+      "version": "journal PDF",
+      "url": "https://commack.math.stonybrook.edu/~mlyubich/papers/acta.pdf",
+      "locator": "Rigidity Theorem p. 187; §2.5 pp. 198–199 (PDF pp. 14–15); Theorem IV′ (prior locator only)",
+      "quote": "",
+      "hypotheses": "At most one member of a fixed combinatorial class can simultaneously satisfy the secondary-limbs condition (all straightened renormalizations in finitely many truncated secondary limbs) and a priori bounds (uniform positive fundamental modulus).",
+      "statement": "Uniqueness among members satisfying BOTH assumptions; to conclude a singleton entire class requires the assumptions for every member. §2.5 describes the maximal-copy nest and states the global MLC/rigidity equivalence for infinitely renormalizable parameters; not a blanket pointwise topological-LC-to-fiber theorem.",
+      "opened": true,
+      "historical_sha256": "a286b6d3c874c803c1d56a669b5850e79c903190534aeab4840664b8e631bf16",
+      "hash_provenance": "Inherited byte digest from #134 sources.json; not re-downloaded or compared with the opened rendering."
+    },
+    "Lreal": {
+      "authors": "Mikhail Lyubich (published as M. Lyubich)",
+      "title": "Dynamics of quadratic polynomials, I–II",
+      "publication": "journal",
+      "venue": "Acta Mathematica 178 (1997), 185–297",
+      "version": "journal PDF",
+      "url": "https://commack.math.stonybrook.edu/~mlyubich/papers/acta.pdf",
+      "locator": "Theorem VIII, printed p. 281 (PDF p. 97)",
+      "quote": "",
+      "hypotheses": "Infinitely renormalizable real quadratic polynomial; essential periods of all renormalizations exceed a fixed universal threshold.",
+      "statement": "MLC at the real parameter. Proof compares all complex parameters with the same real combinatorics; not arbitrary real parameters with unbounded relative periods.",
+      "opened": true,
+      "historical_sha256": "a286b6d3c874c803c1d56a669b5850e79c903190534aeab4840664b8e631bf16",
+      "hash_provenance": "Inherited byte digest from #134 sources.json; not re-downloaded or compared with the opened rendering."
+    },
+    "LY": {
+      "authors": "Mikhail Lyubich; Michael Yampolsky",
+      "title": "Dynamics of quadratic polynomials: complex bounds for real maps",
+      "publication": "journal",
+      "venue": "Annales de l’Institut Fourier 47 (1997), 1219–1255",
+      "version": "journal PDF",
+      "url": "https://www.numdam.org/item/AIF_1997__47_4_1219_0.pdf",
+      "locator": "Complex Bounds Theorem and Local Connectivity Theorem, printed p. 1220",
+      "quote": "The Julia set of any real quadratic polynomial",
+      "hypotheses": "Real quadratic parameter in the connected real range for the Julia-set assertion; complex bounds theorem uses sufficiently deep real renormalizations with the doubling/cusp qualification.",
+      "statement": "Complex bounds and Julia-set local connectivity, not all-real parameter-space MLC.",
+      "opened": true,
+      "historical_sha256": "52c67b9960e4dd632db2aa56a0763312eb0bf6a3b43b33ce98698962e2fdc429",
+      "hash_provenance": "Inherited byte digest from #134 sources.json; not re-downloaded or compared with the opened rendering."
+    },
+    "C": {
+      "authors": "Davoud Cheraghi",
+      "title": "Combinatorial rigidity for some infinitely renormalizable unicritical polynomials",
+      "publication": "journal",
+      "venue": "Conformal Geometry and Dynamics 14 (2010), 219–255",
+      "version": "author PDF",
+      "url": "https://www.ma.imperial.ac.uk/~dcheragh/Research/2010-1.pdf",
+      "locator": "Rigidity Theorem, p. 2",
+      "quote": "",
+      "hypotheses": "Infinitely renormalizable unicritical polynomials of fixed degree d≥2 with the same combinatorics, secondary-limbs condition and a priori bounds.",
+      "statement": "Combinatorial rigidity in the stated class, not an unconditional assertion on the residual cells.",
+      "opened": true,
+      "historical_sha256": "c62ea484883ccb860286aab19a21d31bfdb22d102a792594d5b8986f6769c72d",
+      "hash_provenance": "Inherited byte digest from #134 sources.json; not re-downloaded or compared with the opened rendering."
+    },
+    "DL26": {
+      "authors": "Dzmitry Dudko; Mikhail Lyubich",
+      "title": "MLC at Feigenbaum points",
+      "publication": "journal",
+      "venue": "Publications Mathématiques de l’IHÉS 143 (2026), 97–141; DOI 10.5802/pmihes.2",
+      "version": "arXiv:2309.02107v3 (29 Dec 2025); journal publication 2 June 2026",
+      "url": "https://arxiv.org/pdf/2309.02107v3",
+      "locator": "Theorems A and B p. 3; relative periods p. 11",
+      "quote": "The Mandelbrot set is locally connected at any Feigenbaum parameter.",
+      "hypotheses": "Feigenbaum = infinitely renormalizable quadratic-like map with bounded relative renormalization periods, not merely bounded CF digits or bounded primitive gaps.",
+      "statement": "A priori beau bounds and MLC for bounded relative periods, with singleton nested-copy intersection noted on p. 3.",
+      "opened": true,
+      "publication_record": "https://pmihes.centre-mersenne.org/articles/10.5802/pmihes.2/",
+      "historical_sha256": "e88462e43b3c172cf309d5b3d38caa21ee8f43876bac1e07cce84b309dfb8c6b",
+      "hash_provenance": "Inherited byte digest from #134 sources.json; not re-downloaded or compared with the opened rendering."
+    },
+    "KLdec": {
+      "authors": "Jeremy Kahn; Mikhail Lyubich",
+      "title": "A priori bounds for some infinitely renormalizable quadratics: II. Decorations",
+      "publication": "journal",
+      "venue": "Annales scientifiques de l’École Normale Supérieure 41 (2008), 57–84",
+      "version": "journal PDF",
+      "url": "https://www.numdam.org/item/10.24033/asens.2063.pdf",
+      "locator": "Theorem and Corollary 1.1, printed p. 58; definition pp. 57–58",
+      "quote": "",
+      "hypotheses": "Infinitely renormalizable quadratic(-like) map with the decoration condition, i.e. allowed relative copies drawn from the designated finite decoration family.",
+      "statement": "Uniform a priori bounds and MLC for parameters satisfying that condition, not for its complement.",
+      "opened": true,
+      "historical_sha256": "a0c77541efe273aa180f31cbb67093b9931d7b73389e6bb8947452998b13bba5",
+      "hash_provenance": "Inherited byte digest from #134 sources.json; not re-downloaded or compared with the opened rendering."
+    },
+    "KLmol": {
+      "authors": "Jeremy Kahn; Mikhail Lyubich",
+      "title": "A priori bounds for some infinitely renormalizable quadratics: III. Molecules",
+      "publication": "published book chapter",
+      "venue": "Complex Dynamics: Families and Friends (A K Peters, 2009); pagination of book version not independently checked",
+      "version": "IMS preprint 07-04 (12 Dec 2007)",
+      "url": "https://www.math.stonybrook.edu/preprints/ims07-04.pdf",
+      "locator": "Main Theorem p. 1; Corollary 1.1 p. 2; molecule condition pp. 6–7 (preprint pagination)",
+      "quote": "",
+      "hypotheses": "Infinitely renormalizable quadratic-like map with the molecule condition, requiring successive absolute primitive levels (intermediate satellites allowed) uniformly away from the molecule in the specified combinatorial sense.",
+      "statement": "A priori bounds and MLC for that condition; not a claim for recurrent mixed addresses lacking the condition.",
+      "opened": true,
+      "historical_sha256": "0225b5e1416d62eadb3f9b1ae9d5d3c4c4287b0d572167c744e9bae900220e53",
+      "hash_provenance": "Inherited byte digest from #134 sources.json; not re-downloaded or compared with the opened rendering."
+    },
+    "Lev1": {
+      "authors": "Genadi Levin",
+      "title": "Rigidity and non-local connectivity of Julia sets of some quadratic polynomials",
+      "publication": "journal",
+      "venue": "Communications in Mathematical Physics 304 (2011), 295–328",
+      "version": "arXiv:0710.4406v4 (29 May 2013)",
+      "url": "https://arxiv.org/pdf/0710.4406",
+      "locator": "Theorem 1, p. 1 (arXiv pagination)",
+      "quote": "",
+      "hypotheses": "Infinitely renormalizable quadratic; increasing renormalization periods n_m with simple renormalizations and reduced rotation p_m/q_m in (−1/2,1/2]; limsup log|p_m|/n_m>0, or the satellite variant with limsup log q_m/n_m>0.",
+      "statement": "MLC at the parameter under the indicated growth condition.",
+      "opened": true,
+      "historical_sha256": "8e5a59b111c0d841d5deb3ab7adb12b556896a2916c1e4cc8418fe41789335cd",
+      "hash_provenance": "Inherited byte digest from #134 sources.json; not re-downloaded or compared with the opened rendering."
+    },
+    "Lev2": {
+      "authors": "Genadi Levin",
+      "title": "Rigidity and non-local connectivity of Julia sets of some quadratic polynomials",
+      "publication": "journal",
+      "venue": "Communications in Mathematical Physics 304 (2011), 295–328",
+      "version": "arXiv:0710.4406v4",
+      "url": "https://arxiv.org/pdf/0710.4406",
+      "locator": "Theorem 2, pp. 3–4",
+      "quote": "",
+      "hypotheses": "Successive satellite bifurcations of a hyperbolic component at reduced nonzero rotations t_m=p_m/q_m; q_m→∞ and limsup |t_m|^(1/q_(m−1))<1.",
+      "statement": "Convergence of the cascade to c*, MLC at c* and non-local-connectivity of its Julia set.",
+      "opened": true,
+      "historical_sha256": "8e5a59b111c0d841d5deb3ab7adb12b556896a2916c1e4cc8418fe41789335cd",
+      "hash_provenance": "Inherited byte digest from #134 sources.json; not re-downloaded or compared with the opened rendering."
+    },
+    "Levadd": {
+      "authors": "Genadi Levin",
+      "title": "Addendum to: Rigidity and non-local connectivity of Julia sets of some quadratic polynomials",
+      "publication": "journal",
+      "venue": "Communications in Mathematical Physics 325 (2014), 1171–1178",
+      "version": "appended to arXiv:0710.4406v4",
+      "url": "https://arxiv.org/pdf/0710.4406",
+      "locator": "Addendum Theorem 1(1), addendum p. 1 (PDF p. 42)",
+      "quote": "",
+      "hypotheses": "Satellite cascade; sup_m |p_m/q_m| q_0⋯q_(m−1)<∞ and limsup_m q_m/(q_0⋯q_(m−1))²>0.",
+      "statement": "MLC at the limiting parameter; no assertion on the complement.",
+      "opened": true,
+      "historical_sha256": "8e5a59b111c0d841d5deb3ab7adb12b556896a2916c1e4cc8418fe41789335cd",
+      "hash_provenance": "Inherited byte digest from #134 sources.json; not re-downloaded or compared with the opened rendering."
+    },
+    "EE": {
+      "authors": "Jeremy Kahn; Mikhail Lyubich",
+      "title": "A priori bounds for some infinitely renormalizable quadratics: IV. Elephant eyes",
+      "publication": "preprint only located",
+      "venue": "No journal record found; arXiv:2601.21905",
+      "version": "v1 (29 Jan 2026), latest listed",
+      "url": "https://arxiv.org/pdf/2601.21905v1",
+      "locator": "§4.0.1 E1–E3 p. 9; §8 pp. 18–19, unnumbered MLC assertion",
+      "quote": "MLC at the corresponding parameter values follows from the machinery developed in [L1]",
+      "hypotheses": "Even quadratic-like map with connected Julia set and both fixed points repelling; E1 dividing fixed point rotation 1/q, q>1, and the prescribed sector return/degree pattern (central branch degree 2, intervening branches univalent); E2 only central little filled Julia set K0 lies in central domain; E3 p=q+b, b uniformly bounded, simplifying assumption b<q. Infinitely renormalizable elephant-eye family at every level, not just the numerical identity.",
+      "statement": "The §8 MLC assertion for the corresponding parameters; outline invokes [L1], cylinder-copy input [C,DLP], and further work with Kapiamba (p. 19 n. 5). No independent proof or singleton parameter fiber established here.",
+      "opened": true,
+      "publication_record": "https://arxiv.org/abs/2601.21905",
+      "historical_sha256": "5eb36430a51a3fb6a1c04db15713aebc86068118450893ba2042021e4a8db725",
+      "hash_provenance": "Inherited byte digest from #134 sources.json; not re-downloaded or compared with the opened rendering."
+    },
+    "KKL": {
+      "authors": "Jeremy Kahn; Alex Kapiamba; Mikhail Lyubich",
+      "title": "MLC for parabolically bounded primitive renormalization",
+      "publication": "preprint only located",
+      "venue": "IMS preprint 26-02; arXiv:2606.27272; no journal record found",
+      "version": "v1 (25 June 2026), latest listed",
+      "url": "https://arxiv.org/pdf/2606.27272v1",
+      "locator": "Theorem C p. 4; definition of rigidity and Theorems A/B p. 3; §3.1 p. 19; §7 p. 56; bibliography p. 71",
+      "quote": "Any parabolically bounded family of prime primitive types is rigid.",
+      "hypotheses": "All levels prime primitive; types lie in a finite union of fixed types and parabolic tails with balanced limb insertion (both k_q and q−k_q tend to infinity). Theorem B requires beau bounds AND bounded puzzle Teichmüller diameter, and DKLP is cited for the latter on tails.",
+      "statement": "Theorem C gives rigidity in the authors’ p. 3 meaning of MLC. The authors distinguish combinatorial rigidity in §7; no separate verified singleton parameter-fiber assertion for the downgraded finite-prefix application. Remark p. 4 does not claim general mixed extension.",
+      "opened": true,
+      "publication_record": "https://arxiv.org/abs/2606.27272",
+      "historical_sha256": "4c08805384b473dc0e55d76491c52c9fbe7c027e6da301f2c365a170ed7d9140",
+      "hash_provenance": "Inherited byte digest from #134 sources.json; not re-downloaded or compared with the opened rendering."
+    },
+    "CS2015": {
+      "authors": "Davoud Cheraghi; Mitsuhiro Shishikura",
+      "title": "Satellite renormalization of quadratic polynomials",
+      "publication": "preprint only located",
+      "venue": "arXiv:1509.07843; no journal record found",
+      "version": "v1 (25 Sep 2015), listed arXiv version; later author revision below",
+      "url": "https://arxiv.org/pdf/1509.07843",
+      "locator": "Theorem D p. 6; QG_N equation (44) p. 62",
+      "quote": "it is combinatorially rigid, and the Mandelbrot set is locally connected at c.",
+      "hypotheses": "Nonzero reduced satellite rotations p_i/q_i represented in (−1/2,1/2], signed continued-fraction digits b_i,j; for some universal N, b_1,1≥N, b_i,j+1≥b_i,j², and b_i+1,1≥q_i² for every level; all-satellite PL-renormalization. Full signed-CF QG_N, not simply unbounded digits.",
+      "statement": "There exist N,C>0 and 0<λ<1 such that for each sequence in QG_N the whole nested copies have diameter at most Cλ^n; unique intersection parameter, combinatorial rigidity and MLC.",
+      "opened": true,
+      "publication_record": "https://arxiv.org/abs/1509.07843",
+      "historical_sha256": null
+    },
+    "CS": {
+      "authors": "Davoud Cheraghi; Mitsuhiro Shishikura",
+      "title": "Satellite renormalization of quadratic polynomials",
+      "publication": "preprint only located",
+      "venue": "Author-hosted revision; no journal record found",
+      "version": "author PDF dated 9 Sep 2022 (later located revision)",
+      "url": "https://www.ma.imperial.ac.uk/~dcheragh/Research/2015-2.pdf",
+      "locator": "Theorem D pp. 5–6; QG_N equation (6.8) p. 62",
+      "quote": "",
+      "hypotheses": "Nonzero reduced satellite rotations p_i/q_i represented in (−1/2,1/2], signed continued-fraction digits b_i,j; for some universal N, b_1,1≥N, b_i,j+1≥b_i,j², and b_i+1,1≥q_i² for every level; all-satellite PL-renormalization. Full signed-CF QG_N, not simply unbounded digits.",
+      "statement": "There exist N,C>0 and 0<λ<1 such that for each sequence in QG_N the whole nested copies have diameter at most Cλ^n; unique intersection parameter, combinatorial rigidity and MLC.",
+      "opened": true,
+      "publication_record": "https://www.ma.imperial.ac.uk/~dcheragh/research.html",
+      "historical_sha256": "b1d6b0952247efc3cd7a6e0602dbb8246b43b9edf7b3c5d0da942cc822246c25",
+      "hash_provenance": "Inherited byte digest from #134 sources.json; not re-downloaded or compared with the opened rendering."
+    },
+    "TUN": {
+      "authors": "Dierk Schleicher",
+      "title": "On fibers and renormalization of Julia sets and Multibrot sets",
+      "publication": "preprint only located",
+      "venue": "IMS preprint 1998/13b; arXiv:math/9902156",
+      "version": "v1 (26 Feb 1999)",
+      "url": "https://www.math.stonybrook.edu/preprints/ims98-13b.pdf",
+      "locator": "Theorem 3.1 and Corollary 3.2, p. 6",
+      "quote": "The fiber of any point in the Multibrot set is trivial if and only if",
+      "hypotheses": "Canonical tuning map from Multibrot set to a little copy; trivial parameter fiber of a point (or equivalently its tuned image).",
+      "statement": "Triviality of parameter fibers is preserved in both directions by tuning. This transfers CS D singleton intersections through a finite prefix; a bare pointwise LC assertion does not supply the hypothesis.",
+      "opened": true,
+      "historical_sha256": "1095be3a23d83cbc8acafe1c8ff7e24d787ffe791cdf8ea90b4f2b9686af8195",
+      "hash_provenance": "Inherited byte digest from #134 sources.json; not re-downloaded or compared with the opened rendering."
+    },
+    "TUNscope": {
+      "authors": "Dierk Schleicher",
+      "title": "On fibers and local connectivity of Mandelbrot and Multibrot sets",
+      "publication": "preprint only located",
+      "venue": "IMS preprint 1998/13a; arXiv:math/9902155",
+      "version": "v1 (26 Feb 1999)",
+      "url": "https://arxiv.org/abs/math/9902155",
+      "locator": "Abstract; §7 Proposition 7.4 (HTML; PDF page not checked)",
+      "quote": "Locally, triviality of fibers is strictly stronger than local connectivity.",
+      "hypotheses": "Pointwise local connectivity versus trivial fibers; non-hyperbolic combinatorial classes in the stated rational-lamination definition.",
+      "statement": "Trivial fibers imply LC; outside hyperbolic combinatorial classes the classes are fibers. No inference from bare pointwise LC to singleton parameter fiber.",
+      "opened": true,
+      "historical_sha256": null
+    },
+    "survey": {
+      "authors": "Dzmitry Dudko",
+      "title": "On the MLC Conjecture and the Renormalization Theory in Complex Dynamics",
+      "publication": "published proceedings chapter",
+      "venue": "Proceedings of the International Congress of Mathematicians 2026, vol. 5, SIAM, pp. 116–135; DOI 10.1137/25M1807101",
+      "version": "published PDF; earlier arXiv:2512.24171v1 (30 Dec 2025)",
+      "url": "https://epubs.siam.org/doi/pdf/10.1137/25M1807101",
+      "locator": "§4.3 Theorem 4.1 and following paragraph p. 131; §4.4 Problem 4.3 p. 132; §4.5 Problem 4.4 and [14] p. 133",
+      "quote": "MLC along a real line and along any vein of the Mandelbrot set.",
+      "hypotheses": "Theorem 4.1 concerns bounded ql combinatorics; real/vein statement is a report citing [14], not a theorem with independently stated primary hypotheses.",
+      "statement": "Published survey reports real/vein MLC; remaining unbounded satellite bounds and virtual near-molecule interpolation are posed as problems, not cell-wise noncoverage results.",
+      "opened": true,
+      "publication_record": "https://epubs.siam.org/doi/full/10.1137/25M1807101",
+      "historical_sha256": "8ede4bf8ccfe25a4f325cad41cb729f08f8b1d0d7103ed6dbc89015b1ff8d904",
+      "hash_provenance": "Inherited byte digest from #134 sources.json; not re-downloaded or compared with the opened rendering."
+    },
+    "DKL": {
+      "authors": "Dzmitry Dudko; Jeremy Kahn; Mikhail Lyubich",
+      "title": "Local Connectivity of the Mandelbrot Set along the Real Line",
+      "publication": "unlocated manuscript",
+      "venue": "2022 manuscript (survey [14]); no primary publication or arXiv id located",
+      "version": null,
+      "url": null,
+      "locator": null,
+      "quote": null,
+      "hypotheses": null,
+      "statement": null,
+      "opened": false,
+      "report_locator": "Dudko, published ICM survey, p. 131 after Theorem 4.1 and bibliography [14] p. 133",
+      "report_url": "https://epubs.siam.org/doi/pdf/10.1137/25M1807101",
+      "search_log": [
+        "Exact author/title search; author research page https://www.math.stonybrook.edu/~ddudko/Research; arXiv; no primary manuscript found.",
+        "2022 author talk https://mathinstitutes.org/videos/19015 is not the manuscript and does not establish complex-fiber singleton from real-line singleton."
+      ],
+      "historical_sha256": null
+    },
+    "DKLP": {
+      "authors": "Dzmitry Dudko et al. (other authors not specified in cited bibliography)",
+      "title": "Elephant puzzles",
+      "publication": "unlocated manuscript in preparation",
+      "venue": "KKL v1 bibliography, in preparation; no primary journal or arXiv id located",
+      "version": null,
+      "url": null,
+      "locator": null,
+      "quote": null,
+      "hypotheses": null,
+      "statement": null,
+      "opened": false,
+      "report_locator": "KKL Theorem B discussion p. 3 and bibliography p. 71",
+      "report_url": "https://arxiv.org/pdf/2606.27272v1",
+      "search_log": [
+        "Exact title, author, arXiv and institutional searches did not locate text.",
+        "Do not identify with DLP Taming the elephants or KKL’s separate DKL virtual-renormalization manuscript."
+      ],
+      "historical_sha256": null
+    },
+    "GS": {
+      "authors": "Jacek Graczyk; Grzegorz Świątek",
+      "title": "Generic hyperbolicity in the logistic family",
+      "publication": "journal",
+      "venue": "Annals of Mathematics (2) 146 (1997), 1–52; DOI 10.2307/2951831",
+      "version": "journal",
+      "url": "https://annals.math.princeton.edu/articles/12963",
+      "locator": null,
+      "quote": null,
+      "hypotheses": null,
+      "statement": null,
+      "opened": false,
+      "report_locator": "Publisher bibliographic record only, no theorem text",
+      "report_url": "https://www.jstor.org/stable/2951831",
+      "search_log": [
+        "Publisher record opened; JSTOR landing page located; https://www.jstor.org/stable/pdf/2951831.pdf did not expose primary theorem pages.",
+        "Author retrospective and related density statements are not a substitute for the requested journal theorem."
+      ],
+      "historical_sha256": null
+    }
+  },
+  "items": {
+    "P/unbounded/real/none/residual": {
+      "verdict": "STILL UNVERIFIED",
+      "locator": [
+        "Lreal",
+        "LY",
+        "DKL",
+        "survey",
+        "DL26",
+        "Ldensity",
+        "GS"
+      ],
+      "attributed_hypothesis": "Atlas first-true semantics: the earlier_tests_false predicates recorded in atlas_negated_predicates are false by definition, not independently proved failures for every possible parameter. Survey §4.3 after Theorem 4.1 reports real-line and vein MLC via [14]. The primary DKL theorem is UNVERIFIED; do not label the documentary gap genuinely open.",
+      "affected_cells": [
+        "P/unbounded/real/none/residual"
+      ],
+      "before": {
+        "atlas": "open",
+        "open_cells": null,
+        "verification": "UNVERIFIED"
+      },
+      "after": {
+        "atlas": "open",
+        "open_cells": null,
+        "verification": "UNVERIFIED"
+      },
+      "reason": "The newly published survey explicitly reports MLC on the real line and veins, but cites DKL as a 2022 manuscript. Lyubich VIII only covers sufficiently large essential periods; the density and Julia-set theorems do not cover this entire complex-parameter residual.",
+      "blocker": "DKL primary theorem, exact hypotheses and locator not accessible; cannot certify the whole cell or exclude additional coverage."
+    },
+    "P/unbounded/nonreal/none/ee": {
+      "verdict": "VERIFIED",
+      "locator": [
+        "EE",
+        "L",
+        "C",
+        "TUN",
+        "TUNscope"
+      ],
+      "attributed_hypothesis": "EE arXiv:2601.21905v1 §4.0.1 p.9: even quadratic-like maps with connected Julia set, repelling fixed points, E1 rotation 1/q, E2 only the central little filled Julia set K0 contained in the central domain, E3 p=q+b with uniformly bounded b and source simplification b<q. §8 p.18 states MLC for corresponding parameters; p.19 cites DLP in preparation, subsequently developed with Kapiamba. All relevant levels satisfy the full atlas predicate, not the numerical proxy.",
+      "affected_cells": [
+        "P/unbounded/nonreal/none/ee"
+      ],
+      "before": {
+        "atlas": "open",
+        "open_cells": "A",
+        "verification": "STATEMENT_ONLY"
+      },
+      "after": {
+        "atlas": "open",
+        "open_cells": "A",
+        "verification": "STATEMENT_ONLY"
+      },
+      "reason": "The source’s unnumbered §8 MLC assertion matches the full E1–E3 pure-primitive family, not a proof audit.",
+      "blocker": "No journal publication located; statement match only, not independent verification of proof dependencies or exclusion of other published coverage."
+    },
+    "P/unbounded/nonreal/none/kkl": {
+      "verdict": "VERIFIED",
+      "locator": [
+        "KKL",
+        "DKLP",
+        "TUN",
+        "TUNscope",
+        "L"
+      ],
+      "attributed_hypothesis": "KKL arXiv:2606.27272v1 Theorem C p.4: all levels prime primitive, in a family which is a finite union of isolated types and finitely many parabolic tails as defined p.3 and §3.1 p.19. Theorem C states rigidity, defined as MLC p.3. DKLP input to Theorem B is in preparation and not independently checked.",
+      "affected_cells": [
+        "P/unbounded/nonreal/none/kkl"
+      ],
+      "before": {
+        "atlas": "open",
+        "open_cells": "A",
+        "verification": "STATEMENT_ONLY"
+      },
+      "after": {
+        "atlas": "open",
+        "open_cells": "A",
+        "verification": "STATEMENT_ONLY"
+      },
+      "reason": "Theorem C matches the prime-primitive, parabolically bounded family as defined by the paper.",
+      "blocker": "No journal publication located; statement match only, not independent verification of proof dependencies or exclusion of other published coverage."
+    },
+    "P/unbounded/nonreal/none/residual": {
+      "verdict": "STILL UNVERIFIED",
+      "locator": [
+        "DL26",
+        "KLdec",
+        "KLmol",
+        "EE",
+        "KKL",
+        "L",
+        "C",
+        "DKL",
+        "survey"
+      ],
+      "attributed_hypothesis": "Atlas first-true semantics: the earlier_tests_false predicates recorded in atlas_negated_predicates are false by definition, not independently proved failures for every possible parameter. No explicit realized residual witness establishing all geometric negations was checked. This is a search front, not a candidate C classification. KKL B applies only to prime primitive families with beau bounds and bounded puzzle Teichmüller diameter; failure of C does not imply failure of B. The mixed extension is outside the KKL paper's scope (remark p.4).",
+      "affected_cells": [
+        "P/unbounded/nonreal/none/residual"
+      ],
+      "before": {
+        "atlas": "open",
+        "open_cells": null,
+        "verification": "UNVERIFIED"
+      },
+      "after": {
+        "atlas": "open",
+        "open_cells": null,
+        "verification": "UNVERIFIED"
+      },
+      "reason": "The checked primitive/mixed, molecule, decoration and rigidity results are sufficient under their own predicates; their negations do not imply noncoverage. The survey's interpolation problem is not a theorem that classifies this residual.",
+      "blocker": "No primary theorem or exhaustive classification for this entire residual located; its open/nonempty status cannot be inferred from the first-true grid."
+    },
+    "S/unbounded/nonreal/bounded_digits/residual": {
+      "verdict": "STILL UNVERIFIED",
+      "locator": [
+        "DL26",
+        "CS2015",
+        "Lev1",
+        "Lev2",
+        "Levadd",
+        "L",
+        "C",
+        "DKL",
+        "survey",
+        "CS"
+      ],
+      "attributed_hypothesis": "Atlas first-true semantics: the earlier_tests_false predicates recorded in atlas_negated_predicates are false by definition, not independently proved failures for every possible parameter. Unbounded relative periods exclude DL26; CS and Levin sufficient predicates are negated by the atlas residual definition. The witness families in NOTE.md illustrate arithmetic exclusions on every tail, not exhaustive noncoverage or a theorem about every member of this row.",
+      "affected_cells": [
+        "S/unbounded/nonreal/bounded_digits/residual"
+      ],
+      "before": {
+        "atlas": "open",
+        "open_cells": null,
+        "verification": "UNVERIFIED"
+      },
+      "after": {
+        "atlas": "open",
+        "open_cells": null,
+        "verification": "UNVERIFIED"
+      },
+      "reason": "Reopened CS D and bounded-period, Levin and rigidity criteria have positive hypotheses, whereas this residual is defined by their relevant negations. The survey's Problem 4.3 is a research question, not a theorem classifying every remaining address.",
+      "blocker": "No primary positive theorem for this entire residual identified, nor a primary theorem proving all its members unresolved. A witness or non-exhaustive search does not classify the whole cell."
+    },
+    "S/unbounded/nonreal/unbounded_digits_min_tends_infty/qg": {
+      "verdict": "VERIFIED",
+      "locator": [
+        "CS2015",
+        "CS",
+        "TUN"
+      ],
+      "attributed_hypothesis": "CS2015 Theorem D p.6 and eq.(44) p.62 (author revision pp.5–6, eq.(6.8) p.62): all-satellite PL-renormalization with signed first digit >= the theorem's uniform N, within-level b_(i,j+1)>=b_(i,j)^2, cross-level b_(i+1,1)>=q_i^2. The theorem states exponential shrinking of the whole nested combinatorial copies, giving singleton fiber. No prefix transfer needed.",
+      "affected_cells": [
+        "S/unbounded/nonreal/unbounded_digits_min_tends_infty/qg"
+      ],
+      "before": {
+        "atlas": "open",
+        "open_cells": "A",
+        "verification": "STATEMENT_ONLY"
+      },
+      "after": {
+        "atlas": "open",
+        "open_cells": "A",
+        "verification": "STATEMENT_ONLY"
+      },
+      "reason": "Theorem D includes whole-copy exponential shrinking under the exact signed-CF quadratic-growth predicate.",
+      "blocker": "No journal publication located; statement match only, not independent verification of proof dependencies or exclusion of other published coverage."
+    },
+    "S/unbounded/nonreal/unbounded_digits_min_tends_infty/residual": {
+      "verdict": "STILL UNVERIFIED",
+      "locator": [
+        "survey",
+        "CS2015",
+        "CS",
+        "DL26",
+        "Lev1",
+        "Lev2",
+        "Levadd",
+        "L",
+        "C"
+      ],
+      "attributed_hypothesis": "See merged #135 for the particular address S(1/3) S(1/4) S(1/5) ...; that address is GENUINELY OPEN in the scoped audited literature, not the entire cell. CS Theorem D requires b_(i+1,1)>=q_i^2 on each tail. Whole-cell classification remains UNVERIFIED.",
+      "affected_cells": [
+        "S/unbounded/nonreal/unbounded_digits_min_tends_infty/residual"
+      ],
+      "before": {
+        "atlas": "open",
+        "open_cells": null,
+        "verification": "UNVERIFIED"
+      },
+      "after": {
+        "atlas": "open",
+        "open_cells": null,
+        "verification": "UNVERIFIED"
+      },
+      "reason": "Reopened CS D and bounded-period, Levin and rigidity criteria have positive hypotheses, whereas this residual is defined by their relevant negations. The survey's Problem 4.3 is a research question, not a theorem classifying every remaining address.",
+      "blocker": "No primary positive theorem for this entire residual identified, nor a primary theorem proving all its members unresolved. The inherited address result is a single scoped example, not a whole-cell classification."
+    },
+    "S/unbounded/nonreal/unbounded_digits_min_not_tends_infty/residual": {
+      "verdict": "STILL UNVERIFIED",
+      "locator": [
+        "DL26",
+        "CS2015",
+        "Lev1",
+        "Lev2",
+        "Levadd",
+        "L",
+        "C",
+        "DKL",
+        "survey",
+        "CS"
+      ],
+      "attributed_hypothesis": "Atlas first-true semantics: the earlier_tests_false predicates recorded in atlas_negated_predicates are false by definition, not independently proved failures for every possible parameter. Unbounded relative periods exclude DL26; CS and Levin sufficient predicates are negated by the atlas residual definition. The witness families in NOTE.md illustrate arithmetic exclusions on every tail, not exhaustive noncoverage or a theorem about every member of this row.",
+      "affected_cells": [
+        "S/unbounded/nonreal/unbounded_digits_min_not_tends_infty/residual"
+      ],
+      "before": {
+        "atlas": "open",
+        "open_cells": null,
+        "verification": "UNVERIFIED"
+      },
+      "after": {
+        "atlas": "open",
+        "open_cells": null,
+        "verification": "UNVERIFIED"
+      },
+      "reason": "Reopened CS D and bounded-period, Levin and rigidity criteria have positive hypotheses, whereas this residual is defined by their relevant negations. The survey's Problem 4.3 is a research question, not a theorem classifying every remaining address.",
+      "blocker": "No primary positive theorem for this entire residual identified, nor a primary theorem proving all its members unresolved. A witness or non-exhaustive search does not classify the whole cell."
+    },
+    "mixed_eventually_P/unbounded/real/bounded_digits/residual": {
+      "verdict": "STILL UNVERIFIED",
+      "locator": [
+        "Lreal",
+        "LY",
+        "DKL",
+        "survey",
+        "DL26",
+        "Ldensity",
+        "GS"
+      ],
+      "attributed_hypothesis": "Atlas first-true semantics: the earlier_tests_false predicates recorded in atlas_negated_predicates are false by definition, not independently proved failures for every possible parameter. Survey §4.3 after Theorem 4.1 reports real-line and vein MLC via [14]. The primary DKL theorem is UNVERIFIED; do not label the documentary gap genuinely open.",
+      "affected_cells": [
+        "mixed_eventually_P/unbounded/real/bounded_digits/residual"
+      ],
+      "before": {
+        "atlas": "open",
+        "open_cells": null,
+        "verification": "UNVERIFIED"
+      },
+      "after": {
+        "atlas": "open",
+        "open_cells": null,
+        "verification": "UNVERIFIED"
+      },
+      "reason": "The newly published survey explicitly reports MLC on the real line and veins, but cites DKL as a 2022 manuscript. Lyubich VIII only covers sufficiently large essential periods; the density and Julia-set theorems do not cover this entire complex-parameter residual.",
+      "blocker": "DKL primary theorem, exact hypotheses and locator not accessible; cannot certify the whole cell or exclude additional coverage."
+    },
+    "mixed_eventually_P/unbounded/nonreal/bounded_digits/ee": {
+      "verdict": "STILL UNVERIFIED",
+      "locator": [
+        "EE",
+        "L",
+        "C",
+        "TUN",
+        "TUNscope"
+      ],
+      "attributed_hypothesis": "EE §4.0.1 p.9 E1–E3 and §8 pp.18–19 state MLC for the corresponding family. The atlas permits finite-tail transfer only with a verified trivial parameter fiber. The stated MLC application and outline do not independently establish that stronger antecedent here; TUN Cor.3.2 p.6 is conditional.",
+      "affected_cells": [
+        "mixed_eventually_P/unbounded/nonreal/bounded_digits/ee"
+      ],
+      "before": {
+        "atlas": "open",
+        "open_cells": null,
+        "verification": "UNVERIFIED"
+      },
+      "after": {
+        "atlas": "open",
+        "open_cells": null,
+        "verification": "UNVERIFIED"
+      },
+      "reason": "The base tail MLC statement is located and matches its restricted scope. #134 correctly withheld this finite-prefix application: the checked text does not independently establish the singleton parameter-fiber antecedent required for the transfer.",
+      "blocker": "Need a theorem establishing the trivial parameter fiber for this entire tail class (or a directly applicable tuning theorem with weaker hypotheses); neither pointwise LC nor a global LC/rigidity equivalence suffices. The DLP cylinder-copy input is not independently audited."
+    },
+    "mixed_eventually_P/unbounded/nonreal/bounded_digits/kkl": {
+      "verdict": "STILL UNVERIFIED",
+      "locator": [
+        "KKL",
+        "DKLP",
+        "TUN",
+        "TUNscope",
+        "L"
+      ],
+      "attributed_hypothesis": "KKL Theorem C p.4 states rigidity (defined on p.3 as MLC) for prime primitive types in a parabolically bounded family; Theorem B p.3/56 uses beau bounds and bounded puzzle Teichmüller diameter, with DKLP in preparation. An explicit trivial-fiber antecedent for restoring the mixed finite prefix has not been independently established; TUN Cor.3.2 p.6 is conditional.",
+      "affected_cells": [
+        "mixed_eventually_P/unbounded/nonreal/bounded_digits/kkl"
+      ],
+      "before": {
+        "atlas": "open",
+        "open_cells": null,
+        "verification": "UNVERIFIED"
+      },
+      "after": {
+        "atlas": "open",
+        "open_cells": null,
+        "verification": "UNVERIFIED"
+      },
+      "reason": "The base tail MLC statement is located and matches its restricted scope. #134 correctly withheld this finite-prefix application: the checked text does not independently establish the singleton parameter-fiber antecedent required for the transfer.",
+      "blocker": "Need a theorem establishing the trivial parameter fiber for this entire tail class (or a directly applicable tuning theorem with weaker hypotheses); neither pointwise LC nor a global LC/rigidity equivalence suffices. DKLP is still unlocated; Theorem B’s puzzle-Teichmüller-diameter input is not independently audited."
+    },
+    "mixed_eventually_P/unbounded/nonreal/bounded_digits/residual": {
+      "verdict": "STILL UNVERIFIED",
+      "locator": [
+        "DL26",
+        "KLdec",
+        "KLmol",
+        "EE",
+        "KKL",
+        "L",
+        "C",
+        "DKL",
+        "survey"
+      ],
+      "attributed_hypothesis": "Atlas first-true semantics: the earlier_tests_false predicates recorded in atlas_negated_predicates are false by definition, not independently proved failures for every possible parameter. No explicit realized residual witness establishing all geometric negations was checked. This is a search front, not a candidate C classification. KKL B applies only to prime primitive families with beau bounds and bounded puzzle Teichmüller diameter; failure of C does not imply failure of B. The mixed extension is outside the KKL paper's scope (remark p.4).",
+      "affected_cells": [
+        "mixed_eventually_P/unbounded/nonreal/bounded_digits/residual"
+      ],
+      "before": {
+        "atlas": "open",
+        "open_cells": null,
+        "verification": "UNVERIFIED"
+      },
+      "after": {
+        "atlas": "open",
+        "open_cells": null,
+        "verification": "UNVERIFIED"
+      },
+      "reason": "The checked primitive/mixed, molecule, decoration and rigidity results are sufficient under their own predicates; their negations do not imply noncoverage. The survey's interpolation problem is not a theorem that classifies this residual.",
+      "blocker": "No primary theorem or exhaustive classification for this entire residual located; its open/nonempty status cannot be inferred from the first-true grid."
+    },
+    "mixed_eventually_S/unbounded/nonreal/bounded_digits/residual": {
+      "verdict": "STILL UNVERIFIED",
+      "locator": [
+        "DL26",
+        "CS2015",
+        "Lev1",
+        "Lev2",
+        "Levadd",
+        "L",
+        "C",
+        "DKL",
+        "survey",
+        "CS"
+      ],
+      "attributed_hypothesis": "Atlas first-true semantics: the earlier_tests_false predicates recorded in atlas_negated_predicates are false by definition, not independently proved failures for every possible parameter. Unbounded relative periods exclude DL26; CS and Levin sufficient predicates are negated by the atlas residual definition. The witness families in NOTE.md illustrate arithmetic exclusions on every tail, not exhaustive noncoverage or a theorem about every member of this row.",
+      "affected_cells": [
+        "mixed_eventually_S/unbounded/nonreal/bounded_digits/residual"
+      ],
+      "before": {
+        "atlas": "open",
+        "open_cells": null,
+        "verification": "UNVERIFIED"
+      },
+      "after": {
+        "atlas": "open",
+        "open_cells": null,
+        "verification": "UNVERIFIED"
+      },
+      "reason": "Reopened CS D and bounded-period, Levin and rigidity criteria have positive hypotheses, whereas this residual is defined by their relevant negations. The survey's Problem 4.3 is a research question, not a theorem classifying every remaining address.",
+      "blocker": "No primary positive theorem for this entire residual identified, nor a primary theorem proving all its members unresolved. A witness or non-exhaustive search does not classify the whole cell."
+    },
+    "mixed_eventually_S/unbounded/nonreal/unbounded_digits_min_tends_infty/qg": {
+      "verdict": "VERIFIED",
+      "locator": [
+        "CS2015",
+        "CS",
+        "TUN"
+      ],
+      "attributed_hypothesis": "CS2015 Theorem D p.6 and eq.(44) p.62 (author revision pp.5–6, eq.(6.8) p.62): all-satellite PL-renormalization with signed first digit >= the theorem's uniform N, within-level b_(i,j+1)>=b_(i,j)^2, cross-level b_(i+1,1)>=q_i^2. The theorem states exponential shrinking of the whole nested combinatorial copies, giving singleton fiber. Restore the finite prefix only via TUN Cor.3.2 p.6 (trivial fiber preserved).",
+      "affected_cells": [
+        "mixed_eventually_S/unbounded/nonreal/unbounded_digits_min_tends_infty/qg"
+      ],
+      "before": {
+        "atlas": "open",
+        "open_cells": "A",
+        "verification": "STATEMENT_ONLY"
+      },
+      "after": {
+        "atlas": "open",
+        "open_cells": "A",
+        "verification": "STATEMENT_ONLY"
+      },
+      "reason": "Theorem D shrinks the whole nested-copy intersection; Corollary 3.2 preserves triviality through finite tuning.",
+      "blocker": "No journal publication located; statement match only, not independent verification of proof dependencies or exclusion of other published coverage."
+    },
+    "mixed_eventually_S/unbounded/nonreal/unbounded_digits_min_tends_infty/residual": {
+      "verdict": "STILL UNVERIFIED",
+      "locator": [
+        "DL26",
+        "CS2015",
+        "Lev1",
+        "Lev2",
+        "Levadd",
+        "L",
+        "C",
+        "DKL",
+        "survey",
+        "CS"
+      ],
+      "attributed_hypothesis": "Atlas first-true semantics: the earlier_tests_false predicates recorded in atlas_negated_predicates are false by definition, not independently proved failures for every possible parameter. Unbounded relative periods exclude DL26; CS and Levin sufficient predicates are negated by the atlas residual definition. The witness families in NOTE.md illustrate arithmetic exclusions on every tail, not exhaustive noncoverage or a theorem about every member of this row.",
+      "affected_cells": [
+        "mixed_eventually_S/unbounded/nonreal/unbounded_digits_min_tends_infty/residual"
+      ],
+      "before": {
+        "atlas": "open",
+        "open_cells": null,
+        "verification": "UNVERIFIED"
+      },
+      "after": {
+        "atlas": "open",
+        "open_cells": null,
+        "verification": "UNVERIFIED"
+      },
+      "reason": "Reopened CS D and bounded-period, Levin and rigidity criteria have positive hypotheses, whereas this residual is defined by their relevant negations. The survey's Problem 4.3 is a research question, not a theorem classifying every remaining address.",
+      "blocker": "No primary positive theorem for this entire residual identified, nor a primary theorem proving all its members unresolved. A witness or non-exhaustive search does not classify the whole cell."
+    },
+    "mixed_eventually_S/unbounded/nonreal/unbounded_digits_min_not_tends_infty/residual": {
+      "verdict": "STILL UNVERIFIED",
+      "locator": [
+        "DL26",
+        "CS2015",
+        "Lev1",
+        "Lev2",
+        "Levadd",
+        "L",
+        "C",
+        "DKL",
+        "survey",
+        "CS"
+      ],
+      "attributed_hypothesis": "Atlas first-true semantics: the earlier_tests_false predicates recorded in atlas_negated_predicates are false by definition, not independently proved failures for every possible parameter. Unbounded relative periods exclude DL26; CS and Levin sufficient predicates are negated by the atlas residual definition. The witness families in NOTE.md illustrate arithmetic exclusions on every tail, not exhaustive noncoverage or a theorem about every member of this row.",
+      "affected_cells": [
+        "mixed_eventually_S/unbounded/nonreal/unbounded_digits_min_not_tends_infty/residual"
+      ],
+      "before": {
+        "atlas": "open",
+        "open_cells": null,
+        "verification": "UNVERIFIED"
+      },
+      "after": {
+        "atlas": "open",
+        "open_cells": null,
+        "verification": "UNVERIFIED"
+      },
+      "reason": "Reopened CS D and bounded-period, Levin and rigidity criteria have positive hypotheses, whereas this residual is defined by their relevant negations. The survey's Problem 4.3 is a research question, not a theorem classifying every remaining address.",
+      "blocker": "No primary positive theorem for this entire residual identified, nor a primary theorem proving all its members unresolved. A witness or non-exhaustive search does not classify the whole cell."
+    },
+    "mixed_recurrent/unbounded/real/bounded_digits/residual": {
+      "verdict": "STILL UNVERIFIED",
+      "locator": [
+        "Lreal",
+        "LY",
+        "DKL",
+        "survey",
+        "DL26",
+        "Ldensity",
+        "GS"
+      ],
+      "attributed_hypothesis": "Atlas first-true semantics: the earlier_tests_false predicates recorded in atlas_negated_predicates are false by definition, not independently proved failures for every possible parameter. Survey §4.3 after Theorem 4.1 reports real-line and vein MLC via [14]. The primary DKL theorem is UNVERIFIED; do not label the documentary gap genuinely open.",
+      "affected_cells": [
+        "mixed_recurrent/unbounded/real/bounded_digits/residual"
+      ],
+      "before": {
+        "atlas": "open",
+        "open_cells": null,
+        "verification": "UNVERIFIED"
+      },
+      "after": {
+        "atlas": "open",
+        "open_cells": null,
+        "verification": "UNVERIFIED"
+      },
+      "reason": "The newly published survey explicitly reports MLC on the real line and veins, but cites DKL as a 2022 manuscript. Lyubich VIII only covers sufficiently large essential periods; the density and Julia-set theorems do not cover this entire complex-parameter residual.",
+      "blocker": "DKL primary theorem, exact hypotheses and locator not accessible; cannot certify the whole cell or exclude additional coverage."
+    },
+    "mixed_recurrent/unbounded/nonreal/bounded_digits/residual": {
+      "verdict": "STILL UNVERIFIED",
+      "locator": [
+        "DL26",
+        "KLmol",
+        "KKL",
+        "CS2015",
+        "L",
+        "DKL",
+        "survey"
+      ],
+      "attributed_hypothesis": "Atlas first-true semantics: the earlier_tests_false predicates recorded in atlas_negated_predicates are false by definition, not independently proved failures for every possible parameter. No explicit realized residual witness establishing all geometric negations was checked. This is a search front, not a candidate C classification. KKL B applies only to prime primitive families with beau bounds and bounded puzzle Teichmüller diameter; failure of C does not imply failure of B. The mixed extension is outside the KKL paper's scope (remark p.4).",
+      "affected_cells": [
+        "mixed_recurrent/unbounded/nonreal/bounded_digits/residual"
+      ],
+      "before": {
+        "atlas": "open",
+        "open_cells": null,
+        "verification": "UNVERIFIED"
+      },
+      "after": {
+        "atlas": "open",
+        "open_cells": null,
+        "verification": "UNVERIFIED"
+      },
+      "reason": "The checked primitive/mixed, molecule, decoration and rigidity results are sufficient under their own predicates; their negations do not imply noncoverage. The survey's interpolation problem is not a theorem that classifies this residual.",
+      "blocker": "No primary theorem or exhaustive classification for this entire residual located; its open/nonempty status cannot be inferred from the first-true grid."
+    },
+    "mixed_recurrent/unbounded/nonreal/unbounded_digits_min_tends_infty/residual": {
+      "verdict": "STILL UNVERIFIED",
+      "locator": [
+        "DL26",
+        "KLmol",
+        "KKL",
+        "CS2015",
+        "L",
+        "DKL",
+        "survey"
+      ],
+      "attributed_hypothesis": "Atlas first-true semantics: the earlier_tests_false predicates recorded in atlas_negated_predicates are false by definition, not independently proved failures for every possible parameter. No explicit realized residual witness establishing all geometric negations was checked. This is a search front, not a candidate C classification. KKL B applies only to prime primitive families with beau bounds and bounded puzzle Teichmüller diameter; failure of C does not imply failure of B. The mixed extension is outside the KKL paper's scope (remark p.4).",
+      "affected_cells": [
+        "mixed_recurrent/unbounded/nonreal/unbounded_digits_min_tends_infty/residual"
+      ],
+      "before": {
+        "atlas": "open",
+        "open_cells": null,
+        "verification": "UNVERIFIED"
+      },
+      "after": {
+        "atlas": "open",
+        "open_cells": null,
+        "verification": "UNVERIFIED"
+      },
+      "reason": "The checked primitive/mixed, molecule, decoration and rigidity results are sufficient under their own predicates; their negations do not imply noncoverage. The survey's interpolation problem is not a theorem that classifies this residual.",
+      "blocker": "No primary theorem or exhaustive classification for this entire residual located; its open/nonempty status cannot be inferred from the first-true grid."
+    },
+    "mixed_recurrent/unbounded/nonreal/unbounded_digits_min_not_tends_infty/residual": {
+      "verdict": "STILL UNVERIFIED",
+      "locator": [
+        "DL26",
+        "KLmol",
+        "KKL",
+        "CS2015",
+        "L",
+        "DKL",
+        "survey"
+      ],
+      "attributed_hypothesis": "Atlas first-true semantics: the earlier_tests_false predicates recorded in atlas_negated_predicates are false by definition, not independently proved failures for every possible parameter. No explicit realized residual witness establishing all geometric negations was checked. This is a search front, not a candidate C classification. KKL B applies only to prime primitive families with beau bounds and bounded puzzle Teichmüller diameter; failure of C does not imply failure of B. The mixed extension is outside the KKL paper's scope (remark p.4).",
+      "affected_cells": [
+        "mixed_recurrent/unbounded/nonreal/unbounded_digits_min_not_tends_infty/residual"
+      ],
+      "before": {
+        "atlas": "open",
+        "open_cells": null,
+        "verification": "UNVERIFIED"
+      },
+      "after": {
+        "atlas": "open",
+        "open_cells": null,
+        "verification": "UNVERIFIED"
+      },
+      "reason": "The checked primitive/mixed, molecule, decoration and rigidity results are sufficient under their own predicates; their negations do not imply noncoverage. The survey's interpolation problem is not a theorem that classifies this residual.",
+      "blocker": "No primary theorem or exhaustive classification for this entire residual located; its open/nonempty status cannot be inferred from the first-true grid."
+    }
+  },
+  "source_items": {
+    "DKL": {
+      "verdict": "STILL UNVERIFIED",
+      "locator": [
+        "DKL",
+        "survey"
+      ],
+      "attributed": "UNVERIFIED primary manuscript; survey §4.3 after Theorem 4.1 and ref. [14]",
+      "affected_cells": [
+        "P/unbounded/nonreal/none/residual",
+        "P/unbounded/real/none/residual",
+        "S/unbounded/nonreal/bounded_digits/residual",
+        "S/unbounded/nonreal/unbounded_digits_min_not_tends_infty/residual",
+        "mixed_eventually_P/unbounded/nonreal/bounded_digits/residual",
+        "mixed_eventually_P/unbounded/real/bounded_digits/residual",
+        "mixed_eventually_P/unbounded/real/unbounded_digits_min_not_tends_infty/residual",
+        "mixed_eventually_P/unbounded/real/unbounded_digits_min_tends_infty/residual",
+        "mixed_eventually_S/unbounded/nonreal/bounded_digits/residual",
+        "mixed_eventually_S/unbounded/nonreal/unbounded_digits_min_not_tends_infty/residual",
+        "mixed_eventually_S/unbounded/nonreal/unbounded_digits_min_tends_infty/residual",
+        "mixed_eventually_S/unbounded/real/bounded_digits/residual",
+        "mixed_eventually_S/unbounded/real/unbounded_digits_min_not_tends_infty/residual",
+        "mixed_eventually_S/unbounded/real/unbounded_digits_min_tends_infty/residual",
+        "mixed_recurrent/unbounded/nonreal/bounded_digits/residual",
+        "mixed_recurrent/unbounded/nonreal/unbounded_digits_min_not_tends_infty/residual",
+        "mixed_recurrent/unbounded/nonreal/unbounded_digits_min_tends_infty/residual",
+        "mixed_recurrent/unbounded/real/bounded_digits/residual",
+        "mixed_recurrent/unbounded/real/unbounded_digits_min_not_tends_infty/residual",
+        "mixed_recurrent/unbounded/real/unbounded_digits_min_tends_infty/residual"
+      ],
+      "reason": "Published survey confirms the report, not the primary theorem; no new coverage.",
+      "changed_cells": []
+    },
+    "DKLP": {
+      "verdict": "STILL UNVERIFIED",
+      "locator": [
+        "DKLP",
+        "KKL"
+      ],
+      "attributed": "UNVERIFIED primary; KKL v1 p. 71 bibliography",
+      "affected_cells": [
+        "P/unbounded/nonreal/none/kkl",
+        "mixed_eventually_P/unbounded/nonreal/bounded_digits/kkl"
+      ],
+      "reason": "Cited unpublished input to KKL B; no primary statement or hypotheses accessible.",
+      "changed_cells": []
+    },
+    "GS": {
+      "verdict": "STILL UNVERIFIED",
+      "locator": [
+        "GS"
+      ],
+      "attributed": "journal theorem/page UNVERIFIED",
+      "affected_cells": [],
+      "reason": "Journal bibliographic record confirmed; precise theorem text not accessible. No complex MLC use.",
+      "changed_cells": []
+    },
+    "Ldensity": {
+      "verdict": "VERIFIED",
+      "locator": [
+        "Ldensity"
+      ],
+      "attributed": "Density Theorem, p. 188; theorem statement not independently re-quoted in this follow-up",
+      "affected_cells": [],
+      "reason": "Exact primary statement p. 188 matches #132’s real rigidity/density, not complex MLC. #134 source entry can be upgraded at statement level.",
+      "changed_cells": []
+    },
+    "survey": {
+      "verdict": "CORRECTED",
+      "locator": [
+        "survey"
+      ],
+      "attributed": "HTML v1 §4.3 after Thm 4.1; §4.4 Problem 4.3; §4.5 Problem 4.4; ref. [14]; PDF pagination UNVERIFIED",
+      "affected_cells": [
+        "P/unbounded/nonreal/none/residual",
+        "P/unbounded/real/none/residual",
+        "S/unbounded/nonreal/bounded_digits/residual",
+        "S/unbounded/nonreal/unbounded_digits_min_not_tends_infty/residual",
+        "S/unbounded/nonreal/unbounded_digits_min_tends_infty/residual",
+        "mixed_eventually_P/unbounded/nonreal/bounded_digits/residual",
+        "mixed_eventually_P/unbounded/real/bounded_digits/residual",
+        "mixed_eventually_S/unbounded/nonreal/bounded_digits/residual",
+        "mixed_eventually_S/unbounded/nonreal/unbounded_digits_min_not_tends_infty/residual",
+        "mixed_eventually_S/unbounded/nonreal/unbounded_digits_min_tends_infty/residual",
+        "mixed_recurrent/unbounded/nonreal/bounded_digits/residual",
+        "mixed_recurrent/unbounded/nonreal/unbounded_digits_min_not_tends_infty/residual",
+        "mixed_recurrent/unbounded/nonreal/unbounded_digits_min_tends_infty/residual",
+        "mixed_recurrent/unbounded/real/bounded_digits/residual"
+      ],
+      "reason": "Update arXiv/HTML-only locator to published 2026 ICM chapter and printed pages. This is a bibliographic correction, not new primary coverage for DKL.",
+      "changed_cells": []
+    }
+  },
+  "consequences": {
+    "cell_verdict_counts": {
+      "VERIFIED": 4,
+      "CORRECTED": 0,
+      "STILL UNVERIFIED": 16
+    },
+    "requested_source_verdict_counts": {
+      "VERIFIED": 1,
+      "CORRECTED": 0,
+      "STILL UNVERIFIED": 3
+    },
+    "ancillary_source_verdict_counts": {
+      "VERIFIED": 0,
+      "CORRECTED": 1,
+      "STILL UNVERIFIED": 0
+    },
+    "atlas_before": {
+      "covered": 110,
+      "open": 62
+    },
+    "atlas_after": {
+      "covered": 110,
+      "open": 62
+    },
+    "open_cells_before": {
+      "A": 4,
+      "B": 42,
+      "C": 0,
+      "UNVERIFIED": 16
+    },
+    "open_cells_after": {
+      "A": 4,
+      "B": 42,
+      "C": 0,
+      "UNVERIFIED": 16
+    },
+    "changed_cells": [],
+    "source_changes": [
+      "Ldensity: UNVERIFIED → VERIFIED (real density only)",
+      "survey: published proceedings and printed-page locator, not DKL verification"
+    ]
+  }
+}
