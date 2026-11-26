@@ -2123,6 +2123,41 @@
       "KKL_STATIONARY_SELECTED_SEPARATOR_REALIZATION"
     ]
   },
+  "prime-end-sector-filters-20261126": {
+    "guide": "contributions/prime_end_sector_filters_20261126/NOTE.md#prime-end-sector-filters-20261126",
+    "theorems": {
+      "formalization/weighted/PrimeEndSectorFilters.lean": [
+        "compact_footprint_eventually_inside",
+        "angular_cluster_iff",
+        "forward_forces_unique_angle",
+        "reverse_stage_iff",
+        "whole_trace_cofinal_iff",
+        "two_angles_obstruct",
+        "interval_interior_iff",
+        "interval_endpoint_obstruct",
+        "connected_two_point_set",
+        "quadratic_iterate_connected_fiber",
+        "endpoint_impressions_singleton"
+      ],
+      "formalization/weighted/PrimeEndSectorImpressions.lean": [
+        "finite_sector_capacity",
+        "compact_address_uniform_shrinking",
+        "prefix_cylinder_open",
+        "finite_prefix_uniform_shrinking",
+        "right_endpoint_filter",
+        "image_closure_eq_compact",
+        "nested_impression_connected",
+        "quadratic_cofinal_impression_covariance",
+        "endpoint_impression_from_cofinal_wedges",
+        "wedge_eq_punctured_ball",
+        "cofinal_iff_nhdsWithin",
+        "whole_trace_nhdsWithin_iff"
+      ]
+    },
+    "obligations": [
+      "DIRECT_DECORATION_END_PRIME_END_COFINALITY"
+    ]
+  },
   "cylinder-fiber-exhaustion-20261126": {
     "guide": "contributions/cylinder_fiber_exhaustion_20261126/NOTE.md#cylinder-fiber-exhaustion-20261126",
     "theorems": {
