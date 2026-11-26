@@ -2784,6 +2784,20 @@
         "orbitDividedDifference_continuous",
         "quadratic_parameter_univalent_neighborhood",
         "quadratic_parameter_univalent_neighborhood_within"
+      ],
+      "formalization/weighted/QuadraticParameterDistortion.lean": [
+        "orbitRadius_nonneg",
+        "parameterSensitivity_nonneg",
+        "orbit_norm_le_radius",
+        "orbit_parameter_distortion",
+        "orbit_inverse_joint_bound",
+        "quadratic_compact_inverse_uniform_bound"
+      ],
+      "formalization/weighted/QuadraticParameterInverse.lean": [
+        "quadratic_skew_analytic",
+        "quadratic_skew_locally_invertible",
+        "quadratic_skew_univalent_inverse",
+        "quadratic_compact_parameter_inverse_family"
       ]
     },
     "obligations": [
