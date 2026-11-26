@@ -47,7 +47,7 @@ theorem quadratic_compact_finite_time_motion
     have horbit : AnalyticAt ℂ (fun q : ℂ × ℂ => orbit c n q.2) p :=
       (orbit_analytic c n p.2).comp analyticAt_snd
     have hpair : AnalyticAt ℂ (fun q : ℂ × ℂ => (q.1, orbit c n q.2)) p :=
-      analyticAt_fst.prodMk horbit
+      analyticAt_fst.prod horbit
     exact (hga (p.1, orbit c n p.2) ⟨hrP hp.1, hterminal p.2 hp.2⟩).comp hpair
   · intro z hz
     exact (hbranch c hcP).2.1 (hCU hz)
@@ -70,7 +70,7 @@ theorem quadratic_compact_finite_time_motion
       exact hlift d hd z hz
   · intro d hd z hz
     have hpair : AnalyticAt ℂ (fun e : ℂ => (e, orbit c n z)) d :=
-      analyticAt_id.prodMk analyticAt_const
+      analyticAt_id.prod analyticAt_const
     exact (hga (d, orbit c n z) ⟨hrP hd, hterminal z hz⟩).comp hpair
 
 /-- If the original compact core is connected and nonempty, its motion
@@ -98,8 +98,8 @@ theorem quadratic_compact_motion_component
   refine ⟨r, U, h, hr, hU, hCU, hUc, hUW,
     fun z hz => (hbranch c hcP).2.1 (hCU hz), ?_, ?_⟩
   · intro d hd z hz
-    exact (hga (d, orbit c n z) ⟨hrP hd, hterminal z hz⟩).comp d
-      (analyticAt_id.prodMk analyticAt_const)
+    exact (hga (d, orbit c n z) ⟨hrP hd, hterminal z hz⟩).comp
+      (analyticAt_id.prod analyticAt_const)
   · intro d hd
     refine ⟨?_, ?_⟩
     · intro z hz w hw heq
