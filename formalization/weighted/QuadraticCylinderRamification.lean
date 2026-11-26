@@ -68,7 +68,7 @@ theorem quadratic_iterate_univalent_component (c : ℂ) (n : ℕ) :
       simpa using hab
     have hf := quadratic_iterate_proper c 0
     have hCo : IsOpen C := (hVo.preimage hf.continuous).connectedComponentIn
-    have he := quadratic_global_component_image c 0 V hVo hVc.isPathConnected.isPreconnected x hx
+    have he := quadratic_global_component_image c 0 V hVo hVc.isPathConnected.isConnected.isPreconnected x hx
     obtain ⟨e, _⟩ := open_restriction_homeomorph ((quad c)^[0]) C V
       hf.continuous (quadratic_iterate_open c 0) hCo he hi
     letI : SimplyConnectedSpace V := hVc
@@ -107,7 +107,7 @@ theorem quadratic_iterate_univalent_component (c : ℂ) (n : ℕ) :
       simpa only [Function.iterate_succ_apply] using hab
     have hf := quadratic_iterate_proper c (n+1)
     have hCo : IsOpen C := (hVo.preimage hf.continuous).connectedComponentIn
-    have he := quadratic_global_component_image c (n+1) V hVo hVc.isPathConnected.isPreconnected x hx
+    have he := quadratic_global_component_image c (n+1) V hVo hVc.isPathConnected.isConnected.isPreconnected x hx
     obtain ⟨e, _⟩ := open_restriction_homeomorph (f^[n+1]) C V
       hf.continuous (quadratic_iterate_open c (n+1)) hCo he hi
     letI : SimplyConnectedSpace V := hVc
@@ -307,8 +307,14 @@ theorem quadratic_enlargement_merger_iff (c : ℂ) (n : ℕ)
     by_contra h
     have hcrit : ∀ k < n, (quad c)^[k] c ∉ V :=
       fun k hk hz => h ⟨k, hk, hz⟩
-    have haV : f a ∈ V := ha.symm ▸ hUV hy
-    have hbV : f b ∈ V := hb.symm ▸ hUV hy
+    have haV : f a ∈ V := by
+      change (quad c)^[n] a ∈ V
+      rw [ha]
+      exact hUV hy
+    have hbV : f b ∈ V := by
+      change (quad c)^[n] b ∈ V
+      rw [hb]
+      exact hUV hy
     have hi := (quadratic_iterate_univalent_component c n V hVo hVc hcrit a haV).1
     have hbc : b ∈ connectedComponentIn (f ⁻¹' V) a := by
       rw [hmerge]
@@ -320,11 +326,17 @@ theorem quadratic_enlargement_merger_iff (c : ℂ) (n : ℕ)
       fun j hj he => hreg j hj (he.symm ▸ hy)
     obtain ⟨a, b, hab, ha, hb, hmerge⟩ :=
       quadratic_postcritical_target_merges_regular_fiber c n k V hVo
-        hVc.isPathConnected.isPreconnected y (hUV hy) hyreg hk hcrit
+        hVc.isPathConnected.isConnected.isPreconnected y (hUV hy) hyreg hk hcrit
     refine ⟨a, b, ha, hb, ?_, hmerge⟩
     intro he
-    have haU : f a ∈ U := ha.symm ▸ hy
-    have hbU : f b ∈ U := hb.symm ▸ hy
+    have haU : f a ∈ U := by
+      change (quad c)^[n] a ∈ U
+      rw [ha]
+      exact hy
+    have hbU : f b ∈ U := by
+      change (quad c)^[n] b ∈ U
+      rw [hb]
+      exact hy
     have hbc : b ∈ connectedComponentIn (f ⁻¹' U) a := by
       rw [he]
       exact mem_connectedComponentIn hbU
