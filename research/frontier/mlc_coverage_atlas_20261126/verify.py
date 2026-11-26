@@ -9,7 +9,6 @@ import concurrent.futures
 import hashlib
 import itertools
 import json
-import math
 from pathlib import Path
 import re
 import urllib.request
@@ -24,7 +23,7 @@ PREDICATES = {"levin1": "Lev1", "k": "K", "dec": "KLdec", "mol": "KLmol",
               "real_essential": "Lreal", "qg": "CS", "levin2": "Lev2",
               "levinadd": "Levadd", "sl_bounds": "L", "ee": "EE", "kkl": "KKL"}
 CATALOG = set(PREDICATES.values()) | {"Y", "Ldensity", "DL23", "DL26", "C",
-                                     "LY", "LvS", "GS", "DKL", "survey"}
+                                     "LY", "LvS", "GS", "DKL", "survey", "TUN"}
 
 def load(name):
     return json.loads((ROOT / name).read_text(encoding="utf-8"),
@@ -46,21 +45,23 @@ def expected_cells():
                    "bounded_denominators", "all"), [], ["DL26"], []
             continue
         tests = ["levin1"]
-        if regime != "S":
-            tests += ["k", "dec", "mol"]
-        if locus == "real":
+        if regime not in ("S", "mixed_eventually_S"):
+            tests += ["k"]
+        if regime in ("P", "mixed_eventually_P"):
+            tests += ["dec", "mol"]
+        if regime not in ("S", "mixed_eventually_S"):
             tests += ["real_essential"]
-        if regime == "S":
+        if regime in ("S", "mixed_eventually_S"):
             tests += ["qg", "levin2", "levinadd"]
         tests += ["sl_bounds"]
-        if regime != "S":
+        if regime in ("P", "mixed_eventually_P"):
             tests += ["ee", "kkl"]
         for rotation in ("none",) if regime == "P" else ROTATIONS:
             prefix = (regime, period, locus, rotation)
             for i, test in enumerate(tests):
                 theorem = PREDICATES[test]
                 reported = test in ("ee", "kkl")
-                yield prefix + (test,), tests[:i], [] if reported else [theorem], \
+                yield prefix + (test,), tests[:i], [] if reported else [theorem, "TUN"], \
                     [theorem] if reported else []
             yield prefix + ("residual",), tests, [], ["DKL"] if locus == "real" else []
 
@@ -132,6 +133,7 @@ def lock(a):
     urls = source_urls(a)
     with concurrent.futures.ThreadPoolExecutor(max_workers=5) as pool:
         manifest = dict(zip(urls, pool.map(download, urls)))
+    print(json.dumps(manifest, indent=2, sort_keys=True))
     (ROOT/"sources.json").write_text(json.dumps(manifest, indent=2, sort_keys=True)+"\n",
                                      encoding="utf-8")
     note = ROOT/"NOTE.md"

@@ -1,5 +1,5 @@
 {
-  "https://annals.math.princeton.edu/1997/146-1/p01": {
+  "https://annals.math.princeton.edu/articles/12963": {
     "status": "UNVERIFIED",
     "sha256": null,
     "reason": "pending CI"
@@ -65,6 +65,11 @@
     "reason": "pending CI"
   },
   "https://www.math.stonybrook.edu/preprints/ims07-04.pdf": {
+    "status": "UNVERIFIED",
+    "sha256": null,
+    "reason": "pending CI"
+  },
+  "https://www.math.stonybrook.edu/preprints/ims98-13b.pdf": {
     "status": "UNVERIFIED",
     "sha256": null,
     "reason": "pending CI"
