@@ -1,0 +1,40 @@
+name: Elephant Eyes section 8
+on:
+  push:
+    branches: [frontier/elephant-eyes-s8-20261126, main]
+  pull_request:
+    branches: [main]
+    paths:
+      - 'research/frontier/elephant_eyes_s8_20261126/**'
+      - '.github/workflows/elephant-eyes-s8.yml'
+      - 'formalization/physical_bridge_sources.tsv'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4.2.2
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          persist-credentials: false
+      - uses: actions/setup-python@v5.6.0
+        with:
+          python-version: '3.12'
+      - name: Install pinned dependency
+        run: python -m pip install --disable-pip-version-check -r research/frontier/elephant_eyes_s8_20261126/requirements.txt
+      - name: Fetch and verify primary source
+        run: python -B research/frontier/elephant_eyes_s8_20261126/verify.py --output "$RUNNER_TEMP/elephant-sources.json"
+      - name: Reproduce committed source manifest
+        shell: bash
+        run: |
+          set -euo pipefail
+          manifest=research/frontier/elephant_eyes_s8_20261126/sources.json
+          test -f "$manifest"
+          cmp "$RUNNER_TEMP/elephant-sources.json" "$manifest"
+      - name: Check source registration
+        run: python -B code/verify_physical_bridges.py
