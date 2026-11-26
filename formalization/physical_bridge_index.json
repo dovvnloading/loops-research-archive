@@ -1931,6 +1931,56 @@
       "H4_RIGIDITY"
     ]
   },
+  "quadratic-extremal-multiplier": {
+    "guide": "research/frontier/kernel_extremal_multiplier_20261126/NOTE.md#quadratic-extremal-multiplier",
+    "theorems": {
+      "formalization/weighted/QuadraticExtremalMultiplier.lean": [
+        "norm_step_lower",
+        "escape_pos_of_large",
+        "parameter_norm_le_two",
+        "bounded_point_norm_le_two",
+        "bounded_orbit_norm_le_two",
+        "bounded_orbit_norm_sq",
+        "orbit_hasDerivAt",
+        "multiplier_eq_deriv",
+        "multiplier_norm_bound",
+        "deriv_norm_bound",
+        "successor_defect_sq",
+        "successor_radial_deficit",
+        "parameter_defect_sq",
+        "bounded_orbit_parameter_defect",
+        "multiplier_sq_uniform_gap",
+        "deriv_sq_uniform_gap",
+        "extremal_deriv_parameter",
+        "chebyshev_fixed_orbit",
+        "chebyshev_fixed_escape_zero",
+        "chebyshev_parameter_escape_zero",
+        "chebyshev_fixed_multiplier",
+        "chebyshev_fixed_deriv_norm"
+      ]
+    },
+    "obligations": [
+      "H4_RIGIDITY"
+    ]
+  },
+  "h3-planar-fill-limit-20261126": {
+    "guide": "contributions/h3_planar_fill_limit_20261126/NOTE.md#h3-planar-fill-limit-20261126",
+    "theorems": {
+      "formalization/weighted/PlanarFillLimit.lean": [
+        "connectedComponentIn_iUnion_monotone_open",
+        "planarFill_iInter_antitone_compact",
+        "planarFill_iInter_fixed",
+        "planarFill_eventually_subset_open",
+        "planarFill_upper_semicontinuous",
+        "planarFill_of_proper_subset_unitSphere",
+        "planarFill_unitSphere",
+        "full_connected_approx_nonfull_unitSphere"
+      ]
+    },
+    "obligations": [
+      "H3_COERCIVITY"
+    ]
+  },
   "saturated-telescope-20261126": {
     "guide": "contributions/saturated_telescope_20261126/NOTE.md#saturated-telescope-20261126",
     "theorems": {
