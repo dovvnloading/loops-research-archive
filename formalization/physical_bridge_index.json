@@ -2310,5 +2310,22 @@
     "obligations": [
       "H1_CELL_TREE_EXTRACTION"
     ]
+  },
+  "quadratic-cylinder-ramification-20261126": {
+    "guide": "contributions/quadratic_cylinder_ramification_20261126/NOTE.md#quadratic-cylinder-ramification-20261126",
+    "theorems": {
+      "formalization/weighted/QuadraticCylinderRamification.lean": [
+        "quadratic_global_component_image",
+        "open_restriction_homeomorph",
+        "quadratic_iterate_univalent_component",
+        "quadratic_critical_hit_noninjective",
+        "quadratic_iterate_surjective",
+        "quadratic_postcritical_component_obstruction",
+        "quadratic_all_components_univalent_iff"
+      ]
+    },
+    "obligations": [
+      "VIRTUAL_REACHED_CYLINDER_COMPONENT_EXHAUSTION"
+    ]
   }
 }
