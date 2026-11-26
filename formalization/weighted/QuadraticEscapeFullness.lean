@@ -345,11 +345,9 @@ theorem compact_connected_complement_log (S : Set ℂ)
     (continuous_subtype_val.comp continuous_snd).sub (g.continuous.comp continuous_fst)
   let H : C(I × S, {z : ℂ // z ≠ 0}) :=
     ⟨fun q => ⟨(q.2 : ℂ)-g q.1, hne q⟩, hcont.subtype_mk _⟩
-  let L₀ : C(S, ℂ) := ⟨fun z => Complex.log ((z : ℂ)-a), by
-    apply continuous_iff_continuousAt.mpr
-    intro z
-    exact (continuousAt_clog (hs z)).comp
-      (continuous_subtype_val.sub continuous_const).continuousAt⟩
+  have hshift : Continuous (fun z : S => (z : ℂ)-a) :=
+    (continuous_subtype_val : Continuous (Subtype.val : S → ℂ)).sub continuous_const
+  let L₀ : C(S, ℂ) := ⟨fun z => Complex.log ((z : ℂ)-a), hshift.clog hs⟩
   have H₀ (z : S) : H (0,z) =
       (⟨Complex.exp (L₀ z), Complex.exp_ne_zero _⟩ : {w : ℂ // w ≠ 0}) := by
     apply Subtype.ext
