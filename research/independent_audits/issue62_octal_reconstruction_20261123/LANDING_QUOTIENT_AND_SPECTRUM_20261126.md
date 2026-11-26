@@ -77,7 +77,7 @@ exterior coordinate has nonreal image: otherwise its conjugate would
 have the same image. The connected upper exterior half-annulus maps
 into the upper half-plane, as its image is upper near infinity by
 normalization. Choose a sufficiently large equipotential. Its upper
-arc together with its real diameter bounds a Jordan domain in the
+arc together with the real segment joining its endpoints bounds a Jordan domain in the
 upper half-plane (symmetry, injectivity and the two real intersections).
 For two distinct angles in (0,1/2) with distinct real landings, their
 truncated rays are disjoint simple arcs from the upper equipotential
@@ -199,9 +199,8 @@ up to 1/2−ε_n, one from 1/2+ε_n, and linear between. Define
 \[
  v_n(z)=r_n\bigl(\pi^{-1}\arccos(h(z)/2)\bigr),\quad z\in C_1.
 \]
-These are continuous and constant on no additional fibers by
-assumption: their pullbacks are automatically constant on the actual
-L-fibers. By (1), the rescaled pullback on the left child is
+These are continuous; their pullbacks are automatically constant on the
+actual L-fibers. By (1), the rescaled pullback on the left child is
 r_n∘B and on the right child is its reflected copy. The explicit
 generic ramp estimate [measure/trace, (30)–(32)](MEASURE_AND_TRACE.md)
 bounds each child energy by (3/2)A. Reflection preserves μ and the
