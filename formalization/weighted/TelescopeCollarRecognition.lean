@@ -13,7 +13,7 @@ component or local connectivity assumption on the compact carriers.
 
 namespace LoopsTelescopeCollar
 
-open Set Function Filter Metric
+open Set Function Filter Metric Topology
 open QuadraticEscape LoopsSaturatedTelescope LoopsQuadraticCylinderCensus
 open LoopsTelescopeRamification
 open scoped BigOperators Topology
@@ -143,7 +143,10 @@ theorem selected_saturated_return_full_degree (c : ℂ) (a b : ℕ)
   have hfun2 : (orbit c (1+b) ∘ orbit c a) = orbit c (a+1+b) := by
     funext z
     change orbit c (1+b) (orbit c a z) = orbit c (a+1+b) z
-    rw [show a+1+b=a+(1+b) by omega, quadratic_orbit_add]
+    calc
+      orbit c (1+b) (orbit c a z) = orbit c (a+(1+b)) z :=
+        (quadratic_orbit_add c a (1+b) z).symm
+      _ = orbit c (a+1+b) z := by rw [show a+(1+b)=a+1+b by omega]
   have hretcomp := component_pullback_comp (orbit c a) (orbit c (1+b)) V x
     (quadratic_orbit_continuous c a) (by
       change (orbit c (1+b) ∘ orbit c a) x ∈ V
