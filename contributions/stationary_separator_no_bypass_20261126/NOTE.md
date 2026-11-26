@@ -11,7 +11,7 @@ human_review: none
 
 ## Claim
 
-Candidate exact component restriction and decomposition for arbitrary retained subsets of the full carrier: a singleton frontier gives a continuous retraction and an equivalence of local and global separator predicates. The retained subset need not be compact or locally connected. Also formalize the actual quadratic saturation identity for reflection-invariant sets.
+Exact component restriction and decomposition for arbitrary retained subsets of the full carrier: a singleton frontier gives a continuous retraction and an equivalence of local and global separator predicates. The retained subset need not be compact or locally connected. Also formalize the actual quadratic saturation identity for reflection-invariant sets.
 
 ## Evidence
 
@@ -26,11 +26,11 @@ The registered module [StationarySeparatorTransport.lean](../../formalization/we
 
 Verified baseline: commit 40394d46194cb121ed2753f6c201dcc50ac2fa63, weighted CI run 45860853970, successful compilation and transitive dependency audit.
 
-6. New candidate analytic reduction: `log_lift_homotopy`, `log_on_compact_avoiding_unbounded_cut`, `quadratic_injOn_avoiding_unbounded_cut`, `quadratic_reflected_separator_of_unbounded_cut`, `quadratic_base_separator_of_exterior_ray`. The logarithm is lifted from a far-away center and transported along a path in the open complement of a compact target. To exclude a connected bypass, use a path in the open preimage of the complement of the closed cut and apply the compact logarithm to its image. Thus the retained carrier need not be locally connected. A single exterior ray meeting the compact critical image and avoiding the retained image supplies the cut. Native ray construction and marked collar/access realization remain open. These five additions passed both the push and PR weighted builds and transitive axiom audits at commit cdc5d48dc04213ff7fa58777a58161344ad0fcb0 (runs 45861682421 and 45861690439).
+6. Verified analytic reduction: `log_lift_homotopy`, `log_on_compact_avoiding_unbounded_cut`, `quadratic_injOn_avoiding_unbounded_cut`, `quadratic_reflected_separator_of_unbounded_cut`, `quadratic_base_separator_of_exterior_ray`. The logarithm is lifted from a far-away center and transported along a path in the open complement of a compact target. To exclude a connected bypass, use a path in the open preimage of the complement of the closed cut and apply the compact logarithm to its image. Thus the retained carrier need not be locally connected. A single exterior ray meeting the compact critical image and avoiding the retained image supplies the cut. Native ray construction and marked collar/access realization remain open. These five additions passed both the push and PR weighted builds and transitive axiom audits at commit cdc5d48dc04213ff7fa58777a58161344ad0fcb0 (runs 45861682421 and 45861690439).
 
-7. New candidate direct physical-return bridge: `proper_restriction_compact_preimage`, `proper_restriction_is_component`, `quadratic_positive_iterate_even`, `even_preimage_component_symmetric`, `quadratic_return_filled_symmetric`, `connected_successor_avoids_component`, `terminal_successor_component_confined`. A connected open proper restriction is relatively closed in the full preimage of its open target by compact inverse images of a closed ball. Consequently the restriction is exactly a component, and the component containing zero for a positive quadratic iterate is reflection invariant. The actual all-return-iterates filled set is therefore symmetric; the hypothesis of symmetry can be discharged using the proper return. Finally an entire connected successor piece avoiding the critical set has its ambient components confined to the selected sheet, not merely separated from the attachment. These seven new declarations await their own exact-head CI.
+7. Verified direct physical-return bridge: `proper_restriction_compact_preimage`, `proper_restriction_is_component`, `quadratic_positive_iterate_even`, `even_preimage_component_symmetric`, `quadratic_return_filled_symmetric`, `connected_successor_avoids_component`, `terminal_successor_component_confined`. A connected open proper restriction is relatively closed in the full preimage of its open target by compact inverse images of a closed ball. Consequently the restriction is exactly a component, and the component containing zero for a positive quadratic iterate is reflection invariant. The actual all-return-iterates filled set is therefore symmetric; the hypothesis of symmetry can be discharged using the proper return. Finally an entire connected successor piece avoiding the critical set has its ambient components confined to the selected sheet, not merely separated from the attachment. All seven additions passed the weighted Lean build and transitive axiom audit at corrected commit 6781ebba92b862cfc0aab65319229cf780740fa1 (run 45862607484; 30 module declarations, 28 kernel theorems including generated declarations, allowed axioms only). The 26 named public theorems are registered.
 
-Build: `cd formalization/weighted && lake build StationarySeparatorTransport`. Existing weighted CI checks source registration and all transitive dependencies. Local Lean is unavailable; the additional statements are candidates until exact-head CI succeeds.
+Build: `cd formalization/weighted && lake build StationarySeparatorTransport`. Existing weighted CI checks source registration and all transitive dependencies. Local Lean is unavailable; the verified proof content is unchanged by the subsequent upstream merge; revalidate the merged head.
 
 ## Dependencies
 
@@ -38,7 +38,7 @@ KKL_NATIVE_TERMINAL_HUBBARD_TREE, KKL_STATIONARY_SELECTED_SMALL_JULIA_PREDECESSO
 
 ## Boundary
 
-No claim of native collar or access realization, H1–H4, MLC, or ledger closure. Local Lean is unavailable; CI must validate the registered source.
+No claim of native collar or access realization, H1–H4, MLC, or ledger closure. Local Lean is unavailable; repository CI validates the registered source.
 
 ## Attribution
 
