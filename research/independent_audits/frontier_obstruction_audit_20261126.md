@@ -213,3 +213,81 @@ This is exact because dm/|1-zeta|^2=|dx|/(4*pi). If U is L-Lipschitz on [x0-l,x0
 In particular l>8a/delta forces L>=delta^2/(16a). At the linear satellite scale delta=epsilon/q this forces L>=epsilon^2/16 on a window of x-radius greater than 8/(epsilon q). On such windows centered at x0=cot(pi/r), the change of angular coordinate has derivative magnitude (1+x^2)/2 comparable to r^2. Uniformly vanishing Lipschitz constants in x on these windows (with sufficiently large radius) would rule out the bad root; a bound on angular derivatives of order o(r^2) suffices. This is a diagnostic, not a proof of such derivative bounds on actual multipliers.
 
 **Research status after §5.** The specific missing native estimate is now localized to a positive-real-part continuation patch on the next child multiplier circle (or an equivalent pointwise mechanism). The weighted sharp theorem is proved on the stated analytic interface and extends the archived interior Julia estimate. The compact-invisible counterexamples prove a limitation of scalar methods, not a counterexample to any genuine satellite rigidity theorem. The continuation threshold is sharp in order within that scalar class. The actual native continuation radius, whole-copy transport and parameter rigidity remain OPEN. No changes to H1–H4, UPTCR, or the source-locked ledger.
+
+## 6. Combining the PLY disk with the Julia derivative: exact lens budget and parabolic index
+
+The previous bounds treated the half-plane condition and the finite tangent disk separately. They can be combined without loss. The following claims about a native multiplier require the PLY disk for the **same attachment-continued logarithm**, not just for some integer-shifted lift. Use the branch-identification hypothesis of the source-defined PLY audit. Let |u-R|<=R on D with finite R>0, set d=1/(2R), A=1/(2a), and retain u(t)/(1-t)->a. Since u is nonconstant, the disk containment is strict in D.
+
+### 6.1 Exact combined interior locus
+
+Define v=u/(1-d*u), so Re(1/v)=Re(1/u)-d>0. It follows that Re v>0 and v(t)/(1-t)->a. Apply the Julia inequality to v and divide by |v|^2:
+
+    Re(1/u) >= d+A Re X,    X=(1+lambda)/(1-lambda).          (12)
+
+This is a sum, not the maximum of the two separate lower bounds. With T=1/Re X, it is equivalent to a tangent disk for u with center and radius
+
+    R_eff(lambda) = 1/(1/R + 1/(a*T(lambda))).                (13)
+
+The locus is exact for this scalar class: at each fixed lambda the entire closed disk except 0 is attained by u=1/(A X+C), where C ranges over complex constants with Re C>=d. The disk condition, attachment derivative and half-plane positivity hold on D for each such u; varying C fills all reciprocals with Re(1/u)>=d+A Re X(lambda). The point 0 is only a limiting value at a fixed interior lambda. This is not a characterization of genuine quadratic multipliers.
+
+### 6.2 Optimal weighted boundary budget with a fixed finite tangent disk
+
+For 0<delta<2R put
+
+    h=d*delta in (0,1),
+    L=delta/sqrt(1-h^2),
+    t0=pi/4 + arcsin(h)/2.
+
+Then the sharp weighted estimate in the scalar class is
+
+    integral_{|u*|>=delta} dm(zeta)/|1-zeta|^2
+        <= a/(2 L t0)
+         = 2a*sqrt(1-h^2)/[delta*(pi+2 arcsin(h))].           (14)
+
+The bound is strictly smaller than (6) when h>0. For delta>2R the set is empty a.e.; for delta=2R it has measure zero by boundary uniqueness (u is nonconstant, and the only point of the tangent disk of that modulus is 2R).
+
+**Proof.** Use the same v as in §6.1 and F from §3. For finite v with Re v>0, u=v/(1+d*v), and
+
+    |u|>=delta
+    iff (1-h^2)|v|^2 - 2d delta^2 Re v - delta^2 >= 0
+    iff |v/L|^2 - 1 >= 2 Re(v/L)*h/sqrt(1-h^2)
+    iff Re F(v/L) >= t0.
+
+For the last equivalence, the argument of (1+i w)/(1-i w) for Re w>0 has cotangent (1-|w|^2)/(2 Re w). Cotangent is strictly decreasing on (0,pi), and cot(2t0)=-h/sqrt(1-h^2). Thus b(lambda)=Re F(v(lambda)/L)/t0 is bounded harmonic, nonnegative, and at least one where |u|>=delta. At boundary values the same inequality for b* holds except possibly v=+/-i L, corresponding to two distinct values of the bounded analytic u; these have null boundary level sets by the uniqueness argument in §3. The case v=infinity gives b*=(pi/2)/t0>1. Along the attachment radius b(t)/(1-t)->a/(L*t0). The Poisson integral and nonnegative Fatou/dominated convergence arguments of §§2–3 yield the exact integral a/(2 L t0) of b*, proving (14).
+
+For sharpness put kappa=2t0/pi, C=2a/(L*kappa), X as above, and choose any real x0. Define
+
+    W=C/(X-i x0),
+    v_ext=L*tan(kappa*F(W)),
+    u_ext=v_ext/(1+d*v_ext).
+
+Here 0<kappa<1, and the same strip parametrization as in §3 shows Re v_ext>0, Re F(v_ext/L)<t0, and hence |u_ext|<delta in D. Its radial attachment slope is a because v_ext(t)/(1-t)->L*kappa*C/2=a. On the arc |x-x0|<C in x=cot(theta/2), Re F(W*)=pi/2, so Re F(v_ext*/L)=t0 and |u_ext*|=delta. On its complement the boundary real part of F(W*) is zero; v_ext* is purely imaginary with modulus strictly below L, hence |u_ext*|<delta. Isolated endpoints are immaterial. The weighted arc mass is 2C/(4*pi)=a/(2 L t0). All scalar conditions hold. This gives equality for the >= threshold. For the strict > threshold use the same construction with delta' decreasing to delta from above (still delta'<2R). As in §3, the extremizer is not asserted to be native and need not extend holomorphically through the entire circle. QED.
+
+### 6.3 Exact parabolic index identity and a two-jet obstruction
+
+In the genuine satellite setting of §1, the root is a parameter c_* where the parent fixed point of the k-return splits into one parent point and q nearby child points for the kq-return. The imported local multiplicity statement is q+1. On the genuine component the inverse chart and parent multiplier are locally holomorphic at lambda=1, by the local satellite derivative and inverse coordinate statement in the predecessor audit. Write s=1-lambda and
+
+    u = s/q^2 + b*s^2 + O(s^3).
+
+Let I be the holomorphic fixed-point index of f_(c_*)^(kq) at that root point, i.e. the residue of dz/(z-f_(c_*)^(kq)(z)). Equivalently it is the small-contour integral divided by 2 pi i. The contour encloses exactly the q+1 points above for nearby parameters. Thus
+
+    I = lim_{lambda->1} [1/(1-exp(q*u)) + q/(1-lambda)]
+      = 1/2+q^3*b,
+
+using 1/(1-exp z)=-1/z+1/2+O(z). Define the iterative residue Resit=(q+1)/2-I (this is the standard index normalization at multiplicity q+1). Then the reciprocal residual
+
+    G=1/u - (q^2/2)*X
+
+has a removable singularity at 1 and satisfies the exact identity
+
+    G(1)=q^2/2-q^4*b=q*Resit.                                (15)
+
+In particular (12) gives Re G>=d throughout D, including at 1 by continuity; under the same-lift PLY radius R=k log(2)/q this yields Re Resit>=1/(2*k*log(2)). This is an elementary consequence of the imported local satellite index and same-lift disk; no literature priority, new parabolic-index theorem in dynamics, or uniform lower bound independent of k is claimed.
+
+The spike family of §4 has
+
+    G_e(X)=d+sum_l epsilon*v_l/(X+epsilon^2-i*y_l),
+
+and all added terms vanish at X=infinity. Consequently every spike and its compact-open limit has *exactly the same* u'(1) and u''(1), hence exactly the same formal value of the index expression (15). More generally one may start with a complex constant D1 with Re D1>d, replace d in H_e by D1, choose s_j=sign(A x_j+Im D1), and solve M v=A x_j+Im D1 for targets with nonzero right side (omit the zero targets, where the terms vanish in the limit). The same proof gives G_e(1)=D1 and u_e(zeta_j)->1/Re D1 simultaneously, preserving a strict margin in the PLY disk and any chosen such formal second-order datum. This shows why even knowing the local parabolic index, with no further analytic control, does not generally prevent scalar boundary spikes. For genuine dynamics the index and the entire function G are of course not freely assignable; neither the spike model nor (15) asserts otherwise.
+
+The combination (12)–(15) strengthens the analytic interface and pinpoints how a genuine dynamical estimate on the reciprocal residual might constrain it. The remaining quantitative continuation hypothesis from §5 is not thereby proved.
