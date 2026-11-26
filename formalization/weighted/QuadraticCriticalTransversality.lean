@@ -26,8 +26,13 @@ theorem orbit_hasDerivAt (n : ℕ) (c : ℂ) :
   induction n with
   | zero => simpa [orbit, slope] using (hasDerivAt_const c (0 : ℂ))
   | succ n ih =>
-    convert (ih.pow 2).add (hasDerivAt_id c) using 1 <;>
-      simp [orbit, slope, pow_one] <;> ring
+    have hh := (ih.pow 2).add (hasDerivAt_id c)
+    have heq : (fun w : ℂ => orbit w (n+1)) =
+        (fun w : ℂ => orbit w n)^2 + id := by
+      funext w
+      simp [orbit]
+    rw [heq]
+    simpa only [slope, Nat.cast_ofNat, Nat.reduceSub, pow_one] using hh
 
 /-- Integer polynomial representing the entire critical orbit. -/
 def orbitPoly : ℕ → ℤ[X]
@@ -94,9 +99,9 @@ theorem slope_integral {c : ℂ} (hc : IsIntegral ℤ c) (n : ℕ) :
   induction n with
   | zero => exact isIntegral_zero
   | succ n ih =>
-    simpa only [slope] using
-      (((isIntegral_natCast (B := ℂ) 2).mul (orbit_integral hc n)).mul ih).add
-        (isIntegral_one : IsIntegral ℤ (1 : ℂ))
+    have h2 : IsIntegral ℤ (2 : ℂ) := isIntegral_natCast 2
+    change IsIntegral ℤ (2 * orbit c n * slope c n + 1)
+    exact ((h2.mul (orbit_integral hc n)).mul ih).add isIntegral_one
 
 /-- Two cannot have an inverse among the complex algebraic integers. -/
 theorem integral_not_half {x : ℂ} (hx : IsIntegral ℤ x) :
@@ -196,7 +201,11 @@ theorem first_collision_deriv_ne_zero (c : ℂ) (a b : ℕ) (hab : a < b)
     (hcoll : orbit c (a+2) = orbit c (b+2))
     (hprev : orbit c (a+1) ≠ orbit c (b+1)) :
     deriv (fun w : ℂ => orbit w (b+2) - orbit w (a+2)) c ≠ 0 := by
-  rw [((orbit_hasDerivAt (b+2) c).sub (orbit_hasDerivAt (a+2) c)).deriv]
+  have heq : (fun w : ℂ => orbit w (b+2) - orbit w (a+2)) =
+      (fun w : ℂ => orbit w (b+2)) - (fun w : ℂ => orbit w (a+2)) := by
+    funext w
+    rfl
+  rw [heq, ((orbit_hasDerivAt (b+2) c).sub (orbit_hasDerivAt (a+2) c)).deriv]
   exact first_collision_transverse c a b hab hcoll hprev
 
 end
