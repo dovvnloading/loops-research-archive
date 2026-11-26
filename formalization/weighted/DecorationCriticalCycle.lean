@@ -12,6 +12,8 @@ namespace LoopsDecorationCriticalCycle
 open Set
 open QuadraticEscape LoopsSaturatedTelescope
 
+noncomputable section
+
 /-- Surjectivity around a cycle propagates a noninjective return to every
 phase. No injectivity of the intermediate arrows is needed. -/
 theorem quadratic_phase_return_noninjective (c : ℂ) (i j : ℕ)
@@ -112,7 +114,7 @@ def filledLocus (c : ℂ) : Set ℂ := {z | escape c z = 0}
 /-- The exact physical exterior trace commutes with every quadratic
 iterate, without any injectivity or local connectivity assumption. -/
 theorem quadratic_exterior_image (c : ℂ) (n : ℕ) (Q : Set ℂ) :
-    orbit c n '' (Q \\ filledLocus c) = (orbit c n '' Q) \\ filledLocus c := by
+    orbit c n '' (Q \ filledLocus c) = (orbit c n '' Q) \ filledLocus c := by
   have hz (z : ℂ) : orbit c n z ∈ filledLocus c ↔ z ∈ filledLocus c := by
     change escape c (orbit c n z) = 0 ↔ escape c z = 0
     rw [escape_iterate]
@@ -170,5 +172,7 @@ theorem nested_angular_obstruction_transfer {X Y : Type*} [MetricSpace X]
     apply hne
     exact hxu.symm.trans ((congrArg D h).trans hyv)
   exact PrimeEndSectorFilters.two_angles_obstruct A H hp hxy hx hy
+
+end
 
 end LoopsDecorationCriticalCycle
