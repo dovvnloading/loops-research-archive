@@ -390,3 +390,4 @@ formalization/weighted/QuadraticExtremalMultiplier.lean	QUADRATIC-EXTREMAL
 formalization/weighted/QuadraticCriticalWindow.lean	METADATA
 formalization/weighted/StationarySeparatorTransport.lean	METADATA
 formalization/weighted/QuadraticCylinderCensus.lean	METADATA
+formalization/weighted/DecorationCriticalCycle.lean	METADATA
