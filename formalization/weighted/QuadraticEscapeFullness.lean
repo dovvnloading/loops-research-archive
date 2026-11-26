@@ -11,6 +11,8 @@ the frontier bound to their limit. No local connectivity is required.
 
 namespace LoopsQuadraticEscapeFullness
 
+set_option maxHeartbeats 1000000
+
 open Set Bornology
 open QuadraticEscape LoopsStationaryFiberDynamics
 open LoopsFormal.ProtectedCarriers LoopsStationaryMonotoneGeometry
@@ -90,8 +92,12 @@ theorem escape_pair_sublevel_full (a b : ℂ → ℂ)
     planarFill {z : ℂ | escape (a z) (b z) ≤ t} =
       {z : ℂ | escape (a z) (b z) ≤ t} := by
   let S : Set ℂ := {z : ℂ | escape (a z) (b z) ≤ t}
-  have hc : Continuous (fun z => escape (a z) (b z)) :=
-    escape_continuous.comp (ha.continuous.prodMk hb.continuous)
+  have hp : Continuous (fun z : ℂ => (a z, b z)) :=
+    ha.continuous.prodMk hb.continuous
+  have hc : Continuous (fun z : ℂ => escape (a z) (b z)) := by
+    change Continuous ((fun x : ℂ × ℂ => escape x.1 x.2) ∘
+      (fun z : ℂ => (a z, b z)))
+    exact escape_continuous.comp hp
   have hS : IsClosed S := isClosed_le hc continuous_const
   change planarFill S = S
   apply Subset.antisymm _ (planarFill_extensive S)
@@ -106,7 +112,7 @@ theorem escape_pair_sublevel_full (a b : ℂ → ℂ)
 /-- Fullness at every real escape level of a fixed actual quadratic. -/
 theorem quadratic_escape_sublevel_full (c : ℂ) (t : ℝ) :
     planarFill {z : ℂ | escape c z ≤ t} = {z : ℂ | escape c z ≤ t} := by
-  exact escape_pair_sublevel_full (fun _ => c) id differentiable_const differentiable_id t
+  exact escape_pair_sublevel_full (fun _ => c) id (differentiable_const c) differentiable_id t
 
 /-- Fullness also holds in the parameter plane for the archive's
 critical-value normalization of the quadratic parameter potential. -/
