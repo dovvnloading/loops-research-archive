@@ -81,9 +81,8 @@ theorem globalFiber_succ (c y : ℂ) (n : ℕ) :
           dsimp [w] at h
           linear_combination h
         have hr := fiberRoot_spec c w
-        rw [h] at hr
         have hrsq : fiberRoot c w * fiberRoot c w = 0 := by
-          linear_combination hr
+          linear_combination hr + h
         have hz0 : z = 0 := (mul_eq_zero.mp hzsq).elim id id
         have hr0 : fiberRoot c w = 0 := (mul_eq_zero.mp hrsq).elim id id
         exact hpos (hz0.trans hr0.symm)
@@ -199,7 +198,7 @@ theorem criticalFiberDefect_zero_iff (c y : ℂ) (n : ℕ) :
 theorem globalFiber_full_card_iff (c y : ℂ) (n : ℕ) :
     (globalFiber c n y).card = 2^n ↔
       ∀ k < n, ((fun w : ℂ => w^2+c)^[k]) c ≠ y := by
-  rw [← criticalFiberDefect_zero_iff]
+  rw [← criticalFiberDefect_zero_iff c y n]
   have h := globalFiber_card_exact c y n
   omega
 
@@ -239,6 +238,108 @@ theorem quadratic_critical_component_census {ι : Type*} [Fintype ι]
   have hle := Finset.card_le_card hsub
   have he := globalFiber_card_exact c y n
   omega
+
+/-- The localized inverse fiber is the global inverse fiber filtered by
+membership in the actual complex domain, without multiplicities. -/
+theorem localFiber_eq_filter_global (c : ℂ) (n : ℕ) (S : Set ℂ) (y : ℂ) :
+    localFiber c n S y = (globalFiber c n y).filter (fun z => z ∈ S) := by
+  classical
+  ext z
+  simp only [mem_localFiber, Finset.mem_filter, mem_globalFiber]
+  exact and_comm
+
+/-- A local census can be calculated by filtering the two signed inverse
+branches separately. No global degree or full-domain coverage is
+substituted for the localized count. -/
+theorem localFiber_signed_recursion (c y : ℂ) (n : ℕ) (S : Set ℂ) :
+    localFiber c (n+1) S y =
+      ((globalFiber c n y).filter (fun w => fiberRoot c w ∈ S)).image (fiberRoot c) ∪
+      (((globalFiber c n y).erase c).filter (fun w => -fiberRoot c w ∈ S)).image
+        (fun w => -fiberRoot c w) := by
+  classical
+  rw [localFiber_eq_filter_global, globalFiber_succ]
+  ext z
+  simp only [Finset.mem_filter, Finset.mem_union, Finset.mem_image]
+  constructor
+  · rintro ⟨h, hz⟩
+    rcases h with ⟨w, hw, rfl⟩ | ⟨w, hw, rfl⟩
+    · exact Or.inl ⟨w, ⟨hw, hz⟩, rfl⟩
+    · exact Or.inr ⟨w, ⟨hw, hz⟩, rfl⟩
+  · rintro (⟨w, ⟨hw, hz⟩, rfl⟩ | ⟨w, ⟨hw, hz⟩, rfl⟩)
+    · exact ⟨Or.inl ⟨w, hw, rfl⟩, hz⟩
+    · exact ⟨Or.inr ⟨w, hw, rfl⟩, hz⟩
+
+/-- The exact localized inverse-point cardinality is the sum of two
+disjoint filtered branch counts, even at a postcritical target. -/
+theorem localFiber_signed_count (c y : ℂ) (n : ℕ) (S : Set ℂ) :
+    (localFiber c (n+1) S y).card =
+      ((globalFiber c n y).filter (fun w => fiberRoot c w ∈ S)).card +
+      (((globalFiber c n y).erase c).filter (fun w => -fiberRoot c w ∈ S)).card := by
+  classical
+  have hneg : Injective (fun w => -fiberRoot c w) := by
+    intro a b h
+    apply fiberRoot_injective c
+    linear_combination -h
+  have hdis : Disjoint
+      (((globalFiber c n y).filter (fun w => fiberRoot c w ∈ S)).image (fiberRoot c))
+      ((((globalFiber c n y).erase c).filter (fun w => -fiberRoot c w ∈ S)).image
+        (fun w => -fiberRoot c w)) := by
+    apply Finset.disjoint_left.mpr
+    intro z hz hz'
+    obtain ⟨a, ha, hza⟩ := Finset.mem_image.mp hz
+    obtain ⟨b, hb, hzb⟩ := Finset.mem_image.mp hz'
+    exact (Finset.disjoint_left.mp (inverse_branches_disjoint c (globalFiber c n y)))
+      (Finset.mem_image.mpr ⟨a, (Finset.mem_filter.mp ha).1, hza⟩)
+      (Finset.mem_image.mpr ⟨b, (Finset.mem_filter.mp hb).1, hzb⟩)
+  rw [localFiber_signed_recursion, Finset.card_union_of_disjoint hdis,
+    Finset.card_image_of_injective _ (fiberRoot_injective c),
+    Finset.card_image_of_injective _ hneg]
+
+/-- For the critical fixed parameter, the degree grows exponentially
+but the actual zero fiber always has one distinct inverse point. -/
+theorem zero_parameter_zero_fiber_card (n : ℕ) :
+    (globalFiber 0 n 0).card = 1 := by
+  have hz (k : ℕ) : ((fun w : ℂ => w^2+(0 : ℂ))^[k]) 0 = 0 := by
+    induction k with
+    | zero => rfl
+    | succ k ih =>
+      rw [Function.iterate_succ_apply]
+      simpa using ih
+  induction n with
+  | zero => simp [globalFiber_zero]
+  | succ n ih =>
+    have h := globalFiber_card_step 0 0 n
+    rw [if_pos (hz n), ih] at h
+    omega
+
+/-- At the Chebyshev parameter, the distinct inverse points over the
+fixed endpoint 2 at depth n+1 number exactly 2^n+1, not 2^(n+1). -/
+theorem chebyshev_fixed_endpoint_fiber_card (n : ℕ) :
+    (globalFiber (-2) (n+1) 2).card = 2^n+1 := by
+  have hfix (k : ℕ) : ((fun w : ℂ => w^2+(-2 : ℂ))^[k]) 2 = 2 := by
+    induction k with
+    | zero => rfl
+    | succ k ih =>
+      rw [Function.iterate_succ_apply]
+      have h : (2 : ℂ)^2+(-2) = 2 := by norm_num
+      simpa only [h] using ih
+  have hcrit (k : ℕ) :
+      ((fun w : ℂ => w^2+(-2 : ℂ))^[k+1]) (-2) = 2 := by
+    rw [Function.iterate_succ_apply]
+    have h : (-2 : ℂ)^2+(-2) = 2 := by norm_num
+    simpa only [h] using hfix k
+  induction n with
+  | zero =>
+    have h := globalFiber_card_step (-2) 2 0
+    have hn : ((fun w : ℂ => w^2+(-2 : ℂ))^[0]) (-2) ≠ 2 := by norm_num
+    rw [if_neg hn, globalFiber_zero] at h
+    simpa using h
+  | succ n ih =>
+    have h := globalFiber_card_step (-2) 2 (n+1)
+    rw [if_pos (hcrit n), ih] at h
+    rw [pow_succ]
+    omega
+
 
 end
 end LoopsQuadraticCriticalFiberCensus

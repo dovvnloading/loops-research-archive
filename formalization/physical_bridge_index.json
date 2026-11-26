@@ -2226,7 +2226,12 @@
         "criticalFiberDefect_zero_iff",
         "globalFiber_full_card_iff",
         "globalFiber_census",
-        "quadratic_critical_component_census"
+        "quadratic_critical_component_census",
+        "localFiber_eq_filter_global",
+        "localFiber_signed_recursion",
+        "localFiber_signed_count",
+        "zero_parameter_zero_fiber_card",
+        "chebyshev_fixed_endpoint_fiber_card"
       ]
     },
     "obligations": [
