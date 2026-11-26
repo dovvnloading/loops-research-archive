@@ -2143,7 +2143,9 @@
         "mem_localFiber",
         "localFiber_card_bound",
         "quadratic_localized_count_census",
-        "no_new_component_of_same_fiber"
+        "no_new_component_of_same_fiber",
+        "proper_localization_component_global",
+        "proper_localization_eq_of_same_fiber"
       ]
     },
     "obligations": [

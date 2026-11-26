@@ -27,6 +27,11 @@ Candidate Lean development: for an actual complex quadratic iterate restricted p
 7. `mem_localFiber`, `localFiber_card_bound`, and `quadratic_localized_count_census` turn the localized census into an exact finite root-set test; a finite index family with distinct components and common-fiber anchors exhausts the localization as soon as its cardinality reaches the actual filtered fiber size. This handles q-return localizations without using the incorrect global degree as a local count.
 8. `no_new_component_of_same_fiber` proves that an open proper enlargement with unchanged filtered fiber has no new component missing every old declared component. It allows mergers; the no-merger condition and full metadata compatibility remain separate.
 
+9. `proper_localization_component_global` identifies each component of a proper open localization with its full ambient pullback component. This removes the need to assume that identification separately, once properness and openness are certified.
+10. `proper_localization_eq_of_same_fiber` strengthens the enlargement result: if both domains are proper and open over the same connected target, unchanged local fiber implies equality of the domains. In that fixed-target setting there can be neither mergers nor new components.
+
+CI development history: the first weighted build (run 45867844853, commit 4f2b19c) rejected a closure-lemma application and the polynomial recurrence/degree proofs. The corrections remain subject to the full build and transitive dependency audit.
+
 Validation: pending exact-head weighted CI and its transitive proof dependency audit. Local Lean and networked git are unavailable in this execution environment. No candidate is counted as a validated result until CI confirms it. Reproduction: from the repository root, `cd formalization/weighted && lake build QuadraticCylinderCensus`, then run the existing weighted audit.
 
 ## Dependencies
@@ -35,7 +40,7 @@ DIRECT_DECORATION_PULLBACK_COMPACTIFICATION, FIXED_BASE_CONNECTED_IMAGE_TARGET_U
 
 ## Boundary
 
-This does not assert that the source's actual localized domain is proper over the typed target, that its declared cylinders are full connected components, or that a one-fiber census has been supplied. In particular the two univalent branches of a q-return yield 2^m depth-m words, not the global degree 2^(qm) for q>1. The global full-degree criterion must not be substituted for a localized census. Critical chronology, access/obstacle metadata, cross-base ownership and enlargement stability still require geometric certificates. No ledger or global gate is closed. No literature priority is claimed.
+This does not assert that the source's actual localized domain is proper over the typed target, that its declared cylinders are full connected components of that localization, or that a one-fiber census has been supplied. In particular the two univalent branches of a q-return yield 2^m depth-m words, not the global degree 2^(qm) for q>1. The global full-degree criterion must not be substituted for a localized census. Critical chronology, access/obstacle metadata, cross-base ownership and enlargement across changing targets still require geometric certificates. No ledger or global gate is closed. No literature priority is claimed.
 
 ## Attribution
 

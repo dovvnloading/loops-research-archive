@@ -50,7 +50,8 @@ theorem localized_component_image [LocallyConnectedSpace X]
   have hi : closure (f '' C) ∩ V ⊆ f '' C := by
     intro y hy
     have hsub : closure (f '' C) ⊆ f '' closure C :=
-      (hclosed _ isClosed_closure).closure_subset (image_mono subset_closure)
+      (hclosed (closure C) isClosed_closure).closure_subset_iff.mpr
+        (image_mono subset_closure)
     obtain ⟨z, hz, rfl⟩ := hsub hy.1
     exact ⟨z, hCr ⟨hz, hy.2⟩, rfl⟩
   have hhit : (V ∩ f '' C).Nonempty :=
@@ -332,5 +333,66 @@ theorem no_new_component_of_same_fiber {ι : Type*}
   have hEq : connectedComponentIn T x = connectedComponentIn T (a i) :=
     (connectedComponentIn_eq hz).trans (connectedComponentIn_eq (hsub hzi)).symm
   exact ⟨i, hEq, hEq.symm ▸ hsub⟩
+
+
+/-- A proper open localization consists of full ambient pullback
+components. The identification uses relative closedness, not a
+symbolic declaration of a cylinder. -/
+theorem proper_localization_component_global (f : ℂ → ℂ) (S V : Set ℂ)
+    (hf : Continuous f) (hS : IsOpen S) (hV : IsOpen V)
+    (hm : MapsTo f S V)
+    (hp : IsProperMap (fun z : S => (⟨f z, hm z.property⟩ : V)))
+    (x : ℂ) (hx : x ∈ S) :
+    connectedComponentIn S x = connectedComponentIn (f ⁻¹' V) x := by
+  have hr := proper_localization_relative_closed f S V hf hV hm hp
+  let D := connectedComponentIn (f ⁻¹' V) x
+  have hDx : x ∈ D := mem_connectedComponentIn (hm hx)
+  have hDc : IsPreconnected D := isPreconnected_connectedComponentIn
+  have hDs : D ⊆ S := by
+    apply hDc.subset_of_closure_inter_subset hS ⟨x, hDx, hx⟩
+    intro z hz
+    exact hr ⟨hz.1, connectedComponentIn_subset (f ⁻¹' V) x hz.2⟩
+  exact Subset.antisymm (connectedComponentIn_mono x hm)
+    (hDc.subset_connectedComponentIn hDx hDs)
+
+/-- For two proper open localizations over the same connected target,
+enlargement without additional inverse points over one target point is
+impossible. This rules out mergers as well as new components in this
+fixed-target setting. -/
+theorem proper_localization_eq_of_same_fiber (c : ℂ) (n : ℕ)
+    (S T V : Set ℂ) (hST : S ⊆ T) (hS : IsOpen S) (hT : IsOpen T)
+    (hVo : IsOpen V) (hVc : IsPreconnected V)
+    (hmS : MapsTo ((fun z : ℂ => z^2+c)^[n]) S V)
+    (hmT : MapsTo ((fun z : ℂ => z^2+c)^[n]) T V)
+    (hpS : IsProperMap (fun z : S =>
+      (⟨((fun w : ℂ => w^2+c)^[n]) z, hmS z.property⟩ : V)))
+    (hpT : IsProperMap (fun z : T =>
+      (⟨((fun w : ℂ => w^2+c)^[n]) z, hmT z.property⟩ : V)))
+    (y : ℂ) (hy : y ∈ V)
+    (hno : localFiber c n T y = localFiber c n S y) :
+    S = T := by
+  let f := (fun z : ℂ => z^2+c)^[n]
+  have hf := quadratic_iterate_proper c n
+  have hr := proper_localization_relative_closed f T V hf.continuous hVo hmT hpT
+  apply Subset.antisymm hST
+  intro x hx
+  have he := localized_component_image f T V (quadratic_iterate_open c n)
+    hf.isClosedMap hT hVc hmT hr x hx
+  have hh : y ∈ f '' connectedComponentIn T x := he.symm ▸ hy
+  obtain ⟨z, hz, hzy⟩ := hh
+  have hzT := connectedComponentIn_subset T x hz
+  have hzF := (mem_localFiber c n T y z).2 ⟨hzT, hzy⟩
+  rw [hno] at hzF
+  have hzS := ((mem_localFiber c n S y z).1 hzF).1
+  have hTg := proper_localization_component_global f T V hf.continuous
+    hT hVo hmT hpT z hzT
+  have hSg := proper_localization_component_global f S V hf.continuous
+    hS hVo hmS hpS z hzS
+  have hxT : x ∈ connectedComponentIn T z :=
+    connectedComponentIn_eq hz ▸ mem_connectedComponentIn hx
+  have hxS : x ∈ connectedComponentIn S z := by
+    rw [hSg, ← hTg]
+    exact hxT
+  exact connectedComponentIn_subset S z hxS
 
 end LoopsQuadraticCylinderCensus
