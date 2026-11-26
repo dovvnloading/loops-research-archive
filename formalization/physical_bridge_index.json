@@ -2948,6 +2948,13 @@
         "returnMultiplier_contDiff",
         "periodic_point_exact_period_stability",
         "integral_parameter_periodic_point_stability"
+      ],
+      "formalization/weighted/QuadraticCollisionFactorization.lean": [
+        "returnOrbit_sub_secant",
+        "returnSecant_diagonal",
+        "returnSecant_contDiff",
+        "motion_collision_factorization",
+        "first_collision_analytic_factorization"
       ]
     },
     "obligations": [

@@ -1,4 +1,4 @@
-import QuadraticPeriodicMotion
+import QuadraticCollisionFactorization
 import Mathlib.Analysis.Calculus.InverseFunctionTheorem.Analytic
 
 /-!
@@ -58,8 +58,9 @@ theorem center_parameter_coordinate (c : ℂ) (n : ℕ)
 
 /-- A first critical collision determines an actual analytic moving
 periodic point and a locally invertible critical-entrance coordinate.
-The final equivalence identifies its zero with the original collision
-relation and isolates that parameter. No motion or chart is assumed. -/
+Its explicit analytic secant factor is nonvanishing. The zero-coordinate
+equivalence identifies the original collision and isolates that parameter.
+The inverse and factorization use the same motion; none is assumed. -/
 theorem first_collision_parameter_coordinate (c : ℂ) (a b : ℕ)
     (hab : a < b)
     (hcoll : orbit c (a+2) = orbit c (b+2))
@@ -81,7 +82,13 @@ theorem first_collision_parameter_coordinate (c : ℂ) (a b : ℕ)
       (∀ᶠ t in 𝓝 (0 : ℂ), orbit (ψ t) (a+2) - ζ (ψ t) = t) ∧
       (∀ᶠ w in 𝓝 c,
         (orbit w (b+2) = orbit w (a+2) ↔ orbit w (a+2) - ζ w = 0) ∧
-        (orbit w (a+2) - ζ w = 0 ↔ w = c)) := by
+        (orbit w (a+2) - ζ w = 0 ↔ w = c)) ∧
+      AnalyticAt ℂ (motionSecantFactor ζ (a+2) (b-a)) c ∧
+      motionSecantFactor ζ (a+2) (b-a) c =
+        returnMultiplier c (orbit c (a+2)) (b-a) - 1 ∧
+      (∀ᶠ w in 𝓝 c, motionSecantFactor ζ (a+2) (b-a) w ≠ 0 ∧
+        orbit w (b+2) - orbit w (a+2) =
+          (orbit w (a+2) - ζ w) * motionSecantFactor ζ (a+2) (b-a) w) := by
   have hp : 0 < b-a := Nat.sub_pos_of_lt hab
   have hindex : a+2+(b-a) = b+2 := by omega
   have hper : returnOrbit c (orbit c (a+2)) (b-a) = orbit c (a+2) := by
@@ -129,8 +136,11 @@ theorem first_collision_parameter_coordinate (c : ℂ) (a b : ℕ)
     change orbit w (b+2) = orbit w (a+2) ↔ orbit w (a+2) - ζ w = 0
     rw [sub_eq_zero]
     exact hw.trans eq_comm
+  obtain ⟨hQan, hQself, hQne, hQfactor⟩ :=
+    motion_collision_factorization c (a+2) (b-a) ζ hself hζ hmotion
+      (sub_ne_zero.mp hmult)
   refine ⟨ζ, ψ, hself, hζ, hmotion, hE, hderiv, hnonzero,
-    hψzero, hψ, ?_, hleft, hright, ?_⟩
+    hψzero, hψ, ?_, hleft, hright, ?_, hQan, hQself, ?_⟩
   · simpa only [inv_div] using hψD
   · filter_upwards [hrelation, hleft] with w hrel hw
     refine ⟨hrel, ?_⟩
@@ -142,6 +152,8 @@ theorem first_collision_parameter_coordinate (c : ℂ) (a b : ℕ)
     · intro hwc
       subst w
       exact hEzero
+  · filter_upwards [hQne, hQfactor] with w hn hw
+    exact ⟨hn, by simpa only [hindex] using hw⟩
 
 end
 end LoopsQuadraticCoordinates
