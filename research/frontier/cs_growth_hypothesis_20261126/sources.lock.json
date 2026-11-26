@@ -1,0 +1,16 @@
+{
+  "arxiv-v1": {
+    "bytes": 831082,
+    "matches_135": true,
+    "resolved_url": "https://arxiv.org/pdf/1509.07843v1",
+    "sha256": "71c03718203b91ae81f5b7e138620a086cdf038b345cf689a24ed2932d72384f",
+    "url": "https://arxiv.org/pdf/1509.07843v1"
+  },
+  "author-2022": {
+    "bytes": 851587,
+    "matches_135": true,
+    "resolved_url": "https://www.ma.imperial.ac.uk/~dcheragh/Research/2015-2.pdf",
+    "sha256": "b1d6b0952247efc3cd7a6e0602dbb8246b43b9edf7b3c5d0da942cc822246c25",
+    "url": "https://www.ma.imperial.ac.uk/~dcheragh/Research/2015-2.pdf"
+  }
+}
