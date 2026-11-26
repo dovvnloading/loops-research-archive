@@ -1,0 +1,20 @@
+{
+  "CS-arxiv": {
+    "url": "https://arxiv.org/pdf/1509.07843v1",
+    "resolved_url": "https://arxiv.org/pdf/1509.07843v1",
+    "bytes": 831082,
+    "sha256": "71c03718203b91ae81f5b7e138620a086cdf038b345cf689a24ed2932d72384f"
+  },
+  "CS-author": {
+    "url": "https://www.ma.imperial.ac.uk/~dcheragh/Research/2015-2.pdf",
+    "resolved_url": "https://www.ma.imperial.ac.uk/~dcheragh/Research/2015-2.pdf",
+    "bytes": 851587,
+    "sha256": "b1d6b0952247efc3cd7a6e0602dbb8246b43b9edf7b3c5d0da942cc822246c25"
+  },
+  "Levin": {
+    "url": "https://arxiv.org/pdf/0710.4406v4",
+    "resolved_url": "https://arxiv.org/pdf/0710.4406v4",
+    "bytes": 509484,
+    "sha256": "8e5a59b111c0d841d5deb3ab7adb12b556896a2916c1e4cc8418fe41789335cd"
+  }
+}
