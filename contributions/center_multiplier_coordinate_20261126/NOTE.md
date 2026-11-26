@@ -19,7 +19,7 @@ Work in progress. The target is a Lean theorem for every exact-period center of 
 
 ## Evidence
 
-The initial checkpoint claimed the unclaimed H4_RIGIDITY obligation before proof work. The first proof milestone adds QuadraticCenterMultiplier.lean, with the exact initial-factor decomposition, the derivative formula along a moving critical point, the periodic-motion tangent identity, and the all-period nonvanishing argument. These proof candidates are pending the repository's CI compilation; no result is counted before that succeeds.
+The initial checkpoint claimed the unclaimed H4_RIGIDITY obligation before proof work. The first proof milestone adds QuadraticCenterMultiplier.lean, with the exact initial-factor decomposition, the derivative formula along a moving critical point, the periodic-motion tangent identity, and the all-period nonvanishing argument. The second milestone adds QuadraticMultiplierIteration.lean and QuadraticMultiplierCoordinate.lean: a constructed local analytic inverse of the actual first-return multiplier, persistence of the same attracting exact-period cycle, and the simultaneous normal form t^k for every repeated return. Repetitions k >= 2 are also proved to have zero parameter derivative at the center and no differentiable local left inverse. These proof candidates are pending the repository's CI compilation; no result is counted before that succeeds.
 
 For period p=n+1, the intended exact derivative formula is
 
