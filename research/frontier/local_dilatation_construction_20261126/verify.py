@@ -10,7 +10,7 @@ from urllib.request import Request, urlopen
 
 ROOT = Path(__file__).resolve().parents[3]
 LOCKS = {
-    "CONTRIBUTING.md": "d218e12ba518a3fb193590a126e638836ce18a5ea5ccabf121f83ef6f6fafdd3",
+    "CONTRIBUTING.md": "814723c308086d5e27780d016c18eed3e56f0e776c90efb255e81ba929e6d75a",
     "research/frontier/pl_yoccoz_radial_20261126/NOTE.md": "7febfbfb784bac7c164db97c73809d53c7b5631d11ed83e55f543c1721eac0b9",
     "research/frontier/is_local_dilatation_20261126/NOTE.md": "b93de77f3533d5637b0723bceb8fba48eb32af2535c2110b0afaa5fc4097a195",
     "research/frontier/cs_multiplier_locus_extended_20261126/NOTE.md": "742ea6af8f531a3f61839075c19d664db3bd47f2a3ee8bfa21b0c88e7ccb16ac",
