@@ -5,6 +5,7 @@
     python code/contribute.py show ID         statement, prerequisites, evidence, dependants
     python code/contribute.py start ID SLUG   create contributions/SLUG_YYYYMMDD/NOTE.md
     python code/contribute.py check           the checks CI runs on a contribution PR
+    python code/contribute.py pr-body         NOTE.md as the pull request description
     python code/contribute.py lean-add FILE --packet DIR   register a Lean file in the build
     python code/contribute.py targets         regenerate OPEN_TARGETS.md (maintainers)
 
@@ -185,8 +186,10 @@ def parse_note(text: str) -> tuple[dict, dict]:
     sections: dict[str, str] = {}
     title = None
     for line in body.splitlines():
+        # Only the template's own headings divide the note, so an author may
+        # use any sub-headings, `##` included, inside a section.
         heading = re.match(r"##\s+(.+?)\s*$", line)
-        if heading:
+        if heading and heading[1] in SECTIONS:
             title = heading[1]
             sections[title] = ""
         elif title is not None:
@@ -239,6 +242,31 @@ def note_problems(text: str, ledger: Ledger) -> list[tuple[str, str, bool]]:
                 "write the section; a short honest answer is fine", True,
             ))
     return problems
+
+
+def pr_body(text: str) -> str:
+    """NOTE.md as a pull request description: front matter becomes one plain line."""
+    meta, _ = parse_note(text)
+    body = text[3:].partition("\n---")[2].lstrip("\n") if text.startswith("---") else text
+    head = " · ".join(f"{label}: {meta[key]}" for label, key in (
+        ("Ledger", "ledger"), ("Result", "result"), ("AI", "ai"), ("Human review", "human_review"),
+    ) if meta.get(key))
+    return f"{head}\n\n{body}" if head else body
+
+
+def earlier_work(root: Path, key: str) -> list[str]:
+    """Tracked files that name the obligation, apart from the ledger and its mirrors."""
+    mirrors = {
+        "ledger.json", "ledger.js", "ResearchLedger.lean", TARGETS_MD, TARGETS_JSON,
+        "research/mlc_unified/proof_obligations.json", "formalization/physical_bridge_index.json",
+        "code/contribute.py", "code/test_contribute.py",
+    }
+    counts = []
+    for line in git(root, "grep", "-c", "-w", "-F", key).splitlines():
+        path, _, count = line.rpartition(":")
+        if path not in mirrors and count.isdigit():
+            counts.append((-int(count), path))
+    return [path for _, path in sorted(counts)]  # the files that say most about it first
 
 
 def packet_of(path: str) -> str | None:
@@ -340,8 +368,17 @@ def cmd_show(args, root: Path) -> int:
         out("    used directly by: " + ", ".join(direct[:12]) + (" ..." if len(direct) > 12 else ""))
     if row.get("clauses"):
         out("    source clauses: " + row["clauses"])
+    stated = evidence_path(row["evidence"], files)
+    mentions = [path for path in earlier_work(root, args.id) if path != stated]
+    if mentions:
+        out("\nEarlier work in the archive that names this row, most relevant first. Read it "
+            "before you start, so you extend it and do not repeat it:")
+        for path in mentions[:10]:
+            out(f"  {path}")
+        if len(mentions) > 10:
+            out(f"  ... and {len(mentions) - 10} more: git grep -l -w {args.id}")
     out("\nExisting bridge and contract references for this row:")
-    out(f"  python -B code/verify_physical_bridge_contracts.py --claim {args.id}")
+    out(f"  python -X utf8 -B code/verify_physical_bridge_contracts.py --claim {args.id}")
     return 0
 
 
@@ -372,9 +409,29 @@ def cmd_start(args, root: Path) -> int:
     out("  gh repo fork --remote        # only if you cannot push to the repository itself")
     out("  git push -u origin HEAD")
     out(f"  gh pr create --draft --title \"[{args.id}] <what you intend to show>\" "
-        f"--body-file {INBOX}/{name}/NOTE.md")
-    out(f"\nThen work inside {INBOX}/{name}/, commit as you go, and run:")
-    out("  python code/contribute.py check")
+        f"--body \"ledger: {args.id}. Work in progress in {INBOX}/{name}/NOTE.md\"")
+    out(f"\nThen work inside {INBOX}/{name}/, commit and push as you go. When the work is done:")
+    out("  python code/contribute.py check      # until RESULT: PASS; it then prints the last two commands")
+    return 0
+
+
+def cmd_pr_body(args, root: Path) -> int:
+    import tempfile
+
+    present, _, _ = changed_files(root, None)
+    packets = sorted({p for p in map(packet_of, present) if p})
+    packet = (args.packet or "").strip("/") or (packets[0] if len(packets) == 1 else "")
+    note = root / packet / "NOTE.md"
+    if not packet or not note.is_file():
+        out("Name your packet folder: python code/contribute.py pr-body contributions/<your folder>")
+        return 1
+    handle = tempfile.NamedTemporaryFile("w", suffix=".md", prefix="loops_pr_body_", delete=False,
+                                         encoding="utf-8", newline="\n")
+    with handle:
+        handle.write(pr_body(note.read_text(encoding="utf-8")))
+    out("Wrote the pull request description from NOTE.md. Apply it and hand over:")
+    out(f"  gh pr edit --body-file \"{handle.name}\"")
+    out("  gh pr ready")
     return 0
 
 
@@ -557,10 +614,25 @@ def indent(text: str) -> str:
 
 def cmd_check(args, root: Path) -> int:
     title = args.pr_title if args.pr_title is not None else os.environ.get("CONTRIBUTE_PR_TITLE")
+    in_ci = bool(os.environ.get("GITHUB_ACTIONS"))
+    if title is None and not in_ci:
+        # Locally, read the title of this branch's pull request so the result matches CI.
+        try:
+            found = subprocess.run(["gh", "pr", "view", "--json", "title", "--jq", ".title"], cwd=root,
+                                   capture_output=True, text=True, encoding="utf-8", timeout=20)
+            title = found.stdout.strip() if found.returncode == 0 and found.stdout.strip() else None
+        except (OSError, subprocess.TimeoutExpired):
+            title = None
     report = check(root, args.base, title, not args.no_run, args.draft)
+    if title is None and not in_ci:
+        report.warn("no pull request found for this branch, so its title was not checked; CI "
+                    "requires `[LEDGER_ID] ...`")
     text = "\n".join(report.lines)
+    handover = ("\nRESULT: PASS. Push, then set the description from NOTE.md and hand over:"
+                "\n  python code/contribute.py pr-body      # prints the two closing gh commands"
+                if not in_ci else "\nRESULT: PASS.")
     verdict = (("\nRESULT: PASS for a draft. Finish NOTE.md, then run this again without --draft."
-                if args.draft else "\nRESULT: PASS. Push, and mark the pull request ready for review.")
+                if args.draft else handover)
                if not report.failures else
                f"\nRESULT: {report.failures} to fix. Each FAIL line above says how; then run this again.")
     out(text + verdict)
@@ -767,7 +839,7 @@ def main(argv: list[str] | None = None) -> int:
     start.add_argument("slug")
     chk = commands.add_parser("check", help="run the contribution checks CI runs")
     chk.add_argument("--base", help="branch or commit to compare against (default: upstream/main, origin/main)")
-    chk.add_argument("--pr-title", help=argparse.SUPPRESS)
+    chk.add_argument("--pr-title", help="title to check (default: this branch's pull request, read with gh)")
     chk.add_argument("--no-run", action="store_true", help="do not execute the packet's check scripts")
     chk.add_argument("--draft", action="store_true",
                      help="work in progress: unfinished parts of NOTE.md are reported, not failed")
@@ -775,12 +847,15 @@ def main(argv: list[str] | None = None) -> int:
     lean.add_argument("file")
     lean.add_argument("--packet", required=True)
     lean.add_argument("--route", nargs="+", default=["METADATA"])
+    body = commands.add_parser("pr-body", help="turn NOTE.md into the pull request description")
+    body.add_argument("packet", nargs="?")
     tgt = commands.add_parser("targets", help="regenerate OPEN_TARGETS.md from ledger.json")
     tgt.add_argument("--check", action="store_true")
     args = parser.parse_args(argv)
     root = args.root.resolve()
     return {"next": cmd_next, "show": cmd_show, "start": cmd_start, "check": cmd_check,
-            "lean-add": cmd_lean_add, "targets": cmd_targets}[args.command](args, root)
+            "lean-add": cmd_lean_add, "targets": cmd_targets,
+            "pr-body": cmd_pr_body}[args.command](args, root)
 
 
 if __name__ == "__main__":
