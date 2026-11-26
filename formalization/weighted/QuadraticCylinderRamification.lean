@@ -343,4 +343,189 @@ theorem quadratic_enlargement_merger_iff (c : ℂ) (n : ℕ)
     have hi := (quadratic_iterate_univalent_component c n U hUo hUc hreg a haU).1
     exact hab (hi (mem_connectedComponentIn haU) hbc (ha.trans hb.symm))
 
+
+/-- Exact actual-component transport at every intermediate iterate:
+the prefix maps a full global pullback component onto the full
+component of the remaining pullback. No chosen labels or injectivity
+hypotheses occur, and the open target need not be connected. -/
+theorem quadratic_prefix_component_image (c : ℂ) (k m : ℕ)
+    (V : Set ℂ) (hVo : IsOpen V) (x : ℂ)
+    (hx : (quad c)^[k+m] x ∈ V) :
+    (quad c)^[m] '' connectedComponentIn ((quad c)^[k+m] ⁻¹' V) x =
+      connectedComponentIn ((quad c)^[k] ⁻¹' V) ((quad c)^[m] x) := by
+  let f := quad c
+  let p := f^[m]
+  let S := f^[k+m] ⁻¹' V
+  let T := f^[k] ⁻¹' V
+  let C := connectedComponentIn S x
+  let D := connectedComponentIn T (p x)
+  have hxT : p x ∈ T := by
+    change f^[k] (f^[m] x) ∈ V
+    rw [← Function.iterate_add_apply]
+    exact hx
+  have hxD : p x ∈ D := mem_connectedComponentIn hxT
+  have hDo : IsOpen D :=
+    (hVo.preimage (quadratic_iterate_proper c k).continuous).connectedComponentIn
+  have hp := quadratic_iterate_proper c m
+  have hsub : p '' C ⊆ T := by
+    rintro _ ⟨w, hw, rfl⟩
+    change f^[k] (f^[m] w) ∈ V
+    rw [← Function.iterate_add_apply]
+    exact connectedComponentIn_subset S x hw
+  have hpc : IsPreconnected (p '' C) :=
+    isPreconnected_connectedComponentIn.image p hp.continuous.continuousOn
+  have hxC : x ∈ C := mem_connectedComponentIn hx
+  have him : p '' C ⊆ D := hpc.subset_connectedComponentIn ⟨x, hxC, rfl⟩ hsub
+  have hCsub : C ⊆ p ⁻¹' D := fun z hz => him ⟨z, hz, rfl⟩
+  have hSsub : p ⁻¹' D ⊆ S := by
+    intro z hz
+    have hzT : p z ∈ T := connectedComponentIn_subset T (p x) hz
+    change f^[k+m] z ∈ V
+    rw [Function.iterate_add_apply]
+    exact hzT
+  have hEq : C = connectedComponentIn (p ⁻¹' D) x := by
+    exact Subset.antisymm
+      (isPreconnected_connectedComponentIn.subset_connectedComponentIn hxC hCsub)
+      (connectedComponentIn_mono x hSsub)
+  change p '' C = D
+  rw [hEq]
+  exact localized_component_image p (p ⁻¹' D) D
+    (quadratic_iterate_open c m) hp.isClosedMap (hDo.preimage hp.continuous)
+    isPreconnected_connectedComponentIn (fun _ hz => hz) (fun _ hz => hz.2) x hxD
+
+/-- A selected component is univalent if just one regular target fiber
+meets it in a single point. Other components may be ramified. This
+avoids the unnecessary global exclusion of postcritical target values. -/
+theorem quadratic_component_univalent_from_regular_fiber (c : ℂ) (n : ℕ) :
+    ∀ (V : Set ℂ), IsOpen V → IsSimplyConnected V →
+      ∀ y : ℂ, y ∈ V → (∀ k < n, (quad c)^[k] c ≠ y) →
+      ∀ x : ℂ, (quad c)^[n] x ∈ V →
+      (∀ a ∈ connectedComponentIn ((quad c)^[n] ⁻¹' V) x,
+        ∀ b ∈ connectedComponentIn ((quad c)^[n] ⁻¹' V) x,
+          (quad c)^[n] a = y → (quad c)^[n] b = y → a = b) →
+      InjOn ((quad c)^[n]) (connectedComponentIn ((quad c)^[n] ⁻¹' V) x) ∧
+      IsSimplyConnected (connectedComponentIn ((quad c)^[n] ⁻¹' V) x) := by
+  induction n with
+  | zero =>
+    intro V hVo hVc y hy hreg x hx hsingle
+    exact quadratic_iterate_univalent_component c 0 V hVo hVc
+      (by intro k hk; omega) x hx
+  | succ n ih =>
+    intro V hVo hVc y hy hreg x hx hsingle
+    let f := quad c
+    let C := connectedComponentIn (f^[n+1] ⁻¹' V) x
+    let D := connectedComponentIn (f^[n] ⁻¹' V) (f x)
+    have hfirst : f '' C = D := by
+      simpa only [Function.iterate_one] using
+        quadratic_prefix_component_image c n 1 V hVo x hx
+    have hxD : f^[n] (f x) ∈ V := by
+      simpa only [Function.iterate_succ_apply, f] using hx
+    have htailSingle : ∀ a ∈ D, ∀ b ∈ D, f^[n] a = y → f^[n] b = y → a = b := by
+      intro a ha b hb hay hby
+      have ha' : a ∈ f '' C := hfirst.symm ▸ ha
+      have hb' : b ∈ f '' C := hfirst.symm ▸ hb
+      obtain ⟨u, hu, rfl⟩ := ha'
+      obtain ⟨v, hv, rfl⟩ := hb'
+      exact congrArg f (hsingle u hu v hv
+        (by simpa only [Function.iterate_succ_apply] using hay)
+        (by simpa only [Function.iterate_succ_apply] using hby))
+    have hD := ih V hVo hVc y hy (fun k hk => hreg k (by omega)) (f x) hxD htailSingle
+    have hDo : IsOpen D :=
+      (hVo.preimage (quadratic_iterate_proper c n).continuous).connectedComponentIn
+    have he := quadratic_global_component_image c (n+1) V hVo
+      hVc.isPathConnected.isConnected.isPreconnected x hx
+    have hcD : c ∉ D := by
+      intro hc
+      have hc' : c ∈ f '' C := hfirst.symm ▸ hc
+      obtain ⟨z, hz, hzc⟩ := hc'
+      have hz0 : z = 0 := by
+        change z^2+c = c at hzc
+        have hsq : z*z = 0 := by linear_combination hzc
+        exact (mul_eq_zero.mp hsq).elim id id
+      have h0C : (0 : ℂ) ∈ C := hz0 ▸ hz
+      have hC0 : C = connectedComponentIn (f^[n+1] ⁻¹' V) 0 := connectedComponentIn_eq h0C
+      have hyC : y ∈ f^[n+1] '' C := he.symm ▸ hy
+      obtain ⟨a, ha, hay⟩ := hyC
+      have ha0 : a ≠ 0 := by
+        intro ha0
+        apply hreg n (by omega)
+        calc
+          (quad c)^[n] c = f^[n+1] 0 := by
+            rw [Function.iterate_succ_apply]
+            simp [f, quad]
+          _ = y := by simpa only [ha0] using hay
+      have haC0 : a ∈ connectedComponentIn (f^[n+1] ⁻¹' V) 0 := by
+        rw [← hC0]
+        exact ha
+      have hneg : -a ∈ C := by
+        rw [hC0]
+        exact even_preimage_component_symmetric (f^[n+1]) V
+          (quadratic_positive_iterate_even c (n+1) (by omega)) a haC0
+      have hnay : f^[n+1] (-a) = y :=
+        (quadratic_positive_iterate_even c (n+1) (by omega) a).trans hay
+      have hsign := hsingle a ha (-a) hneg hay hnay
+      exact ha0 (by linear_combination (1/2 : ℂ)*hsign)
+    have hmap : MapsTo f C D := by
+      intro z hz
+      rw [← hfirst]
+      exact ⟨z, hz, rfl⟩
+    have hfi : InjOn f C := quadratic_injOn_over_simplyConnected c C D
+      isPreconnected_connectedComponentIn hD.2 hDo hcD hmap
+    have hi : InjOn (f^[n+1]) C := by
+      intro a ha b hb hab
+      apply hfi ha hb
+      apply hD.1 (hmap ha) (hmap hb)
+      simpa only [Function.iterate_succ_apply] using hab
+    have hp := quadratic_iterate_proper c (n+1)
+    have hCo : IsOpen C := (hVo.preimage hp.continuous).connectedComponentIn
+    obtain ⟨e, _⟩ := open_restriction_homeomorph (f^[n+1]) C V
+      hp.continuous (quadratic_iterate_open c (n+1)) hCo he hi
+    letI : SimplyConnectedSpace V := hVc
+    exact ⟨hi, e.toHomotopyEquiv.simplyConnectedSpace⟩
+
+/-- Exact cardinal-one certificate for a selected global component
+over a simply connected open target. Only the test fiber must avoid
+postcritical values, not the entire target. -/
+theorem quadratic_component_single_regular_fiber_iff (c : ℂ) (n : ℕ)
+    (V : Set ℂ) (hVo : IsOpen V) (hVc : IsSimplyConnected V)
+    (y : ℂ) (hy : y ∈ V) (hreg : ∀ k < n, (quad c)^[k] c ≠ y)
+    (x : ℂ) (hx : (quad c)^[n] x ∈ V) :
+    InjOn ((quad c)^[n]) (connectedComponentIn ((quad c)^[n] ⁻¹' V) x) ↔
+      (localFiber c n (connectedComponentIn ((quad c)^[n] ⁻¹' V) x) y).card = 1 := by
+  classical
+  let C := connectedComponentIn ((quad c)^[n] ⁻¹' V) x
+  have he := quadratic_global_component_image c n V hVo
+    hVc.isPathConnected.isConnected.isPreconnected x hx
+  have hh : y ∈ (quad c)^[n] '' C := he.symm ▸ hy
+  obtain ⟨a, ha, haf⟩ := hh
+  change InjOn ((quad c)^[n]) C ↔ (localFiber c n C y).card = 1
+  rw [Finset.card_eq_one_iff_existsUnique]
+  constructor
+  · intro hi
+    refine ⟨a, (mem_localFiber c n C y a).2 ⟨ha, haf⟩, ?_⟩
+    intro z hz
+    obtain ⟨hzC, hzf⟩ := (mem_localFiber c n C y z).1 hz
+    exact hi hzC ha (hzf.trans haf.symm)
+  · rintro ⟨w, hw, huniq⟩
+    apply (quadratic_component_univalent_from_regular_fiber c n V hVo hVc y hy hreg x hx ?_).1
+    intro u hu v hv huf hvf
+    exact (huniq u ((mem_localFiber c n C y u).2 ⟨hu, huf⟩)).trans
+      (huniq v ((mem_localFiber c n C y v).2 ⟨hv, hvf⟩)).symm
+
+/-- The same single-regular-fiber test applies to every component of
+an actual proper open localization, even when the localization omits
+other global components. -/
+theorem quadratic_localized_single_regular_fiber_iff (c : ℂ) (n : ℕ)
+    (S V : Set ℂ) (hS : IsOpen S) (hVo : IsOpen V) (hVc : IsSimplyConnected V)
+    (hm : MapsTo ((quad c)^[n]) S V)
+    (hp : IsProperMap (fun z : S => (⟨(quad c)^[n] z, hm z.property⟩ : V)))
+    (y : ℂ) (hy : y ∈ V) (hreg : ∀ k < n, (quad c)^[k] c ≠ y)
+    (x : ℂ) (hx : x ∈ S) :
+    InjOn ((quad c)^[n]) (connectedComponentIn S x) ↔
+      (localFiber c n (connectedComponentIn S x) y).card = 1 := by
+  have he := proper_localization_component_global ((quad c)^[n]) S V
+    (quadratic_iterate_proper c n).continuous hS hVo hm hp x hx
+  rw [he]
+  exact quadratic_component_single_regular_fiber_iff c n V hVo hVc y hy hreg x (hm hx)
+
 end LoopsQuadraticCylinderRamification

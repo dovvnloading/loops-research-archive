@@ -2325,7 +2325,11 @@
         "quadratic_component_anchor_bound",
         "quadratic_postcritical_target_merges_regular_fiber",
         "quadratic_enlargement_component_surjective",
-        "quadratic_enlargement_merger_iff"
+        "quadratic_enlargement_merger_iff",
+        "quadratic_prefix_component_image",
+        "quadratic_component_univalent_from_regular_fiber",
+        "quadratic_component_single_regular_fiber_iff",
+        "quadratic_localized_single_regular_fiber_iff"
       ]
     },
     "obligations": [
