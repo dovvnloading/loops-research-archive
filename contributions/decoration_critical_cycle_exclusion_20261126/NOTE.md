@@ -30,6 +30,10 @@ cd ../..
 python code/verify_lean_coverage.py --audit weighted
 ```
 
+### Physical angular transport extension
+
+The new declarations `quadratic_angular_branch_bijOn` and `quadratic_nested_angular_bijOn` remove the previously independent hypothesis of stagewise angular bijectivity. They derive it from actual physical quadratic image and injectivity, the exact exterior chart representations of the source and target cylinders, positive-height injectivity of the coordinate, and its quadratic angular-height conjugacy. At height H every source angle gives one physical point; its image lies in the target exterior, so coordinate injectivity recovers the target angle. Physical injectivity implies angular injectivity, and physical surjectivity supplies a lift of every target angle at height 2^n H. The limiting theorem then applies the initial-footprint uniqueness argument. This is a conditional bridge from physical to angular data, not a construction of the native chart or its trace formulas.
+
 ## Dependencies
 
 DIRECT_DECORATION_PULLBACK_COMPACTIFICATION; research/independent_audits/decoration_end_cofinality_20261126/NOTE.md, sections 2–3; existing PrimeEndSectorImpressions, PrimeEndSectorFilters, SaturatedTelescope and QuadraticEscape Lean modules and Mathlib.

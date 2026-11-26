@@ -173,6 +173,97 @@ theorem nested_angular_obstruction_transfer {X Y : Type*} [MetricSpace X]
     exact hxu.symm.trans ((congrArg D h).trans hyv)
   exact PrimeEndSectorFilters.two_angles_obstruct A H hp hxy hx hy
 
+/-- Exact angular bijectivity follows from physical cylinder bijectivity
+and the stated exterior-coordinate identities. The filled set is the
+actual bounded-orbit locus; its exterior image identity was proved above.
+The chart is assumed injective only at strictly positive height. -/
+theorem quadratic_angular_branch_bijOn {X : Type*} [MetricSpace X]
+    (c : ℂ) (n : ℕ) (D : X → X) (ψ : X × ℝ → ℂ)
+    (A B : Set X) (H : ℝ) (hH : 0 < H)
+    (hψ : InjOn ψ {p : X × ℝ | 0 < p.2})
+    (hconj : ∀ p : X × ℝ, 0 < p.2 →
+      orbit c n (ψ p) = ψ (D p.1, (2:ℝ)^n * p.2))
+    (Q P : Set ℂ)
+    (hQ : Q \ filledLocus c = ψ '' PrimeEndSectorFilters.trace A H)
+    (hP : P \ filledLocus c = ψ '' PrimeEndSectorFilters.trace B ((2:ℝ)^n*H))
+    (honto : orbit c n '' Q = P)
+    (hinj : InjOn (orbit c n) Q) : BijOn D A B := by
+  let d : ℝ := (2:ℝ)^n
+  have hd : 0 < d := by dsimp [d]; positivity
+  have himage : orbit c n '' (ψ '' PrimeEndSectorFilters.trace A H) =
+      ψ '' PrimeEndSectorFilters.trace B (d*H) := by
+    rw [← hQ, quadratic_exterior_image, honto, hP]
+  have htrace (x : X) (hx : x ∈ A) :
+      (x,H) ∈ PrimeEndSectorFilters.trace A H := ⟨hx, hH, le_rfl⟩
+  have hmem (x : X) (hx : x ∈ A) : ψ (x,H) ∈ Q := by
+    have hh : ψ (x,H) ∈ Q \ filledLocus c := by
+      rw [hQ]
+      exact ⟨(x,H), htrace x hx, rfl⟩
+    exact hh.1
+  refine ⟨?_, ?_, ?_⟩
+  · intro x hx
+    have hy : orbit c n (ψ (x,H)) ∈
+        ψ '' PrimeEndSectorFilters.trace B (d*H) := by
+      rw [← himage]
+      exact ⟨ψ (x,H), ⟨(x,H), htrace x hx, rfl⟩, rfl⟩
+    obtain ⟨p, hp, he⟩ := hy
+    have he' : ψ p = ψ (D x,d*H) := he.trans (hconj (x,H) hH)
+    have hpeq : p = (D x,d*H) :=
+      hψ (show 0 < p.2 from hp.2.1)
+        (show 0 < (D x,d*H).2 from mul_pos hd hH) he'
+    rw [hpeq] at hp
+    exact hp.1
+  · intro x hx y hy he
+    have hval : orbit c n (ψ (x,H)) = orbit c n (ψ (y,H)) := by
+      rw [hconj (x,H) hH, hconj (y,H) hH, he]
+    have hxy : ψ (x,H) = ψ (y,H) := hinj (hmem x hx) (hmem y hy) hval
+    have hp : (x,H) = (y,H) :=
+      hψ (show 0 < (x,H).2 from hH) (show 0 < (y,H).2 from hH) hxy
+    exact congrArg Prod.fst hp
+  · intro y hy
+    have ht : (y,d*H) ∈ PrimeEndSectorFilters.trace B (d*H) :=
+      ⟨hy, mul_pos hd hH, le_rfl⟩
+    have hz : ψ (y,d*H) ∈ orbit c n '' (ψ '' PrimeEndSectorFilters.trace A H) := by
+      rw [himage]
+      exact ⟨(y,d*H), ht, rfl⟩
+    obtain ⟨z, hz, he⟩ := hz
+    obtain ⟨p, hp, rfl⟩ := hz
+    have he' : ψ (D p.1,d*p.2) = ψ (y,d*H) :=
+      (hconj p hp.2.1).symm.trans he
+    have hpeq : (D p.1,d*p.2) = (y,d*H) :=
+      hψ (show 0 < (D p.1,d*p.2).2 from mul_pos hd hp.2.1)
+        (show 0 < (y,d*H).2 from mul_pos hd hH) he'
+    exact ⟨p.1, hp.1, congrArg Prod.fst hpeq⟩
+
+/-- The fixed-iterate external-angle transport across a nested physical
+cylinder chain follows from the actual polynomial and positive-height
+chart relations, not a separately assumed angular bijection. -/
+theorem quadratic_nested_angular_bijOn {X : Type*} [MetricSpace X]
+    (c : ℂ) (n : ℕ) (D : X → X) (ψ : X × ℝ → ℂ)
+    (A B : ℕ → Set X) (H : ℕ → ℝ) (hH : ∀ k, 0 < H k)
+    (ha : Antitone A)
+    (hψ : InjOn ψ {p : X × ℝ | 0 < p.2})
+    (hconj : ∀ p : X × ℝ, 0 < p.2 →
+      orbit c n (ψ p) = ψ (D p.1, (2:ℝ)^n * p.2))
+    (Q P : ℕ → Set ℂ)
+    (hQ : ∀ k, Q k \ filledLocus c = ψ '' PrimeEndSectorFilters.trace (A k) (H k))
+    (hP : ∀ k, P k \ filledLocus c =
+      ψ '' PrimeEndSectorFilters.trace (B k) ((2:ℝ)^n*H k))
+    (honto : ∀ k, orbit c n '' Q k = P k)
+    (hinj : ∀ k, InjOn (orbit c n) (Q k)) :
+    BijOn D (⋂ k, A k) (⋂ k, B k) := by
+  have hb (k : ℕ) : BijOn D (A k) (B k) :=
+    quadratic_angular_branch_bijOn c n D ψ (A k) (B k) (H k)
+      (hH k) hψ hconj (Q k) (P k) (hQ k) (hP k) (honto k) (hinj k)
+  apply nested_angular_bijOn D A B ha (hb 0).2.1
+  intro k
+  apply Subset.antisymm
+  · rintro y ⟨x, hx, rfl⟩
+    exact (hb k).1 hx
+  · intro y hy
+    exact (hb k).2.2 hy
+
+
 end
 
 end LoopsDecorationCriticalCycle

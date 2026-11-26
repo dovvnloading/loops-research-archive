@@ -2268,7 +2268,9 @@
         "quadratic_cycle_phase_exclusion",
         "quadratic_exterior_image",
         "nested_angular_bijOn",
-        "nested_angular_obstruction_transfer"
+        "nested_angular_obstruction_transfer",
+        "quadratic_angular_branch_bijOn",
+        "quadratic_nested_angular_bijOn"
       ]
     },
     "obligations": [
