@@ -45,6 +45,14 @@ Apply this to the full compact symmetric dynamical sublevels to get the reverse 
 
 Additional declarations: `compact_connected_complement_log`, `symmetric_full_continuum_contains_zero`, `quadratic_escape_reflection`, `quadratic_escape_sublevel_connected_iff`, `quadratic_filled_connected_iff`, `quadratic_model_reflection_fixed_iff`, `quadratic_filled_light_model_exact_critical_branch`. The new declarations count only after exact-head compilation and audit.
 
+## Extension: all-target inverse census of the light model
+
+The identified fixed point gives a purely finite combinatorial recursion for every model target. Choose a set-theoretic inverse section. Its reflected section is disjoint from it after omitting the single critical value. The cardinality of a finite inverse set is therefore twice the previous cardinality minus the indicator that the previous inverse set contains the critical value. Induction produces the exact all-depth defect identity and maximal-cardinality criterion.
+
+For the actual quadratic monotone light model with empty-interior physical filled set and bounded critical orbit, this removes the prior need for a singleton physical anchor to obtain an exact model census. The orbit tested for a defect is the projected critical-value orbit in the model, not the unprojected physical orbit.
+
+Additional declarations: `model_pair_inverse_step`, `model_critical_defect_zero_iff`, `model_pair_iterate_census`, `quadratic_filled_light_model_all_target_census`. The new declarations count only after exact-head compilation and audit.
+
 ## Dependencies
 
 KKL_NATIVE_TERMINAL_HUBBARD_TREE, KKL_STATIONARY_MODEL_TERMINAL_SHEET_INCIDENCE, KKL_STATIONARY_SELECTED_PREDECESSOR_CHAIN. Existing StationaryFiberDynamics, StationaryMonotoneGeometry, StationaryGeometricFibers, StationaryLightModel, QuadraticCriticalFiberCensus, LeastSaturatedCarrier, PlanarFullification and QuadraticEscape. Mathlib's pinned `Complex.exists_mem_frontier_isMaxOn_norm` in `Mathlib/Analysis/Complex/AbsMax.lean` supplies the classical maximum modulus principle.

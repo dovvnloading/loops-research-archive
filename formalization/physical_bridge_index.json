@@ -2639,7 +2639,11 @@
         "quadratic_escape_sublevel_connected_iff",
         "quadratic_filled_connected_iff",
         "quadratic_model_reflection_fixed_iff",
-        "quadratic_filled_light_model_exact_critical_branch"
+        "quadratic_filled_light_model_exact_critical_branch",
+        "model_pair_inverse_step",
+        "model_critical_defect_zero_iff",
+        "model_pair_iterate_census",
+        "quadratic_filled_light_model_all_target_census"
       ]
     },
     "obligations": [
