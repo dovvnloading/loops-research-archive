@@ -73,8 +73,19 @@ theorem connected_inventory_obstacle_absorbed
     (hA : IsPreconnected A) (hAU : A ⊆ U)
     (hmeet : (K ∩ A).Nonempty) : A ⊆ K := by
   obtain ⟨E, hE, hd, hcover⟩ := h
-  exact LoopsLeastCarrier.connected_obstacle_forced K E A hK hE.isClosed hd
-    hA (hAU.trans hcover) hmeet
+  have hcov : A ⊆ K ∪ E := hAU.trans hcover
+  intro x hx
+  by_contra hxK
+  obtain ⟨a, haK, haA⟩ := hmeet
+  have haE : a ∉ E := fun h => (Set.disjoint_left.mp hd) haK h
+  have hsep : A ⊆ Eᶜ ∪ Kᶜ := by
+    intro z hz
+    by_cases hzK : z ∈ K
+    · exact Or.inl (fun h => (Set.disjoint_left.mp hd) hzK h)
+    · exact Or.inr hzK
+  obtain ⟨z, hzA, hzE, hzK⟩ := hA Eᶜ Kᶜ hE.isClosed.isOpen_compl
+    hK.isOpen_compl hsep ⟨a, haA, haE⟩ ⟨x, hx, hxK⟩
+  exact (hcov hzA).elim hzK hzE
 
 /-- The canonical omitted traces form forward-compatible compact
 remainders, with absorption into the next carrier allowed. This is an
