@@ -2,20 +2,13 @@ import { useEffect, useRef, useState } from 'react';
 import {
   ArrowDown,
   ArrowUp,
-  Camera,
-  Check,
   Circle,
-  Download,
-  Film,
-  GripVertical,
   LoaderCircle,
   Pause,
   Play,
-  Plus,
-  RotateCcw,
+  Repeat,
   Square,
   Trash2,
-  Upload,
   X,
 } from 'lucide-react';
 import type { EngineState } from '../types';
@@ -319,7 +312,7 @@ export function MotionStudio({
     const context = canvas.getContext('2d');
     if (!context) return;
     const paint = (image: CanvasImageSource, width: number, height: number) => {
-      context.fillStyle = '#070d15';
+      context.fillStyle = '#0a0a09';
       context.fillRect(0, 0, 320, 180);
       const scale = Math.min(320 / width, 180 / height);
       context.drawImage(
@@ -446,7 +439,7 @@ export function MotionStudio({
             canvas.height = height;
           }
           const scale = Math.min(width / source.width, height / source.height);
-          context.fillStyle = '#050a10';
+          context.fillStyle = '#0a0a09';
           context.fillRect(0, 0, width, height);
           try {
             context.drawImage(
@@ -710,16 +703,14 @@ export function MotionStudio({
   const drag = useRef<{ x: number; y: number; camera: EngineState['camera'] } | null>(null);
 
   return (
-    <Dialog
-      title="Motion studio"
-      kicker="A PATH THROUGH INFINITY"
-      onClose={onClose}
-      className="ob-motion"
-    >
+    <Dialog title="Motion studio" onClose={onClose} className="ob-motion">
       <div className="ob-motion-intro">
-        <p>Compose a sequence of views. Let the mathematics unfold.</p>
+        <p>
+          Capture keyframes of the camera and appearance, then play, scrub or record the path
+          between them.
+        </p>
         <span>
-          {familyName(path.scene)} <i /> {path.frames.length} / {MAX_FRAMES} keyframes
+          {familyName(path.scene)} · {path.frames.length} of {MAX_FRAMES} keyframes
         </span>
       </div>
       <div className="ob-motion-body">
@@ -758,17 +749,17 @@ export function MotionStudio({
                 <i className={recording ? 'is-recording' : ''} />
                 {recording
                   ? playing
-                    ? 'RECORDING'
-                    : 'RECORDING PAUSED'
+                    ? 'Recording'
+                    : 'Recording paused'
                   : playing
-                    ? 'PLAYBACK'
-                    : 'LIVE PREVIEW'}
+                    ? 'Playback'
+                    : 'Live'}
               </span>
               <code>
                 {time.toFixed(1).padStart(4, '0')} / {path.duration.toFixed(1)} s
               </code>
             </div>
-            {!locked && <span className="ob-motion-view-hint">Drag to compose the camera</span>}
+            {!locked && <span className="ob-motion-view-hint">Drag to turn the camera</span>}
           </div>
           <div className="ob-motion-transport">
             <button
@@ -809,21 +800,17 @@ export function MotionStudio({
               aria-label="Close and repeat the path"
               title="Close path and loop"
             >
-              <RotateCcw size={16} />
+              <Repeat size={15} />
             </button>
           </div>
           <div className="ob-motion-frames-heading">
-            <span>KEYFRAMES</span>
+            <span>Keyframes</span>
             <button
               onClick={() => void captureFrame()}
               disabled={locked || capturing || path.frames.length >= MAX_FRAMES}
             >
-              {capturing ? (
-                <LoaderCircle className="ob-motion-spin" size={13} />
-              ) : (
-                <Plus size={14} />
-              )}{' '}
-              Capture current view
+              {capturing && <LoaderCircle className="ob-motion-spin" size={13} />} Capture current
+              view
             </button>
           </div>
           <div className="ob-motion-frames">
@@ -835,11 +822,7 @@ export function MotionStudio({
                   disabled={locked}
                   aria-label={`Load keyframe ${index + 1}: ${frame.title}`}
                 >
-                  {frame.thumbnail ? (
-                    <img src={frame.thumbnail} alt="" />
-                  ) : (
-                    <Camera size={22} strokeWidth={1} />
-                  )}
+                  {frame.thumbnail && <img src={frame.thumbnail} alt="" />}
                   <span>{String(index + 1).padStart(2, '0')}</span>
                 </button>
                 <div className="ob-motion-frame-text">
@@ -858,7 +841,7 @@ export function MotionStudio({
                     }
                   />
                   <code>
-                    {frame.state.camera.position ? 'FLIGHT' : 'ORBIT'} ·{' '}
+                    {frame.state.camera.position ? 'Flight' : 'Orbit'} ·{' '}
                     {(frame.state.camera.position
                       ? Math.hypot(...frame.state.camera.position)
                       : frame.state.camera.distance
@@ -892,7 +875,6 @@ export function MotionStudio({
             ))}
           </div>
           <div className="ob-motion-compose-tip">
-            <Camera size={14} />
             <p>
               Move the camera in the preview, adjust its settings, then capture the next keyframe.
               Use <strong>Update selected</strong> to refine an existing view.
@@ -1039,7 +1021,7 @@ export function MotionStudio({
                 ) : (
                   <div className="ob-motion-quaternion">
                     <NumberInput
-                      label="Julia parameter · real"
+                      label="c, real"
                       value={state.julia[0]}
                       min={-4}
                       max={4}
@@ -1049,7 +1031,7 @@ export function MotionStudio({
                       }
                     />
                     <NumberInput
-                      label="Julia parameter · imaginary"
+                      label="c, imaginary"
                       value={state.julia[1]}
                       min={-4}
                       max={4}
@@ -1089,7 +1071,7 @@ export function MotionStudio({
                 />
                 {state.scene === 'quaternion' && (
                   <Range
-                    label="Fourth-dimensional slice"
+                    label="Slice, fourth coordinate"
                     value={state.slice}
                     min={-2}
                     max={2}
@@ -1105,12 +1087,12 @@ export function MotionStudio({
               onClick={() => void captureFrame(true)}
               disabled={capturing}
             >
-              <Check size={14} /> Update selected keyframe
+              Update selected keyframe
             </button>
             <div className="ob-motion-timing">
-              <h3>PATH SETTINGS</h3>
+              <h3>Path</h3>
               <NumberInput
-                label="Total duration · seconds"
+                label="Duration, seconds"
                 value={path.duration}
                 min={2}
                 max={90}
@@ -1161,28 +1143,26 @@ export function MotionStudio({
         {storageError ? (
           <span className="ob-motion-error">{storageError}</span>
         ) : (
-          <span>
-            <Check size={11} /> Path saved in this browser
-          </span>
+          <span>Path saved in this browser</span>
         )}
       </div>
       <footer className="ob-motion-footer">
         <div>
           <button onClick={() => upload.current?.click()} disabled={locked}>
-            <Upload size={14} /> Import path
+            Import path
           </button>
           <button
             onClick={() =>
               download(JSON.stringify(path, null, 2), `loops-${path.scene}-motion.json`)
             }
           >
-            <Download size={14} /> Export JSON
+            Export JSON
           </button>
         </div>
         <div>
           <span className="ob-motion-record-help">
             {canRecord
-              ? '24 fps capture · WebM'
+              ? 'WebM at 24 fps'
               : 'WebM recording is unavailable in this browser. Export JSON to replay the path.'}
           </span>
           <button

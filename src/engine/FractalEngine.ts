@@ -418,7 +418,7 @@ export class FractalEngine {
     gl.uniform1i(u.uGrid, s.showGrid ? 1 : 0);
     if (kind === 'landscape') {
       gl.enable(gl.DEPTH_TEST);
-      gl.clearColor(0.025, 0.035, 0.055, 1);
+      gl.clearColor(0.04, 0.04, 0.04, 1);
       gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT);
       gl.bindVertexArray(this.landscapeVao);
       gl.drawElements(gl.TRIANGLES, this.landscapeCount, gl.UNSIGNED_INT, 0);

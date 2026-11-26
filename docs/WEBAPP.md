@@ -4,7 +4,7 @@ LOOPS replaces the previous document-style homepage with an interactive fractal 
 
 ## Start exploring
 
-The **Explore** workspace opens on a Mandelbulb calculated by the custom WebGL2 renderer. Choose a scene from the left panel, edit its parameters on the right, and use the canvas controls to move through it. The curated studies along the bottom load complete parameter and camera presets.
+The **Explore** workspace opens on a Mandelbulb calculated by the custom WebGL2 renderer. Choose a view from the index on the left, edit its parameters in the inspector on the right, and use the tools above the canvas to move through it. Each indexed view loads complete parameter and camera presets.
 
 | Scene | What it represents | Useful controls |
 | --- | --- | --- |

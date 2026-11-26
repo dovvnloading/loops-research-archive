@@ -147,8 +147,8 @@ void main() {
   vec3 right=normalize(cross(forward,vec3(0,1,0)));
   vec3 up=cross(right,forward);
   vec3 rd=normalize(forward+uProjection*(uv.x*right+uv.y*up));
-  vec3 color=vec3(0.008,0.012,0.022);
-  color+=vec3(0.007,0.009,0.018)*exp(-3.0*dot(uv,uv));
+  vec3 color=vec3(0.0115);
+  color+=vec3(0.009)*exp(-3.0*dot(uv,uv));
   float radius=uScene==1 ? 6.0 : max(1.55,pow(2.0,1.0/(max(uPower,2.0)-1.0))+0.05);
   if(uScene==2) radius=max(1.55,0.5*(1.0+sqrt(1.0+4.0*length(vec4(uJuliaHi,0.18,0.0))))+0.05);
   float b=dot(ro,rd), disc=b*b-dot(ro,ro)+radius*radius;
@@ -198,7 +198,7 @@ void main() {
       vec2 grid=abs(fract(coord-0.5)-0.5)/derivative;
       float line=1.0-min(min(grid.x,grid.y),1.0);
       float fade=exp(-0.14*dot(point.xz,point.xz))*exp(-0.05*t);
-      color+=vec3(0.025,0.043,0.072)*line*fade;
+      color+=vec3(0.045)*line*fade;
     }
   }
   color*=1.0-0.3*smoothstep(0.25,1.2,length(uv));
@@ -271,7 +271,7 @@ void main() {
     count=float(i);
     if(mag2>uPlaneBailout*uPlaneBailout) { escaped=true; break; }
   }
-  vec3 color=vec3(0.008,0.012,0.022);
+  vec3 color=vec3(0.0115);
   if(escaped) {
     float smoothN=max(0.0,count+1.0-log2(max(log2(max(sqrt(mag2),1.00001)),0.0001)));
     float bands=0.5+0.5*cos(smoothN*uBandFrequency+uBandPhase);

@@ -1,17 +1,59 @@
 import { useEffect, useId, useRef, useState } from 'react';
 import type { ReactNode, CSSProperties } from 'react';
 import { X, ChevronDown } from 'lucide-react';
+import type { EngineState } from '../types';
 
+/** The two loops of the name: used alone as the mark, and as the OO of the wordmark. */
 export function Logo() {
   return (
-    <svg viewBox="0 0 40 40" fill="none" aria-hidden="true">
-      <g stroke="currentColor" strokeWidth="1.25">
-        <ellipse cx="20" cy="20" rx="16" ry="7.5" />
-        <ellipse cx="20" cy="20" rx="16" ry="7.5" transform="rotate(60 20 20)" />
-        <ellipse cx="20" cy="20" rx="16" ry="7.5" transform="rotate(120 20 20)" />
-        <circle cx="20" cy="20" r="3" />
+    <svg className="ob-rings" viewBox="0 0 31 20" fill="none" aria-hidden="true">
+      <g stroke="currentColor" strokeWidth="3.9">
+        <circle cx="10" cy="10" r="8" />
+        <circle cx="21" cy="10" r="8" />
       </g>
     </svg>
+  );
+}
+export function Wordmark() {
+  return (
+    <span className="ob-wordmark" aria-hidden="true">
+      L<Logo />
+      PS
+    </span>
+  );
+}
+/** ⌘ on Apple keyboards, Ctrl elsewhere. */
+export const MOD =
+  typeof navigator !== 'undefined' && /Mac|iPhone|iPad/.test(navigator.platform) ? '⌘' : 'Ctrl';
+
+/** The iterated map of a scene, set as mathematics rather than as code. */
+export function Formula({ scene, power = 2 }: { scene: EngineState['scene']; power?: number }) {
+  const n = power.toFixed(power % 1 === 0 ? 0 : 2);
+  return (
+    <span className="math">
+      {scene === 'mandelbulb' ? (
+        <>
+          <i>z</i> ↦ <i>z</i>
+          <sup>{n}</sup> + <i>c</i>
+        </>
+      ) : scene === 'mandelbox' ? (
+        <>
+          <i>z</i> ↦ −{n} · fold(<i>z</i>) + <i>c</i>
+        </>
+      ) : scene === 'quaternion' ? (
+        <>
+          <i>q</i> ↦ <i>q</i>² + <i>c</i>, <i>q</i> ∈ ℍ
+        </>
+      ) : scene === 'landscape' ? (
+        <>
+          <i>h</i>(<i>c</i>) = log escape time
+        </>
+      ) : (
+        <>
+          <i>z</i> ↦ <i>z</i>² + <i>c</i>
+        </>
+      )}
+    </span>
   );
 }
 export function IconButton({
@@ -20,6 +62,7 @@ export function IconButton({
   onClick,
   active = false,
   disabled = false,
+  expanded,
   className = '',
 }: {
   label: string;
@@ -27,6 +70,7 @@ export function IconButton({
   onClick: () => void;
   active?: boolean;
   disabled?: boolean;
+  expanded?: boolean;
   className?: string;
 }) {
   return (
@@ -35,6 +79,7 @@ export function IconButton({
       aria-label={label}
       title={label}
       aria-pressed={active ? true : undefined}
+      aria-expanded={expanded}
       disabled={disabled}
       onClick={onClick}
     >
@@ -44,13 +89,11 @@ export function IconButton({
 }
 export function Dialog({
   title,
-  kicker,
   onClose,
   children,
   className = '',
 }: {
   title: string;
-  kicker?: string;
   onClose: () => void;
   children: ReactNode;
   className?: string;
@@ -80,12 +123,9 @@ export function Dialog({
       }}
     >
       <header>
-        <div>
-          {kicker && <span className="ob-eyebrow">{kicker}</span>}
-          <h2 id={id}>{title}</h2>
-        </div>
+        <h2 id={id}>{title}</h2>
         <IconButton label="Close dialog" onClick={onClose}>
-          <X size={19} />
+          <X size={16} />
         </IconButton>
       </header>
       {children}
@@ -225,7 +265,7 @@ export function Disclosure({
     </details>
   );
 }
-export function Loading({ label = 'Opening the workspace…' }: { label?: string }) {
+export function Loading({ label = 'Loading…' }: { label?: string }) {
   return (
     <div className="ob-loading" role="status">
       <Logo />

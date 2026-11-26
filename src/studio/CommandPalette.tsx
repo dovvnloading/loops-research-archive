@@ -1,20 +1,8 @@
 import { useEffect, useId, useMemo, useRef, useState } from 'react';
-import {
-  ArrowUpRight,
-  Search,
-  Compass,
-  FlaskConical,
-  BookOpen,
-  Bookmark,
-  Settings2,
-  Image,
-  Keyboard,
-  Route,
-  Network,
-} from 'lucide-react';
+import { Search } from 'lucide-react';
 import { DESTINATIONS } from './destinations';
 import type { Destination } from './destinations';
-import { Dialog } from './UI';
+import { Dialog, MOD } from './UI';
 import { useData } from '../research/common';
 export type StudioWorkspace = 'explore' | 'atlas' | 'laboratory' | 'journal' | 'research';
 interface Item {
@@ -22,7 +10,6 @@ interface Item {
   title: string;
   detail: string;
   group: string;
-  icon: typeof Compass;
   run: () => void;
 }
 export function CommandPalette({
@@ -48,89 +35,78 @@ export function CommandPalette({
       {
         id: 'explore',
         title: 'Explore',
-        detail: 'Return to the live canvas',
+        detail: 'The live renderer',
         group: 'Workspaces',
-        icon: Compass,
         run: () => onNavigate('explore'),
       },
       {
         id: 'atlas',
         title: 'Atlas',
-        detail: 'Destinations, guided journeys, and exact mathematics',
+        detail: 'Destinations, tours and the mathematical atlas',
         group: 'Workspaces',
-        icon: Network,
         run: () => onNavigate('atlas'),
       },
       {
         id: 'laboratory',
         title: 'Laboratory',
-        detail: 'Discover, analyze, and compare',
+        detail: 'Surveys, orbit analysis, window comparison',
         group: 'Workspaces',
-        icon: FlaskConical,
         run: () => onNavigate('laboratory'),
       },
       {
         id: 'journal',
         title: 'Journal',
-        detail: 'Saved views, branches, and experiments',
+        detail: 'Saved views, branches and experiments',
         group: 'Workspaces',
-        icon: Bookmark,
         run: () => onNavigate('journal'),
       },
       {
         id: 'research',
         title: 'Research',
-        detail: 'Proof ledger and original sources',
+        detail: 'Obligation ledger and sources',
         group: 'Workspaces',
-        icon: BookOpen,
         run: () => onNavigate('research'),
       },
       {
         id: 'save',
         title: 'Save this view',
-        detail: 'Keep the exact state in your journal',
+        detail: `Journal entry with exact coordinates · ${MOD} S`,
         group: 'Actions',
-        icon: Bookmark,
         run: () => onAction('save'),
       },
       {
         id: 'export',
         title: 'Export image or session',
-        detail: 'Render a high-resolution image and portable state',
+        detail: 'PNG, session file or share link',
         group: 'Actions',
-        icon: Image,
         run: () => onAction('export'),
       },
       {
         id: 'guide',
-        title: 'Open field guide',
-        detail: 'Understand what you are seeing',
+        title: 'Field guide',
+        detail: 'What the current view shows · G',
         group: 'Actions',
-        icon: BookOpen,
         run: () => onAction('guide'),
       },
       {
         id: 'help',
         title: 'Keyboard shortcuts',
-        detail: 'Move around without leaving the canvas',
+        detail: 'Controls for the renderer · ?',
         group: 'Actions',
-        icon: Keyboard,
         run: () => onAction('help'),
       },
       {
         id: 'tour',
-        title: 'Start the first-light journey',
-        detail: 'Five stops through the world of fractals',
+        title: 'Start the First light tour',
+        detail: 'Guided tour, 5 stops',
         group: 'Actions',
-        icon: Route,
         run: () => onAction('tour'),
       },
       {
         id: 'inspector',
         title: 'Toggle inspector',
-        detail: 'Model, material, and camera controls',
+        detail: 'Model, material and view controls',
         group: 'Actions',
-        icon: Settings2,
         run: () => onAction('inspector'),
       },
     ];
@@ -139,7 +115,6 @@ export function CommandPalette({
       title: d.title,
       detail: d.subtitle,
       group: 'Destinations',
-      icon: Compass,
       run: () => onSelect(d),
     }));
     const q = query.trim().toLowerCase();
@@ -158,7 +133,6 @@ export function CommandPalette({
               title: f.title || f.path.split('/').pop()!,
               detail: f.path,
               group: 'Research sources',
-              icon: BookOpen,
               run: () => {
                 window.open(f.url, '_blank', 'noopener,noreferrer');
                 onClose();
@@ -177,14 +151,9 @@ export function CommandPalette({
     item.run();
   };
   return (
-    <Dialog
-      title="Where would you like to go?"
-      kicker="QUICK NAVIGATION"
-      onClose={onClose}
-      className="ob-command"
-    >
+    <Dialog title="Search" onClose={onClose} className="ob-command">
       <div className="ob-command-input">
-        <Search size={20} />
+        <Search size={16} />
         <input
           autoFocus
           role="combobox"
@@ -193,7 +162,7 @@ export function CommandPalette({
           aria-controls={listId}
           aria-activedescendant={items[selected] ? `${listId}-${selected}` : undefined}
           aria-label="Search commands, destinations, and research"
-          placeholder="Search places, tools, or research…"
+          placeholder="Destination, command or source file"
           value={query}
           onChange={(e) => setQuery(e.target.value)}
           onKeyDown={(e) => {
@@ -211,7 +180,6 @@ export function CommandPalette({
             }
           }}
         />
-        <kbd>esc</kbd>
       </div>
       <div
         className="ob-command-results"
@@ -232,28 +200,21 @@ export function CommandPalette({
               onMouseMove={() => setSelected(i)}
               onClick={() => run(item)}
             >
-              <item.icon size={18} />
-              <span>
-                <strong>{item.title}</strong>
-                <small>{item.detail}</small>
-              </span>
-              <ArrowUpRight size={15} />
+              <strong>{item.title}</strong>
+              <small>{item.detail}</small>
             </button>
           </div>
         ))}
         {!items.length && (
-          <p className="ob-command-empty">No matches. Try “Julia”, “period”, or “export”.</p>
+          <p className="ob-command-empty">
+            Nothing matches. Source files are searched from the third character.
+          </p>
         )}
       </div>
       <footer>
-        <span>
-          <kbd>↑</kbd>
-          <kbd>↓</kbd> navigate
-        </span>
-        <span>
-          <kbd>↵</kbd> open
-        </span>
-        <span>Places, instruments, and source documents</span>
+        <span>↑ ↓ to move</span>
+        <span>Enter to open</span>
+        <span>Esc to close</span>
       </footer>
     </Dialog>
   );

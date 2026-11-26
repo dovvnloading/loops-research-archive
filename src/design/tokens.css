@@ -1,0 +1,74 @@
+/*
+  LOOPS design system.
+
+  The app is an instrument for looking at mathematical images, and a ledger of
+  what is known about them. Three decisions settle most questions:
+
+  1. The plate is the only thing that carries colour. Chrome is neutral, flat
+     and ruled with hairlines, so a palette is judged against nothing else.
+  2. Type does the organising. Franklin runs the instrument, STIX sets the
+     mathematics and anything meant to be read, Inconsolata sets numbers and
+     identifiers. No letterspaced capitals as decoration, no type under 11px.
+  3. One spot colour, vermilion, means "this writes to the journal" or "this is
+     recording". It is never ornament.
+
+  Every stylesheet in src/ draws on these tokens; none may introduce its own
+  colours, radii or font stacks.
+*/
+:root {
+  color-scheme: dark;
+
+  /* Surfaces, darkest first. */
+  --ink-0: #0a0a09;
+  --ink-1: #111110;
+  --ink-2: #1a1a18;
+  --ink-3: #262623;
+  --rule: #2b2b27;
+  --rule-2: #45453d;
+
+  /* Text. --paper-3 is the floor: 5:1 on --ink-0. */
+  --paper: #ebe7dc;
+  --paper-2: #b6b2a6;
+  --paper-3: #8a877c;
+
+  /* Spot colour and its pressed state. */
+  --red: #ff5b37;
+  --red-down: #e04a29;
+  --on-red: #180803;
+
+  /* Marks for data states. Always paired with a word or a shape. */
+  --ok: #a8c492;
+  --warn: #e3b75f;
+  --cool: #a9b8cc;
+
+  --f-ui: 'Libre Franklin Variable', 'Franklin Gothic Medium', 'Helvetica Neue', Arial, sans-serif;
+  --f-math:
+    'STIX Two Text Variable', 'STIX Two Text', 'STIX Two Math', 'Cambria Math', Cambria,
+    'Times New Roman', serif;
+  --f-num: 'Inconsolata Variable', 'Cascadia Mono', Consolas, 'DejaVu Sans Mono', monospace;
+
+  /* Type scale. */
+  --t-1: 11px;
+  --t-2: 12px;
+  --t-3: 13px;
+  --t-4: 15px;
+  --t-5: 17px;
+  --t-6: 21px;
+  --t-7: 28px;
+  --t-8: 38px;
+
+  /* Measures. */
+  --mast: 44px;
+  --bar: 40px;
+  --gutter: 16px;
+  --page: 40px;
+  --measure: 68ch;
+  --r: 2px;
+}
+
+@media (max-width: 700px) {
+  :root {
+    --page: 18px;
+    --gutter: 14px;
+  }
+}

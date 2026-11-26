@@ -1,5 +1,4 @@
 import { useEffect, useRef, useState } from 'react';
-import { Download, Microscope, Play, Square } from 'lucide-react';
 import { preparePrecisionFrame } from '../lib/precision';
 import type { PrecisionFrame, PrecisionMessage, PrecisionSettings } from '../lib/precision';
 
@@ -56,7 +55,7 @@ export function PrecisionStudy() {
     const id = ++requestId.current;
     canvas.width = prepared.width;
     canvas.height = prepared.height;
-    context.fillStyle = '#050b09';
+    context.fillStyle = '#0a0a09';
     context.fillRect(0, 0, canvas.width, canvas.height);
     setFrame(prepared); setProgress(0); setElapsed(0); setError(''); setEscapeCount(null); setPhase('rendering');
     try {
@@ -106,33 +105,32 @@ export function PrecisionStudy() {
 
   return <section className="precision-study" aria-labelledby="precision-study-title">
     <header className="precision-title">
-      <div><span className="eyebrow">PRECISION STUDY / CPU WORKER</span><h3 id="precision-study-title">Past the GPU precision floor.</h3>
-        <p>Decimal coordinates, BigInt arithmetic, and a separate rendering worker. Calculate a small Mandelbrot window with up to 60 orders of magnification.</p></div>
-      <Microscope size={24} aria-hidden="true" />
+      <div><h3 id="precision-study-title">Fixed-point window renderer</h3>
+        <p>Decimal coordinates, BigInt arithmetic and a separate worker render a small Mandelbrot window at up to 60 orders of magnification.</p></div>
     </header>
     <div className="precision-layout">
       <form className="precision-controls" onSubmit={event => { event.preventDefault(); if (!running) render(); }}>
-        <label>STUDY PRESET<select aria-label="Precision study preset" disabled={running} defaultValue="custom" onChange={event => {
+        <label>Preset<select aria-label="Precision study preset" disabled={running} defaultValue="custom" onChange={event => {
           const selected = PRESETS.find(preset => preset.name === event.target.value);
           if (selected) { setSettings({ ...selected.settings }); setError(''); }
         }}><option value="custom">Choose a window</option>{PRESETS.map(preset => <option key={preset.name}>{preset.name}</option>)}</select></label>
-        <label>REAL CENTER<input aria-label="High precision real center" value={settings.centerRe} maxLength={112} disabled={running} spellCheck={false} autoComplete="off" onChange={event => setSettings({ ...settings, centerRe: event.target.value })} /></label>
-        <label>IMAGINARY CENTER<input aria-label="High precision imaginary center" value={settings.centerIm} maxLength={112} disabled={running} spellCheck={false} autoComplete="off" onChange={event => setSettings({ ...settings, centerIm: event.target.value })} /></label>
-        <label>WINDOW WIDTH · 10⁻ⁿ<input aria-label="Precision zoom exponent" type="number" min="0" max="60" step="1" value={Number.isNaN(settings.zoomExponent) ? '' : settings.zoomExponent} disabled={running} onChange={event => setSettings({ ...settings, zoomExponent: event.target.value === '' ? NaN : Number(event.target.value) })} /></label>
-        <label>ITERATION BUDGET<select aria-label="Precision iteration budget" value={settings.iterations} disabled={running} onChange={event => setSettings({ ...settings, iterations: Number(event.target.value) })}>{[128, 256, 512, 1024, 2048].map(count => <option key={count} value={count}>{count.toLocaleString()} iterations</option>)}</select></label>
-        <label>RENDER SIZE<select aria-label="Precision render size" value={settings.width} disabled={running} onChange={event => setSettings({ ...settings, width: Number(event.target.value) })}>{[128, 192, 256].map(width => <option key={width} value={width}>{width} × {width * 3 / 4}</option>)}</select></label>
+        <label>Center, real<input aria-label="High precision real center" value={settings.centerRe} maxLength={112} disabled={running} spellCheck={false} autoComplete="off" onChange={event => setSettings({ ...settings, centerRe: event.target.value })} /></label>
+        <label>Center, imaginary<input aria-label="High precision imaginary center" value={settings.centerIm} maxLength={112} disabled={running} spellCheck={false} autoComplete="off" onChange={event => setSettings({ ...settings, centerIm: event.target.value })} /></label>
+        <label>Window width 10⁻ⁿ, exponent n<input aria-label="Precision zoom exponent" type="number" min="0" max="60" step="1" value={Number.isNaN(settings.zoomExponent) ? '' : settings.zoomExponent} disabled={running} onChange={event => setSettings({ ...settings, zoomExponent: event.target.value === '' ? NaN : Number(event.target.value) })} /></label>
+        <label>Iteration budget<select aria-label="Precision iteration budget" value={settings.iterations} disabled={running} onChange={event => setSettings({ ...settings, iterations: Number(event.target.value) })}>{[128, 256, 512, 1024, 2048].map(count => <option key={count} value={count}>{count.toLocaleString()} iterations</option>)}</select></label>
+        <label>Render size<select aria-label="Precision render size" value={settings.width} disabled={running} onChange={event => setSettings({ ...settings, width: Number(event.target.value) })}>{[128, 192, 256].map(width => <option key={width} value={width}>{width} × {width * 3 / 4}</option>)}</select></label>
         <p className="microcopy">Rendering starts only when requested. Large iteration budgets may take a minute; cancel at any time.</p>
         <div className="precision-actions">{running
-          ? <button className="research-button secondary" type="button" onClick={stop}><Square size={13} aria-hidden="true" /> Cancel</button>
-          : <button className="research-button" type="submit"><Play size={13} aria-hidden="true" /> Render window</button>}
-          <button className="research-button secondary" type="button" onClick={exportPng} disabled={phase !== 'complete'} aria-label="Export precision render as PNG"><Download size={14} aria-hidden="true" /> PNG</button>
+          ? <button className="research-button secondary" type="button" onClick={stop}>Cancel</button>
+          : <button className="research-button" type="submit">Render window</button>}
+          <button className="research-button secondary" type="button" onClick={exportPng} disabled={phase !== 'complete'} aria-label="Export precision render as PNG">Export PNG</button>
         </div>
       </form>
       <div className="precision-image">
         <canvas ref={canvasRef} hidden={!visibleImage} aria-label="Progressively rendered high precision Mandelbrot window" role="img" />
-        {!visibleImage && <div className="precision-placeholder"><Microscope size={36} aria-hidden="true" /><span>Choose a decimal window.<br />Let the arithmetic reveal its boundary.</span></div>}
+        {!visibleImage && <div className="precision-placeholder"><span>Nothing rendered yet. Set a window, then choose Render window.</span></div>}
         <div className="precision-progress" role="progressbar" aria-label="Precision render progress" aria-valuemin={0} aria-valuemax={100} aria-valuenow={Math.round(progress * 100)}><span style={{ width: `${progress * 100}%` }} /></div>
-        <div className="precision-meta"><span role="status" aria-live="polite">{status}</span><span>{frame ? `${frame.bits} BITS · ${frame.width} × ${frame.height} · ${(elapsed / 1000).toFixed(1)}s` : 'ROUNDED FIXED POINT'}</span></div>
+        <div className="precision-meta"><span role="status" aria-live="polite">{status}</span><span>{frame ? `${frame.bits} bits · ${frame.width} × ${frame.height} · ${(elapsed / 1000).toFixed(1)} s` : 'Rounded fixed point'}</span></div>
         {frame && <div className="precision-meta"><span>≈{frame.decimalDigits} decimal digits of arithmetic resolution</span><span>Width 10⁻{frame.zoomExponent}</span></div>}
         {escapeCount !== null && <div className="precision-meta"><span>{escapeCount.toLocaleString()} of {(frame!.width * frame!.height).toLocaleString()} pixels escaped by {frame!.iterations} iterations</span></div>}
         {error && <p className="precision-error" role="alert">{error}</p>}

@@ -32,8 +32,8 @@ export class DeepRenderer {
         const previous=this.hasImage?document.createElement('canvas'):null;
         if(previous){previous.width=this.canvas.width;previous.height=this.canvas.height;previous.getContext('2d')?.drawImage(this.canvas,0,0);}
         this.canvas.width=width;this.canvas.height=height;
-        if(display){display.fillStyle='#080c12';display.fillRect(0,0,width,height);if(previous)display.drawImage(previous,0,0,width,height);}
-      }else if(!this.hasImage&&display){display.fillStyle='#080c12';display.fillRect(0,0,width,height);}
+        if(display){display.fillStyle='#0a0a09';display.fillRect(0,0,width,height);if(previous)display.drawImage(previous,0,0,width,height);}
+      }else if(!this.hasImage&&display){display.fillStyle='#0a0a09';display.fillRect(0,0,width,height);}
       this.canvas.hidden=false;
     }
     const frame:VolumeFrame={state,width,height,preview};

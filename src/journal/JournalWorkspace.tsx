@@ -1,27 +1,14 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
 import {
-  ArrowDownToLine,
-  ArrowLeft,
   ArrowUpRight,
-  BookOpen,
   Check,
-  CheckSquare,
   ChevronRight,
-  Clock3,
   Copy,
-  Download,
   GitBranch,
   LayoutGrid,
   List,
-  LoaderCircle,
-  Plus,
   Search,
-  Share2,
-  Square,
-  Tag,
   Trash2,
-  Undo2,
-  Upload,
   X,
 } from 'lucide-react';
 import { createSnapshotURL, journalCSV, MAX_IMPORT_BYTES, serializeJournal } from './codec';
@@ -85,7 +72,6 @@ function Thumbnail({ entry, className = '' }: { entry: JournalEntry; className?:
         />
       ) : (
         <div className="journal-preview-empty">
-          <BookOpen size={26} strokeWidth={1.2} />
           <span>{entry.payload.experiment ? 'Experiment record' : 'Saved coordinates'}</span>
           <code>{isPlane(entry) ? `Δ ${entry.payload.exact.span}` : familyName(entry)}</code>
         </div>
@@ -194,7 +180,7 @@ function DetailPanel({
   return (
     <aside className="journal-detail" aria-label="Observation details">
       <div className="journal-detail-heading">
-        <span>OBSERVATION</span>
+        <span>Entry</span>
         <button
           className="journal-icon-button"
           onClick={onClose}
@@ -214,23 +200,23 @@ function DetailPanel({
           <input value={title} onChange={(event) => setTitle(event.target.value)} maxLength={160} />
         </label>
         <label className="journal-field">
-          <span>Field notes</span>
+          <span>Notes</span>
           <textarea
             value={notes}
             onChange={(event) => setNotes(event.target.value)}
             maxLength={40_000}
             rows={5}
-            placeholder="What did you notice? What would you explore next?"
+            placeholder="What you observed, and what to check next"
           />
         </label>
         <label className="journal-field">
           <span>
-            Tags <small>separate with commas</small>
+            Tags <small>comma-separated</small>
           </span>
           <input
             value={tags}
             onChange={(event) => setTags(event.target.value)}
-            placeholder="spirals, boundary, follow-up"
+            placeholder="boundary, period 3"
           />
         </label>
         {dirty && (
@@ -239,8 +225,7 @@ function DetailPanel({
             onClick={() => void save()}
             disabled={busy || !title.trim()}
           >
-            {busy ? <LoaderCircle size={15} className="journal-spin" /> : <Check size={15} />} Save
-            changes
+            {busy ? 'Saving…' : 'Save changes'}
           </button>
         )}
         <div className="journal-detail-actions">
@@ -248,14 +233,14 @@ function DetailPanel({
             className="journal-button journal-primary"
             onClick={() => onRestore(entry.payload, entry)}
           >
-            <ArrowUpRight size={16} /> Open in explorer
+            Open in Explore
           </button>
           <button className="journal-button" onClick={() => void branch()} disabled={busy}>
-            <GitBranch size={15} /> Branch
+            Branch from this entry
           </button>
         </div>
         <section className="journal-coordinate-section">
-          <h3>REPRODUCIBLE VIEW</h3>
+          <h3>View settings</h3>
           {isPlane(entry) ? (
             <>
               <Coordinate label="Real" value={entry.payload.exact.center.re} notify={notify} />
@@ -307,9 +292,7 @@ function DetailPanel({
         </section>
         {(entry.parentId || children.length > 0) && (
           <section className="journal-lineage">
-            <h3>
-              <GitBranch size={14} /> BRANCH HISTORY
-            </h3>
+            <h3>Branch history</h3>
             {entry.parentId && (
               <div>
                 <span className="journal-lineage-line" />
@@ -349,7 +332,7 @@ function DetailPanel({
                     )
                   }
                 >
-                  <Download size={14} /> Export manifest
+                  Export manifest
                 </button>
               </>
             )}
@@ -357,8 +340,7 @@ function DetailPanel({
         )}
         <div className="journal-detail-footer">
           <button className="journal-button" onClick={() => void share()}>
-            {copied ? <Check size={14} /> : <Share2 size={14} />}{' '}
-            {copied ? 'Copied' : 'Copy view link'}
+            {copied ? 'Link copied' : 'Copy view link'}
           </button>
           <button
             className="journal-icon-button journal-delete"
@@ -451,10 +433,7 @@ function Comparison({
       aria-labelledby="journal-compare-title"
     >
       <div className="journal-comparison-top">
-        <div>
-          <span className="journal-eyebrow">SIDE BY SIDE</span>
-          <h2 id="journal-compare-title">Two moments of discovery.</h2>
-        </div>
+        <h2 id="journal-compare-title">Compare two entries</h2>
         <button className="journal-icon-button" onClick={onClose} aria-label="Close comparison">
           <X size={20} />
         </button>
@@ -464,7 +443,7 @@ function Comparison({
           <section key={entry.id}>
             <Thumbnail entry={entry} />
             <h3>{entry.title}</h3>
-            <p>{entry.notes || 'No field notes yet.'}</p>
+            <p>{entry.notes || 'No notes.'}</p>
             <button
               className="journal-button"
               onClick={() => {
@@ -472,7 +451,7 @@ function Comparison({
                 onRestore(entry.payload, entry);
               }}
             >
-              <ArrowUpRight size={14} /> Explore this view
+              Open in Explore
             </button>
           </section>
         ))}
@@ -481,7 +460,7 @@ function Comparison({
         <table>
           <thead>
             <tr>
-              <th>Settings</th>
+              <th>Setting</th>
               <th>{left.title}</th>
               <th>{right.title}</th>
             </tr>
@@ -502,7 +481,7 @@ function Comparison({
         </table>
       </div>
       <p className="journal-compare-note">
-        Highlighted rows show different settings. Image resemblance alone does not establish
+        Marked rows differ between the two entries. Resemblance between images does not establish
         mathematical equivalence.
       </p>
     </dialog>
@@ -635,11 +614,11 @@ export function JournalWorkspace({ onRestore, onNew, onBranch }: JournalWorkspac
     <div className="journal-workspace">
       <header className="journal-header">
         <div>
-          <span className="journal-eyebrow">
-            <BookOpen size={13} /> YOUR EXPLORATION JOURNAL
-          </span>
-          <h1>Keep your discoveries.</h1>
-          <p>A place for the views, questions, and unexpected turns worth returning to.</p>
+          <h1>Journal</h1>
+          <p>
+            Saved views and experiments with their exact settings and your notes. Entries can be
+            reopened, branched and compared.
+          </p>
         </div>
         <div className="journal-header-actions">
           <button
@@ -647,14 +626,13 @@ export function JournalWorkspace({ onRestore, onNew, onBranch }: JournalWorkspac
             onClick={() => fileInput.current?.click()}
             disabled={importing}
           >
-            {importing ? <LoaderCircle size={15} className="journal-spin" /> : <Upload size={15} />}{' '}
-            Import
+            {importing ? 'Importing…' : 'Import'}
           </button>
           <button className="journal-button" onClick={exportAll} disabled={!entries.length}>
-            <Download size={15} /> Export
+            Export
           </button>
           <button className="journal-button journal-primary" onClick={onNew}>
-            <Plus size={16} /> New observation
+            New entry
           </button>
         </div>
       </header>
@@ -668,26 +646,25 @@ export function JournalWorkspace({ onRestore, onNew, onBranch }: JournalWorkspac
       />
       <div className="journal-summary">
         <div>
-          <strong>{entries.length.toString().padStart(2, '0')}</strong>
-          <span>{entries.length === 1 ? 'observation' : 'observations'}</span>
+          <strong>{entries.length}</strong>
+          <span>{entries.length === 1 ? 'entry' : 'entries'}</span>
         </div>
         <div>
-          <strong>{families.toString().padStart(2, '0')}</strong>
-          <span>{families === 1 ? 'fractal family' : 'fractal families'}</span>
+          <strong>{families}</strong>
+          <span>{families === 1 ? 'family' : 'families'}</span>
         </div>
         <div>
-          <strong>{branchCount.toString().padStart(2, '0')}</strong>
-          <span>{branchCount === 1 ? 'branch explored' : 'branches explored'}</span>
+          <strong>{branchCount}</strong>
+          <span>{branchCount === 1 ? 'branch' : 'branches'}</span>
         </div>
         <span className={`journal-storage journal-storage-${mode}`}>
-          <span />{' '}
           {mode === 'indexeddb'
-            ? 'Saved in this browser'
+            ? 'Stored in this browser'
             : mode === 'local'
-              ? 'Local storage'
+              ? 'Stored in local storage'
               : mode === 'memory'
-                ? 'Temporary session'
-                : 'Opening journal'}
+                ? 'Not stored: this session only'
+                : 'Opening the journal…'}
         </span>
       </div>
       {error && (
@@ -705,9 +682,10 @@ export function JournalWorkspace({ onRestore, onNew, onBranch }: JournalWorkspac
       {entries.length > 0 && (
         <div className="journal-toolbar">
           <label className="journal-search">
-            <Search size={16} />
+            <Search size={14} />
             <input
-              placeholder="Search observations, notes, coordinates…"
+              type="search"
+              placeholder="Title, note or coordinate"
               value={query}
               onChange={(event) => setQuery(event.target.value)}
               aria-label="Search journal"
@@ -723,7 +701,6 @@ export function JournalWorkspace({ onRestore, onNew, onBranch }: JournalWorkspac
             )}
           </label>
           <label className="journal-filter">
-            <Tag size={14} />
             <select
               value={tag}
               onChange={(event) => setTag(event.target.value)}
@@ -753,52 +730,39 @@ export function JournalWorkspace({ onRestore, onNew, onBranch }: JournalWorkspac
               aria-pressed={layout === 'grid'}
               onClick={() => setLayout('grid')}
             >
-              <LayoutGrid size={16} />
+              <LayoutGrid size={15} />
             </button>
             <button
               aria-label="List view"
               aria-pressed={layout === 'list'}
               onClick={() => setLayout('list')}
             >
-              <List size={17} />
+              <List size={15} />
             </button>
             <button
               aria-label="Branch history"
               aria-pressed={layout === 'branches'}
               onClick={() => setLayout('branches')}
             >
-              <GitBranch size={16} />
+              <GitBranch size={15} />
             </button>
           </div>
         </div>
       )}
       {!ready ? (
         <div className="journal-empty">
-          <LoaderCircle size={24} className="journal-spin" />
-          <h2>Opening your journal…</h2>
+          <h2>Opening the journal…</h2>
         </div>
       ) : !entries.length ? (
         <div className="journal-empty">
-          <div className="journal-empty-icon">
-            <BookOpen size={36} strokeWidth={1.1} />
-            <span>01</span>
-          </div>
-          <span className="journal-eyebrow">EVERY EXPLORATION STARTS SOMEWHERE</span>
-          <h2>
-            Find something you
-            <br />
-            want to remember.
-          </h2>
+          <h2>The journal is empty</h2>
           <p>
-            Save a view from the explorer. Its exact coordinates and settings stay together with
-            your notes, so you can always find your way back.
+            Save a view from Explore. Its exact coordinates and settings are stored with your notes,
+            so the view can be reopened and branched later.
           </p>
           <button className="journal-button journal-primary" onClick={onNew}>
-            Begin exploring <ArrowUpRight size={16} />
+            Save the current view
           </button>
-          <div className="journal-empty-footnote">
-            <GitBranch size={14} /> Follow a question. Save a branch. See where it leads.
-          </div>
         </div>
       ) : (
         <div className={`journal-content ${selected ? 'journal-has-detail' : ''}`}>
@@ -806,8 +770,8 @@ export function JournalWorkspace({ onRestore, onNew, onBranch }: JournalWorkspac
             <div className="journal-results-label">
               <span>
                 {visible.length === entries.length
-                  ? 'ALL OBSERVATIONS'
-                  : `${visible.length} MATCHING OBSERVATIONS`}
+                  ? `${entries.length} ${entries.length === 1 ? 'entry' : 'entries'}`
+                  : `${visible.length} of ${entries.length} entries`}
               </span>
               <button
                 onClick={() => {
@@ -820,14 +784,13 @@ export function JournalWorkspace({ onRestore, onNew, onBranch }: JournalWorkspac
                 }}
                 title="Export visible observations as a spreadsheet"
               >
-                <ArrowDownToLine size={12} /> CSV
+                Export CSV
               </button>
             </div>
             {!visible.length ? (
               <div className="journal-no-results">
-                <Search size={24} />
-                <h2>No observations found.</h2>
-                <p>Try another phrase or tag.</p>
+                <h2>No entry matches</h2>
+                <p>Nothing with this tag contains “{query}”.</p>
                 <button
                   className="journal-button"
                   onClick={() => {
@@ -835,7 +798,7 @@ export function JournalWorkspace({ onRestore, onNew, onBranch }: JournalWorkspac
                     setTag('all');
                   }}
                 >
-                  Clear filters
+                  Clear the filter
                 </button>
               </div>
             ) : (
@@ -872,11 +835,7 @@ export function JournalWorkspace({ onRestore, onNew, onBranch }: JournalWorkspac
                               : `Power ${entry.payload.engine.power} · ${entry.payload.engine.iterations} iterations`}
                         </p>
                         <div className="journal-card-tags">
-                          {entry.parentId && (
-                            <span className="journal-branch-tag">
-                              <GitBranch size={10} /> Branch
-                            </span>
-                          )}
+                          {entry.parentId && <span className="journal-branch-tag">branch</span>}
                           {entry.tags.slice(0, 3).map((value) => (
                             <span key={value}>{value}</span>
                           ))}
@@ -889,18 +848,16 @@ export function JournalWorkspace({ onRestore, onNew, onBranch }: JournalWorkspac
                       aria-label={`${comparisonIds.includes(entry.id) ? 'Deselect' : 'Select'} ${entry.title} for comparison`}
                       aria-pressed={comparisonIds.includes(entry.id)}
                     >
-                      {comparisonIds.includes(entry.id) ? (
-                        <CheckSquare size={16} />
-                      ) : (
-                        <Square size={16} />
-                      )}
+                      <i />
+                      Compare
                     </button>
                     <button
                       className="journal-card-open"
                       onClick={() => onRestore(entry.payload, entry)}
                       aria-label={`Explore ${entry.title}`}
                     >
-                      <ArrowUpRight size={16} />
+                      Open
+                      <ArrowUpRight size={12} />
                     </button>
                   </article>
                 ))}
@@ -917,7 +874,7 @@ export function JournalWorkspace({ onRestore, onNew, onBranch }: JournalWorkspac
               onDeleted={(entry) => {
                 setDeleted(entry);
                 setComparisonIds((current) => current.filter((id) => id !== entry.id));
-                notify('Observation removed. You can undo this deletion.');
+                notify('Entry removed.');
               }}
               onBranch={onBranch}
               notify={notify}
@@ -933,7 +890,7 @@ export function JournalWorkspace({ onRestore, onNew, onBranch }: JournalWorkspac
             disabled={comparisonEntries.length !== 2}
             onClick={() => setComparing(true)}
           >
-            Compare observations <ArrowUpRight size={14} />
+            Compare the two entries
           </button>
           <button
             className="journal-icon-button"
@@ -962,7 +919,7 @@ export function JournalWorkspace({ onRestore, onNew, onBranch }: JournalWorkspac
                 )
             }
           >
-            <Undo2 size={14} /> Undo
+            Undo
           </button>
           <button
             className="journal-icon-button"
@@ -978,7 +935,6 @@ export function JournalWorkspace({ onRestore, onNew, onBranch }: JournalWorkspac
           className={`journal-toast ${notice.error ? 'journal-toast-error' : ''}`}
           role={notice.error ? 'alert' : 'status'}
         >
-          {notice.error ? <X size={15} /> : <Check size={15} />}
           <span>{notice.message}</span>
         </div>
       )}
@@ -991,9 +947,9 @@ export function JournalWorkspace({ onRestore, onNew, onBranch }: JournalWorkspac
       )}
       <footer className="journal-footer">
         <span>
-          <Clock3 size={12} /> Every saved view is a reproducible starting point.
+          Entries live in this browser only. Export the journal to back it up or move it to another
+          device.
         </span>
-        <span>Local to this browser · Export to back up or move between devices.</span>
       </footer>
     </div>
   );

@@ -423,10 +423,10 @@ export function sampleColor(
   escapeIteration: number | null,
   budget: number,
 ): [number, number, number] {
-  if (disposition === 'unresolved') return [74, 75, 112];
+  if (disposition === 'unresolved') return [78, 77, 70];
   if (disposition === 'escaped') {
     const v = Math.min(1, Math.log1p(escapeIteration ?? 0) / Math.log1p(budget));
-    return [12 + v * 26, 22 + v * 37, 37 + v * 58].map(Math.round) as [number, number, number];
+    return [12 + v * 30, 12 + v * 29, 11 + v * 27].map(Math.round) as [number, number, number];
   }
   const palette = [
     [117, 199, 183],

@@ -203,7 +203,7 @@ export const PrecisionViewport = forwardRef<PrecisionViewportHandle, PrecisionVi
         canvas.height = size.height;
         const context = canvas.getContext('2d', { alpha: false });
         if (context) {
-          context.fillStyle = '#05090f';
+          context.fillStyle = '#0a0a09';
           context.fillRect(0, 0, size.width, size.height);
           context.drawImage(previous, 0, 0, size.width, size.height);
         }
@@ -271,7 +271,7 @@ export const PrecisionViewport = forwardRef<PrecisionViewportHandle, PrecisionVi
           if (previous.width !== canvas.width) previous.width = canvas.width;
           if (previous.height !== canvas.height) previous.height = canvas.height;
           previous.getContext('2d')?.drawImage(canvas, 0, 0);
-          context.fillStyle = '#05090f';
+          context.fillStyle = '#0a0a09';
           context.fillRect(0, 0, canvas.width, canvas.height);
           context.drawImage(
             previous,
@@ -318,7 +318,7 @@ export const PrecisionViewport = forwardRef<PrecisionViewportHandle, PrecisionVi
         style={{
           touchAction: 'none',
           cursor: activeGesture.current ? 'grabbing' : 'grab',
-          background: '#05090f',
+          background: '#0a0a09',
         }}
         aria-label={`Interactive ${view.family} fractal. Drag to pan. Scroll or pinch to zoom. Arrow keys pan, plus and minus zoom, Home resets. Shift-click a point to inspect it.`}
         aria-keyshortcuts="ArrowUp ArrowDown ArrowLeft ArrowRight + - Home"
@@ -359,7 +359,7 @@ export const PrecisionViewport = forwardRef<PrecisionViewportHandle, PrecisionVi
           change(panExactView(zoomed, dx / rect.height, dy / rect.height));
           const context = canvas.getContext('2d', { alpha: false });
           if (context) {
-            context.fillStyle = '#05090f';
+            context.fillStyle = '#0a0a09';
             context.fillRect(0, 0, canvas.width, canvas.height);
             context.drawImage(
               gesture.snapshot,

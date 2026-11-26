@@ -1,49 +1,18 @@
 import { lazy, Suspense, useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import {
   ArrowDownToLine,
-  ArrowLeft,
-  ArrowRight,
-  ArrowUpRight,
-  Bookmark,
-  BookOpen,
-  Box,
-  Check,
-  ChevronDown,
-  ChevronLeft,
-  ChevronRight,
-  CircleHelp,
-  Compass,
-  Copy,
-  Crosshair,
+  Columns2,
   Expand,
-  ExternalLink,
-  FlaskConical,
-  Focus,
-  GitBranch,
-  Globe2,
-  History,
-  Keyboard,
-  Layers3,
   Link2,
-  Maximize2,
   Minus,
-  MoreHorizontal,
-  Network,
-  PanelLeftClose,
-  PanelRightClose,
+  PanelLeft,
   Pause,
   Play,
   Plus,
   Redo2,
   RotateCcw,
-  Route,
   Search,
-  Settings2,
-  SlidersHorizontal,
-  Sparkles,
   Undo2,
-  Upload,
-  Video,
   X,
 } from 'lucide-react';
 import type { EngineState, EngineStats } from './types';
@@ -63,9 +32,15 @@ import {
 } from './journal';
 import type { JournalEntry, JournalPayload } from './journal';
 import { useData } from './research/common';
-import { DESTINATIONS, STARTING_DESTINATION, TOURS } from './studio/destinations';
+import {
+  CATALOG,
+  DESTINATIONS,
+  STARTING_DESTINATION,
+  TOURS,
+  catalogNumber,
+} from './studio/destinations';
 import type { Destination } from './studio/destinations';
-import { Dialog, IconButton, Loading, Logo } from './studio/UI';
+import { Dialog, Formula, IconButton, Loading, MOD, Wordmark } from './studio/UI';
 import { Inspector } from './studio/Inspector';
 import { AtlasWorkspace } from './studio/AtlasWorkspace';
 import { CommandPalette } from './studio/CommandPalette';
@@ -93,14 +68,17 @@ type NavigationIntent = {
   replay?: unknown;
 };
 type Modal = 'save' | 'export' | 'command' | 'guide' | 'help' | 'about' | 'motion' | null;
-const NAV: { id: StudioWorkspace; label: string; Icon: typeof Compass }[] = [
-  { id: 'explore', label: 'Explore', Icon: Compass },
-  { id: 'atlas', label: 'Atlas', Icon: Globe2 },
-  { id: 'laboratory', label: 'Laboratory', Icon: FlaskConical },
-  { id: 'journal', label: 'Journal', Icon: Bookmark },
-  { id: 'research', label: 'Research', Icon: BookOpen },
+const NAV: { id: StudioWorkspace; label: string }[] = [
+  { id: 'explore', label: 'Explore' },
+  { id: 'atlas', label: 'Atlas' },
+  { id: 'laboratory', label: 'Laboratory' },
+  { id: 'journal', label: 'Journal' },
+  { id: 'research', label: 'Research' },
 ];
 const SESSION_KEY = 'loops.observatory.session.v2';
+/** A long exact decimal, shortened for a status readout; the full string stays in the title. */
+const brief = (value: string, digits = 18) =>
+  value.length > digits ? `${value.slice(0, digits)}…` : value;
 function destinationForView(
   value: Pick<JournalPayload, 'engine' | 'exact'>,
   title?: string,
@@ -429,7 +407,7 @@ export default function App() {
     const journey = TOURS.find((t) => t.id === tour.id)!;
     if (step < 0 || step >= journey.stops.length) {
       setTour(null);
-      notify('Journey complete. Where will you go next?');
+      notify('Tour finished.');
       return;
     }
     choose(DESTINATIONS.find((d) => d.id === journey.stops[step])!);
@@ -478,7 +456,7 @@ export default function App() {
       notify('Reproducible view link copied.');
     } catch {
       setModal('export');
-      notify('Open the Share link tab to copy your view.');
+      notify('Copy the link from the Share link tab.');
     }
   }, [payload, notify]);
   const fullscreen = async () => {
@@ -679,6 +657,16 @@ export default function App() {
   const displayStats = plane && precisionStats ? precisionStats : stats;
   const activeTour = tour ? TOURS.find((t) => t.id === tour.id) : null;
   const selectedPoint: [number, number] = [Number(exact.julia.re), Number(exact.julia.im)];
+  const plateNumber = catalogNumber(destination);
+  const toggleOrbit = () =>
+    changeEngine({
+      autoRotate: !engine.autoRotate,
+      camera: {
+        yaw: engine.camera.yaw,
+        pitch: engine.camera.pitch,
+        distance: engine.camera.distance,
+      },
+    });
   return (
     <div
       className={`observatory ${focus ? 'ob-focus' : ''} ${workspace !== 'explore' ? 'ob-reading' : ''}`}
@@ -695,20 +683,16 @@ export default function App() {
       </a>
       <header className="ob-header">
         <button className="ob-brand" aria-label="LOOPS home" onClick={() => navigate('explore')}>
-          <Logo />
-          <span>
-            LOOPS<small>AN ATLAS OF INFINITY</small>
-          </span>
+          <Wordmark />
         </button>
         <nav aria-label="Main navigation">
-          {NAV.map(({ id, label, Icon }) => (
+          {NAV.map(({ id, label }) => (
             <button
               key={id}
               className={workspace === id ? 'active' : ''}
               onClick={() => navigate(id)}
               aria-current={workspace === id ? 'page' : undefined}
             >
-              <Icon size={15} />
               <span>{label}</span>
               {id === 'journal' && journal.entries.length > 0 && <i>{journal.entries.length}</i>}
             </button>
@@ -720,81 +704,37 @@ export default function App() {
             onClick={() => setModal('command')}
             aria-label="Search places and commands"
           >
-            <Search size={16} />
+            <Search size={14} />
             <span>Search</span>
-            <kbd>⌘ K</kbd>
+            <kbd>{MOD} K</kbd>
           </button>
-          <span className="ob-header-divider" />
           <IconButton label="Export image or session" onClick={() => setModal('export')}>
-            <ArrowDownToLine size={17} />
+            <ArrowDownToLine size={16} />
           </IconButton>
-          <button className="ob-button ob-save-button" onClick={openSave}>
-            <Plus size={15} />
-            <span>Save view</span>
+          <button className="ob-button ob-record ob-save-button" onClick={openSave}>
+            Save view
           </button>
         </div>
       </header>
       <main id="main-workspace" className="ob-main" tabIndex={-1}>
         {workspace === 'explore' ? (
           <>
-            <div className="ob-contextbar">
-              <div>
-                <button
-                  onClick={() => setLibraryOpen((v) => !v)}
-                  aria-label={libraryOpen ? 'Hide world library' : 'Show world library'}
-                  aria-expanded={libraryOpen}
-                >
-                  <Layers3 size={14} />
-                </button>
-                <span>EXPLORER</span>
-                <ChevronRight size={12} />
-                <span className="ob-context-active">{destination.title}</span>
-                {parentId && (
-                  <span className="ob-branch-label">
-                    <GitBranch size={12} />
-                    Branch
-                  </span>
-                )}
-              </div>
-              <div>
-                <span className="ob-live-indicator">
-                  <i />
-                  LIVE MATHEMATICS
-                </span>
-                <button onClick={() => setModal('guide')}>
-                  <BookOpen size={13} />
-                  <span>Field guide</span>
-                </button>
-                <button
-                  onClick={() => setInspectorOpen((v) => !v)}
-                  aria-label={inspectorOpen ? 'Hide inspector' : 'Show inspector'}
-                  aria-expanded={inspectorOpen}
-                >
-                  <SlidersHorizontal size={14} />
-                  <span>Inspector</span>
-                </button>
-              </div>
-            </div>
             <div
               className={`ob-explorer ${libraryOpen ? 'has-library' : ''} ${inspectorOpen ? 'has-inspector' : ''}`}
             >
               {libraryOpen && (
-                <aside className="ob-world-library" aria-label="World library">
+                <aside className="ob-world-library" aria-label="Index of destinations">
                   <div className="ob-panel-top">
-                    <span className="ob-eyebrow">WORLDS TO EXPLORE</span>
-                    <IconButton label="Close world library" onClick={() => setLibraryOpen(false)}>
-                      <PanelLeftClose size={14} />
+                    <h2>Index</h2>
+                    <IconButton label="Hide index" onClick={() => setLibraryOpen(false)}>
+                      <X size={15} />
                     </IconButton>
                   </div>
                   <div className="ob-world-list">
                     {(['Volumes', 'Complex plane', 'Research'] as const).map((category) => (
                       <section key={category}>
-                        <h2>{category}</h2>
-                        {DESTINATIONS.filter(
-                          (d) =>
-                            d.category === category &&
-                            !['coral', 'cathedral', 'deep-spiral', 'dendrite'].includes(d.id),
-                        ).map((d) => (
+                        <h3>{category}</h3>
+                        {CATALOG.filter((d) => d.category === category).map((d) => (
                           <button
                             key={d.id}
                             className={destination.id === d.id ? 'selected' : ''}
@@ -804,26 +744,30 @@ export default function App() {
                             <img src={d.image} alt="" loading="lazy" />
                             <span>
                               <strong>{d.title}</strong>
-                              <small>{d.subtitle.split(' · ')[0]}</small>
+                              <small>
+                                <b>{catalogNumber(d)}</b>
+                                {d.subtitle}
+                              </small>
                             </span>
-                            <ChevronRight size={12} />
                           </button>
                         ))}
                       </section>
                     ))}
                   </div>
                   <div className="ob-library-foot">
-                    <button className="ob-journey-entry" onClick={() => startTour('first-light')}>
-                      <Route size={17} />
-                      <span>
-                        <strong>A little guidance?</strong>
-                        <small>Take the first-light journey</small>
-                      </span>
-                      <ArrowUpRight size={15} />
-                    </button>
+                    <h3>Guided tours</h3>
+                    {TOURS.map((t) => (
+                      <button
+                        key={t.id}
+                        className="ob-journey-entry"
+                        onClick={() => startTour(t.id)}
+                      >
+                        <span>{t.title}</span>
+                        <small>{t.duration}</small>
+                      </button>
+                    ))}
                     <button className="ob-library-atlas" onClick={() => navigate('atlas')}>
-                      Discover the full atlas
-                      <ArrowRight size={14} />
+                      Open the atlas
                     </button>
                   </div>
                 </aside>
@@ -833,279 +777,237 @@ export default function App() {
                 ref={stage}
                 aria-label="Live fractal explorer"
               >
-                <div className="ob-main-viewport">
-                  {plane ? (
-                    <PrecisionViewport
-                      key={`precision-${engineRevision}`}
-                      ref={precisionViewport}
-                      view={exact}
-                      onViewChange={changeExact}
-                      onStats={setPrecisionStats}
-                      onInspect={exact.family === 'mandelbrot' ? selectParameter : undefined}
-                      onError={setRenderError}
-                      className="ob-fractal-canvas"
-                      quality={engine.quality}
-                      exposure={engine.exposure}
-                    />
-                  ) : (
-                    <FractalViewport
-                      key={`volume-${engineRevision}`}
-                      ref={viewport}
-                      state={engine}
-                      hooks={{
-                        onChange: changeEngine,
-                        onStats: setStats,
-                        onError: (message) => {
-                          if (
-                            /Using the Float64|Float64 worker is rendering|CPU Mandelbrot view is available/i.test(
-                              message,
-                            )
-                          ) {
-                            setRenderError('');
-                            notify(message);
-                          } else setRenderError(message);
-                        },
-                        onSelectParameter: (c) =>
-                          selectParameter({ re: String(c[0]), im: String(c[1]) }),
-                      }}
-                      className="ob-fractal-canvas"
-                    />
-                  )}
-                  <div className="ob-stage-vignette" />
-                  <div className="ob-stage-title">
-                    <span className="ob-eyebrow">
-                      {plane
-                        ? exact.family === 'mandelbrot'
-                          ? 'THE PARAMETER PLANE'
-                          : 'THE DYNAMICAL PLANE'
-                        : engine.scene === 'landscape'
-                          ? 'ESCAPE-TIME TOPOGRAPHY'
-                          : 'MATHEMATICS IN THREE DIMENSIONS'}{' '}
-                      {DESTINATIONS.includes(destination) && (
-                        <span>
-                          / {String(DESTINATIONS.indexOf(destination) + 1).padStart(2, '0')}
-                        </span>
-                      )}
-                    </span>
-                    <h1>
-                      {destination.title}
-                      <span>.</span>
-                    </h1>
-                    <p>{destination.subtitle}</p>
-                  </div>
-                  <div className="ob-stage-badge">
-                    <span className="ob-status-dot" />
-                    <span>{plane ? exact.family : engine.scene}</span>
-                    <ChevronDown size={12} />
-                    <button
-                      aria-label="Choose another destination"
-                      onClick={() => setLibraryOpen((v) => !v)}
-                    />
-                  </div>
-                  <div className="ob-stage-equation">
-                    <code>
-                      {plane
-                        ? 'zₙ₊₁ = zₙ² + c'
-                        : engine.scene === 'mandelbulb'
-                          ? `zₙ₊₁ = sphericalPower${engine.power}(zₙ) + c`
-                          : engine.scene === 'mandelbox'
-                            ? `zₙ₊₁ = −${engine.power} · fold(zₙ) + c`
-                            : engine.scene === 'quaternion'
-                              ? 'qₙ₊₁ = qₙ² + c,  q ∈ ℍ'
-                              : 'h(c) = log-scaled escape time'}
-                    </code>
-                    <span>
-                      {plane
-                        ? `${exact.iterations.toLocaleString()} iterations · ${viewDepth(exact) > 0 ? `10⁻${viewDepth(exact)} window scale` : 'parameter space'}`
-                        : `${engine.iterations} iterations · ${engine.camera.position ? 'free flight' : 'orbital camera'}`}
-                    </span>
-                  </div>
-                  {plane &&
-                    precisionStats &&
-                    precisionStats.phase !== 'complete' &&
-                    precisionStats.phase !== 'error' && (
-                      <div className="ob-refinement" role="status">
-                        <span>
-                          {precisionStats.phase === 'preview'
-                            ? 'Resolving preview'
-                            : precisionStats.phase === 'repairing'
-                              ? 'Refining precision'
-                              : 'Resolving detail'}
-                        </span>
-                        <progress value={precisionStats.progress} max={1} />
-                        <small>{Math.round(precisionStats.progress * 100)}%</small>
-                      </div>
-                    )}
-                  <div className="ob-canvas-tools">
-                    <div>
-                      <IconButton label="Zoom in" onClick={() => zoom(0.65)}>
-                        <Plus size={18} />
-                      </IconButton>
-                      <IconButton label="Zoom out" onClick={() => zoom(1.5)}>
-                        <Minus size={18} />
-                      </IconButton>
-                      <span />
-                      <IconButton label="Reset view (R)" onClick={reset}>
-                        <RotateCcw size={16} />
-                      </IconButton>
-                    </div>
-                    <div>
-                      <IconButton
-                        label="Undo view change"
-                        onClick={viewHistory.undo}
-                        disabled={!viewHistory.canUndo}
-                      >
-                        <Undo2 size={16} />
-                      </IconButton>
-                      <IconButton
-                        label="Redo view change"
-                        onClick={viewHistory.redo}
-                        disabled={!viewHistory.canRedo}
-                      >
-                        <Redo2 size={16} />
-                      </IconButton>
-                      <span />
-                      {plane ? (
-                        <IconButton
-                          label={
-                            exact.family === 'julia'
-                              ? 'Link parameter plane (L)'
-                              : 'Link Julia view (L)'
-                          }
-                          onClick={toggleLinked}
-                          active={linked}
-                        >
-                          <GitBranch size={17} />
-                        </IconButton>
-                      ) : (
-                        <IconButton
-                          label={engine.autoRotate ? 'Pause orbit' : 'Animate orbit'}
-                          onClick={() =>
-                            changeEngine({
-                              autoRotate: !engine.autoRotate,
-                              camera: {
-                                yaw: engine.camera.yaw,
-                                pitch: engine.camera.pitch,
-                                distance: engine.camera.distance,
-                              },
-                            })
-                          }
-                          active={engine.autoRotate}
-                        >
-                          <Play size={16} />
-                        </IconButton>
-                      )}
-                      <IconButton label="Save view (B)" onClick={openSave}>
-                        <Bookmark size={16} />
-                      </IconButton>
-                      <IconButton label="Copy exact view link" onClick={() => void copyLink()}>
-                        <Link2 size={16} />
-                      </IconButton>
-                      <span />
-                      <IconButton
-                        label="Focus mode (F)"
-                        onClick={() => setFocus((v) => !v)}
-                        active={focus}
-                      >
-                        <Expand size={17} />
-                      </IconButton>
-                    </div>
-                  </div>
-                  <div className="ob-interaction-hint">
-                    <span>{plane ? 'Drag to pan' : 'Drag to orbit'}</span>
-                    <i />
-                    <span>Scroll to explore</span>
-                    <i />
-                    <span>
-                      {plane
-                        ? exact.family === 'mandelbrot'
-                          ? 'Shift-click to link a Julia set'
-                          : 'L · link the parameter plane'
-                        : 'W A S D · fly'}
-                    </span>
-                  </div>
-                  <div className="ob-axis" aria-hidden="true">
-                    <i />
-                    <span>y</span>
-                    <b>x</b>
-                    <em>z</em>
-                  </div>
-                  {renderError && (
-                    <div className="ob-render-error" role="alert">
-                      <h3>The renderer needs a moment.</h3>
-                      <p>{renderError}</p>
+                <div className="ob-platebar">
+                  <div className="ob-plate-caption">
+                    {!libraryOpen && (
                       <button
-                        className="ob-button"
+                        className="ob-bar-button"
+                        aria-label="Show index"
+                        aria-expanded={false}
                         onClick={() => {
-                          setRenderError('');
-                          setEngineRevision((n) => n + 1);
+                          setLibraryOpen(true);
+                          if (innerWidth < 960) setInspectorOpen(false);
                         }}
                       >
-                        Restart renderer
-                        <RotateCcw size={14} />
+                        <PanelLeft size={15} />
+                        <span>Index</span>
                       </button>
-                      <button
-                        className="ob-button ob-subtle"
-                        onClick={() => choose(DESTINATIONS.find((d) => d.id === 'mandelbrot')!)}
+                    )}
+                    {plateNumber && <span className="ob-plate-no">{plateNumber}</span>}
+                    <h1 className="ob-context-active">{destination.title}</h1>
+                    <span className="ob-plate-kind">{destination.subtitle}</span>
+                    <Formula scene={plane ? exact.family : engine.scene} power={engine.power} />
+                    {parentId && <span className="ob-branch-label">branch</span>}
+                  </div>
+                  <div className="ob-canvas-tools" role="toolbar" aria-label="View tools">
+                    <IconButton label="Zoom in" onClick={() => zoom(0.65)}>
+                      <Plus size={16} />
+                    </IconButton>
+                    <IconButton label="Zoom out" onClick={() => zoom(1.5)}>
+                      <Minus size={16} />
+                    </IconButton>
+                    <IconButton label="Reset view (R)" onClick={reset}>
+                      <RotateCcw size={15} />
+                    </IconButton>
+                    <span />
+                    <IconButton
+                      label="Undo view change"
+                      onClick={viewHistory.undo}
+                      disabled={!viewHistory.canUndo}
+                    >
+                      <Undo2 size={15} />
+                    </IconButton>
+                    <IconButton
+                      label="Redo view change"
+                      onClick={viewHistory.redo}
+                      disabled={!viewHistory.canRedo}
+                    >
+                      <Redo2 size={15} />
+                    </IconButton>
+                    <span />
+                    {plane ? (
+                      <IconButton
+                        label={
+                          exact.family === 'julia'
+                            ? 'Link parameter plane (L)'
+                            : 'Link Julia view (L)'
+                        }
+                        onClick={toggleLinked}
+                        active={linked}
                       >
-                        Open the complex plane
+                        <Columns2 size={15} />
+                      </IconButton>
+                    ) : (
+                      <IconButton
+                        label={engine.autoRotate ? 'Pause orbit' : 'Animate orbit'}
+                        onClick={toggleOrbit}
+                        active={engine.autoRotate}
+                      >
+                        {engine.autoRotate ? <Pause size={15} /> : <Play size={15} />}
+                      </IconButton>
+                    )}
+                    <IconButton label="Copy exact view link" onClick={() => void copyLink()}>
+                      <Link2 size={15} />
+                    </IconButton>
+                    <IconButton
+                      label="Focus mode (F)"
+                      onClick={() => setFocus((v) => !v)}
+                      active={focus}
+                    >
+                      <Expand size={15} />
+                    </IconButton>
+                  </div>
+                  <div className="ob-plate-panels">
+                    <button className="ob-bar-button" onClick={() => setModal('guide')}>
+                      Field guide
+                    </button>
+                    {!inspectorOpen && (
+                      <button
+                        className="ob-bar-button"
+                        aria-label="Show inspector"
+                        aria-expanded={false}
+                        onClick={() => {
+                          setInspectorOpen(true);
+                          if (innerWidth < 960) setLibraryOpen(false);
+                        }}
+                      >
+                        Inspector
                       </button>
+                    )}
+                  </div>
+                </div>
+                <div className="ob-plates">
+                  <div className="ob-main-viewport">
+                    {plane ? (
+                      <PrecisionViewport
+                        key={`precision-${engineRevision}`}
+                        ref={precisionViewport}
+                        view={exact}
+                        onViewChange={changeExact}
+                        onStats={setPrecisionStats}
+                        onInspect={exact.family === 'mandelbrot' ? selectParameter : undefined}
+                        onError={setRenderError}
+                        className="ob-fractal-canvas"
+                        quality={engine.quality}
+                        exposure={engine.exposure}
+                      />
+                    ) : (
+                      <FractalViewport
+                        key={`volume-${engineRevision}`}
+                        ref={viewport}
+                        state={engine}
+                        hooks={{
+                          onChange: changeEngine,
+                          onStats: setStats,
+                          onError: (message) => {
+                            if (
+                              /Using the Float64|Float64 worker is rendering|CPU Mandelbrot view is available/i.test(
+                                message,
+                              )
+                            ) {
+                              setRenderError('');
+                              notify(message);
+                            } else setRenderError(message);
+                          },
+                          onSelectParameter: (c) =>
+                            selectParameter({ re: String(c[0]), im: String(c[1]) }),
+                        }}
+                        className="ob-fractal-canvas"
+                      />
+                    )}
+                    {plane &&
+                      precisionStats &&
+                      precisionStats.phase !== 'complete' &&
+                      precisionStats.phase !== 'error' && (
+                        <div className="ob-refinement" role="status">
+                          <progress value={precisionStats.progress} max={1} />
+                          <span>
+                            {precisionStats.phase === 'preview'
+                              ? 'Resolving preview'
+                              : precisionStats.phase === 'repairing'
+                                ? 'Refining precision'
+                                : 'Resolving detail'}
+                          </span>
+                          <small>{Math.round(precisionStats.progress * 100)}%</small>
+                        </div>
+                      )}
+                    {renderError && (
+                      <div className="ob-render-error" role="alert">
+                        <h3>Rendering stopped</h3>
+                        <p>{renderError}</p>
+                        <div>
+                          <button
+                            className="ob-button ob-primary"
+                            onClick={() => {
+                              setRenderError('');
+                              setEngineRevision((n) => n + 1);
+                            }}
+                          >
+                            Restart renderer
+                          </button>
+                          <button
+                            className="ob-button"
+                            onClick={() => choose(DESTINATIONS.find((d) => d.id === 'mandelbrot')!)}
+                          >
+                            Open the Mandelbrot plane
+                          </button>
+                        </div>
+                      </div>
+                    )}
+                  </div>
+                  {linked && plane && (
+                    <div className="ob-linked-viewport">
+                      <PrecisionViewport
+                        view={{ ...linkedView, julia: exact.julia, palette: exact.palette }}
+                        onViewChange={setLinkedView}
+                        quality="balanced"
+                        exposure={engine.exposure}
+                        onError={(message) => notify(message)}
+                        className="ob-fractal-canvas"
+                      />
+                      <div className="ob-linked-header">
+                        <h2>Julia set</h2>
+                        <span className="ob-linked-parameter">
+                          <span className="math">
+                            <i>c</i> =
+                          </span>{' '}
+                          <code>
+                            {Number(exact.julia.re).toPrecision(7)}{' '}
+                            {Number(exact.julia.im) < 0 ? '−' : '+'}{' '}
+                            {Math.abs(Number(exact.julia.im)).toPrecision(7)}i
+                          </code>
+                        </span>
+                        <button
+                          className="ob-bar-button"
+                          aria-label="Reset linked Julia view"
+                          onClick={() => {
+                            setLinkedView((v) => ({
+                              ...v,
+                              center: { re: '0', im: '0' },
+                              span: '3.2',
+                            }));
+                          }}
+                        >
+                          Reset
+                        </button>
+                        <button
+                          className="ob-bar-button ob-linked-lab"
+                          onClick={() => navigate('laboratory', { instrument: 'orbit' })}
+                        >
+                          Orbit in laboratory
+                        </button>
+                        <IconButton label="Close linked view" onClick={() => setLinked(false)}>
+                          <X size={15} />
+                        </IconButton>
+                      </div>
                     </div>
                   )}
                 </div>
-                {linked && plane && (
-                  <div className="ob-linked-viewport">
-                    <PrecisionViewport
-                      view={{ ...linkedView, julia: exact.julia, palette: exact.palette }}
-                      onViewChange={setLinkedView}
-                      quality="balanced"
-                      exposure={engine.exposure}
-                      onError={(message) => notify(message)}
-                      className="ob-fractal-canvas"
-                    />
-                    <div className="ob-linked-header">
-                      <div>
-                        <span className="ob-eyebrow">LINKED DYNAMICAL PLANE</span>
-                        <h2>Its Julia set.</h2>
-                      </div>
-                      <IconButton label="Close linked view" onClick={() => setLinked(false)}>
-                        <X size={17} />
-                      </IconButton>
-                    </div>
-                    <div className="ob-linked-parameter">
-                      <span>c =</span>
-                      <code>
-                        {Number(exact.julia.re).toPrecision(7)}{' '}
-                        {Number(exact.julia.im) < 0 ? '−' : '+'}{' '}
-                        {Math.abs(Number(exact.julia.im)).toPrecision(7)}i
-                      </code>
-                      <button
-                        onClick={() => {
-                          setLinkedView((v) => ({
-                            ...v,
-                            center: { re: '0', im: '0' },
-                            span: '3.2',
-                          }));
-                        }}
-                        aria-label="Reset linked Julia view"
-                      >
-                        <RotateCcw size={14} />
-                      </button>
-                    </div>
-                    <button
-                      className="ob-linked-lab"
-                      onClick={() => navigate('laboratory', { instrument: 'orbit' })}
-                    >
-                      Examine this orbit
-                      <ArrowUpRight size={13} />
-                    </button>
-                  </div>
-                )}
                 {tour && activeTour && (
                   <div className="ob-tour-card">
                     <div className="ob-tour-top">
                       <span>
-                        {activeTour.title} / {tour.step + 1} OF {activeTour.stops.length}
+                        {activeTour.title} · stop {tour.step + 1} of {activeTour.stops.length}
                       </span>
                       <IconButton label="End journey" onClick={() => setTour(null)}>
                         <X size={14} />
@@ -1113,27 +1015,20 @@ export default function App() {
                     </div>
                     <h3>{destination.title}</h3>
                     <p>{destination.description}</p>
-                    <div className="ob-tour-dots">
-                      {activeTour.stops.map((_, i) => (
-                        <button
-                          aria-label={`Jump to stop ${i + 1}`}
-                          key={i}
-                          className={i === tour.step ? 'active' : ''}
-                          onClick={() => stepTour(i)}
-                        />
-                      ))}
-                    </div>
+                    <p className="ob-tour-question">{destination.question}</p>
                     <div className="ob-tour-actions">
-                      <IconButton
-                        label="Previous stop"
+                      <button
+                        className="ob-button"
                         onClick={() => stepTour(tour.step - 1)}
                         disabled={tour.step === 0}
                       >
-                        <ArrowLeft size={16} />
-                      </IconButton>
-                      <button className="ob-button" onClick={() => stepTour(tour.step + 1)}>
-                        {tour.step === activeTour.stops.length - 1 ? 'Keep exploring' : 'Next stop'}
-                        <ArrowRight size={15} />
+                        Previous
+                      </button>
+                      <button
+                        className="ob-button ob-primary"
+                        onClick={() => stepTour(tour.step + 1)}
+                      >
+                        {tour.step === activeTour.stops.length - 1 ? 'Finish' : 'Next stop'}
                       </button>
                     </div>
                   </div>
@@ -1153,71 +1048,55 @@ export default function App() {
                   onFly={(key) => viewport.current?.fly(key)}
                   onGuide={() => setModal('guide')}
                   onMotion={() => setModal('motion')}
+                  onClose={() => setInspectorOpen(false)}
                 />
               )}
             </div>
-            <section className="ob-discovery-strip" aria-label="Curated starting points">
-              <div className="ob-discovery-label">
-                <span className="ob-eyebrow">CURIOSITY STARTS HERE</span>
-                <strong>Another way in.</strong>
-                <button onClick={() => navigate('atlas')}>
-                  All destinations
-                  <ArrowRight size={12} />
-                </button>
-              </div>
-              <div className="ob-discovery-cards">
-                {DESTINATIONS.filter((d) =>
-                  [
-                    'eightfold',
-                    'seahorse',
-                    'folded',
-                    'airplane',
-                    'quaternion',
-                    'imaginary-gateway',
-                    'deep-spiral',
-                    'coral',
-                  ].includes(d.id),
-                ).map((d) => (
-                  <button
-                    key={d.id}
-                    className={`ob-mini-destination ${destination.id === d.id ? 'selected' : ''}`}
-                    onClick={() => choose(d)}
-                  >
-                    <img src={d.image} alt="" loading="lazy" />
-                    <span>
-                      <strong>{d.title}</strong>
-                      <small>{d.subtitle}</small>
-                    </span>
-                    <ArrowUpRight size={13} />
-                  </button>
-                ))}
-              </div>
-            </section>
             <footer className="ob-statusbar">
-              <div>
-                <span className="ob-status-dot" />
+              <div className="ob-status-render">
                 <strong>{displayStats.renderer}</strong>
                 <span>{displayStats.resolution}</span>
                 <span>{displayStats.precision}</span>
               </div>
-              <div>
+              <div className="ob-status-view">
                 {plane ? (
-                  <span>
-                    Span <code title={exact.span}>{Number(exact.span).toExponential(3)}</code>
-                  </span>
+                  <>
+                    <span title={exact.center.re}>
+                      Re <b>{brief(exact.center.re)}</b>
+                    </span>
+                    <span title={exact.center.im}>
+                      Im <b>{brief(exact.center.im)}</b>
+                    </span>
+                    <span>
+                      Span <code title={exact.span}>{Number(exact.span).toExponential(3)}</code>
+                    </span>
+                    <span>
+                      <b>{exact.iterations.toLocaleString()}</b> iterations
+                    </span>
+                  </>
                 ) : (
-                  <span>
-                    {stats.fps ? `${stats.fps} FPS` : 'Ready'}
-                    <i />
-                    Adaptive detail
-                  </span>
+                  <>
+                    <span>
+                      <b>{stats.fps ? stats.fps : '–'}</b> fps
+                    </span>
+                    <span>
+                      <b>{engine.iterations}</b> iterations
+                    </span>
+                    <span>{engine.camera.position ? 'Free flight' : 'Orbit camera'}</span>
+                  </>
                 )}
-                <button onClick={() => setModal('help')}>
-                  <Keyboard size={13} />
-                  <span>Shortcuts</span>
-                </button>
+              </div>
+              <div className="ob-status-help">
+                <span className="ob-interaction-hint">
+                  {plane
+                    ? exact.family === 'mandelbrot'
+                      ? 'Drag to pan · scroll to zoom · shift-click for a Julia set'
+                      : 'Drag to pan · scroll to zoom · L links the parameter plane'
+                    : 'Drag to orbit · scroll to approach · W A S D to fly'}
+                </span>
+                <button onClick={() => setModal('help')}>Shortcuts</button>
                 <button onClick={() => setModal('about')} aria-label="About LOOPS">
-                  <CircleHelp size={13} />
+                  About
                 </button>
               </div>
             </footer>
@@ -1232,7 +1111,7 @@ export default function App() {
             onExplore={() => navigate('explore')}
           />
         ) : workspace === 'laboratory' ? (
-          <Suspense fallback={<Loading label="Preparing the laboratory…" />}>
+          <Suspense fallback={<Loading label="Loading the laboratory…" />}>
             <Laboratory
               parameter={selectedPoint}
               replay={replay}
@@ -1247,10 +1126,10 @@ export default function App() {
               restore(p, entry);
               if (p.experiment) {
                 navigate('laboratory', { replay: p.experiment });
-                notify('Experiment restored. Run its instrument to reproduce the observation.');
+                notify('Experiment restored. Run its instrument to reproduce the result.');
               } else {
                 navigate('explore');
-                notify('Saved view restored. Continue exploring to create a new branch.');
+                notify('Saved view restored. The next save will branch from it.');
               }
             }}
             onNew={() => {
@@ -1261,10 +1140,10 @@ export default function App() {
               restore(p, entry);
               if (p.experiment) {
                 navigate('laboratory', { replay: p.experiment });
-                notify('Experiment branch ready. Adjust its settings and save the next result.');
+                notify('Branch started. Adjust the settings and save the next result.');
               } else {
                 navigate('explore');
-                notify('Branch ready. Change the view, then save the next discovery.');
+                notify('Branch started. Change the view, then save it.');
               }
             }}
           />
@@ -1273,23 +1152,22 @@ export default function App() {
             <div className="ob-workspace-subnav">
               {(
                 [
-                  { id: 'overview', label: 'Research overview', Icon: Network },
-                  { id: 'archive', label: 'Ledger & source library', Icon: BookOpen },
-                  { id: 'dynamics', label: 'Dynamics workbench', Icon: GitBranch },
-                  { id: 'precision', label: 'Precision studies', Icon: Crosshair },
+                  { id: 'overview', label: 'Overview' },
+                  { id: 'archive', label: 'Ledger & source library' },
+                  { id: 'dynamics', label: 'Dynamics workbench' },
+                  { id: 'precision', label: 'Precision studies' },
                 ] as const
-              ).map(({ id, label, Icon }) => (
+              ).map(({ id, label }) => (
                 <button
                   key={id}
                   className={researchTab === id ? 'active' : ''}
                   onClick={() => setResearchTab(id)}
                 >
-                  <Icon size={14} />
                   {label}
                 </button>
               ))}
             </div>
-            <Suspense fallback={<Loading label="Opening the research archive…" />}>
+            <Suspense fallback={<Loading label="Loading the research archive…" />}>
               {researchTab === 'overview' ? (
                 <ResearchOverview
                   onBrowse={() => setResearchTab('archive')}
@@ -1310,35 +1188,8 @@ export default function App() {
       </main>
       {focus && (
         <button className="ob-exit-focus" onClick={() => setFocus(false)}>
-          <Focus size={16} />
           Exit focus <kbd>F</kbd>
         </button>
-      )}
-      {workspace === 'explore' && !focus && (
-        <div className="ob-mobile-actions">
-          <button
-            onClick={() => {
-              setLibraryOpen((v) => !v);
-              setInspectorOpen(false);
-            }}
-          >
-            <Layers3 size={17} />
-            <span>Worlds</span>
-          </button>
-          <button
-            onClick={() => {
-              setInspectorOpen((v) => !v);
-              setLibraryOpen(false);
-            }}
-          >
-            <SlidersHorizontal size={17} />
-            <span>Controls</span>
-          </button>
-          <button onClick={openSave}>
-            <Bookmark size={17} />
-            <span>Save</span>
-          </button>
-        </div>
       )}
       <input
         type="file"
@@ -1402,16 +1253,14 @@ export default function App() {
       )}
       {modal === 'save' && (
         <Dialog
-          title="Keep this discovery."
-          kicker="YOUR EXPLORATION JOURNAL"
+          title="Save view"
           onClose={() => {
             if (!saving) setModal(null);
           }}
           className="ob-save-dialog"
         >
           <p className="ob-dialog-intro">
-            The full view is saved with exact coordinates, rendering settings, and a thumbnail. Add
-            a thought to return to.
+            The journal entry keeps the exact coordinates, the render settings and a thumbnail.
           </p>
           <form
             onSubmit={(e) => {
@@ -1420,44 +1269,45 @@ export default function App() {
             }}
           >
             <label className="ob-field">
-              <span>Give it a name</span>
+              <span>Title</span>
               <input
+                name="title"
                 autoFocus
                 required
                 maxLength={160}
                 value={saveTitle}
                 onChange={(e) => setSaveTitle(e.target.value)}
-                placeholder="A place worth remembering"
               />
             </label>
             <label className="ob-field">
               <span>
-                Field notes <small>optional</small>
+                Notes <small>optional</small>
               </span>
               <textarea
+                name="notes"
                 rows={4}
                 maxLength={20000}
                 value={saveNotes}
                 onChange={(e) => setSaveNotes(e.target.value)}
-                placeholder="What did you notice? What would you like to investigate?"
+                placeholder="What you observed, and what to check next"
               />
             </label>
             <label className="ob-field">
               <span>
-                Tags <small>separate with commas</small>
+                Tags <small>comma-separated</small>
               </span>
               <input
+                name="tags"
                 value={saveTags}
                 onChange={(e) => setSaveTags(e.target.value)}
-                placeholder="spirals, boundary, curious"
+                placeholder="boundary, period 3"
               />
             </label>
             {parentId && (
               <div className="ob-save-branch">
-                <GitBranch size={15} />
-                <span>Continues from a saved discovery</span>
-                <button type="button" onClick={() => setParentId(null)}>
-                  Start a new root
+                <span>Saved as a branch of the previous entry.</span>
+                <button type="button" className="ob-link" onClick={() => setParentId(null)}>
+                  Save as a new root
                 </button>
               </div>
             )}
@@ -1466,131 +1316,125 @@ export default function App() {
                 {saveError}
               </p>
             )}
-            <button type="submit" className="ob-button ob-primary ob-wide" disabled={saving}>
-              <Bookmark size={16} />
-              {saving ? 'Saving your discovery…' : 'Save to journal'}
+            <button type="submit" className="ob-button ob-record ob-wide" disabled={saving}>
+              {saving ? 'Saving…' : 'Save to journal'}
             </button>
             <p className="ob-micro">
-              Stored in this browser. Export your journal for a portable backup.
+              Stored in this browser only. Export the journal for a portable copy.
             </p>
           </form>
         </Dialog>
       )}
       {modal === 'help' && (
         <Dialog
-          title="Make yourself at home."
-          kicker="NAVIGATION & SHORTCUTS"
+          title="Controls and shortcuts"
           onClose={() => setModal(null)}
           className="ob-help-dialog"
         >
-          <p className="ob-dialog-intro">
-            Start with a drag and a scroll. Everything else is a way to follow your curiosity.
-          </p>
-          <div className="ob-shortcuts">
+          <dl className="ob-shortcuts">
             {[
-              ['Drag', 'Orbit in 3D / pan in 2D'],
-              ['Scroll / pinch', 'Zoom toward your pointer'],
-              ['Shift + click', 'Choose a parameter for the linked Julia view'],
-              ['W A S D · Q E', 'Fly forward, sideways, up, and down'],
-              ['+ / −', 'Zoom in / out'],
-              ['Arrow keys', 'Pan a focused complex-plane canvas'],
-              ['Space', 'Play / pause a 3D orbit'],
-              ['F', 'Enter / leave focus mode'],
-              ['R', 'Reset this destination'],
-              ['B / ⌘ S', 'Save a discovery'],
-              ['L', 'Link / unlink a Julia view'],
-              ['G', 'Open the field guide'],
-              ['⌘ K / Ctrl K', 'Search destinations, tools, and sources'],
-              ['⌘ Z / Ctrl Z', 'Undo · add Shift to redo'],
-              ['?', 'Open this guide'],
+              ['Drag', 'Orbit a volume, pan a plane'],
+              ['Scroll, pinch', 'Zoom about the pointer'],
+              ['Shift + click', 'Pick the parameter for the linked Julia set'],
+              ['W A S D, Q E', 'Fly forward, sideways, down and up'],
+              ['+ −', 'Zoom in and out'],
+              ['Arrow keys', 'Pan a focused plane, rotate a focused volume'],
+              ['Space', 'Start or pause the orbit animation'],
+              ['F', 'Focus mode'],
+              ['R', 'Reset to the starting view'],
+              [`B, ${MOD} S`, 'Save the view to the journal'],
+              ['L', 'Link or unlink the Julia view'],
+              ['G', 'Field guide'],
+              [`${MOD} K`, 'Search destinations, commands and sources'],
+              [`${MOD} Z`, 'Undo a view change; add Shift to redo'],
+              ['?', 'This list'],
             ].map(([key, meaning]) => (
               <div key={key}>
-                <kbd>{key}</kbd>
-                <span>{meaning}</span>
+                <dt>{key}</dt>
+                <dd>{meaning}</dd>
               </div>
             ))}
-          </div>
+          </dl>
           <div className="ob-help-actions">
             <button
-              className="ob-button ob-subtle"
+              className="ob-button"
               onClick={() => {
                 setModal(null);
                 fileInput.current?.click();
               }}
             >
-              <Upload size={15} />
               Import a session
             </button>
-            <button className="ob-button ob-subtle" onClick={() => void fullscreen()}>
-              <Maximize2 size={15} />
+            <button className="ob-button" onClick={() => void fullscreen()}>
               Full screen
             </button>
             <button className="ob-button" onClick={() => startTour('first-light')}>
-              <Route size={15} />
-              Take a guided journey
+              Start the First light tour
             </button>
           </div>
         </Dialog>
       )}
       {modal === 'about' && (
-        <Dialog
-          title="A small window into infinity."
-          kicker="ABOUT LOOPS"
-          onClose={() => setModal(null)}
-          className="ob-about-dialog"
-        >
-          <Logo />
+        <Dialog title="About LOOPS" onClose={() => setModal(null)} className="ob-about-dialog">
           <p className="ob-dialog-intro">
-            An observatory for mathematical exploration. Move through fractal worlds, follow an
-            orbit, preserve a discovery, and connect it to the underlying research.
+            LOOPS renders fractal volumes and the complex plane, runs numerical experiments on
+            quadratic dynamics, keeps a journal of exact views, and presents the research archive
+            those views belong to.
           </p>
-          <div className="ob-about-grid">
+          <dl className="ob-about-grid">
             <div>
-              <strong>Explore</strong>
-              <p>
-                Six mathematical families with interactive rendering and precision-aware navigation.
-              </p>
+              <dt>Explore</dt>
+              <dd>
+                Six families. GPU and Float64 rendering, with exact decimal coordinates on the plane
+                down to a span of 10⁻²⁰⁰.
+              </dd>
             </div>
             <div>
-              <strong>Investigate</strong>
-              <p>
-                Reproducible numerical experiments, exact symbolic data, and a source-linked
-                research archive.
-              </p>
+              <dt>Laboratory</dt>
+              <dd>
+                Parameter surveys, critical-orbit analysis and window comparison, each at a stated
+                precision and budget.
+              </dd>
             </div>
             <div>
-              <strong>Remember</strong>
-              <p>
-                A local journal of exact states, notes, and branches. Export and share what you
-                find.
-              </p>
+              <dt>Journal</dt>
+              <dd>
+                Saved views and experiments with notes and branches. Kept in this browser,
+                exportable as JSON.
+              </dd>
             </div>
-          </div>
+            <div>
+              <dt>Research</dt>
+              <dd>
+                The obligation ledger, the source library and the Lean formalization, pinned to one
+                revision.
+              </dd>
+            </div>
+          </dl>
           <p className="ob-micro">
-            The renderer and laboratory make numerical observations. Finite certificates and formal
-            results retain their original scope. The Mandelbrot local connectivity conjecture
-            remains open.
+            Images and experiments are numerical observations. Finite certificates and formal
+            results keep their original scope. The Mandelbrot local connectivity conjecture remains
+            open.
           </p>
-          <a
-            className="ob-button ob-subtle"
-            href="https://github.com/dovvnloading/loops-research-archive"
-            target="_blank"
-            rel="noreferrer"
-          >
-            Explore the source repository
-            <ArrowUpRight size={15} />
-          </a>
-          {manifest.data && (
-            <p className="ob-about-revision">
-              Research {manifest.data.source_commit.slice(0, 12)} ·{' '}
-              {manifest.data.archive_files.toLocaleString()} source files
-            </p>
-          )}
+          <p className="ob-about-revision">
+            {manifest.data && (
+              <>
+                Research revision <code>{manifest.data.source_commit.slice(0, 12)}</code> ·{' '}
+                {manifest.data.archive_files.toLocaleString()} source files ·{' '}
+              </>
+            )}
+            <a
+              href="https://github.com/dovvnloading/loops-research-archive"
+              target="_blank"
+              rel="noreferrer"
+            >
+              Source repository
+            </a>
+          </p>
         </Dialog>
       )}
       {notice && (
         <div className="ob-toast" role="status">
-          <Check size={16} />
           <span>{notice}</span>
           <button aria-label="Dismiss notification" onClick={() => setNotice('')}>
             <X size={14} />
