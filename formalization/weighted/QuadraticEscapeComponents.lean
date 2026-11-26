@@ -28,7 +28,8 @@ theorem sublevel_iterated_split (c : ℂ) (t : ℝ) (n : ℕ)
       ∀ z, ((e z).2 : ℂ) = orbit c n (z : ℂ) := by
   induction n generalizing t with
   | zero =>
-    simp only [pow_zero, one_mul]
+    let top : sublevel c t ≃ₜ sublevel c ((2 : ℝ)^0*t) :=
+      Homeomorph.setCongr (by rw [pow_zero, one_mul])
     let e : sublevel c t ≃ₜ (Fin 1 × sublevel c t) :=
       { toFun := fun z => (0, z)
         invFun := Prod.snd
@@ -38,7 +39,7 @@ theorem sublevel_iterated_split (c : ℂ) (t : ℝ) (n : ℕ)
           exact Prod.ext (Subsingleton.elim _ _) rfl
         continuous_toFun := continuous_const.prodMk continuous_id
         continuous_invFun := continuous_snd }
-    exact ⟨e, fun _ => rfl⟩
+    exact ⟨e.trans ((Homeomorph.refl (Fin 1)).prodCongr top), fun _ => rfl⟩
   | succ n ih =>
     have hcrit : t < escape c 0 := by
       simpa using hbelow 0 (Nat.zero_lt_succ n)
@@ -155,7 +156,7 @@ theorem sublevel_component_counts_unbounded (c : ℂ) (hc : 0 < escape c 0)
     ∃ t > 0, N < Nat.card (ConnectedComponents (sublevel c t)) := by
   refine ⟨escape c 0 / (2 : ℝ)^N, div_pos hc (pow_pos (by norm_num) N), ?_⟩
   rw [critical_dyadic_component_count c hc N]
-  exact Nat.lt_two_pow_self N
+  exact Nat.lt_two_pow_self
 
 /-- The actual polynomial sends a sublevel to its doubled-height target. -/
 def sublevelMap (c : ℂ) (t : ℝ) : sublevel c t → sublevel c (2*t) :=
@@ -229,8 +230,10 @@ theorem escaping_filled_components_infinite (c : ℂ) (hc : 0 < escape c 0) :
   obtain ⟨z, hz⟩ := sublevel_nonempty c 0 le_rfl
   letI : Nonempty (sublevel c 0) := ⟨⟨z, hz⟩⟩
   obtain ⟨e, _⟩ := sublevel_split c 0 le_rfl hc
-  have e₀ : sublevel c 0 ≃ₜ (Fin 2 × sublevel c 0) := by
-    simpa only [mul_zero] using e
+  let zero : sublevel c (2*0) ≃ₜ sublevel c 0 :=
+    Homeomorph.setCongr (by rw [mul_zero])
+  let e₀ : sublevel c 0 ≃ₜ (Fin 2 × sublevel c 0) :=
+    e.trans ((Homeomorph.refl (Fin 2)).prodCongr zero)
   exact self_double_components_infinite e₀
 
 end LoopsQuadraticEscapeTree

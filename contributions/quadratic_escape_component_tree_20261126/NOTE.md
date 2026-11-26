@@ -61,6 +61,26 @@ unfolding, a dependent membership rewrite, and pointwise negation). This
 checkpoint repairs those steps. The new declarations still count only
 after successful compilation and the transitive axiom audit.
 
+### Checkpoint 3: all infinite addresses and continuum many components
+
+The inverse-sheet and two component-topology modules now compile in the
+weighted CI. The finite-iterate module needed explicit type transport at
+height zero; that repair is included here.
+
+`CompactBinaryCoding.lean` constructs the continuous full binary shift
+factor of a compact two-sheet self-splitting. It realizes every finite
+prefix by inverse sections and every infinite itinerary by a compact
+nested intersection. The coding descends to connected components.
+`QuadraticEscapeCoding.lean` specializes this construction to the actual
+filled quadratic set when the critical point escapes, and compares the
+surjective component coding with the ambient complex-plane cardinality.
+The intended conclusion is exactly continuum many components. The new
+coding and cardinality declarations await CI at this checkpoint.
+
+The coding is a surjective semiconjugacy with a chosen sheet labeling.
+Its fibers have not been identified as connected sets or single points;
+neither a conjugacy nor a Cantor-set identification is asserted.
+
 ## Dependencies
 
 `H1_CELL_TREE_EXTRACTION` is the target. Its existing prerequisites

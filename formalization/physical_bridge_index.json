@@ -2738,6 +2738,29 @@
         "productComponentEquiv_mk",
         "component_product_card",
         "self_double_components_infinite"
+      ],
+      "formalization/weighted/CompactBinaryCoding.lean": [
+        "step_continuous",
+        "address_continuous",
+        "address_zero",
+        "address_succ",
+        "address_semiconj",
+        "prefixCylinder_closed",
+        "prefixCylinder_antitone",
+        "prefixCylinder_nonempty",
+        "address_surjective",
+        "componentAddress_continuous",
+        "componentAddress_mk",
+        "componentAddress_surjective",
+        "componentAddress_section",
+        "component_uncountable",
+        "componentAddress_semiconj"
+      ],
+      "formalization/weighted/QuadraticEscapeCoding.lean": [
+        "filled_two_sheet",
+        "filled_binary_coding",
+        "filled_component_cardinality",
+        "filled_component_uncountable"
       ]
     },
     "obligations": [
