@@ -46,6 +46,7 @@ code/exp5_figs.py	EXPLORATION
 code/mlc_common.py	EXPLORATION
 formalization/weighted/AtomCutDefect.lean	CUTS CREST
 formalization/weighted/AttachmentDefectLedger.lean	DEFECT
+formalization/weighted/BinaryShiftCensus.lean	METADATA
 formalization/weighted/ChebyshevQuotientRigidity.lean	METADATA
 formalization/weighted/CloneBounds.lean	CLONE EDGE
 formalization/weighted/ClonePolynomialRoots.lean	CLONE EDGE
@@ -97,7 +98,10 @@ formalization/weighted/PrimeEndImpressionDecomposition.lean	METADATA
 formalization/weighted/PrimeEndSectorFilters.lean	METADATA
 formalization/weighted/PrimeEndSectorImpressions.lean	METADATA
 formalization/weighted/PrimeEndSectorRank.lean	METADATA
+formalization/weighted/QuadraticCantorCoding.lean	METADATA
+formalization/weighted/QuadraticCantorExpansion.lean	METADATA
 formalization/weighted/QuadraticCantorGeometry.lean	METADATA
+formalization/weighted/QuadraticCantorSplitting.lean	METADATA
 formalization/weighted/QuadraticCriticalFiberCensus.lean	METADATA
 formalization/weighted/QuadraticCriticalTransversality.lean	CRITICAL-TRANSVERSALITY
 formalization/weighted/PhaseMemoryCardinality.lean	CLOCK ENDS
