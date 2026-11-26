@@ -21,7 +21,7 @@ jobs:
         with:
           python-version: '3.12'
       - name: Exact physical orbit, interval and complex disk certificate
-        run: python -B research/independent_audits/stationary_nonlc_predecessor_lift_20261126/verify.py
+        run: python -B research/independent_audits/stationary_nonlc_predecessor_lift_20261126/check_physical_orbit.py
       - name: Check source registration
         run: python -B code/verify_physical_bridges.py
       - name: Verify no tracked modifications

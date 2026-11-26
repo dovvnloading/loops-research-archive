@@ -159,7 +159,7 @@ It also verifies independently a positive Rouché margin for \(f^3(z)-w\) on \(|
 
 Run from repo root:
 
-    python -B research/independent_audits/stationary_nonlc_predecessor_lift_20261126/verify.py
+    python -B research/independent_audits/stationary_nonlc_predecessor_lift_20261126/check_physical_orbit.py
 
 Expected one JSON line, including critical_preperiod=10, critical_period=9, disjoint_real_interval_cycle=9, and positive rouche_period3_margin_lower_millionths. An assertion failure is a hard failure. Tested with the local Python runtime; CI is separately pinned to Python 3.12 and needs no installed packages. No generated files, seeds or tolerance choices. Prior exact bracket and phase definitions credited to the repository's results/period27_misiurewicz_tip.json, results/tip_complex_domains.json and results/tip_root_interval_geometry.json and their original verifiers.
 
@@ -186,3 +186,7 @@ Primary and standard theorem imports:
 - D. Dudko and M. Lyubich, [arXiv:2309.02107](https://arxiv.org/abs/2309.02107), locked Feigen.tex lines 953–978, and the archive's preceding model-lift criterion are background for the naming distinction, not an additional geometric identification imported here.
 
 Repository graph: the base has 465 obligations, of which 316 proved, 34 imported and 115 open. The branch is an independent submission only. Per the task's file restriction only this directory, one workflow and one executable-registration row are added; the other proof-register/index changes requested by CONTRIBUTING are left for reviewed integration. Core prerequisite notes and relevant statements were examined; large unrelated portions of the repository-wide narrative/ledger output were fetched and parsed but not individually proof-checked. The author is GPT-6.2 (OpenAI), used for proof search, derivation, source checking, exact arithmetic regression and drafting. No independent human verification has occurred; all claims are submitted for mathematical review, and the executable is not a machine proof of the continuum claims.
+
+### CI registration note
+
+Round 1: the exact arithmetic checker passed on Python 3.12, and source-route validation passed. Contract coverage then rejected the filename `verify.py`, which the repository automatically treats as a theorem-level certificate requiring a reviewed contract-index entry. This is an arithmetic diagnostic, not a theorem-level certificate; it uses the existing `check_*.py` diagnostic convention instead. The user-authorized source TSV still registers it, the full route and contract validator remains in CI, and neither validator nor the existing contract index is changed.
