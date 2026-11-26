@@ -11,11 +11,11 @@ human_review: none
 
 ## Claim
 
-Candidate Lean development: for an actual complex quadratic iterate restricted properly to an open localized domain over a connected open target, each connected component surjects onto that target. Thus it suffices to check a single target fiber against the declared component family to establish component exhaustion, with unique ownership if the declared components are distinct. This is strictly weaker input than assuming coverage of the whole localized domain. Separately, a finite census of distinct actual inverse points is bounded by the degree, and attaining the degree certifies the entire global fiber without assuming a regular value.
+Lean-verified reduction: for an actual complex quadratic iterate restricted properly to an open localized domain over a connected open target, each connected component surjects onto that target. Thus it suffices to check a single target fiber against the declared component family to establish component exhaustion, with unique ownership if the declared components are distinct. This replaces a whole-domain coverage verification by a finite single-fiber verification under the stated hypotheses. Separately, a finite census of distinct actual inverse points is bounded by the degree, and attaining the degree certifies the entire global fiber without assuming a regular value.
 
 ## Evidence
 
-[`QuadraticCylinderCensus.lean`](../../formalization/weighted/QuadraticCylinderCensus.lean) is registered in the weighted Lean project. The proposed proof proceeds as follows.
+[`QuadraticCylinderCensus.lean`](../../formalization/weighted/QuadraticCylinderCensus.lean) is registered in the weighted Lean project. The formal proof consists of 19 explicitly named theorems:
 
 1. `open_component_relative_closed` proves the ambient relative-closure identity for components of open sets, using local connectedness of the ambient space, not local connectivity of a Julia set.
 2. `localized_component_image` uses the open and closed map properties and relative closedness of the localized domain to show that the image of each component is relatively clopen in its connected target; the image is nonempty.
@@ -30,9 +30,16 @@ Candidate Lean development: for an actual complex quadratic iterate restricted p
 9. `proper_localization_component_global` identifies each component of a proper open localization with its full ambient pullback component. This removes the need to assume that identification separately, once properness and openness are certified.
 10. `proper_localization_eq_of_same_fiber` strengthens the enlargement result: if both domains are proper and open over the same connected target, unchanged local fiber implies equality of the domains. In that fixed-target setting there can be neither mergers nor new components.
 
-CI development history: the first weighted build (run 45867844853, commit 4f2b19c) rejected a closure-lemma application and the polynomial recurrence/degree proofs. The corrections remain subject to the full build and transitive dependency audit.
+CI development history: the first weighted build (run 45867844853, commit 4f2b19c) rejected a closure-lemma application and the polynomial recurrence/degree proofs. The corrections passed the full build and transitive dependency audit at the checkpoint below.
 
-Validation: pending exact-head weighted CI and its transitive proof dependency audit. Local Lean and networked git are unavailable in this execution environment. No candidate is counted as a validated result until CI confirms it. Reproduction: from the repository root, `cd formalization/weighted && lake build QuadraticCylinderCensus`, then run the existing weighted audit.
+Validation: [commit c12a8aac](https://github.com/dovvnloading/loops-research-archive/commit/c12a8aac47843ede66611e749b0eb0bc3a41a831) passed [weighted Lean CI run 45868510235](https://github.com/dovvnloading/loops-research-archive/actions/runs/45868510235) (Lean 4.32.0, source coverage and trust-escape scan, full build and transitive kernel axiom audit). The complete observed workflow set on that head was 23/23 successful. The audit printed:
+
+```text
+AXIOM_AUDIT weighted QuadraticCylinderCensus: 35 declarations, 29 theorems; allowed axioms only
+AXIOM_AUDIT_PASS weighted: 69 modules, 1903 declarations
+```
+
+The 29 kernel theorem constants include generated auxiliaries; 19 theorems are explicitly named in the source and registered in the theorem index. Only the repository's permitted standard Lean axioms are used. Local Lean and networked git were unavailable, so validation is from repository CI. Reproduction from the repository root: `cd formalization/weighted && lake build QuadraticCylinderCensus`, then return to the root and run `python3 -B code/verify_lean_coverage.py --audit weighted`. This note records the verified proof checkpoint without changing its Lean source.
 
 ## Dependencies
 
