@@ -14,12 +14,14 @@ open Set
 
 variable {X Y : Type*} [TopologicalSpace X] [TopologicalSpace Y]
 
-noncomputable def terminalRetract (O : Set X) (a : X) : X → X :=
-  O.piecewise id (fun _ => a)
+noncomputable def terminalRetract (O : Set X) (a : X) : X → X := by
+  classical
+  exact O.piecewise id (fun _ => a)
 
 theorem terminalRetract_continuous (O : Set X) (a : X)
     (hfront : frontier O ⊆ {a}) :
     Continuous (terminalRetract O a) := by
+  classical
   unfold terminalRetract
   apply Continuous.piecewise
   · intro z hz
@@ -29,6 +31,7 @@ theorem terminalRetract_continuous (O : Set X) (a : X)
 
 theorem terminalRetract_fixed (O : Set X) (a x : X)
     (hx : x ∈ O ∪ {a}) : terminalRetract O a x = x := by
+  classical
   rcases hx with hx | hx
   · simp [terminalRetract, Set.piecewise, hx]
   · have he : x = a := hx
@@ -86,6 +89,7 @@ theorem component_eq_local_of_attachment_missing (O S : Set X) (a x : X)
     (hx : x ∈ S ∩ (O ∪ {a}))
     (hmiss : a ∉ connectedComponentIn (S ∩ (O ∪ {a})) x) :
     connectedComponentIn S x = connectedComponentIn (S ∩ (O ∪ {a})) x := by
+  classical
   have heq := component_inter_terminalSheet O S a x hfront ha hx
   let r := terminalRetract O a
   have hr : Continuous r := terminalRetract_continuous O a hfront
@@ -185,6 +189,7 @@ theorem quadratic_image_preimage_symmetric (c : ℂ) (Q : Set ℂ)
   · intro hz
     change (z^2+c) ∈ (fun w : ℂ => w^2+c) '' Q at hz
     obtain ⟨w, hw, he⟩ := hz
+    change w^2+c = z^2+c at he
     have hprod : (w-z)*(w+z) = 0 := by linear_combination he
     rcases mul_eq_zero.mp hprod with h | h
     · have hwz : w = z := sub_eq_zero.mp h
