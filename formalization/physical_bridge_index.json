@@ -3012,5 +3012,30 @@
     "obligations": [
       "H4_RIGIDITY"
     ]
+  },
+  "parameter-stable-critical-return-20261126": {
+    "guide": "contributions/parameter_stable_critical_return_20261126/NOTE.md#parameter-stable-critical-return-20261126",
+    "theorems": {
+      "formalization/weighted/QuadraticInverseOpen.lean": [
+        "quadratic_compact_component_image",
+        "connected_precompact_target_neighborhood",
+        "quadratic_inverse_open_component"
+      ],
+      "formalization/weighted/QuadraticCriticalTrapping.lean": [
+        "quadratic_critical_component_eq_preimage",
+        "quadratic_full_preimage_parameter_neighborhood",
+        "quadratic_full_preimage_parameter_collar"
+      ],
+      "formalization/weighted/TelescopeParameterReturn.lean": [
+        "quadratic_parameter_one_critical_return",
+        "quadratic_parameter_compactly_contained_return"
+      ],
+      "formalization/weighted/TelescopeDeckInvolution.lean": [
+        "quadratic_return_analytic_involution"
+      ]
+    },
+    "obligations": [
+      "MAPPING_TELESCOPE"
+    ]
   }
 }
