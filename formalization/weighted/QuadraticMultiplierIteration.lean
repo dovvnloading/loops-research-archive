@@ -78,11 +78,11 @@ theorem repeated_returnMultiplier_hasDerivAt_zero (c : ℂ) (ζ : ℂ → ℂ)
     (hper : (fun w : ℂ => returnOrbit w (ζ w) p) =ᶠ[𝓝 c] ζ)
     (hzero : returnMultiplier c (ζ c) p = 0) (hk : 2 ≤ k) :
     HasDerivAt (fun w => returnMultiplier w (ζ w) (p*k)) 0 c := by
-  have hλ : AnalyticAt ℂ (fun w => returnMultiplier w (ζ w) p) c :=
+  have hμ : AnalyticAt ℂ (fun w => returnMultiplier w (ζ w) p) c :=
     ((returnMultiplier_contDiff p).contDiffAt.analyticAt).comp
       (analyticAt_id.prod hζ)
   have hkm1 : k-1 ≠ 0 := by omega
-  have hd := hλ.differentiableAt.hasDerivAt.pow k
+  have hd := hμ.differentiableAt.hasDerivAt.pow k
   have hd0 : HasDerivAt (fun w => returnMultiplier w (ζ w) p ^ k) 0 c := by
     simpa only [hzero, zero_pow hkm1, mul_zero, zero_mul] using hd
   exact hd0.congr_of_eventuallyEq
@@ -106,10 +106,32 @@ theorem repeated_returnMultiplier_no_differentiable_left_inverse
   have hψ' : HasDerivAt ψ (deriv ψ 0) (returnMultiplier c (ζ c) (p*k)) := by
     simpa only [hrepzero] using hψ.hasDerivAt
   have hcomp : HasDerivAt (fun w => ψ (returnMultiplier w (ζ w) (p*k))) 0 c := by
-    simpa only [mul_zero, zero_mul] using hψ'.comp c hd
+    simpa only [map_zero, Function.comp_def] using
+      hψ'.hasFDerivAt.comp_hasDerivAt c hd
   have hid : HasDerivAt (fun w => ψ (returnMultiplier w (ζ w) (p*k))) 1 c :=
     (hasDerivAt_id c).congr_of_eventuallyEq hleft
   exact zero_ne_one (hcomp.unique hid)
+
+/-- A simple first-return multiplier gives exact ramification order k for
+its kth repeated return in the original parameter. -/
+theorem periodic_motion_returnMultiplier_order (c : ℂ) (ζ : ℂ → ℂ)
+    (p k : ℕ) (hζ : AnalyticAt ℂ ζ c)
+    (hper : (fun w : ℂ => returnOrbit w (ζ w) p) =ᶠ[𝓝 c] ζ)
+    (hzero : returnMultiplier c (ζ c) p = 0)
+    (hd : deriv (fun w => returnMultiplier w (ζ w) p) c ≠ 0) :
+    analyticOrderAt (fun w => returnMultiplier w (ζ w) (p*k)) c = (k : ℕ∞) := by
+  have hμ : AnalyticAt ℂ (fun w => returnMultiplier w (ζ w) p) c :=
+    ((returnMultiplier_contDiff p).contDiffAt.analyticAt).comp
+      (analyticAt_id.prod hζ)
+  have ho : analyticOrderAt (fun w => returnMultiplier w (ζ w) p) c = 1 :=
+    hμ.analyticOrderAt_eq_one_of_zero_deriv_ne_zero hzero hd
+  calc
+    analyticOrderAt (fun w => returnMultiplier w (ζ w) (p*k)) c =
+        analyticOrderAt ((fun w => returnMultiplier w (ζ w) p) ^ k) c :=
+      analyticOrderAt_congr (periodic_motion_returnMultiplier_mul c ζ p k hper)
+    _ = k • analyticOrderAt (fun w => returnMultiplier w (ζ w) p) c :=
+      analyticOrderAt_pow hμ k
+    _ = (k : ℕ∞) := by rw [ho]; simp
 
 end
 end LoopsQuadraticTransversality

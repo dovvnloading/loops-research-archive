@@ -114,6 +114,7 @@ formalization/weighted/QuadraticEscapeFullness.lean	METADATA
 formalization/weighted/QuadraticInverseOpen.lean	CONSTRUCT
 formalization/weighted/QuadraticMultiplierArithmetic.lean	METADATA
 formalization/weighted/QuadraticMultiplierCoordinate.lean	METADATA
+formalization/weighted/QuadraticMultiplierDisk.lean	METADATA
 formalization/weighted/QuadraticMultiplierIteration.lean	METADATA
 formalization/weighted/QuadraticParameterDistortion.lean	CONSTRUCT
 formalization/weighted/QuadraticParameterInverse.lean	CONSTRUCT

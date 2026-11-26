@@ -106,6 +106,8 @@ theorem center_multiplier_parameter_coordinate (c : ℂ) (n : ℕ)
         returnOrbit w (ζ w) (n+1) = ζ w ∧
         Function.minimalPeriod (fun z : ℂ => z^2+w) (ζ w) = n+1 ∧
         ‖returnMultiplier w (ζ w) (n+1)‖ < 1) ∧
+      (∀ k : ℕ,
+        analyticOrderAt (fun w => returnMultiplier w (ζ w) ((n+1)*k)) c = (k : ℕ∞)) ∧
       (∀ᶠ t in 𝓝 (0 : ℂ),
         returnMultiplier (ψ t) (ζ (ψ t)) (n+1) = t ∧
         returnOrbit (ψ t) (ζ (ψ t)) (n+1) = ζ (ψ t) ∧
@@ -124,7 +126,7 @@ theorem center_multiplier_parameter_coordinate (c : ℂ) (n : ℕ)
   have hψlim : Tendsto ψ (𝓝 (0 : ℂ)) (𝓝 c) := by
     simpa only [hψzero] using hψan.continuousAt.tendsto
   refine ⟨ζ, ψ, hself, han, hμan, hμd, hD, hψzero, hψan, hψd,
-    ?_, hstable, ?_⟩
+    ?_, hstable, ?_, ?_⟩
   · filter_upwards [hleft] with w hw
     refine ⟨hw, ?_⟩
     change μ w = 0 ↔ w = c
@@ -135,6 +137,10 @@ theorem center_multiplier_parameter_coordinate (c : ℂ) (n : ℕ)
     · intro hwc
       subst w
       exact hμzero
+  · intro k
+    apply periodic_motion_returnMultiplier_order c ζ (n+1) k han
+      (hstable.mono (fun w hw => hw.1)) hμzero
+    rwa [hμd.deriv]
   · filter_upwards [hright, hψlim.eventually hstable] with t ht hs
     have hval : returnMultiplier (ψ t) (ζ (ψ t)) (n+1) = t := ht
     refine ⟨hval, hs.1, hs.2.1, ?_, ?_⟩

@@ -3058,11 +3058,15 @@
         "periodic_returnMultiplier_mul",
         "periodic_motion_returnMultiplier_mul",
         "repeated_returnMultiplier_hasDerivAt_zero",
-        "repeated_returnMultiplier_no_differentiable_left_inverse"
+        "repeated_returnMultiplier_no_differentiable_left_inverse",
+        "periodic_motion_returnMultiplier_order"
       ],
       "formalization/weighted/QuadraticMultiplierCoordinate.lean": [
         "center_multiplier_motion",
         "center_multiplier_parameter_coordinate"
+      ],
+      "formalization/weighted/QuadraticMultiplierDisk.lean": [
+        "center_multiplier_disk"
       ]
     },
     "obligations": [
