@@ -1000,4 +1000,169 @@ theorem quadratic_filled_separator_of_repelling_contact_exhaustion
     (Set.disjoint_left.mpr (fun z hz hzK => hz hzK))
     (quadratic_filled_exterior_unbounded c) T hmono hcompact hcover ha
 
+/-- On the inverse image of an open subset of a locally connected compact
+model, two points of any preconnected set have a compact preconnected
+envelope in that inverse image. The physical space itself need not be
+locally connected; closedness and connected fibers suffice. -/
+theorem compact_pair_envelope_of_monotone_model
+    {X Y : Type*} [TopologicalSpace X] [CompactSpace X]
+    [TopologicalSpace Y] [CompactSpace Y] [T2Space Y]
+    [LocallyConnectedSpace Y]
+    (q : X → Y) (hq : Continuous q) (hsurj : Function.Surjective q)
+    (hf : ∀ y : Y, IsPreconnected (q ⁻¹' {y}))
+    (A : Set Y) (hA : IsClosed A)
+    (E : Set X) (hEc : IsPreconnected E) (hEsub : E ⊆ q ⁻¹' Aᶜ)
+    (x y : X) (hx : x ∈ E) (hy : y ∈ E) :
+    ∃ B : Set X, IsCompact B ∧ IsPreconnected B ∧ B ⊆ q ⁻¹' Aᶜ ∧
+      x ∈ B ∧ y ∈ B := by
+  let D := connectedComponentIn Aᶜ (q x)
+  have hxA : q x ∈ Aᶜ := hEsub hx
+  have hxD : q x ∈ D := mem_connectedComponentIn hxA
+  have hDopen : IsOpen D := hA.isOpen_compl.connectedComponentIn
+  have hDconn : IsConnected D := isConnected_connectedComponentIn_iff.mpr hxA
+  have hIm : IsPreconnected (q '' E) := hEc.image q hq.continuousOn
+  have hImsub : q '' E ⊆ Aᶜ := by
+    rintro _ ⟨z,hz,rfl⟩
+    exact hEsub hz
+  have hyD : q y ∈ D := hIm.subset_connectedComponentIn
+    (mem_image_of_mem q hx) hImsub (mem_image_of_mem q hy)
+  let M : Set Y := {q x,q y}
+  have hM : IsCompact M := isCompact_singleton.insert _
+  have hMD : M ⊆ D := by
+    intro z hz
+    change z ∈ ({q x,q y} : Set Y) at hz
+    simp only [mem_insert_iff,mem_singleton_iff] at hz
+    rcases hz with rfl | rfl
+    · exact hxD
+    · exact hyD
+  obtain ⟨C,hCc,hCconn,hCD,hMC⟩ :=
+    LoopsTerminalFiberExclusion.compact_connected_envelope D M
+      hDopen hDconn hM hMD
+  refine ⟨q ⁻¹' C,(hCc.isClosed.preimage hq).isCompact,
+    LoopsStationaryMonotoneGeometry.preconnected_preimage_closed_fibers
+      q hq.isClosedMap hsurj hf hCconn.isPreconnected,?_,?_,?_⟩
+  · intro z hz
+    exact connectedComponentIn_subset Aᶜ (q x) (hCD hz)
+  · exact interior_subset (hMC (by simp [M]))
+  · exact interior_subset (hMC (by simp [M]))
+
+/-- Saturation of the deleted critical set in a locally connected
+monotone model removes the need for a finite-component exhaustion.
+An arbitrary connected witness can be replaced, for each pair of
+points, by a compact physical witness in the retained set. -/
+theorem quadratic_filled_no_bypass_of_saturated_model
+    {Y : Type*} [TopologicalSpace Y] [CompactSpace Y] [T2Space Y]
+    [LocallyConnectedSpace Y]
+    (c b : ℂ) (p : ℕ) (Q E : Set ℂ)
+    (hQsym : ∀ z ∈ Q, -z ∈ Q) (hzero : 0 ∈ Q)
+    (hQ : IsPreconnected Q) (hbQ : b ∈ Q)
+    (hper : QuadraticEscape.orbit c p b = b)
+    (hmul : 1 < ‖deriv (QuadraticEscape.orbit c p) b‖)
+    (q : LoopsStationaryFiberDynamics.quadraticFilled c → Y)
+    (hq : Continuous q) (hsurj : Function.Surjective q)
+    (hf : ∀ y : Y, IsPreconnected (q ⁻¹' {y}))
+    (A : Set Y) (hA : IsClosed A)
+    (hsat : ∀ z : LoopsStationaryFiberDynamics.quadraticFilled c,
+      (z:ℂ) ∈ Q ↔ q z ∈ A)
+    (hEc : IsPreconnected E)
+    (hEsub : E ⊆ LoopsStationaryFiberDynamics.quadraticFilled c \ Q) :
+    InjOn (fun z : ℂ => z^2+c) E := by
+  let K := LoopsStationaryFiberDynamics.quadraticFilled c
+  letI : CompactSpace K :=
+    isCompact_iff_compactSpace.mp (LoopsStationaryFiberDynamics.quadratic_filled_compact c)
+  letI : PreconnectedSpace E := isPreconnected_iff_preconnectedSpace.mp hEc
+  let j : E → K := fun z => ⟨(z:ℂ),(hEsub z.property).1⟩
+  have hj : Continuous j :=
+    continuous_subtype_val.subtype_mk (fun z => (hEsub z.property).1)
+  let D : Set K := j '' (univ : Set E)
+  have hD : IsPreconnected D := isPreconnected_univ.image j hj.continuousOn
+  have hDsub : D ⊆ q ⁻¹' Aᶜ := by
+    rintro _ ⟨z,_,rfl⟩
+    intro hz
+    exact (hEsub z.property).2 ((hsat (j z)).mpr hz)
+  intro x hx y hy hxy
+  let x' := j ⟨x,hx⟩
+  let y' := j ⟨y,hy⟩
+  have hxD : x' ∈ D := ⟨⟨x,hx⟩,mem_univ _,rfl⟩
+  have hyD : y' ∈ D := ⟨⟨y,hy⟩,mem_univ _,rfl⟩
+  obtain ⟨B,hBc,hBpre,hBsub,hxB,hyB⟩ :=
+    compact_pair_envelope_of_monotone_model q hq hsurj hf A hA D hD hDsub
+      x' y' hxD hyD
+  let W : Set ℂ := (Subtype.val : K → ℂ) '' B
+  have hWc : IsCompact W := hBc.image continuous_subtype_val
+  have hWpre : IsPreconnected W :=
+    hBpre.image _ continuous_subtype_val.continuousOn
+  have hWsub : W ⊆ K \ Q := by
+    rintro _ ⟨z,hz,rfl⟩
+    refine ⟨z.property,?_⟩
+    intro hzQ
+    exact (hBsub hz) ((hsat z).mp hzQ)
+  exact quadratic_filled_compact_injOn_of_repelling_contact c b p Q W
+    hQsym hzero hQ hbQ hper hmul hWc hWpre hWsub
+    ⟨x',hxB,rfl⟩ ⟨y',hyB,rfl⟩ hxy
+
+/-- Exact full component separation on the physical filled Julia set
+from a saturated deletion in a locally connected monotone model. -/
+theorem quadratic_filled_separator_of_saturated_model
+    {Y : Type*} [TopologicalSpace Y] [CompactSpace Y] [T2Space Y]
+    [LocallyConnectedSpace Y]
+    (c a b : ℂ) (p : ℕ) (Q : Set ℂ)
+    (hQsym : ∀ z ∈ Q, -z ∈ Q) (hzero : 0 ∈ Q)
+    (hQ : IsPreconnected Q) (hbQ : b ∈ Q)
+    (hper : QuadraticEscape.orbit c p b = b)
+    (hmul : 1 < ‖deriv (QuadraticEscape.orbit c p) b‖)
+    (q : LoopsStationaryFiberDynamics.quadraticFilled c → Y)
+    (hq : Continuous q) (hsurj : Function.Surjective q)
+    (hf : ∀ y : Y, IsPreconnected (q ⁻¹' {y}))
+    (A : Set Y) (hA : IsClosed A)
+    (hsat : ∀ z : LoopsStationaryFiberDynamics.quadraticFilled c,
+      (z:ℂ) ∈ Q ↔ q z ∈ A)
+    (ha : a ∈ LoopsStationaryFiberDynamics.quadraticFilled c \ Q) :
+    -a ∉ connectedComponentIn
+      (LoopsStationaryFiberDynamics.quadraticFilled c \ Q) a := by
+  intro hb
+  have hi := quadratic_filled_no_bypass_of_saturated_model c b p Q
+    (connectedComponentIn (LoopsStationaryFiberDynamics.quadraticFilled c \ Q) a)
+    hQsym hzero hQ hbQ hper hmul q hq hsurj hf A hA hsat
+    isPreconnected_connectedComponentIn (connectedComponentIn_subset _ _)
+  have he : a = -a := hi (mem_connectedComponentIn ha) hb (by ring)
+  have haz : a = 0 := by linear_combination (1/2 : ℂ) * he
+  exact ha.2 (haz.symm ▸ hzero)
+
+/-- A directly testable relative-frontier condition supplies the
+saturation needed by the preceding separator theorem. Singleton
+fibers are required only on the boundary of the deleted set relative
+to the physical filled Julia carrier. -/
+theorem quadratic_filled_separator_of_frontier_singletons
+    {Y : Type*} [TopologicalSpace Y] [CompactSpace Y] [T2Space Y]
+    [LocallyConnectedSpace Y]
+    (c a b : ℂ) (p : ℕ) (Q : Set ℂ)
+    (hQc : IsClosed Q) (hQsym : ∀ z ∈ Q, -z ∈ Q) (hzero : 0 ∈ Q)
+    (hQ : IsPreconnected Q) (hbQ : b ∈ Q)
+    (hper : QuadraticEscape.orbit c p b = b)
+    (hmul : 1 < ‖deriv (QuadraticEscape.orbit c p) b‖)
+    (q : LoopsStationaryFiberDynamics.quadraticFilled c → Y)
+    (hq : Continuous q) (hsurj : Function.Surjective q)
+    (hf : ∀ y : Y, IsPreconnected (q ⁻¹' {y}))
+    (hfront : ∀ z ∈ frontier ((Subtype.val :
+      LoopsStationaryFiberDynamics.quadraticFilled c → ℂ) ⁻¹' Q),
+      q ⁻¹' ({q z} : Set Y) = {z})
+    (ha : a ∈ LoopsStationaryFiberDynamics.quadraticFilled c \ Q) :
+    -a ∉ connectedComponentIn
+      (LoopsStationaryFiberDynamics.quadraticFilled c \ Q) a := by
+  let K := LoopsStationaryFiberDynamics.quadraticFilled c
+  letI : CompactSpace K :=
+    isCompact_iff_compactSpace.mp (LoopsStationaryFiberDynamics.quadratic_filled_compact c)
+  let S : Set K := (Subtype.val : K → ℂ) ⁻¹' Q
+  have hS : IsClosed S := hQc.preimage continuous_subtype_val
+  have hSat : q ⁻¹' (q '' S) = S :=
+    LoopsStationaryGeometricFibers.closed_carrier_saturated_of_frontier_singletons
+      q hf S hS hfront
+  have hA : IsClosed (q '' S) := hq.isClosedMap S hS
+  have hsat (z : K) : (z:ℂ) ∈ Q ↔ q z ∈ q '' S := by
+    change z ∈ S ↔ z ∈ q ⁻¹' (q '' S)
+    rw [hSat]
+  exact quadratic_filled_separator_of_saturated_model c a b p Q
+    hQsym hzero hQ hbQ hper hmul q hq hsurj hf (q '' S) hA hsat ha
+
 end LoopsStationaryCompactContact

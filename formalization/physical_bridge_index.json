@@ -2432,7 +2432,11 @@
         "quadratic_repelling_point_exterior_contact",
         "quadratic_filled_exterior_unbounded",
         "quadratic_filled_compact_injOn_of_repelling_contact",
-        "quadratic_filled_separator_of_repelling_contact_exhaustion"
+        "quadratic_filled_separator_of_repelling_contact_exhaustion",
+        "compact_pair_envelope_of_monotone_model",
+        "quadratic_filled_no_bypass_of_saturated_model",
+        "quadratic_filled_separator_of_saturated_model",
+        "quadratic_filled_separator_of_frontier_singletons"
       ]
     },
     "obligations": [
