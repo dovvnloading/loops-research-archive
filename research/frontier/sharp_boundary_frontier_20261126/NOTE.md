@@ -59,12 +59,68 @@ For any x in M and sufficiently small epsilon>0, take the component of M interse
 
 Combine with (2) and zero if stronger. If H vanishes identically in one variable the corresponding Harnack inequality is still valid by nonnegativity. Formula (6) is particularly useful for comparing physical tip intervals to the point limit, without taking an unspecified sequence of capacities. It is not a claim that the equilibrium measure is supported at x.
 
-## 2. Sharp logarithmic coefficient on the actual Mandelbrot set
+## 2. Independent global upper bound by inversion and schlicht distortion
 
-**Theorem 2 (physical sharpness).** For every 0<s<t<=1/8,
+**Theorem 2 (all positive ground levels).** For every 0<s<t, every x in M and every nonpolar compact F subset M,
+
+    K(x,x) <= log 4 + 2 log[(1-exp(-t))/(1-exp(-s))],
+    e(F)   <= log 4 + 2 log[(1-exp(-t))/(1-exp(-s))]
+           <= log 4 + 2 log(t/s).                      (7a)
+
+Unlike the prior 4+2 log(L/s) estimate this bound holds for all ratios, improves the additive constant in the large-ratio asymptotic, and does not use any Fourier-mode bounds. For t near s the prior O((t-s)/s) bound is better; the two are complementary. The coefficient two is optimal on the actual M by the next section.
+
+**Proof.** Let Psi be the conformal external parameter inverse, |w|>1 to C minus M, Psi(infinity)=infinity, Psi(w)/w -> 1. For fixed x in M define
+
+    f_x(z)=1/(Psi(1/z)-x),   0<|z|<1,     f_x(0)=0.
+
+This is a schlicht function on the full unit disk: the denominator is nonzero, the composition is injective, the apparent singularity at zero is removable with f_x'(0)=1, and f_x has no other zero. Let C_x(r)=cap(f_x(closed disk of radius r)), where cap is logarithmic capacity. Inversion about x maps the exterior of D_u, with boundary and infinity included, onto the compact f_x(closed disk of radius exp(-u)). It maps D_u to that compact's exterior in the sphere, taking x to infinity. If phi_u:D_u -> unit disk satisfies phi_u(x)=0, phi_u'(x)>0, the normalized exterior map is w -> 1/phi_u(x+1/w), asymptotic to r_u(x)*w at infinity. Since the derivative at infinity of the exterior map is the reciprocal logarithmic capacity,
+
+    r_u(x)=1/C_x(exp(-u)).                              (7b)
+
+This is exact; neither a boundary extension at |z|=1 nor any estimate on a Julia set is used.
+
+For any schlicht f with f(0)=0 set M_f(r)=max_{|z|=r}|f(z)|. The image of the closed r-disk is a continuum containing zero and lies in the closed disk of radius M_f(r), by the maximum principle. Its capacity is bounded by
+
+    M_f(r)/4 <= cap(f(closed r-disk)) <= M_f(r).          (7c)
+
+The lower bound is the classical continuum diameter bound (projection and Fekete points, as in the archive's capacity note); the upper is monotonicity of logarithmic capacity. The factor four here need not be optimal for a fixed schlicht image.
+
+The following radial ratio bound is a consequence of the ordinary Koebe growth theorem, not an assumption of starlikeness. For z of modulus r in (0,1) use the normalized Koebe transform
+
+    T_z(v)=[f((z+v)/(1+conj(z)*v))-f(z)]
+            /[(1-r^2) f'(z)].
+
+It is schlicht, T_z(0)=0 and T_z'(0)=1. The lower growth bound at v=-z gives
+
+    |f(z)|/[(1-r^2)|f'(z)|] >= r/(1+r)^2,
+    |z f'(z)/f(z)| <= (1+r)/(1-r).
+
+Therefore along every fixed ray z=r exp(i theta),
+
+    d/dr log|f(r exp(i theta))|
+        = Re[z f'(z)/f(z)]/r
+        <= 1/r + 2/(1-r).
+
+Integrate from 0<r<R<1 (positive lower endpoint r, not from zero) and maximize over theta:
+
+    M_f(R)/M_f(r) <= (R/r) [(1-r)/(1-R)]^2.             (7d)
+
+Apply (7b)–(7d) with r=exp(-t), R=exp(-s), where R/r=exp(L). It gives
+
+    r_t(x)/r_s(x)
+      = C_x(R)/C_x(r)
+      <= 4 exp(L) [(1-exp(-t))/(1-exp(-s))]^2.
+
+Taking logs and subtracting L yields (7a) for the diagonal, hence for every F by Theorem 1. The function (1-exp(-u))/u is decreasing on u>0 (its derivative has numerator (u+1) exp(-u)-1<0); this proves the last inequality. QED.
+
+The estimate is elementary, global, and independent of the old Fourier proof; the logarithmic coefficient cannot be reduced uniformly as s tends to zero. No priority claim is made for the use of these classical univalent-function inequalities.
+
+## 3. Sharp logarithmic coefficient on the actual Mandelbrot set
+
+**Theorem 3 (physical sharpness).** For every 0<s<t<=1/8,
 
     2 log(t/s)-log(128)-(t-s)
-       <= sup_{F} e(F) <= 4+2 log(t/s),                  (7)
+       <= sup_{F} e(F) <= log 4+2 log(t/s),                  (7)
 
 where F ranges over nondegenerate subcontinua of the actual Mandelbrot set. In particular
 
@@ -73,7 +129,7 @@ where F ranges over nondegenerate subcontinua of the actual Mandelbrot set. In p
 
 The coefficient two in the earlier universal large-ratio estimate cannot be reduced even for the actual quadratic parameter plane. This is stronger than a round-model order obstruction or the earlier qualitative divergence at -2. It gives actual compact witnesses, not just a boundary singularity of a hypothetical conformal map.
 
-### 2.1. Physical conformal radius at the repelling tip
+### 3.1. Physical conformal radius at the repelling tip
 
 Write x_*=-2. We prove for 0<u<=1/8
 
@@ -100,13 +156,13 @@ For the last inequality, log(9/4)>=10/13 follows from log x>=2(x-1)/(x+1) for x>
 
 For 0<u<=1/8 choose d=16u^2<=1/4. Then G(-2-d)>=u, so dist(x_*,C minus D_u)<=16u^2. Koebe's quarter theorem gives r_u(x_*)<=4 dist(x_*,C minus D_u)<=64u^2. This proves (9), including the exponent two, from the physical escape recurrence and elementary segment comparison. It uses neither the inverse parameter boundary derivative nor parabolic asymptotics.
 
-### 2.2. Sharpness and explicit nonpolar witnesses
+### 3.2. Sharpness and explicit nonpolar witnesses
 
 By (1) and (9),
 
     K(x_*,x_*) >= 2 log(t/s)-log128-L.                  (11)
 
-This is a lower bound on the true continuum supremum by Theorem 1. The upper bound in (7) is inherited from the earlier ground-transfer theorem: for L>=s it is at most 4+2 log(L/s)<=4+2 log(t/s), and for L<s it is at most pi^2 L/(3s)<4. Division by log(t/s) proves (8), uniformly in the stated range of t.
+This is a lower bound on the true continuum supremum by Theorem 1. The upper bound in (7) follows independently from (7a). Division by log(t/s) proves (8), uniformly in the stated range of t.
 
 For an explicit witness rather than a limiting supremum, put ell=log(t/s)>0 and
 
@@ -126,11 +182,11 @@ For any strictly decreasing schedule t_0>...>t_N>0 with t_0<=1/8, the sum of the
 
 The supremum here is taken separately at each step; this is not a claim that one chosen nested tower has those losses, or that the lower bounds on a specific MLC tower's gains must dominate (13). It rules out any geometry-free universal penalty budget of smaller cumulative logarithmic order. For the actual diagonal at -2 the corresponding upper bound is 2 log(t_0/t_N)+log128, by the other half of (9).
 
-## 3. Neutral cusp: a genuinely different ground-loss scale
+## 4. Neutral cusp: a genuinely different ground-loss scale
 
-The sharp worst-case coefficient in §2 should not be imposed at every boundary point. The actual cusp c_0=1/4 gives a contrasting, much slower diagonal divergence. Here we derive the physical escape profile directly; no parabolic transit or asymptotic-expansion theorem is assumed.
+The sharp worst-case coefficient in §3 should not be imposed at every boundary point. The actual cusp c_0=1/4 gives a contrasting, much slower diagonal divergence. Here we derive the physical escape profile directly; no parabolic transit or asymptotic-expansion theorem is assumed.
 
-**Theorem 3.** Define A=(log 2)^2/64 and B=1600(log 2)^2. For 0<u<=2^(-100),
+**Theorem 4.** Define A=(log 2)^2/64 and B=1600(log 2)^2. For 0<u<=2^(-100),
 
     A/[log(1/u)]^2 <= r_u(c_0) <= B/[log(1/u)]^2.        (14)
 
@@ -141,7 +197,7 @@ Consequently, for 0<s<t<=2^(-100),
 
 This is the actual point-localized optimal penalty in the limit of shrinking nonpolar cusp intervals, by Theorem 1's continuous-kernel comparison. In particular if t is fixed in the stated range and s tends to zero, the leading order is 2 log log(1/s), not 2 log(1/s).
 
-### 3.1. Uniform complex upper escape estimate
+### 4.1. Uniform complex upper escape estimate
 
 For a real 0<a<=1/8 write c^+=1/4+a^2 and x_j=f_(c^+)^j(0). Set y_j=x_j-1/2. The exact recurrence and initial value are
 
@@ -164,7 +220,7 @@ The majorant orbit is nonnegative. In particular |f_c^N(0)|<1/2. As |c|<1/2, put
 
 The estimate is uniform on the whole complex disk, not just on the positive real transit path. This uniformity is essential to the lower bound on the conformal radius. The estimate also includes all parameters in M (where G=0).
 
-### 3.2. Real lower escape estimate
+### 4.2. Real lower escape estimate
 
 On the real majorant orbit (16), let n be the first j with y_j>=1/2. Each step from j<n starts at y in [-1/2,1/2), with d=y^2+a^2<=1/4+1/64<1. For all v between y and y+d,
 
@@ -186,7 +242,7 @@ for a<=1/8, using pi<22/7. Thereafter x_(j+1)>=x_j^2 since c^+>0, and the normal
 
 This real parameter is outside M. Equations (17)–(18) are two-sided exponential-in-inverse-square-root escape bounds with explicit constants. They do not claim an exact parabolic transit asymptotic, which would require finer analysis.
 
-### 3.3. Inversion to conformal radius and physical local penalty
+### 4.3. Inversion to conformal radius and physical local penalty
 
 For 0<u<=2^(-100) put
 
@@ -201,9 +257,9 @@ For the stated u, log(4/u)<=2 log(1/u) and log((log 2)/u)>=log(1/u)/2. Substitut
 
 For actual intervals F_epsilon=[1/4-epsilon,1/4], 0<epsilon<1/4, the entire interval lies in M: for c in [0,1/4], p=(1+sqrt(1-4c))/2 is a positive fixed point and f_c([-p,p])=[c,p] subset [-p,p]. The limit of e(F_epsilon) as epsilon tends to zero is exactly K(c_0,c_0), because all points of these continua approach c_0 and K is continuous. More quantitatively, apply (6) with R=a_-^2 for the smaller ground s and any epsilon<R; the resulting two-sided comparison is valid for each actual interval without presuming a limiting ground-independent equilibrium measure.
 
-There is no conflict with Theorem 2: it is a worst-case statement over all parameter continua, whereas (15) is a localized diagonal statement at the actual neutral cusp. Nor does the cusp example establish any new local connectivity case or control a nearby infinitely satellite-renormalizable parameter's escape profile.
+There is no conflict with Theorem 3: it is a worst-case statement over all parameter continua, whereas (15) is a localized diagonal statement at the actual neutral cusp. Nor does the cusp example establish any new local connectivity case or control a nearby infinitely satellite-renormalizable parameter's escape profile.
 
-## 4. General physical escape-profile interface and H4 application
+## 5. General physical escape-profile interface and H4 application
 
 Let x in M. If for each sufficiently small u one independently certifies positive radii d_-(u)<=d_+(u) with B(x,d_-(u)) subset D_u and at least one point of C minus D_u at distance <=d_+(u), then
 
@@ -217,8 +273,8 @@ At -2, R(u)=u^2; at 1/4, R(u)=1/[log(1/u)]^2. An analogous uniform estimate for 
 
 The exact diagonal characterization and two distinct physical regimes show why a universal scalar estimate without information about the chosen parameter compact can lose the relevant geometry. The repelling tip forces the coefficient two in the general bound, but the neutral cusp does not incur that scale of loss. Actual ground radii or a uniform escape-profile certificate on the target compacts are the inputs needed to exploit the improvement. The divergent gain schedule and connected relative-neighborhood requirement in the previous H4 route remain open.
 
-## 5. Attribution and proof boundary
+## 6. Attribution and proof boundary
 
 Classical inputs: Green energy, disk Green kernel, Dirichlet balayage, Cauchy–Schwarz for the Dirichlet energy, Harnack inequality, Schwarz lemma, Koebe quarter theorem, and the compact-space component/quasicomponent theorem. See E. B. Saff, *Logarithmic Potential Theory with Applications to Approximation Theory*, Surveys in Approximation Theory 5 (2010), 165–200, [PDF](https://pages.cs.wisc.edu/~deboor/sat/papers/14/14.pdf), §3, equations (3.8)–(3.17), printed pp.187–188 (both PDF page images independently reopened). The source supplies classical facts, not the claimed sharp coefficient. Quadratic parameter uniformization is inherited with precisely the normalization in the preceding two archive notes. See also their citations and credit Douady–Hubbard. No claim that these general Green kernel facts or the repelling-tip escape exponent are new in the wider literature.
 
-**Status:** written analytic proof of a sharp variational reduction and exact optimal leading logarithmic coefficient in the physical parameter plane, with a contrasting double-logarithmic local loss at the genuine parabolic cusp. The earlier Fourier penalty upper bound is used as an imported archive argument, not silently reproved. The sharp lower coefficient is independent of that upper bound. No new source bytes were hashed; Saff's page images were read, not a full literature novelty audit. No physical sequence of connected relative neighborhoods, divergent net-gain schedule, or parameter rigidity is asserted. H4, H1–H3, UPTCR and MLC remain open. AI assistance: ChatGPT GPT-6.2; no independent human specialist review or Lean verification.
+**Status:** written analytic proof of a sharp variational reduction and exact optimal leading logarithmic coefficient in the physical parameter plane, with a contrasting double-logarithmic local loss at the genuine parabolic cusp. The new upper bound is independent of the earlier Fourier estimate, which remains useful for small relative level changes. The classical Koebe growth theorem is used in addition to the quarter theorem. The sharp coefficient uses the new upper and the actual tip lower bound. No new source bytes were hashed; Saff's page images were read, not a full literature novelty audit. No physical sequence of connected relative neighborhoods, divergent net-gain schedule, or parameter rigidity is asserted. H4, H1–H3, UPTCR and MLC remain open. AI assistance: ChatGPT GPT-6.2; no independent human specialist review or Lean verification.
