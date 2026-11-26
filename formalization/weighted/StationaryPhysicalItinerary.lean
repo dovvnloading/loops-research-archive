@@ -512,14 +512,16 @@ theorem limbItinerary_continuous_inverse (F : X → X) (D : Set X)
     | succ k ih =>
       change IsOpen (D ∩ F ⁻¹' limbItinerary F D D k)
       exact hD.inter (ih.preimage hF)
-  have hOpenIter : IsOpenMap (F^[n]) := by
-    induction n with
+  have hOpenIterAll : ∀ k : ℕ, IsOpenMap (F^[k]) := by
+    intro k
+    induction k with
     | zero =>
       intro U hU
       simpa using hU
     | succ k ih =>
       rw [Function.iterate_succ]
-      exact ih.comp hopen
+      exact IsOpenMap.comp ih hopen
+  have hOpenIter : IsOpenMap (F^[n]) := hOpenIterAll n
   let L := limbItinerary F D D n
   have hImage : (F^[n]) '' L = D :=
     limbItinerary_image F D D hcover Subset.rfl n
@@ -543,7 +545,9 @@ theorem limbItinerary_continuous_inverse (F : X → X) (D : Set X)
     · intro hy
       obtain ⟨x, hx, hxy⟩ := hy
       have he : x = g y := hInj hx.1 (hg y).1 (hxy.trans (hg y).2.symm)
-      exact he ▸ hx.2
+      change g y ∈ U
+      rw [← he]
+      exact hx.2
   rw [heq]
   exact (hOpenIter _ (hLopen.inter hU)).preimage continuous_subtype_val
 
