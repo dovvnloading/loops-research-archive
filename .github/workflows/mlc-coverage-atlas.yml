@@ -1,0 +1,30 @@
+name: MLC coverage atlas
+on:
+  push:
+    branches: [main, frontier/mlc-coverage-atlas-20261126]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  atlas:
+    runs-on: ubuntu-latest
+    container: python:3.12.12-bookworm@sha256:c0abd0758831ad99b7a29e0c1a875da9c4abb9a2e3f21e2eeb585dbcadfb6cd0
+    timeout-minutes: 12
+    defaults:
+      run:
+        working-directory: research/frontier/mlc_coverage_atlas_20261126
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+      - name: Check documentary grid
+        run: python -B verify.py
+      - name: Validate committed provenance
+        run: python -B verify.py --check-lock
+      - name: Re-fetch and verify exact source lock on audit branch
+        if: github.ref == 'refs/heads/frontier/mlc-coverage-atlas-20261126' && github.event_name != 'pull_request'
+        run: |
+          python -B verify.py --lock
+          git config --global --add safe.directory "$GITHUB_WORKSPACE"
+          git diff --exit-code -- sources.json NOTE.md

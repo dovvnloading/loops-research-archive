@@ -1,0 +1,3614 @@
+{
+  "schema_version": 1,
+  "date": "2026-11-26",
+  "status": {
+    "atlas": "imported",
+    "residual": "open"
+  },
+  "scope": "Finite documentary decision grid of sufficient source hypotheses, not exhaustive literature or global MLC proof. covered = verified published MLC base implication (conditional finite-tuning transfer separately statement-verified); open = no such covering implication established for the entire cell; may contain covered points or be empty. Preprint-only statements kept separate. Tests include source-defined geometric conditions and are not all decidable from finite words.",
+  "theorems": {
+    "Y": {
+      "author": "J. H. Hubbard (exposition of J.-C. Yoccoz's theorem)",
+      "title": "Local connectivity of Julia sets and bifurcation loci: three theorems of J.-C. Yoccoz",
+      "venue": "Topological Methods in Modern Mathematics (1993), 467–511",
+      "url": "https://pi.math.cornell.edu/~hubbard/hubbard.pdf",
+      "locator": "Theorem III, p. 469 (printed; PDF page 3)",
+      "hypotheses": [
+        "c in M",
+        "not infinitely renormalizable"
+      ],
+      "conclusion": "Basis of closed connected neighborhoods in M.",
+      "kind": "mlc",
+      "source_status": "statement_verified",
+      "audit_verdict": "verified; locator corrected"
+    },
+    "L": {
+      "author": "M. Lyubich",
+      "title": "Dynamics of quadratic polynomials, I–II",
+      "venue": "Acta Math. 178 (1997), 185–297",
+      "url": "https://commack.math.stonybrook.edu/~mlyubich/papers/acta.pdf",
+      "locator": "Rigidity Theorem and Cor. 1.1 p. 187; §2.5 pp. 198–199; Thm IV' p. 239",
+      "hypotheses": [
+        "SL: all straightened renormalizations in a fixed finite collection of truncated secondary limbs",
+        "a priori bounds on renormalizations; rigidity applies to maps satisfying these hypotheses",
+        "for IV': SL and relative periods uniformly sufficiently large for the source lower-bound function Q(p)>0, depending on the limb collection and the accumulation set of arbitrarily long central cascades, which contains no parabolic or Siegel maps"
+      ],
+      "conclusion": "At most one map satisfying SL and bounds in a combinatorial class; to infer singleton fiber must control the whole class. IV' supplies bounds under its additional assumptions.",
+      "kind": "conditional_mlc",
+      "source_status": "statement_verified",
+      "audit_verdict": "verified; conditional, full class hypotheses required"
+    },
+    "Lreal": {
+      "author": "M. Lyubich",
+      "title": "Dynamics of quadratic polynomials, I–II",
+      "venue": "Acta Math. 178 (1997), 185–297",
+      "url": "https://commack.math.stonybrook.edu/~mlyubich/papers/acta.pdf",
+      "locator": "Theorem VIII, §12.1, p. 281",
+      "hypotheses": [
+        "real infinitely renormalizable quadratic",
+        "all essential periods of renormalizations > universal p"
+      ],
+      "conclusion": "MLC at c.",
+      "kind": "mlc",
+      "source_status": "statement_verified",
+      "audit_verdict": "verified"
+    },
+    "Ldensity": {
+      "author": "M. Lyubich",
+      "title": "Dynamics of quadratic polynomials, I–II",
+      "venue": "Acta Math. 178 (1997), 185–297",
+      "url": "https://commack.math.stonybrook.edu/~mlyubich/papers/acta.pdf",
+      "locator": "Density Theorem, p. 188",
+      "hypotheses": [
+        "real quadratics; real rigidity assertion assumes no attracting cycles"
+      ],
+      "conclusion": "Real rigidity/density of hyperbolicity; not a complex-fiber MLC theorem by itself.",
+      "kind": "not_mlc",
+      "source_status": "statement_verified",
+      "audit_verdict": "verified; real density only"
+    },
+    "K": {
+      "author": "J. Kahn",
+      "title": "A priori bounds for some infinitely renormalizable quadratics: I. Bounded primitive combinatorics",
+      "venue": "arXiv:math/0609045v3 (28 Dec 2023); author lists as not formally published: https://www.math.brown.edu/jk17/papers.html",
+      "url": "https://arxiv.org/pdf/math/0609045v3",
+      "locator": "Main Theorem §1.2 and application §1.3, p. 4",
+      "hypotheses": [
+        "infinite sequence of primitive renormalizations with absolute periods p_k",
+        "p_(k+1)/p_k bounded uniformly"
+      ],
+      "conclusion": "A priori bounds and MLC via rigidity; a cofinal absolute-primitive sequence with bounded ratios implies uniformly bounded successive maximal relative periods (each ratio is a factor of a bounded cofinal ratio), so no extra unbounded-period coverage.",
+      "kind": "reported_mlc",
+      "source_status": "statement_verified",
+      "audit_verdict": "downgraded; statement verified, journal publication UNVERIFIED"
+    },
+    "KLdec": {
+      "author": "J. Kahn and M. Lyubich",
+      "title": "A priori bounds for some infinitely renormalizable quadratics: II. Decorations",
+      "venue": "Ann. Sci. Éc. Norm. Supér. (4) 41 (2008), 57–84",
+      "url": "https://www.numdam.org/item/10.24033/asens.2063.pdf",
+      "locator": "Main Theorem and Cor. 1.1, p. 58; Thm 1.2 and Remark 1.2 p. 59; §§2.1–2.2, pp. 61–64",
+      "hypotheses": [
+        "infinitely renormalizable quadratic map",
+        "all relative little M copies belong to a fixed finite family of source-defined decorations (equivalently the q_n and n_n of §2.2 are bounded); source-defined escape excludes immediate satellite levels"
+      ],
+      "conclusion": "A priori bounds and MLC at the parameter.",
+      "kind": "mlc",
+      "source_status": "statement_verified",
+      "audit_verdict": "verified; locator and full condition corrected"
+    },
+    "KLmol": {
+      "author": "J. Kahn and M. Lyubich",
+      "title": "A priori bounds for some infinitely renormalizable quadratics, III: Molecules",
+      "venue": "Complex Dynamics: Families and Friends (2009), 229–256; author preprint IMS07-04",
+      "url": "https://www.math.stonybrook.edu/preprints/ims07-04.pdf",
+      "locator": "Main Theorem p. 1; Cor. 1.1 p. 2; §2.3 and Lemma 2.5 pp. 6–7 (IMS preprint)",
+      "hypotheses": [
+        "cofinal absolute primitive renormalizations; source records only primitive renormalizations and permits intervening satellite renormalizations",
+        "relative copies between recorded primitive renormalizations uniformly separated from main molecule by eta>0; equivalently bounded source period, valence and escape time r,q,n (§2.3, Lemma 2.5)"
+      ],
+      "conclusion": "A priori bounds and MLC.",
+      "kind": "mlc",
+      "source_status": "statement_verified",
+      "audit_verdict": "verified; mixed scope and section corrected"
+    },
+    "DL23": {
+      "author": "D. Dudko and M. Lyubich",
+      "title": "Local connectivity of the Mandelbrot set at some satellite parameters of bounded type",
+      "venue": "Geom. Funct. Anal. 33 (2023), 912–1047; arXiv:1808.10425v4",
+      "url": "https://arxiv.org/pdf/1808.10425v4",
+      "locator": "Theorem 1.1, pp. 3–4 (arXiv)",
+      "hypotheses": [
+        "periodic point c(theta) of the molecule renormalization on the main cardioid boundary",
+        "small copy M_0 near that point as constructed in the theorem",
+        "inverse orbit of M_0 for the periodic return of molecule renormalization (the source's stationary satellite construction)"
+      ],
+      "conclusion": "Nested copies shrink; combinatorial rigidity and local connectivity at the constructed satellite parameters. Not all bounded satellite types.",
+      "kind": "mlc",
+      "source_status": "statement_verified",
+      "audit_verdict": "verified; stationary construction only"
+    },
+    "DL26": {
+      "author": "D. Dudko and M. Lyubich",
+      "title": "MLC at Feigenbaum points",
+      "venue": "Publ. Math. IHÉS 143 (2026), 97–141; published 2 June 2026, DOI 10.5802/pmihes.2; arXiv:2309.02107v3 (29 Dec 2025)",
+      "url": "https://arxiv.org/pdf/2309.02107v3",
+      "locator": "Theorems A and B p. 3; definitions §2.2.5 pp. 10–11 (arXiv v3)",
+      "hypotheses": [
+        "infinitely quadratic-like renormalizable",
+        "uniform finite upper bound on relative periods p_(n+1)/p_n"
+      ],
+      "conclusion": "A priori bounds and MLC at all bounded-type Feigenbaum parameters, no all-primitive or all-satellite restriction.",
+      "kind": "mlc",
+      "source_status": "statement_verified",
+      "audit_verdict": "verified; published all bounded relative periods"
+    },
+    "CS": {
+      "author": "D. Cheraghi and M. Shishikura",
+      "title": "Satellite renormalization of quadratic polynomials",
+      "venue": "arXiv:1509.07843v1 (2015); author PDF (journal publication UNVERIFIED)",
+      "url": "https://www.ma.imperial.ac.uk/~dcheragh/Research/2015-2.pdf",
+      "locator": "Theorem D p. 6; signed continued fractions pp. 5–6; (6.8) and example p. 62",
+      "hypotheses": [
+        "all levels satellite, reduced fractions a_i/q_i",
+        "signed continued fractions with digits b_i,j and signs epsilon_i,j as defined in source",
+        "b_1,1 >= N for theorem threshold N; b_i,j+1 >= b_i,j^2; b_i+1,1 >= q_i^2"
+      ],
+      "conclusion": "Exponential shrinking of nested Mandelbrot copies and MLC. For one-digit rotations ±1/q_i: q_1 >= N and q_(i+1) >= q_i^2. Mere high digits are insufficient.",
+      "kind": "reported_mlc",
+      "source_status": "statement_verified",
+      "audit_verdict": "downgraded; statement verified, journal publication UNVERIFIED"
+    },
+    "C": {
+      "author": "D. Cheraghi",
+      "title": "Combinatorial rigidity for some infinitely renormalizable unicritical polynomials",
+      "venue": "Conform. Geom. Dyn. 14 (2010), 219–255",
+      "url": "https://www.ma.imperial.ac.uk/~dcheragh/Research/2010-1.pdf",
+      "locator": "Rigidity Theorem, pp. 1–2 (author PDF)",
+      "hypotheses": [
+        "infinitely renormalizable unicritical polynomial of degree d",
+        "secondary limbs condition (SL)",
+        "a priori bounds"
+      ],
+      "conclusion": "Combinatorial rigidity of the polynomial under SL and a priori bounds (hence local connectivity of the corresponding connectedness locus as stated in the abstract). Not an independent high-type satellite theorem.",
+      "kind": "conditional_mlc",
+      "source_status": "statement_verified",
+      "audit_verdict": "verified; SL and a priori bounds required"
+    },
+    "Lev1": {
+      "author": "G. Levin",
+      "title": "Rigidity and non-local connectivity of Julia sets of some quadratic polynomials",
+      "venue": "Commun. Math. Phys. 304 (2011), 295–328; arXiv:0710.4406v4",
+      "url": "https://arxiv.org/pdf/0710.4406v4",
+      "locator": "Theorem 1 p. 1 (arXiv)",
+      "hypotheses": [
+        "sequence of absolute simple-renormalization periods n_m",
+        "limsup log |p_m| / n_m > 0 for numerators of dividing rotation; or satellite subsequence with limsup log q_m / n_m > 0"
+      ],
+      "conclusion": "MLC at parameter.",
+      "kind": "mlc",
+      "source_status": "statement_verified",
+      "audit_verdict": "verified"
+    },
+    "Lev2": {
+      "author": "G. Levin",
+      "title": "Rigidity and non-local connectivity of Julia sets of some quadratic polynomials",
+      "venue": "Commun. Math. Phys. 304 (2011), 295–328; arXiv:0710.4406v4",
+      "url": "https://arxiv.org/pdf/0710.4406v4",
+      "locator": "Theorem 2 pp. 3–4 (arXiv)",
+      "hypotheses": [
+        "infinite satellite cascade with denominators q_m tending to infinity",
+        "limsup |t_(m+1)|^(1/q_m) < 1"
+      ],
+      "conclusion": "MLC at limit; Julia set not locally connected.",
+      "kind": "mlc",
+      "source_status": "statement_verified",
+      "audit_verdict": "verified"
+    },
+    "Levadd": {
+      "author": "G. Levin",
+      "title": "Addendum to Rigidity and non-local connectivity of Julia sets of some quadratic polynomials",
+      "venue": "Commun. Math. Phys. 325 (2014), 1171–1178, DOI 10.1007/s00220-013-1873-0; included in arXiv:0710.4406v4",
+      "url": "https://arxiv.org/pdf/0710.4406v4",
+      "locator": "Addendum Theorem 1(1), separate p. 1 (PDF page 42)",
+      "hypotheses": [
+        "satellite cascade, t_m=p_m/q_m",
+        "sup_(m>=1) |t_m| product_(k=0..m-1) q_k < infinity",
+        "limsup q_m/(product_(k=0..m-1) q_k)^2 > 0"
+      ],
+      "conclusion": "MLC at limiting parameter.",
+      "kind": "mlc",
+      "source_status": "statement_verified",
+      "audit_verdict": "verified; publication details corrected"
+    },
+    "EE": {
+      "author": "J. Kahn and M. Lyubich",
+      "title": "A priori bounds for some infinitely renormalizable quadratics: IV. Elephant Eyes (PDF title; arXiv catalogue has singular quadratic)",
+      "venue": "arXiv:2601.21905v1 (29 Jan 2026)",
+      "url": "https://arxiv.org/pdf/2601.21905v1",
+      "locator": "§4.0.1 E1–E3 p. 9; MLC statement §8 p. 18 (unnumbered; proof not audited)",
+      "hypotheses": [
+        "source elephant-eye relative types at every relevant level",
+        "E1 dividing rotation 1/q; E2 only the central little filled Julia set is contained in the central piece Y (excludes the pure satellite shared-base-point configuration); E3 relative period q+b with b uniformly bounded",
+        "source uses b<q simplification"
+      ],
+      "conclusion": "A priori bounds; MLC application stated in §8 with additional cited rigidity inputs; application proof assigned to separate research thread.",
+      "kind": "reported_mlc",
+      "source_status": "statement_verified",
+      "audit_verdict": "downgraded to reported preprint application; proof dependencies not audited"
+    },
+    "KKL": {
+      "author": "J. Kahn, A. Kapiamba and M. Lyubich",
+      "title": "MLC for parabolically bounded primitive renormalization",
+      "venue": "arXiv:2606.27272v1 (25 Jun 2026)",
+      "url": "https://arxiv.org/pdf/2606.27272v1",
+      "locator": "Theorems A,B p. 3; C p. 4; reference DKLP p. 71",
+      "hypotheses": [
+        "infinite prime primitive renormalization types from a parabolically bounded family in source definition",
+        "finite union of individual types and parabolic tails via source Branner–Douady embeddings Phi_q of fixed primitive type",
+        "Theorem B separately requires beau bounds and bounded puzzle Teichmüller diameter"
+      ],
+      "conclusion": "Theorem C states MLC for this family; its rigidity chain uses DKLP in preparation, primary text UNVERIFIED. Not general primitive or mixed renormalization. Remark after C puts mixed bounded satellite/primitive-parabolic tails combination outside scope.",
+      "kind": "reported_mlc",
+      "source_status": "statement_verified",
+      "audit_verdict": "downgraded to reported preprint application; DKLP UNVERIFIED"
+    },
+    "LY": {
+      "author": "M. Lyubich and M. Yampolsky",
+      "title": "Dynamics of quadratic polynomials: complex bounds for real maps",
+      "venue": "Ann. Inst. Fourier 47 (1997), 1219–1255",
+      "url": "https://www.numdam.org/item/AIF_1997__47_4_1219_0.pdf",
+      "locator": "Theorem 1.1, Complex Bounds Theorem and Local Connectivity Theorem p. 1220",
+      "hypotheses": [
+        "Theorem 1.1: real n-times renormalizable quadratic; first n-1 essential periods bounded, with source exception for final doubling near cusp",
+        "Complex Bounds Theorem: universal bounds for real infinitely renormalizable quadratics; Local Connectivity Theorem: real parameters in [-2,1/4]"
+      ],
+      "conclusion": "A priori bounds and JLC for real quadratics, not a general MLC theorem.",
+      "kind": "not_mlc",
+      "source_status": "statement_verified",
+      "audit_verdict": "verified; bounds and JLC only; finite-stage hypothesis corrected"
+    },
+    "LvS": {
+      "author": "G. Levin and S. van Strien",
+      "title": "Local connectivity of the Julia set of real polynomials",
+      "venue": "Ann. of Math. 147 (1998), 471–541; arXiv:math/9504227v1",
+      "url": "https://arxiv.org/pdf/math/9504227v1",
+      "locator": "Main theorem p. 1 (preprint)",
+      "hypotheses": [
+        "real unicritical polynomials z^ell+c, ell even, c real, as in main theorem; applies to real quadratics"
+      ],
+      "conclusion": "Julia set local connectivity, not complex parameter-plane MLC.",
+      "kind": "not_mlc",
+      "source_status": "statement_verified",
+      "audit_verdict": "verified; JLC only"
+    },
+    "GS": {
+      "author": "J. Graczyk and G. Świątek",
+      "title": "Generic hyperbolicity in the logistic family",
+      "venue": "Ann. of Math. 146 (1997), 1–52",
+      "url": "https://annals.math.princeton.edu/articles/12963",
+      "locator": "journal theorem/page UNVERIFIED",
+      "hypotheses": [
+        "real logistic family; precise journal theorem UNVERIFIED"
+      ],
+      "conclusion": "Real density result; no imported MLC implication here.",
+      "kind": "not_mlc",
+      "source_status": "UNVERIFIED",
+      "audit_verdict": "UNVERIFIED primary theorem; no MLC credit"
+    },
+    "DKL": {
+      "author": "D. Dudko, J. Kahn and M. Lyubich",
+      "title": "Local connectivity of the Mandelbrot set along the real line",
+      "venue": "Manuscript (2022), cited as [14] by Dudko survey",
+      "url": "",
+      "locator": "UNVERIFIED primary manuscript; survey §4.3 after Theorem 4.1 and ref. [14]",
+      "hypotheses": [
+        "real line and veins as reported by survey; exact primary hypotheses UNVERIFIED"
+      ],
+      "conclusion": "Survey reports all-real and vein MLC. Not an independently verified primary theorem in this atlas.",
+      "kind": "reported_mlc",
+      "source_status": "UNVERIFIED",
+      "audit_verdict": "UNVERIFIED primary manuscript; no MLC credit"
+    },
+    "survey": {
+      "author": "D. Dudko",
+      "title": "On the MLC Conjecture and the Renormalization Theory in Complex Dynamics",
+      "venue": "arXiv:2512.24171v1 (30 Dec 2025)",
+      "url": "https://arxiv.org/pdf/2512.24171v1",
+      "locator": "HTML v1 https://arxiv.org/html/2512.24171v1; §4.2–4.5, Thm 4.1/4.2, Problems 4.3/4.4; PDF page UNVERIFIED",
+      "hypotheses": [
+        "exposition and open problems"
+      ],
+      "conclusion": "Bounded-type coverage; remaining unbounded satellite bounds and virtual molecule interpolation. Not an additional independent MLC theorem.",
+      "kind": "survey",
+      "source_status": "statement_verified_html",
+      "audit_verdict": "verified HTML v1; PDF pagination UNVERIFIED"
+    },
+    "TUN": {
+      "author": "D. Schleicher",
+      "title": "On Fibers and Renormalization of Julia Sets and Multibrot Sets",
+      "venue": "Stony Brook IMS 1998/13b; arXiv:math/9902156v1 (1999); statement-verified transfer, not a claim of journal publication",
+      "url": "https://www.math.stonybrook.edu/preprints/ims98-13b.pdf",
+      "locator": "Theorem 3.1 and Corollary 3.2, p. 6 (IMS PDF); Introduction p. 2",
+      "hypotheses": [
+        "finite tuning homeomorphism of Multibrot set onto a little copy",
+        "trivial parameter fiber of the untuned point"
+      ],
+      "conclusion": "Trivial fibers preserved in both directions under every tuning map, hence MLC for a tuned trivial-fiber point. Not a new base case.",
+      "kind": "conditional_mlc",
+      "source_status": "statement_verified",
+      "audit_verdict": "verified preprint transfer only; no independent coverage credit"
+    }
+  },
+  "grid": {
+    "regimes": [
+      "P",
+      "S",
+      "mixed_eventually_P",
+      "mixed_eventually_S",
+      "mixed_recurrent"
+    ],
+    "periods": [
+      "bounded",
+      "unbounded"
+    ],
+    "loci": [
+      "real",
+      "nonreal"
+    ],
+    "rotations_unbounded_with_satellite": [
+      "bounded_digits",
+      "unbounded_digits_min_tends_infty",
+      "unbounded_digits_min_not_tends_infty"
+    ],
+    "rotation_definition": "For satellite levels only: standard nearest-integer signed CF after mod 1 representative in (-1/2,1/2]; bounded means uniform bound on all digits; otherwise distinguish minimum digit at satellite levels tends to infinity or does not (for finitely many satellite levels use bounded). High type = every digit >= a threshold N, separately record that flag; can coexist with bounded digits. Unbounded relative periods need not mean unbounded CF digits (long fractions).",
+    "excluded": [
+      {
+        "regime": "S",
+        "period": "unbounded",
+        "locus": "real",
+        "reason": "Real satellite copies have rotation 1/2, relative period 2 at every level."
+      }
+    ],
+    "predicates": {
+      "k": {
+        "theorem": "K",
+        "test": "cofinal absolute primitive renormalizations with bounded ratios of their absolute periods (implies bounded maximal relative periods; unbounded-period cells are syntactic empty cases); preprint statement only"
+      },
+      "dec": {
+        "theorem": "KLdec",
+        "test": "source's primitive finite decoration condition; allow a finite tail only if the theorem establishes a singleton parameter fiber, then use TUN"
+      },
+      "mol": {
+        "theorem": "KLmol",
+        "test": "source's uniform anti-molecule condition on cofinal absolute primitive renormalizations, allowing intervening satellites as in §2.3; allow a finite tail only if the theorem establishes a singleton parameter fiber, then use TUN"
+      },
+      "real_essential": {
+        "theorem": "Lreal",
+        "test": "some straightened tail is real and all of its essential periods exceed the threshold of Theorem VIII (or the original parameter satisfies that hypothesis)"
+      },
+      "qg": {
+        "theorem": "CS",
+        "test": "all-satellite signed CF quadratic growth QG_N; allow a finite tail only if the theorem establishes a singleton parameter fiber, then use TUN"
+      },
+      "levin1": {
+        "theorem": "Lev1",
+        "test": "source's simple-renormalization exponential numerator or satellite denominator criterion; allow a finite tail only if the theorem establishes a singleton parameter fiber, then use TUN"
+      },
+      "levin2": {
+        "theorem": "Lev2",
+        "test": "source's all-satellite exponential next-rotation criterion; allow a finite tail only if the theorem establishes a singleton parameter fiber, then use TUN"
+      },
+      "levinadd": {
+        "theorem": "Levadd",
+        "test": "source's all-satellite addendum product conditions; allow a finite tail only if the theorem establishes a singleton parameter fiber, then use TUN"
+      },
+      "ee": {
+        "theorem": "EE",
+        "test": "source's E1–E3 elephant-eye family; allow a finite tail only if the theorem establishes a singleton parameter fiber, then use TUN"
+      },
+      "kkl": {
+        "theorem": "KKL",
+        "test": "source's parabolically bounded prime primitive family; allow a finite tail only if the theorem establishes a singleton parameter fiber, then use TUN"
+      },
+      "sl_bounds": {
+        "theorem": "L",
+        "test": "SL and verified a priori bounds for every member of the combinatorial class; or IV' with SL, uniformly sufficiently large relative periods for Q(p)>0, and its no-parabolic/no-Siegel accumulation condition for the whole class; allow a finite tail only if the theorem establishes a singleton parameter fiber, then use TUN"
+      }
+    },
+    "priority": [
+      "levin1",
+      "k",
+      "dec",
+      "mol",
+      "real_essential",
+      "qg",
+      "levin2",
+      "levinadd",
+      "sl_bounds",
+      "ee",
+      "kkl",
+      "residual"
+    ],
+    "semantics": "First true applicable predicate, allowing finite tails only when the original theorem establishes a trivial parameter fiber (nested copies shrink or equivalent); Schleicher Cor. 3.2 is a verified preprint transfer, not an independent base case. Tests are full source hypotheses. The real_essential test includes a real straightened tail, not merely original locus. K/CS and EE/KKL are reported preprint statements, not counted as published coverage; K's unbounded cells are empty. Residual means all earlier applicable tests false. An all-real/vein manuscript is reported, primary text UNVERIFIED."
+  },
+  "classes": {
+    "P/bounded/real/none/all": {
+      "regime": "P",
+      "period": "bounded",
+      "locus": "real",
+      "rotation": "none",
+      "refinement": "all",
+      "earlier_tests_false": [],
+      "status": "covered",
+      "theorems": [
+        "DL26"
+      ],
+      "reported_theorems": [],
+      "reason": "Uniform relative-period bound is exactly the hypothesis of Theorem B."
+    },
+    "P/bounded/nonreal/none/all": {
+      "regime": "P",
+      "period": "bounded",
+      "locus": "nonreal",
+      "rotation": "none",
+      "refinement": "all",
+      "earlier_tests_false": [],
+      "status": "covered",
+      "theorems": [
+        "DL26"
+      ],
+      "reported_theorems": [],
+      "reason": "Uniform relative-period bound is exactly the hypothesis of Theorem B."
+    },
+    "P/unbounded/real/none/levin1": {
+      "regime": "P",
+      "period": "unbounded",
+      "locus": "real",
+      "rotation": "none",
+      "refinement": "levin1",
+      "earlier_tests_false": [],
+      "status": "covered",
+      "theorems": [
+        "Lev1",
+        "TUN"
+      ],
+      "reported_theorems": [],
+      "reason": "First true sufficient predicate: source's simple-renormalization exponential numerator or satellite denominator criterion; allow a finite tail only if the theorem establishes a singleton parameter fiber, then use TUN. Other earlier predicates false by definition."
+    },
+    "P/unbounded/real/none/k": {
+      "regime": "P",
+      "period": "unbounded",
+      "locus": "real",
+      "rotation": "none",
+      "refinement": "k",
+      "earlier_tests_false": [
+        "levin1"
+      ],
+      "status": "open",
+      "theorems": [],
+      "reported_theorems": [
+        "K"
+      ],
+      "reason": "Syntactic empty unbounded-period cell: the cofinal bounded-ratio hypothesis implies bounded maximal relative periods. Kahn's statement is verified as a preprint, not counted as published coverage."
+    },
+    "P/unbounded/real/none/dec": {
+      "regime": "P",
+      "period": "unbounded",
+      "locus": "real",
+      "rotation": "none",
+      "refinement": "dec",
+      "earlier_tests_false": [
+        "levin1",
+        "k"
+      ],
+      "status": "covered",
+      "theorems": [
+        "KLdec",
+        "TUN"
+      ],
+      "reported_theorems": [],
+      "reason": "First true sufficient predicate: source's primitive finite decoration condition; allow a finite tail only if the theorem establishes a singleton parameter fiber, then use TUN. Other earlier predicates false by definition."
+    },
+    "P/unbounded/real/none/mol": {
+      "regime": "P",
+      "period": "unbounded",
+      "locus": "real",
+      "rotation": "none",
+      "refinement": "mol",
+      "earlier_tests_false": [
+        "levin1",
+        "k",
+        "dec"
+      ],
+      "status": "covered",
+      "theorems": [
+        "KLmol",
+        "TUN"
+      ],
+      "reported_theorems": [],
+      "reason": "First true sufficient predicate: source's uniform anti-molecule condition on cofinal absolute primitive renormalizations, allowing intervening satellites as in §2.3; allow a finite tail only if the theorem establishes a singleton parameter fiber, then use TUN. Other earlier predicates false by definition."
+    },
+    "P/unbounded/real/none/real_essential": {
+      "regime": "P",
+      "period": "unbounded",
+      "locus": "real",
+      "rotation": "none",
+      "refinement": "real_essential",
+      "earlier_tests_false": [
+        "levin1",
+        "k",
+        "dec",
+        "mol"
+      ],
+      "status": "covered",
+      "theorems": [
+        "Lreal",
+        "TUN"
+      ],
+      "reported_theorems": [],
+      "reason": "First true sufficient predicate: some straightened tail is real and all of its essential periods exceed the threshold of Theorem VIII (or the original parameter satisfies that hypothesis). Other earlier predicates false by definition."
+    },
+    "P/unbounded/real/none/sl_bounds": {
+      "regime": "P",
+      "period": "unbounded",
+      "locus": "real",
+      "rotation": "none",
+      "refinement": "sl_bounds",
+      "earlier_tests_false": [
+        "levin1",
+        "k",
+        "dec",
+        "mol",
+        "real_essential"
+      ],
+      "status": "covered",
+      "theorems": [
+        "L",
+        "TUN"
+      ],
+      "reported_theorems": [],
+      "reason": "First true sufficient predicate: SL and verified a priori bounds for every member of the combinatorial class; or IV' with SL, uniformly sufficiently large relative periods for Q(p)>0, and its no-parabolic/no-Siegel accumulation condition for the whole class; allow a finite tail only if the theorem establishes a singleton parameter fiber, then use TUN. Other earlier predicates false by definition."
+    },
+    "P/unbounded/real/none/ee": {
+      "regime": "P",
+      "period": "unbounded",
+      "locus": "real",
+      "rotation": "none",
+      "refinement": "ee",
+      "earlier_tests_false": [
+        "levin1",
+        "k",
+        "dec",
+        "mol",
+        "real_essential",
+        "sl_bounds"
+      ],
+      "status": "open",
+      "theorems": [],
+      "reported_theorems": [
+        "EE"
+      ],
+      "reason": "First true applicable predicate: source's E1–E3 elephant-eye family; allow a finite tail only if the theorem establishes a singleton parameter fiber, then use TUN. Preprint statement verified; publication or additional proof inputs are UNVERIFIED; no published MLC coverage credited."
+    },
+    "P/unbounded/real/none/kkl": {
+      "regime": "P",
+      "period": "unbounded",
+      "locus": "real",
+      "rotation": "none",
+      "refinement": "kkl",
+      "earlier_tests_false": [
+        "levin1",
+        "k",
+        "dec",
+        "mol",
+        "real_essential",
+        "sl_bounds",
+        "ee"
+      ],
+      "status": "open",
+      "theorems": [],
+      "reported_theorems": [
+        "KKL"
+      ],
+      "reason": "First true applicable predicate: source's parabolically bounded prime primitive family; allow a finite tail only if the theorem establishes a singleton parameter fiber, then use TUN. Preprint statement verified; publication or additional proof inputs are UNVERIFIED; no published MLC coverage credited."
+    },
+    "P/unbounded/real/none/residual": {
+      "regime": "P",
+      "period": "unbounded",
+      "locus": "real",
+      "rotation": "none",
+      "refinement": "residual",
+      "earlier_tests_false": [
+        "levin1",
+        "k",
+        "dec",
+        "mol",
+        "real_essential",
+        "sl_bounds",
+        "ee",
+        "kkl"
+      ],
+      "status": "open",
+      "theorems": [],
+      "reported_theorems": [
+        "DKL"
+      ],
+      "reason": "Unbounded relative periods exclude DL26 and DL23 bounded construction; applicable sufficient predicates above are false, including available finite-tail transfers. No general implication established in this audit. Survey reports real/vein MLC, but [14] primary manuscript is UNVERIFIED."
+    },
+    "P/unbounded/nonreal/none/levin1": {
+      "regime": "P",
+      "period": "unbounded",
+      "locus": "nonreal",
+      "rotation": "none",
+      "refinement": "levin1",
+      "earlier_tests_false": [],
+      "status": "covered",
+      "theorems": [
+        "Lev1",
+        "TUN"
+      ],
+      "reported_theorems": [],
+      "reason": "First true sufficient predicate: source's simple-renormalization exponential numerator or satellite denominator criterion; allow a finite tail only if the theorem establishes a singleton parameter fiber, then use TUN. Other earlier predicates false by definition."
+    },
+    "P/unbounded/nonreal/none/k": {
+      "regime": "P",
+      "period": "unbounded",
+      "locus": "nonreal",
+      "rotation": "none",
+      "refinement": "k",
+      "earlier_tests_false": [
+        "levin1"
+      ],
+      "status": "open",
+      "theorems": [],
+      "reported_theorems": [
+        "K"
+      ],
+      "reason": "Syntactic empty unbounded-period cell: the cofinal bounded-ratio hypothesis implies bounded maximal relative periods. Kahn's statement is verified as a preprint, not counted as published coverage."
+    },
+    "P/unbounded/nonreal/none/dec": {
+      "regime": "P",
+      "period": "unbounded",
+      "locus": "nonreal",
+      "rotation": "none",
+      "refinement": "dec",
+      "earlier_tests_false": [
+        "levin1",
+        "k"
+      ],
+      "status": "covered",
+      "theorems": [
+        "KLdec",
+        "TUN"
+      ],
+      "reported_theorems": [],
+      "reason": "First true sufficient predicate: source's primitive finite decoration condition; allow a finite tail only if the theorem establishes a singleton parameter fiber, then use TUN. Other earlier predicates false by definition."
+    },
+    "P/unbounded/nonreal/none/mol": {
+      "regime": "P",
+      "period": "unbounded",
+      "locus": "nonreal",
+      "rotation": "none",
+      "refinement": "mol",
+      "earlier_tests_false": [
+        "levin1",
+        "k",
+        "dec"
+      ],
+      "status": "covered",
+      "theorems": [
+        "KLmol",
+        "TUN"
+      ],
+      "reported_theorems": [],
+      "reason": "First true sufficient predicate: source's uniform anti-molecule condition on cofinal absolute primitive renormalizations, allowing intervening satellites as in §2.3; allow a finite tail only if the theorem establishes a singleton parameter fiber, then use TUN. Other earlier predicates false by definition."
+    },
+    "P/unbounded/nonreal/none/real_essential": {
+      "regime": "P",
+      "period": "unbounded",
+      "locus": "nonreal",
+      "rotation": "none",
+      "refinement": "real_essential",
+      "earlier_tests_false": [
+        "levin1",
+        "k",
+        "dec",
+        "mol"
+      ],
+      "status": "covered",
+      "theorems": [
+        "Lreal",
+        "TUN"
+      ],
+      "reported_theorems": [],
+      "reason": "First true sufficient predicate: some straightened tail is real and all of its essential periods exceed the threshold of Theorem VIII (or the original parameter satisfies that hypothesis). Other earlier predicates false by definition."
+    },
+    "P/unbounded/nonreal/none/sl_bounds": {
+      "regime": "P",
+      "period": "unbounded",
+      "locus": "nonreal",
+      "rotation": "none",
+      "refinement": "sl_bounds",
+      "earlier_tests_false": [
+        "levin1",
+        "k",
+        "dec",
+        "mol",
+        "real_essential"
+      ],
+      "status": "covered",
+      "theorems": [
+        "L",
+        "TUN"
+      ],
+      "reported_theorems": [],
+      "reason": "First true sufficient predicate: SL and verified a priori bounds for every member of the combinatorial class; or IV' with SL, uniformly sufficiently large relative periods for Q(p)>0, and its no-parabolic/no-Siegel accumulation condition for the whole class; allow a finite tail only if the theorem establishes a singleton parameter fiber, then use TUN. Other earlier predicates false by definition."
+    },
+    "P/unbounded/nonreal/none/ee": {
+      "regime": "P",
+      "period": "unbounded",
+      "locus": "nonreal",
+      "rotation": "none",
+      "refinement": "ee",
+      "earlier_tests_false": [
+        "levin1",
+        "k",
+        "dec",
+        "mol",
+        "real_essential",
+        "sl_bounds"
+      ],
+      "status": "open",
+      "theorems": [],
+      "reported_theorems": [
+        "EE"
+      ],
+      "reason": "First true applicable predicate: source's E1–E3 elephant-eye family; allow a finite tail only if the theorem establishes a singleton parameter fiber, then use TUN. Preprint statement verified; publication or additional proof inputs are UNVERIFIED; no published MLC coverage credited."
+    },
+    "P/unbounded/nonreal/none/kkl": {
+      "regime": "P",
+      "period": "unbounded",
+      "locus": "nonreal",
+      "rotation": "none",
+      "refinement": "kkl",
+      "earlier_tests_false": [
+        "levin1",
+        "k",
+        "dec",
+        "mol",
+        "real_essential",
+        "sl_bounds",
+        "ee"
+      ],
+      "status": "open",
+      "theorems": [],
+      "reported_theorems": [
+        "KKL"
+      ],
+      "reason": "First true applicable predicate: source's parabolically bounded prime primitive family; allow a finite tail only if the theorem establishes a singleton parameter fiber, then use TUN. Preprint statement verified; publication or additional proof inputs are UNVERIFIED; no published MLC coverage credited."
+    },
+    "P/unbounded/nonreal/none/residual": {
+      "regime": "P",
+      "period": "unbounded",
+      "locus": "nonreal",
+      "rotation": "none",
+      "refinement": "residual",
+      "earlier_tests_false": [
+        "levin1",
+        "k",
+        "dec",
+        "mol",
+        "real_essential",
+        "sl_bounds",
+        "ee",
+        "kkl"
+      ],
+      "status": "open",
+      "theorems": [],
+      "reported_theorems": [],
+      "reason": "Unbounded relative periods exclude DL26 and DL23 bounded construction; applicable sufficient predicates above are false, including available finite-tail transfers. No general implication established in this audit."
+    },
+    "S/bounded/real/bounded_denominators/all": {
+      "regime": "S",
+      "period": "bounded",
+      "locus": "real",
+      "rotation": "bounded_denominators",
+      "refinement": "all",
+      "earlier_tests_false": [],
+      "status": "covered",
+      "theorems": [
+        "DL26"
+      ],
+      "reported_theorems": [],
+      "reason": "Uniform relative-period bound is exactly the hypothesis of Theorem B."
+    },
+    "S/bounded/nonreal/bounded_denominators/all": {
+      "regime": "S",
+      "period": "bounded",
+      "locus": "nonreal",
+      "rotation": "bounded_denominators",
+      "refinement": "all",
+      "earlier_tests_false": [],
+      "status": "covered",
+      "theorems": [
+        "DL26"
+      ],
+      "reported_theorems": [],
+      "reason": "Uniform relative-period bound is exactly the hypothesis of Theorem B."
+    },
+    "S/unbounded/nonreal/bounded_digits/levin1": {
+      "regime": "S",
+      "period": "unbounded",
+      "locus": "nonreal",
+      "rotation": "bounded_digits",
+      "refinement": "levin1",
+      "earlier_tests_false": [],
+      "status": "covered",
+      "theorems": [
+        "Lev1",
+        "TUN"
+      ],
+      "reported_theorems": [],
+      "reason": "First true sufficient predicate: source's simple-renormalization exponential numerator or satellite denominator criterion; allow a finite tail only if the theorem establishes a singleton parameter fiber, then use TUN. Other earlier predicates false by definition."
+    },
+    "S/unbounded/nonreal/bounded_digits/qg": {
+      "regime": "S",
+      "period": "unbounded",
+      "locus": "nonreal",
+      "rotation": "bounded_digits",
+      "refinement": "qg",
+      "earlier_tests_false": [
+        "levin1"
+      ],
+      "status": "open",
+      "theorems": [],
+      "reported_theorems": [
+        "CS"
+      ],
+      "reason": "First true applicable predicate: all-satellite signed CF quadratic growth QG_N; allow a finite tail only if the theorem establishes a singleton parameter fiber, then use TUN. Preprint statement verified; publication or additional proof inputs are UNVERIFIED; no published MLC coverage credited."
+    },
+    "S/unbounded/nonreal/bounded_digits/levin2": {
+      "regime": "S",
+      "period": "unbounded",
+      "locus": "nonreal",
+      "rotation": "bounded_digits",
+      "refinement": "levin2",
+      "earlier_tests_false": [
+        "levin1",
+        "qg"
+      ],
+      "status": "covered",
+      "theorems": [
+        "Lev2",
+        "TUN"
+      ],
+      "reported_theorems": [],
+      "reason": "First true sufficient predicate: source's all-satellite exponential next-rotation criterion; allow a finite tail only if the theorem establishes a singleton parameter fiber, then use TUN. Other earlier predicates false by definition."
+    },
+    "S/unbounded/nonreal/bounded_digits/levinadd": {
+      "regime": "S",
+      "period": "unbounded",
+      "locus": "nonreal",
+      "rotation": "bounded_digits",
+      "refinement": "levinadd",
+      "earlier_tests_false": [
+        "levin1",
+        "qg",
+        "levin2"
+      ],
+      "status": "covered",
+      "theorems": [
+        "Levadd",
+        "TUN"
+      ],
+      "reported_theorems": [],
+      "reason": "First true sufficient predicate: source's all-satellite addendum product conditions; allow a finite tail only if the theorem establishes a singleton parameter fiber, then use TUN. Other earlier predicates false by definition."
+    },
+    "S/unbounded/nonreal/bounded_digits/sl_bounds": {
+      "regime": "S",
+      "period": "unbounded",
+      "locus": "nonreal",
+      "rotation": "bounded_digits",
+      "refinement": "sl_bounds",
+      "earlier_tests_false": [
+        "levin1",
+        "qg",
+        "levin2",
+        "levinadd"
+      ],
+      "status": "covered",
+      "theorems": [
+        "L",
+        "TUN"
+      ],
+      "reported_theorems": [],
+      "reason": "First true sufficient predicate: SL and verified a priori bounds for every member of the combinatorial class; or IV' with SL, uniformly sufficiently large relative periods for Q(p)>0, and its no-parabolic/no-Siegel accumulation condition for the whole class; allow a finite tail only if the theorem establishes a singleton parameter fiber, then use TUN. Other earlier predicates false by definition."
+    },
+    "S/unbounded/nonreal/bounded_digits/residual": {
+      "regime": "S",
+      "period": "unbounded",
+      "locus": "nonreal",
+      "rotation": "bounded_digits",
+      "refinement": "residual",
+      "earlier_tests_false": [
+        "levin1",
+        "qg",
+        "levin2",
+        "levinadd",
+        "sl_bounds"
+      ],
+      "status": "open",
+      "theorems": [],
+      "reported_theorems": [],
+      "reason": "Unbounded relative periods exclude DL26 and DL23 bounded construction; applicable sufficient predicates above are false, including available finite-tail transfers. No general implication established in this audit."
+    },
+    "S/unbounded/nonreal/unbounded_digits_min_tends_infty/levin1": {
+      "regime": "S",
+      "period": "unbounded",
+      "locus": "nonreal",
+      "rotation": "unbounded_digits_min_tends_infty",
+      "refinement": "levin1",
+      "earlier_tests_false": [],
+      "status": "covered",
+      "theorems": [
+        "Lev1",
+        "TUN"
+      ],
+      "reported_theorems": [],
+      "reason": "First true sufficient predicate: source's simple-renormalization exponential numerator or satellite denominator criterion; allow a finite tail only if the theorem establishes a singleton parameter fiber, then use TUN. Other earlier predicates false by definition."
+    },
+    "S/unbounded/nonreal/unbounded_digits_min_tends_infty/qg": {
+      "regime": "S",
+      "period": "unbounded",
+      "locus": "nonreal",
+      "rotation": "unbounded_digits_min_tends_infty",
+      "refinement": "qg",
+      "earlier_tests_false": [
+        "levin1"
+      ],
+      "status": "open",
+      "theorems": [],
+      "reported_theorems": [
+        "CS"
+      ],
+      "reason": "First true applicable predicate: all-satellite signed CF quadratic growth QG_N; allow a finite tail only if the theorem establishes a singleton parameter fiber, then use TUN. Preprint statement verified; publication or additional proof inputs are UNVERIFIED; no published MLC coverage credited."
+    },
+    "S/unbounded/nonreal/unbounded_digits_min_tends_infty/levin2": {
+      "regime": "S",
+      "period": "unbounded",
+      "locus": "nonreal",
+      "rotation": "unbounded_digits_min_tends_infty",
+      "refinement": "levin2",
+      "earlier_tests_false": [
+        "levin1",
+        "qg"
+      ],
+      "status": "covered",
+      "theorems": [
+        "Lev2",
+        "TUN"
+      ],
+      "reported_theorems": [],
+      "reason": "First true sufficient predicate: source's all-satellite exponential next-rotation criterion; allow a finite tail only if the theorem establishes a singleton parameter fiber, then use TUN. Other earlier predicates false by definition."
+    },
+    "S/unbounded/nonreal/unbounded_digits_min_tends_infty/levinadd": {
+      "regime": "S",
+      "period": "unbounded",
+      "locus": "nonreal",
+      "rotation": "unbounded_digits_min_tends_infty",
+      "refinement": "levinadd",
+      "earlier_tests_false": [
+        "levin1",
+        "qg",
+        "levin2"
+      ],
+      "status": "covered",
+      "theorems": [
+        "Levadd",
+        "TUN"
+      ],
+      "reported_theorems": [],
+      "reason": "First true sufficient predicate: source's all-satellite addendum product conditions; allow a finite tail only if the theorem establishes a singleton parameter fiber, then use TUN. Other earlier predicates false by definition."
+    },
+    "S/unbounded/nonreal/unbounded_digits_min_tends_infty/sl_bounds": {
+      "regime": "S",
+      "period": "unbounded",
+      "locus": "nonreal",
+      "rotation": "unbounded_digits_min_tends_infty",
+      "refinement": "sl_bounds",
+      "earlier_tests_false": [
+        "levin1",
+        "qg",
+        "levin2",
+        "levinadd"
+      ],
+      "status": "covered",
+      "theorems": [
+        "L",
+        "TUN"
+      ],
+      "reported_theorems": [],
+      "reason": "First true sufficient predicate: SL and verified a priori bounds for every member of the combinatorial class; or IV' with SL, uniformly sufficiently large relative periods for Q(p)>0, and its no-parabolic/no-Siegel accumulation condition for the whole class; allow a finite tail only if the theorem establishes a singleton parameter fiber, then use TUN. Other earlier predicates false by definition."
+    },
+    "S/unbounded/nonreal/unbounded_digits_min_tends_infty/residual": {
+      "regime": "S",
+      "period": "unbounded",
+      "locus": "nonreal",
+      "rotation": "unbounded_digits_min_tends_infty",
+      "refinement": "residual",
+      "earlier_tests_false": [
+        "levin1",
+        "qg",
+        "levin2",
+        "levinadd",
+        "sl_bounds"
+      ],
+      "status": "open",
+      "theorems": [],
+      "reported_theorems": [],
+      "reason": "Unbounded relative periods exclude DL26 and DL23 bounded construction; applicable sufficient predicates above are false, including available finite-tail transfers. No general implication established in this audit."
+    },
+    "S/unbounded/nonreal/unbounded_digits_min_not_tends_infty/levin1": {
+      "regime": "S",
+      "period": "unbounded",
+      "locus": "nonreal",
+      "rotation": "unbounded_digits_min_not_tends_infty",
+      "refinement": "levin1",
+      "earlier_tests_false": [],
+      "status": "covered",
+      "theorems": [
+        "Lev1",
+        "TUN"
+      ],
+      "reported_theorems": [],
+      "reason": "First true sufficient predicate: source's simple-renormalization exponential numerator or satellite denominator criterion; allow a finite tail only if the theorem establishes a singleton parameter fiber, then use TUN. Other earlier predicates false by definition."
+    },
+    "S/unbounded/nonreal/unbounded_digits_min_not_tends_infty/qg": {
+      "regime": "S",
+      "period": "unbounded",
+      "locus": "nonreal",
+      "rotation": "unbounded_digits_min_not_tends_infty",
+      "refinement": "qg",
+      "earlier_tests_false": [
+        "levin1"
+      ],
+      "status": "open",
+      "theorems": [],
+      "reported_theorems": [
+        "CS"
+      ],
+      "reason": "First true applicable predicate: all-satellite signed CF quadratic growth QG_N; allow a finite tail only if the theorem establishes a singleton parameter fiber, then use TUN. Preprint statement verified; publication or additional proof inputs are UNVERIFIED; no published MLC coverage credited."
+    },
+    "S/unbounded/nonreal/unbounded_digits_min_not_tends_infty/levin2": {
+      "regime": "S",
+      "period": "unbounded",
+      "locus": "nonreal",
+      "rotation": "unbounded_digits_min_not_tends_infty",
+      "refinement": "levin2",
+      "earlier_tests_false": [
+        "levin1",
+        "qg"
+      ],
+      "status": "covered",
+      "theorems": [
+        "Lev2",
+        "TUN"
+      ],
+      "reported_theorems": [],
+      "reason": "First true sufficient predicate: source's all-satellite exponential next-rotation criterion; allow a finite tail only if the theorem establishes a singleton parameter fiber, then use TUN. Other earlier predicates false by definition."
+    },
+    "S/unbounded/nonreal/unbounded_digits_min_not_tends_infty/levinadd": {
+      "regime": "S",
+      "period": "unbounded",
+      "locus": "nonreal",
+      "rotation": "unbounded_digits_min_not_tends_infty",
+      "refinement": "levinadd",
+      "earlier_tests_false": [
+        "levin1",
+        "qg",
+        "levin2"
+      ],
+      "status": "covered",
+      "theorems": [
+        "Levadd",
+        "TUN"
+      ],
+      "reported_theorems": [],
+      "reason": "First true sufficient predicate: source's all-satellite addendum product conditions; allow a finite tail only if the theorem establishes a singleton parameter fiber, then use TUN. Other earlier predicates false by definition."
+    },
+    "S/unbounded/nonreal/unbounded_digits_min_not_tends_infty/sl_bounds": {
+      "regime": "S",
+      "period": "unbounded",
+      "locus": "nonreal",
+      "rotation": "unbounded_digits_min_not_tends_infty",
+      "refinement": "sl_bounds",
+      "earlier_tests_false": [
+        "levin1",
+        "qg",
+        "levin2",
+        "levinadd"
+      ],
+      "status": "covered",
+      "theorems": [
+        "L",
+        "TUN"
+      ],
+      "reported_theorems": [],
+      "reason": "First true sufficient predicate: SL and verified a priori bounds for every member of the combinatorial class; or IV' with SL, uniformly sufficiently large relative periods for Q(p)>0, and its no-parabolic/no-Siegel accumulation condition for the whole class; allow a finite tail only if the theorem establishes a singleton parameter fiber, then use TUN. Other earlier predicates false by definition."
+    },
+    "S/unbounded/nonreal/unbounded_digits_min_not_tends_infty/residual": {
+      "regime": "S",
+      "period": "unbounded",
+      "locus": "nonreal",
+      "rotation": "unbounded_digits_min_not_tends_infty",
+      "refinement": "residual",
+      "earlier_tests_false": [
+        "levin1",
+        "qg",
+        "levin2",
+        "levinadd",
+        "sl_bounds"
+      ],
+      "status": "open",
+      "theorems": [],
+      "reported_theorems": [],
+      "reason": "Unbounded relative periods exclude DL26 and DL23 bounded construction; applicable sufficient predicates above are false, including available finite-tail transfers. No general implication established in this audit."
+    },
+    "mixed_eventually_P/bounded/real/bounded_denominators/all": {
+      "regime": "mixed_eventually_P",
+      "period": "bounded",
+      "locus": "real",
+      "rotation": "bounded_denominators",
+      "refinement": "all",
+      "earlier_tests_false": [],
+      "status": "covered",
+      "theorems": [
+        "DL26"
+      ],
+      "reported_theorems": [],
+      "reason": "Uniform relative-period bound is exactly the hypothesis of Theorem B."
+    },
+    "mixed_eventually_P/bounded/nonreal/bounded_denominators/all": {
+      "regime": "mixed_eventually_P",
+      "period": "bounded",
+      "locus": "nonreal",
+      "rotation": "bounded_denominators",
+      "refinement": "all",
+      "earlier_tests_false": [],
+      "status": "covered",
+      "theorems": [
+        "DL26"
+      ],
+      "reported_theorems": [],
+      "reason": "Uniform relative-period bound is exactly the hypothesis of Theorem B."
+    },
+    "mixed_eventually_P/unbounded/real/bounded_digits/levin1": {
+      "regime": "mixed_eventually_P",
+      "period": "unbounded",
+      "locus": "real",
+      "rotation": "bounded_digits",
+      "refinement": "levin1",
+      "earlier_tests_false": [],
+      "status": "covered",
+      "theorems": [
+        "Lev1",
+        "TUN"
+      ],
+      "reported_theorems": [],
+      "reason": "First true sufficient predicate: source's simple-renormalization exponential numerator or satellite denominator criterion; allow a finite tail only if the theorem establishes a singleton parameter fiber, then use TUN. Other earlier predicates false by definition."
+    },
+    "mixed_eventually_P/unbounded/real/bounded_digits/k": {
+      "regime": "mixed_eventually_P",
+      "period": "unbounded",
+      "locus": "real",
+      "rotation": "bounded_digits",
+      "refinement": "k",
+      "earlier_tests_false": [
+        "levin1"
+      ],
+      "status": "open",
+      "theorems": [],
+      "reported_theorems": [
+        "K"
+      ],
+      "reason": "Syntactic empty unbounded-period cell: the cofinal bounded-ratio hypothesis implies bounded maximal relative periods. Kahn's statement is verified as a preprint, not counted as published coverage."
+    },
+    "mixed_eventually_P/unbounded/real/bounded_digits/dec": {
+      "regime": "mixed_eventually_P",
+      "period": "unbounded",
+      "locus": "real",
+      "rotation": "bounded_digits",
+      "refinement": "dec",
+      "earlier_tests_false": [
+        "levin1",
+        "k"
+      ],
+      "status": "covered",
+      "theorems": [
+        "KLdec",
+        "TUN"
+      ],
+      "reported_theorems": [],
+      "reason": "First true sufficient predicate: source's primitive finite decoration condition; allow a finite tail only if the theorem establishes a singleton parameter fiber, then use TUN. Other earlier predicates false by definition."
+    },
+    "mixed_eventually_P/unbounded/real/bounded_digits/mol": {
+      "regime": "mixed_eventually_P",
+      "period": "unbounded",
+      "locus": "real",
+      "rotation": "bounded_digits",
+      "refinement": "mol",
+      "earlier_tests_false": [
+        "levin1",
+        "k",
+        "dec"
+      ],
+      "status": "covered",
+      "theorems": [
+        "KLmol",
+        "TUN"
+      ],
+      "reported_theorems": [],
+      "reason": "First true sufficient predicate: source's uniform anti-molecule condition on cofinal absolute primitive renormalizations, allowing intervening satellites as in §2.3; allow a finite tail only if the theorem establishes a singleton parameter fiber, then use TUN. Other earlier predicates false by definition."
+    },
+    "mixed_eventually_P/unbounded/real/bounded_digits/real_essential": {
+      "regime": "mixed_eventually_P",
+      "period": "unbounded",
+      "locus": "real",
+      "rotation": "bounded_digits",
+      "refinement": "real_essential",
+      "earlier_tests_false": [
+        "levin1",
+        "k",
+        "dec",
+        "mol"
+      ],
+      "status": "covered",
+      "theorems": [
+        "Lreal",
+        "TUN"
+      ],
+      "reported_theorems": [],
+      "reason": "First true sufficient predicate: some straightened tail is real and all of its essential periods exceed the threshold of Theorem VIII (or the original parameter satisfies that hypothesis). Other earlier predicates false by definition."
+    },
+    "mixed_eventually_P/unbounded/real/bounded_digits/sl_bounds": {
+      "regime": "mixed_eventually_P",
+      "period": "unbounded",
+      "locus": "real",
+      "rotation": "bounded_digits",
+      "refinement": "sl_bounds",
+      "earlier_tests_false": [
+        "levin1",
+        "k",
+        "dec",
+        "mol",
+        "real_essential"
+      ],
+      "status": "covered",
+      "theorems": [
+        "L",
+        "TUN"
+      ],
+      "reported_theorems": [],
+      "reason": "First true sufficient predicate: SL and verified a priori bounds for every member of the combinatorial class; or IV' with SL, uniformly sufficiently large relative periods for Q(p)>0, and its no-parabolic/no-Siegel accumulation condition for the whole class; allow a finite tail only if the theorem establishes a singleton parameter fiber, then use TUN. Other earlier predicates false by definition."
+    },
+    "mixed_eventually_P/unbounded/real/bounded_digits/ee": {
+      "regime": "mixed_eventually_P",
+      "period": "unbounded",
+      "locus": "real",
+      "rotation": "bounded_digits",
+      "refinement": "ee",
+      "earlier_tests_false": [
+        "levin1",
+        "k",
+        "dec",
+        "mol",
+        "real_essential",
+        "sl_bounds"
+      ],
+      "status": "open",
+      "theorems": [],
+      "reported_theorems": [
+        "EE"
+      ],
+      "reason": "First true applicable predicate: source's E1–E3 elephant-eye family; allow a finite tail only if the theorem establishes a singleton parameter fiber, then use TUN. Preprint statement verified; publication or additional proof inputs are UNVERIFIED; no published MLC coverage credited."
+    },
+    "mixed_eventually_P/unbounded/real/bounded_digits/kkl": {
+      "regime": "mixed_eventually_P",
+      "period": "unbounded",
+      "locus": "real",
+      "rotation": "bounded_digits",
+      "refinement": "kkl",
+      "earlier_tests_false": [
+        "levin1",
+        "k",
+        "dec",
+        "mol",
+        "real_essential",
+        "sl_bounds",
+        "ee"
+      ],
+      "status": "open",
+      "theorems": [],
+      "reported_theorems": [
+        "KKL"
+      ],
+      "reason": "First true applicable predicate: source's parabolically bounded prime primitive family; allow a finite tail only if the theorem establishes a singleton parameter fiber, then use TUN. Preprint statement verified; publication or additional proof inputs are UNVERIFIED; no published MLC coverage credited."
+    },
+    "mixed_eventually_P/unbounded/real/bounded_digits/residual": {
+      "regime": "mixed_eventually_P",
+      "period": "unbounded",
+      "locus": "real",
+      "rotation": "bounded_digits",
+      "refinement": "residual",
+      "earlier_tests_false": [
+        "levin1",
+        "k",
+        "dec",
+        "mol",
+        "real_essential",
+        "sl_bounds",
+        "ee",
+        "kkl"
+      ],
+      "status": "open",
+      "theorems": [],
+      "reported_theorems": [
+        "DKL"
+      ],
+      "reason": "Unbounded relative periods exclude DL26 and DL23 bounded construction; applicable sufficient predicates above are false, including available finite-tail transfers. No general implication established in this audit. Survey reports real/vein MLC, but [14] primary manuscript is UNVERIFIED."
+    },
+    "mixed_eventually_P/unbounded/real/unbounded_digits_min_tends_infty/levin1": {
+      "regime": "mixed_eventually_P",
+      "period": "unbounded",
+      "locus": "real",
+      "rotation": "unbounded_digits_min_tends_infty",
+      "refinement": "levin1",
+      "earlier_tests_false": [],
+      "status": "covered",
+      "theorems": [
+        "Lev1",
+        "TUN"
+      ],
+      "reported_theorems": [],
+      "reason": "First true sufficient predicate: source's simple-renormalization exponential numerator or satellite denominator criterion; allow a finite tail only if the theorem establishes a singleton parameter fiber, then use TUN. Other earlier predicates false by definition."
+    },
+    "mixed_eventually_P/unbounded/real/unbounded_digits_min_tends_infty/k": {
+      "regime": "mixed_eventually_P",
+      "period": "unbounded",
+      "locus": "real",
+      "rotation": "unbounded_digits_min_tends_infty",
+      "refinement": "k",
+      "earlier_tests_false": [
+        "levin1"
+      ],
+      "status": "open",
+      "theorems": [],
+      "reported_theorems": [
+        "K"
+      ],
+      "reason": "Syntactic empty unbounded-period cell: the cofinal bounded-ratio hypothesis implies bounded maximal relative periods. Kahn's statement is verified as a preprint, not counted as published coverage."
+    },
+    "mixed_eventually_P/unbounded/real/unbounded_digits_min_tends_infty/dec": {
+      "regime": "mixed_eventually_P",
+      "period": "unbounded",
+      "locus": "real",
+      "rotation": "unbounded_digits_min_tends_infty",
+      "refinement": "dec",
+      "earlier_tests_false": [
+        "levin1",
+        "k"
+      ],
+      "status": "covered",
+      "theorems": [
+        "KLdec",
+        "TUN"
+      ],
+      "reported_theorems": [],
+      "reason": "First true sufficient predicate: source's primitive finite decoration condition; allow a finite tail only if the theorem establishes a singleton parameter fiber, then use TUN. Other earlier predicates false by definition."
+    },
+    "mixed_eventually_P/unbounded/real/unbounded_digits_min_tends_infty/mol": {
+      "regime": "mixed_eventually_P",
+      "period": "unbounded",
+      "locus": "real",
+      "rotation": "unbounded_digits_min_tends_infty",
+      "refinement": "mol",
+      "earlier_tests_false": [
+        "levin1",
+        "k",
+        "dec"
+      ],
+      "status": "covered",
+      "theorems": [
+        "KLmol",
+        "TUN"
+      ],
+      "reported_theorems": [],
+      "reason": "First true sufficient predicate: source's uniform anti-molecule condition on cofinal absolute primitive renormalizations, allowing intervening satellites as in §2.3; allow a finite tail only if the theorem establishes a singleton parameter fiber, then use TUN. Other earlier predicates false by definition."
+    },
+    "mixed_eventually_P/unbounded/real/unbounded_digits_min_tends_infty/real_essential": {
+      "regime": "mixed_eventually_P",
+      "period": "unbounded",
+      "locus": "real",
+      "rotation": "unbounded_digits_min_tends_infty",
+      "refinement": "real_essential",
+      "earlier_tests_false": [
+        "levin1",
+        "k",
+        "dec",
+        "mol"
+      ],
+      "status": "covered",
+      "theorems": [
+        "Lreal",
+        "TUN"
+      ],
+      "reported_theorems": [],
+      "reason": "First true sufficient predicate: some straightened tail is real and all of its essential periods exceed the threshold of Theorem VIII (or the original parameter satisfies that hypothesis). Other earlier predicates false by definition."
+    },
+    "mixed_eventually_P/unbounded/real/unbounded_digits_min_tends_infty/sl_bounds": {
+      "regime": "mixed_eventually_P",
+      "period": "unbounded",
+      "locus": "real",
+      "rotation": "unbounded_digits_min_tends_infty",
+      "refinement": "sl_bounds",
+      "earlier_tests_false": [
+        "levin1",
+        "k",
+        "dec",
+        "mol",
+        "real_essential"
+      ],
+      "status": "covered",
+      "theorems": [
+        "L",
+        "TUN"
+      ],
+      "reported_theorems": [],
+      "reason": "First true sufficient predicate: SL and verified a priori bounds for every member of the combinatorial class; or IV' with SL, uniformly sufficiently large relative periods for Q(p)>0, and its no-parabolic/no-Siegel accumulation condition for the whole class; allow a finite tail only if the theorem establishes a singleton parameter fiber, then use TUN. Other earlier predicates false by definition."
+    },
+    "mixed_eventually_P/unbounded/real/unbounded_digits_min_tends_infty/ee": {
+      "regime": "mixed_eventually_P",
+      "period": "unbounded",
+      "locus": "real",
+      "rotation": "unbounded_digits_min_tends_infty",
+      "refinement": "ee",
+      "earlier_tests_false": [
+        "levin1",
+        "k",
+        "dec",
+        "mol",
+        "real_essential",
+        "sl_bounds"
+      ],
+      "status": "open",
+      "theorems": [],
+      "reported_theorems": [
+        "EE"
+      ],
+      "reason": "First true applicable predicate: source's E1–E3 elephant-eye family; allow a finite tail only if the theorem establishes a singleton parameter fiber, then use TUN. Preprint statement verified; publication or additional proof inputs are UNVERIFIED; no published MLC coverage credited."
+    },
+    "mixed_eventually_P/unbounded/real/unbounded_digits_min_tends_infty/kkl": {
+      "regime": "mixed_eventually_P",
+      "period": "unbounded",
+      "locus": "real",
+      "rotation": "unbounded_digits_min_tends_infty",
+      "refinement": "kkl",
+      "earlier_tests_false": [
+        "levin1",
+        "k",
+        "dec",
+        "mol",
+        "real_essential",
+        "sl_bounds",
+        "ee"
+      ],
+      "status": "open",
+      "theorems": [],
+      "reported_theorems": [
+        "KKL"
+      ],
+      "reason": "First true applicable predicate: source's parabolically bounded prime primitive family; allow a finite tail only if the theorem establishes a singleton parameter fiber, then use TUN. Preprint statement verified; publication or additional proof inputs are UNVERIFIED; no published MLC coverage credited."
+    },
+    "mixed_eventually_P/unbounded/real/unbounded_digits_min_tends_infty/residual": {
+      "regime": "mixed_eventually_P",
+      "period": "unbounded",
+      "locus": "real",
+      "rotation": "unbounded_digits_min_tends_infty",
+      "refinement": "residual",
+      "earlier_tests_false": [
+        "levin1",
+        "k",
+        "dec",
+        "mol",
+        "real_essential",
+        "sl_bounds",
+        "ee",
+        "kkl"
+      ],
+      "status": "open",
+      "theorems": [],
+      "reported_theorems": [
+        "DKL"
+      ],
+      "reason": "Unbounded relative periods exclude DL26 and DL23 bounded construction; applicable sufficient predicates above are false, including available finite-tail transfers. No general implication established in this audit. Survey reports real/vein MLC, but [14] primary manuscript is UNVERIFIED."
+    },
+    "mixed_eventually_P/unbounded/real/unbounded_digits_min_not_tends_infty/levin1": {
+      "regime": "mixed_eventually_P",
+      "period": "unbounded",
+      "locus": "real",
+      "rotation": "unbounded_digits_min_not_tends_infty",
+      "refinement": "levin1",
+      "earlier_tests_false": [],
+      "status": "covered",
+      "theorems": [
+        "Lev1",
+        "TUN"
+      ],
+      "reported_theorems": [],
+      "reason": "First true sufficient predicate: source's simple-renormalization exponential numerator or satellite denominator criterion; allow a finite tail only if the theorem establishes a singleton parameter fiber, then use TUN. Other earlier predicates false by definition."
+    },
+    "mixed_eventually_P/unbounded/real/unbounded_digits_min_not_tends_infty/k": {
+      "regime": "mixed_eventually_P",
+      "period": "unbounded",
+      "locus": "real",
+      "rotation": "unbounded_digits_min_not_tends_infty",
+      "refinement": "k",
+      "earlier_tests_false": [
+        "levin1"
+      ],
+      "status": "open",
+      "theorems": [],
+      "reported_theorems": [
+        "K"
+      ],
+      "reason": "Syntactic empty unbounded-period cell: the cofinal bounded-ratio hypothesis implies bounded maximal relative periods. Kahn's statement is verified as a preprint, not counted as published coverage."
+    },
+    "mixed_eventually_P/unbounded/real/unbounded_digits_min_not_tends_infty/dec": {
+      "regime": "mixed_eventually_P",
+      "period": "unbounded",
+      "locus": "real",
+      "rotation": "unbounded_digits_min_not_tends_infty",
+      "refinement": "dec",
+      "earlier_tests_false": [
+        "levin1",
+        "k"
+      ],
+      "status": "covered",
+      "theorems": [
+        "KLdec",
+        "TUN"
+      ],
+      "reported_theorems": [],
+      "reason": "First true sufficient predicate: source's primitive finite decoration condition; allow a finite tail only if the theorem establishes a singleton parameter fiber, then use TUN. Other earlier predicates false by definition."
+    },
+    "mixed_eventually_P/unbounded/real/unbounded_digits_min_not_tends_infty/mol": {
+      "regime": "mixed_eventually_P",
+      "period": "unbounded",
+      "locus": "real",
+      "rotation": "unbounded_digits_min_not_tends_infty",
+      "refinement": "mol",
+      "earlier_tests_false": [
+        "levin1",
+        "k",
+        "dec"
+      ],
+      "status": "covered",
+      "theorems": [
+        "KLmol",
+        "TUN"
+      ],
+      "reported_theorems": [],
+      "reason": "First true sufficient predicate: source's uniform anti-molecule condition on cofinal absolute primitive renormalizations, allowing intervening satellites as in §2.3; allow a finite tail only if the theorem establishes a singleton parameter fiber, then use TUN. Other earlier predicates false by definition."
+    },
+    "mixed_eventually_P/unbounded/real/unbounded_digits_min_not_tends_infty/real_essential": {
+      "regime": "mixed_eventually_P",
+      "period": "unbounded",
+      "locus": "real",
+      "rotation": "unbounded_digits_min_not_tends_infty",
+      "refinement": "real_essential",
+      "earlier_tests_false": [
+        "levin1",
+        "k",
+        "dec",
+        "mol"
+      ],
+      "status": "covered",
+      "theorems": [
+        "Lreal",
+        "TUN"
+      ],
+      "reported_theorems": [],
+      "reason": "First true sufficient predicate: some straightened tail is real and all of its essential periods exceed the threshold of Theorem VIII (or the original parameter satisfies that hypothesis). Other earlier predicates false by definition."
+    },
+    "mixed_eventually_P/unbounded/real/unbounded_digits_min_not_tends_infty/sl_bounds": {
+      "regime": "mixed_eventually_P",
+      "period": "unbounded",
+      "locus": "real",
+      "rotation": "unbounded_digits_min_not_tends_infty",
+      "refinement": "sl_bounds",
+      "earlier_tests_false": [
+        "levin1",
+        "k",
+        "dec",
+        "mol",
+        "real_essential"
+      ],
+      "status": "covered",
+      "theorems": [
+        "L",
+        "TUN"
+      ],
+      "reported_theorems": [],
+      "reason": "First true sufficient predicate: SL and verified a priori bounds for every member of the combinatorial class; or IV' with SL, uniformly sufficiently large relative periods for Q(p)>0, and its no-parabolic/no-Siegel accumulation condition for the whole class; allow a finite tail only if the theorem establishes a singleton parameter fiber, then use TUN. Other earlier predicates false by definition."
+    },
+    "mixed_eventually_P/unbounded/real/unbounded_digits_min_not_tends_infty/ee": {
+      "regime": "mixed_eventually_P",
+      "period": "unbounded",
+      "locus": "real",
+      "rotation": "unbounded_digits_min_not_tends_infty",
+      "refinement": "ee",
+      "earlier_tests_false": [
+        "levin1",
+        "k",
+        "dec",
+        "mol",
+        "real_essential",
+        "sl_bounds"
+      ],
+      "status": "open",
+      "theorems": [],
+      "reported_theorems": [
+        "EE"
+      ],
+      "reason": "First true applicable predicate: source's E1–E3 elephant-eye family; allow a finite tail only if the theorem establishes a singleton parameter fiber, then use TUN. Preprint statement verified; publication or additional proof inputs are UNVERIFIED; no published MLC coverage credited."
+    },
+    "mixed_eventually_P/unbounded/real/unbounded_digits_min_not_tends_infty/kkl": {
+      "regime": "mixed_eventually_P",
+      "period": "unbounded",
+      "locus": "real",
+      "rotation": "unbounded_digits_min_not_tends_infty",
+      "refinement": "kkl",
+      "earlier_tests_false": [
+        "levin1",
+        "k",
+        "dec",
+        "mol",
+        "real_essential",
+        "sl_bounds",
+        "ee"
+      ],
+      "status": "open",
+      "theorems": [],
+      "reported_theorems": [
+        "KKL"
+      ],
+      "reason": "First true applicable predicate: source's parabolically bounded prime primitive family; allow a finite tail only if the theorem establishes a singleton parameter fiber, then use TUN. Preprint statement verified; publication or additional proof inputs are UNVERIFIED; no published MLC coverage credited."
+    },
+    "mixed_eventually_P/unbounded/real/unbounded_digits_min_not_tends_infty/residual": {
+      "regime": "mixed_eventually_P",
+      "period": "unbounded",
+      "locus": "real",
+      "rotation": "unbounded_digits_min_not_tends_infty",
+      "refinement": "residual",
+      "earlier_tests_false": [
+        "levin1",
+        "k",
+        "dec",
+        "mol",
+        "real_essential",
+        "sl_bounds",
+        "ee",
+        "kkl"
+      ],
+      "status": "open",
+      "theorems": [],
+      "reported_theorems": [
+        "DKL"
+      ],
+      "reason": "Unbounded relative periods exclude DL26 and DL23 bounded construction; applicable sufficient predicates above are false, including available finite-tail transfers. No general implication established in this audit. Survey reports real/vein MLC, but [14] primary manuscript is UNVERIFIED."
+    },
+    "mixed_eventually_P/unbounded/nonreal/bounded_digits/levin1": {
+      "regime": "mixed_eventually_P",
+      "period": "unbounded",
+      "locus": "nonreal",
+      "rotation": "bounded_digits",
+      "refinement": "levin1",
+      "earlier_tests_false": [],
+      "status": "covered",
+      "theorems": [
+        "Lev1",
+        "TUN"
+      ],
+      "reported_theorems": [],
+      "reason": "First true sufficient predicate: source's simple-renormalization exponential numerator or satellite denominator criterion; allow a finite tail only if the theorem establishes a singleton parameter fiber, then use TUN. Other earlier predicates false by definition."
+    },
+    "mixed_eventually_P/unbounded/nonreal/bounded_digits/k": {
+      "regime": "mixed_eventually_P",
+      "period": "unbounded",
+      "locus": "nonreal",
+      "rotation": "bounded_digits",
+      "refinement": "k",
+      "earlier_tests_false": [
+        "levin1"
+      ],
+      "status": "open",
+      "theorems": [],
+      "reported_theorems": [
+        "K"
+      ],
+      "reason": "Syntactic empty unbounded-period cell: the cofinal bounded-ratio hypothesis implies bounded maximal relative periods. Kahn's statement is verified as a preprint, not counted as published coverage."
+    },
+    "mixed_eventually_P/unbounded/nonreal/bounded_digits/dec": {
+      "regime": "mixed_eventually_P",
+      "period": "unbounded",
+      "locus": "nonreal",
+      "rotation": "bounded_digits",
+      "refinement": "dec",
+      "earlier_tests_false": [
+        "levin1",
+        "k"
+      ],
+      "status": "covered",
+      "theorems": [
+        "KLdec",
+        "TUN"
+      ],
+      "reported_theorems": [],
+      "reason": "First true sufficient predicate: source's primitive finite decoration condition; allow a finite tail only if the theorem establishes a singleton parameter fiber, then use TUN. Other earlier predicates false by definition."
+    },
+    "mixed_eventually_P/unbounded/nonreal/bounded_digits/mol": {
+      "regime": "mixed_eventually_P",
+      "period": "unbounded",
+      "locus": "nonreal",
+      "rotation": "bounded_digits",
+      "refinement": "mol",
+      "earlier_tests_false": [
+        "levin1",
+        "k",
+        "dec"
+      ],
+      "status": "covered",
+      "theorems": [
+        "KLmol",
+        "TUN"
+      ],
+      "reported_theorems": [],
+      "reason": "First true sufficient predicate: source's uniform anti-molecule condition on cofinal absolute primitive renormalizations, allowing intervening satellites as in §2.3; allow a finite tail only if the theorem establishes a singleton parameter fiber, then use TUN. Other earlier predicates false by definition."
+    },
+    "mixed_eventually_P/unbounded/nonreal/bounded_digits/real_essential": {
+      "regime": "mixed_eventually_P",
+      "period": "unbounded",
+      "locus": "nonreal",
+      "rotation": "bounded_digits",
+      "refinement": "real_essential",
+      "earlier_tests_false": [
+        "levin1",
+        "k",
+        "dec",
+        "mol"
+      ],
+      "status": "covered",
+      "theorems": [
+        "Lreal",
+        "TUN"
+      ],
+      "reported_theorems": [],
+      "reason": "First true sufficient predicate: some straightened tail is real and all of its essential periods exceed the threshold of Theorem VIII (or the original parameter satisfies that hypothesis). Other earlier predicates false by definition."
+    },
+    "mixed_eventually_P/unbounded/nonreal/bounded_digits/sl_bounds": {
+      "regime": "mixed_eventually_P",
+      "period": "unbounded",
+      "locus": "nonreal",
+      "rotation": "bounded_digits",
+      "refinement": "sl_bounds",
+      "earlier_tests_false": [
+        "levin1",
+        "k",
+        "dec",
+        "mol",
+        "real_essential"
+      ],
+      "status": "covered",
+      "theorems": [
+        "L",
+        "TUN"
+      ],
+      "reported_theorems": [],
+      "reason": "First true sufficient predicate: SL and verified a priori bounds for every member of the combinatorial class; or IV' with SL, uniformly sufficiently large relative periods for Q(p)>0, and its no-parabolic/no-Siegel accumulation condition for the whole class; allow a finite tail only if the theorem establishes a singleton parameter fiber, then use TUN. Other earlier predicates false by definition."
+    },
+    "mixed_eventually_P/unbounded/nonreal/bounded_digits/ee": {
+      "regime": "mixed_eventually_P",
+      "period": "unbounded",
+      "locus": "nonreal",
+      "rotation": "bounded_digits",
+      "refinement": "ee",
+      "earlier_tests_false": [
+        "levin1",
+        "k",
+        "dec",
+        "mol",
+        "real_essential",
+        "sl_bounds"
+      ],
+      "status": "open",
+      "theorems": [],
+      "reported_theorems": [
+        "EE"
+      ],
+      "reason": "First true applicable predicate: source's E1–E3 elephant-eye family; allow a finite tail only if the theorem establishes a singleton parameter fiber, then use TUN. Preprint statement verified; publication or additional proof inputs are UNVERIFIED; no published MLC coverage credited."
+    },
+    "mixed_eventually_P/unbounded/nonreal/bounded_digits/kkl": {
+      "regime": "mixed_eventually_P",
+      "period": "unbounded",
+      "locus": "nonreal",
+      "rotation": "bounded_digits",
+      "refinement": "kkl",
+      "earlier_tests_false": [
+        "levin1",
+        "k",
+        "dec",
+        "mol",
+        "real_essential",
+        "sl_bounds",
+        "ee"
+      ],
+      "status": "open",
+      "theorems": [],
+      "reported_theorems": [
+        "KKL"
+      ],
+      "reason": "First true applicable predicate: source's parabolically bounded prime primitive family; allow a finite tail only if the theorem establishes a singleton parameter fiber, then use TUN. Preprint statement verified; publication or additional proof inputs are UNVERIFIED; no published MLC coverage credited."
+    },
+    "mixed_eventually_P/unbounded/nonreal/bounded_digits/residual": {
+      "regime": "mixed_eventually_P",
+      "period": "unbounded",
+      "locus": "nonreal",
+      "rotation": "bounded_digits",
+      "refinement": "residual",
+      "earlier_tests_false": [
+        "levin1",
+        "k",
+        "dec",
+        "mol",
+        "real_essential",
+        "sl_bounds",
+        "ee",
+        "kkl"
+      ],
+      "status": "open",
+      "theorems": [],
+      "reported_theorems": [],
+      "reason": "Unbounded relative periods exclude DL26 and DL23 bounded construction; applicable sufficient predicates above are false, including available finite-tail transfers. No general implication established in this audit."
+    },
+    "mixed_eventually_P/unbounded/nonreal/unbounded_digits_min_tends_infty/levin1": {
+      "regime": "mixed_eventually_P",
+      "period": "unbounded",
+      "locus": "nonreal",
+      "rotation": "unbounded_digits_min_tends_infty",
+      "refinement": "levin1",
+      "earlier_tests_false": [],
+      "status": "covered",
+      "theorems": [
+        "Lev1",
+        "TUN"
+      ],
+      "reported_theorems": [],
+      "reason": "First true sufficient predicate: source's simple-renormalization exponential numerator or satellite denominator criterion; allow a finite tail only if the theorem establishes a singleton parameter fiber, then use TUN. Other earlier predicates false by definition."
+    },
+    "mixed_eventually_P/unbounded/nonreal/unbounded_digits_min_tends_infty/k": {
+      "regime": "mixed_eventually_P",
+      "period": "unbounded",
+      "locus": "nonreal",
+      "rotation": "unbounded_digits_min_tends_infty",
+      "refinement": "k",
+      "earlier_tests_false": [
+        "levin1"
+      ],
+      "status": "open",
+      "theorems": [],
+      "reported_theorems": [
+        "K"
+      ],
+      "reason": "Syntactic empty unbounded-period cell: the cofinal bounded-ratio hypothesis implies bounded maximal relative periods. Kahn's statement is verified as a preprint, not counted as published coverage."
+    },
+    "mixed_eventually_P/unbounded/nonreal/unbounded_digits_min_tends_infty/dec": {
+      "regime": "mixed_eventually_P",
+      "period": "unbounded",
+      "locus": "nonreal",
+      "rotation": "unbounded_digits_min_tends_infty",
+      "refinement": "dec",
+      "earlier_tests_false": [
+        "levin1",
+        "k"
+      ],
+      "status": "covered",
+      "theorems": [
+        "KLdec",
+        "TUN"
+      ],
+      "reported_theorems": [],
+      "reason": "First true sufficient predicate: source's primitive finite decoration condition; allow a finite tail only if the theorem establishes a singleton parameter fiber, then use TUN. Other earlier predicates false by definition."
+    },
+    "mixed_eventually_P/unbounded/nonreal/unbounded_digits_min_tends_infty/mol": {
+      "regime": "mixed_eventually_P",
+      "period": "unbounded",
+      "locus": "nonreal",
+      "rotation": "unbounded_digits_min_tends_infty",
+      "refinement": "mol",
+      "earlier_tests_false": [
+        "levin1",
+        "k",
+        "dec"
+      ],
+      "status": "covered",
+      "theorems": [
+        "KLmol",
+        "TUN"
+      ],
+      "reported_theorems": [],
+      "reason": "First true sufficient predicate: source's uniform anti-molecule condition on cofinal absolute primitive renormalizations, allowing intervening satellites as in §2.3; allow a finite tail only if the theorem establishes a singleton parameter fiber, then use TUN. Other earlier predicates false by definition."
+    },
+    "mixed_eventually_P/unbounded/nonreal/unbounded_digits_min_tends_infty/real_essential": {
+      "regime": "mixed_eventually_P",
+      "period": "unbounded",
+      "locus": "nonreal",
+      "rotation": "unbounded_digits_min_tends_infty",
+      "refinement": "real_essential",
+      "earlier_tests_false": [
+        "levin1",
+        "k",
+        "dec",
+        "mol"
+      ],
+      "status": "covered",
+      "theorems": [
+        "Lreal",
+        "TUN"
+      ],
+      "reported_theorems": [],
+      "reason": "First true sufficient predicate: some straightened tail is real and all of its essential periods exceed the threshold of Theorem VIII (or the original parameter satisfies that hypothesis). Other earlier predicates false by definition."
+    },
+    "mixed_eventually_P/unbounded/nonreal/unbounded_digits_min_tends_infty/sl_bounds": {
+      "regime": "mixed_eventually_P",
+      "period": "unbounded",
+      "locus": "nonreal",
+      "rotation": "unbounded_digits_min_tends_infty",
+      "refinement": "sl_bounds",
+      "earlier_tests_false": [
+        "levin1",
+        "k",
+        "dec",
+        "mol",
+        "real_essential"
+      ],
+      "status": "covered",
+      "theorems": [
+        "L",
+        "TUN"
+      ],
+      "reported_theorems": [],
+      "reason": "First true sufficient predicate: SL and verified a priori bounds for every member of the combinatorial class; or IV' with SL, uniformly sufficiently large relative periods for Q(p)>0, and its no-parabolic/no-Siegel accumulation condition for the whole class; allow a finite tail only if the theorem establishes a singleton parameter fiber, then use TUN. Other earlier predicates false by definition."
+    },
+    "mixed_eventually_P/unbounded/nonreal/unbounded_digits_min_tends_infty/ee": {
+      "regime": "mixed_eventually_P",
+      "period": "unbounded",
+      "locus": "nonreal",
+      "rotation": "unbounded_digits_min_tends_infty",
+      "refinement": "ee",
+      "earlier_tests_false": [
+        "levin1",
+        "k",
+        "dec",
+        "mol",
+        "real_essential",
+        "sl_bounds"
+      ],
+      "status": "open",
+      "theorems": [],
+      "reported_theorems": [
+        "EE"
+      ],
+      "reason": "First true applicable predicate: source's E1–E3 elephant-eye family; allow a finite tail only if the theorem establishes a singleton parameter fiber, then use TUN. Preprint statement verified; publication or additional proof inputs are UNVERIFIED; no published MLC coverage credited."
+    },
+    "mixed_eventually_P/unbounded/nonreal/unbounded_digits_min_tends_infty/kkl": {
+      "regime": "mixed_eventually_P",
+      "period": "unbounded",
+      "locus": "nonreal",
+      "rotation": "unbounded_digits_min_tends_infty",
+      "refinement": "kkl",
+      "earlier_tests_false": [
+        "levin1",
+        "k",
+        "dec",
+        "mol",
+        "real_essential",
+        "sl_bounds",
+        "ee"
+      ],
+      "status": "open",
+      "theorems": [],
+      "reported_theorems": [
+        "KKL"
+      ],
+      "reason": "First true applicable predicate: source's parabolically bounded prime primitive family; allow a finite tail only if the theorem establishes a singleton parameter fiber, then use TUN. Preprint statement verified; publication or additional proof inputs are UNVERIFIED; no published MLC coverage credited."
+    },
+    "mixed_eventually_P/unbounded/nonreal/unbounded_digits_min_tends_infty/residual": {
+      "regime": "mixed_eventually_P",
+      "period": "unbounded",
+      "locus": "nonreal",
+      "rotation": "unbounded_digits_min_tends_infty",
+      "refinement": "residual",
+      "earlier_tests_false": [
+        "levin1",
+        "k",
+        "dec",
+        "mol",
+        "real_essential",
+        "sl_bounds",
+        "ee",
+        "kkl"
+      ],
+      "status": "open",
+      "theorems": [],
+      "reported_theorems": [],
+      "reason": "Unbounded relative periods exclude DL26 and DL23 bounded construction; applicable sufficient predicates above are false, including available finite-tail transfers. No general implication established in this audit."
+    },
+    "mixed_eventually_P/unbounded/nonreal/unbounded_digits_min_not_tends_infty/levin1": {
+      "regime": "mixed_eventually_P",
+      "period": "unbounded",
+      "locus": "nonreal",
+      "rotation": "unbounded_digits_min_not_tends_infty",
+      "refinement": "levin1",
+      "earlier_tests_false": [],
+      "status": "covered",
+      "theorems": [
+        "Lev1",
+        "TUN"
+      ],
+      "reported_theorems": [],
+      "reason": "First true sufficient predicate: source's simple-renormalization exponential numerator or satellite denominator criterion; allow a finite tail only if the theorem establishes a singleton parameter fiber, then use TUN. Other earlier predicates false by definition."
+    },
+    "mixed_eventually_P/unbounded/nonreal/unbounded_digits_min_not_tends_infty/k": {
+      "regime": "mixed_eventually_P",
+      "period": "unbounded",
+      "locus": "nonreal",
+      "rotation": "unbounded_digits_min_not_tends_infty",
+      "refinement": "k",
+      "earlier_tests_false": [
+        "levin1"
+      ],
+      "status": "open",
+      "theorems": [],
+      "reported_theorems": [
+        "K"
+      ],
+      "reason": "Syntactic empty unbounded-period cell: the cofinal bounded-ratio hypothesis implies bounded maximal relative periods. Kahn's statement is verified as a preprint, not counted as published coverage."
+    },
+    "mixed_eventually_P/unbounded/nonreal/unbounded_digits_min_not_tends_infty/dec": {
+      "regime": "mixed_eventually_P",
+      "period": "unbounded",
+      "locus": "nonreal",
+      "rotation": "unbounded_digits_min_not_tends_infty",
+      "refinement": "dec",
+      "earlier_tests_false": [
+        "levin1",
+        "k"
+      ],
+      "status": "covered",
+      "theorems": [
+        "KLdec",
+        "TUN"
+      ],
+      "reported_theorems": [],
+      "reason": "First true sufficient predicate: source's primitive finite decoration condition; allow a finite tail only if the theorem establishes a singleton parameter fiber, then use TUN. Other earlier predicates false by definition."
+    },
+    "mixed_eventually_P/unbounded/nonreal/unbounded_digits_min_not_tends_infty/mol": {
+      "regime": "mixed_eventually_P",
+      "period": "unbounded",
+      "locus": "nonreal",
+      "rotation": "unbounded_digits_min_not_tends_infty",
+      "refinement": "mol",
+      "earlier_tests_false": [
+        "levin1",
+        "k",
+        "dec"
+      ],
+      "status": "covered",
+      "theorems": [
+        "KLmol",
+        "TUN"
+      ],
+      "reported_theorems": [],
+      "reason": "First true sufficient predicate: source's uniform anti-molecule condition on cofinal absolute primitive renormalizations, allowing intervening satellites as in §2.3; allow a finite tail only if the theorem establishes a singleton parameter fiber, then use TUN. Other earlier predicates false by definition."
+    },
+    "mixed_eventually_P/unbounded/nonreal/unbounded_digits_min_not_tends_infty/real_essential": {
+      "regime": "mixed_eventually_P",
+      "period": "unbounded",
+      "locus": "nonreal",
+      "rotation": "unbounded_digits_min_not_tends_infty",
+      "refinement": "real_essential",
+      "earlier_tests_false": [
+        "levin1",
+        "k",
+        "dec",
+        "mol"
+      ],
+      "status": "covered",
+      "theorems": [
+        "Lreal",
+        "TUN"
+      ],
+      "reported_theorems": [],
+      "reason": "First true sufficient predicate: some straightened tail is real and all of its essential periods exceed the threshold of Theorem VIII (or the original parameter satisfies that hypothesis). Other earlier predicates false by definition."
+    },
+    "mixed_eventually_P/unbounded/nonreal/unbounded_digits_min_not_tends_infty/sl_bounds": {
+      "regime": "mixed_eventually_P",
+      "period": "unbounded",
+      "locus": "nonreal",
+      "rotation": "unbounded_digits_min_not_tends_infty",
+      "refinement": "sl_bounds",
+      "earlier_tests_false": [
+        "levin1",
+        "k",
+        "dec",
+        "mol",
+        "real_essential"
+      ],
+      "status": "covered",
+      "theorems": [
+        "L",
+        "TUN"
+      ],
+      "reported_theorems": [],
+      "reason": "First true sufficient predicate: SL and verified a priori bounds for every member of the combinatorial class; or IV' with SL, uniformly sufficiently large relative periods for Q(p)>0, and its no-parabolic/no-Siegel accumulation condition for the whole class; allow a finite tail only if the theorem establishes a singleton parameter fiber, then use TUN. Other earlier predicates false by definition."
+    },
+    "mixed_eventually_P/unbounded/nonreal/unbounded_digits_min_not_tends_infty/ee": {
+      "regime": "mixed_eventually_P",
+      "period": "unbounded",
+      "locus": "nonreal",
+      "rotation": "unbounded_digits_min_not_tends_infty",
+      "refinement": "ee",
+      "earlier_tests_false": [
+        "levin1",
+        "k",
+        "dec",
+        "mol",
+        "real_essential",
+        "sl_bounds"
+      ],
+      "status": "open",
+      "theorems": [],
+      "reported_theorems": [
+        "EE"
+      ],
+      "reason": "First true applicable predicate: source's E1–E3 elephant-eye family; allow a finite tail only if the theorem establishes a singleton parameter fiber, then use TUN. Preprint statement verified; publication or additional proof inputs are UNVERIFIED; no published MLC coverage credited."
+    },
+    "mixed_eventually_P/unbounded/nonreal/unbounded_digits_min_not_tends_infty/kkl": {
+      "regime": "mixed_eventually_P",
+      "period": "unbounded",
+      "locus": "nonreal",
+      "rotation": "unbounded_digits_min_not_tends_infty",
+      "refinement": "kkl",
+      "earlier_tests_false": [
+        "levin1",
+        "k",
+        "dec",
+        "mol",
+        "real_essential",
+        "sl_bounds",
+        "ee"
+      ],
+      "status": "open",
+      "theorems": [],
+      "reported_theorems": [
+        "KKL"
+      ],
+      "reason": "First true applicable predicate: source's parabolically bounded prime primitive family; allow a finite tail only if the theorem establishes a singleton parameter fiber, then use TUN. Preprint statement verified; publication or additional proof inputs are UNVERIFIED; no published MLC coverage credited."
+    },
+    "mixed_eventually_P/unbounded/nonreal/unbounded_digits_min_not_tends_infty/residual": {
+      "regime": "mixed_eventually_P",
+      "period": "unbounded",
+      "locus": "nonreal",
+      "rotation": "unbounded_digits_min_not_tends_infty",
+      "refinement": "residual",
+      "earlier_tests_false": [
+        "levin1",
+        "k",
+        "dec",
+        "mol",
+        "real_essential",
+        "sl_bounds",
+        "ee",
+        "kkl"
+      ],
+      "status": "open",
+      "theorems": [],
+      "reported_theorems": [],
+      "reason": "Unbounded relative periods exclude DL26 and DL23 bounded construction; applicable sufficient predicates above are false, including available finite-tail transfers. No general implication established in this audit."
+    },
+    "mixed_eventually_S/bounded/real/bounded_denominators/all": {
+      "regime": "mixed_eventually_S",
+      "period": "bounded",
+      "locus": "real",
+      "rotation": "bounded_denominators",
+      "refinement": "all",
+      "earlier_tests_false": [],
+      "status": "covered",
+      "theorems": [
+        "DL26"
+      ],
+      "reported_theorems": [],
+      "reason": "Uniform relative-period bound is exactly the hypothesis of Theorem B."
+    },
+    "mixed_eventually_S/bounded/nonreal/bounded_denominators/all": {
+      "regime": "mixed_eventually_S",
+      "period": "bounded",
+      "locus": "nonreal",
+      "rotation": "bounded_denominators",
+      "refinement": "all",
+      "earlier_tests_false": [],
+      "status": "covered",
+      "theorems": [
+        "DL26"
+      ],
+      "reported_theorems": [],
+      "reason": "Uniform relative-period bound is exactly the hypothesis of Theorem B."
+    },
+    "mixed_eventually_S/unbounded/real/bounded_digits/levin1": {
+      "regime": "mixed_eventually_S",
+      "period": "unbounded",
+      "locus": "real",
+      "rotation": "bounded_digits",
+      "refinement": "levin1",
+      "earlier_tests_false": [],
+      "status": "covered",
+      "theorems": [
+        "Lev1",
+        "TUN"
+      ],
+      "reported_theorems": [],
+      "reason": "First true sufficient predicate: source's simple-renormalization exponential numerator or satellite denominator criterion; allow a finite tail only if the theorem establishes a singleton parameter fiber, then use TUN. Other earlier predicates false by definition."
+    },
+    "mixed_eventually_S/unbounded/real/bounded_digits/qg": {
+      "regime": "mixed_eventually_S",
+      "period": "unbounded",
+      "locus": "real",
+      "rotation": "bounded_digits",
+      "refinement": "qg",
+      "earlier_tests_false": [
+        "levin1"
+      ],
+      "status": "open",
+      "theorems": [],
+      "reported_theorems": [
+        "CS"
+      ],
+      "reason": "First true applicable predicate: all-satellite signed CF quadratic growth QG_N; allow a finite tail only if the theorem establishes a singleton parameter fiber, then use TUN. Preprint statement verified; publication or additional proof inputs are UNVERIFIED; no published MLC coverage credited."
+    },
+    "mixed_eventually_S/unbounded/real/bounded_digits/levin2": {
+      "regime": "mixed_eventually_S",
+      "period": "unbounded",
+      "locus": "real",
+      "rotation": "bounded_digits",
+      "refinement": "levin2",
+      "earlier_tests_false": [
+        "levin1",
+        "qg"
+      ],
+      "status": "covered",
+      "theorems": [
+        "Lev2",
+        "TUN"
+      ],
+      "reported_theorems": [],
+      "reason": "First true sufficient predicate: source's all-satellite exponential next-rotation criterion; allow a finite tail only if the theorem establishes a singleton parameter fiber, then use TUN. Other earlier predicates false by definition."
+    },
+    "mixed_eventually_S/unbounded/real/bounded_digits/levinadd": {
+      "regime": "mixed_eventually_S",
+      "period": "unbounded",
+      "locus": "real",
+      "rotation": "bounded_digits",
+      "refinement": "levinadd",
+      "earlier_tests_false": [
+        "levin1",
+        "qg",
+        "levin2"
+      ],
+      "status": "covered",
+      "theorems": [
+        "Levadd",
+        "TUN"
+      ],
+      "reported_theorems": [],
+      "reason": "First true sufficient predicate: source's all-satellite addendum product conditions; allow a finite tail only if the theorem establishes a singleton parameter fiber, then use TUN. Other earlier predicates false by definition."
+    },
+    "mixed_eventually_S/unbounded/real/bounded_digits/sl_bounds": {
+      "regime": "mixed_eventually_S",
+      "period": "unbounded",
+      "locus": "real",
+      "rotation": "bounded_digits",
+      "refinement": "sl_bounds",
+      "earlier_tests_false": [
+        "levin1",
+        "qg",
+        "levin2",
+        "levinadd"
+      ],
+      "status": "covered",
+      "theorems": [
+        "L",
+        "TUN"
+      ],
+      "reported_theorems": [],
+      "reason": "First true sufficient predicate: SL and verified a priori bounds for every member of the combinatorial class; or IV' with SL, uniformly sufficiently large relative periods for Q(p)>0, and its no-parabolic/no-Siegel accumulation condition for the whole class; allow a finite tail only if the theorem establishes a singleton parameter fiber, then use TUN. Other earlier predicates false by definition."
+    },
+    "mixed_eventually_S/unbounded/real/bounded_digits/residual": {
+      "regime": "mixed_eventually_S",
+      "period": "unbounded",
+      "locus": "real",
+      "rotation": "bounded_digits",
+      "refinement": "residual",
+      "earlier_tests_false": [
+        "levin1",
+        "qg",
+        "levin2",
+        "levinadd",
+        "sl_bounds"
+      ],
+      "status": "open",
+      "theorems": [],
+      "reported_theorems": [
+        "DKL"
+      ],
+      "reason": "Unbounded relative periods exclude DL26 and DL23 bounded construction; applicable sufficient predicates above are false, including available finite-tail transfers. No general implication established in this audit. Survey reports real/vein MLC, but [14] primary manuscript is UNVERIFIED."
+    },
+    "mixed_eventually_S/unbounded/real/unbounded_digits_min_tends_infty/levin1": {
+      "regime": "mixed_eventually_S",
+      "period": "unbounded",
+      "locus": "real",
+      "rotation": "unbounded_digits_min_tends_infty",
+      "refinement": "levin1",
+      "earlier_tests_false": [],
+      "status": "covered",
+      "theorems": [
+        "Lev1",
+        "TUN"
+      ],
+      "reported_theorems": [],
+      "reason": "First true sufficient predicate: source's simple-renormalization exponential numerator or satellite denominator criterion; allow a finite tail only if the theorem establishes a singleton parameter fiber, then use TUN. Other earlier predicates false by definition."
+    },
+    "mixed_eventually_S/unbounded/real/unbounded_digits_min_tends_infty/qg": {
+      "regime": "mixed_eventually_S",
+      "period": "unbounded",
+      "locus": "real",
+      "rotation": "unbounded_digits_min_tends_infty",
+      "refinement": "qg",
+      "earlier_tests_false": [
+        "levin1"
+      ],
+      "status": "open",
+      "theorems": [],
+      "reported_theorems": [
+        "CS"
+      ],
+      "reason": "First true applicable predicate: all-satellite signed CF quadratic growth QG_N; allow a finite tail only if the theorem establishes a singleton parameter fiber, then use TUN. Preprint statement verified; publication or additional proof inputs are UNVERIFIED; no published MLC coverage credited."
+    },
+    "mixed_eventually_S/unbounded/real/unbounded_digits_min_tends_infty/levin2": {
+      "regime": "mixed_eventually_S",
+      "period": "unbounded",
+      "locus": "real",
+      "rotation": "unbounded_digits_min_tends_infty",
+      "refinement": "levin2",
+      "earlier_tests_false": [
+        "levin1",
+        "qg"
+      ],
+      "status": "covered",
+      "theorems": [
+        "Lev2",
+        "TUN"
+      ],
+      "reported_theorems": [],
+      "reason": "First true sufficient predicate: source's all-satellite exponential next-rotation criterion; allow a finite tail only if the theorem establishes a singleton parameter fiber, then use TUN. Other earlier predicates false by definition."
+    },
+    "mixed_eventually_S/unbounded/real/unbounded_digits_min_tends_infty/levinadd": {
+      "regime": "mixed_eventually_S",
+      "period": "unbounded",
+      "locus": "real",
+      "rotation": "unbounded_digits_min_tends_infty",
+      "refinement": "levinadd",
+      "earlier_tests_false": [
+        "levin1",
+        "qg",
+        "levin2"
+      ],
+      "status": "covered",
+      "theorems": [
+        "Levadd",
+        "TUN"
+      ],
+      "reported_theorems": [],
+      "reason": "First true sufficient predicate: source's all-satellite addendum product conditions; allow a finite tail only if the theorem establishes a singleton parameter fiber, then use TUN. Other earlier predicates false by definition."
+    },
+    "mixed_eventually_S/unbounded/real/unbounded_digits_min_tends_infty/sl_bounds": {
+      "regime": "mixed_eventually_S",
+      "period": "unbounded",
+      "locus": "real",
+      "rotation": "unbounded_digits_min_tends_infty",
+      "refinement": "sl_bounds",
+      "earlier_tests_false": [
+        "levin1",
+        "qg",
+        "levin2",
+        "levinadd"
+      ],
+      "status": "covered",
+      "theorems": [
+        "L",
+        "TUN"
+      ],
+      "reported_theorems": [],
+      "reason": "First true sufficient predicate: SL and verified a priori bounds for every member of the combinatorial class; or IV' with SL, uniformly sufficiently large relative periods for Q(p)>0, and its no-parabolic/no-Siegel accumulation condition for the whole class; allow a finite tail only if the theorem establishes a singleton parameter fiber, then use TUN. Other earlier predicates false by definition."
+    },
+    "mixed_eventually_S/unbounded/real/unbounded_digits_min_tends_infty/residual": {
+      "regime": "mixed_eventually_S",
+      "period": "unbounded",
+      "locus": "real",
+      "rotation": "unbounded_digits_min_tends_infty",
+      "refinement": "residual",
+      "earlier_tests_false": [
+        "levin1",
+        "qg",
+        "levin2",
+        "levinadd",
+        "sl_bounds"
+      ],
+      "status": "open",
+      "theorems": [],
+      "reported_theorems": [
+        "DKL"
+      ],
+      "reason": "Unbounded relative periods exclude DL26 and DL23 bounded construction; applicable sufficient predicates above are false, including available finite-tail transfers. No general implication established in this audit. Survey reports real/vein MLC, but [14] primary manuscript is UNVERIFIED."
+    },
+    "mixed_eventually_S/unbounded/real/unbounded_digits_min_not_tends_infty/levin1": {
+      "regime": "mixed_eventually_S",
+      "period": "unbounded",
+      "locus": "real",
+      "rotation": "unbounded_digits_min_not_tends_infty",
+      "refinement": "levin1",
+      "earlier_tests_false": [],
+      "status": "covered",
+      "theorems": [
+        "Lev1",
+        "TUN"
+      ],
+      "reported_theorems": [],
+      "reason": "First true sufficient predicate: source's simple-renormalization exponential numerator or satellite denominator criterion; allow a finite tail only if the theorem establishes a singleton parameter fiber, then use TUN. Other earlier predicates false by definition."
+    },
+    "mixed_eventually_S/unbounded/real/unbounded_digits_min_not_tends_infty/qg": {
+      "regime": "mixed_eventually_S",
+      "period": "unbounded",
+      "locus": "real",
+      "rotation": "unbounded_digits_min_not_tends_infty",
+      "refinement": "qg",
+      "earlier_tests_false": [
+        "levin1"
+      ],
+      "status": "open",
+      "theorems": [],
+      "reported_theorems": [
+        "CS"
+      ],
+      "reason": "First true applicable predicate: all-satellite signed CF quadratic growth QG_N; allow a finite tail only if the theorem establishes a singleton parameter fiber, then use TUN. Preprint statement verified; publication or additional proof inputs are UNVERIFIED; no published MLC coverage credited."
+    },
+    "mixed_eventually_S/unbounded/real/unbounded_digits_min_not_tends_infty/levin2": {
+      "regime": "mixed_eventually_S",
+      "period": "unbounded",
+      "locus": "real",
+      "rotation": "unbounded_digits_min_not_tends_infty",
+      "refinement": "levin2",
+      "earlier_tests_false": [
+        "levin1",
+        "qg"
+      ],
+      "status": "covered",
+      "theorems": [
+        "Lev2",
+        "TUN"
+      ],
+      "reported_theorems": [],
+      "reason": "First true sufficient predicate: source's all-satellite exponential next-rotation criterion; allow a finite tail only if the theorem establishes a singleton parameter fiber, then use TUN. Other earlier predicates false by definition."
+    },
+    "mixed_eventually_S/unbounded/real/unbounded_digits_min_not_tends_infty/levinadd": {
+      "regime": "mixed_eventually_S",
+      "period": "unbounded",
+      "locus": "real",
+      "rotation": "unbounded_digits_min_not_tends_infty",
+      "refinement": "levinadd",
+      "earlier_tests_false": [
+        "levin1",
+        "qg",
+        "levin2"
+      ],
+      "status": "covered",
+      "theorems": [
+        "Levadd",
+        "TUN"
+      ],
+      "reported_theorems": [],
+      "reason": "First true sufficient predicate: source's all-satellite addendum product conditions; allow a finite tail only if the theorem establishes a singleton parameter fiber, then use TUN. Other earlier predicates false by definition."
+    },
+    "mixed_eventually_S/unbounded/real/unbounded_digits_min_not_tends_infty/sl_bounds": {
+      "regime": "mixed_eventually_S",
+      "period": "unbounded",
+      "locus": "real",
+      "rotation": "unbounded_digits_min_not_tends_infty",
+      "refinement": "sl_bounds",
+      "earlier_tests_false": [
+        "levin1",
+        "qg",
+        "levin2",
+        "levinadd"
+      ],
+      "status": "covered",
+      "theorems": [
+        "L",
+        "TUN"
+      ],
+      "reported_theorems": [],
+      "reason": "First true sufficient predicate: SL and verified a priori bounds for every member of the combinatorial class; or IV' with SL, uniformly sufficiently large relative periods for Q(p)>0, and its no-parabolic/no-Siegel accumulation condition for the whole class; allow a finite tail only if the theorem establishes a singleton parameter fiber, then use TUN. Other earlier predicates false by definition."
+    },
+    "mixed_eventually_S/unbounded/real/unbounded_digits_min_not_tends_infty/residual": {
+      "regime": "mixed_eventually_S",
+      "period": "unbounded",
+      "locus": "real",
+      "rotation": "unbounded_digits_min_not_tends_infty",
+      "refinement": "residual",
+      "earlier_tests_false": [
+        "levin1",
+        "qg",
+        "levin2",
+        "levinadd",
+        "sl_bounds"
+      ],
+      "status": "open",
+      "theorems": [],
+      "reported_theorems": [
+        "DKL"
+      ],
+      "reason": "Unbounded relative periods exclude DL26 and DL23 bounded construction; applicable sufficient predicates above are false, including available finite-tail transfers. No general implication established in this audit. Survey reports real/vein MLC, but [14] primary manuscript is UNVERIFIED."
+    },
+    "mixed_eventually_S/unbounded/nonreal/bounded_digits/levin1": {
+      "regime": "mixed_eventually_S",
+      "period": "unbounded",
+      "locus": "nonreal",
+      "rotation": "bounded_digits",
+      "refinement": "levin1",
+      "earlier_tests_false": [],
+      "status": "covered",
+      "theorems": [
+        "Lev1",
+        "TUN"
+      ],
+      "reported_theorems": [],
+      "reason": "First true sufficient predicate: source's simple-renormalization exponential numerator or satellite denominator criterion; allow a finite tail only if the theorem establishes a singleton parameter fiber, then use TUN. Other earlier predicates false by definition."
+    },
+    "mixed_eventually_S/unbounded/nonreal/bounded_digits/qg": {
+      "regime": "mixed_eventually_S",
+      "period": "unbounded",
+      "locus": "nonreal",
+      "rotation": "bounded_digits",
+      "refinement": "qg",
+      "earlier_tests_false": [
+        "levin1"
+      ],
+      "status": "open",
+      "theorems": [],
+      "reported_theorems": [
+        "CS"
+      ],
+      "reason": "First true applicable predicate: all-satellite signed CF quadratic growth QG_N; allow a finite tail only if the theorem establishes a singleton parameter fiber, then use TUN. Preprint statement verified; publication or additional proof inputs are UNVERIFIED; no published MLC coverage credited."
+    },
+    "mixed_eventually_S/unbounded/nonreal/bounded_digits/levin2": {
+      "regime": "mixed_eventually_S",
+      "period": "unbounded",
+      "locus": "nonreal",
+      "rotation": "bounded_digits",
+      "refinement": "levin2",
+      "earlier_tests_false": [
+        "levin1",
+        "qg"
+      ],
+      "status": "covered",
+      "theorems": [
+        "Lev2",
+        "TUN"
+      ],
+      "reported_theorems": [],
+      "reason": "First true sufficient predicate: source's all-satellite exponential next-rotation criterion; allow a finite tail only if the theorem establishes a singleton parameter fiber, then use TUN. Other earlier predicates false by definition."
+    },
+    "mixed_eventually_S/unbounded/nonreal/bounded_digits/levinadd": {
+      "regime": "mixed_eventually_S",
+      "period": "unbounded",
+      "locus": "nonreal",
+      "rotation": "bounded_digits",
+      "refinement": "levinadd",
+      "earlier_tests_false": [
+        "levin1",
+        "qg",
+        "levin2"
+      ],
+      "status": "covered",
+      "theorems": [
+        "Levadd",
+        "TUN"
+      ],
+      "reported_theorems": [],
+      "reason": "First true sufficient predicate: source's all-satellite addendum product conditions; allow a finite tail only if the theorem establishes a singleton parameter fiber, then use TUN. Other earlier predicates false by definition."
+    },
+    "mixed_eventually_S/unbounded/nonreal/bounded_digits/sl_bounds": {
+      "regime": "mixed_eventually_S",
+      "period": "unbounded",
+      "locus": "nonreal",
+      "rotation": "bounded_digits",
+      "refinement": "sl_bounds",
+      "earlier_tests_false": [
+        "levin1",
+        "qg",
+        "levin2",
+        "levinadd"
+      ],
+      "status": "covered",
+      "theorems": [
+        "L",
+        "TUN"
+      ],
+      "reported_theorems": [],
+      "reason": "First true sufficient predicate: SL and verified a priori bounds for every member of the combinatorial class; or IV' with SL, uniformly sufficiently large relative periods for Q(p)>0, and its no-parabolic/no-Siegel accumulation condition for the whole class; allow a finite tail only if the theorem establishes a singleton parameter fiber, then use TUN. Other earlier predicates false by definition."
+    },
+    "mixed_eventually_S/unbounded/nonreal/bounded_digits/residual": {
+      "regime": "mixed_eventually_S",
+      "period": "unbounded",
+      "locus": "nonreal",
+      "rotation": "bounded_digits",
+      "refinement": "residual",
+      "earlier_tests_false": [
+        "levin1",
+        "qg",
+        "levin2",
+        "levinadd",
+        "sl_bounds"
+      ],
+      "status": "open",
+      "theorems": [],
+      "reported_theorems": [],
+      "reason": "Unbounded relative periods exclude DL26 and DL23 bounded construction; applicable sufficient predicates above are false, including available finite-tail transfers. No general implication established in this audit."
+    },
+    "mixed_eventually_S/unbounded/nonreal/unbounded_digits_min_tends_infty/levin1": {
+      "regime": "mixed_eventually_S",
+      "period": "unbounded",
+      "locus": "nonreal",
+      "rotation": "unbounded_digits_min_tends_infty",
+      "refinement": "levin1",
+      "earlier_tests_false": [],
+      "status": "covered",
+      "theorems": [
+        "Lev1",
+        "TUN"
+      ],
+      "reported_theorems": [],
+      "reason": "First true sufficient predicate: source's simple-renormalization exponential numerator or satellite denominator criterion; allow a finite tail only if the theorem establishes a singleton parameter fiber, then use TUN. Other earlier predicates false by definition."
+    },
+    "mixed_eventually_S/unbounded/nonreal/unbounded_digits_min_tends_infty/qg": {
+      "regime": "mixed_eventually_S",
+      "period": "unbounded",
+      "locus": "nonreal",
+      "rotation": "unbounded_digits_min_tends_infty",
+      "refinement": "qg",
+      "earlier_tests_false": [
+        "levin1"
+      ],
+      "status": "open",
+      "theorems": [],
+      "reported_theorems": [
+        "CS"
+      ],
+      "reason": "First true applicable predicate: all-satellite signed CF quadratic growth QG_N; allow a finite tail only if the theorem establishes a singleton parameter fiber, then use TUN. Preprint statement verified; publication or additional proof inputs are UNVERIFIED; no published MLC coverage credited."
+    },
+    "mixed_eventually_S/unbounded/nonreal/unbounded_digits_min_tends_infty/levin2": {
+      "regime": "mixed_eventually_S",
+      "period": "unbounded",
+      "locus": "nonreal",
+      "rotation": "unbounded_digits_min_tends_infty",
+      "refinement": "levin2",
+      "earlier_tests_false": [
+        "levin1",
+        "qg"
+      ],
+      "status": "covered",
+      "theorems": [
+        "Lev2",
+        "TUN"
+      ],
+      "reported_theorems": [],
+      "reason": "First true sufficient predicate: source's all-satellite exponential next-rotation criterion; allow a finite tail only if the theorem establishes a singleton parameter fiber, then use TUN. Other earlier predicates false by definition."
+    },
+    "mixed_eventually_S/unbounded/nonreal/unbounded_digits_min_tends_infty/levinadd": {
+      "regime": "mixed_eventually_S",
+      "period": "unbounded",
+      "locus": "nonreal",
+      "rotation": "unbounded_digits_min_tends_infty",
+      "refinement": "levinadd",
+      "earlier_tests_false": [
+        "levin1",
+        "qg",
+        "levin2"
+      ],
+      "status": "covered",
+      "theorems": [
+        "Levadd",
+        "TUN"
+      ],
+      "reported_theorems": [],
+      "reason": "First true sufficient predicate: source's all-satellite addendum product conditions; allow a finite tail only if the theorem establishes a singleton parameter fiber, then use TUN. Other earlier predicates false by definition."
+    },
+    "mixed_eventually_S/unbounded/nonreal/unbounded_digits_min_tends_infty/sl_bounds": {
+      "regime": "mixed_eventually_S",
+      "period": "unbounded",
+      "locus": "nonreal",
+      "rotation": "unbounded_digits_min_tends_infty",
+      "refinement": "sl_bounds",
+      "earlier_tests_false": [
+        "levin1",
+        "qg",
+        "levin2",
+        "levinadd"
+      ],
+      "status": "covered",
+      "theorems": [
+        "L",
+        "TUN"
+      ],
+      "reported_theorems": [],
+      "reason": "First true sufficient predicate: SL and verified a priori bounds for every member of the combinatorial class; or IV' with SL, uniformly sufficiently large relative periods for Q(p)>0, and its no-parabolic/no-Siegel accumulation condition for the whole class; allow a finite tail only if the theorem establishes a singleton parameter fiber, then use TUN. Other earlier predicates false by definition."
+    },
+    "mixed_eventually_S/unbounded/nonreal/unbounded_digits_min_tends_infty/residual": {
+      "regime": "mixed_eventually_S",
+      "period": "unbounded",
+      "locus": "nonreal",
+      "rotation": "unbounded_digits_min_tends_infty",
+      "refinement": "residual",
+      "earlier_tests_false": [
+        "levin1",
+        "qg",
+        "levin2",
+        "levinadd",
+        "sl_bounds"
+      ],
+      "status": "open",
+      "theorems": [],
+      "reported_theorems": [],
+      "reason": "Unbounded relative periods exclude DL26 and DL23 bounded construction; applicable sufficient predicates above are false, including available finite-tail transfers. No general implication established in this audit."
+    },
+    "mixed_eventually_S/unbounded/nonreal/unbounded_digits_min_not_tends_infty/levin1": {
+      "regime": "mixed_eventually_S",
+      "period": "unbounded",
+      "locus": "nonreal",
+      "rotation": "unbounded_digits_min_not_tends_infty",
+      "refinement": "levin1",
+      "earlier_tests_false": [],
+      "status": "covered",
+      "theorems": [
+        "Lev1",
+        "TUN"
+      ],
+      "reported_theorems": [],
+      "reason": "First true sufficient predicate: source's simple-renormalization exponential numerator or satellite denominator criterion; allow a finite tail only if the theorem establishes a singleton parameter fiber, then use TUN. Other earlier predicates false by definition."
+    },
+    "mixed_eventually_S/unbounded/nonreal/unbounded_digits_min_not_tends_infty/qg": {
+      "regime": "mixed_eventually_S",
+      "period": "unbounded",
+      "locus": "nonreal",
+      "rotation": "unbounded_digits_min_not_tends_infty",
+      "refinement": "qg",
+      "earlier_tests_false": [
+        "levin1"
+      ],
+      "status": "open",
+      "theorems": [],
+      "reported_theorems": [
+        "CS"
+      ],
+      "reason": "First true applicable predicate: all-satellite signed CF quadratic growth QG_N; allow a finite tail only if the theorem establishes a singleton parameter fiber, then use TUN. Preprint statement verified; publication or additional proof inputs are UNVERIFIED; no published MLC coverage credited."
+    },
+    "mixed_eventually_S/unbounded/nonreal/unbounded_digits_min_not_tends_infty/levin2": {
+      "regime": "mixed_eventually_S",
+      "period": "unbounded",
+      "locus": "nonreal",
+      "rotation": "unbounded_digits_min_not_tends_infty",
+      "refinement": "levin2",
+      "earlier_tests_false": [
+        "levin1",
+        "qg"
+      ],
+      "status": "covered",
+      "theorems": [
+        "Lev2",
+        "TUN"
+      ],
+      "reported_theorems": [],
+      "reason": "First true sufficient predicate: source's all-satellite exponential next-rotation criterion; allow a finite tail only if the theorem establishes a singleton parameter fiber, then use TUN. Other earlier predicates false by definition."
+    },
+    "mixed_eventually_S/unbounded/nonreal/unbounded_digits_min_not_tends_infty/levinadd": {
+      "regime": "mixed_eventually_S",
+      "period": "unbounded",
+      "locus": "nonreal",
+      "rotation": "unbounded_digits_min_not_tends_infty",
+      "refinement": "levinadd",
+      "earlier_tests_false": [
+        "levin1",
+        "qg",
+        "levin2"
+      ],
+      "status": "covered",
+      "theorems": [
+        "Levadd",
+        "TUN"
+      ],
+      "reported_theorems": [],
+      "reason": "First true sufficient predicate: source's all-satellite addendum product conditions; allow a finite tail only if the theorem establishes a singleton parameter fiber, then use TUN. Other earlier predicates false by definition."
+    },
+    "mixed_eventually_S/unbounded/nonreal/unbounded_digits_min_not_tends_infty/sl_bounds": {
+      "regime": "mixed_eventually_S",
+      "period": "unbounded",
+      "locus": "nonreal",
+      "rotation": "unbounded_digits_min_not_tends_infty",
+      "refinement": "sl_bounds",
+      "earlier_tests_false": [
+        "levin1",
+        "qg",
+        "levin2",
+        "levinadd"
+      ],
+      "status": "covered",
+      "theorems": [
+        "L",
+        "TUN"
+      ],
+      "reported_theorems": [],
+      "reason": "First true sufficient predicate: SL and verified a priori bounds for every member of the combinatorial class; or IV' with SL, uniformly sufficiently large relative periods for Q(p)>0, and its no-parabolic/no-Siegel accumulation condition for the whole class; allow a finite tail only if the theorem establishes a singleton parameter fiber, then use TUN. Other earlier predicates false by definition."
+    },
+    "mixed_eventually_S/unbounded/nonreal/unbounded_digits_min_not_tends_infty/residual": {
+      "regime": "mixed_eventually_S",
+      "period": "unbounded",
+      "locus": "nonreal",
+      "rotation": "unbounded_digits_min_not_tends_infty",
+      "refinement": "residual",
+      "earlier_tests_false": [
+        "levin1",
+        "qg",
+        "levin2",
+        "levinadd",
+        "sl_bounds"
+      ],
+      "status": "open",
+      "theorems": [],
+      "reported_theorems": [],
+      "reason": "Unbounded relative periods exclude DL26 and DL23 bounded construction; applicable sufficient predicates above are false, including available finite-tail transfers. No general implication established in this audit."
+    },
+    "mixed_recurrent/bounded/real/bounded_denominators/all": {
+      "regime": "mixed_recurrent",
+      "period": "bounded",
+      "locus": "real",
+      "rotation": "bounded_denominators",
+      "refinement": "all",
+      "earlier_tests_false": [],
+      "status": "covered",
+      "theorems": [
+        "DL26"
+      ],
+      "reported_theorems": [],
+      "reason": "Uniform relative-period bound is exactly the hypothesis of Theorem B."
+    },
+    "mixed_recurrent/bounded/nonreal/bounded_denominators/all": {
+      "regime": "mixed_recurrent",
+      "period": "bounded",
+      "locus": "nonreal",
+      "rotation": "bounded_denominators",
+      "refinement": "all",
+      "earlier_tests_false": [],
+      "status": "covered",
+      "theorems": [
+        "DL26"
+      ],
+      "reported_theorems": [],
+      "reason": "Uniform relative-period bound is exactly the hypothesis of Theorem B."
+    },
+    "mixed_recurrent/unbounded/real/bounded_digits/levin1": {
+      "regime": "mixed_recurrent",
+      "period": "unbounded",
+      "locus": "real",
+      "rotation": "bounded_digits",
+      "refinement": "levin1",
+      "earlier_tests_false": [],
+      "status": "covered",
+      "theorems": [
+        "Lev1",
+        "TUN"
+      ],
+      "reported_theorems": [],
+      "reason": "First true sufficient predicate: source's simple-renormalization exponential numerator or satellite denominator criterion; allow a finite tail only if the theorem establishes a singleton parameter fiber, then use TUN. Other earlier predicates false by definition."
+    },
+    "mixed_recurrent/unbounded/real/bounded_digits/k": {
+      "regime": "mixed_recurrent",
+      "period": "unbounded",
+      "locus": "real",
+      "rotation": "bounded_digits",
+      "refinement": "k",
+      "earlier_tests_false": [
+        "levin1"
+      ],
+      "status": "open",
+      "theorems": [],
+      "reported_theorems": [
+        "K"
+      ],
+      "reason": "Syntactic empty unbounded-period cell: the cofinal bounded-ratio hypothesis implies bounded maximal relative periods. Kahn's statement is verified as a preprint, not counted as published coverage."
+    },
+    "mixed_recurrent/unbounded/real/bounded_digits/mol": {
+      "regime": "mixed_recurrent",
+      "period": "unbounded",
+      "locus": "real",
+      "rotation": "bounded_digits",
+      "refinement": "mol",
+      "earlier_tests_false": [
+        "levin1",
+        "k"
+      ],
+      "status": "covered",
+      "theorems": [
+        "KLmol",
+        "TUN"
+      ],
+      "reported_theorems": [],
+      "reason": "First true sufficient predicate: source's uniform anti-molecule condition on cofinal absolute primitive renormalizations, allowing intervening satellites as in §2.3; allow a finite tail only if the theorem establishes a singleton parameter fiber, then use TUN. Other earlier predicates false by definition."
+    },
+    "mixed_recurrent/unbounded/real/bounded_digits/real_essential": {
+      "regime": "mixed_recurrent",
+      "period": "unbounded",
+      "locus": "real",
+      "rotation": "bounded_digits",
+      "refinement": "real_essential",
+      "earlier_tests_false": [
+        "levin1",
+        "k",
+        "mol"
+      ],
+      "status": "covered",
+      "theorems": [
+        "Lreal",
+        "TUN"
+      ],
+      "reported_theorems": [],
+      "reason": "First true sufficient predicate: some straightened tail is real and all of its essential periods exceed the threshold of Theorem VIII (or the original parameter satisfies that hypothesis). Other earlier predicates false by definition."
+    },
+    "mixed_recurrent/unbounded/real/bounded_digits/sl_bounds": {
+      "regime": "mixed_recurrent",
+      "period": "unbounded",
+      "locus": "real",
+      "rotation": "bounded_digits",
+      "refinement": "sl_bounds",
+      "earlier_tests_false": [
+        "levin1",
+        "k",
+        "mol",
+        "real_essential"
+      ],
+      "status": "covered",
+      "theorems": [
+        "L",
+        "TUN"
+      ],
+      "reported_theorems": [],
+      "reason": "First true sufficient predicate: SL and verified a priori bounds for every member of the combinatorial class; or IV' with SL, uniformly sufficiently large relative periods for Q(p)>0, and its no-parabolic/no-Siegel accumulation condition for the whole class; allow a finite tail only if the theorem establishes a singleton parameter fiber, then use TUN. Other earlier predicates false by definition."
+    },
+    "mixed_recurrent/unbounded/real/bounded_digits/residual": {
+      "regime": "mixed_recurrent",
+      "period": "unbounded",
+      "locus": "real",
+      "rotation": "bounded_digits",
+      "refinement": "residual",
+      "earlier_tests_false": [
+        "levin1",
+        "k",
+        "mol",
+        "real_essential",
+        "sl_bounds"
+      ],
+      "status": "open",
+      "theorems": [],
+      "reported_theorems": [
+        "DKL"
+      ],
+      "reason": "Unbounded relative periods exclude DL26 and DL23 bounded construction; applicable sufficient predicates above are false, including available finite-tail transfers. No general implication established in this audit. Survey reports real/vein MLC, but [14] primary manuscript is UNVERIFIED."
+    },
+    "mixed_recurrent/unbounded/real/unbounded_digits_min_tends_infty/levin1": {
+      "regime": "mixed_recurrent",
+      "period": "unbounded",
+      "locus": "real",
+      "rotation": "unbounded_digits_min_tends_infty",
+      "refinement": "levin1",
+      "earlier_tests_false": [],
+      "status": "covered",
+      "theorems": [
+        "Lev1",
+        "TUN"
+      ],
+      "reported_theorems": [],
+      "reason": "First true sufficient predicate: source's simple-renormalization exponential numerator or satellite denominator criterion; allow a finite tail only if the theorem establishes a singleton parameter fiber, then use TUN. Other earlier predicates false by definition."
+    },
+    "mixed_recurrent/unbounded/real/unbounded_digits_min_tends_infty/k": {
+      "regime": "mixed_recurrent",
+      "period": "unbounded",
+      "locus": "real",
+      "rotation": "unbounded_digits_min_tends_infty",
+      "refinement": "k",
+      "earlier_tests_false": [
+        "levin1"
+      ],
+      "status": "open",
+      "theorems": [],
+      "reported_theorems": [
+        "K"
+      ],
+      "reason": "Syntactic empty unbounded-period cell: the cofinal bounded-ratio hypothesis implies bounded maximal relative periods. Kahn's statement is verified as a preprint, not counted as published coverage."
+    },
+    "mixed_recurrent/unbounded/real/unbounded_digits_min_tends_infty/mol": {
+      "regime": "mixed_recurrent",
+      "period": "unbounded",
+      "locus": "real",
+      "rotation": "unbounded_digits_min_tends_infty",
+      "refinement": "mol",
+      "earlier_tests_false": [
+        "levin1",
+        "k"
+      ],
+      "status": "covered",
+      "theorems": [
+        "KLmol",
+        "TUN"
+      ],
+      "reported_theorems": [],
+      "reason": "First true sufficient predicate: source's uniform anti-molecule condition on cofinal absolute primitive renormalizations, allowing intervening satellites as in §2.3; allow a finite tail only if the theorem establishes a singleton parameter fiber, then use TUN. Other earlier predicates false by definition."
+    },
+    "mixed_recurrent/unbounded/real/unbounded_digits_min_tends_infty/real_essential": {
+      "regime": "mixed_recurrent",
+      "period": "unbounded",
+      "locus": "real",
+      "rotation": "unbounded_digits_min_tends_infty",
+      "refinement": "real_essential",
+      "earlier_tests_false": [
+        "levin1",
+        "k",
+        "mol"
+      ],
+      "status": "covered",
+      "theorems": [
+        "Lreal",
+        "TUN"
+      ],
+      "reported_theorems": [],
+      "reason": "First true sufficient predicate: some straightened tail is real and all of its essential periods exceed the threshold of Theorem VIII (or the original parameter satisfies that hypothesis). Other earlier predicates false by definition."
+    },
+    "mixed_recurrent/unbounded/real/unbounded_digits_min_tends_infty/sl_bounds": {
+      "regime": "mixed_recurrent",
+      "period": "unbounded",
+      "locus": "real",
+      "rotation": "unbounded_digits_min_tends_infty",
+      "refinement": "sl_bounds",
+      "earlier_tests_false": [
+        "levin1",
+        "k",
+        "mol",
+        "real_essential"
+      ],
+      "status": "covered",
+      "theorems": [
+        "L",
+        "TUN"
+      ],
+      "reported_theorems": [],
+      "reason": "First true sufficient predicate: SL and verified a priori bounds for every member of the combinatorial class; or IV' with SL, uniformly sufficiently large relative periods for Q(p)>0, and its no-parabolic/no-Siegel accumulation condition for the whole class; allow a finite tail only if the theorem establishes a singleton parameter fiber, then use TUN. Other earlier predicates false by definition."
+    },
+    "mixed_recurrent/unbounded/real/unbounded_digits_min_tends_infty/residual": {
+      "regime": "mixed_recurrent",
+      "period": "unbounded",
+      "locus": "real",
+      "rotation": "unbounded_digits_min_tends_infty",
+      "refinement": "residual",
+      "earlier_tests_false": [
+        "levin1",
+        "k",
+        "mol",
+        "real_essential",
+        "sl_bounds"
+      ],
+      "status": "open",
+      "theorems": [],
+      "reported_theorems": [
+        "DKL"
+      ],
+      "reason": "Unbounded relative periods exclude DL26 and DL23 bounded construction; applicable sufficient predicates above are false, including available finite-tail transfers. No general implication established in this audit. Survey reports real/vein MLC, but [14] primary manuscript is UNVERIFIED."
+    },
+    "mixed_recurrent/unbounded/real/unbounded_digits_min_not_tends_infty/levin1": {
+      "regime": "mixed_recurrent",
+      "period": "unbounded",
+      "locus": "real",
+      "rotation": "unbounded_digits_min_not_tends_infty",
+      "refinement": "levin1",
+      "earlier_tests_false": [],
+      "status": "covered",
+      "theorems": [
+        "Lev1",
+        "TUN"
+      ],
+      "reported_theorems": [],
+      "reason": "First true sufficient predicate: source's simple-renormalization exponential numerator or satellite denominator criterion; allow a finite tail only if the theorem establishes a singleton parameter fiber, then use TUN. Other earlier predicates false by definition."
+    },
+    "mixed_recurrent/unbounded/real/unbounded_digits_min_not_tends_infty/k": {
+      "regime": "mixed_recurrent",
+      "period": "unbounded",
+      "locus": "real",
+      "rotation": "unbounded_digits_min_not_tends_infty",
+      "refinement": "k",
+      "earlier_tests_false": [
+        "levin1"
+      ],
+      "status": "open",
+      "theorems": [],
+      "reported_theorems": [
+        "K"
+      ],
+      "reason": "Syntactic empty unbounded-period cell: the cofinal bounded-ratio hypothesis implies bounded maximal relative periods. Kahn's statement is verified as a preprint, not counted as published coverage."
+    },
+    "mixed_recurrent/unbounded/real/unbounded_digits_min_not_tends_infty/mol": {
+      "regime": "mixed_recurrent",
+      "period": "unbounded",
+      "locus": "real",
+      "rotation": "unbounded_digits_min_not_tends_infty",
+      "refinement": "mol",
+      "earlier_tests_false": [
+        "levin1",
+        "k"
+      ],
+      "status": "covered",
+      "theorems": [
+        "KLmol",
+        "TUN"
+      ],
+      "reported_theorems": [],
+      "reason": "First true sufficient predicate: source's uniform anti-molecule condition on cofinal absolute primitive renormalizations, allowing intervening satellites as in §2.3; allow a finite tail only if the theorem establishes a singleton parameter fiber, then use TUN. Other earlier predicates false by definition."
+    },
+    "mixed_recurrent/unbounded/real/unbounded_digits_min_not_tends_infty/real_essential": {
+      "regime": "mixed_recurrent",
+      "period": "unbounded",
+      "locus": "real",
+      "rotation": "unbounded_digits_min_not_tends_infty",
+      "refinement": "real_essential",
+      "earlier_tests_false": [
+        "levin1",
+        "k",
+        "mol"
+      ],
+      "status": "covered",
+      "theorems": [
+        "Lreal",
+        "TUN"
+      ],
+      "reported_theorems": [],
+      "reason": "First true sufficient predicate: some straightened tail is real and all of its essential periods exceed the threshold of Theorem VIII (or the original parameter satisfies that hypothesis). Other earlier predicates false by definition."
+    },
+    "mixed_recurrent/unbounded/real/unbounded_digits_min_not_tends_infty/sl_bounds": {
+      "regime": "mixed_recurrent",
+      "period": "unbounded",
+      "locus": "real",
+      "rotation": "unbounded_digits_min_not_tends_infty",
+      "refinement": "sl_bounds",
+      "earlier_tests_false": [
+        "levin1",
+        "k",
+        "mol",
+        "real_essential"
+      ],
+      "status": "covered",
+      "theorems": [
+        "L",
+        "TUN"
+      ],
+      "reported_theorems": [],
+      "reason": "First true sufficient predicate: SL and verified a priori bounds for every member of the combinatorial class; or IV' with SL, uniformly sufficiently large relative periods for Q(p)>0, and its no-parabolic/no-Siegel accumulation condition for the whole class; allow a finite tail only if the theorem establishes a singleton parameter fiber, then use TUN. Other earlier predicates false by definition."
+    },
+    "mixed_recurrent/unbounded/real/unbounded_digits_min_not_tends_infty/residual": {
+      "regime": "mixed_recurrent",
+      "period": "unbounded",
+      "locus": "real",
+      "rotation": "unbounded_digits_min_not_tends_infty",
+      "refinement": "residual",
+      "earlier_tests_false": [
+        "levin1",
+        "k",
+        "mol",
+        "real_essential",
+        "sl_bounds"
+      ],
+      "status": "open",
+      "theorems": [],
+      "reported_theorems": [
+        "DKL"
+      ],
+      "reason": "Unbounded relative periods exclude DL26 and DL23 bounded construction; applicable sufficient predicates above are false, including available finite-tail transfers. No general implication established in this audit. Survey reports real/vein MLC, but [14] primary manuscript is UNVERIFIED."
+    },
+    "mixed_recurrent/unbounded/nonreal/bounded_digits/levin1": {
+      "regime": "mixed_recurrent",
+      "period": "unbounded",
+      "locus": "nonreal",
+      "rotation": "bounded_digits",
+      "refinement": "levin1",
+      "earlier_tests_false": [],
+      "status": "covered",
+      "theorems": [
+        "Lev1",
+        "TUN"
+      ],
+      "reported_theorems": [],
+      "reason": "First true sufficient predicate: source's simple-renormalization exponential numerator or satellite denominator criterion; allow a finite tail only if the theorem establishes a singleton parameter fiber, then use TUN. Other earlier predicates false by definition."
+    },
+    "mixed_recurrent/unbounded/nonreal/bounded_digits/k": {
+      "regime": "mixed_recurrent",
+      "period": "unbounded",
+      "locus": "nonreal",
+      "rotation": "bounded_digits",
+      "refinement": "k",
+      "earlier_tests_false": [
+        "levin1"
+      ],
+      "status": "open",
+      "theorems": [],
+      "reported_theorems": [
+        "K"
+      ],
+      "reason": "Syntactic empty unbounded-period cell: the cofinal bounded-ratio hypothesis implies bounded maximal relative periods. Kahn's statement is verified as a preprint, not counted as published coverage."
+    },
+    "mixed_recurrent/unbounded/nonreal/bounded_digits/mol": {
+      "regime": "mixed_recurrent",
+      "period": "unbounded",
+      "locus": "nonreal",
+      "rotation": "bounded_digits",
+      "refinement": "mol",
+      "earlier_tests_false": [
+        "levin1",
+        "k"
+      ],
+      "status": "covered",
+      "theorems": [
+        "KLmol",
+        "TUN"
+      ],
+      "reported_theorems": [],
+      "reason": "First true sufficient predicate: source's uniform anti-molecule condition on cofinal absolute primitive renormalizations, allowing intervening satellites as in §2.3; allow a finite tail only if the theorem establishes a singleton parameter fiber, then use TUN. Other earlier predicates false by definition."
+    },
+    "mixed_recurrent/unbounded/nonreal/bounded_digits/real_essential": {
+      "regime": "mixed_recurrent",
+      "period": "unbounded",
+      "locus": "nonreal",
+      "rotation": "bounded_digits",
+      "refinement": "real_essential",
+      "earlier_tests_false": [
+        "levin1",
+        "k",
+        "mol"
+      ],
+      "status": "covered",
+      "theorems": [
+        "Lreal",
+        "TUN"
+      ],
+      "reported_theorems": [],
+      "reason": "First true sufficient predicate: some straightened tail is real and all of its essential periods exceed the threshold of Theorem VIII (or the original parameter satisfies that hypothesis). Other earlier predicates false by definition."
+    },
+    "mixed_recurrent/unbounded/nonreal/bounded_digits/sl_bounds": {
+      "regime": "mixed_recurrent",
+      "period": "unbounded",
+      "locus": "nonreal",
+      "rotation": "bounded_digits",
+      "refinement": "sl_bounds",
+      "earlier_tests_false": [
+        "levin1",
+        "k",
+        "mol",
+        "real_essential"
+      ],
+      "status": "covered",
+      "theorems": [
+        "L",
+        "TUN"
+      ],
+      "reported_theorems": [],
+      "reason": "First true sufficient predicate: SL and verified a priori bounds for every member of the combinatorial class; or IV' with SL, uniformly sufficiently large relative periods for Q(p)>0, and its no-parabolic/no-Siegel accumulation condition for the whole class; allow a finite tail only if the theorem establishes a singleton parameter fiber, then use TUN. Other earlier predicates false by definition."
+    },
+    "mixed_recurrent/unbounded/nonreal/bounded_digits/residual": {
+      "regime": "mixed_recurrent",
+      "period": "unbounded",
+      "locus": "nonreal",
+      "rotation": "bounded_digits",
+      "refinement": "residual",
+      "earlier_tests_false": [
+        "levin1",
+        "k",
+        "mol",
+        "real_essential",
+        "sl_bounds"
+      ],
+      "status": "open",
+      "theorems": [],
+      "reported_theorems": [],
+      "reason": "Unbounded relative periods exclude DL26 and DL23 bounded construction; applicable sufficient predicates above are false, including available finite-tail transfers. No general implication established in this audit."
+    },
+    "mixed_recurrent/unbounded/nonreal/unbounded_digits_min_tends_infty/levin1": {
+      "regime": "mixed_recurrent",
+      "period": "unbounded",
+      "locus": "nonreal",
+      "rotation": "unbounded_digits_min_tends_infty",
+      "refinement": "levin1",
+      "earlier_tests_false": [],
+      "status": "covered",
+      "theorems": [
+        "Lev1",
+        "TUN"
+      ],
+      "reported_theorems": [],
+      "reason": "First true sufficient predicate: source's simple-renormalization exponential numerator or satellite denominator criterion; allow a finite tail only if the theorem establishes a singleton parameter fiber, then use TUN. Other earlier predicates false by definition."
+    },
+    "mixed_recurrent/unbounded/nonreal/unbounded_digits_min_tends_infty/k": {
+      "regime": "mixed_recurrent",
+      "period": "unbounded",
+      "locus": "nonreal",
+      "rotation": "unbounded_digits_min_tends_infty",
+      "refinement": "k",
+      "earlier_tests_false": [
+        "levin1"
+      ],
+      "status": "open",
+      "theorems": [],
+      "reported_theorems": [
+        "K"
+      ],
+      "reason": "Syntactic empty unbounded-period cell: the cofinal bounded-ratio hypothesis implies bounded maximal relative periods. Kahn's statement is verified as a preprint, not counted as published coverage."
+    },
+    "mixed_recurrent/unbounded/nonreal/unbounded_digits_min_tends_infty/mol": {
+      "regime": "mixed_recurrent",
+      "period": "unbounded",
+      "locus": "nonreal",
+      "rotation": "unbounded_digits_min_tends_infty",
+      "refinement": "mol",
+      "earlier_tests_false": [
+        "levin1",
+        "k"
+      ],
+      "status": "covered",
+      "theorems": [
+        "KLmol",
+        "TUN"
+      ],
+      "reported_theorems": [],
+      "reason": "First true sufficient predicate: source's uniform anti-molecule condition on cofinal absolute primitive renormalizations, allowing intervening satellites as in §2.3; allow a finite tail only if the theorem establishes a singleton parameter fiber, then use TUN. Other earlier predicates false by definition."
+    },
+    "mixed_recurrent/unbounded/nonreal/unbounded_digits_min_tends_infty/real_essential": {
+      "regime": "mixed_recurrent",
+      "period": "unbounded",
+      "locus": "nonreal",
+      "rotation": "unbounded_digits_min_tends_infty",
+      "refinement": "real_essential",
+      "earlier_tests_false": [
+        "levin1",
+        "k",
+        "mol"
+      ],
+      "status": "covered",
+      "theorems": [
+        "Lreal",
+        "TUN"
+      ],
+      "reported_theorems": [],
+      "reason": "First true sufficient predicate: some straightened tail is real and all of its essential periods exceed the threshold of Theorem VIII (or the original parameter satisfies that hypothesis). Other earlier predicates false by definition."
+    },
+    "mixed_recurrent/unbounded/nonreal/unbounded_digits_min_tends_infty/sl_bounds": {
+      "regime": "mixed_recurrent",
+      "period": "unbounded",
+      "locus": "nonreal",
+      "rotation": "unbounded_digits_min_tends_infty",
+      "refinement": "sl_bounds",
+      "earlier_tests_false": [
+        "levin1",
+        "k",
+        "mol",
+        "real_essential"
+      ],
+      "status": "covered",
+      "theorems": [
+        "L",
+        "TUN"
+      ],
+      "reported_theorems": [],
+      "reason": "First true sufficient predicate: SL and verified a priori bounds for every member of the combinatorial class; or IV' with SL, uniformly sufficiently large relative periods for Q(p)>0, and its no-parabolic/no-Siegel accumulation condition for the whole class; allow a finite tail only if the theorem establishes a singleton parameter fiber, then use TUN. Other earlier predicates false by definition."
+    },
+    "mixed_recurrent/unbounded/nonreal/unbounded_digits_min_tends_infty/residual": {
+      "regime": "mixed_recurrent",
+      "period": "unbounded",
+      "locus": "nonreal",
+      "rotation": "unbounded_digits_min_tends_infty",
+      "refinement": "residual",
+      "earlier_tests_false": [
+        "levin1",
+        "k",
+        "mol",
+        "real_essential",
+        "sl_bounds"
+      ],
+      "status": "open",
+      "theorems": [],
+      "reported_theorems": [],
+      "reason": "Unbounded relative periods exclude DL26 and DL23 bounded construction; applicable sufficient predicates above are false, including available finite-tail transfers. No general implication established in this audit."
+    },
+    "mixed_recurrent/unbounded/nonreal/unbounded_digits_min_not_tends_infty/levin1": {
+      "regime": "mixed_recurrent",
+      "period": "unbounded",
+      "locus": "nonreal",
+      "rotation": "unbounded_digits_min_not_tends_infty",
+      "refinement": "levin1",
+      "earlier_tests_false": [],
+      "status": "covered",
+      "theorems": [
+        "Lev1",
+        "TUN"
+      ],
+      "reported_theorems": [],
+      "reason": "First true sufficient predicate: source's simple-renormalization exponential numerator or satellite denominator criterion; allow a finite tail only if the theorem establishes a singleton parameter fiber, then use TUN. Other earlier predicates false by definition."
+    },
+    "mixed_recurrent/unbounded/nonreal/unbounded_digits_min_not_tends_infty/k": {
+      "regime": "mixed_recurrent",
+      "period": "unbounded",
+      "locus": "nonreal",
+      "rotation": "unbounded_digits_min_not_tends_infty",
+      "refinement": "k",
+      "earlier_tests_false": [
+        "levin1"
+      ],
+      "status": "open",
+      "theorems": [],
+      "reported_theorems": [
+        "K"
+      ],
+      "reason": "Syntactic empty unbounded-period cell: the cofinal bounded-ratio hypothesis implies bounded maximal relative periods. Kahn's statement is verified as a preprint, not counted as published coverage."
+    },
+    "mixed_recurrent/unbounded/nonreal/unbounded_digits_min_not_tends_infty/mol": {
+      "regime": "mixed_recurrent",
+      "period": "unbounded",
+      "locus": "nonreal",
+      "rotation": "unbounded_digits_min_not_tends_infty",
+      "refinement": "mol",
+      "earlier_tests_false": [
+        "levin1",
+        "k"
+      ],
+      "status": "covered",
+      "theorems": [
+        "KLmol",
+        "TUN"
+      ],
+      "reported_theorems": [],
+      "reason": "First true sufficient predicate: source's uniform anti-molecule condition on cofinal absolute primitive renormalizations, allowing intervening satellites as in §2.3; allow a finite tail only if the theorem establishes a singleton parameter fiber, then use TUN. Other earlier predicates false by definition."
+    },
+    "mixed_recurrent/unbounded/nonreal/unbounded_digits_min_not_tends_infty/real_essential": {
+      "regime": "mixed_recurrent",
+      "period": "unbounded",
+      "locus": "nonreal",
+      "rotation": "unbounded_digits_min_not_tends_infty",
+      "refinement": "real_essential",
+      "earlier_tests_false": [
+        "levin1",
+        "k",
+        "mol"
+      ],
+      "status": "covered",
+      "theorems": [
+        "Lreal",
+        "TUN"
+      ],
+      "reported_theorems": [],
+      "reason": "First true sufficient predicate: some straightened tail is real and all of its essential periods exceed the threshold of Theorem VIII (or the original parameter satisfies that hypothesis). Other earlier predicates false by definition."
+    },
+    "mixed_recurrent/unbounded/nonreal/unbounded_digits_min_not_tends_infty/sl_bounds": {
+      "regime": "mixed_recurrent",
+      "period": "unbounded",
+      "locus": "nonreal",
+      "rotation": "unbounded_digits_min_not_tends_infty",
+      "refinement": "sl_bounds",
+      "earlier_tests_false": [
+        "levin1",
+        "k",
+        "mol",
+        "real_essential"
+      ],
+      "status": "covered",
+      "theorems": [
+        "L",
+        "TUN"
+      ],
+      "reported_theorems": [],
+      "reason": "First true sufficient predicate: SL and verified a priori bounds for every member of the combinatorial class; or IV' with SL, uniformly sufficiently large relative periods for Q(p)>0, and its no-parabolic/no-Siegel accumulation condition for the whole class; allow a finite tail only if the theorem establishes a singleton parameter fiber, then use TUN. Other earlier predicates false by definition."
+    },
+    "mixed_recurrent/unbounded/nonreal/unbounded_digits_min_not_tends_infty/residual": {
+      "regime": "mixed_recurrent",
+      "period": "unbounded",
+      "locus": "nonreal",
+      "rotation": "unbounded_digits_min_not_tends_infty",
+      "refinement": "residual",
+      "earlier_tests_false": [
+        "levin1",
+        "k",
+        "mol",
+        "real_essential",
+        "sl_bounds"
+      ],
+      "status": "open",
+      "theorems": [],
+      "reported_theorems": [],
+      "reason": "Unbounded relative periods exclude DL26 and DL23 bounded construction; applicable sufficient predicates above are false, including available finite-tail transfers. No general implication established in this audit."
+    }
+  },
+  "example": {
+    "class_id": "S/unbounded/nonreal/unbounded_digits_min_tends_infty/residual",
+    "formula": "t_i=1/(i+2), i>=1",
+    "prefix": [
+      "1/3",
+      "1/4",
+      "1/5",
+      "1/6",
+      "1/7"
+    ],
+    "order": "Within nonreal-at-first-step, positive numerator-one affine strictly increasing denominator words q_i=a+b(i-1), integers a>=3,b>=1, order lexicographically by (b,a); (1,3) is minimum. Not absolute minimum over all words or all open subclasses.",
+    "proof": "Nested tuned satellite copies are nonempty compact. A member of their intersection has the specified infinite cascade; first upper 1/3 limb excludes real locus. No singleton or parameter LC asserted.",
+    "checks": {
+      "Y": "Infinitely many satellite levels, not finitely renormalizable.",
+      "L": "Unbounded first-limb denominators 3,4,... cannot lie in a fixed finite family of truncated secondary limbs. No class-wide bounds established; IV' SL also fails.",
+      "Lreal": "Every straightened tail starts with rotation 1/q, q>=3, hence nonreal; no real tail.",
+      "Ldensity": "Nonreal; density alone is not MLC.",
+      "K": "No cofinal absolute primitive renormalization; also unbounded maximal relative periods contradict bounded ratios of a cofinal period sequence.",
+      "KLdec": "No primitive levels, lies in satellite molecule rather than finite decorations.",
+      "KLmol": "Pure satellite has no cofinal absolute primitive renormalizations, and belongs to the molecule (source §2.3); the source does allow intervening satellites in other words.",
+      "DL23": "Unbounded relative periods, not stationary bounded satellite construction.",
+      "DL26": "q_i=i+2 unbounded.",
+      "CS": "Single signed digit q_i; q_(i+1)=q_i+1<q_i^2 at every level; eventual high type does not give QG_N.",
+      "C": "SL fails by unbounded limb denominators; no need to decide a priori bounds.",
+      "Lev1": "Numerator 1 gives log 1=0; log q_i divided by prior absolute period tends to zero; same for every subsequence (a later rotation in a simple satellite level is its own q_i).",
+      "Lev2": "|t_(i+1)|^(1/q_i)=(1/(q_i+1))^(1/q_i) tends to 1, not <1.",
+      "Levadd": "Product prior q_j divided by q_i diverges, and q_i divided by squared prior product tends to zero.",
+      "EE": "Relative satellite levels have the shared base point, violating E2 (only K0 contained in central Y); no elephant-eye primitive tail.",
+      "KKL": "Relative types satellite, not prime primitive.",
+      "LY": "Nonreal; conclusion is JLC/bounds.",
+      "LvS": "Nonreal; conclusion is JLC.",
+      "GS": "Nonreal; journal theorem UNVERIFIED, not an MLC implication.",
+      "DKL": "Nonreal and no claim to lie on a specified vein; primary manuscript unavailable, cannot rule out unspecified extension.",
+      "survey": "Consistent with remaining unbounded satellite Problem 4.3; 4.4 concerns virtual primitive levels, not this word.",
+      "TUN": "Every finite tail has the same slow growth and none of the audited base hypotheses, so finite tuning of a certified trivial-fiber point is not supplied. This transfer cannot itself establish the tail."
+    }
+  },
+  "survey_comparison": {
+    "match": "Problem 4.3 (§4.4) remaining unbounded satellite ql bounds; explicit slow pure-satellite example falls in this direction of research.",
+    "not_match": "Problem 4.4 (§4.5) virtual near-Molecule interpolation of primitive maximal copies. No discrepancy found; 2026 preprints postdate survey.",
+    "real": "Survey §4.3 reports real/vein result in manuscript [14]. Do not conflate with old real JLC and density theorems.",
+    "limits": "Neither survey nor this search proves that no later theorem covers the explicit word. No global minimality, no claim of non-MLC."
+  }
+}
