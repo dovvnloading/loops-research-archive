@@ -60,9 +60,11 @@ theorem analytic_factor_power_chart (f g : ℂ → ℂ) (x : ℂ) (m : ℕ)
     (analyticAt_id.sub analyticAt_const).mul (hRa z hz)
   have hφ0 : φ x = 0 := by simp [φ]
   have hφd : HasDerivAt φ 1 x := by
-    have h := ((hasDerivAt_id x).sub_const x).mul
-      ((hRa x hxS).differentiableAt.hasDerivAt)
-    convert h using 1 <;> simp [φ, hRx]
+    have h : HasDerivAt (fun z : ℂ => (z-x)*R z)
+        ((1 : ℂ)*R x+(x-x)*deriv R x) x :=
+      ((hasDerivAt_id x).sub_const x).fun_mul
+        ((hRa x hxS).differentiableAt.hasDerivAt)
+    simpa only [hRx, one_mul, sub_self, zero_mul, add_zero] using h
   have hφax : AnalyticAt ℂ φ x := hφa x hxS
   have hdne : deriv φ x ≠ 0 := by rw [hφd.deriv]; norm_num
   let E : OpenPartialHomeomorph ℂ ℂ :=

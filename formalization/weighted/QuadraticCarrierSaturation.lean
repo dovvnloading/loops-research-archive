@@ -46,12 +46,16 @@ theorem quadratic_compact_return_invariant_subset_filled
     nlinarith [hp k]
   intro z hz
   obtain ⟨x, hx, hmax⟩ := hA.exists_isMaxOn ⟨z, hz⟩ hcont.continuousOn
-  have hi := hmax (hforward hx)
+  have hi : escape c (orbit c n x) ≤ escape c x := hmax (hforward hx)
   rw [escape_iterate] at hi
   have hx0 : escape c x = 0 := by
-    nlinarith [escape_nonneg c x]
+    apply le_antisymm _ (escape_nonneg c x)
+    by_contra! hpos
+    have hlt : escape c x < (2 : ℝ)^n * escape c x := by
+      simpa only [one_mul] using mul_lt_mul_of_pos_right hfactor hpos
+    exact (not_lt_of_ge hi) hlt
   change escape c z = 0
-  have hzle := hmax hz
+  have hzle : escape c z ≤ escape c x := hmax hz
   rw [hx0] at hzle
   exact le_antisymm hzle (escape_nonneg c z)
 
