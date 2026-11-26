@@ -11,12 +11,14 @@ human_review: none
 
 ## Claim
 
-**Proof development; complete Lean CI and axiom audit pending.** This packet
+**Verified: nine public Lean theorems in four modules.** The full weighted
+build and transitive axiom audit passed at the proof checkpoint documented
+below, together with all 23 workflows associated with that commit. This packet
 addresses the explicit remaining boundary of the merged parameter-stable
 inverse-family contribution: assembling the whole degree-two return while
 retaining the moving critical value and trapping the entire middle pullback.
-Every result counted by this packet must be a theorem in the repository's
-existing Lean project that passes its full compilation and transitive audit.
+Every result counted by this packet is a theorem in the repository's existing
+Lean project, checked by its full compilation and transitive audit.
 
 Write `F_c^n(z)` for `QuadraticEscape.orbit c n z`, the actual finite iterate
 of `z ↦ z²+c`. Fix natural times a,b, a compact preconnected target K, and
@@ -161,7 +163,39 @@ opened as a draft before proof development. Every source checkpoint and
 repair is committed there. The first helper checkpoint compiled
 `QuadraticCriticalTrapping`; the first open-component build exposed one
 implicit-set elaboration mismatch, repaired by specifying the actual
-preimage set and anchor explicitly. No unverified full result is claimed.
+preimage set and anchor explicitly. The next source checkpoint compiled all
+four modules. Synchronization with main preserved both contributions'
+registry entries and left all four proof sources unchanged.
+
+#### Verified proof checkpoint
+
+At [`ea4834b587c9b0ff6ab06ee3d1055998e7539237`](https://github.com/dovvnloading/loops-research-archive/commit/ea4834b587c9b0ff6ab06ee3d1055998e7539237),
+all 23 workflow runs concluded successfully:
+
+- [Weighted full build and transitive axiom audit](https://github.com/dovvnloading/loops-research-archive/actions/runs/45908679550/job/140211521202):
+  8,908 build jobs completed; 119 weighted modules and 2,918 declarations passed.
+- [Root and standalone Lean audits](https://github.com/dovvnloading/loops-research-archive/actions/runs/45908679702/job/140211507186):
+  38 root modules and 1,625 declarations passed, together with all five
+  standalone modules.
+- [Contribution intake](https://github.com/dovvnloading/loops-research-archive/actions/runs/45908679595)
+  and [model-to-geometry coverage](https://github.com/dovvnloading/loops-research-archive/actions/runs/45908679794)
+  passed. The repository's Python research audit and all other associated
+  workflows also passed.
+
+The weighted log explicitly records every new declaration:
+
+```text
+Build completed successfully (8908 jobs).
+AXIOM_AUDIT weighted QuadraticCriticalTrapping: 3 declarations, 3 theorems; allowed axioms only
+AXIOM_AUDIT weighted QuadraticInverseOpen: 3 declarations, 3 theorems; allowed axioms only
+AXIOM_AUDIT weighted TelescopeDeckInvolution: 1 declarations, 1 theorems; allowed axioms only
+AXIOM_AUDIT weighted TelescopeParameterReturn: 2 declarations, 2 theorems; allowed axioms only
+AXIOM_AUDIT_PASS weighted: 119 modules, 2918 declarations
+```
+
+The final evidence-record update changes this note only; the proof sources
+and their registrations remain exactly those of the verified checkpoint.
+The pull request also reports CI for its final documentation commit.
 
 Local installation of pinned Lean 4.32.0 could not complete because the
 workspace had approximately 260 MB free, less than the release archive.
@@ -171,7 +205,8 @@ compilation and foundational-dependency authority for this contribution.
 All modules are registered default Lake targets. The theorem and source
 indexes register every public theorem under the existing CONSTRUCT route.
 No workflow, validator, dependency pin, toolchain, or canonical status
-record is modified. The existing audit permits only `propext`,
+record is modified. No proof holes or new axioms are introduced.
+The existing audit permits only `propext`,
 `Classical.choice`, and `Quot.sound` and checks every compiled declaration.
 
 Reproduction:
