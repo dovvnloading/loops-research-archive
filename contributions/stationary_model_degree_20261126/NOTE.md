@@ -11,7 +11,7 @@ human_review: none
 
 ## Claim
 
-Candidate Lean result: for a continuous surjective semiconjugacy from the actual complex quadratic filled set with connected geometric fibers, lightness (total disconnectedness of each model point preimage) suffices for whole-fiber transport; the model then has at most two predecessors of every point. Every nonempty model predecessor fiber is exactly the image pair of two opposite physical roots. Whole-fiber transport also forces model openness. Independently, if the model is open and singleton target fibers are dense, the model has at most two predecessors per point; one singleton anchor with dense backward orbit is sufficient for that density. Thus lightness and finiteness are equivalent in the stated genuine quadratic setting. This is a reduction of the prior finite-model-fiber assumption to lightness, not an unconditional identification of the named source quotient.
+Candidate Lean result: for a continuous surjective semiconjugacy from the actual complex quadratic filled set with connected geometric fibers, lightness (total disconnectedness of each model point preimage) suffices for whole-fiber transport; the model then has at most two predecessors of every point. Every nonempty model predecessor fiber is exactly the image pair of two opposite physical roots. Whole-fiber transport also forces model openness. Independently, if the model is open and singleton target fibers are dense, the model has at most two predecessors per point; one singleton anchor with dense backward orbit is sufficient for that density. Thus lightness and finiteness are equivalent in the stated genuine quadratic setting. At every inverse depth, the model predecessor count is bounded by the actual ramification-aware physical count. At a singleton geometric anchor this count is exact, even without model openness, lightness or global whole-fiber transport. This is a reduction of the prior finite-model-fiber assumption to lightness, not an unconditional identification of the named source quotient.
 
 ## Evidence
 
@@ -41,11 +41,27 @@ Additional declarations in this extension:
 - `quadratic_filled_open_model_transport_of_anchor`
 - `quadratic_filled_light_iff_finite`
 
-Reproduction: `cd formalization/weighted && lake build StationaryLightModel`, followed by repository-root `python3 -B code/verify_lean_coverage.py --audit weighted`. This environment has no Lean executable or network git access; repository CI is the compiler of record. No successful compilation is asserted yet.
+7. At all depths, whole-fiber transport gives an exact set identity: the model inverse-point set equals the projection of the inverse-point set of any one physical point in its successor fiber.
+8. At a singleton anchor this identity needs only surjectivity of the semiconjugacy. The existing backward singleton propagation theorem also makes the projection injective on the entire inverse level. Complete invariance identifies all physical inverse roots with points of the actual filled set, including ramification. Transfer the previously proved global inverse-fiber census (QuadraticCriticalFiberCensus) by the finite image of these actual roots. The resulting model count plus the exact critical-value defect is at most the global degree, and equals the degree at a singleton anchor. If the anchor avoids every critical value through that depth, the model has exactly the full binary level.
+
+Additional declarations in the all-depth extension:
+
+- `model_iterate_preimage_projection`
+- `model_anchor_iterate_preimage_projection`
+- `model_anchor_iterate_preimage_injective`
+- `quadratic_filled_iterate_mem_iff`
+- `quadratic_filled_model_census_of_projection`
+- `quadratic_filled_light_model_ramification_bound`
+- `quadratic_filled_singleton_anchor_ramification_exact`
+- `quadratic_filled_singleton_anchor_full_degree`
+
+Verified first checkpoint: [commit e605c916](https://github.com/dovvnloading/loops-research-archive/commit/e605c916330bac0694f7ab907101bd0054f3a721), [weighted CI 45879011212](https://github.com/dovvnloading/loops-research-archive/actions/runs/45879011212/job/140113281819) passed the source guard, complete Lean build (8822 jobs), and transitive dependency audit (StationaryLightModel: 6 declarations and 6 theorems including generated declarations; 76 modules and 2057 declarations overall; allowed foundational axioms only). Contribution intake and geometry coverage passed at that checkpoint. The later additions are candidates until their own exact-head CI passes.
+
+Reproduction: `cd formalization/weighted && lake build StationaryLightModel`, followed by repository-root `python3 -B code/verify_lean_coverage.py --audit weighted`. This environment has no Lean executable or network git access; repository CI is the compiler of record. The first checkpoint compiled and passed the audit; no later revision is credited before its own check.
 
 ## Dependencies
 
-KKL_NATIVE_TERMINAL_HUBBARD_TREE, KKL_STATIONARY_MODEL_TERMINAL_SHEET_INCIDENCE, KKL_STATIONARY_SELECTED_PREDECESSOR_CHAIN; StationaryFiberDynamics, StationaryGeometricFibers, Mathlib's compact Hausdorff component theorem and connected-set calculus.
+KKL_NATIVE_TERMINAL_HUBBARD_TREE, KKL_STATIONARY_MODEL_TERMINAL_SHEET_INCIDENCE, KKL_STATIONARY_SELECTED_PREDECESSOR_CHAIN; StationaryFiberDynamics, StationaryGeometricFibers, QuadraticCriticalFiberCensus, Mathlib's compact Hausdorff component theorem and connected-set calculus.
 
 ## Boundary
 

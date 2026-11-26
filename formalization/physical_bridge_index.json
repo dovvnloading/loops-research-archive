@@ -2345,7 +2345,15 @@
         "quadratic_filled_no_three_predecessors",
         "dense_singleton_targets_of_dense_backward_orbit",
         "quadratic_filled_open_model_transport_of_anchor",
-        "quadratic_filled_light_iff_finite"
+        "quadratic_filled_light_iff_finite",
+        "model_iterate_preimage_projection",
+        "model_anchor_iterate_preimage_projection",
+        "model_anchor_iterate_preimage_injective",
+        "quadratic_filled_iterate_mem_iff",
+        "quadratic_filled_model_census_of_projection",
+        "quadratic_filled_light_model_ramification_bound",
+        "quadratic_filled_singleton_anchor_ramification_exact",
+        "quadratic_filled_singleton_anchor_full_degree"
       ]
     },
     "obligations": [

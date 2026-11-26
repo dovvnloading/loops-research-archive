@@ -1,4 +1,5 @@
 import StationaryFiberDynamics
+import QuadraticCriticalFiberCensus
 
 /-!
 # Light geometric quotient dynamics of the actual quadratic
@@ -12,6 +13,7 @@ namespace LoopsStationaryLightModel
 
 open Set Function
 open LoopsStationaryFiberDynamics LoopsStationaryGeometricFibers
+open LoopsQuadraticCriticalFiberCensus
 
 variable {X Y : Type*} [TopologicalSpace X] [TopologicalSpace Y]
 
@@ -419,5 +421,203 @@ theorem quadratic_filled_light_iff_finite [T1Space Y]
     exact quadratic_filled_light_model_finite c p G hp hsurj hs hf h
   · intro h y S hS hconn
     exact preconnected_finite_subsingleton hconn ((h y).subset hS)
+
+
+/-- At every depth, the complete model predecessor set is the image
+of the physical preimages of any one point in its target fiber.
+This is stronger than a global model degree bound. -/
+theorem model_iterate_preimage_projection
+    (p : X → Y) (F : X → X) (G : Y → Y)
+    (hs : Semiconj p F G)
+    (himage : ∀ y : Y, F '' (p ⁻¹' {y}) = p ⁻¹' {G y})
+    (a : X) (n : ℕ) :
+    (G^[n]) ⁻¹' {p a} = p '' ((F^[n]) ⁻¹' {a}) := by
+  ext y
+  constructor
+  · intro hy
+    have hw : a ∈ p ⁻¹' ({(G^[n]) y} : Set Y) := by
+      change p a = (G^[n]) y
+      exact hy.symm
+    rw [← iterate_fiber_image_eq p F G himage n y] at hw
+    obtain ⟨x, hx, hxa⟩ := hw
+    exact ⟨x, hxa, hx⟩
+  · rintro ⟨x, hx, rfl⟩
+    change (F^[n]) x = a at hx
+    change (G^[n]) (p x) = p a
+    rw [← hs.iterate_right n x, hx]
+
+/-- At a singleton target anchor the exact predecessor projection
+does not require lightness or full-fiber transport anywhere else. -/
+theorem model_anchor_iterate_preimage_projection
+    (p : X → Y) (F : X → X) (G : Y → Y)
+    (hsurj : Surjective p) (hs : Semiconj p F G)
+    (a : X) (ha : p ⁻¹' ({p a} : Set Y) = {a}) (n : ℕ) :
+    (G^[n]) ⁻¹' {p a} = p '' ((F^[n]) ⁻¹' {a}) := by
+  ext y
+  constructor
+  · intro hy
+    change (G^[n]) y = p a at hy
+    obtain ⟨x, hx⟩ := hsurj y
+    have h : (F^[n]) x ∈ p ⁻¹' ({p a} : Set Y) := by
+      change p ((F^[n]) x) = p a
+      rw [hs.iterate_right n x, hx, hy]
+    rw [ha] at h
+    exact ⟨x, h, hx⟩
+  · rintro ⟨x, hx, rfl⟩
+    change (F^[n]) x = a at hx
+    change (G^[n]) (p x) = p a
+    rw [← hs.iterate_right n x, hx]
+
+/-- All predecessor labels of a singleton anchor remain distinct
+under a connected-fiber semiconjugacy of finite-to-one physical
+dynamics. No model degree assumption is needed. -/
+theorem model_anchor_iterate_preimage_injective [T1Space X]
+    (p : X → Y) (F : X → X) (G : Y → Y)
+    (hs : Semiconj p F G)
+    (hf : ∀ y : Y, IsPreconnected (p ⁻¹' {y}))
+    (hfinite : ∀ x : X, (F ⁻¹' {x}).Finite)
+    (a : X) (ha : p ⁻¹' ({p a} : Set Y) = {a}) (n : ℕ) :
+    InjOn p ((F^[n]) ⁻¹' {a}) := by
+  intro x hx z _ h
+  have hsingle := singleton_fiber_of_iterate p F G hf hs hfinite a x ha n hx
+  have hz : z ∈ p ⁻¹' ({p x} : Set Y) := h.symm
+  rw [hsingle] at hz
+  exact (show z = x from hz).symm
+
+/-- Complete invariance of the genuine filled set persists through
+every finite iterate of the ambient complex quadratic. -/
+theorem quadratic_filled_iterate_mem_iff (c z : ℂ) (n : ℕ) :
+    ((fun w : ℂ => w^2+c)^[n]) z ∈ quadraticFilled c ↔
+      z ∈ quadraticFilled c := by
+  induction n generalizing z with
+  | zero => simp
+  | succ n ih =>
+    rw [Function.iterate_succ_apply, ih]
+    exact quadratic_filled_complete_invariant c z
+
+/-- Transfer the genuine global inverse-point census across an exact
+projection identity. The result retains the physical ramification
+count; injectivity on the inverse set gives equality of counts. -/
+theorem quadratic_filled_model_census_of_projection
+    (c : ℂ) (p : quadraticFilled c → Y) (G : Y → Y)
+    (hs : Semiconj p (quadraticFilledMap c) G)
+    (a : quadraticFilled c) (n : ℕ)
+    (hproj : (G^[n]) ⁻¹' {p a} =
+      p '' (((quadraticFilledMap c)^[n]) ⁻¹' {a})) :
+    ∃ M : Finset Y,
+      (∀ y : Y, y ∈ M ↔ (G^[n]) y = p a) ∧
+      M.card ≤ (globalFiber c n (a : ℂ)).card ∧
+      (InjOn p (((quadraticFilledMap c)^[n]) ⁻¹' {a}) →
+        M.card = (globalFiber c n (a : ℂ)).card) := by
+  classical
+  let A := globalFiber c n (a : ℂ)
+  have hmem (z : ℂ) (hz : z ∈ A) : z ∈ quadraticFilled c := by
+    apply (quadratic_filled_iterate_mem_iff c z n).mp
+    rw [(mem_globalFiber c n (a : ℂ) z).mp hz]
+    exact a.property
+  let lift : ↥A → quadraticFilled c := fun z => ⟨(z : ℂ), hmem z z.property⟩
+  let q : ↥A → Y := fun z => p (lift z)
+  let M := A.attach.image q
+  have hsem : Semiconj (Subtype.val : quadraticFilled c → ℂ)
+      (quadraticFilledMap c) (fun w : ℂ => w^2+c) := fun _ => rfl
+  have hroot (z : ↥A) : ((quadraticFilledMap c)^[n]) (lift z) = a := by
+    apply Subtype.ext
+    rw [hsem.iterate_right n (lift z)]
+    exact (mem_globalFiber c n (a : ℂ) (z : ℂ)).mp z.property
+  have hM (y : Y) : y ∈ M ↔ (G^[n]) y = p a := by
+    change y ∈ A.attach.image q ↔ _
+    rw [Finset.mem_image]
+    constructor
+    · rintro ⟨z, _, rfl⟩
+      change (G^[n]) (p (lift z)) = p a
+      rw [← hs.iterate_right n (lift z), hroot z]
+    · intro hy
+      have hy' : y ∈ (G^[n]) ⁻¹' {p a} := hy
+      rw [hproj] at hy'
+      obtain ⟨x, hx, hxp⟩ := hy'
+      change ((quadraticFilledMap c)^[n]) x = a at hx
+      have hxA : (x : ℂ) ∈ A := by
+        apply (mem_globalFiber c n (a : ℂ) (x : ℂ)).mpr
+        rw [← hsem.iterate_right n x, hx]
+      let z : ↥A := ⟨(x : ℂ), hxA⟩
+      refine ⟨z, Finset.mem_attach _ _, ?_⟩
+      have hzx : lift z = x := Subtype.ext rfl
+      change p (lift z) = y
+      rwa [hzx]
+  refine ⟨M, hM, ?_, ?_⟩
+  · calc
+      M.card ≤ A.attach.card := Finset.card_image_le
+      _ = A.card := Finset.card_attach
+  · intro hi
+    have hqi : Injective q := by
+      intro z t he
+      apply Subtype.ext
+      have hl : lift z = lift t := hi (hroot z) (hroot t) he
+      exact congrArg (fun w : quadraticFilled c => (w : ℂ)) hl
+    calc
+      M.card = A.attach.card := Finset.card_image_of_injective _ hqi
+      _ = A.card := Finset.card_attach
+
+/-- In the light-model setting the model's inverse census is bounded
+by the actual critical-value-adjusted count at every depth, not just
+the unramified global degree. -/
+theorem quadratic_filled_light_model_ramification_bound [T1Space Y]
+    (c : ℂ) (p : quadraticFilled c → Y) (G : Y → Y)
+    (hp : Continuous p) (hsurj : Surjective p)
+    (hs : Semiconj p (quadraticFilledMap c) G)
+    (hf : ∀ y : Y, IsPreconnected (p ⁻¹' {y}))
+    (hlight : ∀ y : Y, IsTotallyDisconnected (G ⁻¹' {y}))
+    (a : quadraticFilled c) (n : ℕ) :
+    ∃ M : Finset Y,
+      (∀ y : Y, y ∈ M ↔ (G^[n]) y = p a) ∧
+      M.card + criticalFiberDefect c (a : ℂ) n ≤ 2^n := by
+  have hproj := model_iterate_preimage_projection p (quadraticFilledMap c) G hs
+    (quadratic_filled_light_fiber_image c p G hp hsurj hs hf hlight) a n
+  obtain ⟨M, hM, hcard, _⟩ :=
+    quadratic_filled_model_census_of_projection c p G hs a n hproj
+  refine ⟨M, hM, ?_⟩
+  have he := globalFiber_card_exact c (a : ℂ) n
+  omega
+
+/-- Exact ramification-aware count for a singleton geometric anchor.
+No model lightness, openness, finite degree, or even global
+whole-fiber transport is required for this inverse census. -/
+theorem quadratic_filled_singleton_anchor_ramification_exact
+    (c : ℂ) (p : quadraticFilled c → Y) (G : Y → Y)
+    (hsurj : Surjective p) (hs : Semiconj p (quadraticFilledMap c) G)
+    (hf : ∀ y : Y, IsPreconnected (p ⁻¹' {y}))
+    (a : quadraticFilled c) (ha : p ⁻¹' ({p a} : Set Y) = {a}) (n : ℕ) :
+    ∃ M : Finset Y,
+      (∀ y : Y, y ∈ M ↔ (G^[n]) y = p a) ∧
+      M.card + criticalFiberDefect c (a : ℂ) n = 2^n := by
+  have hphys : ∀ x : quadraticFilled c,
+      ((quadraticFilledMap c) ⁻¹' {x}).Finite :=
+    quadratic_restricted_fiber_finite c (quadraticFilled c)
+      (quadraticFilledMap c) (fun _ => rfl)
+  have hproj := model_anchor_iterate_preimage_projection
+    p (quadraticFilledMap c) G hsurj hs a ha n
+  have hI := model_anchor_iterate_preimage_injective
+    p (quadraticFilledMap c) G hs hf hphys a ha n
+  obtain ⟨M, hM, _, heq⟩ :=
+    quadratic_filled_model_census_of_projection c p G hs a n hproj
+  refine ⟨M, hM, ?_⟩
+  rw [heq hI]
+  exact globalFiber_card_exact c (a : ℂ) n
+
+/-- If the singleton anchor avoids every critical value of the
+iterate, the model has the entire unramified binary predecessor
+level, with no label collision. -/
+theorem quadratic_filled_singleton_anchor_full_degree
+    (c : ℂ) (p : quadraticFilled c → Y) (G : Y → Y)
+    (hsurj : Surjective p) (hs : Semiconj p (quadraticFilledMap c) G)
+    (hf : ∀ y : Y, IsPreconnected (p ⁻¹' {y}))
+    (a : quadraticFilled c) (ha : p ⁻¹' ({p a} : Set Y) = {a}) (n : ℕ)
+    (havoid : ∀ k < n, ((fun w : ℂ => w^2+c)^[k]) c ≠ (a : ℂ)) :
+    ∃ M : Finset Y, (∀ y : Y, y ∈ M ↔ (G^[n]) y = p a) ∧ M.card = 2^n := by
+  obtain ⟨M, hM, heq⟩ :=
+    quadratic_filled_singleton_anchor_ramification_exact c p G hsurj hs hf a ha n
+  have hz := (criticalFiberDefect_zero_iff c (a : ℂ) n).mpr havoid
+  refine ⟨M, hM, ?_⟩
+  omega
 
 end LoopsStationaryLightModel
