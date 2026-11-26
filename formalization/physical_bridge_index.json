@@ -2893,5 +2893,41 @@
     "obligations": [
       "VIRTUAL_REACHED_CYLINDER_COMPONENT_EXHAUSTION"
     ]
+  },
+  "quadratic-quantitative-coding-20261126": {
+    "guide": "contributions/quadratic_quantitative_coding_20261126/NOTE.md#quadratic-quantitative-coding-20261126",
+    "theorems": {
+      "formalization/weighted/QuadraticCantorGeometry.lean": [
+        "filled_forward",
+        "filled_backward",
+        "filled_step_iff",
+        "escape_reflection",
+        "filled_reflection",
+        "exists_square_root",
+        "exists_center",
+        "norm_step_lower",
+        "norm_bound_sub_one",
+        "norm_bound",
+        "center_norm_sq",
+        "center_ne_zero",
+        "center_norm_ge_two",
+        "branch_distance_product",
+        "filled_disk_cover",
+        "branchDisk_reflection",
+        "branchDisks_disjoint",
+        "quadratic_fiber_iff",
+        "same_disk_expansion"
+      ],
+      "formalization/weighted/ExpandingBinaryCoding.lean": [
+        "prefix_expansion",
+        "prefix_dist_bound",
+        "expanding_address_injective",
+        "expanding_binary_conjugacy",
+        "prefix_intersection_singleton"
+      ]
+    },
+    "obligations": [
+      "DIRECT_DECORATION_END_PRIME_END_COFINALITY"
+    ]
   }
 }

@@ -52,6 +52,7 @@ formalization/weighted/ClonePolynomialRoots.lean	CLONE EDGE
 formalization/weighted/CloneRoot.lean	CLONE EDGE
 formalization/weighted/CloneRootRate.lean	CLONE EDGE
 formalization/weighted/CompactObstacleRemainder.lean	METADATA
+formalization/weighted/ExpandingBinaryCoding.lean	METADATA
 formalization/weighted/FiniteMarkovCorrelation.lean	FINITE-CORRELATION CLONE-OBSERVABLE RANDOM-CLOCK
 formalization/weighted/FiniteMarkovFibers.lean	REAL-FIBERS
 formalization/weighted/FullCloneCharpoly.lean	CLONE EDGE
@@ -96,6 +97,7 @@ formalization/weighted/PrimeEndImpressionDecomposition.lean	METADATA
 formalization/weighted/PrimeEndSectorFilters.lean	METADATA
 formalization/weighted/PrimeEndSectorImpressions.lean	METADATA
 formalization/weighted/PrimeEndSectorRank.lean	METADATA
+formalization/weighted/QuadraticCantorGeometry.lean	METADATA
 formalization/weighted/QuadraticCriticalFiberCensus.lean	METADATA
 formalization/weighted/QuadraticCriticalTransversality.lean	CRITICAL-TRANSVERSALITY
 formalization/weighted/PhaseMemoryCardinality.lean	CLOCK ENDS

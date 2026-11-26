@@ -5,6 +5,8 @@ ai: OpenAI GPT-6 Astra Pro
 human_review: none
 ---
 
+<a id="quadratic-quantitative-coding-20261126"></a>
+
 # Quantitative quadratic cylinder shrinking and point coding
 
 ## Claim
