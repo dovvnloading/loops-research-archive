@@ -6291,18 +6291,18 @@
   },
   {
    "id": "NOV26_OPEN_26_TRIPLES",
-   "status": "open",
-   "statement": "Remaining depth-three finite triples: The (3,3,3) exact packet does not check the other 26 triples in {3,4,5}^3.",
+   "status": "proved",
+   "statement": "Remaining depth-three finite arithmetic census: All 26 missing words in {3,4,5}^3 have Lean-proved root, geometry and rational width certificates and a unique actual real collision-polynomial root inside each certified chart; (3,3,3) is retained as a regression. Actual complex remainder bounds and all three ancestor boundary comparisons are proved. Closure is finite arithmetic only; tuning/straightening, topological degree-two construction, KKL marking, physical extremal-width interpretation and arbitrary-depth claims remain outside the result.",
    "deps": [
     "NOV26_DEPTH3"
    ],
-   "evidence": "research/independent_audits/tip_family_all_depths_20261116/NOTE.md",
+   "evidence": "contributions/depth_three_grid_20261126/NOTE.md",
    "clauses": "",
-   "hyp": "unproved",
-   "classification": "Open",
-   "group": "Open November research obligations",
-   "pr": null,
-   "verifier": "research/independent_audits/tip_family_all_depths_20261116/verify.py",
+   "hyp": "finite arithmetic only; physical and marked identifications remain unproved",
+   "classification": "Lean-proved finite arithmetic census",
+   "group": "Renormalization depth and marked QC",
+   "pr": 232,
+   "verifier": "contributions/depth_three_grid_20261126/verify_grid.py",
    "physical_bridges": [
     "DEPTH"
    ]
