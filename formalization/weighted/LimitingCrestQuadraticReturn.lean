@@ -386,8 +386,7 @@ theorem unscaled_quadratic_corridor (c : ℝ) (p : ℕ) (hp : 13 ≤ p)
     simpa [w] using congrArg (fun t : ℝ => d*t) hthree
   · rw [hthird]
     have hnorm : (-1 : ℝ) < (((normalizedReturn c p)^[3]) w).re := by
-      dsimp [w]
-      linarith
+      exact (show (-1 : ℝ) < -999/1000 by norm_num).trans hlow
     have hm := mul_lt_mul_of_pos_left hnorm hd
     change -d < d*(((normalizedReturn c p)^[3]) w).re
     linarith

@@ -131,7 +131,7 @@ theorem sharp_inner_integral_lower {κ : ℝ}
   have hlin : (∫ s in (1 / 16 : ℝ)..(663 / 10000 : ℝ),
       (2 * m - s) / (m ^ 2 * A)) = (19 / 322 : ℝ) / A := by
     rw [intervalIntegral.integral_div]
-    rw [intervalIntegral.integral_sub
+    rw [intervalIntegral.integral_sub (g := fun s : ℝ => s)
       (intervalIntegrable_const : IntervalIntegrable (fun _ : ℝ => 2 * m)
         volume (1 / 16) (663 / 10000))
       (continuous_id.intervalIntegrable (1 / 16 : ℝ) (663 / 10000))]

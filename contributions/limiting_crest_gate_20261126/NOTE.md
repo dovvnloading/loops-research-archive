@@ -13,8 +13,8 @@ human_review: none
 
 The target is the limiting quadratic model named in the crest asymptotics
 note, Q_k(z) = 1 - k z^2. This packet replaces several numerical statements
-about that model with exact, whole-interval Lean statements. The implementation
-is undergoing CI verification; the final verification record belongs below.
+about that model with exact, whole-interval Lean theorems, and reduces the
+actual quadratic-return approximation to explicit real dynamical conditions.
 
 Write K = [17903/10000,17904/10000] and S = [63/1000,33/500]. For every
 k in K and s in S, there is a unique u in (-1/100,1/100) such that
@@ -147,10 +147,22 @@ cache; the repository's unmodified CI is the compiler and kernel authority.
 The source checkout is sparse for the same disk constraint; the local packet
 and proof-escape checks pass, while the whole-repository source-index check
 must run against CI's complete checkout.
-The fourth CI run compiled LimitingCrestParameter, LimitingCrestGeometry,
-LimitingCrestEndpoint, LimitingCrestPerturbation, and LimitingCrestPersistence.
-The remaining dependent-module diagnostics are being corrected in the draft
-PR. No complete successful build is asserted at this stage.
+The PR's unmodified weighted-kernel workflow checks the complete project and
+then audits the transitive axioms of every declaration, including private
+helpers. To reproduce the new proof package with the pinned toolchain:
+
+```sh
+cd formalization/weighted
+lake exe cache get
+lake build LimitingCrestSharpCoefficient LimitingCrestArcGates LimitingCrestQuadraticReturn
+cd ../..
+python -B code/verify_lean_coverage.py --audit weighted
+```
+
+The source-coverage audit also rejects prohibited proof tokens. The PR
+[PR #233](https://github.com/dovvnloading/loops-research-archive/pull/233)
+contains the incremental compiler fixes and the final CI verification record;
+no workflow, trusted baseline, or ledger status was weakened for this packet.
 
 ## Dependencies
 
