@@ -3839,6 +3839,15 @@
         "anchored_lift_image",
         "anchored_lift_tendsto",
         "selected_collar_ambient_landing"
+      ],
+      "formalization/weighted/StationaryLimbCollar.lean": [
+        "filled_iterate_val",
+        "filled_preimage_component_image",
+        "limb_itinerary_planar_component",
+        "limb_itinerary_critical_free",
+        "limb_itinerary_planar_geometry",
+        "limb_itinerary_analytic_collar",
+        "limb_collar_ambient_landing"
       ]
     },
     "obligations": [
