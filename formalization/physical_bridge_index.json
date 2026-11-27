@@ -3252,10 +3252,13 @@
         "large_parameter_orbit_shadow"
       ],
       "formalization/weighted/QuadraticJuliaStability.lean": [
+        "orbit_shadow_unique_of_separation",
         "orbit_shadow_unique",
         "filled_hausdorff_lipschitz",
         "orbit_shadow_relation_closed",
+        "filled_structural_conjugacy_of_separation",
         "filled_structural_conjugacy",
+        "filled_structural_conjugacy_radius",
         "filled_near_identity_conjugacy"
       ],
       "formalization/weighted/QuadraticEscapeHarmonic.lean": [
@@ -3287,6 +3290,25 @@
         "filled_hausdorff_of_uniform_separation",
         "filled_hausdorff_radius",
         "filled_hausdorff_small_lipschitz_at_infinity"
+      ],
+      "formalization/weighted/QuadraticBottcherExterior.lean": [
+        "exterior_orbit_norm_lower",
+        "log_correction_norm_bound",
+        "log_correction_step",
+        "bottcher_semiconjugacy",
+        "log_correction_analyticAt",
+        "bottcher_analyticAt",
+        "bottcher_ne_zero",
+        "bottcher_log_norm",
+        "bottcher_relative_error",
+        "log_correction_tendsto_zero",
+        "bottcher_normalization",
+        "reciprocal_zero",
+        "reciprocal_eq_inverse",
+        "reciprocal_hasDerivAt_zero",
+        "reciprocal_analyticAt_zero",
+        "reciprocal_semiconjugacy",
+        "reciprocal_local_coordinate"
       ]
     },
     "obligations": [

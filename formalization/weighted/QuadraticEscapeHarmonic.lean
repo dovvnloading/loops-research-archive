@@ -34,7 +34,7 @@ private theorem exterior_step_bound (C : ℝ) (c z : ℂ)
     calc
       ‖z‖^2 = ‖(z^2+c)-c‖ := by rw [add_sub_cancel_right, norm_pow]
       _ ≤ ‖z^2+c‖ + ‖c‖ := norm_sub_le _ _
-      _ ≤ ‖z^2+c‖ + C := add_le_add_left hc _
+      _ ≤ ‖z^2+c‖ + C := add_le_add le_rfl hc
   have hr : 2 ≤ ‖z‖ := by linarith
   have hp : 0 ≤ ‖z‖ * (‖z‖-2) :=
     mul_nonneg (norm_nonneg z) (by linarith)
@@ -116,7 +116,7 @@ theorem exterior_approx_telescope (C : ℝ) (c z : ℂ)
   induction n with
   | zero =>
     simpa only [Finset.range_zero, Finset.sum_empty, Complex.zero_re, add_zero,
-      approx, weight, pow_zero, one_mul] using hsize 0
+      approx, weight, pow_zero, one_mul, orbit] using hsize 0
   | succ n ih =>
     have hstep := log_norm_quadratic_step c (orbit c n z)
       (exterior_orbit_ne_zero C c z hC hc hz n)
@@ -175,7 +175,9 @@ theorem log_correction_analyticOnNhd (a b : ℂ → ℂ) (U : Set ℂ)
     have hlog : AnalyticAt ℂ
         (fun v => Complex.log (1+a v/(orbit (a v) n (b v))^2)) w :=
       (analyticAt_const.add ((ha w hw).div (horb.pow 2) (pow_ne_zero _ hne))).clog
-        (Complex.mem_slitPlane_of_norm_lt_one (by linarith))
+        (Complex.mem_slitPlane_of_norm_lt_one (by
+          change ‖a w/(orbit (a w) n (b w))^2‖ < 1
+          linarith))
     exact (analyticAt_const.mul hlog).differentiableWithinAt
   have hdiff := Complex.differentiableOn_tsum_of_summable_norm
     shifted_weight_summable hterm hU
@@ -254,24 +256,24 @@ theorem parameter_escape_harmonicAt (c : ℂ) (hc : 0 < parameterEscape c) :
 
 theorem escape_real_analyticAt (c z : ℂ) (hz : 0 < escape c z) :
     AnalyticAt ℝ (escape c) z :=
-  (escape_harmonicAt c z hz).analyticAt
+  _root_.HarmonicAt.analyticAt (escape_harmonicAt c z hz)
 
 theorem parameter_escape_real_analyticAt (c : ℂ) (hc : 0 < parameterEscape c) :
     AnalyticAt ℝ parameterEscape c :=
-  (parameter_escape_harmonicAt c hc).analyticAt
+  _root_.HarmonicAt.analyticAt (parameter_escape_harmonicAt c hc)
 
 /-- Every closed disk contained in the actual escape locus has the
 mean-value identity for the limiting orbit potential. -/
 theorem escape_circle_average (c z : ℂ) (R : ℝ)
     (hpos : ∀ w ∈ Metric.closedBall z |R|, 0 < escape c w) :
     Real.circleAverage (escape c) z R = escape c z := by
-  apply InnerProductSpace.HarmonicOnNhd.circleAverage_eq
+  apply _root_.HarmonicOnNhd.circleAverage_eq
   exact fun w hw => escape_harmonicAt c w (hpos w hw)
 
 theorem parameter_escape_circle_average (c : ℂ) (R : ℝ)
     (hpos : ∀ d ∈ Metric.closedBall c |R|, 0 < parameterEscape d) :
     Real.circleAverage parameterEscape c R = parameterEscape c := by
-  apply InnerProductSpace.HarmonicOnNhd.circleAverage_eq
+  apply _root_.HarmonicOnNhd.circleAverage_eq
   exact fun d hd => parameter_escape_harmonicAt d (hpos d hd)
 
 end

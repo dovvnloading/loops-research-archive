@@ -78,6 +78,28 @@ bound uses the minimum of the two square-root scales. In particular, for
 every positive epsilon the Hausdorff Lipschitz constant is at most epsilon
 outside the explicit parameter radius `max 8 (2*(1+1/epsilon)^2)`.
 
+This general-radius module compiled at `34a9f514f4e1e57619ba7c3ad4903ae5c0fa72c8`
+([run 45918527350](https://github.com/dovvnloading/loops-research-archive/actions/runs/45918527350)).
+That overall build failed on API/elaboration errors in the other two new modules,
+so its full transitive audit did not run. The next checkpoint repairs those
+errors and specializes the norm-two shadowing APIs to the general proof.
+
+### Checkpoint 4: normalized analytic exterior coordinate (CI pending)
+
+`QuadraticBottcherExterior.lean` constructs `B_c(z) = z*exp(S_c(z))` from
+the logarithmic correction. The candidate theorems prove the actual functional
+equation `B_c(z^2+c) = B_c(z)^2`, exact identity `log(norm(B_c(z))) = G_c(z)`,
+and the estimate `norm(B_c(z)/z-1) <= 3*norm(c)/norm(z)^2` on the certified
+exterior. Thus the leading coefficient at infinity is one. The reciprocal
+coordinate extends analytically at zero with derivative one and an analytic
+local inverse. Its precise domain and the absence of a global basin claim
+remain explicit.
+
+The conjugacy candidate now uses the stronger displacement
+`norm(d-c)/(s-1)` whenever `norm(d-c) <= (s-1)^2`, where `s` is the smaller
+square-root parameter scale. Existence and uniqueness use the same numerical
+budget; neither conjugacy nor expansion is assumed as a hypothesis.
+
 ## Dependencies
 
 The target is the still-open H3_COERCIVITY obligation, stated at M6 in
