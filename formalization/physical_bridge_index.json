@@ -3641,5 +3641,27 @@
       ]
     },
     "obligations": []
+  },
+  "actual-maximal-crest-20261127": {
+    "guide": "contributions/actual_maximal_crest_20261127/NOTE.md#actual-maximal-crest-20261127",
+    "theorems": {
+      "formalization/weighted/CrestFirstExit.lean": [
+        "exists_first_exit",
+        "first_exit_prefix_iff",
+        "first_exit_unique",
+        "first_exit_component",
+        "uniform_sign_margins",
+        "eventually_uniform_sign_margins",
+        "eventually_uniform_level_gap",
+        "uniform_root_tendsto",
+        "exists_first_exits_converging"
+      ],
+      "formalization/weighted/CrestIterateLimit.lean": [
+        "eventually_in_disk",
+        "compose_uniformly",
+        "finite_iterates_uniformly"
+      ]
+    },
+    "obligations": []
   }
 }

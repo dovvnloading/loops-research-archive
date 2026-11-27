@@ -61,6 +61,8 @@ formalization/weighted/CloneRoot.lean	CLONE EDGE
 formalization/weighted/CloneRootRate.lean	CLONE EDGE
 formalization/weighted/CompactObstacleRemainder.lean	METADATA
 formalization/weighted/ConnectedBinaryCoding.lean	METADATA
+formalization/weighted/CrestFirstExit.lean	METADATA
+formalization/weighted/CrestIterateLimit.lean	METADATA
 formalization/weighted/CriticalReturnRelationStability.lean	METADATA
 formalization/weighted/DepthThreeClosure.lean	METADATA
 formalization/weighted/DepthThreeReal.lean	METADATA

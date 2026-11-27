@@ -5,6 +5,8 @@ ai: OpenAI ChatGPT GPT-6 Astra Pro
 human_review: none
 ---
 
+<a id="actual-maximal-crest-20261127"></a>
+
 # Actual maximal connected crest endpoints and their limit
 
 ## Claim
@@ -33,6 +35,19 @@ perturbed terminal function is monotone or has only one root.
 The pinned Lean 4.32.0 and Mathlib environment is available locally.
 Compilation, theorem registration, and the existing CI transitive axiom
 audit are mandatory before any result is claimed.
+
+### First compiled checkpoint
+
+`formalization/weighted/CrestFirstExit.lean` now proves first-exit
+existence, uniqueness of the first exit, the exact surviving connected
+component, uniform outer sign margins, and convergence of every selected
+root under uniform convergence to a strictly decreasing limiting
+coordinate. The actual perturbed coordinate need not be monotone.
+All nine public declarations compile locally with the pinned toolchain;
+their transitive dependencies use only `propext`, `Classical.choice`, and
+`Quot.sound`. These are supporting lemmas, not a claim that the actual
+crest endpoint has already been constructed. The actual-polynomial
+specialization and moving-endpoint integral are in progress.
 
 ## Dependencies
 
