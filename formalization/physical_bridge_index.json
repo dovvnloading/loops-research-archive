@@ -4088,7 +4088,36 @@
         "actual_parent_first_return_disjoint",
         "constructed_full_open_cycle",
         "constructed_critical_portrait",
-        "exists_actual_primitive_portrait"
+        "exists_actual_primitive_portrait",
+        "primitive_return_of_itinerary",
+        "exists_actual_primitive_return"
+      ],
+      "formalization/weighted/ActualFilledReturn.lean": [
+        "normalizedCore_subset_source",
+        "actual_normalizedCore_zero",
+        "actual_normalizedCore_compact",
+        "actual_normalizedCore_connected",
+        "actual_normalizedCore_image",
+        "physicalCore_subset_source",
+        "actual_physicalCore_zero",
+        "actual_physicalCore_compact",
+        "actual_physicalCore_connected",
+        "actual_physicalCore_image",
+        "physicalCore_eq_nonescaping",
+        "actual_physicalCore_nontrivial"
+      ],
+      "formalization/weighted/ActualFilledReturnFullness.lean": [
+        "entire_exhausted_core_full",
+        "full_of_bounded_connected_complement",
+        "actual_normalizedCore_full",
+        "actual_normalizedCore_exterior_connected",
+        "actual_physicalCore_exterior_connected",
+        "actual_physicalCore_full"
+      ],
+      "formalization/weighted/ActualPhaseUnivalence.lean": [
+        "actual_positive_phase_injOn",
+        "actual_positive_phase_noncritical",
+        "actual_phase_critical_iff"
       ]
     },
     "obligations": [

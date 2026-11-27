@@ -61,8 +61,11 @@ formalization/weighted/ActualCrestTheorem.lean	METADATA
 formalization/weighted/ActualCrestTransport.lean	METADATA
 formalization/weighted/ActualCrestUpperGate.lean	METADATA
 formalization/weighted/ActualCriticalPreperiod.lean	METADATA
+formalization/weighted/ActualFilledReturn.lean	METADATA
+formalization/weighted/ActualFilledReturnFullness.lean	METADATA
 formalization/weighted/ActualFirstReturnSeparation.lean	METADATA
 formalization/weighted/ActualFullCycle.lean	METADATA
+formalization/weighted/ActualPhaseUnivalence.lean	METADATA
 formalization/weighted/ActualPrimitiveReturn.lean	METADATA
 formalization/weighted/ActualTipItinerary.lean	METADATA
 formalization/weighted/ActualTipMultiplier.lean	METADATA
