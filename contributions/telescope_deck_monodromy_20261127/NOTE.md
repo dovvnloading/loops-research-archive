@@ -55,7 +55,7 @@ The second equality counts actual subsets of the complex plane. It rules out an 
 
 The existing modules `TelescopeConformalInverse`, `TelescopeDeckInvolution`, `TelescopeUnbranchedCover`, and `TelescopePathPairing` already construct the analytic prefix inverse, the physical deck involution, the regular two-sheet covering, and exactly two lifts for every path avoiding v_*.
 
-The earlier packet [analytic deck rigidity](../analytic_deck_rigidity_20261126/NOTE.md), in its Boundary section, explicitly leaves loop endpoint permutation and continuation through the branch value unproved. This packet addresses those two boundaries. It does not count the reused regular two-lift theorem, properness, or degree-two construction as new results.
+The earlier packet [analytic deck rigidity](../analytic_deck_rigidity_20261126/NOTE.md), in its Boundary section, explicitly leaves loop endpoint permutation and continuation through the branch value unproved. This packet addresses those two boundaries after the physical return has been constructed. It does not discharge a native existence or compatibility clause of the ledger obligation, and it does not count the reused regular two-lift theorem, properness, or degree-two construction as new results.
 
 ### 2. One physical critical excursion has exactly two lifts
 
@@ -150,21 +150,28 @@ These are phase computations for the explicit constructed loop family. No genera
 | [TelescopeCriticalTraceCensus](../../formalization/weighted/TelescopeCriticalTraceCensus.lean) | Exact counts of all actual lifts and all actual traces; unbounded trace count |
 | [TelescopeLoopMonodromy](../../formalization/weighted/TelescopeLoopMonodromy.lean) | Physical regular-loop phase and absence of a global section |
 
-There are 41 public theorems in these six modules. Every original module has compiled locally in the pinned Lean 4.32.0 project. Registration and proof-escape scans pass. Local transitive dependency checks and the final CI checkpoint are recorded below as they finish.
+There are 41 public theorems in these six modules. Every original module has compiled locally in the pinned Lean 4.32.0 project. Registration and proof-escape scans pass. A local `#print axioms` audit of all 41 public theorems found only `propext`, `Classical.choice`, and `Quot.sound`, with no additional axioms.
 
 Reproduction with the repository toolchain:
 
 ```sh
 cd formalization/weighted
 lake exe cache get
-lake build PathExcursionCensus PathChoiceTraceCensus CriticalRayGeometry \
-  TelescopeCriticalExcursions TelescopeCriticalTraceCensus TelescopeLoopMonodromy
+lake build
 cd ../..
-python -B code/verify_lean_coverage.py
+python -B code/verify_lean_coverage.py --audit weighted
 python code/contribute.py check
 ```
 
 The existing weighted CI additionally builds the complete weighted project and audits every compiled declaration's transitive axioms. Only `propext`, `Classical.choice`, and `Quot.sound` are permitted.
+
+Verified proof checkpoint: [`b3906ab34f5a4047aa7c248c9522877b1e789e0b`](https://github.com/dovvnloading/loops-research-archive/commit/b3906ab34f5a4047aa7c248c9522877b1e789e0b).
+
+- [Weighted Lean CI](https://github.com/dovvnloading/loops-research-archive/actions/runs/45977335795) passed the full build (9,082 build jobs) and the transitive axiom audit of all 203 weighted modules and 4,660 declarations. Each of the six new modules appears separately in the successful audit, including its private and generated declarations.
+- [Research validation](https://github.com/dovvnloading/loops-research-archive/actions/runs/45977335826) passed, including the root and standalone Lean checks, audit-fixture regression, ledger consistency, physical-bridge checks, and rejection of transitive promotion from unresolved premises.
+- [Contribution intake](https://github.com/dovvnloading/loops-research-archive/actions/runs/45977354715) passed. The local `python code/contribute.py check` also passed.
+
+The source scan registered all 252 Lean files in the repository and found no prohibited proof-escape tokens. No `sorry`, `admit`, new axiom, or compiler-trust bypass is used by this contribution. The verification-only follow-up commit changes this note; the verified Lean sources and registrations remain identical to the proof checkpoint.
 
 The initial candidate checkpoint `631ea4b` deliberately remained a draft. Its weighted CI rejected elaboration errors in the then-unverified physical modules. Those errors have been corrected and the corrected original files now compile locally. No result is certified on the basis of that failed run.
 
@@ -183,7 +190,7 @@ The exact trace census concerns continuous paths allowed to meet the propagated 
 
 The regular-loop result concerns the explicit loop family, not an arbitrary fundamental-group calculation. Its absence-of-section corollary concerns the entire regular target; it does not exclude local inverse branches, which already exist in the archive.
 
-The radius depends on the actual return. Although one chosen radius supports every finite excursion count, the ray markers shrink as n grows. There is no uniform separation, positive transverse mass, modulus estimate, infinite-stage compactness, cross-scale compatibility, or parameter-global continuation claim.
+The radius depends on the actual return. Although one chosen radius supports every finite excursion count, the separation between adjacent ray markers shrinks as n grows. There is no uniform separation, positive transverse mass, modulus estimate, infinite-stage compactness, cross-scale compatibility, or parameter-global continuation claim.
 
 No change to `ledger.json` or any status record is requested. `MAPPING_TELESCOPE`, `CONSTRUCT`, H1-H4, UPTCR, and MLC retain their existing open statuses. No mathematical priority beyond the archive is asserted. Human review: none.
 
