@@ -145,6 +145,27 @@ on those supports. In particular H_p^4 is injective on the whole part of
 the input disk where Re H_p(z)>0. One threshold works simultaneously for
 every parameter satisfying `ActualTip`, independently of parameter choice.
 
+### Placement in the actual proper central return
+
+The independently merged PR #239 supplies a proper degree-two central
+p-return restriction for every `ActualTip` parameter used here. The new
+`ActualCrestProperReturn` bridge proves the placement that was not part of
+that earlier result: the entire closed input disk D lies in this actual
+central component, for every integer return index p at least 17. The
+actual first image of D has norm less than 7/20; the proper restriction's
+surjectivity and exact signed fibers then force component membership.
+After multiplication by the positive critical scale, the entire closed
+physical disk
+
+    |w+3*d_p/4| <= d_p*(133/2000)
+
+lies in the proper physical central p-return domain and hence in the
+archive's original p-return component. This includes every selected
+circle, not just a curve sampled on it. The final simultaneous theorem
+places its original-plane terminal endpoint in both components. The
+properness theorem itself is imported from PR #239; the geometric
+inclusion of the newly constructed crest support is the new bridge.
+
 ### Lean files and verification
 
 All files are in `formalization/weighted/`:
@@ -160,11 +181,12 @@ All files are in `formalization/weighted/`:
 | ActualCrestSupport | Entire actual support, signs and fourfold injectivity |
 | ActualCrestRadialOrder | Actual strict radial order and unique terminal root |
 | ActualCrestUpperGate | Opposite terminal cut with a uniform positive margin |
+| ActualCrestProperReturn | Full crest disk inside the actual proper central and archived returns |
 | ActualCrestTheorem | One constructed realization satisfying all conclusions simultaneously |
 
 Every module has compiled locally with pinned Lean 4.32.0 and Mathlib.
-The repository's original compiled-declaration audit passed for all 169
-declarations across the ten new modules, including private and generated
+The repository's original compiled-declaration audit passed for all 186
+declarations across the eleven new modules, including private and generated
 declarations. Their transitive dependencies use only `propext`,
 `Classical.choice`, and `Quot.sound`. The full contribution intake also
 passes against the updated main branch. The PR records
@@ -186,7 +208,8 @@ All public theorems are registered with `code/contribute.py lean-add`.
 `research/independent_audits/crest_transport_asymptotics_20261116/NOTE.md`;
 `LimitingCrestEndpoint`, `LimitingCrestSharpCoefficient`,
 `LimitingCrestArcGates`, `ActualCrestLimit`, `NearTwoTip`, and
-`QuadraticCrestDividedDifference`; pinned Mathlib topology, interval
+`QuadraticCrestDividedDifference`, and the proper central restriction
+`ThreeReturnParent` merged in PR #239; pinned Mathlib topology, interval
 integration, complex arithmetic, and real analysis. The source note
 motivates the objects; its unformalized dynamical claims are not premises
 of the new actual-polynomial existence theorem.
@@ -204,9 +227,11 @@ of the new actual-polynomial existence theorem.
   polynomial relations, but their identification with the source's
   distinguished primitive-component branch, least critical preperiod,
   and primitive renormalization period is not supplied here.
-- The source real q/w gates, central properness, full physical KKL
-  access marking, marked proper-path admissibility, prime-end transport,
-  and conformal-width identification remain to be proved. The selected radial coefficient is not an unrestricted Wave
+- The source real q/w gates, full physical KKL access marking, marked
+  proper-path admissibility, prime-end transport, and conformal-width
+  identification remain to be proved. The proper central p-return
+  supplied by PR #239 and the new full-support inclusion do not identify
+  those named source gates or marked paths. The selected radial coefficient is not an unrestricted Wave
   optimum or an already identified extremal width.
 - All endpoint and coefficient conclusions are eventual in the return index;
   this packet does not assert an explicit first index for them or prove
@@ -221,6 +246,7 @@ The model endpoint and its >1/3 coefficient were already proved in the
 limits only on [0.063,0.066], and explicitly left the maximal actual
 endpoint and full integral open. Those results are used, not resubmitted
 as new progress. The advance here is the actual moving endpoint, exact
-initial component, full moving integral, and entire-support transport.
+initial component, full moving integral, entire-support transport, and
+placement of that support in the actual proper central return.
 AI-assisted proof development and independent AI scope review; no
 independent human review. Released under CC0.

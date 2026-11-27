@@ -3924,6 +3924,13 @@
       "formalization/weighted/ActualCrestTheorem.lean": [
         "complete_terminal_component",
         "exists_actual_complete_collars_and_limit"
+      ],
+      "formalization/weighted/ActualCrestProperReturn.lean": [
+        "actual_parent_exhaustion",
+        "actual_initialDisk_bounds",
+        "initialDisk_subset_parent",
+        "physical_initialDisk_subset_parent",
+        "physical_initialDisk_subset_archived"
       ]
     },
     "obligations": []

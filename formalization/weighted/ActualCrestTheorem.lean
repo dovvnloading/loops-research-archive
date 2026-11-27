@@ -1,6 +1,7 @@
 import ActualCrestIntegral
 import ActualCrestRadialOrder
 import ActualCrestUpperGate
+import ActualCrestProperReturn
 
 /-!
 # Constructed actual terminal collars with their full radial limit
@@ -18,7 +19,7 @@ open Set Function Filter
 open scoped Topology
 open NearTwoTip NearTwoShooting LimitingCrestQuadraticReturn LimitingCrest
 open LoopsLimitingCrestParameter ActualCrestCrossingWindow ActualCrestEndpoint
-open CrestIntegralLimit
+open CrestIntegralLimit ThreeReturnParent ActualCrestProperReturn
 
 noncomputable section
 
@@ -75,10 +76,17 @@ unique complete terminal collar in the extended radius window. Its moving
 endpoint converges, its full source-normalized radial coefficient converges
 to a value strictly above one third, and all geometric support and exact
 polynomial endpoint conclusions hold at one common eventual threshold.
-Every object is constructed: there are no input hypotheses. -/
+The full crest disk and exact endpoint also lie in the actual proper
+central return and the archive's original parent component. Every object
+is constructed: there are no input hypotheses. -/
 theorem exists_actual_complete_collars_and_limit :
     ∃ k₀ ∈ parameterInterval, relation k₀ = 0 ∧
       ∃ c : ℕ → ℝ, (∀ n, ActualTip (n+17) (c n)) ∧
+        (∀ n, ParentRestriction (c n) (n+17)) ∧
+        (∀ n, initialDisk ⊆ parentSource (c n) (n+17)) ∧
+        (∀ n, {w : ℂ | ‖w+((3*criticalValue (c n) (n+17)/4 : ℝ) : ℂ)‖ ≤
+          criticalValue (c n) (n+17)*(133/2000)} ⊆
+          physicalParentSource (c n) (n+17) ∩ archivedParentSource (c n) (n+17)) ∧
         ∃ F : ∀ n, Family (n+17) (c n),
           ∃ r ∈ Ioo (663/10000 : ℝ) (133/2000), crestTerminal k₀ r = -1 ∧
             ∃ radii : ℕ → ℝ,
@@ -110,6 +118,8 @@ theorem exists_actual_complete_collars_and_limit :
                   {z : ℂ | z ∈ initialDisk ∧
                     0 < (normalizedReturn (c n) (n+17) z).re} ∧
                 (∃ z : ℂ,
+                  z ∈ physicalParentSource (c n) (n+17) ∧
+                  z ∈ archivedParentSource (c n) (n+17) ∧
                   ‖z+((3*criticalValue (c n) (n+17)/4 : ℝ) : ℂ)‖ =
                     criticalValue (c n) (n+17)*radii n ∧
                   (((quadraticMap (c n))^[n+17]) z).re = 0 ∧
@@ -122,8 +132,17 @@ theorem exists_actual_complete_collars_and_limit :
     ActualCrestIntegral.exists_actual_initial_collars_and_positive_limit
   obtain ⟨δ, hδ, hupper⟩ :=
     ActualCrestUpperGate.actual_upper_gate_with_margin hk₀ hroot c hc F
-  refine ⟨k₀, hk₀, hroot, c, hc, F, r, hr, hterm, radii, hmem, hlimit,
-    hcoeff, hthird, δ, hδ, ?_⟩
+  have hphysical (n : ℕ) :
+      {w : ℂ | ‖w+((3*criticalValue (c n) (n+17)/4 : ℝ) : ℂ)‖ ≤
+        criticalValue (c n) (n+17)*(133/2000)} ⊆
+        physicalParentSource (c n) (n+17) ∩ archivedParentSource (c n) (n+17) := by
+    intro w hw
+    exact ⟨physical_initialDisk_subset_parent (by omega) (hc n) hw,
+      physical_initialDisk_subset_archived (by omega) (hc n) hw⟩
+  refine ⟨k₀, hk₀, hroot, c, hc,
+    (fun n => actual_parent_restriction (by omega) (hc n)),
+    (fun n => initialDisk_subset_parent (by omega) (hc n)), hphysical,
+    F, r, hr, hterm, radii, hmem, hlimit, hcoeff, hthird, δ, hδ, ?_⟩
   filter_upwards [hcollars, ActualCrestRadialOrder.actual_terminal_strictAnti c hc F,
     hupper, ActualCrestSupport.actual_support_bounds c hc,
     ActualCrestSupport.actual_selected_side_fourfold_injective c hc, hevent]
@@ -134,8 +153,15 @@ theorem exists_actual_complete_collars_and_limit :
     linarith [hup s hs]
   obtain ⟨hunique, hgate, hcomponent⟩ :=
     complete_terminal_component (F n) hcollar hanti hcut
+  obtain ⟨z, hz, hre, him, hend⟩ :=
+    unscaled_endpoint (by omega) (hc n) (F n) hcollar
+  have hzDisk : ‖z+((3*criticalValue (c n) (n+17)/4 : ℝ) : ℂ)‖ ≤
+      criticalValue (c n) (n+17)*(133/2000) := by
+    rw [hz]
+    exact mul_le_mul_of_nonneg_left (hmem n).2 (hc n).2.1.le
+  have hzParent := hphysical n hzDisk
   exact ⟨hcollar, hanti, hunique, hgate, hcomponent, hup, hsupport, hinj,
-    unscaled_endpoint (by omega) (hc n) (F n) hcollar, hcoef⟩
+    ⟨z, hzParent.1, hzParent.2, hz, hre, him, hend⟩, hcoef⟩
 
 end
 end ActualCrestTheorem

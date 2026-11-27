@@ -54,6 +54,7 @@ formalization/weighted/ActualCrestCrossingWindow.lean	METADATA
 formalization/weighted/ActualCrestEndpoint.lean	METADATA
 formalization/weighted/ActualCrestIntegral.lean	METADATA
 formalization/weighted/ActualCrestLimit.lean	METADATA
+formalization/weighted/ActualCrestProperReturn.lean	METADATA
 formalization/weighted/ActualCrestRadialOrder.lean	METADATA
 formalization/weighted/ActualCrestSupport.lean	METADATA
 formalization/weighted/ActualCrestTheorem.lean	METADATA
