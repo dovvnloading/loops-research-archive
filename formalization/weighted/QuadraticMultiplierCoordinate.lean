@@ -7,7 +7,8 @@ import Mathlib.Analysis.Calculus.InverseFunctionTheorem.Analytic
 
 Both the periodic motion and the inverse parameter coordinate are constructed.
 The same coordinate puts every repeated-return multiplier in the exact form
-t ↦ t^k. All inverse and dynamical identities have their local scope stated.
+t ↦ t^k and proves its exact analytic vanishing order k in the original
+parameter. All inverse and dynamical identities have their local scope stated.
 -/
 
 namespace LoopsQuadraticCenterMultiplier

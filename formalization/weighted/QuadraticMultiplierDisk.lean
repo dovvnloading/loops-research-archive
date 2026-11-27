@@ -5,8 +5,9 @@ import QuadraticCenterParameterLocus
 # An open disk of realized multipliers at every quadratic center
 
 The parameter and periodic point vary analytically throughout a nonempty
-open multiplier disk. The parameter map is injective there. Every point of
-the family has the prescribed exact period and actual multiplier.
+open multiplier disk. The parameter map is injective there, and its image
+has zero actual parameter escape. Every marked periodic point has the
+prescribed exact period and actual multiplier.
 -/
 
 namespace LoopsQuadraticCenterMultiplier
@@ -19,8 +20,9 @@ noncomputable section
 
 /-- A concrete holomorphic family over an open multiplier disk at every
 exact-period center. The parameter map is injective, both maps are analytic
-throughout the disk, and all repeated spatial derivatives are exact powers
-of the disk coordinate. -/
+throughout the disk, all realized parameters have zero actual escape,
+and the spatial derivatives of all repeated returns are exact powers of
+the disk coordinate. -/
 theorem center_multiplier_disk (c : ℂ) (n : ℕ)
     (hreturn : orbit c (n+1) = 0)
     (hmin : ∀ k : ℕ, 0 < k → k < n+1 → orbit c k ≠ 0) :
