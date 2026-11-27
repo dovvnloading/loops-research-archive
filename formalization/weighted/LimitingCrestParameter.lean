@@ -42,7 +42,7 @@ theorem criticalOrbit_hasDerivAt (n : ℕ) (k : ℝ) :
   | zero => simpa [criticalOrbit, criticalSlope] using (hasDerivAt_const k (0 : ℝ))
   | succ n ih =>
       have h := (hasDerivAt_const k (1 : ℝ)).sub ((hasDerivAt_id k).mul (ih.pow 2))
-      convert h using 1 <;> simp [criticalOrbit, criticalSlope, Q] <;> ring
+      convert h using 1 <;> (try simp [criticalOrbit, criticalSlope, Q]) <;> ring
 
 theorem relation_hasDerivAt (k : ℝ) :
     HasDerivAt relation (criticalSlope k 6 + criticalSlope k 3) k := by
@@ -70,29 +70,29 @@ private theorem mul_sound {x y : ℝ} {I J : Box}
     (hx : InBox x I) (hy : InBox y J) : InBox (x*y) (mulBox I J) := by
   have hc1 : InBox (J.1*x) (mulBox I J) := by
     apply fixed_mul_bounds hx
-    · simpa only [mul_comm] using
+    · simpa only [mulBox, mul_comm] using
         ((min_le_left _ _).trans (min_le_left _ _) : (mulBox I J).1 ≤ I.1*J.1)
-    · simpa only [mul_comm] using
+    · simpa only [mulBox, mul_comm] using
         ((min_le_right _ _).trans (min_le_left _ _) : (mulBox I J).1 ≤ I.2*J.1)
-    · simpa only [mul_comm] using
+    · simpa only [mulBox, mul_comm] using
         ((le_max_left _ _).trans (le_max_left _ _) : I.1*J.1 ≤ (mulBox I J).2)
-    · simpa only [mul_comm] using
+    · simpa only [mulBox, mul_comm] using
         ((le_max_left _ _).trans (le_max_right _ _) : I.2*J.1 ≤ (mulBox I J).2)
   have hc2 : InBox (J.2*x) (mulBox I J) := by
     apply fixed_mul_bounds hx
-    · simpa only [mul_comm] using
+    · simpa only [mulBox, mul_comm] using
         ((min_le_left _ _).trans (min_le_right _ _) : (mulBox I J).1 ≤ I.1*J.2)
-    · simpa only [mul_comm] using
+    · simpa only [mulBox, mul_comm] using
         ((min_le_right _ _).trans (min_le_right _ _) : (mulBox I J).1 ≤ I.2*J.2)
-    · simpa only [mul_comm] using
+    · simpa only [mulBox, mul_comm] using
         ((le_max_right _ _).trans (le_max_left _ _) : I.1*J.2 ≤ (mulBox I J).2)
-    · simpa only [mul_comm] using
+    · simpa only [mulBox, mul_comm] using
         ((le_max_right _ _).trans (le_max_right _ _) : I.2*J.2 ≤ (mulBox I J).2)
   exact fixed_mul_bounds hy
-    (by simpa only [mul_comm] using hc1.1)
-    (by simpa only [mul_comm] using hc2.1)
-    (by simpa only [mul_comm] using hc1.2)
-    (by simpa only [mul_comm] using hc2.2)
+    (by simpa only [mulBox, mul_comm] using hc1.1)
+    (by simpa only [mulBox, mul_comm] using hc2.1)
+    (by simpa only [mulBox, mul_comm] using hc1.2)
+    (by simpa only [mulBox, mul_comm] using hc2.2)
 
 private theorem add_sound {x y : ℝ} {I J : Box}
     (hx : InBox x I) (hy : InBox y J) : InBox (x+y) (addBox I J) :=

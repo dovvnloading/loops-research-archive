@@ -1,5 +1,6 @@
 import Mathlib
 import LimitingCrestGeometry
+import LimitingCrestParameter
 
 /-!
 # A positive integral coefficient on the limiting quadratic collar
@@ -135,7 +136,8 @@ theorem selectedCoefficient_gt_quarter {κ : ℝ}
   have hint' : (3/1000 : ℝ)/M ≤
       ∫ s in (63/1000 : ℝ)..(33/500 : ℝ),
         1/(s*Real.arccos (crossingCos κ s)) := by
-    simpa [intervalIntegral.integral_const, smul_eq_mul] using hint
+    norm_num [intervalIntegral.integral_const, smul_eq_mul] at hint ⊢
+    exact hint
   have hcoef : (0 : ℝ) < 2*Real.pi/Real.log 2 := by positivity
   have hcompare := mul_le_mul_of_nonneg_left hint' hcoef.le
   have halgebra : (2*Real.pi/Real.log 2)*((3/1000)/M) =
@@ -148,6 +150,25 @@ theorem selectedCoefficient_gt_quarter {κ : ℝ}
     apply (lt_div_iff₀ hl).mpr
     linarith
   exact hquarter.trans_le hcompare
+
+/-- The parameter is supplied by the signed critical relation, rather
+than postulated. The same actual quadratic has the whole certified
+circle corridor and a strictly positive normalized integral. -/
+theorem exists_certified_limiting_model :
+    ∃ κ : ℝ, κ ∈ Icc (17903/10000) (17904/10000) ∧
+      LoopsLimitingCrestParameter.relation κ = 0 ∧
+      (1/4 : ℝ) < selectedCoefficient κ ∧
+      ∀ s ∈ Icc (63/1000 : ℝ) (33/500),
+        ∃ u : ℝ, u ∈ Ioo (-1/100 : ℝ) (1/100) ∧
+          ‖circlePoint s u + (3/4 : ℂ)‖ = s ∧
+          0 < height κ s u ∧
+          complexMap κ (circlePoint s u) = (height κ s u : ℂ)*Complex.I ∧
+          (-999/1000 : ℝ) < ((complexMap κ)^[3] (circlePoint s u)).re ∧
+          ((complexMap κ)^[3] (circlePoint s u)).re < -977/1000 ∧
+          ((complexMap κ)^[3] (circlePoint s u)).re < -(realMap κ)^[4] 0 := by
+  obtain ⟨κ, hκ, _⟩ := LoopsLimitingCrestParameter.exists_unique_limiting_parameter
+  exact ⟨κ, hκ.1, hκ.2, selectedCoefficient_gt_quarter hκ.1,
+    fun _ hs => uniform_model_corridor hκ.1 hs⟩
 
 end
 end LimitingCrest

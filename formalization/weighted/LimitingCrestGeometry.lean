@@ -127,6 +127,7 @@ theorem circle_image (κ s : ℝ) {u : ℝ} (hu : u ∈ Icc (-1 : ℝ) 1) :
     complexMap κ (circlePoint s u) =
       (crossing κ s u : ℂ) + (height κ s u : ℂ) * Complex.I := by
   have hsqrt := sqrt_square hu
+  simp only [pow_two] at hsqrt
   apply Complex.ext
   · simp [complexMap, circlePoint, crossing, height, Complex.mul_re,
       Complex.mul_im, pow_two]
@@ -150,7 +151,7 @@ private theorem ordinate_sq_bounds {s u : ℝ}
     (hu : u ∈ Icc (-1 / 100 : ℝ) (1 / 100)) :
     (3968 / 1000000 : ℝ) ≤ (s * Real.sqrt (1 - u ^ 2)) ^ 2 ∧
       (s * Real.sqrt (1 - u ^ 2)) ^ 2 ≤ 1089 / 250000 := by
-  have hu2 := sq_le_sq' hu.1 hu.2
+  have hu2 := sq_le_sq' (show -(1 / 100 : ℝ) ≤ u by linarith [hu.1]) hu.2
   have hsqrt := sqrt_square (show u ∈ Icc (-1 : ℝ) 1 by
     constructor <;> linarith [hu.1, hu.2])
   obtain ⟨hsl, hsu⟩ := radius_sq_bounds hs
@@ -167,7 +168,7 @@ theorem crossing_height_pos {κ s u : ℝ}
     (hu : u ∈ Icc (-1 / 100 : ℝ) (1 / 100)) : 0 < height κ s u := by
   have hk0 : 0 < κ := by linarith [hk.1]
   have hs0 : 0 < s := by linarith [hs.1]
-  have hu2 := sq_le_sq' hu.1 hu.2
+  have hu2 := sq_le_sq' (show -(1 / 100 : ℝ) ≤ u by linarith [hu.1]) hu.2
   have hr : 0 < Real.sqrt (1 - u ^ 2) := Real.sqrt_pos.mpr (by nlinarith)
   have hm := mul_le_mul_of_nonneg_left hu.2 hs0.le
   have hx : 0 < -(-3 / 4 + s * u) := by nlinarith [hs.2]
