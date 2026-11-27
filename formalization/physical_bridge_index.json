@@ -3664,6 +3664,35 @@
         "actual_phase_bounds",
         "actual_annular_barrier",
         "actual_critical_value_bound"
+      ],
+      "formalization/weighted/ThreeReturnDomain.lean": [
+        "component_closure_inside_barrier",
+        "component_proper",
+        "normalized_return_proper",
+        "normalized_return_open",
+        "threeReturn_proper",
+        "threeReturn_open",
+        "source_image",
+        "normalized_return_even",
+        "threeReturn_even",
+        "source_symmetric"
+      ],
+      "formalization/weighted/ThreeReturnDegree.lean": [
+        "three_return_collision_iff",
+        "normalized_three_return_collision_iff",
+        "iterate_hasDerivAt",
+        "normalized_return_hasDerivAt",
+        "normalized_three_return_deriv_eq_zero_iff",
+        "actual_phase_signs",
+        "actual_three_return_collision_iff",
+        "actual_three_return_deriv_eq_zero_iff",
+        "symmetric_fiber_pair",
+        "critical_fiber_singleton",
+        "noncritical_fiber_pair",
+        "fiber_ncard"
+      ],
+      "FiniteThreeReturnCertificates.lean": [
+        "finite_certificates_valid"
       ]
     },
     "obligations": []
