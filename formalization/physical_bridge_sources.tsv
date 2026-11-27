@@ -99,6 +99,9 @@ formalization/weighted/PrimeEndImpressionDecomposition.lean	METADATA
 formalization/weighted/PrimeEndSectorFilters.lean	METADATA
 formalization/weighted/PrimeEndSectorImpressions.lean	METADATA
 formalization/weighted/PrimeEndSectorRank.lean	METADATA
+formalization/weighted/QuadraticCenterMultiplier.lean	METADATA
+formalization/weighted/QuadraticCenterParameterLocus.lean	METADATA
+formalization/weighted/QuadraticCenterTrapping.lean	METADATA
 formalization/weighted/QuadraticComponentConjugacy.lean	METADATA
 formalization/weighted/QuadraticComponentDynamics.lean	METADATA
 formalization/weighted/QuadraticCriticalFiberCensus.lean	METADATA
@@ -110,16 +113,16 @@ formalization/weighted/ProtectedCarrierLogic.lean	HULL
 formalization/weighted/QuadraticCriticalTrapping.lean	CONSTRUCT
 formalization/weighted/QuadraticEscapeEndpoint.lean	QUADRATIC-ESCAPE
 formalization/weighted/QuadraticEscapeFullness.lean	METADATA
-formalization/weighted/QuadraticInverseBranches.lean	CONSTRUCT
 formalization/weighted/QuadraticInverseOpen.lean	CONSTRUCT
-formalization/weighted/QuadraticInverseTransport.lean	CONSTRUCT
 formalization/weighted/QuadraticMultiplierArithmetic.lean	METADATA
-formalization/weighted/QuadraticParameterAtlas.lean	CONSTRUCT
+formalization/weighted/QuadraticMultiplierCoordinate.lean	METADATA
+formalization/weighted/QuadraticMultiplierDisk.lean	METADATA
+formalization/weighted/QuadraticMultiplierIteration.lean	METADATA
 formalization/weighted/QuadraticParameterDistortion.lean	CONSTRUCT
 formalization/weighted/QuadraticParameterInverse.lean	CONSTRUCT
 formalization/weighted/QuadraticParameterMotion.lean	CONSTRUCT
 formalization/weighted/QuadraticParameterUnivalence.lean	CONSTRUCT
-formalization/weighted/QuadraticRegularInverse.lean	CONSTRUCT
+formalization/weighted/QuadraticTrappingEscape.lean	METADATA
 formalization/weighted/QuadraticUnivalentNeighborhood.lean	CONSTRUCT
 formalization/weighted/SaturatedTelescope.lean	METADATA
 formalization/weighted/SpectralDominance.lean	CLONE EDGE
@@ -455,3 +458,7 @@ formalization/weighted/QuadraticPowerNormalForm.lean	METADATA
 formalization/weighted/IteratedCarrierIsolation.lean	METADATA
 formalization/weighted/QuadraticCarrierSaturation.lean	METADATA
 formalization/weighted/QuadraticLocalFiberCensus.lean	METADATA
+formalization/weighted/QuadraticInverseBranches.lean	CONSTRUCT
+formalization/weighted/QuadraticInverseTransport.lean	CONSTRUCT
+formalization/weighted/QuadraticParameterAtlas.lean	CONSTRUCT
+formalization/weighted/QuadraticRegularInverse.lean	CONSTRUCT
