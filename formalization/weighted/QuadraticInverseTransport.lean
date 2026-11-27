@@ -61,7 +61,6 @@ theorem inverseBranch_prefix (c : ℂ) (p q : ℕ) (V : Set ℂ)
     exact ⟨inverseBranch c (p+q) V a y, hz, rfl⟩
   apply inverseComponent_injOn c q V hVo hVc hcritq (orbit c p a) htail
     hm (inverseBranch_mapsTo c q V hVo hVc hcritq (orbit c p a) htail hy)
-  change orbit c q (orbit c p (inverseBranch c (p+q) V a y)) = _
   rw [← quadratic_orbit_add,
     inverseBranch_right_inv c (p+q) V hVo hVc hcrit a ha hy,
     inverseBranch_right_inv c q V hVo hVc hcritq (orbit c p a) htail hy]

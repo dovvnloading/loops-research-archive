@@ -10,6 +10,8 @@ branches on one common parameter-target product.  The exact polynomial
 degree then proves that these branches exhaust every nearby fiber.
 Their images are the full actual pullback components, with pairwise
 disjoint compact closures.  No moving branch family is assumed.
+The joint analyticity and exact census include the closed target disk;
+the full open source components lie over its interior.
 -/
 
 namespace LoopsQuadraticParameterAtlas
@@ -43,16 +45,16 @@ theorem inverseFiber_no_critical_visits (c : ℂ) (n : ℕ) (y : ℂ)
 atlas for all nearby parameters and targets.  Every nearby solution is
 represented exactly once, and every branch fills its entire physical
 component with a compact closure disjoint from every other branch.
-The inverse derivatives and finite postcritical avoidance persist on
-the same product neighborhood. -/
+The inverse derivatives and finite postcritical avoidance persist through
+the closed target disk on the same parameter neighborhood. -/
 theorem quadratic_parameter_inverse_atlas (c : ℂ) (n : ℕ) (y : ℂ)
     (hregular : ∀ k < n, orbit c k c ≠ y) :
     ∃ ε δ : ℝ, 0 < ε ∧ 0 < δ ∧
       ∃ g : inverseFiber c n y → ℂ → ℂ → ℂ,
         (∀ a, g a c y = a.val) ∧
         (∀ a, AnalyticOnNhd ℂ (fun p : ℂ × ℂ => g a p.1 p.2)
-          (Metric.ball c ε ×ˢ Metric.ball y δ)) ∧
-        (∀ d ∈ Metric.ball c ε, ∀ w ∈ Metric.ball y δ, ∀ z : ℂ,
+          (Metric.ball c ε ×ˢ Metric.closedBall y δ)) ∧
+        (∀ d ∈ Metric.ball c ε, ∀ w ∈ Metric.closedBall y δ, ∀ z : ℂ,
           orbit d n z = w ↔ ∃! a : inverseFiber c n y, g a d w = z) ∧
         (∀ d ∈ Metric.ball c ε, ∀ a,
           g a d '' Metric.ball y δ =
@@ -63,8 +65,8 @@ theorem quadratic_parameter_inverse_atlas (c : ℂ) (n : ℕ) (y : ℂ)
           Pairwise (fun a b : inverseFiber c n y =>
             Disjoint (closure (g a d '' Metric.ball y δ))
               (closure (g b d '' Metric.ball y δ)))) ∧
-        (∀ d ∈ Metric.ball c ε, ∀ k < n, orbit d k d ∉ Metric.ball y δ) ∧
-        (∀ d ∈ Metric.ball c ε, ∀ a, ∀ w ∈ Metric.ball y δ,
+        (∀ d ∈ Metric.ball c ε, ∀ k < n, orbit d k d ∉ Metric.closedBall y δ) ∧
+        (∀ d ∈ Metric.ball c ε, ∀ a, ∀ w ∈ Metric.closedBall y δ,
           HasDerivAt (g a d) (deriv (orbit d n) (g a d w))⁻¹ w ∧
           ConformalAt (g a d) w) := by
   classical
@@ -100,8 +102,8 @@ theorem quadratic_parameter_inverse_atlas (c : ℂ) (n : ℕ) (y : ℂ)
   have hyT' (a : I) : y ∈ T a :=
     hyT a ⟨a.val, by simp, a.property⟩
   have hanchor (a : I) : g a c y = a.val := by
-    rw [← a.property]
-    exact (hbranch a c (hcP a)).2.1 (haU a (by simp))
+    simpa only [a.property] using
+      (hbranch a c (hcP a)).2.1 (haU a (by simp))
   let P₀ := ⋂ a : I, P a
   let T₀ := ⋂ a : I, T a
   have hP₀ : IsOpen P₀ := isOpen_iInter_of_finite hP
@@ -117,14 +119,16 @@ theorem quadratic_parameter_inverse_atlas (c : ℂ) (n : ℕ) (y : ℂ)
   have hVcl : IsCompact (closure V) :=
     (isCompact_closedBall y δ).of_isClosed_subset isClosed_closure
       Metric.closure_ball_subset_closedBall
+  have hBT₀ : Metric.closedBall y δ ⊆ T₀ :=
+    (Metric.closedBall_subset_ball (by dsimp [δ]; linarith)).trans hrT
   have hclT₀ : closure V ⊆ T₀ :=
-    Metric.closure_ball_subset_closedBall.trans
-      ((Metric.closedBall_subset_ball (by dsimp [δ]; linarith)).trans hrT)
+    Metric.closure_ball_subset_closedBall.trans hBT₀
   have hdP (d : ℂ) (hd : d ∈ Metric.ball c ε) (a : I) : d ∈ P a :=
     mem_iInter.mp (hεP hd) a
-  have hwT (w : ℂ) (hw : w ∈ V) (a : I) : w ∈ T a :=
-    mem_iInter.mp (hclT₀ (subset_closure hw)) a
-  have hdistinct (d : ℂ) (hd : d ∈ Metric.ball c ε) (w : ℂ) (hw : w ∈ V) :
+  have hwT (w : ℂ) (hw : w ∈ Metric.closedBall y δ) (a : I) : w ∈ T a :=
+    mem_iInter.mp (hBT₀ hw) a
+  have hdistinct (d : ℂ) (hd : d ∈ Metric.ball c ε)
+      (w : ℂ) (hw : w ∈ Metric.closedBall y δ) :
       Injective (fun a : I => g a d w) := by
     intro a b he
     by_contra hab
@@ -136,7 +140,8 @@ theorem quadratic_parameter_inverse_atlas (c : ℂ) (n : ℕ) (y : ℂ)
     have hgb : g b d w ∈ W b.val :=
       hUW b (subset_closure ((hbranch b d (hdP d hd b)).1 (hwT w hw b)))
     exact Set.disjoint_left.mp hsep hga (he.symm ▸ hgb)
-  have hcomplete (d : ℂ) (hd : d ∈ Metric.ball c ε) (w : ℂ) (hw : w ∈ V) :
+  have hcomplete (d : ℂ) (hd : d ∈ Metric.ball c ε)
+      (w : ℂ) (hw : w ∈ Metric.closedBall y δ) :
       (∀ z : ℂ, orbit d n z = w ↔ ∃! a : I, g a d w = z) ∧
       ∀ k < n, orbit d k d ≠ w := by
     let A := Finset.univ.image (fun a : I => g a d w)

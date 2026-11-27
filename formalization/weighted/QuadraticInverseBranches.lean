@@ -1,4 +1,5 @@
 import QuadraticRegularInverse
+import Mathlib.Analysis.Normed.Module.Connected
 
 /-!
 # A complete analytic atlas of actual quadratic inverse components
@@ -23,7 +24,7 @@ open LoopsQuadraticCriticalFiberCensus LoopsQuadraticRegularInverse
 noncomputable section
 
 /-- The entire actual inverse fiber, including every complex solution. -/
-def inverseFiber (c : ℂ) (n : ℕ) (y : ℂ) := {a : ℂ // orbit c n a = y}
+abbrev inverseFiber (c : ℂ) (n : ℕ) (y : ℂ) := {a : ℂ // orbit c n a = y}
 
 /-- A regular fiber has exactly the global degree many distinct points. -/
 theorem inverseFiber_card (c : ℂ) (n : ℕ) (y : ℂ)
@@ -68,6 +69,7 @@ theorem anchor_components_injective (c : ℂ) (n : ℕ) (V : Set ℂ)
     (hcrit : ∀ k < n, orbit c k c ∉ V) (y : ℂ) (hy : y ∈ V) :
     Injective (fun a : inverseFiber c n y => inverseComponent c n V a.val) := by
   intro a b hab
+  change inverseComponent c n V a.val = inverseComponent c n V b.val at hab
   have ha : orbit c n a.val ∈ V := by rw [a.property]; exact hy
   have hb : orbit c n b.val ∈ V := by rw [b.property]; exact hy
   have haC : a.val ∈ inverseComponent c n V a.val := mem_connectedComponentIn ha
@@ -207,8 +209,7 @@ theorem inverseBranch_atlas_analytic (c : ℂ) (n : ℕ) (V : Set ℂ)
   intro a
   have ha : orbit c n a.val ∈ V := by rw [a.property]; exact hy
   refine ⟨inverseBranch_analytic c n V hVo hVc hcrit a.val ha, ?_⟩
-  rw [← a.property]
-  exact inverseBranch_anchor c n V hVo hVc hcrit a.val ha
+  simpa only [a.property] using inverseBranch_anchor c n V hVo hVc hcrit a.val ha
 
 /-- Moving the source anchor along one canonical branch preserves
 the entire branch, since it selects the same physical component. -/
@@ -239,14 +240,14 @@ def fiberTransport (c : ℂ) (n : ℕ) (V : Set ℂ)
     apply Subtype.ext
     change inverseBranch c n V (inverseBranch c n V a.val w) y = a.val
     rw [inverseBranch_reanchor c n V hVo hVc hcrit a.val (a.property.symm ▸ hy) w hw]
-    rw [← a.property]
-    exact inverseBranch_anchor c n V hVo hVc hcrit a.val (a.property.symm ▸ hy)
+    simpa only [a.property] using
+      inverseBranch_anchor c n V hVo hVc hcrit a.val (a.property.symm ▸ hy)
   right_inv b := by
     apply Subtype.ext
     change inverseBranch c n V (inverseBranch c n V b.val y) w = b.val
     rw [inverseBranch_reanchor c n V hVo hVc hcrit b.val (b.property.symm ▸ hw) y hy]
-    rw [← b.property]
-    exact inverseBranch_anchor c n V hVo hVc hcrit b.val (b.property.symm ▸ hw)
+    simpa only [b.property] using
+      inverseBranch_anchor c n V hVo hVc hcrit b.val (b.property.symm ▸ hw)
 
 /-- The canonical transport is the identity when the target anchor
 does not move. -/
@@ -258,8 +259,8 @@ theorem fiberTransport_self (c : ℂ) (n : ℕ) (V : Set ℂ)
   intro a
   apply Subtype.ext
   change inverseBranch c n V a.val y = a.val
-  rw [← a.property]
-  exact inverseBranch_anchor c n V hVo hVc hcrit a.val (a.property.symm ▸ hy)
+  simpa only [a.property] using
+    inverseBranch_anchor c n V hVo hVc hcrit a.val (a.property.symm ▸ hy)
 
 /-- Rebasing the atlas through an intermediate target has no effect.
 This is an exact identity of the actual full inverse-fiber equivalences. -/
@@ -279,7 +280,7 @@ theorem fiberTransport_trans (c : ℂ) (n : ℕ) (V : Set ℂ)
 
 /-- All continuous lifts of a given map through the actual iterate.
 There is no restriction to a preselected source sheet. -/
-def continuousLifts {X : Type*} [TopologicalSpace X]
+abbrev continuousLifts {X : Type*} [TopologicalSpace X]
     (c : ℂ) (n : ℕ) (γ : C(X, ℂ)) :=
   {Γ : C(X, ℂ) // ∀ x, orbit c n (Γ x) = γ x}
 
@@ -350,6 +351,51 @@ theorem continuous_lifts_pointwise_distinct {X : Type*} [TopologicalSpace X]
   intro x h
   apply hne
   exact (liftAnchor_bijective c n V hVo hVc hcrit γ hγ x).1 (Subtype.ext h)
+
+private theorem zero_parameter_iterate (n : ℕ) (z : ℂ) :
+    orbit 0 n z = z ^ (2^n) := by
+  induction n with
+  | zero => simp [orbit]
+  | succ n ih =>
+    simp only [orbit, ih, add_zero]
+    rw [pow_succ (2 : ℕ) n, pow_mul]
+
+/-- An actual postcritical-free target with a hole has only one
+pullback component, while its regular fibers still have the full degree.
+This is the zero-parameter quadratic at every finite depth. -/
+theorem punctured_plane_component_obstruction (n : ℕ) :
+    IsOpen (({0} : Set ℂ)ᶜ) ∧
+      IsConnected (({0} : Set ℂ)ᶜ) ∧
+      (∀ k < n, orbit 0 k 0 ∉ ({0} : Set ℂ)ᶜ) ∧
+      Nat.card (ConnectedComponents ((orbit 0 n) ⁻¹' ({0} : Set ℂ)ᶜ)) = 1 ∧
+      Nat.card (inverseFiber 0 n 1) = 2^n := by
+  have hconn : IsConnected (({0} : Set ℂ)ᶜ) :=
+    isConnected_compl_singleton_of_one_lt_rank (by simp) (0 : ℂ)
+  have hzero (k : ℕ) : orbit 0 k 0 = 0 := by
+    rw [zero_parameter_iterate]
+    exact zero_pow (by positivity)
+  have hpull : (orbit 0 n) ⁻¹' ({0} : Set ℂ)ᶜ = ({0} : Set ℂ)ᶜ := by
+    ext z
+    simp only [mem_preimage, mem_compl_iff, mem_singleton_iff, zero_parameter_iterate]
+    exact pow_ne_zero_iff (by positivity)
+  refine ⟨isClosed_singleton.isOpen_compl, hconn, ?_, ?_, ?_⟩
+  · intro k hk
+    simp only [hzero, mem_compl_iff, mem_singleton_iff, not_true_eq_false, not_false_eq_true]
+  · rw [hpull]
+    letI : ConnectedSpace (({0} : Set ℂ)ᶜ) := hconn.connectedSpace
+    exact Nat.card_of_subsingleton
+      (ConnectedComponents.mk (⟨1, by simp⟩ : ({0} : Set ℂ)ᶜ))
+  · exact inverseFiber_card 0 n 1 (fun k _ => by rw [hzero]; exact zero_ne_one)
+
+/-- At every positive depth the simply connected component-count
+conclusion fails on that explicit postcritical-free punctured target. -/
+theorem punctured_plane_component_count_ne_degree (n : ℕ) (hn : 0 < n) :
+    Nat.card (ConnectedComponents ((orbit 0 n) ⁻¹' ({0} : Set ℂ)ᶜ)) ≠ 2^n := by
+  rw [(punctured_plane_component_obstruction n).2.2.2.1]
+  obtain ⟨m, rfl⟩ := Nat.exists_eq_succ_of_ne_zero (Nat.ne_of_gt hn)
+  rw [pow_succ]
+  have hp : 0 < (2 : ℕ)^m := by positivity
+  omega
 
 end
 

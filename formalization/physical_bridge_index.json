@@ -3275,7 +3275,9 @@
         "fiberTransport_trans",
         "liftAnchor_bijective",
         "continuous_lifts_card",
-        "continuous_lifts_pointwise_distinct"
+        "continuous_lifts_pointwise_distinct",
+        "punctured_plane_component_obstruction",
+        "punctured_plane_component_count_ne_degree"
       ],
       "formalization/weighted/QuadraticInverseTransport.lean": [
         "inverseComponent_split",

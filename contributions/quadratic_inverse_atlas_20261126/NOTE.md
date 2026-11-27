@@ -37,9 +37,18 @@ complete proof scripts are committed for compiler verification:
   agreement under regular target enlargement, and same-clock target-component
   selection from actual base-image containment and one anchor. The target-sheet
   containment is derived rather than assumed.
+- QuadraticParameterAtlas constructs all nearby inverse branches jointly in
+  parameter and target from one regular fiber. The full root census, analyticity,
+  and derivative assertions hold on a common closed target disk; over its
+  interior the images are the entire actual components, with compact pairwise
+  disjoint closures. Moving postcritical exclusion is derived.
+- QuadraticInverseBranches also proves a boundary obstruction: for every
+  positive iterate of z squared, the punctured plane avoids all postcritical
+  values but has one pullback component while every regular fiber has 2^n roots.
 
-These are candidate proofs pending the unchanged full compiler and dependency
-audit. A further parameter-local complete analytic atlas is under development.
+The canonical inverse module and transport module have compiled in CI.
+The complete atlas, parameter theorem, and obstruction remain candidate proofs
+pending the unchanged full compiler and dependency audit.
 
 Existing component univalence and fiber cardinality results are prerequisites;
 the new construction must coordinate all analytic sections and their actual
