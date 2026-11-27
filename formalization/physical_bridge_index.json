@@ -3783,6 +3783,30 @@
         "finite_first_return_collision_iff",
         "finite_parent_scale_bound",
         "finite_parent_phase_control"
+      ],
+      "formalization/weighted/UniformThreeReturn.lean": [
+        "exists_selected_parameter",
+        "selected_critical_data",
+        "selected_critical_value_bound",
+        "selected_annular_barrier",
+        "selected_boundary_barrier",
+        "selected_collision_iff",
+        "selected_canonical_collar",
+        "selected_phase_domains_disjoint",
+        "selected_source_contractible",
+        "selected_source_simplyConnected",
+        "selected_two_sheet_cover",
+        "selected_physical_collar_topology",
+        "selected_physical_ring_domain",
+        "selected_uniform_collar",
+        "exists_uniform_physical_collar"
+      ],
+      "formalization/weighted/ThreeReturnParentTopology.lean": [
+        "parent_contractible_of_bounds",
+        "physical_parent_contractible_of_bounds",
+        "actual_parent_contractible",
+        "actual_parent_simplyConnected",
+        "actual_physical_parent_contractible"
       ]
     },
     "obligations": []

@@ -15,11 +15,20 @@ Ledger statement being addressed:
 
 ## Claim
 
-This contribution constructs a canonical collar for the actual normalized three-return, with a fixed outer disk of radius 1/6 and a source containment radius of 3/20. The new step is simultaneous control of the full intermediate phase domains, so that no unquantified shrinking is needed. Both the exact finite cases p=3,...,16 and the analytic tail p>=17 now supply the same complete-polynomial estimates. The compiled geometry includes properness, exact signed fibers, a contractible source, a genuine physical ring domain, and a uniform physical Dirichlet-energy bound. The final single all-period theorem and ambient realization are being integrated.
+This contribution constructs a canonical collar for the actual normalized three-return, with a fixed outer disk of radius 1/6 and a source containment radius of 3/20. The new step is simultaneous control of the full intermediate phase domains, so that no unquantified shrinking is needed. The single all-period theorem is now compiled: for every integer p>=3, it constructs an actual selected quadratic parameter with properness, exact signed fibers, a contractible source, a genuine physical ring domain, and a uniform physical Dirichlet-energy bound. The exact finite cases p=3,...,16 and analytic tail p>=17 supply the same complete-polynomial estimates. The last physical and ambient realization corollaries are being integrated.
 
 ## Evidence
 
 The normalization is F(z)=f_c^p(d*z)/d with d=f_c^p(0)>0, outer radius 1/6 and inner radius 3/20. The source W is the connected component containing zero of the complete inverse image of the outer disk under F^3. This selects W from the actual polynomial rather than supplying a domain or a degree as input.
+
+The compiled all-period statement is:
+
+```lean
+UniformThreeReturn.exists_uniform_physical_collar (p : Nat) (hp : 3 <= p) :
+  Exists fun c : Real => UniformThreeReturn.UniformCollar c p
+```
+
+The `UniformCollar` record contains proved properties of the literal domains just defined. Its fields include the physical reciprocal-capacity bound, exact physical fiber cardinality, source contraction, full closure, and an exact count of two complementary components for the open connected physical collar. The separate `selected_two_sheet_cover` theorem gives actual `Fin 2` evenly covered neighborhoods away from the critical value.
 
 `ThreeReturnEstimates.lean` proves for every actual signed tip constructed by PR #238, for p >= 17:
 
@@ -46,9 +55,9 @@ The normalization is F(z)=f_c^p(d*z)/d with d=f_c^p(0)>0, outer radius 1/6 and i
 
 `ThreeReturnFullness.lean` proves that the chosen source closure is full, without replacing it by a different hull. The closed central pullback component is identified with the closure of the open source; the maximum modulus principle excludes bounded complementary components. A radial clamp proves connectedness of the physical collar. Its two actual complementary components are identified and counted: their set has cardinality exactly two. The physical collar is explicitly proved open and connected.
 
-`ThreeReturnParent.lean` constructs a proper degree-two ambient p-return component with normalized target radius 23/20. Exact fiber exhaustion puts the whole closed three-return target disk and all three source phases inside this ambient source. After scaling, this ambient component lies inside the archive's original p-return component, since its actual target disk is contained in the original target. The exceptional original radius 1/4 at p=3 is preserved; the other original target radii are 2^(-p). `FiniteFirstReturnBounds.lean` proves the complete finite certificate soundness, including the strict scale comparison and strict phase bounds required by this construction.
+`ThreeReturnParent.lean` constructs a proper degree-two ambient p-return component with normalized target radius 23/20. Exact fiber exhaustion puts the whole closed three-return target disk and all three source phases inside this ambient source. After scaling, this ambient component lies inside the archive's original p-return component, since its actual target disk is contained in the original target. The exceptional original radius 1/4 at p=3 is preserved; the other original target radii are 2^(-p). `FiniteFirstReturnBounds.lean` proves the complete finite certificate soundness, including the strict scale comparison and strict phase bounds required by this construction. `ThreeReturnParentTopology.lean` proves contractibility of this actual ambient source in both normalized and physical coordinates.
 
-The registered proof modules compile locally with pinned Lean 4.32.0. The remaining integration work is the single all-period theorem and its final physical realization bundle. At checkpoint `1f0e95c9306352d634bf6bcd92f2a720643b508d`, CI passed the full weighted Lean build and the transitive-axiom audit, as well as contribution intake and research validation. Later additions must pass the same gates at the final head.
+The registered proof modules compile locally with pinned Lean 4.32.0. The remaining integration work is the final physical realization bundle. The full root Lean project also built successfully (89 jobs). At checkpoint `1f0e95c9306352d634bf6bcd92f2a720643b508d`, CI passed the full weighted Lean build and the transitive-axiom audit, as well as contribution intake and research validation. Later additions must pass the same gates at the final head.
 
 All accepted results will be stated as Lean theorems in the pinned repository project and checked by the existing CI and transitive-axiom audit. Progress and proof revisions will be committed to this pull request.
 
@@ -56,7 +65,7 @@ All accepted results will be stated as Lean theorems in the pinned repository pr
 
 - NOV26_TIP_THEOREM and the actual finite and all-period primitive-tip estimates cited by research/tip_family_theorem/AUDIT.md, finding F04.
 - Existing exact real interval and complex remainder infrastructure in the repository.
-- PR #238 contains independent all-period actual-parameter construction. Any use of that work will be explicitly declared as a dependency; its crossing-curve result is not this contribution's claim.
+- PR #238, now merged into main, supplies the independent analytic-tail actual-parameter construction and complete p-return divided difference. Its crossing-curve result is not this contribution's claim. This branch has been synchronized with that merged main revision.
 
 ## Boundary
 
