@@ -3830,6 +3830,111 @@
     },
     "obligations": []
   },
+  "actual-maximal-crest-20261127": {
+    "guide": "contributions/actual_maximal_crest_20261127/NOTE.md#actual-maximal-crest-20261127",
+    "theorems": {
+      "formalization/weighted/CrestFirstExit.lean": [
+        "exists_first_exit",
+        "first_exit_prefix_iff",
+        "first_exit_unique",
+        "first_exit_component",
+        "uniform_sign_margins",
+        "eventually_uniform_sign_margins",
+        "eventually_uniform_level_gap",
+        "uniform_root_tendsto",
+        "exists_first_exits_converging"
+      ],
+      "formalization/weighted/CrestIterateLimit.lean": [
+        "eventually_in_disk",
+        "compose_uniformly",
+        "finite_iterates_uniformly"
+      ],
+      "formalization/weighted/ActualCrestCrossingWindow.lean": [
+        "normalizedReturn_continuous",
+        "normalizedReturn_real",
+        "normalizedReturn_imaginary",
+        "circlePoint_full_disk",
+        "circlePoint_disk",
+        "crossing_endpoint_margins",
+        "crossingCos_spec",
+        "radialPoint_eq_circlePoint",
+        "actual_crossing_exists",
+        "actual_crossing_growth",
+        "actual_crossing_unique",
+        "actual_full_crossing_small",
+        "actual_full_crossing_unique",
+        "actual_first_image_positive",
+        "exists_family",
+        "actual_tip_angle_error",
+        "actual_tip_point_error",
+        "Family.point_lipschitz",
+        "Family.point_continuous",
+        "Family.point_radius",
+        "Family.point_injective",
+        "Family.point_disk",
+        "Family.point_error",
+        "Family.second_real",
+        "Family.third_real"
+      ],
+      "formalization/weighted/CrestIntegralLimit.lean": [
+        "primitives_tendstoUniformlyOn",
+        "integral_tendsto_of_moving_endpoint",
+        "radialIntegrand_continuousOn",
+        "radialIntegrand_tendstoUniformlyOn",
+        "parent_normalization_tendsto",
+        "radialCoefficient_tendsto_fullModel",
+        "radialCoefficient_eventually_gt_third"
+      ],
+      "formalization/weighted/ActualCrestEndpoint.lean": [
+        "radiusProjection_eq",
+        "realAngle_continuous",
+        "terminal_continuous",
+        "scale_tendsto_zero",
+        "actual_maps_tendsto",
+        "actual_points_tendsto",
+        "actual_angles_tendsto",
+        "actual_images_tendsto",
+        "actual_terminal_tendsto",
+        "actual_initial_collars_converge",
+        "endpoint_complex_equality",
+        "unscaled_endpoint"
+      ],
+      "formalization/weighted/ActualCrestIntegral.lean": [
+        "actual_initial_coefficients_converge",
+        "exists_actual_initial_collars_and_positive_limit"
+      ],
+      "formalization/weighted/ActualCrestSupport.lean": [
+        "actual_support_iterates_tendsto",
+        "actual_support_bounds",
+        "actual_complete_support_injective",
+        "actual_selected_side_fourfold_injective",
+        "eventually_all_actual_tips_support"
+      ],
+      "formalization/weighted/ActualCrestRadialOrder.lean": [
+        "actual_terminal_injective",
+        "actual_terminal_strictAnti",
+        "actual_unique_terminal_collars"
+      ],
+      "formalization/weighted/ActualCrestUpperGate.lean": [
+        "actual_fourth_cut_error",
+        "actual_fourth_cut_tendsto",
+        "actual_upper_gate_with_margin",
+        "actual_upper_gate"
+      ],
+      "formalization/weighted/ActualCrestTheorem.lean": [
+        "complete_terminal_component",
+        "exists_actual_complete_collars_and_limit"
+      ],
+      "formalization/weighted/ActualCrestProperReturn.lean": [
+        "actual_parent_exhaustion",
+        "actual_initialDisk_bounds",
+        "initialDisk_subset_parent",
+        "physical_initialDisk_subset_parent",
+        "physical_initialDisk_subset_archived"
+      ]
+    },
+    "obligations": []
+  },
   "three-return-finite-capacity-20261127": {
     "guide": "contributions/three_return_finite_capacity_20261127/NOTE.md#three-return-finite-capacity-20261127",
     "theorems": {

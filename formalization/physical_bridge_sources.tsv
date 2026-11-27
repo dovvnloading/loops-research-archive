@@ -50,8 +50,16 @@ code/exp3_feigenbaum.py	EXPLORATION
 code/exp4_images.py	EXPLORATION
 code/exp5_figs.py	EXPLORATION
 code/mlc_common.py	EXPLORATION
+formalization/weighted/ActualCrestCrossingWindow.lean	METADATA
+formalization/weighted/ActualCrestEndpoint.lean	METADATA
+formalization/weighted/ActualCrestIntegral.lean	METADATA
 formalization/weighted/ActualCrestLimit.lean	METADATA
+formalization/weighted/ActualCrestProperReturn.lean	METADATA
+formalization/weighted/ActualCrestRadialOrder.lean	METADATA
+formalization/weighted/ActualCrestSupport.lean	METADATA
+formalization/weighted/ActualCrestTheorem.lean	METADATA
 formalization/weighted/ActualCrestTransport.lean	METADATA
+formalization/weighted/ActualCrestUpperGate.lean	METADATA
 formalization/weighted/AtomCutDefect.lean	CUTS CREST
 formalization/weighted/AttachmentDefectLedger.lean	DEFECT
 formalization/weighted/BinaryShiftExactness.lean	METADATA
@@ -68,6 +76,9 @@ formalization/weighted/CollarMetricEnergy.lean	METADATA
 formalization/weighted/CollarStraightLength.lean	METADATA
 formalization/weighted/CompactObstacleRemainder.lean	METADATA
 formalization/weighted/ConnectedBinaryCoding.lean	METADATA
+formalization/weighted/CrestFirstExit.lean	METADATA
+formalization/weighted/CrestIntegralLimit.lean	METADATA
+formalization/weighted/CrestIterateLimit.lean	METADATA
 formalization/weighted/CriticalReturnRelationStability.lean	METADATA
 formalization/weighted/DepthThreeClosure.lean	METADATA
 formalization/weighted/DepthThreeReal.lean	METADATA
