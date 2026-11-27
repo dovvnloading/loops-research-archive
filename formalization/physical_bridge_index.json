@@ -3159,6 +3159,9 @@
       ],
       "formalization/weighted/TelescopeMovingDeck.lean": [
         "quadratic_parameter_return_deck_family"
+      ],
+      "formalization/weighted/TelescopePathPairing.lean": [
+        "quadratic_return_deck_paired_paths"
       ]
     },
     "obligations": [

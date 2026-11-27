@@ -11,7 +11,7 @@ human_review: none
 
 ## Claim
 
-**Development checkpoint: nine public Lean theorem statements in three
+**Development checkpoint: ten public Lean theorem statements in four
 modules.** Compilation and CI evidence are recorded below. A statement is
 counted as verified only after the existing full Lean build and transitive
 foundational-dependency audit pass on the proof sources.
@@ -22,7 +22,7 @@ an injective prefix `F_c^a`, one critical quadratic step, and an injective
 suffix `F_c^b`. The sources and targets below are actual subsets of ℂ and
 actual connected components of polynomial inverse images.
 
-The contribution establishes three interfaces beyond the existing
+The contribution establishes four interfaces beyond the existing
 involution and parameter-stable proper-return construction:
 
 1. **Global deck rigidity.** An analytic self-map of the full return source
@@ -39,6 +39,11 @@ involution and parameter-stable proper-return construction:
    Its fixed point is precisely the analytic moving critical anchor.
    Properness, compact source closures, and total analytic degree two
    persist on the same parameter neighborhood and fixed terminal target.
+
+4. **Exactly two complete path lifts.** One canonical involution works for
+   every regular target path. Its two complete continuous lifts never meet,
+   are exchanged pointwise by that involution, and exhaust all continuous
+   lifts. The actual continuous-lift subtype has cardinality exactly two.
 
 These are finite-time, parameter-local statements under the explicitly
 listed actual-core or actual-component hypotheses. They do not close the
@@ -166,20 +171,43 @@ to the connected analytic anchor graph. The fiber identities and critical
 derivative agree with the existing fixed-parameter involution by prefix
 injectivity.
 
+### 4. Exhaustive deck pairing of entire physical paths
+
+[TelescopePathPairing.lean](../../formalization/weighted/TelescopePathPairing.lean)
+contains `quadratic_return_deck_paired_paths`. It constructs one analytic
+involution before quantifying over the target path. For every continuous
+γ in V avoiding the propagated critical value, it constructs Γ₀ and Γ₁
+with all of the following properties:
+
+- both paths lie in the full actual source component and project to γ;
+- `Γ₁(t)=τ(Γ₀(t))` for every t;
+- `Γ₀(t) ≠ Γ₁(t)` for every t;
+- every continuous A-valued lift of γ is globally Γ₀ or globally Γ₁;
+- the subtype of **all** such complex-valued continuous lifts has
+  `Nat.card = 2`.
+
+The statement assumes neither a lift nor a covering. It constructs the
+first lift from full target surjectivity and the unique-path theorem,
+then constructs the second by the canonical analytic involution. A meeting
+would force a critical fixed point and hence the excluded critical value.
+The exact starting fiber and path uniqueness classify every other lift.
+Thus a continuous lift cannot switch between the two phases mid-path.
+
 ### Validation and committed progress
 
 [PR #226](https://github.com/dovvnloading/loops-research-archive/pull/226)
 was opened as a draft before proof development. The initial code checkpoint
 is [d737eb1](https://github.com/dovvnloading/loops-research-archive/commit/d737eb1061e1c9587f2558c4c75b80cb19cc5bf8).
-All three modules are registered default Lake targets, every public theorem
+All four modules are registered default Lake targets, every public theorem
 is in the theorem index, and each source uses the existing CONSTRUCT route.
 
 The pinned Lean 4.32.0 toolchain and pinned Mathlib dependencies are
-installed locally. All three modules pass `lake env lean` locally with exit zero and no
+installed locally. All four modules pass `lake env lean` locally with exit zero and no
 diagnostics. The rigidity file passed on its first run. The covering file
 needed one explicit preimage type; the moving-family file needed explicit
 component types and analytic projection composition. No theorem statement
-was weakened. Full integration and the unchanged CI audits are in progress;
+was weakened. The complete path-pairing synthesis compiled on its first run.
+The first three targets also passed `lake build` (8,688 jobs). Full integration and the unchanged CI audits are in progress;
 no CI success is asserted before those runs finish.
 
 Reproduction:
@@ -187,7 +215,7 @@ Reproduction:
 ```sh
 cd formalization/weighted
 lake exe cache get
-lake build TelescopeDeckRigidity TelescopeUnbranchedCover TelescopeMovingDeck
+lake build TelescopeDeckRigidity TelescopeUnbranchedCover TelescopeMovingDeck TelescopePathPairing
 lake build
 cd ../..
 python code/verify_lean_coverage.py --audit weighted
@@ -225,7 +253,9 @@ sets; no uniform bound over all periods or infinite towers is proved.
 
 The path theorem avoids the unique critical value. It does not prescribe
 which sheet a closed loop returns to, compute fundamental-group monodromy,
-or extend regular path lifting through the branch value.
+or extend regular path lifting through the branch value. Joint analyticity
+of the family does not assert a conjugacy between different parameter
+dynamics or global continuation in parameter space.
 
 The involution and covering live on the physical return components.
 Native relative-cover existence, the required identification of its
