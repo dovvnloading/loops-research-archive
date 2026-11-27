@@ -15,9 +15,9 @@ Ledger statement being addressed:
 
 ## Claim
 
-For the actual complex quadratic polynomial, native two-limb geometry constructs an ambient analytic collar of the entire closed canonical predecessor at every finite depth. Every independently supplied continuous ambient restriction whose projected connected trace stays in that collar, and which has one anchor in the selected source component, agrees everywhere with the canonical analytic inverse. Target landing then forces source landing and every canonical parent address. The source need not lie in the filled Julia set, and its endpoint is not assumed to exist. More generally, nested nonempty connected source tails have their entire source impression exactly identified as the inverse image of the target impression; no singleton or landing assumption is needed for this stronger trace-impression statement.
+For the actual complex quadratic polynomial, relative two-limb geometry constructs an ambient analytic collar of the entire closed limb itinerary at every finite depth. Every independently supplied continuous ambient restriction whose projected connected trace stays in that collar, and which has one anchor in the selected source component, agrees everywhere with the selected analytic inverse. Target landing then forces source landing and every parent in the closed-limb itinerary. The source need not lie in the filled Julia set, and its endpoint is not assumed to exist. More generally, nested nonempty connected source tails have their entire source impression exactly identified as the inverse image of the target impression; no singleton or landing assumption is needed for this stronger trace-impression statement.
 
-This is a polynomial ambient realization theorem toward the ledger obligation. It is not a proof of the remaining native psi-quadratic-like source identification. Compilation of the newly submitted sources is pending; until the weighted CI build and transitive audit pass, no theorem in this packet is claimed verified.
+This is a polynomial ambient realization theorem toward the ledger obligation. It is not a proof of the remaining native psi-quadratic-like source identification. All four submitted modules compile in the repository's Lean 4 project at proof commit [5809b866260fa97fd72f76b3ce6cc07a3ce3400f](https://github.com/dovvnloading/loops-research-archive/commit/5809b866260fa97fd72f76b3ce6cc07a3ce3400f). Both weighted CI runs passed their full builds and transitive axiom audits; the evidence is pinned below.
 
 ### Exact hypotheses and notation
 
@@ -81,14 +81,30 @@ A companion compact-mark theorem works for any nonempty compact preconnected Q c
 - [StationaryAmbientLanding.lean](../../formalization/weighted/StationaryAmbientLanding.lean): confinement, pointwise agreement, full-trace equality, filter landing, and the compact-core ambient landing constructor.
 - [StationaryLimbCollar.lean](../../formalization/weighted/StationaryLimbCollar.lean): actual filled-set/plane transport, derived critical exclusion, constructed marked-core collar, and `limb_collar_ambient_landing`.
 - [StationaryBoundaryExtension.lean](../../formalization/weighted/StationaryBoundaryExtension.lean): closed-limb injectivity and critical exclusion, the full closed-limb analytic collar, exact closed-parent images, and `quadratic_closed_limb_ambient_landing`.
-
 - [StationaryAmbientImpressions.lean](../../formalization/weighted/StationaryAmbientImpressions.lean): exact inverse covariance, anchored tail-impression recognition, and constructed compact-mark and full closed-limb impression theorems.
 
 All 27 public declarations across the four modules are registered in the existing theorem index and weighted Lake targets. No status record or workflow is edited.
 
 ### Validation
 
-Lean is unavailable locally, and the local filesystem was already full before checkout. The repository's existing weighted CI is the compilation authority. It builds the modules in the Lean 4 project and audits every declaration's transitive dependencies, permitting only propext, Classical.choice and Quot.sound. Source scans reject unfinished proofs and trust escapes. The final successful run and proof commit will be recorded here after completion.
+Validation was performed by the repository's existing weighted CI because Lean was unavailable locally and the local filesystem was full before checkout.
+
+Verified proof commit: [5809b866260fa97fd72f76b3ce6cc07a3ce3400f](https://github.com/dovvnloading/loops-research-archive/commit/5809b866260fa97fd72f76b3ce6cc07a3ce3400f).
+
+- [Pull-request weighted build and axiom audit](https://github.com/dovvnloading/loops-research-archive/actions/runs/45971642565/job/140413367634): success.
+- [Push weighted build and axiom audit](https://github.com/dovvnloading/loops-research-archive/actions/runs/45971634496/job/140413332303): success.
+- Both logs record all four new modules as built and `Build completed successfully (9078 jobs)`.
+- Both logs record `AXIOM_AUDIT_PASS weighted: 201 modules, 4553 declarations`.
+- Source coverage records 250 Lean files (44 root, 201 weighted, 5 standalone), all registered, with no prohibited source tokens. No `sorry`, `admit`, new axioms or proof-trust bypasses were introduced. Transitive dependencies use only the permitted foundations `propext`, `Classical.choice` and `Quot.sound`.
+
+| Module | Public theorems | Audited declarations | Audit |
+| --- | ---: | ---: | --- |
+| StationaryAmbientLanding | 5 | 5 | permitted axioms only |
+| StationaryLimbCollar | 7 | 9 | permitted axioms only |
+| StationaryBoundaryExtension | 11 | 16 | permitted axioms only |
+| StationaryAmbientImpressions | 4 | 4 | permitted axioms only |
+
+The larger audited counts include private or compiler-generated declarations. The compiler corrections only made subtype/coercion information and local unfolding explicit; no public theorem statement was weakened. The evidence update following the proof commit changes this note only, leaving all Lean sources and registrations identical.
 
 To reproduce after checkout:
 
