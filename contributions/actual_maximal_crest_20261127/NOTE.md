@@ -11,9 +11,9 @@ human_review: none
 
 ## Claim
 
-For constructed literal quadratic parameters of every period p at least 17,
-the actual normalized return has a coherent crossing curve on the enlarged
-radius window S=[1/16,133/2000]. For all sufficiently large periods, its
+For every integer return index p at least 17, constructed literal quadratic
+parameters have a coherent actual crossing curve on the enlarged
+radius window S=[1/16,133/2000]. For all sufficiently large return indices, its
 complete two-sided terminal gate has a maximal initial connected component
 [1/16,r_p). The endpoint is an actual third-return collision, is not an
 assumed parameter, and converges to the unique limiting-model endpoint
@@ -28,7 +28,10 @@ KKL extremal widths.
 
 ## Evidence
 
-Baseline: main commit `7b179434fdbf12070485ba4a91c6dc3c9f55fa24`.
+Research baseline: main commit `7b179434fdbf12070485ba4a91c6dc3c9f55fa24`.
+The branch also incorporates main commit
+`77e136b56347d7517d62dbaee5ffca3a8d9628ea`; its independent three-return
+results and registrations are preserved.
 
 ### Objects and precise new result
 
@@ -79,7 +82,7 @@ equality, not merely a real-part test.
 ### Actual radial order and the opposite terminal cut
 
 `ActualCrestRadialOrder` proves that the actual terminal coordinate is
-strictly decreasing on all of S for sufficiently large periods. Equal
+strictly decreasing on all of S for sufficiently large return indices. Equal
 third images can be pulled back through the actual injective second
 support; the positive imaginary first images exclude the antipodal
 collision alternative. Initial-disk injectivity then forces equal radii.
@@ -90,7 +93,7 @@ strict-gate classification is T_p(s)>-1 if and only if s<r_p.
 
 `ActualCrestUpperGate` also proves the opposite source cut on the entire
 window, with one uniform positive margin for all sufficiently large
-periods:
+return indices:
 
     T_p(s)+delta < -Re H_p^4(0),  delta>0.
 
@@ -118,6 +121,19 @@ the moving integral by a fixed interior subintegral. The theorem
 constructs the model parameter, actual parameter sequence, curve families,
 and endpoints without any parameter-existence or approximation premise.
 
+### One simultaneous constructed realization
+
+`ActualCrestTheorem.exists_actual_complete_collars_and_limit` assembles
+all conclusions for the same constructed model parameter, actual parameter
+sequence, crossing families, and endpoint sequence. A single positive
+upper-cut margin and a common eventual threshold give strict radial order,
+the unique endpoint, the exact complete two-sided gate and its connected
+component, entire-support signs and bounds, fourth-iterate injectivity,
+the exact original-plane collision, and an actual coefficient above 1/3.
+The endpoint and coefficient limits refer to those very same endpoints.
+This final theorem has no input hypotheses. Its connected-component claim
+uses the complete two-sided source terminal condition explicitly.
+
 ### Entire-support control
 
 `ActualCrestSupport` transfers the archived model estimates to the full
@@ -144,10 +160,14 @@ All files are in `formalization/weighted/`:
 | ActualCrestSupport | Entire actual support, signs and fourfold injectivity |
 | ActualCrestRadialOrder | Actual strict radial order and unique terminal root |
 | ActualCrestUpperGate | Opposite terminal cut with a uniform positive margin |
+| ActualCrestTheorem | One constructed realization satisfying all conclusions simultaneously |
 
 Every module has compiled locally with pinned Lean 4.32.0 and Mathlib.
-The repository's original compiled-declaration audit is run for all new
-modules, including private and generated declarations. The PR records
+The repository's original compiled-declaration audit passed for all 169
+declarations across the ten new modules, including private and generated
+declarations. Their transitive dependencies use only `propext`,
+`Classical.choice`, and `Quot.sound`. The full contribution intake also
+passes against the updated main branch. The PR records
 head-specific CI builds; the existing weighted workflow builds the full
 project and audits every declaration. No workflow or trusted baseline is
 changed. Reproduce with:
@@ -178,18 +198,18 @@ of the new actual-polynomial existence theorem.
 - The endpoint and exact two-sided terminal-gate classification are
   proved on S=[1/16,133/2000]. They do not exclude another admissible
   component elsewhere in the larger original parent interval. The
-  physical open collar is (1/16,r_p); the closed inner endpoint is used
+  selected open radial interval is (1/16,r_p); the closed inner endpoint is used
   only to anchor the relative connected-component statement.
 - The formal `ActualTip` parameters are constructed and satisfy the stated
   polynomial relations, but their identification with the source's
   distinguished primitive-component branch, least critical preperiod,
   and primitive renormalization period is not supplied here.
-- The full physical KKL access marking, proper-path restrictions,
-  prime-end transport, and conformal-width identification remain to be
-  proved. The selected radial coefficient is not an unrestricted Wave
+- The source real q/w gates, central properness, full physical KKL
+  access marking, marked proper-path admissibility, prime-end transport,
+  and conformal-width identification remain to be proved. The selected radial coefficient is not an unrestricted Wave
   optimum or an already identified extremal width.
-- All endpoint and coefficient conclusions are eventual in the period;
-  this packet does not assert an explicit first period for them or prove
+- All endpoint and coefficient conclusions are eventual in the return index;
+  this packet does not assert an explicit first index for them or prove
   the displayed numerical conjecture near 0.347005.
 - No H1-H4, UPTCR, MLC, or worldwide priority claim is made.
 

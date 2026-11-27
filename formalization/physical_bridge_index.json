@@ -3920,6 +3920,10 @@
         "actual_fourth_cut_tendsto",
         "actual_upper_gate_with_margin",
         "actual_upper_gate"
+      ],
+      "formalization/weighted/ActualCrestTheorem.lean": [
+        "complete_terminal_component",
+        "exists_actual_complete_collars_and_limit"
       ]
     },
     "obligations": []
