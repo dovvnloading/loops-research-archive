@@ -17,7 +17,7 @@ The current archive proves upper bounds at arbitrary targets and exact counts at
 
 ## Evidence
 
-No new theorem is claimed verified at this initial checkpoint. Lean proofs will be added to the pinned Mathlib project, registered through the contribution tooling, and compiled and axiom-audited by the existing CI. Progress will be committed to this draft.
+First proof checkpoint: `StationaryCriticalFiber.lean` contains the proposed physical critical-fiber recognition and exact one-step predecessor census; `StationaryRamificationCensus.lean` contains the proposed all-depth census, weighted critical defect, and exact loss under semiconjugacy. Both are registered in the pinned Mathlib project. They are candidate proofs until local and CI compilation and the transitive dependency audit succeed. The geometric argument reuses the existing compact bypass theorem rather than reproving planar logarithm theory.
 
 ## Dependencies
 

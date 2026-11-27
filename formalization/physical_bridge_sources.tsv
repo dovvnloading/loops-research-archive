@@ -128,15 +128,18 @@ formalization/weighted/SaturatedTelescope.lean	METADATA
 formalization/weighted/SpectralDominance.lean	CLONE EDGE
 formalization/weighted/StationaryCanonicalLift.lean	VARIABLE-EXIT
 formalization/weighted/StationaryCompactContact.lean	METADATA
+formalization/weighted/StationaryCriticalFiber.lean	METADATA
 formalization/weighted/StationaryDeckSeparator.lean	VARIABLE-EXIT
 formalization/weighted/StationaryEndpointCover.lean	VARIABLE-EXIT
 formalization/weighted/StationaryEndpointVisits.lean	VARIABLE-EXIT
 formalization/weighted/StationaryFiberDynamics.lean	METADATA
 formalization/weighted/StationaryGeometricFibers.lean	METADATA
+formalization/weighted/StationaryModelRamification.lean	METADATA
 formalization/weighted/StationaryMonotoneGeometry.lean	METADATA
 formalization/weighted/StationaryMultiInterface.lean	METADATA
 formalization/weighted/StationaryPacketGain.lean	VARIABLE-EXIT
 formalization/weighted/StationaryPrefixCharge.lean	VARIABLE-EXIT
+formalization/weighted/StationaryRamificationCensus.lean	METADATA
 formalization/weighted/TelescopeCollarRecognition.lean	METADATA
 formalization/weighted/TelescopeCompactReturn.lean	CONSTRUCT
 formalization/weighted/TelescopeConformalInverse.lean	CONSTRUCT
