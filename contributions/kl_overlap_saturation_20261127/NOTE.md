@@ -13,7 +13,7 @@ human_review: none
 
 For the actual quadratic polynomial `f(z)=z^2-2`, the explicit ordinary top-puzzle parent and its two second-iterate branches have a full central-overlap defect in **every positive-height collar that retains all angles**. The witness is a genuine point of the complex dynamical plane, lies in the parent interior, and lies outside the **closures of both source pieces**. The result also applies to every continuous based logarithmic tile lift commuting with the physical projection; its identity formula is proved, not assumed.
 
-The general coordinate calculation gives a necessary and sufficient saturation criterion and the exact region that a retained set must avoid. The Chebyshev specialization supplies open simply connected physical puzzle domains, compact embedded closures, exact branch dynamics, and their exterior-component dictionary.
+The general coordinate calculation gives a necessary and sufficient saturation criterion and the exact region that a retained set must avoid. The Chebyshev specialization supplies open simply connected physical puzzle domains, compact embedded closures, exact branch dynamics, and their exterior decomposition.
 
 **This is a partial result on the ledger obligation.** The Chebyshev critical orbit does not return, so this example does not instantiate the recurrent primitive-renormalization stage package. The universal native KL question remains open; no ledger promotion is requested.
 
@@ -65,6 +65,8 @@ The actual second iterate has the following branch formulas:
 
 `left_domain_second_iterate_bijOn` and `right_domain_second_iterate_bijOn` prove bijectivity of the genuine polynomial iterate from each whole source domain onto `P`. `branch_domains_subset_parent` and `branch_domains_disjoint` prove containment and disjointness. The parent contains the actual critical point, while `critical_exits_whole_parent` proves `f^2(0)=2` and `2` is outside the parent. `parent_ray_vertices` identifies the two parent landing vertices as `1` and `-1`.
 
+The dividing rays are identified through the actual polynomial. `point_step` proves the angle-doubling and height-doubling formula, `dividing_ray_cycle` proves the cycle of angles `1/3` and `2/3`, and `dividing_rays_land_fixed` proves that both continuous positive-height ray parametrizations tend to the fixed point `-1` as height tends to zero. These are limits in the complex plane, not assigned landing labels.
+
 The exact physical exterior decomposition is also proved:
 
 \[
@@ -79,7 +81,7 @@ The exact physical exterior decomposition is also proved:
   \cup\Phi((19/24,5/6)\times(0,h/8)).
 \]
 
-Thus the four exterior components are derived from the whole physical domains, rather than supplied as independent labels.
+Thus the four exterior sectors are derived from the whole physical domains, rather than supplied as independent labels.
 
 ### 2. The explicit defect and its complete record
 
@@ -179,7 +181,7 @@ These endpoint inequalities belong to the **open-seam** convention. `retained_sa
 
 ### 5. Lean verification
 
-All new Lean files are registered in the weighted project's default build targets, `physical_bridge_index.json`, and `physical_bridge_sources.tsv`. No workflow or ledger file is changed. The proof sources contain no proof placeholders or added axioms. The repository's existing audit checks the complete transitive axiom dependencies against `propext`, `Classical.choice`, and `Quot.sound`.
+All six new Lean files and their 81 public theorems are registered in the weighted project's default build targets, `physical_bridge_index.json`, and `physical_bridge_sources.tsv`. No workflow or ledger file is changed. The proof sources contain no proof placeholders or added axioms. The repository's existing audit checks the complete transitive axiom dependencies against `propext`, `Classical.choice`, and `Quot.sound`.
 
 Project build command:
 
@@ -196,7 +198,9 @@ python code/verify_lean_coverage.py
 python code/verify_physical_bridge_contracts.py
 ```
 
-The full weighted CI workflow runs `python code/verify_lean_coverage.py --audit weighted` after building all registered modules. The first checkpoint `bf6af01e3f5dbac20040738f943ed38577023ab8` passed that full build and audit in [run 45951332396](https://github.com/dovvnloading/loops-research-archive/actions/runs/45951332396); later proof checkpoints remain in this pull request. Final integration validation is recorded below when complete.
+All six modules compile locally with the repository's pinned Lean 4.32.0 toolchain. A targeted invocation of the existing `Lean.collectAxioms` audit passed for all 140 kernel declarations from those modules, including generated and private declarations; every transitive axiom belongs to the permitted three-element list. The contribution, source-registration, proof-escape, theorem-index, and physical-bridge-contract checks also pass.
+
+The full weighted CI workflow runs `python code/verify_lean_coverage.py --audit weighted` after building all registered modules. The first checkpoint `bf6af01e3f5dbac20040738f943ed38577023ab8` passed that full build and audit in [run 45951332396](https://github.com/dovvnloading/loops-research-archive/actions/runs/45951332396). The physical-domain checkpoint `5ef08c601fc8ef653d746a32c02427f47fc08ab2` passed it again in [run 45952595521](https://github.com/dovvnloading/loops-research-archive/actions/runs/45952595521). Subsequent proof commits and their complete integration results are preserved in [PR 241 and its Checks tab](https://github.com/dovvnloading/loops-research-archive/pull/241/checks).
 
 ## Dependencies
 

@@ -16,6 +16,7 @@ with a physical tile.
 namespace LoopsChebyshevDecoration
 
 open Set Function LoopsChebyshev LoopsParabolic
+open scoped Topology
 
 noncomputable section
 
@@ -104,6 +105,13 @@ theorem point_one_sub (theta t : ℝ) :
     point (1 - theta) (-t) = point theta t := by
   have he : 1 - theta = -theta + 1 := by ring
   rw [he, point_add_one, point_neg]
+
+theorem ray_continuous (theta : ℝ) : Continuous (fun t : ℝ => point theta t) := by
+  have hc : Continuous (fun t : ℝ =>
+      (t : ℂ) + ((2 * Real.pi * theta : ℝ) : ℂ) * Complex.I) :=
+    Complex.continuous_ofReal.add continuous_const
+  have he := Complex.continuous_exp.comp hc
+  exact he.add (he.inv₀ (fun _ => Complex.exp_ne_zero _))
 
 /-- The signed chart meets the genuine filled Julia set exactly on
 its zero-height spine. -/
@@ -280,6 +288,47 @@ theorem point_injective_on_turn {theta phi t s : ℝ}
   constructor
   · simpa [hn0] using hangle
   · exact hts
+
+/-- One actual polynomial iterate doubles the normalized external angle
+and height in this physical chart. -/
+theorem point_step (theta t : ℝ) :
+    cquad (-2) (point theta t) = point (2 * theta) (2 * t) := by
+  change cquad (-2) (J (address theta t)) = J (address (2 * theta) (2 * t))
+  rw [joukowski_step (show address theta t ≠ 0 from Complex.exp_ne_zero _)]
+  congr 1
+  unfold address
+  rw [← Complex.exp_nat_mul]
+  congr 1
+  push_cast
+  ring
+
+/-- The two source-defined dividing rays form the actual two-cycle
+of external angles under the physical quadratic map. -/
+theorem dividing_ray_cycle (t : ℝ) :
+    cquad (-2) (point (1/3) t) = point (2/3) (2*t) ∧
+    cquad (-2) (point (2/3) t) = point (1/3) (2*t) := by
+  constructor
+  · rw [point_step]
+    congr 1 <;> ring
+  · rw [point_step]
+    convert point_add_one (1/3) (2*t) using 1 <;> ring
+
+/-- The positive-height physical rays really land at the fixed point
+`-1`; the endpoint is a limit of exterior points, not a declared label. -/
+theorem dividing_rays_land_fixed :
+    Filter.Tendsto (fun t : ℝ => point (1/3) t) (𝓝[>] 0) (𝓝 (-1 : ℂ)) ∧
+    Filter.Tendsto (fun t : ℝ => point (2/3) t) (𝓝[>] 0) (𝓝 (-1 : ℂ)) ∧
+    cquad (-2) (-1) = -1 := by
+  have hfirst : point (1/3) 0 = -1 := parent_ray_vertices.2
+  have hsecond : point (2/3) 0 = -1 := by
+    have he := point_one_sub (1/3) 0
+    norm_num at he
+    exact he.trans hfirst
+  refine ⟨?_, ?_, by norm_num [cquad]⟩
+  · rw [← hfirst]
+    exact ((ray_continuous (1/3)).tendsto 0).mono_left nhdsWithin_le_nhds
+  · rw [← hsecond]
+    exact ((ray_continuous (2/3)).tendsto 0).mono_left nhdsWithin_le_nhds
 
 /-- The exact second iterate doubles angle and height twice. -/
 theorem point_second_iterate (theta t : ℝ) :
