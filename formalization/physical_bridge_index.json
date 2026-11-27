@@ -3641,5 +3641,43 @@
       ]
     },
     "obligations": []
+  },
+  "critical-crossing-deck-20261127": {
+    "guide": "contributions/critical_crossing_deck_20261127/NOTE.md#critical-crossing-deck-20261127",
+    "theorems": {
+      "formalization/weighted/CriticalPhaseCuts.lean": [
+        "PhaseCut.ext",
+        "phaseCutCongr_carrier",
+        "phaseSelect_of_mem",
+        "phaseSelect_of_not_mem",
+        "phaseSelect_choice",
+        "continuous_phaseSelect",
+        "choice_true_open",
+        "choice_false_open",
+        "phaseSelect_region",
+        "phaseSelect_reconstruct",
+        "phaseChoiceEquiv_carrier",
+        "phaseChoiceEquiv_symm_apply"
+      ],
+      "formalization/weighted/CriticalPhaseCensus.lean": [
+        "PhaseCut.constant_on_preconnected",
+        "phaseCut_excursion_equiv",
+        "phaseCut_excursion_count",
+        "phaseCut_anchored_excursion_count"
+      ],
+      "formalization/weighted/TelescopeCriticalPhase.lean": [
+        "quadratic_return_critical_value_iff",
+        "quadratic_return_phase_classification",
+        "quadratic_return_excursion_lift_count"
+      ],
+      "formalization/weighted/TelescopeCriticalLift.lean": [
+        "real_path_continuous_square_root",
+        "interval_path_continuous_square_root",
+        "quadratic_return_path_lift_with_critical_crossings"
+      ]
+    },
+    "obligations": [
+      "MAPPING_TELESCOPE"
+    ]
   }
 }

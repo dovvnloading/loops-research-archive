@@ -61,6 +61,8 @@ formalization/weighted/CloneRoot.lean	CLONE EDGE
 formalization/weighted/CloneRootRate.lean	CLONE EDGE
 formalization/weighted/CompactObstacleRemainder.lean	METADATA
 formalization/weighted/ConnectedBinaryCoding.lean	METADATA
+formalization/weighted/CriticalPhaseCensus.lean	METADATA
+formalization/weighted/CriticalPhaseCuts.lean	METADATA
 formalization/weighted/CriticalReturnRelationStability.lean	METADATA
 formalization/weighted/DepthThreeClosure.lean	METADATA
 formalization/weighted/DepthThreeReal.lean	METADATA
@@ -167,6 +169,8 @@ formalization/weighted/StationaryPrefixCharge.lean	VARIABLE-EXIT
 formalization/weighted/TelescopeCollarRecognition.lean	METADATA
 formalization/weighted/TelescopeCompactReturn.lean	CONSTRUCT
 formalization/weighted/TelescopeConformalInverse.lean	CONSTRUCT
+formalization/weighted/TelescopeCriticalLift.lean	METADATA
+formalization/weighted/TelescopeCriticalPhase.lean	METADATA
 formalization/weighted/TelescopeDeckInvolution.lean	CONSTRUCT
 formalization/weighted/TelescopeDeckRigidity.lean	CONSTRUCT
 formalization/weighted/TelescopeMovingDeck.lean	CONSTRUCT
