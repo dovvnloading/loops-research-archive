@@ -26,7 +26,7 @@ theorem passage_scaled_time_bound {t : ℝ} {k : ℕ}
   have he : ((k : ℝ) * Real.sqrt t) ^ 2 = (k : ℝ) ^ 2 * t := by
     rw [mul_pow, Real.sq_sqrt ht.le]
   have hp : 0 ≤ (k : ℝ) * Real.sqrt t := by positivity
-  nlinarith
+  nlinarith [sq_nonneg ((k : ℝ) * Real.sqrt t - 10)]
 
 /-- The finite error separates the central quadratic approximation, the
 outer elapsed time, and the two angular tails.  All orbit quantities are
@@ -113,7 +113,7 @@ theorem passage_quantitative_estimate {a ε η δ t : ℝ} {k : ℕ}
     have hscale' : 2 * (2 * δ) * (B * (1 + η)) ≤ ε := by
       dsimp [B]
       nlinarith only [hscale]
-    exact ParabolicPassageAngle.angle_step_error hs (by positivity) hB
+    exact ParabolicPassageAngle.angle_step_error (δ := 2 * δ) hs (by positivity) hB
       hε hεhalf hη hηε hxy (hx.trans (by linarith)) hy hlo hhi hscale'
   have hsum := passage_angle_error θ l m hlm.le u (4 * ε) hangle
   have hcoarse : (k : ℝ) * u ≤ 70 := by
@@ -143,16 +143,16 @@ theorem passage_quantitative_estimate {a ε η δ t : ℝ} {k : ℕ}
       Real.neg_pi_div_two_lt_arctan ((w l - a) / s)]
   have hangleLower : 2 * Real.arctan (δ / (2 * s)) ≤ θ m - θ l := by
     have hmlo : δ / (2 * s) ≤ (w m - a) / s := by
-      apply (div_le_div_iff₀ (by positivity : 0 < 2 * s) hs).mpr
-      have hh := hm.1
-      change δ ≤ w m - a at hh
-      nlinarith
+      calc
+        δ / (2 * s) = (δ / 2) / s := by ring
+        _ ≤ (w m - a) / s := div_le_div_of_nonneg_right (by
+          have hh := hm.1
+          change δ ≤ w m - a at hh
+          linarith) hs.le
     have hlhi : (w l - a) / s ≤ -(δ / (2 * s)) := by
-      rw [← neg_div]
-      apply (div_le_div_iff₀ hs (by positivity : 0 < 2 * s)).mpr
-      have hh := hl.2
-      change w l - a ≤ -δ / 2 at hh
-      nlinarith
+      calc
+        (w l - a) / s ≤ (-δ / 2) / s := div_le_div_of_nonneg_right hl.2 hs.le
+        _ = -(δ / (2 * s)) := by ring
     have hmangle := Real.arctan_mono hmlo
     have hlangle := Real.arctan_mono hlhi
     rw [Real.arctan_neg] at hlangle

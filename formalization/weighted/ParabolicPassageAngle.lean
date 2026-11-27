@@ -21,9 +21,9 @@ theorem hasDerivAt_angle {s : ℝ} (hs : 0 < s) (x : ℝ) :
   have hden : s ^ 2 + x ^ 2 ≠ 0 := by positivity
   convert ((hasDerivAt_id x).div_const s).arctan using 1
   · funext z
-    simp only [id_eq, div_eq_mul_inv, mul_comm]
+    simp only [id_eq, div_eq_mul_inv]
   · simp only [id_eq]
-    field_simp [ne_of_gt hs, hden] <;> ring
+    field_simp [ne_of_gt hs, hden]
 
 /-- An exact intermediate-point formula for one positive passage step. -/
 theorem angle_step_eq {s x y : ℝ} (hs : 0 < s) (hxy : x < y) :

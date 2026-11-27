@@ -3294,16 +3294,9 @@
         "passage_sum_drift",
         "passage_sum_drift_Ico",
         "passage_outer_time_budget",
-        "passage_outer_time_bound",
         "passage_complement_time_budget",
-        "passage_missing_time_budget",
         "passage_angle_sandwich",
-        "passage_angle_error",
-        "passage_first_hit",
-        "passage_mono_upto",
-        "channel_outer_time_bound",
-        "channel_lower_wall_step",
-        "channel_central_step_upper"
+        "passage_angle_error"
       ],
       "formalization/weighted/ParabolicPassageCuts.lean": [
         "passage_orbit_monotone",

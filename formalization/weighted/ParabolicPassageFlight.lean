@@ -2,11 +2,11 @@ import ParabolicTipRate
 import Mathlib
 
 /-!
-# Finite-flight localization for the actual parabolic channel
+# Finite elapsed-time and angular accounting
 
-The outer-time estimate is a finite telescoping estimate.  The crossing
-lemmas use the true reflected quadratic iterate and the existing channel
-bounds, so no passage-time asymptotic is an input.
+A quadratic lower drift bounds the time omitted outside a central flight
+interval.  Angular increments telescope over the retained interval with
+an exact elapsed-time error factor.  No passage-time asymptotic is an input.
 -/
 
 namespace LoopsParabolic
@@ -77,14 +77,6 @@ theorem passage_outer_time_budget (w : ℕ → ℝ) (a δ : ℝ) (k : ℕ)
     _ ≤ ∑ j ∈ Finset.range k, (w (j+1)-w j) := hsecond
     _ = w k-w 0 := passage_sum_drift w k
 
-theorem passage_outer_time_bound (w : ℕ → ℝ) (a δ D : ℝ) (k : ℕ)
-    (hδ : 0 < δ)
-    (hstep : ∀ j < k, (w j-a)^2 ≤ w (j+1)-w j)
-    (hspan : w k-w 0 ≤ D) :
-    ((passageOuterTimes w a δ k).card : ℝ) ≤ D/δ^2 := by
-  apply (le_div_iff₀ (by positivity : 0 < δ^2)).mpr
-  exact (passage_outer_time_budget w a δ k hδ.le hstep).trans hspan
-
 /-- Steps before and after a declared central interval are controlled by
 the same outside-time budget. -/
 theorem passage_complement_time_budget (w : ℕ → ℝ) (a δ : ℝ)
@@ -108,28 +100,6 @@ theorem passage_complement_time_budget (w : ℕ → ℝ) (a δ : ℝ)
       ((passageOuterTimes w a δ k).card : ℝ) := by exact_mod_cast hnat
   exact (mul_le_mul_of_nonneg_right hreal (sq_nonneg δ)).trans
     (passage_outer_time_budget w a δ k hδ hstep)
-
-/-- Explicit prefix and suffix estimates give the elapsed-time error made
-by retaining only the central interval. -/
-theorem passage_missing_time_budget (w : ℕ → ℝ) (a δ D : ℝ)
-    (k l m : ℕ) (hlm : l ≤ m) (hmk : m ≤ k) (hδ : 0 ≤ δ)
-    (hstep : ∀ j < k, (w j-a)^2 ≤ w (j+1)-w j)
-    (hleft : ∀ j < l, w j ≤ a-δ)
-    (hright : ∀ j, m ≤ j → j < k → a+δ ≤ w j)
-    (hspan : w k-w 0 ≤ D) :
-    ((l+(k-m) : ℕ) : ℝ) * δ^2 ≤ D := by
-  have hout : ∀ j < k, j ∉ Finset.Ico l m → δ ≤ |w j-a| := by
-    intro j hj hnot
-    by_cases hjl : j < l
-    · linarith [hleft j hjl, neg_abs_le (w j-a)]
-    · have hmj : m ≤ j := by
-        simp only [Finset.mem_Ico] at hnot
-        omega
-      linarith [hright j hmj hj, le_abs_self (w j-a)]
-  have h := passage_complement_time_budget w a δ k l m hδ hstep hout
-  have he : k-(m-l) = l+(k-m) := by omega
-  rw [he] at h
-  exact h.trans hspan
 
 /-- Constant lower and upper angular step estimates telescope over any
 consecutive retained interval with its exact number of steps. -/
@@ -163,92 +133,6 @@ theorem passage_angle_error (θ : ℕ → ℝ) (l m : ℕ) (hlm : l ≤ m)
   apply abs_le.mpr
   constructor <;> nlinarith only [hs.1, hs.2]
 
-/-- A finite orbit segment has a first crossing whenever its endpoints
-lie on opposite sides of the threshold. -/
-theorem passage_first_hit (w : ℕ → ℝ) (k : ℕ) (r : ℝ)
-    (hstart : w 0 < r) (hfinish : r ≤ w k) :
-    ∃ m : ℕ, 0 < m ∧ m ≤ k ∧ r ≤ w m ∧ ∀ j < m, w j < r := by
-  have hex : ∃ j : ℕ, j ≤ k ∧ r ≤ w j := ⟨k, le_rfl, hfinish⟩
-  let m := Nat.find hex
-  have hm : m ≤ k ∧ r ≤ w m := Nat.find_spec hex
-  have hmpos : 0 < m := by
-    by_contra h
-    have he : m = 0 := by omega
-    rw [he] at hm
-    exact (not_le_of_gt hstart) hm.2
-  refine ⟨m, hmpos, hm.1, hm.2, ?_⟩
-  intro j hj
-  by_contra! hrj
-  have hle : m ≤ j := Nat.find_min' hex ⟨by omega, hrj⟩
-  omega
-
-/-- Consecutive nonnegative increments imply monotonicity through the
-finite stopping time, without any assumption after that time. -/
-theorem passage_mono_upto (w : ℕ → ℝ) (k : ℕ)
-    (hstep : ∀ j < k, w j ≤ w (j+1)) :
-    ∀ i j : ℕ, i ≤ j → j ≤ k → w i ≤ w j := by
-  intro i j hij hjk
-  induction j with
-  | zero =>
-    have hi : i = 0 := by omega
-    subst i
-    exact le_rfl
-  | succ j ih =>
-    by_cases h : i ≤ j
-    · exact (ih h (by omega)).trans (hstep j (by omega))
-    · have hi : i = j+1 := by omega
-      subst i
-      exact le_rfl
-
-/-- Outside the channel center, the true physical flight has uniformly
-bounded elapsed time for every fixed positive window. -/
-theorem channel_outer_time_bound {t a δ : ℝ} {k : ℕ}
-    (ht : t ∈ Icc 0 (1/100 : ℝ))
-    (ha : a ∈ Icc (1/20 : ℝ) (3/50)) (root : cubic a = 0)
-    (hδ : 0 < δ)
-    (stay : ∀ j ≤ k, (H t)^[j] 0 ∈ Icc 0 cap) :
-    ((passageOuterTimes (fun j => (H t)^[j] 0) a δ k).card : ℝ) ≤ cap/δ^2 := by
-  apply passage_outer_time_bound (fun j => (H t)^[j] 0) a δ cap k hδ
-  · intro j hj
-    have hl := (channel_quadratic_step ht (stay j (by omega)) ha root).1
-    rw [Function.iterate_succ_apply']
-    linarith [ht.1]
-  · simpa using (stay k le_rfl).2
-
-/-- A step entering the lower bottleneck wall cannot jump across its
-negative half: monotonicity compares it with the true step at the wall. -/
-theorem channel_lower_wall_step {t a δ y : ℝ}
-    (ht : t ∈ Icc 0 (1/100 : ℝ))
-    (ha : a ∈ Icc (1/20 : ℝ) (3/50)) (root : cubic a = 0)
-    (hδ : 0 ≤ δ) (hδa : δ ≤ a)
-    (hy : y ∈ Icc 0 cap) (hbelow : y ≤ a-δ)
-    (hsmall : 10*t+20*δ^2 ≤ δ/2) :
-    H t y ≤ a-δ/2 := by
-  have hedge : a-δ ∈ Icc 0 cap := by
-    constructor
-    · linarith
-    · unfold cap
-      linarith [ha.2]
-  have hmono := channel_mono ht hy hedge hbelow
-  have hup := (channel_quadratic_step ht hedge ha root).2
-  have hs : (a-δ-a)^2 = δ^2 := by ring
-  rw [hs] at hup
-  linarith
-
-/-- Every step starting inside the fixed central window ends in the
-twice-sized window once its quadratic overshoot is small enough. -/
-theorem channel_central_step_upper {t a δ y : ℝ}
-    (ht : t ∈ Icc 0 (1/100 : ℝ))
-    (ha : a ∈ Icc (1/20 : ℝ) (3/50)) (root : cubic a = 0)
-    (hy : y ∈ Icc 0 cap) (hcentral : |y-a| ≤ δ)
-    (hsmall : 10*t+20*δ^2 ≤ δ) :
-    H t y ≤ a+2*δ := by
-  have hδ : 0 ≤ δ := (abs_nonneg (y-a)).trans hcentral
-  have hs := pow_le_pow_left₀ (abs_nonneg (y-a)) hcentral 2
-  rw [sq_abs] at hs
-  have hup := (channel_quadratic_step ht hy ha root).2
-  have hyup := (abs_le.mp hcentral).2
-  linarith
 
 end
 

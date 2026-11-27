@@ -157,7 +157,7 @@ theorem passage_uniform_remainder :
   calc
     |x^3*remSpatial a x+t*x*remMixed a x+t^2*remParameter a t x| ≤
         (|x^3*remSpatial a x|+|t*x*remMixed a x|)+|t^2*remParameter a t x| :=
-      (abs_add_le _ _).trans (add_le_add_right (abs_add_le _ _) _)
+      (abs_add_le _ _).trans (add_le_add (abs_add_le _ _) le_rfl)
     _ = |x| ^ 3 * |remSpatial a x| + t * |x| * |remMixed a x| +
         t^2 * |remParameter a t x| := by
       simp only [abs_mul, abs_pow, abs_of_nonneg ht.1]
@@ -224,7 +224,7 @@ theorem passage_scale_quadratic {a t : ℝ} (ha : a ∈ Icc (1/20:ℝ) (3/50))
   have hB : passageB a ≠ 0 := ne_of_gt
     (lt_of_lt_of_le (by norm_num) (passageB_ge_one ha))
   rw [passage_scale_sq ha ht]
-  field_simp [hB] <;> ring
+  field_simp [hB]
 
 theorem passage_scale_mul {a t : ℝ} (ha : a ∈ Icc (1/20:ℝ) (3/50))
     (root : cubic a = 0) (ht : 0 ≤ t) :
