@@ -3861,6 +3861,12 @@
         "limbItinerary_closed_prefix_image",
         "limbItinerary_of_closure_terminal",
         "quadratic_closed_limb_ambient_landing"
+      ],
+      "formalization/weighted/StationaryAmbientImpressions.lean": [
+        "quadratic_nested_inverse_impression",
+        "anchored_trace_inverse_impression",
+        "limb_collar_ambient_impressions",
+        "closed_limb_collar_ambient_impressions"
       ]
     },
     "obligations": [
