@@ -34,3 +34,11 @@ The full psi-quadratic-like category, the canonical localized immersions, and th
 ## Attribution
 
 This work builds on the archive's relative-versus-full overlap distinction and its actual ordinary KL side atlas. Its intended new contribution is the exact saturation defect and collar classification, not a repetition of the archived gluing theorem.
+
+## Progress checkpoint
+
+Commit `bf6af01e3f5dbac20040738f943ed38577023ab8` passed the full weighted Lean build and transitive axiom audit in [workflow run 45951332396](https://github.com/dovvnloading/loops-research-archive/actions/runs/45951332396). Research validation, contribution intake, and model-to-geometry coverage also passed at that checkpoint.
+
+The next development uses the actual quadratic `z^2-2`, its already-archived Joukowski external coordinate, signed-height puzzle domains, and an arbitrary continuous based lift commuting with the physical projection. The signed-height branch domains are constructed explicitly; their topology and dynamic bijections are being checked. This is a nonrecurrent ordinary top-puzzle instance. It does not instantiate the primitive-renormalization stage package required by the full ledger row. The latter remains open.
+
+The second locally compiled module, `LogarithmicTileLift.lean`, proves eight public adapter theorems. Equality under the physical projection `J(exp z)` on positive-height sheets gives equality of exponential coordinates. Covering uniqueness then gives one constant integer deck displacement on any preconnected source, and one based anchor forces the whole tile map to be the identity. Thus the later application need not assume an identity formula for its tile map. The new module has been compiled locally; its CI result is pending at this commit.

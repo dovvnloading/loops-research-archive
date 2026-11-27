@@ -3655,6 +3655,16 @@
         "direct_branch_angular_defect",
         "direct_branch_defect_in_every_collar",
         "direct_branch_radial_defect"
+      ],
+      "formalization/weighted/LogarithmicTileLift.lean": [
+        "logarithmicTile_preconnected",
+        "joukowski_exp_eq_iff",
+        "joukowski_exp_fiber",
+        "exponential_lifts_eqOn",
+        "exponential_lift_constant_deck",
+        "joukowski_lift_constant_deck",
+        "joukowski_based_lift_eqOn",
+        "logarithmicTile_based_lift_eqOn"
       ]
     },
     "obligations": [
