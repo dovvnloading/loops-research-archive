@@ -3829,5 +3829,21 @@
       ]
     },
     "obligations": []
+  },
+  "three-return-finite-capacity-20261127": {
+    "guide": "contributions/three_return_finite_capacity_20261127/NOTE.md#three-return-finite-capacity-20261127",
+    "theorems": {
+      "formalization/weighted/ThreeReturnInradius.lean": [
+        "finite_three_return_inner_bound",
+        "actual_three_return_inner_bound",
+        "selected_three_return_inner_bound",
+        "selected_closedBall_subset_source",
+        "selected_physical_closedBall_subset",
+        "selected_physical_inner_image_margin",
+        "selected_physical_disk_sandwich",
+        "exists_physical_renormalization_with_inradius"
+      ]
+    },
+    "obligations": []
   }
 }

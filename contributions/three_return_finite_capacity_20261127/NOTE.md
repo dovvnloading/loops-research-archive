@@ -5,6 +5,8 @@ ai: OpenAI ChatGPT, GPT-6 Astra Pro
 human_review: none
 ---
 
+<a id="three-return-finite-capacity-20261127"></a>
+
 # Finite two-sided capacity for actual three-return collars
 
 ## Claim
@@ -18,6 +20,12 @@ No new theorem is claimed verified at this initial draft checkpoint.
 The merged uniform_three_return_collar_20261127 packet already constructs the actual canonical proper degree-two return and proves that its reciprocal variational capacity exceeds 1/60. It explicitly leaves capacity positivity and finiteness of that reciprocal unproved. This contribution will build on that construction rather than repeat it.
 
 The new Lean source will be registered in the existing weighted project, public-theorem index and source table. Validation will use pinned Lean 4.32.0 and the existing CI transitive axiom audit.
+
+### Proof-development checkpoint
+
+ThreeReturnInradius.lean now contains the proposed all-period theorem that the closed normalized disk of radius 1/40 lies in the literal central three-return source. Its stronger analytic estimate is |F^3(z)| < 4/25 on that whole disk, leaving target margin 1/150. The finite p=3,...,16 integer certificate has been independently evaluated and kernel-checked locally with decide +kernel. The real/complex soundness proof, analytic tail and physical scaling are present in the source and are undergoing compilation; they are not yet claimed verified. The lower-capacity and full rectifiable-curve extremal-length arguments are being developed separately.
+
+A reusable pinned Lean 4.32.0 installation and Mathlib cache were located after the initial draft. Local proof checking is available; the existing CI remains the final authority.
 
 ## Dependencies
 

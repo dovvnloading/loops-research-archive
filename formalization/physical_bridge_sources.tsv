@@ -188,6 +188,7 @@ formalization/weighted/ThreeReturnDegree.lean	METADATA
 formalization/weighted/ThreeReturnDomain.lean	METADATA
 formalization/weighted/ThreeReturnEstimates.lean	METADATA
 formalization/weighted/ThreeReturnFullness.lean	METADATA
+formalization/weighted/ThreeReturnInradius.lean	METADATA
 formalization/weighted/ThreeReturnParent.lean	METADATA
 formalization/weighted/ThreeReturnParentTopology.lean	METADATA
 formalization/weighted/ThreeReturnPhysical.lean	METADATA
