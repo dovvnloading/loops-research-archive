@@ -11,7 +11,7 @@ human_review: none
 
 ## Claim
 
-**Validation status: the exact balance and naturality modules have compiled in CI. The complete four-module checkpoint still requires a successful build and transitive dependency audit before all the results below are reported as verified.**
+**Validation status: the exact balance, naturality, and silent-merger modules have compiled in CI. The complete four-module checkpoint still requires a successful build and transitive dependency audit before all the results below are reported as verified.**
 
 This contribution addresses the component-preservation part of DIRECT_DECORATION_FINAL_ROOT_RELATION_NO_BIRTH. It supplies an exact criterion for arbitrary connected open targets of actual quadratic iterates, and constructs maximal failures of a weaker critical-inventory-only criterion. It does not identify these arbitrary targets with authorized native final-root enlargements.
 
@@ -129,12 +129,13 @@ The draft [PR #231](https://github.com/dovvnloading/loops-research-archive/pull/
 - [9dc3410](https://github.com/dovvnloading/loops-research-archive/commit/9dc34109261a4040ad3ffa7cf24b3c222d648006): initial balance and naturality development. Source registration and the proof-trust scan passed; CI found two implicit inverse-image set elaboration errors.
 - [850c093](https://github.com/dovvnloading/loops-research-archive/commit/850c0936c2a307b4b35d50d94292993190216cb8): explicit source-set fixes, all-parameter silent mergers, and analytic vanishing criteria. The core balance proofs passed; one added zero-charge proof had an underconstrained finite-sum weight.
 - [9aab93b](https://github.com/dovvnloading/loops-research-archive/commit/9aab93b079ece63e90b9058dd747b2f0e7e5fb1c): the balance and naturality modules compiled. The final silent-merger theorem needed an explicit conversion from the set-level simple-connectedness predicate to its underlying typeclass. The next checkpoint makes that proof conversion explicit in both disk constructions; no theorem statement changes.
+- [0f73c4f](https://github.com/dovvnloading/loops-research-archive/commit/0f73c4f991f876c2377cc6dea7160b441a923cfa): the balance, naturality, and silent-merger modules compiled. The compact path-hull helper needed explicit lambdas to apply two set-inclusion proofs. This checkpoint supplies those lambdas without changing the helper's statement or any dependent theorem.
 
 All compiler repairs so far name existing terms explicitly; no theorem statement has been weakened. Local Lean compilation is unavailable in this workspace, so the repository's existing pinned CI build and transitive declaration audit are the validation authority. No workflow, validator, dependency pin, or ledger status has been changed.
 
 ## Dependencies
 
-The target is DIRECT_DECORATION_FINAL_ROOT_RELATION_NO_BIRTH, whose source-facing realization prerequisites remain open. Its specification is [PE-5](../../research/mlc_unified/canonical_kl_geometric_trace_proper_end_response.md#pe-5-final-root-relation-no-birth).
+The target is DIRECT_DECORATION_FINAL_ROOT_RELATION_NO_BIRTH, whose source-facing realization prerequisites remain open. Its specification is [PE-5](https://github.com/dovvnloading/loops-research-archive/blob/main/research/mlc_unified/canonical_kl_geometric_trace_proper_end_response.md#pe-5-final-root-relation-no-birth).
 
 The principal existing formal inputs are QuadraticEnlargementDegree, QuadraticComponentFiberDegree, QuadraticCylinderRamification, QuadraticLocalRamification, QuadraticRamificationCensus, and QuadraticInverseOpen. Mathlib supplies finite sums, compactness of finite path unions, and connectedness of finite-set complements.
 

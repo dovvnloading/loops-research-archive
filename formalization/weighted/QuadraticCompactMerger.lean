@@ -60,7 +60,7 @@ theorem finite_compact_connected_hull (S : Set ℂ) (hS : IsPathConnected S)
       · exact Or.inr haP
       · exact Or.inl (hFK hz)
     · intro z hz
-      exact hz.elim hKS hpS
+      exact hz.elim (fun hzK => hKS hzK) (fun hzP => hpS hzP)
 
 /-- Any prescribed regular target and inverse anchor admit a connected
 open target with compact closure in the postcritical-free region, whose
