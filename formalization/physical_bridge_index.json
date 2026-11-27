@@ -3266,5 +3266,33 @@
     "obligations": [
       "MAPPING_TELESCOPE"
     ]
+  },
+  "quadratic-merger-balance-20261126": {
+    "guide": "contributions/quadratic_merger_balance_20261126/NOTE.md#quadratic-merger-balance-20261126",
+    "theorems": {
+      "formalization/weighted/QuadraticMergerBalance.lean": [
+        "componentAnchor_mem",
+        "componentReflectionDebt_eq_of_mem",
+        "componentDebt_eq",
+        "mergerCensus_componentAnchor",
+        "postcriticalTargets_enlargement_partition",
+        "postcritical_defect_split",
+        "merger_balance",
+        "regular_target_exists",
+        "merger_balance_any_anchor",
+        "newCriticalCharge_eq_new_ramification"
+      ],
+      "formalization/weighted/QuadraticMergerNaturality.lean": [
+        "selected_mem_mergerCensus",
+        "mergerCensus_singleton_iff_cartesian",
+        "selected_debt_le_enlargement_charge",
+        "quadratic_enlargement_cartesian_iff_charge",
+        "quadratic_enlargement_all_traces_iff_charge",
+        "quadratic_enlargement_charge_iff_missing_point"
+      ]
+    },
+    "obligations": [
+      "DIRECT_DECORATION_FINAL_ROOT_RELATION_NO_BIRTH"
+    ]
   }
 }
