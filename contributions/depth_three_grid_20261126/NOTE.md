@@ -1,6 +1,6 @@
 ---
 ledger: NOV26_OPEN_26_TRIPLES
-result: partial
+result: closes
 ai: OpenAI ChatGPT, GPT-6 Astra Pro
 human_review: none
 ---
@@ -17,7 +17,7 @@ Ledger statement being addressed:
 
 The submitted Lean statements supply the missing 26 finite arithmetic packets, together with the archived `(3,3,3)` case as a regression, for every word in `{3,4,5}^3`. Each packet contains an isolated actual real collision-polynomial root, the two signed suffix itineraries, all three ancestor disk margins, phase separation and nesting, real connectors, terminal cut and fixed-point brackets, the separate terminal three-return margin, entire round-gate containment, and checked rational logarithm/Taylor/AGM envelope witnesses.
 
-**Draft validation status:** all four new core modules have compiled locally, including exhaustive coverage, pairwise chart separation, and all 27 geometry and rational width certificates. Their transitive dependency audit checked 575 declarations and accepted only the repository's permitted logical foundations. The core Lean and Python CI jobs have passed, and both the Mathlib real-root/trace module and the complete complex-remainder module have compiled in CI. The final grid synthesis is undergoing compilation and CI validation; this checkpoint does not yet request a ledger status change.
+**Validated closure:** all seven new Lean modules compile in the repository's existing CI workflows. At proof commit [`2fef8cd`](https://github.com/dovvnloading/loops-research-archive/commit/2fef8cd659b0a72863ac870f535a3a1a20c983f2), all 34 workflows passed, including [core research validation](https://github.com/dovvnloading/loops-research-archive/actions/runs/45930984725) and the [Mathlib build and transitive axiom audit](https://github.com/dovvnloading/loops-research-archive/actions/runs/45930985040). The root and weighted audits accept only `propext`, `Classical.choice`, and `Quot.sound`. The separate local audit of the four new core modules checked all 575 generated and explicit declarations. The exact verifier checks all 27 packets, all 16 adversarial controls pass, and both source generators reproduce the checked Lean sources byte for byte.
 
 The target is exactly the finite arithmetic omission named in `NOV26_OPEN_26_TRIPLES`. The physical and arbitrary-depth obligations are kept separate in the Boundary below.
 
@@ -111,7 +111,7 @@ The final closure theorem combines `RootCertificate`, `GeometryCertificate`, and
 
 ### 5. Formal declarations and reproduction
 
-The primary proposed closure statement is
+The primary compiled closure statement is
 
 `LoopsDepthThreeClosure.remaining_twenty_six_closed`.
 
@@ -145,7 +145,7 @@ No new axioms are declared. The repository's compiled dependency audit permits o
 
 ## Boundary
 
-The proposed status change is closure of **the finite arithmetic census** `NOV26_OPEN_26_TRIPLES`, after the final Lean and CI checks pass. The ledger itself is unchanged for maintainer review.
+This packet requests closure of **the finite arithmetic census** `NOV26_OPEN_26_TRIPLES`: the 26 missing packets are supplied and their complete finite certificate schema is proved in Lean. The ledger itself is unchanged; the maintainer records its status after review, as required by `AGENTS.md`.
 
 The result does not identify these signed charts with designated tuning copies by a new formal straightening theorem. It does not formalize the subsequent Rouché/topological degree-two construction, KKL prime-end marking, extremal-length/logarithm/cosine/AGM interpretation, or the elliptic full-slit width formula as a physical KKL theorem. The original packet explicitly lists those external identifications separately from its finite arithmetic certificate; this extension preserves that distinction.
 
