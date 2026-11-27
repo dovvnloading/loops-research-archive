@@ -45,7 +45,8 @@ def heading_slug(title: str) -> str:
 def check() -> None:
     text = README.read_text(encoding="utf-8")
     assert "# A Marked-Width Reduction of Mandelbrot Local Connectivity" in text
-    assert "MLC remains open" in text
+    # The status callout under the title is the one place the README states this.
+    assert "conjecture (MLC) remains open" in text
     assert "Paper 2's hypothesis H3" in text or "Paper 2's H3" in text
     assert EXPECTED_SOURCE_LOCK in text
 

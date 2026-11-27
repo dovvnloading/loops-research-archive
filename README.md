@@ -817,5 +817,5 @@ The November 2026 code and audit notes disclose OpenAI GPT-6 assistance separate
 ---
 
 <div align="center">
-<sub>Independent research archive · math.DS · manuscripts/ledger source-locked 2026-07-27 · overview 2026-11-16 · MLC remains open</sub>
+<sub>Independent research archive · math.DS · manuscripts/ledger source-locked 2026-07-27 · overview 2026-11-16</sub>
 </div>
