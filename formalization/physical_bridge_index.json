@@ -3838,6 +3838,33 @@
         "finite_anchor_relations_stabilize",
         "finite_family_anchor_relations_stabilize",
         "finite_subset_component_captured"
+      ],
+      "formalization/weighted/QuadraticEnlargementStabilization.lean": [
+        "quadratic_finite_horizon_anchor_stabilization",
+        "quadratic_finite_horizon_component_stabilization",
+        "quadratic_finite_horizon_tail_naturality",
+        "quadratic_finite_horizon_prefix_naturality",
+        "quadratic_finite_horizon_fiber_and_rank_stabilization"
+      ],
+      "formalization/weighted/QuadraticStableReflection.lean": [
+        "quadratic_component_reflection_iff_neg_mem",
+        "quadratic_enlargement_reflection_iff_of_no_merger",
+        "quadratic_stable_reflection_rank"
+      ],
+      "formalization/weighted/QuadraticDelayedMerger.lean": [
+        "rightHalfPlane_open",
+        "rightHalfPlane_connected",
+        "negative_one_not_in_positive_component",
+        "rightHalfPlane_selected_fiber",
+        "wholePlane_component",
+        "wholePlane_selected_fiber",
+        "delayedTarget_monotone",
+        "delayedTarget_open_connected",
+        "one_mem_delayedTarget",
+        "delayedTarget_union",
+        "delayed_merger_exact",
+        "delayed_fiber_count",
+        "no_uniform_two_point_stabilization_stage"
       ]
     },
     "obligations": [
