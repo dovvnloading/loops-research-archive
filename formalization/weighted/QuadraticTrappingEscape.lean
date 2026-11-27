@@ -76,7 +76,9 @@ theorem escape_zero_of_bounded_return_subsequence (d z : ℂ)
   have hkC : C < (k : ℝ) * QuadraticEscape.escape d z :=
     (div_lt_iff₀ he).mp hk
   have hi : k ≤ p*k := by
-    simpa only [one_mul] using Nat.mul_le_mul_right k (Nat.succ_le_of_lt hp)
+    calc
+      k = 1*k := (Nat.one_mul k).symm
+      _ ≤ p*k := Nat.mul_le_mul_right k (by omega)
   have hi' : (k : ℝ) ≤ ((p*k : ℕ) : ℝ) := by exact_mod_cast hi
   have hg := natCast_add_one_le_two_pow (p*k)
   have hkpow : (k : ℝ) ≤ (2 : ℝ)^(p*k) := by linarith only [hi', hg]
