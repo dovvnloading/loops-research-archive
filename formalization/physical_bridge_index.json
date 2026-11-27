@@ -3551,6 +3551,18 @@
         "back_parameter_lipschitz",
         "chebyshev_deficit_barrier",
         "chebyshev_deficit_upper"
+      ],
+      "formalization/weighted/QuadraticCrestDividedDifference.lean": [
+        "iterate_difference",
+        "evenSecant_error",
+        "normalized_difference",
+        "normalizedSecant_error",
+        "normalizedSecant_error_small",
+        "normalized_remainder_difference",
+        "normalizedSecant_norm_bounds",
+        "normalized_return_collision_iff",
+        "normalized_return_norm_sub_le",
+        "normalized_return_coercive"
       ]
     },
     "obligations": []

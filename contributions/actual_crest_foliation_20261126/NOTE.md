@@ -40,6 +40,32 @@ lean-check NearTwoInverse.lean
 The source SHA-256 at this checkpoint is
 `288f279c6a091d9a8b8dbdb654a04c5d95347ac43ee76fe6a57f2fd0fd4bffcd`.
 
+### Locally verified checkpoint: all complex two-point differences
+
+`QuadraticCrestDividedDifference.lean` adds ten public theorems and
+compiles locally without warnings. Write d=f_c^p(0), let a be the
+quadratic coefficient of f_c^p, and set H(z)=f_c^p(dz)/d. For p>=13,
+c in [-2,0], and 0<d<=12*4^(-p), the exact even divided difference D
+satisfies, for every z,w in |z|,|w|<=23/20,
+
+    H(z)-H(w) = (z^2-w^2) D(z,w),
+    |D(z,w)-a*d| <= 36*4^(-p).
+
+When -a*d lies in [1.7903,1.7904], this proves all of the following
+for the actual polynomial return on the whole disk:
+
+1. H(z)=H(w) if and only if z=w or z=-w.
+2. |H(z)-H(w)|<=5|z-w|.
+3. If Re(z),Re(w)<=-5/8, then |z-w|<=|H(z)-H(w)|.
+
+The third estimate gives injectivity with a controlled inverse on the
+entire negative half disk containing the parent crest circles. These
+are two-point conclusions; the previous C0 remainder estimate alone
+did not prove them. The proof uses a polynomial recurrence for the
+complete divided difference and retains every higher-degree term.
+The stated real parameter and coefficient hypotheses remain explicit
+until the parameter-selection module is completed.
+
 ### Development target
 
 The starting point is `LimitingCrestQuadraticReturn.lean`, merged in PR

@@ -123,6 +123,7 @@ formalization/weighted/QuadraticCenterParameterLocus.lean	METADATA
 formalization/weighted/QuadraticCenterTrapping.lean	METADATA
 formalization/weighted/QuadraticComponentConjugacy.lean	METADATA
 formalization/weighted/QuadraticComponentDynamics.lean	METADATA
+formalization/weighted/QuadraticCrestDividedDifference.lean	METADATA
 formalization/weighted/QuadraticCriticalFiberCensus.lean	METADATA
 formalization/weighted/QuadraticCriticalTransversality.lean	CRITICAL-TRANSVERSALITY
 formalization/weighted/PhaseMemoryCardinality.lean	CLOCK ENDS
