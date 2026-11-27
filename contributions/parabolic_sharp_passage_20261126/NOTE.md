@@ -16,7 +16,7 @@ Ledger statement being addressed:
 ## Claim
 
 The new proof source establishes the sharp coefficient left undetermined in
-[the archive's actual near-parabolic family](../../research/native_wave_transfer/near_parabolic_tip_family.md).
+[the archive's actual near-parabolic family](../../research/native_wave_transfer/near_parabolic_tip_family.md#verification-and-scope).
 Compilation of the complete chain is pending; the validation record below will
 be replaced by the observed CI result before this draft is marked ready.
 
@@ -102,7 +102,8 @@ For \(w_j=H_t^j(0)\), the existing coarse inequalities imply
  \le10t+20(w_j-a)^2.
 \]
 
-The new proof constructs the first crossing indices \(l<m\) of
+For \(0<\delta\le1/1000\) and \(0<t\le\delta^2\), the new proof
+constructs the first crossing indices \(l<m\) of
 \(a-\delta\) and \(a+\delta\). Monotonicity of the actual \(H_t\), evaluated
 at the fixed walls, gives
 
@@ -128,8 +129,8 @@ budget
 Put \(s=\sqrt{(A/B)t}\). The exact coefficient product proves
 \(Bs=7\sqrt t\). For the angular coordinate
 \(\theta(x)=\arctan(x/s)\), the mean-value theorem and a quadratic-denominator
-variation bound show that a central step with drift error at most
-\(\varepsilon\) satisfies
+variation bound show that a central step whose relative drift error and
+angular-denominator variation are both at most \(\varepsilon\) satisfies
 
 \[
  \left|\theta(w_{j+1}-a)-\theta(w_j-a)-Bs\right|
@@ -179,11 +180,13 @@ The ordinary \(p_j^2\) normalization follows from
 
 ### Validation record
 
-The first supporting-module build at commit
-164d2a142a17be854b5aba9f676632e6aeedf5a2 accepted
-*ParabolicPassageFlight* and rejected syntax/simplification details in three
-other supporting modules. Those proof scripts were corrected; the complete
-eight-module chain is now being submitted to the unchanged repository CI.
+[The full build at proof commit 655066aa53324968b572f4cd1bd8bb3bc5cf1590](https://github.com/dovvnloading/loops-research-archive/actions/runs/45935169388)
+accepted ParabolicPassageCoefficients, ParabolicPassageAngle,
+ParabolicPassageFlight, ParabolicPassageCuts, and ParabolicPassageLimit.
+It found two successor-iterate rewrites in ParabolicPassageEstimate whose
+terms had already been unfolded. This commit corrects those proof steps.
+The assembled estimate, uniform-radius theorem, and final shooting-family
+specialization await the next unchanged repository CI run.
 
 Local Lean is unavailable and the workspace disk is full. Repository CI is
 the compiler and kernel-audit authority. No result is being counted merely
@@ -194,7 +197,7 @@ Reproduction from the repository root:
 ~~~sh
 cd formalization/weighted
 lake exe cache get
-lake build ParabolicSharpPassage
+lake build
 cd ../..
 python3 -B code/verify_lean_coverage.py --audit weighted
 ~~~

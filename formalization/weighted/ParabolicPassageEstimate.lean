@@ -64,7 +64,7 @@ theorem passage_quantitative_estimate {a ε η δ t : ℝ} {k : ℕ}
   have hstep : ∀ j < k, (w j - a) ^ 2 ≤ w (j + 1) - w j := by
     intro j hj
     have hh := (channel_quadratic_step htw (stay j hj.le) ha root).1
-    dsimp [w]
+    change ((H t)^[j] 0 - a) ^ 2 ≤ (H t)^[j + 1] 0 - (H t)^[j] 0
     rw [Function.iterate_succ_apply']
     linarith
   have hrem : ((k - (m - l) : ℕ) : ℝ) ≤ cap / δ ^ 2 := by
@@ -86,7 +86,7 @@ theorem passage_quantitative_estimate {a ε η δ t : ℝ} {k : ℕ}
     obtain ⟨hx, hy⟩ := hcentral j hjm.1 hjm.2
     have hxy : w j - a < w (j + 1) - a := by
       have hd := channel_drift htw (stay j (by omega))
-      dsimp [w]
+      change (H t)^[j] 0 - a < (H t)^[j + 1] 0 - a
       rw [Function.iterate_succ_apply']
       linarith
     have hr := hrelative (w j - a) hx
