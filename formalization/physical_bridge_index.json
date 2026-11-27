@@ -3641,5 +3641,24 @@
       ]
     },
     "obligations": []
+  },
+  "kl-overlap-saturation-20261127": {
+    "guide": "contributions/kl_overlap_saturation_20261127/NOTE.md#kl-overlap-saturation-20261127",
+    "theorems": {
+      "formalization/weighted/KLTileSaturation.lean": [
+        "tile_inter_seam",
+        "seam_midpoint",
+        "full_saturation_iff",
+        "full_angular_collar_saturation_iff",
+        "saturation_defect_exact",
+        "retained_saturation_iff",
+        "direct_branch_angular_defect",
+        "direct_branch_defect_in_every_collar",
+        "direct_branch_radial_defect"
+      ]
+    },
+    "obligations": [
+      "DIRECT_DECORATION_TILE_CENTRAL_OVERLAP_REFLECTION"
+    ]
   }
 }

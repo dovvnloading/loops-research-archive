@@ -5,13 +5,17 @@ ai: OpenAI ChatGPT, GPT-6 Astra Pro
 human_review: none
 ---
 
+<a id="kl-overlap-saturation-20261127"></a>
+
 # Full central-overlap saturation in ordinary KL logarithmic tiles
 
 ## Claim
 
-Work in progress. The target is a Lean 4 classification of the full central-overlap saturation equation for the ordinary KL side atlas, including explicit defects outside the source central seam and a precise retained-collar criterion. No theorem or ledger closure is claimed at this checkpoint.
+First locally compiled checkpoint: nine public Lean theorems classify the full central-overlap equation in logarithmic coordinates, identify its exact angular and height defects, and prove that both direct branches have a defect in every positive-height full-angular collar. The actual-quadratic bridge is in progress; no ledger closure is claimed.
 
 ## Evidence
+
+The registered module `formalization/weighted/KLTileSaturation.lean` compiled locally with Lean 4.32.0. Its main theorems are `full_saturation_iff`, `full_angular_collar_saturation_iff`, `saturation_defect_exact`, `retained_saturation_iff`, and `direct_branch_defect_in_every_collar`. For a source angular interval `(a,b)`, source puzzle height `h`, source carrier height `H`, and target interval/height `(A,B,t)`, the full equality holds precisely when `a=A`, `b=B`, and `h=min(H,t)`, under the explicit nonempty nested-seam hypotheses. The exact removed locus is the target seam inside the source tile where angle is at most `a`, angle is at least `b`, or height is at least `h`.
 
 The initial source comparison found that the ordinary side atlas distinguishes puzzle height from the larger carrier height. We will test the resulting height and angular saturation defects against the actual inclusion lift, register all Lean theorems in the repository project, and require the CI build and transitive proof audit before reporting a proved result.
 
