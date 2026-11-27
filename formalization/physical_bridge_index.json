@@ -3276,6 +3276,38 @@
         "quadratic_denominator_variation",
         "angle_step_bounds",
         "angle_step_error"
+      ],
+      "formalization/weighted/ParabolicPassageCoefficients.lean": [
+        "passage_root",
+        "passageA_ge_one",
+        "passageB_ge_one",
+        "passage_coefficients_mul",
+        "passageB_le_49",
+        "passage_uniform_remainder",
+        "passage_uniform_relative",
+        "passage_scale_sq",
+        "passage_scale_pos",
+        "passage_scale_quadratic",
+        "passage_scale_mul"
+      ],
+      "formalization/weighted/ParabolicPassageFlight.lean": [
+        "passage_sum_drift",
+        "passage_sum_drift_Ico",
+        "passage_outer_time_budget",
+        "passage_outer_time_bound",
+        "passage_complement_time_budget",
+        "passage_missing_time_budget",
+        "passage_angle_sandwich",
+        "passage_angle_error",
+        "passage_first_hit",
+        "passage_mono_upto",
+        "channel_outer_time_bound",
+        "channel_lower_wall_step",
+        "channel_central_step_upper"
+      ],
+      "formalization/weighted/ParabolicPassageCuts.lean": [
+        "passage_orbit_monotone",
+        "passage_cut_indices"
       ]
     },
     "obligations": [
