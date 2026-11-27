@@ -3700,6 +3700,39 @@
         "quarter_physical_overlap_defect",
         "arbitrarily_thin_physical_overlap_defect",
         "critical_second_iterate_exits_parent"
+      ],
+      "formalization/weighted/LogarithmicTileGeometry.lean": [
+        "joukowski_exp_analytic",
+        "joukowski_exp_continuous",
+        "joukowski_exp_isOpenMap",
+        "joukowski_exp_image_open",
+        "joukowski_exp_open_embedding",
+        "joukowski_exp_compact_embedding"
+      ],
+      "formalization/weighted/ChebyshevPuzzleGeometry.lean": [
+        "point_pair_continuous",
+        "point_pair_isOpenMap",
+        "puzzle_eq_rectangle_image",
+        "puzzle_isOpen",
+        "closedPuzzle_isCompact",
+        "closure_puzzle_subset",
+        "puzzle_closure_eq_closedPuzzle",
+        "signed_rectangle_open_embedding",
+        "puzzle_isSimplyConnected",
+        "closed_rectangle_embedding",
+        "quarter_outside_branch_closures"
+      ],
+      "formalization/weighted/ChebyshevTileSaturation.lean": [
+        "logCoord_re",
+        "logCoord_im",
+        "logCoord_injective",
+        "logCoord_mem_logSeam",
+        "logCoord_physical",
+        "based_lift_collar_defect",
+        "based_lift_collar_reflection_fails",
+        "ordinary_inclusion_counterexample",
+        "ordinary_inclusion_is_based_lift",
+        "based_lift_closed_piece_reflection_fails"
       ]
     },
     "obligations": [

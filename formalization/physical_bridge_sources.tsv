@@ -55,7 +55,9 @@ formalization/weighted/AttachmentDefectLedger.lean	DEFECT
 formalization/weighted/BinaryShiftExactness.lean	METADATA
 formalization/weighted/BinaryShiftPeriodic.lean	METADATA
 formalization/weighted/ChebyshevDecoration.lean	METADATA
+formalization/weighted/ChebyshevPuzzleGeometry.lean	METADATA
 formalization/weighted/ChebyshevQuotientRigidity.lean	METADATA
+formalization/weighted/ChebyshevTileSaturation.lean	METADATA
 formalization/weighted/CloneBounds.lean	CLONE EDGE
 formalization/weighted/ClonePolynomialRoots.lean	CLONE EDGE
 formalization/weighted/CloneRoot.lean	CLONE EDGE
@@ -94,6 +96,7 @@ formalization/weighted/LimitingCrestPerturbation.lean	METADATA
 formalization/weighted/LimitingCrestQuadraticReturn.lean	METADATA
 formalization/weighted/LimitingCrestSharpCoefficient.lean	METADATA
 formalization/weighted/LocalizationSheetKernel.lean	COVER-FIBER SHEETS CONNECTOR
+formalization/weighted/LogarithmicTileGeometry.lean	METADATA
 formalization/weighted/LogarithmicTileLift.lean	METADATA
 formalization/weighted/MarkedWaveSuprema.lean	GAIN
 formalization/weighted/NativeWaveGate.lean	CUTS CREST
