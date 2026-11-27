@@ -3238,6 +3238,10 @@
         "inverseBranch_reached_component",
         "inverseBranch_commuting_lift",
         "inverseComponent_commuting_image"
+      ],
+      "formalization/weighted/QuadraticParameterAtlas.lean": [
+        "inverseFiber_no_critical_visits",
+        "quadratic_parameter_inverse_atlas"
       ]
     },
     "obligations": [

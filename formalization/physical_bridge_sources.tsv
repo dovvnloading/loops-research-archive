@@ -114,6 +114,7 @@ formalization/weighted/QuadraticInverseBranches.lean	CONSTRUCT
 formalization/weighted/QuadraticInverseOpen.lean	CONSTRUCT
 formalization/weighted/QuadraticInverseTransport.lean	CONSTRUCT
 formalization/weighted/QuadraticMultiplierArithmetic.lean	METADATA
+formalization/weighted/QuadraticParameterAtlas.lean	CONSTRUCT
 formalization/weighted/QuadraticParameterDistortion.lean	CONSTRUCT
 formalization/weighted/QuadraticParameterInverse.lean	CONSTRUCT
 formalization/weighted/QuadraticParameterMotion.lean	CONSTRUCT

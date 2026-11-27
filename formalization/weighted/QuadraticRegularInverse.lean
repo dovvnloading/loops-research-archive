@@ -87,7 +87,7 @@ private theorem inverseBranch_spec (c : ℂ) (n : ℕ) (V : Set ℂ)
   have hd := (hgD y hy).1
   rw [heq hy] at hd
   have hevent : inverseBranch c n V a =ᶠ[𝓝 y] g :=
-    (hVo.mem_nhds hy).mono (fun _ hz => (heq hz).symm)
+    Filter.Eventually.mono (hVo.mem_nhds hy) (fun _ hz => (heq hz).symm)
   have hd' := hd.congr_of_eventuallyEq hevent
   have hn : deriv (orbit c n) (inverseBranch c n V a y) ≠ 0 :=
     (orbit_deriv_ne_zero_iff c _ n).mpr
