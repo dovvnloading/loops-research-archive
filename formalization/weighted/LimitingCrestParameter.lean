@@ -42,7 +42,11 @@ theorem criticalOrbit_hasDerivAt (n : ℕ) (k : ℝ) :
   | zero => simpa [criticalOrbit, criticalSlope] using (hasDerivAt_const k (0 : ℝ))
   | succ n ih =>
       have h := (hasDerivAt_const k (1 : ℝ)).sub ((hasDerivAt_id k).mul (ih.pow 2))
-      convert h using 1 <;> (try simp [criticalOrbit, criticalSlope, Q]) <;> ring
+      change HasDerivAt ((fun _ : ℝ => 1) - id * (fun t : ℝ => criticalOrbit t n)^2)
+        (criticalSlope k (n+1)) k
+      apply h.congr_deriv
+      simp only [criticalSlope, Nat.cast_ofNat, Nat.reduceSub, pow_one, id_eq]
+      ring
 
 theorem relation_hasDerivAt (k : ℝ) :
     HasDerivAt relation (criticalSlope k 6 + criticalSlope k 3) k := by

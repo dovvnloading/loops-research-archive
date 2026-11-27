@@ -74,9 +74,12 @@ formalization/weighted/LimitingCrestArcGates.lean	METADATA
 formalization/weighted/LimitingCrestCoefficient.lean	METADATA
 formalization/weighted/LimitingCrestEndpoint.lean	METADATA
 formalization/weighted/LimitingCrestGeometry.lean	METADATA
+formalization/weighted/LimitingCrestLimit.lean	METADATA
+formalization/weighted/LimitingCrestModelGates.lean	METADATA
 formalization/weighted/LimitingCrestParameter.lean	METADATA
 formalization/weighted/LimitingCrestPersistence.lean	METADATA
 formalization/weighted/LimitingCrestPerturbation.lean	METADATA
+formalization/weighted/LimitingCrestQuadraticReturn.lean	METADATA
 formalization/weighted/LocalizationSheetKernel.lean	COVER-FIBER SHEETS CONNECTOR
 formalization/weighted/MarkedWaveSuprema.lean	GAIN
 formalization/weighted/NativeWaveGate.lean	CUTS CREST

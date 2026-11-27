@@ -42,6 +42,24 @@ with 663/10000 < r < 133/2000. It proves strict decrease of the actual third
 image, identifies the two sides of this endpoint, and supplies the complex
 circle realization. This is a unique endpoint of this model branch.
 
+The full source-model integral is defined with that endpoint:
+
+    C_model(k,r) = (2 pi / log 2) integral_[1/16,r] 1/(s arccos u_k(s)) ds.
+
+The angle stays nondegenerate throughout [1/16,1/8]. Thus this full integral
+is well-defined, contains the selected subintegral, and is greater than 1/4.
+The normalization is for one selected descendant, exactly as in the source;
+the upper and lower descendants are not added together here.
+
+For the whole radial range [1/16,133/2000], the arc-gate module verifies
+all real endpoint itinerary tests, contains every initial-disk image through
+step four in |z| < 23/20, and separates the second and third supports into
+opposite half-planes. It proves injectivity of the full fourth iterate on
+the part of that initial disk whose first image has positive real part.
+The model-gate module proves crossing uniqueness on the full upper
+semicircle and the strict fourth-image target gate between the second and
+fifth critical-orbit cuts.
+
 The persistence module proves an explicit open neighborhood of the interior
 crossing and source gate: if H is continuous, maps both coordinate axes into
 the real axis, and |H-Q_k| <= 2*10^-6 on |z| <= 23/20, then every s in S has a
@@ -72,6 +90,8 @@ The new Lean modules are in formalization/weighted/:
 - LimitingCrestEndpoint.lean: unique model endpoint and exact circle realization.
 - LimitingCrestArcGates.lean: endpoint itineraries, whole-support disk bounds,
   half-plane separation, and injectivity for the limiting quadratic.
+- LimitingCrestModelGates.lean: full semicircle uniqueness and target cut gate.
+- LimitingCrestLimit.lean: positive full model integral at the unique endpoint.
 - LimitingCrestPerturbation.lean: disk Lipschitz bound and critical-orbit error.
 - LimitingCrestPersistence.lean: existence and terminal gate under perturbation.
 
@@ -88,8 +108,10 @@ cache; the repository's unmodified CI is the compiler and kernel authority.
 The source checkout is sparse for the same disk constraint; the local packet
 and proof-escape checks pass, while the whole-repository source-index check
 must run against CI's complete checkout.
-The first CI run exposed elaboration errors, which are being corrected in
-the draft PR. No successful build is asserted at this stage.
+The second CI run compiled LimitingCrestPerturbation, but two base-module
+elaboration errors still blocked the other new modules. Those failures are
+being corrected in the draft PR. No complete successful build is asserted
+at this stage.
 
 ## Dependencies
 

@@ -5,7 +5,8 @@ import LimitingCrestParameter
 # Complete real endpoint gates and complex support bounds for the model
 
 The inequalities are the normalized analytic predicates of `other_gates`
-and `whole_disk_four` in the archived crest verifier. They concern the
+and `whole_disk_four` in
+`research/independent_audits/crest_transport_asymptotics_20261116/verify.py`. They concern the
 polynomial `1-κ*z^2`. No KKL access or proper-path interpretation is made.
 -/
 
@@ -24,9 +25,32 @@ theorem realOrbit_eq_iterate (κ x : ℝ) (n : ℕ) :
   | zero => rfl
   | succ n ih => simp only [realOrbit, Function.iterate_succ_apply', ih]
 
+/-- Multiplication by -κ conjugates the normalized model to z²-κ. -/
+theorem monic_conjugacy (κ x : ℝ) :
+    (-κ*x)^2-κ = -κ*realMap κ x := by dsimp [realMap]; ring
+
+theorem monic_iterate_conjugacy (κ : ℝ) (n : ℕ) :
+    (fun x : ℝ => x^2-κ)^[n] 0 = -κ*criticalOrbit κ n := by
+  induction n with
+  | zero => simp [criticalOrbit]
+  | succ n ih =>
+      rw [Function.iterate_succ_apply',ih]
+      exact monic_conjugacy κ (criticalOrbit κ n)
+
+/-- The near-1.79 relation is the renormalized period-three tip relation
+under τ=-κ. It is not the physical period-three parameter. -/
+theorem monic_relation_equivalence {κ : ℝ} (hk : κ ≠ 0) :
+    relation κ = 0 ↔
+      (fun x : ℝ => x^2-κ)^[6] 0 + (fun x : ℝ => x^2-κ)^[3] 0 = 0 := by
+  rw [monic_iterate_conjugacy,monic_iterate_conjugacy]
+  have he : -κ*criticalOrbit κ 6 + -κ*criticalOrbit κ 3 = -κ*relation κ := by
+    dsimp [relation]; ring
+  rw [he,mul_eq_zero]
+  simp only [neg_eq_zero, hk, false_or]
+
 def qEndpoint (s : ℝ) := -(3/4 : ℝ)+s
 def wEndpoint (s : ℝ) := -(3/4 : ℝ)-s
-def initialDisk : Set ℂ := {z | ‖z+(3/4 : ℂ)‖ ≤ (33/500 : ℝ)}
+def initialDisk : Set ℂ := {z | ‖z+(3/4 : ℂ)‖ ≤ (133/2000 : ℝ)}
 
 private theorem step_sq {κ x a b l u : ℝ}
     (hk : κ ∈ Icc (17903/10000) (17904/10000))
@@ -60,38 +84,38 @@ private theorem step_neg {κ x a b l u : ℝ}
   exact step_sq hk hs (sq_nonneg b) hl hu
 
 structure EndpointBounds (κ s : ℝ) : Prop where
-  q1 : realOrbit κ (qEndpoint s) 1 ∈ Icc (154986/1000000) (162398/1000000)
-  q2 : realOrbit κ (qEndpoint s) 2 ∈ Icc (952781/1000000) (956996/1000000)
-  q3 : realOrbit κ (qEndpoint s) 3 ∈ Icc (-639723/1000000) (-625219/1000000)
-  q4 : realOrbit κ (qEndpoint s) 4 ∈ Icc (267286/1000000) (300174/1000000)
-  w1 : realOrbit κ (wEndpoint s) 1 ∈ Icc (-192149/1000000) (-183332/1000000)
-  w2 : realOrbit κ (wEndpoint s) 2 ∈ Icc (933896/1000000) (939827/1000000)
-  w3 : realOrbit κ (wEndpoint s) 3 ∈ Icc (-581416/1000000) (-561431/1000000)
-  w4 : realOrbit κ (wEndpoint s) 4 ∈ Icc (394765/1000000) (435689/1000000)
+  q1 : realOrbit κ (qEndpoint s) 1 ∈ Icc (153756/1000000) (163622/1000000)
+  q2 : realOrbit κ (qEndpoint s) 2 ∈ Icc (952067/1000000) (957676/1000000)
+  q3 : realOrbit κ (qEndpoint s) 3 ∈ Icc (-642054/1000000) (-622784/1000000)
+  q4 : realOrbit κ (qEndpoint s) 4 ∈ Icc (261937/1000000) (305615/1000000)
+  w1 : realOrbit κ (wEndpoint s) 1 ∈ Icc (-193610/1000000) (-181877/1000000)
+  w2 : realOrbit κ (wEndpoint s) 2 ∈ Icc (932887/1000000) (940779/1000000)
+  w3 : realOrbit κ (wEndpoint s) 3 ∈ Icc (-584621/1000000) (-558058/1000000)
+  w4 : realOrbit κ (wEndpoint s) 4 ∈ Icc (388074/1000000) (442450/1000000)
 
 set_option maxHeartbeats 800000 in
 theorem endpoint_orbit_bounds {κ s : ℝ}
     (hk : κ ∈ Icc (17903/10000) (17904/10000))
-    (hs : s ∈ Icc (63/1000) (33/500)) : EndpointBounds κ s := by
-  have q0 : qEndpoint s ∈ Icc (-687/1000) (-684/1000) := by
+    (hs : s ∈ Icc (1/16) (133/2000)) : EndpointBounds κ s := by
+  have q0 : qEndpoint s ∈ Icc (-6875/10000) (-6835/10000) := by
     dsimp [qEndpoint]; constructor <;> linarith [hs.1,hs.2]
-  have w0 : wEndpoint s ∈ Icc (-816/1000) (-813/1000) := by
+  have w0 : wEndpoint s ∈ Icc (-8165/10000) (-8125/10000) := by
     dsimp [wEndpoint]; constructor <;> linarith [hs.1,hs.2]
-  have q1 : realOrbit κ (qEndpoint s) 1 ∈ Icc (154986/1000000) (162398/1000000) :=
+  have q1 : realOrbit κ (qEndpoint s) 1 ∈ Icc (153756/1000000) (163622/1000000) :=
     step_neg hk q0 (by norm_num) (by norm_num) (by norm_num)
-  have q2 : realOrbit κ (qEndpoint s) 2 ∈ Icc (952781/1000000) (956996/1000000) :=
+  have q2 : realOrbit κ (qEndpoint s) 2 ∈ Icc (952067/1000000) (957676/1000000) :=
     step_pos hk q1 (by norm_num) (by norm_num) (by norm_num)
-  have q3 : realOrbit κ (qEndpoint s) 3 ∈ Icc (-639723/1000000) (-625219/1000000) :=
+  have q3 : realOrbit κ (qEndpoint s) 3 ∈ Icc (-642054/1000000) (-622784/1000000) :=
     step_pos hk q2 (by norm_num) (by norm_num) (by norm_num)
-  have q4 : realOrbit κ (qEndpoint s) 4 ∈ Icc (267286/1000000) (300174/1000000) :=
+  have q4 : realOrbit κ (qEndpoint s) 4 ∈ Icc (261937/1000000) (305615/1000000) :=
     step_neg hk q3 (by norm_num) (by norm_num) (by norm_num)
-  have w1 : realOrbit κ (wEndpoint s) 1 ∈ Icc (-192149/1000000) (-183332/1000000) :=
+  have w1 : realOrbit κ (wEndpoint s) 1 ∈ Icc (-193610/1000000) (-181877/1000000) :=
     step_neg hk w0 (by norm_num) (by norm_num) (by norm_num)
-  have w2 : realOrbit κ (wEndpoint s) 2 ∈ Icc (933896/1000000) (939827/1000000) :=
+  have w2 : realOrbit κ (wEndpoint s) 2 ∈ Icc (932887/1000000) (940779/1000000) :=
     step_neg hk w1 (by norm_num) (by norm_num) (by norm_num)
-  have w3 : realOrbit κ (wEndpoint s) 3 ∈ Icc (-581416/1000000) (-561431/1000000) :=
+  have w3 : realOrbit κ (wEndpoint s) 3 ∈ Icc (-584621/1000000) (-558058/1000000) :=
     step_pos hk w2 (by norm_num) (by norm_num) (by norm_num)
-  have w4 : realOrbit κ (wEndpoint s) 4 ∈ Icc (394765/1000000) (435689/1000000) :=
+  have w4 : realOrbit κ (wEndpoint s) 4 ∈ Icc (388074/1000000) (442450/1000000) :=
     step_neg hk w3 (by norm_num) (by norm_num) (by norm_num)
   exact ⟨q1,q2,q3,q4,w1,w2,w3,w4⟩
 
@@ -149,7 +173,7 @@ def EndpointGates (κ s α : ℝ) : Prop :=
 
 theorem complete_endpoint_gates {κ s α : ℝ}
     (hk : κ ∈ parameterInterval) (hz : relation κ = 0)
-    (hs : s ∈ Icc (63/1000) (33/500))
+    (hs : s ∈ Icc (1/16) (133/2000))
     (hα : 0 < α) (hfix : realMap κ α = α) : EndpointGates κ s α := by
   have e := endpoint_orbit_bounds hk hs
   have a := positive_fixed_point_bracket hk hα hfix
@@ -207,6 +231,15 @@ private theorem center_bounds {κ : ℝ}
     step_neg hk h3 (by norm_num) (by norm_num) (by norm_num)
   exact ⟨h1,h2,h3,h4⟩
 
+/-- All three intermediate disk centers retain the real central selector. -/
+theorem central_selector_bounds {κ : ℝ}
+    (hk : κ ∈ Icc (17903/10000) (17904/10000))
+    {n : ℕ} (hn : n ∈ Icc 1 3) :
+    realOrbit κ (-3/4) n ∈ Ioo (-1) 1 := by
+  obtain ⟨c1,c2,c3,_⟩ := center_bounds hk
+  rcases hn with ⟨hnl,hnu⟩
+  interval_cases n <;> constructor <;> linarith [c1.1,c1.2,c2.1,c2.2,c3.1,c3.2]
+
 private theorem disk_consequences {z : ℂ} {a r A : ℝ}
     (hz : ‖z-(a:ℂ)‖ ≤ r) (ha : |a| ≤ A) :
     ‖z‖ ≤ r+A ∧ a-r ≤ z.re ∧ z.re ≤ a+r := by
@@ -235,15 +268,15 @@ theorem whole_support_bounds {κ : ℝ}
   have a2 : |realOrbit κ (-3/4) 2| ≤ 1 := by rw [abs_le]; constructor <;> linarith [c2.1,c2.2]
   have a3 : |realOrbit κ (-3/4) 3| ≤ 791/1000 := by rw [abs_le]; constructor <;> linarith [c3.1,c3.2]
   have a4 : |realOrbit κ (-3/4) 4| ≤ 119/1000 := by rw [abs_le]; constructor <;> linarith [c4.1,c4.2]
-  have d0 : ‖z-((-3/4 : ℝ):ℂ)‖ ≤ (33/500 : ℝ) := by simpa [initialDisk] using hz
-  have d1 : ‖(complexMap κ)^[1] z-(realOrbit κ (-3/4) 1 : ℂ)‖ ≤ (186/1000 : ℝ) := by
+  have d0 : ‖z-((-3/4 : ℝ):ℂ)‖ ≤ (133/2000 : ℝ) := by simpa [initialDisk] using hz
+  have d1 : ‖(complexMap κ)^[1] z-(realOrbit κ (-3/4) 1 : ℂ)‖ ≤ (187/1000 : ℝ) := by
     have h := disk_step hk0 (by norm_num) a0 d0
-    have hK := mul_le_mul_of_nonneg_right hk.2 (by norm_num : (0 : ℝ) ≤ (33/500)*((33/500)+2*(3/4)))
+    have hK := mul_le_mul_of_nonneg_right hk.2 (by norm_num : (0 : ℝ) ≤ (133/2000)*((133/2000)+2*(3/4)))
     change ‖complexMap κ z-(realMap κ (-3/4):ℂ)‖ ≤ _
     nlinarith only [h,hK]
   have d2 : ‖(complexMap κ)^[2] z-(realOrbit κ (-3/4) 2 : ℂ)‖ ≤ (68/1000 : ℝ) := by
     have h := disk_step hk0 (by norm_num) a1 d1
-    have hK := mul_le_mul_of_nonneg_right hk.2 (by norm_num : (0 : ℝ) ≤ (186/1000)*((186/1000)+2*(71/10000)))
+    have hK := mul_le_mul_of_nonneg_right hk.2 (by norm_num : (0 : ℝ) ≤ (187/1000)*((187/1000)+2*(71/10000)))
     change ‖complexMap κ ((complexMap κ)^[1] z)-(realMap κ (realOrbit κ (-3/4) 1):ℂ)‖ ≤ _
     nlinarith only [h,hK]
   have d3 : ‖(complexMap κ)^[3] z-(realOrbit κ (-3/4) 3 : ℂ)‖ ≤ (252/1000 : ℝ) := by
@@ -313,7 +346,7 @@ theorem complete_support_injectivity {κ : ℝ}
   have hi := complexMap_injOn_half_planes (show κ ≠ 0 by linarith [hk.1])
   refine ⟨hi.1.mono ?_,hi.2.mono ?_,hi.1.mono ?_⟩
   · intro z hz
-    have hd : ‖z-((-3/4 : ℝ):ℂ)‖ ≤ (33/500 : ℝ) := by simpa [initialDisk] using hz
+    have hd : ‖z-((-3/4 : ℝ):ℂ)‖ ≤ (133/2000 : ℝ) := by simpa [initialDisk] using hz
     have h := disk_consequences hd (show |(-3/4 : ℝ)| ≤ 3/4 by norm_num)
     change z.re < 0
     linarith [h.2.2]
@@ -321,6 +354,23 @@ theorem complete_support_injectivity {κ : ℝ}
     exact (whole_support_bounds hk hw).2.1
   · rintro z ⟨w,hw,rfl⟩
     exact (whole_support_bounds hk hw).2.2
+
+/-- Restricting the first image to its positive-real side makes all four
+model pushes injective. The strict angular crossing test identifies the
+selected q-side circle arcs with this subset. -/
+theorem selected_side_fourfold_injective {κ : ℝ}
+    (hk : κ ∈ Icc (17903/10000) (17904/10000)) :
+    InjOn ((complexMap κ)^[4])
+      {z : ℂ | z ∈ initialDisk ∧ 0 < (complexMap κ z).re} := by
+  have hd := complete_support_injectivity hk
+  have hp := (complexMap_injOn_half_planes (show κ ≠ 0 by linarith [hk.1])).2
+  intro z hz w hw he
+  have h3 : (complexMap κ)^[3] z = (complexMap κ)^[3] w :=
+    hd.2.2 ⟨z,hz.1,rfl⟩ ⟨w,hw.1,rfl⟩ he
+  have h2 : (complexMap κ)^[2] z = (complexMap κ)^[2] w :=
+    hd.2.1 ⟨z,hz.1,rfl⟩ ⟨w,hw.1,rfl⟩ h3
+  have h1 : complexMap κ z = complexMap κ w := hp hz.2 hw.2 h2
+  exact hd.1 hz.1 hw.1 h1
 
 end
 end LimitingCrest

@@ -3329,13 +3329,39 @@
       ],
       "formalization/weighted/LimitingCrestArcGates.lean": [
         "realOrbit_eq_iterate",
+        "monic_conjugacy",
+        "monic_iterate_conjugacy",
+        "monic_relation_equivalence",
         "endpoint_orbit_bounds",
         "positive_fixed_point",
         "positive_fixed_point_bracket",
         "complete_endpoint_gates",
+        "central_selector_bounds",
         "whole_support_bounds",
         "complexMap_injOn_half_planes",
-        "complete_support_injectivity"
+        "complete_support_injectivity",
+        "selected_side_fourfold_injective"
+      ],
+      "formalization/weighted/LimitingCrestModelGates.lean": [
+        "crossing_global_growth",
+        "crossing_global_strictMono",
+        "crossing_global_unique",
+        "radialPoint_eq_circlePoint",
+        "realMap_negative_strictMono",
+        "fourth_critical_pos",
+        "fourth_image_target_gate"
+      ],
+      "formalization/weighted/LimitingCrestLimit.lean": [
+        "crossingCos_radial_coordinate",
+        "full_crossingCos_bounds",
+        "full_integrand_continuousOn",
+        "selected_coefficient_le_full",
+        "exists_positive_full_model_coefficient"
+      ],
+      "formalization/weighted/LimitingCrestQuadraticReturn.lean": [
+        "complete_remainder_bound",
+        "normalized_return_error",
+        "actual_quadratic_return_corridor"
       ]
     },
     "obligations": []

@@ -126,15 +126,21 @@ complex polynomial on the specified circle. -/
 theorem circle_image (κ s : ℝ) {u : ℝ} (hu : u ∈ Icc (-1 : ℝ) 1) :
     complexMap κ (circlePoint s u) =
       (crossing κ s u : ℂ) + (height κ s u : ℂ) * Complex.I := by
-  have hsqrt := sqrt_square hu
-  simp only [pow_two] at hsqrt
-  apply Complex.ext
-  · simp [complexMap, circlePoint, crossing, height, Complex.mul_re,
-      Complex.mul_im, pow_two]
-    nlinarith [congrArg (fun t : ℝ => κ * s ^ 2 * t) hsqrt]
-  · simp [complexMap, circlePoint, crossing, height, Complex.mul_re,
-      Complex.mul_im, pow_two]
+  have hform (x y : ℝ) :
+      complexMap κ ((x : ℂ) + (y : ℂ) * Complex.I) =
+        ((1 - κ * (x ^ 2 - y ^ 2) : ℝ) : ℂ) +
+          ((-2 * κ * x * y : ℝ) : ℂ) * Complex.I := by
+    apply Complex.ext <;>
+      simp [complexMap, Complex.mul_re, Complex.mul_im, pow_two] <;> ring
+  unfold circlePoint
+  rw [hform]
+  have hre : 1 - κ * ((-3 / 4 + s * u) ^ 2 -
+      (s * Real.sqrt (1 - u ^ 2)) ^ 2) = crossing κ s u := by
+    rw [mul_pow, sqrt_square hu]
+    unfold crossing
     ring
+  rw [hre]
+  rfl
 
 /-- The chosen point is on the actual circle of radius s about -3/4. -/
 theorem circle_radius {s u : ℝ} (hs : 0 ≤ s) (hu : u ∈ Icc (-1 : ℝ) 1) :
