@@ -3829,5 +3829,19 @@
       ]
     },
     "obligations": []
+  },
+  "quadratic-enlargement-stabilization-20261127": {
+    "guide": "contributions/quadratic_enlargement_stabilization_20261127/NOTE.md#quadratic-enlargement-stabilization-20261127",
+    "theorems": {
+      "formalization/weighted/IncreasingComponentStabilization.lean": [
+        "connectedComponentIn_increasing_union",
+        "finite_anchor_relations_stabilize",
+        "finite_family_anchor_relations_stabilize",
+        "finite_subset_component_captured"
+      ]
+    },
+    "obligations": [
+      "VIRTUAL_REACHED_CYLINDER_COMPONENT_EXHAUSTION"
+    ]
   }
 }

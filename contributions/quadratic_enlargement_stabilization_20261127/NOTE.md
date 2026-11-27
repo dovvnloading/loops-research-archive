@@ -23,6 +23,8 @@ This draft claims the obligation before implementation, following AGENTS.md. Wor
 
 The new issue is an infinite ascending enlargement chain. Existing QuadraticComponentFiberDegree.lean and QuadraticEnlargementDegree.lean already prove pairwise merger criteria, degree conservation, and finite component censuses. Those results are prerequisites, not new claims here.
 
+First proof checkpoint: IncreasingComponentStabilization.lean now implements the increasing open-union component identity and simultaneous finite-anchor relation stabilization. These are supporting topology lemmas; the actual-quadratic consequence is being integrated and no compiled result is claimed until CI passes.
+
 Planned proof: identify each component over an increasing open union as the union of its anchored stage components; use finiteness of the actual inverse fiber to obtain one stage realizing every final pairwise connection; apply the existing actual-quadratic component and no-merger theorems. Test the absence of a uniform stage with an arbitrarily delayed merger for the actual map z squared.
 
 Local Lean is unavailable and the workspace filesystem is full; validation will use the repository's existing CI, without modifying its checks.
