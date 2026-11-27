@@ -15,7 +15,7 @@ Ledger statement being addressed:
 
 ## Claim
 
-This draft constructs a canonical collar for the actual normalized three-return, with a fixed outer disk of radius 1/6 and a source containment radius of 3/20. The new step is simultaneous control of the full intermediate phase domains, so that no unquantified shrinking is needed. The compiled proof modules establish the full annular exclusion and whole-disk phase estimates for every constructed actual signed tip of period p >= 17, exact signed collisions and the unique critical point, and a uniform physical Dirichlet-energy bound. The final combined theorem and the finite-period extension are being integrated.
+This contribution constructs a canonical collar for the actual normalized three-return, with a fixed outer disk of radius 1/6 and a source containment radius of 3/20. The new step is simultaneous control of the full intermediate phase domains, so that no unquantified shrinking is needed. Both the exact finite cases p=3,...,16 and the analytic tail p>=17 now supply the same complete-polynomial estimates. The compiled geometry includes properness, exact signed fibers, a contractible source, a genuine physical ring domain, and a uniform physical Dirichlet-energy bound. The final single all-period theorem and ambient realization are being integrated.
 
 ## Evidence
 
@@ -42,7 +42,13 @@ The normalization is F(z)=f_c^p(d*z)/d with d=f_c^p(0)>0, outer radius 1/6 and i
 
 `ThreeReturnPhysical.lean` proves the image and exact fibers of the literal physical f_c^(3p) map, the strict physical gap d/60, and pairwise disjointness of the three phase domains. `FiniteFirstReturnCertificates.lean` supplies two additional kernel-checked finite certificates: the enclosing p-return has a strict barrier on radius 23/20 and no extra signed sheets there, and the physical enclosing target disk lies inside the archive's original p-return target.
 
-The registered proof modules compile locally with pinned Lean 4.32.0. The remaining integration work is the single all-period theorem, stronger topology of the canonical source and its complement, and ambient p-return containment. At checkpoint `1f0e95c9306352d634bf6bcd92f2a720643b508d`, CI passed the full weighted Lean build and the transitive-axiom audit, as well as contribution intake and research validation. Later additions must pass the same gates at the final head.
+`ThreeReturnContraction.lean` proves that the entire selected source is contractible. It lifts a radial contraction of the punctured target through the actual covering. Closedness and the singleton critical fiber extend that lift continuously over the critical point and the final contraction time. The generic theorem takes the same raw boundary and collision hypotheses as the collar construction, so it applies to the finite cases as well as the analytic tail.
+
+`ThreeReturnFullness.lean` proves that the chosen source closure is full, without replacing it by a different hull. The closed central pullback component is identified with the closure of the open source; the maximum modulus principle excludes bounded complementary components. A radial clamp proves connectedness of the physical collar. Its two actual complementary components are identified and counted: their set has cardinality exactly two. The physical collar is explicitly proved open and connected.
+
+`ThreeReturnParent.lean` constructs a proper degree-two ambient p-return component with normalized target radius 23/20. Exact fiber exhaustion puts the whole closed three-return target disk and all three source phases inside this ambient source. After scaling, this ambient component lies inside the archive's original p-return component, since its actual target disk is contained in the original target. The exceptional original radius 1/4 at p=3 is preserved; the other original target radii are 2^(-p). `FiniteFirstReturnBounds.lean` proves the complete finite certificate soundness, including the strict scale comparison and strict phase bounds required by this construction.
+
+The registered proof modules compile locally with pinned Lean 4.32.0. The remaining integration work is the single all-period theorem and its final physical realization bundle. At checkpoint `1f0e95c9306352d634bf6bcd92f2a720643b508d`, CI passed the full weighted Lean build and the transitive-axiom audit, as well as contribution intake and research validation. Later additions must pass the same gates at the final head.
 
 All accepted results will be stated as Lean theorems in the pinned repository project and checked by the existing CI and transitive-axiom audit. Progress and proof revisions will be committed to this pull request.
 
@@ -54,7 +60,9 @@ All accepted results will be stated as Lean theorems in the pinned repository pr
 
 ## Boundary
 
-The ledger row remains open while this is a draft. A uniformly chosen collar does not give a bound for every arbitrarily shrunk collar. The exact relation between the intended canonical result and the row will be recorded after the proof. No canonical KKL marking, Wave width, MLC, or H1-H4 conclusion is claimed. No status-record or workflow change is proposed.
+The proposed result remains **partial** for the ledger row for mathematical reasons, independently of draft or review status. The uniform bound concerns the fixed selected collar, not every arbitrarily shrunken collar. Its reciprocal-capacity invariant is defined in the extended nonnegative reals; capacity positivity and finiteness of that reciprocal have not been formalized. No equality or one-sided comparison with classical conformal modulus or the standard extremal length of all joining curves is asserted. Such a one-sided comparison would suffice for a classical lower modulus bound; a full uniformization theorem is not logically necessary.
+
+Canonical here means that the disks and pullback components are fixed once the actual parameter is selected. It does not mean a globally unique parameter, a maximal collar, or an intrinsic period-only Wave width. The tail parameter predicate and its relationship to the archive's independently described signed kneading chart are kept explicit. The result is uniform over integer periods at one actual quadratic level; it does not automatically transfer to iterated renormalizations of general analytic germs. No canonical KKL marking, Wave width, MLC, or H1-H4 conclusion is claimed. No status-record or workflow change is proposed.
 
 ## Attribution
 

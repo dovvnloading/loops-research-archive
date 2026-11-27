@@ -67,6 +67,7 @@ formalization/weighted/CriticalReturnRelationStability.lean	METADATA
 formalization/weighted/DepthThreeClosure.lean	METADATA
 formalization/weighted/DepthThreeReal.lean	METADATA
 formalization/weighted/DepthThreeRemainder.lean	METADATA
+formalization/weighted/FiniteFirstReturnBounds.lean	METADATA
 formalization/weighted/FiniteMarkovCorrelation.lean	FINITE-CORRELATION CLONE-OBSERVABLE RANDOM-CLOCK
 formalization/weighted/FiniteMarkovFibers.lean	REAL-FIBERS
 formalization/weighted/FiniteThreeReturnCollars.lean	METADATA
@@ -181,10 +182,13 @@ formalization/weighted/TelescopeUnivalentCollars.lean	CONSTRUCT
 formalization/weighted/TerminalFiberExclusion.lean	METADATA
 formalization/weighted/ThreeReturnAnnulus.lean	METADATA
 formalization/weighted/ThreeReturnCollar.lean	METADATA
+formalization/weighted/ThreeReturnContraction.lean	METADATA
 formalization/weighted/ThreeReturnCovering.lean	METADATA
 formalization/weighted/ThreeReturnDegree.lean	METADATA
 formalization/weighted/ThreeReturnDomain.lean	METADATA
 formalization/weighted/ThreeReturnEstimates.lean	METADATA
+formalization/weighted/ThreeReturnFullness.lean	METADATA
+formalization/weighted/ThreeReturnParent.lean	METADATA
 formalization/weighted/ThreeReturnPhysical.lean	METADATA
 formalization/weighted/WeightedReturn.lean	CLONE EDGE
 research/frontier/dudko_p44_molecule_20261125/source_lock.py	METADATA
