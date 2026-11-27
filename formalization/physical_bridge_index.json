@@ -3141,5 +3141,27 @@
     "obligations": [
       "DIRECT_DECORATION_END_PRIME_END_COFINALITY"
     ]
+  },
+  "quadratic-inverse-atlas-20261126": {
+    "guide": "contributions/quadratic_inverse_atlas_20261126/NOTE.md#quadratic-inverse-atlas-20261126",
+    "theorems": {
+      "formalization/weighted/QuadraticRegularInverse.lean": [
+        "inverseComponent_open",
+        "inverseComponent_image",
+        "inverseComponent_injOn",
+        "inverseBranch_mapsTo",
+        "inverseBranch_left_inv",
+        "inverseBranch_right_inv",
+        "inverseBranch_analytic",
+        "inverseBranch_hasDerivAt",
+        "inverseBranch_conformal",
+        "inverseBranch_image",
+        "inverseBranch_anchor",
+        "continuous_lift_unique"
+      ]
+    },
+    "obligations": [
+      "VIRTUAL_REACHED_CYLINDER_COMPONENT_EXHAUSTION"
+    ]
   }
 }
