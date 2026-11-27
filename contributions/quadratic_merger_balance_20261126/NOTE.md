@@ -11,7 +11,7 @@ human_review: none
 
 ## Claim
 
-**Validation status: the exact balance, naturality, and silent-merger modules have compiled in CI. The complete four-module checkpoint still requires a successful build and transitive dependency audit before all the results below are reported as verified.**
+**Verified:** all four modules compile in the repository's pinned Lean 4.32.0 project, and the existing transitive axiom audit passes. The mathematical source checkpoint is [fd0f574](https://github.com/dovvnloading/loops-research-archive/commit/fd0f5740bc568fa4d7772f64265c73100772cb89), with [successful Lean CI and audit](https://github.com/dovvnloading/loops-research-archive/actions/runs/45927679722). This is a proved partial result; the native ledger obligation remains open.
 
 This contribution addresses the component-preservation part of DIRECT_DECORATION_FINAL_ROOT_RELATION_NO_BIRTH. It supplies an exact criterion for arbitrary connected open targets of actual quadratic iterates, and constructs maximal failures of a weaker critical-inventory-only criterion. It does not identify these arbitrary targets with authorized native final-root enlargements.
 
@@ -128,14 +128,26 @@ The draft [PR #231](https://github.com/dovvnloading/loops-research-archive/pull/
 
 - [9dc3410](https://github.com/dovvnloading/loops-research-archive/commit/9dc34109261a4040ad3ffa7cf24b3c222d648006): initial balance and naturality development. Source registration and the proof-trust scan passed; CI found two implicit inverse-image set elaboration errors.
 - [850c093](https://github.com/dovvnloading/loops-research-archive/commit/850c0936c2a307b4b35d50d94292993190216cb8): explicit source-set fixes, all-parameter silent mergers, and analytic vanishing criteria. The core balance proofs passed; one added zero-charge proof had an underconstrained finite-sum weight.
-- [9aab93b](https://github.com/dovvnloading/loops-research-archive/commit/9aab93b079ece63e90b9058dd747b2f0e7e5fb1c): the balance and naturality modules compiled. The final silent-merger theorem needed an explicit conversion from the set-level simple-connectedness predicate to its underlying typeclass. The next checkpoint makes that proof conversion explicit in both disk constructions; no theorem statement changes.
-- [0f73c4f](https://github.com/dovvnloading/loops-research-archive/commit/0f73c4f991f876c2377cc6dea7160b441a923cfa): the balance, naturality, and silent-merger modules compiled. The compact path-hull helper needed explicit lambdas to apply two set-inclusion proofs. This checkpoint supplies those lambdas without changing the helper's statement or any dependent theorem.
+- [9aab93b](https://github.com/dovvnloading/loops-research-archive/commit/9aab93b079ece63e90b9058dd747b2f0e7e5fb1c): the balance and naturality modules compiled. The final silent-merger theorem needed an explicit conversion from the set-level simple-connectedness predicate to its underlying typeclass. The next checkpoint made that proof conversion explicit in both disk constructions, without changing a theorem statement.
+- [0f73c4f](https://github.com/dovvnloading/loops-research-archive/commit/0f73c4f991f876c2377cc6dea7160b441a923cfa): the balance, naturality, and silent-merger modules compiled. The compact path-hull helper needed explicit lambdas to apply two set-inclusion proofs. The next checkpoint supplied those lambdas without changing the helper's statement or any dependent theorem.
+- [fd0f574](https://github.com/dovvnloading/loops-research-archive/commit/fd0f5740bc568fa4d7772f64265c73100772cb89): all four modules compiled and the transitive axiom audit passed. All 23 workflows on this proof checkpoint succeeded.
+
+The existing weighted build completed all 8,972 jobs. The declaration audit reported:
+
+| New module | Audited declarations | Result |
+|---|---:|---|
+| QuadraticMergerBalance | 23 | Allowed foundational axioms only |
+| QuadraticMergerNaturality | 13 | Allowed foundational axioms only |
+| QuadraticSilentMerger | 34 | Allowed foundational axioms only |
+| QuadraticCompactMerger | 11 | Allowed foundational axioms only |
+
+These audit counts include compiler-generated and private declarations, so they differ from the public theorem index counts. The complete weighted audit passed for 151 modules and 3,281 declarations. It checks transitive dependencies using Lean.collectAxioms and permits only propext, Classical.choice, and Quot.sound. The source scan enforces absence of proof placeholders and prohibited trust escapes; no such escape or new axiom is present in the contribution. The contribution check also passes without the draft exemption, and the whitespace check passes.
 
 All compiler repairs so far name existing terms explicitly; no theorem statement has been weakened. Local Lean compilation is unavailable in this workspace, so the repository's existing pinned CI build and transitive declaration audit are the validation authority. No workflow, validator, dependency pin, or ledger status has been changed.
 
 ## Dependencies
 
-The target is DIRECT_DECORATION_FINAL_ROOT_RELATION_NO_BIRTH, whose source-facing realization prerequisites remain open. Its specification is [PE-5](https://github.com/dovvnloading/loops-research-archive/blob/main/research/mlc_unified/canonical_kl_geometric_trace_proper_end_response.md#pe-5-final-root-relation-no-birth).
+The target is DIRECT_DECORATION_FINAL_ROOT_RELATION_NO_BIRTH. Its listed proper-path and end-interval classification prerequisite remains open. The four other listed prerequisites are already marked proved; this contribution does not discharge their source-specific hypotheses or remove their stated scope restrictions. The target specification is [PE-5](https://github.com/dovvnloading/loops-research-archive/blob/main/research/mlc_unified/canonical_kl_geometric_trace_proper_end_response.md#pe-5-final-root-relation-no-birth).
 
 The principal existing formal inputs are QuadraticEnlargementDegree, QuadraticComponentFiberDegree, QuadraticCylinderRamification, QuadraticLocalRamification, QuadraticRamificationCensus, and QuadraticInverseOpen. Mathlib supplies finite sums, compactness of finite path unions, and connectedness of finite-set complements.
 
