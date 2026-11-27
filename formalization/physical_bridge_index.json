@@ -3628,6 +3628,16 @@
         "actual_tip_coefficient_error",
         "exists_actual_tips_with_coefficient_limit",
         "exists_actual_tip_corridor"
+      ],
+      "formalization/weighted/ActualCrestLimit.lean": [
+        "actual_tip_limit_map_error",
+        "actual_tip_angle_error",
+        "actual_tip_point_error",
+        "exists_actual_crest_families_converging",
+        "exists_uniformly_converging_actual_crests"
+      ],
+      "formalization/weighted/ActualCrestTransport.lean": [
+        "exists_actual_unscaled_crest_curve"
       ]
     },
     "obligations": []

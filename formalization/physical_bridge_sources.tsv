@@ -48,6 +48,8 @@ code/exp3_feigenbaum.py	EXPLORATION
 code/exp4_images.py	EXPLORATION
 code/exp5_figs.py	EXPLORATION
 code/mlc_common.py	EXPLORATION
+formalization/weighted/ActualCrestLimit.lean	METADATA
+formalization/weighted/ActualCrestTransport.lean	METADATA
 formalization/weighted/AtomCutDefect.lean	CUTS CREST
 formalization/weighted/AttachmentDefectLedger.lean	DEFECT
 formalization/weighted/BinaryShiftExactness.lean	METADATA
