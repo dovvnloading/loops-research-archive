@@ -3934,5 +3934,103 @@
       ]
     },
     "obligations": []
+  },
+  "three-return-finite-capacity-20261127": {
+    "guide": "contributions/three_return_finite_capacity_20261127/NOTE.md#three-return-finite-capacity-20261127",
+    "theorems": {
+      "formalization/weighted/ThreeReturnInradius.lean": [
+        "finite_three_return_inner_bound",
+        "actual_three_return_inner_bound",
+        "selected_three_return_inner_bound",
+        "selected_closedBall_subset_source",
+        "selected_physical_closedBall_subset",
+        "selected_physical_inner_image_margin",
+        "selected_physical_disk_sandwich",
+        "exists_physical_renormalization_with_inradius"
+      ],
+      "formalization/weighted/CollarCapacityLower.lean": [
+        "horizontal_lipschitz",
+        "horizontal_hasDerivAt",
+        "horizontal_energy_integrable",
+        "horizontal_energy_lower",
+        "horizontal_measurePreserving",
+        "horizontal_ae_differentiable",
+        "energy_measurable",
+        "fderiv_zero_outside_disk",
+        "full_energy_eq_disk",
+        "admissible_energy_lower",
+        "capacity_lower",
+        "capacity_pos",
+        "variationalModulus_lt_top",
+        "variationalModulus_le"
+      ],
+      "formalization/weighted/CollarExtremalLength.lean": [
+        "variation_parameter_image",
+        "arcParameter_mem_image",
+        "arcParameter_unit_speed",
+        "arcParameter_lipschitz",
+        "arcParameter_image",
+        "curveModulus_le_area",
+        "diskMetric_measurable",
+        "diskMetric_area",
+        "curveLength_ge_gap",
+        "diskMetric_length",
+        "diskMetric_admissible",
+        "curveModulus_le_disk_ratio",
+        "extremalLength_ge_disk_ratio",
+        "physical_curveModulus_le",
+        "physical_extremalLength_ge"
+      ],
+      "formalization/weighted/CollarMetricEnergy.lean": [
+        "reciprocal_mass_le_square_integral",
+        "horizontal_square_integral_lower",
+        "planar_square_integral_lower_ae",
+        "planar_square_integral_lower"
+      ],
+      "formalization/weighted/CollarStraightLength.lean": [
+        "straightCurve_apply",
+        "straight_variation",
+        "straightCurve_length",
+        "straightCurve_arcParameter",
+        "metricLength_straightCurve"
+      ],
+      "formalization/weighted/CollarHorizontalFamily.lean": [
+        "horizontal_norm_sq",
+        "horizontal_circle_exit",
+        "exists_horizontal_joining",
+        "admissible_horizontal_slice",
+        "curveModulus_lower",
+        "extremalLength_le_of_disk_subset"
+      ],
+      "formalization/weighted/ThreeReturnExtremalLength.lean": [
+        "selected_inner_plate_disk",
+        "selected_inner_plate_inside_target",
+        "selected_capacity_lower",
+        "selected_capacity_bounds",
+        "selected_variationalModulus_upper",
+        "selected_variationalModulus_bounds",
+        "selected_curveModulus_lower",
+        "selected_curveModulus_upper",
+        "selected_curveModulus_bounds",
+        "selected_extremalLength_upper",
+        "selected_extremalLength_lower",
+        "selected_extremalLength_bounds",
+        "selected_extremalLength_gt_one_sixty",
+        "selected_extremalLength_strict_bounds",
+        "selected_extremalLength_pos_finite",
+        "exists_physical_renormalization_with_extremal_bounds"
+      ],
+      "formalization/weighted/CollarShellMetric.lean": [
+        "shellMetric_measurable",
+        "exists_final_shell_interval",
+        "shellMetric_admissible",
+        "shellMetric_area",
+        "curveModulus_le_shell_ratio",
+        "physical_curveModulus_le_19pi",
+        "physical_curveModulus_lt_sixty",
+        "physical_extremalLength_gt_one_sixty"
+      ]
+    },
+    "obligations": []
   }
 }
