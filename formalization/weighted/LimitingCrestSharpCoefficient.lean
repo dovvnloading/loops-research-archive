@@ -135,7 +135,7 @@ theorem sharp_inner_integral_lower {κ : ℝ}
       (intervalIntegrable_const : IntervalIntegrable (fun _ : ℝ => 2 * m)
         volume (1 / 16) (663 / 10000))
       (continuous_id.intervalIntegrable (1 / 16 : ℝ) (663 / 10000))]
-    norm_num [intervalIntegral.integral_const, intervalIntegral.integral_id, smul_eq_mul, m]
+    norm_num [intervalIntegral.integral_const, integral_id, smul_eq_mul, m]
       <;> field_simp [hA.ne'] <;> ring
   rw [hlin] at hi
   exact hi
