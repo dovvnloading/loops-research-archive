@@ -3415,7 +3415,14 @@
         "grid_packet_boundary_comparison"
       ]
     },
-    "obligations": []
+    "obligations": [],
+    "checks": [
+      "contributions/depth_three_grid_20261126/verify_grid.py",
+      "contributions/depth_three_grid_20261126/check_rejections.py"
+    ],
+    "research_updates": [
+      "NOV26_OPEN_26_TRIPLES"
+    ]
   },
   "parabolic-sharp-passage-20261126": {
     "guide": "contributions/parabolic_sharp_passage_20261126/NOTE.md#parabolic-sharp-passage-20261126",
