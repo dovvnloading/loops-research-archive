@@ -103,7 +103,7 @@ theorem grid_packet_boundary_comparison (P : Packet) (hP : P ∈ gridPackets)
   simp only [GeometryCertificate, geometryCheck, positiveRatio,
     Bool.and_eq_true, decide_eq_true_eq] at hg
   have hperiods : 3 ≤ P.p ∧ 3 ≤ P.q ∧ 3 ≤ P.r := by
-    clear_except hg
+    clear hS hc hjr hz hP
     tauto
   have hdata :
       (0 < P.radius1.den ∧
@@ -118,7 +118,7 @@ theorem grid_packet_boundary_comparison (P : Packet) (hP : P ∈ gridPackets)
           (errorAt (errors gridScale rows P.radius3 (P.p * P.q * P.r))
             (P.p * P.q * P.r)) P.radius3) := by
     dsimp only [rows, N]
-    clear_except hg
+    clear hS hc hjr hz hP hperiods
     tauto
   have hp : 0 < P.p := by omega
   have hq : 0 < P.q := by omega
