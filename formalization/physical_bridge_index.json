@@ -3266,5 +3266,20 @@
     "obligations": [
       "MAPPING_TELESCOPE"
     ]
+  },
+  "parabolic-sharp-passage-20261126": {
+    "guide": "contributions/parabolic_sharp_passage_20261126/NOTE.md#parabolic-sharp-passage-20261126",
+    "theorems": {
+      "formalization/weighted/ParabolicPassageAngle.lean": [
+        "hasDerivAt_angle",
+        "angle_step_eq",
+        "quadratic_denominator_variation",
+        "angle_step_bounds",
+        "angle_step_error"
+      ]
+    },
+    "obligations": [
+      "H2_CALIBRATION"
+    ]
   }
 }
