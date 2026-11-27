@@ -83,7 +83,7 @@ C_{k,r}(x)\cap f_c^{-k}(U_m)=C_{k,m}(x).
 \]
 This is quadratic_finite_horizon_tail_naturality.
 
-For every split \(k+j\le H\), exact prefix transport in the existing archive combines with (1) to give
+For every \(m\ge N\), every split \(k+j\le H\), and every \(x\in f_c^{-(k+j)}(U_m)\), exact prefix transport in the existing archive combines with (1) to give
 \[
 f_c^j\!\left(C_{k+j,\infty}(x)\right)
 \cap f_c^{-k}(U_m)
@@ -102,7 +102,7 @@ The theorem quadratic_finite_horizon_fiber_and_rank_stabilization then gives, at
 \[
 R(c,U_m,k,x)=R(c,U_\infty,k,x)
 \]
-and, for every \(z\in U_m\),
+and, for every \(x\in f_c^{-k}(U_m)\) and \(z\in U_m\),
 \[
 \{a\in C_{k,m}(x):f_c^k(a)=z\}
 =
@@ -171,7 +171,9 @@ The six modules are registered in the existing weighted Lake project, source ind
 
 Validation is performed by the repository's existing Lean 4.32.0 CI. Local Lean is unavailable, and the workspace disk was too full to install it or clone the entire project. The source scan, contribution intake, and theorem-registration checks run unchanged. The weighted workflow builds all default targets and then audits the transitive dependencies of every declaration, allowing only propext, Classical.choice, and Quot.sound.
 
-The first proof checkpoint compiled the increasing-union topology and the half-plane delayed-merger module. CI identified one application mismatch in the reflection proof; the next commit supplied the reflected point explicitly without changing the theorem statement. The four-module proof checkpoint f2b6814d1ae98ff9ce039685930a9a5898b41200 passed [weighted CI run 45961015015](https://github.com/dovvnloading/loops-research-archive/actions/runs/45961015015): 9,056 build jobs and 190 modules / 4,379 declarations audited, with allowed dependencies only. The strict-disk example and proper-localization extension are implemented in the current checkpoint and await the same complete audit; this draft does not count these extensions as validated until they pass. The strict-disk build exposed one implicit-map inference issue, corrected by applying component monotonicity directly to the supplied witness; its statements are unchanged.
+The four-module proof checkpoint f2b6814d1ae98ff9ce039685930a9a5898b41200 passed [weighted CI run 45961015015](https://github.com/dovvnloading/loops-research-archive/actions/runs/45961015015): 9,056 build jobs and 190 modules / 4,379 declarations audited. The complete six-module proof checkpoint **48a946318a29e8d85630cad56173db219658c4dd** then passed [weighted CI run 45962464074](https://github.com/dovvnloading/loops-research-archive/actions/runs/45962464074): **9,060 build jobs**, followed by **AXIOM_AUDIT_PASS weighted: 192 modules, 4,419 declarations**. Every new module passed the transitive audit with only the three permitted standard axioms. The six modules contain 48 registered public theorems; no sorry, admit, or new axiom is used.
+
+The same proof checkpoint passed [Research validation run 45962463526](https://github.com/dovvnloading/loops-research-archive/actions/runs/45962463526), contribution intake, source coverage, model-to-geometry coverage, and the other current validation workflows. CI caught two elaboration issues during development: the reflection proof needed its point-membership witness applied explicitly, and the strict-disk proof needed the same explicit application to fix an implicit-map inference. Both were corrected without weakening any theorem statement. This final validation update changes documentation only; the verified Lean sources and registrations remain those of the complete six-module proof checkpoint.
 
 Reproduce from the repository root:
 
