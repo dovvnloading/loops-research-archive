@@ -3710,6 +3710,34 @@
         "canonical_collar_of_bounds",
         "actual_canonical_collar",
         "exists_actual_canonical_collar"
+      ],
+      "formalization/weighted/ThreeReturnPhysical.lean": [
+        "physical_zero",
+        "collar_critical_value",
+        "physical_return_image",
+        "physical_source_open",
+        "physical_source_connected",
+        "physical_compact_closure",
+        "physical_gap",
+        "physical_collision_iff",
+        "physical_source_symmetric",
+        "physical_fiber_ncard",
+        "separated_phase_images",
+        "actual_phase_domains_disjoint"
+      ],
+      "FiniteFirstReturnCertificates.lean": [
+        "finite_first_return_certificates_valid",
+        "finite_parent_scale_certificates_valid"
+      ],
+      "formalization/weighted/FiniteThreeReturnCollars.lean": [
+        "finite_certificates",
+        "exists_finite_parameter",
+        "finite_critical_signs",
+        "finite_critical_value_bound",
+        "finite_annular_barrier",
+        "finite_three_return_collision_iff",
+        "finite_phase_bounds",
+        "finite_phase_control"
       ]
     },
     "obligations": []
