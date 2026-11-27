@@ -129,7 +129,7 @@ theorem inverseComponent_target_restriction (c : ℂ) (n : ℕ) (V W : Set ℂ)
   apply Subset.antisymm
   · intro x hx
     have he := inverseBranch_target_restriction c n V W hVo hVc
-      hWo hWc hVW hcrit a ha (orbit c n x) hx.2
+      hWo hWc hVW hcrit a ha hx.2
     rw [inverseBranch_left_inv c n W hWo hWc hcrit a (hVW ha) hx.1] at he
     exact he ▸ inverseBranch_mapsTo c n V hVo hVc hcritV a ha hx.2
   · intro x hx
