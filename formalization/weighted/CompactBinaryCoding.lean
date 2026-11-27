@@ -1,4 +1,7 @@
-import Mathlib
+import Mathlib.Data.Countable.Defs
+import Mathlib.Topology.Connected.TotallyDisconnected
+import Mathlib.Topology.Homeomorph.Defs
+import Mathlib.Topology.Order
 
 /-!
 # Binary coding from a compact two-sheet splitting
