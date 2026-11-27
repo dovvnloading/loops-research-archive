@@ -73,10 +73,10 @@ theorem mem_modelFiber (G S : Y → Y) (hG : Surjective G)
     simp only [modelFiber, Finset.mem_union, Finset.mem_image, Finset.mem_erase]
     constructor
     · rintro (⟨w, hw, rfl⟩ | ⟨w, ⟨_, hw⟩, rfl⟩)
-      · rw [Function.iterate_succ_apply, inverseChoice_spec]
+      · rw [Function.iterate_succ_apply, inverseChoice_spec G hG w]
         exact (ih w).mp hw
       · rw [Function.iterate_succ_apply,
-          model_symmetry_preserves G S hpair, inverseChoice_spec]
+          model_symmetry_preserves G S hpair, inverseChoice_spec G hG w]
         exact (ih w).mp hw
     · intro hz
       let w := G z
@@ -85,7 +85,7 @@ theorem mem_modelFiber (G S : Y → Y) (hG : Surjective G)
         simpa only [Function.iterate_succ_apply, w] using hz
       have hp : z ∈ G ⁻¹' {G (inverseChoice G hG w)} := by
         change G z = G (inverseChoice G hG w)
-        rw [inverseChoice_spec]
+        rw [inverseChoice_spec G hG w]
       rw [hpair (inverseChoice G hG w)] at hp
       rcases hp with hp | hp
       · exact Or.inl ⟨w, hw, hp.symm⟩
@@ -221,6 +221,41 @@ theorem model_inverse_census (G S : Y → Y) (hG : Surjective G)
   ⟨modelFiber G S hG (G o) n y, mem_modelFiber G S hG hpair o hfix n y,
     modelFiber_card_exact G S hG hS hpair o hfix y n⟩
 
+/-- If the physical map is injective on every geometric fiber
+except the critical one, a target avoiding the finite projected
+postcritical set loses no predecessor labels under the quotient.
+The target itself need not have a singleton geometric fiber. -/
+theorem inverse_projection_injective_of_branch_avoidance
+    {X : Type*} (p : X → Y) (F : X → X) (G : Y → Y)
+    (hs : Semiconj p F G) (o : Y)
+    (hinj : ∀ y : Y, y ≠ o → InjOn F (p ⁻¹' {y}))
+    (n : ℕ) (a : X) :
+    (∀ k < n, (G^[k]) (G o) ≠ p a) →
+      InjOn p ((F^[n]) ⁻¹' {a}) := by
+  induction n with
+  | zero =>
+    intro _ x hx z hz _
+    exact (show x = a from hx).trans (show z = a from hz).symm
+  | succ n ih =>
+    intro havoid x hx z hz hpxz
+    change (F^[n+1]) x = a at hx
+    change (F^[n+1]) z = a at hz
+    have hx' : (F^[n]) (F x) = a := by
+      simpa only [Function.iterate_succ_apply] using hx
+    have hz' : (F^[n]) (F z) = a := by
+      simpa only [Function.iterate_succ_apply] using hz
+    have hforward : p (F x) = p (F z) :=
+      (hs x).trans ((congrArg G hpxz).trans (hs z).symm)
+    have hFxz : F x = F z :=
+      ih (fun k hk => havoid k (Nat.lt_succ_of_lt hk)) hx' hz' hforward
+    have hnoncritical : p x ≠ o := by
+      intro he
+      have h : (G^[n+1]) (p x) = p a :=
+        (hs.iterate_right (n+1) x).symm.trans (congrArg p hx)
+      rw [he, Function.iterate_succ_apply] at h
+      exact havoid n (Nat.lt_succ_self n) h
+    exact hinj (p x) hnoncritical rfl hpxz.symm hFxz
+
 section ActualQuadratic
 
 variable [TopologicalSpace Y] [T2Space Y]
@@ -285,6 +320,38 @@ theorem quadratic_filled_model_census_complete
     intro z hz
     rw [heq]
     exact (hM z).mpr hz
+
+/-- Outside the finite projected postcritical set, the entire
+actual n-step inverse fiber projects bijectively onto the entire
+model inverse fiber. This removes the old singleton-target-anchor
+restriction from exact predecessor-label transport. -/
+theorem quadratic_filled_regular_inverse_projection_bijOn
+    (c : ℂ) (p : quadraticFilled c → Y) (G : Y → Y)
+    (hp : Continuous p) (hsurj : Surjective p)
+    (hs : Semiconj p (quadraticFilledMap c) G)
+    (hf : ∀ y : Y, IsPreconnected (p ⁻¹' {y}))
+    (hlight : ∀ y : Y, IsTotallyDisconnected (G ⁻¹' {y}))
+    (crit : quadraticFilled c) (hcrit : (crit : ℂ) = 0)
+    (hKi : interior (quadraticFilled c) = ∅)
+    (n : ℕ) (a : quadraticFilled c)
+    (havoid : ∀ k < n, (G^[k]) (p (quadraticFilledMap c crit)) ≠ p a) :
+    BijOn p (((quadraticFilledMap c)^[n]) ⁻¹' {a})
+      ((G^[n]) ⁻¹' {p a}) := by
+  have hinj := inverse_projection_injective_of_branch_avoidance
+    p (quadraticFilledMap c) G hs (p crit)
+    (quadratic_noncritical_geometric_fiber_injective c p hp hf crit hcrit hKi)
+    n a (by simpa only [hs crit] using havoid)
+  have hproj := LoopsStationaryLightModel.model_iterate_preimage_projection
+    p (quadraticFilledMap c) G hs
+    (LoopsStationaryLightModel.quadratic_filled_light_fiber_image c p G
+      hp hsurj hs hf hlight) a n
+  refine ⟨?_, hinj, ?_⟩
+  · intro x hx
+    change (G^[n]) (p x) = p a
+    rw [← hs.iterate_right n x, hx]
+  · intro y hy
+    rw [hproj] at hy
+    exact hy
 
 end ActualQuadratic
 

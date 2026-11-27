@@ -59,7 +59,10 @@ theorem nonisolated_fixed_pair_no_injective_neighborhood
     · intro hy
       have hyk : y = k := hy
       subst y
-      exact ⟨hkU, hSk.symm ▸ hkU⟩
+      refine ⟨hkU, ?_⟩
+      change S k ∈ U
+      rw [hSk]
+      exact hkU
   apply hnotiso
   rw [← he]
   exact hU.inter (hU.preimage hS)
@@ -91,6 +94,27 @@ theorem singleton_not_open_of_preconnected [PreconnectedSpace Y] [Nontrivial Y]
     isPreconnected_univ.subset_isClopen hc ⟨k, mem_univ k, Set.mem_singleton k⟩
   obtain ⟨y, hy⟩ := exists_ne k
   exact hy (hall (mem_univ y))
+
+/-- The local injectivity locus of an actual quadratic geometric
+model identifies any independently designated critical point with
+the projection of zero. This direction requires neither nonisolation
+nor connectedness or nontriviality of the model. -/
+theorem quadratic_marked_model_critical_eq
+    (c : ℂ) (p : quadraticFilled c → Y) (G : Y → Y)
+    (hp : Continuous p) (hsurj : Surjective p)
+    (hs : Semiconj p (quadraticFilledMap c) G)
+    (hf : ∀ y : Y, IsPreconnected (p ⁻¹' {y}))
+    (hlight : ∀ y : Y, IsTotallyDisconnected (G ⁻¹' {y}))
+    (crit : quadraticFilled c) (hcrit : (crit : ℂ) = 0)
+    (hKi : interior (quadraticFilled c) = ∅)
+    (m : Y) (hm : ¬ HasInjectiveNeighborhood G m) :
+    m = p crit := by
+  obtain ⟨S, hSc, _, _, _, hpair, hfixed⟩ :=
+    quadratic_filled_unique_model_involution c p G hp hsurj hs hf hlight crit hcrit hKi
+  by_contra hne
+  apply hm
+  exact injective_neighborhood_of_nonfixed_pair G S hSc hpair m
+    (fun h => hne ((hfixed m).mp h))
 
 /-- The local injectivity locus of an actual quadratic geometric
 model is exactly the complement of the projected physical critical

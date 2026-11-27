@@ -162,6 +162,7 @@ formalization/weighted/StationaryEndpointCover.lean	VARIABLE-EXIT
 formalization/weighted/StationaryEndpointVisits.lean	VARIABLE-EXIT
 formalization/weighted/StationaryFiberDynamics.lean	METADATA
 formalization/weighted/StationaryGeometricFibers.lean	METADATA
+formalization/weighted/StationaryModelPredecessors.lean	METADATA
 formalization/weighted/StationaryMonotoneGeometry.lean	METADATA
 formalization/weighted/StationaryMultiInterface.lean	METADATA
 formalization/weighted/StationaryPacketGain.lean	VARIABLE-EXIT

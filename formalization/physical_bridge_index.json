@@ -3664,16 +3664,26 @@
         "modelCriticalDefect_zero_iff",
         "modelFiber_full_card_iff",
         "model_inverse_census",
+        "inverse_projection_injective_of_branch_avoidance",
         "quadratic_filled_model_inverse_census",
-        "quadratic_filled_model_census_complete"
+        "quadratic_filled_model_census_complete",
+        "quadratic_filled_regular_inverse_projection_bijOn"
       ],
       "formalization/weighted/StationaryBranchLocus.lean": [
         "injective_neighborhood_of_nonfixed_pair",
         "nonisolated_fixed_pair_no_injective_neighborhood",
         "model_local_injectivity_locus",
         "singleton_not_open_of_preconnected",
+        "quadratic_marked_model_critical_eq",
         "quadratic_model_local_injectivity_locus",
         "quadratic_connected_model_unique_branch"
+      ],
+      "formalization/weighted/StationaryModelPredecessors.lean": [
+        "unique_fixed_pair_predecessor_census",
+        "quadratic_model_predecessor_census",
+        "quadratic_model_critical_value_preimage",
+        "quadratic_noncritical_geometric_fiber_bijOn",
+        "quadratic_model_two_sheets_off_critical_value"
       ]
     },
     "obligations": [
