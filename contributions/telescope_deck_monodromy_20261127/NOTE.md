@@ -5,6 +5,8 @@ ai: OpenAI ChatGPT, GPT-6 Astra Pro; collaborative proof development and verific
 human_review: none
 ---
 
+<a id="telescope-deck-monodromy-20261127"></a>
+
 # Actual return monodromy and the deck-phase closure criterion
 
 Ledger statement being addressed:
@@ -19,7 +21,13 @@ Draft claim under development: determine the endpoint sheet permutation of loops
 
 The starting point is the existing actual return in `TelescopePathPairing.lean`: an injective prefix, the critical quadratic step, and an injective suffix on actual connected pullback components. Its two path lifts are already proved. The explicit boundary of `contributions/analytic_deck_rigidity_20261126/NOTE.md` leaves loop endpoint permutation and monodromy open. This packet targets that boundary rather than reproving the existence of those lifts.
 
-Lean source, exact statements, and successful CI checkpoints will be recorded as they become available.
+The first source checkpoint contains three candidate modules, all registered with the existing strict build. These are pending compiler verification and are not yet counted as results:
+
+- `PathExcursionCensus.lean` constructs binary words of complete source paths and proves an exact all-lifts census from a singleton base fiber and an exhaustive one-excursion classification.
+- `TelescopeCriticalExcursions.lean` constructs the physical critical excursion using the actual analytic prefix inverse applied to the central bump `4rt(1-t)`, together with its negative. The suffix transports their common squared path to the actual target. It classifies all lifts of that one excursion.
+- `TelescopeLoopMonodromy.lean` constructs actual regular loops from central half-turn circles and determines the endpoint sheet of every lift. It also rules out a continuous global section on the whole regular target.
+
+The connection from the exact finite census to repeated actual critical excursions is the next proof step. Successful local and CI checkpoints will be recorded separately from draft source.
 
 ## Dependencies
 

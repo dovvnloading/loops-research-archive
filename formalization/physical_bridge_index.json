@@ -3934,5 +3934,32 @@
       ]
     },
     "obligations": []
+  },
+  "telescope-deck-monodromy-20261127": {
+    "guide": "contributions/telescope_deck_monodromy_20261127/NOTE.md#telescope-deck-monodromy-20261127",
+    "theorems": {
+      "formalization/weighted/PathExcursionCensus.lean": [
+        "trans_eq_iff",
+        "binaryConcatenation_injective",
+        "binaryConcatenation_range",
+        "binaryConcatenation_map",
+        "finite_binary_lift_family",
+        "binaryConcatenation_exhaustive",
+        "binary_lift_card_exact",
+        "continuous_binary_lift_card_exact"
+      ],
+      "formalization/weighted/TelescopeCriticalExcursions.lean": [
+        "continuous_square_root_interior_choice",
+        "quadratic_return_critical_excursion"
+      ],
+      "formalization/weighted/TelescopeLoopMonodromy.lean": [
+        "criticalValueTurns_closed",
+        "quadratic_return_loop_monodromy",
+        "quadratic_return_no_regular_section"
+      ]
+    },
+    "obligations": [
+      "MAPPING_TELESCOPE"
+    ]
   }
 }
