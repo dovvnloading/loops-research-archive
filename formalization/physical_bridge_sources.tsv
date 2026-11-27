@@ -1,6 +1,10 @@
 source	routes
 AirplaneDiffraction.lean	DIFFRACTION LANDING
 CloneGraph.lean	CLONE EDGE
+DepthThreeCert.lean	METADATA
+DepthThreeGrid.lean	METADATA
+DepthThreeWidth.lean	METADATA
+DepthThreeWidthGrid.lean	METADATA
 FirstReturn.lean	CLONE EDGE
 ImmersionMarkFinite.lean	CONTOUR-ESCAPE MARK SELECTED-ESCAPE
 LoopsFormal.lean	CLONE EDGE
@@ -55,6 +59,9 @@ formalization/weighted/CloneRoot.lean	CLONE EDGE
 formalization/weighted/CloneRootRate.lean	CLONE EDGE
 formalization/weighted/CompactObstacleRemainder.lean	METADATA
 formalization/weighted/ConnectedBinaryCoding.lean	METADATA
+formalization/weighted/DepthThreeClosure.lean	METADATA
+formalization/weighted/DepthThreeReal.lean	METADATA
+formalization/weighted/DepthThreeRemainder.lean	METADATA
 formalization/weighted/FiniteMarkovCorrelation.lean	FINITE-CORRELATION CLONE-OBSERVABLE RANDOM-CLOCK
 formalization/weighted/FiniteMarkovFibers.lean	REAL-FIBERS
 formalization/weighted/FullCloneCharpoly.lean	CLONE EDGE
@@ -143,6 +150,7 @@ formalization/weighted/TelescopeCompactReturn.lean	CONSTRUCT
 formalization/weighted/TelescopeConformalInverse.lean	CONSTRUCT
 formalization/weighted/TelescopeDeckInvolution.lean	CONSTRUCT
 formalization/weighted/TelescopeDeckRigidity.lean	CONSTRUCT
+formalization/weighted/TelescopeMonodromyObstruction.lean	METADATA
 formalization/weighted/TelescopeMovingDeck.lean	CONSTRUCT
 formalization/weighted/TelescopeParameterReturn.lean	CONSTRUCT
 formalization/weighted/TelescopePathPairing.lean	CONSTRUCT

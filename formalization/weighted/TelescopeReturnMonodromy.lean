@@ -1,4 +1,5 @@
 import TelescopePathPairing
+import SquarePathMonodromy
 
 /-!
 # Monodromy coordinates of actual one-critical quadratic returns
@@ -16,6 +17,7 @@ open QuadraticEscape LoopsSaturatedTelescope LoopsTelescopeRamification
 open LoopsTelescopeCollar LoopsTelescopeConformalInverse
 open LoopsTelescopeDeckInvolution LoopsTelescopeUnbranchedCover
 open LoopsTelescopePathPairing
+open LoopsSquarePathMonodromy
 
 noncomputable section
 
@@ -90,6 +92,130 @@ def coordinatePath (s : ℂ → ℂ) (V : Set ℂ)
 lift of its target-coordinate path. -/
 def prefixPath (c : ℂ) (a : ℕ) (Γ : C(unitInterval, ℂ)) : C(unitInterval, ℂ) :=
   ⟨fun t => orbit c a (Γ t), (quadratic_orbit_continuous c a).comp Γ.continuous⟩
+
+/-- Actual analytic target coordinates for the physical quadratic return.
+The square identity concerns the genuine iterate on the whole source. -/
+structure ReturnCoordinate (c : ℂ) (a b : ℕ) (A V : Set ℂ) where
+  toFun : ℂ → ℂ
+  analytic : AnalyticOnNhd ℂ toFun V
+  injective : InjOn toFun V
+  zero_iff : ∀ y ∈ V, toFun y = 0 ↔ y = orbit c b c
+  square : ∀ z ∈ A, toFun (orbit c (a+1+b) z) = (orbit c a z)^2
+
+/-- The regular target loop in its actual critical coordinate. -/
+def ReturnCoordinate.path {c : ℂ} {a b : ℕ} {A V : Set ℂ}
+    (C : ReturnCoordinate c a b A V) (γ : C(unitInterval, ℂ))
+    (hγV : ∀ t, γ t ∈ V) : C(unitInterval, ℂ) :=
+  coordinatePath C.toFun V C.analytic γ hγV
+
+/-- The nonvanishing of the transformed path follows from avoidance of
+the actual propagated critical value, not an extra geometric premise. -/
+theorem ReturnCoordinate.path_ne_zero {c : ℂ} {a b : ℕ} {A V : Set ℂ}
+    (C : ReturnCoordinate c a b A V) (γ : C(unitInterval, ℂ))
+    (hγV : ∀ t, γ t ∈ V) (hγreg : ∀ t, γ t ≠ orbit c b c)
+    (t : unitInterval) : C.path γ hγV t ≠ 0 := by
+  intro he
+  exact hγreg t ((C.zero_iff (γ t) (hγV t)).mp he)
+
+/-- Integer winding in the univalent suffix coordinate. The integer is
+constructed from the exponential covering lift of the actual target path. -/
+def ReturnCoordinate.winding {c : ℂ} {a b : ℕ} {A V : Set ℂ}
+    (C : ReturnCoordinate c a b A V) (γ : C(unitInterval, ℂ))
+    (hγV : ∀ t, γ t ∈ V) (hγreg : ∀ t, γ t ≠ orbit c b c)
+    (hγloop : γ 1 = γ 0) : ℤ :=
+  windingNumber (C.path γ hγV) (C.path_ne_zero γ hγV hγreg)
+    (congrArg C.toFun hγloop)
+
+/-- Exact signed endpoint identity for every full physical return lift.
+It retains the actual prefix coordinate and the constructed winding integer. -/
+theorem ReturnCoordinate.lift_prefix_endpoint {c : ℂ} {a b : ℕ} {A V : Set ℂ}
+    (C : ReturnCoordinate c a b A V) (γ Γ : C(unitInterval, ℂ))
+    (hγV : ∀ t, γ t ∈ V) (hγreg : ∀ t, γ t ≠ orbit c b c)
+    (hγloop : γ 1 = γ 0) (hΓA : ∀ t, Γ t ∈ A)
+    (hlift : ∀ t, orbit c (a+1+b) (Γ t) = γ t) :
+    orbit c a (Γ 1) = (-1 : ℂ)^C.winding γ hγV hγreg hγloop *
+      orbit c a (Γ 0) := by
+  apply square_lift_endpoint (C.path γ hγV) (prefixPath c a Γ)
+    (C.path_ne_zero γ hγV hγreg) (congrArg C.toFun hγloop)
+  intro t
+  change (orbit c a (Γ t))^2 = C.toFun (γ t)
+  rw [← hlift t]
+  exact (C.square (Γ t) (hΓA t)).symm
+
+/-- Even winding is necessary and sufficient for an arbitrary complete
+lift to close in the actual return source. -/
+theorem ReturnCoordinate.lift_closed_iff_even {c : ℂ} {a b : ℕ} {A V : Set ℂ}
+    (C : ReturnCoordinate c a b A V) (hpinj : InjOn (orbit c a) A)
+    (γ Γ : C(unitInterval, ℂ))
+    (hγV : ∀ t, γ t ∈ V) (hγreg : ∀ t, γ t ≠ orbit c b c)
+    (hγloop : γ 1 = γ 0) (hΓA : ∀ t, Γ t ∈ A)
+    (hlift : ∀ t, orbit c (a+1+b) (Γ t) = γ t) :
+    Γ 1 = Γ 0 ↔ Even (C.winding γ hγV hγreg hγloop) := by
+  have hsquare (t : unitInterval) :
+      (prefixPath c a Γ) t ^ 2 = (C.path γ hγV) t := by
+    change (orbit c a (Γ t))^2 = C.toFun (γ t)
+    rw [← hlift t]
+    exact (C.square (Γ t) (hΓA t)).symm
+  have hphase := square_lift_closed_iff_even (C.path γ hγV) (prefixPath c a Γ)
+    (C.path_ne_zero γ hγV hγreg) (congrArg C.toFun hγloop) hsquare
+  change orbit c a (Γ 1) = orbit c a (Γ 0) ↔ _ at hphase
+  exact (hpinj.eq_iff (hΓA 1) (hΓA 0)).symm.trans hphase
+
+/-- Odd winding is necessary and sufficient for a complete lift to end
+at the canonical deck partner of its starting point. -/
+theorem ReturnCoordinate.lift_switched_iff_odd {c : ℂ} {a b : ℕ} {A V : Set ℂ}
+    (C : ReturnCoordinate c a b A V) (hpinj : InjOn (orbit c a) A)
+    (τ : ℂ → ℂ) (hτmap : MapsTo τ A A)
+    (hτprefix : ∀ z ∈ A, orbit c a (τ z) = -(orbit c a z))
+    (γ Γ : C(unitInterval, ℂ))
+    (hγV : ∀ t, γ t ∈ V) (hγreg : ∀ t, γ t ≠ orbit c b c)
+    (hγloop : γ 1 = γ 0) (hΓA : ∀ t, Γ t ∈ A)
+    (hlift : ∀ t, orbit c (a+1+b) (Γ t) = γ t) :
+    Γ 1 = τ (Γ 0) ↔ Odd (C.winding γ hγV hγreg hγloop) := by
+  have hsquare (t : unitInterval) :
+      (prefixPath c a Γ) t ^ 2 = (C.path γ hγV) t := by
+    change (orbit c a (Γ t))^2 = C.toFun (γ t)
+    rw [← hlift t]
+    exact (C.square (Γ t) (hΓA t)).symm
+  have hphase := square_lift_endpoint_eq_neg_iff_odd
+    (C.path γ hγV) (prefixPath c a Γ)
+    (C.path_ne_zero γ hγV hγreg) (congrArg C.toFun hγloop) hsquare
+  change orbit c a (Γ 1) = -(orbit c a (Γ 0)) ↔ _ at hphase
+  rw [← hτprefix (Γ 0) (hΓA 0)] at hphase
+  exact (hpinj.eq_iff (hΓA 1) (hτmap (hΓA 0))).symm.trans hphase
+
+/-- All closed-loop deck phases of an actual saturated one-critical
+return are determined by one analytic coordinate and one involution,
+both constructed from the physical components. No loop or inverse
+branch choice is assumed as input. -/
+theorem quadratic_return_monodromy (c : ℂ) (a b : ℕ)
+    (A B D V : Set ℂ) (x : ℂ) (hx0 : orbit c a x = 0)
+    (hVo : IsOpen V) (hVc : IsPreconnected V) (hv : orbit c b c ∈ V)
+    (hD : D = connectedComponentIn (orbit c b ⁻¹' V) c)
+    (hB : B = connectedComponentIn ((fun w : ℂ => w^2+c) ⁻¹' D) 0)
+    (hA : A = connectedComponentIn (orbit c a ⁻¹' B) x)
+    (hpinj : InjOn (orbit c a) A) (hrinj : InjOn (orbit c b) D) :
+    ∃ (C : ReturnCoordinate c a b A V) (τ : ℂ → ℂ),
+      AnalyticOnNhd ℂ τ A ∧ MapsTo τ A A ∧
+      (∀ z ∈ A, τ (τ z) = z) ∧
+      (∀ z ∈ A, orbit c a (τ z) = -(orbit c a z)) ∧
+      ∀ (γ : C(unitInterval, ℂ)) (hγV : ∀ t, γ t ∈ V)
+        (hγreg : ∀ t, γ t ≠ orbit c b c) (hγloop : γ 1 = γ 0),
+        ∀ Γ : C(unitInterval, ℂ), (∀ t, Γ t ∈ A) →
+          (∀ t, orbit c (a+1+b) (Γ t) = γ t) →
+          (Γ 1 = Γ 0 ↔ Even (C.winding γ hγV hγreg hγloop)) ∧
+          (Γ 1 = τ (Γ 0) ↔ Odd (C.winding γ hγV hγreg hγloop)) := by
+  obtain ⟨s, hsa, hsi, _, hs0, hsf⟩ :=
+    quadratic_return_square_coordinate c a b A B D V x hVo hVc hv hD hB hA hrinj
+  let C : ReturnCoordinate c a b A V := ⟨s, hsa, hsi, hs0, hsf⟩
+  obtain ⟨τ, hτa, hτmap, hτinv, hτprefix, _⟩ :=
+    quadratic_return_deck_paired_paths c a b A B D V x hx0 hVo hVc hv
+      hD hB hA hpinj hrinj
+  refine ⟨C, τ, hτa, hτmap, hτinv, hτprefix, ?_⟩
+  intro γ hγV hγreg hγloop Γ hΓA hlift
+  exact ⟨C.lift_closed_iff_even hpinj γ Γ hγV hγreg hγloop hΓA hlift,
+    C.lift_switched_iff_odd hpinj τ hτmap hτprefix
+      γ Γ hγV hγreg hγloop hΓA hlift⟩
 
 end
 
