@@ -452,3 +452,9 @@ formalization/weighted/QuadraticCantorCoding.lean	METADATA
 formalization/weighted/QuadraticCantorExpansion.lean	METADATA
 formalization/weighted/QuadraticCantorGeometry.lean	METADATA
 formalization/weighted/QuadraticCantorSplitting.lean	METADATA
+formalization/weighted/QuadraticLocalNormalForm.lean	METADATA
+formalization/weighted/LocalDegreeExhaustion.lean	METADATA
+formalization/weighted/QuadraticPowerNormalForm.lean	METADATA
+formalization/weighted/IteratedCarrierIsolation.lean	METADATA
+formalization/weighted/QuadraticCarrierSaturation.lean	METADATA
+formalization/weighted/QuadraticLocalFiberCensus.lean	METADATA
