@@ -7,46 +7,112 @@ human_review: none
 
 <a id="three-return-finite-capacity-20261127"></a>
 
-# Finite two-sided extremal length for actual three-return collars
+# Uniform two-sided extremal length for the selected actual three-return collars
 
 ## Claim
 
-Work in progress. The target is a new quantitative nondegeneration theorem for the actual canonical physical three-return domains at every selected integer period p >= 3. The intended advance is an explicit inner-disk inclusion and a strictly positive lower bound for the existing Lipschitz Dirichlet capacity, complementing the archived upper bound.
+For every integer p >= 3, the actual quadratic parameter and canonical physical three-return domains constructed by the preceding all-period realization admit the following additional estimates. Write d = criticalValue c p > 0, W = physicalSource c p, V = B(0,d/6), and K = closure W.
 
-The general analytic lemmas below have compiled locally. The all-period inradius and final physical assembly are still undergoing validation; no ledger closure is claimed at this proof-development checkpoint.
+1. The entire closed disk of radius d/40 lies in W.
+2. On that disk, the literal physical iterate satisfies
+   norm of the (3*p)-fold iterate at z, plus d/150, is strictly below d/6.
+3. The existing all-Lipschitz Dirichlet capacity obeys
+   3/20 <= capacity(K,V) < 60. Its reciprocal therefore obeys
+   1/60 < variationalModulus(K,V) <= 20/3.
+4. For the family Gamma of **all continuous rectifiable curves** joining K to the target circle with open path in V minus K, the standard two-modulus and its reciprocal extremal length obey
+   3/20 <= M(Gamma) <= 100*pi and
+   1/(100*pi) <= EL(Gamma) <= 20/3.
+
+All constants are independent of p and d. The theorem constructs c and uses the literal polynomial components; domain existence, an inner-radius condition and a modulus condition are not supplied as hypotheses.
+
+The final actual-domain assembly is in
+`ThreeReturnExtremalLength.exists_physical_renormalization_with_extremal_bounds`.
+The paired inequality is
+`ThreeReturnExtremalLength.selected_extremalLength_bounds`;
+`selected_extremalLength_pos_finite` excludes both zero and infinity.
+
+**Validation checkpoint:** the general analytic modules have compiled locally. The repaired all-period inradius and new final assembly are being checked by the pinned Lean project and existing CI. This paragraph will be replaced by the observed final validation result before review.
 
 ## Evidence
 
-The merged uniform_three_return_collar_20261127 packet already constructs the actual canonical proper degree-two return and proves that its reciprocal variational capacity exceeds 1/60. It explicitly leaves capacity positivity and finiteness of that reciprocal unproved. This contribution will build on that construction rather than repeat it.
+### What advances beyond the archive
 
-The new Lean source will be registered in the existing weighted project, public-theorem index and source table. Validation will use pinned Lean 4.32.0 and the existing CI transitive axiom audit.
+The preceding [uniform_three_return_collar_20261127 packet](../uniform_three_return_collar_20261127/NOTE.md) constructs W and V and proves closure W subset B(0,3*d/20), proper holomorphic degree-two return, trapped critical orbit, ambient phase inclusions, and capacity(K,V) < 60. Its Boundary explicitly leaves positivity of that capacity, finiteness of its reciprocal, and the missing standard-modulus comparison open.
 
-### Proof-development checkpoint
+This contribution proves the complementary actual inner-disk estimate, positive capacity, and **direct** two-sided standard joining-curve extremal length for those same domains. The old domain, degree, topology and upper-energy results are imported. No claim of a new classical extremal-length principle is made; the generic analytic infrastructure is formalized to establish the new all-period actual-domain theorem.
 
-ThreeReturnInradius.lean now contains the proposed all-period theorem that the closed normalized disk of radius 1/40 lies in the literal central three-return source. Its stronger analytic estimate is |F^3(z)| < 4/25 on that whole disk, leaving target margin 1/150. The finite p=3,...,16 integer certificate has been independently evaluated and kernel-checked locally with decide +kernel. The real/complex soundness proof, analytic tail and physical scaling are present in the source and are undergoing compilation; they are not yet claimed verified. The lower-capacity and full rectifiable-curve extremal-length arguments are being developed separately.
+### 1. Actual polynomial inradius
 
-A reusable pinned Lean 4.32.0 installation and Mathlib cache were located after the initial draft. Local proof checking is available; the existing CI remains the final authority.
+`ThreeReturnInradius.lean` proves norm(H(z)) < 4/25 for every norm(z) <= 1/40, where H is the actual normalized three-return. The target radius is 1/6, so the strict normalized image margin is 1/150.
 
-### Compiled analytic checkpoint
+For p=3,...,16, a new exact integer certificate bounds the full nonlinear iterate, including the remainder. The proof checks all fourteen certificates with Lean's kernel reduction (`decide +kernel`) and proves the interval-to-real/complex soundness statements. This is not a floating-point computation or a quadratic truncation.
 
-CollarCapacityLower.lean has compiled locally with no warnings. For every compact or noncompact inner plate containing B(0,r), every r,R > 0, and the unchanged all-Lipschitz plate-potential class, it proves capacity(K,B(0,R)) >= r/R and reciprocal capacity <= R/r < infinity. The argument uses almost-everywhere horizontal slices, the Lipschitz fundamental theorem of calculus, the actual planar derivative, and the measure-preserving real product coordinates. No uniform bound on the competitors' Lipschitz constants is assumed.
+For p>=17, the actual return approximation and the certified kappa interval control the three complete iterates. The model third critical image has norm at most 1/8; the actual critical-image error is at most 31*epsilon. Starting from the disk of radius 1/40, the propagated difference after three returns is at most
+62*epsilon + 25*(9/5)*(1/40)^2, with epsilon <= 1/500000. Their sum is strictly less than 4/25. The existing phase estimates justify every use of the approximation.
 
-CollarExtremalLength.lean has also compiled locally. It defines the standard two-modulus using every measurable nonnegative conformal density and every continuous rectifiable joining curve, with metric length integrated in Mathlib's unit-speed arclength parameter. The explicit whole-disk metric proves joining-curve extremal length >= 1/(100*pi) whenever the inner plate lies inside the existing physical radius 3*d/20 and the target is D(0,d/6). This is a separate curve-family theorem, not a renamed Dirichlet capacity. A full horizontal joining-family argument is now being developed to give its upper bound as well.
+The closed disk is connected, contains zero, and lies in the full pullback of B(0,1/6), so it lies in the actual central connected component. Scaling by d proves the physical inclusion and image margin. These are conclusions about the actual polynomial, not inputs about a stand-in domain.
 
-### Compiled full-family checkpoint
+### 2. Positive capacity
 
-CollarMetricEnergy.lean, CollarStraightLength.lean and CollarHorizontalFamily.lean have now compiled locally. For a compact plate K with B(0,r) subset K subset B(0,R), 0<r<R, the new theorem bounds the standard two-modulus below by r/R and joining-curve extremal length above by R/r. It extracts each straight joining curve after the last contact with K, computes its exact natural arclength integral, and applies Holder and Fubini to every admissible Borel-measurable extended nonnegative density, including densities of infinite area. No regularity of the inner boundary is assumed. At physical radii r=d/40 and R=d/6 this gives the intended upper bound 20/3.
+`CollarCapacityLower.lean` keeps the existing class of every globally Lipschitz real potential, zero on K and one outside B(0,R). If B(0,r) subset K and r,R>0, it proves capacity(K,B(0,R)) >= r/R.
 
-CI exposed three elaboration/parser issues in the all-period inradius proof. Those source errors have been repaired in this checkpoint; the inradius and final actual-domain assembly remain under validation. All new claims continue to be distinguished from proposed statements until their Lean checks finish.
+For almost every horizontal slice y in (-r/2,r/2], the potential changes by one between iy and R+iy. The Lipschitz fundamental theorem of calculus and a square-integral estimate give at least 1/R energy on that slice. Fubini over a strip of width r gives r/R. The proof uses the actual planar Frechet derivative and complex Lebesgue measure, with no common bound on the competitors' Lipschitz constants. The derivative vanishes outside the target disk and the boundary circle is null, so this is the original energy functional.
+
+### 3. Standard rectifiable-curve extremal length
+
+`CollarExtremalLength.lean` uses precisely the density/curve definition:
+
+- A curve is continuous on [0,1] and has finite total variation. Its original parameterization need not be Lipschitz, absolutely continuous, smooth or injective.
+- Metric length is the Lebesgue integral along Mathlib's natural arclength parameterization. The module proves unit speed, Lipschitz behavior, reconstruction and equality of the relevant images.
+- Admissible densities are all Borel-measurable functions from the plane to the extended nonnegative reals whose integral is at least one on every joining curve.
+- M is the infimum of their whole-plane square integrals; EL is its reciprocal.
+
+This is the standard two-modulus convention; see Kai Rajala, [Extremal length and duality](https://users.jyu.fi/~kirajala/Fuglede140824.pdf), Introduction, definition (1), and Steffen Rohde, [Topics in Geometric Function Theory, Lecture 1](https://sites.math.washington.edu/~rohde/582/lecture1.pdf), p. 2. These references identify the terminology; no unformalized theorem from them is used as a proof premise.
+
+The disk density of height 1/(R-r_out) on the closed target disk is admissible for every joining curve whenever K subset closedBall(0,r_out). Its area is pi*R^2/(R-r_out)^2. Substituting r_out=3*d/20 and R=d/6 gives M<=100*pi.
+
+For the opposite inequality, `CollarHorizontalFamily.lean` takes the last contact with compact K and the first outer-circle contact on every horizontal slice through B(0,r). It produces an actual joining segment, without any smoothness or connectedness assumption on the inner boundary. `CollarStraightLength.lean` computes that segment's exact natural arclength integral. Admissibility on the segment forces the full horizontal integral to be at least one. `CollarMetricEnergy.lean` applies Holder and Fubini to every extended-valued Borel density, including densities of infinite area, to prove M>=r/R.
+
+The actual radii r=d/40 and R=d/6 give M>=3/20 and EL<=20/3. This is a positive-area family argument; it does not replace the entire joining family by a single chosen path.
+
+### Lean registration and validation
+
+The seven new modules and all public theorem declarations are registered in the existing weighted lakefile, theorem index and source table:
+
+- `ThreeReturnInradius`
+- `CollarCapacityLower`
+- `CollarExtremalLength`
+- `CollarMetricEnergy`
+- `CollarStraightLength`
+- `CollarHorizontalFamily`
+- `ThreeReturnExtremalLength`
+
+Validation uses Lean 4.32.0 and the repository's pinned Mathlib revision. The existing source-trust scanner, full weighted build and transitive kernel-environment axiom audit are the authority. No workflow or trust allowance is added. Development checkpoints are committed in PR #246.
 
 ## Dependencies
 
-NOV26_OPEN_3P_MODULUS; NOV26_TIP_THEOREM. Existing ThreeReturnAnnulus, ThreeReturnDomain, UniformThreeReturn and UniformThreeReturnRenormalization modules, together with the actual finite and analytic-tail parameter estimates they consume.
+The selected obligation is NOV26_OPEN_3P_MODULUS, with NOV26_TIP_THEOREM as its recorded prerequisite.
+
+The actual construction is imported through `UniformThreeReturnRenormalization`, including the finite certified parameters, analytic-tail actual parameters, proper degree-two physical map, and existing outer containment and energy upper bound. The new generic analysis uses Mathlib's arclength parameterization, Rademacher differentiability, Lipschitz FTC, Holder inequality, Fubini theorem and Lebesgue measure transformations, all as Lean theorems.
 
 ## Boundary
 
-This draft claims no closure of the ledger obligation. Positive capacity for the chosen actual collar is distinct from an identification with classical annulus modulus, and no uniform statement about arbitrary further domain shrinking is assumed. The exact remaining modulus comparison and physical marking hypotheses will be recorded after the proof. No MLC, H1-H4, arbitrary-depth or canonical KKL Wave conclusion is claimed. Status records and workflows remain unchanged.
+The result is **partial for the literal ledger obligation**, and the row must remain open.
+
+The proved family is the fixed canonical pair
+W = d * component_0((F^[3])^-1 B(0,1/6)) and V = B(0,d/6), for the actual selected parameter at every p>=3. The theorem settles positive capacity, finite reciprocal capacity, and two-sided standard joining-curve extremal length for this family.
+
+The following larger obligations remain:
+
+1. Bounds for every arbitrarily further-shrunk collar or arbitrary nested depth are not proved. The ledger and AUDIT F04 explicitly include that broader quantifier.
+2. The analytic-tail selected actual parameter has not been identified with the archive's narrower unique signed/kneading chart 14*4^(-p)<c+2<16*4^(-p). The imported actual parameter exists in the proved broader shooting interval with its certified coefficient and orbit conditions; global uniqueness and the missing chart identification are not conclusions here.
+3. No equality between Dirichlet capacity and the curve two-modulus, or between joining-curve extremal length and a round-annulus uniformization parameter, is proved or assumed. Both quantities are bounded directly and separately. The standard rectifiable-curve theorem does not need either equality.
+4. No canonical KKL Wave marking, arbitrary-depth stationary system, H1-H4 or MLC conclusion follows from this packet.
+
+No status record is changed. The scope is the constructed actual canonical collars, not arbitrary replacement domains.
 
 ## Attribution
 
-The actual all-period domain construction and the trial-energy upper bound belong to the preceding archived contribution. This work targets the explicit nondegeneration gap identified in its Boundary section. OpenAI ChatGPT, GPT-6 Astra Pro performs proof search, Lean development and validation. Human review: none. Original contributions are released under the repository's CC0 terms.
+The actual all-period domain construction, topology, degree, dynamics and upper-energy bound belong to the preceding archived contribution. This work supplies the new uniform physical inradius and the resulting capacity and standard extremal-length bounds.
+
+OpenAI ChatGPT, GPT-6 Astra Pro performed proof search, Lean implementation, independent internal review and validation. Human review: none. Original contributions are released under the repository's CC0 terms.

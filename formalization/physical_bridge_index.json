@@ -4001,6 +4001,22 @@
         "admissible_horizontal_slice",
         "curveModulus_lower",
         "extremalLength_le_of_disk_subset"
+      ],
+      "formalization/weighted/ThreeReturnExtremalLength.lean": [
+        "selected_inner_plate_disk",
+        "selected_inner_plate_inside_target",
+        "selected_capacity_lower",
+        "selected_capacity_bounds",
+        "selected_variationalModulus_upper",
+        "selected_variationalModulus_bounds",
+        "selected_curveModulus_lower",
+        "selected_curveModulus_upper",
+        "selected_curveModulus_bounds",
+        "selected_extremalLength_upper",
+        "selected_extremalLength_lower",
+        "selected_extremalLength_bounds",
+        "selected_extremalLength_pos_finite",
+        "exists_physical_renormalization_with_extremal_bounds"
       ]
     },
     "obligations": []

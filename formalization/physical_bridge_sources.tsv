@@ -203,6 +203,7 @@ formalization/weighted/ThreeReturnCovering.lean	METADATA
 formalization/weighted/ThreeReturnDegree.lean	METADATA
 formalization/weighted/ThreeReturnDomain.lean	METADATA
 formalization/weighted/ThreeReturnEstimates.lean	METADATA
+formalization/weighted/ThreeReturnExtremalLength.lean	METADATA
 formalization/weighted/ThreeReturnFullness.lean	METADATA
 formalization/weighted/ThreeReturnInradius.lean	METADATA
 formalization/weighted/ThreeReturnParent.lean	METADATA
