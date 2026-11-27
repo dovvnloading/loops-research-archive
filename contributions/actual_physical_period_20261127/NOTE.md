@@ -25,7 +25,21 @@ The archive constructs `ActualTip p c`, a proper central p-return and a proper c
 
 `ActualFirstReturnSeparation.actual_first_return_exclusion` proves that the entire physical disk of radius (23/20) times the positive critical return value has all intermediate iterates of norm greater than 1, for every 1 <= j < p. The initial disk radius is less than 1/100. The proof compares the complete polynomial iterate with the exact positive inverse critical itinerary; it does not truncate the iterate or assume the required separation. Supporting theorems give uniform orbit shadowing below 1/100 through time p and a lower bound 7/5 on the intermediate real critical orbit.
 
-Both modules compile locally with the pinned Lean 4.32.0 runtime. Their CI and transitive axiom audit results will be recorded after this checkpoint. Exact physical period and connected filled-core work is in progress.
+Both modules compile locally with the pinned Lean 4.32.0 runtime and pass the repository-generated transitive axiom audit. The first remote checkpoint also passed contribution intake, model-to-geometry coverage, and research validation. Its weighted build was cancelled; that cancellation is not a passing Lean CI result.
+
+### Exact physical portrait and repulsion
+
+`ActualPrimitiveReturn.exists_actual_primitive_portrait` now constructs, for every p >= 17, one actual parameter with all of these properties simultaneously:
+
+- The archive's complete physical proper degree-two 3p-return and ambient p-return.
+- Pairwise disjointness of all 3p full open phase domains of the original quadratic.
+- Least critical preperiod 3p+1 and exact eventual period 3p.
+- Exactly 6p+1 points in the complete critical orbit and exactly 6p postcritical points.
+- Modulus of the complete physical 3p-return derivative at the signed periodic endpoint greater than 3/2.
+
+The exact all-time orbit-equality formula and finite census are in `ActualCriticalPreperiod`. `ActualFullCycle` proves whole-domain separation using target-vs-phase separation, not a forward-invariance assumption on the open source. `ActualTipMultiplier` differentiates the complete polynomial via its divided difference and transfers the multiplier through the actual scalar conjugacy. The existence theorem supplies the shooting witness and all separation premises.
+
+These modules compile locally and pass the transitive axiom audit with only the repository's permitted foundational axioms. Connected/full nonescaping-core construction and final CI verification remain in progress.
 
 ## Dependencies
 

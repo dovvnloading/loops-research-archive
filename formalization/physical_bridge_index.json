@@ -4045,6 +4045,50 @@
         "actual_first_return_exclusion",
         "actual_control_radius_small",
         "actual_early_image_disjoint"
+      ],
+      "formalization/weighted/ActualFullCycle.lean": [
+        "three_phase_target_no_early_contact",
+        "three_phase_no_early_contact",
+        "exact_period_of_no_early_contact",
+        "full_cycle_disjoint_of_no_early_contact",
+        "full_open_cycle_disjoint",
+        "selected_target_phase_disjoint",
+        "actual_target_phase_disjoint",
+        "actual_signed_tip_mem_and_fixed",
+        "actual_source_no_early_contact",
+        "actual_signed_tip_minimalPeriod",
+        "actual_full_open_cycle_disjoint"
+      ],
+      "formalization/weighted/ActualCriticalPreperiod.lean": [
+        "portrait_of_collision",
+        "entry_mem",
+        "period_after",
+        "periodic_iff",
+        "orbit_eq_iff",
+        "injective_prefix",
+        "range_eq_prefix",
+        "orbit_ncard",
+        "orbit_finite",
+        "postcritical_ncard",
+        "actual_critical_portrait",
+        "actual_critical_orbit_eq_iff",
+        "actual_critical_prefix_injective",
+        "actual_critical_orbit_ncard",
+        "actual_postcritical_ncard"
+      ],
+      "formalization/weighted/ActualTipMultiplier.lean": [
+        "actual_third_coordinate_lt",
+        "actual_secant_lower",
+        "actual_normalized_multiplier_gt",
+        "physical_multiplier_eq",
+        "actual_physical_multiplier_gt"
+      ],
+      "formalization/weighted/ActualPrimitiveReturn.lean": [
+        "actual_parent_in_control_disk",
+        "actual_parent_first_return_disjoint",
+        "constructed_full_open_cycle",
+        "constructed_critical_portrait",
+        "exists_actual_primitive_portrait"
       ]
     },
     "obligations": [
