@@ -3934,5 +3934,23 @@
       ]
     },
     "obligations": []
+  },
+  "actual-physical-period-20261127": {
+    "guide": "contributions/actual_physical_period_20261127/NOTE.md#actual-physical-period-20261127",
+    "theorems": {
+      "formalization/weighted/ActualTipItinerary.lean": [
+        "exists_actual_tip_with_itinerary"
+      ],
+      "formalization/weighted/ActualFirstReturnSeparation.lean": [
+        "actual_control_disk_shadowing",
+        "shooting_critical_prefix_lower",
+        "actual_first_return_exclusion",
+        "actual_control_radius_small",
+        "actual_early_image_disjoint"
+      ]
+    },
+    "obligations": [
+      "TERMINAL_WAVE_CREST_TO_KL_SKIPPING_BINDER"
+    ]
   }
 }
