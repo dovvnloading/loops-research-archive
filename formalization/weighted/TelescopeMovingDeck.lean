@@ -290,19 +290,24 @@ theorem quadratic_parameter_return_deck_family
     obtain ⟨hzero, hdV, hAo, hBo, hDo, hAc, hAWA', hBc, hDc, hDWD',
       hBfull, hAinj, hDinj, hsat, honto, hproper, hcompact, hdegree,
       hAimage, hDimage, hAclUp, hDclUs, hBclVp⟩ := hfamily d hd
+    change B d = (fun w : ℂ => w^2+d) ⁻¹' D d at hBfull
+    change A d = gp d '' B d at hAimage
+    change D d = gs d '' V at hDimage
+    change A d = connectedComponentIn (orbit d (a+1+b) ⁻¹' V) (ξ d) at hsat
     have hdp := (hPP0 hd).1
     have hds := (hPP0 hd).2.2.1
     rw [← hsat]
     constructor
     · intro hz
-      have hu : orbit d a z ∈ B d := connectedComponentIn_subset _ _ hz
+      have hu : orbit d a z ∈ B d :=
+        connectedComponentIn_subset (orbit d a ⁻¹' B d) (ξ d) hz
       have hw : orbit d (a+1) z ∈ D d := by
         change (orbit d a z)^2+d ∈ D d
         rw [hBfull] at hu
         exact hu
       refine ⟨hAclUp (subset_closure hz), hDclUs (subset_closure hw), ?_⟩
       rw [quadratic_orbit_add]
-      exact connectedComponentIn_subset _ _ hw
+      exact connectedComponentIn_subset (orbit d b ⁻¹' V) d hw
     · rintro ⟨hzUp, hwUs, hvV⟩
       have hwD : orbit d (a+1) z ∈ D d := by
         rw [hDimage]
@@ -338,14 +343,16 @@ theorem quadratic_parameter_return_deck_family
     obtain ⟨hzero, hdV, hAo, hBo, hDo, hAc, hAWA', hBc, hDc, hDWD',
       hBfull, hAinj, hDinj, hsat, honto, hproper, hcompact, hdegree,
       hAimage, hDimage, hAclUp, hDclUs, hBclVp⟩ := hfamily p.1 hp.1
+    change A p.1 = connectedComponentIn (orbit p.1 (a+1+b) ⁻¹' V) (ξ p.1) at hsat
     have hzA : p.2 ∈ A p.1 := by rw [hsat]; exact hp.2
-    have hu : orbit p.1 a p.2 ∈ B p.1 := connectedComponentIn_subset _ _ hzA
+    have hu : orbit p.1 a p.2 ∈ B p.1 :=
+      connectedComponentIn_subset (orbit p.1 a ⁻¹' B p.1) (ξ p.1) hzA
     have hdc : p.1 ∈ D p.1 := mem_connectedComponentIn hdV
     have hneg : -(orbit p.1 a p.2) ∈ B p.1 :=
       quadratic_critical_component_symmetric p.1 (D p.1) hdc _ hu
     have hnegVp := hBclVp (subset_closure hneg)
     have hOrbit : AnalyticAt ℂ (fun q : ℂ × ℂ => orbit q.1 a q.2) p :=
-      (quadratic_skew_analytic a p).snd
+      analyticAt_snd.comp (quadratic_skew_analytic a p)
     exact (hgpa (p.1, -(orbit p.1 a p.2)) ⟨(hPP0 hp.1).1, hnegVp⟩).comp
       (f := fun q : ℂ × ℂ => (q.1, -(orbit q.1 a q.2))) (x := p)
       (analyticAt_fst.prod hOrbit.neg)
@@ -355,10 +362,15 @@ theorem quadratic_parameter_return_deck_family
   obtain ⟨hzero, hdV, hAo, hBo, hDo, hAc, hAWA', hBc, hDc, hDWD',
     hBfull, hAinj, hDinj, hsat, honto, hproper, hcompact, hdegree,
     hAimage, hDimage, hAclUp, hDclUs, hBclVp⟩ := hfamily d hd
+  change IsOpen (A d) at hAo
+  change A d = connectedComponentIn (orbit d (a+1+b) ⁻¹' V) (ξ d) at hsat
   refine ⟨hzero, hdV, ?_⟩
   have hdD : d ∈ D d := mem_connectedComponentIn hdV
   have h0B : (0 : ℂ) ∈ B d := mem_connectedComponentIn (by simpa using hdD)
-  have hxiA : ξ d ∈ A d := mem_connectedComponentIn (by rwa [hzero])
+  have hxiA : ξ d ∈ A d := mem_connectedComponentIn (by
+    change orbit d a (ξ d) ∈ B d
+    rw [hzero]
+    exact h0B)
   have hponto : orbit d a '' A d = B d :=
     orbit_component_image d a (B d) hBo isPreconnected_connectedComponentIn
       (ξ d) (by rwa [hzero])
@@ -372,7 +384,7 @@ theorem quadratic_parameter_return_deck_family
     exact he
   have hderiv : HasDerivAt (fun z => τ (d,z)) (-1) (ξ d) :=
     (hτ0crit (ξ d) hxiA hzero).congr_of_eventuallyEq
-      ((hAo.mem_nhds hxiA).mono fun z hz => hmatch z hz)
+      (Filter.Eventually.mono (hAo.mem_nhds hxiA) fun z hz => hmatch z hz)
   rw [← hsat]
   refine ⟨hxiA, hAo, hAc, hAWA', honto, hproper, hdegree, ?_, ?_, hderiv⟩
   · intro z hz

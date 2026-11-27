@@ -175,10 +175,12 @@ All three modules are registered default Lake targets, every public theorem
 is in the theorem index, and each source uses the existing CONSTRUCT route.
 
 The pinned Lean 4.32.0 toolchain and pinned Mathlib dependencies are
-installed locally. The first full local run of TelescopeDeckRigidity
-exited zero with no diagnostics. Covering and moving-family compilation,
-full integration, and the unchanged CI audits are in progress. No CI
-success for uncompiled candidates is asserted at this checkpoint.
+installed locally. All three modules pass `lake env lean` locally with exit zero and no
+diagnostics. The rigidity file passed on its first run. The covering file
+needed one explicit preimage type; the moving-family file needed explicit
+component types and analytic projection composition. No theorem statement
+was weakened. Full integration and the unchanged CI audits are in progress;
+no CI success is asserted before those runs finish.
 
 Reproduction:
 

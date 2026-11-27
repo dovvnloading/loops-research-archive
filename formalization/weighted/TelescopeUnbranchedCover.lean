@@ -54,7 +54,6 @@ private theorem analytic_restriction_local_homeomorph
 private theorem restriction_fiber_finite (c : ℂ) (n : ℕ)
     (A V : Set ℂ) (hm : MapsTo (orbit c n) A V) (v : V) :
     ((MapsTo.restrict (orbit c n) A V hm) ⁻¹' {v}).Finite := by
-  let F := MapsTo.restrict (orbit c n) A V hm
   have hfinite : (((↑) : A → ℂ) ⁻¹' (↑(localFiber c n A v) : Set ℂ)).Finite :=
     (localFiber c n A v).finite_toSet.preimage Subtype.val_injective.injOn
   apply hfinite.subset
@@ -77,7 +76,7 @@ theorem quadratic_return_offcritical_deriv (c : ℂ) (a b : ℕ)
     exact ⟨z, hz, rfl⟩
   have hqz : orbit c (a+1) z ∈ D := by
     rw [hB] at hpz
-    exact connectedComponentIn_subset _ _ hpz
+    exact connectedComponentIn_subset ((fun w : ℂ => w^2+c) ⁻¹' D) 0 hpz
   have hp : criticalVisits c z a = 0 :=
     (criticalVisits_zero_iff c z a).mpr
       (orbit_injOn_no_critical_visits c a A hA hpinj z hz)
