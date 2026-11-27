@@ -3542,6 +3542,93 @@
         "signBoxCheck_sound",
         "coverCheck_sound",
         "certified_collision_derivative_ne_zero"
+      ],
+      "formalization/weighted/GlobalTipCertificates.lean": [
+        "cover11_checked",
+        "seed11_root",
+        "seed11_signs",
+        "seed11_invariant",
+        "seed11_inside",
+        "cover12_checked",
+        "seed12_root",
+        "seed12_signs",
+        "seed12_invariant",
+        "seed12_inside"
+      ],
+      "formalization/weighted/GlobalTipCertificates3To4.lean": [
+        "tipScale_pos",
+        "cover3_checked",
+        "seed3_root",
+        "seed3_signs",
+        "seed3_invariant",
+        "seed3_inside",
+        "cover4_checked",
+        "seed4_root",
+        "seed4_signs",
+        "seed4_invariant",
+        "seed4_inside"
+      ],
+      "formalization/weighted/GlobalTipCertificates5To6.lean": [
+        "cover5_checked",
+        "seed5_root",
+        "seed5_signs",
+        "seed5_invariant",
+        "seed5_inside",
+        "cover6_checked",
+        "seed6_root",
+        "seed6_signs",
+        "seed6_invariant",
+        "seed6_inside"
+      ],
+      "formalization/weighted/GlobalTipCertificates7To8.lean": [
+        "cover7_checked",
+        "seed7_root",
+        "seed7_signs",
+        "seed7_invariant",
+        "seed7_inside",
+        "cover8_checked",
+        "seed8_root",
+        "seed8_signs",
+        "seed8_invariant",
+        "seed8_inside"
+      ],
+      "formalization/weighted/GlobalTipCertificates9To10.lean": [
+        "cover9_checked",
+        "seed9_root",
+        "seed9_signs",
+        "seed9_invariant",
+        "seed9_inside",
+        "cover10_checked",
+        "seed10_root",
+        "seed10_signs",
+        "seed10_invariant",
+        "seed10_inside"
+      ],
+      "formalization/weighted/GlobalTipFamily.lean": [
+        "finite_tip_certificates",
+        "global_tip_enclosed",
+        "exists_unique_global_signed_tip",
+        "global_tip_simple",
+        "global_tip_restrictive",
+        "exists_unique_restrictive_tip"
+      ],
+      "formalization/weighted/GlobalTipWindow.lean": [
+        "polynomial_eq_real_iterate",
+        "polynomial_time_add",
+        "restrictive_returns_mem",
+        "restrictive_first_phase",
+        "restrictive_middle_phase",
+        "negative_orbit_parameter_bounds",
+        "returnSigns_parameter_bounds",
+        "endpoint_window_phase_bounds",
+        "endpointWindow_restrictive",
+        "restrictiveWindow_endpointWindow",
+        "restrictiveWindow_iff_endpointWindow",
+        "hasSigns_returnSigns",
+        "hasSigns_parameter_bounds",
+        "hasSigns_endpointWindow",
+        "hasSigns_restrictiveWindow",
+        "restrictiveWindow_hasSigns"
       ]
     },
     "obligations": []

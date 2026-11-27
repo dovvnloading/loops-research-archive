@@ -74,7 +74,14 @@ formalization/weighted/FullClonePolynomial.lean	CLONE EDGE
 formalization/weighted/FullCloneRenewal.lean	CLONE-MARKOV RENEWAL-GAP AFFINE-CORRELATION NATIVE-CORRELATION
 formalization/weighted/FullCloneSpectralMax.lean	CLONE EDGE
 formalization/weighted/FullCloneStrictGap.lean	CLONE EDGE
+formalization/weighted/GlobalTipCertificates.lean	METADATA
+formalization/weighted/GlobalTipCertificates3To4.lean	METADATA
+formalization/weighted/GlobalTipCertificates5To6.lean	METADATA
+formalization/weighted/GlobalTipCertificates7To8.lean	METADATA
+formalization/weighted/GlobalTipCertificates9To10.lean	METADATA
+formalization/weighted/GlobalTipFamily.lean	METADATA
 formalization/weighted/GlobalTipIsolation.lean	METADATA
+formalization/weighted/GlobalTipWindow.lean	METADATA
 formalization/weighted/GraphWeightedBridge.lean	CLONE EDGE
 formalization/weighted/LeastSaturatedCarrier.lean	METADATA
 formalization/weighted/LimbInsertionHolonomy.lean	CUTS CREST
