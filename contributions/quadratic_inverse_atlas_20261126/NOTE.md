@@ -145,7 +145,19 @@ The contribution registers 43 public theorems in four modules:
 | [QuadraticInverseTransport.lean](../../formalization/weighted/QuadraticInverseTransport.lean) | 10 | Clock splitting, enlargement, equal-depth reached-component transport |
 | [QuadraticParameterAtlas.lean](../../formalization/weighted/QuadraticParameterAtlas.lean) | 2 | Critical-visit exclusion and the complete common parameter atlas |
 
-Proof status at this draft checkpoint: all four modules and all 43 public theorems have compiled locally without diagnostics. The repository's transitive audit also passed all 75 declarations in the four modules, including private and generated declarations, with only `propext`, `Classical.choice`, and `Quot.sound` permitted. The unchanged full CI build and dependency audit remain the acceptance gate; the final evidence record will identify the exact proof commit and successful CI run.
+All 43 public theorems compile in the repository's full CI build at proof commit [ee29cfd9287ab15f4cf4ea3bfffc6f4b236d4580](https://github.com/dovvnloading/loops-research-archive/commit/ee29cfd9287ab15f4cf4ea3bfffc6f4b236d4580). The unchanged [weighted Lean workflow 45920206162](https://github.com/dovvnloading/loops-research-archive/actions/runs/45920206162) completed successfully, with `Build completed successfully (8972 jobs)` and `AXIOM_AUDIT_PASS weighted: 151 modules, 3275 declarations`. All four new modules built without diagnostics.
+
+The same CI run reports the following transitive audit results, including private and generated declarations:
+
+| Module | Audited declarations | Audited theorem declarations | Result |
+| --- | ---: | ---: | --- |
+| QuadraticRegularInverse | 18 | 16 | Allowed axioms only |
+| QuadraticInverseBranches | 39 | 32 | Allowed axioms only |
+| QuadraticInverseTransport | 12 | 12 | Allowed axioms only |
+| QuadraticParameterAtlas | 6 | 6 | Allowed axioms only |
+| Total for this contribution | 75 | 66 | Passed |
+
+The permitted foundational dependencies are `propext`, `Classical.choice`, and `Quot.sound`; no new axioms or proof-admission escapes are used. The source coverage and forbidden-token check passed before the build. [Research validation 45920206148](https://github.com/dovvnloading/loops-research-archive/actions/runs/45920206148) also passed, and all 24 reported pull-request workflow runs at the proof commit succeeded. The local contribution check returned `RESULT: PASS`. The final documentation-only update records these results and related-work attribution without changing the accepted Lean source, registries, or dependency pins.
 
 The pinned versions are Lean `v4.32.0` and Mathlib commit `81a5d257c8e410db227a6665ed08f64fea08e997`. Local compilation used a selective dependency cache and temporarily narrowed import headers in six existing ancestors to fit the workspace. All six original headers were restored; no ancestor proof, dependency pin, audit rule, or workflow was changed. Full CI validates the committed project with its original imports.
 
@@ -173,6 +185,8 @@ The formal proof builds on these existing archive results:
 - [QuadraticInverseOpen.lean](../../formalization/weighted/QuadraticInverseOpen.lean): `quadratic_inverse_open_component`.
 
 Earlier work reviewed includes the [single-fiber exhaustion](../cylinder_fiber_exhaustion_20261126/NOTE.md), [critical-fiber census](../critical_fiber_census_20261126/NOTE.md), [critical-window obstruction](../quadratic_critical_window_20261126/NOTE.md), [cylinder ramification](../quadratic_cylinder_ramification_20261126/NOTE.md), and [component fiber degree](../quadratic_component_fiber_degree_20261126/NOTE.md) packets. The last already gives component degree and an enlargement test without simple connectivity. The present work uses stronger regular target geometry to construct a coordinated analytic atlas and common parameter family; it does not replace that more general ramified component theory.
+
+The concurrently merged [analytic deck rigidity](../analytic_deck_rigidity_20261126/NOTE.md) packet was also reviewed. Its `quadratic_return_unique_path_lift` and `quadratic_return_deck_paired_paths` construct and classify the two source-domain-valued lifts of paths for a one-critical return over an open preconnected target, avoiding the propagated critical value. Here the full global fiber has size \(2^n\), the lifts are unrestricted complex-valued maps from arbitrary nonempty preconnected spaces, and the target is regular and simply connected. Neither result subsumes the other as stated. That packet's `quadratic_parameter_return_deck_family` constructs a jointly analytic involution on a moving branched source under compact one-critical-core hypotheses. The present parameter theorem instead continues every root of one regular fiber on a common product and gives a census through the closed target disk. No deck-rigidity conclusion is claimed here.
 
 Mathlib supplies connected-component quotients, elementary complex topology, finite-type and cardinality infrastructure, and analytic and derivative interfaces. All mathematics used in the new proof scripts is imported and checked inside the pinned Lean project.
 
