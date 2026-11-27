@@ -3191,6 +3191,56 @@
       "KKL_STATIONARY_NONLC_SELECTED_GEOMETRIC_CONTINUUM_LIFT"
     ]
   },
+  "center-multiplier-coordinate-20261126": {
+    "guide": "contributions/center_multiplier_coordinate_20261126/NOTE.md#center-multiplier-coordinate-20261126",
+    "theorems": {
+      "formalization/weighted/QuadraticCenterMultiplier.lean": [
+        "returnOrbit_step_start",
+        "returnMultiplier_initial_factor",
+        "returnMultiplier_zero_start",
+        "returnMultiplier_ne_zero_of_orbit_ne_zero",
+        "center_tail_multiplier_ne_zero",
+        "moving_center_multiplier_hasDerivAt",
+        "moving_center_hasDerivAt",
+        "center_multiplier_derivative_ne_zero"
+      ],
+      "formalization/weighted/QuadraticMultiplierIteration.lean": [
+        "returnOrbit_add_steps",
+        "returnMultiplier_add_steps",
+        "periodic_returnOrbit_mul",
+        "periodic_returnMultiplier_mul",
+        "periodic_motion_returnMultiplier_mul",
+        "repeated_returnMultiplier_hasDerivAt_zero",
+        "repeated_returnMultiplier_no_differentiable_left_inverse",
+        "periodic_motion_returnMultiplier_order"
+      ],
+      "formalization/weighted/QuadraticMultiplierCoordinate.lean": [
+        "center_multiplier_motion",
+        "center_multiplier_parameter_coordinate"
+      ],
+      "formalization/weighted/QuadraticMultiplierDisk.lean": [
+        "center_multiplier_disk"
+      ],
+      "formalization/weighted/QuadraticCenterTrapping.lean": [
+        "returnOrbit_critical_secant",
+        "center_uniform_return_trapping"
+      ],
+      "formalization/weighted/QuadraticTrappingEscape.lean": [
+        "escapeOrbit_eq_returnOrbit",
+        "escape_zero_of_bounded_return_subsequence",
+        "escape_zero_of_return_disk",
+        "parameterEscape_zero_of_return_disk"
+      ],
+      "formalization/weighted/QuadraticCenterParameterLocus.lean": [
+        "center_uniform_zero_escape_disk",
+        "center_parameter_escape_zero",
+        "center_mem_interior_zero_escape"
+      ]
+    },
+    "obligations": [
+      "H4_RIGIDITY"
+    ]
+  },
   "quadratic-local-deck-20261126": {
     "guide": "contributions/quadratic_local_deck_20261126/NOTE.md#quadratic-local-deck-20261126",
     "theorems": {
