@@ -50,7 +50,8 @@ theorem quadratic_enlargement_reflection_iff_of_no_merger
   rw [quadratic_component_reflection_iff_neg_mem c n U x hn hx,
     quadratic_component_reflection_iff_neg_mem c n V x hn (hUV hx)]
   constructor
-  · exact connectedComponentIn_mono x (preimage_mono hUV)
+  · intro hnx
+    exact connectedComponentIn_mono x (preimage_mono hUV) hnx
   · intro hnx
     have hnegU : -x ∈ (quad c)^[n] ⁻¹' U := by
       change (quad c)^[n] (-x) ∈ U
