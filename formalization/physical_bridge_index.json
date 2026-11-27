@@ -3141,5 +3141,20 @@
     "obligations": [
       "DIRECT_DECORATION_END_PRIME_END_COFINALITY"
     ]
+  },
+  "quadratic-escape-stability-20261126": {
+    "guide": "contributions/quadratic_escape_stability_20261126/NOTE.md#quadratic-escape-stability-20261126",
+    "theorems": {
+      "formalization/weighted/QuadraticOrbitShadowing.lean": [
+        "quadratic_preimage_near",
+        "finite_orbit_shadow",
+        "infinite_orbit_shadow",
+        "filled_orbit_shadow",
+        "large_parameter_orbit_shadow"
+      ]
+    },
+    "obligations": [
+      "H3_COERCIVITY"
+    ]
   }
 }

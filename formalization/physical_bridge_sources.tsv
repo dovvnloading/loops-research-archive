@@ -112,6 +112,7 @@ formalization/weighted/QuadraticEscapeEndpoint.lean	QUADRATIC-ESCAPE
 formalization/weighted/QuadraticEscapeFullness.lean	METADATA
 formalization/weighted/QuadraticInverseOpen.lean	CONSTRUCT
 formalization/weighted/QuadraticMultiplierArithmetic.lean	METADATA
+formalization/weighted/QuadraticOrbitShadowing.lean	METADATA
 formalization/weighted/QuadraticParameterDistortion.lean	CONSTRUCT
 formalization/weighted/QuadraticParameterInverse.lean	CONSTRUCT
 formalization/weighted/QuadraticParameterMotion.lean	CONSTRUCT

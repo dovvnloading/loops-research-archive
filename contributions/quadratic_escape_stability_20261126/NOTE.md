@@ -5,6 +5,8 @@ ai: OpenAI GPT-6 Astra Pro
 human_review: none
 ---
 
+<a id="quadratic-escape-stability-20261126"></a>
+
 # Actual quadratic escape stability and compact limits
 
 Ledger statement being addressed:
@@ -24,9 +26,26 @@ The base revision is `7c50921352b9f9855e7a3e4e68ed7866b07be79b` on `main`.
 The existing `QuadraticEscape.lean` constructs the actual potential from finite
 iterates and proves a uniform tail bound and joint continuity.
 `QuadraticEscapeFullness.lean` supplies actual compact full dynamical sublevels.
-This packet will record exact Lean theorem names and CI results as the proofs
-are completed. Only compiled declarations passing the repository's transitive
-dependency audit will be counted as results.
+Only compiled declarations passing the repository's transitive dependency audit
+will be counted as results.
+
+### Checkpoint 1: whole-orbit parameter shadowing (CI pending)
+
+`formalization/weighted/QuadraticOrbitShadowing.lean` supplies five candidate
+theorems: `quadratic_preimage_near`, `finite_orbit_shadow`,
+`infinite_orbit_shadow`, `filled_orbit_shadow`, and
+`large_parameter_orbit_shadow`. A reference quadratic orbit with every point
+of norm at least two has, for every new parameter d, an actual forward orbit
+within norm(d-c) at every time. If the reference orbit is bounded, so is the
+shadow. The existing large-parameter geometry verifies the separation
+hypothesis for every point of K_c when norm(c) is at least eight.
+
+The proof chooses a square-root sign to halve backward error, constructs
+arbitrary finite shadows, and intersects their nested nonempty compact
+initial-point sets. Local registration and proof-source scans pass. Local
+Lean compilation is unavailable: the mandatory pinned compiler artifacts and
+Mathlib cache exceed this workspace's free disk capacity. GitHub Actions
+compilation and its transitive dependency audit remain the acceptance gate.
 
 ## Dependencies
 
