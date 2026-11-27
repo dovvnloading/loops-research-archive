@@ -1,5 +1,6 @@
 import ThreeReturnInradius
 import CollarHorizontalFamily
+import CollarShellMetric
 
 /-!
 # Two-sided extremal length for the actual uniform three-return collars
@@ -26,11 +27,13 @@ noncomputable section
 
 private theorem inner_ratio {d : ℝ} (hd : 0 < d) :
     (d/40)/(d/6) = 3/20 := by
-  field_simp [hd.ne'] <;> ring
+  field_simp [hd.ne']
+  ring
 
 private theorem outer_ratio {d : ℝ} (hd : 0 < d) :
     (d/6)/(d/40) = 20/3 := by
-  field_simp [hd.ne'] <;> ring
+  field_simp [hd.ne']
+  ring
 
 /-- The positive-radius disk lies in the actual inner plate. -/
 theorem selected_inner_plate_disk {p : ℕ} (hp : 3 ≤ p) {c : ℝ}
@@ -108,9 +111,9 @@ theorem selected_curveModulus_lower {p : ℕ} (hp : 3 ≤ p) {c : ℝ}
 theorem selected_curveModulus_upper {p : ℕ} (hp : 3 ≤ p) {c : ℝ}
     (hc : SelectedParameter p c) :
     curveModulus (closure (physicalSource c p)) (criticalValue c p/6) ≤
-      ENNReal.ofReal (100*Real.pi) := by
+      ENNReal.ofReal (19*Real.pi) := by
   have h := selected_canonical_collar hp hc
-  exact physical_curveModulus_le h.scale_pos
+  exact CollarShellMetric.physical_curveModulus_le_19pi h.scale_pos
     (h.physical_closure_inside.trans ball_subset_closedBall)
 
 theorem selected_curveModulus_bounds {p : ℕ} (hp : 3 ≤ p) {c : ℝ}
@@ -118,7 +121,7 @@ theorem selected_curveModulus_bounds {p : ℕ} (hp : 3 ≤ p) {c : ℝ}
     ENNReal.ofReal (3/20 : ℝ) ≤
       curveModulus (closure (physicalSource c p)) (criticalValue c p/6) ∧
       curveModulus (closure (physicalSource c p)) (criticalValue c p/6) ≤
-        ENNReal.ofReal (100*Real.pi) :=
+        ENNReal.ofReal (19*Real.pi) :=
   ⟨selected_curveModulus_lower hp hc, selected_curveModulus_upper hp hc⟩
 
 /-- A scale-independent finite upper bound on standard extremal length. -/
@@ -139,21 +142,37 @@ theorem selected_extremalLength_upper {p : ℕ} (hp : 3 ≤ p) {c : ℝ}
 /-- A strictly positive universal lower bound on standard extremal length. -/
 theorem selected_extremalLength_lower {p : ℕ} (hp : 3 ≤ p) {c : ℝ}
     (hc : SelectedParameter p c) :
-    (ENNReal.ofReal (100*Real.pi))⁻¹ ≤
+    (ENNReal.ofReal (19*Real.pi))⁻¹ ≤
       extremalLength (closure (physicalSource c p)) (criticalValue c p/6) := by
-  have h := selected_canonical_collar hp hc
-  exact physical_extremalLength_ge h.scale_pos
-    (h.physical_closure_inside.trans ball_subset_closedBall)
+  exact ENNReal.inv_le_inv.mpr (selected_curveModulus_upper hp hc)
 
 /-- Uniform two-sided standard joining-curve extremal length on the
 selected actual physical three-return collars. -/
 theorem selected_extremalLength_bounds {p : ℕ} (hp : 3 ≤ p) {c : ℝ}
     (hc : SelectedParameter p c) :
-    (ENNReal.ofReal (100*Real.pi))⁻¹ ≤
+    (ENNReal.ofReal (19*Real.pi))⁻¹ ≤
       extremalLength (closure (physicalSource c p)) (criticalValue c p/6) ∧
       extremalLength (closure (physicalSource c p)) (criticalValue c p/6) ≤
         ENNReal.ofReal (20/3 : ℝ) :=
   ⟨selected_extremalLength_lower hp hc, selected_extremalLength_upper hp hc⟩
+
+/-- The direct all-curve estimate recovers the strict numerical lower
+threshold without any capacity-duality hypothesis. -/
+theorem selected_extremalLength_gt_one_sixty {p : ℕ} (hp : 3 ≤ p) {c : ℝ}
+    (hc : SelectedParameter p c) :
+    (60 : ℝ≥0∞)⁻¹ <
+      extremalLength (closure (physicalSource c p)) (criticalValue c p/6) := by
+  have h := selected_canonical_collar hp hc
+  exact CollarShellMetric.physical_extremalLength_gt_one_sixty h.scale_pos
+    (h.physical_closure_inside.trans ball_subset_closedBall)
+
+theorem selected_extremalLength_strict_bounds {p : ℕ} (hp : 3 ≤ p) {c : ℝ}
+    (hc : SelectedParameter p c) :
+    (60 : ℝ≥0∞)⁻¹ <
+      extremalLength (closure (physicalSource c p)) (criticalValue c p/6) ∧
+      extremalLength (closure (physicalSource c p)) (criticalValue c p/6) ≤
+        ENNReal.ofReal (20/3 : ℝ) :=
+  ⟨selected_extremalLength_gt_one_sixty hp hc, selected_extremalLength_upper hp hc⟩
 
 /-- The standard invariant is neither zero nor infinite. -/
 theorem selected_extremalLength_pos_finite {p : ℕ} (hp : 3 ≤ p) {c : ℝ}
@@ -174,7 +193,7 @@ theorem exists_physical_renormalization_with_extremal_bounds (p : ℕ) (hp : 3 �
       ENNReal.ofReal (3/20 : ℝ) ≤
         capacity (closure (physicalSource c p)) (physicalTarget c p) ∧
       capacity (closure (physicalSource c p)) (physicalTarget c p) < 60 ∧
-      (ENNReal.ofReal (100*Real.pi))⁻¹ ≤
+      (60 : ℝ≥0∞)⁻¹ <
         extremalLength (closure (physicalSource c p)) (criticalValue c p/6) ∧
       extremalLength (closure (physicalSource c p)) (criticalValue c p/6) ≤
         ENNReal.ofReal (20/3 : ℝ) := by
@@ -182,7 +201,7 @@ theorem exists_physical_renormalization_with_extremal_bounds (p : ℕ) (hp : 3 �
   exact ⟨c, hc, selected_physical_renormalization hp hc,
     ThreeReturnInradius.selected_physical_closedBall_subset hp hc,
     selected_capacity_lower hp hc, (selected_canonical_collar hp hc).capacity_lt,
-    selected_extremalLength_lower hp hc, selected_extremalLength_upper hp hc⟩
+    selected_extremalLength_gt_one_sixty hp hc, selected_extremalLength_upper hp hc⟩
 
 end
 end ThreeReturnExtremalLength

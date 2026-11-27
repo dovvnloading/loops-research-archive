@@ -4015,8 +4015,20 @@
         "selected_extremalLength_upper",
         "selected_extremalLength_lower",
         "selected_extremalLength_bounds",
+        "selected_extremalLength_gt_one_sixty",
+        "selected_extremalLength_strict_bounds",
         "selected_extremalLength_pos_finite",
         "exists_physical_renormalization_with_extremal_bounds"
+      ],
+      "formalization/weighted/CollarShellMetric.lean": [
+        "shellMetric_measurable",
+        "exists_final_shell_interval",
+        "shellMetric_admissible",
+        "shellMetric_area",
+        "curveModulus_le_shell_ratio",
+        "physical_curveModulus_le_19pi",
+        "physical_curveModulus_lt_sixty",
+        "physical_extremalLength_gt_one_sixty"
       ]
     },
     "obligations": []

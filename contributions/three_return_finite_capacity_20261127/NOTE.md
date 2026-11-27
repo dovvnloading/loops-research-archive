@@ -20,18 +20,16 @@ For every integer p >= 3, the actual quadratic parameter and canonical physical 
    3/20 <= capacity(K,V) < 60. Its reciprocal therefore obeys
    1/60 < variationalModulus(K,V) <= 20/3.
 4. For the family Gamma of **all continuous rectifiable curves** joining K to the target circle with open path in V minus K, the standard two-modulus and its reciprocal extremal length obey
-   3/20 <= M(Gamma) <= 100*pi and
-   1/(100*pi) <= EL(Gamma) <= 20/3.
+   3/20 <= M(Gamma) <= 19*pi < 60 and
+   1/60 < EL(Gamma) <= 20/3. The sharper lower bound is 1/(19*pi).
 
 All constants are independent of p and d. The theorem constructs c and uses the literal polynomial components; domain existence, an inner-radius condition and a modulus condition are not supplied as hypotheses.
 
 The final actual-domain assembly is in
 `ThreeReturnExtremalLength.exists_physical_renormalization_with_extremal_bounds`.
 The paired inequality is
-`ThreeReturnExtremalLength.selected_extremalLength_bounds`;
+`ThreeReturnExtremalLength.selected_extremalLength_strict_bounds`;
 `selected_extremalLength_pos_finite` excludes both zero and infinity.
-
-**Validation checkpoint:** the general analytic modules have compiled locally. The repaired all-period inradius and new final assembly are being checked by the pinned Lean project and existing CI. This paragraph will be replaced by the observed final validation result before review.
 
 ## Evidence
 
@@ -69,7 +67,7 @@ For almost every horizontal slice y in (-r/2,r/2], the potential changes by one 
 
 This is the standard two-modulus convention; see Kai Rajala, [Extremal length and duality](https://users.jyu.fi/~kirajala/Fuglede140824.pdf), Introduction, definition (1), and Steffen Rohde, [Topics in Geometric Function Theory, Lecture 1](https://sites.math.washington.edu/~rohde/582/lecture1.pdf), p. 2. These references identify the terminology; no unformalized theorem from them is used as a proof premise.
 
-The disk density of height 1/(R-r_out) on the closed target disk is admissible for every joining curve whenever K subset closedBall(0,r_out). Its area is pi*R^2/(R-r_out)^2. Substituting r_out=3*d/20 and R=d/6 gives M<=100*pi.
+`CollarShellMetric.lean` supplies a sharper admissible density: height 1/(R-r_out) on the closed target disk minus the open disk of radius r_out. In natural arclength coordinates, take the curve's last contact with the closed disk of radius r_out. The remaining tail lies in the shell and has length at least R-r_out, even for curves with arbitrary earlier backtracking. Thus the shell density is admissible for every joining curve. Its exact area is pi*(R^2-r_out^2)/(R-r_out)^2. Substituting r_out=3*d/20 and R=d/6 gives M<=19*pi<60 and hence the direct standard bound EL>1/60.
 
 For the opposite inequality, `CollarHorizontalFamily.lean` takes the last contact with compact K and the first outer-circle contact on every horizontal slice through B(0,r). It produces an actual joining segment, without any smoothness or connectedness assumption on the inner boundary. `CollarStraightLength.lean` computes that segment's exact natural arclength integral. Admissibility on the segment forces the full horizontal integral to be at least one. `CollarMetricEnergy.lean` applies Holder and Fubini to every extended-valued Borel density, including densities of infinite area, to prove M>=r/R.
 
@@ -77,7 +75,7 @@ The actual radii r=d/40 and R=d/6 give M>=3/20 and EL<=20/3. This is a positive-
 
 ### Lean registration and validation
 
-The seven new modules and all public theorem declarations are registered in the existing weighted lakefile, theorem index and source table:
+The eight new modules and all public theorem declarations are registered in the existing weighted lakefile, theorem index and source table:
 
 - `ThreeReturnInradius`
 - `CollarCapacityLower`
@@ -85,9 +83,24 @@ The seven new modules and all public theorem declarations are registered in the 
 - `CollarMetricEnergy`
 - `CollarStraightLength`
 - `CollarHorizontalFamily`
+- `CollarShellMetric`
 - `ThreeReturnExtremalLength`
 
-Validation uses Lean 4.32.0 and the repository's pinned Mathlib revision. The existing source-trust scanner, full weighted build and transitive kernel-environment axiom audit are the authority. No workflow or trust allowance is added. Development checkpoints are committed in PR #246.
+Validation uses Lean 4.32.0 and the repository's pinned Mathlib revision. The contribution intake, source-trust scanner and public-theorem registration checks pass. The existing weighted workflow builds the complete project and audits every declaration's transitive dependencies against exactly propext, Classical.choice and Quot.sound. No workflow or trust allowance is added. Head-specific build and audit results are recorded in [PR #246 checks](https://github.com/dovvnloading/loops-research-archive/pull/246/checks), with the complete development history committed in that PR.
+
+Reproduce the new proof chain with:
+
+```sh
+cd formalization/weighted
+lake build ThreeReturnExtremalLength
+```
+
+The existing CI checks the entire weighted project, not only this dependency chain. From the repository root its full audit and contribution checks are:
+
+```sh
+python3 -B code/verify_lean_coverage.py --audit weighted
+python3 -B code/contribute.py check
+```
 
 ## Dependencies
 
