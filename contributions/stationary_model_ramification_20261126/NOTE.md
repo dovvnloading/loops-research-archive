@@ -193,11 +193,18 @@ zero-depth identity map.
   topological local-injectivity characterization and all-depth branching
   itinerary, using the archived geometric reflection.
 
-The current reduced modules compile locally with the repository's exact
-Lean 4.32.0 toolchain and locked Mathlib dependencies. The final compiled
-dependency audit and head-specific CI run are still pending at this
-checkpoint. No proof result is described as CI-verified until those
-checks pass.
+All three final modules compile locally with the repository's exact
+Lean 4.32.0 toolchain and locked Mathlib dependencies. The focused
+transitive audit passes for all 44 compiled declarations, including
+38 theorem declarations with private/generated declarations counted.
+There are 12 explicitly named public theorems. The source and theorem
+registration checks and the contribution checker pass.
+
+[VALIDATION.md](VALIDATION.md) records exact source hashes, toolchain and
+dependency revisions, and the verbatim audit output. Head-specific CI
+conclusions are recorded in the [pull request checks](https://github.com/dovvnloading/loops-research-archive/pull/230/checks).
+The local report does not substitute for the existing full CI build and
+transitive audit.
 
 Reproduction with the repository toolchain:
 
