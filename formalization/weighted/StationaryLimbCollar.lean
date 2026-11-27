@@ -39,7 +39,7 @@ private theorem subtype_component_image (K B : Set ℂ) (hBK : B ⊆ K)
       continuous_subtype_val.continuousOn).subset_connectedComponentIn
     · exact ⟨x, mem_connectedComponentIn hx, rfl⟩
     · rintro z ⟨w, hw, rfl⟩
-      exact connectedComponentIn_subset _ _ hw
+      exact connectedComponentIn_subset ((Subtype.val : K → ℂ) ⁻¹' B) x hw
   · let C := connectedComponentIn B (x : ℂ)
     have hCK : C ⊆ K := (connectedComponentIn_subset B (x : ℂ)).trans hBK
     have hconn : IsPreconnected ((Subtype.val : K → ℂ) ⁻¹' C) := by
