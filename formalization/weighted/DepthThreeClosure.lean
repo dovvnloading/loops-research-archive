@@ -79,6 +79,8 @@ theorem grid_packet_disk_remainder (P : Packet) (hP : P ∈ gridPackets)
   exact errors_sound hS ((realEnclosed_iff hS P.parameter c).mpr hc)
     (6 * (P.p * P.q * P.r)) n hn r hr z hz j hj hjn
 
+set_option maxRecDepth 8192 in
+set_option exponentiation.threshold 1024 in
 /-- All three certified return circles satisfy the actual strict
 quadratic comparison, uniformly for every real parameter in the chart.
 The intervals and error bounds are constructed by the finite grid. -/
@@ -100,7 +102,9 @@ theorem grid_packet_boundary_comparison (P : Packet) (hP : P ∈ gridPackets)
   have hg := (allGridCertificates P hP).2
   simp only [GeometryCertificate, geometryCheck, positiveRatio,
     Bool.and_eq_true, decide_eq_true_eq] at hg
-  have hperiods : 3 ≤ P.p ∧ 3 ≤ P.q ∧ 3 ≤ P.r := by tauto
+  have hperiods : 3 ≤ P.p ∧ 3 ≤ P.q ∧ 3 ≤ P.r := by
+    clear_except hg
+    tauto
   have hdata :
       (0 < P.radius1.den ∧
         0 < gapNumerator gridScale (rowAt rows P.p)
@@ -114,6 +118,7 @@ theorem grid_packet_boundary_comparison (P : Packet) (hP : P ∈ gridPackets)
           (errorAt (errors gridScale rows P.radius3 (P.p * P.q * P.r))
             (P.p * P.q * P.r)) P.radius3) := by
     dsimp only [rows, N]
+    clear_except hg
     tauto
   have hp : 0 < P.p := by omega
   have hq : 0 < P.q := by omega
