@@ -31,8 +31,8 @@ theorem punctured_component_closure_subset (a d : X) :
   right
   by_cases hd : d ∈ ({a} : Set X)ᶜ
   · have hxsub : x ∈ ({a} : Set X)ᶜ := by simpa using hxa
-    have hxc : (⟨x, hxsub⟩ : ({a} : Set X)ᶜ) ∈
-        closure (connectedComponent (⟨d, hd⟩ : ({a} : Set X)ᶜ)) := by
+    have hxc : (⟨x, hxsub⟩ : {z : X // z ∈ ({a} : Set X)ᶜ}) ∈
+        closure (connectedComponent (⟨d, hd⟩ : {z : X // z ∈ ({a} : Set X)ᶜ})) := by
       apply closure_subtype.mpr
       rwa [← connectedComponentIn_eq_image hd]
     rw [isClosed_connectedComponent.closure_eq] at hxc
@@ -89,15 +89,19 @@ private theorem limb_inverse_injOn_closure [T2Space X]
     · exact (open_inverse_closure_fiber_unique F D a x y hF hopen hD hinj
         hxD hfa hy (hxy.symm.trans hfa)).symm
   · have hxmem : x ∈ D := by
-      rcases hxD with rfl | h
-      · exact (haD (by simpa only [hfix] using hfd)).elim
-      · exact h
-    have hymem : y ∈ D := by
-      rcases hyD with rfl | h
-      · have he : F x = a := hxy.trans hfix
+      rcases hxD with hxa | h
+      · have he : F x = a := (congrArg F hxa).trans hfix
         exact (haD (he ▸ hfd)).elim
       · exact h
-    exact hinj ⟨hxmem, hfd⟩ ⟨hymem, hxy ▸ hfd⟩ hxy
+    have hymem : y ∈ D := by
+      rcases hyD with hya | h
+      · have he : F x = a := hxy.trans ((congrArg F hya).trans hfix)
+        exact (haD (he ▸ hfd)).elim
+      · exact h
+    have hyF : F y ∈ D := by
+      rw [← hxy]
+      exact hfd
+    exact hinj ⟨hxmem, hfd⟩ ⟨hymem, hyF⟩ hxy
 
 /-- Selected inverse injectivity persists on the entire closed limb,
 including the dividing attachment points, at every finite depth. -/
@@ -273,7 +277,7 @@ theorem quadratic_closed_itinerary_planar_geometry (c : ℂ)
   · have him : orbit c n '' C =
         (Subtype.val : quadraticFilled c → ℂ) ''
           ((F^[n]) '' closure (limbItinerary F D D n)) := by
-      simp only [C, Set.image_image, filled_iterate_val]
+      simp only [C, Set.image_image, F, filled_iterate_val]
     rw [him, limbItinerary_image_closure F D hF hcover n]
 
 private theorem compact_core_component (f : ℂ → ℂ)
