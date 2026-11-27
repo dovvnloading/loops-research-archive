@@ -87,6 +87,7 @@ theorem quadratic_return_all_path_classification (c : ℂ) (a b : ℕ)
   have hR : {t | orbit c (a + 1 + b) (Γ t) ≠ orbit c b c} =
       {t | γ t ≠ orbit c b c} := by
     ext t
+    change orbit c (a + 1 + b) (Γ t) ≠ orbit c b c ↔ γ t ≠ orbit c b c
     rw [hΓR t]
   let E := ((targetReferenceEquiv c (a + 1 + b) A γ Γ hΓR).trans e).trans
     (phaseCutCongr hR)

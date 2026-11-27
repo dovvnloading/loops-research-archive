@@ -28,12 +28,12 @@ theorem quadratic_return_two_crossing_same_endpoints
     (hponto : orbit c a '' A = B)
     (hpinj : InjOn (orbit c a) A) (hrinj : InjOn (orbit c b) D) :
     ∃ γ Γ₀ Γ₁ : C(unitInterval, ℂ),
-      (∀ t, Γ₀ t ∈ A ∧ Γ₁ t ∈ A) ∧
-      (∀ t, orbit c (a+1+b) (Γ₀ t) = γ t ∧
+      (∀ t : unitInterval, Γ₀ t ∈ A ∧ Γ₁ t ∈ A) ∧
+      (∀ t : unitInterval, orbit c (a+1+b) (Γ₀ t) = γ t ∧
         orbit c (a+1+b) (Γ₁ t) = γ t) ∧
-      (∀ t, ((t : ℝ) ≤ 1/3 ∨ 2/3 ≤ (t : ℝ)) → Γ₁ t = Γ₀ t) ∧
+      (∀ t : unitInterval, ((t : ℝ) ≤ 1/3 ∨ 2/3 ≤ (t : ℝ)) → Γ₁ t = Γ₀ t) ∧
       Γ₁ 0 = Γ₀ 0 ∧ Γ₁ 1 = Γ₀ 1 ∧ Γ₁ ≠ Γ₀ ∧
-      (∀ t, γ t = orbit c b c ↔ (t : ℝ) = 1/3 ∨ (t : ℝ) = 2/3) ∧
+      (∀ t : unitInterval, γ t = orbit c b c ↔ (t : ℝ) = 1/3 ∨ (t : ℝ) = 2/3) ∧
       Γ₀ 0 = Γ₀ 1 ∧ γ 0 = γ 1 ∧ γ 0 ≠ orbit c b c := by
   classical
   have h0 : (0 : ℂ) ∈ B := by
@@ -71,6 +71,7 @@ theorem quadratic_return_two_crossing_same_endpoints
   have hzero (t : unitInterval) :
       Γ₀ t = x ↔ (t : ℝ) = 1/3 ∨ (t : ℝ) = 2/3 := by
     change x + (p t : ℂ) = x ↔ _
+    rw [add_eq_left, Complex.ofReal_eq_zero]
     simp [p, mul_eq_zero, ne_of_gt hδ, sub_eq_zero]
   have hprefix (t : unitInterval) : orbit c a (Γ₀ t) = 0 ↔ Γ₀ t = x := by
     constructor
@@ -83,12 +84,13 @@ theorem quadratic_return_two_crossing_same_endpoints
       τ (Γ₀ t) ≠ Γ₀ t ↔ (t : ℝ) ≠ 1/3 ∧ (t : ℝ) ≠ 2/3 := by
     simpa only [not_or] using
       not_congr (((hτfixed (Γ₀ t) (hΓ₀ t)).trans (hprefix t)).trans (hzero t))
-  let S : Set unitInterval := {t | (1/3 : ℝ) < (t : ℝ) ∧ (t : ℝ) < 2/3}
+  let S : Set unitInterval := {t : unitInterval | (1/3 : ℝ) < (t : ℝ) ∧ (t : ℝ) < 2/3}
   have hS : IsOpen S :=
     (isOpen_lt continuous_const continuous_subtype_val).inter
       (isOpen_lt continuous_subtype_val continuous_const)
-  have hother_eq : {t | τ (Γ₀ t) ≠ Γ₀ t} \ S =
-      {t | (t : ℝ) < 1/3} ∪ {t | (2/3 : ℝ) < (t : ℝ)} := by
+  have hother_eq : {t : unitInterval | τ (Γ₀ t) ≠ Γ₀ t} \ S =
+      {t : unitInterval | (t : ℝ) < 1/3} ∪
+        {t : unitInterval | (2/3 : ℝ) < (t : ℝ)} := by
     ext t
     simp only [mem_diff, mem_setOf_eq, mem_union, hregular]
     change ((t : ℝ) ≠ 1/3 ∧ (t : ℝ) ≠ 2/3) ∧
@@ -107,7 +109,7 @@ theorem quadratic_return_two_crossing_same_endpoints
       · refine ⟨⟨ne_of_gt ((by norm_num : (1/3 : ℝ) < 2/3).trans hr), ne_of_gt hr⟩, ?_⟩
         intro h
         exact lt_asymm hr h.2
-  have hother : IsOpen ({t | τ (Γ₀ t) ≠ Γ₀ t} \ S) := by
+  have hother : IsOpen ({t : unitInterval | τ (Γ₀ t) ≠ Γ₀ t} \ S) := by
     rw [hother_eq]
     exact (isOpen_lt continuous_subtype_val continuous_const).union
       (isOpen_lt continuous_const continuous_subtype_val)
@@ -120,12 +122,11 @@ theorem quadratic_return_two_crossing_same_endpoints
     ⟨fun t => orbit c (a+1+b) (Γ₀ t),
       (quadratic_orbit_continuous c (a+1+b)).comp Γ₀.continuous⟩
   have hΓ₁ (t : unitInterval) : Γ₁ t ∈ A := by
+    change phaseSelect (fun u : unitInterval => τ (Γ₀ u)) Γ₀ S t ∈ A
     rcases phaseSelect_choice (fun t => τ (Γ₀ t)) Γ₀ S t with h | h
-    · change phaseSelect _ _ S t ∈ A
-      rw [h]
+    · rw [h]
       exact hτmap (hΓ₀ t)
-    · change phaseSelect _ _ S t ∈ A
-      rw [h]
+    · rw [h]
       exact hΓ₀ t
   have hlift (t : unitInterval) : orbit c (a+1+b) (Γ₁ t) = γ t := by
     change orbit c (a+1+b) (Γ₁ t) = orbit c (a+1+b) (Γ₀ t)
@@ -140,7 +141,8 @@ theorem quadratic_return_two_crossing_same_endpoints
       rcases ht with ht | ht
       · exact (not_lt_of_ge ht) hs.1
       · exact (not_lt_of_ge ht) hs.2
-    exact phaseSelect_of_not_mem _ _ S htS
+    change phaseSelect (fun u : unitInterval => τ (Γ₀ u)) Γ₀ S t = Γ₀ t
+    exact phaseSelect_of_not_mem (fun u : unitInterval => τ (Γ₀ u)) Γ₀ S htS
   let mid : unitInterval := ⟨1/2, by constructor <;> norm_num⟩
   have hmidS : mid ∈ S := by norm_num [S, mid]
   have hmidreg : τ (Γ₀ mid) ≠ Γ₀ mid := (hregular mid).mpr (by norm_num [mid])
