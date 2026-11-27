@@ -248,13 +248,13 @@ private theorem positive_of_enclosed {S : Int} (hS : 0 < S)
     {b : Bounds} {x : ℝ} (hx : RealEnclosed S b x) (hb : 0 < b.lo) : 0 < x := by
   have hl : (0 : ℝ) < (b.lo : ℝ) := by exact_mod_cast hb
   apply (mul_lt_mul_iff_right₀ (scale_pos hS)).mp
-  simpa using hl.trans_le hx.1
+  simpa [mul_comm] using hl.trans_le hx.1
 
 private theorem negative_of_enclosed {S : Int} (hS : 0 < S)
     {b : Bounds} {x : ℝ} (hx : RealEnclosed S b x) (hb : b.hi < 0) : x < 0 := by
   have hh : (b.hi : ℝ) < 0 := by exact_mod_cast hb
   apply (mul_lt_mul_iff_right₀ (scale_pos hS)).mp
-  simpa using hx.2.trans_lt hh
+  simpa [mul_comm] using hx.2.trans_lt hh
 
 /-- A root certificate forces injectivity on the whole closed parameter
 interval, not just at its endpoints or its rational points. -/

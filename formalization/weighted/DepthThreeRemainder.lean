@@ -30,8 +30,7 @@ theorem critical_orbit_cast (c : ℝ) (j : Nat) :
   | zero => rfl
   | succ j ih =>
       rw [QuadraticEscape.orbit, ih, polynomial_succ]
-      push_cast
-      rfl
+      push_cast <;> rfl
 
 theorem remainder_one (c : ℝ) (z : ℂ) : remainder c 1 z = 0 := by
   norm_num [remainder, QuadraticEscape.orbit, quadraticCoefficient,
@@ -311,7 +310,7 @@ private theorem positive_gap_real {S : Int} (hS : 0 < S)
       (absLo row.quadratic : ℝ) * (r.num : ℝ) ^ 2 := by
     field_simp [hs.ne', hd.ne']
     <;> ring
-  apply (mul_lt_mul_iff_right₀ (mul_pos hs (sq_pos_of_pos hd))).mp
+  apply (mul_lt_mul_iff_left₀ (mul_pos hs (sq_pos_of_pos hd))).mp
   rw [hl, hh]
   nlinarith [hg]
 

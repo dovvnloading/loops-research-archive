@@ -3411,7 +3411,8 @@
       "formalization/weighted/DepthThreeClosure.lean": [
         "remaining_twenty_six_closed",
         "complete_depth_three_grid",
-        "grid_packet_disk_remainder"
+        "grid_packet_disk_remainder",
+        "grid_packet_boundary_comparison"
       ]
     },
     "obligations": []
