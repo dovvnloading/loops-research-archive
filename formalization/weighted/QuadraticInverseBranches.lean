@@ -382,9 +382,9 @@ theorem punctured_plane_component_obstruction (n : ℕ) :
   · intro k hk
     simp only [hzero, mem_compl_iff, mem_singleton_iff, not_true_eq_false, not_false_eq_true]
   · rw [hpull]
-    letI : ConnectedSpace (({0} : Set ℂ)ᶜ) := hconn.connectedSpace
+    letI : ConnectedSpace ↥(({0} : Set ℂ)ᶜ) := isConnected_iff_connectedSpace.mp hconn
     exact Nat.card_of_subsingleton
-      (ConnectedComponents.mk (⟨1, by simp⟩ : ({0} : Set ℂ)ᶜ))
+      (ConnectedComponents.mk (⟨1, by simp⟩ : ↥(({0} : Set ℂ)ᶜ)))
   · exact inverseFiber_card 0 n 1 (fun k _ => by rw [hzero]; exact zero_ne_one)
 
 /-- At every positive depth the simply connected component-count

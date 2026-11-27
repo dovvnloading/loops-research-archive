@@ -103,7 +103,7 @@ theorem quadratic_parameter_inverse_atlas (c : ℂ) (n : ℕ) (y : ℂ)
     hyT a ⟨a.val, by simp, a.property⟩
   have hanchor (a : I) : g a c y = a.val := by
     simpa only [a.property] using
-      (hbranch a c (hcP a)).2.1 (haU a (by simp))
+      (hbranch a c (hcP a)).2.1 (show a.val ∈ U a from haU a (by simp))
   let P₀ := ⋂ a : I, P a
   let T₀ := ⋂ a : I, T a
   have hP₀ : IsOpen P₀ := isOpen_iInter_of_finite hP
@@ -139,7 +139,9 @@ theorem quadratic_parameter_inverse_atlas (c : ℂ) (n : ℕ) (y : ℂ)
       hUW a (subset_closure ((hbranch a d (hdP d hd a)).1 (hwT w hw a)))
     have hgb : g b d w ∈ W b.val :=
       hUW b (subset_closure ((hbranch b d (hdP d hd b)).1 (hwT w hw b)))
-    exact Set.disjoint_left.mp hsep hga (he.symm ▸ hgb)
+    have hab_eq : g a d w = g b d w := he
+    have hgb' : g a d w ∈ W b.val := by rw [hab_eq]; exact hgb
+    exact Set.disjoint_left.mp hsep hga hgb'
   have hcomplete (d : ℂ) (hd : d ∈ Metric.ball c ε)
       (w : ℂ) (hw : w ∈ Metric.closedBall y δ) :
       (∀ z : ℂ, orbit d n z = w ↔ ∃! a : I, g a d w = z) ∧
