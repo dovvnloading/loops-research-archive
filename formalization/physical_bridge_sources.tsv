@@ -134,6 +134,7 @@ formalization/weighted/QuadraticUnivalentNeighborhood.lean	CONSTRUCT
 formalization/weighted/SaturatedTelescope.lean	METADATA
 formalization/weighted/SpectralDominance.lean	CLONE EDGE
 formalization/weighted/SquarePathMonodromy.lean	METADATA
+formalization/weighted/SquareRootSelection.lean	METADATA
 formalization/weighted/StationaryCanonicalLift.lean	VARIABLE-EXIT
 formalization/weighted/StationaryCompactContact.lean	METADATA
 formalization/weighted/StationaryDeckSeparator.lean	VARIABLE-EXIT
@@ -145,18 +146,19 @@ formalization/weighted/StationaryMonotoneGeometry.lean	METADATA
 formalization/weighted/StationaryMultiInterface.lean	METADATA
 formalization/weighted/StationaryPacketGain.lean	VARIABLE-EXIT
 formalization/weighted/StationaryPrefixCharge.lean	VARIABLE-EXIT
+formalization/weighted/TelescopeBranchSelection.lean	CONSTRUCT
 formalization/weighted/TelescopeCollarRecognition.lean	METADATA
 formalization/weighted/TelescopeCompactReturn.lean	CONSTRUCT
 formalization/weighted/TelescopeConformalInverse.lean	CONSTRUCT
 formalization/weighted/TelescopeDeckInvolution.lean	CONSTRUCT
 formalization/weighted/TelescopeDeckRigidity.lean	CONSTRUCT
-formalization/weighted/TelescopeMonodromyObstruction.lean	METADATA
-formalization/weighted/TelescopeMonodromyRealization.lean	METADATA
+formalization/weighted/TelescopeMonodromyObstruction.lean	CONSTRUCT
+formalization/weighted/TelescopeMonodromyRealization.lean	CONSTRUCT
 formalization/weighted/TelescopeMovingDeck.lean	CONSTRUCT
 formalization/weighted/TelescopeParameterReturn.lean	CONSTRUCT
 formalization/weighted/TelescopePathPairing.lean	CONSTRUCT
 formalization/weighted/TelescopeRamification.lean	METADATA
-formalization/weighted/TelescopeReturnMonodromy.lean	METADATA
+formalization/weighted/TelescopeReturnMonodromy.lean	CONSTRUCT
 formalization/weighted/TelescopeUnbranchedCover.lean	CONSTRUCT
 formalization/weighted/TelescopeUnivalentCollars.lean	CONSTRUCT
 formalization/weighted/TerminalFiberExclusion.lean	METADATA

@@ -3458,6 +3458,19 @@
       ],
       "formalization/weighted/TelescopeMonodromyRealization.lean": [
         "quadratic_return_all_local_windings"
+      ],
+      "formalization/weighted/SquareRootSelection.lean": [
+        "unique_continuous_lift_of_closed_loops",
+        "even_loops_of_continuous_square_root",
+        "unique_continuous_square_root_of_even_loops",
+        "continuous_square_root_iff_even_loops",
+        "continuous_square_root_analytic",
+        "analytic_square_root_iff_even_loops"
+      ],
+      "formalization/weighted/TelescopeBranchSelection.lean": [
+        "continuous_section_forces_even_loops",
+        "quadratic_return_unique_analytic_section_iff_even_loops",
+        "quadratic_return_continuous_section_iff_even_loops"
       ]
     },
     "obligations": [
