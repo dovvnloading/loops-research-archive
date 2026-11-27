@@ -3272,6 +3272,22 @@
     "theorems": {
       "DepthThreeCert.lean": [
         "rootCertificate_ordered"
+      ],
+      "formalization/weighted/DepthThreeReal.lean": [
+        "realEnclosed_iff",
+        "real_mul_enclosed",
+        "real_square_enclosed",
+        "real_add_enclosed",
+        "real_double_enclosed",
+        "joint_iter_enclosed",
+        "orbit_enclosed",
+        "derivative_enclosed",
+        "collision_hasDerivAt",
+        "collision_continuous",
+        "collision_enclosed",
+        "collision_derivative_enclosed",
+        "certified_collision_injective",
+        "certified_unique_real_root"
       ]
     },
     "obligations": []
