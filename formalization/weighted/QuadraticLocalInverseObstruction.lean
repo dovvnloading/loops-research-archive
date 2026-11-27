@@ -9,13 +9,11 @@ any full punctured target disk. This is a topological obstruction, proved
 without assuming an analytic candidate inverse or a chosen external marking.
 -/
 
-namespace LoopsQuadraticLocalInverseObstruction
-
 open Set Function
 open QuadraticEscape LoopsTelescopeRamification
 open LoopsQuadraticLocalDeckAction LoopsPowerMapRigidity
 
-namespace PowerChart
+namespace LoopsQuadraticLocalDeckAction.PowerChart
 
 variable {f : ℂ → ℂ} {x : ℂ} {m : ℕ} (C : PowerChart f x m)
 
@@ -60,7 +58,9 @@ theorem ramified_no_continuous_section (hm : 1 < m)
       _ = C.a*w := by rw [hright _ (hL hw)]; dsimp [L]; ring
   exact power_no_continuous_section m hm R hR ⟨s, hs, hp⟩
 
-end PowerChart
+end LoopsQuadraticLocalDeckAction.PowerChart
+
+namespace LoopsQuadraticLocalInverseObstruction
 
 /-- Every actual ramified quadratic iterate has a physical source
 neighborhood on which a continuous choice of one inverse over a full

@@ -11,14 +11,12 @@ as the actual critical-visit multiplicity. No analyticity or injectivity of
 the candidate self-map is assumed.
 -/
 
-namespace LoopsQuadraticLocalDeckRigidity
-
 open Set Function Filter Polynomial
 open scoped Topology
 open QuadraticEscape LoopsTelescopeRamification
 open LoopsQuadraticLocalDeckAction LoopsPowerMapRigidity
 
-namespace PowerChart
+namespace LoopsQuadraticLocalDeckAction.PowerChart
 
 variable {f : ℂ → ℂ} {x : ℂ} {m : ℕ} (C : PowerChart f x m)
 
@@ -43,7 +41,7 @@ theorem continuous_fiber_preserver_eq_deck (T : ℂ → ℂ)
     exact hw.2 (Set.mem_singleton_iff.mpr hw0)
   have hg : ContinuousOn g (Metric.ball (0 : ℂ) C.r \ {0}) := by
     exact C.coord_analytic.continuousOn.comp
-      (hT.comp (C.inv_analytic.continuousOn.mono diff_subset) hinv)
+      (hT.comp (C.inv_analytic.continuousOn.mono sdiff_subset) hinv)
       (fun w hw => hmap (C.inv_mapsTo hw.1))
   have hpow (w : ℂ) (hw : w ∈ Metric.ball (0 : ℂ) C.r) : (g w)^m = w^m := by
     apply mul_left_cancel₀ C.a_ne_zero
@@ -67,7 +65,7 @@ theorem continuous_fiber_preserver_eq_deck (T : ℂ → ℂ)
   intro η hη
   have he : C.deck η =ᶠ[𝓝 x] C.deck ζ := by
     filter_upwards [C.isOpen_source.mem_nhds C.mem_source] with z hz
-    exact (hη.2 z hz).symm.trans (heq z hz)
+    exact (hη.2 hz).symm.trans (heq hz)
   exact (C.deck_deriv_center η).unique
     ((C.deck_deriv_center ζ).congr_of_eventuallyEq he)
 
@@ -87,13 +85,13 @@ theorem continuous_fiber_preserver_analytic_bijective (T : ℂ → ℂ)
   refine ⟨(C.deck_analytic ζ hζ).congr C.isOpen_source heq.symm, hmap, ?_, ?_⟩
   · intro z hz w hw he
     apply C.coord_injOn hz hw
-    rw [heq z hz, heq w hw] at he
+    rw [heq hz, heq hw] at he
     have hc := congrArg C.coord he
     rw [C.deck_coord ζ z hζ hz, C.deck_coord ζ w hζ hw] at hc
     exact mul_left_cancel₀ hζ0 hc
   · intro w hw
     refine ⟨C.deck ζ⁻¹ w, C.deck_mem ζ⁻¹ w hinv hw, ?_⟩
-    rw [heq _ (C.deck_mem ζ⁻¹ w hinv hw), ← C.deck_mul ζ ζ⁻¹ w hinv hw,
+    rw [heq (C.deck_mem ζ⁻¹ w hinv hw), ← C.deck_mul ζ ζ⁻¹ w hinv hw,
       mul_inv_cancel₀ hζ0, C.deck_one w hw]
 
 /-- Distinct analytic sheet symmetries are distinguished by their
@@ -106,7 +104,7 @@ theorem continuous_fiber_preserver_deriv (T : ℂ → ℂ)
   obtain ⟨ζ, ⟨hζ, heq⟩, _⟩ := C.continuous_fiber_preserver_eq_deck T hT hmap hf
   have he : T =ᶠ[𝓝 x] C.deck ζ := by
     filter_upwards [C.isOpen_source.mem_nhds C.mem_source] with z hz
-    exact heq z hz
+    exact heq hz
   have hd : deriv T x = ζ :=
     ((C.deck_deriv_center ζ).congr_of_eventuallyEq he).deriv
   simpa only [hd] using And.intro hζ heq
@@ -147,19 +145,21 @@ theorem mem_deckMaps_iff (T : ℂ → ℂ) :
       exact (congrFun he ⟨z, hz⟩).symm
     refine ⟨(C.deck_analytic ζ hroot).continuousOn.congr heq, ?_, ?_⟩
     · intro z hz
-      rw [heq z hz]
+      rw [heq hz]
       exact C.deck_mem ζ z hroot hz
     · intro z hz
-      rw [heq z hz]
+      rw [heq hz]
       exact C.deck_preserves ζ z hroot hz
   · rintro ⟨hT, hmap, hf⟩
     obtain ⟨ζ, ⟨hζ, heq⟩, _⟩ :=
-      C.continuous_fiber_preserver_eq_deck T (hT.mono diff_subset) hmap hf
+      C.continuous_fiber_preserver_eq_deck T (hT.mono sdiff_subset) hmap hf
     refine ⟨ζ, (mem_nthRootsFinset C.degree_pos (1 : ℂ)).mpr hζ, ?_⟩
     funext z
-    exact (heq z z.property).symm
+    exact (heq z.property).symm
 
-end PowerChart
+end LoopsQuadraticLocalDeckAction.PowerChart
+
+namespace LoopsQuadraticLocalDeckRigidity
 
 /-- Unconditional local classification for every actual quadratic
 parameter, anchor, and finite iterate. The only map-specific hypotheses

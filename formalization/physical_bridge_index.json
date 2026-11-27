@@ -3262,6 +3262,7 @@
         "deck_deriv_center",
         "deck_fixed_iff",
         "same_fiber_iff_deck",
+        "map_eq_center_iff",
         "deck_phase_unique",
         "deck_iterate",
         "deck_iterate_degree",
@@ -3288,6 +3289,27 @@
       "formalization/weighted/QuadraticLocalInverseObstruction.lean": [
         "ramified_no_continuous_section",
         "quadratic_critical_local_no_continuous_section"
+      ],
+      "formalization/weighted/QuadraticLocalMonodromy.lean": [
+        "circularPhase_continuous",
+        "circularPhase_norm",
+        "circularPhase_ne_zero",
+        "circularPhase_zero",
+        "circularPhase_pow",
+        "circularLift_coordinate_mem",
+        "circularLift_mem",
+        "circularLift_coord",
+        "circularLift_continuous",
+        "circularLift_zero",
+        "circularLift_one",
+        "circularLift_image",
+        "circularLift_ne_center",
+        "circularLift_image_ne_center",
+        "circularLift_unique",
+        "circularLift_nat",
+        "circularLift_nat_eq_self_iff",
+        "circularLift_one_ne",
+        "quadratic_local_circular_monodromy"
       ]
     },
     "obligations": [

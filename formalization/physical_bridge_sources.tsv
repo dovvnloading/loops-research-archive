@@ -118,6 +118,7 @@ formalization/weighted/QuadraticInverseOpen.lean	CONSTRUCT
 formalization/weighted/QuadraticLocalDeckAction.lean	METADATA
 formalization/weighted/QuadraticLocalDeckRigidity.lean	METADATA
 formalization/weighted/QuadraticLocalInverseObstruction.lean	METADATA
+formalization/weighted/QuadraticLocalMonodromy.lean	METADATA
 formalization/weighted/QuadraticMultiplierArithmetic.lean	METADATA
 formalization/weighted/QuadraticMultiplierCoordinate.lean	METADATA
 formalization/weighted/QuadraticMultiplierDisk.lean	METADATA

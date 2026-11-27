@@ -199,6 +199,18 @@ theorem same_fiber_iff_deck (z w : ℂ) (hz : z ∈ C.source) (hw : w ∈ C.sour
   · rintro ⟨ζ, hζ, rfl⟩
     exact C.deck_preserves ζ z hζ hz
 
+/-- The branch anchor is the only point of this entire constructed
+source mapping to the central target. Noncentral source points therefore
+generate nondegenerate target circles. -/
+theorem map_eq_center_iff (z : ℂ) (hz : z ∈ C.source) :
+    f z = f x ↔ z = x := by
+  constructor
+  · intro he
+    obtain ⟨ζ, _, hζ⟩ := (C.same_fiber_iff_deck x z C.mem_source hz).mp he
+    exact hζ.symm.trans (C.deck_center ζ)
+  · rintro rfl
+    rfl
+
 /-- At every noncentral source point the phase reaching another
 point is unique. Thus the root-of-unity action on each noncentral
 fiber is free and transitive, not merely a surjective enumeration. -/
