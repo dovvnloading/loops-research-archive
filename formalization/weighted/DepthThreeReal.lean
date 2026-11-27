@@ -83,9 +83,9 @@ theorem real_mul_enclosed {S : Int} (hS : 0 < S)
   change ((low / S : Int) : ℝ) ≤ (x * y) * (S : ℝ) ∧
     (x * y) * (S : ℝ) ≤ ((-((-high) / S) : Int) : ℝ)
   constructor
-  · apply (mul_le_mul_right (scale_pos hS)).mp
+  · apply (mul_le_mul_iff_right₀ (scale_pos hS)).mp
     convert hf.trans hbox.1 using 1 <;> ring
-  · apply (mul_le_mul_right (scale_pos hS)).mp
+  · apply (mul_le_mul_iff_right₀ (scale_pos hS)).mp
     convert hbox.2.trans hc using 1 <;> ring
 
 /-- The tighter interval square remains sound for all real inputs; in
@@ -99,7 +99,7 @@ theorem real_square_enclosed {S : Int} (hS : 0 < S)
   have hlow : (low : ℝ) ≤ (x * (S : ℝ)) * (x * (S : ℝ)) := by
     dsimp only [low]
     split_ifs with hcross
-    · change 0 ≤ (x * (S : ℝ)) * (x * (S : ℝ))
+    · simp only [Int.cast_zero]
       exact mul_self_nonneg _
     · by_cases hpos : 0 ≤ b.lo
       · have hp : (0 : ℝ) ≤ (b.lo : ℝ) := by exact_mod_cast hpos
@@ -145,9 +145,9 @@ theorem real_square_enclosed {S : Int} (hS : 0 < S)
   change ((low / S : Int) : ℝ) ≤ x ^ 2 * (S : ℝ) ∧
     x ^ 2 * (S : ℝ) ≤ ((-((-high) / S) : Int) : ℝ)
   constructor
-  · apply (mul_le_mul_right (scale_pos hS)).mp
+  · apply (mul_le_mul_iff_right₀ (scale_pos hS)).mp
     convert hf.trans hlow using 1 <;> ring
-  · apply (mul_le_mul_right (scale_pos hS)).mp
+  · apply (mul_le_mul_iff_right₀ (scale_pos hS)).mp
     convert hhigh.trans hc using 1 <;> ring
 
 theorem real_add_enclosed {S : Int} {a b : Bounds} {x y : ℝ}
@@ -247,13 +247,13 @@ theorem collision_derivative_enclosed {S : Int} (hS : 0 < S)
 private theorem positive_of_enclosed {S : Int} (hS : 0 < S)
     {b : Bounds} {x : ℝ} (hx : RealEnclosed S b x) (hb : 0 < b.lo) : 0 < x := by
   have hl : (0 : ℝ) < (b.lo : ℝ) := by exact_mod_cast hb
-  apply (mul_lt_mul_right (scale_pos hS)).mp
+  apply (mul_lt_mul_iff_right₀ (scale_pos hS)).mp
   simpa using hl.trans_le hx.1
 
 private theorem negative_of_enclosed {S : Int} (hS : 0 < S)
     {b : Bounds} {x : ℝ} (hx : RealEnclosed S b x) (hb : b.hi < 0) : x < 0 := by
   have hh : (b.hi : ℝ) < 0 := by exact_mod_cast hb
-  apply (mul_lt_mul_right (scale_pos hS)).mp
+  apply (mul_lt_mul_iff_right₀ (scale_pos hS)).mp
   simpa using hx.2.trans_lt hh
 
 /-- A root certificate forces injectivity on the whole closed parameter
@@ -270,7 +270,9 @@ theorem certified_collision_injective {S : Int} {n : Nat} {C : Bounds}
         (collision_continuous n).continuousOn
         (fun x _ => (collision_hasDerivAt n x).hasDerivWithinAt)
       intro x hx
-      have hc := (realEnclosed_iff hS C x).mpr (interior_subset hx)
+      have hxI : x ∈ Icc ((C.lo : ℝ) / (S : ℝ)) ((C.hi : ℝ) / (S : ℝ)) :=
+        interior_subset hx
+      have hc := (realEnclosed_iff hS C x).mpr hxI
       exact positive_of_enclosed hS (collision_derivative_enclosed hS hc n) hpos
     exact hm.injOn
   · have hm : StrictAntiOn (collisionPolynomial n)
@@ -279,7 +281,9 @@ theorem certified_collision_injective {S : Int} {n : Nat} {C : Bounds}
         (collision_continuous n).continuousOn
         (fun x _ => (collision_hasDerivAt n x).hasDerivWithinAt)
       intro x hx
-      have hc := (realEnclosed_iff hS C x).mpr (interior_subset hx)
+      have hxI : x ∈ Icc ((C.lo : ℝ) / (S : ℝ)) ((C.hi : ℝ) / (S : ℝ)) :=
+        interior_subset hx
+      have hc := (realEnclosed_iff hS C x).mpr hxI
       exact negative_of_enclosed hS (collision_derivative_enclosed hS hc n) hneg
     exact hm.injOn
 
@@ -333,6 +337,89 @@ theorem certified_unique_real_root {S : Int} {n : Nat} {C : Bounds}
   refine ⟨c, ⟨hlc, hcr, hroot⟩, ?_⟩
   intro y hy
   exact hinj ⟨hy.1.le, hy.2.1.le⟩ hc (hy.2.2.trans hroot.symm)
+
+/-- The quadratic coefficient of the critical return. Its interpretation
+as the coefficient of `z²` in the actual complex iterate is established in
+`DepthThreeRemainder`. -/
+def quadraticCoefficient : Nat → ℝ → ℝ
+  | 0, _ => 0
+  | j + 1, c => if j = 0 then 1
+      else 2 * LoopsRealPeriod27.polynomial j c * quadraticCoefficient j c
+
+def RealRowEnclosed (S : Int) (row : TraceRow) (j : Nat) (c : ℝ) : Prop :=
+  RealEnclosed S row.orbit (LoopsRealPeriod27.polynomial j c) ∧
+    RealEnclosed S row.deriv (LoopsRealPeriod27.derivativePolynomial j c) ∧
+    RealEnclosed S row.quadratic (quadraticCoefficient j c)
+
+theorem polynomial_succ (j : Nat) (c : ℝ) :
+    LoopsRealPeriod27.polynomial (j + 1) c =
+      LoopsRealPeriod27.polynomial j c ^ 2 + c := by
+  simp [LoopsRealPeriod27.polynomial, LoopsRealPeriod27.state_succ,
+    LoopsRealPeriod27.next]
+
+private theorem derivativePolynomial_succ (j : Nat) (c : ℝ) :
+    LoopsRealPeriod27.derivativePolynomial (j + 1) c =
+      2 * LoopsRealPeriod27.polynomial j c *
+        LoopsRealPeriod27.derivativePolynomial j c + 1 := by
+  simp [LoopsRealPeriod27.derivativePolynomial, LoopsRealPeriod27.polynomial,
+    LoopsRealPeriod27.state_succ, LoopsRealPeriod27.next]
+
+theorem row_next_enclosed {S : Int} (hS : 0 < S)
+    {C : Bounds} {c : ℝ} (hc : RealEnclosed S C c)
+    {j : Nat} {row : TraceRow} (hrow : RealRowEnclosed S row j c) :
+    RealRowEnclosed S (rowNext S C j row) (j + 1) c := by
+  refine ⟨?_, ?_, ?_⟩
+  · change RealEnclosed S (addBounds (squareBoundsAt S row.orbit) C)
+      (LoopsRealPeriod27.polynomial (j + 1) c)
+    rw [polynomial_succ]
+    exact real_add_enclosed (real_square_enclosed hS hrow.1) hc
+  · change RealEnclosed S
+      (addBounds (mulBoundsAt S (doubleBounds row.orbit) row.deriv) (oneAt S))
+      (LoopsRealPeriod27.derivativePolynomial (j + 1) c)
+    rw [derivativePolynomial_succ]
+    exact real_add_enclosed
+      (real_mul_enclosed hS (real_double_enclosed hrow.1) hrow.2.1)
+      (one_enclosed S)
+  · change RealEnclosed S
+      (if j = 0 then oneAt S
+       else mulBoundsAt S (doubleBounds row.orbit) row.quadratic)
+      (quadraticCoefficient (j + 1) c)
+    rw [quadraticCoefficient]
+    split_ifs
+    · exact one_enclosed S
+    · exact real_mul_enclosed hS (real_double_enclosed hrow.1) hrow.2.2
+
+theorem row_trace_enclosed {S : Int} (hS : 0 < S)
+    {C : Bounds} {c : ℝ} (hc : RealEnclosed S C c)
+    (n j k : Nat) (hk : k ≤ n) (row : TraceRow)
+    (hrow : RealRowEnclosed S row j c) :
+    RealRowEnclosed S (rowAt (rowTrace S C n j row) k) (j + k) c := by
+  induction n generalizing j k row with
+  | zero =>
+      have hk0 : k = 0 := by omega
+      subst k
+      simpa [rowAt, rowTrace] using hrow
+  | succ n ih =>
+      cases k with
+      | zero => simpa [rowAt, rowTrace] using hrow
+      | succ k =>
+          have hnext := row_next_enclosed hS hc hrow
+          have hrec := ih (j + 1) k (by omega) (rowNext S C j row) hnext
+          change RealRowEnclosed S
+            (rowAt (rowTrace S C n (j + 1) (rowNext S C j row)) k)
+            (j + (k + 1)) c
+          convert hrec using 1 <;> omega
+
+/-- Every stored trace row, including the quadratic Taylor coefficient,
+encloses the actual quantities throughout the closed parameter chart. -/
+theorem trace_enclosed {S : Int} (hS : 0 < S)
+    {C : Bounds} {c : ℝ} (hc : RealEnclosed S C c)
+    (n k : Nat) (hk : k ≤ n) :
+    RealRowEnclosed S (rowAt (trace S C n) k) k c := by
+  have hz : RealRowEnclosed S zeroRow 0 c :=
+    ⟨zero_enclosed S, zero_enclosed S, zero_enclosed S⟩
+  simpa only [trace, Nat.zero_add] using
+    row_trace_enclosed hS hc n 0 k hk zeroRow hz
 
 end
 

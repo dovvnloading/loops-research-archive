@@ -297,6 +297,7 @@ def geometryCheck (S : Int) (P : Packet) : Bool :=
   let A := (rowAt rows n3).quadratic
   let cuts := normalizedCuts S rows n3
   decide (0 < S ∧ P.parameter.lo < P.parameter.hi ∧
+    P.reference2.lo ≤ P.reference2.hi ∧ P.reference1.lo ≤ P.reference1.hi ∧
     3 ≤ P.p ∧ P.p ≤ 5 ∧ 3 ≤ P.q ∧ P.q ≤ 5 ∧ 3 ≤ P.r ∧ P.r ≤ 5) &&
   positiveRatio P.radius1 && positiveRatio P.radius2 && positiveRatio P.radius3 &&
   decide ((rowAt rows 1).orbit.hi < 0) &&
@@ -318,7 +319,7 @@ def geometryCheck (S : Int) (P : Packet) : Bool :=
   phaseCheck S rows ts3 P.radius3 n2 P.r &&
   layerContainment S rows ts2 P.radius1 P.radius2 n1 P.q &&
   layerContainment S rows ts3 P.radius2 P.radius3 n2 P.r &&
-  connectorCheck S P.parameter rows n1 (6 * P.q) P.radius1 &&
+  connectorCheck S P.parameter rows n1 (6 * P.q * P.r) P.radius1 &&
   connectorCheck S P.parameter rows n2 (6 * P.r) P.radius2 &&
   decide (P.alpha.lo < P.alpha.hi ∧
     0 < (fixedResidual S P.parameter A n3 P.alpha.lo).lo ∧
