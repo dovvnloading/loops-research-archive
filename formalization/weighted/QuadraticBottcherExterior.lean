@@ -26,7 +26,9 @@ def bottcher (c z : ℂ) : ℂ := z * Complex.exp (logCorrection c z)
 private theorem shifted_weight_hasSum : HasSum (fun n : ℕ => weight (n+1)) 1 := by
   have h := (hasSum_geometric_of_lt_one
     (by norm_num : (0 : ℝ) ≤ 1/2) (by norm_num : (1/2 : ℝ) < 1)).mul_right (1/2 : ℝ)
-  simpa [weight, pow_succ] using h
+  have htotal : (1-(1/2 : ℝ))⁻¹*(1/2 : ℝ) = 1 := by norm_num
+  rw [htotal] at h
+  simpa only [weight, pow_succ] using h
 
 /-- The norms of actual exterior iterates never decrease. -/
 theorem exterior_orbit_norm_lower (C : ℝ) (c z : ℂ)
@@ -95,6 +97,7 @@ theorem log_correction_step (C : ℝ) (c z : ℂ)
       (1/2 : ℂ)*logCorrection c (z^2+c) := by
     change (∑' n : ℕ, logCorrectionTerm c z n) = _
     rw [hs.tsum_eq_zero_add, hzero, htail, tsum_mul_left]
+    rfl
   linear_combination 2 * hsplit
 
 /-- The constructed exterior function conjugates one actual quadratic
@@ -113,9 +116,7 @@ theorem bottcher_semiconjugacy (C : ℝ) (c z : ℂ)
   have hstep := log_correction_step C c z hC hc hz
   calc
     bottcher c (z^2+c) = z^2*(1+c/z^2)*Complex.exp (logCorrection c (z^2+c)) := by
-      rw [bottcher]
-      congr 1
-      exact hfactor
+      rw [bottcher, hfactor]
     _ = z^2 * Complex.exp (Complex.log (1+c/z^2) + logCorrection c (z^2+c)) := by
       rw [Complex.exp_add, Complex.exp_log hq]
       ring
@@ -189,7 +190,7 @@ theorem bottcher_normalization (c : ℂ) :
     Tendsto (fun z : ℂ => bottcher c z / z) (cobounded ℂ) (𝓝 1) := by
   have hlim : Tendsto (fun z : ℂ => Complex.exp (logCorrection c z))
       (cobounded ℂ) (𝓝 1) := by
-    simpa only [Complex.exp_zero] using
+    simpa only [Complex.exp_zero, Function.comp_def] using
       Complex.continuous_exp.continuousAt.tendsto.comp (log_correction_tendsto_zero c)
   apply hlim.congr'
   filter_upwards [eventually_cobounded_le_norm (2*(1+‖c‖))] with z hz
@@ -219,13 +220,13 @@ theorem reciprocal_hasDerivAt_zero (c : ℂ) :
     (log_correction_tendsto_zero c).comp tendsto_inv₀_nhdsNE_zero
   have hlim : Tendsto (fun w : ℂ => Complex.exp (-logCorrection c w⁻¹))
       (𝓝[≠] (0 : ℂ)) (𝓝 1) := by
-    simpa only [neg_zero, Complex.exp_zero] using
+    simpa only [neg_zero, Complex.exp_zero, Function.comp_def] using
       Complex.continuous_exp.continuousAt.tendsto.comp hs.neg
   apply hasDerivAt_iff_tendsto_slope_zero.mpr
   apply hlim.congr'
   filter_upwards [self_mem_nhdsWithin] with w hw
   have hne : w ≠ 0 := hw
-  simp only [zero_add, reciprocal_zero, sub_zero, smul_eq_mul, reciprocal]
+  simp only [zero_add, reciprocal_zero, sub_zero, smul_eq_mul, reciprocal, zero_mul]
   rw [← mul_assoc, inv_mul_cancel₀ hne, one_mul]
 
 /-- The reciprocal function is analytic across the added point at
@@ -294,6 +295,35 @@ theorem reciprocal_local_coordinate (c : ℂ) :
   · simpa only [reciprocal_zero] using hf.analyticAt_localInverse hderiv
   · simpa only [reciprocal_zero, hd.deriv, inv_one] using hinv
   · simpa only [reciprocal_zero] using hright
+
+/-- The constructed function is an actual analytic coordinate on a
+sufficiently far exterior. Injectivity follows from its proved analytic
+inverse at infinity. -/
+theorem bottcher_exterior_coordinate (c : ℂ) :
+    ∃ R : ℝ, 0 < R ∧ 2*(1+‖c‖) ≤ R ∧
+      AnalyticOnNhd ℂ (bottcher c) {z | R < ‖z‖} ∧
+      Set.InjOn (bottcher c) {z | R < ‖z‖} := by
+  obtain ⟨ψ, _, _, _, hleft, _⟩ := reciprocal_local_coordinate c
+  have hfar : ∀ᶠ z in cobounded ℂ, ψ (reciprocal c z⁻¹) = z⁻¹ :=
+    (tendsto_inv₀_cobounded (α := ℂ)).eventually hleft
+  rw [Filter.hasBasis_cobounded_norm.eventually_iff] at hfar
+  obtain ⟨r, _, hr⟩ := hfar
+  let R := max (2*(1+‖c‖)) r
+  have hR : 2*(1+‖c‖) ≤ R := le_max_left _ _
+  have hrR : r ≤ R := le_max_right _ _
+  refine ⟨R, by linarith [norm_nonneg c], hR, ?_, ?_⟩
+  · intro z hz
+    exact bottcher_analyticAt c z (hR.trans_lt hz)
+  · intro z hz w hw hsame
+    have hzinv := hr z (hrR.trans hz.le)
+    have hwinv := hr w (hrR.trans hw.le)
+    have hinv : z⁻¹ = w⁻¹ := by
+      calc
+        z⁻¹ = ψ (reciprocal c z⁻¹) := hzinv.symm
+        _ = ψ (reciprocal c w⁻¹) := by
+          rw [reciprocal_eq_inverse, reciprocal_eq_inverse, inv_inv, inv_inv, hsame]
+        _ = w⁻¹ := hwinv
+    simpa only [inv_inv] using congrArg (fun u : ℂ => u⁻¹) hinv
 
 end
 
