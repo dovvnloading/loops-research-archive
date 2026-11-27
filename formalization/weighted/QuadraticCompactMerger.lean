@@ -240,6 +240,7 @@ theorem every_quadratic_compact_silent_merger (c : ℂ) (n : ℕ) :
   have hxW : (quad c)^[n] x ∈ W := hUW hxU
   have hsimply : IsSimplyConnected (ball y r) := by
     letI : ContractibleSpace (ball y r) := Metric.contractibleSpace_ball hr
+    change SimplyConnectedSpace (ball y r)
     exact inferInstance
   refine ⟨x, y, r, W, hr, hWo, hWc, hWcompact, hWcl, hUcompact, hUcl, hxy,
     full_rank_silent_merger_count c n (ball y r) W isOpen_ball hsimply hWo hWc

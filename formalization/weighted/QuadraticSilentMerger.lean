@@ -283,6 +283,7 @@ theorem every_quadratic_silent_merger (c : ℂ) (n : ℕ) :
   have hxball : (quad c)^[n] x ∈ ball y r := hxy.symm ▸ hyball
   have hsimply : IsSimplyConnected (ball y r) := by
     letI : ContractibleSpace (ball y r) := Metric.contractibleSpace_ball hr
+    change SimplyConnectedSpace (ball y r)
     exact inferInstance
   refine ⟨x, y, r, hr, hball, hxy,
     silent_merger_count c n (ball y r) isOpen_ball hsimply hball x y hx hyball,
