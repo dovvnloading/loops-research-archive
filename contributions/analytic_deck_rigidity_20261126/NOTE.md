@@ -11,10 +11,9 @@ human_review: none
 
 ## Claim
 
-**Development checkpoint: ten public Lean theorem statements in four
-modules.** Compilation and CI evidence are recorded below. A statement is
-counted as verified only after the existing full Lean build and transitive
-foundational-dependency audit pass on the proof sources.
+**Verified: ten public Lean theorems in four modules.** The existing full
+Lean CI build and transitive foundational-dependency audit passed on the
+proof checkpoint linked below. No `sorry`, `admit`, or new axioms are used.
 
 Let `F_c^n(z) = QuadraticEscape.orbit c n z` be the actual iterate of
 `z ↦ z²+c`. The selected one-critical return is `R_c = F_c^(a+1+b)`:
@@ -41,9 +40,10 @@ involution and parameter-stable proper-return construction:
    persist on the same parameter neighborhood and fixed terminal target.
 
 4. **Exactly two complete path lifts.** One canonical involution works for
-   every regular target path. Its two complete continuous lifts never meet,
-   are exchanged pointwise by that involution, and exhaust all continuous
-   lifts. The actual continuous-lift subtype has cardinality exactly two.
+   every regular target path. Its two complete continuous lifts differ at
+   every time, are exchanged pointwise by that involution, and exhaust all
+   continuous lifts. The actual continuous-lift subtype has cardinality
+   exactly two.
 
 These are finite-time, parameter-local statements under the explicitly
 listed actual-core or actual-component hypotheses. They do not close the
@@ -188,8 +188,9 @@ with all of the following properties:
 
 The statement assumes neither a lift nor a covering. It constructs the
 first lift from full target surjectivity and the unique-path theorem,
-then constructs the second by the canonical analytic involution. A meeting
-would force a critical fixed point and hence the excluded critical value.
+then constructs the second by the canonical analytic involution. Equality
+at a common time would force a critical fixed point and hence the excluded
+critical value.
 The exact starting fiber and path uniqueness classify every other lift.
 Thus a continuous lift cannot switch between the two phases mid-path.
 
@@ -198,17 +199,49 @@ Thus a continuous lift cannot switch between the two phases mid-path.
 [PR #226](https://github.com/dovvnloading/loops-research-archive/pull/226)
 was opened as a draft before proof development. The initial code checkpoint
 is [d737eb1](https://github.com/dovvnloading/loops-research-archive/commit/d737eb1061e1c9587f2558c4c75b80cb19cc5bf8).
+The nine-theorem locally checked checkpoint is
+[1e2556a](https://github.com/dovvnloading/loops-research-archive/commit/1e2556a5add8ed77ae4c0ec45c86be70c91fc428).
+The main-branch integration
+[e817a17](https://github.com/dovvnloading/loops-research-archive/commit/e817a17cedf9a62fc176af05b1efe57850e59577)
+preserves both concurrent contributions in the shared registry and Lake
+targets. The final proof checkpoint is
+[e7adc33](https://github.com/dovvnloading/loops-research-archive/commit/e7adc33165913f080967f7579c7a82cdd70dc44b),
+which adds the tenth theorem, exhaustive deck pairing of complete paths.
 All four modules are registered default Lake targets, every public theorem
 is in the theorem index, and each source uses the existing CONSTRUCT route.
 
 The pinned Lean 4.32.0 toolchain and pinned Mathlib dependencies are
-installed locally. All four modules pass `lake env lean` locally with exit zero and no
-diagnostics. The rigidity file passed on its first run. The covering file
+installed locally. All four modules pass `lake env lean` locally with exit
+zero and no diagnostics. The rigidity file passed on its first run. The covering file
 needed one explicit preimage type; the moving-family file needed explicit
 component types and analytic projection composition. No theorem statement
 was weakened. The complete path-pairing synthesis compiled on its first run.
-The first three targets also passed `lake build` (8,688 jobs). Full integration and the unchanged CI audits are in progress;
-no CI success is asserted before those runs finish.
+The first three targets also passed `lake build` (8,688 jobs), and the
+path-pairing target passed its build (8,669 jobs).
+
+At proof checkpoint `e7adc33165913f080967f7579c7a82cdd70dc44b`, all
+24 associated CI runs completed successfully (23 distinct workflows,
+including a repeated contribution-intake run after the PR body update).
+In particular:
+
+- [Weighted spectral mathlib proofs](https://github.com/dovvnloading/loops-research-archive/actions/runs/45914913248/job/140231716782)
+  reports `Build completed successfully (8938 jobs)` and
+  `AXIOM_AUDIT_PASS weighted: 134 modules, 3098 declarations`.
+  All four new modules have explicit audit records reporting allowed
+  axioms only, including their private helper declarations.
+- [Research validation](https://github.com/dovvnloading/loops-research-archive/actions/runs/45914913437/job/140231702162)
+  reports a successful root build (77 jobs),
+  `AXIOM_AUDIT_PASS root: 38 modules, 1625 declarations`, and successful
+  audits for all five standalone Lean files. The audit's negative-fixture
+  check also passes.
+- [Contribution intake](https://github.com/dovvnloading/loops-research-archive/actions/runs/45914913275)
+  and [model-to-geometry coverage](https://github.com/dovvnloading/loops-research-archive/actions/runs/45914913218)
+  pass with the registered ten public theorems. The local contribution
+  check and whitespace check pass as well.
+
+The subsequent evidence-recording commit changes only this note. All four
+proof sources and their registry/build configuration remain byte-for-byte
+identical to the CI-verified proof checkpoint.
 
 Reproduction:
 
