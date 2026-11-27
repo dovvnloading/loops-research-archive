@@ -194,7 +194,8 @@ theorem complete_endpoint_gates {κ s α : ℝ}
   rcases q3 with ⟨q3l,q3u⟩; rcases q4 with ⟨q4l,q4u⟩
   rcases w1 with ⟨w1l,w1u⟩; rcases w2 with ⟨w2l,w2u⟩
   dsimp [qEndpoint,wEndpoint] at q1l q1u q2l q2u q3l q3u q4l q4u w1l w1u w2l w2u
-  repeat' constructor <;> linarith
+  refine ⟨⟨?_,?_⟩,⟨?_,?_⟩,⟨?_,?_⟩,⟨?_,?_⟩,
+    ⟨?_,?_⟩,⟨?_,?_⟩,⟨?_,?_⟩,⟨?_,?_⟩⟩ <;> linarith
 
 private theorem disk_step {κ a r A : ℝ} {z : ℂ}
     (hk : 0 ≤ κ) (hr : 0 ≤ r) (ha : |a| ≤ A) (hz : ‖z-(a:ℂ)‖ ≤ r) :
@@ -208,7 +209,7 @@ private theorem disk_step {κ a r A : ℝ} {z : ℂ}
     calc
       ‖z+(a:ℂ)‖ = ‖(z-(a:ℂ))+((a:ℂ)+(a:ℂ))‖ := by congr 1; ring
       _ ≤ ‖z-(a:ℂ)‖+(‖(a:ℂ)‖+‖(a:ℂ)‖) :=
-        (norm_add_le _ _).trans (add_le_add_left (norm_add_le _ _) _)
+        (norm_add_le _ _).trans (add_le_add le_rfl (norm_add_le _ _))
       _ ≤ r+2*A := by simp only [Complex.norm_real,Real.norm_eq_abs]; linarith
   rw [hid,norm_mul,norm_mul,norm_neg,Complex.norm_real,Real.norm_eq_abs,abs_of_nonneg hk]
   exact mul_le_mul (mul_le_mul_of_nonneg_left hz hk) hsum (norm_nonneg _)
@@ -252,10 +253,10 @@ private theorem disk_consequences {z : ℂ} {a r A : ℝ}
       _ ≤ r+A := by simpa only [Complex.norm_real,Real.norm_eq_abs] using add_le_add hz ha
   exact ⟨hnorm,by linarith [(abs_le.mp hre').1],by linarith [(abs_le.mp hre').2]⟩
 
+set_option maxHeartbeats 800000 in
 /-- The entire closed input disk and all four images stay in the common
 disk of radius 23/20. The complete second and third images have opposite
 strict real-part signs. This is a whole-support estimate, not sampling. -/
-set_option maxHeartbeats 800000 in
 theorem whole_support_bounds {κ : ℝ}
     (hk : κ ∈ Icc (17903/10000) (17904/10000)) {z : ℂ}
     (hz : z ∈ initialDisk) :
@@ -268,7 +269,9 @@ theorem whole_support_bounds {κ : ℝ}
   have a2 : |realOrbit κ (-3/4) 2| ≤ 1 := by rw [abs_le]; constructor <;> linarith [c2.1,c2.2]
   have a3 : |realOrbit κ (-3/4) 3| ≤ 791/1000 := by rw [abs_le]; constructor <;> linarith [c3.1,c3.2]
   have a4 : |realOrbit κ (-3/4) 4| ≤ 119/1000 := by rw [abs_le]; constructor <;> linarith [c4.1,c4.2]
-  have d0 : ‖z-((-3/4 : ℝ):ℂ)‖ ≤ (133/2000 : ℝ) := by simpa [initialDisk] using hz
+  have d0 : ‖z-((-3/4 : ℝ):ℂ)‖ ≤ (133/2000 : ℝ) := by
+    rw [show z-((-3/4 : ℝ):ℂ) = z+(3/4 : ℂ) by push_cast <;> ring]
+    exact hz
   have d1 : ‖(complexMap κ)^[1] z-(realOrbit κ (-3/4) 1 : ℂ)‖ ≤ (187/1000 : ℝ) := by
     have h := disk_step hk0 (by norm_num) a0 d0
     have hK := mul_le_mul_of_nonneg_right hk.2 (by norm_num : (0 : ℝ) ≤ (133/2000)*((133/2000)+2*(3/4)))
@@ -346,7 +349,9 @@ theorem complete_support_injectivity {κ : ℝ}
   have hi := complexMap_injOn_half_planes (show κ ≠ 0 by linarith [hk.1])
   refine ⟨hi.1.mono ?_,hi.2.mono ?_,hi.1.mono ?_⟩
   · intro z hz
-    have hd : ‖z-((-3/4 : ℝ):ℂ)‖ ≤ (133/2000 : ℝ) := by simpa [initialDisk] using hz
+    have hd : ‖z-((-3/4 : ℝ):ℂ)‖ ≤ (133/2000 : ℝ) := by
+      rw [show z-((-3/4 : ℝ):ℂ) = z+(3/4 : ℂ) by push_cast <;> ring]
+      exact hz
     have h := disk_consequences hd (show |(-3/4 : ℝ)| ≤ 3/4 by norm_num)
     change z.re < 0
     linarith [h.2.2]

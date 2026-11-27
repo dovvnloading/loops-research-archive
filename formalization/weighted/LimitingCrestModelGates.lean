@@ -79,6 +79,7 @@ theorem radialPoint_eq_circlePoint {κ s u : ℝ}
 theorem realMap_negative_strictMono {κ : ℝ} (hk : 0 < κ) :
     StrictMonoOn (realMap κ) (Iic 0) := by
   intro x hx y hy hxy
+  change y ≤ 0 at hy
   have hp := pow_lt_pow_left₀ (neg_lt_neg hxy)
     (show 0 ≤ -y by linarith) (by decide : (2 : ℕ) ≠ 0)
   have hm := mul_lt_mul_of_pos_left hp hk
@@ -120,13 +121,16 @@ theorem fourth_image_target_gate {κ t : ℝ} {z : ℂ}
   have ht0 : t ≤ 0 := by linarith [ht.2]
   have hmono := realMap_negative_strictMono hk0
   have hlo := hmono (show (-1 : ℝ) ∈ Iic 0 by norm_num) ht0 ht.1
-  have hhi := hmono ht0 (show -(realMap κ)^[4] 0 ∈ Iic 0 by linarith) ht.2
+  have hhi := hmono ht0 (show -(realMap κ)^[4] 0 ∈ Iic 0 by
+    change -(realMap κ)^[4] 0 ≤ 0
+    linarith) ht.2
   have htwo : realMap κ (-1) = (realMap κ)^[2] 0 := by
     change realMap κ (-1) = realMap κ (realMap κ 0)
     simp [realMap]
   have hfive : realMap κ (-(realMap κ)^[4] 0) = (realMap κ)^[5] 0 := by
-    change realMap κ (-(realMap κ)^[4] 0) = realMap κ ((realMap κ)^[4] 0)
-    simp [realMap]
+    change 1 - κ * (-(realMap κ)^[4] 0) ^ 2 =
+      1 - κ * ((realMap κ)^[4] 0) ^ 2
+    rw [neg_sq]
   have hfour : (complexMap κ)^[4] z = (realMap κ t : ℂ) := by
     change complexMap κ ((complexMap κ)^[3] z) = _
     rw [hthird, complexMap_real]

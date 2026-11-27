@@ -115,8 +115,12 @@ theorem selectedCoefficient_gt_quarter {κ : ℝ}
   have hl7 := log_two_lt_seven_tenths
   let M : ℝ := (33/500)*(51/100)*Real.pi
   have hM : 0 < M := by dsimp [M]; positivity
-  have hi := (selected_integrand_continuousOn hk).intervalIntegrable_of_Icc
-    (by norm_num : (63/1000 : ℝ) ≤ 33/500)
+  have hi : IntervalIntegrable
+      (fun s : ℝ => 1/(s*Real.arccos (crossingCos κ s)))
+      volume (63/1000) (33/500) :=
+    ContinuousOn.intervalIntegrable_of_Icc
+      (by norm_num : (63/1000 : ℝ) ≤ 33/500)
+      (selected_integrand_continuousOn hk)
   have hbound : ∀ s ∈ Icc (63/1000 : ℝ) (33/500),
       1/M ≤ 1/(s*Real.arccos (crossingCos κ s)) := by
     intro s hs
@@ -136,8 +140,12 @@ theorem selectedCoefficient_gt_quarter {κ : ℝ}
   have hint' : (3/1000 : ℝ)/M ≤
       ∫ s in (63/1000 : ℝ)..(33/500 : ℝ),
         1/(s*Real.arccos (crossingCos κ s)) := by
-    norm_num [intervalIntegral.integral_const, smul_eq_mul] at hint ⊢
-    exact hint
+    calc
+      (3/1000 : ℝ)/M = ∫ _ in (63/1000 : ℝ)..(33/500 : ℝ), 1/M := by
+        rw [intervalIntegral.integral_const]
+        simp only [smul_eq_mul]
+        ring
+      _ ≤ _ := hint
   have hcoef : (0 : ℝ) < 2*Real.pi/Real.log 2 := by positivity
   have hcompare := mul_le_mul_of_nonneg_left hint' hcoef.le
   have halgebra : (2*Real.pi/Real.log 2)*((3/1000)/M) =

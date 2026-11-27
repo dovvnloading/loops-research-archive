@@ -3361,7 +3361,9 @@
       "formalization/weighted/LimitingCrestQuadraticReturn.lean": [
         "complete_remainder_bound",
         "normalized_return_error",
-        "actual_quadratic_return_corridor"
+        "actual_quadratic_return_corridor",
+        "normalized_iterate_scale",
+        "unscaled_quadratic_corridor"
       ],
       "formalization/weighted/LimitingCrestSharpCoefficient.lean": [
         "full_crossingCos_root",

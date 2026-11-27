@@ -88,6 +88,11 @@ containment follows from the invariant real interval [c,-c]. Existence of
 the designated parameters satisfying the remaining scale and coefficient
 inequalities for every p is not supplied by this conditional theorem.
 
+The exact scaling identity d*H^m(z)=f_c^(m*p)(d*z) is proved for every m.
+The unscaled corridor theorem consequently gives an actual point on
+|z+3d/4|=d*s, a positive imaginary p-th image, real 2p-th and 3p-th images,
+and the literal polynomial inequalities -d < f_c^(3p)(z) < -f_c^(4p)(0).
+
 The parameter module supplies a unique k in K satisfying Q_k^6(0)+Q_k^3(0)=0,
 so the model is instantiated rather than postulated. That parameter is
 conjugate to the already studied real period-three tip parameter; its
@@ -142,10 +147,10 @@ cache; the repository's unmodified CI is the compiler and kernel authority.
 The source checkout is sparse for the same disk constraint; the local packet
 and proof-escape checks pass, while the whole-repository source-index check
 must run against CI's complete checkout.
-The third CI run compiled LimitingCrestGeometry and LimitingCrestPerturbation.
-The remaining parameter, endpoint, and persistence elaboration errors are
-being corrected in the draft PR. No complete successful build is asserted
-at this stage.
+The fourth CI run compiled LimitingCrestParameter, LimitingCrestGeometry,
+LimitingCrestEndpoint, LimitingCrestPerturbation, and LimitingCrestPersistence.
+The remaining dependent-module diagnostics are being corrected in the draft
+PR. No complete successful build is asserted at this stage.
 
 ## Dependencies
 
@@ -168,6 +173,15 @@ critical relation selecting the tip. The source notes' Chebyshev-angle,
 derivative-ratio, and cosine-product estimates are not imported as axioms.
 Even after that real chart is formalized, transfer of the whole marked
 curve family and its widths needs its regularity and marking arguments.
+
+A possible next real proof uses the positive inverse branch B_c(x)=sqrt(x-c)
+and the shooting equation c^2+c=B_c^(p-2)(d), with q=4^(-p),
+c in [-2,-2+20q], and d in [0,14q]. Uniform inverse-orbit and product bounds
+could establish the shooting signs and |a_p|q>3/20; an intermediate-value
+argument could then locate the required quadratic coefficients and force
+d<12q. This route is recorded for continuation only: it is not formalized
+here, does not count as a result, and still needs the signed tip selection
+and marked-curve arguments.
 
 One crossing point at every radius is not by itself a transported Wave arc
 family. A candidate integral is not by itself a physical marked width or

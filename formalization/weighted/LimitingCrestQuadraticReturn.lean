@@ -64,7 +64,7 @@ private theorem coefficient_bound (c : ℝ) (n : ℕ) :
     have hd := h (n+1) (by omega)
     calc
       |quadraticCoefficient c (n+1)| =
-          (2*|criticalValue c (n+1)|)*|quadraticCoefficient c n| := by
+          (2 * |criticalValue c (n+1)|) * |quadraticCoefficient c n| := by
             norm_num [quadraticCoefficient, abs_mul]
       _ ≤ 4*(4 : ℝ)^n :=
         mul_le_mul (by linarith) ha (abs_nonneg _) (by norm_num)
@@ -115,7 +115,7 @@ theorem complete_remainder_bound (c : ℝ) (n : ℕ) :
     have hlead : ‖(quadraticCoefficient c n : ℂ)*z^2‖ ≤ t/4 := by
       calc
         ‖(quadraticCoefficient c n : ℂ)*z^2‖ =
-            |quadraticCoefficient c n|*‖z‖^2 := by
+            |quadraticCoefficient c n| * ‖z‖^2 := by
               rw [norm_mul, norm_pow, Complex.norm_real, Real.norm_eq_abs]
         _ ≤ (4 : ℝ)^n*r^2 :=
           mul_le_mul ha hz2 (sq_nonneg _) (by positivity)
@@ -127,10 +127,10 @@ theorem complete_remainder_bound (c : ℝ) (n : ℕ) :
       linarith
     have hsquare := pow_le_pow_left₀ (norm_nonneg _ ) hsum 2
     have hd := hcrit (n+1) (by omega)
-    have hlinear : (2*|criticalValue c (n+1)|)*
+    have hlinear : (2 * |criticalValue c (n+1)|) *
         ‖quadraticRemainder c n z‖ ≤ t^2/32 := by
       calc
-        (2*|criticalValue c (n+1)|)*‖quadraticRemainder c n z‖ ≤
+        (2 * |criticalValue c (n+1)|) * ‖quadraticRemainder c n z‖ ≤
             4*(t^2/128) :=
           mul_le_mul (by linarith) he (norm_nonneg _) (by norm_num)
         _ = t^2/32 := by ring
@@ -141,7 +141,7 @@ theorem complete_remainder_bound (c : ℝ) (n : ℕ) :
           ‖2*(criticalValue c (n+1) : ℂ)*quadraticRemainder c n z‖ +
             ‖((quadraticCoefficient c n : ℂ)*z^2 + quadraticRemainder c n z)^2‖ :=
         norm_add_le _ _
-      _ = (2*|criticalValue c (n+1)|)*‖quadraticRemainder c n z‖ +
+      _ = (2 * |criticalValue c (n+1)|) * ‖quadraticRemainder c n z‖ +
           ‖(quadraticCoefficient c n : ℂ)*z^2 + quadraticRemainder c n z‖^2 := by
         rw [norm_mul, norm_mul, Complex.norm_two, Complex.norm_real,
           Real.norm_eq_abs, norm_pow]
@@ -218,7 +218,12 @@ theorem normalized_return_error (c : ℝ) (p : ℕ) (hp : 13 ≤ p)
       have h1 := mul_le_mul_of_nonneg_right hm
         (pow_nonneg (by norm_num [R] : (0 : ℝ) ≤ R) 4)
       have h2 := mul_le_mul_of_nonneg_left hr4.le (show 0 ≤ (1728 : ℝ)*d by positivity)
-      nlinarith only [h1, h2]
+      apply (div_le_iff₀ (by norm_num : (0 : ℝ) < 128)).mpr
+      calc
+        (S*d)^3*d*R^4 ≤ 12^3*d*R^4 := h1
+        _ = 1728*d*R^4 := by norm_num
+        _ ≤ 1728*d*(16/9) := h2
+        _ = (24*d)*128 := by ring
     change ‖normalizedReturn c (n+1) z -
       complexMap (-quadraticCoefficient c n*d) z‖ ≤ 24/S
     rw [hid, norm_div, Complex.norm_real, Real.norm_eq_abs, abs_of_pos hd0]
@@ -300,6 +305,97 @@ theorem actual_quadratic_return_corridor (c : ℝ) (p : ℕ) (hp : 13 ≤ p)
   apply (div_le_iff₀ (show (0 : ℝ) < 4^p by positivity)).mpr
   have h := power_scale_lower hp
   linarith
+
+/-- Multiplicative conjugacy identifies every normalized return iterate
+with the corresponding literal iterate of the original quadratic. -/
+theorem normalized_iterate_scale (c : ℝ) (p : ℕ)
+    (hd : criticalValue c p ≠ 0) (m : ℕ) (z : ℂ) :
+    (criticalValue c p : ℂ)*((normalizedReturn c p)^[m]) z =
+      ((quadraticMap c)^[m*p]) ((criticalValue c p : ℂ)*z) := by
+  have hdC : (criticalValue c p : ℂ) ≠ 0 := by exact_mod_cast hd
+  have hstep (w : ℂ) :
+      (criticalValue c p : ℂ)*normalizedReturn c p w =
+        ((quadraticMap c)^[p]) ((criticalValue c p : ℂ)*w) := by
+    unfold normalizedReturn
+    field_simp [hdC] <;> ring
+  induction m with
+  | zero => simp
+  | succ m ih =>
+    rw [iterate_succ_apply', hstep, ih]
+    rw [show (m+1)*p = p+m*p by ring, iterate_add_apply]
+
+/-- The corridor in the original dynamical plane: its circle is centered
+at -3d/4 with radius d*s, its p-th image is on the positive imaginary
+axis, and its 3p-th image lies strictly between the actual source cuts
+-d and -f_c^[4p](0), where d=f_c^[p](0). -/
+theorem unscaled_quadratic_corridor (c : ℝ) (p : ℕ) (hp : 13 ≤ p)
+    (hc : c ∈ Icc (-2 : ℝ) 0)
+    (hd : 0 < criticalValue c p)
+    (hsmall : criticalValue c p ≤ 12/(4 : ℝ)^p)
+    (hk : -quadraticCoefficient c (p-1)*criticalValue c p ∈
+      Icc (17903/10000 : ℝ) (17904/10000))
+    {s : ℝ} (hs : s ∈ Icc (63/1000 : ℝ) (33/500)) :
+    ∃ z : ℂ,
+      ‖z+((3*criticalValue c p/4 : ℝ) : ℂ)‖ = criticalValue c p*s ∧
+      (((quadraticMap c)^[p]) z).re = 0 ∧
+      0 < (((quadraticMap c)^[p]) z).im ∧
+      (((quadraticMap c)^[2*p]) z).im = 0 ∧
+      (((quadraticMap c)^[3*p]) z).im = 0 ∧
+      -criticalValue c p < (((quadraticMap c)^[3*p]) z).re ∧
+      (((quadraticMap c)^[3*p]) z).re < -criticalValue c (4*p) := by
+  obtain ⟨u, hu, hr, hzero, hpos, htwo, hthree, hlow, hupp, hcut⟩ :=
+    actual_quadratic_return_corridor c p hp hc hd hsmall hk hs
+  let d := criticalValue c p
+  let w := circlePoint s u
+  let z : ℂ := (d : ℂ)*w
+  have hscale (m : ℕ) :
+      ((quadraticMap c)^[m*p]) z = (d : ℂ)*((normalizedReturn c p)^[m]) w :=
+    (normalized_iterate_scale c p hd.ne' m w).symm
+  have hfirst : ((quadraticMap c)^[p]) z = (d : ℂ)*normalizedReturn c p w := by
+    simpa only [one_mul, iterate_one] using hscale 1
+  have hthird : (((quadraticMap c)^[3*p]) z).re =
+      d*(((normalizedReturn c p)^[3]) w).re := by
+    rw [hscale 3]
+    simp
+  have hfourth := normalized_iterate_scale c p hd.ne' 4 (0 : ℂ)
+  simp only [mul_zero] at hfourth
+  have hcritical : ((quadraticMap c)^[4*p]) (0 : ℂ) =
+      (criticalValue c (4*p) : ℂ) := iterate_real c 0 (4*p)
+  rw [hcritical] at hfourth
+  have hfourthReal := congrArg Complex.re hfourth
+  simp only [Complex.mul_re, Complex.ofReal_re, Complex.ofReal_im,
+    zero_mul, sub_zero] at hfourthReal
+  refine ⟨z, ?_, ?_, ?_, ?_, ?_, ?_, ?_⟩
+  · change ‖z+((3*d/4 : ℝ) : ℂ)‖ = d*s
+    calc
+      ‖z+((3*d/4 : ℝ) : ℂ)‖ = ‖(d : ℂ)*(w+(3/4 : ℂ))‖ := by
+        congr 1
+        dsimp [z]
+        push_cast
+        ring
+      _ = d*‖w+(3/4 : ℂ)‖ := by
+        rw [norm_mul, Complex.norm_real, Real.norm_eq_abs, abs_of_pos hd]
+      _ = d*s := by rw [hr]
+  · rw [hfirst]
+    simpa [w] using congrArg (fun t : ℝ => d*t) hzero
+  · rw [hfirst]
+    simpa [w] using mul_pos hd hpos
+  · rw [hscale 2]
+    simpa [w] using congrArg (fun t : ℝ => d*t) htwo
+  · rw [hscale 3]
+    simpa [w] using congrArg (fun t : ℝ => d*t) hthree
+  · rw [hthird]
+    have hnorm : (-1 : ℝ) < (((normalizedReturn c p)^[3]) w).re := by
+      dsimp [w]
+      linarith
+    have hm := mul_lt_mul_of_pos_left hnorm hd
+    change -d < d*(((normalizedReturn c p)^[3]) w).re
+    linarith
+  · rw [hthird]
+    have hm := mul_lt_mul_of_pos_left hcut hd
+    change d*(((normalizedReturn c p)^[3]) w).re < -criticalValue c (4*p)
+    dsimp [w, d] at *
+    linarith
 
 end
 end LimitingCrestQuadraticReturn

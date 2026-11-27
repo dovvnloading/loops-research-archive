@@ -130,7 +130,7 @@ theorem sharp_inner_integral_lower {κ : ℝ}
     (by norm_num : (1 / 16 : ℝ) ≤ 663 / 10000) hmi hci hbound
   have hlin : (∫ s in (1 / 16 : ℝ)..(663 / 10000 : ℝ),
       (2 * m - s) / (m ^ 2 * A)) = (19 / 322 : ℝ) / A := by
-    rw [intervalIntegral.integral_div_const]
+    rw [intervalIntegral.integral_div]
     rw [intervalIntegral.integral_sub
       (intervalIntegrable_const : IntervalIntegrable (fun _ : ℝ => 2 * m)
         volume (1 / 16) (663 / 10000))
