@@ -91,6 +91,7 @@ formalization/weighted/LimitingCrestSharpCoefficient.lean	METADATA
 formalization/weighted/LocalizationSheetKernel.lean	COVER-FIBER SHEETS CONNECTOR
 formalization/weighted/MarkedWaveSuprema.lean	GAIN
 formalization/weighted/NativeWaveGate.lean	CUTS CREST
+formalization/weighted/NearTwoInverse.lean	METADATA
 formalization/weighted/ParabolicArchiveBrackets.lean	PARABOLIC STRAIGHTEN
 formalization/weighted/ParabolicBranches.lean	PARABOLIC STRAIGHTEN
 formalization/weighted/ParabolicCenterBranch.lean	PARABOLIC STRAIGHTEN

@@ -3532,5 +3532,27 @@
       ]
     },
     "obligations": []
+  },
+  "actual-crest-foliation-20261126": {
+    "guide": "contributions/actual_crest_foliation_20261126/NOTE.md#actual-crest-foliation-20261126",
+    "theorems": {
+      "formalization/weighted/NearTwoInverse.lean": [
+        "back_zero",
+        "back_succ",
+        "B_nonneg",
+        "B_sq",
+        "B_bounds",
+        "back_bounds",
+        "back_lower",
+        "continuous_back",
+        "continuous_back_parameter",
+        "back_mono_initial",
+        "back_antitone_parameter",
+        "back_parameter_lipschitz",
+        "chebyshev_deficit_barrier",
+        "chebyshev_deficit_upper"
+      ]
+    },
+    "obligations": []
   }
 }

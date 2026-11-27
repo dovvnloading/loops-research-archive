@@ -19,6 +19,29 @@ No new mathematical result is claimed before its Lean proof compiles.
 
 ## Evidence
 
+### Locally verified checkpoint: inverse-orbit estimates
+
+`formalization/weighted/NearTwoInverse.lean` compiles with the repository's
+pinned Lean 4.32.0 and Mathlib. Its 14 public theorems establish the exact
+positive-square-root inverse orbit, interval preservation, a uniform
+parameter Lipschitz estimate, monotonicity, continuity, and rational
+all-depth bounds for the inverse-orbit deficit at c=-2. This is supporting
+infrastructure for the new actual-parameter construction, not a claim that
+the crest obligation is closed. The source is registered in the default
+weighted build and declaration index; CI will recheck it modularly and
+audit every declaration's transitive foundational dependencies.
+
+Local command (the runner selects the pinned compiler and existing cache):
+
+```sh
+lean-check NearTwoInverse.lean
+```
+
+The source SHA-256 at this checkpoint is
+`288f279c6a091d9a8b8dbdb654a04c5d95347ac43ee76fe6a57f2fd0fd4bffcd`.
+
+### Development target
+
 The starting point is `LimitingCrestQuadraticReturn.lean`, merged in PR
 #233. It proves a complete complex remainder bound and one crossing at
 each radius, conditional on explicit real return-scale and coefficient
