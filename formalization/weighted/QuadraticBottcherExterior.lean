@@ -315,8 +315,8 @@ theorem bottcher_exterior_coordinate (c : ℂ) :
   · intro z hz
     exact bottcher_analyticAt c z (hR.trans_lt hz)
   · intro z hz w hw hsame
-    have hzinv := hr z (hrR.trans hz.le)
-    have hwinv := hr w (hrR.trans hw.le)
+    have hzinv := hr (hrR.trans hz.le)
+    have hwinv := hr (hrR.trans hw.le)
     have hinv : z⁻¹ = w⁻¹ := by
       calc
         z⁻¹ = ψ (reciprocal c z⁻¹) := hzinv.symm

@@ -7,118 +7,291 @@ human_review: none
 
 <a id="quadratic-escape-stability-20261126"></a>
 
-# Actual quadratic escape stability and compact limits
-
-Ledger statement being addressed:
-
-> Bounded calibrated potentials and the uniform normalized incidence and congestion hypotheses prevent degeneration of the analytic carriers, branch graphs, relative-cover structures, protected prime ends, response forms, and Value features, so every sequence has a subsequence converging to an admissible nondegenerate marked renormalization. Exact side memory is handled topologically by H3_SYMBOLIC_SIDE_COMPACTNESS, but compact encodings alone do not establish analytic admissibility.
+# Actual quadratic Böttcher coordinates and quantitative filled-set stability
 
 ## Claim
 
-Work in progress. This draft investigates analytic and parameter stability of the
-actual quadratic escape potential and its compact sublevels, as a partial result
-toward the analytic compactness interface of H3_COERCIVITY. No new mathematical
-result is claimed at this initial checkpoint.
+This packet adds 57 public Lean theorems about the actual monic centered
+quadratic family, its escape potential, and its filled sets. The principal
+results are a constructed normalized analytic coordinate at infinity,
+harmonicity along escaping analytic families, and explicit Hausdorff and
+conjugacy bounds for large parameters. Validation status and reproducible
+commands appear under **Evidence**; a proof candidate is not counted as
+certified until compilation and the transitive dependency audit pass.
+
+Write `f_c(z) = z²+c`, with `f_c^n` its actual forward iterate. The existing
+objects used throughout are
+
+```text
+G_c(z) = lim_{n→∞} 2^(-n) log(max(1, |f_c^n(z)|)),
+K_c = {z : G_c(z)=0} = {z : the forward f_c-orbit of z is bounded},
+P(c) = G_c(c) = 2 G_c(0).
+```
+
+The limit, the characterization of `K_c`, and the critical-value
+normalization of `P` are existing proved facts, not hypotheses added here.
+Their Lean names are `QuadraticEscape.orbit`, `escape`, `parameterEscape`,
+and `QuadraticCantor.filled` / `filledMap`.
+
+### 1. A normalized analytic coordinate at infinity
+
+The complex correction and exterior function are constructed explicitly:
+
+```text
+S_c(z) = Σ_{n≥0} 2^(-(n+1)) Log(1+c/(f_c^n(z))²),
+B_c(z) = z exp(S_c(z)).
+```
+
+For `C≥0`, `|c|≤C`, and `|z|≥2(1+C)`, the theorems establish convergence
+of this series and
+
+```text
+2 S_c(z) = Log(1+c/z²) + S_c(f_c(z)),
+B_c(f_c(z)) = B_c(z)²,
+log |B_c(z)| = G_c(z),
+|S_c(z)| ≤ (3/2)|c|/|z|²,
+|B_c(z)/z − 1| ≤ 3|c|/|z|².
+```
+
+`B_c` is analytic on the open explicit exterior `|z|>2(1+|c|)`, and
+`B_c(z)/z → 1` as `|z|→∞`, with no restriction on the direction of
+approach. Its reciprocal expression
+
+```text
+g_c(w) = w exp(−S_c(1/w)) = 1/B_c(1/w)
+```
+
+extends analytically through `w=0`, with `g_c(0)=0` and `g'_c(0)=1`.
+The proof produces an analytic local inverse with derivative one and
+proves, in a neighborhood of zero,
+
+```text
+g_c(w²/(1+c w²)) = g_c(w)².
+```
+
+For every `c` there is finally an `R≥2(1+|c|)`, `R>0`, such that `B_c` is
+analytic and injective on `{z : R<|z|}`. The injectivity radius is
+existential; the functional equation and error estimates have the
+explicit domain stated above. This is a local Böttcher coordinate at
+infinity constructed from actual iterates.
+
+### 2. Harmonicity of the actual escape potential
+
+If `a,b : ℂ → ℂ` are analytic at `x` and `G_{a(x)}(b(x))>0`, then
+`w ↦ G_{a(w)}(b(w))` is harmonic at `x`. In particular, `z ↦ G_c(z)` and
+the critical-value potential `c ↦ P(c)` are harmonic and real analytic on
+their respective positive loci. Each satisfies the circle mean-value
+identity on every closed disk contained in that positive locus.
+
+The proof derives a finite iterate entering a common exterior region
+from positive escape. An entry time is not an additional assumption,
+and the harmonicity theorem does not assume a Green or Böttcher coordinate.
+
+### 3. Whole-orbit shadowing and quantitative structural stability
+
+If `z∈K_c` and `|f_c^n(z)|≥s>1` for every `n`, then for **every** complex
+parameter `d` there is `w∈K_d` with
+
+```text
+|f_d^n(w) − f_c^n(z)| ≤ |d−c|/(s−1)   for every n≥0.
+```
+
+For `|c|,|d|≥8`, set
+
+```text
+δ = |d−c|,
+s = min(sqrt(|c|/2), sqrt(|d|/2)).
+```
+
+Existing orbit geometry proves the required separation by this `s`. The
+new theorems then give
+
+```text
+HausdorffDist(K_c,K_d) ≤ δ/(s−1) ≤ δ.
+```
+
+There is no smallness condition on `δ` in the Hausdorff estimate. If also
+`δ≤(s−1)²`, there is a homeomorphism `h : K_c ≃ₜ K_d` with
+
+```text
+h(f_c(x)) = f_d(h(x)),
+|f_d^n(h(x)) − f_c^n(x)| ≤ δ/(s−1)   for every x∈K_c and n≥0.
+```
+
+The general theorem requires separation by the same `s>1` on both entire
+filled sets and an error budget `0≤r≤s−1`, `δ≤(s−1)r`; its conclusion
+has error `r`. The norm-two specializations remain available: if both
+parameter norms are at least eight and `δ≤1`, the conjugacy moves every
+point and every forward iterate by at most `δ`.
+
+For every `ε>0` there is also an `R≥8` such that both parameter norms
+being at least `R` implies
+
+```text
+HausdorffDist(K_c,K_d) ≤ ε |d−c|.
+```
+
+The proof chooses `R = max(8, 2(1+ε⁻¹)²)`. No threshold or coefficient is
+asserted optimal.
+
+## Argument
+
+**Analytic construction.** On the stated exterior, norms of actual
+iterates never decrease and `|c/(f_c^n(z))²|≤1/2`. The principal logarithm
+therefore stays away from its branch cut. A geometric majorant gives
+normal convergence, including for analytic parameter/point data on a
+common exterior. The finite sum telescopes exactly to the repository's
+orbit approximant. Passing to its already proved limit identifies the
+real part of the correction with `G_c(z)−log|z|`.
+
+Reindexing the convergent series proves its functional equation; taking
+exponentials gives the Böttcher equation. The stronger logarithm estimate
+gives the inverse-square error and normalization at infinity. In reciprocal
+coordinates this normalization yields derivative one at zero. Analyticity
+on a punctured neighborhood and continuity at zero give a removable
+singularity. The analytic inverse function theorem then gives both inverse
+identities and injectivity on a far exterior. No coordinate or inverse was
+supplied as an input.
+
+For an arbitrary escaping analytic family, boundedness would contradict
+positive escape, so an actual iterate enters a common exterior. The
+identity `G_c(f_c^N(z)) = 2^N G_c(z)` transports exterior harmonicity back
+to the original family. Real analyticity and mean value follow from
+Mathlib's harmonic-function theorems.
+
+**Shadowing construction.** For any `x,u∈ℂ`, a suitable sign of a square
+root gives `v²=u` and
+
+```text
+|x| |v−x| ≤ |u−x²|.
+```
+
+Choose the sign for which `|v−x|≤|v+x|`; the triangle inequality gives
+`|v+x|≥|x|`, and factorization gives the estimate. Applying it backwards
+preserves the error budget `r` because `(r+δ)/s≤r`. Induction produces
+finite shadows. Their initial points form nested nonempty compact sets
+inside the closed ball of radius `r` around the reference point. Their
+intersection produces one shadow at every time. Its boundedness follows
+from the bounded reference orbit and fixed error, proving actual membership
+in `K_d`.
+
+**Uniqueness and topology.** If two `d`-orbits remain within `r` of a
+reference orbit separated from zero by at least `1+r`, the sum of their
+positions has norm at least two. Exact quadratic difference factorization
+then doubles their distance at each step. That distance is also bounded by
+`2r`, so the initial points agree. The all-time shadow relation is closed
+in `K_c×K_d`. Its two projections are continuous bijections from a compact
+space, hence homeomorphisms. Their composition supplies `h`; uniqueness
+after shifting time proves conjugacy. The Hausdorff estimate uses shadows
+in both directions and requires no uniqueness assumption.
 
 ## Evidence
 
-The base revision is `7c50921352b9f9855e7a3e4e68ed7866b07be79b` on `main`.
-The existing `QuadraticEscape.lean` constructs the actual potential from finite
-iterates and proves a uniform tail bound and joint continuity.
-`QuadraticEscapeFullness.lean` supplies actual compact full dynamical sublevels.
-Only compiled declarations passing the repository's transitive dependency audit
-will be counted as results.
+All five modules are registered in the weighted Lean project and in the
+public theorem index. The registry lists all 57 public statements; the
+compiled declaration audit also covers private and generated declarations.
 
-### Checkpoint 1: whole-orbit parameter shadowing (CI verified)
+| Module | Public theorems | Principal declarations |
+| --- | ---: | --- |
+| `QuadraticShadowRadius.lean` | 10 | `large_parameter_orbit_shadow_radius`, `filled_hausdorff_radius`, `filled_hausdorff_small_lipschitz_at_infinity` |
+| `QuadraticOrbitShadowing.lean` | 5 | `infinite_orbit_shadow`, `filled_orbit_shadow`, `large_parameter_orbit_shadow` |
+| `QuadraticJuliaStability.lean` | 8 | `orbit_shadow_unique_of_separation`, `filled_structural_conjugacy_of_separation`, `filled_structural_conjugacy_radius` |
+| `QuadraticEscapeHarmonic.lean` | 16 | `exterior_escape_log_correction`, `escape_pair_harmonicAt`, `parameter_escape_harmonicAt`, `escape_circle_average` |
+| `QuadraticBottcherExterior.lean` | 18 | `bottcher_semiconjugacy`, `bottcher_log_norm`, `bottcher_normalization`, `reciprocal_local_coordinate`, `bottcher_exterior_coordinate` |
 
-`formalization/weighted/QuadraticOrbitShadowing.lean` supplies five compiled
-theorems: `quadratic_preimage_near`, `finite_orbit_shadow`,
-`infinite_orbit_shadow`, `filled_orbit_shadow`, and
-`large_parameter_orbit_shadow`. A reference quadratic orbit with every point
-of norm at least two has, for every new parameter d, an actual forward orbit
-within norm(d-c) at every time. If the reference orbit is bounded, so is the
-shadow. The existing large-parameter geometry verifies the separation
-hypothesis for every point of K_c when norm(c) is at least eight.
+The shadowing and stability declarations use namespace `QuadraticCantor`.
+The analytic modules use namespaces `QuadraticEscapeHarmonic` and
+`QuadraticBottcherExterior`, respectively.
 
-The proof chooses a square-root sign to halve backward error, constructs
-arbitrary finite shadows, and intersects their nested nonempty compact
-initial-point sets. Local registration and proof-source scans pass. Local
-Lean compilation is unavailable: the mandatory pinned compiler artifacts and
-Mathlib cache exceed this workspace's free disk capacity. GitHub Actions
-compilation and its transitive dependency audit remain the acceptance gate.
+The initial five-theorem shadowing checkpoint passed the full weighted
+build and transitive dependency audit at commit
+`6c082ded253ba72425bcc5784e4882b7a5e1bf1d`
+([run 45917813979](https://github.com/dovvnloading/loops-research-archive/actions/runs/45917813979)).
+The generalized shadowing, stability, and harmonicity modules compiled
+at `eea7f3d97fafe4b176588aa41bbaa962de9fc0e5`
+([run 45919228808](https://github.com/dovvnloading/loops-research-archive/actions/runs/45919228808));
+that run stopped on proof elaboration errors in the new Böttcher module,
+so it did not run the final dependency audit. All six original Böttcher errors were repaired at
+`685de66cfc8d5c078417c72da3dff8e4593a29b3`. That build found one implicit-argument
+error in the newly added exterior injectivity proof; this checkpoint fixes
+it. Full compilation and the transitive audit remain pending at this
+documentation checkpoint.
 
-The full weighted build and transitive dependency audit passed at commit
-`6c082ded253ba72425bcc5784e4882b7a5e1bf1d`, in
-[CI run 45917813979](https://github.com/dovvnloading/loops-research-archive/actions/runs/45917813979).
+Reproduction from the repository root:
 
-### Checkpoint 2: structural conjugacy and harmonic escape (CI pending)
+```sh
+python code/contribute.py check --base origin/main
+python -B code/verify_lean_coverage.py
+```
 
-`QuadraticJuliaStability.lean` proposes a global Hausdorff bound
-`hausdorffDist (filled c) (filled d) <= norm(d-c)` when both parameter norms
-are at least eight. At parameter distance at most one it constructs a
-homeomorphism intertwining the actual quadratic maps, with the same error
-bound at every forward time. Uniqueness follows from the exact difference
-factorization and expansion in the shadow tube. Continuity follows from
-compactness of the closed all-time shadow relation.
+With the pinned Lean 4.32.0 toolchain installed:
 
-`QuadraticEscapeHarmonic.lean` proposes a normally convergent analytic
-logarithmic correction on the far exterior, proves its exact equality with
-the existing escape potential by telescoping, and transports it to every
-escaping analytic parameter/point family. The intended consequences are
-phase and parameter harmonicity, real analyticity, and the circle mean-value
-identity. These declarations are proof candidates until CI accepts them.
+```sh
+cd formalization/weighted
+lake exe cache get
+lake build
+cd ../..
+python -B code/verify_lean_coverage.py --audit weighted
+```
 
-### Checkpoint 3: separation-dependent stability radius (CI pending)
-
-`QuadraticShadowRadius.lean` retains the actual reference separation `s > 1`
-in the inverse estimate and proves an all-time shadow radius
-`norm(d-c)/(s-1)`. In the large-parameter filled sets, the established orbit
-geometry supplies `s = sqrt(norm(c)/2)`. The resulting symmetric Hausdorff
-bound uses the minimum of the two square-root scales. In particular, for
-every positive epsilon the Hausdorff Lipschitz constant is at most epsilon
-outside the explicit parameter radius `max 8 (2*(1+1/epsilon)^2)`.
-
-This general-radius module compiled at `34a9f514f4e1e57619ba7c3ad4903ae5c0fa72c8`
-([run 45918527350](https://github.com/dovvnloading/loops-research-archive/actions/runs/45918527350)).
-That overall build failed on API/elaboration errors in the other two new modules,
-so its full transitive audit did not run. The next checkpoint repairs those
-errors and specializes the norm-two shadowing APIs to the general proof.
-
-### Checkpoint 4: normalized analytic exterior coordinate (CI pending)
-
-`QuadraticBottcherExterior.lean` constructs `B_c(z) = z*exp(S_c(z))` from
-the logarithmic correction. The candidate theorems prove the actual functional
-equation `B_c(z^2+c) = B_c(z)^2`, exact identity `log(norm(B_c(z))) = G_c(z)`,
-and the estimate `norm(B_c(z)/z-1) <= 3*norm(c)/norm(z)^2` on the certified
-exterior. Thus the leading coefficient at infinity is one. The reciprocal
-coordinate extends analytically at zero with derivative one and an analytic
-local inverse. Its precise domain and the absence of a global basin claim
-remain explicit.
-
-The conjugacy candidate now uses the stronger displacement
-`norm(d-c)/(s-1)` whenever `norm(d-c) <= (s-1)^2`, where `s` is the smaller
-square-root parameter scale. Existence and uniqueness use the same numerical
-budget; neither conjugacy nor expansion is assumed as a hypothesis.
+Local Lean compilation was unavailable: the pinned compiler artifacts
+and Mathlib cache exceeded this workspace's available disk capacity.
+GitHub Actions is the compilation authority. No workflow, toolchain,
+dependency version, audit policy, or protected status record was modified.
 
 ## Dependencies
 
-The target is the still-open H3_COERCIVITY obligation, stated at M6 in
-`research/mlc_unified/master_transition.md`. The prior packet
-`contributions/h3_planar_fill_limit_20261126/NOTE.md` handles planar filling and
-its one-sided stability. The present investigation concerns actual polynomial
-dynamics. Existing Lean definitions, proofs and pinned Mathlib dependencies
-will be named precisely in the completed evidence section.
+- [QuadraticEscape.lean](../../formalization/weighted/QuadraticEscape.lean):
+  actual iterates, orbit approximants, convergence, functional equation,
+  continuity, and `escape_zero_iff_bounded`.
+- [QuadraticCantorGeometry.lean](../../formalization/weighted/QuadraticCantorGeometry.lean),
+  [QuadraticCantorSplitting.lean](../../formalization/weighted/QuadraticCantorSplitting.lean),
+  and [QuadraticCantorExpansion.lean](../../formalization/weighted/QuadraticCantorExpansion.lean):
+  the actual `filled` set and self-map, compactness, square roots, invariant
+  filled sets, and proved lower norm bounds for `|c|≥8`.
+- Pinned Mathlib v4.32.0 at
+  `81a5d257c8e410db227a6665ed08f64fea08e997`: normal convergence of analytic
+  series (`Complex.differentiableOn_tsum_of_summable_norm`), complex
+  logarithm and exponential estimates, harmonic real parts and logarithms,
+  removable singularities, analytic local inverses, compact intersections,
+  compact-to-Hausdorff homeomorphisms, and Hausdorff distance estimates.
+  The exact transitive dependencies are checked by the existing CI audit.
+
+The target obligation is H3_COERCIVITY, stated at M6 in
+[`master_transition.md`](../../research/mlc_unified/master_transition.md).
+The earlier [planar fill limit packet](../h3_planar_fill_limit_20261126/NOTE.md)
+provides background on one-sided planar filling stability; its conclusions
+are not used as substitutes for the actual-orbit proofs here. This packet
+adds analytic and stability inputs for actual polynomial objects. It does
+not supply the compactness theorem for marked renormalizations demanded
+by the full obligation.
 
 ## Boundary
 
-H3_COERCIVITY remains open. Stability of an escape potential or its sublevels
-does not by itself preserve the native marked carriers, relative covers,
-protected prime ends, response forms, or all-scale renormalization geometry.
-No status change and no worldwide mathematical novelty are claimed.
+**H3_COERCIVITY remains open. No ledger status change is requested.**
+Its full statement concerns nondegeneration of analytic carriers, branch
+graphs, relative covers, protected prime ends, response forms, and Value
+features under the calibrated-potential, incidence, and congestion
+hypotheses. These theorems do not derive that admissibility from those
+hypotheses. They also do not prove MLC or any of H1 through H4.
+
+The Böttcher chart is local at infinity; no extension throughout the
+entire escaping basin, external-ray landing theorem, boundary extension,
+or uniform marked-family chart is asserted. Structural conjugacies are
+for fixed parameter pairs in the stated separated regime. Joint parameter
+dependence, holomorphic motion, external markings, and renormalization-carrier
+compactness remain unproved here. The large parameter estimates do not
+cover the Mandelbrot boundary.
+
+The contribution is a formal extension of the archive's actual quadratic
+dynamics development. These are classical kinds of complex-dynamical
+results with explicit estimates; no worldwide mathematical priority or
+claim of a previously unknown general theorem is made.
 
 ## Attribution
 
-Matthew Robert Wesney's research archive, its existing quadratic escape and
-planar compactness developments, and the pinned Lean/Mathlib libraries.
-OpenAI GPT-6 Astra Pro assists with proof development and verification.
-No human mathematical review has been performed in this session.
+Matthew Robert Wesney's research archive and its existing quadratic
+escape, Cantor geometry, and planar compactness developments; the Lean
+and Mathlib contributors. OpenAI GPT-6 Astra Pro developed these proofs
+and documentation with parallel proof and infrastructure review. No human
+mathematical review has been performed in this session.
