@@ -3424,6 +3424,115 @@
       "NOV26_OPEN_26_TRIPLES"
     ]
   },
+  "limiting-crest-gate-20261126": {
+    "guide": "contributions/limiting_crest_gate_20261126/NOTE.md#limiting-crest-gate-20261126",
+    "theorems": {
+      "formalization/weighted/LimitingCrestParameter.lean": [
+        "criticalOrbit_eq_iterate",
+        "criticalOrbit_hasDerivAt",
+        "relation_hasDerivAt",
+        "parameter_orbit_bounds",
+        "relation_slope_gt_six",
+        "relation_endpoint_signs",
+        "relation_strictMonoOn",
+        "exists_unique_limiting_parameter",
+        "limiting_parameter_geometry"
+      ],
+      "formalization/weighted/LimitingCrestPerturbation.lean": [
+        "quadratic_critical_orbit_unit",
+        "quadratic_disk_lipschitz",
+        "iterate_perturbation_up_to_four",
+        "quadratic_fourth_cut_error",
+        "fourth_cut_real_upper"
+      ],
+      "formalization/weighted/LimitingCrestGeometry.lean": [
+        "crossing_endpoint_margins",
+        "crossing_growth",
+        "crossing_strictMono",
+        "crossing_root_unique",
+        "circle_image",
+        "circle_radius",
+        "crossing_height_pos",
+        "crossing_height_sq_bounds",
+        "terminal_bounds",
+        "fourth_critical_upper",
+        "complexMap_real",
+        "complexMap_imaginary",
+        "third_image",
+        "uniform_model_corridor"
+      ],
+      "formalization/weighted/LimitingCrestCoefficient.lean": [
+        "crossingCos_spec",
+        "crossingCos_continuousOn",
+        "small_crossing_angle_bound",
+        "selected_integrand_continuousOn",
+        "selectedCoefficient_gt_quarter",
+        "exists_certified_limiting_model"
+      ],
+      "formalization/weighted/LimitingCrestEndpoint.lean": [
+        "radial_ordinate_pos",
+        "radial_circle_identity",
+        "crestTerminal_strictAnti",
+        "crestTerminal_endpoint_signs",
+        "crestTerminal_continuous",
+        "radial_model_realization",
+        "crestTerminal_upper_gate",
+        "unique_model_endpoint"
+      ],
+      "formalization/weighted/LimitingCrestPersistence.lean": [
+        "perturbed_crossing_exists",
+        "perturbed_terminal_bounds",
+        "uniform_perturbed_corridor"
+      ],
+      "formalization/weighted/LimitingCrestArcGates.lean": [
+        "realOrbit_eq_iterate",
+        "monic_conjugacy",
+        "monic_iterate_conjugacy",
+        "monic_relation_equivalence",
+        "endpoint_orbit_bounds",
+        "positive_fixed_point",
+        "positive_fixed_point_bracket",
+        "complete_endpoint_gates",
+        "central_selector_bounds",
+        "whole_support_bounds",
+        "complexMap_injOn_half_planes",
+        "complete_support_injectivity",
+        "selected_side_fourfold_injective"
+      ],
+      "formalization/weighted/LimitingCrestModelGates.lean": [
+        "crossing_global_growth",
+        "crossing_global_strictMono",
+        "crossing_global_unique",
+        "radialPoint_eq_circlePoint",
+        "realMap_negative_strictMono",
+        "fourth_critical_pos",
+        "fourth_image_target_gate"
+      ],
+      "formalization/weighted/LimitingCrestLimit.lean": [
+        "crossingCos_radial_coordinate",
+        "full_crossingCos_bounds",
+        "full_integrand_continuousOn",
+        "selected_coefficient_le_full",
+        "exists_positive_full_model_coefficient"
+      ],
+      "formalization/weighted/LimitingCrestQuadraticReturn.lean": [
+        "complete_remainder_bound",
+        "normalized_return_error",
+        "actual_quadratic_return_corridor",
+        "normalized_iterate_scale",
+        "unscaled_quadratic_corridor"
+      ],
+      "formalization/weighted/LimitingCrestSharpCoefficient.lean": [
+        "full_crossingCos_root",
+        "sharp_crossingCos_lower",
+        "sharp_crossing_angle_bound",
+        "sharp_inner_integral_lower",
+        "fullModelCoefficient_gt_third",
+        "exists_full_model_coefficient_gt_third"
+      ]
+    },
+    "obligations": []
+  },
   "parabolic-sharp-passage-20261126": {
     "guide": "contributions/parabolic_sharp_passage_20261126/NOTE.md#parabolic-sharp-passage-20261126",
     "theorems": {
