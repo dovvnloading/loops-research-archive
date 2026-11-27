@@ -27,6 +27,8 @@ private theorem quadratic_real_unit_invariant (κ t : ℝ)
     (hκ : 0 ≤ κ) (hκ2 : κ ≤ 2) (ht : |t| ≤ 1) :
     |1-κ*t^2| ≤ 1 := by
   have ht' := abs_le.mp ht
+  have hinterval : 0 ≤ (1-t)*(1+t) :=
+    mul_nonneg (by linarith [ht'.2]) (by linarith [ht'.1])
   have ht2 : t^2 ≤ 1 := by nlinarith
   have hprod0 : 0 ≤ κ*t^2 := mul_nonneg hκ (sq_nonneg t)
   have hprod2 : κ*t^2 ≤ 2 := by

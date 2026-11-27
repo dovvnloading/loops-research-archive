@@ -70,6 +70,8 @@ formalization/weighted/FullCloneStrictGap.lean	CLONE EDGE
 formalization/weighted/GraphWeightedBridge.lean	CLONE EDGE
 formalization/weighted/LeastSaturatedCarrier.lean	METADATA
 formalization/weighted/LimbInsertionHolonomy.lean	CUTS CREST
+formalization/weighted/LimitingCrestCoefficient.lean	METADATA
+formalization/weighted/LimitingCrestGeometry.lean	METADATA
 formalization/weighted/LimitingCrestParameter.lean	METADATA
 formalization/weighted/LimitingCrestPerturbation.lean	METADATA
 formalization/weighted/LocalizationSheetKernel.lean	COVER-FIBER SHEETS CONNECTOR

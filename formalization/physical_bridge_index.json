@@ -3287,6 +3287,29 @@
         "iterate_perturbation_up_to_four",
         "quadratic_fourth_cut_error",
         "fourth_cut_real_upper"
+      ],
+      "formalization/weighted/LimitingCrestGeometry.lean": [
+        "crossing_endpoint_margins",
+        "crossing_growth",
+        "crossing_strictMono",
+        "crossing_root_unique",
+        "circle_image",
+        "circle_radius",
+        "crossing_height_pos",
+        "crossing_height_sq_bounds",
+        "terminal_bounds",
+        "fourth_critical_upper",
+        "complexMap_real",
+        "complexMap_imaginary",
+        "third_image",
+        "uniform_model_corridor"
+      ],
+      "formalization/weighted/LimitingCrestCoefficient.lean": [
+        "crossingCos_spec",
+        "crossingCos_continuousOn",
+        "small_crossing_angle_bound",
+        "selected_integrand_continuousOn",
+        "selectedCoefficient_gt_quarter"
       ]
     },
     "obligations": []
