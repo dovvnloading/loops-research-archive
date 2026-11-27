@@ -157,6 +157,7 @@ formalization/weighted/QuadraticTrappingEscape.lean	METADATA
 formalization/weighted/QuadraticUnivalentNeighborhood.lean	CONSTRUCT
 formalization/weighted/SaturatedTelescope.lean	METADATA
 formalization/weighted/SpectralDominance.lean	CLONE EDGE
+formalization/weighted/StationaryAmbientLanding.lean	METADATA
 formalization/weighted/StationaryCanonicalLift.lean	VARIABLE-EXIT
 formalization/weighted/StationaryCompactContact.lean	METADATA
 formalization/weighted/StationaryDeckSeparator.lean	VARIABLE-EXIT

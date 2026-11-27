@@ -17,11 +17,11 @@ Ledger statement being addressed:
 
 Work in progress. The intended new result constructs an ambient univalent collar of an actual compact central quadratic predecessor, and proves canonical landing and complete parent-address compatibility for independently supplied ambient lifts from one physical anchor.
 
-No theorem is claimed verified at this initial draft checkpoint.
+The first proof checkpoint adds five Lean declarations in StationaryAmbientLanding. Compilation and the kernel audit are pending; no theorem is yet claimed verified.
 
 ## Evidence
 
-The existing StationaryPhysicalItinerary module proves physical inverse-section agreement inside the filled Julia set. The proposed extension must construct the ambient collar and remove the assumptions that the supplied restriction already lies in that filled set and that its endpoint already lands.
+The existing StationaryPhysicalItinerary module proves physical inverse-section agreement inside the filled Julia set. The new StationaryAmbientLanding module proves connected component confinement, pointwise inverse agreement, exact full-trace reconstruction, filter-level landing, and a constructed analytic-collar theorem for actual polynomial compact cores. The restriction may lie outside the filled set. The anchor must be in the same connected trace whose entire projected image stays in the constructed collar. Derivation of the compact-core hypotheses directly from native limb data is the next checkpoint.
 
 Lean is unavailable locally and the workspace filesystem is full. All compilation and transitive proof-axiom validation will use the repository's existing weighted Lean CI. No result will be claimed proved before that CI passes.
 

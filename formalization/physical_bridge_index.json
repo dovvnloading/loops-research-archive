@@ -3829,5 +3829,20 @@
       ]
     },
     "obligations": []
+  },
+  "stationary-ambient-landing-20261127": {
+    "guide": "contributions/stationary_ambient_landing_20261127/NOTE.md#stationary-ambient-landing-20261127",
+    "theorems": {
+      "formalization/weighted/StationaryAmbientLanding.lean": [
+        "anchored_component_confinement",
+        "anchored_lift_agrees",
+        "anchored_lift_image",
+        "anchored_lift_tendsto",
+        "selected_collar_ambient_landing"
+      ]
+    },
+    "obligations": [
+      "KKL_STATIONARY_PROOF_USED_PREDECESSOR_SELECTION"
+    ]
   }
 }
