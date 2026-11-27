@@ -3693,6 +3693,23 @@
       ],
       "FiniteThreeReturnCertificates.lean": [
         "finite_certificates_valid"
+      ],
+      "formalization/weighted/ThreeReturnCovering.lean": [
+        "signed_restriction_local_homeomorph",
+        "signed_two_sheet_cover",
+        "actual_two_sheet_cover"
+      ],
+      "formalization/weighted/ThreeReturnCollar.lean": [
+        "source_zero",
+        "source_open",
+        "source_connected",
+        "sourceMap_proper",
+        "physical_pullback_image",
+        "physicalSource_eq_component",
+        "physicalSource_closure",
+        "canonical_collar_of_bounds",
+        "actual_canonical_collar",
+        "exists_actual_canonical_collar"
       ]
     },
     "obligations": []

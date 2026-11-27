@@ -178,6 +178,8 @@ formalization/weighted/TelescopeUnbranchedCover.lean	CONSTRUCT
 formalization/weighted/TelescopeUnivalentCollars.lean	CONSTRUCT
 formalization/weighted/TerminalFiberExclusion.lean	METADATA
 formalization/weighted/ThreeReturnAnnulus.lean	METADATA
+formalization/weighted/ThreeReturnCollar.lean	METADATA
+formalization/weighted/ThreeReturnCovering.lean	METADATA
 formalization/weighted/ThreeReturnDegree.lean	METADATA
 formalization/weighted/ThreeReturnDomain.lean	METADATA
 formalization/weighted/ThreeReturnEstimates.lean	METADATA

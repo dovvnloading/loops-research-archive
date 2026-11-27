@@ -36,7 +36,11 @@ The normalization is F(z)=f_c^p(d*z)/d with d=f_c^p(0)>0, outer radius 1/6 and i
 
 `FiniteThreeReturnCertificates.lean` has independently kernel-checked the new fixed-radius integer inequalities for all fourteen archived parameter boxes p=3,...,16. Its certificate includes every intermediate factor in the complete three-return divided difference. The analytic soundness bridge for this finite extension is still being compiled, so the finite certificate is not yet advertised as the all-period collar theorem.
 
-The registered proof modules compile locally with pinned Lean 4.32.0. The combined physical-domain theorem is the next integration step.
+`ThreeReturnCovering.lean` upgrades this census to a literal two-sheet covering after deleting the critical value. It constructs local sheets in open half-planes from the signed collision theorem, and uses properness to produce evenly covered neighborhoods whose fiber set is `Fin 2`.
+
+`ThreeReturnCollar.lean` now assembles these results into `CanonicalCollar c p`. The theorem `actual_canonical_collar` supplies every field for every `ActualTip p c` with p >= 17, and `exists_actual_canonical_collar` supplies such an actual parameter for every such p. The physical domain is proved equal to the component containing zero of the complete physical f_c^(3p) pullback of D(0,d/6). Its actual closure is strictly inside D(0,3*d/20), and the capacity and reciprocal-capacity bounds apply to this closure. The generic assembly takes only the orbit scale, critical-value inequality, boundary inequality and actual collision relation, permitting an independent finite-certificate input.
+
+The registered proof modules compile locally with pinned Lean 4.32.0. The remaining integration work is the finite-period analytic bridge and stronger topology of the canonical source and its complement.
 
 All accepted results will be stated as Lean theorems in the pinned repository project and checked by the existing CI and transitive-axiom audit. Progress and proof revisions will be committed to this pull request.
 
