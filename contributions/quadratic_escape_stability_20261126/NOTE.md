@@ -16,8 +16,9 @@ quadratic family, its escape potential, and its filled sets. The principal
 results are a constructed normalized analytic coordinate at infinity,
 harmonicity along escaping analytic families, and explicit Hausdorff and
 conjugacy bounds for large parameters. Validation status and reproducible
-commands appear under **Evidence**; a proof candidate is not counted as
-certified until compilation and the transitive dependency audit pass.
+commands appear under **Evidence**. All 57 public theorems compile in CI,
+and the full transitive dependency audit passes. There are no new axioms
+or proof placeholders.
 
 Write `f_c(z) = z²+c`, with `f_c^n` its actual forward iterate. The existing
 objects used throughout are
@@ -203,19 +204,38 @@ The shadowing and stability declarations use namespace `QuadraticCantor`.
 The analytic modules use namespaces `QuadraticEscapeHarmonic` and
 `QuadraticBottcherExterior`, respectively.
 
-The initial five-theorem shadowing checkpoint passed the full weighted
-build and transitive dependency audit at commit
-`6c082ded253ba72425bcc5784e4882b7a5e1bf1d`
+**Verified proof revision:**
+[`05a748aecf686cd2689e786df9850f690c73f944`](https://github.com/dovvnloading/loops-research-archive/commit/05a748aecf686cd2689e786df9850f690c73f944).
+The full weighted build succeeded (8,974 build jobs), and its transitive
+dependency audit passed in
+[run 45920174296](https://github.com/dovvnloading/loops-research-archive/actions/runs/45920174296).
+The audit's exact module summaries are:
+
+```text
+AXIOM_AUDIT weighted QuadraticBottcherExterior: 54 declarations, 52 theorems; allowed axioms only
+AXIOM_AUDIT weighted QuadraticEscapeHarmonic: 32 declarations, 30 theorems; allowed axioms only
+AXIOM_AUDIT weighted QuadraticJuliaStability: 9 declarations, 9 theorems; allowed axioms only
+AXIOM_AUDIT weighted QuadraticOrbitShadowing: 5 declarations, 5 theorems; allowed axioms only
+AXIOM_AUDIT weighted QuadraticShadowRadius: 16 declarations, 16 theorems; allowed axioms only
+AXIOM_AUDIT_PASS weighted: 152 modules, 3314 declarations
+```
+
+The 116 audited declarations in these five modules include private helpers
+and generated declarations; the public theorem count is 57. The only
+permitted axioms are Lean's existing `propext`, `Classical.choice`, and
+`Quot.sound`. The source scan registered all 195 Lean files and found no
+prohibited proof tokens. The root and standalone Lean builds and audits,
+as well as the research checks, passed in
+[run 45920174230](https://github.com/dovvnloading/loops-research-archive/actions/runs/45920174230).
+Contribution intake also passed, and all reported workflow runs on the
+verified proof revision were green. The final packet update changes only
+documentation; the Lean sources and proof registration are unchanged.
+
+The draft PR was opened before the proofs were developed. Successive
+proof checkpoints, including compiler repairs, were committed into it.
+The first five-theorem checkpoint already passed the full build and audit
+at `6c082ded253ba72425bcc5784e4882b7a5e1bf1d`
 ([run 45917813979](https://github.com/dovvnloading/loops-research-archive/actions/runs/45917813979)).
-The generalized shadowing, stability, and harmonicity modules compiled
-at `eea7f3d97fafe4b176588aa41bbaa962de9fc0e5`
-([run 45919228808](https://github.com/dovvnloading/loops-research-archive/actions/runs/45919228808));
-that run stopped on proof elaboration errors in the new Böttcher module,
-so it did not run the final dependency audit. All six original Böttcher errors were repaired at
-`685de66cfc8d5c078417c72da3dff8e4593a29b3`. That build found one implicit-argument
-error in the newly added exterior injectivity proof; this checkpoint fixes
-it. Full compilation and the transitive audit remain pending at this
-documentation checkpoint.
 
 Reproduction from the repository root:
 
