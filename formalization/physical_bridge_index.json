@@ -3447,11 +3447,17 @@
         "ReturnCoordinate.lift_prefix_endpoint",
         "ReturnCoordinate.lift_closed_iff_even",
         "ReturnCoordinate.lift_switched_iff_odd",
-        "quadratic_return_monodromy"
+        "quadratic_return_monodromy",
+        "ReturnCoordinate.eqOn_of_onto",
+        "ReturnCoordinate.winding_eq_of_onto",
+        "quadratic_return_unique_lift_with_monodromy"
       ],
       "formalization/weighted/TelescopeMonodromyObstruction.lean": [
         "quadratic_return_small_switching_loop",
         "quadratic_return_no_punctured_section"
+      ],
+      "formalization/weighted/TelescopeMonodromyRealization.lean": [
+        "quadratic_return_all_local_windings"
       ]
     },
     "obligations": [

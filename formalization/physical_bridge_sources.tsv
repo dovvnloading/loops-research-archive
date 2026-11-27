@@ -151,6 +151,7 @@ formalization/weighted/TelescopeConformalInverse.lean	CONSTRUCT
 formalization/weighted/TelescopeDeckInvolution.lean	CONSTRUCT
 formalization/weighted/TelescopeDeckRigidity.lean	CONSTRUCT
 formalization/weighted/TelescopeMonodromyObstruction.lean	METADATA
+formalization/weighted/TelescopeMonodromyRealization.lean	METADATA
 formalization/weighted/TelescopeMovingDeck.lean	CONSTRUCT
 formalization/weighted/TelescopeParameterReturn.lean	CONSTRUCT
 formalization/weighted/TelescopePathPairing.lean	CONSTRUCT

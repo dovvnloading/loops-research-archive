@@ -217,6 +217,69 @@ theorem quadratic_return_monodromy (c : ℂ) (a b : ℕ)
     C.lift_switched_iff_odd hpinj τ hτmap hτprefix
       γ Γ hγV hγreg hγloop hΓA hlift⟩
 
+/-- Complete fiber coverage forces any two constructed critical
+coordinates to agree throughout the physical target. -/
+theorem ReturnCoordinate.eqOn_of_onto {c : ℂ} {a b : ℕ} {A V : Set ℂ}
+    (C E : ReturnCoordinate c a b A V)
+    (honto : orbit c (a+1+b) '' A = V) : EqOn C.toFun E.toFun V := by
+  intro y hy
+  rw [← honto] at hy
+  obtain ⟨z, hz, rfl⟩ := hy
+  exact (C.square z hz).trans (E.square z hz).symm
+
+/-- The actual loop invariant is independent of which conformal
+inverse construction produced the critical coordinate. -/
+theorem ReturnCoordinate.winding_eq_of_onto {c : ℂ} {a b : ℕ} {A V : Set ℂ}
+    (C E : ReturnCoordinate c a b A V)
+    (honto : orbit c (a+1+b) '' A = V)
+    (γ : C(unitInterval, ℂ)) (hγV : ∀ t, γ t ∈ V)
+    (hγreg : ∀ t, γ t ≠ orbit c b c) (hγloop : γ 1 = γ 0) :
+    C.winding γ hγV hγreg hγloop = E.winding γ hγV hγreg hγloop := by
+  have hp : C.path γ hγV = E.path γ hγV := by
+    apply ContinuousMap.ext
+    intro t
+    exact C.eqOn_of_onto E honto (hγV t)
+  unfold ReturnCoordinate.winding
+  congr 1
+
+/-- The physical lift exists uniquely from every regular starting point,
+and its endpoint is the identity or deck partner according to the exact
+winding parity. This combines existence and the phase computation in one
+statement, without assuming a candidate lift. -/
+theorem quadratic_return_unique_lift_with_monodromy (c : ℂ) (a b : ℕ)
+    (A B D V : Set ℂ) (x : ℂ) (hx0 : orbit c a x = 0)
+    (hVo : IsOpen V) (hVc : IsPreconnected V) (hv : orbit c b c ∈ V)
+    (hD : D = connectedComponentIn (orbit c b ⁻¹' V) c)
+    (hB : B = connectedComponentIn ((fun w : ℂ => w^2+c) ⁻¹' D) 0)
+    (hA : A = connectedComponentIn (orbit c a ⁻¹' B) x)
+    (hpinj : InjOn (orbit c a) A) (hrinj : InjOn (orbit c b) D) :
+    ∃ (C : ReturnCoordinate c a b A V) (τ : ℂ → ℂ),
+      AnalyticOnNhd ℂ τ A ∧ MapsTo τ A A ∧
+      (∀ z ∈ A, τ (τ z) = z) ∧
+      ∀ (γ : C(unitInterval, ℂ)) (hγV : ∀ t, γ t ∈ V)
+        (hγreg : ∀ t, γ t ≠ orbit c b c) (hγloop : γ 1 = γ 0),
+        ∀ z ∈ A, orbit c (a+1+b) z = γ 0 →
+          ∃! Γ : C(unitInterval, ℂ),
+            (∀ t, Γ t ∈ A) ∧
+            (∀ t, orbit c (a+1+b) (Γ t) = γ t) ∧ Γ 0 = z ∧
+            Γ 1 = if Even (C.winding γ hγV hγreg hγloop) then z else τ z := by
+  obtain ⟨C, τ, hτa, hτmap, hτinv, _, hphase⟩ :=
+    quadratic_return_monodromy c a b A B D V x hx0 hVo hVc hv
+      hD hB hA hpinj hrinj
+  refine ⟨C, τ, hτa, hτmap, hτinv, ?_⟩
+  intro γ hγV hγreg hγloop z hz hstart
+  obtain ⟨Γ, hΓ, huniq⟩ :=
+    quadratic_return_unique_path_lift c a b A B D V x hx0 hVo hVc hv
+      hD hB hA hpinj hrinj γ hγV hγreg z hz hstart
+  have hparity := hphase γ hγV hγreg hγloop Γ hΓ.1 hΓ.2.1
+  refine ⟨Γ, ⟨hΓ.1, hΓ.2.1, hΓ.2.2, ?_⟩, ?_⟩
+  · split_ifs with he
+    · exact (hparity.1.mpr he).trans hΓ.2.2
+    · exact (hparity.2.mpr (Int.not_even_iff_odd.mp he)).trans
+        (congrArg τ hΓ.2.2)
+  · intro Θ hΘ
+    exact huniq Θ ⟨hΘ.1, hΘ.2.1, hΘ.2.2.1⟩
+
 end
 
 end LoopsTelescopeReturnMonodromy
