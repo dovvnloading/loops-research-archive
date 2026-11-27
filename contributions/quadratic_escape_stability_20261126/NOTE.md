@@ -47,6 +47,23 @@ Lean compilation is unavailable: the mandatory pinned compiler artifacts and
 Mathlib cache exceed this workspace's free disk capacity. GitHub Actions
 compilation and its transitive dependency audit remain the acceptance gate.
 
+### Checkpoint 2: structural conjugacy and harmonic escape (CI pending)
+
+`QuadraticJuliaStability.lean` proposes a global Hausdorff bound
+`hausdorffDist (filled c) (filled d) <= norm(d-c)` when both parameter norms
+are at least eight. At parameter distance at most one it constructs a
+homeomorphism intertwining the actual quadratic maps, with the same error
+bound at every forward time. Uniqueness follows from the exact difference
+factorization and expansion in the shadow tube. Continuity follows from
+compactness of the closed all-time shadow relation.
+
+`QuadraticEscapeHarmonic.lean` proposes a normally convergent analytic
+logarithmic correction on the far exterior, proves its exact equality with
+the existing escape potential by telescoping, and transports it to every
+escaping analytic parameter/point family. The intended consequences are
+phase and parameter harmonicity, real analyticity, and the circle mean-value
+identity. These declarations are proof candidates until CI accepts them.
+
 ## Dependencies
 
 The target is the still-open H3_COERCIVITY obligation, stated at M6 in

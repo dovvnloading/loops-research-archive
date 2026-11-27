@@ -3200,6 +3200,31 @@
         "infinite_orbit_shadow",
         "filled_orbit_shadow",
         "large_parameter_orbit_shadow"
+      ],
+      "formalization/weighted/QuadraticJuliaStability.lean": [
+        "orbit_shadow_unique",
+        "filled_hausdorff_lipschitz",
+        "orbit_shadow_relation_closed",
+        "filled_structural_conjugacy",
+        "filled_near_identity_conjugacy"
+      ],
+      "formalization/weighted/QuadraticEscapeHarmonic.lean": [
+        "exterior_orbit_bound",
+        "exterior_ratio_bound",
+        "exterior_log_term_bound",
+        "exterior_log_correction_summable",
+        "exterior_approx_telescope",
+        "exterior_escape_log_correction",
+        "orbit_pair_analyticAt",
+        "log_correction_analyticOnNhd",
+        "exterior_pair_harmonicAt",
+        "escape_pair_harmonicAt",
+        "escape_harmonicAt",
+        "parameter_escape_harmonicAt",
+        "escape_real_analyticAt",
+        "parameter_escape_real_analyticAt",
+        "escape_circle_average",
+        "parameter_escape_circle_average"
       ]
     },
     "obligations": [

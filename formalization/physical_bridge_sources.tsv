@@ -110,7 +110,9 @@ formalization/weighted/ProtectedCarrierLogic.lean	HULL
 formalization/weighted/QuadraticCriticalTrapping.lean	CONSTRUCT
 formalization/weighted/QuadraticEscapeEndpoint.lean	QUADRATIC-ESCAPE
 formalization/weighted/QuadraticEscapeFullness.lean	METADATA
+formalization/weighted/QuadraticEscapeHarmonic.lean	METADATA
 formalization/weighted/QuadraticInverseOpen.lean	CONSTRUCT
+formalization/weighted/QuadraticJuliaStability.lean	METADATA
 formalization/weighted/QuadraticMultiplierArithmetic.lean	METADATA
 formalization/weighted/QuadraticOrbitShadowing.lean	METADATA
 formalization/weighted/QuadraticParameterDistortion.lean	CONSTRUCT
