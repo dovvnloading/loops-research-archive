@@ -74,6 +74,7 @@ formalization/weighted/ConnectedBinaryCoding.lean	METADATA
 formalization/weighted/CrestFirstExit.lean	METADATA
 formalization/weighted/CrestIntegralLimit.lean	METADATA
 formalization/weighted/CrestIterateLimit.lean	METADATA
+formalization/weighted/CriticalRayGeometry.lean	METADATA
 formalization/weighted/CriticalReturnRelationStability.lean	METADATA
 formalization/weighted/DepthThreeClosure.lean	METADATA
 formalization/weighted/DepthThreeReal.lean	METADATA
@@ -129,6 +130,7 @@ formalization/weighted/ParabolicTipPeriod.lean	PARABOLIC STRAIGHTEN
 formalization/weighted/ParabolicTipRate.lean	PARABOLIC STRAIGHTEN
 formalization/weighted/ParabolicTipShooting.lean	PARABOLIC STRAIGHTEN
 formalization/weighted/ParabolicTipWindow.lean	PARABOLIC STRAIGHTEN
+formalization/weighted/PathChoiceTraceCensus.lean	METADATA
 formalization/weighted/PathExcursionCensus.lean	METADATA
 formalization/weighted/Period27FiniteFibers.lean	REAL-FIBERS MARKOV-SPECTRUM
 formalization/weighted/Period27RealCenter.lean	CENTER
@@ -184,6 +186,7 @@ formalization/weighted/TelescopeCollarRecognition.lean	METADATA
 formalization/weighted/TelescopeCompactReturn.lean	CONSTRUCT
 formalization/weighted/TelescopeConformalInverse.lean	CONSTRUCT
 formalization/weighted/TelescopeCriticalExcursions.lean	CONSTRUCT
+formalization/weighted/TelescopeCriticalTraceCensus.lean	CONSTRUCT
 formalization/weighted/TelescopeDeckInvolution.lean	CONSTRUCT
 formalization/weighted/TelescopeDeckRigidity.lean	CONSTRUCT
 formalization/weighted/TelescopeLoopMonodromy.lean	CONSTRUCT

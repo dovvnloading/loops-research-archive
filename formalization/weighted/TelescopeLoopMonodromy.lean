@@ -148,11 +148,11 @@ theorem quadratic_return_loop_monodromy (c : ℂ) (a b : ℕ)
   have hqD (m : ℕ) (t : unitInterval) : (centralHalfTurns r m t)^2+c ∈ D := by
     have h := hwB m t
     rw [hB] at h
-    exact connectedComponentIn_subset _ _ h
+    exact connectedComponentIn_subset ((fun w : ℂ => w^2+c) ⁻¹' D) 0 h
   have hγV (m : ℕ) (t : unitInterval) : criticalValueTurns c b r m t ∈ V := by
     have h := hqD m t
     rw [hD] at h
-    exact connectedComponentIn_subset _ _ h
+    exact connectedComponentIn_subset (orbit c b ⁻¹' V) c h
   have hγreg (m : ℕ) (t : unitInterval) :
       criticalValueTurns c b r m t ≠ orbit c b c := by
     intro he
@@ -186,20 +186,20 @@ theorem quadratic_return_loop_monodromy (c : ℂ) (a b : ℕ)
     change orbit c a (g (centralHalfTurns r (2*k+1) 1)) = orbit c a (τ z)
     rw [hgright (hwB _ _), centralHalfTurns_odd, hτprefix z hz, hzr]
   have hτcont : ContinuousOn τ A := fun w hw => (hτan w hw).continuousAt.continuousWithinAt
-  let Σ : ℕ → C(unitInterval, ℂ) := fun m =>
+  let mate : ℕ → C(unitInterval, ℂ) := fun m =>
     ⟨fun t => τ (Λ m t), hτcont.comp_continuous (Λ m).continuous (hΛA m)⟩
-  have hΣA (m : ℕ) (t : unitInterval) : Σ m t ∈ A := hτmap (hΛA m t)
-  have hΣlift (m : ℕ) : ActualPathLift c (a+1+b) A (criticalValueTurns c b r m) (Σ m) := by
-    refine ⟨hΣA m, ?_⟩
+  have hMateA (m : ℕ) (t : unitInterval) : mate m t ∈ A := hτmap (hΛA m t)
+  have hMatelift (m : ℕ) : ActualPathLift c (a+1+b) A (criticalValueTurns c b r m) (mate m) := by
+    refine ⟨hMateA m, ?_⟩
     intro t
-    exact ((hτfiber (Λ m t) (hΛA m t) (Σ m t) (hΣA m t)).mpr (Or.inr rfl)).trans
+    exact ((hτfiber (Λ m t) (hΛA m t) (mate m t) (hMateA m t)).mpr (Or.inr rfl)).trans
       ((hΛlift m).2 t)
-  have hΣzero (m : ℕ) : Σ m 0 = τ z := by
+  have hMatezero (m : ℕ) : mate m 0 = τ z := by
     change τ (Λ m 0) = τ z
     rw [hΛzero]
   have hclass (m : ℕ) (Γ : C(unitInterval, ℂ))
       (hΓ : ActualPathLift c (a+1+b) A (criticalValueTurns c b r m) Γ) :
-      Γ = Λ m ∨ Γ = Σ m := by
+      Γ = Λ m ∨ Γ = mate m := by
     have hvalue : orbit c (a+1+b) z = criticalValueTurns c b r m 0 := by
       rw [← hΛzero m]
       exact (hΛlift m).2 0
@@ -214,7 +214,7 @@ theorem quadratic_return_loop_monodromy (c : ℂ) (a b : ℕ)
       have hu := quadratic_return_unique_path_lift c a b A B D V x hx0 hVo hVc hv
         hD hB hA hpinj hrinj (criticalValueTurns c b r m) (hγV m) (hγreg m)
           (τ z) (hτmap hz) hτvalue
-      exact Or.inr (hu.unique ⟨hΓ.1,hΓ.2,he⟩ ⟨(hΣlift m).1,(hΣlift m).2,hΣzero m⟩)
+      exact Or.inr (hu.unique ⟨hΓ.1,hΓ.2,he⟩ ⟨(hMatelift m).1,(hMatelift m).2,hMatezero m⟩)
   refine ⟨r, τ, z, hr, hz, hzr, hτan, hτmap, hτinv, hτprefix, hτz, ?_, ?_⟩
   · intro m
     exact ⟨hγV m, hγreg m, criticalValueTurns_closed c b r m, Λ m, hΛlift m, hΛzero m⟩

@@ -3950,12 +3950,46 @@
       ],
       "formalization/weighted/TelescopeCriticalExcursions.lean": [
         "continuous_square_root_interior_choice",
-        "quadratic_return_critical_excursion"
+        "quadratic_return_critical_excursion",
+        "quadratic_return_critical_lift_card_exact"
       ],
       "formalization/weighted/TelescopeLoopMonodromy.lean": [
         "criticalValueTurns_closed",
         "quadratic_return_loop_monodromy",
         "quadratic_return_no_regular_section"
+      ],
+      "formalization/weighted/PathChoiceTraceCensus.lean": [
+        "mem_choiceConcatenation_range",
+        "choiceConcatenation_range",
+        "choiceConcatenation_range_subset",
+        "choiceConcatenation_map",
+        "marker_mem_choice_range",
+        "choice_range_injective",
+        "distinct_trace_lift_family",
+        "finite_distinct_trace_census",
+        "choiceConcatenation_exhaustive",
+        "continuous_choiceConcatenation_exhaustive",
+        "continuous_choice_lift_card_exact",
+        "all_trace_card_exact"
+      ],
+      "formalization/weighted/CriticalRayGeometry.lean": [
+        "marker_re",
+        "marker_im",
+        "marker_ne_zero",
+        "excursion_continuous",
+        "excursion_zero",
+        "excursion_one",
+        "excursion_midpoint",
+        "excursion_eq_zero_iff",
+        "marker_norm_le",
+        "excursion_norm_le",
+        "neg_excursion_norm_le",
+        "marker_mem_excursion_range_iff",
+        "marker_not_mem_neg_excursion_range"
+      ],
+      "formalization/weighted/TelescopeCriticalTraceCensus.lean": [
+        "quadratic_return_critical_trace_card_exact",
+        "quadratic_return_unbounded_critical_trace_count"
       ]
     },
     "obligations": [

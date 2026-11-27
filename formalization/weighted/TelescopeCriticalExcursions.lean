@@ -1,4 +1,5 @@
 import TelescopePathPairing
+import PathExcursionCensus
 import Mathlib.Topology.Connected.TotallyDisconnected
 
 /-!
@@ -16,6 +17,7 @@ open Set Function
 open QuadraticEscape LoopsSaturatedTelescope LoopsTelescopeRamification
 open LoopsTelescopeConformalInverse LoopsTelescopeDeckInvolution
 open LoopsTelescopeUnbranchedCover
+open LoopsTelescopeCollar LoopsPathExcursionCensus
 
 noncomputable section
 
@@ -41,12 +43,14 @@ private theorem bump_eq_zero_iff (r : ℝ) (hr : 0 < r) (t : unitInterval) :
   constructor
   · intro h
     have he : r * 4 * (t : ℝ) * (1 - (t : ℝ)) = 0 := by
+      change ((r * 4 * (t : ℝ) * (1 - (t : ℝ)) : ℝ) : ℂ) = 0 at h
       exact_mod_cast h
     rcases mul_eq_zero.mp he with h | h
     · have ht : (t : ℝ) = 0 :=
         (mul_eq_zero.mp h).resolve_left (mul_ne_zero (ne_of_gt hr) (by norm_num))
       exact Or.inl (Subtype.ext ht)
-    · exact Or.inr (Subtype.ext (by linarith))
+    · have ht : (t : ℝ) = 1 := by linarith
+      exact Or.inr (Subtype.ext ht)
   · rintro (rfl | rfl) <;> simp [bump]
 
 private theorem bump_midpoint (r : ℝ) :
@@ -96,7 +100,7 @@ both based at the critical anchor. -/
 theorem quadratic_return_critical_excursion
     (c : ℂ) (a b : ℕ) (A B D V : Set ℂ) (x : ℂ)
     (hx0 : orbit c a x = 0)
-    (hVo : IsOpen V) (hVc : IsPreconnected V) (hv : orbit c b c ∈ V)
+    (hVo : IsOpen V) (_hVc : IsPreconnected V) (hv : orbit c b c ∈ V)
     (hD : D = connectedComponentIn (orbit c b ⁻¹' V) c)
     (hB : B = connectedComponentIn ((fun w : ℂ => w^2+c) ⁻¹' D) 0)
     (hA : A = connectedComponentIn (orbit c a ⁻¹' B) x)
@@ -112,7 +116,9 @@ theorem quadratic_return_critical_excursion
   have h0B : (0 : ℂ) ∈ B := by
     rw [hB]
     exact mem_connectedComponentIn (by simpa using hcD)
-  have hxA : x ∈ A := by rw [hA]; exact mem_connectedComponentIn (hx0.symm ▸ h0B)
+  have hxA : x ∈ A := by
+    rw [hA]
+    exact mem_connectedComponentIn (by simpa [hx0] using h0B)
   have hDo : IsOpen D := by
     rw [hD]
     exact (hVo.preimage (quadratic_orbit_continuous c b)).connectedComponentIn
@@ -125,7 +131,7 @@ theorem quadratic_return_critical_excursion
   have hBc : IsPreconnected B := by rw [hB]; exact isPreconnected_connectedComponentIn
   have hAp : orbit c a '' A = B := by
     rw [hA]
-    exact orbit_component_image c a B hBo hBc x (hx0.symm ▸ h0B)
+    exact orbit_component_image c a B hBo hBc x (by simpa [hx0] using h0B)
   obtain ⟨g, hgmap, hgleft, hgright, hga, _⟩ :=
     orbit_conformal_inverse c a A B hAo hpinj hAp
   have hg0 : g 0 = x := by rw [← hx0]; exact hgleft hxA
@@ -142,11 +148,11 @@ theorem quadratic_return_critical_excursion
   have hqD (t : unitInterval) : (bump r t)^2+c ∈ D := by
     have ht := heB t
     rw [hB] at ht
-    exact connectedComponentIn_subset _ _ ht
+    exact connectedComponentIn_subset ((fun w : ℂ => w^2+c) ⁻¹' D) 0 ht
   have hγV (t : unitInterval) : orbit c b ((bump r t)^2+c) ∈ V := by
     have ht := hqD t
     rw [hD] at ht
-    exact connectedComponentIn_subset _ _ ht
+    exact connectedComponentIn_subset (orbit c b ⁻¹' V) c ht
   let γ : Path (orbit c b c) (orbit c b c) :=
     { toFun := fun t => orbit c b ((bump r t)^2+c)
       continuous_toFun := (quadratic_orbit_continuous c b).comp
@@ -182,7 +188,7 @@ theorem quadratic_return_critical_excursion
     constructor
     · intro ht
       have he := hrinj (hqD t) hcD ht
-      have hz : bump r t = 0 := pow_eq_zero (by linear_combination he)
+      have hz : bump r t = 0 := eq_zero_of_pow_eq_zero (n := 2) (by linear_combination he)
       exact (bump_eq_zero_iff r hr t).mp hz
     · rintro (rfl | rfl) <;> simp [bump]
   · intro he
@@ -203,9 +209,11 @@ theorem quadratic_return_critical_excursion
         have hpB : p t ∈ B := hAp ▸ mem_image_of_mem _ (L t).property
         have hpD : (p t)^2+c ∈ D := by
           rw [hB] at hpB
-          exact connectedComponentIn_subset _ _ hpB
+          exact connectedComponentIn_subset ((fun w : ℂ => w^2+c) ⁻¹' D) 0 hpB
         have he : orbit c b ((p t)^2+c) = orbit c b ((bump r t)^2+c) := by
-          simpa only [quadratic_orbit_add, orbit] using hL t
+          have hh := hL t
+          change orbit c (a+1+b) (L t) = orbit c b ((bump r t)^2+c) at hh
+          simpa only [p, quadratic_orbit_add, orbit] using hh
         exact add_right_cancel (hrinj hpD (hqD t) he)
       have hnonzero (t : unitInterval) (ht : t ∈ Ioo (0 : unitInterval) 1) :
           bump r t ≠ 0 := by
@@ -232,6 +240,86 @@ theorem quadratic_return_critical_excursion
     · rintro (rfl | rfl)
       · exact hreturn₀
       · exact hreturn₁
+
+/-- The critical singleton fiber permits independent continuation
+choices on every excursion. For every `n` there is one target path in
+the actual target with exactly `2^n` complete continuous lifts in the
+actual source. No source endpoint conditions or finite path-space
+hypotheses are imposed in the counted type. -/
+theorem quadratic_return_critical_lift_card_exact
+    (c : ℂ) (a b : ℕ) (A B D V : Set ℂ) (x : ℂ)
+    (hx0 : orbit c a x = 0)
+    (hVo : IsOpen V) (hVc : IsPreconnected V) (hv : orbit c b c ∈ V)
+    (hD : D = connectedComponentIn (orbit c b ⁻¹' V) c)
+    (hB : B = connectedComponentIn ((fun w : ℂ => w^2+c) ⁻¹' D) 0)
+    (hA : A = connectedComponentIn (orbit c a ⁻¹' B) x)
+    (hpinj : InjOn (orbit c a) A) (hrinj : InjOn (orbit c b) D) :
+    ∀ n : ℕ, ∃ γ : C(unitInterval, ℂ),
+      (∀ t, γ t ∈ V) ∧ γ 0 = orbit c b c ∧ γ 1 = orbit c b c ∧
+      Nat.card {L : C(unitInterval, A) //
+        ∀ t, orbit c (a+1+b) (L t) = γ t} = 2 ^ n := by
+  obtain ⟨hxA, γ₀, hγV, _, L₀, L₁, hne, hclass⟩ :=
+    quadratic_return_critical_excursion c a b A B D V x hx0
+      hVo hVc hv hD hB hA hpinj hrinj
+  let xA : A := ⟨x, hxA⟩
+  let F : A → ℂ := fun z => orbit c (a+1+b) z
+  have hF : Continuous F :=
+    (quadratic_orbit_continuous c (a+1+b)).comp continuous_subtype_val
+  have hxval : F xA = orbit c b c := by
+    change orbit c (a+1+b) x = _
+    rw [quadratic_orbit_add c (a+1) b]
+    change orbit c b ((orbit c a x)^2+c) = _
+    simp [hx0]
+  have hbase (z : A) (_ : z ∈ (univ : Set A)) (he : F z = F xA) : z = xA := by
+    have hzB : orbit c a z ∈ B := by
+      have hsub : A ⊆ orbit c a ⁻¹' B := by
+        rw [hA]
+        exact connectedComponentIn_subset _ _
+      exact hsub z.property
+    have hzD : (orbit c a z)^2+c ∈ D := by
+      rw [hB] at hzB
+      exact connectedComponentIn_subset ((fun w : ℂ => w^2+c) ⁻¹' D) 0 hzB
+    have hcD : c ∈ D := by rw [hD]; exact mem_connectedComponentIn hv
+    have he' : orbit c b ((orbit c a z)^2+c) = orbit c b c := by
+      rw [hxval] at he
+      simpa only [F, quadratic_orbit_add, orbit] using he
+    have hsq := hrinj hzD hcD he'
+    have hp0 : orbit c a z = 0 := eq_zero_of_pow_eq_zero (n := 2) (by linear_combination hsq)
+    apply Subtype.ext
+    exact hpinj z.property hxA (hp0.trans hx0.symm)
+  have hL₀ := (hclass L₀).mpr (Or.inl rfl)
+  have hL₁ := (hclass L₁).mpr (Or.inr rfl)
+  have hsame : L₀.map hF = L₁.map hF := by
+    apply Path.ext
+    funext t
+    exact (hL₀ t).trans (hL₁ t).symm
+  have hall (L : Path xA xA) (_ : range L ⊆ (univ : Set A))
+      (hmap : L.map hF = L₀.map hF) : L = L₀ ∨ L = L₁ := by
+    apply (hclass L).mp
+    intro t
+    exact (congrArg (fun p : Path (F xA) (F xA) => p t) hmap).trans (hL₀ t)
+  have hrange : ∀ n : ℕ, range (repeatLoop (L₀.map hF) n) ⊆ V := by
+    intro n
+    induction n with
+    | zero =>
+      rintro _ ⟨t, rfl⟩
+      change F xA ∈ V
+      rwa [hxval]
+    | succ n ih =>
+      change range ((L₀.map hF).trans (repeatLoop (L₀.map hF) n)) ⊆ V
+      rw [Path.trans_range]
+      apply union_subset _ ih
+      rintro _ ⟨t, rfl⟩
+      change orbit c (a+1+b) (L₀ t) ∈ V
+      rw [hL₀ t]
+      exact hγV t
+  intro n
+  let γ := repeatLoop (L₀.map hF) n
+  refine ⟨γ.toContinuousMap, fun t => hrange n (mem_range_self t),
+    γ.source.trans hxval, γ.target.trans hxval, ?_⟩
+  have hcard := continuous_binary_lift_card_exact L₀ L₁ (univ : Set A)
+    (subset_univ _) (subset_univ _) hne F hF hsame hbase hall n
+  simpa only [subset_univ, true_and, Path.coe_toContinuousMap, F, γ] using hcard
 
 end
 
