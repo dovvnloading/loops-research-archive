@@ -17,7 +17,7 @@ Ledger statement being addressed:
 
 The submitted Lean statements supply the missing 26 finite arithmetic packets, together with the archived `(3,3,3)` case as a regression, for every word in `{3,4,5}^3`. Each packet contains an isolated actual real collision-polynomial root, the two signed suffix itineraries, all three ancestor disk margins, phase separation and nesting, real connectors, terminal cut and fixed-point brackets, the separate terminal three-return margin, entire round-gate containment, and checked rational logarithm/Taylor/AGM envelope witnesses.
 
-**Draft validation status:** the individual root and geometry predicates for all 27 words have passed local Lean kernel computation. Final assembly, rational width proofs, and the Mathlib real/complex interpretation are undergoing compilation and CI validation. This checkpoint does not yet request a ledger status change.
+**Draft validation status:** all four new core modules have compiled locally, including exhaustive coverage, pairwise chart separation, and all 27 geometry and rational width certificates. Their transitive dependency audit checked 575 declarations and accepted only the repository's permitted logical foundations. The core Lean and Python CI jobs have passed, and the Mathlib real-root and trace-interpretation module has compiled in CI. The complex remainder and final closure modules are undergoing compilation and CI validation; this checkpoint does not yet request a ledger status change.
 
 The target is exactly the finite arithmetic omission named in `NOV26_OPEN_26_TRIPLES`. The physical and arbitrary-depth obligations are kept separate in the Boundary below.
 
@@ -87,6 +87,8 @@ The disk-gap numerator is the exact denominator-cleared form of
 \left|f_c^j(z)-A_j(c)z^2\right|+\rho
   < |A_j(c)z^2|\qquad(|z|=\rho).
 \]
+
+`grid_packet_boundary_comparison` supplies this inequality for all three ancestor return circles of every grid packet, uniformly throughout its real parameter chart. Its proof extracts the positive margins directly from the computed geometry certificate and supplies the trace and error bounds; callers need not assume those analytic estimates.
 
 The arithmetic packet further checks the complete phase disk separation and containment inequalities, their real connectors, the O1/O2 cut ordering, a strict fixed-point bracket, and the independent `3n`-return. The latter retains the normalized margin `>1/8`; it is not substituted by the `n`-return check. The whole closed radial gate is checked by a disk-image majorant, including its center connector.
 

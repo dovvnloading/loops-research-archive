@@ -107,7 +107,10 @@ theorem upperProduct_sound {S : Int} (hS : 0 < S) (a b : Int) :
         ((-((-(a * b)) / S) : Int) : ℝ) * (S : ℝ) by exact_mod_cast hi)
   have hdiv := (div_le_iff₀ (scale_pos hS)).mpr hcast
   have hdiv2 := (div_le_div_iff_of_pos_right (scale_pos hS)).mpr hdiv
-  convert hdiv2 using 1 <;> field_simp [ne_of_gt (scale_pos hS)] <;> ring
+  have heq : ((a : ℝ) / (S : ℝ)) * ((b : ℝ) / (S : ℝ)) =
+      ((a : ℝ) * (b : ℝ) / (S : ℝ)) / (S : ℝ) := by ring
+  rw [heq]
+  exact hdiv2
 
 /-- The rational squared radius is rounded upwards, even when the
 ratio is not a dyadic grid point. -/
@@ -161,7 +164,12 @@ theorem errorStep_sound {S : Int} (hS : 0 < S) (c : ℝ)
     have hprod : 2 * |LoopsRealPeriod27.polynomial j c| * T ≤ 2 * X * T :=
       mul_le_mul_of_nonneg_right (mul_le_mul_of_nonneg_left hx (by norm_num)) hT
     apply hprod.trans
-    convert hp using 1 <;> push_cast <;> ring
+    have heq : 2 * X * T = ((2 * absHi row.orbit : Int) : ℝ) / (S : ℝ) *
+        ((t : ℝ) / (S : ℝ)) := by
+      dsimp only [X, T]
+      push_cast <;> ring
+    rw [heq]
+    exact hp
   have hsecond : (|quadraticCoefficient j c| * R ^ 2 + T) ^ 2 ≤
       (upperProduct S V V : ℝ) / (S : ℝ) := by
     have hs : (|quadraticCoefficient j c| * R ^ 2 + T) ^ 2 ≤
@@ -226,7 +234,7 @@ theorem errorTail_sound {S : Int} (hS : 0 < S)
             k (by simpa using hk)
           change ‖remainder c (j + (k + 1) + 1) z‖ ≤
             (errorAt (errorTail S rr rows (errorStep S rr row t)) k : ℝ) / (S : ℝ)
-          convert hrec using 1 <;> omega
+          simpa only [Nat.add_assoc, Nat.add_comm, Nat.add_left_comm] using hrec
 
 private theorem rowTrace_length (S : Int) (C : Bounds) (n j : Nat) (row : TraceRow) :
     (rowTrace S C n j row).length = n + 1 := by
@@ -348,7 +356,7 @@ theorem positive_margin_quadratic_comparison {S : Int} (hS : 0 < S)
     rw [norm_mul, norm_pow, hz]
     simpa using mul_le_mul_of_nonneg_right ha
       (sq_nonneg ((r.num : ℝ) / (r.den : ℝ)))
-  exact lt_of_le_of_lt (add_le_add_right hdiff _)
+  exact lt_of_le_of_lt (add_le_add hdiff le_rfl)
     (lt_of_lt_of_le hg hquad)
 
 /-- Consequently the actual image of the boundary avoids the entire
