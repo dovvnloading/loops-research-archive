@@ -36,12 +36,12 @@ generator, and the lift returns after `j` full turns if and only if `m` divides 
 If `k > 0`, no continuous right inverse landing in this `U` exists on any full
 punctured disk about `F x`.
 
-**Validation status at this checkpoint:** all generic proofs compile locally;
-production CI has already compiled `PowerMapRigidity` and `QuadraticLocalDeckAction`
-at the preceding checkpoint. Corrected rigidity integration and the new monodromy
-module are now submitted for complete production compilation and the compiled
-proof-dependency audit. No result is counted as validated under the requested
-standard until those CI steps pass.
+**Validation:** the full production build and compiled proof-dependency audit
+passed in [CI run 45920024986](https://github.com/dovvnloading/loops-research-archive/actions/runs/45920024986)
+on integrated proof commit `bcc6d56574683420397ebba52128f539b5f694d6`.
+All 24 checks on that commit passed. The five new modules contain 57 registered
+public theorems; every one is compiled in the repository's Lean project.
+The audit also checks generated and internal declarations, not only that public list.
 
 ## Evidence
 
@@ -224,9 +224,40 @@ all public theorem names are registered using `code/contribute.py lean-add`.
 There are no proof placeholders, new postulates, native-evaluation shortcuts, or
 changes to the allowed dependency set.
 
-Exact final-head CI evidence will be recorded here after the pending production
-build and audit complete. Local generic probes are debugging evidence only;
-they do not replace the production build of the actual quadratic wrappers.
+The [production CI job](https://github.com/dovvnloading/loops-research-archive/actions/runs/45920024986/job/140248342968)
+completed both the full weighted-project build and the transitive dependency audit
+successfully on `bcc6d56574683420397ebba52128f539b5f694d6`:
+
+```text
+Build completed successfully (8974 jobs).
+AXIOM_AUDIT_PASS weighted: 152 modules, 3320 declarations
+```
+
+The new modules were individually included in that compiled audit:
+
+| Module | Registered public theorems | Audited compiled declarations |
+|---|---:|---:|
+| `PowerMapRigidity` | 4 | 9 |
+| `QuadraticLocalDeckAction` | 26 | 65 |
+| `QuadraticLocalDeckRigidity` | 6 | 9 |
+| `QuadraticLocalInverseObstruction` | 2 | 4 |
+| `QuadraticLocalMonodromy` | 19 | 33 |
+| **Total** | **57** | **120** |
+
+Every row reported `allowed axioms only`. All 24 check runs on this integrated
+proof commit passed, including root kernel checking, contribution intake, and
+model-to-geometry registration. The five production targets also built locally
+(exit 0, 8,673 jobs); the new modules emitted no warnings. Existing prerequisite
+linter warnings were unchanged. `python code/contribute.py check` returned
+`RESULT: PASS`, and `git diff --check` passed.
+
+This verification-record update changes only `NOTE.md`; the five verified Lean
+sources are unchanged. Subsequent exact-head verification is also visible in the
+PR's check runs. The PR was opened as a draft before implementation, and the
+claim, implementation, proof repairs, monodromy extension, and validation record
+were committed incrementally. Local generic probes were debugging evidence;
+the accepted evidence above is the production build of the actual quadratic
+wrappers and the full CI dependency audit.
 
 ## Dependencies
 
