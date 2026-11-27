@@ -7,7 +7,7 @@ human_review: none
 
 <a id="quadratic-merger-balance-20261126"></a>
 
-# Exact component merger accounting for actual quadratic root enlargements
+# Exact component merger accounting for actual quadratic target enlargements
 
 Ledger statement being addressed:
 
@@ -30,17 +30,25 @@ The proposed sharp selected-component consequence says that the retained inverse
 
 A failed equality should produce a missing inverse point over every retained target value, including a critical target, and the equality should preserve the complete geometric inverse trace of every subset of U.
 
-A simultaneous all-parameter sharpness construction is being formalized: remove all postcritical values through depth n from the complex plane and enlarge a small regular disk to the resulting target. All 2^n old univalent components merge into one actual enlarged component although both targets have empty postcritical inventories.
+An all-parameter sharpness construction is included in the second proof checkpoint: remove all postcritical values through depth n from the complex plane and enlarge a small regular disk to the resulting target. All 2^n old univalent components merge into one actual enlarged component although both targets have empty postcritical inventories.
 
 ## Evidence
 
-Proof development is in the pinned Lean 4 project. The intended modules are QuadraticMergerBalance, QuadraticMergerNaturality, and QuadraticSilentMerger, registered through the existing contributor command. They must pass the existing Lean CI build and its transitive dependency audit before the claims above are marked verified.
+Proof development is in the pinned Lean 4 project. The intended modules are QuadraticMergerBalance, QuadraticMergerNaturality, QuadraticSilentMerger, and QuadraticCompactMerger, registered through the existing contributor command. They must pass the existing Lean CI build and its transitive dependency audit before the claims above are marked verified.
+
+A further compact-target extension constructs an old disk U and connected open W with compact closures, closure U contained in W, and closure W avoiding every postcritical value. A finite union of actual paths joins the complete regular inverse fiber; the existing compact-neighborhood theorem retains its image inside W. The full merger and the missing-point count therefore persist for relatively compact target enlargements. This extension awaits its first CI run.
 
 The balance uses the archive's already established degree conservation, target-wise defect conservation, and aggregate critical-defect/debt identity. It then partitions the postcritical inventory into old and newly admitted values and cancels the old charge. This run does not reprove those existing degree or census theorems.
 
 The selected-component certificate uses the positivity of one plus each competing component's debt. The geometric trace statement concerns arbitrary target subsets and therefore includes geometric inverse traces with loops or backtracking; it is not based on enumerating only parametrized lifts.
 
 The sharpness construction uses the connectedness of the complex plane minus a finite set, the existing full regular-fiber count, and the existing univalence theorem over a simply connected postcritical-free target. Those are imported ingredients; the new purpose is to realize the full possible defect in the merger balance for every parameter and depth.
+
+### Committed validation record
+
+The draft PR was opened before proof development: [PR #231](https://github.com/dovvnloading/loops-research-archive/pull/231). The first proof checkpoint [9dc3410](https://github.com/dovvnloading/loops-research-archive/commit/9dc34109261a4040ad3ffa7cf24b3c222d648006) passed source registration and the proof-trust scan, but the weighted Lean build found two implicit inverse-image set elaboration errors. They were fixed by naming the source set explicitly, without changing any theorem statement. The expanded 36-public-theorem checkpoint [850c093](https://github.com/dovvnloading/loops-research-archive/commit/850c0936c2a307b4b35d50d94292993190216cb8) then passed the core balance proofs and failed on one implicit finite-sum weight in the added zero-charge characterization. The third checkpoint supplies explicit weights, applies the same elaboration fix proactively in the naturality module, and includes the compact-target extension, bringing the registered public theorem count to 42. Compilation and transitive foundation validation are required; this note does not yet mark the results verified.
+
+Local Lean compilation is unavailable in this workspace. The existing pinned CI build and its transitive declaration audit are the validation authority. No workflow, validator, dependency pin, or ledger status has been changed.
 
 ## Dependencies
 

@@ -93,7 +93,8 @@ theorem criticalFree_component (c : ℂ) (n : ℕ) (x : ℂ)
     (hx : (quad c)^[n] x ∈ criticalFreeTarget c n) :
     connectedComponentIn ((quad c)^[n] ⁻¹' criticalFreeTarget c n) x =
       (quad c)^[n] ⁻¹' criticalFreeTarget c n := by
-  exact Subset.antisymm (connectedComponentIn_subset _ _)
+  exact Subset.antisymm
+    (connectedComponentIn_subset ((quad c)^[n] ⁻¹' criticalFreeTarget c n) x)
     ((criticalFree_pullback_path_connected c n).isConnected.isPreconnected
       |>.subset_connectedComponentIn hx Subset.rfl)
 

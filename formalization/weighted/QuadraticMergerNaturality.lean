@@ -75,7 +75,8 @@ theorem selected_debt_le_enlargement_charge (c : ℂ) (n : ℕ) (U V : Set ℂ)
   have hA : A ∈ C := selected_mem_mergerCensus c n U V hUV hUo hUc x y hx hy
   have hpos : 0 < C.card := Finset.card_pos.mpr ⟨A, hA⟩
   have hle : componentDebt c n U A ≤ ∑ D ∈ C, componentDebt c n U D :=
-    Finset.single_le_sum (fun _ _ => Nat.zero_le _) hA
+    Finset.single_le_sum (f := fun D : Set ℂ => componentDebt c n U D)
+      (fun D _ => Nat.zero_le (componentDebt c n U D)) hA
   have hbal := merger_balance_any_anchor c n U V hUV hUo hUc hVo hVc x y (hUV hx) hy
   have he := componentDebt_eq c n U hUo x hx
   change componentDebt c n U A = _ at he
@@ -110,7 +111,8 @@ theorem quadratic_enlargement_cartesian_iff_charge (c : ℂ) (n : ℕ) (U V : Se
     omega
   · intro hcharge
     have hle : componentDebt c n U A ≤ ∑ D ∈ C, componentDebt c n U D :=
-      Finset.single_le_sum (fun _ _ => Nat.zero_le _) hA
+      Finset.single_le_sum (f := fun D : Set ℂ => componentDebt c n U D)
+        (fun D _ => Nat.zero_le (componentDebt c n U D)) hA
     have hcard : C.card = 1 := by
       have hpos : 0 < C.card := Finset.card_pos.mpr ⟨A, hA⟩
       omega

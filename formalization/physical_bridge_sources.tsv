@@ -102,6 +102,7 @@ formalization/weighted/PrimeEndSectorRank.lean	METADATA
 formalization/weighted/QuadraticCenterMultiplier.lean	METADATA
 formalization/weighted/QuadraticCenterParameterLocus.lean	METADATA
 formalization/weighted/QuadraticCenterTrapping.lean	METADATA
+formalization/weighted/QuadraticCompactMerger.lean	CONSTRUCT
 formalization/weighted/QuadraticComponentConjugacy.lean	METADATA
 formalization/weighted/QuadraticComponentDynamics.lean	METADATA
 formalization/weighted/QuadraticCriticalFiberCensus.lean	METADATA

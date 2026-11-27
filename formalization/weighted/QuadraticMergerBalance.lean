@@ -98,7 +98,7 @@ theorem postcriticalTargets_enlargement_partition (c : ℂ) (n : ℕ)
     postcriticalTargets c V n =
       postcriticalTargets c U n ∪ postcriticalTargets c (V \ U) n := by
   ext z
-  simp only [Finset.mem_union, mem_postcriticalTargets, mem_diff]
+  simp only [Finset.mem_union, mem_postcriticalTargets, mem_sdiff]
   constructor
   · rintro ⟨hzV, hz⟩
     by_cases hzU : z ∈ U
@@ -252,7 +252,8 @@ theorem newCriticalCharge_eq_zero_iff_no_new_critical
     intro z hz
     have hle : localMultiplicity c z n - 1 ≤
         ∑ w ∈ criticalPoints c n E, (localMultiplicity c w n - 1) :=
-      Finset.single_le_sum (fun _ _ => Nat.zero_le _) hz
+      Finset.single_le_sum (f := fun w : ℂ => localMultiplicity c w n - 1)
+        (fun w _ => Nat.zero_le (localMultiplicity c w n - 1)) hz
     have hne := ((mem_criticalPoints_iff_multiplicity c n E z).mp hz).2
     have hp : 0 < localMultiplicity c z n := pow_pos (by norm_num) _
     omega

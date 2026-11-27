@@ -3311,6 +3311,14 @@
         "silent_missing_fiber_count",
         "silent_merger_not_cartesian",
         "every_quadratic_silent_merger"
+      ],
+      "formalization/weighted/QuadraticCompactMerger.lean": [
+        "finite_compact_connected_hull",
+        "compact_full_fiber_target",
+        "compact_full_degree_target",
+        "full_rank_silent_merger_count",
+        "full_rank_silent_missing_fiber",
+        "every_quadratic_compact_silent_merger"
       ]
     },
     "obligations": [
