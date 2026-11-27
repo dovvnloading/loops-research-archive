@@ -79,6 +79,7 @@ theorem radial_circle_identity {κ s : ℝ}
   have hd := discriminant_lower hk hs
   have hr := Real.sq_sqrt (show 0 ≤ radialDiscriminant κ s by linarith)
   unfold radialOrdinateSq radialAbscissa radialDiscriminant at *
+  simp only [div_eq_mul_inv] at hr ⊢
   nlinarith only [hr]
 
 private theorem radial_ordinate_upper {κ s : ℝ}
@@ -115,23 +116,23 @@ private theorem radial_ordinate_lower_near_endpoint {κ s : ℝ}
   have hc := radial_circle_identity hk hs'
   nlinarith only [hxsq, hc]
 
-private theorem radialTerminal_antitone {κ λ v w : ℝ}
-    (hk : 0 ≤ κ) (hkl : κ ≤ λ) (hv : 0 ≤ v) (hvw : v ≤ w) :
-    radialTerminal λ w ≤ radialTerminal κ v := by
-  have hl : 0 ≤ λ := hk.trans hkl
+private theorem radialTerminal_antitone {κ k₂ v w : ℝ}
+    (hk : 0 ≤ κ) (hkl : κ ≤ k₂) (hv : 0 ≤ v) (hvw : v ≤ w) :
+    radialTerminal k₂ w ≤ radialTerminal κ v := by
+  have hl : 0 ≤ k₂ := hk.trans hkl
   have hw : 0 ≤ w := hv.trans hvw
   have hav : 0 ≤ κ * v := mul_nonneg hk hv
-  have haw : 0 ≤ λ * w := mul_nonneg hl hw
+  have haw : 0 ≤ k₂ * w := mul_nonneg hl hw
   have ha := mul_le_mul hkl hvw hv hl
   have ha2 := pow_le_pow_left₀ hav ha 2
   have hy : 4 * (κ * v) + 4 * (κ * v) ^ 2 ≤
-      4 * (λ * w) + 4 * (λ * w) ^ 2 := by linarith
+      4 * (k₂ * w) + 4 * (k₂ * w) ^ 2 := by linarith
   have hy0 : 0 ≤ 4 * (κ * v) + 4 * (κ * v) ^ 2 := by positivity
   have hb := mul_le_mul hkl hy hy0 hl
   have hb0 : 0 ≤ 1 + κ * (4 * (κ * v) + 4 * (κ * v) ^ 2) := by positivity
   have hb2 := pow_le_pow_left₀ hb0 (show
       1 + κ * (4 * (κ * v) + 4 * (κ * v) ^ 2) ≤
-      1 + λ * (4 * (λ * w) + 4 * (λ * w) ^ 2) by linarith) 2
+      1 + k₂ * (4 * (k₂ * w) + 4 * (k₂ * w) ^ 2) by linarith) 2
   have hf := mul_le_mul hkl hb2 (sq_nonneg _) hl
   unfold radialTerminal
   linarith

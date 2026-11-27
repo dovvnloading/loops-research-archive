@@ -169,7 +169,9 @@ private theorem perturbed_fourth_cut_upper (H : ℂ → ℂ) {κ : ℝ}
     linarith
   apply LimitingCrestPerturbation.fourth_cut_real_upper H (complexMap κ)
     (1/500000) le_rfl _ hcut'
-  simpa only [complexMap] using herr.1
+  change ‖(H^[4]) 0-((fun w : ℂ => 1-(κ : ℂ)*w^2)^[4]) 0‖ ≤
+    156*(1/500000)
+  exact herr.1
 
 /-- Every crossing in the fixed angular rectangle has real second and
 third images, with strict terminal bounds and a moving-cut margin.

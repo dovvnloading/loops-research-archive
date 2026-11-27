@@ -45,7 +45,7 @@ theorem criticalOrbit_hasDerivAt (n : ℕ) (k : ℝ) :
       change HasDerivAt ((fun _ : ℝ => 1) - id * (fun t : ℝ => criticalOrbit t n)^2)
         (criticalSlope k (n+1)) k
       apply h.congr_deriv
-      simp only [criticalSlope, Nat.cast_ofNat, Nat.reduceSub, pow_one, id_eq]
+      simp only [criticalSlope, Nat.cast_ofNat, Nat.reduceSub, pow_one, id_eq, Pi.pow_apply]
       ring
 
 theorem relation_hasDerivAt (k : ℝ) :

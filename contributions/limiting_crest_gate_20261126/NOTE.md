@@ -48,6 +48,7 @@ The full source-model integral is defined with that endpoint:
 
 The angle stays nondegenerate throughout [1/16,1/8]. Thus this full integral
 is well-defined, contains the selected subintegral, and is greater than 1/4.
+The sharper coefficient module improves this to C_model(k,r) > 1/3.
 The normalization is for one selected descendant, exactly as in the source;
 the upper and lower descendants are not added together here.
 
@@ -72,6 +73,21 @@ All intermediate-domain checks follow from the hypotheses. The proof does
 not assume the desired crossing, source gate, or perturbed orbit containment.
 It does not assert uniqueness or a continuous selection for arbitrary H.
 
+There is also a theorem about literal quadratic return maps, rather than
+an assumed approximation. Let f_c(z)=z^2+c, x_j=f_c^j(0), d=x_p, and let
+a_p be the coefficient of z^2 in f_c^p. If p >= 13, -2 <= c <= 0,
+0 < d <= 12*4^(-p), and k=-a_p*d lies in K, then
+
+    H(z) = f_c^p(d*z)/d
+
+satisfies |H-Q_k| <= 24*4^(-p) < 2*10^-6 on |z| <= 23/20. Consequently
+the actual normalized return has the same whole interior crossing and
+third-image/source-cut corridor. No map-approximation, crossing, or
+critical-orbit containment assumption appears in that theorem. The latter
+containment follows from the invariant real interval [c,-c]. Existence of
+the designated parameters satisfying the remaining scale and coefficient
+inequalities for every p is not supplied by this conditional theorem.
+
 The parameter module supplies a unique k in K satisfying Q_k^6(0)+Q_k^3(0)=0,
 so the model is instantiated rather than postulated. That parameter is
 conjugate to the already studied real period-three tip parameter; its
@@ -92,14 +108,32 @@ The new Lean modules are in formalization/weighted/:
   half-plane separation, and injectivity for the limiting quadratic.
 - LimitingCrestModelGates.lean: full semicircle uniqueness and target cut gate.
 - LimitingCrestLimit.lean: positive full model integral at the unique endpoint.
+- LimitingCrestSharpCoefficient.lean: full model coefficient strictly above 1/3.
 - LimitingCrestPerturbation.lean: disk Lipschitz bound and critical-orbit error.
 - LimitingCrestPersistence.lean: existence and terminal gate under perturbation.
+- LimitingCrestQuadraticReturn.lean: complete nonlinear remainder estimate
+  and the source corridor for literal normalized quadratic iterates.
 
 The coefficient proof bounds arccos(u) by 51 pi / 100 and log 2 by 7/10,
 giving C_sel >= 100/(561 log 2) > 1/4. The perturbation recurrence is
 E_(n+1) = 1+5E_n, E_0=0, so E_4=156. The quadratic critical orbit is proved
 to remain in the unit disk, and the perturbed four-step orbit is then proved
 to remain in the approximation disk by induction.
+
+For the sharper full coefficient bound, u_k(s) > -1/200 on
+[1/16,663/10000], so arccos(u_k(s)) <= 251*pi/500. With m=161/2500,
+the affine minorant (2m-s)/m^2 <= 1/s has exact integral 19/322 on that
+interval. Consequently C_model >= 9500/(40411*log 2) > 1/3.
+
+For the actual-return theorem, the full remainder E_n(z)=f_c^n(z)-x_n-a_n*z^2
+satisfies the exact recurrence
+
+    E_(n+1) = 2*x_n*E_n + (a_n*z^2+E_n)^2.
+
+The proof bounds every complex point of a disk: for n >= 1 and 4^n*r^2 <= 1,
+|E_n(z)| <= (4^n*r^2)^2/128 for |z| <= r. It retains all higher-degree
+terms. Taking r=(23/20)d and dividing by the actual positive d gives the
+stated 24*4^(-p) bound. This is not a truncated Taylor approximation.
 
 All Lean modules and public theorems are registered with the existing build,
 source index, and transitive dependency audit. Local Lean is unavailable and
@@ -108,8 +142,8 @@ cache; the repository's unmodified CI is the compiler and kernel authority.
 The source checkout is sparse for the same disk constraint; the local packet
 and proof-escape checks pass, while the whole-repository source-index check
 must run against CI's complete checkout.
-The second CI run compiled LimitingCrestPerturbation, but two base-module
-elaboration errors still blocked the other new modules. Those failures are
+The third CI run compiled LimitingCrestGeometry and LimitingCrestPerturbation.
+The remaining parameter, endpoint, and persistence elaboration errors are
 being corrected in the draft PR. No complete successful build is asserted
 at this stage.
 
@@ -124,12 +158,16 @@ certificate; no numerical approximation is assumed to be an exact root.
 
 ## Boundary
 
-NOV26_OPEN_CREST_LIMIT remains open. This packet does not yet prove a uniform
-approximation theorem for the archive's actual normalized return maps for
-all periods p >= 17. The analytic near--2 estimates in the source notes
-are not imported as axioms. Transferring the model requires those estimates
-in Lean, compatible domains and symmetries, and enough regularity to retain
-the curve family and its markings.
+NOV26_OPEN_CREST_LIMIT remains open. The literal-return theorem reduces its
+complex approximation step to concrete real scale and coefficient bounds,
+but this packet does not construct the archive's designated tip parameter
+for every p >= 17 and establish those bounds there. The missing real chart
+is the near--2 family at c=-2+t*4^(-p), t in [14,16]: return-value endpoint
+signs, parameter monotonicity, quadratic-coefficient control, and the signed
+critical relation selecting the tip. The source notes' Chebyshev-angle,
+derivative-ratio, and cosine-product estimates are not imported as axioms.
+Even after that real chart is formalized, transfer of the whole marked
+curve family and its widths needs its regularity and marking arguments.
 
 One crossing point at every radius is not by itself a transported Wave arc
 family. A candidate integral is not by itself a physical marked width or
