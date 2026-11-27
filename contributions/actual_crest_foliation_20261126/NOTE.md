@@ -66,6 +66,41 @@ complete divided difference and retains every higher-degree term.
 The stated real parameter and coefficient hypotheses remain explicit
 until the parameter-selection module is completed.
 
+### Locally verified checkpoint: actual parameter charts and crossing curves
+
+The following additional modules now compile locally without warnings:
+
+- `NearTwoProduct.lean` proves a period-independent lower bound on the
+  inverse-orbit product. The normalized product is at least 241/400.
+- `NearTwoShooting.lean` constructs the actual near-minus-two parameter
+  chart for every p>=17. It proves the positive return-scale bounds and
+  a complete parameter interval whose normalized coefficient crosses
+  both walls 1.7903 and 1.7904. These are conclusions about actual
+  polynomial iterates, not assumed input data.
+- `CriticalReturnRelationStability.lean` controls the six-plus-three
+  normalized critical relation by 94488*4^(-p) and proves opposite
+  signs at those two sharp coefficient walls. It also excludes the
+  zero third-return factor.
+- `QuadraticCrestCrossing.lean` proves strict angular growth for the
+  actual return, uniqueness of the crossing on the entire upper
+  semicircle, a Lipschitz-100 angular function, and a Lipschitz-15,
+  injective continuous complex crossing curve. Every point on this
+  curve satisfies the previous positive-imaginary and real terminal
+  corridor gates. Its radius ranges over the whole interval [.063,.066].
+
+- `NearTwoTip.lean` now constructs, for every p>=17, an actual parameter
+  c in [-2,-2+20*4^(-p)] satisfying the signed relation
+  f_c^(6p)(0)+f_c^(3p)(0)=0, with f_c^(3p)(0)<0, positive small p-return,
+  and the sharp coefficient band. It also proves
+  |kappa_p-kappa_infinity|<=15748*4^(-p), where kappa_infinity is the
+  unique constructed limiting-model root. The all-period unscaled
+  corridor theorem consequently has no assumed real-chart premises.
+
+The internal predicate `ActualTip` means precisely these signed-return
+and quantitative conditions. It does not encode a primitive-component
+classification or an exact minimal-period theorem. The final curve-limit
+and original-plane curve assembly are still being checked.
+
 ### Development target
 
 The starting point is `LimitingCrestQuadraticReturn.lean`, merged in PR

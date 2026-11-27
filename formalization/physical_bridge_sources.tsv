@@ -59,6 +59,7 @@ formalization/weighted/CloneRoot.lean	CLONE EDGE
 formalization/weighted/CloneRootRate.lean	CLONE EDGE
 formalization/weighted/CompactObstacleRemainder.lean	METADATA
 formalization/weighted/ConnectedBinaryCoding.lean	METADATA
+formalization/weighted/CriticalReturnRelationStability.lean	METADATA
 formalization/weighted/DepthThreeClosure.lean	METADATA
 formalization/weighted/DepthThreeReal.lean	METADATA
 formalization/weighted/DepthThreeRemainder.lean	METADATA
@@ -92,6 +93,9 @@ formalization/weighted/LocalizationSheetKernel.lean	COVER-FIBER SHEETS CONNECTOR
 formalization/weighted/MarkedWaveSuprema.lean	GAIN
 formalization/weighted/NativeWaveGate.lean	CUTS CREST
 formalization/weighted/NearTwoInverse.lean	METADATA
+formalization/weighted/NearTwoProduct.lean	METADATA
+formalization/weighted/NearTwoShooting.lean	METADATA
+formalization/weighted/NearTwoTip.lean	METADATA
 formalization/weighted/ParabolicArchiveBrackets.lean	PARABOLIC STRAIGHTEN
 formalization/weighted/ParabolicBranches.lean	PARABOLIC STRAIGHTEN
 formalization/weighted/ParabolicCenterBranch.lean	PARABOLIC STRAIGHTEN
@@ -123,6 +127,7 @@ formalization/weighted/QuadraticCenterParameterLocus.lean	METADATA
 formalization/weighted/QuadraticCenterTrapping.lean	METADATA
 formalization/weighted/QuadraticComponentConjugacy.lean	METADATA
 formalization/weighted/QuadraticComponentDynamics.lean	METADATA
+formalization/weighted/QuadraticCrestCrossing.lean	METADATA
 formalization/weighted/QuadraticCrestDividedDifference.lean	METADATA
 formalization/weighted/QuadraticCriticalFiberCensus.lean	METADATA
 formalization/weighted/QuadraticCriticalTransversality.lean	CRITICAL-TRANSVERSALITY

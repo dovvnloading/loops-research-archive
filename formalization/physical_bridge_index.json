@@ -3563,6 +3563,71 @@
         "normalized_return_collision_iff",
         "normalized_return_norm_sub_le",
         "normalized_return_coercive"
+      ],
+      "formalization/weighted/NearTwoProduct.lean": [
+        "first_inverse_lower_bounds",
+        "inverse_tail_lower",
+        "inverse_tail_deficit_account",
+        "normalized_inverse_product_lower",
+        "coefficient_product_lower"
+      ],
+      "formalization/weighted/NearTwoShooting.lean": [
+        "scale_pos",
+        "scale_succ",
+        "scale_small",
+        "horizon_scale_small",
+        "parameter_band",
+        "terminal_band",
+        "continuous_shooting",
+        "shooting_strictAnti",
+        "shooting_left_pos",
+        "shooting_right_neg",
+        "unique_shooting_parameter",
+        "criticalValue_step",
+        "criticalValue_two",
+        "shooting_critical_itinerary",
+        "shooting_terminal_value",
+        "shooting_sandwich",
+        "forward_orbit_shooting",
+        "exists_real_chart",
+        "coefficient_product",
+        "shooting_coefficient_product",
+        "chart_coefficient_lower",
+        "continuous_criticalValue",
+        "continuous_quadraticCoefficient",
+        "continuous_kappa",
+        "exists_sharp_chart",
+        "SharpChart.critical_orbit_bound"
+      ],
+      "formalization/weighted/CriticalReturnRelationStability.lean": [
+        "iterate_perturbation_up_to_six",
+        "actual_signed_relation_error",
+        "actual_signed_relation_scale",
+        "narrow_model_endpoint_margins",
+        "actual_relation_negative",
+        "actual_relation_positive",
+        "actual_third_return_negative"
+      ],
+      "formalization/weighted/QuadraticCrestCrossing.lean": [
+        "circlePoint_angle_bound",
+        "circlePoint_radius_distance",
+        "circlePoint_disk",
+        "circlePoint_square_angle_bound",
+        "actual_crossing_growth",
+        "actual_crossing_unique",
+        "exists_lipschitz_actual_angle",
+        "exists_lipschitz_actual_curve",
+        "circlePoint_full_disk",
+        "actual_crossing_localization",
+        "actual_crossing_global_unique",
+        "existsUnique_actual_full_crossing"
+      ],
+      "formalization/weighted/NearTwoTip.lean": [
+        "model_parameter_error_bound",
+        "exists_actual_tip",
+        "actual_tip_coefficient_error",
+        "exists_actual_tips_with_coefficient_limit",
+        "exists_actual_tip_corridor"
       ]
     },
     "obligations": []
