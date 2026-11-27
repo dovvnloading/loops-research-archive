@@ -7,7 +7,7 @@ human_review: none
 
 <a id="three-return-finite-capacity-20261127"></a>
 
-# Finite two-sided capacity for actual three-return collars
+# Finite two-sided extremal length for actual three-return collars
 
 ## Claim
 
@@ -32,6 +32,12 @@ A reusable pinned Lean 4.32.0 installation and Mathlib cache were located after 
 CollarCapacityLower.lean has compiled locally with no warnings. For every compact or noncompact inner plate containing B(0,r), every r,R > 0, and the unchanged all-Lipschitz plate-potential class, it proves capacity(K,B(0,R)) >= r/R and reciprocal capacity <= R/r < infinity. The argument uses almost-everywhere horizontal slices, the Lipschitz fundamental theorem of calculus, the actual planar derivative, and the measure-preserving real product coordinates. No uniform bound on the competitors' Lipschitz constants is assumed.
 
 CollarExtremalLength.lean has also compiled locally. It defines the standard two-modulus using every measurable nonnegative conformal density and every continuous rectifiable joining curve, with metric length integrated in Mathlib's unit-speed arclength parameter. The explicit whole-disk metric proves joining-curve extremal length >= 1/(100*pi) whenever the inner plate lies inside the existing physical radius 3*d/20 and the target is D(0,d/6). This is a separate curve-family theorem, not a renamed Dirichlet capacity. A full horizontal joining-family argument is now being developed to give its upper bound as well.
+
+### Compiled full-family checkpoint
+
+CollarMetricEnergy.lean, CollarStraightLength.lean and CollarHorizontalFamily.lean have now compiled locally. For a compact plate K with B(0,r) subset K subset B(0,R), 0<r<R, the new theorem bounds the standard two-modulus below by r/R and joining-curve extremal length above by R/r. It extracts each straight joining curve after the last contact with K, computes its exact natural arclength integral, and applies Holder and Fubini to every admissible Borel-measurable extended nonnegative density, including densities of infinite area. No regularity of the inner boundary is assumed. At physical radii r=d/40 and R=d/6 this gives the intended upper bound 20/3.
+
+CI exposed three elaboration/parser issues in the all-period inradius proof. Those source errors have been repaired in this checkpoint; the inradius and final actual-domain assembly remain under validation. All new claims continue to be distinguished from proposed statements until their Lean checks finish.
 
 ## Dependencies
 

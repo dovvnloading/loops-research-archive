@@ -3875,6 +3875,27 @@
         "extremalLength_ge_disk_ratio",
         "physical_curveModulus_le",
         "physical_extremalLength_ge"
+      ],
+      "formalization/weighted/CollarMetricEnergy.lean": [
+        "reciprocal_mass_le_square_integral",
+        "horizontal_square_integral_lower",
+        "planar_square_integral_lower_ae",
+        "planar_square_integral_lower"
+      ],
+      "formalization/weighted/CollarStraightLength.lean": [
+        "straightCurve_apply",
+        "straight_variation",
+        "straightCurve_length",
+        "straightCurve_arcParameter",
+        "metricLength_straightCurve"
+      ],
+      "formalization/weighted/CollarHorizontalFamily.lean": [
+        "horizontal_norm_sq",
+        "horizontal_circle_exit",
+        "exists_horizontal_joining",
+        "admissible_horizontal_slice",
+        "curveModulus_lower",
+        "extremalLength_le_of_disk_subset"
       ]
     },
     "obligations": []

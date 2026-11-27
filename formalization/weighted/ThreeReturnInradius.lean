@@ -129,9 +129,9 @@ private theorem finite_disk_bound_of_certificate {S : Int} {p : ℕ} {C : Bounds
       ((LoopsDepthThreeReal.quadraticCoefficient (3*p) c : ℂ)*w^2)
     rw [← hid] at ht
     simp only [Complex.norm_real, Real.norm_eq_abs] at ht'
-    simp only [certificateDeviation, Int.cast_add, add_div]
+    simp only [certificateDeviation, collarRows, Int.cast_add, add_div]
     change ‖QuadraticEscape.orbit (c : ℂ) (3*p) w‖ ≤ _
-    dsimp only [r] at hlead he
+    dsimp only [r, collarRows] at hlead he
     linarith only [ht, ht', hx, hlead, he]
   have hscale : threeReturn c p z =
       QuadraticEscape.orbit (c : ℂ) (3*p) w / (criticalValue c p : ℂ) := by
@@ -196,7 +196,7 @@ private theorem model_third_critical_bound {k : ℝ}
       (show k-1 ≤ (791/1000 : ℝ) by linarith only [hkhi]) 2)
     (sq_nonneg (k-1)) (by norm_num : (0 : ℝ) ≤ 1791/1000)
   have he : ((complexMap k)^[3]) 0 = ((1-k*(k-1)^2 : ℝ) : ℂ) := by
-    norm_num [iterate_succ_apply', complexMap]
+    change (1-(k : ℂ)*(1-(k : ℂ)*(1-(k : ℂ)*0^2)^2)^2) = _
     push_cast
     ring
   rw [he, Complex.norm_real, Real.norm_eq_abs, abs_le]
@@ -281,8 +281,9 @@ theorem actual_three_return_inner_bound {p : ℕ} (hp : 17 ≤ p)
       have ht' := norm_add_le ((F z-complexMap k z)-(F 0-complexMap k 0))
         (complexMap k z-complexMap k 0)
       linarith only [ht, ht']
-    exact ht1.trans (by linarith only [hclose z hzdisk,
-      hclose 0 (by norm_num), hq])
+    have hcz := hclose z hzdisk
+    have hc0 := hclose 0 (by norm_num)
+    exact ht1.trans (by linarith only [hcz, hc0, hq])
   have hsecond : ‖(F^[2]) z-(F^[2]) 0‖ ≤
       12*ε+5*((9/5 : ℝ)*(1/40)^2) := by
     have h := approximate_quadratic_difference F hk0 hk2 hclose
