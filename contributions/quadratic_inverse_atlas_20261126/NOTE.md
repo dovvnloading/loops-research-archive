@@ -11,8 +11,8 @@ human_review: none
 
 ## Claim
 
-This draft claims the unassigned obligation before proof development.
-The intended result is a complete analytic inverse-branch atlas for actual
+This draft claims the obligation before proof development.
+The result being developed is a complete analytic inverse-branch atlas for actual
 quadratic iterates over an open simply connected target avoiding the finite
 postcritical set, with exact component exhaustion, intermediate-iterate
 compatibility, and coherent restriction under regular target enlargement.
@@ -23,9 +23,23 @@ foundational-dependency audit pass.
 
 ## Evidence
 
-Proof development is in progress. Planned sources are registered modules
-inside formalization/weighted, using the repository's pinned Lean and Mathlib.
-All progress will be committed to this pull request.
+Proof development is in progress in registered modules inside
+formalization/weighted, using the pinned Lean and Mathlib. The following
+complete proof scripts are committed for compiler verification:
+
+- QuadraticRegularInverse constructs canonical analytic inverses on full
+  actual components, proves their exact derivatives, and classifies continuous
+  lifts from any nonempty preconnected source space by their initial value.
+- QuadraticInverseBranches constructs the actual-fiber/component equivalence,
+  the exhaustive analytic atlas, coherent fiber rebasing, and the exact 2^n
+  census of entire continuous lifts. Distinct lifts differ at every point.
+- QuadraticInverseTransport proves residual-clock and concatenation identities,
+  agreement under regular target enlargement, and same-clock target-component
+  selection from actual base-image containment and one anchor. The target-sheet
+  containment is derived rather than assumed.
+
+These are candidate proofs pending the unchanged full compiler and dependency
+audit. A further parameter-local complete analytic atlas is under development.
 
 Existing component univalence and fiber cardinality results are prerequisites;
 the new construction must coordinate all analytic sections and their actual

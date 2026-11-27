@@ -189,5 +189,61 @@ theorem continuous_lift_unique (c : ℂ) (n : ℕ) (V : Set ℂ)
     (hrange ⟨y, hy, rfl⟩) (inverseBranch_mapsTo c n V hVo hVc hcrit a ha hy)
   exact (hgr hy).trans (inverseBranch_right_inv c n V hVo hVc hcrit a ha hy).symm
 
+/-- Any continuous lift from a preconnected space is forced to stay
+in the single physical component selected by its value at one point. -/
+theorem continuous_map_lift_eq_inverse {X : Type*} [TopologicalSpace X]
+    [PreconnectedSpace X] (c : ℂ) (n : ℕ) (V : Set ℂ)
+    (hVo : IsOpen V) (hVc : IsSimplyConnected V)
+    (hcrit : ∀ k < n, orbit c k c ∉ V)
+    (γ Γ : C(X, ℂ)) (hγ : ∀ x, γ x ∈ V)
+    (hproj : ∀ x, orbit c n (Γ x) = γ x) (x₀ : X) (a : ℂ)
+    (hbase : Γ x₀ = a) :
+    ∀ x, Γ x = inverseBranch c n V a (γ x) := by
+  have ha : orbit c n a ∈ V := by
+    rw [← hbase, hproj]
+    exact hγ x₀
+  have hconn : IsPreconnected (range Γ) := isPreconnected_range Γ.continuous
+  have hhit : a ∈ range Γ := ⟨x₀, hbase⟩
+  have hsub : range Γ ⊆ (orbit c n) ⁻¹' V := by
+    rintro _ ⟨x, rfl⟩
+    change orbit c n (Γ x) ∈ V
+    rw [hproj]
+    exact hγ x
+  have hrange : range Γ ⊆ inverseComponent c n V a :=
+    hconn.subset_connectedComponentIn hhit hsub
+  intro x
+  apply inverseComponent_injOn c n V hVo hVc hcrit a ha
+    (hrange ⟨x, rfl⟩) (inverseBranch_mapsTo c n V hVo hVc hcrit a ha (hγ x))
+  exact (hproj x).trans
+    (inverseBranch_right_inv c n V hVo hVc hcrit a ha (hγ x)).symm
+
+/-- Every continuous map from any preconnected space into the regular
+simply connected target has exactly one continuous lift after choosing
+one actual inverse point.  In particular this constructs and classifies
+entire path lifts without presupposing a covering or a chosen source. -/
+theorem continuous_map_lift_exists_unique {X : Type*} [TopologicalSpace X]
+    [PreconnectedSpace X] (c : ℂ) (n : ℕ) (V : Set ℂ)
+    (hVo : IsOpen V) (hVc : IsSimplyConnected V)
+    (hcrit : ∀ k < n, orbit c k c ∉ V)
+    (γ : C(X, ℂ)) (hγ : ∀ x, γ x ∈ V) (x₀ : X) (a : ℂ)
+    (hbase : orbit c n a = γ x₀) :
+    ∃! Γ : C(X, ℂ), (∀ x, orbit c n (Γ x) = γ x) ∧ Γ x₀ = a := by
+  have ha : orbit c n a ∈ V := hbase.symm ▸ hγ x₀
+  let Γ : C(X, ℂ) :=
+    ⟨inverseBranch c n V a ∘ γ,
+      (inverseBranch_analytic c n V hVo hVc hcrit a ha).continuousOn.comp_continuous
+        γ.continuous hγ⟩
+  have hproj : ∀ x, orbit c n (Γ x) = γ x := by
+    intro x
+    exact inverseBranch_right_inv c n V hVo hVc hcrit a ha (hγ x)
+  have hanchor : Γ x₀ = a := by
+    change inverseBranch c n V a (γ x₀) = a
+    rw [← hbase]
+    exact inverseBranch_anchor c n V hVo hVc hcrit a ha
+  refine ⟨Γ, ⟨hproj, hanchor⟩, ?_⟩
+  intro Δ hΔ
+  apply ContinuousMap.ext
+  exact continuous_map_lift_eq_inverse c n V hVo hVc hcrit γ Δ hγ hΔ.1 x₀ a hΔ.2
+
 end
 end LoopsQuadraticRegularInverse

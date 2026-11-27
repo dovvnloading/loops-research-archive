@@ -3206,7 +3206,38 @@
         "inverseBranch_conformal",
         "inverseBranch_image",
         "inverseBranch_anchor",
-        "continuous_lift_unique"
+        "continuous_lift_unique",
+        "continuous_map_lift_eq_inverse",
+        "continuous_map_lift_exists_unique"
+      ],
+      "formalization/weighted/QuadraticInverseBranches.lean": [
+        "inverseFiber_card",
+        "anchor_components_injective",
+        "inverseComponent_unique_anchor",
+        "fiberComponent_bijective",
+        "inverse_components_card",
+        "inverseBranch_ranges_disjoint",
+        "inverseBranch_fiber_exhaustion",
+        "inverseBranch_ranges_cover",
+        "inverseBranch_atlas_analytic",
+        "inverseBranch_reanchor",
+        "fiberTransport_self",
+        "fiberTransport_trans",
+        "liftAnchor_bijective",
+        "continuous_lifts_card",
+        "continuous_lifts_pointwise_distinct"
+      ],
+      "formalization/weighted/QuadraticInverseTransport.lean": [
+        "inverseComponent_split",
+        "inverseComponent_prefix_image",
+        "inverseBranch_prefix",
+        "inverseBranch_concatenation",
+        "inverseBranch_target_restriction",
+        "inverseComponent_target_restriction",
+        "connected_image_selects_component",
+        "inverseBranch_reached_component",
+        "inverseBranch_commuting_lift",
+        "inverseComponent_commuting_image"
       ]
     },
     "obligations": [
