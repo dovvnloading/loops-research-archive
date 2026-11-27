@@ -15,7 +15,8 @@ Work in progress. The target is global parameter exclusion for the actual
 quadratic critical relations x_(6p)(c) + x_(3p)(c) = 0 and the selected
 critical itineraries, for the ten finite periods p = 3,...,12. The archive
 currently isolates these roots only inside microscopic seed intervals.
-No new theorem is claimed before its Lean proof compiles.
+The general exact-cover soundness theorem now compiles locally; the ten
+finite kernel certificates and their global geometric assembly are in progress.
 
 ## Evidence
 
@@ -26,9 +27,20 @@ Center factors must be removed by an exact polynomial identity, not a
 numerical zero tolerance. A retained root interval must have opposite
 endpoint signs and a uniformly signed parameter derivative.
 
-Progress and verified theorem statements will be committed here as they
-are established. All Lean sources will be registered in the existing
-project and subjected to the repository's transitive dependency audit.
+First compiled checkpoint: `formalization/weighted/GlobalTipIsolation.lean`.
+Its five public theorems establish the exact critical-orbit difference
+product, collision deflation, complete itinerary enclosure, exhaustive
+closed-cover soundness, and nonvanishing parameter derivative under the
+existing root certificate. Every split is sound on all real parameters,
+and the deflated branch explicitly proves that the removed third-return
+factor is nonzero. Local validation uses the repository's pinned Lean
+4.32.0 and Mathlib revision. Full CI validation is still pending.
+
+The proposed ten covers contain 1,806 leaves: 1,301 wrong-sign exclusions,
+91 direct nonzero-relation exclusions, 404 deflated exclusions, and ten
+retained root intervals. These counts describe the generated data, not a
+replacement for its kernel checks. All Lean sources are registered in the
+existing project and will receive its transitive dependency audit.
 
 ## Dependencies
 
