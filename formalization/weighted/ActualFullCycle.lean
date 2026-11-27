@@ -192,7 +192,7 @@ theorem actual_target_phase_disjoint {p : ℕ} (hp : 3 ≤ p) {c : ℝ}
   exact ⟨by simpa using htransfer 1 (by simpa using hnorm.1),
     htransfer 2 hnorm.2⟩
 
-/-- The actual signed critical endpoint belongs to the canonical
+/-- The actual signed critical-orbit point belongs to the canonical
 physical source and is fixed by the complete 3p-th polynomial iterate.
 The parameter is the same one used by the constructed collar. -/
 theorem actual_signed_tip_mem_and_fixed {p : ℕ} (hp : 3 ≤ p) {c : ℝ}
@@ -235,7 +235,7 @@ theorem actual_source_no_early_contact {p : ℕ} (hp : 3 ≤ p) {c : ℝ}
     (physicalParentSource c p) p (by omega) hphysical.parent.physical_phase_subset
     hfirst hphysical.physical_phase_disjoint.1 hphysical.physical_phase_disjoint.2.1
 
-/-- The signed endpoint has exact period 3p for the original quadratic,
+/-- The signed periodic point has exact period 3p for the original quadratic,
 not only period three for a p-th return map. -/
 theorem actual_signed_tip_minimalPeriod {p : ℕ} (hp : 3 ≤ p) {c : ℝ}
     (hc : SelectedParameter p c)

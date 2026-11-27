@@ -18,7 +18,7 @@ images of the **entire canonical open source** at all 3p physical phases.
 The critical point has least preperiod 3p+1 and exact eventual period 3p;
 the postcritical set has exactly 6p points; phase zero is the unique
 critical phase and every positive phase is univalent; the complete physical
-3p-return multiplier at its signed periodic endpoint has modulus >3/2.
+3p-return multiplier at its signed periodic point has modulus >3/2.
 
 The principal existence theorem is
 `ActualPrimitiveReturn.exists_actual_primitive_return`. Its only inputs
@@ -149,7 +149,7 @@ coincide. Thus every positive phase is univalent. The complete phase
 disjointness excludes zero from those phases; the actual derivative
 f_c'(z)=2z identifies phase zero as the unique critical phase.
 
-**Recover the exact orbit portrait.** The signed endpoint a belongs to U
+**Recover the exact orbit portrait.** The signed periodic point a belongs to U
 and is fixed by the 3p return. No earlier positive return is possible,
 so its least period is 3p. The distinct points f_c^(3p)(0) and its negative
 a have the same next image; only a is periodic, because a map is injective
