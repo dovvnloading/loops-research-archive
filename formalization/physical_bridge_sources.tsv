@@ -155,6 +155,7 @@ formalization/weighted/StationaryMonotoneGeometry.lean	METADATA
 formalization/weighted/StationaryMultiInterface.lean	METADATA
 formalization/weighted/StationaryPacketGain.lean	VARIABLE-EXIT
 formalization/weighted/StationaryPrefixCharge.lean	VARIABLE-EXIT
+formalization/weighted/StationaryUniqueBranch.lean	METADATA
 formalization/weighted/TelescopeCollarRecognition.lean	METADATA
 formalization/weighted/TelescopeCompactReturn.lean	CONSTRUCT
 formalization/weighted/TelescopeConformalInverse.lean	CONSTRUCT

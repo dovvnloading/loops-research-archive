@@ -3532,5 +3532,20 @@
       ]
     },
     "obligations": []
+  },
+  "unique-model-branch-20261127": {
+    "guide": "contributions/unique_model_branch_20261127/NOTE.md#unique-model-branch-20261127",
+    "theorems": {
+      "formalization/weighted/StationaryUniqueBranch.lean": [
+        "quadratic_compact_injective_away_zero",
+        "quadratic_noncritical_geometric_fiber_injective",
+        "quadratic_collapsed_reflection_is_critical",
+        "quadratic_descended_reflection_fixed_iff",
+        "quadratic_filled_unique_model_involution"
+      ]
+    },
+    "obligations": [
+      "KKL_STATIONARY_MONOTONE_FULL_LIFT_IDENTIFICATION"
+    ]
   }
 }
