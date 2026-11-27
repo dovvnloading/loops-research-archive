@@ -159,7 +159,7 @@ cd ../..
 python -B code/verify_lean_coverage.py --audit weighted
 ```
 
-The source-coverage audit also rejects prohibited proof tokens. The PR
+The source-coverage audit also rejects prohibited proof tokens.
 [PR #233](https://github.com/dovvnloading/loops-research-archive/pull/233)
 contains the incremental compiler fixes and the final CI verification record;
 no workflow, trusted baseline, or ledger status was weakened for this packet.
