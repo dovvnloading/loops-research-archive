@@ -3533,6 +3533,115 @@
     },
     "obligations": []
   },
+  "actual-crest-foliation-20261126": {
+    "guide": "contributions/actual_crest_foliation_20261126/NOTE.md#actual-crest-foliation-20261126",
+    "theorems": {
+      "formalization/weighted/NearTwoInverse.lean": [
+        "back_zero",
+        "back_succ",
+        "B_nonneg",
+        "B_sq",
+        "B_bounds",
+        "back_bounds",
+        "back_lower",
+        "continuous_back",
+        "continuous_back_parameter",
+        "back_mono_initial",
+        "back_antitone_parameter",
+        "back_parameter_lipschitz",
+        "chebyshev_deficit_barrier",
+        "chebyshev_deficit_upper"
+      ],
+      "formalization/weighted/QuadraticCrestDividedDifference.lean": [
+        "iterate_difference",
+        "evenSecant_error",
+        "normalized_difference",
+        "normalizedSecant_error",
+        "normalizedSecant_error_small",
+        "normalized_remainder_difference",
+        "normalizedSecant_norm_bounds",
+        "normalized_return_collision_iff",
+        "normalized_return_norm_sub_le",
+        "normalized_return_coercive"
+      ],
+      "formalization/weighted/NearTwoProduct.lean": [
+        "first_inverse_lower_bounds",
+        "inverse_tail_lower",
+        "inverse_tail_deficit_account",
+        "normalized_inverse_product_lower",
+        "coefficient_product_lower"
+      ],
+      "formalization/weighted/NearTwoShooting.lean": [
+        "scale_pos",
+        "scale_succ",
+        "scale_small",
+        "horizon_scale_small",
+        "parameter_band",
+        "terminal_band",
+        "continuous_shooting",
+        "shooting_strictAnti",
+        "shooting_left_pos",
+        "shooting_right_neg",
+        "unique_shooting_parameter",
+        "criticalValue_step",
+        "criticalValue_two",
+        "shooting_critical_itinerary",
+        "shooting_terminal_value",
+        "shooting_sandwich",
+        "forward_orbit_shooting",
+        "exists_real_chart",
+        "coefficient_product",
+        "shooting_coefficient_product",
+        "chart_coefficient_lower",
+        "continuous_criticalValue",
+        "continuous_quadraticCoefficient",
+        "continuous_kappa",
+        "exists_sharp_chart",
+        "SharpChart.critical_orbit_bound"
+      ],
+      "formalization/weighted/CriticalReturnRelationStability.lean": [
+        "iterate_perturbation_up_to_six",
+        "actual_signed_relation_error",
+        "actual_signed_relation_scale",
+        "narrow_model_endpoint_margins",
+        "actual_relation_negative",
+        "actual_relation_positive",
+        "actual_third_return_negative"
+      ],
+      "formalization/weighted/QuadraticCrestCrossing.lean": [
+        "circlePoint_angle_bound",
+        "circlePoint_radius_distance",
+        "circlePoint_disk",
+        "circlePoint_square_angle_bound",
+        "actual_crossing_growth",
+        "actual_crossing_unique",
+        "exists_lipschitz_actual_angle",
+        "exists_lipschitz_actual_curve",
+        "circlePoint_full_disk",
+        "actual_crossing_localization",
+        "actual_crossing_global_unique",
+        "existsUnique_actual_full_crossing"
+      ],
+      "formalization/weighted/NearTwoTip.lean": [
+        "model_parameter_error_bound",
+        "exists_actual_tip",
+        "actual_tip_coefficient_error",
+        "exists_actual_tips_with_coefficient_limit",
+        "exists_actual_tip_corridor"
+      ],
+      "formalization/weighted/ActualCrestLimit.lean": [
+        "actual_tip_limit_map_error",
+        "actual_tip_angle_error",
+        "actual_tip_point_error",
+        "exists_actual_crest_families_converging",
+        "exists_uniformly_converging_actual_crests"
+      ],
+      "formalization/weighted/ActualCrestTransport.lean": [
+        "exists_actual_unscaled_crest_curve"
+      ]
+    },
+    "obligations": []
+  },
   "unique-model-branch-20261127": {
     "guide": "contributions/unique_model_branch_20261127/NOTE.md#unique-model-branch-20261127",
     "theorems": {
@@ -3542,6 +3651,29 @@
         "quadratic_collapsed_reflection_is_critical",
         "quadratic_descended_reflection_fixed_iff",
         "quadratic_filled_unique_model_involution"
+      ],
+      "formalization/weighted/StationaryBranchCensus.lean": [
+        "inverseChoice_spec",
+        "inverseChoice_injective",
+        "model_symmetry_preserves",
+        "inverseChoice_critical",
+        "mem_modelFiber",
+        "model_inverse_branches_disjoint",
+        "modelFiber_card_step",
+        "modelFiber_card_exact",
+        "modelCriticalDefect_zero_iff",
+        "modelFiber_full_card_iff",
+        "model_inverse_census",
+        "quadratic_filled_model_inverse_census",
+        "quadratic_filled_model_census_complete"
+      ],
+      "formalization/weighted/StationaryBranchLocus.lean": [
+        "injective_neighborhood_of_nonfixed_pair",
+        "nonisolated_fixed_pair_no_injective_neighborhood",
+        "model_local_injectivity_locus",
+        "singleton_not_open_of_preconnected",
+        "quadratic_model_local_injectivity_locus",
+        "quadratic_connected_model_unique_branch"
       ]
     },
     "obligations": [

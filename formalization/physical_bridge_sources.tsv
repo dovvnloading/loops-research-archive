@@ -48,6 +48,8 @@ code/exp3_feigenbaum.py	EXPLORATION
 code/exp4_images.py	EXPLORATION
 code/exp5_figs.py	EXPLORATION
 code/mlc_common.py	EXPLORATION
+formalization/weighted/ActualCrestLimit.lean	METADATA
+formalization/weighted/ActualCrestTransport.lean	METADATA
 formalization/weighted/AtomCutDefect.lean	CUTS CREST
 formalization/weighted/AttachmentDefectLedger.lean	DEFECT
 formalization/weighted/BinaryShiftExactness.lean	METADATA
@@ -59,6 +61,7 @@ formalization/weighted/CloneRoot.lean	CLONE EDGE
 formalization/weighted/CloneRootRate.lean	CLONE EDGE
 formalization/weighted/CompactObstacleRemainder.lean	METADATA
 formalization/weighted/ConnectedBinaryCoding.lean	METADATA
+formalization/weighted/CriticalReturnRelationStability.lean	METADATA
 formalization/weighted/DepthThreeClosure.lean	METADATA
 formalization/weighted/DepthThreeReal.lean	METADATA
 formalization/weighted/DepthThreeRemainder.lean	METADATA
@@ -91,6 +94,10 @@ formalization/weighted/LimitingCrestSharpCoefficient.lean	METADATA
 formalization/weighted/LocalizationSheetKernel.lean	COVER-FIBER SHEETS CONNECTOR
 formalization/weighted/MarkedWaveSuprema.lean	GAIN
 formalization/weighted/NativeWaveGate.lean	CUTS CREST
+formalization/weighted/NearTwoInverse.lean	METADATA
+formalization/weighted/NearTwoProduct.lean	METADATA
+formalization/weighted/NearTwoShooting.lean	METADATA
+formalization/weighted/NearTwoTip.lean	METADATA
 formalization/weighted/ParabolicArchiveBrackets.lean	PARABOLIC STRAIGHTEN
 formalization/weighted/ParabolicBranches.lean	PARABOLIC STRAIGHTEN
 formalization/weighted/ParabolicCenterBranch.lean	PARABOLIC STRAIGHTEN
@@ -122,6 +129,8 @@ formalization/weighted/QuadraticCenterParameterLocus.lean	METADATA
 formalization/weighted/QuadraticCenterTrapping.lean	METADATA
 formalization/weighted/QuadraticComponentConjugacy.lean	METADATA
 formalization/weighted/QuadraticComponentDynamics.lean	METADATA
+formalization/weighted/QuadraticCrestCrossing.lean	METADATA
+formalization/weighted/QuadraticCrestDividedDifference.lean	METADATA
 formalization/weighted/QuadraticCriticalFiberCensus.lean	METADATA
 formalization/weighted/QuadraticCriticalTransversality.lean	CRITICAL-TRANSVERSALITY
 formalization/weighted/PhaseMemoryCardinality.lean	CLOCK ENDS
@@ -144,6 +153,8 @@ formalization/weighted/QuadraticTrappingEscape.lean	METADATA
 formalization/weighted/QuadraticUnivalentNeighborhood.lean	CONSTRUCT
 formalization/weighted/SaturatedTelescope.lean	METADATA
 formalization/weighted/SpectralDominance.lean	CLONE EDGE
+formalization/weighted/StationaryBranchCensus.lean	METADATA
+formalization/weighted/StationaryBranchLocus.lean	METADATA
 formalization/weighted/StationaryCanonicalLift.lean	VARIABLE-EXIT
 formalization/weighted/StationaryCompactContact.lean	METADATA
 formalization/weighted/StationaryDeckSeparator.lean	VARIABLE-EXIT

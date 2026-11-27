@@ -11,21 +11,33 @@ human_review: none
 
 ## Claim
 
-Work in progress. The target is the critical-point identification clause of
+This draft now contains 24 public Lean theorem declarations addressing the critical-point identification clause of
 KKL_STATIONARY_MONOTONE_FULL_LIFT_IDENTIFICATION. The existing
 StationaryLightModel development constructs an involution on the monotone
 model but explicitly leaves open whether its fixed locus is just the
 projected physical critical point.
 
-This packet aims to prove that identification for the actual filled set
-of z squared plus c with empty interior, and to derive the exact model
-inverse-fiber census. No result is counted before Lean compilation and
-the repository's transitive dependency audit succeed.
+The proposed proof identifies that fixed locus for the actual filled set
+of z squared plus c with empty interior. For a nontrivial connected model
+it also identifies the unique failure of local injectivity. At every depth
+and every model target, including non-singleton geometric fibers, the
+exact inverse cardinal N_n satisfies
+
+N_(n+1)(y) + [G^n(p(c)) = y] = 2 N_n(y).
+
+Equivalently, N_n(y) + D_n(y) = 2^n, where D_0=0 and
+D_(n+1)=2D_n+[G^n(p(c))=y]. Full binary cardinality holds exactly
+off the finite projected postcritical set. This supplies an exact
+exhaustion test for a proposed finite inverse census.
+
+These statements are unverified pending Lean compilation and the
+repository's transitive dependency audit.
 
 ## Evidence
 
-The new theorem will be registered in the existing Mathlib-backed Lean
-project. The local workspace filesystem is full and has no Lean executable;
+The new modules StationaryUniqueBranch, StationaryBranchLocus, and
+StationaryBranchCensus are registered in the existing Mathlib-backed Lean
+project, with all public theorem names in the source index. The local workspace filesystem is full and has no Lean executable;
 the unchanged repository workflows are the compilation and trust judge.
 
 ## Dependencies
