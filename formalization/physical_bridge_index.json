@@ -3241,6 +3241,32 @@
       "H4_RIGIDITY"
     ]
   },
+  "analytic-deck-rigidity-20261126": {
+    "guide": "contributions/analytic_deck_rigidity_20261126/NOTE.md#analytic-deck-rigidity-20261126",
+    "theorems": {
+      "formalization/weighted/TelescopeDeckRigidity.lean": [
+        "quadratic_return_deck_classification",
+        "quadratic_return_deck_marked_unique",
+        "quadratic_return_pairing_unique",
+        "quadratic_return_pairing_conjugacy"
+      ],
+      "formalization/weighted/TelescopeUnbranchedCover.lean": [
+        "quadratic_return_offcritical_deriv",
+        "orbit_restriction_cover_of_regular",
+        "quadratic_return_two_sheet_cover",
+        "quadratic_return_unique_path_lift"
+      ],
+      "formalization/weighted/TelescopeMovingDeck.lean": [
+        "quadratic_parameter_return_deck_family"
+      ],
+      "formalization/weighted/TelescopePathPairing.lean": [
+        "quadratic_return_deck_paired_paths"
+      ]
+    },
+    "obligations": [
+      "MAPPING_TELESCOPE"
+    ]
+  },
   "quadratic-inverse-atlas-20261126": {
     "guide": "contributions/quadratic_inverse_atlas_20261126/NOTE.md#quadratic-inverse-atlas-20261126",
     "theorems": {
