@@ -54,6 +54,7 @@ formalization/weighted/AtomCutDefect.lean	CUTS CREST
 formalization/weighted/AttachmentDefectLedger.lean	DEFECT
 formalization/weighted/BinaryShiftExactness.lean	METADATA
 formalization/weighted/BinaryShiftPeriodic.lean	METADATA
+formalization/weighted/ChebyshevDecoration.lean	METADATA
 formalization/weighted/ChebyshevQuotientRigidity.lean	METADATA
 formalization/weighted/CloneBounds.lean	CLONE EDGE
 formalization/weighted/ClonePolynomialRoots.lean	CLONE EDGE
