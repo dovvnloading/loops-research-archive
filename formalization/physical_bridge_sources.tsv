@@ -69,6 +69,12 @@ formalization/weighted/CloneBounds.lean	CLONE EDGE
 formalization/weighted/ClonePolynomialRoots.lean	CLONE EDGE
 formalization/weighted/CloneRoot.lean	CLONE EDGE
 formalization/weighted/CloneRootRate.lean	CLONE EDGE
+formalization/weighted/CollarCapacityLower.lean	METADATA
+formalization/weighted/CollarExtremalLength.lean	METADATA
+formalization/weighted/CollarHorizontalFamily.lean	METADATA
+formalization/weighted/CollarMetricEnergy.lean	METADATA
+formalization/weighted/CollarShellMetric.lean	METADATA
+formalization/weighted/CollarStraightLength.lean	METADATA
 formalization/weighted/CompactObstacleRemainder.lean	METADATA
 formalization/weighted/ConnectedBinaryCoding.lean	METADATA
 formalization/weighted/CrestFirstExit.lean	METADATA
@@ -204,7 +210,9 @@ formalization/weighted/ThreeReturnCovering.lean	METADATA
 formalization/weighted/ThreeReturnDegree.lean	METADATA
 formalization/weighted/ThreeReturnDomain.lean	METADATA
 formalization/weighted/ThreeReturnEstimates.lean	METADATA
+formalization/weighted/ThreeReturnExtremalLength.lean	METADATA
 formalization/weighted/ThreeReturnFullness.lean	METADATA
+formalization/weighted/ThreeReturnInradius.lean	METADATA
 formalization/weighted/ThreeReturnParent.lean	METADATA
 formalization/weighted/ThreeReturnParentTopology.lean	METADATA
 formalization/weighted/ThreeReturnPhysical.lean	METADATA
