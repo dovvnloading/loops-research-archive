@@ -19,7 +19,10 @@ theorem hasDerivAt_angle {s : ℝ} (hs : 0 < s) (x : ℝ) :
     HasDerivAt (fun z : ℝ => Real.arctan (z / s))
       (s / (s ^ 2 + x ^ 2)) x := by
   have hden : s ^ 2 + x ^ 2 ≠ 0 := by positivity
-  convert ((hasDerivAt_id x).div_const s).arctan using 1 <;>
+  convert ((hasDerivAt_id x).div_const s).arctan using 1
+  · funext z
+    simp only [id_eq, div_eq_mul_inv, mul_comm]
+  · simp only [id_eq]
     field_simp [ne_of_gt hs, hden] <;> ring
 
 /-- An exact intermediate-point formula for one positive passage step. -/
@@ -53,7 +56,7 @@ theorem quadratic_denominator_variation {s δ b x y z : ℝ}
     exact sub_le_sub_right hz.2 x
   have hplus : |z + x| ≤ 2 * δ := by
     calc
-      |z + x| ≤ |z| + |x| := abs_add z x
+      |z + x| ≤ |z| + |x| := abs_add_le z x
       _ ≤ δ + δ := add_le_add hzabs hx
       _ = 2 * δ := by ring
   calc
@@ -96,9 +99,9 @@ theorem angle_step_bounds {s δ a b x y : ℝ}
   have hhi : s ^ 2 + z ^ 2 ≤ (1 + 2 * δ * b) * (s ^ 2 + x ^ 2) := by
     have := (abs_le.mp hvariation).2
     nlinarith
-  rw [hangle]
   constructor
-  · apply (div_le_div_iff₀ hplus hden).2
+  · rw [hangle]
+    apply (div_le_div_iff₀ hplus hden).2
     calc
       (a * s) * (s ^ 2 + z ^ 2) ≤
           (a * s) * ((1 + 2 * δ * b) * (s ^ 2 + x ^ 2)) :=
@@ -107,7 +110,8 @@ theorem angle_step_bounds {s δ a b x y : ℝ}
       _ ≤ (y - x) * (s * (1 + 2 * δ * b)) :=
         mul_le_mul_of_nonneg_right hlower (by positivity)
       _ = ((y - x) * s) * (1 + 2 * δ * b) := by ring
-  · apply (div_le_div_iff₀ hden hminus).2
+  · rw [hangle]
+    apply (div_le_div_iff₀ hden hminus).2
     calc
       ((y - x) * s) * (1 - 2 * δ * b) =
           (y - x) * (s * (1 - 2 * δ * b)) := by ring

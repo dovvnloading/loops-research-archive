@@ -57,9 +57,15 @@ theorem passage_cut_indices {t a δ : ℝ} {k : ℕ}
   have hδsq : δ ^ 2 ≤ δ / 1000 := by
     nlinarith [mul_le_mul_of_nonneg_left hδmax hδ.le]
   have hleft : a - δ ∈ Icc 0 cap := by
-    constructor <;> dsimp [cap] <;> linarith [ha.1, ha.2]
+    constructor
+    · linarith [ha.1]
+    · change a - δ ≤ 2 / 5
+      linarith [ha.2]
   have hright : a + δ ∈ Icc 0 cap := by
-    constructor <;> dsimp [cap] <;> linarith [ha.1, ha.2]
+    constructor
+    · linarith [ha.1]
+    · change a + δ ≤ 2 / 5
+      linarith [ha.2]
   have hleftStep : H t (a - δ) ≤ a - δ / 2 := by
     have hh := (channel_quadratic_step htw hleft ha root).2
     have he : (a - δ - a) ^ 2 = δ ^ 2 := by ring

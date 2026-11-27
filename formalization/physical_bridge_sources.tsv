@@ -83,10 +83,14 @@ formalization/weighted/ParabolicDisjoint.lean	PARABOLIC STRAIGHTEN
 formalization/weighted/ParabolicPassageAngle.lean	METADATA
 formalization/weighted/ParabolicPassageCoefficients.lean	METADATA
 formalization/weighted/ParabolicPassageCuts.lean	METADATA
+formalization/weighted/ParabolicPassageEstimate.lean	METADATA
 formalization/weighted/ParabolicPassageFlight.lean	METADATA
+formalization/weighted/ParabolicPassageLimit.lean	METADATA
+formalization/weighted/ParabolicPassageUniform.lean	METADATA
 formalization/weighted/ParabolicPhaseBands.lean	PARABOLIC STRAIGHTEN
 formalization/weighted/ParabolicRealSheet.lean	PARABOLIC STRAIGHTEN
 formalization/weighted/ParabolicSegment.lean	PARABOLIC STRAIGHTEN
+formalization/weighted/ParabolicSharpPassage.lean	METADATA
 formalization/weighted/ParabolicShooting.lean	PARABOLIC STRAIGHTEN
 formalization/weighted/ParabolicTipFamily.lean	PARABOLIC STRAIGHTEN
 formalization/weighted/ParabolicTipPeriod.lean	PARABOLIC STRAIGHTEN

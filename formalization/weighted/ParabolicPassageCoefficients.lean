@@ -100,7 +100,7 @@ private theorem passage_expansion {a : ℝ} (root : cubic a = 0) (t x : ℝ) :
     ring
   have ht : H t (a+x)-H 0 (a+x) =
       t*pParameter (a+x)+t^2*remParameter a t x := by
-    unfold H pParameter pL pOuter pInner remParameter
+    unfold H pParameter remParameter pL pOuter pInner
     ring
   have hsp : pSpatial a x = passageB a+x*remSpatial a x := by
     calc
@@ -158,10 +158,10 @@ theorem passage_uniform_remainder :
     |x^3*remSpatial a x+t*x*remMixed a x+t^2*remParameter a t x| ≤
         (|x^3*remSpatial a x|+|t*x*remMixed a x|)+|t^2*remParameter a t x| :=
       (abs_add_le _ _).trans (add_le_add_right (abs_add_le _ _) _)
-    _ = |x|^3*|remSpatial a x|+t*|x|*|remMixed a x|+
-        t^2*|remParameter a t x| := by
+    _ = |x| ^ 3 * |remSpatial a x| + t * |x| * |remMixed a x| +
+        t^2 * |remParameter a t x| := by
       simp only [abs_mul, abs_pow, abs_of_nonneg ht.1]
-    _ ≤ |x|^3*C+t*|x|*C+t^2*C :=
+    _ ≤ |x| ^ 3 * C + t * |x| * C + t^2*C :=
       add_le_add
         (add_le_add (mul_le_mul_of_nonneg_left hU (by positivity))
           (mul_le_mul_of_nonneg_left hR (mul_nonneg ht.1 (abs_nonneg x))))
@@ -187,7 +187,7 @@ theorem passage_uniform_relative :
   have htx : t*|x| ≤ δ*t := by nlinarith [mul_le_mul_of_nonneg_left hx ht]
   have hx3 : |x|^3 ≤ δ*x^2 := by
     calc
-      |x|^3 = |x|*x^2 := by rw [pow_succ, sq_abs]; ring
+      |x|^3 = |x| * x^2 := by rw [pow_succ, sq_abs]; ring
       _ ≤ δ*x^2 := mul_le_mul_of_nonneg_right hx (sq_nonneg x)
   have hlead : t+x^2 ≤ passageA a*t+passageB a*x^2 := by
     have hA := mul_le_mul_of_nonneg_right (passageA_ge_one ha) ht
@@ -233,9 +233,9 @@ theorem passage_scale_mul {a t : ℝ} (ha : a ∈ Icc (1/20:ℝ) (3/50))
     lt_of_lt_of_le (by norm_num) (passageB_ge_one ha)
   have hs : 0 ≤ passageScale a t := Real.sqrt_nonneg _
   have hmul := passage_coefficients_mul root
-  have hquad := passage_scale_quadratic ha ht 0
+  have hquad : passageB a * (passageScale a t)^2 = passageA a*t := by
+    simpa using passage_scale_quadratic ha ht (0:ℝ)
   have hsq : (passageB a * passageScale a t)^2 = 49*t := by
-    simp only [zero_pow, add_zero, mul_zero] at hquad
     calc
       (passageB a * passageScale a t)^2 =
           passageB a * (passageB a * (passageScale a t)^2) := by ring

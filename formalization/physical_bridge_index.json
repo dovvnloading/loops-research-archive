@@ -3308,6 +3308,28 @@
       "formalization/weighted/ParabolicPassageCuts.lean": [
         "passage_orbit_monotone",
         "passage_cut_indices"
+      ],
+      "formalization/weighted/ParabolicPassageEstimate.lean": [
+        "passage_scaled_time_bound",
+        "passage_quantitative_estimate"
+      ],
+      "formalization/weighted/ParabolicPassageUniform.lean": [
+        "passage_uniform_quantitative_estimate"
+      ],
+      "formalization/weighted/ParabolicPassageLimit.lean": [
+        "tendsto_arctan_scaled_sqrt",
+        "tendsto_passage_tail",
+        "tendsto_of_angle_error",
+        "tendsto_rate_of_scaled_rate",
+        "tendsto_quadratic_rate_of_rate",
+        "tendsto_physical_period_rate"
+      ],
+      "formalization/weighted/ParabolicSharpPassage.lean": [
+        "channel_sharp_passage_limit",
+        "shot_sharp_passage_limit",
+        "shot_sharp_parameter_accumulation",
+        "shot_sharp_physical_period_accumulation",
+        "exists_sharp_primitive_tip_sequence"
       ]
     },
     "obligations": [
