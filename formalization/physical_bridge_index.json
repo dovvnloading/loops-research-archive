@@ -3848,6 +3848,19 @@
         "limb_itinerary_planar_geometry",
         "limb_itinerary_analytic_collar",
         "limb_collar_ambient_landing"
+      ],
+      "formalization/weighted/StationaryBoundaryExtension.lean": [
+        "punctured_component_closure_subset",
+        "limbItinerary_injective_closure",
+        "limbItinerary_closure_prefix",
+        "limbItinerary_image_closure",
+        "quadratic_closed_limb_critical_value_exclusion",
+        "quadratic_closed_itinerary_critical_free",
+        "quadratic_closed_itinerary_planar_geometry",
+        "quadratic_closed_limb_analytic_collar",
+        "limbItinerary_closed_prefix_image",
+        "limbItinerary_of_closure_terminal",
+        "quadratic_closed_limb_ambient_landing"
       ]
     },
     "obligations": [
