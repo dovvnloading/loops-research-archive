@@ -3865,6 +3865,27 @@
         "delayed_merger_exact",
         "delayed_fiber_count",
         "no_uniform_two_point_stabilization_stage"
+      ],
+      "formalization/weighted/QuadraticDelayedDiskMerger.lean": [
+        "diskRadius_pos",
+        "diskRadius_zero",
+        "diskTarget_zero",
+        "diskRadius_lt_two",
+        "diskRadius_le_one_iff",
+        "zero_mem_diskTarget_iff",
+        "diskRadius_strictMono",
+        "diskTarget_open_connected",
+        "one_mem_diskTarget",
+        "diskTarget_compact_closure",
+        "diskTarget_closure_subset_next",
+        "diskTarget_strictMono",
+        "diskTarget_union",
+        "diskTarget_subset_rightHalfPlane",
+        "roots_joined_in_large_disk",
+        "disk_merger_exact",
+        "disk_selected_fiber",
+        "disk_selected_fiber_count",
+        "no_uniform_precompact_disk_stabilization_stage"
       ]
     },
     "obligations": [
