@@ -125,7 +125,8 @@ theorem exterior_approx_telescope (C : ℝ) (c z : ℂ)
         (logCorrectionTerm c z n).re := by
       simp only [approx, hsize, logCorrectionTerm,
         Complex.mul_re, Complex.ofReal_re, Complex.ofReal_im, zero_mul, sub_zero]
-      rw [orbit, hstep, weight_succ]
+      rw [orbit, hstep]
+      simp only [weight_succ]
       ring
     rw [hrec, ih, Finset.sum_range_succ, Complex.add_re]
     ring

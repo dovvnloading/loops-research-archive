@@ -29,9 +29,9 @@ iterates and proves a uniform tail bound and joint continuity.
 Only compiled declarations passing the repository's transitive dependency audit
 will be counted as results.
 
-### Checkpoint 1: whole-orbit parameter shadowing (CI pending)
+### Checkpoint 1: whole-orbit parameter shadowing (CI verified)
 
-`formalization/weighted/QuadraticOrbitShadowing.lean` supplies five candidate
+`formalization/weighted/QuadraticOrbitShadowing.lean` supplies five compiled
 theorems: `quadratic_preimage_near`, `finite_orbit_shadow`,
 `infinite_orbit_shadow`, `filled_orbit_shadow`, and
 `large_parameter_orbit_shadow`. A reference quadratic orbit with every point
@@ -46,6 +46,10 @@ initial-point sets. Local registration and proof-source scans pass. Local
 Lean compilation is unavailable: the mandatory pinned compiler artifacts and
 Mathlib cache exceed this workspace's free disk capacity. GitHub Actions
 compilation and its transitive dependency audit remain the acceptance gate.
+
+The full weighted build and transitive dependency audit passed at commit
+`6c082ded253ba72425bcc5784e4882b7a5e1bf1d`, in
+[CI run 45917813979](https://github.com/dovvnloading/loops-research-archive/actions/runs/45917813979).
 
 ### Checkpoint 2: structural conjugacy and harmonic escape (CI pending)
 
@@ -63,6 +67,16 @@ the existing escape potential by telescoping, and transports it to every
 escaping analytic parameter/point family. The intended consequences are
 phase and parameter harmonicity, real analyticity, and the circle mean-value
 identity. These declarations are proof candidates until CI accepts them.
+
+### Checkpoint 3: separation-dependent stability radius (CI pending)
+
+`QuadraticShadowRadius.lean` retains the actual reference separation `s > 1`
+in the inverse estimate and proves an all-time shadow radius
+`norm(d-c)/(s-1)`. In the large-parameter filled sets, the established orbit
+geometry supplies `s = sqrt(norm(c)/2)`. The resulting symmetric Hausdorff
+bound uses the minimum of the two square-root scales. In particular, for
+every positive epsilon the Hausdorff Lipschitz constant is at most epsilon
+outside the explicit parameter radius `max 8 (2*(1+1/epsilon)^2)`.
 
 ## Dependencies
 

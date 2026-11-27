@@ -3225,6 +3225,18 @@
         "parameter_escape_real_analyticAt",
         "escape_circle_average",
         "parameter_escape_circle_average"
+      ],
+      "formalization/weighted/QuadraticShadowRadius.lean": [
+        "quadratic_preimage_norm_control",
+        "finite_orbit_shadow_budget",
+        "infinite_orbit_shadow_budget",
+        "filled_orbit_shadow_budget",
+        "separated_filled_orbit_shadow",
+        "filled_norm_sqrt_parameter",
+        "large_parameter_orbit_shadow_radius",
+        "filled_hausdorff_of_uniform_separation",
+        "filled_hausdorff_radius",
+        "filled_hausdorff_small_lipschitz_at_infinity"
       ]
     },
     "obligations": [
