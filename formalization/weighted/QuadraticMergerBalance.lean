@@ -88,7 +88,8 @@ theorem mergerCensus_componentAnchor (c : ℂ) (n : ℕ) (U V : Set ℂ)
   have ha : componentAnchor D ∈ connectedComponentIn ((quad c)^[n] ⁻¹' U) a := by
     rw [← he]
     exact componentAnchor_mem D hn
-  exact ⟨connectedComponentIn_subset _ _ ha, he.trans (connectedComponentIn_eq ha)⟩
+  exact ⟨connectedComponentIn_subset ((quad c)^[n] ⁻¹' U) a ha,
+    he.trans (connectedComponentIn_eq ha)⟩
 
 /-- The postcritical inventory partitions exactly into retained and
 newly admitted target values, even if several orbit times coincide. -/
@@ -210,7 +211,7 @@ theorem newCriticalCharge_eq_new_ramification (c : ℂ) (n : ℕ) (U V : Set ℂ
   let E := B \ ((quad c)^[n] ⁻¹' U)
   have hm : MapsTo ((quad c)^[n]) E (V \ U) := by
     intro z hz
-    exact ⟨connectedComponentIn_subset _ _ hz.1, hz.2⟩
+    exact ⟨connectedComponentIn_subset ((quad c)^[n] ⁻¹' V) x hz.1, hz.2⟩
   change newCriticalCharge c n U V x =
     ∑ z ∈ criticalPoints c n E, (localMultiplicity c z n - 1)
   rw [criticalPoints_ramification_sum c (V \ U) E n hm]
@@ -230,6 +231,56 @@ theorem newCriticalCharge_eq_new_ramification (c : ℂ) (n : ℕ) (U V : Set ℂ
       exact hyVU.2
   rw [hF]
   exact quadratic_component_defect_eq_ramification_sum c V hVo hVc y hyVU.1 n x hx
+
+/-- Vanishing new charge is exactly absence of a new actual critical
+source point in the selected enlarged component. Postcritical values
+whose critical inverse points lie elsewhere contribute nothing. -/
+theorem newCriticalCharge_eq_zero_iff_no_new_critical
+    (c : ℂ) (n : ℕ) (U V : Set ℂ)
+    (hVo : IsOpen V) (hVc : IsPreconnected V)
+    (x : ℂ) (hx : (quad c)^[n] x ∈ V) :
+    newCriticalCharge c n U V x = 0 ↔
+      criticalPoints c n
+        (connectedComponentIn ((quad c)^[n] ⁻¹' V) x \ ((quad c)^[n] ⁻¹' U)) = ∅ := by
+  rw [newCriticalCharge_eq_new_ramification c n U V hVo hVc x hx]
+  let E := connectedComponentIn ((quad c)^[n] ⁻¹' V) x \ ((quad c)^[n] ⁻¹' U)
+  change (∑ z ∈ criticalPoints c n E, (localMultiplicity c z n - 1)) = 0 ↔
+    criticalPoints c n E = ∅
+  constructor
+  · intro he
+    apply Finset.eq_empty_iff_forall_notMem.mpr
+    intro z hz
+    have hle : localMultiplicity c z n - 1 ≤
+        ∑ w ∈ criticalPoints c n E, (localMultiplicity c w n - 1) :=
+      Finset.single_le_sum (fun _ _ => Nat.zero_le _) hz
+    have hne := ((mem_criticalPoints_iff_multiplicity c n E z).mp hz).2
+    have hp : 0 < localMultiplicity c z n := pow_pos (by norm_num) _
+    omega
+  · intro he
+    simp only [he, Finset.sum_empty]
+
+/-- An equivalent analytic form tests the actual complex derivative
+on the newly admitted part of the selected component. -/
+theorem newCriticalCharge_eq_zero_iff_deriv
+    (c : ℂ) (n : ℕ) (U V : Set ℂ)
+    (hVo : IsOpen V) (hVc : IsPreconnected V)
+    (x : ℂ) (hx : (quad c)^[n] x ∈ V) :
+    newCriticalCharge c n U V x = 0 ↔
+      ∀ z ∈ connectedComponentIn ((quad c)^[n] ⁻¹' V) x,
+        (quad c)^[n] z ∉ U → deriv ((quad c)^[n]) z ≠ 0 := by
+  rw [newCriticalCharge_eq_zero_iff_no_new_critical c n U V hVo hVc x hx]
+  constructor
+  · intro he z hzB hzU hd
+    have hz := (mem_criticalPoints_iff_deriv c n
+      (connectedComponentIn ((quad c)^[n] ⁻¹' V) x \ ((quad c)^[n] ⁻¹' U)) z).mpr
+      ⟨⟨hzB, hzU⟩, hd⟩
+    simpa only [he, Finset.notMem_empty] using hz
+  · intro h
+    apply Finset.eq_empty_iff_forall_notMem.mpr
+    intro z hz
+    obtain ⟨hzE, hd⟩ := (mem_criticalPoints_iff_deriv c n
+      (connectedComponentIn ((quad c)^[n] ⁻¹' V) x \ ((quad c)^[n] ⁻¹' U)) z).mp hz
+    exact h z hzE.1 hzE.2 hd
 
 end
 end LoopsQuadraticMergerBalance

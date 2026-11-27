@@ -48,7 +48,7 @@ theorem mergerCensus_singleton_iff_cartesian (c : ℂ) (n : ℕ) (U V : Set ℂ)
       rw [hC, Finset.mem_singleton] at hzC
       exact hzC ▸ mem_connectedComponentIn hz.2
     · intro z hz
-      exact ⟨hAB hz, connectedComponentIn_subset _ _ hz⟩
+      exact ⟨hAB hz, connectedComponentIn_subset (f ⁻¹' U) x hz⟩
   · intro hcart
     ext D
     simp only [Finset.mem_singleton]
@@ -133,7 +133,7 @@ theorem quadratic_enlargement_all_traces_iff_charge (c : ℂ) (n : ℕ) (U V : S
   let f := (quad c)^[n]
   let A := connectedComponentIn (f ⁻¹' U) x
   let B := connectedComponentIn (f ⁻¹' V) x
-  have hApre : A ⊆ f ⁻¹' U := connectedComponentIn_subset _ _
+  have hApre : A ⊆ f ⁻¹' U := connectedComponentIn_subset (f ⁻¹' U) x
   have hAB : A ⊆ B := connectedComponentIn_mono x (preimage_mono hUV)
   rw [← quadratic_enlargement_cartesian_iff_charge c n U V hUV hUo hUc hVo hVc
     x y hx hy]

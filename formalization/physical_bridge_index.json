@@ -3280,7 +3280,9 @@
         "merger_balance",
         "regular_target_exists",
         "merger_balance_any_anchor",
-        "newCriticalCharge_eq_new_ramification"
+        "newCriticalCharge_eq_new_ramification",
+        "newCriticalCharge_eq_zero_iff_no_new_critical",
+        "newCriticalCharge_eq_zero_iff_deriv"
       ],
       "formalization/weighted/QuadraticMergerNaturality.lean": [
         "selected_mem_mergerCensus",
@@ -3289,6 +3291,26 @@
         "quadratic_enlargement_cartesian_iff_charge",
         "quadratic_enlargement_all_traces_iff_charge",
         "quadratic_enlargement_charge_iff_missing_point"
+      ],
+      "formalization/weighted/QuadraticSilentMerger.lean": [
+        "mem_finitePostcritical",
+        "criticalFreeTarget_open",
+        "criticalFreeTarget_path_connected",
+        "criticalFreeTarget_postcritical_avoided",
+        "silent_newCriticalCharge_zero",
+        "finitePostcritical_preimage_finite",
+        "criticalFree_pullback_path_connected",
+        "criticalFree_component",
+        "criticalFree_fiber_eq_global",
+        "criticalFree_rank",
+        "criticalFree_debt",
+        "old_component_univalent",
+        "old_component_rank_zero",
+        "old_component_debt_zero",
+        "silent_merger_count",
+        "silent_missing_fiber_count",
+        "silent_merger_not_cartesian",
+        "every_quadratic_silent_merger"
       ]
     },
     "obligations": [
