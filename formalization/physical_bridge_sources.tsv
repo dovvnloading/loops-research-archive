@@ -1,6 +1,7 @@
 source	routes
 AirplaneDiffraction.lean	DIFFRACTION LANDING
 CloneGraph.lean	CLONE EDGE
+DepthThreeCert.lean	METADATA
 FirstReturn.lean	CLONE EDGE
 ImmersionMarkFinite.lean	CONTOUR-ESCAPE MARK SELECTED-ESCAPE
 LoopsFormal.lean	CLONE EDGE

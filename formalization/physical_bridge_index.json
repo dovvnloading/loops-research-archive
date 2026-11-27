@@ -3266,5 +3266,14 @@
     "obligations": [
       "MAPPING_TELESCOPE"
     ]
+  },
+  "depth-three-grid-20261126": {
+    "guide": "contributions/depth_three_grid_20261126/NOTE.md#depth-three-grid-20261126",
+    "theorems": {
+      "DepthThreeCert.lean": [
+        "rootCertificate_ordered"
+      ]
+    },
+    "obligations": []
   }
 }

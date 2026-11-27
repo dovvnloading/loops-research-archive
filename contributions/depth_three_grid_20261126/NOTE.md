@@ -5,6 +5,8 @@ ai: OpenAI ChatGPT, GPT-6 Astra Pro
 human_review: none
 ---
 
+<a id="depth-three-grid-20261126"></a>
+
 # Depth-three finite grid: Lean certificate work in progress
 
 Ledger statement being addressed:
