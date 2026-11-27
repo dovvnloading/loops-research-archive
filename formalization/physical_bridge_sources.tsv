@@ -191,7 +191,9 @@ formalization/weighted/ThreeReturnFullness.lean	METADATA
 formalization/weighted/ThreeReturnParent.lean	METADATA
 formalization/weighted/ThreeReturnParentTopology.lean	METADATA
 formalization/weighted/ThreeReturnPhysical.lean	METADATA
+formalization/weighted/ThreeReturnRealization.lean	METADATA
 formalization/weighted/UniformThreeReturn.lean	METADATA
+formalization/weighted/UniformThreeReturnRenormalization.lean	METADATA
 formalization/weighted/WeightedReturn.lean	CLONE EDGE
 research/frontier/dudko_p44_molecule_20261125/source_lock.py	METADATA
 research/frontier/dudko_p44_molecule_20261125/verify.py	EXPLORATION

@@ -3807,6 +3807,25 @@
         "actual_parent_contractible",
         "actual_parent_simplyConnected",
         "actual_physical_parent_contractible"
+      ],
+      "formalization/weighted/ThreeReturnRealization.lean": [
+        "physicalMap_proper",
+        "physical_return_differentiable",
+        "physical_source_contractible",
+        "physical_phase_image",
+        "physical_phases_disjoint",
+        "critical_signed_orbit",
+        "canonical_source_exhaustion",
+        "critical_orbit_trapped",
+        "physical_critical_orbit_trapped"
+      ],
+      "formalization/weighted/UniformThreeReturnRenormalization.lean": [
+        "selected_parent_collision",
+        "selected_parent_restriction",
+        "selected_parent_scale_bound",
+        "physical_target_closure_subset_parent",
+        "selected_physical_renormalization",
+        "exists_uniform_three_return"
       ]
     },
     "obligations": []
