@@ -61,6 +61,8 @@ formalization/weighted/CloneBounds.lean	CLONE EDGE
 formalization/weighted/ClonePolynomialRoots.lean	CLONE EDGE
 formalization/weighted/CloneRoot.lean	CLONE EDGE
 formalization/weighted/CloneRootRate.lean	CLONE EDGE
+formalization/weighted/CollarCapacityLower.lean	METADATA
+formalization/weighted/CollarExtremalLength.lean	METADATA
 formalization/weighted/CompactObstacleRemainder.lean	METADATA
 formalization/weighted/ConnectedBinaryCoding.lean	METADATA
 formalization/weighted/CriticalReturnRelationStability.lean	METADATA

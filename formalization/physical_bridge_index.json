@@ -3842,6 +3842,39 @@
         "selected_physical_inner_image_margin",
         "selected_physical_disk_sandwich",
         "exists_physical_renormalization_with_inradius"
+      ],
+      "formalization/weighted/CollarCapacityLower.lean": [
+        "horizontal_lipschitz",
+        "horizontal_hasDerivAt",
+        "horizontal_energy_integrable",
+        "horizontal_energy_lower",
+        "horizontal_measurePreserving",
+        "horizontal_ae_differentiable",
+        "energy_measurable",
+        "fderiv_zero_outside_disk",
+        "full_energy_eq_disk",
+        "admissible_energy_lower",
+        "capacity_lower",
+        "capacity_pos",
+        "variationalModulus_lt_top",
+        "variationalModulus_le"
+      ],
+      "formalization/weighted/CollarExtremalLength.lean": [
+        "variation_parameter_image",
+        "arcParameter_mem_image",
+        "arcParameter_unit_speed",
+        "arcParameter_lipschitz",
+        "arcParameter_image",
+        "curveModulus_le_area",
+        "diskMetric_measurable",
+        "diskMetric_area",
+        "curveLength_ge_gap",
+        "diskMetric_length",
+        "diskMetric_admissible",
+        "curveModulus_le_disk_ratio",
+        "extremalLength_ge_disk_ratio",
+        "physical_curveModulus_le",
+        "physical_extremalLength_ge"
       ]
     },
     "obligations": []

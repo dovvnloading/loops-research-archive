@@ -156,6 +156,8 @@ private theorem finite_disk_bound_of_certificate {S : Int} {p : ℕ} {C : Bounds
   apply (div_lt_iff₀ hdlo).mpr
   have hcast : 25 * (((absHi (rowAt (collarRows S p C) (3*p)).orbit +
       certificateDeviation S p C : Int) : ℝ)) < 4 * ((collarD S p C).lo : ℝ) := by
+    change 25 * (absHi (rowAt (collarRows S p C) (3*p)).orbit +
+      certificateDeviation S p C) < 4 * (collarD S p C).lo at hI
     exact_mod_cast hI
   linarith only [hcast]
 
@@ -294,7 +296,7 @@ theorem actual_three_return_inner_bound {p : ℕ} (hp : 17 ≤ p)
       (hzphase 2 (by omega)).le (h0phase 2 (by omega)).le
     change ‖F ((F^[2]) z)-F ((F^[2]) 0)‖ ≤
       2*ε+5*‖(F^[2]) z-(F^[2]) 0‖ at h
-    rw [iterate_succ_apply', iterate_succ_apply']
+    change ‖F ((F^[2]) z)-F ((F^[2]) 0)‖ ≤ _
     linarith only [h, hsecond]
   have ht := norm_le_norm_sub_add ((F^[3]) z) ((F^[3]) 0)
   change ‖(F^[3]) z‖ < 4/25
