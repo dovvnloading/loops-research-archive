@@ -3270,39 +3270,23 @@
   "stationary-model-ramification-20261126": {
     "guide": "contributions/stationary_model_ramification_20261126/NOTE.md#stationary-model-ramification-20261126",
     "theorems": {
-      "formalization/weighted/StationaryCriticalFiber.lean": [
-        "compact_quadratic_collision_contains_zero",
-        "quadratic_filled_noncritical_fiber_injective",
-        "quadratic_filled_identified_opposites_iff",
-        "quadratic_filled_model_unique_critical_involution",
-        "quadratic_filled_model_surjective",
-        "quadratic_filled_model_predecessor_census"
-      ],
       "formalization/weighted/StationaryRamificationCensus.lean": [
-        "mem_inverseLevel",
-        "inverseLevel_coe",
-        "iterate_fiber_finite",
-        "inverseLevel_card_exact",
-        "iterate_fiber_ncard_exact",
-        "criticalDefect_eq_sum",
-        "criticalDefect_zero_iff",
-        "iterate_fiber_full_card_iff",
         "collapsedCriticalDefect_eq_sum",
-        "semiconj_criticalDefect",
-        "collapsedCriticalDefect_zero_iff",
-        "semiconj_inverse_fiber_loss",
-        "semiconj_inverse_fiber_card_eq_iff"
+        "semiconj_modelCriticalDefect",
+        "collapsedCriticalDefect_zero_iff"
       ],
       "formalization/weighted/StationaryModelRamification.lean": [
         "collapsedCriticalDefect_growth",
         "collapsedCriticalDefect_of_contact",
-        "quadratic_filled_inverse_ncard",
-        "quadratic_filled_predecessor_census",
-        "quadratic_filled_model_census_exact",
-        "quadratic_filled_model_census_sum",
         "quadratic_filled_quotient_loss",
         "quadratic_filled_inverse_labels_iff",
         "quadratic_filled_quotient_loss_lower_bound"
+      ],
+      "formalization/weighted/StationaryModelBranchLocus.lean": [
+        "involution_local_injectivity_locus",
+        "quadratic_filled_model_local_injectivity_locus",
+        "iterate_local_injectivity_iff",
+        "quadratic_filled_model_iterate_local_injectivity_iff"
       ]
     },
     "obligations": [
