@@ -3142,6 +3142,55 @@
       "DIRECT_DECORATION_END_PRIME_END_COFINALITY"
     ]
   },
+  "local-degree-saturation-20261126": {
+    "guide": "contributions/local_degree_saturation_20261126/NOTE.md#local-degree-saturation-20261126",
+    "theorems": {
+      "formalization/weighted/QuadraticLocalNormalForm.lean": [
+        "quadratic_regular_local_injective",
+        "quadratic_simple_critical_local_normal_form",
+        "quadratic_simple_critical_local_pair"
+      ],
+      "formalization/weighted/LocalDegreeExhaustion.lean": [
+        "quadratic_conjugacy_regular_local_containment",
+        "quadratic_conjugacy_critical_local_containment",
+        "quadratic_conjugacy_local_exhaustion",
+        "quadratic_conjugacy_preimage_clopen",
+        "quadratic_conjugacy_component"
+      ],
+      "formalization/weighted/QuadraticPowerNormalForm.lean": [
+        "analytic_factor_power_chart",
+        "quadratic_power_normal_form",
+        "quadratic_power_disk_chart"
+      ],
+      "formalization/weighted/IteratedCarrierIsolation.lean": [
+        "isolationWindow_contains",
+        "isolationWindow_succ_subset",
+        "isolationWindow_antitone",
+        "isolationWindow_exact",
+        "isolationWindow_horizon_exact",
+        "isolationWindow_isOpen",
+        "finite_horizon_isolation",
+        "connectedComponent_eq_of_open_isolation",
+        "iterated_preimage_component"
+      ],
+      "formalization/weighted/QuadraticCarrierSaturation.lean": [
+        "quadratic_compact_return_invariant_subset_filled",
+        "quadratic_return_conjugacy_subset_filled",
+        "quadratic_return_conjugacy_isolation",
+        "quadratic_primitive_conjugacy_component",
+        "quadratic_primitive_conjugacy_all_returns"
+      ],
+      "formalization/weighted/QuadraticLocalFiberCensus.lean": [
+        "complex_nthRootsFinset_card",
+        "power_root_mem_ball",
+        "quadratic_chart_localFiber",
+        "quadratic_local_fiber_census"
+      ]
+    },
+    "obligations": [
+      "KKL_STATIONARY_NONLC_SELECTED_GEOMETRIC_CONTINUUM_LIFT"
+    ]
+  },
   "analytic-deck-rigidity-20261126": {
     "guide": "contributions/analytic_deck_rigidity_20261126/NOTE.md#analytic-deck-rigidity-20261126",
     "theorems": {
