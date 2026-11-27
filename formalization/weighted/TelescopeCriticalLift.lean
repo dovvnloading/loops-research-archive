@@ -95,7 +95,8 @@ theorem real_path_continuous_square_root (g : ℝ → ℂ) (hg : Continuous g) :
     apply tendsto_zero_iff_norm_tendsto_zero.mpr
     have hc : Continuous (fun y => Real.sqrt ‖g y‖) :=
       Real.continuous_sqrt.comp hg.norm
-    simpa only [hrnorm, hgt, norm_zero, Real.sqrt_zero] using hc.continuousAt.tendsto
+    simpa only [hrnorm, hgt, norm_zero, Real.sqrt_zero] using
+      (hc.continuousAt (x := t)).tendsto
 
 /-- Every continuous complex path has a continuous square root with any
 prescribed initial root, including paths with arbitrary zero sets. -/

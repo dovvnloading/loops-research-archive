@@ -99,7 +99,7 @@ theorem choice_true_open (f g h : X → Y)
       have hxf : h x = f x := (hchoice x).resolve_right hxg
       exact ⟨hxf, fun hfg => hxg (hxf.trans hfg)⟩
   rw [heq]
-  exact isOpen_ne hh hg
+  exact (isClosed_eq hh hg).isOpen_compl
 
 theorem choice_false_open (f g h : X → Y)
     (hf : Continuous f) (hh : Continuous h)
@@ -115,7 +115,7 @@ theorem choice_false_open (f g h : X → Y)
       have hxg : h x = g x := (hchoice x).resolve_left hxf
       exact ⟨fun hfg => hxf (hxg.trans hfg.symm), fun hx => hxf hx.1⟩
   rw [heq]
-  exact isOpen_ne hh hf
+  exact (isClosed_eq hh hf).isOpen_compl
 
 /-- Extracting the phase of a selection recovers exactly the chosen set. -/
 theorem phaseSelect_region (f g : X → Y) (S : Set X)

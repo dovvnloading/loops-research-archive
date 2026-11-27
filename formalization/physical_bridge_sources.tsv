@@ -63,6 +63,8 @@ formalization/weighted/CompactObstacleRemainder.lean	METADATA
 formalization/weighted/ConnectedBinaryCoding.lean	METADATA
 formalization/weighted/CriticalPhaseCensus.lean	METADATA
 formalization/weighted/CriticalPhaseCuts.lean	METADATA
+formalization/weighted/CriticalPhaseExcursions.lean	METADATA
+formalization/weighted/CriticalPhaseWords.lean	METADATA
 formalization/weighted/CriticalReturnRelationStability.lean	METADATA
 formalization/weighted/DepthThreeClosure.lean	METADATA
 formalization/weighted/DepthThreeReal.lean	METADATA
@@ -170,7 +172,10 @@ formalization/weighted/TelescopeCollarRecognition.lean	METADATA
 formalization/weighted/TelescopeCompactReturn.lean	CONSTRUCT
 formalization/weighted/TelescopeConformalInverse.lean	CONSTRUCT
 formalization/weighted/TelescopeCriticalLift.lean	METADATA
+formalization/weighted/TelescopeCriticalPaths.lean	METADATA
 formalization/weighted/TelescopeCriticalPhase.lean	METADATA
+formalization/weighted/TelescopeCriticalPhaseMemory.lean	METADATA
+formalization/weighted/TelescopeCriticalPhaseWitness.lean	METADATA
 formalization/weighted/TelescopeDeckInvolution.lean	CONSTRUCT
 formalization/weighted/TelescopeDeckRigidity.lean	CONSTRUCT
 formalization/weighted/TelescopeMovingDeck.lean	CONSTRUCT

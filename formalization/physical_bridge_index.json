@@ -3674,6 +3674,27 @@
         "real_path_continuous_square_root",
         "interval_path_continuous_square_root",
         "quadratic_return_path_lift_with_critical_crossings"
+      ],
+      "formalization/weighted/CriticalPhaseExcursions.lean": [
+        "phaseCut_regularExcursions_equiv",
+        "phaseCut_regularExcursions_count"
+      ],
+      "formalization/weighted/CriticalPhaseWords.lean": [
+        "path_trans_eq_iff",
+        "loopWord_injective",
+        "loopWord_range",
+        "loopWord_common_projection",
+        "two_loops_independent_words"
+      ],
+      "formalization/weighted/TelescopeCriticalPaths.lean": [
+        "quadratic_return_all_path_classification",
+        "quadratic_return_target_excursion_count"
+      ],
+      "formalization/weighted/TelescopeCriticalPhaseWitness.lean": [
+        "quadratic_return_two_crossing_same_endpoints"
+      ],
+      "formalization/weighted/TelescopeCriticalPhaseMemory.lean": [
+        "quadratic_return_unbounded_closed_phase_memory"
       ]
     },
     "obligations": [
