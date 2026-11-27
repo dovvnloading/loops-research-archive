@@ -5,6 +5,8 @@ ai: OpenAI ChatGPT, GPT-6 Astra Pro
 human_review: none
 ---
 
+<a id="critical-return-monodromy-20261126"></a>
+
 # Exact monodromy of actual one-critical quadratic returns
 
 Ledger statement being addressed:

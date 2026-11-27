@@ -3266,5 +3266,28 @@
     "obligations": [
       "MAPPING_TELESCOPE"
     ]
+  },
+  "critical-return-monodromy-20261126": {
+    "guide": "contributions/critical_return_monodromy_20261126/NOTE.md#critical-return-monodromy-20261126",
+    "theorems": {
+      "formalization/weighted/SquarePathMonodromy.lean": [
+        "logLift_exp",
+        "logLift_zero",
+        "exists_logLift_increment",
+        "windingNumber_increment",
+        "logarithm_increment_eq",
+        "windingNumber_from_logarithm",
+        "square_lifts_eq_of_initial",
+        "square_lift_endpoint",
+        "square_lift_closed_iff_even",
+        "square_lift_endpoint_eq_neg_iff_odd"
+      ],
+      "formalization/weighted/TelescopeReturnMonodromy.lean": [
+        "quadratic_return_square_coordinate"
+      ]
+    },
+    "obligations": [
+      "MAPPING_TELESCOPE"
+    ]
   }
 }

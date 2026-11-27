@@ -126,6 +126,7 @@ formalization/weighted/QuadraticTrappingEscape.lean	METADATA
 formalization/weighted/QuadraticUnivalentNeighborhood.lean	CONSTRUCT
 formalization/weighted/SaturatedTelescope.lean	METADATA
 formalization/weighted/SpectralDominance.lean	CLONE EDGE
+formalization/weighted/SquarePathMonodromy.lean	METADATA
 formalization/weighted/StationaryCanonicalLift.lean	VARIABLE-EXIT
 formalization/weighted/StationaryCompactContact.lean	METADATA
 formalization/weighted/StationaryDeckSeparator.lean	VARIABLE-EXIT
@@ -146,6 +147,7 @@ formalization/weighted/TelescopeMovingDeck.lean	CONSTRUCT
 formalization/weighted/TelescopeParameterReturn.lean	CONSTRUCT
 formalization/weighted/TelescopePathPairing.lean	CONSTRUCT
 formalization/weighted/TelescopeRamification.lean	METADATA
+formalization/weighted/TelescopeReturnMonodromy.lean	METADATA
 formalization/weighted/TelescopeUnbranchedCover.lean	CONSTRUCT
 formalization/weighted/TelescopeUnivalentCollars.lean	CONSTRUCT
 formalization/weighted/TerminalFiberExclusion.lean	METADATA
