@@ -211,7 +211,7 @@ description. Reproduction:
 ```sh
 cd formalization/weighted
 lake exe cache get
-lake build ActualCrestTransport ActualCrestLimit
+lake build
 cd ../..
 python -B code/verify_lean_coverage.py --audit weighted
 python -B code/contribute.py check
