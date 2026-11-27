@@ -47,7 +47,8 @@ theorem orbit_shadow_unique (c d x y z : ℂ) (ε : ℝ) (hε : ε ≤ 1)
       simp only [orbit]
       ring
     rw [he, norm_mul]
-    nlinarith only [hsum n, norm_nonneg (orbit d n y-orbit d n z)]
+    simpa only [mul_comm] using mul_le_mul_of_nonneg_right (hsum n)
+      (norm_nonneg (orbit d n y-orbit d n z))
   have hgrow (n : ℕ) :
       (2 : ℝ)^n * ‖y-z‖ ≤ ‖orbit d n y-orbit d n z‖ := by
     induction n with
