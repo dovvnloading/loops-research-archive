@@ -13,6 +13,8 @@ open Set Function
 open LoopsStationaryFiberDynamics LoopsStationaryLightModel
 open LoopsStationaryUniqueBranch
 
+attribute [local instance] Classical.propDecidable
+
 variable {Y : Type*} [TopologicalSpace Y] [T2Space Y]
 
 /-- A surjective map whose predecessor pairs are the orbits of a
