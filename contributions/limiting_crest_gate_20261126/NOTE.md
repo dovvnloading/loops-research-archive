@@ -5,6 +5,8 @@ ai: OpenAI ChatGPT GPT-6 Astra Pro
 human_review: none
 ---
 
+<a id="limiting-crest-gate-20261126"></a>
+
 # Rigorous limiting quadratic crest gate
 
 ## Claim

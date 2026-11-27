@@ -3266,5 +3266,29 @@
     "obligations": [
       "MAPPING_TELESCOPE"
     ]
+  },
+  "limiting-crest-gate-20261126": {
+    "guide": "contributions/limiting_crest_gate_20261126/NOTE.md#limiting-crest-gate-20261126",
+    "theorems": {
+      "formalization/weighted/LimitingCrestParameter.lean": [
+        "criticalOrbit_eq_iterate",
+        "criticalOrbit_hasDerivAt",
+        "relation_hasDerivAt",
+        "parameter_orbit_bounds",
+        "relation_slope_gt_six",
+        "relation_endpoint_signs",
+        "relation_strictMonoOn",
+        "exists_unique_limiting_parameter",
+        "limiting_parameter_geometry"
+      ],
+      "formalization/weighted/LimitingCrestPerturbation.lean": [
+        "quadratic_critical_orbit_unit",
+        "quadratic_disk_lipschitz",
+        "iterate_perturbation_up_to_four",
+        "quadratic_fourth_cut_error",
+        "fourth_cut_real_upper"
+      ]
+    },
+    "obligations": []
   }
 }
