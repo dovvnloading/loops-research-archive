@@ -13,7 +13,7 @@ human_review: none
 
 For the actual one-critical selected quadratic return already constructed in the archive, every continuous target path has a continuous physical lift with any prescribed starting inverse point, even when critical encounters accumulate. Its entire space of continuous lifts is in bijection with independent Boolean choices on the actual connected components of the regular-time set. Every such return also contains closed target paths with arbitrarily many distinct closed source lifts sharing one regular basepoint: for every N, an injective family indexed by N-bit words lies over one common complete target loop.
 
-These are candidate Lean statements pending the existing weighted CI build and transitive dependency audit. This is a partial result on MAPPING_TELESCOPE. It does not construct all native virtual stage cycles or establish the admissibility of the witness paths as native routes.
+These are compiled Lean theorems with a successful exhaustive transitive axiom audit. This is a partial result on MAPPING_TELESCOPE. It does not construct all native virtual stage cycles or establish the admissibility of the witness paths as native routes.
 
 ## Evidence
 
@@ -98,9 +98,16 @@ The return map, its degree, and the source basepoint are fixed while N varies. T
 
 ### 6. Verification
 
-The workspace filesystem was already full and no local Lean executable was available. The existing GitHub workflows are the compilation and validation authority. All modules are registered in the weighted Lake package, the theorem index, and the source inventory using the repository's registration format. No workflow or ledger status file is changed.
+The complete weighted Lean build and exhaustive transitive axiom audit passed on source revision [76dc11c24c3232eab61b39401a9ae00be4691c6d](https://github.com/dovvnloading/loops-research-archive/commit/76dc11c24c3232eab61b39401a9ae00be4691c6d). The authoritative evidence is [weighted CI run 45959876131, job 140375006317](https://github.com/dovvnloading/loops-research-archive/actions/runs/45959876131/job/140375006317).
 
-Checkpoints d072447870a5f237f9c07cc476d6dc77816c14f3, 57bfe9532224486b362751c6eefd5aff1ae27ae7, and 7ff0f74f269d3ab26e118f9141126fab2939ef02 passed contribution intake, source registration, and the trust-escape source scan. The latest weighted build compiled CriticalPhaseCuts, CriticalPhaseCensus, CriticalPhaseExcursions, CriticalPhaseWords, TelescopeCriticalLift, and TelescopeCriticalPhase. Its remaining errors were explicit interval/set coercions and complex-to-real zero simplification in the assembled target theorem and physical witness. The next checkpoint makes those types and reductions explicit without weakening the intended statements. The final result is not counted before successful compilation and the transitive dependency audit; this paragraph will be updated with the exact checked revision.
+All nine new modules compiled: CriticalPhaseCuts, CriticalPhaseCensus, CriticalPhaseExcursions, CriticalPhaseWords, TelescopeCriticalLift, TelescopeCriticalPhase, TelescopeCriticalPaths, TelescopeCriticalPhaseWitness, and TelescopeCriticalPhaseMemory. The audit reports allowed axioms only for every declaration in each of them. Its whole-package summary is:
+
+    Build completed successfully (9066 jobs).
+    AXIOM_AUDIT_PASS weighted: 195 modules, 4434 declarations
+
+The existing coverage verifier enumerates declarations by their actual Lean module provenance and applies Lean.collectAxioms to every declaration, including definitions and generated declarations. The only permitted foundational axioms are propext, Classical.choice, and Quot.sound. The source trust-escape scan also passed. No sorry, admit, new axiom, native_decide, or other proof trust escape is used.
+
+Contribution intake, source registration, and the repository's other completed checks passed on this proof revision. All modules are registered in the weighted Lake package, the theorem index, and the source inventory. Validation used the existing repository CI and pinned toolchain; no workflow or ledger status file was changed. Subsequent verification-note updates do not change these proof sources.
 
 Reproduction:
 
@@ -126,7 +133,7 @@ Mathlib inputs include Complex.exists_continuousOn_pow_eq, convex contractibilit
 
 Keep MAPPING_TELESCOPE open. The work removes the critical-value-avoidance condition from continuous path lifting for an already constructed actual selected return, classifies its entire lift space, and realizes endpoint ambiguity and finite phase words there.
 
-It does not construct compatible embedded Jordan cores for every native virtual stage cycle, prove native full component/deck-phase alignment, or identify the witness paths with proof-used relative-cover routes. In particular, unrestricted continuous critical-crossing paths must not silently replace native admissible routes. The constructed target loops may backtrack and are not asserted simple or immersed.
+It does not construct compatible embedded Jordan cores for every native virtual stage cycle, prove native full component/deck-phase alignment, or identify the witness paths with proof-used relative-cover routes. The precise missing package in [the critical chronology, Sections 10.1-10.2 and 15.3](../../research/mlc_unified/critical_chronology_and_retimed_telescope.md) consists of selected relative-cover lifts embedded on closed Jordan cores, compact containment in the authorized stage localizations, compatible basepoints and deck phases throughout the cycle, and containment of every postquadratic propagated critical value in its selected core. The new theorems start with the selected return already supplied; using them to construct those inputs would be circular. In particular, unrestricted continuous critical-crossing paths must not silently replace native admissible routes. The constructed target loops may backtrack and are not asserted simple or immersed.
 
 Distinct timed paths are not asserted to represent distinct homotopy classes, different transverse width, different Value observables, or different future continuation behavior. The phase-word theorem therefore does not refute a finite future-equivalence summary or establish a native uniform-memory obstruction. It gives the precise failure of determining the complete critical-crossing lift from endpoint marks alone.
 
