@@ -146,8 +146,12 @@ formalization/weighted/TelescopeCollarRecognition.lean	METADATA
 formalization/weighted/TelescopeCompactReturn.lean	CONSTRUCT
 formalization/weighted/TelescopeConformalInverse.lean	CONSTRUCT
 formalization/weighted/TelescopeDeckInvolution.lean	CONSTRUCT
+formalization/weighted/TelescopeDeckRigidity.lean	CONSTRUCT
+formalization/weighted/TelescopeMovingDeck.lean	CONSTRUCT
 formalization/weighted/TelescopeParameterReturn.lean	CONSTRUCT
+formalization/weighted/TelescopePathPairing.lean	CONSTRUCT
 formalization/weighted/TelescopeRamification.lean	METADATA
+formalization/weighted/TelescopeUnbranchedCover.lean	CONSTRUCT
 formalization/weighted/TelescopeUnivalentCollars.lean	CONSTRUCT
 formalization/weighted/TerminalFiberExclusion.lean	METADATA
 formalization/weighted/WeightedReturn.lean	CLONE EDGE
