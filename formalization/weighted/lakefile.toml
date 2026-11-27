@@ -1,6 +1,6 @@
 name = "loops_weighted"
 version = "0.1.0"
-defaultTargets = ["WeightedReturn", "GraphWeightedBridge", "CloneBounds", "CloneRoot", "FullCloneEigen", "FullCloneMatrix", "SpectralDominance", "FullCloneSpectralMax", "Period27RealCenter", "Period27RealUniqueness", "Period27RealExactPeriod", "NativeWaveGate", "LimbInsertionHolonomy", "AtomCutDefect", "PhaseMemoryCardinality", "FullClonePolynomial", "FullCloneStrictGap", "FullCloneEigenline", "CloneRootRate", "LocalizationSheetKernel", "ProtectedCarrierLogic", "AttachmentDefectLedger", "MarkedWaveSuprema", "ParabolicArchiveBrackets", "ParabolicBranches", "ParabolicCenterBranch", "ParabolicChannel", "ParabolicComplexComponent", "ParabolicComplexPullback", "ParabolicDisjoint", "ParabolicPhaseBands", "ParabolicRealSheet", "ParabolicSegment", "ParabolicShooting", "ParabolicTipFamily", "ParabolicTipPeriod", "ParabolicTipRate", "ParabolicTipShooting", "ParabolicTipWindow", "PlanarFullification", "Period27RealKneading", "Period27RealMarkov", "FullCloneRenewal", "FiniteMarkovFibers", "Period27FiniteFibers", "FiniteMarkovCorrelation", "FullCloneCorrelation", "StationaryEndpointCover", "StationaryPrefixCharge", "StationaryEndpointVisits", "StationaryCanonicalLift", "StationaryDeckSeparator", "StationaryPacketGain", "ClonePolynomialRoots", "FullCloneCharpoly", "FullCloneGapCollapse", "QuadraticEscape", "QuadraticCriticalTransversality", "ChebyshevFibers", "QuadraticExtremalMultiplier", "PlanarFillLimit", "SaturatedTelescope", "QuadraticCriticalWindow", "StationaryMonotoneGeometry", "LeastSaturatedCarrier", "StationarySeparatorTransport", "PrimeEndSectorFilters", "PrimeEndSectorImpressions", "StationaryGeometricFibers", "QuadraticCylinderCensus", "StationaryMultiInterface", "QuadraticCriticalFiberCensus", "StationaryFiberDynamics", "CompactObstacleRemainder", "DecorationCriticalCycle", "QuadraticMultiplierArithmetic", "ChebyshevQuotientRigidity", "TerminalFiberExclusion", "QuadraticCylinderRamification", "StationaryLightModel", "PrimeEndSectorRank", "TelescopeRamification", "TelescopeCollarRecognition", "QuadraticComponentFiberDegree", "StationaryCompactContact", "PrimeEndImpressionDecomposition", "StationaryPhysicalItinerary", "QuadraticEnlargementDegree", "QuadraticEscapeFullness", "QuadraticUnivalentNeighborhood", "TelescopeUnivalentCollars", "TelescopeConformalInverse", "TelescopeCompactReturn", "QuadraticEscapeHolder", "QuadraticEscapeSharpness", "QuadraticEscapeRegularity", "QuadraticEscapeEndpoint", "QuadraticEscapeBranches", "FiniteComponentTree", "QuadraticEscapeComponents", "ComponentDoubling", "CompactBinaryCoding", "QuadraticEscapeCoding", "QuadraticLocalRamification", "QuadraticRamificationCensus", "QuadraticCriticalPortrait", "QuadraticParameterUnivalence", "QuadraticParameterDistortion", "QuadraticParameterInverse", "QuadraticParameterMotion", "BinaryShiftPeriodic", "ConnectedBinaryCoding", "QuadraticComponentConjugacy", "QuadraticComponentDynamics", "BinaryShiftExactness", "QuadraticPeriodicMotion", "QuadraticCriticalCoordinates", "QuadraticPeriodicStability", "QuadraticCollisionFactorization", "QuadraticInverseOpen", "QuadraticCriticalTrapping", "TelescopeParameterReturn", "TelescopeDeckInvolution", "QuadraticCantorGeometry", "ExpandingBinaryCoding", "QuadraticCantorSplitting", "BinaryShiftCensus", "QuadraticCantorExpansion", "QuadraticCantorCoding", "QuadraticCantorBoundary", "QuadraticLocalNormalForm", "LocalDegreeExhaustion", "QuadraticPowerNormalForm", "IteratedCarrierIsolation", "QuadraticCarrierSaturation", "QuadraticLocalFiberCensus", "QuadraticCenterMultiplier", "QuadraticMultiplierIteration", "QuadraticMultiplierCoordinate", "QuadraticMultiplierDisk", "QuadraticCenterTrapping", "QuadraticTrappingEscape", "QuadraticCenterParameterLocus", "TelescopeDeckRigidity", "TelescopeUnbranchedCover", "TelescopeMovingDeck", "TelescopePathPairing", "DepthThreeReal", "DepthThreeRemainder", "DepthThreeClosure", "LimitingCrestParameter", "LimitingCrestPerturbation", "LimitingCrestGeometry", "LimitingCrestCoefficient", "LimitingCrestEndpoint", "LimitingCrestPersistence", "LimitingCrestArcGates", "LimitingCrestModelGates", "LimitingCrestLimit", "LimitingCrestQuadraticReturn", "LimitingCrestSharpCoefficient", "NearTwoInverse", "QuadraticCrestDividedDifference", "NearTwoProduct", "NearTwoShooting", "CriticalReturnRelationStability", "QuadraticCrestCrossing", "NearTwoTip", "ActualCrestLimit", "ActualCrestTransport"]
+defaultTargets = ["WeightedReturn", "GraphWeightedBridge", "CloneBounds", "CloneRoot", "FullCloneEigen", "FullCloneMatrix", "SpectralDominance", "FullCloneSpectralMax", "Period27RealCenter", "Period27RealUniqueness", "Period27RealExactPeriod", "NativeWaveGate", "LimbInsertionHolonomy", "AtomCutDefect", "PhaseMemoryCardinality", "FullClonePolynomial", "FullCloneStrictGap", "FullCloneEigenline", "CloneRootRate", "LocalizationSheetKernel", "ProtectedCarrierLogic", "AttachmentDefectLedger", "MarkedWaveSuprema", "ParabolicArchiveBrackets", "ParabolicBranches", "ParabolicCenterBranch", "ParabolicChannel", "ParabolicComplexComponent", "ParabolicComplexPullback", "ParabolicDisjoint", "ParabolicPhaseBands", "ParabolicRealSheet", "ParabolicSegment", "ParabolicShooting", "ParabolicTipFamily", "ParabolicTipPeriod", "ParabolicTipRate", "ParabolicTipShooting", "ParabolicTipWindow", "PlanarFullification", "Period27RealKneading", "Period27RealMarkov", "FullCloneRenewal", "FiniteMarkovFibers", "Period27FiniteFibers", "FiniteMarkovCorrelation", "FullCloneCorrelation", "StationaryEndpointCover", "StationaryPrefixCharge", "StationaryEndpointVisits", "StationaryCanonicalLift", "StationaryDeckSeparator", "StationaryPacketGain", "ClonePolynomialRoots", "FullCloneCharpoly", "FullCloneGapCollapse", "QuadraticEscape", "QuadraticCriticalTransversality", "ChebyshevFibers", "QuadraticExtremalMultiplier", "PlanarFillLimit", "SaturatedTelescope", "QuadraticCriticalWindow", "StationaryMonotoneGeometry", "LeastSaturatedCarrier", "StationarySeparatorTransport", "PrimeEndSectorFilters", "PrimeEndSectorImpressions", "StationaryGeometricFibers", "QuadraticCylinderCensus", "StationaryMultiInterface", "QuadraticCriticalFiberCensus", "StationaryFiberDynamics", "CompactObstacleRemainder", "DecorationCriticalCycle", "QuadraticMultiplierArithmetic", "ChebyshevQuotientRigidity", "TerminalFiberExclusion", "QuadraticCylinderRamification", "StationaryLightModel", "PrimeEndSectorRank", "TelescopeRamification", "TelescopeCollarRecognition", "QuadraticComponentFiberDegree", "StationaryCompactContact", "PrimeEndImpressionDecomposition", "StationaryPhysicalItinerary", "QuadraticEnlargementDegree", "QuadraticEscapeFullness", "QuadraticUnivalentNeighborhood", "TelescopeUnivalentCollars", "TelescopeConformalInverse", "TelescopeCompactReturn", "QuadraticEscapeHolder", "QuadraticEscapeSharpness", "QuadraticEscapeRegularity", "QuadraticEscapeEndpoint", "QuadraticEscapeBranches", "FiniteComponentTree", "QuadraticEscapeComponents", "ComponentDoubling", "CompactBinaryCoding", "QuadraticEscapeCoding", "QuadraticLocalRamification", "QuadraticRamificationCensus", "QuadraticCriticalPortrait", "QuadraticParameterUnivalence", "QuadraticParameterDistortion", "QuadraticParameterInverse", "QuadraticParameterMotion", "BinaryShiftPeriodic", "ConnectedBinaryCoding", "QuadraticComponentConjugacy", "QuadraticComponentDynamics", "BinaryShiftExactness", "QuadraticPeriodicMotion", "QuadraticCriticalCoordinates", "QuadraticPeriodicStability", "QuadraticCollisionFactorization", "QuadraticInverseOpen", "QuadraticCriticalTrapping", "TelescopeParameterReturn", "TelescopeDeckInvolution", "QuadraticCantorGeometry", "ExpandingBinaryCoding", "QuadraticCantorSplitting", "BinaryShiftCensus", "QuadraticCantorExpansion", "QuadraticCantorCoding", "QuadraticCantorBoundary", "QuadraticLocalNormalForm", "LocalDegreeExhaustion", "QuadraticPowerNormalForm", "IteratedCarrierIsolation", "QuadraticCarrierSaturation", "QuadraticLocalFiberCensus", "QuadraticCenterMultiplier", "QuadraticMultiplierIteration", "QuadraticMultiplierCoordinate", "QuadraticMultiplierDisk", "QuadraticCenterTrapping", "QuadraticTrappingEscape", "QuadraticCenterParameterLocus", "TelescopeDeckRigidity", "TelescopeUnbranchedCover", "TelescopeMovingDeck", "TelescopePathPairing", "DepthThreeReal", "DepthThreeRemainder", "DepthThreeClosure", "LimitingCrestParameter", "LimitingCrestPerturbation", "LimitingCrestGeometry", "LimitingCrestCoefficient", "LimitingCrestEndpoint", "LimitingCrestPersistence", "LimitingCrestArcGates", "LimitingCrestModelGates", "LimitingCrestLimit", "LimitingCrestQuadraticReturn", "LimitingCrestSharpCoefficient", "NearTwoInverse", "QuadraticCrestDividedDifference", "NearTwoProduct", "NearTwoShooting", "CriticalReturnRelationStability", "QuadraticCrestCrossing", "NearTwoTip", "ActualCrestLimit", "ActualCrestTransport", "ThreeReturnAnnulus", "ThreeReturnEstimates", "ThreeReturnDomain", "ThreeReturnDegree", "ThreeReturnCovering", "ThreeReturnCollar", "ThreeReturnPhysical", "FiniteThreeReturnCollars", "ThreeReturnContraction", "ThreeReturnFullness", "ThreeReturnParent", "FiniteFirstReturnBounds", "UniformThreeReturn", "ThreeReturnParentTopology", "ThreeReturnRealization", "UniformThreeReturnRenormalization"]
 
 [[require]]
 name = "mathlib"
@@ -528,6 +528,14 @@ name = "DepthThreeCert"
 srcDir = "../.."
 
 [[lean_lib]]
+name = "FiniteThreeReturnCertificates"
+srcDir = "../.."
+
+[[lean_lib]]
+name = "FiniteFirstReturnCertificates"
+srcDir = "../.."
+
+[[lean_lib]]
 name = "DepthThreeRemainder"
 
 [[lean_lib]]
@@ -604,3 +612,51 @@ name = "ActualCrestLimit"
 
 [[lean_lib]]
 name = "ActualCrestTransport"
+
+[[lean_lib]]
+name = "ThreeReturnAnnulus"
+
+[[lean_lib]]
+name = "ThreeReturnEstimates"
+
+[[lean_lib]]
+name = "ThreeReturnDomain"
+
+[[lean_lib]]
+name = "ThreeReturnDegree"
+
+[[lean_lib]]
+name = "ThreeReturnCovering"
+
+[[lean_lib]]
+name = "ThreeReturnCollar"
+
+[[lean_lib]]
+name = "ThreeReturnPhysical"
+
+[[lean_lib]]
+name = "FiniteThreeReturnCollars"
+
+[[lean_lib]]
+name = "ThreeReturnContraction"
+
+[[lean_lib]]
+name = "ThreeReturnFullness"
+
+[[lean_lib]]
+name = "ThreeReturnParent"
+
+[[lean_lib]]
+name = "FiniteFirstReturnBounds"
+
+[[lean_lib]]
+name = "UniformThreeReturn"
+
+[[lean_lib]]
+name = "ThreeReturnParentTopology"
+
+[[lean_lib]]
+name = "ThreeReturnRealization"
+
+[[lean_lib]]
+name = "UniformThreeReturnRenormalization"
