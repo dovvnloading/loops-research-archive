@@ -35,6 +35,12 @@ validation still in progress at this checkpoint. The proposed obstruction concer
 continuous inverse choices over full punctured target disks, not merely analytic
 inverse choices.
 
+Local checkpoint: `lake build PowerMapRigidity` completed successfully with no warnings.
+The module proves punctured-disk preconnectedness, constant-phase rigidity for every
+positive complex power, and the absence of a continuous right inverse for every power
+of degree greater than one (with an even-degree specialization). The physical transfer
+and complete CI audit remain pending at this checkpoint.
+
 The starting point is the existing actual-iterate analytic normal form in
 `formalization/weighted/QuadraticPowerNormalForm.lean` and local census in
 `formalization/weighted/QuadraticLocalFiberCensus.lean`. The new target is an entire

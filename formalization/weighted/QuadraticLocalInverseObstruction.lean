@@ -19,10 +19,10 @@ namespace PowerChart
 
 variable {f : ℂ → ℂ} {x : ℂ} {m : ℕ} (C : PowerChart f x m)
 
-/-- Even local degree obstructs a continuous inverse on every full
+/-- Every local degree greater than one obstructs a continuous inverse on every full
 punctured target disk. The source chart is fixed, but the target radius
 is arbitrary and the putative inverse need not be analytic. -/
-theorem even_degree_no_continuous_section (heven : Even m)
+theorem ramified_no_continuous_section (hm : 1 < m)
     (ε : ℝ) (hε : 0 < ε) :
     ¬ ∃ S : ℂ → ℂ,
       ContinuousOn S (Metric.ball (f x) ε \ {f x}) ∧
@@ -58,7 +58,7 @@ theorem even_degree_no_continuous_section (heven : Even m)
       C.a * (s w)^m = f (S (L w)) - f x :=
         (C.normal_form _ (hmap (hL hw))).symm
       _ = C.a*w := by rw [hright _ (hL hw)]; dsimp [L]; ring
-  exact even_power_no_continuous_section m C.degree_pos heven R hR ⟨s, hs, hp⟩
+  exact power_no_continuous_section m hm R hR ⟨s, hs, hp⟩
 
 end PowerChart
 
@@ -75,12 +75,12 @@ theorem quadratic_critical_local_no_continuous_section
           MapsTo S (Metric.ball (orbit c n x) ε \ {orbit c n x}) U ∧
           ∀ w ∈ Metric.ball (orbit c n x) ε \ {orbit c n x}, orbit c n (S w) = w := by
   obtain ⟨C⟩ := exists_quadratic_powerChart c x n
-  have heven : Even (2^criticalVisits c x n) := by
+  have hdegree : 1 < 2^criticalVisits c x n := by
     obtain ⟨k, hk⟩ := Nat.exists_eq_succ_of_ne_zero (Nat.ne_of_gt hcrit)
-    refine ⟨2^k, ?_⟩
     rw [hk, pow_succ]
+    have : 0 < (2 : ℕ)^k := by positivity
     omega
   exact ⟨C.source, C.isOpen_source, C.mem_source,
-    fun ε hε => C.even_degree_no_continuous_section heven ε hε⟩
+    fun ε hε => C.ramified_no_continuous_section hdegree ε hε⟩
 
 end LoopsQuadraticLocalInverseObstruction

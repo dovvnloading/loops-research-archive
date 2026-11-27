@@ -3274,6 +3274,7 @@
       "formalization/weighted/PowerMapRigidity.lean": [
         "punctured_ball_preconnected",
         "power_preserving_rigidity",
+        "power_no_continuous_section",
         "even_power_no_continuous_section"
       ],
       "formalization/weighted/QuadraticLocalDeckRigidity.lean": [
@@ -3285,7 +3286,7 @@
         "quadratic_local_deck_classification"
       ],
       "formalization/weighted/QuadraticLocalInverseObstruction.lean": [
-        "even_degree_no_continuous_section",
+        "ramified_no_continuous_section",
         "quadratic_critical_local_no_continuous_section"
       ]
     },

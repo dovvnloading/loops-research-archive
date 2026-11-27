@@ -3,7 +3,6 @@ import Mathlib.Analysis.Normed.Module.Connected
 import Mathlib.RingTheory.RootsOfUnity.Complex
 import Mathlib.Topology.Separation.Connected
 import Mathlib.Tactic.Linarith
-import Mathlib.Tactic.LinearCombination
 import Mathlib.Tactic.NormNum
 import Mathlib.Tactic.Positivity
 import Mathlib.Tactic.Ring
@@ -14,8 +13,8 @@ import Mathlib.Tactic.Ring
 On a punctured round disk a continuous map preserving every fiber of a
 positive power is one fixed root-of-unity rotation. Continuity at the
 central point is unnecessary: the central fiber alone forces its value.
-For positive even powers this also excludes a continuous inverse section
-on an entire punctured target disk.
+For every exponent greater than one this also excludes a continuous
+inverse section on an entire punctured target disk.
 -/
 
 namespace LoopsPowerMapRigidity
@@ -139,15 +138,16 @@ theorem power_preserving_rigidity (m : ℕ) (hm : 0 < m)
   · have he : q z = q w := hsingle ⟨z, ⟨hz, hz0⟩, rfl⟩ ⟨w, hw, rfl⟩
     exact (div_eq_iff hz0).mp he
 
-/-- A positive even complex power has no continuous right inverse on
+/-- A complex power of order greater than one has no continuous right inverse on
 an entire punctured round disk. The section is not required to stay
 in a prescribed source neighborhood. -/
-theorem even_power_no_continuous_section (m : ℕ) (hm : 0 < m)
-    (heven : Even m) (R : ℝ) (hR : 0 < R) :
+theorem power_no_continuous_section (m : ℕ) (hm : 1 < m)
+    (R : ℝ) (hR : 0 < R) :
     ¬ ∃ s : ℂ → ℂ,
       ContinuousOn s (ball (0 : ℂ) R \ {0}) ∧
       ∀ w ∈ ball (0 : ℂ) R \ {0}, (s w)^m = w := by
   rintro ⟨s, hs, hsec⟩
+  have hm0 : 0 < m := lt_trans Nat.zero_lt_one hm
   let r : ℝ := min 1 R / 2
   have hr : 0 < r := by dsimp [r]; positivity
   have hr1 : r < 1 := by dsimp [r]; linarith [min_le_left (1 : ℝ) R]
@@ -157,7 +157,7 @@ theorem even_power_no_continuous_section (m : ℕ) (hm : 0 < m)
     intro z hz
     have hzn : ‖z‖ < r := by simpa only [mem_ball, dist_zero_right] using hz.1
     have hle : ‖z‖^m ≤ ‖z‖ := pow_le_of_le_one (norm_nonneg z)
-      (hzn.trans hr1).le (Nat.ne_zero_of_lt hm)
+      (hzn.trans hr1).le (Nat.ne_zero_of_lt hm0)
     exact ⟨by simpa only [mem_ball, dist_zero_right, norm_pow] using
       hle.trans_lt (hzn.trans hrR), pow_ne_zero m hz.2⟩
   let g : ℂ → ℂ := fun z => if z = 0 then 0 else s (z^m)
@@ -173,7 +173,7 @@ theorem even_power_no_continuous_section (m : ℕ) (hm : 0 < m)
       simp only [g, if_pos rfl]
     · simp only [g, if_neg hz0]
       exact hsec _ (hpowmap ⟨hz, hz0⟩)
-  obtain ⟨ζ, hζ, hrot⟩ := power_preserving_rigidity m hm r hr g hg hpow
+  obtain ⟨ζ, hζ, hrot⟩ := power_preserving_rigidity m hm0 r hr g hg hpow
   let z : ℂ := (r / 2 : ℝ)
   have hz0 : z ≠ 0 := by
     dsimp [z]
@@ -183,16 +183,41 @@ theorem even_power_no_continuous_section (m : ℕ) (hm : 0 < m)
     simp only [z, Complex.norm_real, Real.norm_eq_abs]
     rw [abs_of_pos (by linarith : 0 < r / 2)]
     linarith
-  have hnz : -z ∈ ball (0 : ℂ) r := by
-    simpa only [mem_ball, dist_zero_right, norm_neg] using hz
-  have hsame : g (-z) = g z := by
-    simp only [g, if_neg hz0, if_neg (neg_ne_zero.mpr hz0), heven.neg_pow]
-  rw [hrot (-z) hnz, hrot z hz, mul_neg] at hsame
-  have hzero : ζ*z = 0 := by linear_combination -hsame / 2
   have hζ0 : ζ ≠ 0 := by
     intro he
-    rw [he, zero_pow (Nat.ne_zero_of_lt hm)] at hζ
+    rw [he, zero_pow (Nat.ne_zero_of_lt hm0)] at hζ
     exact zero_ne_one hζ
-  exact mul_ne_zero hζ0 hz0 hzero
+  let η : ℂ := Complex.exp (2 * Real.pi * Complex.I / m)
+  have hη : IsPrimitiveRoot η m :=
+    Complex.isPrimitiveRoot_exp m (Nat.ne_zero_of_lt hm0)
+  have hη0 : η ≠ 0 := by
+    intro he
+    have hp := hη.pow_eq_one
+    rw [he, zero_pow (Nat.ne_zero_of_lt hm0)] at hp
+    exact zero_ne_one hp
+  have hηz : η*z ∈ ball (0 : ℂ) r := by
+    simpa only [mem_ball, dist_zero_right, norm_mul,
+      hη.norm'_eq_one (Nat.ne_zero_of_lt hm0), one_mul] using hz
+  have hsame : g (η*z) = g z := by
+    simp only [g, if_neg hz0, if_neg (mul_ne_zero hη0 hz0),
+      mul_pow, hη.pow_eq_one, one_mul]
+  rw [hrot (η*z) hηz, hrot z hz] at hsame
+  have he : η*z = z := mul_left_cancel₀ hζ0 hsame
+  have hηone : η = 1 := mul_right_cancel₀ hz0 (he.trans (one_mul z).symm)
+  exact hη.ne_one hm hηone
+
+/-- Positive even powers are a convenient specialization for quadratic
+iterate multiplicities, which are powers of two. -/
+theorem even_power_no_continuous_section (m : ℕ) (hm : 0 < m)
+    (heven : Even m) (R : ℝ) (hR : 0 < R) :
+    ¬ ∃ s : ℂ → ℂ,
+      ContinuousOn s (ball (0 : ℂ) R \ {0}) ∧
+      ∀ w ∈ ball (0 : ℂ) R \ {0}, (s w)^m = w := by
+  have hm1 : 1 < m := by
+    by_contra h
+    have he : m = 1 := Nat.le_antisymm (Nat.le_of_not_gt h) (Nat.succ_le_iff.mpr hm)
+    subst m
+    norm_num at heven
+  exact power_no_continuous_section m hm1 R hR
 
 end LoopsPowerMapRigidity

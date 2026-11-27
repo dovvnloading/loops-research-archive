@@ -77,7 +77,7 @@ theorem coord_eq_zero_iff (z : ℂ) (hz : z ∈ C.source) :
 
 /-- Every complex root of unity has modulus one. The positive degree
 is retained explicitly, including the unramified degree-one case. -/
-theorem root_norm (ζ : ℂ) (hζ : ζ^m = 1) : ‖ζ‖ = 1 := by
+theorem root_norm (C : PowerChart f x m) (ζ : ℂ) (hζ : ζ^m = 1) : ‖ζ‖ = 1 := by
   have hp : ‖ζ‖^m = 1 := by
     simpa only [norm_pow, norm_one] using congrArg norm hζ
   have hm : m ≠ 0 := Nat.ne_of_gt C.degree_pos
@@ -154,7 +154,8 @@ theorem deck_deriv_center (ζ : ℂ) : HasDerivAt (C.deck ζ) ζ x := by
   have hi : HasDerivAt C.inv 1 (ζ*C.coord x) := by
     simpa only [C.coord_center, mul_zero] using C.inv_deriv_zero
   have hd := hi.comp x (C.coord_deriv.const_mul ζ)
-  simpa only [deck, one_mul, mul_one] using hd
+  change HasDerivAt (fun z => C.inv (ζ*C.coord z)) ζ x
+  simpa only [Function.comp_def, one_mul, mul_one] using hd
 
 /-- Every nonidentity phase has only the branch anchor as a fixed
 point. This holds for arbitrary repeated critical encounters. -/
