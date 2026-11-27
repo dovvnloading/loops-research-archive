@@ -3641,5 +3641,31 @@
       ]
     },
     "obligations": []
+  },
+  "uniform-three-return-collar-20261127": {
+    "guide": "contributions/uniform_three_return_collar_20261127/NOTE.md#uniform-three-return-collar-20261127",
+    "theorems": {
+      "formalization/weighted/ThreeReturnAnnulus.lean": [
+        "admissible_ae_differentiable",
+        "capacity_le_energy",
+        "collarPotential_lipschitz",
+        "collarPotential_zero",
+        "collarPotential_one",
+        "collarPotential_admissible",
+        "collarPotential_fderiv_zero_inner",
+        "collarPotential_energy_le",
+        "physical_capacity_lt_sixty",
+        "physical_variationalModulus_gt"
+      ],
+      "formalization/weighted/ThreeReturnEstimates.lean": [
+        "perturbed_phase_bounds",
+        "perturbed_annular_barrier",
+        "perturbed_critical_value_bound",
+        "actual_phase_bounds",
+        "actual_annular_barrier",
+        "actual_critical_value_bound"
+      ]
+    },
+    "obligations": []
   }
 }

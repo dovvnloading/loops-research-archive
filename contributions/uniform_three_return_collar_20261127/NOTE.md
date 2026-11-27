@@ -5,6 +5,8 @@ ai: OpenAI ChatGPT, GPT-6 Astra Pro; Lean proof development and independent AI s
 human_review: none
 ---
 
+<a id="uniform-three-return-collar-20261127"></a>
+
 # Uniform selected three-return collars
 
 Ledger statement being addressed:
@@ -13,11 +15,22 @@ Ledger statement being addressed:
 
 ## Claim
 
-This draft investigates a canonical collar for the actual normalized three-return, with a fixed outer disk of radius 3/10 and a source containment radius of 13/50. The intended new step is simultaneous control of the full intermediate phase domains, so that no unquantified shrinking is needed. No completed theorem is claimed in this initial commit.
+This draft investigates a canonical collar for the actual normalized three-return, with a fixed outer disk of radius 3/10 and a source containment radius of 13/50. The intended new step is simultaneous control of the full intermediate phase domains, so that no unquantified shrinking is needed. The first proof modules now establish the full annular exclusion and whole-disk phase estimates for every constructed actual signed tip of period p >= 17, together with a uniform physical Dirichlet-energy bound. The canonical domain and exact fiber conclusions are being integrated.
 
 ## Evidence
 
-Preliminary exact interval evaluation at the smaller source circle gives a strictly positive boundary margin for each finite period p=3,...,12. The existing all-period coefficient and remainder estimates also give a positive margin there. The mathematical and Lean work will verify these bounds, the selected connected component, the intermediate phase containment, and the resulting annular separation.
+The active normalization is F(z)=f_c^p(d*z)/d with d=f_c^p(0)>0, outer radius 1/6 and inner radius 3/20. The source component is selected from the full inverse image under F^3. These radii replace the preliminary 3/10 and 13/50 coefficient-normalization calculation above.
+
+`ThreeReturnEstimates.lean` proves for every actual signed tip constructed by PR #238, for p >= 17:
+
+- the whole closed band 3/20 <= |z| <= 1/6 maps outside the target by a strict additional margin 1/500;
+- throughout the whole outer disk, |F(z)-1| < 51/1000 and |F^2(z)-(1-kappa)| < 19/100;
+- all three phase images remain in the actual approximation disk of radius 23/20;
+- F^3(0) lies inside the same fixed target disk.
+
+`ThreeReturnAnnulus.lean` constructs a global Lipschitz potential at every physical scale d>0, zero on any inner plate contained in the closed disk of radius 3*d/20 and one outside the disk of radius d/6. Its actual planar Dirichlet energy is at most 19*pi < 60, so the reciprocal Lipschitz variational capacity exceeds 1/60. The integral uses the real Frechet derivative and planar Lebesgue measure. This is not an asserted identification with a uniformizing-annulus modulus.
+
+Both new modules compiled locally without warnings with pinned Lean 4.32.0. Their application to the canonical source closure, complete target surjectivity, and exact degree is the next proof step.
 
 All accepted results will be stated as Lean theorems in the pinned repository project and checked by the existing CI and transitive-axiom audit. Progress and proof revisions will be committed to this pull request.
 
