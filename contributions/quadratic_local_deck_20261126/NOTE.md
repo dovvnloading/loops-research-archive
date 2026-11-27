@@ -5,6 +5,8 @@ ai: OpenAI ChatGPT, GPT-6 Astra Pro
 human_review: none
 ---
 
+<a id="quadratic-local-deck-20261126"></a>
+
 # Local cyclic sheet symmetries of actual quadratic iterates
 
 Ledger statement being addressed:
@@ -24,6 +26,14 @@ the repository's compiled proof-dependency audit.
 
 This PR was opened before implementation to claim the obligation. Proofs, theorem
 registration, and exact CI evidence will be committed here as work proceeds.
+
+The first implementation checkpoint adds four registered modules:
+`PowerMapRigidity.lean`, `QuadraticLocalDeckAction.lean`,
+`QuadraticLocalDeckRigidity.lean`, and `QuadraticLocalInverseObstruction.lean`.
+They contain the complete proposed proof terms, with local compilation and CI
+validation still in progress at this checkpoint. The proposed obstruction concerns
+continuous inverse choices over full punctured target disks, not merely analytic
+inverse choices.
 
 The starting point is the existing actual-iterate analytic normal form in
 `formalization/weighted/QuadraticPowerNormalForm.lean` and local census in

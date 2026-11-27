@@ -3190,5 +3190,57 @@
     "obligations": [
       "KKL_STATIONARY_NONLC_SELECTED_GEOMETRIC_CONTINUUM_LIFT"
     ]
+  },
+  "quadratic-local-deck-20261126": {
+    "guide": "contributions/quadratic_local_deck_20261126/NOTE.md#quadratic-local-deck-20261126",
+    "theorems": {
+      "formalization/weighted/QuadraticLocalDeckAction.lean": [
+        "exists_quadratic_powerChart",
+        "inv_zero",
+        "coord_injOn",
+        "coord_eq_zero_iff",
+        "root_norm",
+        "root_mul_mem_ball",
+        "deck_mem",
+        "deck_coord",
+        "deck_one",
+        "deck_mul",
+        "deck_center",
+        "deck_preserves",
+        "deck_analytic",
+        "inv_deriv_zero",
+        "deck_deriv_center",
+        "deck_fixed_iff",
+        "same_fiber_iff_deck",
+        "deck_phase_unique",
+        "deck_iterate",
+        "deck_iterate_degree",
+        "phaseGenerator_primitive",
+        "phase_eq_generator_power",
+        "generator_period_iff",
+        "deck_eq_generator_iterate",
+        "same_fiber_iff_generator_iterate"
+      ],
+      "formalization/weighted/PowerMapRigidity.lean": [
+        "punctured_ball_preconnected",
+        "power_preserving_rigidity",
+        "even_power_no_continuous_section"
+      ],
+      "formalization/weighted/QuadraticLocalDeckRigidity.lean": [
+        "continuous_fiber_preserver_eq_deck",
+        "continuous_fiber_preserver_analytic_bijective",
+        "continuous_fiber_preserver_deriv",
+        "deckMaps_card",
+        "mem_deckMaps_iff",
+        "quadratic_local_deck_classification"
+      ],
+      "formalization/weighted/QuadraticLocalInverseObstruction.lean": [
+        "even_degree_no_continuous_section",
+        "quadratic_critical_local_no_continuous_section"
+      ]
+    },
+    "obligations": [
+      "VIRTUAL_RETURN_BASE_ATLAS"
+    ]
   }
 }

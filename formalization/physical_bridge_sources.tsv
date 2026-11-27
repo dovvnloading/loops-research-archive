@@ -95,6 +95,7 @@ formalization/weighted/Period27RealExactPeriod.lean	CENTER
 formalization/weighted/Period27RealKneading.lean	CENTER DIFFRACTION
 formalization/weighted/Period27RealMarkov.lean	REAL-MARKOV MARKOV-SPECTRUM
 formalization/weighted/Period27RealUniqueness.lean	CENTER
+formalization/weighted/PowerMapRigidity.lean	METADATA
 formalization/weighted/PrimeEndImpressionDecomposition.lean	METADATA
 formalization/weighted/PrimeEndSectorFilters.lean	METADATA
 formalization/weighted/PrimeEndSectorImpressions.lean	METADATA
@@ -111,6 +112,9 @@ formalization/weighted/QuadraticCriticalTrapping.lean	CONSTRUCT
 formalization/weighted/QuadraticEscapeEndpoint.lean	QUADRATIC-ESCAPE
 formalization/weighted/QuadraticEscapeFullness.lean	METADATA
 formalization/weighted/QuadraticInverseOpen.lean	CONSTRUCT
+formalization/weighted/QuadraticLocalDeckAction.lean	METADATA
+formalization/weighted/QuadraticLocalDeckRigidity.lean	METADATA
+formalization/weighted/QuadraticLocalInverseObstruction.lean	METADATA
 formalization/weighted/QuadraticMultiplierArithmetic.lean	METADATA
 formalization/weighted/QuadraticParameterDistortion.lean	CONSTRUCT
 formalization/weighted/QuadraticParameterInverse.lean	CONSTRUCT
