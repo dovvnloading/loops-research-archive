@@ -77,8 +77,7 @@ private theorem parameter_box_enclosed {c : ℝ} (hc : c ∈ Icc (-2) 0) :
   constructor
   · push_cast
     nlinarith [hc.1]
-  · change c * (tipScale : ℝ) ≤ 0
-    exact mul_nonpos_of_nonpos_of_nonneg hc.2 hS.le
+  · simpa using mul_nonpos_of_nonpos_of_nonneg hc.2 hS.le
 
 /-- Every actual real parameter with the selected complete critical
 itinerary and collision relation lies in the retained interval. This
