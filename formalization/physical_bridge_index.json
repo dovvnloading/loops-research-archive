@@ -3642,6 +3642,194 @@
     },
     "obligations": []
   },
+  "uniform-three-return-collar-20261127": {
+    "guide": "contributions/uniform_three_return_collar_20261127/NOTE.md#uniform-three-return-collar-20261127",
+    "theorems": {
+      "formalization/weighted/ThreeReturnAnnulus.lean": [
+        "admissible_ae_differentiable",
+        "capacity_le_energy",
+        "collarPotential_lipschitz",
+        "collarPotential_zero",
+        "collarPotential_one",
+        "collarPotential_admissible",
+        "collarPotential_fderiv_zero_inner",
+        "collarPotential_energy_le",
+        "physical_capacity_lt_sixty",
+        "physical_variationalModulus_gt"
+      ],
+      "formalization/weighted/ThreeReturnEstimates.lean": [
+        "perturbed_phase_bounds",
+        "perturbed_annular_barrier",
+        "perturbed_critical_value_bound",
+        "actual_phase_bounds",
+        "actual_annular_barrier",
+        "actual_critical_value_bound"
+      ],
+      "formalization/weighted/ThreeReturnDomain.lean": [
+        "component_closure_inside_barrier",
+        "component_proper",
+        "normalized_return_proper",
+        "normalized_return_open",
+        "threeReturn_proper",
+        "threeReturn_open",
+        "source_image",
+        "normalized_return_even",
+        "threeReturn_even",
+        "source_symmetric"
+      ],
+      "formalization/weighted/ThreeReturnDegree.lean": [
+        "three_return_collision_iff",
+        "normalized_three_return_collision_iff",
+        "iterate_hasDerivAt",
+        "normalized_return_hasDerivAt",
+        "normalized_three_return_deriv_eq_zero_iff",
+        "actual_phase_signs",
+        "actual_three_return_collision_iff",
+        "actual_three_return_deriv_eq_zero_iff",
+        "symmetric_fiber_pair",
+        "critical_fiber_singleton",
+        "noncritical_fiber_pair",
+        "fiber_ncard"
+      ],
+      "FiniteThreeReturnCertificates.lean": [
+        "finite_certificates_valid"
+      ],
+      "formalization/weighted/ThreeReturnCovering.lean": [
+        "signed_restriction_local_homeomorph",
+        "signed_two_sheet_cover",
+        "actual_two_sheet_cover"
+      ],
+      "formalization/weighted/ThreeReturnCollar.lean": [
+        "source_zero",
+        "source_open",
+        "source_connected",
+        "sourceMap_proper",
+        "physical_pullback_image",
+        "physicalSource_eq_component",
+        "physicalSource_closure",
+        "canonical_collar_of_bounds",
+        "actual_canonical_collar",
+        "exists_actual_canonical_collar"
+      ],
+      "formalization/weighted/ThreeReturnPhysical.lean": [
+        "physical_zero",
+        "collar_critical_value",
+        "physical_return_image",
+        "physical_source_open",
+        "physical_source_connected",
+        "physical_compact_closure",
+        "physical_gap",
+        "physical_collision_iff",
+        "physical_source_symmetric",
+        "physical_fiber_ncard",
+        "separated_phase_images",
+        "actual_phase_domains_disjoint"
+      ],
+      "FiniteFirstReturnCertificates.lean": [
+        "finite_first_return_certificates_valid",
+        "finite_parent_scale_certificates_valid"
+      ],
+      "formalization/weighted/FiniteThreeReturnCollars.lean": [
+        "finite_certificates",
+        "exists_finite_parameter",
+        "finite_critical_signs",
+        "finite_critical_value_bound",
+        "finite_annular_barrier",
+        "finite_three_return_collision_iff",
+        "finite_phase_bounds",
+        "finite_phase_control"
+      ],
+      "formalization/weighted/ThreeReturnContraction.lean": [
+        "contractible_of_punctured_cover",
+        "source_two_sheet_cover_of_bounds",
+        "source_contractible_of_bounds",
+        "actual_source_contractible",
+        "actual_source_simplyConnected"
+      ],
+      "formalization/weighted/ThreeReturnFullness.lean": [
+        "entire_closed_disk_component_full",
+        "closed_component_inside_barrier",
+        "mem_closure_of_open_signed_fibers",
+        "closed_component_eq_closure",
+        "full_bounded_complement_connected",
+        "source_closure_full_of_bounds",
+        "actual_source_closure_full",
+        "actual_source_exterior_connected",
+        "physical_exterior_connected_of_normalized",
+        "actual_physical_exterior_connected",
+        "collar_connected_of_exterior_connected",
+        "actual_physical_collar_connected",
+        "collar_complement_component",
+        "actual_physical_complement_component",
+        "physical_collar_topology_of_bounds",
+        "physical_ring_domain_of_components",
+        "physical_ring_domain_of_bounds",
+        "actual_physical_ring_domain"
+      ],
+      "formalization/weighted/ThreeReturnParent.lean": [
+        "quadratic_iterate_zero",
+        "normalized_return_zero",
+        "parent_source_symmetric",
+        "parent_restriction_of_bounds",
+        "actual_parent_barrier",
+        "actual_parent_restriction",
+        "physical_parent_subset_archived",
+        "actual_parent_scale_bound",
+        "actual_phases_subset_archived"
+      ],
+      "formalization/weighted/FiniteFirstReturnBounds.lean": [
+        "finite_first_return_certificate",
+        "finite_first_return_sphere_barrier",
+        "finite_first_return_collision_iff",
+        "finite_parent_scale_bound",
+        "finite_parent_phase_control"
+      ],
+      "formalization/weighted/UniformThreeReturn.lean": [
+        "exists_selected_parameter",
+        "selected_critical_data",
+        "selected_critical_value_bound",
+        "selected_annular_barrier",
+        "selected_boundary_barrier",
+        "selected_collision_iff",
+        "selected_canonical_collar",
+        "selected_phase_domains_disjoint",
+        "selected_source_contractible",
+        "selected_source_simplyConnected",
+        "selected_two_sheet_cover",
+        "selected_physical_collar_topology",
+        "selected_physical_ring_domain",
+        "selected_uniform_collar",
+        "exists_uniform_physical_collar"
+      ],
+      "formalization/weighted/ThreeReturnParentTopology.lean": [
+        "parent_contractible_of_bounds",
+        "physical_parent_contractible_of_bounds",
+        "actual_parent_contractible",
+        "actual_parent_simplyConnected",
+        "actual_physical_parent_contractible"
+      ],
+      "formalization/weighted/ThreeReturnRealization.lean": [
+        "physicalMap_proper",
+        "physical_return_differentiable",
+        "physical_source_contractible",
+        "physical_phase_image",
+        "physical_phases_disjoint",
+        "critical_signed_orbit",
+        "canonical_source_exhaustion",
+        "critical_orbit_trapped",
+        "physical_critical_orbit_trapped"
+      ],
+      "formalization/weighted/UniformThreeReturnRenormalization.lean": [
+        "selected_parent_collision",
+        "selected_parent_restriction",
+        "selected_parent_scale_bound",
+        "physical_target_closure_subset_parent",
+        "selected_physical_renormalization",
+        "exists_uniform_three_return"
+      ]
+    },
+    "obligations": []
+  },
   "actual-maximal-crest-20261127": {
     "guide": "contributions/actual_maximal_crest_20261127/NOTE.md#actual-maximal-crest-20261127",
     "theorems": {
