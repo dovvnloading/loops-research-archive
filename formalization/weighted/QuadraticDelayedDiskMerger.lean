@@ -193,8 +193,8 @@ theorem disk_merger_exact (N k : ℕ) :
     by_contra hn
     have hk : k ≤ N+1 := by omega
     have hm := connectedComponentIn_mono (1 : ℂ)
-      (preimage_mono (diskTarget_subset_rightHalfPlane N k hk))
-    exact negative_one_not_in_positive_component (hm h)
+      (preimage_mono (diskTarget_subset_rightHalfPlane N k hk)) h
+    exact negative_one_not_in_positive_component hm
   · intro hk
     have hr : 1 < diskRadius N k := by
       apply lt_of_not_ge

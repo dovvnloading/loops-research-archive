@@ -3886,6 +3886,12 @@
         "disk_selected_fiber",
         "disk_selected_fiber_count",
         "no_uniform_precompact_disk_stabilization_stage"
+      ],
+      "formalization/weighted/QuadraticLocalizationStabilization.lean": [
+        "quadratic_proper_localization_union_iff_fiber",
+        "quadratic_proper_localizations_eventually_saturated",
+        "quadratic_finite_horizon_localizations_saturated",
+        "quadratic_finite_horizon_localizations_natural"
       ]
     },
     "obligations": [

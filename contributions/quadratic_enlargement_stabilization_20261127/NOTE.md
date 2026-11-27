@@ -17,6 +17,8 @@ Ledger statement being addressed:
 
 For every actual quadratic polynomial \(f_c(z)=z^2+c\), every finite iterate horizon \(H\), and every increasing sequence \(U_0\subseteq U_1\subseteq\cdots\) of nonempty connected open subsets of \(\mathbb C\), there is one stage after which all actual pullback-component addresses through depth \(H\) agree with their addresses over the entire union. The stage is uniform across every component, every point of every later target, and every depth through \(H\). The same eventual naturality holds for actual prefix images, intrinsic reflection ranks, and every distinct-point inverse fiber, including fibers over critical values.
 
+The result also extends to increasing proper open source localizations, even when they are disconnected and select only some ambient components: after one common stage, every future source point over an old target is already present, and later source components cannot merge old source components.
+
 There is no uniform bound on that stage, even for the fixed polynomial \(z^2\), depth one, a fixed regular target value, and strictly increasing disks with compact closures inside the next disk, the same initial disk, and the same bounded limiting disk.
 
 This is partial progress on the named ledger obligation. It does not identify the actual components with the source's authorized virtual-cylinder family or construct its marked metadata. No ledger closure is requested.
@@ -109,7 +111,36 @@ and, for every \(z\in U_m\),
 \]
 The second identity is equality of the archive's actual finite root sets. It includes postcritical target values and recurrent critical orbits. No regular-value substitution or generic-parameter hypothesis is introduced.
 
-### 5. Sharpness with fixed initial and final geometry
+### 5. Proper localizations and the entire future source union
+
+[QuadraticLocalizationStabilization.lean](../../formalization/weighted/QuadraticLocalizationStabilization.lean)
+extends the result to the source-localization setting. For each \(k\le H\), suppose the open subsets \(S_{k,m}\subseteq\mathbb C\) increase with \(m\), map into \(U_m\), and the actual restrictions
+\[
+f_c^k:S_{k,m}\longrightarrow U_m
+\]
+are proper. The sources may be empty or disconnected and need not contain all ambient inverse components. Properness of the limiting source union is not assumed.
+
+Put \(S_{k,\infty}=\bigcup_m S_{k,m}\). The combined theorem
+**quadratic_finite_horizon_localizations_natural** gives one stage \(N\) such that, for every \(m\ge N\) and \(k\le H\),
+\[
+S_{k,\infty}\cap f_c^{-k}(U_m)=S_{k,m},
+\tag{L1}
+\]
+and for every \(r\ge m\) and \(x\in S_{k,m}\),
+\[
+\operatorname{cc}_x(S_{k,r})\cap f_c^{-k}(U_m)
+=\operatorname{cc}_x(S_{k,m}).
+\tag{L2}
+\]
+Equation (L1) excludes later additions of source points over old targets. Equation (L2) independently excludes later mergers of old source components.
+
+The exact single-stage criterion is **quadratic_proper_localization_union_iff_fiber**: (L1) holds precisely when the source at that stage contains the whole future source inverse fiber over one supplied \(y\in U_0\). This finite set eventually enters the increasing source sequence.
+
+For the nontrivial direction, take a future source point \(z\) already over \(U_m\), and choose a later source stage containing it. Its whole old-target pullback component lies in that later source, by the archived proper-localization component identity. Component surjectivity supplies an inverse point over \(y\) in this old-target component. Once all future source anchors are present in \(S_{k,m}\), properness at stage \(m\) forces the whole component, including \(z\), into \(S_{k,m}\).
+
+This proof of (L1) does not use the no-merger theorem. It is important to keep the two facts separate: full inverse images are already source-saturated at every stage, yet the delayed example below still exhibits a late merger. The combined theorem takes the maximum of the source-capture stage and the component-stabilization stage.
+
+### 6. Sharpness with fixed initial and final geometry
 
 [QuadraticDelayedMerger.lean](../../formalization/weighted/QuadraticDelayedMerger.lean)
 establishes the elementary geometric separation used by the stronger example: the roots \(1,-1\) of \(z^2=1\) lie in different components over the right half-plane. If a preconnected pullback set joined them, its real-part image would pass through zero. But \(\operatorname{Re}(z^2)>0\) forbids \(\operatorname{Re}z=0\). The selected inverse fiber is exactly \(\{1\}\), and over the whole plane it is exactly \(\{1,-1\}\).
@@ -134,19 +165,19 @@ Before the threshold the target disk lies in the right half-plane. After it, its
 
 Thus the merger can be postponed beyond any proposed stage while preserving the polynomial, iterate depth, regular anchor, initial disk, limiting disk, strict nesting, and compact closure condition. **no_uniform_precompact_disk_stabilization_stage** formalizes that impossibility. A bounded number of possible component mergers does not provide a bound on their time, and a long observed plateau is not a certificate of future stability.
 
-### 6. Validation
+### 7. Validation
 
-The five modules are registered in the existing weighted Lake project, source index, and public-theorem index. No workflow, ledger, status record, checker, or dependency pin is changed.
+The six modules are registered in the existing weighted Lake project, source index, and public-theorem index. No workflow, ledger, status record, checker, or dependency pin is changed.
 
 Validation is performed by the repository's existing Lean 4.32.0 CI. Local Lean is unavailable, and the workspace disk was too full to install it or clone the entire project. The source scan, contribution intake, and theorem-registration checks run unchanged. The weighted workflow builds all default targets and then audits the transitive dependencies of every declaration, allowing only propext, Classical.choice, and Quot.sound.
 
-The first proof checkpoint compiled the increasing-union topology and the half-plane delayed-merger module. CI identified one application mismatch in the reflection proof; the next commit supplied the reflected point explicitly without changing the theorem statement. The four-module proof checkpoint f2b6814d1ae98ff9ce039685930a9a5898b41200 passed [weighted CI run 45961015015](https://github.com/dovvnloading/loops-research-archive/actions/runs/45961015015): 9,056 build jobs and 190 modules / 4,379 declarations audited, with allowed dependencies only. The stronger strict-disk module is added in this checkpoint and awaits the same complete audit; this draft does not count that extension as validated until it passes.
+The first proof checkpoint compiled the increasing-union topology and the half-plane delayed-merger module. CI identified one application mismatch in the reflection proof; the next commit supplied the reflected point explicitly without changing the theorem statement. The four-module proof checkpoint f2b6814d1ae98ff9ce039685930a9a5898b41200 passed [weighted CI run 45961015015](https://github.com/dovvnloading/loops-research-archive/actions/runs/45961015015): 9,056 build jobs and 190 modules / 4,379 declarations audited, with allowed dependencies only. The strict-disk example and proper-localization extension are implemented in the current checkpoint and await the same complete audit; this draft does not count these extensions as validated until they pass. The strict-disk build exposed one implicit-map inference issue, corrected by applying component monotonicity directly to the supplied witness; its statements are unchanged.
 
 Reproduce from the repository root:
 
 ~~~sh
 cd formalization/weighted
-lake build IncreasingComponentStabilization QuadraticStableReflection QuadraticEnlargementStabilization QuadraticDelayedMerger QuadraticDelayedDiskMerger
+lake build IncreasingComponentStabilization QuadraticStableReflection QuadraticEnlargementStabilization QuadraticDelayedMerger QuadraticDelayedDiskMerger QuadraticLocalizationStabilization
 cd ../..
 python3 -B code/verify_lean_coverage.py --audit weighted
 python3 -B code/verify_lean_coverage.py
@@ -170,7 +201,7 @@ Earlier work read includes the packets on single-fiber exhaustion, component fib
 
 ## Boundary
 
-The ledger obligation remains **open**. Equations (1)-(5) settle a new actual-quadratic enlargement theorem after an increasing target sequence has been supplied. They do not construct an authorized virtual-Molecule exhaustion, prove a proof-use-complete source horizon, identify every reached component with an authorized equal-depth cylinder, or provide prime-end/access, collar, sheet, deck-phase, obstacle, or terminal-return metadata.
+The ledger obligation remains **open**. Equations (1)-(5) settle a new actual-quadratic enlargement theorem after an increasing target sequence has been supplied. Equations (L1)-(L2) extend it to supplied proper open planar localizations; their properness and maps-to hypotheses are explicit, and the union is not assumed proper. They do not construct an authorized virtual-Molecule exhaustion, prove a proof-use-complete source horizon, identify every reached component with an authorized equal-depth cylinder, or provide prime-end/access, collar, sheet, deck-phase, obstacle, or terminal-return metadata.
 
 The stage \(N\) is existential and may depend on the entire exhaustion, parameter, and finite horizon. The proof is not an algorithm that recognizes stabilization from a finite observed prefix. The fixed-disk counterexample rules out a universal stage even when both endpoint targets and the polynomial are fixed.
 

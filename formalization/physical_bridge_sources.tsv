@@ -149,6 +149,7 @@ formalization/weighted/QuadraticEnlargementStabilization.lean	METADATA
 formalization/weighted/QuadraticEscapeEndpoint.lean	QUADRATIC-ESCAPE
 formalization/weighted/QuadraticEscapeFullness.lean	METADATA
 formalization/weighted/QuadraticInverseOpen.lean	CONSTRUCT
+formalization/weighted/QuadraticLocalizationStabilization.lean	METADATA
 formalization/weighted/QuadraticMultiplierArithmetic.lean	METADATA
 formalization/weighted/QuadraticMultiplierCoordinate.lean	METADATA
 formalization/weighted/QuadraticMultiplierDisk.lean	METADATA
