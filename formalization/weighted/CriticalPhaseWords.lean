@@ -42,7 +42,7 @@ theorem path_trans_eq_iff {x y z : X}
     rfl
 
 /-- A finite word of based source loops, with its exact recursive clock. -/
-def loopWord {x : X} (L : Bool → Path x x) :
+noncomputable def loopWord {x : X} (L : Bool → Path x x) :
     (n : ℕ) → (Fin n → Bool) → Path x x
   | 0, _ => Path.refl x
   | n+1, s => (L (s 0)).trans (loopWord L n (fun i => s i.succ))
@@ -73,7 +73,7 @@ theorem loopWord_injective {x : X} (L : Bool → Path x x)
 theorem loopWord_range {x : X} (L : Bool → Path x x) (A : Set X)
     (hx : x ∈ A) (hL : ∀ b, range (L b) ⊆ A)
     (n : ℕ) (s : Fin n → Bool) : range (loopWord L n s) ⊆ A := by
-  induction n generalizing s with
+  induction n with
   | zero =>
     rintro z ⟨t, rfl⟩
     exact hx
@@ -87,7 +87,7 @@ theorem loopWord_common_projection {x : X} (L : Bool → Path x x)
     (hL : ∀ b, (L b).map hf = Q) (n : ℕ) (s : Fin n → Bool) :
     (loopWord L n s).map hf =
       loopWord (fun _ => Q) n (fun _ => false) := by
-  induction n generalizing s with
+  induction n with
   | zero =>
     ext t
     rfl

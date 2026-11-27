@@ -72,6 +72,7 @@ theorem phaseCut_regularExcursions_equiv [LocallyConnectedSpace X]
 theorem phaseCut_regularExcursions_count [LocallyConnectedSpace X]
     (R : Set X) (hR : IsOpen R) [Fintype (RegularExcursions R)] :
     Nat.card (PhaseCut R) = 2 ^ Fintype.card (RegularExcursions R) := by
+  classical
   obtain ⟨e⟩ := phaseCut_regularExcursions_equiv R hR
   calc
     Nat.card (PhaseCut R) = Nat.card (RegularExcursions R → Bool) :=

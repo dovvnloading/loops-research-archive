@@ -158,6 +158,7 @@ theorem phaseCut_excursion_count [Fintype ι] (R : Set X) (U : ι → Set X)
     (hdis : Pairwise (fun i j => Disjoint (U i) (U j)))
     (hcover : R = ⋃ i, U i) :
     Nat.card (PhaseCut R) = 2 ^ Fintype.card ι := by
+  classical
   obtain ⟨e, _⟩ := phaseCut_excursion_equiv R U hopen hconn hne hdis hcover
   letI : Fintype (PhaseCut R) := Fintype.ofEquiv (ι → Bool) e.symm
   calc
