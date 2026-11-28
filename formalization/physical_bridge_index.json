@@ -4032,5 +4032,46 @@
       ]
     },
     "obligations": []
+  },
+  "marked-wave-supremum-limit-20261127": {
+    "guide": "contributions/marked_wave_supremum_limit_20261127/NOTE.md#marked-wave-supremum-limit-20261127",
+    "theorems": {
+      "formalization/weighted/SlitWaveModulus.lean": [
+        "modulus_le_area",
+        "modulus_mono",
+        "lineLength_mono",
+        "lineLength_const_mul",
+        "modulus_union_le",
+        "lineLength_image_le",
+        "volume_image_le",
+        "area_comp_symm_le",
+        "transportFamily_symm",
+        "admissible_transport",
+        "area_transport_le",
+        "modulus_transport_le",
+        "modulus_le_mul_transport"
+      ],
+      "formalization/weighted/SlitWaveEscape.lean": [
+        "measurableSet_shell",
+        "mem_shell",
+        "radial_interval_subset",
+        "hausdorff_shell_lower",
+        "hausdorff_shell_lower_of_isPreconnected",
+        "shellDensity_measurable",
+        "shellDensity_length",
+        "shellDensity_length_of_isPreconnected",
+        "volume_shell",
+        "shellDensity_area",
+        "dyadicRadius_pos",
+        "dyadicRadius_succ",
+        "dyadicRadius_mono",
+        "dyadic_shells_disjoint",
+        "escapeDensity_measurable",
+        "escapeDensity_length",
+        "escapeDensity_area",
+        "exists_escape_density"
+      ]
+    },
+    "obligations": []
   }
 }

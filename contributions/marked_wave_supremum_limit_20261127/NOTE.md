@@ -5,6 +5,8 @@ ai: OpenAI ChatGPT, GPT-6 Astra Pro; mathematical investigation, Lean implementa
 human_review: none
 ---
 
+<a id="marked-wave-supremum-limit-20261127"></a>
+
 # Convergence of the unrestricted parent Wave supremum
 
 ## Claim
@@ -26,6 +28,14 @@ These are obligations to prove, not premises to be inserted into an abstract con
 ## Evidence and validation
 
 Implementation is in progress. A result counts only after the relevant Lean theorem compiles in the repository project and unchanged CI, without proof holes or new axioms. Existing baseline checks do not validate this proposed result.
+
+### First compiled checkpoint
+
+The initial analytic modules now compile locally with the repository's pinned Lean and mathlib versions. SlitWaveModulus proves the distortion of the genuine infimum over measurable densities by constructing and bounding the transported density. SlitWaveEscape constructs a common density of exact area 3*pi/N for every connected trace that crosses N dyadic shells. Hausdorff one-measure on a simple trace includes leaves of infinite length, so finite total variation is not silently imposed on the native family.
+
+These analytic tools are classical and are not submitted as the new result. The required novelty remains convergence of the complete actual marked parent supremum. The marked-family transport, uniform passage to the supremum, literal critical-orbit specialization, and unchanged CI validation are still being completed.
+
+The limiting surface is the plane minus the limiting slit. Its end at infinity is a cusp, whereas the finite physical surfaces satisfy the source's no-cusp standing convention. The proposed limit is therefore called the limiting marked plane-slit supremum; it is not asserted that the limiting surface itself satisfies every A.1 standing hypothesis.
 
 ## Dependencies and prior art
 

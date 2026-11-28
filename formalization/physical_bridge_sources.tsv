@@ -173,6 +173,8 @@ formalization/weighted/QuadraticParameterUnivalence.lean	CONSTRUCT
 formalization/weighted/QuadraticTrappingEscape.lean	METADATA
 formalization/weighted/QuadraticUnivalentNeighborhood.lean	CONSTRUCT
 formalization/weighted/SaturatedTelescope.lean	METADATA
+formalization/weighted/SlitWaveEscape.lean	METADATA
+formalization/weighted/SlitWaveModulus.lean	METADATA
 formalization/weighted/SpectralDominance.lean	CLONE EDGE
 formalization/weighted/StationaryCanonicalLift.lean	VARIABLE-EXIT
 formalization/weighted/StationaryCompactContact.lean	METADATA
