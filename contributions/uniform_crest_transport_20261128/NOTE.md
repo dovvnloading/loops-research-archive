@@ -16,7 +16,7 @@ ActualCrestTransportLimit.eventually_every_actual_tip_realizes_collar
 by a complete theorem for every integer p >= 17 and every actual
 parameter satisfying the existing ActualTip p c predicate.
 
-No new theorem is claimed at this initial checkpoint. The intended
+Compilation is pending at this checkpoint. The implemented
 advance is a uniform whole-disk, four-return support estimate with
 explicit rational margins. This must supply every strict-support
 premise used by the already-proved complete physical path and metric
@@ -36,9 +36,20 @@ open. GlobalCrestClassification already gives the scalar endpoint and
 gate data for each such p. The missing uniform ingredient is the
 complete complex support required by ActualCrestProperFamilies.
 
-The new work will derive bounds on every point of the entire initial
-disk, including all intermediate images. A finite collection of
-sampled points or an assumed support property would not suffice.
+The committed UniformCrestSupport and UniformCrestTransport modules
+state the complete support and actual-family conclusions. The support
+estimate tolerates a uniform map error of 1/5000, proves norm at most
+267/250 for all five phases, and proves second real part at least
+931909/1000000 and third real part at most -537974/1000000. These are
+whole-disk statements, including all intermediate images.
+
+A second, stronger target under investigation is an intrinsic signed
+parameter correction: every actual normalized coefficient lies strictly
+above the unique limiting quadratic coefficient. The existing archive
+only supplies a symmetric error estimate. The proposed mechanism is
+positivity and radial order of the complete nonlinear return remainder,
+followed by a signed six-step critical-relation comparison. This stronger
+assertion is not claimed as proved at this checkpoint.
 
 The pinned Lean toolchain is absent locally and disk space is too
 limited to install it. The repository's unchanged CI and transitive
