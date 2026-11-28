@@ -175,8 +175,9 @@ For a sequence with a common separation `delta`, `E_N -> 0`, and `S_N -> t`,
 T_{0,N}(u)\longrightarrow \frac{u}{1-tu}
 \]
 
-at every indicated point; the finite bound also works uniformly over any
-set of initial reciprocal points satisfying the common separation. This is a
+uniformly over any set of initial reciprocal points satisfying the common
+separation. The uniform target error is at most
+`4 E_N/delta^3 + |S_N-t|/delta^2`. This is a
 specific controlled flight regime. It is not the construction of a Lavaurs
 map or a general parabolic-implosion theorem.
 
@@ -226,13 +227,63 @@ The order eight is meaningful for this three-encounter assertion. Taking
 `a=1`, `b=w`, `d=-1-w`, where `w^2+w+1=0`, cancels `A` and `B`, but not `C`.
 A single Schwarzian or two moment conditions would miss this profile.
 
+The stronger orbit-energy version proves the intervening jet convergence
+instead of assuming it. Write a block's partial charge sums as `S_j`, its
+signed square sum as `Q`, and its absolute square sum as `E`. If
+`|S_j|<=M` through the block, its coefficients `A,B,C` obey
+
+\[
+A=S_N,\qquad |B-S_N^2|\le E,\qquad |C-S_N^3|\le5ME.
+\]
+
+Consequently bounded partial sums, `S_N -> 0`, and `E -> 0` force all three
+coefficients to vanish. These conditions allow unbounded absolute variation.
+`QuadraticFlightEnergy.lean` derives these bounds from exact summation
+identities. The main actual-family result
+`actual_critical_three_encounter_energy_obstruction` uses these concrete
+conditions on the four shifted actual charge sequences and concludes (8).
+Only the full return's flat critical jet remains a hypothesis.
+
 `QuadraticThreeEncounterAlgebra.lean` proves the exact expansion, obstruction,
 sharpness test and limiting algebra. `QuadraticThreeEncounterLimit.lean`
 proves the statement with all four blocks defined by (1), and with all
 coefficients taken from those actual polynomials. In particular no assumed
 model-to-physical identification is used.
 
-### 5. Literature and novelty comparison
+### 5. Two encounters amid genuine Möbius flights
+
+A complementary exact rational theorem allows nonzero parabolic flight times.
+Put `m_t(u)=u/(1-tu)` and consider
+
+\[
+G=m_r\circ h_b\circ m_t\circ h_a\circ m_s.
+\]
+
+If `G` agrees with the identity through degree five, then
+`a=b=0` and `s+t+r=0`. Its denominator is one at zero, and its complete cleared
+identity defect is a polynomial of degree at most five. After removing the
+quadratic term, the next three coefficients satisfy
+
+\[
+C_3=-(a^2+b^2),\quad C_4=a^2(t-b)-2ab^2,\quad
+C_5=a^2(a(t-b)-b^2).
+\]
+
+The identity `C_5-a C_4=a^2 b^2` proves the assertion without division.
+The nonzero example `(a,b,s,t,r)=(1,i,0,i-2,1-2i)` has cleared defect exactly
+`-u^5`. Thus degree four is insufficient. In the original critical
+coordinate this is a tenth-order obstruction, not the eighth-order statement
+of section 4.
+
+`QuadraticMobiusEncounter.lean` proves the rational composition formula,
+the sharp bound, and the corresponding germ theorem. The latter says an
+identity on a neighborhood of zero forces the same vanishing; it uses the
+exact polynomial's finite-root property. This rational theorem is reported
+separately from the actual-family theorem until its complete actual block
+limit bridge has compiled. An actual sparse-two-encounter conclusion is not
+silently inferred from two unrelated modules.
+
+### 6. Literature and novelty comparison
 
 The following are background and boundary checks, not unformalized premises
 in the new Lean proofs:
@@ -259,11 +310,14 @@ quantitative criterion formulated here. Neither a search with no matching
 result nor Lean compilation certifies global bibliographic originality.
 No broad new MLC theorem is claimed.
 
-### 6. Progress and validation
+### 7. Progress and validation
 
 - Early draft PR opened from the stated main commit before proof development.
 - `09bc48a`: first algebraic obstruction and exact expansion submitted to CI.
 - `0b36045`: exact actual-orbit factorization and reciprocal shadowing submitted.
+- `6f6b976`: the actual polynomial identification, reciprocal estimate, and
+  three-encounter algebra compiled. Limit modules exposed ordinary proof-script
+  errors, repaired in the following checkpoint.
 - Further actual-return and limiting theorems are being integrated.
 - Local Lean is not installed; the workspace has insufficient disk space for
   the pinned toolchain. The unchanged weighted Lean workflow is the compiler

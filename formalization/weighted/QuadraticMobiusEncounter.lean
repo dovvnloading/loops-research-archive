@@ -23,6 +23,8 @@ namespace QuadraticMobiusEncounter
 open Filter
 open scoped Topology
 
+noncomputable section
+
 /-- A normalized quadratic critical encounter in the squared coordinate. -/
 def encounter (a u : ℂ) : ℂ := u + a*u^2
 
@@ -121,8 +123,8 @@ theorem cleared_defect_expansion (a b s t r u : ℂ) :
     numerator a b s t u-u*denominator a b s t r u =
       jet2 a b s t r*u^2 + jet3 a b s t r*u^3 +
       jet4 a b s t r*u^4 + jet5 a b s t r*u^5 := by
-  unfold numerator denominator initialNumerator
-  unfold jet2 jet3 jet4 jet5 core2 core3 core4 core5
+  simp only [numerator, denominator, initialNumerator,
+    jet2, jet3, jet4, jet5, core2, core3, core4, core5]
   ring
 
 /-- Eliminating the quadratic defect leaves a particularly simple exact
@@ -195,6 +197,60 @@ theorem two_encounter_three_flight_flat (a b s t r : ℂ)
   refine ⟨ha, hb, ?_⟩
   linear_combination htime
 
+/-- Identity on an actual neighborhood is impossible for a nonzero
+two-encounter profile. The defect polynomial has infinitely many roots,
+so all four of its coefficients vanish. -/
+theorem two_encounter_identity_germ (a b s t r : ℂ)
+    (h : ∀ᶠ u in 𝓝 (0 : ℂ),
+      numerator a b s t u = u*denominator a b s t r u) :
+    a = 0 ∧ b = 0 ∧ s+t+r = 0 := by
+  let p : Polynomial ℂ :=
+    Polynomial.monomial 2 (jet2 a b s t r) +
+    Polynomial.monomial 3 (jet3 a b s t r) +
+    Polynomial.monomial 4 (jet4 a b s t r) +
+    Polynomial.monomial 5 (jet5 a b s t r)
+  have heval (u : ℂ) : p.eval u =
+      numerator a b s t u-u*denominator a b s t r u := by
+    rw [cleared_defect_expansion]
+    simp only [p, Polynomial.eval_add, Polynomial.eval_monomial]
+  have hroots : ∀ᶠ u in 𝓝 (0 : ℂ), p.IsRoot u := by
+    filter_upwards [h] with u hu
+    change p.eval u = 0
+    rw [heval]
+    exact sub_eq_zero.mpr hu
+  have hp : p = 0 :=
+    Polynomial.eq_zero_of_infinite_isRoot p (infinite_of_mem_nhds (0 : ℂ) hroots)
+  apply two_encounter_three_flight_flat a b s t r
+  · simpa [p] using congrArg (fun q : Polynomial ℂ => q.coeff 2) hp
+  · simpa [p] using congrArg (fun q : Polynomial ℂ => q.coeff 3) hp
+  · simpa [p] using congrArg (fun q : Polynomial ℂ => q.coeff 4) hp
+  · simpa [p] using congrArg (fun q : Polynomial ℂ => q.coeff 5) hp
+
+/-- The same obstruction directly for the rational composition as a germ.
+All denominator conditions are proved on a neighborhood of zero. -/
+theorem two_encounter_composition_identity_germ (a b s t r : ℂ)
+    (h : ∀ᶠ u in 𝓝 (0 : ℂ),
+      flight r (encounter b (flight t (encounter a (flight s u)))) = u) :
+    a = 0 ∧ b = 0 ∧ s+t+r = 0 := by
+  have hprecont : Continuous (fun u : ℂ => 1-s*u) := by fun_prop
+  have hmidcont : Continuous
+      (fun u : ℂ => (1-s*u)^2-t*initialNumerator a s u) := by
+    unfold initialNumerator
+    fun_prop
+  have hpostcont : Continuous (denominator a b s t r) := by
+    unfold denominator numerator initialNumerator
+    fun_prop
+  have hpre : ∀ᶠ u in 𝓝 (0 : ℂ), 1-s*u ≠ 0 :=
+    hprecont.continuousAt.eventually_ne (by norm_num)
+  have hmid : ∀ᶠ u in 𝓝 (0 : ℂ), (1-s*u)^2-t*initialNumerator a s u ≠ 0 :=
+    hmidcont.continuousAt.eventually_ne (by norm_num [initialNumerator])
+  have hpost : ∀ᶠ u in 𝓝 (0 : ℂ), denominator a b s t r u ≠ 0 :=
+    hpostcont.continuousAt.eventually_ne (by rw [denominator_at_zero]; exact one_ne_zero)
+  apply two_encounter_identity_germ a b s t r
+  filter_upwards [h, hpre, hmid, hpost] with u hu hpu hmu hdu
+  rw [composition_formula a b s t r u hpu hmu hdu] at hu
+  exact (div_eq_iff hdu).mp hu
+
 private theorem jet2_continuous : Continuous
     (fun v : ℂ × ℂ × ℂ × ℂ × ℂ =>
       jet2 v.1 v.2.1 v.2.2.1 v.2.2.2.1 v.2.2.2.2) := by
@@ -223,6 +279,7 @@ private theorem jet5_continuous : Continuous
 encounters in its identity jet. All convergence assumptions concern this
 explicit rational-composition profile; no realization by an actual
 quadratic renormalization is included in the statement. -/
+set_option maxHeartbeats 1000000 in
 theorem two_encounter_three_flight_limit_flat
     (a b s t r : ℕ → ℂ) (α β σ τ ρ : ℂ)
     (ha : Tendsto a atTop (𝓝 α))
@@ -285,8 +342,12 @@ theorem sharp_two_encounter_defect (u : ℂ) :
 #print axioms core_coefficients_after_quadratic_cancellation
 #print axioms two_encounter_core_flat
 #print axioms two_encounter_three_flight_flat
+#print axioms two_encounter_identity_germ
+#print axioms two_encounter_composition_identity_germ
 #print axioms two_encounter_three_flight_limit_flat
 #print axioms sharp_two_encounter_coefficients
 #print axioms sharp_two_encounter_defect
+
+end
 
 end QuadraticMobiusEncounter

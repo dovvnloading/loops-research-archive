@@ -108,8 +108,9 @@ theorem actual_quadratic_mobius_limit
   let D : ℕ → ℂ := fun k => driver (charge (c k) (x k) (σ k)) v (N k)
   have hD : Tendsto D atTop (𝓝 (v-T)) := by
     exact tendsto_const_nhds.sub hsum
-  have hDlower : δ ≤ ‖v-T‖ :=
-    le_of_tendsto hD.norm (Eventually.of_forall (fun k => hsep k (N k) le_rfl))
+  have hDlower : δ ≤ ‖v-T‖ := by
+    have hc : Tendsto (fun _ : ℕ => δ) atTop (𝓝 δ) := tendsto_const_nhds
+    exact le_of_tendsto_of_tendsto' hc hD.norm (fun k => hsep k (N k) le_rfl)
   have hDnz : v-T ≠ 0 := norm_pos_iff.mp (lt_of_lt_of_le hδ hDlower)
   have hInv : Tendsto (fun k => (D k)⁻¹) atTop (𝓝 (v-T)⁻¹) := hD.inv₀ hDnz
   have hbound : ∀ k, ‖F k - (D k)⁻¹‖ ≤
@@ -228,10 +229,11 @@ theorem actual_quadratic_mobius_uniform_limit
       tendsto_const_nhds
     simpa only [mul_zero] using hc.mul henergy
   have hs0 : Tendsto (fun k => ‖S k-T‖) atTop (𝓝 0) := by
-    simpa only [sub_self, norm_zero] using (hsum.sub tendsto_const_nhds).norm
+    have hc : Tendsto (fun _ : ℕ => T) atTop (𝓝 T) := tendsto_const_nhds
+    simpa [S] using (hsum.sub hc).norm
   have hsdiv : Tendsto (fun k => ‖S k-T‖ / δ^2) atTop (𝓝 0) := by
     have hc : Tendsto (fun _ : ℕ => δ^2) atTop (𝓝 (δ^2)) := tendsto_const_nhds
-    simpa only [zero_div] using hs0.div hc (pow_ne_zero 2 (ne_of_gt hδ))
+    simpa only [Pi.div_apply, zero_div] using hs0.div hc (pow_ne_zero 2 (ne_of_gt hδ))
   have hB : Tendsto B atTop (𝓝 0) := by
     simpa only [zero_add] using he0.add hsdiv
   apply Metric.tendstoUniformlyOn_iff.mpr
@@ -240,9 +242,9 @@ theorem actual_quadratic_mobius_uniform_limit
   intro v hv
   have hD : Tendsto (fun l => driver (charge (c l) (x l) (σ l)) v (N l))
       atTop (𝓝 (v-T)) := tendsto_const_nhds.sub hsum
-  have hT : δ ≤ ‖v-T‖ :=
-    le_of_tendsto hD.norm
-      (Eventually.of_forall (fun l => hsep l v hv (N l) le_rfl))
+  have hT : δ ≤ ‖v-T‖ := by
+    have hc : Tendsto (fun _ : ℕ => δ) atTop (𝓝 δ) := tendsto_const_nhds
+    exact le_of_tendsto_of_tendsto' hc hD.norm (fun l => hsep l v hv (N l) le_rfl)
   have hb := actual_quadratic_shadow_to_target (c k) (x k) (σ k) v T (N k)
     (hσ k) (hx k) δ hδ (hsep k v hv) (hsmall k) hT
   rw [dist_eq_norm, norm_sub_rev]

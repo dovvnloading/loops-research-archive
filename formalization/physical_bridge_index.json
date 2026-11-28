@@ -4793,7 +4793,9 @@
         "flat_of_hasJet",
         "flightJet_split",
         "three_encounter_flight_limit",
-        "actual_critical_three_encounter_obstruction"
+        "actual_critical_three_encounter_obstruction",
+        "VanishingFlightEnergy.flatJet",
+        "actual_critical_three_encounter_energy_obstruction"
       ],
       "formalization/weighted/QuadraticActualShadow.lean": [
         "flight_eval_eq_forward",
@@ -4815,9 +4817,24 @@
         "core_coefficients_after_quadratic_cancellation",
         "two_encounter_core_flat",
         "two_encounter_three_flight_flat",
+        "two_encounter_identity_germ",
+        "two_encounter_composition_identity_germ",
         "two_encounter_three_flight_limit_flat",
         "sharp_two_encounter_coefficients",
         "sharp_two_encounter_defect"
+      ],
+      "formalization/weighted/QuadraticFlightEnergy.lean": [
+        "partialSum_succ",
+        "jet_a_eq_partialSum",
+        "jet_b_eq",
+        "jet_d_eq",
+        "norm_squareSum_le_energy",
+        "coefficient_le_of_partialSums",
+        "norm_mixedSum_le_energy",
+        "norm_cubeSum_le_energy",
+        "jet_b_error_le_energy",
+        "jet_d_error_le_energy",
+        "flight_jet_tendsto_zero"
       ]
     },
     "obligations": [
