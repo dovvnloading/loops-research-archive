@@ -311,7 +311,7 @@ theorem tail_eq_shift_integral (a b c : ℝ) (z : ℂ) :
   apply integral_congr_ae
   filter_upwards [] with s
   have he : ((s+z.re:ℝ):ℂ)+(z.im:ℂ)*Complex.I = z+(s:ℂ) := by
-    apply Complex.ext <;> simp <;> ring
+    apply Complex.ext <;> simp [add_comm, add_assoc]
   by_cases hs : 0 < s
   · simpa [tailIntegrand, hs] using congrArg (differential a b c) he
   · simp [tailIntegrand, hs]
@@ -325,7 +325,7 @@ private theorem near_upper {z w : ℂ} (hz : z ∈ upper)
   change 0 < z.im at hz
   linarith
 
-private theorem near_sqrt_bound {z w : ℂ} {t : ℝ} (hz : z ∈ upper)
+private theorem near_sqrt_bound {z w : ℂ} {t : ℝ} (_hz : z ∈ upper)
     (hw : ‖w-z‖ ≤ z.im/2) :
     Real.sqrt |z.re-t| ≤ 2*Real.sqrt ‖w-(t:ℂ)‖ := by
   have ht : z.im ≤ ‖z-(t:ℂ)‖ := by
@@ -382,7 +382,7 @@ private theorem shift_integrable {a b c : ℝ} (hi : Integrable (realDensity a b
   · filter_upwards [ae_real_ne (a-z.re), ae_real_ne (b-z.re), ae_real_ne (c-z.re)]
       with s ha hb hc
     have he : z+(s:ℂ) = ((s+z.re:ℝ):ℂ)+(z.im:ℂ)*Complex.I := by
-      apply Complex.ext <;> simp <;> ring
+      apply Complex.ext <;> simp [add_comm, add_assoc]
     rw [he]
     exact differential_horizontal_bound hz.le (by intro h; apply ha; linarith)
       (by intro h; apply hb; linarith) (by intro h; apply hc; linarith)
@@ -439,21 +439,21 @@ private theorem shift_hasDerivAt {a b c : ℝ} {z : ℂ} (hz : z ∈ upper) (s :
   convert hd.comp z ((hasDerivAt_id z).add_const (s:ℂ)) using 1 <;>
     first | rfl | simp only [mul_one]
 
-private theorem tail_hasDerivAt_integral {a b c : ℝ}
+private theorem shiftIntegral_hasDerivAt_integral (S : Set ℝ) {a b c : ℝ}
     (hi : Integrable (realDensity a b c)) {z : ℂ} (hz : z ∈ upper) :
-    IntegrableOn (fun s : ℝ => deriv (differential a b c) (z+(s:ℂ))) (Ioi 0) ∧
-    HasDerivAt (tail a b c)
-      (∫ s in Ioi (0:ℝ), deriv (differential a b c) (z+(s:ℂ))) z := by
+    IntegrableOn (fun s : ℝ => deriv (differential a b c) (z+(s:ℂ))) S ∧
+    HasDerivAt (fun w : ℂ => ∫ s in S, differential a b c (w+(s:ℂ)))
+      (∫ s in S, deriv (differential a b c) (z+(s:ℂ))) z := by
   have hball : Metric.ball z (z.im/4) ∈ 𝓝 z := Metric.ball_mem_nhds _ (by exact div_pos hz (by norm_num))
   have hmeas (w : ℂ) : AEStronglyMeasurable
-      (fun s : ℝ => differential a b c (w+(s:ℂ))) (volume.restrict (Ioi 0)) :=
+      (fun s : ℝ => differential a b c (w+(s:ℂ))) (volume.restrict S) :=
     ((differential_measurable a b c).comp
       (measurable_const.add Complex.measurable_ofReal)).aestronglyMeasurable
   have hdmeas : AEStronglyMeasurable
-      (fun s : ℝ => deriv (differential a b c) (z+(s:ℂ))) (volume.restrict (Ioi 0)) :=
+      (fun s : ℝ => deriv (differential a b c) (z+(s:ℂ))) (volume.restrict S) :=
     ((measurable_deriv (differential a b c)).comp
       (measurable_const.add Complex.measurable_ofReal)).aestronglyMeasurable
-  have hbound : ∀ᵐ (s : ℝ) ∂volume.restrict (Ioi (0:ℝ)), ∀ w ∈ Metric.ball z (z.im/4),
+  have hbound : ∀ᵐ (s : ℝ) ∂volume.restrict S, ∀ w ∈ Metric.ball z (z.im/4),
       ‖deriv (differential a b c) (w+(s:ℂ))‖ ≤
         (32/z.im)*realDensity a b c (s+z.re) := by
     apply ae_restrict_of_ae
@@ -461,7 +461,7 @@ private theorem tail_hasDerivAt_integral {a b c : ℝ}
       with s ha hb hc w hw
     exact shift_deriv_bound hz hw (by intro h; apply ha; linarith)
       (by intro h; apply hb; linarith) (by intro h; apply hc; linarith)
-  have hdiff : ∀ᵐ (s : ℝ) ∂volume.restrict (Ioi (0:ℝ)), ∀ w ∈ Metric.ball z (z.im/4),
+  have hdiff : ∀ᵐ (s : ℝ) ∂volume.restrict S, ∀ w ∈ Metric.ball z (z.im/4),
       HasDerivAt (fun u : ℂ => differential a b c (u+(s:ℂ)))
         (deriv (differential a b c) (w+(s:ℂ))) w := by
     exact Eventually.of_forall (fun s w hw => shift_hasDerivAt
@@ -471,9 +471,16 @@ private theorem tail_hasDerivAt_integral {a b c : ℝ}
     (F' := fun (w : ℂ) (s : ℝ) => deriv (differential a b c) (w+(s:ℂ))) hball
     (Eventually.of_forall hmeas) (shift_integrable hi hz).integrableOn hdmeas hbound
     (((hi.comp_add_right z.re).const_mul (32/z.im)).integrableOn) hdiff
-  refine ⟨hint, ?_⟩
-  simpa only [← tail_eq_shift_integral] using hderiv
+  exact ⟨hint,hderiv⟩
 
+
+
+private theorem tail_hasDerivAt_integral {a b c : ℝ}
+    (hi : Integrable (realDensity a b c)) {z : ℂ} (hz : z ∈ upper) :
+    IntegrableOn (fun s : ℝ => deriv (differential a b c) (z+(s:ℂ))) (Ioi 0) ∧
+    HasDerivAt (tail a b c)
+      (∫ s in Ioi (0:ℝ), deriv (differential a b c) (z+(s:ℂ))) z := by
+  simpa only [← tail_eq_shift_integral] using shiftIntegral_hasDerivAt_integral (Ioi 0) hi hz
 
 /-- The differential vanishes at the right end of every horizontal line. -/
 theorem differential_shift_tendsto_atTop (a b c : ℝ) {z : ℂ} (hz : z ∈ upper) :
@@ -511,6 +518,276 @@ theorem tail_hasDerivAt {a b c : ℝ}
     (fun s (_ : s ∈ Ici (0:ℝ)) => hreal s) hint (differential_shift_tendsto_atTop a b c hz)
   simp only [Complex.ofReal_zero, add_zero, zero_sub] at heq
   rwa [heq] at hderiv
+
+
+/-- Decay of the actual cubic differential at infinity in the closed
+upper half-plane, along an arbitrary filter. -/
+theorem differential_tendsto_zero_of_norm_atTop {ι : Type*} {l : Filter ι}
+    {a b c : ℝ} {f : ι → ℂ} (hupper : ∀ᶠ i in l, 0 ≤ (f i).im)
+    (hnorm : Tendsto (fun i => ‖f i‖) l atTop) :
+    Tendsto (fun i => differential a b c (f i)) l (𝓝 0) := by
+  apply tendsto_zero_iff_norm_tendsto_zero.2
+  have hn (t : ℝ) : Tendsto (fun i => ‖f i-(t:ℂ)‖) l atTop := by
+    apply tendsto_atTop_mono (f := fun i => ‖f i‖-‖(t:ℂ)‖)
+    · intro i
+      exact norm_sub_norm_le _ _
+    · simpa only [sub_eq_add_neg] using
+        tendsto_atTop_add_const_right l (-‖(t:ℂ)‖) hnorm
+  have hp := ((Real.tendsto_sqrt_atTop.comp (hn a)).atTop_mul_atTop₀
+    (Real.tendsto_sqrt_atTop.comp (hn b))).atTop_mul_atTop₀
+    (Real.tendsto_sqrt_atTop.comp (hn c))
+  have hinv := tendsto_inv_atTop_zero.comp hp
+  apply hinv.congr'
+  filter_upwards [hupper] with i hi
+  simpa only [Function.comp_def, one_div] using
+    (differential_norm (a := a) (b := b) (c := c) hi).symm
+
+/-- In particular the differential vanishes along every upward vertical
+line. This controls the top sides of the Green rectangles. -/
+theorem differential_vertical_tendsto_atTop (a b c x : ℝ) :
+    Tendsto (fun y : ℝ => differential a b c ((x:ℂ)+(y:ℂ)*Complex.I)) atTop (𝓝 0) := by
+  apply differential_tendsto_zero_of_norm_atTop
+  · filter_upwards [eventually_ge_atTop (0:ℝ)] with y hy
+    simpa using hy
+  · apply tendsto_atTop_mono (f := fun y : ℝ => y)
+    · intro y
+      simpa using Complex.im_le_norm ((x:ℂ)+(y:ℂ)*Complex.I)
+    · exact tendsto_id
+
+/-- The constructed primitive vanishes along every upward vertical line,
+including vertical lines through the boundary singularities. -/
+theorem tail_vertical_tendsto_atTop {a b c : ℝ}
+    (hi : Integrable (realDensity a b c)) (x : ℝ) :
+    Tendsto (fun y : ℝ => tail a b c ((x:ℂ)+(y:ℂ)*Complex.I)) atTop (𝓝 0) := by
+  have hlim : ∀ᵐ t : ℝ, Tendsto
+      (fun y : ℝ => tailIntegrand a b c ((x:ℂ)+(y:ℂ)*Complex.I) t) atTop (𝓝 (0:ℂ)) := by
+    filter_upwards [] with t
+    by_cases ht : x < t
+    · simpa [tailIntegrand, ht] using differential_vertical_tendsto_atTop a b c t
+    · simp [tailIntegrand, ht]
+  have h := MeasureTheory.tendsto_integral_filter_of_dominated_convergence
+    (realDensity a b c)
+    (Eventually.of_forall (fun y : ℝ =>
+      (tailIntegrand_measurable a b c ((x:ℂ)+(y:ℂ)*Complex.I)).aestronglyMeasurable))
+    (show ∀ᶠ y : ℝ in atTop, ∀ᵐ t : ℝ,
+      ‖tailIntegrand a b c ((x:ℂ)+(y:ℂ)*Complex.I) t‖ ≤ realDensity a b c t by
+      filter_upwards [eventually_ge_atTop (0:ℝ)] with y hy
+      exact tailIntegrand_bound_ae a b c (by simpa [closedUpper] using hy)) hi hlim
+  simpa only [tail, integral_zero] using h
+
+
+/-- Cancellation of the cubic differential on a complete horizontal line. -/
+def lineIntegral (a b c : ℝ) (z : ℂ) : ℂ :=
+  ∫ s : ℝ, differential a b c (z+(s:ℂ))
+
+private theorem differential_shift_tendsto_atBot (a b c : ℝ) {z : ℂ} (hz : z ∈ upper) :
+    Tendsto (fun s : ℝ => differential a b c (z+(s:ℂ))) atBot (𝓝 0) := by
+  apply differential_tendsto_zero_of_norm_atTop
+  · exact Eventually.of_forall (fun s => by simpa [upper] using hz.le)
+  · apply tendsto_atTop_mono (f := fun s : ℝ => -s+(-z.re))
+    · intro s
+      have hn := (neg_le_abs (z+(s:ℂ)).re).trans (Complex.abs_re_le_norm (z+(s:ℂ)))
+      simpa [neg_add, add_comm] using hn
+    · exact tendsto_atTop_add_const_right atBot (-z.re) tendsto_neg_atBot_atTop
+
+private theorem lineIntegral_hasDerivAt_zero {a b c : ℝ}
+    (hi : Integrable (realDensity a b c)) {z : ℂ} (hz : z ∈ upper) :
+    HasDerivAt (lineIntegral a b c) 0 z := by
+  obtain ⟨hint,hderiv⟩ := shiftIntegral_hasDerivAt_integral univ hi hz
+  simp only [integrableOn_univ, setIntegral_univ] at hint hderiv
+  have hreal (s : ℝ) : HasDerivAt (fun t : ℝ => differential a b c (z+(t:ℂ)))
+      (deriv (differential a b c) (z+(s:ℂ))) s := by
+    have hzu : z+(s:ℂ) ∈ upper := by simpa [upper] using hz
+    have hd := ((differential_differentiableOn a b c).differentiableAt
+      (upper_open.mem_nhds hzu)).hasDerivAt
+    exact (hd.comp_const_add z (s:ℂ)).comp_ofReal
+  have heq := integral_of_hasDerivAt_of_tendsto hreal hint
+    (differential_shift_tendsto_atBot a b c hz) (differential_shift_tendsto_atTop a b c hz)
+  rw [sub_self] at heq
+  rw [heq] at hderiv
+  exact hderiv
+
+private theorem lineIntegral_vertical_tendsto_atTop {a b c : ℝ}
+    (hi : Integrable (realDensity a b c)) :
+    Tendsto (fun y : ℝ => lineIntegral a b c ((y:ℂ)*Complex.I)) atTop (𝓝 0) := by
+  have hlim : ∀ᵐ s : ℝ, Tendsto
+      (fun y : ℝ => differential a b c ((y:ℂ)*Complex.I+(s:ℂ))) atTop (𝓝 (0:ℂ)) := by
+    exact Eventually.of_forall (fun s => by
+      simpa only [add_comm] using differential_vertical_tendsto_atTop a b c s)
+  have hmeas (y : ℝ) : AEStronglyMeasurable
+      (fun s : ℝ => differential a b c ((y:ℂ)*Complex.I+(s:ℂ))) volume :=
+    ((differential_measurable a b c).comp
+      (measurable_const.add Complex.measurable_ofReal)).aestronglyMeasurable
+  have hb : ∀ᶠ y : ℝ in atTop, ∀ᵐ s : ℝ,
+      ‖differential a b c ((y:ℂ)*Complex.I+(s:ℂ))‖ ≤ realDensity a b c s := by
+    filter_upwards [eventually_ge_atTop (0:ℝ)] with y hy
+    simpa only [add_comm] using differential_horizontal_bound_ae a b c hy
+  simpa only [lineIntegral, integral_zero] using
+    MeasureTheory.tendsto_integral_filter_of_dominated_convergence
+      (realDensity a b c) (Eventually.of_forall hmeas) hb hi hlim
+
+/-- The full horizontal integral is identically zero; this derives both
+real and imaginary period cancellation from the constructed differential. -/
+theorem lineIntegral_eq_zero {a b c : ℝ}
+    (hi : Integrable (realDensity a b c)) {z : ℂ} (hz : z ∈ upper) :
+    lineIntegral a b c z = 0 := by
+  have hconst (w : ℂ) (hw : w ∈ upper) : lineIntegral a b c w = lineIntegral a b c z := by
+    exact upper_open.is_const_of_deriv_eq_zero upper_convex.isPreconnected
+      (fun u hu => (lineIntegral_hasDerivAt_zero hi hu).differentiableAt.differentiableWithinAt)
+      (fun u hu => (lineIntegral_hasDerivAt_zero hi hu).deriv) hw hz
+  have heq : (fun y : ℝ => lineIntegral a b c ((y:ℂ)*Complex.I)) =ᶠ[atTop]
+      (fun _ => lineIntegral a b c z) := by
+    filter_upwards [eventually_gt_atTop (0:ℝ)] with y hy
+    exact hconst _ (by simpa [upper] using hy)
+  exact tendsto_nhds_unique (tendsto_const_nhds.congr' heq.symm)
+    (lineIntegral_vertical_tendsto_atTop hi)
+
+
+private theorem horizontal_integrable {a b c : ℝ}
+    (hi : Integrable (realDensity a b c)) {y : ℝ} (hy : 0 ≤ y) :
+    Integrable (fun t : ℝ => differential a b c ((t:ℂ)+(y:ℂ)*Complex.I)) := by
+  exact hi.mono' (((differential_measurable a b c).comp
+    (Complex.measurable_ofReal.add measurable_const)).aestronglyMeasurable)
+    (differential_horizontal_bound_ae a b c hy)
+
+private theorem horizontal_integral_continuousOn {a b c : ℝ}
+    (hi : Integrable (realDensity a b c)) :
+    ContinuousOn (fun y : ℝ => ∫ t : ℝ, differential a b c ((t:ℂ)+(y:ℂ)*Complex.I)) (Ici 0) := by
+  intro y hy
+  apply MeasureTheory.tendsto_integral_filter_of_dominated_convergence (realDensity a b c)
+  · exact Eventually.of_forall (fun v => ((differential_measurable a b c).comp
+      (Complex.measurable_ofReal.add measurable_const)).aestronglyMeasurable)
+  · filter_upwards [self_mem_nhdsWithin] with v hv
+    exact differential_horizontal_bound_ae a b c hv
+  · exact hi
+  · filter_upwards [ae_real_ne a, ae_real_ne b, ae_real_ne c] with t ha hb hc
+    have hn (u : ℝ) (hu : t ≠ u) : (t:ℂ)+(y:ℂ)*Complex.I ≠ (u:ℂ) := by
+      intro heq
+      exact hu (by simpa using congrArg Complex.re heq)
+    have hcont := (differential_continuousAt (by simpa using hy) (hn a ha) (hn b hb) (hn c hc)).comp
+      (f := fun v : ℝ => (t:ℂ)+(v:ℂ)*Complex.I) (by fun_prop)
+    exact hcont.tendsto.mono_left nhdsWithin_le_nhds
+
+/-- Full horizontal cancellation holds also on the singular boundary line. -/
+theorem horizontal_integral_eq_zero {a b c : ℝ}
+    (hi : Integrable (realDensity a b c)) {y : ℝ} (hy : 0 ≤ y) :
+    (∫ t : ℝ, differential a b c ((t:ℂ)+(y:ℂ)*Complex.I)) = 0 := by
+  have hpos (v : ℝ) (hv : 0 < v) :
+      (∫ t : ℝ, differential a b c ((t:ℂ)+(v:ℂ)*Complex.I)) = 0 := by
+    simpa only [lineIntegral, add_comm] using
+      lineIntegral_eq_zero hi (z := (v:ℂ)*Complex.I) (by simpa [upper] using hv)
+  rcases eq_or_lt_of_le hy with rfl | hy
+  · have hc := (horizontal_integral_continuousOn hi 0 self_mem_Ici).mono
+      (Ioi_subset_Ici_self : Ioi (0:ℝ) ⊆ Ici 0)
+    have heq : (fun v : ℝ => ∫ t : ℝ, differential a b c ((t:ℂ)+(v:ℂ)*Complex.I))
+        =ᶠ[𝓝[>] (0:ℝ)] (fun _ => (0:ℂ)) := by
+      filter_upwards [self_mem_nhdsWithin] with v hv
+      exact hpos v hv
+    exact tendsto_nhds_unique hc (tendsto_const_nhds.congr' heq.symm)
+  · exact hpos y hy
+
+theorem tail_eq_horizontal_Ioi (a b c : ℝ) (z : ℂ) :
+    tail a b c z = ∫ t in Ioi z.re, differential a b c ((t:ℂ)+(z.im:ℂ)*Complex.I) := by
+  exact integral_indicator measurableSet_Ioi
+
+/-- Cancellation makes the same primitive a left tail with opposite sign. -/
+theorem tail_eq_neg_horizontal_Iic {a b c : ℝ}
+    (hi : Integrable (realDensity a b c)) {z : ℂ} (hz : z ∈ closedUpper) :
+    tail a b c z = -(∫ t in Iic z.re, differential a b c ((t:ℂ)+(z.im:ℂ)*Complex.I)) := by
+  have hint := horizontal_integrable hi hz
+  have heq := integral_add_compl (s := Iic z.re) measurableSet_Iic hint
+  rw [compl_Iic, horizontal_integral_eq_zero hi hz] at heq
+  rw [tail_eq_horizontal_Ioi]
+  exact eq_neg_of_add_eq_zero_right heq
+
+/-- Uniform right-tail control, independent of height. -/
+theorem tail_norm_le_right_tail {a b c : ℝ}
+    (hi : Integrable (realDensity a b c)) {z : ℂ} (hz : z ∈ closedUpper) :
+    ‖tail a b c z‖ ≤ ∫ t in Ioi z.re, realDensity a b c t := by
+  rw [tail_eq_horizontal_Ioi]
+  exact norm_integral_le_of_norm_le hi.integrableOn
+    (ae_restrict_of_ae (differential_horizontal_bound_ae a b c hz))
+
+/-- Uniform left-tail control, independent of height. -/
+theorem tail_norm_le_left_tail {a b c : ℝ}
+    (hi : Integrable (realDensity a b c)) {z : ℂ} (hz : z ∈ closedUpper) :
+    ‖tail a b c z‖ ≤ ∫ t in Iic z.re, realDensity a b c t := by
+  rw [tail_eq_neg_horizontal_Iic hi hz, norm_neg]
+  exact norm_integral_le_of_norm_le hi.integrableOn
+    (ae_restrict_of_ae (differential_horizontal_bound_ae a b c hz))
+
+
+private def horizontalNormIntegral (a b c y : ℝ) : ℝ :=
+  ∫ t : ℝ, ‖differential a b c ((t:ℂ)+(y:ℂ)*Complex.I)‖
+
+private theorem horizontalNormIntegral_tendsto_atTop {a b c : ℝ}
+    (hi : Integrable (realDensity a b c)) :
+    Tendsto (horizontalNormIntegral a b c) atTop (𝓝 0) := by
+  change Tendsto (fun y : ℝ => ∫ t : ℝ, ‖differential a b c ((t:ℂ)+(y:ℂ)*Complex.I)‖) atTop (𝓝 0)
+  have hm (y : ℝ) : AEStronglyMeasurable
+      (fun t : ℝ => ‖differential a b c ((t:ℂ)+(y:ℂ)*Complex.I)‖) volume :=
+    (((differential_measurable a b c).comp
+      (Complex.measurable_ofReal.add measurable_const)).norm).aestronglyMeasurable
+  have hb : ∀ᶠ y : ℝ in atTop, ∀ᵐ t : ℝ,
+      ‖‖differential a b c ((t:ℂ)+(y:ℂ)*Complex.I)‖‖ ≤ realDensity a b c t := by
+    filter_upwards [eventually_ge_atTop (0:ℝ)] with y hy
+    simpa only [norm_norm] using differential_horizontal_bound_ae a b c hy
+  have hl : ∀ᵐ t : ℝ, Tendsto
+      (fun y : ℝ => ‖differential a b c ((t:ℂ)+(y:ℂ)*Complex.I)‖) atTop (𝓝 (0:ℝ)) :=
+    Eventually.of_forall (fun t => by
+      simpa only [norm_zero] using (differential_vertical_tendsto_atTop a b c t).norm)
+  simpa only [integral_zero] using
+    MeasureTheory.tendsto_integral_filter_of_dominated_convergence
+      (realDensity a b c) (Eventually.of_forall hm) hb hi hl
+
+private theorem tail_norm_le_horizontalNormIntegral {a b c : ℝ}
+    (hi : Integrable (realDensity a b c)) {z : ℂ} (hz : z ∈ closedUpper) :
+    ‖tail a b c z‖ ≤ horizontalNormIntegral a b c z.im := by
+  exact norm_integral_le_of_norm_le (horizontal_integrable hi hz).norm
+    (Eventually.of_forall (fun t => norm_indicator_le_norm_self _ _))
+
+/-- The actual cubic primitive tends uniformly to zero at the single
+point at infinity of the closed upper half-plane. -/
+theorem tail_uniform_decay {a b c : ℝ} (hi : Integrable (realDensity a b c))
+    {ε : ℝ} (hε : 0 < ε) :
+    ∃ R > 0, ∀ z ∈ closedUpper, R ≤ ‖z‖ → ‖tail a b c z‖ < ε := by
+  have hr : Tendsto (fun x : ℝ => ∫ t in Ioi x, realDensity a b c t) atTop (𝓝 0) :=
+    tendsto_integral_Ioi_zero tendsto_id
+  have hl : Tendsto (fun x : ℝ => ∫ t in Iic x, realDensity a b c t) atBot (𝓝 0) :=
+    tendsto_integral_Iic_zero tendsto_id
+  obtain ⟨r,hr⟩ := eventually_atTop.1 (hr.eventually (Iio_mem_nhds hε))
+  obtain ⟨l,hl⟩ := eventually_atBot.1 (hl.eventually (Iio_mem_nhds hε))
+  obtain ⟨y,hy⟩ := eventually_atTop.1
+    ((horizontalNormIntegral_tendsto_atTop hi).eventually (Iio_mem_nhds hε))
+  let R : ℝ := max 1 (max r (max (-l) y))
+  have hR1 : 1 ≤ R := le_max_left _ _
+  have hRr : r ≤ R := (le_max_left _ _).trans (le_max_right _ _)
+  have hRl : -l ≤ R := (le_max_left _ _).trans ((le_max_right _ _).trans (le_max_right _ _))
+  have hRy : y ≤ R := (le_max_right _ _).trans ((le_max_right _ _).trans (le_max_right _ _))
+  refine ⟨2*R+1, by linarith, ?_⟩
+  intro z hz hn
+  by_cases hzr : R ≤ z.re
+  · exact (tail_norm_le_right_tail hi hz).trans_lt (hr z.re (hRr.trans hzr))
+  by_cases hzl : z.re ≤ -R
+  · exact (tail_norm_le_left_tail hi hz).trans_lt (hl z.re (by linarith))
+  · have hrea : |z.re| ≤ R := abs_le.mpr ⟨by linarith, by linarith⟩
+    have hn' := Complex.norm_le_abs_re_add_abs_im z
+    rw [abs_of_nonneg (a := z.im) hz] at hn'
+    have hyz : y ≤ z.im := by linarith
+    exact (tail_norm_le_horizontalNormIntegral hi hz).trans_lt (hy z.im hyz)
+
+/-- Filter formulation of uniform decay, ready for compactification and
+properness arguments in the rectangle construction. -/
+theorem tail_tendsto_zero_of_norm_atTop {ι : Type*} {l : Filter ι}
+    {a b c : ℝ} (hi : Integrable (realDensity a b c)) {f : ι → ℂ}
+    (hupper : ∀ᶠ i in l, f i ∈ closedUpper)
+    (hnorm : Tendsto (fun i => ‖f i‖) l atTop) :
+    Tendsto (fun i => tail a b c (f i)) l (𝓝 0) := by
+  apply Metric.tendsto_nhds.2
+  intro ε hε
+  obtain ⟨R,hR,hbound⟩ := tail_uniform_decay hi hε
+  filter_upwards [hupper, hnorm.eventually (eventually_ge_atTop R)] with i hi' hn
+  simpa only [dist_zero_right] using hbound (f i) hi' hn
 
 end
 end SlitCubicCalibration

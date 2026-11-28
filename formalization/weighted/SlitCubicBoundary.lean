@@ -91,5 +91,34 @@ theorem tail_re_gap {a b c x : ℝ} (hab : a < b) (hbc : b < c)
     integral_indicator measurableSet_Ioi]
   exact SlitCubicPeriods.ray_period_eq_finite_period hab hbc
 
+
+/-- The real-axis Green flux is supported exactly on the marked gap. -/
+theorem boundary_flux_eq {a b c : ℝ} (hab : a < b) (hbc : b < c) (x : ℝ) :
+    (tail a b c (x:ℂ)).re * (-differential a b c (x:ℂ)).im =
+      period a b c * (Ioo b c).indicator (realDensity a b c) x := by
+  by_cases hxa : x ≤ a
+  · rw [tail_re_left hab hbc hxa]
+    simp [not_lt.mpr (hxa.trans hab.le)]
+  · have hax : a < x := lt_of_not_ge hxa
+    by_cases hxb : x ≤ b
+    · rw [differential_real_first hax.le hxb (hxb.trans hbc.le)]
+      simp [not_lt.mpr hxb]
+    · have hbx : b < x := lt_of_not_ge hxb
+      by_cases hxc : x < c
+      · rw [tail_re_gap hab hbc hbx.le hxc.le,
+          differential_real_gap (hab.trans hbx).le hbx.le hxc.le]
+        simp [hbx,hxc]
+      · have hcx : c ≤ x := le_of_not_gt hxc
+        rw [differential_real_right ((hab.trans hbc).le.trans hcx)
+          (hbc.le.trans hcx) hcx]
+        simp [hxc]
+
+/-- The exact nonzero term in the limiting Green boundary integral. -/
+theorem integral_boundary_flux {a b c : ℝ} (hab : a < b) (hbc : b < c) :
+    (∫ x : ℝ, (tail a b c (x:ℂ)).re * (-differential a b c (x:ℂ)).im) =
+      period a b c * ∫ x in Ioo b c, realDensity a b c x := by
+  simp_rw [boundary_flux_eq hab hbc]
+  rw [integral_const_mul, integral_indicator measurableSet_Ioo]
+
 end
 end SlitCubicBoundary

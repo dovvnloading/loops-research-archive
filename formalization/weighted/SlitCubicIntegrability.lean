@@ -147,6 +147,31 @@ private theorem integrableAtTop_kernel (a b c : ℝ) :
     (kernel_measurable a b c).aestronglyMeasurable.stronglyMeasurableAtFilter
   exact integrableAtFilter_rpow_atTop_iff.mpr (by norm_num)
 
+/-- The boundary kernel decays faster than the reciprocal radius on the
+positive ray; this controls the vertical edges in Green's formula. -/
+theorem tendsto_mul_kernel_atTop (a b c : ℝ) :
+    Tendsto (fun x : ℝ => x * kernel a b c x) atTop (𝓝 0) := by
+  have hO := (isBigO_refl (fun x : ℝ => x) atTop).mul (kernel_isBigO_atTop a b c)
+  have hO' : (fun x : ℝ => x * kernel a b c x) =O[atTop]
+      (fun x : ℝ => x ^ (-(1/2 : ℝ))) := by
+    apply hO.congr'
+    · exact Eventually.of_forall fun _ => rfl
+    · filter_upwards [eventually_gt_atTop (0 : ℝ)] with x hx
+      change x * x ^ (-(3/2 : ℝ)) = x ^ (-(1/2 : ℝ))
+      calc
+        _ = x ^ ((1 : ℝ) + -(3/2 : ℝ)) := by rw [Real.rpow_add hx, Real.rpow_one]
+        _ = _ := by norm_num
+  exact hO'.trans_tendsto (tendsto_rpow_neg_atTop (by norm_num))
+
+/-- The same reciprocal-radius decay on the negative ray. -/
+theorem tendsto_mul_kernel_neg_atTop (a b c : ℝ) :
+    Tendsto (fun x : ℝ => x * kernel a b c (-x)) atTop (𝓝 0) := by
+  convert tendsto_mul_kernel_atTop (-a) (-b) (-c) using 1
+  funext x
+  have he (t : ℝ) : |-x-t| = |x-(-t)| := by
+    rw [show -x-t = -(x-(-t)) by ring, abs_neg]
+  simp only [kernel, he]
+
 private theorem integrableAtBot_kernel (a b c : ℝ) :
     IntegrableAtFilter (kernel a b c) atBot volume := by
   have he := (Homeomorph.neg ℝ).measurableEmbedding.integrableAtFilter_map_iff

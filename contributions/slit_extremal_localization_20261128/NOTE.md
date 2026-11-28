@@ -7,123 +7,163 @@ human_review: none
 
 <a id="slit-extremal-localization-20261128"></a>
 
-# The complete marked-slit extremal problem: research record
+# A cubic-period upper certificate for the complete parent-Wave supremum
 
 ## Claim
 
-This is an initial research checkpoint, not a claimed mathematical result.
-The target is the exact optimum or attainment of the complete parent-Wave
-supremum in the limiting four-cut slit geometry. A result will be counted only
-after compilation in the repository's Lean project and its transitive axiom
-audit. No worldwide-priority claim is made from an archive search alone.
+For the archive's literal four-cut marking `a < b < c < d`, let
+
+```text
+h(x) = 1 / (sqrt|x-a| * sqrt|x-b| * sqrt|x-c|),
+B = integral_(a,b) h(x) dx,
+A = integral_(b,c) h(x) dx.
+```
+
+The unconditional Lean theorem
+`SlitCubicUpperBound.width_le_period_ratio` proves
+
+```text
+SlitWaveLimit.width M D <= ENNReal.ofReal (A / (2*B))
+```
+
+for every ambient domain `D`. The bound concerns the supremum over every
+Borel parent Wave in the existing definitions, including nonsymmetric
+families and nonrectifiable continuous simple leaves. The fourth endpoint
+`d` does not occur in the bound. An explicit admissible density has exactly
+this area, proved by `SlitCubicUpperBound.density_area_exact`.
+
+This supplies a universal upper certificate for the complete homotopy
+class, rather than merely computing a selected competitor's modulus.
+**Equality, optimizer attainment, and settlement of the full ledger item
+are not claimed.** No worldwide-priority claim is inferred from an archive
+search. The underlying analytic and extremal-length methods are classical.
 
 ## Evidence
 
-The starting main commit is `6a10209b3cc51878bc45de7668894757b2575e08`.
-The obligation is open in `ledger.json` under `research_updates`.
-`code/contribute.py start` currently reads only the main `obligations` array;
-the existing contribution validator accepts both arrays, so this packet is
-created directly without changing the contribution tooling or ledger.
+### Actual density and exact energy
 
-Prior work inspected before choosing the target:
-
-1. `contributions/marked_wave_supremum_limit_20261127/NOTE.md` and the
-   `SlitWaveModulus`, `MarkedSlitTransport`, `SlitWaveFinite`,
-   `ActualParentSupremum`, and `ActualParentRate` modules already prove
-   finiteness, complete-family convergence, and an explicit period estimate.
-2. `research/tip_family_theorem/THEOREM.md`, Open Problem 2, and
-   `research/independent_audits/maximal_native_wave_20261123/H3_WIDTH.md`
-   already give written strict separation from the pairable optimum.
-3. The circular-parent and circular-crest modules already compute their
-   chosen families' all-density moduli. Repeating those lower witnesses,
-   positivity, qualitative convergence, or paired serial inequalities is
-   outside this packet's intended research claim.
-
-The remaining candidate is an explicit extremal foliation or an exact
-obstruction in the full marked homotopy class. The current candidate is the
-Teichmueller ring with complementary sets `[a,b]` and `[c,infinity)`, rather
-than the ring between two finite segments. For four cuts `a < b < c < d`,
-put `m=(b-a)/(c-a)` and use the elliptic-integral parameter convention
-`K(m)=integral_0^(pi/2) (1-m*sin(t)^2)^(-1/2) dt`. The **unproved target** is
+On the closed upper half-plane use the continuous upper-side square roots
+and the actual functions
 
 ```text
-complete left-class parent optimum = K(1-m)/(2*K(m)),
+g(z) = 1 / (sqrt_upper(z-a) * sqrt_upper(z-b) * sqrt_upper(z-c)),
+F(x+i*y) = integral_(x,infinity) g(t+i*y) dt.
 ```
 
-with attainment and independence of `d`. At the limiting actual marking,
-numerical evaluation suggests approximately `0.7527550636374064`, compared
-with the archived upper envelope approximately `0.7749231261480455`.
-These decimals are diagnostic, not a certified enclosure or theorem.
+The density is
 
-The proposed sharp upper metric is the even reflection of half the gradient
-of the upper-half-plane quadrilateral potential. Every admissible parent
-starts and ends at potential one and must reach potential zero on the left
-real ray. A reflected rectangle foliation would attain the bound. Neither
-the analytic potential construction, its complete trace-length calibration,
-nor attainment is being assumed as a substitute for proving it.
+```text
+rho(z) = |g(Re z + i*|Im z|)| / (2*B).
+```
 
-### Compiled supporting checkpoints
+All parts of its certification are proved:
 
-`SlitLeftCrossing.parentLeaf_exists_left_real` now proves the necessary
-topological premise for the existing literal `ParentLeaf` definition:
-every such leaf meets the real axis strictly left of the slit. It uses
-the actual endpoint-fixed homotopy and a logarithm lifted through the
-complex exponential covering. It assumes no rectifiability or smoothness.
-Local compilation succeeds, and the declaration-level transitive audit of
-its three declarations permits only the repository's standard foundations.
-The source is registered for the unchanged weighted CI.
+1. `SlitCubicIntegrability` proves real-axis integrability and positivity
+   of `B`; `SlitCubicArea` proves planar integrability of
+   `1/(|z-a|*|z-b|*|z-c|)` at the three poles and at infinity.
+2. `SlitCubicCalibration.tail_hasDerivAt` proves `F'=-g` from dominated
+   differentiation and improper integration. The same module proves
+   closed-half-plane continuity, horizontal cancellation, and uniform
+   decay of `F` at infinity.
+3. `SlitCubicPeriods` proves the opposite boundary period identity by an
+   explicit real fractional-linear substitution. `SlitCubicBoundary`
+   proves `Re F=0` on the left ray and `Re F=B` on the marked gap.
+4. `SlitLeftCrossing.parentLeaf_exists_left_real` uses the actual
+   endpoint-fixed slit homotopy to prove every parent hits that left ray.
+   `SlitPotentialLength` proves the required two-transition length bound
+   using Hausdorff one-measure, without assuming finite length.
+   `SlitPotentialReflection` proves the sharp local slope after folding.
+5. `SlitCubicAdmissible.density_admissible` assembles these facts for every
+   `ParentWave`, with no regular-foliation or uniformizing-chart premise.
+6. `SlitCubicEnergy.integral_upper_densitySq` proves the exact integral
 
-The next analytic checkpoint contains actual proofs of the following:
+   ```text
+   integral_upper_half_plane 1/(|z-a|*|z-b|*|z-c|) dArea = B*A.
+   ```
 
-- `SlitCubicIntegrability.integrable_kernel` proves integrability of the
-  cubic boundary kernel, including all three square-root singularities
-  and both infinite tails. `integral_Ioo_pos` proves the period is positive.
-- `SlitCubicPeriods.ray_period_eq_finite_period` proves equality of the
-  opposite real periods by an explicit fractional-linear substitution.
-- `SlitCubicCalibration.tail_hasDerivAt` differentiates the actual
-  horizontal improper integral and obtains the negative cubic differential.
-  The same module proves continuity on the entire closed upper half-plane,
-  including the branch points, and a global integral bound.
-- `SlitCubicBoundary.tail_re_left` and `tail_re_gap` prove the actual
-  potential's real part is respectively zero and the positive period on
-  the two required boundary arcs.
-- `SlitPotentialLength.one_le_half_density_length_of_simple_excursion`
-  gives the weighted Hausdorff-length calibration for arbitrary continuous
-  simple traces, with no finite-length premise.
-- `SlitPotentialReflection.localSlopeBound_fold_re` proves the precise
-  local Lipschitz estimate after even reflection, including on the real
-  axis, without assuming differentiability there.
+   Green's identity is applied to the actual field `Re F * F'` on
+   rectangles `[-R,R] x [1/R,R]`. The top and side integrals are proved
+   to vanish, the bottom converges to the exact real-axis flux, and
+   `SlitEnergyExhaustion` proves convergence of the interior integrals.
+   No area identity or conformal chart is assumed.
+7. `SlitCubicMetricArea` proves the real axis has zero planar measure,
+   uses actual conjugation invariance to double the upper energy, and
+   tracks the normalization `1/(4*B^2)` into the archive's ENNReal area.
+   The resulting area is exactly `A/(2*B)`.
 
-All six analytic modules compile locally with the pinned toolchain and
-pass the repository's declaration-level transitive axiom audit. They are
-registered for the unchanged CI. The original left-crossing checkpoint's
-research and model-coverage checks have passed; its full weighted build is
-still running at the time of this commit.
+### Progress toward a matching family
 
-These are classical supporting steps, **not a claimed new research result
-or a settlement of the obligation**. The unconditional assembled density,
-its sharp area identity, and the matching foliation remain the hard core.
+`SlitCubicUnivalence.tail_injOn_upper` independently proves injectivity of
+the actual integral. The coordinate `log((z-a)/(z-c))` changes the upper
+half-plane to a convex strip. In that coordinate the derivative is
+`sqrt_upper(z-a)*sqrt_upper(z-c)/((c-a)*sqrt_upper(z-b))`, whose real part
+is proved positive. A real mean-value argument gives injectivity.
 
-The pinned Lean 4.32.0 toolchain and pinned Mathlib cache are available
-locally. The existing CI and trust policy are unchanged.
+`SlitCubicBoundaryRange` and `SlitCubicImaginaryBoundary` prove the four
+actual boundary sides, positive height `A`, the second period identity,
+and the full real-axis rectangle bounds. These are supporting the next
+step; they do not yet construct an extremizing parent Wave.
+
+### Validation and provenance
+
+The starting main commit was `6a10209b3cc51878bc45de7668894757b2575e08`.
+This checkpoint incorporates current main
+`6964d70bea8a68acae4a627b421086b29f6f63b3`, preserving its depth-gate work.
+All new modules compile locally with the repository-pinned Lean 4.32.0 and
+Mathlib. Declaration-level transitive audits permit only `propext`,
+`Classical.choice`, and `Quot.sound`. No proof holes, new foundations, or
+changes to CI, the ledger, or trust policy are introduced.
+
+The prior analytic checkpoint `cb2dcce3f95641fa1359454fbc534748214a999b`
+passed the complete weighted GitHub CI build and transitive axiom audit,
+as well as source and model coverage. The present, stronger upper-bound
+checkpoint is registered for those same checks; its remote CI result is
+not assumed from the earlier run.
+
+### Prior archive work and comparison
+
+- `contributions/marked_wave_supremum_limit_20261127/NOTE.md`,
+  `SlitWaveLimit`, `SlitWaveFinite`, and `ActualParentRate` already prove
+  full-family finiteness, convergence, and quantitative error bounds.
+  These are not new claims of this packet.
+- `research/tip_family_theorem/THEOREM.md`, Open Problem 2, and
+  `research/independent_audits/maximal_native_wave_20261123/H3_WIDTH.md`
+  already discuss the half-strip competitor and strict separation from
+  the pairable optimum. Repeating those lower witnesses is not the claim.
+- The present upper certificate controls the entire existing parent class.
+  A matching Lean lower construction remains necessary for an exact
+  optimum or attainment theorem.
+
+For orientation only, the classical elliptic-integral substitution
+suggests `A/(2*B)=K(1-m)/(2*K(m))`, with `m=(b-a)/(c-a)` and the parameter
+convention `K(m)=integral_0^(pi/2) (1-m*sin(t)^2)^(-1/2) dt`.
+At the limiting actual marking, numerical evaluation suggests
+`0.7527550636374064`, compared with the archived upper envelope near
+`0.7749231261480455`. **Neither this elliptic re-expression nor these decimal
+evaluations are a certified Lean result in this checkpoint.** The proved
+statement is the actual cubic-integral bound above.
 
 ## Dependencies
 
-`NOV26_OPEN_OPTIMAL_LIMIT`, its archived slit-family definitions and preceding
-actual-tip convergence results; the repository-pinned Mathlib. Exact external
-mathematical dependencies will be recorded if a proof is obtained.
+`NOV26_OPEN_OPTIMAL_LIMIT`; the archive's unchanged `MarkedSlitTransport`,
+`SlitWaveModulus`, and `SlitWaveLimit` definitions; the repository-pinned
+Mathlib. The proof uses classical complex integration, covering-space
+lifting, real changes of variables, and Hausdorff measure theory.
 
 ## Boundary
 
-No theorem meeting the requested research-novelty threshold has been proved
-at this checkpoint. Exact value, attainment, and canonical ideal-boundary
-identification remain open. No status change is requested. H1-H4, UPTCR,
-and MLC remain open. An unsuccessful attack will be reported as unsuccessful
-rather than submitted as a research advance.
+The obligation stays open. This is an unconditional new upper certificate
+relative to the archived complete-Wave formulation, not an exact optimum
+or attainment theorem. Rectangle surjectivity, the actual matching foliation,
+and its all-density lower bound remain to be proved. The finite-period
+exact optimizer and canonical ideal-boundary identification are also not
+settled. No status change is requested. H1-H4, UPTCR, and MLC remain open.
+The work does not establish a historical first-priority claim.
 
 ## Attribution
 
-The existing whole-Wave convergence and circular-foliation proofs are prior
-archive work. Classical conformal mapping and extremal-length principles
-retain their original attribution. AI assistance has not been reviewed by a
-human mathematician. Contributions follow the repository's CC0 license.
+The existing complete-Wave convergence and circular-foliation proofs are
+prior archive work. Schwarz-Christoffel, Teichmueller-ring, and classical
+extremal-length principles retain their original attribution. AI assistance
+has not been reviewed by a human mathematician. Contributions follow the
+repository's CC0 license.
