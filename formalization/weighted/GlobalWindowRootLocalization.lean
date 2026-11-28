@@ -98,7 +98,7 @@ private theorem third_model_bounds {k l u : ℝ} (hk : k∈Icc l u) (hl : 1≤l)
   have hml := mul_le_mul hk.1 hsl (sq_nonneg (l-1)) hk0
   have hmu := mul_le_mul hk.2 hsu (sq_nonneg (k-1)) hu0
   have hid : -criticalOrbit k 3=k*(k-1)^2-1 := by
-    norm_num [criticalOrbit,Q]
+    simp only [criticalOrbit,Q,zero_pow (by decide : 2≠0),mul_zero,sub_zero,one_pow,mul_one]
     ring
   rw [hid]
   constructor <;> linarith only [hml,hmu]
@@ -215,8 +215,7 @@ private theorem modelFactor_small {k : ℝ} (hk : k∈Icc (7/4 : ℝ) (357/200))
     (abs_product_bound (abs_product_bound hkpow hvabs) hwabs) hsabs
   have hle := le_abs_self (modelFactor k)
   change |modelFactor k|≤(357/200 : ℝ)^3*(1/10)*2*(157/100) at hprod
-  norm_num at hprod
-  linarith only [hprod,hle]
+  exact hle.trans (hprod.trans (by norm_num))
 
 /-- Every literal signed root in the global physical class lies in the
 same small coefficient interval, including parameters near the center

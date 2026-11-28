@@ -31,12 +31,13 @@ theorem actual_signed_secant {p : ℕ} (hp : 17≤p) {c a : ℝ}
   have hq : scale p≤(p : ℝ)*scale p := by
     have hm := mul_le_mul_of_nonneg_right hpone (scale_pos p).le
     simpa only [one_mul] using hm
-  apply signed_relation_secant_gt_five hkc hka horder
-    (t := (p : ℝ)*scale p)
-    (mul_nonneg (Nat.cast_nonneg p) (scale_pos p).le) ?_
-    (realReturn_mapsTo hc) (realReturn_mapsTo ha)
-  · have h := horizon_scale_small hp
+  have hsmall : 110000000*((p : ℝ)*scale p)≤1 := by
+    have h := horizon_scale_small hp
     nlinarith only [h]
+  refine signed_relation_secant_gt_five hkc hka horder
+    (t := (p : ℝ)*scale p)
+    (mul_nonneg (Nat.cast_nonneg p) (scale_pos p).le) hsmall
+    (realReturn_mapsTo hc) (realReturn_mapsTo ha) ?_ ?_ ?_
   · intro z hz
     have he := realReturn_error hp ha hz
     change |realReturn a p z-(1-kappa p a*z^2)|≤22*((p : ℝ)*scale p)
