@@ -4921,6 +4921,65 @@
     },
     "obligations": []
   },
+  "uniform-crest-transport-20261128": {
+    "guide": "contributions/uniform_crest_transport_20261128/NOTE.md#uniform-crest-transport-20261128",
+    "theorems": {
+      "formalization/weighted/UniformCrestSupport.lean": [
+        "whole_support_bounds_of_error",
+        "actual_support_quantitative",
+        "actual_strict_support",
+        "actual_support_radius_margin"
+      ],
+      "formalization/weighted/UniformCrestTransport.lean": [
+        "all_period_support_in_archived_parent",
+        "all_period_realize_collar",
+        "every_actual_tip_realizes_collar",
+        "all_period_proper_moduli",
+        "exists_proper_collar_at_every_period",
+        "exists_all_period_proper_physical_transport_limit"
+      ],
+      "formalization/weighted/ActualCrestRemainderOrder.lean": [
+        "realIterate_zero",
+        "realIterate_succ",
+        "realIterate_at_zero",
+        "realIterate_neg_succ",
+        "realIterate_cast",
+        "normalizedReturn_real_eq",
+        "critical_prefix_lower",
+        "physical_prefix_bounds",
+        "realSecant_at_zero",
+        "iterate_difference_zero",
+        "physical_secant_order",
+        "physicalRemainder_eq_secant",
+        "physicalRemainder_neg",
+        "physicalRemainder_step",
+        "physical_remainder_nonneg",
+        "physical_remainder_mono",
+        "realRemainder_eq_physical",
+        "realRemainder_zero",
+        "actual_remainder_order",
+        "actual_remainder_one_pos"
+      ],
+      "formalization/weighted/ActualCrestRemainderScale.lean": [
+        "actual_return_scale_lower",
+        "actual_remainder_one_abs_le",
+        "actual_remainder_one_lower_return",
+        "actual_remainder_one_lower_scale",
+        "actual_remainder_one_scale_bounds"
+      ],
+      "formalization/weighted/ActualCrestSignedDrift.lean": [
+        "actual_signed_relation_deficit",
+        "actual_model_relation_lower",
+        "actual_coefficient_gt_limit",
+        "actual_tip_signed_drift",
+        "exists_actual_tips_with_signed_drift"
+      ],
+      "formalization/weighted/ActualCrestRelationSlope.lean": [
+        "relation_slope_lt_seven"
+      ]
+    },
+    "obligations": []
+  },
   "quadratic-green-pressure-20261128": {
     "guide": "contributions/quadratic_green_pressure_20261128/NOTE.md#quadratic-green-pressure-20261128",
     "theorems": {
