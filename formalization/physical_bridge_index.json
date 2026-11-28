@@ -5391,5 +5391,26 @@
     "obligations": [
       "MLC"
     ]
+  },
+  "postcritical-cohomology-20261128": {
+    "guide": "contributions/postcritical_cohomology_20261128/NOTE.md#postcritical-cohomology-20261128",
+    "theorems": {
+      "formalization/weighted/QuadraticCohomologicalCone.lean": [
+        "derivativeCocycle_ne_zero",
+        "displacement_succ",
+        "normalized_step",
+        "normalized_re_ge_one",
+        "exists_negative_cohomological_phase",
+        "mandelbrot_eq_zero_escape",
+        "mandelbrot_isClosed",
+        "mandelbrot_norm_le_three",
+        "mandelbrot_isCompact",
+        "fiber_eq_singleton_of_halfPlane",
+        "locallyConnectedAt_of_halfPlane"
+      ]
+    },
+    "obligations": [
+      "UNIVERSAL_PROTECTED_TOWER_CLOSURE"
+    ]
   }
 }
