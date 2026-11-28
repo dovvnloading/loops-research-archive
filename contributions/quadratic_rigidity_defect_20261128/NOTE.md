@@ -52,12 +52,34 @@ candidate.
 Primary-source comparisons, exact candidate revisions, and compiled theorem
 names will be recorded here as the work develops.
 
+## Compiled progress checkpoint
+
+The candidate has been sharpened to the quadratic finite Laurent jet in
+both the period-one and period-two charts; see [NOVELTY.md](NOVELTY.md)
+for the statement and the comparison that precedes its formalization.
+
+`QuadraticProjectiveAlgebra.lean` proves the exact cross-ratio cancellation.
+`QuadraticProjectiveTail.lean` now proves the normalized orbit and divided
+tail identities, their nonzero constant terms, and stabilization of their
+quadratic jets for every clock at least three (`a_jet`, `H_jet`).
+`QuadraticProjectiveActual.lean` identifies those normalized sequences with
+actual iterates of `z ↦ z²+c` in both charts (`criticalOrbit_main`,
+`criticalOrbit_periodTwo`), proves the displayed fixed point/two-cycle and
+its multiplier product, and checks the full quartic return identity.
+`QuadraticProjectiveResidue.lean` also compiles: `residue_cubic_dvd` proves
+the cubic polynomial cancellation, and `normalizedClock_cubic_remainder`
+turns it into an exact rational identity with one polynomial remainder.
+These four modules have compiled locally with the repository's pinned
+Lean 4.32.0 toolchain and pinned Mathlib. Their final composition into the
+actual-family theorem is being completed in the following checkpoint.
+
 ## Boundary
 
 No MLC case, fiber-triviality theorem, or global rigidity gate is closed.
 This draft is an investigation of a local actual-quadratic projective
 obstruction. It does not infer a fiber theorem from a local computation.
-No Lean theorem is claimed at this checkpoint.
+The local compiled supporting theorems above are claimed at this checkpoint;
+the final actual-family cross-ratio jet is not yet claimed.
 
 The investigation excludes the marked-width machinery and the other
 directions excluded in the user's original mandate.

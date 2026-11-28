@@ -208,7 +208,10 @@ formalization/weighted/QuadraticParameterDistortion.lean	CONSTRUCT
 formalization/weighted/QuadraticParameterInverse.lean	CONSTRUCT
 formalization/weighted/QuadraticParameterMotion.lean	CONSTRUCT
 formalization/weighted/QuadraticParameterUnivalence.lean	CONSTRUCT
+formalization/weighted/QuadraticProjectiveActual.lean	METADATA
 formalization/weighted/QuadraticProjectiveAlgebra.lean	METADATA
+formalization/weighted/QuadraticProjectiveResidue.lean	METADATA
+formalization/weighted/QuadraticProjectiveTail.lean	METADATA
 formalization/weighted/QuadraticTrappingEscape.lean	METADATA
 formalization/weighted/QuadraticUnivalentNeighborhood.lean	CONSTRUCT
 formalization/weighted/SaturatedTelescope.lean	METADATA
