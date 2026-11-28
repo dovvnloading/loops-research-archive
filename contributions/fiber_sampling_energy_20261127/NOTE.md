@@ -11,7 +11,7 @@ human_review: none
 
 ## Claim
 
-This packet develops an independent metric-sampling criterion for the terminal fiber and neighborhood requirement in H4. Its substantive estimate is the following complete Lean proof source, whose compilation status is recorded under Validation.
+This packet develops an independent metric-sampling criterion for the terminal fiber and neighborhood requirement in H4. Its substantive estimate is the following Lean theorem, compiled and transitively audited in the repository's unchanged CI as recorded under Validation.
 
 Let K be a preconnected subset of a pseudometric space. Let s : I → X be a finite indexed sample family, let a be any point of X, and put
 
@@ -94,6 +94,8 @@ together with the same energy budget. The cell containment is a mathematical pre
 
 ### 5. All-scale fiber collapse and decomposition
 
+For the collapse and topological consequences, the ambient space X is a metric space. The cubic inequality itself needs only a pseudometric; converting zero distance into equality uses the metric separation property.
+
 [FineEnergyCertificates](../../formalization/weighted/FiberEnergyCollapse.lean) is the exact proposition
 
 $$
@@ -155,11 +157,19 @@ The cubic certificate, its formal connected-fiber/local-neighborhood reductions,
 
 ### Validation
 
-There are five proposed default-target Lean modules and 34 public theorem declarations in the final source package. All are registered in the existing source and theorem indexes. The repository's unchanged Lean 4.32.0 / pinned Mathlib workflows compile the proof sources and audit every compiled declaration.
+There are five new default-target Lean modules and 34 public theorem declarations. All are registered in the existing source and theorem indexes. The repository's unchanged Lean 4.32.0 / pinned Mathlib workflow compiled the complete project and audited every compiled weighted declaration.
 
-**Current checkpoint: CI compilation and transitive dependency audit pending.** All non-weighted checks passed on 43f85102b328855332fa05a6d5cb3ffad0c8cc90. Its weighted build exposed an elaboration issue in the injective-image sum rewrite: Lean could not infer the additive codomain through the symmetry projection. The correction supplies the real summand, index finset, and index map explicitly. The theorem statement and all hypotheses are unchanged. At 862f203770522c7be35f98a3827c16060d4094e6, FiberSamplePacking, ConnectedFiberEnergy, FiberEnergyCollapse, and MandelbrotSamplingReduction compiled successfully in [the unchanged weighted job](https://github.com/dovvnloading/loops-research-archive/actions/runs/46100566110/job/140841826511). The only remaining compiler error was the interval counterexample's comparison of 1/n with 2/n; it is repaired by explicit division monotonicity. All statements and hypotheses remain unchanged. The full-project audit awaits a successful complete build. This paragraph will be replaced with exact successful commit/run evidence after validation.
+**Verified proof snapshot:** [26534d0017c7a7e94ea8834cc279412333923cde](https://github.com/dovvnloading/loops-research-archive/commit/26534d0017c7a7e94ea8834cc279412333923cde). The [successful weighted CI job](https://github.com/dovvnloading/loops-research-archive/actions/runs/46102303283/job/140847317578) reports:
 
-Local Lean installation could not fit the available scratch storage. Ordinary cleanup could not start after the disk filled, and the sandbox policy rejected an exact cleanup escalation. No local compilation is claimed. Development and validation continue through the GitHub connection and unchanged CI; no workflow, trust policy, toolchain, or validator has been weakened.
+- All five new modules built; the complete build succeeded with 9,116 jobs.
+- Source coverage passed for 269 Lean files, with all sources registered and no prohibited proof-trust tokens.
+- `AXIOM_AUDIT_PASS weighted: 220 modules, 5005 declarations`.
+- The five new modules contributed 42 compiled declarations to that audit. Every transitive dependency used only the permitted foundations `propext`, `Classical.choice`, and `Quot.sound`; no new axioms, `sorry`, or `admit` were introduced.
+- One harmless linter warning reports a redundant trailing `ring` tactic in the interval example. Compilation and the dependency audit both passed.
+
+The development history retains two compiler repairs: explicit finite-sum rewrite arguments at [862f2037](https://github.com/dovvnloading/loops-research-archive/commit/862f203770522c7be35f98a3827c16060d4094e6), and explicit division monotonicity in the interval example at [20eac839](https://github.com/dovvnloading/loops-research-archive/commit/20eac839ecc0e098f66bfa379225bb9a0d4302f8). No theorem statements or hypotheses were weakened. A concurrent mechanical merge of current main preserved the five proof files and combined the registry entries; validation was then completed on that merged snapshot. This final documentation update leaves those validated proof sources unchanged.
+
+Local Lean installation could not fit the available scratch storage. Ordinary cleanup could not start after the disk filled, and the sandbox policy rejected an exact cleanup escalation. No local compilation is claimed. Development and validation were completed through the GitHub connection and unchanged CI; no workflow, trust policy, toolchain, or validator has been weakened.
 
 Reproduce with the pinned project:
 
