@@ -54,6 +54,8 @@ formalization/weighted/ActualCrestComponents.lean	CREST
 formalization/weighted/ActualCrestConformalChart.lean	CREST
 formalization/weighted/ActualCrestCrossingWindow.lean	METADATA
 formalization/weighted/ActualCrestEndpoint.lean	METADATA
+formalization/weighted/ActualCrestEndpointDrift.lean	ALL-PATHS
+formalization/weighted/ActualCrestEndpointResponse.lean	ALL-PATHS
 formalization/weighted/ActualCrestIntegral.lean	METADATA
 formalization/weighted/ActualCrestLimit.lean	METADATA
 formalization/weighted/ActualCrestParentPaths.lean	CREST
@@ -61,6 +63,7 @@ formalization/weighted/ActualCrestPaths.lean	CREST
 formalization/weighted/ActualCrestProperFamilies.lean	CREST
 formalization/weighted/ActualCrestProperReturn.lean	METADATA
 formalization/weighted/ActualCrestQuartic.lean	ALL-PATHS
+formalization/weighted/ActualCrestQuarticRelation.lean	ALL-PATHS
 formalization/weighted/ActualCrestQuarticScale.lean	ALL-PATHS
 formalization/weighted/ActualCrestRadialOrder.lean	METADATA
 formalization/weighted/ActualCrestRelationSlope.lean	METADATA
@@ -102,6 +105,10 @@ formalization/weighted/CrestEndpointQuantitative.lean	ALL-PATHS
 formalization/weighted/CrestFirstExit.lean	METADATA
 formalization/weighted/CrestIntegralLimit.lean	METADATA
 formalization/weighted/CrestIterateLimit.lean	METADATA
+formalization/weighted/CrestModelCoordinateBounds.lean	ALL-PATHS
+formalization/weighted/CrestResponseArithmetic.lean	ALL-PATHS
+formalization/weighted/CrestResponseConstants.lean	ALL-PATHS
+formalization/weighted/CrestResponseLinearization.lean	ALL-PATHS
 formalization/weighted/CriticalReturnRelationStability.lean	METADATA
 formalization/weighted/DepthGateAncestors.lean	DEPTH
 formalization/weighted/DepthGateBase.lean	DEPTH

@@ -11,65 +11,266 @@ human_review: none
 
 ## Claim
 
-Draft claim; no new theorem is certified at this initial checkpoint.
+**Validation checkpoint:** the complete proof chain and physical assembly
+are now written in Lean. Compilation and the transitive dependency audit
+are pending; no uncompiled statement is being counted as a proved result.
 
-The target is the literal maximal endpoint `r_p` already selected by
-`GlobalCrestClassification.actual_complete_parent_classification`,
-with its existing complete physical realization in
-`ActualCrestTransportLimit.RealizedCollar`. The proposed new theorem
-determines a strictly positive displacement from the limiting endpoint
-at order `4^(-p)`, with sufficiently tight constants to prove eventual
-strict decrease of the actual endpoints across consecutive periods.
+Write `q_p = (1/4)^p`. Let `c` satisfy the existing `ActualTip p c`, let
+`F` be the existing actual crossing family, and let `r_p` be the unique
+maximal endpoint of the complete actual terminal gate. Let `k_0` be the
+unique limiting parameter and `r_0` its unique limiting endpoint.
 
-The intended final inequalities have no supplied perturbation or
-unidentified surrogate endpoint: they quantify the existing actual
-polynomial return, the unique root of its terminal gate, the complete
-admissible radius interval, and the realized physical collar.
+The new target, stated in `ActualCrestEndpointDrift`, is
+
+\[
+\frac{3}{50}q_p < r_p-r_0 < \frac{21}{100}q_p
+\qquad (p\ge100).
+\]
+
+Consequently the actual maximal endpoints approach the limit from above
+at precisely the first exponential order, and
+
+\[
+r_{p+1}<r_p \qquad (p\ge100).
+\]
+
+The consecutive-period theorem permits independent choices of actual
+parameters and crossing families satisfying the archive's predicates.
+The final existence theorem constructs one sequence of these endpoints,
+proves it strictly decreasing and convergent, and retains the complete
+physical collar realization for the very same radii.
+
+These statements concern the selected maximal circular collars in F17,
+which is the subject of `NOV26_OPEN_CREST_LIMIT`. The radius is selected
+by the literal return's terminal collision and the complete gate set,
+not by an auxiliary extremal problem.
 
 ## Evidence
 
-Started from main `637266b909d5e7566d8e39141f3b135e3405f38f`.
-The previous closed geometric-child attempt #272 is not the base of this
-branch and is not counted as progress here.
+### 1. The new mathematical mechanism
 
-The promising mechanism retains the quartic coefficient of the complete
-physical return. It requires a bound of order `q^2` on every remaining
-term, where `q=4^(-p)`. The actual signed critical relation then controls
-the correlated shift of the quadratic coefficient. Combining both
-effects in the actual terminal collision gives a signed radial response.
-An unsigned map error or the previously proved sign of the quadratic
-coefficient alone does not determine that response.
+Put `d = f_c^p(0)` and `H(z) = f_c^p(d*z)/d`, exactly as in the archive.
+Let `A_n` be the actual quadratic coefficient of `f_c^(n+1)` and define
+its quartic coefficient by the exact recurrence
 
-High-precision exploratory calculations indicate a positive radial
-response, but they are not proof evidence. All final inequalities and
-quantified constants must be proved in the repository's Lean 4 project
-and pass the unchanged CI build and transitive proof audit.
+\[
+B_0=0,\qquad B_{n+1}=2x_{n+1}B_n+A_n^2,
+\qquad x_j=f_c^j(0).
+\]
+
+The normalized quartic coefficient is `beta = B_(p-1)*d^3`.
+`ActualCrestQuartic` proves, for every `ActualTip p c`, `p >= 17`, and
+`|z| <= 3/2`,
+
+\[
+H(z)=1-\kappa z^2+\beta z^4+E(z),\qquad
+|E(z)|\le400q_p^2.
+\]
+
+The estimate bounds the complete polynomial remainder. Its proof
+retains every term of degree six and above in the squaring recurrence;
+it does not discard an unbounded Taylor tail.
+
+`ActualCrestQuarticScale` proves
+
+\[
+\frac7{50}A_{p-1}^2\le B_{p-1}\le\frac{17}{100}A_{p-1}^2,
+\qquad 3q_p<\beta<7q_p.
+\]
+
+The upper bound uses the whole early critical prefix, followed by the
+last two positive orbit points. The lower bound retains the squared
+quadratic contributions of the final two steps. The exact normalized
+return scale then transfers these coefficient bounds to `beta`.
+
+### 2. The correlated parameter correction
+
+Let `u_n = Q_k^n(0)` for `Q_k(x)=1-k*x^2`. The first quartic response
+along this orbit is defined by
+
+\[
+b_0=0,\qquad b_{n+1}=-2ku_n b_n+u_n^4.
+\]
+
+`ActualCrestQuarticRelation` controls the complete actual orbit by
+`u_n + beta*b_n` through the sixth return. Using the actual signed
+relation `H^6(0)+H^3(0)=0`, it obtains
+
+\[
+|R(\kappa)+\beta(b_6+b_3)|\le10^{27}q_p^2,
+\quad R(k)=Q_k^6(0)+Q_k^3(0).
+\]
+
+On the archived parameter isolator, exact rational interval proofs give
+
+\[
+-6.264834\le b_6+b_3\le-6.211794,
+\qquad 6.599964\le R'(k)\le6.656502.
+\]
+
+For `p >= 100`, the remainder is small enough to prove
+
+\[
+\frac{93}{100}\beta<\kappa-k_0<\frac{95}{100}\beta.
+\]
+
+The reference parameter in the finite orbit expansion is the actual
+`kappa`. Thus the parameter shift is subsequently obtained from the
+critical relation, rather than assumed as an independent perturbation.
+
+### 3. The endpoint response and its sign
+
+Write the actual selected endpoint as `z=-x+i*v`, its first image as
+`i*Y`, and its second image as `T`. The actual third image is exactly
+`-1`. The complete quartic remainder gives four scalar equations with
+errors at most `400*q_p^2`:
+
+\[
+\begin{aligned}
+2-\kappa T^2+\beta T^4&\simeq0,\\
+1+\kappa Y^2+\beta Y^4-T&\simeq0,\\
+1-\kappa(x^2-v^2)+\beta(x^4-6x^2v^2+v^4)&\simeq0,\\
+2\kappa xv-4\beta xv(x^2-v^2)-Y&\simeq0.
+\end{aligned}
+\]
+
+The fifth equation is the exact physical circle equation
+`(x-3/4)^2+v^2-r_p^2=0`.
+
+`CrestEndpointQuantitative` first gives explicit coarse proximity of the
+actual radius, point and first two images to the limiting endpoint.
+`CrestModelCoordinateBounds` independently isolates the existing
+limiting parameter by exact signs and strict monotonicity, then isolates
+the positive solution of the backward endpoint equations. Every model
+coordinate is proved within `10^-22` of its declared rational center.
+The centers are not assumed values of the model.
+
+`CrestResponseLinearization` certifies finite differences under addition
+and multiplication, keeping an explicit linear part and a bound on all
+remaining products. `CrestResponseArithmetic` applies this algebra to
+the five equations and forms an exact rational combination eliminating
+`Delta T`, `Delta Y`, `Delta x`, and `Delta v`. It yields
+
+\[
+|\Delta r+P\Delta\kappa+B\beta|\le q_p/20000,
+\]
+
+with
+
+\[
+0.2087\le P\le0.2088,\qquad -0.222\le B\le-0.2219.
+\]
+
+Combining this with the correlated parameter bounds gives the genuinely
+signed endpoint response
+
+\[
+\beta/50<r_p-r_0<3\beta/100.
+\]
+
+The two effects have opposite signs, so neither the old unsigned map
+error nor the prior sign of `kappa-k_0` determines this conclusion.
+The quartic scale bounds then prove the claimed first-order bounds.
+Finally `q_(p+1)=q_p/4` and `21/400 < 3/50` give strict decrease.
+
+### 4. Identification with the actual maximal physical collars
+
+`ActualCrestEndpointResponse.actual_endpoint_quartic_response` supplies
+every arithmetic hypothesis directly from the existing `ActualTip`,
+`Family`, `terminal`, `radialPoint`, and `crestTerminal` objects.
+
+`ActualCrestEndpointDrift.exists_strictly_decreasing_physical_endpoints`
+retains the exact complete set equality
+
+```
+Icc (1/16) (parentOuter p) ∩
+  {s | ActualEndpointGates c p s alpha ∧
+       terminalGate F s ∧ fourthTerminalGate F s}
+= Ico (1/16) r_p.
+```
+
+For the same `r_p` it supplies the existing `RealizedCollar`, including
+proper actual parent and descendant paths, their all-density modulus
+identities, the exact width ratio and full dynamical ancestry. It also
+supplies a point in the physical and archived parent source with
+
+\[
+|z+3d/4|=d r_p,\qquad
+\operatorname{Re} f_c^p(z)=0,\qquad
+\operatorname{Im} f_c^p(z)>0,\qquad f_c^{3p}(z)=-d.
+\]
+
+Thus the normalized radius and the original-plane maximal collar are
+linked by an exact Lean theorem within the final assembly.
+
+### 5. Validation record
+
+The branch started from main `637266b909d5e7566d8e39141f3b135e3405f38f`
+and has integrated subsequent main changes. The previous closed
+geometric-child attempt #272 is not the base and contributes no results
+or proof dependencies to this packet.
+
+Lean is not installed in the local execution environment. The unchanged
+repository CI build and transitive proof audit are the validation judge.
+Every new module is registered using `code/contribute.py lean-add`.
+Current build diagnostics and their repairs are being committed in
+PR #275. Numerical exploration is not used as proof evidence.
 
 ## Dependencies
 
-- Existing actual parameter existence and the physical signed-tip
-  recognition and uniqueness theorems on main.
-- `GlobalCrestClassification` for the unique actual endpoint and exact
-  full-parent admissible set; `GlobalCrestPhysical` for its original-plane
-  collision and proper-return component membership.
-- `UniformCrestTransport` and `ActualCrestTransportLimit` for the complete
-  physical collar and all-density width identities.
-- `ActualCrestSignedDrift` for the prior auxiliary coefficient sign;
-  `LimitingCrestQuadraticReturn` for the complete nonlinear recurrence.
+The proof builds on the existing actual parameter existence, literal
+return recurrence, signed-tip recognition, complete angular and radial
+classification, proper physical paths, and all-density modulus results.
+It uses the following archived modules directly or transitively:
+
+- `LimitingCrestParameter`, `LimitingCrestQuadraticReturn`,
+  `NearTwoShooting`, and `NearTwoTip` for the literal maps and parameter.
+- `ActualCrestRemainderScale` and `TwoLevelPerturbation` for earlier
+  full-polynomial estimates and the actual critical-return scale.
+- `GlobalCrestClassification`, `GlobalCrestFinalCut`, and
+  `GlobalCrestPhysical` for the exact complete gate and physical collision.
+- `ActualCrestTransportLimit` and `UniformCrestTransport` for the same
+  actual collar's proper paths, complete moduli, and ancestry.
+
+Generic finite-difference algebra and final assembly corollaries are
+supporting steps. The new claim is the signed, matching-order law and
+strict period ordering for the already-defined maximal actual endpoint.
 
 ## Boundary
 
-The target is the archive's selected maximal circular collar, not an
-unrestricted KKL Wave optimum. The already proved endpoint convergence,
-every-index persistence, and signed auxiliary coefficient drift are
-prior work, not new claims of this packet. No result is certified at
-this checkpoint. The ledger status remains open.
+This is a quantitative refinement within the selected full-circle
+collar obligation. The already archived endpoint convergence,
+all-period physical persistence, positive transport limit and signed
+auxiliary coefficient drift are prior results, not claims of this packet.
+The ledger's open entry is retained unchanged.
+
+The theorem does not identify selected circular collars with an
+unrestricted KKL Wave optimum. It neither closes general native marking
+or all-Wave comparison gaps nor proves MLC or any H1–H4 assertion.
+The explicit threshold is deliberately conservative. No claim of strict
+endpoint ordering below `p=100`, an optimal displacement constant, or a
+first-order limit for `(r_p-r_0)/q_p` is made.
 
 ## Attribution
 
-The previous actual endpoint, full-parent classification, physical
-modulus realization, and signed return-coefficient results are credited
-to the existing actual-maximal-crest, global-crest-classification,
-actual-crest-path-width and uniform-crest-transport contributions.
-The proposed new content is the correlated quartic-to-physical-endpoint
-response and a signed sharp-order theorem for those same actual endpoints.
+The canonical objects and prior convergence/realization results are due
+to the existing packets
+[actual maximal crest](../actual_maximal_crest_20261127/NOTE.md),
+[global crest classification](../global_crest_classification_20261127/NOTE.md),
+[actual crest path width](../actual_crest_path_width_20261127/NOTE.md), and
+[uniform crest transport](../uniform_crest_transport_20261128/NOTE.md).
+The original finite-period and numerical asymptotic work is
+[crest transport asymptotics](../../research/independent_audits/crest_transport_asymptotics_20261116/NOTE.md).
+
+The earlier actual-maximal-crest packet explicitly allows oscillating
+endpoints. Global classification does not claim a new asymptotic error
+rate. Uniform transport proves a sign for the auxiliary quadratic
+coefficient but does not prove the endpoint's first-order sign or period
+monotonicity. The new quartic/critical-relation/endpoint calculation is
+what removes those remaining possibilities for the actual maximal collar.
+
+Repository and primary-literature searches found no prior version of
+this exact signed endpoint theorem. This records the checked comparison
+with prior work; it is not a claim of an exhaustive worldwide priority
+search. All proof code and exposition are released under the repository's
+CC0 terms; human review is recorded above.

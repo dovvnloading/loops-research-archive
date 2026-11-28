@@ -5212,7 +5212,44 @@
         "model_terminal_growth",
         "actual_endpoint_error",
         "terminal_complex_equality",
-        "actual_endpoint_point_error"
+        "actual_endpoint_point_error",
+        "model_point_norm_le",
+        "model_endpoint_system",
+        "actual_endpoint_first_error",
+        "actual_endpoint_second_error"
+      ],
+      "formalization/weighted/CrestResponseLinearization.lean": [
+        "radius_nonneg",
+        "value_abs",
+        "base_abs",
+        "linear_bound"
+      ],
+      "formalization/weighted/CrestModelCoordinateBounds.lean": [
+        "limiting_parameter_center",
+        "model_system_center_bounds"
+      ],
+      "formalization/weighted/ActualCrestQuarticRelation.lean": [
+        "scale_small_hundred",
+        "actual_quartic_relation_error",
+        "actual_quartic_parameter_correlation"
+      ],
+      "formalization/weighted/CrestResponseConstants.lean": [
+        "reference_coordinates_positive"
+      ],
+      "formalization/weighted/CrestResponseArithmetic.lean": [
+        "endpoint_response_certificate"
+      ],
+      "formalization/weighted/ActualCrestEndpointResponse.lean": [
+        "scale_small_sixty",
+        "actual_endpoint_equations",
+        "model_endpoint_equations",
+        "model_coordinate_centers",
+        "actual_endpoint_quartic_response"
+      ],
+      "formalization/weighted/ActualCrestEndpointDrift.lean": [
+        "actual_endpoint_signed_bounds",
+        "actual_endpoint_strict_decrease",
+        "exists_strictly_decreasing_physical_endpoints"
       ]
     },
     "obligations": []

@@ -82,7 +82,7 @@ theorem complete_quartic_remainder_bound (c : ℝ) (n : ℕ) :
     have hlead : ‖(quadraticCoefficient c n : ℂ)*z^2‖ ≤ t/4 := by
       calc
         ‖(quadraticCoefficient c n : ℂ)*z^2‖ =
-            |quadraticCoefficient c n|*‖z‖^2 := by
+            |quadraticCoefficient c n| *‖z‖^2 := by
           rw [norm_mul, norm_pow, Complex.norm_real, Real.norm_eq_abs]
         _ ≤ (4 : ℝ)^n*r^2 :=
           mul_le_mul ha hz2 (sq_nonneg _) (by positivity)

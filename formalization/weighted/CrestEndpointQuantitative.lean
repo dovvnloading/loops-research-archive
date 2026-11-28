@@ -37,7 +37,7 @@ theorem actual_limit_large_error {p : ℕ} (hp : 17 ≤ p) {c k₀ : ℝ}
   have hmodel : ‖complexMap (kappa p c) z-complexMap k₀ z‖ ≤ 35433*scale p := by
     rw [hid,norm_mul,Complex.norm_real,Real.norm_eq_abs,norm_pow,abs_sub_comm]
     have hm := mul_le_mul hk hz2 (sq_nonneg ‖z‖)
-      (by positivity : 0 ≤ 15748*scale p)
+      (mul_nonneg (by norm_num : (0 : ℝ) ≤ 15748) (scale_pos p).le)
     nlinarith only [hm]
   have htri : ‖normalizedReturn c p z-complexMap k₀ z‖ ≤
       ‖normalizedReturn c p z-complexMap (kappa p c) z‖+
@@ -308,6 +308,124 @@ theorem actual_endpoint_point_error {p : ℕ} (hp : 17 ≤ p) {c k₀ r r₀ : �
       (F.point ⟨r,hrfull⟩) (F.point ⟨r₀,hr₀full⟩) (radialPoint k₀ r₀)
   rw [point,radiusProjection_eq hrfull]
   linarith only [htri,hdist,hpoint,hrad,scale_pos p]
+
+/-- The complete model crossing branch stays in a smaller common disk. -/
+theorem model_point_norm_le {k s : ℝ} (hk : k ∈ parameterInterval)
+    (hs : s ∈ Icc (1/16 : ℝ) (1/8)) :
+    ‖radialPoint k s‖ ≤ (79/100 : ℝ) := by
+  have hk0 : 0 < k := by linarith [hk.1]
+  have hrec : 8/k ≤ (9/2 : ℝ) := by
+    apply (div_le_iff₀ hk0).mpr
+    linarith [hk.1]
+  have hs2 : s^2 ≤ (1/8 : ℝ)^2 :=
+    pow_le_pow_left₀ (by linarith [hs.1]) hs.2 2
+  have hD : radialDiscriminant k s ≤ 19/8 := by
+    unfold radialDiscriminant
+    nlinarith only [hrec,hs2]
+  have hD0 : 0 ≤ radialDiscriminant k s := by
+    have hr : (4 : ℝ) ≤ 8/k := (le_div_iff₀ hk0).mpr (by linarith [hk.2])
+    unfold radialDiscriminant
+    nlinarith only [hr,sq_nonneg s]
+  have hsqrt := Real.sq_sqrt hD0
+  have hroot := Real.sqrt_nonneg (radialDiscriminant k s)
+  have hrootU : Real.sqrt (radialDiscriminant k s) ≤ (8/5 : ℝ) := by
+    nlinarith only [hD,hsqrt,hroot]
+  have hxL : -(31/40 : ℝ) ≤ radialAbscissa k s := by
+    unfold radialAbscissa
+    linarith only [hrootU]
+  have hxU := (radical_bounds hk hs).2.2
+  have hx2 : (radialAbscissa k s)^2 ≤ (31/40 : ℝ)^2 :=
+    sq_le_sq' hxL (by linarith only [hxU])
+  have hcircle := radial_circle_identity hk hs
+  have hv : radialOrdinateSq k s ≤ s^2 := by
+    nlinarith only [hcircle,sq_nonneg (radialAbscissa k s+3/4)]
+  have hy := Real.sq_sqrt (radial_ordinate_pos hk hs).le
+  have hre : (radialPoint k s).re = radialAbscissa k s := by simp [radialPoint]
+  have him : (radialPoint k s).im = Real.sqrt (radialOrdinateSq k s) := by simp [radialPoint]
+  have hn : ‖radialPoint k s‖^2 = (radialAbscissa k s)^2+radialOrdinateSq k s := by
+    rw [Complex.sq_norm,Complex.normSq_apply,hre,him]
+    nlinarith only [hy]
+  nlinarith only [hn,hx2,hv,hs2,norm_nonneg (radialPoint k s)]
+
+/-- Exact real polynomial equations for the model endpoint.  In these
+coordinates the crossing, two subsequent returns and radius are all retained. -/
+theorem model_endpoint_system {k r : ℝ} (hk : k ∈ parameterInterval)
+    (hr : r ∈ Icc (1/16 : ℝ) (1/8)) (he : crestTerminal k r = -1) :
+    0 < (radialPoint k r).im ∧ 0 < radialHeight k r ∧
+      1-k*(1+k*(radialHeight k r)^2)^2 = -1 ∧
+      1-k*((-(radialPoint k r).re)^2-(radialPoint k r).im^2) = 0 ∧
+      2*k*(-(radialPoint k r).re)*(radialPoint k r).im = radialHeight k r ∧
+      (-(radialPoint k r).re-3/4)^2+(radialPoint k r).im^2 = r^2 := by
+  have hmodel := radial_model_realization hk hr
+  have hpos : 0 < (radialPoint k r).im := by
+    simpa only [radialPoint,Complex.add_im,Complex.ofReal_im,Complex.mul_im,
+      Complex.ofReal_re,Complex.I_im,Complex.I_re,mul_one,mul_zero,add_zero,zero_add]
+      using Real.sqrt_pos.mpr (radial_ordinate_pos hk hr)
+  have hthree := hmodel.2.2.2
+  change complexMap k (complexMap k (complexMap k (radialPoint k r))) =
+    (crestTerminal k r : ℂ) at hthree
+  rw [hmodel.2.2.1,complexMap_imaginary,complexMap_real,he] at hthree
+  have hlast := congrArg Complex.re hthree
+  simp only [Complex.ofReal_re,LimitingCrest.realMap] at hlast
+  have hre := congrArg Complex.re hmodel.2.2.1
+  have him := congrArg Complex.im hmodel.2.2.1
+  simp [complexMap,pow_two,Complex.mul_re,Complex.mul_im] at hre him
+  have hcircle := congrArg (fun x : ℝ => x^2) hmodel.1
+  rw [Complex.sq_norm,Complex.normSq_apply] at hcircle
+  norm_num [Complex.add_re,Complex.add_im] at hcircle
+  refine ⟨hpos,hmodel.2.1,hlast,?_,?_,?_⟩
+  · nlinarith only [hre]
+  · nlinarith only [him]
+  · nlinarith only [hcircle]
+
+/-- The first actual endpoint image converges quantitatively to the
+positive imaginary model endpoint image. -/
+theorem actual_endpoint_first_error {p : ℕ} (hp : 17 ≤ p) {c k₀ r r₀ : ℝ}
+    (hc : ActualTip p c) (hk₀ : k₀ ∈ parameterInterval)
+    (hroot : relation k₀ = 0) (F : Family p c)
+    (hr : r ∈ Icc (1/16 : ℝ) (133/2000)) (he : terminal F r = -1)
+    (hr₀ : r₀ ∈ Icc (1/16 : ℝ) (133/2000)) (he₀ : crestTerminal k₀ r₀ = -1) :
+    ‖normalizedReturn c p (point F r)-(radialHeight k₀ r₀ : ℂ)*Complex.I‖ ≤
+      1000000000*scale p := by
+  have hr₀full : r₀ ∈ Icc (1/16 : ℝ) (1/8) := ⟨hr₀.1,by linarith [hr₀.2]⟩
+  have hz : ‖point F r‖ ≤ 3/2 :=
+    (F.point_disk (radiusProjection r)).trans (by norm_num)
+  have hw : ‖radialPoint k₀ r₀‖ ≤ 3/2 :=
+    (model_point_norm_le hk₀ hr₀full).trans (by norm_num)
+  have hpoint := actual_endpoint_point_error hp hc hk₀ hroot F hr he hr₀ he₀
+  have hstep := actual_model_step hp hc hk₀ hroot hz hw
+  rw [(radial_model_realization hk₀ hr₀full).2.2.1] at hstep
+  linarith only [hstep,hpoint,scale_pos p]
+
+/-- The second actual endpoint image converges to the positive real
+model endpoint image, with the same chosen endpoint and return. -/
+theorem actual_endpoint_second_error {p : ℕ} (hp : 17 ≤ p) {c k₀ r r₀ : ℝ}
+    (hc : ActualTip p c) (hk₀ : k₀ ∈ parameterInterval)
+    (hroot : relation k₀ = 0) (F : Family p c)
+    (hr : r ∈ Icc (1/16 : ℝ) (133/2000)) (he : terminal F r = -1)
+    (hr₀ : r₀ ∈ Icc (1/16 : ℝ) (133/2000)) (he₀ : crestTerminal k₀ r₀ = -1) :
+    ‖((normalizedReturn c p)^[2]) (point F r)-
+      ((1+k₀*(radialHeight k₀ r₀)^2 : ℝ) : ℂ)‖ ≤ 7000000000*scale p := by
+  have hr₀full : r₀ ∈ Icc (1/16 : ℝ) (1/8) := ⟨hr₀.1,by linarith [hr₀.2]⟩
+  have hmodel := radial_model_realization hk₀ hr₀full
+  have hparent : ‖point F r+(3/4 : ℂ)‖ ≤ 1/8 := by
+    unfold point
+    rw [F.point_radius]
+    exact (radiusProjection r).property.2
+  have hz : ‖normalizedReturn c p (point F r)‖ ≤ 3/2 :=
+    (first_image_small hp hc hparent).le.trans (by norm_num)
+  have hwmem : radialPoint k₀ r₀ ∈ initialDisk := by
+    change ‖radialPoint k₀ r₀+(3/4 : ℂ)‖ ≤ 133/2000
+    rw [hmodel.1]
+    exact hr₀.2
+  have hw : ‖complexMap k₀ (radialPoint k₀ r₀)‖ ≤ 3/2 :=
+    ((whole_support_bounds hk₀ hwmem).1 1 (by omega)).le.trans (by norm_num)
+  have hfirst := actual_endpoint_first_error hp hc hk₀ hroot F hr he hr₀ he₀
+  have hstep := actual_model_step hp hc hk₀ hroot hz hw
+  rw [hmodel.2.2.1,complexMap_imaginary] at hstep
+  change ‖normalizedReturn c p (normalizedReturn c p (point F r))-
+    ((1+k₀*(radialHeight k₀ r₀)^2 : ℝ) : ℂ)‖ ≤ _
+  linarith only [hstep,hfirst,scale_pos p]
 
 end
 end CrestEndpointQuantitative
