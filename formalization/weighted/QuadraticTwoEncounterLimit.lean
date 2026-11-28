@@ -169,14 +169,8 @@ theorem actual_critical_two_encounter_obstruction
       (𝓝 (QuadraticMobiusEncounter.flight σ u)) := h₀.tendsto_at hu₀
   have hA : Tendsto (fun n => QuadraticMobiusEncounter.encounter (a n) (F₀ n u))
       atTop (𝓝 (w₁ u)) := by
-    have h := hF₀.add (hα.mul (hF₀.pow 2))
-    have heq : ((fun n => F₀ n u) +
-        (fun n => charge (c n) (c n) ((s n)^2) (k₀ n)) * (fun n => F₀ n u)^2) =
-        (fun n => QuadraticMobiusEncounter.encounter (a n) (F₀ n u)) := by
-      funext n
-      rfl
-    rw [heq] at h
-    exact h
+    simpa only [a, w₁, QuadraticMobiusEncounter.encounter] using
+      hF₀.add (hα.mul (hF₀.pow 2))
   have hF₁ : Tendsto
       (fun n => F₁ n (QuadraticMobiusEncounter.encounter (a n) (F₀ n u)))
       atTop (𝓝 (QuadraticMobiusEncounter.flight τ (w₁ u))) :=
@@ -186,17 +180,8 @@ theorem actual_critical_two_encounter_obstruction
       (fun n => QuadraticMobiusEncounter.encounter (b n)
         (F₁ n (QuadraticMobiusEncounter.encounter (a n) (F₀ n u))))
       atTop (𝓝 (w₂ u)) := by
-    have h := hF₁.add (hβ.mul (hF₁.pow 2))
-    have heq :
-        ((fun n => F₁ n (QuadraticMobiusEncounter.encounter (a n) (F₀ n u))) +
-          (fun n => charge (c n) (c n) ((s n)^2) (k₀ n+1+k₁ n)) *
-            (fun n => F₁ n (QuadraticMobiusEncounter.encounter (a n) (F₀ n u)))^2) =
-        (fun n => QuadraticMobiusEncounter.encounter (b n)
-          (F₁ n (QuadraticMobiusEncounter.encounter (a n) (F₀ n u)))) := by
-      funext n
-      rfl
-    rw [heq] at h
-    exact h
+    simpa only [b, w₂, QuadraticMobiusEncounter.encounter] using
+      hF₁.add (hβ.mul (hF₁.pow 2))
   have hF₂ : Tendsto
       (fun n => F₂ n (QuadraticMobiusEncounter.encounter (b n)
         (F₁ n (QuadraticMobiusEncounter.encounter (a n) (F₀ n u)))))

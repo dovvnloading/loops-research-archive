@@ -34,6 +34,15 @@ the explicit quantitative actual-orbit criterion and the sharp finite-encounter
 obstructions in the normalization fixed below. The literature comparison is
 part of the boundary of this claim.
 
+The principal formal entry points are:
+
+| Lean module | Main result |
+| --- | --- |
+| [QuadraticCanonicalObstruction](../../formalization/weighted/QuadraticCanonicalObstruction.lean) | Three persistent actual encounters cannot disappear through the eighth critical jet at the unique canonical scale, under the stated four block-energy hypotheses. |
+| [QuadraticTwoEncounterLimit](../../formalization/weighted/QuadraticTwoEncounterLimit.lean) | Two persistent actual encounters cannot disappear between three locally uniform Möbius flight limits when the whole actual flight tends to the identity. |
+| [QuadraticOriginalShadow](../../formalization/weighted/QuadraticOriginalShadow.lean) | Signed partial-sum control and vanishing square energy give uniform convergence of actual normalized iterates on a fixed disk through zero. |
+| [QuadraticFlightJet](../../formalization/weighted/QuadraticFlightJet.lean) | Exact entire-polynomial identities identify every flight and selected encounter with the actual quadratic recurrence. |
+
 ## Evidence
 
 ### 1. The exact archive frontier
@@ -258,6 +267,8 @@ reality assumption.
 The order eight is meaningful for this three-encounter assertion. Taking
 `a=1`, `b=w`, `d=-1-w`, where `w^2+w+1=0`, cancels `A` and `B`, but not `C`.
 A single Schwarzian or two moment conditions would miss this profile.
+This sharpness is in the ordered encounter algebra. Realization of the
+cancelling profile by canonically normalized actual quadratics is not proved.
 
 The stronger orbit-energy version proves the intervening jet convergence
 instead of assuming it. Write a block's partial charge sums as `S_j`, its
@@ -311,6 +322,8 @@ The nonzero example `(a,b,s,t,r)=(1,i,0,i-2,1-2i)` has cleared defect exactly
 `-u^5`. Thus degree four is insufficient. In the original critical
 coordinate this is a tenth-order obstruction, not the eighth-order statement
 of section 4.
+The sharpness example is a rational profile; its realization by an actual
+quadratic sequence is not asserted.
 
 `QuadraticMobiusEncounter.lean` proves the rational composition formula,
 the sharp bound, and the corresponding germ theorem. The latter says an
@@ -375,6 +388,10 @@ No broad new MLC theorem is claimed.
   canonical-scale obstruction, uniform extension through zero, and rational
   germ theorem. Three continuity proof-script errors in the actual
   two-encounter limit bridge are repaired in the next checkpoint.
+- `e6c88fc`: the moving-point and neighborhood continuity arguments compiled;
+  two unnecessary rewrite steps in the remaining limit argument are removed
+  in the next checkpoint. The complete transitive audit still awaits a
+  successful build of that last module.
 - Local Lean is not installed; the workspace has insufficient disk space for
   the pinned toolchain. The unchanged weighted Lean workflow is the compiler
   and transitive-axiom judge.
