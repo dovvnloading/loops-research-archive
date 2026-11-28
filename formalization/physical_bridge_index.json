@@ -4979,5 +4979,29 @@
       ]
     },
     "obligations": []
+  },
+  "quadratic-fiber-criterion-20261128": {
+    "guide": "contributions/quadratic_fiber_criterion_20261128/NOTE.md#quadratic-fiber-criterion-20261128",
+    "theorems": {
+      "formalization/weighted/QuadraticMixedSusceptibility.lean": [
+        "product_ne_zero",
+        "partialSum_eq_sum",
+        "orbit_difference_eq",
+        "normalized_difference_eq"
+      ],
+      "formalization/weighted/QuadraticMonotoneFiberTopology.lean": [
+        "preconnected_preimage_closed_fibers",
+        "connected_open_basis_of_singleton_fiber"
+      ],
+      "formalization/weighted/QuadraticMixedSusceptibilityMLC.lean": [
+        "mandelbrot_eq_zero_escape",
+        "mandelbrot_isClosed",
+        "mandelbrot_norm_le_three",
+        "mandelbrot_isCompact"
+      ]
+    },
+    "obligations": [
+      "UNIVERSAL_PROTECTED_TOWER_CLOSURE"
+    ]
   }
 }

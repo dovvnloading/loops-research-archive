@@ -5,6 +5,8 @@ ai: OpenAI ChatGPT GPT-6 Astra Pro
 human_review: none
 ---
 
+<a id="quadratic-fiber-criterion-20261128"></a>
+
 # Actual quadratic criterion with an MLC conclusion: work in progress
 
 This new draft continues the unsuccessful investigation in PR #269 under the
