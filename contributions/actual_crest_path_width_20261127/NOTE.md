@@ -11,9 +11,31 @@ human_review: none
 
 ## Claim
 
-This draft attacks the still-open physical path and conformal-width part of NOV26_OPEN_CREST_LIMIT. The current proved checkpoint is the actual q-side descendant family under four literal normalized polynomial returns: complete surviving interiors, real slit endpoints, a common open conformal chart and nonoverlap. The exact physical width and limit are being assembled from these results.
+This draft attacks the still-open physical path and conformal-width part of NOV26_OPEN_CREST_LIMIT. The current proved checkpoint is the actual q-side descendant family under four literal normalized polynomial returns: complete surviving interiors, real slit endpoints, a common open conformal chart, nonoverlap, and the exact original-plane modulus and positive limit. Proper parent parametrization and universal final-family properness are undergoing the final identification checks.
 
 ## Evidence
+
+### Exact physical modulus and limit checkpoint
+
+`ActualCrestWidth.descendants_modulus` computes the modulus of the
+actual `f_c^[4*p]` image family. The modulus is defined by the infimum of
+the planar square-density integral over all measurable admissible
+densities, not by the candidate radial integral. `every_radius_occurs`
+proves that the chart retains the complete image of every selected leaf.
+
+`widthRatio_eq_radialCoefficient` identifies the ratio to the full
+physical circular parent modulus with the previously archived scalar.
+`eventually_all_actual_widthRatio_gt_third` then gives a common
+large-period threshold for every actual parameter. Finally,
+`actual_widthRatios_converge` and `exists_actual_positive_width_limit`
+identify the positive limiting coefficient with the limit of these
+actual image-family modulus ratios. The existence theorem constructs all
+parameter, crossing-family and terminal-endpoint inputs.
+
+This whole module compiles and its 44 declarations pass the transitive
+axiom audit. Proper parent parametrization from the slit point, and a
+universal properness theorem for every member of the final family at the
+classified endpoint, remain under final assembly at this checkpoint.
 
 ### Actual dynamical checkpoint
 
@@ -73,9 +95,9 @@ NOV26_CREST_16; GlobalCrestClassification, GlobalCrestFinalCut, GlobalCrestSourc
 
 ## Boundary
 
-The ledger remains open. The complete real-slit paths and common conformal
-chart are proved; the physical modulus/limit assembly is still in progress
-at this checkpoint. Native KKL immersion marking, Hubbard-tree and
+The ledger remains open. The complete real-slit paths, common conformal
+chart and exact physical image-family modulus/limit are proved; the final
+proper-family identifications are still being assembled. Native KKL immersion marking, Hubbard-tree and
 prime-end identification, arbitrary Wave optima, H1-H4, UPTCR, MLC and
 worldwide priority are not established. The uniform threshold is
 existential, not a certificate for every finite index starting at 17.

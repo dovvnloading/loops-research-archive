@@ -4648,6 +4648,39 @@
         "modulus_eq_radial_integral",
         "modulus_Ioo_eq_ofReal_log",
         "modulus_Ioo_toReal"
+      ],
+      "formalization/weighted/ActualCrestWidth.lean": [
+        "angle_bounds",
+        "angle_continuous",
+        "angular_point_eq_circlePoint",
+        "physicalChart_apply",
+        "circular_leaf_in_chart",
+        "baseFamily_in_chart",
+        "every_radius_occurs",
+        "descendants_modulus",
+        "parentWidth_eq_modulus",
+        "parentWidth_eq",
+        "parentWidth_pos",
+        "physical_parent_circle_mem",
+        "descendants_width_eq_integral",
+        "widthRatio_eq_radialCoefficient",
+        "actual_widthRatio_gt_third",
+        "eventually_all_actual_widthRatio_gt_third",
+        "actual_widthRatios_converge",
+        "exists_actual_positive_width_limit"
+      ],
+      "formalization/weighted/CircularParentModulus.lean": [
+        "point_periodic",
+        "lintegral_full_period",
+        "leafLength_eq_parentEnergy",
+        "fullCircle_zero",
+        "fullCircle_finish",
+        "fullCircle_lineLength",
+        "admissible_iff",
+        "modulus_eq_parentEnergy",
+        "modulus_Ioo_eq_ofReal_log",
+        "modulus_Ioo_ne_top",
+        "modulus_Ioo_toReal"
       ]
     },
     "obligations": []

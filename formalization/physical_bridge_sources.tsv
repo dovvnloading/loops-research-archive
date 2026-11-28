@@ -62,6 +62,7 @@ formalization/weighted/ActualCrestSupport.lean	METADATA
 formalization/weighted/ActualCrestTheorem.lean	METADATA
 formalization/weighted/ActualCrestTransport.lean	METADATA
 formalization/weighted/ActualCrestUpperGate.lean	METADATA
+formalization/weighted/ActualCrestWidth.lean	CREST
 formalization/weighted/ActualParentMarks.lean	SELECTED
 formalization/weighted/ActualParentRate.lean	ALL-PATHS
 formalization/weighted/ActualParentSupremum.lean	ALL-PATHS
@@ -73,6 +74,7 @@ formalization/weighted/ChebyshevQuotientRigidity.lean	METADATA
 formalization/weighted/CircularCrestEnergy.lean	METADATA
 formalization/weighted/CircularCrestModulus.lean	METADATA
 formalization/weighted/CircularParentEnergy.lean	METADATA
+formalization/weighted/CircularParentModulus.lean	METADATA
 formalization/weighted/CloneBounds.lean	CLONE EDGE
 formalization/weighted/ClonePolynomialRoots.lean	CLONE EDGE
 formalization/weighted/CloneRoot.lean	CLONE EDGE
