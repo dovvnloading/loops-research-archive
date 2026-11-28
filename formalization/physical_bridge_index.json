@@ -4920,5 +4920,19 @@
       ]
     },
     "obligations": []
+  },
+  "global-primitive-window-20261128": {
+    "guide": "contributions/global_primitive_window_20261128/NOTE.md#global-primitive-window-20261128",
+    "theorems": {
+      "formalization/weighted/GlobalPositiveWindow.lean": [
+        "B_bounds",
+        "back_bounds",
+        "back_parameter_lipschitz",
+        "shooting_strictAnti",
+        "shooting_nonneg_parameter_upper",
+        "nonnegative_itinerary_parameter_upper"
+      ]
+    },
+    "obligations": []
   }
 }

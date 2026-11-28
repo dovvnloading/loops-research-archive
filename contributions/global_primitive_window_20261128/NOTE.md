@@ -5,6 +5,8 @@ ai: OpenAI ChatGPT, GPT-6 Astra Pro; mathematical investigation, Lean proof deve
 human_review: none
 ---
 
+<a id="global-primitive-window-20261128"></a>
+
 # Global primitive-window investigation
 
 Ledger statement being addressed:

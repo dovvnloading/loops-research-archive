@@ -129,6 +129,7 @@ formalization/weighted/GlobalCrestLimit.lean	METADATA
 formalization/weighted/GlobalCrestOrder.lean	METADATA
 formalization/weighted/GlobalCrestPhysical.lean	METADATA
 formalization/weighted/GlobalCrestSourceGates.lean	METADATA
+formalization/weighted/GlobalPositiveWindow.lean	METADATA
 formalization/weighted/GraphWeightedBridge.lean	CLONE EDGE
 formalization/weighted/LeastSaturatedCarrier.lean	METADATA
 formalization/weighted/LimbInsertionHolonomy.lean	CUTS CREST
