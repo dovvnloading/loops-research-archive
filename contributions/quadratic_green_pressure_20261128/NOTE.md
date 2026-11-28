@@ -22,11 +22,15 @@ This packet studies the actual quadratic family
 Write `M={c:G(c)=0}`; the imported Lean theorem identifies this set
 with the bounded critical-orbit locus.
 
-**Validation status at this working revision:** the five core and Cauchy
-modules compiled in the unchanged weighted workflow. The first boundary
-density build reported two proof-script errors (an associativity rewrite
-and the namespace of `frontier`); this revision repairs both.
-The final full build and transitive axiom audit remain pending.
+**Formal proof status:** all six modules, containing 52 public theorem
+declarations and their supporting private lemmas, compile with Lean 4.32.0
+at `51d57f254b023a13d77fc12e7ef79a1848939fcc`. The
+[weighted CI record](https://github.com/dovvnloading/loops-research-archive/actions/runs/46118043865)
+contains the full-project build, source trust checks and transitive axiom
+audit. The latest integration checks are available on
+[PR 264](https://github.com/dovvnloading/loops-research-archive/pull/264/checks).
+The theorem count includes auxiliary identities and calibrations; it is
+not a claim of 52 independent research discoveries.
 
 ### A. A finite partition certificate for actual Green sublevel disks
 
@@ -182,7 +186,9 @@ complex-analysis principle.
 
 ### Exact archive gap
 
-The base is main at `6a10209b3cc51878bc45de7668894757b2575e08`.
+The initial research base is main at
+`6a10209b3cc51878bc45de7668894757b2575e08`. The submitted branch
+incorporates main through `6964d70bea8a68acae4a627b421086b29f6f63b3`.
 
 The proved ledger row `CONDITIONAL_REDUCTION` says:
 
