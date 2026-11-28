@@ -41,7 +41,7 @@ theorem physicalAmplitude_scale {p : ℕ} (hp : 17 ≤ p) {c : ℝ}
   unfold physicalAmplitude slitAmplitude
   rw [critical_sixth_eq_scale hp hc]
   apply congrArg amplitude
-  unfold normalize
+  unfold SlitJoukowski.normalize
   have he : (2 / (criticalValue c p * centralRadius c p)) * criticalValue c p =
       2 / centralRadius c p := by
     field_simp [hc.2.1.ne', (centralRadius_pos hp hc).ne']
@@ -129,7 +129,7 @@ theorem physical_amplification {p : ℕ} (hp : 17 ≤ p) {c : ℝ}
   have h := actual_amplification hp hc hw
   rw [← physicalAmplitude_scale hp hc w,
     ← physicalAmplitude_scale hp hc (threeReturn c p w)] at h
-  rw [normalized_iterate_scale c p hc.2.1.ne' 3 w, he] at h
+  rw [threeReturn, normalized_iterate_scale c p hc.2.1.ne' 3 w, he] at h
   exact h
 
 /-- Explicit finite escape for the literal quadratic iterate. Its budget
