@@ -81,7 +81,7 @@ theorem physicalInterval_eq {p : ℕ} (hp : 17 ≤ p) {c : ℝ}
     · apply congrArg (fun s : ℝ => (s : ℂ))
       change -criticalValue c p*centralRadius c p*
         (-r/(criticalValue c p*centralRadius c p)) = r
-      field_simp [hs.ne']
+      field_simp [hc.2.1.ne', (centralRadius_pos hp hc).ne']
       <;> ring
 
 /-- The explicit angular coordinate uses the literal sixth critical
@@ -100,7 +100,7 @@ theorem physicalAngle_physicalPoint {p : ℕ} (hp : 17 ≤ p) {c : ℝ}
   rw [critical_sixth_eq_scale hp hc]
   simp only [physicalPoint, Complex.ofReal_re]
   apply congrArg Real.arccos
-  field_simp [hs.ne']
+  field_simp [hc.2.1.ne', (centralRadius_pos hp hc).ne']
   <;> ring
 
 /-- The literal three-return preserves the entire physical carrier. -/

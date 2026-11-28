@@ -43,8 +43,10 @@ theorem physical_precritical_mesh {p : ℕ} (hp : 17 ≤ p) {c : ℝ}
     simp only [physicalPoint, Complex.ofReal_re]
     ring
   rw [hlen] at hsize
-  have hthreshold : Real.pi*(19/30 : ℝ)^n < x-y :=
-    (mul_lt_mul_left hs).mp (by simpa only [mul_assoc] using hsize)
+  have hthreshold : Real.pi*(19/30 : ℝ)^n < x-y := by
+    by_contra! h
+    have hm := mul_le_mul_of_nonneg_left h hs.le
+    exact (not_lt_of_ge hm) (by simpa only [mul_assoc] using hsize)
   have hratio : (19*centralRadius c p)/(2*(15*centralRadius c p)) = (19/30 : ℝ) := by
     field_simp [ht.ne']
     <;> ring
