@@ -17,6 +17,7 @@ open scoped Topology
 open NearTwoTip NearTwoShooting LimitingCrest LoopsLimitingCrestParameter
 open LimitingCrestQuadraticReturn CrestIntegralLimit
 open GlobalCrestCrossing GlobalCrestClassification GlobalCrestPhysical
+open GlobalCrestFinalCut
 
 noncomputable section
 
@@ -87,7 +88,10 @@ theorem exists_complete_parents_and_positive_limit :
                 terminal (F n) s = -1 ↔ s = radii n) ∧
               Icc (1/16 : ℝ) (parentOuter (n+17)) ∩
                 {s | GlobalCrestSourceGates.ActualEndpointGates (c n) (n+17) s (α n) ∧
-                  terminalGate (F n) s} = Ico (1/16) (radii n)) ∧
+                  terminalGate (F n) s ∧ fourthTerminalGate (F n) s} =
+                    Ico (1/16) (radii n)) ∧
+            (∀ n, (1/3 : ℝ) <
+              radialCoefficient (n+17) (realAngle (F n)) (radii n)) ∧
             (∀ n, ∃ z : ℂ,
               z ∈ ThreeReturnParent.physicalParentSource (c n) (n+17) ∧
               z ∈ ThreeReturnParent.archivedParentSource (c n) (n+17) ∧
@@ -107,11 +111,14 @@ theorem exists_complete_parents_and_positive_limit :
   choose c hc using fun n : ℕ => exists_actual_tip (n+17) (by omega)
   let F (n : ℕ) : Family (n+17) (c n) :=
     Classical.choice (exists_family (by omega) (hc n))
-  choose α hα hfixed radii hr he hanti hunique hterminal hcomplete hcomponent using
-    fun n => actual_complete_parent_classification (by omega) (hc n) (F n)
-  refine ⟨k₀,hk₀,hroot,c,hc,F,α,radii,?_,?_,?_⟩
+  choose α hα hfixed radii hr he hanti hunique hcomplete using
+    fun n => actual_complete_cut_classification (by omega) (hc n) (F n)
+  refine ⟨k₀,hk₀,hroot,c,hc,F,α,radii,?_,?_,?_,?_⟩
   · intro n
     exact ⟨hα n,hfixed n,hr n,he n,hanti n,hunique n,hcomplete n⟩
+  · intro n
+    exact GlobalCrestCoefficient.actual_radialCoefficient_gt_third
+      (by omega) (hc n) (F n) ⟨(hr n).1.le,(hr n).2.le⟩
   · intro n
     exact actual_physical_endpoint (by omega) (hc n) (F n) (hr n) (he n)
   · exact actual_global_coefficients_converge hk₀ hroot c hc F radii hr he

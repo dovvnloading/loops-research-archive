@@ -225,7 +225,9 @@ theorem actual_fourth_critical_bounds {p : ℕ} (hp : 17 ≤ p) {c : ℝ}
     0 < (((normalizedReturn c p)^[4]) 0).re ∧
       (((normalizedReturn c p)^[4]) 0).re < 1 := by
   have h := (critical_bounds hp hc).c4
-  rw [← actualOrbit_cast c 0 p 4]
+  have he := actualOrbit_cast c 0 p 4
+  simp only [Complex.ofReal_zero] at he
+  rw [← he]
   simp only [Complex.ofReal_re]
   constructor <;> linarith [h.1,h.2]
 

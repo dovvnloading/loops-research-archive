@@ -95,7 +95,7 @@ private theorem actual_quadratic_step {p : ℕ} (hp : 17 ≤ p) {c : ℝ}
       1/100000000+6*‖z-w‖ := by
   have hk := hc.2.2.2.1
   have he := actual_return_error_small hp hc hz
-  have hl := quadratic_large_lipschitz (by linarith [hk.1])
+  have hl := quadratic_large_lipschitz (κ := kappa p c) (by linarith [hk.1])
     (by linarith [hk.2]) hz hw
   calc
     _ ≤ ‖normalizedReturn c p z-complexMap (kappa p c) z‖+

@@ -4125,6 +4125,10 @@
         "actual_inner_integral_lower",
         "parent_log_bounds",
         "actual_radialCoefficient_gt_third"
+      ],
+      "formalization/weighted/GlobalCrestFinalCut.lean": [
+        "actual_fourth_terminal_gate",
+        "actual_complete_cut_classification"
       ]
     },
     "obligations": []

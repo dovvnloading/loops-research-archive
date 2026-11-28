@@ -1,4 +1,5 @@
-import GlobalCrestClassification
+import GlobalCrestFinalCut
+import GlobalCrestCoefficient
 import ActualCrestProperReturn
 import ActualCrestEndpoint
 
@@ -15,6 +16,7 @@ namespace GlobalCrestPhysical
 open Set Function
 open NearTwoTip NearTwoShooting LimitingCrestQuadraticReturn LimitingCrest
 open GlobalCrestCrossing GlobalCrestOrder GlobalCrestClassification
+open GlobalCrestFinalCut
 open ThreeReturnParent ActualCrestProperReturn
 
 noncomputable section
@@ -135,8 +137,10 @@ theorem exists_actual_complete_parent (p : ℕ) (hp : 17 ≤ p) :
           StrictAntiOn (terminal F) (Icc (1/16 : ℝ) (1/8)) ∧
           (∀ s ∈ Icc (1/16 : ℝ) (1/8), terminal F s = -1 ↔ s = r) ∧
           Icc (1/16 : ℝ) (parentOuter p) ∩
-            {s | GlobalCrestSourceGates.ActualEndpointGates c p s α ∧ terminalGate F s} =
+            {s | GlobalCrestSourceGates.ActualEndpointGates c p s α ∧
+              terminalGate F s ∧ fourthTerminalGate F s} =
               Ico (1/16) r ∧
+          (1/3 : ℝ) < CrestIntegralLimit.radialCoefficient p (realAngle F) r ∧
           ∃ z : ℂ, z ∈ physicalParentSource c p ∧ z ∈ archivedParentSource c p ∧
             ‖z+((3*criticalValue c p/4 : ℝ) : ℂ)‖ = criticalValue c p*r ∧
             (((quadraticMap c)^[p]) z).re = 0 ∧
@@ -144,9 +148,10 @@ theorem exists_actual_complete_parent (p : ℕ) (hp : 17 ≤ p) :
             ((quadraticMap c)^[3*p]) z = -(criticalValue c p : ℂ) := by
   obtain ⟨c,hc⟩ := exists_actual_tip p hp
   obtain ⟨F⟩ := exists_family hp hc
-  obtain ⟨α,hα,hfixed,r,hr,hzero,hanti,hunique,_,hcomplete,_⟩ :=
-    actual_complete_parent_classification hp hc F
+  obtain ⟨α,hα,hfixed,r,hr,hzero,hanti,hunique,hcomplete⟩ :=
+    actual_complete_cut_classification hp hc F
   exact ⟨c,hc,F,α,hα,hfixed,r,hr,hzero,hanti,hunique,hcomplete,
+    GlobalCrestCoefficient.actual_radialCoefficient_gt_third hp hc F ⟨hr.1.le,hr.2.le⟩,
     actual_physical_endpoint hp hc F hr hzero⟩
 
 end

@@ -103,6 +103,7 @@ formalization/weighted/GlobalCrestCoefficient.lean	METADATA
 formalization/weighted/GlobalCrestCrossing.lean	METADATA
 formalization/weighted/GlobalCrestEndpointValues.lean	METADATA
 formalization/weighted/GlobalCrestEstimates.lean	METADATA
+formalization/weighted/GlobalCrestFinalCut.lean	METADATA
 formalization/weighted/GlobalCrestLimit.lean	METADATA
 formalization/weighted/GlobalCrestOrder.lean	METADATA
 formalization/weighted/GlobalCrestPhysical.lean	METADATA
