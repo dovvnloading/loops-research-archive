@@ -5,6 +5,8 @@ ai: OpenAI ChatGPT, GPT-6 Astra Pro; mathematical development, Lean proof implem
 human_review: none
 ---
 
+<a id="uniform-crest-transport-20261128"></a>
+
 # Draft: complete physical crest transport for every period p >= 17
 
 ## Claim

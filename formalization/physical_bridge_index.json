@@ -4733,5 +4733,25 @@
       ]
     },
     "obligations": []
+  },
+  "uniform-crest-transport-20261128": {
+    "guide": "contributions/uniform_crest_transport_20261128/NOTE.md#uniform-crest-transport-20261128",
+    "theorems": {
+      "formalization/weighted/UniformCrestSupport.lean": [
+        "whole_support_bounds_of_error",
+        "actual_support_quantitative",
+        "actual_strict_support",
+        "actual_support_radius_margin"
+      ],
+      "formalization/weighted/UniformCrestTransport.lean": [
+        "all_period_support_in_archived_parent",
+        "all_period_realize_collar",
+        "every_actual_tip_realizes_collar",
+        "all_period_proper_moduli",
+        "exists_proper_collar_at_every_period",
+        "exists_all_period_proper_physical_transport_limit"
+      ]
+    },
+    "obligations": []
   }
 }

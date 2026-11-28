@@ -254,6 +254,8 @@ formalization/weighted/TwoLevelPhysicalGate.lean	METADATA
 formalization/weighted/TwoLevelPhysicalGates.lean	METADATA
 formalization/weighted/TwoLevelReference.lean	METADATA
 formalization/weighted/TwoLevelSelection.lean	METADATA
+formalization/weighted/UniformCrestSupport.lean	CREST
+formalization/weighted/UniformCrestTransport.lean	CREST
 formalization/weighted/UniformThreeReturn.lean	METADATA
 formalization/weighted/UniformThreeReturnRenormalization.lean	METADATA
 formalization/weighted/WeightedReturn.lean	CLONE EDGE
