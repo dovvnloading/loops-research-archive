@@ -4041,6 +4041,33 @@
         "sample_witness_injective",
         "exists_injective_samples",
         "packing_energy_lower_bound"
+      ],
+      "formalization/weighted/ConnectedFiberEnergy.lean": [
+        "connected_cubic_energy_bound",
+        "finite_energy_certificate",
+        "sample_cover_of_enclosing_cells",
+        "finite_cell_energy_certificate"
+      ],
+      "formalization/weighted/FiberEnergyCollapse.lean": [
+        "connected_sampling_cost_lower_bound",
+        "no_low_cost_cover_of_separated_pair",
+        "subsingleton_of_fineEnergyCertificates",
+        "fineEnergyCertificates_of_subsingleton",
+        "fineEnergyCertificates_iff_subsingleton",
+        "injective_of_fiber_energy_certificates",
+        "relation_trivial_of_fiber_energy_certificates",
+        "complex_fiber_assignment_trivial",
+        "isHomeomorph_of_quotient_fiber_energy_certificates",
+        "isHomeomorph_of_compact_fiber_energy_certificates",
+        "locallyConnectedSpace_of_quotient_fiber_energy_certificates",
+        "locallyConnectedSpace_of_compact_fiber_energy_certificates"
+      ],
+      "formalization/weighted/FiberEnergySharpness.lean": [
+        "intervalGrid_mem",
+        "intervalGrid_cover",
+        "intervalGrid_energy_le",
+        "unit_interval_quadratic_radius_certificates",
+        "quadratic_radius_weakening_counterexample"
       ]
     },
     "obligations": [

@@ -27,6 +27,12 @@ This investigation deliberately leaves the marked-width construction. The propos
 
 `FiberSamplePacking.lean` now supplies finite witness selection, injectivity from strict separation, and the unnormalized quadratic energy lower bound. It is registered as a default weighted target and its public theorems are indexed. CI compilation and the transitive dependency audit are pending; no proof success is claimed before those finish.
 
+### Cubic bound, collapse, and obstruction checkpoint
+
+The registered Lean source now states and proves the cubic packing estimate `dist x y ^ 3 ≤ 1024 * r * energy s a`, the finite tolerance certificate with an upper energy budget, and the explicit cell enclosure transfer. Connected sets admitting arbitrarily fine covers with arbitrarily small `r * energy` are proved trivial. Quotient and compact-to-Hausdorff corollaries propagate that to a homeomorphism and local connectivity when the quotient is locally connected.
+
+`FiberEnergySharpness.lean` constructs grids covering the entire nontrivial unit interval with arbitrarily small `r ^ 2 * energy`; this refutes that weakening of the criterion. These are complete proposed proof sources, with CI compilation and dependency audit still pending. No success is inferred from source inspection alone.
+
 ## Dependencies
 
 Research target: `H4_RIGIDITY`; its prerequisite `H3_COERCIVITY` remains open. Planned Lean proofs use the repository-pinned Mathlib. No new analytic input is assumed proved.
