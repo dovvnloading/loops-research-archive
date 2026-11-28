@@ -61,6 +61,8 @@ formalization/weighted/ActualCrestTheorem.lean	METADATA
 formalization/weighted/ActualCrestTransport.lean	METADATA
 formalization/weighted/ActualCrestUpperGate.lean	METADATA
 formalization/weighted/ActualParentMarks.lean	SELECTED
+formalization/weighted/ActualParentRate.lean	ALL-PATHS
+formalization/weighted/ActualParentSupremum.lean	ALL-PATHS
 formalization/weighted/AtomCutDefect.lean	CUTS CREST
 formalization/weighted/AttachmentDefectLedger.lean	DEFECT
 formalization/weighted/BinaryShiftExactness.lean	METADATA
@@ -181,6 +183,7 @@ formalization/weighted/SlitWaveEscape.lean	METADATA
 formalization/weighted/SlitWaveFinite.lean	ALL-PATHS
 formalization/weighted/SlitWaveLimit.lean	ALL-PATHS
 formalization/weighted/SlitWaveModulus.lean	METADATA
+formalization/weighted/SlitWaveScaling.lean	ALL-PATHS
 formalization/weighted/SpectralDominance.lean	CLONE EDGE
 formalization/weighted/StationaryCanonicalLift.lean	VARIABLE-EXIT
 formalization/weighted/StationaryCompactContact.lean	METADATA

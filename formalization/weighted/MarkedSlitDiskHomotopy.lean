@@ -151,6 +151,38 @@ theorem LeftClassIn.forget {M : Marking} {D : Set ℂ} {γ : Curve}
   obtain ⟨η,hη,hγη⟩ := h
   exact ⟨η,hη,hγη.forget⟩
 
+theorem RelSlitHomotopyIn.coordinateMap {M : Marking} {D : Set ℂ} {γ η : Curve}
+    (hγη : RelSlitHomotopyIn M D γ η) (h : CoordinateEmbedding) :
+    RelSlitHomotopyIn (M.coordinateMap h) (h.plane '' D)
+      (coordinateCurve h γ) (coordinateCurve h η) := by
+  obtain ⟨F⟩ := hγη
+  refine ⟨{
+    toContinuousMap := h.plane.comp F.toHomotopy.toContinuousMap
+    map_zero_left := ?_
+    map_one_left := ?_
+    prop' := ?_ }⟩
+  · intro t
+    change h.plane (F (initial,t)) = h.plane (γ t)
+    exact congrArg h.plane (F.map_zero_left t)
+  · intro t
+    change h.plane (F (terminal,t)) = h.plane (η t)
+    exact congrArg h.plane (F.map_one_left t)
+  · intro s
+    refine ⟨?_, ?_, ?_⟩
+    · change h.plane (F (s,initial)) = h.plane (γ initial)
+      exact congrArg h.plane (F.prop s).1
+    · change h.plane (F (s,terminal)) = h.plane (γ terminal)
+      exact congrArg h.plane (F.prop s).2.1
+    · intro t ht
+      exact ⟨⟨F (s,t), ((F.prop s).2.2 t ht).1, rfl⟩,
+        (h.plane_mem_slit_iff M (F (s,t))).not.mpr ((F.prop s).2.2 t ht).2⟩
+
+theorem LeftClassIn.coordinateMap {M : Marking} {D : Set ℂ} {γ : Curve}
+    (hγ : LeftClassIn M D γ) (h : CoordinateEmbedding) :
+    LeftClassIn (M.coordinateMap h) (h.plane '' D) (coordinateCurve h γ) := by
+  obtain ⟨η,hη,hγη⟩ := hγ
+  exact ⟨coordinateCurve h η, hη.coordinateMap h, hγη.coordinateMap h⟩
+
 /-- A plane-slit left class of a proper target-disk leaf has a literal
 relative-endpoint homotopy inside that target disk.  This is the converse
 direction needed to identify the finite physical arc class; it is not an

@@ -7,61 +7,277 @@ human_review: none
 
 <a id="marked-wave-supremum-limit-20261127"></a>
 
-# Convergence of the unrestricted parent Wave supremum
+# Quantitative convergence of the complete actual parent Wave supremum
 
 ## Claim
 
-This is an early draft investigation. No new compiled theorem or completed progress is claimed yet. The provisional partial designation does not assert that a result has been obtained.
+For every sequence of quadratic parameters satisfying the archive's existing
+`NearTwoTip.ActualTip` predicate, the complete unrestricted parent slit-Wave
+suprema converge to a finite limiting marked-plane supremum. The parameters
+exist by a previously compiled construction. The new theorem supplies an
+explicit finite-period error estimate and proves the same statement in the
+original dynamical disks, with literal critical-orbit marks and relative
+homotopies contained in those disks.
 
-The target is the convergence clause for the unrestricted parent optimum in NOV26_OPEN_OPTIMAL_LIMIT. The November 23 full-path proof explicitly does not prove continuity of the optimizers or convergence of these suprema. Exact values, optimizer attainment, the covering-restricted optimum, and simultaneous child convergence are outside this claim.
+This advances the convergence clause of `NOV26_OPEN_OPTIMAL_LIMIT`. The
+remaining identification with the narrower named canonical parameter
+selection, the external ideal-boundary terminology, and the other clauses of
+the composite obligation are stated under **Boundary**. The ledger is unchanged.
 
-## Proposed argument
+### Exact objects and quantifiers
 
-Normalize by the actual positive return scale d_p. The parent surface is the disk of radius R_p/d_p minus the real slit [x_{2p}/d_p,1], with the two ending atoms over (x_{5p}/d_p,x_{3p}/d_p) and the relative homotopy class around the left tip.
+Write
 
-Four real cutpoints converge, and R_p/d_p tends to infinity. A small explicit Lipschitz perturbation of the horizontal coordinate can match every inner mark. It preserves simple leaves, their banks, their full selected homotopy class, and disjointness.
+\[
+ f_c(z)=z^2+c,\qquad x_j(c)=f_c^j(0),\qquad d_p=x_p(c_p)>0.
+\]
 
-The missing global step is quantitative control of every discarded leaf when truncating a limiting Wave. A density on N disjoint dyadic shells should bound the modulus of all escaping leaves by 3*pi/N. Combining this proved cutoff with proved modulus distortion should give convergence of the complete supremum without assuming an optimizer exists.
+For every integer \(p\ge17\), `ActualTip p c_p` requires
+\(c_p\in[-2,-2+20\,4^{-p}]\), \(0<d_p\le12\,4^{-p}\), the
+normalized coefficient `kappa p c_p` in \([1.7903,1.7904]\), the exact signed
+relation \(x_{6p}+x_{3p}=0\), \(x_{3p}<0\), and
+\(|x_j|\le2\) for \(j\le p\). These are the existing definition and
+existence theorem in
+[`NearTwoTip.lean`](../../formalization/weighted/NearTwoTip.lean).
+The universal convergence theorem accepts **any** sequence satisfying that
+predicate; the existential endpoint constructs such a sequence in Lean.
 
-These are obligations to prove, not premises to be inserted into an abstract convergence certificate. The actual marked family, its Borel sublaminations, and the connection to the actual critical-orbit sequence must be made explicit.
+The physical outer disk, slit, and two ending atoms are exactly
 
-## Evidence and validation
+\[
+ U_p=D(0,2^{-p}),\qquad [x_{2p},x_p],\qquad
+ (x_{5p},x_{3p})_{\rm lower},\ (x_{5p},x_{3p})_{\rm upper}.
+\]
 
-Implementation is in progress. A result counts only after the relevant Lean theorem compiles in the repository project and unchanged CI, without proof holes or new axioms. Existing baseline checks do not validate this proposed result.
+A parent leaf is an arbitrary continuous arc, injective on its open parameter
+interval, with interior in the slit complement, initial and terminal ends on
+the indicated opposite banks, and a literal endpoint-fixed homotopy to a simple
+reference arc passing to the left of the slit. Physical endpoints may coincide
+because their slit-bank accesses differ. A parent Wave is an arbitrary family
+of such arcs with pairwise disjoint interiors and **Borel geometric support**.
+There is no Borel leaf-space, smoothness, finite-length, optimizing-foliation,
+or transverse-measure assumption.
 
-### First compiled checkpoint
+For a family of traces \(\Gamma\), the conformal modulus is
 
-The initial analytic modules now compile locally with the repository's pinned Lean and mathlib versions. SlitWaveModulus proves the distortion of the genuine infimum over measurable densities by constructing and bounding the transported density. SlitWaveEscape constructs a common density of exact area 3*pi/N for every connected trace that crosses N dyadic shells. Hausdorff one-measure on a simple trace includes leaves of infinite length, so finite total variation is not silently imposed on the native family.
+\[
+ \operatorname{Mod}(\Gamma)
+ =\inf_{\rho}\int_{\mathbb C}\rho^2\,dA,
+ \qquad \int_S\rho\,d\mathcal H^1\ge1\quad(S\in\Gamma),
+\]
 
-These analytic tools are classical and are not submitted as the new result. The required novelty remains convergence of the complete actual marked parent supremum. The marked-family transport, uniform passage to the supremum, literal critical-orbit specialization, and unchanged CI validation are still being completed.
+where the infimum ranges over all measurable nonnegative extended-real
+densities. Hausdorff one-measure on the simple trace imposes no rectifiability
+restriction. Let \(P_p\) be the supremum of these moduli over **all** parent
+Waves just defined. `physicalParentWidth` is this complete supremum in the
+original disk.
 
-The limiting surface is the plane minus the limiting slit. Its end at infinity is a cusp, whereas the finite physical surfaces satisfy the source's no-cusp standing convention. The proposed limit is therefore called the limiting marked plane-slit supremum; it is not asserted that the limiting surface itself satisfies every A.1 standing hypothesis.
+Let \(Q_k(z)=1-kz^2\), and let \(k_*\in[1.7903,1.7904]\) be the unique
+root of
 
-### Whole-family and actual-orbit checkpoint
+\[
+ Q_{k_*}^{6}(0)+Q_{k_*}^{3}(0)=0.
+\]
 
-The compiled geometric family now requires a Borel union of disjoint simple proper leaves. It does not require a Borel set of chosen parametrizations. Each leaf has the exact opposite-bank endpoint conditions and a literal endpoint-fixed homotopy in the selected left-tip class. Finite-cut transport composes this entire homotopy and preserves the geometric Borel support.
+Put
 
-The exhaustion argument compresses the entire Wave by a proved continuous injective coordinate map. It fixes the large inner square and maps the whole plane into a bounded square. All originally bounded leaves are retained literally. Thus the proof uses modulus subadditivity on the escaping family without asserting that an arbitrary selected subfamily is itself a Borel Wave.
+\[
+ a_*=(Q_{k_*}^{2}(0),Q_{k_*}^{5}(0),Q_{k_*}^{3}(0),1),\qquad
+ a_p=(x_{2p}/d_p,x_{5p}/d_p,x_{3p}/d_p,1).
+\]
 
-ActualParentMarks also compiles. Its four coordinates are the literal values x_(2p)/x_p, x_(5p)/x_p, x_(3p)/x_p, and 1. It proves their order and convergence for the actual constructed quadratic parameters and proves the actual normalized target radius is at least 2^p/12. These geometric convergence statements are derived from the existing actual-tip estimates; they are not assumed as a replacement for the physical problem.
+The limiting width \(P_\infty\) is the same complete marked supremum in the
+plane minus the slit with cuts \(a_*\). Lean proves the finite real limit
 
-The final supremum theorem and its physical positive-dilation identification are still under validation at this checkpoint. No completed novelty claim is made for these intermediate modules alone.
+\[
+ P_p<\infty,\qquad P_\infty<\infty,\qquad
+ \boxed{P_p\longrightarrow P_\infty}.
+\]
 
-### Complete geometric supremum checkpoint
+### Explicit finite-period comparison
 
-SlitWaveLimit.width_tendsto_of_mark_convergence now compiles. It proves convergence of the full geometric Borel parent supremum from convergence of the four marks and exhaustion by the actual outer disks. Both quantitative modulus comparisons and the uniform escape error are proved in the project; the final limit passage does not assume them.
+Define
 
-The additional compiled modules prove a finite common metric for all parent leaves and reflect the selected plane-slit homotopy into each sufficiently large finite target disk. Thus neither infinite optimal width nor the use of a homotopy outside the physical target is being hidden. The original broad Mathlib imports in four older modules are restored in this checkpoint, so the submitted change does not alter those older proofs' dependency environment.
+\[
+ E_p=\sum_{i=0}^{3}|a_{p,i}-a_{*,i}|,\qquad
+ B_p=4\cdot3906\cdot23646\cdot4^{-p},\qquad
+ D_p=\left(\frac{1+100E_p}{1-100E_p}\right)^2.
+\]
 
-## Dependencies and prior art
+For every actual tip with \(p\ge30\), Lean proves
 
-- research/independent_audits/maximal_native_wave_20261123/H3_WIDTH.md, especially Section 7.2.
-- research/tip_family_theorem/THEOREM.md, Open Problem 2.
-- The existing actual-tip estimates and finite critical-orbit perturbation bounds.
-- The archive's explicit distinction between full-path envelopes, unrestricted marked Wave optima, and covering-restricted optima.
+\[
+ 0\le E_p\le B_p<\frac1{200},
+\]
 
-The analytic tools of modulus, bilipschitz transport, and annular cutoff are classical. The intended new result is their fully justified application to convergence of the actual unrestricted marked parent supremum. No worldwide priority claim is made before that result is proved and checked.
+\[
+ \boxed{P_p\le D_pP_\infty,\qquad
+ P_\infty\le D_pP_p+\frac{3\pi}{p-10}},
+\]
+
+and the real absolute-error estimate
+
+\[
+ \boxed{|P_p-P_\infty|
+ \le1600B_pP_\infty+\frac{3\pi}{p-10}}.
+\]
+
+The constants are explicit and not optimized. No compactness radius depending
+on an unknown maximizing Wave appears in the estimate.
+
+## Evidence
+
+### The obstruction overcome
+
+Convergence of orbit coordinates does not itself prove convergence of a
+supremum over all disjoint path families. A limiting Wave can contain leaves
+reaching arbitrarily far out. Selecting its bounded leaves need not preserve
+the required Borel geometric support. Treating either step as automatic would
+leave the extremal problem unresolved.
+
+The proof controls every escaping leaf by a common metric and compresses the
+**entire** Wave to retain its bounded leaves within a valid Borel Wave. This
+permits a uniform passage to the unrestricted supremum.
+
+### Proof
+
+1. **Transport all four marks.** A piecewise-linear horizontal perturbation
+   is constructed from disjoint tent functions of radius \(r=1/100\).
+   It maps each limiting cut to the actual cut, has displacement at most
+   \(E_p\), forward Lipschitz constant \(1+E_p/r\), and inverse Lipschitz
+   constant \((1-E_p/r)^{-1}\). The actual map transports the complete Borel
+   Wave, the banks, and the entire relative homotopy. Hausdorff length and
+   planar area inequalities prove the modulus comparison by constructing a
+   transported admissible density. Width transport is proved, not assumed.
+
+2. **Control all escaping leaves.** On \(N\) disjoint dyadic shells of inner
+   radii \(r,2r,\ldots,2^{N-1}r\), use density \(1/(N2^jr)\) on shell
+   \(j\). A connected trace joining the inner disk to radius \(2^Nr\)
+   projects across every radial interval. The one-Lipschitz norm map and the
+   Hausdorff-measure inequality make the density admissible even for
+   nonrectifiable traces. Its area is exactly \(3\pi/N\).
+
+3. **Keep the Borel family intact.** A continuous injective coordinate map
+   fixes \([-R,R]\) and maps the line into \((-R-1,R+1)\). Applied to both
+   coordinates, it compresses the whole Wave into the disk of radius
+   \(2(R+1)\), preserves its Borel support and relative class, and fixes every
+   originally bounded leaf. Modulus subadditivity handles the escaping traces
+   without requiring either selected subfamily itself to be a Borel Wave.
+   Thus the full plane supremum is at most the bounded-domain supremum plus
+   \(3\pi/N\).
+
+4. **Use literal dynamical estimates.** Finite-iterate estimates prove
+   \(E_p\le B_p\), strict order of every actual mark, and normalized outer
+   radius \(2^{-p}/d_p\ge2^p/12\). The limiting endpoint radius is less
+   than \(4\). For \(p\ge30\), the choice \(N=p-10\) fits the compressed
+   family and its displacement strictly inside the actual normalized disk.
+   This proves both comparisons. The inequality
+   \(1\le D_p\le1+1600E_p\) gives the displayed real error bound.
+
+5. **Return to the physical problem.** Multiplication by \(d_p>0\) preserves
+   the entire supremum exactly. It scales both real coordinates; the density
+   and area factors cancel. An explicit contraction and homotopy concatenation
+   reflect every selected plane-slit homotopy into the finite target disk.
+   Scaling back proves that requiring relative homotopies inside \(U_p\)
+   leaves the complete supremum unchanged.
+
+6. **Prove finiteness.** Every opposite-bank leaf crosses the real line
+   outside the slit, a definite distance from its starting endpoint. A single
+   bounded-disk density is admissible for all such leaves and has finite area.
+   It bounds all suprema at once. No optimizer or attainment theorem is used.
+
+### Lean endpoints and module map
+
+| Source | Main checked content |
+|---|---|
+| [SlitWaveModulus.lean](../../formalization/weighted/SlitWaveModulus.lean) | Density infimum, subadditivity, length and area transport |
+| [SlitWaveEscape.lean](../../formalization/weighted/SlitWaveEscape.lean) | Common escape density with exact area \(3\pi/N\) |
+| [MarkedSlitTransport.lean](../../formalization/weighted/MarkedSlitTransport.lean) | Complete Borel parent family, marked map and class transport |
+| [MarkedSlitCompression.lean](../../formalization/weighted/MarkedSlitCompression.lean) | Whole-Wave compression retaining bounded leaves |
+| [MarkedSlitDiskHomotopy.lean](../../formalization/weighted/MarkedSlitDiskHomotopy.lean) | Relative homotopies inside finite disks |
+| [SlitWaveFinite.lean](../../formalization/weighted/SlitWaveFinite.lean) | Common finite-area metric for every parent leaf |
+| [SlitWaveLimit.lean](../../formalization/weighted/SlitWaveLimit.lean) | `width_tendsto_of_mark_convergence` for the complete supremum |
+| [ActualParentMarks.lean](../../formalization/weighted/ActualParentMarks.lean) | Literal orbit cuts, their order and error, disk exhaustion |
+| [SlitWaveScaling.lean](../../formalization/weighted/SlitWaveScaling.lean) | `width_dilation_ball`, exact physical scaling |
+| [ActualParentSupremum.lean](../../formalization/weighted/ActualParentSupremum.lean) | `physical_parent_optimum_real_converges`, `exists_physical_parent_optima_converging` |
+| [ActualParentRate.lean](../../formalization/weighted/ActualParentRate.lean) | `physical_parent_period_comparison`, `physical_parent_real_error`, `physical_parent_disk_supremum` |
+
+All eleven modules compile locally with the pinned Lean and mathlib versions.
+An all-declarations audit checks 498 declarations across those modules and
+reports only `propext`, `Classical.choice`, and `Quot.sound`. The same three
+foundations are the complete transitive axiom lists of the four principal
+physical endpoints. No proof holes or new axioms are introduced.
+
+Every new source and public theorem is registered through the repository's
+existing contribution script. Older modules' original imports, project
+checkers, and CI workflows are unchanged. The full unchanged CI build and audit
+on the submitted commit are the final validation gate; their status is recorded
+on the pull request rather than inferred from the local audit.
+
+## Dependencies
+
+### Prior work and novelty
+
+The archive explicitly leaves convergence of the unrestricted optimum open in
+[`THEOREM.md`, Open Problem 2](../../research/tip_family_theorem/THEOREM.md).
+Its preceding Corollary 2 proves convergence only for the orbit-centered round
+witness. The complete-path argument in
+[`H3_WIDTH.md`, Section 7.2](../../research/independent_audits/maximal_native_wave_20261123/H3_WIDTH.md)
+provides uniform tail bounds and explicitly does not give continuity of
+optimizers. Neither supplies the complete-supremum convergence or uniform
+finite-period comparison proved here.
+
+Parameter existence and coefficient estimates come from
+[`NearTwoTip.lean`](../../formalization/weighted/NearTwoTip.lean),
+[`NearTwoShooting.lean`](../../formalization/weighted/NearTwoShooting.lean),
+[`LimitingCrestParameter.lean`](../../formalization/weighted/LimitingCrestParameter.lean),
+and the archived finite-iterate perturbation estimates. They are dependencies,
+not claimed as new results of this contribution.
+
+The concrete parent class follows the explicit slit atlas in
+[`maximal_native_wave_20261123/NOTE.md`](../../research/independent_audits/maximal_native_wave_20261123/NOTE.md),
+Sections 2 and 4, and its full-path treatment in `H3_WIDTH.md`, Section 3.
+The current Lean proofs establish the concrete bank, relative-class,
+finite-disk, and physical-dilation statements directly. They do not insert an
+unproved native-width transport premise into the limit theorem.
+
+Modulus, Lipschitz distortion, Hausdorff-measure transport, and annular cutoff
+are classical tools. The new claim is the complete actual-family comparison
+and convergence obtained by the uniform whole-Wave argument. The archive
+comparison supports novelty relative to the inspected prior work; this
+contribution does not certify worldwide priority.
 
 ## Boundary
 
-The obligation remains open at this checkpoint. No assumption of width transport, native marking identification, or escaping-family control will be counted as a proof of itself. If no genuine result is established, the draft will be closed to release the claim.
+- **Parameter selection.** The theorem concerns every actual quadratic tip
+  satisfying `NearTwoTip.ActualTip`, and includes a proved construction of such
+  tips. It does not identify that construction in Lean with the narrower
+  uniquely named signed kneading chart
+  \(14\,4^{-p}<c_p+2<16\,4^{-p}\), nor prove its prefix itinerary, least
+  preperiod, or primitive period. Those predicates are absent from the existing
+  `ActualTip` definition. The canonical selection bridge remains explicit,
+  as in earlier actual-tip contributions.
+- **Ideal-boundary vocabulary.** The proved family uses literal simple arcs,
+  banks, Borel geometric support, and full relative homotopies in the physical
+  disk. Reading it as the externally defined KKL A.1 optimum consumes the
+  archive's written intrinsic ideal-slit atlas. A full Lean development of that
+  external ideal-circle formalism and its equivalence is not supplied here.
+  The limiting plane-slit end at infinity is a cusp, so the limit is called
+  the limiting marked-plane supremum rather than asserted to satisfy every
+  no-cusp standing hypothesis of A.1.
+- **Remaining extremal questions.** No exact value, attainment, uniqueness of
+  an optimizer, or new Lean positivity theorem is claimed. Independent child
+  optima, the paired or covering-restricted optimum, and immersion-based
+  restrictions are not addressed by these parent theorems.
+- **Global scope.** The composite ledger entry remains open. This contribution
+  proves its analytic parent convergence mechanism for the specified actual
+  family and a quantitative estimate uniform over all its admissible Waves.
+  It does not prove global H1-H4, UPTCR, or MLC.
+
+## Attribution
+
+The mathematical definitions and physical target are from the cited archive
+and its cited KKL source. The proof uses mathlib's formal measure theory,
+topology, and real analysis at the repository's pinned versions. New proof
+design, Lean implementation, and adversarial review were AI-assisted by
+OpenAI ChatGPT, GPT-6 Astra Pro. No human mathematical review has been recorded.

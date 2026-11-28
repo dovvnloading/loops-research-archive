@@ -4183,6 +4183,8 @@
         "Marking.norm_le_of_ends",
         "RelSlitHomotopyIn.forget",
         "LeftClassIn.forget",
+        "RelSlitHomotopyIn.coordinateMap",
+        "LeftClassIn.coordinateMap",
         "ParentLeaf.leftClassIn_ball"
       ],
       "formalization/weighted/SlitWaveFinite.lean": [
@@ -4216,6 +4218,55 @@
         "width_small_marks_upper",
         "width_small_marks_lower",
         "width_tendsto_of_mark_convergence"
+      ],
+      "formalization/weighted/SlitWaveScaling.lean": [
+        "dilation_apply",
+        "dilation_symm_apply",
+        "scalar_plane",
+        "scalar_marking",
+        "modulus_dilation",
+        "trace_scalarCurve",
+        "traces_scalarCurve",
+        "width_le_dilation",
+        "scalar_marking_inverse",
+        "width_dilation",
+        "dilation_image_ball",
+        "width_dilation_ball"
+      ],
+      "formalization/weighted/ActualParentSupremum.lean": [
+        "markCoords_markingOfCuts",
+        "actual_parent_optimum_converges",
+        "exists_actual_parent_optima_converging",
+        "marked_width_ne_top",
+        "actualParentWidth_ne_top",
+        "limitingParentWidth_ne_top",
+        "actual_parent_optimum_real_converges",
+        "exists_finite_actual_parent_optima_converging",
+        "physicalCuts_scale",
+        "physicalCuts_strictMono",
+        "actualMarking_scale",
+        "physicalParentWidth_eq_actual",
+        "physicalParentWidth_ne_top",
+        "physical_parent_optimum_real_converges",
+        "exists_physical_parent_optima_converging"
+      ],
+      "formalization/weighted/ActualParentRate.lean": [
+        "markError_nonneg",
+        "markError_le",
+        "scale_error_small",
+        "markError_small",
+        "markCoords_limitMarking",
+        "markCoords_actualMarking",
+        "limitMarking_separated",
+        "limit_endpointRadius_lt",
+        "physical_parent_comparison",
+        "actual_shell_margin",
+        "physical_parent_period_comparison",
+        "distortion_real_bounds",
+        "physical_parent_real_error",
+        "actual_parent_disk_class",
+        "physical_parent_disk_class",
+        "physical_parent_disk_supremum"
       ]
     },
     "obligations": []
