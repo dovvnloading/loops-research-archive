@@ -1,6 +1,8 @@
 # Attempt record: the physical-plane extremal differential
 
-Status: conjectural route, not a proof or a contribution result.
+Status: historical attack record. The exact formula and canonical attainment
+are now proved in ParentWaveExact.lean; see NOTE.md for the precise scope
+and current validation. The floating-point diagnostic below remains diagnostic.
 
 Let the ordered physical marking be a < b < c < d, and retain the repository's
 complete ParentWave and width definitions. The parent class runs from the lower
@@ -20,7 +22,8 @@ parent optimum would equal the modulus of that ring, independently of d.
 
 Writing m=(b-a)/(c-a) and K(m)=integral from 0 to pi/2 of
 (1-m*sin(t)^2)^(-1/2), the candidate value is K(1-m)/(2*K(m)).
-This formula has NOT been proved here.
+The formula is now proved for the unchanged canonical supremum, including
+an actual attaining wave. The arguments below record the original proof tasks.
 
 A floating-point diagnostic at the archived limiting critical relation gives
 
@@ -68,4 +71,5 @@ line-integral transport for already supplied injective charts. The pinned
 Mathlib RiemannMapping file contains only preliminary steps; it does not supply
 a complete Riemann mapping, annulus uniformization, or Strebel theorem.
 
-No novelty or completed Lean endpoint is claimed by this attempt record.
+This file preserves the initial route and rejected shortcuts. The final
+claims and boundaries are stated in NOTE.md and the registered Lean endpoints.

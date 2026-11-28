@@ -5703,6 +5703,66 @@
         "chartFamily_modulus",
         "exists_parentWave_of_chart",
         "parent_width_lower_of_chart"
+      ],
+      "formalization/weighted/ParentWavePhysicalInverse.lean": [
+        "shifted_strip_mem_closed_rectangle",
+        "quadrantInverse_mem",
+        "quadrantInverse_apply",
+        "quadrantInverse_continuous",
+        "physicalInverse_continuous",
+        "physicalInverse_mem_closed",
+        "forward_physicalInverse",
+        "physicalInverse_injective",
+        "openRectangle_subset_strip",
+        "physicalInverse_eq_chart_inverse",
+        "physicalInverse_upper",
+        "inverse_chart_source",
+        "physicalInverse_ending_atom",
+        "physicalInverse_left_ray"
+      ],
+      "formalization/weighted/ParentWaveCanonicalFoliation.lean": [
+        "exists_elliptic_extension",
+        "exists_parentWave_of_elliptic",
+        "parent_width_lower_of_elliptic"
+      ],
+      "formalization/weighted/ParentWaveExact.lean": [
+        "parent_width_upper_of_elliptic",
+        "period_ratio_eq_coefficient",
+        "parent_width_eq_coefficient",
+        "exists_parentWave_attaining_width",
+        "coefficient_pos",
+        "parent_width_toReal",
+        "coefficient_eq_K",
+        "parent_width_eq_K"
+      ],
+      "formalization/weighted/ActualParentSelection.lean": [
+        "quadraticCoefficient_eq_orbit_product",
+        "tau_eq_neg_kappa",
+        "restrictive_of_shooting_kappa_lt_two",
+        "actual_tip_mem_signedKneadingChart",
+        "SignedKneadingChart.restrictive",
+        "SignedKneadingChart.physical_signed_tip",
+        "signed_chart_root_iff_actual_tip",
+        "exists_unique_signed_chart_root",
+        "canonicalParameter_physical",
+        "canonicalParameter_actual",
+        "canonicalParameter_chart",
+        "physical_tip_eq_canonical",
+        "signed_chart_root_eq_canonical",
+        "canonicalSequence_actual",
+        "physical_sequence_eq_canonical",
+        "canonical_physical_parent_optimum_real_converges"
+      ],
+      "formalization/weighted/ActualParentExact.lean": [
+        "limitingParentWidth_eq_coefficient",
+        "limitCoefficient_pos",
+        "limitingParentWidth_toReal",
+        "limitingParentWidth_attained",
+        "limitCoefficient_eq_K",
+        "physical_parent_optimum_converges_to_explicit",
+        "canonical_physical_parent_optimum_converges_to_explicit",
+        "exists_canonical_attained_explicit_parent_limit",
+        "exists_attained_explicit_physical_parent_limit"
       ]
     },
     "obligations": []

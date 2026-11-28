@@ -7,121 +7,142 @@ human_review: none
 
 <a id="parent-wave-exhaustion-20261128"></a>
 
-# Research claim: quantitative exhaustion of the actual parent Wave optimum
+# Exact attained limiting parent Wave optimum
 
 ## Claim
 
-Draft investigation; no new result about the optimum is claimed yet. The target is a genuinely
-stronger result about the complete physical parent supremum in
-ActualParentSupremum.physicalParentWidth, beyond the archived convergence
-theorem and its O(1/p) error estimate.
+The complete, unchanged canonical supremum `SlitWaveLimit.width M univ`
+has an explicit value and an attained maximum. For every ordered marking
+a < b < c < d, put m=(b-a)/(c-a). With the parameter convention
+
+    K(m) = integral from 0 to pi/2 of 1/sqrt(1-m*sin(theta)^2),
+
+the proved value is
+
+    width M univ = ENNReal.ofReal (K(1-m)/(2*K(m))).
+
+A Borel family of pairwise interior-disjoint, simple, correctly oriented
+leaves in the original left relative-homotopy class attains that supremum.
+The theorem quantifies over the archive's original complete parent-wave
+class and its original all-density Hausdorff-trace modulus.
+
+For the literal limiting quadratic marks a=x_2, b=x_5, c=x_3, d=1,
+this evaluates `ActualParentSupremum.limitingParentWidth`. The existing
+physical-supremum convergence theorem now has this explicit target.
+The parameter sequence is also identified with the unique root in F16's
+literal signed kneading chart for every p>=17; no arbitrary IVT choice
+or assumed invariant interval remains in that identification.
+
+The new research endpoint is the exact canonical maximum and its
+attainment, with the physical and parameter links proved. Previously
+archived convergence, estimates, elliptic quadrilateral envelopes, and
+classical special-function identities are inputs, not claimed discoveries.
 
 ## Evidence
 
-The existing archive already proves convergence for every sequence of actual
-signed tips, exact dilation to the physical slit disks, full Borel Wave
-transport, and a 3*pi/N bound for escaping families. Those results are inputs,
-not claimed progress here.
+The principal Lean declarations are:
 
-The attack is to determine whether the geometry of the selected left relative
-class yields a sharper finite-domain exhaustion estimate, or an exact
-variational obstruction to such an estimate. A valid endpoint must use the
-existing complete supremum of all admissible parent Waves, with no optimizer,
-foliation, or native geometric identification assumed as the conclusion.
+- `ParentWaveExact.parent_width_eq_K`: exact value of the complete original supremum.
+- `ParentWaveExact.exists_parentWave_attaining_width`: an actual attaining wave.
+- `ActualParentExact.limitingParentWidth_eq_coefficient` and
+  `limitingParentWidth_attained`: the literal limiting quadratic objects.
+- `ActualParentExact.canonical_physical_parent_optimum_converges_to_explicit`:
+  explicit limit of the original physical slit-disk suprema.
+- `ActualParentExact.exists_canonical_attained_explicit_parent_limit`:
+  constructed model root, positive explicit value, canonical physical sequence,
+  and actual maximizing limiting wave.
+- `ActualParentSelection.signed_chart_root_iff_actual_tip` and
+  `exists_unique_signed_chart_root`: equivalence and uniqueness in the
+  source's literal equation-free signed chart.
 
-Local Lean 4.32.0 is available. Every proposed final theorem will be compiled
-in the unchanged weighted project and audited by the existing CI.
+### Why the comparison is sharp for the canonical objects
 
-### Compiled development checkpoint
+The original relative-homotopy condition forces every competing parent
+leaf to meet the left real ray. Splitting there and folding the two pieces
+gives an upper bound by half the modulus of all continuous closed-upper-
+half-plane crossings. This step permits arbitrary real-axis contacts and
+nonrectifiable traces.
 
-Twenty-eight auxiliary modules have compiled locally and are registered for CI:
+The actual differential is q(z)=1/((z-a)(z-b)(z-c)). In the coordinate
+t=sqrt(z-a), its primitive has derivative
+2/(sqrt(t^2-(b-a))*sqrt(t^2-(c-a))). A derivative-sign argument proves
+injectivity on the quadrant. Finite square-root extensions and a proved
+uniform limit at infinity give the full rectangle image, its boundary
+sides, and a continuous inverse on every row.
 
-- ParentWaveLeftCrossing derives an actual interior intersection with the
-  left real ray from the existing ParentLeaf relative-homotopy definition.
-  The crossing is proved, not supplied as an additional assumption.
-- ParentWaveHalfPlane proves an unconditional bound for the entire canonical
-  parent supremum by one half of the finite, all-path upper-half-plane
-  condenser modulus. Its metrics include all measurable extended densities
-  and its paths include nonrectifiable traces.
-- ParentWaveReflection constructs complete simple parent leaves by reflecting
-  upper crossing arcs, and proves that a Borel family with disjoint complete
-  traces produces a genuine Borel ParentWave with disjoint interiors.
-- ParentWaveElliptic constructs an injective primitive of the literal
-  transformed elliptic differential on the first quadrant. The strict
-  derivative-sign argument proves injectivity there.
+Weighted Hausdorff measure transport is proved by local Lipschitz covers
+and disjoint measurable decompositions. It applies to all measurable
+extended densities and infinite-length traces. Boundary continuations
+and removal of the finite branch-point set calibrate all the upper
+crossings. The area equality uses the actual conformal Jacobian.
 
-- ParentWaveReflectionModulus proves the exact modulus identity for those
-  reflected Borel families: the reflected modulus is one half of the original
-  upper-family modulus, for all measurable densities and Hausdorff trace lengths.
-- ParentWaveEllipticBoundary proves continuous extension to the full finite
-  closed quadrant, including both square-root vertices.
-- ParentWaveEllipticInfinity proves a uniform limit at infinity of the actual
-  primitive by analytic regularization in the reciprocal coordinate.
-- ParentWaveEllipticChart links the quadrant coordinate to the literal upper
-  half-plane differential and proves that its squared norm is exactly the
-  absolute value of the physical cubic differential.
-- ParentWaveRectangle proves the image criterion using the actual finite
-  boundary and uniform infinity limit; its hypotheses have not all yet been
-  verified for the elliptic chart.
+Pulling back the entire continuum of horizontal rows and reflecting it
+constructs a canonical Borel parent wave. Its support, endpoint banks,
+simplicity, disjoint interiors, and left homotopy class are proved.
+Endpoint deletion and reflection preserve the exact trace modulus with
+the required factor 1/2. Thus the upper estimate is attained.
 
-- ParentWaveEllipticSides identifies all four actual boundary derivatives,
-  their signs, the constant coordinates, and the positive finite side lengths.
-- ParentWaveBoundaryInverse derives continuous inverse extensions from finite
-  boundary continuity, injectivity, and the proved uniform limit at infinity.
-- ParentWaveTraceLength connects canonical simple traces to the actual arclength
-  parameter; finite Hausdorff length implies rectifiability, rather than being
-  replaced by a rectifiability assumption.
-- ParentWaveLocalLength derives weighted Hausdorff-length change inequalities
-  from arbitrarily sharp local Lipschitz bounds. This covers all measurable
-  densities and arbitrary, possibly nonrectifiable and noninjective traces,
-  with a relative-domain form for boundary contacts.
-- ParentWaveRectangleModulus computes both the exact literal rectangle
-  foliation modulus and the modulus of all continuous rectangle crossings.
-- ParentWaveRectangleFoliation proves that an inverse chart with the stated
-  endpoint data produces an actual disjoint Borel upper family.
+The literal rectangle side lengths are evaluated by trigonometric
+substitution and the fundamental theorem of calculus. They are
+2*K(m)/sqrt(c-a) and 2*K(1-m)/sqrt(c-a), respectively.
 
-- ParentWaveEllipticImage proves that the literal primitive maps onto the
-  complete open rectangle, with all finite and infinite boundary hypotheses
-  discharged from the differential.
-- ParentWaveUpperBoundary constructs the actual holomorphic continuation
-  across each regular real boundary point, with exact cubic derivative norm.
-- ParentWaveTraceEndpoints proves exact invariance of the canonical modulus
-  when the two endpoint atoms of every trace are removed.
+### The selected physical parameter
 
-The third checkpoint (fb082802) passed the full weighted project build and the
-transitive axiom audit in GitHub Actions. The current additions have been
-freshly rebuilt locally after a workspace reset; final endpoint CI remains required.
+`SignedKneadingChart` uses the source's strict 14*4^(-p) and 16*4^(-p)
+parameter bounds, return-size bound, literal orbit-product coefficient
+tau in (-2,1/4), positive critical prefix, and six signs +--+-+.
+For every root in this chart, tau=-kappa and kappa<2 imply the full
+invariant physical interval: the exact inverse secant product is bounded
+by the endpoint derivative product. The archive's global physical
+signed-tip uniqueness then applies. This proves equivalence of the named
+chart-root condition and `ActualTip`, not just one inclusion.
 
-- ParentWaveConformal proves exact conformal transport for arbitrary measurable
-  Hausdorff traces and extended densities, including infinite-length traces.
-- ParentWaveEllipticIntegrals and ParentWaveEllipticK evaluate the actual
-  positive rectangle sides as regular elliptic integrals.
-- ParentWaveUpperLength and ParentWaveUpperModulus calibrate every continuous
-  upper-half-plane crossing, including branch-point and real-boundary contacts.
-- ParentWaveEllipticClosed proves injectivity on the full finite closed source
-  and coverage of the closed target except its proved infinity value.
+### Validation
 
-These are intermediate proof steps toward the candidate in ATTACK.md. They
-do not establish the optimum, its value, or a sharper rate, and are not
-presented as satisfying the requested research result on their own.
+The final equality, attainment, and physical-limit modules compile locally
+with pinned Lean 4.32.0. The complete committed checkpoint fb082802 passed
+both the full weighted build and transitive dependency audit in GitHub
+Actions. The stronger endpoint is being submitted to the same unchanged
+CI. Final CI confirmation is still required for this draft.
 
 ## Dependencies
 
-- NOV26_OPEN_OPTIMAL_LIMIT, an open research-update obligation in ledger.json.
-- The marked_wave_supremum_limit_20261127 packet and its eleven Lean modules.
-- research/independent_audits/maximal_native_wave_20261123/H3_WIDTH.md,
-  to distinguish archived written results from new results.
+- The open ledger row NOV26_OPEN_OPTIMAL_LIMIT and its F16 source statement.
+- `marked_wave_supremum_limit_20261127`: the original full geometric supremum,
+  exact physical scaling, convergence, and quantitative error estimate.
+- The existing global primitive-window and physical signed-tip uniqueness
+  modules, used for the explicit parameter identification.
+- `maximal_native_wave_20261123/H3_WIDTH.md`: earlier embedded witnesses and
+  full-path upper envelopes, distinguished from the equality proved here.
+- Mathlib's complex analysis, interval integration, Hausdorff measure,
+  Borel image, and Jacobian theorems.
 
 ## Boundary
 
-No improved rate, optimizer, exact width, or status change is claimed
-by this draft. The physical parameter selection and native ideal
-marking boundaries of the imported work remain explicit. A theorem about a
-substitute quantity will not count without a proved link to physicalParentWidth.
+This is partial progress on the composite ledger row. Exact finite-disk
+values W_p*, equality with the narrower paired-parent optimum W_p,2*,
+and the full parent/child comparison remain outside this theorem.
+No ledger or gate status is changed.
+
+The conclusion is exactly the repository's pre-existing ParentWave
+supremum and its literal physical quadratic incarnation. The external
+KKL A.1 interpretation still requires the archive's written intrinsic
+ideal-boundary identification; a complete Lean equivalence with a
+separately formalized native A.1 ideal-circle Wave class is not claimed.
+We are checking that boundary explicitly rather than substituting a
+new proxy definition.
+
+The source signed-chart root is now identified for p>=17. No maximal
+primitive-component identification or new least-period theorem is claimed.
+The decimal diagnostic in ATTACK.md is not a certified numerical enclosure.
 MLC and H1-H4 remain open.
 
 ## Attribution
 
-The archive's existing full-supremum convergence, geometric compression,
-modulus transport, and physical orbit estimates are prior work. This draft
-records the next research claim before proof development.
+Complete elliptic integrals, conformal rectangle coordinates, extremal
+length, and the general quadratic-differential method are classical.
+Their formulas alone are not the contribution. The result here proves
+the missing sharp variational equality and attained optimizer for the
+archive's complete canonical objects, with every geometric hypothesis
+discharged in Lean and the selected physical family explicitly linked.
+No claim of worldwide priority is inferred from the archive audit.

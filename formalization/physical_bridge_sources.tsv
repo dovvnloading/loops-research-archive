@@ -79,8 +79,10 @@ formalization/weighted/ActualCrestTransportLimit.lean	CREST
 formalization/weighted/ActualCrestUpperGate.lean	METADATA
 formalization/weighted/ActualCrestWidth.lean	CREST
 formalization/weighted/ActualCrestWidthDrift.lean	ALL-PATHS
+formalization/weighted/ActualParentExact.lean	METADATA
 formalization/weighted/ActualParentMarks.lean	SELECTED
 formalization/weighted/ActualParentRate.lean	ALL-PATHS
+formalization/weighted/ActualParentSelection.lean	METADATA
 formalization/weighted/ActualParentSupremum.lean	ALL-PATHS
 formalization/weighted/ActualThreeReturnCylinders.lean	CONTOUR-ESCAPE
 formalization/weighted/ActualThreeReturnExpansion.lean	CONTOUR-ESCAPE
@@ -216,6 +218,7 @@ formalization/weighted/ParabolicTipRate.lean	PARABOLIC STRAIGHTEN
 formalization/weighted/ParabolicTipShooting.lean	PARABOLIC STRAIGHTEN
 formalization/weighted/ParabolicTipWindow.lean	PARABOLIC STRAIGHTEN
 formalization/weighted/ParentWaveBoundaryInverse.lean	METADATA
+formalization/weighted/ParentWaveCanonicalFoliation.lean	METADATA
 formalization/weighted/ParentWaveConformal.lean	METADATA
 formalization/weighted/ParentWaveElliptic.lean	METADATA
 formalization/weighted/ParentWaveEllipticBoundary.lean	METADATA
@@ -227,11 +230,13 @@ formalization/weighted/ParentWaveEllipticInfinity.lean	METADATA
 formalization/weighted/ParentWaveEllipticIntegrals.lean	METADATA
 formalization/weighted/ParentWaveEllipticK.lean	METADATA
 formalization/weighted/ParentWaveEllipticSides.lean	METADATA
+formalization/weighted/ParentWaveExact.lean	METADATA
 formalization/weighted/ParentWaveHalfPlane.lean	METADATA
 formalization/weighted/ParentWaveLeftCrossing.lean	METADATA
 formalization/weighted/ParentWaveLocalLength.lean	METADATA
 formalization/weighted/ParentWavePhysicalBoundary.lean	METADATA
 formalization/weighted/ParentWavePhysicalChart.lean	METADATA
+formalization/weighted/ParentWavePhysicalInverse.lean	METADATA
 formalization/weighted/ParentWaveRectangle.lean	METADATA
 formalization/weighted/ParentWaveRectangleFoliation.lean	METADATA
 formalization/weighted/ParentWaveRectangleModulus.lean	METADATA
