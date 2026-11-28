@@ -1,0 +1,52 @@
+---
+ledger: NOV26_OPEN_CREST_LIMIT
+result: partial
+ai: OpenAI ChatGPT, GPT-6 Astra Pro
+human_review: none
+---
+
+<a id="global-crest-classification-20261127"></a>
+
+# Global actual crest classification on the full parent radius range
+
+## Claim
+
+Research in progress. No new theorem is claimed at this initial checkpoint.
+The target is a classification of the complete actual terminal gate throughout
+the original parent radius interval, not only the short window covered by the
+archived actual-crest theorem.
+
+## Evidence
+
+Baseline: main commit `665e5f9`. The archived
+`actual_maximal_crest_20261127` contribution proves eventual actual radial
+order, a unique terminal endpoint, and the full moving-integral limit on
+`[1/16,133/2000]`. Its Boundary leaves possible further admissible components
+elsewhere in the original parent interval unresolved.
+
+The proposed attack extends the actual crossing family to `[1/16,1/8]`,
+which contains the source parent interval `[1/16,(p-1)/(8*p)]`, controls the
+larger intermediate images, and uses the complete actual divided differences
+to classify the terminal condition globally. Source real cut inequalities
+are to be checked for the same actual parameters and circles. All proposed
+mathematical conclusions require compiled Lean proofs in this project.
+
+## Dependencies
+
+`NOV26_OPEN_CREST_LIMIT`, `NOV26_CREST_16`; the existing actual-tip,
+crossing, divided-difference, limiting-model, and proper-return modules;
+the repository's pinned Lean 4.32.0 and Mathlib revision.
+
+## Boundary
+
+This is an initial draft claim of a research task, not a completed result.
+The ledger status stays open. No new KKL Wave width, arbitrary-path marking,
+parameter-branch identification, primitive-period classification, or MLC
+conclusion is asserted. The exact completed statement and residual gaps will
+replace this checkpoint only after proof and validation.
+
+## Attribution
+
+The current short-window endpoint and radial-integral results belong to the
+archived contributions and are inputs. They will not be presented as new
+results. Original work is released under the repository's CC0 terms.
