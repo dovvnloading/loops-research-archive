@@ -158,14 +158,27 @@ That alternative was also rejected as a proposed new advance.
 
 ### Lean validation
 
-At commit `8354be4996fb9dc06a0a4643295d1a6b4d625626`,
-the unchanged weighted CI compiled `ThreeReturnEstimates`,
-`ActualCentralSlit`, `ComplexEscapeSequence`, `SlitJoukowski`,
-`SlitGreenBarrier`, and `ActualCentralEscape`.
-The remaining two elaboration errors were confined to the physical
-wrapper: an ambiguous normalization name and an unexpanded three-return
-definition. This revision repairs both. Complete build and transitive
-proof-trust audit are pending at this revision.
+The complete code revision
+[`9431007209e68983ac5f31d7cd98da32b6278701`](https://github.com/dovvnloading/loops-research-archive/commit/9431007209e68983ac5f31d7cd98da32b6278701)
+passed all three unchanged CI workflows:
+
+| Check | Result |
+|---|---|
+| [Weighted spectral mathlib proofs](https://github.com/dovvnloading/loops-research-archive/actions/runs/46141797876) | PASS: complete build, 9,292 jobs; transitive axiom audit, 308 modules and 8,018 declarations |
+| [Research validation](https://github.com/dovvnloading/loops-research-archive/actions/runs/46141797865) | PASS: root and standalone Lean checks, axiom-audit regressions, and research checks |
+| [Model-to-geometry coverage](https://github.com/dovvnloading/loops-research-archive/actions/runs/46141797884) | PASS |
+
+The source-coverage/trust-escape checks and the transitive proof audit passed.
+Every new module, including `PhysicalCentralEscape`, compiled. The audit
+permits only `propext`, `Classical.choice`, and `Quot.sound`; no new axioms,
+incomplete proofs, or unregistered declarations were accepted.
+
+A concurrent synchronization with main added unrelated contributions and
+combined the registries; it did not modify this attempt's Lean proof files
+or their existing dependencies. That synchronization is preserved.
+This final record changes documentation only. The linked code revision is
+the exact validation evidence for this attempt's theorems; kernel validation
+does not certify novelty or fill the native F12 gap described above.
 
 The execution workspace was full before cloning, and no local Lean
 executable was available. Source changes were committed through the
@@ -202,10 +215,10 @@ whole-crest descendant retention, and lost-family width accounting remain
 unproved here. No MLC, H1-H4, unrestricted Wave amplification, arbitrary-depth
 transport, or full quadratic filled-set identification is asserted.
 
-The draft should not be presented as a completed contribution satisfying
-the user's request. The repository's no-progress rule calls for releasing
-the obligation rather than keeping a claim open without a qualifying result.
-The commits preserve the attempted argument and its validation.
+The attempt is not a completed contribution satisfying the user's request.
+Following the no-progress rule in `AGENTS.md`, the draft is closed to release
+the obligation. Its branch and commits preserve the attempted argument and
+the fully validated auxiliary theorems.
 
 ## Attribution
 
