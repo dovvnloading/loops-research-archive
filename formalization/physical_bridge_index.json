@@ -4979,5 +4979,68 @@
       ]
     },
     "obligations": []
+  },
+  "child-wave-limit-20261128": {
+    "guide": "contributions/child_wave_limit_20261128/NOTE.md#child-wave-limit-20261128",
+    "theorems": {
+      "formalization/weighted/ChildSlitModel.lean": [
+        "RelChildHomotopy.mono",
+        "RelChildHomotopy.forgetDomain",
+        "UpperClass.mono",
+        "ChildLeaf.mono",
+        "ChildWave.mono",
+        "ChildWave.restrict_of_borel_support",
+        "modulus_le_width",
+        "width_mono"
+      ],
+      "formalization/weighted/ChildSlitTransport.lean": [
+        "ChildMarking.base_map",
+        "horizontal_mem_child_slit_iff",
+        "horizontal_firstEnds_iff",
+        "horizontal_secondEnds_iff",
+        "InitialUpperBank.map",
+        "UpperReference.map",
+        "RelChildHomotopy.map",
+        "UpperClass.map",
+        "ChildLeaf.map",
+        "ChildWave.map",
+        "marking_ext",
+        "marking_map_eq",
+        "marking_map_symm",
+        "traces_map",
+        "width_le_mul_width",
+        "width_map_le_mul_width"
+      ],
+      "formalization/weighted/ChildSlitCompression.lean": [
+        "coordinate_mem_child_slit_iff",
+        "coordinate_firstEnds_iff",
+        "coordinate_secondEnds_iff",
+        "UpperReference.coordinateMap",
+        "RelChildHomotopy.coordinateMap",
+        "ChildLeaf.coordinateMap",
+        "ChildWave.coordinateMap",
+        "compression_marking_fixed",
+        "exists_compressed_wave"
+      ],
+      "formalization/weighted/ActualChildMarks.lean": [
+        "actualAlpha_spec",
+        "actualAlpha_unique",
+        "actualAlpha_physical_fixed",
+        "limitAlpha_spec",
+        "limitAlpha_bracket",
+        "actualAlpha_error",
+        "actualChildCuts_error",
+        "limitChildCuts_gap",
+        "limitChildCuts_strictMono",
+        "limitChildCuts_separated",
+        "actualChildCuts_error_lt",
+        "actualChildCuts_gap",
+        "actualChildCuts_strictMono",
+        "actualChildCuts_tendsto",
+        "physicalChildCuts_scale",
+        "physicalChildCuts_strictMono"
+      ]
+    },
+    "obligations": []
   }
 }
