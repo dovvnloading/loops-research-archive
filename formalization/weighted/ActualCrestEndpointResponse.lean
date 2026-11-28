@@ -50,14 +50,14 @@ private theorem quartic_real_part (k b : ℝ) (z : ℂ) :
     (complexMap k z+(b : ℂ)*z^4).re =
       1-k*(z.re^2-z.im^2)+b*(z.re^4-6*z.re^2*z.im^2+z.im^4) := by
   simp only [complexMap,pow_succ,pow_zero,mul_one,Complex.add_re,Complex.sub_re,
-    Complex.one_re,Complex.mul_re,Complex.mul_im,Complex.ofReal_re,Complex.ofReal_im]
+    Complex.one_re,Complex.one_im,Complex.mul_re,Complex.mul_im,Complex.ofReal_re,Complex.ofReal_im]
   ring
 
 private theorem quartic_imaginary_part (k b : ℝ) (z : ℂ) :
     (complexMap k z+(b : ℂ)*z^4).im =
       -2*k*z.re*z.im+4*b*z.re*z.im*(z.re^2-z.im^2) := by
   simp only [complexMap,pow_succ,pow_zero,mul_one,Complex.add_im,Complex.sub_im,
-    Complex.one_im,Complex.mul_re,Complex.mul_im,Complex.ofReal_re,Complex.ofReal_im]
+    Complex.one_re,Complex.one_im,Complex.mul_re,Complex.mul_im,Complex.ofReal_re,Complex.ofReal_im]
   ring
 
 /-- The actual crossing and its next two returns satisfy the five
