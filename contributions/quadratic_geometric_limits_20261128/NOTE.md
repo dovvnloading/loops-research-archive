@@ -5,6 +5,8 @@ ai: OpenAI ChatGPT, GPT-6 Astra Pro; research, proof development, and adversaria
 human_review: none
 ---
 
+<a id="quadratic-geometric-limits-20261128"></a>
+
 # Draft: geometric limits of actual quadratic returns
 
 Ledger statement being addressed:

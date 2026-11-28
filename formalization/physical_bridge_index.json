@@ -4733,5 +4733,20 @@
       ]
     },
     "obligations": []
+  },
+  "quadratic-geometric-limits-20261128": {
+    "guide": "contributions/quadratic_geometric_limits_20261128/NOTE.md#quadratic-geometric-limits-20261128",
+    "theorems": {
+      "formalization/weighted/QuadraticThreeEncounterAlgebra.lean": [
+        "three_encounter_expansion",
+        "three_encounter_flat",
+        "three_encounter_flat_iff",
+        "three_encounter_two_jet_cancellation",
+        "three_encounter_limit_flat"
+      ]
+    },
+    "obligations": [
+      "H4_RIGIDITY"
+    ]
   }
 }
