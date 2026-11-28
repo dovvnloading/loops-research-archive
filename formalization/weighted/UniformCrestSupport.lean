@@ -114,7 +114,8 @@ private theorem perturbed_disk_step {κ a r A ε : ℝ} {z : ℂ} {H : ℂ → �
   calc
     ‖H z-(realMap κ a : ℂ)‖ ≤
         ‖H z-complexMap κ z‖+‖complexMap κ z-(realMap κ a : ℂ)‖ :=
-      norm_sub_le _ _ _
+      by simpa only [dist_eq_norm] using
+        dist_triangle (H z) (complexMap κ z) (realMap κ a : ℂ)
     _ ≤ ε+κ*r*(r+2*A) :=
       add_le_add (herr z hnorm) (quadratic_disk_step hk hr ha hz)
 
