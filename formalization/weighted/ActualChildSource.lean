@@ -76,7 +76,7 @@ theorem scaled_disk_image {p : ℕ} (hp : 17 ≤ p) {c : ℝ}
     calc
       (d*R)^2 = d^2*R^2 := by ring
       _ = d^2*((t/d)/16) := by rw [hRsq]
-      _ = d*t/16 := by field_simp [hd.ne']; ring
+      _ = d*t/16 := by field_simp [hd.ne']
   have hscale_eq : S*(d*R)^2 = S*d*t/16 := by
     rw [hphysical_sq]
     ring
@@ -141,7 +141,8 @@ theorem scaled_normalizedSource {p : ℕ} {c : ℝ} (hc : ActualTip p c) :
     have he : (criticalValue c p : ℂ)*(z/(criticalValue c p : ℂ)) = z := by
       field_simp [hd]
     refine ⟨z/(criticalValue c p : ℂ), ?_, he⟩
-    change (criticalValue c p : ℂ)*(z/(criticalValue c p : ℂ)) ∈ _
+    change (criticalValue c p : ℂ)*(z/(criticalValue c p : ℂ)) ∈
+      TwoLevelOuterDomain.source c p
     rw [he]
     exact hz
 
@@ -158,7 +159,7 @@ theorem innerRadius_lower {p : ℕ} {c : ℝ} (hc : ActualTip p c) :
   have hsq : ((2 : ℝ)^(p/2)/4)^2 ≤ ActualParentMarks.targetRadius c p := by
     rw [div_pow]
     norm_num
-    nlinarith only [hpow, hlower]
+    nlinarith only [hpow, hlower, sq_nonneg ((2 : ℝ)^(p/2))]
   have hroot : (2 : ℝ)^(p/2)/4 ≤
       Real.sqrt (ActualParentMarks.targetRadius c p) := by
     apply (sq_le_sq₀ (by positivity) (Real.sqrt_nonneg _)).mp
@@ -171,9 +172,9 @@ theorem innerRadius_lower {p : ℕ} {c : ℝ} (hc : ActualTip p c) :
 theorem innerRadius_tendsto (c : ℕ → ℝ)
     (hc : ∀ n, ActualTip (n+17) (c n)) :
     Tendsto (fun n => innerRadius (c n) (n+17)) atTop atTop := by
-  apply tendsto_atTop.2
+  apply Filter.tendsto_atTop.2
   intro b
-  have hr := (tendsto_atTop.1 (ActualParentMarks.targetRadius_tendsto c hc))
+  have hr := (Filter.tendsto_atTop.1 (ActualParentMarks.targetRadius_tendsto c hc))
     ((4*(max b 0+1))^2)
   filter_upwards [hr] with n hn
   have hs := Real.sqrt_le_sqrt hn
@@ -186,7 +187,7 @@ source, uniformly over all its points. -/
 theorem eventually_closedBall_subset (c : ℕ → ℝ)
     (hc : ∀ n, ActualTip (n+17) (c n)) (R : ℝ) :
     ∀ᶠ n : ℕ in atTop, closedBall (0 : ℂ) R ⊆ normalizedSource (c n) (n+17) := by
-  filter_upwards [(tendsto_atTop.1 (innerRadius_tendsto c hc)) R] with n hn
+  filter_upwards [(Filter.tendsto_atTop.1 (innerRadius_tendsto c hc)) R] with n hn
   exact (closedBall_subset_closedBall hn).trans
     (closedBall_subset_normalizedSource (by omega) (hc n))
 

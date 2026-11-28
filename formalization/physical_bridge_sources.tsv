@@ -51,7 +51,11 @@ code/exp4_images.py	EXPLORATION
 code/exp5_figs.py	EXPLORATION
 code/mlc_common.py	EXPLORATION
 formalization/weighted/ActualChildMarks.lean	SELECTED
+formalization/weighted/ActualChildParameter.lean	ALL-PATHS
+formalization/weighted/ActualChildPositive.lean	ALL-PATHS
+formalization/weighted/ActualChildRate.lean	ALL-PATHS
 formalization/weighted/ActualChildSource.lean	SELECTED
+formalization/weighted/ActualChildSupremum.lean	ALL-PATHS
 formalization/weighted/ActualCrestComponents.lean	CREST
 formalization/weighted/ActualCrestConformalChart.lean	CREST
 formalization/weighted/ActualCrestCrossingWindow.lean	METADATA
@@ -85,6 +89,7 @@ formalization/weighted/ChildSlitCompression.lean	ALL-PATHS
 formalization/weighted/ChildSlitFinite.lean	ALL-PATHS
 formalization/weighted/ChildSlitLimit.lean	ALL-PATHS
 formalization/weighted/ChildSlitModel.lean	ALL-PATHS
+formalization/weighted/ChildSlitPositive.lean	ALL-PATHS
 formalization/weighted/ChildSlitScaling.lean	ALL-PATHS
 formalization/weighted/ChildSlitTransport.lean	ALL-PATHS
 formalization/weighted/CircularCrestEnergy.lean	METADATA
@@ -243,6 +248,7 @@ formalization/weighted/QuadraticParameterUnivalence.lean	CONSTRUCT
 formalization/weighted/QuadraticTrappingEscape.lean	METADATA
 formalization/weighted/QuadraticUnivalentNeighborhood.lean	CONSTRUCT
 formalization/weighted/SaturatedTelescope.lean	METADATA
+formalization/weighted/SelectedChildLimit.lean	ALL-PATHS
 formalization/weighted/SlitWaveEscape.lean	METADATA
 formalization/weighted/SlitWaveFinite.lean	ALL-PATHS
 formalization/weighted/SlitWaveLimit.lean	ALL-PATHS

@@ -75,7 +75,7 @@ theorem traces_decompose (Γ : Set Curve) (R : ℝ) :
   unfold traces
   rw [← image_union, inter_union_diff]
 
-/-- Quantitative exhaustion of the modulus of any complete parent
+/-- Quantitative exhaustion of the modulus of any complete child
 lamination, uniformly over the lamination. -/
 theorem lamination_cutoff {M : ChildMarking} {D : Set ℂ} {Γ : Set Curve}
     (hΓ : ChildWave M D Γ) {N : ℕ} (hN : 0 < N) :

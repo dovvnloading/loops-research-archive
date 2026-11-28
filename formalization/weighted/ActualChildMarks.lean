@@ -33,9 +33,11 @@ theorem actualAlpha_spec {p : ℕ} (hp : 17 ≤ p) {c : ℝ}
     (hc : ActualTip p c) :
     actualAlpha c p ∈ Ioo (518/1000 : ℝ) (519/1000) ∧
       normalizedReturn c p (actualAlpha c p : ℂ) = (actualAlpha c p : ℂ) := by
-  apply Classical.epsilon_spec
   obtain ⟨a, ha, hfix, _⟩ := actual_positive_fixed_cut hp hc
-  exact ⟨a, ha, hfix⟩
+  unfold actualAlpha
+  exact Classical.epsilon_spec
+    (show ∃ a : ℝ, a ∈ Ioo (518/1000 : ℝ) (519/1000) ∧
+      normalizedReturn c p (a : ℂ) = (a : ℂ) from ⟨a, ha, hfix⟩)
 
 theorem actualAlpha_unique {p : ℕ} (hp : 17 ≤ p) {c b : ℝ}
     (hc : ActualTip p c) (hb : b ∈ Icc (0 : ℝ) (23/20))
@@ -100,8 +102,8 @@ theorem actualAlpha_error {p : ℕ} (hp : 17 ≤ p) {c k : ℝ}
     linarith only [hm]
   change |a-b| ≤ _
   calc
-    |a-b| = |a-b|*1 := (mul_one _).symm
-    _ ≤ |a-b|*(k*(a+b)+1) := mul_le_mul_of_nonneg_left hge (abs_nonneg _)
+    |a-b| = |a-b| * 1 := (mul_one _).symm
+    _ ≤ |a-b| * (k*(a+b)+1) := mul_le_mul_of_nonneg_left hge (abs_nonneg _)
     _ = |a-realMap k a| := by
       rw [← abs_of_nonneg (show 0 ≤ k*(a+b)+1 by linarith), ← abs_mul, hfactor]
     _ ≤ 23646*scale p := herror

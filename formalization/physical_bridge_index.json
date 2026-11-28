@@ -5260,6 +5260,72 @@
         "width_small_marks_upper",
         "width_small_marks_lower",
         "width_tendsto_of_source_exhaustion"
+      ],
+      "formalization/weighted/ActualChildSupremum.lean": [
+        "markCoords_markingOfCuts",
+        "actual_child_optimum_converges",
+        "actualChildWidth_ne_top",
+        "limitingChildWidth_ne_top",
+        "actual_child_optimum_real_converges",
+        "actualMarking_scale",
+        "physicalChildWidth_eq_actual",
+        "physicalChildWidth_ne_top",
+        "physical_child_optimum_real_converges",
+        "exists_physical_child_optima_converging"
+      ],
+      "formalization/weighted/ActualChildRate.lean": [
+        "markError_nonneg",
+        "markError_le",
+        "scale_error_small",
+        "markError_small",
+        "markCoords_limitMarking",
+        "markCoords_actualMarking",
+        "limitMarking_separated",
+        "limit_endpointRadius_lt",
+        "physical_child_comparison",
+        "actual_shell_margin",
+        "physical_child_period_comparison",
+        "physical_child_real_error"
+      ],
+      "formalization/weighted/ChildSlitPositive.lean": [
+        "semicircle_wave",
+        "semicircle_lineLength_le",
+        "width_lower_of_semicircles",
+        "width_pos_of_semicircles",
+        "width_lower_of_fixed_windows"
+      ],
+      "formalization/weighted/ActualChildPositive.lean": [
+        "limitingChildWidth_lower",
+        "limitingChildWidth_pos",
+        "limitingChildWidth_toReal_pos",
+        "actualChildWidth_lower",
+        "actualChildWidth_pos",
+        "physicalChildWidth_lower",
+        "physicalChildWidth_toReal_pos",
+        "exists_positive_physical_child_optima_converging"
+      ],
+      "formalization/weighted/ActualChildParameter.lean": [
+        "archiveCoefficient_eq",
+        "archiveTau_eq",
+        "ArchivedChart.restrictive_interval",
+        "archivedSelectedTip_physical",
+        "actualTip_archivedSelectedTip",
+        "archivedSelectedTip_iff_actualTip",
+        "exists_unique_archivedSelectedTip",
+        "canonicalParameter_spec",
+        "canonicalParameter_actual",
+        "actualTip_iff_eq_canonicalParameter"
+      ],
+      "formalization/weighted/SelectedChildLimit.lean": [
+        "limitingParameter_spec",
+        "selectedChildWidth_eq_of_archived",
+        "selectedChildWidth_lower",
+        "selectedChildWidth_ne_top",
+        "limitingWidth_pos",
+        "limitingWidth_ne_top",
+        "selected_child_real_limit",
+        "selected_child_real_error",
+        "selected_source_exhaustion"
       ]
     },
     "obligations": []
