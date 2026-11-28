@@ -5,6 +5,8 @@ ai: OpenAI ChatGPT, GPT-6 Astra Pro; mathematical development, Lean proof and ad
 human_review: none
 ---
 
+<a id="actual-crest-path-width-20261127"></a>
+
 # Actual crest path survival and conformal width: investigation
 
 ## Claim
@@ -12,6 +14,27 @@ human_review: none
 This draft claims the still-open physical path and conformal-width part of NOV26_OPEN_CREST_LIMIT. No new theorem is claimed at the initial checkpoint. The target is the actual q-side descendant family under four literal normalized polynomial returns, with proper endpoints, complete interiors, nonoverlap, and a proved conformal-width interpretation of the radial integral.
 
 ## Evidence
+
+### Committed analytic checkpoint
+
+`CircularCrestEnergy.modulus_eq_radial_integral` evaluates the complete
+two-modulus variational problem for variable-height circular leaves. The
+infimum is over every measurable extended nonnegative planar density.
+The lower bound uses Cauchy--Schwarz and polar area integration; an explicit
+density attains it, with unit length on every leaf. Both bounds compile
+locally in the repository's pinned Lean project.
+
+`CrestConformalModulus.ConformalChart.modulus_transport` proves exact
+conformal invariance for the derivative-arclength definition on smooth arcs.
+It proves density transport in both directions and the planar Jacobian
+formula, with no metric or area comparison postulated. This module compiles
+and its 78 declarations pass the repository's transitive axiom audit.
+
+These two general analytic tools are classical infrastructure. They are
+not claimed as new mathematics or as progress on the physical obligation
+on their own. The ongoing task is to construct the actual four-return
+chart and path family and apply the tools to that family. The draft remains
+an investigation until that identification is proved.
 
 Baseline main: `cb37633f2dee57c0bd7dfe7a417823a7067aabfb`. The merged global crest packet already proves every p>=17 radial gate, actual endpoint bounds, the scalar integral above one third and its limit. Those results are inputs and are not the proposed contribution. Their stated boundary explicitly leaves complete physical paths, native marking and conformal-width identification open.
 
