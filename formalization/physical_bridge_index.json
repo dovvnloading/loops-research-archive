@@ -5854,6 +5854,60 @@
         "exists_pairableWave_attaining_width",
         "pairableWidth_pos",
         "pairableWidth_ne_top"
+      ],
+      "formalization/weighted/ActualPairablePortLimit.lean": [
+        "limitingAlpha_pos",
+        "limitingAlpha_fixed",
+        "limitingAlpha_unique",
+        "limitingAlpha_bounds",
+        "normalizedAlpha_error",
+        "normalizedAlpha_tendsto",
+        "normalizedCut_tendsto",
+        "physicalImageCuts_div",
+        "normalizedImageCuts_mem_Ioo",
+        "physicalImageCuts_lt_criticalValue",
+        "normalizedImageCuts_tendsto",
+        "normalizedImageCuts_tendsto_function",
+        "limiting_image_order",
+        "limiting_source_order",
+        "limitingImageCuts_strictMono",
+        "limitingSourcePorts_strictMono",
+        "limitingImageCuts_lt_one",
+        "sqrt_limitingImageCuts_eq"
+      ],
+      "formalization/weighted/ActualPairableTree.lean": [
+        "realReturn_neg_abs",
+        "realReturn_negative_criticalValue",
+        "real_of_real_image_le_criticalValue",
+        "real_source_parentSlit_iff",
+        "source_inter_preimage_parentSlit",
+        "parentSlit_subset_disk",
+        "sourceSlit_image",
+        "slit_source_image"
+      ],
+      "formalization/weighted/ActualPairableElectrodeLimit.lean": [
+        "delta_pos",
+        "delta_lt_one",
+        "normalizingScale_pos",
+        "normalizedElectrode_neg",
+        "normalized_cayley_electrode",
+        "scaled_electrodeAt_eq",
+        "normalizedElectrode_zero",
+        "normalizedElectrode_continuousAt_zero",
+        "tendsto_normalizedElectrode",
+        "delta_eq_inv_targetRadius",
+        "delta_tendsto",
+        "normalized_electrode_tendsto"
+      ],
+      "formalization/weighted/SlitFourPointLimit.lean": [
+        "ratio_pos",
+        "ratio_eq_width",
+        "plane_width_tendsto",
+        "realMap_tendsto",
+        "ofReal_ratio_tendsto",
+        "ratio_tendsto",
+        "realMap_scale",
+        "ratio_scale"
       ]
     },
     "obligations": []

@@ -73,15 +73,18 @@ formalization/weighted/ActualCrestUpperGate.lean	METADATA
 formalization/weighted/ActualCrestWidth.lean	CREST
 formalization/weighted/ActualPairableClosedChart.lean	METADATA
 formalization/weighted/ActualPairableCoordinate.lean	METADATA
+formalization/weighted/ActualPairableElectrodeLimit.lean	METADATA
 formalization/weighted/ActualPairableElectrodes.lean	METADATA
 formalization/weighted/ActualPairableLeafLength.lean	METADATA
 formalization/weighted/ActualPairableMarking.lean	METADATA
 formalization/weighted/ActualPairableOptimality.lean	METADATA
 formalization/weighted/ActualPairablePortImages.lean	METADATA
+formalization/weighted/ActualPairablePortLimit.lean	METADATA
 formalization/weighted/ActualPairablePorts.lean	METADATA
 formalization/weighted/ActualPairableSource.lean	METADATA
 formalization/weighted/ActualPairableSourceBounds.lean	METADATA
 formalization/weighted/ActualPairableSourceTopology.lean	METADATA
+formalization/weighted/ActualPairableTree.lean	METADATA
 formalization/weighted/ActualPairableUpperBound.lean	METADATA
 formalization/weighted/ActualPairableWaves.lean	METADATA
 formalization/weighted/ActualParentDiskMarking.lean	METADATA
@@ -263,6 +266,7 @@ formalization/weighted/SlitDiskUpperBound.lean	METADATA
 formalization/weighted/SlitDiskWaves.lean	METADATA
 formalization/weighted/SlitEnergyExhaustion.lean	METADATA
 formalization/weighted/SlitFourPointChart.lean	METADATA
+formalization/weighted/SlitFourPointLimit.lean	METADATA
 formalization/weighted/SlitFourPointMetric.lean	METADATA
 formalization/weighted/SlitLeftCrossing.lean	METADATA
 formalization/weighted/SlitLocalReflection.lean	METADATA

@@ -224,6 +224,36 @@ Cauchy--Schwarz, Fubini, and the actual chart Jacobian prove area at least
 `A/(2*B)` for every measurable extended density admissible for this family.
 This matches the universal upper bound and proves actual attainment.
 
+### Exact removed set and convergence of the actual electrodes
+
+`ActualPairableTree.source_inter_preimage_parentSlit` proves the exact set
+identity `V intersect G^(-1)(parentSlit) = sourceSlit`; the complete source
+slit maps onto the parent slit, and the slit source maps onto the slit
+physical target. These are actual polynomial preimage/image statements,
+not an assignment of abstract ports to the source. They do not assert a
+native ideal-boundary marking or a general Hubbard-tree equivalence.
+
+`ActualPairablePortLimit.normalizedAlpha_error` bounds the actual normalized
+positive fixed cut's error by `23646*4^(-p)`. Consequently all four
+normalized return-image cuts converge for every sequence of actual tips.
+Let `delta=d/R` and `u=y/d`. `ActualPairableElectrodeLimit` proves the exact
+normalization
+
+```text
+e(y)/(2*sqrt(delta))
+  = -sqrt((1-u)*(1-delta^2*u))/((1-delta)*(1-delta*u)).
+```
+
+Here `delta -> 0`, so each normalized electrode tends to
+`-sqrt(1-u_limit)`. The four limiting values are exactly a common positive
+factor `sqrt(k)` times the limiting physical source ports
+`(-q4,q2,q5,-alpha_infinity)`, where `q_(j+1)=1-k*q_j^2`, `q0=0`.
+These endpoint-limit statements compile. `SlitFourPointLimit` also proves
+exact positive-scale invariance and continuity of the complete four-port
+period value, using the proved full modulus and mark transport. The complete optimum-to-optimum
+convergence assembly is the next checkpoint and is not inferred from
+endpoint convergence alone here.
+
 ### Actual density and exact energy
 
 On the closed upper half-plane use the continuous upper-side square roots
@@ -370,9 +400,11 @@ preserved by the mechanical main merge `0be46b59`; its full weighted CI run
 build and transitive axiom audit in both runs `46120979598` and `46120976219`.
 The sharp-limit and actual-source commit
 `dc1be854c2ba15ddca9a95bf9789052810e02162` also passed the complete weighted
-build and transitive axiom audit in run `46122315623`. The exact pairable
-checkpoint compiles locally and is registered for the same remote checks;
-its CI result is not inferred from the earlier run.
+build and transitive axiom audit in run `46122315623`. The exact pairable commit
+`435de833ed0ea8b4423ea568464f41698cf34e97` passed the complete weighted Lean
+build and transitive axiom audit in both runs `46123768913` and `46123762245`.
+The new removed-set and electrode-limit modules compile locally and are
+registered for the same remote checks.
 
 ### Prior archive work and comparison
 
