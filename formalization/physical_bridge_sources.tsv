@@ -654,3 +654,7 @@ formalization/weighted/QuadraticPowerNormalForm.lean	METADATA
 formalization/weighted/IteratedCarrierIsolation.lean	METADATA
 formalization/weighted/QuadraticCarrierSaturation.lean	METADATA
 formalization/weighted/QuadraticLocalFiberCensus.lean	METADATA
+formalization/weighted/QuadraticTwinReal.lean	METADATA
+formalization/weighted/QuadraticTwinSemiconjugacy.lean	METADATA
+formalization/weighted/QuadraticTwinMLC.lean	METADATA
+formalization/weighted/QuadraticTwinDiscontinuous.lean	METADATA
