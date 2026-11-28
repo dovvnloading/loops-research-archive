@@ -9,9 +9,13 @@ human_review: none
 
 # Mixed quadratic susceptibility implies pointwise Mandelbrot local connectivity
 
-**Validation status:** the complete Lean proof source is written; compilation
-and the strict transitive dependency audit are pending. A successful CI run is
-required before this packet counts as a proved contribution.
+**Kernel-validated conditional result.** The complete weighted Lean build and
+strict transitive dependency audit passed on proof revision
+`4c983dc32f31573bb62bdb9797ac91e6064b0819` in
+[repository CI run 46129770396](https://github.com/dovvnloading/loops-research-archive/actions/runs/46129770396).
+All three new modules compile without proof gaps or added axioms. The final
+source theorem includes the implication to actual pointwise Mandelbrot local
+connectivity; that implication is not left as a proposed application.
 
 ## Claim
 
@@ -168,17 +172,37 @@ novelty claim.
 Validation commands:
 
 ```sh
-python code/contribute.py check --draft --pr-title '[UNIVERSAL_PROTECTED_TOWER_CLOSURE] Develop an actual quadratic criterion with an MLC implication'
+python code/contribute.py check --pr-title '[UNIVERSAL_PROTECTED_TOWER_CLOSURE] Mixed susceptibility criterion for pointwise Mandelbrot local connectivity'
 cd formalization/weighted
-lake build QuadraticMixedSusceptibility QuadraticMonotoneFiberTopology QuadraticMixedSusceptibilityMLC
+lake exe cache get
+lake build
 cd ../..
 python code/verify_lean_coverage.py --audit weighted
 ```
 
-The local registration and source-trust checks pass. The complete Lean/Mathlib
-runtime does not fit in this workspace; compilation and the transitive audit
-must be supplied by the repository's existing CI. No workflow is changed.
-The full validation result will be recorded here after that run succeeds.
+The three new modules expose **19 registered public theorems**. The unchanged
+weighted CI workflow compiled the whole project successfully (9,266 build
+jobs) and reported:
+
+```text
+AXIOM_AUDIT weighted QuadraticMixedSusceptibility: 33 declarations, 20 theorems; allowed axioms only
+AXIOM_AUDIT weighted QuadraticMixedSusceptibilityMLC: 9 declarations, 8 theorems; allowed axioms only
+AXIOM_AUDIT weighted QuadraticMonotoneFiberTopology: 2 declarations, 2 theorems; allowed axioms only
+AXIOM_AUDIT_PASS weighted: 295 modules, 7739 declarations
+```
+
+The audit's theorem counts include internal supporting declarations and are
+not the public-theorem index count. Its only permitted foundational axioms
+are `propext`, `Classical.choice`, and `Quot.sound`. No `sorry`, `admit`, or
+new axiom is used. Contribution intake, source registration, proof-trust
+checks, and all other reported workflows also passed for this proof revision.
+
+The complete local Lean/Mathlib runtime did not fit in the workspace; actual
+compilation and the full transitive audit were performed in repository CI.
+A concurrent mechanical merge synchronized the PR with updated `main` before
+the successful run; comparison confirmed that it left all three new Lean
+sources unchanged. The final documentation edits likewise change no Lean
+source, build target, or theorem registration. No workflow was modified.
 
 ## Dependencies
 
@@ -244,8 +268,10 @@ two bounded critical orbits. It uses none of the excluded tower machinery,
 center denominator arithmetic, encounter charges, geometric-limit arguments,
 Green-potential density conditions, or projective cross-ratio jets.
 
-Until successful kernel compilation and the transitive audit are recorded,
-the source remains an unvalidated implementation of the stated proof.
+Kernel validation establishes the stated conditional implication, including
+its actual local-connectivity endpoint. It does not establish literature-wide
+priority or verify the criterion at a new parameter; those are separate
+research questions.
 
 ## Attribution
 

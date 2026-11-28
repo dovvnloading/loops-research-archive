@@ -1,6 +1,8 @@
 # Nonlinear candidate and the missing boundary argument
 
-Status: candidate analysis before formalization. No new theorem is accepted.
+Historical record of the rejected interpolation candidate, written before the retained mixed-series criterion. See [NOTE.md](NOTE.md) for the current result and validation status.
+
+Status at this earlier checkpoint: candidate analysis before formalization; no new theorem had been accepted.
 This file advances the investigation beyond the previous spectral screen by
 writing an exact actual-family bridge to local connectivity, and then identifying
 why the available certificate does not pass the requested novelty test.
@@ -118,9 +120,9 @@ would need its own proof and is not supplied by those finite identities.
 No candidate in this file has passed both novelty and a complete new proof.
 No new theorem is counted, and no new result has been submitted to Lean CI.
 
-The absent local compiler was partially repaired: the official Lean 4.32.0
-binary now checks a small core theorem through its documented module setup.
+At this checkpoint, the absent local compiler was partially repaired: the official Lean 4.32.0
+binary checked a small core theorem through its documented module setup.
 This is toolchain verification only, not a theorem in this PR. Mathlib and the
 complete archive build remain available through repository CI.
 
-The user-required task remains incomplete.
+At this checkpoint, the user-required task was still incomplete. The later retained criterion and its actual local-connectivity endpoint are recorded in NOTE.md.

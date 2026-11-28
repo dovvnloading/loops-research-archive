@@ -1,7 +1,6 @@
 # Retained candidate, stated before Lean formalization
 
-Status at this commit: retained after the primary-source pre-check below;
-no new Lean proof or successful CI run is claimed yet.
+Historical pre-formalization record, committed as `773f3d5bdb76d4237999479c1392cd736bf6d637`. At that point the candidate was retained after the primary-source pre-check below, and no new Lean proof or successful CI run was claimed. See [NOTE.md](NOTE.md) for the implementation and current validation status.
 
 ## Candidate theorem: conditional mixed susceptibility forces local connectivity
 
