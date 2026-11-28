@@ -50,6 +50,7 @@ code/exp3_feigenbaum.py	EXPLORATION
 code/exp4_images.py	EXPLORATION
 code/exp5_figs.py	EXPLORATION
 code/mlc_common.py	EXPLORATION
+formalization/weighted/ActualCentralSlit.lean	METADATA
 formalization/weighted/ActualCrestComponents.lean	CREST
 formalization/weighted/ActualCrestConformalChart.lean	CREST
 formalization/weighted/ActualCrestCrossingWindow.lean	METADATA
@@ -98,6 +99,7 @@ formalization/weighted/CollarMetricEnergy.lean	METADATA
 formalization/weighted/CollarShellMetric.lean	METADATA
 formalization/weighted/CollarStraightLength.lean	METADATA
 formalization/weighted/CompactObstacleRemainder.lean	METADATA
+formalization/weighted/ComplexEscapeSequence.lean	METADATA
 formalization/weighted/ConnectedBinaryCoding.lean	METADATA
 formalization/weighted/CrestConformalModulus.lean	METADATA
 formalization/weighted/CrestFirstExit.lean	METADATA

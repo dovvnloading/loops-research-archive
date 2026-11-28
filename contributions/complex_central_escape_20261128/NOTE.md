@@ -21,6 +21,10 @@ The target is a quantitative off-real escape theorem for the actual normalized t
 
 ## Evidence
 
+### Committed checkpoint 2
+
+`ActualCentralSlit.lean` now records the native interval invariance, positive real inverse branches, complete inverse-interval exclusion throughout the full complex control disk, and inclusion of the interval in the actual canonical source and its filled set. These supporting statements are submitted for CI compilation; the reverse inclusion and the quantitative escape theorem still require the complex-analytic estimate.
+
 ### Committed checkpoint 1
 
 The existing exact third-return polynomial estimates yield a strengthened whole-circle barrier: if the normalized input has norm 1/6, its actual three-return image has norm greater than 1/4, uniformly for every actual selected tip with p>=17. The proposed Lean declarations are `ThreeReturnEstimates.perturbed_outer_circle_barrier` and `ThreeReturnEstimates.actual_outer_circle_barrier`. Compilation is pending. This supporting estimate alone is not counted as the requested mathematical advance.

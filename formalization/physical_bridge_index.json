@@ -5275,6 +5275,22 @@
       "formalization/weighted/ThreeReturnEstimates.lean": [
         "perturbed_outer_circle_barrier",
         "actual_outer_circle_barrier"
+      ],
+      "formalization/weighted/ActualCentralSlit.lean": [
+        "third_zero",
+        "third_endpoint",
+        "slit_norm_le",
+        "slit_invariant",
+        "slit_positive_preimage",
+        "inverse_slit_iff",
+        "slit_subset_source",
+        "slit_orbit_in_source",
+        "slit_subset_filledSource"
+      ],
+      "formalization/weighted/ComplexEscapeSequence.lean": [
+        "finite_power_budget",
+        "bounded_power_sequence_eq_one",
+        "finite_escape_certificate"
       ]
     },
     "obligations": []
