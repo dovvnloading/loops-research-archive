@@ -61,6 +61,23 @@ dynamical-unit input directly from the actual return recursion. If zero and nonz
 both return at time N, the even-return factorization `f_c^N(z)=z^2 Q(z)` supplies
 `z Q(z)=1`, with integral Q(z). This input is not the novelty claim.
 
+Second implementation checkpoint: the actual polynomial jet, its affine normalization,
+the exact denominator, Galois-period rigidity, and the integral-coordinate obstruction are
+now stated in the following registered Lean modules, awaiting their combined CI result:
+
+- `QuadraticReturnJet.lean`: actual iterate polynomial and exact sixth-order remainder.
+- `QuadraticReturnArithmetic.lean`: exact exponent `2N-1`, noncancellation modulo two,
+  Galois invariance of the recovered period, and no uniform denominator for unbounded periods.
+- `QuadraticJetConjugacy.lean`: genuine polynomial composition modulo `X^5`; higher terms
+  unrestricted; an explicit Böttcher jet exists.
+- `QuadraticReturnCoordinateObstruction.lean`: every integral coordinate tangent to the
+  identity preserves the quartic denominator, and every Böttcher jet has cubic denominator
+  exponent exactly `2N`.
+
+The first critical-unit checkpoint has passed the weighted Lean build in
+[run 46105220073](https://github.com/dovvnloading/loops-research-archive/actions/runs/46105220073).
+This validates the helper only, not the pending main results.
+
 Local Lean installation failed because the workspace has insufficient disk space for the
 pinned toolchain. Repository CI will compile and audit every new declaration. This is
 an environment limitation, not a relaxation of the proof standard.
