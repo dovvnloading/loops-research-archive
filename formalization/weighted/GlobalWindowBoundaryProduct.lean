@@ -69,7 +69,7 @@ private theorem inverse_bounds {c x : ℝ}
     have hb := branch_bounds hc ih
     exact ⟨by linarith [hb.1],hb.2⟩
 
-private theorem inverse_positive_bounds {c x : ℝ}
+theorem inverse_positive_bounds {c x : ℝ}
     (hc : c ∈ Icc (-2 : ℝ) (-199/100))
     (hx : x ∈ Icc (-1/100 : ℝ) 2) (n : ℕ) :
     back c (n+1) x ∈ Icc (1 : ℝ) 2 := by
@@ -92,7 +92,7 @@ private theorem branch_joint_bound {c a x y : ℝ}
     exact Real.sq_sqrt (by linarith [ha.2,hy.1])
   have hid : (B c x-B a y)*(B c x+B a y)=(x-y)-(c-a) := by
     nlinarith only [hsA,hsB]
-  have habs : |B c x-B a y|*(B c x+B a y)=|(x-y)-(c-a)| := by
+  have habs : |B c x-B a y| * (B c x+B a y)=|(x-y)-(c-a)| := by
     rw [← abs_of_nonneg (show 0 ≤ B c x+B a y by linarith [hA.1,hB.1]),
       ← abs_mul,hid]
   have htri := abs_sub (x-y) (c-a)
@@ -101,7 +101,7 @@ private theorem branch_joint_bound {c a x y : ℝ}
     (abs_nonneg (B c x-B a y))
   nlinarith only [habs,htri,hmul]
 
-private theorem inverse_joint_bound {c a x y : ℝ}
+theorem inverse_joint_bound {c a x y : ℝ}
     (hc : c ∈ Icc (-2 : ℝ) (-199/100))
     (ha : a ∈ Icc (-2 : ℝ) (-199/100))
     (hx : x ∈ Icc (-1/100 : ℝ) 2)
@@ -144,7 +144,7 @@ private theorem factor_difference {c a d e : ℝ}
   have hnegabs : |(-d)-(-e)|=|d-e| := by
     rw [show (-d)-(-e)=-(d-e) by ring,abs_neg]
   rw [hnegabs] at hneg
-  have htri := abs_add (back c (j+1) d-back a (j+1) e)
+  have htri := abs_add_le (back c (j+1) d-back a (j+1) e)
     (back c (j+1) (-d)-back a (j+1) (-e))
   have hid : (back c (j+1) d+back c (j+1) (-d))/4-
       (back a (j+1) e+back a (j+1) (-e))/4 =
@@ -154,7 +154,7 @@ private theorem factor_difference {c a d e : ℝ}
   norm_num only [abs_of_pos (by norm_num : (0 : ℝ)<4)]
   linarith only [hpos,hneg,htri]
 
-private theorem product_difference (a b : ℕ → ℝ) (n : ℕ)
+theorem product_difference (a b : ℕ → ℝ) (n : ℕ)
     (ha : ∀ j < n, a j ∈ Icc (0 : ℝ) 1)
     (hb : ∀ j < n, b j ∈ Icc (0 : ℝ) 1) :
     |(∏ j ∈ Finset.range n, a j)-(∏ j ∈ Finset.range n, b j)| ≤
@@ -166,15 +166,17 @@ private theorem product_difference (a b : ℕ → ℝ) (n : ℕ)
     have hb' := hb n (by omega)
     have hprev := ih (fun j hj => ha j (by omega)) (fun j hj => hb j (by omega))
     have hpa0 : 0 ≤ ∏ j ∈ Finset.range n, a j :=
-      Finset.prod_nonneg (fun j hj => (ha j (Finset.mem_range.mp hj)).1)
+      Finset.prod_nonneg (fun j hj =>
+        (ha j (by have hmem := Finset.mem_range.mp hj; omega)).1)
     have hpa1 : (∏ j ∈ Finset.range n, a j) ≤ 1 :=
-      Finset.prod_le_one (fun j hj => (ha j (Finset.mem_range.mp hj)).1)
-        (fun j hj => (ha j (Finset.mem_range.mp hj)).2)
+      Finset.prod_le_one
+        (fun j hj => (ha j (by have hmem := Finset.mem_range.mp hj; omega)).1)
+        (fun j hj => (ha j (by have hmem := Finset.mem_range.mp hj; omega)).2)
     have hid : (∏ j ∈ Finset.range n, a j)*a n-
         (∏ j ∈ Finset.range n, b j)*b n =
         ((∏ j ∈ Finset.range n, a j)-(∏ j ∈ Finset.range n, b j))*b n+
           (∏ j ∈ Finset.range n, a j)*(a n-b n) := by ring
-    have htri := abs_add
+    have htri := abs_add_le
       (((∏ j ∈ Finset.range n, a j)-(∏ j ∈ Finset.range n, b j))*b n)
       ((∏ j ∈ Finset.range n, a j)*(a n-b n))
     rw [abs_mul,abs_mul,abs_of_nonneg hb'.1,abs_of_nonneg hpa0] at htri

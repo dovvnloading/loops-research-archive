@@ -61,6 +61,10 @@ formalization/weighted/ActualCrestPaths.lean	CREST
 formalization/weighted/ActualCrestProperFamilies.lean	CREST
 formalization/weighted/ActualCrestProperReturn.lean	METADATA
 formalization/weighted/ActualCrestRadialOrder.lean	METADATA
+formalization/weighted/ActualCrestRelationSlope.lean	METADATA
+formalization/weighted/ActualCrestRemainderOrder.lean	CREST
+formalization/weighted/ActualCrestRemainderScale.lean	CREST
+formalization/weighted/ActualCrestSignedDrift.lean	CREST
 formalization/weighted/ActualCrestSupport.lean	METADATA
 formalization/weighted/ActualCrestTheorem.lean	METADATA
 formalization/weighted/ActualCrestTransport.lean	METADATA
@@ -141,6 +145,7 @@ formalization/weighted/GlobalWindowBoundaryProduct.lean	METADATA
 formalization/weighted/GlobalWindowChart.lean	METADATA
 formalization/weighted/GlobalWindowLocalization.lean	METADATA
 formalization/weighted/GlobalWindowPhases.lean	METADATA
+formalization/weighted/GlobalWindowSignedChart.lean	METADATA
 formalization/weighted/GlobalWindowThickness.lean	METADATA
 formalization/weighted/GraphWeightedBridge.lean	CLONE EDGE
 formalization/weighted/LeastSaturatedCarrier.lean	METADATA
@@ -281,6 +286,8 @@ formalization/weighted/TwoLevelPhysicalGate.lean	METADATA
 formalization/weighted/TwoLevelPhysicalGates.lean	METADATA
 formalization/weighted/TwoLevelReference.lean	METADATA
 formalization/weighted/TwoLevelSelection.lean	METADATA
+formalization/weighted/UniformCrestSupport.lean	CREST
+formalization/weighted/UniformCrestTransport.lean	CREST
 formalization/weighted/UniformThreeReturn.lean	METADATA
 formalization/weighted/UniformThreeReturnRenormalization.lean	METADATA
 formalization/weighted/WeightedReturn.lean	CLONE EDGE

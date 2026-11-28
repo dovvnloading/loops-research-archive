@@ -76,7 +76,7 @@ private theorem parameter_shooting_lower {a c d e : ℝ} (n : ℕ)
     linarith only [ha0,hc0]
   have hfactor : c^2+c-(a^2+a) = (c-a)*(c+a+1) := by ring
   have hsgn : c+a+1<0 := by linarith [ha.2,hc.2]
-  have habs : |c^2+c-(a^2+a)| = |c-a|*(-(c+a+1)) := by
+  have habs : |c^2+c-(a^2+a)| = |c-a| * (-(c+a+1)) := by
     rw [hfactor,abs_mul,abs_of_neg hsgn]
   have htri : |back c n d-back a n e| ≤
       |back c n d-back c n e|+|back c n e-back a n e| := by

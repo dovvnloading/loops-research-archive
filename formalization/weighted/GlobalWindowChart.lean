@@ -45,7 +45,7 @@ private theorem tail_parameter_step {c c' d : ℝ}
       (back c (n+1) d+back c' (n+1) d) =
       (back c n d-back c' n d)-(c-c') := by
     nlinarith only [inverse_sq hc hd n, inverse_sq hc' hd n]
-  have habs : |back c (n+1) d-back c' (n+1) d|*
+  have habs : |back c (n+1) d-back c' (n+1) d| *
       (back c (n+1) d+back c' (n+1) d) =
       |(back c n d-back c' n d)-(c-c')| := by
     rw [← abs_of_nonneg (show 0 ≤ back c (n+1) d+back c' (n+1) d by linarith),

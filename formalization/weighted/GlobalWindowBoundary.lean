@@ -57,7 +57,7 @@ private theorem parameter_nonexpanding {p : ℕ} (hp : 17 ≤ p) {d e : ℝ}
     rw [← mul_pow]
     norm_num
   have hm' : (9/100 : ℝ)*|selectedParameter p d-selectedParameter p e| ≤
-      |d-e|*scale p := by
+      |d-e| * scale p := by
     calc
       _ = ((9/100 : ℝ)*4^p*|selectedParameter p d-selectedParameter p e|)*scale p := by
         calc

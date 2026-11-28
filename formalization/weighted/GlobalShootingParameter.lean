@@ -150,7 +150,7 @@ theorem selectedParameter_lipschitz {p : ℕ} (hp : 17 ≤ p) {d e : ℝ}
   have hid : ((9/100 : ℝ)*4^p*|selectedParameter p d-selectedParameter p e|)*scale p=
       (9/100 : ℝ)*|selectedParameter p d-selectedParameter p e| := by
     calc
-      _ = (9/100 : ℝ)*|selectedParameter p d-selectedParameter p e|*(4^p*scale p) := by ring
+      _ = (9/100 : ℝ)*|selectedParameter p d-selectedParameter p e| * (4^p*scale p) := by ring
       _ = _ := by rw [hpow]; ring
   rw [hid] at hmul
   have hnonneg := mul_nonneg (scale_pos p).le (abs_nonneg (d-e))

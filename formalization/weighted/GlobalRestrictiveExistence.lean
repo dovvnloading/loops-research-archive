@@ -82,8 +82,8 @@ private theorem interval_orbit_bound {p : ℕ} (hp : 17 ≤ p) {c x : ℝ}
       constructor <;> linarith [hc.1, hc.2]
     have hid : criticalValue c 2 - (realMap c)^[2] x =
         (-c-realMap c x)*x^2 := by
-      simp only [criticalValue_two, show (2 : ℕ) = 1+1 from rfl,
-        Function.iterate_succ_apply', Function.iterate_one, realMap]
+      rw [criticalValue_two]
+      change c^2+c-((x^2+c)^2+c)=(-c-(x^2+c))*x^2
       ring
     have hlo : 0 ≤ criticalValue c 2 - (realMap c)^[2] x := by
       rw [hid]
@@ -91,8 +91,7 @@ private theorem interval_orbit_bound {p : ℕ} (hp : 17 ≤ p) {c x : ℝ}
     have hup : criticalValue c 2 - (realMap c)^[2] x ≤ orbitError p 2 := by
       rw [hid]
       have hm := mul_le_mul hfac.2 hs (sq_nonneg x) (by norm_num : (0 : ℝ) ≤ 4)
-      norm_num [orbitError] at *
-      exact hm
+      norm_num [orbitError] <;> nlinarith only [hm]
     refine ⟨hlo, hup, ?_⟩
     have he := error_bound (p := p) (j := 2) hjp
     have hlow := (hcrit 2 le_rfl hjp).1
