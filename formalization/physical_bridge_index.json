@@ -4512,5 +4512,46 @@
       ]
     },
     "obligations": []
+  },
+  "three-level-physical-gates-20261127": {
+    "guide": "contributions/three_level_physical_gates_20261127/NOTE.md#three-level-physical-gates-20261127",
+    "theorems": {
+      "formalization/weighted/ThreeLevelReference.lean": [
+        "chart_parameter_band",
+        "chart_critical_bound",
+        "coefficient_scale_bounds",
+        "terminal_scale_negative",
+        "terminal_scale_lower",
+        "terminal_scale_upper",
+        "left_relation_margin",
+        "right_relation_margin",
+        "phase_identity",
+        "small_disk_displacement",
+        "small_disk_orbit",
+        "chart_input_bound",
+        "coarse_phase_displacement",
+        "coarse_phase_disk",
+        "physical_block_input",
+        "physical_block_orbit",
+        "physical_orbit_disk"
+      ],
+      "formalization/weighted/ThreeLevelPerturbation.lean": [
+        "moving_scale_control",
+        "moving_scale_negative",
+        "normalized_iterate_stability",
+        "normalized_critical_return_stability",
+        "separated_three_period_error",
+        "separated_three_period_product_error"
+      ],
+      "formalization/weighted/ThreeLevelDomains.lean": [
+        "restriction_of_estimates",
+        "scaledReturn_physical",
+        "restriction_of_scaled_estimates",
+        "disk_in_source",
+        "scaled_disk_in_source",
+        "phases_in_source"
+      ]
+    },
+    "obligations": []
   }
 }

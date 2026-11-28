@@ -5,6 +5,8 @@ ai: OpenAI ChatGPT GPT-6 Astra Pro
 human_review: none
 ---
 
+<a id="three-level-physical-gates-20261127"></a>
+
 # Three-level physical quadratic return gates — research in progress
 
 ## Claim

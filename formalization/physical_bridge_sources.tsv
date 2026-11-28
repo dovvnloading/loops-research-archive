@@ -218,6 +218,9 @@ formalization/weighted/TelescopeRamification.lean	METADATA
 formalization/weighted/TelescopeUnbranchedCover.lean	CONSTRUCT
 formalization/weighted/TelescopeUnivalentCollars.lean	CONSTRUCT
 formalization/weighted/TerminalFiberExclusion.lean	METADATA
+formalization/weighted/ThreeLevelDomains.lean	METADATA
+formalization/weighted/ThreeLevelPerturbation.lean	METADATA
+formalization/weighted/ThreeLevelReference.lean	METADATA
 formalization/weighted/ThreeReturnAnnulus.lean	METADATA
 formalization/weighted/ThreeReturnCollar.lean	METADATA
 formalization/weighted/ThreeReturnContraction.lean	METADATA
