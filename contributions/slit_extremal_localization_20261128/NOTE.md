@@ -7,7 +7,7 @@ human_review: none
 
 <a id="slit-extremal-localization-20261128"></a>
 
-# Exact cubic-period optimum and attainment for the complete parent problem
+# Exact complete parent optima and attaining Waves in finite disks and the plane
 
 ## Claim
 
@@ -40,6 +40,37 @@ is proved. An explicit admissible density has exactly this area, proved by
 this exact value at the archive's actual limiting critical-orbit cuts, and
 `limitingParentWave_attains` supplies their maximizer. For arbitrary ambient
 domains the same density gives the upper bound `width M D <= A/(2*B)`.
+
+For a finite disk of radius `R > 0` containing all four cuts, put
+
+```text
+Psi_R(x) = -((R-x)/(R+x))^2,
+(a_R,b_R,c_R) = (Psi_R(a),Psi_R(b),Psi_R(c)),
+B_R = integral_(a_R,b_R) h_(a_R,b_R,c_R)(x) dx,
+A_R = integral_(b_R,c_R) h_(a_R,b_R,c_R)(x) dx.
+```
+
+`SlitDiskOptimality.width_eq_period_ratio` proves the exact finite value
+`width M (ball 0 R) = ENNReal.ofReal (A_R/(2*B_R))`.
+`SlitDiskOptimality.family_attains_width` constructs an attaining Wave
+inside that original disk. `ActualParentDiskOptimality` proves both the
+exact value and explicit attainment for every constructed actual quadratic
+tip of period `p >= 17`, in normalized coordinates and in the original
+physical disk of radius `2^(-p)`. No optimal chart, maximizing family, or
+conformal invariance identity is supplied as an assumption.
+
+`ActualParentExponentialRate.physical_parent_geometric_error` proves,
+for every actual tip of period `p >= 30`, the explicit real-width estimate
+
+```text
+|physicalParentWidth_p.toReal - limitingParentWidth.toReal|
+  <= 3073600 * (1/2)^p * limitingParentWidth.toReal.
+```
+
+The sharper split estimate separates critical-orbit motion from disk
+geometry as `1600*(4*3906*23646*4^(-p) + 1920*2^(-p))` times the limiting
+width. This replaces the previously archived reciprocal-period cutoff
+term for the same literal geometric supremum.
 
 The advance claimed relative to the archive is the universal upper bound
 together with a matching actual maximizer for the complete parent class.
@@ -134,11 +165,52 @@ Jacobian. Every measurable extended nonnegative density admissible for
 this Wave has area at least `A/(2*B)`; no finite-area or bounded-density
 restriction is imposed. This lower bound matches the universal certificate.
 
+### Exact finite disks and literal physical maximizers
+
+`SlitDiskCayley` proves that the actual squared Cayley map
+`Psi_R(z)=-((R-z)/(R+z))^2` is a biholomorphism from the disk onto the
+plane with the nonnegative real ray removed. Its explicit inverse,
+complex derivatives, conjugation identities, real order, and bank signs
+are proved. `SlitDiskMarking` applies this map to all four actual cuts.
+
+`SlitDiskUpperBound` composes the actual cubic potential with `Psi_R`.
+`SlitLocalReflection` proves its folded local slope on every parent trace;
+the original homotopy crossing argument applies in the original disk.
+The density is exactly the conformal pullback of the cubic density, and
+the actual Jacobian gives its area upper bound.
+
+`SlitDiskWaves` pulls the actual inverse-horizontal family into the disk
+and proves every `ParentWave` condition there. `SlitDiskLowerChart`
+constructs the composed analytic inverse chart, with source exactly the
+rectangle and target exactly the upper half-disk. `SlitDiskLeafLength`
+controls both complete reflected geometric segments by its explicit
+velocity integral. `SlitRectangleLowerEnergy` gives the all-density energy
+lower bound from this actual chart. These match in `SlitDiskOptimality`.
+
+`ActualParentDiskMarking` derives disk containment of all actual cuts from
+the archived critical-orbit error and target-radius estimates.
+`ActualParentDiskOptimality.physicalFamily_attains` specifies an actual
+Borel parent Wave in the original quadratic plane whose modulus equals
+the entire physical parent supremum.
+
+### Quantitative finite-period consequence
+
+`SlitDiskRate` proves exact affine invariance and normalizes the transformed
+cuts to `x_R = R*(Psi_R(x)+1)/4 = x/(1+x/R)^2`. For `|x| <= 2` and `R >= 4`
+it proves `|x_R-x| <= 40/R`. The exact disk optimum is the complete plane
+optimum at these normalized cuts. The archived two-sided small-mark
+transport estimate therefore applies with total four-cut displacement
+at most `markError + 160/R`, with no escaping-family cutoff. The actual
+radius estimate `R_p >= 2^p/12` yields the stated exponential error.
+This estimate is a consequence of the exact geometric optimizer, not a
+claim of a new general extremal-length principle.
+
 ### Validation and provenance
 
 The starting main commit was `6a10209b3cc51878bc45de7668894757b2575e08`.
-This checkpoint incorporates current main
-`6964d70bea8a68acae4a627b421086b29f6f63b3`, preserving its depth-gate work.
+This checkpoint incorporates main
+`f05f1b9dc8f5fc6eeb68491da2eb44eca6d6cec9`, preserving the independent
+depth-gate and uniform-crest work and all registry entries.
 All new modules compile locally with the repository-pinned Lean 4.32.0 and
 Mathlib. Declaration-level transitive audits permit only `propext`,
 `Classical.choice`, and `Quot.sound`. No proof holes, new foundations, or
@@ -147,8 +219,10 @@ changes to CI, the ledger, or trust policy are introduced.
 The universal-upper-bound checkpoint
 `f65e4ca7dbd60de2a03cdd3556fcb46ace2fdd64` passed the complete weighted GitHub
 CI build and transitive axiom audit in run `46118469742`, as well as source
-and model coverage. This exact-optimum checkpoint is registered for those
-same checks; its remote CI result is not assumed from the earlier run.
+and model coverage. The exact plane result was committed at `6cd15700` and
+preserved by the mechanical main merge `0be46b59`. This stronger finite-disk
+checkpoint is registered for the same checks; its remote CI result is not
+assumed from the earlier run.
 
 ### Prior archive work and comparison
 
@@ -163,6 +237,22 @@ same checks; its remote CI result is not assumed from the earlier run.
 - The present proof controls the entire existing parent class and gives
   an actual matching maximizing Wave. It does not count the classical
   rectangle machinery itself as a new mathematical discovery.
+
+The cubic ratio is the classical Teichmueller-ring modulus for
+`C \ ([a,b] union [c,infinity))`. The reflected rectangle foliation is its
+classical extremal foliation. Any research novelty must therefore lie in
+the precise optimization and identification of the archive's full parent
+class, not in the elliptic formula, the conformal map, or their
+formalization. The external canonical KKL identification remains a
+separate scope question stated below.
+
+A primary classical reference is K. Oikawa, *On the stability of boundary
+components*, Pacific Journal of Mathematics **10** (1960), 263-294:
+[publisher PDF](https://msp.org/pjm/1960/10-1/pjm-v10-n1-p16-p.pdf), printed
+page 267, No. 9 (VIII)-(IX), for reflection doubling and extremal level
+curves, and printed page 269, section 5, for the Teichmueller slit ring.
+This reference establishes prior classical machinery; it does not certify
+the archive-specific KKL identification or any worldwide novelty claim.
 
 For orientation only, the classical elliptic-integral substitution
 suggests `A/(2*B)=K(1-m)/(2*K(m))`, with `m=(b-a)/(c-a)` and the parameter
@@ -183,11 +273,14 @@ lifting, real changes of variables, and Hausdorff measure theory.
 ## Boundary
 
 The obligation stays open. Exact value and attainment are proved for the
-complete full-plane parent problem and the actual limiting marking. The
-finite-period exact optimizer on the physical target disk and canonical
-ideal-boundary identification are not settled in this checkpoint. No
-equality with the separately constrained pairable problem is claimed, and
-no status change is requested. H1-H4, UPTCR, and MLC remain open. The work
+complete geometric parent class in every ordered four-cut disk and in the
+plane, including the literal physical actual-tip problems for `p >= 17`
+and their limiting marking. A Lean identification with every aspect of
+the external KKL ideal-boundary/minimal-base definition is not supplied.
+The periods `3 <= p < 17` are not instantiated from physical tip existence
+certificates here. No equality with the separately constrained pairable
+problem is claimed; the written archive already states strict separation.
+No status change is requested. H1-H4, UPTCR, and MLC remain open. The work
 does not establish a historical first-priority claim.
 
 ## Attribution
