@@ -68,6 +68,7 @@ formalization/weighted/ActualCrestTransportLimit.lean	CREST
 formalization/weighted/ActualCrestUpperGate.lean	METADATA
 formalization/weighted/ActualCrestWidth.lean	CREST
 formalization/weighted/ActualParentMarks.lean	SELECTED
+formalization/weighted/ActualParentOptimality.lean	METADATA
 formalization/weighted/ActualParentRate.lean	ALL-PATHS
 formalization/weighted/ActualParentSupremum.lean	ALL-PATHS
 formalization/weighted/AtomCutDefect.lean	CUTS CREST
@@ -212,15 +213,24 @@ formalization/weighted/SlitCubicArea.lean	METADATA
 formalization/weighted/SlitCubicBoundary.lean	METADATA
 formalization/weighted/SlitCubicBoundaryRange.lean	METADATA
 formalization/weighted/SlitCubicCalibration.lean	METADATA
+formalization/weighted/SlitCubicClosedChart.lean	METADATA
+formalization/weighted/SlitCubicEdges.lean	METADATA
 formalization/weighted/SlitCubicEnergy.lean	METADATA
 formalization/weighted/SlitCubicImaginaryBoundary.lean	METADATA
 formalization/weighted/SlitCubicIntegrability.lean	METADATA
+formalization/weighted/SlitCubicLeafLength.lean	METADATA
+formalization/weighted/SlitCubicLowerEnergy.lean	METADATA
 formalization/weighted/SlitCubicMetricArea.lean	METADATA
+formalization/weighted/SlitCubicOptimality.lean	METADATA
 formalization/weighted/SlitCubicPeriods.lean	METADATA
+formalization/weighted/SlitCubicRectangle.lean	METADATA
+formalization/weighted/SlitCubicSurjective.lean	METADATA
 formalization/weighted/SlitCubicUnivalence.lean	METADATA
 formalization/weighted/SlitCubicUpperBound.lean	METADATA
+formalization/weighted/SlitCubicWaves.lean	METADATA
 formalization/weighted/SlitEnergyExhaustion.lean	METADATA
 formalization/weighted/SlitLeftCrossing.lean	METADATA
+formalization/weighted/SlitParametricLength.lean	METADATA
 formalization/weighted/SlitPotentialLength.lean	METADATA
 formalization/weighted/SlitPotentialReflection.lean	METADATA
 formalization/weighted/SlitWaveEscape.lean	METADATA

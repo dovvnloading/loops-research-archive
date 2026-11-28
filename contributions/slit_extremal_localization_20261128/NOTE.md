@@ -7,7 +7,7 @@ human_review: none
 
 <a id="slit-extremal-localization-20261128"></a>
 
-# A cubic-period upper certificate for the complete parent-Wave supremum
+# Exact cubic-period optimum and attainment for the complete parent problem
 
 ## Claim
 
@@ -20,23 +20,32 @@ A = integral_(b,c) h(x) dx.
 ```
 
 The unconditional Lean theorem
-`SlitCubicUpperBound.width_le_period_ratio` proves
+`SlitCubicOptimality.width_eq_period_ratio` proves
 
 ```text
-SlitWaveLimit.width M D <= ENNReal.ofReal (A / (2*B))
+SlitWaveLimit.width M Set.univ = ENNReal.ofReal (A / (2*B)).
 ```
 
-for every ambient domain `D`. The bound concerns the supremum over every
+The equality concerns the supremum over every
 Borel parent Wave in the existing definitions, including nonsymmetric
 families and nonrectifiable continuous simple leaves. The fourth endpoint
-`d` does not occur in the bound. An explicit admissible density has exactly
-this area, proved by `SlitCubicUpperBound.density_area_exact`.
+`d` does not occur in the exact value. The explicitly constructed reflected
+inverse-horizontal family attains this supremum:
+`SlitCubicOptimality.family_attains_width`. Its membership in the literal
+`ParentWave` class, including endpoint-relative homotopy and Borel support,
+is proved. An explicit admissible density has exactly this area, proved by
+`SlitCubicUpperBound.density_area_exact`.
 
-This supplies a universal upper certificate for the complete homotopy
-class, rather than merely computing a selected competitor's modulus.
-**Equality, optimizer attainment, and settlement of the full ledger item
-are not claimed.** No worldwide-priority claim is inferred from an archive
-search. The underlying analytic and extremal-length methods are classical.
+`ActualParentOptimality.limitingParentWidth_eq_period_ratio` instantiates
+this exact value at the archive's actual limiting critical-orbit cuts, and
+`limitingParentWave_attains` supplies their maximizer. For arbitrary ambient
+domains the same density gives the upper bound `width M D <= A/(2*B)`.
+
+The advance claimed relative to the archive is the universal upper bound
+together with a matching actual maximizer for the complete parent class.
+**The full ledger item is not declared closed.** No worldwide-priority claim
+is inferred from an archive search. The underlying analytic and
+extremal-length methods are classical.
 
 ## Evidence
 
@@ -91,7 +100,7 @@ All parts of its certification are proved:
    tracks the normalization `1/(4*B^2)` into the archive's ENNReal area.
    The resulting area is exactly `A/(2*B)`.
 
-### Progress toward a matching family
+### Actual conformal rectangle and matching maximizing family
 
 `SlitCubicUnivalence.tail_injOn_upper` independently proves injectivity of
 the actual integral. The coordinate `log((z-a)/(z-c))` changes the upper
@@ -101,8 +110,29 @@ is proved positive. A real mean-value argument gives injectivity.
 
 `SlitCubicBoundaryRange` and `SlitCubicImaginaryBoundary` prove the four
 actual boundary sides, positive height `A`, the second period identity,
-and the full real-axis rectangle bounds. These are supporting the next
-step; they do not yet construct an extremizing parent Wave.
+and the full real-axis rectangle bounds.
+
+`SlitCubicRectangle` proves that the actual image lies strictly inside
+`(0,B) x (-A,0)`, using boundary estimates, uniform decay at infinity,
+and a nonvanishing derivative. `SlitCubicSurjective` proves the image is
+the entire open rectangle and constructs its actual inverse chart.
+`SlitCubicEdges` and `SlitCubicClosedChart` extend that inverse continuously
+to the two vertical sides, with the required real-bank locations.
+
+For each horizontal height `-A < y < 0`, the inverse segment is reflected
+to form a complete parent leaf. `SlitCubicWaves` proves endpoint locations,
+bank orientations, simplicity, the literal left-reference homotopy,
+pairwise interior disjointness, and exact Borel geometric support. The
+support is the plane with the rightward real ray `[a,infinity)` removed.
+
+`SlitParametricLength` proves the weighted Hausdorff-image estimate for
+continuous differentiable parametrizations. `SlitCubicLeafLength` applies
+it to both full inverse segments, including their endpoints.
+`SlitCubicLowerEnergy` then applies Cauchy--Schwarz on the disjoint sum of
+the two horizontal parameter intervals, Fubini, and the actual conformal
+Jacobian. Every measurable extended nonnegative density admissible for
+this Wave has area at least `A/(2*B)`; no finite-area or bounded-density
+restriction is imposed. This lower bound matches the universal certificate.
 
 ### Validation and provenance
 
@@ -114,11 +144,11 @@ Mathlib. Declaration-level transitive audits permit only `propext`,
 `Classical.choice`, and `Quot.sound`. No proof holes, new foundations, or
 changes to CI, the ledger, or trust policy are introduced.
 
-The prior analytic checkpoint `cb2dcce3f95641fa1359454fbc534748214a999b`
-passed the complete weighted GitHub CI build and transitive axiom audit,
-as well as source and model coverage. The present, stronger upper-bound
-checkpoint is registered for those same checks; its remote CI result is
-not assumed from the earlier run.
+The universal-upper-bound checkpoint
+`f65e4ca7dbd60de2a03cdd3556fcb46ace2fdd64` passed the complete weighted GitHub
+CI build and transitive axiom audit in run `46118469742`, as well as source
+and model coverage. This exact-optimum checkpoint is registered for those
+same checks; its remote CI result is not assumed from the earlier run.
 
 ### Prior archive work and comparison
 
@@ -130,9 +160,9 @@ not assumed from the earlier run.
   `research/independent_audits/maximal_native_wave_20261123/H3_WIDTH.md`
   already discuss the half-strip competitor and strict separation from
   the pairable optimum. Repeating those lower witnesses is not the claim.
-- The present upper certificate controls the entire existing parent class.
-  A matching Lean lower construction remains necessary for an exact
-  optimum or attainment theorem.
+- The present proof controls the entire existing parent class and gives
+  an actual matching maximizing Wave. It does not count the classical
+  rectangle machinery itself as a new mathematical discovery.
 
 For orientation only, the classical elliptic-integral substitution
 suggests `A/(2*B)=K(1-m)/(2*K(m))`, with `m=(b-a)/(c-a)` and the parameter
@@ -141,7 +171,7 @@ At the limiting actual marking, numerical evaluation suggests
 `0.7527550636374064`, compared with the archived upper envelope near
 `0.7749231261480455`. **Neither this elliptic re-expression nor these decimal
 evaluations are a certified Lean result in this checkpoint.** The proved
-statement is the actual cubic-integral bound above.
+exact value is the cubic-integral ratio above.
 
 ## Dependencies
 
@@ -152,13 +182,13 @@ lifting, real changes of variables, and Hausdorff measure theory.
 
 ## Boundary
 
-The obligation stays open. This is an unconditional new upper certificate
-relative to the archived complete-Wave formulation, not an exact optimum
-or attainment theorem. Rectangle surjectivity, the actual matching foliation,
-and its all-density lower bound remain to be proved. The finite-period
-exact optimizer and canonical ideal-boundary identification are also not
-settled. No status change is requested. H1-H4, UPTCR, and MLC remain open.
-The work does not establish a historical first-priority claim.
+The obligation stays open. Exact value and attainment are proved for the
+complete full-plane parent problem and the actual limiting marking. The
+finite-period exact optimizer on the physical target disk and canonical
+ideal-boundary identification are not settled in this checkpoint. No
+equality with the separately constrained pairable problem is claimed, and
+no status change is requested. H1-H4, UPTCR, and MLC remain open. The work
+does not establish a historical first-priority claim.
 
 ## Attribution
 

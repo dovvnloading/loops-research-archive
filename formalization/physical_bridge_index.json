@@ -5104,6 +5104,117 @@
         "upperToStrip_mem_logStrip",
         "stripToUpper_upperToStrip",
         "tail_injOn_upper"
+      ],
+      "formalization/weighted/SlitCubicRectangle.lean": [
+        "openRectangle_isOpen",
+        "openRectangle_convex",
+        "differential_ne_zero_upper",
+        "tail_re_pos",
+        "tail_re_lt_period",
+        "neg_height_lt_tail_im",
+        "tail_im_neg",
+        "tail_mem_openRectangle"
+      ],
+      "formalization/weighted/SlitCubicSurjective.lean": [
+        "tail_image_isOpen_of_subset",
+        "tail_image_isOpen",
+        "mem_image_of_closure_of_boundary_avoidance",
+        "tail_surjOn_openRectangle",
+        "tail_image_eq_openRectangle",
+        "rectangleChart_source",
+        "rectangleChart_target",
+        "rectangleChart_apply",
+        "rectangleChart_symm_hasDerivAt"
+      ],
+      "formalization/weighted/SlitCubicEdges.lean": [
+        "tail_im_real_continuous",
+        "tail_im_strictAntiOn_left",
+        "tail_im_strictMonoOn_gap",
+        "exists_left_edge_preimage",
+        "exists_gap_edge_preimage",
+        "tail_im_mem_Ioo_left",
+        "tail_im_mem_Ioo_gap"
+      ],
+      "formalization/weighted/SlitCubicClosedChart.lean": [
+        "openRectangle_subset_closedHorizontalBand",
+        "upper_subset_closedSource",
+        "real_left_mem_closedSource",
+        "real_gap_mem_closedSource",
+        "real_closedSource_cases",
+        "tail_injOn_closedSource",
+        "tail_surjOn_closedHorizontalBand",
+        "closedInverse_mem_source",
+        "tail_closedInverse",
+        "closedInverse_tail",
+        "closedInverse_injOn",
+        "closedInverse_continuousOn",
+        "closedInverse_mem_upper",
+        "closedInverse_left_edge",
+        "closedInverse_right_edge",
+        "closedInverse_eq_rectangleChart_symm",
+        "closedInverse_hasDerivAt"
+      ],
+      "formalization/weighted/SlitParametricLength.lean": [
+        "hausdorff_image_le_lintegral_speed",
+        "lintegral_image_le_lintegral_speed"
+      ],
+      "formalization/weighted/SlitCubicWaves.lean": [
+        "rectanglePoint_re",
+        "rectanglePoint_im",
+        "rectanglePoint_continuous",
+        "rectanglePoint_re_mem_Icc",
+        "rectanglePoint_re_lt",
+        "rectanglePoint_re_pos",
+        "rectanglePoint_initial",
+        "rectanglePoint_terminal",
+        "rectanglePoint_middle",
+        "rawCurve_continuous",
+        "fold_rawCurve",
+        "curve_apply",
+        "tail_fold_curve",
+        "curve_initial",
+        "curve_terminal",
+        "curve_middle",
+        "curve_below",
+        "curve_above",
+        "curve_simple",
+        "curve_leftReference",
+        "trace_curve_subset_segments",
+        "curve_interior_in_cutPlane",
+        "curve_avoids",
+        "curve_parentLeaf",
+        "family_disjoint",
+        "support_family",
+        "family_parentWave"
+      ],
+      "formalization/weighted/SlitCubicLowerEnergy.lean": [
+        "two_slice_energy",
+        "two_rectangle_energy",
+        "two_halfplane_energy_le",
+        "area_lower_of_inverse_slices"
+      ],
+      "formalization/weighted/SlitCubicLeafLength.lean": [
+        "point_mem_band",
+        "point_mem_rectangle",
+        "segment_continuousOn",
+        "velocity_continuousOn",
+        "segment_hasDerivAt",
+        "segment_eq_rectangleChart_symm",
+        "velocity_eq_inverseVelocity",
+        "segment_lineLength_le",
+        "reflected_segment_lineLength_le",
+        "segments_lineLength_le_inverseSliceLength",
+        "curve_lineLength_le_inverseSliceLength"
+      ],
+      "formalization/weighted/SlitCubicOptimality.lean": [
+        "family_modulus_eq",
+        "width_eq_period_ratio",
+        "family_attains_width",
+        "exists_parentWave_attaining_width"
+      ],
+      "formalization/weighted/ActualParentOptimality.lean": [
+        "limitingParentWidth_eq_period_ratio",
+        "limitingParentWave_attains"
       ]
     },
     "obligations": []
