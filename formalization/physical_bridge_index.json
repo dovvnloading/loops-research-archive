@@ -4857,7 +4857,24 @@
         "prefixMargin_pos"
       ],
       "formalization/weighted/DepthGateBase.lean": [
-        "exists_initial_chart"
+        "exists_initial_chart",
+        "TerminalChart.exists_admissible_prefix"
+      ],
+      "formalization/weighted/DepthGateRealization.lean": [
+        "TerminalChart.scale_ne",
+        "TerminalChart.collision",
+        "TerminalChart.centralGate",
+        "TerminalChart.physicalGate",
+        "TerminalChart.firstReturn",
+        "TerminalChart.select_parameter",
+        "Ancestors.restriction",
+        "Ancestors.core_subset_source",
+        "Ancestors.firstReturn",
+        "Ancestors.targets_nested",
+        "Ancestors.phases_nested",
+        "Ancestors.terminal_target_inside",
+        "Ancestors.terminal_phases_nested",
+        "realization_of_chart"
       ]
     },
     "obligations": []

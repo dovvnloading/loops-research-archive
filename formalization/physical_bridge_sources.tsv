@@ -98,6 +98,7 @@ formalization/weighted/CrestIterateLimit.lean	METADATA
 formalization/weighted/CriticalReturnRelationStability.lean	METADATA
 formalization/weighted/DepthGateBase.lean	DEPTH
 formalization/weighted/DepthGateChart.lean	DEPTH
+formalization/weighted/DepthGateRealization.lean	DEPTH
 formalization/weighted/DepthThreeClosure.lean	METADATA
 formalization/weighted/DepthThreeReal.lean	METADATA
 formalization/weighted/DepthThreeRemainder.lean	METADATA

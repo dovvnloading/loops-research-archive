@@ -47,7 +47,7 @@ structure TerminalChart where
         ((quadraticMap t)^[n]) ((criticalValue t period : ℂ)*w)‖
   first_bound : ∀ t ∈ Icc left right, ∀ {z : ℂ},
     ‖z‖ ≤ 23/20+buffer → ∀ n : ℕ, 1 ≤ n → n < period →
-      |criticalValue t period|*(23/20)+margin ≤
+      |criticalValue t period| *(23/20)+margin ≤
         ‖((quadraticMap t)^[n]) ((criticalValue t period : ℂ)*z)‖
   normalized_error : ∀ t ∈ Icc left right, ∀ z : ℂ, ‖z‖ ≤ 23/20 →
     ‖normalizedReturn t period z-complexMap (coefficient t) z‖ ≤ 1/500000-slack
@@ -90,6 +90,7 @@ uses its own signed critical scale and reserved normalized radius. -/
 structure Ancestors (C : TerminalChart) (depth : ℕ) where
   period : Fin depth → ℕ
   target barrier core : Fin depth → ℝ → ℝ
+  barrier_eq_half : ∀ i t, barrier i t = target i t/2
   period_ge : ∀ i, 17 ≤ period i
   period_divides : ∀ i, period i ∣ C.period
   period_lt : ∀ i, period i < C.period
@@ -113,6 +114,8 @@ structure Ancestors (C : TerminalChart) (depth : ℕ) where
   first_bound : ∀ i t, t ∈ Icc C.left C.right → ∀ {z : ℂ},
     ‖z‖ ≤ barrier i t → ∀ n : ℕ, 1 ≤ n → n < period i →
       target i t+C.margin ≤ ‖((quadraticMap t)^[n]) z‖
+  target_nesting : ∀ i j, i.val < j.val → ∀ t, t ∈ Icc C.left C.right →
+    target j t+C.margin ≤ core i t
   nesting : ∀ i j, i.val < j.val → ∀ t, t ∈ Icc C.left C.right →
     ∀ {z : ℂ}, ‖z‖ ≤ barrier j t → ∀ m : ℕ, m*period i ≤ period j →
       ‖((quadraticMap t)^[m*period i]) z‖ ≤ core i t-C.margin

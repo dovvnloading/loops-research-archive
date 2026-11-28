@@ -62,7 +62,7 @@ private theorem sharp_pair {r : ℕ} (hr : 17 ≤ r) {a b t : ℝ}
 private theorem sharp_first {r : ℕ} (hr : 17 ≤ r) {a b t : ℝ}
     (h : SharpChart r a b) (ht : t ∈ Icc a b)
     {z : ℂ} (hz : ‖z‖ ≤ 6/5) (n : ℕ) (hn : 1 ≤ n) (hnr : n < r) :
-    |criticalValue t r|*(23/20)+scale r/10000 ≤
+    |criticalValue t r| *(23/20)+scale r/10000 ≤
       ‖((quadraticMap t)^[n]) ((criticalValue t r : ℂ)*z)‖ := by
   have he := sharp_displacement hr h ht hz n hn hnr.le
   have hx := TwoLevelReference.chart_phase_abs hr h ht hn hnr
@@ -142,6 +142,7 @@ def Ancestors.empty (C : TerminalChart) : Ancestors C 0 where
   target := Fin.elim0
   barrier := Fin.elim0
   core := Fin.elim0
+  barrier_eq_half := fun i => Fin.elim0 i
   period_ge := fun i => Fin.elim0 i
   period_divides := fun i => Fin.elim0 i
   period_lt := fun i => Fin.elim0 i
@@ -153,12 +154,34 @@ def Ancestors.empty (C : TerminalChart) : Ancestors C 0 where
   core_inside := fun i => Fin.elim0 i
   pair_bound := fun i => Fin.elim0 i
   first_bound := fun i => Fin.elim0 i
+  target_nesting := fun i => Fin.elim0 i
   nesting := fun i => Fin.elim0 i
   terminal_nesting := fun i => Fin.elim0 i
 
 theorem exists_initial_chart : Nonempty TerminalChart := by
   obtain ⟨a,b,h⟩ := exists_sharp_chart 17 (by norm_num)
   exact ⟨TerminalChart.ofSharp (by norm_num : 17 ≤ 17) h⟩
+
+/-- Every finite chart budget is attained by arbitrarily large new
+outer periods; no asymptotic premise is assumed by the induction. -/
+theorem TerminalChart.exists_admissible_prefix (C : TerminalChart) (lower : ℕ) :
+    ∃ p : ℕ, lower ≤ p ∧ C.AdmissiblePrefix p := by
+  obtain ⟨n,hn⟩ := pow_unbounded_of_one_lt
+    (128*(5 : ℝ)^(6*C.period)/C.budget) (by norm_num : (1 : ℝ) < 4)
+  let p := max n (max lower 17)
+  have hnp : n ≤ p := le_max_left _ _
+  have hlp : lower ≤ p := (le_max_left lower 17).trans (le_max_right n _)
+  have h17 : 17 ≤ p := (le_max_right lower 17).trans (le_max_right n _)
+  have hpow : (4 : ℝ)^n ≤ (4 : ℝ)^p := pow_le_pow_right₀ (by norm_num) hnp
+  have hb := (div_lt_iff₀ C.budget_pos).mp (hn.trans_le hpow)
+  have hm := mul_lt_mul_of_pos_right hb (scale_pos p)
+  have hid : ((4 : ℝ)^p*C.budget)*scale p = C.budget := by
+    calc
+      _ = C.budget*(scale p*(4 : ℝ)^p) := by ring
+      _ = C.budget := by rw [TwoLevelPerturbation.scale_mul_power, mul_one]
+  rw [hid] at hm
+  refine ⟨p,hlp,h17,?_⟩
+  nlinarith only [hm]
 
 end
 end DepthGate

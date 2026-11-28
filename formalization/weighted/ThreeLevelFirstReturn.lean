@@ -28,7 +28,7 @@ private theorem first_return_of_blocks (F : ℂ → ℂ) (p Q : ℕ)
   have hdiv : n/p < Q := by
     by_contra! hh
     have hm := Nat.mul_le_mul_right p hh
-    nlinarith only [he, hm, hnQ]
+    nlinarith only [he, hm, hnQ, Nat.zero_le (n%p)]
   have hnform : n = n%p+(n/p)*p := by nlinarith only [he]
   by_cases hmod : n%p = 0
   · have hdpos : 1 ≤ n/p := by
