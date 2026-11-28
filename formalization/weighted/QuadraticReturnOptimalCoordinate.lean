@@ -8,6 +8,9 @@ tangent to the identity that makes the cubic and quartic target
 coefficients integral has a cubic coordinate coefficient with exact
 dyadic denominator exponent twice the physical return period.  The
 coordinate itself is not assumed integral or algebraic.
+
+The final two specializations certify the actual period-two parameter
+`c = -1` and an attained cubic coordinate denominator exponent of four.
 -/
 
 namespace LoopsQuadraticReturnArithmetic

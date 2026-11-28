@@ -14,94 +14,100 @@ Ledger statement being addressed:
 > The Mandelbrot set is locally connected.
 
 **Scope:** an all-period arithmetic obstruction for actual quadratic centers. This does
-not prove MLC or a new local-connectivity case. The new theorem candidates are committed
-in Lean; final acceptance requires the combined CI build and transitive axiom audit.
+not prove MLC or a new local-connectivity case. The theorems compile in the repository's
+pinned Lean project, and the complete build and unchanged transitive axiom audit have
+passed. Exact validation evidence is recorded in section 7.
 
 ## Claim
 
 Let
 
-\[
+$$
 f_c(z)=z^2+c,\qquad P_j(c)=f_c^j(0).
-\]
+$$
 
-Suppose that zero has **exact period** \(N\ge2\):
+Suppose that zero has **exact period** $N\ge2$:
 
-\[
+$$
 P_N(c)=0,\qquad P_j(c)\ne0\quad(0<j<N).
 \tag{1}
-\]
+$$
 
 Write the genuine polynomial return and its critical linear normalization as
 
-\[
+$$
 f_c^N(z)=A_Nz^2+B_Nz^4+z^6E_N(z),\qquad
 R_{c,N}(w)=A_N f_c^N(w/A_N)
  =w^2+\beta_{c,N}w^4+w^6\widetilde E_N(w),
 \tag{2}
-\]
+$$
 
-where \(A_N\ne0\) and both remainders are polynomials. Thus
-\(\beta_{c,N}=B_N/A_N^3\) is an actual coefficient of an actual iterate in the
+where $A_N\ne0$ and both remainders are polynomials. Thus
+$\beta_{c,N}=B_N/A_N^3$ is an actual coefficient of an actual iterate in the
 specified dynamical coordinate. It is not a coefficient attached to an abstract model.
 
-Here “integral” always means **integral over \(\mathbf Z\)**, equivalently a complex
+The ratio is unchanged by any nonzero linear change of the critical coordinate:
+under the conjugacy $w=sz$, the two coefficients become $A_N/s$ and
+$B_N/s^3$. Their ratio is still $B_N/A_N^3$. This is formally recorded as
+`linear_conjugate_quartic_invariant` alongside the actual conjugated-return identity.
+
+Here “integral” always means **integral over $\mathbf Z$**, equivalently a complex
 algebraic integer. All exponents below are nonnegative integers.
 
 ### Theorem A — the return has an exact denominator
 
-\[
+$$
 \boxed{\quad
 2^k\beta_{c,N}\text{ is integral}\quad\Longleftrightarrow\quad k\ge 2N-1.
 \quad}
 \tag{3}
-\]
+$$
 
 The stronger certificate proves that
-\(u=2^{2N-1}\beta_{c,N}\) is integral and that there exist integral \(v,t\) with
+$u=2^{2N-1}\beta_{c,N}$ is integral and that there exist integral $v,t$ with
 
-\[
+$$
 uv=1+2t.
 \tag{4}
-\]
+$$
 
 This proves exact noncancellation, not merely an upper bound on denominators.
 
 ### Theorem B — every coordinate producing an integral target pays an exact cost
 
-Let \(H,G\in\mathbf C[X]\) be arbitrary polynomials with
+Let $H,G\in\mathbf C[X]$ be arbitrary polynomials with
 
-\[
+$$
 H(0)=0,\quad H'(0)=1,\qquad
 G_0=G_1=0,\quad G_2=1,
-\]
+$$
 
-where \(G_j=[X^j]G\). In Lean, the coordinate conditions are
-`H.coeff 0 = 0` and `H.coeff 1 = 1`. Assume only that \(G_3,G_4\) are integral and that the
+where $G_j=[X^j]G$. In Lean, the coordinate conditions are
+`H.coeff 0 = 0` and `H.coeff 1 = 1`. Assume only that $G_3,G_4$ are integral and that the
 **genuine composition equation** holds through degree four:
 
-\[
+$$
 X^5\mid H\circ R_{c,N}-G\circ H.
 \tag{5}
-\]
+$$
 
-There is no integrality or algebraicity assumption on \(H\). Put
-\(a=[X^2]H\) and \(b=[X^3]H\). Then
+There is no integrality or algebraicity assumption on $H$. Put
+$a=[X^2]H$ and $b=[X^3]H$. Then
 
-\[
+$$
 2a\text{ is integral},\qquad
 \boxed{\quad 2^k b\text{ is integral}\quad\Longleftrightarrow\quad k\ge2N.\quad}
 \tag{6}
-\]
+$$
 
-This cost is attained. Taking \(G=X^2\), the polynomial
+This cost is attained. Taking $G=X^2$, the polynomial
 
-\[
+$$
 H(X)=X+\frac{\beta_{c,N}}2X^3
 \tag{7}
-\]
+$$
 
-satisfies (5), and its cubic coefficient has the exact exponent \(2N\).
+satisfies (5), and its cubic coefficient has the exact exponent $2N$.
 This is a theorem about Böttcher **jets through degree four**. It does not assert
 convergence, existence, or arithmetic properties of an entire infinite Böttcher series.
 
@@ -109,19 +115,19 @@ convergence, existence, or arithmetic properties of an entire infinite Böttcher
 
 1. If the quadratic and cubic coefficients of a tangent-to-identity coordinate are
    integral, then the transformed quartic coefficient still has exact exponent
-   \(2N-1\). In particular such a coordinate cannot produce an integral quartic term.
-2. If centers \(c,d\) have exact periods \(N,M\ge2\) and a field automorphism of
-   \(\mathbf C\) takes \(\beta_{c,N}\) to \(\beta_{d,M}\), then \(N=M\).
+   $2N-1$. In particular such a coordinate cannot produce an integral quartic term.
+2. If centers $c,d$ have exact periods $N,M\ge2$ and a field automorphism of
+   $\mathbf C$ takes $\beta_{c,N}$ to $\beta_{d,M}$, then $N=M$.
    The return period can be recovered from the arithmetic of this fourth-order coefficient.
 3. For any sequence of actual centers with unbounded exact periods, no single exponent
-   \(k\) makes all the normalized quartic coefficients integral after multiplication by
-   \(2^k\).
-4. At the actual basilica center \(c=-1\), \(N=2\), the concrete Lean theorem
-   proves \(\beta=-1/8\). The optimal-coordinate module also verifies the exact
+   $k$ makes all the normalized quartic coefficients integral after multiplication by
+   $2^k$.
+4. At the actual basilica center $c=-1$, $N=2$, the concrete Lean theorem
+   proves $\beta=-1/8$. The optimal-coordinate module also verifies the exact
    period-two hypotheses and supplies an actual coordinate jet with exact cubic
    denominator exponent four. For explanation, direct substitution gives
-   \(R_{-1,2}(w)=w^2-w^4/8\), and the general coordinate law gives the cubic
-   Böttcher-jet coefficient \(-1/16\); these last two formulas are explanatory
+   $R_{-1,2}(w)=w^2-w^4/8$, and the general coordinate law gives the cubic
+   Böttcher-jet coefficient $-1/16$; these last two formulas are explanatory
    specializations, not separate named Lean exports.
 
 ## Evidence
@@ -175,27 +181,27 @@ lower-denominator terms permitted by an integral target.
 
 The actual return has an explicit factorization
 
-\[
+$$
 f_c^{m+1}(z)-P_{m+1}(c)=z^2Q_m(c,z),
-\]
+$$
 
 where
 
-\[
+$$
 Q_0=1,\qquad
 Q_{m+1}=\bigl(f_c^{m+1}(z)+P_{m+1}(c)\bigr)Q_m.
 \tag{8}
-\]
+$$
 
 A critical-return parameter is integral: it is a root of the monic integer polynomial
-\(P_N\). Thus every critical-orbit point is integral. Let \(z=P_j(c)\ne0\).
-Critical periodicity gives \(f_c^N(z)=z\). Evaluating (8) with \(m=N-1\) gives
+$P_N$. Thus every critical-orbit point is integral. Let $z=P_j(c)\ne0$.
+Critical periodicity gives $f_c^N(z)=z$. Evaluating (8) with $m=N-1$ gives
 
-\[
+$$
 z=z^2Q_{N-1}(c,z),\qquad zQ_{N-1}(c,z)=1.
-\]
+$$
 
-The quotient is integral by its recurrence. It is an explicit integral inverse of \(z\).
+The quotient is integral by its recurrence. It is an explicit integral inverse of $z$.
 This is a familiar dynamical-unit phenomenon, not the novelty claim.
 
 Lean source:
@@ -205,54 +211,54 @@ especially `criticalReturnQuotient_factor`, `center_orbit_integral_inverse`, and
 
 ### 4. The actual return coefficients and their arithmetic
 
-For a return of length \(j\ge1\), put
+For a return of length $j\ge1$, put
 
-\[
+$$
 f_c^j(z)=P_j(c)+A_jz^2+B_jz^4+z^6E_j(z).
-\]
+$$
 
-Squaring the polynomial and adding \(c\) proves, with no asymptotic approximation,
+Squaring the polynomial and adding $c$ proves, with no asymptotic approximation,
 
-\[
+$$
 A_1=1,\quad B_1=0,\qquad
 A_{j+1}=2P_jA_j,\quad B_{j+1}=A_j^2+2P_jB_j.
 \tag{9}
-\]
+$$
 
-The code constructs \(E_j\) as a polynomial and proves an equality of entire iterate
+The code constructs $E_j$ as a polynomial and proves an equality of entire iterate
 polynomials. Evaluation then identifies it with the genuine function iterate.
 
-Set \(V_j=\prod_{r=1}^{j-1}P_r(c)\). Before the first return all its factors are units,
-so \(V_j\) and its inverse are integral. Equation (9) gives
+Set $V_j=\prod_{r=1}^{j-1}P_r(c)$. Before the first return all its factors are units,
+so $V_j$ and its inverse are integral. Equation (9) gives
 
-\[
+$$
 A_j=2^{j-1}V_j.
 \tag{10}
-\]
+$$
 
-For \(j\ge2\), write \(B_j=2^{j-2}U_j\). Then
+For $j\ge2$, write $B_j=2^{j-2}U_j$. Then
 
-\[
+$$
 U_2=1,\qquad U_{j+1}=2^{j-1}V_j^2+P_jU_j.
 \tag{11}
-\]
+$$
 
 An integral element is called `OddIntegral` in the proof when it has an integral inverse
 modulo two, in the explicit sense (4). Such elements are closed under multiplication and
-under adding twice an integral element. Since \(P_j\) is an integral unit and \(j\ge2\),
-(11) proves by induction that every relevant \(U_j\) is `OddIntegral`.
+under adding twice an integral element. Since $P_j$ is an integral unit and $j\ge2$,
+(11) proves by induction that every relevant $U_j$ is `OddIntegral`.
 
 Combining (10) and (11) at the terminal time gives
 
-\[
+$$
 2^{2N-1}\beta_{c,N}=U_N V_N^{-3}.
 \tag{12}
-\]
+$$
 
-This is integral and invertible modulo two. An `OddIntegral` element \(u\) cannot have
-\(u/2\) integral: from \(uv=1+2t\) one would obtain
-\(2((u/2)v-t)=1\) in the algebraic integers, contradicting the nonintegrality of \(1/2\).
-If \(k<2N-1\), integrality of \(2^k\beta\) would imply integrality of \(u/2\) after
+This is integral and invertible modulo two. An `OddIntegral` element $u$ cannot have
+$u/2$ integral: from $uv=1+2t$ one would obtain
+$2((u/2)v-t)=1$ in the algebraic integers, contradicting the nonintegrality of $1/2$.
+If $k<2N-1$, integrality of $2^k\beta$ would imply integrality of $u/2$ after
 multiplication by a further nonnegative power of two. This proves the forward implication
 of (3); the reverse implication follows from (12).
 
@@ -267,42 +273,42 @@ The Lean index is shifted: `n` denotes physical period `N = n + 2`, so `2*n+3 = 
 
 Write
 
-\[
+$$
 H(w)=w+aw^2+bw^3+O(w^4),\qquad
 G(w)=w^2+\gamma w^3+\delta w^4+O(w^5).
-\]
+$$
 
 Extracting the cubic and quartic coefficients of the genuine composition defect in (5)
 gives
 
-\[
+$$
 \gamma=-2a,\qquad
 \delta=\beta+5a^2+a-2b.
 \tag{13}
-\]
+$$
 
 The code proves these equations for arbitrary polynomials with unrestricted higher
 coefficients. It does not define “conjugacy” to mean the desired coefficient equations.
 
-If \(a,b\) are integral, the difference \(\delta-\beta\) is integral. Adding an integral
+If $a,b$ are integral, the difference $\delta-\beta$ is integral. Adding an integral
 quantity cannot alter the threshold in (3). This proves the integral-coordinate obstruction.
 
-For the stronger Theorem B, assume only \(\gamma,\delta\) integral. Equation (13) makes
-\(2a\) integral. With \(r=5a^2+a-\delta\),
+For the stronger Theorem B, assume only $\gamma,\delta$ integral. Equation (13) makes
+$2a$ integral. With $r=5a^2+a-\delta$,
 
-\[
+$$
 4r=5(2a)^2+2(2a)-4\delta
-\]
+$$
 
-is integral, while \(2b=\beta+r\). Put \(e=2N-1\ge3\). Then
+is integral, while $2b=\beta+r$. Put $e=2N-1\ge3$. Then
 
-\[
+$$
 2^{e+1}b=2^e\beta+2\bigl(2^{e-3}(4r)\bigr).
 \tag{14}
-\]
+$$
 
 The first summand is `OddIntegral`, and the second is twice an integral element.
-Thus \(2^{e+1}b\) is also `OddIntegral`, giving the exact threshold \(e+1=2N\).
+Thus $2^{e+1}b$ is also `OddIntegral`, giving the exact threshold $e+1=2N$.
 The explicit polynomial (7) proves attainment through degree four.
 
 Lean sources:
@@ -316,13 +322,13 @@ Main names: `integral_coordinate_preserves_denominator`,
 
 ### 6. Galois and sequence consequences
 
-Algebraic integrality is preserved and reflected by a field automorphism of \(\mathbf C\),
+Algebraic integrality is preserved and reflected by a field automorphism of $\mathbf C$,
 and such an automorphism fixes powers of two. Hence if it takes one normalized quartic
 coefficient to another, their least allowed exponents in (3) agree. This proves equality
 of the physical return periods. No irreducibility conjecture for Gleason polynomials is used.
 
-For a sequence with unbounded periods, a fixed proposed denominator exponent \(k\) is
-smaller than \(2N-1\) at some member. Equation (3) gives the contradiction. These statements
+For a sequence with unbounded periods, a fixed proposed denominator exponent $k$ is
+smaller than $2N-1$ at some member. Equation (3) gives the contradiction. These statements
 are `normalizedQuartic_galois_period_rigidity` and
 `no_uniform_normalizedQuartic_denominator`.
 
@@ -350,12 +356,26 @@ transitive axioms of every declaration in the weighted project. Its allowlist is
 existing theorem is changed. No proof holes, new axioms, or external-computation trust
 shortcuts are permitted.
 
-Local installation of the pinned toolchain failed because the workspace had insufficient
-disk space. The repository CI is therefore the compiler and kernel judge. The first
-critical-unit checkpoint passed the build in
-[run 46105220073](https://github.com/dovvnloading/loops-research-archive/actions/runs/46105220073).
-**The combined theorem build and audit are still pending at this checkpoint.** Final CI
-identifiers and the exact accepted commit will be recorded after success.
+The complete project build and transitive axiom audit passed at commit
+`0c7388a7214a4747823009a8af373bd6d8ab09ce` in
+[weighted CI run 46106863256](https://github.com/dovvnloading/loops-research-archive/actions/runs/46106863256),
+[job 140861465323](https://github.com/dovvnloading/loops-research-archive/actions/runs/46106863256/job/140861465323).
+The final audit reported **242 modules and 6,087 declarations**, with only the permitted
+standard axioms. All six new modules were included. This checks compiled declarations,
+including private and generated declarations, and their transitive dependencies.
+
+`python code/contribute.py check` passes without the draft exemption. The source-coverage
+check reports 291 registered Lean files (44 root, 242 weighted, 5 standalone) and no
+prohibited source tokens. The PR's contribution-intake, source-index, root/standalone
+kernel checks, and other research checks also passed at that head.
+
+Local installation of the pinned toolchain failed because of insufficient disk space;
+CI supplied the compilation and kernel-audit evidence above. The final documentation
+update changes exposition and a module docstring, with theorem statements and proof bodies
+identical to the validated source. The CI checks on
+[PR #255](https://github.com/dovvnloading/loops-research-archive/pull/255) record validation
+of the current head. The PR was opened before the proof work and retains the incremental
+research, proof-fix, and main-branch synchronization commits.
 
 ## Dependencies
 
@@ -387,9 +407,9 @@ The relevant **background**, rather than unproved premises of the Lean theorems,
   Böttcher arithmetic and convergence radii.
 
 - R. Ren, *Coefficient-Level Böttcher Theory for Wild Superattracting Germs of
-  Degree \(p^e\)*, [arXiv:2604.02014v3](https://arxiv.org/html/2604.02014v3)
-  (May 2026). This nearby coefficient and radius theory assumes odd \(p\) and
-  \(e\ge2\); it does not treat the local-degree-two center-return statements here.
+  Degree $p^e$*, [arXiv:2604.02014v3](https://arxiv.org/html/2604.02014v3)
+  (May 2026). This nearby coefficient and radius theory assumes odd $p$ and
+  $e\ge2$; it does not treat the local-degree-two center-return statements here.
 
 ## Boundary
 
@@ -401,7 +421,7 @@ arithmetic comparison of such critically normalized germs from silently retainin
 bounded denominators.
 
 **What is not excluded.** The return remains linearly conjugate to the original integral
-polynomial \(f_c^N\). There is no claim of bad reduction in dynamical moduli, failure of
+polynomial $f_c^N$. There is no claim of bad reduction in dynamical moduli, failure of
 potential good reduction, or failure of complex renormalization compactness. Nonintegral
 coordinates do change the quartic coefficient; Theorem B calculates their necessary cost.
 Arithmetic methods with a different, period-dependent normalization or adelic metric remain
