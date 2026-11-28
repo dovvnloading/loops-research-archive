@@ -61,6 +61,7 @@ formalization/weighted/ActualCrestPaths.lean	CREST
 formalization/weighted/ActualCrestProperFamilies.lean	CREST
 formalization/weighted/ActualCrestProperReturn.lean	METADATA
 formalization/weighted/ActualCrestQuartic.lean	ALL-PATHS
+formalization/weighted/ActualCrestQuarticScale.lean	ALL-PATHS
 formalization/weighted/ActualCrestRadialOrder.lean	METADATA
 formalization/weighted/ActualCrestRelationSlope.lean	METADATA
 formalization/weighted/ActualCrestRemainderOrder.lean	CREST
@@ -97,6 +98,7 @@ formalization/weighted/CollarStraightLength.lean	METADATA
 formalization/weighted/CompactObstacleRemainder.lean	METADATA
 formalization/weighted/ConnectedBinaryCoding.lean	METADATA
 formalization/weighted/CrestConformalModulus.lean	METADATA
+formalization/weighted/CrestEndpointQuantitative.lean	ALL-PATHS
 formalization/weighted/CrestFirstExit.lean	METADATA
 formalization/weighted/CrestIntegralLimit.lean	METADATA
 formalization/weighted/CrestIterateLimit.lean	METADATA
@@ -225,6 +227,9 @@ formalization/weighted/QuadraticCriticalTrapping.lean	CONSTRUCT
 formalization/weighted/QuadraticEscapeEndpoint.lean	QUADRATIC-ESCAPE
 formalization/weighted/QuadraticEscapeFullness.lean	METADATA
 formalization/weighted/QuadraticInverseOpen.lean	CONSTRUCT
+formalization/weighted/QuadraticMixedSusceptibility.lean	METADATA
+formalization/weighted/QuadraticMixedSusceptibilityMLC.lean	METADATA
+formalization/weighted/QuadraticMonotoneFiberTopology.lean	METADATA
 formalization/weighted/QuadraticMultiplierArithmetic.lean	METADATA
 formalization/weighted/QuadraticMultiplierCoordinate.lean	METADATA
 formalization/weighted/QuadraticMultiplierDisk.lean	METADATA
