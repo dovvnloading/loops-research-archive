@@ -152,6 +152,7 @@ theorem parameter_error_lipschitz {p : ℕ} (hp : 17 ≤ p) {c a z : ℝ}
     |(realReturn c p z-(1-kappa p c*z^2))-
       (realReturn a p z-(1-kappa p a*z^2))| ≤
       200*(p : ℝ)*scale p*|kappa p c-kappa p a| := by
+  have hq0 := scale_pos p
   have hcy := realReturn_mapsTo hc hz
   have hay := realReturn_mapsTo ha hz
   have hs := unit_square hz
@@ -201,6 +202,7 @@ theorem spatial_error_lipschitz {p : ℕ} (hp : 17 ≤ p) {c z w : ℝ}
     |(realReturn c p z-(1-kappa p c*z^2))-
       (realReturn c p w-(1-kappa p c*w^2))| ≤
       300*(p : ℝ)*scale p*|z-w| := by
+  have hq0 := scale_pos p
   have hzy := realReturn_mapsTo hc hz
   have hwy := realReturn_mapsTo hc hw
   have hk := kappa_bounds hp hc

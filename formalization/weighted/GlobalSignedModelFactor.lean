@@ -31,8 +31,10 @@ private theorem factor_hasDerivAt (k : ℝ) :
     (criticalOrbit_hasDerivAt 3 k).neg).mul
     ((hasDerivAt_const k (1 : ℝ)).add (criticalOrbit_hasDerivAt 4 k))).mul
     ((criticalOrbit_hasDerivAt 2 k).add (criticalOrbit_hasDerivAt 5 k)).neg
-  convert h using 1 <;> simp only [modelFactor,factorSlope,id_eq,Pi.pow_apply,
-    Nat.cast_ofNat,Nat.reduceSub,zero_add,one_mul,mul_one] <;> ring
+  change HasDerivAt modelFactor _ k at h
+  apply h.congr_deriv
+  simp only [factorSlope,id_eq,Pi.pow_apply,Pi.mul_apply,Pi.add_apply,Pi.neg_apply,
+    Nat.cast_ofNat,Nat.reduceSub,zero_add,one_mul,mul_one]
 
 private abbrev Box := ℝ × ℝ
 private def InBox (x : ℝ) (I : Box) : Prop := I.1 ≤ x ∧ x ≤ I.2

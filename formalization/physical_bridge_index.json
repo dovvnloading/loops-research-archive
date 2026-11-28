@@ -5129,6 +5129,33 @@
         "actual_tip_unique",
         "exists_unique_actual_tip",
         "exists_unique_physical_signed_collision"
+      ],
+      "formalization/weighted/GlobalWindowRootFactor.lean": [
+        "returnOrbit_succ",
+        "returnOrbit_eq",
+        "returnOrbit_mem",
+        "actualFactor_eq_two",
+        "actualFactor_model_error",
+        "signed_root_model_error"
+      ],
+      "formalization/weighted/GlobalPrimitiveIntervalRecognition.lean": [
+        "PositiveReturnInterval.zero_mem",
+        "PositiveReturnInterval.critical_return_mem",
+        "PositiveReturnInterval.parameter_band",
+        "PositiveReturnInterval.return_order",
+        "PositiveReturnInterval.endpoint_lower",
+        "recognize_canonical_return"
+      ],
+      "formalization/weighted/GlobalWindowRootLocalization.lean": [
+        "signed_root_coarse_interval"
+      ],
+      "formalization/weighted/GlobalPrimitiveTipUniqueness.lean": [
+        "PhysicalSignedTip.canonical_interval",
+        "PhysicalSignedTip.coefficient_interval",
+        "physical_signed_tip_unique",
+        "actual_tip_physical",
+        "exists_unique_physical_signed_tip",
+        "physical_signed_tip_iff_actual_tip"
       ]
     },
     "obligations": []

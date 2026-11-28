@@ -136,7 +136,7 @@ private theorem model_orbit_difference {a b : ℝ}
   | zero => simp [errorCoefficient]
   | succ n ih =>
     rw [Function.iterate_succ_apply',Function.iterate_succ_apply']
-    have h := quadratic_joint ha
+    have h := quadratic_joint (b := b) ha
       (iterate_mem_unit (Q a) (quadratic_mapsTo ha) n)
       (iterate_mem_unit (Q b) (quadratic_mapsTo hb) n)
     have hm := mul_le_mul_of_nonneg_left ih (by norm_num : (0 : ℝ)≤5)
@@ -263,7 +263,7 @@ private theorem orbit_error_difference {H G : ℝ → ℝ} {a b t : ℝ}
           |(H x-Q a x)-(G y-Q b y)| := abs_add_le _ _
       _≤(|(-a*(x+u))*((x-u)-(y-v))|+
           |(a*(x+u)-b*(y+v))*(y-v)|)+|(H x-Q a x)-(G y-Q b y)| :=
-        add_le_add_right (abs_sub _ _) _
+        add_le_add (abs_sub _ _) le_rfl
       _≤differenceCoefficient (n+1)*t*|a-b| := by
         simp only [abs_mul] at hfirst hsecond ⊢
         change _≤(5*D+22*(2+6*C)*C+200+600*C)*t*|a-b|
@@ -285,7 +285,10 @@ theorem signed_relation_error_lipschitz {H G : ℝ → ℝ} {a b t : ℝ}
       110000000*t*|a-b| := by
   have h6 := orbit_error_difference ha hb ht htsmall hH hG hclose hparameter hspatial 6
   have h3 := orbit_error_difference ha hb ht htsmall hH hG hclose hparameter hspatial 3
-  norm_num [differenceCoefficient,errorCoefficient] at h6 h3
+  rw [show differenceCoefficient 6=103595496 by
+    norm_num [differenceCoefficient,errorCoefficient]] at h6
+  rw [show differenceCoefficient 3=18696 by
+    norm_num [differenceCoefficient,errorCoefficient]] at h3
   have hid : (signedRelation H-relation a)-(signedRelation G-relation b)=
       ((H^[6] 0-(Q a)^[6] 0)-(G^[6] 0-(Q b)^[6] 0))+
         ((H^[3] 0-(Q a)^[3] 0)-(G^[3] 0-(Q b)^[3] 0)) := by

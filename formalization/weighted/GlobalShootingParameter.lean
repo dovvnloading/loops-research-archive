@@ -73,8 +73,9 @@ theorem unique_shooting_parameter {p : ℕ} (hp : 17 ≤ p) {d : ℝ}
   exact (shooting_strictAnti (p-2) (terminal_band hp hd)).injOn
     (parameter_band hp hx.1) (parameter_band hp hc) (hx.2.trans hz.symm)
 
-def selectedParameter (p : ℕ) (d : ℝ) : ℝ :=
-  if h : ∃ c : ℝ, c ∈ Icc (-2 : ℝ) (-2+20*scale p) ∧
+def selectedParameter (p : ℕ) (d : ℝ) : ℝ := by
+  classical
+  exact if h : ∃ c : ℝ, c ∈ Icc (-2 : ℝ) (-2+20*scale p) ∧
       shooting (p-2) d c = 0 then Classical.choose h else -2
 
 theorem selectedParameter_spec {p : ℕ} (hp : 17 ≤ p) {d : ℝ}
@@ -162,7 +163,9 @@ theorem continuousOn_selectedParameter {p : ℕ} (hp : 17 ≤ p) :
       (selectedParameter p) (Icc (0 : ℝ) (14*scale p)) := by
     apply lipschitzOnWith_iff_dist_le_mul.mpr
     intro d hd e he
-    simpa only [Real.dist_eq,NNReal.coe_mk] using selectedParameter_lipschitz hp hd he
+    rw [Real.dist_eq,Real.dist_eq]
+    change |selectedParameter p d-selectedParameter p e|≤(12*scale p)*|d-e|
+    exact selectedParameter_lipschitz hp hd he
   exact hLip.continuousOn
 
 end

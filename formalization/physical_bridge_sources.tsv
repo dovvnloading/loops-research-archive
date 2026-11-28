@@ -137,6 +137,8 @@ formalization/weighted/GlobalCrestPhysical.lean	METADATA
 formalization/weighted/GlobalCrestSourceGates.lean	METADATA
 formalization/weighted/GlobalInverseWindow.lean	METADATA
 formalization/weighted/GlobalPositiveWindow.lean	METADATA
+formalization/weighted/GlobalPrimitiveIntervalRecognition.lean	METADATA
+formalization/weighted/GlobalPrimitiveTipUniqueness.lean	METADATA
 formalization/weighted/GlobalRestrictiveConverse.lean	METADATA
 formalization/weighted/GlobalRestrictiveExistence.lean	METADATA
 formalization/weighted/GlobalRestrictiveWindow.lean	METADATA
@@ -150,6 +152,8 @@ formalization/weighted/GlobalWindowInverseShape.lean	METADATA
 formalization/weighted/GlobalWindowLocalization.lean	METADATA
 formalization/weighted/GlobalWindowParameterSecant.lean	METADATA
 formalization/weighted/GlobalWindowPhases.lean	METADATA
+formalization/weighted/GlobalWindowRootFactor.lean	METADATA
+formalization/weighted/GlobalWindowRootLocalization.lean	METADATA
 formalization/weighted/GlobalWindowSecant.lean	METADATA
 formalization/weighted/GlobalWindowSignedChart.lean	METADATA
 formalization/weighted/GlobalWindowThickness.lean	METADATA

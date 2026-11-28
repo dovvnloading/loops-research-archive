@@ -144,6 +144,7 @@ private theorem factor_difference {p : ℕ} (hp : 17 ≤ p) {c a y v : ℝ}
     |(back c (j+1) (criticalValue c p)+back c (j+1) (criticalValue c p*y))/4-
       (back a (j+1) (criticalValue a p)+back a (j+1) (criticalValue a p*v))/4| ≤
       |criticalValue c p-criticalValue a p| + 4*scale p*|y-v| := by
+  have hq0 := scale_pos p
   have hpos := inverse_joint_bound (wide_band hp hc) (wide_band hp ha)
     (terminal_self hp hc) (terminal_self hp ha) (j+1)
   have htar := inverse_joint_bound (wide_band hp hc) (wide_band hp ha)
@@ -171,6 +172,7 @@ theorem phaseProduct_lipschitz {p : ℕ} (hp : 17 ≤ p) {c a y v : ℝ}
     (hy : y ∈ Icc (-1 : ℝ) 1) (hv : v ∈ Icc (-1 : ℝ) 1) :
     |phaseProduct c p (criticalValue c p) y-phaseProduct a p (criticalValue a p) v| ≤
       (p : ℝ)*|criticalValue c p-criticalValue a p| + 4*(p : ℝ)*scale p*|y-v| := by
+  have hq0 := scale_pos p
   have hprod := product_difference
     (fun j => (back c (j+1) (criticalValue c p)+back c (j+1) (criticalValue c p*y))/4)
     (fun j => (back a (j+1) (criticalValue a p)+back a (j+1) (criticalValue a p*v))/4)
@@ -181,7 +183,7 @@ theorem phaseProduct_lipschitz {p : ℕ} (hp : 17 ≤ p) {c a y v : ℝ}
       ((p-1 : ℕ) : ℝ)*(|criticalValue c p-criticalValue a p| + 4*scale p*|y-v|) := by
     calc
       _ ≤ ∑ _j ∈ Finset.range (p-1),
-          |criticalValue c p-criticalValue a p| + 4*scale p*|y-v| :=
+          (|criticalValue c p-criticalValue a p| + 4*scale p*|y-v|) :=
         Finset.sum_le_sum (fun j _ => factor_difference hp hc ha hy hv j)
       _ = _ := by simp
   have hn : ((p-1 : ℕ) : ℝ) ≤ p := by exact_mod_cast Nat.sub_le p 1
@@ -198,8 +200,9 @@ private theorem ratio_difference {X X' Y Y' : ℝ}
   have hY0 : 0<Y := by linarith [hY.1]
   have hY'0 : 0<Y' := by linarith [hY'.1]
   have hden : 9/25 ≤ Y*Y' := by
-    nlinarith [mul_nonneg (show 0 ≤ Y-3/5 by linarith [hY.1])
-      (show 0 ≤ Y'-3/5 by linarith [hY'.1])]
+    have hm := mul_le_mul hY.1 hY'.1 (by norm_num : (0 : ℝ) ≤ 3/5) hY0.le
+    norm_num at hm
+    exact hm
   have hterm1 : |X-X'| / Y ≤ (5/3)*|X-X'| := by
     apply (div_le_iff₀ hY0).mpr
     have hm := mul_le_mul_of_nonneg_right hY.1 (abs_nonneg (X-X'))
@@ -227,6 +230,7 @@ theorem inverseRatio_lipschitz {p : ℕ} (hp : 17 ≤ p) {c a y v : ℝ}
     |inverseRatio c p y-inverseRatio a p v| ≤
       5*(p : ℝ)*|criticalValue c p-criticalValue a p| + 
         7*(p : ℝ)*scale p*|y-v| := by
+  have hq0 := scale_pos p
   have hunit : (1 : ℝ) ∈ Icc (-1 : ℝ) 1 := by norm_num
   have hcy := phaseProduct_bounds hp hc hy
   have hav := phaseProduct_bounds hp ha hv
@@ -245,6 +249,7 @@ theorem inverseRatio_lipschitz {p : ℕ} (hp : 17 ≤ p) {c a y v : ℝ}
 theorem inverseRatio_near_one {p : ℕ} (hp : 17 ≤ p) {c y : ℝ}
     (hc : PositiveRestrictiveReturn c p) (hy : y ∈ Icc (-1 : ℝ) 1) :
     |inverseRatio c p y-1| ≤ 14*(p : ℝ)*scale p := by
+  have hq0 := scale_pos p
   have hunit : (1 : ℝ) ∈ Icc (-1 : ℝ) 1 := by norm_num
   have hP := phaseProduct_bounds hp hc hunit
   have hP0 : phaseProduct c p (criticalValue c p) 1 ≠ 0 := by linarith [hP.1]
@@ -311,7 +316,7 @@ theorem kappa_bounds {p : ℕ} (hp : 17 ≤ p) {c : ℝ}
   rw [kappa_product hp hc]
   refine ⟨mul_pos (mul_pos hc.return_pos (by positivity)) hP0,?_⟩
   have hmul := mul_le_mul_of_nonneg_left hP.2
-    (show 0 ≤ criticalValue c p*(4 : ℝ)^(p-1) by positivity)
+    (mul_nonneg hc.return_pos.le (by positivity : (0 : ℝ) ≤ 4^(p-1)))
   have hscale := mul_lt_mul_of_pos_right (hc.return_scale hp)
     (show (0 : ℝ)<4^(p-1) by positivity)
   have hid := scale_power_identity (p := p) (by omega)
@@ -363,6 +368,7 @@ coordinate, with no differentiability premise. -/
 theorem return_scale_kappa_lipschitz {p : ℕ} (hp : 17 ≤ p) {c a : ℝ}
     (hc : PositiveRestrictiveReturn c p) (ha : PositiveRestrictiveReturn a p) :
     |criticalValue c p-criticalValue a p| ≤ 8*scale p*|kappa p c-kappa p a| := by
+  have hq0 := scale_pos p
   have h := kappa_strong_secant hp hc ha
   have hm := mul_le_mul_of_nonneg_right h (show 0 ≤ 8*scale p by positivity)
   have hid := scale_power_identity (p := p) (by omega)

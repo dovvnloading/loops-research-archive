@@ -15,8 +15,20 @@ Ledger statement being addressed:
 
 ## Claim
 
-Work in progress; the following Lean statements await compilation. No closure
-or mathematical-priority claim is made at this checkpoint.
+Work in progress; the following Lean statements await compilation of their
+complete dependency chain. No closure or mathematical-priority claim is made
+at this checkpoint.
+
+The final candidate theorem is
+`GlobalPrimitiveTipUniqueness.exists_unique_physical_signed_tip`: for every
+integer `p>=17`, there is exactly one real parameter with an actual symmetric
+invariant interval whose first image is negative and whose intermediate
+images at times `2,...,p-1` are positive, whose critical returns at multiples
+`p,...,5p` have signs `+--+-`, and for which
+`f_c^(6p)(0)+f_c^(3p)(0)=0`. The predicate quantifies over every real parameter
+and an arbitrary positive interval radius. It assumes no parameter chart,
+return scale, or coefficient isolator. Its equivalence to the archive's
+`ActualTip` predicate is also stated and proved in the candidate source.
 
 For the literal real quadratic map `f_c(x)=x^2+c`, set `d=f_c^p(0)`.
 Suppose `c` lies in `[-2,-1]`, `d>0`, the entire interval `[-d,d]` has a
@@ -34,7 +46,8 @@ step toward the window obligation. The full class has parameter diameter
 less than `160*16^(-p)`. Additional candidate theorems derive pairwise
 disjointness of all physical phase images and show that every archived
 `ActualTip` belongs to this class. These statements do not yet prove
-uniqueness of the signed critical relation.
+uniqueness of the signed critical relation by themselves; the additional
+global signed-root argument below supplies that step.
 
 ## Evidence
 
@@ -136,9 +149,25 @@ To extend that order to all globally admissible signed roots, the current
 argument factors out the nonzero third return from the exact threefold
 even-secant identity. The resulting root equation is a product equal to
 two. This avoids dividing an approximation error by an arbitrarily small
-third return. A short rational model comparison is being developed to
-exclude all roots outside the narrow coefficient isolator. This exclusion
-and the final unrestricted physical uniqueness statement are still pending.
+third return. The candidate rational model comparison first confines every
+such root to `[1.785,1.795]`, then uses a positive model-factor slope and
+endpoint gaps to derive the narrow isolator `[1.7903,1.7904]`. The factor
+error is at most `50000*4^(-p)`, uniformly over the complete physical class.
+
+### Recognition from an arbitrary physical interval
+
+`GlobalPrimitiveIntervalRecognition` starts with an arbitrary positive
+radius `r`, an invariant interval `[-r,r]`, and the full physical branch
+itinerary. These assumptions force `c` into `[-2,-1]`. The positive critical
+return and positive fourth return then force the canonical interval
+`[-f_c^p(0),f_c^p(0)]` to be invariant as well. Combining this recognition
+with the global root exclusion and signed secant theorem removes every
+quantitative chart assumption from the final uniqueness statement.
+
+The existing `ActualTip` existence theorem supplies a parameter for each
+`p>=17`; new estimates verify that it satisfies the physical predicate.
+The final existence-and-uniqueness theorem and all new supporting modules
+are committed for validation, not reported as kernel-accepted before CI.
 
 ### Rejected first route
 
@@ -169,10 +198,14 @@ gap. If the attempt produces no substantive new theorem, this draft will be
 closed rather than submitted as a successful contribution.
 
 The exponential scales themselves belong to classical real quadratic window
-theory. The candidate new scope is the explicit quantitative confinement of
-every interval satisfying the stated global physical conditions, without a
-pre-imposed parameter chart or return scale. A literature-wide novelty claim
-would require further evidence and is not made.
+theory. The candidate new scope is the effective classification of the entire
+physical interval class, quantitative secants across its actual return
+maps, and the resulting globally quantified physical signed-tip theorem.
+Periods `3` through `16` remain outside this global argument. Identification
+with a separately defined maximal renormalization component is also outside
+the formal statement. Qualitative kneading uniqueness has classical
+precedents; a literature-wide novelty claim would require further evidence
+and is not made.
 
 ## Attribution
 
