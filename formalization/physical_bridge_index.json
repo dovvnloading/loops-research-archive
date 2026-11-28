@@ -4979,5 +4979,185 @@
       ]
     },
     "obligations": []
+  },
+  "global-primitive-window-20261128": {
+    "guide": "contributions/global_primitive_window_20261128/NOTE.md#global-primitive-window-20261128",
+    "theorems": {
+      "formalization/weighted/GlobalPositiveWindow.lean": [
+        "B_bounds",
+        "back_bounds",
+        "back_parameter_lipschitz",
+        "shooting_strictAnti",
+        "shooting_nonneg_parameter_upper",
+        "nonnegative_itinerary_parameter_upper"
+      ],
+      "formalization/weighted/GlobalRestrictiveWindow.lean": [
+        "PositiveRestrictiveReturn.zero_mem",
+        "PositiveRestrictiveReturn.right_mem",
+        "PositiveRestrictiveReturn.critical_prefix",
+        "PositiveRestrictiveReturn.parameter_upper",
+        "PositiveRestrictiveReturn.square_return_lt",
+        "PositiveRestrictiveReturn.return_lt_three_halves",
+        "PositiveRestrictiveReturn.endpoint_return_mem",
+        "PositiveRestrictiveReturn.inverse_endpoint",
+        "PositiveRestrictiveReturn.critical_inverse",
+        "PositiveRestrictiveReturn.return_endpoint_inverse",
+        "PositiveRestrictiveReturn.inverse_displacement"
+      ],
+      "formalization/weighted/GlobalInverseWindow.lean": [
+        "inverse_difference_bound",
+        "coarse_scale_bound",
+        "negative_endpoint_product",
+        "inverse_difference_product",
+        "return_scale_bound"
+      ],
+      "formalization/weighted/GlobalWindowLocalization.lean": [
+        "PositiveRestrictiveReturn.small_parameter_band",
+        "PositiveRestrictiveReturn.inverse_parameter_budget",
+        "PositiveRestrictiveReturn.return_scale",
+        "restrictive_return_localization",
+        "PositiveRestrictiveReturn.shooting_identity",
+        "PositiveRestrictiveReturn.sharp_parameter_bounds",
+        "restrictive_return_sharp_localization"
+      ],
+      "formalization/weighted/GlobalWindowChart.lean": [
+        "back_parameter_three_eighths",
+        "chebyshev_deficit_lower",
+        "inverse_parameter_decrease",
+        "shooting_parameter_bounds"
+      ],
+      "formalization/weighted/GlobalWindowThickness.lean": [
+        "positive_inverse_secant",
+        "shooting_parameter_comparison",
+        "restrictive_parameter_thickness"
+      ],
+      "formalization/weighted/GlobalRestrictiveExistence.lean": [
+        "exists_positive_restrictive_return"
+      ],
+      "formalization/weighted/GlobalActualWindow.lean": [
+        "actual_critical_phase_lower",
+        "actual_tip_restrictive_return"
+      ],
+      "formalization/weighted/GlobalWindowPhases.lean": [
+        "PositiveRestrictiveReturn.initial_phase_gap",
+        "PositiveRestrictiveReturn.first_phase_below",
+        "PositiveRestrictiveReturn.phase_endpoint_bounds",
+        "PositiveRestrictiveReturn.adjacent_phases_separated",
+        "PositiveRestrictiveReturn.positive_phase_above",
+        "PositiveRestrictiveReturn.positive_phases_separated",
+        "PositiveRestrictiveReturn.phase_images_disjoint"
+      ],
+      "formalization/weighted/GlobalShootingParameter.lean": [
+        "unique_shooting_parameter",
+        "selectedParameter_spec",
+        "eq_selectedParameter",
+        "selectedParameter_strictAntiOn",
+        "selectedParameter_comparison",
+        "selectedParameter_lipschitz",
+        "continuousOn_selectedParameter"
+      ],
+      "formalization/weighted/GlobalWindowBoundaryProduct.lean": [
+        "continuous_endpointProduct",
+        "inverse_positive_bounds",
+        "inverse_joint_bound",
+        "product_difference",
+        "endpointProduct_lipschitz",
+        "endpointProduct_bounds",
+        "endpointProduct_identity"
+      ],
+      "formalization/weighted/GlobalRestrictiveConverse.lean": [
+        "restrictive_iff_endpoint"
+      ],
+      "formalization/weighted/GlobalWindowBoundary.lean": [
+        "boundaryMap_bounds",
+        "boundaryMap_contraction",
+        "boundaryMap_continuousOn",
+        "exists_unique_boundary_scale",
+        "boundary_scale_bounds",
+        "endpoint_inequality_iff",
+        "boundary_inequality_iff",
+        "complete_restrictive_window"
+      ],
+      "formalization/weighted/GlobalWindowSignedChart.lean": [
+        "critical_bound",
+        "normalized_return_error",
+        "normalized_real_value",
+        "realReturn_error",
+        "realReturn_mapsTo",
+        "realReturn_zero",
+        "realReturn_iterate_zero",
+        "kappa_lt_two_of_fourth_return_pos",
+        "kappa_pos_of_second_return_neg",
+        "signed_coefficient_chart"
+      ],
+      "formalization/weighted/GlobalSignedModelFactor.lean": [
+        "modelFactor_strictMonoOn",
+        "modelFactor_endpoint_margins",
+        "modelFactor_near_two_implies_narrow"
+      ],
+      "formalization/weighted/GlobalWindowInverseShape.lean": [
+        "parameter_lipschitz",
+        "phaseProduct_bounds",
+        "phaseProduct_lipschitz",
+        "inverseRatio_lipschitz",
+        "inverseRatio_near_one",
+        "scale_power_identity",
+        "kappa_product",
+        "kappa_bounds",
+        "kappa_strong_secant",
+        "return_scale_kappa_lipschitz"
+      ],
+      "formalization/weighted/GlobalSignedRelationStability.lean": [
+        "signed_relation_error_lipschitz",
+        "signed_relation_secant_gt_five"
+      ],
+      "formalization/weighted/GlobalWindowParameterSecant.lean": [
+        "inverse_return_identity",
+        "returnError_identity",
+        "parameter_error_lipschitz",
+        "spatial_error_lipschitz"
+      ],
+      "formalization/weighted/GlobalWindowSecant.lean": [
+        "normalized_secant_error",
+        "realSecant_error",
+        "realReturn_difference"
+      ],
+      "formalization/weighted/GlobalActualSignedUniqueness.lean": [
+        "actual_signed_secant",
+        "signed_relation_identity",
+        "physical_signed_collision_unique",
+        "actual_tip_unique",
+        "exists_unique_actual_tip",
+        "exists_unique_physical_signed_collision"
+      ],
+      "formalization/weighted/GlobalWindowRootFactor.lean": [
+        "returnOrbit_succ",
+        "returnOrbit_eq",
+        "returnOrbit_mem",
+        "actualFactor_eq_two",
+        "actualFactor_model_error",
+        "signed_root_model_error"
+      ],
+      "formalization/weighted/GlobalPrimitiveIntervalRecognition.lean": [
+        "PositiveReturnInterval.zero_mem",
+        "PositiveReturnInterval.critical_return_mem",
+        "PositiveReturnInterval.parameter_band",
+        "PositiveReturnInterval.return_order",
+        "PositiveReturnInterval.endpoint_lower",
+        "recognize_canonical_return"
+      ],
+      "formalization/weighted/GlobalWindowRootLocalization.lean": [
+        "signed_root_coarse_interval"
+      ],
+      "formalization/weighted/GlobalPrimitiveTipUniqueness.lean": [
+        "PhysicalSignedTip.canonical_interval",
+        "PhysicalSignedTip.coefficient_interval",
+        "physical_signed_tip_unique",
+        "actual_tip_physical",
+        "exists_unique_physical_signed_tip",
+        "physical_signed_tip_iff_actual_tip"
+      ]
+    },
+    "obligations": []
   }
 }
