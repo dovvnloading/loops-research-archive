@@ -21,6 +21,35 @@ The existing single-level Lean development (NearTwoShooting, NearTwoTip, Limitin
 
 All resulting accepted mathematics must be Lean theorems in the existing project, registered with the contribution tooling, built by the unchanged CI, and passing the transitive dependency audit. Work and failed routes will be committed here as they develop.
 
+### Research checkpoint: a separated-period two-level construction
+
+Write A_p(c) for the exact quadratic coefficient of f_c^p at zero and
+G_c(u)=A_p(c) f_c^p(u/A_p(c)). Its constant term is
+a(c)=A_p(c) f_c^p(0). The first chart must reach a=-2; the archived
+return-value endpoint 12*4^(-p) only guarantees -a>1.8. We instead
+use 14*4^(-p), which gives -a>2.1 using the existing inverse-product
+bound. This supplies a real first-return chart crossing any required
+second-level parameter interval near -2.
+
+The complete (untruncated) polynomial remainder suggests the uniform
+estimate |G_c(u)-(u^2+a(c))| <=128*4^(-p) on |u|<=12/5.
+On the reference q-return chart, the critical scale lies between
+7*4^(-q) and 12*4^(-q). A finite-iterate bound with expansion factor 5
+then permits a conservative separated-period condition, currently
+being checked in Lean, such as p>=20*q+100. This is intended to
+control every intermediate complex point and the six-return shooting
+relation, not merely endpoint arithmetic.
+
+The second scale has opposite sign in physical coordinates:
+D=G_c^q(0)>0 but f_c^(pq)(0)=D/A_p(c)<0. The new coordinate identities
+retain that sign, and all physical radii must use its absolute value.
+The target is a whole physical central return disk with exact two-sheet
+fibers and a crest crossing on every radius in the fixed interval,
+after selecting a zero of the actual signed 6pq-versus-3pq relation.
+
+These estimates and existence claims are work in progress at this
+checkpoint. No theorem is promoted by this derivation alone.
+
 ## Dependencies
 
 NOV26_DEPTH3. Existing depth-three packet, the literal all-period first-return estimates, and the source distinction between physical prescribed collars and optimal polynomial-like moduli.
