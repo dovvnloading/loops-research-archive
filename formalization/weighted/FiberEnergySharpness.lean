@@ -98,8 +98,8 @@ theorem unit_interval_quadratic_radius_certificates
     apply (div_lt_iff₀ hnR).2
     have h := (div_lt_iff₀ hε).1 hn2
     nlinarith
-  have hsmall : 1 / (n : ℝ) < ε := by
-    linarith
+  have hsmall : 1 / (n : ℝ) < ε :=
+    (div_le_div_of_nonneg_right (show (1 : ℝ) ≤ 2 by norm_num) hnR.le).trans_lt htwo
   have henergy : (1 / (n : ℝ)) ^ 2 * energy (intervalGrid n) 0 ≤
       2 / (n : ℝ) := by
     calc
