@@ -4681,6 +4681,55 @@
         "modulus_Ioo_eq_ofReal_log",
         "modulus_Ioo_ne_top",
         "modulus_Ioo_toReal"
+      ],
+      "formalization/weighted/ActualCrestParentPaths.lean": [
+        "actual_second_critical_sharp",
+        "parent_endpoint_order",
+        "q_mem_parentCircle",
+        "w_mem_parentCircle",
+        "parentCircle_real_contacts",
+        "parentCircle_inter_targetSlit",
+        "parentCircle_inter_sourceSlit",
+        "parentCircle_in_full_disk",
+        "parentCircle_in_target_disk",
+        "parentPath_continuous",
+        "parentPath_mem_circle",
+        "parentPath_zero",
+        "parentPath_two_pi",
+        "parentPath_open_ne_q",
+        "parentPath_open_mem_target",
+        "parentPath_mem_parent",
+        "parentPath_injOn",
+        "scaled_parentPath_eq",
+        "physical_parentPath_open_mem_target",
+        "parentPath_endpoint_targetSlit",
+        "physical_parentPath_endpoint_targetSlit",
+        "physicalTargetSlit_eq",
+        "physicalSlitTarget_subset_literal",
+        "physicalSourceSlit_eq",
+        "physicalSlitSource_subset_literal"
+      ],
+      "formalization/weighted/ActualCrestProperFamilies.lean": [
+        "retained_radius_gate",
+        "descendant_radius",
+        "descendants_proper",
+        "descendant_full_ancestry",
+        "proper_descendants_and_width",
+        "eventually_all_proper_descendants"
+      ],
+      "formalization/weighted/ActualCrestComponents.lean": [
+        "fourth_survivors_eq_punctured",
+        "fourth_survivors_eq_two_intervals",
+        "fourth_q_component",
+        "fourth_q_midpoint_component",
+        "third_q_component_image",
+        "eventually_all_fourth_q_components"
+      ],
+      "formalization/weighted/ActualCrestTransportLimit.lean": [
+        "parentFamily_proper",
+        "realize_collar",
+        "eventually_every_actual_tip_realizes_collar",
+        "exists_proper_physical_transport_limit"
       ]
     },
     "obligations": []
