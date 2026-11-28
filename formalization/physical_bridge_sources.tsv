@@ -96,6 +96,12 @@ formalization/weighted/CrestFirstExit.lean	METADATA
 formalization/weighted/CrestIntegralLimit.lean	METADATA
 formalization/weighted/CrestIterateLimit.lean	METADATA
 formalization/weighted/CriticalReturnRelationStability.lean	METADATA
+formalization/weighted/DepthGateAncestors.lean	DEPTH
+formalization/weighted/DepthGateBase.lean	DEPTH
+formalization/weighted/DepthGateChart.lean	DEPTH
+formalization/weighted/DepthGatePrefix.lean	DEPTH
+formalization/weighted/DepthGateRealization.lean	DEPTH
+formalization/weighted/DepthGateTower.lean	DEPTH
 formalization/weighted/DepthThreeClosure.lean	METADATA
 formalization/weighted/DepthThreeReal.lean	METADATA
 formalization/weighted/DepthThreeRemainder.lean	METADATA
@@ -189,10 +195,6 @@ formalization/weighted/ProtectedCarrierLogic.lean	HULL
 formalization/weighted/QuadraticCriticalTrapping.lean	CONSTRUCT
 formalization/weighted/QuadraticEscapeEndpoint.lean	QUADRATIC-ESCAPE
 formalization/weighted/QuadraticEscapeFullness.lean	METADATA
-formalization/weighted/QuadraticGreenCusp.lean	METADATA
-formalization/weighted/QuadraticGreenDensity.lean	METADATA
-formalization/weighted/QuadraticGreenPower.lean	METADATA
-formalization/weighted/QuadraticGreenPressure.lean	METADATA
 formalization/weighted/QuadraticInverseOpen.lean	CONSTRUCT
 formalization/weighted/QuadraticMultiplierArithmetic.lean	METADATA
 formalization/weighted/QuadraticMultiplierCoordinate.lean	METADATA
@@ -234,6 +236,14 @@ formalization/weighted/TelescopeRamification.lean	METADATA
 formalization/weighted/TelescopeUnbranchedCover.lean	CONSTRUCT
 formalization/weighted/TelescopeUnivalentCollars.lean	CONSTRUCT
 formalization/weighted/TerminalFiberExclusion.lean	METADATA
+formalization/weighted/ThreeLevelDomains.lean	METADATA
+formalization/weighted/ThreeLevelFirstReturn.lean	DEPTH
+formalization/weighted/ThreeLevelMiddle.lean	DEPTH
+formalization/weighted/ThreeLevelPerturbation.lean	METADATA
+formalization/weighted/ThreeLevelPhysical.lean	DEPTH
+formalization/weighted/ThreeLevelReference.lean	METADATA
+formalization/weighted/ThreeLevelSelection.lean	DEPTH
+formalization/weighted/ThreeLevelTerminal.lean	DEPTH
 formalization/weighted/ThreeReturnAnnulus.lean	METADATA
 formalization/weighted/ThreeReturnCollar.lean	METADATA
 formalization/weighted/ThreeReturnContraction.lean	METADATA
@@ -573,3 +583,7 @@ formalization/weighted/QuadraticPowerNormalForm.lean	METADATA
 formalization/weighted/IteratedCarrierIsolation.lean	METADATA
 formalization/weighted/QuadraticCarrierSaturation.lean	METADATA
 formalization/weighted/QuadraticLocalFiberCensus.lean	METADATA
+formalization/weighted/QuadraticGreenCusp.lean	METADATA
+formalization/weighted/QuadraticGreenDensity.lean	METADATA
+formalization/weighted/QuadraticGreenPower.lean	METADATA
+formalization/weighted/QuadraticGreenPressure.lean	METADATA
