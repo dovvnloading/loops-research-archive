@@ -5290,7 +5290,32 @@
       "formalization/weighted/ComplexEscapeSequence.lean": [
         "finite_power_budget",
         "bounded_power_sequence_eq_one",
-        "finite_escape_certificate"
+        "finite_escape_certificate",
+        "finite_power_growth"
+      ],
+      "formalization/weighted/SlitJoukowski.lean": [
+        "exteriorAddress_spec",
+        "exteriorAddress_of_J",
+        "exteriorAddress_differentiableAt",
+        "amplitude_J",
+        "amplitude_eq_one_of_mem",
+        "norm_exteriorAddress",
+        "amplitude_ge_one",
+        "amplitude_eq_one_iff",
+        "exteriorAddress_ne_zero",
+        "amplitude_continuous",
+        "norm_le_amplitude_add_inv",
+        "amplitude_sub_inv_le_norm",
+        "normalize_mem_realSegment",
+        "norm_normalize",
+        "norm_slitAddress",
+        "slitAddress_ne_zero",
+        "slitAmplitude_ge_one",
+        "slitAmplitude_eq_one_iff",
+        "slitAmplitude_continuous",
+        "slitAddress_differentiableAt",
+        "slitAmplitude_upper",
+        "slitAmplitude_lower"
       ]
     },
     "obligations": []

@@ -88,7 +88,8 @@ theorem slit_positive_preimage {p : ℕ} (hp : 17 ≤ p) {c y : ℝ}
       (actualOrbit_differentiable c p 3).continuous.continuousOn hy'
   refine ⟨x, hx, ?_⟩
   change ((normalizedReturn c p)^[3]) (x : ℂ) = (y : ℂ)
-  rw [← actualOrbit_cast, hxy]
+  rw [← actualOrbit_cast]
+  exact congrArg (fun r : ℝ => (r : ℂ)) hxy
 
 /-- No additional complex inverse slit occurs anywhere in the full
 control disk, including points outside the selected source component. -/
@@ -110,7 +111,8 @@ theorem inverse_slit_iff {p : ℕ} (hp : 17 ≤ p) {c : ℝ}
     · rw [h]
       refine ⟨-x, ⟨by linarith [hx.2], ?_⟩, by simp⟩
       linarith [hx.1, (centralRadius_pos hp hc)]
-  · exact slit_invariant hp hc
+  · intro hz'
+    exact slit_invariant hp hc hz'
 
 /-- The interval is contained in the complete canonical source, not
 merely in a surrogate ambient disk. -/

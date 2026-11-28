@@ -247,6 +247,7 @@ formalization/weighted/QuadraticParameterUnivalence.lean	CONSTRUCT
 formalization/weighted/QuadraticTrappingEscape.lean	METADATA
 formalization/weighted/QuadraticUnivalentNeighborhood.lean	CONSTRUCT
 formalization/weighted/SaturatedTelescope.lean	METADATA
+formalization/weighted/SlitJoukowski.lean	METADATA
 formalization/weighted/SlitWaveEscape.lean	METADATA
 formalization/weighted/SlitWaveFinite.lean	ALL-PATHS
 formalization/weighted/SlitWaveLimit.lean	ALL-PATHS

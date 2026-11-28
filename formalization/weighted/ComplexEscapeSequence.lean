@@ -72,4 +72,27 @@ theorem finite_escape_certificate (u : ℕ → ℝ) (B : ℝ) (N : ℕ)
     (hbound N le_rfl) 6
   linarith
 
+/-- Exact exponential iteration of the native power inequality. -/
+theorem finite_power_growth (u : ℕ → ℝ) (N : ℕ)
+    (hu : ∀ n ≤ N, 0 ≤ u n)
+    (hs : ∀ n < N, (u n)^7 ≤ (u (n+1))^6) :
+    (u 0)^(7^N) ≤ (u N)^(6^N) := by
+  have hb : ∀ n ≤ N, (u 0)^(7^n) ≤ (u n)^(6^n) := by
+    intro n
+    induction n with
+    | zero => intro _; simp
+    | succ n ih =>
+      intro hn
+      have hp := pow_le_pow_left₀ (pow_nonneg (hu 0 (by omega)) (7^n))
+        (ih (by omega)) 7
+      have ht := pow_le_pow_left₀ (pow_nonneg (hu n (by omega)) 7)
+        (hs n (by omega)) (6^n)
+      calc
+        (u 0)^(7^(n+1)) = ((u 0)^(7^n))^7 := by rw [pow_succ, pow_mul]
+        _ ≤ ((u n)^(6^n))^7 := hp
+        _ = ((u n)^7)^(6^n) := by simp only [← pow_mul, Nat.mul_comm]
+        _ ≤ ((u (n+1))^6)^(6^n) := ht
+        _ = (u (n+1))^(6^(n+1)) := by simp only [← pow_mul, pow_succ, Nat.mul_comm]
+  exact hb N le_rfl
+
 end ComplexEscapeSequence

@@ -21,6 +21,12 @@ The target is a quantitative off-real escape theorem for the actual normalized t
 
 ## Evidence
 
+### Prior-result correction and checkpoint 3
+
+The written archive already proves the qualitative filled-interval identification in `research/independent_audits/real_primitive_tip_family_prime_end_identification_20261116/NOTE.md`, Section 2. That identification is not claimed as new. The intended advance is the explicit period-uniform off-real amplification in physical coordinates; the Lean filled-set equality is its canonical-object bridge.
+
+The stronger boundary estimate and elementary finite power budget compiled in the first CI attempts. CI found two elaboration errors in the native inverse-slit module; this revision corrects them. `SlitJoukowski.lean` now supplies the proposed exact exterior coordinate and its continuous modulus for CI checking. The maximum-modulus step is still being developed.
+
 ### Committed checkpoint 2
 
 `ActualCentralSlit.lean` now records the native interval invariance, positive real inverse branches, complete inverse-interval exclusion throughout the full complex control disk, and inclusion of the interval in the actual canonical source and its filled set. These supporting statements are submitted for CI compilation; the reverse inclusion and the quantitative escape theorem still require the complex-analytic estimate.
