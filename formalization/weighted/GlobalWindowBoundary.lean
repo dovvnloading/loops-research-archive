@@ -93,7 +93,7 @@ theorem boundaryMap_contraction {p : ℕ} (hp : 17 ≤ p) {d e : ℝ}
     nlinarith only [hdiff,hm]
   have hq0 := scale_pos p
   have hid : (boundaryMap p d-boundaryMap p e)*P*Q=8*scale p*(Q-P) := by
-    dsimp [boundaryMap,P,Q]
+    change (8*scale p/P-8*scale p/Q)*P*Q=8*scale p*(Q-P)
     field_simp [ne_of_gt hP0,ne_of_gt hQ0]
     <;> ring
   have habs := congrArg abs hid
@@ -109,12 +109,13 @@ theorem boundaryMap_contraction {p : ℕ} (hp : 17 ≤ p) {d e : ℝ}
 
 theorem boundaryMap_continuousOn {p : ℕ} (hp : 17 ≤ p) :
     ContinuousOn (boundaryMap p) (Icc (0 : ℝ) (14*scale p)) := by
-  have h : LipschitzOnWith (1/2 : ℝ≥0) (boundaryMap p)
+  have h : LipschitzOnWith (1/2 : NNReal) (boundaryMap p)
       (Icc (0 : ℝ) (14*scale p)) := by
     apply LipschitzOnWith.of_dist_le_mul
     intro d hd e he
-    simpa only [Real.dist_eq,NNReal.coe_div,NNReal.coe_one,NNReal.coe_ofNat]
-      using boundaryMap_contraction hp hd he
+    rw [Real.dist_eq,Real.dist_eq]
+    change |boundaryMap p d-boundaryMap p e| ≤ (1/2 : ℝ)*|d-e|
+    exact boundaryMap_contraction hp hd he
   exact h.continuousOn
 
 /-- There is exactly one complete physical boundary scale. -/
@@ -130,7 +131,9 @@ theorem exists_unique_boundary_scale {p : ℕ} (hp : 17 ≤ p) :
     (show (0 : ℝ) ∈ Icc
       (boundaryMap p (14*scale p)-14*scale p) (boundaryMap p 0-0) by
       constructor <;> linarith)
-  have hfix : boundaryMap p D=D := by linarith only [hz]
+  have hfix : boundaryMap p D=D := by
+    change boundaryMap p D-D=0 at hz
+    exact sub_eq_zero.mp hz
   refine ⟨D,⟨hD,hfix⟩,?_⟩
   intro E hE
   have h := boundaryMap_contraction hp hE.1 hD
@@ -215,6 +218,7 @@ theorem complete_restrictive_window {p : ℕ} (hp : 17 ≤ p) :
       boundaryMap p D=D ∧
       {c : ℝ | PositiveRestrictiveReturn c p} =
         Ico (selectedParameter p D) (selectedParameter p 0) := by
+  have hq0 := scale_pos p
   obtain ⟨D,⟨hD,hfix⟩,_⟩ := exists_unique_boundary_scale hp
   have hb := boundary_scale_bounds hp hD hfix
   have hD0 : 0 < D := lt_of_lt_of_le (by positivity : 0 < 8*scale p) hb.1

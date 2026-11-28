@@ -185,7 +185,7 @@ theorem phaseProduct_lipschitz {p : ℕ} (hp : 17 ≤ p) {c a y v : ℝ}
       _ ≤ ∑ _j ∈ Finset.range (p-1),
           (|criticalValue c p-criticalValue a p| + 4*scale p*|y-v|) :=
         Finset.sum_le_sum (fun j _ => factor_difference hp hc ha hy hv j)
-      _ = _ := by simp
+      _ = _ := by simp <;> ring
   have hn : ((p-1 : ℕ) : ℝ) ≤ p := by exact_mod_cast Nat.sub_le p 1
   have hm := mul_le_mul_of_nonneg_right hn
     (show 0 ≤ |criticalValue c p-criticalValue a p| + 4*scale p*|y-v| by positivity)

@@ -155,8 +155,8 @@ private theorem product_error {a b c d E F B C : ℝ}
   have hid : a*b-c*d=(a-c)*b+c*(b-d) := by ring
   rw [hid]
   calc
-    _≤|(a-c)*b|+|c*(b-d)| := abs_add _ _
-    _=|b|*|a-c|+|c|*|b-d| := by rw [abs_mul,abs_mul]; ring
+    _≤|(a-c)*b| + |c*(b-d)| := abs_add_le _ _
+    _=|b| * |a-c| + |c| * |b-d| := by rw [abs_mul,abs_mul]; ring
     _≤B*E+C*F := add_le_add
       (mul_le_mul hb he (abs_nonneg _) ((abs_nonneg b).trans hb))
       (mul_le_mul hc hf (abs_nonneg _) ((abs_nonneg c).trans hc))
@@ -214,7 +214,10 @@ theorem actualFactor_model_error {c : ℝ} {p : ℕ} (hp : 17≤p)
     have he := product_error haerr hberr hBb hkabs
       (by positivity : 0≤43*scale p) (by positivity : 0≤43*scale p)
     nlinarith only [he,hq0]
-  have hkk : |k*k|≤4 := by simpa using abs_product_bound hkabs hkabs
+  have hkk : |k*k|≤4 := by
+    have hm := abs_product_bound hkabs hkabs
+    norm_num at hm
+    exact hm
   have hABCerr : |A*B*C-k^3|≤561*scale p := by
     have he := product_error hABerr hcerr hCb hkk
       (by positivity : 0≤173*scale p) (by positivity : 0≤43*scale p)
@@ -223,7 +226,9 @@ theorem actualFactor_model_error {c : ℝ} {p : ℕ} (hp : 17≤p)
     nlinarith only [he,hq0]
   have hk3 : |k^3|≤8 := by
     have hm := abs_product_bound hkk hkabs
-    simpa only [show k*k*k=k^3 by ring] using hm
+    rw [show k*k*k=k^3 by ring] at hm
+    norm_num at hm
+    exact hm
   obtain ⟨hae,hve,hwe,hbe⟩ := orbit_error_bounds hp h hk
   change |a-am|≤22*scale p at hae
   change |v-vm|≤110*scale p at hve
@@ -236,7 +241,7 @@ theorem actualFactor_model_error {c : ℝ} {p : ℕ} (hp : 17≤p)
     rw [show (1+w)-(1+wm)=w-wm by ring]
     exact hwe
   have hsum : |(-(a+b))-(-(am+bm))|≤1892*scale p := by
-    have ht := abs_add (a-am) (b-bm)
+    have ht := abs_add_le (a-am) (b-bm)
     have hid : (a-am)+(b-bm)=(a+b)-(am+bm) := by ring
     rw [hid] at ht
     have hneg : (-(a+b))-(-(am+bm))= -((a+b)-(am+bm)) := by ring
@@ -245,16 +250,19 @@ theorem actualFactor_model_error {c : ℝ} {p : ℕ} (hp : 17≤p)
   have hvb : |-v|≤1 := by simpa only [abs_neg] using hv
   have hvmb : |-vm|≤1 := by simpa only [abs_neg] using hvm
   have hwplus : |1+w|≤2 := by
-    have ht := abs_add (1 : ℝ) w
+    have ht := abs_add_le (1 : ℝ) w
     norm_num only [abs_one] at ht
     linarith
   have hwmplus : |1+wm|≤2 := by
-    have ht := abs_add (1 : ℝ) wm
+    have ht := abs_add_le (1 : ℝ) wm
     norm_num only [abs_one] at ht
     linarith
-  have hsumb : |-(a+b)|≤2 := by rw [abs_neg]; linarith [abs_add a b]
+  have hsumb : |-(a+b)|≤2 := by rw [abs_neg]; linarith [abs_add_le a b]
   have hkv : |k^3*(-vm)|≤8 := by simpa only [mul_one] using abs_product_bound hk3 hvmb
-  have hkvw : |k^3*(-vm)*(1+wm)|≤16 := by simpa using abs_product_bound hkv hwmplus
+  have hkvw : |k^3*(-vm)*(1+wm)|≤16 := by
+    have hm := abs_product_bound hkv hwmplus
+    norm_num at hm
+    exact hm
   have hfirst : |A*B*C*(-v)-k^3*(-vm)|≤1441*scale p := by
     have he := product_error hABCerr hve' hvb hk3
       (by positivity : 0≤561*scale p) (by positivity : 0≤110*scale p)

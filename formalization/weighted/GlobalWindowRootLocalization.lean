@@ -73,10 +73,12 @@ private theorem first_five_coefficient_bounds {c : ℝ} {p : ℕ} (hp : 17≤p)
   · by_contra hn
     have hkl : 15/8≤k := le_of_not_gt hn
     have hxu : x≤ -87/100 := by nlinarith only [e1.2,heps,hkl]
-    have hxsq := sq_lower_of_negative (by norm_num : (0 : ℝ)≤87/100) (by linarith only [hxu])
+    have hxsq := sq_lower_of_negative (x := x)
+      (by norm_num : (0 : ℝ)≤87/100) (by linarith only [hxu])
     have hmx := mul_le_mul_of_nonneg_right hkl (sq_nonneg x)
     have hyu : y≤ -41/100 := by nlinarith only [e2.2,heps,hxsq,hmx]
-    have hysq := sq_lower_of_negative (by norm_num : (0 : ℝ)≤41/100) (by linarith only [hyu])
+    have hysq := sq_lower_of_negative (x := y)
+      (by norm_num : (0 : ℝ)≤41/100) (by linarith only [hyu])
     have hmy := mul_le_mul_of_nonneg_right hkl (sq_nonneg y)
     have hwu : w≤69/100 := by nlinarith only [e3.2,heps,hysq,hmy]
     have hwsq := pow_le_pow_left₀ hw.le hwu 2

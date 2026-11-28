@@ -169,6 +169,15 @@ The existing `ActualTip` existence theorem supplies a parameter for each
 The final existence-and-uniqueness theorem and all new supporting modules
 are committed for validation, not reported as kernel-accepted before CI.
 
+At checkpoint `6d19be5`, the unchanged weighted workflow compiled the
+arbitrary-interval recognition theorem, the generic signed-error stability
+theorem, the rational model-factor certificate, and the complete shooting
+and physical-converse modules. It rejected remaining proof steps in the
+inverse-product comparison, factored error estimate, and boundary-map
+classification. Those algebra and elaboration steps are corrected in the
+next checkpoint; dependent global uniqueness still awaits a successful
+whole build and axiom audit.
+
 ### Rejected first route
 
 Requiring only the first positive critical prefix and six signs at multiples
