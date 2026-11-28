@@ -21,11 +21,17 @@ The target is a quantitative off-real escape theorem for the actual normalized t
 
 ## Evidence
 
+### Adversarial scope correction and checkpoint 4
+
+The complex escape inequality is **not yet a resolution or decisive advance of F12**. Its amplitude is identically one on the central interval, whereas F12 concerns native fine ideal subarcs and their retained descendant/crest images under G_* iota*. The filled-set identification does not prove that missing transport theorem. This PR must either supply the native arc/descendant identification or remain an honestly unsuccessful attempt at the requested obligation.
+
+`ActualCentralEscape.lean` and `PhysicalCentralEscape.lean` now assemble the proposed period-uniform seven-to-six inequality and finite exponential escape directly for the complete original polynomial iterate, with exact identification of the selected filled set. They are submitted for CI validation. The native fine-subsector bridge remains under attack.
+
 ### Prior-result correction and checkpoint 3
 
 The written archive already proves the qualitative filled-interval identification in `research/independent_audits/real_primitive_tip_family_prime_end_identification_20261116/NOTE.md`, Section 2. That identification is not claimed as new. The intended advance is the explicit period-uniform off-real amplification in physical coordinates; the Lean filled-set equality is its canonical-object bridge.
 
-The stronger boundary estimate and elementary finite power budget compiled in the first CI attempts. CI found two elaboration errors in the native inverse-slit module; this revision corrects them. `SlitJoukowski.lean` now supplies the proposed exact exterior coordinate and its continuous modulus for CI checking. The maximum-modulus step is still being developed.
+The stronger boundary estimate and elementary finite power budget compiled in the first CI attempts. CI found two elaboration errors in the native inverse-slit module; this revision corrects them. `SlitJoukowski.lean` now supplies the proposed exact exterior coordinate and its continuous modulus for CI checking. `SlitGreenBarrier.lean` now contains the proposed maximum-modulus proof with continuous boundary modulus and the rational seven-to-six amplification. Both analytic modules are submitted for CI checking; assembly with the actual return and physical scaling is in progress.
 
 ### Committed checkpoint 2
 

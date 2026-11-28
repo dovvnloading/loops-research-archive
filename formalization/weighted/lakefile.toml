@@ -1017,3 +1017,12 @@ name = "ComplexEscapeSequence"
 
 [[lean_lib]]
 name = "SlitJoukowski"
+
+[[lean_lib]]
+name = "SlitGreenBarrier"
+
+[[lean_lib]]
+name = "ActualCentralEscape"
+
+[[lean_lib]]
+name = "PhysicalCentralEscape"

@@ -5316,6 +5316,32 @@
         "slitAddress_differentiableAt",
         "slitAmplitude_upper",
         "slitAmplitude_lower"
+      ],
+      "formalization/weighted/SlitGreenBarrier.lean": [
+        "norm_boundary_bound",
+        "slit_power_comparison",
+        "slit_amplification"
+      ],
+      "formalization/weighted/ActualCentralEscape.lean": [
+        "actual_amplification",
+        "actual_power_growth",
+        "actual_finite_exponential_escape",
+        "actual_complex_escape",
+        "survives_control_iff",
+        "filledSource_eq_slit"
+      ],
+      "formalization/weighted/PhysicalCentralEscape.lean": [
+        "physical_radius_pos",
+        "physicalAmplitude_scale",
+        "physical_iterate_scale",
+        "mem_physicalSource_scale_iff",
+        "physical_filled_scale_iff",
+        "physical_filled_iff_amplitude_one",
+        "physicalFilledSource_eq_slit",
+        "physicalFilledSource_eq_orbit_interval",
+        "physical_amplification",
+        "physical_finite_exponential_escape",
+        "physical_complex_escape"
       ]
     },
     "obligations": []

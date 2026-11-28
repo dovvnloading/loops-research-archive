@@ -47,11 +47,16 @@ theorem exteriorAddress_differentiableAt {z : ℂ}
   have hw : 1 < ‖w‖ := (exteriorAddress_spec hz).1
   have hw0 : w ≠ 0 := by
     intro h
-    simpa [h] using hw
+    rw [h, norm_zero] at hw
+    norm_num at hw
   have hj : J w = z := (exteriorAddress_spec hz).2
   have hd : HasStrictDerivAt J (1 - (w^2)⁻¹) w := by
-    simpa only [J, sub_eq_add_neg] using
-      (hasStrictDerivAt_id w).fun_add (hasStrictDerivAt_inv hw0)
+    rw [sub_eq_add_neg]
+    change HasStrictDerivAt (fun u : ℂ => u + u⁻¹) (1 + -(w^2)⁻¹) w
+    have h₁ : HasStrictDerivAt (fun u : ℂ => u) 1 w := hasStrictDerivAt_id w
+    have h₂ : HasStrictDerivAt (fun u : ℂ => u⁻¹) (-(w^2)⁻¹) w :=
+      hasStrictDerivAt_inv hw0
+    exact h₁.fun_add h₂
   have hl : ∀ᶠ u in 𝓝 w, exteriorAddress (J u) = u := by
     filter_upwards [(isOpen_lt continuous_const continuous_norm).mem_nhds hw] with u hu
     exact exteriorAddress_of_J hu
@@ -177,7 +182,8 @@ theorem amplitude_sub_inv_le_norm (z : ℂ) :
     simpa using norm_nonneg z
   · have hs := exteriorAddress_spec hz
     have h := norm_sub_norm_le (exteriorAddress z) (-(exteriorAddress z)⁻¹)
-    simpa only [norm_neg, norm_inv, sub_neg_eq_add, ← J, hs.2,
+    have hj : exteriorAddress z + (exteriorAddress z)⁻¹ = z := hs.2
+    simpa only [norm_neg, norm_inv, sub_neg_eq_add, hj,
       norm_exteriorAddress] using h
 
 def normalize (t : ℝ) (z : ℂ) : ℂ :=
@@ -199,15 +205,17 @@ theorem normalize_mem_realSegment {t : ℝ} (ht : 0 < t) (z : ℂ) :
   constructor
   · rintro ⟨hi, hl, hu⟩
     refine ⟨(mul_eq_zero.mp hi).resolve_left hk.ne', ?_, ?_⟩
-    · apply (mul_le_mul_left hk).mp
-      nlinarith only [hl, hkt]
-    · apply (mul_le_mul_left hk).mp
-      nlinarith only [hu, hkt]
+    · by_contra h
+      have hm := mul_lt_mul_of_pos_left (lt_of_not_ge h) hk
+      nlinarith only [hl, hkt, hm]
+    · by_contra h
+      have hm := mul_lt_mul_of_pos_left (lt_of_not_ge h) hk
+      nlinarith only [hu, hkt, hm]
   · rintro ⟨hi, hl, hu⟩
     refine ⟨by rw [hi, mul_zero], ?_, ?_⟩
-    · have h := (mul_le_mul_left hk).mpr hl
+    · have h := mul_le_mul_of_nonneg_left hl hk.le
       nlinarith only [h, hkt]
-    · have h := (mul_le_mul_left hk).mpr hu
+    · have h := mul_le_mul_of_nonneg_left hu hk.le
       nlinarith only [h, hkt]
 
 theorem norm_normalize {t : ℝ} (ht : 0 < t) (z : ℂ) :

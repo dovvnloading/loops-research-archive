@@ -92,7 +92,10 @@ theorem finite_power_growth (u : ℕ → ℝ) (N : ℕ)
         _ ≤ ((u n)^(6^n))^7 := hp
         _ = ((u n)^7)^(6^n) := by simp only [← pow_mul, Nat.mul_comm]
         _ ≤ ((u (n+1))^6)^(6^n) := ht
-        _ = (u (n+1))^(6^(n+1)) := by simp only [← pow_mul, pow_succ, Nat.mul_comm]
+        _ = (u (n+1))^(6^(n+1)) := by
+          rw [← pow_mul]
+          congr 1
+          exact (Nat.mul_comm 6 (6^n)).trans (pow_succ 6 n).symm
   exact hb N le_rfl
 
 end ComplexEscapeSequence
