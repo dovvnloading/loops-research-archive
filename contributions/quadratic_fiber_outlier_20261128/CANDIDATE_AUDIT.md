@@ -101,10 +101,60 @@ at least two over any field.
 This is recorded only to explain the rejection. It is not offered as a novel
 theorem, a Lean result, or a new MLC case.
 
-## 6. Formalization gate
+## 6. Candidate E: polynomial-coefficient orbit recurrence
 
-No candidate above has survived both the novelty and proof requirements.
-There is no new Lean theorem at this checkpoint.
+Proposed statement: an eventual recurrence
+sum_(i=0)^r p_i(n) z_(n+i) = 0, with polynomial coefficients and p_r nonzero,
+forces the critical orbit to be eventually periodic.
+
+**Rejected as a direct classical consequence.** The recurrence gives a nonzero
+relation R(t,x) = sum_i p_i(t) f_c^i(x) on (n,z_n). The stabilized Zariski
+closure of the tail is proper and invariant under (t,x) -> (t+1,f_c(x)).
+A periodic irreducible curve component with both projections nonconstant would,
+on its projective normalization, have a self-map whose degree is simultaneously
+1 from the first projection and 2^k from the second, for some k > 0.
+Vertical components cannot be periodic under translation in characteristic zero.
+The components must therefore be horizontal, giving a finite orbit.
+
+This is our specialization of the classical different-degree orthogonality
+principle, not a claim that the source states this generating-function formulation.
+
+Reference: A. Medvedev and T. Scanlon, *Invariant varieties for polynomial
+dynamical systems*, Annals of Mathematics 179 (2014), 81--177, printed p. 95,
+paragraph immediately before Definition 2.20:
+<https://annals.math.princeton.edu/wp-content/uploads/annals-v179-n1-p02-p.pdf>.
+
+## 7. Candidate F: use the finite Thurston trace as a separating invariant
+
+Proposed statement: the spectrum of the finite Thurston operator distinguishes
+quadratic centers.
+
+**Rejected as a direct consequence of the known characteristic polynomial.**
+For a center of exact period m >= 3, Buff--Epstein--Koch, Section 9.4,
+Proposition 9.7, gives the coefficient 1/(2c) of lambda^(m-2) in chi_(f,2),
+and chi_(f,2) = (lambda - 1/2) chi_f. Consequently
+
+    tr(f_* on Q_f) = -1/(2c) - 1/2.
+
+Thus the trace already recovers c. This is a specialization of that source,
+not new mathematics. Asking for a common limiting trace across all center
+approximations to a fiber would merely assume convergence of an equivalent
+parameter coordinate; it does not establish the missing analytic compatibility.
+
+The proposition numbering here is for the 34-page version linked in Section 4.
+
+## 8. Other algebraic observations rejected
+
+The moduli of the first two nonzero critical iterates recover c up to conjugation.
+A probability measure invariant under both f_c and f_d, with integrable z and z^2,
+would give c = integral(z-z^2) = d. Neither observation shows that two parameters
+in a combinatorial fiber have equal orbit moduli or share that invariant measure.
+Adding that unproved constancy as an input is not the requested new mechanism.
+
+## 9. Formalization gate
+
+No candidate above survived both the novelty and proof requirements.
+No new Lean theorem was added. The requested research result was not obtained.
 
 A theorem in a future checkpoint must use the actual quadratic orbit and the
 actual Mandelbrot parameter locus. Main already provides
@@ -113,5 +163,7 @@ bounded critical orbit. It does not provide a formal parameter separation fiber
 or the analytic Thurston-to-fiber bridge. Defining a convenient arbitrary set
 as a 'fiber' would not supply that missing identification.
 
-The next candidate under investigation allows polynomial-in-time recurrence
-coefficients. This is only a candidate, not an established result.
+The draft is being closed as an unsuccessful research attempt, following the
+repository briefing's instruction not to submit a restatement, survey, or plan
+when no qualifying progress was made. These rejections are a record of the
+attempt, not a proof that no new approach can work.
