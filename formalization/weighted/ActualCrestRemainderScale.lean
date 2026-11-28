@@ -56,7 +56,7 @@ theorem actual_return_scale_lower {p : ℕ} (hp : 17 ≤ p) {c : ℝ}
     unfold kappa
     calc
       -quadraticCoefficient c (p-1)*criticalValue c p ≤
-          |quadraticCoefficient c (p-1)|*criticalValue c p :=
+          |quadraticCoefficient c (p-1)| *criticalValue c p :=
         mul_le_mul_of_nonneg_right (neg_le_abs _) hd.le
       _ ≤ (4 : ℝ)^(p-1)*criticalValue c p :=
         mul_le_mul_of_nonneg_right hA hd.le
@@ -121,7 +121,7 @@ theorem actual_remainder_one_lower_return {p : ℕ} (hp : 17 ≤ p) {c : ℝ}
     simpa only [show p-1+1 = p by omega] using
       realIterate_succ c (p-1) d
   have hnorm : E = realIterate c p d/d-(1-kappa p c) := by
-    simp only [E, realRemainder, normalizedReturn_real_eq, one_pow, mul_one]
+    simp only [E, realRemainder, normalizedReturn_real_eq, one_pow, mul_one, d]
   have hnorm' : d*E = realIterate c p d-d*(1-kappa p c) := by
     rw [hnorm]
     field_simp [hd.ne']
@@ -168,8 +168,10 @@ theorem actual_remainder_one_lower_return {p : ℕ} (hp : 17 ≤ p) {c : ℝ}
   have hdisplacement_sq := pow_le_pow_left₀
     (show 0 ≤ (5/12 : ℝ)*d by positivity) hdisplacement 2
   change (25/144 : ℝ)*d ≤ E
-  apply (mul_le_mul_left hd).mp
-  nlinarith only [hdisplacement_sq, hsquare]
+  by_contra h
+  have hlt : E < (25/144 : ℝ)*d := lt_of_not_ge h
+  have hmul := mul_lt_mul_of_pos_left hlt hd
+  nlinarith only [hdisplacement_sq, hsquare, hmul]
 
 /-- The complete nonlinear actual remainder has the same exponential
 order as the established upper bound.  In particular it cannot be
