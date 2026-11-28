@@ -5160,6 +5160,39 @@
     },
     "obligations": []
   },
+  "quadratic-fiber-criterion-20261128": {
+    "guide": "contributions/quadratic_fiber_criterion_20261128/NOTE.md#quadratic-fiber-criterion-20261128",
+    "theorems": {
+      "formalization/weighted/QuadraticMixedSusceptibility.lean": [
+        "product_ne_zero",
+        "partialSum_eq_sum",
+        "orbit_difference_eq",
+        "normalized_difference_eq",
+        "reciprocal_tendsto_zero",
+        "limit_eq_zero_of_mem_mandelbrot",
+        "factor_continuous",
+        "product_continuous",
+        "partialSum_continuousAt",
+        "isolated_of_uniform_limit",
+        "connected_set_eq_singleton"
+      ],
+      "formalization/weighted/QuadraticMonotoneFiberTopology.lean": [
+        "preconnected_preimage_closed_fibers",
+        "connected_open_basis_of_singleton_fiber"
+      ],
+      "formalization/weighted/QuadraticMixedSusceptibilityMLC.lean": [
+        "mandelbrot_eq_zero_escape",
+        "mandelbrot_isClosed",
+        "mandelbrot_norm_le_three",
+        "mandelbrot_isCompact",
+        "monotone_fiber_eq_singleton_of_mixed_susceptibility",
+        "locallyConnectedAt_of_mixed_susceptibility"
+      ]
+    },
+    "obligations": [
+      "UNIVERSAL_PROTECTED_TOWER_CLOSURE"
+    ]
+  },
   "physical-cylinder-expansion-20261128": {
     "guide": "contributions/physical_cylinder_expansion_20261128/NOTE.md#physical-cylinder-expansion-20261128",
     "theorems": {
