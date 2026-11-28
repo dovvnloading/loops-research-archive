@@ -76,7 +76,8 @@ theorem chart_middle_small_disk {p q r : ℕ} (hr : 17 ≤ r)
     z/(returnCoefficient p c : ℂ) ∈ middleSource c p q := by
   have hA := coefficient_negative (j.coefficient_lower c hc)
   apply ThreeLevelDomains.scaled_disk_in_source c (q*p) (returnCoefficient p c)
-    (ThreeLevelMiddle.radius q) (16*scale q) hA.ne (by positivity) _ z hz
+    (ThreeLevelMiddle.radius q) (16*scale q) hA.ne
+    (mul_nonneg (by norm_num) (scale_pos q).le) _ z hz
   intro w hw
   rw [middle_scaled_identity c p q hA.ne]
   exact ThreeLevelMiddle.middle_small_disk_image (outerMap c p) (by omega) g

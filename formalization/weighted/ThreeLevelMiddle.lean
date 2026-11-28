@@ -47,7 +47,7 @@ theorem half_radius_scale (q : ℕ) :
     (4 : ℝ)^q*(radius q/2)^2 = 1/4 := by
   calc
     _ = ((radius q)^2*(4 : ℝ)^q)/4 := by ring
-    _ = _ := by rw [radius_sq, scale_mul_power]; norm_num
+    _ = _ := by rw [radius_sq, scale_mul_power]
 
 theorem reference_half_disk {q : ℕ} (hq : 17 ≤ q)
     {a b l u t : ℝ} (g : OuterChart q a b l u) (ht : t ∈ Icc l u)
@@ -250,13 +250,15 @@ theorem middle_small_disk_image (H : ℂ → ℂ) {q : ℕ} (hq : 17 ≤ q)
   have hreference (j : ℕ) (hj : j ≤ q) :
       ‖((quadraticMap t)^[j]) z‖ ≤ 21/10 := by
     apply quadratic_orbit_disk t (ThreeLevelReference.chart_parameter_band hq g ht)
-      q (16*scale q) (by positivity) (by linarith [scale_small hq]) _ hz j hj
+      q (16*scale q) (mul_nonneg (by norm_num) (scale_pos q).le)
+      (by linarith [scale_small hq]) _ hz j hj
     rw [hs]
     linarith [scale_small hq]
   have he := (iterate_stability H t z q ε hε
     (by linarith [scale_small hq]) hclose hreference q le_rfl).1
   have hqform : q-1+1 = q := by omega
-  have hd := orbit_displacement t (q-1) (16*scale q) z (by positivity)
+  have hd := orbit_displacement t (q-1) (16*scale q) z
+    (mul_nonneg (by norm_num) (scale_pos q).le)
     (fun j hj => g.critical_orbit t ht j (by omega))
     (by rw [hqform, hs]; linarith [scale_small hq]) hz
   rw [hqform, hs] at hd
