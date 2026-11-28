@@ -4132,5 +4132,23 @@
       ]
     },
     "obligations": []
+  },
+  "quadratic-limit-obstruction-20261127": {
+    "guide": "contributions/quadratic_limit_obstruction_20261127/NOTE.md#quadratic-limit-obstruction-20261127",
+    "theorems": {
+      "formalization/weighted/QuadraticCriticalUnits.lean": [
+        "criticalReturnQuotient_factor",
+        "criticalReturnQuotient_integral",
+        "center_periodic_integral_inverse",
+        "center_orbit_periodic",
+        "center_orbit_integral_inverse",
+        "orbit_unit_of_center",
+        "center_orbit_inv_integral",
+        "exact_center_orbit_unit"
+      ]
+    },
+    "obligations": [
+      "MLC"
+    ]
   }
 }
