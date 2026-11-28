@@ -50,10 +50,12 @@ code/exp3_feigenbaum.py	EXPLORATION
 code/exp4_images.py	EXPLORATION
 code/exp5_figs.py	EXPLORATION
 code/mlc_common.py	EXPLORATION
+formalization/weighted/ActualCrestConformalChart.lean	CREST
 formalization/weighted/ActualCrestCrossingWindow.lean	METADATA
 formalization/weighted/ActualCrestEndpoint.lean	METADATA
 formalization/weighted/ActualCrestIntegral.lean	METADATA
 formalization/weighted/ActualCrestLimit.lean	METADATA
+formalization/weighted/ActualCrestPaths.lean	CREST
 formalization/weighted/ActualCrestProperReturn.lean	METADATA
 formalization/weighted/ActualCrestRadialOrder.lean	METADATA
 formalization/weighted/ActualCrestSupport.lean	METADATA
@@ -69,6 +71,8 @@ formalization/weighted/BinaryShiftExactness.lean	METADATA
 formalization/weighted/BinaryShiftPeriodic.lean	METADATA
 formalization/weighted/ChebyshevQuotientRigidity.lean	METADATA
 formalization/weighted/CircularCrestEnergy.lean	METADATA
+formalization/weighted/CircularCrestModulus.lean	METADATA
+formalization/weighted/CircularParentEnergy.lean	METADATA
 formalization/weighted/CloneBounds.lean	CLONE EDGE
 formalization/weighted/ClonePolynomialRoots.lean	CLONE EDGE
 formalization/weighted/CloneRoot.lean	CLONE EDGE

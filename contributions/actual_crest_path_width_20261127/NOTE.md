@@ -11,9 +11,36 @@ human_review: none
 
 ## Claim
 
-This draft claims the still-open physical path and conformal-width part of NOV26_OPEN_CREST_LIMIT. No new theorem is claimed at the initial checkpoint. The target is the actual q-side descendant family under four literal normalized polynomial returns, with proper endpoints, complete interiors, nonoverlap, and a proved conformal-width interpretation of the radial integral.
+This draft attacks the still-open physical path and conformal-width part of NOV26_OPEN_CREST_LIMIT. The current proved checkpoint is the actual q-side descendant family under four literal normalized polynomial returns: complete surviving interiors, real slit endpoints, a common open conformal chart and nonoverlap. The exact physical width and limit are being assembled from these results.
 
 ## Evidence
+
+### Actual dynamical checkpoint
+
+`ActualCrestPaths.eventually_actual_fourfold_survival` proves a uniform
+large-period theorem for every actual signed-tip parameter. The whole
+upper semicircle survives the first three source restrictions. The fourth
+restriction removes exactly its classified crossing. The q-side component
+then has strictly positive imaginary part after the literal original-plane
+iterate `f_c^[4*p]`. No support or path-survival conclusion is a premise of
+this eventual theorem.
+
+The module additionally proves simplicity of every closed ancestor,
+membership in the actual central component at every source stage,
+membership in the archived physical return component, and the endpoints
+on the literal real source/target slits. The source slit is `[-1,1]`, while
+the target slit is `[H^2(0),1]`; they are not substituted for each other.
+
+`ActualCrestConformalChart.chart` constructs an open conformal chart for
+the literal `H^4` from its signed fibers and nonvanishing derivative. Its
+source contains the complete closed q-side arcs, including both endpoints.
+`fourth_image_radius_eq` excludes collisions between distinct radii. The
+inverse chart and univalence are conclusions, not supplied hypotheses.
+
+Both actual modules compile locally against the pinned Lean project.
+They are not statements about a limiting quadratic surrogate. The
+remaining native Hubbard-tree/prime-end identification is explicitly
+separate from these actual real-slit path results.
 
 ### Committed analytic checkpoint
 
@@ -46,7 +73,14 @@ NOV26_CREST_16; GlobalCrestClassification, GlobalCrestFinalCut, GlobalCrestSourc
 
 ## Boundary
 
-The ledger remains open. The initial checkpoint is an investigation only. No KKL marking, proper-path survival, physical width, unrestricted optimum, H1-H4, UPTCR, MLC or worldwide novelty is asserted without a completed Lean theorem. The separate fixed-reference slit-QC route was rejected as an easy consequence of archived results and closed as PR #256.
+The ledger remains open. The complete real-slit paths and common conformal
+chart are proved; the physical modulus/limit assembly is still in progress
+at this checkpoint. Native KKL immersion marking, Hubbard-tree and
+prime-end identification, arbitrary Wave optima, H1-H4, UPTCR, MLC and
+worldwide priority are not established. The uniform threshold is
+existential, not a certificate for every finite index starting at 17.
+The separate fixed-reference slit-QC route was rejected as an easy
+consequence of archived results and closed as PR #256.
 
 ## Attribution
 
