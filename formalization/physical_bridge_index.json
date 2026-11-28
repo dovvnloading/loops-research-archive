@@ -4979,5 +4979,18 @@
       ]
     },
     "obligations": []
+  },
+  "quadratic-rigidity-defect-20261128": {
+    "guide": "contributions/quadratic_rigidity_defect_20261128/NOTE.md#quadratic-rigidity-defect-20261128",
+    "theorems": {
+      "formalization/weighted/QuadraticProjectiveAlgebra.lean": [
+        "clock_difference_factor",
+        "crossRatio_scaled_clock",
+        "crossRatio_scaled_regular_part"
+      ]
+    },
+    "obligations": [
+      "H4_RIGIDITY"
+    ]
   }
 }

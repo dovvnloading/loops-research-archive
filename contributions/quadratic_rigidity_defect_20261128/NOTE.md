@@ -5,6 +5,8 @@ ai: OpenAI ChatGPT GPT-6 Astra Pro
 human_review: none
 ---
 
+<a id="quadratic-rigidity-defect-20261128"></a>
+
 # Critical-orbit projective residue — active draft
 
 ## Claim
