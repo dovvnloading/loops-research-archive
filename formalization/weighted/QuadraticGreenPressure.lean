@@ -12,6 +12,7 @@ quadratic perturbation term before any infinite-time limit is taken.
 
 namespace QuadraticEscape
 
+open Set
 open scoped BigOperators
 
 noncomputable section
@@ -60,6 +61,7 @@ theorem regularizedResponse_partition (c : ℂ) (ε : ℝ) (n : ℕ) :
           (fun k => 2 * ‖orbit c k c‖ + ε)).symm
       _ = ∑ j ∈ Finset.range ((n+1)+1),
             ∏ k ∈ Finset.Ico j (n+1), (2 * ‖orbit c k c‖ + ε) := by
+        symm
         rw [Finset.sum_range_succ]
         simp
 
@@ -103,9 +105,12 @@ theorem regularizedResponse_shadowing (c d : ℂ) {ε : ℝ} (hε : 0 ≤ ε) (n
         orbit_difference_step c d c d n
       _ ≤ (2 * ‖orbit c n c‖ + ε) *
           (‖d-c‖ * regularizedResponse c ε n) + ‖d-c‖ := by
-        exact add_le_add_right
-          (mul_le_mul (add_le_add_left hsmall _) hshadow (norm_nonneg _)
-            (by positivity)) _
+        have hcoeff :
+            2 * ‖orbit c n c‖ + ‖orbit d n d-orbit c n c‖ ≤
+              2 * ‖orbit c n c‖ + ε := add_le_add le_rfl hsmall
+        have hmul := mul_le_mul hcoeff hshadow (norm_nonneg _)
+          (show 0 ≤ 2 * ‖orbit c n c‖ + ε by positivity)
+        exact add_le_add hmul le_rfl
       _ = ‖d-c‖ * regularizedResponse c ε (n+1) := by
         rw [regularizedResponse]
         ring
@@ -164,6 +169,56 @@ theorem regularizedResponse_superlevel_obstruction (c d : ℂ) {ε : ℝ}
   by_contra h
   push Not at h
   exact (not_le_of_gt hg) (regularizedResponse_green c d hc hε n h)
+
+
+/-- Uniformly bounded regularized partitions certify an actual disk of
+bounded critical orbits. The proof uses the full nonlinear family. -/
+theorem bounded_regularizedResponse_zero_disk (c d : ℂ) {ε B : ℝ}
+    (hc : parameterEscape c = 0) (hε : 0 ≤ ε)
+    (hB : ∀ n, regularizedResponse c ε n ≤ B)
+    (hd : ‖d-c‖ * B ≤ ε) :
+    parameterEscape d = 0 := by
+  apply (escape_zero_iff_bounded d d).mpr
+  refine ⟨ε + 2, fun n => ?_⟩
+  have hscale : ∀ j ≤ n, ‖d-c‖ * regularizedResponse c ε j ≤ ε :=
+    fun j _ => (mul_le_mul_of_nonneg_left (hB j) (norm_nonneg _)).trans hd
+  have hdiff := (regularizedResponse_shadowing c d hε n hscale).trans (hscale n le_rfl)
+  have hc2 := parameter_norm_le_two c hc
+  have hb := bounded_orbit_norm_le_two c c hc2 hc n
+  calc
+    ‖orbit d n d‖ = ‖(orbit d n d-orbit c n c)+orbit c n c‖ := by
+      rw [sub_add_cancel]
+    _ ≤ ‖orbit d n d-orbit c n c‖ + ‖orbit c n c‖ := norm_add_le _ _
+    _ ≤ ε + 2 := add_le_add hdiff hb
+
+/-- A positive regularizer with a bounded all-time partition certifies
+interiority in the actual zero-potential parameter locus. -/
+theorem bounded_regularizedResponse_interior (c : ℂ) {ε B : ℝ}
+    (hc : parameterEscape c = 0) (hε : 0 < ε)
+    (hB : ∀ n, regularizedResponse c ε n ≤ B) :
+    c ∈ interior {d : ℂ | parameterEscape d = 0} := by
+  have hB1 : 1 ≤ B := by simpa only [regularizedResponse] using hB 0
+  have hB0 : 0 < B := by linarith
+  apply mem_interior_iff_mem_nhds.mpr
+  apply Metric.mem_nhds_iff.mpr
+  refine ⟨ε / B, div_pos hε hB0, ?_⟩
+  intro d hd
+  have hδ : ‖d-c‖ < ε / B := by
+    simpa only [Metric.mem_ball, dist_eq_norm] using hd
+  exact bounded_regularizedResponse_zero_disk c d hc hε.le hB
+    ((lt_div_iff₀ hB0).mp hδ).le
+
+/-- At every actual boundary parameter, every positive regularizer has
+unbounded finite renewal partitions. Zero potential and noninteriority
+are the explicit boundary hypotheses. -/
+theorem boundary_regularizedResponse_unbounded (c : ℂ) {ε : ℝ}
+    (hc : parameterEscape c = 0)
+    (hboundary : c ∉ interior {d : ℂ | parameterEscape d = 0})
+    (hε : 0 < ε) (B : ℝ) :
+    ∃ n, B < regularizedResponse c ε n := by
+  by_contra h
+  push Not at h
+  exact hboundary (bounded_regularizedResponse_interior c hc hε h)
 
 end
 end QuadraticEscape

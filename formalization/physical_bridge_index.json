@@ -4745,7 +4745,46 @@
         "regularizedResponse_shadowing",
         "regularizedResponse_green",
         "regularizedResponse_green_disk",
-        "regularizedResponse_superlevel_obstruction"
+        "regularizedResponse_superlevel_obstruction",
+        "bounded_regularizedResponse_zero_disk",
+        "bounded_regularizedResponse_interior",
+        "boundary_regularizedResponse_unbounded"
+      ],
+      "formalization/weighted/QuadraticGreenPower.lean": [
+        "regularizedResponse_natural_power",
+        "slowRegularizedGrowth_power_bound",
+        "chebyshev_criticalValue_norm",
+        "chebyshev_regularizedResponse_lower",
+        "chebyshev_not_slowRegularizedGrowth"
+      ],
+      "formalization/weighted/QuadraticGreenCusp.lean": [
+        "cusp_green_disk",
+        "cusp_parameter_escape_zero",
+        "cusp_response_geometric",
+        "cusp_slowRegularizedGrowth",
+        "cusp_green_all_orders",
+        "real_above_cusp_escape_pos",
+        "cusp_not_interior_zero",
+        "cusp_mem_frontier_zero",
+        "slow_growth_does_not_force_interior"
+      ],
+      "formalization/weighted/QuadraticGreenDensity.lean": [
+        "criticalValue_hasDerivAt",
+        "criticalValue_deriv",
+        "sphericalDensity_eq_deriv",
+        "sphericalDensity_nonneg",
+        "criticalValue_pair_recovers_parameter",
+        "criticalValue_pair_injective",
+        "parameterTangent_no_consecutive_zeros",
+        "sphericalDensity_pair_lower",
+        "criticalValue_zero",
+        "parameterTangent_zero",
+        "zero_parameterEscape",
+        "sphericalDensity_zero",
+        "sphericalDensity_pair_zero",
+        "sphericalDensity_pair_tendsto_zero",
+        "no_uniform_positive_density_floor",
+        "no_slower_geometric_density_floor"
       ]
     },
     "obligations": [
