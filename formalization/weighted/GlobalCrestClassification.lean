@@ -120,9 +120,9 @@ theorem parentOuter_bounds {p : ℕ} (hp : 17 ≤ p) :
   · apply (div_le_iff₀ hden).mpr
     linarith
 
-/-- All literal q/w endpoint tests hold on precisely the retained
-terminal interval. Their possible failure farther out cannot create
-another complete admissible component. -/
+/-- All literal q/w endpoint tests hold throughout the retained
+terminal interval. Adding them leaves the complete admissible set
+unchanged; their possible failure farther out cannot create a component. -/
 theorem actual_complete_parent_classification {p : ℕ} (hp : 17 ≤ p) {c : ℝ}
     (hc : ActualTip p c) (F : Family p c) :
     ∃ α ∈ Ioo (518/1000 : ℝ) (519/1000),

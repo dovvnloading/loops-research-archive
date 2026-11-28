@@ -99,9 +99,11 @@ formalization/weighted/FullCloneRenewal.lean	CLONE-MARKOV RENEWAL-GAP AFFINE-COR
 formalization/weighted/FullCloneSpectralMax.lean	CLONE EDGE
 formalization/weighted/FullCloneStrictGap.lean	CLONE EDGE
 formalization/weighted/GlobalCrestClassification.lean	METADATA
+formalization/weighted/GlobalCrestCoefficient.lean	METADATA
 formalization/weighted/GlobalCrestCrossing.lean	METADATA
 formalization/weighted/GlobalCrestEndpointValues.lean	METADATA
 formalization/weighted/GlobalCrestEstimates.lean	METADATA
+formalization/weighted/GlobalCrestLimit.lean	METADATA
 formalization/weighted/GlobalCrestOrder.lean	METADATA
 formalization/weighted/GlobalCrestPhysical.lean	METADATA
 formalization/weighted/GlobalCrestSourceGates.lean	METADATA

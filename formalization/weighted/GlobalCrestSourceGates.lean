@@ -218,6 +218,17 @@ private theorem critical_bounds {p : ℕ} (hp : 17 ≤ p) {c : ℝ}
     step_neg hp hc c5 (by norm_num) (by norm_num) (by norm_num) (by norm_num)
   exact ⟨c2,c3,c4,c5,c6⟩
 
+/-- The opposite terminal cut lies strictly between zero and one for
+every actual signed tip covered by the construction. -/
+theorem actual_fourth_critical_bounds {p : ℕ} (hp : 17 ≤ p) {c : ℝ}
+    (hc : ActualTip p c) :
+    0 < (((normalizedReturn c p)^[4]) 0).re ∧
+      (((normalizedReturn c p)^[4]) 0).re < 1 := by
+  have h := (critical_bounds hp hc).c4
+  rw [← actualOrbit_cast c 0 p 4]
+  simp only [Complex.ofReal_re]
+  constructor <;> linarith [h.1,h.2]
+
 private structure EndpointBounds (c : ℝ) (p : ℕ) (s : ℝ) : Prop where
   q1 : actualOrbit c p (qEndpoint s) 1 ∈ Icc (1537/10000) (1637/10000)
   q2 : actualOrbit c p (qEndpoint s) 2 ∈ Icc (952/1000) (958/1000)

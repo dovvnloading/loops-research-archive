@@ -1,4 +1,5 @@
-import ThreeReturnDegree
+import NearTwoTip
+import QuadraticCrestDividedDifference
 
 /-!
 # Actual normalized-return control beyond the full crest second image

@@ -4089,6 +4089,7 @@
         "actualOrbit_cast",
         "actualOrbit_physical",
         "actual_positive_fixed_cut",
+        "actual_fourth_critical_bounds",
         "actual_endpoint_gates",
         "actual_complete_endpoint_gates"
       ],
@@ -4112,6 +4113,18 @@
         "global_endpoint_is_initial",
         "actual_physical_endpoint",
         "exists_actual_complete_parent"
+      ],
+      "formalization/weighted/GlobalCrestLimit.lean": [
+        "restricted_coefficient_eq",
+        "actual_global_coefficients_converge",
+        "exists_complete_parents_and_positive_limit"
+      ],
+      "formalization/weighted/GlobalCrestCoefficient.lean": [
+        "actual_angle_small",
+        "actual_integrand_continuousOn",
+        "actual_inner_integral_lower",
+        "parent_log_bounds",
+        "actual_radialCoefficient_gt_third"
       ]
     },
     "obligations": []

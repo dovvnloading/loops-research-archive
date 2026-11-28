@@ -23,9 +23,7 @@ theorem family_point_negative {p : ℕ} {c : ℝ} (F : Family p c) (s : Radius) 
   have h := (Complex.abs_re_le_norm (F.point s+(3/4 : ℂ)))
   rw [F.point_radius] at h
   have hu := (abs_le.mp h).2
-  simp only [Complex.add_re, Complex.div_re, Complex.ofNat_re,
-    Complex.ofNat_im, mul_zero, add_zero, zero_mul, sub_zero] at hu
-  norm_num at hu
+  norm_num [Complex.add_re] at hu
   linarith [s.property.2]
 
 /-- The first image of every full-parent crossing lies in the radius 2/5
@@ -90,7 +88,7 @@ theorem second_image_bounds {p : ℕ} (hp : 17 ≤ p) {c : ℝ}
   have hre := (Complex.abs_re_le_norm
     (normalizedReturn c p w-complexMap (kappa p c) w)).trans he
   have hq : (complexMap (kappa p c) w).re = 1+kappa p c*w.im^2 := by
-    simp [complexMap,Complex.mul_re,Complex.pow_two_re,hwre]
+    simp [complexMap,pow_two,Complex.mul_re,hwre]
   rw [Complex.sub_re,hq] at hre
   have him : |w.im| ≤ 2/5 := (Complex.abs_im_le_norm w).trans hw.le
   have him2 : w.im^2 ≤ (2/5 : ℝ)^2 := by
@@ -148,7 +146,9 @@ theorem actual_terminal_injective {p : ℕ} (hp : 17 ≤ p) {c : ℝ}
     · exact h
     · have he' := congrArg Complex.im h
       simp only [Complex.neg_im] at he'
-      exact (by linarith [F.positive ss,F.positive tt] : False).elim
+      have hss : 0 < (H (F.point ss)).im := F.positive ss
+      have htt : 0 < (H (F.point tt)).im := F.positive tt
+      exact (by linarith only [he',hss,htt] : False).elim
   have hpoints : F.point ss = F.point tt := by
     have h := (actual_return_collision_iff hp hc
       ((F.point_parent_disk ss).trans (by norm_num))
