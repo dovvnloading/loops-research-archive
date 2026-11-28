@@ -81,12 +81,15 @@ Primary source, with this numbering:
 [author PDF](https://www.math.univ-toulouse.fr/~buff/Preprints/Eigenvalues/eigenvalues.pdf)
 ([published DOI](https://doi.org/10.1112/topo.12145)).
 
-## C. Angled internal addresses separate nonhyperbolic parameters
+## C. Angled internal addresses separate nonhyperbolic combinatorial classes
 
 ### Candidate statement
 
-For any two nonhyperbolic parameters \(c,d\in M\), equality of their angled
-internal addresses implies \(c=d\).
+For any \(c,d\in M\) whose combinatorial classes are nonhyperbolic,
+equality of their angled internal addresses implies \(c=d\).
+Here a nonhyperbolic class means a class containing no hyperbolic parameter;
+this is not interchangeable with merely requiring that \(c\) and \(d\)
+themselves be nonhyperbolic.
 
 ### Closest result and decision
 
