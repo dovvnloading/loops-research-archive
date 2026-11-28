@@ -53,7 +53,7 @@ private theorem iterate_real (c t : ℝ) (n : ℕ) :
     rw [iterate_succ_apply', iterate_succ_apply', ih]
     simp only [quadraticMap, Complex.ofReal_add, Complex.ofReal_pow]
 
-private theorem coefficient_bound (c : ℝ) (n : ℕ) :
+theorem coefficient_bound (c : ℝ) (n : ℕ) :
     (∀ j : ℕ, j ≤ n+1 → |criticalValue c j| ≤ 2) →
       |quadraticCoefficient c n| ≤ (4 : ℝ)^n := by
   induction n with
