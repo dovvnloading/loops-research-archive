@@ -221,8 +221,11 @@ theorem prefixError_tendsto_zero {ι : Type*} (layers : ℕ → Layer ι) (u : T
     Tendsto (prefixError layers u) atTop (𝓝 0) := by
   have hrad := fromProjective_tendsto_one (hp.comp (tendsto_add_atTop_nat 1))
   have h := ((hrad.pow 2).sub tendsto_const_nhds).mul_const (outerCap layers u).toReal
-  simpa only [prefixError, Function.comp_apply, Pi.pow_apply, Pi.sub_apply, Pi.mul_apply,
-    one_pow, sub_self, zero_mul] using h
+  have hvalue : Tendsto (prefixError layers u) atTop
+      (𝓝 (((1 : ℝ) ^ 2 - 1) * (outerCap layers u).toReal)) := by
+    refine Filter.Tendsto.congr (fun n => ?_) h
+    simp only [prefixError, Function.comp_apply, Pi.pow_apply, Pi.sub_apply, Pi.mul_apply]
+  simpa only [one_pow, sub_self, zero_mul] using hvalue
 
 /-- Two different depths and arbitrary terminal loads are close as soon as
 they share a sufficiently deep outer prefix. -/
@@ -286,15 +289,27 @@ theorem exists_terminal_independent_limit {ι : Type*} (layers : ℕ → Layer �
     (response_cauchy layers hp (fun _ => zeroLoad ι) u hu)
   refine ⟨E, fun B => ?_⟩
   have habs := terminal_difference_tendsto_zero layers hp B (fun _ => zeroLoad ι) u hu
+  have hneg : Tendsto (fun n =>
+      - |(chain (prefixLayers layers (n + 1)) (B n) u).toReal -
+        (chain (prefixLayers layers (n + 1)) (zeroLoad ι) u).toReal|)
+      atTop (𝓝 0) := by
+    have h := habs.neg
+    rw [neg_zero] at h
+    refine Filter.Tendsto.congr (fun n => ?_) h
+    simp only [Pi.neg_apply]
   have hdiff : Tendsto (fun n =>
       (chain (prefixLayers layers (n + 1)) (B n) u).toReal -
         (chain (prefixLayers layers (n + 1)) (zeroLoad ι) u).toReal)
       atTop (𝓝 0) := by
-    apply tendsto_of_tendsto_of_tendsto_of_le_of_le
-      (by simpa only [Pi.neg_apply, neg_zero] using habs.neg) habs
+    apply tendsto_of_tendsto_of_tendsto_of_le_of_le hneg habs
     · intro n; exact neg_abs_le _
     · intro n; exact le_abs_self _
-  simpa only [Pi.add_apply, sub_add_cancel, zero_add] using hdiff.add hE
+  have hsum : Tendsto
+      (fun n => (chain (prefixLayers layers (n + 1)) (B n) u).toReal)
+      atTop (𝓝 ((0 : ℝ) + E)) := by
+    refine Filter.Tendsto.congr (fun n => ?_) (hdiff.add hE)
+    simp only [Pi.add_apply, sub_add_cancel]
+  simpa only [zero_add] using hsum
 
 /-- Divergence of accumulated positive logarithmic length suffices. Neither
 the statement nor its proof uses summability of individual attenuations. -/

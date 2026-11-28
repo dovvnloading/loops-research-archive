@@ -63,8 +63,19 @@ theorem hasDerivAt_profile (n L a b t : ℝ) :
     (a - attenuation n L * b)
   have hright := ((((hasDerivAt_id t).const_sub L).const_mul n).neg.exp).const_mul
     (b - attenuation n L * a)
-  convert (hleft.add hright).div_const (1 - attenuation n L ^ 2) using 1 <;>
-    (try dsimp [profile, profileDeriv]) <;> ring
+  have hd : HasDerivAt (profile n L a b)
+      (((a - attenuation n L * b) * (Real.exp (-(n * t)) * -(n * 1)) +
+        (b - attenuation n L * a) * (Real.exp (-(n * (L - t))) * -(n * -1))) /
+          (1 - attenuation n L ^ 2)) t :=
+    (hleft.add hright).div_const (1 - attenuation n L ^ 2)
+  have hscalar : profileDeriv n L a b t =
+      ((a - attenuation n L * b) * (Real.exp (-(n * t)) * -(n * 1)) +
+        (b - attenuation n L * a) * (Real.exp (-(n * (L - t))) * -(n * -1))) /
+          (1 - attenuation n L ^ 2) := by
+    unfold profileDeriv
+    ring
+  rw [hscalar]
+  exact hd
 
 theorem hasDerivAt_profileDeriv (n L a b t : ℝ) :
     HasDerivAt (profileDeriv n L a b) (n ^ 2 * profile n L a b t) t := by
@@ -72,9 +83,19 @@ theorem hasDerivAt_profileDeriv (n L a b t : ℝ) :
     (a - attenuation n L * b)
   have hright := ((((hasDerivAt_id t).const_sub L).const_mul n).neg.exp).const_mul
     (b - attenuation n L * a)
-  convert ((hleft.neg.add hright).const_mul n).div_const
-    (1 - attenuation n L ^ 2) using 1 <;>
-    (try dsimp [profile, profileDeriv]) <;> ring
+  have hd : HasDerivAt (profileDeriv n L a b)
+      (n * (-((a - attenuation n L * b) * (Real.exp (-(n * t)) * -(n * 1))) +
+        (b - attenuation n L * a) * (Real.exp (-(n * (L - t))) * -(n * -1))) /
+          (1 - attenuation n L ^ 2)) t :=
+    ((hleft.neg.add hright).const_mul n).div_const (1 - attenuation n L ^ 2)
+  have hscalar : n ^ 2 * profile n L a b t =
+      n * (-((a - attenuation n L * b) * (Real.exp (-(n * t)) * -(n * 1))) +
+        (b - attenuation n L * a) * (Real.exp (-(n * (L - t))) * -(n * -1))) /
+          (1 - attenuation n L ^ 2) := by
+    unfold profile
+    ring
+  rw [hscalar]
+  exact hd
 
 theorem continuous_profile (n L a b : ℝ) : Continuous (profile n L a b) :=
   continuous_iff_continuousAt.mpr fun t => (hasDerivAt_profile n L a b t).continuousAt

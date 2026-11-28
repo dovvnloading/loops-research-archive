@@ -1,155 +1,287 @@
 ---
 ledger: END_PLUMBING_TRACE_RESPONSE_CONTROL
 result: partial
-ai: OpenAI ChatGPT, GPT-6 Astra Pro; research, adversarial audit, and prospective Lean proof development
+ai: OpenAI ChatGPT, GPT-6 Astra Pro; research, adversarial audit, and Lean proof development
 human_review: none
 ---
 
 <a id="end-neck-coercivity-20261127"></a>
 
-# Draft: full-response coercivity through nested physical necks
+# Investigation of all-depth annular response: no qualifying novelty claim
 
 ## Claim
 
-Work in progress. No new theorem or closure is claimed at this checkpoint.
-The target is the all-depth coercive full-response clause of
-END_PLUMBING_TRACE_RESPONSE_CONTROL. A contribution will count here only
-if it supplies genuinely new mathematics and a theorem compiled in the
-repository's Lean project with the existing trust audit.
+**This investigation has not produced the new mathematical advance requested
+by the user.** It does not close `END_PLUMBING_TRACE_RESPONSE_CONTROL` or
+establish a new physical subcase of that obligation. The Lean sources record
+the candidate argument precisely; new proof code is not being counted as
+new mathematics.
+
+The `partial` front-matter label classifies the model-level scope of the
+candidate, not a claim that this packet should be accepted as a novel
+research contribution. The draft is to be closed after validation so that
+it does not continue to reserve the open obligation. No ledger or status
+record has been changed.
 
 ## Evidence
 
-The base is main commit e8d82717b184b5f4e46c34a46b1445fc75f33a1c.
-The initial audit excluded already archived one-neck Fourier estimates,
-annular midpoint shorting, whole-electrode response comparisons, and
-abstract scalar elimination as possible new contributions.
+### 1. Target and audit
 
-The active question is whether the full physical trace response through
-a serial family admits a coercive estimate stable under all permitted
-boundary identifications, with an effective threshold not obtained merely
-by multiplying the existing one-neck error factors. Any proof must identify
-its actual analytic surfaces, trace spaces, gluing maps, and terminal
-observables. Any obstruction must verify those same hypotheses.
+The investigation began from main commit
+`e8d82717b184b5f4e46c34a46b1445fc75f33a1c`; it incorporated main through
+`6a10209b3cc51878bc45de7668894757b2575e08` while preserving the registrations
+from both branches. Draft PR #260 was opened before the proof development,
+and successive checkpoints were committed to it.
 
-Research milestones and rejected routes will be committed here as the
-investigation proceeds. The local workspace has no Lean installation and
-insufficient free space to install the pinned toolchain; the unchanged
-repository Lean workflows will be the compilation and axiom-audit judge.
+The exact target requires source-defined all-depth contact-closed physical
+interfaces, complete multi-port response and endpoint-welding control,
+protected-carrier and last-live-port compatibility, and a uniform no-bypass
+or coercive estimate before using a finite strictness margin. Existing
+one-neck Fourier estimates, annular midpoint shorting, full-boundary
+response comparisons, scalar elimination, and gauge/no-bypass obstructions
+were excluded as possible new contributions at the outset.
 
-### First proof checkpoint: nonlinear variational contraction
+The candidate attacked terminal dependence through an entire serial family
+of collars. Its strongest completed formal statement is about arbitrary
+fixed linear weldings in a positive-frequency trace model. It does not
+construct the physical interfaces needed by the target.
 
-Two initial Lean modules now contain the proposed algebraic and variational
-proof. Their first compilation is pending; the statements below are not yet
-reported as verified results.
+### 2. The precise candidate estimate
 
-For a normalized nonconstant Fourier mode, put
+For a normalized nonconstant Fourier mode, define
 
 \[
  Q_e(u,v)=\frac{(u-ev)^2+(v-eu)^2}{1-e^2},\qquad 0\le e<1.
 \]
 
-For any index set, sum these nonnegative energies in the extended
-nonnegative reals. A load is any nonnegative, degree-two homogeneous
-function of the entire trace; convexity, continuity, existence of a
-minimizer, and quadratic-form representation are not assumed. Eliminate
-the full exit trace by taking the infimum of collar energy plus load.
+For an arbitrary index set, sum these nonnegative energies in the extended
+nonnegative reals. A terminal load is a function
+\(B:\mathbb R^I\to[0,\infty]\) with \(B(0)=0\) and
+\(B(sv)=s^2B(v)\) for every real \(s\). In particular the load is even.
+No convexity, continuity, finite-dimensionality, or attained minimum is
+assumed. Define the complete exit-trace elimination
 
-If two loads compare in both directions by a factor \(a^2\), \(a\ge1\),
-and every mode has \(e\le r<1\), the proposed output comparison factor is
-\(b^2\), where
+\[
+ T_e B(u)=\inf_v\left\{\sum_{i\in I}Q_{e_i}(u_i,v_i)+B(v)\right\}.
+\]
+
+If \(a\ge1\),
+\(D\le a^2 B\), \(B\le a^2D\), and \(0\le e_i\le r<1\), then
+both output comparisons hold with factor \(b^2\), where
 
 \[
  b=\frac{a+1+r^2(a-1)}{a+1-r^2(a-1)},\qquad
  \frac{b-1}{b+1}=r^2\frac{a-1}{a+1}.
 \]
 
-The proof uses one common trial-trace scaling \(v\mapsto(b/a)v\).
-It therefore survives arbitrary linear mixing of the coordinates. The
-initial source files are `AnnularModeContraction.lean` and
-`AnnularVariationalResponse.lean` in `formalization/weighted/`.
+The direct proof uses a single competing trace \((b/a)v\) for all
+coordinates. It therefore remains valid after precomposition of the loads
+by an arbitrary linear map of the whole trace space. A one-coordinate
+quadratic pair realizes the comparison factor, so that factor cannot be
+uniformly improved in this model.
 
-This checkpoint concerns all **nonconstant** Fourier coordinates. The
-relative constant mode and the native physical contact/welding
-construction remain separate. Identifying the energy with the actual
-cylinder Dirichlet problem and proving the all-depth terminal-independent
-conclusion are active work.
-
-The classical quadratic operator analogue is already in Jimmie Lawson
-and Yongdo Lim, *A Birkhoff contraction formula with applications to Riccati
-equations*, SIAM J. Control Optim. 46 (2007), 930–951,
-doi:10.1137/050637637. Related function-space contraction occurs in Zheng
-Qu, *Contraction of Riccati flows applied to the convergence analysis of a
-max-plus curse-of-dimensionality-free method*, SIAM J. Control Optim. 52
-(2014), 2677–2706, doi:10.1137/130906702. These are prior art. Neither the
-general contraction idea nor the quadratic special case is claimed as new.
-
-### Adversarial novelty and physical-boundary audit
-
-The first CI run exposed a missing explicit real-number import, now repaired.
-The next run compiled `AnnularModeContraction` and the complete current
-`AnnularVariationalResponse` (including coercivity and universal comparison).
-It found proof-elaboration errors in three auxiliary modules; those are being
-repaired. No successful whole-project build or transitive axiom audit is
-claimed yet.
-
-The proposed nonlinear generalization does **not**, by itself, meet the
-requested novelty standard. There is a concrete envelope reduction. For
-every line \(\ell=\mathbb R w\), define the extended quadratic form
-\(q_{B,\ell}(tw)=t^2B(w)\), with value infinity outside that line and value
-zero at the origin. Since homogeneity is imposed for every real scalar,
-\(B\) is even and
+Writing \(M(u)=\sum_i u_i^2\), with the sum understood in the same extended
+sense, the response also satisfies
 
 \[
- B(v)=\inf_{\ell}q_{B,\ell}(v).
+ \frac{1-r^2}{1+r^2}M(u)
+ \le T_eB(u)
+ \le \frac{1+r^2}{1-r^2}M(u).
 \]
 
-Annular variational elimination commutes with this infimum. Two compared
-loads give compared quadratic forms on each *same* line. Thus passing to
-nonlinear or nonconvex loads has a direct constrained-quadratic envelope
-explanation. The all-depth fixed-welding comparison is being checked, but
-composing the contraction estimate is not independently claimed as a new
-research result. Lawson--Lim already work in infinite-dimensional Hilbert
-space; an infinite-dimensional formulation alone is not a novelty claim.
+Consequently any two initial loads become uniformly comparable after one
+collar, including loads that were not comparable before it.
 
-The physical gap is equally concrete. The correct space for several live
-ports is the direct sum of their full trace spaces modulo **one diagonal
-constant**, retaining relative port means. The present model contains the
-nonconstant modes only. If a live external voltage \(x\) is retained, its
-terminal energy has the form \(B(v,x)\). Rescaling \(v\) alone while fixing
-\(x\) does not follow from joint quadratic homogeneity. Consequently the
-trial-trace proof cannot be applied to that full response by silently
-quotienting each port's constant mode. The archive already records this
-gauge obstruction; it is not a new counterexample from this packet.
+### 3. Actual infinite-depth conclusion of the model
 
-The construction of source-defined all-depth interfaces, admissible
-weldings, protected-carrier compatibility, last-live-port retention, and
-no-bypass control has not been supplied. The current investigation therefore
-has **no qualifying frontier result**. A compiled auxiliary estimate will
-not be promoted to one merely because its proof code is new.
+A layer consists of its collar attenuation and one linear welding.
+Compose layers in order from the observed boundary to the terminal end.
+For two systems sharing the first \(N+1\) layers, put
+
+\[
+ p_N=\prod_{j=0}^{N}r_j^2,\qquad
+ a_N=\frac{1+p_N}{1-p_N},\qquad
+ C(u)=\frac{1+r_0^2}{1-r_0^2}M(u).
+\]
+
+Let \(E_n\) denote the response through \(n+1\) layers. At every observed
+trace of finite mass, the difference of their response energies obeys
+
+\[
+ |E_n(u)-E_m(u)|\le (a_N^2-1)C(u)
+ =\frac{4p_N}{(1-p_N)^2}C(u),\qquad n,m\ge N.
+\]
+
+The formal theorem states the first form of this bound; the second equality
+is elementary algebra. The remaining layers and terminal loads can differ
+arbitrarily. If \(r_j=e^{-L_j}\) and \(\sum_{j=0}^{N}L_j\to\infty\), the
+responses have a single limit independent of every horizon-dependent
+choice of terminal load. No norm bound or convergence of the fixed
+sequence of weldings is used. The compared systems must share their
+observed prefix; this is not a continuity theorem for varying prefixes.
+
+This infinite-depth statement is obtained by composing the local estimate,
+then proving a common-prefix Cauchy bound. It is not independently claimed
+as original mathematics.
+
+### 4. Lean source and validation scope
+
+The six modules are under `formalization/weighted/`:
+
+| Module | Exact role |
+|---|---|
+| `AnnularModeContraction` | Scalar rescaling, coercivity, and comparison-radius identities |
+| `AnnularVariationalResponse` | Extended-energy trace infima, homogeneous loads, arbitrary linear welding, universal comparison |
+| `AnnularResponseClock` | Product formulas and divergent-length convergence of the comparison radius |
+| `AnnularResponseSharpness` | Exact scalar quadratic caps and optimality of the one-step factor |
+| `AnnularFourierTrace` | Explicit harmonic interpolation and its least one-dimensional cylinder-mode energy among C1 competitors |
+| `AnnularWeldedChain` | Finite-prefix estimates, Cauchy property, and terminal-independent infinite-depth limit |
+
+The main limiting declaration is
+`AnnularWeldedChain.divergent_length_terminal_independent_limit`.
+The variational declaration is
+`AnnularVariationalResponse.response_contraction`.
+The physical-mode calculation is
+`AnnularFourierTrace.mode_isLeast_energy`; its scope is one-dimensional
+mode energy. It does not prove the complete angular Parseval identity,
+Sobolev trace completion, or a gluing identification for native dynamical
+surfaces.
+
+All sources are registered as `METADATA`, making no model-to-physical
+bridge claim. No validator, workflow, trust policy, or toolchain was
+relaxed. The local workspace has no Lean installation and insufficient
+space to install the pinned toolchain, so the unchanged repository CI
+is the compilation and transitive-axiom judge.
+
+**Validation status:** final six-module CI validation is pending. Earlier
+runs compiled the core mode and complete variational modules; auxiliary
+proof repairs and the chain theorem are committed for validation. No
+unverified declaration is counted as a result.
+
+### 5. Why the nonlinear extension does not establish novelty
+
+There is an exact line-envelope explanation. For each span
+\(\ell=\mathbb R w\), including the zero subspace, define an extended
+quadratic form by
+
+\[
+ q_{B,\ell}(tw)=t^2B(w),\qquad
+ q_{B,\ell}(v)=\infty\quad(v\notin\ell),
+\]
+
+with value zero at the origin. The definition is independent of the choice
+of generator after the corresponding coefficient change. Then
+
+\[
+ B(v)=\inf_\ell q_{B,\ell}(v).
+\]
+
+Annular elimination commutes with that infimum. Compared loads give
+compared forms on each *same* line. Thus the apparent nonlinear/nonconvex
+generality has a direct explanation by envelopes of constrained quadratic
+loads; it does not by itself supply a new geometric mechanism.
+
+The classical operator theory is already extensive. Lawson and Lim prove
+Birkhoff/Riccati contraction on infinite-dimensional Hilbert spaces, so
+infinite-dimensionality alone is not a priority claim. Qu studies
+function-envelope contraction and exponential terminal-cost forgetting.
+We do not assert that either paper literally states every extended-energy
+hypothesis used in these files. We do conclude that no defensible new-math
+claim has been established by the present investigation, and the requested
+standard does not permit treating an unverified priority claim as progress.
+
+### 6. Why the physical multi-port obligation is still open
+
+For several live ports the correct trace space retains relative port
+means: it is the direct sum of the full trace spaces modulo **one diagonal
+constant**. The present model contains nonconstant coordinates only.
+
+If a live external voltage \(x\) is retained, the load has the form
+\(B(v,x)\). The proof rescales \(v\) while holding the external data fixed.
+Joint quadratic homogeneity in \((v,x)\) does not justify that step.
+Silently quotienting the constant on every port would remove actual
+observables. The zero-frequency collar energy is proportional to
+\((a-b)^2/L\), not to the uniformly coercive positive-frequency form above.
+These distinctions are already documented in the archive; they are not
+new obstructions proved by this packet.
+
+The source-defined all-depth contacts, admissible welding cocycle,
+protected carriers, retained relative means, genuinely last-live ports,
+no-bypass statement, and Value/transition-norm compatibility remain
+unconstructed. The formal model theorem does not infer any of those
+hypotheses from its conclusion.
+
+### 7. A stronger live-port route was also screened
+
+We also investigated keeping the distal electrode voltages. For a genuine
+Dirichlet problem with one distal electrode, the proposed route uses its
+nonnegative equilibrium potential and the Poisson expansion on the first
+round collar. If that collar has length \(L_0>0\), the normalized root
+current measure has Fourier coefficients bounded by
+\(nL_0/\sinh(nL_0)\) for \(n\ge1\). Once a valid serial capacity bound
+is available, this can control root-to-electrode coupling with a retained
+voltage. The argument requires actual variational clipping, harmonic
+positivity, Fourier trace identification, and physical gluing. None of
+those whole-surface identifications is proved by the six Lean modules.
+This lead is therefore not counted as a theorem here.
+
+There is a further limitation even after those identifications. For several
+distal electrodes, let \(C\) be their capacitance matrix and let \(c_i\)
+be its row sums, namely the root-to-electrode charges. The graph-Laplacian
+inequality \(C\ge\operatorname{diag}(c_i)\) can help bound the Schur
+complement correction to the root response. It does not bound
+\(x^TCx\): large mutual conductance between two distal electrodes can
+persist while all root charges tend to zero. Screening the root coupling
+therefore does not compactify the full retained multi-port response.
+This is another reason not to promote a root-local estimate to the open
+full-state obligation. The proposed reasoning is a synthesis of classical
+maximum-principle, Poisson-kernel, capacity, and elimination tools; no
+priority or Lean-validated physical result is claimed for it.
 
 ## Dependencies
 
-The declared ledger dependencies and the complete original statement remain
-in ledger.json. Initial prior-work checks include:
+The ledger dependencies and the full original statement remain unchanged.
+The prior-work audit included:
 
-- research/independent_audits/annular_midpoint_response_20261126/NOTE.md
-- research/independent_audits/whole-boundary-response_20261126/NOTE.md
-- research/mlc_unified/network_response_state.md
-- research/mlc_unified/novelty_and_value_audit_20260725.md
-- The trace-response and plumbing work in the research-push bundles.
+- `research/independent_audits/annular_midpoint_response_20261126/NOTE.md`;
+- `research/independent_audits/whole-boundary-response_20261126/NOTE.md`;
+- `research/mlc_unified/network_response_state.md`;
+- `research/mlc_unified/direct_decoration_trace_response_conditional_20260725.md`;
+- `research/mlc_unified/weak_welding_graph_compactification_20260725.md`;
+- `research/mlc_unified/novelty_and_value_audit_20260725.md`;
+- the trace-response and plumbing work in the research-push bundles.
 
 ## Boundary
 
-This draft has no proved result yet. It does not close the target obligation,
-provide a source-defined all-depth contact or welding construction, or change
-any ledger status. A known theorem, an abstract criterion assuming the desired
-analytic control, or a routine corollary will not be reported as new progress.
-If the investigation fails to obtain a substantive result, the draft will be
-closed so that the obligation is unclaimed again.
+No ledger row should be promoted from this packet. No new theorem about
+native quadratic dynamics, all-depth physical plumbing, protected-tower
+closure, or MLC is claimed. The exact candidate is retained so that the
+attempt and its limitations are reviewable, not offered as a substitute
+for the requested new mathematics.
+
+The repository's `AGENTS.md` instructs an investigator who has made no real
+progress to say so and close the draft rather than submit a restatement,
+survey, or plan. That instruction, together with the user's stricter
+novelty requirement, governs this investigation's disposition.
 
 ## Attribution
 
-The target and prior results belong to this research archive and their cited
-original authors. Classical Fourier, extremal-length, and Dirichlet-space
-tools will be attributed explicitly if used. AI assistance is disclosed above;
-no human mathematical review has occurred.
+Classical Fourier-mode Dirichlet minimization, electrical elimination,
+and Riccati contraction are prior mathematics. In particular:
+
+1. Jimmie Lawson and Yongdo Lim, *A Birkhoff contraction formula with
+   applications to Riccati equations*, SIAM Journal on Control and
+   Optimization 46(3) (2007), 930–951, DOI
+   [10.1137/050637637](https://doi.org/10.1137/050637637), especially the
+   contraction theory in Sections 5–8. The paper explicitly includes the
+   infinite-dimensional Hilbert-space setting.
+2. Zheng Qu, *Contraction of Riccati flows applied to the convergence
+   analysis of a max-plus curse-of-dimensionality-free method*, SIAM
+   Journal on Control and Optimization 52(5) (2014), 2677–2706, DOI
+   [10.1137/130906702](https://doi.org/10.1137/130906702), with author
+   preprint [arXiv:1301.4777](https://arxiv.org/abs/1301.4777).
+
+The target and earlier archive results belong to their cited authors.
+AI assistance is disclosed in the front matter; no human mathematical
+review has occurred. Neither new Lean code nor absence of an identical
+search hit establishes mathematical priority.
