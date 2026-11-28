@@ -217,6 +217,8 @@ formalization/weighted/TwoLevelGateDomain.lean	METADATA
 formalization/weighted/TwoLevelOuterChart.lean	METADATA
 formalization/weighted/TwoLevelOuterDomain.lean	METADATA
 formalization/weighted/TwoLevelPerturbation.lean	METADATA
+formalization/weighted/TwoLevelPhysicalGate.lean	METADATA
+formalization/weighted/TwoLevelPhysicalGates.lean	METADATA
 formalization/weighted/TwoLevelReference.lean	METADATA
 formalization/weighted/TwoLevelSelection.lean	METADATA
 formalization/weighted/UniformThreeReturn.lean	METADATA

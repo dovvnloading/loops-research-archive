@@ -26,6 +26,7 @@ structure CentralGate (c : ℝ) (n : ℕ) : Prop where
   source_connected : IsConnected (parentSource c n)
   compact_closure : IsCompact (closure (parentSource c n))
   closure_inside : closure (parentSource c n) ⊆ ball 0 (23/20)
+  quantitative_closure : closure (parentSource c n) ⊆ ball 0 (11/10)
   image_eq : normalizedReturn c n '' parentSource c n = ball 0 (23/20)
   proper : IsProperMap (parentMap c n)
   fiber_card : ∀ y ∈ ball (0 : ℂ) (23/20),
@@ -36,9 +37,9 @@ structure CentralGate (c : ℝ) (n : ℕ) : Prop where
 theorem approximation_barrier (F : ℂ → ℂ) {k : ℝ}
     (hk : k ∈ Icc (17903/10000 : ℝ) (17904/10000))
     (he : ∀ z : ℂ, ‖z‖ ≤ 23/20 → ‖F z-complexMap k z‖ ≤ 1/500000)
-    {z : ℂ} (hz : ‖z‖ = 23/20) : 23/20 < ‖F z‖ := by
+    {z : ℂ} (hz : ‖z‖ = 11/10) : 23/20 < ‖F z‖ := by
   have hk0 : 0 ≤ k := by linarith [hk.1]
-  have hn : ‖(k : ℂ)*z^2‖ = k*(23/20)^2 := by
+  have hn : ‖(k : ℂ)*z^2‖ = k*(11/10)^2 := by
     rw [norm_mul, norm_pow, Complex.norm_real, Real.norm_eq_abs, abs_of_nonneg hk0, hz]
   have htri : ‖(k : ℂ)*z^2‖ ≤ ‖complexMap k z‖+1 := by
     have hh := norm_sub_le (1 : ℂ) (complexMap k z)
@@ -50,7 +51,7 @@ theorem approximation_barrier (F : ℂ → ℂ) {k : ℝ}
     linarith only [hh]
   have hdiff := norm_le_norm_sub_add (complexMap k z) (F z)
   rw [norm_sub_rev] at hdiff
-  have herror := he z hz.le
+  have herror := he z (by rw [hz]; norm_num)
   rw [hn] at htri
   nlinarith only [htri, hdiff, herror, hk.1]
 
@@ -96,10 +97,12 @@ theorem central_gate_of_estimates (c : ℝ) (n : ℕ) (hn : 0 < n)
     norm_num [F, normalized_return_zero c n hd]
   have h0 : (0 : ℂ) ∈ parentSource c n :=
     mem_connectedComponentIn (by simpa using hzero)
-  obtain ⟨hinside, hcompact⟩ := component_closure_inside_barrier
-    F hproper.continuous (23/20) (23/20) (by norm_num) hzero
+  obtain ⟨hinner, hcompact⟩ := component_closure_inside_barrier
+    F hproper.continuous (11/10) (23/20) (by norm_num) hzero
     (fun z hz => approximation_barrier F hk he hz)
-  change closure (parentSource c n) ⊆ ball 0 (23/20) at hinside
+  change closure (parentSource c n) ⊆ ball 0 (11/10) at hinner
+  have hinside : closure (parentSource c n) ⊆ ball 0 (23/20) :=
+    hinner.trans (ball_subset_ball (by norm_num))
   have hnorm {z : ℂ} (hz : z ∈ parentSource c n) : ‖z‖ < 23/20 := by
     simpa using hinside (subset_closure hz)
   have honto : F '' parentSource c n = ball 0 (23/20) :=
@@ -120,7 +123,7 @@ theorem central_gate_of_estimates (c : ℝ) (n : ℕ) (hn : 0 < n)
       rw [hzw]
       exact hsym w hw
   refine ⟨hd, h0, (isOpen_ball.preimage hproper.continuous).connectedComponentIn,
-    ⟨⟨0, h0⟩, isPreconnected_connectedComponentIn⟩, hcompact, hinside, honto,
+    ⟨⟨0, h0⟩, isPreconnected_connectedComponentIn⟩, hcompact, hinside, hinner, honto,
     component_proper F hproper (ball 0 (23/20)) 0 isOpen_ball, ?_, ?_⟩
   · intro y hy
     have hcard := fiber_ncard F (parentSource c n) (ball 0 (23/20)) h0

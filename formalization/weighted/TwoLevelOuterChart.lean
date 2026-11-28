@@ -1,5 +1,6 @@
 import NearTwoShooting
 import QuadraticCrestDividedDifference
+import Mathlib.Analysis.Calculus.FDeriv.Pow
 
 /-!
 # Literal monic outer return charts reaching the quadratic endpoint
@@ -307,7 +308,7 @@ private theorem coefficient_bound (c : ℝ) (n : ℕ) :
       _ = (4 : ℝ)^(n+1) := by rw [pow_succ]; ring
 
 private theorem power_mul_scale (p : ℕ) : (4 : ℝ)^p*scale p = 1 := by
-  simp [scale, one_div_pow]
+  simp [scale]
 
 /-- The exact affine normalization of the original p-th iterate is uniformly
 close to its monic quadratic on the disk of radius twelve fifths. -/
@@ -526,13 +527,13 @@ theorem outerMap_iterate (c : ℝ) (p n : ℕ)
   induction n with
   | zero =>
     simp only [Nat.mul_zero, iterate_zero, id_eq]
-    field_simp [hAC] <;> ring
+    field_simp [hAC]
   | succ n ih =>
     rw [iterate_succ_apply', ih]
     unfold outerMap
     have hcancel (w : ℂ) :
         ((returnCoefficient p c : ℂ)*w)/(returnCoefficient p c : ℂ) = w := by
-      field_simp [hAC] <;> ring
+      field_simp [hAC]
     rw [hcancel, ← iterate_add_apply]
     rw [Nat.mul_succ, Nat.add_comm (p*n) p]
 
@@ -542,7 +543,10 @@ theorem outerMap_continuous (c : ℝ) (p : ℕ) : Continuous (outerMap c p) := b
 
 theorem outerMap_differentiable (c : ℝ) (p : ℕ) : Differentiable ℂ (outerMap c p) := by
   have hf : Differentiable ℂ (quadraticMap c) := by unfold quadraticMap; fun_prop
-  exact ((hf.iterate p).comp (differentiable_id.div_const _)).const_mul _
+  have hin : Differentiable ℂ (fun z : ℂ => z/(returnCoefficient p c : ℂ)) := by
+    simp only [div_eq_mul_inv]
+    fun_prop
+  exact ((hf.iterate p).comp hin).const_mul _
 
 private theorem iterate_continuous_parameter (p : ℕ) :
     Continuous (fun x : ℝ × ℂ => ((quadraticMap x.1)^[p]) x.2) := by

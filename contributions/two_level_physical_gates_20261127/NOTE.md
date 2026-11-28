@@ -68,6 +68,18 @@ The next source checkpoint fixes those errors and adds the literal outer
 pullback component, its half-target boundary barrier, and its exact
 fiber census. The proposed final family is still unvalidated.
 
+At the second CI checkpoint (6c19849), the reference, outer chart,
+perturbation, conjugacy, collision, and central-domain modules compiled.
+The sole parameter-selection diagnostic was an explicit positivity
+proof for the scale; after that correction, the entire selection module
+compiled locally, including the existential original parameter and
+complete intermediate phase estimates. The third checkpoint assembles
+`TwoLevelPhysicalGates.exists_physical_two_level_gate` and transports
+the source, target, complete fibers and closed gate disk to the original
+plane. The inner source has proposed explicit radius bound 11/10
+against target 23/20, giving physical separation greater than |d|/20.
+This assembled theorem remains subject to compilation and dependency audit.
+
 ## Dependencies
 
 NOV26_DEPTH3. Existing depth-three packet, the literal all-period first-return estimates, and the source distinction between physical prescribed collars and optimal polynomial-like moduli.

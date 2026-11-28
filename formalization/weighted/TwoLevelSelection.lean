@@ -24,7 +24,7 @@ def error (p : ℕ) : ℝ := 128*scale p
 
 theorem error_nonneg (p : ℕ) : 0 ≤ error p := by
   unfold error
-  positivity
+  exact mul_nonneg (by norm_num) (scale_pos p).le
 
 theorem error_budget {p q n : ℕ} (hpq : 10*q+30 ≤ p) (hn : n ≤ 6*q) :
     error p*(5 : ℝ)^n ≤ scale q/100000000 := by
@@ -124,6 +124,24 @@ theorem chart_collision {p q : ℕ} (hq : 17 ≤ q)
     · exact Or.inl (congrArg (fun v : ℂ => (secondScale c p q : ℂ)*v) he)
     · exact Or.inr (by rw [he, mul_neg])
 
+theorem chart_noncentral_phase {p q : ℕ} (hq : 17 ≤ q)
+    (hpq : 10*q+30 ≤ p) {a b l r c : ℝ}
+    (h : SharpChart q a b) (g : OuterChart p a b l r) (hc : c ∈ Icc l r)
+    {z : ℂ} (hz : ‖z‖ ≤ 23/20) {j : ℕ} (hj : 1 ≤ j) (hjq : j < q) :
+    (6/5 : ℝ) ≤ ‖((outerMap c p)^[j]) ((secondScale c p q : ℂ)*z)‖ := by
+  have hp : 17 ≤ p := by omega
+  have hphase := TwoLevelPerturbation.perturbed_phase_displacement
+    (outerMap c p) (monicParameter p c)
+    (TwoLevelReference.chart_parameter_band hq h (g.monic_range hc)) q hq
+    (error p) (error_nonneg p) (small_error_budget hq hpq (by omega))
+    (fun w hw => g.outerMap_error hp hc w hw)
+    (chart_scaled_input hq hpq h g hc hz) j hj hjq.le
+  have htri := norm_le_norm_sub_add (criticalValue (monicParameter p c) j : ℂ)
+    (((outerMap c p)^[j]) ((secondScale c p q : ℂ)*z))
+  rw [norm_sub_rev] at htri
+  simp only [Complex.norm_real, Real.norm_eq_abs] at htri
+  linarith [TwoLevelReference.chart_phase_abs hq h (g.monic_range hc) hj hjq]
+
 theorem chart_normalized_error {p q : ℕ} (hq : 17 ≤ q)
     (hpq : 10*q+30 ≤ p) {a b l r c : ℝ}
     (h : SharpChart q a b) (g : OuterChart p a b l r) (hc : c ∈ Icc l r)
@@ -222,6 +240,8 @@ structure Selected (p q : ℕ) (c : ℝ) : Prop where
     (normalizedReturn c (q*p) z = normalizedReturn c (q*p) w ↔ z = w ∨ z = -w)
   complete_phase_disk : ∀ {z : ℂ}, ‖z‖ ≤ 23/20 → ∀ j ≤ q,
     ‖((outerMap c p)^[j]) ((secondScale c p q : ℂ)*z)‖ ≤ 12/5
+  noncentral_phases : ∀ {z : ℂ}, ‖z‖ ≤ 23/20 → ∀ j, 1 ≤ j → j < q →
+    (6/5 : ℝ) ≤ ‖((outerMap c p)^[j]) ((secondScale c p q : ℂ)*z)‖
 
 theorem exists_selected (p q : ℕ) (hq : 17 ≤ q) (hpq : 10*q+30 ≤ p) :
     ∃ c : ℝ, Selected p q c := by
@@ -259,7 +279,8 @@ theorem exists_selected (p q : ℕ) (hq : 17 ≤ q) (hpq : 10*q+30 ≤ p) :
   exact ⟨c, g.parameter_range c hc, g.return_range c hc, g.coefficient_lower c hc,
     g.itinerary c hc, g.critical_orbit c hc, hsc, hdneg, hrel,
     h.coefficient_range (g.monic_range hc), chart_normalized_error hq hpq h g hc,
-    chart_collision hq hpq h g hc, chart_phase_disk hq hpq h g hc⟩
+    chart_collision hq hpq h g hc, chart_phase_disk hq hpq h g hc,
+    fun hz _ hj hjq => chart_noncentral_phase hq hpq h g hc hz hj hjq⟩
 
 end
 end TwoLevelSelection

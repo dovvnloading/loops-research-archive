@@ -1,4 +1,9 @@
-import Mathlib
+import Mathlib.Analysis.Calculus.Deriv.Pow
+import Mathlib.Analysis.Calculus.Deriv.MeanValue
+import Mathlib.Topology.Order.IntermediateValue
+import Mathlib.Tactic.Linarith
+import Mathlib.Tactic.NormNum
+import Mathlib.Tactic.Ring
 
 /-!
 # Certified parameter of the limiting four-push crest

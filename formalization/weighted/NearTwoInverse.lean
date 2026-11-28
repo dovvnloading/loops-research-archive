@@ -1,4 +1,10 @@
-import Mathlib
+import Mathlib.Analysis.Real.Sqrt
+import Mathlib.Algebra.BigOperators.Field
+import Mathlib.Algebra.BigOperators.Intervals
+import Mathlib.Tactic.Linarith
+import Mathlib.Tactic.NormNum
+import Mathlib.Tactic.Positivity
+import Mathlib.Tactic.Ring
 
 /-!
 # Positive inverse shooting near the quadratic endpoint

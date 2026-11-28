@@ -4118,6 +4118,7 @@
         "chart_scaled_input",
         "chart_phase_disk",
         "chart_collision",
+        "chart_noncentral_phase",
         "chart_normalized_error",
         "continuous_shootingRelation",
         "chart_relation_error",
@@ -4132,6 +4133,7 @@
         "source_zero",
         "outer_barrier",
         "outer_collision_iff",
+        "outer_first_return_exclusion",
         "source_closure",
         "source_open",
         "source_connected",
@@ -4140,7 +4142,35 @@
         "source_symmetric",
         "source_fiber_ncard",
         "source_contains_small_disk",
-        "monic_disk_in_source"
+        "monic_disk_in_source",
+        "source_capacity_lt_sixty",
+        "source_variationalModulus_gt"
+      ],
+      "formalization/weighted/TwoLevelPhysicalGate.lean": [
+        "physical_scale_identity",
+        "physical_pullback_image",
+        "physical_source_eq_component",
+        "physical_zero",
+        "physical_return_image",
+        "physical_source_open",
+        "physical_source_connected",
+        "physical_closure_inside",
+        "physical_quantitative_closure",
+        "physical_gap",
+        "physical_compact_closure",
+        "physicalMap_proper",
+        "physical_gate_image",
+        "complete_physical_gate",
+        "physical_fiber_card",
+        "physical_gate_of_central"
+      ],
+      "formalization/weighted/TwoLevelPhysicalGates.lean": [
+        "selected_central_gate",
+        "selected_phase_identity",
+        "selected_phases_nested",
+        "selected_inner_first_return",
+        "selected_physical_corridor",
+        "exists_physical_two_level_gate"
       ]
     },
     "obligations": []

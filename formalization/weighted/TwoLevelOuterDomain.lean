@@ -2,6 +2,7 @@ import TwoLevelOuterChart
 import TwoLevelPerturbation
 import ThreeReturnDomain
 import ThreeReturnDegree
+import ThreeReturnAnnulus
 
 /-!
 # The actual outer domain containing the second-return phases
@@ -17,6 +18,7 @@ namespace TwoLevelOuterDomain
 open Set Function Metric Topology
 open LimitingCrestQuadraticReturn NearTwoShooting TwoLevelOuterChart
 open QuadraticCrestDividedDifference LoopsQuadraticCylinderCensus
+open scoped ENNReal
 
 noncomputable section
 
@@ -27,7 +29,8 @@ def source (c : ℝ) (p : ℕ) : Set ℂ :=
 
 def sourceMap (c : ℝ) (p : ℕ) : source c p → ball (0 : ℂ) (targetRadius p) :=
   fun z => ⟨((quadraticMap c)^[p]) z,
-    connectedComponentIn_subset _ 0 z.property⟩
+    connectedComponentIn_subset
+      (((quadraticMap c)^[p]) ⁻¹' ball 0 (targetRadius p)) 0 z.property⟩
 
 theorem targetRadius_pos (p : ℕ) : 0 < targetRadius p := by
   unfold targetRadius
@@ -162,6 +165,60 @@ theorem outer_collision_iff {p : ℕ} (hp : 17 ≤ p) {c : ℝ}
     rw [hid]
     rcases h with rfl | rfl <;> simp
 
+private theorem intermediate_critical_lower {p : ℕ} (hp : 17 ≤ p) {c : ℝ}
+    (hc : c ∈ Icc (-2 : ℝ) (-2+20*scale p))
+    (hd : 0 < criticalValue c p) (hsmall : criticalValue c p ≤ 14*scale p)
+    (hshoot : shooting (p-2) (criticalValue c p) c = 0)
+    (j : ℕ) (hj : 1 ≤ j) (hjp : j < p) :
+    7/5 ≤ |criticalValue c j| := by
+  have hband := parameter_band hp hc
+  by_cases hj1 : j = 1
+  · subst j
+    have he : criticalValue c 1 = c := by norm_num [criticalValue, iterate_succ_apply']
+    rw [he, abs_of_neg (by linarith [hband.2] : c < 0)]
+    linarith [hband.2]
+  have hj2 : 2 ≤ j := by omega
+  have hterminal : criticalValue c p ∈ Icc (0 : ℝ) 2 := by
+    refine ⟨hd.le, ?_⟩
+    linarith [scale_small hp]
+  have he := shooting_critical_itinerary hband hterminal hshoot (j-2) (by omega)
+  rw [Nat.sub_add_cancel hj2] at he
+  have hi : (p-2)-(j-2) = (p-j-1)+1 := by omega
+  rw [hi] at he
+  rw [he]
+  exact (NearTwoInverse.back_lower hband hterminal (p-j-1)).trans (le_abs_self _)
+
+/-- Every intermediate iterate of the entire physical target disk
+misses that target. Thus the selected p-iterate is a literal first return
+throughout its source, not just a map with the requested iterate number. -/
+theorem outer_first_return_exclusion {p : ℕ} (hp : 17 ≤ p) {c : ℝ}
+    (hc : c ∈ Icc (-2 : ℝ) (-2+20*scale p))
+    (hcrit : ∀ j : ℕ, j ≤ p → |criticalValue c j| ≤ 2)
+    (hd : 0 < criticalValue c p) (hsmall : criticalValue c p ≤ 14*scale p)
+    (hshoot : shooting (p-2) (criticalValue c p) c = 0)
+    (j : ℕ) (hj : 1 ≤ j) (hjp : j < p)
+    {z : ℂ} (hz : ‖z‖ ≤ targetRadius p) :
+    targetRadius p < ‖((quadraticMap c)^[j]) z‖ := by
+  have hlower := intermediate_critical_lower hp hc hd hsmall hshoot j hj hjp
+  cases j with
+  | zero => omega
+  | succ n =>
+    have hpow : (4 : ℝ)^(n+1) ≤ (4 : ℝ)^p :=
+      pow_le_pow_right₀ (by norm_num) (by omega)
+    have he : (4 : ℝ)^p*(targetRadius p)^2 = 1 := by
+      rw [targetRadius_sq]
+      nlinarith only [TwoLevelPerturbation.scale_mul_power p]
+    have hscale := mul_le_mul_of_nonneg_right hpow (sq_nonneg (targetRadius p))
+    rw [he] at hscale
+    have herr := TwoLevelPerturbation.orbit_displacement c n (targetRadius p) z
+      (targetRadius_pos p).le (fun k hk => hcrit k (by omega)) hscale hz
+    have ht := norm_le_norm_sub_add (criticalValue c (n+1) : ℂ)
+      (((quadraticMap c)^[n+1]) z)
+    rw [norm_sub_rev (criticalValue c (n+1) : ℂ) (((quadraticMap c)^[n+1]) z),
+      Complex.norm_real, Real.norm_eq_abs] at ht
+    have hR := targetRadius_small hp
+    linarith
+
 theorem source_closure {p : ℕ} (hp : 17 ≤ p) {c : ℝ}
     (hcrit : ∀ j : ℕ, j ≤ p → |criticalValue c j| ≤ 2)
     (hd : 0 < criticalValue c p) (hsmall : criticalValue c p ≤ 14*scale p)
@@ -172,7 +229,8 @@ theorem source_closure {p : ℕ} (hp : 17 ≤ p) {c : ℝ}
   apply ThreeReturnDomain.component_closure_inside_barrier
     ((quadraticMap c)^[p]) hpoly.continuous (targetRadius p/2) (targetRadius p)
     (div_pos (targetRadius_pos p) (by norm_num))
-  · have h0 := connectedComponentIn_subset _ 0 (source_zero hp hd hsmall)
+  · have h0 := connectedComponentIn_subset
+      (((quadraticMap c)^[p]) ⁻¹' ball 0 (targetRadius p)) 0 (source_zero hp hd hsmall)
     simpa [source] using h0
   · exact fun z hz => outer_barrier hp hcrit hd hsmall hlower hz
 
@@ -193,7 +251,8 @@ theorem source_image {p : ℕ} (hp : 17 ≤ p) {c : ℝ}
     ((quadraticMap c)^[p]) '' source c p = ball 0 (targetRadius p) := by
   let f := (quadraticMap c)^[p]
   have hf : IsProperMap f := quadratic_iterate_proper (c : ℂ) p
-  have h0 := connectedComponentIn_subset _ 0 (source_zero hp hd hsmall)
+  have h0 := connectedComponentIn_subset
+    (((quadraticMap c)^[p]) ⁻¹' ball 0 (targetRadius p)) 0 (source_zero hp hd hsmall)
   exact localized_component_image f (f ⁻¹' ball 0 (targetRadius p))
     (ball 0 (targetRadius p)) (quadratic_iterate_open (c : ℂ) p) hf.isClosedMap
     (isOpen_ball.preimage hf.continuous)
@@ -215,7 +274,8 @@ theorem source_symmetric {p : ℕ} (hp : 17 ≤ p) {c : ℝ}
     rintro _ ⟨z, hz, rfl⟩
     change ((quadraticMap c)^[p]) (-z) ∈ ball 0 (targetRadius p)
     rw [heven]
-    exact connectedComponentIn_subset _ 0 hz
+    exact connectedComponentIn_subset
+      (((quadraticMap c)^[p]) ⁻¹' ball 0 (targetRadius p)) 0 hz
   have h := hconn.subset_connectedComponentIn hhit hsub
   exact fun z hz => h ⟨z, hz, rfl⟩
 
@@ -234,7 +294,7 @@ theorem source_fiber_ncard {p : ℕ} (hp : 17 ≤ p) {c : ℝ}
   have h := ThreeReturnDegree.fiber_ncard ((quadraticMap c)^[p])
     (source c p) (ball 0 (targetRadius p)) (source_zero hp hd hsmall)
     (fun hz hw => outer_collision_iff hp hcrit hlower (hnorm hz) (hnorm hw))
-    (source_symmetric hp hd hsmall) (by simpa only [SurjOn, hi] using (Subset.refl _)) hy
+    (source_symmetric hp hd hsmall) (by simp only [SurjOn, hi, Subset.refl]) hy
   simpa only [TwoLevelPerturbation.complex_criticalValue] using h
 
 private theorem small_disk_image {p : ℕ} (hp : 17 ≤ p) {c : ℝ}
@@ -257,7 +317,7 @@ private theorem small_disk_image {p : ℕ} (hp : 17 ≤ p) {c : ℝ}
     (fun j hj => hcrit j (by omega))
   have hlead : ‖(returnCoefficient p c : ℂ)*z^2‖ ≤ 64*scale p := by
     rw [norm_mul, norm_pow, Complex.norm_real, Real.norm_eq_abs]
-    change |quadraticCoefficient c (p-1)|*‖z‖^2 ≤ _
+    change |quadraticCoefficient c (p-1)| * ‖z‖^2 ≤ _
     calc
       _ ≤ (4 : ℝ)^(p-1)*(16*scale p)^2 :=
         mul_le_mul hA (pow_le_pow_left₀ (norm_nonneg z) hz 2)
@@ -302,6 +362,32 @@ theorem monic_disk_in_source {p : ℕ} (hp : 17 ≤ p) {c : ℝ}
     abs_of_neg (coefficient_negative hlower)]
   apply (div_le_iff₀ (neg_pos.mpr (coefficient_negative hlower))).mpr
   nlinarith only [hu, hlower]
+
+/-- A uniform physical energy bound for the outer collar. The same
+constant works for every period and for every parameter in the chart. -/
+theorem source_capacity_lt_sixty {p : ℕ} (hp : 17 ≤ p) {c : ℝ}
+    (hcrit : ∀ j : ℕ, j ≤ p → |criticalValue c j| ≤ 2)
+    (hd : 0 < criticalValue c p) (hsmall : criticalValue c p ≤ 14*scale p)
+    (hlower : 3/20 < -returnCoefficient p c*scale p) :
+    ThreeReturnAnnulus.capacity (closure (source c p))
+      (ball 0 (targetRadius p)) < 60 := by
+  have hcl := (source_closure hp hcrit hd hsmall hlower).1
+  have hsub : closure (source c p) ⊆ closedBall (0 : ℂ) (3*(6*targetRadius p)/20) := by
+    intro z hz
+    rw [mem_closedBall_zero_iff]
+    have hn : ‖z‖ < targetRadius p/2 := by simpa using hcl hz
+    linarith [targetRadius_pos p]
+  have h := ThreeReturnAnnulus.physical_capacity_lt_sixty
+    (mul_pos (by norm_num : (0 : ℝ) < 6) (targetRadius_pos p)) hsub
+  simpa only [show (6*targetRadius p)/6 = targetRadius p by ring] using h
+
+theorem source_variationalModulus_gt {p : ℕ} (hp : 17 ≤ p) {c : ℝ}
+    (hcrit : ∀ j : ℕ, j ≤ p → |criticalValue c j| ≤ 2)
+    (hd : 0 < criticalValue c p) (hsmall : criticalValue c p ≤ 14*scale p)
+    (hlower : 3/20 < -returnCoefficient p c*scale p) :
+    (60 : ℝ≥0∞)⁻¹ < ThreeReturnAnnulus.variationalModulus
+      (closure (source c p)) (ball 0 (targetRadius p)) := by
+  exact ENNReal.inv_lt_inv.mpr (source_capacity_lt_sixty hp hcrit hd hsmall hlower)
 
 end
 
