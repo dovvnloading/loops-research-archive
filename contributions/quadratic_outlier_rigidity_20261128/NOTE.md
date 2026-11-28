@@ -39,7 +39,7 @@ and every relative neighborhood $U$ of $c$ in $M$ contains a relatively open con
 
 Thus a nontrivial connected parameter fiber necessarily contains a parameter for which the two simultaneous intertwining equations have no solution with this weak regularity. This is an actual-family conditional rigidity criterion and obstruction.
 
-**Validation status at this note revision:** the three original core modules compiled and emitted successful transitive proof-dependency audit results in run 46138258781; that run was superseded by the supporting-module push. The complete branch, including the discontinuous witness, explicit converse, and merge of current main, awaits its final strict CI result.
+**Verification:** the four modules are registered in the repository's existing strict Lean CI. [VALIDATION.md](VALIDATION.md) records the exact proof-source blobs, commands, trust boundary, and development checks; the final run results are linked from [PR #277](https://github.com/dovvnloading/loops-research-archive/pull/277/checks).
 
 ## Evidence
 
@@ -152,7 +152,7 @@ Its `TwinFiber` premise contains the two functional equations and real-axis cont
 
 All modules are registered as default targets in the existing Mathlib package, with every public theorem listed in the theorem index and each source listed in the source index. No workflow, audit rule, ledger status, or existing theorem is changed. The toolchain is Lean 4.32.0 with the repository's pinned Mathlib.
 
-Local Lean is unavailable and the scratch filesystem cannot hold a checkout. The existing GitHub CI is the compiler and proof-dependency judge. The first weighted run [46138258781](https://github.com/dovvnloading/loops-research-archive/actions/runs/46138258781) built all three original core modules and emitted `AXIOM_AUDIT_PASS weighted: 298 modules, 7767 declarations`; it was superseded by the next source push. Final validation of the complete branch will be recorded separately.
+Local Lean is unavailable and the scratch filesystem cannot hold a checkout. The existing GitHub CI is the compiler and proof-dependency judge. It builds every registered target and audits every declaration's transitive dependencies. The source check rejects proof placeholders and prohibited trust escapes; the compiled audit permits only the repository's standard logical base (`propext`, `Classical.choice`, and `Quot.sound`). There are 32 indexed public theorems in this packet. See [the validation record](VALIDATION.md) and the PR checks for exact revisions and run results.
 
 ## Dependencies
 
