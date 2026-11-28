@@ -67,7 +67,9 @@ theorem packing_energy_lower_bound [Fintype I] [Fintype J]
       intro j _
       exact pow_le_pow_left₀ hL (hfar j) 2
     _ = ∑ i ∈ Finset.univ.image f, dist (s i) a ^ 2 := by
-      exact (Finset.sum_image hf.injOn).symm
+      exact (Finset.sum_image
+        (f := fun i : I => dist (s i) a ^ 2)
+        (s := (Finset.univ : Finset J)) (g := f) hf.injOn).symm
     _ ≤ energy s a := by
       unfold energy
       exact Finset.sum_le_univ_sum_of_nonneg

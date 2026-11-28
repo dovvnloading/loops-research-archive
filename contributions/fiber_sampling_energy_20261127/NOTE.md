@@ -157,7 +157,7 @@ The cubic certificate, its formal connected-fiber/local-neighborhood reductions,
 
 There are five proposed default-target Lean modules and 34 public theorem declarations in the final source package. All are registered in the existing source and theorem indexes. The repository's unchanged Lean 4.32.0 / pinned Mathlib workflows compile the proof sources and audit every compiled declaration.
 
-**Current checkpoint: CI compilation and transitive dependency audit pending.** Source/registration and contribution-intake checks passed on the preceding committed checkpoint. This paragraph will be replaced with exact successful commit/run evidence after validation. Until then the complete sources are proof candidates, not a claimed passed build.
+**Current checkpoint: CI compilation and transitive dependency audit pending.** All non-weighted checks passed on 43f85102b328855332fa05a6d5cb3ffad0c8cc90. Its weighted build exposed an elaboration issue in the injective-image sum rewrite: Lean could not infer the additive codomain through the symmetry projection. The correction supplies the real summand, index finset, and index map explicitly. The theorem statement and all hypotheses are unchanged. Dependent modules await compilation. This paragraph will be replaced with exact successful commit/run evidence after validation.
 
 Local Lean installation could not fit the available scratch storage. Ordinary cleanup could not start after the disk filled, and the sandbox policy rejected an exact cleanup escalation. No local compilation is claimed. Development and validation continue through the GitHub connection and unchanged CI; no workflow, trust policy, toolchain, or validator has been weakened.
 
