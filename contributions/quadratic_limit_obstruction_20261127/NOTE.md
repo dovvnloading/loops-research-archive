@@ -343,8 +343,7 @@ The project pins Lean and Mathlib `v4.32.0`. Reproduce with:
 ```sh
 cd formalization/weighted
 lake exe cache get
-lake build QuadraticCriticalUnits QuadraticReturnJet QuadraticReturnArithmetic \
-  QuadraticJetConjugacy QuadraticReturnCoordinateObstruction QuadraticReturnOptimalCoordinate
+lake build
 cd ../..
 python code/contribute.py check
 python code/verify_lean_coverage.py --audit weighted
@@ -357,9 +356,9 @@ existing theorem is changed. No proof holes, new axioms, or external-computation
 shortcuts are permitted.
 
 The complete project build and transitive axiom audit passed at commit
-`0c7388a7214a4747823009a8af373bd6d8ab09ce` in
-[weighted CI run 46106863256](https://github.com/dovvnloading/loops-research-archive/actions/runs/46106863256),
-[job 140861465323](https://github.com/dovvnloading/loops-research-archive/actions/runs/46106863256/job/140861465323).
+`6c98e493b0db9385bd31a9a6546a20cd649a15a8` in
+[weighted CI run 46107658273](https://github.com/dovvnloading/loops-research-archive/actions/runs/46107658273),
+[job 140863916844](https://github.com/dovvnloading/loops-research-archive/actions/runs/46107658273/job/140863916844).
 The final audit reported **242 modules and 6,087 declarations**, with only the permitted
 standard axioms. All six new modules were included. This checks compiled declarations,
 including private and generated declarations, and their transitive dependencies.
@@ -370,9 +369,9 @@ prohibited source tokens. The PR's contribution-intake, source-index, root/stand
 kernel checks, and other research checks also passed at that head.
 
 Local installation of the pinned toolchain failed because of insufficient disk space;
-CI supplied the compilation and kernel-audit evidence above. The final documentation
-update changes exposition and a module docstring, with theorem statements and proof bodies
-identical to the validated source. The CI checks on
+CI supplied the compilation and kernel-audit evidence above. The final reproducibility update changes only this note; all Lean sources are identical
+to the validated source. The full `lake build` above is required because the audit imports
+every registered weighted module, including modules outside this contribution. The CI checks on
 [PR #255](https://github.com/dovvnloading/loops-research-archive/pull/255) record validation
 of the current head. The PR was opened before the proof work and retains the incremental
 research, proof-fix, and main-branch synchronization commits.
