@@ -198,9 +198,14 @@ formalization/weighted/ParabolicTipRate.lean	PARABOLIC STRAIGHTEN
 formalization/weighted/ParabolicTipShooting.lean	PARABOLIC STRAIGHTEN
 formalization/weighted/ParabolicTipWindow.lean	PARABOLIC STRAIGHTEN
 formalization/weighted/ParentWaveElliptic.lean	METADATA
+formalization/weighted/ParentWaveEllipticBoundary.lean	METADATA
+formalization/weighted/ParentWaveEllipticChart.lean	METADATA
+formalization/weighted/ParentWaveEllipticInfinity.lean	METADATA
 formalization/weighted/ParentWaveHalfPlane.lean	METADATA
 formalization/weighted/ParentWaveLeftCrossing.lean	METADATA
+formalization/weighted/ParentWaveRectangle.lean	METADATA
 formalization/weighted/ParentWaveReflection.lean	METADATA
+formalization/weighted/ParentWaveReflectionModulus.lean	METADATA
 formalization/weighted/Period27FiniteFibers.lean	REAL-FIBERS MARKOV-SPECTRUM
 formalization/weighted/Period27RealCenter.lean	CENTER
 formalization/weighted/Period27RealExactPeriod.lean	CENTER

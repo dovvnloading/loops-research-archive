@@ -34,7 +34,7 @@ in the unchanged weighted project and audited by the existing CI.
 
 ### Compiled development checkpoint
 
-Four auxiliary modules have compiled locally and are registered for CI:
+Nine auxiliary modules have compiled locally and are registered for CI:
 
 - ParentWaveLeftCrossing derives an actual interior intersection with the
   left real ray from the existing ParentLeaf relative-homotopy definition.
@@ -49,6 +49,20 @@ Four auxiliary modules have compiled locally and are registered for CI:
 - ParentWaveElliptic constructs an injective primitive of the literal
   transformed elliptic differential on the first quadrant. The strict
   derivative-sign argument proves injectivity there.
+
+- ParentWaveReflectionModulus proves the exact modulus identity for those
+  reflected Borel families: the reflected modulus is one half of the original
+  upper-family modulus, for all measurable densities and Hausdorff trace lengths.
+- ParentWaveEllipticBoundary proves continuous extension to the full finite
+  closed quadrant, including both square-root vertices.
+- ParentWaveEllipticInfinity proves a uniform limit at infinity of the actual
+  primitive by analytic regularization in the reciprocal coordinate.
+- ParentWaveEllipticChart links the quadrant coordinate to the literal upper
+  half-plane differential and proves that its squared norm is exactly the
+  absolute value of the physical cubic differential.
+- ParentWaveRectangle proves the image criterion using the actual finite
+  boundary and uniform infinity limit; its hypotheses have not all yet been
+  verified for the elliptic chart.
 
 These are intermediate proof steps toward the candidate in ATTACK.md. They
 do not establish the optimum, its value, or a sharper rate, and are not

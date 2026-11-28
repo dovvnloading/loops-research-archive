@@ -5255,6 +5255,65 @@
         "halfPlaneDensity_admissible",
         "halfPlaneDensity_area_ne_top",
         "halfPlaneWidth_ne_top"
+      ],
+      "formalization/weighted/ParentWaveReflectionModulus.lean": [
+        "upper_measurable",
+        "upper_conj_disjoint",
+        "UpperLeaf.trace_outside_upper_null",
+        "lineLength_conj",
+        "upperDensity_measurable",
+        "upperDensity_length",
+        "upperDensity_area_le",
+        "upperDensity_admissible",
+        "upper_modulus_le_twice_reflected",
+        "half_upper_modulus_le_parent_width",
+        "fold_conj",
+        "lineLength_union_of_null_inter",
+        "UpperLeaf.conj_trace_inter_null",
+        "folded_parentDensity_length",
+        "folded_parentDensity_admissible",
+        "reflected_modulus_le_half_upper",
+        "reflected_modulus_eq_half_upper"
+      ],
+      "formalization/weighted/ParentWaveEllipticBoundary.lean": [
+        "exists_extension_of_derivative_sq",
+        "exists_local_square_root",
+        "exists_vertex_extension",
+        "exists_vertex_limit",
+        "exists_regular_extension",
+        "exists_regular_limit",
+        "exists_finite_boundary_limit",
+        "exists_continuous_closed_quadrant_extension"
+      ],
+      "formalization/weighted/ParentWaveEllipticInfinity.lean": [
+        "fourthQuadrant_open",
+        "fourthQuadrant_convex",
+        "fourthQuadrant_ne_zero",
+        "inv_mem_quadrant",
+        "inv_mem_fourthQuadrant",
+        "differential_sq",
+        "infinityRoot_sq",
+        "invertedDifferential_sq",
+        "hasDerivAt_inverted",
+        "infinityRoot_local_holomorphic",
+        "invertedDifferential_continuous",
+        "primitive_extends_at_infinity",
+        "primitive_uniform_limit_at_infinity"
+      ],
+      "formalization/weighted/ParentWaveEllipticChart.lean": [
+        "upperHalfPlane_open",
+        "sqrt_sub_mem_quadrant",
+        "sqrt_sub_hasDeriv",
+        "upperMap_hasDeriv",
+        "upperMap_injective",
+        "upperDifferential_sq",
+        "upperDifferential_norm_sq",
+        "upperDifferential_nonzero"
+      ],
+      "formalization/weighted/ParentWaveRectangle.lean": [
+        "eventually_bounded_of_image_tendsto",
+        "mem_image_of_mem_closure",
+        "image_eq_of_boundary_and_infinity"
       ]
     },
     "obligations": []
