@@ -113,6 +113,33 @@ this argument; it cannot be replaced by a terminal scalar condition alone.
 This classification is being developed in the PR and remains unvalidated
 until the unchanged weighted CI accepts the complete dependency chain.
 
+### Signed-root comparison checkpoint
+
+The physical fourth-return sign gives `kappa<2` throughout the global class;
+the negative second return gives `kappa>0`. Thus the signed coefficient
+chart is also a conclusion. The whole-disk remainder bound used here is
+`22*4^(-p)`, derived from the complete archived iterate remainder with the
+new global return bound `d<14*4^(-p)`.
+
+For comparison between two physical parameters, the exact inverse product
+is retained as a function of its normalized target. This yields an implicit
+identity for the complete normalized return, and parameter and spatial
+Lipschitz bounds for its quadratic error of `200*p*4^(-p)` and
+`300*p*4^(-p)`, respectively. Propagating these differences through six
+actual returns gives a signed-error Lipschitz constant at most
+`110000000*p*4^(-p)<1`. Combined with the archived model slope greater than
+six, the proposed actual signed relation has secants greater than five
+on the narrow coefficient isolator. This support theorem is not itself
+advertised as new local root mathematics.
+
+To extend that order to all globally admissible signed roots, the current
+argument factors out the nonzero third return from the exact threefold
+even-secant identity. The resulting root equation is a product equal to
+two. This avoids dividing an approximation error by an arbitrarily small
+third return. A short rational model comparison is being developed to
+exclude all roots outside the narrow coefficient isolator. This exclusion
+and the final unrestricted physical uniqueness statement are still pending.
+
 ### Rejected first route
 
 Requiring only the first positive critical prefix and six signs at multiples

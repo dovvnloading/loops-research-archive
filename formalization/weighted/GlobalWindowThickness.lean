@@ -84,7 +84,7 @@ private theorem parameter_shooting_lower {a c d e : ℝ} (n : ℕ)
   have hcoef : 299/100 ≤ -(c+a+1) := by linarith [ha.2,hc.2]
   have hmul := mul_le_mul_of_nonneg_left hcoef (abs_nonneg (c-a))
   rw [hid] at habs
-  nlinarith only [hpar,htri,habs,hmul]
+  nlinarith only [hpar,htri,habs,hmul,abs_nonneg (c-a)]
 
 /-- Parameter differences along the complete shooting relation are
 controlled by the terminal-return differences at an explicit inverse scale. -/

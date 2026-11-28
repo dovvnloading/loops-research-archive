@@ -18,7 +18,7 @@ noncomputable section
 def realReturn (c : ℝ) (p : ℕ) (t : ℝ) : ℝ :=
   (realMap c)^[p] (criticalValue c p*t)/criticalValue c p
 
-private theorem critical_bound (c : ℝ) (hc : c ∈ Icc (-2 : ℝ) 0) (j : ℕ) :
+theorem critical_bound (c : ℝ) (hc : c ∈ Icc (-2 : ℝ) 0) (j : ℕ) :
     |criticalValue c j|≤2 := by
   have hinterval : ∀ n : ℕ, criticalValue c n ∈ Icc c (-c) := by
     intro n
@@ -78,7 +78,7 @@ theorem normalized_return_error {c : ℝ} {p : ℕ} (hp : 17≤p)
   have hdne : (d : ℂ)≠0 := by exact_mod_cast hd.ne'
   have hid : normalizedReturn c p z-LimitingCrest.complexMap (kappa p c) z=
       quadraticRemainder c (p-1) ((d : ℂ)*z)/(d : ℂ) := by
-    dsimp [normalizedReturn,LimitingCrest.complexMap,quadraticRemainder,kappa]
+    unfold normalizedReturn LimitingCrest.complexMap quadraticRemainder kappa
     rw [Nat.sub_add_cancel (by omega : 1≤p)]
     change (quadraticMap c)^[p] ((d : ℂ)*z)/(d : ℂ)-
       (1-((-quadraticCoefficient c (p-1)*d : ℝ) : ℂ)*z^2)=
@@ -108,7 +108,7 @@ private theorem complex_iterate_real (c t : ℝ) (n : ℕ) :
     rw [Function.iterate_succ_apply',Function.iterate_succ_apply',ih]
     simp only [quadraticMap,realMap,Complex.ofReal_add,Complex.ofReal_pow]
 
-private theorem normalized_real_value (c t : ℝ) (p : ℕ) :
+theorem normalized_real_value (c t : ℝ) (p : ℕ) :
     normalizedReturn c p (t : ℂ)=(realReturn c p t : ℂ) := by
   unfold normalizedReturn realReturn
   rw [← Complex.ofReal_mul,complex_iterate_real,Complex.ofReal_div]
@@ -168,7 +168,7 @@ private theorem fourth_iterate (c : ℝ) (p : ℕ) (hd : criticalValue c p≠0) 
   have h := realReturn_iterate_zero hd 4
   simpa only [show (4 : ℕ)=3+1 from rfl,show (3 : ℕ)=2+1 from rfl,
     show (2 : ℕ)=1+1 from rfl,Function.iterate_succ_apply',Function.iterate_one,
-    realReturn_zero hd] using h
+    Function.iterate_zero,id_eq,realReturn_zero hd] using h
 
 /-- A positive fourth return excludes the boundary and exterior of the
 classical coefficient chart for every globally restrictive parameter. -/
@@ -213,7 +213,7 @@ theorem kappa_pos_of_second_return_neg {c : ℝ} {p : ℕ} (hp : 17≤p)
   have hiter := realReturn_iterate_zero h.return_pos.ne' 2
   have hvalue : realReturn c p 1=criticalValue c (2*p)/criticalValue c p := by
     simpa only [show (2 : ℕ)=1+1 from rfl,Function.iterate_succ_apply',
-      Function.iterate_one,realReturn_zero h.return_pos.ne'] using hiter
+      Function.iterate_one,Function.iterate_zero,id_eq,realReturn_zero h.return_pos.ne'] using hiter
   have hneg : realReturn c p 1<0 := by
     rw [hvalue]
     exact div_neg_of_neg_of_pos hsecond h.return_pos

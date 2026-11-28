@@ -5079,7 +5079,9 @@
         "complete_restrictive_window"
       ],
       "formalization/weighted/GlobalWindowSignedChart.lean": [
+        "critical_bound",
         "normalized_return_error",
+        "normalized_real_value",
         "realReturn_error",
         "realReturn_mapsTo",
         "realReturn_zero",
@@ -5087,6 +5089,46 @@
         "kappa_lt_two_of_fourth_return_pos",
         "kappa_pos_of_second_return_neg",
         "signed_coefficient_chart"
+      ],
+      "formalization/weighted/GlobalSignedModelFactor.lean": [
+        "modelFactor_strictMonoOn",
+        "modelFactor_endpoint_margins",
+        "modelFactor_near_two_implies_narrow"
+      ],
+      "formalization/weighted/GlobalWindowInverseShape.lean": [
+        "parameter_lipschitz",
+        "phaseProduct_bounds",
+        "phaseProduct_lipschitz",
+        "inverseRatio_lipschitz",
+        "inverseRatio_near_one",
+        "scale_power_identity",
+        "kappa_product",
+        "kappa_bounds",
+        "kappa_strong_secant",
+        "return_scale_kappa_lipschitz"
+      ],
+      "formalization/weighted/GlobalSignedRelationStability.lean": [
+        "signed_relation_error_lipschitz",
+        "signed_relation_secant_gt_five"
+      ],
+      "formalization/weighted/GlobalWindowParameterSecant.lean": [
+        "inverse_return_identity",
+        "returnError_identity",
+        "parameter_error_lipschitz",
+        "spatial_error_lipschitz"
+      ],
+      "formalization/weighted/GlobalWindowSecant.lean": [
+        "normalized_secant_error",
+        "realSecant_error",
+        "realReturn_difference"
+      ],
+      "formalization/weighted/GlobalActualSignedUniqueness.lean": [
+        "actual_signed_secant",
+        "signed_relation_identity",
+        "physical_signed_collision_unique",
+        "actual_tip_unique",
+        "exists_unique_actual_tip",
+        "exists_unique_physical_signed_collision"
       ]
     },
     "obligations": []

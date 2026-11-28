@@ -81,7 +81,7 @@ private theorem branch_joint_bound {c a x y : ℝ}
     (ha : a ∈ Icc (-2 : ℝ) (-199/100))
     (hx : x ∈ Icc (-1/100 : ℝ) 2)
     (hy : y ∈ Icc (-1/100 : ℝ) 2) :
-    2*|B c x-B a y| ≤ |x-y|+|c-a| := by
+    2*|B c x-B a y| ≤ |x-y| + |c-a| := by
   have hA := branch_bounds hc hx
   have hB := branch_bounds ha hy
   have hsA : (B c x)^2=x-c := by
@@ -106,7 +106,7 @@ theorem inverse_joint_bound {c a x y : ℝ}
     (ha : a ∈ Icc (-2 : ℝ) (-199/100))
     (hx : x ∈ Icc (-1/100 : ℝ) 2)
     (hy : y ∈ Icc (-1/100 : ℝ) 2) (n : ℕ) :
-    |back c n x-back a n y| ≤ |c-a|+|x-y| := by
+    |back c n x-back a n y| ≤ |c-a| + |x-y| := by
   induction n with
   | zero =>
     simp only [back_zero]
@@ -134,7 +134,7 @@ private theorem factor_difference {c a d e : ℝ}
     (he : e ∈ Icc (0 : ℝ) (1/100)) (j : ℕ) :
     |(back c (j+1) d+back c (j+1) (-d))/4-
       (back a (j+1) e+back a (j+1) (-e))/4| ≤
-      (|c-a|+|d-e|)/2 := by
+      (|c-a| + |d-e|)/2 := by
   have hpos := inverse_joint_bound hc ha
     (show d ∈ Icc (-1/100 : ℝ) 2 by constructor <;> linarith [hd.1,hd.2])
     (show e ∈ Icc (-1/100 : ℝ) 2 by constructor <;> linarith [he.1,he.2]) (j+1)
@@ -192,7 +192,7 @@ private theorem endpointProduct_lipschitz_raw {c a d e : ℝ} (p : ℕ)
     (hd : d ∈ Icc (0 : ℝ) (1/100))
     (he : e ∈ Icc (0 : ℝ) (1/100)) :
     |endpointProduct c p d-endpointProduct a p e| ≤
-      ((p-1 : ℕ) : ℝ)*(|c-a|+|d-e|)/2 := by
+      ((p-1 : ℕ) : ℝ)*(|c-a| + |d-e|)/2 := by
   have hprod := product_difference
     (fun j => (back c (j+1) d+back c (j+1) (-d))/4)
     (fun j => (back a (j+1) e+back a (j+1) (-e))/4) (p-1)
@@ -200,9 +200,9 @@ private theorem endpointProduct_lipschitz_raw {c a d e : ℝ} (p : ℕ)
   have hsum : (∑ j ∈ Finset.range (p-1),
       |(back c (j+1) d+back c (j+1) (-d))/4-
         (back a (j+1) e+back a (j+1) (-e))/4|) ≤
-      ((p-1 : ℕ) : ℝ)*(|c-a|+|d-e|)/2 := by
+      ((p-1 : ℕ) : ℝ)*(|c-a| + |d-e|)/2 := by
     calc
-      _ ≤ ∑ _j ∈ Finset.range (p-1), (|c-a|+|d-e|)/2 := by
+      _ ≤ ∑ _j ∈ Finset.range (p-1), (|c-a| + |d-e|)/2 := by
         exact Finset.sum_le_sum (fun j _ => factor_difference hc ha hd he j)
       _ = _ := by simp; ring
   exact hprod.trans hsum
@@ -214,13 +214,13 @@ theorem endpointProduct_lipschitz {p : ℕ} (hp : 17 ≤ p) {c a d e : ℝ}
     (hd : d ∈ Icc (0 : ℝ) (14*scale p))
     (he : e ∈ Icc (0 : ℝ) (14*scale p)) :
     |endpointProduct c p d-endpointProduct a p e| ≤
-      2*(p : ℝ)*(|c-a|+|d-e|) := by
+      2*(p : ℝ)*(|c-a| + |d-e|) := by
   have h := endpointProduct_lipschitz_raw p (wide_band hp hc) (wide_band hp ha)
     (terminal_small hp hd) (terminal_small hp he)
   have hn : ((p-1 : ℕ) : ℝ) ≤ p := by exact_mod_cast Nat.sub_le p 1
   have hmul := mul_le_mul_of_nonneg_right hn
-    (show 0 ≤ |c-a|+|d-e| by positivity)
-  have hp0 : 0 ≤ (p : ℝ)*(|c-a|+|d-e|) := by positivity
+    (show 0 ≤ |c-a| + |d-e| by positivity)
+  have hp0 : 0 ≤ (p : ℝ)*(|c-a| + |d-e|) := by positivity
   linarith only [h,hmul,hp0]
 
 /-- Every endpoint product on the full shooting rectangle stays positive;
