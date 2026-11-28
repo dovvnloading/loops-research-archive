@@ -145,7 +145,10 @@ theorem actual_signed_relation_deficit {p : ℕ} (hp : 17 ≤ p) {c : ℝ}
     rw [htwo]
     constructor <;> linarith [hk.1,hk.2]
   have ub := parameter_orbit_bounds hk
-  have u3 : u 3 ∈ Icc (-119/1000) (-118/1000) := ⟨ub.1.le,ub.2.1.le⟩
+  have u3 : u 3 ∈ Icc (-119/1000) (-118/1000) := by
+    change (-119/1000 : ℝ) ≤ criticalOrbit κ 3 ∧
+      criticalOrbit κ 3 ≤ (-118/1000 : ℝ)
+    constructor <;> linarith [ub.1,ub.2.1]
   have u4 : u 4 ∈ Icc (9748/10000) (9751/10000) := ⟨ub.2.2.1.le,ub.2.2.2.le⟩
   have u5 : u 5 ∈ Icc (-703/1000) (-700/1000) :=
     model_step_pos hk u4 (by norm_num) (by norm_num) (by norm_num)
@@ -215,7 +218,10 @@ theorem actual_signed_relation_deficit {p : ℕ} (hp : 17 ≤ p) {c : ℝ}
 private theorem actual_relation_zero {p : ℕ} {c : ℝ} (hc : ActualTip p c) :
     actualOrbit c p 0 6+actualOrbit c p 0 3 = 0 := by
   have hs := CriticalReturnRelationStability.actual_signed_relation_scale c p hc.2.1.ne'
-  rw [← actualOrbit_cast c 0 p 6,← actualOrbit_cast c 0 p 3] at hs
+  have h6 := actualOrbit_cast c (0 : ℝ) p 6
+  have h3 := actualOrbit_cast c (0 : ℝ) p 3
+  simp only [Complex.ofReal_zero] at h6 h3
+  rw [← h6,← h3] at hs
   simp only [Complex.ofReal_re] at hs
   rw [hc.2.2.2.2.1] at hs
   exact (mul_eq_zero.mp hs.symm).resolve_left hc.2.1.ne'
@@ -262,6 +268,7 @@ private theorem relation_upper_secant {k k₀ : ℝ}
     have h := relation_slope_lt_seven (interior_subset ht)
     linarith only [h]
   have h := hm hk₀ hk hkk₀
+  change 7*k₀-relation k₀ < 7*k-relation k at h
   rw [hzero] at h
   linarith only [h]
 
