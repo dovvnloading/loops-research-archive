@@ -136,6 +136,7 @@ theorem neg_deriv_lower {x : ℝ} (hx : x ∈ Ioo (0 : ℝ) 1) :
     nlinarith only [hs]
   have hd := (h.differentiable x).hasDerivAt.add
     (((hasDerivAt_id x).pow 2).const_mul a)
+  change HasDerivAt (fun z : ℝ => f z+a*z^2) _ x at hd
   have hn := hm.derivWithin_nonpos (x := x)
   rw [derivWithin_of_mem_nhds (Icc_mem_nhds hx.1 hx.2), hd.deriv] at hn
   norm_num at hn
@@ -187,7 +188,7 @@ private theorem compensation_deriv_nonneg {x : ℝ} (hx : x ∈ Ioo (0 : ℝ) 1)
     calc
       _ ≤ (2*a/b)*(b*x*Real.sqrt (1-x^2)) :=
         mul_le_mul_of_nonneg_left (h.square_root_bound hx) hratio
-      _ = (2*a*x)*Real.sqrt (1-x^2) := by field_simp [h.b_pos.ne']; ring
+      _ = (2*a*x)*Real.sqrt (1-x^2) := by field_simp [h.b_pos.ne'] <;> ring
       _ ≤ _ := mul_le_mul_of_nonneg_right (h.neg_deriv_lower hx) hS.le
   have hd : (2*a/b)/Real.sqrt (1-x^2) ≤
       (-deriv f x)/Real.sqrt (1-(f x)^2) :=
