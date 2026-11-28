@@ -5,6 +5,8 @@ ai: OpenAI ChatGPT GPT-6 Astra Pro
 human_review: none
 ---
 
+<a id="two-level-physical-gates-20261127"></a>
+
 # Two-level physical gates: research in progress
 
 ## Claim
@@ -36,7 +38,7 @@ estimate |G_c(u)-(u^2+a(c))| <=128*4^(-p) on |u|<=12/5.
 On the reference q-return chart, the critical scale lies between
 7*4^(-q) and 12*4^(-q). A finite-iterate bound with expansion factor 5
 then permits a conservative separated-period condition, currently
-being checked in Lean, such as p>=20*q+100. This is intended to
+being checked in Lean, of p>=10*q+30. This is intended to
 control every intermediate complex point and the six-return shooting
 relation, not merely endpoint arithmetic.
 
@@ -49,6 +51,16 @@ after selecting a zero of the actual signed 6pq-versus-3pq relation.
 
 These estimates and existence claims are work in progress at this
 checkpoint. No theorem is promoted by this derivation alone.
+
+### Source checkpoint: unvalidated proof development
+
+The TwoLevelOuterChart, TwoLevelReference, TwoLevelPerturbation,
+TwoLevelConjugacy, TwoLevelSelection, TwoLevelCollisions, and
+TwoLevelGateDomain modules now contain the proposed Lean proofs.
+These sources are committed for review and compiler feedback. They
+have not yet compiled, so their declarations are not certified results.
+Local Lean 4.32.0 and the pinned Mathlib cache are installed; sequential
+compilation of the archived dependencies is in progress.
 
 ## Dependencies
 

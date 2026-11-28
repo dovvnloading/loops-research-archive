@@ -4032,5 +4032,96 @@
       ]
     },
     "obligations": []
+  },
+  "two-level-physical-gates-20261127": {
+    "guide": "contributions/two_level_physical_gates_20261127/NOTE.md#two-level-physical-gates-20261127",
+    "theorems": {
+      "formalization/weighted/TwoLevelOuterChart.lean": [
+        "exists_outer_chart",
+        "continuous_monicParameter",
+        "coefficient_negative",
+        "outerMap_error",
+        "OuterChart.outerMap_error",
+        "outerMap_collision_iff",
+        "outerMap_real",
+        "outerMap_zero",
+        "outerMap_imaginary",
+        "outerMap_iterate",
+        "outerMap_continuous",
+        "OuterChart.outerMap_continuous_parameter"
+      ],
+      "formalization/weighted/TwoLevelReference.lean": [
+        "critical_orbit_bound",
+        "coefficient_bound",
+        "quadratic_iterate_ofReal",
+        "critical_complex_orbit_bound",
+        "power_mul_scale",
+        "chart_return_lower",
+        "chart_return_bounds",
+        "chart_parameter_band",
+        "chart_global_orbit_bound",
+        "chart_intermediate_lower",
+        "chart_phase_abs",
+        "chart_left_relation_margin",
+        "chart_right_relation_margin",
+        "chart_normalized_third"
+      ],
+      "formalization/weighted/TwoLevelPerturbation.lean": [
+        "quadratic_disk_lipschitz",
+        "iterate_stability_sum",
+        "iterate_stability",
+        "critical_orbit_bound",
+        "coefficient_bound",
+        "orbit_displacement",
+        "quadratic_orbit_disk",
+        "scale_mul_power",
+        "reference_disk_orbit",
+        "quadratic_iterate_lipschitz",
+        "complex_criticalValue",
+        "critical_iterate_stability",
+        "critical_return_scale_error",
+        "signed_relation_stability",
+        "reference_disk_displacement",
+        "perturbed_phase_displacement",
+        "separated_period_error",
+        "return_scale_times_five",
+        "normalized_return_stability"
+      ],
+      "formalization/weighted/TwoLevelConjugacy.lean": [
+        "iterate_real",
+        "iterate_zero",
+        "outerMap_continuous",
+        "outerMap_real",
+        "outerMap_iterate_scale",
+        "outerMap_iterate_zero",
+        "secondScale_eq_re",
+        "secondScale_positive_iff",
+        "second_normalization_eq",
+        "signed_relation_scale",
+        "normalizedReturn_continuous",
+        "normalizedReturn_real",
+        "normalizedReturn_imaginary"
+      ],
+      "formalization/weighted/TwoLevelGateDomain.lean": [
+        "approximation_barrier",
+        "gateDisk_estimate",
+        "central_gate_of_estimates"
+      ],
+      "formalization/weighted/TwoLevelSelection.lean": [
+        "error_nonneg",
+        "error_budget",
+        "small_error_budget",
+        "chart_critical_error",
+        "chart_scale_bounds",
+        "chart_normalized_error",
+        "continuous_shootingRelation",
+        "chart_relation_error",
+        "exists_selected"
+      ],
+      "formalization/weighted/TwoLevelCollisions.lean": [
+        "iterate_signed_collision"
+      ]
+    },
+    "obligations": []
   }
 }
