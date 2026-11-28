@@ -11,18 +11,21 @@ human_review: none
 
 ## Claim
 
-**Validation checkpoint:** the complete proof chain and physical assembly
-are now written in Lean. The complete quartic profile, quartic scale bounds
-and quantitative endpoint controls have compiled in CI. The downstream
-response chain and full transitive dependency audit are pending; no
-uncompiled statement is being counted as a proved result.
+**Validated:** the complete Lean proof chain, physical assembly and
+transitive axiom audit passed at commit
+[`c54e3b2057d8fd8f670333b630dc6a6b3ed4a54b`](https://github.com/dovvnloading/loops-research-archive/commit/c54e3b2057d8fd8f670333b630dc6a6b3ed4a54b).
+All 23 workflows passed. The new modules contain no proof placeholders
+or new axioms; their transitive dependencies use only the repository's
+permitted foundations. The exact validation record is below.
 
 Write `q_p = (1/4)^p`. Let `c` satisfy the existing `ActualTip p c`, let
 `F` be the existing actual crossing family, and let `r_p` be the unique
-maximal endpoint of the complete actual terminal gate. Let `k_0` be the
-unique limiting parameter and `r_0` its unique limiting endpoint.
+maximal endpoint of the complete actual terminal gate. Here `r_p` is the
+normalized radius; the corresponding original-plane radius is `d*r_p`,
+where `d = f_c^p(0) > 0`. Let `k_0` be the unique limiting parameter and
+`r_0` its unique limiting endpoint.
 
-The new target, stated in `ActualCrestEndpointDrift`, is
+`ActualCrestEndpointDrift` proves
 
 \[
 \frac{3}{50}q_p < r_p-r_0 < \frac{21}{100}q_p
@@ -36,7 +39,7 @@ at precisely the first exponential order, and
 r_{p+1}<r_p \qquad (p\ge100).
 \]
 
-The same mechanism also targets a direct inequality for the obligation's
+The same mechanism proves a direct inequality for the obligation's
 transport quantity: the all-density physical descendant/parent modulus
 ratio is strictly above its existing limiting coefficient for `p >= 100`.
 This is a one-sided limit theorem; it does not assert monotonicity of the
@@ -102,7 +105,7 @@ b_0=0,\qquad b_{n+1}=-2ku_n b_n+u_n^4.
 
 `ActualCrestQuarticRelation` controls the complete actual orbit by
 `u_n + beta*b_n` through the sixth return. Using the actual signed
-relation `H^6(0)+H^3(0)=0`, it obtains
+relation `H^6(0)+H^3(0)=0`, it obtains, for `p >= 100`,
 
 \[
 |R(\kappa)+\beta(b_6+b_3)|\le10^{27}q_p^2,
@@ -142,7 +145,7 @@ errors at most `400*q_p^2`:
 \end{aligned}
 \]
 
-The fifth equation is the exact physical circle equation
+The fifth equation is the exact normalized circle equation
 `(x-3/4)^2+v^2-r_p^2=0`.
 
 `CrestEndpointQuantitative` first gives explicit coarse proximity of the
@@ -221,7 +224,7 @@ linked by an exact Lean theorem within the final assembly.
 ### 5. Signed transport for the same physical families
 
 At any limiting crossing `z`, write `t=Re(z^2)`. Its defining equation
-implies `k_0*t=1`, and hence `1/2<t<3/5`. Also
+implies `k_0*t=1`, and hence `1/2 <= t <= 3/5`. Also
 `Re(z^4) <= t^2`. The proved correlated parameter shift therefore gives
 
 \[
@@ -246,7 +249,9 @@ at least one. Together with the new endpoint lower bound this gives
 
 where `Gamma_p` is the existing literal four-return physical descendant
 family, and `Mod` is its independently defined modulus over all measurable
-planar densities. The identity transferring the integral to this modulus
+planar densities, expressed as a real number by `modulus.toReal` in Lean.
+Finiteness follows from the archived integral identity. The identity
+transferring the integral to this modulus
 is the archived `descendants_width_eq_integral`, applied to the same
 actual family and maximal endpoint.
 
@@ -271,11 +276,30 @@ and has integrated subsequent main changes. The previous closed
 geometric-child attempt #272 is not the base and contributes no results
 or proof dependencies to this packet.
 
-Lean is not installed in the local execution environment. The unchanged
-repository CI build and transitive proof audit are the validation judge.
-Every new module is registered using `code/contribute.py lean-add`.
-Current build diagnostics and their repairs are being committed in
-PR #275. Numerical exploration is not used as proof evidence.
+Lean is not installed in the local execution environment. Validation was
+performed by the unchanged repository CI build and transitive proof audit.
+The [weighted Lean run](https://github.com/dovvnloading/loops-research-archive/actions/runs/46136726569)
+at source commit `c54e3b2057d8fd8f670333b630dc6a6b3ed4a54b` reports:
+
+```
+Build completed successfully (9292 jobs).
+AXIOM_AUDIT_PASS weighted: 308 modules, 8104 declarations
+```
+
+All 13 new modules compiled. Their 366 declarations, including private
+and generated declarations, individually passed the transitive audit.
+The unchanged allowlist is `propext`, `Classical.choice`, and `Quot.sound`.
+The source-coverage check also rejects `sorry`, `admit`, new `axiom`
+declarations, `native_decide`, `unsafe`, and `implemented_by`. All 43
+public theorem names are registered in the existing theorem index;
+the helper count is not a count of separate research discoveries.
+
+All 23 workflows at that source commit passed. The non-draft local command
+`python3 code/contribute.py check --pr-title '[NOV26_OPEN_CREST_LIMIT] Signed drift of the actual maximal crest endpoint'`
+also returned `RESULT: PASS`, and `git diff --check` passed. Every proof
+checkpoint and repair was committed in PR #275. The final documentation
+checkpoint changes no Lean source. Numerical exploration is not used as
+proof evidence.
 
 ## Dependencies
 
