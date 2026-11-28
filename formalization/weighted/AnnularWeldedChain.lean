@@ -150,7 +150,10 @@ theorem prefixLayers_nonempty {ι : Type*} (layers : ℕ → Layer ι)
     {n : ℕ} (hn : 0 < n) : prefixLayers layers n ≠ [] := by
   cases n with
   | zero => omega
-  | succ n => simp only [Nat.succ_eq_add_one, prefixLayers_cons, List.cons_ne_nil, not_false_eq_true]
+  | succ n =>
+    rw [prefixLayers_cons]
+    intro h
+    cases h
 
 theorem prefixLayers_append {ι : Type*} (layers : ℕ → Layer ι) (n k : ℕ) :
     prefixLayers layers (n + k) =
@@ -158,7 +161,7 @@ theorem prefixLayers_append {ι : Type*} (layers : ℕ → Layer ι) (n k : ℕ)
   induction k with
   | zero => simp only [Nat.add_zero, prefixLayers_zero, List.append_nil]
   | succ k ih =>
-    rw [Nat.succ_eq_add_one, ← Nat.add_assoc, prefixLayers_snoc, ih,
+    rw [← Nat.add_assoc, prefixLayers_snoc, ih,
       prefixLayers_snoc, List.append_assoc]
 
 theorem prefixLayers_product {ι : Type*} (layers : ℕ → Layer ι) (n : ℕ) :
@@ -166,7 +169,7 @@ theorem prefixLayers_product {ι : Type*} (layers : ℕ → Layer ι) (n : ℕ) 
   induction n generalizing layers with
   | zero => rfl
   | succ n ih =>
-    rw [Nat.succ_eq_add_one, prefixLayers_cons, chainProduct, ih]
+    rw [prefixLayers_cons, chainProduct, ih]
     simp only [prefixProduct, Finset.prod_range_succ']
     exact mul_comm _ _
 
@@ -220,7 +223,8 @@ theorem prefixError_tendsto_zero {ι : Type*} (layers : ℕ → Layer ι) (u : T
     (hp : Tendsto (prefixProduct (fun i => (layers i).radius)) atTop (𝓝 0)) :
     Tendsto (prefixError layers u) atTop (𝓝 0) := by
   have hrad := fromProjective_tendsto_one (hp.comp (tendsto_add_atTop_nat 1))
-  have h := ((hrad.pow 2).sub tendsto_const_nhds).mul_const (outerCap layers u).toReal
+  have hone : Tendsto (fun _ : ℕ => (1 : ℝ)) atTop (𝓝 1) := tendsto_const_nhds
+  have h := ((hrad.pow 2).sub hone).mul_const (outerCap layers u).toReal
   have hvalue : Tendsto (prefixError layers u) atTop
       (𝓝 (((1 : ℝ) ^ 2 - 1) * (outerCap layers u).toReal)) := by
     refine Filter.Tendsto.congr (fun n => ?_) h
@@ -240,8 +244,19 @@ theorem common_depth_error {ι : Type*} (layers : ℕ → Layer ι) (u : Trace �
       (fromProjective (prefixProduct (fun i => (layers i).radius) (N + 1)))
       (chain (prefixLayers layers (n + 1)) B)
       (chain (prefixLayers layers (m + 1)) D) := by
-    rw [hn, hm, prefixLayers_append, prefixLayers_append, ← prefixLayers_product]
-    exact common_prefix_comparison _ _ _ (prefixLayers_nonempty layers (by omega)) B D
+    have hprefix_n : prefixLayers layers (n + 1) =
+        prefixLayers layers (N + 1) ++
+          prefixLayers (fun i => layers ((N + 1) + i)) (n - N) := by
+      rw [hn]
+      exact prefixLayers_append layers (N + 1) (n - N)
+    have hprefix_m : prefixLayers layers (m + 1) =
+        prefixLayers layers (N + 1) ++
+          prefixLayers (fun i => layers ((N + 1) + i)) (m - N) := by
+      rw [hm]
+      exact prefixLayers_append layers (N + 1) (m - N)
+    rw [hprefix_n, hprefix_m, ← prefixLayers_product layers (N + 1)]
+    exact common_prefix_comparison _ _ _
+      (prefixLayers_nonempty layers (n := N + 1) (by omega)) B D
   exact comparable_abs_sub_toReal
     (fromProjective_one_le (prefixProduct_nonneg _ _)
       (prefixProduct_lt_one _ (fun i => (layers i).radius_nonneg)

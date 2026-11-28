@@ -122,7 +122,9 @@ observed prefix; this is not a continuity theorem for varying prefixes.
 
 This infinite-depth statement is obtained by composing the local estimate,
 then proving a common-prefix Cauchy bound. It is not independently claimed
-as original mathematics.
+as original mathematics. Divergence of total length gives convergence; it
+does not by itself give a summable error sequence in the native transition
+norm. No such transition-error budget is proved here.
 
 ### 4. Lean source and validation scope
 
