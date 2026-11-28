@@ -79,7 +79,12 @@ theorem abs_sub_le_angleDistance {x y : ℝ}
 
 namespace EvenQuadraticBounds
 
+private def compensation (f : ℝ → ℝ) (a b x : ℝ) : ℝ :=
+  Real.arccos (f x)+(2*a/b)*Real.arccos x
+
 variable {f : ℝ → ℝ} {a b : ℝ} (h : EvenQuadraticBounds f a b)
+
+include h
 
 theorem ratio_nonneg : 0 ≤ b/(2*a) :=
   div_nonneg h.b_pos.le (mul_nonneg (by norm_num) h.a_pos.le)
@@ -155,9 +160,6 @@ private theorem square_root_bound {x : ℝ} (hx : x ∈ Ioo (0 : ℝ) 1) :
     mul_nonneg (mul_nonneg h.b_pos.le hx.1.le) (Real.sqrt_nonneg _)
   have hd := Real.sqrt_nonneg (1-(f x)^2)
   exact (sq_le_sq₀ hd hn).mp hs
-
-private def compensation (f : ℝ → ℝ) (a b x : ℝ) : ℝ :=
-  Real.arccos (f x)+(2*a/b)*Real.arccos x
 
 private theorem compensation_hasDerivAt {x : ℝ} (hx : x ∈ Ioo (0 : ℝ) 1) :
     HasDerivAt (compensation f a b)
