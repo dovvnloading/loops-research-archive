@@ -1,4 +1,4 @@
-import ActualCrestGlobalModel
+import ActualCrestGlobalQuantitative
 import ActualCrestTheorem
 
 /-!
@@ -31,6 +31,15 @@ def TerminalGate (p : ℕ) (c s : ℝ) : Prop :=
     -1 < (((normalizedReturn c p)^[3]) (circlePoint s u)).re ∧
     (((normalizedReturn c p)^[3]) (circlePoint s u)).re <
       -(((normalizedReturn c p)^[4]) 0).re
+
+/-- Every actual period from seventeen onward has no terminal gate in
+the entire outer tail of the original parent, whatever angle is chosen. -/
+theorem all_periods_no_late_terminalGate {p : ℕ} (hp : 17 ≤ p) {c s : ℝ}
+    (hc : ActualTip p c) (hs : s ∈ Icc (133/2000 : ℝ) (1/8)) :
+    ¬ TerminalGate p c s := by
+  rintro ⟨u,hu,hzero,_,hlo,_⟩
+  have hlate := ActualCrestGlobalQuantitative.all_actual_tips_no_reentry hp hc hs hu hzero
+  linarith
 
 /-- On the original short window, the existential gate agrees with the
 selected terminal function because every actual semicircle crossing is
@@ -139,14 +148,16 @@ theorem actual_original_parent_collars {κ : ℝ}
     ActualCrestUpperGate.actual_upper_gate_with_margin hk hroot c hc F
   refine ⟨r,hr,hterm,radii,hmem,hlim,hcoef,hthird,?_⟩
   filter_upwards [hcollars, ActualCrestRadialOrder.actual_terminal_strictAnti c hc F,
-    hupper, ActualCrestGlobalModel.eventually_all_actual_tips_no_reentry]
-    with n hn hanti hup htail
+    hupper] with n hn hanti hup
   have hu : ∀ s ∈ radiusInterval, terminal (F n) s <
       -(((normalizedReturn (c n) (n+17))^[4]) 0).re := by
     intro s hs
     linarith [hup s hs]
   have hgate := terminalGate_iff_below_endpoint (by omega) (hc n) (F n)
-    hn hanti hu (htail (c n) (hc n))
+    hn hanti hu (by
+      intro s hs u hu hzero
+      exact (ActualCrestGlobalQuantitative.all_actual_tips_no_reentry
+        (by omega) (hc n) hs hu hzero).trans (by norm_num))
   exact ⟨hn,hgate,original_parent_gate_set (by omega) hn.1.2 hgate⟩
 
 /-- Actual parameters and crossing families are constructed. The complete

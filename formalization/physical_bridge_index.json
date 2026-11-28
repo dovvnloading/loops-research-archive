@@ -4052,6 +4052,7 @@
         "eventually_all_actual_tips_no_reentry"
       ],
       "formalization/weighted/ActualCrestGlobal.lean": [
+        "all_periods_no_late_terminalGate",
         "terminalGate_iff_selected",
         "terminalGate_iff_below_endpoint",
         "original_parent_cutoff",
@@ -4074,6 +4075,38 @@
         "full_angle_real_census",
         "eventually_all_actual_tips_real_census",
         "eventually_all_actual_tips_closed_arc_injective"
+      ],
+      "formalization/weighted/ActualCrestQuantitativeSupport.lean": [
+        "perturbed_complete_support",
+        "actual_complete_support_all_periods"
+      ],
+      "formalization/weighted/ActualCrestGlobalQuantitative.lean": [
+        "model_tail_terminal_margin",
+        "model_inner_terminal_margin",
+        "model_uniform_upper_margin",
+        "model_fourth_cut_margin",
+        "quantitative_crossing_error",
+        "quantitative_tail_exclusion",
+        "actual_map_error_small",
+        "all_actual_tips_no_reentry"
+      ],
+      "formalization/weighted/ActualCrestArcOrientation.lean": [
+        "normalized_return_im_pos_of_product_neg",
+        "normalized_return_im_neg_of_product_pos",
+        "first_image_im_pos",
+        "selected_arc_image_signs",
+        "selected_fourth_image_upper",
+        "finalClosedLeaf_eq_angular_image",
+        "all_period_actual_arc_geometry"
+      ],
+      "formalization/weighted/ActualCrestAllPeriods.lean": [
+        "terminal_injective_all_periods",
+        "terminal_error_all_periods",
+        "terminal_endpoint_signs_all_periods",
+        "terminal_strictAnti_all_periods",
+        "upper_gate_all_periods",
+        "complete_original_parent_all_periods",
+        "exists_complete_original_parent_each_period"
       ]
     },
     "obligations": []

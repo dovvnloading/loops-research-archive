@@ -19,6 +19,15 @@ The selected closed fourth-image arcs are also proved jointly injective in
 radius and angle in the draft source. These statements are not claimed as
 checked results until the unchanged Lean CI accepts them.
 
+The development now strengthens the threshold to every return-block index
+`p >= 17`. The quantitative full-parent exclusion and complete actual
+support have compiled locally, as have the real-contact census and the
+orientation, closed-leaf injectivity and disjointness theorems. The final
+all-period exact-gate assembly is being checked. The earlier eventual
+version passed the original weighted Lean build and transitive dependency
+audit at commit `8f9f83a` (workflow run `46098230692`). Those checks do not
+stand in for CI validation of the strengthened source in this checkpoint.
+
 ## Evidence
 
 The starting revision is 665e5f9. The existing
@@ -65,6 +74,15 @@ previous radial coefficient alone does not establish physical extremal
 width or the complete KKL marking. This attempt must prove any such
 identification it uses; no missing geometric conclusion will be assumed
 in a theorem premise and then reported as established.
+
+Here `p` is the return-block index in `ActualTip`; the distinguished
+primitive-component branch, exact critical preperiod and primitive
+renormalization period are not identified. The algebraic two-cut gate is
+not asserted to include the native KKL source/target marking or prime-end
+transport. The all-angle curve census concerns the window ending at
+`133/2000`; global exclusion addresses every remaining radius up to `1/8`
+separately. Rectifiability and the already archived coefficient convergence
+are not independent novelty claims.
 
 ## Attribution
 
