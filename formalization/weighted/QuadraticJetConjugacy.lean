@@ -33,7 +33,7 @@ private theorem coordinateJet_exists (H : K[X])
       H - (X + C (H.coeff 2) * X ^ 2 + C (H.coeff 3) * X ^ 3) := by
     apply X_pow_dvd_iff.mpr
     intro d hd
-    interval_cases d <;> simp [h0, h1, coeff_C_mul_X_pow]
+    interval_cases d <;> simp [h0, h1, coeff_X]
   obtain ⟨tail, htail⟩ := hdvd
   refine ⟨tail, ?_⟩
   unfold coordinateJet
@@ -47,32 +47,83 @@ private theorem criticalJet_exists (F : K[X])
       F - (X ^ 2 + C (F.coeff 3) * X ^ 3 + C (F.coeff 4) * X ^ 4) := by
     apply X_pow_dvd_iff.mpr
     intro d hd
-    interval_cases d <;> simp [h0, h1, h2, coeff_C_mul_X_pow]
+    interval_cases d <;> simp [h0, h1, h2]
   obtain ⟨tail, htail⟩ := hdvd
   refine ⟨tail, ?_⟩
   unfold criticalJet
   linear_combination -htail
 
-set_option maxRecDepth 4096 in
-set_option maxHeartbeats 800000 in
+private def coordinateUnit (a b : K) (tail : K[X]) : K[X] :=
+  1 + C a * X + C b * X ^ 2 + X ^ 3 * tail
+
+private def criticalUnit (beta : K) (tail : K[X]) : K[X] :=
+  1 + C beta * X ^ 2 + X ^ 3 * tail
+
+private theorem coordinateJet_factor (a b : K) (tail : K[X]) :
+    coordinateJet a b tail = X * coordinateUnit a b tail := by
+  unfold coordinateJet coordinateUnit
+  ring
+
+private theorem criticalJet_zero_factor (beta : K) (tail : K[X]) :
+    criticalJet 0 beta tail = X ^ 2 * criticalUnit beta tail := by
+  simp only [criticalJet, criticalUnit, map_zero, zero_mul, add_zero]
+  ring
+
+private theorem coordinateJet_comp (a b : K) (tail p : K[X]) :
+    (coordinateJet a b tail).comp p =
+      p + C a * p ^ 2 + C b * p ^ 3 + p ^ 4 * tail.comp p := by
+  simp [coordinateJet]
+
+private theorem criticalJet_comp (gamma delta : K) (tail p : K[X]) :
+    (criticalJet gamma delta tail).comp p =
+      p ^ 2 + C gamma * p ^ 3 + C delta * p ^ 4 + p ^ 5 * tail.comp p := by
+  simp [criticalJet]
+
+/-- Factor off the powers of X before extracting coefficients. In particular
+the arbitrary composed tails occur only after an explicit factor X^5. -/
+private theorem defect_factor (a b beta gamma delta : K) (u v w : K[X]) :
+    (coordinateJet a b u).comp (criticalJet 0 beta v) -
+        (criticalJet gamma delta w).comp (coordinateJet a b u) =
+      X ^ 2 * (criticalUnit beta v - (coordinateUnit a b u) ^ 2) +
+      X ^ 3 * (-C gamma * (coordinateUnit a b u) ^ 3) +
+      X ^ 4 * (C a * (criticalUnit beta v) ^ 2 -
+        C delta * (coordinateUnit a b u) ^ 4) +
+      X ^ 5 * (C b * X * (criticalUnit beta v) ^ 3 +
+        X ^ 3 * (criticalUnit beta v) ^ 4 * u.comp (criticalJet 0 beta v) -
+        (coordinateUnit a b u) ^ 5 * w.comp (coordinateJet a b u)) := by
+  rw [coordinateJet_comp, criticalJet_comp]
+  simp only [coordinateJet_factor, criticalJet_zero_factor]
+  ring
+
+private theorem coeff_mul_two (p q : K[X]) :
+    (p * q).coeff 2 =
+      p.coeff 0 * q.coeff 2 + p.coeff 1 * q.coeff 1 + p.coeff 2 * q.coeff 0 := by
+  rw [coeff_mul, Finset.Nat.antidiagonal_eq_map]
+  simp [Finset.sum_range_succ]
+  <;> ring
+
 private theorem defect_coeff_three (a b beta gamma delta : K)
     (u v w : K[X]) :
     ((coordinateJet a b u).comp (criticalJet 0 beta v) -
       (criticalJet gamma delta w).comp (coordinateJet a b u)).coeff 3 =
         -(2 * a + gamma) := by
-  simp [coordinateJet, criticalJet, coeff_mul,
-    Finset.Nat.antidiagonal_eq_map, Finset.sum_range_succ, pow_succ]
+  rw [defect_factor]
+  simp only [coeff_add, coeff_X_pow_mul']
+  norm_num
+  simp [coordinateUnit, criticalUnit, coeff_X, coeff_X_pow_mul',
+    pow_succ, mul_coeff_one]
   <;> ring
 
-set_option maxRecDepth 4096 in
-set_option maxHeartbeats 800000 in
 private theorem defect_coeff_four (a b beta gamma delta : K)
     (u v w : K[X]) :
     ((coordinateJet a b u).comp (criticalJet 0 beta v) -
       (criticalJet gamma delta w).comp (coordinateJet a b u)).coeff 4 =
         beta + a - (a ^ 2 + 2 * b + 3 * a * gamma + delta) := by
-  simp [coordinateJet, criticalJet, coeff_mul,
-    Finset.Nat.antidiagonal_eq_map, Finset.sum_range_succ, pow_succ]
+  rw [defect_factor]
+  simp only [coeff_add, coeff_X_pow_mul']
+  norm_num
+  simp [coordinateUnit, criticalUnit, coeff_X, coeff_X_pow_mul',
+    pow_succ, mul_coeff_one, coeff_mul_two]
   <;> ring
 
 /-- Cubic and quartic conjugacy laws, with arbitrary polynomial remainders.
@@ -134,18 +185,28 @@ theorem bottcher_coeff_law {K : Type*} [Field K] [CharZero K] (F H : K[X])
   apply (eq_div_iff (by norm_num : (2 : K) ≠ 0)).mpr
   linear_combination h4
 
-set_option maxRecDepth 4096 in
-set_option maxHeartbeats 800000 in
 private theorem explicit_bottcher_jet {K : Type*} [Field K] [CharZero K]
     (beta : K) (tail : K[X]) :
     (X : K[X]) ^ 5 ∣
       (coordinateJet 0 (beta / 2) 0).comp (criticalJet 0 beta tail) -
         (coordinateJet 0 (beta / 2) 0) ^ 2 := by
-  apply X_pow_dvd_iff.mpr
-  intro d hd
-  interval_cases d <;>
-    simp [coordinateJet, criticalJet, coeff_mul,
-      Finset.Nat.antidiagonal_eq_map, Finset.sum_range_succ, pow_succ] <;> ring
+  have h : (X : K[X]) ^ 5 ∣
+      (coordinateJet 0 (beta / 2) 0).comp (criticalJet 0 beta tail) -
+        (criticalJet 0 0 0).comp (coordinateJet 0 (beta / 2) 0) := by
+    apply X_pow_dvd_iff.mpr
+    intro d hd
+    interval_cases d
+    · rw [defect_factor]
+      norm_num [coeff_X_pow_mul']
+    · rw [defect_factor]
+      norm_num [coeff_X_pow_mul']
+    · rw [defect_factor]
+      norm_num [coeff_X_pow_mul', coordinateUnit, criticalUnit, coeff_X, pow_succ]
+    · rw [defect_coeff_three]
+      ring
+    · rw [defect_coeff_four]
+      ring
+  simpa [criticalJet] using h
 
 /-- The Böttcher equation through degree four is nonvacuous: for every actual
 normalized even critical polynomial, the cubic coordinate displayed here solves
@@ -159,10 +220,10 @@ theorem bottcher_jet_exists {K : Type*} [Field K] [CharZero K] (F : K[X])
   obtain ⟨tail, htail⟩ := criticalJet_exists F hF0 hF1 hF2
   rw [hF3] at htail
   refine ⟨coordinateJet 0 (F.coeff 4 / 2) 0, ?_, ?_, ?_, ?_, ?_⟩
-  · simp [coordinateJet]
-  · simp [coordinateJet]
-  · simp [coordinateJet]
-  · simp [coordinateJet]
+  · simp [coordinateJet, coeff_X]
+  · simp [coordinateJet, coeff_X]
+  · simp [coordinateJet, coeff_X]
+  · simp [coordinateJet, coeff_X]
   · simpa only [htail] using explicit_bottcher_jet (F.coeff 4) tail
 
 end

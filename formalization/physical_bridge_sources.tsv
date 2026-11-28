@@ -185,6 +185,7 @@ formalization/weighted/QuadraticParameterUnivalence.lean	CONSTRUCT
 formalization/weighted/QuadraticReturnArithmetic.lean	METADATA
 formalization/weighted/QuadraticReturnCoordinateObstruction.lean	METADATA
 formalization/weighted/QuadraticReturnJet.lean	METADATA
+formalization/weighted/QuadraticReturnOptimalCoordinate.lean	METADATA
 formalization/weighted/QuadraticTrappingEscape.lean	METADATA
 formalization/weighted/QuadraticUnivalentNeighborhood.lean	CONSTRUCT
 formalization/weighted/SaturatedTelescope.lean	METADATA

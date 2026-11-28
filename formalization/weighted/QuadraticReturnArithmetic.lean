@@ -137,7 +137,7 @@ def normalizedQuartic (c : ℂ) (n : ℕ) : ℂ :=
 theorem normalizedQuartic_scaled (c : ℂ) (n : ℕ)
     (hV : criticalProduct c (n+1) ≠ 0) :
     (2:ℂ)^(2*n+3) * normalizedQuartic c n =
-      quarticNumerator c n * (criticalProduct c (n+1)⁻¹)^3 := by
+      quarticNumerator c n * ((criticalProduct c (n+1))⁻¹)^3 := by
   rw [normalizedQuartic, quadCoeff_factor, quarticCoeff_factor]
   have h2 : (2:ℂ)^n ≠ 0 := pow_ne_zero _ (by norm_num)
   have hpow : (2:ℂ)^(2*n+3) = ((2:ℂ)^n)^2 * 8 := by
@@ -156,9 +156,9 @@ theorem normalizedQuartic_odd_numerator (c : ℂ) (n : ℕ)
   obtain ⟨hVI, hIi, hV⟩ := criticalProduct_unit c (n+2) (by omega)
     hcenter hmin (n+1) (by omega)
   rw [normalizedQuartic_scaled c n hV]
-  have hInv : OddIntegral (criticalProduct c (n+1)⁻¹) :=
+  have hInv : OddIntegral ((criticalProduct c (n+1))⁻¹) :=
     oddIntegral_of_unit hIi (by simpa using hVI) (inv_ne_zero hV)
-  have hCube : OddIntegral ((criticalProduct c (n+1)⁻¹)^3) := by
+  have hCube : OddIntegral (((criticalProduct c (n+1))⁻¹)^3) := by
     convert (hInv.mul hInv).mul hInv using 1 <;> ring
   exact (quarticNumerator_odd c (n+2) (by omega) hcenter hmin n (by omega)).mul hCube
 
@@ -183,7 +183,7 @@ theorem odd_numerator_denominator_exact (x : ℂ) (e : ℕ)
   · intro hk
     obtain ⟨d, rfl⟩ := Nat.exists_eq_add_of_le hk
     have hp := ((isIntegral_natCast 2).pow d).mul hx.1
-    convert hp using 1 <;> rw [pow_add] <;> ring
+    simpa only [pow_add, mul_assoc, mul_comm, mul_left_comm] using hp
 
 /-- Main obstruction: the least power of two making the normalized
 quartic coefficient integral is exactly `2N-1`, where `N=n+2`. -/
@@ -241,9 +241,10 @@ theorem normalizedQuartic_add_integral_iff (c : ℂ) (n : ℕ)
   rw [← normalizedQuartic_integral_iff c n hcenter hmin k]
   constructor
   · intro h
-    convert h.sub ht' using 1 <;> ring
+    have hs := h.sub ht'
+    simpa only [mul_add, add_sub_cancel_right] using hs
   · intro h
-    convert h.add ht' using 1 <;> ring
+    simpa only [mul_add] using h.add ht'
 
 /-- The half-quartic coefficient forced by the Böttcher equation has
 one further exact factor of two in its denominator. -/
@@ -274,8 +275,10 @@ theorem normalizedQuartic_galois_period_rigidity (c d : ℂ) (n m : ℕ)
     simpa only [map_mul, map_pow, map_ofNat, hσ] using hmap
   have hback := map_isIntegral_int σ.symm.toRingHom hId
   change IsIntegral ℤ (σ.symm ((2:ℂ)^(2*m+3) * normalizedQuartic d m)) at hback
+  have hσ' : σ.symm (normalizedQuartic d m) = normalizedQuartic c n := by
+    rw [← hσ, σ.symm_apply_apply]
   have hback' : IsIntegral ℤ ((2:ℂ)^(2*m+3) * normalizedQuartic c n) := by
-    simpa [← hσ] using hback
+    simpa only [map_mul, map_pow, map_ofNat, hσ'] using hback
   have hnm := (normalizedQuartic_integral_iff d m hd hdm (2*n+3)).1 hmap'
   have hmn := (normalizedQuartic_integral_iff c n hc hcm (2*m+3)).1 hback'
   omega

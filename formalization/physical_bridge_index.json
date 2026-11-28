@@ -4205,6 +4205,10 @@
         "no_integral_normalized_return_coordinate",
         "actual_bottcher_cubic_denominator",
         "actual_bottcher_jet_exists_with_exact_denominator"
+      ],
+      "formalization/weighted/QuadraticReturnOptimalCoordinate.lean": [
+        "actual_integral_target_coordinate_denominator",
+        "actual_integral_target_coordinate_cost_attained"
       ]
     },
     "obligations": [
