@@ -130,7 +130,7 @@ theorem restriction_of_scaled_estimates (c : ℝ) (n : ℕ) (a R r : ℝ)
     Restriction c n (R/|a|) (r/|a|) := by
   have habs : 0 < |a| := abs_pos.mpr ha
   have haC : (a : ℂ) ≠ 0 := by exact_mod_cast ha
-  have hnorm (z : ℂ) : ‖(a : ℂ)*z‖ = |a|*‖z‖ := by
+  have hnorm (z : ℂ) : ‖(a : ℂ)*z‖ = |a| * ‖z‖ := by
     rw [norm_mul, Complex.norm_real, Real.norm_eq_abs]
   apply restriction_of_estimates c n (R/|a|) (r/|a|) hn
     (div_pos hr habs) ((div_lt_div_iff_of_pos_right habs).mpr hrR)

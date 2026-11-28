@@ -46,6 +46,30 @@ theorem moving_scale_negative (d D : ℝ) (hd : d < 0)
   · linarith
   constructor <;> linarith
 
+/-- A one-percent signed scale change is absorbed by the larger
+reference disk, with the input identity retained exactly. -/
+theorem moving_scale_input (d D : ℝ) (hd : d ≠ 0)
+    (hdiff : |D-d| ≤ |d|/100) {z : ℂ} (hz : ‖z‖ ≤ 23/20) :
+    ‖((D : ℂ)/(d : ℂ))*z‖ ≤ 6/5 ∧
+      (d : ℂ)*(((D : ℂ)/(d : ℂ))*z) = (D : ℂ)*z := by
+  have hdabs : 0 < |d| := abs_pos.mpr hd
+  have hdC : (d : ℂ) ≠ 0 := by exact_mod_cast hd
+  have hupper : |D| ≤ |D-d|+|d| := by
+    calc
+      |D| = |(D-d)+d| := by congr 1; ring
+      _ ≤ |D-d|+|d| := abs_add_le _ _
+  have hratio : |D|/|d| ≤ 101/100 := by
+    apply (div_le_iff₀ hdabs).mpr
+    linarith only [hdiff, hupper]
+  constructor
+  · simp only [norm_mul, norm_div, Complex.norm_real, Real.norm_eq_abs]
+    calc
+      |D| / |d| * ‖z‖ ≤ (101/100)*(23/20) :=
+        mul_le_mul hratio hz (norm_nonneg z) (by norm_num)
+      _ ≤ 6/5 := by norm_num
+  · field_simp [hdC]
+    <;> ring
+
 /-- A signed moving scale and the complete iterate are perturbed
 together.  The normalized reference-output bound avoids an artificial
 second inverse power of the return scale. -/
@@ -129,15 +153,17 @@ theorem normalized_iterate_stability
       _ ≤ (E+b*(E*R))/|D|+(M*E)/|D| :=
         add_le_add (div_le_div_of_nonneg_right hnum hDabs.le)
           (div_le_div_of_nonneg_right hproduct hDabs.le)
-      _ = _ := by rw [add_div]
+      _ = _ := by ring
   let K : ℝ := (1+R+M)*ε*b^2
   have hK0 : 0 ≤ K := by dsimp [K]; positivity
   have hEb : E ≤ E*b := by
     simpa only [mul_one] using mul_le_mul_of_nonneg_left hb1 hE0
   have hMEb : M*E ≤ M*(E*b) := mul_le_mul_of_nonneg_left hEb hM
   have hnumK : E+b*(E*R)+M*E ≤ K := by
-    dsimp [K, E] at *
-    nlinarith only [hEb, hMEb]
+    calc
+      E+b*(E*R)+M*E ≤ E*b+b*(E*R)+M*(E*b) := by
+        linarith only [hEb, hMEb]
+      _ = K := by dsimp [K, E]; ring
   have hdivide : K/|D| ≤ 2*K/|d| := by
     apply (div_le_div_iff₀ hDabs hdabs).mpr
     have hm := mul_le_mul_of_nonneg_left hDlower hK0
@@ -175,6 +201,83 @@ theorem normalized_critical_return_stability
     ((H^[N]) 0).re R M hε hd hbudget hrelative
     (critical_return_scale_error H a ha N ε hε hbudget hclose)
     hclose hz hDmodel hdmodel houtput
+
+/-- Complete intermediate reference phases remain separated from their
+negatives after perturbation.  Backward cancellation then proves that
+the full return has exactly the original sign fibers. -/
+theorem iterate_signed_collision (H : ℂ → ℂ) (a : ℝ)
+    (N : ℕ) (hN : 1 ≤ N) (ε δ : ℝ) (hε : 0 ≤ ε)
+    (hbudget : ε*(5 : ℝ)^N ≤ 1/10)
+    (hmargin : 2*ε*(5 : ℝ)^N < δ)
+    (hclose : ∀ v : ℂ, ‖v‖ ≤ 12/5 →
+      ‖H v-quadraticMap a v‖ ≤ ε)
+    (hcollision : ∀ {u v : ℂ}, ‖u‖ ≤ 12/5 → ‖v‖ ≤ 12/5 →
+      (H u = H v ↔ u = v ∨ u = -v))
+    {z w : ℂ}
+    (hzmodel : ∀ n : ℕ, n ≤ N → ‖((quadraticMap a)^[n]) z‖ ≤ 21/10)
+    (hwmodel : ∀ n : ℕ, n ≤ N → ‖((quadraticMap a)^[n]) w‖ ≤ 21/10)
+    (hseparated : ∀ n : ℕ, 1 ≤ n → n < N →
+      δ ≤ ‖((quadraticMap a)^[n]) z+((quadraticMap a)^[n]) w‖) :
+    (H^[N]) z = (H^[N]) w ↔ z = w ∨ z = -w := by
+  have hzbound (n : ℕ) (hn : n ≤ N) : ‖(H^[n]) z‖ ≤ 12/5 :=
+    (iterate_stability H a z N ε hε hbudget hclose hzmodel n hn).2
+  have hwbound (n : ℕ) (hn : n ≤ N) : ‖(H^[n]) w‖ ≤ 12/5 :=
+    (iterate_stability H a w N ε hε hbudget hclose hwmodel n hn).2
+  have hzR : ‖z‖ ≤ 12/5 := by simpa using hzbound 0 (by omega)
+  have hwR : ‖w‖ ≤ 12/5 := by simpa using hwbound 0 (by omega)
+  have hphase (n : ℕ) (hn : 1 ≤ n) (hnN : n < N) :
+      (H^[n]) z ≠ -((H^[n]) w) := by
+    intro heq
+    have hzerr := (iterate_stability H a z N ε hε hbudget hclose
+      hzmodel n hnN.le).1
+    have hwerr := (iterate_stability H a w N ε hε hbudget hclose
+      hwmodel n hnN.le).1
+    have hp : (5 : ℝ)^n ≤ (5 : ℝ)^N :=
+      pow_le_pow_right₀ (by norm_num) hnN.le
+    have hm := mul_le_mul_of_nonneg_right hp hε
+    have hzne : ‖((quadraticMap a)^[n]) z-(H^[n]) z‖ ≤ (5 : ℝ)^n*ε := by
+      rw [norm_sub_rev]
+      exact hzerr
+    have hwne : ‖((quadraticMap a)^[n]) w-(H^[n]) w‖ ≤ (5 : ℝ)^n*ε := by
+      rw [norm_sub_rev]
+      exact hwerr
+    have hid : ((quadraticMap a)^[n]) z+((quadraticMap a)^[n]) w =
+        (((quadraticMap a)^[n]) z-(H^[n]) z)+
+          (((quadraticMap a)^[n]) w-(H^[n]) w) := by
+      rw [heq]
+      ring
+    have hsum : ‖((quadraticMap a)^[n]) z+((quadraticMap a)^[n]) w‖ ≤
+        2*ε*(5 : ℝ)^N := by
+      rw [hid]
+      have ht := norm_add_le (((quadraticMap a)^[n]) z-(H^[n]) z)
+        (((quadraticMap a)^[n]) w-(H^[n]) w)
+      nlinarith only [ht, hzne, hwne, hm]
+    have hlo := hseparated n hn hnN
+    linarith only [hlo, hsum, hmargin]
+  constructor
+  · intro heq
+    have hcancel : ∀ n : ℕ, n ≤ N → 1 ≤ n →
+        (H^[n]) z = (H^[n]) w → H z = H w := by
+      intro n
+      induction n with
+      | zero => intro _ hn _; omega
+      | succ n ih =>
+        intro hnN hn he
+        by_cases hn0 : n = 0
+        · subst n
+          simpa using he
+        · have hn1 : 1 ≤ n := by omega
+          rw [iterate_succ_apply', iterate_succ_apply'] at he
+          rcases (hcollision (hzbound n (by omega))
+            (hwbound n (by omega))).mp he with hsame | hnegative
+          · exact ih (by omega) hn1 hsame
+          · exact False.elim (hphase n hn1 (by omega) hnegative)
+    exact (hcollision hzR hwR).mp (hcancel N le_rfl hN heq)
+  · rintro (heq | heq)
+    · rw [heq]
+    · have hsame := (hcollision hzR hwR).mpr (Or.inr heq)
+      have hN1 : N = (N-1)+1 := by omega
+      rw [hN1, iterate_succ_apply, iterate_succ_apply, hsame]
 
 /-- A product-separated outer period pays for twelve complete middle
 and inner returns, even against the square of their combined scale. -/
