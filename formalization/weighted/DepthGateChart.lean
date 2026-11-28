@@ -20,8 +20,12 @@ noncomputable section
 
 structure TerminalChart where
   period : ℕ
-  left right : ℝ
-  margin buffer slack orientation : ℝ
+  left : ℝ
+  right : ℝ
+  margin : ℝ
+  buffer : ℝ
+  slack : ℝ
+  orientation : ℝ
   coefficient : ℝ → ℝ
   period_ge : 17 ≤ period
   ordered : left < right
@@ -89,7 +93,9 @@ end TerminalChart
 uses its own signed critical scale and reserved normalized radius. -/
 structure Ancestors (C : TerminalChart) (depth : ℕ) where
   period : Fin depth → ℕ
-  target barrier core : Fin depth → ℝ → ℝ
+  target : Fin depth → ℝ → ℝ
+  barrier : Fin depth → ℝ → ℝ
+  core : Fin depth → ℝ → ℝ
   barrier_eq_half : ∀ i t, barrier i t = target i t/2
   period_ge : ∀ i, 17 ≤ period i
   period_divides : ∀ i, period i ∣ C.period

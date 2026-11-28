@@ -7,19 +7,94 @@ human_review: none
 
 <a id="three-level-physical-gates-20261127"></a>
 
-# Three-level physical quadratic return gates
+# Arbitrary-depth physical quadratic return towers
 
 ## Claim
 
-This contribution attacks the unbounded three-level subcase of
-`NOV26_OPEN_DEPTH_GATES`. The declarations below are proof candidates until the
-unchanged repository Lean CI compiles them and audits their transitive axioms.
-The first checkpoint, `b7b343c550bfc860ffaf05de6e6d747071d10b15`, passed source
-coverage but did not compile; its sign, arithmetic, fraction-rearrangement and
-lexer errors are repaired in this checkpoint. No successful validation is
-claimed from an intake check or a source scan.
+This contribution now attacks the missing arbitrary-depth physical induction
+in NOV26_OPEN_DEPTH_GATES. The complete eight-module explicit three-level
+construction compiled at f827953946d11f7260197a80b5aaebfddbabee1c. The stronger
+arbitrary-depth declarations below are candidates until the unchanged
+repository CI builds the full project and completes its transitive axiom audit.
+No result is certified merely by source scanning or an intake check.
 
-The main candidate theorem is
+### Arbitrary-depth theorem
+
+The main candidate is **DepthGate.exists_physical_tower**. For every natural
+number k, it constructs one real quadratic parameter and k+1 distinct nested
+physical first-return restrictions of the literal map \(f_c(z)=z^2+c\).
+Every nonterminal period is strictly less than, and divides, the terminal
+period. The conclusions, all about the same parameter, are:
+
+- Each source is the component containing zero of the complete pullback of
+  its stated round target. The literal iterate is proper and onto, with two
+  source preimages of every noncritical target value and one of the critical
+  value.
+- Every nonterminal source has compact closure inside the concentric disk
+  of half its target radius. Every deeper complete target disk lies inside
+  every earlier source.
+- All deeper-source phases at earlier-return checkpoints remain inside the
+  same earlier source, including all intermediate checkpoints.
+- Every source misses its own target at every positive original quadratic
+  iterate before its assigned return time.
+- If N is the terminal period and \(d=f_c^N(0)\ne0\), the terminal target is
+  \(B(0,23|d|/20)\), its source closure lies in \(B(0,11|d|/10)\), and its
+  source contains the entire closed disk centered at \(-3d/4\) with radius
+  \(133|d|/2000\). These relative constants are independent of depth.
+- The actual polynomial satisfies \(f_c^{6N}(0)+f_c^{3N}(0)=0\). Its normalized
+  terminal return differs from \(1-\kappa z^2\), with
+  \(\kappa\in[17903/10000,17904/10000]\), by at most \(1/500000\) on
+  \(|z|\le23/20\).
+
+The numerical chart and ancestor estimates are **outputs** of the
+unconditional existence theorem. They are not physical tower hypotheses
+assumed at the theorem's boundary.
+
+### The closed prefix construction
+
+DepthGateBase initializes a genuine SharpChart, with
+\(N_0=17\), margin \(\mu_0=4^{-17}/10000\), radius reserve \(b_0=1/20\), and
+error reserve \(\theta_0=1/1000000\). For a current chart, choose an outer
+period p satisfying
+
+\[
+p\ge17,\qquad
+128\,4^{-p}5^{6N}\le\frac{\mu b\theta}{10000}.
+\]
+
+DepthGateBase.exists_admissible_prefix (in the TerminalChart namespace)
+proves that arbitrarily large such periods exist. DepthGatePrefix constructs
+the next actual parameter interval, with
+
+\[
+N'=Np,\qquad \mu'=\frac{\mu\,4^{-p}}{100},
+\qquad b'=b/2,\qquad\theta'=\theta/2.
+\]
+
+The control radius is \(23/20+b\); its positive reserve absorbs the moving
+signed input scale. The normalized-map error is at most
+\(1/500000-\theta\); halving its reserve pays the new normalization error.
+The fixed terminal gate constants therefore survive any finite number of
+prefixes, even though the positive auxiliary margins decrease.
+
+DepthGateAncestors proves preservation of every ancestor's complete circle
+barrier, small disk image bound, all-time orbit and pair bounds, first-return
+gap, full-target containment and whole-source checkpoint containment. Old
+radii are transported exactly by the signed outer coefficient's absolute
+value; a new outer target and half-radius barrier are constructed. Its
+auxiliary disk has radius \(15\,4^{-p}\), while the transported checkpoint
+bound is only \((44/3)\,4^{-p}\), leaving strict nesting slack.
+
+DepthGateRealization derives the actual complete proper components and all
+first-return properties from those numerical estimates. DepthGateTower
+performs the induction on the number of ancestors, selects a parameter using
+the preserved opposite shooting signs, and realizes every level simultaneously.
+The terminal signed scale is allowed to alternate in sign; every physical
+identity retains that sign, and radii use its absolute value.
+
+### Explicit three-level subfamily
+
+The separately quantified theorem
 `ThreeLevelFirstReturn.exists_first_return_three_level_gate`. For every triple
 of natural numbers satisfying
 
@@ -112,7 +187,10 @@ Generic existence of finite multilevel quadratic renormalizations and complex
 bounds is classical. This contribution does not claim first discovery of
 three renormalizations, nor does a literature search establish worldwide
 priority for its explicit constants. The proposed increment is the explicit
-uniform physical construction above, beyond the archived two-level theorem.
+uniform physical construction and its closed arbitrary-depth prefix induction,
+beyond the archived two-level theorem. The archived all-depth marking statement
+assumes the physical data at every level; the present induction constructs the
+physical complete domains and uniform terminal gate for its separated family.
 Relevant primary context includes Lyubich--Yampolsky,
 [*Dynamics of quadratic polynomials: complex bounds for real maps*](https://www.numdam.org/item/AIF_1997__47_4_1219_0/),
 and Lyubich,
@@ -136,27 +214,16 @@ workflow history. Human review: none.
 
 ## Boundary
 
-`NOV26_OPEN_DEPTH_GATES` remains open. This is a three-level result, not an
-arbitrary-depth induction. No conclusion is claimed about all finite tuning
-words, canonical kneading, marked KKL prime ends, physical optimal widths,
+`NOV26_OPEN_DEPTH_GATES` remains open. The stronger candidate constructs
+arbitrary finite depth for recursively separated period choices; it does not
+construct every prescribed finite tuning word. No conclusion is claimed about
+canonical kneading, marked KKL prime ends, physical optimal widths,
 simple connectivity or Jordan boundaries, connected filled Julia sets,
 H1--H4, or MLC. In particular, the package is stated as nested physical
 proper two-sheeted first returns; additional dynamical hypotheses would be
 needed to promote that wording to a full renormalization theorem.
 
 ## Attribution
-
-### Further attack on arbitrary depth
-
-The fixed-depth construction is not being treated as the full research target.
-The next checkpoint introduces `DepthGateChart` and `DepthGateBase`: a numerical
-family invariant initialized by an actual sharp parameter corridor, with a
-positive normalized-radius reserve, a normalized-error reserve, and uniform
-margins for the finite ancestor disk estimates. The planned prefix step halves
-the radius and error reserves while retaining the same terminal gate constants.
-These are supporting declarations for an arbitrary-depth induction; no
-arbitrary-depth theorem is claimed until that prefix step and the final
-unconditional existence theorem compile and pass the axiom audit.
 
 Proof development, mathematical scope review, and Lean repair: OpenAI ChatGPT
 GPT-6 Astra Pro. The construction builds on the archive's all-period shooting
