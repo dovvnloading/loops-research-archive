@@ -75,6 +75,7 @@ formalization/weighted/AnnularModeContraction.lean	METADATA
 formalization/weighted/AnnularResponseClock.lean	METADATA
 formalization/weighted/AnnularResponseSharpness.lean	METADATA
 formalization/weighted/AnnularVariationalResponse.lean	METADATA
+formalization/weighted/AnnularWeldedChain.lean	METADATA
 formalization/weighted/AtomCutDefect.lean	CUTS CREST
 formalization/weighted/AttachmentDefectLedger.lean	DEFECT
 formalization/weighted/BinaryShiftExactness.lean	METADATA

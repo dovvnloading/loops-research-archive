@@ -4828,6 +4828,29 @@
         "scalar_loads_comparable",
         "sharp_pair_values",
         "output_factor_is_optimal"
+      ],
+      "formalization/weighted/AnnularWeldedChain.lean": [
+        "chainProduct_nonneg",
+        "chainProduct_le_one",
+        "chainProduct_lt_one",
+        "chain_universal_comparison",
+        "chain_append",
+        "common_prefix_comparison",
+        "prefixLayers_zero",
+        "prefixLayers_snoc",
+        "prefixLayers_cons",
+        "prefixLayers_nonempty",
+        "prefixLayers_append",
+        "prefixLayers_product",
+        "prefix_universal_comparison",
+        "outerCap_ne_top",
+        "prefix_le_outerCap",
+        "prefixError_tendsto_zero",
+        "common_depth_error",
+        "terminal_difference_tendsto_zero",
+        "response_cauchy",
+        "exists_terminal_independent_limit",
+        "divergent_length_terminal_independent_limit"
       ]
     },
     "obligations": [
