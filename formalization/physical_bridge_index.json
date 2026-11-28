@@ -5391,5 +5391,380 @@
     "obligations": [
       "MLC"
     ]
+  },
+  "parent-wave-exhaustion-20261128": {
+    "guide": "contributions/parent_wave_exhaustion_20261128/NOTE.md#parent-wave-exhaustion-20261128",
+    "theorems": {
+      "formalization/weighted/ParentWaveLeftCrossing.lean": [
+        "parentLeaf_exists_left_real"
+      ],
+      "formalization/weighted/ParentWaveReflection.lean": [
+        "conj_eq_of_im_zero",
+        "reflectedCurve_initial",
+        "reflectedCurve_terminal",
+        "reflectedCurve_left",
+        "reflectedCurve_right",
+        "reflectedCurve_middle",
+        "reflectedCurve_below",
+        "reflectedCurve_above",
+        "reflectedCurve_simple",
+        "reflectedCurve_reference",
+        "reflectedCurve_avoids",
+        "reflectedCurve_parentLeaf",
+        "reflectedCurve_trace",
+        "UpperLeaf.trace_end_iff",
+        "UpperLeaf.trace_im_nonneg",
+        "reflectedCurve_interiorTrace",
+        "reflectedFamily_support",
+        "reflectedFamily_parentWave"
+      ],
+      "formalization/weighted/ParentWaveElliptic.lean": [
+        "differential_im_neg",
+        "differential_differentiable",
+        "exists_primitive",
+        "primitive_injective",
+        "exists_injective_primitive"
+      ],
+      "formalization/weighted/ParentWaveHalfPlane.lean": [
+        "fold_re",
+        "fold_im",
+        "fold_of_nonneg",
+        "fold_of_nonpos",
+        "fold_lipschitz",
+        "fold_continuous",
+        "lineLength_image_le_of_lipschitz",
+        "trace_folded",
+        "trace_prefix_subset",
+        "trace_suffix_subset",
+        "prefixParameter_le",
+        "le_suffixParameter",
+        "prefix_suffix_inter_subset",
+        "lineLength_prefix_add_suffix_le",
+        "folded_prefix_leaf",
+        "folded_suffix_leaf",
+        "parentDensity_measurable",
+        "parentDensity_length",
+        "fold_area_le",
+        "parentDensity_area_le",
+        "parentWave_modulus_le_halfPlane_of_seam",
+        "parentWave_modulus_le_halfPlane",
+        "parent_width_le_halfPlane",
+        "leftGap_pos",
+        "halfPlaneDensity_measurable",
+        "halfPlaneDensity_admissible",
+        "halfPlaneDensity_area_ne_top",
+        "halfPlaneWidth_ne_top"
+      ],
+      "formalization/weighted/ParentWaveReflectionModulus.lean": [
+        "upper_measurable",
+        "upper_conj_disjoint",
+        "UpperLeaf.trace_outside_upper_null",
+        "lineLength_conj",
+        "upperDensity_measurable",
+        "upperDensity_length",
+        "upperDensity_area_le",
+        "upperDensity_admissible",
+        "upper_modulus_le_twice_reflected",
+        "half_upper_modulus_le_parent_width",
+        "fold_conj",
+        "lineLength_union_of_null_inter",
+        "UpperLeaf.conj_trace_inter_null",
+        "folded_parentDensity_length",
+        "folded_parentDensity_admissible",
+        "reflected_modulus_le_half_upper",
+        "reflected_modulus_eq_half_upper"
+      ],
+      "formalization/weighted/ParentWaveEllipticBoundary.lean": [
+        "exists_extension_of_derivative_sq",
+        "exists_local_square_root",
+        "exists_vertex_extension",
+        "exists_vertex_limit",
+        "exists_regular_extension",
+        "exists_regular_limit",
+        "exists_finite_boundary_limit",
+        "exists_continuous_closed_quadrant_extension"
+      ],
+      "formalization/weighted/ParentWaveEllipticInfinity.lean": [
+        "fourthQuadrant_open",
+        "fourthQuadrant_convex",
+        "fourthQuadrant_ne_zero",
+        "inv_mem_quadrant",
+        "inv_mem_fourthQuadrant",
+        "differential_sq",
+        "infinityRoot_sq",
+        "invertedDifferential_sq",
+        "hasDerivAt_inverted",
+        "infinityRoot_local_holomorphic",
+        "invertedDifferential_continuous",
+        "primitive_extends_at_infinity",
+        "primitive_uniform_limit_at_infinity"
+      ],
+      "formalization/weighted/ParentWaveEllipticChart.lean": [
+        "upperHalfPlane_open",
+        "sqrt_sub_mem_quadrant",
+        "sqrt_sub_hasDeriv",
+        "upperMap_hasDeriv",
+        "upperMap_injective",
+        "upperDifferential_sq",
+        "upperDifferential_norm_sq",
+        "upperDifferential_nonzero"
+      ],
+      "formalization/weighted/ParentWaveRectangle.lean": [
+        "eventually_bounded_of_image_tendsto",
+        "mem_image_of_mem_closure",
+        "image_eq_of_boundary_and_infinity"
+      ],
+      "formalization/weighted/ParentWaveEllipticSides.lean": [
+        "closure_quadrant",
+        "continuousOn_sqrt_upper",
+        "differential_continuousWithinAt_closed",
+        "boundary_trace_hasDerivAt",
+        "real_trace_hasDerivAt",
+        "imaginary_trace_hasDerivAt",
+        "differential_real_first",
+        "differential_real_middle",
+        "differential_real_last",
+        "differential_imaginary",
+        "first_side",
+        "middle_side",
+        "last_side",
+        "imaginary_side",
+        "side_lengths_pos"
+      ],
+      "formalization/weighted/ParentWaveBoundaryInverse.lean": [
+        "uniformLimitAtInfinity_closure",
+        "continuousOn_invFunOn_of_uniformLimit",
+        "continuousOn_invFunOn_closure"
+      ],
+      "formalization/weighted/ParentWaveTraceLength.lean": [
+        "edist_le_hausdorff_of_isPreconnected",
+        "eVariationOn_le_hausdorff",
+        "boundedVariationOn_of_hausdorff_ne_top",
+        "hausdorff_le_eVariationOn",
+        "hausdorff_eq_eVariationOn",
+        "hausdorff_restrict_image_le_map",
+        "hausdorff_restrict_eq_arcParameter_map",
+        "lineLength_eq_metricLength",
+        "realCurve_continuous",
+        "realCurve_apply",
+        "realCurve_image",
+        "realCurve_injOn",
+        "canonical_lineLength_eq_metricLength"
+      ],
+      "formalization/weighted/ParentWaveRectangleModulus.lean": [
+        "horizontal_isometry",
+        "lineLength_horizontal",
+        "rectangleCurve_initial",
+        "rectangleCurve_terminal",
+        "rectangleCurve_trace",
+        "rectangleCurve_injective",
+        "rectangle_measurable",
+        "rectangleCurve_mem",
+        "rectangleFamily_support",
+        "rectangle_volume",
+        "rectangle_admissible_area_lower",
+        "rectangleDensity_measurable",
+        "rectangleDensity_length",
+        "rectangleDensity_admissible",
+        "rectangleDensity_area",
+        "rectangle_modulus",
+        "closedRectangle_measurable",
+        "closedRectangle_volume",
+        "real_interval_subset_trace",
+        "rectangleCrossing_length_lower",
+        "crossingDensity_admissible",
+        "crossingDensity_area",
+        "rectangleFamily_subset_crossings",
+        "rectangleCrossings_modulus"
+      ],
+      "formalization/weighted/ParentWaveRectangleFoliation.lean": [
+        "chartCurve_initial",
+        "chartCurve_terminal",
+        "chartCurve_trace",
+        "chartCurve_injective",
+        "chartFamily_support",
+        "chartFamily_disjoint",
+        "chartCurve_upperLeaf",
+        "chartFamily_upperWave"
+      ],
+      "formalization/weighted/ParentWaveLocalLength.lean": [
+        "hausdorff_image_le_integral_of_cover",
+        "hausdorff_image_le_integral_of_local",
+        "lineLength_image_le_of_local",
+        "local_bound_of_hasDeriv",
+        "lineLength_image_le_of_hasDeriv",
+        "hausdorff_image_le_integral_of_localOn",
+        "lineLength_image_le_of_localOn",
+        "lineLength_image_le_of_hasDerivOn"
+      ],
+      "formalization/weighted/ParentWaveEllipticImage.lean": [
+        "extension_hasDerivAt",
+        "real_axis_tendsto",
+        "imaginary_axis_tendsto",
+        "infinity_corner",
+        "vertical_re_strictMono",
+        "horizontal_im_strictAnti",
+        "real_boundary_re_lower",
+        "imaginary_boundary_im_upper",
+        "mapsTo_rectangle",
+        "finite_boundary_not_mem_rectangle",
+        "primitive_open_image",
+        "rectangle_convex",
+        "image_eq_rectangle"
+      ],
+      "formalization/weighted/ParentWaveUpperBoundary.lean": [
+        "exists_local_extension",
+        "upperMap_exists_local_extension"
+      ],
+      "formalization/weighted/ParentWaveTraceEndpoints.lean": [
+        "lineLength_eq_of_finite_diff",
+        "trace_diff_interiorTrace_subset",
+        "lineLength_trace_eq_interiorTrace",
+        "lineLength_image_trace_eq_interiorTrace",
+        "admissible_trace_iff_interiorTrace",
+        "modulus_trace_eq_interiorTrace"
+      ],
+      "formalization/weighted/ParentWaveConformal.lean": [
+        "lineLength_pull_eq",
+        "lineLength_push_eq",
+        "modulus_image_eq"
+      ],
+      "formalization/weighted/ParentWaveEllipticIntegrals.lean": [
+        "horizontal_integrand_continuous",
+        "vertical_integrand_continuous",
+        "horizontal_side_eq_integral",
+        "vertical_side_eq_integral"
+      ],
+      "formalization/weighted/ParentWaveEllipticK.lean": [
+        "horizontalIntegral_eq_K",
+        "verticalIntegral_eq_horizontal",
+        "verticalIntegral_eq_K",
+        "ratio_eq_K"
+      ],
+      "formalization/weighted/ParentWaveUpperLength.lean": [
+        "measurable_upperDensity",
+        "local_bound_closed_upper",
+        "hausdorff_image_le_upperLength",
+        "canonical_endpoint_distance_le_upperLength",
+        "upperMap_endpoint_distance_le_upperLength"
+      ],
+      "formalization/weighted/ParentWaveUpperModulus.lean": [
+        "closure_upperHalfPlane",
+        "volume_real_axis",
+        "closure_upperHalfPlane_ae_eq",
+        "density_measurable",
+        "density_admissible",
+        "openRectangle_volume",
+        "density_area",
+        "halfPlaneWidth_le_rectangleRatio"
+      ],
+      "formalization/weighted/ParentWaveEllipticClosed.lean": [
+        "real_boundary_injective",
+        "real_boundary_re_upper",
+        "extension_injective_closed",
+        "closed_rectangle_covered"
+      ],
+      "formalization/weighted/ParentWaveEllipticExistence.lean": [
+        "exists_closed_primitive"
+      ],
+      "formalization/weighted/ParentWavePhysicalChart.lean": [
+        "dimensions_pos",
+        "sqrt_mem_closed_quadrant",
+        "sqrt_square_closed",
+        "square_translate_mem_closed",
+        "sqrt_sub_mem_closed",
+        "sqrt_sub_image_upper",
+        "forward_continuous_closed",
+        "forward_hasDeriv",
+        "forward_injective_closed",
+        "conformalChart_source",
+        "conformalChart_apply",
+        "conformalChart_derivative",
+        "normalized_mem_rectangle_iff",
+        "forward_image_upper",
+        "conformalChart_target",
+        "forward_ending_atom",
+        "imaginary_boundary_im_lower",
+        "forward_left_ray"
+      ],
+      "formalization/weighted/ParentWavePhysicalBoundary.lean": [
+        "quadrant_zero_side_preimage",
+        "quadrant_width_side_preimage",
+        "forward_zero_side_preimage",
+        "forward_width_side_preimage"
+      ],
+      "formalization/weighted/ParentWaveRectangleTransport.lean": [
+        "rectangleInterior_open",
+        "rectangleCurve_interior_subset",
+        "rectangleCurve_interior_measurable",
+        "chartCurve_interiorTrace",
+        "chartFamily_interiorTraces",
+        "chartFamily_interiorTraces_of_eqOn",
+        "chartFamily_modulus",
+        "exists_parentWave_of_chart",
+        "parent_width_lower_of_chart"
+      ],
+      "formalization/weighted/ParentWavePhysicalInverse.lean": [
+        "shifted_strip_mem_closed_rectangle",
+        "quadrantInverse_mem",
+        "quadrantInverse_apply",
+        "quadrantInverse_continuous",
+        "physicalInverse_continuous",
+        "physicalInverse_mem_closed",
+        "forward_physicalInverse",
+        "physicalInverse_injective",
+        "openRectangle_subset_strip",
+        "physicalInverse_eq_chart_inverse",
+        "physicalInverse_upper",
+        "inverse_chart_source",
+        "physicalInverse_ending_atom",
+        "physicalInverse_left_ray"
+      ],
+      "formalization/weighted/ParentWaveCanonicalFoliation.lean": [
+        "exists_elliptic_extension",
+        "exists_parentWave_of_elliptic",
+        "parent_width_lower_of_elliptic"
+      ],
+      "formalization/weighted/ParentWaveExact.lean": [
+        "parent_width_upper_of_elliptic",
+        "period_ratio_eq_coefficient",
+        "parent_width_eq_coefficient",
+        "exists_parentWave_attaining_width",
+        "coefficient_pos",
+        "parent_width_toReal",
+        "coefficient_eq_K",
+        "parent_width_eq_K"
+      ],
+      "formalization/weighted/ActualParentSelection.lean": [
+        "quadraticCoefficient_eq_orbit_product",
+        "tau_eq_neg_kappa",
+        "restrictive_of_shooting_kappa_lt_two",
+        "actual_tip_mem_signedKneadingChart",
+        "SignedKneadingChart.restrictive",
+        "SignedKneadingChart.physical_signed_tip",
+        "signed_chart_root_iff_actual_tip",
+        "exists_unique_signed_chart_root",
+        "canonicalParameter_physical",
+        "canonicalParameter_actual",
+        "canonicalParameter_chart",
+        "physical_tip_eq_canonical",
+        "signed_chart_root_eq_canonical",
+        "canonicalSequence_actual",
+        "physical_sequence_eq_canonical",
+        "canonical_physical_parent_optimum_real_converges"
+      ],
+      "formalization/weighted/ActualParentExact.lean": [
+        "limitingParentWidth_eq_coefficient",
+        "limitCoefficient_pos",
+        "limitingParentWidth_toReal",
+        "limitingParentWidth_attained",
+        "limitCoefficient_eq_K",
+        "physical_parent_optimum_converges_to_explicit",
+        "canonical_physical_parent_optimum_converges_to_explicit",
+        "exists_canonical_attained_explicit_parent_limit",
+        "exists_attained_explicit_physical_parent_limit"
+      ]
+    },
+    "obligations": []
   }
 }
