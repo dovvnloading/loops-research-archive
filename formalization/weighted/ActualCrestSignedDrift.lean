@@ -1,4 +1,5 @@
 import ActualCrestRemainderScale
+import ActualCrestRelationSlope
 import GlobalCrestSourceGates
 
 /-!
@@ -23,6 +24,7 @@ open Set Function
 open LimitingCrest LimitingCrestQuadraticReturn LoopsLimitingCrestParameter
 open NearTwoShooting NearTwoTip GlobalCrestSourceGates GlobalCrestEstimates
 open ActualCrestRemainderOrder ActualCrestRemainderScale
+open ActualCrestRelationSlope
 
 noncomputable section
 
@@ -278,6 +280,19 @@ theorem actual_tip_signed_drift {p : ℕ} (hp : 17 ≤ p) {c k₀ : ℝ}
   · linarith
   · have h := actual_tip_coefficient_error hp hc hk₀ hroot
     simpa only [abs_of_pos (sub_pos.mpr hgt)] using h
+
+/-- The signed displacement is realized at every period from seventeen
+onward. The limiting coefficient and each literal quadratic parameter
+are constructed, so the two-sided order statement is nonvacuous. -/
+theorem exists_actual_tips_with_signed_drift :
+    ∃ k₀ : ℝ, k₀ ∈ parameterInterval ∧ relation k₀ = 0 ∧
+      ∀ p : ℕ, 17 ≤ p → ∃ c : ℝ, ActualTip p c ∧
+        scale p/2 < kappa p c-k₀ ∧ kappa p c-k₀ ≤ 15748*scale p := by
+  obtain ⟨k₀,⟨hk₀,hroot⟩,_⟩ := exists_unique_limiting_parameter
+  refine ⟨k₀,hk₀,hroot,?_⟩
+  intro p hp
+  obtain ⟨c,hc⟩ := exists_actual_tip p hp
+  exact ⟨c,hc,actual_tip_signed_drift hp hc hk₀ hroot⟩
 
 end
 end ActualCrestSignedDrift

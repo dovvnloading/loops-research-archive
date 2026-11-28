@@ -22,6 +22,27 @@ open LoopsLimitingCrestParameter ActualCrestRemainderOrder
 
 noncomputable section
 
+/- This is the unchanged elementary coefficient bound from
+LimitingCrestQuadraticReturn.lean, where it is private. Keeping this
+small proof local avoids changing the interface of that widely imported
+module solely to expose a supporting estimate. -/
+private theorem coefficient_bound (c : ℝ) (n : ℕ) :
+    (∀ j : ℕ, j ≤ n+1 → |criticalValue c j| ≤ 2) →
+      |quadraticCoefficient c n| ≤ (4 : ℝ)^n := by
+  induction n with
+  | zero => intro h; norm_num [quadraticCoefficient]
+  | succ n ih =>
+    intro h
+    have ha := ih (fun j hj => h j (by omega))
+    have hd := h (n+1) (by omega)
+    calc
+      |quadraticCoefficient c (n+1)| =
+          (2 * |criticalValue c (n+1)|) * |quadraticCoefficient c n| := by
+            norm_num [quadraticCoefficient, abs_mul]
+      _ ≤ 4*(4 : ℝ)^n :=
+        mul_le_mul (by linarith) ha (abs_nonneg _) (by norm_num)
+      _ = (4 : ℝ)^(n+1) := by rw [pow_succ]; ring
+
 /-- The normalized coefficient forces the positive critical return to
 have at least its natural exponential scale. -/
 theorem actual_return_scale_lower {p : ℕ} (hp : 17 ≤ p) {c : ℝ}

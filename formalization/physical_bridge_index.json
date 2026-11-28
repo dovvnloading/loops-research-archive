@@ -4780,31 +4780,15 @@
         "actual_remainder_one_lower_scale",
         "actual_remainder_one_scale_bounds"
       ],
-      "formalization/weighted/LimitingCrestParameter.lean": [
-        "criticalOrbit_eq_iterate",
-        "criticalOrbit_hasDerivAt",
-        "relation_hasDerivAt",
-        "parameter_orbit_bounds",
-        "relation_slope_gt_six",
-        "relation_slope_lt_seven",
-        "relation_endpoint_signs",
-        "relation_strictMonoOn",
-        "exists_unique_limiting_parameter",
-        "limiting_parameter_geometry"
-      ],
-      "formalization/weighted/LimitingCrestQuadraticReturn.lean": [
-        "coefficient_bound",
-        "complete_remainder_bound",
-        "normalized_return_error",
-        "actual_quadratic_return_corridor",
-        "normalized_iterate_scale",
-        "unscaled_quadratic_corridor"
-      ],
       "formalization/weighted/ActualCrestSignedDrift.lean": [
         "actual_signed_relation_deficit",
         "actual_model_relation_lower",
         "actual_coefficient_gt_limit",
-        "actual_tip_signed_drift"
+        "actual_tip_signed_drift",
+        "exists_actual_tips_with_signed_drift"
+      ],
+      "formalization/weighted/ActualCrestRelationSlope.lean": [
+        "relation_slope_lt_seven"
       ]
     },
     "obligations": []

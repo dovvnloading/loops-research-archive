@@ -206,14 +206,6 @@ theorem relation_slope_gt_six {k : ℝ} (hk : k ∈ parameterInterval) :
   dsimp [InBox] at d3 d6
   linarith [d3.1,d6.1]
 
-/-- The same certified derivative boxes give an upper bound for the
-signed relation throughout the full parameter isolator. -/
-theorem relation_slope_lt_seven {k : ℝ} (hk : k ∈ parameterInterval) :
-    criticalSlope k 6 + criticalSlope k 3 < 7 := by
-  obtain ⟨_,_,d3,d6⟩ := interval_certificate hk
-  dsimp [InBox] at d3 d6
-  linarith [d3.2,d6.2]
-
 set_option maxRecDepth 4096 in
 set_option maxHeartbeats 800000 in
 theorem relation_endpoint_signs :

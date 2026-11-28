@@ -84,7 +84,7 @@ private theorem critical_deficit (c : ℝ) (hc : -2 ≤ c) (n : ℕ) :
     norm_num only [pow_zero,mul_one]
     nlinarith only [sq_nonneg (c+2)]
   | succ n ih =>
-    rw [show n+1+2 = (n+2)+1 by omega,criticalValue_step,pow_succ]
+    rw [show n+1+2 = (n+2)+1 by omega,criticalValue_step,pow_succ (4 : ℝ) n]
     nlinarith only [ih,sq_nonneg (2-criticalValue c (n+2)),hc]
 
 /-- Every physical critical point before the small return, apart from
@@ -214,7 +214,7 @@ private theorem physical_prefix_antitone {p : ℕ} (hp : 17 ≤ p) {c : ℝ}
       have hny := physical_first_neg hp hc hy
       have hnxy : -(c+y^2) ≤ -(c+x^2) := by linarith
       have hh := pow_le_pow_left₀ (by linarith : 0 ≤ -(c+y^2)) hnxy 2
-      simp only [show 2=1+1 from rfl,realIterate_succ,realIterate_zero]
+      change (y^2+c)^2+c ≤ (x^2+c)^2+c
       nlinarith only [hh]
     | succ n hn ih =>
       intro hnp x hx y hy hxy
@@ -222,7 +222,7 @@ private theorem physical_prefix_antitone {p : ℕ} (hp : 17 ≤ p) {c : ℝ}
       have hypos := (physical_prefix_bounds hp hc hy hn (by omega)).2
       have hs := pow_le_pow_left₀ (by linarith : 0 ≤ realIterate c n y) horder 2
       rw [realIterate_succ,realIterate_succ]
-      exact add_le_add_right hs c
+      exact add_le_add hs le_rfl
   exact hall j hj2 hjp
 
 def realSecant (c : ℝ) : ℕ → ℝ → ℝ
@@ -295,7 +295,7 @@ theorem physical_secant_order {p : ℕ} (hp : 17 ≤ p) {c : ℝ}
         have hfactor := physical_prefix_antitone hp hc (j := n+1) (by omega) hnp hx hy hxy.le
         have hfactor' : realIterate c (n+1) y+criticalValue c (n+1) ≤
             realIterate c (n+1) x+criticalValue c (n+1) :=
-          add_le_add_right hfactor _
+          add_le_add hfactor le_rfl
         rw [realSecant,realSecant]
         exact (mul_le_mul_of_nonpos_right hfactor' (hprev.1 x hx).le).trans_lt
           (mul_lt_mul_of_pos_left (hprev.2 hx hy hxy) (hpos y hy))
