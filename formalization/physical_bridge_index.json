@@ -4032,5 +4032,16 @@
       ]
     },
     "obligations": []
+  },
+  "actual-crest-global-20261127": {
+    "guide": "contributions/actual_crest_global_20261127/NOTE.md#actual-crest-global-20261127",
+    "theorems": {
+      "formalization/weighted/ActualCrestLargeDisk.lean": [
+        "normalized_return_error_two",
+        "actual_tip_limit_map_error",
+        "map_convergence"
+      ]
+    },
+    "obligations": []
   }
 }

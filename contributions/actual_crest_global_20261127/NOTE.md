@@ -5,6 +5,8 @@ ai: OpenAI ChatGPT, GPT-6 Astra Pro; mathematical investigation and Lean proof d
 human_review: none
 ---
 
+<a id="actual-crest-global-20261127"></a>
+
 # Actual crest transport on the complete original parent
 
 ## Claim
