@@ -1,4 +1,14 @@
-import Mathlib
+import Mathlib.Analysis.Complex.BranchLogRoot
+import Mathlib.Analysis.Complex.CoveringMap
+import Mathlib.Analysis.Normed.Group.Bounded
+import Mathlib.Topology.Homotopy.Lifting
+import Mathlib.Topology.Maps.Proper.Basic
+import Mathlib.Topology.Piecewise
+import Mathlib.Tactic.FunProp
+import Mathlib.Tactic.Linarith
+import Mathlib.Tactic.LinearCombination
+import Mathlib.Tactic.NormNum
+import Mathlib.Tactic.Ring
 
 /-!
 # Exact terminal-sheet component transport

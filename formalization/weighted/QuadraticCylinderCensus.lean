@@ -1,5 +1,8 @@
-import Mathlib
 import StationarySeparatorTransport
+import Mathlib.Algebra.Polynomial.Roots
+import Mathlib.Analysis.Complex.OpenMapping
+import Mathlib.Topology.Maps.Proper.CompactlyGenerated
+import Mathlib.Tactic.Positivity
 
 /-!
 # A single-fiber exhaustion criterion for actual pullback cylinders
