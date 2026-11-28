@@ -63,8 +63,8 @@ theorem actualMap_differentiable (c : ℝ) (p : ℕ) :
       ((fun y : ℝ => y^2+c)^[p]) (criticalValue c p*x) / criticalValue c p :=
     funext (fun x => actualMap_real_formula c x p)
   rw [he]
-  exact ((hq.iterate p).comp
-    (differentiable_const.mul differentiable_id)).div_const _
+  have hs : Differentiable ℝ (fun x : ℝ => criticalValue c p*x) := by fun_prop
+  exact ((hq.iterate p).comp hs).div_const _
 
 theorem actualOrbit_differentiable (c : ℝ) (p n : ℕ) :
     Differentiable ℝ (fun x => actualOrbit c p x n) := by
@@ -74,8 +74,8 @@ theorem actualOrbit_differentiable (c : ℝ) (p n : ℕ) :
 
 theorem centralMap_differentiable (c : ℝ) (p : ℕ) :
     Differentiable ℝ (centralMap c p) := by
-  exact (((actualOrbit_differentiable c p 3).comp
-    (differentiable_const.mul differentiable_id)).neg).div_const _
+  have hs : Differentiable ℝ (fun x : ℝ => centralRadius c p*x) := by fun_prop
+  exact (((actualOrbit_differentiable c p 3).comp hs).neg).div_const _
 
 theorem third_even {p : ℕ} (hp : 17 ≤ p) {c : ℝ}
     (hc : ActualTip p c) (x : ℝ) :
@@ -103,7 +103,7 @@ private theorem third_endpoint {p : ℕ} (hp : 17 ≤ p) {c : ℝ}
   have h := (critical_signed_orbit c p (by omega) hc.2.1.ne'
     hc.2.2.2.2.1).2
   have h0 : (actualOrbit c p 0 3 : ℂ) = threeReturn c p 0 := by
-    simpa only [Complex.ofReal_zero] using actualOrbit_cast c 0 p 3
+    simpa only [threeReturn, Complex.ofReal_zero] using actualOrbit_cast c 0 p 3
   have ht : (centralRadius c p : ℂ) = -threeReturn c p 0 := by
     simp only [centralRadius, Complex.ofReal_neg, h0]
   have he : (actualOrbit c p (centralRadius c p) 3 : ℂ) =
