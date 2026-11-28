@@ -15,10 +15,23 @@ Ledger statement being addressed:
 
 ## Claim
 
-Work in progress. No new theorem or closure is claimed at this initial checkpoint.
-The target is global localization and uniqueness of the signed critical relation
-on a precisely defined full primitive parameter window, rather than another
-certificate inside an assumed small parameter chart.
+Work in progress; the following Lean statements await compilation. No closure
+or mathematical-priority claim is made at this checkpoint.
+
+For the literal real quadratic map `f_c(x)=x^2+c`, set `d=f_c^p(0)`.
+Suppose `c` lies in `[-2,-1]`, `d>0`, the entire interval `[-d,d]` has a
+negative first image and positive images at times `2,...,p-1`, and its
+`p`-th image lies in itself. For every integer `p>=17`, the candidate theorem
+proves
+
+\[
+ -2\le c<-2+20\,4^{-p},\qquad 0<d<14\,4^{-p}.
+\]
+
+These two small-scale bounds are conclusions from global physical interval
+hypotheses. They are not assumptions. This is the proposed global-to-local
+step toward the window obligation. It does not yet prove uniqueness of the
+signed critical relation or identify a maximal parameter component.
 
 ## Evidence
 
@@ -39,6 +52,47 @@ candidate result counts only after its Lean theorem compiles in the unchanged
 repository CI and passes the existing transitive dependency audit. No
 unproved result is presented as mathematical progress.
 
+### First proof checkpoint
+
+The four new registered modules are `GlobalPositiveWindow`,
+`GlobalRestrictiveWindow`, `GlobalInverseWindow`, and
+`GlobalWindowLocalization`. Their proposed argument is:
+
+1. Extend the positive inverse branch `B_c(x)=sqrt(x-c)` to the entire
+   parameter interval `[-2,-1]`. Its iterates have parameter Lipschitz
+   constant at most one, so `c^2+c-B_c^(p-2)(0)` is strictly decreasing.
+   The actual positive critical itinerary forces this shooting function
+   to be nonnegative. The previously certified negative right endpoint
+   then gives `c+2<20*4^(-p)` globally.
+2. Reverse the entire physical interval itinerary. For its endpoint image
+   `e=f_c^p(d)` one obtains the exact identity
+   `d^2=B_c^(p-1)(d)-B_c^(p-1)(e)`, with `e` in `[-d,d]`. This is an
+   equality of actual iterates, not a symbolic replacement for them.
+3. The first inverse step on the entire possible endpoint range has secant
+   constant at most `3/4`, and every subsequent step has constant at most
+   `1/3`. The endpoint identity first forces
+   `d <= (27/2)*3^(-p)`; no small terminal scale is assumed.
+4. Compare the complete normalized inverse product at `-d` with that at
+   zero. The derived coarse scale makes the total product loss less than
+   `1/400`. The archived `241/400` lower bound at zero consequently gives
+   a strict `3/5` lower bound at the actual negative endpoint. The exact
+   inverse secant product then gives `d*4^p<40/3<14`.
+
+The full source, not this outline, is the candidate proof. The existing
+weighted CI is running the first checkpoint. Source coverage has passed;
+kernel acceptance has not yet been observed. The local installation runs
+core Lean 4.32.0 but lacks sufficient space for the weighted dependencies,
+so weighted compilation is delegated to the unchanged repository CI.
+
+### Rejected first route
+
+Requiring only the first positive critical prefix and six signs at multiples
+of `p` is too weak: it leaves the intervening orbit branches uncontrolled.
+Exploratory numerical root scans found many unintended candidates. Those
+scans are diagnostics, not a submitted theorem. The replacement hypotheses
+refer to every point of an actual restrictive interval at every intermediate
+time. A sign table is never substituted for that physical condition.
+
 ## Dependencies
 
 - `NOV26_OPEN_WINDOW` and `NOV26_TIP_THEOREM` in `ledger.json`.
@@ -50,13 +104,19 @@ unproved result is presented as mathematical progress.
 
 ## Boundary
 
-This is an early draft claim of an open research target. It contains no new
-proved mathematical result yet. The ledger remains unchanged. No local
+This draft has not yet received kernel validation. The ledger remains
+unchanged. No local
 certificate is to be promoted to global window uniqueness, and no classical
 kneading-uniqueness theorem is to be relabeled as new mathematics. Any final
 result must state its actual dynamical objects, hypotheses, and remaining
 gap. If the attempt produces no substantive new theorem, this draft will be
 closed rather than submitted as a successful contribution.
+
+The exponential scales themselves belong to classical real quadratic window
+theory. The candidate new scope is the explicit quantitative confinement of
+every interval satisfying the stated global physical conditions, without a
+pre-imposed parameter chart or return scale. A literature-wide novelty claim
+would require further evidence and is not made.
 
 ## Attribution
 

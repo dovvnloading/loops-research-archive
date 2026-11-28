@@ -4931,6 +4931,32 @@
         "shooting_strictAnti",
         "shooting_nonneg_parameter_upper",
         "nonnegative_itinerary_parameter_upper"
+      ],
+      "formalization/weighted/GlobalRestrictiveWindow.lean": [
+        "PositiveRestrictiveReturn.zero_mem",
+        "PositiveRestrictiveReturn.right_mem",
+        "PositiveRestrictiveReturn.critical_prefix",
+        "PositiveRestrictiveReturn.parameter_upper",
+        "PositiveRestrictiveReturn.square_return_lt",
+        "PositiveRestrictiveReturn.return_lt_three_halves",
+        "PositiveRestrictiveReturn.endpoint_return_mem",
+        "PositiveRestrictiveReturn.inverse_endpoint",
+        "PositiveRestrictiveReturn.critical_inverse",
+        "PositiveRestrictiveReturn.return_endpoint_inverse",
+        "PositiveRestrictiveReturn.inverse_displacement"
+      ],
+      "formalization/weighted/GlobalInverseWindow.lean": [
+        "inverse_difference_bound",
+        "coarse_scale_bound",
+        "negative_endpoint_product",
+        "inverse_difference_product",
+        "return_scale_bound"
+      ],
+      "formalization/weighted/GlobalWindowLocalization.lean": [
+        "PositiveRestrictiveReturn.small_parameter_band",
+        "PositiveRestrictiveReturn.inverse_parameter_budget",
+        "PositiveRestrictiveReturn.return_scale",
+        "restrictive_return_localization"
       ]
     },
     "obligations": []
