@@ -151,17 +151,29 @@ theorem endpoint_response_certificate {q b : ℝ} {a o : Coordinates}
     dsimp [E₅,equation₅,X,V,R,Jet.coordinate,Jet.add,Jet.sub,Jet.neg,Jet.mul,Jet.sq,Jet.const]
     nlinarith only [hm₅]
   have hvalue₁ : |E₁.value| ≤ (1/10^10)*q := by
-    apply le_trans _ hsmall
-    convert ha₁ using 1 <;> congr 1 <;> ring
+    have hv : E₁.value = 2-a.k*a.t^2+b*a.t^4 := by
+      dsimp [E₁,equation₁,K,B,T,Jet.coordinate,Jet.add,Jet.sub,Jet.neg,Jet.mul,Jet.sq,Jet.const]
+      ring
+    rw [hv]
+    exact ha₁.trans hsmall
   have hvalue₂ : |E₂.value| ≤ (1/10^10)*q := by
-    apply le_trans _ hsmall
-    convert ha₂ using 1 <;> congr 1 <;> ring
+    have hv : E₂.value = 1+a.k*a.y^2+b*a.y^4-a.t := by
+      dsimp [E₂,equation₂,K,B,T,Y,Jet.coordinate,Jet.add,Jet.sub,Jet.neg,Jet.mul,Jet.sq,Jet.const]
+      ring
+    rw [hv]
+    exact ha₂.trans hsmall
   have hvalue₃ : |E₃.value| ≤ (1/10^10)*q := by
-    apply le_trans _ hsmall
-    convert ha₃ using 1 <;> congr 1 <;> ring
+    have hv : E₃.value = 1-a.k*(a.x^2-a.v^2)+b*(a.x^4-6*a.x^2*a.v^2+a.v^4) := by
+      dsimp [E₃,equation₃,K,B,X,V,Jet.coordinate,Jet.add,Jet.sub,Jet.neg,Jet.mul,Jet.sq,Jet.const]
+      ring
+    rw [hv]
+    exact ha₃.trans hsmall
   have hvalue₄ : |E₄.value| ≤ (1/10^10)*q := by
-    apply le_trans _ hsmall
-    convert ha₄ using 1 <;> congr 1 <;> ring
+    have hv : E₄.value = 2*a.k*a.x*a.v-4*b*a.x*a.v*(a.x^2-a.v^2)-a.y := by
+      dsimp [E₄,equation₄,K,B,Y,X,V,Jet.coordinate,Jet.add,Jet.sub,Jet.neg,Jet.mul,Jet.sq,Jet.const]
+      ring
+    rw [hv]
+    exact ha₄.trans hsmall
   have hvalue₅ : |E₅.value| ≤ (1/10^10)*q := by
     have hv : E₅.value = 0 := by
       dsimp [E₅,equation₅,X,V,R,Jet.coordinate,Jet.add,Jet.sub,Jet.neg,Jet.mul,Jet.sq,Jet.const]
