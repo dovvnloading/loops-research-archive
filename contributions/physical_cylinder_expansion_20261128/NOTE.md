@@ -59,9 +59,9 @@ v-u>r\pi(19/30)^n
 \quad}
 \tag{3}
 \]
-The strict threshold and the strict time bound are retained in the Lean statement.
+The strict threshold and the strict time bound are retained in the Lean statement. The convention permits \(j=0\), so the witness may be the critical point itself.
 
-**Validation status during development:** the complete actual divided-difference theorem has already passed the weighted Lean build and transitive dependency audit at commit 43d2b3fd0830ae0e5951ec4e34d826771a24a022. The full seven-module statement is submitted for CI validation; it is not counted as a compiled result until that build and audit pass.
+**Validation:** all seven modules compile in the repository's Lean project at [proof commit b819caed22e4067df3dee2f26015df136190f235](https://github.com/dovvnloading/loops-research-archive/commit/b819caed22e4067df3dee2f26015df136190f235). The [weighted build and transitive dependency audit](https://github.com/dovvnloading/loops-research-archive/actions/runs/46134457837) passed, including every new declaration. The audit permits only `propext`, `Classical.choice`, and `Quot.sound`; no proof holes or new axioms are used. [Research validation](https://github.com/dovvnloading/loops-research-archive/actions/runs/46134457938), [contribution intake](https://github.com/dovvnloading/loops-research-archive/actions/runs/46134457919), and all other workflows also passed on that commit.
 
 ## Evidence
 
@@ -157,7 +157,7 @@ The main native declarations are:
 
 [Theorem 6.1 of the maximal native-wave note](../../research/independent_audits/maximal_native_wave_20261123/NOTE.md) already proves eventual zero-edge contour escape, with a clock measured after an unspecified hybrid straightening. Its Theorem 6.2 already allows arbitrarily long delays for sufficiently small positive subarcs. Neither qualitative escape nor the impossibility of a size-independent clock is claimed as new here.
 
-The new bound is one-step expansion in the explicit, orbit-normalized *physical* cosine coordinate, uniform in the unbounded period range. It supplies a period-independent physical size-to-time bound. A topological conjugacy alone supplies no such explicit modulus; the proof obtains it directly from the actual polynomial.
+The new bound is one-step expansion in the explicit, orbit-normalized *physical* cosine coordinate, uniform in the unbounded period range. It supplies a period-independent size-to-time bound when physical length is measured relative to \(r\) and time is counted in three-returns. The original quadratic hitting time is \(3pj\). A topological conjugacy alone supplies no such explicit modulus; the proof obtains it directly from the actual polynomial.
 
 The analytic principle converting quadratic secants to angular expansion is classical calculus. General expansion theory for critically preperiodic maps is also classical; for background see [Lyubich's dynamics text, section 27.1.2](https://www.math.stonybrook.edu/~mlyubich/book.pdf). Those background facts are not used as a substitute for the new quantitative native inequality. A search for prior work did not locate this specific estimate, but does not establish worldwide priority.
 
