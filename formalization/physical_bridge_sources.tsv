@@ -215,15 +215,24 @@ formalization/weighted/ParabolicTipPeriod.lean	PARABOLIC STRAIGHTEN
 formalization/weighted/ParabolicTipRate.lean	PARABOLIC STRAIGHTEN
 formalization/weighted/ParabolicTipShooting.lean	PARABOLIC STRAIGHTEN
 formalization/weighted/ParabolicTipWindow.lean	PARABOLIC STRAIGHTEN
+formalization/weighted/ParentWaveBoundaryInverse.lean	METADATA
 formalization/weighted/ParentWaveElliptic.lean	METADATA
 formalization/weighted/ParentWaveEllipticBoundary.lean	METADATA
 formalization/weighted/ParentWaveEllipticChart.lean	METADATA
+formalization/weighted/ParentWaveEllipticImage.lean	METADATA
 formalization/weighted/ParentWaveEllipticInfinity.lean	METADATA
+formalization/weighted/ParentWaveEllipticSides.lean	METADATA
 formalization/weighted/ParentWaveHalfPlane.lean	METADATA
 formalization/weighted/ParentWaveLeftCrossing.lean	METADATA
+formalization/weighted/ParentWaveLocalLength.lean	METADATA
 formalization/weighted/ParentWaveRectangle.lean	METADATA
+formalization/weighted/ParentWaveRectangleFoliation.lean	METADATA
+formalization/weighted/ParentWaveRectangleModulus.lean	METADATA
 formalization/weighted/ParentWaveReflection.lean	METADATA
 formalization/weighted/ParentWaveReflectionModulus.lean	METADATA
+formalization/weighted/ParentWaveTraceEndpoints.lean	METADATA
+formalization/weighted/ParentWaveTraceLength.lean	METADATA
+formalization/weighted/ParentWaveUpperBoundary.lean	METADATA
 formalization/weighted/Period27FiniteFibers.lean	REAL-FIBERS MARKOV-SPECTRUM
 formalization/weighted/Period27RealCenter.lean	CENTER
 formalization/weighted/Period27RealExactPeriod.lean	CENTER

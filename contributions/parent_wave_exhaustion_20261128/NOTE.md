@@ -34,7 +34,7 @@ in the unchanged weighted project and audited by the existing CI.
 
 ### Compiled development checkpoint
 
-Nine auxiliary modules have compiled locally and are registered for CI:
+Eighteen auxiliary modules have compiled locally and are registered for CI:
 
 - ParentWaveLeftCrossing derives an actual interior intersection with the
   left real ray from the existing ParentLeaf relative-homotopy definition.
@@ -63,6 +63,34 @@ Nine auxiliary modules have compiled locally and are registered for CI:
 - ParentWaveRectangle proves the image criterion using the actual finite
   boundary and uniform infinity limit; its hypotheses have not all yet been
   verified for the elliptic chart.
+
+- ParentWaveEllipticSides identifies all four actual boundary derivatives,
+  their signs, the constant coordinates, and the positive finite side lengths.
+- ParentWaveBoundaryInverse derives continuous inverse extensions from finite
+  boundary continuity, injectivity, and the proved uniform limit at infinity.
+- ParentWaveTraceLength connects canonical simple traces to the actual arclength
+  parameter; finite Hausdorff length implies rectifiability, rather than being
+  replaced by a rectifiability assumption.
+- ParentWaveLocalLength derives weighted Hausdorff-length change inequalities
+  from arbitrarily sharp local Lipschitz bounds. This covers all measurable
+  densities and arbitrary, possibly nonrectifiable and noninjective traces,
+  with a relative-domain form for boundary contacts.
+- ParentWaveRectangleModulus computes both the exact literal rectangle
+  foliation modulus and the modulus of all continuous rectangle crossings.
+- ParentWaveRectangleFoliation proves that an inverse chart with the stated
+  endpoint data produces an actual disjoint Borel upper family.
+
+- ParentWaveEllipticImage proves that the literal primitive maps onto the
+  complete open rectangle, with all finite and infinite boundary hypotheses
+  discharged from the differential.
+- ParentWaveUpperBoundary constructs the actual holomorphic continuation
+  across each regular real boundary point, with exact cubic derivative norm.
+- ParentWaveTraceEndpoints proves exact invariance of the canonical modulus
+  when the two endpoint atoms of every trace are removed.
+
+The second checkpoint's full weighted project build passed in GitHub Actions;
+its subsequent transitive axiom audit was canceled. A complete
+successful audit is still required before the research result can be delivered.
 
 These are intermediate proof steps toward the candidate in ATTACK.md. They
 do not establish the optimum, its value, or a sharper rate, and are not
