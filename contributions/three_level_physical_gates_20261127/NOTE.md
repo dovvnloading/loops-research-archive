@@ -11,16 +11,18 @@ human_review: none
 
 ## Claim
 
-This contribution now attacks the missing arbitrary-depth physical induction
-in NOV26_OPEN_DEPTH_GATES. The complete eight-module explicit three-level
-construction compiled at f827953946d11f7260197a80b5aaebfddbabee1c. The stronger
-arbitrary-depth declarations below are candidates until the unchanged
-repository CI builds the full project and completes its transitive axiom audit.
-No result is certified merely by source scanning or an intake check.
+This contribution proves an unconditional arbitrary-finite-depth physical
+return-tower construction for recursively separated period choices, advancing
+the physical-domain induction in NOV26_OPEN_DEPTH_GATES. All fourteen new Lean
+modules, including the final arbitrary-depth existence theorem, compiled in
+the unchanged repository project at
+`bc5e8ed68b03849b5546e4be3e9099d991187455`. Both push and PR workflows passed
+the full build and transitive axiom audit. The broader ledger obligation
+remains open for the reasons stated in the Boundary section.
 
 ### Arbitrary-depth theorem
 
-The main candidate is **DepthGate.exists_physical_tower**. For every natural
+The main theorem is **DepthGate.exists_physical_tower**. For every natural
 number k, it constructs one real quadratic parameter and k+1 distinct nested
 physical first-return restrictions of the literal map \(f_c(z)=z^2+c\).
 Every nonterminal period is strictly less than, and divides, the terminal
@@ -213,7 +215,7 @@ Baseline: `e8d82717b184b5f4e46c34a46b1445fc75f33a1c`.
 The merged `TwoLevelPhysicalGates` result gives an unbounded **two-level**
 physical family for \(q\ge17\), \(p\ge10q+30\). The archived fixed depth-three
 construction and width certificates do not supply this three-variable family
-of complete physical domains. The present candidate prepends another outer
+of complete physical domains. The present construction prepends another outer
 period to the entire signed two-level bracket and resolves the resulting
 moving-scale and between-checkpoint phase estimates. The previous theorem
 cannot simply be applied twice: the next map is a normalized polynomial
@@ -222,7 +224,7 @@ iterate, not a quadratic polynomial.
 Generic existence of finite multilevel quadratic renormalizations and complex
 bounds is classical. This contribution does not claim first discovery of
 three renormalizations, nor does a literature search establish worldwide
-priority for its explicit constants. The proposed increment is the explicit
+priority for its explicit constants. The proved increment is the explicit
 uniform physical construction and its closed arbitrary-depth prefix induction,
 beyond the archived two-level theorem. The archived [all-depth audit, Sections 1 and 3](../../research/independent_audits/tip_family_all_depths_20261116/NOTE.md)
 identifies the missing induction for the chosen physical disks and gate. Its
@@ -234,6 +236,29 @@ Relevant primary context includes Lyubich--Yampolsky,
 and Lyubich,
 [*Feigenbaum--Coullet--Tresser universality and Milnor's hairiness conjecture*](https://annals.math.princeton.edu/articles/12509).
 
+## Validation
+
+The first fully validated proof commit is
+[`bc5e8ed68b03849b5546e4be3e9099d991187455`](https://github.com/dovvnloading/loops-research-archive/commit/bc5e8ed68b03849b5546e4be3e9099d991187455).
+The subsequent documentation update does not change any Lean source.
+
+- [PR weighted Lean workflow](https://github.com/dovvnloading/loops-research-archive/actions/runs/46112382543): success.
+- [Push weighted Lean workflow](https://github.com/dovvnloading/loops-research-archive/actions/runs/46112374974): success.
+- Toolchain: `leanprover/lean4:v4.32.0`; the complete build finished successfully with 9,200 jobs.
+- Source coverage: 311 files, comprising 44 root, 262 weighted, and 5 standalone files; all registered, with no prohibited source tokens.
+- Kernel audit: `AXIOM_AUDIT_PASS weighted: 262 modules, 7092 declarations`.
+- Every new module reported allowed axioms only. In particular, `DepthGateTower` has two audited declarations, both theorems. The existing allowed basis is `propext`, `Classical.choice`, and `Quot.sound`; no additional axioms or proof placeholders were introduced.
+- Contribution intake and the PR Research validation workflow also passed. No CI workflow, ledger status, or inherited theorem was changed.
+
+The build and audit can be reproduced from the repository root with its
+configured Lean toolchain:
+
+```sh
+python3 -B code/verify_lean_coverage.py
+(cd formalization/weighted && lake build)
+python3 -B code/verify_lean_coverage.py --audit weighted
+```
+
 ## Dependencies
 
 Inherited compiled infrastructure includes `NearTwoShooting`,
@@ -244,15 +269,14 @@ Those inherited theorems are not counted as new work. All new sources belong
 to the existing `formalization/weighted` project and are registered through
 `code/contribute.py lean-add`.
 
-The local workspace has no Lean installation and insufficient free disk for
-Lean and Mathlib. The existing repository CI is the compilation authority;
-its source-coverage gate and transitive kernel-axiom audit remain unchanged.
-Compiler diagnostics and their repairs are retained in the PR's commits and
-workflow history. Human review: none.
+The existing repository CI is the compilation authority; its source-coverage
+gate and transitive kernel-axiom audit remain unchanged. Compiler diagnostics
+and their repairs are retained in the PR's commits and workflow history.
+Human review: none.
 
 ## Boundary
 
-`NOV26_OPEN_DEPTH_GATES` remains open. The stronger candidate constructs
+`NOV26_OPEN_DEPTH_GATES` remains open. The theorem constructs
 arbitrary finite depth for recursively separated period choices; it does not
 construct every prescribed finite tuning word. No conclusion is claimed about
 canonical kneading, marked KKL prime ends, physical optimal widths,
