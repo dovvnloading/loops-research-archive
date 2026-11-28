@@ -19,9 +19,9 @@ new mathematics.
 
 The `partial` front-matter label classifies the model-level scope of the
 candidate, not a claim that this packet should be accepted as a novel
-research contribution. The draft is to be closed after validation so that
-it does not continue to reserve the open obligation. No ledger or status
-record has been changed.
+research contribution. This packet is withdrawn as a proposed research
+advance, and the draft is closed to release the open obligation. No ledger
+or status record has been changed.
 
 ## Evidence
 
@@ -155,10 +155,22 @@ relaxed. The local workspace has no Lean installation and insufficient
 space to install the pinned toolchain, so the unchanged repository CI
 is the compilation and transitive-axiom judge.
 
-**Validation status:** final six-module CI validation is pending. Earlier
-runs compiled the core mode and complete variational modules; auxiliary
-proof repairs and the chain theorem are committed for validation. No
-unverified declaration is counted as a result.
+**Validation status: passed.** All 23 CI workflows succeeded at the proof
+checkpoint
+[`bda5cc3466856207eff4492f635ed24ee577bfa1`](https://github.com/dovvnloading/loops-research-archive/commit/bda5cc3466856207eff4492f635ed24ee577bfa1).
+The [weighted Lean run](https://github.com/dovvnloading/loops-research-archive/actions/runs/46111249010)
+completed the full build and the transitive axiom audit. Each of the six
+modules was audited individually, and the project-wide audit reported
+`AXIOM_AUDIT_PASS weighted: 254 modules, 6626 declarations`.
+Only the existing allowed axioms (`propext`, `Classical.choice`, and
+`Quot.sound`) occur in the audited dependencies. Source coverage and the
+checks rejecting proof trust escapes also passed. There are no proof holes,
+new axioms, or weakened checks in these sources.
+
+The final record update changes only this note; all Lean sources and their
+registrations remain byte-for-byte identical to the successful proof
+checkpoint. This establishes formal correctness of the stated model
+results. It does not establish novelty or the missing physical hypotheses.
 
 ### 5. Why the nonlinear extension does not establish novelty
 
