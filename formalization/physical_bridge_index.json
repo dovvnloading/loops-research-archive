@@ -5159,5 +5159,21 @@
       ]
     },
     "obligations": []
+  },
+  "physical-cylinder-expansion-20261128": {
+    "guide": "contributions/physical_cylinder_expansion_20261128/NOTE.md#physical-cylinder-expansion-20261128",
+    "theorems": {
+      "formalization/weighted/ActualThreeReturnExpansion.lean": [
+        "real_difference",
+        "realSecant_bounds",
+        "third_critical_bounds",
+        "first_image_bounds",
+        "second_image_bounds",
+        "third_difference",
+        "thirdSecant_bounds",
+        "third_quadratic_expansion"
+      ]
+    },
+    "obligations": []
   }
 }

@@ -74,6 +74,7 @@ formalization/weighted/ActualCrestWidth.lean	CREST
 formalization/weighted/ActualParentMarks.lean	SELECTED
 formalization/weighted/ActualParentRate.lean	ALL-PATHS
 formalization/weighted/ActualParentSupremum.lean	ALL-PATHS
+formalization/weighted/ActualThreeReturnExpansion.lean	METADATA
 formalization/weighted/AtomCutDefect.lean	CUTS CREST
 formalization/weighted/AttachmentDefectLedger.lean	DEFECT
 formalization/weighted/BinaryShiftExactness.lean	METADATA

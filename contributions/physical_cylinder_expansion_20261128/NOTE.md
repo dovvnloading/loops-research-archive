@@ -5,11 +5,13 @@ ai: OpenAI ChatGPT, GPT-6 Astra Pro; proof development and independent mathemati
 human_review: none
 ---
 
+<a id="physical-cylinder-expansion-20261128"></a>
+
 # Uniform physical cylinder contraction for the selected three-return
 
 ## Claim
 
-This draft attacks the metric part of fine-subsector escape on the actual selected primitive family. For p >= 17 and an actual selected parameter c, write d = f_c^p(0), F(z) = f_c^p(d z)/d, H = F^3, and t = -H(0). The candidate theorem is uniform expansion of the literal real return h(x) = -H(t x)/t on [-1,1] in its cosine coordinate, with expansion factor at least 20/19 on each branch. It should imply that every actual depth-n monotonicity cylinder has physical diameter at most d t pi (19/20)^n.
+This draft attacks the metric part of fine-subsector escape on the actual selected primitive family. For p >= 17 and an actual selected parameter c, write d = f_c^p(0), F(z) = f_c^p(d z)/d, H = F^3, and t = -H(0). The candidate theorem is uniform expansion of the literal real return h(x) = -H(t x)/t on [-1,1] in its cosine coordinate, with expansion factor at least 30/19 on each branch. It should imply that every actual depth-n monotonicity cylinder has physical diameter at most d t pi (19/30)^n.
 
 This is a research target, not a proved claim at this initial commit. No theorem is counted until the Lean build and dependency audit pass.
 
@@ -32,3 +34,4 @@ The target is the selected real primitive family, p >= 17, and its literal centr
 ## Attribution
 
 The canonical family and earlier physical estimates are from the archive. The expansion mechanism uses classical real-variable calculus; the intended new mathematical content is the uniform explicit estimate on these actual return maps and its physical all-depth consequence. No claim of global mathematical priority is made before validation and comparison with earlier work.
+
