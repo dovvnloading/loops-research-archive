@@ -5221,6 +5221,17 @@
         "not_twin_of_nontrivial_fiber",
         "exists_parameter_without_twin_of_nontrivial_fiber",
         "locallyConnectedAt_of_twin"
+      ],
+      "formalization/weighted/QuadraticTwinDiscontinuous.lean": [
+        "algebraicSwitch_of_algebraic",
+        "algebraicSwitch_of_not_algebraic",
+        "algebraicSwitch_real",
+        "continuous_real_restriction",
+        "algebraicSwitch_square",
+        "algebraicSwitch_add_one",
+        "algebraicSwitch_twin",
+        "algebraicSwitch_not_continuous",
+        "exists_discontinuous_twin"
       ]
     },
     "obligations": [

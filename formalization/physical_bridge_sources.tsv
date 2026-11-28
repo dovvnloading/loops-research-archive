@@ -236,6 +236,7 @@ formalization/weighted/QuadraticParameterInverse.lean	CONSTRUCT
 formalization/weighted/QuadraticParameterMotion.lean	CONSTRUCT
 formalization/weighted/QuadraticParameterUnivalence.lean	CONSTRUCT
 formalization/weighted/QuadraticTrappingEscape.lean	METADATA
+formalization/weighted/QuadraticTwinDiscontinuous.lean	METADATA
 formalization/weighted/QuadraticTwinMLC.lean	METADATA
 formalization/weighted/QuadraticTwinReal.lean	METADATA
 formalization/weighted/QuadraticTwinSemiconjugacy.lean	METADATA
