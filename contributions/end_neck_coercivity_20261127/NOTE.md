@@ -5,6 +5,8 @@ ai: OpenAI ChatGPT, GPT-6 Astra Pro; research, adversarial audit, and prospectiv
 human_review: none
 ---
 
+<a id="end-neck-coercivity-20261127"></a>
+
 # Draft: full-response coercivity through nested physical necks
 
 ## Claim
@@ -33,6 +35,53 @@ Research milestones and rejected routes will be committed here as the
 investigation proceeds. The local workspace has no Lean installation and
 insufficient free space to install the pinned toolchain; the unchanged
 repository Lean workflows will be the compilation and axiom-audit judge.
+
+### First proof checkpoint: nonlinear variational contraction
+
+Two initial Lean modules now contain the proposed algebraic and variational
+proof. Their first compilation is pending; the statements below are not yet
+reported as verified results.
+
+For a normalized nonconstant Fourier mode, put
+
+\[
+ Q_e(u,v)=\frac{(u-ev)^2+(v-eu)^2}{1-e^2},\qquad 0\le e<1.
+\]
+
+For any index set, sum these nonnegative energies in the extended
+nonnegative reals. A load is any nonnegative, degree-two homogeneous
+function of the entire trace; convexity, continuity, existence of a
+minimizer, and quadratic-form representation are not assumed. Eliminate
+the full exit trace by taking the infimum of collar energy plus load.
+
+If two loads compare in both directions by a factor \(a^2\), \(a\ge1\),
+and every mode has \(e\le r<1\), the proposed output comparison factor is
+\(b^2\), where
+
+\[
+ b=\frac{a+1+r^2(a-1)}{a+1-r^2(a-1)},\qquad
+ \frac{b-1}{b+1}=r^2\frac{a-1}{a+1}.
+\]
+
+The proof uses one common trial-trace scaling \(v\mapsto(b/a)v\).
+It therefore survives arbitrary linear mixing of the coordinates. The
+initial source files are `AnnularModeContraction.lean` and
+`AnnularVariationalResponse.lean` in `formalization/weighted/`.
+
+This checkpoint concerns all **nonconstant** Fourier coordinates. The
+relative constant mode and the native physical contact/welding
+construction remain separate. Identifying the energy with the actual
+cylinder Dirichlet problem and proving the all-depth terminal-independent
+conclusion are active work.
+
+The classical quadratic operator analogue is already in Jimmie Lawson
+and Yongdo Lim, *A Birkhoff contraction formula with applications to Riccati
+equations*, SIAM J. Control Optim. 46 (2007), 930–951,
+doi:10.1137/050637637. Related function-space contraction occurs in Zheng
+Qu, *Contraction of Riccati flows applied to the convergence analysis of a
+max-plus curse-of-dimensionality-free method*, SIAM J. Control Optim. 52
+(2014), 2677–2706, doi:10.1137/130906702. These are prior art. Neither the
+general contraction idea nor the quadratic special case is claimed as new.
 
 ## Dependencies
 

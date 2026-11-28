@@ -4512,5 +4512,41 @@
       ]
     },
     "obligations": []
+  },
+  "end-neck-coercivity-20261127": {
+    "guide": "contributions/end_neck_coercivity_20261127/NOTE.md#end-neck-coercivity-20261127",
+    "theorems": {
+      "formalization/weighted/AnnularModeContraction.lean": [
+        "one_sub_sq_pos",
+        "sq_le_sq_of_nonneg",
+        "radiusDenominator_pos",
+        "radiusNumerator_pos",
+        "radiusStep_pos",
+        "radiusStep_one_le",
+        "radiusStep_le",
+        "radiusStep_crossRatio",
+        "mode_nonneg",
+        "mode_smul",
+        "mode_at_zero",
+        "mode_completion",
+        "mode_lower",
+        "mode_coercive",
+        "mode_at_zero_le",
+        "mode_rescale"
+      ],
+      "formalization/weighted/AnnularVariationalResponse.lean": [
+        "collar_smul",
+        "collar_zero",
+        "response_zero",
+        "response_smul",
+        "comparable_weld",
+        "collar_rescale",
+        "response_contraction",
+        "welded_response_contraction"
+      ]
+    },
+    "obligations": [
+      "END_PLUMBING_TRACE_RESPONSE_CONTROL"
+    ]
   }
 }
