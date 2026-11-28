@@ -200,7 +200,7 @@ theorem actual_return_error {p : ℕ} (hp : 17 ≤ p) {c : ℝ}
     ‖normalizedReturn c p z-complexMap (kappa p c) z‖ ≤ 72*scale p := by
   have h := normalized_return_large_error c p (by omega)
     hc.2.2.2.2.2.2 hc.2.1 (actual_small hc) z hz
-  simpa only [scale,one_div_pow,mul_one_div] using h
+  simpa only [kappa,scale,one_div_pow,mul_one_div] using h
 
 /-- All actual secants on the larger disk retain their quadratic factor. -/
 theorem actual_secant_error {p : ℕ} (hp : 17 ≤ p) {c : ℝ}

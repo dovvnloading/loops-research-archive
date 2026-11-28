@@ -4091,6 +4091,27 @@
         "actual_positive_fixed_cut",
         "actual_endpoint_gates",
         "actual_complete_endpoint_gates"
+      ],
+      "formalization/weighted/GlobalCrestEndpointValues.lean": [
+        "actual_coefficient_terminal_error",
+        "actual_endpoint_signs",
+        "actual_initial_upper_gate"
+      ],
+      "formalization/weighted/GlobalCrestClassification.lean": [
+        "actual_terminal_strictAnti",
+        "actual_upper_gate",
+        "actual_full_gate_classification",
+        "parentOuter_bounds",
+        "actual_complete_parent_classification"
+      ],
+      "formalization/weighted/GlobalCrestPhysical.lean": [
+        "fullParentDisk_subset_parent",
+        "physical_fullParentDisk_subset",
+        "restricted_terminal_eq",
+        "restricted_realAngle_eq",
+        "global_endpoint_is_initial",
+        "actual_physical_endpoint",
+        "exists_actual_complete_parent"
       ]
     },
     "obligations": []
