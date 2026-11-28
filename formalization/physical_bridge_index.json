@@ -4956,7 +4956,65 @@
         "PositiveRestrictiveReturn.small_parameter_band",
         "PositiveRestrictiveReturn.inverse_parameter_budget",
         "PositiveRestrictiveReturn.return_scale",
-        "restrictive_return_localization"
+        "restrictive_return_localization",
+        "PositiveRestrictiveReturn.shooting_identity",
+        "PositiveRestrictiveReturn.sharp_parameter_bounds",
+        "restrictive_return_sharp_localization"
+      ],
+      "formalization/weighted/GlobalWindowChart.lean": [
+        "back_parameter_three_eighths",
+        "chebyshev_deficit_lower",
+        "inverse_parameter_decrease",
+        "shooting_parameter_bounds"
+      ],
+      "formalization/weighted/GlobalWindowThickness.lean": [
+        "positive_inverse_secant",
+        "shooting_parameter_comparison",
+        "restrictive_parameter_thickness"
+      ],
+      "formalization/weighted/GlobalRestrictiveExistence.lean": [
+        "exists_positive_restrictive_return"
+      ],
+      "formalization/weighted/GlobalActualWindow.lean": [
+        "actual_critical_phase_lower",
+        "actual_tip_restrictive_return"
+      ],
+      "formalization/weighted/GlobalWindowPhases.lean": [
+        "PositiveRestrictiveReturn.initial_phase_gap",
+        "PositiveRestrictiveReturn.first_phase_below",
+        "PositiveRestrictiveReturn.phase_endpoint_bounds",
+        "PositiveRestrictiveReturn.adjacent_phases_separated",
+        "PositiveRestrictiveReturn.positive_phase_above",
+        "PositiveRestrictiveReturn.positive_phases_separated",
+        "PositiveRestrictiveReturn.phase_images_disjoint"
+      ],
+      "formalization/weighted/GlobalShootingParameter.lean": [
+        "unique_shooting_parameter",
+        "selectedParameter_spec",
+        "eq_selectedParameter",
+        "selectedParameter_strictAntiOn",
+        "selectedParameter_comparison",
+        "selectedParameter_lipschitz",
+        "continuousOn_selectedParameter"
+      ],
+      "formalization/weighted/GlobalWindowBoundaryProduct.lean": [
+        "continuous_endpointProduct",
+        "endpointProduct_lipschitz",
+        "endpointProduct_bounds",
+        "endpointProduct_identity"
+      ],
+      "formalization/weighted/GlobalRestrictiveConverse.lean": [
+        "restrictive_iff_endpoint"
+      ],
+      "formalization/weighted/GlobalWindowBoundary.lean": [
+        "boundaryMap_bounds",
+        "boundaryMap_contraction",
+        "boundaryMap_continuousOn",
+        "exists_unique_boundary_scale",
+        "boundary_scale_bounds",
+        "endpoint_inequality_iff",
+        "boundary_inequality_iff",
+        "complete_restrictive_window"
       ]
     },
     "obligations": []

@@ -21,17 +21,20 @@ or mathematical-priority claim is made at this checkpoint.
 For the literal real quadratic map `f_c(x)=x^2+c`, set `d=f_c^p(0)`.
 Suppose `c` lies in `[-2,-1]`, `d>0`, the entire interval `[-d,d]` has a
 negative first image and positive images at times `2,...,p-1`, and its
-`p`-th image lies in itself. For every integer `p>=17`, the candidate theorem
-proves
+`p`-th image lies in itself. For every integer `p>=17`, the candidate argument
+gives
 
 \[
- -2\le c<-2+20\,4^{-p},\qquad 0<d<14\,4^{-p}.
+ 14\,4^{-p}<c+2<16\,4^{-p},\qquad 0<d<14\,4^{-p}.
 \]
 
 These two small-scale bounds are conclusions from global physical interval
 hypotheses. They are not assumptions. This is the proposed global-to-local
-step toward the window obligation. It does not yet prove uniqueness of the
-signed critical relation or identify a maximal parameter component.
+step toward the window obligation. The full class has parameter diameter
+less than `160*16^(-p)`. Additional candidate theorems derive pairwise
+disjointness of all physical phase images and show that every archived
+`ActualTip` belongs to this class. These statements do not yet prove
+uniqueness of the signed critical relation.
 
 ## Evidence
 
@@ -78,11 +81,37 @@ The four new registered modules are `GlobalPositiveWindow`,
    a strict `3/5` lower bound at the actual negative endpoint. The exact
    inverse secant product then gives `d*4^p<40/3<14`.
 
-The full source, not this outline, is the candidate proof. The existing
-weighted CI is running the first checkpoint. Source coverage has passed;
-kernel acceptance has not yet been observed. The local installation runs
+The full source, not this outline, is the candidate proof. The first weighted
+CI run compiled `GlobalPositiveWindow` but rejected proof elaboration in
+`GlobalInverseWindow` and `GlobalRestrictiveWindow`. Those errors have been
+corrected in the next checkpoint; no successful whole-build claim is made.
+Source coverage has passed. The local installation runs
 core Lean 4.32.0 but lacks sufficient space for the weighted dependencies,
 so weighted compilation is delegated to the unchanged repository CI.
+
+### Complete-window boundary equation
+
+The next candidate argument goes beyond an enclosure. Let `c(d)` be the
+unique positive-inverse shooting parameter for `0<=d<=14*4^(-p)`, and set
+
+\[
+ P(d)=\prod_{j=1}^{p-1}
+ \frac{B_{c(d)}^j(d)+B_{c(d)}^j(-d)}4,
+ \qquad L(d)=\frac{8\,4^{-p}}{P(d)}.
+\]
+
+The complete inverse secant identity converts endpoint invariance exactly
+to `d<=L(d)`. The product is between `3/5` and `1` on the whole shooting
+domain, and the parameter comparison and product telescoping estimate make
+`L` a contraction with Lipschitz constant at most `1/2`. This gives one
+boundary scale `D`, with `8*4^(-p)<=D<=(40/3)*4^(-p)`. The target conclusion
+is that the entire positive restrictive class equals the single parameter
+interval `[c(D),c(0))`, excluding disconnected hidden pieces. The full
+physical converse, including all intermediate interval phases, is part of
+this argument; it cannot be replaced by a terminal scalar condition alone.
+
+This classification is being developed in the PR and remains unvalidated
+until the unchanged weighted CI accepts the complete dependency chain.
 
 ### Rejected first route
 

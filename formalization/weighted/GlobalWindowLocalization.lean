@@ -1,5 +1,6 @@
 import GlobalRestrictiveWindow
 import GlobalInverseWindow
+import GlobalWindowChart
 
 /-!+# Global localization of physical restrictive return intervals
 
@@ -53,6 +54,30 @@ theorem restrictive_return_localization {c : ℝ} {p : ℕ}
       criticalValue c p ∈ Ioo (0 : ℝ) (14*scale p) :=
   ⟨⟨h.parameter_band.1, h.parameter_upper hp⟩,
     ⟨h.return_pos, h.return_scale hp⟩⟩
+
+theorem PositiveRestrictiveReturn.shooting_identity {c : ℝ} {p : ℕ}
+    (hp : 17 ≤ p) (h : PositiveRestrictiveReturn c p) :
+    shooting (p-2) (criticalValue c p) c = 0 := by
+  have hs := NearTwoShooting.forward_orbit_shooting (c := c) (n := p-2) (by
+    intro j hj
+    exact (h.critical_prefix (j+2) (by omega) (by omega)).le)
+  simpa only [Nat.sub_add_cancel (by omega : 2 ≤ p)] using hs
+
+/-- The full physical class lies in the explicit parameter corridor used
+by the local signed-tip analysis.  No parameter corridor is assumed. -/
+theorem PositiveRestrictiveReturn.sharp_parameter_bounds {c : ℝ} {p : ℕ}
+    (hp : 17 ≤ p) (h : PositiveRestrictiveReturn c p) :
+    14*scale p < c+2 ∧ c+2 < 16*scale p :=
+  GlobalWindowChart.shooting_parameter_bounds hp
+    ⟨h.parameter_band.1, (h.parameter_upper hp).le⟩
+    ⟨h.return_pos.le, (h.return_scale hp).le⟩ (h.shooting_identity hp)
+
+/-- Sharp global-to-local confinement for the literal quadratic family. -/
+theorem restrictive_return_sharp_localization {c : ℝ} {p : ℕ}
+    (hp : 17 ≤ p) (h : PositiveRestrictiveReturn c p) :
+    c+2 ∈ Ioo (14*scale p) (16*scale p) ∧
+      criticalValue c p ∈ Ioo (0 : ℝ) (14*scale p) :=
+  ⟨h.sharp_parameter_bounds hp, ⟨h.return_pos, h.return_scale hp⟩⟩
 
 end
 

@@ -123,7 +123,7 @@ theorem coarse_scale_bound {c d e : ℝ} {p : ℕ}
   have hmul := mul_le_mul_of_nonneg_left (show d-e ≤ 2*d by linarith [he.1])
     (show 0 ≤ (3/4 : ℝ)*(9*(1/3)^p) by positivity)
   have hdd : d*d ≤ ((27/2 : ℝ)*(1/3)^p)*d := by nlinarith only [h,hmul]
-  exact (mul_le_mul_right hd).mp hdd
+  exact le_of_mul_le_mul_right hdd hd
 
 private theorem coarse_budget (p : ℕ) (hp : 17 ≤ p) :
     (p : ℝ)*((27/2 : ℝ)*(1/3)^p) < 1/200 := by
@@ -155,11 +155,11 @@ private theorem product_difference_bound (a b : ℕ → ℝ) (n : ℕ)
     have hb' := hb n (by omega)
     have hprev := ih (fun j hj => ha j (by omega)) (fun j hj => hb j (by omega))
     have hpa : (∏ j ∈ Finset.range n, a j) ≤ 1 := by
-      exact Finset.prod_le_one (fun j hj => (ha j (Finset.mem_range.mp hj)).1)
-        (fun j hj => (ha j (Finset.mem_range.mp hj)).2)
+      exact Finset.prod_le_one (fun j hj => (ha j (by have := Finset.mem_range.mp hj; omega)).1)
+        (fun j hj => (ha j (by have := Finset.mem_range.mp hj; omega)).2)
     have hsum : 0 ≤ ∑ j ∈ Finset.range n, (a j-b j) := by
       exact Finset.sum_nonneg (fun j hj => sub_nonneg.mpr
-        (hb j (Finset.mem_range.mp hj)).2)
+        (hb j (by have := Finset.mem_range.mp hj; omega)).2)
     have hmul := mul_le_mul_of_nonneg_right hprev hb'.1
     have hmul' := mul_le_mul_of_nonneg_right hpa (sub_nonneg.mpr hb'.2)
     have hsum' := mul_le_mul_of_nonneg_left (hb'.2.trans ha'.2) hsum
@@ -177,7 +177,7 @@ private theorem terminal_difference {c d : ℝ} (n : ℕ)
   have hpow : (1/3 : ℝ)^n ≤ 1 := pow_le_one₀ (by norm_num) (by norm_num)
   have hmul := mul_le_mul_of_nonneg_right hpow hd.le
   simp only [zero_sub,neg_neg] at h
-  nlinarith only [h,hmul]
+  nlinarith only [h,hmul,hd]
 
 /-- The complete inverse product remains quantitatively nondegenerate even
 at the negative endpoint, after deriving its small scale from the return. -/
@@ -281,7 +281,7 @@ theorem return_scale_bound {c d e : ℝ} {p : ℕ}
   have heup : d-e ≤ 2*d := by linarith [he.1]
   have hsmall : d*((3/5 : ℝ)*4^(p-1)) < 2 := by
     have h : (d*((3/5 : ℝ)*4^(p-1)))*d < 2*d := by nlinarith only [hm,hsec,heup]
-    exact (mul_lt_mul_right hd).mp h
+    exact lt_of_mul_lt_mul_right h hd.le
   have hpower : (4 : ℝ)^p=4^(p-1)*4 := by
     rw [← pow_succ,Nat.sub_add_cancel (by omega : 1 ≤ p)]
   have htotal : d*(4 : ℝ)^p < 40/3 := by rw [hpower]; nlinarith only [hsmall]

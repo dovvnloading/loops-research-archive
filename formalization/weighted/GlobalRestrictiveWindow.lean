@@ -109,15 +109,15 @@ theorem PositiveRestrictiveReturn.inverse_endpoint {c x : ℝ} {p : ℕ}
   have hexp : p-1 = (p-2)+1 := by omega
   rw [hexp, back_succ, hback]
   have hn := h.negative_first x hx
-  simp only [show (2 : ℕ) = 1+1 from rfl, Function.iterate_succ_apply',
-    Function.iterate_one, B, realMap, add_sub_cancel_right,
-    Real.sqrt_sq_eq_abs, abs_of_neg hn]
+  change Real.sqrt ((realMap c x)^2+c-c) = -realMap c x
+  rw [add_sub_cancel_right,Real.sqrt_sq_eq_abs,abs_of_neg hn]
 
 theorem PositiveRestrictiveReturn.critical_inverse {c : ℝ} {p : ℕ}
     (hp : 2 ≤ p) (h : PositiveRestrictiveReturn c p) :
     back c (p-1) (criticalValue c p) = -c := by
-  simpa only [realMap, criticalValue, zero_pow (by decide : 2 ≠ 0), zero_add]
-    using h.inverse_endpoint hp h.zero_mem
+  have he := h.inverse_endpoint hp h.zero_mem
+  change back c (p-1) (criticalValue c p) = -realMap c 0 at he
+  simpa only [realMap,zero_pow (by decide : 2 ≠ 0),zero_add] using he
 
 theorem PositiveRestrictiveReturn.return_endpoint_inverse {c : ℝ} {p : ℕ}
     (hp : 2 ≤ p) (h : PositiveRestrictiveReturn c p) :

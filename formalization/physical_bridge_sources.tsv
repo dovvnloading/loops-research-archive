@@ -119,6 +119,7 @@ formalization/weighted/FullClonePolynomial.lean	CLONE EDGE
 formalization/weighted/FullCloneRenewal.lean	CLONE-MARKOV RENEWAL-GAP AFFINE-CORRELATION NATIVE-CORRELATION
 formalization/weighted/FullCloneSpectralMax.lean	CLONE EDGE
 formalization/weighted/FullCloneStrictGap.lean	CLONE EDGE
+formalization/weighted/GlobalActualWindow.lean	METADATA
 formalization/weighted/GlobalCrestClassification.lean	METADATA
 formalization/weighted/GlobalCrestCoefficient.lean	METADATA
 formalization/weighted/GlobalCrestCrossing.lean	METADATA
@@ -131,8 +132,16 @@ formalization/weighted/GlobalCrestPhysical.lean	METADATA
 formalization/weighted/GlobalCrestSourceGates.lean	METADATA
 formalization/weighted/GlobalInverseWindow.lean	METADATA
 formalization/weighted/GlobalPositiveWindow.lean	METADATA
+formalization/weighted/GlobalRestrictiveConverse.lean	METADATA
+formalization/weighted/GlobalRestrictiveExistence.lean	METADATA
 formalization/weighted/GlobalRestrictiveWindow.lean	METADATA
+formalization/weighted/GlobalShootingParameter.lean	METADATA
+formalization/weighted/GlobalWindowBoundary.lean	METADATA
+formalization/weighted/GlobalWindowBoundaryProduct.lean	METADATA
+formalization/weighted/GlobalWindowChart.lean	METADATA
 formalization/weighted/GlobalWindowLocalization.lean	METADATA
+formalization/weighted/GlobalWindowPhases.lean	METADATA
+formalization/weighted/GlobalWindowThickness.lean	METADATA
 formalization/weighted/GraphWeightedBridge.lean	CLONE EDGE
 formalization/weighted/LeastSaturatedCarrier.lean	METADATA
 formalization/weighted/LimbInsertionHolonomy.lean	CUTS CREST
