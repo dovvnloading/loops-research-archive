@@ -13,7 +13,8 @@ human_review: none
 
 **Implementation checkpoint: the signed-drift modules await Lean CI.**
 The support and physical-transport modules have passed the complete
-weighted build; their transitive audit is still running at this checkpoint.
+weighted build. The first signed-drift build found four elaboration
+errors in the remainder-order module; this checkpoint repairs them.
 No uncompiled assertion is counted as a validated result.
 
 The principal new target is an intrinsic, signed correction to the
@@ -21,7 +22,7 @@ archive's actual normalized return coefficient. Write
 
 - `q = scale p = (1/4)^p`;
 - `d = criticalValue c p > 0`;
-- `H(z) = normalizedReturn c p z = f_c^[p](d*z)/d`;
+- `H(z) = normalizedReturn c p z = f_c^[p] (d*z)/d`;
 - `kappa p c = -quadraticCoefficient c (p-1)*d`;
 - `k0` for the unique zero of `relation` in `[17903/10000,17904/10000]`.
 
@@ -60,6 +61,12 @@ and permits the displacement to vanish faster than the stated scale.
 The new proof rules out both possibilities by retaining the sign and
 size of the complete nonlinear remainder of the actual iterate.
 
+The earlier [finite asymptotic audit](../../research/independent_audits/crest_transport_asymptotics_20261116/NOTE.md)
+records coefficient enclosures at indices nine and sixteen and numerical
+asymptotic conjectures. It gives no uniform signed coefficient separation
+or lower remainder bound at the exponential scale. The present assertion
+extends to every admissible index and every ActualTip parameter.
+
 The proof uses no assumed Taylor remainder or approximate replacement
 for the actual polynomial. Put
 
@@ -82,7 +89,7 @@ The new modules prove the following chain.
    `0 <= E(x) <= E(1)` for every `abs x <= 1`, and `E(1) > 0`.
 
 2. **A nonvanishing correction at the natural scale.**
-   Let `X = x_(p-1)`, `Y = f_c^[p-1](d)`, and `Delta = X-Y`.
+   Let `X = x_(p-1)`, `Y = f_c^[p-1] (d)`, and `Delta = X-Y`.
    The exact final squaring step gives
    `d*E(1) >= Delta^2`, because the preceding complete remainder
    and critical point are nonnegative. The return identity gives
@@ -100,7 +107,7 @@ The new modules prove the following chain.
    actual recurrence. It is not a consequence of an unsigned error bar.
 
 3. **A forced signed critical-relation deficit.**
-   Let `y_j = H^[j](0)`, `u_j = Q_kappa^[j](0)`,
+   Let `y_j = H^[j] (0)`, `u_j = Q_kappa^[j] (0)`,
    `delta_j = y_j-u_j`, and `e = E(1)`. The exact recursion is
 
    ```text
@@ -119,8 +126,8 @@ The new modules prove the following chain.
 
 4. **Signed coefficient displacement.**
    The model relation is strictly increasing on the certified
-   coefficient interval. Its derivative is less than seven there,
-   as follows from the already archived interval certificate.
+   coefficient interval. A short rational estimate from the archived
+   critical-orbit boxes bounds its derivative by seven there.
    Thus the actual coefficient exceeds its unique limiting root,
    and `7*(kappa-k0) > 3.9*q`, which implies the stated `q/2`
    lower bound. The archived symmetric estimate supplies the upper
@@ -172,7 +179,13 @@ The first support build exposed one wrong norm-triangle lemma
 application; it was corrected in a subsequent commit. Compilation
 and audit status for the stronger modules will be recorded here after
 those checks finish. The source-registration and contribution-intake
-checks have passed on the earlier support checkpoint.
+checks have passed on the earlier support checkpoint. The initial
+signed checkpoint also exposed a documentation parser treating iterate
+notation as a local link; the notation is corrected here. After the
+workspace exhausted storage, subsequent source and registration fixes
+were committed through the GitHub API and checked by the unchanged CI.
+The supporting derivative and coefficient bounds now live in the new
+modules, leaving every pre-existing Lean source unchanged.
 
 For reproduction with the repository toolchain installed:
 
@@ -191,11 +204,12 @@ python code/verify_lean_coverage.py --audit weighted
 - `NearTwoTip` constructs actual parameters at every permitted index
   and supplies the existing symmetric coefficient upper bound.
 - `LimitingCrestParameter` supplies the unique model root, strict
-  monotonicity, and derivative interval certificate. The small added
-  public upper-slope lemma only exposes that existing certificate.
+  monotonicity, and public critical-orbit boxes.
+  `ActualCrestRelationSlope` bounds the relation derivative by seven
+  using those boxes and the exact derivative recurrence.
 - `LimitingCrestQuadraticReturn` supplies the complete actual return
-  remainder upper bound. Its existing coefficient norm bound is made
-  public with its statement and proof unchanged.
+  remainder upper bound. Its existing coefficient norm argument is
+  reproduced as an attributed private helper in the new scale module.
 - `GlobalCrestEstimates` supplies the fixed large-disk error bound.
 - `LimitingCrestArcGates` supplies the existing scalar center boxes and
   quadratic disk estimates, reproduced with attribution as private
@@ -233,8 +247,9 @@ The new mathematical content is the signed and scale-sharp nonlinear
 correction of the actual return, its forced coefficient displacement,
 and the explicit every-index support estimate. Earlier actual-parameter
 construction, scalar gates, limiting root, proper-path realization,
-metric identities and convergence are credited above. The two small
-existing-module API exposures are supporting changes, not new results.
+metric identities and convergence are credited above. The coefficient
+norm helper and model derivative bound are supporting estimates, not
+claimed as new mathematical results.
 AI mathematical and implementation reviews are not independent human
 review. Human review remains `none`. The contribution is released
 under the repository's CC0 terms.
