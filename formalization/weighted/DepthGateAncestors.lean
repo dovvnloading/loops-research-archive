@@ -585,5 +585,13 @@ def prefix {C : TerminalChart} {depth : ℕ} (A : Ancestors C depth)
         simpa only [Nat.mul_assoc] using hm
       exact lifted_terminal_nesting A hp j hc i hz m hm'
 
+/-- The explicit prefix construction supplies the complete enlarged
+ancestor invariant, with no additional geometric hypotheses. -/
+theorem exists_prefix {C : TerminalChart} {depth : ℕ} (A : Ancestors C depth)
+    (p : ℕ) (hp : C.AdmissiblePrefix p) {L U : ℝ}
+    (j : OuterChart p C.left C.right L U) :
+    Nonempty (Ancestors (C.prefix p hp j) (depth+1)) :=
+  ⟨A.prefix p hp j⟩
+
 end
 end DepthGate.Ancestors

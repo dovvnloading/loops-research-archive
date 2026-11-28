@@ -235,7 +235,7 @@ theorem prefix_lifted_pair (C : TerminalChart) {p : ℕ}
             (((quadraticMap (monicParameter p c))^[n/p]) w-
             ((outerMap c p)^[n/p]) w)‖ := by congr 1; ring
         _ ≤ ‖((quadraticMap (monicParameter p c))^[n/p]) v-
-              ((outerMap c p)^[n/p]) v‖ + 
+              ((outerMap c p)^[n/p]) v‖ +
             ‖((quadraticMap (monicParameter p c))^[n/p]) w-
               ((outerMap c p)^[n/p]) w‖ := norm_add_le _ _
         _ ≤ 2*C.budget := by
@@ -309,7 +309,7 @@ theorem prefix_moving_input (C : TerminalChart) {p : ℕ}
   have hdC : (criticalValue (monicParameter p c) C.period : ℂ) ≠ 0 := by exact_mod_cast hd
   have he := C.prefix_scale_budget hp j hc
   have hupper : |secondScale c p C.period| ≤
-      |secondScale c p C.period-criticalValue (monicParameter p c) C.period| + 
+      |secondScale c p C.period-criticalValue (monicParameter p c) C.period| +
         |criticalValue (monicParameter p c) C.period| := by
     calc
       _ = |(secondScale c p C.period-criticalValue (monicParameter p c) C.period)+
@@ -477,7 +477,7 @@ theorem prefix_terminal_first (C : TerminalChart) {p : ℕ}
   have hDupper : |secondScale c p C.period| ≤
       |criticalValue (monicParameter p c) C.period| + C.budget := by
     have ht : |secondScale c p C.period| ≤
-        |secondScale c p C.period-criticalValue (monicParameter p c) C.period| + 
+        |secondScale c p C.period-criticalValue (monicParameter p c) C.period| +
           |criticalValue (monicParameter p c) C.period| := by
       calc
         _ = |(secondScale c p C.period-criticalValue (monicParameter p c) C.period)+
@@ -562,7 +562,7 @@ theorem prefix_normalized_error (C : TerminalChart) {p : ℕ}
       (mul_pos C.margin_pos C.slack_pos).le]
   have href := C.normalized_error _ ht z hz
   have htri : ‖normalizedReturn c (C.period*p) z-complexMap (C.coefficient (monicParameter p c)) z‖ ≤
-      ‖normalizedReturn c (C.period*p) z-normalizedReturn (monicParameter p c) C.period z‖ + 
+      ‖normalizedReturn c (C.period*p) z-normalizedReturn (monicParameter p c) C.period z‖ +
       ‖normalizedReturn (monicParameter p c) C.period z-complexMap (C.coefficient (monicParameter p c)) z‖ := by
     simpa only [dist_eq_norm] using dist_triangle
       (normalizedReturn c (C.period*p) z) (normalizedReturn (monicParameter p c) C.period z)
@@ -670,5 +670,3 @@ def prefix (C : TerminalChart) (p : ℕ) (hp : C.AdmissiblePrefix p)
 end
 end TerminalChart
 end DepthGate
-
-

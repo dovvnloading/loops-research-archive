@@ -4910,6 +4910,13 @@
         "prefix_oriented_relation_error",
         "prefix_relation_left",
         "prefix_relation_right"
+      ],
+      "formalization/weighted/DepthGateAncestors.lean": [
+        "exists_prefix"
+      ],
+      "formalization/weighted/DepthGateTower.lean": [
+        "exists_tower_chart",
+        "exists_physical_tower"
       ]
     },
     "obligations": []
