@@ -60,6 +60,7 @@ formalization/weighted/ActualCrestParentPaths.lean	CREST
 formalization/weighted/ActualCrestPaths.lean	CREST
 formalization/weighted/ActualCrestProperFamilies.lean	CREST
 formalization/weighted/ActualCrestProperReturn.lean	METADATA
+formalization/weighted/ActualCrestQuartic.lean	ALL-PATHS
 formalization/weighted/ActualCrestRadialOrder.lean	METADATA
 formalization/weighted/ActualCrestRelationSlope.lean	METADATA
 formalization/weighted/ActualCrestRemainderOrder.lean	CREST

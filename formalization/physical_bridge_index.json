@@ -5159,5 +5159,17 @@
       ]
     },
     "obligations": []
+  },
+  "signed-crest-endpoint-20261128": {
+    "guide": "contributions/signed_crest_endpoint_20261128/NOTE.md#signed-crest-endpoint-20261128",
+    "theorems": {
+      "formalization/weighted/ActualCrestQuartic.lean": [
+        "quartic_remainder_step",
+        "complete_quartic_remainder_bound",
+        "normalized_quartic_identity",
+        "normalized_quartic_error"
+      ]
+    },
+    "obligations": []
   }
 }
