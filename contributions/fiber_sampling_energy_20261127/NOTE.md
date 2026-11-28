@@ -23,6 +23,10 @@ The archive's proved reduction is `UPTCR_IMPLIES_MLC`, conditional on the still-
 
 This investigation deliberately leaves the marked-width construction. The proposed pattern comes from small-ball probabilities, packing, and quantitative identifiability: a connected set of positive diameter must supply many separated observation sites, so uniformly detecting it has an energy cost. Global equidistribution alone does not provide the needed local detection bound.
 
+### First formal proof checkpoint
+
+`FiberSamplePacking.lean` now supplies finite witness selection, injectivity from strict separation, and the unnormalized quadratic energy lower bound. It is registered as a default weighted target and its public theorems are indexed. CI compilation and the transitive dependency audit are pending; no proof success is claimed before those finish.
+
 ## Dependencies
 
 Research target: `H4_RIGIDITY`; its prerequisite `H3_COERCIVITY` remains open. Planned Lean proofs use the repository-pinned Mathlib. No new analytic input is assumed proved.

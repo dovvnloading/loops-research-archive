@@ -84,6 +84,7 @@ formalization/weighted/CriticalReturnRelationStability.lean	METADATA
 formalization/weighted/DepthThreeClosure.lean	METADATA
 formalization/weighted/DepthThreeReal.lean	METADATA
 formalization/weighted/DepthThreeRemainder.lean	METADATA
+formalization/weighted/FiberSamplePacking.lean	METADATA
 formalization/weighted/FiniteFirstReturnBounds.lean	METADATA
 formalization/weighted/FiniteMarkovCorrelation.lean	FINITE-CORRELATION CLONE-OBSERVABLE RANDOM-CLOCK
 formalization/weighted/FiniteMarkovFibers.lean	REAL-FIBERS

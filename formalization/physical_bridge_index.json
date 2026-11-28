@@ -4032,5 +4032,19 @@
       ]
     },
     "obligations": []
+  },
+  "fiber-sampling-energy-20261127": {
+    "guide": "contributions/fiber_sampling_energy_20261127/NOTE.md#fiber-sampling-energy-20261127",
+    "theorems": {
+      "formalization/weighted/FiberSamplePacking.lean": [
+        "energy_nonneg",
+        "sample_witness_injective",
+        "exists_injective_samples",
+        "packing_energy_lower_bound"
+      ]
+    },
+    "obligations": [
+      "H4_RIGIDITY"
+    ]
   }
 }
