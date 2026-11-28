@@ -22,12 +22,11 @@ This packet studies the actual quadratic family
 Write `M={c:G(c)=0}`; the imported Lean theorem identifies this set
 with the bounded critical-orbit locus.
 
-**Validation status at this working revision:** the four original modules
-compiled in the unchanged weighted workflow at
-`e6195e3b91a611319fe111f4a18a3504234e9a95`; the subsequent integration of
-main also built successfully and its full transitive audit is running.
-This revision adds the Cauchy converse and the boundary density extension.
-Their kernel validation and the final all-module audit remain pending.
+**Validation status at this working revision:** the five core and Cauchy
+modules compiled in the unchanged weighted workflow. The first boundary
+density build reported two proof-script errors (an associativity rewrite
+and the namespace of `frontier`); this revision repairs both.
+The final full build and transitive axiom audit remain pending.
 
 ### A. A finite partition certificate for actual Green sublevel disks
 

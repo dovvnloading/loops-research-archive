@@ -114,7 +114,10 @@ theorem slowRegularizedGrowth_density_rate (c : ℂ)
     sphericalDensity_pair_geometric_bound c hε.le hS n
   calc
     sphericalDensity c n + sphericalDensity c (n+1) ≤ D*b^n := hpair
-    _ = (D*q^n)*r^n := by rw [mul_assoc, hcancel]
+    _ = (D*q^n)*r^n := by
+      calc
+        D*b^n = D*(q^n*r^n) := congrArg (fun t : ℝ => D*t) hcancel.symm
+        _ = (D*q^n)*r^n := (mul_assoc D (q^n) (r^n)).symm
     _ < C*r^n := mul_lt_mul_of_pos_right hn (pow_pos hr0 n)
 
 /-- The degree exponent one half cannot be improved uniformly even on
@@ -122,7 +125,7 @@ the actual boundary: the parabolic cusp is an explicit witness. -/
 theorem no_uniform_boundary_geometric_density_floor (r C : ℝ)
     (hr : (1/2:ℝ) < r) (hC : 0 < C) :
     ¬ ∀ n : ℕ, ∀ c : ℂ,
-      c ∈ Set.frontier {d : ℂ | parameterEscape d = 0} →
+      c ∈ frontier {d : ℂ | parameterEscape d = 0} →
         C*r^n ≤ sphericalDensity c n + sphericalDensity c (n+1) := by
   intro h
   obtain ⟨n, hn⟩ :=
