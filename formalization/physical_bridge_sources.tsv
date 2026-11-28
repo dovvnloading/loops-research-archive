@@ -224,6 +224,9 @@ formalization/weighted/QuadraticCriticalTrapping.lean	CONSTRUCT
 formalization/weighted/QuadraticEscapeEndpoint.lean	QUADRATIC-ESCAPE
 formalization/weighted/QuadraticEscapeFullness.lean	METADATA
 formalization/weighted/QuadraticInverseOpen.lean	CONSTRUCT
+formalization/weighted/QuadraticMixedSusceptibility.lean	METADATA
+formalization/weighted/QuadraticMixedSusceptibilityMLC.lean	METADATA
+formalization/weighted/QuadraticMonotoneFiberTopology.lean	METADATA
 formalization/weighted/QuadraticMultiplierArithmetic.lean	METADATA
 formalization/weighted/QuadraticMultiplierCoordinate.lean	METADATA
 formalization/weighted/QuadraticMultiplierDisk.lean	METADATA
