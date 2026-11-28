@@ -62,7 +62,7 @@ real ray. A reflected rectangle foliation would attain the bound. Neither
 the analytic potential construction, its complete trace-length calibration,
 nor attainment is being assumed as a substitute for proving it.
 
-### Compiled supporting checkpoint
+### Compiled supporting checkpoints
 
 `SlitLeftCrossing.parentLeaf_exists_left_real` now proves the necessary
 topological premise for the existing literal `ParentLeaf` definition:
@@ -73,9 +73,36 @@ Local compilation succeeds, and the declaration-level transitive audit of
 its three declarations permits only the repository's standard foundations.
 The source is registered for the unchanged weighted CI.
 
-This homotopy fact is classical supporting infrastructure, **not a claimed
-new research result or a settlement of the obligation**. The sharp metric,
-whole-family inequality, and matching foliation remain the hard core.
+The next analytic checkpoint contains actual proofs of the following:
+
+- `SlitCubicIntegrability.integrable_kernel` proves integrability of the
+  cubic boundary kernel, including all three square-root singularities
+  and both infinite tails. `integral_Ioo_pos` proves the period is positive.
+- `SlitCubicPeriods.ray_period_eq_finite_period` proves equality of the
+  opposite real periods by an explicit fractional-linear substitution.
+- `SlitCubicCalibration.tail_hasDerivAt` differentiates the actual
+  horizontal improper integral and obtains the negative cubic differential.
+  The same module proves continuity on the entire closed upper half-plane,
+  including the branch points, and a global integral bound.
+- `SlitCubicBoundary.tail_re_left` and `tail_re_gap` prove the actual
+  potential's real part is respectively zero and the positive period on
+  the two required boundary arcs.
+- `SlitPotentialLength.one_le_half_density_length_of_simple_excursion`
+  gives the weighted Hausdorff-length calibration for arbitrary continuous
+  simple traces, with no finite-length premise.
+- `SlitPotentialReflection.localSlopeBound_fold_re` proves the precise
+  local Lipschitz estimate after even reflection, including on the real
+  axis, without assuming differentiability there.
+
+All six analytic modules compile locally with the pinned toolchain and
+pass the repository's declaration-level transitive axiom audit. They are
+registered for the unchanged CI. The original left-crossing checkpoint's
+research and model-coverage checks have passed; its full weighted build is
+still running at the time of this commit.
+
+These are classical supporting steps, **not a claimed new research result
+or a settlement of the obligation**. The unconditional assembled density,
+its sharp area identity, and the matching foliation remain the hard core.
 
 The pinned Lean 4.32.0 toolchain and pinned Mathlib cache are available
 locally. The existing CI and trust policy are unchanged.

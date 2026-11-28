@@ -4739,6 +4739,79 @@
     "theorems": {
       "formalization/weighted/SlitLeftCrossing.lean": [
         "parentLeaf_exists_left_real"
+      ],
+      "formalization/weighted/SlitCubicPeriods.lean": [
+        "transfer_gt_third",
+        "transfer_strictMonoOn",
+        "transfer_image",
+        "transfer_hasDerivAt",
+        "transfer_density_jacobian",
+        "ray_period_eq_finite_period"
+      ],
+      "formalization/weighted/SlitCubicIntegrability.lean": [
+        "kernel_nonneg",
+        "kernel_pos",
+        "kernel_measurable",
+        "integrable_kernel",
+        "integral_Ioo_pos"
+      ],
+      "formalization/weighted/SlitPotentialLength.lean": [
+        "localSlopeBound_of_strict_derivative",
+        "hausdorff_image_le_lintegral",
+        "LocalSlopeBound.continuousAt",
+        "two_le_weighted_length_of_simple_excursion",
+        "one_le_half_density_length_of_simple_excursion"
+      ],
+      "formalization/weighted/SlitPotentialReflection.lean": [
+        "fold_re",
+        "fold_im",
+        "fold_im_nonneg",
+        "fold_eq_self",
+        "fold_lipschitz",
+        "fold_continuous",
+        "norm_fold_sub_real",
+        "localSlopeBound_fold_re"
+      ],
+      "formalization/weighted/SlitCubicCalibration.lean": [
+        "upper_open",
+        "upper_convex",
+        "upperRoot_continuous",
+        "upperRoot_eq_sqrt",
+        "sqrt_sq",
+        "upperRoot_sq",
+        "upperRoot_ne_zero",
+        "upperRoot_differentiableAt",
+        "differential_differentiableOn",
+        "exists_primitive",
+        "upperRoot_norm",
+        "differential_norm",
+        "upperRoot_real_right",
+        "upperRoot_real_left",
+        "norm_differential_real",
+        "differential_real_left",
+        "differential_real_first",
+        "differential_real_gap",
+        "differential_real_right",
+        "differential_horizontal_bound",
+        "differential_measurable",
+        "differential_continuousAt",
+        "realDensity_integrable",
+        "tailIntegrand_measurable",
+        "differential_horizontal_bound_ae",
+        "tailIntegrand_bound_ae",
+        "integrable_tailIntegrand",
+        "tail_continuousOn_closedUpper",
+        "tail_norm_le",
+        "tail_eq_shift_integral",
+        "differential_near_bound",
+        "differential_shift_tendsto_atTop",
+        "tail_hasDerivAt"
+      ],
+      "formalization/weighted/SlitCubicBoundary.lean": [
+        "period_pos",
+        "differential_real_re",
+        "tail_re_left",
+        "tail_re_gap"
       ]
     },
     "obligations": []
