@@ -100,6 +100,12 @@ formalization/weighted/CrestFirstExit.lean	METADATA
 formalization/weighted/CrestIntegralLimit.lean	METADATA
 formalization/weighted/CrestIterateLimit.lean	METADATA
 formalization/weighted/CriticalReturnRelationStability.lean	METADATA
+formalization/weighted/DepthGateAncestors.lean	DEPTH
+formalization/weighted/DepthGateBase.lean	DEPTH
+formalization/weighted/DepthGateChart.lean	DEPTH
+formalization/weighted/DepthGatePrefix.lean	DEPTH
+formalization/weighted/DepthGateRealization.lean	DEPTH
+formalization/weighted/DepthGateTower.lean	DEPTH
 formalization/weighted/DepthThreeClosure.lean	METADATA
 formalization/weighted/DepthThreeReal.lean	METADATA
 formalization/weighted/DepthThreeRemainder.lean	METADATA
@@ -234,6 +240,14 @@ formalization/weighted/TelescopeRamification.lean	METADATA
 formalization/weighted/TelescopeUnbranchedCover.lean	CONSTRUCT
 formalization/weighted/TelescopeUnivalentCollars.lean	CONSTRUCT
 formalization/weighted/TerminalFiberExclusion.lean	METADATA
+formalization/weighted/ThreeLevelDomains.lean	METADATA
+formalization/weighted/ThreeLevelFirstReturn.lean	DEPTH
+formalization/weighted/ThreeLevelMiddle.lean	DEPTH
+formalization/weighted/ThreeLevelPerturbation.lean	METADATA
+formalization/weighted/ThreeLevelPhysical.lean	DEPTH
+formalization/weighted/ThreeLevelReference.lean	METADATA
+formalization/weighted/ThreeLevelSelection.lean	DEPTH
+formalization/weighted/ThreeLevelTerminal.lean	DEPTH
 formalization/weighted/ThreeReturnAnnulus.lean	METADATA
 formalization/weighted/ThreeReturnCollar.lean	METADATA
 formalization/weighted/ThreeReturnContraction.lean	METADATA
