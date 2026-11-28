@@ -160,9 +160,9 @@ theorem cusp_response_geometric (A : ℝ) (hA : 1 < A) :
   | zero => simpa [regularizedResponse] using hK
   | succ n ih =>
       have hpow : 1 ≤ A^n := one_le_pow₀ hA.le
-      have hforce : 1 ≤ (K*ε)*A^n :=
-        hKe.trans (by simpa using mul_le_mul_of_nonneg_left hpow
-          (mul_nonneg hK0 hε.le))
+      have hforce : 1 ≤ (K*ε)*A^n := by
+        have hm := mul_le_mul_of_nonneg_left hpow (mul_nonneg hK0 hε.le)
+        exact hKe.trans (by simpa only [mul_one] using hm)
       have ha : 2*‖orbit (1/4 : ℂ) n (1/4)‖+ε ≤ 1+ε := by
         linarith only [cusp_orbit_norm n]
       calc

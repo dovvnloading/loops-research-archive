@@ -21,11 +21,16 @@ theorem criticalValue_hasDerivAt (c : ℂ) (n : ℕ) :
     HasDerivAt (fun d : ℂ => criticalValue d n) (parameterTangent c n) c := by
   induction n with
   | zero =>
-    simpa only [criticalValue, orbit, parameterTangent] using hasDerivAt_id c
+    change HasDerivAt (id : ℂ → ℂ) 1 c
+    exact hasDerivAt_id c
   | succ n ih =>
-    have h := (ih.pow 2).add (hasDerivAt_id c)
-    simpa only [criticalValue, orbit, parameterTangent, Nat.cast_ofNat,
-      Nat.reduceSub, pow_one] using h
+    have hh := HasDerivAt.add (HasDerivAt.pow ih 2) (hasDerivAt_id c)
+    have heq : (fun d : ℂ => criticalValue d (n + 1)) =
+        (fun d : ℂ => criticalValue d n) ^ 2 + id := by
+      funext d
+      simp [criticalValue, orbit]
+    rw [heq]
+    simpa only [parameterTangent, Nat.cast_ofNat, Nat.reduceSub, pow_one] using hh
 
 theorem criticalValue_deriv (c : ℂ) (n : ℕ) :
     deriv (fun d : ℂ => criticalValue d n) c = parameterTangent c n :=

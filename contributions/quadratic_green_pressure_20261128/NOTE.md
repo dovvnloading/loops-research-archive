@@ -59,7 +59,7 @@ forces failure of at least one of the explicitly stated partition inequalities.
 
 ### B. Interior and boundary consequences; a genuine threshold distinction
 
-If `epsilon>0` and `S_n(c,epsilon)<=B` for every `n`, then the entire
+For `c in M`, if `epsilon>0` and `S_n(c,epsilon)<=B` for every `n`, then the entire
 parameter disk
 
     |d-c| B <= epsilon
@@ -202,7 +202,7 @@ constant without relaxing the growth base. The case `d=c` is separate.
 
 For all orders, take `A=exp(log(2)/(k+1))`. The hypotheses supply
 `epsilon,K`; use radius `epsilon/K` and constant
-`2[log(2+epsilon)+log(3+epsilon)](K/epsilon)^(k+1)`.
+`2[log(2+epsilon)+log(3+epsilon)] * (K/epsilon)^(k+1)`.
 
 At the cusp, a real induction proves `0<=P_j(1/4)<=1/2`. For fixed
 `n`, choose `epsilon=1/[2(n+1)]`. Then
@@ -238,7 +238,7 @@ Put `q=P_n(c)`, `v=V_n(c)`, `u=2qv+1`. For `c in M`,
 Both spherical denominators are at most 25. The adjacent normalization is
 `2^(-n-1)=2^(-n)/2`; multiplication yields the constant 450.
 At zero, `P_n=0` and `V_n=1` for all `n`, proving the exact decay
-and both impossibility results. This counterexample is on `M), not a
+and both impossibility results. This counterexample is on `M`, not a
 claim of the same optimality restricted to its boundary.
 
 ### Lean modules and validation
