@@ -4032,5 +4032,67 @@
       ]
     },
     "obligations": []
+  },
+  "global-crest-classification-20261127": {
+    "guide": "contributions/global_crest_classification_20261127/NOTE.md#global-crest-classification-20261127",
+    "theorems": {
+      "formalization/weighted/GlobalCrestEstimates.lean": [
+        "normalized_return_large_error",
+        "normalizedSecant_large_error",
+        "actual_return_error",
+        "actual_secant_error",
+        "actual_return_error_small",
+        "actual_secant_re_neg",
+        "actual_return_collision_iff",
+        "actual_return_real_strictAnti"
+      ],
+      "formalization/weighted/GlobalCrestCrossing.lean": [
+        "circlePoint_angle_bound",
+        "normalizedReturn_continuous",
+        "normalizedReturn_real",
+        "normalizedReturn_imaginary",
+        "circlePoint_full_disk",
+        "circlePoint_disk",
+        "crossing_endpoint_margins",
+        "crossingCos_spec",
+        "radialPoint_eq_circlePoint",
+        "actual_crossing_exists",
+        "actual_crossing_growth",
+        "actual_crossing_unique",
+        "actual_full_crossing_small",
+        "actual_full_crossing_unique",
+        "existsUnique_actual_full_crossing",
+        "actual_first_image_positive",
+        "exists_family",
+        "actual_tip_angle_error",
+        "actual_tip_point_error",
+        "Family.point_lipschitz",
+        "Family.point_continuous",
+        "Family.point_radius",
+        "Family.point_injective",
+        "Family.point_disk",
+        "Family.point_error",
+        "Family.second_real",
+        "Family.third_real",
+        "Family.point_parent_disk",
+        "radiusProjection_eq",
+        "realAngle_continuous",
+        "terminal_continuous"
+      ],
+      "formalization/weighted/GlobalCrestOrder.lean": [
+        "family_point_negative",
+        "first_image_small",
+        "second_image_bounds",
+        "actual_terminal_injective"
+      ],
+      "formalization/weighted/GlobalCrestSourceGates.lean": [
+        "actualOrbit_cast",
+        "actualOrbit_physical",
+        "actual_positive_fixed_cut",
+        "actual_endpoint_gates",
+        "actual_complete_endpoint_gates"
+      ]
+    },
+    "obligations": []
   }
 }

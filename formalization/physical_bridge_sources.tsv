@@ -98,6 +98,10 @@ formalization/weighted/FullClonePolynomial.lean	CLONE EDGE
 formalization/weighted/FullCloneRenewal.lean	CLONE-MARKOV RENEWAL-GAP AFFINE-CORRELATION NATIVE-CORRELATION
 formalization/weighted/FullCloneSpectralMax.lean	CLONE EDGE
 formalization/weighted/FullCloneStrictGap.lean	CLONE EDGE
+formalization/weighted/GlobalCrestCrossing.lean	METADATA
+formalization/weighted/GlobalCrestEstimates.lean	METADATA
+formalization/weighted/GlobalCrestOrder.lean	METADATA
+formalization/weighted/GlobalCrestSourceGates.lean	METADATA
 formalization/weighted/GraphWeightedBridge.lean	CLONE EDGE
 formalization/weighted/LeastSaturatedCarrier.lean	METADATA
 formalization/weighted/LimbInsertionHolonomy.lean	CUTS CREST
