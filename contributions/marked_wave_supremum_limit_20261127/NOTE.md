@@ -37,6 +37,16 @@ These analytic tools are classical and are not submitted as the new result. The 
 
 The limiting surface is the plane minus the limiting slit. Its end at infinity is a cusp, whereas the finite physical surfaces satisfy the source's no-cusp standing convention. The proposed limit is therefore called the limiting marked plane-slit supremum; it is not asserted that the limiting surface itself satisfies every A.1 standing hypothesis.
 
+### Whole-family and actual-orbit checkpoint
+
+The compiled geometric family now requires a Borel union of disjoint simple proper leaves. It does not require a Borel set of chosen parametrizations. Each leaf has the exact opposite-bank endpoint conditions and a literal endpoint-fixed homotopy in the selected left-tip class. Finite-cut transport composes this entire homotopy and preserves the geometric Borel support.
+
+The exhaustion argument compresses the entire Wave by a proved continuous injective coordinate map. It fixes the large inner square and maps the whole plane into a bounded square. All originally bounded leaves are retained literally. Thus the proof uses modulus subadditivity on the escaping family without asserting that an arbitrary selected subfamily is itself a Borel Wave.
+
+ActualParentMarks also compiles. Its four coordinates are the literal values x_(2p)/x_p, x_(5p)/x_p, x_(3p)/x_p, and 1. It proves their order and convergence for the actual constructed quadratic parameters and proves the actual normalized target radius is at least 2^p/12. These geometric convergence statements are derived from the existing actual-tip estimates; they are not assumed as a replacement for the physical problem.
+
+The final supremum theorem and its physical positive-dilation identification are still under validation at this checkpoint. No completed novelty claim is made for these intermediate modules alone.
+
 ## Dependencies and prior art
 
 - research/independent_audits/maximal_native_wave_20261123/H3_WIDTH.md, especially Section 7.2.
