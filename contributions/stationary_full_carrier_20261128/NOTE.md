@@ -86,9 +86,82 @@ Neither a singleton attachment point nor an abstract prime-end circle map alone
 identifies those objects. A theorem that assumes that identification would leave
 the same native gate open.
 
+### Checkpoint 3: actual occurrence and quantitative-collar attacks
+
+The following were investigated as potential ways to remove a native hypothesis.
+They are recorded as failed or insufficient approaches, not as submitted results.
+
+**A positive-start restriction window is not a native counterexample.** An
+embedded parent in an actual primitive slit can leave the source domain, return,
+and have a middle inner-to-inner restriction whose original parameter interval
+starts after zero. This shows why an incoming window cannot be anchored merely
+by naming its carrier. It does not provide a stationary counterexample: the
+nested `A_h` selection also requires earlier retained Wave restrictions. A deep
+contact in `L_0^h` avoids the earlier pulled carriers for the initial part of
+that itinerary, so the simple construction has no required early retained
+chain. Adding earlier crossings reintroduces precisely the all-stage marking
+and coarse-filter problem. That missing verification was not assumed.
+
+**A quantitative collar around the full filled set has the wrong calibration.**
+We tested a strip/Pick-function argument for a degree-one annulus immersion
+proper at its inner circle. After an exponential change of coordinate, its
+positive Herglotz measure lies on the nonpositive real axis; positivity of the
+appropriate derivative on a sector suggests an explicit injective fraction of
+the source annulus. Applied to the full filled set, the resulting scale is
+proportional to `mod(U minus K) / 2^h`. The target estimate instead uses
+`W(U minus T)`. Since `T` is contained in `K`, the known inequality is
+`W(U minus T) <= W(U minus K)`, so this does not supply the required upper
+bound. No Lean theorem or novelty claim is made for the analytic lemma.
+
+**An actual real-polynomial pinching family still misses the proof-used regime.**
+For `c = beta - beta^2`, with `-2 < c < -1` and `1 < beta < 2`, the filled
+set contains the real interval `[-beta,beta]`, while the real postcritical
+carrier `[c,c^2+c]` stays strictly inside the circle of radius `beta`.
+Shrinking the ordinary quadratic-like outer disks toward that circle suggests
+an actual-polynomial refinement of the archive's full-filled-collar
+countermodel: circular crosscuts near `beta` force unbounded full-filled
+capacity while the smaller carrier has a bounded cutoff energy. However, the
+available real primitive example has rotation denominator `q=2` and occupancy
+bound at least two. It does not satisfy the high-type `q>b` hypothesis, produce
+the required retained stationary subwave, or refute the route-localized
+alternative. Under the requested standard, this is another off-regime
+obstruction, so it was not substituted for the requested native result.
+
+**Moving the collar to the old carrier does not yet remove the live gap.** One
+can instead examine the annulus outside the canonical old-carrier lift
+`Gamma_h(T)`, whose modulus is bounded below by `mod(U minus T) / 2^h`.
+This repairs the direction of the proposed calibration. But the decisive
+archive overlap is
+`research/independent_audits/stationary_transport_attack_20261124/CANONICAL_LIFT_AND_DIRECTION.md`:
+
+- section 1 already bounds incomplete canonical lifts by `2^h W(U minus T)`;
+- section 2 already exhausts every actual inner-ended raw occurrence by the
+  gaps of the complete lifted parent's contact sets, including middle windows,
+  and supplies the Borel enumeration;
+- section 3 already proves univalence across each complete filled cap and
+  across the union of finitely many such caps.
+
+A common quantitative chart could strengthen this geometric description, but
+it does not by itself make a raw component survive the native filters. An
+incoming shoulder can have both ends subordinate to one coarse pulled atom and
+be discarded. The archive already exhibits representative-dependent marked
+breakage in an actual embedded primitive-tip disk in
+`research/independent_audits/tip_KKL_native_tree_marking_and_marked_wave_breakage_20261109.md`.
+Neither an access pair, an arc homotopy class, nor confinement to an embedded
+collar identifies the actual retained stationary occurrence.
+
+The unresolved step is therefore still the following: use the actual selected
+`A_h` representatives and their complete nested restriction records to prove
+bilateral survival through every fine and coarse filter, or charge the failed
+family with the native uniform width bound. No such proof or actual high-type
+counterexample was obtained here.
+
 Lean and Lake are not installed in this local environment. Any proof submitted
 will therefore require a successful build in the existing repository CI before
 it is counted as a theorem. No Lean file has been added at this checkpoint.
+
+The local contribution checker passes in draft mode. That checks packet format
+and repository bookkeeping; it is not a Lean build or a mathematical validation.
 
 ## Dependencies
 
