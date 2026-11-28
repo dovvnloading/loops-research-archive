@@ -82,6 +82,10 @@ formalization/weighted/ActualCrestWidthDrift.lean	ALL-PATHS
 formalization/weighted/ActualParentMarks.lean	SELECTED
 formalization/weighted/ActualParentRate.lean	ALL-PATHS
 formalization/weighted/ActualParentSupremum.lean	ALL-PATHS
+formalization/weighted/ActualThreeReturnCylinders.lean	CONTOUR-ESCAPE
+formalization/weighted/ActualThreeReturnExpansion.lean	CONTOUR-ESCAPE
+formalization/weighted/ActualThreeReturnNormalization.lean	CONTOUR-ESCAPE
+formalization/weighted/AngularCylinderExpansion.lean	METADATA
 formalization/weighted/AtomCutDefect.lean	CUTS CREST
 formalization/weighted/AttachmentDefectLedger.lean	DEFECT
 formalization/weighted/BinaryShiftExactness.lean	METADATA
@@ -113,6 +117,7 @@ formalization/weighted/CrestResponseArithmetic.lean	ALL-PATHS
 formalization/weighted/CrestResponseConstants.lean	ALL-PATHS
 formalization/weighted/CrestResponseLinearization.lean	ALL-PATHS
 formalization/weighted/CriticalReturnRelationStability.lean	METADATA
+formalization/weighted/CylinderCriticalHit.lean	METADATA
 formalization/weighted/DepthGateAncestors.lean	DEPTH
 formalization/weighted/DepthGateBase.lean	DEPTH
 formalization/weighted/DepthGateChart.lean	DEPTH
@@ -216,6 +221,8 @@ formalization/weighted/Period27RealExactPeriod.lean	CENTER
 formalization/weighted/Period27RealKneading.lean	CENTER DIFFRACTION
 formalization/weighted/Period27RealMarkov.lean	REAL-MARKOV MARKOV-SPECTRUM
 formalization/weighted/Period27RealUniqueness.lean	CENTER
+formalization/weighted/PhysicalCentralCarrier.lean	CONTOUR-ESCAPE
+formalization/weighted/PhysicalCylinderEscape.lean	CONTOUR-ESCAPE
 formalization/weighted/PrimeEndImpressionDecomposition.lean	METADATA
 formalization/weighted/PrimeEndSectorFilters.lean	METADATA
 formalization/weighted/PrimeEndSectorImpressions.lean	METADATA
