@@ -83,6 +83,50 @@ max-plus curse-of-dimensionality-free method*, SIAM J. Control Optim. 52
 (2014), 2677–2706, doi:10.1137/130906702. These are prior art. Neither the
 general contraction idea nor the quadratic special case is claimed as new.
 
+### Adversarial novelty and physical-boundary audit
+
+The first CI run exposed a missing explicit real-number import, now repaired.
+The next run compiled `AnnularModeContraction` and the complete current
+`AnnularVariationalResponse` (including coercivity and universal comparison).
+It found proof-elaboration errors in three auxiliary modules; those are being
+repaired. No successful whole-project build or transitive axiom audit is
+claimed yet.
+
+The proposed nonlinear generalization does **not**, by itself, meet the
+requested novelty standard. There is a concrete envelope reduction. For
+every line \(\ell=\mathbb R w\), define the extended quadratic form
+\(q_{B,\ell}(tw)=t^2B(w)\), with value infinity outside that line and value
+zero at the origin. Since homogeneity is imposed for every real scalar,
+\(B\) is even and
+
+\[
+ B(v)=\inf_{\ell}q_{B,\ell}(v).
+\]
+
+Annular variational elimination commutes with this infimum. Two compared
+loads give compared quadratic forms on each *same* line. Thus passing to
+nonlinear or nonconvex loads has a direct constrained-quadratic envelope
+explanation. The all-depth fixed-welding comparison is being checked, but
+composing the contraction estimate is not independently claimed as a new
+research result. Lawson--Lim already work in infinite-dimensional Hilbert
+space; an infinite-dimensional formulation alone is not a novelty claim.
+
+The physical gap is equally concrete. The correct space for several live
+ports is the direct sum of their full trace spaces modulo **one diagonal
+constant**, retaining relative port means. The present model contains the
+nonconstant modes only. If a live external voltage \(x\) is retained, its
+terminal energy has the form \(B(v,x)\). Rescaling \(v\) alone while fixing
+\(x\) does not follow from joint quadratic homogeneity. Consequently the
+trial-trace proof cannot be applied to that full response by silently
+quotienting each port's constant mode. The archive already records this
+gauge obstruction; it is not a new counterexample from this packet.
+
+The construction of source-defined all-depth interfaces, admissible
+weldings, protected-carrier compatibility, last-live-port retention, and
+no-bypass control has not been supplied. The current investigation therefore
+has **no qualifying frontier result**. A compiled auxiliary estimate will
+not be promoted to one merely because its proof code is new.
+
 ## Dependencies
 
 The declared ledger dependencies and the complete original statement remain

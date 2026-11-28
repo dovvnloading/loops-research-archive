@@ -64,7 +64,7 @@ theorem hasDerivAt_profile (n L a b t : ℝ) :
   have hright := ((((hasDerivAt_id t).const_sub L).const_mul n).neg.exp).const_mul
     (b - attenuation n L * a)
   convert (hleft.add hright).div_const (1 - attenuation n L ^ 2) using 1 <;>
-    dsimp [profile, profileDeriv] <;> ring
+    (try dsimp [profile, profileDeriv]) <;> ring
 
 theorem hasDerivAt_profileDeriv (n L a b t : ℝ) :
     HasDerivAt (profileDeriv n L a b) (n ^ 2 * profile n L a b t) t := by
@@ -74,7 +74,7 @@ theorem hasDerivAt_profileDeriv (n L a b t : ℝ) :
     (b - attenuation n L * a)
   convert ((hleft.neg.add hright).const_mul n).div_const
     (1 - attenuation n L ^ 2) using 1 <;>
-    dsimp [profile, profileDeriv] <;> ring
+    (try dsimp [profile, profileDeriv]) <;> ring
 
 theorem continuous_profile (n L a b : ℝ) : Continuous (profile n L a b) :=
   continuous_iff_continuousAt.mpr fun t => (hasDerivAt_profile n L a b t).continuousAt
@@ -112,7 +112,11 @@ theorem harmonic_energy_eq_boundary {n L : ℝ} {h g : ℝ → ℝ}
   unfold energy
   apply intervalIntegral.integral_eq_sub_of_hasDerivAt (f := fun t => h t * g t)
   · intro t _ht
-    convert (hh t).mul (hg t) using 1 <;> ring
+    change HasDerivAt (fun s => h s * g s) ((g t) ^ 2 + n ^ 2 * (h t) ^ 2) t
+    have hscalar : (g t) ^ 2 + n ^ 2 * (h t) ^ 2 =
+        g t * g t + h t * (n ^ 2 * h t) := by ring
+    rw [hscalar]
+    exact (hh t).mul (hg t)
   · exact ((gc.pow 2).add (continuous_const.mul (hc.pow 2))).intervalIntegrable 0 L
 
 /-- Exact completion of squares in the interval variational problem.

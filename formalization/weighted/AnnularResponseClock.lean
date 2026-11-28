@@ -195,7 +195,8 @@ theorem fromProjective_tendsto_one {p : ℕ → ℝ}
     tendsto_const_nhds.add hp
   have hden : Tendsto (fun n => 1 - p n) atTop (𝓝 ((1 : ℝ) - 0)) :=
     tendsto_const_nhds.sub hp
-  simpa [fromProjective] using hnum.div hden (by norm_num : (1 : ℝ) - 0 ≠ 0)
+  simpa only [Pi.div_apply, fromProjective, add_zero, sub_zero, div_one] using
+    hnum.div hden (by norm_num : (1 : ℝ) - 0 ≠ 0)
 
 /-- Terminal data may vary with the horizon and need not have any uniform
 bound. Vanishing projective products still force the root comparison to one. -/

@@ -102,14 +102,18 @@ theorem radiusStep_inverse {r a : ℝ} (hr : 0 ≤ r) (hr1 : r < 1)
     (ha : 1 ≤ a) : radiusStep r a⁻¹ = (radiusStep r a)⁻¹ := by
   have ha0 : 0 < a := by linarith
   have ha_ne : a ≠ 0 := ha0.ne'
-  have hd : (a + 1) - r ^ 2 * (a - 1) ≠ 0 :=
-    (radiusDenominator_pos hr hr1 ha).ne'
-  have hn : (a + 1) + r ^ 2 * (a - 1) ≠ 0 := (radiusNumerator_pos ha).ne'
-  have hdi : (a⁻¹ + 1) - r ^ 2 * (a⁻¹ - 1) ≠ 0 :=
-    (scalar_denominator_pos hr hr1 (inv_nonneg.mpr ha0.le)).ne'
-  unfold radiusStep radiusNumerator radiusDenominator
-  field_simp [ha_ne, hd, hn, hdi]
-  ring
+  have hn : radiusNumerator r a ≠ 0 := (radiusNumerator_pos ha).ne'
+  have hnum : radiusNumerator r a⁻¹ = radiusDenominator r a / a := by
+    unfold radiusNumerator radiusDenominator
+    field_simp [ha_ne]
+    ring
+  have hden : radiusDenominator r a⁻¹ = radiusNumerator r a / a := by
+    unfold radiusNumerator radiusDenominator
+    field_simp [ha_ne]
+    ring
+  unfold radiusStep
+  rw [hnum, hden, inv_div]
+  field_simp [ha_ne, hn]
 
 /-- The proposed terminal pair obeys exactly the theorem's squared-radius
 comparison convention. -/
