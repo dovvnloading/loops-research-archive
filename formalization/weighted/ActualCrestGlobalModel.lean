@@ -23,6 +23,8 @@ open scoped Topology
 open LimitingCrest NearTwoTip NearTwoShooting LimitingCrestQuadraticReturn
 open LoopsLimitingCrestParameter
 
+set_option autoImplicit false
+
 noncomputable section
 
 /-- Every point of the complete parent circle lies in one fixed disk. -/

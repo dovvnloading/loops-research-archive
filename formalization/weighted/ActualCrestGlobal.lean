@@ -21,6 +21,8 @@ open LimitingCrest NearTwoTip NearTwoShooting LimitingCrestQuadraticReturn
 open LoopsLimitingCrestParameter ActualCrestCrossingWindow ActualCrestEndpoint
 open CrestIntegralLimit
 
+set_option autoImplicit false
+
 noncomputable section
 
 /-- The literal two-cut gate, with every upper-semicircle angle eligible. -/

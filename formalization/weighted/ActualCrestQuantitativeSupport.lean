@@ -19,6 +19,8 @@ open Set Function
 open NearTwoTip NearTwoShooting LimitingCrestQuadraticReturn LimitingCrest
 open LoopsLimitingCrestParameter
 
+set_option autoImplicit false
+
 noncomputable section
 
 private theorem step_sq {κ x a b l u : ℝ}

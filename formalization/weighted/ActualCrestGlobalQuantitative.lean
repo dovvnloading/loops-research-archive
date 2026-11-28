@@ -15,6 +15,8 @@ open Set Function
 open LimitingCrest NearTwoTip NearTwoShooting LimitingCrestQuadraticReturn
 open LoopsLimitingCrestParameter ActualCrestGlobalModel
 
+set_option autoImplicit false
+
 noncomputable section
 
 private theorem reciprocal_bounds {κ : ℝ} (hk : κ ∈ parameterInterval) :

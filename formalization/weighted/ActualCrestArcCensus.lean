@@ -23,6 +23,8 @@ open NearTwoTip NearTwoShooting LimitingCrestQuadraticReturn LimitingCrest
 open LoopsLimitingCrestParameter QuadraticCrestDividedDifference
 open ActualCrestCrossingWindow
 
+set_option autoImplicit false
+
 noncomputable section
 
 private theorem actual_band {p : ℕ} (hp : 17 ≤ p) {c : ℝ}

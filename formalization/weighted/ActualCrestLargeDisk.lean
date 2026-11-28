@@ -16,6 +16,8 @@ open scoped Topology
 open NearTwoTip NearTwoShooting LimitingCrestQuadraticReturn LimitingCrest
 open LoopsLimitingCrestParameter
 
+set_option autoImplicit false
+
 noncomputable section
 
 /-- The full actual return is controlled on the disk of radius two. -/

@@ -2,7 +2,8 @@ import ActualCrestGlobal
 import ActualCrestArcCensus
 import ActualCrestQuantitativeSupport
 
-/-!+# The complete original-parent terminal collar at every return index at least seventeen
+/-!
+# The complete original-parent terminal collar at every return index at least seventeen
 
 Effective complete-support control and the quantitative crossing comparison
 remove the finite exceptional range from the earlier eventual endpoint
@@ -17,6 +18,9 @@ open LimitingCrest NearTwoTip NearTwoShooting LimitingCrestQuadraticReturn
 open LoopsLimitingCrestParameter ActualCrestCrossingWindow ActualCrestEndpoint
 open ActualCrestGlobal ActualCrestGlobalQuantitative ActualCrestQuantitativeSupport
 open ActualCrestArcCensus
+open CrestIntegralLimit
+
+set_option autoImplicit false
 
 noncomputable section
 
@@ -153,7 +157,9 @@ theorem complete_original_parent_all_periods {p : ℕ} (hp : 17 ≤ p) {c : ℝ}
     (by norm_num : (663/10000 : ℝ) ≤ 133/2000) hcont.continuousOn
     (show (1 : ℝ) ∈ Icc (-terminal F (663/10000)) (-terminal F (133/2000)) by
       constructor <;> linarith)
-  have hroot : terminal F r = -1 := by linarith
+  have hroot : terminal F r = -1 := by
+    change -terminal F r = 1 at hzero
+    linarith
   have hrbracket : r ∈ Ioo (663/10000 : ℝ) (133/2000) := by
     constructor
     · by_contra h
