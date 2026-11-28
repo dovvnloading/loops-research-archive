@@ -62,6 +62,12 @@ have not yet compiled, so their declarations are not certified results.
 Local Lean 4.32.0 and the pinned Mathlib cache are installed; sequential
 compilation of the archived dependencies is in progress.
 
+The first CI build (commit e85df79) compiled TwoLevelReference and
+reported explicit elaboration errors in the remaining upstream modules.
+The next source checkpoint fixes those errors and adds the literal outer
+pullback component, its half-target boundary barrier, and its exact
+fiber census. The proposed final family is still unvalidated.
+
 ## Dependencies
 
 NOV26_DEPTH3. Existing depth-three packet, the literal all-period first-return estimates, and the source distinction between physical prescribed collars and optimal polynomial-like moduli.

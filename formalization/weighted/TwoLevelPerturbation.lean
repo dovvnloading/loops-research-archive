@@ -296,7 +296,8 @@ theorem reference_disk_displacement (a : ℝ) (ha : a ∈ Icc (-2 : ℝ) 0)
     have hmul := mul_le_mul_of_nonneg_right hp (sq_nonneg (14*scale q))
     rw [he] at hmul
     have hscale : (4 : ℝ)^(n+1)*(14*scale q)^2 ≤ 1 := by linarith
-    have hd := orbit_displacement a n (14*scale q) z (by positivity)
+    have hd := orbit_displacement a n (14*scale q) z
+      (mul_nonneg (by norm_num) (scale_pos q).le)
       (fun j _ => critical_orbit_bound a ha j) hscale hz
     linarith
 
@@ -345,7 +346,7 @@ theorem separated_period_error (p q : ℕ) (hp : 10*q+30 ≤ p) :
     (128*scale p)*(5 : ℝ)^(6*q) ≤
         (128*scale (10*q+30))*(4 : ℝ)^(9*q) :=
       mul_le_mul (mul_le_mul_of_nonneg_left hs (by norm_num)) hpow
-        (by positivity) (by positivity)
+        (by positivity) (mul_nonneg (by norm_num) (scale_pos (10*q+30)).le)
     _ = 128*(scale q*scale 30) := by rw [mul_assoc, he]
     _ ≤ scale q/100000000 := by
       have hc : 128*scale 30 ≤ (1/100000000 : ℝ) := by norm_num [scale]

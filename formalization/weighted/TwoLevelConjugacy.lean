@@ -44,14 +44,8 @@ theorem outerMap_iterate_scale (c : ℝ) (p : ℕ)
     ((outerMap c p)^[m]) z =
       (returnCoefficient p c : ℂ) *
         ((quadraticMap c)^[m*p]) (z/(returnCoefficient p c : ℂ)) := by
-  have hAC : (returnCoefficient p c : ℂ) ≠ 0 := by exact_mod_cast hA
-  induction m with
-  | zero => simp [hAC]
-  | succ m ih =>
-    rw [iterate_succ_apply', ih]
-    unfold outerMap
-    rw [mul_div_cancel_left₀ _ hAC,
-      show (m+1)*p = p+m*p by ring, iterate_add_apply]
+  simpa only [Nat.mul_comm p m] using
+    TwoLevelOuterChart.outerMap_iterate c p m hA z
 
 theorem outerMap_iterate_zero (c : ℝ) (p q : ℕ)
     (hA : returnCoefficient p c ≠ 0) :

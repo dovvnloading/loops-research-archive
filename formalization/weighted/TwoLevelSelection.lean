@@ -1,6 +1,7 @@
 import TwoLevelConjugacy
 import TwoLevelPerturbation
 import TwoLevelReference
+import TwoLevelCollisions
 
 /-!
 # An infinite two-level family selected from literal quadratic parameters
@@ -55,7 +56,7 @@ theorem chart_critical_error {p q : ℕ} (hq : 17 ≤ q)
 theorem chart_scale_bounds {p q : ℕ} (hq : 17 ≤ q)
     (hpq : 10*q+30 ≤ p) {a b l r c : ℝ}
     (h : SharpChart q a b) (g : OuterChart p a b l r) (hc : c ∈ Icc l r) :
-    6*scale q < secondScale c p q ∧ secondScale c p q < 13*scale q := by
+    6*scale q < secondScale c p q ∧ secondScale c p q < (121/10)*scale q := by
   have hA := coefficient_negative (g.coefficient_lower c hc)
   have he := chart_critical_error hq hpq h g hc q (by omega)
   rw [outerMap_iterate_zero c p q hA.ne] at he
@@ -67,6 +68,61 @@ theorem chart_scale_bounds {p q : ℕ} (hq : 17 ≤ q)
   have hs := scale_pos q
   have hd := abs_le.mp he'
   constructor <;> nlinarith only [hd.1, hd.2, hb, hdlo, hdhi, hs]
+
+theorem chart_scaled_input {p q : ℕ} (hq : 17 ≤ q)
+    (hpq : 10*q+30 ≤ p) {a b l r c : ℝ}
+    (h : SharpChart q a b) (g : OuterChart p a b l r) (hc : c ∈ Icc l r)
+    {z : ℂ} (hz : ‖z‖ ≤ 23/20) :
+    ‖(secondScale c p q : ℂ)*z‖ ≤ 14*scale q := by
+  obtain ⟨hlo,hhi⟩ := chart_scale_bounds hq hpq h g hc
+  have hD : 0 < secondScale c p q := by linarith [scale_pos q]
+  rw [norm_mul, Complex.norm_real, Real.norm_eq_abs, abs_of_pos hD]
+  have hm := mul_le_mul_of_nonneg_left hz hD.le
+  nlinarith only [hm, hhi, scale_pos q]
+
+theorem chart_phase_disk {p q : ℕ} (hq : 17 ≤ q)
+    (hpq : 10*q+30 ≤ p) {a b l r c : ℝ}
+    (h : SharpChart q a b) (g : OuterChart p a b l r) (hc : c ∈ Icc l r)
+    {z : ℂ} (hz : ‖z‖ ≤ 23/20) (j : ℕ) (hj : j ≤ q) :
+    ‖((outerMap c p)^[j]) ((secondScale c p q : ℂ)*z)‖ ≤ 12/5 := by
+  have hp : 17 ≤ p := by omega
+  have hband := TwoLevelReference.chart_parameter_band hq h (g.monic_range hc)
+  exact (TwoLevelPerturbation.iterate_stability (outerMap c p) (monicParameter p c)
+    ((secondScale c p q : ℂ)*z) q (error p) (error_nonneg p)
+    (small_error_budget hq hpq (by omega))
+    (fun w hw => g.outerMap_error hp hc w hw)
+    (fun n hn => TwoLevelPerturbation.reference_disk_orbit
+      (monicParameter p c) hband q hq (chart_scaled_input hq hpq h g hc hz) n hn)
+    j hj).2
+
+theorem chart_collision {p q : ℕ} (hq : 17 ≤ q)
+    (hpq : 10*q+30 ≤ p) {a b l r c : ℝ}
+    (h : SharpChart q a b) (g : OuterChart p a b l r) (hc : c ∈ Icc l r)
+    {z w : ℂ} (hz : ‖z‖ ≤ 23/20) (hw : ‖w‖ ≤ 23/20) :
+    normalizedReturn c (q*p) z = normalizedReturn c (q*p) w ↔
+      z = w ∨ z = -w := by
+  have hp : 17 ≤ p := by omega
+  have hA := coefficient_negative (g.coefficient_lower c hc)
+  have hD : 0 < secondScale c p q := by
+    linarith [(chart_scale_bounds hq hpq h g hc).1, scale_pos q]
+  have hDC : (secondScale c p q : ℂ) ≠ 0 := by exact_mod_cast hD.ne'
+  have hraw := TwoLevelCollisions.iterate_signed_collision (outerMap c p) hq h
+    (g.monic_range hc) (error p) (error_nonneg p)
+    (small_error_budget hq hpq (by omega))
+    (fun v hv => g.outerMap_error hp hc v hv)
+    (fun hu hv => outerMap_collision_iff hp (g.critical_orbit c hc)
+      (g.coefficient_lower c hc) hu hv)
+    (chart_scaled_input hq hpq h g hc hz) (chart_scaled_input hq hpq h g hc hw)
+  rw [← second_normalization_eq c p q hA.ne hD.ne' z,
+    ← second_normalization_eq c p q hA.ne hD.ne' w,
+    div_left_inj' hDC, hraw]
+  constructor
+  · rintro (he | he)
+    · exact Or.inl (mul_left_cancel₀ hDC he)
+    · exact Or.inr (mul_left_cancel₀ hDC (by simpa only [mul_neg] using he))
+  · rintro (he | he)
+    · exact Or.inl (congrArg (fun v : ℂ => (secondScale c p q : ℂ)*v) he)
+    · exact Or.inr (by rw [he, mul_neg])
 
 theorem chart_normalized_error {p q : ℕ} (hq : 17 ≤ q)
     (hpq : 10*q+30 ≤ p) {a b l r c : ℝ}
@@ -155,13 +211,17 @@ structure Selected (p q : ℕ) (c : ℝ) : Prop where
   first_coefficient : (3/20 : ℝ) < -returnCoefficient p c*scale p
   first_itinerary : shooting (p-2) (criticalValue c p) c = 0
   first_critical_orbit : ∀ j ≤ p, |criticalValue c j| ≤ 2
-  second_scale : 6*scale q < secondScale c p q ∧ secondScale c p q < 13*scale q
+  second_scale : 6*scale q < secondScale c p q ∧ secondScale c p q < (121/10)*scale q
   physical_scale_negative : criticalValue c (q*p) < 0
   signed_relation : criticalValue c (6*(q*p))+criticalValue c (3*(q*p)) = 0
   inner_coefficient : kappa q (monicParameter p c) ∈
     Icc (17903/10000 : ℝ) (17904/10000)
   complete_disk_error : ∀ z : ℂ, ‖z‖ ≤ 23/20 →
     ‖normalizedReturn c (q*p) z-complexMap (kappa q (monicParameter p c)) z‖ ≤ 1/500000
+  complete_collision : ∀ {z w : ℂ}, ‖z‖ ≤ 23/20 → ‖w‖ ≤ 23/20 →
+    (normalizedReturn c (q*p) z = normalizedReturn c (q*p) w ↔ z = w ∨ z = -w)
+  complete_phase_disk : ∀ {z : ℂ}, ‖z‖ ≤ 23/20 → ∀ j ≤ q,
+    ‖((outerMap c p)^[j]) ((secondScale c p q : ℂ)*z)‖ ≤ 12/5
 
 theorem exists_selected (p q : ℕ) (hq : 17 ≤ q) (hpq : 10*q+30 ≤ p) :
     ∃ c : ℝ, Selected p q c := by
@@ -198,7 +258,8 @@ theorem exists_selected (p q : ℕ) (hq : 17 ≤ q) (hpq : 10*q+30 ≤ p) :
     (mul_eq_zero.mp hzero).resolve_left hA.ne
   exact ⟨c, g.parameter_range c hc, g.return_range c hc, g.coefficient_lower c hc,
     g.itinerary c hc, g.critical_orbit c hc, hsc, hdneg, hrel,
-    h.coefficient_range (g.monic_range hc), chart_normalized_error hq hpq h g hc⟩
+    h.coefficient_range (g.monic_range hc), chart_normalized_error hq hpq h g hc,
+    chart_collision hq hpq h g hc, chart_phase_disk hq hpq h g hc⟩
 
 end
 end TwoLevelSelection

@@ -46,7 +46,7 @@ theorem approximation_barrier (F : ℂ → ℂ) {k : ℝ}
       unfold complexMap
       ring
     rw [hid] at hh
-    norm_num at hh
+    simp only [norm_one] at hh
     linarith only [hh]
   have hdiff := norm_le_norm_sub_add (complexMap k z) (F z)
   rw [norm_sub_rev] at hdiff
@@ -74,6 +74,8 @@ theorem gateDisk_estimate (F : ℂ → ℂ) {k : ℝ}
     (by linarith [hk.1]) (by linarith [hk.2]) z (-(3/4 : ℂ)) hzR.le
     (by norm_num)
   rw [sub_neg_eq_add] at hdiff
+  change ‖complexMap k z-complexMap k (-(3/4 : ℂ))‖ ≤
+    5*‖z+(3/4 : ℂ)‖ at hdiff
   have hnormQ := norm_le_norm_sub_add (complexMap k z) (complexMap k (-(3/4 : ℂ)))
   have hnormF := norm_le_norm_sub_add (F z) (complexMap k z)
   have herror := he z hzR.le

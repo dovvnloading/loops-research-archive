@@ -215,6 +215,7 @@ formalization/weighted/TwoLevelCollisions.lean	METADATA
 formalization/weighted/TwoLevelConjugacy.lean	METADATA
 formalization/weighted/TwoLevelGateDomain.lean	METADATA
 formalization/weighted/TwoLevelOuterChart.lean	METADATA
+formalization/weighted/TwoLevelOuterDomain.lean	METADATA
 formalization/weighted/TwoLevelPerturbation.lean	METADATA
 formalization/weighted/TwoLevelReference.lean	METADATA
 formalization/weighted/TwoLevelSelection.lean	METADATA

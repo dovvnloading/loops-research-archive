@@ -14,6 +14,7 @@ namespace TwoLevelOuterChart
 
 open Set Function
 open NearTwoInverse NearTwoShooting LimitingCrestQuadraticReturn
+open scoped BigOperators
 
 noncomputable section
 
@@ -330,12 +331,12 @@ theorem outerMap_error {p : ℕ} (hp : 17 ≤ p) {c : ℝ}
     rw [hp1] at he
     rw [he] at hscale
     nlinarith only [hscale]
-  have hAbound : |A|*q ≤ 1/4 := by
+  have hAbound : |A| *q ≤ 1/4 := by
     have hb := coefficient_bound c (p-1) (fun j hj => hcrit j (by omega))
     have hm := mul_le_mul_of_nonneg_right hb hq.le
-    change |A|*q ≤ _ at hm
+    change |A| *q ≤ _ at hm
     linarith only [hm, hpow]
-  have hlower' : (3/20 : ℝ) < |A|*q := by
+  have hlower' : (3/20 : ℝ) < |A| *q := by
     rw [hAabs]
     exact hlower
   have hzin : ‖z/(A : ℂ)‖ ≤ 16*q := by
@@ -375,9 +376,9 @@ theorem outerMap_error {p : ℕ} (hp : 17 ≤ p) {c : ℝ}
     ring
   rw [hid, norm_mul, Complex.norm_real, Real.norm_eq_abs]
   calc
-    |A|*‖quadraticRemainder c (p-1) (z/(A : ℂ))‖ ≤ |A|*(512*q^2) :=
+    |A| *‖quadraticRemainder c (p-1) (z/(A : ℂ))‖ ≤ |A| *(512*q^2) :=
       mul_le_mul_of_nonneg_left hRbound (abs_nonneg A)
-    _ = 512*(|A|*q)*q := by ring
+    _ = 512*(|A| *q)*q := by ring
     _ ≤ 512*(1/4)*q := by
       exact mul_le_mul_of_nonneg_right (mul_le_mul_of_nonneg_left hAbound (by norm_num)) hq.le
     _ = 128*scale p := by dsimp [q]; ring
@@ -434,6 +435,7 @@ private theorem outer_secant_nonzero {p : ℕ} (hp : 17 ≤ p) {c : ℝ}
   intro hzero
   rw [hzero, zero_sub, norm_neg, Complex.norm_real, Real.norm_eq_abs] at hE
   have hA := coefficient_negative hlower
+  change |returnCoefficient p c| ≤ 4 at hE
   rw [abs_of_neg hA] at hE
   have hm := mul_le_mul_of_nonneg_right hE hq.le
   change -returnCoefficient p c*q ≤ 4*q at hm
@@ -447,7 +449,9 @@ theorem outerMap_collision_iff {p : ℕ} (hp : 17 ≤ p) {c : ℝ}
     {z w : ℂ} (hz : ‖z‖ ≤ 12/5) (hw : ‖w‖ ≤ 12/5) :
     outerMap c p z = outerMap c p w ↔ z = w ∨ z = -w := by
   let A : ℂ := (returnCoefficient p c : ℂ)
-  have hA : A ≠ 0 := by exact_mod_cast (coefficient_negative hlower).ne
+  have hA : A ≠ 0 := by
+    dsimp [A]
+    exact_mod_cast (coefficient_negative hlower).ne
   have hp1 : p-1+1 = p := by omega
   have hid := QuadraticCrestDividedDifference.iterate_difference c (p-1) (z/A) (w/A)
   rw [hp1] at hid
@@ -491,8 +495,8 @@ theorem outerMap_real (c : ℝ) (p : ℕ) (t : ℝ) :
 theorem outerMap_zero (c : ℝ) (p : ℕ) :
     outerMap c p 0 = (monicParameter p c : ℂ) := by
   unfold outerMap monicParameter
-  rw [zero_div, iterate_real]
-  simp only [criticalValue, Complex.ofReal_mul]
+  simpa only [zero_div, Complex.ofReal_zero, criticalValue, Complex.ofReal_mul] using
+    congrArg (fun w : ℂ => (returnCoefficient p c : ℂ)*w) (iterate_real c 0 p)
 
 theorem outerMap_imaginary (c : ℝ) (p : ℕ) (hp : 0 < p) (t : ℝ) :
     (outerMap c p ((t : ℂ)*Complex.I)).im = 0 := by
@@ -536,6 +540,10 @@ theorem outerMap_continuous (c : ℝ) (p : ℕ) : Continuous (outerMap c p) := b
   have hf : Continuous (quadraticMap c) := by unfold quadraticMap; fun_prop
   exact ((hf.iterate p).comp (continuous_id.div_const _)).const_mul _
 
+theorem outerMap_differentiable (c : ℝ) (p : ℕ) : Differentiable ℂ (outerMap c p) := by
+  have hf : Differentiable ℂ (quadraticMap c) := by unfold quadraticMap; fun_prop
+  exact ((hf.iterate p).comp (differentiable_id.div_const _)).const_mul _
+
 private theorem iterate_continuous_parameter (p : ℕ) :
     Continuous (fun x : ℝ × ℂ => ((quadraticMap x.1)^[p]) x.2) := by
   induction p with
@@ -556,6 +564,25 @@ theorem OuterChart.outerMap_continuous_parameter {p : ℕ} {a b l r : ℝ}
       (fun c : ℝ => (c, z/(returnCoefficient p c : ℂ))) (Icc l r) :=
     continuous_id.continuousOn.prodMk (continuous_const.continuousOn.div hA.continuousOn hne)
   exact hA.continuousOn.mul ((iterate_continuous_parameter p).comp_continuousOn hinput)
+
+theorem OuterChart.outer_iterate_continuous_parameter {p : ℕ} {a b l r : ℝ}
+    (h : OuterChart p a b l r) (n : ℕ) (z : ℂ) :
+    ContinuousOn (fun c : ℝ => ((outerMap c p)^[n]) z) (Icc l r) := by
+  have hA : Continuous (fun c : ℝ => (returnCoefficient p c : ℂ)) :=
+    Complex.continuous_ofReal.comp (continuous_quadraticCoefficient (p-1))
+  have hne : ∀ c ∈ Icc l r, (returnCoefficient p c : ℂ) ≠ 0 := by
+    intro c hc
+    exact_mod_cast (coefficient_negative (h.coefficient_lower c hc)).ne
+  have hsub (v : ℝ → ℂ) (hv : ContinuousOn v (Icc l r)) :
+      ContinuousOn (fun c => outerMap c p (v c)) (Icc l r) := by
+    have hi : ContinuousOn (fun c => (c, v c/(returnCoefficient p c : ℂ))) (Icc l r) :=
+      continuous_id.continuousOn.prodMk (hv.div hA.continuousOn hne)
+    exact hA.continuousOn.mul ((iterate_continuous_parameter p).comp_continuousOn hi)
+  induction n with
+  | zero => exact continuous_const.continuousOn
+  | succ n ih =>
+    simp only [iterate_succ_apply']
+    exact hsub _ ih
 
 end
 end TwoLevelOuterChart
