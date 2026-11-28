@@ -96,9 +96,14 @@ theorem inverse_return_identity {p : ℕ} (hp : 17 ≤ p) {c z : ℝ}
   have hratio : kappa p c*z^2*inverseRatio c p y =
       d*z^2*(4 : ℝ)^(p-1)*phaseProduct c p d y := by
     rw [kappa_product hp hc]
-    dsimp [inverseRatio,d]
-    field_simp [hP0]
-    ring
+    change (d*(4 : ℝ)^(p-1)*phaseProduct c p d 1)*z^2*
+      (phaseProduct c p d y/phaseProduct c p d 1) =
+        d*z^2*(4 : ℝ)^(p-1)*phaseProduct c p d y
+    rw [div_eq_mul_inv]
+    calc
+      _ = (d*z^2*(4 : ℝ)^(p-1)*phaseProduct c p d y)*
+          (phaseProduct c p d 1*(phaseProduct c p d 1)⁻¹) := by ring
+      _ = _ := by rw [mul_inv_cancel₀ hP0,mul_one]
   change y=1-kappa p c*z^2*inverseRatio c p y
   rw [hratio]
   linarith only [hmain]

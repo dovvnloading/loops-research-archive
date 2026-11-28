@@ -32,7 +32,8 @@ theorem actual_signed_secant {p : ℕ} (hp : 17≤p) {c a : ℝ}
     have hm := mul_le_mul_of_nonneg_right hpone (scale_pos p).le
     simpa only [one_mul] using hm
   apply signed_relation_secant_gt_five hkc hka horder
-    (t := (p : ℝ)*scale p) (by positivity) ?_
+    (t := (p : ℝ)*scale p)
+    (mul_nonneg (Nat.cast_nonneg p) (scale_pos p).le) ?_
     (realReturn_mapsTo hc) (realReturn_mapsTo ha)
   · have h := horizon_scale_small hp
     nlinarith only [h]

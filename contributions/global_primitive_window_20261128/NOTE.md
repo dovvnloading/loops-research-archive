@@ -178,6 +178,13 @@ classification. Those algebra and elaboration steps are corrected in the
 next checkpoint; dependent global uniqueness still awaits a successful
 whole build and axiom audit.
 
+Checkpoint `2180301` compiled the complete boundary classification and the
+inverse-product strong coefficient comparison. Its remaining failures were
+absolute-value normalization in the factored error estimate and exact
+denominator cancellation in the return-shape identity; both are repaired
+in the next checkpoint. No whole-build claim follows from these individual
+module successes.
+
 ### Rejected first route
 
 Requiring only the first positive critical prefix and six signs at multiples
@@ -216,8 +223,38 @@ the formal statement. Qualitative kneading uniqueness has classical
 precedents; a literature-wide novelty claim would require further evidence
 and is not made.
 
+More precisely, the classified half-open interval is the positive-critical-
+return part of the physical restrictive class. It excludes its period-`p`
+center and includes its endpoint-invariance boundary; it is not asserted to
+be an entire customary primitive window or a hyperbolic component. To extend
+the final tip uniqueness theorem to the source's intended maximal primitive
+parameter set, one must still identify that set independently and prove that
+every signed candidate in it admits the full physical interval itinerary
+used here. Renaming the present class as that component would not close the
+gap.
+
 ## Attribution
 
 The selected family, signed relation, prior local uniqueness, and quantitative
 near-minus-two chart belong to the existing archive. The classical quadratic
-dynamics literature will be checked before making any novelty claim.
+dynamics literature prevents an unqualified novelty claim for the qualitative
+uniqueness conclusion:
+
+- John Milnor and Charles Tresser, *On Entropy and Monotonicity for Real Cubic
+  Maps*, revised 1999, section 8, p. 42, and Appendix B, Theorem B.3,
+  [arXiv:math/9809096](https://arxiv.org/abs/math/9809096), state uniqueness of
+  postcritically finite real polynomials from kneading data, up to positive
+  affine conjugacy.
+- Genadi Levin, Weixiao Shen, and Sebastian van Strien, *Positive
+  Transversality via transfer operators and holomorphic motions with
+  applications to monotonicity for interval maps*, Nonlinearity 33 (2020),
+  3970-4012, [arXiv:1902.06732](https://arxiv.org/abs/1902.06732), develop
+  positive transversality, including applications to the real quadratic
+  family.
+
+These theorems are not imported as unproved Lean assumptions. The intended
+research contribution here is the explicit quantitative control across the
+entire physical class: the exact contracting boundary equation, derived
+global confinement, parameter-dependent error secants, and the uniform
+factored-root exclusion. Bare postcritical kneading uniqueness is not
+advertised as new mathematics.

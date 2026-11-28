@@ -217,6 +217,7 @@ theorem actualFactor_model_error {c : ℝ} {p : ℕ} (hp : 17≤p)
   have hkk : |k*k|≤4 := by
     have hm := abs_product_bound hkabs hkabs
     norm_num at hm
+    rw [abs_of_nonneg (mul_nonneg hk.1 hk.1)]
     exact hm
   have hABCerr : |A*B*C-k^3|≤561*scale p := by
     have he := product_error hABerr hcerr hCb hkk
@@ -228,7 +229,7 @@ theorem actualFactor_model_error {c : ℝ} {p : ℕ} (hp : 17≤p)
     have hm := abs_product_bound hkk hkabs
     rw [show k*k*k=k^3 by ring] at hm
     norm_num at hm
-    exact hm
+    simpa only [abs_pow] using hm
   obtain ⟨hae,hve,hwe,hbe⟩ := orbit_error_bounds hp h hk
   change |a-am|≤22*scale p at hae
   change |v-vm|≤110*scale p at hve
@@ -262,7 +263,7 @@ theorem actualFactor_model_error {c : ℝ} {p : ℕ} (hp : 17≤p)
   have hkvw : |k^3*(-vm)*(1+wm)|≤16 := by
     have hm := abs_product_bound hkv hwmplus
     norm_num at hm
-    exact hm
+    simpa only [abs_mul,abs_pow,abs_neg] using hm
   have hfirst : |A*B*C*(-v)-k^3*(-vm)|≤1441*scale p := by
     have he := product_error hABCerr hve' hvb hk3
       (by positivity : 0≤561*scale p) (by positivity : 0≤110*scale p)
