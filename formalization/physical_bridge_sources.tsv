@@ -115,6 +115,7 @@ formalization/weighted/LimitingCrestQuadraticReturn.lean	METADATA
 formalization/weighted/LimitingCrestSharpCoefficient.lean	METADATA
 formalization/weighted/LocalizationSheetKernel.lean	COVER-FIBER SHEETS CONNECTOR
 formalization/weighted/MarkedSlitCompression.lean	ALL-PATHS
+formalization/weighted/MarkedSlitDiskHomotopy.lean	SLIT-CLASSES
 formalization/weighted/MarkedSlitTransport.lean	SLIT-CLASSES
 formalization/weighted/MarkedWaveSuprema.lean	GAIN
 formalization/weighted/NativeWaveGate.lean	CUTS CREST
@@ -177,6 +178,8 @@ formalization/weighted/QuadraticTrappingEscape.lean	METADATA
 formalization/weighted/QuadraticUnivalentNeighborhood.lean	CONSTRUCT
 formalization/weighted/SaturatedTelescope.lean	METADATA
 formalization/weighted/SlitWaveEscape.lean	METADATA
+formalization/weighted/SlitWaveFinite.lean	ALL-PATHS
+formalization/weighted/SlitWaveLimit.lean	ALL-PATHS
 formalization/weighted/SlitWaveModulus.lean	METADATA
 formalization/weighted/SpectralDominance.lean	CLONE EDGE
 formalization/weighted/StationaryCanonicalLift.lean	VARIABLE-EXIT

@@ -1,10 +1,4 @@
-import Mathlib.Analysis.Complex.Basic
-import Mathlib.Logic.Function.Iterate
-import Mathlib.Tactic.IntervalCases
-import Mathlib.Tactic.Linarith
-import Mathlib.Tactic.NormNum
-import Mathlib.Tactic.Positivity
-import Mathlib.Tactic.Ring
+import Mathlib
 
 /-!
 # Explicit finite-composition stability for the limiting crest gate

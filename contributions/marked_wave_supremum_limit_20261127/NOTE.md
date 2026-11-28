@@ -47,6 +47,12 @@ ActualParentMarks also compiles. Its four coordinates are the literal values x_(
 
 The final supremum theorem and its physical positive-dilation identification are still under validation at this checkpoint. No completed novelty claim is made for these intermediate modules alone.
 
+### Complete geometric supremum checkpoint
+
+SlitWaveLimit.width_tendsto_of_mark_convergence now compiles. It proves convergence of the full geometric Borel parent supremum from convergence of the four marks and exhaustion by the actual outer disks. Both quantitative modulus comparisons and the uniform escape error are proved in the project; the final limit passage does not assume them.
+
+The additional compiled modules prove a finite common metric for all parent leaves and reflect the selected plane-slit homotopy into each sufficiently large finite target disk. Thus neither infinite optimal width nor the use of a homotopy outside the physical target is being hidden. The original broad Mathlib imports in four older modules are restored in this checkpoint, so the submitted change does not alter those older proofs' dependency environment.
+
 ## Dependencies and prior art
 
 - research/independent_audits/maximal_native_wave_20261123/H3_WIDTH.md, especially Section 7.2.

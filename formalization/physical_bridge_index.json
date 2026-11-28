@@ -4171,6 +4171,51 @@
         "targetRadius_lower",
         "targetRadius_tendsto",
         "exists_converging_actual_parent_marks"
+      ],
+      "formalization/weighted/MarkedSlitDiskHomotopy.lean": [
+        "softTail_le_self",
+        "compressCoord_abs_le",
+        "compression_plane_norm_le",
+        "straightCompression_eq_plane",
+        "straightCompression_norm_le",
+        "interpolation_marking_fixed",
+        "straightCompression_avoids",
+        "Marking.norm_le_of_ends",
+        "RelSlitHomotopyIn.forget",
+        "LeftClassIn.forget",
+        "ParentLeaf.leftClassIn_ball"
+      ],
+      "formalization/weighted/SlitWaveFinite.lean": [
+        "clearance_pos",
+        "endBound_pos",
+        "parentLeaf_exists_exterior_real",
+        "parentLeaf_first_norm_le",
+        "parentLeaf_exists_distant_point",
+        "hausdorff_bounded_length",
+        "parentDensity_measurable",
+        "parentDensity_length",
+        "parentDensity_admissible",
+        "parentDensity_area_ne_top",
+        "parentWave_modulus_le"
+      ],
+      "formalization/weighted/SlitWaveLimit.lean": [
+        "modulus_le_width",
+        "width_mono",
+        "traces_map",
+        "width_le_mul_width",
+        "trace_preconnected",
+        "endpointRadius_pos",
+        "first_end_norm_le",
+        "discarded_modulus_le",
+        "traces_decompose",
+        "lamination_cutoff",
+        "width_cutoff",
+        "tendsto_of_uniform_cutoff",
+        "marking_map_eq",
+        "marking_map_symm",
+        "width_small_marks_upper",
+        "width_small_marks_lower",
+        "width_tendsto_of_mark_convergence"
       ]
     },
     "obligations": []
