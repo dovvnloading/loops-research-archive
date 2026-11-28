@@ -5269,6 +5269,81 @@
       "NOV26_OPEN_SUBSECTOR"
     ]
   },
+  "signed-crest-endpoint-20261128": {
+    "guide": "contributions/signed_crest_endpoint_20261128/NOTE.md#signed-crest-endpoint-20261128",
+    "theorems": {
+      "formalization/weighted/ActualCrestQuartic.lean": [
+        "quartic_remainder_step",
+        "complete_quartic_remainder_bound",
+        "normalized_quartic_identity",
+        "normalized_quartic_error"
+      ],
+      "formalization/weighted/ActualCrestQuarticScale.lean": [
+        "actual_quartic_coefficient_bounds",
+        "normalized_quartic_scale_bounds"
+      ],
+      "formalization/weighted/CrestEndpointQuantitative.lean": [
+        "actual_limit_large_error",
+        "actual_terminal_limit_error",
+        "model_terminal_growth",
+        "actual_endpoint_error",
+        "terminal_complex_equality",
+        "actual_endpoint_point_error",
+        "model_point_norm_le",
+        "model_endpoint_system",
+        "actual_endpoint_first_error",
+        "actual_endpoint_second_error"
+      ],
+      "formalization/weighted/CrestResponseLinearization.lean": [
+        "radius_nonneg",
+        "value_abs",
+        "base_abs",
+        "linear_bound"
+      ],
+      "formalization/weighted/CrestModelCoordinateBounds.lean": [
+        "limiting_parameter_center",
+        "model_system_center_bounds"
+      ],
+      "formalization/weighted/ActualCrestQuarticRelation.lean": [
+        "scale_small_hundred",
+        "actual_quartic_relation_error",
+        "actual_quartic_parameter_correlation"
+      ],
+      "formalization/weighted/CrestResponseConstants.lean": [
+        "reference_coordinates_positive"
+      ],
+      "formalization/weighted/CrestResponseArithmetic.lean": [
+        "endpoint_response_certificate"
+      ],
+      "formalization/weighted/ActualCrestEndpointResponse.lean": [
+        "scale_small_sixty",
+        "actual_endpoint_equations",
+        "model_endpoint_equations",
+        "model_coordinate_centers",
+        "actual_endpoint_quartic_response"
+      ],
+      "formalization/weighted/ActualCrestEndpointDrift.lean": [
+        "actual_endpoint_signed_bounds",
+        "actual_endpoint_strict_decrease",
+        "exists_strictly_decreasing_physical_endpoints"
+      ],
+      "formalization/weighted/ActualCrestQuarticCrossing.lean": [
+        "actual_return_real_at_model_crossing_lt",
+        "actual_return_negative_at_model_crossing"
+      ],
+      "formalization/weighted/ActualCrestAngularDrift.lean": [
+        "actual_crossing_cos_gt",
+        "actual_arccos_lt",
+        "actual_radialIntegrand_gt"
+      ],
+      "formalization/weighted/ActualCrestWidthDrift.lean": [
+        "actual_integral_signed_gap",
+        "actual_descendant_modulus_signed_gap",
+        "actual_physical_ratio_gt_limit"
+      ]
+    },
+    "obligations": []
+  },
   "quadratic-outlier-rigidity-20261128": {
     "guide": "contributions/quadratic_outlier_rigidity_20261128/NOTE.md#quadratic-outlier-rigidity-20261128",
     "theorems": {
