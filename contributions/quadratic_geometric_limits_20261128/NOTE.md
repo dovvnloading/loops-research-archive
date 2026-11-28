@@ -15,12 +15,13 @@ Ledger statement being addressed:
 
 ## Claim
 
-**Development checkpoint.** The statements below are the precise targets of
-new Lean modules in this pull request. Compilation and the transitive axiom
-audit are pending. No theorem below counts as validated before those checks
-pass. This contribution does not close H4 or prove MLC.
+**Proved conditional obstructions.** All eleven new Lean modules compile in
+the repository's existing CI, and the transitive axiom audit passes. The
+106 registered public theorems include exact actual-orbit identities,
+quantitative geometric-limit criteria, and the two actual-family encounter
+obstructions below. This contribution does not close H4 or prove MLC.
 
-The proposed contribution is an obstruction to a specific kind of loss of
+The contribution is an obstruction to a specific kind of loss of
 geometry in affinely normalized **actual quadratic iterates**. The mechanism
 retains each nonlinear encounter as an exact quadratic map in transported
 critical-value coordinates. Reciprocal coordinates separate the cumulative
@@ -29,7 +30,7 @@ whether a small number of persistent encounters can disappear in a quadratic
 limit.
 
 This is not a claim that geometric limits, parabolic implosion, the Schwarzian
-cocycle, or Euler approximation are new ideas. The new proposed statements are
+cocycle, or Euler approximation are new ideas. The contribution's statements are
 the explicit quantitative actual-orbit criterion and the sharp finite-encounter
 obstructions in the normalization fixed below. The literature comparison is
 part of the boundary of this claim.
@@ -171,7 +172,7 @@ E_N\le\delta^2/16.
 \tag{5}
 \]
 
-The proposed finite theorem proves, simultaneously for every `n<=N`,
+The finite theorem proves, simultaneously for every `n<=N`,
 
 \[
 \left|v_n-(v-S_n)\right|\le\frac{2E_n}{\delta},\qquad
@@ -238,7 +239,7 @@ and tend to infinity. Suppose:
 3. The same three coefficients of the complete normalized actual flight tend
    to zero.
 
-Then the proposed theorem concludes
+Then the theorem concludes
 
 \[
 \boxed{a=b=d=0.}
@@ -374,29 +375,36 @@ No broad new MLC theorem is claimed.
 
 ### 7. Progress and validation
 
-- Early draft PR opened from the stated main commit before proof development.
-- `09bc48a`: first algebraic obstruction and exact expansion submitted to CI.
-- `0b36045`: exact actual-orbit factorization and reciprocal shadowing submitted.
-- `6f6b976`: the actual polynomial identification, reciprocal estimate, and
-  three-encounter algebra compiled. Limit modules exposed ordinary proof-script
-  errors, repaired in the following checkpoint.
-- `27333b0`: the orbit-energy bounds and the actual three-encounter energy
-  obstruction compiled. The remaining uniform-limit and rational-germ proof
-  scripts required repairs; their successful compilation is not asserted at
-  this checkpoint.
-- `426cf68`: ten of the eleven new modules compiled, including the fixed
-  canonical-scale obstruction, uniform extension through zero, and rational
-  germ theorem. Three continuity proof-script errors in the actual
-  two-encounter limit bridge are repaired in the next checkpoint.
-- `e6c88fc`: the moving-point and neighborhood continuity arguments compiled;
-  two unnecessary rewrite steps in the remaining limit argument are removed
-  in the next checkpoint. The complete transitive audit still awaits a
-  successful build of that last module.
-- Local Lean is not installed; the workspace has insufficient disk space for
-  the pinned toolchain. The unchanged weighted Lean workflow is the compiler
-  and transitive-axiom judge.
-- All new files must be registered with `code/contribute.py lean-add`; the
-  existing coverage and contribution checks remain unchanged.
+The verified Lean source snapshot is
+[`7d784934ba6cce94b026cf3a1104ce009f4c9112`](https://github.com/dovvnloading/loops-research-archive/commit/7d784934ba6cce94b026cf3a1104ce009f4c9112).
+All eleven new modules were registered with `code/contribute.py lean-add`.
+
+- [Weighted spectral mathlib proofs, run 46114104881](https://github.com/dovvnloading/loops-research-archive/actions/runs/46114104881)
+  passed the complete Lean 4.32.0 / Mathlib build and the transitive axiom
+  audit: **259 weighted modules, 6,688 declarations, allowed axioms only**.
+  The audit includes every new declaration, not only selected printed theorems.
+- The unchanged source-coverage check rejects unregistered sources and proof
+  escapes. The new proofs contain no `sorry`, `admit`, new axiom,
+  `native_decide`, or other trust escape. Their dependencies are confined to
+  the permitted standard `propext`, `Classical.choice`, and `Quot.sound`.
+- [Research validation, run 46114105020](https://github.com/dovvnloading/loops-research-archive/actions/runs/46114105020)
+  passed, including root and standalone Lean audits.
+- Contribution intake, the source/theorem index, model-to-geometry coverage,
+  and all other reported pull-request workflows passed at the verified source
+  snapshot. The completed packet is also checked when the PR becomes ready.
+
+The draft PR was opened before proof development. Successive commits preserved
+the algebra (`09bc48a`), actual factorization and reciprocal estimate
+(`0b36045`, `6f6b976`), orbit-energy criterion (`27333b0`), canonical scale and
+geometric-limit bridges (`426cf68`), and final limit-proof repairs
+(`e6c88fc`, `7d78493`). Failed intermediate builds remain visible in that
+history and are not counted as validated results.
+
+Local Lean is not installed; the workspace cannot hold the pinned toolchain.
+The unchanged CI workflow supplies the compiler and axiom audit. The local
+sparse checkout also omits files required by the full contribution checker;
+that checker ran in the complete CI checkout. No workflow, status record,
+build permission, or proof-audit rule was changed.
 
 ## Dependencies
 
@@ -406,7 +414,7 @@ No broad new MLC theorem is claimed.
 - The exact quadratic recurrence, field identities, polynomial coefficients,
   finite sums, norm inequalities, and elementary limits constitute the proof.
 - No imported dynamical theorem, no new axiom, and no trust escape is used.
-  The CI axiom audit must verify this at the final commit.
+  The complete CI axiom audit verified this at the source snapshot above.
 
 ## Boundary
 
