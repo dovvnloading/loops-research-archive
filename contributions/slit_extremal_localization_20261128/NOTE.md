@@ -7,9 +7,68 @@ human_review: none
 
 <a id="slit-extremal-localization-20261128"></a>
 
-# Exact complete parent optima and attaining Waves in finite disks and the plane
+# Exact actual pairable optima and attaining Waves
 
 ## Claim
+
+### Exact simultaneous two-child optimization in the actual source
+
+`ActualPairableOptimality.pairableWidth_eq_explicit_actual_periods` proves
+an exact value for the full physical geometric two-port supremum, for
+every actual quadratic tip of period `p >= 17`. Put `G=f_c^p`,
+`R=2^(-p)`, `d=G(0)=x_p`, and let `V` be the existing archived source
+component. The positive fixed cut `alpha` is selected from its proved
+unique interval root. The source slit and ports are exactly
+
+```text
+T' = [-d,d],
+J0 = (-x_(4p), x_(2p)),
+J1 = (x_(5p), -alpha).
+```
+
+A pairable parent must have an actual initial proper restriction from
+`J1` to `J0` and an actual terminal proper restriction from `J0` to `J1`,
+with the designated local lower/upper bank accesses. Their open intervals
+lie in `V \ T'`. The intervening parent segment may leave `V`; children
+may make arbitrary excursions, and no rectifiability is assumed. The
+supremum is over all Borel parent Waves satisfying these conditions, in
+the original physical target disk and its existing parent homotopy class.
+
+Define the actual real function
+
+```text
+e(y) = -sqrt(((R+d)/(R-d))^2 - ((R+y)/(R-y))^2),
+(u,v,w,t) = (e(x_(5p)), e(x_(3p)), e(x_(6p)), e(alpha)),
+(a,b,c) = (-1/(v-u), -1/(w-u), -1/(t-u)),
+h(x) = 1/(sqrt|x-a| * sqrt|x-b| * sqrt|x-c|),
+B = integral_(a,b) h(x) dx,   A = integral_(b,c) h(x) dx.
+```
+
+The actual endpoint order `u<v<w<t` and positivity of both periods are
+proved. The theorem is
+
+```text
+ActualPairableMarking.pairableWidth hp hc = ENNReal.ofReal (A/(2*B)).
+```
+
+`ActualPairableOptimality.family_attains_pairableWidth` specifies an
+actual Borel Wave attaining that entire supremum. Each member has both
+proper restrictions simultaneously; these are not two independently
+chosen child optimizers. The existence theorem `NearTwoTip.exists_actual_tip`
+already supplies actual tips for every stated period, so this result is
+not conditional on an unproved parameter-existence premise.
+
+The archive previously gave selected round competitors and independent
+child caps, explicitly without a simultaneous optimizer. The new claim
+relative to that archive is the exact identification and attainment for
+this complete physical two-restriction problem on the whole actual source.
+The period quotient and rectangle machinery are classical. **This geometric
+class is a relaxation of the intended native class; no Lean equivalence to
+all KKL ideal-boundary, atom, survival, or minimal-base conditions is
+asserted.** The exact physical result therefore does not close the entire
+canonical ledger item or establish worldwide historical priority.
+
+### Complete parent optimization and its finite-disk variation
 
 For the archive's literal four-cut marking `a < b < c < d`, let
 
@@ -83,7 +142,7 @@ the derivative is obtained from an exact change of variables in the cubic
 periods. This fixed-mark theorem does not yet assert a sharp moving-tip
 asymptotic or a historically new variation formula.
 
-The constrained pairable problem is now being attacked through its actual
+The exact constrained geometric problem uses its actual
 source component. `ActualPairableSource.conformalChart` proves that the
 actual polynomial return maps the entire upper source component
 bijectively onto the target disk cut to its critical value.
@@ -94,21 +153,76 @@ subarcs, permitting the parent to leave the source between them.
 `SlitPairableCalibration` proves that a single common potential calibrates
 both children without a finite-length assumption.
 `SlitFourPointChart` constructs the actual four-electrode rectangle inverse
-and its closed-side extension. **This checkpoint does not yet claim an
-exact constrained optimum or an attaining pairable Wave.**
+and its closed-side extension. The new matching upper and lower bounds
+and the actual attaining Wave are assembled in `ActualPairableOptimality`.
 
 The sharper split estimate separates critical-orbit motion from disk
 geometry as `1600*(4*3906*23646*4^(-p) + 1920*2^(-p))` times the limiting
 width. This replaces the previously archived reciprocal-period cutoff
 term for the same literal geometric supremum.
 
-The advance claimed relative to the archive is the universal upper bound
-together with a matching actual maximizer for the complete parent class.
+The main advance claimed relative to the archive is the exact simultaneous
+two-restriction geometric optimization and its actual maximizer. The
+complete-parent identification and sharp disk variation are also proved.
 **The full ledger item is not declared closed.** No worldwide-priority claim
 is inferred from an archive search. The underlying analytic and
 extremal-length methods are classical.
 
 ## Evidence
+
+### Actual full-source coordinate and simultaneous optimizer
+
+`ActualPairableSource` proves that the whole archived upper source maps
+bijectively under the actual return `G` to the disk cut from its left
+boundary to `d`. It proves full-source containment, exact signed fibers,
+criticality, and surjectivity; these are not supplied as chart hypotheses.
+
+To remove the square-root bank discontinuity at the physical ports,
+`ActualPairableCoordinate` factors the complete even return as
+
+```text
+G(z) = d + z^2*S(z),   Re S(z) < 0,
+H(z) = z*sqrt(-S(z)),
+J(z) = 2*sqrt(R)*H(z)*sqrt(R^2-d*G(z)) / ((R-d)*(R-G(z))).
+```
+
+Both square-root arguments have strictly positive real part on the whole
+source. The actual function `J` is holomorphic and injective on `V`, has
+nonzero derivative even at the critical point, respects conjugation, and
+maps `V`'s upper half onto the complete upper half-plane. Injectivity uses
+the exact `+/-` return fibers and oddness; the sign is identified on the
+connected upper source. `ActualPairableElectrodes` then proves the four
+explicit radical formulas in the claim from `J^2` and the negative-real
+branch. No unknown uniformizing map remains in the answer.
+
+`SlitConformalCalibration` transports the sharp local slope through actual
+conformal charts. `SlitFourPointMetric` supplies the global map
+`z -> -1/(z-u)` on its punctured-plane domain. Their common cubic potential
+is zero on `J0` and one on `J1`; each of the two designated temporal
+children contributes one transition. Parent simplicity prevents duplicate
+positive Hausdorff-one-measure in counting those transitions. Its half
+density is therefore admissible for every allowed parent, and the actual
+Jacobian gives area at most `A/(2*B)`. This proves the universal bound in
+`ActualPairableUpperBound`, including nonsymmetric leaves and source exits
+between the children.
+
+`ActualPairableClosedChart` transports the full rectangle inverse through
+the regular global inverse of `J`. Ordinary analytic inversion handles
+both real port edges. `SlitReflectedRectangles` proves the reflected full
+horizontal family is simple, has the literal left-reference homotopy,
+has pairwise disjoint interiors and Borel geometric support (by a
+countable compact exhaustion of the jointly continuous evaluation map).
+`ActualPairableWaves` instantiates this entire construction in the original
+physical source and disk. Its designated children meet at the midpoint;
+their open temporal intervals are disjoint and properly end on the source
+slit. Coincident physical endpoints have the distinct prescribed bank
+accesses.
+
+Finally `ActualPairableLeafLength` bounds each complete physical trace's
+weighted Hausdorff length by its two actual inverse-horizontal integrals.
+Cauchy--Schwarz, Fubini, and the actual chart Jacobian prove area at least
+`A/(2*B)` for every measurable extended density admissible for this family.
+This matches the universal upper bound and proves actual attainment.
 
 ### Actual density and exact energy
 
@@ -254,9 +368,11 @@ preserved by the mechanical main merge `0be46b59`; its full weighted CI run
 `46120054502` passed. The finite-disk and physical exponential-bound commit
 `75f85b82472af2d96d91c3c95e405e3140ea38b9` passed the complete weighted Lean
 build and transitive axiom audit in both runs `46120979598` and `46120976219`.
-The new sharp-limit and actual-pairable-source modules compile locally and
-pass unique declaration-level axiom audits. Their remote CI validation is
-reported independently after this checkpoint.
+The sharp-limit and actual-source commit
+`dc1be854c2ba15ddca9a95bf9789052810e02162` also passed the complete weighted
+build and transitive axiom audit in run `46122315623`. The exact pairable
+checkpoint compiles locally and is registered for the same remote checks;
+its CI result is not inferred from the earlier run.
 
 ### Prior archive work and comparison
 
@@ -312,8 +428,13 @@ plane, including the literal physical actual-tip problems for `p >= 17`
 and their limiting marking. A Lean identification with every aspect of
 the external KKL ideal-boundary/minimal-base definition is not supplied.
 The periods `3 <= p < 17` are not instantiated from physical tip existence
-certificates here. No equality with the separately constrained pairable
-problem is claimed; the written archive already states strict separation.
+certificates here. The full geometric two-port pairable supremum and its attaining Wave are
+now also determined exactly. Native KKL equivalence, designated deck
+classes, atom filters, survival semantics, and the ideal minimal-base
+conditions remain outside these Lean theorem types. Identification of the
+orbit-defined source slit with every external Hubbard-tree convention is
+also not asserted here. No equality between unconstrained and constrained
+suprema is claimed; the written archive already states strict separation.
 No status change is requested. H1-H4, UPTCR, and MLC remain open. The work
 does not establish a historical first-priority claim.
 
