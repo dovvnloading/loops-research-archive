@@ -30,8 +30,7 @@ theorem real_difference {p : ℕ} (hp : 17 ≤ p) {c : ℝ}
   have h := congrArg Complex.re
     (normalized_difference c p (by omega) hc.2.1.ne' (x : ℂ) (y : ℂ))
   have hs : (x : ℂ)^2-(y : ℂ)^2 = ((x^2-y^2 : ℝ) : ℂ) := by
-    push_cast
-    rfl
+    simp only [Complex.ofReal_sub, Complex.ofReal_pow]
   rw [hs] at h
   simpa only [Complex.sub_re, Complex.mul_re, Complex.ofReal_re,
     Complex.ofReal_im, zero_mul, sub_zero, actualMap, realSecant] using h

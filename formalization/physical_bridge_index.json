@@ -5172,8 +5172,67 @@
         "third_difference",
         "thirdSecant_bounds",
         "third_quadratic_expansion"
+      ],
+      "formalization/weighted/AngularCylinderExpansion.lean": [
+        "angleDistance_nonneg",
+        "angleDistance_comm",
+        "angleDistance_neg_neg",
+        "angleDistance_le_pi",
+        "abs_sub_le_angleDistance",
+        "endpoint_bounds",
+        "positive_branch_mapsTo",
+        "mapsTo",
+        "positive_branch_interior",
+        "neg_deriv_lower",
+        "positive_branch_bound",
+        "branch_bound",
+        "iterate_mem",
+        "itinerary_angle_bound",
+        "cylinder_diameter_le"
+      ],
+      "formalization/weighted/ActualThreeReturnNormalization.lean": [
+        "centralRadius_bounds",
+        "centralRadius_pos",
+        "actualMap_differentiable",
+        "actualOrbit_differentiable",
+        "centralMap_differentiable",
+        "third_even",
+        "centralMap_even",
+        "centralMap_zero",
+        "centralMap_one",
+        "centralMap_square_bounds",
+        "physicalPoint_semiconj"
+      ],
+      "formalization/weighted/ActualThreeReturnCylinders.lean": [
+        "physicalPoint_iterate",
+        "physicalPoint_distance",
+        "physical_sameBranch_iff",
+        "physical_itinerary_iff",
+        "physical_cylinder_pair_bound",
+        "physical_branch_separation",
+        "exists_physical_cylinder_contraction"
+      ],
+      "formalization/weighted/CylinderCriticalHit.lean": [
+        "exists_interior_precritical"
+      ],
+      "formalization/weighted/PhysicalCylinderEscape.lean": [
+        "physical_precritical_mesh",
+        "exists_uniform_physical_precritical_mesh"
+      ],
+      "formalization/weighted/PhysicalCentralCarrier.lean": [
+        "critical_third_eq_negative_scale",
+        "critical_sixth_eq_scale",
+        "physicalPoint_one",
+        "physicalPoint_neg_one",
+        "physicalInterval_eq",
+        "physicalAngle_physicalPoint",
+        "physical_interval_invariant",
+        "physical_angular_expansion"
       ]
     },
-    "obligations": []
+    "obligations": [],
+    "research_updates": [
+      "NOV26_OPEN_SUBSECTOR"
+    ]
   }
 }
