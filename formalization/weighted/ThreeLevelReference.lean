@@ -424,11 +424,12 @@ theorem physical_phase_pair_lower {q r : ℕ} (hr : 17 ≤ r)
   have hnform : n = n%q+(n/q)*q := by nlinarith only [he]
   by_cases hi0 : n%q = 0
   · have hj0 : 1 ≤ n/q := by
-      by_contra! hh
-      have heq : n/q = 0 := by omega
-      rw [hi0, heq] at he
-      simp at he
-      omega
+      cases hdiv : n/q with
+      | zero =>
+        have hnzero : n = 0 := by
+          simpa only [hi0, hdiv, Nat.mul_zero, Nat.add_zero] using he.symm
+        omega
+      | succ k => exact Nat.succ_le_succ (Nat.zero_le k)
     have hnform' : n = (n/q)*q := by rw [hi0, zero_add] at hnform; exact hnform
     rw [hnform']
     exact coarse_phase_pair_lower hr hqr h g ht hz hw (n/q) hj0 hj

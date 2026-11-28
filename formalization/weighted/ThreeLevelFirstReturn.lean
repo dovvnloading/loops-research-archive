@@ -32,11 +32,12 @@ private theorem first_return_of_blocks (F : ℂ → ℂ) (p Q : ℕ)
   have hnform : n = n%p+(n/p)*p := by nlinarith only [he]
   by_cases hmod : n%p = 0
   · have hdpos : 1 ≤ n/p := by
-      by_contra! hh
-      have hd0 : n/p = 0 := by omega
-      rw [hmod, hd0] at he
-      simp at he
-      omega
+      cases hquot : n/p with
+      | zero =>
+        have hnzero : n = 0 := by
+          simpa only [hmod, hquot, Nat.mul_zero, Nat.add_zero] using he.symm
+        omega
+      | succ k => exact Nat.succ_le_succ (Nat.zero_le k)
     have hnblock : n = (n/p)*p := by
       simpa only [hmod, zero_add] using hnform
     rw [hnblock]
