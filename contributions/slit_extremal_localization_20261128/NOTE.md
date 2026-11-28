@@ -7,7 +7,7 @@ human_review: none
 
 <a id="slit-extremal-localization-20261128"></a>
 
-# Exact actual pairable optima and attaining Waves
+# Exact actual pairable optima, attainment, and their limiting maximum
 
 ## Claim
 
@@ -67,6 +67,40 @@ class is a relaxation of the intended native class; no Lean equivalence to
 all KKL ideal-boundary, atom, survival, or minimal-base conditions is
 asserted.** The exact physical result therefore does not close the entire
 canonical ledger item or establish worldwide historical priority.
+
+### Convergence to the attained limiting-domain maximum
+
+Let `Q_k(z)=1-k*z^2`, `q0=0`, `q_(j+1)=Q_k(qj)`, where `k` satisfies the
+archive's proved limiting parameter interval and relation `q6+q3=0`.
+Let `alpha_infinity` be its unique positive fixed point. The limiting
+physical problem has full-plane source and ambient domain, the source
+slit `[-1,1]`, the existing limiting parent marking `(q2,q5,q3,1)`, and
+ports `(-q4,q2)` and `(q5,-alpha_infinity)`.
+
+`ActualPairableLimitModel.limitingFamily_attains` constructs an actual
+Borel pairable Wave attaining the entire limiting-domain supremum. Its
+exact value is the same four-port cubic ratio, evaluated at
+
+```text
+(u,v,w,t) = (-q4,q2,q5,-alpha_infinity).
+```
+
+`ActualPairableLimit.pairable_optimum_converges` proves
+
+```text
+pairableWidth_(n+17) --> limitingPairableWidth,
+```
+
+for **every** sequence `c_n` with `ActualTip (n+17) c_n`. Both sides are the
+complete geometric pairable suprema just defined, and both are attained.
+The real-valued version is `pairable_optimum_real_converges`. The proof
+does not assume convergence of extremizers or a separately postulated
+conformal realization. `ActualPairableDomainLimit.eventually_compact_subset` additionally proves
+that every fixed compact subset of the plane eventually lies in the
+critical-value-normalized actual source `V_p/d_p`. Thus the full-plane
+source is supported by an actual exhaustion theorem, not supplied as a
+convergence premise. No convergence of the maximizing foliations is
+asserted.
 
 ### Complete parent optimization and its finite-disk variation
 
@@ -248,11 +282,22 @@ Here `delta -> 0`, so each normalized electrode tends to
 `-sqrt(1-u_limit)`. The four limiting values are exactly a common positive
 factor `sqrt(k)` times the limiting physical source ports
 `(-q4,q2,q5,-alpha_infinity)`, where `q_(j+1)=1-k*q_j^2`, `q0=0`.
-These endpoint-limit statements compile. `SlitFourPointLimit` also proves
-exact positive-scale invariance and continuity of the complete four-port
-period value, using the proved full modulus and mark transport. The complete optimum-to-optimum
-convergence assembly is the next checkpoint and is not inferred from
-endpoint convergence alone here.
+`SlitFourPointLimit` proves exact positive-scale invariance and continuity
+of the complete four-port period value, using the proved full modulus and
+mark transport. `ActualPairableConvergence` applies those theorems to the
+actual normalized electrodes and the exact finite pairable optimum.
+
+`SlitReflectedRectangleModulus` supplies the all-density lower estimate for
+a general actual analytic rectangle with its continuous edge velocity.
+`SlitFourPointPairable` proves exact full-plane two-port optimization and
+actual attainment. `ActualPairableLimitModel` instantiates it with the
+literal limiting source slit, parent marking, and physical ports.
+`ActualPairableLimit` then identifies the preceding finite-value limit with
+this attained limiting-domain maximum. `ActualPairableDomainLimit` proves
+compact exhaustion using the whole physical-disk estimate
+`d*|evenSecant| <= 2`, hence `|G(d*z)| <= d*(1+2*|z|^2)`, and the proved
+divergence of the normalized target radii. The limiting supremum is therefore
+not replaced by a selected foliation's value or an upper envelope.
 
 ### Actual density and exact energy
 
@@ -403,8 +448,13 @@ The sharp-limit and actual-source commit
 build and transitive axiom audit in run `46122315623`. The exact pairable commit
 `435de833ed0ea8b4423ea568464f41698cf34e97` passed the complete weighted Lean
 build and transitive axiom audit in both runs `46123768913` and `46123762245`.
-The new removed-set and electrode-limit modules compile locally and are
-registered for the same remote checks.
+The removed-set, electrode-limit, complete limiting-model optimizer, and
+optimum-convergence modules compile locally and are registered for the same
+remote checks. A unique local transitive audit of the six final limit/model modules
+passes for all 108 declarations, allowing only the repository-standard
+`propext`, `Classical.choice`, and `Quot.sound`. Their final CI result is
+recorded independently; it is not inferred from the earlier exact finite
+checkpoint.
 
 ### Prior archive work and comparison
 
@@ -461,7 +511,8 @@ and their limiting marking. A Lean identification with every aspect of
 the external KKL ideal-boundary/minimal-base definition is not supplied.
 The periods `3 <= p < 17` are not instantiated from physical tip existence
 certificates here. The full geometric two-port pairable supremum and its attaining Wave are
-now also determined exactly. Native KKL equivalence, designated deck
+now also determined exactly, and the actual optima converge to the attained
+complete limiting-domain maximum. Native KKL equivalence, designated deck
 classes, atom filters, survival semantics, and the ideal minimal-base
 conditions remain outside these Lean theorem types. Identification of the
 orbit-defined source slit with every external Hubbard-tree convention is

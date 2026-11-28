@@ -5908,6 +5908,52 @@
         "ratio_tendsto",
         "realMap_scale",
         "ratio_scale"
+      ],
+      "formalization/weighted/SlitReflectedRectangleModulus.lean": [
+        "segment_continuousOn",
+        "velocity_continuousOn",
+        "segment_hasDerivAt",
+        "segment_lineLength_le",
+        "reflected_segment_lineLength_le",
+        "segments_lineLength_le_closedSliceLength",
+        "closedSliceLength_eq_sliceLength",
+        "curve_lineLength_le_sliceLength",
+        "area_lower_of_admissible",
+        "family_modulus_lower"
+      ],
+      "formalization/weighted/SlitFourPointPairable.lean": [
+        "family_pairableWave",
+        "region_ne_electrodes",
+        "width_le_ratio",
+        "family_modulus_lower",
+        "family_attains_width"
+      ],
+      "formalization/weighted/ActualPairableLimitModel.lean": [
+        "negative_limitingAlpha_lt_third_cut",
+        "ports_subset_sourceSlit",
+        "endpoints_mem_sourceSlit",
+        "limitingFamily_attains",
+        "limitingPairableWidth_eq_period_ratio",
+        "limitingPairableWidth_pos",
+        "limitingPairableWidth_ne_top"
+      ],
+      "formalization/weighted/ActualPairableConvergence.lean": [
+        "electrodes_ordered",
+        "normalizedElectrodes_ordered",
+        "pairableWidth_eq_normalized_ratio",
+        "normalizedElectrodes_tendsto",
+        "pairableWidth_tendsto"
+      ],
+      "formalization/weighted/ActualPairableLimit.lean": [
+        "pairable_optimum_converges",
+        "pairable_optimum_real_converges"
+      ],
+      "formalization/weighted/ActualPairableDomainLimit.lean": [
+        "scaled_evenSecant_norm_le_two",
+        "scaled_return_norm_le",
+        "closedBall_subset_normalizedSource",
+        "eventually_closedBall_subset",
+        "eventually_compact_subset"
       ]
     },
     "obligations": []

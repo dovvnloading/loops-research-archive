@@ -72,10 +72,14 @@ formalization/weighted/ActualCrestTransportLimit.lean	CREST
 formalization/weighted/ActualCrestUpperGate.lean	METADATA
 formalization/weighted/ActualCrestWidth.lean	CREST
 formalization/weighted/ActualPairableClosedChart.lean	METADATA
+formalization/weighted/ActualPairableConvergence.lean	METADATA
 formalization/weighted/ActualPairableCoordinate.lean	METADATA
+formalization/weighted/ActualPairableDomainLimit.lean	METADATA
 formalization/weighted/ActualPairableElectrodeLimit.lean	METADATA
 formalization/weighted/ActualPairableElectrodes.lean	METADATA
 formalization/weighted/ActualPairableLeafLength.lean	METADATA
+formalization/weighted/ActualPairableLimit.lean	METADATA
+formalization/weighted/ActualPairableLimitModel.lean	METADATA
 formalization/weighted/ActualPairableMarking.lean	METADATA
 formalization/weighted/ActualPairableOptimality.lean	METADATA
 formalization/weighted/ActualPairablePortImages.lean	METADATA
@@ -268,6 +272,7 @@ formalization/weighted/SlitEnergyExhaustion.lean	METADATA
 formalization/weighted/SlitFourPointChart.lean	METADATA
 formalization/weighted/SlitFourPointLimit.lean	METADATA
 formalization/weighted/SlitFourPointMetric.lean	METADATA
+formalization/weighted/SlitFourPointPairable.lean	METADATA
 formalization/weighted/SlitLeftCrossing.lean	METADATA
 formalization/weighted/SlitLocalReflection.lean	METADATA
 formalization/weighted/SlitPairableCalibration.lean	METADATA
@@ -276,6 +281,7 @@ formalization/weighted/SlitParametricLength.lean	METADATA
 formalization/weighted/SlitPotentialLength.lean	METADATA
 formalization/weighted/SlitPotentialReflection.lean	METADATA
 formalization/weighted/SlitRectangleLowerEnergy.lean	METADATA
+formalization/weighted/SlitReflectedRectangleModulus.lean	METADATA
 formalization/weighted/SlitReflectedRectangles.lean	METADATA
 formalization/weighted/SlitWaveEscape.lean	METADATA
 formalization/weighted/SlitWaveFinite.lean	ALL-PATHS
