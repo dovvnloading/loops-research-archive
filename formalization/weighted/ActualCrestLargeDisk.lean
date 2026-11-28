@@ -117,7 +117,8 @@ theorem actual_tip_limit_map_error {p : ℕ} (hp : 17 ≤ p) {c k₀ : ℝ}
     ring
   have hmodel : ‖complexMap (kappa p c) z-complexMap k₀ z‖ ≤ 62992*scale p := by
     rw [hid,norm_mul,Complex.norm_real,Real.norm_eq_abs,norm_pow,abs_sub_comm]
-    have hm := mul_le_mul hk hz2 (sq_nonneg ‖z‖) (by positivity : 0 ≤ 15748*scale p)
+    have hm := mul_le_mul hk hz2 (sq_nonneg ‖z‖)
+      (by unfold scale; positivity : 0 ≤ 15748*scale p)
     nlinarith only [hm]
   have htri : ‖normalizedReturn c p z-complexMap k₀ z‖ ≤
       ‖normalizedReturn c p z-complexMap (kappa p c) z‖+

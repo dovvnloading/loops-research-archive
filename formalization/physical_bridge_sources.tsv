@@ -50,8 +50,11 @@ code/exp3_feigenbaum.py	EXPLORATION
 code/exp4_images.py	EXPLORATION
 code/exp5_figs.py	EXPLORATION
 code/mlc_common.py	EXPLORATION
+formalization/weighted/ActualCrestArcCensus.lean	METADATA
 formalization/weighted/ActualCrestCrossingWindow.lean	METADATA
 formalization/weighted/ActualCrestEndpoint.lean	METADATA
+formalization/weighted/ActualCrestGlobal.lean	METADATA
+formalization/weighted/ActualCrestGlobalModel.lean	METADATA
 formalization/weighted/ActualCrestIntegral.lean	METADATA
 formalization/weighted/ActualCrestLargeDisk.lean	METADATA
 formalization/weighted/ActualCrestLimit.lean	METADATA

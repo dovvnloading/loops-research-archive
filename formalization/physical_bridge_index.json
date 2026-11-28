@@ -4040,6 +4040,40 @@
         "normalized_return_error_two",
         "actual_tip_limit_map_error",
         "map_convergence"
+      ],
+      "formalization/weighted/ActualCrestGlobalModel.lean": [
+        "parent_circle_norm",
+        "model_crossing_third_image",
+        "model_tail_crossing_below_cut",
+        "model_tail_crossing_gap",
+        "model_parent_intermediate_bounds",
+        "parent_third_iterate_error",
+        "robust_tail_exclusion",
+        "eventually_all_actual_tips_no_reentry"
+      ],
+      "formalization/weighted/ActualCrestGlobal.lean": [
+        "terminalGate_iff_selected",
+        "terminalGate_iff_below_endpoint",
+        "original_parent_cutoff",
+        "original_parent_gate_set",
+        "actual_original_parent_collars",
+        "exists_actual_original_parent_collars"
+      ],
+      "formalization/weighted/ActualCrestArcCensus.lean": [
+        "normalized_return_real_iff",
+        "circlePoint_mem_initialDisk",
+        "first_image_real_iff",
+        "first_image_re_zero_iff",
+        "first_image_re_pos",
+        "full_semicircle_real_census",
+        "selected_closed_arc_collision_iff",
+        "finalClosedLeaf_disjoint",
+        "angularPoint_formula",
+        "full_fourth_image_lipschitz",
+        "selected_fourth_image_boundedVariation",
+        "full_angle_real_census",
+        "eventually_all_actual_tips_real_census",
+        "eventually_all_actual_tips_closed_arc_injective"
       ]
     },
     "obligations": []
