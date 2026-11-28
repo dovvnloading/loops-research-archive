@@ -4,7 +4,7 @@ import ActualThreeReturnCylinders
 # Identification with the orbit-defined physical central carrier
 
 The coordinate interval used by the cylinder theorem is exactly the
-archive's actual central filled interval: its endpoints are the third
+archive's orbit-defined central invariant interval: its endpoints are the third
 and sixth critical returns of the original quadratic polynomial.
 -/
 
@@ -53,7 +53,7 @@ theorem physicalPoint_neg_one {p : ℕ} (hp : 17 ≤ p) {c : ℝ}
     criticalValue c p*centralRadius c p
   ring
 
-/-- The complete cylinder carrier is the actual central filled interval
+/-- The complete cylinder carrier is the orbit-defined central invariant interval
 with the original critical-orbit endpoints, rather than a supplied model. -/
 theorem physicalInterval_eq {p : ℕ} (hp : 17 ≤ p) {c : ℝ}
     (hc : ActualTip p c) :

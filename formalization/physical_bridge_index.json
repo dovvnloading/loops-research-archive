@@ -5179,6 +5179,7 @@
         "angleDistance_neg_neg",
         "angleDistance_le_pi",
         "abs_sub_le_angleDistance",
+        "ratio_nonneg",
         "endpoint_bounds",
         "positive_branch_mapsTo",
         "mapsTo",

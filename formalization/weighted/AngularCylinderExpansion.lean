@@ -7,7 +7,7 @@ import Mathlib.Tactic.Linarith
 import Mathlib.Tactic.Ring
 import Mathlib.Tactic.FieldSimp
 import Mathlib.Tactic.Positivity
-import Mathlib.Tactic.Omega
+import Mathlib.Tactic
 
 /-!
 # Physical cylinder estimates from quadratic secants
