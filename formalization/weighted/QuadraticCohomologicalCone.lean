@@ -235,9 +235,7 @@ theorem fiber_eq_singleton_of_halfPlane
     change d = c
     apply Subtype.ext
     by_contra hne
-    have hne' : (d : ℂ) ≠ (c : ℂ) := by
-      intro h
-      exact hne (Subtype.ext h)
+    have hne' : (d : ℂ) ≠ (c : ℂ) := hne
     obtain ⟨n, hn⟩ :=
       exists_negative_cohomological_phase (c : ℂ) (d : ℂ)
         c.property d.property hne' havoid hgrow
