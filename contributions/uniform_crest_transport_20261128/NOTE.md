@@ -7,17 +7,11 @@ human_review: none
 
 <a id="uniform-crest-transport-20261128"></a>
 
-# Signed actual-parameter drift and every-index crest transport
+# Signed normalized-coefficient drift and every-index crest transport
 
 ## Claim
 
-**Implementation checkpoint: the signed-drift modules await Lean CI.**
-The support and physical-transport modules have passed the complete
-weighted build. The first signed-drift build found four elaboration
-errors in the remainder-order module; this checkpoint repairs them.
-No uncompiled assertion is counted as a validated result.
-
-The principal new target is an intrinsic, signed correction to the
+The principal new result is an intrinsic, signed correction to the
 archive's actual normalized return coefficient. Write
 
 - `q = scale p = (1/4)^p`;
@@ -26,7 +20,7 @@ archive's actual normalized return coefficient. Write
 - `kappa p c = -quadraticCoefficient c (p-1)*d`;
 - `k0` for the unique zero of `relation` in `[17903/10000,17904/10000]`.
 
-`ActualCrestSignedDrift.actual_tip_signed_drift` states, for **every**
+`ActualCrestSignedDrift.actual_tip_signed_drift` proves, for **every**
 `p >= 17` and **every** parameter satisfying the existing `ActualTip p c`,
 
 ```text
@@ -37,8 +31,12 @@ kappa p c - k0 <= 15748 * scale p.
 The upper bound is inherited and credited below. The positive lower
 bound is new: the finite-return coefficient is forced above the limiting
 coefficient, and its displacement cannot be smaller in order than
-`4^(-p)`. No sign condition is added to `ActualTip`. This does not assert
-monotonicity in `p` or compute a limiting first-order constant.
+`4^(-p)`. This establishes the optimal exponential order with nonoptimal
+constants. No sign condition is added to `ActualTip`. The public theorem
+`exists_actual_tips_with_signed_drift` constructs one limiting root and
+an actual parameter at every index `p >= 17`, so the statement is
+nonvacuous. This does not assert monotonicity in `p` or compute a
+limiting first-order constant.
 
 A second result removes the unspecified eventual threshold from the
 complete physical crest realization. `UniformCrestSupport` establishes
@@ -51,7 +49,9 @@ realization at **every** index of the chosen sequence.
 
 ## Evidence
 
-Base: main commit `6a10209b3cc51878bc45de7668894757b2575e08`.
+Started from main commit `6a10209b3cc51878bc45de7668894757b2575e08`.
+The branch also includes main commit `6964d70bea8a68acae4a627b421086b29f6f63b3`;
+its independently added registration entries are preserved.
 
 ### Why the signed result is additional mathematics
 
@@ -83,7 +83,7 @@ The new modules prove the following chain.
    For a physical input `0 <= t <= d`, its displacement from the
    critical prefix is between zero and `4^(j-1)*t^2 <= 9*q`.
    Thus every corresponding physical prefix stays at least one.
-   The first even-secant factor is negative and increases with the
+   The first nontrivial even-secant factor is negative and increases with the
    input; all later factors are positive and decrease. The complete
    secant is increasing. Its exact factorization proves
    `0 <= E(x) <= E(1)` for every `abs x <= 1`, and `E(1) > 0`.
@@ -92,7 +92,7 @@ The new modules prove the following chain.
    Let `X = x_(p-1)`, `Y = f_c^[p-1] (d)`, and `Delta = X-Y`.
    The exact final squaring step gives
    `d*E(1) >= Delta^2`, because the preceding complete remainder
-   and critical point are nonnegative. The return identity gives
+   and critical-orbit value are nonnegative. The return identity gives
    `Delta*(X+Y) = d*(kappa p c - E(1))`.
    Since `X+Y <= 4`, `kappa p c >= 7/4`, and the archived error
    implies `E(1) <= 1/100`, this forces `Delta >= 5*d/12`.
@@ -171,31 +171,35 @@ then supply the complete `RealizedCollar` at every index.
 
 ### Validation and reproduction
 
-The pinned Lean toolchain is absent locally and disk space is too
-limited to install it. The repository's unchanged CI is the compiler
-and transitive-axiom judge. All new modules are registered in the
-existing weighted build, theorem index and physical-source registry.
-The first support build exposed one wrong norm-triangle lemma
-application; it was corrected in a subsequent commit. Compilation
-and audit status for the stronger modules will be recorded here after
-those checks finish. The source-registration and contribution-intake
-checks have passed on the earlier support checkpoint. The initial
-signed checkpoint also exposed a documentation parser treating iterate
-notation as a local link; the notation is corrected here. After the
-workspace exhausted storage, subsequent source and registration fixes
-were committed through the GitHub API and checked by the unchanged CI.
-The supporting derivative and coefficient bounds now live in the new
-modules, leaving every pre-existing Lean source unchanged.
+The unchanged weighted CI validates all six new Lean modules through
+its complete default build, proof-escape scanner, source coverage and
+transitive axiom audit. The new public theorem roster contains 41
+declarations, all registered. The full audit imports all 268 weighted
+modules and checks every declaration originating in those modules,
+including private and generated declarations. Its existing allowlist is
+`propext`, `Classical.choice`, and `Quot.sound`; no new axiom is introduced.
+
+Proof commit: `72cd67275f2ae14c0487a513622c26a38f44a8c4`.
+[Weighted CI run 46116433628](https://github.com/dovvnloading/loops-research-archive/actions/runs/46116433628)
+completed successfully. Its final kernel audit reports
+`AXIOM_AUDIT_PASS weighted: 268 modules, 7218 declarations`.
+All 23 PR workflows passed at that proof commit.
+
+The repository-wide research validation, contribution intake and
+model-to-geometry coverage checks also pass at that proof commit.
+Every pre-existing Lean source, workflow and validator remains unchanged.
+All development checkpoints and repairs are committed in the pull request.
 
 For reproduction with the repository toolchain installed:
 
 ```sh
-python code/contribute.py check
+python3 -B code/contribute.py check
+python3 -B code/verify_lean_coverage.py
 cd formalization/weighted
 lake exe cache get
-lake build ActualCrestSignedDrift UniformCrestTransport
+lake build
 cd ../..
-python code/verify_lean_coverage.py --audit weighted
+python3 -B code/verify_lean_coverage.py --audit weighted
 ```
 
 ## Dependencies
@@ -230,10 +234,10 @@ identify native KKL ideal markings or the full immersion-pulled
 marking, prove an unrestricted Wave optimum, or prove MLC.
 
 The coefficient result concerns `kappa p c`, not the original parameter
-`c`, which is near minus two. It proves a forced side and a sharp order
-of displacement, not a limiting first-order constant or monotonicity
-across return indices. The exact limiting coefficient, the physical
-modulus identities, and their positive limiting ratio are inherited.
+`c`, which is near minus two. It proves a forced side and the optimal
+exponential order of displacement with nonoptimal constants, not a
+limiting first-order constant or monotonicity across return indices.
+The exact limiting coefficient, the physical modulus identities, and their positive limiting ratio are inherited.
 Only the selected upper q-side descendants are counted; the denominator
 is the entire original chosen circular parent.
 
@@ -243,10 +247,10 @@ or from a limited literature search.
 
 ## Attribution
 
-The new mathematical content is the signed and scale-sharp nonlinear
-correction of the actual return, its forced coefficient displacement,
-and the explicit every-index support estimate. Earlier actual-parameter
-construction, scalar gates, limiting root, proper-path realization,
+The new mathematical content is the ordered complete nonlinear remainder,
+its nonvanishing value at the natural scale at `x=1`, the resulting
+forced coefficient displacement, and the explicit every-index support
+estimate. Earlier actual-parameter construction, scalar gates, limiting root, proper-path realization,
 metric identities and convergence are credited above. The coefficient
 norm helper and model derivative bound are supporting estimates, not
 claimed as new mathematical results.
