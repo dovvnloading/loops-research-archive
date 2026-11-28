@@ -4060,14 +4060,25 @@
         "isHomeomorph_of_quotient_fiber_energy_certificates",
         "isHomeomorph_of_compact_fiber_energy_certificates",
         "locallyConnectedSpace_of_quotient_fiber_energy_certificates",
-        "locallyConnectedSpace_of_compact_fiber_energy_certificates"
+        "locallyConnectedSpace_of_compact_fiber_energy_certificates",
+        "locallyConnectedSpace_of_local_energy_certificates"
       ],
       "formalization/weighted/FiberEnergySharpness.lean": [
         "intervalGrid_mem",
         "intervalGrid_cover",
         "intervalGrid_energy_le",
         "unit_interval_quadratic_radius_certificates",
-        "quadratic_radius_weakening_counterexample"
+        "quadratic_radius_weakening_counterexample",
+        "disconnected_fine_energy_counterexample",
+        "paddedIntervalGrid_energy",
+        "paddedIntervalGrid_cover",
+        "paddedIntervalGrid_normalized_energy_le",
+        "unit_interval_normalized_energy_certificates"
+      ],
+      "formalization/weighted/MandelbrotSamplingReduction.lean": [
+        "quadraticMandelbrot_eq_zero_escape",
+        "quadraticMandelbrot_isClosed",
+        "quadratic_mlc_of_local_energy_certificates"
       ]
     },
     "obligations": [

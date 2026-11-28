@@ -16,6 +16,7 @@ This module does not assert that any Mandelbrot fiber has these certificates.
 namespace Loops.FiberSampling
 
 open Set Topology
+open scoped Topology
 
 variable {X : Type*} [MetricSpace X]
 
@@ -190,5 +191,40 @@ theorem locallyConnectedSpace_of_compact_fiber_energy_certificates
     LocallyConnectedSpace X := by
   exact (isHomeomorph_of_compact_fiber_energy_certificates
     q hq hsurj hconnected hcert).isOpenEmbedding.locallyConnectedSpace
+
+/-- A direct local-connectivity criterion requiring no quotient construction.
+At every point and target scale, it suffices to certify one connected
+neighborhood by a finite cover whose radius-energy product lies below the
+cubic target threshold.  The neighborhood need not be known in advance to
+have small diameter. -/
+theorem locallyConnectedSpace_of_local_energy_certificates
+    (hcert : ∀ x : X, ∀ ε : ℝ, 0 < ε →
+      ∃ (K : Set X) (n : ℕ) (s : Fin n → X) (a : X) (r : ℝ),
+        K ∈ 𝓝 x ∧ IsPreconnected K ∧ 0 < r ∧ r ≤ ε / 8 ∧
+          1024 * r * energy s a < ε ^ 3 ∧
+            ∀ z ∈ K, ∃ i, dist z (s i) ≤ r) :
+    LocallyConnectedSpace X := by
+  apply locallyConnectedSpace_iff_connected_subsets.mpr
+  intro x U hU
+  obtain ⟨ε, hε, hball⟩ := Metric.mem_nhds_iff.mp hU
+  obtain ⟨K, n, s, a, r, hKn, hK, hr, hscale, hcost, hcover⟩ :=
+    hcert x ε hε
+  refine ⟨K, hKn, hK, ?_⟩
+  intro z hz
+  apply hball
+  change dist z x < ε
+  by_contra hnot
+  have hdist : ε ≤ dist z x := le_of_not_gt hnot
+  have hx : x ∈ K := mem_of_mem_nhds hKn
+  have hrD : r ≤ dist z x / 8 := by linarith
+  have hbound :=
+    connected_cubic_energy_bound K hK s a r hr hcover z x hz hx hrD
+  have hfactor :
+      0 ≤ (dist z x - ε) *
+        (dist z x ^ 2 + dist z x * ε + ε ^ 2) := by
+    apply mul_nonneg
+    · exact sub_nonneg.mpr hdist
+    · positivity
+  nlinarith
 
 end Loops.FiberSampling
