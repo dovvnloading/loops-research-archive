@@ -152,24 +152,16 @@ theorem endpoint_response_certificate {q b : ℝ} {a o : Coordinates}
     nlinarith only [hm₅]
   have hvalue₁ : |E₁.value| ≤ (1/10^10)*q := by
     apply le_trans _ hsmall
-    convert ha₁ using 1 <;>
-      dsimp [E₁,equation₁,K,B,T,Jet.coordinate,Jet.add,Jet.sub,Jet.neg,Jet.mul,Jet.sq,Jet.const]
-      <;> congr 1 <;> ring
+    convert ha₁ using 1 <;> congr 1 <;> ring
   have hvalue₂ : |E₂.value| ≤ (1/10^10)*q := by
     apply le_trans _ hsmall
-    convert ha₂ using 1 <;>
-      dsimp [E₂,equation₂,K,B,T,Y,Jet.coordinate,Jet.add,Jet.sub,Jet.neg,Jet.mul,Jet.sq,Jet.const]
-      <;> congr 1 <;> ring
+    convert ha₂ using 1 <;> congr 1 <;> ring
   have hvalue₃ : |E₃.value| ≤ (1/10^10)*q := by
     apply le_trans _ hsmall
-    convert ha₃ using 1 <;>
-      dsimp [E₃,equation₃,K,B,X,V,Jet.coordinate,Jet.add,Jet.sub,Jet.neg,Jet.mul,Jet.sq,Jet.const]
-      <;> congr 1 <;> ring
+    convert ha₃ using 1 <;> congr 1 <;> ring
   have hvalue₄ : |E₄.value| ≤ (1/10^10)*q := by
     apply le_trans _ hsmall
-    convert ha₄ using 1 <;>
-      dsimp [E₄,equation₄,K,B,Y,X,V,Jet.coordinate,Jet.add,Jet.sub,Jet.neg,Jet.mul,Jet.sq,Jet.const]
-      <;> congr 1 <;> ring
+    convert ha₄ using 1 <;> congr 1 <;> ring
   have hvalue₅ : |E₅.value| ≤ (1/10^10)*q := by
     have hv : E₅.value = 0 := by
       dsimp [E₅,equation₅,X,V,R,Jet.coordinate,Jet.add,Jet.sub,Jet.neg,Jet.mul,Jet.sq,Jet.const]

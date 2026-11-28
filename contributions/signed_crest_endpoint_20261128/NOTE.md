@@ -155,7 +155,14 @@ The centers are not assumed values of the model.
 
 `CrestResponseLinearization` certifies finite differences under addition
 and multiplication, keeping an explicit linear part and a bound on all
-remaining products. `CrestResponseArithmetic` applies this algebra to
+remaining products. The exact model equations cancel before numerical
+center bounds are used: the certificate concerns differences of the
+actual and model expressions. Thus a center enclosure of size `10^-22`
+contributes only after multiplication by an already proved `O(q_p)`
+displacement. It introduces no absolute `10^-22` residue, which would
+swamp `q_p` at large periods.
+
+`CrestResponseArithmetic` applies this algebra to
 the five equations and forms an exact rational combination eliminating
 `Delta T`, `Delta Y`, `Delta x`, and `Delta v`. It yields
 

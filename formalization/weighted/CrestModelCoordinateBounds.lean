@@ -70,11 +70,15 @@ private theorem weighted_square_bounds {a aL aU x xL xU sL sU : ℝ}
   have haU : 0 < aU := lt_of_lt_of_le (lt_of_lt_of_le haL ha.1) ha.2
   constructor
   · apply (sq_le_sq₀ hxL hx).mp
-    apply (mul_le_mul_left haU).mp
-    exact hL.trans (hs.1.trans (mul_le_mul_of_nonneg_right ha.2 (sq_nonneg x)))
+    have hm := hL.trans (hs.1.trans (mul_le_mul_of_nonneg_right ha.2 (sq_nonneg x)))
+    by_contra h
+    have ht := mul_lt_mul_of_pos_left (lt_of_not_ge h) haU
+    exact (not_lt_of_ge hm) ht
   · apply (sq_le_sq₀ hx hxU).mp
-    apply (mul_le_mul_left haL).mp
-    exact (mul_le_mul_of_nonneg_right ha.1 (sq_nonneg x)).trans (hs.2.trans hU)
+    have hm := (mul_le_mul_of_nonneg_right ha.1 (sq_nonneg x)).trans (hs.2.trans hU)
+    by_contra h
+    have ht := mul_lt_mul_of_pos_left (lt_of_not_ge h) haL
+    exact (not_lt_of_ge hm) ht
 
 /-- Every positive solution of the exact backward endpoint system at
 the canonical limiting parameter has the same small coordinate boxes.

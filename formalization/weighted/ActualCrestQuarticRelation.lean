@@ -476,7 +476,11 @@ theorem actual_quartic_relation_error {p : ℕ} (hp : 100 ≤ p) {c : ℝ}
     dsimp only [responseRemainder,relation]
     nlinarith only [hz]
   rw [hid,abs_neg] at hsum
-  nlinarith only [hsum,sq_nonneg (scale p)]
+  calc
+    _ ≤ (10 : ℝ)^(6+20)*(scale p)^2+(10 : ℝ)^(3+20)*(scale p)^2 := hsum
+    _ = ((10 : ℝ)^(6+20)+(10 : ℝ)^(3+20))*(scale p)^2 := by ring
+    _ ≤ (10 : ℝ)^27*(scale p)^2 :=
+      mul_le_mul_of_nonneg_right (by norm_num) (sq_nonneg (scale p))
 
 private theorem relation_secant_bounds {k k₀ : ℝ}
     (hk : k ∈ parameterInterval) (hk₀ : k₀ ∈ parameterInterval)
