@@ -62,7 +62,7 @@ p\ge17,\qquad
 128\,4^{-p}5^{6N}\le\frac{\mu b\theta}{10000}.
 \]
 
-DepthGateBase.exists_admissible_prefix (in the TerminalChart namespace)
+`DepthGate.TerminalChart.exists_admissible_prefix`
 proves that arbitrarily large such periods exist. DepthGatePrefix constructs
 the next actual parameter interval, with
 
@@ -95,7 +95,7 @@ identity retains that sign, and radii use its absolute value.
 ### Explicit three-level subfamily
 
 The separately quantified theorem
-`ThreeLevelFirstReturn.exists_first_return_three_level_gate`. For every triple
+`ThreeLevelFirstReturn.exists_first_return_three_level_gate` handles every triple
 of natural numbers satisfying
 
 \[

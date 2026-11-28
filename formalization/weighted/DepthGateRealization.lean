@@ -185,7 +185,7 @@ theorem Ancestors.terminal_target_inside {C : TerminalChart} {depth : ℕ}
     norm_num
     exact C.radius_lower.le
   have hb := A.terminal_nesting i c hc hz 0 (by simp)
-  simp only [zero_mul, iterate_zero, id_eq, norm_mul, Complex.norm_real,
+  simp only [zero_mul, Function.iterate_zero, id_eq, norm_mul, Complex.norm_real,
     Real.norm_eq_abs] at hb
   norm_num at hb
   intro z hz'

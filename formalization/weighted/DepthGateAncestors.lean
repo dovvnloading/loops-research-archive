@@ -429,10 +429,10 @@ private theorem cancel_period {p m n : ℕ} (hp : 0 < p)
 /-- Prefixing a sufficiently long actual outer return preserves every
 ancestor estimate and adds a new outer level. No domain or collision
 conclusion is assumed: only the numerical chart data is transported. -/
-def prefix {C : TerminalChart} {depth : ℕ} (A : Ancestors C depth)
+def prepend {C : TerminalChart} {depth : ℕ} (A : Ancestors C depth)
     (p : ℕ) (hp : C.AdmissiblePrefix p) {L U : ℝ}
     (j : OuterChart p C.left C.right L U) :
-    Ancestors (C.prefix p hp j) (depth+1) := by
+    Ancestors (C.prepend p hp j) (depth+1) := by
   have hp0 : 0 < p := by have := hp.1; omega
   refine {
     period := Fin.cases p (fun i => A.period i*p)
@@ -590,8 +590,8 @@ ancestor invariant, with no additional geometric hypotheses. -/
 theorem exists_prefix {C : TerminalChart} {depth : ℕ} (A : Ancestors C depth)
     (p : ℕ) (hp : C.AdmissiblePrefix p) {L U : ℝ}
     (j : OuterChart p C.left C.right L U) :
-    Nonempty (Ancestors (C.prefix p hp j) (depth+1)) :=
-  ⟨A.prefix p hp j⟩
+    Nonempty (Ancestors (C.prepend p hp j) (depth+1)) :=
+  ⟨A.prepend p hp j⟩
 
 end
 end DepthGate.Ancestors

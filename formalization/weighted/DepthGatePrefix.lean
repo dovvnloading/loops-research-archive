@@ -215,10 +215,12 @@ theorem prefix_lifted_pair (C : TerminalChart) {p : ℕ}
   have hnform : n = n%p+(n/p)*p := by nlinarith only [he]
   by_cases hi0 : n%p = 0
   · have hk1 : 1 ≤ n/p := by
-      by_contra! hh
-      have hk0 : n/p = 0 := by omega
-      rw [hi0, hk0] at hnform
-      omega
+      cases hdiv : n/p with
+      | zero =>
+        have hnzero : n = 0 := by
+          simpa only [hi0, hdiv, Nat.mul_zero, Nat.add_zero] using he.symm
+        omega
+      | succ k => exact Nat.succ_le_succ (Nat.zero_le k)
     have hncoarse : n = (n/p)*p := by simpa only [hi0, zero_add] using hnform
     have hvE := C.prefix_iterate_error hp j hc hN hv (n/p) hk.le
     have hwE := C.prefix_iterate_error hp j hc hN hw (n/p) hk.le
@@ -253,7 +255,7 @@ theorem prefix_lifted_pair (C : TerminalChart) {p : ℕ}
       outerMap_iterate_scale c p hA.ne (n/p) w,
       ← mul_add, norm_mul, Complex.norm_real, Real.norm_eq_abs] at hcoarse
     rw [hncoarse]
-    apply (mul_le_mul_left hAa).mp
+    apply (mul_le_mul_iff_left₀ hAa).mp
     have hm := C.prefix_margin_weighted hp j hc
     nlinarith only [hcoarse, hm, C.budget_le_margin, C.margin_pos.le]
   · have hi1 : 1 ≤ n%p := by omega
@@ -373,10 +375,10 @@ theorem prefix_scale_bounds (C : TerminalChart) {p : ℕ}
   have hA := coefficient_negative (j.coefficient_lower c hc)
   have hAa : 0 < |returnCoefficient p c| := abs_pos.mpr hA.ne
   constructor
-  · apply (mul_le_mul_left hAa).mp
+  · apply (mul_le_mul_iff_left₀ hAa).mp
     have hm := C.prefix_margin_weighted hp j hc
     linarith [(C.scale_bounds _ ht).1, C.margin_pos]
-  · apply (mul_le_mul_left hAa).mp
+  · apply (mul_le_mul_iff_left₀ hAa).mp
     nlinarith only [hup, (C.scale_bounds _ ht).2, C.prefix_coefficient_large hp j hc]
 
 theorem prefix_terminal_orbit (C : TerminalChart) {p : ℕ}
@@ -434,10 +436,12 @@ theorem prefix_lifted_first (C : TerminalChart) {p : ℕ}
   have hnform : n = n%p+(n/p)*p := by nlinarith only [he]
   by_cases hi0 : n%p = 0
   · have hk1 : 1 ≤ n/p := by
-      by_contra! hh
-      have hk0 : n/p = 0 := by omega
-      rw [hi0, hk0] at hnform
-      omega
+      cases hdiv : n/p with
+      | zero =>
+        have hnzero : n = 0 := by
+          simpa only [hi0, hdiv, Nat.mul_zero, Nat.add_zero] using he.symm
+        omega
+      | succ k => exact Nat.succ_le_succ (Nat.zero_le k)
     have hncoarse : n = (n/p)*p := by simpa only [hi0, zero_add] using hnform
     have hvE := C.prefix_iterate_error hp j hc hN hv (n/p) hk.le
     have htri := norm_le_norm_sub_add
@@ -451,7 +455,7 @@ theorem prefix_lifted_first (C : TerminalChart) {p : ℕ}
     calc
       R/|returnCoefficient p c| + C.prefixMargin p =
           (R+|returnCoefficient p c| * C.prefixMargin p)/|returnCoefficient p c| := by
-            field_simp [hAa.ne']; ring
+            field_simp [hAa.ne']
       _ ≤ ‖((quadraticMap c)^[(n/p)*p]) (v/(returnCoefficient p c : ℂ))‖ := by
         apply (div_le_iff₀ hAa).mpr
         have hm := C.prefix_margin_weighted hp j hc
@@ -588,10 +592,10 @@ theorem prefix_relation_error (C : TerminalChart) {p : ℕ}
 theorem prefix_oriented_relation_error (C : TerminalChart) {p : ℕ}
     (hp : C.AdmissiblePrefix p) {L U c : ℝ}
     (j : OuterChart p C.left C.right L U) (hc : c ∈ Icc L U) :
-    | |returnCoefficient p c| * ((-C.orientation)*
+    abs (|returnCoefficient p c| * ((-C.orientation)*
         (criticalValue c (6*(C.period*p))+criticalValue c (3*(C.period*p))))-
       C.orientation*(criticalValue (monicParameter p c) (6*C.period)+
-        criticalValue (monicParameter p c) (3*C.period))| ≤ 2*C.budget := by
+        criticalValue (monicParameter p c) (3*C.period))) ≤ 2*C.budget := by
   have ho : |C.orientation| = 1 := by
     rcases C.orientation_unit with ho | ho <;> rw [ho] <;> norm_num
   have he := C.prefix_relation_error hp j hc
@@ -616,7 +620,7 @@ theorem prefix_relation_left (C : TerminalChart) {p : ℕ}
   rw [j.left_monicParameter] at he
   have hAa : 0 < |returnCoefficient p L| :=
     abs_pos.mpr (coefficient_negative (j.coefficient_lower L hc)).ne
-  apply (mul_le_mul_left hAa).mp
+  apply (mul_le_mul_iff_left₀ hAa).mp
   have hm := C.prefix_margin_weighted hp j hc
   nlinarith only [(abs_le.mp he).2, C.relation_left, hm,
     C.budget_le_margin, C.margin_pos.le]
@@ -631,14 +635,14 @@ theorem prefix_relation_right (C : TerminalChart) {p : ℕ}
   rw [j.right_monicParameter] at he
   have hAa : 0 < |returnCoefficient p U| :=
     abs_pos.mpr (coefficient_negative (j.coefficient_lower U hc)).ne
-  apply (mul_le_mul_left hAa).mp
+  apply (mul_le_mul_iff_left₀ hAa).mp
   have hm := C.prefix_margin_weighted hp j hc
   nlinarith only [(abs_le.mp he).1, C.relation_right, hm,
     C.budget_le_margin, C.margin_pos.le]
 
 /-- A closed construction on actual quadratic parameter intervals. Every
 new estimate is proved from the old chart and the finite outer budget. -/
-def prefix (C : TerminalChart) (p : ℕ) (hp : C.AdmissiblePrefix p)
+def prepend (C : TerminalChart) (p : ℕ) (hp : C.AdmissiblePrefix p)
     {L U : ℝ} (j : OuterChart p C.left C.right L U) : TerminalChart where
   period := C.period*p
   left := L

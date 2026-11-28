@@ -33,7 +33,7 @@ theorem exists_tower_chart (depth : ℕ) :
     have hl := C.parameter_band (left_mem_Icc.mpr C.ordered.le)
     have hr := C.parameter_band (right_mem_Icc.mpr C.ordered.le)
     obtain ⟨L,U,j⟩ := exists_outer_chart p hp.1 C.left C.right hl.1 C.ordered hr.2
-    exact ⟨C.prefix p hp j,⟨A.prefix p hp j⟩⟩
+    exact ⟨C.prepend p hp j,⟨A.prepend p hp j⟩⟩
 
 /-- For every depth there is one real quadratic with depth+1 distinct
 nested complete physical proper two-sheeted first-return restrictions.
