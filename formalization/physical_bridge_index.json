@@ -5250,6 +5250,20 @@
         "actual_endpoint_signed_bounds",
         "actual_endpoint_strict_decrease",
         "exists_strictly_decreasing_physical_endpoints"
+      ],
+      "formalization/weighted/ActualCrestQuarticCrossing.lean": [
+        "actual_return_real_at_model_crossing_lt",
+        "actual_return_negative_at_model_crossing"
+      ],
+      "formalization/weighted/ActualCrestAngularDrift.lean": [
+        "actual_crossing_cos_gt",
+        "actual_arccos_lt",
+        "actual_radialIntegrand_gt"
+      ],
+      "formalization/weighted/ActualCrestWidthDrift.lean": [
+        "actual_integral_signed_gap",
+        "actual_descendant_modulus_signed_gap",
+        "actual_physical_ratio_gt_limit"
       ]
     },
     "obligations": []

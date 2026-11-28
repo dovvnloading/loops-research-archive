@@ -50,6 +50,7 @@ code/exp3_feigenbaum.py	EXPLORATION
 code/exp4_images.py	EXPLORATION
 code/exp5_figs.py	EXPLORATION
 code/mlc_common.py	EXPLORATION
+formalization/weighted/ActualCrestAngularDrift.lean	ALL-PATHS
 formalization/weighted/ActualCrestComponents.lean	CREST
 formalization/weighted/ActualCrestConformalChart.lean	CREST
 formalization/weighted/ActualCrestCrossingWindow.lean	METADATA
@@ -63,6 +64,7 @@ formalization/weighted/ActualCrestPaths.lean	CREST
 formalization/weighted/ActualCrestProperFamilies.lean	CREST
 formalization/weighted/ActualCrestProperReturn.lean	METADATA
 formalization/weighted/ActualCrestQuartic.lean	ALL-PATHS
+formalization/weighted/ActualCrestQuarticCrossing.lean	ALL-PATHS
 formalization/weighted/ActualCrestQuarticRelation.lean	ALL-PATHS
 formalization/weighted/ActualCrestQuarticScale.lean	ALL-PATHS
 formalization/weighted/ActualCrestRadialOrder.lean	METADATA
@@ -76,6 +78,7 @@ formalization/weighted/ActualCrestTransport.lean	METADATA
 formalization/weighted/ActualCrestTransportLimit.lean	CREST
 formalization/weighted/ActualCrestUpperGate.lean	METADATA
 formalization/weighted/ActualCrestWidth.lean	CREST
+formalization/weighted/ActualCrestWidthDrift.lean	ALL-PATHS
 formalization/weighted/ActualParentMarks.lean	SELECTED
 formalization/weighted/ActualParentRate.lean	ALL-PATHS
 formalization/weighted/ActualParentSupremum.lean	ALL-PATHS

@@ -120,7 +120,7 @@ theorem model_system_center_bounds {k T Y x v r : ℝ}
       (show 1+yLo^2 ≤ k^2*(x^2+v^2)^2 ∧
           k^2*(x^2+v^2)^2 ≤ 1+yHi^2 by
         rw [hsEq]
-        exact ⟨add_le_add_left hy2.1 1,add_le_add_left hy2.2 1⟩)
+        exact ⟨add_le_add le_rfl hy2.1,add_le_add le_rfl hy2.2⟩)
     · norm_num [kHi,sLo,yLo]
     · norm_num [kLo,sHi,yHi]
   have hdiff : x^2-v^2 = 1/k := by

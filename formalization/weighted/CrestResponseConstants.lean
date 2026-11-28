@@ -11,6 +11,8 @@ with their small neighborhoods in `CrestModelCoordinateBounds`.
 
 namespace CrestResponseConstants
 
+noncomputable section
+
 def kRef : ℝ := 1790327491999345703396901 / 10^24
 def tRef : ℝ := 1056936162954836358332328 / 10^24
 def yRef : ℝ := 178331415818680342642268 / 10^24
@@ -23,4 +25,5 @@ theorem reference_coordinates_positive :
     0 < kRef ∧ 0 < tRef ∧ 0 < yRef ∧ 0 < xRef ∧ 0 < vRef ∧ 0 < rRef := by
   norm_num [kRef,tRef,yRef,xRef,vRef,rRef]
 
+end
 end CrestResponseConstants

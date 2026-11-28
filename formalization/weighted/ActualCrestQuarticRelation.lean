@@ -227,12 +227,14 @@ private theorem real_quartic_error {p : ℕ} (hp : 17 ≤ p) {c x : ℝ}
   have hr := (Complex.abs_re_le_norm
     (normalizedReturn c p (x : ℂ)-
       (complexMap (kappa p c) (x : ℂ)+(normalizedQuartic c p : ℂ)*(x : ℂ)^4))).trans h
-  simpa [realQuarticError,actualMap,complexMap] using hr
+  simpa only [realQuarticError,actualMap,complexMap,← Complex.ofReal_pow,
+    Complex.sub_re,Complex.add_re,Complex.mul_re,Complex.ofReal_re,
+    Complex.ofReal_im,Complex.one_re,zero_mul,mul_zero,sub_zero] using hr
 
 private theorem fourth_difference_bound {x y : ℝ}
     (hx : |x| ≤ 3/2) (hy : |y| ≤ 1) :
     |x^4-y^4| ≤ 10*|x-y| := by
-  have hs : |x+y| ≤ (5/2 : ℝ) := (abs_add x y).trans (by linarith)
+  have hs : |x+y| ≤ (5/2 : ℝ) := (abs_add_le x y).trans (by linarith)
   have hx2 := pow_le_pow_left₀ (abs_nonneg x) hx 2
   have hy2 := pow_le_pow_left₀ (abs_nonneg y) hy 2
   have ht : |x^2+y^2| ≤ 4 := by
@@ -284,12 +286,12 @@ private theorem actual_orbit_difference {p : ℕ} (hp : 100 ≤ p) {c : ℝ}
         have hs : |x| ≤ |x-u|+|u| := by
           calc
             |x| = |(x-u)+u| := by rw [sub_add_cancel]
-            _ ≤ _ := abs_add _ _
+            _ ≤ _ := abs_add_le _ _
         norm_num at hqsmall hcoarse
         linarith
       have hcoeff : |-k*(x+u)| ≤ 5 := by
         rw [abs_mul,abs_neg]
-        have hs : |x+u| ≤ (5/2 : ℝ) := (abs_add x u).trans (by linarith)
+        have hs : |x+u| ≤ (5/2 : ℝ) := (abs_add_le x u).trans (by linarith)
         exact (mul_le_mul hk hs (abs_nonneg _) (by norm_num)).trans (by norm_num)
       have hx4 : |x|^4 ≤ (6 : ℝ) :=
         (pow_le_pow_left₀ (abs_nonneg x) hx 4).trans (by norm_num)
@@ -314,9 +316,9 @@ private theorem actual_orbit_difference {p : ℕ} (hp : 100 ≤ p) {c : ℝ}
       have habs : |(-k*(x+u))*(x-u)+b*x^4+realQuarticError c p x| ≤
           5*((10 : ℝ)^(m+2)*q)+43*q := by
         calc
-          _ ≤ |(-k*(x+u))*(x-u)+b*x^4|+|realQuarticError c p x| := abs_add _ _
+          _ ≤ |(-k*(x+u))*(x-u)+b*x^4|+|realQuarticError c p x| := abs_add_le _ _
           _ ≤ |(-k*(x+u))*(x-u)|+|b*x^4|+|realQuarticError c p x| :=
-            add_le_add_right (abs_add _ _) _
+            add_le_add (abs_add_le _ _) le_rfl
           _ ≤ 5*((10 : ℝ)^(m+2)*q)+42*q+q := by
             rw [abs_mul]
             exact add_le_add (add_le_add
@@ -368,7 +370,7 @@ private theorem response_step_error {p : ℕ} (hp : 100 ≤ p) {c : ℝ}
     have hs : |x| ≤ |x-u|+|u| := by
       calc
         |x| = |(x-u)+u| := by rw [sub_add_cancel]
-        _ ≤ _ := abs_add _ _
+        _ ≤ _ := abs_add_le _ _
     norm_num at hqsmall hcoarse
     linarith
   have hcoef : |-2*k*u| ≤ 4 := by
@@ -400,16 +402,16 @@ private theorem response_step_error {p : ℕ} (hp : 100 ≤ p) {c : ℝ}
   rw [hid]
   calc
     _ ≤ |(-2*k*u)*responseRemainder c p n-k*(x-u)^2+b*(x^4-u^4)|+
-        |realQuarticError c p x| := abs_add _ _
+        |realQuarticError c p x| := abs_add_le _ _
     _ ≤ |(-2*k*u)*responseRemainder c p n-k*(x-u)^2|+
-        |b*(x^4-u^4)|+|realQuarticError c p x| := add_le_add_right (abs_add _ _) _
+        |b*(x^4-u^4)|+|realQuarticError c p x| := add_le_add (abs_add_le _ _) le_rfl
     _ ≤ (|(-2*k*u)*responseRemainder c p n|+|-k*(x-u)^2|)+
         |b*(x^4-u^4)|+|realQuarticError c p x| := by
       have h : |(-2*k*u)*responseRemainder c p n-k*(x-u)^2| ≤
           |(-2*k*u)*responseRemainder c p n|+|-k*(x-u)^2| := by
         simpa only [neg_mul,abs_neg] using
           abs_sub ((-2*k*u)*responseRemainder c p n) (k*(x-u)^2)
-      exact add_le_add_right (add_le_add_right h _) _
+      exact add_le_add (add_le_add h le_rfl) le_rfl
     _ ≤ (4*|responseRemainder c p n|+2*((10 : ℝ)^8*q)^2)+
         (7*q)*(10*((10 : ℝ)^8*q))+400*q^2 := by
       rw [abs_mul]
@@ -465,7 +467,7 @@ theorem actual_quartic_relation_error {p : ℕ} (hp : 100 ≤ p) {c : ℝ}
         (10 : ℝ)^27*(scale p)^2 := by
   have h6 := response_remainder_bound hp hc (show 6 ≤ 6 from le_rfl)
   have h3 := response_remainder_bound hp hc (show 3 ≤ 6 by norm_num)
-  have hsum := (abs_add (responseRemainder c p 6) (responseRemainder c p 3)).trans
+  have hsum := (abs_add_le (responseRemainder c p 6) (responseRemainder c p 3)).trans
     (add_le_add h6 h3)
   have hid : responseRemainder c p 6+responseRemainder c p 3 =
       -(relation (kappa p c)+normalizedQuartic c p*

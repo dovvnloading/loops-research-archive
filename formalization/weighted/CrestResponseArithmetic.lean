@@ -226,13 +226,13 @@ theorem endpoint_response_certificate {q b : ℝ} {a o : Coordinates}
     calc
       _ ≤ (|(weight₁*E₁.linear+weight₂*E₂.linear)+weight₃*E₃.linear|+
           |weight₄*E₄.linear|)+|weight₅*E₅.linear| :=
-        (abs_add_le _ _).trans (add_le_add_right (abs_add_le _ _) _)
+        (abs_add_le _ _).trans (add_le_add (abs_add_le _ _) le_rfl)
       _ ≤ ((|weight₁*E₁.linear+weight₂*E₂.linear|+|weight₃*E₃.linear|)+
           |weight₄*E₄.linear|)+|weight₅*E₅.linear| := by
-        exact add_le_add_right (add_le_add_right (abs_add_le _ _) _) _
+        exact add_le_add (add_le_add (abs_add_le _ _) le_rfl) le_rfl
       _ ≤ (((|weight₁*E₁.linear|+|weight₂*E₂.linear|)+|weight₃*E₃.linear|)+
           |weight₄*E₄.linear|)+|weight₅*E₅.linear| := by
-        exact add_le_add_right (add_le_add_right (add_le_add_right (abs_add_le _ _) _) _) _
+        exact add_le_add (add_le_add (add_le_add (abs_add_le _ _) le_rfl) le_rfl) le_rfl
       _ ≤ q/20000 := by linarith only [hW₁,hW₂,hW₃,hW₄,hW₅]
   have hdelta0 : 0 ≤ a.k-o.k := by nlinarith only [hcorrelation.1,hb0]
   have hPk0 : 0 ≤ parameterCoefficient := by linarith only [hPkL]

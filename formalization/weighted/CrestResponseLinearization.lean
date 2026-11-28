@@ -39,13 +39,13 @@ theorem value_abs (a : Jet q) : |a.value| ≤ |a.center|+a.radius := by
   calc
     |a.value| = |a.center+(a.value-a.center)| := by congr 1; ring
     _ ≤ |a.center|+|a.value-a.center| := abs_add_le _ _
-    _ ≤ |a.center|+a.radius := add_le_add_left a.value_bound _
+    _ ≤ |a.center|+a.radius := add_le_add le_rfl a.value_bound
 
 theorem base_abs (a : Jet q) : |a.base| ≤ |a.center|+a.radius := by
   calc
     |a.base| = |a.center+(a.base-a.center)| := by congr 1; ring
     _ ≤ |a.center|+|a.base-a.center| := abs_add_le _ _
-    _ ≤ |a.center|+a.radius := add_le_add_left a.base_bound _
+    _ ≤ |a.center|+a.radius := add_le_add le_rfl a.base_bound
 
 def const (q c : ℝ) : Jet q where
   value := c
@@ -140,7 +140,7 @@ private theorem product_center_bound {x y c d a b : ℝ}
     |x*y-c*d| = |(c*(y-d)+d*(x-c))+(x-c)*(y-d)| := by congr 1; ring
     _ ≤ |c*(y-d)+d*(x-c)|+|(x-c)*(y-d)| := abs_add_le _ _
     _ ≤ (|c*(y-d)|+|d*(x-c)|)+|(x-c)*(y-d)| :=
-      add_le_add_right (abs_add_le _ _) _
+      add_le_add (abs_add_le _ _) le_rfl
     _ = (|c| *|y-d|+|d| *|x-c|)+|x-c| *|y-d| := by simp only [abs_mul]
     _ ≤ (|c| *b+|d| *a)+a*b := by
       exact add_le_add

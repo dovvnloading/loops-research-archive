@@ -12,8 +12,10 @@ human_review: none
 ## Claim
 
 **Validation checkpoint:** the complete proof chain and physical assembly
-are now written in Lean. Compilation and the transitive dependency audit
-are pending; no uncompiled statement is being counted as a proved result.
+are now written in Lean. The complete quartic profile, quartic scale bounds
+and quantitative endpoint controls have compiled in CI. The downstream
+response chain and full transitive dependency audit are pending; no
+uncompiled statement is being counted as a proved result.
 
 Write `q_p = (1/4)^p`. Let `c` satisfy the existing `ActualTip p c`, let
 `F` be the existing actual crossing family, and let `r_p` be the unique
@@ -33,6 +35,12 @@ at precisely the first exponential order, and
 \[
 r_{p+1}<r_p \qquad (p\ge100).
 \]
+
+The same mechanism also targets a direct inequality for the obligation's
+transport quantity: the all-density physical descendant/parent modulus
+ratio is strictly above its existing limiting coefficient for `p >= 100`.
+This is a one-sided limit theorem; it does not assert monotonicity of the
+width ratios across periods.
 
 The consecutive-period theorem permits independent choices of actual
 parameters and crossing families satisfying the archive's predicates.
@@ -203,7 +211,53 @@ supplies a point in the physical and archived parent source with
 Thus the normalized radius and the original-plane maximal collar are
 linked by an exact Lean theorem within the final assembly.
 
-### 5. Validation record
+### 5. Signed transport for the same physical families
+
+At any limiting crossing `z`, write `t=Re(z^2)`. Its defining equation
+implies `k_0*t=1`, and hence `1/2<t<3/5`. Also
+`Re(z^4) <= t^2`. The proved correlated parameter shift therefore gives
+
+\[
+\operatorname{Re}H(z)<-\beta/10<0.
+\]
+
+The actual crossing function is strictly increasing in the circle cosine.
+Thus its selected cosine is strictly larger than the limiting cosine,
+and its positive arccosine angle is strictly smaller, at every radius in
+the full parent interval. This is proved for the actual branch by
+`ActualCrestQuarticCrossing` and `ActualCrestAngularDrift`.
+
+Consequently the actual radial modulus density is larger throughout the
+common retained interval. On the additional interval `(r_0,r_p)` it is
+at least one. Together with the new endpoint lower bound this gives
+
+\[
+\operatorname{Mod}(\Gamma_p)-
+\int_{1/16}^{r_0}\frac{ds}{s\arccos u_0(s)}
+>\frac3{50}q_p,
+\]
+
+where `Gamma_p` is the existing literal four-return physical descendant
+family, and `Mod` is its independently defined modulus over all measurable
+planar densities. The identity transferring the integral to this modulus
+is the archived `descendants_width_eq_integral`, applied to the same
+actual family and maximal endpoint.
+
+The finite-period physical parent modulus is
+`log(2-2/p)/(2*pi)`, strictly smaller than `log(2)/(2*pi)`.
+`ActualCrestWidthDrift.actual_physical_ratio_gt_limit` then states
+
+\[
+\frac{\operatorname{Mod}(\Gamma_p)}
+     {\operatorname{Mod}(\text{parent}_p)}
+>\operatorname{fullModelCoefficient}(k_0,r_0).
+\]
+
+This final inequality is about the obligation's own complete selected
+physical transport ratio. Neither a surrogate path family nor an assumed
+modulus identification occurs in its hypotheses.
+
+### 6. Validation record
 
 The branch started from main `637266b909d5e7566d8e39141f3b135e3405f38f`
 and has integrated subsequent main changes. The previous closed
@@ -248,8 +302,11 @@ The theorem does not identify selected circular collars with an
 unrestricted KKL Wave optimum. It neither closes general native marking
 or all-Wave comparison gaps nor proves MLC or any H1–H4 assertion.
 The explicit threshold is deliberately conservative. No claim of strict
-endpoint ordering below `p=100`, an optimal displacement constant, or a
-first-order limit for `(r_p-r_0)/q_p` is made.
+endpoint ordering below `p=100`, an optimal displacement constant, a
+first-order limit for `(r_p-r_0)/q_p`, or monotonicity of the physical
+modulus ratios across periods is made. The physical parent normalization
+has its own slower period dependence, so the endpoint exponential law
+is not asserted as the convergence rate of the normalized width ratio.
 
 ## Attribution
 
