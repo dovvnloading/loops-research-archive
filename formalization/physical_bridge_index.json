@@ -4733,5 +4733,14 @@
       ]
     },
     "obligations": []
+  },
+  "slit-extremal-localization-20261128": {
+    "guide": "contributions/slit_extremal_localization_20261128/NOTE.md#slit-extremal-localization-20261128",
+    "theorems": {
+      "formalization/weighted/SlitLeftCrossing.lean": [
+        "parentLeaf_exists_left_real"
+      ]
+    },
+    "obligations": []
   }
 }
