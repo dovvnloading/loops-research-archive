@@ -30,3 +30,9 @@ The intended hard step is an actual variational estimate on the literal polynomi
 ## Attribution
 
 The baseline archive and its cited complex-dynamics and extremal-length sources supply the starting point. No human review has occurred. Failed approaches and every substantive proof checkpoint will be committed in this draft.
+
+## Novelty rejection and disposition
+
+The proposed route is rejected. Section 3 of `research/independent_audits/real_primitive_tip_family_canonical_width_20261116/NOTE.md` already treats the literal domains `D(0,R_p) \\ [x_{2p},x_p]`, constructs their two Joukowski annular barriers, and proves both logarithmic heights are `p*log(2)+O(1)`. Annular monotonicity therefore already gives the physical annulus asymptotic. Applying the classical quasiconformal extremal-length inequality to obtain fixed-reference distortion growth is an easy corollary, not the requested new research.
+
+The fixed-reference comparison also leaves suffix-matched depth references and Wave-only cofinal domination untouched. No theorem is submitted, no ledger status changes, and the draft is closed to release the claim. A temporary uncompiled infrastructure experiment was not registered or committed and is not evidence.
