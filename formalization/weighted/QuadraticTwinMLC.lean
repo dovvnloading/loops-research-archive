@@ -107,9 +107,12 @@ theorem twinParameters_iff (c d : ℂ) :
   constructor
   · intro ht
     exact parameter_eq_or_conj_of_twin ht
-  · rintro (rfl | rfl)
-    · exact twinParameters_self c
-    · exact twinParameters_conj c
+  · intro hd
+    rcases hd with hsame | hconj
+    · rw [hsame]
+      exact twinParameters_self c
+    · rw [hconj]
+      exact twinParameters_conj c
 
 /-- Every parameter in this specified fiber admits the simultaneous
 semiconjugacy continuous on the real axis.  No parameter equality is part

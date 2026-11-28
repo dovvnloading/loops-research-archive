@@ -82,8 +82,9 @@ theorem algebraicSwitch_twin :
   · intro z
     simpa using algebraicSwitch_square z
   · intro z
-    simpa only [add_zero, algebraicSwitch_square] using
-      algebraicSwitch_add_one (z ^ 2)
+    simpa only [add_zero] using
+      (algebraicSwitch_add_one (z ^ 2)).trans
+        (congrArg (fun w : ℂ => w + 1) (algebraicSwitch_square z))
 
 private theorem imaginary_unit_algebraic : IsAlgebraic ℚ Complex.I := by
   have hone : IsAlgebraic ℚ (1 : ℂ) := isAlgebraic_one
