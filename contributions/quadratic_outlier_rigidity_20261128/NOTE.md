@@ -39,7 +39,7 @@ and every relative neighborhood $U$ of $c$ in $M$ contains a relatively open con
 
 Thus a nontrivial connected parameter fiber necessarily contains a parameter for which the two simultaneous intertwining equations have no solution with this weak regularity. This is an actual-family conditional rigidity criterion and obstruction.
 
-**Validation status at this note revision:** the three core modules have compiled in the existing strict CI build; their transitive proof-dependency audit is being checked. A fourth supporting module formalizes the distinction from global continuity and awaits its own CI run.
+**Validation status at this note revision:** the three original core modules compiled and emitted successful transitive proof-dependency audit results in run 46138258781; that run was superseded by the supporting-module push. The complete branch, including the discontinuous witness, explicit converse, and merge of current main, awaits its final strict CI result.
 
 ## Evidence
 
@@ -141,7 +141,7 @@ Thus the retained hypotheses do not silently produce a globally continuous linki
 | [QuadraticTwinReal.lean](../../formalization/weighted/QuadraticTwinReal.lean) | `integer_covariance`, `fixes_rat`, `fixes_real` |
 | [QuadraticTwinSemiconjugacy.lean](../../formalization/weighted/QuadraticTwinSemiconjugacy.lean) | `unit_translation`, `critical_line`, `imaginary_square`, `parameter_eq_or_conj` |
 | [QuadraticTwinDiscontinuous.lean](../../formalization/weighted/QuadraticTwinDiscontinuous.lean) | `exists_discontinuous_twin` |
-| [QuadraticTwinMLC.lean](../../formalization/weighted/QuadraticTwinMLC.lean) | `monotone_fiber_eq_singleton_of_twin`, `exists_parameter_without_twin_of_nontrivial_fiber`, `locallyConnectedAt_of_twin` |
+| [QuadraticTwinMLC.lean](../../formalization/weighted/QuadraticTwinMLC.lean) | `twinParameters_iff`, `monotone_fiber_eq_singleton_of_twin`, `exists_parameter_without_twin_of_nontrivial_fiber`, `locallyConnectedAt_of_twin` |
 
 The final theorem has the explicit conclusion
 $$
@@ -152,13 +152,13 @@ Its `TwinFiber` premise contains the two functional equations and real-axis cont
 
 All modules are registered as default targets in the existing Mathlib package, with every public theorem listed in the theorem index and each source listed in the source index. No workflow, audit rule, ledger status, or existing theorem is changed. The toolchain is Lean 4.32.0 with the repository's pinned Mathlib.
 
-Local Lean is unavailable and the scratch filesystem cannot hold a checkout. The existing GitHub CI is the compiler and proof-dependency judge. The first weighted run is [46138258781](https://github.com/dovvnloading/loops-research-archive/actions/runs/46138258781); its result will be recorded after completion.
+Local Lean is unavailable and the scratch filesystem cannot hold a checkout. The existing GitHub CI is the compiler and proof-dependency judge. The first weighted run [46138258781](https://github.com/dovvnloading/loops-research-archive/actions/runs/46138258781) built all three original core modules and emitted `AXIOM_AUDIT_PASS weighted: 298 modules, 7767 declarations`; it was superseded by the next source push. Final validation of the complete branch will be recorded separately.
 
 ## Dependencies
 
 ### Exact archive gap
 
-The starting point is main at `0678a66d0915f73214db7899c9591ebb56afb67b`.
+The starting point is main at `0678a66d0915f73214db7899c9591ebb56afb67b`. Main later advanced to `1e010c5255523faf29b09cf545eef8c948b3dce8`; its additions are preserved by a merge resolving only the shared registration conflicts.
 
 The precise open hypothesis is **`UNIVERSAL_PROTECTED_TOWER_CLOSURE`**, the **Universal Protected-Tower Compactness and Rigidity Proposition (UPTCR)** in [the closure proposition, section 5](../../research/mlc_unified/mlc_closure_proposition.md). Its constants are chosen before the polynomial and tower, and every infinitely quadratic-like renormalizable quadratic must satisfy all six clauses:
 
@@ -196,7 +196,7 @@ The simple real square-and-unit-translation functional equation is also classica
 
 - **This does not prove MLC or cover a newly verified class of infinitely renormalizable parameters.** The simultaneous intertwiner is an explicit additional condition. No construction from common kneading data, internal addresses, ray portraits, or renormalization data is provided.
 - The quotient $q$ is supplied with its topological hypotheses. A canonical pinched-disk quotient is not constructed or identified in Lean.
-- Identity and conjugation supply the evident witnesses when $d=c$ or $d=\overline c$. Together with the parameter theorem, this explains the exact strength of the intertwiner condition. The remaining dynamical task is to obtain that condition from information weaker than parameter equality.
+- Identity and conjugation supply witnesses when $d=c$ or $d=\overline c$. The Lean theorem `twinParameters_iff` proves this exact characterization, including both converse witnesses. The remaining dynamical task is to obtain that condition from information weaker than parameter equality.
 - No full classification of $h$ is claimed by the implemented theorem. In particular, real-axis continuity is not being silently upgraded to global continuity.
 - No ledger status change is proposed. H1–H4, UPTCR, and MLC remain open.
 - The claimed mathematical contribution is conditional and the originality assessment is qualified. CI verifies proof correctness and dependencies, not literature priority or the unresolved applicability hypothesis.

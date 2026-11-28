@@ -81,6 +81,36 @@ theorem parameter_eq_or_conj_of_twin {c d : ℂ} (ht : TwinParameters c d) :
   exact QuadraticTwinSemiconjugacy.parameter_eq_or_conj
     (c := c) (d := d) h hcont hquad htwin
 
+/-- The identity supplies the simultaneous map for equal parameters. -/
+theorem twinParameters_self (c : ℂ) : TwinParameters c c := by
+  refine ⟨fun z => z, ?_, ?_, ?_⟩
+  · exact Complex.continuous_ofReal
+  · intro z
+    rfl
+  · intro z
+    rfl
+
+/-- Complex conjugation supplies the simultaneous map for conjugate
+parameters; its restriction to the real axis is the identity. -/
+theorem twinParameters_conj (c : ℂ) : TwinParameters c (star c) := by
+  refine ⟨fun z => star z, ?_, ?_, ?_⟩
+  · simpa only [Complex.star_def, Complex.conj_ofReal] using
+      Complex.continuous_ofReal
+  · intro z
+    simp only [star_add, star_pow]
+  · intro z
+    simp only [star_add, star_pow, star_one]
+
+/-- Exact strength of the simultaneous quadratic parameter relation. -/
+theorem twinParameters_iff (c d : ℂ) :
+    TwinParameters c d ↔ d = c ∨ d = star c := by
+  constructor
+  · intro ht
+    exact parameter_eq_or_conj_of_twin ht
+  · rintro (rfl | rfl)
+    · exact twinParameters_self c
+    · exact twinParameters_conj c
+
 /-- Every parameter in this specified fiber admits the simultaneous
 semiconjugacy continuous on the real axis.  No parameter equality is part
 of this premise. -/
