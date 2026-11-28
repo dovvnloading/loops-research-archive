@@ -4972,6 +4972,21 @@
         "sphericalDensity_pair_tendsto_zero",
         "no_uniform_positive_density_floor",
         "no_slower_geometric_density_floor"
+      ],
+      "formalization/weighted/QuadraticGreenBoundaryDensity.lean": [
+        "parameterTangent_response_bound",
+        "sphericalDensity_response_bound",
+        "sphericalDensity_geometric_bound",
+        "sphericalDensity_pair_geometric_bound",
+        "slowRegularizedGrowth_density_rate",
+        "no_uniform_boundary_geometric_density_floor"
+      ],
+      "formalization/weighted/QuadraticGreenCauchy.lean": [
+        "criticalValue_norm_of_green_scale",
+        "green_disk_iteratedDeriv_bound",
+        "green_disk_deriv_bound",
+        "green_disk_deriv_bound_four",
+        "green_disk_superlevel_of_deriv"
       ]
     },
     "obligations": [

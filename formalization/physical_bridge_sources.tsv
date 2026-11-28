@@ -587,3 +587,5 @@ formalization/weighted/QuadraticGreenCusp.lean	METADATA
 formalization/weighted/QuadraticGreenDensity.lean	METADATA
 formalization/weighted/QuadraticGreenPower.lean	METADATA
 formalization/weighted/QuadraticGreenPressure.lean	METADATA
+formalization/weighted/QuadraticGreenBoundaryDensity.lean	METADATA
+formalization/weighted/QuadraticGreenCauchy.lean	METADATA

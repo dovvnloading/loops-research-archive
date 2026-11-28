@@ -22,11 +22,12 @@ This packet studies the actual quadratic family
 Write `M={c:G(c)=0}`; the imported Lean theorem identifies this set
 with the bounded critical-orbit locus.
 
-**Validation status at this working revision:** the first CI build checked the
-initial source and found two tactic/elaboration errors in the partition and
-shadowing proofs. This revision repairs both and adds the consequences below.
-The full build and transitive audit are pending. Mathematical statements in
-this note are not claimed as kernel-validated until those checks pass.
+**Validation status at this working revision:** the four original modules
+compiled in the unchanged weighted workflow at
+`e6195e3b91a611319fe111f4a18a3504234e9a95`; the subsequent integration of
+main also built successfully and its full transitive audit is running.
+This revision adds the Cauchy converse and the boundary density extension.
+Their kernel validation and the final all-module audit remain pending.
 
 ### A. A finite partition certificate for actual Green sublevel disks
 
@@ -121,16 +122,62 @@ For every `c in M` and every `n`,
 
     rho_n(c)+rho_(n+1)(c) >= 2^(-n)/450.
 
-The exponential rate is optimal uniformly on `M`: at the actual parameter
-zero the sum equals `(3/2)2^(-n)`. Hence there is no positive
-level-independent floor, and no floor `C r^n` with `C>0`, `r>1/2`
-uniform in `c,n`. The constant 450 is not claimed optimal.
+At every actual parameter, the parameter tangent satisfies
+
+    |V_n(c)| <= S_n(c,epsilon),  for epsilon>=0.
+
+Consequently, if `S_n(c,epsilon)<=K A^n` at every time, then
+
+    rho_n(c)+rho_(n+1)(c)
+      <= K^2 (1+A^2/2) (A^2/2)^n.
+
+For every `c` with `SlowRegularizedGrowth c`, every `r>1/2`, and
+every `C>0`, the paired density is eventually strictly less than
+`C r^n`. The proved cusp boundary witness therefore shows that no
+floor `C r^n`, with `C>0` and `r>1/2`, can hold uniformly even
+when parameters are restricted to the actual boundary of `M`.
+Taking `r=1` rules out a positive level-independent boundary floor.
+
+Thus the geometric threshold `1/2` in the uniform lower bound cannot
+be increased, even on the boundary. At the interior parameter zero,
+the paired density additionally has the exact value `(3/2)2^(-n)`.
+The constant 450 is not claimed optimal.
 
 This is explicitly a statement about squared spherical parameter derivatives.
 The module does not assume or formalize their Laplacian interpretation.
 The classical Euclidean identity for
 `U_n=2^(-n-1)log(1+|P_n|^2)` is `Delta U_n=2 rho_n`; it is context,
 not an additional counted Lean theorem.
+
+### E. A necessary Green-disk criterion from actual parameter derivatives
+
+Let `c` be any complex parameter, `r>0`, `n,k>=0` integers, and
+`B` any real number. If
+
+    G(d) <= 2^(-n) B  for every |d-c|<=r,
+
+then the actual polynomial `P_n` satisfies
+
+    r^k |P_n^(k)(c)| <= k! (1+|c|+r) exp(B).
+
+Here `P_n^(k)` is its k-th complex parameter derivative. There is no
+bounded-orbit premise. For `c in M` and `r<=1`, the first-derivative
+bound simplifies to
+
+    r |P_n'(c)| <= 4 exp(B).
+
+Conversely, whenever
+
+    (1+|c|+r) exp(B) < r |P_n'(c)|,
+
+there exists an actual complex parameter `d` with
+`|d-c|<=r` and `G(d)>2^(-n) B`.
+
+The renewal partition therefore supplies sufficient conditions for
+Green sublevel disks, while parameter derivatives supply necessary
+conditions. The converse uses the classical Cauchy estimate; the
+packet claims its precise actual-family formulation, not a new
+complex-analysis principle.
 
 ## Evidence
 
@@ -237,9 +284,32 @@ Put `q=P_n(c)`, `v=V_n(c)`, `u=2qv+1`. For `c in M`,
 
 Both spherical denominators are at most 25. The adjacent normalization is
 `2^(-n-1)=2^(-n)/2`; multiplication yields the constant 450.
-At zero, `P_n=0` and `V_n=1` for all `n`, proving the exact decay
-and both impossibility results. This counterexample is on `M`, not a
-claim of the same optimality restricted to its boundary.
+At zero, `P_n=0` and `V_n=1` for all `n`, proving the exact decay.
+
+The tangent norm is bounded by the regularized response by direct
+induction in `V_(n+1)=2P_n V_n+1`. The spherical denominators are
+at least one, yielding the displayed geometric upper bound. For a
+given `r>1/2`, choose `A=sqrt(r+1/2)>1`. Slow regularized growth
+supplies `epsilon,K`; the ratio
+
+    (A^2/2)/r = (r+1/2)/(2r)
+
+is strictly below one. A geometric limit proves eventual domination
+by every `C r^n`. Applying this at the proved boundary cusp gives
+the boundary obstruction without using an interior witness.
+
+### Proof of the Cauchy converse
+
+The escape-error theorem and the assumed Green bound imply
+
+    log(max(1,|P_n(d)|)) <= B+log(1+|c|+r)
+
+on the parameter circle `|d-c|=r`, since `|d|<=|c|+r`.
+Exponentiating bounds `|P_n|` there by
+`(1+|c|+r)exp(B)`. The critical-value recurrence proves that
+`P_n` is entire. The imported, kernel-proved classical Cauchy
+estimate gives every derivative order. Negating the first-derivative
+necessary condition yields the actual superlevel witness.
 
 ### Lean modules and validation
 
@@ -249,6 +319,8 @@ claim of the same optimality restricted to its boundary.
 | `QuadraticGreenPower.lean` | `regularizedResponse_natural_power`, `slowRegularizedGrowth_power_bound`, `chebyshev_not_slowRegularizedGrowth` |
 | `QuadraticGreenCusp.lean` | `cusp_green_disk`, `cusp_slowRegularizedGrowth`, `cusp_green_all_orders`, `cusp_mem_frontier_zero`, `slow_growth_does_not_force_interior` |
 | `QuadraticGreenDensity.lean` | `criticalValue_hasDerivAt`, `sphericalDensity_pair_lower`, `sphericalDensity_pair_zero`, `no_uniform_positive_density_floor`, `no_slower_geometric_density_floor` |
+| `QuadraticGreenBoundaryDensity.lean` | `parameterTangent_response_bound`, `sphericalDensity_pair_geometric_bound`, `slowRegularizedGrowth_density_rate`, `no_uniform_boundary_geometric_density_floor` |
+| `QuadraticGreenCauchy.lean` | `criticalValue_norm_of_green_scale`, `green_disk_iteratedDeriv_bound`, `green_disk_deriv_bound_four`, `green_disk_superlevel_of_deriv` |
 
 All are in `formalization/weighted/`, registered as default targets, with
 every public theorem listed in the existing theorem index. No existing
@@ -273,8 +345,8 @@ every transitive dependency against its existing foundational allowlist:
 
 The formal proofs use only the actual-family modules `QuadraticEscape`
 and `QuadraticExtremalMultiplier`, the new modules in this packet, and
-mathlib algebra, calculus, finite products, real logarithms, topology and
-geometric limits. None of H1--H4, MBTT, or UPTCR is a premise of these
+mathlib algebra, calculus, finite products, real logarithms, topology,
+geometric limits and the classical complex Cauchy estimates. None of H1--H4, MBTT, or UPTCR is a premise of these
 theorems.
 
 The prior-work audit is material:
@@ -299,14 +371,21 @@ The prior-work audit is material:
   no. 7, 333--351, especially Theorem 4
   ([primary text](https://www.unige.ch/~smirnov/papers/symbolic-j.pdf)),
   supplies the stronger dimension-zero exceptional-angle context.
+- H. de Thelin, T. Gauthier and G. Vigny, *Parametric Lyapunov exponents*
+  ([primary preprint](https://arxiv.org/pdf/2003.14355)), section 3.1,
+  Lemma 9, gives the parameter-derivative variation-of-parameters formula.
+  Its unregularized suffix-product mechanism and the spherical parameter
+  derivative observable are prior art. The proposed contribution here is
+  the precise regularized nonlinear Green certificate and its explicit
+  consequences, not the derivative-sum mechanism itself.
 - Classical spherical-derivative and bifurcation-current technology is
   background, not a new claim of this packet. None of the external
   complex-dynamical theorems is imported as an assumption into the proofs.
 
 ## Boundary
 
-These results provide a potential-theoretic criterion and explicit
-thermodynamic obstructions on the actual quadratic family. They do not
+These results provide a finite regularized-Jacobian criterion for Green
+flatness and explicit density obstructions on the actual quadratic family. They do not
 prove MLC, triviality of a parameter fiber, landing of external rays,
 shrinking of prime-end impressions, or a new infinitely renormalizable
 MLC case. No ledger status change is requested.
@@ -315,13 +394,15 @@ The remaining research issue is substantive: obtain useful partition-growth
 bounds for the unresolved infinitely renormalizable parameters and relate
 such bounds to a lower or angular-access estimate that can distinguish a
 nontrivial common fiber. Upper Green flatness alone cannot do this. This
-packet has not constructed that missing connection. The density floor
-also tends to zero, and its optimality witness is an interior parameter;
-no boundary-only density theorem is inferred.
+packet has not constructed that missing connection. The proved boundary
+density obstruction does not identify a pointwise limit of the normalized
+densities with harmonic measure and does not prove a statement about
+the angles of an individual fiber.
 
 The proposed new statements in this archive are the precise regularized
 partition certificate, its actual-family interior/boundary and flatness
-consequences, and the calibrated two-observation density estimate.
+consequences, the complementary finite-scale Cauchy criterion, and the
+paired-density estimates with their boundary rate obstruction.
 Targeted archive and primary-literature searches found no exact statement
 of this combined criterion. They do not establish worldwide novelty or
 that no one has previously considered related majorant or thermodynamic
@@ -335,6 +416,6 @@ Builds on the archive's actual escape-potential and radius-two formalization.
 The finite nonlinear comparison is a direct quadratic majorant argument;
 the geometric partition interpretation and the precise consequences are
 developed here. Independent AI review checked the proof architecture and
-identified tactic errors before the second CI attempt. No human specialist
+identified tactic and elaboration issues during the CI iterations. No human specialist
 has reviewed the mathematics. All work is released under the repository's
 CC0 terms.
