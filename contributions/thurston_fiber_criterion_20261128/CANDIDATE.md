@@ -86,3 +86,14 @@ establishing the criterion.
 The claim of a new contribution, if the proof compiles, is confined to this
 explicit rigidity mechanism and its formally proved implication to the actual
 bounded-orbit locus. Priority remains subject to specialist literature review.
+
+## Completed comparison after the initial checkpoint
+
+The semigroup and common-fixed-point germ comparisons are now recorded in
+NOTE.md with precise primary references: Cabrera–Makienko–Plaumann,
+Proposition 7 and Theorem 13; Nakai, Theorem 4 / Theorem 5.1. Neither supplies
+the present statement by direct application of its hypotheses. The targeted
+archive review and the restriction of the novelty claim to the complete
+quadratic translation argument are also recorded there. The formal proof
+uses a division-free scaled deviation G(w)=h(2cw)−2dw for parameter equality.
+The original candidate statement above was not weakened.

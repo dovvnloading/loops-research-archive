@@ -128,12 +128,16 @@ classical compact-monotone-quotient topology theorem.
 
 No local Lean executable is installed in this workspace. The repository's
 existing Lean workflows are the compiler and proof-dependency judge.
-**Current validation state: CI proof repair submitted; next build pending.**
-The first weighted build reached the new rigidity module and reported one
-rewrite failure when transporting the proved polynomial identity into the norm
-bound. The next revision uses explicit equality congruence. The preceding
-algebra and periodic-bound lemmas compiled. See [VALIDATION.md](VALIDATION.md)
-for commit and run records.
+**Validation: both modules compiled and the transitive dependency audit passed**
+at source commit `432da2bd3593b3751a9a22177d3a6f093a4d118c`.
+[Weighted CI run](https://github.com/dovvnloading/loops-research-archive/actions/runs/46135348714)
+reports a successful full build and `AXIOM_AUDIT_PASS weighted`.
+The audit checked every compiled declaration from the two new modules:
+17 in the rigidity module and 14 in the MLC module. Only `propext`,
+`Classical.choice`, and `Quot.sound` occur as foundational dependencies.
+There are no proof placeholders or new axioms. The audit and workflows are
+unchanged from the baseline. See [VALIDATION.md](VALIDATION.md) for the exact
+run records, audit output, and the initial compile repair.
 The two modules are registered as default weighted targets and in both source
 and public-theorem indexes. No workflow or audit rule is changed.
 
@@ -149,7 +153,8 @@ search certifies worldwide priority.
    simultaneous topological intertwining of two concrete maps.
    Source: Douady and Hubbard, *A proof of Thurston's topological
    characterization of rational functions*, Acta Math. 171 (1993), 263–297,
-   main characterization theorem.
+   Theorem 1, section 1, printed page 266.
+   [Primary text](https://pi.math.cornell.edu/~hubbard/ThurstonRatMaps.pdf);
    [DOI](https://doi.org/10.1007/BF02392534).
 
 2. **Hybrid straightening uniqueness.** Douady and Hubbard,
@@ -190,8 +195,23 @@ search certifies worldwide priority.
 The earlier finite Thurston-trace candidate was rejected because the
 quadratic parameter can already be recovered from a known finite spectral
 formula; the present proof uses neither that trace nor its degeneration.
-No direct instance of the two-generator statement was located in the archive
-or the cited classical sources. Specialist review of priority remains open.
+A targeted review of main at the baseline below found no duplicate in the
+material examined. The closest formalized archive results concern
+[escaping-set component coding](../../formalization/weighted/QuadraticComponentConjugacy.lean),
+[monotone quotients of the fixed Chebyshev interval](../../formalization/weighted/ChebyshevQuotientRigidity.lean),
+[local analytic square coordinates](../../formalization/weighted/QuadraticLocalNormalForm.lean),
+and [analytic deck maps for a specified return](../../formalization/weighted/TelescopeDeckRigidity.lean).
+None supplies this parameter-equality statement for a merely continuous
+injection intertwining one quadratic and a fixed quarter-turn.
+
+The archive also uses bounded periodic displacement in logarithmic linearizer
+coordinates in
+[the local-dilatation note](../../research/frontier/local_dilatation_construction_20261126/NOTE.md).
+That elementary compact-fundamental-domain technique is not claimed as new.
+The proposed new content is deriving the two translations from these two
+global maps and eliminating the deviation with the quadratic identity.
+No direct classical consequence was identified in the sources checked.
+Specialist review of priority remains open.
 
 ## Dependencies
 
@@ -218,6 +238,10 @@ The present result neither invokes UPTCR nor marks it solved.
 - `QuadraticRotationRigidity` imports Mathlib only.
 - `QuadraticRotationMLC` imports that module, `QuadraticEscape`, and
   `QuadraticMonotoneFiberTopology`.
+- The four bounded-orbit closedness/compactness lemmas follow the existing
+  archive proof in
+  [QuadraticMixedSusceptibilityMLC](../../formalization/weighted/QuadraticMixedSusceptibilityMLC.lean);
+  they are classical infrastructure, with no novelty claim.
 - The escape module is used only to establish that the bounded-critical-orbit
   Mandelbrot set is closed and compact. The criterion makes no assertion about
   potential density, sampling, or escape-rate estimates.
@@ -249,9 +273,8 @@ identifications and hypotheses have been supplied.
 
 The open research problem left by this criterion is to construct or obstruct
 the extra quarter-turn compatibility on actual unresolved fibers by independent
-dynamical information. The submitted Lean development proves the criterion and
-the implication to a singleton fiber and actual local connectivity, subject to
-the CI validation state above.
+dynamical information. The CI-checked Lean development proves the criterion and the implication to a
+singleton fiber and actual local connectivity.
 
 The conclusion $h=\mathrm{id}$ needs $c\ne0$. At $c=d=0$, continuous
 injective radial power maps commute with both squaring and the quarter-turn,
