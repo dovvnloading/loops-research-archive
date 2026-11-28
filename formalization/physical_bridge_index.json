@@ -5192,5 +5192,41 @@
     "obligations": [
       "UNIVERSAL_PROTECTED_TOWER_CLOSURE"
     ]
+  },
+  "thurston-fiber-criterion-20261128": {
+    "guide": "contributions/thurston_fiber_criterion_20261128/NOTE.md#thurston-fiber-criterion-20261128",
+    "theorems": {
+      "formalization/weighted/QuadraticRotationRigidity.lean": [
+        "rotation_map_neg",
+        "rotation_map_zero",
+        "quadratic_map_parameter",
+        "quadratic_opposite_sum",
+        "quadratic_translate",
+        "quadratic_translate_rotated",
+        "quadratic_nat_translate",
+        "quadratic_nat_multiple",
+        "norm_bounded_of_periodic_one_I",
+        "eq_zero_of_nat_mul_norm_bounded",
+        "eq_zero_of_nat_sq_mul_norm_bounded",
+        "map_eq_id_of_bounded_deviation",
+        "scaled_deviation_bounded",
+        "parameter_eq_of_quarter_turn_conjugacy",
+        "map_eq_id_of_quarter_turn_conjugacy"
+      ],
+      "formalization/weighted/QuadraticRotationMLC.lean": [
+        "mandelbrot_eq_zero_escape",
+        "mandelbrot_isClosed",
+        "mandelbrot_norm_le_three",
+        "mandelbrot_isCompact",
+        "parameter_eq_of_quarterTurnConjugates",
+        "quarterTurnConjugates_refl",
+        "fiber_eq_singleton_of_quarter_turn",
+        "nontrivial_fiber_obstructs_quarter_turn",
+        "locallyConnectedAt_of_quarter_turn"
+      ]
+    },
+    "obligations": [
+      "MLC"
+    ]
   }
 }
