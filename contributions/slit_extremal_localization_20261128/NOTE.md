@@ -67,6 +67,36 @@ for every actual tip of period `p >= 30`, the explicit real-width estimate
   <= 3073600 * (1/2)^p * limitingParentWidth.toReal.
 ```
 
+The later theorem `SlitDiskSharpLimit.width_deficit_mul_radius_tendsto`
+proves the sharp first-order deficit for each fixed marking:
+
+```text
+R * (width M univ - width M (ball 0 R)) --> C(a,b,c) > 0,
+C = (A1*B - A*B1)/(2*B^2),
+B1 = integral_(a,b) x*h(x) dx,
+A1 = integral_(b,c) x*h(x) dx.
+```
+
+Widths in this real-valued expression mean `.toReal`. Positivity is proved
+from the strict ordering of the weighted means on the disjoint intervals;
+the derivative is obtained from an exact change of variables in the cubic
+periods. This fixed-mark theorem does not yet assert a sharp moving-tip
+asymptotic or a historically new variation formula.
+
+The constrained pairable problem is now being attacked through its actual
+source component. `ActualPairableSource.conformalChart` proves that the
+actual polynomial return maps the entire upper source component
+bijectively onto the target disk cut to its critical value.
+`ActualPairablePorts` selects the actual unique positive return fixed point
+and proves the four source ports and their membership in that same source.
+`SlitPairableWaves` states pairability using two actual proper temporal
+subarcs, permitting the parent to leave the source between them.
+`SlitPairableCalibration` proves that a single common potential calibrates
+both children without a finite-length assumption.
+`SlitFourPointChart` constructs the actual four-electrode rectangle inverse
+and its closed-side extension. **This checkpoint does not yet claim an
+exact constrained optimum or an attaining pairable Wave.**
+
 The sharper split estimate separates critical-orbit motion from disk
 geometry as `1600*(4*3906*23646*4^(-p) + 1920*2^(-p))` times the limiting
 width. This replaces the previously archived reciprocal-period cutoff
@@ -220,9 +250,13 @@ The universal-upper-bound checkpoint
 `f65e4ca7dbd60de2a03cdd3556fcb46ace2fdd64` passed the complete weighted GitHub
 CI build and transitive axiom audit in run `46118469742`, as well as source
 and model coverage. The exact plane result was committed at `6cd15700` and
-preserved by the mechanical main merge `0be46b59`. This stronger finite-disk
-checkpoint is registered for the same checks; its remote CI result is not
-assumed from the earlier run.
+preserved by the mechanical main merge `0be46b59`; its full weighted CI run
+`46120054502` passed. The finite-disk and physical exponential-bound commit
+`75f85b82472af2d96d91c3c95e405e3140ea38b9` passed the complete weighted Lean
+build and transitive axiom audit in both runs `46120979598` and `46120976219`.
+The new sharp-limit and actual-pairable-source modules compile locally and
+pass unique declaration-level axiom audits. Their remote CI validation is
+reported independently after this checkpoint.
 
 ### Prior archive work and comparison
 

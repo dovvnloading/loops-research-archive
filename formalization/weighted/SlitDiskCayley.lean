@@ -94,7 +94,7 @@ private theorem neg_square_mem_slit {q : ℂ} (hq : 0 < q.re) : -(q^2) ∈ slit 
 theorem map_mem_slit {R : ℝ} (hR : 0 < R) {z : ℂ} (hz : z ∈ disk R) :
     map R z ∈ slit := neg_square_mem_slit (cayley_re_pos hR hz)
 
-private theorem sqrt_sq (w : ℂ) : (Complex.sqrt w)^2 = w := by
+theorem sqrt_sq (w : ℂ) : (Complex.sqrt w)^2 = w := by
   rw [Complex.sqrt, ← Complex.cpow_mul_nat]
   norm_num
 
@@ -102,7 +102,7 @@ private theorem sqrt_re_nonneg (w : ℂ) : 0 ≤ (Complex.sqrt w).re := by
   rw [Complex.sqrt_eq_real_add_ite]
   split_ifs <;> simpa using Real.sqrt_nonneg ((‖w‖ + w.re) / 2)
 
-private theorem sqrt_neg_re_pos {w : ℂ} (hw : w ∈ slit) :
+theorem sqrt_neg_re_pos {w : ℂ} (hw : w ∈ slit) :
     0 < (Complex.sqrt (-w)).re := by
   have hnn := sqrt_re_nonneg (-w)
   by_contra hn
@@ -116,7 +116,7 @@ private theorem sqrt_neg_re_pos {w : ℂ} (hw : w ∈ slit) :
   · nlinarith [sq_nonneg (Complex.sqrt (-w)).im]
   · exact hw (neg_eq_zero.mp hi.symm)
 
-private theorem sqrt_square_of_re_pos {q : ℂ} (hq : 0 < q.re) :
+theorem sqrt_square_of_re_pos {q : ℂ} (hq : 0 < q.re) :
     Complex.sqrt (q^2) = q := by
   rcases sq_eq_sq_iff_eq_or_eq_neg.mp (sqrt_sq (q^2)) with h | h
   · exact h
