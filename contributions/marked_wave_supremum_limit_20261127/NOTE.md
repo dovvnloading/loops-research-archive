@@ -202,17 +202,22 @@ permits a uniform passage to the unrestricted supremum.
 | [ActualParentSupremum.lean](../../formalization/weighted/ActualParentSupremum.lean) | `physical_parent_optimum_real_converges`, `exists_physical_parent_optima_converging` |
 | [ActualParentRate.lean](../../formalization/weighted/ActualParentRate.lean) | `physical_parent_period_comparison`, `physical_parent_real_error`, `physical_parent_disk_supremum` |
 
-All eleven modules compile locally with the pinned Lean and mathlib versions.
-An all-declarations audit checks 498 declarations across those modules and
-reports only `propext`, `Classical.choice`, and `Quot.sound`. The same three
-foundations are the complete transitive axiom lists of the four principal
-physical endpoints. No proof holes or new axioms are introduced.
+All eleven modules compile with the repository's pinned Lean and mathlib
+versions. The unchanged
+[CI run 46101186667](https://github.com/dovvnloading/loops-research-archive/actions/runs/46101186667)
+on proof commit `80445d61e3658c560a96b29ab186fa5f40606344` completed the full
+build (9108 jobs) and the transitive axiom audit of **all 216 weighted-project
+modules and 5223 declarations**. That audit includes all 497 declarations
+generated for these eleven new modules in CI and allows only `propext`,
+`Classical.choice`, and `Quot.sound`. Explicit local axiom reports for the four
+principal physical endpoints give exactly those same three foundations.
+No proof holes or new axioms are introduced.
 
 Every new source and public theorem is registered through the repository's
-existing contribution script. Older modules' original imports, project
-checkers, and CI workflows are unchanged. The full unchanged CI build and audit
-on the submitted commit are the final validation gate; their status is recorded
-on the pull request rather than inferred from the local audit.
+existing contribution script, and the non-draft contribution check passes.
+Older modules' original imports, project checkers, and CI workflows are
+unchanged. The later attribution and validation update changes this note only;
+the Lean sources remain identical to the successful proof commit.
 
 ## Dependencies
 
@@ -246,6 +251,27 @@ are classical tools. The new claim is the complete actual-family comparison
 and convergence obtained by the uniform whole-Wave argument. The archive
 comparison supports novelty relative to the inspected prior work; this
 contribution does not certify worldwide priority.
+
+In particular, general qualitative exhaustion is classical: Nobuyuki Suita,
+[*On a continuity lemma of extremal length and its applications to conformal
+mapping*](https://www.jstage.jst.go.jp/article/kodaimath1949/19/2/19_2_129/_pdf/-char/en),
+Kodai Math. Sem. Rep. **19** (1967), 129-137, Section 3, Lemma 1, proves
+continuity for increasing curve families. James A. Jenkins,
+[*On the existence of certain general extremal metrics II*](https://www.jstage.jst.go.jp/article/tmj1949/45/2/45_2_249/_pdf/-char/en),
+Tohoku Math. J. **45** (1993), 249-257, Theorem F and Section 2, provides
+classical exact extremal-domain theory and discusses boundary-path extensions.
+These results are relevant prior art, not new assertions of this contribution.
+
+KKL [Appendix A.2.3](https://arxiv.org/html/2606.27272v1#A1.SS2.SSS3) gives
+additive-error maximality of the canonical WAD, while Section 6.1 chooses a
+nearly maximal Wave; those statements do not supply the displayed physical
+finite-period estimate. Applying general exact extremal-domain theory to this
+particular marked boundary-parallel class would itself require an identification
+argument. This proof instead establishes the complete Borel-Wave comparison
+directly. Its research claim is the explicit uniform actual-tip estimate and
+its complete-family application, including the geometric measurability and
+physical-disk class arguments, rather than a new principle of extremal-length
+continuity or a new general attainment theorem.
 
 ## Boundary
 
