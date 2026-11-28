@@ -5192,5 +5192,39 @@
     "obligations": [
       "UNIVERSAL_PROTECTED_TOWER_CLOSURE"
     ]
+  },
+  "quadratic-outlier-rigidity-20261128": {
+    "guide": "contributions/quadratic_outlier_rigidity_20261128/NOTE.md#quadratic-outlier-rigidity-20261128",
+    "theorems": {
+      "formalization/weighted/QuadraticTwinReal.lean": [
+        "natural_covariance",
+        "integer_covariance",
+        "fixes_rat",
+        "fixes_real"
+      ],
+      "formalization/weighted/QuadraticTwinSemiconjugacy.lean": [
+        "unit_translation",
+        "maps_parameter",
+        "critical_line",
+        "imaginary_square",
+        "parameter_eq_or_conj",
+        "parameter_eq_or_conj_of_continuous"
+      ],
+      "formalization/weighted/QuadraticTwinMLC.lean": [
+        "mandelbrot_eq_zero_escape",
+        "mandelbrot_isClosed",
+        "mandelbrot_norm_le_three",
+        "mandelbrot_isCompact",
+        "parameter_eq_or_conj_of_twin",
+        "planeFiber_subset_pair_of_twin",
+        "monotone_fiber_eq_singleton_of_twin",
+        "not_twin_of_nontrivial_fiber",
+        "exists_parameter_without_twin_of_nontrivial_fiber",
+        "locallyConnectedAt_of_twin"
+      ]
+    },
+    "obligations": [
+      "MLC"
+    ]
   }
 }
