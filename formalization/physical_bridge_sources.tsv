@@ -173,6 +173,7 @@ formalization/weighted/PrimeEndImpressionDecomposition.lean	METADATA
 formalization/weighted/PrimeEndSectorFilters.lean	METADATA
 formalization/weighted/PrimeEndSectorImpressions.lean	METADATA
 formalization/weighted/PrimeEndSectorRank.lean	METADATA
+formalization/weighted/QuadraticActualShadow.lean	METADATA
 formalization/weighted/QuadraticCenterMultiplier.lean	METADATA
 formalization/weighted/QuadraticCenterParameterLocus.lean	METADATA
 formalization/weighted/QuadraticCenterTrapping.lean	METADATA
@@ -191,6 +192,7 @@ formalization/weighted/QuadraticEscapeEndpoint.lean	QUADRATIC-ESCAPE
 formalization/weighted/QuadraticEscapeFullness.lean	METADATA
 formalization/weighted/QuadraticFlightJet.lean	METADATA
 formalization/weighted/QuadraticInverseOpen.lean	CONSTRUCT
+formalization/weighted/QuadraticMobiusEncounter.lean	METADATA
 formalization/weighted/QuadraticMultiplierArithmetic.lean	METADATA
 formalization/weighted/QuadraticMultiplierCoordinate.lean	METADATA
 formalization/weighted/QuadraticMultiplierDisk.lean	METADATA
@@ -201,6 +203,7 @@ formalization/weighted/QuadraticParameterMotion.lean	CONSTRUCT
 formalization/weighted/QuadraticParameterUnivalence.lean	CONSTRUCT
 formalization/weighted/QuadraticReciprocalFlight.lean	METADATA
 formalization/weighted/QuadraticThreeEncounterAlgebra.lean	METADATA
+formalization/weighted/QuadraticThreeEncounterLimit.lean	METADATA
 formalization/weighted/QuadraticTrappingEscape.lean	METADATA
 formalization/weighted/QuadraticUnivalentNeighborhood.lean	CONSTRUCT
 formalization/weighted/SaturatedTelescope.lean	METADATA

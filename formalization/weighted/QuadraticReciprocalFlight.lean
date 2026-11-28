@@ -53,7 +53,7 @@ private theorem norm_driver_le (v w a : ℂ) :
     ‖w‖ = ‖((v + a) - (v - w)) - a‖ := by congr 1 <;> ring
     _ ≤ ‖(v + a) - (v - w)‖ + ‖a‖ := norm_sub_le _ _
     _ ≤ ‖v + a‖ + ‖v - w‖ + ‖a‖ :=
-      add_le_add_right (norm_sub_le _ _) _
+      add_le_add (norm_sub_le _ _) le_rfl
 
 private theorem error_small {δ E e : ℝ} (hδ : 0 < δ)
     (hE : E ≤ δ^2 / 16) (he : e ≤ (2 / δ) * E) : e ≤ δ / 8 := by
@@ -151,8 +151,7 @@ theorem reciprocal_step_inverse (a v : ℂ) (hv : v ≠ 0) (hva : v + a ≠ 0) :
     field_simp [hva]
     ring
   rw [hid, inv_div]
-  field_simp [hv]
-  ring
+  field_simp [hv] <;> ring
 
 /-- The reciprocal orbit is the inverse of the exact normalized quadratic
 flight throughout the controlled finite interval. -/
@@ -196,8 +195,7 @@ theorem forward_mobius_shadow (a : ℕ → ℂ) (v : ℂ) (N : ℕ)
   have hid : (reciprocal a v n)⁻¹ - (driver a v n)⁻¹ =
       (driver a v n - reciprocal a v n) /
         (reciprocal a v n * driver a v n) := by
-    field_simp [hv, hw]
-    ring
+    field_simp [hv, hw] <;> ring
   rw [hid, norm_div, norm_mul, norm_sub_rev]
   calc
     ‖reciprocal a v n - driver a v n‖ /

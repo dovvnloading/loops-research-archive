@@ -62,7 +62,11 @@ theorem flight_add (a : ℕ → ℂ) (r n : ℕ) :
   induction n with
   | zero => simp [flight]
   | succ n ih =>
-    simp only [Nat.add_succ, flight, ih, add_comp, mul_comp, pow_comp, C_comp]
+    change flight a (r+n) + C (a (r+n))*(flight a (r+n))^2 =
+      (flight (fun j => a (r+j)) n +
+        C (a (r+n))*(flight (fun j => a (r+j)) n)^2).comp (flight a r)
+    rw [ih]
+    simp only [add_comp, mul_comp, pow_comp, C_comp]
 
 /-- The corresponding exact composition identity for the retained jets. -/
 theorem flightJet_add (a : ℕ → ℂ) (r n : ℕ) :
@@ -93,7 +97,8 @@ private def stepRemainder (a : ℂ) (j : Jet) (R : ℂ[X]) : ℂ[X] :=
 private theorem tangent_step_expansion (a : ℂ) (j : Jet) (R : ℂ[X]) :
     (jetPoly j + X^5*R) + C a*(jetPoly j + X^5*R)^2 =
       jetPoly (Jet.comp (Jet.kick a) j) + X^5*stepRemainder a j R := by
-  simp [jetPoly, Jet.comp, Jet.kick, stepRemainder, map_add, map_mul, map_pow] <;> ring
+  simp [jetPoly, Jet.comp, Jet.kick, stepRemainder, map_add, map_mul, map_pow,
+    C_ofNat] <;> ring
 
 /-- All retained coefficients are coefficients of the genuine composed polynomial. -/
 theorem flight_hasJet (a : ℕ → ℂ) (n : ℕ) :
@@ -111,27 +116,27 @@ theorem flight_hasJet (a : ℕ → ℂ) (n : ℕ) :
 theorem HasJet.coeff_zero {p : ℂ[X]} {j : Jet} (h : HasJet p j) :
     p.coeff 0 = 0 := by
   obtain ⟨R, rfl⟩ := h
-  simp [jetPoly, coeff_X_pow_mul']
+  simp [jetPoly, coeff_X_pow_mul', coeff_X]
 
 theorem HasJet.coeff_one {p : ℂ[X]} {j : Jet} (h : HasJet p j) :
     p.coeff 1 = 1 := by
   obtain ⟨R, rfl⟩ := h
-  simp [jetPoly, coeff_X_pow_mul']
+  simp [jetPoly, coeff_X_pow_mul', coeff_X]
 
 theorem HasJet.coeff_two {p : ℂ[X]} {j : Jet} (h : HasJet p j) :
     p.coeff 2 = j.a := by
   obtain ⟨R, rfl⟩ := h
-  simp [jetPoly, coeff_X_pow_mul']
+  simp [jetPoly, coeff_X_pow_mul', coeff_X]
 
 theorem HasJet.coeff_three {p : ℂ[X]} {j : Jet} (h : HasJet p j) :
     p.coeff 3 = j.b := by
   obtain ⟨R, rfl⟩ := h
-  simp [jetPoly, coeff_X_pow_mul']
+  simp [jetPoly, coeff_X_pow_mul', coeff_X]
 
 theorem HasJet.coeff_four {p : ℂ[X]} {j : Jet} (h : HasJet p j) :
     p.coeff 4 = j.d := by
   obtain ⟨R, rfl⟩ := h
-  simp [jetPoly, coeff_X_pow_mul']
+  simp [jetPoly, coeff_X_pow_mul', coeff_X]
 
 theorem flight_coeff_two (a : ℕ → ℂ) (n : ℕ) :
     (flight a n).coeff 2 = (flightJet a n).a :=
@@ -172,7 +177,9 @@ theorem orbit_add (c x : ℂ) (r n : ℕ) :
     orbit c x (r+n) = orbit c (orbit c x r) n := by
   induction n with
   | zero => rfl
-  | succ n ih => simp only [Nat.add_succ, orbit, ih]
+  | succ n ih =>
+    change (orbit c x (r+n))^2+c = (orbit c (orbit c x r) n)^2+c
+    rw [ih]
 
 theorem critical_orbit_shift (c : ℂ) (n : ℕ) :
     orbit c 0 (n+1) = orbit c c n := by
@@ -210,7 +217,10 @@ theorem transport_add (c x σ : ℂ) (r n : ℕ) :
       transport c (orbit c x r) (transport c x σ r) n := by
   induction n with
   | zero => rfl
-  | succ n ih => simp only [Nat.add_succ, transport, orbit_add, ih]
+  | succ n ih =>
+    change 2*orbit c x (r+n)*transport c x σ (r+n) =
+      2*orbit c (orbit c x r) n*transport c (orbit c x r) (transport c x σ r) n
+    rw [orbit_add, ih]
 
 theorem charge_shift (c x σ : ℂ) (r n : ℕ) :
     charge c x σ (r+n) =
@@ -232,12 +242,14 @@ private theorem recenter_step (c x t : ℂ) (P : ℂ[X]) (hx : x ≠ 0) :
       C (x^2+c) + C (2*x*t)*(P + C (t/(2*x))*P^2) := by
   have hs : (2*x*t)*(t/(2*x)) = t^2 := by
     field_simp [hx] <;> ring
+  have hp : C (2*x*t)*C (t/(2*x)) = C (t^2) := by
+    rw [← map_mul, hs]
   calc
     (C x + C t*P)^2 + C c =
         C (x^2+c) + C (2*x*t)*P + C (t^2)*P^2 := by
-          simp [map_add, map_mul, map_pow] <;> ring
+          simp [map_add, map_mul, map_pow, C_ofNat] <;> ring
     _ = C (x^2+c) + C (2*x*t)*(P + C (t/(2*x))*P^2) := by
-      rw [← hs, map_mul]
+      rw [← hp]
       ring
 
 /-- The transported-coordinate composition is exactly an actual iterate. -/
@@ -322,4 +334,5 @@ theorem critical_return_identity (c s : ℂ) (n : ℕ) (hs : s ≠ 0)
     (flight_actual_identity c c (s^2) n hx)
   simpa only [comp_assoc, add_comp, mul_comp, C_comp, X_comp] using h
 
+end
 end QuadraticFlightJet

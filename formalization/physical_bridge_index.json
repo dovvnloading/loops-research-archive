@@ -4786,6 +4786,38 @@
         "reciprocal_step_inverse",
         "inverse_reciprocal_eq_forward",
         "forward_mobius_shadow"
+      ],
+      "formalization/weighted/QuadraticThreeEncounterLimit.lean": [
+        "JetConverges.comp",
+        "JetConverges.kick",
+        "flat_of_hasJet",
+        "flightJet_split",
+        "three_encounter_flight_limit",
+        "actual_critical_three_encounter_obstruction"
+      ],
+      "formalization/weighted/QuadraticActualShadow.lean": [
+        "flight_eval_eq_forward",
+        "normalizedActualFlight_eval",
+        "actual_quadratic_shadow",
+        "critical_return_eval",
+        "critical_return_quotient",
+        "critical_return_shadow",
+        "actual_quadratic_mobius_limit",
+        "critical_return_mobius_limit",
+        "actual_quadratic_shadow_to_target",
+        "actual_quadratic_mobius_uniform_limit",
+        "critical_return_mobius_uniform_limit"
+      ],
+      "formalization/weighted/QuadraticMobiusEncounter.lean": [
+        "composition_formula",
+        "denominator_at_zero",
+        "cleared_defect_expansion",
+        "core_coefficients_after_quadratic_cancellation",
+        "two_encounter_core_flat",
+        "two_encounter_three_flight_flat",
+        "two_encounter_three_flight_limit_flat",
+        "sharp_two_encounter_coefficients",
+        "sharp_two_encounter_defect"
       ]
     },
     "obligations": [
