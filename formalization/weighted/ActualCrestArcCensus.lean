@@ -195,8 +195,8 @@ theorem full_semicircle_real_census {p : ℕ} (hp : 17 ≤ p) {c : ℝ}
         (((normalizedReturn c p)^[3]) z).re < 0)
     (s : Radius) {u : ℝ} (hu : u ∈ Icc (-1 : ℝ) 1) :
     ∀ m : ℕ, 2 ≤ m → m ≤ 4 →
-      (((normalizedReturn c p)^[m]) (circlePoint s u)).im = 0 ↔
-        u = -1 ∨ u = F.angle s ∨ u = 1 := by
+      ((((normalizedReturn c p)^[m]) (circlePoint s u)).im = 0 ↔
+        u = -1 ∨ u = F.angle s ∨ u = 1) := by
   let H := normalizedReturn c p
   let z := circlePoint s u
   have hb := hB z (circlePoint_mem_initialDisk s hu)
@@ -210,14 +210,22 @@ theorem full_semicircle_real_census {p : ℕ} (hp : 17 ≤ p) {c : ℝ}
     tauto
   have h3 : ((H^[3]) z).im = 0 ↔ u = -1 ∨ u = F.angle s ∨ u = 1 := by
     change (H ((H^[2]) z)).im = 0 ↔ _
-    rw [normalized_return_real_iff hp hc (hb.1 2 (by omega)), h2]
-    have hn : ((H^[2]) z).re ≠ 0 := ne_of_gt hb.2.1
-    simp only [hn, or_false]
+    constructor
+    · intro h
+      rcases (normalized_return_real_iff hp hc (hb.1 2 (by omega))).mp h with h | h
+      · exact h2.mp h
+      · exact (ne_of_gt hb.2.1 h).elim
+    · intro h
+      exact (normalized_return_real_iff hp hc (hb.1 2 (by omega))).mpr (Or.inl (h2.mpr h))
   have h4 : ((H^[4]) z).im = 0 ↔ u = -1 ∨ u = F.angle s ∨ u = 1 := by
     change (H ((H^[3]) z)).im = 0 ↔ _
-    rw [normalized_return_real_iff hp hc (hb.1 3 (by omega)), h3]
-    have hn : ((H^[3]) z).re ≠ 0 := ne_of_lt hb.2.2
-    simp only [hn, or_false]
+    constructor
+    · intro h
+      rcases (normalized_return_real_iff hp hc (hb.1 3 (by omega))).mp h with h | h
+      · exact h3.mp h
+      · exact (ne_of_lt hb.2.2 h).elim
+    · intro h
+      exact (normalized_return_real_iff hp hc (hb.1 3 (by omega))).mpr (Or.inl (h3.mpr h))
   intro m hm hm'
   interval_cases m <;> assumption
 
@@ -350,7 +358,8 @@ private theorem angularPoint_norm_sub_le (s : Radius) {x y : ℝ}
         ‖(((s : ℝ)*(Real.cos x-Real.cos y) : ℝ) : ℂ)‖ +
           ‖(((s : ℝ)*(Real.sin x-Real.sin y) : ℝ) : ℂ)*Complex.I‖ := norm_add_le _ _
     _ = (s : ℝ)*|Real.cos x-Real.cos y|+(s : ℝ)*|Real.sin x-Real.sin y| := by
-      simp [norm_mul, Complex.norm_real, Real.norm_eq_abs, abs_mul, abs_of_nonneg hs]
+      simp only [norm_mul, Complex.norm_real, Real.norm_eq_abs, abs_mul,
+        abs_of_nonneg hs, Complex.norm_I, mul_one]
     _ ≤ (s : ℝ)*|x-y|+(s : ℝ)*|x-y| :=
       add_le_add (mul_le_mul_of_nonneg_left (Real.abs_cos_sub_cos_le x y) hs)
         (mul_le_mul_of_nonneg_left (Real.abs_sin_sub_sin_le x y) hs)
@@ -416,7 +425,8 @@ theorem selected_fourth_image_boundedVariation {p : ℕ} (hp : 17 ≤ p) {c : �
     BoundedVariationOn (fun t : ℝ => ((normalizedReturn c p)^[4]) (angularPoint s t))
       (Icc (0 : ℝ) (Real.arccos (F.angle s))) := by
   have hid : BoundedVariationOn (fun t : ℝ => t) (Icc (0 : ℝ) Real.pi) :=
-    monotoneOn_id.boundedVariationOn (fun x hx => by
+    monotoneOn_id.boundedVariationOn (C := Real.pi) (fun x hx => by
+      change |x| ≤ Real.pi
       rw [abs_of_nonneg hx.1]
       exact hx.2)
   have hall := (full_fourth_image_lipschitz hp hc hB s).comp_boundedVariationOn
@@ -469,8 +479,8 @@ theorem eventually_all_actual_tips_real_census :
     ∀ᶠ n : ℕ in atTop, ∀ c : ℝ, ActualTip (n+17) c →
       ∀ F : Family (n+17) c, ∀ s : Radius, ∀ t ∈ Icc (0 : ℝ) Real.pi,
         ∀ m : ℕ, 2 ≤ m → m ≤ 4 →
-          (((normalizedReturn c (n+17))^[m]) (angularPoint s t)).im = 0 ↔
-            t = 0 ∨ t = Real.arccos (F.angle s) ∨ t = Real.pi := by
+          ((((normalizedReturn c (n+17))^[m]) (angularPoint s t)).im = 0 ↔
+            t = 0 ∨ t = Real.arccos (F.angle s) ∨ t = Real.pi) := by
   filter_upwards [ActualCrestSupport.eventually_all_actual_tips_support] with n hn
   intro c hc F s t ht m hm hm'
   exact full_angle_real_census (by omega) hc F (hn c hc).1 s ht hm hm'
