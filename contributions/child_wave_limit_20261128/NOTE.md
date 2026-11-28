@@ -15,11 +15,15 @@ Ledger statement being addressed:
 
 ## Claim
 
-**Development checkpoint: Lean compilation is pending.** The mathematical
-statements below have been implemented, but they are not certified until
-the unchanged weighted workflow builds them and completes its transitive
-proof audit. The external KKL-width identification is a separate, still
-unproved boundary described below.
+**Validated technical checkpoint; not a qualifying canonical advance.**
+The complete Lean chain below compiled in the unchanged weighted workflow
+at commit `1a9107ac4159681b4b39fd9b33990d7823b97e41`, and its transitive
+proof audit passed. The external KKL-width identification remains
+unproved. The novelty audit also found that the source-exhaustion
+mechanism and the whole-Wave stability method are prior archive work.
+Consequently this attempt is not submitted as satisfying the requested
+decisive new canonical theorem; the draft is being closed with its code
+and evidence preserved.
 
 Write `f_c(z)=z^2+c`, `x_j=f_c^j(0)`, `d=x_p>0`, and
 
@@ -97,15 +101,24 @@ then integrated main `637266b909d5e7566d8e39141f3b135e3405f38f`, which
 contains the independent global physical-tip recognition and uniqueness
 results used by the parameter bridge. Draft PR: #272.
 
-The source chain is registered by `code/contribute.py lean-add`; the
-existing contribution check and source-coverage check pass. These checks
-are not Lean compilation. The first weighted run, `46130496356`, built
-the six generic child modules (`Model`, `Transport`, `Compression`,
-`Finite`, `Scaling`, and `Limit`). The second run, `46131510342`, also
-built `ActualChildSource`, `ActualChildParameter`, `ActualChildMarks`,
-`ActualChildSupremum`, and `ActualChildRate`. The positive test-family
-module still had elaboration errors; the full endpoint and final
-transitive proof audit remain pending.
+The source chain is registered by `code/contribute.py lean-add`. The
+existing contribution check and source-coverage check pass. The first two
+weighted runs exposed elaboration errors, which were repaired in the
+committed history. The complete result is checked by
+[weighted run 46131891950](https://github.com/dovvnloading/loops-research-archive/actions/runs/46131891950)
+at code commit `1a9107ac4159681b4b39fd9b33990d7823b97e41`:
+
+```text
+Build completed successfully (9288 jobs).
+AXIOM_AUDIT_PASS weighted: 306 modules, 8082 declarations
+```
+
+All 23 workflows attached to that exact code commit succeeded. The
+unchanged proof audit permits only `propext`, `Classical.choice`, and
+`Quot.sound`; no additional proof assumption was introduced. The source
+scanner rejects `sorry`, `admit`, and the other repository trust escapes.
+The final disposition update changes this note only, leaving the checked
+Lean sources, build targets, and theorem registry unchanged.
 
 | Module | Main theorem or role |
 | --- | --- |
@@ -207,8 +220,10 @@ existing pull-request CI; source checks alone are not proof validation.
 
 ## Boundary
 
-- **Validation:** all new theorem claims are pending compilation at this
-  checkpoint. Source scans or a written proof do not substitute for CI.
+- **Validation:** the full registered chain has compiled and passed the
+  transitive proof audit at the exact code commit recorded above. This
+  validates the propositions as stated; it does not validate an unproved
+  equality with a different, externally defined extremal problem.
 - **Canonical quantity:** `C_p^geom` is the explicitly defined full
   source-contained geometric supremum above. This packet does not yet
   prove its equality with the external KKL A.1 optimum `C_p^+`. The
@@ -224,6 +239,8 @@ existing pull-request CI; source checks alone are not proof validation.
   the actual source are homotopic to one arbitrarily thin slit collar.
   That source-specific class identification is part of the missing
   canonical comparison, not something implied by the name `UpperClass`.
+  The limiting plane slit also has a cusp at infinity; it is not asserted
+  to satisfy KKL A.1's standing condition excluding cusps.
 - **Direct canonical objects:** the source in (1) and the signed chart in
   the parameter bridge are literal objects from the archive. Those
   statements require no equality of width definitions. The disk is a
@@ -250,6 +267,15 @@ existing pull-request CI; source checks alone are not proof validation.
   establish global H1--H4, UPTCR, or MLC, nor identify an entire maximal
   primitive component. The selected chart assertion is restricted to
   `p >= 17`.
+
+### Disposition
+
+This route produced a checked effective geometric extension, but it did
+not meet the requested combination of nonroutine novelty and a proved
+link to the obligation's canonical width. The source and parameter links
+are explicit; the family/ideal-boundary equality is not. No ledger status
+promotion is requested. Closing the draft releases the obligation while
+preserving every proof step and the exact validation evidence for review.
 
 ## Attribution
 
