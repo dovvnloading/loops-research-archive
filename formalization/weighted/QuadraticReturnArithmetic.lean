@@ -182,7 +182,8 @@ theorem odd_numerator_denominator_exact (x : ℂ) (e : ℕ)
     ring
   · intro hk
     obtain ⟨d, rfl⟩ := Nat.exists_eq_add_of_le hk
-    have hp := ((isIntegral_natCast 2).pow d).mul hx.1
+    have hp : IsIntegral ℤ ((2:ℂ)^d * ((2:ℂ)^e * x)) :=
+      ((isIntegral_natCast 2).pow d).mul hx.1
     simpa only [pow_add, mul_assoc, mul_comm, mul_left_comm] using hp
 
 /-- Main obstruction: the least power of two making the normalized

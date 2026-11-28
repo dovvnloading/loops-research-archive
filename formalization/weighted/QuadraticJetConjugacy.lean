@@ -110,7 +110,7 @@ private theorem defect_coeff_three (a b beta gamma delta : K)
   rw [defect_factor]
   simp only [coeff_add, coeff_X_pow_mul']
   norm_num
-  simp [coordinateUnit, criticalUnit, coeff_X, coeff_X_pow_mul',
+  simp [coordinateUnit, criticalUnit, coeff_X, coeff_one, coeff_X_pow_mul',
     pow_succ, mul_coeff_one]
   <;> ring
 
@@ -122,7 +122,7 @@ private theorem defect_coeff_four (a b beta gamma delta : K)
   rw [defect_factor]
   simp only [coeff_add, coeff_X_pow_mul']
   norm_num
-  simp [coordinateUnit, criticalUnit, coeff_X, coeff_X_pow_mul',
+  simp [coordinateUnit, criticalUnit, coeff_X, coeff_one, coeff_X_pow_mul',
     pow_succ, mul_coeff_one, coeff_mul_two]
   <;> ring
 
@@ -201,7 +201,8 @@ private theorem explicit_bottcher_jet {K : Type*} [Field K] [CharZero K]
     · rw [defect_factor]
       norm_num [coeff_X_pow_mul']
     · rw [defect_factor]
-      norm_num [coeff_X_pow_mul', coordinateUnit, criticalUnit, coeff_X, pow_succ]
+      simp only [coeff_add, coeff_X_pow_mul']
+      norm_num [coordinateUnit, criticalUnit, coeff_X, coeff_one]
     · rw [defect_coeff_three]
       ring
     · rw [defect_coeff_four]

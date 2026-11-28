@@ -94,6 +94,26 @@ theorem actual_integral_target_coordinate_cost_attained (c : ℂ) (n : ℕ)
     actual_bottcher_jet_exists_with_exact_denominator c n hcenter hmin
   exact ⟨H, h0, h1, h2, by simpa using hcomp, hdenom⟩
 
+/-- An explicit actual parameter satisfying the exact-center hypotheses. -/
+theorem basilica_exact_critical_period :
+    orbit (-1) 2 = 0 ∧
+      ∀ j : ℕ, 0 < j → j < 2 → orbit (-1) j ≠ 0 := by
+  constructor
+  · norm_num [orbit]
+  · intro j hj hj2
+    have hj1 : j = 1 := by omega
+    subst j
+    norm_num [orbit]
+
+/-- Concrete nonvacuity of the optimal coordinate cost for z²-1. -/
+theorem basilica_integral_target_coordinate_cost_attained :
+    ∃ H : ℂ[X], H.coeff 0 = 0 ∧ H.coeff 1 = 1 ∧ H.coeff 2 = 0 ∧
+      ((X : ℂ[X])^5 ∣ H.comp (criticalNormalizedPoly (-1) 1) - (X^2).comp H) ∧
+      ∀ k : ℕ, IsIntegral ℤ ((2:ℂ)^k * H.coeff 3) ↔ 4 ≤ k := by
+  obtain ⟨hcenter, hmin⟩ := basilica_exact_critical_period
+  simpa only [Nat.mul_zero, Nat.zero_add] using
+    actual_integral_target_coordinate_cost_attained (-1) 0 hcenter hmin
+
 end
 
 end LoopsQuadraticReturnArithmetic

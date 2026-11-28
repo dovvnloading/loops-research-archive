@@ -4208,7 +4208,9 @@
       ],
       "formalization/weighted/QuadraticReturnOptimalCoordinate.lean": [
         "actual_integral_target_coordinate_denominator",
-        "actual_integral_target_coordinate_cost_attained"
+        "actual_integral_target_coordinate_cost_attained",
+        "basilica_exact_critical_period",
+        "basilica_integral_target_coordinate_cost_attained"
       ]
     },
     "obligations": [
