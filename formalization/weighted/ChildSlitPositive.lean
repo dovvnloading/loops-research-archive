@@ -76,7 +76,7 @@ def semicircle (m r : ℝ) : Curve where
 private theorem semicircle_initial (m r : ℝ) :
     semicircle m r initial = ((m - r : ℝ) : ℂ) := by
   apply Complex.ext <;>
-    simp [semicircle, angle, initial, point, Complex.polarCoord_symm_apply]
+    simp [semicircle, angle, initial, point, Complex.polarCoord_symm_apply, sub_eq_add_neg]
 
 private theorem semicircle_terminal (m r : ℝ) :
     semicircle m r terminal = ((m + r : ℝ) : ℂ) := by
@@ -91,7 +91,8 @@ private theorem semicircle_above (m : ℝ) {r : ℝ} (hr : 0 < r)
     {t : Parameter} (ht : t ∈ parameterInterior) : 0 < (semicircle m r t).im := by
   have hθ := angle_mem_interior ht
   have hsin := Real.sin_pos_of_pos_of_lt_pi hθ.1 hθ.2
-  simpa [semicircle, point, Complex.polarCoord_symm_apply] using mul_pos hr hsin
+  simpa [semicircle, point, Complex.polarCoord_symm_apply,
+    ← Complex.ofReal_sin, ← Complex.ofReal_cos] using mul_pos hr hsin
 
 private theorem semicircle_simple (m : ℝ) {r : ℝ} (hr : 0 < r) :
     Simple (semicircle m r) := by
@@ -156,11 +157,12 @@ private theorem semicircle_leaf (M : ChildMarking) (D : Set ℂ) (m : ℝ)
 def semicircleFamily (m a b : ℝ) : Set Curve := semicircle m '' Ioo a b
 
 private theorem semicircle_support (m a b : ℝ) :
-    support (semicircleFamily m a b) =
+    MarkedSlitTransport.support (semicircleFamily m a b) =
       (fun p : ℝ × ℝ => point (m : ℂ) p.1 p.2) ''
         (Ioo a b ×ˢ Ioo 0 Real.pi) := by
   ext z
-  simp only [support, semicircleFamily, mem_iUnion, interiorTrace, mem_image, mem_prod]
+  simp only [MarkedSlitTransport.support, semicircleFamily, Set.mem_iUnion,
+    MarkedSlitTransport.interiorTrace, Set.mem_image, Set.mem_prod]
   constructor
   · rintro ⟨γ, ⟨r, hr, rfl⟩, t, ht, rfl⟩
     exact ⟨(r, angle t), ⟨hr, angle_mem_interior ht⟩, rfl⟩
@@ -231,6 +233,7 @@ private theorem realCurve_lineLength_image_le (f : ℝ → ℂ) {L : ℝ≥0}
       lintegral_mono' hm le_rfl
     _ = (L : ℝ≥0∞) * ∫⁻ t in S, ρ (f t) := by
       rw [lintegral_smul_measure, lintegral_map hρ hL.continuous.measurable]
+      rfl
 
 private theorem point_lipschitz (m : ℂ) {r : ℝ} (hr : 0 < r) :
     LipschitzWith ⟨r, hr.le⟩ (point m r) := by
@@ -254,9 +257,10 @@ theorem semicircle_lineLength_le (m : ℝ) {r : ℝ} (hr : 0 < r)
   change ENNReal.ofReal r * (∫⁻ t in Icc 0 Real.pi, ρ (point (m : ℂ) r t)) = _
   rw [← restrict_Ioo_eq_restrict_Icc]
   unfold CircularCrestEnergy.leafLength
-  rw [lintegral_mul_const _
-    (hρ.comp ((point_continuous (m : ℂ)).comp
-      (continuous_const.prodMk continuous_id)).measurable)]
+  have hm : Measurable (fun t : ℝ => ρ (point (m : ℂ) r t)) :=
+    hρ.comp ((point_continuous (m : ℂ)).comp
+      (continuous_const.prodMk continuous_id)).measurable
+  rw [lintegral_mul_const _ hm]
   exact mul_comm _ _
 
 /-- A uniform strictly positive lower bound for the full geometric

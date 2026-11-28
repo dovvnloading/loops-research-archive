@@ -101,10 +101,11 @@ The source chain is registered by `code/contribute.py lean-add`; the
 existing contribution check and source-coverage check pass. These checks
 are not Lean compilation. The first weighted run, `46130496356`, built
 the six generic child modules (`Model`, `Transport`, `Compression`,
-`Finite`, `Scaling`, and `Limit`). It reported elaboration errors in the
-actual-source and actual-mark files. Those errors have been corrected;
-the complete chain, including the new endpoint modules, awaits the next
-CI run.
+`Finite`, `Scaling`, and `Limit`). The second run, `46131510342`, also
+built `ActualChildSource`, `ActualChildParameter`, `ActualChildMarks`,
+`ActualChildSupremum`, and `ActualChildRate`. The positive test-family
+module still had elaboration errors; the full endpoint and final
+transitive proof audit remain pending.
 
 | Module | Main theorem or role |
 | --- | --- |
@@ -216,6 +217,13 @@ existing pull-request CI; source checks alone are not proof validation.
   in the repository. Creating a new predicate with the name "KKL" would
   not prove that equality. Consequently (2)--(3) must not be advertised as
   a settled canonical KKL-width convergence theorem.
+- **Reference class:** for an arbitrary ambient domain, `UpperClass`
+  means that some source-contained upper-half-plane reference exists.
+  It can be a union of relative classes when the domain has upper-half
+  plane holes. This packet does not prove that all such references in
+  the actual source are homotopic to one arbitrarily thin slit collar.
+  That source-specific class identification is part of the missing
+  canonical comparison, not something implied by the name `UpperClass`.
 - **Direct canonical objects:** the source in (1) and the signed chart in
   the parameter bridge are literal objects from the archive. Those
   statements require no equality of width definitions. The disk is a
@@ -226,6 +234,15 @@ existing pull-request CI; source checks alone are not proof validation.
   does not itself establish new mathematics. The attempted new portion
   is the actual-source child convergence and its effective quantitative
   estimate. Worldwide priority is not certified by this packet or by CI.
+  In particular, **qualitative compact exhaustion of the exact source is
+  already written** in the November 16 limiting-gain note and the
+  November 23 correction, in each case immediately after equation (5).
+  Their scaling `lambda_p=-A_p` differs from `1/d_p` by the uniformly
+  bounded positive factor `kappa_p`. The effective inradius in (1)
+  strengthens that argument quantitatively; its mechanism is prior work.
+  The child convergence method is a close extension of the archived
+  parent method. Under a requirement of a decisive new canonical theorem,
+  compiling this extension alone does not meet that requirement.
 - **Extremal questions:** no exact optimal value, optimizer attainment,
   paired optimum, covering-compatible simultaneous maximizer, or equality
   `W_p^*=W_(p,2)^*` is established.
@@ -239,7 +256,11 @@ existing pull-request CI; source checks alone are not proof validation.
 The prior actual parent-width convergence and quantitative rate are
 credited to `contributions/marked_wave_supremum_limit_20261127/NOTE.md`.
 The complete child transport/cutoff argument is an adaptation of those
-proofs, not an independent claim to their general method. The physical
+proofs, not an independent claim to their general method. Qualitative
+source exhaustion is credited to
+`research/independent_audits/tip_family_limiting_wave_gain_20261116/NOTE.md`
+and `research/independent_audits/tip_family_wave_gain_correction_20261123/NOTE.md`,
+in each case the paragraph after equation (5). The physical
 parameter recognition and uniqueness are credited to
 `contributions/global_primitive_window_20261128/NOTE.md`. The selected
 slit atlas, child electrodes, independent extremal problems, and circular
