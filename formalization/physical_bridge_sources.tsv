@@ -232,6 +232,16 @@ formalization/weighted/ThreeReturnParent.lean	METADATA
 formalization/weighted/ThreeReturnParentTopology.lean	METADATA
 formalization/weighted/ThreeReturnPhysical.lean	METADATA
 formalization/weighted/ThreeReturnRealization.lean	METADATA
+formalization/weighted/TwoLevelCollisions.lean	METADATA
+formalization/weighted/TwoLevelConjugacy.lean	METADATA
+formalization/weighted/TwoLevelGateDomain.lean	METADATA
+formalization/weighted/TwoLevelOuterChart.lean	METADATA
+formalization/weighted/TwoLevelOuterDomain.lean	METADATA
+formalization/weighted/TwoLevelPerturbation.lean	METADATA
+formalization/weighted/TwoLevelPhysicalGate.lean	METADATA
+formalization/weighted/TwoLevelPhysicalGates.lean	METADATA
+formalization/weighted/TwoLevelReference.lean	METADATA
+formalization/weighted/TwoLevelSelection.lean	METADATA
 formalization/weighted/UniformThreeReturn.lean	METADATA
 formalization/weighted/UniformThreeReturnRenormalization.lean	METADATA
 formalization/weighted/WeightedReturn.lean	CLONE EDGE
