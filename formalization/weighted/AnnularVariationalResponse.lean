@@ -178,5 +178,101 @@ theorem welded_response_contraction {ι κ : Type*} {e : ι → ℝ} {r a : ℝ}
     Comparable (radiusStep r a) (response e (weld W B)) (response e (weld W D)) :=
   response_contraction he her hr0 hr ha (comparable_weld W h)
 
+/-- Squared norm of the normalized nonconstant Fourier trace. -/
+def traceMass {ι : Type*} (u : Trace ι) : ℝ≥0∞ :=
+  ∑' i, ENNReal.ofReal ((u i)^2)
+
+def upperFactor (r : ℝ) : ℝ := (1+r^2)/(1-r^2)
+
+def lowerFactor (r : ℝ) : ℝ := (1-r^2)/(1+r^2)
+
+theorem upperFactor_pos {r : ℝ} (hr0 : 0 ≤ r) (hr1 : r < 1) :
+    0 < upperFactor r :=
+  div_pos (by positivity) (one_sub_sq_pos hr0 hr1)
+
+theorem lowerFactor_pos {r : ℝ} (hr0 : 0 ≤ r) (hr1 : r < 1) :
+    0 < lowerFactor r :=
+  div_pos (one_sub_sq_pos hr0 hr1) (by positivity)
+
+theorem upperFactor_one_le {r : ℝ} (hr0 : 0 ≤ r) (hr1 : r < 1) :
+    1 ≤ upperFactor r := by
+  apply (le_div_iff₀ (one_sub_sq_pos hr0 hr1)).mpr
+  nlinarith [sq_nonneg r]
+
+/-- A complete collar controls the entire incoming trace, independently
+of its outgoing trace and of any attached load. -/
+theorem collar_coercive {ι : Type*} {e : ι → ℝ} {r : ℝ}
+    (he : ∀ i, 0 ≤ e i) (her : ∀ i, e i ≤ r) (hr0 : 0 ≤ r) (hr1 : r < 1)
+    (u v : Trace ι) :
+    ENNReal.ofReal (lowerFactor r) * traceMass u ≤ collar e u v := by
+  unfold traceMass collar
+  rw [← ENNReal.tsum_mul_left]
+  apply ENNReal.tsum_le_tsum
+  intro i
+  rw [← ENNReal.ofReal_mul (lowerFactor_pos hr0 hr1).le]
+  exact ENNReal.ofReal_le_ofReal (mode_coercive (he i) (her i) hr1 (u i) (v i))
+
+theorem response_coercive {ι : Type*} {e : ι → ℝ} {r : ℝ}
+    (he : ∀ i, 0 ≤ e i) (her : ∀ i, e i ≤ r) (hr0 : 0 ≤ r) (hr1 : r < 1)
+    (B : Load ι) (u : Trace ι) :
+    ENNReal.ofReal (lowerFactor r) * traceMass u ≤ response e B u := by
+  apply le_iInf
+  intro v
+  exact (collar_coercive he her hr0 hr1 u v).trans (le_add_right le_rfl)
+
+/-- The zero exit trace supplies a finite-energy competitor for every
+finite-energy incoming trace, even when the terminal load is infinite elsewhere. -/
+theorem response_upper {ι : Type*} {e : ι → ℝ} {r : ℝ}
+    (he : ∀ i, 0 ≤ e i) (her : ∀ i, e i ≤ r) (hr0 : 0 ≤ r) (hr1 : r < 1)
+    (B : Load ι) (u : Trace ι) :
+    response e B u ≤ ENNReal.ofReal (upperFactor r) * traceMass u := by
+  calc
+    response e B u ≤ collar e u 0 + B 0 := iInf_le _ _
+    _ = collar e u 0 := by rw [B.zero, add_zero]
+    _ ≤ ENNReal.ofReal (upperFactor r) * traceMass u := by
+      unfold collar traceMass
+      rw [← ENNReal.tsum_mul_left]
+      apply ENNReal.tsum_le_tsum
+      intro i
+      rw [← ENNReal.ofReal_mul (upperFactor_pos hr0 hr1).le]
+      exact ENNReal.ofReal_le_ofReal (mode_at_zero_le (he i) (her i) hr1 (u i))
+
+theorem response_ne_top {ι : Type*} {e : ι → ℝ} {r : ℝ}
+    (he : ∀ i, 0 ≤ e i) (her : ∀ i, e i ≤ r) (hr0 : 0 ≤ r) (hr1 : r < 1)
+    (B : Load ι) {u : Trace ι} (hu : traceMass u ≠ ∞) : response e B u ≠ ∞ :=
+  ne_top_of_le_ne_top (ENNReal.mul_ne_top ENNReal.ofReal_ne_top hu)
+    (response_upper he her hr0 hr1 B u)
+
+/-- One collar makes even initially incomparable loads comparable, with
+a factor independent of the loads and of the number of Fourier coordinates. -/
+theorem universal_response_comparison {ι : Type*} {e : ι → ℝ} {r : ℝ}
+    (he : ∀ i, 0 ≤ e i) (her : ∀ i, e i ≤ r) (hr0 : 0 ≤ r) (hr1 : r < 1)
+    (B D : Load ι) :
+    Comparable (upperFactor r) (response e B) (response e D) := by
+  have hcancel : (upperFactor r)^2 * lowerFactor r = upperFactor r := by
+    have hm : 1-r^2 ≠ 0 := (one_sub_sq_pos hr0 hr1).ne'
+    have hp : 1+r^2 ≠ 0 := by positivity
+    unfold upperFactor lowerFactor
+    field_simp
+    <;> ring
+  have hbound (B D : Load ι) (u : Trace ι) :
+      response e D u ≤ ENNReal.ofReal ((upperFactor r)^2) * response e B u := by
+    calc
+      response e D u ≤ ENNReal.ofReal (upperFactor r) * traceMass u :=
+        response_upper he her hr0 hr1 D u
+      _ = ENNReal.ofReal ((upperFactor r)^2) *
+          (ENNReal.ofReal (lowerFactor r) * traceMass u) := by
+        rw [← mul_assoc, ← ENNReal.ofReal_mul (sq_nonneg (upperFactor r)), hcancel]
+      _ ≤ ENNReal.ofReal ((upperFactor r)^2) * response e B u :=
+        mul_le_mul_left' (response_coercive he her hr0 hr1 B u) _
+  exact ⟨hbound B D, hbound D B⟩
+
+theorem comparable_mono {ι : Type*} {a b : ℝ} {B D : Trace ι → ℝ≥0∞}
+    (ha : 0 ≤ a) (hab : a ≤ b) (h : Comparable a B D) : Comparable b B D := by
+  have hs : ENNReal.ofReal (a^2) ≤ ENNReal.ofReal (b^2) :=
+    ENNReal.ofReal_le_ofReal (AnnularModeContraction.sq_le_sq_of_nonneg ha hab)
+  exact ⟨fun u => (h.1 u).trans (mul_le_mul_right' hs _),
+    fun u => (h.2 u).trans (mul_le_mul_right' hs _)⟩
+
 end
 end AnnularVariationalResponse
