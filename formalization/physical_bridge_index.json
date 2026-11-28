@@ -5192,5 +5192,71 @@
     "obligations": [
       "UNIVERSAL_PROTECTED_TOWER_CLOSURE"
     ]
+  },
+  "parent-wave-exhaustion-20261128": {
+    "guide": "contributions/parent_wave_exhaustion_20261128/NOTE.md#parent-wave-exhaustion-20261128",
+    "theorems": {
+      "formalization/weighted/ParentWaveLeftCrossing.lean": [
+        "parentLeaf_exists_left_real"
+      ],
+      "formalization/weighted/ParentWaveReflection.lean": [
+        "conj_eq_of_im_zero",
+        "reflectedCurve_initial",
+        "reflectedCurve_terminal",
+        "reflectedCurve_left",
+        "reflectedCurve_right",
+        "reflectedCurve_middle",
+        "reflectedCurve_below",
+        "reflectedCurve_above",
+        "reflectedCurve_simple",
+        "reflectedCurve_reference",
+        "reflectedCurve_avoids",
+        "reflectedCurve_parentLeaf",
+        "reflectedCurve_trace",
+        "UpperLeaf.trace_end_iff",
+        "UpperLeaf.trace_im_nonneg",
+        "reflectedCurve_interiorTrace",
+        "reflectedFamily_support",
+        "reflectedFamily_parentWave"
+      ],
+      "formalization/weighted/ParentWaveElliptic.lean": [
+        "differential_im_neg",
+        "differential_differentiable",
+        "exists_primitive",
+        "primitive_injective",
+        "exists_injective_primitive"
+      ],
+      "formalization/weighted/ParentWaveHalfPlane.lean": [
+        "fold_re",
+        "fold_im",
+        "fold_of_nonneg",
+        "fold_of_nonpos",
+        "fold_lipschitz",
+        "fold_continuous",
+        "lineLength_image_le_of_lipschitz",
+        "trace_folded",
+        "trace_prefix_subset",
+        "trace_suffix_subset",
+        "prefixParameter_le",
+        "le_suffixParameter",
+        "prefix_suffix_inter_subset",
+        "lineLength_prefix_add_suffix_le",
+        "folded_prefix_leaf",
+        "folded_suffix_leaf",
+        "parentDensity_measurable",
+        "parentDensity_length",
+        "fold_area_le",
+        "parentDensity_area_le",
+        "parentWave_modulus_le_halfPlane_of_seam",
+        "parentWave_modulus_le_halfPlane",
+        "parent_width_le_halfPlane",
+        "leftGap_pos",
+        "halfPlaneDensity_measurable",
+        "halfPlaneDensity_admissible",
+        "halfPlaneDensity_area_ne_top",
+        "halfPlaneWidth_ne_top"
+      ]
+    },
+    "obligations": []
   }
 }

@@ -11,7 +11,7 @@ human_review: none
 
 ## Claim
 
-Draft investigation; no new theorem is claimed yet. The target is a genuinely
+Draft investigation; no new result about the optimum is claimed yet. The target is a genuinely
 stronger result about the complete physical parent supremum in
 ActualParentSupremum.physicalParentWidth, beyond the archived convergence
 theorem and its O(1/p) error estimate.
@@ -32,6 +32,28 @@ foliation, or native geometric identification assumed as the conclusion.
 Local Lean 4.32.0 is available. Every proposed final theorem will be compiled
 in the unchanged weighted project and audited by the existing CI.
 
+### Compiled development checkpoint
+
+Four auxiliary modules have compiled locally and are registered for CI:
+
+- ParentWaveLeftCrossing derives an actual interior intersection with the
+  left real ray from the existing ParentLeaf relative-homotopy definition.
+  The crossing is proved, not supplied as an additional assumption.
+- ParentWaveHalfPlane proves an unconditional bound for the entire canonical
+  parent supremum by one half of the finite, all-path upper-half-plane
+  condenser modulus. Its metrics include all measurable extended densities
+  and its paths include nonrectifiable traces.
+- ParentWaveReflection constructs complete simple parent leaves by reflecting
+  upper crossing arcs, and proves that a Borel family with disjoint complete
+  traces produces a genuine Borel ParentWave with disjoint interiors.
+- ParentWaveElliptic constructs an injective primitive of the literal
+  transformed elliptic differential on the first quadrant. The strict
+  derivative-sign argument proves injectivity there.
+
+These are intermediate proof steps toward the candidate in ATTACK.md. They
+do not establish the optimum, its value, or a sharper rate, and are not
+presented as satisfying the requested research result on their own.
+
 ## Dependencies
 
 - NOV26_OPEN_OPTIMAL_LIMIT, an open research-update obligation in ledger.json.
@@ -41,8 +63,8 @@ in the unchanged weighted project and audited by the existing CI.
 
 ## Boundary
 
-No new proof, improved rate, optimizer, exact width, or status change is claimed
-by this initial draft. The physical parameter selection and native ideal
+No improved rate, optimizer, exact width, or status change is claimed
+by this draft. The physical parameter selection and native ideal
 marking boundaries of the imported work remain explicit. A theorem about a
 substitute quantity will not count without a proved link to physicalParentWidth.
 MLC and H1-H4 remain open.
