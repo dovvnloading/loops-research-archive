@@ -5,6 +5,8 @@ ai: ChatGPT GPT-6 Astra Pro
 human_review: none
 ---
 
+<a id="quadratic-green-pressure-20261128"></a>
+
 # Quadratic Green potential and thermodynamic obstruction: working record
 
 Ledger statement being addressed:
@@ -32,6 +34,25 @@ leaves that architecture and studies the actual family f_c(z)=z^2+c through
 its parameter escape potential.
 
 ## Evidence
+
+### First formal development (CI pending)
+
+`formalization/weighted/QuadraticGreenPressure.lean` now defines
+`regularizedResponse c epsilon n` by S_0=1,
+S_(n+1)=(2|f_c^n(c)|+epsilon)S_n+1. It proves the exact suffix-product
+partition expansion, actual-derivative interpretation, and a finite nonlinear
+shadowing implication. The candidate principal theorem is
+
+    c in M and |d-c| S_j <= epsilon for every j<=n
+    ==> G(d) <= 2^(-n) [log(2+epsilon)+log(3+epsilon)].
+
+This is an actual-family assertion, not a metric assumption on fibers.
+Its full source, build registration, and public theorem index are committed
+together. Compilation remains pending at this revision. The partition is a
+finite renewal partition for the regularized geometric Jacobian; no
+identification with invariant-measure or topological pressure is asserted.
+
+### Source audit
 
 Initial source audit on main at 6a10209b3cc51878bc45de7668894757b2575e08:
 
