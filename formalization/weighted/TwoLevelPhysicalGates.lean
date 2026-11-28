@@ -74,7 +74,7 @@ theorem selected_inner_first_return {p q : ℕ} (hq : 17 ≤ q)
   have hA := coefficient_negative h.first_coefficient
   have hAa : 0 < |returnCoefficient p c| := abs_pos.mpr hA.ne
   have hD : 0 < secondScale c p q := by linarith [h.second_scale.1, scale_pos q]
-  have hproduct : |returnCoefficient p c|*|criticalValue c (q*p)| =
+  have hproduct : |returnCoefficient p c| *|criticalValue c (q*p)| =
       secondScale c p q := by
     rw [← abs_mul, ← secondScale, abs_of_pos hD]
   apply Set.disjoint_left.mpr
@@ -86,7 +86,7 @@ theorem selected_inner_first_return {p q : ℕ} (hq : 17 ≤ q)
   rw [← selected_phase_identity h j z, norm_mul,
     Complex.norm_real, Real.norm_eq_abs] at hlow
   have hy' : ‖((quadraticMap c)^[j*p]) ((criticalValue c (q*p) : ℂ)*z)‖ <
-      |criticalValue c (q*p)|*(23/20) := by simpa [physicalTarget] using hy
+      |criticalValue c (q*p)| *(23/20) := by simpa [physicalTarget] using hy
   have hm := mul_lt_mul_of_pos_left hy' hAa
   rw [← mul_assoc, hproduct] at hm
   nlinarith [h.second_scale.2, scale_small hq]
@@ -98,7 +98,7 @@ def PhysicalCorridor (c : ℝ) (n : ℕ) : Prop :=
     circlePoint s u ∈ parentSource c n ∧
     (criticalValue c n : ℂ)*circlePoint s u ∈ physicalParentSource c n ∧
     ‖(criticalValue c n : ℂ)*circlePoint s u+((3*criticalValue c n/4 : ℝ) : ℂ)‖ =
-      |criticalValue c n|*s ∧
+      |criticalValue c n| *s ∧
     (normalizedReturn c n (circlePoint s u)).re = 0 ∧
     0 < (normalizedReturn c n (circlePoint s u)).im ∧
     (((normalizedReturn c n)^[2]) (circlePoint s u)).im = 0 ∧
@@ -126,7 +126,7 @@ theorem selected_physical_corridor {p q : ℕ} (hq : 17 ≤ q)
   have hz := hcentral.full_gate_disk hg
   have hrphysical :
       ‖(criticalValue c (q*p) : ℂ)*circlePoint s u+
-        ((3*criticalValue c (q*p)/4 : ℝ) : ℂ)‖ = |criticalValue c (q*p)|*s := by
+        ((3*criticalValue c (q*p)/4 : ℝ) : ℂ)‖ = |criticalValue c (q*p)| *s := by
     have he : (criticalValue c (q*p) : ℂ)*circlePoint s u+
         ((3*criticalValue c (q*p)/4 : ℝ) : ℂ) =
           (criticalValue c (q*p) : ℂ)*(circlePoint s u+(3/4 : ℂ)) := by

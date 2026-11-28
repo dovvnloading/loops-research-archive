@@ -17,11 +17,11 @@ open LoopsQuadraticCylinderCensus TwoLevelGateDomain
 noncomputable section
 
 def physicalTarget (c : ℝ) (n : ℕ) : Set ℂ :=
-  ball 0 (|criticalValue c n|*(23/20))
+  ball 0 (|criticalValue c n| *(23/20))
 
 def physicalGateDisk (c : ℝ) (n : ℕ) : Set ℂ :=
   {z | ‖z+((3*criticalValue c n/4 : ℝ) : ℂ)‖ ≤
-    |criticalValue c n|*(133/2000)}
+    |criticalValue c n| *(133/2000)}
 
 /-- The literal polynomial on the component of its complete physical
 pullback. The component is identified with `physicalParentSource` below. -/
@@ -52,7 +52,7 @@ theorem physical_pullback_image (c : ℝ) (n : ℕ)
   · rintro ⟨w, hw, rfl⟩
     have hwn : ‖normalizedReturn c n w‖ < 23/20 := by simpa using hw
     change ((quadraticMap c)^[n]) ((criticalValue c n : ℂ)*w) ∈
-      ball 0 (|criticalValue c n|*(23/20))
+      ball 0 (|criticalValue c n| *(23/20))
     rw [physical_scale_identity c n hd, mem_ball_zero_iff,
       norm_mul, Complex.norm_real, Real.norm_eq_abs]
     exact mul_lt_mul_of_pos_left hwn habs
@@ -62,7 +62,7 @@ theorem physical_pullback_image (c : ℝ) (n : ℕ)
       rw [mem_ball_zero_iff]
       have he : (criticalValue c n : ℂ)*(z/(criticalValue c n : ℂ)) = z := by
         field_simp [hdC]
-      have hn : ‖((quadraticMap c)^[n]) z‖ < |criticalValue c n|*(23/20) := by
+      have hn : ‖((quadraticMap c)^[n]) z‖ < |criticalValue c n| *(23/20) := by
         simpa [physicalTarget] using hz
       rw [← he, physical_scale_identity c n hd, norm_mul,
         Complex.norm_real, Real.norm_eq_abs] at hn
@@ -102,7 +102,7 @@ theorem physical_return_image {c : ℝ} {n : ℕ} (h : CentralGate c n) :
     exact connectedComponentIn_subset _ _ hz
   exact localized_component_image F (F ⁻¹' physicalTarget c n) (physicalTarget c n)
     hopen hproper.isClosedMap (isOpen_ball.preimage hproper.continuous)
-    (convex_ball (0 : ℂ) (|criticalValue c n|*(23/20))).isPreconnected
+    (convex_ball (0 : ℂ) (|criticalValue c n| *(23/20))).isPreconnected
     (fun _ hz => hz) (fun _ hz => hz.2) 0 h0
 
 theorem physical_source_open {c : ℝ} {n : ℕ} (h : CentralGate c n) :
@@ -123,13 +123,13 @@ theorem physical_closure_inside {c : ℝ} {n : ℕ} (h : CentralGate c n) :
   rw [he]
   rintro _ ⟨z, hz, rfl⟩
   have hn : ‖z‖ < 23/20 := by simpa using h.closure_inside hz
-  change (criticalValue c n : ℂ)*z ∈ ball 0 (|criticalValue c n|*(23/20))
+  change (criticalValue c n : ℂ)*z ∈ ball 0 (|criticalValue c n| *(23/20))
   rw [mem_ball_zero_iff, norm_mul, Complex.norm_real, Real.norm_eq_abs]
   exact mul_lt_mul_of_pos_left hn (abs_pos.mpr h.scale_ne)
 
 theorem physical_quantitative_closure {c : ℝ} {n : ℕ} (h : CentralGate c n) :
     closure (physicalParentSource c n) ⊆
-      ball 0 (|criticalValue c n|*(11/10)) := by
+      ball 0 (|criticalValue c n| *(11/10)) := by
   have hdC : (criticalValue c n : ℂ) ≠ 0 := by exact_mod_cast h.scale_ne
   let e := Homeomorph.mulLeft₀ (criticalValue c n : ℂ) hdC
   have he : closure (physicalParentSource c n) = e '' closure (parentSource c n) :=
@@ -137,7 +137,7 @@ theorem physical_quantitative_closure {c : ℝ} {n : ℕ} (h : CentralGate c n) 
   rw [he]
   rintro _ ⟨z, hz, rfl⟩
   have hn : ‖z‖ < 11/10 := by simpa using h.quantitative_closure hz
-  change (criticalValue c n : ℂ)*z ∈ ball 0 (|criticalValue c n|*(11/10))
+  change (criticalValue c n : ℂ)*z ∈ ball 0 (|criticalValue c n| *(11/10))
   rw [mem_ball_zero_iff, norm_mul, Complex.norm_real, Real.norm_eq_abs]
   exact mul_lt_mul_of_pos_left hn (abs_pos.mpr h.scale_ne)
 
@@ -147,9 +147,9 @@ theorem physical_gap {c : ℝ} {n : ℕ} (h : CentralGate c n)
     {u v : ℂ} (hu : u ∈ closure (physicalParentSource c n))
     (hv : v ∉ physicalTarget c n) :
     |criticalValue c n|/20 < dist u v := by
-  have hu' : ‖u‖ < |criticalValue c n|*(11/10) := by
+  have hu' : ‖u‖ < |criticalValue c n| *(11/10) := by
     simpa using physical_quantitative_closure h hu
-  have hv' : |criticalValue c n|*(23/20) ≤ ‖v‖ := by
+  have hv' : |criticalValue c n| *(23/20) ≤ ‖v‖ := by
     simpa [physicalTarget] using hv
   have hnorm := norm_sub_norm_le v u
   rw [dist_eq_norm, norm_sub_rev]
@@ -157,7 +157,7 @@ theorem physical_gap {c : ℝ} {n : ℕ} (h : CentralGate c n)
 
 theorem physical_compact_closure {c : ℝ} {n : ℕ} (h : CentralGate c n) :
     IsCompact (closure (physicalParentSource c n)) :=
-  (isCompact_closedBall (0 : ℂ) (|criticalValue c n|*(23/20))).of_isClosed_subset
+  (isCompact_closedBall (0 : ℂ) (|criticalValue c n| *(23/20))).of_isClosed_subset
     isClosed_closure ((physical_closure_inside h).trans ball_subset_closedBall)
 
 theorem physicalMap_proper (c : ℝ) (n : ℕ) : IsProperMap (physicalMap c n) :=
@@ -189,7 +189,7 @@ theorem physical_gate_image (c : ℝ) (n : ℕ) (hd : criticalValue c n ≠ 0) :
         <;> ring
       have hn : ‖(criticalValue c n : ℂ)*
           (z/(criticalValue c n : ℂ)+(3/4 : ℂ))‖ ≤
-            |criticalValue c n|*(133/2000) := by
+            |criticalValue c n| *(133/2000) := by
         rw [he]
         exact hz
       rw [norm_mul, Complex.norm_real, Real.norm_eq_abs] at hn
@@ -212,7 +212,7 @@ theorem physical_fiber_card {c : ℝ} {n : ℕ} (h : CentralGate c n)
   have hy' : y/(criticalValue c n : ℂ) ∈ ball (0 : ℂ) (23/20) := by
     rw [mem_ball_zero_iff, norm_div, Complex.norm_real, Real.norm_eq_abs]
     apply (div_lt_iff₀ habs).mpr
-    have hn : ‖y‖ < |criticalValue c n|*(23/20) := by simpa [physicalTarget] using hy
+    have hn : ‖y‖ < |criticalValue c n| *(23/20) := by simpa [physicalTarget] using hy
     nlinarith only [hn]
   have hfiber : {z : ℂ | z ∈ physicalParentSource c n ∧ ((quadraticMap c)^[n]) z = y} =
       (fun z : ℂ => (criticalValue c n : ℂ)*z) ''
@@ -248,7 +248,7 @@ structure PhysicalGate (c : ℝ) (n : ℕ) : Prop where
   compact_closure : IsCompact (closure (physicalParentSource c n))
   closure_inside : closure (physicalParentSource c n) ⊆ physicalTarget c n
   quantitative_closure : closure (physicalParentSource c n) ⊆
-    ball 0 (|criticalValue c n|*(11/10))
+    ball 0 (|criticalValue c n| *(11/10))
   gap : ∀ {u v : ℂ}, u ∈ closure (physicalParentSource c n) →
     v ∉ physicalTarget c n → |criticalValue c n|/20 < dist u v
   image_eq : ((quadraticMap c)^[n]) '' physicalParentSource c n = physicalTarget c n
