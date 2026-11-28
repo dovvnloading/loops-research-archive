@@ -221,10 +221,10 @@ theorem two_encounter_identity_germ (a b s t r : ℂ)
   have hp : p = 0 :=
     Polynomial.eq_zero_of_infinite_isRoot p (infinite_of_mem_nhds (0 : ℂ) hroots)
   apply two_encounter_three_flight_flat a b s t r
-  · simpa [p] using congrArg (fun q : Polynomial ℂ => q.coeff 2) hp
-  · simpa [p] using congrArg (fun q : Polynomial ℂ => q.coeff 3) hp
-  · simpa [p] using congrArg (fun q : Polynomial ℂ => q.coeff 4) hp
-  · simpa [p] using congrArg (fun q : Polynomial ℂ => q.coeff 5) hp
+  · simpa [p, Polynomial.coeff_monomial] using congrArg (fun q : Polynomial ℂ => q.coeff 2) hp
+  · simpa [p, Polynomial.coeff_monomial] using congrArg (fun q : Polynomial ℂ => q.coeff 3) hp
+  · simpa [p, Polynomial.coeff_monomial] using congrArg (fun q : Polynomial ℂ => q.coeff 4) hp
+  · simpa [p, Polynomial.coeff_monomial] using congrArg (fun q : Polynomial ℂ => q.coeff 5) hp
 
 /-- The same obstruction directly for the rational composition as a germ.
 All denominator conditions are proved on a neighborhood of zero. -/
@@ -251,35 +251,11 @@ theorem two_encounter_composition_identity_germ (a b s t r : ℂ)
   rw [composition_formula a b s t r u hpu hmu hdu] at hu
   exact (div_eq_iff hdu).mp hu
 
-private theorem jet2_continuous : Continuous
-    (fun v : ℂ × ℂ × ℂ × ℂ × ℂ =>
-      jet2 v.1 v.2.1 v.2.2.1 v.2.2.2.1 v.2.2.2.2) := by
-  unfold jet2 core2
-  fun_prop
-
-private theorem jet3_continuous : Continuous
-    (fun v : ℂ × ℂ × ℂ × ℂ × ℂ =>
-      jet3 v.1 v.2.1 v.2.2.1 v.2.2.2.1 v.2.2.2.2) := by
-  unfold jet3 core2 core3
-  fun_prop
-
-private theorem jet4_continuous : Continuous
-    (fun v : ℂ × ℂ × ℂ × ℂ × ℂ =>
-      jet4 v.1 v.2.1 v.2.2.1 v.2.2.2.1 v.2.2.2.2) := by
-  unfold jet4 core2 core3 core4
-  fun_prop
-
-private theorem jet5_continuous : Continuous
-    (fun v : ℂ × ℂ × ℂ × ℂ × ℂ =>
-      jet5 v.1 v.2.1 v.2.2.1 v.2.2.2.1 v.2.2.2.2) := by
-  unfold jet5 core2 core3 core4 core5
-  fun_prop
-
+set_option maxHeartbeats 1000000 in
 /-- A convergent two-encounter, three-flight profile cannot lose both
 encounters in its identity jet. All convergence assumptions concern this
 explicit rational-composition profile; no realization by an actual
 quadratic renormalization is included in the statement. -/
-set_option maxHeartbeats 1000000 in
 theorem two_encounter_three_flight_limit_flat
     (a b s t r : ℕ → ℂ) (α β σ τ ρ : ℂ)
     (ha : Tendsto a atTop (𝓝 α))
@@ -296,21 +272,40 @@ theorem two_encounter_three_flight_limit_flat
     (h5 : Tendsto (fun n => jet5 (a n) (b n) (s n) (t n) (r n))
       atTop (𝓝 0)) :
     α = 0 ∧ β = 0 ∧ σ+τ+ρ = 0 := by
-  have hv : Tendsto (fun n => (a n,b n,s n,t n,r n))
-      atTop (𝓝 (α,β,σ,τ,ρ)) :=
-    ha.prodMk_nhds (hb.prodMk_nhds (hs.prodMk_nhds (ht.prodMk_nhds hr)))
+  have hq := hr.add hs
+  have hc2 : Tendsto (fun n => core2 (a n) (b n) (t n) (r n+s n))
+      atTop (𝓝 (core2 α β τ (ρ+σ))) := by
+    unfold core2
+    exact ((ha.add hb).add ht).add hq
+  have hc3 : Tendsto (fun n => core3 (a n) (b n) (t n) (r n+s n))
+      atTop (𝓝 (core3 α β τ (ρ+σ))) := by
+    unfold core3
+    exact (((tendsto_const_nhds.mul ha).mul hb).add
+      (hq.mul ((ha.add hb).sub ht))).sub (ht.pow 2)
+  have hc4 : Tendsto (fun n => core4 (a n) (b n) (t n) (r n+s n))
+      atTop (𝓝 (core4 α β τ (ρ+σ))) := by
+    unfold core4
+    exact ((ha.pow 2).mul (hb.sub ht)).sub
+      ((tendsto_const_nhds.mul ha).mul ((ht.pow 2).sub (hq.mul (hb.sub ht))))
+  have hc5 : Tendsto (fun n => core5 (a n) (b n) (t n) (r n+s n))
+      atTop (𝓝 (core5 α β τ (ρ+σ))) := by
+    unfold core5
+    exact (ha.pow 2).neg.mul ((ht.pow 2).sub (hq.mul (hb.sub ht)))
   have hj2 : Tendsto (fun n => jet2 (a n) (b n) (s n) (t n) (r n))
-      atTop (𝓝 (jet2 α β σ τ ρ)) :=
-    (jet2_continuous.tendsto (α,β,σ,τ,ρ)).comp hv
+      atTop (𝓝 (jet2 α β σ τ ρ)) := hc2
   have hj3 : Tendsto (fun n => jet3 (a n) (b n) (s n) (t n) (r n))
-      atTop (𝓝 (jet3 α β σ τ ρ)) :=
-    (jet3_continuous.tendsto (α,β,σ,τ,ρ)).comp hv
+      atTop (𝓝 (jet3 α β σ τ ρ)) := by
+    unfold jet3
+    exact hc3.sub ((tendsto_const_nhds.mul hs).mul hc2)
   have hj4 : Tendsto (fun n => jet4 (a n) (b n) (s n) (t n) (r n))
-      atTop (𝓝 (jet4 α β σ τ ρ)) :=
-    (jet4_continuous.tendsto (α,β,σ,τ,ρ)).comp hv
+      atTop (𝓝 (jet4 α β σ τ ρ)) := by
+    unfold jet4
+    exact (hc4.sub ((tendsto_const_nhds.mul hs).mul hc3)).add
+      ((tendsto_const_nhds.mul (hs.pow 2)).mul hc2)
   have hj5 : Tendsto (fun n => jet5 (a n) (b n) (s n) (t n) (r n))
-      atTop (𝓝 (jet5 α β σ τ ρ)) :=
-    (jet5_continuous.tendsto (α,β,σ,τ,ρ)).comp hv
+      atTop (𝓝 (jet5 α β σ τ ρ)) := by
+    unfold jet5
+    exact ((hc5.sub (hs.mul hc4)).add ((hs.pow 2).mul hc3)).sub ((hs.pow 3).mul hc2)
   exact two_encounter_three_flight_flat α β σ τ ρ
     (tendsto_nhds_unique hj2 h2) (tendsto_nhds_unique hj3 h3)
     (tendsto_nhds_unique hj4 h4) (tendsto_nhds_unique hj5 h5)

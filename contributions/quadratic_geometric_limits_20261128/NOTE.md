@@ -21,7 +21,7 @@ audit are pending. No theorem below counts as validated before those checks
 pass. This contribution does not close H4 or prove MLC.
 
 The proposed contribution is an obstruction to a specific kind of loss of
-geometry in affinely normalized **actual quadratic returns**. The mechanism
+geometry in affinely normalized **actual quadratic iterates**. The mechanism
 retains each nonlinear encounter as an exact quadratic map in transported
 critical-value coordinates. Reciprocal coordinates separate the cumulative
 complex displacement from its quadratic error. Finite-jet algebra then tests
@@ -67,7 +67,11 @@ methods. It also uses no fiber metric/sampling criterion and no arithmetic
 of center denominators. Each new foundation module imports only Mathlib;
 subsequent modules import these new foundations.
 
-### 2. Exact physical coordinates, at every return time
+### 2. Exact physical coordinates, at every iterate time
+
+Here a "return" denotes the specified iterate, specializing to a dynamical
+return when its time is chosen that way. No first-return property, restrictive
+domain, or polynomial-like restriction is included implicitly.
 
 Let `f_c(z)=z^2+c`. Start at the critical value and choose a nonzero affine
 critical scale `s`. Set
@@ -108,6 +112,25 @@ No term has been truncated in (1)--(2). The critical return itself is
 
 Thus degree four in `u` is degree eight in the original critical coordinate.
 No square root or nonlinear coordinate choice occurs in the definitions.
+The moving affine frames make the steps tangent to identity; this does not
+assert that the original polynomial has a parabolic cycle. The cumulative
+charge is not a constructed Ecalle height or Lavaurs phase.
+
+There is also a version with **no free zoom scale**. Let
+
+\[
+B_N=\prod_{j<N}2x_j,\qquad s_N=B_N^{-1},\qquad
+R_{c,N}(z)=\frac{f_c^{N+1}(s_Nz)-f_c^{N+1}(0)}{s_N}.
+\tag{3a}
+\]
+
+The same nonzero linear scale is used at the source and target, and the
+quadratic coefficient of `R` is one. `QuadraticCanonicalScale.lean` proves
+that this scale is unique: the matching condition
+`transport(c,c,s^2,N)=s`, with `s!=0`, forces `s=s_N`. Target centering subtracts
+the critical value of the iterate; the full affine conjugate retains that
+constant. Its nonlinear coefficients are unchanged. This is a canonical
+germ normalization, not a constructed restrictive-domain scale.
 
 `QuadraticFlightJet.lean` proves (1)--(3) as identities of entire polynomials.
 Its `HasJet` statement retains an exact polynomial remainder `X^5*R`.
@@ -181,9 +204,18 @@ separation. The uniform target error is at most
 specific controlled flight regime. It is not the construction of a Lavaurs
 map or a general parabolic-implosion theorem.
 
+The reciprocal chart omits zero, but the actual maps and the limit both fix
+zero. `QuadraticOriginalShadow.lean` extends the uniform statement through
+that point. In particular, if every signed partial sum has modulus at most
+`B`, the actual normalized maps converge uniformly on the closed disk
+`|u| <= 1/(B+delta)`, under the same energy bound and convergence assumptions.
+This follows from `|u^(-1)-S_j| >= delta`, not from a bound on total absolute
+variation. The critical-coordinate limit is `z^2/(1-t*z^2)`, including at zero.
+
 Lean files: `QuadraticReciprocalFlight.lean` proves the quantitative estimate
 and nonvanishing; `QuadraticActualShadow.lean` connects it to the literal
-quadratic maps and proves the corresponding limit statement.
+quadratic maps; `QuadraticOriginalShadow.lean` proves the limit on a fixed
+disk in the original coordinate.
 
 ### 4. Three encounters cannot disappear through the eighth critical jet
 
@@ -243,6 +275,11 @@ identities. The main actual-family result
 `actual_critical_three_encounter_energy_obstruction` uses these concrete
 conditions on the four shifted actual charge sequences and concludes (8).
 Only the full return's flat critical jet remains a hypothesis.
+The stronger normalization statement
+`QuadraticCanonicalObstruction.canonical_three_encounter_obstruction`
+uses the unique scale (3a) and assumes directly that coefficients four, six
+and eight of that literal canonical critical polynomial tend to zero. There
+is no adjustable shrinking scale in this theorem.
 
 `QuadraticThreeEncounterAlgebra.lean` proves the exact expansion, obstruction,
 sharpness test and limiting algebra. `QuadraticThreeEncounterLimit.lean`
@@ -278,10 +315,22 @@ of section 4.
 `QuadraticMobiusEncounter.lean` proves the rational composition formula,
 the sharp bound, and the corresponding germ theorem. The latter says an
 identity on a neighborhood of zero forces the same vanishing; it uses the
-exact polynomial's finite-root property. This rational theorem is reported
-separately from the actual-family theorem until its complete actual block
-limit bridge has compiled. An actual sparse-two-encounter conclusion is not
-silently inferred from two unrelated modules.
+exact polynomial's finite-root property. The rational identity obstruction
+alone is elementary; the actual orbit realization and controlled convergence
+are the additional content.
+
+`QuadraticTwoEncounterLimit.actual_critical_two_encounter_obstruction`
+states the complete actual-family bridge. Split each actual normalized
+critical-value orbit segment into three actual blocks and two intervening
+steps. Suppose the two actual charges tend to `a,b`, the three actual block
+maps converge locally uniformly on open neighborhoods of zero to
+`m_s,m_t,m_r`, and the complete actual orbit map converges locally uniformly
+to the identity near zero. Then `a=b=0` and `s+t+r=0`. The proof derives the
+exact actual composition, controls the moving intermediate evaluation
+points using local uniform convergence, and proves the needed denominator
+conditions on a neighborhood of zero. It then applies the rational germ
+obstruction. All block maps in this statement are literal iterates of
+`z^2+c`; realization is not an assumed identification with an unrelated model.
 
 ### 6. Literature and novelty comparison
 
@@ -318,7 +367,12 @@ No broad new MLC theorem is claimed.
 - `6f6b976`: the actual polynomial identification, reciprocal estimate, and
   three-encounter algebra compiled. Limit modules exposed ordinary proof-script
   errors, repaired in the following checkpoint.
-- Further actual-return and limiting theorems are being integrated.
+- `27333b0`: the orbit-energy bounds and the actual three-encounter energy
+  obstruction compiled. The remaining uniform-limit and rational-germ proof
+  scripts required repairs; their successful compilation is not asserted at
+  this checkpoint.
+- The fixed canonical-scale obstruction, actual two-encounter limit bridge,
+  and uniform extension through zero are included in the next CI checkpoint.
 - Local Lean is not installed; the workspace has insufficient disk space for
   the pinned toolchain. The unchanged weighted Lean workflow is the compiler
   and transitive-axiom judge.
@@ -348,6 +402,14 @@ No Lean definition or construction of infinite renormalization, polynomial-like
 restriction, Lavaurs map, horn map, harmonic measure, or parameter fiber is
 introduced. No theorem establishing the hypotheses for every such parameter
 is hidden in the wording.
+
+The general shadowing and block theorems permit arbitrary nonzero scales;
+making those scales very small can suppress all charges for arbitrary finite
+orbit segments. That easy quadratic limit is not claimed as renormalization
+information. The canonical-scale obstruction removes this freedom. Neither
+version constructs a nonzero persistent selected profile at an infinitely
+renormalizable parameter or identifies the canonical scale with the size of
+an actual restrictive domain.
 
 The key unresolved bridge is dynamical: a hypothetical nontrivial parameter
 fiber has not been shown to force a sequence in which a finite persistent

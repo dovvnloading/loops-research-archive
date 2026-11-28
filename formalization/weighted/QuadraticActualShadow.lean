@@ -233,7 +233,13 @@ theorem actual_quadratic_mobius_uniform_limit
     simpa [S] using (hsum.sub hc).norm
   have hsdiv : Tendsto (fun k => ‖S k-T‖ / δ^2) atTop (𝓝 0) := by
     have hc : Tendsto (fun _ : ℕ => δ^2) atTop (𝓝 (δ^2)) := tendsto_const_nhds
-    simpa only [Pi.div_apply, zero_div] using hs0.div hc (pow_ne_zero 2 (ne_of_gt hδ))
+    have hdiv := hs0.div hc (pow_ne_zero 2 (ne_of_gt hδ))
+    have hfun : ((fun k : ℕ => ‖S k-T‖) / (fun _ : ℕ => δ^2)) =
+        (fun k : ℕ => ‖S k-T‖ / δ^2) := by
+      funext k
+      rfl
+    rw [hfun] at hdiv
+    simpa only [zero_div] using hdiv
   have hB : Tendsto B atTop (𝓝 0) := by
     simpa only [zero_add] using he0.add hsdiv
   apply Metric.tendstoUniformlyOn_iff.mpr

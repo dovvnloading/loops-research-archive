@@ -4835,6 +4835,35 @@
         "jet_b_error_le_energy",
         "jet_d_error_le_energy",
         "flight_jet_tendsto_zero"
+      ],
+      "formalization/weighted/QuadraticCanonicalScale.lean": [
+        "transport_homogeneous",
+        "canonicalScale_ne_zero",
+        "canonical_transport",
+        "canonicalScale_unique",
+        "canonicalCriticalReturn_eval",
+        "canonicalCriticalReturn_eq_flight",
+        "canonicalCriticalReturn_expansion",
+        "canonicalCriticalReturn_coeff_two",
+        "canonicalCriticalReturn_coeff_four",
+        "canonicalCriticalReturn_coeff_six",
+        "canonicalCriticalReturn_coeff_eight"
+      ],
+      "formalization/weighted/QuadraticCanonicalObstruction.lean": [
+        "canonical_three_encounter_obstruction"
+      ],
+      "formalization/weighted/QuadraticTwoEncounterLimit.lean": [
+        "locally_uniform_moving_eval",
+        "flight_eval_succ",
+        "flight_two_encounter_split",
+        "actual_two_encounter_split",
+        "actual_critical_two_encounter_obstruction"
+      ],
+      "formalization/weighted/QuadraticOriginalShadow.lean": [
+        "reciprocal_mobius_identity",
+        "actual_original_uniform_limit",
+        "actual_mobius_uniform_disk",
+        "critical_original_uniform_limit"
       ]
     },
     "obligations": [
