@@ -371,8 +371,10 @@ No broad new MLC theorem is claimed.
   obstruction compiled. The remaining uniform-limit and rational-germ proof
   scripts required repairs; their successful compilation is not asserted at
   this checkpoint.
-- The fixed canonical-scale obstruction, actual two-encounter limit bridge,
-  and uniform extension through zero are included in the next CI checkpoint.
+- `426cf68`: ten of the eleven new modules compiled, including the fixed
+  canonical-scale obstruction, uniform extension through zero, and rational
+  germ theorem. Three continuity proof-script errors in the actual
+  two-encounter limit bridge are repaired in the next checkpoint.
 - Local Lean is not installed; the workspace has insufficient disk space for
   the pinned toolchain. The unchanged weighted Lean workflow is the compiler
   and transitive-axiom judge.

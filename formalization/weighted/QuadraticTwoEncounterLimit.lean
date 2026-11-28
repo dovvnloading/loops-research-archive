@@ -32,6 +32,7 @@ theorem locally_uniform_moving_eval
   have hV' : V ∈ 𝓝 q := by rwa [hU.nhdsWithin_eq hq] at hV
   have hsmall := (Metric.tendsto_nhds.mp (hf.tendsto.comp hz)) (ε/2) hhalf
   filter_upwards [hFV, hz.eventually hV', hsmall] with n hn hzn hfn
+  change dist (f (z n)) (f q) < ε / 2 at hfn
   have hclose := hn (z n) hzn
   have ht := dist_triangle (F n (z n)) (f (z n)) (f q)
   rw [dist_comm (F n (z n)) (f (z n))] at ht
@@ -125,16 +126,27 @@ theorem actual_critical_two_encounter_obstruction
     mobius_continuousAt σ 0 (by simp)
   have hw₁ : ContinuousAt w₁ 0 := by
     have ha : ContinuousAt (fun _ : ℂ => α) 0 := continuousAt_const
-    simpa only [w₁, QuadraticMobiusEncounter.encounter] using
-      hp₀.add (ha.mul (hp₀.pow 2))
+    have h := hp₀.add (ha.mul (hp₀.pow 2))
+    have heq : (QuadraticMobiusEncounter.flight σ +
+        (fun _ : ℂ => α) * QuadraticMobiusEncounter.flight σ ^ 2) = w₁ := by
+      funext u
+      rfl
+    rw [heq] at h
+    exact h
   have hw₁zero : w₁ 0 = 0 := by
     simp [w₁, QuadraticMobiusEncounter.encounter, QuadraticMobiusEncounter.flight]
   have hp₁ : ContinuousAt (fun u => QuadraticMobiusEncounter.flight τ (w₁ u)) 0 :=
-    (mobius_continuousAt τ (w₁ 0) (by rw [hw₁zero]; simp)).comp 0 hw₁
+    (mobius_continuousAt τ (w₁ 0) (by rw [hw₁zero]; simp)).comp hw₁
   have hw₂ : ContinuousAt w₂ 0 := by
     have hb : ContinuousAt (fun _ : ℂ => β) 0 := continuousAt_const
-    simpa only [w₂, QuadraticMobiusEncounter.encounter] using
-      hp₁.add (hb.mul (hp₁.pow 2))
+    have h := hp₁.add (hb.mul (hp₁.pow 2))
+    have heq : ((fun u => QuadraticMobiusEncounter.flight τ (w₁ u)) +
+        (fun _ : ℂ => β) * (fun u => QuadraticMobiusEncounter.flight τ (w₁ u)) ^ 2) =
+        w₂ := by
+      funext u
+      rfl
+    rw [heq] at h
+    exact h
   have hw₂zero : w₂ 0 = 0 := by
     simp [w₂, hw₁zero, QuadraticMobiusEncounter.encounter,
       QuadraticMobiusEncounter.flight]
@@ -142,10 +154,10 @@ theorem actual_critical_two_encounter_obstruction
     hw₁.tendsto.eventually (by rw [hw₁zero]; exact hU₁.mem_nhds h0₁)
   have hm₂ : ∀ᶠ u in 𝓝 0, w₂ u ∈ U₂ :=
     hw₂.tendsto.eventually (by rw [hw₂zero]; exact hU₂.mem_nhds h0₂)
-  have hc₁ : ContinuousAt (fun u : ℂ => 1-τ*w₁ u) 0 :=
-    continuousAt_const.sub (continuousAt_const.mul hw₁)
-  have hc₂ : ContinuousAt (fun u : ℂ => 1-ρ*w₂ u) 0 :=
-    continuousAt_const.sub (continuousAt_const.mul hw₂)
+  have hc₁ : ContinuousAt (fun u : ℂ => 1-τ*w₁ u) 0 := by
+    fun_prop
+  have hc₂ : ContinuousAt (fun u : ℂ => 1-ρ*w₂ u) 0 := by
+    fun_prop
   have hd₁ : ∀ᶠ u in 𝓝 0, 1-τ*w₁ u ≠ 0 :=
     hc₁.eventually_ne (by rw [hw₁zero]; simp)
   have hd₂ : ∀ᶠ u in 𝓝 0, 1-ρ*w₂ u ≠ 0 :=
@@ -157,8 +169,14 @@ theorem actual_critical_two_encounter_obstruction
       (𝓝 (QuadraticMobiusEncounter.flight σ u)) := h₀.tendsto_at hu₀
   have hA : Tendsto (fun n => QuadraticMobiusEncounter.encounter (a n) (F₀ n u))
       atTop (𝓝 (w₁ u)) := by
-    simpa only [a, w₁, QuadraticMobiusEncounter.encounter] using
-      hF₀.add (hα.mul (hF₀.pow 2))
+    have h := hF₀.add (hα.mul (hF₀.pow 2))
+    have heq : ((fun n => F₀ n u) +
+        (fun n => charge (c n) (c n) ((s n)^2) (k₀ n)) * (fun n => F₀ n u)^2) =
+        (fun n => QuadraticMobiusEncounter.encounter (a n) (F₀ n u)) := by
+      funext n
+      rfl
+    rw [heq] at h
+    exact h
   have hF₁ : Tendsto
       (fun n => F₁ n (QuadraticMobiusEncounter.encounter (a n) (F₀ n u)))
       atTop (𝓝 (QuadraticMobiusEncounter.flight τ (w₁ u))) :=
@@ -168,8 +186,17 @@ theorem actual_critical_two_encounter_obstruction
       (fun n => QuadraticMobiusEncounter.encounter (b n)
         (F₁ n (QuadraticMobiusEncounter.encounter (a n) (F₀ n u))))
       atTop (𝓝 (w₂ u)) := by
-    simpa only [b, w₂, QuadraticMobiusEncounter.encounter] using
-      hF₁.add (hβ.mul (hF₁.pow 2))
+    have h := hF₁.add (hβ.mul (hF₁.pow 2))
+    have heq :
+        ((fun n => F₁ n (QuadraticMobiusEncounter.encounter (a n) (F₀ n u))) +
+          (fun n => charge (c n) (c n) ((s n)^2) (k₀ n+1+k₁ n)) *
+            (fun n => F₁ n (QuadraticMobiusEncounter.encounter (a n) (F₀ n u)))^2) =
+        (fun n => QuadraticMobiusEncounter.encounter (b n)
+          (F₁ n (QuadraticMobiusEncounter.encounter (a n) (F₀ n u)))) := by
+      funext n
+      rfl
+    rw [heq] at h
+    exact h
   have hF₂ : Tendsto
       (fun n => F₂ n (QuadraticMobiusEncounter.encounter (b n)
         (F₁ n (QuadraticMobiusEncounter.encounter (a n) (F₀ n u)))))
