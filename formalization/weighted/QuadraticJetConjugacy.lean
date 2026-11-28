@@ -202,7 +202,7 @@ private theorem explicit_bottcher_jet {K : Type*} [Field K] [CharZero K]
       norm_num [coeff_X_pow_mul']
     · rw [defect_factor]
       simp only [coeff_add, coeff_X_pow_mul']
-      norm_num [coordinateUnit, criticalUnit, coeff_X, coeff_one]
+      norm_num [coordinateUnit, criticalUnit, coeff_X, coeff_one, pow_succ]
     · rw [defect_coeff_three]
       ring
     · rw [defect_coeff_four]

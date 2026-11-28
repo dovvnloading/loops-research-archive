@@ -117,10 +117,12 @@ convergence, existence, or arithmetic properties of an entire infinite Böttcher
    \(k\) makes all the normalized quartic coefficients integral after multiplication by
    \(2^k\).
 4. At the actual basilica center \(c=-1\), \(N=2\), the concrete Lean theorem
-   proves \(\beta=-1/8\), a nonvacuous exact check of the exponent. For
-   explanation, direct substitution gives \(R_{-1,2}(w)=w^2-w^4/8\), and
-   the general coordinate law then gives the cubic Böttcher-jet coefficient
-   \(-1/16\); these last two specializations are not separate named Lean exports.
+   proves \(\beta=-1/8\). The optimal-coordinate module also verifies the exact
+   period-two hypotheses and supplies an actual coordinate jet with exact cubic
+   denominator exponent four. For explanation, direct substitution gives
+   \(R_{-1,2}(w)=w^2-w^4/8\), and the general coordinate law gives the cubic
+   Böttcher-jet coefficient \(-1/16\); these last two formulas are explanatory
+   specializations, not separate named Lean exports.
 
 ## Evidence
 
@@ -149,7 +151,7 @@ objects. This contribution neither assumes nor supplies those missing bridges.
 
 Having identified this gap, the proof below leaves that machinery entirely.
 
-### 2. The new mechanism and the route it obstructs
+### 2. The arithmetic mechanism and the route it obstructs
 
 The mechanism is the arithmetic of formal coordinates at the prime dividing the critical
 local degree. One might begin an arithmetic approach to infinitely renormalizable fibers
@@ -376,12 +378,18 @@ The relevant **background**, rather than unproved premises of the Lean theorems,
   classical, and no resultant-unit theorem is presented as new here.
 - A. Salerno and J. H. Silverman, *Integrality properties of Böttcher coordinates for
   one-dimensional superattracting germs*, *ETDS* 40 (2020), 248–271;
-  [preprint](https://arxiv.org/pdf/1708.09275), Proposition 1 and Theorems 3–4.
-  These concern formal existence and general integrality/denominator bounds.
+  [preprint](https://arxiv.org/pdf/1708.09275), Proposition 1, Theorems 3–4, and
+  Remark 8. These concern formal existence, general integrality/denominator bounds,
+  and explicit low-order coordinate coefficients.
 - H. Fu and H. Nie, *Böttcher coordinates at wild superattracting fixed points*,
   *Bulletin of the London Mathematical Society* 56 (2024), 1698–1715,
   [DOI](https://doi.org/10.1112/blms.13021). This is nearby work on wild-prime
   Böttcher arithmetic and convergence radii.
+
+- R. Ren, *Coefficient-Level Böttcher Theory for Wild Superattracting Germs of
+  Degree \(p^e\)*, [arXiv:2604.02014v3](https://arxiv.org/html/2604.02014v3)
+  (May 2026). This nearby coefficient and radius theory assumes odd \(p\) and
+  \(e\ge2\); it does not treat the local-degree-two center-return statements here.
 
 ## Boundary
 
