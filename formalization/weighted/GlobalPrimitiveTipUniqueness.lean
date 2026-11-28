@@ -96,13 +96,13 @@ private theorem actual_tip_signs {p : ℕ} (hp : 17 ≤ p) {c : ℝ}
     simpa only [neg_sq] using pow_le_pow_left₀
       (by norm_num : (0 : ℝ) ≤ 39/50) (show (39/50 : ℝ) ≤ -x₂ by linarith [hx₂.2]) 2
   have hx₂sqhi : x₂^2 ≤ (4/5 : ℝ)^2 :=
-    sq_le_sq' hx₂.1 (by linarith [hx₂.2])
+    sq_le_sq' (by linarith [hx₂.1]) (by linarith [hx₂.2])
   have hm₂lo := mul_le_mul hklo hx₂sqlo (by positivity : (0 : ℝ) ≤ (39/50)^2) hkpos
   have hm₂hi := mul_le_mul hkhi hx₂sqhi (sq_nonneg x₂) (by norm_num : (0 : ℝ) ≤ 9/5)
   have hx₃ : x₃ ∈ Icc (-4/25 : ℝ) (-2/25) := by
     constructor <;> nlinarith only [he₃.1,he₃.2,hm₂lo,hm₂hi,hε]
   have hx₃sq : x₃^2 ≤ (4/25 : ℝ)^2 :=
-    sq_le_sq' hx₃.1 (by linarith [hx₃.2])
+    sq_le_sq' (by linarith [hx₃.1]) (by linarith [hx₃.2])
   have hm₃ := mul_le_mul hkhi hx₃sq (sq_nonneg x₃) (by norm_num : (0 : ℝ) ≤ 9/5)
   have hx₄ : (19/20 : ℝ) ≤ x₄ := by nlinarith only [he₄.1,hm₃,hε]
   have hx₄sq : (19/20 : ℝ)^2 ≤ x₄^2 :=
