@@ -5024,12 +5024,14 @@
       ],
       "formalization/weighted/QuadraticProjectiveActual.lean": [
         "criticalOrbit_eq_iterate",
+        "quadraticMap_increment",
         "main_fixed_point",
         "main_multiplier",
         "periodTwo_first_step",
         "periodTwo_second_step",
         "periodTwo_cycle_distinct",
         "periodTwo_multiplier_product",
+        "periodTwo_return_increment",
         "normalizedTail_zero",
         "normalizedTail_succ",
         "criticalOrbit_main",
@@ -5050,6 +5052,71 @@
         "residue_cubic_dvd",
         "exists_residue_factor",
         "normalizedClock_cubic_remainder"
+      ],
+      "formalization/weighted/QuadraticProjectiveAffine.lean": [
+        "affineMark_succ",
+        "crossRatio_affine_geometric",
+        "crossRatio_affine_clock",
+        "fractionalMap_sub",
+        "crossRatio_fractionalMap",
+        "affine_clock_pair_ne",
+        "crossRatio_fractional_affine_clock"
+      ],
+      "formalization/weighted/QuadraticProjectiveContinuity.lean": [
+        "continuousAt_bivariate_eval",
+        "continuousAt_denPoly",
+        "continuousAt_remPoly",
+        "denPoly_eventually_ne_zero"
+      ],
+      "formalization/weighted/QuadraticProjectiveEquivalence.lean": [
+        "crossRatio_fractionalMap_total",
+        "criticalClock_eq_of_projectiveEquivalent",
+        "criticalClock_eventually_not_projectiveEquivalent"
+      ],
+      "formalization/weighted/QuadraticProjectiveLimits.lean": [
+        "continuousAt_periodTwoMultiplier",
+        "continuousAt_periodTwoError_zero",
+        "periodTwo_one_add_eventually_ne_zero",
+        "main_den_at_periodTwo_eventually_ne_zero",
+        "periodTwo_den_eventually_ne_zero",
+        "separationUnit_continuousAt_zero",
+        "criticalClock_separation_coefficient",
+        "criticalClock_eventually_separated"
+      ],
+      "formalization/weighted/QuadraticProjectiveRigidity.lean": [
+        "crossRatio_zero_scale",
+        "criticalOrbit_main_mark",
+        "criticalClock_main_normalized",
+        "criticalOrbit_periodTwo_mark",
+        "criticalClock_periodTwo_normalized",
+        "periodTwoMultiplier_ne_zero",
+        "criticalClock_main_regular_part",
+        "criticalClock_periodTwo_regular_part",
+        "criticalClock_main_cubic_remainder",
+        "periodTwo_curvature_term",
+        "criticalClock_periodTwo_cubic_remainder",
+        "periodTwo_curvature_center_correction",
+        "criticalClock_periodTwo_center_jet",
+        "actual_center_return_curvatures"
+      ],
+      "formalization/weighted/QuadraticProjectiveSeparation.lean": [
+        "separationUnit_zero",
+        "criticalClock_separation_factor",
+        "criticalClock_separation_unit"
+      ],
+      "formalization/weighted/QuadraticProjectiveUniversal.lean": [
+        "map_aU",
+        "map_incU",
+        "map_HU",
+        "X_pow_dvd_of_forall_specialize",
+        "map_denU",
+        "map_remU",
+        "map_correctionU",
+        "map_residueU",
+        "universal_residue_dvd_of_pointwise",
+        "exists_universal_residue_factor_of_pointwise",
+        "exists_universal_residue_factor",
+        "normalizedClock_universal_cubic_remainder"
       ]
     },
     "obligations": [

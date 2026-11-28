@@ -209,9 +209,16 @@ formalization/weighted/QuadraticParameterInverse.lean	CONSTRUCT
 formalization/weighted/QuadraticParameterMotion.lean	CONSTRUCT
 formalization/weighted/QuadraticParameterUnivalence.lean	CONSTRUCT
 formalization/weighted/QuadraticProjectiveActual.lean	METADATA
+formalization/weighted/QuadraticProjectiveAffine.lean	METADATA
 formalization/weighted/QuadraticProjectiveAlgebra.lean	METADATA
+formalization/weighted/QuadraticProjectiveContinuity.lean	METADATA
+formalization/weighted/QuadraticProjectiveEquivalence.lean	METADATA
+formalization/weighted/QuadraticProjectiveLimits.lean	METADATA
 formalization/weighted/QuadraticProjectiveResidue.lean	METADATA
+formalization/weighted/QuadraticProjectiveRigidity.lean	METADATA
+formalization/weighted/QuadraticProjectiveSeparation.lean	METADATA
 formalization/weighted/QuadraticProjectiveTail.lean	METADATA
+formalization/weighted/QuadraticProjectiveUniversal.lean	METADATA
 formalization/weighted/QuadraticTrappingEscape.lean	METADATA
 formalization/weighted/QuadraticUnivalentNeighborhood.lean	CONSTRUCT
 formalization/weighted/SaturatedTelescope.lean	METADATA

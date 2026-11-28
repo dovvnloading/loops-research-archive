@@ -48,6 +48,12 @@ theorem criticalOrbit_eq_iterate (c : ℂ) (n : ℕ) :
     rw [criticalOrbit, Function.iterate_succ_apply', ← ih]
     rfl
 
+/-- The linear coefficient of the actual quadratic map, with exact remainder. -/
+theorem quadraticMap_increment (c z h : ℂ) :
+    quadraticMap c (z + h) - quadraticMap c z = (2 * z) * h + h ^ 2 := by
+  simp only [quadraticMap]
+  ring
+
 theorem main_fixed_point (u : ℂ) :
     quadraticMap (mainParameter u) (u / 2) = u / 2 := by
   simp only [quadraticMap, mainParameter]
@@ -75,6 +81,17 @@ theorem periodTwo_cycle_distinct (t : ℂ) (ht : t ≠ -1 / 2) : t ≠ -1 - t :=
 theorem periodTwo_multiplier_product (t : ℂ) :
     (2 * t) * (2 * (-1 - t)) = periodTwoMultiplier t := by
   simp only [periodTwoMultiplier]
+  ring
+
+/-- The displayed two-cycle multiplier is the linear coefficient of the
+complete return polynomial, with every higher term retained. -/
+theorem periodTwo_return_increment (t h : ℂ) :
+    quadraticMap (periodTwoParameter t)
+      (quadraticMap (periodTwoParameter t) (t + h)) =
+      t + periodTwoMultiplier t * h +
+        (6 * t ^ 2 + 2 * periodTwoParameter t) * h ^ 2 +
+        4 * t * h ^ 3 + h ^ 4 := by
+  simp only [quadraticMap, periodTwoParameter, periodTwoMultiplier]
   ring
 
 @[simp] theorem normalizedTail_zero (e u : ℂ) : normalizedTail e u 0 = -1 / 2 := by
