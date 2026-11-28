@@ -6,6 +6,8 @@ ai: OpenAI ChatGPT GPT-6
 human_review: none
 ---
 
+<a id="postcritical-cohomology-20261128"></a>
+
 # Outlier research: postcritical cohomology and parameter-fiber rigidity
 
 **Active draft, not a theorem claim.** The precise archive gate is
@@ -32,7 +34,7 @@ not be silently assumed.
 
 ## Claim
 
-Under development; no theorem accepted yet. The active pattern is to extract
+Candidate stated and pre-screened in [CANDIDATE.md](CANDIDATE.md); Lean proof draft added but not yet certified by CI. The active pattern is to extract
 rigidity from the quadratic additive parameter in a cohomological obstruction
 of a single bounded postcritical orbit rather than from metric orbit closeness.
 
