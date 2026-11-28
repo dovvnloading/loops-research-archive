@@ -60,6 +60,9 @@ formalization/weighted/ActualCrestSupport.lean	METADATA
 formalization/weighted/ActualCrestTheorem.lean	METADATA
 formalization/weighted/ActualCrestTransport.lean	METADATA
 formalization/weighted/ActualCrestUpperGate.lean	METADATA
+formalization/weighted/ActualParentMarks.lean	SELECTED
+formalization/weighted/ActualParentRate.lean	ALL-PATHS
+formalization/weighted/ActualParentSupremum.lean	ALL-PATHS
 formalization/weighted/AtomCutDefect.lean	CUTS CREST
 formalization/weighted/AttachmentDefectLedger.lean	DEFECT
 formalization/weighted/BinaryShiftExactness.lean	METADATA
@@ -77,7 +80,6 @@ formalization/weighted/CollarShellMetric.lean	METADATA
 formalization/weighted/CollarStraightLength.lean	METADATA
 formalization/weighted/CompactObstacleRemainder.lean	METADATA
 formalization/weighted/ConnectedBinaryCoding.lean	METADATA
-formalization/weighted/ConnectedFiberEnergy.lean	METADATA
 formalization/weighted/CrestFirstExit.lean	METADATA
 formalization/weighted/CrestIntegralLimit.lean	METADATA
 formalization/weighted/CrestIterateLimit.lean	METADATA
@@ -85,9 +87,6 @@ formalization/weighted/CriticalReturnRelationStability.lean	METADATA
 formalization/weighted/DepthThreeClosure.lean	METADATA
 formalization/weighted/DepthThreeReal.lean	METADATA
 formalization/weighted/DepthThreeRemainder.lean	METADATA
-formalization/weighted/FiberEnergyCollapse.lean	METADATA
-formalization/weighted/FiberEnergySharpness.lean	METADATA
-formalization/weighted/FiberSamplePacking.lean	METADATA
 formalization/weighted/FiniteFirstReturnBounds.lean	METADATA
 formalization/weighted/FiniteMarkovCorrelation.lean	FINITE-CORRELATION CLONE-OBSERVABLE RANDOM-CLOCK
 formalization/weighted/FiniteMarkovFibers.lean	REAL-FIBERS
@@ -127,7 +126,9 @@ formalization/weighted/LimitingCrestPerturbation.lean	METADATA
 formalization/weighted/LimitingCrestQuadraticReturn.lean	METADATA
 formalization/weighted/LimitingCrestSharpCoefficient.lean	METADATA
 formalization/weighted/LocalizationSheetKernel.lean	COVER-FIBER SHEETS CONNECTOR
-formalization/weighted/MandelbrotSamplingReduction.lean	METADATA
+formalization/weighted/MarkedSlitCompression.lean	ALL-PATHS
+formalization/weighted/MarkedSlitDiskHomotopy.lean	SLIT-CLASSES
+formalization/weighted/MarkedSlitTransport.lean	SLIT-CLASSES
 formalization/weighted/MarkedWaveSuprema.lean	GAIN
 formalization/weighted/NativeWaveGate.lean	CUTS CREST
 formalization/weighted/NearTwoInverse.lean	METADATA
@@ -188,6 +189,11 @@ formalization/weighted/QuadraticParameterUnivalence.lean	CONSTRUCT
 formalization/weighted/QuadraticTrappingEscape.lean	METADATA
 formalization/weighted/QuadraticUnivalentNeighborhood.lean	CONSTRUCT
 formalization/weighted/SaturatedTelescope.lean	METADATA
+formalization/weighted/SlitWaveEscape.lean	METADATA
+formalization/weighted/SlitWaveFinite.lean	ALL-PATHS
+formalization/weighted/SlitWaveLimit.lean	ALL-PATHS
+formalization/weighted/SlitWaveModulus.lean	METADATA
+formalization/weighted/SlitWaveScaling.lean	ALL-PATHS
 formalization/weighted/SpectralDominance.lean	CLONE EDGE
 formalization/weighted/StationaryCanonicalLift.lean	VARIABLE-EXIT
 formalization/weighted/StationaryCompactContact.lean	METADATA
@@ -541,3 +547,8 @@ formalization/weighted/QuadraticPowerNormalForm.lean	METADATA
 formalization/weighted/IteratedCarrierIsolation.lean	METADATA
 formalization/weighted/QuadraticCarrierSaturation.lean	METADATA
 formalization/weighted/QuadraticLocalFiberCensus.lean	METADATA
+formalization/weighted/ConnectedFiberEnergy.lean	METADATA
+formalization/weighted/FiberEnergyCollapse.lean	METADATA
+formalization/weighted/FiberEnergySharpness.lean	METADATA
+formalization/weighted/FiberSamplePacking.lean	METADATA
+formalization/weighted/MandelbrotSamplingReduction.lean	METADATA
