@@ -13,7 +13,9 @@ Ledger statement being addressed:
 
 ## Claim
 
-**Draft investigation. No new theorem is claimed.** The initial attack examined
+**Investigation ended without a qualifying result. No new theorem is claimed.**
+This packet remains an unfinished draft record, not a partial-result submission;
+the `result` frontmatter is the original draft schema placeholder. The initial attack examined
 noncompact connected bypasses. The deeper archive audit below shows that the
 set-level native separator already has a written solution, and that the obvious
 external-ray route is already represented in Lean. The current target is therefore
@@ -156,9 +158,16 @@ bilateral survival through every fine and coarse filter, or charge the failed
 family with the native uniform width bound. No such proof or actual high-type
 counterexample was obtained here.
 
-Lean and Lake are not installed in this local environment. Any proof submitted
-will therefore require a successful build in the existing repository CI before
-it is counted as a theorem. No Lean file has been added at this checkpoint.
+Ordinary quadratic-like maps already have globally injective immersion
+inclusions on their iterate domains. Their marking filters can nevertheless
+discard a raw shoulder. Thus even global univalence would not establish the
+missing retained-occurrence predicate; a new collar theorem alone cannot be
+used to claim it.
+
+Lean and Lake are not installed in this local environment. No Lean file was
+added, no theorem was registered, and no new compiled theorem or transitive
+axiom audit is claimed. The absence of a qualifying mathematical proof, rather
+than the local toolchain limitation, is the reason this investigation ends.
 
 The local contribution checker passes in draft mode. That checks packet format
 and repository bookkeeping; it is not a Lean build or a mathematical validation.
@@ -176,11 +185,16 @@ and repository bookkeeping; it is not a Lean build or a mathematical validation.
 
 ## Boundary
 
-No obligation is closed and no mathematical advance is claimed at this
-checkpoint. In particular the classical doubled-sine diagnostic is not offered
-as a qualifying result. The native collar, marked-access, and full-horizon
-occurrence clauses remain open. No status-record change is proposed. The draft
-will be closed if the investigation produces no qualifying result.
+No obligation is closed and no mathematical advance is claimed. In particular
+the classical doubled-sine diagnostic, the unformalized analytic collar idea,
+and the real-polynomial variant outside the proof-used regime are not offered
+as qualifying results. The native collar, marked-access, and full-horizon
+occurrence clauses remain open. No status-record change is proposed.
+
+The draft is being closed without merge, following `AGENTS.md`, "What counts as
+a contribution": an investigation with no real progress must release its
+claim rather than submit a restatement, survey, or plan. The commits preserve
+the attempts as requested; they are not a replacement for a new Lean proof.
 
 ## Attribution
 
