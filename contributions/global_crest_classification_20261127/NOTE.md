@@ -11,10 +11,6 @@ human_review: none
 
 ## Claim
 
-**Development checkpoint: the complete statement below is under Lean kernel
-verification. Individual successful intermediate builds are not a claim that
-the combined theorem has passed.**
-
 For every integer return index p at least 17, construct an actual quadratic
 parameter and its unique upper-circle crossing family on the entire normalized
 parent range [1/16,1/8]. The literal third-return coordinate is strictly
@@ -57,7 +53,7 @@ circular calculation only through p=16 and explicitly leaves the all-period
 extension open. Those earlier parameter and proper-return results are used
 here and are not claimed as new.
 
-| Question | Archived actual-crest theorem | This contribution's target |
+| Question | Archived actual-crest theorem | Proved here |
 |---|---|---|
 | Radius range for terminal exclusion | [1/16,133/2000] | Entire [1/16,1/8], enclosing the original parent |
 | Return indices for endpoint and strict order | Sufficiently large, unspecified | Every p at least 17 |
@@ -85,8 +81,8 @@ complete fibers satisfy
     H(z)=H(w)  iff  z=w or z=-w
 
 on that disk. These are proved from the full squaring remainder and divided
-difference recurrences, not assumed distortion estimates. The enlargement
-is necessary: the full-parent second image can exceed the old comparison
+difference recurrences, not assumed distortion estimates. The larger domain
+accommodates the uniform second-phase bound 13/10, beyond the old comparison
 radius 23/20.
 
 The crossing family is
@@ -140,9 +136,8 @@ The positive real fixed cut alpha_p is constructed in (0.518,0.519) and is
 unique in the control interval. With q=-3/4+s and w=-3/4-s, exact actual
 iteration bounds prove all eight source real tests on [1/16,133/2000]:
 the source locations of q,w; their first-image cuts; both second-image
-cuts; and the third and fourth q-image cuts. Some of these inequalities fail
-near 1/8. They are therefore used on the retained collar only; global
-terminal exclusion removes the outer radii.
+cuts; and the third and fourth q-image cuts. These tests apply to the retained
+collar; global terminal exclusion removes the outer radii.
 
 The fourth terminal-image condition follows from the same literal dynamics:
 on -1<T_p<-Re H^4(0), evenness and strict decrease of H on the positive real
@@ -208,8 +203,23 @@ The proof modules are `GlobalCrestEstimates`, `GlobalCrestCrossing`,
 `formalization/weighted/`. Build targets and every public theorem are
 registered with `code/contribute.py lean-add`.
 
-Verification is in progress in this checkpoint. The final note will record
-the completed exact-head CI result and transitive declaration audit.
+The first complete CI proof build is commit
+[`227800743294fa230527a572f804bf33a3089765`](https://github.com/dovvnloading/loops-research-archive/commit/227800743294fa230527a572f804bf33a3089765),
+with the ordinary full build and transitive audit in
+[weighted Lean run 46098906835](https://github.com/dovvnloading/loops-research-archive/actions/runs/46098906835).
+All ten modules compiled. The unchanged audit checked every declaration in
+all 215 weighted modules: 4,963 declarations in total. This includes all 237
+declarations from the ten new modules, including private and generated
+declarations. Every transitive dependency is among the permitted foundations
+`propext`, `Classical.choice`, and `Quot.sound`.
+
+The source-coverage and prohibited-token check passed for all 264 Lean source
+files. The contribution intake passes against the unchanged main baseline.
+Local checks also compiled the root project and the new crossing, enlarged
+estimates, and global collision modules; the full ordinary weighted build and
+full declaration audit were performed in CI. The final documentation update
+changes no Lean source, and the PR records its current checks separately.
+
 The repository's existing workflows, trusted baseline, and ledger files are
 unchanged. Reproduction uses:
 
