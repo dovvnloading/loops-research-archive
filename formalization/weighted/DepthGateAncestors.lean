@@ -442,11 +442,11 @@ def prepend {C : TerminalChart} {depth : ℕ} (A : Ancestors C depth)
       (fun i c => A.barrier i (monicParameter p c)/|returnCoefficient p c|)
     core := Fin.cases (fun _ => 15*scale p)
       (fun i c => A.core i (monicParameter p c)/|returnCoefficient p c|)
+    barrier_eq_half := ?_
     period_ge := ?_
     period_divides := ?_
     period_lt := ?_
     period_order := ?_
-    barrier_eq_half := ?_
     radii := ?_
     orbit_bound := ?_
     critical_inside := ?_
@@ -457,6 +457,15 @@ def prepend {C : TerminalChart} {depth : ℕ} (A : Ancestors C depth)
     target_nesting := ?_
     nesting := ?_
     terminal_nesting := ?_ }
+  · intro i
+    refine Fin.cases ?_ (fun i => ?_) i
+    · intro c
+      rfl
+    · intro c
+      change A.barrier i (monicParameter p c)/|returnCoefficient p c| =
+        (A.target i (monicParameter p c)/|returnCoefficient p c|)/2
+      rw [A.barrier_eq_half]
+      ring
   · intro i
     refine Fin.cases ?_ (fun i => ?_) i
     · exact hp.1
@@ -476,7 +485,8 @@ def prepend {C : TerminalChart} {depth : ℕ} (A : Ancestors C depth)
       have hm := Nat.mul_lt_mul_of_pos_right
         (show 1 < C.period by have := C.period_ge; omega) hp0
       simpa only [one_mul] using hm
-    · exact Nat.mul_lt_mul_of_pos_right (A.period_lt i) hp0
+    · change A.period i*p < C.period*p
+      exact Nat.mul_lt_mul_of_pos_right (A.period_lt i) hp0
   · intro i k
     refine Fin.cases ?_ (fun i => ?_) i
     · refine Fin.cases ?_ (fun k => ?_) k
@@ -484,6 +494,7 @@ def prepend {C : TerminalChart} {depth : ℕ} (A : Ancestors C depth)
         have hh : (0 : ℕ) < 0 := hik
         omega
       · intro _
+        change p < A.period k*p
         have hm := Nat.mul_lt_mul_of_pos_right
           (show 1 < A.period k by have := A.period_ge k; omega) hp0
         simpa only [one_mul] using hm
@@ -492,16 +503,10 @@ def prepend {C : TerminalChart} {depth : ℕ} (A : Ancestors C depth)
         have hh : i.val+1 < 0 := hik
         omega
       · intro hik
-        exact Nat.mul_lt_mul_of_pos_right (A.period_order i k (by omega)) hp0
-  · intro i
-    refine Fin.cases ?_ (fun i => ?_) i
-    · intro c
-      rfl
-    · intro c
-      change A.barrier i (monicParameter p c)/|returnCoefficient p c| =
-        (A.target i (monicParameter p c)/|returnCoefficient p c|)/2
-      rw [A.barrier_eq_half]
-      ring
+        change i.val+1 < k.val+1 at hik
+        have hik' : i.val < k.val := by omega
+        change A.period i*p < A.period k*p
+        exact Nat.mul_lt_mul_of_pos_right (A.period_order i k hik') hp0
   · intro i
     refine Fin.cases ?_ (fun i => ?_) i
     · intro c hc
@@ -557,7 +562,10 @@ def prepend {C : TerminalChart} {depth : ℕ} (A : Ancestors C depth)
         have hh : i.val+1 < 0 := hik
         omega
       · intro hik c hc
-        exact lifted_target_nesting A hp j hc i k (by omega)
+        have hik' : i.val < k.val := by
+          change i.val+1 < k.val+1 at hik
+          omega
+        exact lifted_target_nesting A hp j hc i k hik'
   · intro i k
     refine Fin.cases ?_ (fun i => ?_) i
     · refine Fin.cases ?_ (fun k => ?_) k
@@ -571,10 +579,14 @@ def prepend {C : TerminalChart} {depth : ℕ} (A : Ancestors C depth)
         have hh : i.val+1 < 0 := hik
         omega
       · intro hik c hc z hz m hm
+        have hik' : i.val < k.val := by
+          change i.val+1 < k.val+1 at hik
+          omega
         have hm' : m*A.period i ≤ A.period k := by
           apply cancel_period hp0
+          change m*(A.period i*p) ≤ A.period k*p at hm
           simpa only [Nat.mul_assoc] using hm
-        exact lifted_nesting A hp j hc i k (by omega) hz m hm'
+        exact lifted_nesting A hp j hc i k hik' hz m hm'
   · intro i
     refine Fin.cases ?_ (fun i => ?_) i
     · intro c hc z hz m hm
@@ -582,6 +594,7 @@ def prepend {C : TerminalChart} {depth : ℕ} (A : Ancestors C depth)
     · intro c hc z hz m hm
       have hm' : m*A.period i ≤ C.period := by
         apply cancel_period hp0
+        change m*(A.period i*p) ≤ C.period*p at hm
         simpa only [Nat.mul_assoc] using hm
       exact lifted_terminal_nesting A hp j hc i hz m hm'
 

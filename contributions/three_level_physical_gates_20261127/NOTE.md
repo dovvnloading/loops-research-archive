@@ -92,6 +92,42 @@ the preserved opposite shooting signs, and realizes every level simultaneously.
 The terminal signed scale is allowed to alternate in sign; every physical
 identity retains that sign, and radii use its absolute value.
 
+### Why the physical induction closes
+
+Put \(\tau=\operatorname{monicParameter}_p(c)\),
+\(A=A_p(c)\), and \(G=A\circ f_c^p\circ A^{-1}\), with scalar
+multiplication understood in the affine coordinates. The inherited outer
+chart gives
+\(\|G-f_\tau\|\le128\,4^{-p}\) on the disk of radius four.
+The new prefix proof bounds the accumulated error through the entire
+\(6N\) shooting horizon by the chart's budget. In particular, if
+\(d=f_\tau^N(0)\) and \(D=A f_c^{Np}(0)\), then
+\(|D-d|\le\mu b\theta/10000\), while \(|d|\ge\mu>0\).
+The shrinking reserve \(b\) absorbs the change from the input \(dz\) to
+\(Dz\); the separate reserve \(\theta\) absorbs division by the changing
+signed output scale. These are two distinct normalization errors.
+
+For an original time \(n=kp+s\), the proof treats both possibilities.
+At \(s=0\), the reference chart's complete pair and first-return estimates
+survive the accumulated perturbation. At \(0<s<p\), the outer itinerary
+supplies the separation on the whole transported input disk. The resulting
+pair lower bound holds for any two disk points at every time before the
+return. Backward cancellation of \(u^2=v^2\) therefore leaves precisely the
+two initial possibilities \(z=w\) and \(z=-w\). This is what prevents the
+complete iterate, whose global degree is exponential in the period, from
+introducing extra sheets on the selected component.
+
+Ancestor preservation uses the same estimates on each full barrier disk,
+not only on its critical orbit. Target, barrier, and auxiliary radii are
+rescaled by \(|A|^{-1}\). The weighted new margin satisfies
+\(|A|\mu'\le\mu/400\), so strict old escape and containment margins survive.
+The added outer level has its own independently established circle barrier
+and all-time first-return exclusion. Thus the output contains the estimates
+needed by the next prefix step, including estimates for every previous
+ancestor. Only after this finite induction does `DepthGateRealization`
+select complete pullback components and derive properness, exact fiber
+counts, and the physical nesting conclusions.
+
 ### Explicit three-level subfamily
 
 The separately quantified theorem
@@ -188,13 +224,15 @@ bounds is classical. This contribution does not claim first discovery of
 three renormalizations, nor does a literature search establish worldwide
 priority for its explicit constants. The proposed increment is the explicit
 uniform physical construction and its closed arbitrary-depth prefix induction,
-beyond the archived two-level theorem. The archived all-depth marking statement
-assumes the physical data at every level; the present induction constructs the
-physical complete domains and uniform terminal gate for its separated family.
+beyond the archived two-level theorem. The archived [all-depth audit, Sections 1 and 3](../../research/independent_audits/tip_family_all_depths_20261116/NOTE.md)
+identifies the missing induction for the chosen physical disks and gate. Its
+marking statement assumes physical data at every level; the present induction
+constructs the complete physical domains and uniform terminal gate for its
+separated family.
 Relevant primary context includes Lyubich--Yampolsky,
 [*Dynamics of quadratic polynomials: complex bounds for real maps*](https://www.numdam.org/item/AIF_1997__47_4_1219_0/),
 and Lyubich,
-[*Feigenbaum--Coullet--Tresser universality and Milnor's hairiness conjecture*](https://www2.math.ethz.ch/EMIS/journals/Annals/149_2/lyubich.pdf).
+[*Feigenbaum--Coullet--Tresser universality and Milnor's hairiness conjecture*](https://annals.math.princeton.edu/articles/12509).
 
 ## Dependencies
 
