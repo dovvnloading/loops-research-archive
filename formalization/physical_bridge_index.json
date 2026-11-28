@@ -4756,6 +4756,8 @@
         "physical_block_orbit",
         "physical_orbit_disk",
         "outer_phase_abs",
+        "pair_norm_lower",
+        "outer_small_disk_phase_pair_lower",
         "coarse_phase_pair_lower",
         "physical_coarse_phase_lower",
         "physical_phase_pair_lower",
@@ -4847,6 +4849,15 @@
         "chart_collision",
         "chart_phase_disk",
         "chart_central_gate"
+      ],
+      "formalization/weighted/DepthGateChart.lean": [
+        "radius_lower",
+        "radius_upper",
+        "budget_pos",
+        "prefixMargin_pos"
+      ],
+      "formalization/weighted/DepthGateBase.lean": [
+        "exists_initial_chart"
       ]
     },
     "obligations": []

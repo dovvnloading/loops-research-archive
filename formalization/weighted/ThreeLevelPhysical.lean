@@ -57,8 +57,11 @@ theorem chart_middle_restriction {p q r : ℕ} (hr : 17 ≤ r)
     (by linarith [ThreeLevelMiddle.radius_pos q])
     (by rw [hid]; exact (ThreeLevelMiddle.middle_critical_norm (outerMap c p) hq g
       (j.monic_range hc) (error p) (error_nonneg p) hbudget hclose).2)
-    (by intro z hz; rw [hid]; exact ThreeLevelMiddle.middle_barrier (outerMap c p)
-      hq g (j.monic_range hc) (error p) (error_nonneg p) hbudget hclose hz)
+    (by
+      intro z hz
+      rw [hid]
+      exact ThreeLevelMiddle.middle_barrier (outerMap c p)
+        hq g (j.monic_range hc) (error p) (error_nonneg p) hbudget hclose hz)
     (by
       intro z w hz hw
       rw [hid,hid]
@@ -104,7 +107,11 @@ theorem chart_middle_phases_nested {p q r : ℕ} (hr : 17 ≤ r)
     rw [norm_mul,Complex.norm_real,Real.norm_eq_abs]
     have hb : ‖z‖ *|returnCoefficient p c| < ThreeLevelMiddle.radius q/2 := by
       apply (lt_div_iff₀ hAa).mp
-      convert hzsmall using 1 <;> unfold middleRadius <;> ring
+      calc
+        ‖z‖ < middleRadius c p q/2 := hzsmall
+        _ = (ThreeLevelMiddle.radius q/2)/|returnCoefficient p c| := by
+          unfold middleRadius
+          ring
     nlinarith only [hb]
   have hphase := (ThreeLevelMiddle.perturbed_half_disk (outerMap c p) (by omega) g
     (j.monic_range hc) (error p) (error_nonneg p)
@@ -205,7 +212,11 @@ theorem chart_middle_first_return {p q r : ℕ} (hr : 17 ≤ r)
     rw [norm_mul,Complex.norm_real,Real.norm_eq_abs]
     have hb : ‖z‖ *|returnCoefficient p c| < ThreeLevelMiddle.radius q/2 := by
       apply (lt_div_iff₀ hAa).mp
-      convert hzsmall using 1 <;> unfold middleRadius <;> ring
+      calc
+        ‖z‖ < middleRadius c p q/2 := hzsmall
+        _ = (ThreeLevelMiddle.radius q/2)/|returnCoefficient p c| := by
+          unfold middleRadius
+          ring
     nlinarith only [hb]
   have hphase := ThreeLevelMiddle.middle_noncentral_phase (outerMap c p) (by omega) g
     (j.monic_range hc) (error p) (error_nonneg p)

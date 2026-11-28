@@ -343,7 +343,7 @@ theorem outer_phase_abs {q : ℕ} (hq : 17 ≤ q)
     exact NearTwoInverse.back_lower hband hd _
   exact hlow.trans (le_abs_self _)
 
-private theorem pair_norm_lower {v w : ℂ} {x : ℝ}
+theorem pair_norm_lower {v w : ℂ} {x : ℝ}
     (hx : (7/5 : ℝ) ≤ |x|)
     (hv : ‖v-(x : ℂ)‖ ≤ 1/5) (hw : ‖w-(x : ℂ)‖ ≤ 1/5) :
     (12/5 : ℝ) ≤ ‖v+w‖ := by
@@ -357,6 +357,21 @@ private theorem pair_norm_lower {v w : ℂ} {x : ℝ}
     norm_num [Complex.norm_real, Real.norm_eq_abs]
   rw [hnorm] at htri
   linarith
+
+/-- Ordinary phases of the full outer comparison disk retain a uniform
+signed-fiber margin, independent of the depth of any inner return. -/
+theorem outer_small_disk_phase_pair_lower {q : ℕ} (hq : 17 ≤ q)
+    {a b l u t : ℝ} (g : OuterChart q a b l u) (ht : t ∈ Icc l u)
+    {z w : ℂ} (hz : ‖z‖ ≤ 15*scale q) (hw : ‖w‖ ≤ 15*scale q)
+    (i : ℕ) (hi : 1 ≤ i) (hiq : i < q) :
+    (12/5 : ℝ) ≤ ‖((quadraticMap t)^[i]) z+((quadraticMap t)^[i]) w‖ := by
+  apply pair_norm_lower (outer_phase_abs hq g ht hi hiq)
+  · have hd := small_disk_displacement hq (chart_parameter_band hq g ht)
+      hz i (by omega) hiq.le
+    linarith [scale_small hq]
+  · have hd := small_disk_displacement hq (chart_parameter_band hq g ht)
+      hw i (by omega) hiq.le
+    linarith [scale_small hq]
 
 theorem coarse_phase_pair_lower {q r : ℕ} (hr : 17 ≤ r)
     (hqr : 10*r+30 ≤ q) {a b l u t : ℝ}

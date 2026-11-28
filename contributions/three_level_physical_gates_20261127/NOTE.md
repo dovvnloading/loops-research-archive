@@ -146,6 +146,18 @@ needed to promote that wording to a full renormalization theorem.
 
 ## Attribution
 
+### Further attack on arbitrary depth
+
+The fixed-depth construction is not being treated as the full research target.
+The next checkpoint introduces `DepthGateChart` and `DepthGateBase`: a numerical
+family invariant initialized by an actual sharp parameter corridor, with a
+positive normalized-radius reserve, a normalized-error reserve, and uniform
+margins for the finite ancestor disk estimates. The planned prefix step halves
+the radius and error reserves while retaining the same terminal gate constants.
+These are supporting declarations for an arbitrary-depth induction; no
+arbitrary-depth theorem is claimed until that prefix step and the final
+unconditional existence theorem compile and pass the axiom audit.
+
 Proof development, mathematical scope review, and Lean repair: OpenAI ChatGPT
 GPT-6 Astra Pro. The construction builds on the archive's all-period shooting
 and two-level physical-domain work, with the inherited results identified
