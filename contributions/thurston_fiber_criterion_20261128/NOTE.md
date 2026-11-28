@@ -11,33 +11,33 @@ human_review: none
 
 ## Claim
 
-Let \(f_c(z)=z^2+c\). For arbitrary complex parameters \(c,d\), suppose a
-continuous injection \(h:\mathbb C\to\mathbb C\) satisfies
-\[
+Let $f_c(z)=z^2+c$. For arbitrary complex parameters $c,d$, suppose a
+continuous injection $h:\mathbb C\to\mathbb C$ satisfies
+$
 h(z^2+c)=h(z)^2+d,\qquad h(iz)=ih(z)\qquad(z\in\mathbb C).
-\]
-Then \(c=d\). If \(c\ne0\), then \(h=\mathrm{id}\).
+$
+Then $c=d$. If $c\ne0$, then $h=\mathrm{id}$.
 
 The proposed new ingredient is rigidity of **two specified generators**:
 one quadratic and the fixed quarter-turn. There is no postcritical finiteness,
-holomorphic or quasiconformal hypothesis on \(h\), normalization at infinity,
-or assumption that \(h\) preserves the full polynomial semigroup.
+holomorphic or quasiconformal hypothesis on $h$, normalization at infinity,
+or assumption that $h$ preserves the full polynomial semigroup.
 
 The companion Lean result proves the following actual MLC implication. Define
-\[
+$
 M=\{c\in\mathbb C:\exists B\in\mathbb R\
                     \forall n\in\mathbb N,\ |f_c^n(0)|\le B\}.
-\]
-Let \(q:M\to Y\) be continuous and onto, with preconnected fibers, where \(Y\)
-is Hausdorff and locally connected. Fix \(c\in M\). Suppose that for every
-\(d\in M\) with \(q(d)=q(c)\), there exists a continuous injection satisfying the
+$
+Let $q:M\to Y$ be continuous and onto, with preconnected fibers, where $Y$
+is Hausdorff and locally connected. Fix $c\in M$. Suppose that for every
+$d\in M$ with $q(d)=q(c)$, there exists a continuous injection satisfying the
 two displayed intertwining equations. Then
-\[
+$
 q^{-1}(q(c))=\{c\},
-\]
-and every relative neighborhood \(U\) of \(c\) in \(M\) contains a relatively
-open connected set \(V\) with \(c\in V\subseteq U\).
-This is local connectivity of the actual bounded-critical-orbit locus at \(c\),
+$
+and every relative neighborhood $U$ of $c$ in $M$ contains a relatively
+open connected set $V$ with $c\in V\subseteq U$.
+This is local connectivity of the actual bounded-critical-orbit locus at $c$,
 in the explicit connected-open-neighborhood-basis form.
 
 Equivalently as an obstruction: every nontrivial such parameter fiber contains
@@ -53,54 +53,54 @@ in PR #274; it makes a different, concrete quadratic-family claim.
 
 ### Exact proof of the rigidity theorem
 
-The quarter-turn relation gives \(h(0)=0\) and \(h(-z)=-h(z)\).
-The quadratic relation at zero then gives \(h(c)=d\).
+The quarter-turn relation gives $h(0)=0$ and $h(-z)=-h(z)$.
+The quadratic relation at zero then gives $h(c)=d$.
 
 Every complex number has a square root. Applying the quadratic relation to
-\(z\) and \(iz\), and then writing \(t=z^2\), gives
-\[
+$z$ and $iz$, and then writing $t=z^2$, gives
+$
 h(t+c)+h(-t+c)=2d.
-\]
-Set \(t=w+c\) and use oddness:
-\[
+$
+Set $t=w+c$ and use oddness:
+$
 h(w+2c)=h(w)+2d.
-\]
+$
 Rotate this identity to obtain
-\[
+$
 h(w+2ic)=h(w)+2id.
-\]
+$
 Induction also gives
-\(h(w+2nc)=h(w)+2nd\) for every natural \(n\), hence \(h(2nc)=2nd\).
+$h(w+2nc)=h(w)+2nd$ for every natural $n$, hence $h(2nc)=2nd$.
 
 Now put
-\[
+$
 G(w)=h(2cw)-2dw.
-\]
-The two translation identities give periods \(1\) and \(i\) for \(G\), without
-any division by \(c\) and including the case \(c=0\). Continuity bounds \(G\) on
+$
+The two translation identities give periods $1$ and $i$ for $G$, without
+any division by $c$ and including the case $c=0$. Continuity bounds $G$ on
 the compact unit square. Reducing real and imaginary coordinates modulo one
-therefore gives a single bound for \(G\) on the whole plane.
+therefore gives a single bound for $G$ on the whole plane.
 
-Evaluate this bounded function at \(w_n=2cn^2+\tfrac12\). The exact identity
-\(2cw_n=(2nc)^2+c\) and the quadratic equation yield
-\[
+Evaluate this bounded function at $w_n=2cn^2+\tfrac12$. The exact identity
+$2cw_n=(2nc)^2+c$ and the quadratic equation yield
+$
 G(w_n)=h((2nc)^2+c)-2d(2cn^2+\tfrac12)
      =(2nd)^2+d-4cdn^2-d
      =4n^2d(d-c).
-\]
-A bounded sequence of constant multiples of \(n^2\) has zero coefficient.
-Thus \(4d(d-c)=0\). If \(d\ne0\), this gives \(c=d\).
-If \(d=0\), injectivity and \(h(c)=h(0)=0\) give \(c=0=d\).
-This proves the parameter statement for every \(c,d\in\mathbb C\).
+$
+A bounded sequence of constant multiples of $n^2$ has zero coefficient.
+Thus $4d(d-c)=0$. If $d\ne0$, this gives $c=d$.
+If $d=0$, injectivity and $h(c)=h(0)=0$ give $c=0=d$.
+This proves the parameter statement for every $c,d\in\mathbb C$.
 
-For the strengthening, assume \(c\ne0\) and now \(d=c\). The bound for \(G\),
-after rescaling the argument, bounds \(g=h-\mathrm{id}\) on the whole plane.
-For each \(z\) and natural \(n\), direct expansion gives
-\[
+For the strengthening, assume $c\ne0$ and now $d=c$. The bound for $G$,
+after rescaling the argument, bounds $g=h-\mathrm{id}$ on the whole plane.
+For each $z$ and natural $n$, direct expansion gives
+$
 g((z+2nc)^2+c)-g(z^2+c)=4nc\,(h(z)-z).
-\]
-The left side stays bounded as \(n\) varies, so
-\(4c(h(z)-z)=0\). Since \(c\ne0\), \(h(z)=z\) for every \(z\).
+$
+The left side stays bounded as $n$ varies, so
+$4c(h(z)-z)=0$. Since $c\ne0$, $h(z)=z$ for every $z$.
 
 The bounded-periodic-function and bounded-polynomial-sequence observations are
 classical supporting facts. The quadratic-specific step is the generation of
@@ -128,7 +128,12 @@ classical compact-monotone-quotient topology theorem.
 
 No local Lean executable is installed in this workspace. The repository's
 existing Lean workflows are the compiler and proof-dependency judge.
-**Current validation state: full proof sources submitted; CI pending.**
+**Current validation state: CI proof repair submitted; next build pending.**
+The first weighted build reached the new rigidity module and reported one
+rewrite failure when transporting the proved polynomial identity into the norm
+bound. The next revision uses explicit equality congruence. The preceding
+algebra and periodic-bound lemmas compiled. See [VALIDATION.md](VALIDATION.md)
+for commit and run records.
 The two modules are registered as default weighted targets and in both source
 and public-theorem indexes. No workflow or audit rule is changed.
 
@@ -166,10 +171,10 @@ search certifies worldwide priority.
    [DOI](https://doi.org/10.3934/dcds.2013.33.1333).
 
 4. **Shcherbakov–Nakai germ rigidity.** Nakai, *Separatrices for non solvable
-   dynamics on \(\mathbb C,0\)*, Ann. Inst. Fourier 44 (1994), 569–599,
+   dynamics on $\mathbb C,0$*, Ann. Inst. Fourier 44 (1994), 569–599,
    Theorem 4 and its restatement as Theorem 5.1, concerns nonsolvable
    pseudogroups of holomorphic diffeomorphism germs fixing a common point.
-   For \(c\ne0\), the quadratic and quarter-turn have no common fixed point,
+   For $c\ne0$, the quadratic and quarter-turn have no common fixed point,
    and the quadratic is branched at zero. Those hypotheses are not supplied.
    A new reduction to a suitable germ group would itself require proof.
    [Primary text](https://www.numdam.org/article/AIF_1994__44_2_569_0.pdf).
@@ -177,7 +182,7 @@ search certifies worldwide priority.
 5. **Singleton fibers imply local connectivity.** This is classical supporting
    topology, not the novelty claim. Schleicher,
    *On Fibers and Local Connectivity of Mandelbrot and Multibrot Sets*,
-   Theorem 3.5, states the relevant implication for classical parameter
+   Proposition 3.5, states the relevant implication for classical parameter
    fibers. Our Lean wrapper uses the more explicitly stated compact-monotone
    quotient hypotheses in the archive's already proved topology module.
    [Primary text](https://arxiv.org/abs/math/9902155).
@@ -236,7 +241,7 @@ Thus the new content is the two-generator rigidity theorem, not a claim that
 this condition has already become easier to verify than fiber triviality.
 There is currently no new unconditional parameter coverage.
 
-The quotient \(q\), its surjectivity, continuity, preconnected fibers, and its
+The quotient $q$, its surjectivity, continuity, preconnected fibers, and its
 Hausdorff locally connected target are explicit hypotheses. The canonical
 pinched-disk quotient is not constructed or identified in Lean here.
 Consequently the theorem can be applied to such a quotient only after those
@@ -248,7 +253,7 @@ dynamical information. The submitted Lean development proves the criterion and
 the implication to a singleton fiber and actual local connectivity, subject to
 the CI validation state above.
 
-The conclusion \(h=\mathrm{id}\) needs \(c\ne0\). At \(c=d=0\), continuous
+The conclusion $h=\mathrm{id}$ needs $c\ne0$. At $c=d=0$, continuous
 injective radial power maps commute with both squaring and the quarter-turn,
 so parameter rigidity persists but map rigidity fails. Surjectivity and
 regularity stronger than continuity were not used.

@@ -258,7 +258,12 @@ theorem parameter_eq_of_quarter_turn_conjugacy (h : ℂ → ℂ) (c d : ℂ)
           ((n : ℂ) * (2 * c)) ^ 2 + c by ring,
         hquad, quadratic_nat_multiple h c d hquad hrot]
       ring
-    simpa only [he] using hB (2 * c * (n : ℂ) ^ 2 + (1 / 2 : ℂ))
+    calc
+      ‖(n : ℂ) ^ 2 * (4 * d * (d - c))‖ =
+          ‖h ((2 * c) * (2 * c * (n : ℂ) ^ 2 + (1 / 2 : ℂ))) -
+            (2 * d) * (2 * c * (n : ℂ) ^ 2 + (1 / 2 : ℂ))‖ :=
+        congrArg norm he.symm
+      _ ≤ B := hB _
   have hk := eq_zero_of_nat_sq_mul_norm_bounded (4 * d * (d - c)) B hb
   by_cases hd : d = 0
   · have hc : c = 0 := by
@@ -279,8 +284,7 @@ theorem map_eq_id_of_quarter_turn_conjugacy (h : ℂ → ℂ) (c d : ℂ)
   have hb : ∀ z : ℂ, ‖h z - z‖ ≤ B := by
     intro z
     have hnc : (2 : ℂ) * c ≠ 0 := mul_ne_zero (by norm_num) hc
-    have he : (2 * c) * (z / (2 * c)) = z := by
-      field_simp [hnc] <;> ring
+    have he : (2 * c) * (z / (2 * c)) = z := mul_div_cancel₀ z hnc
     simpa only [he] using hB (z / (2 * c))
   exact map_eq_id_of_bounded_deviation h c hquad hrot hc B hb
 
