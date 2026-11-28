@@ -122,22 +122,22 @@ theorem actualChildCuts_error {p : ℕ} (hp : 17 ≤ p) {c k : ℝ}
     |actualChildCuts c p i-limitChildCuts k i| ≤ 3906*23646*scale p := by
   have hq := (scale_pos p).le
   fin_cases i
-  · simp only [actualChildCuts, limitChildCuts, Matrix.cons_val_zero, sub_self, abs_zero]
+  · change |(-1 : ℝ)-(-1)| ≤ _
+    rw [sub_self, abs_zero]
     positivity
-  · simpa only [actualChildCuts, limitChildCuts, Matrix.cons_val_succ,
-      Matrix.cons_val_zero, neg_sub_neg, abs_sub_comm] using
-      normalizedCut_error_uniform hp (by norm_num : 4 ≤ 6) hc hk hroot
-  · simpa only [actualChildCuts, limitChildCuts, Matrix.cons_val_succ,
-      Matrix.cons_val_zero] using
-      normalizedCut_error_uniform hp (by norm_num : 2 ≤ 6) hc hk hroot
-  · simpa only [actualChildCuts, limitChildCuts, Matrix.cons_val_succ,
-      Matrix.cons_val_zero] using
-      normalizedCut_error_uniform hp (by norm_num : 5 ≤ 6) hc hk hroot
+  · change |-normalizedCut c p 4 - -criticalOrbit k 4| ≤ _
+    rw [neg_sub_neg, abs_sub_comm]
+    exact normalizedCut_error_uniform hp (by norm_num : 4 ≤ 6) hc hk hroot
+  · change |normalizedCut c p 2-criticalOrbit k 2| ≤ _
+    exact normalizedCut_error_uniform hp (by norm_num : 2 ≤ 6) hc hk hroot
+  · change |normalizedCut c p 5-criticalOrbit k 5| ≤ _
+    exact normalizedCut_error_uniform hp (by norm_num : 5 ≤ 6) hc hk hroot
   · have ha := actualAlpha_error hp hc hk hroot
     change |-actualAlpha c p - -limitAlpha k| ≤ _
     rw [neg_sub_neg, abs_sub_comm]
     nlinarith only [ha, hq]
-  · norm_num [actualChildCuts, limitChildCuts]
+  · change |(1 : ℝ)-1| ≤ _
+    rw [sub_self, abs_zero]
     positivity
 
 theorem limitChildCuts_gap {k : ℝ} (hk : k ∈ parameterInterval)

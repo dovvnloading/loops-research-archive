@@ -5039,6 +5039,47 @@
         "actualChildCuts_tendsto",
         "physicalChildCuts_scale",
         "physicalChildCuts_strictMono"
+      ],
+      "formalization/weighted/ActualChildSource.lean": [
+        "innerRadius_pos",
+        "scaled_disk_image",
+        "closedBall_subset_normalizedSource",
+        "scaled_normalizedSource",
+        "innerRadius_lower",
+        "innerRadius_tendsto",
+        "eventually_closedBall_subset",
+        "eventually_compact_subset"
+      ],
+      "formalization/weighted/ChildSlitFinite.lean": [
+        "gap_pos",
+        "endBound_pos",
+        "childLeaf_first_norm_le",
+        "childLeaf_endpoint_distance",
+        "childDensity_measurable",
+        "childDensity_length",
+        "childDensity_admissible",
+        "childDensity_area_ne_top",
+        "childWave_modulus_le",
+        "width_ne_top"
+      ],
+      "formalization/weighted/ChildSlitScaling.lean": [
+        "scalar_marking",
+        "width_le_dilation",
+        "scalar_marking_inverse",
+        "width_dilation",
+        "width_dilation_ball"
+      ],
+      "formalization/weighted/ChildSlitLimit.lean": [
+        "trace_preconnected",
+        "endpointRadius_pos",
+        "first_end_norm_le",
+        "discarded_modulus_le",
+        "traces_decompose",
+        "lamination_cutoff",
+        "width_cutoff",
+        "width_small_marks_upper",
+        "width_small_marks_lower",
+        "width_tendsto_of_source_exhaustion"
       ]
     },
     "obligations": []

@@ -51,6 +51,7 @@ code/exp4_images.py	EXPLORATION
 code/exp5_figs.py	EXPLORATION
 code/mlc_common.py	EXPLORATION
 formalization/weighted/ActualChildMarks.lean	SELECTED
+formalization/weighted/ActualChildSource.lean	SELECTED
 formalization/weighted/ActualCrestComponents.lean	CREST
 formalization/weighted/ActualCrestConformalChart.lean	CREST
 formalization/weighted/ActualCrestCrossingWindow.lean	METADATA
@@ -81,7 +82,10 @@ formalization/weighted/BinaryShiftExactness.lean	METADATA
 formalization/weighted/BinaryShiftPeriodic.lean	METADATA
 formalization/weighted/ChebyshevQuotientRigidity.lean	METADATA
 formalization/weighted/ChildSlitCompression.lean	ALL-PATHS
+formalization/weighted/ChildSlitFinite.lean	ALL-PATHS
+formalization/weighted/ChildSlitLimit.lean	ALL-PATHS
 formalization/weighted/ChildSlitModel.lean	ALL-PATHS
+formalization/weighted/ChildSlitScaling.lean	ALL-PATHS
 formalization/weighted/ChildSlitTransport.lean	ALL-PATHS
 formalization/weighted/CircularCrestEnergy.lean	METADATA
 formalization/weighted/CircularCrestModulus.lean	METADATA
