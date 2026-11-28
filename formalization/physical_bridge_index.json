@@ -5623,6 +5623,86 @@
         "lineLength_image_trace_eq_interiorTrace",
         "admissible_trace_iff_interiorTrace",
         "modulus_trace_eq_interiorTrace"
+      ],
+      "formalization/weighted/ParentWaveConformal.lean": [
+        "lineLength_pull_eq",
+        "lineLength_push_eq",
+        "modulus_image_eq"
+      ],
+      "formalization/weighted/ParentWaveEllipticIntegrals.lean": [
+        "horizontal_integrand_continuous",
+        "vertical_integrand_continuous",
+        "horizontal_side_eq_integral",
+        "vertical_side_eq_integral"
+      ],
+      "formalization/weighted/ParentWaveEllipticK.lean": [
+        "horizontalIntegral_eq_K",
+        "verticalIntegral_eq_horizontal",
+        "verticalIntegral_eq_K",
+        "ratio_eq_K"
+      ],
+      "formalization/weighted/ParentWaveUpperLength.lean": [
+        "measurable_upperDensity",
+        "local_bound_closed_upper",
+        "hausdorff_image_le_upperLength",
+        "canonical_endpoint_distance_le_upperLength",
+        "upperMap_endpoint_distance_le_upperLength"
+      ],
+      "formalization/weighted/ParentWaveUpperModulus.lean": [
+        "closure_upperHalfPlane",
+        "volume_real_axis",
+        "closure_upperHalfPlane_ae_eq",
+        "density_measurable",
+        "density_admissible",
+        "openRectangle_volume",
+        "density_area",
+        "halfPlaneWidth_le_rectangleRatio"
+      ],
+      "formalization/weighted/ParentWaveEllipticClosed.lean": [
+        "real_boundary_injective",
+        "real_boundary_re_upper",
+        "extension_injective_closed",
+        "closed_rectangle_covered"
+      ],
+      "formalization/weighted/ParentWaveEllipticExistence.lean": [
+        "exists_closed_primitive"
+      ],
+      "formalization/weighted/ParentWavePhysicalChart.lean": [
+        "dimensions_pos",
+        "sqrt_mem_closed_quadrant",
+        "sqrt_square_closed",
+        "square_translate_mem_closed",
+        "sqrt_sub_mem_closed",
+        "sqrt_sub_image_upper",
+        "forward_continuous_closed",
+        "forward_hasDeriv",
+        "forward_injective_closed",
+        "conformalChart_source",
+        "conformalChart_apply",
+        "conformalChart_derivative",
+        "normalized_mem_rectangle_iff",
+        "forward_image_upper",
+        "conformalChart_target",
+        "forward_ending_atom",
+        "imaginary_boundary_im_lower",
+        "forward_left_ray"
+      ],
+      "formalization/weighted/ParentWavePhysicalBoundary.lean": [
+        "quadrant_zero_side_preimage",
+        "quadrant_width_side_preimage",
+        "forward_zero_side_preimage",
+        "forward_width_side_preimage"
+      ],
+      "formalization/weighted/ParentWaveRectangleTransport.lean": [
+        "rectangleInterior_open",
+        "rectangleCurve_interior_subset",
+        "rectangleCurve_interior_measurable",
+        "chartCurve_interiorTrace",
+        "chartFamily_interiorTraces",
+        "chartFamily_interiorTraces_of_eqOn",
+        "chartFamily_modulus",
+        "exists_parentWave_of_chart",
+        "parent_width_lower_of_chart"
       ]
     },
     "obligations": []

@@ -34,7 +34,7 @@ in the unchanged weighted project and audited by the existing CI.
 
 ### Compiled development checkpoint
 
-Eighteen auxiliary modules have compiled locally and are registered for CI:
+Twenty-eight auxiliary modules have compiled locally and are registered for CI:
 
 - ParentWaveLeftCrossing derives an actual interior intersection with the
   left real ray from the existing ParentLeaf relative-homotopy definition.
@@ -88,9 +88,18 @@ Eighteen auxiliary modules have compiled locally and are registered for CI:
 - ParentWaveTraceEndpoints proves exact invariance of the canonical modulus
   when the two endpoint atoms of every trace are removed.
 
-The second checkpoint's full weighted project build passed in GitHub Actions;
-its subsequent transitive axiom audit was canceled. A complete
-successful audit is still required before the research result can be delivered.
+The third checkpoint (fb082802) passed the full weighted project build and the
+transitive axiom audit in GitHub Actions. The current additions have been
+freshly rebuilt locally after a workspace reset; final endpoint CI remains required.
+
+- ParentWaveConformal proves exact conformal transport for arbitrary measurable
+  Hausdorff traces and extended densities, including infinite-length traces.
+- ParentWaveEllipticIntegrals and ParentWaveEllipticK evaluate the actual
+  positive rectangle sides as regular elliptic integrals.
+- ParentWaveUpperLength and ParentWaveUpperModulus calibrate every continuous
+  upper-half-plane crossing, including branch-point and real-boundary contacts.
+- ParentWaveEllipticClosed proves injectivity on the full finite closed source
+  and coverage of the closed target except its proved infinity value.
 
 These are intermediate proof steps toward the candidate in ATTACK.md. They
 do not establish the optimum, its value, or a sharper rate, and are not
