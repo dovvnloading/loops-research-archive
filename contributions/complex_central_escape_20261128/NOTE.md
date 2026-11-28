@@ -5,6 +5,8 @@ ai: OpenAI ChatGPT GPT-6 Astra Pro
 human_review: none
 ---
 
+<a id="complex-central-escape-20261128"></a>
+
 # Investigation: uniform complex escape for the actual central return
 
 Ledger statement being addressed:
@@ -18,6 +20,12 @@ Research in progress. No new theorem or closure is claimed at this initial revis
 The target is a quantitative off-real escape theorem for the actual normalized three-return, together with identification of its full complex filled set with its orbit-defined real interval. The physical quadratic iterate, its complete selected component, and the actual critical orbit must be retained throughout.
 
 ## Evidence
+
+### Committed checkpoint 1
+
+The existing exact third-return polynomial estimates yield a strengthened whole-circle barrier: if the normalized input has norm 1/6, its actual three-return image has norm greater than 1/4, uniformly for every actual selected tip with p>=17. The proposed Lean declarations are `ThreeReturnEstimates.perturbed_outer_circle_barrier` and `ThreeReturnEstimates.actual_outer_circle_barrier`. Compilation is pending. This supporting estimate alone is not counted as the requested mathematical advance.
+
+The proposed full escape argument uses the outer Joukowski inverse for the orbit interval. On the control circle its modulus is below 16/5, whereas the image modulus is above 39/10. The exact inequality (16/5)^7 < (39/10)^6 suggests a maximum-modulus proof of expansion by 7/6 in logarithmic height. The slit-complement branch, complete inverse-interval exclusion, and iteration must all be proved; they remain in progress.
 
 The main branch already proves uniform real angular expansion and a physical precritical mesh in contributions/physical_cylinder_expansion_20261128/NOTE.md. Its boundary explicitly leaves identification of the real orbit interval with the full complex filled set open.
 

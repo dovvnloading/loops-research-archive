@@ -356,5 +356,39 @@ theorem actual_critical_value_bound {p : ℕ} (hp : 17 ≤ p) {c : ℝ}
   obtain ⟨hk,hε,hεmax,hclose⟩ := actual_error_data hp hc
   exact perturbed_critical_value_bound _ hk hε hεmax hclose
 
+
+/-- The complete outer control circle is sent beyond the larger radius
+one quarter.  This boundary margin is used for complex escape from the
+actual central slit; the earlier annular estimate alone is too small. -/
+theorem perturbed_outer_circle_barrier (F : ℂ → ℂ) {k ε : ℝ}
+    (hk : k ∈ Icc (179/100 : ℝ) (9/5))
+    (hε : 0 ≤ ε) (hεmax : ε ≤ 1/100000)
+    (hclose : ∀ w : ℂ, ‖w‖ ≤ 23/20 → ‖F w-complexMap k w‖ ≤ ε)
+    {z : ℂ} (hz : ‖z‖ = outerRadius) :
+    (1/4 : ℝ) < ‖(F^[3]) z‖ := by
+  have hb := (third_coefficient_bounds hk).2.1
+  have hlead : 18*outerRadius^2 ≤ ‖(thirdQuadratic k : ℂ)*z^2‖ := by
+    rw [norm_mul, norm_pow, Complex.norm_real, Real.norm_eq_abs,
+      abs_of_nonneg (by linarith), hz]
+    exact mul_le_mul_of_nonneg_right hb (sq_nonneg outerRadius)
+  have hres := model_residual_bound hk (by norm_num [outerRadius]) z hz.le
+  have he := (three_composition_error F hk hε hεmax hclose hz.le 3 (by omega)).1
+  norm_num only [errorCoefficient, mul_zero, add_zero, one_mul] at he
+  have ht1 := norm_le_norm_sub_add ((thirdQuadratic k : ℂ)*z^2)
+    (((complexMap k)^[3]) z)
+  rw [norm_sub_rev ((thirdQuadratic k : ℂ)*z^2)] at ht1
+  have ht2 := norm_le_norm_sub_add (((complexMap k)^[3]) z) ((F^[3]) z)
+  rw [norm_sub_rev (((complexMap k)^[3]) z)] at ht2
+  norm_num only [outerRadius] at hlead hres
+  linarith
+
+/-- The stronger circle barrier is uniform over the actual unbounded
+period family and retains the complete high-degree return polynomial. -/
+theorem actual_outer_circle_barrier {p : ℕ} (hp : 17 ≤ p) {c : ℝ}
+    (hc : ActualTip p c) {z : ℂ} (hz : ‖z‖ = outerRadius) :
+    (1/4 : ℝ) < ‖((normalizedReturn c p)^[3]) z‖ := by
+  obtain ⟨hk,hε,hεmax,hclose⟩ := actual_error_data hp hc
+  exact perturbed_outer_circle_barrier _ hk hε hεmax hclose hz
+
 end
 end ThreeReturnEstimates

@@ -5268,5 +5268,15 @@
     "research_updates": [
       "NOV26_OPEN_SUBSECTOR"
     ]
+  },
+  "complex-central-escape-20261128": {
+    "guide": "contributions/complex_central_escape_20261128/NOTE.md#complex-central-escape-20261128",
+    "theorems": {
+      "formalization/weighted/ThreeReturnEstimates.lean": [
+        "perturbed_outer_circle_barrier",
+        "actual_outer_circle_barrier"
+      ]
+    },
+    "obligations": []
   }
 }
